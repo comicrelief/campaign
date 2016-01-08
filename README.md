@@ -8,7 +8,7 @@ Copy over example local settings and adapt the database URL
 
 	cp sites/default/example.settings.local.php sites/default/settings.local.php
 
-Then, install Drush 8, and re-install the site.
+Then, [install Drush 8](http://x-team.com/2015/02/install-drush-8-drupal-8-without-throwing-away-drush-6-7/), and re-install the site.
 
 	drush8 site-install
 
