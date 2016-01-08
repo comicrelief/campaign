@@ -84,7 +84,7 @@ class TwigTransTokenParser extends \Twig_TokenParser {
    *
    * @param \Twig_Node $body
    *   The expression to check.
-   * @param int $lineno
+   * @param integer $lineno
    *   The source line.
    *
    * @throws \Twig_Error_Syntax

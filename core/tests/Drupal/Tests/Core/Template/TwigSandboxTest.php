@@ -7,7 +7,6 @@
 
 namespace Drupal\Tests\Core\Template;
 
-use Drupal\Core\Template\Attribute;
 use Drupal\Core\Template\TwigSandboxPolicy;
 use Drupal\Core\Template\Loader\StringLoader;
 use Drupal\Tests\UnitTestCase;
@@ -63,13 +62,6 @@ class TwigSandboxTest extends UnitTestCase {
       ['{{ entity.save }}'],
       ['{{ entity.create }}'],
     ];
-  }
-
-  /**
-   * Tests that white listed classes can be extended.
-   */
-  public function testExtendedClass() {
-    $this->twig->render('{{ attribute.addClass("kitten") }}', ['attribute' => new TestAttribute()]);
   }
 
   /**
@@ -141,5 +133,3 @@ class TwigSandboxTest extends UnitTestCase {
   }
 
 }
-
-class TestAttribute extends Attribute {}

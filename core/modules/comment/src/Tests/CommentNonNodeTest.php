@@ -240,7 +240,7 @@ class CommentNonNodeTest extends WebTestBase {
    * @param string $subject
    *   Comment subject to find.
    *
-   * @return int
+   * @return integer
    *   Comment ID.
    */
   function getUnapprovedComment($subject) {

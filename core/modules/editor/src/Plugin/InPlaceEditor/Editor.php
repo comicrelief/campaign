@@ -59,11 +59,6 @@ class Editor extends PluginBase implements InPlaceEditorInterface {
 
   /**
    * Returns whether the text format has transformation filters.
-   *
-   * @param int $format_id
-   *   A text format ID.
-   *
-   * @return bool
    */
   protected function textFormatHasTransformationFilters($format_id) {
     $format = entity_load('filter_format', $format_id);

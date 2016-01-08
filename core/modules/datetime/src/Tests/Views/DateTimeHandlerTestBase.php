@@ -40,7 +40,7 @@ abstract class DateTimeHandlerTestBase extends HandlerTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  public function setUp() {
     parent::setUp();
 
     // Add a date field to page nodes.

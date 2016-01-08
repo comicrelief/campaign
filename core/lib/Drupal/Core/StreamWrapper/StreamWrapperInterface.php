@@ -66,10 +66,8 @@ interface StreamWrapperInterface extends PhpStreamWrapperInterface {
    */
 
   /**
-   * Defines the stream wrapper bit flag for a hidden file.
-   *
-   * This is not visible in the UI or accessible via web, but readable and
-   * writable; for instance, the temporary directory for file uploads.
+   * Not visible in the UI or accessible via web, but readable and writable.
+   * E.g. the temporary directory for uploads.
    */
   const HIDDEN = 0x000C;
 

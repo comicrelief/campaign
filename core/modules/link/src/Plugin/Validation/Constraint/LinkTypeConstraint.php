@@ -30,7 +30,7 @@ class LinkTypeConstraint extends Constraint implements ConstraintValidatorInterf
   protected $context;
 
   /**
-   * {@inheritdoc}
+   * {@inheritDoc}
    */
   public function initialize(ExecutionContextInterface $context) {
     $this->context = $context;

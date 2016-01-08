@@ -145,7 +145,7 @@ class EntityFieldManagerTest extends UnitTestCase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  public function setUp() {
     parent::setUp();
 
     $this->container = $this->prophesize(ContainerInterface::class);

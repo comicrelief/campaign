@@ -163,7 +163,6 @@ class ConfigEntityTypeTest extends UnitTestCase {
         'status' => 'status',
         'dependencies' => 'dependencies',
         'third_party_settings' => 'third_party_settings',
-        '_core' => '_core',
         'id' => 'id',
         'custom_property' => 'customProperty',
       ],

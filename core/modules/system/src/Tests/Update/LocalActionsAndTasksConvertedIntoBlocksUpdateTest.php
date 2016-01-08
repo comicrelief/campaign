@@ -31,7 +31,7 @@ class LocalActionsAndTasksConvertedIntoBlocksUpdateTest extends UpdatePathTestBa
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  public function setUp() {
     parent::setUp();
     /** @var \Drupal\Core\Extension\ThemeHandlerInterface $theme_handler */
     $theme_handler = \Drupal::service('theme_handler');

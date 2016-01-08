@@ -13,9 +13,8 @@ use Symfony\Component\HttpFoundation\Request;
  * Restrict authentication methods to a subset of the site.
  *
  * Some authentication methods should not be available throughout a whole site.
- * For instance, there are good reasons to restrict insecure methods like HTTP
- * basic authentication or an URL token authentication method to API-only
- * routes.
+ * E.g., there are good reasons to restrict insecure methods like HTTP basic
+ * auth or an URL token authentication method to API-only routes.
  */
 interface AuthenticationProviderFilterInterface {
 

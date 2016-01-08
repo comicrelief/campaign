@@ -45,9 +45,7 @@ class MigrateExecutableMemoryExceededTest extends MigrateTestCase {
   );
 
   /**
-   * The php.ini memory_limit value.
-   *
-   * @var int
+   * php.init memory_limit value.
    */
   protected $memoryLimit = 10000000;
 
@@ -70,13 +68,12 @@ class MigrateExecutableMemoryExceededTest extends MigrateTestCase {
    *   The second message to assert.
    * @param bool $memory_exceeded
    *   Whether to test the memory exceeded case.
-   * @param int|null $memory_usage_first
-   *   (optional) The first memory usage value. Defaults to NULL.
-   * @param int|null $memory_usage_second
+   * @param int $memory_usage_first
+   *   (optional) The first memory usage value.
+   * @param int $memory_usage_second
    *   (optional) The fake amount of memory usage reported after memory reclaim.
-   *   Defaults to NULL.
-   * @param int|null $memory_limit
-   *   (optional) The memory limit. Defaults to NULL.
+   * @param int $memory_limit
+   *   (optional) The memory limit.
    */
   protected function runMemoryExceededTest($message, $memory_exceeded, $memory_usage_first = NULL, $memory_usage_second = NULL, $memory_limit = NULL) {
     $this->executable->setMemoryLimit($memory_limit ?: $this->memoryLimit);

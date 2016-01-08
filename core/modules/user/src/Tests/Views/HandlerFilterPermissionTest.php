@@ -74,6 +74,7 @@ class HandlerFilterPermissionTest extends UserKernelTestBase {
 
     $view->initDisplay();
     $view->initHandlers();
+    $view->filter['permission']->getValueOptions();
 
     // Test the value options.
     $value_options = $view->filter['permission']->getValueOptions();

@@ -33,7 +33,7 @@ class PsrResponseSubscriberTest extends UnitTestCase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  public function setUp() {
     $factory = $this->getMock('Symfony\Bridge\PsrHttpMessage\HttpFoundationFactoryInterface', [], [], '', NULL);
     $factory
       ->expects($this->any())

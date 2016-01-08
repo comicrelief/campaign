@@ -39,7 +39,7 @@ class TaxonomyTermFilterDepthTest extends TaxonomyTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  public function setUp() {
     parent::setUp();
 
     // Create a hierarchy 3 deep. Note the parent setup function creates two
@@ -118,9 +118,9 @@ class TaxonomyTermFilterDepthTest extends TaxonomyTestBase {
   /**
    * Changes the tid filter to given term and depth.
    *
-   * @param int $tid
+   * @param integer $tid
    *   The term ID to filter on.
-   * @param int $depth
+   * @param integer $depth
    *   The depth to search.
    * @param array $expected
    *   The expected views result.

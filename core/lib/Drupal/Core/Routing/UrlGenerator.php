@@ -432,7 +432,7 @@ class UrlGenerator implements UrlGeneratorInterface {
   }
 
   /**
-   * {@inheritdoc}
+   * {@inheritDoc}
    */
   public function supports($name) {
     // Support a route object and any string as route name.
@@ -440,7 +440,7 @@ class UrlGenerator implements UrlGeneratorInterface {
   }
 
   /**
-   * {@inheritdoc}
+   * {@inheritDoc}
    */
   public function getRouteDebugMessage($name, array $parameters = array()) {
     if (is_scalar($name)) {

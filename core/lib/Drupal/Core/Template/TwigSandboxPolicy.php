@@ -81,10 +81,8 @@ class TwigSandboxPolicy implements \Twig_Sandbox_SecurityPolicyInterface {
    * {@inheritdoc}
    */
   public function checkMethodAllowed($obj, $method) {
-    foreach ($this->whitelisted_classes as $class => $key) {
-      if ($obj instanceof $class) {
-        return TRUE;
-      }
+    if (isset($this->whitelisted_classes[get_class($obj)])) {
+      return TRUE;
     }
 
     // Return quickly for an exact match of the method name.

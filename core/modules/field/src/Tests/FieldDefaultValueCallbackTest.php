@@ -35,7 +35,7 @@ class FieldDefaultValueCallbackTest extends WebTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  public function setUp() {
     parent::setUp();
 
     $this->fieldName = 'field_test';

@@ -32,7 +32,7 @@ class WriteSafeSessionHandlerTest extends UnitTestCase {
    */
   protected $sessionHandler;
 
-  protected function setUp() {
+  public function setUp() {
     $this->wrappedSessionHandler = $this->getMock('SessionHandlerInterface');
     $this->sessionHandler = new WriteSafeSessionHandler($this->wrappedSessionHandler);
   }

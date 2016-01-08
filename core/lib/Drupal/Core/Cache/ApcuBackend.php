@@ -60,7 +60,7 @@ class ApcuBackend implements CacheBackendInterface {
   }
 
   /**
-   * Prepends the APCu user variable prefix for this bin to a cache item ID.
+   * Prepends the APC user variable prefix for this bin to a cache item ID.
    *
    * @param string $cid
    *   The cache item ID to prefix.
@@ -76,7 +76,7 @@ class ApcuBackend implements CacheBackendInterface {
    * {@inheritdoc}
    */
   public function get($cid, $allow_invalid = FALSE) {
-    $cache = apcu_fetch($this->getApcuKey($cid));
+    $cache = apc_fetch($this->getApcuKey($cid));
     return $this->prepareItem($cache, $allow_invalid);
   }
 
@@ -90,7 +90,7 @@ class ApcuBackend implements CacheBackendInterface {
       $map[$this->getApcuKey($cid)] = $cid;
     }
 
-    $result = apcu_fetch(array_keys($map));
+    $result = apc_fetch(array_keys($map));
     $cache = array();
     if ($result) {
       foreach ($result as $key => $item) {
@@ -112,18 +112,18 @@ class ApcuBackend implements CacheBackendInterface {
    * APCu is a memory cache, shared across all server processes. To prevent
    * cache item clashes with other applications/installations, every cache item
    * is prefixed with a unique string for this site. Therefore, functions like
-   * apcu_clear_cache() cannot be used, and instead, a list of all cache items
+   * apc_clear_cache() cannot be used, and instead, a list of all cache items
    * belonging to this application need to be retrieved through this method
    * instead.
    *
    * @param string $prefix
    *   (optional) A cache ID prefix to limit the result to.
    *
-   * @return \APCUIterator
-   *   An APCUIterator containing matched items.
+   * @return \APCIterator
+   *   An APCIterator containing matched items.
    */
   protected function getAll($prefix = '') {
-    return $this->getIterator('/^' . preg_quote($this->getApcuKey($prefix), '/') . '/');
+    return new \APCIterator('user', '/^' . preg_quote($this->getApcuKey($prefix), '/') . '/');
   }
 
   /**
@@ -174,12 +174,12 @@ class ApcuBackend implements CacheBackendInterface {
     $cache->expire = $expire;
     $cache->tags = implode(' ', $tags);
     $cache->checksum = $this->checksumProvider->getCurrentChecksum($tags);
-    // APCu serializes/unserializes any structure itself.
+    // APC serializes/unserializes any structure itself.
     $cache->serialized = 0;
     $cache->data = $data;
 
     // Expiration is handled by our own prepareItem(), not APCu.
-    apcu_store($this->getApcuKey($cid), $cache);
+    apc_store($this->getApcuKey($cid), $cache);
   }
 
   /**
@@ -195,35 +195,35 @@ class ApcuBackend implements CacheBackendInterface {
    * {@inheritdoc}
    */
   public function delete($cid) {
-    apcu_delete($this->getApcuKey($cid));
+    apc_delete($this->getApcuKey($cid));
   }
 
   /**
    * {@inheritdoc}
    */
   public function deleteMultiple(array $cids) {
-    apcu_delete(array_map(array($this, 'getApcuKey'), $cids));
+    apc_delete(array_map(array($this, 'getApcuKey'), $cids));
   }
 
   /**
    * {@inheritdoc}
    */
   public function deleteAll() {
-    apcu_delete($this->getIterator('/^' . preg_quote($this->binPrefix, '/') . '/'));
+    apc_delete(new \APCIterator('user', '/^' . preg_quote($this->binPrefix, '/') . '/'));
   }
 
   /**
    * {@inheritdoc}
    */
   public function garbageCollection() {
-    // APCu performs garbage collection automatically.
+    // APC performs garbage collection automatically.
   }
 
   /**
    * {@inheritdoc}
    */
   public function removeBin() {
-    apcu_delete($this->getIterator('/^' . preg_quote($this->binPrefix, '/') . '/'));
+    apc_delete(new \APCIterator('user', '/^' . preg_quote($this->binPrefix, '/') . '/'));
   }
 
   /**
@@ -250,27 +250,6 @@ class ApcuBackend implements CacheBackendInterface {
       $cid = str_replace($this->binPrefix, '', $data['key']);
       $this->set($cid, $data['value'], REQUEST_TIME - 1);
     }
-  }
-
-  /**
-   * Instantiates and returns the APCUIterator class.
-   *
-   * @param mixed $search
-   *   A PCRE regular expression that matches against APC key names, either as a
-   *   string for a single regular expression, or as an array of regular
-   *   expressions. Or, optionally pass in NULL to skip the search.
-   * @param int $format
-   *   The desired format, as configured with one or more of the APC_ITER_*
-   *   constants.
-   * @param int $chunk_size
-   *   The chunk size. Must be a value greater than 0. The default value is 100.
-   * @param int $list
-   *   The type to list. Either pass in APC_LIST_ACTIVE or APC_LIST_DELETED.
-   *
-   * @return \APCUIterator
-   */
-  protected function getIterator($search = NULL, $format = APC_ITER_ALL, $chunk_size = 100, $list = APC_LIST_ACTIVE) {
-    return new \APCUIterator($search, $format, $chunk_size, $list);
   }
 
 }

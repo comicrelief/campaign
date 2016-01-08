@@ -49,7 +49,7 @@ class AccessAwareRouterTest extends UnitTestCase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  public function setUp() {
     parent::setUp();
     $this->route = new Route('test');
     $this->accessManager = $this->getMock('Drupal\Core\Access\AccessManagerInterface');

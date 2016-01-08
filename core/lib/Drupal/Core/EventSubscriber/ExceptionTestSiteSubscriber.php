@@ -23,7 +23,7 @@ class ExceptionTestSiteSubscriber extends HttpExceptionSubscriberBase {
   }
 
   /**
-   * {@inheritdoc}
+   * {@inheritDoc}
    */
   protected function getHandledFormats() {
     return ['html'];

@@ -134,9 +134,6 @@ abstract class StylePluginBase extends PluginBase {
 
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function destroy() {
     parent::destroy();
 
@@ -258,9 +255,6 @@ abstract class StylePluginBase extends PluginBase {
     return !empty($this->definition['even empty']);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   protected function defineOptions() {
     $options = parent::defineOptions();
     $options['grouping'] = array('default' => array());
@@ -273,9 +267,6 @@ abstract class StylePluginBase extends PluginBase {
     return $options;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function buildOptionsForm(&$form, FormStateInterface $form_state) {
     parent::buildOptionsForm($form, $form_state);
     // Only fields-based views can handle grouping.  Style plugins can also exclude
@@ -367,9 +358,6 @@ abstract class StylePluginBase extends PluginBase {
     }
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function validateOptionsForm(&$form, FormStateInterface $form_state) {
     // Don't run validation on style plugins without the grouping setting.
     if ($form_state->hasValue(array('style_options', 'grouping'))) {
@@ -795,9 +783,6 @@ abstract class StylePluginBase extends PluginBase {
     return $value;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function validate() {
     $errors = parent::validate();
 
@@ -816,9 +801,6 @@ abstract class StylePluginBase extends PluginBase {
     return $errors;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function query() {
     parent::query();
     if (isset($this->view->rowPlugin)) {

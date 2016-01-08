@@ -89,12 +89,7 @@ class TaxonomyIndexTid extends ManyToOne {
 
   public function hasExtraOptions() { return TRUE; }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function getValueOptions() {
-    return $this->valueOptions;
-  }
+  public function getValueOptions() { /* don't overwrite the value options */ }
 
   protected function defineOptions() {
     $options = parent::defineOptions();
@@ -258,9 +253,6 @@ class TaxonomyIndexTid extends ManyToOne {
     if (!$form_state->get('exposed')) {
       // Retain the helper option
       $this->helper->buildOptionsForm($form, $form_state);
-
-      // Show help text if not exposed to end users.
-      $form['value']['#description'] = t('Leave blank for all. Otherwise, the first selected term will be the default instead of "Any".');
     }
   }
 

@@ -7,12 +7,15 @@
 
 namespace Drupal\migrate\Plugin\migrate\destination;
 
+use Drupal\Component\Utility\Random;
+use Drupal\Component\Utility\Unicode;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityManagerInterface;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Field\FieldTypePluginManagerInterface;
 use Drupal\Core\TypedData\TypedDataInterface;
+use Drupal\link\LinkItemInterface;
 use Drupal\migrate\Entity\MigrationInterface;
 use Drupal\migrate\MigrateException;
 use Drupal\migrate\Plugin\MigrateIdMapInterface;
@@ -94,15 +97,15 @@ class EntityContentBase extends Entity {
   }
 
   /**
-   * Saves the entity.
+   * Save the entity.
    *
    * @param \Drupal\Core\Entity\ContentEntityInterface $entity
    *   The content entity.
    * @param array $old_destination_id_values
-   *   (optional) An array of destination ID values. Defaults to an empty array.
+   *   An array of destination id values.
    *
    * @return array
-   *   An array containing the entity ID.
+   *   An array containing the entity id.
    */
   protected function save(ContentEntityInterface $entity, array $old_destination_id_values = array()) {
     $entity->save();
@@ -119,7 +122,7 @@ class EntityContentBase extends Entity {
   }
 
   /**
-   * Updates an entity with the new values from row.
+   * Update an entity with the new values from row.
    *
    * @param \Drupal\Core\Entity\EntityInterface $entity
    *   The entity to update.
@@ -149,7 +152,7 @@ class EntityContentBase extends Entity {
   }
 
   /**
-   * Populates as much of the stub row as possible.
+   * Do as much population of the stub row as we can.
    *
    * @param \Drupal\migrate\Row $row
    *   The row of data.
@@ -182,6 +185,7 @@ class EntityContentBase extends Entity {
           if (is_null($values)) {
             // Handle failure to generate a sample value.
             throw new MigrateException('Stubbing failed, unable to generate value for field ' . $field_name);
+            break;
           }
         }
 

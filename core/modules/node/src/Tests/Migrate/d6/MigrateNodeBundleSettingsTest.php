@@ -21,7 +21,7 @@ class MigrateNodeBundleSettingsTest extends MigrateDrupal6TestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  public function setUp() {
     parent::setUp();
     $this->installConfig(['node']);
     $this->executeMigration('d6_node_type');

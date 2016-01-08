@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 class TestTaskWithUserInput extends LocalTaskDefault {
 
   /**
-   * {@inheritdoc}
+   * @inheritDoc
    */
   public function getTitle(Request $request = NULL) {
     return "<script>alert('Welcome to the jungle!')</script>";

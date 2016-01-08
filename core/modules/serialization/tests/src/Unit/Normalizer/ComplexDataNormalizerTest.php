@@ -36,7 +36,7 @@ class ComplexDataNormalizerTest extends UnitTestCase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  public function setUp() {
     $this->normalizer = new ComplexDataNormalizer();
   }
 

@@ -242,11 +242,8 @@ class Field extends FieldPluginBase implements CacheableDependencyInterface, Mul
 
       // Go through the list and determine the actual column name from field api.
       $fields = array();
-      $table_mapping = $this->getTableMapping();
-      $field_definition = $this->getFieldStorageDefinition();
-
       foreach ($options as $column) {
-        $fields[$column] = $table_mapping->getFieldColumnName($field_definition, $column);
+        $fields[$column] = $this->getTableMapping()->getFieldColumnName($this->getFieldStorageDefinition(), $column);
       }
 
       $this->group_fields = $fields;

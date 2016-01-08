@@ -11,6 +11,7 @@ use Drupal\migrate\ProcessPluginBase;
 use Drupal\migrate\MigrateExecutableInterface;
 use Drupal\migrate\Row;
 
+
 /**
  * This plugin sets missing values on the destination.
  *
@@ -29,5 +30,4 @@ class DefaultValue extends ProcessPluginBase {
     }
     return $value ?: $this->configuration['default_value'];
   }
-
 }

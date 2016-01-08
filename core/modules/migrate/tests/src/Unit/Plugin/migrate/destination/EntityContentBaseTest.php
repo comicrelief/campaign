@@ -43,7 +43,7 @@ class EntityContentBaseTest extends UnitTestCase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  public function setUp() {
     parent::setUp();
 
     $this->migration = $this->prophesize(MigrationInterface::class);

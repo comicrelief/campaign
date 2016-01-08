@@ -10,7 +10,6 @@ namespace Drupal\Core\Entity\Element;
 use Drupal\Component\Utility\Crypt;
 use Drupal\Component\Utility\Tags;
 use Drupal\Core\Entity\EntityInterface;
-use Drupal\Core\Entity\EntityReferenceSelection\SelectionInterface;
 use Drupal\Core\Entity\EntityReferenceSelection\SelectionWithAutocreateInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element\Textfield;
@@ -147,7 +146,6 @@ class EntityAutocomplete extends Textfield {
         'handler' => $element['#selection_handler'],
         'handler_settings' => $element['#selection_settings'],
       );
-      /** @var /Drupal\Core\Entity\EntityReferenceSelection\SelectionInterface $handler */
       $handler = \Drupal::service('plugin.manager.entity_reference_selection')->getInstance($options);
       $autocreate = (bool) $element['#autocreate'] && $handler instanceof SelectionWithAutocreateInterface;
 
@@ -166,7 +164,6 @@ class EntityAutocomplete extends Textfield {
           );
         }
         elseif ($autocreate) {
-          /** @var \Drupal\Core\Entity\EntityReferenceSelection\SelectionWithAutocreateInterface $handler */
           // Auto-create item. See an example of how this is handled in
           // \Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem::presave().
           $value[] = array(
@@ -214,7 +211,6 @@ class EntityAutocomplete extends Textfield {
           }
 
           foreach ($invalid_new_entities as $entity) {
-            /** @var \Drupal\Core\Entity\EntityInterface $entity */
             $form_state->setError($element, t('This entity (%type: %label) cannot be referenced.', array('%type' => $element['#target_type'], '%label' => $entity->label())));
           }
         }
@@ -237,8 +233,6 @@ class EntityAutocomplete extends Textfield {
    * The method will return an entity ID if one single entity unambuguously
    * matches the incoming input, and sill assign form errors otherwise.
    *
-   * @param \Drupal\Core\Entity\EntityReferenceSelection\SelectionInterface $handler
-   *   Entity reference selection plugin.
    * @param string $input
    *   Single string from autocomplete element.
    * @param array $element
@@ -249,10 +243,10 @@ class EntityAutocomplete extends Textfield {
    *   Whether to trigger a form error if an element from $input (eg. an entity)
    *   is not found.
    *
-   * @return int|null
+   * @return integer|null
    *   Value of a matching entity ID, or NULL if none.
    */
-  protected static function matchEntityByTitle(SelectionInterface $handler, $input, array &$element, FormStateInterface $form_state, $strict) {
+  protected static function matchEntityByTitle($handler, $input, &$element, FormStateInterface $form_state, $strict) {
     $entities_by_bundle = $handler->getReferenceableEntities($input, '=', 6);
     $entities = array_reduce($entities_by_bundle, function ($flattened, $bundle_entities) {
       return $flattened + $bundle_entities;

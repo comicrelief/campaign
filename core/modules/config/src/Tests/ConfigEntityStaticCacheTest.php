@@ -41,7 +41,7 @@ class ConfigEntityStaticCacheTest extends KernelTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  public function setUp() {
     parent::setUp();
     $this->entityTypeId = 'config_test';
     $this->entityId = 'test_1';

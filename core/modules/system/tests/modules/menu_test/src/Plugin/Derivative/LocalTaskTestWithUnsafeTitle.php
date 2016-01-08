@@ -17,7 +17,7 @@ use Drupal\Component\Plugin\Derivative\DeriverBase;
 class LocalTaskTestWithUnsafeTitle extends DeriverBase {
 
   /**
-   * {@inheritdoc}
+   * @inheritDoc
    */
   public function getDerivativeDefinitions($base_plugin_definition) {
     $this->derivatives['unsafe'] = [

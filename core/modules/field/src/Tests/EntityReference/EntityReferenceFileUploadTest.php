@@ -36,7 +36,7 @@ class EntityReferenceFileUploadTest extends WebTestBase {
   /**
    * Node id.
    *
-   * @var int
+   * @var integer
    */
   protected $nodeId;
 

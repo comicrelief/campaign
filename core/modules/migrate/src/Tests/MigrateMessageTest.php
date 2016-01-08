@@ -16,7 +16,7 @@ use Drupal\migrate\MigrateMessageInterface;
 use Drupal\simpletest\KernelTestBase;
 
 /**
- * Tests whether idmap messages are sent to message interface when requested.
+ * Test whether idmap messages are sent to the message interface when requested.
  *
  * @group migrate
  */
@@ -46,12 +46,12 @@ class MigrateMessageTest extends KernelTestBase implements MigrateMessageInterfa
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  public function setUp() {
     parent::setUp();
 
     $this->installConfig(['system']);
 
-    // A simple migration, which will generate a message to the ID map because
+    // A simple migration, which will generate a message to the id map because
     // the concat plugin throws an exception if its source is not an array.
     $config = [
       'id' => 'sample_data',

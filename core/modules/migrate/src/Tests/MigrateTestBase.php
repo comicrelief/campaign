@@ -16,7 +16,7 @@ use Drupal\migrate\Row;
 use Drupal\simpletest\KernelTestBase;
 
 /**
- * Creates abstract base class for migration tests.
+ * Base class for migration tests.
  */
 abstract class MigrateTestBase extends KernelTestBase implements MigrateMessageInterface {
 
@@ -123,9 +123,9 @@ abstract class MigrateTestBase extends KernelTestBase implements MigrateMessageI
    * Prepare any dependent migrations.
    *
    * @param array $id_mappings
-   *   A list of ID mappings keyed by migration IDs. Each ID mapping is a list
-   *   of two arrays, the first are source IDs and the second are destination
-   *   IDs.
+   *   A list of id mappings keyed by migration ids. Each id mapping is a list
+   *   of two arrays, the first are source ids and the second are destination
+   *   ids.
    */
   protected function prepareMigrations(array $id_mappings) {
     foreach ($id_mappings as $migration_id => $data) {
@@ -146,7 +146,7 @@ abstract class MigrateTestBase extends KernelTestBase implements MigrateMessageI
    * Executes a single migration.
    *
    * @param string|\Drupal\migrate\Entity\MigrationInterface $migration
-   *   The migration to execute, or its ID.
+   *  The migration to execute, or its ID.
    */
   protected function executeMigration($migration) {
     if (is_string($migration)) {
@@ -200,9 +200,8 @@ abstract class MigrateTestBase extends KernelTestBase implements MigrateMessageI
   }
 
   /**
-   * Records a failure in the map table of a specific migration.
-   *
-   * This is done in order to test scenarios which require a failed row.
+   * Records a failure in the map table of a specific migration in order to
+   * test scenarios which require a failed row.
    *
    * @param string|\Drupal\migrate\Entity\MigrationInterface $migration
    *   The migration entity, or its ID.
@@ -210,8 +209,7 @@ abstract class MigrateTestBase extends KernelTestBase implements MigrateMessageI
    *   The raw source row which "failed".
    * @param int $status
    *   (optional) The failure status. Should be one of the
-   *   MigrateIdMapInterface::STATUS_* constants. Defaults to
-   *   MigrateIdMapInterface::STATUS_FAILED.
+   *   MigrateIdMapInterface::STATUS_* constants.
    */
   protected function mockFailure($migration, array $row, $status = MigrateIdMapInterface::STATUS_FAILED) {
     if (is_string($migration)) {

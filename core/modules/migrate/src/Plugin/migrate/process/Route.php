@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Contains \Drupal\migrate\Plugin\migrate\process\Route.
@@ -23,8 +22,6 @@ use Drupal\migrate\Row;
 class Route extends ProcessPluginBase implements ContainerFactoryPluginInterface {
 
   /**
-   * The path validator service.
-   *
    * @var \Drupal\Core\Path\PathValidatorInterface
    */
   protected $pathValidator;
@@ -32,10 +29,10 @@ class Route extends ProcessPluginBase implements ContainerFactoryPluginInterface
   /**
    * {@inheritdoc}
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, MigrationInterface $migration, PathValidatorInterface $path_validator) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, MigrationInterface $migration, PathValidatorInterface $pathValidator) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->migration = $migration;
-    $this->pathValidator = $path_validator;
+    $this->pathValidator = $pathValidator;
   }
 
   /**
@@ -63,7 +60,7 @@ class Route extends ProcessPluginBase implements ContainerFactoryPluginInterface
 
     if ($extracted) {
       if ($extracted->isExternal()) {
-        $route['route_name'] = NULL;
+        $route['route_name'] = null;
         $route['route_parameters'] = array();
         $route['options'] = $options;
         $route['url'] = $extracted->getUri();
@@ -86,7 +83,7 @@ class Route extends ProcessPluginBase implements ContainerFactoryPluginInterface
           unset($route['options']['query']);
         }
         $route['options'] = $route['options'] + $options;
-        $route['url'] = NULL;
+        $route['url'] = null;
       }
     }
 
@@ -94,3 +91,4 @@ class Route extends ProcessPluginBase implements ContainerFactoryPluginInterface
   }
 
 }
+

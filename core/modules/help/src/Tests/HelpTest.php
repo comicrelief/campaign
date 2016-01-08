@@ -86,8 +86,8 @@ class HelpTest extends WebTestBase {
   /**
    * Verifies the logged in user has access to the various help nodes.
    *
-   * @param int $response
-   *   (optional) An HTTP response code. Defaults to 200.
+   * @param integer $response
+   *   An HTTP response code.
    */
   protected function verifyHelp($response = 200) {
     $this->drupalGet('admin/index');

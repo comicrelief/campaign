@@ -17,7 +17,7 @@ abstract class StringBase implements StringInterface {
   /**
    * The string identifier.
    *
-   * @var int
+   * @var integer
    */
   public $lid;
 

@@ -49,7 +49,7 @@ class ConditionManager extends DefaultPluginManager implements ExecutableManager
   }
 
   /**
-   * {@inheritdoc}
+   * Override of Drupal\Component\Plugin\PluginManagerBase::createInstance().
    */
   public function createInstance($plugin_id, array $configuration = array()) {
     $plugin = $this->getFactory()->createInstance($plugin_id, $configuration);

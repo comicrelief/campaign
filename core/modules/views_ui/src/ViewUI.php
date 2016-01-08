@@ -45,11 +45,25 @@ class ViewUI implements ViewEntityInterface {
   public $changed_display;
 
   /**
-   * How long the view takes to render in microseconds.
+   * How long the view takes to build.
    *
-   * @var float
+   * @var int
+   */
+  public $build_time;
+
+  /**
+   * How long the view takes to render.
+   *
+   * @var int
    */
   public $render_time;
+
+  /**
+   * How long the view takes to execute.
+   *
+   * @var int
+   */
+  public $execute_time;
 
   /**
    * If this view is locked for editing.
@@ -622,15 +636,12 @@ class ViewUI implements ViewEntityInterface {
         $this->endQueryCapture();
       }
 
-      $this->render_time = Timer::stop('entity.view.preview_form')['time'];
+      $this->render_time = Timer::stop('entity.view.preview_form');
 
       views_ui_contextual_links_suppress_pop();
 
       // Prepare the query information and statistics to show either above or
       // below the view preview.
-      // Initialise the empty rows arrays so we can safely merge them later.
-      $rows['query'] = [];
-      $rows['statistics'] = [];
       if ($show_info || $show_query || $show_stats) {
         // Get information from the preview for display.
         if (!empty($executable->build_info['query'])) {
@@ -758,7 +769,7 @@ class ViewUI implements ViewEntityInterface {
                   '#template' => "<strong>{% trans 'View render time' %}</strong>",
                 ),
               ),
-              t('@time ms', array('@time' => intval($this->render_time * 100) / 100)),
+              t('@time ms', array('@time' => intval($executable->render_time * 100000) / 100)),
             );
           }
           \Drupal::moduleHandler()->alter('views_preview_info', $rows, $executable);
@@ -807,7 +818,7 @@ class ViewUI implements ViewEntityInterface {
           drupal_set_message($error, 'error');
         }
       }
-      $preview = ['#markup' => t('Unable to preview due to validation errors.')];
+      $preview = t('Unable to preview due to validation errors.');
     }
 
     // Assemble the preview, the query info, and the query statistics in the
@@ -816,16 +827,26 @@ class ViewUI implements ViewEntityInterface {
       '#type' => 'table',
       '#prefix' => '<div class="views-query-info">',
       '#suffix' => '</div>',
-      '#rows' => array_merge($rows['query'], $rows['statistics']),
     );
+    if ($show_location === 'above' || $show_location === 'below') {
+      if ($combined) {
+        $table['#rows'] = array_merge($rows['query'], $rows['statistics']);
+      }
+      else {
+        $table['#rows'] = $rows['query'];
+      }
+    }
+    elseif ($show_stats === 'above' || $show_stats === 'below') {
+      $table['#rows'] = $rows['statistics'];
+    }
 
-    if ($show_location == 'above') {
+    if ($show_location === 'above' || $show_stats === 'above') {
       $output = [
         'table' => $table,
         'preview' => $preview,
       ];
     }
-    else {
+    elseif ($show_location === 'below' || $show_stats === 'below') {
       $output = [
         'preview' => $preview,
         'table' => $table,

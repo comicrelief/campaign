@@ -25,7 +25,7 @@ use Symfony\Component\EventDispatcher\Tests\TestEventListener;
  *
  * @see https://github.com/symfony/symfony/pull/12521
  *
- * @group EventDispatcher
+ * @group Symfony
  */
 class ContainerAwareEventDispatcherTest extends AbstractEventDispatcherTest
 {

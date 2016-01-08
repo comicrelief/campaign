@@ -111,7 +111,7 @@ abstract class MigrateSqlSourceTestCase extends MigrateTestCase {
   }
 
   /**
-   * Tests that the source returns the same rows as expected.
+   * Test the source returns the same rows as expected.
    */
   public function testRetrieval() {
     $this->assertInstanceOf(SelectInterface::class, $this->source->query());
@@ -119,7 +119,7 @@ abstract class MigrateSqlSourceTestCase extends MigrateTestCase {
   }
 
   /**
-   * Tests that the source returns the row count expected.
+   * Test the source returns the row count expected.
    */
   public function testSourceCount() {
     $count = $this->source->count();
@@ -128,22 +128,16 @@ abstract class MigrateSqlSourceTestCase extends MigrateTestCase {
   }
 
   /**
-   * Tests the source defines a valid ID.
+   * Test the source defines a valid ID.
    */
   public function testSourceId() {
     $this->assertNotEmpty($this->source->getIds());
   }
 
   /**
-   * Gets the value on a row for a given key.
-   *
    * @param \Drupal\migrate\Row $row
-   *   The row identifier.
    * @param string $key
-   *   The key identifier.
-   *
    * @return mixed
-   *   The value on a row for a given key.
    */
   protected function getValue($row, $key) {
     return $row->getSourceProperty($key);

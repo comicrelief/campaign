@@ -17,7 +17,7 @@ use Drupal\Component\Plugin\Derivative\DeriverBase;
 class LocalActionTest extends DeriverBase {
 
   /**
-   * {@inheritdoc}
+   * @inheritDoc
    */
   public function getDerivativeDefinitions($base_plugin_definition) {
     $this->derivatives['example'] = $base_plugin_definition + [

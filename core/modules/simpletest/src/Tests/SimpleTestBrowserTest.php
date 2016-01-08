@@ -24,7 +24,7 @@ class SimpleTestBrowserTest extends WebTestBase {
    */
   public static $modules = array('simpletest', 'test_page_test');
 
-  protected function setUp() {
+  public function setUp() {
     parent::setUp();
     // Create and log in an admin user.
     $this->drupalLogin($this->drupalCreateUser(array('administer unit tests')));

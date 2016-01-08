@@ -290,7 +290,7 @@ EOS;
   }
 
   /**
-   * Tests that ThemeManager works right after loading a module.
+   * Tests that _theme() works right after loading a module.
    */
   function testEnableModulesTheme() {
     /** @var \Drupal\Core\Render\RendererInterface $renderer */
@@ -301,8 +301,7 @@ EOS;
       '#attributes' => array(),
     );
     $this->enableModules(array('system'));
-    // \Drupal\Core\Theme\ThemeManager::render() throws an exception if modules
-    // are not loaded yet.
+    // _theme() throws an exception if modules are not loaded yet.
     $this->assertTrue($renderer->renderRoot($element));
 
     $element = $original_element;

@@ -25,7 +25,7 @@ class CacheCollectorTest extends KernelTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  public function setUp() {
     parent::setUp();
     $this->installSchema('system', ['semaphore']);
   }

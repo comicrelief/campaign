@@ -12,7 +12,7 @@ namespace Drupal\views\Plugin\views\area;
  *
  * @ingroup views_area_handlers
  *
- * @ViewsArea("messages")
+ * @PluginID("messages")
  */
 class Messages extends AreaPluginBase {
 

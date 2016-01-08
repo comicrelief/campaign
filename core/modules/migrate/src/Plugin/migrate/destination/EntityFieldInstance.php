@@ -8,8 +8,6 @@
 namespace Drupal\migrate\Plugin\migrate\destination;
 
 /**
- * Provides entity field instance plugin.
- *
  * @MigrateDestination(
  *   id = "entity:field_config"
  * )

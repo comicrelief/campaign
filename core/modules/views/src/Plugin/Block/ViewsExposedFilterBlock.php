@@ -6,7 +6,6 @@
  */
 
 namespace Drupal\views\Plugin\Block;
-use Drupal\Core\Cache\Cache;
 
 /**
  * Provides a 'Views Exposed Filter' block.
@@ -22,17 +21,8 @@ class ViewsExposedFilterBlock extends ViewsBlockBase {
   /**
    * {@inheritdoc}
    */
-  public function getCacheContexts() {
-    $contexts = $this->view->display_handler->getCacheMetadata()->getCacheContexts();
-    return Cache::mergeContexts(parent::getCacheContexts(), $contexts);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public function build() {
     $output = $this->view->display_handler->viewExposedFormBlocks();
-
     // Before returning the block output, convert it to a renderable array with
     // contextual links.
     $this->addContextualLinks($output, 'exposed_filter');

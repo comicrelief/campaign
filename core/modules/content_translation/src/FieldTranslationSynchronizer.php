@@ -187,7 +187,7 @@ class FieldTranslationSynchronizer implements FieldTranslationSynchronizerInterf
    *
    * @param array $items
    *   An array of field items.
-   * @param int $delta
+   * @param integer $delta
    *   The delta identifying the item to be processed.
    * @param array $columns
    *   An array of column names to be synchronized.

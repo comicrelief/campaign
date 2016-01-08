@@ -17,7 +17,7 @@ use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 class ExceptionJsonSubscriber extends HttpExceptionSubscriberBase {
 
   /**
-   * {@inheritdoc}
+   * {@inheritDoc}
    */
   protected function getHandledFormats() {
     return ['json'];

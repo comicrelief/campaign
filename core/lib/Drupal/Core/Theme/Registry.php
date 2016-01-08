@@ -47,12 +47,12 @@ class Registry implements DestructableInterface {
    *   - name: The name of the extension the original theme hook originates
    *     from; e.g., 'node' for theme hook 'node' of Node module.
    *   - theme path: The effective \Drupal\Core\Theme\ActiveTheme::getPath()
-   *      during \Drupal\Core\Theme\ThemeManagerInterface::render(), available
-   *      as 'directory' variable in templates. For functions, it should point
-   *      to the respective theme. For templates, it should point to the
-   *      directory that contains the template.
+   *      during _theme(), available as
+   *      'directory' variable in templates. For functions, it should point to
+   *      the respective theme.For templates, it should point to the directory
+   *      that contains the template.
    *   - includes: (optional) An array of include files to load when the theme
-   *     hook is executed by \Drupal\Core\Theme\ThemeManagerInterface::render().
+   *     hook is executed by _theme().
    *   - file: (optional) A filename to add to 'includes', either prefixed with
    *     the value of 'path', or the path of the extension implementing
    *     hook_theme().
@@ -389,8 +389,7 @@ class Registry implements DestructableInterface {
    *     in hook_theme(). If there is more than one implementation and
    *     'render element' is not specified in a later one, then the previous
    *     definition is kept.
-   *   - See the @link themeable Theme system overview topic @endlink for
-   *     detailed documentation.
+   *   - 'preprocess functions': See _theme() for detailed documentation.
    * @param string $name
    *   The name of the module, theme engine, base theme engine, theme or base
    *   theme implementing hook_theme().
@@ -531,8 +530,7 @@ class Registry implements DestructableInterface {
           }
           foreach ($prefixes as $prefix) {
             // Only use non-hook-specific variable preprocessors for theming
-            // hooks implemented as templates. See the @defgroup themeable
-            // topic.
+            // hooks implemented as templates. See _theme().
             if (isset($info['template']) && function_exists($prefix . '_preprocess')) {
               $info['preprocess functions'][] = $prefix . '_preprocess';
             }
@@ -568,7 +566,7 @@ class Registry implements DestructableInterface {
             $cache[$hook]['preprocess functions'] = array();
           }
           // Only use non-hook-specific variable preprocessors for theme hooks
-          // implemented as templates. See the @defgroup themeable topic.
+          // implemented as templates. See _theme().
           if (isset($info['template']) && function_exists($name . '_preprocess')) {
             $cache[$hook]['preprocess functions'][] = $name . '_preprocess';
           }

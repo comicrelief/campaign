@@ -45,7 +45,7 @@ class MigrateImageStylesTest extends MigrateSqlSourceTestCase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  public function setUp() {
     foreach ($this->expectedResults as $k => $row) {
       foreach (array('isid', 'name', 'label') as $field) {
         $this->databaseContents['image_styles'][$k][$field] = $row[$field];

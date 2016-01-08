@@ -37,7 +37,7 @@ class EntityFileTest extends KernelTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  public function setUp() {
     parent::setUp();
     $this->destination = new TestEntityFile([]);
     $this->destination->streamWrapperManager = \Drupal::getContainer()->get('stream_wrapper_manager');

@@ -19,28 +19,28 @@ abstract class LocaleUpdateBase extends WebTestBase {
   /**
    * Timestamp for an old translation.
    *
-   * @var int
+   * @var integer
    */
   protected $timestampOld;
 
   /**
    * Timestamp for a medium aged translation.
    *
-   * @var int
+   * @var integer
    */
   protected $timestampMedium;
 
   /**
    * Timestamp for a new translation.
    *
-   * @var int
+   * @var integer
    */
   protected $timestampNew;
 
   /**
    * Timestamp for current time.
    *
-   * @var int
+   * @var integer
    */
   protected $timestampNow;
 

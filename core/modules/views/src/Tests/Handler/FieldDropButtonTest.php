@@ -32,7 +32,7 @@ class FieldDropButtonTest extends HandlerTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  public function setUp() {
     parent::setUp();
 
     $admin_user = $this->drupalCreateUser(['access content overview', 'administer nodes', 'bypass node access']);

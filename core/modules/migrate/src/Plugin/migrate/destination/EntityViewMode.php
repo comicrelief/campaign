@@ -8,8 +8,6 @@
 namespace Drupal\migrate\Plugin\migrate\destination;
 
 /**
- * Provides entity view mode destination plugin.
- *
  * @MigrateDestination(
  *   id = "entity:entity_view_mode"
  * )

@@ -24,7 +24,7 @@ class SortDateTimeTest extends DateTimeHandlerTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  public function setUp() {
     parent::setUp();
 
     // Add some basic test nodes.
@@ -33,9 +33,6 @@ class SortDateTimeTest extends DateTimeHandlerTestBase {
       '2000-10-10T00:01:00',
       '2000-10-10T00:02:00',
       '2000-10-10T00:03:00',
-      '2000-10-10T00:03:02',
-      '2000-10-10T00:03:01',
-      '2000-10-10T00:03:03',
     ];
     foreach ($dates as $date) {
       $this->nodes[] = $this->drupalCreateNode([
@@ -53,8 +50,7 @@ class SortDateTimeTest extends DateTimeHandlerTestBase {
     $field = static::$field_name . '_value';
     $view = Views::getView('test_sort_datetime');
 
-    // Set granularity to 'minute', and the secondary node ID order should
-    // define the order of nodes with the same minute.
+    // Sort order is DESC.
     $view->initHandlers();
     $view->sort[$field]->options['granularity'] = 'minute';
     $view->setDisplay('default');
@@ -62,9 +58,6 @@ class SortDateTimeTest extends DateTimeHandlerTestBase {
     $expected_result = [
       ['nid' => $this->nodes[0]->id()],
       ['nid' => $this->nodes[3]->id()],
-      ['nid' => $this->nodes[4]->id()],
-      ['nid' => $this->nodes[5]->id()],
-      ['nid' => $this->nodes[6]->id()],
       ['nid' => $this->nodes[2]->id()],
       ['nid' => $this->nodes[1]->id()],
     ];
@@ -81,9 +74,6 @@ class SortDateTimeTest extends DateTimeHandlerTestBase {
       ['nid' => $this->nodes[1]->id()],
       ['nid' => $this->nodes[2]->id()],
       ['nid' => $this->nodes[3]->id()],
-      ['nid' => $this->nodes[5]->id()],
-      ['nid' => $this->nodes[4]->id()],
-      ['nid' => $this->nodes[6]->id()],
       ['nid' => $this->nodes[0]->id()],
     ];
     $this->assertIdenticalResultset($view, $expected_result, $this->map);
@@ -101,27 +91,6 @@ class SortDateTimeTest extends DateTimeHandlerTestBase {
       ['nid' => $this->nodes[1]->id()],
       ['nid' => $this->nodes[2]->id()],
       ['nid' => $this->nodes[3]->id()],
-      ['nid' => $this->nodes[4]->id()],
-      ['nid' => $this->nodes[5]->id()],
-      ['nid' => $this->nodes[6]->id()],
-    ];
-    $this->assertIdenticalResultset($view, $expected_result, $this->map);
-    $view->destroy();
-
-    // Change granularity to 'second'.
-    $view->initHandlers();
-    $view->sort[$field]->options['granularity'] = 'second';
-    $view->sort[$field]->options['order'] = 'DESC';
-    $view->setDisplay('default');
-    $this->executeView($view);
-    $expected_result = [
-      ['nid' => $this->nodes[0]->id()],
-      ['nid' => $this->nodes[6]->id()],
-      ['nid' => $this->nodes[4]->id()],
-      ['nid' => $this->nodes[5]->id()],
-      ['nid' => $this->nodes[3]->id()],
-      ['nid' => $this->nodes[2]->id()],
-      ['nid' => $this->nodes[1]->id()],
     ];
     $this->assertIdenticalResultset($view, $expected_result, $this->map);
     $view->destroy();

@@ -5,6 +5,7 @@
  * Contains \Drupal\migrate\Plugin\migrate\process\Migration.
  */
 
+
 namespace Drupal\migrate\Plugin\migrate\process;
 
 use Drupal\Core\Entity\EntityStorageInterface;
@@ -27,15 +28,11 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class Migration extends ProcessPluginBase implements ContainerFactoryPluginInterface {
 
   /**
-   * The process plugin manager.
-   *
    * @var \Drupal\migrate\Plugin\MigratePluginManager
    */
   protected $processPluginManager;
 
   /**
-   * The entity storage manager.
-   *
    * @var \Drupal\Core\Entity\EntityStorageInterface
    */
   protected $migrationStorage;
@@ -118,7 +115,7 @@ class Migration extends ProcessPluginBase implements ContainerFactoryPluginInter
       // Only keep the process necessary to produce the destination ID.
       $process = $migration->get('process');
 
-      // We already have the source ID values but need to key them for the Row
+      // We already have the source id values but need to key them for the Row
       // constructor.
       $source_ids = $migration->getSourcePlugin()->getIds();
       $values = array();
@@ -151,7 +148,7 @@ class Migration extends ProcessPluginBase implements ContainerFactoryPluginInter
   }
 
   /**
-   * Skips the migration process entirely if the value is FALSE.
+   * Skip the migration process entirely if the value is FALSE.
    *
    * @param mixed $value
    *   The incoming value to transform.

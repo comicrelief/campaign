@@ -25,7 +25,7 @@ class DrupalSetMessageTest extends KernelTestBase {
     $this->assertEquals('A message: bar', (string) $messages['status'][0]);
   }
 
-  protected function tearDown() {
+  public function tearDown() {
     // Clear session to prevent global leakage.
     unset($_SESSION['messages']);
     parent::tearDown();

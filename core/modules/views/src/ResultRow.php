@@ -29,7 +29,7 @@ class ResultRow {
   /**
    * An incremental number which represents the row in the entire result.
    *
-   * @var int
+   * @var integer
    */
   public $index;
 

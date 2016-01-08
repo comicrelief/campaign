@@ -96,7 +96,7 @@ abstract class TestBase {
   /**
    * Incrementing identifier for verbose output filenames.
    *
-   * @var int
+   * @var integer
    */
   protected $verboseId = 0;
 

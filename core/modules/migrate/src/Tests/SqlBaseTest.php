@@ -11,14 +11,14 @@ use Drupal\migrate\Plugin\migrate\source\TestSqlBase;
 use Drupal\Core\Database\Database;
 
 /**
- * Tests the functionality of SqlBase.
+ * Test the functionality of SqlBase.
  *
  * @group migrate
  */
 class SqlBaseTest extends MigrateTestBase {
 
   /**
-   * Tests different connection types.
+   * Test different connection types.
    */
   public function testConnectionTypes() {
     $sql_base = new TestSqlBase();
@@ -34,7 +34,7 @@ class SqlBaseTest extends MigrateTestBase {
     $sql_base->setConfiguration($config);
     Database::addConnectionInfo($key, $target, Database::getConnectionInfo('default')['default']);
 
-    // Validate we have injected our custom key and target.
+    // Validate we've injected our custom key and target.
     $this->assertIdentical($sql_base->getDatabase()->getTarget(), $target);
     $this->assertIdentical($sql_base->getDatabase()->getKey(), $key);
 
@@ -62,7 +62,7 @@ class SqlBaseTest extends MigrateTestBase {
     $sql_base->setConfiguration(['database_state_key' => $database_state_key]);
     Database::addConnectionInfo($key, $target, Database::getConnectionInfo('default')['default']);
 
-    // Validate we have injected our custom key and target.
+    // Validate we've injected our custom key and target.
     $this->assertIdentical($sql_base->getDatabase()->getTarget(), $target);
     $this->assertIdentical($sql_base->getDatabase()->getKey(), $key);
 
@@ -96,14 +96,14 @@ namespace Drupal\migrate\Plugin\migrate\source;
 class TestSqlBase extends SqlBase {
 
   /**
-   * Overrides the constructor so we can create one easily.
+   * Override the constructor so we can create one easily.
    */
   public function __construct() {
     $this->state = \Drupal::state();
   }
 
   /**
-   * Gets the database without caching it.
+   * Get the database without caching it.
    */
   public function getDatabase() {
     $this->database = NULL;
@@ -111,7 +111,7 @@ class TestSqlBase extends SqlBase {
   }
 
   /**
-   * Allows us to set the configuration from a test.
+   * Allow us to set the configuration from a test.
    *
    * @param array $config
    *   The config array.

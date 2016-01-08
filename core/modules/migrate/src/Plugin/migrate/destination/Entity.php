@@ -16,15 +16,12 @@ use Drupal\migrate\Row;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Provides entity destination plugin.
- *
  * @MigrateDestination(
  *   id = "entity",
  *   deriver = "Drupal\migrate\Plugin\Derivative\MigrateEntity"
  * )
  */
 abstract class Entity extends DestinationBase implements ContainerFactoryPluginInterface, DependentPluginInterface {
-
   use DependencyTrait;
 
   /**
@@ -80,16 +77,16 @@ abstract class Entity extends DestinationBase implements ContainerFactoryPluginI
   }
 
   /**
-   * Finds the entity type from configuration or plugin ID.
+   * Finds the entity type from configuration or plugin id.
    *
    * @param string $plugin_id
-   *   The plugin ID.
+   *   The plugin id.
    *
    * @return string
    *   The entity type.
    */
   protected static function getEntityTypeId($plugin_id) {
-    // Remove "entity:".
+    // Remove "entity:"
     return substr($plugin_id, 7);
   }
 
@@ -106,10 +103,10 @@ abstract class Entity extends DestinationBase implements ContainerFactoryPluginI
    * @param \Drupal\migrate\Row $row
    *   The row object.
    * @param array $old_destination_id_values
-   *   The old destination IDs.
+   *   The old destination ids.
    *
    * @return \Drupal\Core\Entity\EntityInterface
-   *   The entity we are importing into.
+   *   The entity we're importing into.
    */
   protected function getEntity(Row $row, array $old_destination_id_values) {
     $entity_id = $old_destination_id_values ? reset($old_destination_id_values) : $this->getEntityId($row);
@@ -128,13 +125,12 @@ abstract class Entity extends DestinationBase implements ContainerFactoryPluginI
   }
 
   /**
-   * Gets the entity ID of the row.
+   * Get the entity id of the row.
    *
    * @param \Drupal\migrate\Row $row
    *   The row of data.
-   *
    * @return string
-   *   The entity ID for the row that we are importing.
+   *   The entity id for the row we're importing.
    */
   protected function getEntityId(Row $row) {
     return $row->getDestinationProperty($this->getKey('id'));

@@ -27,7 +27,7 @@ class CacheabilityMetadataConfigOverrideIntegrationTest extends WebTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  public function setUp() {
     parent::setUp();
 
     // @todo If our block does not contain any content then the cache context

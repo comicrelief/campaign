@@ -1,13 +1,13 @@
 Installation profiles define additional steps that run after the base
-installation of Drupal is completed. They may also offer additional
-functionality and change the behavior of the site.
+installation provided by Drupal core when Drupal is first installed.
 
 WHAT TO PLACE IN THIS DIRECTORY?
 --------------------------------
 
 Place downloaded and custom installation profiles in this directory.
-Note that installation profiles are generally provided as part of a Drupal
-distribution.
+Installation profiles are generally provided as part of a Drupal distribution.
+They only impact the installation of your site. They do not have any effect on
+an already running site.
 
 DOWNLOAD ADDITIONAL DISTRIBUTIONS
 ---------------------------------

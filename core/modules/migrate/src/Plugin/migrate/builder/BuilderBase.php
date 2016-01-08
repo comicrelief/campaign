@@ -12,7 +12,7 @@ use Drupal\migrate\Entity\Migration;
 use Drupal\migrate\Plugin\MigrateBuilderInterface;
 
 /**
- * Provides abstract base class for builder plugins.
+ * Base class for builder plugins.
  */
 abstract class BuilderBase extends PluginBase implements MigrateBuilderInterface {
 
@@ -22,8 +22,7 @@ abstract class BuilderBase extends PluginBase implements MigrateBuilderInterface
    * @param string $plugin_id
    *   The plugin ID.
    * @param array $configuration
-   *   (optional) Additional configuration for the plugin. Defaults to an empty
-   *   array.
+   *   (optional) Additional configuration for the plugin.
    *
    * @return \Drupal\migrate\Plugin\MigrateSourceInterface|\Drupal\migrate\Plugin\RequirementsInterface
    *   The fully initialized source plugin.

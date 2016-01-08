@@ -24,7 +24,7 @@ class UnicodeTest extends UnitTestCase {
    *
    * @covers ::check
    */
-  protected function setUp() {
+  public function setUp() {
     // Initialize unicode component.
     Unicode::check();
   }

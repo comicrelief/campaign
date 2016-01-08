@@ -26,7 +26,7 @@ class EntitySchemaTest extends EntityUnitTestBase  {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  public function setUp() {
     parent::setUp();
     $this->installSchema('user', array('users_data'));
     $this->installSchema('system', array('router'));

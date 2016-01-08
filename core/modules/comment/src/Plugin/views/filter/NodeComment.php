@@ -25,7 +25,6 @@ class NodeComment extends InOperator {
       CommentItemInterface::CLOSED => $this->t('Closed'),
       CommentItemInterface::OPEN => $this->t('Open'),
     );
-    return $this->valueOptions;
   }
 
 }

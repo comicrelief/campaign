@@ -32,7 +32,7 @@ class FilterDateTest extends DateTimeHandlerTestBase {
    *
    * Create nodes with relative dates of yesterday, today, and tomorrow.
    */
-  protected function setUp() {
+  public function setUp() {
     parent::setUp();
 
     // Set to 'today'.

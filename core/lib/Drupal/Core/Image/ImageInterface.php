@@ -86,12 +86,9 @@ interface ImageInterface {
    * @param string $operation
    *   The operation to be performed against the image.
    * @param array $arguments
-   *   (optional) An associative array of arguments to be passed to the toolkit
-   *   operation; for instance,
-   *   @code
-   *     ['width' => 50, 'height' => 100, 'upscale' => TRUE]
-   *   @endcode
-   *   Defaults to an empty array.
+   *   An associative array of arguments to be passed to the toolkit
+   *   operation, e.g. array('width' => 50, 'height' => 100,
+   *   'upscale' => TRUE).
    *
    * @return bool
    *   TRUE on success, FALSE on failure.
@@ -123,11 +120,11 @@ interface ImageInterface {
    * @param int $height
    *   The height of the new image, in pixels.
    * @param string $extension
-   *   (optional) The extension of the image file (for instance, 'png', 'gif',
-   *   etc.). Allowed values depend on the implementation of the image toolkit.
+   *   (Optional) The extension of the image file (e.g. 'png', 'gif', etc.).
+   *   Allowed values depend on the implementation of the image toolkit.
    *   Defaults to 'png'.
    * @param string $transparent_color
-   *   (optional) The hexadecimal string representing the color to be used
+   *   (Optional) The hexadecimal string representing the color to be used
    *   for transparency, needed for GIF images. Defaults to '#ffffff' (white).
    *
    * @return bool
@@ -179,8 +176,8 @@ interface ImageInterface {
    * extension.
    *
    * @param string $extension
-   *   The extension to convert to (for instance, 'jpeg' or 'png'). Allowed
-   *   values depend on the current image toolkit.
+   *   The extension to convert to (e.g. 'jpeg' or 'png'). Allowed values depend
+   *   on the current image toolkit.
    *
    * @return bool
    *   TRUE on success, FALSE on failure.
@@ -234,10 +231,10 @@ interface ImageInterface {
    *   The number of (clockwise) degrees to rotate the image.
    * @param string|null $background
    *   (optional) An hexadecimal integer specifying the background color to use
-   *   for the uncovered area of the image after the rotation; for example,
-   *   0x000000 for black, 0xff00ff for magenta, and 0xffffff for white. When
-   *   NULL (the default) is specified, for images that support transparency,
-   *   this will default to transparent; otherwise, it will default to white.
+   *   for the uncovered area of the image after the rotation. E.g. 0x000000 for
+   *   black, 0xff00ff for magenta, and 0xffffff for white. For images that
+   *   support transparency, this will default to transparent. Otherwise it will
+   *   be white.
    *
    * @return bool
    *   TRUE on success, FALSE on failure.

@@ -26,13 +26,6 @@ class ApcuBackendFactory implements CacheFactoryInterface {
   protected $checksumProvider;
 
   /**
-   * The APCU backend class to use.
-   *
-   * @var string
-   */
-  protected $backendClass;
-
-  /**
    * Constructs an ApcuBackendFactory object.
    *
    * @param string $root
@@ -45,12 +38,6 @@ class ApcuBackendFactory implements CacheFactoryInterface {
   public function __construct($root, $site_path, CacheTagsChecksumInterface $checksum_provider) {
     $this->sitePrefix = Settings::getApcuPrefix('apcu_backend', $root, $site_path);
     $this->checksumProvider = $checksum_provider;
-    if (version_compare(phpversion('apcu'), '5.0.0', '>=')) {
-      $this->backendClass = 'Drupal\Core\Cache\ApcuBackend';
-    }
-    else {
-      $this->backendClass = 'Drupal\Core\Cache\Apcu4Backend';
-    }
   }
 
   /**
@@ -63,7 +50,7 @@ class ApcuBackendFactory implements CacheFactoryInterface {
    *   The cache backend object for the specified cache bin.
    */
   public function get($bin) {
-    return new $this->backendClass($bin, $this->sitePrefix, $this->checksumProvider);
+    return new ApcuBackend($bin, $this->sitePrefix, $this->checksumProvider);
   }
 
 }

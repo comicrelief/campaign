@@ -8,8 +8,6 @@
 namespace Drupal\block_test\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
-use Drupal\Core\Session\AccountInterface;
-use Drupal\user\UserInterface;
 
 /**
  * Provides a context-aware block.
@@ -35,17 +33,6 @@ class TestContextAwareBlock extends BlockBase {
       '#suffix' => '</div>',
       '#markup' => $user ? $user->getUsername() : 'No context mapping selected.' ,
     );
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  protected function blockAccess(AccountInterface $account) {
-    if ($this->getContextValue('user') instanceof UserInterface) {
-      drupal_set_message('User context found.');
-    }
-
-    return parent::blockAccess($account);
   }
 
 }

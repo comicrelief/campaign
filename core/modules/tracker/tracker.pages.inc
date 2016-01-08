@@ -14,9 +14,6 @@ use Drupal\node\Entity\Node;
  * Queries the database for info, adds RDFa info if applicable, and generates
  * the render array that will be used to render the page.
  *
- * @param \Drupal\user\UserInterface $account
- *   (optional) The user account to track.
- *
  * @return array
  *   A renderable array.
  *

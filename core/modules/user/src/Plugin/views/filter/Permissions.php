@@ -78,7 +78,6 @@ class Permissions extends ManyToOne {
         $display_name = $this->moduleHandler->getName($provider);
         $this->valueOptions[$display_name][$perm] = Html::escape(strip_tags($perm_item['title']));
       }
-      return $this->valueOptions;
     }
     else {
       return $this->valueOptions;
