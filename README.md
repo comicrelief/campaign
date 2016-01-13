@@ -10,7 +10,7 @@ Copy over example local settings and adapt the database URL
 
 Then, [install Drush 8](http://x-team.com/2015/02/install-drush-8-drupal-8-without-throwing-away-drush-6-7/), and re-install the site.
 
-	drush8 site-install
+	drush8 si cr --account-pass="admin" -y
 
 ## How to run this on Pantheon
 
