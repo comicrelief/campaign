@@ -4,11 +4,11 @@ dependencies:
   module:
     - user
   theme:
-    - stark
-id: stark_login
-theme: stark
-region: sidebar_first
-weight: 0
+    - seven
+id: seven_login
+theme: seven
+region: content
+weight: 10
 provider: null
 plugin: user_login_block
 settings:

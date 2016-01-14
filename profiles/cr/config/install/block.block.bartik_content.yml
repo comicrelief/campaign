@@ -4,16 +4,16 @@ dependencies:
   module:
     - system
   theme:
-    - stark
-id: stark_messages
-theme: stark
-region: highlighted
+    - bartik
+id: bartik_content
+theme: bartik
+region: content
 weight: 0
 provider: null
-plugin: system_messages_block
+plugin: system_main_block
 settings:
-  id: system_messages_block
-  label: 'Status messages'
+  id: system_main_block
+  label: 'Main page content'
   provider: system
   label_display: '0'
 visibility: {  }

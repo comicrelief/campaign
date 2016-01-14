@@ -2,11 +2,11 @@ langcode: en
 status: true
 dependencies:
   theme:
-    - stark
-id: stark_page_title
-theme: stark
+    - bartik
+id: bartik_page_title
+theme: bartik
 region: content
-weight: -30
+weight: -50
 provider: null
 plugin: page_title_block
 settings:
