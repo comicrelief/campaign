@@ -4,11 +4,54 @@ description: "Build a site using Comic Relief's installation profile. It will in
 core: 8.x
 
 dependencies:
+  # Core modules
   - node
   - block
-  - dblog
+  - ckeditor
+  - config
+  - comment
+  - contextual
+  - contact
+  - menu_link_content
+  - datetime
+  - block_content
+  - quickedit
+  - editor
+  - entity_reference
+  - help
+  - image
+  - menu_ui
+  - options
+  - path
   - page_cache
+  - taxonomy
+  - search
+  - shortcut
+  - toolbar
+  - field_ui
+  - file
+  - rdf
+  - views
+  - views_ui
+  - link
+  - filter
   - dynamic_page_cache
+
+  # Contrib modules
+  # - file_entity
+  # - pathauto
+  # - twitter_block
+  # - layout_plugin
+  # - page_manager
+  # - fences
+  # - token
+  # - text_icon
+
+  # Custom modules
+  # - agov_article
+  # - agov_standard_page
+  # - agov_social_icons
+  # - agov_publication
 themes:
   - seven
   - bartik
