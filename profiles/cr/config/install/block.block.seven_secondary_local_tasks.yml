@@ -2,18 +2,18 @@ langcode: en
 status: true
 dependencies:
   theme:
-    - stark
-id: stark_local_tasks
-theme: stark
-region: content
-weight: -20
+    - seven
+id: seven_secondary_local_tasks
+theme: seven
+region: pre_content
+weight: 0
 provider: null
 plugin: local_tasks_block
 settings:
   id: local_tasks_block
-  label: Tabs
+  label: 'Secondary tabs'
   provider: core
   label_display: '0'
-  primary: true
+  primary: false
   secondary: true
 visibility: {  }

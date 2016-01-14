@@ -6,9 +6,9 @@ dependencies:
   module:
     - system
   theme:
-    - stark
-id: stark_tools
-theme: stark
+    - bartik
+id: bartik_tools
+theme: bartik
 region: sidebar_first
 weight: 0
 provider: null
