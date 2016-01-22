@@ -40,3 +40,4 @@ install:
 
   # Move into core directory for phpunits benefit
   - cd core
+  
