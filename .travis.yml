@@ -25,6 +25,8 @@ install:
   - composer global require drush/drush:dev-master
   - phpenv rehash
 
+  - rm -fr sites/default/settings.php
+
   # Create MySQL Database
   - mysql -e 'create database drupal;'
 
