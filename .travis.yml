@@ -34,7 +34,7 @@ install:
   - mysql -e 'create database drupal;'
 
   # Install drupal default profile
-  - drush --verbose site-install --db-url=mysql://root:@127.0.0.1/drupal --yes
+  - drush --verbose site-install cr --account-pass="admin" --db-url=mysql://root:@127.0.0.1/drupal --yes
 
   # Import config for our pseudo install
   #- drush --verbose config-import active --yes
