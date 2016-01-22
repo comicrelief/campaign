@@ -37,7 +37,7 @@ install:
   - drush --verbose site-install --db-url=mysql://root:@127.0.0.1/drupal --yes
 
   # Import config for our pseudo install
-  - drush --verbose config-import active --yes
+  #- drush --verbose config-import active --yes
 
   # TODO: Generate content
 
