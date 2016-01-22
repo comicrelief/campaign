@@ -45,5 +45,5 @@ install:
 
   # Move into core directory for phpunits benefit
   - cd core
-  - pwd
+  - exit 0
   
