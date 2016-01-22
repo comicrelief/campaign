@@ -12,9 +12,12 @@ mysql:
   encoding: utf8
 
 before_install:
-# possibly optional
+  # possibly optional
   - sudo apt-get update > /dev/null
   - composer self-update
+
+  # Disable sendmail
+  - echo sendmail_path=`which true` >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 
 install:
   # add composer's global bin directory to the path
@@ -42,4 +45,5 @@ install:
 
   # Move into core directory for phpunits benefit
   - cd core
+  - pwd
   
