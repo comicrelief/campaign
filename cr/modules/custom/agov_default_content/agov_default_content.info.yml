@@ -1,0 +1,74 @@
+name: aGov Default Content
+type: module
+description: 'Provide default content to demonstrate core functionality.'
+package: aGov
+core: '8.x'
+
+dependencies:
+  - default_content
+  - layout_plugin
+  - block_page_layout
+  - ctools
+  - page_manager
+  - block_content
+  - agov_article
+
+config_devel:
+  - block.block.stayuptodate
+  - block.block.copyrightmessage
+  - page_manager.page.home
+
+default_content:
+  node:
+    - c9a89616-7057-4971-8337-555e425ed782
+    - b6d6d9fd-4f28-4918-b100-ffcfb15c9374
+    - 545d7524-49ee-4855-8900-ef497f0ad593
+    - 8e339ddb-e924-44e1-8210-16c8a227c0e2
+    - 2b94cfce-5de5-4905-8c00-dd13276d1a44
+    - 78eff650-8399-4c62-b92c-445de219a47d
+    - 27500c7a-92b9-4781-a32d-451da0c24df9
+    - 8c7c5c42-f268-4677-b900-fc3217d50c0a
+    - 7ab12eff-0cb7-46a1-a000-d0e005f0096a
+    - 9b53a126-b629-4c84-9801-1e1a5c3b9540
+    - 4d9d7e43-0281-4bd4-aa00-a607cb6f1707
+    - 9f2585a4-acd8-4684-bc00-a91482e473ec
+    - 645adc10-c0ff-4858-bb3b-59585aeae43e
+    - 6eb572d1-dd76-4944-9f00-0dda6e0874d9
+    - 3b2e357b-0a96-4371-af02-02a17cc0e41f
+  file:
+    - 59674274-f1f5-4d6a-be00-fecedfde6534
+    - 0fab901d-36ba-4bfd-9b00-d6617ffc2f1f
+    - 7b5729ca-8342-442e-9c00-c0ef57285f91
+    - 39316635-6a51-483a-a64e-781c1dfa7e99
+    - 3a52100e-08d4-413e-b41d-294e8f52b0d1
+    - d6db0c2a-efff-4b20-b105-05d209d1e007
+    - 79c0f7eb-1379-4985-b203-3ea7f87e75f2
+    - 8981663d-1df2-4d90-a261-9708f0c86960
+    - 77fa6229-4619-4555-9213-194e28cc81b0
+    - 0589c569-4ede-4bc5-b100-f28d66063e94
+    - 20a48d87-0e76-4580-9609-9a4592cdd0c5
+    - 2a27f033-3977-4954-ad00-0ff59fd89e60
+    - 6f1931c9-c0cd-42d7-bb00-c3f5257e30d2
+    - 282f2467-f595-49fe-af46-700219045655
+    - 6a687c7b-0eb1-4007-ab3d-6198f8c37d19
+    - 059001a3-48e0-4892-bc00-0c7b47d131c0
+    - 42d0e2cb-2345-44e5-9100-f60a68468038
+    - 2bc29f1e-dd8c-4003-a502-2ce407dc0df6
+    - 97695ee7-7468-4c8e-a351-81ed6e291968
+    - c178a125-979c-471f-a306-6e47829bef86
+  menu_link_content:
+    - 9fbb684c-156d-49d6-b24b-755501b434e6
+    - 19f38567-4051-4682-bf00-a4f19de48a01
+  block_content:
+    - af171e09-fcb2-4d93-a94d-77dc61aab213
+    - a608987c-1b74-442b-b900-a54f40cda661
+    - fa3e8c87-7002-4c75-9e37-556fa5573f38
+    - d2519df9-3664-4911-9b00-eaeec473440c
+    - 608c6fc7-2769-4756-a300-fe79586cdb37
+    - 30a54cec-dd24-4c1c-9f61-97c1ff9e1965
+    - 2f69d5fd-a34c-412c-a514-20fe2197b501
+    - 8e22eeef-05cb-48de-a100-e23f3bf707bf
+    - c5ac2614-aaa8-43e8-9315-21e2beece358
+    - 69e9555f-f0f3-4dd6-b905-5b1efffa120f
+  user:
+    - ecf20f9d-0ea0-4229-b005-5d27e49f8515

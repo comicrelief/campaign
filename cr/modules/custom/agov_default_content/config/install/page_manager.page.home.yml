@@ -1,0 +1,200 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.quick-links
+    - views.view.latest_updates
+  enforced:
+    content:
+      - 'block_content:editorial_content:af171e09-fcb2-4d93-a94d-77dc61aab213'
+      - 'block_content:editorial_content:fa3e8c87-7002-4c75-9e37-556fa5573f38'
+      - 'block_content:icon_block:30a54cec-dd24-4c1c-9f61-97c1ff9e1965'
+      - 'block_content:icon_block:608c6fc7-2769-4756-a300-fe79586cdb37'
+      - 'block_content:icon_block:d2519df9-3664-4911-9b00-eaeec473440c'
+      - 'block_content:promotional_block:2f69d5fd-a34c-412c-a514-20fe2197b501'
+      - 'block_content:promotional_block:8e22eeef-05cb-48de-a100-e23f3bf707bf'
+      - 'block_content:promotional_block:c5ac2614-aaa8-43e8-9315-21e2beece358'
+      - 'block_content:social_block:69e9555f-f0f3-4dd6-b905-5b1efffa120f'
+  module:
+    - block_page_layout
+    - system
+    - twitter_block
+    - views
+id: home
+label: Home
+use_admin_theme: false
+path: /home
+display_variants:
+  cb22f203-85bf-4da9-b300-e95fd2ba95ed:
+    id: http_status_code
+    label: Default
+    weight: 10
+    uuid: cb22f203-85bf-4da9-b300-e95fd2ba95ed
+    status_code: 404
+  6fbc5ded-fb7d-46fd-9100-ecf7f77bd305:
+    selection_conditions: {  }
+    blocks:
+      f270e7c2-8c62-4cc4-b807-7c2238678696:
+        id: twitter_block
+        label: 'Twitter feed'
+        provider: twitter_block
+        label_display: visible
+        widget_id: '360632154172030979'
+        theme: ''
+        link_color: ''
+        width: ''
+        height: ''
+        chrome:
+          noheader: noheader
+          nofooter: nofooter
+          noborders: noborders
+          noscrollbar: noscrollbar
+          transparent: transparent
+        border_color: ''
+        language: ''
+        tweet_limit: ''
+        related: ''
+        polite: polite
+        region: body_right
+        weight: -10
+        uuid: f270e7c2-8c62-4cc4-b807-7c2238678696
+        context_mapping: {  }
+      26394e55-c4a2-431e-8200-b2b0bb7aec80:
+        id: 'views_block:latest_updates-block_1'
+        label: ''
+        provider: views
+        label_display: visible
+        views_label: ''
+        items_per_page: none
+        region: body_left
+        weight: -10
+        uuid: 26394e55-c4a2-431e-8200-b2b0bb7aec80
+        context_mapping: {  }
+      49d7554f-5f2e-4722-bb00-f2d45fd271db:
+        id: 'block_content:af171e09-fcb2-4d93-a94d-77dc61aab213'
+        label: 'Homepage Blurb'
+        provider: block_content
+        label_display: '0'
+        status: true
+        info: ''
+        view_mode: full
+        region: header_left
+        weight: -10
+        uuid: 49d7554f-5f2e-4722-bb00-f2d45fd271db
+        context_mapping: {  }
+      8e764b0d-002f-4428-bd00-cb441e96615c:
+        id: 'block_content:fa3e8c87-7002-4c75-9e37-556fa5573f38'
+        label: 'Discover aGov'
+        provider: block_content
+        label_display: '0'
+        status: true
+        info: ''
+        view_mode: full
+        region: header_right
+        weight: 0
+        uuid: 8e764b0d-002f-4428-bd00-cb441e96615c
+        context_mapping: {  }
+      97a930be-b695-4ed9-ab22-3492f65f3b26:
+        id: 'system_menu_block:quick-links'
+        label: 'Quick Links'
+        provider: system
+        label_display: visible
+        level: 1
+        depth: 0
+        region: body_right
+        weight: 0
+        uuid: 97a930be-b695-4ed9-ab22-3492f65f3b26
+        context_mapping: {  }
+      644e0370-1374-4a33-8c08-8c95cb7bf29f:
+        id: 'block_content:69e9555f-f0f3-4dd6-b905-5b1efffa120f'
+        label: 'Stay up to date'
+        provider: block_content
+        label_display: visible
+        status: true
+        info: ''
+        view_mode: full
+        region: body_right
+        weight: 0
+        uuid: 644e0370-1374-4a33-8c08-8c95cb7bf29f
+      038f75fe-6df1-43ba-ac00-c4157a76becc:
+        id: 'block_content:2f69d5fd-a34c-412c-a514-20fe2197b501'
+        label: 'Promo Block 1'
+        provider: block_content
+        label_display: '0'
+        status: true
+        info: ''
+        view_mode: full
+        region: promo_1
+        weight: 0
+        uuid: 038f75fe-6df1-43ba-ac00-c4157a76becc
+        context_mapping: {  }
+      47fe6e95-d93e-4957-bb57-87cad9a91bec:
+        id: 'block_content:8e22eeef-05cb-48de-a100-e23f3bf707bf'
+        label: 'Promo Block 2'
+        provider: block_content
+        label_display: '0'
+        status: true
+        info: ''
+        view_mode: full
+        region: promo_2
+        weight: 0
+        uuid: 47fe6e95-d93e-4957-bb57-87cad9a91bec
+        context_mapping: {  }
+      ff80e17e-e13d-4b1a-820a-103db89aae06:
+        id: 'block_content:c5ac2614-aaa8-43e8-9315-21e2beece358'
+        label: 'Promo Block 3'
+        provider: block_content
+        label_display: '0'
+        status: true
+        info: ''
+        view_mode: full
+        region: promo_3
+        weight: 0
+        uuid: ff80e17e-e13d-4b1a-820a-103db89aae06
+        context_mapping: {  }
+      4cd1603c-b5f7-40d5-a63a-588fb5aedbc5:
+        id: 'block_content:d2519df9-3664-4911-9b00-eaeec473440c'
+        label: 'Icon block 1'
+        provider: block_content
+        label_display: '0'
+        status: true
+        info: ''
+        view_mode: full
+        region: footer_1
+        weight: 0
+        uuid: 4cd1603c-b5f7-40d5-a63a-588fb5aedbc5
+        context_mapping: {  }
+      e4dd3a5a-c092-4a65-9562-98111081cdba:
+        id: 'block_content:608c6fc7-2769-4756-a300-fe79586cdb37'
+        label: 'Icon block 2'
+        provider: block_content
+        label_display: '0'
+        status: true
+        info: ''
+        view_mode: default
+        region: footer_2
+        weight: 0
+        uuid: e4dd3a5a-c092-4a65-9562-98111081cdba
+        context_mapping: {  }
+      54824818-863b-464c-8800-ee758a884db4:
+        id: 'block_content:30a54cec-dd24-4c1c-9f61-97c1ff9e1965'
+        label: 'Icon block 3'
+        provider: block_content
+        label_display: '0'
+        status: true
+        info: ''
+        view_mode: default
+        region: footer_3
+        weight: 0
+        uuid: 54824818-863b-464c-8800-ee758a884db4
+        context_mapping: {  }
+    id: block_page_layout
+    label: Home
+    uuid: 6fbc5ded-fb7d-46fd-9100-ecf7f77bd305
+    weight: 0
+    selection_logic: and
+    page_title: ''
+    layout: landing_page
+access_logic: and
+access_conditions: {  }
+static_context: {  }

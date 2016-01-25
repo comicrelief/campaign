@@ -1,0 +1,58 @@
+# Documentation for the scss-lint Linters is available at:
+# https://github.com/causes/scss-lint/blob/master/lib/scss_lint/linter/README.md
+#
+# This file is for new projects with no pre-existing styles. If you are adding
+# linting to an existing project, use the following command to create a
+# .scss-lint.yml file instead: scss-lint --format=Config -o .scss-lint.yml
+# Then go through each linter, one at a time, disabling it and fixing the
+# warnings in your code.
+linters:
+  Compass::*:
+    enabled: true # Disabled by default.
+  Compass::PropertyWithMixin:
+    ignore:
+      - 'inline-block' # Only needed for IE7/FF2 and earlier.
+      - 'text-shadow'  # No vendor prefixes ever used. http://caniuse.com/#feat=css-textshadow
+  ElsePlacement:
+    style: new_line # Like Drupal's PHP coding standard.
+  EmptyLineBetweenBlocks:
+    ignore_single_line_blocks: false
+  MergeableSelector:
+    force_nesting: true
+  NestingDepth:
+    max_depth: 4  # &--variant is not a nesting level. https://github.com/causes/scss-lint/issues/384
+  PlaceholderInExtend:
+    enabled: false # FontAwesome library requires using @extend .fa-etc;
+  PropertySortOrder:
+    enabled: false
+  PropertySpelling:
+    extra_properties:
+      # Experimental properties and old IE hacks can be listed here.
+      - '*background'
+      - '*background-image'
+      - '*display'
+      - '*font-family'
+      - '_font-family'
+      - '*height'
+      - '*list-style-image'
+      - '*margin-left'
+      - '*margin-right'
+      - '*overflow'
+      - '*position'
+      - '*vertical-align'
+      - '*width'
+      - '*zoom'
+  QualifyingElement:
+    enabled: false
+  SelectorFormat:
+    convention: hyphenated_BEM
+  SingleLinePerProperty:
+    allow_single_line_rule_sets: false # Allowed by default.
+  SpaceAfterPropertyColon:
+    style: at_least_one_space
+  SpaceAroundOperator:
+    enabled: false
+  # scss-lint 0.41.0 dies parsing chroma-kss-markup.scss when using SpaceBetweenParens
+  # See https://github.com/brigade/scss-lint/issues/568
+  SpaceBetweenParens:
+    enabled: false

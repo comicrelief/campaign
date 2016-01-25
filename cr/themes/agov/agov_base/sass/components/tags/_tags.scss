@@ -1,0 +1,38 @@
+// Tags
+//
+// tags.
+//
+// Markup: tags.hbs
+//
+// Style guide: components.tags
+
+.tags,
+%tags {
+
+  &__items {
+    @extend %unstyled-list;
+    display: inline;
+  }
+
+  &__item {
+    @include padding-left(2);
+
+    @include respond-to('medium') {
+      display: inline-block;
+      padding-left: 0;
+
+      &:after {
+        content: ', ';
+      }
+
+      &:last-child:after {
+        content: '';
+      }
+    }
+
+    &:first-child {
+      display: inline-block;
+      padding-left: 0;
+    }
+  }
+}

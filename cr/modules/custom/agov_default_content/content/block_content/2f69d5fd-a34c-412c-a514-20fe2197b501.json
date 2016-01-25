@@ -1,0 +1,97 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/block\/10?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/block_content\/promotional_block"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/promotional_block\/field_promotional_image": [
+            {
+                "href": "http:\/\/default\/file\/14?_format=hal_json"
+            }
+        ]
+    },
+    "uuid": [
+        {
+            "value": "2f69d5fd-a34c-412c-a514-20fe2197b501"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "info": [
+        {
+            "value": "Promo Block 1",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "promotional_block"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1445229770",
+            "lang": "en"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "field_link": [
+        {
+            "uri": "http:\/\/google.com",
+            "title": "",
+            "options": [
+
+            ]
+        }
+    ],
+    "field_promotional_description": [
+        {
+            "value": "The promotional blocks are designed to highlight important site content."
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/promotional_block\/field_promotional_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/14?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "59674274-f1f5-4d6a-be00-fecedfde6534"
+                    }
+                ],
+                "alt": "Rocks",
+                "title": "",
+                "width": "363",
+                "height": "204"
+            }
+        ]
+    },
+    "field_promotional_title": [
+        {
+            "value": "Integer lacinia ullamcorper tempor"
+        }
+    ]
+}

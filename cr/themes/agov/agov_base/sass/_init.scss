@@ -1,0 +1,74 @@
+// Initialization partial
+//
+// To make it easier to use all variables and mixins in any Sass file in this
+// theme, each .scss file has a `@import 'init';` declaration. The _init.scss
+// file is in charge of importing all the other partials needed for the theme.
+//
+// The initialization partial is organized in this way:
+// - First we set any shared Sass variables.
+// - Next we import Sass modules (sometimes called Compass plug-ins).
+// - Last we define our custom mixins for this theme.
+//
+// Weight: -1
+//
+// Style guide: sass.init
+
+// Variables
+//
+// Set variables for this site before a library sets its !default value.
+//
+// Style guide: sass.variables
+@import 'variables';
+
+
+// 3rd party libraries
+//
+// The following sass modules are shared with all .scsss files:
+// - [Breakpoint](http://breakpoint-sass.com/)
+// - [Chroma](https://github.com/JohnAlbin/chroma)
+// - [Compass support](http://compass-style.org/reference/compass/support/)
+// - [Compass sprites](http://compass-style.org/reference/compass/utilities/sprites/)
+// - [Compass CSS3](http://compass-style.org/reference/compass/css3/)
+// - [Typey](https://github.com/jptaranto/typey)
+// - [Zen Grids](http://next.zengrids.com/help/)
+//
+// Additional pre-built libraries can be found on the [Sache website](http://www.sache.in/).
+//
+// Style guide: sass.modules
+
+// Add Breakpoint to manage media queries.
+@import 'breakpoint';
+// Add Chroma to manage colors.
+@import 'chroma';
+@import 'chroma/kss';
+// Add Compass' IE and vendor prefix support variables.
+@import 'compass/support';
+// See http://compass-style.org/help/tutorials/spriting/
+@import 'compass/utilities/sprites';
+// Use one CSS3 mixin instead of multiple vendor prefixes.
+@import 'compass/css3';
+// Add typey to manage font sizes and margins.
+@import 'typey';
+// Add the Zen Grids responsive layout mixins.
+@import 'zen-grids';
+// Add fontAwesome library
+@import 'font-awesome-compass';
+@import 'font-awesome/variables';
+@import 'font-awesome/mixins';
+
+// Mixins
+//
+// Custom mixins used on this site.
+//
+// Weight: 1
+//
+// Style guide: sass.mixins
+
+// Functions
+//
+// Custom functions used on this site.
+//
+// Weight: 1
+//
+// Style guide: sass.functions
+@import 'library/**/*';

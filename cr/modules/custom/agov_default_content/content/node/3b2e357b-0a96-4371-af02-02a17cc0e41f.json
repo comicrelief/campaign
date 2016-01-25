@@ -1,0 +1,161 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/about-us?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/standard_page"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/standard_page\/uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/standard_page\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/standard_page\/field_standard_page_image": [
+            {
+                "href": "http:\/\/default\/file\/5?_format=hal_json"
+            }
+        ]
+    },
+    "uuid": [
+        {
+            "value": "3b2e357b-0a96-4371-af02-02a17cc0e41f"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "standard_page"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "title": [
+        {
+            "value": "About Us",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/standard_page\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "f1131890-f8e5-4f1a-824f-79e7c9979b19"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/standard_page\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "f1131890-f8e5-4f1a-824f-79e7c9979b19"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/standard_page\/field_standard_page_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/5?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "42d0e2cb-2345-44e5-9100-f60a68468038"
+                    }
+                ],
+                "alt": "Scenery shot",
+                "title": "",
+                "width": "900",
+                "height": "467"
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1442562546",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1444610271",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1442562580"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dapibus risus sit amet dolor pretium dignissim. Sed convallis lorem quis tortor molestie, vulputate egestas ex interdum. Duis tellus nunc, ornare ut tortor id, efficitur laoreet tortor. Fusce feugiat justo sapien, ut sollicitudin elit tristique vel. Quisque ut arcu ex. Aenean luctus urna ac metus interdum egestas eget ut nisi. Phasellus efficitur libero vitae ultricies dapibus. Pellentesque dictum purus ac diam vulputate interdum. In sit amet leo ultrices, interdum velit a, volutpat erat. Quisque tincidunt magna sit amet egestas laoreet. Sed magna nulla, dictum ut pellentesque vitae, viverra in lacus. Proin accumsan placerat tellus. Vivamus ac lacinia purus.\r\n\r\nSed dapibus nulla odio, eget dapibus purus aliquam egestas. Donec quis tempor turpis. Nullam malesuada, eros eget porttitor interdum, risus felis finibus neque, ut volutpat nulla lectus sed libero. Donec leo eros, pellentesque quis nisl et, pretium pellentesque magna. Phasellus sed vulputate magna, ac mollis nunc. Quisque tincidunt nisl nisl, sit amet aliquet leo placerat maximus. Phasellus et dictum lorem. Cras laoreet, felis id pellentesque sollicitudin, mi odio sodales nulla, ut sodales sapien arcu et magna. Aliquam elementum arcu est, non sollicitudin justo imperdiet vitae. Duis scelerisque ultrices ligula, id porttitor nunc hendrerit eu. Nam nec enim at libero porttitor euismod. Aliquam congue eu tellus vitae laoreet.\r\n\r\nPhasellus sed nulla maximus, laoreet sapien a, luctus ex. Aliquam in bibendum enim. Cras euismod orci quis orci dignissim fermentum. Ut vestibulum accumsan vehicula. Curabitur ut orci vulputate, aliquet nisl nec, condimentum massa. Aenean in orci elit. Donec sit amet tincidunt nulla.\r\n\r\nDonec sit amet pellentesque sem. Quisque vel felis eget lorem luctus accumsan sit amet non nisl. Vestibulum et nulla lacus. Nulla non nisl viverra, feugiat erat eget, molestie arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris at leo urna. Etiam eget scelerisque justo. Vestibulum turpis nunc, commodo vitae posuere sed, vulputate eget sem. Vestibulum a lacus eget sapien aliquet blandit. Donec ut magna pellentesque, lobortis ante a, varius mauris. Cras hendrerit lacus at nisl ornare, a mollis leo semper. Vestibulum urna ipsum, mattis sed nisl in, blandit luctus risus.\r\n\r\nFusce et laoreet massa. Praesent ornare mi ut metus elementum, vel rutrum dolor varius. Maecenas congue, ligula vitae feugiat gravida, dui nulla pharetra lectus, a tempor lorem neque posuere dui. Nulla dictum efficitur risus sed sagittis. Quisque pharetra dignissim rutrum. Sed bibendum semper tellus, ac semper risus lobortis id. Proin enim tortor, lobortis eu molestie sed, maximus a magna. Suspendisse hendrerit elementum nisl, non elementum enim finibus quis. Donec dui diam, cursus vitae mattis eget, eleifend non velit. Duis vitae augue iaculis, mattis velit vitae, porta eros. Nullam mollis felis justo, interdum dignissim turpis blandit id. Quisque sit amet velit et velit volutpat tincidunt in quis odio. Nam varius auctor odio vitae ultrices. Sed suscipit massa in urna pretium laoreet.\r\n",
+            "format": "restricted_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ]
+}

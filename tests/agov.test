@@ -1,0 +1,130 @@
+<?php
+/**
+ * @file
+ * Tests for Agov install profile.
+ * @author Tim Eisenhuth tim dot eisenhuth at previousnext dot com dot au
+ */
+
+class AgovTest extends AgovTestBase {
+
+  /**
+   * Provides test info.
+   */
+  public static function getInfo() {
+    return array(
+      'name'  => 'Agov tests',
+      'description'  => "Tests for Agov.",
+      'group' => 'Agov',
+    );
+  }
+
+  /**
+   * Test posting content.
+   */
+  public function testPostContent() {
+
+    // Cant use drupalLogin() as this only returns true if "Log out" is found.
+    $name = $this->testUser->name;
+    $pass = $this->testUser->pass_raw;
+    $this->drupalPost('user', array('name' => $name, 'pass' => $pass), t('Log in'));
+    $this->assertRaw($name, 'User logged in.');
+
+    // Get list of test images.
+    $images = $this->drupalGetTestFiles('image');
+    // Create a managed file for slide node.
+    $slide_image = file_save($images[4]);
+
+    // Get a node to post for reference field.
+    $query = new EntityFieldQuery();
+    $entities = $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'page')
+      ->propertyCondition('status', 1)
+      ->propertyCondition('title', 'About Us')
+      ->execute();
+
+    $nids = array_keys($entities['node']);
+
+    $post_node = node_load(array_shift($nids));
+
+    // Define content types.
+    $content_types = array(
+      'blog_article' => array(
+        'path' => 'blog-article',
+        'button' => 'Save',
+        'fields' => array(
+          'title' => 'test blog article',
+        ),
+      ),
+      'event' => array(
+        'path' => 'event',
+        'button' => 'Save',
+        'fields' => array(
+          'title' => 'test event',
+        ),
+      ),
+      'media_release' => array(
+        'path' => 'media-release',
+        'button' => 'Save',
+        'fields' => array(
+          'title' => 'test media release',
+        ),
+      ),
+      'news_article' => array(
+        'path' => 'news-article',
+        'button' => 'Save',
+        'fields' => array(
+          'title' => 'test news article',
+        ),
+      ),
+      'promotion' => array(
+        'path' => 'footer-teaser',
+        'button' => 'Save',
+        'fields' => array(
+          'title' => 'test promotion',
+          'files[field_image_und_0]' => drupal_realpath($images[4]->uri),
+          'field_reference[und]' => $post_node->nid,
+        ),
+      ),
+      'publication' => array(
+        'path' => 'publication',
+        'button' => 'Save',
+        'fields' => array(
+          'title' => 'test publication',
+        ),
+      ),
+      'slide' => array(
+        'path' => 'slide',
+        'button' => 'Save',
+        'fields' => array(
+          'title' => 'test slide',
+          'field_slide_image[und][0][fid]' => $slide_image->fid,
+        ),
+      ),
+      'standard_page' => array(
+        'path' => 'page',
+        'button' => 'Save',
+        'fields' => array(
+          'title' => 'test standard page',
+        ),
+      ),
+      'webform' => array(
+        'path' => 'webform',
+        'button' => 'Save',
+        'fields' => array(
+          'title' => 'test webform',
+        ),
+      ),
+    );
+
+    // Post each content type.
+    foreach ($content_types as $type) {
+      $this->drupalPost('node/add/' . $type['path'], $type['fields'], t($type['button']));
+      $this->assertRaw('<h1>' . $type['fields']['title'] . '</h1>', 'Found title `' . $type['fields']['title'] . '`');
+      // Check for node in the database.
+      $node = db_select('node', 'n')->fields('n')->condition('title', $type['fields']['title'])->execute()->fetchObject();
+      $this->assertNotEqual($node, FALSE, 'Found node in database.');
+
+    }
+  }
+
+}

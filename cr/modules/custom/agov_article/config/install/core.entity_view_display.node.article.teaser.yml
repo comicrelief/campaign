@@ -1,0 +1,68 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.article.body
+    - field.field.node.article.field_article_date
+    - field.field.node.article.field_article_image
+    - node.type.article
+  module:
+    - fences
+    - image
+    - text
+    - title
+    - user
+id: node.article.teaser
+targetEntityType: node
+bundle: article
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 2
+    settings:
+      trim_length: 185
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: teaser__content
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+  field_article_image:
+    type: image
+    weight: 0
+    label: hidden
+    settings:
+      image_style: teaser_medium
+      image_link: content
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: 'teaser__image teaser__image-wide'
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+  title:
+    type: linked_and_wrapped
+    settings:
+      tag: h2
+      linked: true
+      classes: ''
+    weight: 1
+    label: hidden
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: teaser__title
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+hidden:
+  field_article_date: true
+  links: true

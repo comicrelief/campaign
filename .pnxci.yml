@@ -1,0 +1,55 @@
+application: previousnext/lamp
+
+channel: "#agov-8"
+
+test: &test
+  steps:
+    - composer install --prefer-dist --dev
+    - bundle install --path vendor/bundle
+    - npm install
+    - bin/phing build:dev -Dapp.password=$PASSWORD
+    - bin/phing gulp:build
+    - bin/phing styleguide:link
+    - bin/phing test
+    - node_modules/.bin/gulp lint:js-with-fail
+    # Temporarily disable sass lint failing, until Issue #2650652 is complete.
+    # node_modules/.bin/gulp lint:sass-with-fail
+    - mkdir -p app/sites/default/files/tmp
+    - mkdir -p app/sites/default/private
+
+test_pr:
+  <<: *test
+
+test_head:
+  <<: *test
+
+deploy_8_1:
+  steps:
+    - bundle install --path vendor/bundle
+    - npm install
+    - git config --global user.email "admin@previousnext.com.au"
+    - git config --global user.name "PreviousNext"
+    # Compiled CSS.
+    - node_modules/.bin/gulp
+    - git add -f agov/themes/agov/agov_base/css
+    - git add .
+    - git commit -m 'Compiled CSS.'
+    # Filter out the commits only in the 'agov' folder.
+    - git filter-branch --prune-empty --subdirectory-filter agov 8.x-1.x
+    # Clean up the state of the folder.
+    - git checkout 8.x-1.x
+    - git add .
+    - git reset --hard
+    # Add drupal.org as a remote.
+    - git remote add dorg pnx-bot@git.drupal.org:project/agov.git
+    - git fetch dorg
+    # Add the existing build commits into the current branch.
+    - rm -rf vendor
+    - git merge -X ours --no-edit dorg/8.x-1.x
+    - git status
+    - ls -lah
+    - git log | head -n20
+    - git branch
+    - git remote -v
+    # Push the new commits and build commit to the remote.
+    - git push dorg 8.x-1.x

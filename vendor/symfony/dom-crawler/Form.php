@@ -18,6 +18,8 @@ use Symfony\Component\DomCrawler\Field\FormField;
  * Form represents an HTML form.
  *
  * @author Fabien Potencier <fabien@symfony.com>
+ *
+ * @api
  */
 class Form extends Link implements \ArrayAccess
 {
@@ -32,24 +34,19 @@ class Form extends Link implements \ArrayAccess
     private $fields;
 
     /**
-     * @var string
-     */
-    private $baseHref;
-
-    /**
      * Constructor.
      *
      * @param \DOMElement $node       A \DOMElement instance
      * @param string      $currentUri The URI of the page where the form is embedded
      * @param string      $method     The method to use for the link (if null, it defaults to the method defined by the form)
-     * @param string      $baseHref   The URI of the <base> used for relative links, but not for empty action
      *
      * @throws \LogicException if the node is not a button inside a form tag
+     *
+     * @api
      */
-    public function __construct(\DOMElement $node, $currentUri, $method = null, $baseHref = null)
+    public function __construct(\DOMElement $node, $currentUri, $method = null)
     {
         parent::__construct($node, $currentUri, $method);
-        $this->baseHref = $baseHref;
 
         $this->initialize();
     }
@@ -70,6 +67,8 @@ class Form extends Link implements \ArrayAccess
      * @param array $values An array of field values
      *
      * @return Form
+     *
+     * @api
      */
     public function setValues(array $values)
     {
@@ -86,6 +85,8 @@ class Form extends Link implements \ArrayAccess
      * The returned array does not include file fields (@see getFiles).
      *
      * @return array An array of field values.
+     *
+     * @api
      */
     public function getValues()
     {
@@ -107,6 +108,8 @@ class Form extends Link implements \ArrayAccess
      * Gets the file field values.
      *
      * @return array An array of file field values.
+     *
+     * @api
      */
     public function getFiles()
     {
@@ -136,6 +139,8 @@ class Form extends Link implements \ArrayAccess
      * (like foo[bar] to arrays) like PHP does.
      *
      * @return array An array of field values.
+     *
+     * @api
      */
     public function getPhpValues()
     {
@@ -159,6 +164,8 @@ class Form extends Link implements \ArrayAccess
      * (like foo[bar] to arrays) like PHP does.
      *
      * @return array An array of field values.
+     *
+     * @api
      */
     public function getPhpFiles()
     {
@@ -183,6 +190,8 @@ class Form extends Link implements \ArrayAccess
      * browser behavior.
      *
      * @return string The URI
+     *
+     * @api
      */
     public function getUri()
     {
@@ -216,6 +225,8 @@ class Form extends Link implements \ArrayAccess
      * If no method is defined in the form, GET is returned.
      *
      * @return string The method
+     *
+     * @api
      */
     public function getMethod()
     {
@@ -232,6 +243,8 @@ class Form extends Link implements \ArrayAccess
      * @param string $name The field name
      *
      * @return bool true if the field exists, false otherwise
+     *
+     * @api
      */
     public function has($name)
     {
@@ -244,6 +257,8 @@ class Form extends Link implements \ArrayAccess
      * @param string $name The field name
      *
      * @throws \InvalidArgumentException when the name is malformed
+     *
+     * @api
      */
     public function remove($name)
     {
@@ -258,6 +273,8 @@ class Form extends Link implements \ArrayAccess
      * @return FormField The field instance
      *
      * @throws \InvalidArgumentException When field is not present in this form
+     *
+     * @api
      */
     public function get($name)
     {
@@ -268,6 +285,8 @@ class Form extends Link implements \ArrayAccess
      * Sets a named field.
      *
      * @param FormField $field The field
+     *
+     * @api
      */
     public function set(FormField $field)
     {
@@ -278,6 +297,8 @@ class Form extends Link implements \ArrayAccess
      * Gets all fields.
      *
      * @return FormField[] An array of fields
+     *
+     * @api
      */
     public function all()
     {
@@ -436,10 +457,6 @@ class Form extends Link implements \ArrayAccess
             foreach ($fieldNodes as $node) {
                 $this->addField($node);
             }
-        }
-
-        if ($this->baseHref && '' !== $this->node->getAttribute('action')) {
-            $this->currentUri = $this->baseHref;
         }
     }
 

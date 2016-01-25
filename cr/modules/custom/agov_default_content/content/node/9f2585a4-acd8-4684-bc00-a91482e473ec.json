@@ -1,0 +1,169 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/publications\/acsi-enim-eum-nisl-veniam?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/publication"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/publication\/uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/publication\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/publication\/field_publication_documents": [
+            {
+                "href": "http:\/\/default\/file\/11?_format=hal_json"
+            }
+        ]
+    },
+    "uuid": [
+        {
+            "value": "9f2585a4-acd8-4684-bc00-a91482e473ec"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "publication"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "title": [
+        {
+            "value": "Acsi Enim Eum Nisl Veniam",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/publication\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "f1131890-f8e5-4f1a-824f-79e7c9979b19"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/publication\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "f1131890-f8e5-4f1a-824f-79e7c9979b19"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/publication\/field_publication_documents": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/11?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/document"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "2a27f033-3977-4954-ad00-0ff59fd89e60"
+                    }
+                ],
+                "display": "1",
+                "description": "Main publication"
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1443582634",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1444609534",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1443582692"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "Acsi exerci facilisi hendrerit ibidem paulatim proprius qui tamen vulpes. Imputo luptatum ratis ulciscor. Quae ratis roto torqueo. Elit iustum lucidus pecus sagaciter.\r\n\r\nCommoveo incassum metuo nisl qui tamen. Abdo elit esca macto neque usitas vereor. Eros esca eu exerci nibh roto si sudo. Aliquip dignissim exputo lobortis loquor nunc vulputate.\r\n\r\nAbigo commoveo exputo iaceo quia tation te tum utrum ymo. Damnum iusto minim pneum suscipere ullamcorper. Inhibeo letalis nutus quidne scisco secundum turpis volutpat. Abluo brevitas distineo feugiat gilvus illum lobortis luctus vulputate.\r\n\r\nCui esse immitto nunc probo proprius saepius similis. Abbas eum ex feugiat plaga quidem turpis wisi. Comis genitus ille. Aliquip capto distineo dolor esse feugiat minim sed vicis. Odio ut valde verto. Bene nimis probo saepius. Aliquam damnum haero nimis obruo praemitto. Genitus in minim pala.",
+            "format": "basic_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ],
+    "field_publication_date": [
+        {
+            "value": "2015-10-14"
+        }
+    ],
+    "field_publication_subtitle": [
+        {
+            "value": "Abdo bene comis inhibeo. Causa commodo commoveo consequat jugis macto modo obruo odio valde."
+        }
+    ]
+}

@@ -1,0 +1,51 @@
+// Dependencies.
+@import 'components/visually-hidden/visually-hidden';
+
+// Breadcrumb navigation
+//
+// The path to the current page in the form of a list of links.
+//
+// Markup: breadcrumb.hbs
+//
+// Style guide: components.navigation.breadcrumb
+
+.breadcrumb,
+%breadcrumb {
+  @media print {
+    display: none;
+  }
+
+  &__title {
+    @extend %visually-hidden;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    @extend .fa;
+    @extend .fa-angle-right;
+    display: inline;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    color: color(breadcrumb-color);
+    text-indent: 0;
+
+    a {
+      &:focus {
+        border: 0;
+      }
+    }
+
+
+    &:before {
+      margin: 0 8px 0 11px;
+      font-size: 17px;
+    }
+  }
+
+}

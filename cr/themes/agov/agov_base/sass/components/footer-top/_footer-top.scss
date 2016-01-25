@@ -1,0 +1,41 @@
+// @TODO: Refactor to reduce the excessive nesting.
+// scss-lint:disable SelectorDepth
+
+// Dependencies.
+@import 'components/unstyled-list/unstyled-list';
+
+// Footer Top
+//
+// The footer top region of page
+//
+// Markup: footer-top.hbs
+//
+// Style guide: components.footer-top
+
+.footer-top,
+%footer-top {
+  @include clearfix;
+  background-color: color(white-smoke);
+  @include margin-top(2);
+  @include padding(1 0 2);
+
+  &__menu {
+    border-top: 2px solid color('white');
+    @include margin-top(1);
+
+    &:first-child {
+      border-top: 0;
+      margin-top: 0;
+    }
+
+    ul {
+      @extend %unstyled-list;
+    }
+
+    &--nested {
+      @include padding-left(.5);
+      @include padding-top(.5);
+      @include font-size(s);
+    }
+  }
+}

@@ -1,0 +1,203 @@
+<?php
+
+/**
+ * @file
+ * Base code file.
+ */
+
+use Drupal\Core\Cache\CacheableMetadata;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Template\Attribute;
+use Drupal\Core\Url;
+use Drupal\block\Entity\Block;
+
+/**
+ * Implements hook_theme_suggestions_block_alter().
+ */
+function agov_base_theme_suggestions_block_alter(&$hooks, &$vars) {
+  if ($vars['elements']['#configuration']['provider'] === 'block_content') {
+    $hooks[] = 'block__block_content__' . $vars['elements']['content']['#block_content']->bundle();
+  }
+  if (isset($vars['elements']['#id'])) {
+    $region = Block::load($vars['elements']['#id'])->getRegion();
+    $hooks[] = 'block__' . $vars['elements']['#configuration']['provider'] . '__' . $region;
+    $vars['elements']['#region'] = $region;
+  }
+}
+
+/**
+ * Implements hook_preprocess_block__PROVIDER__BUNDLE().
+ */
+function agov_base_preprocess_block__block_content__icon_block(&$vars) {
+  $vars['attributes']['class'][] = 'box--icon';
+  $vars['attributes']['class'][] = 'box--with-border';
+  $vars['attributes']['class'][] = 'box--with-hover';
+}
+
+/**
+ * Implements hook_preprocess_block__PROVIDER__BUNDLE().
+ */
+function agov_base_preprocess_block__block_content__social_block(&$vars) {
+  $vars['attributes']['class'][] = 'divider';
+}
+
+/**
+ * Implements hook_preprocess_block__PROVIDER__BUNDLE().
+ */
+function agov_base_preprocess_block__block_content__promotional_block(&$vars) {
+  $entity = $vars['content']['#block_content'];
+  $url = $url = Url::fromUri($entity->field_link->uri);
+  $vars['content']['field_promotional_title'][0]['#url'] = $url;
+  $vars['content']['field_promotional_image'][0]['#url'] = $url;
+}
+
+/**
+ * Implements hook_preprocess_breadcrumb().
+ */
+function agov_base_preprocess_breadcrumb(&$vars) {
+  $route = \Drupal::routeMatch()->getRouteObject();
+  $title = \Drupal::service('title_resolver')
+    ->getTitle(\Drupal::request(), $route);
+
+  if ($title) {
+    $vars['breadcrumb'][] = [
+      'text' => $title,
+    ];
+
+    // Adding a dependency on the route actually disables caching for this block
+    // but that's what we want, to prevent caching issues.
+    CacheableMetadata::createFromRenderArray($vars)
+      ->addCacheableDependency($route)
+      ->applyTo($vars);
+  }
+}
+
+/**
+ * Implements hook_preprocess_block__PLUGIN_ID().
+ */
+function agov_base_preprocess_block__search_form_block(&$vars) {
+  // We have the searchbox twice, one light, one dark.
+  $modifier = strpos($vars['attributes']['id'], 'searchform-2') !== FALSE ? '--light' : '';
+
+  // Wrapper class for the block.
+  $vars['attributes']['class'][] = 'search__wrapper search__wrapper' . $modifier;
+
+  // The search form isn't all in one template, this code puts classes in about
+  // three different templates.
+  $vars['content']['#attributes']['class'][] = 'search search-form search' . $modifier;
+  $vars['content']['keys']['#wrapper_attributes']['class'][] = 'search__input-wrapper search__inner-wrapper' . $modifier;
+  $vars['content']['keys']['#attributes']['class'][] = 'search__input search__input' . $modifier;
+  $vars['content']['keys']['#attributes']['placeholder'] = t('Enter your keywords');
+
+  // Customise the submit button.
+  $vars['content']['actions']['submit']['#title_display'] = 'invisible';
+  $vars['content']['actions']['submit']['#attributes']['class'][] = 'search__button' . $modifier;
+  $vars['content']['actions']['submit']['#attributes']['class'][] = 'search__button';
+  // Add the search icon.
+  $vars['content']['actions']['submit']['#prefix'] = '<div class="search__button-wrapper search__button-wrapper' . $modifier . '"><i class="fa fa-search search__icon" aria-hidden="true"></i>';
+  $vars['content']['actions']['submit']['#suffix'] = '</div>';
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function agov_base_form_search_form_alter(&$form, FormStateInterface $form_state) {
+  $form['#attributes']['class'][] = 'search search-form';
+
+  // Customise the search box.
+  $form['basic']['keys']['#wrapper_attributes']['class'][] = 'search__input-wrapper search__inner-wrapper';
+  $form['basic']['keys']['#attributes']['class'][] = 'search__input';
+  $form['basic']['keys']['#attributes']['placeholder'] = t('Enter your keywords');
+  $form['basic']['keys']['#title_display'] = 'invisible';
+
+  // Add the submit classes.
+  $form['basic']['submit']['#attributes']['class'][] = 'search__button';
+  // Add the search icon.
+  $form['basic']['submit']['#prefix'] = '<div class="search__button-wrapper"><i class="fa fa-search search__icon" aria-hidden="true"></i>';
+  $form['basic']['submit']['#suffix'] = '</div>';
+
+  // Hide the help links.
+  $form['help_link']['#access'] = FALSE;
+}
+
+/**
+ * Implements hook_preprocess_block__PROVIDER__REGION().
+ */
+function agov_base_preprocess_block__system_menu_block__quick_links(&$vars) {
+  $vars['attributes']['class'][] = 'divider';
+  $vars['content']['#attributes']['class'][] = 'unstyled-list';
+}
+
+/**
+ * Implements hook_theme_suggestions_menu_alter().
+ */
+function agov_base_theme_suggestions_menu_alter(&$hooks, $vars) {
+  // Allow menus to be preprocessed individually based on an attribute which
+  // indicates the region, passed in by the containing block.
+  if (isset($vars['attributes']['region'])) {
+    $hooks[] = 'menu__' . $vars['attributes']['region'];
+  }
+}
+
+/**
+ * Implements hook_preprocess_block__PROVIDER__REGION().
+ */
+function agov_base_preprocess_block__system__primary_menu(&$vars) {
+  $vars['attributes']['class'][] = 'primary-navigation';
+  $vars['title_attributes']['class'][] = 'primary-navigation__title';
+  $vars['content']['#attributes']['region'] = $vars['elements']['#region'];
+}
+
+/**
+ * Implements hook_preprocess_menu__REGION().
+ */
+function agov_base_preprocess_menu__primary_menu(&$vars) {
+  $vars['attributes']['class'][] = 'primary-navigation__list';
+  $vars['attributes']['class'][] = 'layout-center';
+
+  foreach ($vars['items'] as $item) {
+    $item['attributes']->addClass('primary-navigation__list-item');
+    if (isset($item['below'])) {
+      foreach ($item['below'] as $sub_item) {
+        $sub_item['attributes']->addClass('primary-navigation__list-item-level-2');
+      }
+    }
+  }
+  $vars['sub_menu_attributes'] = new Attribute(['class' => 'primary-navigation__list-level-2']);
+}
+
+/**
+ * Implements hook_preprocess_block__PROVIDER__REGION().
+ */
+function agov_base_preprocess_block__system__sidebar_second(&$vars) {
+  $vars['attributes']['class'][] = 'divider';
+  $vars['content']['#attributes']['class'] = ['nav-menu', 'unstyled-list'];
+}
+
+/**
+ * Implements hook_preprocess_block__PROVIDER__REGION().
+ */
+function agov_base_preprocess_block__system__footer_top(&$vars) {
+  $vars['attributes']['class'] += [
+    'three-column-menu',
+    'footer-top__menu'
+  ];
+  $vars['content']['#attributes']['region'] = $vars['elements']['#region'];
+}
+
+/**
+ * Implements hook_preprocess_menu__REGION().
+ */
+function agov_base_preprocess_menu__footer_top(&$vars) {
+  $vars['attributes']['class'][] = 'three-column-menu__list';
+  foreach ($vars['items'] as $item) {
+    $item['attributes']->addClass('three-column-menu__item');
+  }
+}
+
+/**
+ * Implements hook_preprocess_node_HOOK().
+ */
+function agov_base_preprocess_node__publication__teaser(&$vars) {
+  $vars['title_attributes']['class'][] = 'teaser__title';
+}

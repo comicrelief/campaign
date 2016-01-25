@@ -1,0 +1,25 @@
+// Date
+//
+// Styling of date for pages.
+//
+// Markup: date.hbs
+//
+// Style guide: components.date
+
+// Date without label
+//
+// This is how a date is displayed without label.
+//
+// Markup: date--without-label.hbs
+//
+// Style guide: components.date.date--without-label
+
+.date,
+%date {
+
+  &--without-label {
+    color: color(date);
+    @include margin(1.5 0);
+    @include font-size(xs);
+  }
+}

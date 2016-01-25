@@ -3,7 +3,7 @@
     "type": "application",
     "description": "A simple PHP Web Scraper",
     "keywords": ["scraper"],
-    "homepage": "https://github.com/FriendsOfPHP/Goutte",
+    "homepage": "https://github.com/fabpot/Goutte",
     "license": "MIT",
     "authors": [
         {
@@ -12,18 +12,25 @@
         }
     ],
     "require": {
-        "php": ">=5.5.0",
+        "php": ">=5.3.0",
+        "ext-curl": "*",
         "symfony/browser-kit": "~2.1",
         "symfony/css-selector": "~2.1",
         "symfony/dom-crawler": "~2.1",
-        "guzzlehttp/guzzle": "^6.0"
+        "symfony/finder": "~2.1",
+        "symfony/process": "~2.1",
+        "guzzle/http": "~3.1"
+    },
+    "require-dev": {
+        "guzzle/plugin-history": "~3.1",
+        "guzzle/plugin-mock": "~3.1"
     },
     "autoload": {
-        "psr-4": { "Goutte\\": "Goutte" }
+        "psr-0": { "Goutte": "." }
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "3.1-dev"
+            "dev-master": "1.0-dev"
         }
     }
 }

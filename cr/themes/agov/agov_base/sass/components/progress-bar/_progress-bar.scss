@@ -1,0 +1,47 @@
+// Progress bar
+//
+// The Progress bar.
+//
+// Markup: progress-bar.hbs
+//
+// Style guide: components.progress-bar
+
+.progress-bar,
+%progress-bar {
+  @include box-shadow(0 1px 2px rgba(0, 0, 0, .1) inset);
+  @include border-radius(4px);
+  @include margin-bottom(1);
+  background-color: color(progress-bar-bg);
+  overflow: hidden;
+  position: relative;
+
+  &__bar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__fill {
+    @include box-shadow(0 -1px 0 rgba(0, 0, 0, .15) inset);
+    @include transition(width .6s ease 0s);
+    background-color: color(progress-bar);
+    color: color(progress-bar-text);
+    float: left;
+    height: 100%;
+    text-align: center;
+    width: 0;
+  }
+
+  &__percentage,
+  &__message {
+    @include margin-left(.5);
+    color: color(progress-bar-text);
+    float: left;
+    position: relative;
+    z-index: 2;
+  }
+}

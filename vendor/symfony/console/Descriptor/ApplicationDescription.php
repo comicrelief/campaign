@@ -136,17 +136,15 @@ class ApplicationDescription
     private function sortCommands(array $commands)
     {
         $namespacedCommands = array();
-        $globalCommands = array();
         foreach ($commands as $name => $command) {
             $key = $this->application->extractNamespace($name, 1);
             if (!$key) {
-                $globalCommands['_global'][$name] = $command;
-            } else {
-                $namespacedCommands[$key][$name] = $command;
+                $key = '_global';
             }
+
+            $namespacedCommands[$key][$name] = $command;
         }
         ksort($namespacedCommands);
-        $namespacedCommands = array_merge($globalCommands, $namespacedCommands);
 
         foreach ($namespacedCommands as &$commandsSet) {
             ksort($commandsSet);

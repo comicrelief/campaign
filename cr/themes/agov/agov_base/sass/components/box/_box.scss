@@ -1,0 +1,77 @@
+// Box
+//
+// A simple box styling.
+//
+// Markup: box.hbs
+//
+// :hover  - Hover styling.
+//
+// Style guide: components.box
+
+// Icon box
+//
+// Markup: box--icon.hbs
+//
+// Style guide: components.box.box--icon
+
+// Icon box - with hover
+//
+// Markup: box--icon-with-hover.hbs
+//
+// Style guide: components.box.box--icon-with-hover.hbs
+
+// Icon box - with border
+//
+// Markup: box--icon-with-border.hbs
+//
+// Style guide: components.box.box--icon-with-border.hbs
+
+
+
+.box,
+%box {
+  @include padding(10px);
+
+  @include respond-to('small') {
+    @include padding(20px);
+  }
+
+  &__title {
+    @include margin(0 0 4px);
+  }
+
+  &--with-border {
+    border: 2px solid color(border);
+  }
+
+  &--with-hover {
+    &:hover,
+    &:focus {
+      background-color: color(border);
+    }
+  }
+
+  &--icon {
+    @extend %box;
+    @include padding(20px 0);
+
+    &--reduced-top-spacing {
+      @include padding-top(2px);
+    }
+
+    &__left {
+      @include padding(2px 0);
+      float: left;
+      text-align: center;
+      width: 85px;
+
+      i {
+        font-size: 40px;
+      }
+    }
+
+    &__right {
+      @include padding-left(85px);
+    }
+  }
+}

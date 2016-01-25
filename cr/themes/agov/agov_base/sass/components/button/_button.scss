@@ -1,0 +1,71 @@
+// Dependencies.
+// Allow the .button class to override :link.
+@import 'base/links/links';
+
+// Button
+//
+// In addition to the default styling of `<button>` and
+// `<input type="submit|image|reset|button">` elements, the `.button` class and
+// its variants can apply buttons styles to various elements (like an `<a>`
+// link).
+//
+// Markup: button.hbs
+//
+// :hover - Hover styling.
+// .button--large - Large button styling.
+//
+// Style guide: components.button
+
+.button,
+%button {
+  @include padding(15px 20px);
+  // Prevent "line-height: normal" rule below from breaking the
+  // "appearance: button" styling on the input elements in Firefox.
+  line-height: inherit;
+  // Some styles don't apply to <a> links since they are inline elements.
+  display: inline-block;
+  text-decoration: none;
+  // Improve usability and consistency of cursor style between image-type `input` and others.
+  cursor: pointer;
+  background: color(button-bg);
+  border: 0;
+  border-bottom: 2px solid color(form-element-border);
+  color: color(button-color);
+  font-weight: weight(bold);
+  @if support-legacy-browser(ie, '7') {
+    // Remove inner spacing in IE 7 without affecting normal text inputs.
+    *overflow: visible;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: color(button-bg-hover);
+    border-color: color(form-element-border-hover);
+    color: color(button-color-hover);
+    text-decoration: none;
+  }
+
+  // Re-set default cursor for disabled elements.
+  &[disabled] {
+    @include opacity(.65);
+    color: color(text);
+
+    &:hover,
+    &:focus {
+      background-color: color(button-bg);
+      border-color: color(form-element-border);
+      color: color(text);
+    }
+  }
+
+  &--large {
+    @include padding(25px);
+    @include type-layout(32px, 1);
+    font-weight: weight(bold);
+  }
+
+  &--wide {
+    display: block;
+    text-align: center;
+  }
+}

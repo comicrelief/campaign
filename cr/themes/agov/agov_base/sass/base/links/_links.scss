@@ -1,0 +1,65 @@
+// Dependencies.
+@import '../normalize';
+
+// Links
+//
+// Hyperlinks are used to allow the user to navigate to other resources or to
+// download a resource.
+//
+// The order of link states are based on Eric Meyer's article:
+// http://meyerweb.com/eric/thoughts/2007/06/11/who-ordered-the-link-states
+//
+// Markup: links-a.hbs
+//
+// :visited - A link that has already been visited.
+// :hover   - A link that is being hovered over.
+// :focus   - A link that has been given keyboard focus.
+// :active  - A link that is being actively clicked.
+//
+// Style guide: base.link
+
+:link,
+%link {
+  color: color(link);
+}
+
+:visited {
+  color: color(link-visited);
+}
+
+a:hover,
+a:active,
+a:focus {
+  color: color(link-hover);
+}
+
+a:focus {
+  outline: 2px solid color(link-border-focus);
+
+  @if support-legacy-browser(ie, '10') {
+    // Remove the gray background color from active links in IE 10.
+    background-color: transparent;
+  }
+}
+
+@media print {
+  // Underline all links.
+  :link,
+  :visited {
+    text-decoration: underline;
+  }
+
+  // Add visible URL after links.
+  a[href]:after {
+    @include font-size(m);
+    content: ' (' attr(href) ')';
+    font-weight: weight(normal);
+    text-decoration: none;
+  }
+
+  // Only display useful links.
+  a[href^='javascript:']:after,
+  a[href^='#']:after {
+    content: '';
+  }
+}

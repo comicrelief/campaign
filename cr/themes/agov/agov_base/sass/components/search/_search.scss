@@ -1,0 +1,145 @@
+// Search
+//
+// A simple search styling.
+//
+// Markup: search.hbs
+//
+// Style guide: components.search
+
+
+.search,
+%search {
+  color: color(search-color);
+  background: color(search-bg);
+  position: relative;
+
+  &--light {
+    @include respond-to('header-desktop') {
+      color: color(search-color-light);
+      background: transparent;
+    }
+  }
+
+  &__wrapper {
+    @include padding(15px 20px);
+
+    @include respond-to('header-desktop') {
+      @include padding(14px 5px 5px);
+      position: relative;
+      bottom: 0;
+      display: none;
+    }
+
+    &--light {
+      display: none;
+      float: right;
+
+      @include respond-to('header-desktop') {
+        display: block;
+      }
+    }
+  }
+
+  &__inner-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    border-bottom: 1px solid color(search-border);
+  }
+
+  &__input-wrapper {
+    margin: 0;
+    // scss-lint:disable ImportantRule
+    display: block !important;
+  }
+
+  &__input {
+    @include box-shadow(none);
+    background: none;
+    border: 0;
+    font-style: italic;
+    width: 100%;
+    padding: 12px;
+
+    @include input-placeholder() {
+      @include opacity(1);
+      color: color(search-color);
+    }
+    @include font-size(18px);
+    font-weight: weight(bold);
+
+    &--light {
+      @include respond-to('medium') {
+        border-bottom: 2px solid color(search-border);
+        min-width: 363px;
+
+        @include input-placeholder() {
+          color: color(search-color-light);
+        }
+
+        &:hover,
+        &:focus {
+          border-color: color('white');
+        }
+      }
+    }
+  }
+
+  // Ensure button is positioned above the icon.
+  &__button-position {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &__button-wrapper {
+    @extend %search__button-position;
+    width: 3.5em;
+    height: 3em;
+    display: block;
+    color: color('search-button');
+
+    &:focus,
+    &:hover {
+      color: color('search-color');
+      background: none;
+    }
+
+    &--light {
+      color: color('search-button-light');
+
+      &:focus,
+      &:hover {
+        color: color('white');
+        background: none;
+      }
+    }
+  }
+
+  &__icon {
+    @extend %search__button-position;
+    @include margin(0 .75);
+    @include padding(.5 0);
+    @include font-size(25px);
+    color: currentColor;
+  }
+
+  &__button {
+    @extend %search__button-wrapper;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    // Button should be transparent.
+    background: none;
+    text-indent: -999em;
+
+    &--light {
+      @include respond-to('header-desktop') {
+        bottom: 0;
+        padding: 0;
+        // Button should be transparent.
+        background: none;
+      }
+    }
+  }
+}

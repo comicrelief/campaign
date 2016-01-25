@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for Pathauto.
+ *
+ * @ingroup pathauto
+ */
+
+/**
+ * Implements hook_install().
+ */
+function pathauto_install() {
+  // Set the weight to 1
+  module_set_weight('pathauto', 1);
+
+}

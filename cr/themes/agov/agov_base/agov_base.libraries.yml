@@ -1,0 +1,12 @@
+component-library:
+  version: 1.x
+  css:
+    theme:
+      css/styles.css: {}
+      https://fonts.googleapis.com/css?family=Open+Sans:400,700: {}
+  js:
+    sass/components/primary-navigation/primary-navigation.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/jquery.once

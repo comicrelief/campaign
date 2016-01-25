@@ -1,0 +1,166 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/news\/commoveo-euismod-hos-ideo-probo-volutpat?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/article"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_image": [
+            {
+                "href": "http:\/\/default\/file\/19?_format=hal_json"
+            }
+        ]
+    },
+    "uuid": [
+        {
+            "value": "645adc10-c0ff-4858-bb3b-59585aeae43e"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "article"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "title": [
+        {
+            "value": "Commoveo Euismod Hos Ideo Probo Volutpat",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "f1131890-f8e5-4f1a-824f-79e7c9979b19"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "f1131890-f8e5-4f1a-824f-79e7c9979b19"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/19?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "79c0f7eb-1379-4985-b203-3ea7f87e75f2"
+                    }
+                ],
+                "alt": "Plant",
+                "title": "",
+                "width": "900",
+                "height": "598"
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1443509153",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1444988671",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1443509199"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<p>Cui jus neque oppeto. Blandit decet quia scisco secundum suscipere usitas. Bene comis meus. Ad feugiat jumentum minim mos roto. Dignissim immitto iriure meus qui te. Facilisis pecus vulpes. Camur cogo dolor elit loquor modo olim tincidunt tum. Camur dolor quidem saepius vero. Antehabeo bene eum olim pecus ratis sit. Fere haero obruo. Abigo aptent gravis haero mauris secundum tation vel vereor virtus. Aliquip blandit esca magna sagaciter virtus. Fere iusto modo ratis saluto. Appellatio commodo commoveo consectetuer damnum dolore dolus duis valde. Esse importunus tamen ulciscor wisi. Abdo exputo mos vicis. Adipiscing exerci imputo macto pagus validus verto. Autem dignissim distineo humo paratus. Comis gravis magna praemitto proprius qui. Lenis suscipere tum. Acsi at erat gemino occuro pala paratus probo. Autem distineo in obruo. Aliquam pecus pneum. Amet consectetuer gilvus ibidem magna nobis rusticus sagaciter valetudo volutpat. Aliquam lucidus nibh quibus usitas venio. Ea obruo validus ymo. In quae ullamcorper vulputate. Facilisi ille imputo nutus pneum vereor. Aptent feugiat lucidus. Aliquam aptent bene consectetuer rusticus turpis venio. Brevitas ibidem nostrud patria sit. Abdo ad aptent bene fere huic nibh nutus oppeto vulpes. Commodo macto nutus quis typicus zelus. Jus occuro persto pneum. Et exerci immitto interdico quae utinam. Esca scisco torqueo ulciscor. Amet gravis ideo oppeto typicus ulciscor. Defui duis eligo esca jugis persto volutpat. Appellatio nulla sino utinam velit volutpat. Abico aliquam jugis lenis mos nobis nunc pneum si voco. Exputo facilisis jumentum patria praemitto sudo tincidunt. Distineo ea elit erat incassum luptatum nobis plaga qui quidne. Camur meus mos paratus praesent saepius turpis vulpes. Ibidem iriure nulla nutus ymo. Abdo blandit paulatim pecus ymo. Eum fere huic iaceo praesent suscipere utrum uxor venio. Brevitas jus nibh.<\/p>\r\n",
+            "format": "basic_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ],
+    "field_article_date": [
+        {
+            "value": "2015-09-16"
+        }
+    ]
+}

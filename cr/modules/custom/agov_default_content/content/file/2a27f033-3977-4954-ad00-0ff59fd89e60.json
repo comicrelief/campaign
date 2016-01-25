@@ -1,0 +1,65 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/file\/11?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/file\/document"
+        }
+    },
+    "uuid": [
+        {
+            "value": "2a27f033-3977-4954-ad00-0ff59fd89e60"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en"
+        }
+    ],
+    "filename": [
+        {
+            "value": "publication2.txt"
+        }
+    ],
+    "uri": [
+        {
+            "value": "public:\/\/publication2_0_7_5_0_0_0.txt"
+        }
+    ],
+    "filemime": [
+        {
+            "value": "text\/plain"
+        }
+    ],
+    "filesize": [
+        {
+            "value": "0"
+        }
+    ],
+    "status": [
+        {
+            "value": "1"
+        }
+    ],
+    "created": [
+        {
+            "value": "1443582692"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1443582699"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "document"
+        }
+    ],
+    "data": [
+        {
+            "value": ""
+        }
+    ]
+}

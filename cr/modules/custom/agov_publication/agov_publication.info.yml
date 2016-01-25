@@ -1,0 +1,29 @@
+name: aGov Publication
+type: module
+description: 'Provides a Publication content type and listing page.'
+package: aGov
+core: '8.x'
+
+dependencies:
+  - datetime
+  - fences
+  - file
+  - text
+  - title
+  - user
+  - views
+
+config_devel:
+  - core.base_field_override.node.publication.promote
+  - core.entity_form_display.node.publication.default
+  - core.entity_view_display.node.publication.default
+  - core.entity_view_display.node.publication.teaser
+  - field.field.node.publication.body
+  - field.field.node.publication.field_publication_date
+  - field.field.node.publication.field_publication_documents
+  - field.field.node.publication.field_publication_subtitle
+  - field.storage.node.field_publication_date
+  - field.storage.node.field_publication_documents
+  - field.storage.node.field_publication_subtitle
+  - node.type.publication
+  - views.view.publications

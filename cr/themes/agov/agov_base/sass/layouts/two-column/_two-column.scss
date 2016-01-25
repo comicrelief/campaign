@@ -1,0 +1,24 @@
+// Two column
+//
+// Markup: two-column.hbs
+//
+// Style guide: layouts.two-column
+.two-column {
+  @include clearfix;
+
+  &__left {
+    @include respond-to('two-column') {
+      @include padding(0 .5);
+      float: left;
+      width: 67%;
+    }
+  }
+
+  &__right {
+    @include respond-to('two-column') {
+      @include padding(0 .5);
+      float: left;
+      width: 33%;
+    }
+  }
+}

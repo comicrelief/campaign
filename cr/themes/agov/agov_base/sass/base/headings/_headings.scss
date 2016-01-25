@@ -1,0 +1,68 @@
+// Dependencies.
+@import '../normalize';
+
+// Headings
+//
+// All HTML headings, <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code>,
+// are available. <code>%h1</code> through <code>%h6</code> classes are also
+// available, for when you want to match the font styling of a heading but still
+// want your text to be displayed inline.
+//
+// Markup: headings-h.hbs
+//
+// Style guide: base.headings
+
+.heading,
+%heading {
+  // Set 1 unit of vertical rhythm on the top and bottom margins.
+  @include margin(1 0);
+  font-weight: weight(bold);
+
+  &--twitter {
+    @include margin-bottom(.5);
+  }
+}
+
+// Address variable `h1` font-size and margin within `section` and `article`
+// contexts in Firefox 4+, Safari, and Chrome.
+h1,
+%h1 {
+  @extend %heading;
+  @include type-layout(xxl, 2.2);
+}
+
+h2,
+%h2 {
+  @extend %heading;
+  @include type-layout(xl, 1.4);
+}
+
+h3,
+%h3 {
+  @extend %heading;
+  @include type-layout(l, 1);
+}
+
+h4,
+%h4 {
+  @extend %heading;
+  @include type-layout(m, 1);
+}
+
+h5,
+%h5 {
+  @extend %heading;
+  @include type-layout(s, 1);
+}
+
+h6,
+%h6 {
+  @extend %heading;
+  @include type-layout(xs, 1);
+}
+
+
+// Fugly selectors.
+.pane-twitter-block-1 h2 {
+  @extend %heading--twitter;
+}

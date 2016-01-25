@@ -1,0 +1,65 @@
+// Autocomplete field
+//
+// As the user starts to type a value, a selection list appears below the form
+// item allowing them to choose an option.
+//
+// @TODO: The current icon is broken. We will need to replace the old
+// throbber.gif with an icon from the icon library.
+//
+// Markup: autocomplete.hbs
+//
+// .is-throbbing - Waiting for search result.
+//
+// Style guide: components.forms.autocomplete
+
+
+// Animated throbber
+.autocomplete,
+%autocomplete {
+  background-image: image-url('components/autocomplete/throbber.gif');
+  background-position: 100% 2px;
+  background-repeat: no-repeat;
+
+  @include rtl() {
+    background-position: 0% 2px;
+  }
+
+  &.is-throbbing,
+  &-is-throbbing {
+    background-position: 100% -18px;
+
+    @include rtl() {
+      background-position: 0% -18px;
+    }
+  }
+
+  // Suggestion list.
+  &__list-wrapper {
+    border: 1px solid;
+    overflow: hidden;
+    position: absolute;
+    z-index: 100;
+  }
+
+  &__list {
+    list-style: none;
+    list-style-image: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__list-item {
+    background: color(autocomplete-bg);
+    color: color(autocomplete);
+    cursor: default;
+    white-space: pre;
+    @if support-legacy-browser(ie, '7') {
+      zoom: 1;
+    }
+  }
+
+  &__list-item-is-selected {
+    background: color(autocomplete-select-bg);
+    color: color(autocomplete-select);
+  }
+}

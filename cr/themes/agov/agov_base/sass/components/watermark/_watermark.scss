@@ -1,0 +1,34 @@
+// Watermark
+//
+// Make the element appear beneath sibling elements, like a watermark.
+//
+// Markup: watermark.hbs
+//
+// Style guide: components.watermark
+
+.watermark,
+%watermark {
+  @include font-size(75px);
+  display: block;
+  height: 0;
+  overflow: visible;
+  // Remove background highlighting from <mark> in normalize.
+  background-color: transparent;
+  color: color(watermark);
+  line-height: 1;
+  font-weight: weight(bold);
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 0 0 1px rgba(0, 0, 0, .1);
+  word-wrap: break-word;
+
+  // The watermark's wrapper only needs CSS for IE 6/7.
+  &__wrapper {
+    // Otherwise adjacent elements will appear below the watermark text.
+    @if support-legacy-browser(ie, '7') {
+      > * {
+        *position: relative;
+      }
+    }
+  }
+}

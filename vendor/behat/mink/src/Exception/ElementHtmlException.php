@@ -10,9 +10,8 @@
 
 namespace Behat\Mink\Exception;
 
-use Behat\Mink\Driver\DriverInterface;
-use Behat\Mink\Element\Element;
 use Behat\Mink\Session;
+use Behat\Mink\Element\Element;
 
 /**
  * Exception thrown when an expectation on the HTML of an element fails.
@@ -31,16 +30,16 @@ class ElementHtmlException extends ExpectationException
     /**
      * Initializes exception.
      *
-     * @param string                  $message   optional message
-     * @param DriverInterface|Session $driver    driver instance
-     * @param Element                 $element   element
-     * @param \Exception              $exception expectation exception
+     * @param string     $message   optional message
+     * @param Session    $session   session instance
+     * @param Element    $element   element
+     * @param \Exception $exception expectation exception
      */
-    public function __construct($message, $driver, Element $element, \Exception $exception = null)
+    public function __construct($message, Session $session, Element $element, \Exception $exception = null)
     {
         $this->element = $element;
 
-        parent::__construct($message, $driver, $exception);
+        parent::__construct($message, $session, $exception);
     }
 
     protected function getContext()

@@ -19,6 +19,6 @@ class ResponseTextException extends ExpectationException
 {
     protected function getContext()
     {
-        return $this->getDriver()->getText('//html');
+        return $this->getSession()->getPage()->getText();
     }
 }

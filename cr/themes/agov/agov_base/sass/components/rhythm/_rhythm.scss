@@ -1,0 +1,26 @@
+// Rhythm
+//
+// Add vertical rhythm above and below an element.
+//
+// .rhythm--none - Turns off rhythm spacing.
+//
+// Markup: rhythm.hbs
+//
+// style guide: components.field
+
+.rhythm,
+%rhythm {
+  @include margin(1 0);
+
+  &--none {
+    margin: 0;
+  }
+
+  &--top {
+    @include margin-top(1);
+  }
+
+  &--bottom {
+    @include margin-bottom(1);
+  }
+}

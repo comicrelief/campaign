@@ -1,0 +1,169 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/publications\/comis-esca-pertineo-saluto-utinam?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/publication"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/publication\/uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/publication\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/publication\/field_publication_documents": [
+            {
+                "href": "http:\/\/default\/file\/12?_format=hal_json"
+            }
+        ]
+    },
+    "uuid": [
+        {
+            "value": "2b94cfce-5de5-4905-8c00-dd13276d1a44"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "publication"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "title": [
+        {
+            "value": "Comis Esca Pertineo Saluto Utinam",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/publication\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "f1131890-f8e5-4f1a-824f-79e7c9979b19"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/publication\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "f1131890-f8e5-4f1a-824f-79e7c9979b19"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/publication\/field_publication_documents": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/12?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/document"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "20a48d87-0e76-4580-9609-9a4592cdd0c5"
+                    }
+                ],
+                "display": "1",
+                "description": ""
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1445235783",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1445235848",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1445235834"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<p>Neo quibus quidne tego. Antehabeo augue diam et melior. Causa comis commodo exputo hendrerit magna nisl nobis pecus turpis. Adipiscing augue hos lobortis olim quibus quidem vero. Gemino odio patria quae tation. Elit magna pneum quae. Genitus odio paratus plaga si validus vicis. Abdo duis ille iriure jus rusticus utinam. Abico adipiscing metuo ulciscor vereor. Camur dignissim modo persto populus refoveo rusticus usitas. Eum loquor molior. Facilisi metuo occuro quidem tego. Camur ea esse euismod feugiat pertineo veniam. Abluo caecus decet ea ex haero nostrud olim qui utinam. Gilvus ideo luptatum nibh occuro pala qui sino vulpes. Facilisis genitus refero sit tum. Ideo illum luctus molior nisl nostrud ulciscor ut uxor. Esca populus turpis uxor vel. Abigo nisl oppeto praesent quadrum refero singularis. Gravis hendrerit ideo rusticus utinam verto. Causa comis conventio saepius secundum uxor. Ad duis eu ille nulla pala valde zelus. Blandit volutpat vulpes. Natu neque patria saluto similis te tum uxor. Quae refoveo turpis. Et exputo gemino illum lobortis premo quidne turpis. Esca nimis paratus similis ullamcorper. Autem ea huic ludus minim proprius quibus quidne. Consectetuer damnum ea erat hos pertineo refero tamen. Dolus secundum te ulciscor valetudo. Dolor inhibeo lenis mos nobis pertineo quidem sino. Distineo eligo eum genitus huic humo magna nobis si venio. Aptent caecus exerci nunc. Causa dignissim feugiat persto si vindico volutpat. Iriure melior occuro. Singularis tamen turpis. Bene cogo facilisis imputo quis saluto suscipit volutpat ymo. Brevitas iaceo odio refero roto tamen venio. Facilisi inhibeo laoreet nutus oppeto te tego. Camur cui esca luctus pecus refero vindico. Ad defui duis loquor neque nibh proprius refoveo scisco. Decet eu immitto singularis virtus. Brevitas dignissim esse iaceo pagus premo torqueo vulputate. Oppeto roto sed utinam. Euismod gravis jumentum mos paratus praesent vero. Commodo dolore neque populus vel. Defui dignissim duis patria te. Ad imputo iriure laoreet quidne ratis secundum sit vicis. Abico augue caecus causa dolor iustum patria populus praemitto volutpat. Comis dignissim eu eum ille nulla ratis vulpes. Abigo caecus dolus fere lucidus nulla ymo.<\/p>\r\n",
+            "format": "basic_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ],
+    "field_publication_date": [
+        {
+            "value": "2006-10-04"
+        }
+    ],
+    "field_publication_subtitle": [
+        {
+            "value": "Abluo ad bene in patria veniam. Acsi eligo tation vereor. Damnum ex jumentum nimis veniam. Dignissim dolor lenis volutpat. Exputo letalis mos. Comis dignissim humo immitto inhibeo iriure iusto pecus. Gravis qui scisco te tum ullamcorper ut vereor."
+        }
+    ]
+}
