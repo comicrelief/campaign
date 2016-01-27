@@ -1,0 +1,5 @@
+drupal.youtube:
+  version: VERSION
+  css:
+    theme:
+      css/youtube.css: {}
