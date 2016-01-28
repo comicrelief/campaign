@@ -1,0 +1,107 @@
+uuid: dbd8aefa-e6d2-4a1d-bd04-4c18d1d25133
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.news_article.body
+    - field.field.node.news_article.field_intro
+    - field.field.node.news_article.field_media
+    - field.field.node.news_article.field_publish_date
+    - field.field.node.news_article.field_site_image
+    - field.field.node.news_article.field_type_news
+    - field.field.node.news_article.field_youtube_url
+    - node.type.news_article
+  module:
+    - datetime
+    - image
+    - path
+    - text
+    - youtube
+id: node.news_article.default
+targetEntityType: node
+bundle: news_article
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 0
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+  field_intro:
+    type: text_textarea
+    weight: 0
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_media:
+    type: entity_reference_autocomplete_tags
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_publish_date:
+    type: datetime_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+  field_site_image:
+    type: image_image
+    weight: 0
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_type_news:
+    type: options_select
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+  field_youtube_url:
+    type: youtube
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: false
+    weight: 15
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: false
+    weight: 16
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }
