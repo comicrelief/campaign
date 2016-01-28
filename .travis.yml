@@ -46,4 +46,6 @@ install:
   # Move into core directory for phpunits benefit
   - cd core
   - exit 0
-  
+
+notifications:
+  slack: comicrelief:W1jExvqbSU9Kb3lyavdGHdGD
