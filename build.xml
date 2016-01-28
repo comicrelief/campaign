@@ -72,7 +72,7 @@
 
   </target>
 
-<!--   <target name="test"
+<!--  <target name="test"
           depends="phpcs, simpletest"
           description="Run the test suite">
   </target> -->
