@@ -1,0 +1,27 @@
+uuid: 848b5f5c-85f9-468e-a900-d06dc32d3468
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_media
+    - node.type.news_article
+    - taxonomy.vocabulary.media
+id: node.news_article.field_media
+field_name: field_media
+entity_type: node
+bundle: news_article
+label: Media
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      media: media
+    sort:
+      field: _none
+    auto_create: true
+field_type: entity_reference

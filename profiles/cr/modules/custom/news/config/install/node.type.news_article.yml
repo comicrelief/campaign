@@ -1,0 +1,18 @@
+uuid: 293464ce-49fc-4c62-9a45-6905ff103e1c
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'News article'
+type: news_article
+description: 'Use a ''News article'' to publish an article in the News section. Supports title, image, body, publish date and and media tags.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false
