@@ -52,7 +52,7 @@
   <!-- ============ -->
 
   <target name="build"
-          depends="clean, prepare, make, install"
+          depends="clean, prepare, make-core, install"
           description="Build (or rebuild) the project.">
   </target>
 
@@ -146,12 +146,17 @@
   </target>
 
   <target name="make"
-          description="Compile CR from a make file">
+          description="Compile CR contrib from a make file">
     <exec dir="${app.dir}"
           command="${drush.cmd} make -y ${app.profile.dir}/drupal-org.make --no-core --contrib-destination=${app.profile.dir}"
           checkreturn="true"
           logoutput="true"
           passthru="true" />
+  </target>
+
+  <target name="make-core"
+          depends="make"
+          description="Compile CR from a make file">
     <exec dir="${app.dir}"
           command="${drush.cmd} make -y ${app.profile.dir}/drupal-org-core.make --no-cache --prepare-install"
           checkreturn="true"
