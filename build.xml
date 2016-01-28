@@ -11,7 +11,7 @@
   <!-- ========== -->
 
   <!-- Application -->
-  <property name="app.uri"                value="http://cr-campaign.dev"                                     override="true" />
+  <property name="app.uri"                value="http://campaign.dev"                                     override="true" />
   <property name="app.name"               value="CR Campaign"                                                override="true" />
   <property name="app.dir"                value="${project.basedir}"                              override="true" />
   <property name="app.profile.name"       value="cr"                                                override="true" />
@@ -161,9 +161,10 @@
 
   <target name="install"
           description="Install CR with standard configuration.">
+    <!-- Fix up permissions -->
+    <exec command="chmod 755 ${app.dir}/sites/default" />
+    <exec command="chmod 755 ${app.dir}/sites/default/settings.php;" />
     <!-- Install the site -->
-    <echo msg="${drush.cmd}"/>
-    <exec command="drush8" logoutput="true" passthru="false"/>
     <exec dir="${app.dir}"
           command="${drush.cmd} site-install ${app.profile.name} -y --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring} ${app.profile.options}"
           logoutput="true"
