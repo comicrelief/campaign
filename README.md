@@ -32,13 +32,13 @@ To login to the site, for example run
 
 	phing login
 
-To remake all contrib modules and Drupal core, run
+To remake all contrib modules (for example, when adding a new module), run
 
 	phing make
 
-Copy over example local settings and adapt the database URL
+To list all possible Phing targets, check
 
-	cp sites/default/example.settings.local.php sites/default/settings.local.php
+	phing -l
 
 ## How to run this on Pantheon
 
