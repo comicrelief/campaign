@@ -1,0 +1,61 @@
+// Pager
+//
+// Paged navigation is a list of page numbers when more than 1 page of content
+// is available.
+//
+// Markup: pager.hbs
+//
+// Style guide: components.navigation.pager
+
+.pager,
+%pager {
+  @extend %print-none;
+  clear: both;
+  padding: 0;
+  text-align: center;
+  text-indent: 0;
+
+  // A page item in the pager list.
+  &__item {
+    display: inline;
+    padding: 0;
+    list-style-type: none;
+    background-image: none;
+  }
+
+  &__item-icon {
+    font-size: 17px;
+    padding: 0 2px;
+  }
+
+  .fa {
+    @extend %pager__item-icon;
+  }
+
+  // The current page's list item.
+  &__current-item {
+    @extend %pager__item;
+    @extend %pager__link;
+    color: color(link);
+    background: color(pager-bg);
+    font-weight: weight(bold);
+  }
+
+  &__link {
+    @include margin(0 .25 0 0);
+    @include padding(.25 .5);
+    display: inline-block;
+    border: 1px solid color(border);
+    text-decoration: none;
+
+    .pager__item:last-child &,
+    %pager__item:last-child & {
+      margin-right: 0;
+    }
+
+    &:hover,
+    &:focus {
+      background: color(pager-bg);
+    }
+  }
+}

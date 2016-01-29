@@ -1,0 +1,26 @@
+name: aGov Article Content
+type: module
+description: 'Provides the article content type.'
+package: aGov
+core: '8.x'
+
+dependencies:
+  - views
+  - block
+  - title
+  - fences
+
+config_devel:
+  - node.type.article
+  - core.entity_form_display.node.article.default
+  - core.entity_view_display.node.article.default
+  - core.entity_view_display.node.article.teaser
+  - core.entity_view_mode.node.article.teaser_small
+  - core.entity_view_display.node.article.teaser_small
+  - field.field.node.article.body
+  - field.field.node.article.field_article_image
+  - field.storage.node.field_article_image
+  - field.field.node.article.field_article_date
+  - field.storage.node.field_article_date
+  - views.view.latest_updates
+  - views.view.news

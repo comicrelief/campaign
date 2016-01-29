@@ -1,0 +1,29 @@
+name: STARTERKIT
+description: 'A sub-theme of the agov_base theme.'
+
+type: theme
+package: aGov
+core: 8.x
+
+base theme: agov_base
+
+libraries:
+  - STARTERKIT/component-library
+
+regions:
+  secondary_menu: 'Secondary menu'
+  header: Header
+  primary_menu: 'Primary menu'
+  highlighted: Highlighted
+  breadcrumb: Breadcrumb
+  help: Help
+  content: Content
+  sidebar_second: 'Right sidebar (or additional left sidebar)'
+  footer_top: 'Footer top'
+  footer: Footer
+  bottom: 'Un-styled page bottom (site builder utility area)'
+  # These next two regions are REQUIRED. They are special regions used in the
+  # html.html.twig template instead of the page.html.twig template. And they are
+  # hidden from the "block layout" admin page.
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'

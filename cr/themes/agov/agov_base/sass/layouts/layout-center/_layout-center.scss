@@ -1,0 +1,44 @@
+// Dependencies.
+// Allow layout-center's margin/padding to override layout-3col.
+
+// Layout Center
+//
+// All other layouts should be nested inside this centered layout to ensure that
+// content does not get too wide on very large screens.
+//
+// Applying a `.layout-*` class to the same HTML element as `.layout-center`
+// would cause that element's grid to mis-align with the rest of the grid on the
+// page, but this component will automatically detect the other `.layout-*`
+// class and automatically use the `.layout-center--has-unnested-child` variant
+// instead.
+//
+// .layout-center--has-unnested-child - If `.layout-center` is applied to the
+//                                      same div as another .layout-* class,
+//                                      then this variant should be used to fix
+//                                      the grid alignment. Note: Each time a
+//                                      new .layout-* component is created, this
+//                                      component will need to be modified.
+//
+// Markup: layout-center.hbs
+//
+// Style guide: layouts.layout-center
+
+.layout-center,
+%layout-center {
+  @include zen-apply-gutter-padding($zen-gutters--small);
+  // The max content width is 1140px (the container width minus the gutters.)
+  max-width: $container + $zen-gutters--medium;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include respond-to(medium) {
+    @include zen-apply-gutter-padding($zen-gutters--medium);
+  }
+
+  // Since .layout-center has overridden the negative margin on another
+  // .layout-* container, we don't need the gutter on
+  &--has-unnested-child {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

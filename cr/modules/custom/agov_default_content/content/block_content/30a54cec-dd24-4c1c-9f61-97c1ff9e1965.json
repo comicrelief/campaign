@@ -1,0 +1,69 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/block\/6?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/block_content\/icon_block"
+        }
+    },
+    "uuid": [
+        {
+            "value": "30a54cec-dd24-4c1c-9f61-97c1ff9e1965"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "info": [
+        {
+            "value": "Icon block 3",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "icon_block"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1444017443",
+            "lang": "en"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "field_icon_block_description": [
+        {
+            "value": "Suspendisse sapien lorem, tempus at consectetur id, ultricies ac nibh! Nullam a metus ex."
+        }
+    ],
+    "field_icon_block_icon": [
+        {
+            "value": "fa fa-calendar-o"
+        }
+    ],
+    "field_icon_block_title": [
+        {
+            "uri": "internal:\/",
+            "title": "Nunc pulvinar venenatis",
+            "options": [
+
+            ]
+        }
+    ]
+}

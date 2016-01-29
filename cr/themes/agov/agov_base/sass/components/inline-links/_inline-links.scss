@@ -1,0 +1,24 @@
+// Inline links
+//
+// A list of links that are inline with each other.
+//
+// Markup: inline-links.hbs
+//
+// Style guide: components.inline-links
+
+.inline-links,
+%inline-links {
+  padding: 0;
+
+  &__item {
+    @include padding(0 1 0 0);
+    display: inline;
+    list-style-type: none;
+
+    @include rtl() {
+      @include padding(0 0 0 1);
+      // Bug in Safari causes display: inline to fail.
+      display: inline-block;
+    }
+  }
+}

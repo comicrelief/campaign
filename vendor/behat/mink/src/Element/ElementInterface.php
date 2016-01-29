@@ -50,7 +50,7 @@ interface ElementInterface
     /**
      * Checks if an element still exists in the DOM.
      *
-     * @return bool
+     * @return boolean
      */
     public function isValid();
 
@@ -62,7 +62,6 @@ interface ElementInterface
      *                            Will receive reference to `this element` as first argument.
      *
      * @return mixed
-     *
      * @throws \InvalidArgumentException When invalid callback given.
      */
     public function waitFor($timeout, $callback);

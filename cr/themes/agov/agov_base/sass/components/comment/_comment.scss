@@ -1,0 +1,86 @@
+// Comments
+//
+// The comments of page.
+//
+// Markup: comment.hbs
+//
+// Style guide: components.comment
+
+// Comments picture
+//
+// The comments of page.
+//
+// Markup: comment-picture.hbs
+//
+// Style guide: components.comment-picture
+
+.comment,
+%comment {
+  @include margin-bottom(2);
+
+  // Wrapper for the list of comments.
+  &__outer-wrapper {
+    @include margin(1 0);
+
+    // Improve indented comment alignment.
+    .indented {
+      @include margin-left(50px);
+    }
+  }
+
+  &__outer-wrapper-title {
+    @extend %divider;
+    @include margin-bottom(2);
+    @include padding-bottom(1);
+  }
+
+  &__inner-wrapper {
+    @include padding-left(50px);
+    position: relative;
+
+    &:before {
+      @extend .fa;
+      @extend .fa-comment-o;
+      position: absolute;
+      top: 3px;
+      left: 0;
+      font-size: 30px;
+      color: color(comment-icon);
+    }
+  }
+
+  &__meta {
+    color: color(comment-meta);
+    text-transform: uppercase;
+    font-size: 80%;
+  }
+
+  &__permalink {
+    display: inline-block;
+    float: right;
+  }
+
+  &__title {
+    @include margin(0 0 .25);
+  }
+
+  p {
+    @include margin(3px 0);
+  }
+
+  ul.links {
+    @include margin(.5 0);
+    display: inline-block;
+    padding: 0;
+    text-indent: 0;
+
+    li {
+      padding-left: 0;
+    }
+
+    a {
+      text-transform: uppercase;
+      font-size: 80%;
+    }
+  }
+}

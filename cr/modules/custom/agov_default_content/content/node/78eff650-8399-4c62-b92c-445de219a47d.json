@@ -1,0 +1,161 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/resources?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/standard_page"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/standard_page\/uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/standard_page\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/standard_page\/field_standard_page_image": [
+            {
+                "href": "http:\/\/default\/file\/3?_format=hal_json"
+            }
+        ]
+    },
+    "uuid": [
+        {
+            "value": "78eff650-8399-4c62-b92c-445de219a47d"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "standard_page"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "title": [
+        {
+            "value": "Resources",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/standard_page\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "f1131890-f8e5-4f1a-824f-79e7c9979b19"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/standard_page\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "f1131890-f8e5-4f1a-824f-79e7c9979b19"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/standard_page\/field_standard_page_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/3?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "6a687c7b-0eb1-4007-ab3d-6198f8c37d19"
+                    }
+                ],
+                "alt": "Fresh fruit and veg",
+                "title": "",
+                "width": "900",
+                "height": "600"
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1444123051",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1444610252",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1444123078"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<p>Lorem ipsum dolor sit amet, case malis praesent his ea, tota fuisset eum te, ex commune expetendis nec. Ad insolens recusabo similique nec. Ea pertinax eloquentiam neglegentur pri. At decore ponderum expetendis per, eum amet error in, ex sed tollit officiis electram. Nibh elaboraret his id, an ius mutat tempor voluptaria.<\/p>\r\n\r\n<p>Bonorum voluptua platonem mel ne. Fugit tincidunt sadipscing per in. Sit clita cetero legendos id, pro error appellantur cu. Ea quod scripta habemus qui. No eam probo melius aliquando, ad graecis mandamus per. Dolore expetenda eam et.<\/p>\r\n\r\n<p>Et dolore splendide voluptatibus cum, eos erat congue impedit ne. Accusata mandamus eam te. Cum ex oblique aliquid voluptatibus. Usu sonet zril corrumpit te, possim legimus an nec. Oporteat suavitate id per, sonet fastidii mel ex.<\/p>\r\n\r\n<p>Dico sale suavitate an pri, vim nostro equidem intellegam et, eu laudem partiendo accusamus has. Cum ex ipsum epicuri. In ius utroque deterruisset. Persius albucius cu eos, iriure recusabo te sed. Pri eu lorem detracto insolens, ne dicam populo omittam vel. No pro ullum electram accusamus.<\/p>\r\n\r\n<p>Magna augue graecis te eos. Nec at consequat prodesset rationibus. Ex postea inciderint pro, ius tantas aeterno albucius te, dico oratio invidunt ne nec. Eam et habeo facilisis intellegat. Et dicat officiis est, ad ubique aperiri voluptatum vix, oratio semper eum id. Nam ad doming dolores, suas iisque fabulas an pri, quodsi maluisset an mei. Nisl diam nominati sea no.<\/p>\r\n\r\n<p>Vix ei nisl erant primis, dolor perfecto contentiones pro ad, convenire consulatu pertinacia eu nam. Usu modo menandri in, qui eius mollis euripidis no. Nec ei sumo admodum consetetur, duo ne ferri utroque blandit. Cu vis illud accusam, utamur latine atomorum quo ut, est te sint tollit molestiae. Id per movet scripserit.<\/p>\r\n\r\n<p>Nec vocent assentior persequeris ne. Ludus dolore ut nam, scripta legimus corrumpit ex cum. Pro vidit percipit mandamus ne. Mei volumus inciderint cu, eruditi indoctum intellegat ad usu. An veri vidit pro, mea at aliquid interpretaris. Fabulas noluisse voluptatum ex pro.<\/p>\r\n\r\n<p>Ut qui voluptua gubergren, te illud feugait hendrerit vel. Cum efficiendi liberavisse eu. Lorem virtute sadipscing vel an, alii principes pro ex, eu unum impetus placerat ius. Sed assentior cotidieque theophrastus ne, mei id offendit eleifend maluisset. Persecuti vituperata duo an, duo labitur scripserit id.<\/p>\r\n\r\n<p>Eum in bonorum sanctus, labitur appareat mel ea. Solum ignota alienum vix cu, ne mea abhorreant dissentiunt efficiantur. Vix ei consul commodo, nominavi evertitur no eos, ne hinc oratio utroque nec. Sea ex sale ridens nostrum. Sit diceret recusabo ad. Quem nisl omnes at mei, te homero integre mnesarchum vis.<\/p>\r\n\r\n<p>Vel te alia principes, et pri essent atomorum. Nec mazim inciderint ad, nihil eloquentiam ea sea, ea mazim suavitate sed. Ne noster appareat eleifend vim, ad duo mollis inermis. Nam hinc invidunt in. Nam ut vocent antiopam, atqui definitiones est ad. Qui ne nibh doming, ex eum doctus posidonium.<\/p>\r\n",
+            "format": "basic_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ]
+}

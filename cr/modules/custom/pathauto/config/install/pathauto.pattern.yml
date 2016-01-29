@@ -1,0 +1,12 @@
+patterns:
+  node:
+    default: '/content/[node:title]'
+
+  taxonomy_term:
+    default: '/[term:vocabulary]/[term:name]'
+
+  forum:
+    default: '/[term:vocabulary]/[term:name]'
+
+  user:
+    default: '/users/[user:name]'

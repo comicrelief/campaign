@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    content:
+      - 'block_content:editorial_content:a608987c-1b74-442b-b900-a54f40cda661'
+  theme:
+    - agov_base
+id: copyrightmessage
+theme: agov_base
+region: footer
+weight: -5
+provider: null
+plugin: 'block_content:a608987c-1b74-442b-b900-a54f40cda661'
+settings:
+  id: 'block_content:a608987c-1b74-442b-b900-a54f40cda661'
+  label: 'Copyright Message'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

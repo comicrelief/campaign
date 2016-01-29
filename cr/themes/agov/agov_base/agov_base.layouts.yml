@@ -1,0 +1,26 @@
+landing_page:
+  label: Landing Page
+  category: aGov
+  template: layouts/landing_page/landing-page
+  css: layouts/landing_page/layout.css
+  regions:
+    header_left:
+      label: Header Left
+    header_right:
+      label: Header Right
+    promo_1:
+      label: Promo region 1
+    promo_2:
+      label: Promo region 2
+    promo_3:
+      label: Promo region 3
+    body_left:
+      label: Body Left
+    body_right:
+      label: Body Right
+    footer_1:
+      label: Footer region 1
+    footer_2:
+      label: Footer region 2
+    footer_3:
+      label: Footer region 3

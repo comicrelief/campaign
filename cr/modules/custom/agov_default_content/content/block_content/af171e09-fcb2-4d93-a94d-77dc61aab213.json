@@ -1,0 +1,58 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/block\/1?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/block_content\/editorial_content"
+        }
+    },
+    "uuid": [
+        {
+            "value": "af171e09-fcb2-4d93-a94d-77dc61aab213"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "info": [
+        {
+            "value": "Homepage Blurb",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "editorial_content"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1443749279",
+            "lang": "en"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<h2><span>This is a promo space to highlight important news or events. Customise this block with your own content.<\/span><\/h2>\r\n",
+            "format": "basic_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ]
+}

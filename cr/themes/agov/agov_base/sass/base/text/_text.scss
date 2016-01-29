@@ -1,0 +1,233 @@
+// Dependencies.
+@import '../normalize';
+
+// Text-level semantics
+//
+// Markup: text.hbs
+//
+// Weight: 1
+//
+// Style guide: base.text
+
+// Abbreviation / Acroynym
+//
+// Stylized implementation of HTML's <code>&lt;abbr&gt;</code> element for
+// abbreviations and acronyms to show the expanded version on hover.
+// Abbreviations with a <code>title</code> attribute have a light dotted bottom
+// border and a help cursor on hover, providing additional context on hover.
+//
+// Markup: text-abbr.hbs
+//
+// Style guide: base.text.abbr
+
+abbr[title] {
+  // Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+  border-bottom: 1px dotted;
+
+  @media print {
+    // Add visible title after abbreviations.
+    &:after {
+      content: ' (' attr(title) ')';
+    }
+  }
+}
+
+// Bold
+//
+// For emphasizing a snippet of text with a heavier font-weight. Either the
+// &lt;strong&gt; tag or the &lt;b&gt; tag can be used.
+//
+// Feel free to use <code>&lt;b&gt;</code> in HTML5. <code>&lt;b&gt;</code> is
+// meant to highlight words or phrases without conveying additional importance.
+//
+// Markup: text-b.hbs
+//
+// Style guide: base.text.b
+
+b,
+strong {
+  // Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+  font-weight: weight(bold);
+}
+
+// Cite
+//
+// The cite element represents a reference to a creative work.
+//
+// Markup: text-cite.hbs
+//
+// Style guide: base.text.cite
+
+cite {
+  // Add your styles.
+}
+
+// Code
+//
+// The <code>code</code> element represents a fragment of computer code. The
+// <code>var</code> element represents a variable. The <code>samp</code> element
+// represents (sample) output from a program or computing system. The
+// <code>kbd</code> element represents user input (typically keyboard input.)
+//
+// Markup: text-code.hbs
+//
+// Style guide: base.text.code
+
+code,
+kbd,
+samp,
+var {
+  @extend %monospace;
+}
+
+// Deleted text
+//
+// For indicating blocks of text that have been deleted use the
+// <code>&lt;del&gt;</code> tag.
+//
+// Markup: text-del.hbs
+//
+// Style guide: base.text.del
+
+del {
+  // Add your styles.
+}
+
+// Definition
+//
+// The dfn element represents the defining instance of a term.
+//
+// Markup: text-dfn.hbs
+//
+// Style guide: base.text.dfn
+
+dfn {
+  // Address styling not present in Safari and Chrome.
+  font-style: italic;
+}
+
+// Italics
+//
+// For emphasizing a snippet of text with italics. Either the &lt;em&gt; tag or
+// the &lt;i&gt; tag can be used.
+//
+// Feel free to use <code>&lt;i&gt;</code> in HTML5. <code>&lt;i&gt;</code> is
+// meant to convey voice, technical terms, etc.
+//
+// Markup: text-i.hbs
+//
+// Style guide: base.text.i
+
+i,
+em {
+  // Add your styles.
+}
+
+// Inserted text
+//
+// For indicating additions to the document use the <code>&lt;ins&gt;</code>
+// tag.
+//
+// Markup: text-ins.hbs
+//
+// Style guide: base.text.ins
+
+ins {
+  // Add your styles.
+}
+
+// Marked text
+//
+// For highlighting a run of text due to its relevance in another context, use
+// the <code>&lt;mark&gt;</code> tag.
+//
+// Markup: text-mark.hbs
+//
+// Style guide: base.text.mark
+
+@if support-legacy-browser(ie, '9') {
+  mark {
+    // Address styling not present in IE 8/9.
+    background: color(mark-bg);
+    color: color(text);
+  }
+}
+
+// Quote
+//
+// The <code>q</code> element represents an inline quote from another source.
+// Longer quotes should use the <code>blockquote</code> element.
+//
+// Markup: text-q.hbs
+//
+// Style guide: base.text.q
+
+q {
+  // Add your styles.
+}
+
+// Strikethrough text
+//
+// For indicating blocks of text that are no longer relevant use the
+// <code>&lt;s&gt;</code> tag.
+//
+// Markup: text-s.hbs
+//
+// Style guide: base.text.s
+
+s {
+  // Add your styles.
+}
+
+// Small text
+//
+// For de-emphasizing inline or blocks of text, use the
+// <code>&lt;small&gt;</code> tag to set text at 80% the size of the parent.
+//
+// Markup: text-small.hbs
+//
+// Style guide: base.text.small
+
+small {
+  // Address inconsistent and variable font size in all browsers.
+  @include font-size(s);
+}
+
+// Superscript / Subscript
+//
+// The &lt;sup&gt; tag represents a superscript and the &lt;sub&gt; tag
+// represents a subscript.
+//
+// Markup: text-sub.hbs
+//
+// Style guide: base.text.sub
+
+sub,
+sup {
+  // Prevent `sub` and `sup` affecting `line-height` in all browsers.
+  @include font-size(xs);
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -.5em;
+}
+
+sub {
+  bottom: -.25em;
+}
+
+// Underlined text
+//
+// To underline text use the <code>&lt;u&gt;</code> tag. Not recommended since
+// underlines are used by web browsers to style hyperlinks.
+//
+// Markup: text-u.hbs
+//
+// Style guide: base.text.u
+
+u {
+  // Add your styles.
+}

@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: social_block
+label: 'Social Block'
+revision: 0
+description: 'A block of social icons.'

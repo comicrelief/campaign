@@ -1,0 +1,43 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/users\/qa?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+        }
+    },
+    "uuid": [
+        {
+            "value": "ecf20f9d-0ea0-4229-b005-5d27e49f8515"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "name": [
+        {
+            "value": "qa"
+        }
+    ],
+    "created": [
+        {
+            "value": "1453391289"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1453391289",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ]
+}

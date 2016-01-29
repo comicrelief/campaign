@@ -1,0 +1,112 @@
+// Dependencies.
+@import 'components/status/status';
+
+// Messages
+//
+// System alerts.
+//
+// Style guide: components.messages
+
+// Messages
+//
+// Weight: -1
+//
+// Markup: messages-single.hbs
+//
+// .messages--warning   - Warning messages.
+// .messages--error     - Error messages.
+//
+// Style guide: components.messages.single
+
+// Messages
+//
+// Markup: messages-multiple.hbs
+//
+// .messages--warning   - Warning messages.
+// .messages--error     - Error messages.
+//
+// Style guide: components.messages.multiple
+
+.messages,
+%messages {
+  @extend %status--ok;
+  @extend .fa-check;
+  @include margin(1 0);
+  @include padding(1 .75 1 5.5);
+  @include font-size(m);
+  border: 1px solid color(message-ok);
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  font-family: $font-body;
+
+  @include rtl() {
+    @include padding(1 5.5 1 .75);
+    background-position: 99% 8px;
+  }
+
+  &:before {
+    @extend .fa;
+    font-size: 32px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -18px;
+    color: color(message-color);
+    width: 60px;
+    text-align: center;
+    z-index: 1;
+  }
+
+  &:after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background: color(message-ok);
+    width: 60px;
+    height: 100%;
+    content: '';
+  }
+
+  &--warning {
+    @extend %messages;
+    @extend .fa-warning;
+    @extend %status--warning;
+    border-color: color(warning-border);
+
+    &:after {
+      background: color(message-warning);
+    }
+  }
+
+  &--error {
+    @extend %messages;
+    @extend .fa-close;
+    @extend %status--error;
+    border-color: color(error-border);
+
+    &:after {
+      background: color(message-error);
+    }
+  }
+
+  &--error__highlighted-text {
+    color: color(status-highlight);
+  }
+
+  &__list {
+    @include padding-left(.75);
+    margin: 0;
+    text-indent: 0;
+  }
+
+  &__item {
+    @include margin-bottom(.75);
+    list-style-image: none;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

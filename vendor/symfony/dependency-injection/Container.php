@@ -57,6 +57,8 @@ use Symfony\Component\DependencyInjection\ParameterBag\FrozenParameterBag;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
+ *
+ * @api
  */
 class Container implements IntrospectableContainerInterface
 {
@@ -80,6 +82,8 @@ class Container implements IntrospectableContainerInterface
      * Constructor.
      *
      * @param ParameterBagInterface $parameterBag A ParameterBagInterface instance
+     *
+     * @api
      */
     public function __construct(ParameterBagInterface $parameterBag = null)
     {
@@ -93,6 +97,8 @@ class Container implements IntrospectableContainerInterface
      *
      *  * Parameter values are resolved;
      *  * The parameter bag is frozen.
+     *
+     * @api
      */
     public function compile()
     {
@@ -105,6 +111,8 @@ class Container implements IntrospectableContainerInterface
      * Returns true if the container parameter bag are frozen.
      *
      * @return bool true if the container parameter bag are frozen, false otherwise
+     *
+     * @api
      */
     public function isFrozen()
     {
@@ -115,6 +123,8 @@ class Container implements IntrospectableContainerInterface
      * Gets the service container parameter bag.
      *
      * @return ParameterBagInterface A ParameterBagInterface instance
+     *
+     * @api
      */
     public function getParameterBag()
     {
@@ -129,6 +139,8 @@ class Container implements IntrospectableContainerInterface
      * @return mixed The parameter value
      *
      * @throws InvalidArgumentException if the parameter is not defined
+     *
+     * @api
      */
     public function getParameter($name)
     {
@@ -141,6 +153,8 @@ class Container implements IntrospectableContainerInterface
      * @param string $name The parameter name
      *
      * @return bool The presence of parameter in container
+     *
+     * @api
      */
     public function hasParameter($name)
     {
@@ -152,6 +166,8 @@ class Container implements IntrospectableContainerInterface
      *
      * @param string $name  The parameter name
      * @param mixed  $value The parameter value
+     *
+     * @api
      */
     public function setParameter($name, $value)
     {
@@ -170,6 +186,8 @@ class Container implements IntrospectableContainerInterface
      *
      * @throws RuntimeException         When trying to set a service in an inactive scope
      * @throws InvalidArgumentException When trying to set a service in the prototype scope
+     *
+     * @api
      */
     public function set($id, $service, $scope = self::SCOPE_CONTAINER)
     {
@@ -214,6 +232,8 @@ class Container implements IntrospectableContainerInterface
      * @param string $id The service identifier
      *
      * @return bool true if the service is defined, false otherwise
+     *
+     * @api
      */
     public function has($id)
     {
@@ -249,6 +269,8 @@ class Container implements IntrospectableContainerInterface
      * @throws \Exception                        if an exception has been thrown when the service has been resolved
      *
      * @see Reference
+     *
+     * @api
      */
     public function get($id, $invalidBehavior = self::EXCEPTION_ON_INVALID_REFERENCE)
     {
@@ -373,6 +395,8 @@ class Container implements IntrospectableContainerInterface
      *
      * @throws RuntimeException         When the parent scope is inactive
      * @throws InvalidArgumentException When the scope does not exist
+     *
+     * @api
      */
     public function enterScope($name)
     {
@@ -419,6 +443,8 @@ class Container implements IntrospectableContainerInterface
      * @param string $name The name of the scope to leave
      *
      * @throws InvalidArgumentException if the scope is not active
+     *
+     * @api
      */
     public function leaveScope($name)
     {
@@ -464,6 +490,8 @@ class Container implements IntrospectableContainerInterface
      * @param ScopeInterface $scope
      *
      * @throws InvalidArgumentException
+     *
+     * @api
      */
     public function addScope(ScopeInterface $scope)
     {
@@ -496,6 +524,8 @@ class Container implements IntrospectableContainerInterface
      * @param string $name The name of the scope
      *
      * @return bool
+     *
+     * @api
      */
     public function hasScope($name)
     {
@@ -510,6 +540,8 @@ class Container implements IntrospectableContainerInterface
      * @param string $name
      *
      * @return bool
+     *
+     * @api
      */
     public function isScopeActive($name)
     {

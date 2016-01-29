@@ -1,0 +1,83 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.publication.body
+    - field.field.node.publication.field_publication_date
+    - field.field.node.publication.field_publication_documents
+    - field.field.node.publication.field_publication_subtitle
+    - node.type.publication
+  module:
+    - datetime
+    - file
+    - path
+    - text
+id: node.publication.default
+targetEntityType: node
+bundle: publication
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 8
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+  field_publication_date:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+  field_publication_documents:
+    weight: 9
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+    type: file_generic
+  field_publication_subtitle:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  path:
+    type: path
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 5
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 6
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 3
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

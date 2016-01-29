@@ -19,6 +19,8 @@ use Symfony\Component\Config\Resource\FileResource;
  * CsvFileLoader loads translations from CSV files.
  *
  * @author Saša Stamenković <umpirsky@gmail.com>
+ *
+ * @api
  */
 class CsvFileLoader extends ArrayLoader
 {
@@ -28,6 +30,8 @@ class CsvFileLoader extends ArrayLoader
 
     /**
      * {@inheritdoc}
+     *
+     * @api
      */
     public function load($resource, $locale, $domain = 'messages')
     {
@@ -51,8 +55,18 @@ class CsvFileLoader extends ArrayLoader
         $file->setCsvControl($this->delimiter, $this->enclosure, $this->escape);
 
         foreach ($file as $data) {
-            if ('#' !== substr($data[0], 0, 1) && isset($data[1]) && 2 === count($data)) {
+            if (substr($data[0], 0, 1) === '#') {
+                continue;
+            }
+
+            if (!isset($data[1])) {
+                continue;
+            }
+
+            if (count($data) == 2) {
                 $messages[$data[0]] = $data[1];
+            } else {
+                continue;
             }
         }
 

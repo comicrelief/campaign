@@ -1,0 +1,39 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.social_block
+    - field.field.block_content.social_block.field_social_icon
+  module:
+    - linkicon
+id: block_content.social_block.default
+targetEntityType: block_content
+bundle: social_block
+mode: default
+content:
+  field_social_icon:
+    weight: 0
+    label: visually_hidden
+    settings:
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+      linkicon_prefix: fa
+      linkicon_wrapper_class: linkicon--social
+      linkicon_link: false
+      linkicon_load: false
+      linkicon_vertical: false
+      linkicon_style: ''
+      linkicon_color: ''
+      linkicon_tooltip: false
+      linkicon_no_text: false
+      linkicon_maxlength: 60
+      linkicon_global_title: ''
+      linkicon_position: ''
+      linkicon_size: ''
+      linkicon_bundle: ''
+      trim_length: 80
+    third_party_settings: {  }
+    type: linkicon
+hidden: {  }

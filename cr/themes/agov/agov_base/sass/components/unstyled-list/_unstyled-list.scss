@@ -1,0 +1,25 @@
+// Unstyled list
+//
+// A list with all styles removed.
+//
+// Markup: unstyled-list.hbs
+//
+// Style guide: components.unstyled-list
+
+.unstyled-list,
+%unstyled-list {
+  @include margin-top(1);
+  margin-bottom: 0;
+  padding: 0;
+  list-style-type: none;
+  list-style-image: none;
+  text-indent: 0;
+
+  // Turn off margins/padding on nested lists.
+  ol,
+  ul {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+  }
+}

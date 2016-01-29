@@ -1,0 +1,166 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/news\/getting-help?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/article"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_image": [
+            {
+                "href": "http:\/\/default\/file\/2?_format=hal_json"
+            }
+        ]
+    },
+    "uuid": [
+        {
+            "value": "8e339ddb-e924-44e1-8210-16c8a227c0e2"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "article"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "title": [
+        {
+            "value": "Getting help",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "f1131890-f8e5-4f1a-824f-79e7c9979b19"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "f1131890-f8e5-4f1a-824f-79e7c9979b19"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/2?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "059001a3-48e0-4892-bc00-0c7b47d131c0"
+                    }
+                ],
+                "alt": "Family in a field",
+                "title": "",
+                "width": "900",
+                "height": "598"
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1443509326",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1445813602",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1443509336"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<p>If you need assistance a great place to start is http:\/\/agov.com.au or&nbsp;https:\/\/www.drupal.org\/project\/agov (where you will find an issue log for the aGov project and other documentation).<\/p>\r\n\r\n<p>For general Drupal 8 help http:\/\/drupalize.me has some great tutorials and screencasts.<\/p>\r\n\r\n<p>&nbsp;<\/p>\r\n",
+            "format": "basic_html",
+            "summary": "If you need assistance a great place to start is the aGov website or project page on Drupal.org.",
+            "lang": "en"
+        }
+    ],
+    "field_article_date": [
+        {
+            "value": "2015-09-19"
+        }
+    ]
+}

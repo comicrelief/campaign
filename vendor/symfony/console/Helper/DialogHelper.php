@@ -399,7 +399,7 @@ class DialogHelper extends InputAwareHelper
     /**
      * Returns the helper's input stream.
      *
-     * @return resource|null The input stream or null if the default STDIN is used
+     * @return string
      */
     public function getInputStream()
     {

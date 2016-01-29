@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.social_block
+    - field.storage.block_content.field_social_icon
+  module:
+    - link
+id: block_content.social_block.field_social_icon
+field_name: field_social_icon
+entity_type: block_content
+bundle: social_block
+label: 'Social Icon'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 2
+  title_predefined: ''
+field_type: link

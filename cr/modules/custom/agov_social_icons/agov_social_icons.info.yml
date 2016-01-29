@@ -1,0 +1,17 @@
+name: aGov Social Icons
+type: module
+description: 'Provide a social icon block type.'
+package: aGov
+core: '8.x'
+
+dependencies:
+  - block
+  - link
+  - linkicon
+
+config_devel:
+  - block_content.type.social_block
+  - core.entity_form_display.block_content.social_block.default
+  - core.entity_view_display.block_content.social_block.default
+  - field.field.block_content.social_block.field_social_icon
+  - field.storage.block_content.field_social_icon

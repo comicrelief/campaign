@@ -1,44 +1,69 @@
 {
-  "name": "drupal/drupal",
-  "description": "Drupal is an open source content management platform powering millions of websites and applications.",
-  "type": "project",
+  "name": "comicrelief/campaign",
+  "type": "drupal-profile",
+  "description" : "aGov is a free open source Drupal 7 distribution developed specifically for Australian government organisations",
   "license": "GPL-2.0+",
-  "require": {
-    "composer/installers": "^1.0.21",
-    "wikimedia/composer-merge-plugin": "~1.3"
+  "authors": [
+    {
+      "name": "comicrelief",
+      "email": "info@previousnext.com.au",
+      "homepage": "http://comicrelief.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "email": "info@previousnext.com.au",
+    "issues": "https://www.comicrelief.com",
+    "source": "https://github.com/comicrelief/campaign"
   },
-  "replace": {
-    "drupal/core": "~8.0"
+  "repositories": [
+    {
+      "type": "package",
+      "package": {
+        "name": "drupal/coder",
+        "version": "master",
+        "source": {
+          "url": "git://drupalcode.org/project/coder.git",
+          "type": "git",
+          "reference": "7.x-2.3"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "nickschuch/phpcs-security-audit",
+        "version": "master",
+        "source": {
+          "url": "https://github.com/nickschuch/phpcs-security-audit.git",
+          "type": "git",
+          "reference": "master"
+        }
+      }
+    }
+  ],
+  "require": {
+    "composer/installers": "~1.0"
+  },
+  "require-dev": {
+    "phing/phing": "~2.11",
+    "previousnext/phing-phpqatools": "dev-master",
+    "drush/drush": "~8.0.0"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
   "config": {
-    "preferred-install": "dist",
-    "autoloader-suffix": "Drupal8"
+    "bin-dir": "bin/"
   },
   "extra": {
-    "_readme": [
-      "By default Drupal loads the autoloader from ./vendor/autoload.php.",
-      "To change the autoloader you can edit ./autoload.php."
-    ],
-    "merge-plugin": {
-      "include": [
-        "core/composer.json"
-      ],
-      "recurse": false,
-      "replace": false,
-      "merge-extra": false
+    "branch-alias": {
+      "dev-8.x-1.x": "8.1.x-dev",
+      "dev-7.x-3.x": "7.3.x-dev",
+      "dev-7.x-2.x": "7.2.x-dev",
+      "dev-7.x-1.x": "7.1.x-dev"
+    },
+    "installer-paths": {
+      "vendor/drupal/{$name}": ["drupal/coder"]
     }
-  },
-  "autoload": {
-    "psr-4": {
-      "Drupal\\Core\\Composer\\": "core/lib/Drupal/Core/Composer"
-    }
-  },
-  "scripts": {
-    "pre-autoload-dump": "Drupal\\Core\\Composer\\Composer::preAutoloadDump",
-    "post-autoload-dump": "Drupal\\Core\\Composer\\Composer::ensureHtaccess",
-    "post-package-install": "Drupal\\Core\\Composer\\Composer::vendorTestCodeCleanup",
-    "post-package-update": "Drupal\\Core\\Composer\\Composer::vendorTestCodeCleanup"
   }
 }

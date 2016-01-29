@@ -1,0 +1,41 @@
+// Header
+//
+// The header of page.
+//
+// Markup: header.hbs
+//
+// Style guide: components.header
+
+.header,
+%header {
+  background: color(header-background);
+  position: relative;
+
+  @include respond-to('medium') {
+    margin-bottom: 0;
+  }
+
+  &__inner {
+    @include padding(30px 35px 25px);
+    position: relative;
+
+    @include respond-to('medium') {
+      @include padding-left(10px);
+      @include padding-right(10px);
+    }
+  }
+
+  &__logo {
+    @include respond-to('medium') {
+      float: left;
+    }
+  }
+
+  &__logo-image {
+    max-width: 50%;
+
+    @include respond-to('medium') {
+      max-width: 100%;
+    }
+  }
+}

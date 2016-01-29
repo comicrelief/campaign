@@ -1,0 +1,5 @@
+# Schema for the aGov Base theme settings.
+
+agov_base.settings:
+  type: theme_settings
+  label: 'aGov Base settings'

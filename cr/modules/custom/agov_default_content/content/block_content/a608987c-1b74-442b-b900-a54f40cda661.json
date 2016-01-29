@@ -1,0 +1,58 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/block\/4?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/block_content\/editorial_content"
+        }
+    },
+    "uuid": [
+        {
+            "value": "a608987c-1b74-442b-b900-a54f40cda661"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "info": [
+        {
+            "value": "Copyright Message",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "editorial_content"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1444803901",
+            "lang": "en"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<p>\u00a9 Copyright aGov<\/p>\r\n",
+            "format": "basic_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+name: aGov Standard Page
+type: module
+description: 'Provide a standard page bundle.'
+package: aGov
+core: '8.x'
+
+config_devel:
+  - core.base_field_override.node.standard_page.promote
+  - core.entity_form_display.node.standard_page.default
+  - core.entity_view_display.node.standard_page.default
+  - core.entity_view_display.node.standard_page.teaser
+  - core.entity_view_display.node.standard_page.full
+  - field.field.node.standard_page.body
+  - field.field.node.standard_page.field_standard_page_image
+  - field.storage.node.field_standard_page_image
+  - node.type.standard_page
+  - image.style.full_page_wide

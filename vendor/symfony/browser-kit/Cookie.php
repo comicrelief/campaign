@@ -15,6 +15,8 @@ namespace Symfony\Component\BrowserKit;
  * Cookie represents an HTTP cookie.
  *
  * @author Fabien Potencier <fabien@symfony.com>
+ *
+ * @api
  */
 class Cookie
 {
@@ -54,6 +56,8 @@ class Cookie
      * @param bool   $secure       Indicates that the cookie should only be transmitted over a secure HTTPS connection from the client
      * @param bool   $httponly     The cookie httponly flag
      * @param bool   $encodedValue Whether the value is encoded or not
+     *
+     * @api
      */
     public function __construct($name, $value, $expires = null, $path = null, $domain = '', $secure = false, $httponly = true, $encodedValue = false)
     {
@@ -86,6 +90,8 @@ class Cookie
      * @return string The HTTP representation of the Cookie
      *
      * @throws \UnexpectedValueException
+     *
+     * @api
      */
     public function __toString()
     {
@@ -124,6 +130,8 @@ class Cookie
      * @return Cookie A Cookie instance
      *
      * @throws \InvalidArgumentException
+     *
+     * @api
      */
     public static function fromString($cookie, $url = null)
     {
@@ -221,6 +229,8 @@ class Cookie
      * Gets the name of the cookie.
      *
      * @return string The cookie name
+     *
+     * @api
      */
     public function getName()
     {
@@ -231,6 +241,8 @@ class Cookie
      * Gets the value of the cookie.
      *
      * @return string The cookie value
+     *
+     * @api
      */
     public function getValue()
     {
@@ -241,6 +253,8 @@ class Cookie
      * Gets the raw value of the cookie.
      *
      * @return string The cookie value
+     *
+     * @api
      */
     public function getRawValue()
     {
@@ -251,6 +265,8 @@ class Cookie
      * Gets the expires time of the cookie.
      *
      * @return string The cookie expires time
+     *
+     * @api
      */
     public function getExpiresTime()
     {
@@ -261,6 +277,8 @@ class Cookie
      * Gets the path of the cookie.
      *
      * @return string The cookie path
+     *
+     * @api
      */
     public function getPath()
     {
@@ -271,6 +289,8 @@ class Cookie
      * Gets the domain of the cookie.
      *
      * @return string The cookie domain
+     *
+     * @api
      */
     public function getDomain()
     {
@@ -281,6 +301,8 @@ class Cookie
      * Returns the secure flag of the cookie.
      *
      * @return bool The cookie secure flag
+     *
+     * @api
      */
     public function isSecure()
     {
@@ -291,6 +313,8 @@ class Cookie
      * Returns the httponly flag of the cookie.
      *
      * @return bool The cookie httponly flag
+     *
+     * @api
      */
     public function isHttpOnly()
     {
@@ -301,6 +325,8 @@ class Cookie
      * Returns true if the cookie has expired.
      *
      * @return bool true if the cookie has expired, false otherwise
+     *
+     * @api
      */
     public function isExpired()
     {

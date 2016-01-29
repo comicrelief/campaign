@@ -1,0 +1,61 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.article.body
+    - field.field.node.article.field_article_date
+    - field.field.node.article.field_article_image
+    - node.type.article
+  module:
+    - datetime
+    - fences
+    - image
+    - text
+    - user
+id: node.article.default
+targetEntityType: node
+bundle: article
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+  field_article_date:
+    weight: 1
+    label: visually_hidden
+    settings:
+      timezone_override: ''
+      format_type: publication_date
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: date--without-label
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    type: datetime_default
+  field_article_image:
+    weight: 0
+    label: visually_hidden
+    settings:
+      image_style: full_page_wide
+      image_link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    type: image
+  links:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  title: true

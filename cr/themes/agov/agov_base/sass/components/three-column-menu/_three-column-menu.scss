@@ -1,0 +1,35 @@
+// Three Column Menu
+//
+// A menu split into three columns of links.
+//
+// Markup: three-column-menu.hbs
+
+.three-column-menu,
+%three-column-menu {
+  &__list {
+    @include clearfix;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__link {
+    @include padding-right(1);
+    display: block;
+  }
+
+  // scss-lint:disable DeclarationOrder
+  @include respond-to('three-column-menu-two-column') {
+    &__item {
+      float: left;
+      width: 50%;
+    }
+  }
+
+  @include respond-to('three-column-menu-three-column') {
+    &__item {
+      float: left;
+      width: 33.33%;
+    }
+  }
+}

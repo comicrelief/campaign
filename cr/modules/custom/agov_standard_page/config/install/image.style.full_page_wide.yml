@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: full_page_wide
+label: 'Full Page Wide'
+effects:
+  aa24fa15-abed-456d-8b00-0a3f711e1c39:
+    uuid: aa24fa15-abed-456d-8b00-0a3f711e1c39
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 750
+      height: 300

@@ -1,0 +1,40 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+    - field.field.node.standard_page.body
+    - field.field.node.standard_page.field_standard_page_image
+    - node.type.standard_page
+  module:
+    - image
+    - text
+    - user
+id: node.standard_page.full
+targetEntityType: node
+bundle: standard_page
+mode: full
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+  field_standard_page_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: full_page_wide
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  title:
+    label: hidden
+    type: string
+    weight: -5
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  links: true

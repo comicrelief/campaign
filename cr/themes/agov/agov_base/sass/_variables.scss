@@ -1,0 +1,337 @@
+// scss-lint:disable ColorKeyword, ColorVariable, SpaceAfterComma
+
+//
+// Variables
+//
+
+// The following Sass functions are required to generate some variables' values,
+// so we load them first.
+@import 'chroma/functions';
+
+
+//
+// Browser support
+//
+// Based on caniuse.com's browser usage stats, Compass will support any browser
+// that is used by at least 1 user in 10,000. These variables are used to
+// specify which browsers are supported by Compass. "Unsupported" browsers will
+// still see the generated CSS, of course, but will not get special treatment
+// for its bugs or CSS3 vendor prefixes.
+//
+
+// The browser usage threshold for features that cannot degrade gracefully.
+// A value of 100 means 100% of users would have to use the browser before it is
+// supported. A value of .01 (the default) means 1 user in 10,000.
+$critical-usage-threshold: .3 !default;
+
+// Set this to true to generate comments that will explain why a prefix was
+// included or omitted.
+$debug-browser-support: false;
+
+// Optional map of minimum browser versions to support. If a specific browser
+// has usage stats below the $critical-usage-threshold, you can still require
+// support for it using this variable. For example, to require support for IE 6
+// and later, set $browser-minimum-versions['ie'] to '6'.
+$browser-minimum-versions: (
+  'chrome':  null,
+  'firefox': null,
+  'ie':      '8',
+  'safari':  null,
+  'opera':   null
+) !default;
+
+//
+// Border-box support for IE 6/7
+//
+// IE6-7 don't support box-sizing: border-box. We can fix this in 1 of 3 ways:
+// - Drop support for IE 6/7. :-) Set $critical-usage-threshold to a value high
+//   enough to drop IE7 users.
+// - Install the box-sizing polyfill and set the variable below to
+//   the absolute path URL to the boxsizing.htc file.
+//   @see https://github.com/Schepp/box-sizing-polyfill
+//   $box-sizing-polyfill-path: '/path/to/boxsizing.htc';
+// - Use the same CSS unit for grid and gutter width in resonsive-sidebars.scss
+//   (use px for both or use % for both) and set:
+//   $box-sizing: content-box;
+//
+
+
+//
+// Font faces, stacks and sizes.
+//
+
+// The font size set on the root html element.
+$base-font-size:        16px;
+
+// The base line height determines the basic unit of vertical rhythm.
+$base-line-height:      25px;
+
+// Use ratio line height sizing for the simplest approach.
+$line-height-method:      ratio;
+$base-line-height-ratio:  1.5625; // 25px/16px
+
+$font-size: (
+  xxl:              46px,
+  xl:               25px,
+  l:                20px,
+  m:                16px,
+  s:                14px,
+  xs:               12px,
+);
+
+// The length unit in which to output font size and margin values.
+// Supported values: px, em, rem.
+$base-unit:         rem;
+$rem-fallback:      true;
+
+// The following font family declarations use widely available fonts.
+// A user's web browser will look at the comma-separated list and will
+// attempt to use each font in turn until it finds one that is available
+// on the user's computer. The final "generic" font (sans-serif, serif or
+// monospace) hints at what type of font to use if the web browser doesn't
+// find any of the fonts in the list.
+
+// Sans-serif font stacks.
+$opensans:        'Open Sans', Helvetica, sans-serif;
+
+// Monospace font stacks.
+// For an explanation of why "sans-serif" is at the end of this list, see
+// http://meyerweb.com/eric/thoughts/2010/02/12/fixed-monospace-sizing/
+$menlo:           Menlo, 'DejaVu Sans Mono', 'Ubuntu Mono', Courier, 'Courier New', monospace, sans-serif;
+
+// Now create some variables using the font stacks we want on this site.
+$font-body:       $opensans;
+$font-monospace:  $menlo;
+
+$font-weight: (
+  normal:         400,
+  semibold:       600,
+  bold:           700,
+);
+
+// Colors
+//
+// Use the <code>color()</code> function to add colors to CSS properties.
+//
+// Markup: chroma-kss-markup.hbs
+//
+// Weight: -1
+//
+// Style guide: sass.colors
+
+// Define descriptive names of color values.
+$chroma: define-default-color-scheme('Descriptive color names for use in "functional" color names below.');
+$chroma: add-colors((
+  white:                  #fff,
+  white-smoke:            #f3f3f3,
+  grey-extra-light:       #e8e8e8,
+  grey-light:             #ccc,
+  grey-medium:            #999,
+  grey-medium-dark:       #636363,
+  grey-dark:              #666,
+  grey-extra-dark:        #333,
+  black:                  #000,
+
+  blue:                   #0072b9,
+  blue-steel:             #466bc8,
+  blue-royal:             #3a59a5,
+  turquoise:              #52c2c7,
+  blue-pale:              #3a59a5,
+
+  purple:                 #5a5f8d,
+  violet:                 #6c6f8f,
+
+  pink-pale:              #fef5f1,
+  red:                    #c00,
+  rust:                   #8c2e0b,
+  orange:                 #e86c19,
+
+  yellow-pale:            #ffd,
+  yellow:                 #ff0,
+  yellow-dark:            #ed5,
+
+  green-pale:             #f8fff0,
+  green-light:            #be7,
+  green:                  #00852c,
+  green-dark:             #234600,
+));
+
+// Define color names for functional uses.
+$chroma: define-color-scheme('functional', 'Colors used by functional parts of the design.');
+$chroma: add-colors('functional', (
+  // Colors used in the main content area.
+  text:                   'grey-extra-dark',
+  text-bg:                'white',
+
+  link:                   'blue-steel',
+  link-active:            'blue-pale',
+  link-visited:           'purple',
+  link-hover:             'blue-royal',
+  link-border-focus:      'turquoise',
+
+  border-color:           'white-smoke',
+  border:                 'white-smoke',
+
+  autocomplete:           'text',
+  autocomplete-bg:        'text-bg',
+  autocomplete-select:    'white',
+  autocomplete-select-bg: 'blue',
+
+  body-bg:                'text-bg',
+  nav-bg:                 'grey-extra-dark',
+
+
+  fieldset-summary:       'grey-medium',
+  form-error:             'red',
+
+  mark-highlight:         'red',
+  mark-bg:                'yellow',
+
+  menu-active:            'text',
+
+  preview-bg:             'yellow-pale',
+
+  progress-bar:           'blue-steel',
+  progress-bar-bg:        'white-smoke',
+  progress-bar-text:      'white',
+
+  resizable-grippie:      'grey-extra-light',
+
+  row-stripe:             'grey-extra-light',
+  row-disabled:           'grey-light',
+
+  skip-link:              'white',
+  skip-link-bg:           'grey-dark',
+
+  secondary-menu:         'white',
+  secondary-menu-hover:   'grey-light',
+
+  status:                 'green',
+  status-bg:              'green-pale',
+  status-border:          'green',
+  status-highlight:       'text',
+  warning:                'rust',
+  warning-bg:             'yellow-pale',
+  warning-border:         'orange',
+  error:                  'red',
+  error-bg:               'pink-pale',
+  error-border:           'red',
+  info-border:            'violet',
+  info-bg:                'white-smoke',
+  info:                   'violet',
+  message-ok:             'green',
+  message-error:          'red',
+  message-info:           'violet',
+  message-warning:        'orange',
+  message-color:          'white',
+
+  tabs-border:            'border',
+  tabs-bg:                'text-bg',
+  tab:                    'grey-extra-dark',
+  tab-text-shadow:        'white',
+  tab-bg:                 'grey-light',
+  tab-secondary:          'grey-dark',
+  tab-hover:              'blue-royal',
+
+  table-drag:             'yellow-pale',
+  table-select:           'yellow-pale',
+
+  watermark:              'grey-extra-light',
+
+  // Primary navigation.
+  primary-navigation-background: 'grey-extra-dark',
+  primary-navigation-title-color: 'white',
+  primary-navigation-item-color: 'white',
+  primary-navigation-item-hover-color: 'grey-extra-dark',
+  primary-navigation-item-hover-color-secondary: 'blue-royal',
+  primary-navigation-item-hover-background: 'white-smoke',
+  primary-navigation-item-active-color: 'grey-extra-dark',
+  primary-navigation-item-active-background: 'white',
+
+  search-color-light:     'white-smoke',
+  search-color:           'grey-dark',
+  search-border:          'grey-light',
+  search-border-light:    'white-smoke',
+  search-bg:              'white-smoke',
+  search-button:          'blue-steel',
+  search-button-light:    'white-smoke',
+
+  header-background:      'blue-steel',
+  pager-bg:               'grey-extra-light',
+  button-color:           'blue',
+  button-color-hover:     'white',
+  button-bg:              'white-smoke',
+  button-bg-hover:        'blue-steel',
+
+  form-element-border:        'grey-extra-light',
+  form-element-border-bottom: 'grey-light',
+  form-element-border-hover:  'blue-royal',
+  form-element-bg:            'body-bg',
+  form-element-bg-hover:      'white-smoke',
+
+  breadcrumb-color:       'grey-dark',
+
+  comment-meta:           'grey-dark',
+  comment-icon:           'grey-dark',
+
+  date:                   'grey-medium-dark',
+
+  social-bg:              'white-smoke',
+  social-bg-hover:        'grey-extra-light',
+  social-icon:            'blue-steel',
+));
+
+$chroma-active-scheme: 'functional';
+
+
+// Breakpoints
+//
+// Use the `respond-to()` mixin to use named breakpoints. Documentation is
+// available in the [Breakpoint wiki
+// pages](https://github.com/at-import/breakpoint/wiki/Respond-To).
+//
+// Style guide: sass.variables.breakpoints
+
+$small:  480px;
+$medium: 769px;
+$large:  960px;
+$larger: 1024px;
+
+$breakpoints: (
+  'small':       ($small,               'no-query' true),
+  'medium':      ($medium,              'no-query' true),
+  'medium-only': ($medium ($large - 1), 'no-query' true),
+  'large':       ($large,               'no-query' true),
+  'larger':      ($larger),
+
+  'header-mobile': (0 970px),
+  'header-desktop': (971px),
+  'three-column-menu-two-column': (550px 960px),
+  'three-column-menu-three-column': (961px),
+  'two-column': (850px),
+);
+
+//
+// Misc
+//
+$container: 1140px;
+
+// The height of the navigation container.
+$nav-height: 2 * $base-line-height;
+
+// Drupal RTL support: Rather than include a separate *-rtl.css file, Zen 6 uses
+// Drupal 8's standard [dir='rtl'] selector for RTL language support. You can
+// turn off all RTL CSS by setting the following variable to false.
+$include-rtl: false;
+
+//
+// Zen grids
+//
+
+// These are needed for all breakpoints on all layouts.
+$zen-auto-include-grid-item-base: false;
+$zen-box-sizing: universal-border-box;
+
+// The gutters in the layouts are larger on mobile.
+$zen-gutters--small: 40px;
+$zen-gutters--medium: 25px;

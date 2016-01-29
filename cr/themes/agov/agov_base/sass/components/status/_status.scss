@@ -1,0 +1,34 @@
+// Status report
+//
+// Drupal system status reports use a simple styling.
+//
+// markup: status.hbs
+//
+// .status--ok      - "Ok" status.
+// .status--warning - Warning status.
+// .status--error   - Error status.
+//
+// Style guide: components.messages.status
+
+.status,
+%status {
+  &--ok {
+    background-color: color(status-bg);
+    color: color(status);
+  }
+
+  &--warning {
+    background-color: color(warning-bg);
+    color: color(warning);
+  }
+
+  &--error {
+    background-color: color(error-bg);
+    color: color(error);
+  }
+
+  &--info {
+    background-color: color(info-bg);
+    color: color(info);
+  }
+}

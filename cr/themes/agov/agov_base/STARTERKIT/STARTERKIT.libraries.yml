@@ -1,0 +1,5 @@
+component-library:
+  version: 1.x
+  css:
+    theme:
+      css/styles.css: {}

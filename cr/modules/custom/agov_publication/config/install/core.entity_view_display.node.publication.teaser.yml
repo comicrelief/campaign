@@ -1,0 +1,60 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.publication.body
+    - field.field.node.publication.field_publication_date
+    - field.field.node.publication.field_publication_documents
+    - field.field.node.publication.field_publication_subtitle
+    - node.type.publication
+  module:
+    - datetime
+    - fences
+    - text
+    - user
+id: node.publication.teaser
+targetEntityType: node
+bundle: publication
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 1
+    settings:
+      trim_length: 600
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+  field_publication_date:
+    type: datetime_default
+    weight: 0
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: publication_date
+    third_party_settings:
+      fences:
+        fences_field_tag: span
+        fences_field_classes: teaser__date
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+  title:
+    label: hidden
+    type: string
+    weight: -5
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  field_publication_documents: true
+  field_publication_subtitle: true
+  links: true

@@ -1,0 +1,171 @@
+// Primary Navigation
+//
+// Markup: primary-navigation.hbs
+//
+// Style guide: components.navigation.primary-navigation
+
+// scss-lint:disable DeclarationOrder
+
+.primary-navigation,
+%primary-navigation {
+  background: color(primary-navigation-background);
+
+  // Level 1 list, list item and anchor.
+  &__list {
+    margin-top: 0;
+    margin-bottom: 0;
+    text-indent: 0;
+    overflow: hidden;
+    list-style-type: none;
+  }
+
+  &__list-item {
+    padding: 0;
+  }
+
+  &__anchor {
+    color: color(primary-navigation-item-color);
+    @include font-size(17px);
+    @include padding(14px 30px);
+    display: block;
+    text-decoration: none;
+
+    &--active {
+      background: color(primary-navigation-item-active-background);
+      color: color(primary-navigation-item-active-color);
+    }
+
+    // Provide alternative focus styles for keyboard navigation.
+    &:focus {
+      color: color(primary-navigation-item-hover-color-secondary);
+      background: color(primary-navigation-item-hover-background);
+      text-decoration: underline;
+      outline: none;
+    }
+  }
+
+  // Styles on mobile only.
+  @include respond-to('header-mobile') {
+    &--expanded {
+      .primary-navigation__list {
+        display: block;
+      }
+
+      .primary-navigation__title:after {
+        content: '\2716';
+      }
+    }
+
+    &__list-level-2 {
+      display: none;
+    }
+
+    &__title {
+      @include font-size(15px);
+      position: absolute;
+      top: 40px;
+      right: 34px;
+      color: color(primary-navigation-title-color);
+      text-transform: uppercase;
+      cursor: pointer;
+      margin: 0;
+
+      &:after {
+        @include font-size(24px);
+        content: '\2630';
+        vertical-align: -2px;
+        font-size: 24px;
+        width: 30px;
+        display: inline-block;
+        text-align: right;
+      }
+    }
+
+    &__list {
+      display: none;
+    }
+
+    &__anchor {
+      @include padding(9px 15px);
+    }
+  }
+
+  // Styles on desktop only.
+  @include respond-to('header-desktop') {
+    @include margin-bottom(30px);
+
+    &__title {
+      display: none;
+    }
+
+    &__list-item {
+      float: left;
+    }
+
+    // Level 2 list, list item and anchor.
+    &__list-level-2 {
+      // Do not use display none to hide the sub menu. Keep it in the DOM for
+      // keyboard navigation.
+      height: 0;
+      overflow: hidden;
+      position: absolute;
+      list-style-type: none;
+      z-index: 10;
+      background: color(primary-navigation-item-hover-background);
+      margin: 0;
+      padding: 0;
+      min-width: 250px;
+    }
+
+    &__anchor-level-2 {
+      @include font-size(15px);
+      @include padding(4px 13px);
+      text-decoration: none;
+      display: block;
+      color: color(primary-navigation-item-active-color);
+
+      &:hover,
+      &:focus {
+        background: color(primary-navigation-item-active-background);
+        color: color(primary-navigation-item-hover-color-secondary);
+        text-decoration: underline;
+        outline: none;
+      }
+    }
+  }
+}
+
+// Make the keyboard navigation and dropdown menus work.
+.primary-navigation {
+  // Visually indicate a top level item when hovering.
+  &__list-item:hover > a,
+    // Visually indicate sub items are focused.
+  &__list-item > a:focus,
+    // Keep visual indicate when tabbing through children.
+  &__list-item.opened > a {
+    background: color(primary-navigation-item-hover-background);
+    color: color(primary-navigation-item-hover-color);
+  }
+
+  // Standard dropdown hover.
+  &__list-item:hover > ul,
+    // Open during keyboard nav when the top level anchor comes into focus.
+  &__list-item a:focus + ul,
+    // Maintain the opened state when tabbing through the items.
+  &__list-item.opened > ul {
+    height: auto;
+    border: 2px solid color(primary-navigation-item-hover-background);
+  }
+}
+
+.primary-navigation__list-item > a {
+  @extend %primary-navigation__anchor;
+}
+
+.primary-navigation__list-item-level-2 > a {
+  @extend %primary-navigation__anchor-level-2;
+}
+
+.primary-navigation__list-item > .is-active {
+  @extend %primary-navigation__anchor--active;
+}

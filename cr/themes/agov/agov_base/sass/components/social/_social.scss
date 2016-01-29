@@ -1,0 +1,60 @@
+// Social
+//
+// The social of page
+//
+// Markup: social.hbs
+//
+// Style guide: components.social
+
+.social,
+%social {
+  &__title {
+    @include font-size(l);
+  }
+
+  &__list {
+    display: inline-block;
+    text-indent: 0;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__item {
+    @include margin(0 .75 .25 0);
+    float: left;
+    list-style: none;
+
+    a {
+      @include border-radius(100%);
+      background: color(social-bg);
+      width: 48px;
+      height: 48px;
+      text-align: center;
+      display: block;
+
+      &:hover {
+        background: color(social-bg-hover);
+      }
+
+      span {
+        color: color(social-icon);
+        font-size: 24px;
+        line-height: 50px;
+      }
+    }
+  }
+}
+
+// Join the dots for the linkicon generated markup.
+.linkicon--social ul {
+  @extend %social__list;
+
+  li {
+    @extend %social__item;
+  }
+
+  .linkicon__text {
+    display: none;
+  }
+}

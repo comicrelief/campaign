@@ -1,0 +1,75 @@
+// Teaser
+//
+// Teaser of page
+//
+// Markup: teaser.hbs
+//
+// Style guide: components.teaser
+
+.teaser,
+%teaser {
+  &--wide {
+    @include margin-bottom(30px);
+    display: inline-block;
+    width: 100%;
+  }
+
+  &__title {
+    @include margin(.5 0);
+
+    h2,
+    h3 {
+      @extend %h3;
+      @extend %teaser__title;
+    }
+  }
+
+  &__date {
+    @extend %date--without-label;
+  }
+
+  &__image {
+    img {
+      @include margin-bottom(.25);
+      display: block;
+    }
+  }
+
+  &__image-wide {
+    @include respond-to('medium') {
+      float: left;
+      width: 30%;
+    }
+
+    .field__item {
+      @include respond-to('medium') {
+        @include padding-right(2);
+      }
+    }
+  }
+
+  &__content {
+    p {
+      margin-top: 0;
+    }
+  }
+}
+
+// Teaser has image
+//
+// Teaser of page
+//
+// Markup: teaser-image.hbs
+//
+// .teaser--wide  - Teaser Wide.
+//
+// Style guide: components.teaser.teaser-image
+
+.teaser--wide {
+  @extend %teaser--wide;
+
+  .teaser__image {
+    @extend %teaser__image-wide;
+  }
+}
+

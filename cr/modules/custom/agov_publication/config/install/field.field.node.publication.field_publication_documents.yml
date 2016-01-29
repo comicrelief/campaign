@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_publication_documents
+    - node.type.publication
+  module:
+    - file
+id: node.publication.field_publication_documents
+field_name: field_publication_documents
+entity_type: node
+bundle: publication
+label: Documents
+description: 'Allows one of more documents to be associated with this <em>Publication</em>.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: ''
+  file_extensions: 'txt pdf doc docx xls xlsx ppt pptx'
+  max_filesize: '64 MB'
+  description_field: true
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file
