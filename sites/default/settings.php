@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * Skips the annoying rebuild permissions everytime.
+ */
+$settings['skip_permissions_hardening'] = TRUE;
+
+/**
  * Load services definition file.
  */
 $settings['container_yamls'][] = __DIR__ . '/services.yml';
