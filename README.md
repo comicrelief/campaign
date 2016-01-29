@@ -22,11 +22,17 @@ Copy over `build.example.properties` to `build.properties`
 
 And now adapt `build.properties` adding in your Drush 8 binary location, database connection details, and your local website URL.
 
+Now, do the same with `settings.local.php`
+
+	cp sites/default/settings.example.local.php sites/default/settings.local.php 
+
+And change the database connection details as well.
+
 ### Using Phing
 
 To install the site, now run
 
-	phing install
+	phing build
 
 To login to the site, for example run
 
