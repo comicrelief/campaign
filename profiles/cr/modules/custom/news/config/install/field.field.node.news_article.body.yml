@@ -1,4 +1,3 @@
-uuid: 07cd830f-3c08-475a-a900-f44045cde02b
 langcode: en
 status: true
 dependencies:
@@ -7,6 +6,8 @@ dependencies:
     - node.type.news_article
   module:
     - text
+_core:
+  default_config_hash: 4A_mRz22A3EwdiyghQslARKS0S5L6a40C48fHUk35VQ
 id: node.news_article.body
 field_name: body
 entity_type: node

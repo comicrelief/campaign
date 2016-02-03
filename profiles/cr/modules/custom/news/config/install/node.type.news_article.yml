@@ -1,4 +1,3 @@
-uuid: 293464ce-49fc-4c62-9a45-6905ff103e1c
 langcode: en
 status: true
 dependencies:
@@ -9,6 +8,8 @@ third_party_settings:
     available_menus:
       - main
     parent: 'main:'
+_core:
+  default_config_hash: pTxfc3veIAvmZwLn9DhsrnKv5pm8mUvqRXZjKNdZ8FA
 name: 'News article'
 type: news_article
 description: 'Use a ''News article'' to publish an article in the News section. Supports title, image, body, publish date and and media tags.'

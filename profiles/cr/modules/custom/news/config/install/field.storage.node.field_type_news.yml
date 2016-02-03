@@ -1,10 +1,11 @@
-uuid: 616ec7a9-813e-4667-9a43-670f156a4913
 langcode: en
 status: true
 dependencies:
   module:
     - node
     - options
+_core:
+  default_config_hash: vUxwwFReTPmbxf8o7NX_vsLlxmzgVV4BaBBFTajaKoE
 id: node.field_type_news
 field_name: field_type_news
 entity_type: node

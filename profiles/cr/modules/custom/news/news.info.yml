@@ -14,3 +14,23 @@ dependencies:
   - views
   - taxonomy
   - youtube
+
+config_devel:
+  - taxonomy.vocabulary.media
+  - node.type.news_article
+  - core.entity_form_display.node.news_article.default
+  - core.entity_view_display.node.news_article.default
+  - field.field.node.news_article.body
+  - field.field.node.news_article.field_intro
+  - field.storage.node.field_intro
+  - field.field.node.news_article.field_media
+  - field.storage.node.field_media
+  - field.field.node.news_article.field_publish_date
+  - field.storage.node.field_publish_date
+  - field.field.node.news_article.field_site_image
+  - field.storage.node.field_site_image
+  - field.field.node.news_article.field_type_news
+  - field.storage.node.field_type_news
+  - field.field.node.news_article.field_youtube_url
+  - field.storage.node.field_youtube_url
+  - views.view.related_news

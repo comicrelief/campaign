@@ -1,4 +1,3 @@
-uuid: 7142b624-39d2-4a39-9b07-07d901827a58
 langcode: en
 status: true
 dependencies:
@@ -16,6 +15,8 @@ dependencies:
     - text
     - user
     - youtube
+_core:
+  default_config_hash: BdFa6pOgm5iFp2d6l3ggzoYpA7tRbZN3ZsR8kSCn8Ic
 id: node.news_article.default
 targetEntityType: node
 bundle: news_article

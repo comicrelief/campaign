@@ -1,10 +1,11 @@
-uuid: cc0fbbad-1f22-4401-ad09-9dd77c4e665e
 langcode: en
 status: true
 dependencies:
   module:
     - node
     - youtube
+_core:
+  default_config_hash: R9Ol3bWCxyGM_hDxY-gGYg56uVTCT1VKcMqbVlZPtZ8
 id: node.field_youtube_url
 field_name: field_youtube_url
 entity_type: node

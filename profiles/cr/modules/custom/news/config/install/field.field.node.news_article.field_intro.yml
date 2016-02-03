@@ -1,4 +1,3 @@
-uuid: 41b41de9-b5b9-49ad-a725-371c8768cb81
 langcode: en
 status: true
 dependencies:
@@ -7,6 +6,8 @@ dependencies:
     - node.type.news_article
   module:
     - text
+_core:
+  default_config_hash: 4TJmJBNaBjj8aDUGOB2IPEWEzydO7efC4zIb7kD45Gk
 id: node.news_article.field_intro
 field_name: field_intro
 entity_type: node

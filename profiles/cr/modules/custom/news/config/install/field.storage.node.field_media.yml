@@ -1,10 +1,11 @@
-uuid: 0870c5ad-3a32-4d90-ac00-fe9d54fd9585
 langcode: en
 status: true
 dependencies:
   module:
     - node
     - taxonomy
+_core:
+  default_config_hash: GrYerKgAhKz7skITN8WKp8e-GXpvqBNV8CNa9d3lbe8
 id: node.field_media
 field_name: field_media
 entity_type: node
