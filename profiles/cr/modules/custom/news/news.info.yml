@@ -34,3 +34,5 @@ config_devel:
   - field.field.node.news_article.field_youtube_url
   - field.storage.node.field_youtube_url
   - views.view.related_news
+  - views.view.what_s_going_on
+  - pathauto.pattern.news
