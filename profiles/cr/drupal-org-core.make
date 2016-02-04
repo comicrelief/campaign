@@ -9,7 +9,7 @@ core = 8.x
 ; 	git pull -Xtheirs git://github.com/pantheon-systems/drops-8.git master
 ;	# resolve conflicts
 
-projects[drupal][version] = 8.0.2
+projects[drupal][version] = 8.0.3
 
 ; Fix the permissions issue on sites folders.
 ; @see https://www.drupal.org/node/1232572
