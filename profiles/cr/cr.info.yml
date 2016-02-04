@@ -38,8 +38,9 @@ dependencies:
   - dynamic_page_cache
 
   # Contrib modules
+  - pathauto
+  - config_devel
   # - file_entity
-  # - pathauto
   # - twitter_block
   # - layout_plugin
   # - page_manager
