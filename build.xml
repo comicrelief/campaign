@@ -143,14 +143,14 @@
 
   <target name="install"
           description="Install CR with standard configuration.">
-    <!-- Fix up permissions -->
-    <exec command="chmod 755 ${app.dir}/sites/default" />
-    <exec command="chmod 755 ${app.dir}/sites/default/settings.php;" />
     <!-- Install the site -->
     <exec dir="${app.dir}"
           command="${drush.cmd} site-install ${app.profile.name} -y --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring} ${app.profile.options}"
           logoutput="true"
           passthru="true" />
+    <!-- Fix up permissions -->
+    <exec command="chmod 755 ${app.dir}/sites/default" />
+    <exec command="chmod 755 ${app.dir}/sites/default/settings.php" />
   </target>
 
   <target name="styleguide:link" description="Link the style guide to make it publicly available.">
