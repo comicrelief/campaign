@@ -39,7 +39,6 @@ dependencies:
 
   # Contrib modules
   - pathauto
-  - config_devel
   # - file_entity
   # - twitter_block
   # - layout_plugin
@@ -47,6 +46,9 @@ dependencies:
   # - fences
   # - token
   # - text_icon
+  
+  # Development modules
+  - config_devel
 
   # Custom modules
   # - agov_article
