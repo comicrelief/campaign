@@ -43,7 +43,7 @@ dependencies:
   - ctools
   - pathauto
   - config_devel
-  # - file_entity
+  - file_entity
   # - twitter_block
   # - layout_plugin
   # - page_manager
@@ -52,6 +52,7 @@ dependencies:
 
   # Development modules
   - default_content
+  # - cr_default_content
 
   # Custom modules
   # - agov_article
