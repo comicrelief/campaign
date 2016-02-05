@@ -38,14 +38,19 @@ dependencies:
   - dynamic_page_cache
 
   # Contrib modules
+  - token
+  - ctools
+  - pathauto
+  - config_devel
   # - file_entity
-  # - pathauto
   # - twitter_block
   # - layout_plugin
   # - page_manager
   # - fences
-  # - token
   # - text_icon
+
+  # Development modules
+  - default_content
 
   # Custom modules
   # - agov_article
