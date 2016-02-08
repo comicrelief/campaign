@@ -1,0 +1,12 @@
+name: Comic Relief Default Content
+type: module
+description: 'Provide default content to demonstrate core functionality.'
+package: Comic Relief
+core: '8.x'
+
+dependencies:
+  - default_content
+  - serialization
+  - rest
+  - hal
+  - news

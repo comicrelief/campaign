@@ -51,8 +51,7 @@ dependencies:
   # - text_icon
 
   # Development modules
-  - default_content
-  # - cr_default_content
+  - cr_default_content
 
   # Custom modules
   # - agov_article
