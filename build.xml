@@ -205,7 +205,7 @@
     </target>
 
     <target name="content:export:save">
-      <exec dir="${app.dir}" command="${drush.cmd} dcer ${type} ${id} --file=${app.content.dir}/" logoutput="true" passthru="true" />
+      <exec dir="${app.dir}" command="${drush.cmd} dcer --file=${app.content.dir}/ ${type} ${id}" logoutput="true" passthru="true" />
     </target>
 
 </project>
