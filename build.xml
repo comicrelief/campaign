@@ -201,11 +201,11 @@
     </target>
 
     <target name="content:export:show">
-      <exec dir="${app.dir}" command="${drush.cmd} dce ${type} ${id}" logoutput="true" passthru="true" />
+      <exec dir="${app.dir}" command="${drush.cmd} dcer ${type} ${id}" logoutput="true" passthru="true" />
     </target>
 
     <target name="content:export:save">
-      <exec dir="${app.dir}" command="${drush.cmd} dce ${type} ${id} --file=${app.content.dir}/${type}/${id}.json" logoutput="true" passthru="true" />
+      <exec dir="${app.dir}" command="${drush.cmd} dcer ${type} ${id} --file=${app.content.dir}/" logoutput="true" passthru="true" />
     </target>
 
 </project>

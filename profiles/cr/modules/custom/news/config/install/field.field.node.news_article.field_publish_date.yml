@@ -6,8 +6,6 @@ dependencies:
     - node.type.news_article
   module:
     - datetime
-_core:
-  default_config_hash: 402Ip92SF2uzwbe1OK1PLwMK0bVUVBhQcFLCR6wLtug
 id: node.news_article.field_publish_date
 field_name: field_publish_date
 entity_type: node

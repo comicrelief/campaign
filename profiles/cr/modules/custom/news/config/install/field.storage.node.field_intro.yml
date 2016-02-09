@@ -4,8 +4,6 @@ dependencies:
   module:
     - node
     - text
-_core:
-  default_config_hash: BGnaho7fSjv0i_6wyxaTFdpz_YklhONFvJQ4hJwnIIY
 id: node.field_intro
 field_name: field_intro
 entity_type: node

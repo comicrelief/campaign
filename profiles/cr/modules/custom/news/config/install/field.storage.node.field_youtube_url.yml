@@ -4,8 +4,6 @@ dependencies:
   module:
     - node
     - youtube
-_core:
-  default_config_hash: R9Ol3bWCxyGM_hDxY-gGYg56uVTCT1VKcMqbVlZPtZ8
 id: node.field_youtube_url
 field_name: field_youtube_url
 entity_type: node

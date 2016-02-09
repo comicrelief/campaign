@@ -1,8 +1,6 @@
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: wLN5UV1sJMxlc3M2Fl1U1MkAzaZlD-ZFj21O_GKXxOo
 name: Media
 vid: media
 description: 'Media categories.'
