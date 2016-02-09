@@ -1,7 +1,7 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/whats-going-on\/jamon?_format=hal_json"
+            "href": "http:\/\/default\/whats-going-on\/you\u2019re-helping-us-win-fight-against-malaria?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/news_article"
@@ -21,11 +21,16 @@
             {
                 "href": "http:\/\/default\/taxonomy\/term\/1?_format=hal_json"
             }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/news_article\/field_site_image": [
+            {
+                "href": "http:\/\/default\/file\/2?_format=hal_json"
+            }
         ]
     },
     "uuid": [
         {
-            "value": "bdd3c113-eb79-4d1d-a900-d229fdb54a39"
+            "value": "7a798fb3-6a0c-4f9c-9b04-043fa2c08f19"
         }
     ],
     "type": [
@@ -41,7 +46,7 @@
     ],
     "title": [
         {
-            "value": "Jamon",
+            "value": "You\u2019re helping us win the fight against malaria",
             "lang": "en"
         }
     ],
@@ -58,7 +63,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "d12d1d91-dc0c-4040-bb00-abb44fc0c2fa"
+                        "value": "4cd17a87-f639-4433-8808-8dd4860dda53"
                     }
                 ],
                 "lang": "en"
@@ -76,7 +81,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "d12d1d91-dc0c-4040-bb00-abb44fc0c2fa"
+                        "value": "4cd17a87-f639-4433-8808-8dd4860dda53"
                     }
                 ]
             }
@@ -93,9 +98,30 @@
                 },
                 "uuid": [
                     {
-                        "value": "1ddfd5a3-b9b4-44ff-8e00-f934a5ab56af"
+                        "value": "516211fd-000b-4c60-a222-34565563ae59"
                     }
                 ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/news_article\/field_site_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/2?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "55527250-7bff-4226-835b-91bb8e449a45"
+                    }
+                ],
+                "alt": "You\u2019re helping us win the fight against malaria",
+                "title": "",
+                "width": "2340",
+                "height": "1316"
             }
         ]
     },
@@ -107,13 +133,13 @@
     ],
     "created": [
         {
-            "value": "1454943993",
+            "value": "1455020881",
             "lang": "en"
         }
     ],
     "changed": [
         {
-            "value": "1454944023",
+            "value": "1455020965",
             "lang": "en"
         }
     ],
@@ -131,7 +157,7 @@
     ],
     "revision_timestamp": [
         {
-            "value": "1454944023"
+            "value": "1455020951"
         }
     ],
     "revision_translation_affected": [
@@ -148,26 +174,26 @@
     ],
     "body": [
         {
-            "value": "<p>asxc df gdfgdfgdfgdfgdf<\/p>\r\n",
-            "format": "basic_html",
+            "value": "<p>Your fundraising and donations have helped to us to provide thousands of life-saving mosquito nets and anti-malarial drugs. Things are changing, because #thisstuffworks<\/p>\r\n\r\n<p class=\"type--centred\"><a class=\"btn btn-red\" href=\"\/get-involved\">Get involved<\/a><\/p>\r\n",
+            "format": "full_html",
             "summary": "",
             "lang": "en"
         }
     ],
-    "field_intro": [
-        {
-            "value": "<p>asfaf<\/p>\r\n",
-            "format": "basic_html"
-        }
-    ],
     "field_publish_date": [
         {
-            "value": "2016-02-08"
+            "value": "2016-02-09"
         }
     ],
     "field_type_news": [
         {
-            "value": "2"
+            "value": "1"
+        }
+    ],
+    "field_youtube_url": [
+        {
+            "input": "https:\/\/youtu.be\/_1bnfbI9b0k",
+            "video_id": "_1bnfbI9b0k"
         }
     ]
 }
