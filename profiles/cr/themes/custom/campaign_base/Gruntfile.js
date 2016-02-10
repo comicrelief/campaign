@@ -146,8 +146,8 @@ module.exports = function (grunt) {
   // grunt.loadNpmTasks('grunt-accessibility');
 
   // grunt.registerTask('test',  [
-  //   // 'jshint', 
-  //   'browserSync:dev'//, 
+  //   // 'jshint',
+  //   'browserSync:dev'//,
   //   // 'nodeunit'
   //   ]);
   grunt.registerTask('default', ['uglify:dev', 'watch']);
