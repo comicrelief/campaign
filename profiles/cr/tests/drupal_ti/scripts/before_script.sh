@@ -38,8 +38,11 @@ mysql -e "create database $DRUPAL_TI_DB"
 # cd "$DRUPAL_TI_DRUPAL_BASE/drupal"
 
 # Remove default settings so we can re-install fine
+pwd
+ls -l
 rm -fr sites/default/settings.php
-ls -l sites/default/
+rm -fr ../../../sites/default/settings.php
+# ls -l sites/default/
 ~/.composer/vendor/bin/drush.php --version
 
 # Install the site
