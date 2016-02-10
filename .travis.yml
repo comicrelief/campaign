@@ -98,10 +98,10 @@ install:
  - drupal-ti install
 
 before_script:
-  - drupal-ti --include drupal_ti/scripts/before_script.sh
+  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh
 
 script:
-  - drupal-ti --include drupal_ti/scripts/script.sh
+  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/script.sh
 
 after_script:
   - drupal-ti after_script
