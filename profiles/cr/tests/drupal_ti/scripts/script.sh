@@ -5,7 +5,8 @@
 set -e $DRUPAL_TI_DEBUG
 
 # Ensure we are in the right directory.
-cd "$DRUPAL_TI_DRUPAL_DIR/profiles/$DRUPAL_TI_MODULE_NAME"
+# cd "$DRUPAL_TI_DRUPAL_DIR/profiles/$DRUPAL_TI_MODULE_NAME"
+# cd "profiles/$DRUPAL_TI_MODULE_NAME"
 
 # Now go to the local behat tests, being within the project installation is
 # needed for example for the drush runner.

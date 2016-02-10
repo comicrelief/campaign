@@ -23,21 +23,21 @@ fi
 # Create database and install Drupal.
 mysql -e "create database $DRUPAL_TI_DB"
 
-mkdir -p "$DRUPAL_TI_DRUPAL_BASE"
+# mkdir -p "$DRUPAL_TI_DRUPAL_BASE"
 
-cd $DRUPAL_TI_DRUPAL_BASE
-drush make --no-recursion "$TRAVIS_BUILD_DIR/stub.make" "$DRUPAL_TI_DRUPAL_BASE/drupal"
-rm -rf drupal/profiles/drupalmel
+# cd $DRUPAL_TI_DRUPAL_BASE
+# drush make --no-recursion "$TRAVIS_BUILD_DIR/stub.make" "$DRUPAL_TI_DRUPAL_BASE/drupal"
+# rm -rf drupal/profiles/drupalmel
 
-# Point project into the drupal installation.
-ln -sf "$TRAVIS_BUILD_DIR" "drupal/profiles/$DRUPAL_TI_MODULE_NAME"
+# # Point project into the drupal installation.
+# ln -sf "$TRAVIS_BUILD_DIR" "drupal/profiles/$DRUPAL_TI_MODULE_NAME"
 
-cd "$TRAVIS_BUILD_DIR"
-drush make --no-core --contrib-destination=./ ./drupal-org.make -y
+# cd "$TRAVIS_BUILD_DIR"
+# drush make --no-core --contrib-destination=./ ./drupal-org.make -y
 
-cd "$DRUPAL_TI_DRUPAL_BASE/drupal"
+# cd "$DRUPAL_TI_DRUPAL_BASE/drupal"
 
-php -d sendmail_path=$(which true) ~/.composer/vendor/bin/drush.php --yes site-install $DRUPAL_TI_MODULE_NAME --db-url="$DRUPAL_TI_DB_URL"
+php -d sendmail_path=$(which true) ~/.composer/vendor/bin/drush.php --verbose --yes site-install $DRUPAL_TI_MODULE_NAME --db-url="$DRUPAL_TI_DB_URL"
 drush use $(pwd)#default
 
 # Clear caches and run a web server.
