@@ -52,6 +52,17 @@ Thumbs.db
 ##########
 .sass-cache
 
+# node_modules #
+##########
+profiles/cr/themes/custom/campaign_base/node_modules
+
+# Devel module #
+##########
+modules/devel/
+
+# Temp agov theme #
+profiles/cr/themes/custom/agov_base
+
 # Things in the core directory that Drupal 8 commits in the repository.
 !core/**/*.gz
 
