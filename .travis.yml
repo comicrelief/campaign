@@ -74,14 +74,14 @@ env:
     # etc. to only output those channels.
     #- DRUPAL_TI_DEBUG_FILE_OUTPUT="selenium xvfb webserver"
 
-    - DRUPAL_TI_RUNNERS="behat"
+    # - DRUPAL_TI_RUNNERS="behat"
 
-# matrix:
+  matrix:
   # [[[ SELECT ANY OR MORE OPTIONS ]]]
-  #- DRUPAL_TI_RUNNERS="phpunit"
+  # - DRUPAL_TI_RUNNERS="phpunit"
   # - DRUPAL_TI_RUNNERS="phpunit-core simpletest"
-  # - DRUPAL_TI_RUNNERS="behat"
-  #- DRUPAL_TI_RUNNERS="phpunit simpletest behat"
+    - DRUPAL_TI_RUNNERS="behat"
+  # - DRUPAL_TI_RUNNERS="phpunit simpletest behat"
 
 mysql:
   database: $DRUPAL_TI_DB
