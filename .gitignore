@@ -1,4 +1,5 @@
 # Ignore paths that contain user-generated content.
+profiles/cr/modules/custom/cr_default_content/content/user
 sites/*/files
 sites/*/private
 files/*
@@ -57,4 +58,3 @@ Thumbs.db
 build.properties
 
 PATCHES.txt
-
