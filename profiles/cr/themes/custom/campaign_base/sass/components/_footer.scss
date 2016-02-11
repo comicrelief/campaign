@@ -1,1 +1,29 @@
 // Footer style
+
+.menu--footer {
+  margin: 30px 0 15px;
+  ul {
+    li {
+      display: inline-block;
+      margin: 10px 0;
+      &:last-child {
+        a {
+          border-right: none;
+        }
+      }
+      a {
+        display: block;
+        margin: 0 5px 0 0;
+        padding: 0 20px 0 10px;
+        text-decoration: none;
+        border-right: 1px solid $white;
+        font-weight: 300;
+
+        @include transition(color 180ms);
+        &:hover {
+          color: $item-grey;
+        }
+      }
+    }
+  }
+}
