@@ -31,21 +31,29 @@ $susy: (
   gutters: 1/5,
   gutter-position: after,
   output: isolate
-  // ,
-  // debug: (
-  //   image: show,
-  //   toggle: top right
-  //   )
+  ,
+  debug: (
+    image: show,
+    toggle: top right
+    )
 );
-$table-items: (80, 60, 490, 90);
-
 
 @include border-box-sizing;
 
 // $map: layout(auto 12 .25 inside fluid isolate);
 
 // layout
+.layout-container {
 
-.l-page {
+}
+header,
+.region-highlighted,
+main {
+  @include clearfix;
+}
+footer {
+
+}
+.layout-content {
 	@include container(1140px);
 }

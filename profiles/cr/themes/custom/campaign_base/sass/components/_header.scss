@@ -1,1 +1,69 @@
 // Header style
+header {
+  background: $black;
+}
+.menu--main {
+  position: absolute;
+  top: 85px;
+  display: none;
+  width: 100%;
+  background: rgba($black, 0.95);
+
+  @include breakpoint($screen-md) {
+    position: relative;
+    top: 0;
+    display: block!important;
+    width: auto;
+    background: transparent;
+  }
+  ul {
+    text-align: center;
+    li {
+      display: block;
+      margin: 0;
+      color: $white;
+
+      @include breakpoint($screen-md) {
+        display: inline-block;
+      }
+      @include breakpoint($screen-md) {
+        margin: 0 20px;
+      }
+      a {
+        display: block;
+        padding: 15px 10px;
+        text-decoration: none;
+        color: $white;
+        border-bottom: 2px solid transparent;
+        font-size: 18px;
+
+        @include transition(border-bottom 180ms);
+        @include breakpoint($screen-md) {
+          padding: 20px 0 4px;
+          font-size: 18px;
+        }
+        &:hover {
+          text-decoration: none;
+          color: $white;
+          background: #acaaa9;
+
+          @include breakpoint($screen-md) {
+            border-bottom: 2px solid white;
+            background: transparent;
+          }
+        }
+        &.active {
+          text-decoration: none;
+          color: $black;
+          background: $white;
+
+          @include breakpoint($screen-md) {
+            color: $white;
+            border-bottom: 2px solid white;
+            background: transparent;
+          }
+        }
+      }
+    }
+  }
+}

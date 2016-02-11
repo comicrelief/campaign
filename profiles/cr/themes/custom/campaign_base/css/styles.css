@@ -71,6 +71,113 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 body {
   background: #fafafa; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/base\/_global\.scss}line{font-family:\000035}}
+.site-logo {
+  width: 138px;
+  height: 138px;
+  float: left;
+  margin-right: 20px; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_footer\.scss}line{font-family:\000033}}
+.menu--footer {
+  margin: 30px 0 15px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_footer\.scss}line{font-family:\000036}}
+  .menu--footer ul li {
+    display: inline-block;
+    margin: 10px 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_footer\.scss}line{font-family:\0000310}}
+    .menu--footer ul li:last-child a {
+      border-right: none; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_footer\.scss}line{font-family:\0000314}}
+    .menu--footer ul li a {
+      display: block;
+      margin: 0 5px 0 0;
+      padding: 0 20px 0 10px;
+      text-decoration: none;
+      border-right: 1px solid #fff;
+      font-weight: 300;
+      -moz-transition: color 180ms;
+      -o-transition: color 180ms;
+      -webkit-transition: color 180ms;
+      transition: color 180ms; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_footer\.scss}line{font-family:\0000323}}
+      .menu--footer ul li a:hover {
+        color: #dddddd; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_header\.scss}line{font-family:\000032}}
+header {
+  background: #1e1e1e; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_header\.scss}line{font-family:\000035}}
+.menu--main {
+  position: absolute;
+  top: 85px;
+  display: none;
+  width: 100%;
+  background: rgba(30, 30, 30, 0.95); }
+  @media (min-width: 992px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_header\.scss}line{font-family:\000035}}
+    .menu--main {
+      position: relative;
+      top: 0;
+      display: block !important;
+      width: auto;
+      background: transparent; } }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_header\.scss}line{font-family:\0000319}}
+  .menu--main ul {
+    text-align: center; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_header\.scss}line{font-family:\0000321}}
+    .menu--main ul li {
+      display: block;
+      margin: 0;
+      color: #fff; }
+      @media (min-width: 992px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_header\.scss}line{font-family:\0000321}}
+        .menu--main ul li {
+          display: inline-block; } }
+      @media (min-width: 992px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_header\.scss}line{font-family:\0000321}}
+        .menu--main ul li {
+          margin: 0 20px; } }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_header\.scss}line{font-family:\0000332}}
+      .menu--main ul li a {
+        display: block;
+        padding: 15px 10px;
+        text-decoration: none;
+        color: #fff;
+        border-bottom: 2px solid transparent;
+        font-size: 18px;
+        -moz-transition: border-bottom 180ms;
+        -o-transition: border-bottom 180ms;
+        -webkit-transition: border-bottom 180ms;
+        transition: border-bottom 180ms; }
+        @media (min-width: 992px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_header\.scss}line{font-family:\0000332}}
+          .menu--main ul li a {
+            padding: 20px 0 4px;
+            font-size: 18px; } }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_header\.scss}line{font-family:\0000345}}
+        .menu--main ul li a:hover {
+          text-decoration: none;
+          color: #fff;
+          background: #acaaa9; }
+          @media (min-width: 992px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_header\.scss}line{font-family:\0000345}}
+            .menu--main ul li a:hover {
+              border-bottom: 2px solid white;
+              background: transparent; } }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_header\.scss}line{font-family:\0000355}}
+        .menu--main ul li a.active {
+          text-decoration: none;
+          color: #1e1e1e;
+          background: #fff; }
+          @media (min-width: 992px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_header\.scss}line{font-family:\0000355}}
+            .menu--main ul li a.active {
+              color: #fff;
+              border-bottom: 2px solid white;
+              background: transparent; } }
+
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_pagination\.scss}line{font-family:\000033}}
 .pagination {
   margin: 40px 0;
@@ -214,12 +321,29 @@ body {
   box-sizing: border-box; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/layout\/_layout\.scss}line{font-family:\0000349}}
-.l-page {
+header,
+.region-highlighted,
+main {
+  overflow: hidden;
+  *zoom: 1; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/layout\/_layout\.scss}line{font-family:\0000357}}
+.layout-content {
   max-width: 1140px;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuNSIgeDI9IjEuMCIgeTI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzY2NjZmZiIgc3RvcC1vcGFjaXR5PSIwLjI1Ii8+PHN0b3Agb2Zmc2V0PSI4My4zMzMzMzMzMyUiIHN0b3AtY29sb3I9IiNiM2IzZmYiIHN0b3Atb3BhY2l0eT0iMC4yNSIvPjxzdG9wIG9mZnNldD0iODMuMzMzMzMzMzMlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, rgba(102, 102, 255, 0.25)), color-stop(83.33333333%, rgba(179, 179, 255, 0.25)), color-stop(83.33333333%, rgba(0, 0, 0, 0)));
+  background-image: -moz-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 83.33333333%, rgba(0, 0, 0, 0) 83.33333333%);
+  background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 83.33333333%, rgba(0, 0, 0, 0) 83.33333333%);
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 83.33333333%, rgba(0, 0, 0, 0) 83.33333333%);
+  background-size: 8.45070423%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/usr\/local\/lib\/ruby\/gems\/2\.2\.0\/gems\/susy-2\.2\.11\/sass\/susy\/output\/support\/_clearfix\.scss}line{font-family:\0000312}}
-  .l-page:after {
+  .layout-content:after {
     content: " ";
     display: block;
     clear: both; }
@@ -228,31 +352,31 @@ body {
 ul li {
   font-size: 1em; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/theme\/_typography\.scss}line{font-family:\000031}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/theme\/_typography\.scss}line{font-family:\000033}}
 body {
   font-size: 16px;
   font-family: "sofia-pro", "Verdana", Sans-Serif; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/theme\/_typography\.scss}line{font-family:\000037}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/theme\/_typography\.scss}line{font-family:\000039}}
 p {
   font-size: 1em;
   margin: 0 0 20px; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/theme\/_typography\.scss}line{font-family:\0000311}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/theme\/_typography\.scss}line{font-family:\0000313}}
 h1 {
   font-size: 1.4em;
   margin: 0 0 20px; }
   @media (min-width: 769px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/theme\/_typography\.scss}line{font-family:\0000311}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/theme\/_typography\.scss}line{font-family:\0000313}}
     h1 {
       font-size: 1.6em; } }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/theme\/_typography\.scss}line{font-family:\0000318}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/theme\/_typography\.scss}line{font-family:\0000320}}
 h2 {
   font-size: 1.2em;
   margin: 0 0 20px; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/theme\/_typography\.scss}line{font-family:\0000322}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/theme\/_typography\.scss}line{font-family:\0000324}}
 h3 {
   font-size: 21px; }
 
