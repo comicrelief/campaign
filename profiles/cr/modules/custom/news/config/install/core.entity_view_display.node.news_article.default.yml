@@ -9,14 +9,14 @@ dependencies:
     - field.field.node.news_article.field_site_image
     - field.field.node.news_article.field_type_news
     - field.field.node.news_article.field_youtube_url
+    - image.style.large
     - node.type.news_article
   module:
     - datetime
+    - image
     - text
     - user
     - youtube
-_core:
-  default_config_hash: BdFa6pOgm5iFp2d6l3ggzoYpA7tRbZN3ZsR8kSCn8Ic
 id: node.news_article.default
 targetEntityType: node
 bundle: news_article
@@ -24,44 +24,51 @@ mode: default
 content:
   body:
     type: text_default
-    weight: 0
-    label: above
+    weight: 4
+    label: visually_hidden
     settings: {  }
     third_party_settings: {  }
   field_intro:
     type: text_default
-    weight: 0
-    label: above
+    weight: 3
+    label: visually_hidden
     settings: {  }
     third_party_settings: {  }
   field_publish_date:
     type: datetime_default
     weight: 0
-    label: above
+    label: visually_hidden
     settings:
       format_type: medium
       timezone_override: ''
     third_party_settings: {  }
+  field_site_image:
+    type: image
+    weight: 1
+    label: hidden
+    settings:
+      image_style: large
+      image_link: ''
+    third_party_settings: {  }
   field_youtube_url:
     type: youtube_video
-    weight: 0
-    label: above
+    weight: 2
+    label: hidden
     settings:
-      youtube_size: 450x315
+      youtube_size: 480x360
       youtube_width: ''
       youtube_height: ''
+      youtube_loop: true
       youtube_autoplay: false
-      youtube_loop: false
       youtube_showinfo: false
       youtube_controls: false
       youtube_autohide: false
       youtube_iv_load_policy: false
     third_party_settings: {  }
   links:
-    weight: 100
+    weight: 5
     settings: {  }
     third_party_settings: {  }
 hidden:
   field_media: true
-  field_site_image: true
   field_type_news: true

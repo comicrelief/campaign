@@ -6,8 +6,6 @@ dependencies:
     - node.type.news_article
   module:
     - youtube
-_core:
-  default_config_hash: dW-3_Bt609B7PRoBYUU-6r-BedjdgpehtAa3QlpsPMI
 id: node.news_article.field_youtube_url
 field_name: field_youtube_url
 entity_type: node

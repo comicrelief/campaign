@@ -1,7 +1,7 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/whats-going-on\/prueba?_format=hal_json"
+            "href": "http:\/\/default\/whats-going-on\/louise-s-story?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/news_article"
@@ -21,11 +21,16 @@
             {
                 "href": "http:\/\/default\/taxonomy\/term\/1?_format=hal_json"
             }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/news_article\/field_site_image": [
+            {
+                "href": "http:\/\/default\/file\/1?_format=hal_json"
+            }
         ]
     },
     "uuid": [
         {
-            "value": "455deb56-6af6-496d-b809-9c0d44c12a42"
+            "value": "777d6553-d57b-4f0d-b000-dd6ecceb2fe9"
         }
     ],
     "type": [
@@ -41,7 +46,7 @@
     ],
     "title": [
         {
-            "value": "Prueba",
+            "value": "Louise's story",
             "lang": "en"
         }
     ],
@@ -58,7 +63,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "c97e7efb-404f-47db-9c00-fd62b0602a2d"
+                        "value": "4cd17a87-f639-4433-8808-8dd4860dda53"
                     }
                 ],
                 "lang": "en"
@@ -76,7 +81,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "c97e7efb-404f-47db-9c00-fd62b0602a2d"
+                        "value": "4cd17a87-f639-4433-8808-8dd4860dda53"
                     }
                 ]
             }
@@ -93,9 +98,30 @@
                 },
                 "uuid": [
                     {
-                        "value": "1ddfd5a3-b9b4-44ff-8e00-f934a5ab56af"
+                        "value": "516211fd-000b-4c60-a222-34565563ae59"
                     }
                 ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/news_article\/field_site_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "2f4204c1-6c36-458a-8b00-b0e6ee4ee5da"
+                    }
+                ],
+                "alt": "Louise's story",
+                "title": "",
+                "width": "2340",
+                "height": "1316"
             }
         ]
     },
@@ -107,13 +133,13 @@
     ],
     "created": [
         {
-            "value": "1454688971",
+            "value": "1455020731",
             "lang": "en"
         }
     ],
     "changed": [
         {
-            "value": "1454689005",
+            "value": "1455020831",
             "lang": "en"
         }
     ],
@@ -131,7 +157,7 @@
     ],
     "revision_timestamp": [
         {
-            "value": "1454688997"
+            "value": "1455020818"
         }
     ],
     "revision_translation_affected": [
@@ -148,21 +174,15 @@
     ],
     "body": [
         {
-            "value": "<p>asdasdasdasdasdasda<\/p>\r\n",
-            "format": "basic_html",
+            "value": "<p class=\"type--quote type--xl\">\u201cI went to bed hoping that I would stay asleep for days or months or years or my entire lifetime. Then I started to harm myself. I thought I might as well do something about not wanting to wake up. One night went really bad. I also stopped eating. These things were becoming addictions. I never liked talk about my emotions. I had to psyche myself up to come to the project but they helped me to make sense of my feelings. I fell down a lot and slipped back, but they kept me going.\u201d<\/p>\r\n\r\n<p class=\"type--xs\">Louise, 17, MYPAS<\/p>\r\n",
+            "format": "full_html",
             "summary": "",
             "lang": "en"
         }
     ],
-    "field_intro": [
-        {
-            "value": "<p>asdasd<\/p>\r\n",
-            "format": "basic_html"
-        }
-    ],
     "field_publish_date": [
         {
-            "value": "2016-02-05"
+            "value": "2016-02-09"
         }
     ],
     "field_type_news": [

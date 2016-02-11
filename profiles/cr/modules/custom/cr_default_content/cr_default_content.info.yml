@@ -10,3 +10,4 @@ dependencies:
   - rest
   - hal
   - news
+  - file_entity

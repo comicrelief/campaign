@@ -5,8 +5,6 @@ dependencies:
     - field.storage.node.field_media
     - node.type.news_article
     - taxonomy.vocabulary.media
-_core:
-  default_config_hash: 0Oxr_cdaOf8jOtxWvudZIpywdGST6ADGiTwhwksEOVk
 id: node.news_article.field_media
 field_name: field_media
 entity_type: node
