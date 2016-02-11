@@ -16,6 +16,7 @@
   <property name="app.dir"                value="${project.basedir}"                              override="true" />
   <property name="app.profile.name"       value="cr"                                                override="true" />
   <property name="app.profile.dir"        value="profiles/cr"                                       override="true" />
+  <property name="app.content.dir"        value="${app.profile.dir}/modules/custom/cr_default_content/content" override="true" />
   <!-- <property name="app.profile.options"    value="agov_install_additional_options.install=1"           override="true" /> -->
   <property name="app.profile.options"    value=""           override="true" />
   <property name="app.files.public"       value="sites/default/files"                                 override="true" />
@@ -196,7 +197,15 @@
     </target>
 
     <target name="content:export">
-      <exec dir="${app.dir}" command="${drush.cmd} dcem agov_default_content" logoutput="true" passthru="true" />
+      <exec dir="${app.dir}" command="${drush.cmd} dcem cr_default_content" logoutput="true" passthru="true" />
+    </target>
+
+    <target name="content:export:show">
+      <exec dir="${app.dir}" command="${drush.cmd} dcer ${type} ${id}" logoutput="true" passthru="true" />
+    </target>
+
+    <target name="content:export:save">
+      <exec dir="${app.dir}" command="${drush.cmd} dcer --file=${app.content.dir}/ ${type} ${id}" logoutput="true" passthru="true" />
     </target>
 
 </project>

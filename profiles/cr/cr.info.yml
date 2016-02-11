@@ -42,7 +42,8 @@ dependencies:
   - ctools
   - pathauto
   - config_devel
-  # - file_entity
+  - file_entity
+  - youtube
   # - twitter_block
   # - layout_plugin
   # - page_manager
@@ -50,13 +51,14 @@ dependencies:
   # - text_icon
 
   # Development modules
-  - default_content
+  - cr_default_content
 
   # Custom modules
   # - agov_article
   # - agov_standard_page
   # - agov_social_icons
   # - agov_publication
+  - cr_article
 themes:
   - seven
   - bartik
