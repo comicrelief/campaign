@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.article.field_publish_date
     - field.field.node.article.field_type_news
     - field.field.node.article.field_youtube_url
+    - image.style.large
     - node.type.article
   module:
     - datetime
@@ -28,10 +29,10 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_image:
-    weight: 6
-    label: above
+    weight: 1
+    label: hidden
     settings:
-      image_style: ''
+      image_style: large
       image_link: ''
     third_party_settings: {  }
     type: image

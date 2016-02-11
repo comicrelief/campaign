@@ -9,7 +9,7 @@ dependencies:
     - field.field.node.article.field_publish_date
     - field.field.node.article.field_type_news
     - field.field.node.article.field_youtube_url
-    - image.style.thumbnail
+    - image.style.medium
     - node.type.article
   module:
     - datetime
@@ -36,10 +36,10 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_image:
-    weight: 26
+    weight: 2
     settings:
+      preview_image_style: medium
       progress_indicator: throbber
-      preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
   field_intro:
