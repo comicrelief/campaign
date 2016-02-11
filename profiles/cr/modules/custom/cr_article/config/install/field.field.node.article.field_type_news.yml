@@ -3,13 +3,13 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_type_news
-    - node.type.news_article
+    - node.type.article
   module:
     - options
-id: node.news_article.field_type_news
+id: node.article.field_type_news
 field_name: field_type_news
 entity_type: node
-bundle: news_article
+bundle: article
 label: 'Type of news'
 description: ''
 required: true

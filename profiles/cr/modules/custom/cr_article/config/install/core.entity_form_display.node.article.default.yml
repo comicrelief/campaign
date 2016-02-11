@@ -2,24 +2,24 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.news_article.body
-    - field.field.node.news_article.field_intro
-    - field.field.node.news_article.field_media
-    - field.field.node.news_article.field_publish_date
-    - field.field.node.news_article.field_site_image
-    - field.field.node.news_article.field_type_news
-    - field.field.node.news_article.field_youtube_url
+    - field.field.node.article.body
+    - field.field.node.article.field_image
+    - field.field.node.article.field_intro
+    - field.field.node.article.field_media
+    - field.field.node.article.field_publish_date
+    - field.field.node.article.field_type_news
+    - field.field.node.article.field_youtube_url
     - image.style.thumbnail
-    - node.type.news_article
+    - node.type.article
   module:
     - datetime
     - image
     - path
     - text
     - youtube
-id: node.news_article.default
+id: node.article.default
 targetEntityType: node
-bundle: news_article
+bundle: article
 mode: default
 content:
   body:
@@ -35,6 +35,13 @@ content:
     weight: 9
     settings: {  }
     third_party_settings: {  }
+  field_image:
+    weight: 26
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
   field_intro:
     type: text_textarea
     weight: 4
@@ -54,13 +61,6 @@ content:
     type: datetime_default
     weight: 1
     settings: {  }
-    third_party_settings: {  }
-  field_site_image:
-    type: image_image
-    weight: 2
-    settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
     third_party_settings: {  }
   field_type_news:
     type: options_select

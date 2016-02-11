@@ -12,7 +12,7 @@ selection_criteria:
   b3fb1e7d-3f3a-484a-a000-0ffbc97f2c68:
     id: 'entity_bundle:node'
     bundles:
-      news_article: news_article
+      article: article
     negate: false
     context_mapping:
       node: node

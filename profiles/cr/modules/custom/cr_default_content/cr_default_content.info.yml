@@ -5,9 +5,9 @@ package: Comic Relief
 core: '8.x'
 
 dependencies:
-  - default_content
-  - serialization
-  - rest
   - hal
-  - news
+  - rest
+  - serialization
+  - default_content
   - file_entity
+  - cr_article

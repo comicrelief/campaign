@@ -3,12 +3,12 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_media
-    - node.type.news_article
+    - node.type.article
     - taxonomy.vocabulary.media
-id: node.news_article.field_media
+id: node.article.field_media
 field_name: field_media
 entity_type: node
-bundle: news_article
+bundle: article
 label: Media
 description: ''
 required: true

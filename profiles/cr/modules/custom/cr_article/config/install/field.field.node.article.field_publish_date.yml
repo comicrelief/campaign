@@ -3,13 +3,13 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_publish_date
-    - node.type.news_article
+    - node.type.article
   module:
     - datetime
-id: node.news_article.field_publish_date
+id: node.article.field_publish_date
 field_name: field_publish_date
 entity_type: node
-bundle: news_article
+bundle: article
 label: 'Publish Date'
 description: ''
 required: false

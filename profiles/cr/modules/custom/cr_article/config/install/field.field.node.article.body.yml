@@ -3,13 +3,13 @@ status: true
 dependencies:
   config:
     - field.storage.node.body
-    - node.type.news_article
+    - node.type.article
   module:
     - text
-id: node.news_article.body
+id: node.article.body
 field_name: body
 entity_type: node
-bundle: news_article
+bundle: article
 label: Body
 description: ''
 required: false

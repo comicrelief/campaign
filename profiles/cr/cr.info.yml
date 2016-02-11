@@ -36,7 +36,6 @@ dependencies:
   - link
   - filter
   - dynamic_page_cache
-  - youtube
 
   # Contrib modules
   - token
@@ -44,6 +43,7 @@ dependencies:
   - pathauto
   - config_devel
   - file_entity
+  - youtube
   # - twitter_block
   # - layout_plugin
   # - page_manager
@@ -58,7 +58,7 @@ dependencies:
   # - agov_standard_page
   # - agov_social_icons
   # - agov_publication
-  - news
+  - cr_article
 themes:
   - seven
   - bartik
