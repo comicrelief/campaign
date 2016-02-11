@@ -6,7 +6,7 @@ default:
         - Drupal\DrupalExtension\Context\DrushContext
         - Drupal\DrupalExtension\Context\MessageContext
         - Drupal\DrupalExtension\Context\MinkContext
-        - DrupalMelFeatureContext
+        - DrupalCRFeatureContext
   extensions:
     Behat\MinkExtension:
       goutte: ~
