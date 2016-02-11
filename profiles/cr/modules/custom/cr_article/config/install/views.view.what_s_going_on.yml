@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.teaser
     - field.storage.node.field_image
     - node.type.article
     - system.menu.main
@@ -76,7 +77,10 @@ display:
       style:
         type: grid
       row:
-        type: fields
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: teaser
       fields:
         field_image:
           id: field_image
