@@ -8,7 +8,7 @@ language: php
 sudo: false
 
 php:
-  - 5.5
+  - 5.6
 
 matrix:
   fast_finish: true
@@ -105,34 +105,6 @@ script:
 
 after_script:
   - drupal-ti after_script
-
-# install:
-#   # add composer's global bin directory to the path
-#   # see: https://github.com/drush-ops/drush#install---composer
-#   - export PATH="$HOME/.composer/vendor/bin:$PATH"
-
-#   # Install Drush
-#   - composer global require drush/drush:dev-master
-#   - phpenv rehash
-
-#   - rm -fr sites/default/settings.php
-
-#   # Create MySQL Database
-#   - mysql -e 'create database drupal;'
-
-#   # Install drupal default profile
-#   - drush --verbose site-install cr --account-pass="admin" --db-url=mysql://root:@127.0.0.1/drupal --yes
-
-#   # Import config for our pseudo install
-#   #- drush --verbose config-import active --yes
-
-#   # TODO: Generate content
-
-#   # TODO: Phantomjs
-
-#   # Move into core directory for phpunits benefit
-#   - cd core
-#   - exit 0
 
 notifications:
   # slack: comicrelief:W1jExvqbSU9Kb3lyavdGHdGD
