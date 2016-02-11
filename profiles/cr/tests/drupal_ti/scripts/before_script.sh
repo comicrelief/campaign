@@ -23,32 +23,13 @@ fi
 # Create database and install Drupal.
 mysql -e "create database $DRUPAL_TI_DB"
 
-# mkdir -p "$DRUPAL_TI_DRUPAL_BASE"
-
-# cd $DRUPAL_TI_DRUPAL_BASE
-# drush make --no-recursion "$TRAVIS_BUILD_DIR/stub.make" "$DRUPAL_TI_DRUPAL_BASE/drupal"
-# rm -rf drupal/profiles/drupalmel
-
-# # Point project into the drupal installation.
-# ln -sf "$TRAVIS_BUILD_DIR" "drupal/profiles/$DRUPAL_TI_MODULE_NAME"
-
-# cd "$TRAVIS_BUILD_DIR"
-# drush make --no-core --contrib-destination=./ ./drupal-org.make -y
-
-# cd "$DRUPAL_TI_DRUPAL_BASE/drupal"
-
-# Remove default settings so we can re-install fine
-pwd
-ls -l
+# Remove default settings so we can re-install fine, this
+# is custom logic since we version settings.php in the git repo
 rm -fr sites/default/settings.php
-# ls -l sites/default/
-~/.composer/vendor/bin/drush.php --version
 
-# Install the site
+# Install the site using the given profile
 php -d sendmail_path=$(which true) ~/.composer/vendor/bin/drush.php --verbose --yes site-install $DRUPAL_TI_MODULE_NAME --db-url="$DRUPAL_TI_DB_URL"
 drush use $(pwd)#default
-
-drush status
 
 # Clear caches and run a web server.
 drupal_ti_clear_caches
