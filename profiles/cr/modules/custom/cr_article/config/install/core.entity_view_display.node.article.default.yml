@@ -2,24 +2,24 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.news_article.body
-    - field.field.node.news_article.field_intro
-    - field.field.node.news_article.field_media
-    - field.field.node.news_article.field_publish_date
-    - field.field.node.news_article.field_site_image
-    - field.field.node.news_article.field_type_news
-    - field.field.node.news_article.field_youtube_url
+    - field.field.node.article.body
+    - field.field.node.article.field_image
+    - field.field.node.article.field_intro
+    - field.field.node.article.field_media
+    - field.field.node.article.field_publish_date
+    - field.field.node.article.field_type_news
+    - field.field.node.article.field_youtube_url
     - image.style.large
-    - node.type.news_article
+    - node.type.article
   module:
     - datetime
     - image
     - text
     - user
     - youtube
-id: node.news_article.default
+id: node.article.default
 targetEntityType: node
-bundle: news_article
+bundle: article
 mode: default
 content:
   body:
@@ -28,6 +28,14 @@ content:
     label: visually_hidden
     settings: {  }
     third_party_settings: {  }
+  field_image:
+    weight: 1
+    label: hidden
+    settings:
+      image_style: large
+      image_link: ''
+    third_party_settings: {  }
+    type: image
   field_intro:
     type: text_default
     weight: 3
@@ -41,14 +49,6 @@ content:
     settings:
       format_type: medium
       timezone_override: ''
-    third_party_settings: {  }
-  field_site_image:
-    type: image
-    weight: 1
-    label: hidden
-    settings:
-      image_style: large
-      image_link: ''
     third_party_settings: {  }
   field_youtube_url:
     type: youtube_video
