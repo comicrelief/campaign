@@ -71,6 +71,7 @@ themes:
   - stable
   - seven
   - bartik
+  - classy
   - campaign_base
 config_devel:
   - block.block.campaign_base_search
