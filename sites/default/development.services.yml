@@ -8,6 +8,6 @@ services:
 
 parameters:
  twig.config:
+  cache: false
   debug: true
   autoreload: true
-  cache: false
