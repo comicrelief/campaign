@@ -29,6 +29,7 @@ dependencies:
   - search
   - shortcut
   - toolbar
+  - field
   - field_ui
   - file
   - rdf
