@@ -70,7 +70,7 @@ config_devel:
   - system.menu.main-navigation
   - responsive_image.styles.hero_image_full_node
   - image.style.full_node_desktop_770x433
-  - image.style.full_node_desktop_442x271
-  - image.style.full_node_desktop_330x247
+  - image.style.full_node_mobile_442x271
+  - image.style.full_node_tablet_330x247
   - system.theme
 
