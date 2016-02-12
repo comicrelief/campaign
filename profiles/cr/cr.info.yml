@@ -36,6 +36,7 @@ dependencies:
   - link
   - filter
   - dynamic_page_cache
+  - responsive_image
 
   # Contrib modules
   - token
@@ -63,3 +64,20 @@ dependencies:
 themes:
   - seven
   - bartik
+  - campaign_base
+config_devel:
+  - block.block.campaign_base_search
+  - block.block.campaign_base_account_menu
+  - block.block.campaign_base_page_title
+  - block.block.campaign_base_branding
+  - block.block.campaign_base_main_menu
+  - block.block.campaign_base_footer
+  # Menus
+  - system.menu.footer
+  - system.menu.main-navigation
+  - responsive_image.styles.hero_image_full_node
+  - image.style.full_node_desktop_770x433
+  - image.style.full_node_desktop_442x271
+  - image.style.full_node_desktop_330x247
+  - system.theme
+
