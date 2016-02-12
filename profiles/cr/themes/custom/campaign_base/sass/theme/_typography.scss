@@ -5,16 +5,21 @@ body {
 	font-family: $body-font;
 }
 h1,h2,h3,h4,h5,p {
+	margin: 0 0 20px;
 }
 p {
 	font-size: 1em;
-	margin: 0 0 20px;
+	line-height: 18px;
 }
 h1 {
-	font-size: 1.4em;
-	margin: 0 0 20px;
+	font-family: "Knockout 27 A","Knockout 27 B",Impact;
+  font-size: 32px;
+  font-weight: normal;
+  line-height: 28px;
 	@include breakpoint($screen-sm) {    
-		font-size: 1.6em;
+		font-size: 64px;
+	  font-weight: normal;
+	  line-height: 60px;
   }	
 }
 h2 {
