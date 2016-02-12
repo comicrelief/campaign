@@ -8,11 +8,10 @@ dependencies:
     - field.field.node.article.field_publish_date
     - field.field.node.article.field_tags
     - field.field.node.article.field_youtube_url
-    - image.style.large
     - node.type.article
   module:
     - datetime
-    - image
+    - responsive_image
     - text
     - user
     - youtube
@@ -31,10 +30,10 @@ content:
     weight: 1
     label: hidden
     settings:
-      image_style: large
+      responsive_image_style: hero_image_full_node
       image_link: ''
     third_party_settings: {  }
-    type: image
+    type: responsive_image
   field_intro:
     type: text_default
     weight: 3
