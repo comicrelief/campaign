@@ -45,21 +45,15 @@ dependencies:
   - config_devel
   - file_entity
   - youtube
-  # - twitter_block
-  # - layout_plugin
-  # - page_manager
-  # - fences
-  # - text_icon
+  - admin_toolbar
+  - admin_toolbar_tools
 
   # Development modules
   - cr_default_content
 
   # Custom modules
-  # - agov_article
-  # - agov_standard_page
-  # - agov_social_icons
-  # - agov_publication
   - cr_article
+
 themes:
   - seven
   - bartik
