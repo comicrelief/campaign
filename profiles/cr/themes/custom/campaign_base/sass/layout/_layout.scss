@@ -27,15 +27,17 @@
 // );
 $susy: (
   columns: 12,
-  container: 1140px,
-  gutters: 1/5,
-  gutter-position: after,
+  container: 1200px,
+  gutters: 15/100,
+  gutter-position: split,
   output: isolate
-  ,
-  debug: (
-    image: show,
-    toggle: top right
-    )
+  // ,
+  // debug: (
+  //   image: show,
+  //   color: #ccc,
+  //   output: background,
+  //   toggle: top left,
+  //   ),
 );
 
 @include border-box-sizing;
@@ -46,14 +48,22 @@ $susy: (
 .layout-container {
 
 }
+#block-campaign-base-content {
+}
+.region-header-inner-wrapper,
+.region-header-top,
+.region-content {
+  @include container();
+}
 header,
 .region-highlighted,
 main {
   @include clearfix;
 }
+.block-search {
+  float: right;
+  margin-top: 15px;
+}
 footer {
 
-}
-.layout-content {
-	@include container(1140px);
 }

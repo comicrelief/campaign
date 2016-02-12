@@ -41,9 +41,14 @@
 <div class="layout-container">
 
   <header role="banner">
-    {{ page.header }}
+    <div class="region-header-top-wrapper">
+      {{ page.header_top }}
+    </div>
+    <div class="region-header-inner-wrapper">
+      {{ page.header }}
+    </div>
   </header>
-  {{ kint(page.content) }}
+  {# {{ kint(page.content) }} #}
 
   {{ page.breadcrumb }}
 
@@ -55,6 +60,8 @@
     <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
 
     <div class="layout-content">
+      <div class="title">
+      </div>
       {{ page.content }}
     </div>{# /.layout-content #}
 
@@ -62,7 +69,9 @@
 
   {% if page.footer %}
     <footer role="contentinfo">
-      {{ page.footer }}
+      <div class="region-header-inner-wrapper">
+        {{ page.footer }}
+      </div>
     </footer>
   {% endif %}
 

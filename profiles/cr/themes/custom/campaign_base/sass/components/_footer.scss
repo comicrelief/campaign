@@ -1,8 +1,13 @@
 // Footer style
-
+footer {
+  background: $black;
+  padding: 60px 0;
+  margin-top: 40px;
+}
 .menu--footer {
   margin: 30px 0 15px;
   ul {
+    text-align: center;
     li {
       display: inline-block;
       margin: 10px 0;
@@ -13,6 +18,7 @@
       }
       a {
         display: block;
+        color: $white;
         margin: 0 5px 0 0;
         padding: 0 20px 0 10px;
         text-decoration: none;
