@@ -7,6 +7,7 @@ dependencies:
   # Core modules
   - node
   - block
+  - block_content
   - ckeditor
   - config
   - comment
@@ -63,8 +64,10 @@ dependencies:
   - cr_article
 
 themes:
+  - stable
   - seven
   - bartik
+  - classy
   - campaign_base
 config_devel:
   - block.block.campaign_base_search
