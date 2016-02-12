@@ -17,8 +17,10 @@ stylesheets-remove:
   - core/modules/system/css/system.module.css
   - core/modules/system/css/system.theme.css
   - core/modules/views/css/views.module.css
+  - core/themes/classy/css/components/item-list.css
 
 regions:
+  header_top: Top Header
   header: Header
   highlighted: Highlighted
   breadcrumb: Breadcrumb
