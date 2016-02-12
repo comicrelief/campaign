@@ -4,8 +4,8 @@ dependencies:
   module:
     - ctools
     - node
-id: news
-label: News
+id: article
+label: Article
 type: 'canonical_entities:node'
 pattern: 'whats-going-on/[node:title]'
 selection_criteria:
