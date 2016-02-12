@@ -80,13 +80,13 @@ content:
   promote:
     type: boolean_checkbox
     settings:
-      display_label: false
+      display_label: true
     weight: 10
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
-      display_label: false
+      display_label: true
     weight: 11
     third_party_settings: {  }
   title:
