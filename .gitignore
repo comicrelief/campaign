@@ -69,3 +69,5 @@ profiles/cr/themes/custom/agov_base
 build.properties
 
 PATCHES.txt
+
+profiles/cr/tests/behat/vendor
