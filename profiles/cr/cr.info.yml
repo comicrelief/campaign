@@ -38,6 +38,7 @@ dependencies:
   - link
   - filter
   - dynamic_page_cache
+  - breakpoint
   - responsive_image
 
   # Contrib modules
