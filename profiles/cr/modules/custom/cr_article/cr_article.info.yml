@@ -18,8 +18,6 @@ dependencies:
 config_devel:
   - taxonomy.vocabulary.media
   - node.type.article
-  - core.base_field_override.node.article.promote
-  - core.base_field_override.node.article.sticky
   - core.entity_form_display.node.article.default
   - core.entity_view_display.node.article.default
   - field.field.node.article.body
