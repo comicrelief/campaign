@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: full_node_mobile_442x271
+label: 'Full node mobile 442x271'
+effects:
+  174fd90b-ea95-485b-ad29-419fd0ea431a:
+    uuid: 174fd90b-ea95-485b-ad29-419fd0ea431a
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 442
+      height: 271
