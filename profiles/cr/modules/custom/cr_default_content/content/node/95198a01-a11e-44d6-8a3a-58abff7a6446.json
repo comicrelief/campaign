@@ -1,0 +1,195 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/whats-going-on\/yplan-partners-sport-relief?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/article"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_image": [
+            {
+                "href": "http:\/\/default\/file\/7?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_tags": [
+            {
+                "href": "http:\/\/default\/taxonomy\/term\/1?_format=hal_json"
+            }
+        ]
+    },
+    "uuid": [
+        {
+            "value": "95198a01-a11e-44d6-8a3a-58abff7a6446"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "article"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "title": [
+        {
+            "value": "YPlan partners with Sport Relief",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "0616b794-2625-48ca-9d04-0448f244c9c4"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "0616b794-2625-48ca-9d04-0448f244c9c4"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/7?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "2fe3006e-f9ee-4772-a75c-92fc0bc20931"
+                    }
+                ],
+                "lang": "en",
+                "alt": "",
+                "title": "",
+                "width": "610",
+                "height": "343"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_tags": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/taxonomy\/term\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/tags"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "17f49cf8-f8bd-4d70-af02-02db94926a20"
+                    }
+                ]
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1455634556",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1455634608",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1455634587"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<p>YPlan, the event discovery and booking platform is today announcing it\u2019s partnered with Sport Relief to raise cash and help people living incredibly tough lives.<\/p>\r\n\r\n<p>The app\u2019s users will now be able to sign up to the Sainsbury\u2019s Sport Relief Games, as well as donate money through YPlan.<\/p>\r\n\r\n<p>The partnership will also give users the ability to buy tickets from a special collection of events with \u00a31 of every ticket going to Sport Relief.<\/p>\r\n\r\n<p>\"We are extremely proud to be partnering with such a powerful charitable event this year,\u201d Rytis Vitkauskas, CEO and Co-Founder of YPlan, said.<\/p>\r\n\r\n<p>\u201cSport Relief brings help to vulnerable people in both the UK and the world\u2019s poorest communities and we are encouraging YPlanners to sign up and support this cause.\u201d<\/p>\r\n\r\n<p>Michele Settle, Director of UK Campaigns and Brands at Comic Relief added: \u201cIt\u2019s great to have YPlan on board as a new digital partner for Sport Relief, providing the public with another way to not only sign up to the Sainsbury\u2019s Sport Relief Games but donate through the YPlan collection. It couldn\u2019t be easier to get involved, get active, raise cash and change lives.\u201d<\/p>\r\n\r\n<p>The Sainsbury\u2019s Sport Relief Games take place from March 18 to 20. Sign up now to<a href=\"http:\/\/www.sportrelief.com\/events\/flagship-events\">your local event<\/a>&nbsp;to get involved and raise money.<\/p>\r\n",
+            "format": "basic_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ],
+    "field_publish_date": [
+        {
+            "value": "2016-02-16"
+        }
+    ],
+    "field_type_news": [
+        {
+            "value": "0"
+        }
+    ]
+}
