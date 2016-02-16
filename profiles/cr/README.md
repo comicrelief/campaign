@@ -1,7 +1,8 @@
 # CR Profile directory
 
 This directory contains the CR campaign profile and all modules/themes required.
-# # CR fields architecture.
+
+## CR fields architecture.
 
 |field_name|type|comment|
 |--- | --- | --- | --- | --- |

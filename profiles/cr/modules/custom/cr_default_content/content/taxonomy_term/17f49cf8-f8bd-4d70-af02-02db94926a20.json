@@ -4,7 +4,7 @@
             "href": "http:\/\/default\/taxonomy\/term\/2?_format=hal_json"
         },
         "type": {
-            "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/media"
+            "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/tags"
         }
     },
     "uuid": [
@@ -14,7 +14,7 @@
     ],
     "vid": [
         {
-            "target_id": "media"
+            "target_id": "tags"
         }
     ],
     "langcode": [

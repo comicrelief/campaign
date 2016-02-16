@@ -1,4 +1,8 @@
-# CR Article fields architecture.
+# CR Article module
+
+This module contains the CR article that shows.
+
+## CR Article fields architecture.
 
 |field_name|type|comment|
 |--- | --- | --- | --- | --- |

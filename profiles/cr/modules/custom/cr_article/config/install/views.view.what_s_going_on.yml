@@ -6,7 +6,7 @@ dependencies:
     - field.storage.node.field_image
     - node.type.article
     - system.menu.main
-    - taxonomy.vocabulary.media
+    - taxonomy.vocabulary.tags
   module:
     - image
     - node
@@ -326,10 +326,10 @@ display:
             group_items: {  }
           reduce_duplicates: false
           plugin_id: list_field
-        field_media_target_id:
-          id: field_media_target_id
-          table: node__field_media
-          field: field_media_target_id
+        field_tags_target_id:
+          id: field_tags_target_id
+          table: node__field_tags
+          field: field_tags_target_id
           relationship: none
           group_type: group
           admin_label: ''
@@ -338,12 +338,12 @@ display:
           group: 1
           exposed: true
           expose:
-            operator_id: field_media_target_id_op
+            operator_id: field_tags_target_id_op
             label: 'Filter category:'
             description: ''
             use_operator: false
-            operator: field_media_target_id_op
-            identifier: field_media_target_id
+            operator: field_tags_target_id_op
+            identifier: field_tags_target_id
             required: false
             remember: false
             multiple: false
@@ -367,7 +367,7 @@ display:
           reduce_duplicates: false
           type: select
           limit: true
-          vid: media
+          vid: tags
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
@@ -439,7 +439,7 @@ display:
             fail: empty
           validate_options:
             bundles:
-              media: media
+              tags: tags
             operation: view
             transform: '1'
             access: false
