@@ -19,11 +19,11 @@ image_style_mappings:
     breakpoint_id: campaign_base.tablet
     multiplier: 1x
     image_mapping_type: image_style
-    image_mapping: full_node_mobile_442x271
+    image_mapping: full_node_tablet_330x247
   -
     breakpoint_id: campaign_base.mobile
     multiplier: 1x
     image_mapping_type: image_style
-    image_mapping: full_node_tablet_330x247
+    image_mapping: full_node_mobile_442x271
 breakpoint_group: campaign_base
 fallback_image_style: full_node_desktop_770x433

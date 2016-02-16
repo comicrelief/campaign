@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: full_node_tablet_330x247
+label: 'Full node tablet 330x247'
+effects:
+  f042c1a9-5feb-489a-8400-fa81bd18fb49:
+    uuid: f042c1a9-5feb-489a-8400-fa81bd18fb49
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 330
+      height: 247
