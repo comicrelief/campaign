@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.full_node_desktop_770x433
+    - image.style.full_node_mobile_442x271
+    - image.style.full_node_tablet_330x247
+  theme:
+    - campaign_base
+id: hero_image_full_node
+label: 'Hero image full node'
+image_style_mappings:
+  -
+    breakpoint_id: campaign_base.desktop
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: full_node_desktop_770x433
+  -
+    breakpoint_id: campaign_base.tablet
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: full_node_tablet_330x247
+  -
+    breakpoint_id: campaign_base.mobile
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: full_node_mobile_442x271
+breakpoint_group: campaign_base
+fallback_image_style: full_node_desktop_770x433
