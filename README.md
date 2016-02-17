@@ -4,13 +4,47 @@ A work in progress. See http://confluence.comicrelief.com/display/RND17/Campaign
 
 ## How to set this up locally
 
-Copy over example local settings and adapt the database URL
+### Install and configure Drush 8
 
-	cp sites/default/example.settings.local.php sites/default/settings.local.php
+Drush 8 is required for Drupal 8. Install instructions can be found [here](http://x-team.com/2015/02/install-drush-8-drupal-8-without-throwing-away-drush-6-7/).
 
-Then, [install Drush 8](http://x-team.com/2015/02/install-drush-8-drupal-8-without-throwing-away-drush-6-7/), and re-install the site.
+### Install Phing
 
-	drush8 si cr --account-pass="admin" -y
+You first will need to install to install [Phing](www.phing.info), which is a PHP build tool that automates tasks such as re-installing the site, running migrate procedures, tests etc.
+
+Download Phing from http://www.phing.info/trac/wiki/Users/Download and follow installation instructions. The preferred way is to install this using PEAR.
+
+### Configure Phing 
+
+Copy over `build.example.properties` to `build.properties`
+
+	cp build.example.properties build.properties
+
+And now adapt `build.properties` adding in your Drush 8 binary location, database connection details, and your local website URL.
+
+Now, do the same with `settings.local.php`
+
+	cp sites/default/settings.example.local.php sites/default/settings.local.php 
+
+And change the database connection details as well.
+
+### Using Phing
+
+To install the site, now run
+
+	phing build
+
+To login to the site, for example run
+
+	phing login
+
+To remake all contrib modules (for example, when adding a new module), run
+
+	phing make
+
+To list all possible Phing targets, check
+
+	phing -l
 
 ## How to run this on Pantheon
 

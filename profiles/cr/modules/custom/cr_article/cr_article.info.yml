@@ -1,0 +1,38 @@
+name: News article
+type: module
+description: 'Defines a News article content type.'
+package: Comic Relief
+# version: VERSION
+core: 8.x
+dependencies:
+  - field
+  - datetime
+  - text
+  - options
+  - image
+  - file
+  - views
+  - taxonomy
+  - youtube
+
+config_devel:
+  - taxonomy.vocabulary.media
+  - node.type.article
+  - core.entity_form_display.node.article.default
+  - core.entity_view_display.node.article.default
+  - field.field.node.article.body
+  - field.field.node.article.field_intro
+  - field.storage.node.field_intro
+  - field.field.node.article.field_media
+  - field.storage.node.field_media
+  - field.field.node.article.field_publish_date
+  - field.storage.node.field_publish_date
+  - field.field.node.article.field_image
+  - field.storage.node.field_image
+  - field.field.node.article.field_type_news
+  - field.storage.node.field_type_news
+  - field.field.node.article.field_youtube_url
+  - field.storage.node.field_youtube_url
+  - views.view.related_news
+  - views.view.what_s_going_on
+  - pathauto.pattern.article

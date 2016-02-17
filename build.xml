@@ -1,0 +1,211 @@
+<project name="cr" default="build">
+
+  <!--         -->
+  <!-- Imports -->
+  <!-- ======= -->
+
+  <!-- <import file="vendor/previousnext/phing-phpqatools/build.xml" optional="true" /> -->
+
+  <!--            -->
+  <!-- Properties -->
+  <!-- ========== -->
+
+  <!-- Application -->
+  <property name="app.uri"                value="http://campaign.dev"                                     override="true" />
+  <property name="app.name"               value="CR Campaign"                                                override="true" />
+  <property name="app.dir"                value="${project.basedir}"                              override="true" />
+  <property name="app.profile.name"       value="cr"                                                override="true" />
+  <property name="app.profile.dir"        value="profiles/cr"                                       override="true" />
+  <property name="app.content.dir"        value="${app.profile.dir}/modules/custom/cr_default_content/content" override="true" />
+  <!-- <property name="app.profile.options"    value="agov_install_additional_options.install=1"           override="true" /> -->
+  <property name="app.profile.options"    value=""           override="true" />
+  <property name="app.files.public"       value="sites/default/files"                                 override="true" />
+  <property name="app.files.tmp"          value="sites/default/files/tmp"                             override="true" />
+  <property name="app.files.private"      value="sites/default/private"                               override="true" />
+  <!-- This should get overidden for secure builds. -->
+  <property name="app.password"           value="admin"                                            override="true" />
+  <!-- Development variables. -->
+  <!-- <property name="app.dev.modules"        value="config_devel default_content"   override="true" /> -->
+  <!-- <property name="app.dev.config_modules" value="agov agov_standard_page agov_article agov_publication agov_default_content"               override="true" /> -->
+
+  <!-- Overrides -->
+  <!-- <property name="php.sniff.dirs"       value="agov/modules/custom agov/themes agov/src" override="true" /> -->
+  <!-- <property name="php.sniff.exclusions" value="*/custom/pathauto/,*/custom/file_entity/,*/libraries*/,*/contrib/*,*/*.features.*,*/*.field_group.inc,*/*.layout.*,*/*.pages_default.*,*/*.panels_default.*,*/*strongarm.inc,*/*.views_default.inc" override="true" /> -->
+  <exec command="which php" outputProperty="php.bin.php" />
+
+  <!-- Drush -->
+  <property name="drush.bin" value="${project.basedir}/bin/drush" override="true" />
+
+  <!-- Gulp -->
+  <!-- <property name="gulp.cmd" value="${project.basedir}/node_modules/.bin/gulp" override="true" /> -->
+
+  <!-- Database -->
+  <property name="db.querystring" value="mysql://root:@localhost/campaign" override="true" />
+
+  <!-- These allow developers to override configuration on
+       a per environment basis -->
+  <property file="build.properties" override="true"/>
+
+  <property name="drush.cmd" value="${drush.bin} -r ${app.dir}" override="true" />
+
+  <!--              -->
+  <!-- Meta targets -->
+  <!-- ============ -->
+
+  <target name="build"
+          depends="install"
+          description="Build (or rebuild) the project.">
+  </target>
+
+  <target name="build:dev"
+          depends="build, dev:modules"
+          description="Build (or rebuild) the project with development dependencies.">
+
+      <!-- Fix up some permissions and then copy the local settings file into place. -->
+      <exec command="chmod 755 ${app.dir}/sites/default" />
+      <exec command="chmod 755 ${app.dir}/sites/default/settings.php;" />
+      <exec command="cp ${app.dir}/sites/example.settings.local.php ${app.dir}/sites/default/settings.local.php;" />
+
+      <!-- Ensure the local settings file is included from the main setting file. -->
+      <append text="if (file_exists(__DIR__ . '/settings.local.php')) { include __DIR__ . '/settings.local.php'; }"
+              destFile="${app.dir}/sites/default/settings.php" />
+      <phingcall target="cache:clear"/>
+
+  </target>
+
+<!--  <target name="test"
+          depends="phpcs, simpletest"
+          description="Run the test suite">
+  </target> -->
+
+  <!-- Drush Targets -->
+  <target name="cache:clear">
+    <exec command="${drush.cmd} cr"
+          passthru="true"/>
+  </target>
+
+  <target name="simpletest:init">
+    <exec dir="${app.dir}"
+          command="${drush.cmd} en simpletest -y"
+          passthru="true"
+          checkreturn="true" />
+  </target>
+
+  <target name="simpletest"
+          depends="simpletest:init">
+
+    <exec dir="${app.dir}"
+          command="${php.bin.php} ./core/scripts/run-tests.sh --concurrency 4 --php ${php.bin.php} --module ${app.profile.name} --url ${app.uri}/"
+          passthru="true"
+          checkreturn="true" />
+  </target>
+
+  <!--                  -->
+  <!-- Standard targets -->
+  <!-- ================ -->
+
+  <target name="prepare"
+          description="Setup the project">
+
+    <!-- Create -->
+    <exec command="mkdir -p ${app.dir}/${app.files.public} ${app.dir}/${app.files.tmp} ${app.dir}/${app.files.private}"
+          logoutput="true"
+          passthru="true"
+          checkreturn="true" />
+
+    <!-- Permissions -->
+    <exec command="chmod -R 2775 ${app.dir}/${app.files.public} ${app.dir}/${app.files.tmp} ${app.dir}/${app.files.private}"
+          logoutput="true"
+          passthru="true"
+          checkreturn="true" />
+
+    <!-- Symlink the agov folder into the profiles folder. -->
+    <!-- <symlink target="${project.basedir}/agov" link="${app.dir}/${app.profile.dir}" /> -->
+  </target>
+
+  <target name="make"
+          description="Compile CR contrib from a make file">
+    <exec dir="${app.dir}"
+          command="${drush.cmd} make -y ${app.profile.dir}/drupal-org.make --no-core --contrib-destination=${app.profile.dir}"
+          checkreturn="true"
+          logoutput="true"
+          passthru="true" />
+  </target>
+
+  <target name="make-core"
+          depends="make"
+          description="Compile CR from a make file">
+    <exec dir="${app.dir}"
+          command="${drush.cmd} make -y ${app.profile.dir}/drupal-org-core.make --no-cache --prepare-install"
+          checkreturn="true"
+          logoutput="true"
+          passthru="true" />
+  </target>
+
+  <target name="install"
+          description="Install CR with standard configuration.">
+    <!-- Install the site -->
+    <exec dir="${app.dir}"
+          command="${drush.cmd} site-install ${app.profile.name} -y --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring} ${app.profile.options}"
+          logoutput="true"
+          passthru="true" />
+    <!-- Fix up permissions -->
+    <exec command="chmod 755 ${app.dir}/sites/default" />
+    <exec command="chmod 755 ${app.dir}/sites/default/settings.php" />
+  </target>
+
+  <target name="styleguide:link" description="Link the style guide to make it publicly available.">
+    <symlink link="${app.dir}/${app.profile.dir}/styleguide" target="${project.basedir}/styleguide" />
+  </target>
+
+  <target name="login" description="Generate a one-time login link">
+    <exec dir="${app.dir}"
+          command="${drush.cmd} uli -l ${app.uri}"
+          logoutput="true"
+          passthru="true" />
+  </target>
+
+  <target name="gulp:build" description="Generate all compiled Sass and style guide resources.">
+    <exec dir="${app.dir}"
+          command="${gulp.cmd} build"
+          logoutput="true"
+          passthru="true"
+          checkreturn="true" />
+  </target>
+
+  <!--                    -->
+  <!-- Development tagets -->
+  <!-- ================   -->
+
+  <target name="dev:modules"
+          description="Install the development modules.">
+    <exec dir="${app.dir}"
+          command="${drush.cmd} en ${app.dev.modules} -y"
+          logoutput="true"
+          passthru="true" />
+  </target>
+
+  <target name="config:export" description="Export all of the configuration for the defined modules.">
+    <foreach list="${app.dev.config_modules}" param="config_devel_module" target="config:export:single" delimiter=" " />
+  </target>
+
+  <target name="config:export:single">
+    <exec dir="${app.dir}"
+          command="${drush.cmd} config-devel-export-module ${config_devel_module}"
+          logoutput="true"
+          passthru="true" />
+    </target>
+
+    <target name="content:export">
+      <exec dir="${app.dir}" command="${drush.cmd} dcem cr_default_content" logoutput="true" passthru="true" />
+    </target>
+
+    <target name="content:export:show">
+      <exec dir="${app.dir}" command="${drush.cmd} dcer ${type} ${id}" logoutput="true" passthru="true" />
+    </target>
+
+    <target name="content:export:save">
+      <exec dir="${app.dir}" command="${drush.cmd} dcer --file=${app.content.dir}/ ${type} ${id}" logoutput="true" passthru="true" />
+    </target>
+
+</project>

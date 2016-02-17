@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_media
+    - node.type.article
+    - taxonomy.vocabulary.media
+id: node.article.field_media
+field_name: field_media
+entity_type: node
+bundle: article
+label: Media
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      media: media
+    sort:
+      field: _none
+    auto_create: true
+field_type: entity_reference

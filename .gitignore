@@ -1,8 +1,8 @@
 # Ignore paths that contain user-generated content.
+profiles/cr/modules/custom/cr_default_content/content/user
 sites/*/files
 sites/*/private
 files/*
-private/*
 
 # Pantheon commits a settings.php for environment-specific settings.
 # Place local settings in settings.local.php
@@ -54,3 +54,8 @@ Thumbs.db
 # Things in the core directory that Drupal 8 commits in the repository.
 !core/**/*.gz
 
+build.properties
+
+PATCHES.txt
+
+profiles/cr/tests/behat/vendor
