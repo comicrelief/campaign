@@ -120,26 +120,20 @@ body {
   .btn-red:hover {
     border-bottom: 2px solid #1e1e1e; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_footer\.scss}line{font-family:\000032}}
-footer {
-  background: #1e1e1e;
-  padding: 60px 0;
-  margin-top: 40px; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_footer\.scss}line{font-family:\000037}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_footer-navigation\.scss}line{font-family:\000033}}
 .menu--footer {
   margin: 30px 0 15px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_footer\.scss}line{font-family:\000039}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_footer-navigation\.scss}line{font-family:\000035}}
   .menu--footer ul {
     text-align: center; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_footer\.scss}line{font-family:\0000311}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_footer-navigation\.scss}line{font-family:\000037}}
     .menu--footer ul li {
       display: inline-block;
       margin: 10px 0; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_footer\.scss}line{font-family:\0000315}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_footer-navigation\.scss}line{font-family:\0000311}}
       .menu--footer ul li:last-child a {
         border-right: none; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_footer\.scss}line{font-family:\0000319}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_footer-navigation\.scss}line{font-family:\0000315}}
       .menu--footer ul li a {
         display: block;
         color: #fff;
@@ -152,9 +146,15 @@ footer {
         -o-transition: color 180ms;
         -webkit-transition: color 180ms;
         transition: color 180ms; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_footer\.scss}line{font-family:\0000329}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_footer-navigation\.scss}line{font-family:\0000325}}
         .menu--footer ul li a:hover {
           color: #dddddd; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_footer\.scss}line{font-family:\000032}}
+footer {
+  background: #1e1e1e;
+  padding: 60px 0;
+  margin-top: 40px; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_header\.scss}line{font-family:\000032}}
 header {
@@ -448,51 +448,6 @@ header {
     .views-exposed-form select option {
       display: inline-block; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_views\.scss}line{font-family:\000035}}
-.view .item-list li {
-  margin-bottom: 15px; }
-  @media (min-width: 769px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_views\.scss}line{font-family:\000035}}
-    .view .item-list li {
-      width: 49.15254237%;
-      float: left; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/usr\/local\/lib\/ruby\/gems\/2\.2\.0\/gems\/susy-2\.2\.11\/sass\/susy\/language\/susy\/_gallery\.scss}line{font-family:\0000366}}
-      .view .item-list li:nth-child(2n + 1) {
-        margin-left: 0;
-        margin-right: -100%;
-        clear: both;
-        margin-left: 0; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/usr\/local\/lib\/ruby\/gems\/2\.2\.0\/gems\/susy-2\.2\.11\/sass\/susy\/language\/susy\/_gallery\.scss}line{font-family:\0000366}}
-      .view .item-list li:nth-child(2n + 2) {
-        margin-left: 50.84745763%;
-        margin-right: -100%;
-        clear: none; } }
-  @media (min-width: 992px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_views\.scss}line{font-family:\000035}}
-    .view .item-list li {
-      width: 32.20338983%;
-      float: left; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/usr\/local\/lib\/ruby\/gems\/2\.2\.0\/gems\/susy-2\.2\.11\/sass\/susy\/language\/susy\/_gallery\.scss}line{font-family:\0000366}}
-      .view .item-list li:nth-child(3n + 1) {
-        margin-left: 0;
-        margin-right: -100%;
-        clear: both;
-        margin-left: 0; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/usr\/local\/lib\/ruby\/gems\/2\.2\.0\/gems\/susy-2\.2\.11\/sass\/susy\/language\/susy\/_gallery\.scss}line{font-family:\0000366}}
-      .view .item-list li:nth-child(3n + 2) {
-        margin-left: 33.89830508%;
-        margin-right: -100%;
-        clear: none; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/usr\/local\/lib\/ruby\/gems\/2\.2\.0\/gems\/susy-2\.2\.11\/sass\/susy\/language\/susy\/_gallery\.scss}line{font-family:\0000366}}
-      .view .item-list li:nth-child(3n + 3) {
-        margin-left: 67.79661017%;
-        margin-right: -100%;
-        clear: none; } }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/components\/_views\.scss}line{font-family:\0000314}}
-  .view .item-list li .field--name-field-image img {
-    width: 100%;
-    height: auto; }
-
 @media -sass-debug-info{filename{font-family:file\:\/\/\/usr\/local\/lib\/ruby\/gems\/2\.2\.0\/gems\/susy-2\.2\.11\/sass\/susy\/language\/susy\/_box-sizing\.scss}line{font-family:\0000321}}
 *, *:before, *:after {
   -moz-box-sizing: border-box;
@@ -525,6 +480,49 @@ main {
 .block-search {
   float: right;
   margin-top: 15px; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/layout\/_views\.scss}line{font-family:\000035}}
+.view .item-list li {
+  margin-bottom: 15px; }
+  @media (min-width: 769px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/layout\/_views\.scss}line{font-family:\000035}}
+    .view .item-list li {
+      width: 48.91304348%;
+      float: left; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/usr\/local\/lib\/ruby\/gems\/2\.2\.0\/gems\/susy-2\.2\.11\/sass\/susy\/language\/susy\/_gallery\.scss}line{font-family:\0000366}}
+      .view .item-list li:nth-child(2n + 1) {
+        margin-left: 0.54347826%;
+        margin-right: -100%;
+        clear: both; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/usr\/local\/lib\/ruby\/gems\/2\.2\.0\/gems\/susy-2\.2\.11\/sass\/susy\/language\/susy\/_gallery\.scss}line{font-family:\0000366}}
+      .view .item-list li:nth-child(2n + 2) {
+        margin-left: 50.54347826%;
+        margin-right: -100%;
+        clear: none; } }
+  @media (min-width: 992px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/layout\/_views\.scss}line{font-family:\000035}}
+    .view .item-list li {
+      width: 32.24637681%;
+      float: left; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/usr\/local\/lib\/ruby\/gems\/2\.2\.0\/gems\/susy-2\.2\.11\/sass\/susy\/language\/susy\/_gallery\.scss}line{font-family:\0000366}}
+      .view .item-list li:nth-child(3n + 1) {
+        margin-left: 0.54347826%;
+        margin-right: -100%;
+        clear: both; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/usr\/local\/lib\/ruby\/gems\/2\.2\.0\/gems\/susy-2\.2\.11\/sass\/susy\/language\/susy\/_gallery\.scss}line{font-family:\0000366}}
+      .view .item-list li:nth-child(3n + 2) {
+        margin-left: 33.87681159%;
+        margin-right: -100%;
+        clear: none; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/usr\/local\/lib\/ruby\/gems\/2\.2\.0\/gems\/susy-2\.2\.11\/sass\/susy\/language\/susy\/_gallery\.scss}line{font-family:\0000366}}
+      .view .item-list li:nth-child(3n + 3) {
+        margin-left: 67.21014493%;
+        margin-right: -100%;
+        clear: none; } }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/layout\/_views\.scss}line{font-family:\0000314}}
+  .view .item-list li .field--name-field-image img {
+    width: 100%;
+    height: auto; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/theme\/_list\.scss}line{font-family:\000034}}
 ul li {

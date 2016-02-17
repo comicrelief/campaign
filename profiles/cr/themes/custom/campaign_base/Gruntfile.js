@@ -15,7 +15,7 @@ module.exports = function (grunt) {
         }
       },
       templates: {
-        files: ['index.html','views/{,**/}*.html']
+        files: ['templates/{,**/}*.html.twig']
       },
       images: {
         files: ['images/**']
