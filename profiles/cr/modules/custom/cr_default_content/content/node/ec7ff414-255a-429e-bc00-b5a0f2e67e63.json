@@ -1,0 +1,195 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/whats-going-on\/four-down-\u2013-one-to-go?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/article"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_image": [
+            {
+                "href": "http:\/\/default\/file\/9?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_tags": [
+            {
+                "href": "http:\/\/default\/taxonomy\/term\/1?_format=hal_json"
+            }
+        ]
+    },
+    "uuid": [
+        {
+            "value": "ec7ff414-255a-429e-bc00-b5a0f2e67e63"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "article"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "title": [
+        {
+            "value": "Four down \u2013 one to go!",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "0616b794-2625-48ca-9d04-0448f244c9c4"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "0616b794-2625-48ca-9d04-0448f244c9c4"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/9?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "65036934-d0be-4d41-ac24-36aeaf50b889"
+                    }
+                ],
+                "lang": "en",
+                "alt": "",
+                "title": "",
+                "width": "610",
+                "height": "343"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_tags": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/taxonomy\/term\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/tags"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "17f49cf8-f8bd-4d70-af02-02db94926a20"
+                    }
+                ]
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1455708485",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1455708535",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1455708506"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<p>Greg James struggled on the penultimate day of Gregathlon - but with his fourth triathlon completed in Sheffield, the end is in sight.<\/p>\r\n\r\n<p>The presenter faced a tough day, after taking a tumble from his bike when his legs seized up during the cycle. \u201cMy mind\u2019s telling me yes, but my body, my body\u2019s telling me no,\u201d he joked.<\/p>\r\n\r\n<p>Travel issues from Glasgow to Sheffield the previous day meant Greg only had a few hours\u2019 of sleep before setting off on his cycle. \u201cWe had the worst journey last night from Glasgow to Sheffield, he said. \u201cWhat was supposed to be a four hour journey turned into seven, so I've only had four hours sleep.<\/p>\r\n\r\n<p>\u201cThe challenge has been harder than I thought, it's been exhausting travelling from city to city. It's been great having some guests come up and see me though, it'll be so nice having Grimmy and Example with me today. Even though my body is saying \u2018please stop\u2019, there is no way I'm giving in. I'm in the zone, even if my legs are not. I think they might still be in Belfast. I'm hanging on by a thread. I really need everyone's help and support to get through the next two days.\u201d<\/p>\r\n\r\n<p>With his leg muscles seizing up from fatigue and the biting cold, and his feet strapped into his pedals, Greg struggled to keep his balance on the bike and took a fall at the side of the road. Fortunately, he was unharmed and was on his way again in seconds.<\/p>\r\n\r\n<p>His cycle was followed by an indoor swim, when he was joined by singer Example. He then ran through Sheffield city centre to the radio studio where he presented his afternoon show. Luckily he had fellow Radio 1 DJ and presenter Nick Grimshaw to cheer him along.<\/p>\r\n\r\n<p>BBC Radio 1\u2019s Gregathlon for Sport Relief will see Greg attempt to run, swim and cycle a triathlon a day for five consecutive days, across five UK cities. Tomorrow Greg will attempt to complete his final triathlon in Norwich.<\/p>\r\n\r\n<p>Money raised from the challenge will be spent helping people living unimaginably tough lives, with half of the money raised used to make a difference right here in the UK. The other half is used to transform lives across the world\u2019s poorest communities.<\/p>\r\n\r\n<p>Greg needs your support to keep him going as he takes on his Gregathlon. You can sponsor him&nbsp;<a href=\"http:\/\/www.sportrelief.com\/sponsorgreg\">here<\/a>.<\/p>\r\n\r\n<p>Inspired by Greg? Why not take on your own challenge by signing up to the Sainsbury\u2019s Sport Relief Games which take place from Friday 18th to Sunday 20th March. There are thousands of events across the UK with flagship Games in Belfast, Cardiff, Glasgow, Sheffield, Norwich and London.<\/p>\r\n\r\n<p>Find your nearest event at&nbsp;<a href=\"http:\/\/www.sportrelief.com\/\">sportrelief.com<\/a>&nbsp;and&nbsp;<a href=\"http:\/\/www.sportrelief.com\/events\">sign up now<\/a>!<\/p>\r\n",
+            "format": "basic_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ],
+    "field_publish_date": [
+        {
+            "value": "2016-02-17"
+        }
+    ],
+    "field_type_news": [
+        {
+            "value": "0"
+        }
+    ]
+}
