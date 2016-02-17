@@ -7,7 +7,6 @@ dependencies:
     - field.field.node.article.field_intro
     - field.field.node.article.field_publish_date
     - field.field.node.article.field_tags
-    - field.field.node.article.field_type_news
     - field.field.node.article.field_youtube_url
     - image.style.medium
     - node.type.article
@@ -61,11 +60,6 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
-    third_party_settings: {  }
-  field_type_news:
-    type: options_select
-    weight: 7
-    settings: {  }
     third_party_settings: {  }
   field_youtube_url:
     type: youtube
