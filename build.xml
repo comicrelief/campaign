@@ -25,8 +25,8 @@
   <!-- This should get overidden for secure builds. -->
   <property name="app.password"           value="admin"                                            override="true" />
   <!-- Development variables. -->
-  <!-- <property name="app.dev.modules"        value="config_devel default_content"   override="true" /> -->
-  <!-- <property name="app.dev.config_modules" value="agov agov_standard_page agov_article agov_publication agov_default_content"               override="true" /> -->
+  <property name="app.dev.modules"        value="config_devel default_content"   override="true" />
+  <property name="app.dev.config_modules" value="cr cr_article cr_default_content"               override="true" />
 
   <!-- Overrides -->
   <!-- <property name="php.sniff.dirs"       value="agov/modules/custom agov/themes agov/src" override="true" /> -->
@@ -191,7 +191,7 @@
 
   <target name="config:export:single">
     <exec dir="${app.dir}"
-          command="${drush.cmd} config-devel-export-module ${config_devel_module}"
+          command="${drush.cmd} config-devel-export ${config_devel_module}"
           logoutput="true"
           passthru="true" />
     </target>
