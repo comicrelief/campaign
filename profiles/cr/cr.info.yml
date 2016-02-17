@@ -52,6 +52,7 @@ dependencies:
 
   # Custom modules
   - cr_article
+  - cr_teaser
 
 themes:
   - seven
