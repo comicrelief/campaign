@@ -2,7 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - taxonomy.vocabulary.media
+    - taxonomy.vocabulary.tags
   module:
     - image
     - node
@@ -144,10 +144,10 @@ display:
           expose:
             operator: ''
           group: 1
-        field_media_target_id:
-          id: field_media_target_id
-          table: node__field_media
-          field: field_media_target_id
+        field_tags_target_id:
+          id: field_tags_target_id
+          table: node__field_tags
+          field: field_tags_target_id
           relationship: none
           group_type: group
           admin_label: ''
@@ -183,7 +183,7 @@ display:
           reduce_duplicates: false
           type: textfield
           limit: true
-          vid: media
+          vid: tags
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
@@ -216,18 +216,18 @@ display:
           empty: false
           tokenize: false
           content:
-            value: '<p class="type--centred"><a href="/whats-going-on{filter_media_tag_querystring}" class="btn btn-red btn--fixed-width">See more</a></p>'
+            value: '<p class="type--centred"><a href="/whats-going-on{filter_tags_tag_querystring}" class="btn btn-red btn--fixed-width">See more</a></p>'
             format: full_html
           plugin_id: text
       empty: {  }
       relationships:
-        field_media:
-          id: field_media
-          table: node__field_media
-          field: field_media
+        field_tags:
+          id: field_tags
+          table: node__field_tags
+          field: field_tags
           relationship: none
           group_type: group
-          admin_label: 'field_media: Taxonomy term'
+          admin_label: 'field_tags: Taxonomy term'
           required: true
           plugin_id: standard
       arguments:
@@ -286,7 +286,7 @@ display:
             node: true
             limit: true
             vids:
-              media: media
+              tags: tags
             anyall: +
             term_page: '0'
           default_argument_skip_url: true

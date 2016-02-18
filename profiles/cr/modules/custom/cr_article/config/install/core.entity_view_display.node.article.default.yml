@@ -5,9 +5,8 @@ dependencies:
     - field.field.node.article.body
     - field.field.node.article.field_image
     - field.field.node.article.field_intro
-    - field.field.node.article.field_media
     - field.field.node.article.field_publish_date
-    - field.field.node.article.field_type_news
+    - field.field.node.article.field_tags
     - field.field.node.article.field_youtube_url
     - image.style.large
     - node.type.article
@@ -70,5 +69,4 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
-  field_media: true
-  field_type_news: true
+  field_tags: true

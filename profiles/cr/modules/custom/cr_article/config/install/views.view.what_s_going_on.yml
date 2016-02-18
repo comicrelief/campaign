@@ -6,7 +6,7 @@ dependencies:
     - field.storage.node.field_image
     - node.type.article
     - system.menu.main
-    - taxonomy.vocabulary.media
+    - taxonomy.vocabulary.tags
   module:
     - image
     - node
@@ -56,10 +56,15 @@ display:
       pager:
         type: full
         options:
-          items_per_page: 12
+          items_per_page: 3
           offset: 0
           id: 0
           total_pages: null
+          tags:
+            previous: '‹ Previous'
+            next: 'Next ›'
+            first: '« First'
+            last: 'Last »'
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -68,11 +73,6 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
-          tags:
-            previous: '‹ Previous'
-            next: 'Next ›'
-            first: '« First'
-            last: 'Last »'
           quantity: 9
       style:
         type: grid
@@ -245,91 +245,10 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
-        field_type_news_value:
-          id: field_type_news_value
-          table: node__field_type_news
-          field: field_type_news_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: not
-          value:
-            2: '2'
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          plugin_id: list_field
-        field_type_news_value_1:
-          id: field_type_news_value_1
-          table: node__field_type_news
-          field: field_type_news_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: or
-          value:
-            - '0'
-            - '1'
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_type_news_value_1_op
-            label: 'Filter type:'
-            description: ''
-            use_operator: false
-            operator: field_type_news_value_1_op
-            identifier: field_type_news_value_1
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          plugin_id: list_field
-        field_media_target_id:
-          id: field_media_target_id
-          table: node__field_media
-          field: field_media_target_id
+        field_tags_target_id:
+          id: field_tags_target_id
+          table: node__field_tags
+          field: field_tags_target_id
           relationship: none
           group_type: group
           admin_label: ''
@@ -338,12 +257,12 @@ display:
           group: 1
           exposed: true
           expose:
-            operator_id: field_media_target_id_op
+            operator_id: field_tags_target_id_op
             label: 'Filter category:'
             description: ''
             use_operator: false
-            operator: field_media_target_id_op
-            identifier: field_media_target_id
+            operator: field_tags_target_id_op
+            identifier: field_tags_target_id
             required: false
             remember: false
             multiple: false
@@ -367,7 +286,7 @@ display:
           reduce_duplicates: false
           type: select
           limit: true
-          vid: media
+          vid: tags
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
@@ -439,7 +358,7 @@ display:
             fail: empty
           validate_options:
             bundles:
-              media: media
+              tags: tags
             operation: view
             transform: '1'
             access: false
