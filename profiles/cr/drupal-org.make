@@ -15,6 +15,16 @@ projects[token] = 1.0-alpha2
 
 projects[youtube] = 1.0-beta2
 
+; Layout modules
+
+projects[layout_plugin] = 1.0-alpha22
+
+projects[page_manager] = 1.0-alpha23
+
+projects[inline_entity_form] = 1.0-alpha3
+
+projects[panels] = 3.0-beta4
+
 ; Developer modules
 
 projects[config_devel] = 1.0-rc1
