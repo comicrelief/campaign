@@ -14,3 +14,5 @@ default:
     Drupal\DrupalExtension:
       api_driver: "drupal"
       drush_driver: "drush"
+      region_map:
+        content: "#content"
