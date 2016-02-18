@@ -77,7 +77,10 @@
           depends="phpcs, simpletest"
           description="Run the test suite">
   </target> -->
-
+  <target name="test"
+            description="Run behat tests">
+    <exec command="${app.dir}/vendor/bin/behat ${app.profile.dir}/tests/behat" />
+    </target>
   <!-- Drush Targets -->
   <target name="cache:clear">
     <exec command="${drush.cmd} cr"
