@@ -47,6 +47,13 @@ dependencies:
   - admin_toolbar
   - admin_toolbar_tools
 
+  # Layout
+  - page_manager
+  - page_manager_ui
+  - layout_plugin
+  - panels
+  - inline_entity_form
+
   # Development modules
   - cr_default_content
 
