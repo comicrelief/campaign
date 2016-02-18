@@ -81,6 +81,14 @@
             description="Run behat tests">
     <exec command="${app.dir}/vendor/bin/behat ${app.profile.dir}/tests/behat" />
     </target>
+
+    <target name="prepare-test"
+              description="Prepare to tun behat tests">
+      <exec command="export BASE_URL= ${app.uri}" />
+      <exec command="export DRUPAL_ROOT= ${app.dir}" />
+      <exec command="export DRUSH_ALIAS= ${drush.bin}" />
+<!--      <exec command="export BEHAT_PARAMS= '{\"extensions\":{\"Behat\\MinkExtension\":{\"base_url\":\"$BASE_URL\"},\"Drupal\\DrupalExtension\":{\"drupal\":{\"drupal_root\":\"$DRUPAL_ROOT\"},\"drush\":{\"alias\":\"$DRUSH_ALIAS\"}}}}'" /> -->
+      </target>
   <!-- Drush Targets -->
   <target name="cache:clear">
     <exec command="${drush.cmd} cr"
@@ -140,11 +148,6 @@
           description="Compile CR from a make file">
     <exec dir="${app.dir}"
           command="${drush.cmd} make -y ${app.profile.dir}/drupal-org-core.make --no-cache --prepare-install"
-          checkreturn="true"
-          logoutput="true"
-          passthru="true" />
-    <exec dir="${app.dir}"
-          command="composer require drupal/drupal-extension"
           checkreturn="true"
           logoutput="true"
           passthru="true" />
