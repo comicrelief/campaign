@@ -52,6 +52,7 @@ dependencies:
   - page_manager_ui
   - layout_plugin
   - panels
+  - ctools_block
   - panelizer
   - inline_entity_form
 
