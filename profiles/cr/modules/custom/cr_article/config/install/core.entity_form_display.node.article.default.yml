@@ -5,9 +5,8 @@ dependencies:
     - field.field.node.article.body
     - field.field.node.article.field_image
     - field.field.node.article.field_intro
-    - field.field.node.article.field_media
     - field.field.node.article.field_publish_date
-    - field.field.node.article.field_type_news
+    - field.field.node.article.field_tags
     - field.field.node.article.field_youtube_url
     - image.style.medium
     - node.type.article
@@ -49,23 +48,18 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-  field_media:
+  field_publish_date:
+    type: datetime_default
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+  field_tags:
     type: entity_reference_autocomplete_tags
     weight: 6
     settings:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
-    third_party_settings: {  }
-  field_publish_date:
-    type: datetime_default
-    weight: 1
-    settings: {  }
-    third_party_settings: {  }
-  field_type_news:
-    type: options_select
-    weight: 7
-    settings: {  }
     third_party_settings: {  }
   field_youtube_url:
     type: youtube

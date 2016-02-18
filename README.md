@@ -14,7 +14,9 @@ You first will need to install to install [Phing](www.phing.info), which is a PH
 
 Download Phing from http://www.phing.info/trac/wiki/Users/Download and follow installation instructions. The preferred way is to install this using PEAR.
 
-### Configure Phing 
+Or use `composer global require phing/phing` [guide](https://coderwall.com/p/ma_cuq/using-composer-to-manage-global-packages)
+
+### Configure Phing
 
 Copy over `build.example.properties` to `build.properties`
 
@@ -24,7 +26,7 @@ And now adapt `build.properties` adding in your Drush 8 binary location, databas
 
 Now, do the same with `settings.local.php`
 
-	cp sites/default/settings.example.local.php sites/default/settings.local.php 
+	cp sites/default/settings.example.local.php sites/default/settings.local.php
 
 And change the database connection details as well.
 
@@ -57,6 +59,3 @@ Now you can push to Pantheon to deploy this
 https://dashboard.pantheon.io/sites/f9291f1f-3819-4964-9c5b-c9f7d5500d28#dev/code
 
 How to deal with [settings.php on Pantheon](https://pantheon.io/docs/articles/drupal/configuring-settings-php/)
-
-
-

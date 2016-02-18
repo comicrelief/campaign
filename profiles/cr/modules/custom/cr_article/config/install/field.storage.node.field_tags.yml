@@ -4,8 +4,8 @@ dependencies:
   module:
     - node
     - taxonomy
-id: node.field_media
-field_name: field_media
+id: node.field_tags
+field_name: field_tags
 entity_type: node
 type: entity_reference
 settings:
