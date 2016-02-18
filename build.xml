@@ -143,6 +143,11 @@
           checkreturn="true"
           logoutput="true"
           passthru="true" />
+    <exec dir="${app.dir}"
+          command="composer require drupal/drupal-extension"
+          checkreturn="true"
+          logoutput="true"
+          passthru="true" />
   </target>
 
   <target name="install"
