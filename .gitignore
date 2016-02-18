@@ -56,10 +56,6 @@ Thumbs.db
 ##########
 profiles/cr/themes/custom/campaign_base/node_modules
 
-# Devel module #
-##########
-modules/devel/
-
 # Temp agov theme #
 profiles/cr/themes/custom/agov_base
 
