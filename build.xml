@@ -137,7 +137,7 @@
   <target name="make"
           description="Compile CR contrib from a make file">
     <exec dir="${app.dir}"
-          command="${drush.cmd} make -y ${app.profile.dir}/drupal-org.make --no-core --contrib-destination=${app.profile.dir}"
+          command="${drush.cmd} make -y ${app.profile.dir}/drupal-org.make.yml --no-core --contrib-destination=${app.profile.dir}"
           checkreturn="true"
           logoutput="true"
           passthru="true" />
@@ -147,7 +147,7 @@
           depends="make"
           description="Compile CR from a make file">
     <exec dir="${app.dir}"
-          command="${drush.cmd} make -y ${app.profile.dir}/drupal-org-core.make --no-cache --prepare-install"
+          command="${drush.cmd} make -y ${app.profile.dir}/drupal-org-core.make.yml --no-cache --prepare-install"
           checkreturn="true"
           logoutput="true"
           passthru="true" />
