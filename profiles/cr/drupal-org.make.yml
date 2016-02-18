@@ -1,0 +1,35 @@
+api: 2
+core: 8.x
+# Specify common subdir of "contrib"
+defaults:
+  projects:
+    subdir: "contrib"
+projects:
+  # Core contrib
+  ctools:
+    version: 3.0-alpha22
+  file_entity:
+    version: 2.x-dev
+  pathauto:
+    version: 1.0-alpha1
+  token:
+    version: 1.0-alpha2
+  youtube:
+    version: 1.0-beta2
+  # Layout modules
+  layout_plugin:
+    version: 1.0-alpha22
+  page_manager:
+    version: 1.0-alpha23
+  inline_entity_form:
+    version: 1.0-alpha3
+  panels:
+    version: 3.0-beta4
+  # Developer modules
+  config_devel:
+    version: 1.0-rc1
+  default_content:
+    version: 1.0-alpha2
+  # Editor/admin experience
+  admin_toolbar:
+    version: 1.14
