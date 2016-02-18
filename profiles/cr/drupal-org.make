@@ -25,6 +25,8 @@ projects[inline_entity_form] = 1.0-alpha3
 
 projects[panels] = 3.0-beta4
 
+projects[panelizer] = 3.0-alpha2
+
 ; Developer modules
 
 projects[config_devel] = 1.0-rc1
