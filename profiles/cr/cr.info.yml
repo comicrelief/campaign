@@ -40,6 +40,7 @@ dependencies:
   - dynamic_page_cache
   - breakpoint
   - responsive_image
+  - metatag
 
   # Contrib modules
   - token
@@ -85,4 +86,3 @@ config_devel:
   - image.style.full_node_mobile_442x271
   - image.style.full_node_tablet_330x247
   - system.theme
-
