@@ -11,8 +11,13 @@ default:
     Behat\MinkExtension:
       goutte: ~
       selenium2: ~
+      base_url: "%%BASE_URL%%"
     Drupal\DrupalExtension:
       api_driver: "drupal"
       drush_driver: "drush"
+      drupal:
+        drupal_root: "%%DRUPAL_TI_DRUPAL_DIR%%"
+      drush:
+        root: "%%DRUPAL_TI_DRUPAL_DIR%%"
       region_map:
         content: "#content"
