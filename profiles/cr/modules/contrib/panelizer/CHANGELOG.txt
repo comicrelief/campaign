@@ -1,0 +1,13 @@
+Panelizer 8.x-3.0-alpha2, 2016-02-16
+------------------------------------
+
+ - Add basic functional tests.
+ - Add permission for changing layout.
+ - Notice: Undefined Index: label in Drupal\panelizer\Panelizer->getPermissions().
+ - Contextual blocks not shown in the IPE.
+ - PanelizerFieldType::generateSampleValue() needs to specify a view mode.
+
+Panelizer 8.x-3.0-alpha1, 2016-02-05
+------------------------------------
+Initial D8 port by dsnopek and the Panels contributors.
+
