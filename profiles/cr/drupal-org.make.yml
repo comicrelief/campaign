@@ -32,6 +32,8 @@ projects:
     version: 1.0-rc1
   default_content:
     version: 1.0-alpha2
+  devel:
+    version: 1.x-dev
   # Editor/admin experience
   admin_toolbar:
     version: 1.14
