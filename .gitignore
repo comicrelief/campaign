@@ -67,3 +67,5 @@ build.properties
 PATCHES.txt
 
 profiles/cr/tests/behat/vendor
+
+.idea
