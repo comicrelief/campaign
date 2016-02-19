@@ -57,7 +57,10 @@ dependencies:
   - page_manager_ui
   - layout_plugin
   - panels
+  - panels_ipe
   - inline_entity_form
+  - panelizer
+  - ctools_block
 
   # Development modules
   - cr_default_content

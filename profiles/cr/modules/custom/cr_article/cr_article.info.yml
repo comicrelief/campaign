@@ -30,8 +30,6 @@ config_devel:
   - field.storage.node.field_publish_date
   - field.field.node.article.field_image
   - field.storage.node.field_image
-  - field.field.node.article.field_type_news
-  - field.storage.node.field_type_news
   - field.field.node.article.field_youtube_url
   - field.storage.node.field_youtube_url
   - views.view.related_news
