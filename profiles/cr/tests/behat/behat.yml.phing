@@ -20,4 +20,4 @@ default:
       drush:
         root: "%%DRUPAL_TI_DRUPAL_DIR%%"
       region_map:
-        content: "#content"
+        content: ".layout-content"
