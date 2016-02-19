@@ -77,9 +77,8 @@
           depends="phpcs, simpletest"
           description="Run the test suite">
   </target> -->
-  <target name="test"
-            description="Run behat tests">
-    <exec command="${app.dir}/vendor/bin/behat ${app.profile.dir}/tests/behat" />
+    <target name="test" description="Run behat tests">
+      <exec command="${app.dir}/vendor/bin/behat ${app.profile.dir}/tests/behat" />
     </target>
 
     <target name="prepare-test"
@@ -87,8 +86,10 @@
       <exec command="export BASE_URL= ${app.uri}" />
       <exec command="export DRUPAL_ROOT= ${app.dir}" />
       <exec command="export DRUSH_ALIAS= ${drush.bin}" />
-<!--      <exec command="export BEHAT_PARAMS= '{\"extensions\":{\"Behat\\MinkExtension\":{\"base_url\":\"$BASE_URL\"},\"Drupal\\DrupalExtension\":{\"drupal\":{\"drupal_root\":\"$DRUPAL_ROOT\"},\"drush\":{\"alias\":\"$DRUSH_ALIAS\"}}}}'" /> -->
-      </target>
+      <exec command="export" >
+        <arg value="BEHAT_PARAMS='{'extensions':{'Behat\\MinkExtension':{'base_url':'$BASE_URL'},'Drupal\\DrupalExtension':{'drupal':{'drupal_root':'$DRUPAL_ROOT'},'drush':{'alias':'$DRUSH_ALIAS'}}}}';" />
+      </exec>
+    </target>
   <!-- Drush Targets -->
   <target name="cache:clear">
     <exec command="${drush.cmd} cr"
