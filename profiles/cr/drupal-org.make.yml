@@ -7,7 +7,7 @@ defaults:
 projects:
   # Core contrib
   ctools:
-    version: 3.0-alpha22
+    version: 3.0-alpha23
   file_entity:
     version: 2.x-dev
   pathauto:
@@ -25,6 +25,8 @@ projects:
     version: 1.0-alpha23
   panels:
     version: 3.0-beta4
+  panelizer:
+    version: 3.0-alpha2
   # Developer modules
   config_devel:
     version: 1.0-rc1
