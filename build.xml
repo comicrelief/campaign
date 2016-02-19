@@ -73,14 +73,12 @@
 
   </target>
 
-  <!-- Test target: currently not working -->
-<!--   <target name="test" description="Run behat tests">
+  <target name="test" description="Run behat tests">
     <exec dir="${app.dir}/${app.profile.dir}/tests/behat"
-      command="vendor/bin/behat ${app.profile.dir}/tests/behat" 
+      command="vendor/bin/behat" 
       passthru="true"
       checkreturn="true" />
   </target>
- -->
 
   <target name="prepare-test"
             description="Prepare to tun behat tests">
