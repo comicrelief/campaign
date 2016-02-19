@@ -10,7 +10,6 @@ dependencies:
   module:
     - image
     - node
-    - options
     - taxonomy
     - user
 id: what_s_going_on
@@ -75,7 +74,14 @@ display:
             offset_label: Offset
           quantity: 9
       style:
-        type: grid
+        type: html_list
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          type: ul
+          wrapper_class: item-list
+          class: ''
       row:
         type: 'entity:node'
         options:
@@ -369,6 +375,10 @@ display:
           plugin_id: taxonomy_index_tid
       display_extenders: {  }
       use_ajax: true
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
     cache_metadata:
       max-age: -1
       contexts:

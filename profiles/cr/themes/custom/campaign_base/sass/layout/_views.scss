@@ -1,0 +1,21 @@
+// views layout
+
+.view {
+  .item-list {
+    li {
+      @include breakpoint($screen-sm) {
+      	@include gallery(6 of 12);
+      }
+      @include breakpoint($screen-md) {
+      	@include gallery(4 of 12);
+      }
+      margin-bottom: 15px;
+      .field--name-field-image {
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+}
