@@ -27,6 +27,8 @@ projects:
     version: 1.0-alpha23
   panels:
     version: 3.0-beta4
+  panelizer:
+    version: 3.0-alpha2
   # Developer modules
   config_devel:
     version: 1.0-rc1
