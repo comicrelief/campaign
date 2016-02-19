@@ -2,6 +2,8 @@ name: Comic Relief
 type: profile
 description: "Build a site using Comic Relief's installation profile. It will install and enable common useful modules."
 core: 8.x
+distribution:
+  name: Comic Relief
 
 dependencies:
   # Core modules
@@ -46,14 +48,12 @@ dependencies:
   - youtube
 
   # Layout
+  - ctools_block
   - inline_entity_form
   - layout_plugin
   - page_manager_ui
-  - panels
   - panels_ipe
-  - inline_entity_form
   - panelizer
-  - ctools_block
 
   # Development modules
   - config_devel
