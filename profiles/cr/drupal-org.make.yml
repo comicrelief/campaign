@@ -37,14 +37,3 @@ projects:
   # Editor/admin experience
   admin_toolbar:
     version: 1.14
-  # Media contrib
-  embed:
-    version: 1.x-dev
-  entity_embed:
-    version: 1.x-dev
-  media_entity:
-    version: 1.0-beta2
-  media_entity_embeddable_video:
-    version: 1.0-beta2
-  media_entity_image:
-    version: 1.0-beta2
