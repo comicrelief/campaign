@@ -1,0 +1,69 @@
+// Susy Default Settings Value
+// $susy: (
+//   flow: ltr,
+//   math: fluid,
+//   output: float,
+//   gutter-position: after,
+//   container: auto,
+//   container-position: center,
+//   columns: 12,
+//   gutters: 1/3,
+//   column-width: false,
+//   global-box-sizing: content-box,
+//   last-flow: to,
+//   debug: (
+//     image: hide,
+//     color: rgba(#66f, .25),
+//     output: background,
+//     toggle: top right,
+//   ),
+//   use-custom: (
+//     background-image: true,
+//     background-options: false,
+//     box-sizing: true,
+//     clearfix: false,
+//     rem: true,
+//   )
+// );
+$susy: (
+  columns: 12,
+  container: 1200px,
+  gutters: 15/100,
+  gutter-position: split,
+  output: isolate
+  // ,
+  // debug: (
+  //   image: show,
+  //   color: #ccc,
+  //   output: background,
+  //   toggle: top left,
+  //   ),
+);
+
+@include border-box-sizing;
+
+// $map: layout(auto 12 .25 inside fluid isolate);
+
+// layout
+.layout-container {
+
+}
+#block-campaign-base-content {
+}
+.region-header-inner-wrapper,
+.region-header-top,
+.region-content {
+  @include container();
+}
+header,
+.region-highlighted,
+main {
+  @include clearfix;
+}
+.block-search {
+  float: right;
+  margin-top: 15px;
+}
+footer {
+
+}

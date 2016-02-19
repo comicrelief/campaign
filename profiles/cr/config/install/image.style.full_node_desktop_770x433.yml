@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: full_node_desktop_770x433
+label: 'Full node desktop 770x433'
+effects:
+  31a15fb7-c0b3-4cf3-a000-fed9385d8f15:
+    uuid: 31a15fb7-c0b3-4cf3-a000-fed9385d8f15
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 770
+      height: 433

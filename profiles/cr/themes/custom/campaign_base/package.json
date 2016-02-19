@@ -1,0 +1,20 @@
+{
+  "name": "frost-leaderboard-app",
+  "version": "1.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-browser-sync": "^2.2.0",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-compass": "^0.2.0",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-jshint": "~0.1.1",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-watch": "~0.4.3",
+    "sass-loader": "^3.1.2",
+    "susy": "^2.2.11"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  }
+}
