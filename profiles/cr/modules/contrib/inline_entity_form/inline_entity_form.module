@@ -1,0 +1,532 @@
+<?php
+
+/**
+ * @file
+ * Provides a widget for inline management (creation, modification, removal) of
+ * referenced entities. The primary use case is the parent -> children one
+ * (for example, order -> line items), where the child entities are never
+ * managed outside the parent form.
+ */
+
+use Drupal\Component\Utility\NestedArray;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
+use Drupal\inline_entity_form\Form\EntityInlineForm;
+
+/**
+ * Implements hook_entity_info_alter().
+ *
+ * @TODO - Add handlers for other core entity types.
+ */
+function inline_entity_form_entity_type_build(array &$entity_types) {
+  /** @var \Drupal\Core\Entity\EntityTypeInterface[] $entity_types */
+  if (isset($entity_types['node']) && !$entity_types['node']->getHandlerClass('inline_form')) {
+    $entity_types['node']->setHandlerClass('inline_form', '\Drupal\inline_entity_form\Form\NodeInlineForm');
+  }
+
+  foreach ($entity_types as &$entity_type) {
+    if (!$entity_type->getHandlerClass('inline_form')) {
+      $entity_type->setHandlerClass('inline_form', '\Drupal\inline_entity_form\Form\EntityInlineForm');
+    }
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function inline_entity_form_theme() {
+  return array(
+    'inline_entity_form_entity_table' => array(
+      'render element' => 'form',
+      'function' => 'theme_inline_entity_form_entity_table',
+    ),
+  );
+}
+
+/**
+ * Provides the form for adding existing entities through an autocomplete field.
+ *
+ * @param $entity_form
+ *   The form array that will receive the form.
+ * @param $form_state
+ *   The form state of the parent form.
+ *
+ * @return
+ *   The form array containing the embedded form.
+ */
+function inline_entity_form_reference_form($handler, $reference_form, &$form_state) {
+  $labels = $handler->labels();
+  $ief_id = $reference_form['#ief_id'];
+  /** @var \Drupal\field\Entity\FieldConfig $instance */
+  $instance = $form_state->get(['inline_entity_form', $ief_id, 'instance']);
+
+  $reference_form['#title'] = t('Add existing @type_singular', array('@type_singular' => $labels['singular']));
+  $reference_form['entity_id'] = array(
+    '#type' => 'entity_autocomplete',
+    '#title' => t('@label', array('@label' => ucwords($labels['singular']))),
+    '#target_type' => $instance->getSetting('target_type'),
+    '#selection_settings' => ['target_bundles' => $instance->getSetting('handler_settings')['target_bundles']],
+    '#required' => TRUE,
+    '#maxlength' => 255,
+  );
+  // Add the actions
+  $reference_form['actions'] = array(
+    '#type' => 'container',
+    '#weight' => 100,
+  );
+  $reference_form['actions']['ief_reference_save'] = array(
+    '#type' => 'submit',
+    '#value' => t('Add @type_singular', array('@type_singular' => $labels['singular'])),
+    '#name' => 'ief-reference-submit-' . $reference_form['#ief_id'],
+    '#limit_validation_errors' => array($reference_form['#parents']),
+    '#attributes' => array('class' => array('ief-entity-submit')),
+    '#ajax' => array(
+      'callback' => 'inline_entity_form_get_element',
+      'wrapper' => 'inline-entity-form-' . $reference_form['#ief_id'],
+    ),
+    '#submit' => array(
+      ['\Drupal\inline_entity_form\Element\InlineEntityForm', 'triggerIefSubmit'],
+      'inline_entity_form_close_form',
+    ),
+  );
+  $reference_form['actions']['ief_reference_cancel'] = array(
+    '#type' => 'submit',
+    '#value' => t('Cancel'),
+    '#name' => 'ief-reference-cancel-' . $reference_form['#ief_id'],
+    '#limit_validation_errors' => array(),
+    '#ajax' => array(
+      'callback' => 'inline_entity_form_get_element',
+      'wrapper' => 'inline-entity-form-' . $reference_form['#ief_id'],
+    ),
+    '#submit' => array('inline_entity_form_close_form'),
+  );
+
+  $reference_form['#element_validate'][] = 'inline_entity_form_reference_form_validate';
+  $reference_form['#ief_element_submit'][] = 'inline_entity_form_reference_form_submit';
+
+  // Allow other modules to alter the form.
+  \Drupal::moduleHandler()->alter('inline_entity_form_reference_form', $reference_form, $form_state);
+
+  return $reference_form;
+}
+
+/**
+ * Validates the form for adding existing entities.
+ *
+ * @param $reference_form
+ *  The reference entity form.
+ * @param $form_state
+ *   The form state of the parent form.
+ */
+function inline_entity_form_reference_form_validate(&$reference_form, FormStateInterface $form_state) {
+  $ief_id = $reference_form['#ief_id'];
+  $entity_type = $reference_form['#entity_type'];
+  $parents_path = implode('][', $reference_form['#parents']);
+
+  $instance = $form_state->get(['inline_entity_form', $ief_id, 'instance']);
+  $target_type = $instance->getFieldStorageDefinition()->getSetting('target_type');
+  /** @var \Drupal\inline_entity_form\InlineFormInterface $handler */
+  $handler = \Drupal::entityManager()->getHandler($target_type, 'inline_form');
+  $labels = $handler->labels();
+
+  $form_values = NestedArray::getValue($form_state->getValues(), $reference_form['#parents']);
+  $attach_entity = entity_load($entity_type, $form_values['entity_id']);
+
+  // Check to see if entity is already referenced by current IEF widget
+  if (!empty($attach_entity)) {
+    foreach ($form_state->get(['inline_entity_form', $ief_id, 'entities']) as $key => $value) {
+      if ($value['entity'] == $attach_entity) {
+        $form_state->setErrorByName($parents_path . '][existing_entity', t('The selected @label has already been added.', array('@label' => $labels['singular'])));
+        unset($attach_entity);
+      }
+    }
+  }
+  else {
+    $form_state->setErrorByName($parents_path . '][existing_entity', t('The selected @label is not valid.', array('@label' => $labels['singular'])));
+  }
+}
+
+/**
+ * Submits the form for adding existing entities.
+ *
+ * Adds the specified entity to the IEF form state.
+ *
+ * @param $reference_form
+ *  The reference entity form.
+ * @param $form_state
+ *   The form state of the parent form.
+ */
+function inline_entity_form_reference_form_submit($reference_form, FormStateInterface $form_state) {
+  $ief_id = $reference_form['#ief_id'];
+  $entity_type = $reference_form['#entity_type'];
+
+  $form_values = NestedArray::getValue($form_state->getValues(), $reference_form['#parents']);
+  $attach_entity = entity_load($entity_type, $form_values['entity_id']);
+
+  // Determine the correct weight of the new element.
+  $weight = 0;
+  if ($form_state->has(['inline_entity_form', $ief_id, 'entities'])) {
+    $weight = max(array_keys($form_state->get(['inline_entity_form', $ief_id, 'entities']))) + 1;
+  }
+
+  $entities =& $form_state->get(['inline_entity_form', $ief_id, 'entities']);
+  $entities[] = array(
+    'entity' => $attach_entity,
+    '_weight' => $weight,
+    'form' => NULL,
+    'needs_save' => FALSE,
+  );
+  $form_state->set(['inline_entity_form', $ief_id, 'entities'], $entities);
+}
+
+/**
+ * Button #submit callback: Opens a form in the IEF widget.
+ *
+ * The form is shown below the entity table, at the bottom of the widget.
+ *
+ * @param $form
+ *   The complete parent form.
+ * @param $form_state
+ *   The form state of the parent form.
+ */
+function inline_entity_form_open_form($form, FormStateInterface $form_state) {
+  $element = inline_entity_form_get_element($form, $form_state);
+  $ief_id = $element['#ief_id'];
+  $form_state->setRebuild();
+
+  // Get the current form values.
+  $parents = array_merge($element['#field_parents'], array($element['#field_name']));
+  $form_values = NestedArray::getValue($form_state->getUserInput(), $parents);
+
+  $triggering_element = $form_state->getTriggeringElement();
+  $form_state->set(['inline_entity_form', $ief_id, 'form'], $triggering_element['#ief_form']);
+  if (!empty($form_values['actions']['bundle'])) {
+    $form_state->set(['inline_entity_form', $ief_id, 'form settings'], array(
+      'bundle' => $form_values['actions']['bundle'],
+    ));
+  }
+}
+
+/**
+ * Button #submit callback: Closes a form in the IEF widget.
+ *
+ * @param $form
+ *   The complete parent form.
+ * @param $form_state
+ *   The form state of the parent form.
+ *
+ * @see inline_entity_form_open_form().
+ */
+function inline_entity_form_close_form($form, FormStateInterface $form_state) {
+  $element = inline_entity_form_get_element($form, $form_state);
+  $ief_id = $element['#ief_id'];
+
+  $form_state->setRebuild();
+  $form_state->set(['inline_entity_form', $ief_id, 'form'], NULL);
+}
+
+/**
+ * Button #submit callback: Cleans up form state for a closed entity form.
+ *
+ * @param $form
+ *   The complete parent form.
+ * @param $form_state
+ *   The form state of the parent form.
+ */
+function inline_entity_form_cleanup_form_state($form, FormStateInterface $form_state) {
+  $element = inline_entity_form_get_element($form, $form_state);
+  EntityInlineForm::submitCleanFormState($element['form']['inline_entity_form'], $form_state);
+}
+
+/**
+ * Button #submit callback: Opens a row form in the IEF widget.
+ *
+ * The row is identified by #ief_row_delta stored on the triggering
+ * element.
+ *
+ * @param $form
+ *   The complete parent form.
+ * @param $form_state
+ *   The form state of the parent form.
+ */
+function inline_entity_form_open_row_form($form, FormStateInterface $form_state) {
+  $element = inline_entity_form_get_element($form, $form_state);
+  $ief_id = $element['#ief_id'];
+  $delta = $form_state->getTriggeringElement()['#ief_row_delta'];
+
+  $form_state->setRebuild();
+  $form_state->set(['inline_entity_form', $ief_id, 'entities', $delta, 'form'], $form_state->getTriggeringElement()['#ief_row_form']);
+}
+
+/**
+ * Button #submit callback:  Closes all open child forms in the IEF widget.
+ *
+ * Used to ensure that forms in nested IEF widgets are properly closed
+ * when a parent IEF's form gets submitted or cancelled.
+ */
+function inline_entity_form_close_child_forms($form, &$form_state) {
+  $element = inline_entity_form_get_element($form, $form_state);
+  inline_entity_form_close_all_forms($element, $form_state);
+}
+
+/**
+ * Closes all open IEF forms.
+ *
+ * Recurses and closes open forms in nested IEF widgets as well.
+ *
+ * @param $elements
+ *   An array of form elements containing entity forms.
+ * @param $form_state
+ *   The form state of the parent form.
+ */
+function inline_entity_form_close_all_forms($elements, FormStateInterface $form_state) {
+  // Recurse through all children.
+  foreach (Element::children($elements) as $key) {
+    if (!empty($elements[$key])) {
+      inline_entity_form_close_all_forms($elements[$key], $form_state);
+    }
+  }
+
+  if (!empty($elements['#ief_id'])) {
+    $ief_id = $elements['#ief_id'];
+    // Close the main form.
+    $form_state->set(['inline_entity_form', $ief_id, 'form'], NULL);
+    // Close the row forms.
+    $entities = $form_state->get(['inline_entity_form', $ief_id, 'entities']);
+    foreach ($entities as $key => $value) {
+      $entities[$key]['form'] = NULL;
+    }
+    $form_state->set(['inline_entity_form', $ief_id, 'entities'], $entities);
+  }
+}
+
+/**
+ * Button #submit callback: Cleans up form state for a closed entity row form.
+ *
+ * @param $form
+ *   The complete parent form.
+ * @param $form_state
+ *   The form state of the parent form.
+ */
+function inline_entity_form_cleanup_row_form_state($form, FormStateInterface $form_state) {
+  $element = inline_entity_form_get_element($form, $form_state);
+  $delta = $form_state->getTriggeringElement()['#ief_row_delta'];
+  $entity_form = $element['entities'][$delta]['form']['inline_entity_form'];
+  EntityInlineForm::submitCleanFormState($entity_form, $form_state);
+}
+
+/**
+ * Returns an IEF widget nearest to the triggering element.
+ */
+function inline_entity_form_get_element($form, FormStateInterface $form_state) {
+  $element = array();
+  $triggering_element = $form_state->getTriggeringElement();
+
+  // Remove the action and the actions container.
+  $array_parents = array_slice($triggering_element['#array_parents'], 0, -2);
+
+  while (!isset($element['#ief_root'])) {
+    $element = NestedArray::getValue($form, $array_parents);
+    array_pop($array_parents);
+  }
+
+  return $element;
+}
+
+/**
+ * Themes the table showing existing entity references in the widget.
+ *
+ * @param $variables
+ *   Contains the form element data from $element['entities'].
+ */
+function theme_inline_entity_form_entity_table($variables) {
+  $renderer = \Drupal::service('renderer');
+  $form = $variables['form'];
+  $entity_type = $form['#entity_type'];
+  $fields = $form['#table_fields'];
+  $has_tabledrag = inline_entity_form_has_tabledrag($form);
+  // Sort the fields by weight.
+  uasort($fields, array(
+    '\Drupal\Component\Utility\SortArray',
+    'sortByWeightElement'
+  ));
+
+  $header = array();
+  if ($has_tabledrag) {
+    $header[] = array('data' => '', 'class' => array('ief-tabledrag-header'));
+    $header[] = array('data' => t('Sort order'), 'class' => array('ief-sort-order-header'));
+  }
+  // Add header columns for each field.
+  $first = TRUE;
+  foreach ($fields as $field_name => $field) {
+    $column = array('data' => $field['label']);
+    // The first column gets a special class.
+    if ($first) {
+      $column['class'] = array('ief-first-column-header');
+      $first = FALSE;
+    }
+    $header[] = $column;
+  }
+  $header[] = t('Operations');
+
+  // Build an array of entity rows for the table.
+  $rows = array();
+  foreach (Element::children($form) as $key) {
+    /** @var \Drupal\Core\Entity\FieldableEntityInterface $entity */
+    $entity = $form[$key]['#entity'];
+    // Many field formatters (such as the ones for files and images) need
+    // certain data that might be missing on unsaved entities because the field
+    // load hooks haven't run yet. Because of that, those hooks are invoked
+    // explicitly. This is the same trick used by node_preview().
+    if ($form[$key]['#needs_save']) {
+//      _field_invoke_multiple('load', $entity_type, array($entity_id => $entity));
+    }
+
+    $row_classes = array('ief-row-entity');
+    $cells = array();
+    if ($has_tabledrag) {
+      $cells[] = array('data' => '', 'class' => array('ief-tabledrag-handle'));
+      $cells[] = $renderer->render($form[$key]['delta']);
+      $row_classes[] = 'draggable';
+    }
+    // Add a special class to rows that have a form underneath, to allow
+    // for additional styling.
+    if (!empty($form[$key]['form'])) {
+      $row_classes[] = 'ief-row-entity-form';
+    }
+
+    // Add fields that represent the entity.
+    foreach ($fields as $field_name => $field) {
+      $data = '';
+      if ($field['type'] == 'label') {
+        $data = $entity->label();
+      }
+      elseif ($field['type'] == 'field' && $entity->hasField($field_name)) {
+        $display_options = array('label' => 'hidden');
+        if (isset($field['display_options'])) {
+          $display_options += $field['display_options'];
+        }
+        $data = $entity->get($field_name)->view($display_options);
+      }
+      elseif ($field['type'] == 'callback') {
+        $arguments = array(
+          'entity' => $entity,
+          'variables' => $variables,
+        );
+
+        if (isset($field['callback_arguments'])) {
+          $arguments = array_merge($arguments, $field['callback_arguments']);
+        }
+
+        $data = call_user_func_array($field['callback'], $arguments);
+      }
+
+      $cells[] = array('data' => $data, 'class' => array('inline-entity-form-' . $entity_type . '-' . $field_name));
+    }
+
+    // Add the buttons belonging to the "Operations" column.
+    $cells[] = $renderer->render($form[$key]['actions']);
+    // Create the row.
+    $rows[] = array('data' => $cells, 'class' => $row_classes);
+
+    // If the current entity array specifies a form, output it in the next row.
+    if (!empty($form[$key]['form'])) {
+      $row = array(
+        array('data' => $renderer->render($form[$key]['form']), 'colspan' => count($fields) + 1),
+      );
+      $rows[] = array('data' => $row, 'class' => array('ief-row-form'), 'no_striping' => TRUE);
+    }
+  }
+
+  $tabledrag = array();
+
+  if (!empty($rows)) {
+    $id = 'ief-entity-table-' . $form['#id'];
+    if ($has_tabledrag) {
+      // Add the tabledrag JavaScript.
+      $tabledrag = array(
+        array(
+          'action' => 'order',
+          'relationship' => 'sibling',
+          'group' => 'ief-entity-delta',
+        )
+      );
+    }
+
+    // Return the themed table.
+    $table_attributes = array(
+      'id' => $id,
+      'class' => array('ief-entity-table'),
+    );
+
+    $table = array(
+      '#type' => 'table',
+      '#header' => $header,
+      '#rows' => $rows,
+      '#attributes' => $table_attributes,
+      '#tabledrag' => $tabledrag,
+    );
+
+    return $renderer->render($table);
+  }
+}
+
+/**
+ * Checks whether tabledrag should be enabled for the given table.
+ *
+ * @param $element
+ *   The form element representing the IEF table.
+ *
+ * @return
+ *   TRUE if tabledrag should be enabled, FALSE otherwise.
+ */
+function inline_entity_form_has_tabledrag($element) {
+  $children = Element::children($element);
+  // If there is only one row, disable tabledrag.
+  if (count($children) == 1) {
+    return FALSE;
+  }
+  // If one of the rows is in form context, disable tabledrag.
+  foreach ($children as $key) {
+    if (!empty($element[$key]['form'])) {
+      return FALSE;
+    }
+  }
+
+  return TRUE;
+}
+
+/**
+ * Move form elements into fieldsets for presentation purposes.
+ *
+ * Inline forms use #tree = TRUE to keep their values in a hierarchy for
+ * easier storage. Moving the form elements into fieldsets during form building
+ * would break up that hierarchy, so it's not an option for Field API fields.
+ * Therefore, we wait until the pre_render stage, where any changes we make
+ * affect presentation only and aren't reflected in $form_state->getValues().
+ */
+function inline_entity_form_pre_render_add_fieldset_markup($form) {
+  $sort = array();
+  foreach (Element::children($form) as $key) {
+    $element = $form[$key];
+    // In our form builder functions, we added an arbitrary #fieldset property
+    // to any element that belongs in a fieldset. If this form element has that
+    // property, move it into its fieldset.
+    if (isset($element['#fieldset']) && isset($form[$element['#fieldset']])) {
+      $form[$element['#fieldset']][$key] = $element;
+      // Remove the original element this duplicates.
+      unset($form[$key]);
+      // Mark the fieldset for sorting.
+      if (!in_array($key, $sort)) {
+        $sort[] = $element['#fieldset'];
+      }
+    }
+  }
+
+  // Sort all fieldsets, so that element #weight stays respected.
+  foreach ($sort as $key) {
+    uasort($form[$key], 'element_sort');
+  }
+
+  return $form;
+}
