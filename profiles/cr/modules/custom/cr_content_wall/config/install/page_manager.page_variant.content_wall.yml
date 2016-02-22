@@ -1,0 +1,36 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.content_wall
+  content:
+    - 'block_content:cw_row_block:e5260bdf-b5e5-4145-9900-0cb4084c1495'
+  module:
+    - block_content
+id: content_wall
+label: 'Content Wall'
+variant: block_display
+variant_settings:
+  blocks:
+    6c285be9-5ac8-4b87-9b04-4e2322195515:
+      id: 'block_content:e5260bdf-b5e5-4145-9900-0cb4084c1495'
+      label: 'Row 1'
+      provider: block_content
+      label_display: visible
+      status: true
+      info: ''
+      view_mode: full
+      region: top
+      weight: 0
+      uuid: 6c285be9-5ac8-4b87-9b04-4e2322195515
+      context_mapping: {  }
+  id: block_display
+  label: null
+  uuid: e7f0bf17-cf11-4009-8819-258d4006de6c
+  weight: 0
+  page_title: 'Content Wall'
+page: content_wall
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }
