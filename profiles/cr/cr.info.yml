@@ -29,11 +29,9 @@ dependencies:
   - search
   - shortcut
   - toolbar
-  - field
   - field_ui
   - file
   - rdf
-  - views
   - views_ui
   - link
   - filter
@@ -42,46 +40,65 @@ dependencies:
   - responsive_image
 
   # Contrib modules
-  - token
-  - ctools
-  - pathauto
-  - config_devel
   - file_entity
+  - metatag_open_graph
+  - pathauto
   - youtube
-  - admin_toolbar
-  - admin_toolbar_tools
 
   # Layout
-  - page_manager
-  - page_manager_ui
-  - layout_plugin
-  - panels
   - inline_entity_form
+  - layout_plugin
+  - page_manager_ui
+  - panels
 
   # Development modules
+  - config_devel
   - cr_default_content
+  - devel
+
+  # Editor/admin experience
+  - admin_toolbar_tools
 
   # Custom modules
   - cr_article
 
 themes:
-  - stable
   - seven
-  - bartik
-  - classy
   - campaign_base
+
 config_devel:
+  #General config.
+  - system.theme
+  - views.settings
+
+  # Blocks
   - block.block.campaign_base_search
   - block.block.campaign_base_account_menu
   - block.block.campaign_base_page_title
   - block.block.campaign_base_branding
   - block.block.campaign_base_main_menu
   - block.block.campaign_base_footer
+
   # Menus
   - system.menu.footer
   - system.menu.main-navigation
-  - responsive_image.styles.hero_image_full_node
+
+  # Images
   - image.style.full_node_desktop_770x433
   - image.style.full_node_mobile_442x271
   - image.style.full_node_tablet_330x247
-  - system.theme
+  - responsive_image.styles.hero_image_full_node
+
+  # Metatags
+  - metatag.metatag_defaults.403
+  - metatag.metatag_defaults.404
+  - metatag.metatag_defaults.front
+  - metatag.metatag_defaults.global
+  - metatag.metatag_defaults.node
+  - metatag.metatag_defaults.taxonomy_term
+
+  # Filter format
+  - editor.editor.basic_html
+  - editor.editor.full_html
+  - filter.format.basic_html
+  - filter.format.full_html
