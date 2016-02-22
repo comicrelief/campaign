@@ -46,10 +46,10 @@ dependencies:
   - youtube
 
   # Layout
-  - page_manager_ui
-  - layout_plugin
-  - panels
   - inline_entity_form
+  - layout_plugin
+  - page_manager_ui
+  - panels
 
   # Development modules
   - config_devel
