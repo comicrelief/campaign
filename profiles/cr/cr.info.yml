@@ -96,3 +96,9 @@ config_devel:
   - metatag.metatag_defaults.global
   - metatag.metatag_defaults.node
   - metatag.metatag_defaults.taxonomy_term
+
+  # Filter format
+  - editor.editor.basic_html
+  - editor.editor.full_html
+  - filter.format.basic_html
+  - filter.format.full_html
