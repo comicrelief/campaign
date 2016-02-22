@@ -40,7 +40,6 @@ dependencies:
   - dynamic_page_cache
   - breakpoint
   - responsive_image
-  - metatag
 
   # Contrib modules
   - token
