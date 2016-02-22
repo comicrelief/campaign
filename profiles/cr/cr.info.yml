@@ -91,3 +91,11 @@ config_devel:
   - image.style.full_node_mobile_442x271
   - image.style.full_node_tablet_330x247
   - responsive_image.styles.hero_image_full_node
+
+  # Metatags
+  - metatag.metatag_defaults.403
+  - metatag.metatag_defaults.404
+  - metatag.metatag_defaults.front
+  - metatag.metatag_defaults.global
+  - metatag.metatag_defaults.node
+  - metatag.metatag_defaults.taxonomy_term
