@@ -51,9 +51,8 @@ $susy: (
 }
 .region-header-inner-wrapper,
 .region-header-top,
-.region-content-wall,
 .region-content {
-  @include container(12);
+  @include container();
 }
 header,
 .region-highlighted,

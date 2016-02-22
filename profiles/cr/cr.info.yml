@@ -51,6 +51,13 @@ dependencies:
   - admin_toolbar
   - admin_toolbar_tools
 
+  # Layout
+  - page_manager
+  - page_manager_ui
+  - layout_plugin
+  - panels
+  - inline_entity_form
+
   # Development modules
   - cr_default_content
 
@@ -78,4 +85,3 @@ config_devel:
   - image.style.full_node_mobile_442x271
   - image.style.full_node_tablet_330x247
   - system.theme
-

@@ -16,7 +16,7 @@ dependencies:
   - youtube
 
 config_devel:
-  - taxonomy.vocabulary.media
+  - taxonomy.vocabulary.tags
   - node.type.article
   - core.entity_form_display.node.article.default
   - core.entity_view_display.node.article.default
@@ -24,8 +24,8 @@ config_devel:
   - field.field.node.article.body
   - field.field.node.article.field_intro
   - field.storage.node.field_intro
-  - field.field.node.article.field_media
-  - field.storage.node.field_media
+  - field.field.node.article.field_tags
+  - field.storage.node.field_tags
   - field.field.node.article.field_publish_date
   - field.storage.node.field_publish_date
   - field.field.node.article.field_image

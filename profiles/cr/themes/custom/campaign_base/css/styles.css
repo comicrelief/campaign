@@ -641,7 +641,6 @@ header {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/layout\/_layout\.scss}line{font-family:\0000352}}
 .region-header-inner-wrapper,
 .region-header-top,
-.region-content-wall,
 .region-content {
   max-width: 1200px;
   margin-left: auto;
@@ -649,7 +648,6 @@ header {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/usr\/local\/lib\/ruby\/gems\/2\.2\.0\/gems\/susy-2\.2\.11\/sass\/susy\/output\/support\/_clearfix\.scss}line{font-family:\0000312}}
   .region-header-inner-wrapper:after,
   .region-header-top:after,
-  .region-content-wall:after,
   .region-content:after {
     content: " ";
     display: block;
@@ -679,8 +677,6 @@ header {
   head:hover ~ .region-header-inner-wrapper, head:hover ~ body .region-header-inner-wrapper, head:hover ~
   .region-header-top, head:hover ~ body
   .region-header-top, head:hover ~
-  .region-content-wall, head:hover ~ body
-  .region-content-wall, head:hover ~
   .region-content, head:hover ~ body
   .region-content {
     position: relative; }
@@ -688,8 +684,6 @@ header {
     head:hover ~ .region-header-inner-wrapper:before, head:hover ~ body .region-header-inner-wrapper:before, head:hover ~
     .region-header-top:before, head:hover ~ body
     .region-header-top:before, head:hover ~
-    .region-content-wall:before, head:hover ~ body
-    .region-content-wall:before, head:hover ~
     .region-content:before, head:hover ~ body
     .region-content:before {
       position: absolute;
@@ -710,19 +704,19 @@ header {
       background-clip: content-box;
       background-position: left top; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/layout\/_layout\.scss}line{font-family:\0000358}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/layout\/_layout\.scss}line{font-family:\0000357}}
 header,
 .region-highlighted,
 main {
   overflow: hidden;
   *zoom: 1; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/layout\/_layout\.scss}line{font-family:\0000363}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/layout\/_layout\.scss}line{font-family:\0000362}}
 .block-search {
   float: right;
   margin-top: 15px; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/layout\/_layout\.scss}line{font-family:\0000367}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gustavo\/Sites\/campaign\/campaign\/profiles\/cr\/themes\/custom\/campaign_base\/sass\/layout\/_layout\.scss}line{font-family:\0000366}}
 .view-filters {
   width: 97.72727273%;
   float: left;
