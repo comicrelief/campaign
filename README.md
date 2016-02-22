@@ -8,6 +8,10 @@ A work in progress. See http://confluence.comicrelief.com/display/RND17/Campaign
 
 Drush 8 is required for Drupal 8. Install instructions can be found [here](http://x-team.com/2015/02/install-drush-8-drupal-8-without-throwing-away-drush-6-7/).
 
+Or use `composer global require drush/drush` and you'll use the last version.
+If you want to use drush 6 again `composer global require drush/drush 6.*`
+
+
 ### Install Phing
 
 You first will need to install to install [Phing](www.phing.info), which is a PHP build tool that automates tasks such as re-installing the site, running migrate procedures, tests etc.
