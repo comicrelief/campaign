@@ -5,6 +5,6 @@ global-css:
 
 global-js:
   js:
-    js/script.js: {}
+    js/campaign_base.min.js: {}
   dependencies:
     - core/jquery

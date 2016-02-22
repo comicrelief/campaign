@@ -54,19 +54,19 @@ module.exports = function (grunt) {
     //   }
     // },
 
-    browserSync: {
-        dev: {
-            bsFiles: {
-                src : ['index.html','views/{,**/}*.html','css/{,**/}*.css']
-            },
-            proxy: 'frostleaderboard.local',
-            options: {
-                port: 4567,
-                watchTask: true,
-                server: './'
-            }
-        }
-    },
+    // browserSync: {
+    //     dev: {
+    //         bsFiles: {
+    //             src : ['index.html','views/{,**/}*.html','css/{,**/}*.css']
+    //         },
+    //         proxy: 'localhost',
+    //         options: {
+    //             port: 4567,
+    //             watchTask: true,
+    //             server: './'
+    //         }
+    //     }
+    // },
 
 
     compass: {
@@ -104,7 +104,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           flatten: true,
-          cwd: 'js',
+          cwd: 'scripts',
           dest: 'js',
           src: ['**/*.js', '!**/*.min.js'],
           rename: function(dest, src) {
@@ -123,7 +123,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           flatten: true,
-          cwd: 'js',
+          cwd: 'scripts',
           dest: 'js',
           src: ['**/*.js', '!**/*.min.js'],
           rename: function(dest, src) {

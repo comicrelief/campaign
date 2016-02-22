@@ -28,16 +28,15 @@
 $susy: (
   columns: 12,
   container: 1200px,
-  gutters: 15/100,
+  gutters: 30px/80px,
   gutter-position: split,
-  output: isolate
-  // ,
-  // debug: (
-  //   image: show,
-  //   color: #ccc,
-  //   output: background,
-  //   toggle: top left,
-  //   ),
+  output: float
+  ,
+  debug: (
+    image: show,
+    output: overlay,
+    toggle: bottom right
+    )
 );
 
 @include border-box-sizing;
@@ -52,8 +51,9 @@ $susy: (
 }
 .region-header-inner-wrapper,
 .region-header-top,
+.region-content-wall,
 .region-content {
-  @include container();
+  @include container(12);
 }
 header,
 .region-highlighted,
@@ -63,6 +63,9 @@ main {
 .block-search {
   float: right;
   margin-top: 15px;
+}
+.view-filters {
+  @include span(12);
 }
 footer {
 

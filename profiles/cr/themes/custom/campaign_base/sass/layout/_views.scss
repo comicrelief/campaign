@@ -4,10 +4,17 @@
   .item-list {
     li {
       @include breakpoint($screen-sm) {
-      	@include gallery(6 of 12);
+      	@include span(6);
       }
       @include breakpoint($screen-md) {
-      	@include gallery(4 of 12);
+      	@include span(4);
+        &:first-child {
+          // @include span(8);
+        }
+        &:nth-child(1),
+        &:nth-child(2) {
+          // @include span(6);
+        }
       }
       margin-bottom: 15px;
       .field--name-field-image {
