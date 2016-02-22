@@ -46,8 +46,9 @@ dependencies:
   - youtube
 
   # Layout
-  - page_manager_ui
+  - inline_entity_form
   - layout_plugin
+  - page_manager_ui
   - panels
   - panels_ipe
   - inline_entity_form
