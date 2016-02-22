@@ -4,7 +4,7 @@ dependencies:
   config:
     - page_manager.page.content_wall
   content:
-    - 'block_content:cw_row_block:e5260bdf-b5e5-4145-9900-0cb4084c1495'
+    - 'block_content:cw_row_block:d776223b-6f39-4358-bf00-d3a5d643ae71'
   module:
     - block_content
 id: content_wall
@@ -12,8 +12,8 @@ label: 'Content Wall'
 variant: block_display
 variant_settings:
   blocks:
-    6c285be9-5ac8-4b87-9b04-4e2322195515:
-      id: 'block_content:e5260bdf-b5e5-4145-9900-0cb4084c1495'
+    b65e478b-3d32-427c-9900-ac857333da47:
+      id: 'block_content:d776223b-6f39-4358-bf00-d3a5d643ae71'
       label: 'Row 1'
       provider: block_content
       label_display: visible
@@ -22,7 +22,7 @@ variant_settings:
       view_mode: full
       region: top
       weight: 0
-      uuid: 6c285be9-5ac8-4b87-9b04-4e2322195515
+      uuid: b65e478b-3d32-427c-9900-ac857333da47
       context_mapping: {  }
   id: block_display
   label: null
