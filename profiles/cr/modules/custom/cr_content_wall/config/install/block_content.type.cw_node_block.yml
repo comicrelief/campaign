@@ -4,4 +4,4 @@ dependencies: {  }
 id: cw_node_block
 label: 'CW - Node block'
 revision: 0
-description: ''
+description: 'Node blocks are used to reference node content inside of the content wall. These blocks act as wrappers that can be placed onto the wall.'

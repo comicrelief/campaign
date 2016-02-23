@@ -4,4 +4,4 @@ dependencies: {  }
 id: cw_row_block
 label: 'CW - Row block'
 revision: 0
-description: ''
+description: 'Row blocks are used within the content wall to reference other blocks within the site.'

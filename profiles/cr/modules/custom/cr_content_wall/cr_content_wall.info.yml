@@ -10,9 +10,11 @@ dependencies:
 config_devel:
 # Block config
   - block_content.type.cw_row_block
+  - core.entity_view_display.block_content.cw_row_block.content_wall
   - field.field.block_content.cw_row_block.field_cw_block_reference
   - field.storage.block_content.field_cw_block_reference
   - block_content.type.cw_node_block
+  - core.entity_view_display.block_content.cw_node_block.content_wall
   - field.field.block_content.cw_node_block.field_cw_node_reference
   - field.storage.block_content.field_cw_node_reference
 # View mode config
@@ -22,4 +24,4 @@ config_devel:
 # Development Content
   - page_manager.page.content_wall
   - page_manager.page_variant.content_wall
-  - block.block.row1
+#  - block.block.row1
