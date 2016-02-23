@@ -3,7 +3,10 @@ status: true
 dependencies:
   config:
     - search_api.server.database
+<<<<<<< 43cc7d16f83d55d73c3019984be39a1ae8874db3
     - field.field.node.article.field_tags
+=======
+>>>>>>> PLAT-31 Create a minimun module for search and enable it by default
   module:
     - search_api
     - node
@@ -19,6 +22,7 @@ field_settings:
     type: string
     indexed_locked: true
     type_locked: true
+<<<<<<< 43cc7d16f83d55d73c3019984be39a1ae8874db3
   type:
     label: Type
     datasource_id: 'entity:node'
@@ -216,6 +220,15 @@ processor_settings:
       suffix: '</strong>'
       weights:
         postprocess_query: 0
+=======
+processor_settings:
+  add_url:
+    plugin_id: add_url
+    settings: {  }
+  language:
+    plugin_id: language
+    settings: {  }
+>>>>>>> PLAT-31 Create a minimun module for search and enable it by default
 options:
   index_directly: true
   cron_limit: 50
