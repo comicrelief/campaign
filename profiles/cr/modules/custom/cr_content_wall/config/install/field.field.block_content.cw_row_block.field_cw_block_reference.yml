@@ -2,7 +2,10 @@ langcode: en
 status: true
 dependencies:
   config:
+    - block_content.type.basic
+    - block_content.type.cw_node_block
     - block_content.type.cw_row_block
+    - block_content.type.teaser
     - field.storage.block_content.field_cw_block_reference
 id: block_content.cw_row_block.field_cw_block_reference
 field_name: field_cw_block_reference
@@ -16,5 +19,12 @@ default_value: {  }
 default_value_callback: ''
 settings:
   handler: 'default:block_content'
-  handler_settings: {  }
+  handler_settings:
+    target_bundles:
+      basic: basic
+      cw_node_block: cw_node_block
+      cw_row_block: cw_row_block
+      teaser: teaser
+    sort:
+      field: _none
 field_type: entity_reference
