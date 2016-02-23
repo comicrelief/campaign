@@ -2,7 +2,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - block_content.type.basic
     - block_content.type.cw_node_block
     - block_content.type.cw_row_block
     - block_content.type.teaser
