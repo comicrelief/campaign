@@ -8,9 +8,9 @@ projects:
   # Core contrib
   ctools:
     version: 3.0-alpha23
-    patch: 
-      # See https://gist.github.com/pvhee/72637f2561526ed73abe
-      custom: https://gist.githubusercontent.com/pvhee/72637f2561526ed73abe/raw/1ddc9e39d9c9eec75c932c0f79c9376e8d2bc9dd/gistfile1.txt
+    patch:
+      # See https://www.drupal.org/node/2672110
+      2672110: https://www.drupal.org/files/issues/entityfieldderiver-2672110-2.patch
   file_entity:
     revision: 5f1015080374ca0a5c3f4593ea94088d6e6ed1bc
   metatag:
