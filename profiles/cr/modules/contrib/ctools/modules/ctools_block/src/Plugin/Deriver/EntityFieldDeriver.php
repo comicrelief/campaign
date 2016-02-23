@@ -23,8 +23,12 @@ class EntityFieldDeriver extends EntityDeriverBase {
     foreach ($this->entityManager->getFieldMap() as $entity_type_id => $entity_field_map) {
       foreach ($this->entityManager->getFieldStorageDefinitions($entity_type_id) as $field_definition) {
         $field_name = $field_definition->getName();
-        $field_info = $entity_field_map[$field_name];
 
+        if (!isset($entity_field_map[$field_name])) {
+          continue;
+        }
+
+        $field_info = $entity_field_map[$field_name];
         $derivative_id = $entity_type_id . ":" . $field_name;
 
         // Get the admin label for both base and configurable fields.
@@ -32,12 +36,6 @@ class EntityFieldDeriver extends EntityDeriverBase {
           $admin_label = $field_definition->getLabel();
         }
         else {
-
-          // Skip if we don't have bundles defined
-          if (!$field_info['bundles']) {
-            continue;
-          }
-
           // We take the field label used on the first bundle.
           $first_bundle = reset($field_info['bundles']);
           $bundle_field_definitions = $this->entityManager->getFieldDefinitions($entity_type_id, $first_bundle);
