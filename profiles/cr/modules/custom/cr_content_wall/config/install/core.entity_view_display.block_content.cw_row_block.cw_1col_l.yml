@@ -3,25 +3,19 @@ status: true
 dependencies:
   config:
     - block_content.type.cw_row_block
+    - core.entity_view_mode.block_content.cw_1col_l
     - field.field.block_content.cw_row_block.field_cw_block_reference
-id: block_content.cw_row_block.default
+id: block_content.cw_row_block.cw_1col_l
 targetEntityType: block_content
 bundle: cw_row_block
-mode: default
+mode: cw_1col_l
 content:
   field_cw_block_reference:
-    weight: 3
+    weight: 0
+    label: hidden
     settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
+      view_mode: cw_l
+      link: false
     third_party_settings: {  }
-    type: entity_reference_autocomplete
-  info:
-    type: string_textfield
-    weight: 1
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
+    type: entity_reference_entity_view
 hidden: {  }

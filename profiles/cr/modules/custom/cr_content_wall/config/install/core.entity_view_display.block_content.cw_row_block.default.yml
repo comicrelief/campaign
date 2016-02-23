@@ -12,7 +12,6 @@ bundle: cw_row_block
 mode: default
 content:
   field_cw_block_reference:
-    type: entity_reference_entity_view
     weight: 0
     label: hidden
     settings:
@@ -21,4 +20,5 @@ content:
     third_party_settings:
       ds:
         ds_limit: ''
+    type: entity_reference_entity_view
 hidden: {  }

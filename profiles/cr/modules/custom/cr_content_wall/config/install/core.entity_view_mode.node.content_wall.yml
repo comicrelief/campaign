@@ -1,9 +1,1 @@
-langcode: en
-status: true
-dependencies:
-  module:
-    - node
-id: node.content_wall
-label: 'Content wall'
-targetEntityType: node
-cache: true
+{  }

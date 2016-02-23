@@ -3,23 +3,19 @@ status: true
 dependencies:
   config:
     - block_content.type.cw_row_block
-    - core.entity_view_mode.block_content.content_wall
+    - core.entity_view_mode.block_content.cw_2col_m_m
     - field.field.block_content.cw_row_block.field_cw_block_reference
-  module:
-    - ds
-id: block_content.cw_row_block.content_wall
+id: block_content.cw_row_block.cw_2col_m_m
 targetEntityType: block_content
 bundle: cw_row_block
-mode: content_wall
+mode: cw_2col_m_m
 content:
   field_cw_block_reference:
-    type: entity_reference_entity_view
     weight: 0
     label: hidden
     settings:
-      view_mode: content_wall
+      view_mode: cw_m
       link: false
-    third_party_settings:
-      ds:
-        ds_limit: ''
+    third_party_settings: {  }
+    type: entity_reference_entity_view
 hidden: {  }

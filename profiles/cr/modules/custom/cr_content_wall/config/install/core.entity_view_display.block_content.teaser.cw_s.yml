@@ -1,0 +1,52 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.teaser
+    - core.entity_view_mode.block_content.cw_s
+    - field.field.block_content.teaser.body
+    - field.field.block_content.teaser.field_teaser_image
+    - field.field.block_content.teaser.field_teaser_link
+    - field.field.block_content.teaser.field_teaser_title
+  module:
+    - image
+    - link
+    - text
+id: block_content.teaser.cw_s
+targetEntityType: block_content
+bundle: teaser
+mode: cw_s
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+  field_teaser_image:
+    weight: 4
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_teaser_link:
+    weight: 3
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+  field_teaser_title:
+    weight: 2
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden: {  }

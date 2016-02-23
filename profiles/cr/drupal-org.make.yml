@@ -19,8 +19,6 @@ projects:
   youtube:
     version: 1.0-beta2
   # Layout modules
-  ds:
-    version: 2.3
   inline_entity_form:
     version: 1.0-alpha3
   layout_plugin:
