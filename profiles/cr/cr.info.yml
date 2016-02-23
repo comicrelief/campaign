@@ -63,6 +63,7 @@ dependencies:
   # Custom modules
   - cr_article
   - cr_landing_page
+  - cr_search
 
   # Development modules
   - config_devel
@@ -73,7 +74,6 @@ dependencies:
 
   # Default content; will be moved out of the profile at some point
   - cr_default_content
-
 themes:
   - seven
   - campaign_base
