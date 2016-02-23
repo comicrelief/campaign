@@ -39,6 +39,12 @@ And change the database connection details as well.
 To install the site, now run
 
 	phing build
+	
+Note: If you see the following exception on `phing build`:
+
+`Exception 'Symfony\Component\DependencyInjection\Exception\InvalidArgumentException' with message 'The service definition "renderer" does not exist.`
+
+...change the host value in settings.local.php from `'host' => 'localhost',` to `'host' => '127.0.0.1',`.
 
 To login to the site, for example run
 
