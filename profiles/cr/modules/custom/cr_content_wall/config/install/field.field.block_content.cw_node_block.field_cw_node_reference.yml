@@ -5,7 +5,6 @@ dependencies:
     - block_content.type.cw_node_block
     - field.storage.block_content.field_cw_node_reference
     - node.type.article
-    - node.type.page
 id: block_content.cw_node_block.field_cw_node_reference
 field_name: field_cw_node_reference
 entity_type: block_content
