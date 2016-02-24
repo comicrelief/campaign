@@ -26,33 +26,31 @@
 //   )
 // );
 $susy: (
+  gutter-position: inside-static,
   columns: 12,
-  container: 1200px,
-  gutters: 30px/80px,
-  gutter-position: split,
-  output: float
-  ,
+  column-width: 70px,
+  output: isolate,
+  gutters: 30px/70px,
+  global-box-sizing: content-box,
   debug: (
     image: show,
-    output: overlay,
-    toggle: bottom right
-    )
+  ),
 );
 
-@include border-box-sizing;
 
-// $map: layout(auto 12 .25 inside fluid isolate);
+@include border-box-sizing;
+$mobile: layout(6 100%);
+$desktop: layout(12);
 
 // layout
-.layout-container {
-
-}
-#block-campaign-base-content {
-}
 .region-header-inner-wrapper,
 .region-header-top,
-.region-content {
-  @include container();
+.region-content,
+.cw-region {
+  @include container($mobile);
+  @include breakpoint($screen-sm) {
+    @include container($desktop);
+  }
 }
 header,
 .region-highlighted,
@@ -64,8 +62,15 @@ main {
   margin-top: 15px;
 }
 .view-filters {
-  @include span(12);
-}
-footer {
+  float: none;
 
+  @include span(2 of 6);
+  @include breakpoint($screen-md) {
+    float: none;
+
+    @include span(12);
+  }
+}
+.view-content {
+  // @include span(12);
 }
