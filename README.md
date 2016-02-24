@@ -69,3 +69,15 @@ Now you can push to Pantheon to deploy this
 https://dashboard.pantheon.io/sites/f9291f1f-3819-4964-9c5b-c9f7d5500d28#dev/code
 
 How to deal with [settings.php on Pantheon](https://pantheon.io/docs/articles/drupal/configuring-settings-php/)
+
+# Debugging
+
+## Ubuntu grunt:build error
+```
+Property ${app.profile.theme} => profiles/cr/themes/custom/campaign_base
+     [exec] Executing command: grunt build
+/usr/bin/env: node: No such file or directory
+```
+Fix: `sudo ln -fs /usr/bin/nodejs /usr/local/bin/node`
+
+Note: Nodejs location may differ.
