@@ -13,7 +13,7 @@ config_devel:
   - core.entity_view_display.block_content.cw_row_block.default
   - core.entity_view_display.block_content.cw_row_block.cw_1col_l
   - core.entity_view_display.block_content.cw_row_block.cw_2col_m_m
-  - core.entity_view_display.block_content.cw_row_block.cw_1col_s_s_s
+  - core.entity_view_display.block_content.cw_row_block.cw_3col_s_s_s
   - core.entity_view_display.block_content.teaser.cw_l
   - core.entity_view_display.block_content.teaser.cw_m
   - core.entity_view_display.block_content.teaser.cw_s
