@@ -57,7 +57,6 @@ dependencies:
 
   # Development modules
   - config_devel
-  - cr_default_content
   - devel
 
   # Editor/admin experience
@@ -65,6 +64,7 @@ dependencies:
 
   # Custom modules
   - cr_article
+  - cr_landing_page
   - cr_search
 
 themes:
