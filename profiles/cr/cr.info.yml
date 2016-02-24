@@ -2,6 +2,8 @@ name: Comic Relief
 type: profile
 description: "Build a site using Comic Relief's installation profile. It will install and enable common useful modules."
 core: 8.x
+distribution:
+  name: Comic Relief
 
 dependencies:
   # Core modules
@@ -61,6 +63,13 @@ dependencies:
   # Editor/admin experience
   - admin_toolbar_tools
 
+  # Media
+  - entity_embed
+  - media_entity_embeddable_video
+  - media_entity_instagram
+  - media_entity_twitter
+  - media_entity_image
+
   # Custom modules
   - cr_article
 
@@ -104,3 +113,8 @@ config_devel:
   - editor.editor.full_html
   - filter.format.basic_html
   - filter.format.full_html
+
+  # Roles
+  - user.role.administrator
+  - user.role.anonymous
+  - user.role.authenticated
