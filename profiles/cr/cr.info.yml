@@ -48,12 +48,12 @@ dependencies:
   - youtube
 
   # Layout
-  - ctools_block
   - inline_entity_form
   - layout_plugin
   - page_manager_ui
   - panels_ipe
   - panelizer
+  - ctools_block
 
   # Custom modules
   - cr_article
