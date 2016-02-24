@@ -63,35 +63,6 @@
       <div class="title">
       </div>
       {{ page.content }}
-      <div class="cw-region">
-        <div class="row-9-3">
-          <ul>
-              {% for i in 0..2 %}
-                  <li class="{{ cycle(['odd', 'even'], i) }}">
-                    {% include '@campaign_base/content-wall/content-wall.html.twig' %}
-                  </li>
-              {% endfor %}
-          </ul>
-        </div>
-        <div class="row-6-6">
-          <ul>
-              {% for i in 0..2 %}
-                  <li class="{{ cycle(['odd', 'even'], i) }}">
-                    {% include '@campaign_base/content-wall/content-wall.html.twig' %}
-                  </li>
-              {% endfor %}
-          </ul>
-        </div>
-        <div class="row-3-3-3">
-          <ul>
-              {% for i in 0..3 %}
-                  <li class="{{ cycle(['odd', 'even'], i) }}">
-                    {% include '@campaign_base/content-wall/content-wall.html.twig' %}
-                  </li>
-              {% endfor %}
-          </ul>
-        </div>
-      </div>
     </div>{# /.layout-content #}
 
   </main>
