@@ -10,9 +10,13 @@ default:
   extensions:
     Behat\MinkExtension:
       goutte: ~
-      selenium2: ~
+      selenium2:
+        browser: chrome
     Drupal\DrupalExtension:
-      api_driver: "drupal"
+      api_driver: 'drupal'
+      blackbox: ~
       drush_driver: "drush"
+      drupal:
+        drupal_root: "/Users/mattw/sites/campaign-platform/campaign"
       region_map:
         content: "#content"
