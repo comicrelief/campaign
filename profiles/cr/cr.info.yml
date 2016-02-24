@@ -74,6 +74,7 @@ dependencies:
 
   # Default content; will be moved out of the profile at some point
   - cr_default_content
+
 themes:
   - seven
   - campaign_base
