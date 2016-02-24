@@ -9,3 +9,14 @@ Feature: Create
     And I am logged in as a user with the "administrator" role
     When I visit "admin/people"
     Then I should see the link "Matt Wagg"
+
+  @api
+  Scenario: Create news-article
+    Given "article" content:
+    | title       |
+    | article one |
+    | article two |
+    And I am logged in as a user with the "administrator" role
+    When I go to "admin/content"
+    Then I should see "article one"
+    And I should see "article two"
