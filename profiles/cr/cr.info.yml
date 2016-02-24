@@ -63,6 +63,7 @@ dependencies:
 
   # Custom modules
   - cr_article
+  - cr_landing_page
 
 themes:
   - seven
