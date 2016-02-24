@@ -8,5 +8,6 @@ config_devel:
   - core.entity_form_display.node.landing.default
   - core.entity_view_display.node.landing.default
   - field.field.node.landing.body
+  - field.storage.node.field_cta
   - field.field.node.landing.field_cta
   - field.field.node.landing.field_image
