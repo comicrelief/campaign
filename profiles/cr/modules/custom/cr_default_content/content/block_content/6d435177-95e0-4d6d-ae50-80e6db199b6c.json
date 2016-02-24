@@ -1,0 +1,70 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/block\/3?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/block_content\/teaser"
+        }
+    },
+    "uuid": [
+        {
+            "value": "6d435177-95e0-4d6d-ae50-80e6db199b6c"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "info": [
+        {
+            "value": "FERN BRITTON SPEAKS OUT ABOUT MATERNAL MENTAL HEALTH FOR SPORT RELIEF",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "teaser"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1456305979",
+            "lang": "en"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<p>Fern Britton will share her experience of maternal mental health alongside other mums and dads from across the UK.<\/p>\r\n",
+            "format": "basic_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ],
+    "field_teaser_link": [
+        {
+            "uri": "http:\/\/www.sportrelief.com\/whats-going-on\/fern-britton-speaks-out-about-maternal-mental-health-sport-relief",
+            "title": "Read more",
+            "options": []
+        }
+    ],
+    "field_teaser_title": [
+        {
+            "value": "FERN BRITTON SPEAKS OUT ABOUT MATERNAL MENTAL HEALTH FOR SPORT RELIEF"
+        }
+    ]
+}
