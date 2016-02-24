@@ -52,6 +52,13 @@ Thumbs.db
 ##########
 .sass-cache
 
+# Minified JS #
+profiles/cr/themes/custom/campaign_base/js/*.min.js
+
+# Compiled CSS and CSS MAP #
+profiles/cr/themes/custom/campaign_base/css/*.css
+profiles/cr/themes/custom/campaign_base/css/*.css.map
+
 # node_modules #
 ##########
 profiles/cr/themes/custom/campaign_base/node_modules
