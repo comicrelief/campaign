@@ -9,3 +9,6 @@ permissions:
   - 'access content'
   - 'view files'
   - 'use text format restricted_html'
+  - 'download any audio files'
+  - 'download own audio files'
+  - 'restful get entity:node'

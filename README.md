@@ -46,6 +46,10 @@ Grunt will compile CSS, remove comments, remove sass source file, minify and con
 
 Drush 8 is required for Drupal 8. Install instructions can be found [here](http://x-team.com/2015/02/install-drush-8-drupal-8-without-throwing-away-drush-6-7/).
 
+Or use `composer global require drush/drush` and you'll use the last version.
+If you want to use drush 6 again `composer global require drush/drush 6.*`
+
+
 ### Install Phing
 
 You first will need to install to install [Phing](www.phing.info), which is a PHP build tool that automates tasks such as re-installing the site, running migrate procedures, tests etc.
@@ -73,6 +77,12 @@ And change the database connection details as well.
 To install the site, now run
 
 	phing build
+	
+Note: If you see the following exception on `phing build`:
+
+`Exception 'Symfony\Component\DependencyInjection\Exception\InvalidArgumentException' with message 'The service definition "renderer" does not exist.`
+
+...change the host value in settings.local.php from `'host' => 'localhost',` to `'host' => '127.0.0.1',`.
 
 To login to the site, for example run
 
