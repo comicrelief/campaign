@@ -1,0 +1,45 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.server.database
+  module:
+    - search_api
+    - node
+id: articles
+name: Articles
+description: ''
+read_only: false
+field_settings:
+  search_api_language:
+    label: 'Item language'
+    datasource_id: null
+    property_path: search_api_language
+    type: string
+    indexed_locked: true
+    type_locked: true
+processor_settings:
+  add_url:
+    plugin_id: add_url
+    settings: {  }
+  language:
+    plugin_id: language
+    settings: {  }
+options:
+  index_directly: true
+  cron_limit: 50
+datasource_settings:
+  'entity:node':
+    plugin_id: 'entity:node'
+    settings:
+      default: '0'
+      bundles:
+        article: article
+        page: '0'
+      languages:
+        - en
+tracker_settings:
+  default:
+    plugin_id: default
+    settings: {  }
+server: database

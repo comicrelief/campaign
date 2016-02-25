@@ -16,8 +16,12 @@ dependencies:
   - youtube
 
 config_devel:
+  # General config.
   - taxonomy.vocabulary.tags
   - node.type.article
+  - pathauto.pattern.article
+
+  # Fields
   - core.entity_form_display.node.article.default
   - core.entity_view_display.node.article.default
   - core.entity_view_display.node.article.teaser
@@ -32,6 +36,7 @@ config_devel:
   - field.storage.node.field_image
   - field.field.node.article.field_youtube_url
   - field.storage.node.field_youtube_url
+
+  # Views
   - views.view.related_news
   - views.view.what_s_going_on
-  - pathauto.pattern.article

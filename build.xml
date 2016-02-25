@@ -27,7 +27,7 @@
   <property name="app.password"           value="admin"                                            override="true" />
   <!-- Development variables. -->
   <property name="app.dev.modules"        value="config_devel default_content"   override="true" />
-  <property name="app.dev.config_modules" value="cr cr_article cr_default_content"               override="true" />
+  <property name="app.dev.config_modules" value="cr cr_article cr_default_content cr_search"               override="true" />
 
   <!-- Overrides -->
   <!-- <property name="php.sniff.dirs"       value="agov/modules/custom agov/themes agov/src" override="true" /> -->
@@ -75,10 +75,10 @@
   </target>
 
   <target name="test"
-          depends="prepare-test" 
+          depends="prepare-test"
           description="Run behat tests">
     <exec dir="${app.dir}/${app.profile.dir}/tests/behat"
-      command="vendor/bin/behat" 
+      command="vendor/bin/behat"
       passthru="true"
       checkreturn="true" />
   </target>
