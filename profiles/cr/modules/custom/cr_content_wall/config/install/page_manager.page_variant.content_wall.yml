@@ -3,12 +3,7 @@ status: true
 dependencies:
   config:
     - page_manager.page.content_wall
-  content:
-    - 'block_content:cw_row_block:0b9042ac-8196-4cda-9604-4eae9b325279'
-    - 'block_content:cw_row_block:993b8a81-19f0-42b9-bb05-5c55b007a698'
-    - 'block_content:cw_row_block:99463377-62a2-4099-8d02-2ff2876038b5'
   module:
-    - block_content
     - panels
 id: content_wall
 label: 'Content wall'
