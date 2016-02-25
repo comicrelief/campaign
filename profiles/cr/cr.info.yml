@@ -60,6 +60,11 @@ dependencies:
   - cr_landing_page
   - cr_search
 
+  # Custom modules
+  - cr_article
+  - cr_landing_page
+  - cr_search
+
   # Development modules
   - config_devel
   - devel
