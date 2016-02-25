@@ -32,6 +32,10 @@ projects:
     version: 3.0-beta4
   panelizer:
     version: 3.0-alpha2
+  ds:
+    version: 2.3
+  field_group:
+    version: 1.0-rc4
   # Developer modules
   config_devel:
     version: 1.0-rc1
