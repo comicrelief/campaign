@@ -1,0 +1,16 @@
+ds.field_template.ds_test_template:
+  type: config_object
+  label: 'The settings of the ds_test_theming_function field template'
+  mapping:
+    lb:
+      type: string
+      label: 'The label of the field'
+    lb-col:
+      type: boolean
+      label: 'Enable the label colon'
+    classes:
+      type: sequence
+      label: 'Classes for the template'
+      sequence:
+        - type: string
+          label: 'Class name'
