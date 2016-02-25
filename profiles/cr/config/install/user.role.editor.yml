@@ -9,3 +9,7 @@ permissions:
   - 'access content'
   - 'view files'
   - 'use text format basic_html'
+  - 'create files'
+  - 'delete any audio files'
+  - 'edit any audio files'
+  - 'use text format full_html'

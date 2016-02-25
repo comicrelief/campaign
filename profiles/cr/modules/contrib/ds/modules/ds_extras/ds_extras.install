@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * Implements hook_install().
+ */
+function ds_extras_install() {
+  module_set_weight('ds_extras', 2);
+}
+
+/**
+ * Copy config to new structure
+ */
+function ds_extras_update_8001() {
+  // Load the original config file
+  $original_config = \Drupal::configFactory()->getEditable('ds.extras');
+
+  // Copy to the new location
+  $config = \Drupal::configFactory()->getEditable('ds_extras.settings')
+    ->set('fields_extra', $original_config->get('fields_extra'))
+    ->set('fields_extra_list', $original_config->get('fields_extra'))
+    ->set('switch_view_mode', $original_config->get('fields_extra'))
+    ->set('field_permissions', $original_config->get('fields_extra'))
+    ->set('switch_field', $original_config->get('fields_extra'))
+    ->set('hidden_region', $original_config->get('fields_extra'))
+    ->set('override_node_revision', $original_config->get('override_node_revision'))
+    ->set('override_node_revision_view_mode', $original_config->get('override_node_revision_view_mode'))
+    ->set('region_to_block', $original_config->get('region_to_block'))
+    ->set('region_blocks', $original_config->get('region_blocks'));
+
+  $config->save();
+
+  // Delete the old config file
+  $original_config->delete();
+}

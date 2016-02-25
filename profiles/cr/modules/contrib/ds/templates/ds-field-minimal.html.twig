@@ -1,0 +1,31 @@
+{#
+/**
+ * @file
+ * Template to provide minimal HTML for the field.
+ *
+ * Available variables:
+ * - element: The field element.
+ * - label: The label of the field.
+ * - settings: The settings for the field.
+ * - items: List of all the field items. Each item contains:
+ *   - attributes: List of HTML attributes for each item.
+ *   - content: The field item's content.
+ */
+#}
+{%
+  set classes = [
+    'field',
+    'field-name-' ~ element['#field_name']|clean_class,
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  {% if not label_hidden %}
+    <div class="field-label-{{ element['#label_display']|clean_class }}">
+      {{- label }}{% if settings.lb-col %}:{% endif -%}
+    </div>
+  {% endif %}
+
+  {% for item in items %}
+    {{ item.content }}
+  {% endfor %}
+</div>
