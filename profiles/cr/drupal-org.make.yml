@@ -23,7 +23,7 @@ projects:
     version: 1.0-beta2
   # Layout modules
   inline_entity_form:
-    version: 1.0-alpha3
+    version: 1.0-alpha4
   layout_plugin:
     version: 1.0-alpha22
   page_manager:

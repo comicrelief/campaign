@@ -8,7 +8,8 @@
 namespace Drupal\inline_entity_form\Plugin\Field\FieldWidget;
 
 use Drupal\Core\Entity\EntityInterface;
-use Drupal\Core\Entity\EntityManagerInterface;
+use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\WidgetBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -29,11 +30,18 @@ abstract class InlineEntityFormBase extends WidgetBase implements ContainerFacto
   protected $iefId;
 
   /**
-   * The entity manager.
+   * The entity type bundle info.
    *
-   * @var \Drupal\Core\Entity\EntityManagerInterface
+   * @var \Drupal\Core\Entity\EntityTypeBundleInfoInterface
    */
-  protected $entityManager;
+  protected $entityTypeBundleInfo;
+
+  /**
+   * The entity type manager.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  protected $entityTypeManager;
 
   /**
    * The inline entity from handler.
@@ -55,13 +63,16 @@ abstract class InlineEntityFormBase extends WidgetBase implements ContainerFacto
    *   The widget settings.
    * @param array $third_party_settings
    *   Any third party settings.
-   * @param \Drupal\Core\Entity\EntityManagerInterface $entity_manager
-   *   Entity manager service.
+   * @param \Drupal\Core\Entity\EntityTypeBundleInfoInterface $entity_type_bundle_info
+   *   The entity type bundle info.
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   *   The entity type manager.
    */
-  public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, array $third_party_settings, EntityManagerInterface $entity_manager) {
+  public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, array $third_party_settings, EntityTypeBundleInfoInterface $entity_type_bundle_info, EntityTypeManagerInterface $entity_type_manager) {
     parent::__construct($plugin_id, $plugin_definition, $field_definition, $settings, $third_party_settings);
-    $this->entityManager = $entity_manager;
 
+    $this->entityTypeBundleInfo = $entity_type_bundle_info;
+    $this->entityTypeManager = $entity_type_manager;
     $this->initializeIefController();
   }
 
@@ -75,7 +86,8 @@ abstract class InlineEntityFormBase extends WidgetBase implements ContainerFacto
       $configuration['field_definition'],
       $configuration['settings'],
       $configuration['third_party_settings'],
-      $container->get('entity.manager')
+      $container->get('entity_type.bundle.info'),
+      $container->get('entity_type.manager')
     );
   }
 
@@ -85,7 +97,7 @@ abstract class InlineEntityFormBase extends WidgetBase implements ContainerFacto
   protected function initializeIefController() {
     if (!isset($this->iefHandler)) {
       $target_type = $this->fieldDefinition->getFieldStorageDefinition()->getSetting('target_type');
-      $this->iefHandler = $this->entityManager->getHandler($target_type, 'inline_form');
+      $this->iefHandler = $this->entityTypeManager->getHandler($target_type, 'inline_form');
     }
   }
 
@@ -138,7 +150,7 @@ abstract class InlineEntityFormBase extends WidgetBase implements ContainerFacto
     }
     else {
       // If no target bundles have been specified then all are available.
-      $target_bundles = array_keys($this->entityManager->getBundleInfo($settings['target_type']));
+      $target_bundles = array_keys($this->entityTypeBundleInfo->getBundleInfo($settings['target_type']));
     }
 
     return $target_bundles;
@@ -367,6 +379,7 @@ abstract class InlineEntityFormBase extends WidgetBase implements ContainerFacto
    */
   public static function submitSaveEntity($entity_form, FormStateInterface $form_state) {
     $ief_id = $entity_form['#ief_id'];
+    /** @var \Drupal\Core\Entity\EntityInterface $entity */
     $entity = $entity_form['#entity'];
 
     if ($entity_form['#op'] == 'add') {
@@ -392,40 +405,6 @@ abstract class InlineEntityFormBase extends WidgetBase implements ContainerFacto
       $entities[$delta]['needs_save'] = TRUE;
       $form_state->set(['inline_entity_form', $ief_id, 'entities'], $entities);
     }
-  }
-
-  /**
-   * Checks if current submit is relevant for IEF.
-   *
-   * We need to save all referenced entities and extract their IDs into field
-   * values.
-   *
-   * @param array $form
-   *   Complete form.
-   * @param FormStateInterface $form_state
-   *   Form state.
-   */
-  protected function isSubmitRelevant(array $form, FormStateInterface $form_state) {
-    $field_name = $this->fieldDefinition->getName();
-    $parents = array_merge($form['#parents'], [$field_name, 'form']);
-
-    $trigger = $form_state->getTriggeringElement();
-    if (isset($trigger['#limit_validation_errors']) && $trigger['#limit_validation_errors'] !== FALSE) {
-      $imploded_parents = implode('', array_slice($parents, 0, -1));
-      $relevant_sections = array_filter(
-        $trigger['#limit_validation_errors'],
-        function ($item) use ($imploded_parents) {
-          $imploded_item = implode('', $item);
-          return strpos($imploded_item, $imploded_parents) !== 0;
-        }
-      );
-
-      if (empty($relevant_sections)) {
-        return FALSE;
-      }
-    }
-
-    return TRUE;
   }
 
 }
