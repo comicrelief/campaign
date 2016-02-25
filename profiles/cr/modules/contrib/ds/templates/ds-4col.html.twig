@@ -1,0 +1,43 @@
+{#
+/**
+ * @file
+ * Display Suite 4 column template.
+ *
+ * Available variables:
+ * - outer_wrapper: outer wrapper element
+ * - first_wrapper: wrapper element around first region
+ * - second_wrapper: wrapper element around second region
+ * - third_wrapper: wrapper element around third region
+ * - fourth_wrapper: wrapper element around fourth region
+ * - attributes: layout attributes
+ * - first_attributes: attributes for first region
+ * - second_attributes: attributes for second region
+ * - third_attributes: attributes for third region
+ * - fourth_attributes: attributes for fourth region
+ * - first: content of first region
+ * - second: content of second region
+ * - third: content of third region
+ * - fourth: content of fourth region
+ */
+#}
+<{{ outer_wrapper }} attributes.addClass('ds-4col', 'clearfix') }}>
+
+  {{ title_suffix.contextual_links }}
+
+  <{{ first_wrapper }}{{ first_attributes.addClass('group-first') }}>
+    {{ first }}
+  </{{ first_wrapper }}>
+
+  <{{ second_wrapper }}{{ second_attributes.addClass('group-second') }}>
+    {{ second }}
+  </{{ second_wrapper }}>
+
+  <{{ third_wrapper }}{{ third_attributes.addClass('group-third') }}>
+    {{ third }}
+  </{{ third_wrapper }}>
+
+  <{{ fourth_wrapper }}{{ fourth_attributes.addClass('group-fourth') }}>
+    {{ fourth }}
+  </{{ fourth_wrapper }}>
+
+</{{ outer_wrapper }}>
