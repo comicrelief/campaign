@@ -22,11 +22,11 @@ Bundler will install all gems needed for your project.
 
 ###Grunt dev / build
 
-For dev run: 
+For dev run:
 
 	grunt default
 
-Grunt will watch all SASS / TWIG / JS / Images for changes 
+Grunt will watch all SASS / TWIG / JS / Images for changes
 
 And,
 
@@ -77,7 +77,7 @@ And change the database connection details as well.
 To install the site, now run
 
 	phing build
-	
+
 Note: If you see the following exception on `phing build`:
 
 `Exception 'Symfony\Component\DependencyInjection\Exception\InvalidArgumentException' with message 'The service definition "renderer" does not exist.`
@@ -108,7 +108,11 @@ https://dashboard.pantheon.io/sites/f9291f1f-3819-4964-9c5b-c9f7d5500d28#dev/cod
 
 How to deal with [settings.php on Pantheon](https://pantheon.io/docs/articles/drupal/configuring-settings-php/)
 
-# Debugging
+## Skip Travis CI builds
+
+Include the following within any commit message `[ci skip]`
+
+# Debug info
 
 ## Ubuntu grunt:build error
 ```
