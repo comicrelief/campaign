@@ -4,6 +4,8 @@ dependencies:
   config:
     - block_content.type.cw_row_block
     - field.field.block_content.cw_row_block.field_cw_block_reference
+  module:
+    - ds
 id: block_content.cw_row_block.default
 targetEntityType: block_content
 bundle: cw_row_block
