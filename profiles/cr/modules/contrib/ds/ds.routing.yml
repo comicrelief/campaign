@@ -1,0 +1,110 @@
+ds.structure:
+  path: 'admin/structure/ds'
+  defaults:
+    _controller: '\Drupal\ds\Controller\DsController::listDisplays'
+    _title: 'Displays'
+  requirements:
+    _permission: 'admin display suite'
+ds.list:
+  path: 'admin/structure/ds/list'
+  defaults:
+    _controller: '\Drupal\ds\Controller\DsController::listDisplays'
+    _title: 'Displays'
+  requirements:
+    _permission: 'admin display suite'
+ds.admin_settings:
+  path: 'admin/structure/ds/settings'
+  defaults:
+    _form: '\Drupal\ds\Form\SettingsForm'
+    _title: 'Settings'
+  requirements:
+    _permission: 'admin display suite'
+ds.admin_emergency:
+  path: 'admin/structure/ds/emergency'
+  defaults:
+    _form: '\Drupal\ds\Form\EmergencyForm'
+    _title: 'Emergency settings'
+  requirements:
+    _permission: 'admin display suite'
+ds.change_layout:
+  path: 'admin/structure/ds/change-layout/{entity_type}/{bundle}/{display_mode}/{new_layout}'
+  defaults:
+    _form: '\Drupal\ds\Form\ChangeLayoutForm'
+    _title: 'Change layout'
+  requirements:
+    _permission: 'admin display suite'
+ds.classes:
+  path: 'admin/structure/ds/classes'
+  defaults:
+    _form: '\Drupal\ds\Form\ClassesForm'
+    _title: 'Classes'
+  requirements:
+    _permission: 'admin classes'
+ds.fields_list:
+  path: 'admin/structure/ds/fields'
+  defaults:
+    _controller: 'Drupal\ds\Controller\FieldController::fieldList'
+    _title: 'Fields'
+  requirements:
+    _permission: 'admin fields'
+ds.manage_field:
+  path: 'admin/structure/ds/fields/manage/{field_key}'
+  defaults:
+    _controller: 'Drupal\ds\Controller\FieldController::manageRedirect'
+  requirements:
+    _permission: 'admin fields'
+ds.delete_field:
+  path: 'admin/structure/ds/fields/delete/{field_key}'
+  defaults:
+    _form: '\Drupal\ds\Form\FieldDeleteForm'
+  requirements:
+    _permission: 'admin fields'
+ds.manage_token_field:
+  path: 'admin/structure/ds/fields/manage_token/{field_key}'
+  defaults:
+    _form: '\Drupal\ds\Form\TokenFieldForm'
+    _title: 'Edit a token field'
+  requirements:
+    _permission: 'admin fields'
+ds.add_token_field:
+  path: 'admin/structure/ds/fields/manage_token'
+  defaults:
+    _form: '\Drupal\ds\Form\TokenFieldForm'
+    _title: 'Add a token field'
+  requirements:
+    _permission: 'admin fields'
+ds.manage_block_field:
+  path: 'admin/structure/ds/fields/manage_block/{field_key}'
+  defaults:
+    _form: '\Drupal\ds\Form\BlockFieldForm'
+    _title: 'Edit a block field'
+  requirements:
+    _permission: 'admin fields'
+ds.manage_block_field_config:
+  path: 'admin/structure/ds/fields/manage_block/{field_key}/block_config'
+  defaults:
+    _form: '\Drupal\ds\Form\BlockFieldConfigForm'
+    _title: 'Edit block config'
+  requirements:
+    _permission: 'admin fields'
+ds.add_block_field:
+  path: 'admin/structure/ds/fields/manage_block'
+  defaults:
+    _form: '\Drupal\ds\Form\BlockFieldForm'
+    _title: 'Add a block field'
+  requirements:
+    _permission: 'admin fields'
+ds.manage_copy_field:
+  path: 'admin/structure/ds/fields/manage_copy/{field_key}'
+  defaults:
+    _form: '\Drupal\ds\Form\CopyFieldForm'
+    _title: 'Edit a copy of a Display Suite field'
+  requirements:
+    _permission: 'admin fields'
+ds.add_copy_field:
+  path: 'admin/structure/ds/fields/manage_copy'
+  defaults:
+    _form: '\Drupal\ds\Form\CopyFieldForm'
+    _title: 'Add a copy of a Display Suite field'
+  requirements:
+    _permission: 'admin fields'
