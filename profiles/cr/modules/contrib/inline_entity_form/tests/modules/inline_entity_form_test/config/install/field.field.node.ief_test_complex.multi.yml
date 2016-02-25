@@ -1,12 +1,12 @@
-langcode: und
+langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.multi
-    - node.type.ief_test_complex
+    - node.type.ief_reference_type
+    - node.type.ief_test_custom
   module:
     - inline_entity_form_test
-    - entity_reference
   enforced:
     module:
       - inline_entity_form_test
@@ -21,7 +21,7 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: default:node
+  handler: 'default:node'
   handler_settings:
     target_bundles:
       ief_reference_type: ief_reference_type

@@ -1,0 +1,13 @@
+name: 'Display Suite Field Group Test'
+description: 'Dummy module to make it possible to add field_group as a test dependency'
+# core: 8.x
+package: 'Display Suite'
+type: module
+dependencies:
+  - field_group
+
+# Information added by Drupal.org packaging script on 2016-01-16
+version: '8.x-2.3'
+core: '8.x'
+project: 'ds'
+datestamp: 1452974656

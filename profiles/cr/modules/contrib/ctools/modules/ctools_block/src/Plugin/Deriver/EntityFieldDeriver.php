@@ -23,9 +23,11 @@ class EntityFieldDeriver extends EntityDeriverBase {
     foreach ($this->entityManager->getFieldMap() as $entity_type_id => $entity_field_map) {
       foreach ($this->entityManager->getFieldStorageDefinitions($entity_type_id) as $field_definition) {
         $field_name = $field_definition->getName();
+
         if (!isset($entity_field_map[$field_name])) {
           continue;
         }
+
         $field_info = $entity_field_map[$field_name];
         $derivative_id = $entity_type_id . ":" . $field_name;
 
