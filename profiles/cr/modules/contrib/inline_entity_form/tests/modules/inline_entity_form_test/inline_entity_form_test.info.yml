@@ -5,12 +5,13 @@ description: 'Support module for the Inline entity form module tests.'
 package: Testing
 # version: VERSION
 dependencies:
-  - entity_reference
   - inline_entity_form
   - node
+  - file
+  - image
 
-# Information added by Drupal.org packaging script on 2015-12-25
-version: '8.x-1.0-alpha3'
+# Information added by Drupal.org packaging script on 2016-02-18
+version: '8.x-1.0-alpha4'
 core: '8.x'
 project: 'inline_entity_form'
-datestamp: 1451036641
+datestamp: 1455831862

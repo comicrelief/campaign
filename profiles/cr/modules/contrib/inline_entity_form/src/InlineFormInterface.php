@@ -8,31 +8,13 @@
 namespace Drupal\inline_entity_form;
 
 use Drupal\Core\Entity\EntityHandlerInterface;
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Defines the interface for entity browser widgets.
+ * Defines the interface for inline form handlers.
  */
 interface InlineFormInterface extends EntityHandlerInterface {
-
-  /**
-   * Returns an array of libraries for the current entity type, keyed by theme
-   * name.
-   *
-   * If provided, the "base" library is included for all themes. If a library
-   * matching the current theme exists, it will also be included.
-   *
-   * @code
-   * return [
-   *   'base' => 'test_module/inline_entity_form.base',
-   *   'seven' => 'test_module/inline_entity_form.seven',
-   * ];
-   * @endcode
-   *
-   * @return array
-   *   List of libraries for inclusion keyed by theme name.
-   */
-  public function libraries();
 
   /**
    * Returns an array of entity type labels (singular, plural) fit to be
@@ -44,6 +26,17 @@ interface InlineFormInterface extends EntityHandlerInterface {
    *     - plural: label for plural form.
    */
   public function labels();
+
+  /**
+   * Gets the label of the given entity.
+   *
+   * @param \Drupal\Core\Entity\EntityInterface $entity
+   *   The given entity.
+   *
+   * @return string
+   *   The entity label.
+   */
+  public function getEntityLabel(EntityInterface $entity);
 
   /**
    * Returns an array of fields used to represent an entity in the IEF table.

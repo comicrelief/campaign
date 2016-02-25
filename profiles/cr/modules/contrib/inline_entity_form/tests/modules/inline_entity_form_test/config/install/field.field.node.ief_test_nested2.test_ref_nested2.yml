@@ -1,28 +1,30 @@
-langcode: en
+langcode: und
 status: true
 dependencies:
   config:
-    - field.storage.node.all_bundles
-    - node.type.ief_test_complex
+    - field.storage.node.test_ref_nested2
+    - node.type.ief_test_nested2
   module:
     - inline_entity_form_test
+    - entity_reference
   enforced:
     module:
       - inline_entity_form_test
-id: node.ief_test_complex.all_bundles
-field_name: all_bundles
+id: node.ief_test_nested2.test_ref_nested2
+field_name: test_ref_nested2
 entity_type: node
-bundle: ief_test_complex
-label: All bundles
-description: 'Reference nodes from all available bundles.'
-required: false
+bundle: ief_test_nested2
+label: Multiple nodes
+description: 'Reference multiple nodes.'
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
   handler: default:node
   handler_settings:
-    target_bundles: null
+    target_bundles:
+      ief_reference_type: ief_test_nested3
     sort:
       field: _none
 third_party_settings: {  }
