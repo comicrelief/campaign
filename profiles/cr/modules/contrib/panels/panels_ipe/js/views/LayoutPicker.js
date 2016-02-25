@@ -15,7 +15,7 @@
      * @type {function}
      */
     template_form: _.template(
-      '<h4>Configure <strong><%- label %></strong> layout</h4>' +
+      '<h4>' + Drupal.t('Configure <strong><%- label %></strong> layout') + '</h4>' +
       '<div class="ipe-layout-form ipe-form"><div class="ipe-icon ipe-icon-loading"></div></div>'
     ),
 
@@ -89,12 +89,12 @@
       this.renderCategories();
 
       // Flag the current layout.
-      var current_layout_text = Drupal.t('<p>@text</p>', {'@text': 'Current Layout'});
+      var current_layout_text = '<p>' + Drupal.t('Current Layout') + '</p>';
       this.$('[data-layout-id="' + current_layout + '"]').append(current_layout_text);
 
       // Prepend the current layout as its own category.
       this.$('.ipe-categories').prepend(this.template_category({
-        name: 'Current Layout',
+        name: Drupal.t('Current Layout'),
         count: null,
         active: this.activeCategory === 'Current Layout'
       }));

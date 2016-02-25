@@ -31,9 +31,9 @@
       '<div class="ipe-block-plugin">' +
       '  <div class="ipe-block-plugin-info">' +
       '    <h5><%- label %></h5>' +
-      '    <p>Provider: <strong><%- provider %></strong></p>' +
+      '    <p>' + Drupal.t('Provider: <strong><%- provider %></strong>') + '</p>' +
       '  </div>' +
-      '  <a data-plugin-id="<%- plugin_id %>">Add</a>' +
+      '  <a data-plugin-id="<%- plugin_id %>">' + Drupal.t('Add') + '</a>' +
       '</div>'
     ),
 
@@ -44,9 +44,9 @@
       '<div class="ipe-block-plugin">' +
       '  <div class="ipe-block-plugin-info">' +
       '    <h5><%- label %></h5>' +
-      '    <p>Provider: <strong><%- provider %></strong></p>' +
+      '    <p>' + Drupal.t('Provider: <strong><%- provider %></strong>') + '</p>' +
       '  </div>' +
-      '  <a data-existing-region-name="<%- region %>" data-existing-block-id="<%- uuid %>">Configure</a>' +
+      '  <a data-existing-region-name="<%- region %>" data-existing-block-id="<%- uuid %>">' + Drupal.t('Configure') + '</a>' +
       '</div>'
     ),
 
@@ -54,7 +54,7 @@
      * @type {function}
      */
     template_form: _.template(
-      '<h4>Configure <strong><%- label %></strong> block</h4>' +
+      '<h4>' + Drupal.t('Configure <strong><%- label %></strong> block') + '</h4>' +
       '<div class="ipe-block-plugin-form ipe-form"><div class="ipe-icon ipe-icon-loading"></div></div>'
     ),
 
