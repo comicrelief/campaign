@@ -27,7 +27,7 @@
   <property name="app.password"           value="admin"                                            override="true" />
   <!-- Development variables. -->
   <property name="app.dev.modules"        value="config_devel default_content"   override="true" />
-  <property name="app.dev.config_modules" value="cr cr_article cr_default_content"               override="true" />
+  <property name="app.dev.config_modules" value="cr cr_article cr_default_content cr_landing_page"               override="true" />
 
   <!-- Overrides -->
   <!-- <property name="php.sniff.dirs"       value="agov/modules/custom agov/themes agov/src" override="true" /> -->
