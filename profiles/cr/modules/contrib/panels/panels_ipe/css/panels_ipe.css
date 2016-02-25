@@ -272,6 +272,14 @@ div.ipe-actions-block {
   text-transform: uppercase;
 }
 
+
+/* Fix contextual links hovering over action links. */
+
+[data-block-id] [data-contextual-id].contextual {
+  /* Top is normally hard-set at 6px, this puts it below the action bar. */
+  top: 35px;
+}
+
 /* Indicate that blocks are draggable */
 [data-block-id].active {
   cursor: move;

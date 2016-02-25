@@ -7,17 +7,16 @@
 
 namespace Drupal\panels_ipe\Controller;
 
-use Drupal\Component\Serialization\Json;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\AppendCommand;
 use Drupal\Core\Block\BlockManagerInterface;
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\Core\Form\FormState;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\layout_plugin\Plugin\Layout\LayoutPluginManagerInterface;
-use Drupal\panels\Plugin\DisplayVariant\PanelsDisplayVariant;
 use Drupal\panels\Storage\PanelsStorageManagerInterface;
+use Drupal\panels_ipe\Helpers\RemoveBlockRequestHandler;
+use Drupal\panels_ipe\Helpers\UpdateLayoutRequestHandler;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -58,11 +57,22 @@ class PanelsIPEPageController extends ControllerBase {
   protected $tempStore;
 
   /**
+   * @var \Drupal\panels_ipe\Helpers\UpdateLayoutRequestHandler
+   */
+  private $updateLayoutRequestHandler;
+
+  /**
+   * @var \Drupal\panels_ipe\Helpers\RemoveBlockRequestHandler
+   */
+  private $removeBlockRequestHandler;
+
+  /**
    * Constructs a new PanelsIPEController.
    *
    * @param \Drupal\Core\Block\BlockManagerInterface $block_manager
    * @param \Drupal\Core\Render\RendererInterface $renderer
    * @param \Drupal\layout_plugin\Plugin\Layout\LayoutPluginManagerInterface $layout_plugin_manager
+   * @param \Drupal\panels\Storage\PanelsStorageManagerInterface $panels_storage_manager
    * @param \Drupal\user\SharedTempStoreFactory $temp_store_factory
    */
   public function __construct(BlockManagerInterface $block_manager, RendererInterface $renderer, LayoutPluginManagerInterface $layout_plugin_manager, PanelsStorageManagerInterface $panels_storage_manager, SharedTempStoreFactory $temp_store_factory) {
@@ -71,6 +81,8 @@ class PanelsIPEPageController extends ControllerBase {
     $this->layoutPluginManager = $layout_plugin_manager;
     $this->panelsStorage = $panels_storage_manager;
     $this->tempStore = $temp_store_factory->get('panels_ipe');
+    $this->updateLayoutRequestHandler = new UpdateLayoutRequestHandler($this->moduleHandler(), $this->panelsStorage, $this->tempStore);
+    $this->removeBlockRequestHandler = new RemoveBlockRequestHandler($this->moduleHandler(), $this->panelsStorage, $this->tempStore);
   }
 
   /**
@@ -110,49 +122,16 @@ class PanelsIPEPageController extends ControllerBase {
   }
 
   /**
-   * Saves the current Panels display in the tempstore or real storage..
-   *
-   * @param \Drupal\panels\Plugin\DisplayVariant\PanelsDisplayVariant $panels_display
-   *   The Panels display to be saved.
-   * @param bool $temp
-   *   Whether or not to save to temp store.
-   *
-   * @return \Drupal\panels\Plugin\DisplayVariant\PanelsDisplayVariant
-   *   The Panels display that was saved.
-   *
-   * @throws \Drupal\user\TempStoreException
-   *   If there are any issues manipulating the entry in the temp store.
-   */
-  protected function savePanelsDisplay(PanelsDisplayVariant $panels_display, $temp = TRUE) {
-    $temp_store_key = $panels_display->id();
-
-    // Save configuration to temp store.
-    if ($temp) {
-      $this->tempStore->set($temp_store_key, $panels_display->getConfiguration());
-    }
-    else {
-      // Check to see if temp store has configuration saved.
-      if ($variant_config = $this->tempStore->get($temp_store_key)) {
-        // Delete the existing temp store value.
-        $this->tempStore->delete($temp_store_key);
-      }
-
-      // Save to the real storage.
-      $this->panelsStorage->save($panels_display);
-    }
-
-    return $panels_display;
-  }
-
-  /**
    * Removes any temporary changes to the variant.
    *
-   * @param string $panels_display_id
-   *   The id of the current Panels display.
-   * @param \Symfony\Component\HttpFoundation\Request $request
-   *   The current request.
+   * @param string $panels_storage_type
+   *   The id of the storage plugin.
+   * @param string $panels_storage_id
+   *   The id within the storage plugin for the requested Panels display.
    *
    * @return \Symfony\Component\HttpFoundation\JsonResponse
+   *
+   * @throws \Drupal\user\TempStoreException
    */
   public function cancel($panels_storage_type, $panels_storage_id) {
     $panels_display = $this->loadPanelsDisplay($panels_storage_type, $panels_storage_id);
@@ -228,47 +207,6 @@ class PanelsIPEPageController extends ControllerBase {
   }
 
   /**
-   * Updates the current Panels display based on the changes done in our app.
-   *
-   * @param \Drupal\panels\Plugin\DisplayVariant\PanelsDisplayVariant $panels_display
-   *   The current Panels display.
-   * @param array $layout_model
-   *   The decoded LayoutModel from our App.
-   *
-   * @return \Symfony\Component\HttpFoundation\JsonResponse
-   */
-  protected function updatePanelsDisplay(PanelsDisplayVariant $panels_display, array $layout_model) {
-    // Set our weight and region based on the metadata in our Backbone app.
-    foreach ($layout_model['regionCollection'] as $region) {
-      $weight = 0;
-      foreach ($region['blockCollection'] as $block) {
-        /** @var \Drupal\Core\Block\BlockBase $block_instance */
-        $block_instance = $panels_display->getBlock($block['uuid']);
-
-        $block_instance->setConfigurationValue('region', $region['name']);
-        $block_instance->setConfigurationValue('weight', ++$weight);
-
-        $panels_display->updateBlock($block['uuid'], $block_instance->getConfiguration());
-      }
-    }
-
-    // Remove blocks that need removing.
-    // @todo We should do this on the fly instead of at on save.
-    foreach ($layout_model['deletedBlocks'] as $uuid) {
-      $panels_display->removeBlock($uuid);
-    }
-
-    // Allow other modules to modify the display before saving based on the
-    // contents of our $layout_model.
-    $this->moduleHandler()->invokeAll('panels_ipe_panels_display_presave', [$panels_display, $layout_model]);
-
-    // Save the variant and remove temp storage.
-    $this->savePanelsDisplay($panels_display, FALSE);
-
-    return new JsonResponse(['deletedBlocks' => []]);
-  }
-
-  /**
    * Updates (PUT) an existing Layout in this Variant.
    *
    * @param string $panels_storage_type
@@ -280,17 +218,28 @@ class PanelsIPEPageController extends ControllerBase {
    *
    * @return \Symfony\Component\HttpFoundation\JsonResponse
    */
-  public function updateLayout($panels_storage_type, $panels_storage_id, Request $request) {
+  public function handleUpdateLayoutRequest($panels_storage_type, $panels_storage_id, Request $request) {
     $panels_display = $this->loadPanelsDisplay($panels_storage_type, $panels_storage_id);
+    $this->updateLayoutRequestHandler->handleRequest($panels_display, $request);
+    return $this->updateLayoutRequestHandler->getJsonResponse();
+  }
 
-    // Decode the request.
-    $content = $request->getContent();
-    if (!empty($content) && $layout_model = Json::decode($content)) {
-      return $this->updatePanelsDisplay($panels_display, $layout_model);
-    }
-    else {
-      return new JsonResponse(['success' => false], 400);
-    }
+  /**
+   * Stores changes to the temporary storage.
+   *
+   * @param string $panels_storage_type
+   *   The id of the storage plugin.
+   * @param string $panels_storage_id
+   *   The id within the storage plugin for the requested Panels display.
+   * @param \Symfony\Component\HttpFoundation\Request $request
+   *   The current request.
+   *
+   * @return \Symfony\Component\HttpFoundation\JsonResponse
+   */
+  public function handleUpdateLayoutTempStorageRequest($panels_storage_type, $panels_storage_id, Request $request) {
+    $panels_display = $this->loadPanelsDisplay($panels_storage_type, $panels_storage_id);
+    $this->updateLayoutRequestHandler->handleRequest($panels_display, $request, TRUE);
+    return $this->updateLayoutRequestHandler->getJsonResponse();
   }
 
   /**
@@ -305,9 +254,27 @@ class PanelsIPEPageController extends ControllerBase {
    *
    * @return \Symfony\Component\HttpFoundation\JsonResponse
    */
-  public function createLayout($panels_storage_type, $panels_storage_id, Request $request) {
+  public function handleCreateLayoutRequest($panels_storage_type, $panels_storage_id, Request $request) {
     // For now, creating and updating a layout is the same thing.
-    return $this->updateLayout($panels_storage_type, $panels_storage_id, $request);
+    return $this->handleUpdateLayoutRequest($panels_storage_type, $panels_storage_id, $request);
+  }
+
+  /**
+   * Removes a block from the layout.
+   *
+   * @param string $panels_storage_type
+   *   The id of the storage plugin.
+   * @param string $panels_storage_id
+   *   The id within the storage plugin for the requested Panels display.
+   * @param \Symfony\Component\HttpFoundation\Request $request
+   *   The current request.
+   *
+   * @return \Symfony\Component\HttpFoundation\JsonResponse
+   */
+  public function handleRemoveBlockRequest($panels_storage_type, $panels_storage_id, Request $request) {
+    $panels_display = $this->loadPanelsDisplay($panels_storage_type, $panels_storage_id);
+    $this->removeBlockRequestHandler->handleRequest($panels_display, $request, TRUE);
+    return $this->updateLayoutRequestHandler->getJsonResponse();
   }
 
   /**

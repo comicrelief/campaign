@@ -55,16 +55,19 @@ dependencies:
   - panelizer
   - ctools_block
 
+  # Custom modules
+  - cr_article
+  - cr_landing_page
+
   # Development modules
   - config_devel
-  - cr_default_content
   - devel
 
   # Editor/admin experience
   - admin_toolbar_tools
 
-  # Custom modules
-  - cr_article
+  # Default content; will be moved out of the profile at some point
+  - cr_default_content
 
 themes:
   - seven
