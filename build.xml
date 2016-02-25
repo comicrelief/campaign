@@ -16,6 +16,7 @@
   <property name="app.dir"                value="${project.basedir}"                              override="true" />
   <property name="app.profile.name"       value="cr"                                                override="true" />
   <property name="app.profile.dir"        value="profiles/cr"                                       override="true" />
+  <property name="app.profile.theme"  value="${app.profile.dir}/themes/custom/campaign_base" override="true" />
   <property name="app.content.dir"        value="${app.profile.dir}/modules/custom/cr_default_content/content" override="true" />
   <!-- <property name="app.profile.options"    value="agov_install_additional_options.install=1"           override="true" /> -->
   <property name="app.profile.options"    value=""           override="true" />
@@ -53,7 +54,7 @@
   <!-- ============ -->
 
   <target name="build"
-          depends="install"
+          depends="install, grunt:build"
           description="Build (or rebuild) the project.">
   </target>
 
@@ -181,9 +182,9 @@
           passthru="true" />
   </target>
 
-  <target name="gulp:build" description="Generate all compiled Sass and style guide resources.">
-    <exec dir="${app.dir}"
-          command="${gulp.cmd} build"
+  <target name="grunt:build" description="Generate all compiled Sass and JS files.">
+    <exec dir="${app.profile.theme}"
+          command="grunt build"
           logoutput="true"
           passthru="true"
           checkreturn="true" />

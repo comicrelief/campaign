@@ -4,6 +4,44 @@ A work in progress. See http://confluence.comicrelief.com/display/RND17/Campaign
 
 ## How to set this up locally
 
+## FrontEnd set up
+
+###Install npm. https://docs.npmjs.com/
+
+In the theme directory run:
+
+	npm install
+
+###Install bundler. http://bundler.io/
+
+In the theme directory run:
+
+	bundle install
+
+Bundler will install all gems needed for your project.
+
+###Grunt dev / build
+
+For dev run: 
+
+	grunt default
+
+Grunt will watch all SASS / TWIG / JS / Images for changes 
+
+And,
+
+- Compile CSS
+- jshint JS
+- Generate compass image sprites
+- Add source sass map to help inspect sass files in browser inspector
+- Reload your browser (you need livereload chrome extension)
+
+For prod run:
+
+	grunt build
+
+Grunt will compile CSS, remove comments, remove sass source file, minify and concatenate js.
+
 ### Install and configure Drush 8
 
 Drush 8 is required for Drupal 8. Install instructions can be found [here](http://x-team.com/2015/02/install-drush-8-drupal-8-without-throwing-away-drush-6-7/).
@@ -69,3 +107,15 @@ Now you can push to Pantheon to deploy this
 https://dashboard.pantheon.io/sites/f9291f1f-3819-4964-9c5b-c9f7d5500d28#dev/code
 
 How to deal with [settings.php on Pantheon](https://pantheon.io/docs/articles/drupal/configuring-settings-php/)
+
+# Debugging
+
+## Ubuntu grunt:build error
+```
+Property ${app.profile.theme} => profiles/cr/themes/custom/campaign_base
+     [exec] Executing command: grunt build
+/usr/bin/env: node: No such file or directory
+```
+Fix: `sudo ln -fs /usr/bin/nodejs /usr/local/bin/node`
+
+Note: Nodejs location may differ.

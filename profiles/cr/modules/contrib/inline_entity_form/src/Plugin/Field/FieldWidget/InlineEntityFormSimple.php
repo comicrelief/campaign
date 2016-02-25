@@ -100,7 +100,9 @@ class InlineEntityFormSimple extends InlineEntityFormBase {
         return;
       }
 
-      $values[$submitted_values[$delta]['_weight']] = ['entity' => $entity];
+      $weight = isset($submitted_values[$delta]['_weight']) ? $submitted_values[$delta]['_weight'] : 0;
+
+      $values[$weight] = ['entity' => $entity];
     }
 
     // Sort items base on weights.

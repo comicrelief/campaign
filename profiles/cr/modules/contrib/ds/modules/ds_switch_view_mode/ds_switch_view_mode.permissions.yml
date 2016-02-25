@@ -1,0 +1,5 @@
+'ds switch view mode':
+  title: 'Switch the view mode of any content type'
+
+permission_callbacks:
+  - Drupal\ds_switch_view_mode\Permissions::permissions
