@@ -1,0 +1,121 @@
+ds.field_template.reset:
+  type: mapping
+  label: 'The settings of the reset field template'
+  mapping:
+    lb:
+      type: string
+      label: 'The label of the field'
+
+ds.field_template.minimal:
+  type: mapping
+  label: 'The settings of the minimal field template'
+  mapping:
+    lb:
+      type: string
+      label: 'The label of the field'
+    lb-col:
+      type: boolean
+      label: 'Enable the label colon'
+    classes:
+      type: sequence
+      label: 'Classes for the template'
+      sequence:
+        - type: string
+          label: 'Class name'
+
+ds.field_template.default:
+  type: mapping
+  label: 'The settings of the default field template'
+  mapping:
+    lb:
+      type: string
+      label: 'The label of the field'
+    lb-col:
+      type: boolean
+      label: 'Enable the label colon'
+    classes:
+      type: sequence
+      label: 'Classes for the template'
+      sequence:
+        - type: string
+          label: 'Class name'
+
+ds.field_template.expert:
+  type: mapping
+  label: 'The settings of the expert field template'
+  mapping:
+    lb:
+      type: string
+      label: 'The label of the field'
+    lbw:
+      type: boolean
+      label: 'Enable the label wrapper'
+    lbw-el:
+      type: string
+      label: 'The label wrapper element'
+    lbw-cl:
+      type: string
+      label: 'The label wrapper class'
+    lbw-at:
+      type: string
+      label: 'The label wrapper attribute'
+    lb-col:
+      type: boolean
+      label: 'Enable the label colon'
+    lbw-def-at:
+      type: boolean
+      label: 'Enable default attributes for the layout wrapper'
+    ow:
+      type: boolean
+      label: 'Enable the outer wrapper'
+    ow-el:
+      type: string
+      label: 'The outer wrapper element'
+    ow-cl:
+      type: string
+      label: 'The outer wrapper class'
+    ow-at:
+      type: string
+      label: 'The outer wrapper attribute'
+    ow-def-at:
+      type: boolean
+      label: 'Enable default attributes for the outer wrapper'
+    ow-def-cl:
+      type: boolean
+      label: 'Enable default classes for the outer wrapper'
+    fis:
+      type: boolean
+      label: 'Enable the field items wrapper'
+    fis-el:
+      type: string
+      label: 'The field items wrapper element'
+    fis-cl:
+      type: string
+      label: 'The field items wrapper class'
+    fis-at:
+      type: string
+      label: 'The field items wrapper attribute'
+    fis-def-at:
+      type: boolean
+      label: 'Enable default attributes for the field items wrapper'
+    fi:
+      type: boolean
+      label: 'Enable the field item wrapper'
+    fi-el:
+      type: string
+      label: 'The field item wrapper element'
+    fi-cl:
+      type: string
+      label: 'The field item wrapper class'
+    fi-at:
+      type: string
+      label: 'The field item wrapper attribute'
+    fi-def-at:
+      type: boolean
+      label: 'Enable default attributes for the field item wrapper'
+    prefix:
+      type: string
+      label: 'The prefix of the field'
+    suffix:
+      type: string
+      label: 'The suffix of the field'

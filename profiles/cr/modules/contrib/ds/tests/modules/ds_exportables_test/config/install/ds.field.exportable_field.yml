@@ -1,0 +1,11 @@
+id: exportable_field
+label: 'Exportable field'
+ui_limit: ''
+properties:
+  content:
+    value: 'This is an exportable field'
+    format: plain_text
+type: token
+type_label: 'Token field'
+entities:
+  node: node
