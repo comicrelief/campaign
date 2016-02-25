@@ -36,6 +36,10 @@ config_devel:
   - core.entity_view_mode.block_content.cw_l
   - core.entity_view_mode.block_content.cw_m
   - core.entity_view_mode.block_content.cw_s
+# Image styles
+  - image.style.cw_large_780x440
+  - image.style.cw_medium_570x365
+  - image.style.cw_small_370x290
 
 # Development Content #
   - page_manager.page.content_wall
