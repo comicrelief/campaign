@@ -4,6 +4,8 @@ description: 'Defines content wall functionality.'
 package: Comic Relief
 # version: VERSION
 core: 8.x
+dependencies:
+  - ds
 config_devel:
 # Block config #
   # Row block
