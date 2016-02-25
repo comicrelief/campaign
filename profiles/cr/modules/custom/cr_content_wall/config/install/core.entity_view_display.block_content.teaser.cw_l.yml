@@ -8,10 +8,32 @@ dependencies:
     - field.field.block_content.teaser.field_teaser_image
     - field.field.block_content.teaser.field_teaser_link
     - field.field.block_content.teaser.field_teaser_title
+    - image.style.cw_large_780x440
   module:
+    - ds
     - image
     - link
     - text
+third_party_settings:
+  ds:
+    layout:
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
+      library: ''
+      disable_css: false
+      settings:
+        classes: {  }
+        wrappers: {  }
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+    regions:
+      ds_content:
+        - field_teaser_title
+        - field_teaser_image
+        - body
+        - field_teaser_link
 id: block_content.teaser.cw_l
 targetEntityType: block_content
 bundle: teaser
@@ -19,20 +41,21 @@ mode: cw_l
 content:
   body:
     label: hidden
-    type: text_default
-    weight: 1
-    settings: {  }
+    type: text_trimmed
+    weight: 2
+    settings:
+      trim_length: 120
     third_party_settings: {  }
   field_teaser_image:
-    weight: 3
+    weight: 1
     label: hidden
     settings:
-      image_style: ''
+      image_style: cw_large_780x440
       image_link: ''
     third_party_settings: {  }
     type: image
   field_teaser_link:
-    weight: 2
+    weight: 3
     label: hidden
     settings:
       trim_length: 80
