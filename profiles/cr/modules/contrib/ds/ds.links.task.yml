@@ -1,0 +1,43 @@
+ds.display_task:
+  route_name: ds.structure
+  title: Displays
+  base_route: ds.display_task
+  weight: 0
+ds.settings_task:
+  route_name: ds.admin_settings
+  title: Settings
+  parent_id: ds.display_task
+  weight: 10
+ds.emergency_task:
+  route_name: ds.admin_emergency
+  title: Emergency
+  parent_id: ds.display_task
+  weight: 100
+ds.classes_task:
+  route_name: ds.classes
+  title: Classes
+  base_route: ds.display_task
+  weight: 1
+ds.fields_task:
+  route_name: ds.fields_list
+  title: Fields
+  base_route: ds.display_task
+  weight: 2
+ds.entities:
+  class: \Drupal\Core\Menu\LocalTaskDefault
+  deriver: \Drupal\ds\Plugin\Derivative\DsLocalTask
+ds.manage_block_field_task:
+  route_name: ds.manage_block_field
+  title: Edit
+  base_route: ds.manage_block_field_task
+  weight: 0
+ds.manage_block_field_config_task:
+  route_name: ds.manage_block_field_config
+  title: Configure block
+  base_route: ds.manage_block_field_task
+  weight: 1
+ds.delete_field_task:
+  route_name: ds.delete_field
+  title: Delete
+  base_route: ds.manage_block_field_task
+  weight: 2

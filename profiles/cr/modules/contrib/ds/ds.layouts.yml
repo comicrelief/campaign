@@ -1,0 +1,194 @@
+ds_1col:
+  label: One column layout
+  category: Display Suite
+  class: '\Drupal\ds\Plugin\DsLayout'
+  type: partial
+  template: templates/ds-1col
+  icon: images/ds-1col.png
+  regions:
+    ds_content:
+      label: Content
+ds_1col_wrapper:
+  label: One column layout + wrapper
+  category: Display Suite
+  class: '\Drupal\ds\Plugin\DsLayout'
+  type: partial
+  template: templates/ds-1col-wrapper
+  icon: images/ds-1col-wrapper.png
+  regions:
+    ds_content:
+      label: Content
+ds_2col:
+  label: Two column layout
+  category: Display Suite
+  class: '\Drupal\ds\Plugin\DsLayout'
+  type: partial
+  template: templates/ds-2col
+  css: css/ds-2col.css
+  icon: images/ds-2col.png
+  regions:
+    left:
+      label: Left
+    right:
+      label: Right
+ds_2col_fluid:
+  label: Fluid two column layout
+  category: Display Suite
+  class: '\Drupal\ds\Plugin\DsLayout'
+  type: partial
+  template: templates/ds-2col-fluid
+  css: css/ds-2col-fluid.css
+  icon: images/ds-2col-fluid.png
+  regions:
+    left:
+      label: Left
+    right:
+      label: Right
+ds_2col_stacked:
+  label: Two column stacked layout
+  category: Display Suite
+  class: '\Drupal\ds\Plugin\DsLayout'
+  type: partial
+  template: templates/ds-2col-stacked
+  css: css/ds-2col-stacked.css
+  icon: images/ds-2col-stacked.png
+  regions:
+    header:
+      label: Header
+    left:
+      label: Left
+    right:
+      label: Right
+    footer:
+      label: Footer
+ds_2col_stacked_fluid:
+  label: Fluid two column stacked layout
+  category: Display Suite
+  class: '\Drupal\ds\Plugin\DsLayout'
+  type: partial
+  template: templates/ds-2col-stacked-fluid
+  css: css/ds-2col-stacked-fluid.css
+  icon: images/ds-2col-stacked-fluid.png
+  regions:
+    header:
+      label: Header
+    left:
+      label: Left
+    right:
+      label: Right
+    footer:
+      label: Footer
+ds_3col:
+  label: Three column - 25/50/25
+  category: Display Suite
+  class: '\Drupal\ds\Plugin\DsLayout'
+  type: partial
+  template: templates/ds-3col
+  css: css/ds-3col.css
+  icon: images/ds-3col.png
+  regions:
+    left:
+      label: Left
+    middle:
+      label: Middle
+    right:
+      label: Right
+ds_3col_equal_width:
+  label: Three column - equal width
+  category: Display Suite
+  class: '\Drupal\ds\Plugin\DsLayout'
+  type: partial
+  template: templates/ds-3col-equal-width
+  css: templates/ds-3col-equal-width.css
+  icon: images/ds-3col-equal-width.png
+  regions:
+    left:
+      label: Left
+    middle:
+      label: Middle
+    right:
+      label: Right
+ds_3col_stacked:
+  label: Three column stacked - 25/50/25
+  category: Display Suite
+  class: '\Drupal\ds\Plugin\DsLayout'
+  type: partial
+  template: templates/ds-3col-stacked
+  css: css/ds-3col-stacked.css
+  icon: images/ds-3col-stacked.png
+  regions:
+    header:
+      label: Header
+    left:
+      label: Left
+    middle:
+      label: Middle
+    right:
+      label: Right
+    footer:
+      label: Footer
+ds_3col_stacked_fluid:
+  label: Fluid three column stacked - 25/50/25
+  category: Display Suite
+  class: '\Drupal\ds\Plugin\DsLayout'
+  type: partial
+  template: templates/ds-3col-stacked-fluid
+  css: css/ds-3col-stacked-fluid.css
+  icon: images/ds-3col-stacked-fluid.png
+  regions:
+    header:
+      label: Header
+    left:
+      label: Left
+    middle:
+      label: Middle
+    right:
+      label: Right
+    footer:
+      label: Footer
+ds_3col_stacked_equal_width:
+  label: Three column stacked - equal width
+  category: Display Suite
+  class: '\Drupal\ds\Plugin\DsLayout'
+  type: partial
+  template: templates/ds-3col-stacked-equal-width
+  css: css/ds-3col-stacked-equal-width.css
+  icon: images/ds-3col-stacked-equal-width.png
+  regions:
+    header:
+      label: Header
+    left:
+      label: Left
+    middle:
+      label: Middle
+    right:
+      label: Right
+    footer:
+      label: Footer
+ds_4col:
+  label: Four column - equal width
+  category: Display Suite
+  class: '\Drupal\ds\Plugin\DsLayout'
+  type: partial
+  template: templates/ds-4col
+  css: css/ds-4col.css
+  icon: images/ds-4col.png
+  regions:
+    first:
+      label: First
+    second:
+      label: Second
+    third:
+      label: Third
+    fourth:
+      label: Fourth
+ds_reset:
+  label: Reset layout
+  category: Display Suite
+  class: '\Drupal\ds\Plugin\DsLayout'
+  type: partial
+  template: templates/ds-reset
+  image: images/ds-reset.png
+  regions:
+    ds_content:
+      label: Content
