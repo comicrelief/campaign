@@ -1,7 +1,8 @@
-langcode: und
+langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.ief_test_custom.positive_int
     - node.type.ief_test_custom
 id: node.ief_test_custom.default
 targetEntityType: node
@@ -20,6 +21,12 @@ content:
     weight: 10
     settings: {  }
     third_party_settings: {  }
+  positive_int:
+    weight: 26
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
   promote:
     type: boolean_checkbox
     settings:

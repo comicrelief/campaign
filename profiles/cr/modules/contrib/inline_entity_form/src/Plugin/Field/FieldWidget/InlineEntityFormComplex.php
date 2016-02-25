@@ -9,7 +9,8 @@ namespace Drupal\inline_entity_form\Plugin\Field\FieldWidget;
 
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Component\Utility\SortArray;
-use Drupal\Core\Entity\EntityManagerInterface;
+use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
@@ -53,13 +54,15 @@ class InlineEntityFormComplex extends InlineEntityFormBase implements ContainerF
    *   The widget settings.
    * @param array $third_party_settings
    *   Any third party settings.
-   * @param \Drupal\Core\Entity\EntityManager $entity_manager
-   *   Entity manager service.
+   * @param \Drupal\Core\Entity\EntityTypeBundleInfoInterface $entity_type_bundle_info
+   *   The entity type bundle info.
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   *   The entity type manager.
    * @param \Drupal\Core\Extension\ModuleHandlerInterface $module_handler
    *   Module handler service.
    */
-  public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, array $third_party_settings, EntityManagerInterface $entity_manager, ModuleHandlerInterface $module_handler) {
-    parent::__construct($plugin_id, $plugin_definition, $field_definition, $settings, $third_party_settings, $entity_manager);
+  public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, array $third_party_settings, EntityTypeBundleInfoInterface $entity_type_bundle_info, EntityTypeManagerInterface $entity_type_manager, ModuleHandlerInterface $module_handler) {
+    parent::__construct($plugin_id, $plugin_definition, $field_definition, $settings, $third_party_settings, $entity_type_bundle_info, $entity_type_manager);
     $this->moduleHandler = $module_handler;
   }
 
@@ -73,7 +76,8 @@ class InlineEntityFormComplex extends InlineEntityFormBase implements ContainerF
       $configuration['field_definition'],
       $configuration['settings'],
       $configuration['third_party_settings'],
-      $container->get('entity.manager'),
+      $container->get('entity_type.bundle.info'),
+      $container->get('entity_type.manager'),
       $container->get('module_handler')
     );
   }
@@ -287,6 +291,7 @@ class InlineEntityFormComplex extends InlineEntityFormBase implements ContainerF
       // Data used by theme_inline_entity_form_entity_table().
       /** @var \Drupal\Core\Entity\EntityInterface $entity */
       $entity = $value['entity'];
+      $element['entities'][$key]['#label'] = $this->iefHandler->getEntityLabel($value['entity']);
       $element['entities'][$key]['#entity'] = $value['entity'];
       $element['entities'][$key]['#needs_save'] = $value['needs_save'];
 
@@ -452,7 +457,7 @@ class InlineEntityFormComplex extends InlineEntityFormBase implements ContainerF
         // Let the user select the bundle, if multiple are available.
         if ($target_bundles_count > 1) {
           $bundles = array();
-          foreach ($this->entityManager->getBundleInfo($target_type) as $bundle_name => $bundle_info) {
+          foreach ($this->entityTypeBundleInfo->getBundleInfo($target_type) as $bundle_name => $bundle_info) {
             if (in_array($bundle_name, $target_bundles)) {
               $bundles[$bundle_name] = $bundle_info['label'];
             }
@@ -572,7 +577,8 @@ class InlineEntityFormComplex extends InlineEntityFormBase implements ContainerF
       return;
     }
 
-    if (!$this->isSubmitRelevant($form, $form_state)) {
+    $trigger = $form_state->getTriggeringElement();
+    if (empty($trigger['#ief_trigger'])) {
       return;
     }
 
@@ -612,17 +618,21 @@ class InlineEntityFormComplex extends InlineEntityFormBase implements ContainerF
         });
       }
 
-      foreach ($values as $delta => &$item) {
-        /** @var \Drupal\Core\Entity\EntityInterface $entity */
-        $entity = $item['entity'];
-        if (!empty($item['needs_save'])) {
-          $entity->save();
-        }
-        if (!empty($item['delete'])) {
-          $entity->delete();
-          unset($items[$delta]);
+      if (!empty($trigger['#ief_submit_all'])) {
+        foreach ($values as $delta => &$item) {
+          /** @var \Drupal\Core\Entity\EntityInterface $entity */
+          $entity = $item['entity'];
+          if (!empty($item['needs_save'])) {
+            $entity->save();
+          }
+          if (!empty($item['delete'])) {
+            $entity->delete();
+            unset($items[$delta]);
+          }
         }
       }
+
+
 
       // Let the widget massage the submitted values.
       $values = $this->massageFormValues($values, $form, $form_state);
@@ -653,6 +663,10 @@ class InlineEntityFormComplex extends InlineEntityFormBase implements ContainerF
       $item = $value;
       if (isset($item['entity'])) {
         $item['target_id'] = $item['entity']->id();
+        $items[] = $item;
+      }
+      else {
+        $item['target_id'] = NULL;
         $items[] = $item;
       }
     }
@@ -711,14 +725,10 @@ class InlineEntityFormComplex extends InlineEntityFormBase implements ContainerF
 
     // Add submit handlers depending on operation.
     if ($element['#op'] == 'add') {
-      $element['actions']['ief_add_save']['#submit'] = [
-        ['\Drupal\inline_entity_form\Element\InlineEntityForm', 'triggerIefSubmit'],
-        'inline_entity_form_close_child_forms',
-        'inline_entity_form_close_form',
-      ];
+      static::addSubmitCallbacks($element['actions']['ief_add_save']);
       $element['actions']['ief_add_cancel']['#submit'] = [
-        'inline_entity_form_close_child_forms',
-        'inline_entity_form_close_form',
+        [get_called_class(), 'closeChildForms'],
+        [get_called_class(), 'closeForm'],
         'inline_entity_form_cleanup_form_state',
       ];
     }
@@ -726,13 +736,10 @@ class InlineEntityFormComplex extends InlineEntityFormBase implements ContainerF
       $element['actions']['ief_edit_save']['#ief_row_delta'] = $element['#ief_row_delta'];
       $element['actions']['ief_edit_cancel']['#ief_row_delta'] = $element['#ief_row_delta'];
 
-      $element['actions']['ief_edit_save']['#submit'] = [
-        ['\Drupal\inline_entity_form\Element\InlineEntityForm', 'triggerIefSubmit'],
-        'inline_entity_form_close_child_forms',
-        [get_called_class(), 'submitCloseRow'],
-      ];
+      static::addSubmitCallbacks($element['actions']['ief_edit_save']);
+      $element['actions']['ief_edit_save']['#submit'][] = [get_called_class(), 'submitCloseRow'];
       $element['actions']['ief_edit_cancel']['#submit'] = [
-        'inline_entity_form_close_child_forms',
+        [get_called_class(), 'closeChildForms'],
         [get_called_class(), 'submitCloseRow'],
         'inline_entity_form_cleanup_row_form_state',
       ];
@@ -769,7 +776,7 @@ class InlineEntityFormComplex extends InlineEntityFormBase implements ContainerF
     /** @var \Drupal\Core\Entity\EntityInterface $entity */
     $entity = $form['#entity'];
     $entity_id = $entity->id();
-    $entity_label = $entity->label();
+    $entity_label = $this->iefHandler->getEntityLabel($entity);
     $labels = $this->labels();
 
     if ($entity_label) {
@@ -869,7 +876,7 @@ class InlineEntityFormComplex extends InlineEntityFormBase implements ContainerF
     $entity = $element['entities'][$delta]['form']['#entity'];
     $entity_id = $entity->id();
 
-    $widget = \Drupal::entityManager()
+    $widget = \Drupal::entityTypeManager()
       ->getStorage('entity_form_display')
       ->load($instance->getTargetEntityTypeId() . '.' . $instance->getTargetBundle() . '.default')
       ->getComponent($instance->getName());
@@ -944,6 +951,53 @@ class InlineEntityFormComplex extends InlineEntityFormBase implements ContainerF
       $instance = $form_state->get(['inline_entity_form', $ief_id, 'instance']);
       $form_state->setError($element, t('!name field is required.', array('!name' => $instance->getLabel())));
     }
+  }
+
+  /**
+   * Button #submit callback: Closes a form in the IEF widget.
+   *
+   * @param $form
+   *   The complete parent form.
+   * @param $form_state
+   *   The form state of the parent form.
+   *
+   * @see inline_entity_form_open_form().
+   */
+  public static function closeForm($form, FormStateInterface $form_state) {
+    $element = inline_entity_form_get_element($form, $form_state);
+    $ief_id = $element['#ief_id'];
+
+    $form_state->setRebuild();
+    $form_state->set(['inline_entity_form', $ief_id, 'form'], NULL);
+  }
+
+  /**
+   * Add common submit callback functions and mark element as a IEF trigger.
+   *
+   * @param $element
+   */
+  public static function addSubmitCallbacks(&$element) {
+    $element['#submit'] = [
+      ['\Drupal\inline_entity_form\Element\InlineEntityForm', 'triggerIefSubmit'],
+      ['\Drupal\inline_entity_form\Plugin\Field\FieldWidget\InlineEntityFormComplex', 'closeForm'],
+    ];
+    $element['#ief_trigger']  = TRUE;
+  }
+
+  /**
+   * Button #submit callback:  Closes all open child forms in the IEF widget.
+   *
+   * Used to ensure that forms in nested IEF widgets are properly closed
+   * when a parent IEF's form gets submitted or cancelled.
+   *
+   * @param $form
+   *   The IEF Form element.
+   * @param FormStateInterface $form_state
+   *   The form state of the parent form.
+   */
+  public static function closeChildForms($form, FormStateInterface &$form_state) {
+    $element = inline_entity_form_get_element($form, $form_state);
+    inline_entity_form_close_all_forms($element, $form_state);
   }
 
 }
