@@ -11,11 +11,12 @@ dependencies:
 config_devel:
   # General config.
   - search_api.server.database
-<<<<<<< 07cb66618b786a00c12b4edc9158da2e921ce37a
   - views.view.results
 
-=======
->>>>>>> PLAT-31 Create a minimun module for search and enable it by default
   # Articles
   - search_api.index.articles
   - core.entity_view_display.node.article.search_result
+
+  # Landing pages
+  - search_api.index.landing_pages
+  - core.entity_view_display.node.landing.search_result

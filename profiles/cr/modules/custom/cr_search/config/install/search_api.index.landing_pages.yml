@@ -6,8 +6,8 @@ dependencies:
   module:
     - search_api
     - node
-id: articles
-name: Articles
+id: landing_pages
+name: landing_pages
 description: ''
 read_only: false
 field_settings:
@@ -18,6 +18,11 @@ field_settings:
     type: string
     indexed_locked: true
     type_locked: true
+  processed:
+    label: 'Body » Processed text'
+    datasource_id: 'entity:node'
+    property_path: 'body:processed'
+    type: string
 processor_settings:
   language:
     plugin_id: language
@@ -34,7 +39,8 @@ datasource_settings:
     settings:
       default: '0'
       bundles:
-        article: article
+        landing: landing
+        article: '0'
         page: '0'
       languages:
         - en
