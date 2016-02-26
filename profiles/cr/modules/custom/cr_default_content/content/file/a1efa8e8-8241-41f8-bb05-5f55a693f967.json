@@ -1,16 +1,11 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/sr16-spl-local.sportrelief.com\/file\/10?_format=hal_json"
+            "href": "http:\/\/default\/file\/1?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
-        },
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/1?_format=hal_json"
-            }
-        ]
+        }
     },
     "uuid": [
         {
@@ -22,25 +17,6 @@
             "value": "en"
         }
     ],
-    "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/1?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "1636a28e-c5fa-4c30-8200-e583057dc92e"
-                    }
-                ]
-            }
-        ]
-    },
     "filename": [
         {
             "value": "SR16_fundraise_landing_promo_desktop_1.jpg"
@@ -48,7 +24,7 @@
     ],
     "uri": [
         {
-            "value": "public:\/\/2016-02\/SR16_fundraise_landing_promo_desktop_1.jpg"
+            "value": "public:\/\/2016-02\/SR16_fundraise_landing_promo_desktop_1_2.jpg"
         }
     ],
     "filemime": [
