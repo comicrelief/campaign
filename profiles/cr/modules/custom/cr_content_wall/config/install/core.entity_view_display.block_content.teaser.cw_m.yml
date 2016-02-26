@@ -8,11 +8,10 @@ dependencies:
     - field.field.block_content.teaser.field_teaser_image
     - field.field.block_content.teaser.field_teaser_link
     - field.field.block_content.teaser.field_teaser_title
-    - image.style.cw_medium_570x365
   module:
     - ds
-    - image
     - link
+    - responsive_image
     - text
 third_party_settings:
   ds:
@@ -22,12 +21,14 @@ third_party_settings:
       library: ''
       disable_css: false
       settings:
-        classes: {  }
-        wrappers: {  }
+        wrappers:
+          ds_content: div
         outer_wrapper: div
         attributes: ''
         link_attribute: ''
         link_custom: ''
+        classes:
+          layout_class: {  }
     regions:
       ds_content:
         - field_teaser_title
@@ -50,10 +51,10 @@ content:
     weight: 1
     label: hidden
     settings:
-      image_style: cw_medium_570x365
+      responsive_image_style: cw_landscape_image
       image_link: ''
     third_party_settings: {  }
-    type: image
+    type: responsive_image
   field_teaser_link:
     weight: 3
     label: hidden
