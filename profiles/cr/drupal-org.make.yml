@@ -26,6 +26,8 @@ projects:
       - "https://www.drupal.org/files/issues/the_given_alias_pattern-2655874-52.patch"
   search_api:
     version: 1.0-alpha12
+  search_api_page:
+    version: 1.0-alpha6
   token:
     version: 1.0-alpha2
   youtube:

@@ -6,7 +6,9 @@ core: '8.x'
 
 dependencies:
   - search_api_db
+  - search_api_pages
   - cr_article
+  - cr_landing_page
 
 config_devel:
   # General config.
