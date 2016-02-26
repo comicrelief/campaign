@@ -27,8 +27,8 @@
   <property name="app.password"           value="admin"                                            override="true" />
   <!-- Development variables. -->
   <property name="app.dev.modules"        value="config_devel default_content"   override="true" />
-  <property name="app.dev.config_modules" value="cr cr_article cr_content_wall cr_teaser cr_default_content"               override="true" />
 
+  <property name="app.dev.config_modules" value="cr cr_article cr_content_wall cr_teaser cr_landing_page cr_default_content"               override="true" />
   <!-- Overrides -->
   <!-- <property name="php.sniff.dirs"       value="agov/modules/custom agov/themes agov/src" override="true" /> -->
   <!-- <property name="php.sniff.exclusions" value="*/custom/pathauto/,*/custom/file_entity/,*/libraries*/,*/contrib/*,*/*.features.*,*/*.field_group.inc,*/*.layout.*,*/*.pages_default.*,*/*.panels_default.*,*/*strongarm.inc,*/*.views_default.inc" override="true" /> -->
