@@ -39,8 +39,12 @@ And,
 For prod run:
 
 	grunt build
-
+	
 Grunt will compile CSS, remove comments, remove sass source file, minify and concatenate js.
+
+You can also do this from the root of this repository using
+  
+	phing grunt:build
 
 ### Install and configure Drush 8
 
