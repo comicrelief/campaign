@@ -168,12 +168,7 @@
     closeTabContent: function () {
       // Close the tab, then re-render.
       var self = this;
-      this.$('.ipe-tabs-content')['slideUp']('fast', function () {
-        self.render();
-      });
-
-      // Remove our top-level body class.
-      $('body').removeClass('panels-ipe-tabs-open');
+      this.$('.ipe-tabs-content')['slideUp']('fast', function () { self.render(); });
     },
 
     /**
@@ -184,9 +179,6 @@
       this.render();
       this.$('.ipe-tabs-content').hide();
       this.$('.ipe-tabs-content')['slideDown']('fast');
-
-      // Add a top-level body class.
-      $('body').addClass('panels-ipe-tabs-open');
     }
 
   });

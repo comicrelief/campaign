@@ -1,44 +1,28 @@
 <project name="cr" default="build">
-
-  <!--         -->
-  <!-- Imports -->
-  <!-- ======= -->
-
-  <!-- <import file="vendor/previousnext/phing-phpqatools/build.xml" optional="true" /> -->
-
-  <!--            -->
+  <!-- example: https://github.com/previousnext/agov/blob/8.x-1.x/build.xml -->
   <!-- Properties -->
-  <!-- ========== -->
-
   <!-- Application -->
   <property name="app.uri"                value="http://campaign.dev"                                     override="true" />
   <property name="app.name"               value="CR Campaign"                                                override="true" />
   <property name="app.dir"                value="${project.basedir}"                              override="true" />
   <property name="app.profile.name"       value="cr"                                                override="true" />
-  <property name="app.profile.dir"        value="profiles/cr"                                       override="true" />
-  <property name="app.profile.theme"  value="${app.profile.dir}/themes/custom/campaign_base" override="true" />
+  <property name="app.profile.dir"        value="profiles/${app.profile.name}"                                       override="true" />
+  <property name="app.profile.theme"      value="${app.profile.dir}/themes/custom/campaign_base" override="true" />
   <property name="app.content.dir"        value="${app.profile.dir}/modules/custom/cr_default_content/content" override="true" />
-  <!-- <property name="app.profile.options"    value="agov_install_additional_options.install=1"           override="true" /> -->
-  <property name="app.profile.options"    value=""           override="true" />
   <property name="app.files.public"       value="sites/default/files"                                 override="true" />
   <property name="app.files.tmp"          value="sites/default/files/tmp"                             override="true" />
   <property name="app.files.private"      value="sites/default/private"                               override="true" />
   <!-- This should get overidden for secure builds. -->
   <property name="app.password"           value="admin"                                            override="true" />
   <!-- Development variables. -->
-  <property name="app.dev.modules"        value="config_devel default_content"   override="true" />
-
+  <property name="app.dev.modules"        value="devel default_content"   override="true" />
+  <property name="app.dev.config_modules" override="true" value="cr cr_article cr_default_content cr_landing_page" />
   <property name="app.dev.config_modules" value="cr cr_article cr_content_wall cr_teaser cr_landing_page cr_default_content"               override="true" />
   <!-- Overrides -->
-  <!-- <property name="php.sniff.dirs"       value="agov/modules/custom agov/themes agov/src" override="true" /> -->
-  <!-- <property name="php.sniff.exclusions" value="*/custom/pathauto/,*/custom/file_entity/,*/libraries*/,*/contrib/*,*/*.features.*,*/*.field_group.inc,*/*.layout.*,*/*.pages_default.*,*/*.panels_default.*,*/*strongarm.inc,*/*.views_default.inc" override="true" /> -->
   <exec command="which php" outputProperty="php.bin.php" />
 
   <!-- Drush -->
   <property name="drush.bin" value="${project.basedir}/bin/drush" override="true" />
-
-  <!-- Gulp -->
-  <!-- <property name="gulp.cmd" value="${project.basedir}/node_modules/.bin/gulp" override="true" /> -->
 
   <!-- Database -->
   <property name="db.querystring" value="mysql://root:@localhost/campaign" override="true" />
@@ -46,12 +30,9 @@
   <!-- These allow developers to override configuration on
        a per environment basis -->
   <property file="build.properties" override="true"/>
-
   <property name="drush.cmd" value="${drush.bin} -r ${app.dir}" override="true" />
 
-  <!--              -->
   <!-- Meta targets -->
-  <!-- ============ -->
 
   <target name="build"
           depends="install, grunt:build"
@@ -62,9 +43,6 @@
           depends="build, dev:modules"
           description="Build (or rebuild) the project with development dependencies.">
 
-      <!-- Fix up some permissions and then copy the local settings file into place. -->
-      <exec command="chmod 755 ${app.dir}/sites/default" />
-      <exec command="chmod 755 ${app.dir}/sites/default/settings.php;" />
       <exec command="cp ${app.dir}/sites/example.settings.local.php ${app.dir}/sites/default/settings.local.php;" />
 
       <!-- Ensure the local settings file is included from the main setting file. -->
@@ -101,25 +79,8 @@
           passthru="true"/>
   </target>
 
-  <target name="simpletest:init">
-    <exec dir="${app.dir}"
-          command="${drush.cmd} en simpletest -y"
-          passthru="true"
-          checkreturn="true" />
-  </target>
 
-  <target name="simpletest"
-          depends="simpletest:init">
-
-    <exec dir="${app.dir}"
-          command="${php.bin.php} ./core/scripts/run-tests.sh --concurrency 4 --php ${php.bin.php} --module ${app.profile.name} --url ${app.uri}/"
-          passthru="true"
-          checkreturn="true" />
-  </target>
-
-  <!--                  -->
   <!-- Standard targets -->
-  <!-- ================ -->
 
   <target name="prepare"
           description="Setup the project">
@@ -136,8 +97,6 @@
           passthru="true"
           checkreturn="true" />
 
-    <!-- Symlink the agov folder into the profiles folder. -->
-    <!-- <symlink target="${project.basedir}/agov" link="${app.dir}/${app.profile.dir}" /> -->
   </target>
 
   <target name="make"
@@ -163,15 +122,11 @@
           description="Install CR with standard configuration.">
     <!-- Install the site -->
     <exec dir="${app.dir}"
-          command="${drush.cmd} site-install ${app.profile.name} -y --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring} ${app.profile.options}"
+          command="${drush.cmd} site-install ${app.profile.name} -y --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring}"
           logoutput="true"
           passthru="true" />
     <exec command="chmod 755 ${app.dir}/sites/default" />
     <exec command="chmod 755 ${app.dir}/sites/default/settings.php" />
-  </target>
-
-  <target name="styleguide:link" description="Link the style guide to make it publicly available.">
-    <symlink link="${app.dir}/${app.profile.dir}/styleguide" target="${project.basedir}/styleguide" />
   </target>
 
   <target name="login" description="Generate a one-time login link">
@@ -189,9 +144,7 @@
           checkreturn="true" />
   </target>
 
-  <!--                    -->
   <!-- Development tagets -->
-  <!-- ================   -->
 
   <target name="dev:modules"
           description="Install the development modules.">

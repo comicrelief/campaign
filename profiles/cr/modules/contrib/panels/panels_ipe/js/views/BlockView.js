@@ -16,7 +16,7 @@
      */
     template_actions: _.template(
       '<div class="ipe-actions-block ipe-actions" data-block-action-id="<%- uuid %>">' +
-      '  <h5>' + Drupal.t('Block: <%- label %>') + '</h5>' +
+      '  <h5>Block: <%- label %></h5>' +
       '  <ul class="ipe-action-list">' +
       '    <li data-action-id="remove">' +
       '      <a><span class="ipe-icon ipe-icon-remove"></span></a>' +
@@ -28,7 +28,7 @@
       '      <a><span class="ipe-icon ipe-icon-down"></span></a>' +
       '    </li>' +
       '    <li data-action-id="move">' +
-      '      <select><option>' + Drupal.t('Move') + '</option></select>' +
+      '      <select><option>Move</option></select>' +
       '    </li>' +
       '    <li data-action-id="configure">' +
       '      <a><span class="ipe-icon ipe-icon-configure"></span></a>' +
@@ -62,6 +62,7 @@
         this.model.set({html: this.$el.prop('outerHTML')});
       }
       this.listenTo(this.model, 'reset', this.render);
+      this.listenTo(this.model, 'change:active', this.render);
     },
 
     /**
@@ -74,6 +75,9 @@
       // Replace our current HTML.
       this.$el.replaceWith(this.model.get('html'));
       this.setElement("[data-block-id='" + this.model.get('uuid') + "']");
+
+      // Attach any Drupal behaviors.
+      Drupal.attachBehaviors(this.el);
 
       // We modify our content if the IPE is active.
       if (this.model.get('active')) {
@@ -107,27 +111,6 @@
         });
       }
 
-      return this;
-    },
-
-    /**
-     * Overrides the default remove function to make a copy of our current HTML
-     * into the Model for future rendering. This is required as modules like
-     * Quickedit modify Block HTML without our knowledge.
-     *
-     * @returns {Drupal.panels_ipe.BlockView}
-     */
-    remove: function() {
-      // Remove known augmentations to HTML so that they do not persist.
-      this.$('.ipe-actions-block').remove();
-      this.$el.removeClass('ipe-highlight active');
-
-      // Update our Block model HTML based on our current visual state.
-      this.model.set({html: this.$el.prop('outerHTML')});
-
-      // Call the normal Backbow.view.remove() routines.
-      this._removeElement();
-      this.stopListening();
       return this;
     }
 
