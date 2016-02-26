@@ -45,7 +45,7 @@ content:
     type: text_trimmed
     weight: 2
     settings:
-      trim_length: 120
+      trim_length: 140
     third_party_settings: {  }
   field_teaser_image:
     weight: 1
@@ -59,11 +59,11 @@ content:
     weight: 3
     label: hidden
     settings:
-      trim_length: 80
+      trim_length: 30
       url_only: false
       url_plain: false
-      rel: ''
-      target: ''
+      rel: '0'
+      target: '0'
     third_party_settings: {  }
     type: link
   field_teaser_title:
