@@ -11,5 +11,4 @@ config_devel:
   - field.storage.node.field_cta
   - field.field.node.landing.field_cta
   - field.field.node.landing.field_image
-  - field.field.node.landing.panelize
-
+  - field.field.node.landing.panelizer
