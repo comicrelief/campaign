@@ -1,0 +1,5 @@
+administer panelizer:
+  title: 'Administer Panelizer'
+  description: 'Fully administer panelizer and all panelizer settings.'
+permission_callbacks:
+  - panelizer:getPermissions

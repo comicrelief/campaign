@@ -52,6 +52,20 @@ Thumbs.db
 ##########
 .sass-cache
 
+# Minified and Concat JS #
+profiles/cr/themes/custom/campaign_base/js
+
+# Compiled CSS and CSS MAP #
+profiles/cr/themes/custom/campaign_base/css/*.css
+profiles/cr/themes/custom/campaign_base/css/*.css.map
+
+# node_modules #
+##########
+profiles/cr/themes/custom/campaign_base/node_modules
+
+# Temp agov theme #
+profiles/cr/themes/custom/agov_base
+
 # Things in the core directory that Drupal 8 commits in the repository.
 !core/**/*.gz
 
@@ -60,3 +74,6 @@ build.properties
 PATCHES.txt
 
 profiles/cr/tests/behat/vendor
+profiles/cr/tests/behat/behat.yml
+
+.idea

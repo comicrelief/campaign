@@ -16,7 +16,7 @@
      */
     template_region_actions: _.template(
       '<div class="ipe-actions" data-region-action-id="<%- name %>">' +
-      '  <h5>Region: <%- name %></h5>' +
+      '  <h5>' + Drupal.t('Region: <%- name %>') + '</h5>' +
       '  <ul class="ipe-action-list"></ul>' +
       '</div>'
     ),
@@ -216,7 +216,7 @@
      *   The event object.
      */
     hideBlockRegionList: function (e) {
-      $(e.currentTarget).html('<option>Move</option>');
+      $(e.currentTarget).html('<option>' + Drupal.t('Move') + '</option>');
     },
 
     /**
@@ -273,6 +273,37 @@
     },
 
     /**
+     * Saves the current state of the layout to the tempstore.
+     */
+    saveToTempStore: function () {
+      var model = this.model;
+      var urlRoot = Drupal.panels_ipe.urlRoot(drupalSettings);
+      var options = {url: urlRoot + '/layouts/' + model.get('id') + '/tempstore'};
+
+      Backbone.sync('update', model, options);
+
+      Drupal.panels_ipe.app.set('unsaved', true);
+    },
+
+    /**
+     * Removes the block on the server via an AJAX call.
+     *
+     * @param {string} block_uuid
+     *   The UUID/ID of a BlockModel.
+     */
+    removeServerSideBlock: function (block_uuid) {
+      var urlRoot = Drupal.panels_ipe.urlRoot(drupalSettings);
+      $.ajax({
+        url: urlRoot + '/layouts/' + this.model.get('id') + '/remove_block',
+        method: 'DELETE',
+        data: JSON.stringify(block_uuid),
+        contentType: "application/json; charset=UTF-8"
+      });
+
+      Drupal.panels_ipe.app.set('unsaved', true);
+    },
+
+    /**
      * Moves a block up or down in its RegionModel's BlockCollection.
      *
      * @param {Object} e
@@ -299,8 +330,7 @@
       // Highlight the block.
       this.$('[data-block-id="' + id + '"]').addClass('ipe-highlight');
 
-      // Mark that we have unsaved changes in our App.
-      Drupal.panels_ipe.app.set('unsaved', true);
+      this.saveToTempStore();
     },
 
     /**
@@ -320,14 +350,10 @@
       // Remove the block.
       region.get('blockCollection').remove(id);
 
-      // Add the UUID to an array our backend will later consume.
-      this.model.get('deletedBlocks').push(id);
-
       // Re-render ourselves.
       this.render();
 
-      // Mark that we have unsaved changes in our App.
-      Drupal.panels_ipe.app.set('unsaved', true);
+      this.removeServerSideBlock(id);
     },
 
     /**
@@ -374,16 +400,18 @@
       var new_region = this.model.get('regionCollection').get(new_region_name);
       new_region.get('blockCollection').add(block, {at: index, silent: true});
 
-      // Re-render ourselves.
-      // We do this twice as jQuery UI mucks with the DOM as it lets go of a
-      // cloned element. Typically we would only ever need to re-render once.
-      this.render().render();
+      // Re-render after the current execution cycle, to account for DOM editing
+      // that jQuery.ui is going to do on this run. Modules like Contextual do
+      // something similar to ensure rendering order is preserved.
+      var self = this;
+      window.setTimeout(function () {
+        self.render();
 
-      // Highlight the block.
-      this.$('[data-block-id="' + id + '"]').addClass('ipe-highlight');
+        // Highlight the block.
+        self.$('[data-block-id="' + id + '"]').addClass('ipe-highlight');
+      });
 
-      // Mark that we have unsaved changes in our App.
-      Drupal.panels_ipe.app.set('unsaved', true);
+      this.saveToTempStore();
     },
 
     /**

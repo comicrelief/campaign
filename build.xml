@@ -16,6 +16,7 @@
   <property name="app.dir"                value="${project.basedir}"                              override="true" />
   <property name="app.profile.name"       value="cr"                                                override="true" />
   <property name="app.profile.dir"        value="profiles/cr"                                       override="true" />
+  <property name="app.profile.theme"  value="${app.profile.dir}/themes/custom/campaign_base" override="true" />
   <property name="app.content.dir"        value="${app.profile.dir}/modules/custom/cr_default_content/content" override="true" />
   <!-- <property name="app.profile.options"    value="agov_install_additional_options.install=1"           override="true" /> -->
   <property name="app.profile.options"    value=""           override="true" />
@@ -26,7 +27,7 @@
   <property name="app.password"           value="admin"                                            override="true" />
   <!-- Development variables. -->
   <property name="app.dev.modules"        value="config_devel default_content"   override="true" />
-  <property name="app.dev.config_modules" value="cr cr_article cr_default_content"               override="true" />
+  <property name="app.dev.config_modules" value="cr cr_article cr_default_content cr_landing_page"               override="true" />
 
   <!-- Overrides -->
   <!-- <property name="php.sniff.dirs"       value="agov/modules/custom agov/themes agov/src" override="true" /> -->
@@ -53,7 +54,7 @@
   <!-- ============ -->
 
   <target name="build"
-          depends="install"
+          depends="install, grunt:build"
           description="Build (or rebuild) the project.">
   </target>
 
@@ -73,10 +74,26 @@
 
   </target>
 
-<!--  <target name="test"
-          depends="phpcs, simpletest"
-          description="Run the test suite">
-  </target> -->
+  <target name="test"
+          depends="prepare-test" 
+          description="Run behat tests">
+    <exec dir="${app.dir}/${app.profile.dir}/tests/behat"
+      command="vendor/bin/behat" 
+      passthru="true"
+      checkreturn="true" />
+  </target>
+
+  <target name="prepare-test"
+          description="Prepare to tun behat tests">
+    <copy file="${app.dir}/${app.profile.dir}/tests/behat/behat.yml.phing" tofile="${app.dir}/${app.profile.dir}/tests/behat/behat.yml" overwrite="true">
+      <filterchain>
+          <replacetokens begintoken="%%" endtoken="%%">
+              <token key="DRUPAL_TI_DRUPAL_DIR" value="${app.dir}" />
+              <token key="BASE_URL" value="${app.uri}" />
+          </replacetokens>
+      </filterchain>
+    </copy>
+  </target>
 
   <!-- Drush Targets -->
   <target name="cache:clear">
@@ -165,9 +182,9 @@
           passthru="true" />
   </target>
 
-  <target name="gulp:build" description="Generate all compiled Sass and style guide resources.">
-    <exec dir="${app.dir}"
-          command="${gulp.cmd} build"
+  <target name="grunt:build" description="Generate all compiled Sass and JS files.">
+    <exec dir="${app.profile.theme}"
+          command="grunt build"
           logoutput="true"
           passthru="true"
           checkreturn="true" />

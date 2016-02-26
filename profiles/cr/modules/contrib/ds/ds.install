@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * Display Suite install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function ds_install() {
+  module_set_weight('ds', 1);
+}
