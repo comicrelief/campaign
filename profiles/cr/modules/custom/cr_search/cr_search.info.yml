@@ -11,7 +11,6 @@ dependencies:
 config_devel:
   # General config.
   - search_api.server.database
-  - views.view.results
 
   # Articles
   - search_api.index.articles
