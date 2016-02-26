@@ -54,9 +54,10 @@ If you want to use drush 6 again `composer global require drush/drush 6.*`
 
 You first will need to install to install [Phing](www.phing.info), which is a PHP build tool that automates tasks such as re-installing the site, running migrate procedures, tests etc.
 
-Download Phing from http://www.phing.info/trac/wiki/Users/Download and follow installation instructions. The preferred way is to install this using PEAR.
+Download Phing from http://www.phing.info/trac/wiki/Users/Download. You can install this using
 
-Or use `composer global require phing/phing` [guide](https://coderwall.com/p/ma_cuq/using-composer-to-manage-global-packages)
+- composer, `composer global require phing/phing` [See installation guide](https://coderwall.com/p/ma_cuq/using-composer-to-manage-global-packages)
+- PEAR, follow instructions at http://www.phing.info/trac/wiki/Users/Download
 
 ### Configure Phing
 
