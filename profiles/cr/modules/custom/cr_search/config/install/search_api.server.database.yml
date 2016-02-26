@@ -9,12 +9,8 @@ description: ''
 backend: search_api_db
 backend_config:
   database: 'default:default'
-<<<<<<< 43cc7d16f83d55d73c3019984be39a1ae8874db3
   database_text: ''
   min_chars: 3
-=======
-  min_chars: 2
->>>>>>> PLAT-31 Create a minimun module for search and enable it by default
   autocomplete:
     suggest_suffix: true
     suggest_words: true
