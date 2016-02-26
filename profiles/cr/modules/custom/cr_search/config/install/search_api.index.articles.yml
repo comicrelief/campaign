@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - search_api.server.database
+    - field.field.node.article.field_tags
   module:
     - search_api
     - node
@@ -18,6 +19,41 @@ field_settings:
     type: string
     indexed_locked: true
     type_locked: true
+  type:
+    label: Type
+    datasource_id: 'entity:node'
+    property_path: type
+    type: string
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: string
+  processed:
+    label: 'Body » Processed text'
+    datasource_id: 'entity:node'
+    property_path: 'body:processed'
+    type: string
+  alt:
+    label: 'Image » Alternative text'
+    datasource_id: 'entity:node'
+    property_path: 'field_image:alt'
+    type: string
+  title_1:
+    label: 'Image » Title'
+    datasource_id: 'entity:node'
+    property_path: 'field_image:title'
+    type: string
+  processed_1:
+    label: 'Intro » Processed text'
+    datasource_id: 'entity:node'
+    property_path: 'field_intro:processed'
+    type: string
+  name:
+    label: 'Tags » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_tags:entity:name'
+    type: string
 processor_settings:
   language:
     plugin_id: language
