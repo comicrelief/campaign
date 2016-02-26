@@ -9,11 +9,15 @@ dependencies:
     - field.field.node.article.field_publish_date
     - field.field.node.article.field_tags
     - field.field.node.article.field_youtube_url
-    - image.style.large
     - node.type.article
   module:
-    - image
+    - panelizer
+    - responsive_image
     - user
+third_party_settings:
+  panelizer:
+    enable: false
+    custom: false
 id: node.article.teaser
 targetEntityType: node
 bundle: article
@@ -23,10 +27,10 @@ content:
     weight: 0
     label: hidden
     settings:
-      image_style: large
+      responsive_image_style: hero_image_full_node
       image_link: ''
     third_party_settings: {  }
-    type: image
+    type: responsive_image
   links:
     weight: 1
     settings: {  }
