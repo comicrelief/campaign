@@ -70,7 +70,7 @@ dependencies:
 
   # Default content; will be moved out of the profile at some point
   # This is now moved out and enabled as part of phing install, or manually on Travis
-  # Can't be enabled in one go, since it conflicts on panelizer fields somehow..
+  # Can't be enabled in one go, since it conflicts on panelizer fields somehow.
   # - cr_default_content
 
 themes:
