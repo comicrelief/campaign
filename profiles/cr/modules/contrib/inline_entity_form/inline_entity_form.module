@@ -12,6 +12,8 @@ use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
 use Drupal\inline_entity_form\Form\EntityInlineForm;
+use Drupal\inline_entity_form\Element\InlineEntityForm;
+use Drupal\inline_entity_form\Plugin\Field\FieldWidget\InlineEntityFormComplex;
 
 /**
  * Implements hook_entity_info_alter().
@@ -84,11 +86,8 @@ function inline_entity_form_reference_form($handler, $reference_form, &$form_sta
       'callback' => 'inline_entity_form_get_element',
       'wrapper' => 'inline-entity-form-' . $reference_form['#ief_id'],
     ),
-    '#submit' => array(
-      ['\Drupal\inline_entity_form\Element\InlineEntityForm', 'triggerIefSubmit'],
-      'inline_entity_form_close_form',
-    ),
   );
+  InlineEntityFormComplex::addSubmitCallbacks($reference_form['actions']['ief_reference_save']);
   $reference_form['actions']['ief_reference_cancel'] = array(
     '#type' => 'submit',
     '#value' => t('Cancel'),
@@ -98,7 +97,7 @@ function inline_entity_form_reference_form($handler, $reference_form, &$form_sta
       'callback' => 'inline_entity_form_get_element',
       'wrapper' => 'inline-entity-form-' . $reference_form['#ief_id'],
     ),
-    '#submit' => array('inline_entity_form_close_form'),
+    '#submit' => array(['\Drupal\inline_entity_form\Element\InlineEntityForm', 'closeForm']),
   );
 
   $reference_form['#element_validate'][] = 'inline_entity_form_reference_form_validate';
@@ -126,11 +125,11 @@ function inline_entity_form_reference_form_validate(&$reference_form, FormStateI
   $instance = $form_state->get(['inline_entity_form', $ief_id, 'instance']);
   $target_type = $instance->getFieldStorageDefinition()->getSetting('target_type');
   /** @var \Drupal\inline_entity_form\InlineFormInterface $handler */
-  $handler = \Drupal::entityManager()->getHandler($target_type, 'inline_form');
+  $handler = \Drupal::entityTypeManager()->getHandler($target_type, 'inline_form');
   $labels = $handler->labels();
 
   $form_values = NestedArray::getValue($form_state->getValues(), $reference_form['#parents']);
-  $attach_entity = entity_load($entity_type, $form_values['entity_id']);
+  $attach_entity = \Drupal::entityTypeManager()->getStorage($entity_type)->load($form_values['entity_id']);
 
   // Check to see if entity is already referenced by current IEF widget
   if (!empty($attach_entity)) {
@@ -161,7 +160,7 @@ function inline_entity_form_reference_form_submit($reference_form, FormStateInte
   $entity_type = $reference_form['#entity_type'];
 
   $form_values = NestedArray::getValue($form_state->getValues(), $reference_form['#parents']);
-  $attach_entity = entity_load($entity_type, $form_values['entity_id']);
+  $attach_entity = \Drupal::entityTypeManager()->getStorage($entity_type)->load($form_values['entity_id']);
 
   // Determine the correct weight of the new element.
   $weight = 0;
@@ -208,24 +207,6 @@ function inline_entity_form_open_form($form, FormStateInterface $form_state) {
 }
 
 /**
- * Button #submit callback: Closes a form in the IEF widget.
- *
- * @param $form
- *   The complete parent form.
- * @param $form_state
- *   The form state of the parent form.
- *
- * @see inline_entity_form_open_form().
- */
-function inline_entity_form_close_form($form, FormStateInterface $form_state) {
-  $element = inline_entity_form_get_element($form, $form_state);
-  $ief_id = $element['#ief_id'];
-
-  $form_state->setRebuild();
-  $form_state->set(['inline_entity_form', $ief_id, 'form'], NULL);
-}
-
-/**
  * Button #submit callback: Cleans up form state for a closed entity form.
  *
  * @param $form
@@ -258,16 +239,6 @@ function inline_entity_form_open_row_form($form, FormStateInterface $form_state)
   $form_state->set(['inline_entity_form', $ief_id, 'entities', $delta, 'form'], $form_state->getTriggeringElement()['#ief_row_form']);
 }
 
-/**
- * Button #submit callback:  Closes all open child forms in the IEF widget.
- *
- * Used to ensure that forms in nested IEF widgets are properly closed
- * when a parent IEF's form gets submitted or cancelled.
- */
-function inline_entity_form_close_child_forms($form, &$form_state) {
-  $element = inline_entity_form_get_element($form, $form_state);
-  inline_entity_form_close_all_forms($element, $form_state);
-}
 
 /**
  * Closes all open IEF forms.
@@ -399,7 +370,7 @@ function theme_inline_entity_form_entity_table($variables) {
     foreach ($fields as $field_name => $field) {
       $data = '';
       if ($field['type'] == 'label') {
-        $data = $entity->label();
+        $data = $variables['form'][$key]['#label'];
       }
       elseif ($field['type'] == 'field' && $entity->hasField($field_name)) {
         $display_options = array('label' => 'hidden');
@@ -529,4 +500,15 @@ function inline_entity_form_pre_render_add_fieldset_markup($form) {
   }
 
   return $form;
+}
+
+
+/**
+ * Implements hook_form_alter().
+ */
+function inline_entity_form_form_alter(&$form, FormStateInterface &$form_state, $form_id) {
+  if ($form_state->get('inline_entity_form')) {
+    InlineEntityForm::attachMainSubmit($form);
+  }
+
 }

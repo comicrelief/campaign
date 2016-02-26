@@ -1,0 +1,14 @@
+name: cr_landing_page
+type: module
+description: Landing page content type
+core: 8.x
+package: Comic Relief
+config_devel:
+  - node.type.landing
+  - core.entity_form_display.node.landing.default
+  - core.entity_view_display.node.landing.default
+  - field.field.node.landing.body
+  - field.storage.node.field_cta
+  - field.field.node.landing.field_cta
+  - field.field.node.landing.field_image
+  

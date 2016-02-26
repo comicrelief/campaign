@@ -1,0 +1,74 @@
+views.row.ds_entity:*:
+  type: ds_views_entity_row
+  label: 'Display suite entity options'
+
+ds_views_entity_row:
+  type: views_entity_row
+  mapping:
+    alternating_fieldset:
+      type: mapping
+      label: 'Alternating settings'
+      mapping:
+        alternating:
+          type: boolean
+          label: 'Alternating'
+        allpages:
+          type: boolean
+          label: 'On every page'
+        item_0:
+          type: string
+          label: 'Display mode of type 1'
+        item_1:
+          type: string
+          label: 'Display mode of type 2'
+        item_2:
+          type: string
+          label: 'Display mode of type 3'
+        item_3:
+          type: string
+          label: 'Display mode of type 4'
+        item_4:
+          type: string
+          label: 'Display mode of type 5'
+        item_5:
+          type: string
+          label: 'Display mode of type 6'
+        item_6:
+          type: string
+          label: 'Display mode of type 7'
+        item_7:
+          type: string
+          label: 'Display mode of type 8'
+        item_8:
+          type: string
+          label: 'Display mode of type 9'
+        item_9:
+          type: string
+          label: 'Display mode of type 10'
+    grouping_fieldset:
+      type: mapping
+      label: 'Grouping settings'
+      mapping:
+        group:
+          type: boolean
+          label: 'Grouping enabled'
+        group_field:
+          type: string
+          label: 'Grouping based on a field'
+        group_field_function:
+          type: string
+          label: 'Process function for grouping field'
+    advanced_fieldset:
+      type: mapping
+      label: 'Advanced settings'
+      mapping:
+        advanced:
+          type: boolean
+          label: 'Advanced mode enabled'
+    switch_fieldset:
+      type: mapping
+      label: 'Use view mode of display settings'
+      mapping:
+        switch:
+          type: boolean
+          label: 'Use the alternative view mode selected in the display settings tab.'

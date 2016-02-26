@@ -1,0 +1,23 @@
+default:
+  suites:
+    default:
+      contexts:
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\DrushContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - DrupalCRFeatureContext
+  extensions:
+    Behat\MinkExtension:
+      goutte: ~
+      selenium2: ~
+      base_url: "%%BASE_URL%%"
+    Drupal\DrupalExtension:
+      api_driver: "drupal"
+      drush_driver: "drush"
+      drupal:
+        drupal_root: "%%DRUPAL_TI_DRUPAL_DIR%%"
+      drush:
+        root: "%%DRUPAL_TI_DRUPAL_DIR%%"
+      region_map:
+        content: ".layout-content"

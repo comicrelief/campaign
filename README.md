@@ -4,17 +4,64 @@ A work in progress. See http://confluence.comicrelief.com/display/RND17/Campaign
 
 ## How to set this up locally
 
+## FrontEnd set up
+
+###Install npm. https://docs.npmjs.com/
+
+In the theme directory run:
+
+	npm install
+
+###Install bundler. http://bundler.io/
+
+In the theme directory run:
+
+	bundle install
+
+Bundler will install all gems needed for your project.
+
+###Grunt dev / build
+
+For dev run:
+
+	grunt default
+
+Grunt will watch all SASS / TWIG / JS / Images for changes
+
+And,
+
+- Compile CSS
+- jshint JS
+- Generate compass image sprites
+- Add source sass map to help inspect sass files in browser inspector
+- Reload your browser (you need livereload chrome extension)
+
+For prod run:
+
+	grunt build
+	
+Grunt will compile CSS, remove comments, remove sass source file, minify and concatenate js.
+
+You can also do this from the root of this repository using
+  
+	phing grunt:build
+
 ### Install and configure Drush 8
 
 Drush 8 is required for Drupal 8. Install instructions can be found [here](http://x-team.com/2015/02/install-drush-8-drupal-8-without-throwing-away-drush-6-7/).
+
+Or use `composer global require drush/drush` and you'll use the last version.
+If you want to use drush 6 again `composer global require drush/drush 6.*`
+
 
 ### Install Phing
 
 You first will need to install to install [Phing](www.phing.info), which is a PHP build tool that automates tasks such as re-installing the site, running migrate procedures, tests etc.
 
-Download Phing from http://www.phing.info/trac/wiki/Users/Download and follow installation instructions. The preferred way is to install this using PEAR.
+Download Phing from http://www.phing.info/trac/wiki/Users/Download. You can install this using
 
-Or use `composer global require phing/phing` [guide](https://coderwall.com/p/ma_cuq/using-composer-to-manage-global-packages)
+- composer, `composer global require phing/phing` [See installation guide](https://coderwall.com/p/ma_cuq/using-composer-to-manage-global-packages)
+- PEAR, follow instructions at http://www.phing.info/trac/wiki/Users/Download
 
 ### Configure Phing
 
@@ -35,6 +82,12 @@ And change the database connection details as well.
 To install the site, now run
 
 	phing build
+
+Note: If you see the following exception on `phing build`:
+
+`Exception 'Symfony\Component\DependencyInjection\Exception\InvalidArgumentException' with message 'The service definition "renderer" does not exist.`
+
+...change the host value in settings.local.php from `'host' => 'localhost',` to `'host' => '127.0.0.1',`.
 
 To login to the site, for example run
 
@@ -59,3 +112,19 @@ Now you can push to Pantheon to deploy this
 https://dashboard.pantheon.io/sites/f9291f1f-3819-4964-9c5b-c9f7d5500d28#dev/code
 
 How to deal with [settings.php on Pantheon](https://pantheon.io/docs/articles/drupal/configuring-settings-php/)
+
+## Skip Travis CI builds
+
+Include the following within any commit message `[ci skip]`
+
+# Debug info
+
+## Ubuntu grunt:build error
+```
+Property ${app.profile.theme} => profiles/cr/themes/custom/campaign_base
+     [exec] Executing command: grunt build
+/usr/bin/env: node: No such file or directory
+```
+Fix: `sudo ln -fs /usr/bin/nodejs /usr/local/bin/node`
+
+Note: Nodejs location may differ.

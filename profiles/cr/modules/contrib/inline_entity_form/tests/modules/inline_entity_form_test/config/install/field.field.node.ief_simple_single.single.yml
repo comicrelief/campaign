@@ -4,9 +4,9 @@ dependencies:
   config:
     - field.storage.node.single
     - node.type.ief_simple_single
+    - node.type.ief_test_custom
   module:
     - inline_entity_form_test
-    - entity_reference
   enforced:
     module:
       - inline_entity_form_test
