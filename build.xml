@@ -79,14 +79,6 @@
           passthru="true"/>
   </target>
 
-  <target name="simpletest"
-          depends="simpletest:init">
-
-    <exec dir="${app.dir}"
-          command="${php.bin.php} ./core/scripts/run-tests.sh --concurrency 4 --php ${php.bin.php} --module ${app.profile.name} --url ${app.uri}/"
-          passthru="true"
-          checkreturn="true" />
-  </target>
 
   <!-- Standard targets -->
 
@@ -130,7 +122,7 @@
           description="Install CR with standard configuration.">
     <!-- Install the site -->
     <exec dir="${app.dir}"
-          command="${drush.cmd} site-install ${app.profile.name} -y --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring} ${app.profile.options}"
+          command="${drush.cmd} site-install ${app.profile.name} -y --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring}"
           logoutput="true"
           passthru="true" />
     <!-- Fix up permissions -->
