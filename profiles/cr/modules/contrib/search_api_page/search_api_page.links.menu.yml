@@ -1,0 +1,6 @@
+entity.search_api_page.collection:
+  title: 'Search pages'
+  route_name: entity.search_api_page.collection
+  description: 'Create and configure Search pages.'
+  parent: system.admin_config_search
+

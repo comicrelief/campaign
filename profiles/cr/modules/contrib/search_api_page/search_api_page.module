@@ -1,0 +1,133 @@
+<?php
+
+/**
+ * @file
+ * Search API pages file.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\user\EntityOwnerInterface;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Since the exposed form is a GET form, we don't want it to send the form
+ * tokens. However, you cannot make this happen in the form builder function
+ * itself, because the tokens are added to the form after the builder function
+ * is called. So, we have to do it in a form_alter.
+ *
+ * @see \Drupal\search_api_page\Form\SearchApiPageBlockForm
+ */
+function search_api_page_form_search_api_page_block_form_alter(&$form, FormStateInterface $form_state) {
+  if ($form['#method'] == 'get') {
+    $form['form_build_id']['#access'] = FALSE;
+    $form['form_token']['#access'] = FALSE;
+    $form['form_id']['#access'] = FALSE;
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function search_api_page_form_config_translation_add_form_alter(&$form, FormStateInterface $form_state) {
+  search_api_page_config_translation_change_form($form, $form_state);
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function search_api_page_form_config_translation_edit_form_alter(&$form, FormStateInterface $form_state) {
+  search_api_page_config_translation_change_form($form, $form_state);
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function search_api_page_form_config_translation_delete_form_alter(&$form, FormStateInterface $form_state) {
+  search_api_page_config_translation_change_form($form, $form_state);
+}
+
+/**
+ * Alter the config translation form.
+ *
+ * This will add a submit handler when we're adding, editing or deleting a
+ * translation for a search api page to rebuild the route because the path can
+ * be translated per language.
+ *
+ * @param array $form
+ *   The current form.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The current form state.
+ */
+function search_api_page_config_translation_change_form(&$form, FormStateInterface $form_state) {
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  $routes = array(
+    'config_translation.item.add.entity.search_api_page.edit_form',
+    'config_translation.item.edit.entity.search_api_page.edit_form',
+    'config_translation.item.delete.entity.search_api_page.edit_form',
+  );
+  if (in_array($route_name, $routes)) {
+    $form['#submit'][] = 'search_api_page_config_translation_change_form_submit';
+  }
+}
+
+/**
+ * Submit handler to rebuild the route after translating a search api page.
+ *
+ * @see search_api_page_config_translation_change_form()
+ */
+function search_api_page_config_translation_change_form_submit($form, FormStateInterface $form_state) {
+  \Drupal::service('router.builder')->rebuild();
+}
+
+/**
+ * Implements hook_theme().
+ */
+function search_api_page_theme() {
+  return array(
+    'search_api_page' => array(
+      'variables' => array(
+        'form' => NULL,
+        'search_title' => NULL,
+        'no_of_results' => NULL,
+        'no_results_found' => NULL,
+        'search_help' => NULL,
+        'results' => NULL,
+        'pager' => NULL,
+      ),
+    ),
+    'search_api_page_result' => array(
+      'variables' => array(
+        'item' => NULL,
+        'entity' => NULL,
+      ),
+    ),
+  );
+}
+
+/**
+ * Process variables for search-api-page-result.tpl.php.
+ */
+function template_preprocess_search_api_page_result(&$variables) {
+  /* @var $entity \Drupal\Core\Entity\EntityInterface */
+  $entity = $variables['entity'];
+  /* @var $item \Drupal\search_api\Item\ItemInterface */
+  $item = $variables['item'];
+
+  $variables['snippet'] = $item->getExcerpt();
+  $variables['url'] = $entity->url();
+  $variables['title'] = $entity->label();
+
+  $info = array();
+  if ($entity instanceof EntityOwnerInterface) {
+    $info['user'] = $entity->getOwner()->label();
+  }
+  if (isset($entity->created)) {
+    $info['date'] = \Drupal::service('date.formatter')->format($entity->created->value, 'short');
+  }
+
+  // Provide separated and grouped meta information..
+  $variables['info_split'] = $info;
+  $variables['info'] = implode(' - ', $info);
+
+}

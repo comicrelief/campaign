@@ -1,0 +1,43 @@
+search_api_page.search_api_page.*:
+  type: config_entity
+  label: 'Search page config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    path:
+      type: label
+      label: 'Path'
+    clean_url:
+      type: boolean
+      label: 'Use clean URL'
+    show_all_when_no_keys:
+      type: boolean
+      label: 'Show all results when no search is performed'
+    index:
+      type: string
+      label: 'Search index'
+    limit:
+      type: integer
+      label: 'Limit'
+    searched_fields:
+      type: sequence
+      label: 'Searched fields'
+      sequence:
+        type: string
+    style:
+      type: string
+      label: 'Style'
+    view_mode_configuration:
+      type: sequence
+      label: 'View mode configuration'
+      sequence:
+        type: string
+    show_search_form:
+      type: boolean
+      label: 'Show search form'
+    uuid:
+      type: string
