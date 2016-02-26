@@ -1,0 +1,68 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.content_wall
+  content:
+    - 'block_content:cw_row_block:0b9042ac-8196-4cda-9604-4eae9b325279'
+    - 'block_content:cw_row_block:993b8a81-19f0-42b9-bb05-5c55b007a698'
+    - 'block_content:cw_row_block:99463377-62a2-4099-8d02-2ff2876038b5'
+  module:
+    - block_content
+    - panels
+id: content_wall
+label: 'Content wall'
+variant: panels_variant
+variant_settings:
+  blocks:
+    baa62246-71a2-4f0f-9d33-518538393c95:
+      id: 'block_content:0b9042ac-8196-4cda-9604-4eae9b325279'
+      label: 'Row 2'
+      provider: block_content
+      label_display: visible
+      status: true
+      info: ''
+      view_mode: cw_1col_l
+      region: middle
+      weight: -8
+      uuid: baa62246-71a2-4f0f-9d33-518538393c95
+      context_mapping: {  }
+    2ba46d1a-321b-479d-9325-3794ad35a9fb:
+      id: 'block_content:993b8a81-19f0-42b9-bb05-5c55b007a698'
+      label: 'Row 1'
+      provider: block_content
+      label_display: visible
+      status: true
+      info: ''
+      view_mode: cw_3col_s_s_s
+      region: middle
+      weight: -10
+      uuid: 2ba46d1a-321b-479d-9325-3794ad35a9fb
+      context_mapping: {  }
+    031ec068-38fc-4eee-ab3e-62f7ae628038:
+      id: 'block_content:99463377-62a2-4099-8d02-2ff2876038b5'
+      label: 'Row 3'
+      provider: block_content
+      label_display: visible
+      status: true
+      info: ''
+      view_mode: cw_2col_m_m
+      region: middle
+      weight: -9
+      uuid: 031ec068-38fc-4eee-ab3e-62f7ae628038
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 34e887c7-7ffb-404b-a900-e3f6998ad51a
+  label: null
+  weight: 0
+  layout: onecol
+  layout_settings: {  }
+  page_title: 'Content Wall'
+  storage_type: page_manager
+  storage_id: content_wall
+  builder: standard
+page: content_wall
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

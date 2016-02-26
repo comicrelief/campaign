@@ -1,0 +1,98 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/block\/1?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/block_content\/teaser"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/teaser\/field_teaser_image": [
+            {
+                "href": "http:\/\/default\/file\/18?_format=hal_json"
+            }
+        ]
+    },
+    "uuid": [
+        {
+            "value": "0afb60f3-6b24-4313-ab00-db013888d84c"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "info": [
+        {
+            "value": "The great sport relief bake off",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "teaser"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1456421357",
+            "lang": "en"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<p>Tune in tonight to see Will Young, Ade Edmonson, Morgana Robinson and Alison Steadman battle it out with their bakes.<\/p>\r\n",
+            "format": "basic_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/teaser\/field_teaser_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/18?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "4c3224b7-674c-4f26-b600-cd5a839636b3"
+                    }
+                ],
+                "alt": "",
+                "title": "",
+                "width": "1170",
+                "height": "658"
+            }
+        ]
+    },
+    "field_teaser_link": [
+        {
+            "uri": "http:\/\/www.sportrelief.com\/whats-going-on\/bake-off",
+            "title": "Find out more",
+            "options": []
+        }
+    ],
+    "field_teaser_title": [
+        {
+            "value": "The great sport relief bake off"
+        }
+    ]
+}
