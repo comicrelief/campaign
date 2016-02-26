@@ -94,15 +94,15 @@
     var tab_collection = new Drupal.panels_ipe.TabCollection();
 
     if (settings.panels_ipe.layout.changeable) {
-      tab_collection.add(createTabModel(Drupal.t('Change Layout'), 'change_layout'));
+      tab_collection.add({title: 'Change Layout', id: 'change_layout'});
     }
-    tab_collection.add(createTabModel(Drupal.t('Create Content'), 'create_content'));
-    tab_collection.add(createTabModel(Drupal.t('Place Content'), 'place_content'));
+    tab_collection.add({title: 'Create Content', id: 'create_content'});
+    tab_collection.add({title: 'Place Content', id: 'place_content'});
 
     // The edit/save/cancel tabs are special, and are tracked by our app.
-    var edit_tab = createTabModel(Drupal.t('Edit'), 'edit');
-    var save_tab = createTabModel(Drupal.t('Save'), 'save');
-    var cancel_tab = createTabModel(Drupal.t('Cancel'), 'cancel');
+    var edit_tab = new Drupal.panels_ipe.TabModel({title: 'Edit', id: 'edit'});
+    var save_tab = new Drupal.panels_ipe.TabModel({title: 'Save', id: 'save'});
+    var cancel_tab = new Drupal.panels_ipe.TabModel({title: 'Cancel', id: 'cancel'});
     tab_collection.add(edit_tab);
     tab_collection.add(save_tab);
     tab_collection.add(cancel_tab);
@@ -171,12 +171,8 @@
     // initializing and ready to render.
     Backbone.trigger('PanelsIPEInitialized');
 
-    // Render our AppView, without rendering the layout.
-    $('body').append(Drupal.panels_ipe.app_view.render(false).$el);
-
-    function createTabModel(title, id) {
-      return new Drupal.panels_ipe.TabModel({title: title, id: id});
-    }
+    // Render our AppView.
+    $('body').append(Drupal.panels_ipe.app_view.render().$el);
   };
 
   Drupal.panels_ipe.setFlipperHeight = function ($form) {
