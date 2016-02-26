@@ -166,12 +166,6 @@
           command="${drush.cmd} site-install ${app.profile.name} -y --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring} ${app.profile.options}"
           logoutput="true"
           passthru="true" />
-    <!-- Enable the content module -->
-    <exec dir="${app.dir}"
-          command="${drush.cmd} en cr_default_content"
-          logoutput="true"
-          passthru="true" />
-    <!-- Fix up permissions -->
     <exec command="chmod 755 ${app.dir}/sites/default" />
     <exec command="chmod 755 ${app.dir}/sites/default/settings.php" />
   </target>
