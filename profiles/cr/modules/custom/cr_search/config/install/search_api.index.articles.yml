@@ -1,0 +1,249 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.server.database
+<<<<<<< 43cc7d16f83d55d73c3019984be39a1ae8874db3
+    - field.field.node.article.field_tags
+=======
+>>>>>>> PLAT-31 Create a minimun module for search and enable it by default
+  module:
+    - search_api
+    - node
+id: articles
+name: Articles
+description: ''
+read_only: false
+field_settings:
+  search_api_language:
+    label: 'Item language'
+    datasource_id: null
+    property_path: search_api_language
+    type: string
+    indexed_locked: true
+    type_locked: true
+<<<<<<< 43cc7d16f83d55d73c3019984be39a1ae8874db3
+  type:
+    label: Type
+    datasource_id: 'entity:node'
+    property_path: type
+    type: string
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: string
+  processed:
+    label: 'Body » Processed text'
+    datasource_id: 'entity:node'
+    property_path: 'body:processed'
+    type: string
+  alt:
+    label: 'Image » Alternative text'
+    datasource_id: 'entity:node'
+    property_path: 'field_image:alt'
+    type: string
+  title_1:
+    label: 'Image » Title'
+    datasource_id: 'entity:node'
+    property_path: 'field_image:title'
+    type: string
+  processed_1:
+    label: 'Intro » Processed text'
+    datasource_id: 'entity:node'
+    property_path: 'field_intro:processed'
+    type: string
+  name:
+    label: 'Tags » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_tags:entity:name'
+    type: string
+  rendered_item:
+    label: 'Rendered HTML output'
+    datasource_id: null
+    property_path: rendered_item
+    type: text
+    indexed_locked: true
+  status:
+    label: 'Publishing status'
+    datasource_id: 'entity:node'
+    property_path: status
+    type: boolean
+    indexed_locked: true
+    type_locked: true
+  uid:
+    label: 'Authored by'
+    datasource_id: 'entity:node'
+    property_path: uid
+    type: integer
+    indexed_locked: true
+    type_locked: true
+  search_api_node_grants:
+    label: 'Node access information'
+    datasource_id: null
+    property_path: search_api_node_grants
+    type: string
+    indexed_locked: true
+    type_locked: true
+    hidden: true
+processor_settings:
+  language:
+    plugin_id: language
+    settings:
+      weights:
+        preprocess_index: -30
+  add_url:
+    plugin_id: add_url
+    settings:
+      weights:
+        preprocess_index: -30
+  transliteration:
+    plugin_id: transliteration
+    settings:
+      fields:
+        - search_api_language
+        - type
+        - title
+        - processed
+        - alt
+        - title_1
+        - processed_1
+        - name
+        - rendered_item
+        - search_api_node_grants
+      weights:
+        preprocess_index: -10
+        preprocess_query: -10
+  content_access:
+    plugin_id: content_access
+    settings:
+      weights:
+        preprocess_index: -10
+        preprocess_query: -10
+  node_status:
+    plugin_id: node_status
+    settings:
+      weights:
+        preprocess_index: -10
+  html_filter:
+    plugin_id: html_filter
+    settings:
+      fields:
+        - type
+        - title
+        - processed
+        - alt
+        - title_1
+        - processed_1
+        - name
+      title: true
+      alt: true
+      tags:
+        h1: 5
+        h2: 3
+        h3: 2
+        strong: 2
+        b: 2
+      weights:
+        preprocess_index: -10
+        preprocess_query: -10
+  ignorecase:
+    plugin_id: ignorecase
+    settings:
+      fields:
+        - search_api_language
+        - type
+        - title
+        - processed
+        - alt
+        - title_1
+        - processed_1
+        - name
+      weights:
+        preprocess_index: -10
+        preprocess_query: -10
+  ignore_character:
+    plugin_id: ignore_character
+    settings:
+      fields:
+        - search_api_language
+        - type
+        - title
+        - processed
+        - alt
+        - title_1
+        - processed_1
+        - name
+      ignorable: '[''¿¡!?,.:;]'
+      strip:
+        character_sets:
+          Pc: Pc
+          Pd: Pd
+          Pe: Pe
+          Pf: Pf
+          Pi: Pi
+          Po: Po
+          Ps: Ps
+          Cc: 0
+          Cf: 0
+          Co: 0
+          Mc: 0
+          Me: 0
+          Mn: 0
+          Sc: 0
+          Sk: 0
+          Sm: 0
+          So: 0
+          Zl: 0
+          Zp: 0
+          Zs: 0
+      weights:
+        preprocess_index: -10
+        preprocess_query: -10
+  rendered_item:
+    plugin_id: rendered_item
+    settings:
+      roles:
+        anonymous: anonymous
+      view_mode:
+        'entity:node':
+          article: search_result
+      weights:
+        preprocess_index: -10
+  highlight:
+    plugin_id: highlight
+    settings:
+      highlight: always
+      excerpt: true
+      excerpt_length: 256
+      prefix: '<strong>'
+      suffix: '</strong>'
+      weights:
+        postprocess_query: 0
+=======
+processor_settings:
+  add_url:
+    plugin_id: add_url
+    settings: {  }
+  language:
+    plugin_id: language
+    settings: {  }
+>>>>>>> PLAT-31 Create a minimun module for search and enable it by default
+options:
+  index_directly: true
+  cron_limit: 50
+datasource_settings:
+  'entity:node':
+    plugin_id: 'entity:node'
+    settings:
+      default: '0'
+      bundles:
+        article: article
+        page: '0'
+      languages:
+        - en
+tracker_settings:
+  default:
+    plugin_id: default
+    settings: {  }
+server: database

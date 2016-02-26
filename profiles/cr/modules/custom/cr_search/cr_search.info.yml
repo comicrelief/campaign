@@ -1,0 +1,28 @@
+name: Comic Relief Search
+type: module
+description: 'Improve the search functionality.'
+package: Comic Relief
+core: '8.x'
+
+dependencies:
+  - search_api_db
+  - cr_article
+
+config_devel:
+  # General config.
+  - search_api.server.database
+<<<<<<< 43cc7d16f83d55d73c3019984be39a1ae8874db3
+  - views.view.results
+
+  # Articles
+  - search_api.index.articles
+  - core.entity_view_display.node.article.search_result
+
+  # Landing pages
+  - search_api.index.landing_pages
+  - core.entity_view_display.node.landing.search_result
+=======
+  # Articles
+  - search_api.index.articles
+  - core.entity_view_display.node.article.search_result
+>>>>>>> PLAT-31 Create a minimun module for search and enable it by default
