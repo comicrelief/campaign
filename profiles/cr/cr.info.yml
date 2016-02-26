@@ -90,6 +90,9 @@ config_devel:
   - block.block.campaign_base_main_menu
   - block.block.campaign_base_footer
 
+  # Generic fields
+  - field.storage.node.panelizer
+
   # Menus
   - system.menu.footer
   - system.menu.main-navigation
