@@ -1,11 +1,16 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/block\/3?_format=hal_json"
+            "href": "http:\/\/default\/block\/5?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/block_content\/teaser"
-        }
+        },
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/teaser\/field_teaser_image": [
+            {
+                "href": "http:\/\/default\/file\/15?_format=hal_json"
+            }
+        ]
     },
     "uuid": [
         {
@@ -20,7 +25,7 @@
     ],
     "info": [
         {
-            "value": "FERN BRITTON SPEAKS OUT ABOUT MATERNAL MENTAL HEALTH FOR SPORT RELIEF",
+            "value": "Fern britton speaks out about maternal mental health for sport relief",
             "lang": "en"
         }
     ],
@@ -31,7 +36,7 @@
     ],
     "changed": [
         {
-            "value": "1456305979",
+            "value": "1456421453",
             "lang": "en"
         }
     ],
@@ -55,6 +60,29 @@
             "lang": "en"
         }
     ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/teaser\/field_teaser_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/15?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "0ea86061-1ce8-4a17-9c01-1e6a5b1dee65"
+                    }
+                ],
+                "alt": "",
+                "title": "",
+                "width": "1170",
+                "height": "658"
+            }
+        ]
+    },
     "field_teaser_link": [
         {
             "uri": "http:\/\/www.sportrelief.com\/whats-going-on\/fern-britton-speaks-out-about-maternal-mental-health-sport-relief",
@@ -64,7 +92,7 @@
     ],
     "field_teaser_title": [
         {
-            "value": "FERN BRITTON SPEAKS OUT ABOUT MATERNAL MENTAL HEALTH FOR SPORT RELIEF"
+            "value": "Fern britton speaks out about maternal mental health for sport relief"
         }
     ]
 }

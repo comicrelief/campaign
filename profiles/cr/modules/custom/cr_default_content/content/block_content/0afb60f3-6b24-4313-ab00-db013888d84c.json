@@ -5,7 +5,12 @@
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/block_content\/teaser"
-        }
+        },
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/teaser\/field_teaser_image": [
+            {
+                "href": "http:\/\/default\/file\/18?_format=hal_json"
+            }
+        ]
     },
     "uuid": [
         {
@@ -20,7 +25,7 @@
     ],
     "info": [
         {
-            "value": "THE GREAT SPORT RELIEF BAKE OFF",
+            "value": "The great sport relief bake off",
             "lang": "en"
         }
     ],
@@ -31,7 +36,7 @@
     ],
     "changed": [
         {
-            "value": "1456305259",
+            "value": "1456421357",
             "lang": "en"
         }
     ],
@@ -55,6 +60,29 @@
             "lang": "en"
         }
     ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/teaser\/field_teaser_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/18?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "4c3224b7-674c-4f26-b600-cd5a839636b3"
+                    }
+                ],
+                "alt": "",
+                "title": "",
+                "width": "1170",
+                "height": "658"
+            }
+        ]
+    },
     "field_teaser_link": [
         {
             "uri": "http:\/\/www.sportrelief.com\/whats-going-on\/bake-off",
@@ -64,7 +92,7 @@
     ],
     "field_teaser_title": [
         {
-            "value": "THE GREAT SPORT RELIEF BAKE OFF"
+            "value": "The great sport relief bake off"
         }
     ]
 }

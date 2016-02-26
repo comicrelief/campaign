@@ -1,11 +1,16 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/block\/2?_format=hal_json"
+            "href": "http:\/\/default\/block\/8?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/block_content\/teaser"
-        }
+        },
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/teaser\/field_teaser_image": [
+            {
+                "href": "http:\/\/default\/file\/17?_format=hal_json"
+            }
+        ]
     },
     "uuid": [
         {
@@ -20,7 +25,7 @@
     ],
     "info": [
         {
-            "value": "THE COUNTDOWN IS ON",
+            "value": "The countdown is on",
             "lang": "en"
         }
     ],
@@ -31,7 +36,7 @@
     ],
     "changed": [
         {
-            "value": "1456305930",
+            "value": "1456421386",
             "lang": "en"
         }
     ],
@@ -55,6 +60,29 @@
             "lang": "en"
         }
     ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/teaser\/field_teaser_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/17?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "c5c5db7d-8e27-4e7c-9600-ccd87e12e6b8"
+                    }
+                ],
+                "alt": "",
+                "title": "",
+                "width": "1170",
+                "height": "658"
+            }
+        ]
+    },
     "field_teaser_link": [
         {
             "uri": "http:\/\/www.sportrelief.com\/get-involved",
@@ -64,7 +92,7 @@
     ],
     "field_teaser_title": [
         {
-            "value": "THE COUNTDOWN IS ON"
+            "value": "The countdown is on"
         }
     ]
 }

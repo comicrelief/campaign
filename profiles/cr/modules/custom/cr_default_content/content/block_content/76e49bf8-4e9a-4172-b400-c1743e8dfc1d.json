@@ -1,11 +1,16 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/block\/5?_format=hal_json"
+            "href": "http:\/\/default\/block\/4?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/block_content\/teaser"
-        }
+        },
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/teaser\/field_teaser_image": [
+            {
+                "href": "http:\/\/default\/file\/16?_format=hal_json"
+            }
+        ]
     },
     "uuid": [
         {
@@ -20,7 +25,7 @@
     ],
     "info": [
         {
-            "value": "LINDSEY RUSSELL \u2018THE WAVE RUNNER\u2019",
+            "value": "Lindsey russell \u2018the wave runner\u2019",
             "lang": "en"
         }
     ],
@@ -31,7 +36,7 @@
     ],
     "changed": [
         {
-            "value": "1456306109",
+            "value": "1456421427",
             "lang": "en"
         }
     ],
@@ -55,6 +60,29 @@
             "lang": "en"
         }
     ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/teaser\/field_teaser_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/16?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "c604e1b1-6d61-4a39-b801-1c91082edbc8"
+                    }
+                ],
+                "alt": "",
+                "title": "",
+                "width": "1170",
+                "height": "658"
+            }
+        ]
+    },
     "field_teaser_link": [
         {
             "uri": "http:\/\/www.sportrelief.com\/whats-going-on\/blue-peter%E2%80%99s-lindsey-russell-zorb-irish-channel",
@@ -64,7 +92,7 @@
     ],
     "field_teaser_title": [
         {
-            "value": "LINDSEY RUSSELL \u2018THE WAVE RUNNER\u2019"
+            "value": "Lindsey russell \u2018the wave runner\u2019"
         }
     ]
 }
