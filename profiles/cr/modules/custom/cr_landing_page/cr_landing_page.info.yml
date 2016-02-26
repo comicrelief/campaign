@@ -13,3 +13,4 @@ config_devel:
   - field.field.node.landing.field_cta
   - field.field.node.landing.field_image
   - field.field.node.landing.panelizer
+  - pathauto.pattern.landing_page
