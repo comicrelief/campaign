@@ -12,7 +12,10 @@ projects:
       # See https://www.drupal.org/node/2672110
       2672110: https://www.drupal.org/files/issues/entityfieldderiver-2672110-2.patch
   file_entity:
-    revision: 5f1015080374ca0a5c3f4593ea94088d6e6ed1bc
+    download:
+      type: git
+      branch: 8.x-1.x
+      revision: 5f1015080374ca0a5c3f4593ea94088d6e6ed1bc
   metatag:
     version: 1.0-beta4
   pathauto:
@@ -29,7 +32,10 @@ projects:
   page_manager:
     version: 1.0-alpha23
   panels:
-    revision: ba0c77df894a9217cdf45551db105b9cc1c76315
+    download:
+      type: git
+      branch: 8.x-1.x
+      revision: ba0c77df894a9217cdf45551db105b9cc1c76315
   panelizer:
     version: 3.0-alpha2
   ds:
@@ -40,9 +46,15 @@ projects:
   config_devel:
     version: 1.0-rc1
   default_content:
-    version: 1.0-alpha2
+    download:
+      type: git
+      branch: 8.x-1.x
+      revision: 471bf110e40e22b8a5ed10973825959aa33b2f21
   devel:
-    revision: 6063e24c24288cbcba8ac969d2de4c6f3f52b91c
+    download:
+      type: git
+      branch: 8.x-1.x
+      revision: 6063e24c24288cbcba8ac969d2de4c6f3f52b91c
   # Editor/admin experience
   admin_toolbar:
     version: 1.14
