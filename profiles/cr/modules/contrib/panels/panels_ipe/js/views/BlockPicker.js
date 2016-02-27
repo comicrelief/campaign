@@ -29,11 +29,12 @@
      */
     template_plugin: _.template(
       '<div class="ipe-block-plugin">' +
-      '  <div class="ipe-block-plugin-info">' +
-      '    <h5><%- label %></h5>' +
-      '    <p>Provider: <strong><%- provider %></strong></p>' +
-      '  </div>' +
-      '  <a data-plugin-id="<%- plugin_id %>">Add</a>' +
+      '  <a data-plugin-id="<%- plugin_id %>">' +
+      '    <div class="ipe-block-plugin-info">' +
+      '      <h5 title="<%- label %>"><%- trimmed_label %></h5>' +
+      '      <p>' + Drupal.t('Provider: <strong><%- provider %></strong>') + '</p>' +
+      '    </div>' +
+      '  </a>' +
       '</div>'
     ),
 
@@ -42,11 +43,12 @@
      */
     template_existing: _.template(
       '<div class="ipe-block-plugin">' +
-      '  <div class="ipe-block-plugin-info">' +
-      '    <h5><%- label %></h5>' +
-      '    <p>Provider: <strong><%- provider %></strong></p>' +
-      '  </div>' +
-      '  <a data-existing-region-name="<%- region %>" data-existing-block-id="<%- uuid %>">Configure</a>' +
+      '  <a data-existing-region-name="<%- region %>" data-existing-block-id="<%- uuid %>">' +
+      '    <div class="ipe-block-plugin-info">' +
+      '      <h5 title="<%- label %>"><%- trimmed_label %></h5>' +
+      '      <p>' + Drupal.t('Provider: <strong><%- provider %></strong>') + '</p>' +
+      '    </div>' +
+      '  </a>' +
       '</div>'
     ),
 
@@ -54,7 +56,7 @@
      * @type {function}
      */
     template_form: _.template(
-      '<h4>Configure <strong><%- label %></strong> block</h4>' +
+      '<h4>' + Drupal.t('Configure <strong><%- label %></strong> block') + '</h4>' +
       '<div class="ipe-block-plugin-form ipe-form"><div class="ipe-icon ipe-icon-loading"></div></div>'
     ),
 
@@ -158,12 +160,20 @@
      *   The rendered block plugin.
      */
     template_item: function(block_plugin) {
+      var template_vars = block_plugin.toJSON();
+
+      // Reduce the length of the Block label if needed.
+      template_vars.trimmed_label = template_vars.label;
+      if (template_vars.trimmed_label.length > 30) {
+        template_vars.trimmed_label = template_vars.label.substring(0, 30) + '...';
+      }
+
       // This is an existing block.
       if (block_plugin.get('uuid')) {
-        return this.template_existing(block_plugin.toJSON());
+        return this.template_existing(template_vars);
       }
       else {
-        return this.template_plugin(block_plugin.toJSON());
+        return this.template_plugin(template_vars);
       }
     },
 

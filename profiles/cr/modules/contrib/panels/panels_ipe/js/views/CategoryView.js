@@ -120,6 +120,8 @@
         }, this);
       }
 
+      this.setTopMaxHeight();
+
       return this;
     },
 
@@ -153,7 +155,9 @@
       if (animation === 'slideUp') {
         // Close the tab, then re-render.
         var self = this;
-        this.$('.ipe-category-picker-top')[animation]('fast', function () { self.render(); });
+        this.$('.ipe-category-picker-top')[animation]('fast', function () {
+          self.render();
+        });
       }
       else if (animation === 'slideDown') {
         // We need to render first as hypothetically nothing is open.
@@ -203,7 +207,7 @@
         ajax.options.complete = function () {
           self.$('.ipe-category-picker-top .ipe-icon-loading').remove();
 
-          self.setFormMaxHeight();
+          self.setTopMaxHeight();
 
           self.$('.ipe-category-picker-top *').hide().fadeIn();
         };
@@ -214,20 +218,26 @@
     },
 
     /**
-     * Calculates and sets maximum height of our form based on known floating
-     * and fixed elements.
+     * Calculates and sets maximum height of our top area based on known
+     * floating and fixed elements.
      */
-    setFormMaxHeight: function() {
+    setTopMaxHeight: function() {
       // Calculate the combined height of (known) floating elements.
-      var used_height = $('#toolbar-item-administration-tray:visible').outerHeight() +
-      $('#toolbar-bar').outerHeight() +
-      this.$('.ipe-category-picker-bottom').outerHeight();
+      var used_height = this.$('.ipe-category-picker-bottom').outerHeight() +
+      $('.ipe-tabs').outerHeight();
 
-      // 175 (px) is an arbitrary offset, just to give padding on top.
-      var max_height = $(window).height() - used_height - 175;
+      // Add optional toolbar support.
+      var toolbar = $('#toolbar-bar');
+      if (toolbar.length > 0) {
+        used_height += $('#toolbar-item-administration-tray:visible').outerHeight() +
+        toolbar.outerHeight();
+      }
+
+      // The .ipe-category-picker-top padding is 30 pixels, plus five for margin.
+      var max_height = $(window).height() - used_height - 35;
 
       // Set the form's max height.
-      this.$('.ipe-form').css('max-height', max_height);
+      this.$('.ipe-category-picker-top').css('max-height', max_height);
     }
 
   });

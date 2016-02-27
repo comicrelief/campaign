@@ -1,14 +1,13 @@
 name: Panels IPE
 type: module
 description: Panels In-place editor.
-# core: 8.x
+core: 8.x
 package: Panels
 dependencies:
   - block_content
   - panels
 
-# Information added by Drupal.org packaging script on 2016-02-16
-version: '8.x-3.0-beta4'
-core: '8.x'
+# Information added by drush on 2016-02-27
+version: '8.x-1.x-dev'
 project: 'panels'
-datestamp: 1455657542
+datestamp: 1456582861

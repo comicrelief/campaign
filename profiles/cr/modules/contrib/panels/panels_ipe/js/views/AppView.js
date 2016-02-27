@@ -75,10 +75,16 @@
     /**
      * Appends the IPE tray to the bottom of the screen.
      *
+     * @param {bool} render_layout
+     *   Whether or not the layout should be rendered. Useful for just calling
+     *   render on UI elements and not content.
+     *
      * @return {Drupal.panels_ipe.AppView}
      *   Returns this, for chaining.
      */
-    render: function () {
+    render: function (render_layout) {
+      render_layout = typeof render_layout !== 'undefined' ? render_layout : true;
+
       // Empty our list.
       this.$el.html(this.template(this.model.toJSON()));
       // Add our tab collection to the App.
@@ -88,7 +94,7 @@
       this.$el.toggleClass('unsaved', this.model.get('unsaved'));
 
       // Re-render our layout.
-      if (this.layoutView) {
+      if (this.layoutView && render_layout) {
         this.layoutView.render();
       }
       return this;
@@ -110,6 +116,9 @@
       this.model.get('layout').set({active: true});
 
       this.$el.addClass('active');
+
+      // Add a top-level body class.
+      $('body').addClass('panels-ipe-active');
     },
 
     /**
@@ -128,6 +137,9 @@
       this.model.get('layout').set({active: false});
 
       this.$el.removeClass('active');
+
+      // Remove our top-level body class.
+      $('body').removeClass('panels-ipe-active');
     },
 
     /**
@@ -137,6 +149,10 @@
      *   The new layout model.
      */
     changeLayout: function (layout) {
+      // Early render the tabs and layout - if changing the Layout was the first
+      // action on the page the Layout would have never been rendered.
+      this.render();
+
       // Grab all the blocks from the current layout.
       var regions = this.model.get('layout').get('regionCollection');
       var block_collection = new Drupal.panels_ipe.BlockCollection();
@@ -286,8 +302,9 @@
       this.model.get('cancelTab').set('hidden', !this.model.get('unsaved'));
       this.model.get('saveTab').set('hidden', !this.model.get('unsaved'));
 
-      // Re-render ourselves.
-      this.render();
+      // Re-render ourselves, pass "false" as we don't need to re-render the
+      // layout, just the tabs.
+      this.render(false);
     }
 
   });
