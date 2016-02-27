@@ -1,11 +1,13 @@
-name: 'Default content tests'
+name: 'Default content export test'
 type: module
 hidden: TRUE
-description: 'Default content tests'
+description: 'Used in testing to ensure modules can declare content.'
 package: Web services
 core: 8.x
-dependencies:
-  - default_content
+
+default_content:
+  node:
+    - 0e45d92f-1919-47cd-8b60-964a8a761292
 
 # Information added by drush on 2016-02-09
 version: '8.x-1.0-alpha2+5-dev'
