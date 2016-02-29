@@ -15,8 +15,8 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\Context\ContextHandlerInterface;
 use Drupal\Core\Plugin\ContextAwarePluginAssignmentTrait;
 use Drupal\Core\Plugin\ContextAwarePluginInterface;
-use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Render\Element;
+use Drupal\Core\Render\RendererInterface;
 use Drupal\panels\Plugin\DisplayVariant\PanelsDisplayVariant;
 use Drupal\user\SharedTempStoreFactory;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -291,7 +291,18 @@ class PanelsIPEBlockPluginForm extends FormBase {
 
     // Assemble data required for our App.
     $build = $this->buildBlockInstance($block_instance);
-    $form['build'] = $build;
+
+    // Bubble block attributes up if possible. This allows modules like
+    // Quickedit to function.
+    // See \Drupal\block\BlockViewBuilder::preRender() for reference.
+    if ($build['content'] !== NULL && !Element::isEmpty($build['content'])) {
+      foreach (['#attributes', '#contextual_links'] as $property) {
+        if (isset($build['content'][$property])) {
+          $build[$property] += $build['content'][$property];
+          unset($build['content'][$property]);
+        }
+      }
+    }
 
     // Add our data attribute for the Backbone app.
     $build['#attributes']['data-block-id'] = $uuid;
@@ -301,8 +312,10 @@ class PanelsIPEBlockPluginForm extends FormBase {
       'label' => $block_instance->label(),
       'id' => $block_instance->getPluginId(),
       'region' => $block_config['region'],
-      'html' => $this->renderer->render($build)
+      'html' => $this->renderer->render($build),
     ];
+
+    $form['build'] = $build;
 
     // Add Block metadata and HTML as a drupalSetting.
     $form['#attached']['drupalSettings']['panels_ipe']['updated_block'] = $block_model;
@@ -436,6 +449,8 @@ class PanelsIPEBlockPluginForm extends FormBase {
     // Compile the render array.
     $build = [
       '#theme' => 'block',
+      '#attributes' => [],
+      '#contextual_links' => [],
       '#configuration' => $configuration,
       '#plugin_id' => $block_instance->getPluginId(),
       '#base_plugin_id' => $block_instance->getBaseId(),
