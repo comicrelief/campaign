@@ -29,7 +29,7 @@
      * @type {function}
      */
     template_form: _.template(
-      '<h4>Add new <strong><%- label %></strong> content</h4>' +
+      '<h4>' + Drupal.t('Add new <strong><%- label %></strong> content') + '</h4>' +
       '<div class="ipe-block-type-form ipe-form"><div class="ipe-icon ipe-icon-loading"></div></div>'
     ),
 
