@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.landing.body
     - field.field.node.landing.field_cta
     - field.field.node.landing.field_image
+    - field.field.node.landing.panelizer
     - node.type.landing
   module:
     - image
@@ -44,4 +45,5 @@ content:
     type: image
   links:
     weight: 100
-hidden: {  }
+hidden:
+  panelizer: true

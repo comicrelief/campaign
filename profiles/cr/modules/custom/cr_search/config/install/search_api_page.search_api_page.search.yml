@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.articles
+id: search
+label: Search
+path: search
+clean_url: true
+show_all_when_no_keys: false
+index: articles
+limit: 10
+searched_fields:
+  rendered_item: rendered_item
+style: view_modes
+view_mode_configuration:
+  'entity:node_article': teaser
+show_search_form: true

@@ -17,6 +17,7 @@ config_devel:
   # Articles
   - search_api.index.articles
   - core.entity_view_display.node.article.search_result
+  - search_api_page.search_api_page.search
 
   # Landing pages
   - search_api.index.landing_pages
