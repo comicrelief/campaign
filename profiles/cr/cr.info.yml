@@ -28,7 +28,6 @@ dependencies:
   - path
   - page_cache
   - taxonomy
-  - search
   - shortcut
   - toolbar
   - field_ui
