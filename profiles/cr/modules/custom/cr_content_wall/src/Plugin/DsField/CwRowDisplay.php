@@ -10,8 +10,7 @@ use Drupal\Component\Utility\Html;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\ds\Plugin\DsField\DsFieldBase;
-use Drupal\node\Entity\Node;
-use Drupal\block\Entity\Block;
+use Drupal\block_content\Entity\BlockContent;
 use Drupal\field\FieldConfigInterface;
 
 /**
@@ -31,13 +30,10 @@ class CwRowDisplay extends DsFieldBase {
     $config = $this->getConfiguration();
     $view_mode = $this->viewMode();
 
-    //$node = Node::load('4');
-    //$node_field = $node->get('field_cw_row_selector')->getValue();
+    $block = BlockContent::load($this->entity()->id());
+    $block_field = $block->get('field_cw_block_reference')->getValue();
 
-    $block = Block::load('1');
-    //$block_field = $block->get('field_teaser_title')->getValue();
-
-    //die('z:'.print_r($block,1));
+    die('z:'.print_r($block));
   }
 
 
