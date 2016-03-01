@@ -16,10 +16,10 @@ use Drupal\field\FieldConfigInterface;
 
 /**
  * @DsField(
- *   id = "vocabulary_terms",
- *   title = @Translation("Vocabulary Terms"),
+ *   id = "cr_content_wall",
+ *   title = @Translation("Row Display"),
  *   entity_type = "node",
- *   provider = "demo",
+ *   provider = "cr_content_wall",
  *   ui_limit = {"article|*"}
  * )
  */
@@ -33,14 +33,14 @@ class CwRowDisplay extends DsFieldBase {
     $view_mode = $this->viewMode();
 
     $node = Node::load('4');
-    //$view_mode_field = $node->get('field_cw_row_selector')->getValue();
+    $node_field = $node->get('field_cw_row_selector')->getValue();
 
     $block = Block::load('1');
-    //$block_field = $block->get('field_teaser_title')->getValue();
+    $block_field = $block->get('field_teaser_title')->getValue();
 
-    die('z:'.print_r($view_mode_field,1));
-
+    //die('z:'.print_r($block_field,1));
   }
+
 
   /**
    * {@inheritdoc}
@@ -64,6 +64,7 @@ class CwRowDisplay extends DsFieldBase {
    * {@inheritdoc}
    */
   public function defaultConfiguration() {
+
     return array();
   }
 
@@ -72,13 +73,6 @@ class CwRowDisplay extends DsFieldBase {
    */
   public function formatters() {
     return array();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function isAllowed() {
-    return TRUE;
   }
 
 }
