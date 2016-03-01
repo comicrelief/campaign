@@ -1,7 +1,7 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/node\/1?_format=hal_json"
+            "href": "http:\/\/default\/fundraise?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/landing"
@@ -19,7 +19,7 @@
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_image": [
             {
-                "href": "http:\/\/default\/file\/1?_format=hal_json",
+                "href": "http:\/\/default\/file\/16?_format=hal_json",
                 "lang": "en"
             }
         ]
@@ -59,7 +59,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "5aeba5ae-a9c0-4673-9400-ad43c96ebd51"
+                        "value": "8f41dadf-8721-432d-9900-b4767ac516aa"
                     }
                 ],
                 "lang": "en"
@@ -77,7 +77,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "5aeba5ae-a9c0-4673-9400-ad43c96ebd51"
+                        "value": "8f41dadf-8721-432d-9900-b4767ac516aa"
                     }
                 ]
             }
@@ -86,7 +86,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/file\/1?_format=hal_json"
+                        "href": "http:\/\/default\/file\/16?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
@@ -119,7 +119,7 @@
     ],
     "changed": [
         {
-            "value": "1456508746",
+            "value": "1456835727",
             "lang": "en"
         }
     ],
@@ -154,7 +154,7 @@
     ],
     "body": [
         {
-            "value": "<p>What you do for Comic Relief is entirely up to you. Whatever it is, just have fun, raise cash and you'll do yourself proud.<\/p>\r\n",
+            "value": "<img alt=\"Title of the page\" data-align=\"center\" data-entity-type=\"file\" data-entity-uuid=\"19e517db-46f1-4c68-b705-5a0960d9b663\" src=\"\/sites\/default\/files\/inline-images\/SR16_svg_title_promo_do_yourself_proud_v2_1.png\" \/>\r\n<p>What you do for Comic Relief is entirely up to you. Whatever it is, just have fun, raise cash and you'll do yourself proud.<\/p>\r\n",
             "format": "basic_html",
             "summary": "",
             "lang": "en"
@@ -170,126 +170,8 @@
     "panelizer": [
         {
             "view_mode": "full",
-            "default": null,
-            "panels_display": {
-                "blocks": {
-                    "ab99126b-5dc6-4ddb-a91b-2773bd65b80d": {
-                        "id": "entity_field:node:body",
-                        "label": "Body",
-                        "provider": "ctools_block",
-                        "label_display": "0",
-                        "formatter": {
-                            "label": "hidden",
-                            "type": "text_default",
-                            "settings": [],
-                            "third_party_settings": [],
-                            "weight": 0
-                        },
-                        "context_mapping": {
-                            "entity": "@panelizer.entity_context:entity"
-                        },
-                        "region": "middle",
-                        "weight": 2,
-                        "uuid": "ab99126b-5dc6-4ddb-a91b-2773bd65b80d"
-                    },
-                    "b9aec35b-bfd0-43ac-8009-9f70ab4ed243": {
-                        "id": "entity_field:node:field_cta",
-                        "label": "CTA",
-                        "provider": "ctools_block",
-                        "label_display": "0",
-                        "formatter": {
-                            "label": "above",
-                            "type": "link",
-                            "settings": {
-                                "trim_length": 80,
-                                "url_only": false,
-                                "url_plain": false,
-                                "rel": "",
-                                "target": ""
-                            },
-                            "third_party_settings": [],
-                            "weight": 0
-                        },
-                        "context_mapping": {
-                            "entity": "@panelizer.entity_context:entity"
-                        },
-                        "region": "middle",
-                        "weight": 3,
-                        "uuid": "b9aec35b-bfd0-43ac-8009-9f70ab4ed243"
-                    },
-                    "765a656d-efa6-4467-8460-961b5533b617": {
-                        "id": "entity_field:node:field_image",
-                        "label": "Image",
-                        "provider": "ctools_block",
-                        "label_display": "0",
-                        "formatter": {
-                            "label": "above",
-                            "type": "image",
-                            "settings": {
-                                "image_style": "",
-                                "image_link": ""
-                            },
-                            "third_party_settings": [],
-                            "weight": 0
-                        },
-                        "context_mapping": {
-                            "entity": "@panelizer.entity_context:entity"
-                        },
-                        "region": "middle",
-                        "weight": 1,
-                        "uuid": "765a656d-efa6-4467-8460-961b5533b617"
-                    },
-                    "2cc21c46-1da0-4726-8106-6e454726b881": {
-                        "id": "block_content:993b8a81-19f0-42b9-bb05-5c55b007a698",
-                        "label": "Row 1",
-                        "provider": "block_content",
-                        "label_display": "visible",
-                        "status": true,
-                        "info": "",
-                        "view_mode": "cw_3col_s_s_s",
-                        "context_mapping": [],
-                        "region": "middle",
-                        "uuid": "2cc21c46-1da0-4726-8106-6e454726b881",
-                        "weight": 6
-                    },
-                    "e59cd4cb-1ac0-462a-9200-fe79d6124821": {
-                        "id": "block_content:0b9042ac-8196-4cda-9604-4eae9b325279",
-                        "label": "Row 2",
-                        "provider": "block_content",
-                        "label_display": "visible",
-                        "status": true,
-                        "info": "",
-                        "view_mode": "cw_1col_l",
-                        "context_mapping": [],
-                        "region": "middle",
-                        "uuid": "e59cd4cb-1ac0-462a-9200-fe79d6124821",
-                        "weight": 5
-                    },
-                    "a24eeabd-7730-4908-af00-ef6f79b34774": {
-                        "id": "block_content:99463377-62a2-4099-8d02-2ff2876038b5",
-                        "label": "Row 3",
-                        "provider": "block_content",
-                        "label_display": "visible",
-                        "status": true,
-                        "info": "",
-                        "view_mode": "cw_2col_m_m",
-                        "context_mapping": [],
-                        "region": "middle",
-                        "uuid": "a24eeabd-7730-4908-af00-ef6f79b34774",
-                        "weight": 4
-                    }
-                },
-                "id": "panels_variant",
-                "uuid": "07727bfe-7661-4185-a418-24b2dd3f797d",
-                "label": "",
-                "weight": 0,
-                "layout": "onecol",
-                "layout_settings": [],
-                "page_title": "[node:title]",
-                "storage_type": "panelizer_field",
-                "storage_id": "node:1:full:20",
-                "builder": "ipe"
-            },
+            "default": "default",
+            "panels_display": [],
             "lang": "en"
         }
     ]

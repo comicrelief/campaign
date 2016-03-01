@@ -42,6 +42,7 @@ dependencies:
   - responsive_image
 
   # Contrib modules
+  - ds
   - file_entity
   - metatag_open_graph
   - pathauto

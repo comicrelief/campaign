@@ -27,6 +27,18 @@
     }
   }
 }
+.view-content {
+  .views-row {
+    @include span(12);
+    @include breakpoint($screen-xs) {
+      @include span(6);
+    }
+    &:nth-child(1) {
+      @include span(12);
+      margin-bottom: gutter();
+    }
+  }
+}
 .row-9-3 {
   ul {
     li {
