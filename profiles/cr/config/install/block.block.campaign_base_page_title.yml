@@ -1,12 +1,14 @@
 langcode: en
 status: true
 dependencies:
+  module:
+    - node
   theme:
     - campaign_base
 id: campaign_base_page_title
 theme: campaign_base
 region: content
-weight: -7
+weight: -4
 provider: null
 plugin: page_title_block
 settings:
@@ -14,4 +16,12 @@ settings:
   label: 'Page title'
   provider: core
   label_display: '0'
-visibility: {  }
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      article: article
+      page: page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
