@@ -5,8 +5,10 @@ dependencies:
     - field.field.node.landing.body
     - field.field.node.landing.field_cta
     - field.field.node.landing.field_image
+    - field.field.node.landing.panelizer
     - node.type.landing
   module:
+    - ds
     - image
     - link
     - panelizer
@@ -14,8 +16,8 @@ dependencies:
     - user
 third_party_settings:
   panelizer:
-    enable: true
-    custom: true
+    enable: false
+    custom: false
     displays:
       default:
         blocks:
@@ -119,6 +121,27 @@ third_party_settings:
         storage_type: ''
         storage_id: ''
         builder: ipe
+  ds:
+    layout:
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
+      library: ''
+      disable_css: false
+      settings:
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - field_image
+        - body
+        - field_cta
+        - panelizer
 id: node.landing.default
 targetEntityType: node
 bundle: landing
@@ -127,12 +150,12 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 101
+    weight: 1
     settings: {  }
     third_party_settings: {  }
   field_cta:
-    weight: 103
-    label: above
+    weight: 2
+    label: hidden
     settings:
       trim_length: 80
       url_only: false
@@ -142,15 +165,21 @@ content:
     third_party_settings: {  }
     type: link
   field_image:
-    weight: 102
-    label: above
+    weight: 0
+    label: hidden
     settings:
       image_style: ''
       image_link: ''
     third_party_settings: {  }
     type: image
   links:
-    weight: 100
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+  panelizer:
+    type: panelizer
+    weight: 3
+    label: hidden
     settings: {  }
     third_party_settings: {  }
 hidden: {  }
