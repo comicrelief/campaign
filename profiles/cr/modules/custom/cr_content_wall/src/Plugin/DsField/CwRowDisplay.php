@@ -16,11 +16,10 @@ use Drupal\field\FieldConfigInterface;
 
 /**
  * @DsField(
- *   id = "cr_content_wall",
+ *   id = "cr_content_wall_CwRowDisplay",
  *   title = @Translation("Row Display"),
- *   entity_type = "node",
- *   provider = "cr_content_wall",
- *   ui_limit = {"article|*"}
+ *   entity_type = "block_content",
+ *   provider = "cr_content_wall"
  * )
  */
 class CwRowDisplay extends DsFieldBase {
@@ -32,13 +31,13 @@ class CwRowDisplay extends DsFieldBase {
     $config = $this->getConfiguration();
     $view_mode = $this->viewMode();
 
-    $node = Node::load('4');
-    $node_field = $node->get('field_cw_row_selector')->getValue();
+    //$node = Node::load('4');
+    //$node_field = $node->get('field_cw_row_selector')->getValue();
 
     $block = Block::load('1');
-    $block_field = $block->get('field_teaser_title')->getValue();
+    //$block_field = $block->get('field_teaser_title')->getValue();
 
-    //die('z:'.print_r($block_field,1));
+    //die('z:'.print_r($block,1));
   }
 
 
