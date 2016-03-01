@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.landing_page_header
     - field.field.node.landing.body
     - field.field.node.landing.field_cta
     - field.field.node.landing.field_image
@@ -142,10 +143,10 @@ third_party_settings:
         - body
         - field_cta
         - panelizer
-id: node.landing.default
+id: node.landing.landing_page_header
 targetEntityType: node
 bundle: landing
-mode: default
+mode: landing_page_header
 content:
   body:
     label: hidden
