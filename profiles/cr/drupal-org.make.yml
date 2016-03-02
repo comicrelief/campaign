@@ -47,9 +47,10 @@ projects:
   field_group:
     version: 1.0-rc4
   view_modes_display:
-    type: git
-    version: 8.x-1.x
-    revision: bb57e85bf789867cb80e08a4163df971d434b66f
+    download:
+      type: git
+      branch: 8.x-1.x
+      revision: bb57e85bf789867cb80e08a4163df971d434b66f
   # Developer modules
   config_devel:
     version: 1.0-rc1
