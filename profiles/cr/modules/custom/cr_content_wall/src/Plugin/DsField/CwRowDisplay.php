@@ -28,6 +28,10 @@ class CwRowDisplay extends DsFieldBase {
    */
   public function build() {
     $config = $this->getConfiguration();
+    if (!isset($config['reference_field']) || !$config['reference_field']) {
+      return;
+    }
+
     $row_id = $this->entity()->id();
 
     // Get row block
@@ -35,16 +39,27 @@ class CwRowDisplay extends DsFieldBase {
     // Get referenced content blocks
     $blocks = $this->getReferencedBlocks($row, $config['reference_field']);
 
+    die('<pre>'.print_r($blocks,1).'</pre>');
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getRowEntity($id) {
     return BlockContent::load($id);
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getReferencedBlocks($block, $field) {
-    $block_field = $block->get($field)->getValue();
-    // Get list
-    return array();
+    $field_values = $block->get($field)->getValue();
+    $blocks = array();
+    foreach ($field_values as $key => $referenced_block) {
+      $blocks[] = $referenced_block['target_id'];
+    }
+
+    return $blocks;
   }
 
   /**
@@ -53,8 +68,7 @@ class CwRowDisplay extends DsFieldBase {
   public function settingsForm($form, FormStateInterface $form_state) {
     $config = $this->getConfiguration();
     $options = array();
-    //$options = $this->getReferenceFields();
-    $options[] = 'field_cw_block_reference';
+    $options = $this->getReferenceFields();
 
     $settings['reference_field'] = array(
       '#type' => 'select',
@@ -66,8 +80,13 @@ class CwRowDisplay extends DsFieldBase {
     return $settings;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getReferenceFields() {
-    return array();
+    $field_options = array();
+    $field_options[] = 'field_cw_block_reference';
+    return $field_options;
   }
 
   /**
