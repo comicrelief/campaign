@@ -28,22 +28,44 @@ class CwRowDisplay extends DsFieldBase {
    */
   public function build() {
     $config = $this->getConfiguration();
-    $view_mode = $this->viewMode();
+    $row_id = $this->entity()->id();
 
-    $block = BlockContent::load($this->entity()->id());
-    $block_field = $block->get('field_cw_block_reference')->getValue();
+    $config['reference_field'] = 'field_cw_block_reference';
+    // Get row block
+    $row = $this->getRowEntity($row_id);
+    // Get referenced content blocks
+    $blocks = $this->getReferencedBlocks($row, $config['reference_field']);
+    //die(print_r(,1));
 
-    die('z:'.print_r($block));
+
   }
 
+  public function getReferencedBlocks($block, $field) {
+    $block_field = $block->get($field)->getValue();
+    // Get list
+    return array();
+  }
+
+  public function getRowEntity($id) {
+    return BlockContent::load($id);
+  }
 
   /**
    * {@inheritdoc}
    */
   public function settingsForm($form, FormStateInterface $form_state) {
     $config = $this->getConfiguration();
+    $options = array();
+    $options[] = 'field_cw_block_reference';
 
-    return array();
+    $settings['reference_field'] = array(
+      '#type' => 'select',
+      '#title' => t('Reference Field'),
+      '#default_value' => $config['reference_field'],
+      '#options' => $options,
+    );
+
+    return $settings;
   }
 
   /**
@@ -51,16 +73,24 @@ class CwRowDisplay extends DsFieldBase {
    */
   public function settingsSummary($settings) {
     $config = $this->getConfiguration();
+    $no_selection = array('No reference field selected.');
 
-    return array();
+    if (isset($config['reference_field']) && $config['reference_field']) {
+      return array('Field: ' . $config['reference_field']);
+    }
+
+    return $no_selection;
   }
 
   /**
    * {@inheritdoc}
    */
   public function defaultConfiguration() {
+    $configuration = array(
+      'reference_field' => 'field_cw_block_reference',
+    );
 
-    return array();
+    return $configuration;
   }
 
   /**
