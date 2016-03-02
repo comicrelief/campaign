@@ -130,18 +130,23 @@ Fix: `sudo ln -fs /usr/bin/nodejs /usr/local/bin/node`
 Note: Nodejs location may differ.
 
 ## Rules of the Road
+
 This section intends to lay down some guiding principles and best-practice approaches for the campaign build. Additions should be submitted as a PR for team discussion.
 
 ### Node-based
+
 Everything should be a node. This falls more inline with how Drupal __wants__ things to be done. This approach will also help with Solr indexing implementations later on.
 
 ### Susy grid
+
 The grid system for the theme should be generated with the Susy mixins - http://susy.oddbird.net/. So no more Bootstrap grid.
 
 ### Theme inheritance
+
 To be discussed.
 
 ### Only essential markup
+
 Drupal has a long history of generating bloated markup. For performance reasons, efforts should me made to keep all module generated markup to a minimum.
 
 ### Component-based sass
@@ -150,7 +155,7 @@ SASS should be written with a component approach in mind, with a view to being a
 http://alwaystwisted.com/articles/2014-02-27-even-easier-bem-ing-with-sass-33
 
 ### Feature provides default content
-When writing a feature - say a Blog article with a node type, fields, views etc. - default content should be provided in code so the feature as a whole can be developer-reviewed and QA'd as it moves upstream.
+When writing a custom module - say a Blog article with a node type, fields, views etc. - default content should be provided in code so the feature (don't confuse with the drupal feature module!) as a whole can be developer-reviewed and QA'd as it moves upstream. Default content should be exported as part of `cr_default_content`. 
 
 See https://www.drupal.org/project/default_content (already included in the CR profile).
 
@@ -172,8 +177,8 @@ https://www.drupal.org/theme-guide/8/assets
 
 https://www.drupal.org/node/2210443
 
-### Node views view modes
-Node views should always use view modes, never field-based views for example.
+### Views view modes
+Views should always use view modes, never field-based views for example.
 
 https://drupalize.me/blog/201403/exploring-new-drupal-8-display-modes
 
