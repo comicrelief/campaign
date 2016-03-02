@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\inline_entity_form\Tests\InlineEntityFormTestBase.
- */
-
 namespace Drupal\inline_entity_form\Tests;
 
 use Drupal\simpletest\WebTestBase;
@@ -13,6 +8,13 @@ use Drupal\simpletest\WebTestBase;
  * Base Class for Inline Entity Form Tests.
  */
 abstract class InlineEntityFormTestBase extends WebTestBase {
+
+  /**
+   * User with permissions to create content.
+   *
+   * @var \Drupal\user\Entity\User
+   */
+  protected $user;
 
   /**
    * Gets IEF button name.
@@ -50,7 +52,6 @@ abstract class InlineEntityFormTestBase extends WebTestBase {
       $message = "No node with title: $title";
     }
     $node = $this->getNodeByTitle($title);
-    $this->assert('pass', "node = " . $node);
 
     $this->assertTrue(empty($node), $message);
   }
@@ -72,6 +73,56 @@ abstract class InlineEntityFormTestBase extends WebTestBase {
       if ($bundle) {
         $this->assertEqual($node->bundle(), $bundle, "Node is correct bundle: $bundle");
       }
+    }
+  }
+
+  /**
+   * Checks for check correct fields on form displays based on exported config
+   * in inline_entity_form_test module.
+   *
+   * @param $form_display
+   *  The form display to check.
+   */
+  protected function checkFormDisplayFields($form_display, $prefix) {
+    $form_display_fields = [
+      'node.ief_test_custom.default' => [
+        'expected' => [
+          '[title][0][value]',
+          '[uid][0][target_id]',
+          '[created][0][value][date]',
+          '[created][0][value][time]',
+          '[promote][value]',
+          '[sticky][value]',
+          '[positive_int][0][value]',
+        ],
+        'unexpected' => [],
+      ],
+      'node.ief_test_custom.inline' => [
+        'expected' => [
+          '[title][0][value]',
+          '[positive_int][0][value]',
+        ],
+        'unexpected' => [
+          '[uid][0][target_id]',
+          '[created][0][value][date]',
+          '[created][0][value][time]',
+          '[promote][value]',
+          '[sticky][value]',
+        ],
+      ],
+    ];
+    if ($fields = $form_display_fields[$form_display]) {
+      $this->assert('debug', 'Checking form dispaly: '. $form_display);
+      foreach ($fields['expected'] as $expected_field) {
+        $this->assertFieldByName($prefix . $expected_field);
+      }
+      foreach ($fields['unexpected'] as $unexpected_field) {
+        $this->assertNoFieldByName($prefix . $unexpected_field, NULL);
+      }
+    }
+    else {
+      // Test calling unexported form display if we are here.
+      throw new \Exception('Form display not found: ' . $form_display);
     }
   }
 

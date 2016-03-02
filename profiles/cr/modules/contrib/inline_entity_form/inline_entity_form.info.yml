@@ -4,8 +4,8 @@ type: module
 package: Fields
 # core: 8.x
 
-# Information added by Drupal.org packaging script on 2016-02-18
-version: '8.x-1.0-alpha4'
+# Information added by Drupal.org packaging script on 2016-02-29
+version: '8.x-1.0-alpha5'
 core: '8.x'
 project: 'inline_entity_form'
-datestamp: 1455831862
+datestamp: 1456785541
