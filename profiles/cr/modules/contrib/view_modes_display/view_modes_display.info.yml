@@ -1,0 +1,10 @@
+name: View modes display
+type: module
+description: Preview view modes for every entity type
+core: 8.x
+package: Other
+
+# Information added by drush on 2016-03-02
+version: '8.x-1.x-dev'
+project: 'view_modes_display'
+datestamp: 1456934541
