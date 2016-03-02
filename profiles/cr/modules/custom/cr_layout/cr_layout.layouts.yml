@@ -1,6 +1,6 @@
 fiveregions:
   label: Five regions
-  category: Five_regions: 5
+  category: Comic Relief
   path: layouts/fiveregions
   icon: fiveregions.png
   css: fiveregions.css
