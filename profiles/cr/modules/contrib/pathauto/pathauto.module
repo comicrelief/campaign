@@ -19,6 +19,7 @@
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Entity\FieldableEntityInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\pathauto\PathautoState;
@@ -100,10 +101,8 @@ function pathauto_entity_update(EntityInterface $entity) {
  * Implements hook_entity_update().
  */
 function pathauto_entity_delete(EntityInterface $entity) {
-  if ($entity->hasLinkTemplate('canonical')) {
+  if ($entity->hasLinkTemplate('canonical') && $entity instanceof ContentEntityInterface && $entity->hasField('path')) {
     \Drupal::service('pathauto.alias_storage_helper')->deleteEntityPathAll($entity);
-  }
-  if ($entity instanceof ContentEntityInterface && $entity->hasField('path')) {
     $entity->path->first()->get('pathauto')->purge();
   }
 }

@@ -132,10 +132,11 @@
 }
 
 .ipe-tab a {
+  font-size: 13px;
+  text-transform: capitalize;
   color: black;
-  padding: 10px 5px 12px 5px;
+  padding: 10px 15px 12px 5px;
   display: block;
-  text-transform: uppercase;
   vertical-align: top;
   border: none;
   cursor: pointer;
@@ -267,10 +268,17 @@ div.ipe-actions-block {
 }
 
 .ipe-action-list [data-action-id="move"] select {
+  font-size: 14px;
+  margin: 0;
   background: transparent;
   border: none;
   text-transform: uppercase;
 }
+
+.ipe-action-list [data-action-id="move"] option {
+  font-size: 14px;
+}
+
 
 
 /* Fix contextual links hovering over action links. */
@@ -335,6 +343,7 @@ div.ipe-actions-block {
 
 .ipe-category-picker-top {
   display: none;
+  overflow-y: scroll;
 }
 
 .ipe-category-picker-top.active {
@@ -353,9 +362,8 @@ div.ipe-actions-block {
   color: black;
   display: inline-block;
   padding: 10px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-size: 15px;
-  font-weight: bold;
   border: 1px solid transparent;
   border-radius: 5px;
   transition: .2s;
@@ -418,20 +426,23 @@ div.ipe-actions-block {
 }
 
 .ipe-block-plugin {
-  text-transform: uppercase;
   display: inline-block;
-  margin: 5px 20px 0 0;
+  width: 170px;
+  vertical-align: top;
+  overflow: hidden;
+  margin: 5px;
   text-align: left;
   position: relative;
 }
 
 .ipe-block-plugin-info {
-  display: inline-block;
+  font-size: 12px;
 }
 
 .ipe-block-plugin h5 {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: bold;
+  text-transform: capitalize;
   margin: 0;
 }
 
@@ -439,13 +450,10 @@ div.ipe-actions-block {
   font-size: 12px;
 }
 
-/* The "Add" button for Block Plugins. */
 .ipe-block-plugin a {
   display: inline-block;
-  vertical-align: top;
-  font-size: 12px;
-  padding: 0 5px 0 5px;
-  border: 1px solid darkgray;
+  padding: 5px;
+  border: 1px solid transparent;
   border-radius: 5px;
   transition: .2s;
   color: inherit;
@@ -510,7 +518,6 @@ div.ipe-actions-block {
 .ipe-form {
   max-width: 650px;
   padding: 5px;
-  overflow-y: scroll;
 }
 
 /* Vertical-tabs specific styling. */
@@ -564,4 +571,40 @@ div.ipe-actions-block {
   position: absolute;
   top: 0;
   right: 0;
+}
+
+/* Mobile specific styles. */
+@media screen and (max-width: 40em) {
+
+  /* Hide tab titles on mobile. */
+  .ipe-tab-title {
+    display: none;
+  }
+
+  /* Increase tab padding on mobile. */
+  .ipe-tab a {
+    padding: 10px 15px 12px 15px;
+  }
+
+  /* Show block plugins in one column. */
+  .ipe-block-plugin {
+    display: block;
+    width: inherit;
+  }
+
+  /* Increase font size on block plugins. */
+  .ipe-block-plugin h5 {
+    font-size: 16px;
+  }
+
+  /* Put the actions below the block title. */
+  div.ipe-actions {
+    display: block;
+  }
+
+  /* Put actions to the right of the bar. */
+  .ipe-actions ul.ipe-action-list {
+    text-align: right;
+  }
+
 }

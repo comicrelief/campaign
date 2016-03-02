@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies: {  }
+id: content_wall
+label: 'Content Wall'
+use_admin_theme: null
+path: /content-wall
+access_logic: and
+access_conditions: {  }
+parameters: {  }

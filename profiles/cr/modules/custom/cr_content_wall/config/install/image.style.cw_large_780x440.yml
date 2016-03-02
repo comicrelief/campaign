@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: cw_large_780x440
+label: 'CW 16:9 LG 1170x658'
+effects:
+  ab2aab0b-4760-4726-9000-c082e188f8e2:
+    uuid: ab2aab0b-4760-4726-9000-c082e188f8e2
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1170
+      height: 658

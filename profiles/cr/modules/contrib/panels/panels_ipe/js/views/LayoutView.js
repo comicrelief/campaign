@@ -52,7 +52,7 @@
     events: {
       'mousedown [data-action-id="move"] > select': 'showBlockRegionList',
       'blur [data-action-id="move"] > select': 'hideBlockRegionList',
-      'change [data-action-id="move"] > select': 'selectBlockRegionList',
+      'change [data-action-id="move"] > select': 'newRegionSelected',
       'click [data-action-id="up"]': 'moveBlock',
       'click [data-action-id="down"]': 'moveBlock',
       'click [data-action-id="remove"]': 'removeBlock',
@@ -191,7 +191,7 @@
      */
     showBlockRegionList: function (e) {
       // Get the BlockModel id (uuid).
-      var id = $(e.currentTarget).closest('[data-block-action-id]').data('block-action-id');
+      var id = this.getEventBlockUuid(e);
 
       $(e.currentTarget).empty();
 
@@ -199,7 +199,7 @@
       this.model.get('regionCollection').each(function (region) {
         var option = $(this.template_region_option(region.toJSON()));
         // If this is the current region, place it first in the list.
-        if (region.get('blockCollection').get(id)) {
+        if (region.getBlock(id)) {
           option.attr('selected', 'selected');
           $(e.currentTarget).prepend(option);
         }
@@ -225,38 +225,81 @@
      * @param {Object} e
      *   The event object.
      */
-    selectBlockRegionList: function (e) {
-      // Get the BlockModel id (uuid).
-      var id = $(e.currentTarget).closest('[data-block-action-id]').data('block-action-id');
+    newRegionSelected: function (e) {
+      var block_uuid = this.getEventBlockUuid(e);
+      var new_region_name = $(e.currentTarget).children(':selected').data('region-option-name');
 
-      // Grab the value of this region.
-      var region_name = $(e.currentTarget).children(':selected').data('region-option-name');
-
-      // First, remove the Block from the current region.
-      var block;
-      var region_collection = this.model.get('regionCollection');
-      region_collection.each(function (region) {
-        var block_collection = region.get('blockCollection');
-        if (block_collection.get(id)) {
-          block = block_collection.get(id);
-          block_collection.remove(block);
-        }
-      });
-
-      // Next, add the Block to the new region.
-      if (block) {
-        var region = this.model.get('regionCollection').get(region_name);
-        region.get('blockCollection').add(block);
+      if (new_region_name) {
+        this.moveBlockToRegion(block_uuid, new_region_name);
+        this.hideBlockRegionList(e);
+        this.render();
+        this.highlightBlock(block_uuid);
+        this.saveToTempStore();
       }
+    },
 
-      // Hide the select list.
-      this.hideBlockRegionList(e);
+    /**
+     * Get the block Uuid related to an event.
+     *
+     * @param {Object} e
+     *   The event object.
+     *
+     * @return {String}
+     *   The block Uuid
+     */
+    getEventBlockUuid: function (e) {
+      return $(e.currentTarget).closest('[data-block-action-id]').data('block-action-id');
+    },
 
-      // Re-render.
-      this.render();
+    /**
+     * Moves an existing Block to a new region.
+     *
+     * @param block_uuid
+     *   The universally unique identifier of the block.
+     * @param target_region_id
+     *   The id of the target region.
+     */
+    moveBlockToRegion: function (block_uuid, target_region_id) {
+      var target_region = this.model.get('regionCollection').get(target_region_id);
+      var original_region = this.getRegionContainingBlock(block_uuid);
+      target_region.addBlock(original_region.getBlock(block_uuid));
+      original_region.removeBlock(block_uuid);
+    },
 
-      // Highlight the block.
-      this.$('[data-block-id="' + id + '"]').addClass('ipe-highlight');
+    /**
+     * Determines what region a Block resides in.
+     *
+     * @param block_uuid
+     *   The universally unique identifier of the block.
+     *
+     * @returns {Drupal.panels_ipe.RegionModel|undefined}
+     *   The region containing the block if it was found.
+     */
+    getRegionContainingBlock: function (block_uuid) {
+      var region_collection = this.model.get('regionCollection');
+      for (var i = 0, l = region_collection.length; i < l; i++) {
+        var region = region_collection.at(i);
+        if (region.hasBlock(block_uuid)) {
+          return region;
+        }
+      }
+    },
+
+    /**
+     * Highlights a block by adding a css class.
+     *
+     * @param block_uuid
+     *   The universally unique identifier of the block.
+     */
+    highlightBlock: function (block_uuid) {
+      this.$('[data-block-id="' + block_uuid + '"]').addClass('ipe-highlight');
+    },
+
+    /**
+     * Marks the global AppModel as unsaved.
+     */
+    markUnsaved: function () {
+      Drupal.panels_ipe.app.set('unsaved', true);
     },
 
     /**
@@ -282,7 +325,7 @@
 
       Backbone.sync('update', model, options);
 
-      Drupal.panels_ipe.app.set('unsaved', true);
+      this.markUnsaved();
     },
 
     /**
@@ -300,7 +343,7 @@
         contentType: "application/json; charset=UTF-8"
       });
 
-      Drupal.panels_ipe.app.set('unsaved', true);
+      this.markUnsaved();
     },
 
     /**
@@ -311,7 +354,7 @@
      */
     moveBlock: function (e) {
       // Get the BlockModel id (uuid).
-      var id = $(e.currentTarget).closest('[data-block-action-id]').data('block-action-id');
+      var id = this.getEventBlockUuid(e);
 
       // Get the direction the block is moving.
       var dir = $(e.currentTarget).data('action-id');
@@ -319,16 +362,13 @@
       // Grab the model for this region.
       var region_name = $(e.currentTarget).closest('[data-region-name]').data('region-name');
       var region = this.model.get('regionCollection').get(region_name);
-      var block = region.get('blockCollection').get(id);
+      var block = region.getBlock(id);
 
       // Shift the Block.
       region.get('blockCollection').shift(block, dir);
 
-      // Re-render ourselves.
       this.render();
-
-      // Highlight the block.
-      this.$('[data-block-id="' + id + '"]').addClass('ipe-highlight');
+      this.highlightBlock(id);
 
       this.saveToTempStore();
     },
@@ -341,14 +381,14 @@
      */
     removeBlock: function (e) {
       // Get the BlockModel id (uuid).
-      var id = $(e.currentTarget).closest('[data-block-action-id]').data('block-action-id');
+      var id = this.getEventBlockUuid(e);
 
       // Grab the model for this region.
       var region_name = $(e.currentTarget).closest('[data-region-name]').data('region-name');
       var region = this.model.get('regionCollection').get(region_name);
 
       // Remove the block.
-      region.get('blockCollection').remove(id);
+      region.removeBlock(id);
 
       // Re-render ourselves.
       this.render();
@@ -364,14 +404,14 @@
      */
     configureBlock: function (e) {
       // Get the BlockModel id (uuid).
-      var id = $(e.currentTarget).closest('[data-block-action-id]').data('block-action-id');
+      var id = this.getEventBlockUuid(e);
 
       // Grab the model for this region.
       var region_name = $(e.currentTarget).closest('[data-region-name]').data('region-name');
       var region = this.model.get('regionCollection').get(region_name);
 
       // Send a App-level event so our BlockPicker View can respond and display a Form.
-      Drupal.panels_ipe.app.trigger('configureBlock', region.get('blockCollection').get(id));
+      Drupal.panels_ipe.app.trigger('configureBlock', region.getBlock(id));
     },
 
     /**
@@ -389,8 +429,8 @@
 
       // Get the BlockModel and remove it from its last position.
       var old_region = this.model.get('regionCollection').get(old_region_name);
-      var block = old_region.get('blockCollection').get(id);
-      old_region.get('blockCollection').remove(block, {silent: true});
+      var block = old_region.getBlock(id);
+      old_region.removeBlock(block, {silent: true});
 
       // Get the new region name and index from the droppable.
       var new_region_name = $(e.currentTarget).data('droppable-region-name');
@@ -398,7 +438,7 @@
 
       // Add the BlockModel to its new region/index.
       var new_region = this.model.get('regionCollection').get(new_region_name);
-      new_region.get('blockCollection').add(block, {at: index, silent: true});
+      new_region.addBlock(block, {at: index, silent: true});
 
       // Re-render after the current execution cycle, to account for DOM editing
       // that jQuery.ui is going to do on this run. Modules like Contextual do
@@ -406,9 +446,7 @@
       var self = this;
       window.setTimeout(function () {
         self.render();
-
-        // Highlight the block.
-        self.$('[data-block-id="' + id + '"]').addClass('ipe-highlight');
+        self.highlightBlock(id);
       });
 
       this.saveToTempStore();
@@ -426,9 +464,9 @@
       // First, check if the Block already exists and remove it if so.
       var index = null;
       this.model.get('regionCollection').each(function (region) {
-        if (region.get('blockCollection').get(block.get('uuid'))) {
+        if (region.getBlock(block.get('uuid'))) {
           index = region.get('blockCollection').indexOf(block.get('uuid'));
-          region.get('blockCollection').remove(block.get('uuid'));
+          region.removeBlock(block.get('uuid'));
         }
       });
 
@@ -440,13 +478,10 @@
         if (index) {
           options.at = index;
         }
-        region.get('blockCollection').add(block, options);
+        region.addBlock(block, options);
 
-        // Re-render ourselves.
         this.render();
-
-        // Highlight the block.
-        this.$('[data-block-id="' + block.get('uuid') + '"]').addClass('ipe-highlight');
+        this.highlightBlock(block.get('uuid'));
       }
     }
 

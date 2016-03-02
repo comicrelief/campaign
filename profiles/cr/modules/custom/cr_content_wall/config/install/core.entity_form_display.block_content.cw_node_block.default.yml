@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cw_node_block
+    - field.field.block_content.cw_node_block.field_cw_node_reference
+id: block_content.cw_node_block.default
+targetEntityType: block_content
+bundle: cw_node_block
+mode: default
+content:
+  field_cw_node_reference:
+    type: entity_reference_autocomplete_tags
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

@@ -42,6 +42,7 @@ dependencies:
   - responsive_image
 
   # Contrib modules
+  - ds
   - file_entity
   - metatag_open_graph
   - pathauto
@@ -58,12 +59,14 @@ dependencies:
   # Custom modules
   - cr_article
   - cr_landing_page
+  - cr_teaser
+  - cr_content_wall
 
   # Development modules
   - config_devel
   - devel
 
-  # Editor/admin experience
+    # Editor/admin experience
   - admin_toolbar_tools
 
   # Default content; will be moved out of the profile at some point
@@ -94,7 +97,14 @@ config_devel:
   - image.style.full_node_desktop_770x433
   - image.style.full_node_mobile_442x271
   - image.style.full_node_tablet_330x247
+  - image.style.cw_4_3_lg_370x278
+  - image.style.cw_4_3_md_290x278
+  - image.style.cw_large_780x440
+  - image.style.cw_medium_570x365
+  - image.style.cw_small_370x290
   - responsive_image.styles.hero_image_full_node
+  - responsive_image.styles.cw_4_3_image
+  - responsive_image.styles.cw_landscape_image
 
   # Metatags
   - metatag.metatag_defaults.403
