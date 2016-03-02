@@ -130,7 +130,7 @@ class PathautoSettingsForm extends ConfigFormBase {
       '#type' => 'checkbox',
       '#title' => t('Transliterate prior to creating alias'),
       '#default_value' => $config->get('transliterate'),
-      '#description' => t('When a pattern includes certain characters (such as those with accents) should Pathauto attempt to transliterate them into the US-ASCII alphabet? Transliteration is handled by the Transliteration module.'),
+      '#description' => t('When a pattern includes certain characters (such as those with accents) should Pathauto attempt to transliterate them into the US-ASCII alphabet?'),
     );
 
     $form['reduce_ascii'] = array(

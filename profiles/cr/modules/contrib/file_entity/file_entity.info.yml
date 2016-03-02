@@ -10,7 +10,7 @@ dependencies:
   - image
 configure: file_entity.settings
 
-# Information added by drush on 2016-02-27
+# Information added by drush on 2016-01-26
 version: '8.x-1.x-dev'
 project: 'file_entity'
-datestamp: 1456582856
+datestamp: 1453798036
