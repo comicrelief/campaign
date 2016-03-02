@@ -103,9 +103,7 @@ class PathautoUnitTest extends KernelTestBase {
       ]
     );
 
-    $new_definition = new ContextDefinition('language', 'Language');
-    $new_context = new Context($new_definition);
-    $pattern->addContext('node:langcode:language', $new_context);
+    $pattern->addRelationship('node:langcode:language');
     $pattern->save();
 
     $pattern = $this->createPattern('node', '/[node:title]', -1);

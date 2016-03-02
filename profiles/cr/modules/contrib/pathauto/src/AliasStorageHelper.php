@@ -190,8 +190,8 @@ class AliasStorageHelper implements AliasStorageHelperInterface {
    * {@inheritdoc}
    */
   public function deleteEntityPathAll(EntityInterface $entity, $default_uri = NULL) {
-    $this->deleteAll('/'. $entity->urlInfo()->getInternalPath());
-    if (isset($default_uri) && $entity->urlInfo()->toString() != $default_uri) {
+    $this->deleteAll('/'. $entity->toUrl('canonical')->getInternalPath());
+    if (isset($default_uri) && $entity->toUrl('canonical')->toString() != $default_uri) {
       $this->deleteAll($default_uri);
     }
   }

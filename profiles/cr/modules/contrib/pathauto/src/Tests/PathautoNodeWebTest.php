@@ -253,4 +253,39 @@ class PathautoNodeWebTest extends WebTestBase {
     $this->assertNull(\Drupal::keyValue('pathauto_state.node')->get($node->id()), 'Pathauto state was deleted');
   }
 
+
+  /**
+   * Tests that nodes without a Pathauto pattern can set custom aliases.
+   */
+  public function testCustomAliasWithoutPattern() {
+    // First, delete all patterns to be sure that there will be no match.
+    $entity_ids = \Drupal::entityQuery('pathauto_pattern')->execute();
+    $entities = PathautoPattern::loadMultiple($entity_ids);
+    foreach ($entities as $entity) {
+      $entity->delete();
+    }
+
+    // Next, create a node with a custom alias.
+    $edit = [
+      'title[0][value]' => 'Sample article',
+      'path[0][alias]' => '/sample-article',
+    ];
+    $this->drupalPostForm('node/add/article', $edit, t('Save and publish'));
+    $this->assertText(t('article Sample article has been created.'));
+
+    // Test the alias.
+    $this->assertAliasExists(array('alias' => '/sample-article'));
+    $this->drupalGet('sample-article');
+    $this->assertResponse(200, 'A node without a pattern can have a custom alias.');
+
+    // Now create a node through the API.
+    $node = Node::create(['type' => 'article', 'title' => 'Sample article API', 'path' => ['alias' => '/sample-article-api']]);
+    $node->save();
+
+    // Test the alias.
+    $this->assertAliasExists(['alias' => '/sample-article-api']);
+    $this->drupalGet('sample-article-api');
+    $this->assertResponse(200);
+  }
+
 }

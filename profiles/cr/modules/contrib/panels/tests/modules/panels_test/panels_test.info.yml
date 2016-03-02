@@ -7,7 +7,7 @@ dependencies:
   - panels
   - layout_plugin
 
-# Information added by drush on 2016-02-27
+# Information added by drush on 2016-02-25
 version: '8.x-1.x-dev'
 project: 'panels'
-datestamp: 1456582861
+datestamp: 1456444638

@@ -39,34 +39,16 @@ class PathautoState extends TypedData {
    */
   public function getValue() {
     if ($this->value === NULL) {
-      $entity = $this->parent->getEntity();
-
-      // @todo: Investigate why this happens.
-      if ($entity->isNew()) {
-        $this->value = static::CREATE;
-        return $this->value;
-      }
-
       // If no value has been set or loaded yet, try to load a value if this
       // entity has already been saved.
       $this->value = \Drupal::keyValue($this->getCollection())
         ->get($this->parent->getEntity()->id());
-      // If it was not yet saved or no value was found, try to detect based on
-      // an existing alias if the entity is not new.
+      // If it was not yet saved or no value was found, then set the flag to
+      // create the alias if there is a matching pattern.
       if ($this->value === NULL) {
-        $entity_path = '/' . $entity->toUrl()->getInternalPath();
-        $path = \Drupal::service('path.alias_manager')
-          ->getAliasByPath(
-            $entity_path, $entity->language()->getId()
-          );
-        $pathauto_alias = \Drupal::service('pathauto.generator')
-          ->createEntityAlias($entity, 'return');
-        if (($path != $entity_path && $path == $pathauto_alias)) {
-          $this->value = static::CREATE;
-        }
-        else {
-          $this->value = static::SKIP;
-        }
+        $entity = $this->parent->getEntity();
+        $pattern = \Drupal::service('pathauto.generator')->getPatternByEntity($entity);
+        $this->value = !empty($pattern) ? static::CREATE : static::SKIP;
       }
     }
     return $this->value;
