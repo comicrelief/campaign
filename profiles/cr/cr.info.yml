@@ -34,6 +34,7 @@ dependencies:
   - file
   - rdf
   - views_ui
+  - dblog
   - link
   - filter
   - dynamic_page_cache
@@ -61,6 +62,7 @@ dependencies:
   - cr_landing_page
   - cr_teaser
   - cr_content_wall
+  - cr_layout
 
   # Development modules
   - config_devel
