@@ -174,6 +174,7 @@
     </target>
 
     <target name="content:export:save">
+      <exec command="rm -fr profiles/cr/modules/custom/cr_default_content/content/user" />
       <exec dir="${app.dir}" command="${drush.cmd} dcer --folder=${app.content.dir}/ ${type} ${id}" logoutput="true" passthru="true" />
     </target>
 
