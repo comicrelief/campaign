@@ -1,0 +1,14 @@
+{
+  "name": "drupal/view_modes_display",
+  "type": "drupal-module",
+  "description": "Preview view modes for every entity type",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/view_modes_display",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "http://drupal.org/project/issues/view_modes_display",
+    "source": "http://cgit.drupalcode.org/view_modes_display"
+  },
+  "require": { }
+}
