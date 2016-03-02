@@ -84,7 +84,7 @@ class PathautoMassDeleteTest extends WebTestBase {
     );
     $this->drupalPostForm('admin/config/search/path/delete_bulk', $edit, t('Delete aliases now!'));
     $this->assertText(t('All of your path aliases have been deleted.'));
-    $this->assertUrl(\Drupal::url('pathauto.admin.delete'));
+    $this->assertUrl('admin/config/search/path/delete_bulk');
 
     // Make sure that all of them are actually deleted.
     $aliases = db_select('url_alias', 'ua')->fields('ua', array())->execute()->fetchAll();

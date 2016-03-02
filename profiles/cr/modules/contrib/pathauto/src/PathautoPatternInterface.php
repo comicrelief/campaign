@@ -8,7 +8,6 @@
 namespace Drupal\pathauto;
 
 use Drupal\Core\Config\Entity\ConfigEntityInterface;
-use Drupal\Core\Plugin\Context\ContextInterface;
 
 /**
  * Provides an interface for defining Pathauto pattern entities.
@@ -61,44 +60,72 @@ interface PathautoPatternInterface extends ConfigEntityInterface {
   public function setWeight($weight);
 
   /**
-   * @return bool
-   */
-  public function hasContext($token);
-
-  /**
-   * @return \Drupal\Core\Plugin\Context\ContextInterface
-   */
-  public function getContext($token);
-
-  /**
+   * Returns the contexts of this pattern.
+   *
    * @return \Drupal\Core\Plugin\Context\ContextInterface[]
    */
   public function getContexts();
 
   /**
-   * @param string $token
-   * @param \Drupal\Core\Plugin\Context\ContextInterface $context
+   * Returns whether a relationship exists.
    *
-   * @return $this
+   * @param string $token
+   *   Relationship identifier.
+   *
+   * @return bool
+   *   TRUE if the relationship exists, FALSE otherwise.
    */
-  public function addContext($token, ContextInterface $context);
+  public function hasRelationship($token);
 
   /**
+   * Adds a relationship.
+   *
+   * The relationship will not be changed if it already exists.
+   *
    * @param string $token
-   * @param \Drupal\Core\Plugin\Context\ContextInterface $context
+   *   Relationship identifier.
+   * @param string|null $label
+   *   (optional) A label, will use the label of the referenced context if not
+   *   provided.
    *
    * @return $this
    */
-  public function replaceContext($token, ContextInterface $context);
+  public function addRelationship($token, $label = NULL);
 
   /**
+   * Replaces a relationship.
+   *
+   * Only already existing relationships are updated.
+   *
    * @param string $token
+   *   Relationship identifier.
+   * @param string|null $label
+   *   (optional) A label, will use the label of the referenced context if not
+   *   provided.
    *
    * @return $this
    */
-  public function removeContext($token);
+  public function replaceRelationship($token, $label);
 
-  public function getContextDefinitions();
+  /**
+   * Removes a relationship.
+   *
+   * @param string $token
+   *   Relationship identifier.
+   *
+   * @return $this
+   */
+  public function removeRelationship($token);
+
+  /**
+   * Returns a list of relationships.
+   *
+   * @return array[]
+   *   Keys are context tokens, and values are arrays with the following keys:
+   *   - label (string|null, optional): The human-readable label of this
+   *     relationship.
+   */
+  public function getRelationships();
 
   /**
    * Gets the selection condition collection.

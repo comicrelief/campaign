@@ -28,9 +28,13 @@ pathauto.pattern.*:
     weight:
       type: integer
       label: 'Weight'
-    context_definitions:
+    relationships:
       type: sequence
       label: 'Context definitions'
       sequence:
-        - type: ctools.relationship
-          label: 'Context'
+        - type: mapping
+          label: 'Relationship'
+          mapping:
+            label:
+              type: label
+              label: 'Label'

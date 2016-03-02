@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\inline_entity_form\Plugin\Field\FieldWidget\InlineEntityFormSimple.
- */
-
 namespace Drupal\inline_entity_form\Plugin\Field\FieldWidget;
 
 use Drupal\Core\Field\FieldDefinitionInterface;
@@ -54,7 +49,7 @@ class InlineEntityFormSimple extends InlineEntityFormBase {
       'inline_entity_form'
     ]);
     $bundle = reset($this->getFieldSetting('handler_settings')['target_bundles']);
-    $element['inline_entity_form'] = $this->getInlineEntityForm($op, $language, $delta, $parents, $bundle, $entity, TRUE);
+    $element['inline_entity_form'] = $this->getInlineEntityForm($op, $bundle, $language, $delta, $parents, $entity, TRUE);
 
     return $element;
   }

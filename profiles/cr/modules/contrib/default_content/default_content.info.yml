@@ -6,7 +6,7 @@ core: 8.x
 dependencies:
   - hal
 
-# Information added by drush on 2016-02-27
+# Information added by drush on 2015-11-27
 version: '8.x-1.0-alpha2+5-dev'
 project: 'default_content'
-datestamp: 1456582864
+datestamp: 1448608412
