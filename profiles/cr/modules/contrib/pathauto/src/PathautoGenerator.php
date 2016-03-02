@@ -320,7 +320,13 @@ class PathautoGenerator implements PathautoGeneratorInterface {
       }
     }
 
-    $result = $this->createEntityAlias($entity, $op);
+    try {
+      $result = $this->createEntityAlias($entity, $op);
+    }
+    catch (\InvalidArgumentException $e) {
+      drupal_set_message($e->getMessage(), 'error');
+      return NULL;
+    }
 
     // @todo Move this to a method on the pattern plugin.
     if ($type == 'taxonomy_term') {
