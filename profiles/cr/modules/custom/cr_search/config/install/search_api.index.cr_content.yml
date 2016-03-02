@@ -1,0 +1,83 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.server.database
+    - field.field.node.article.field_image
+    - field.field.node.landing.field_image
+  module:
+    - search_api
+    - node
+id: cr_content
+name: 'CR Content'
+description: ''
+read_only: false
+field_settings:
+  search_api_language:
+    label: 'Item language'
+    datasource_id: null
+    property_path: search_api_language
+    type: string
+    indexed_locked: true
+    type_locked: true
+  status:
+    label: 'Publishing status'
+    datasource_id: 'entity:node'
+    property_path: status
+    type: boolean
+  uid:
+    label: 'Authored by'
+    datasource_id: 'entity:node'
+    property_path: uid
+    type: integer
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
+    boost: !!float 2
+  processed:
+    label: 'Body » Processed text'
+    datasource_id: 'entity:node'
+    property_path: 'body:processed'
+    type: text
+  field_image:
+    label: Image
+    datasource_id: 'entity:node'
+    property_path: field_image
+    type: integer
+  alt:
+    label: 'Image » Alternative text'
+    datasource_id: 'entity:node'
+    property_path: 'field_image:alt'
+    type: text
+  title_1:
+    label: 'Image » Title'
+    datasource_id: 'entity:node'
+    property_path: 'field_image:title'
+    type: text
+processor_settings:
+  add_url:
+    plugin_id: add_url
+    settings: {  }
+  language:
+    plugin_id: language
+    settings: {  }
+options:
+  index_directly: true
+  cron_limit: 50
+datasource_settings:
+  'entity:node':
+    plugin_id: 'entity:node'
+    settings:
+      default: '1'
+      bundles:
+        article: '0'
+        landing: '0'
+        page: '0'
+      languages: {  }
+tracker_settings:
+  default:
+    plugin_id: default
+    settings: {  }
+server: database
