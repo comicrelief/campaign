@@ -20,6 +20,8 @@ projects:
     version: 1.0-beta4
   pathauto:
     version: 1.0-alpha1
+    patch:
+    - "https://www.drupal.org/files/issues/the_given_alias_pattern-2655874-52.patch"
   token:
     version: 1.0-alpha2
   youtube:
