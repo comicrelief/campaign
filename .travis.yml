@@ -93,11 +93,14 @@ before_install:
   - composer global require "lionsad/drupal_ti:dev-master"
   - drupal-ti before_install
 
-install:
- - drupal-ti install
+  # Test with Pantheon pushes
+  - composer global require "pantheon-systems/ci-scripts"
+  - pwd
+  - ls -l
+  - bin/push-to-pantheon
 
- # Test with Pantheon pushes
- - bin/push-to-pantheon
+install:
+  - drupal-ti install
 
 before_script:
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh
