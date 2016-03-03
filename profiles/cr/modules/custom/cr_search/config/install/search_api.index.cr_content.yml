@@ -57,12 +57,28 @@ field_settings:
     property_path: 'field_image:title'
     type: text
 processor_settings:
-  add_url:
-    plugin_id: add_url
-    settings: {  }
   language:
     plugin_id: language
-    settings: {  }
+    settings:
+      weights:
+        preprocess_index: -30
+  add_url:
+    plugin_id: add_url
+    settings:
+      weights:
+        preprocess_index: -30
+  ignorecase:
+    plugin_id: ignorecase
+    settings:
+      fields:
+        - search_api_language
+        - title
+        - processed
+        - alt
+        - title_1
+      weights:
+        preprocess_index: -10
+        preprocess_query: -10
 options:
   index_directly: true
   cron_limit: 50

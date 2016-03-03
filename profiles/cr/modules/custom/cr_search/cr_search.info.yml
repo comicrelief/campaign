@@ -6,7 +6,6 @@ core: '8.x'
 
 dependencies:
   - search_api_db
-  - search_api_page
   - cr_article
   - cr_landing_page
 
@@ -17,7 +16,7 @@ config_devel:
   - views.view.search
 
   # Articles
-  - core.entity_view_display.node.article.search_result
+  - core.entity_view_display.node.article.search_index
 
   # Landing pages
-  - core.entity_view_display.node.landing.search_result
+  - core.entity_view_display.node.landing.search_index
