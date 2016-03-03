@@ -94,10 +94,7 @@ before_install:
   - drupal-ti before_install
 
 
-  - cd "$DRUPAL_TI_BEHAT_DIR"
-  - pwd
-  - ls -l vendor
-  - vendor/bin/push-to-pantheon
+
 
   # Test with Pantheon pushes
   # - composer global require "pantheon-systems/ci-scripts"
@@ -108,6 +105,11 @@ before_install:
 
 install:
   - drupal-ti install
+
+  - cd "$DRUPAL_TI_BEHAT_DIR"
+  - pwd
+  - ls -l vendor
+  - vendor/bin/push-to-pantheon
 
 before_script:
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh
