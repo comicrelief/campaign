@@ -145,7 +145,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          operator: and
+          operator: or
           value: ''
           group: 1
           exposed: true
@@ -155,7 +155,7 @@ display:
             description: ''
             use_operator: false
             operator: search_api_fulltext_op
-            identifier: search
+            identifier: text
             required: false
             remember: false
             multiple: false
@@ -176,12 +176,9 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          min_length: null
+          min_length: 3
           fields:
-            title: title
-            processed: processed
-            alt: alt
-            title_1: title_1
+            rendered_item: rendered_item
           plugin_id: search_api_fulltext
       sorts: {  }
       title: Search

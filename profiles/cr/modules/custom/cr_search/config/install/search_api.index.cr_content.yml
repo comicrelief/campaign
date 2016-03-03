@@ -56,6 +56,12 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: 'field_image:title'
     type: text
+  rendered_item:
+    label: 'Rendered HTML output'
+    datasource_id: null
+    property_path: rendered_item
+    type: text
+    indexed_locked: true
 processor_settings:
   language:
     plugin_id: language
@@ -76,9 +82,22 @@ processor_settings:
         - processed
         - alt
         - title_1
+        - rendered_item
       weights:
         preprocess_index: -10
         preprocess_query: -10
+  rendered_item:
+    plugin_id: rendered_item
+    settings:
+      roles:
+        anonymous: anonymous
+      view_mode:
+        'entity:node':
+          article: default
+          landing: full
+          page: ''
+      weights:
+        preprocess_index: -10
 options:
   index_directly: true
   cron_limit: 50
