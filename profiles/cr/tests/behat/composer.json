@@ -3,6 +3,7 @@
     "drupal/drupal-extension": "~3.0"
   },
   "require-dev": {
-    "pantheon-systems/ci-scripts": "*"
+    "pantheon-systems/ci-scripts": "*",
+    "pantheon-systems/cli": "*"
   }
 }
