@@ -104,7 +104,9 @@ install:
   - cd "$DRUPAL_TI_BEHAT_DIR"
   - echo $PEMAIL
   - echo $PPASS
-  - which terminus
+  - $(which terminus)
+  - terminus auth whoami
+  - echo $PATH
   - vendor/bin/push-to-pantheon
 
 before_script:
