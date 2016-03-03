@@ -1,6 +1,0 @@
-entity.search_api_page.add_form:
-  route_name: 'entity.search_api_page.add_form'
-  title: 'Add search page'
-  appears_on:
-    - entity.search_api_page.collection
-

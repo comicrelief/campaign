@@ -1,4 +1,0 @@
-entity.search_api_page.edit_form:
-  title: 'Edit'
-  route_name: entity.search_api_page.edit_form
-  base_route: entity.search_api_page.edit_form
