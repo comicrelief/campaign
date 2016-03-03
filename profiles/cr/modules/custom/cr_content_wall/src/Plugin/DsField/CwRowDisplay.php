@@ -72,11 +72,13 @@ class CwRowDisplay extends DsFieldBase {
    * {@inheritdoc}
    */
   public function getBlockViewModes($view_mode) {
-    $view_modes = array();
+    $view_modes = array(
+      'cw_1col_l' => array('cw_l'),
+      'cw_2col_m_m' => array('cw_m', 'cw_m'),
+      'cw_3col_s_s_s' => array('cw_s', 'cw_s', 'cw_s'),
+    );
 
-    $view_modes = array('cw_s', 'cw_s', 'cw_s');
-
-    return $view_modes;
+    return $view_modes[$view_mode];
   }
 
   /**
