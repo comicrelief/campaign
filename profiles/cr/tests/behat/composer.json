@@ -4,5 +4,5 @@
   },
   "require-dev": {
     "pantheon-systems/ci-scripts": "*"
-  },
+  }
 }
