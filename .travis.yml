@@ -76,6 +76,9 @@ env:
 
     # - DRUPAL_TI_RUNNERS="behat"
 
+    # For Pantheon
+    - PEMAIL="peter.vanhee@gmail.com"
+
   matrix:
   # [[[ SELECT ANY OR MORE OPTIONS ]]]
   # - DRUPAL_TI_RUNNERS="phpunit"
@@ -98,7 +101,7 @@ install:
 
   # Pantheon testing
   - cd "$DRUPAL_TI_BEHAT_DIR"
-  - PEMAIL = peter.vanhee@gmail.com
+  - echo $PEMAIL
   - echo $PPASS
   - vendor/bin/push-to-pantheon
 
