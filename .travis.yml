@@ -17,7 +17,7 @@ env:
   global:
     # add composer's global bin directory to the path
     # see: https://github.com/drush-ops/drush#install---composer
-    - PATH="$PATH:$HOME/.composer/vendor/bin"
+    - PATH="$PATH:$HOME/.composer/vendor/bin
 
     # Configuration variables.
     - DRUPAL_TI_MODULE_NAME="cr"
@@ -77,6 +77,7 @@ env:
     # - DRUPAL_TI_RUNNERS="behat"
 
     # For Pantheon
+    - PATH="$PATH:$DRUPAL_TI_BEHAT_DIR/vendor/bin"
     - PEMAIL="peter.vanhee@gmail.com"
 
   matrix:
@@ -103,6 +104,7 @@ install:
   - cd "$DRUPAL_TI_BEHAT_DIR"
   - echo $PEMAIL
   - echo $PPASS
+  - which terminus
   - vendor/bin/push-to-pantheon
 
 before_script:
