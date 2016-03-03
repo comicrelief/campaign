@@ -7,6 +7,9 @@
     "composer/installers": "^1.0.21",
     "wikimedia/composer-merge-plugin": "~1.3"
   },
+  "require-dev": {
+    "pantheon-systems/ci-scripts": "*"
+  },
   "replace": {
     "drupal/core": "~8.0"
   },
