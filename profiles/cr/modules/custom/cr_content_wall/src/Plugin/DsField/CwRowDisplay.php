@@ -39,7 +39,44 @@ class CwRowDisplay extends DsFieldBase {
     // Get referenced content blocks
     $blocks = $this->getReferencedBlocks($row, $config['reference_field']);
 
-    die('<pre>'.print_r($blocks,1).'</pre>');
+    return array(
+      '#theme' => 'item_list',
+      '#items' => $this->buildRenderedBlocks($blocks),
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function buildRenderedBlocks($blocks) {
+    if (!isset($blocks) || !$blocks) {
+      return;
+    }
+
+    $rendered_blocks = array();
+    $row_view_mode = $this->viewMode();
+    $view_modes = $this->getBlockViewModes($row_view_mode);
+
+    foreach ($blocks as $key => $id) {
+      $block = BlockContent::load($id);
+
+      $display = \Drupal::entityManager()->
+        getViewBuilder('block_content')->view($block, $view_modes[$key]);
+
+      $rendered_blocks[] = $display;
+    }
+    return $rendered_blocks;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getBlockViewModes($view_mode) {
+    $view_modes = array();
+
+    $view_modes = array('cw_s', 'cw_s', 'cw_s');
+
+    return $view_modes;
   }
 
   /**
@@ -55,6 +92,7 @@ class CwRowDisplay extends DsFieldBase {
   public function getReferencedBlocks($block, $field) {
     $field_values = $block->get($field)->getValue();
     $blocks = array();
+
     foreach ($field_values as $key => $referenced_block) {
       $blocks[] = $referenced_block['target_id'];
     }
