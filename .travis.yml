@@ -93,22 +93,13 @@ before_install:
   - composer global require "lionsad/drupal_ti:dev-master"
   - drupal-ti before_install
 
-
-
-
-  # Test with Pantheon pushes
-  # - composer global require "pantheon-systems/ci-scripts"
-  # - pwd
-  # - ls -l
-  # - ls -l vendor
-  # - vendor/bin/push-to-pantheon
-
 install:
   - drupal-ti install
 
+  # Pantheon testing
   - cd "$DRUPAL_TI_BEHAT_DIR"
-  - pwd
-  - ls -l vendor
+  - PEMAIL = peter.vanhee@gmail.com
+  - echo $PPASS
   - vendor/bin/push-to-pantheon
 
 before_script:
