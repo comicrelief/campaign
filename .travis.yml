@@ -97,7 +97,8 @@ before_install:
   - composer global require "pantheon-systems/ci-scripts"
   - pwd
   - ls -l
-  - bin/push-to-pantheon
+  - ls -l vendor
+  - vendor/bin/push-to-pantheon
 
 install:
   - drupal-ti install
