@@ -77,7 +77,7 @@ env:
     # - DRUPAL_TI_RUNNERS="behat"
 
     # For Pantheon
-    - PATH="$PATH:$HOME/$DRUPAL_TI_BEHAT_DIR/vendor/bin"
+    - PATH="$PATH:TRAVIS_BUILD_DIR/profiles/cr/tests/behat/vendor/bin"
     - PEMAIL="peter.vanhee@gmail.com"
 
   matrix:
