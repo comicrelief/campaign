@@ -123,8 +123,10 @@ install:
   - drupal-ti install
 
   - cd "$DRUPAL_TI_THEME_DIR"
-  - npm install
+  - \curl -sSL https://get.rvm.io | bash -s stable --ruby
+  - rvm install 2.0.0.
   - ruby --version
+  - npm install
   - gem --version
   - rm -fr Gemfile.lock
   - bundle install
