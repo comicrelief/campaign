@@ -135,8 +135,8 @@ install:
   - bundle install
   - grunt build
 
-  - git config --global user.email "$CI_BOT_EMAIL"
-  - git config --global user.name "$CI_BOT_NAME"
+  # - git config --global user.email "$CI_BOT_EMAIL"
+  # - git config --global user.name "$CI_BOT_NAME"
   - git status
   # - git add --force css
   # - git add --force js
@@ -159,7 +159,7 @@ install:
   - git remote add pantheon ssh://codeserver.$PENV.$PUUID@codeserver.$PENV.$PUUID.drush.in:2222/~/repository.git
   - git remote -v
   - echo $TRAVIS_BRANCH
-  - git push pantheon HEAD:master --force
+  - git push pantheon $TRAVIS_BRANCH:master --force
 
   # Change connection mode back to SFTP so we can install
   - terminus site set-connection-mode --site="$PUUID" --env="$PENV" --mode=sftp
