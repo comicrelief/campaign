@@ -125,31 +125,14 @@ install:
   - drupal-ti install
 
   - cd "$DRUPAL_TI_THEME_DIR"
-  # - \curl -sSL https://get.rvm.io | bash -s stable --ruby
-  - ruby --version
+  # We need min. Ruby 2.0
   - rvm install 2.0.0
-  - ruby --version
   - npm install
-  - gem --version
-  - rm -fr Gemfile.lock
   - bundle install
   - grunt build
 
-  - git config --global user.email "$CI_BOT_EMAIL"
-  - git config --global user.name "$CI_BOT_NAME"
-  - git status
-  - git log --decorate
-  - git add --force css
-  - git add --force js
-  - export CI_COMMIT_MSG="Branch $TRAVIS_BRANCH compiled CSS"
-  - git commit -a -m "Built by CI - $CI_COMMIT_MSG"
-
   # Pantheon testing
   - cd "$TRAVIS_BUILD_DIR"
-  # - cd "$DRUPAL_TI_BEHAT_DIR"
-  # - $(which terminus)
-  # - terminus auth whoami
-
 
   # Deploy to Pantheon
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/deploy_to_pantheon.sh
