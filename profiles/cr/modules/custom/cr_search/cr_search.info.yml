@@ -7,8 +7,6 @@ core: '8.x'
 dependencies:
   - search_api_db
   - cr_article
-  # If cr_landing_pages still has dependencies with content don't remove this.
-  - cr_default_content
   - cr_landing_page
 
 config_devel:
