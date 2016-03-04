@@ -116,7 +116,7 @@ install:
   # - terminus auth whoami
 
   - terminus auth login "$PEMAIL" --password="$PPASS"
-  - terminus drush --site="$PUUID" --env="$PENV" "site-install --account-pass='admin' -y" -y
+  - terminus drush --site="$PUUID" --env="$PENV" "site-install --account-pass='admin' -y"
   - exit
 
   # terminus site connection-mode --site="d8config-mz" --env="dev" --set=git
