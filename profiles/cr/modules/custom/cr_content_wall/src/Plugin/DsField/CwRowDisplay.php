@@ -129,7 +129,13 @@ class CwRowDisplay extends DsFieldBase {
    */
   public function getReferenceFields() {
     $field_options = array();
-    $field_options[] = 'field_cw_block_reference';
+    $fields = array_keys($this->entity()->getFields(FALSE));
+    foreach ($fields as $field_machine_name) {
+      if (preg_match('/field_/', $field_machine_name)) {
+        $field_options[$field_machine_name] = $field_machine_name;
+      }
+    }
+
     return $field_options;
   }
 
