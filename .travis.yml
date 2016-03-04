@@ -10,6 +10,9 @@ sudo: false
 php:
   - 5.6
 
+rvm:
+  - 2.0.0
+
 matrix:
   fast_finish: true
 
@@ -117,6 +120,7 @@ install:
 
   - cd "$DRUPAL_TI_THEME_DIR"
   - npm install
+  - gem --version
   - gem install autoprefixer-rails -v '6.3.1'
   - bundle install
   - grunt build
