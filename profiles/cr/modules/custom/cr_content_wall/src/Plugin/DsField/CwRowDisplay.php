@@ -60,10 +60,12 @@ class CwRowDisplay extends DsFieldBase {
     foreach ($blocks as $key => $id) {
       $block = BlockContent::load($id);
 
-      $display = \Drupal::entityManager()->
-        getViewBuilder('block_content')->view($block, $view_modes[$key]);
+      if (isset($view_modes[$key])) {
+        $display = \Drupal::entityManager()->
+          getViewBuilder('block_content')->view($block, $view_modes[$key]);
 
-      $rendered_blocks[] = $display;
+        $rendered_blocks[] = $display;
+      }
     }
     return $rendered_blocks;
   }
