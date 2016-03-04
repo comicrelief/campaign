@@ -81,6 +81,9 @@ env:
     - PEMAIL="peter.vanhee@gmail.com"
     - PUUID="f9291f1f-3819-4964-9c5b-c9f7d5500d28"
     - PENV="dev"
+    - SITE_NAME="CR"
+    - SITEPASS="admin"
+    - NOW=$(date +"%m-%d-%Y")
 
   matrix:
   # [[[ SELECT ANY OR MORE OPTIONS ]]]
@@ -116,7 +119,7 @@ install:
   # - terminus auth whoami
 
   - terminus auth login "$PEMAIL" --password="$PPASS"
-  - terminus drush --site="$PUUID" --env="$PENV" "site-install --account-pass='admin' -y"
+  - terminus drush --site="$PUUID" --env="$PENV" "site-install --account-pass='$SITEPASS' --site-name='$SITE_NAME $NOW' -y"
   - exit
 
   # terminus site connection-mode --site="d8config-mz" --env="dev" --set=git
