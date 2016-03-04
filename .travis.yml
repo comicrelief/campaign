@@ -86,7 +86,7 @@ env:
     # - DRUPAL_TI_RUNNERS="behat"
 
     # For Pantheon
-    - PATH="$TRAVIS_BUILD_DIR/profiles/cr/tests/behat/vendor/bin:$PATH"
+    # - PATH="$TRAVIS_BUILD_DIR/profiles/cr/tests/behat/vendor/bin:$PATH"
     - PEMAIL="peter.vanhee@gmail.com"
     - PUUID="f9291f1f-3819-4964-9c5b-c9f7d5500d28"
     - PENV="dev"
@@ -128,10 +128,10 @@ install:
   - grunt build
 
   # Pantheon testing
-  - cd "$TRAVIS_BUILD_DIR"
+  # - cd "$TRAVIS_BUILD_DIR"
 
   # Deploy to Pantheon
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/deploy_to_pantheon.sh
+  # - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/deploy_to_pantheon.sh
 
 before_script:
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh
