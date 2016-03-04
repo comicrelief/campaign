@@ -1,6 +1,10 @@
 #!/bin/bash
 # Simple script to deploy our `develop` branch to Pantheon continuously.
 
+# Dynamic hosts through Pantheon mean constantly checking interactively
+# that we mean to connect to an unknown host. We ignore those here.
+echo "StrictHostKeyChecking no" > ~/.ssh/config
+
 # Log into Pantheon
 terminus auth login "$PEMAIL" --password="$PPASS"
 

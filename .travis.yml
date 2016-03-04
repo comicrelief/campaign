@@ -86,7 +86,7 @@ env:
     # - DRUPAL_TI_RUNNERS="behat"
 
     # For Pantheon
-    - PATH="$PATH:$TRAVIS_BUILD_DIR/profiles/cr/tests/behat/vendor/bin"
+    - PATH="$TRAVIS_BUILD_DIR/profiles/cr/tests/behat/vendor/bin:$PATH"
     - PEMAIL="peter.vanhee@gmail.com"
     - PUUID="f9291f1f-3819-4964-9c5b-c9f7d5500d28"
     - PENV="dev"
@@ -117,13 +117,9 @@ before_install:
   - drupal-ti before_install
 
 install:
-
-  # Dynamic hosts through Pantheon mean constantly checking interactively
-  # that we mean to connect to an unknown host. We ignore those here.
-  - echo "StrictHostKeyChecking no" > ~/.ssh/config
-
   - drupal-ti install
 
+  # Compile SASS
   - cd "$DRUPAL_TI_THEME_DIR"
   # We need min. Ruby 2.0
   - rvm install 2.0.0
