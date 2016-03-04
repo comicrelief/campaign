@@ -106,7 +106,7 @@ install:
   - echo $PPASS
   - echo $PATH
   # - $(which terminus)
-  - terminus auth whoami
+  # - terminus auth whoami
   - vendor/bin/push-to-pantheon
 
 before_script:
