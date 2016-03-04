@@ -138,10 +138,10 @@ install:
   - git config --global user.email "$CI_BOT_EMAIL"
   - git config --global user.name "$CI_BOT_NAME"
   - git status
-  - git add --force css
-  - git add --force js
+  # - git add --force css
+  # - git add --force js
   - export CI_COMMIT_MSG="Branch $TRAVIS_BRANCH compiled CSS"
-  - git commit -a -m "Built by CI - $CI_COMMIT_MSG"
+  # - git commit -a -m "Built by CI - $CI_COMMIT_MSG"
 
   # Pantheon testing
   - cd "$TRAVIS_BUILD_DIR"
