@@ -118,6 +118,14 @@ install:
   # - $(which terminus)
   # - terminus auth whoami
 
+
+  # - git config --global user.email "$_CI_BOT_EMAIL"
+  # - git config --global user.name "$_CI_BOT_NAME"
+  - git remote add pantheon ssh://codeserver.$PENV.$PUUID@codeserver.$PENV.$PUUID.drush.in:2222/~/repository.git
+  - git remote -v
+  - echo $TRAVIS_BRANCH
+  - git push pantheon $TRAVIS_BRANCH:master --force
+
   - terminus auth login "$PEMAIL" --password="$PPASS"
   - terminus drush --site="$PUUID" --env="$PENV" "site-install --account-pass='$SITEPASS' --site-name='$SITE_NAME $NOW' -y"
   - exit
