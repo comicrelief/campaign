@@ -15,7 +15,8 @@ terminus site set-connection-mode --site="$PUUID" --env="$PENV" --mode=git
 
 git remote add pantheon ssh://codeserver.$PENV.$PUUID@codeserver.$PENV.$PUUID.drush.in:2222/~/repository.git
 
-git push pantheon $TRAVIS_BRANCH:master --force
+git log --decorate
+git push pantheon HEAD:master --force
 
 # Change connection mode back to SFTP so we can install
 terminus site set-connection-mode --site="$PUUID" --env="$PENV" --mode=sftp
