@@ -21,6 +21,7 @@ class PanelsIPEBlockContentForm extends BlockContentForm {
     $actions['submit'] = [
       '#type' => 'button',
       '#value' => $this->t('Create and Place'),
+      '#name' => 'panels_ipe_submit',
       '#ajax' => [
         'callback' => '::submitForm',
         'wrapper' => 'panels-ipe-block-type-form-wrapper',
@@ -52,8 +53,11 @@ class PanelsIPEBlockContentForm extends BlockContentForm {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    // Return early if there are any errors.
-    if ($form_state->hasAnyErrors()) {
+    $triggering_element = $form_state->getTriggeringElement();
+
+    // Return early if there are any errors or if a button we're not aware of
+    // submitted the form.
+    if ($form_state->hasAnyErrors() || $triggering_element['#name'] !== 'panels_ipe_submit') {
       return $form;
     }
 
