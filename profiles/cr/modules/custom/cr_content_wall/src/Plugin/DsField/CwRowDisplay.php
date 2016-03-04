@@ -77,6 +77,8 @@ class CwRowDisplay extends DsFieldBase {
     $view_modes = array(
       'cw_1col_l' => array('cw_l'),
       'cw_2col_m_m' => array('cw_m', 'cw_m'),
+      'cw_2col_s_m' => array('cw_s', 'cw_mp'),
+      'cw_2col_m_s' => array('cw_mp', 'cw_s'),
       'cw_3col_s_s_s' => array('cw_s', 'cw_s', 'cw_s'),
     );
 
