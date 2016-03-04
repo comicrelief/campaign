@@ -11,7 +11,7 @@ dependencies:
 test_dependencies:
   - page_manager
 
-# Information added by drush on 2016-02-25
-version: '8.x-1.x-dev'
+# Information added by drush on 2016-03-03
+version: '8.x-3.0-beta4+13-dev'
 project: 'panels'
-datestamp: 1456444638
+datestamp: 1456968067
