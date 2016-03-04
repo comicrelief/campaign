@@ -36,7 +36,7 @@ class DefaultContentImportedSubscriber implements EventSubscriberInterface {
 
     $entities = $event->getImportedEntities();
     $map = [
-      'e2f2ca58-d03a-4fe1-8616-2222cda201d7' => ['label' => 'Fundraise (Landing for Pantheon)'],
+      'e2f2ca58-d03a-4fe1-8616-2222cda201d7' => ['label' => 'Fundraise (Landing for Pantheon 2)'],
       // '6eb572d1-dd76-4944-9f00-0dda6e0874d9' => ['label' => 'Services'],
       // '78eff650-8399-4c62-b92c-445de219a47d' => [
       //   'label' => 'Resources',
