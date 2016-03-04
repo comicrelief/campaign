@@ -124,6 +124,7 @@ install:
 
   - cd "$DRUPAL_TI_THEME_DIR"
   - npm install
+  - ruby --version
   - gem --version
   - gem install autoprefixer-rails -v '6.3.1'
   - bundle install
