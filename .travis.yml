@@ -109,7 +109,16 @@ install:
   - echo $PATH
   # - $(which terminus)
   # - terminus auth whoami
-  - vendor/bin/push-to-pantheon
+
+  - terminus auth login "$PEMAIL" --password="$PPASS"
+  - terminus drush --site="$PUUID" --env="$PENV" "site-install --account-pass='admin' -y"
+  - exit
+
+  # terminus site connection-mode --site="d8config-mz" --env="dev" --set=git
+# git force push this branch to pantheon
+# terminus: reinstall the site
+
+  # - vendor/bin/push-to-pantheon
 
 before_script:
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh
