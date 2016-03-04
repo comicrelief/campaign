@@ -79,6 +79,8 @@ env:
     # For Pantheon
     - PATH="$PATH:$TRAVIS_BUILD_DIR/profiles/cr/tests/behat/vendor/bin"
     - PEMAIL="peter.vanhee@gmail.com"
+    - PUUID="f9291f1f-3819-4964-9c5b-c9f7d5500d28"
+    - PENV="dev"
 
   matrix:
   # [[[ SELECT ANY OR MORE OPTIONS ]]]
