@@ -126,7 +126,7 @@ install:
   - npm install
   - ruby --version
   - gem --version
-  - gem install autoprefixer-rails -v '6.3.1'
+  - rm -fr Gemfile.lock
   - bundle install
   - grunt build
 
