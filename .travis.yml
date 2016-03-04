@@ -92,7 +92,7 @@ env:
     - PENV="dev"
     - SITE_NAME="CR"
     - SITEPASS="admin"
-    - NOW=$(date +"%m-%d-%Y")
+    - NOW=$(date +"%m-%d-%Y %T")
     - CI_BOT_EMAIL="travis-ci@example.org"
     - CI_BOT_NAME="Travis CI"
 
