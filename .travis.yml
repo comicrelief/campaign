@@ -106,9 +106,6 @@ install:
 
   # Pantheon testing
   - cd "$DRUPAL_TI_BEHAT_DIR"
-  - echo $PEMAIL
-  - echo $PPASS
-  - echo $PATH
   # - $(which terminus)
   # - terminus auth whoami
 
