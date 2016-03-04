@@ -10,6 +10,10 @@ sudo: false
 php:
   - 5.6
 
+# No need for git history here
+git:
+ depth: 3
+
 rvm:
   - 2.0.0
 
