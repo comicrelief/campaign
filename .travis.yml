@@ -118,6 +118,7 @@ install:
   - cd "$DRUPAL_TI_THEME_DIR"
   - npm install
   - bundle install
+  - grunt build
 
   # Pantheon testing
   - cd "$DRUPAL_TI_BEHAT_DIR"
