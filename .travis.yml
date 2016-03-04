@@ -119,6 +119,9 @@ install:
   # - terminus auth whoami
 
 
+  # Change connection mode to Git
+  - terminus site set-connection-mode --site="$PUUID" --env="$PENV" --set=git
+
   # - git config --global user.email "$_CI_BOT_EMAIL"
   # - git config --global user.name "$_CI_BOT_NAME"
   - git remote add pantheon ssh://codeserver.$PENV.$PUUID@codeserver.$PENV.$PUUID.drush.in:2222/~/repository.git
@@ -126,11 +129,13 @@ install:
   - echo $TRAVIS_BRANCH
   - git push pantheon $TRAVIS_BRANCH:master --force
 
+  # Change connection mode back to SFTP so we can install
+  - terminus site set-connection-mode --site="$PUUID" --env="$PENV" --set=git
+
   - terminus auth login "$PEMAIL" --password="$PPASS"
   - terminus drush --site="$PUUID" --env="$PENV" "site-install --account-pass='$SITEPASS' --site-name='$SITE_NAME $NOW' -y"
   - exit
 
-  # terminus site connection-mode --site="d8config-mz" --env="dev" --set=git
 # git force push this branch to pantheon
 # terminus: reinstall the site
 
