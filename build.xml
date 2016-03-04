@@ -24,7 +24,6 @@
   <property name="db.querystring"     override="true" value="mysql://root:@localhost/campaign" />
   <!-- These allow developers to override config. on a per environment basis -->
   <property file="build.properties"   override="true"/>
-
   <!-- Default & meta -->
   <target name="build" depends="cleanfiles, install, grunt:build"
     description="Build (or rebuild) the project.">
