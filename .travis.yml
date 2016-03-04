@@ -166,6 +166,7 @@ install:
   - terminus site set-connection-mode --site="$PUUID" --env="$PENV" --mode=sftp
 
   - terminus drush --site="$PUUID" --env="$PENV" "site-install --account-pass='$SITEPASS' --site-name='$SITE_NAME $NOW' -y"
+  - terminus site wake --site="$PUUID" --env="$PENV"
   - exit
 
 # git force push this branch to pantheon
