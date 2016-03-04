@@ -46,6 +46,7 @@ dependencies:
   - metatag_open_graph
   - pathauto
   - youtube
+  - view_modes_display
 
   # Layout
   - inline_entity_form
