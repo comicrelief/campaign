@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '1.9.3'
+
 # Sass, Compass and extensions.
 gem 'sass', '3.4.5'           # Sass.
 gem 'sass-globbing'           # Import Sass files based on globbing pattern.
@@ -31,7 +33,7 @@ gem 'rb-inotify', '~> 0.9', :require => false      # Linux
 gem 'rb-fsevent', :require => false                # Mac OSX
 gem 'rb-fchange', :require => false                # Windows
 
-# Add Hologram - markdown based documentation system for style guides. 
+# Add Hologram - markdown based documentation system for style guides.
 # http://trulia.github.io/hologram
 # gem 'hologram'
 
