@@ -95,6 +95,8 @@ mysql:
   encoding: utf8
 
 before_install:
+  # For Pantheon, add a private SSH key (see https://github.com/pantheon-systems/travis-scripts)
+  - openssl aes-256-cbc -K $encrypted_f913de0c14f1_key -iv $encrypted_f913de0c14f1_iv -in travis-ci-key.enc -out travis-ci-key -d
   - composer self-update
   - composer global require "lionsad/drupal_ti:dev-master"
   - drupal-ti before_install
