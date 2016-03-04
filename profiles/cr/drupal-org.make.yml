@@ -40,8 +40,8 @@ projects:
   panels:
     download:
       type: git
-      branch: 8.x-1.x
-      revision: ba0c77df894a9217cdf45551db105b9cc1c76315
+      branch: 8.x-3.x
+      revision: 7e856962b893ecde853d4269e8e4baaaa1e68ac3
   panelizer:
     version: 3.0-alpha2
   ds:

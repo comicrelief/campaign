@@ -162,6 +162,11 @@
     template_item: function(block_plugin) {
       var template_vars = block_plugin.toJSON();
 
+      // Not all blocks have labels, add a default if necessary.
+      if (!template_vars.label) {
+        template_vars.label = Drupal.t('No label');
+      }
+
       // Reduce the length of the Block label if needed.
       template_vars.trimmed_label = template_vars.label;
       if (template_vars.trimmed_label.length > 30) {
