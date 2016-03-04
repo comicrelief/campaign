@@ -118,6 +118,8 @@ install:
   # - $(which terminus)
   # - terminus auth whoami
 
+  # Log into Pantheon
+  - terminus auth login "$PEMAIL" --password="$PPASS"
 
   # Change connection mode to Git
   - terminus site set-connection-mode --site="$PUUID" --env="$PENV" --mode=git
@@ -132,7 +134,6 @@ install:
   # Change connection mode back to SFTP so we can install
   - terminus site set-connection-mode --site="$PUUID" --env="$PENV" --mode=sftp
 
-  - terminus auth login "$PEMAIL" --password="$PPASS"
   - terminus drush --site="$PUUID" --env="$PENV" "site-install --account-pass='$SITEPASS' --site-name='$SITE_NAME $NOW' -y"
   - exit
 
