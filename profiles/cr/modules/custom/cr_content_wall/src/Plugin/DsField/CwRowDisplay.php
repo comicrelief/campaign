@@ -46,7 +46,8 @@ class CwRowDisplay extends DsFieldBase {
   }
 
   /**
-   * {@inheritdoc}
+   * @param array of referenced block id's
+   * @return array of rendered blocks in row defined view modes
    */
   public function buildRenderedBlocks($blocks) {
     if (!isset($blocks) || !$blocks) {
@@ -71,7 +72,8 @@ class CwRowDisplay extends DsFieldBase {
   }
 
   /**
-   * {@inheritdoc}
+   * @param string: row block view mode
+   * @return array of associated child block view modes
    */
   public function getBlockViewModes($view_mode) {
     $view_modes = array(
@@ -86,14 +88,17 @@ class CwRowDisplay extends DsFieldBase {
   }
 
   /**
-   * {@inheritdoc}
+   * @param row block id
+   * @return loaded BlockContent object
    */
   public function getRowEntity($id) {
     return BlockContent::load($id);
   }
 
   /**
-   * {@inheritdoc}
+   * @param loaded row block entity
+   * @param reference field machine name
+   * @return array of referenced block id's
    */
   public function getReferencedBlocks($block, $field) {
     $field_values = $block->get($field)->getValue();
@@ -112,7 +117,7 @@ class CwRowDisplay extends DsFieldBase {
   public function settingsForm($form, FormStateInterface $form_state) {
     $config = $this->getConfiguration();
     $options = array();
-    $options = $this->getReferenceFields();
+    $options['field_cw_block_reference'] = 'field_cw_block_reference';
 
     $settings['reference_field'] = array(
       '#type' => 'select',
@@ -122,24 +127,6 @@ class CwRowDisplay extends DsFieldBase {
     );
 
     return $settings;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getReferenceFields() {
-    $field_options = array();
-    /*
-     * Removing this as the entity method isnt available here
-     * its over kill for this use anyway.
-    $fields = array_keys($this->entity()->getFields(FALSE));
-    foreach ($fields as $field_machine_name) {
-      if (preg_match('/field_/', $field_machine_name)) {
-        $field_options[$field_machine_name] = $field_machine_name;
-      }
-    }*/
-    $field_options['field_cw_block_reference'] = 'field_cw_block_reference';
-    return $field_options;
   }
 
   /**
@@ -165,13 +152,6 @@ class CwRowDisplay extends DsFieldBase {
     );
 
     return $configuration;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function formatters() {
-    return array();
   }
 
 }
