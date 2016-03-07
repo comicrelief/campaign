@@ -19,7 +19,7 @@
 
   <!-- Meta targets -->
   <target name="build"
-    depends="install, grunt:build"
+    depends="cleanfiles, install, grunt:build"
     description="Build (or rebuild) the project.">
   </target>
 
@@ -46,6 +46,15 @@
 
   <target name="cache:clear">
     <exec command="${drush.bin} cr" passthru="true"/>
+    <phingcall target="permissions" />
+  </target>
+  <target name="cleanfiles">
+    <exec dir="${app.dir}/sites/default/files" command="rm -rf *" passthru="true"/>
+  </target>
+  <target name="permissions">
+    <exec command="chmod 755 ${app.dir}/sites/default" />
+    <exec command="chmod 755 ${app.dir}/sites/default/settings.php" />
+    <exec command="chmod 777 -R ${app.dir}/sites/default/files/" />
   </target>
 
   <target name="make"
@@ -74,8 +83,7 @@
       command="${drush.bin} si ${app.profile.name} -y --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring}"
       logoutput="true"
       passthru="true" />
-    <exec command="chmod 755 ${app.dir}/sites/default" />
-    <exec command="chmod 755 ${app.dir}/sites/default/settings.php" />
+    <phingcall target="permissions" />
   </target>
 
   <target name="login" description="Generate a one-time login link">
