@@ -98,6 +98,7 @@
     <exec dir="${app.dir}" passthru="true" logoutput="true"
       command="${drush.bin} config-devel-export ${config_devel_module}" />
   </target>
+
   <target name="content:export">
     <exec dir="${app.dir}" logoutput="true" passthru="true"
       command="${drush.bin} dcem cr_default_content" />
