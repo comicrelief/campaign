@@ -7,41 +7,25 @@
   <property name="app.profile.dir"    value="profiles/${app.profile.name}" />
   <property name="app.profile.theme"  value="${app.profile.dir}/themes/custom/campaign_base" />
   <property name="app.content.dir"    value="${app.profile.dir}/modules/custom/cr_default_content/content" />
-  <!-- Development variables. -->
-  <property name="app.dev.modules"    value="devel default_content" />
+  <!-- Development modules. -->
   <property name="app.config_modules" value="cr cr_article cr_content_wall cr_teaser cr_landing_page cr_default_content cr_search" />
-  <property name="app.uri"            override="true" value="http://campaign.dev" />
   <!-- This should get overidden for secure builds. -->
   <property name="app.password"       override="true" value="admin" />
-  <!-- Drush -->
+  <property name="app.uri"            override="true" value="http://campaign.dev" />
   <property name="drush.bin"          override="true" value="${app.dir}/bin/drush" />
-  <!-- Database -->
   <property name="db.querystring"     override="true" value="mysql://root:@localhost/campaign" />
   <!-- These allow developers to override config. on a per environment basis -->
   <property file="build.properties"   override="true"/>
 
   <!-- Meta targets -->
   <target name="build"
-          depends="install, grunt:build"
-          description="Build (or rebuild) the project.">
-  </target>
-
-  <target name="build:dev"
-          depends="build, dev:modules"
-          description="Build (or rebuild) the project with development dependencies.">
-
-      <exec command="cp ${app.dir}/sites/example.settings.local.php ${app.dir}/sites/default/settings.local.php;" />
-
-      <!-- Ensure the local settings file is included from the main setting file. -->
-      <append text="if (file_exists(__DIR__ . '/settings.local.php')) { include __DIR__ . '/settings.local.php'; }"
-              destFile="${app.dir}/sites/default/settings.php" />
-      <phingcall target="cache:clear"/>
-
+    depends="install, grunt:build"
+    description="Build (or rebuild) the project.">
   </target>
 
   <target name="test"
-          depends="prepare-test"
-          description="Run behat tests">
+    depends="prepare-test"
+    description="Run behat tests">
     <exec dir="${app.dir}/${app.profile.dir}/tests/behat"
       command="vendor/bin/behat"
       passthru="true"
@@ -49,119 +33,83 @@
   </target>
 
   <target name="prepare-test"
-          description="Prepare to tun behat tests">
+    description="Prepare to tun behat tests">
     <copy file="${app.dir}/${app.profile.dir}/tests/behat/behat.yml.phing" tofile="${app.dir}/${app.profile.dir}/tests/behat/behat.yml" overwrite="true">
       <filterchain>
-          <replacetokens begintoken="%%" endtoken="%%">
-              <token key="DRUPAL_TI_DRUPAL_DIR" value="${app.dir}" />
-              <token key="BASE_URL" value="${app.uri}" />
-          </replacetokens>
+        <replacetokens begintoken="%%" endtoken="%%">
+          <token key="DRUPAL_TI_DRUPAL_DIR" value="${app.dir}" />
+          <token key="BASE_URL" value="${app.uri}" />
+        </replacetokens>
       </filterchain>
     </copy>
   </target>
 
-  <!-- Drush Targets -->
   <target name="cache:clear">
-    <exec command="${drush.bin} cr"
-          passthru="true"/>
-  </target>
-
-
-  <!-- Standard targets -->
-
-  <target name="prepare"
-          description="Setup the project">
-
-    <!-- Create -->
-    <exec command="mkdir -p ${app.dir}/${app.files.public} ${app.dir}/${app.files.tmp} ${app.dir}/${app.files.private}"
-          logoutput="true"
-          passthru="true"
-          checkreturn="true" />
-
-    <!-- Permissions -->
-    <exec command="chmod -R 2775 ${app.dir}/${app.files.public} ${app.dir}/${app.files.tmp} ${app.dir}/${app.files.private}"
-          logoutput="true"
-          passthru="true"
-          checkreturn="true" />
-
+    <exec command="${drush.bin} cr" passthru="true"/>
   </target>
 
   <target name="make"
-          description="Compile CR contrib from a make file">
+    description="Compile CR contrib from a make file">
     <exec dir="${app.dir}"
-          command="${drush.bin} make -y ${app.profile.dir}/drupal-org.make.yml --no-core --contrib-destination=${app.profile.dir}"
-          checkreturn="true"
-          logoutput="true"
-          passthru="true" />
+      command="${drush.bin} make -y ${app.profile.dir}/drupal-org.make.yml --no-core --contrib-destination=${app.profile.dir}"
+      checkreturn="true"
+      logoutput="true"
+      passthru="true" />
   </target>
 
   <target name="make-core"
-          depends="make"
-          description="Compile CR from a make file">
+    depends="make"
+    description="Compile CR from a make file">
     <exec dir="${app.dir}"
-          command="${drush.bin} make -y ${app.profile.dir}/drupal-org-core.make.yml --no-cache --prepare-install"
-          checkreturn="true"
-          logoutput="true"
-          passthru="true" />
+      command="${drush.bin} make -y ${app.profile.dir}/drupal-org-core.make.yml --no-cache --prepare-install"
+      checkreturn="true"
+      logoutput="true"
+      passthru="true" />
   </target>
 
   <target name="install"
-          description="Install CR with standard configuration.">
+    description="Install CR with standard configuration.">
     <!-- Install the site -->
     <exec dir="${app.dir}"
-          command="${drush.bin} site-install ${app.profile.name} -y --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring}"
-          logoutput="true"
-          passthru="true" />
+      command="${drush.bin} si ${app.profile.name} -y --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring}"
+      logoutput="true"
+      passthru="true" />
     <exec command="chmod 755 ${app.dir}/sites/default" />
     <exec command="chmod 755 ${app.dir}/sites/default/settings.php" />
   </target>
 
   <target name="login" description="Generate a one-time login link">
     <exec dir="${app.dir}"
-          command="${drush.bin} uli -l ${app.uri}"
-          logoutput="true"
-          passthru="true" />
+      command="${drush.bin} uli -l ${app.uri}"
+      logoutput="true"
+      passthru="true" />
   </target>
 
   <target name="grunt:build" description="Generate all compiled Sass and JS files.">
     <exec dir="${app.profile.theme}"
-          command="grunt build"
-          logoutput="true"
-          passthru="true"
-          checkreturn="true" />
-  </target>
-
-  <!-- Development tagets -->
-
-  <target name="dev:modules"
-          description="Install the development modules.">
-    <exec dir="${app.dir}"
-          command="${drush.bin} en ${app.dev.modules} -y"
-          logoutput="true"
-          passthru="true" />
+      command="grunt build"
+      logoutput="true"
+      passthru="true"
+      checkreturn="true" />
   </target>
 
   <target name="config:export" description="Export all of the configuration for the defined modules.">
     <foreach list="${app.config_modules}" param="config_devel_module" target="config:export:single" delimiter=" " />
   </target>
-
   <target name="config:export:single">
     <exec dir="${app.dir}"
-          command="${drush.bin} config-devel-export ${config_devel_module}"
-          logoutput="true"
-          passthru="true" />
-    </target>
+      command="${drush.bin} config-devel-export ${config_devel_module}"
+      logoutput="true"
+      passthru="true" />
+  </target>
 
-    <target name="content:export">
-      <exec dir="${app.dir}" command="${drush.bin} dcem cr_default_content" logoutput="true" passthru="true" />
-    </target>
-
-    <target name="content:export:show">
-      <exec dir="${app.dir}" command="${drush.bin} dcer ${type} ${id}" logoutput="true" passthru="true" />
-    </target>
-
-    <target name="content:export:save">
-      <exec dir="${app.dir}" command="${drush.bin} dcer --file=${app.content.dir}/ ${type} ${id}" logoutput="true" passthru="true" />
-    </target>
-
+  <target name="content:export">
+    <exec dir="${app.dir}" command="${drush.bin} dcem cr_default_content" logoutput="true" passthru="true" />
+  </target>
+  <target name="content:export:show">
+    <exec dir="${app.dir}" command="${drush.bin} dcer ${type} ${id}" logoutput="true" passthru="true" />
+  </target>
+  <target name="content:export:save">
+    <exec dir="${app.dir}" command="${drush.bin} dcer --file=${app.content.dir}/ ${type} ${id}" logoutput="true" passthru="true" />
+  </target>
 </project>
