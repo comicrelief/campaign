@@ -111,6 +111,7 @@
       command="${drush.bin} dcer --file=${app.content.dir}/ ${type} ${id}" />
     <exec command="rm -fr profiles/cr/modules/custom/cr_default_content/content/user" />
   </target>
+
   <!-- Quality Code template: https://github.com/previousnext/phing-phpqatools/blob/master/build.xml -->
   <target name="info:code" description="Check quality of the custom code"
     depends="info:tools, info:code:cs, info:code:md, info:code:loc">
