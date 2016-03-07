@@ -15,22 +15,30 @@ third_party_settings:
       library: ''
       disable_css: false
       settings:
-        classes: {  }
-        wrappers: {  }
+        wrappers:
+          ds_content: div
         outer_wrapper: div
         attributes: ''
         link_attribute: ''
         link_custom: ''
+        classes:
+          layout_class: {  }
     regions:
       ds_content:
-        - field_cw_block_reference
+        - cr_content_wall_CwRowDisplay
+    fields:
+      cr_content_wall_CwRowDisplay:
+        plugin_id: cr_content_wall_CwRowDisplay
+        weight: 0
+        label: hidden
+        formatter: default
 id: block_content.cw_row_block.cw_2col_m_m
 targetEntityType: block_content
 bundle: cw_row_block
 mode: cw_2col_m_m
 content:
   field_cw_block_reference:
-    weight: 0
+    weight: 1
     label: hidden
     settings:
       view_mode: cw_m

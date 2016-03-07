@@ -15,9 +15,12 @@ config_devel:
   - core.entity_view_display.block_content.cw_row_block.default
   - core.entity_view_display.block_content.cw_row_block.cw_1col_l
   - core.entity_view_display.block_content.cw_row_block.cw_2col_m_m
+  - core.entity_view_display.block_content.cw_row_block.cw_2col_s_m
+  - core.entity_view_display.block_content.cw_row_block.cw_2col_m_s
   - core.entity_view_display.block_content.cw_row_block.cw_3col_s_s_s
   - core.entity_view_display.block_content.teaser.cw_l
   - core.entity_view_display.block_content.teaser.cw_m
+  - core.entity_view_display.block_content.teaser.cw_mp
   - core.entity_view_display.block_content.teaser.cw_s
   # Fields
   - field.field.block_content.cw_row_block.field_cw_block_reference
@@ -34,9 +37,12 @@ config_devel:
   #- core.entity_view_mode.node.content_wall
   - core.entity_view_mode.block_content.cw_1col_l
   - core.entity_view_mode.block_content.cw_2col_m_m
+  - core.entity_view_mode.block_content.cw_2col_s_m
+  - core.entity_view_mode.block_content.cw_2col_m_s
   - core.entity_view_mode.block_content.cw_3col_s_s_s
   - core.entity_view_mode.block_content.cw_l
   - core.entity_view_mode.block_content.cw_m
+  - core.entity_view_mode.block_content.cw_mp
   - core.entity_view_mode.block_content.cw_s
 # Image styles
   - image.style.cw_large_780x440
