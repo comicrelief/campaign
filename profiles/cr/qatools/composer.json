@@ -1,0 +1,6 @@
+{
+    "require": {
+        "drupal/coder": "^8.2",
+        "phpmd/phpmd": "^2.3"
+    }
+}

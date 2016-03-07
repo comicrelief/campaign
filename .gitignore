@@ -74,6 +74,9 @@ build.properties
 PATCHES.txt
 
 profiles/cr/tests/behat/vendor
+profiles/cr/tests/behat/composer.lock
 profiles/cr/tests/behat/behat.yml
+profiles/cr/qatools/vendor
+profiles/cr/qatools/composer.lock
 
 .idea
