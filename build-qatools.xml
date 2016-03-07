@@ -10,7 +10,7 @@
     description="Check quality of the PHP code for more info. https://www.drupal.org/node/1419988">
     <exec command="${cs.bin} --config-set installed_paths ${c.home}${cs.dir}" />
     <exec logoutput="true" dir="${app.profile.dir}"
-      command="${cs.bin} ${cs.standard} ${cs.ext} modules/custom,themes/custom" />
+      command="${cs.bin} ${cs.standard} ${cs.ext} modules/custom themes/custom" />
   </target>
   <target name="info:code:md" depends="info:tools"
     description="Detect the mess in the code. https://phpmd.org/documentation/index.html">
