@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * @file
+ * Contains social_links.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use \Drupal\Core\Entity\EntityInterface;
+use \Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+
+/**
+ * Implements hook_help().
+ */
+function social_links_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the social_links module.
+    case 'help.page.social_links':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Social Links provides social share links on entities.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+function social_links_entity_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+  // Only do the extra work if the component is configured to be displayed.
+  // This assumes a 'mymodule_addition' extra field has been defined for the
+  // entity bundle in hook_entity_extra_field_info().
+  if ($display->getComponent('mymodule_addition')) {
+    $build['mymodule_addition'] = array(
+      '#markup' => mymodule_addition($entity),
+      '#theme' => 'mymodule_my_additional_field',
+    );
+  }
+}
