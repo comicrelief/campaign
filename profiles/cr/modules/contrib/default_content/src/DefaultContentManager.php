@@ -12,15 +12,9 @@ use Drupal\Component\Utility\SafeMarkup;
 use Drupal\Core\Config\Entity\ConfigEntityInterface;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityManager;
-use Drupal\Core\Extension\InfoParserInterface;
-use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Session\AccountInterface;
-use Drupal\default_content\Event\DefaultContentEvents;
-use Drupal\default_content\Event\ExportEvent;
-use Drupal\default_content\Event\ImportEvent;
 use Drupal\rest\LinkManager\LinkManagerInterface;
 use Drupal\rest\Plugin\Type\ResourcePluginManager;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Serializer\Serializer;
 
 /**
@@ -60,20 +54,6 @@ class DefaultContentManager implements DefaultContentManagerInterface {
   protected $entityManager;
 
   /**
-   * The module handler.
-   *
-   * @var \Drupal\Core\Extension\ModuleHandlerInterface
-   */
-  protected $moduleHandler;
-
-  /**
-   * The info file parser.
-   *
-   * @var \Drupal\Core\Extension\InfoParserInterface
-   */
-  protected $infoParser;
-
-  /**
    * The file system scanner.
    *
    * @var \Drupal\default_content\DefaultContentScanner
@@ -102,13 +82,6 @@ class DefaultContentManager implements DefaultContentManagerInterface {
   protected $linkManager;
 
   /**
-   * The event dispatcher.
-   *
-   * @var \Symfony\Component\EventDispatcher\EventDispatcherInterface
-   */
-  protected $eventDispatcher;
-
-  /**
    * Constructs the default content manager.
    *
    * @param \Symfony\Component\Serializer\Serializer $serializer
@@ -121,21 +94,12 @@ class DefaultContentManager implements DefaultContentManagerInterface {
    *   The entity manager service.
    * @param \Drupal\rest\LinkManager\LinkManagerInterface $link_manager
    *   The link manager service.
-   * @param \Symfony\Component\EventDispatcher\EventDispatcherInterface $event_dispatcher
-   *   The event dispatcher.
-   * @param \Drupal\Core\Extension\ModuleHandlerInterface $module_handler
-   *   The module handler.
-   * @param \Drupal\Core\Extension\InfoParserInterface $info_parser
-   *   The info file parser.
    */
-  public function __construct(Serializer $serializer, ResourcePluginManager $resource_plugin_manager, AccountInterface $current_user, EntityManager $entity_manager, LinkManagerInterface $link_manager, EventDispatcherInterface $event_dispatcher, ModuleHandlerInterface $module_handler, InfoParserInterface $info_parser) {
+  public function __construct(Serializer $serializer, ResourcePluginManager $resource_plugin_manager, AccountInterface $current_user, EntityManager $entity_manager, LinkManagerInterface $link_manager) {
     $this->serializer = $serializer;
     $this->resourcePluginManager = $resource_plugin_manager;
     $this->entityManager = $entity_manager;
     $this->linkManager = $link_manager;
-    $this->eventDispatcher = $event_dispatcher;
-    $this->moduleHandler = $module_handler;
-    $this->infoParser = $info_parser;
   }
 
   /**
@@ -214,10 +178,9 @@ class DefaultContentManager implements DefaultContentManagerInterface {
           $entity = $this->serializer->deserialize($contents, $class, 'hal_json', array('request_method' => 'POST'));
           $entity->enforceIsNew(TRUE);
           $entity->save();
-          $created[$entity->uuid()] = $entity;
+          $created[] = $entity;
         }
       }
-      $this->eventDispatcher->dispatch(DefaultContentEvents::IMPORT, new ImportEvent($created, $module));
     }
     // Reset the tree.
     $this->resetTree();
@@ -237,8 +200,6 @@ class DefaultContentManager implements DefaultContentManagerInterface {
     $return = $this->serializer->serialize($entity, 'hal_json', ['json_encode_options' => JSON_PRETTY_PRINT]);
     // Reset link domain.
     $this->linkManager->setLinkDomain(FALSE);
-    $this->eventDispatcher->dispatch(DefaultContentEvents::EXPORT, new ExportEvent($entity));
-
     return $return;
   }
 
@@ -267,39 +228,6 @@ class DefaultContentManager implements DefaultContentManagerInterface {
     $this->linkManager->setLinkDomain(FALSE);
 
     return $serialized_entities_per_type;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function exportModuleContent($module_name) {
-    $info_file = $this->moduleHandler->getModule($module_name)->getPathname();
-    $info = $this->infoParser->parse($info_file);
-    $exported_content = [];
-    if (empty($info['default_content'])) {
-      return $exported_content;
-    }
-    foreach ($info['default_content'] as $entity_type => $uuids) {
-      foreach ($uuids as $uuid) {
-        $entity = $this->entityManager->loadEntityByUuid($entity_type, $uuid);
-        $exported_content[$entity_type][$uuid] = $this->exportContent($entity_type, $entity->id());
-      }
-    }
-    return $exported_content;
-  }
-
-  /**
-   * {@inheritdoc{
-   */
-  public function writeDefaultContent($serialized_by_type, $folder) {
-    foreach ($serialized_by_type as $entity_type => $serialized_entities) {
-      // Ensure that the folder per entity type exists.
-      $entity_type_folder = "$folder/$entity_type";
-      file_prepare_directory($entity_type_folder, FILE_CREATE_DIRECTORY);
-      foreach ($serialized_entities as $uuid => $serialized_entity) {
-        file_put_contents($entity_type_folder . '/' . $uuid . '.json', $serialized_entity);
-      }
-    }
   }
 
   /**
