@@ -17,6 +17,7 @@
   <property name="cs.bin"             override="true" value="${c.home}bin/phpcs" />
   <property name="md.bin"             override="true" value="${c.home}bin/phpmd" />
   <property name="loc.bin"            override="true" value="${c.home}bin/phploc" />
+  <property name="cpd.bin"            override="true" value="${c.home}bin/phpcpd" />
   <property name="cs.dir"             override="true" value="drupal/coder/coder_sniffer" />
   <property name="cs.standard"        override="true" value="--standard=DrupalPractice" />
   <property name="cs.ext"             override="true" value="--extensions=php,module,inc,install,test,profile,theme" />
@@ -128,6 +129,11 @@
     description="Detect the mess in the code. https://phpmd.org/documentation/index.html">
     <exec logoutput="true" dir="${app.profile.dir}"
       command="${md.bin} modules/custom text codesize,unusedcode,naming" />
+  </target>
+  <target name="info:code:cpd"
+    description="Find duplicate code">
+    <exec logoutput="true" dir="${app.profile.dir}"
+      command="${cpd.bin} modules/custom" />
   </target>
   <target name="info:code:loc"
     description="Show stadistics of your lines of code">

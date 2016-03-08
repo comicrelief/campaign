@@ -90,7 +90,7 @@ mysql:
 
 before_install:
   - composer self-update
-  - composer global require lionsad/drupal_ti:dev-master drupal/coder phpmd/phpmd
+  - composer global require lionsad/drupal_ti:dev-master drupal/coder phpmd/phpmd sebastian/phpcpd
   - drupal-ti before_install
 
 install:

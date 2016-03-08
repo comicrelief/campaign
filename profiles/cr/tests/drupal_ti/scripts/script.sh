@@ -9,6 +9,7 @@ cd profiles/cr
 phpcs --config-set installed_paths ~/.composer/vendor/drupal/coder/coder_sniffer
 phpcs --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme modules/custom themes/custom --runtime-set ignore_warnings_on_exit 1
 phpmd modules/custom text codesize,unusedcode,naming
+phpcpd modules/custom
 
 # Ensure we are in the right directory, we need to overwrite this here
 # since it is different from Drupal TI's default setup
