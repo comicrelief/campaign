@@ -104,7 +104,7 @@ class CwRowDisplay extends DsFieldBase {
     $field_values = $block->get($field)->getValue();
     $blocks = array();
 
-    foreach ($field_values as $key => $referenced_block) {
+    foreach ($field_values as $referenced_block) {
       $blocks[] = $referenced_block['target_id'];
     }
 
