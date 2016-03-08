@@ -90,7 +90,11 @@ mysql:
 
 before_install:
   - composer self-update
+<<<<<<< b8f654353dbdddbdcb74e706bb5391d46c407273
   - composer global require lionsad/drupal_ti:dev-master
+=======
+  - composer global require lionsad/drupal_ti:dev-master drupal/coder phpmd/phpmd
+>>>>>>> PLAT-61 Test if Travis like QA code
   - drupal-ti before_install
 
 install:
