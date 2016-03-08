@@ -1,20 +1,17 @@
-<project name="qatools" default="info:code">
+<project name="qatools" default="info:tools">
   <!-- example: https://github.com/previousnext/phing-phpqatools/blob/master/build.xml -->
-  <target name="info:code" depends="info:code:cs"
-    description="Check quality of the custom code">
-  </target>
   <target name="info:tools" description="Install tools">
     <exec dir="${app.profile.dir}qatools" command="composer install" logoutput="true" />
   </target>
-  <target name="info:code:cs" depends="info:tools"
+  <target name="info:code:cs"
     description="Check quality of the PHP code for more info. https://www.drupal.org/node/1419988">
     <exec command="${cs.bin} --config-set installed_paths ${c.home}${cs.dir}" />
     <exec logoutput="true" dir="${app.profile.dir}"
       command="${cs.bin} ${cs.standard} ${cs.ext} modules/custom themes/custom" />
   </target>
-  <target name="info:code:md" depends="info:tools"
+  <target name="info:code:md"
     description="Detect the mess in the code. https://phpmd.org/documentation/index.html">
     <exec logoutput="true" dir="${app.profile.dir}"
-      command="${md.bin} modules/custom text phpmd.xml" />
+      command="${md.bin} modules/custom text qatools/log/phpmd.xml" />
   </target>
 </project>
