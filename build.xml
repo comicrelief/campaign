@@ -13,7 +13,7 @@
   <property name="app.password"       override="true" value="admin" />
   <property name="app.uri"            override="true" value="http://campaign.dev" />
   <property name="drush.bin"          override="true" value="${app.dir}bin/drush" />
-  <property name="c.home"             override="true" value="${app.profile.dir}qatools/vendor/" />
+  <property name="c.home"             override="true" value="${app.profile.dir}tests/behat/vendor/" />
   <property name="cs.bin"             override="true" value="${c.home}bin/phpcs" />
   <property name="md.bin"             override="true" value="${c.home}bin/phpmd" />
   <property name="loc.bin"            override="true" value="${c.home}bin/phploc" />
@@ -117,7 +117,7 @@
     depends="info:tools, info:code:cs, info:code:md, info:code:loc">
   </target>
   <target name="info:tools" description="Install tools">
-    <exec dir="${app.profile.dir}qatools" command="composer install" logoutput="true" />
+    <exec dir="${app.profile.dir}tests/behat" command="composer install" logoutput="true" />
   </target>
   <target name="info:code:cs"
     description="Check quality of the PHP code for more info. https://www.drupal.org/node/1419988">
