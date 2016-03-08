@@ -13,9 +13,10 @@
   <property name="app.password"       override="true" value="admin" />
   <property name="app.uri"            override="true" value="http://campaign.dev" />
   <property name="drush.bin"          override="true" value="${app.dir}bin/drush" />
-  <property name="cs.bin"             override="true" value="phpcs" />
-  <property name="md.bin"             override="true" value="phpmd" />
-  <property name="c.home"             override="true" value="~/.composer/vendor/" />
+  <property name="c.home"             override="true" value="${app.profile.dir}qatools/vendor/" />
+  <property name="cs.bin"             override="true" value="${c.home}bin/phpcs" />
+  <property name="md.bin"             override="true" value="${c.home}bin/phpmd" />
+  <property name="loc.bin"            override="true" value="${c.home}bin/phploc" />
   <property name="cs.dir"             override="true" value="drupal/coder/coder_sniffer" />
   <property name="cs.standard"        override="true" value="--standard=DrupalPractice" />
   <property name="cs.ext"             override="true" value="--extensions=php,module,inc,install,test,profile,theme" />
@@ -110,9 +111,27 @@
       command="${drush.bin} dcer --file=${app.content.dir}/ ${type} ${id}" />
   </target>
 
-  <!-- Quality Code -->
-  <target name="info:code" depends="info:tools, info:code:cs, info:code:md"
-    description="Check quality of the custom code">
+  <!-- Quality Code template: https://github.com/previousnext/phing-phpqatools/blob/master/build.xml -->
+  <target name="info:code" description="Check quality of the custom code"
+    depends="info:tools, info:code:cs, info:code:md, info:code:loc">
   </target>
-  <import file="build-qatools.xml" optional="true" />
+  <target name="info:tools" description="Install tools">
+    <exec dir="${app.profile.dir}qatools" command="composer install" logoutput="true" />
+  </target>
+  <target name="info:code:cs"
+    description="Check quality of the PHP code for more info. https://www.drupal.org/node/1419988">
+    <exec command="${cs.bin} --config-set installed_paths ${c.home}${cs.dir}" />
+    <exec logoutput="true" dir="${app.profile.dir}"
+      command="${cs.bin} ${cs.standard} ${cs.ext} modules/custom themes/custom" />
+  </target>
+  <target name="info:code:md"
+    description="Detect the mess in the code. https://phpmd.org/documentation/index.html">
+    <exec logoutput="true" dir="${app.profile.dir}"
+      command="${md.bin} modules/custom text codesize,unusedcode,naming" />
+  </target>
+  <target name="info:code:loc"
+    description="Show stadistics of your lines of code">
+    <exec logoutput="true" dir="${app.profile.dir}"
+      command="${loc.bin} modules/custom" />
+  </target>
 </project>
