@@ -23,7 +23,6 @@
   <property name="cs.ext"             override="true" value="--extensions=php,module,inc,install,test,profile,theme" />
   <property name="db.querystring"     override="true" value="mysql://root:@localhost/campaign" />
   <!-- These allow developers to override config. on a per environment basis -->
-  <import file="build-qatools.xml" optional="true" />
   <property file="build.properties"   override="true"/>
   <!-- Default & meta -->
   <target name="build" depends="cleanfiles, install, grunt:build"
