@@ -58,8 +58,8 @@ class CwRowDisplay extends DsFieldBase {
     $row_view_mode = $this->viewMode();
     $view_modes = $this->getBlockViewModes($row_view_mode);
 
-    foreach ($blocks as $key => $id) {
-      $block = BlockContent::load($id);
+    foreach ($blocks as $key => $block_id) {
+      $block = BlockContent::load($block_id);
 
       if (isset($view_modes[$key])) {
         $display = \Drupal::entityManager()->
@@ -91,8 +91,8 @@ class CwRowDisplay extends DsFieldBase {
    * @param row block id
    * @return loaded BlockContent object
    */
-  public function getRowEntity($id) {
-    return BlockContent::load($id);
+  public function getRowEntity($row_id) {
+    return BlockContent::load($row_id);
   }
 
   /**
