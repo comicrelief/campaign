@@ -49,7 +49,7 @@ You can also do this from the root of this repository using
 ### PHP Configurations
 
 Ensure your environment can run PHP from the command line with a php.ini configuration file loaded in.
-You can test by running this to identify PHP and the location of the configuration file
+You can test by running the following to identify PHP and the location of the configuration file
 
   php --ini
 
