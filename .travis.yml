@@ -121,7 +121,7 @@ before_script:
 
 script:
   # Check code quality
-  - ${PHPCS} --config-set installed_paths ../../drupal/coder/coder_sniffer
+  - "${PHPCS}" --config-set installed_paths ../../drupal/coder/coder_sniffer
   - ./profiles/cr/tests/behat/vendor/bin/phpcs --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme profiles/cr/modules/custom --runtime-set ignore_warnings_on_exit 1
   - ./profiles/cr/tests/behat/vendor/bin/phpmd profiles/cr/modules/custom text codesize,unusedcode,naming
   - ./profiles/cr/tests/behat/vendor/bin/phpcpd profiles/cr/modules/custom
