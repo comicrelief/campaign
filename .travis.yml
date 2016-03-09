@@ -18,7 +18,6 @@ env:
     # add composer's global bin directory to the path
     # see: https://github.com/drush-ops/drush#install---composer
     - PATH="$PATH:$HOME/.composer/vendor/bin"
-    - CODE_BUILD_DIR="$TRAVIS_BUILD_DIR/profiles/cr/modules/custom"
 
     # Configuration variables.
     - DRUPAL_TI_MODULE_NAME="cr"
@@ -76,9 +75,6 @@ env:
     #- DRUPAL_TI_DEBUG_FILE_OUTPUT="selenium xvfb webserver"
 
     # - DRUPAL_TI_RUNNERS="behat"
-    - CS_PROFILE = "drupal/coder/coder_sniffer"
-    - CS_STAND = "DrupalPractice"
-    - CS_EXT = "php,module,inc,install,test,profile,theme"
 
   matrix:
   # [[[ SELECT ANY OR MORE OPTIONS ]]]
@@ -105,13 +101,10 @@ before_script:
 
 script:
   # Check code quality
-  - cd "${DRUPAL_TI_BEHAT_DIR}"
-  - cd "vendor"
-  - bin/phpcs --config-set installed_paths "${CS_PROFILE}"
-  - bin/phpcs --standard=${CS_STAND} --extensions="${CS_EXT}" ${CODE_BUILD_DIR} --runtime-set ignore_warnings_on_exit 1
-  - bin/phpmd ${CODE_BUILD_DIR} text codesize,unusedcode,naming
-  - bin/phpcpd ${CODE_BUILD_DIR}
-  - cd "${TRAVIS_BUILD_DIR}"
+  - ./profiles/cr/tests/behat/vendor/bin/phpcs --config-set installed_paths ./profiles/cr/tests/behat/vendor/drupal/coder/coder_sniffer
+  - ./profiles/cr/tests/behat/vendor/bin/phpcs --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme profiles/cr/modules/custom --runtime-set ignore_warnings_on_exit 1
+  - ./profiles/cr/tests/behat/vendor/bin/phpmd profiles/cr/modules/custom text codesize,unusedcode,naming
+  - ./profiles/cr/tests/behat/vendor/bin/phpcpd profiles/cr/modules/custom
   # Behat
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/script.sh
 
