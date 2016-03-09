@@ -46,6 +46,21 @@ You can also do this from the root of this repository using
   
 	phing grunt:build
 
+### PHP Configurations
+
+Ensure your environment can run PHP from the command line with a php.ini configuration file loaded in.
+You can test by running this to identify PHP and the location of the configuration file
+
+  php --ini
+
+If one isn't present, copy one using the default template supplied with PHP (you might need to sudo):
+
+  cp /etc/php.ini.default /etc/php.ini
+
+In the php.ini file, ensure the 'date.timezone'property is enabled and set with a timezone (you can find list of values from http://php.net/manual/en/timezones.php):
+
+  date.timezone = Europe/London
+
 ### Install and configure Drush 8
 
 Drush 8 is required for Drupal 8. Install instructions can be found [here](http://x-team.com/2015/02/install-drush-8-drupal-8-without-throwing-away-drush-6-7/).
