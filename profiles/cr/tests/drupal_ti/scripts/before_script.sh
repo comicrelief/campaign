@@ -36,5 +36,5 @@ drupal_ti_clear_caches
 drupal_ti_run_server
 
 # Start xvfb and selenium.
-drupal_ti_ensure_xvfb
-drupal_ti_ensure_webdriver
+#drupal_ti_ensure_xvfb
+#drupal_ti_ensure_webdriver
