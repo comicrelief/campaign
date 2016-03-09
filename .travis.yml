@@ -79,6 +79,9 @@ env:
     - CS_PROFILE = "drupal/coder/coder_sniffer"
     - CS_STAND = "DrupalPractice"
     - CS_EXT = "php,module,inc,install,test,profile,theme"
+    - PHPCS = "$DRUPAL_TI_BEHAT_DIR/vendor/bin/phpcs"
+    - PHPMD = "$DRUPAL_TI_BEHAT_DIR/vendor/bin/phpmd"
+    - PHPCPD = "$DRUPAL_TI_BEHAT_DIR/vendor/bin/phpcpd"
 
   matrix:
   # [[[ SELECT ANY OR MORE OPTIONS ]]]
@@ -105,10 +108,10 @@ before_script:
 
 script:
   # Check code quality
-  - $DRUPAL_TI_BEHAT_DIR/vendor/bin/phpcs --config-set installed_paths ~/.composer/vendor/$CS_PROFILE
-  - $DRUPAL_TI_BEHAT_DIR/vendor/bin/phpcs --standard=$CS_STAND --extensions=$CS_EXT $CODE_BUILD_DIR --runtime-set ignore_warnings_on_exit 1
-  - $DRUPAL_TI_BEHAT_DIR/vendor/bin/phpmd $CODE_BUILD_DIR text codesize,unusedcode,naming
-  - $DRUPAL_TI_BEHAT_DIR/vendor/bin/phpcpd $CODE_BUILD_DIR
+  - $PHPCS --config-set installed_paths ~/.composer/vendor/$CS_PROFILE
+  - $PHPCS --standard=$CS_STAND --extensions=$CS_EXT $CODE_BUILD_DIR --runtime-set ignore_warnings_on_exit 1
+  - $PHPMD $CODE_BUILD_DIR text codesize,unusedcode,naming
+  - $PHPCPD $CODE_BUILD_DIR
   # Behat
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/script.sh
 
