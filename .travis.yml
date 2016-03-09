@@ -109,7 +109,7 @@ mysql:
 
 before_install:
   - composer self-update
-  - composer global require "lionsad/drupal_ti:dev-master"
+  - composer global require lionsad/drupal_ti:dev-master
   - drupal-ti before_install
 
 install:
@@ -119,6 +119,12 @@ before_script:
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh
 
 script:
+  # Check code quality
+  - ./profiles/cr/tests/behat/vendor/bin/phpcs --config-set installed_paths ../../drupal/coder/coder_sniffer
+  - ./profiles/cr/tests/behat/vendor/bin/phpcs --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme profiles/cr/modules/custom --runtime-set ignore_warnings_on_exit 1
+  - ./profiles/cr/tests/behat/vendor/bin/phpmd profiles/cr/modules/custom text codesize,unusedcode,naming
+  - ./profiles/cr/tests/behat/vendor/bin/phpcpd profiles/cr/modules/custom
+  # Behat
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/script.sh
 
 after_script:
