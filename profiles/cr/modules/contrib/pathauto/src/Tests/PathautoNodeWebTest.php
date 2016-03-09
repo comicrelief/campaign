@@ -25,7 +25,7 @@ class PathautoNodeWebTest extends WebTestBase {
    *
    * @var array
    */
-  public static $modules = array('node', 'pathauto', 'views');
+  public static $modules = array('node', 'pathauto', 'views', 'taxonomy', 'pathauto_views_test');
 
   /**
    * Admin user.
@@ -56,7 +56,6 @@ class PathautoNodeWebTest extends WebTestBase {
     $this->drupalLogin($this->adminUser);
 
     $this->createPattern('node', '/content/[node:title]');
-
   }
 
   /**
@@ -251,6 +250,65 @@ class PathautoNodeWebTest extends WebTestBase {
 
     $node->delete();
     $this->assertNull(\Drupal::keyValue('pathauto_state.node')->get($node->id()), 'Pathauto state was deleted');
+  }
+
+
+  /**
+   * Tests that nodes without a Pathauto pattern can set custom aliases.
+   */
+  public function testCustomAliasWithoutPattern() {
+    // First, delete all patterns to be sure that there will be no match.
+    $entity_ids = \Drupal::entityQuery('pathauto_pattern')->execute();
+    $entities = PathautoPattern::loadMultiple($entity_ids);
+    foreach ($entities as $entity) {
+      $entity->delete();
+    }
+
+    // Next, create a node with a custom alias.
+    $edit = [
+      'title[0][value]' => 'Sample article',
+      'path[0][alias]' => '/sample-article',
+    ];
+    $this->drupalPostForm('node/add/article', $edit, t('Save and publish'));
+    $this->assertText(t('article Sample article has been created.'));
+
+    // Test the alias.
+    $this->assertAliasExists(array('alias' => '/sample-article'));
+    $this->drupalGet('sample-article');
+    $this->assertResponse(200, 'A node without a pattern can have a custom alias.');
+
+    // Now create a node through the API.
+    $node = Node::create(['type' => 'article', 'title' => 'Sample article API', 'path' => ['alias' => '/sample-article-api']]);
+    $node->save();
+
+    // Test the alias.
+    $this->assertAliasExists(['alias' => '/sample-article-api']);
+    $this->drupalGet('sample-article-api');
+    $this->assertResponse(200);
+  }
+
+  /**
+   * Tests that patterns can coexist with routes with arguments.
+   *
+   * A common case is to have a view with a term name as a contextual filter,
+   * and a pattern that matches the view's path.
+   */
+  public function testPatternMatchingDynamicRoute() {
+    $this->drupalLogin($this->rootUser);
+
+    // Create a pattern for nodes that matches with a view path defined at
+    // pathauto_views_test module.
+    $this->createPattern('node', '/articles/[node:title]', -1);
+
+    // Create an article.
+    $edit = array(
+      'title[0][value]' => 'Sample article',
+    );
+    $this->drupalPostForm('node/add/article', $edit, t('Save and publish'));
+
+    // Check that the alias was not created and an alert was shown.
+    $this->assertText('collides with the route with identifier');
+    $this->assertNoAliasExists(array('alias' => '/articles/sample-article'));
   }
 
 }

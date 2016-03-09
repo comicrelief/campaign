@@ -12,3 +12,4 @@ permissions:
   - 'download any audio files'
   - 'download own audio files'
   - 'restful get entity:node'
+  - 'view search api pages'

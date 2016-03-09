@@ -11,3 +11,5 @@ dependencies:
   - default_content
   - file_entity
   - cr_article
+  - cr_teaser
+  - cr_content_wall

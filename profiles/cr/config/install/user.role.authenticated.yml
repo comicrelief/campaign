@@ -18,3 +18,4 @@ permissions:
   - 'view own unpublished content'
   - 'restful get entity:node'
   - 'access user profiles'
+  - 'view search api pages'

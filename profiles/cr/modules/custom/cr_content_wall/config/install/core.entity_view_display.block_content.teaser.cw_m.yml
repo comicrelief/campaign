@@ -1,0 +1,76 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.teaser
+    - core.entity_view_mode.block_content.cw_m
+    - field.field.block_content.teaser.body
+    - field.field.block_content.teaser.field_teaser_image
+    - field.field.block_content.teaser.field_teaser_link
+    - field.field.block_content.teaser.field_teaser_title
+  module:
+    - ds
+    - link
+    - responsive_image
+    - text
+third_party_settings:
+  ds:
+    layout:
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
+      library: ''
+      disable_css: false
+      settings:
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - field_teaser_title
+        - field_teaser_image
+        - body
+        - field_teaser_link
+id: block_content.teaser.cw_m
+targetEntityType: block_content
+bundle: teaser
+mode: cw_m
+content:
+  body:
+    label: hidden
+    type: text_trimmed
+    weight: 2
+    settings:
+      trim_length: 140
+    third_party_settings: {  }
+  field_teaser_image:
+    weight: 1
+    label: hidden
+    settings:
+      responsive_image_style: cw_landscape_image
+      image_link: ''
+    third_party_settings: {  }
+    type: responsive_image
+  field_teaser_link:
+    weight: 3
+    label: hidden
+    settings:
+      trim_length: 30
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings: {  }
+    type: link
+  field_teaser_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden: {  }

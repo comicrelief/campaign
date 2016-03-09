@@ -1,18 +1,13 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\inline_entity_form\Element\InlineEntityForm.
- */
-
 namespace Drupal\inline_entity_form\Element;
 
-use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Language\LanguageInterface;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Render\Element\RenderElement;
+use Drupal\inline_entity_form\ElementSubmit;
 
 /**
  * Provides an inline entity form element.
@@ -27,235 +22,183 @@ class InlineEntityForm extends RenderElement {
   public function getInfo() {
     $class = get_class($this);
     return [
-      '#language' => LanguageInterface::LANGCODE_NOT_SPECIFIED,
       '#ief_id' => '',
-      // Instance of \Drupal\Core\Entity\EntityInterface. Entity that will be
-      // displayed in entity form. Can be unset if #enatity_type and #bundle
-      // are provided and #op equals 'add'.
-      '#entity' => NULL,
       '#entity_type' => NULL,
       '#bundle' => NULL,
+      '#language' => LanguageInterface::LANGCODE_NOT_SPECIFIED,
+      // Instance of \Drupal\Core\Entity\EntityInterface. Can be NULL
+      // when #op is 'add', in which case a new entity will be created.
+      '#default_value' => NULL,
       '#op' => 'add',
-      // Will hide entity form's own actions if set to FALSE.
-      '#display_actions' => FALSE,
+      // The form mode used to display the entity form.
+      '#form_mode' => 'default',
       // Will save entity on submit if set to TRUE.
       '#save_entity' => TRUE,
-      '#ief_element_submit' => [],
-      // Needs to be set to FALSE if one wants to implement it's own submit logic.
-      '#handle_submit' => TRUE,
       '#process' => [
         [$class, 'processEntityForm'],
       ],
+      '#element_validate' => [
+        [$class, 'validateEntityForm'],
+      ],
+      '#ief_element_submit' => [
+        [$class, 'submitEntityForm'],
+      ],
       '#theme_wrappers' => ['container'],
+      // Allow inline forms to use the #fieldset key.
+      '#pre_render' => [
+        [$class, 'addFieldsetMarkup'],
+      ],
     ];
   }
 
   /**
-   * Uses inline entity form handler to add inline form to the structure.
+   * Builds the entity form using the inline form handler.
    *
-   * @param array $element
-   *   An associative array containing the properties of the element.
+   * @param array $entity_form
+   *   The entity form.
    * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The current state of the form.
    * @param array $complete_form
    *   The complete form structure.
    *
-   * @return array
-   *   The processed element.
+   * @throws \InvalidArgumentException
+   *   Thrown when the #entity_type or #bundle properties are empty, or when
+   *   the #default_value property is not an entity.
    *
-   * @see self::preRenderAjaxForm()
+   * @return array
+   *   The built entity form.
    */
-  public static function processEntityForm($element, FormStateInterface $form_state, &$complete_form) {
-    if (empty($element['#ief_id'])) {
-      $element['#ief_id'] = \Drupal::service('uuid')->generate();
+  public static function processEntityForm($entity_form, FormStateInterface $form_state, &$complete_form) {
+    if (empty($entity_form['#entity_type'])) {
+      throw new \InvalidArgumentException('The inline_entity_form element requires the #entity_type property.');
+    }
+    if (empty($entity_form['#bundle'])) {
+      throw new \InvalidArgumentException('The inline_entity_form element requires the #bundle property.');
+    }
+    if (isset($entity_form['#default_value']) && !($entity_form['#default_value'] instanceof EntityInterface)) {
+      throw new \InvalidArgumentException('The inline_entity_form #default_value property must be an entity object.');
     }
 
-    if (empty($element['#entity_type']) && !empty($element['#entity']) && $element['#entity'] instanceof EntityInterface) {
-      $element['#entity_type'] = $element['#entity']->entityTypeId();
+    if (empty($entity_form['#ief_id'])) {
+      $entity_form['#ief_id'] = \Drupal::service('uuid')->generate();
     }
-
-    if (empty($element['#bundle']) && !empty($element['#entity']) && $element['#entity'] instanceof EntityInterface) {
-      $element['#bundle'] = $element['#entity']->bundle();
+    if (isset($entity_form['#default_value'])) {
+      // Transfer the #default_value to #entity, as expected by inline forms.
+      $entity_form['#entity'] = $entity_form['#default_value'];
     }
-
-    // We can't do anything useful if we don't know which entity type/ bundle
-    // we're supposed to operate with.
-    if (empty($element['#entity_type']) || empty($element['#bundle'])) {
-      return;
-    }
-
-    /** @var \Drupal\inline_entity_form\InlineFormInterface $ief_handler */
-    $ief_handler = \Drupal::entityTypeManager()->getHandler($element['#entity_type'], 'inline_form');
-
-    // IEF handler is a must. If one was not assigned to this entity type we can
-    // not proceed.
-    if (empty($ief_handler)) {
-      return;
-    }
-
-    // If entity object is not there we're displaying the add form. We need to
-    // create a new entity to be used with it.
-    if (empty($element['#entity'])) {
-      if ($element['#op'] == 'add') {
-        $values = [
-          'langcode' => $element['#language'],
-        ];
-
-        $bundle_key = \Drupal::entityTypeManager()
-          ->getDefinition($element['#entity_type'])
-          ->getKey('bundle');
-
-        if ($bundle_key) {
-          $values[$bundle_key] = $element['#bundle'];
-        }
-
-        $element['#entity'] = \Drupal::entityTypeManager()
-          ->getStorage($element['#entity_type'])
-          ->create($values);
+    elseif ($entity_form['#op'] == 'add') {
+      // Create a new entity for the add form.
+      $entity_type = \Drupal::entityTypeManager()->getDefinition($entity_form['#entity_type']);
+      $storage = \Drupal::entityTypeManager()->getStorage($entity_form['#entity_type']);
+      $values = [
+        'langcode' => $entity_form['#language'],
+      ];
+      if ($bundle_key = $entity_type->getKey('bundle')) {
+        $values[$bundle_key] = $entity_form['#bundle'];
       }
+      $entity_form['#entity'] = $storage->create($values);
     }
 
     // Put some basic information about IEF into form state.
-    $state = $form_state->has(['inline_entity_form', $element['#ief_id']]) ? $form_state->get(['inline_entity_form', $element['#ief_id']]) : [];
+    $state = $form_state->has(['inline_entity_form', $entity_form['#ief_id']]) ? $form_state->get(['inline_entity_form', $entity_form['#ief_id']]) : [];
     $state += [
-      'op' => $element['#op'],
-      'entity' => $element['#entity'],
+      'op' => $entity_form['#op'],
+      'entity' => $entity_form['#entity'],
     ];
-    $form_state->set(['inline_entity_form', $element['#ief_id']], $state);
+    $form_state->set(['inline_entity_form', $entity_form['#ief_id']], $state);
 
-    $element = $ief_handler->entityForm($element, $form_state);
+    $inline_form_handler = static::getInlineFormHandler($entity_form['#entity_type']);
+    $entity_form = $inline_form_handler->entityForm($entity_form, $form_state);
+    // The form element can't rely on inline_entity_form_form_alter() calling
+    // ElementSubmit::attach() since form alters run before #process callbacks.
+    ElementSubmit::attach($complete_form, $form_state);
 
-    // Attach submit callbacks to main submit buttons.
-    if ($element['#handle_submit']) {
-      static::attachMainSubmit($complete_form);
-    }
-
-    return $element;
+    return $entity_form;
   }
 
   /**
-   * Tries to attach submit IEF callbacks to main submit buttons.
+   * Validates the entity form using the inline form handler.
    *
-   * @param array $complete_form
-   *   Form structure.
-   */
-  public static function attachMainSubmit(&$complete_form) {
-    $submit_attached = FALSE;
-    $submit = array_merge([[get_called_class(), 'triggerIefSubmit']], $complete_form['#submit']);
-    $submit = array_unique($submit, SORT_REGULAR);
-
-    if (!empty($complete_form['submit'])) {
-      if (empty($complete_form['submit']['#submit'])) {
-        $complete_form['submit']['#submit'] = $submit;
-      }
-      else {
-        $complete_form['submit']['#submit'] = array_merge([[get_called_class(), 'triggerIefSubmit']], $complete_form['submit']['#submit']);
-        $complete_form['submit']['#submit'] = array_unique($complete_form['submit']['#submit'], SORT_REGULAR);
-      }
-      $complete_form['submit']['#ief_submit_all'] = TRUE;
-      $complete_form['submit']['#ief_trigger']  = TRUE;
-      $submit_attached = TRUE;
-    }
-
-    foreach (['submit', 'publish', 'unpublish'] as $action) {
-      if (!empty($complete_form['actions'][$action])) {
-        if (empty($complete_form['actions'][$action]['#submit'])) {
-          $complete_form['actions'][$action]['#submit'] = $submit;
-        }
-        else {
-          $complete_form['actions'][$action]['#submit'] = array_merge([[get_called_class(), 'triggerIefSubmit']], $complete_form['actions'][$action]['#submit']);
-          $complete_form['actions'][$action]['#submit'] = array_unique($complete_form['actions'][$action]['#submit'], SORT_REGULAR);
-        }
-        $complete_form['actions'][$action]['#ief_trigger']  = TRUE;
-        $complete_form['actions'][$action]['#ief_submit_all'] = TRUE;
-        $submit_attached = TRUE;
-      }
-    }
-
-    // If we didn't attach submit to one of the most common buttons let's search
-    // the form for any submit with #button_type == primary and attach to that.
-    if (!$submit_attached) {
-      static::recurseAttachMainSubmit($complete_form, $submit);
-    }
-  }
-
-  /**
-   * Attaches IEF submit callback to primary submit element on a form.
-   *
-   * Recursively searches form structure and looks for submit elements with
-   * #button_type == primary. If one is found it attaches IEF submit callback
-   * to it and backtracks.
-   *
-   * @param array $element
-   *   (Sub) form array structure.
-   * @param array $submit_callbacks
-   *   Submit callbacks to be attached.
-   *
-   * @return bool
-   *   TRUE if appropriate element was found. FALSE otherwise.
-   */
-  public static function recurseAttachMainSubmit(&$element, $submit_callbacks) {
-    foreach (Element::children($element) as $child) {
-      if (!empty($element[$child]['#type']) && $element[$child]['#type'] == 'submit' && $element[$child]['#button_type'] == 'preview') {
-        $element[$child]['#submit'] = empty($element[$child]['#submit']) ? $submit_callbacks : array_merge($submit_callbacks, $element[$child]['#submit']);
-        $element[$child]['#submit'] = array_unique($element[$child]['#submit'], SORT_REGULAR);
-        $element[$child]['#ief_submit_all'] = TRUE;
-        return TRUE;
-      }
-      elseif (static::recurseAttachMainSubmit($element[$child], $submit_callbacks)) {
-        return TRUE;
-      }
-    }
-    return FALSE;
-  }
-
-  /**
-   * Button #submit callback: Triggers submission of entity forms.
-   *
-   * @param $form
-   *   The complete parent form.
-   * @param $form_state
-   *   The form state of the parent form.
-   */
-  public static function triggerIefSubmit($form, FormStateInterface $form_state) {
-    $triggered_element = $form_state->getTriggeringElement();
-    if (!empty($triggered_element['#ief_submit_all'])) {
-      // The parent form was submitted, process all IEFs and their children.
-      static::iefSubmit($form, $form_state);
-    }
-    else {
-      // A specific entity form was submitted, process it and all of its children.
-      $array_parents = $triggered_element['#array_parents'];
-      $array_parents = array_slice($array_parents, 0, -2);
-      $element = NestedArray::getValue($form, $array_parents);
-      static::iefSubmit($element, $form_state);
-    }
-  }
-
-  /**
-   * Submits entity forms by calling their #ief_element_submit callbacks.
-   *
-   * #ief_element_submit is the submit version of #element_validate.
-   *
-   * @param array $elements
-   *   An array of form elements containing entity forms.
+   * @param array $entity_form
+   *   The entity form.
    * @param \Drupal\Core\Form\FormStateInterface $form_state
-   *   The form state of the parent form.
+   *   The current state of the form.
    */
-  public static function iefSubmit($elements, FormStateInterface $form_state) {
-    // Recurse through all children.
-    foreach (Element::children($elements) as $key) {
-      if (!empty($elements[$key])) {
-        static::iefSubmit($elements[$key], $form_state);
+  public static function validateEntityForm($entity_form, FormStateInterface $form_state) {
+    $inline_form_handler = static::getInlineFormHandler($entity_form['#entity_type']);
+    $inline_form_handler->entityFormValidate($entity_form, $form_state);
+  }
+
+  /**
+   * Handles the submission of the entity form using the inline form handler.
+   *
+   * @param array $entity_form
+   *   The entity form.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The current state of the form.
+   */
+  public static function submitEntityForm(&$entity_form, FormStateInterface $form_state) {
+    $inline_form_handler = static::getInlineFormHandler($entity_form['#entity_type']);
+    $inline_form_handler->entityFormSubmit($entity_form, $form_state);
+  }
+
+  /**
+   * Gets the inline form handler for the given entity type.
+   *
+   * @param string $entity_type
+   *   The entity type id.
+   *
+   * @throws \InvalidArgumentException
+   *   Thrown when the entity type has no inline form handler defined.
+   *
+   * @return \Drupal\inline_entity_form\InlineFormInterface
+   *   The inline form handler.
+   */
+  public static function getInlineFormHandler($entity_type) {
+    $inline_form_handler = \Drupal::entityTypeManager()->getHandler($entity_type, 'inline_form');
+    if (empty($inline_form_handler)) {
+      throw new \InvalidArgumentException(sprintf('The %s entity type has no inline form handler.', $entity_type));
+    }
+
+    return $inline_form_handler;
+  }
+
+  /**
+   * Pre-render callback for the #fieldset form property.
+   *
+   * Inline forms use #tree = TRUE to keep their values in a hierarchy for
+   * easier storage. Moving the form elements into fieldsets during form
+   * building would break up that hierarchy, so it's not an option for entity
+   * fields. Therefore, we wait until the pre_render stage, where any changes
+   * we make affect presentation only and aren't reflected in $form_state.
+   *
+   * @param array $entity_form
+   *   The entity form.
+   *
+   * @return array
+   *   The modified entity form.
+   */
+  public static function addFieldsetMarkup($entity_form) {
+    $sort = [];
+    foreach (Element::children($entity_form) as $key) {
+      $element = $entity_form[$key];
+      if (isset($element['#fieldset']) && isset($entity_form[$element['#fieldset']])) {
+        $entity_form[$element['#fieldset']][$key] = $element;
+        // Remove the original element this duplicates.
+        unset($entity_form[$key]);
+        // Mark the fieldset for sorting.
+        if (!in_array($key, $sort)) {
+          $sort[] = $element['#fieldset'];
+        }
       }
     }
 
-    // If there are callbacks on this level, run them.
-    if (!empty($elements['#ief_element_submit'])) {
-      foreach ($elements['#ief_element_submit'] as $function) {
-        $function($elements, $form_state);
-      }
+    // Sort all fieldsets, so that element #weight stays respected.
+    foreach ($sort as $key) {
+      uasort($entity_form[$key], '\Drupal\Component\Utility\SortArray::sortByWeightProperty');
     }
+
+    return $entity_form;
   }
 
 }

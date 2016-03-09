@@ -22,6 +22,12 @@
 .cw-article {
   position: relative;
   overflow: hidden;
+  .cw-article__image {
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
 
   @include breakpoint($screen-sm) {
     height: 255px;
@@ -39,11 +45,6 @@
       p,
       a {
         @include opacity(1);
-      }
-    }
-    .cw-first-col {
-      &.cw-first-col__right {
-        float: right;
       }
     }
   }
@@ -130,6 +131,7 @@
   @include breakpoint($screen-sm) {
     height: 100%;
     padding: 15px;
+    width: calc(100% - 30px);
     background: $cw-grey;
     &.cw-article__body--over {
       position: absolute;
@@ -143,7 +145,7 @@
     }
     &.cw-article__body--hide-show {
       position: absolute;
-      top: 345px;
+      top: 165px;
 
       @include transition(top 0.5s);
       p,
@@ -155,6 +157,9 @@
   }
   @include breakpoint($screen-md) {
     padding: 20px 15px;
+    &.cw-article__body--hide-show {
+      top: 225px;
+    }
   }
   p {
     font-size: 14px;
@@ -181,5 +186,15 @@
     padding-bottom: 25px;
     font-size: 26px;
     line-height: 36px;
+  }
+}
+.cw-article__link {
+  a {
+    border-bottom: 2px solid #f0544a;
+    color: #000;
+    text-decoration: none;
+    &:hover {
+      border-bottom: 2px solid #1e1e1e;
+    }
   }
 }

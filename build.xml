@@ -16,7 +16,7 @@
   <property name="app.password"           value="admin"                                            override="true" />
   <!-- Development variables. -->
   <property name="app.dev.modules"        value="devel default_content"   override="true" />
-  <property name="app.dev.config_modules" override="true" value="cr cr_article cr_default_content cr_landing_page" />
+  <property name="app.dev.config_modules" override="true" value="cr cr_article cr_content_wall cr_teaser cr_landing_page cr_default_content cr_search" />
 
   <!-- Overrides -->
   <exec command="which php" outputProperty="php.bin.php" />
@@ -53,10 +53,10 @@
   </target>
 
   <target name="test"
-          depends="prepare-test" 
+          depends="prepare-test"
           description="Run behat tests">
     <exec dir="${app.dir}/${app.profile.dir}/tests/behat"
-      command="vendor/bin/behat" 
+      command="vendor/bin/behat"
       passthru="true"
       checkreturn="true" />
   </target>
@@ -125,7 +125,6 @@
           command="${drush.cmd} site-install ${app.profile.name} -y --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring}"
           logoutput="true"
           passthru="true" />
-    <!-- Fix up permissions -->
     <exec command="chmod 755 ${app.dir}/sites/default" />
     <exec command="chmod 755 ${app.dir}/sites/default/settings.php" />
   </target>
@@ -175,7 +174,8 @@
     </target>
 
     <target name="content:export:save">
-      <exec dir="${app.dir}" command="${drush.cmd} dcer --file=${app.content.dir}/ ${type} ${id}" logoutput="true" passthru="true" />
+      <exec command="rm -fr profiles/cr/modules/custom/cr_default_content/content/user" />
+      <exec dir="${app.dir}" command="${drush.cmd} dcer --folder=${app.content.dir}/ ${type} ${id}" logoutput="true" passthru="true" />
     </target>
 
 </project>
