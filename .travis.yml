@@ -85,6 +85,7 @@ env:
 
     # - DRUPAL_TI_RUNNERS="behat"
     - CMDBIN="profiles/cr/tests/behat/vendor/bin"
+    - CUSTOM_CODE="${TRAVIS_BUILD_DIR}/profiles/cr/modules/custom"
 
     # For Pantheon
     - PEMAIL="peter.vanhee@gmail.com"
@@ -121,10 +122,12 @@ before_script:
 
 script:
   # Check code quality
-  - "${CMDBIN}/phpcs" --config-set installed_paths "${CMDBIN}/../drupal/coder/coder_sniffer"
-  - "${CMDBIN}/phpcs" --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme profiles/cr/modules/custom --runtime-set ignore_warnings_on_exit 1
-  - "${CMDBIN}/phpmd" profiles/cr/modules/custom text codesize,unusedcode,naming
-  - "${CMDBIN}/phpcpd" profiles/cr/modules/custom
+  - cd "${CMDBIN}"
+  - phpcs --config-set installed_paths "${CMDBIN}/../drupal/coder/coder_sniffer"
+  - phpcs --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme "${CUSTOM_CODE}" --runtime-set ignore_warnings_on_exit 1
+  - phpmd "${CUSTOM_CODE}" text codesize,unusedcode,naming
+  - phpcpd "${CUSTOM_CODE}"
+  - cd "${TRAVIS_BUILD_DIR}"
   # Behat
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/script.sh
 
