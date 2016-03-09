@@ -8,6 +8,7 @@
 use Drupal\Core\Routing\RouteMatchInterface;
 use \Drupal\Core\Entity\EntityInterface;
 use \Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use \Drupal\social_links\Plugin\Social\SocialLinks;
 
 /**
  * Implements hook_help().
@@ -25,14 +26,33 @@ function social_links_help($route_name, RouteMatchInterface $route_match) {
   }
 }
 
+/**
+ * Implements hook_entity_extra_field_info().
+ */
+function social_links_entity_extra_field_info() {
+  $extra = array();
+
+  $extra['node']['article']['display']['social_links'] = array(
+    'label' => t('Social Links'),
+    'description' => t('description'),
+    'weight' => 0,
+    'visible' => FALSE,
+  );
+
+  return $extra;
+}
+
+/**
+ * Implements hook_entity_view().
+ */
 function social_links_entity_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
-  // Only do the extra work if the component is configured to be displayed.
-  // This assumes a 'mymodule_addition' extra field has been defined for the
-  // entity bundle in hook_entity_extra_field_info().
-  if ($display->getComponent('mymodule_addition')) {
-    $build['mymodule_addition'] = array(
-      '#markup' => mymodule_addition($entity),
-      '#theme' => 'mymodule_my_additional_field',
+  if ($display->getComponent('social_links')) {
+    $social_links = new SocialLinks();
+    die('<pre>z:'.print_r($social_links,1).'</pre>');
+
+    $build['social_links'] = array(
+      '#markup' => $social_links->getMarkup(),
+      '#theme' => $social_links->getTheme(),
     );
   }
 }
