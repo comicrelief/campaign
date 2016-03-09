@@ -44,7 +44,7 @@ env:
 
     # === Behat specific variables.
     # This is relative to $TRAVIS_BUILD_DIR
-    - DRUPAL_TI_BEHAT_DIR="./profiles/cr/tests/behat/"
+    - DRUPAL_TI_BEHAT_DIR="./profiles/cr/tests/behat"
     # These arguments are passed to the bin/behat command.
     - DRUPAL_TI_BEHAT_ARGS=""
     # Specify the filename of the behat.yml with the $DRUPAL_TI_DRUPAL_DIR variables.
@@ -105,10 +105,10 @@ before_script:
 
 script:
   # Check code quality
-  - $DRUPAL_TI_BEHAT_DIRvendor/bin/phpcs --config-set installed_paths ~/.composer/vendor/$CS_PROFILE
-  - $DRUPAL_TI_BEHAT_DIRvendor/bin/phpcs --standard=$CS_STAND --extensions=$CS_EXT $CODE_BUILD_DIR --runtime-set ignore_warnings_on_exit 1
-  - $DRUPAL_TI_BEHAT_DIRvendor/bin/phpmd $CODE_BUILD_DIR text codesize,unusedcode,naming
-  - $DRUPAL_TI_BEHAT_DIRvendor/bin/phpcpd $CODE_BUILD_DIR
+  - $DRUPAL_TI_BEHAT_DIR/vendor/bin/phpcs --config-set installed_paths ~/.composer/vendor/$CS_PROFILE
+  - $DRUPAL_TI_BEHAT_DIR/vendor/bin/phpcs --standard=$CS_STAND --extensions=$CS_EXT $CODE_BUILD_DIR --runtime-set ignore_warnings_on_exit 1
+  - $DRUPAL_TI_BEHAT_DIR/vendor/bin/phpmd $CODE_BUILD_DIR text codesize,unusedcode,naming
+  - $DRUPAL_TI_BEHAT_DIR/vendor/bin/phpcpd $CODE_BUILD_DIR
   # Behat
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/script.sh
 
