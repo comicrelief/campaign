@@ -136,7 +136,7 @@ class PatternEditForm extends EntityForm {
         $default_bundles = [];
         $default_languages = [];
         foreach ($this->entity->getSelectionConditions() as $condition_id => $condition) {
-          if ($condition->getPluginId() == 'entity_bundle:' . $entity_type->id()) {
+          if (in_array($condition->getPluginId(), ['entity_bundle:' . $entity_type->id(), 'node_type'])) {
             $default_bundles = $condition->getConfiguration()['bundles'];
           }
           elseif ($condition->getPluginId() == 'language') {
@@ -211,17 +211,17 @@ class PatternEditForm extends EntityForm {
       $entity_type = $alias_type->getDerivativeId();
       // First, remove bundle and language conditions.
       foreach ($entity->getSelectionConditions() as $condition_id => $condition) {
-
-        if ($condition->getPluginId() == 'entity_bundle:' . $entity_type || $condition->getPluginId() == 'language') {
+        if (in_array($condition->getPluginId(), ['entity_bundle:' . $entity_type, 'node_type', 'language'])) {
           $entity->removeSelectionCondition($condition_id);
         }
       }
 
       if ($bundles = array_filter((array) $form_state->getValue('bundles'))) {
         $default_weight -= 5;
+        $plugin_id = $entity_type == 'node' ? 'node_type' : 'entity_bundle:' . $entity_type;
         $entity->addSelectionCondition(
           [
-            'id' => 'entity_bundle:' . $entity_type,
+            'id' => $plugin_id,
             'bundles' => $bundles,
             'negate' => FALSE,
             'context_mapping' => [
@@ -244,9 +244,7 @@ class PatternEditForm extends EntityForm {
             ]
           ]
         );
-        $new_definition = new ContextDefinition('language', 'Language');
-        $new_context = new Context($new_definition);
-        $entity->addContext($language_mapping, $new_context);
+        $entity->addRelationship($language_mapping, t('Language'));
       }
 
     }

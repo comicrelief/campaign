@@ -10,7 +10,8 @@ default:
   extensions:
     Behat\MinkExtension:
       goutte: ~
-      selenium2: ~
+      selenium2:
+        browser: chrome
       base_url: "%%BASE_URL%%"
     Drupal\DrupalExtension:
       api_driver: "drupal"

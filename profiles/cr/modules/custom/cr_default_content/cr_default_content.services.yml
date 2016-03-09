@@ -1,0 +1,5 @@
+services:
+  cr_default_content_imported_subscriber:
+    class: Drupal\cr_default_content\EventSubscriber\DefaultContentImportedSubscriber
+    tags:
+      - { name: event_subscriber }

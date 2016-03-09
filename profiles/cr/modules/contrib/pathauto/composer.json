@@ -3,14 +3,6 @@
   "description": "Provides a generic set of views plugins a mechanism for modules to automatically generate aliases for the content they manage.",
   "type": "drupal-module",
   "license": "GPL-2.0+",
-
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https://packagist.drupal-composer.org"
-    }
-  ],
-
   "require": {
     "drupal/token": "~8.1.0-alpha2",
     "drupal/ctools": "~8.3.0-alpha21"

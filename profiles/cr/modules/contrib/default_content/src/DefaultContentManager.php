@@ -11,10 +11,17 @@ use Drupal\Component\Graph\Graph;
 use Drupal\Component\Utility\SafeMarkup;
 use Drupal\Core\Config\Entity\ConfigEntityInterface;
 use Drupal\Core\Entity\ContentEntityInterface;
-use Drupal\Core\Entity\EntityManager;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Entity\EntityRepositoryInterface;
+use Drupal\Core\Extension\InfoParserInterface;
+use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\default_content\Event\DefaultContentEvents;
+use Drupal\default_content\Event\ExportEvent;
+use Drupal\default_content\Event\ImportEvent;
 use Drupal\rest\LinkManager\LinkManagerInterface;
 use Drupal\rest\Plugin\Type\ResourcePluginManager;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Serializer\Serializer;
 
 /**
@@ -47,11 +54,35 @@ class DefaultContentManager implements DefaultContentManagerInterface {
   protected $currentUser;
 
   /**
-   * The entity manager.
+   * The entity type manager.
    *
-   * @var \Drupal\Core\Entity\EntityManagerInterface
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
-  protected $entityManager;
+  protected $entityTypeManager;
+
+  /**
+<<<<<<< HEAD
+   * The entity repository.
+   *
+   * @var \Drupal\Core\Entity\EntityRepositoryInterface
+   */
+  protected $entityRepository;
+
+  /**
+=======
+>>>>>>> origin/8.x-1.x
+   * The module handler.
+   *
+   * @var \Drupal\Core\Extension\ModuleHandlerInterface
+   */
+  protected $moduleHandler;
+
+  /**
+   * The info file parser.
+   *
+   * @var \Drupal\Core\Extension\InfoParserInterface
+   */
+  protected $infoParser;
 
   /**
    * The file system scanner.
@@ -82,6 +113,13 @@ class DefaultContentManager implements DefaultContentManagerInterface {
   protected $linkManager;
 
   /**
+   * The event dispatcher.
+   *
+   * @var \Symfony\Component\EventDispatcher\EventDispatcherInterface
+   */
+  protected $eventDispatcher;
+
+  /**
    * Constructs the default content manager.
    *
    * @param \Symfony\Component\Serializer\Serializer $serializer
@@ -90,16 +128,28 @@ class DefaultContentManager implements DefaultContentManagerInterface {
    *   The rest resource plugin manager.
    * @param \Drupal\Core\Session|AccountInterface $current_user
    *   The current user.
-   * @param \Drupal\Core\Entity\EntityManager $entity_manager
-   *   The entity manager service.
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   *   The entity type manager service.
+   * @param \Drupal\Core\Entity\EntityRepositoryInterface $entity_repository
+   *   The entity repository service.
    * @param \Drupal\rest\LinkManager\LinkManagerInterface $link_manager
    *   The link manager service.
+   * @param \Symfony\Component\EventDispatcher\EventDispatcherInterface $event_dispatcher
+   *   The event dispatcher.
+   * @param \Drupal\Core\Extension\ModuleHandlerInterface $module_handler
+   *   The module handler.
+   * @param \Drupal\Core\Extension\InfoParserInterface $info_parser
+   *   The info file parser.
    */
-  public function __construct(Serializer $serializer, ResourcePluginManager $resource_plugin_manager, AccountInterface $current_user, EntityManager $entity_manager, LinkManagerInterface $link_manager) {
+  public function __construct(Serializer $serializer, ResourcePluginManager $resource_plugin_manager, AccountInterface $current_user, EntityTypeManagerInterface $entity_type_manager, EntityRepositoryInterface $entity_repository, LinkManagerInterface $link_manager, EventDispatcherInterface $event_dispatcher, ModuleHandlerInterface $module_handler, InfoParserInterface $info_parser) {
     $this->serializer = $serializer;
     $this->resourcePluginManager = $resource_plugin_manager;
-    $this->entityManager = $entity_manager;
+    $this->entityTypeManager = $entity_type_manager;
+    $this->entityRepository = $entity_repository;
     $this->linkManager = $link_manager;
+    $this->eventDispatcher = $event_dispatcher;
+    $this->moduleHandler = $module_handler;
+    $this->infoParser = $info_parser;
   }
 
   /**
@@ -111,7 +161,7 @@ class DefaultContentManager implements DefaultContentManagerInterface {
 
     if (file_exists($folder)) {
       $file_map = array();
-      foreach ($this->entityManager->getDefinitions() as $entity_type_id => $entity_type) {
+      foreach ($this->entityTypeManager->getDefinitions() as $entity_type_id => $entity_type) {
         $reflection = new \ReflectionClass($entity_type->getClass());
         // We are only interested in importing content entities.
         if ($reflection->implementsInterface('\Drupal\Core\Config\Entity\ConfigEntityInterface')) {
@@ -176,11 +226,16 @@ class DefaultContentManager implements DefaultContentManagerInterface {
           $contents = $this->parseFile($file);
           $class = $definition['serialization_class'];
           $entity = $this->serializer->deserialize($contents, $class, 'hal_json', array('request_method' => 'POST'));
+          if ($this->entityTypeManager->getStorage($entity_type_id)->loadByProperties(['uuid' => $entity->uuid()])) {
+            drupal_set_message(t('node @uuid already exists', ['@uuid' => $entity->uuid()]));
+            continue;
+          }
           $entity->enforceIsNew(TRUE);
           $entity->save();
-          $created[] = $entity;
+          $created[$entity->uuid()] = $entity;
         }
       }
+      $this->eventDispatcher->dispatch(DefaultContentEvents::IMPORT, new ImportEvent($created, $module));
     }
     // Reset the tree.
     $this->resetTree();
@@ -193,13 +248,15 @@ class DefaultContentManager implements DefaultContentManagerInterface {
    * {@inheritdoc}
    */
   public function exportContent($entity_type_id, $entity_id) {
-    $storage = $this->entityManager->getStorage($entity_type_id);
+    $storage = $this->entityTypeManager->getStorage($entity_type_id);
     $entity = $storage->load($entity_id);
 
     $this->linkManager->setLinkDomain(static::LINK_DOMAIN);
     $return = $this->serializer->serialize($entity, 'hal_json', ['json_encode_options' => JSON_PRETTY_PRINT]);
     // Reset link domain.
     $this->linkManager->setLinkDomain(FALSE);
+    $this->eventDispatcher->dispatch(DefaultContentEvents::EXPORT, new ExportEvent($entity));
+
     return $return;
   }
 
@@ -207,7 +264,7 @@ class DefaultContentManager implements DefaultContentManagerInterface {
    * {@inheritdoc}
    */
   public function exportContentWithReferences($entity_type_id, $entity_id) {
-    $storage = $this->entityManager->getStorage($entity_type_id);
+    $storage = $this->entityTypeManager->getStorage($entity_type_id);
     $entity = $storage->load($entity_id);
 
     if (!$entity) {
@@ -228,6 +285,39 @@ class DefaultContentManager implements DefaultContentManagerInterface {
     $this->linkManager->setLinkDomain(FALSE);
 
     return $serialized_entities_per_type;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function exportModuleContent($module_name) {
+    $info_file = $this->moduleHandler->getModule($module_name)->getPathname();
+    $info = $this->infoParser->parse($info_file);
+    $exported_content = [];
+    if (empty($info['default_content'])) {
+      return $exported_content;
+    }
+    foreach ($info['default_content'] as $entity_type => $uuids) {
+      foreach ($uuids as $uuid) {
+        $entity = $this->entityRepository->loadEntityByUuid($entity_type, $uuid);
+        $exported_content[$entity_type][$uuid] = $this->exportContent($entity_type, $entity->id());
+      }
+    }
+    return $exported_content;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function writeDefaultContent($serialized_by_type, $folder) {
+    foreach ($serialized_by_type as $entity_type => $serialized_entities) {
+      // Ensure that the folder per entity type exists.
+      $entity_type_folder = "$folder/$entity_type";
+      file_prepare_directory($entity_type_folder, FILE_CREATE_DIRECTORY);
+      foreach ($serialized_entities as $uuid => $serialized_entity) {
+        file_put_contents($entity_type_folder . '/' . $uuid . '.json', $serialized_entity);
+      }
+    }
   }
 
   /**
@@ -252,7 +342,8 @@ class DefaultContentManager implements DefaultContentManagerInterface {
       if ($dependent_entity instanceof ConfigEntityInterface) {
         unset($entity_dependencies[$id]);
       }
-      else {
+      elseif (!isset($entity_dependencies[$id])) {
+        // Prevent loops.
         $entity_dependencies = array_merge($entity_dependencies, $this->getEntityReferencesRecursive($dependent_entity, $depth + 1));
       }
     }

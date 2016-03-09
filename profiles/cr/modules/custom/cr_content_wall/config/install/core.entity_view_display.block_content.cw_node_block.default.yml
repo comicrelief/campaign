@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cw_node_block
+    - field.field.block_content.cw_node_block.field_cw_node_reference
+id: block_content.cw_node_block.default
+targetEntityType: block_content
+bundle: cw_node_block
+mode: default
+content:
+  field_cw_node_reference:
+    type: entity_reference_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: content_wall
+      link: false
+    third_party_settings: {  }
+hidden: {  }

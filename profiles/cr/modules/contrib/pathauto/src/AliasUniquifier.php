@@ -171,7 +171,7 @@ class AliasUniquifier implements AliasUniquifierInterface {
       $route = $this->urlMatcher->match($path);
 
       if ($route['_route'] == $this->lastRouteName) {
-        throw new \InvalidArgumentException('The given alias pattern (' . $path . ') always matches the route ' . $this->lastRouteName);
+        throw new \InvalidArgumentException('The path "' . $path . '" collides with the route with identifier ' . $this->lastRouteName . ', whose path is ' . $route['_route_object']->getPath());
       }
 
       $this->lastRouteName = $route['_route'];

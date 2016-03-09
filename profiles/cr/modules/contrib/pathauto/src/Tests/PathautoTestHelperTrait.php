@@ -55,9 +55,11 @@ trait PathautoTestHelperTrait {
    *   The bundle
    */
   protected function addBundleCondition(PathautoPatternInterface $pattern, $entity_type, $bundle) {
+    $plugin_id = $entity_type == 'node' ? 'node_type' : 'entity_bundle:' . $entity_type;
+
     $pattern->addSelectionCondition(
       [
-        'id' => 'entity_bundle:' . $entity_type,
+        'id' => $plugin_id,
         'bundles' => [
           $bundle => $bundle,
         ],
@@ -118,14 +120,8 @@ trait PathautoTestHelperTrait {
   }
 
   public function assertAlias($source, $expected_alias, $langcode = Language::LANGCODE_NOT_SPECIFIED) {
-    $alias = array('alias' => $source);
-    foreach (db_select('url_alias')->fields('url_alias')->condition('source', $source)->execute() as $row) {
-      $alias = (array) $row;
-      if ($row->alias == $expected_alias) {
-        break;
-      }
-    }
-    $this->assertIdentical($alias['alias'], $expected_alias, t("Alias for %source with language '@language' is correct.",
+    \Drupal::service('path.alias_manager')->cacheClear($source);
+    $this->assertEqual($expected_alias, \Drupal::service('path.alias_manager')->getAliasByPath($source, $langcode), t("Alias for %source with language '@language' is correct.",
       array('%source' => $source, '@language' => $langcode)));
   }
 

@@ -12,37 +12,45 @@ projects:
       # See https://www.drupal.org/node/2672110
       2672110: https://www.drupal.org/files/issues/entityfieldderiver-2672110-2.patch
   file_entity:
-    revision: 5f1015080374ca0a5c3f4593ea94088d6e6ed1bc
+    version: 2.x-dev
   metatag:
     version: 1.0-beta4
   pathauto:
-    version: 1.0-alpha1
+    version: 1.0-alpha2
+    patch:
+      # This will be fixed in: 8.x-1.x-dev
+      # URL: https://www.drupal.org/node/2655874
+      - "https://www.drupal.org/files/issues/the_given_alias_pattern-2655874-52.patch"
+  search_api:
+    version: 1.0-alpha12
   token:
     version: 1.0-alpha2
   youtube:
     version: 1.0-beta2
   # Layout modules
   inline_entity_form:
-    version: 1.0-alpha4
+    version: 1.0-alpha5
   layout_plugin:
     version: 1.0-alpha22
   page_manager:
     version: 1.0-alpha23
   panels:
-    revision: ba0c77df894a9217cdf45551db105b9cc1c76315
+    version: 3.x-dev
   panelizer:
     version: 3.0-alpha2
   ds:
     version: 2.3
   field_group:
     version: 1.0-rc4
+  view_modes_display:
+    version: 1.x-dev
   # Developer modules
   config_devel:
     version: 1.0-rc1
   default_content:
-    version: 1.0-alpha2
+    version: 1.x-dev
   devel:
-    revision: 6063e24c24288cbcba8ac969d2de4c6f3f52b91c
+    version: 1.x-dev
   # Editor/admin experience
   admin_toolbar:
     version: 1.14

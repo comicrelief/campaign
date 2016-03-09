@@ -21,8 +21,11 @@ body {
   display: block;
   margin-bottom: 40px;
 }
+picture img {
+    width: 100%;
+}
 .node--view-mode-full { // think where best to put it
-  max-width: 640px;
+  // max-width: 640px;
   margin: 0 auto;
   .field--type-image {
     margin-bottom: 40px;
@@ -31,6 +34,9 @@ body {
       height: auto;
     }
   }
+}
+.node--type-article {
+  max-width: 640px;
 }
 .field--name-body a,
 .btn-red {
