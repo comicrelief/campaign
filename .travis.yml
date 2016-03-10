@@ -121,10 +121,10 @@ before_script:
 
 script:
   # Check code quality
-  - profiles/cr/tests/behat/vendor/bin/phpcs --config-set installed_paths profiles/cr/tests/behat/vendor/drupal/coder/coder_sniffer"
-  - profiles/cr/tests/behat/vendor/bin/phpcs" --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme profiles/cr/modules/custom --runtime-set ignore_warnings_on_exit 1
-  - profiles/cr/tests/behat/vendor/bin/phpmd" profiles/cr/modules/custom text codesize,unusedcode,naming
-  - profiles/cr/tests/behat/vendor/bin/phpcpd" profiles/cr/modules/custom
+  - profiles/cr/tests/behat/vendor/bin/phpcs --config-set installed_paths profiles/cr/tests/behat/vendor/drupal/coder/coder_sniffer
+  - profiles/cr/tests/behat/vendor/bin/phpcs --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme profiles/cr/modules/custom --runtime-set ignore_warnings_on_exit 1
+  - profiles/cr/tests/behat/vendor/bin/phpmd profiles/cr/modules/custom text codesize,unusedcode,naming
+  - profiles/cr/tests/behat/vendor/bin/phpcpd profiles/cr/modules/custom
   # - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/checkcode.sh
   # Behat
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/script.sh
