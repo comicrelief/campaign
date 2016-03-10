@@ -4,7 +4,7 @@
   <property name="app.dir"            value="${project.basedir}/" />
   <property name="app.name"           value="CR Campaign" />
   <property name="app.profile.name"   value="cr" />
-  <property name="app.profile.dir"    value="${app.dir}profiles/${app.profile.name}/" />
+  <property name="app.profile.dir"    value="profiles/${app.profile.name}/" />
   <property name="app.profile.theme"  value="${app.profile.dir}themes/custom/campaign_base" />
   <property name="app.content.dir"    value="${app.profile.dir}modules/custom/cr_default_content/content/" />
   <!-- Development modules. -->
