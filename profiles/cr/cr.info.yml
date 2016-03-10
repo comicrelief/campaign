@@ -84,9 +84,10 @@ themes:
 
 config_devel:
   #General config.
+  - system.logging
+  - system.performance
   - system.theme
   - views.settings
-  - system.logging
 
   # Blocks
   - block.block.campaign_base_search
