@@ -2,6 +2,8 @@
 # @file
 # Code quality - Script step.
 
+set -e $DRUPAL_TI_DEBUG
+
 CMDBIN="${$TRAVIS_BUILD_DIR}/profiles/cr/tests/behat/vendor/bin"
 DRUPAL_CODER="${$TRAVIS_BUILD_DIR}/profiles/cr/tests/behat/vendor/drupal/coder/coder_sniffer"
 
