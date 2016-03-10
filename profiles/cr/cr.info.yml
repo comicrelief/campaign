@@ -86,7 +86,6 @@ config_devel:
   #General config.
   - system.theme
   - views.settings
-  - system.logging
 
   # Blocks
   - block.block.campaign_base_search
