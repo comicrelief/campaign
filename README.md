@@ -39,11 +39,11 @@ And,
 For prod run:
 
 	grunt build
-	
+
 Grunt will compile CSS, remove comments, remove sass source file, minify and concatenate js.
 
 You can also do this from the root of this repository using
-  
+
 	phing grunt:build
 
 ### PHP Configurations
@@ -121,7 +121,7 @@ To list all possible Phing targets, check
 Add Pantheon as a second remote
 
 	git remote add pantheon ssh://codeserver.dev.f9291f1f-3819-4964-9c5b-c9f7d5500d28@codeserver.dev.f9291f1f-3819-4964-9c5b-c9f7d5500d28.drush.in:2222/~/repository.git
-	
+
 Now you can push to Pantheon to deploy this
 
 https://dashboard.pantheon.io/sites/f9291f1f-3819-4964-9c5b-c9f7d5500d28#dev/code
@@ -170,7 +170,7 @@ SASS should be written with a component approach in mind, with a view to being a
 http://alwaystwisted.com/articles/2014-02-27-even-easier-bem-ing-with-sass-33
 
 ### Feature provides default content
-When writing a custom module - say a Blog article with a node type, fields, views etc. - default content should be provided in code so the feature (don't confuse with the drupal feature module!) as a whole can be developer-reviewed and QA'd as it moves upstream. Default content should be exported as part of `cr_default_content`. 
+When writing a custom module - say a Blog article with a node type, fields, views etc. - default content should be provided in code so the feature (don't confuse with the drupal feature module!) as a whole can be developer-reviewed and QA'd as it moves upstream. Default content should be exported as part of `cr_default_content`.
 
 See https://www.drupal.org/project/default_content (already included in the CR profile).
 
