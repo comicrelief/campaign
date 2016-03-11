@@ -115,15 +115,6 @@ before_install:
 install:
   - drupal-ti install
 
-  # Compile SASS so we can test everything properly
-  - cd "$DRUPAL_TI_THEME_DIR"
-  # We need min. Ruby 2.0
-  - rvm install 2.0.0
-  - npm install
-  - bundle install
-  - grunt build
-  - cd "$TRAVIS_BUILD_DIR"
-
 before_script:
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh
 

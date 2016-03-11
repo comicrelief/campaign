@@ -2,8 +2,8 @@
 # Simple script to deploy our `develop` branch to Pantheon continuously.
 
 # Only continue if we are on the "develop" branch
-if [ "$TRAVIS_BRANCH" = "develop" ]
-then
+# if [ "$TRAVIS_BRANCH" = "develop" ]
+# then
 	# For Pantheon, add a private SSH key (see https://github.com/pantheon-systems/travis-scripts)
 	openssl aes-256-cbc -K $encrypted_f913de0c14f1_key -iv $encrypted_f913de0c14f1_iv -in travis-ci-key.enc -out ~/.ssh/id_rsa -d
 	chmod 0600 ~/.ssh/id_rsa
@@ -14,6 +14,15 @@ then
 	# Dynamic hosts through Pantheon mean constantly checking interactively
 	# that we mean to connect to an unknown host. We ignore those here.
 	echo "StrictHostKeyChecking no" > ~/.ssh/config
+
+	# Compile SASS so we can test everything properly
+	cd "$DRUPAL_TI_THEME_DIR"
+	# We need min. Ruby 2.0
+	rvm install 2.0.0
+	npm install
+	bundle install
+	grunt build
+	cd "$TRAVIS_BUILD_DIR"
 
 	# Log into Pantheon
 	terminus auth login "$PEMAIL" --password="$PPASS"
@@ -55,4 +64,4 @@ then
 
 	# Now, wake up the site
 	terminus site wake --site="$PUUID" --env="$PENV"
-fi
+# fi
