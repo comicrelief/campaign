@@ -24,7 +24,7 @@ env:
   global:
     # add composer's global bin directory to the path
     # see: https://github.com/drush-ops/drush#install---composer
-    - PATH="$PATH:$HOME/.composer/vendor/bin"
+    # - PATH="$PATH:$HOME/.composer/vendor/bin"
 
     # Configuration variables.
     - DRUPAL_TI_MODULE_NAME="cr"
@@ -109,29 +109,25 @@ mysql:
   encoding: utf8
 
 before_install:
-  # For Pantheon, add a private SSH key (see https://github.com/pantheon-systems/travis-scripts)
-  - openssl aes-256-cbc -K $encrypted_f913de0c14f1_key -iv $encrypted_f913de0c14f1_iv -in travis-ci-key.enc -out ~/.ssh/id_rsa -d
-  - chmod 0600 ~/.ssh/id_rsa
   - composer self-update
   - composer global require "lionsad/drupal_ti:dev-master"
   - drupal-ti before_install
 
 install:
+  - echo $TRAVIS_BRANCH
+  - echo $TRAVIS_TAG
+  - echo $TRAVIS_PULL_REQUEST
+
   - drupal-ti install
 
-  # Compile SASS
+  # Compile SASS so we can test everything properly
   - cd "$DRUPAL_TI_THEME_DIR"
   # We need min. Ruby 2.0
   - rvm install 2.0.0
   - npm install
   - bundle install
   - grunt build
-
-  # Pantheon testing
   - cd "$TRAVIS_BUILD_DIR"
-
-  # Deploy to Pantheon
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/deploy_to_pantheon.sh
 
 before_script:
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh
@@ -141,6 +137,16 @@ script:
 
 after_script:
   - drupal-ti after_script
+
+after_success:
+  # For Pantheon, add a private SSH key (see https://github.com/pantheon-systems/travis-scripts)
+  - openssl aes-256-cbc -K $encrypted_f913de0c14f1_key -iv $encrypted_f913de0c14f1_iv -in travis-ci-key.enc -out ~/.ssh/id_rsa -d
+  - chmod 0600 ~/.ssh/id_rsa
+
+  # Deploy to Pantheon
+  # Include Terminus in the path so it can be found
+  - export PATH="$PATH:$HOME/.composer/vendor/bin"
+  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/deploy_to_pantheon.sh
 
 notifications:
   slack: comicrelief:W1jExvqbSU9Kb3lyavdGHdGD

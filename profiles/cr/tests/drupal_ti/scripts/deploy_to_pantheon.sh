@@ -22,6 +22,7 @@ git add css
 git add js
 cd "$TRAVIS_BUILD_DIR"
 
+# Show git status just for debugging
 git status
 
 export CI_COMMIT_MSG="Branch $TRAVIS_BRANCH compiled CSS"
