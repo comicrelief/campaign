@@ -8,16 +8,13 @@
   <property name="app.profile.theme"  value="${app.profile.dir}themes/custom/campaign_base" />
   <property name="app.content.dir"    value="${app.profile.dir}modules/custom/cr_default_content/content/" />
   <!-- Development modules. -->
+  <property name="app.code"           value="${app.profile.dir}modules/custom" />
   <property name="app.config_modules" value="cr cr_article cr_content_wall cr_teaser cr_landing_page cr_default_content cr_search" />
   <!-- This should get overidden for secure builds. -->
   <property name="app.password"       override="true" value="admin" />
   <property name="app.uri"            override="true" value="http://campaign.dev" />
   <property name="drush.bin"          override="true" value="${app.dir}bin/drush" />
   <property name="c.home"             override="true" value="${app.profile.dir}tests/behat/vendor/" />
-  <property name="cs.bin"             override="true" value="${c.home}bin/phpcs" />
-  <property name="md.bin"             override="true" value="${c.home}bin/phpmd" />
-  <property name="loc.bin"            override="true" value="${c.home}bin/phploc" />
-  <property name="cpd.bin"            override="true" value="${c.home}bin/phpcpd" />
   <property name="cs.dir"             override="true" value="drupal/coder/coder_sniffer" />
   <property name="cs.standard"        override="true" value="--standard=DrupalPractice" />
   <property name="cs.ext"             override="true" value="--extensions=php,module,inc,install,test,profile,theme" />
@@ -121,23 +118,20 @@
   </target>
   <target name="info:code:cs"
     description="Check quality of the PHP code for more info. https://www.drupal.org/node/1419988">
-    <exec command="${cs.bin} --config-set installed_paths ${c.home}${cs.dir}" />
-    <exec logoutput="true" dir="${app.profile.dir}"
-      command="${cs.bin} ${cs.standard} ${cs.ext} modules/custom themes/custom" />
+    <exec command="${c.home}bin/phpcs --config-set installed_paths ${c.home}${cs.dir}" />
+    <exec logoutput="true"
+      command="${c.home}bin/phpcs ${cs.standard} ${cs.ext} ${app.code}" />
   </target>
   <target name="info:code:md"
     description="Detect the mess in the code. https://phpmd.org/documentation/index.html">
-    <exec logoutput="true" dir="${app.profile.dir}"
-      command="${md.bin} modules/custom text codesize,unusedcode,naming" />
+    <exec logoutput="true" command="${c.home}bin/phpmd ${app.code} text codesize,unusedcode,naming" />
   </target>
   <target name="info:code:cpd"
     description="Find duplicate code">
-    <exec logoutput="true" dir="${app.profile.dir}"
-      command="${cpd.bin} modules/custom" />
+    <exec logoutput="true" command="${c.home}bin/phpcpd ${app.code}" />
   </target>
   <target name="info:code:loc"
     description="Show stadistics of your lines of code">
-    <exec logoutput="true" dir="${app.profile.dir}"
-      command="${loc.bin} modules/custom" />
+    <exec logoutput="true" command="${c.home}bin/phploc ${app.code}" />
   </target>
 </project>
