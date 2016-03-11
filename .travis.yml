@@ -120,6 +120,8 @@ install:
   - drupal-ti install
 
   # Compile SASS
+  - pwd
+  - echo $TRAVIS_BUILD_DIR
   - cd "$DRUPAL_TI_THEME_DIR"
   # We need min. Ruby 2.0
   - rvm install 2.0.0
@@ -128,10 +130,10 @@ install:
   - grunt build
 
   # Pantheon testing
-  # - cd "$TRAVIS_BUILD_DIR"
+  - cd "$TRAVIS_BUILD_DIR"
 
   # Deploy to Pantheon
-  # - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/deploy_to_pantheon.sh
+  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/deploy_to_pantheon.sh
 
 before_script:
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh
