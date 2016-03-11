@@ -16,8 +16,9 @@ $settings["trusted_host_patterns"] = array("campaign.dev");
 $settings['hash_salt'] = 'yglH7Nyp1x0K4_44XoyZV9WaWp8uxTWwOSsBzBgU0sTEUv_iGFNO-zWTJWviB8hdMFoelVJBig';
 $settings['rebuild_access'] = TRUE;
 
+$config_directories['sync'] = 'sites/default/files/config_bQLFgrgrrIEQHvFRiGc2-Ic2NlrfOO5Tpx2csn2sa90w6wnavLSCGGTtx_2dzO8wRLHGlehxug/sync';
+
+// Override default system configuration.
 $config['system.logging']['error_level'] = 'verbose';
 $config['system.performance']['css']['preprocess'] = 'false';
 $config['system.performance']['js']['preprocess'] = 'false';
-
-$config_directories['sync'] = 'sites/default/files/config_bQLFgrgrrIEQHvFRiGc2-Ic2NlrfOO5Tpx2csn2sa90w6wnavLSCGGTtx_2dzO8wRLHGlehxug/sync';
