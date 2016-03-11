@@ -12,7 +12,7 @@ php:
 
 # No need for git history here
 git:
- depth: 3
+ depth: 1
 
 rvm:
   - 2.0.0
