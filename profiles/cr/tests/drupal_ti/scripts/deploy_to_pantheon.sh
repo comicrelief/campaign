@@ -2,8 +2,8 @@
 # Simple script to deploy our `develop` branch to Pantheon continuously.
 
 # Only continue if we are on the "develop" branch
-# if [ "$TRAVIS_BRANCH" = "develop" ]
-# then
+if [ "$TRAVIS_BRANCH" = "develop" ]
+then
 	# For Pantheon, add a private SSH key (see https://github.com/pantheon-systems/travis-scripts)
 	openssl aes-256-cbc -K $encrypted_f913de0c14f1_key -iv $encrypted_f913de0c14f1_iv -in travis-ci-key.enc -out ~/.ssh/id_rsa -d
 	chmod 0600 ~/.ssh/id_rsa
@@ -64,4 +64,4 @@
 
 	# Now, wake up the site
 	terminus site wake --site="$PUUID" --env="$PENV"
-# fi
+fi
