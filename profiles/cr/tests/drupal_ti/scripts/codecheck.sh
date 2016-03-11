@@ -1,6 +1,7 @@
 #!/bin/bash
 # Simple script to check code quality.
 
-echo $(pwd)
+VENDOR_PATH="profiles/cr/tests/behat/vendor"
+CODE_PATH="profiles/cr/modules/custom"
 
-profiles/cr/tests/behat/vendor/bin/phpmd profiles/cr/modules/custom text codesize,unusedcode,naming
+$VENDOR_PATH/bin/phpmd "$CODE_PATH" text codesize,unusedcode,naming
