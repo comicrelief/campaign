@@ -134,12 +134,6 @@ Include the following within any commit message `[ci skip]`
 
 # Debug info
 
-Add in the file `sites/default/settings.local.php` the following lines:
-```
-$config['system.logging']['error_level'] = 'verbose';
-$config['system.performance']['css']['preprocess'] = 'false';
-$config['system.performance']['js']['preprocess'] = 'false';
-```
 ## Ubuntu grunt:build error
 ```
 Property ${app.profile.theme} => profiles/cr/themes/custom/campaign_base
