@@ -1,6 +1,12 @@
 #!/bin/bash
 # Simple script to deploy our `develop` branch to Pantheon continuously.
 
+"export TRAVIS_COMMIT_MSG=\"$(git log --format=%B --no-merges -n 1)\""
+echo "$TRAVIS_COMMIT_MSG" | grep '\[pantheon deploy\]'; export PANTHEON_DEPLOY=$?; true
+
+echo $TRAVIS_COMMIT_MSG
+echo $PANTHEON_DEPLOY
+
 # Only continue if we are on the "develop" branch
 echo $TRAVIS_BRANCH
 if [ "$TRAVIS_BRANCH" = "develop" ]
