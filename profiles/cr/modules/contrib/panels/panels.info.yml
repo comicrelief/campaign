@@ -3,7 +3,7 @@ name: Panels
 description: 'Core Panels display functions; provides no external UI, at least one other Panels module should be enabled.'
 type: module
 package: Panels
-core: 8.x
+# core: 8.x
 configure: panels.admin
 dependencies:
   - ctools (>= 3.0-alpha21)
@@ -11,7 +11,8 @@ dependencies:
 test_dependencies:
   - page_manager
 
-# Information added by drush on 2016-03-03
+# Information added by Drupal.org packaging script on 2016-03-03
 version: '8.x-3.0-beta4+13-dev'
+core: '8.x'
 project: 'panels'
-datestamp: 1456968067
+datestamp: 1456968250
