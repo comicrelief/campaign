@@ -24,7 +24,7 @@ env:
   global:
     # add composer's global bin directory to the path
     # see: https://github.com/drush-ops/drush#install---composer
-    # - PATH="$PATH:$HOME/.composer/vendor/bin"
+    - PATH="$PATH:$HOME/.composer/vendor/bin"
 
     # Configuration variables.
     - DRUPAL_TI_MODULE_NAME="cr"
@@ -86,7 +86,6 @@ env:
     # - DRUPAL_TI_RUNNERS="behat"
 
     # For Pantheon
-    - PATH="$TRAVIS_BUILD_DIR/profiles/cr/tests/behat/vendor/bin:$PATH"
     - PEMAIL="peter.vanhee@gmail.com"
     - PUUID="f9291f1f-3819-4964-9c5b-c9f7d5500d28"
     - PENV="dev"
@@ -145,7 +144,7 @@ after_success:
 
   # Deploy to Pantheon
   # Include Terminus in the path so it can be found
-  - export PATH="$PATH:$HOME/.composer/vendor/bin"
+  - export PATH="$TRAVIS_BUILD_DIR/profiles/cr/tests/behat/vendor/bin:$PATH"
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/deploy_to_pantheon.sh
 
 notifications:
