@@ -209,7 +209,7 @@
 
           self.setTopMaxHeight();
 
-          self.$('.ipe-category-picker-top *').hide().fadeIn();
+          self.$('.ipe-category-picker-top').hide().fadeIn();
         };
 
         // Make the Drupal AJAX request.
