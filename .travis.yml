@@ -113,10 +113,6 @@ before_install:
   - drupal-ti before_install
 
 install:
-  - echo $TRAVIS_BRANCH
-  - echo $TRAVIS_TAG
-  - echo $TRAVIS_PULL_REQUEST
-
   - drupal-ti install
 
   # Compile SASS so we can test everything properly

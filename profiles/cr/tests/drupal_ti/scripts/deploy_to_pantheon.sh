@@ -1,19 +1,12 @@
 #!/bin/bash
 # Simple script to deploy our `develop` branch to Pantheon continuously.
 
-"export TRAVIS_COMMIT_MSG=\"$(git log --format=%B --no-merges -n 1)\""
-echo "$TRAVIS_COMMIT_MSG" | grep '\[pantheon deploy\]'; export PANTHEON_DEPLOY=$?; true
-
-echo $TRAVIS_COMMIT_MSG
-echo $PANTHEON_DEPLOY
-
 # Only continue if we are on the "develop" branch
-echo $TRAVIS_BRANCH
 if [ "$TRAVIS_BRANCH" = "develop" ]
 then
-    # For Pantheon, add a private SSH key (see https://github.com/pantheon-systems/travis-scripts)
-  	openssl aes-256-cbc -K $encrypted_f913de0c14f1_key -iv $encrypted_f913de0c14f1_iv -in travis-ci-key.enc -out ~/.ssh/id_rsa -d
-  	chmod 0600 ~/.ssh/id_rsa
+	# For Pantheon, add a private SSH key (see https://github.com/pantheon-systems/travis-scripts)
+	openssl aes-256-cbc -K $encrypted_f913de0c14f1_key -iv $encrypted_f913de0c14f1_iv -in travis-ci-key.enc -out ~/.ssh/id_rsa -d
+	chmod 0600 ~/.ssh/id_rsa
 
 	# Include Terminus in the path so it can be found
   	export PATH="$TRAVIS_BUILD_DIR/profiles/cr/tests/behat/vendor/bin:$PATH"
