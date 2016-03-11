@@ -13,11 +13,13 @@ terminus auth login "$PEMAIL" --password="$PPASS"
 git config --global user.email "$CI_BOT_EMAIL"
 git config --global user.name "$CI_BOT_NAME"
 
-git status
+# Remove .gitignore so we can commit CSS/JS
+rm .gitignore
 
+# Now commit css/js dir
 cd "$DRUPAL_TI_THEME_DIR"
-# git add --force css
-# git add --force js
+git add css
+git add js
 cd "$TRAVIS_BUILD_DIR"
 
 git status
