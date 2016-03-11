@@ -8,18 +8,19 @@ echo "StrictHostKeyChecking no" > ~/.ssh/config
 # Log into Pantheon
 terminus auth login "$PEMAIL" --password="$PPASS"
 
-# Change connection mode to Git
-terminus site set-connection-mode --site="$PUUID" --env="$PENV" --mode=git
-
 # We need to compile CSS
 # Then, commit all to the current branch after fixing .gitignore
 git config --global user.email "$CI_BOT_EMAIL"
 git config --global user.name "$CI_BOT_NAME"
 
+git status
+
 cd "$DRUPAL_TI_THEME_DIR"
-git add --force css
-git add --force js
+# git add --force css
+# git add --force js
 cd "$TRAVIS_BUILD_DIR"
+
+git status
 
 export CI_COMMIT_MSG="Branch $TRAVIS_BRANCH compiled CSS"
 git commit -a -m "Built by CI - $CI_COMMIT_MSG"
@@ -35,6 +36,9 @@ terminus site set-connection-mode --site="$PUUID" --env="$PENV" --mode=sftp
 
 # Install the site
 terminus drush --site="$PUUID" --env="$PENV" "site-install --account-pass='$SITEPASS' --site-name='$SITE_NAME $NOW' -y"
+
+# Change connection mode back to Git
+terminus site set-connection-mode --site="$PUUID" --env="$PENV" --mode=git
 
 # Now, wake up the site
 terminus site wake --site="$PUUID" --env="$PENV"
