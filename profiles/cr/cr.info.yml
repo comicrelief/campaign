@@ -77,7 +77,6 @@ dependencies:
   # Because cr_landing_pages has content dependencies this needs to be load after
   # cr_default_content
   - cr_search
-  - cr_dev
 
 themes:
   - seven
