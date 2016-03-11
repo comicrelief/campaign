@@ -1,47 +1,59 @@
 #!/bin/bash
 # Simple script to deploy our `develop` branch to Pantheon continuously.
 
-# Dynamic hosts through Pantheon mean constantly checking interactively
-# that we mean to connect to an unknown host. We ignore those here.
-echo "StrictHostKeyChecking no" > ~/.ssh/config
+# Only continue if we are on the "develop" branch
+echo $TRAVIS_BRANCH
+if [ "$TRAVIS_BRANCH" = "develop" ]
+then
+    # For Pantheon, add a private SSH key (see https://github.com/pantheon-systems/travis-scripts)
+  	openssl aes-256-cbc -K $encrypted_f913de0c14f1_key -iv $encrypted_f913de0c14f1_iv -in travis-ci-key.enc -out ~/.ssh/id_rsa -d
+  	chmod 0600 ~/.ssh/id_rsa
 
-# Log into Pantheon
-terminus auth login "$PEMAIL" --password="$PPASS"
+	# Include Terminus in the path so it can be found
+  	export PATH="$TRAVIS_BUILD_DIR/profiles/cr/tests/behat/vendor/bin:$PATH"
 
-# We need to compile CSS
-# Then, commit all to the current branch after fixing .gitignore
-git config --global user.email "$CI_BOT_EMAIL"
-git config --global user.name "$CI_BOT_NAME"
+	# Dynamic hosts through Pantheon mean constantly checking interactively
+	# that we mean to connect to an unknown host. We ignore those here.
+	echo "StrictHostKeyChecking no" > ~/.ssh/config
 
-# Remove .gitignore so we can commit CSS/JS
-rm .gitignore
+	# Log into Pantheon
+	terminus auth login "$PEMAIL" --password="$PPASS"
 
-# Now commit css/js dir
-cd "$DRUPAL_TI_THEME_DIR"
-git add css
-git add js
-cd "$TRAVIS_BUILD_DIR"
+	# We need to compile CSS
+	# Then, commit all to the current branch after fixing .gitignore
+	git config --global user.email "$CI_BOT_EMAIL"
+	git config --global user.name "$CI_BOT_NAME"
 
-# Show git status just for debugging
-git status
+	# Remove .gitignore so we can commit CSS/JS
+	rm .gitignore
 
-export CI_COMMIT_MSG="Branch $TRAVIS_BRANCH compiled CSS"
-git commit -a -m "Built by CI - $CI_COMMIT_MSG"
+	# Now commit css/js dir
+	cd "$DRUPAL_TI_THEME_DIR"
+	git add css
+	git add js
+	cd "$TRAVIS_BUILD_DIR"
 
-# Add a new remote for Pantheon
-git remote add pantheon ssh://codeserver.$PENV.$PUUID@codeserver.$PENV.$PUUID.drush.in:2222/~/repository.git
+	# Show git status just for debugging
+	git status
 
-# And push all code
-git push pantheon HEAD:master --force
+	export CI_COMMIT_MSG="Branch $TRAVIS_BRANCH compiled CSS"
+	git commit -a -m "Built by CI - $CI_COMMIT_MSG"
 
-# Change connection mode back to SFTP so we can install
-terminus site set-connection-mode --site="$PUUID" --env="$PENV" --mode=sftp
+	# Add a new remote for Pantheon
+	git remote add pantheon ssh://codeserver.$PENV.$PUUID@codeserver.$PENV.$PUUID.drush.in:2222/~/repository.git
 
-# Install the site
-terminus drush --site="$PUUID" --env="$PENV" "site-install --account-pass='$SITEPASS' --site-name='$SITE_NAME $NOW' -y"
+	# And push all code
+	git push pantheon HEAD:master --force
 
-# Change connection mode back to Git
-terminus site set-connection-mode --site="$PUUID" --env="$PENV" --mode=git
+	# Change connection mode back to SFTP so we can install
+	terminus site set-connection-mode --site="$PUUID" --env="$PENV" --mode=sftp
 
-# Now, wake up the site
-terminus site wake --site="$PUUID" --env="$PENV"
+	# Install the site
+	terminus drush --site="$PUUID" --env="$PENV" "site-install --account-pass='$SITEPASS' --site-name='$SITE_NAME $NOW' -y"
+
+	# Change connection mode back to Git
+	terminus site set-connection-mode --site="$PUUID" --env="$PENV" --mode=git
+
+	# Now, wake up the site
+	terminus site wake --site="$PUUID" --env="$PENV"
+fi

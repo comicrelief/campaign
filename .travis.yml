@@ -138,13 +138,7 @@ after_script:
   - drupal-ti after_script
 
 after_success:
-  # For Pantheon, add a private SSH key (see https://github.com/pantheon-systems/travis-scripts)
-  - openssl aes-256-cbc -K $encrypted_f913de0c14f1_key -iv $encrypted_f913de0c14f1_iv -in travis-ci-key.enc -out ~/.ssh/id_rsa -d
-  - chmod 0600 ~/.ssh/id_rsa
-
-  # Deploy to Pantheon
-  # Include Terminus in the path so it can be found
-  - export PATH="$TRAVIS_BUILD_DIR/profiles/cr/tests/behat/vendor/bin:$PATH"
+  # Deploy to Pantheon (only for the develop branch)
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/deploy_to_pantheon.sh
 
 notifications:
