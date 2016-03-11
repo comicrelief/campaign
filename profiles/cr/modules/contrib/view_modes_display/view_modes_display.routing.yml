@@ -3,19 +3,19 @@ view_modes_display.node:
   defaults:
     _controller: '\Drupal\view_modes_display\Controller\DefaultController::previewNode'
   requirements:
-    _permission: 'administer node display'
+    _permission: 'preview view modes'
     node: \d+
 view_modes_display.block_content:
   path: '/block/{block_content}/preview'
   defaults:
     _controller: '\Drupal\view_modes_display\Controller\DefaultController::previewBlockContent'
   requirements:
-    _permission: 'administer blocks'
+    _permission: 'preview view modes'
     block_content: \d+
 view_modes_display.user:
   path: '/user/{user}/preview'
   defaults:
     _controller: '\Drupal\view_modes_display\Controller\DefaultController::previewUser'
   requirements:
-    _permission: 'administer users'
+    _permission: 'preview view modes'
     user: \d+
