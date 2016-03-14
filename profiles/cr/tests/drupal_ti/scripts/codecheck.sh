@@ -10,6 +10,6 @@ cd "$DRUPAL_TI_BEHAT_DIR"
 vendor/bin/phpcs --config-set installed_paths "vendor/drupal/coder/coder_sniffer"
 
 cd "$TRAVIS_BUILD_DIR"
-vendor/bin/phpcs $STANDARD $EXTENSIONS "$CODE_PATH" --runtime-set ignore_warnings_on_exit 1
-vendor/bin/phpmd "$CODE_PATH" text codesize,unusedcode,naming
-vendor/bin/phpcpd "$CODE_PATH"
+$DRUPAL_TI_BEHAT_DIR/vendor/bin/phpcs $STANDARD $EXTENSIONS "$CODE_PATH" --runtime-set ignore_warnings_on_exit 1
+$DRUPAL_TI_BEHAT_DIR/vendor/bin/phpmd "$CODE_PATH" text codesize,unusedcode,naming
+$DRUPAL_TI_BEHAT_DIR/vendor/bin/phpcpd "$CODE_PATH"
