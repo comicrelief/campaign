@@ -10,6 +10,13 @@ sudo: false
 php:
   - 5.6
 
+# No need for git history here
+git:
+ depth: 1
+
+rvm:
+  - 2.0.0
+
 matrix:
   fast_finish: true
 
@@ -44,6 +51,8 @@ env:
     # === Behat specific variables.
     # This is relative to $TRAVIS_BUILD_DIR
     - DRUPAL_TI_BEHAT_DIR="./profiles/cr/tests/behat"
+    # This is relative to $TRAVIS_BUILD_DIR
+    - DRUPAL_TI_THEME_DIR="./profiles/cr/themes/custom/campaign_base"
     # These arguments are passed to the bin/behat command.
     - DRUPAL_TI_BEHAT_ARGS=""
     # Specify the filename of the behat.yml with the $DRUPAL_TI_DRUPAL_DIR variables.
@@ -76,6 +85,16 @@ env:
 
     # - DRUPAL_TI_RUNNERS="behat"
 
+    # For Pantheon
+    - PEMAIL="peter.vanhee@gmail.com"
+    - PUUID="f9291f1f-3819-4964-9c5b-c9f7d5500d28"
+    - PENV="dev"
+    - SITE_NAME="CR"
+    - SITEPASS="admin"
+    - NOW=$(date +"%m-%d-%Y %T")
+    - CI_BOT_EMAIL="travis-ci@example.org"
+    - CI_BOT_NAME="Travis CI"
+
   matrix:
   # [[[ SELECT ANY OR MORE OPTIONS ]]]
   # - DRUPAL_TI_RUNNERS="phpunit"
@@ -94,7 +113,7 @@ before_install:
   - drupal-ti before_install
 
 install:
- - drupal-ti install
+  - drupal-ti install
 
 before_script:
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh
@@ -104,6 +123,10 @@ script:
 
 after_script:
   - drupal-ti after_script
+
+after_success:
+  # Deploy to Pantheon (only for the develop branch)
+  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/deploy_to_pantheon.sh
 
 notifications:
   slack: comicrelief:W1jExvqbSU9Kb3lyavdGHdGD
