@@ -6,8 +6,8 @@ STANDARD="--standard=DrupalPractice"
 EXTENSIONS="--extensions=php,module,inc,install,test,profile,theme"
 
 cd "$DRUPAL_TI_BEHAT_DIR/vendor/bin"
-ls -al "$DRUPAL_TI_BEHAT_DIR/vendor/drupal/coder/coder_sniffer"
-phpcs --config-set installed_paths "$DRUPAL_TI_BEHAT_DIR/vendor/drupal/coder/coder_sniffer"
+ls -al "$TRAVIS_BUILD_DIR/$DRUPAL_TI_BEHAT_DIR/vendor/drupal/coder/coder_sniffer"
+phpcs --config-set installed_paths "$TRAVIS_BUILD_DIR/$DRUPAL_TI_BEHAT_DIR/vendor/drupal/coder/coder_sniffer"
 
 cd "$TRAVIS_BUILD_DIR"
 $DRUPAL_TI_BEHAT_DIR/vendor/bin/phpcs $STANDARD $EXTENSIONS "$CODE_PATH" --runtime-set ignore_warnings_on_exit 1
