@@ -17,7 +17,7 @@ use Drupal\field\FieldConfigInterface;
  * @DsField(
  *   id = "cr_content_wall_CwRowDisplay",
  *   title = @Translation("Row Display"),
- *   entity_type = "block_content",
+ *   entity_type = "paragraph, block_content",
  *   provider = "cr_content_wall"
  * )
  */
@@ -36,6 +36,7 @@ class CwRowDisplay extends DsFieldBase {
 
     // Get row block
     $row = $this->getRowEntity($row_id);
+    die('<pre>' . print_r($this->entity()->id(),1) . '</pre>');
     // Get referenced content blocks
     $blocks = $this->getReferencedBlocks($row, $config['reference_field']);
 

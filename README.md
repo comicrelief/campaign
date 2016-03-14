@@ -1,18 +1,40 @@
 # Comic Relief Campaign website
 
-A work in progress. See http://confluence.comicrelief.com/display/RND17/Campaign+platform+notes
+## Contents
 
-## How to set this up locally
+- About
+- Installation and setup
+- Rules of the Road - developing and extending the solution
+- More information
 
-## FrontEnd set up
+## About
 
-###Install npm. https://docs.npmjs.com/
+This is a quick overview to get the Campaign website running on an environment.
 
+Detailed information can be found at:
+[http://confluence.comicrelief.com/x/gwQq](http://confluence.comicrelief.com/x/gwQq)
+
+Other platform notes can be found at (note: a work in progress):
+[http://confluence.comicrelief.com/x/iQQq](http://confluence.comicrelief.com/x/iQQq)
+
+## Installation and setup
+
+The essentials are:
+- grunt
+- drush v8
+- phing
+
+### Install Grunt
+
+##### Install npm
 In the theme directory run:
 
 	npm install
 
-###Install bundler. http://bundler.io/
+Source: [https://docs.npmjs.com/](https://docs.npmjs.com/)
+
+
+##### Install bundler
 
 In the theme directory run:
 
@@ -20,7 +42,9 @@ In the theme directory run:
 
 Bundler will install all gems needed for your project.
 
-###Grunt dev / build
+Source: [http://bundler.io/](http://bundler.io/)
+
+##### Grunt dev / build
 
 For dev run:
 
@@ -29,7 +53,6 @@ For dev run:
 Grunt will watch all SASS / TWIG / JS / Images for changes
 
 And,
-
 - Compile CSS
 - jshint JS
 - Generate compass image sprites
@@ -47,19 +70,10 @@ You can also do this from the root of this repository using
 	phing grunt:build
 
 ### PHP Configurations
-
 Ensure your environment can run PHP from the command line with a php.ini configuration file loaded in.
-You can test by running the following to identify PHP and the location of the configuration file
 
-  php --ini
-
-If one isn't present, copy one using the default template supplied with PHP (you might need to sudo):
-
-  cp /etc/php.ini.default /etc/php.ini
-
-In the php.ini file, ensure the 'date.timezone'property is enabled and set with a timezone (you can find list of values from http://php.net/manual/en/timezones.php):
-
-  date.timezone = Europe/London
+Further details can be found at:
+[http://confluence.comicrelief.com/x/jwE2](http://confluence.comicrelief.com/x/jwE2)
 
 ### Install and configure Drush 8
 
@@ -73,10 +87,9 @@ If you want to use drush 6 again `composer global require drush/drush 6.*`
 
 You first will need to install to install [Phing](www.phing.info), which is a PHP build tool that automates tasks such as re-installing the site, running migrate procedures, tests etc.
 
-Download Phing from http://www.phing.info/trac/wiki/Users/Download. You can install this using
-
+Download Phing from [http://www.phing.info/trac/wiki/Users/Download](http://www.phing.info/trac/wiki/Users/Download). You can install this using
 - composer, `composer global require phing/phing` [See installation guide](https://coderwall.com/p/ma_cuq/using-composer-to-manage-global-packages)
-- PEAR, follow instructions at http://www.phing.info/trac/wiki/Users/Download
+- PEAR, follow instructions at [http://www.phing.info/trac/wiki/Users/Download](http://www.phing.info/trac/wiki/Users/Download)
 
 ### Configure Phing
 
@@ -116,36 +129,8 @@ To list all possible Phing targets, check
 
 	phing -l
 
-## How to run this on Pantheon
-
-Add Pantheon as a second remote
-
-	git remote add pantheon ssh://codeserver.dev.f9291f1f-3819-4964-9c5b-c9f7d5500d28@codeserver.dev.f9291f1f-3819-4964-9c5b-c9f7d5500d28.drush.in:2222/~/repository.git
-
-Now you can push to Pantheon to deploy this
-
-https://dashboard.pantheon.io/sites/f9291f1f-3819-4964-9c5b-c9f7d5500d28#dev/code
-
-How to deal with [settings.php on Pantheon](https://pantheon.io/docs/articles/drupal/configuring-settings-php/)
-
-## Skip Travis CI builds
-
-Include the following within any commit message `[ci skip]`
-
-# Debug info
-
-## Ubuntu grunt:build error
-```
-Property ${app.profile.theme} => profiles/cr/themes/custom/campaign_base
-     [exec] Executing command: grunt build
-/usr/bin/env: node: No such file or directory
-```
-Fix: `sudo ln -fs /usr/bin/nodejs /usr/local/bin/node`
-
-Note: Nodejs location may differ.
 
 ## Rules of the Road
-
 This section intends to lay down some guiding principles and best-practice approaches for the campaign build. Additions should be submitted as a PR for team discussion.
 
 ### Node-based
@@ -167,12 +152,12 @@ Drupal has a long history of generating bloated markup. For performance reasons,
 ### Component-based sass
 SASS should be written with a component approach in mind, with a view to being able to easily extend a given component. BEM has worked well in the past and probably should be adopted for the campaign theme SASS.
 
-http://alwaystwisted.com/articles/2014-02-27-even-easier-bem-ing-with-sass-33
+[http://alwaystwisted.com/articles/2014-02-27-even-easier-bem-ing-with-sass-33](http://alwaystwisted.com/articles/2014-02-27-even-easier-bem-ing-with-sass-33)
 
 ### Feature provides default content
 When writing a custom module - say a Blog article with a node type, fields, views etc. - default content should be provided in code so the feature (don't confuse with the drupal feature module!) as a whole can be developer-reviewed and QA'd as it moves upstream. Default content should be exported as part of `cr_default_content`.
 
-See https://www.drupal.org/project/default_content (already included in the CR profile).
+See [https://www.drupal.org/project/default_content](See https://www.drupal.org/project/default_content) (already included in the CR profile).
 
 ### Contrib projects
 Because of the high-performance nature of the campaign sites, the use of contirb projects should be carefully considered. Adding a contrib module because it gets the job done can sometimes cause issues further down the line.
@@ -180,24 +165,28 @@ Because of the high-performance nature of the campaign sites, the use of contirb
 ### Behat tests, where useful
 Bear in mind that testing for the existence of certain links on certain pages may not be sustainable, due to ever-changing content. But Behat tests should still be written and provided in your feature where it makes sense to.
 
-http://docs.behat.org/en/v3.0/
-https://knpuniversity.com/screencast/behat/using-behat
+[http://docs.behat.org/en/v3.0/](http://docs.behat.org/en/v3.0/)
+[https://knpuniversity.com/screencast/behat/using-behat](https://knpuniversity.com/screencast/behat/using-behat)
 
 ### Theme JS in footer
 As far as I know, Drupal 8 adds JS to the footer by default but it's good one to keep an eye on.
 
-https://www.drupal.org/theme-guide/8/assets
+[https://www.drupal.org/theme-guide/8/assets](https://www.drupal.org/theme-guide/8/assets)
 
 ### Everything should be within the profile
-
-https://www.drupal.org/node/2210443
+Use Drupal's recommended guidelines on how to write a profile:
+[https://www.drupal.org/node/2210443](https://www.drupal.org/node/2210443)
 
 ### Views view modes
 Views should always use view modes, never field-based views for example.
 
-https://drupalize.me/blog/201403/exploring-new-drupal-8-display-modes
+[https://drupalize.me/blog/201403/exploring-new-drupal-8-display-modes](https://drupalize.me/blog/201403/exploring-new-drupal-8-display-modes)
 
 ### Document module fields
 Modules defining an entity type should document their fields.
 
-See https://github.com/comicrelief/campaign/tree/develop/profiles/cr/modules/custom/cr_article
+See [https://github.com/comicrelief/campaign/tree/develop/profiles/cr/modules/custom/cr_article](https://github.com/comicrelief/campaign/tree/develop/profiles/cr/modules/custom/cr_article)
+
+## More information
+Other advanced settings and tips on troubleshooting can be found at:
+[http://confluence.comicrelief.com/x/mAE2](http://confluence.comicrelief.com/x/mAE2)
