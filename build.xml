@@ -87,7 +87,7 @@
     <exec logoutput="true" command="${drush.bin} urol editor --name=editor" />
   </target>
   <target name="module:dev" description="Install the development modules.">
-   <exec logoutput="true" passthru="true" command="${drush.bin} en ${app.dev_modules} -y" />
+   <exec logoutput="true" passthru="true" command="${drush.bin} en -y ${app.dev_modules}" />
  </target>
 
   <!-- Drush contrib -->
