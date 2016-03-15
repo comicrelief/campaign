@@ -96,7 +96,7 @@
   <target name="user:create" description="Create a test users">
     <exec logoutput="true" command="${drush.bin} ucrt auth --password=auth --mail=q@ex.co"/>
     <exec logoutput="true" command="${drush.bin} ucrt crteam --password=crteam --mail=p@cr.co"/>
-    <exec logoutput="true" command="${drush.bin} urol editor --name=editor"/>
+    <exec logoutput="true" command="${drush.bin} urol editor --name=crteam"/>
   </target>
   <target name="module:dev" description="Install the development modules.">
    <exec logoutput="true" passthru="true" command="${drush.bin} en -y ${app.dev_modules}"/>
