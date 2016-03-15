@@ -464,9 +464,10 @@
       // First, check if the Block already exists and remove it if so.
       var index = null;
       this.model.get('regionCollection').each(function (region) {
-        if (region.getBlock(block.get('uuid'))) {
-          index = region.get('blockCollection').indexOf(block.get('uuid'));
-          region.removeBlock(block.get('uuid'));
+        var old_block = region.getBlock(block.get('uuid'));
+        if (old_block) {
+          index = region.get('blockCollection').indexOf(old_block);
+          region.removeBlock(old_block);
         }
       });
 

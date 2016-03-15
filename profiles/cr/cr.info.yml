@@ -48,6 +48,7 @@ dependencies:
   - pathauto
   - youtube
   - view_modes_display
+  - google_tag
 
   # Layout
   - inline_entity_form
@@ -131,3 +132,5 @@ config_devel:
   - user.role.anonymous
   - user.role.authenticated
   - user.role.editor
+  
+  - google_tag.settings
