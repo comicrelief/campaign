@@ -147,10 +147,10 @@ EOS;
     }
     $script = <<<EOS
 
-<!-- Google Tag Manager Drupal 8-->
+<!-- Google Tag Manager -->
 $noscript
 $script
-<!-- End Google Tag Manager Drupal 8 -->
+<!-- End Google Tag Manager -->
 EOS;
 
     return $script;
