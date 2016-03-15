@@ -23,7 +23,7 @@
   <!-- These allow developers to override config. on a per environment basis -->
   <property file="build.properties"   override="true"/>
   <!-- Default & meta -->
-  <target name="build" depends="cleanfiles, install, grunt:build"
+  <target name="build" depends="file:clear, install, grunt:build"
     description="Build (or rebuild) the project.">
   </target>
   <target name="build:dev" depends="build, user:create, module:dev"
@@ -51,13 +51,17 @@
   </target>
 
   <!-- File system -->
-  <target name="cleanfiles">
-    <exec dir="${app.dir}sites/default/files" command="rm -rf *" passthru="true"/>
+  <target name="file:clear">
+    <exec dir="sites/default/files" command="rm -rf config_* 2016* *im*" />
+    <delete dir="sites/default/files/private"/>
+    <delete dir="sites/default/files/news"/>
+    <delete dir="sites/default/files/php"/>
+    <delete dir="sites/default/files/styles"/>
   </target>
-  <target name="permissions">
-    <exec command="chmod 755 ${app.dir}sites/default" />
-    <exec command="chmod 755 ${app.dir}sites/default/settings.php" />
-    <exec command="chmod 777 -R ${app.dir}sites/default/files/" />
+  <target name="file:mod">
+    <chmod file="sites/default" mode="0755" failonerror="true"/>
+    <chmod file="sites/default/settings.php" mode="0755" failonerror="true"/>
+    <exec command="chmod 777 -R sites/default/files/" />
   </target>
 
   <!-- Drush core -->
@@ -72,11 +76,11 @@
   <target name="install" description="Install CR with standard configuration.">
     <exec dir="${app.dir}" logoutput="true" passthru="true"
       command="${drush.bin} si ${app.profile.name} -y --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring}" />
-    <phingcall target="permissions" />
+    <phingcall target="file:mod" />
   </target>
   <target name="cache:clear">
     <exec command="${drush.bin} cr" passthru="true"/>
-    <phingcall target="permissions" />
+    <phingcall target="file:mod" />
   </target>
   <target name="login" description="Generate a one-time login link">
     <exec passthru="true" logoutput="true" command="${drush.bin} uli -l ${app.uri}" />
