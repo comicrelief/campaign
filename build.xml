@@ -53,10 +53,10 @@
   <!-- File system -->
   <target name="file:clear">
     <exec dir="sites/default/files" command="rm -rf config_* 2016* *im*"/>
-    <delete dir="sites/default/files/private"/>
-    <delete dir="sites/default/files/news"/>
-    <delete dir="sites/default/files/php"/>
-    <delete dir="sites/default/files/styles"/>
+    <delete quiet="true" dir="sites/default/files/private"/>
+    <delete quiet="true" dir="sites/default/files/news"/>
+    <delete quiet="true" dir="sites/default/files/php"/>
+    <delete quiet="true" dir="sites/default/files/styles"/>
   </target>
   <target name="file:mod">
     <chmod file="sites/default" mode="0755" failonerror="true"/>
@@ -94,8 +94,8 @@
     <exec passthru="true" logoutput="true" command="${drush.bin} uli -l ${app.uri}"/>
   </target>
   <target name="user:create" description="Create a test users">
-    <exec logoutput="true" command="${drush.bin} ucrt auth --password=auth --mail=p@ex.co"/>
-    <exec logoutput="true" command="${drush.bin} ucrt editor --password=editor --mail=p@ex.co"/>
+    <exec logoutput="true" command="${drush.bin} ucrt auth --password=auth --mail=q@ex.co"/>
+    <exec logoutput="true" command="${drush.bin} ucrt crteam --password=crteam --mail=p@cr.co"/>
     <exec logoutput="true" command="${drush.bin} urol editor --name=editor"/>
   </target>
   <target name="module:dev" description="Install the development modules.">
