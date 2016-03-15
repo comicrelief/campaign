@@ -43,16 +43,16 @@ module.exports = function (grunt) {
       },
     },
 
-    // accessibility: { // todo!!!
-    //   options : {
-    //     accessibilityLevel: 'WCAG2A',
-    //     domElement: true,
-    //     force: true
-    //   },
-    //   test : {
-    //     src: ['index.html','views/**/*.html']
-    //   }
-    // },
+    accessibility: { // todo!!!
+      options : {
+        accessibilityLevel: 'WCAG2A',
+        domElement: true,
+        force: true
+      },
+      test : {
+        src: ['index.html','views/**/*.html']
+      }
+    },
 
     // browserSync: {
     //     dev: {
@@ -142,7 +142,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-browser-sync');
   grunt.loadNpmTasks('grunt-contrib-concat');
-  // grunt.loadNpmTasks('grunt-accessibility');
+  grunt.loadNpmTasks('grunt-accessibility');
 
   // grunt.registerTask('test',  [
   //   // 'jshint', 
@@ -158,5 +158,7 @@ module.exports = function (grunt) {
     'compass:dist' //,
     // 'jshint'
   ]);
+
+  grunt.registerTask('test', ['accessibility']);
 
 };
