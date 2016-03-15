@@ -26,7 +26,7 @@
   <target name="build" depends="file:clear, install, grunt:build"
     description="Build (or rebuild) the project.">
   </target>
-  <target name="build:dev" depends="build, user:create, module:dev"
+  <target name="build:dev" depends="file:settings, build, user:create, module:dev"
     description="Build (or rebuild) the project for devs.">
   </target>
 
@@ -62,6 +62,14 @@
     <chmod file="sites/default" mode="0755" failonerror="true"/>
     <chmod file="sites/default/settings.php" mode="0755" failonerror="true"/>
     <exec command="chmod 777 -R sites/default/files/"/>
+  </target>
+  <target name="file:settings">
+    <if>
+      <not><available file="sites/default/settings.local.php" type="file"/></not>
+      <then>
+        <copy file="sites/default/settings.example.local.php" tofile="sites/default/settings.local.php" overwrite="true"/>
+      </then>
+    </if>
   </target>
 
   <!-- Drush core -->
