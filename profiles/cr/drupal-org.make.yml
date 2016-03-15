@@ -44,6 +44,8 @@ projects:
     version: 1.0-rc4
   view_modes_display:
     version: 1.x-dev
+  social_links:
+    version: 1.x-dev
   # Developer modules
   config_devel:
     version: 1.0-rc1
