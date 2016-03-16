@@ -48,6 +48,7 @@ dependencies:
   - pathauto
   - youtube
   - view_modes_display
+  - social_links
 
   # Layout
   - inline_entity_form
