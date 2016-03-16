@@ -48,6 +48,8 @@ projects:
     version: 1.x-dev
   view_modes_display:
     version: 1.x-dev
+  social_links:
+    version: 1.x-dev
   # Developer modules
   config_devel:
     version: 1.0-rc1
@@ -58,3 +60,13 @@ projects:
   # Editor/admin experience
   admin_toolbar:
     version: 1.14
+  # Contributed module - CrazyEgg
+  crazyegg:
+    version: 1.0-rc1
+  # Contributed module - Google Tag Manager
+  google_tag:
+    download:
+      branch: 8.x-1.x
+      revision: e0e013c8d8f8c8b376ba6b80aada179ee7c656eb
+      url: https://github.com/mikeyp/google_tag.git
+      
