@@ -11,6 +11,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\ds\Plugin\DsField\DsFieldBase;
 use Drupal\block_content\Entity\BlockContent;
+use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\field\FieldConfigInterface;
 
 /**
@@ -33,7 +34,6 @@ class CwRowDisplay extends DsFieldBase {
     }
 
     $row_id = $this->entity()->id();
-
     // Get row block
     $row = $this->getRowEntity($row_id);
     // Get referenced content blocks
@@ -41,7 +41,7 @@ class CwRowDisplay extends DsFieldBase {
 
     return array(
       '#theme' => 'item_list',
-      '#items' => $this->buildRenderedBlocks($blocks),
+      '#items' => $this->buildRenderedBlocks($row, $blocks),
     );
   }
 
@@ -49,14 +49,15 @@ class CwRowDisplay extends DsFieldBase {
    * @param array of referenced block id's
    * @return array of rendered blocks in row defined view modes
    */
-  public function buildRenderedBlocks($blocks) {
+  public function buildRenderedBlocks($row, $blocks) {
     if (!isset($blocks) || !$blocks) {
       return;
     }
 
     $rendered_blocks = array();
-    $row_view_mode = $this->viewMode();
-    $view_modes = $this->getBlockViewModes($row_view_mode);
+    $row_view_mode = $row->get('field_cw_view_mode')->getValue();
+    // Need a better way to get array value below
+    $view_modes = $this->getBlockViewModes($row_view_mode[0]['value']);
 
     foreach ($blocks as $key => $block_id) {
       $block = BlockContent::load($block_id);
@@ -92,7 +93,7 @@ class CwRowDisplay extends DsFieldBase {
    * @return loaded BlockContent object
    */
   public function getRowEntity($row_id) {
-    return BlockContent::load($row_id);
+    return Paragraph::load($row_id);
   }
 
   /**
