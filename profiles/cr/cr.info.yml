@@ -56,8 +56,10 @@ dependencies:
   - panels_ipe
   - panelizer
   - ctools_block
+  - paragraphs
 
   # Custom modules
+  - cr_paragraph_types
   - cr_article
   - cr_landing_page
   - cr_teaser

@@ -6,6 +6,7 @@ package: Comic Relief
 core: 8.x
 dependencies:
   - ds
+  - cr_paragraph_types
 config_devel:
 # Block config #
   # Row block
