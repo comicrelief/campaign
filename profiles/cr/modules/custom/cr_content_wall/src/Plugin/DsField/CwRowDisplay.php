@@ -17,7 +17,7 @@ use Drupal\field\FieldConfigInterface;
  * @DsField(
  *   id = "cr_content_wall_CwRowDisplay",
  *   title = @Translation("Row Display"),
- *   entity_type = "block_content",
+ *   entity_type = "paragraph",
  *   provider = "cr_content_wall"
  * )
  */
