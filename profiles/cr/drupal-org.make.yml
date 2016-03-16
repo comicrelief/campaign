@@ -42,6 +42,10 @@ projects:
     version: 2.3
   field_group:
     version: 1.0-rc4
+  paragraphs:
+    version: 1.x-dev
+  entity_reference_revisions:
+    version: 1.x-dev
   view_modes_display:
     version: 1.x-dev
   # Developer modules
