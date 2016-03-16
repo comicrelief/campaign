@@ -5,10 +5,12 @@ dependencies:
     - field.field.node.landing.body
     - field.field.node.landing.field_cta
     - field.field.node.landing.field_image
+    - field.field.node.landing.field_paragraphs
     - field.field.node.landing.panelizer
     - node.type.landing
   module:
     - ds
+    - entity_reference_revisions
     - image
     - link
     - panelizer
@@ -142,6 +144,7 @@ third_party_settings:
         - body
         - field_cta
         - panelizer
+        - field_paragraphs
 id: node.landing.default
 targetEntityType: node
 bundle: landing
@@ -172,8 +175,16 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
+    weight: 4
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
   links:
-    weight: 0
+    weight: 11
     settings: {  }
     third_party_settings: {  }
   panelizer:

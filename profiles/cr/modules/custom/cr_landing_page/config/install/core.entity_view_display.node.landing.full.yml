@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.landing.body
     - field.field.node.landing.field_cta
     - field.field.node.landing.field_image
+    - field.field.node.landing.field_paragraphs
     - field.field.node.landing.panelizer
     - node.type.landing
   module:
@@ -17,8 +18,8 @@ dependencies:
     - user
 third_party_settings:
   panelizer:
-    enable: true
-    custom: true
+    enable: false
+    custom: false
     displays:
       default:
         blocks:
@@ -99,7 +100,7 @@ third_party_settings:
         - field_image
         - body
         - field_cta
-        - panelizer
+        - field_paragraphs
 id: node.landing.full
 targetEntityType: node
 bundle: landing
@@ -131,13 +132,14 @@ content:
     third_party_settings: {  }
     type: image
   links:
-    weight: 0
+    weight: 11
     settings: {  }
     third_party_settings: {  }
   panelizer:
     type: panelizer
-    weight: 3
+    weight: 4
     label: hidden
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_paragraphs: true
