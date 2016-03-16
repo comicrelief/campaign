@@ -105,7 +105,7 @@
   </target>
   <target name="content:export:save">
     <exec dir="${app.dir}" logoutput="true" passthru="true"
-      command="${drush.bin} dcer --file=${app.content.dir} ${type} ${id}" />
+      command="${drush.bin} dcer --folder=${app.content.dir} ${type} ${id}" />
     <exec command="rm -fr ${app.content.dir}user" />
   </target>
 
