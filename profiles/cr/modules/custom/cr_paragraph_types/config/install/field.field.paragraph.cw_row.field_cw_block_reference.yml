@@ -2,9 +2,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    #- block_content.type.basic
-    #- block_content.type.cw_node_block
-    #- block_content.type.teaser
     - field.storage.paragraph.field_cw_block_reference
     - paragraphs.paragraphs_type.cw_row
 id: paragraph.cw_row.field_cw_block_reference
