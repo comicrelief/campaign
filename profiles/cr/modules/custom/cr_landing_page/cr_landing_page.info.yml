@@ -17,5 +17,4 @@ config_devel:
   - field.field.node.landing.field_image
   - field.field.node.landing.panelizer
   - field.field.node.landing.field_paragraphs
-  - field.storage.node.field_paragraphs
   - pathauto.pattern.landing_page
