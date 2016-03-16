@@ -56,3 +56,6 @@ projects:
   # Editor/admin experience
   admin_toolbar:
     version: 1.14
+  # Contributed module - CrazyEgg
+  crazyegg:
+    version: 1.0-rc1

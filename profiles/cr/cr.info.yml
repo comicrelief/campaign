@@ -42,6 +42,7 @@ dependencies:
   - responsive_image
 
   # Contrib modules
+  - crazyegg
   - ds
   - file_entity
   - metatag_open_graph
@@ -131,3 +132,6 @@ config_devel:
   - user.role.anonymous
   - user.role.authenticated
   - user.role.editor
+  
+  # Contributed modules
+  - crazyegg.settings
