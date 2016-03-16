@@ -1,7 +1,7 @@
 {
     "_links": {
         "self": {
-            "href": ""
+            "href": "2"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cw_row"
