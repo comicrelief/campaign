@@ -11,6 +11,7 @@ dependencies:
     - node.type.landing
   module:
     - ds
+    - entity_reference_revisions
     - image
     - link
     - panelizer
@@ -131,15 +132,22 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
+    weight: 3
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
   links:
-    weight: 11
+    weight: 13
     settings: {  }
     third_party_settings: {  }
   panelizer:
     type: panelizer
-    weight: 4
+    weight: 12
     label: hidden
     settings: {  }
     third_party_settings: {  }
-hidden:
-  field_paragraphs: true
+hidden: {  }
