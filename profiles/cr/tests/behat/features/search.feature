@@ -1,8 +1,8 @@
 Feature: Search
 
   Scenario: Search /search
-    Given I am on "search?text=Lindsey"
-    Then I should see the link "Get to know Comic Relief"
+    #Given I am on "search?text=Lindsey"
+    #Then I should see the link "Get to know Comic Relief"
 
     Scenario: Search /search
       Given I am on "search?text=malaria"
