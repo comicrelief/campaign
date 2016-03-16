@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Contains paragraphs_demo.module
+ */
+
+/**
+ * Implements hook_preprocess_node() for paragraph node templates.
+ *
+ * Attach css we need for paragraph demo content.
+ */
+function paragraphs_demo_preprocess_node(&$variables) {
+  // If more general approach is needed then implement preprocessor for
+  // paragraph.html.twig.
+  if ($variables['node']->getType() === 'paragraphed_content_demo') {
+    $variables['#attached']['library'][] = 'paragraphs_demo/drupal.paragraphs_demo';
+  }
+}

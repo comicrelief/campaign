@@ -1,0 +1,112 @@
+<?php
+/**
+ * @file
+ * Add view / create / update / delete permissions for all paragraph types.
+ */
+
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\Core\Language\LanguageInterface;
+
+/**
+ * Implements hook_paragraph_access().
+ *
+ * Check whether a user may perform the operation on the paragraph.
+ *
+ * @param Paragraph $entity
+ *   The entity to check access on. Is a string when op is create.
+ *
+ * @param $op
+ *   The operation to be performed on the paragraph. Possible values are:
+ *   - "view"
+ *   - "update"
+ *   - "delete"
+ *   - "create"
+ *
+ * @param $account
+ *   Optional, a user object representing the user for whom the operation is to
+ *   be performed. Determines access for a user other than the current user.
+ *
+ * @return AccessResult
+ *   AccessResult object with the result of the access check.
+ */
+function paragraphs_type_permissions_paragraph_access(EntityInterface $entity, $operation, AccountInterface $account, $langcode = LanguageInterface::LANGCODE_DEFAULT) {
+  $permissions = &drupal_static(__FUNCTION__, array());
+
+  if (!in_array($operation, array('view', 'update', 'delete'), TRUE)) {
+    // If there was no type to check against, or the $op was not one of the
+    // supported ones, we return access denied.
+    return AccessResult::neutral();
+  }
+
+  // Set static cache id to use the type machine name.
+  $cid = $entity->getType();
+
+  // If we've already checked access for this type, user and op, return from
+  // cache.
+  if (isset($permissions[$account->id()][$cid][$operation])) {
+    return $permissions[$account->id()][$cid][$operation];
+  }
+
+  if (AccessResult::allowedIfHasPermission($account, 'bypass paragraphs type content access')->cachePerPermissions()->isAllowed()) {
+    $permissions[$account->id()][$cid][$operation] = AccessResult::allowed();
+    return AccessResult::allowed();
+  }
+
+  if (AccessResult::allowedIfHasPermission($account, $operation . ' paragraph content ' . $cid)->cachePerPermissions()->isAllowed()) {
+    $permissions[$account->id()][$cid][$operation] = AccessResult::allowed();
+    return AccessResult::allowed();
+  }
+
+  $permissions[$account->id()][$cid][$operation] = AccessResult::forbidden();
+
+  return $permissions[$account->id()][$cid][$operation];
+}
+
+/**
+ * Implements hook_paragraph_create_access().
+ *
+ * Check whether a user may perform a create operation on the paragraph type.
+ *
+ * @param $account
+ *   Optional, a user object representing the user for whom the operation is to
+ *   be performed. Determines access for a user other than the current user.
+ *
+ * @param context
+ *   Extra context for the access check.
+ *
+ * @param entity_bundle
+ *   Machine name of the type to create.
+ *
+ * @return AccessResult
+ *   AccessResult object with the result of the access check.
+ */
+function paragraphs_type_permissions_paragraph_create_access(AccountInterface $account = NULL, array $context = array(), $entity_bundle = NULL) {
+  $permissions = &drupal_static(__FUNCTION__, array());
+
+  // Set static cache id to use the type machine name.
+  $cid = $entity_bundle;
+  $op = 'create';
+
+  // If we've already checked access for this type, user and op, return from
+  // cache.
+  if (isset($permissions[$account->id()][$cid][$op])) {
+    return $permissions[$account->id()][$cid][$op];
+  }
+
+  if (AccessResult::allowedIfHasPermission($account, 'bypass paragraphs type content access')->cachePerPermissions()->isAllowed()) {
+    $permissions[$account->id()][$cid][$op] = AccessResult::allowed();
+    return AccessResult::allowed();
+  }
+
+  if (AccessResult::allowedIfHasPermission($account, $op . ' paragraph content ' . $entity_bundle)->cachePerPermissions()->isAllowed()) {
+    $permissions[$account->id()][$cid][$op] = AccessResult::allowed();
+    return AccessResult::allowed();
+  }
+
+  $permissions[$account->id()][$cid][$op] = AccessResult::forbidden();
+
+  return $permissions[$account->id()][$cid][$op];
+}

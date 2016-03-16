@@ -1,0 +1,14 @@
+name: Paragraphs Type Permissions
+type: module
+description: Add view / create / update / delete permissions for all paragraph types.
+# core: 8.x
+package: Paragraphs
+
+dependencies:
+  - paragraphs
+
+# Information added by Drupal.org packaging script on 2016-03-16
+version: '8.x-1.0-rc4+8-dev'
+core: '8.x'
+project: 'paragraphs'
+datestamp: 1458111242
