@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cw_row.field_cw_block_reference
+    - field.field.paragraph.cw_row.field_cw_view_mode
+    - paragraphs.paragraphs_type.cw_row
+id: paragraph.cw_row.default
+targetEntityType: paragraph
+bundle: cw_row
+mode: default
+content:
+  field_cw_block_reference:
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  field_cw_view_mode:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+hidden:
+  created: true
+  status: true
+  uid: true

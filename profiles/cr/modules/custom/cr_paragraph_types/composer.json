@@ -1,0 +1,14 @@
+{
+  "name": "drupal/cr_paragraph_types",
+  "type": "drupal-module",
+  "description": "Contains config for preset CR paragraph types",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/cr_paragraph_types",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "http://drupal.org/project/issues/cr_paragraph_types",
+    "source": "http://cgit.drupalcode.org/cr_paragraph_types"
+  },
+  "require": { }
+}

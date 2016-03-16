@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    #- block_content.type.basic
+    #- block_content.type.cw_node_block
+    #- block_content.type.teaser
+    - field.storage.paragraph.field_cw_block_reference
+    - paragraphs.paragraphs_type.cw_row
+id: paragraph.cw_row.field_cw_block_reference
+field_name: field_cw_block_reference
+entity_type: paragraph
+bundle: cw_row
+label: 'Block reference'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:block_content'
+  handler_settings:
+    target_bundles:
+      basic: basic
+      cw_node_block: cw_node_block
+      teaser: teaser
+    sort:
+      field: _none
+field_type: entity_reference
