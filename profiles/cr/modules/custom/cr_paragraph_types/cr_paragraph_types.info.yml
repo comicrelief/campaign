@@ -10,7 +10,7 @@ config_devel:
 # Paragraph config
   - core.entity_form_display.paragraph.cw_row.default
   - core.entity_view_display.paragraph.cw_row.default
-  - core.entity_view_mode.paragraph.preview
+  #- core.entity_view_mode.paragraph.preview
   - field.field.paragraph.cw_row.field_cw_block_reference
   - field.field.paragraph.cw_row.field_cw_view_mode
   - field.storage.node.field_paragraphs
