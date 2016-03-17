@@ -263,16 +263,16 @@ class PanelsIPEBlockPluginForm extends FormBase {
       return $form;
     }
 
-    $block_instance = $this->getBlockInstance($form_state);
-
-    // Submit the block configuration form.
-    $this->submitBlock($block_instance, $form, $form_state);
-
     // If a temporary configuration for this variant exists, use it.
     $temp_store_key = $this->panelsDisplay->id();
     if ($variant_config = $this->tempStore->get($temp_store_key)) {
       $this->panelsDisplay->setConfiguration($variant_config);
     }
+
+    $block_instance = $this->getBlockInstance($form_state);
+
+    // Submit the block configuration form.
+    $this->submitBlock($block_instance, $form, $form_state);
 
     // Set the block region appropriately.
     $block_config = $block_instance->getConfiguration();

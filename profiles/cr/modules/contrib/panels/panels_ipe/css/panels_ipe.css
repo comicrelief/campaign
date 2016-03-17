@@ -425,14 +425,18 @@ div.ipe-actions-block {
   overflow: hidden;
 }
 
+/* Display block picker elements in a flex grid. */
+.ipe-block-picker-list.active {
+  display: inline-flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+}
+
 .ipe-block-plugin {
-  display: inline-block;
-  width: 170px;
-  vertical-align: top;
-  overflow: hidden;
-  margin: 5px;
+  flex-basis: 200px;
+  margin-left: 10px;
+  margin-top: 10px;
   text-align: left;
-  position: relative;
 }
 
 .ipe-block-plugin-info {
