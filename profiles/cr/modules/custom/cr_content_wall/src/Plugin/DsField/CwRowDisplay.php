@@ -19,7 +19,8 @@ use Drupal\field\FieldConfigInterface;
  *   id = "cr_content_wall_CwRowDisplay",
  *   title = @Translation("Row Display"),
  *   entity_type = "paragraph",
- *   provider = "cr_content_wall"
+ *   provider = "cr_content_wall",
+ *   ui_limit = {"cw_row|*"}
  * )
  */
 class CwRowDisplay extends DsFieldBase {
