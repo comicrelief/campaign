@@ -50,7 +50,7 @@ module.exports = function (grunt) {
         force: true
       },
       test : {
-        src: ['index.html','views/**/*.html']
+        src: ['templates/**/*.html.twig']
       }
     },
 
