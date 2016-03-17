@@ -1,0 +1,5 @@
+services:
+  cr_rabbitmq_event_subscriber:
+    class: Drupal\cr_rabbitmq\EventSubscriber\RabbitmqSubscriber
+    tags:
+      - {name: event_subscriber}
