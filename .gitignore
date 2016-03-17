@@ -48,6 +48,10 @@ Thumbs.db
 ######################
 *.un~
 
+# WRAITH #
+##########
+profiles/cr/themes/custom/campaign_base/shots
+
 # SASS #
 ##########
 .sass-cache
