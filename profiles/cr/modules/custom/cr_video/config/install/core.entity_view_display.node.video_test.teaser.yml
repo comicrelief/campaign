@@ -3,6 +3,8 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.video_test.field_video_embed
+    - field.field.node.video_test.field_youtube_video
     - node.type.video_test
   module:
     - user
@@ -14,4 +16,6 @@ content:
   links:
     weight: 100
 hidden:
+  field_video_embed: true
+  field_youtube_video: true
   social_links: true
