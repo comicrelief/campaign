@@ -13,3 +13,4 @@ dependencies:
   - cr_article
   - cr_teaser
   - cr_content_wall
+  - cr_video

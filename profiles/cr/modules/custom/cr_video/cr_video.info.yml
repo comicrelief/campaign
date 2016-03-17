@@ -3,3 +3,17 @@ type: module
 description: Module for testing video fields.
 core: 8.x
 package: Comic Relief
+dependencies:
+  - video_embed_field
+  - youtube
+config_devel:
+  - node.type.video_test
+  - file_entity.type.video
+  - core.entity_form_display.node.video_test.default
+  - core.entity_view_display.file.video.thumbnail
+  - core.entity_view_display.node.video_test.default
+  - core.entity_view_display.node.video_test.teaser
+  - field.field.node.video_test.field_video_embed
+  - field.field.node.video_test.field_youtube_video
+  - field.storage.node.field_video_embed
+  - field.storage.node.field_youtube_video
