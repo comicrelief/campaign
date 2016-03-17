@@ -6,9 +6,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
-use PhpAmqpLib\Channel\AMQPChannel;
 use Drupal\rabbitmq\Queue\Queue;
-use Drupal\rabbitmq\Queue\QueueFactory;
 
 class RabbitmqSubscriber implements EventSubscriberInterface {
 
@@ -19,33 +17,17 @@ class RabbitmqSubscriber implements EventSubscriberInterface {
    */
   protected $queue;
   /**
+   * The queue factory service.
+   *
+   * @var \Drupal\Core\Queue\QueueFactory
+   */
+  protected $queueFactory;
+  /**
    * Server factory.
    *
    * @var \Drupal\rabbitmq\Connection
    */
   protected $connectionFactory;
-
-  /**
-   * Initialize a server and free channel.
-   *
-   * @return \AMQPChannel
-   *   A channel to the default queue.
-   */
-  protected function initChannel() {
-    // $this->connectionFactory = $container->get('rabbitmq.connection.factory');
-    $this->connectionFactory = \Drupal::service('rabbitmq.connection.factory');
-    $connection = $this->connectionFactory->getConnection();
-    $channel = $connection->channel();
-    $name = 'loca';
-    $passive = FALSE;
-    $durable = FALSE;
-    $exclusive = FALSE;
-    $auto_delete = FALSE;
-
-    $channel->queue_declare($name, $passive, $durable, $exclusive, $auto_delete);
-
-    return $channel;
-  }
 
   /**
    * Execute some rabbits.
@@ -71,16 +53,32 @@ class RabbitmqSubscriber implements EventSubscriberInterface {
     $channel->close();
     $connection->close();
   }
+
   public function rabbitLauncher() {
-    $this->initChannel();
-    $this->queue->createItem('foo');
+    $name = 'cr';
+    $this->queueFactory = \Drupal::service('queue');
+    $this->queue = $this->queueFactory->get($name);
+    $this->connectionFactory = \Drupal::service('rabbitmq.connection.factory');
+    $connection = $this->connectionFactory->getConnection();
+    $channel = $connection->channel();
+    $passive = FALSE;
+    $durable = FALSE;
+    $exclusive = FALSE;
+    $auto_delete = FALSE;
+
+    $channel->queue_declare($name, $passive, $durable, $exclusive, $auto_delete);
+    $data = "fooo";
+    $this->queue->createItem($data);
+    dpm($this->queue->numberOfItems());
+
+    $channel->close();
+    $connection->close();
   }
 
   /**
    * {@inheritdoc}
    */
   static function getSubscribedEvents() {
-    //$events[KernelEvents::REQUEST][] = array('executeRabbit');
     $events[KernelEvents::REQUEST][] = array('rabbitLauncher');
     return $events;
   }
