@@ -94,9 +94,9 @@
     <exec passthru="true" logoutput="true" command="${drush.bin} uli -l ${app.uri}"/>
   </target>
   <target name="user:create" description="Create a test users">
-    <exec logoutput="true" command="${drush.bin} ucrt auth --password=auth --mail=q@ex.co"/>
-    <exec logoutput="true" command="${drush.bin} ucrt crteam --password=crteam --mail=p@cr.co"/>
-    <exec logoutput="true" command="${drush.bin} urol editor --name=crteam"/>
+    <exec logoutput="true" command="${drush.bin} ucrt auth --password=auth --mail=auth@cr.co"/>
+    <exec logoutput="true" command="${drush.bin} ucrt editor --password=editor --mail=editor@cr.co"/>
+    <exec logoutput="true" command="${drush.bin} urol editor --name=editor"/>
   </target>
   <target name="module:dev" description="Install the development modules.">
    <exec logoutput="true" passthru="true" command="${drush.bin} en -y ${app.dev_modules}"/>
@@ -116,7 +116,7 @@
     <exec logoutput="true" passthru="true" command="${drush.bin} dcer ${type} ${id}"/>
   </target>
   <target name="content:export:save">
-    <exec logoutput="true" passthru="true" command="${drush.bin} dcer --file=${app.content.dir} ${type} ${id}"/>
+    <exec logoutput="true" passthru="true" command="${drush.bin} dcer --folder=${app.content.dir} ${type} ${id}"/>
     <delete quiet="true" dir="${app.content.dir}user"/>
   </target>
 
