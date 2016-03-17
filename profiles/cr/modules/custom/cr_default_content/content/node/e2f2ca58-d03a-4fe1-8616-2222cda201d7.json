@@ -19,14 +19,11 @@
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_image": [
             {
-                "href": "http:\/\/default\/file\/5?_format=hal_json",
+                "href": "http:\/\/default\/file\/18?_format=hal_json",
                 "lang": "en"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_paragraphs": [
-            {
-                "href": ""
-            },
             {
                 "href": ""
             },
@@ -70,7 +67,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "eb2b6f5b-689a-4c4d-8200-a9aa93b0ac7c"
+                        "value": "ee5578c4-b887-4297-a807-7d08d95775df"
                     }
                 ],
                 "lang": "en"
@@ -88,7 +85,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "eb2b6f5b-689a-4c4d-8200-a9aa93b0ac7c"
+                        "value": "ee5578c4-b887-4297-a807-7d08d95775df"
                     }
                 ]
             }
@@ -97,7 +94,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/file\/5?_format=hal_json"
+                        "href": "http:\/\/default\/file\/18?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
@@ -127,7 +124,7 @@
                 },
                 "uuid": [
                     {
-                        "value": ""
+                        "value": "2eac757c-e08a-4bc9-ac00-eceadffc1dbd"
                     }
                 ]
             },
@@ -142,22 +139,7 @@
                 },
                 "uuid": [
                     {
-                        "value": ""
-                    }
-                ]
-            },
-            {
-                "_links": {
-                    "self": {
-                        "href": ""
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cw_row"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": ""
+                        "value": "4a3f34d0-f83c-41af-8500-e9bf3a9a49af"
                     }
                 ]
             }
@@ -177,7 +159,7 @@
     ],
     "changed": [
         {
-            "value": "1458134361",
+            "value": "1458233894",
             "lang": "en"
         }
     ],
