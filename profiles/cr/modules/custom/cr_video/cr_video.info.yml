@@ -1,0 +1,5 @@
+name: CR Video
+type: module
+description: Module for testing video fields.
+core: 8.x
+package: Comic Relief
