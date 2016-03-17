@@ -1,0 +1,64 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.video_test.field_video_embed
+    - field.field.node.video_test.field_youtube_video
+    - node.type.video_test
+  module:
+    - path
+    - video_embed_field
+    - youtube
+id: node.video_test.default
+targetEntityType: node
+bundle: video_test
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+  field_video_embed:
+    weight: 32
+    settings: {  }
+    third_party_settings: {  }
+    type: video_embed_field_textfield
+  field_youtube_video:
+    weight: 31
+    settings: {  }
+    third_party_settings: {  }
+    type: youtube
+  path:
+    type: path
+    weight: 30
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 15
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 16
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

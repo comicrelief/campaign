@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - node.type.video_test
+  module:
+    - user
+id: node.video_test.teaser
+targetEntityType: node
+bundle: video_test
+mode: teaser
+content:
+  links:
+    weight: 100
+hidden:
+  social_links: true
