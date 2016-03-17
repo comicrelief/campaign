@@ -192,10 +192,7 @@
       $current_side = $form.find('.flipper > .back');
     }
 
-    // If the new side is larger than the current side, change the height.
-    if ($new_side.outerHeight() > $current_side.outerHeight()) {
-      $current_side.animate({height: $new_side.outerHeight() + 10}, 600);
-    }
+    $current_side.animate({height: $new_side.outerHeight() + 10}, 600);
   };
 
   /**

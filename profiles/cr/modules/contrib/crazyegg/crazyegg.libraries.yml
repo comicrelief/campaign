@@ -1,0 +1,6 @@
+crazyegg:
+  version: 1.x
+  js:
+    js/crazyegg.js: {}
+  dependencies:
+    - core/drupalSettings
