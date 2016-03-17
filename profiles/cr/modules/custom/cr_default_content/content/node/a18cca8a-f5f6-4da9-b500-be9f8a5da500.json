@@ -1,20 +1,20 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/node\/11?_format=hal_json"
+            "href": "http:\/\/default\/node\/1?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/video_test"
         },
         "http:\/\/drupal.org\/rest\/relation\/node\/video_test\/uid": [
             {
-                "href": "http:\/\/default\/user\/1?_format=hal_json",
+                "href": "http:\/\/default\/user\/0?_format=hal_json",
                 "lang": "en"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/video_test\/revision_uid": [
             {
-                "href": "http:\/\/default\/user\/1?_format=hal_json"
+                "href": "http:\/\/default\/user\/0?_format=hal_json"
             }
         ]
     },
@@ -45,7 +45,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -53,7 +53,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "9fdf732c-1878-4320-8002-2cc199a5f7cc"
+                        "value": "9da42a7a-aaee-45e2-b657-87013a5892c4"
                     }
                 ],
                 "lang": "en"
@@ -63,7 +63,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -71,7 +71,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "9fdf732c-1878-4320-8002-2cc199a5f7cc"
+                        "value": "9da42a7a-aaee-45e2-b657-87013a5892c4"
                     }
                 ]
             }
@@ -91,7 +91,7 @@
     ],
     "changed": [
         {
-            "value": "1458214320",
+            "value": "1458214984",
             "lang": "en"
         }
     ],

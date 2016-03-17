@@ -116,7 +116,7 @@
     <exec logoutput="true" passthru="true" command="${drush.bin} dcer ${type} ${id}"/>
   </target>
   <target name="content:export:save">
-    <exec logoutput="true" passthru="true" command="${drush.bin} dcer --file=${app.content.dir} ${type} ${id}"/>
+    <exec logoutput="true" passthru="true" command="${drush.bin} dcer --folder=${app.content.dir} ${type} ${id}"/>
     <delete quiet="true" dir="${app.content.dir}user"/>
   </target>
 
