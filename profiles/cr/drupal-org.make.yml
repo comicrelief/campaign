@@ -21,6 +21,10 @@ projects:
       # This will be fixed in: 8.x-1.x-dev
       # URL: https://www.drupal.org/node/2655874
       - "https://www.drupal.org/files/issues/the_given_alias_pattern-2655874-52.patch"
+  rabbitmq:
+    download:
+      branch: 8.x-1.x
+      url: https://github.com/comicrelief/rabbitmq.git
   search_api:
     version: 1.0-alpha12
   token:
