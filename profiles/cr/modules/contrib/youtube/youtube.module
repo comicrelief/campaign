@@ -170,9 +170,11 @@ function template_preprocess_youtube_video(&$variables) {
   $variables['content_attributes']['width'] = $dimensions['width'];
   $variables['content_attributes']['height'] = $dimensions['height'];
 
-  // Build the iframe element's id attribute value.
-  $id = Html::getUniqueId($variables['settings']['youtube_player_class']);
+  // Build the iframe element's id and class attribute values.
+  $class = $variables['settings']['youtube_player_class'];
+  $id = Html::getUniqueId($class);
   $variables['content_attributes']['id'] = $id;
+  $variables['content_attributes']['class'][] = Html::getClass($class);
 
   // Build the iframe element's title attribute value (for accessibility).
   $variables['content_attributes']['title'] = t('Embedded video');
@@ -213,7 +215,7 @@ function template_preprocess_youtube_thumbnail(&$variables) {
 
   // Check to see if a thumbnail exists locally.
   $youtube_dir_path = youtube_get_yt_dir();
-  $destination = $youtube_dir_path . '/' . $video_id . '.png';
+  $destination = $youtube_dir_path . '/' . $video_id . '.jpg';
   if (!file_exists($destination)) {
     // Retrieve the image from YouTube.
     if (!youtube_get_remote_image($video_id)) {
@@ -225,7 +227,7 @@ function template_preprocess_youtube_thumbnail(&$variables) {
   // Build the thumbnail's URI. Use the remote URI if there isn't a local image.
   if (empty($remote_uri)) {
     $youtube_dir = \Drupal::config('youtube.settings')->get('youtube_thumb_dir');
-    $uri = 'public://' . $youtube_dir . '/' . $video_id . '.png';
+    $uri = 'public://' . $youtube_dir . '/' . $video_id . '.jpg';
   }
   else {
     $uri = $remote_uri;
@@ -331,7 +333,7 @@ function youtube_get_remote_image($video_id = NULL, $force_small = FALSE) {
 
   $data = $image_request->getBody(TRUE);
   $yt_dir_path = youtube_get_yt_dir();
-  $dest = $yt_dir_path . '/' . $video_id . '.png';
+  $dest = $yt_dir_path . '/' . $video_id . '.jpg';
 
   if (!file_prepare_directory($yt_dir_path, FILE_CREATE_DIRECTORY) && !mkdir($yt_dir_path, 0775, TRUE)) {
     \Drupal::service('logger.factory')->get('youtube')->log(WATCHDOG_ERROR, 'Failed to create YouTube thumbnail directory: %dir', array('%dir' => $yt_dir_path));
@@ -531,6 +533,9 @@ function youtube_token_info_alter(&$data) {
  * @see youtube_tokens_info_alter()
  */
 function youtube_tokens($type, $tokens, array $data = array(), array $options = array()) {
+  global $base_url;
+  global $base_path;
+
   $url_options = array('absolute' => TRUE);
 
   if (isset($options['langcode'])) {
@@ -564,25 +569,29 @@ function youtube_tokens($type, $tokens, array $data = array(), array $options = 
 
       switch ($token_name) {
         case 'youtube_video_url':
+          $replacements[$original] = '';
+
           $field = $node->$field_name;
-          $video_id = $field->video_id;
-          $replacements[$original] = 'http://www.youtube.com/watch?v=' . $video_id;
+          if ($video_id = $field->video_id) {
+            $replacements[$original] = 'http://www.youtube.com/watch?v=' . $video_id;
+          }
           break;
 
         case 'youtube_image_url':
-          global $base_url;
-          global $base_path;
+          $replacements[$original] = '';
+
           $field = $node->$field_name;
-          $video_id = $field->video_id;
-          $thumb_dir = \Drupal::config('youtube.settings')->get('youtube_thumb_dir');
-          $thumb_dir = empty($thumb_dir) ? 'youtube' : $thumb_dir;
-          $file_path = 'public://' . $thumb_dir;
-          $file_path .= '/' . $video_id . '.png';
-          $full_url = file_create_url($file_path);
-          if (!file_exists($file_path)) {
-            youtube_get_remote_image($video_id);
+          if ($video_id = $field->video_id) {
+            $thumb_dir = \Drupal::config('youtube.settings')->get('youtube_thumb_dir');
+            $thumb_dir = empty($thumb_dir) ? 'youtube' : $thumb_dir;
+            $file_path = 'public://' . $thumb_dir;
+            $file_path .= '/' . $video_id . '.jpg';
+            $full_url = file_create_url($file_path);
+            if (!file_exists($file_path)) {
+              youtube_get_remote_image($video_id);
+            }
+            $replacements[$original] = $full_url;
           }
-          $replacements[$original] = $full_url;
           break;
       }
     }

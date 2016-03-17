@@ -102,7 +102,7 @@ class YouTubeTest extends WebTestBase {
     // Verify that the image markup is displayed
     $matches = array();
     $subject = $this->getRawContent();
-    $pattern = '/<img .*src="(.*?' . $video_id . '[\/\d+]*\.[png|jpg].*?)"/s';
+    $pattern = '/<img .*src="(.*?' . $video_id . '[\/\d+]*\.[jpg].*?)"/s';
     preg_match($pattern, $subject, $matches);
     $this->assertPattern($pattern);
     $img_url = $matches[1];
