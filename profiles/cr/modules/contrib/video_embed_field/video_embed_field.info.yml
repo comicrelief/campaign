@@ -1,0 +1,13 @@
+name: Video Embed Field
+type: module
+description: 'A field type for storing videos.'
+package: Field types
+# core: 8.x
+dependencies:
+  - field
+
+# Information added by Drupal.org packaging script on 2016-03-15
+version: '8.x-1.0-rc5'
+core: '8.x'
+project: 'video_embed_field'
+datestamp: 1458051810
