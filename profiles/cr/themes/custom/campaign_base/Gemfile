@@ -18,6 +18,8 @@ gem 'susy'
 
 gem 'compass-rails', '~> 2.0.0'
 
+gem 'wraith', '3.1.2'					# Wraith
+
 # Guard
 gem 'guard'                   # Guard event handler.
 gem 'guard-compass'           # Compile on sass/scss change.
