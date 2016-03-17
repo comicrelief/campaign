@@ -193,4 +193,8 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
+  social_links:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
 hidden: {  }

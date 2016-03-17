@@ -186,3 +186,4 @@ content:
     third_party_settings: {  }
 hidden:
   field_paragraphs: true
+  social_links: true
