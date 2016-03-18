@@ -111,7 +111,7 @@ before_install:
   - composer self-update
   - composer global require lionsad/drupal_ti:dev-master
   - composer global require phing/phing
-  - npm install grunt $DRUPAL_TI_THEME_DIR --save-dev
+  - npm install grunt ./profile/cr/themes/custom/campaign_base --save-dev
   #- drupal-ti before_install
 
 install:
