@@ -29,7 +29,7 @@
   <target name="build:dev" depends="file:settings, build, user:create, module:dev"
     description="Build (or rebuild) the project for devs.">
   </target>
-  <target name="build:travis" depends="install, grunt:build"
+  <target name="build:travis" depends="install"
     description="Build the project via Travis.">
   </target>
   <!-- Development modules -->
