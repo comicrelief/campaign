@@ -23,14 +23,11 @@
   <!-- These allow developers to override config. on a per environment basis -->
   <property file="build.properties"   override="true"/>
   <!-- Build jobs -->
-  <target name="build" depends="file:clear, install, grunt:build"
+  <target name="build" depends="file:clear, install"
     description="Build (or rebuild) the project.">
   </target>
   <target name="build:dev" depends="file:settings, build, user:create, module:dev"
     description="Build (or rebuild) the project for devs.">
-  </target>
-  <target name="build:travis" depends="install"
-    description="Build the project via Travis.">
   </target>
   <!-- Development modules -->
   <target name="module:dev" description="Install the development modules.">
@@ -81,11 +78,16 @@
   </target>
   <!-- File system -->
   <target name="file:clear">
-    <exec dir="sites/default/files" command="rm -rf config_* 2016* *im*"/>
-    <delete quiet="true" dir="sites/default/files/private"/>
-    <delete quiet="true" dir="sites/default/files/news"/>
-    <delete quiet="true" dir="sites/default/files/php"/>
-    <delete quiet="true" dir="sites/default/files/styles"/>
+    <if>
+      <available file="sites/default/files" type="dir"/>
+      <then>
+        <exec dir="sites/default/files" command="rm -rf config_* 2016* *im*"/>
+        <delete quiet="true" dir="sites/default/files/private"/>
+        <delete quiet="true" dir="sites/default/files/news"/>
+        <delete quiet="true" dir="sites/default/files/php"/>
+        <delete quiet="true" dir="sites/default/files/styles"/>
+      </then>
+    </if>
   </target>
   <target name="file:mod">
     <chmod file="sites/default" mode="0755" failonerror="true"/>
