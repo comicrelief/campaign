@@ -14,7 +14,7 @@ bundle: cr_rich_text_paragraph
 mode: default
 content:
   field_background:
-    weight: 1
+    weight: 0
     label: above
     settings:
       image_style: ''
@@ -22,7 +22,7 @@ content:
     third_party_settings: {  }
     type: image
   field_body:
-    weight: 0
+    weight: 1
     label: above
     settings: {  }
     third_party_settings: {  }
