@@ -115,7 +115,7 @@ before_install:
 
 install:
   #- drupal-ti install
-  - phing -f build.xml
+  - phing build:travis -f build.xml
 
 before_script:
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh
