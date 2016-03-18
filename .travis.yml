@@ -109,19 +109,18 @@ mysql:
 
 before_install:
   - composer self-update
-  # Require phing via composer
   - composer global require lionsad/drupal_ti:dev-master
+  - composer global require phing/phing
   - drupal-ti before_install
 
 install:
-  - drupal-ti install
+  #- drupal-ti install
+  - phing -f build.xml
 
 before_script:
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh
 
 script:
-  #- phing -f build.xml
-  # Or use composer to run phing
   # Check code quality
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/codecheck.sh
   # Behat
