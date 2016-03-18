@@ -113,10 +113,11 @@ before_install:
   - composer global require phing/phing
   - npm install grunt --save-dev
   - npm install grunt-install-dependencies --save-dev
-  - drupal-ti before_install
+  #- drupal-ti before_install
 
 install:
   #- drupal-ti install
+  - npm install
   - phing build:travis -f build.xml
 
 before_script:
