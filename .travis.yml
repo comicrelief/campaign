@@ -122,19 +122,22 @@ install:
   - phing
 
 before_script:
+  # Is this still required
   #- drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh
 
 script:
+  # Need to look into and use runners
   # Check code quality
   #- drupal-ti --include profiles/cr/tests/drupal_ti/scripts/codecheck.sh
   # Behat
   #- drupal-ti --include profiles/cr/tests/drupal_ti/scripts/script.sh
 
 after_script:
-  #- drupal-ti after_script
+  - drupal-ti after_script
 
 after_success:
   # Deploy to Pantheon (only for the develop branch)
+  # Look into pushing the phing build (HEAD with CSS/JS)
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/deploy_to_pantheon.sh
 
 notifications:
