@@ -5,7 +5,10 @@
 
 language: php
 
-sudo: false
+sudo: required
+
+services:
+  - rabbitmq
 
 php:
   - 5.6

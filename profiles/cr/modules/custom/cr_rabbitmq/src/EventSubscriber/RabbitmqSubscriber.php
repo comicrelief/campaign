@@ -30,30 +30,8 @@ class RabbitmqSubscriber implements EventSubscriberInterface {
   protected $connectionFactory;
 
   /**
-   * Execute some rabbits.
+   * Launch a rabbit.
    */
-  public function executeRabbit() {
-    $connection = new AMQPStreamConnection(
-      'localhost',
-      '5672',
-      'guest',
-      'guest'
-    );
-    $channel = $connection->channel();
-    $routing_key = $queue_name = 'matrix';
-
-    $passive = FALSE;
-    $durable = FALSE;
-    $exclusive = FALSE;
-    $auto_delete = FALSE;
-
-    $channel->queue_declare($queue_name, $passive, $durable, $exclusive, $auto_delete);
-    $message = new AMQPMessage('Hello World!');
-    $channel->basic_publish($message, '', $routing_key);
-    $channel->close();
-    $connection->close();
-  }
-
   public function rabbitLauncher() {
     $name = 'cr';
     $this->queueFactory = \Drupal::service('queue');
@@ -67,8 +45,10 @@ class RabbitmqSubscriber implements EventSubscriberInterface {
     $auto_delete = FALSE;
 
     $channel->queue_declare($name, $passive, $durable, $exclusive, $auto_delete);
-    $data = "fooo";
-    $this->queue->createItem($data);
+    $data = new AMQPMessage('Hello World!');
+    // $this->queue->createItem($data);
+    $channel->basic_publish($data, '', $name);
+    // dpm($this->queue->numberOfItems());
 
     $channel->close();
     $connection->close();
