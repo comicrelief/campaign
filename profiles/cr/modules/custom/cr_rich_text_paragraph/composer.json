@@ -1,0 +1,14 @@
+{
+  "name": "drupal/cr_rich_text_paragraph",
+  "type": "drupal-module",
+  "description": "Contains config for Rich Text paragraph type.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/cr_rich_text_paragraph",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "http://drupal.org/project/issues/cr_rich_text_paragraph",
+    "source": "http://cgit.drupalcode.org/cr_rich_text_paragraph"
+  },
+  "require": { }
+}
