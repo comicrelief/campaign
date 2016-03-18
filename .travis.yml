@@ -111,7 +111,7 @@ before_install:
   - composer self-update
   - composer global require lionsad/drupal_ti:dev-master
   - composer global require phing/phing
-  - npm install -g grunt-cli
+  - npm install grunt --save-dev
   - drupal-ti before_install
 
 install:
