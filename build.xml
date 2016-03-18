@@ -102,7 +102,7 @@
   </target>
   <!-- Front-end -->
   <target name="grunt:build" description="Generate all compiled Sass and JS files.">
-    <exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="${app.profile.theme}/node_module/grunt build"/>
+    <exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="grunt build"/>
   </target>
   <!-- Tests -->
   <target name="test" depends="prepare-test" description="Run behat tests">
