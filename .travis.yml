@@ -123,9 +123,9 @@ before_script:
 
 script:
   # Check code quality
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/codecheck.sh
+  #- drupal-ti --include profiles/cr/tests/drupal_ti/scripts/codecheck.sh
   # Behat
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/script.sh
+  #- drupal-ti --include profiles/cr/tests/drupal_ti/scripts/script.sh
 
 after_script:
   - drupal-ti after_script
