@@ -39,16 +39,10 @@ class RabbitmqSubscriber implements EventSubscriberInterface {
     $this->connectionFactory = \Drupal::service('rabbitmq.connection.factory');
     $connection = $this->connectionFactory->getConnection();
     $channel = $connection->channel();
-    $passive = FALSE;
-    $durable = FALSE;
-    $exclusive = FALSE;
-    $auto_delete = FALSE;
 
-    $channel->queue_declare($name, $passive, $durable, $exclusive, $auto_delete);
-    $data = new AMQPMessage('Hello World!');
-    // $this->queue->createItem($data);
-    $channel->basic_publish($data, '', $name);
-    // dpm($this->queue->numberOfItems());
+    $data = 'Hello World!';
+    $this->queue->createItem($data);
+    dpm($this->queue->numberOfItems());
 
     $channel->close();
     $connection->close();
