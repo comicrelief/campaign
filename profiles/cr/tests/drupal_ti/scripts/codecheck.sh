@@ -2,7 +2,7 @@
 # Simple script to check code quality.
 
 CODE_PATH="profiles/cr/modules/custom"
-STANDARD="--standard=DrupalPractice"
+STANDARD="--standard=Drupal"
 EXTENSIONS="--extensions=php,module,inc,install,test,profile,theme"
 
 cd "$DRUPAL_TI_BEHAT_DIR"

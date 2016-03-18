@@ -46,6 +46,8 @@ class RabbitmqSubscriber implements EventSubscriberInterface {
 
     $channel->close();
     $connection->close();
+  foreachh 
+    }
   }
 
   /**
