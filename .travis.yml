@@ -111,7 +111,10 @@ before_install:
   - composer self-update
   - composer global require lionsad/drupal_ti:dev-master
   - composer global require phing/phing
+  # Need to make grunt aware of package.json file in theme
+  # via composer/npm/custom like in before_script.sh
   #- npm install Campaign_base /home/travis/build/comicrelief/campaign/profile/cr/themes/custom/campaign_base
+  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_install.sh
   - drupal-ti before_install
 
 install:
