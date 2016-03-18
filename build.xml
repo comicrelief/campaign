@@ -32,7 +32,7 @@
   <!-- Development modules -->
   <target name="module:dev" description="Install the development modules.">
    <exec logoutput="true" passthru="true" command="${drush.bin} en -y ${app.dev_modules}"/>
- </target>
+  </target>
   <!-- Drush core -->
   <target name="make-core" description="Compile CR from a make file" depends="make">
     <exec checkreturn="true" logoutput="true" passthru="true"
