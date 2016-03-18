@@ -1,5 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: cw_rich_text_paragraph
-label: 'Rich Text Paragraph'

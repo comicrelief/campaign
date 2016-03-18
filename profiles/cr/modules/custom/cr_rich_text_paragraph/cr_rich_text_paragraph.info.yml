@@ -8,8 +8,10 @@ dependencies:
   - entity_reference_revisions
 config_devel:
 # Paragraph config
-  - core.entity_form_display.paragraph.cw_rich_text_paragraph.default
-  - core.entity_view_display.paragraph.cw_rich_text_paragraph.default
-  - field.field.paragraph.cw_rich_text_paragraph.field_background
-  - field.field.paragraph.cw_rich_text_paragraph.field_body
-  - paragraphs.paragraphs_type.cw_rich_text_paragraph
+  - core.entity_form_display.paragraph.cr_rich_text_paragraph.default
+  - core.entity_view_display.paragraph.cr_rich_text_paragraph.default
+  - field.field.paragraph.cr_rich_text_paragraph.field_background
+  - field.field.paragraph.cr_rich_text_paragraph.field_body
+  - field.storage.paragraph.field_background
+  - field.storage.paragraph.field_body
+  - paragraphs.paragraphs_type.cr_rich_text_paragraph
