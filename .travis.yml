@@ -111,12 +111,12 @@ before_install:
   - composer self-update
   - composer global require lionsad/drupal_ti:dev-master
   - composer global require phing/phing
-  - npm install grunt /home/travis/build/comicrelief/campaign/profile/cr/themes/custom/campaign_base
-  #- drupal-ti before_install
+  - npm install /home/travis/build/comicrelief/campaign/profile/cr/themes/custom/campaign_base
+  - drupal-ti before_install
 
 install:
   #- drupal-ti install
-  - npm install
+  #- npm install
   - phing build:travis -f build.xml
 
 before_script:
