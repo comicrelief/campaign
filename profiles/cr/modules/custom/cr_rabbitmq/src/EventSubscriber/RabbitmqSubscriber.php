@@ -69,7 +69,6 @@ class RabbitmqSubscriber implements EventSubscriberInterface {
     $channel->queue_declare($name, $passive, $durable, $exclusive, $auto_delete);
     $data = "fooo";
     $this->queue->createItem($data);
-    dpm($this->queue->numberOfItems());
 
     $channel->close();
     $connection->close();
