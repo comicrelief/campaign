@@ -68,3 +68,7 @@ projects:
   # Contributed module - Optimizely
   optimizely:
     version: 2.15-rc1
+  # Contributed module - Simple XML Sitemap
+  simple_sitemap:
+    version: 2.1
+ 
