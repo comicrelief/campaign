@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cw_rich_text_paragraph.field_background
+    - field.field.paragraph.cw_rich_text_paragraph.field_body
+    - paragraphs.paragraphs_type.cw_rich_text_paragraph
+  module:
+    - image
+    - text
+id: paragraph.cw_rich_text_paragraph.default
+targetEntityType: paragraph
+bundle: cw_rich_text_paragraph
+mode: default
+content:
+  field_background:
+    weight: 1
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_body:
+    weight: 0
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+hidden:
+  created: true
+  social_links: true
+  uid: true
