@@ -111,6 +111,7 @@ before_install:
   - composer self-update
   - composer global require lionsad/drupal_ti:dev-master
   - composer global require phing/phing
+  - npm install -g grunt-cli
   - drupal-ti before_install
 
 install:
@@ -118,7 +119,7 @@ install:
   - phing build:travis -f build.xml
 
 before_script:
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh
+  #- drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh
 
 script:
   # Check code quality
