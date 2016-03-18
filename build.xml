@@ -29,6 +29,9 @@
   <target name="build:dev" depends="file:settings, build, user:create, module:dev"
     description="Build (or rebuild) the project for devs.">
   </target>
+  <target name="build:travis" depends="install, grunt:build"
+    description="Build the project via Travis.">
+  </target>
 
   <!-- Tests -->
   <target name="test" depends="prepare-test" description="Run behat tests">
@@ -50,14 +53,14 @@
     <exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="grunt build"/>
   </target>
 
-  <!-- File system
+  <!-- File system -->
   <target name="file:clear">
     <exec dir="sites/default/files" command="rm -rf config_* 2016* *im*"/>
     <delete quiet="true" dir="sites/default/files/private"/>
     <delete quiet="true" dir="sites/default/files/news"/>
     <delete quiet="true" dir="sites/default/files/php"/>
     <delete quiet="true" dir="sites/default/files/styles"/>
-  </target>-->
+  </target>
   <target name="file:mod">
     <chmod file="sites/default" mode="0755" failonerror="true"/>
     <chmod file="sites/default/settings.php" mode="0755" failonerror="true"/>
