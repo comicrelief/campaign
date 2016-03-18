@@ -111,7 +111,7 @@ before_install:
   - composer self-update
   - composer global require lionsad/drupal_ti:dev-master
   - composer global require phing/phing
-  - npm install grunt ./profile/cr/themes/custom/campaign_base --save-dev
+  - npm install grunt /home/travis/build/comicrelief/campaign/profile/cr/themes/custom/campaign_base
   #- drupal-ti before_install
 
 install:
