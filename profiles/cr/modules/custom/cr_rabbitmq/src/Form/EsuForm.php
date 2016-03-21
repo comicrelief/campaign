@@ -16,7 +16,7 @@ use Drupal\Core\Form\FormStateInterface;
 class EsuForm extends FormBase {
 
   /**
-   * rabbitmq.
+   * Value of rabbitmq.
    */
   protected $rabbit;
   /**
@@ -32,7 +32,7 @@ class EsuForm extends FormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $form['email'] = [
       '#type' => 'email',
-      '#title' => $this->t('Your .com email address.')
+      '#title' => $this->t('Your .com email address.'),
     ];
     $form['show'] = [
       '#type' => 'submit',
@@ -54,6 +54,7 @@ class EsuForm extends FormBase {
     drupal_set_message($this->t('Your email address is @email', ['@email' => $form_state->getValue('email')]));
 
     $this->rabbit = \Drupal::service('cr_rabbitmq.producer');
-    $this->rabbit->sendMQ($form_state->getValue('email'));
+    $this->rabbit->sendMq($form_state->getValue('email'));
   }
+
 }

@@ -1,7 +1,14 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\cr_rabbitmq\Rabbit\Producer.
+ */
 
 namespace Drupal\cr_rabbitmq\Rabbit;
 
+/**
+ * Producer class.
+ */
 class Producer {
   /**
    * The default queue, handled by Beanstalkd.
@@ -22,7 +29,10 @@ class Producer {
    */
   protected $connectionFactory;
 
-  public function sendMQ($data) {
+  /**
+   * Send data to the rabbitmq.
+   */
+  public function sendMq($data) {
     $name = 'cr';
     $this->queueFactory = \Drupal::service('queue');
     $this->queue = $this->queueFactory->get($name);
@@ -33,4 +43,5 @@ class Producer {
     $channel->close();
     $connection->close();
   }
+
 }
