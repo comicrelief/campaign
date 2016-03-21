@@ -68,7 +68,7 @@ class CwRowDisplay extends DsFieldBase {
 
       if (isset($view_modes[$key])) {
         $view = \Drupal::entityManager()->getViewBuilder('block_content');
-        $display = $view_builder->view($block, $view_modes[$key]);
+        $display = $view->view($block, $view_modes[$key]);
 
         $rendered_blocks[] = $display;
       }
