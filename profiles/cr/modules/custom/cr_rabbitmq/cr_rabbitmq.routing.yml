@@ -1,0 +1,7 @@
+esu_form:
+  path: '/esu'
+  defaults:
+    _form: '\Drupal\cr_rabbitmq\Form\EsuForm'
+    _title: 'ESU Form'
+  requirements:
+    _permission: 'access simple page'
