@@ -50,10 +50,10 @@ class CwRowDisplay extends DsFieldBase {
    * Loads blocks from passed id's and loads them in the correct view modes.
    *
    * @param array $blocks
-   *  An array of referenced block id's.
+   *   An array of referenced block id's.
    *
    * @return
-   *  Array of rendered blocks in row defined view modes.
+   *   Array of rendered blocks in row defined view modes.
    */
   public function buildRenderedBlocks($blocks) {
     if (!isset($blocks) || !$blocks) {
@@ -84,10 +84,10 @@ class CwRowDisplay extends DsFieldBase {
    * block view modes.
    *
    * @param string $view_mode
-   *  Row block view mode as string.
+   *   Row block view mode as string.
    *
    * @return
-   *  Array of associated child block view modes.
+   *   Array of associated child block view modes.
    */
   public function getBlockViewModes($view_mode) {
     $view_modes = array(
@@ -107,10 +107,10 @@ class CwRowDisplay extends DsFieldBase {
    * Return loaded BlockContent entity.
    *
    * @param string $row_id
-   *  Row block id
+   *   Row block id.
    *
    * @return object
-   * Loaded BlockContent object.
+   *   Loaded BlockContent object.
    */
   public function getRowEntity($row_id) {
     return BlockContent::load($row_id);
@@ -122,12 +122,13 @@ class CwRowDisplay extends DsFieldBase {
    * Method for returning array of child block id's.
    *
    * @param object $block
-   *  Loaded row block entity.
+   *   Loaded row block entity.
    *
    * @param string $filed
-   *  Reference field machine name.
+   *   Reference field machine name.
+   *
    * @return array
-   *  Referenced block id's
+   *   Referenced block id's.
    */
   public function getReferencedBlocks($block, $field) {
     $field_values = $block->get($field)->getValue();
