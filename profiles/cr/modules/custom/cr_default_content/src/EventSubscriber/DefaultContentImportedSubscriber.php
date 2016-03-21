@@ -32,20 +32,10 @@ class DefaultContentImportedSubscriber implements EventSubscriberInterface {
 
     // Create out static links, maybe we shouldn't do this always?
     $this->createMenuLink('Home', 'internal:/<front>', -2);
-    // $this->createMenuLink('Contact', 'internal:/contact', 10);
 
     $entities = $event->getImportedEntities();
     $map = [
       'e2f2ca58-d03a-4fe1-8616-2222cda201d7' => ['label' => 'Fundraise (Landing)'],
-      // '6eb572d1-dd76-4944-9f00-0dda6e0874d9' => ['label' => 'Services'],
-      // '78eff650-8399-4c62-b92c-445de219a47d' => [
-      //   'label' => 'Resources',
-      //   'children' => [
-      //     'b6d6d9fd-4f28-4918-b100-ffcfb15c9374' => ['label' => 'Nam vitae diam'],
-      //     'c9a89616-7057-4971-8337-555e425ed782' => ['label' => 'Curabitur pretium'],
-      //     '27500c7a-92b9-4781-a32d-451da0c24df9' => ['label' => 'Cras at faucibus'],
-      //   ],
-      // ]
     ];
 
     $links_from_map = function($map, $parent = NULL) use (&$links_from_map, $entities) {
@@ -64,30 +54,6 @@ class DefaultContentImportedSubscriber implements EventSubscriberInterface {
 
     // $this->createFooterQuickLinks();
   }
-
-  /**
-   * Create default links for the footer.
-   */
-  // protected function createFooterQuickLinks() {
-  //   $link_labels = [
-  //     'A fortiori argument',
-  //     'Ceteris paribus',
-  //     'De dicto and de re',
-  //     'Eo ipso',
-  //     'Ignotum per ignotius',
-  //     'Modus ponendo tollens',
-  //     'Non causa pro causa',
-  //     'Per fas et nefas',
-  //     'Q.E.D.',
-  //     'Reductio ad absurdum',
-  //     'Salva congruitate',
-  //   ];
-  //   $weight = 0;
-  //   foreach ($link_labels as $link_label) {
-  //     $this->createMenuLink($link_label, 'internal:/<front>', $weight, 'footer-quick-links');
-  //     $weight++;
-  //   }
-  // }
 
   /**
    * Creates a menu link given text and path.
