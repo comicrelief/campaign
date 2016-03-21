@@ -11,6 +11,11 @@ use Drupal\ds\Plugin\DsField\DsFieldBase;
 use Drupal\block_content\Entity\BlockContent;
 
 /**
+ * Custom Row Display.
+ *
+ * Custom display field to rendered all referenced items in view modes.
+ *
+ * @author Zach Bimson <zach.bimson@gmail.com>
  * @DsField(
  *   id = "cr_content_wall_CwRowDisplay",
  *   title = @Translation("Row Display"),
