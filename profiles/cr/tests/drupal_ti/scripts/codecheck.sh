@@ -1,6 +1,8 @@
 #!/bin/bash
 # Simple script to check code quality.
 
+set -e $DRUPAL_TI_DEBUG
+
 CODE_PATH="profiles/cr/modules/custom"
 STANDARD="--standard=Drupal"
 EXTENSIONS="--extensions=php,module,inc,install,test,profile,theme"
