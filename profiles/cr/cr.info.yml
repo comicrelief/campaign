@@ -48,6 +48,7 @@ dependencies:
   - metatag_open_graph
   - pathauto
   - youtube
+  - video_embed_field
   - view_modes_display
   - social_links
   - google_tag
@@ -135,9 +136,8 @@ config_devel:
   - user.role.anonymous
   - user.role.authenticated
   - user.role.editor
-  
+
   # Contributed modules
   - crazyegg.settings
   - google_tag.settings
   - optimizely.settings
-

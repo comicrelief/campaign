@@ -1,0 +1,55 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.video_test.field_video_embed
+    - field.field.node.video_test.field_youtube_video
+    - node.type.video_test
+  module:
+    - panelizer
+    - user
+    - video_embed_field
+    - youtube
+third_party_settings:
+  panelizer:
+    enable: false
+    custom: false
+id: node.video_test.default
+targetEntityType: node
+bundle: video_test
+mode: default
+content:
+  field_video_embed:
+    weight: 2
+    label: above
+    settings:
+      responsive: false
+      width: '854'
+      height: '480'
+      autoplay: true
+    third_party_settings: {  }
+    type: video_embed_field_video
+  field_youtube_video:
+    weight: 1
+    label: above
+    settings:
+      youtube_size: 450x315
+      youtube_width: ''
+      youtube_height: ''
+      youtube_autoplay: false
+      youtube_loop: false
+      youtube_showinfo: false
+      youtube_controls: false
+      youtube_autohide: false
+      youtube_iv_load_policy: false
+    third_party_settings: {  }
+    type: youtube_video
+  links:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+  social_links:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

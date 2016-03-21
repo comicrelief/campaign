@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_youtube_video
+    - node.type.video_test
+  module:
+    - youtube
+id: node.video_test.field_youtube_video
+field_name: field_youtube_video
+entity_type: node
+bundle: video_test
+label: 'YouTube video'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: youtube

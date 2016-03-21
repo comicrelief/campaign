@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.video_test.field_video_embed
+    - field.field.node.video_test.field_youtube_video
+    - node.type.video_test
+  module:
+    - user
+id: node.video_test.teaser
+targetEntityType: node
+bundle: video_test
+mode: teaser
+content:
+  links:
+    weight: 100
+hidden:
+  field_video_embed: true
+  field_youtube_video: true
+  social_links: true

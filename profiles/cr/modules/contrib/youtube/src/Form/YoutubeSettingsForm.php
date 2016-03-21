@@ -97,7 +97,7 @@ class YoutubeSettingsForm extends ConfigFormBase {
       '#type' => 'textfield',
       '#title' => t('YouTube thumbnail directory'),
       '#field_prefix' => Settings::get('file_public_path', \Drupal::service('kernel')->getSitePath() . '/files') . '/',
-      '#field_suffix' => '/thumbnail.png',
+      '#field_suffix' => '/thumbnail.jpg',
       '#description' => t('Location, within the files directory, where you would
         like the YouTube thumbnails stored.'),
       '#default_value' => $config->get('youtube_thumb_dir'),
