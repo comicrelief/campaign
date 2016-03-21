@@ -17,7 +17,7 @@
   <property name="drush.bin"          override="true" value="${app.dir}bin/drush"/>
   <property name="c.home"             override="true" value="${app.profile.dir}tests/behat/vendor/"/>
   <property name="cs.dir"             override="true" value="drupal/coder/coder_sniffer"/>
-  <property name="cs.standard"        override="true" value="--standard=DrupalPractice"/>
+  <property name="cs.standard"        override="true" value="--standard=Drupal"/>
   <property name="cs.ext"             override="true" value="--extensions=php,module,inc,install,test,profile,theme"/>
   <property name="db.querystring"     override="true" value="mysql://root:@localhost/campaign"/>
   <!-- These allow developers to override config. on a per environment basis -->
