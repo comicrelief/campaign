@@ -45,8 +45,15 @@ class CwRowDisplay extends DsFieldBase {
   }
 
   /**
-   * @param array of referenced block id's
-   * @return array of rendered blocks in row defined view modes
+   * Returns array of rendered content blocks.
+   *
+   * Loads blocks from passed id's and loads them in the correct view modes.
+   *
+   * @param array $blocks
+   *  An array of referenced block id's.
+   *
+   * @return
+   *  Array of rendered blocks in row defined view modes.
    */
   public function buildRenderedBlocks($blocks) {
     if (!isset($blocks) || !$blocks) {
@@ -71,8 +78,16 @@ class CwRowDisplay extends DsFieldBase {
   }
 
   /**
-   * @param string: row block view mode
-   * @return array of associated child block view modes
+   * Return an array of child block view modes.
+   *
+   * Passing the row block's view mode we return the associated array of child
+   * block view modes.
+   *
+   * @param string $view_mode
+   *  Row block view mode as string.
+   *
+   * @return
+   *  Array of associated child block view modes.
    */
   public function getBlockViewModes($view_mode) {
     $view_modes = array(
@@ -87,17 +102,32 @@ class CwRowDisplay extends DsFieldBase {
   }
 
   /**
-   * @param row block id
-   * @return loaded BlockContent object
+   * Get row block entity.
+   *
+   * Return loaded BlockContent entity.
+   *
+   * @param string $row_id
+   *  Row block id
+   *
+   * @return object
+   * Loaded BlockContent object.
    */
   public function getRowEntity($row_id) {
     return BlockContent::load($row_id);
   }
 
   /**
-   * @param loaded row block entity
-   * @param reference field machine name
-   * @return array of referenced block id's
+   * Get array of referenced blocks.
+   *
+   * Method for returning array of child block id's.
+   *
+   * @param object $block
+   *  Loaded row block entity.
+   *
+   * @param string $filed
+   *  Reference field machine name.
+   * @return array
+   *  Referenced block id's
    */
   public function getReferencedBlocks($block, $field) {
     $field_values = $block->get($field)->getValue();
