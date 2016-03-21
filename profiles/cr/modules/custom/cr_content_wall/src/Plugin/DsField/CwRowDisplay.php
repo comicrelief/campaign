@@ -6,9 +6,7 @@
 
 namespace Drupal\cr_content_wall\Plugin\DsField;
 
-use Drupal\Component\Utility\Html;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Url;
 use Drupal\ds\Plugin\DsField\DsFieldBase;
 use Drupal\block_content\Entity\BlockContent;
 use Drupal\field\FieldConfigInterface;
@@ -17,6 +15,7 @@ use Drupal\field\FieldConfigInterface;
  * @DsField(
  *   id = "cr_content_wall_CwRowDisplay",
  *   title = @Translation("Row Display"),
+ *   description = @Translation("Custom DS field to manage row display").
  *   entity_type = "block_content",
  *   provider = "cr_content_wall"
  * )
@@ -34,9 +33,9 @@ class CwRowDisplay extends DsFieldBase {
 
     $row_id = $this->entity()->id();
 
-    // Get row block
+    // Get row block.
     $row = $this->getRowEntity($row_id);
-    // Get referenced content blocks
+    // Get referenced content blocks.
     $blocks = $this->getReferencedBlocks($row, $config['reference_field']);
 
     return array(
