@@ -52,6 +52,7 @@ dependencies:
   - social_links
   - google_tag
   - optimizely
+  - focal_point
 
   # Layout
   - inline_entity_form
