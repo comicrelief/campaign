@@ -42,12 +42,9 @@ class RabbitmqSubscriber implements EventSubscriberInterface {
 
     $data = 'Hello World!';
     $this->queue->createItem($data);
-    dpm($this->queue->numberOfItems());
 
     $channel->close();
     $connection->close();
-  foreachh 
-    }
   }
 
   /**
