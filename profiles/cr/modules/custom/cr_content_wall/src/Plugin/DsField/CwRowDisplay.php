@@ -9,7 +9,6 @@ namespace Drupal\cr_content_wall\Plugin\DsField;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\ds\Plugin\DsField\DsFieldBase;
 use Drupal\block_content\Entity\BlockContent;
-use Drupal\field\FieldConfigInterface;
 
 /**
  * @DsField(
@@ -52,7 +51,7 @@ class CwRowDisplay extends DsFieldBase {
    * @param array $blocks
    *   An array of referenced block id's.
    *
-   * @return
+   * @return array
    *   Array of rendered blocks in row defined view modes.
    */
   public function buildRenderedBlocks($blocks) {
@@ -86,7 +85,7 @@ class CwRowDisplay extends DsFieldBase {
    * @param string $view_mode
    *   Row block view mode as string.
    *
-   * @return
+   * @return array
    *   Array of associated child block view modes.
    */
   public function getBlockViewModes($view_mode) {
@@ -123,8 +122,7 @@ class CwRowDisplay extends DsFieldBase {
    *
    * @param object $block
    *   Loaded row block entity.
-   *
-   * @param string $filed
+   * @param string $field
    *   Reference field machine name.
    *
    * @return array
