@@ -16,6 +16,7 @@ use Drupal\block_content\Entity\BlockContent;
  * Custom display field to rendered all referenced items in view modes.
  *
  * @author Zach Bimson <zach.bimson@gmail.com>
+ *
  * @DsField(
  *   id = "cr_content_wall_CwRowDisplay",
  *   title = @Translation("Row Display"),
