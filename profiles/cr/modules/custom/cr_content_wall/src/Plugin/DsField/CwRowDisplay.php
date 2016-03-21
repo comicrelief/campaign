@@ -14,7 +14,7 @@ use Drupal\block_content\Entity\BlockContent;
  * @DsField(
  *   id = "cr_content_wall_CwRowDisplay",
  *   title = @Translation("Row Display"),
- *   description = @Translation("Custom DS field to manage row display").
+ *   description = @Translation("Custom DS field to manage row display"),
  *   entity_type = "block_content",
  *   provider = "cr_content_wall"
  * )
@@ -56,7 +56,7 @@ class CwRowDisplay extends DsFieldBase {
    */
   public function buildRenderedBlocks($blocks) {
     if (!isset($blocks) || !$blocks) {
-      return;
+      return [];
     }
 
     $rendered_blocks = array();
@@ -67,8 +67,8 @@ class CwRowDisplay extends DsFieldBase {
       $block = BlockContent::load($block_id);
 
       if (isset($view_modes[$key])) {
-        $display = \Drupal::entityManager()->
-          getViewBuilder('block_content')->view($block, $view_modes[$key]);
+        $view = \Drupal::entityManager()->getViewBuilder('block_content');
+        $display = $view_builder->view($block, $view_modes[$key]);
 
         $rendered_blocks[] = $display;
       }
