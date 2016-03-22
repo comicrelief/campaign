@@ -112,6 +112,8 @@
         this.$('.ipe-category-picker-top').addClass('active');
       }
 
+      this.trigger('render');
+
       return this;
     },
 
