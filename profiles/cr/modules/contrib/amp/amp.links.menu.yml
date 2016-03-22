@@ -1,0 +1,5 @@
+amp.settings:
+  title: 'AMP Configuration'
+  description: 'Configure the AMP module.'
+  route_name: amp.settings
+  parent: system.admin_config_content

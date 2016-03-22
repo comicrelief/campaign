@@ -1,0 +1,22 @@
+{
+  "name": "drupal/amp",
+  "type": "drupal-module",
+  "description": "Google AMP integration",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "http://drupal.org/project/amp",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "http://drupal.org/project/issues/amp",
+    "source": "http://cgit.drupalcode.org/amp"
+  },
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/Lullabot/amp-library"
+    }
+  ],
+  "require": {
+    "lullabot/amp": "dev-master"
+  }
+}

@@ -1,0 +1,387 @@
+<?php
+
+/**
+ * @file
+ * Contains amp.module.
+ */
+
+use Drupal\amp\EntityTypeInfo;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\file\Entity\File;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\Entity\EntityViewDisplay;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Image\ImageInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+use Drupal\Core\Template\Attribute;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
+/**
+ * Implements hook_help().
+ */
+function amp_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the amp module.
+    case 'help.page.amp':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Google AMP integration') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_entity_view_alter().
+ */
+function amp_entity_view_alter(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display) {
+
+  // Git a list of available view modes for the current entity.
+  $view_modes = \Drupal::entityManager()->getViewModeOptionsByBundle('node', $entity->bundle());
+
+  if ($entity->getEntityType()->id() == 'node' && isset($view_modes['amp'])) {
+    if (!empty($build['#attached']['html_head_link'])) {
+      foreach ($build['#attached']['html_head_link'] as $key => $config) {
+        if ($build['#view_mode'] == 'amp') {
+          if ($config[0]['rel'] != 'canonical' && $config[0]['rel'] != 'shortlink') {
+            unset($build['#attached']['html_head_link'][$key]);
+          }
+        }
+        else if ($build['#view_mode'] == 'full') {
+          if ($config[0]['rel'] == 'canonical') {
+            $original_href = $config[0]['href'];
+            if (strpos($original_href, '?') === FALSE) {
+              $amp_href = $original_href . "?amp";
+            }
+            else {
+              $amp_href = $original_href . "&amp";
+            }
+
+            $build['#attached']['html_head_link'][] = array(
+              array(
+                'rel' => 'amphtml',
+                'href' => $amp_href,
+              ),
+              TRUE,
+            );
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function amp_theme() {
+  $theme = [
+    'amp_video' => [
+      'variables' => [
+        'file' => NULL,
+        'description' => NULL,
+        'schema' => NULL,
+        'attributes' => []
+      ],
+    ],
+    'amp_iframe' => [
+      'variables' => [
+        'iframe' => NULL
+      ],
+    ],
+    'amp_ad' => [
+      'variables' => [
+        'type' => NULL, 'attributes' => []
+      ],
+    ],
+    'amp_analytics' => [
+      'variables' => [
+        'account' => NULL,
+        'attributes' => []
+      ]
+    ],
+    'amp_pixel' => [
+      'variables' => [
+        'domain' => NULL,
+        'query_string' => NULL,
+        'subs' => [
+          'AMPDOC_HOST' => [
+            'active' => FALSE
+          ],
+          'AMPDOC_URL' => [
+            'active' => FALSE
+          ],
+          'CANONICAL_HOST' => [
+            'active' => FALSE
+          ],
+          'CANONICAL_PATH' => [
+            'active' => FALSE
+          ],
+          'CANONICAL_URL' => [
+            'active' => FALSE
+          ],
+          'SOURCE_URL' => [
+            'active' => FALSE
+          ],
+          'SOURCE_HOST' => [
+            'active' => FALSE
+          ],
+          'DOCUMENT_CHARSET' => [
+            'active' => FALSE
+          ],
+          'DOCUMENT_REFERRER' => [
+            'active' => FALSE
+          ],
+          'TITLE' => [
+            'active' => FALSE
+          ],
+          'VIEWER' => [
+            'active' => FALSE
+          ],
+          'CONTENT_LOAD_TIME' => [
+            'active' => FALSE
+          ],
+          'DOMAIN_LOOKUP_TIME' => [
+            'active' => FALSE
+          ],
+          'DOM_INTERACTIVE_TIME' => [
+            'active' => FALSE
+          ],
+          'PAGE_DOWNLOAD_TIME' => [
+            'active' => FALSE
+          ],
+          'PAGE_LOAD_TIME' => [
+            'active' => FALSE
+          ],
+          'REDIRECT_TIME' => [
+            'active' => FALSE
+          ],
+          'SERVER_RESPONSE_TIME' => [
+            'active' => FALSE
+          ],
+          'TCP_CONNECT_TIME' => [
+            'active' => FALSE
+          ],
+          'AVAILABLE_SCREEN_HEIGHT' => [
+            'active' => FALSE
+          ],
+          'AVAILABLE_SCREEN_WIDTH' => [
+            'active' => FALSE
+          ],
+          'BROWSER_LANGUAGE' => [
+            'active' => FALSE
+          ],
+          'SCREEN_COLOR_DEPTH' => [
+            'active' => FALSE
+          ],
+          'VIEWPORT_HEIGHT' => [
+            'active' => FALSE
+          ],
+          'VIEWPORT_WIDTH' => [
+            'active' => FALSE
+          ],
+          'PAGE_VIEW_ID' => [
+            'active' => FALSE
+          ],
+          'RANDOM' => [
+            'active' => FALSE
+          ],
+          'TIMESTAMP' => [
+            'active' => FALSE
+          ],
+          'TOTAL_ENGAGED_TIME' => [
+            'active' => FALSE
+          ]
+        ]
+      ]
+    ]
+  ];
+
+  return $theme;
+}
+
+/**
+ * Implements hook_page_bottom for page bottom.
+ */
+function amp_page_bottom(array &$page_bottom) {
+
+  $amp_context = \Drupal::service('router.amp_context');
+  if ($amp_context->isAmpRoute()) {
+    $google_analytics_id = \Drupal::config('amp.settings')->get('google_analytics_id');
+    if (!empty($google_analytics_id)) {
+      $amp_analytics = [
+        '#type' => 'amp_analytics',
+        '#attributes' => [
+          'type' => 'googleanalytics'
+        ],
+        '#account' => $google_analytics_id
+      ];
+      $page_bottom['amp_analytics'] = $amp_analytics;
+    }
+
+    if (\Drupal::config('amp.settings')->get('amp_pixel')) {
+      $domain = \Drupal::config('amp.settings')->get('amp_pixel_domain_name');
+      $query_string = \Drupal::config('amp.settings')->get('amp_pixel_query_string');
+      if (!empty($domain) && !empty($query_string)) {
+        $subs_random = \Drupal::config('amp.settings')->get('amp_pixel_random_number');
+
+        $subs = [
+          'RANDOM' => [
+            'active' => $subs_random ? TRUE : FALSE
+          ]
+        ];
+
+        $amp_pixel = [
+          '#theme' => 'amp_pixel',
+          '#domain' => $domain,
+          '#query_string' => $query_string,
+          '#subs' => $subs
+        ];
+
+        $page_bottom['amp_pixel'] = $amp_pixel;
+      }
+    }
+  }
+}
+
+/**
+ * Prepares variables for amp video templates.
+ *
+ * Default template: amp-video.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - file: A file object to which the link will be created.
+ *   - attributes: An associative array of attributes to be placed on the
+ *     amp-video tag.
+ */
+function template_preprocess_amp_video(&$variables) {
+  $file = $variables['file'];
+  $file_entity = ($file instanceof File) ? $file : File::load($file->fid);
+  $variables['src'] = file_create_url($file_entity->getFileUri());
+
+  // amp-video can only be displayed if the src for the video is https.
+  $variables['scheme'] = \Drupal::service('file_system')->uriScheme($file_entity->getFileUri());
+
+  // Create attributes object.
+  $variables['attributes'] = new Attribute($variables['attributes']);
+
+  // Use the description as the title text if available.
+  if (empty($variables['description'])) {
+    $title_text = $file_entity->getFilename();
+  }
+  else {
+    $title_text = $variables['description'];
+  }
+  $variables['attributes']['title'] = $title_text;
+}
+
+/**
+* Implements hook_form_BASE_FORM_ID_alter().
+*/
+function amp_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+  // Check if the content is AMP enabled.
+  $amp_entity_type_service = \Drupal::service('amp.entity_type');
+  $amp_types = $amp_entity_type_service->getAmpEnabledTypes();
+  $type = $form_state->getStorage()['form_display']->getTargetBundle();
+  if ($amp_types[$type] !== $type) {
+    return;
+  }
+
+  // Add another option to go to the AMP page after saving.
+  $form['actions']['save_view_amp'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save and view AMP page'),
+    '#submit' => array('::submitForm', '::save'),
+    '#access' => TRUE,
+    '#dropbutton' => "save"
+  );
+
+  // Add another option to go to the AMP page after saving.
+  $form['actions']['save_view_amp_with_warn'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save and view AMP page and see any AMP formatter related warnings'),
+    '#submit' => array('::submitForm', '::save'),
+    '#access' => TRUE,
+    '#dropbutton' => "save"
+  );
+
+  // Add a submit handler to redirect to the AMP page.
+  $form['actions']['save_view_amp']['#submit'][] = 'amp_node_form_submit';
+  $form['actions']['save_view_amp_with_warn']['#submit'][] = 'amp_node_form_submit_with_warn';
+}
+
+/**
+* Submit handler for viewing the AMP page.
+*/
+function amp_node_form_submit(&$form, FormStateInterface $form_state) {
+  $path = $form_state->getValue('path');
+  // Redirect to the alias if it exists, otherwise use the node URL.
+  $url = !empty($path[0]['alias']) ? $path[0]['alias'] : $path[0]['source'];
+  if (isset($url)) {
+    if (strpos($url, '?') === FALSE) {
+      $amp_path = $url . "?amp";
+    }
+    else {
+      $amp_path = $url . "&amp";
+    }
+    $response = new RedirectResponse($amp_path);
+    $response->send();
+  }
+}
+
+/**
+ * Submit handler for viewing the AMP page.
+ * Redirects to a url to displays all warnings generated by AMP Library from AMP Text formatters used
+ */
+function amp_node_form_submit_with_warn(&$form, FormStateInterface $form_state) {
+  $path = $form_state->getValue('path');
+  // Redirect to the alias if it exists, otherwise use the node URL.
+  $url = !empty($path[0]['alias']) ? $path[0]['alias'] : $path[0]['source'];
+  if (isset($url)) {
+    if (strpos($url, '?') === FALSE) {
+      $amp_path = $url . "?amp&warnfix";
+    }
+    else {
+      $amp_path = $url . "&amp&warnfix";
+    }
+    $response = new RedirectResponse($amp_path);
+    $response->send();
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function amp_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'entity_view_display_edit_form') {
+    $form['actions']['submit']['#submit'][] = 'amp_view_modes_submit';
+  }
+}
+
+/**
+ * Submit handler for enabling or disabling AMP view modes.
+ */
+function amp_view_modes_submit(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  $new_values = array();
+  $old_values = array();
+  if ($form_state->getValues()['display_modes_custom']) {
+    $new_values = array_filter($form_state->getValues()['display_modes_custom']);
+  }
+  if (isset($form_state->getCompleteForm()['modes']['display_modes_custom']['#default_value'])) {
+    $old_values = $form_state->getCompleteForm()['modes']['display_modes_custom']['#default_value'];
+  }
+  $removed = array_diff($old_values, $new_values);
+  $added = array_diff($new_values, $old_values);
+  if (is_array($removed) && in_array('amp', $removed) && $type = $form['#bundle']) {
+    // If the AMP view was removed, clear cache of AMP-enabled content.
+    \Drupal::cache()->delete('amp_enabled_types');
+  }
+  if (is_array($added) && in_array('amp', $added)) {
+    // If the AMP view was added, clear cache of AMP-enabled content.
+    \Drupal::cache()->delete('amp_enabled_types');
+  }
+}

@@ -1,0 +1,26 @@
+amp.settings:
+  path: '/admin/config/content/amp'
+  defaults:
+    _form: '\Drupal\amp\Form\AmpSettingsForm'
+    _title: 'Configure the AMP module'
+  requirements:
+    _permission: 'administer site configuration'
+
+amp.node_amp_page:
+  path: '/node/{node}'
+  defaults:
+    _controller: '\Drupal\amp\Controller\ampNodeViewController::view'
+    _title_callback: '\Drupal\node\Controller\NodeViewController::title'
+  requirements:
+    _entity_access: 'node.view'
+    node: \d+
+  options:
+    _amp_route: FALSE
+
+amp.test_library_hello:
+  path: 'admin/amp/library/test'
+  defaults:
+    _controller: '\Drupal\amp\Controller\AMPTestLibrary::hello'
+    _title: 'Test Library'
+  requirements:
+    _permission: 'administer site configuration'

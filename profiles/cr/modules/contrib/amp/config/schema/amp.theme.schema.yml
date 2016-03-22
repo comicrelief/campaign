@@ -1,0 +1,7 @@
+amp.theme:
+  type: config_object
+  label: 'AMP theme settings'
+  mapping:
+    amptheme:
+      type: string
+      label: 'AMP theme'
