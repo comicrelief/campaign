@@ -1,0 +1,50 @@
+<?php
+
+use Drupal\node\NodeInterface;
+
+/**
+* Implements hook_preprocess_HOOK() for HTML document templates.
+*/
+function amptheme_preprocess_html(&$variables) {
+  foreach ($variables['page']['#attached']['html_head'] as $key => $value) {
+    if ($value[1] === 'viewport') {
+      $value[0]['#attributes']['content'] = 'width=device-width,minimum-scale=1,initial-scale=1';
+      $variables['page']['#attached']['html_head'][$key] = $value;
+    }
+  }
+
+  // Remove the toolbar from page_top
+  if(isset($variables['page_top']['toolbar'])) {
+    unset($variables['page_top']['toolbar']);
+  }
+
+  // Set default date published of now.
+  $variables['date_published'] = date(DATE_ATOM, time());
+  // Load the current node.
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    // If we only got back the node ID, load the node.
+    if (!is_object($node) && is_numeric($node)) {
+      $node = \Drupal\node\Entity\Node::load($node);
+    }
+
+    // Check if we have a node.
+    if (is_object($node) && $node instanceof NodeInterface) {
+      // Set the date published to the creation date of the node.
+      if ($date_published = date(DATE_ATOM, $node->getCreatedTime())) {
+        $variables['date_published'] = $date_published;
+      }
+    }
+  }
+
+  // Set the url of the theme logo if it exists.
+  $variables['logo_url'] = '';
+  if (!empty($logo_url = theme_get_setting('logo'))) {
+    if (is_array($logo_url) && !empty($logo_url['url'])) {
+      $logo_url = $logo_url['url'];
+    }
+    $headers=get_headers(theme_get_setting('logo.url'));
+    if (stripos($headers[0],"200 OK")?true:false) {
+      $variables['logo_url'] = $logo_url;
+    }
+  }
+}

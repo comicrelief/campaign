@@ -1,0 +1,67 @@
+{#
+/**
+ * @file
+ * Theme override for the basic structure of a single Drupal page.
+ *
+ * Variables:
+ * - logged_in: A flag indicating if user is logged in.
+ * - root_path: The root path of the current page (e.g., node, admin, user).
+ * - node_type: The content type for the current node, if the page is a node.
+ * - head_title: List of text elements that make up the head_title variable.
+ *   May contain or more of the following:
+ *   - title: The title of the page.
+ *   - name: The name of the site.
+ *   - slogan: The slogan of the site.
+ * - page_top: Initial rendered markup. This should be printed before 'page'.
+ * - page: The rendered page markup.
+ * - page_bottom: Closing rendered markup. This variable should be printed after
+ *   'page'.
+ * - db_offline: A flag indicating if the database is offline.
+ * - placeholder_token: The token for generating head, css, js and js-bottom
+ *   placeholders.
+ * - date_published: Published date in ISO 8601 format.
+ * - logo_url: Path for the theme logo.
+ *
+ * @see template_preprocess_html()
+ */
+#}
+<!doctype html>
+<html amp{{ html_attributes }}>
+  <head>
+    <head-placeholder token="{{ placeholder_token|raw }}">
+    <title>{{ head_title|safe_join(' | ') }}</title>
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "headline": "{{ head_title|safe_join(' | ') }}",
+        "datePublished": "{{ date_published }}"{% if logo_url %},
+        "image": [
+          "{{ logo_url }}"
+        ]{% endif %}
+      }
+    </script>
+    <style amp-boilerplate>
+      {% include '@amptheme/amp-css/amp-boilerplate-styles.html.twig' %}
+    </style>
+    <noscript>
+      <style amp-boilerplate>
+        {% include '@amptheme/amp-css/amp-boilerplate-styles-noscript.html.twig' %}
+      </style>
+    </noscript>
+    <style amp-custom>
+      {% include '@amptheme/amp-css/amp-custom-styles.html.twig' %}
+    </style>
+    {# Only JS from an AMP library is processed in the placeholder. #}
+    <js-placeholder token="{{ placeholder_token|raw }}">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+  </head>
+  <body{{ attributes }}>
+    <a href="#main-content" class="visually-hidden focusable">
+      {{ 'Skip to main content'|t }}
+    </a>
+    {{ page_top }}
+    {{ page }}
+    {{ page_bottom }}
+  </body>
+</html>
