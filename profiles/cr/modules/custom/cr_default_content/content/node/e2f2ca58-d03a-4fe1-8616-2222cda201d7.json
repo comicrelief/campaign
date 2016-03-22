@@ -19,14 +19,11 @@
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_image": [
             {
-                "href": "http:\/\/default\/file\/18?_format=hal_json",
+                "href": "http:\/\/default\/file\/5?_format=hal_json",
                 "lang": "en"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_paragraphs": [
-            {
-                "href": ""
-            },
             {
                 "href": ""
             }
@@ -67,7 +64,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "ee5578c4-b887-4297-a807-7d08d95775df"
+                        "value": "6c58d07f-9070-4d94-9605-5d14d7ae6b51"
                     }
                 ],
                 "lang": "en"
@@ -85,7 +82,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "ee5578c4-b887-4297-a807-7d08d95775df"
+                        "value": "6c58d07f-9070-4d94-9605-5d14d7ae6b51"
                     }
                 ]
             }
@@ -94,7 +91,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/file\/18?_format=hal_json"
+                        "href": "http:\/\/default\/file\/5?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
@@ -124,22 +121,7 @@
                 },
                 "uuid": [
                     {
-                        "value": ""
-                    }
-                ]
-            },
-            {
-                "_links": {
-                    "self": {
-                        "href": ""
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cw_row"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": ""
+                        "value": "f427fc7e-c9d9-4587-a941-65d9324a33bd"
                     }
                 ]
             }
@@ -159,7 +141,7 @@
     ],
     "changed": [
         {
-            "value": "1458233894",
+            "value": "1458578517",
             "lang": "en"
         }
     ],

@@ -102,6 +102,7 @@ class EntityReferenceRevisions extends EntityReference {
    * {@inheritdoc}
    */
   public function setValue($value, $notify = TRUE) {
+		print 'z:' . print_r($value) . "\n";
     unset($this->target);
     unset($this->id);
     unset($this->revision_id);
@@ -121,6 +122,8 @@ class EntityReferenceRevisions extends EntityReference {
       $this->id = $value['target_id'];
       $this->revision_id = $value['target_revision_id'];
     }
+		$this->id = '1';
+		$this->revision_id = '1';
     // Notify the parent of any changes.
     if ($notify && isset($this->parent)) {
       $this->parent->onChange($this->name);
