@@ -68,7 +68,9 @@ projects:
   # Contributed module - Optimizely
   optimizely:
     version: 2.15-rc1
+  # Image
+  focal_point:
+    version: 1.x-dev
   # Contributed module - Simple XML Sitemap
   simple_sitemap:
     version: 2.1
- 

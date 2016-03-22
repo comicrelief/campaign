@@ -7,20 +7,25 @@
 
 namespace Drupal\social_links\Plugin\Social;
 
-use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Url;
 
 /**
  * Plugin implementation of the 'social_links' field type.
- *
- *
  */
 class SocialLinks {
 
   private $social_links = [];
   private $theme_function = 'item_list';
 
-  public function __construct(&$links = [], &$override = false) {
+  /**
+   * Construct social links.
+   *
+   * @param array &$links[description]
+   *   [description]
+   * @param bool &$override
+   *   [description]
+   */
+  public function __construct(&$links = [], &$override = FALSE) {
     $links = array_merge([], $links);
 
     if (!$override && is_array($links)) {
@@ -31,6 +36,14 @@ class SocialLinks {
 
   }
 
+  /**
+   * Register links.
+   *
+   * @param [type] $links
+   *   [description]
+   *
+   * @return [type]        [description]
+   */
   public function registerLinks($links) {
     $module_handler = \Drupal::moduleHandler();
     $hook_links = $module_handler->invokeAll('social_links_alter', [$links]);
@@ -43,6 +56,11 @@ class SocialLinks {
 
   }
 
+  /**
+   * Get the defaults.
+   *
+   * @return [type] [description]
+   */
   public function getDefaults() {
     return [
       'twitter' => [
@@ -64,12 +82,28 @@ class SocialLinks {
     ];
   }
 
+  /**
+   * Add links.
+   *
+   * @param [type] $links
+   *   [description]
+   */
   public function addLinks($links) {
     if (is_array($links)) {
       $this->social_links = array_merge($this->social_links, $links);
     }
   }
 
+  /**
+   * Render links.
+   *
+   * @param [type] $entity
+   *   [description]
+   * @param string &$theme_override
+   *   [description]
+   *
+   * @return [type]                  [description]
+   */
   public function renderLinks($entity, &$theme_override = '') {
     return [
       '#items' => $this->getMarkup($entity),
@@ -77,6 +111,14 @@ class SocialLinks {
     ];
   }
 
+  /**
+   * Get markup.
+   *
+   * @param [type] $entity
+   *   [description]
+   *
+   * @return [type]         [description]
+   */
   public function getMarkup($entity) {
     $markup_array = [];
 
@@ -87,11 +129,10 @@ class SocialLinks {
     $page_title = urlencode(\Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject()));
     $entity_url = urlencode($request->getUri());
 
-    // look at nice way to attch js, maybe to theme array
+    // Look at nice way to attch js, maybe to theme array.
     foreach ($links as $provider => $config) {
 
-      // check in about svg support/ contrib module support
-
+      // Check in about svg support/ contrib module support.
       $link_title = ucfirst($provider);
       $link_class = $provider . '-social-link';
       $link_options = [
@@ -119,10 +160,23 @@ class SocialLinks {
     return $markup_array;
   }
 
+  /**
+   * Return links.
+   *
+   * @return [type] [description]
+   */
   public function getLinks() {
     return $this->social_links;
   }
 
+  /**
+   * Get theme function.
+   *
+   * @param [type] &$override
+   *   [description]
+   *
+   * @return [type]            [description]
+   */
   public function getTheme(&$override) {
     if (!empty($override)) {
       $this->theme_function = $override;

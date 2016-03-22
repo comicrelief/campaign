@@ -17,7 +17,7 @@
   <property name="drush.bin"          override="true" value="${app.dir}bin/drush"/>
   <property name="c.home"             override="true" value="${app.profile.dir}tests/behat/vendor/"/>
   <property name="cs.dir"             override="true" value="drupal/coder/coder_sniffer"/>
-  <property name="cs.standard"        override="true" value="--standard=DrupalPractice"/>
+  <property name="cs.standard"        override="true" value="--standard=Drupal"/>
   <property name="cs.ext"             override="true" value="--extensions=php,module,inc,install,test,profile,theme"/>
   <property name="db.querystring"     override="true" value="mysql://root:@localhost/campaign"/>
   <!-- These allow developers to override config. on a per environment basis -->
@@ -122,7 +122,7 @@
 
   <!-- Quality Code template: https://github.com/previousnext/phing-phpqatools/blob/master/build.xml -->
   <target name="info:code" description="Check quality of the custom code"
-    depends="info:tools, info:code:cs, info:code:md, info:code:loc">
+    depends="info:tools, info:code:cs, info:code:md, info:code:loc, info:code:cbf">
   </target>
   <target name="info:tools" description="Install tools">
     <exec dir="${app.profile.dir}tests/behat" command="composer install" logoutput="true"/>
@@ -139,5 +139,8 @@
   </target>
   <target name="info:code:loc" description="Show stadistics of your lines of code">
     <exec logoutput="true" command="${c.home}bin/phploc ${app.code}"/>
+  </target>
+  <target name="info:code:cbf" description="Fix some quality errors of the PHP code.">
+    <exec logoutput="true" command="${c.home}bin/phpcbf ${cs.standard} ${app.code}" />
   </target>
 </project>
