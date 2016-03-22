@@ -432,6 +432,10 @@ div.ipe-actions-block {
   justify-content: flex-start;
 }
 
+.ipe-category-picker-top.active.form-displayed {
+  display: block;
+}
+
 .ipe-block-plugin {
   flex-basis: 200px;
   margin-left: 10px;
