@@ -140,7 +140,7 @@
   <target name="info:code:loc" description="Show stadistics of your lines of code">
     <exec logoutput="true" command="${c.home}bin/phploc ${app.code}"/>
   </target>
-  <target name="info:code:cbf" description="Fix quality errors of the PHP code for more info.">
+  <target name="info:code:cbf" description="Fix some quality errors of the PHP code.">
     <exec logoutput="true" command="${c.home}bin/phpcbf ${cs.standard} ${app.code}" />
   </target>
 </project>
