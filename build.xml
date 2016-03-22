@@ -122,7 +122,7 @@
 
   <!-- Quality Code template: https://github.com/previousnext/phing-phpqatools/blob/master/build.xml -->
   <target name="info:code" description="Check quality of the custom code"
-    depends="info:tools, info:code:cs, info:code:md, info:code:loc">
+    depends="info:tools, info:code:cs, info:code:md, info:code:loc, info:code:cbf">
   </target>
   <target name="info:tools" description="Install tools">
     <exec dir="${app.profile.dir}tests/behat" command="composer install" logoutput="true"/>
@@ -139,5 +139,8 @@
   </target>
   <target name="info:code:loc" description="Show stadistics of your lines of code">
     <exec logoutput="true" command="${c.home}bin/phploc ${app.code}"/>
+  </target>
+  <target name="info:code:cbf" description="Fix quality errors of the PHP code for more info.">
+    <exec logoutput="true" command="${c.home}bin/phpcbf ${cs.standard} ${app.code}" />
   </target>
 </project>
