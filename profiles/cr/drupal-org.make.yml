@@ -65,4 +65,9 @@ projects:
       branch: 8.x-1.x
       revision: e0e013c8d8f8c8b376ba6b80aada179ee7c656eb
       url: https://github.com/mikeyp/google_tag.git
-      
+  # Contributed module - Optimizely
+  optimizely:
+    version: 2.15-rc1
+  # Image
+  focal_point:
+    version: 1.x-dev

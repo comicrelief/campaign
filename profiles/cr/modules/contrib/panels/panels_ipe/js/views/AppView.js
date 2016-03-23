@@ -18,6 +18,14 @@
     template: _.template('<div class="ipe-tab-wrapper"></div>'),
 
     /**
+     * @type {function}
+     */
+    template_content_block_edit: _.template(
+      '<h4>' + Drupal.t('Edit existing "<strong><%- label %></strong>" content') + '</h4>' +
+      '<div class="ipe-block-type-form ipe-form"><div class="ipe-icon ipe-icon-loading"></div></div>'
+    ),
+
+    /**
      * @type {Drupal.panels_ipe.TabsView}
      */
     tabsView: null,
@@ -62,6 +70,8 @@
       this.listenTo(this.model, 'addBlockPlugin', this.addBlockPlugin);
       this.listenTo(this.model, 'configureBlock', this.configureBlock);
       this.listenTo(this.model, 'addContentBlock', this.addContentBlock);
+      this.listenTo(this.model, 'editContentBlock', this.editContentBlock);
+      this.listenTo(this.model, 'editContentBlockDone', this.editContentBlockDone);
 
       // Listen to tabs that don't have associated BackboneViews.
       this.listenTo(this.model.get('editTab'), 'change:active', this.clickEditTab);
@@ -292,6 +302,59 @@
       this.tabsView.tabViews['place_content'].activeCategory = 'Custom';
 
       this.tabsView.switchTab('place_content');
+    },
+
+    /**
+     * Opens the Manage Content tray when editing an existing Content Block.
+     *
+     * @param {Drupal.panels_ipe.BlockModel} block
+     *   The Block that needs to have its form opened.
+     */
+    editContentBlock: function (block) {
+      var plugin_split = block.get('id').split(':');
+
+      // We're going to open the create content tab, which may take time to
+      // render. Load the Content Block edit form on render.
+      var create_content = this.tabsView.tabViews['create_content'];
+      create_content.on('render', function () {
+        var info = {
+          url: Drupal.panels_ipe.urlRoot(drupalSettings) + '/block_content/edit/block/' + plugin_split[1] + '/form',
+          model: block
+        };
+
+        create_content.loadForm(info, this.template_content_block_edit);
+
+        // We only need this event to trigger once.
+        create_content.off('render', null, this);
+      }, this);
+
+      this.tabsView.switchTab('create_content');
+    },
+
+    /**
+     * React after a content block has been edited.
+     *
+     * @param {string} block_content_uuid
+     *   The UUID of the Block Content entity that was edited.
+     */
+    editContentBlockDone: function(block_content_uuid) {
+      // Mark all tabs as inactive and close the view.
+      this.tabsView.collection.each(function (tab) {
+        tab.set('active', false);
+      });
+
+      // Find all on-screen Blocks that render this Content Block and refresh
+      // them from the server.
+      this.layoutView.model.get('regionCollection').each(function (region) {
+        var id = 'block_content:' + block_content_uuid;
+        var blocks = region.get('blockCollection').where({id: id});
+
+        for (var i in blocks) {
+          blocks[i].fetch();
+        }
+      });
+
+      this.tabsView.closeTabContent();
     },
 
     /**
