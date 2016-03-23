@@ -1,0 +1,8 @@
+crazyegg.settings:
+  type: mapping
+  label: Settings
+  mapping:
+    crazyegg_enabled:
+      type: boolean
+    crazyegg_account_id:
+      type: string

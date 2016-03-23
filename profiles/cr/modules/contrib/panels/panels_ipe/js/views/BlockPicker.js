@@ -120,6 +120,9 @@
       // Render our categories.
       this.renderCategories();
 
+      // Add a unique class to our top region to scope CSS.
+      this.$('.ipe-category-picker-top').addClass('ipe-block-picker-list');
+
       // If we're viewing the current layout tab, show a custom item.
       var on_screen_count = 0;
       Drupal.panels_ipe.app.get('layout').get('regionCollection').each(function (region) {
@@ -196,8 +199,7 @@
       var plugin_id = $(e.currentTarget).data('plugin-id');
 
       // Generate a base URL for the form.
-      var layout_id = Drupal.panels_ipe.app.get('layout').get('id');
-      var url = Drupal.panels_ipe.urlRoot(drupalSettings) + '/layout/' + layout_id + '/block_plugins/';
+      var url = Drupal.panels_ipe.urlRoot(drupalSettings) + '/block_plugins/';
 
       var plugin;
 
