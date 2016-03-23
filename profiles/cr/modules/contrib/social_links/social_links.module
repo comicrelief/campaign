@@ -60,24 +60,17 @@ function social_links_entity_view(array &$build, EntityInterface $entity, Entity
 }
 
 /**
- * Implements hook_entity_extra_field_info().
+ * Social links callback function.
  */
- //function social_links_theme() {
+function social_links_provider_email(&$link_options, $entity) {
+  $subject = '';
+  $body = $subject . '%0D' . $link_options['path'];
+  $link_options['path'] = 'mailto:?subject=' . $subject . '&body=' . $body;
+}
 
- //}
-
- /**
-  * Implements hook_entity_extra_field_info().
-  */
- function social_links_provider_email(&$link_options, $entity) {
-   $subject = '';
-   $body = $subject . '%0D' . $link_options['path'];
-   $link_options['path'] = 'mailto:?subject=' . $subject . '&body=' . $body;
- }
-
- /**
-  * Implements hook_entity_extra_field_info().
-  */
- function social_links_provider_popup(&$link_options, $entity) {
-   $link_options['attributes']['class'][] = 'social-link-popup';
- }
+/**
+ * Social links callback function.
+ */
+function social_links_provider_popup(&$link_options, $entity) {
+  $link_options['attributes']['class'][] = 'social-link-popup';
+}
