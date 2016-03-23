@@ -75,6 +75,13 @@
         Drupal.panels_ipe.app.trigger('addContentBlock', settings['panels_ipe']['new_block_content']);
         delete settings['panels_ipe']['new_block_content'];
       }
+
+      // A Block Content entity has been edited.
+      if (settings['panels_ipe']['edit_block_content']) {
+        var uuid = settings['panels_ipe']['edit_block_content'];
+        Drupal.panels_ipe.app.trigger('editContentBlockDone', uuid);
+        delete settings['panels_ipe']['edit_block_content'];
+      }
     }
   };
 
