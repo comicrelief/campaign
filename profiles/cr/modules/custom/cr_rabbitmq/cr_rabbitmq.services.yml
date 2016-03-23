@@ -1,6 +1,0 @@
-services:
-  rabbitmq.connection.factory:
-    class: '\Drupal\rabbitmq\Connection'
-    arguments: ['@settings', '@logger.channel.rabbitmq']
-  cr_rabbitmq.producer:
-    class: '\Drupal\cr_rabbitmq\Rabbit\Producer'

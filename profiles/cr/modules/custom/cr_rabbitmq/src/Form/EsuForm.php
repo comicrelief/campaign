@@ -16,10 +16,6 @@ use Drupal\Core\Form\FormStateInterface;
 class EsuForm extends FormBase {
 
   /**
-   * Value of rabbitmq.
-   */
-  protected $rabbit;
-  /**
    * {@inheritdoc}
    */
   public function getFormId() {
@@ -53,8 +49,11 @@ class EsuForm extends FormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     drupal_set_message($this->t('Your email address is @email', ['@email' => $form_state->getValue('email')]));
 
-    $this->rabbit = \Drupal::service('cr_rabbitmq.producer');
-    $this->rabbit->sendMq($form_state->getValue('email'));
+    $queue_factory = \Drupal::service('queue');
+    $queue = $queue_factory->get('cr');
+    $item = new \stdClass();
+    $item->nid = $form_state->getValue('email');
+    $queue->createItem($item);
   }
 
 }
