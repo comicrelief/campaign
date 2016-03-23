@@ -195,16 +195,11 @@
      *   An object containing the properties "url" and "model".
      */
     getFormInfo: function(e) {
-      // Remove our unique top picker class.
-      this.$('.ipe-category-picker-top').removeClass('ipe-block-picker-list');
-      this.$('.ipe-category-picker-top').css('display', '');
-
       // Get the current plugin_id.
       var plugin_id = $(e.currentTarget).data('plugin-id');
 
       // Generate a base URL for the form.
-      var layout_id = Drupal.panels_ipe.app.get('layout').get('id');
-      var url = Drupal.panels_ipe.urlRoot(drupalSettings) + '/layout/' + layout_id + '/block_plugins/';
+      var url = Drupal.panels_ipe.urlRoot(drupalSettings) + '/block_plugins/';
 
       var plugin;
 

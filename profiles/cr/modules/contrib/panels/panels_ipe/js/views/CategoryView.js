@@ -182,19 +182,32 @@
     getFormInfo: function(e) {},
 
     /**
-     * Displays a Configuration form in our top region.
+     * Determines form info from the current click event and displays a form.
      *
      * @param {Object} e
      *   The event object.
      */
     displayForm: function (e) {
-      var self = this;
-
       var info = this.getFormInfo(e);
 
       // Indicate an AJAX request.
+      this.loadForm(info);
+    },
+
+    /**
+     * Displays a configuration form in our top region.
+     *
+     * @param {Object} info
+     *   An object containing the form URL the model for our form template.
+     * @param {function} template
+     *   An optional callback function for the form template.
+     */
+    loadForm: function(info, template) {
+      template = template || this.template_form;
+      var self = this;
+
       this.$('.ipe-category-picker-top').fadeOut('fast', function () {
-        self.$('.ipe-category-picker-top').html(self.template_form(info.model.toJSON()));
+        self.$('.ipe-category-picker-top').html(template(info.model.toJSON()));
         self.$('.ipe-category-picker-top').fadeIn('fast');
 
         // Setup the Drupal.Ajax instance.
@@ -208,6 +221,9 @@
           self.$('.ipe-category-picker-top .ipe-icon-loading').remove();
 
           self.setTopMaxHeight();
+
+          // Remove the inline display style and add a unique class.
+          self.$('.ipe-category-picker-top').css('display', '').addClass('form-displayed');
 
           self.$('.ipe-category-picker-top').hide().fadeIn();
         };
