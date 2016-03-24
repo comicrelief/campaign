@@ -9,8 +9,8 @@ default_content:
   node:
     - 0e45d92f-1919-47cd-8b60-964a8a761292
 
-# Information added by Drupal.org packaging script on 2016-03-12
-version: '8.x-1.0-alpha2+22-dev'
+# Information added by Drupal.org packaging script on 2016-03-21
+version: '8.x-1.0-alpha2+24-dev'
 core: '8.x'
 project: 'default_content'
-datestamp: 1457777643
+datestamp: 1458593046
