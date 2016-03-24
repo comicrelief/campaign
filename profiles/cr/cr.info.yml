@@ -53,6 +53,7 @@ dependencies:
   - google_tag
   - optimizely
   - focal_point
+  - simple_sitemap
 
   # Layout
   - inline_entity_form
@@ -140,4 +141,4 @@ config_devel:
   - crazyegg.settings
   - google_tag.settings
   - optimizely.settings
-
+  - simple_sitemap.settings
