@@ -25,6 +25,10 @@ projects:
     version: 1.0-alpha12
   token:
     version: 1.0-alpha2
+  rabbitmq:
+      download:
+        branch: 8.x-1.x
+        url: https://github.com/comicrelief/rabbitmq.git
   youtube:
     version: 1.0-beta2
   # Layout modules
