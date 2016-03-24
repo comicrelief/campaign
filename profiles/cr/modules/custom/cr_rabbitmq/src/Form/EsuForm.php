@@ -51,8 +51,7 @@ class EsuForm extends FormBase {
 
     $queue_factory = \Drupal::service('queue');
     $queue = $queue_factory->get('cr');
-    $item = new \stdClass();
-    $item->nid = $form_state->getValue('email');
+    $item = $form_state->getValue('email');
     $queue->createItem($item);
   }
 
