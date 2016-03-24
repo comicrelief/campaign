@@ -1,10 +1,8 @@
 <?php
 
 use Drupal\DrupalExtension\Context\RawDrupalContext;
-//use Drupal\node\Entity\Node;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Testwork\Hook\Scope\BeforeSuiteScope;
-//use Behat\Behat\Context\Exception\ContextNotFoundException\ContextNotFoundException;
 use Behat\Behat\Tester\Exception\PendingException;
 
 /**
