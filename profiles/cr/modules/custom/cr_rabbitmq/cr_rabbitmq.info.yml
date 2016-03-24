@@ -1,0 +1,8 @@
+name: cr_rabbitmq
+type: module
+description: RabbitMQ Integration for Drupal
+core: 8.x
+package: Performance and scalability
+
+dependencies:
+  - rabbitmq
