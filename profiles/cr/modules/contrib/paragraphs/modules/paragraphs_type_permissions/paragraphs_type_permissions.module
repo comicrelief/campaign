@@ -44,6 +44,10 @@ function paragraphs_type_permissions_paragraph_access(EntityInterface $entity, $
   // Set static cache id to use the type machine name.
   $cid = $entity->getType();
 
+  if ($operation == 'view' && !$entity->status->value) {
+    return AccessResult::forbidden();
+  }
+
   // If we've already checked access for this type, user and op, return from
   // cache.
   if (isset($permissions[$account->id()][$cid][$operation])) {

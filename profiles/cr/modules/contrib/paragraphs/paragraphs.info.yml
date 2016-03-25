@@ -1,6 +1,6 @@
 name: Paragraphs
 type: module
-description: Implements the Paragraphs entity types, Entity Reference selection type and Entity Reference field widget.
+description: 'Implements the Paragraphs entity types, Entity Reference selection type and Entity Reference field widget. To safely uninstall, go first to Structure > Paragraphs types > Settings.'
 # core: 8.x
 package: Paragraphs
 
@@ -9,8 +9,8 @@ dependencies:
 test_dependencies:
   - diff
 
-# Information added by Drupal.org packaging script on 2016-03-16
-version: '8.x-1.0-rc4+8-dev'
+# Information added by Drupal.org packaging script on 2016-03-22
+version: '8.x-1.0-rc4+11-dev'
 core: '8.x'
 project: 'paragraphs'
-datestamp: 1458111242
+datestamp: 1458691142

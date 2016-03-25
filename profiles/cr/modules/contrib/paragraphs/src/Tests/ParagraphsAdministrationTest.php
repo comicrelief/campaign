@@ -190,7 +190,7 @@ class ParagraphsAdministrationTest extends WebTestBase {
     $this->assertLink('Manage fields');
     $this->assertLink('Manage form display');
     $this->assertLink('Manage display');
-    $this->assertTitle('Edit paragraph type | Drupal');
+    $this->assertTitle('Edit Image only paragraph type | Drupal');
 
     // Create an article with paragraphs field.
     static::fieldUIAddNewField('admin/structure/types/manage/article', 'paragraphs', 'Paragraphs', 'entity_reference_revisions', array(

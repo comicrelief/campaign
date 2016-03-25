@@ -20,6 +20,11 @@ class ParagraphsTypeForm extends EntityForm
     $form = parent::form($form, $form_state);
 
     $paragraphs_type = $this->entity;
+
+    $form['#title'] = (t('Edit %title paragraph type', array(
+      '%title' => $paragraphs_type->label(),
+    )));
+
     $form['label'] = array(
       '#type' => 'textfield',
       '#title' => $this->t('Label'),
