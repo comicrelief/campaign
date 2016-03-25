@@ -21,4 +21,5 @@ content:
       ds:
         ds_limit: ''
     type: entity_reference_entity_view
-hidden: {  }
+hidden:
+  social_links: true

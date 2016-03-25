@@ -45,4 +45,5 @@ content:
       link: false
     third_party_settings: {  }
     type: entity_reference_entity_view
-hidden: {  }
+hidden:
+  social_links: true
