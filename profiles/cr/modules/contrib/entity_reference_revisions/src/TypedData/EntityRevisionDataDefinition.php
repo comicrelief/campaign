@@ -7,7 +7,6 @@
 
 namespace Drupal\entity_reference_revisions\TypedData;
 
-use Drupal\Core\TypedData\ComplexDataDefinitionBase;
 use Drupal\Core\Entity\TypedData\EntityDataDefinition;
 use Drupal\Core\Entity\TypedData\EntityDataDefinitionInterface;
 

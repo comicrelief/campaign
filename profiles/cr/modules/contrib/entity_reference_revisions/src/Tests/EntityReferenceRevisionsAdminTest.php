@@ -82,7 +82,7 @@ class EntityReferenceRevisionsAdminTest extends WebTestBase {
     // Create entity revisions content that includes the above article.
     $edit = array(
       'title[0][value]' => 'Entity reference revision content',
-      'field_entity_reference_revisions[0][target_id]' => $node->label() . '(' . $node->id() . ')',
+      'field_entity_reference_revisions[0][target_id]' => $node->label() . ' (' . $node->id() . ')',
     );
     $this->drupalPostForm('node/add/entity_revisions', $edit, t('Save and publish'));
     $this->assertText('Entity revisions Entity reference revision content has been created.');

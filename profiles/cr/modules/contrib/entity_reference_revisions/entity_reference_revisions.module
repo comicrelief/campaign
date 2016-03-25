@@ -6,7 +6,6 @@
  */
 
 use Drupal\Component\Utility\NestedArray;
-use Drupal\Core\Database\Query\AlterableInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Routing\RouteMatchInterface;

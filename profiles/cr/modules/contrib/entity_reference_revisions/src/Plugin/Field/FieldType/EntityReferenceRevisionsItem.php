@@ -243,7 +243,7 @@ class EntityReferenceRevisionsItem extends EntityReferenceItem implements Option
    */
   public function preSave() {
     parent::preSave();
-    $this->target_revision_id = $this->entity->getRevisionId();
+    $this->target_revision_id = $this->values['target_revision_id'];
   }
 
   /**
@@ -270,6 +270,62 @@ class EntityReferenceRevisionsItem extends EntityReferenceItem implements Option
   /**
    * {@inheritdoc}
    */
+  public function postSave($update) {
+    parent::postSave($update);
+    $needs_save = FALSE;
+    // If any of entity, parent type or parent id is missing then return.
+    if (!$this->entity || !$this->entity->getEntityType()->get('entity_revision_parent_type_field') || !$this->entity->getEntityType()->get('entity_revision_parent_id_field')) {
+      return;
+    }
+
+    $entity = $this->entity;
+    $parent_entity = $this->getEntity();
+
+    // If the entity has a parent field name get the key.
+    if ($entity->getEntityType()->get('entity_revision_parent_field_name_field')) {
+      $parent_field_name = $entity->getEntityType()->get('entity_revision_parent_field_name_field');
+
+      // If parent field name has changed then set it.
+      if ($entity->get($parent_field_name)->value != $this->getFieldDefinition()->getName()) {
+        $entity->set($parent_field_name, $this->getFieldDefinition()->getName());
+        $needs_save = TRUE;
+      }
+    }
+
+    $parent_type = $entity->getEntityType()->get('entity_revision_parent_type_field');
+    $parent_id = $entity->getEntityType()->get('entity_revision_parent_id_field');
+
+    // If the parent type has changed then set it.
+    if ($entity->get($parent_type)->value != $parent_entity->getEntityTypeId()) {
+      $entity->set($parent_type, $parent_entity->getEntityTypeId());
+      $needs_save = TRUE;
+    }
+    // If the parent id has changed then set it.
+    if ($entity->get($parent_id)->value != $parent_entity->id()) {
+      $entity->set($parent_id, $parent_entity->id());
+      $needs_save = TRUE;
+    }
+
+    if ($needs_save) {
+      // Check if any of the keys has changed, save it, do not create a new
+      // revision.
+      $entity->setNewRevision(FALSE);
+      $entity->save();
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function delete() {
+    parent::delete();
+    if ($this->entity && $this->entity->getEntityType()->get('entity_revision_parent_type_field') && $this->entity->getEntityType()->get('entity_revision_parent_id_field')) {
+      $this->entity->delete();
+    }
+}
+ /**
+ * {@inheritdoc}
+ */
   public static function onDependencyRemoval(FieldDefinitionInterface $field_definition, array $dependencies) {
     return FALSE;
   }

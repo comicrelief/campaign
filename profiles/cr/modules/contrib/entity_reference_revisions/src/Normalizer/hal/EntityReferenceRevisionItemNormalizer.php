@@ -24,9 +24,8 @@ class EntityReferenceRevisionItemNormalizer extends EntityReferenceItemNormalize
   protected function constructValue($data, $context) {
     $value = parent::constructValue($data, $context);
     if ($value) {
-      $value['target_revision_id'] = $data['target_revision_id'];
+			$value['target_revision_id'] = $value['target_id'];
     }
-    print_r($data);
     return $value;
   }
 
