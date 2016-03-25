@@ -45,7 +45,12 @@ projects:
   paragraphs:
     version: 1.x-dev
   entity_reference_revisions:
-    version: 1.x-dev
+    download:
+      branch: 8.x-1.x
+      revision: 405c06ac073f9ab676a1816e53d7b36b67bf1d21
+    patch:
+      # See https://www.drupal.org/node/2598138
+      2598138: https://www.drupal.org/files/issues/2598138-6.patch
   view_modes_display:
     version: 1.x-dev
   social_links:
