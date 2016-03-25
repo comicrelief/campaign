@@ -6,8 +6,8 @@ package: Web services
 dependencies:
   - hal
 
-# Information added by Drupal.org packaging script on 2016-03-21
-version: '8.x-1.0-alpha2+24-dev'
+# Information added by Drupal.org packaging script on 2016-03-11
+version: '8.x-1.0-alpha2+19-dev'
 core: '8.x'
 project: 'default_content'
-datestamp: 1458593046
+datestamp: 1457677745

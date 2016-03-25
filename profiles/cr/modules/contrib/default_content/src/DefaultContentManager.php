@@ -61,6 +61,7 @@ class DefaultContentManager implements DefaultContentManagerInterface {
   protected $entityTypeManager;
 
   /**
+<<<<<<< HEAD
    * The entity repository.
    *
    * @var \Drupal\Core\Entity\EntityRepositoryInterface
@@ -68,6 +69,8 @@ class DefaultContentManager implements DefaultContentManagerInterface {
   protected $entityRepository;
 
   /**
+=======
+>>>>>>> origin/8.x-1.x
    * The module handler.
    *
    * @var \Drupal\Core\Extension\ModuleHandlerInterface
@@ -262,7 +265,6 @@ class DefaultContentManager implements DefaultContentManagerInterface {
    */
   public function exportContentWithReferences($entity_type_id, $entity_id) {
     $storage = $this->entityTypeManager->getStorage($entity_type_id);
-		print $entity_type_id . "\n";
     $entity = $storage->load($entity_id);
 
     if (!$entity) {
@@ -278,8 +280,6 @@ class DefaultContentManager implements DefaultContentManagerInterface {
     $this->linkManager->setLinkDomain(static::LINK_DOMAIN);
     // Serialize all entities and key them by entity TYPE and uuid.
     foreach ($entities as $entity) {
-      //die(print_r($entity));
-      print $entity->id() . ' ' . $entity->uuid() . "\n" . get_class($entity) . "\n\n";
       $serialized_entities_per_type[$entity->getEntityTypeId()][$entity->uuid()] = $this->serializer->serialize($entity, 'hal_json', ['json_encode_options' => JSON_PRETTY_PRINT]);
     }
     $this->linkManager->setLinkDomain(FALSE);
@@ -335,9 +335,8 @@ class DefaultContentManager implements DefaultContentManagerInterface {
    */
   protected function getEntityReferencesRecursive(ContentEntityInterface $entity, $depth = 0) {
     $entity_dependencies = $entity->referencedEntities();
-		print "\n\n";
+
     foreach ($entity_dependencies as $id => $dependent_entity) {
-			print 'ID: ' . $id . "\n";// . print_r($dependent_entity) . "\n end:\n";
       // Config entities should not be exported but rather provided by default
       // config.
       if ($dependent_entity instanceof ConfigEntityInterface) {
