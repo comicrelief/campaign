@@ -59,4 +59,5 @@ content:
     label: above
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  social_links: true
