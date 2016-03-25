@@ -68,7 +68,7 @@ class CwRowDisplay extends DsFieldBase {
 
     $rendered_blocks = array();
     $row_view_mode = $row->get('field_cw_view_mode')->getValue();
-    // Need a better way to get array value below
+    // Need a better way to get array value below.
     $view_modes = $this->getBlockViewModes($row_view_mode[0]['value']);
 
     foreach ($blocks as $key => $block_id) {
