@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.full
     - field.field.node.article.body
     - field.field.node.article.field_image
     - field.field.node.article.field_intro
@@ -11,8 +12,10 @@ dependencies:
     - node.type.article
   module:
     - datetime
+    - ds
     - panelizer
     - responsive_image
+    - taxonomy
     - text
     - user
     - youtube
@@ -137,14 +140,42 @@ third_party_settings:
         storage_type: panelizer_default
         storage_id: 'node:article:full:default'
         builder: ipe
-id: node.article.default
+  ds:
+    layout:
+      id: ds_1col
+      path: profiles/cr/modules/contrib/ds
+      library: ''
+      disable_css: false
+      settings:
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - field_publish_date
+        - field_image
+        - body
+        - social_links
+        - 'dynamic_block_field:node-related_news'
+    fields:
+      'dynamic_block_field:node-related_news':
+        plugin_id: 'dynamic_block_field:node-related_news'
+        weight: 4
+        label: above
+        formatter: default
+id: node.article.full
 targetEntityType: node
 bundle: article
-mode: default
+mode: full
 content:
   body:
     type: text_default
-    weight: 4
+    weight: 2
     label: visually_hidden
     settings: {  }
     third_party_settings: {  }
@@ -158,7 +189,7 @@ content:
     type: responsive_image
   field_intro:
     type: text_default
-    weight: 3
+    weight: 13
     label: visually_hidden
     settings: {  }
     third_party_settings: {  }
@@ -170,9 +201,15 @@ content:
       format_type: medium
       timezone_override: ''
     third_party_settings: {  }
+  field_tags:
+    type: entity_reference_rss_category
+    weight: 15
+    label: above
+    settings: {  }
+    third_party_settings: {  }
   field_youtube_url:
     type: youtube_video
-    weight: 2
+    weight: 16
     label: hidden
     settings:
       youtube_size: 480x360
@@ -186,9 +223,11 @@ content:
       youtube_iv_load_policy: false
     third_party_settings: {  }
   links:
-    weight: 5
+    weight: 14
     settings: {  }
     third_party_settings: {  }
-hidden:
-  field_tags: true
-  social_links: true
+  social_links:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }
