@@ -49,10 +49,15 @@ class EsuForm extends FormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     drupal_set_message($this->t('Your email address is @email', ['@email' => $form_state->getValue('email')]));
 
+    /** @var QueueFactory $queue_factory */
     $queue_factory = \Drupal::service('queue');
+    /** @var ReliableQueueInterface $queue */
     $queue = $queue_factory->get('cr');
     $item = $form_state->getValue('email');
     $queue->createItem($item);
+
+    $queue2 = $queue_factory->get('cr3');
+    $queue2->createItem($item);
   }
 
 }

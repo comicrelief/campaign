@@ -23,7 +23,7 @@ projects:
       - "https://www.drupal.org/files/issues/the_given_alias_pattern-2655874-52.patch"
   rabbitmq:
     download:
-      branch: 8.x-1.x
+      branch: feature/exchange_queues_config
       url: https://github.com/comicrelief/rabbitmq.git
   search_api:
     version: 1.0-alpha12
