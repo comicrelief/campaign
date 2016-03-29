@@ -59,7 +59,9 @@ projects:
   config_devel:
     version: 1.0-rc1
   default_content:
-    version: 1.x-dev
+    download:
+      branch: 8.x-1.x
+      revision: ae81658
   devel:
     version: 1.x-dev
   # Editor/admin experience
