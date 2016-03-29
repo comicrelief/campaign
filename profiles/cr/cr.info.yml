@@ -50,7 +50,6 @@ dependencies:
   - youtube
   - view_modes_display
   - social_links
-  - google_tag
   - optimizely
   - focal_point
   - simple_sitemap
@@ -139,6 +138,5 @@ config_devel:
   
   # Contributed modules
   - crazyegg.settings
-  - google_tag.settings
   - optimizely.settings
   - simple_sitemap.settings
