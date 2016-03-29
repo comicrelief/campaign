@@ -1,0 +1,187 @@
+/*  
+  * Button styles,
+  * Copied from SR16 theme
+  */
+
+
+// Just a few for now to set up mixins and generic styles
+$buttonList: (
+  ("red" $red $berry $white),
+  ("blue" $blue $aqua $white),
+);
+
+/**
+ * Parameters
+ * $button[1] = name
+ * $button[2] = background-color
+ * $button[3] = background-color for hover & focus
+ * $button[4] = text color
+ */
+
+@mixin btn-variation($button){
+  // Makes .btn-green etc
+  .btn-#{nth($button, 1)},
+  input[type="button"].btn-#{nth($button, 1)}, 
+  input[type="submit"].btn-#{nth($button, 1)} {
+    // Applies $colour-green etc.
+    background-color: nth($button, 2);
+    color: nth($button, 4);
+    @include transition-property(background-color);
+    @include transition-duration(300ms);
+    &:hover,
+    &:focus {
+      outline: none;
+      // Applies $green-v-dark etc.
+      background-color: nth($button, 3);
+      color: nth($button, 4);
+      @include transition-property(background-color);
+      @include transition-duration(600ms);
+    }
+    &:active {
+      @include transition-property(background-color);
+      @include transition-duration(600ms);
+    }
+  }
+}
+
+
+
+
+.btn {
+  @include border-radius(30px);
+  //font-family: $p-type--all-font;
+  font-size: 16px;
+  height: 50px;
+  //@extend .type--semibold;
+  padding: 14px 35px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  white-space: nowrap;
+  &.btn-ghost--black {
+    background-color: transparent;
+    border: 2px solid $black;
+    color: $red;
+    padding: 11px 35px;
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $black;
+      color: $white;
+    }
+  }
+  &.btn-ghost--white {
+    background-color: transparent;
+    border: 2px solid $white;
+    color: $white;
+    padding: 11px 35px;
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $white;
+      color: $black;
+    }
+  }
+
+  span {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+}
+
+/**
+ * Process $buttonList colour variations through our btn-variation mixin.
+ *
+ * see
+ *  - ../variables/_button.scss for colour variations - $buttonList.
+ *  - ../mixins/components/_button.scss for the mixin that applies the colour variation classes.
+ */
+@for $button from 1 to (length($buttonList)+1) {
+  @include btn-variation(nth($buttonList, $button));
+}
+
+/*
+ * Make sure the styles work on input buttons
+ */
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  border:none;
+  @extend .btn;
+  @extend .btn-red;
+}
+
+/**
+ * Buttons display as stack block for xs
+ */
+@include breakpoint($screen-xs) {
+  .btn + .btn {
+    margin-top: 30px;
+  }
+}
+
+/**
+ * Buttons display as inline block for sm, md and large breakpoints.
+ */
+@include breakpoint($screen-sm) {
+  .btn {
+    display: inline-block;
+    font-size: 18px;
+    &.btn--fixed-width {
+      width: 290px;
+    }
+  }
+  .btn + .btn {
+    margin-top: 0px;
+    margin-left: 25px;
+  }
+  a.btn.btn.no-fixed-width.filter__button {
+    width: auto;
+  }
+}
+
+/*
+ * Add icon to btn
+ */
+.btn {
+  .icon {
+    line-height: 20px;
+    height: 20px;
+    font-weight: normal;
+    &:before {
+      line-height: 0px;
+      position: relative;
+      top: 9px;
+    }
+  }
+  .icon + span,
+  span + .icon {
+    margin-left: 5px;
+  }
+}
+
+/**
+ * Adds large buttons. Initially for the OTN homepage but can be used
+ * elsewhere.
+ */
+.btn--lg {
+  font-size: 18px;
+  line-height: 22px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+/**
+ * Large button styles for >= small breakpoint.
+ */
+@include breakpoint($screen-sm) {
+  .btn--lg {
+    @include border-radius(35px);
+    padding: 21px 70px;
+    font-size: 18px;
+    height: 70px;
+    line-height: 23px;
+  }
+}
