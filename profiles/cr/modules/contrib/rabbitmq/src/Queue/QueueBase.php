@@ -53,6 +53,11 @@ abstract class QueueBase {
   protected $name;
 
   /**
+   * The queue options.
+   */
+  protected $options;
+
+  /**
    * Constructor.
    *
    * @param string $name
@@ -66,11 +71,35 @@ abstract class QueueBase {
    */
   public function __construct($name, Connection $connection,
     ModuleHandlerInterface $modules, LoggerInterface $logger) {
-    $this->name = $name;
+    $this->options = ['name' => $name];
 
+    // Check our active storage to find the the queue config
+    $config = \Drupal::config('rabbitmq.config');
+    $queues = $config->get('queues');
+    if ($queues && isset($queues[$name])) {
+      $this->options += $queues[$name];
+    }
+
+    $this->name = $name;
     $this->connection = $connection;
     $this->logger = $logger;
     $this->modules = $modules;
+
+    // Declare any exchanges required if configured
+    $exchanges = $config->get('exchanges');
+    if ($exchanges) {
+      foreach ($exchanges as $name => $exchange) {
+        $this->getChannel()->exchange_declare(
+          $name, 
+          isset($exchange['type']) ? $exchange['type'] : 'direct',
+          isset($exchange['passive']) ? $exchange['passive'] : FALSE,
+          isset($exchange['durable']) ? $exchange['durable'] : TRUE,
+          isset($exchange['auto_delete']) ? $exchange['auto_delete'] : FALSE,
+          isset($exchange['internal']) ? $exchange['internal'] : FALSE,
+          isset($exchange['nowait']) ? $exchange['nowait'] : FALSE
+        );            
+      }
+    }
   }
 
   /**
@@ -102,33 +131,28 @@ abstract class QueueBase {
    * @return mixed|null
    *   Not strongly specified by php-amqplib.
    */
-  protected function getQueue(AMQPChannel $channel, array $options = []) {
-    $queue_options = [
-      'passive' => FALSE,
-      // Whether the queue is persistent or not. A durable queue is slower but
-      // can survive if RabbitMQ fails.
-      'durable' => TRUE,
-      'exclusive' => FALSE,
-      'auto_delete' => FALSE,
-      'nowait' => 'FALSE',
-      'arguments' => NULL,
-      'ticket' => NULL,
-    ];
+  protected function getQueue(AMQPChannel $channel, array $options = []) {    
+    // Declare the queue
+    $queue = $channel->queue_declare(
+      $this->name,
+      isset($this->options['passive']) ? $this->options['passive'] : false,
+      isset($this->options['durable']) ? $this->options['durable'] : true,
+      isset($this->options['exclusive']) ? $this->options['exclusive'] : false,
+      isset($this->options['auto_delete']) ? $this->options['auto_delete'] : true,
+      isset($this->options['nowait']) ? $this->options['nowait'] : false,
+      isset($this->options['arguments']) ? $this->options['arguments'] : null,
+      isset($this->options['ticket']) ? $this->options['ticket'] : null
+    );
 
-    $queue_info = $this->modules->invokeAll('rabbitmq_queue_info');
-
-    // Allow modules to override queue settings.
-    if (isset($queue_info[$this->name])) {
-      $queue_options = $queue_info[$this->name];
+    // Bind the queue to an exchange if defined
+    if ($queue && !empty($this->options['routing_keys'])) {
+      foreach ($this->options['routing_keys'] as $routing_key) {
+        list($exchange, $key) = explode('.', $routing_key);
+        $this->channel->queue_bind($this->name, $exchange, $key);       
+      }
     }
 
-    $queue_options += $options;
-    // The name option cannot be overridden.
-    $queue_options['name'] = $this->name;
-
-    return $channel->queue_declare($this->name,
-      $queue_options['passive'], $queue_options['durable'],
-      $queue_options['exclusive'], $queue_options['auto_delete']);
+    return $queue;
   }
 
 }

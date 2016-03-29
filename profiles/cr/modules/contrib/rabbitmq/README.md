@@ -21,11 +21,12 @@ Installation
 * Provide connection credentials as part of the `$settings` global variable in 
   `settings.php`.
 
-        $settings['rabbitmq_credentials'] = [
+        $settings['rabbitmq.credentials'] = [
           'host' => 'localhost',
           'port' => 5672,
           'username' => 'guest',
           'password' => 'guest',
+          'vhost' => '/'
         ];
 
 * Configure RabbitMQ as the queuing system for the queues you want RabbitMQ to 
