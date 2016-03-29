@@ -14,8 +14,8 @@ name: Paragraphs demo
 package: Paragraphs
 type: module
 
-# Information added by Drupal.org packaging script on 2016-03-22
-version: '8.x-1.0-rc4+11-dev'
+# Information added by Drupal.org packaging script on 2016-03-27
+version: '8.x-1.0-rc4+12-dev'
 core: '8.x'
 project: 'paragraphs'
-datestamp: 1458691142
+datestamp: 1459060742
