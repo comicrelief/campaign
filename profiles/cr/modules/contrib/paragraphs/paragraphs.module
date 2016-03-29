@@ -1,0 +1,102 @@
+<?php
+
+/**
+ * @file
+ * Contains paragraphs.module
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\paragraphs\Entity\ParagraphsType;
+use Drupal\Core\Render\Element;
+
+define('PARAGRAPHS_DEFAULT_TITLE', 'Paragraph');
+define('PARAGRAPHS_DEFAULT_TITLE_PLURAL', 'Paragraphs');
+define('PARAGRAPHS_DEFAULT_EDIT_MODE', 'open');
+define('PARAGRAPHS_DEFAULT_ADD_MODE', 'dropdown');
+define('PARAGRAPHS_DEFAULT_FORM_DISPLAY_MODE', 'default');
+
+/**
+ * Implements hook_help().
+ */
+
+function paragraphs_help($route_name, RouteMatchInterface $route_match)
+{
+  switch ($route_name) {
+    // Main module help for the paragraphs module.
+    case 'help.page.paragraphs':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Paragraphs') . '</p>';
+      return $output;
+    break;
+  }
+}
+
+function paragraphs_type_get_types() {
+  return ParagraphsType::loadMultiple();
+}
+
+function paragraphs_type_get_names() {
+  return array_map(function ($bundle_info) {
+    return $bundle_info['label'];
+  }, \Drupal::entityManager()->getBundleInfo('paragraphs_type'));
+}
+
+function paragraphs_type_load($name) {
+  return ParagraphsType::load($name);
+}
+
+/**
+ * Implements hook_theme().
+ */
+function paragraphs_theme() {
+  return array(
+    'paragraph' => array(
+      'render element' => 'elements',
+    ),
+    'paragraphs_dropbutton_wrapper' => array(
+      'variables' => array('children' => NULL),
+    ),
+  );
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function paragraphs_theme_suggestions_paragraph(array $variables) {
+  $suggestions = array();
+  $paragraph = $variables['elements']['#paragraph'];
+  $sanitized_view_mode = strtr($variables['elements']['#view_mode'], '.', '_');
+
+  $suggestions[] = 'paragraph__' . $sanitized_view_mode;
+  $suggestions[] = 'paragraph__' . $paragraph->bundle();
+  $suggestions[] = 'paragraph__' . $paragraph->bundle() . '__' . $sanitized_view_mode;
+
+  return $suggestions;
+}
+
+/**
+ * Prepares variables for paragraph templates.
+ *
+ * Default template: paragraph.html.twig.
+ *
+ * Most themes use their own copy of paragraph.html.twig. The default is located
+ * inside "templates/paragraph.html.twig". Look in there for the
+ * full list of variables.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An array of elements to display in view mode.
+ *   - paragraph: The paragraph object.
+ *   - view_mode: View mode; e.g., 'full', 'teaser'...
+ */
+function template_preprocess_paragraph(&$variables) {
+  $variables['view_mode'] = $variables['elements']['#view_mode'];
+  $variables['paragraph'] = $variables['elements']['#paragraph'];
+
+  // Helpful $content variable for templates.
+  $variables += array('content' => array());
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}

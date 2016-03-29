@@ -7,6 +7,7 @@
 namespace Drupal\default_content\Tests;
 
 use Drupal\simpletest\WebTestBase;
+use Drupal\taxonomy\Entity\Vocabulary;
 
 /**
  * Test import of default content.
