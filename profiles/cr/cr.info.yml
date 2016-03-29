@@ -65,11 +65,10 @@ dependencies:
   - paragraphs
 
   # Custom modules
-  - cr_paragraph_types
+  - cr_content_wall
   - cr_article
   - cr_landing_page
   - cr_teaser
-  - cr_content_wall
   - cr_layout
 
   # Development modules
@@ -138,7 +137,7 @@ config_devel:
   - user.role.anonymous
   - user.role.authenticated
   - user.role.editor
-  
+
   # Contributed modules
   - crazyegg.settings
   - google_tag.settings
