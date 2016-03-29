@@ -1,0 +1,30 @@
+exchanges:
+  dasp:
+    type: 'direct'
+    passive: false
+    durable: true
+    auto_delete: false
+    internal: false
+    nowait: false
+
+queues:
+  cr:
+    passive: false
+    durable: true
+    exclusive: false
+    auto_delete: true
+    nowait: false
+    routing_keys: 
+      - 'dasp.route1'
+      - 'dasp.route2'
+  cr3:
+    passive: false
+    durable: true
+    exclusive: false
+    auto_delete: true
+    nowait: false
+    routing_keys: 
+      - 'dasp.route2'
+
+
+
