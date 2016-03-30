@@ -117,8 +117,8 @@ composer global require drush/drush 8.*
 If you want to use drush 6 or 7 again then simply:
 
 ```  
-  composer global require drush/drush 6.*
-  composer global require drush/drush 7.*
+composer global require drush/drush 6.*
+composer global require drush/drush 7.*
 ```
 
 ### Phing
@@ -159,8 +159,8 @@ The file also contains developer debugging configurations and is worth disabling
 ```php
 // Override default system configuration. Remove all the following lines for prod env.
 $config['system.logging']['error_level'] = 'verbose';
-$config['system.performance']['css']['preprocess'] = 'false';
-$config['system.performance']['js']['preprocess'] = 'false';
+$config['system.performance']['css']['preprocess'] = false;
+$config['system.performance']['js']['preprocess'] = false;
 ```
   
 ##### Using Phing
