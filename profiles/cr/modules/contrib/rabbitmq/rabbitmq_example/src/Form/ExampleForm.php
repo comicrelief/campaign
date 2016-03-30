@@ -47,12 +47,20 @@ class ExampleForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    drupal_set_message($this->t('Your email address is @email', ['@email' => $form_state->getValue('email')]));
+    // Get the data you want to send to the queue.
+    $data = $form_state->getValue('email');
 
+    // Get the queue config and send it to the data to the queue.
     $queue_factory = \Drupal::service('queue');
     $queue = $queue_factory->get('queue1');
-    $item = $form_state->getValue('email');
-    $queue->createItem($item);
+    $queue->createItem($data);
+
+    // Send some feedback.
+    drupal_set_message(
+      $this->t('You sent to the queue: @email', [
+        '@email' => $form_state->getValue('email'),
+      ])
+    );
   }
 
 }
