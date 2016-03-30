@@ -53,7 +53,7 @@ dependencies:
   - google_tag
   - optimizely
   - focal_point
-  - simple_sitemap
+  #- simple_sitemap
 
   # Layout
   - inline_entity_form
