@@ -1,0 +1,63 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cw_row.field_cw_block_reference
+    - field.field.paragraph.cw_row.field_cw_view_mode
+    - paragraphs.paragraphs_type.cw_row
+  module:
+    - ds
+    - options
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: onecol
+      path: profiles/cr/modules/contrib/panels/layouts/onecol
+      library: layout_plugin/onecol
+      disable_css: false
+      settings: {  }
+    regions:
+      middle:
+        - cr_content_wall_CwRowDisplay
+    fields:
+      cr_content_wall_CwRowDisplay:
+        plugin_id: cr_content_wall_CwRowDisplay
+        weight: 0
+        label: hidden
+        formatter: default
+id: paragraph.cw_row.default
+targetEntityType: paragraph
+bundle: cw_row
+mode: default
+content:
+  created:
+    type: timestamp
+    weight: 3
+    label: above
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
+  field_cw_block_reference:
+    weight: 2
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_cw_view_mode:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+  uid:
+    type: author
+    weight: 4
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  social_links: true

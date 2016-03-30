@@ -99,25 +99,25 @@
     }
   }
 }
-.view-mode-cw_3col_s_s_s {
+.panel-panel {
   // @include container(12);
-  article {
+  article.cw-article--small {
     @include span(12);
     @include breakpoint($screen-xs) {
       @include span(4);
     }
   }
 }
-.view-mode-cw_2col_m_m {
-  article {
+.panel-panel {
+  article.cw-article--medium {
     @include span(12);
     @include breakpoint($screen-xs) {
       @include span(6);
     }
   }
 }
-.view-mode-cw_1col_l {
-  article {
+.panel-panel {
+  article.cw-article--large {
     @include span(12);
     @include breakpoint($screen-xs) {
       padding: 0 15px 0 0;
