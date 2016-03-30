@@ -42,7 +42,7 @@ class RabbitMqConnectionTest extends RabbitMqTestBase {
   /**
    * Test item deletion.
    */
-  public function ZtestDelete() {
+  public function ztestDelete() {
     /* @var \Drupal\beanstalkd\Server\BeanstalkdServer $server */
     list($server, $tube, $start_count) = $this->initChannel();
 
@@ -73,7 +73,7 @@ class RabbitMqConnectionTest extends RabbitMqTestBase {
   /**
    * Tests tube flushing.
    */
-  public function ZtestFlush() {
+  public function ztestFlush() {
     /* @var \Drupal\beanstalkd\Server\BeanstalkdServer $server */
     list($server, $tube,) = $this->initChannel();
     $item = 'foo';
@@ -91,7 +91,7 @@ class RabbitMqConnectionTest extends RabbitMqTestBase {
   /**
    * Tests flushing an un-managed queue: should not error, and should return 0.
    */
-  public function ZtestFlushSad() {
+  public function ztestFlushSad() {
     /* @var \Drupal\beanstalkd\Server\BeanstalkdServer $server */
     list($server, $tube, $start_count) = $this->initChannel();
     $server->putData($tube, 'foo');
@@ -119,7 +119,7 @@ class RabbitMqConnectionTest extends RabbitMqTestBase {
   /**
    * Test item release.
    */
-  public function ZtestRelease() {
+  public function ztestRelease() {
     /* @var \Drupal\beanstalkd\Server\BeanstalkdServer $server */
     list($server, $tube, $start_count) = $this->initChannel();
     $server->putData($tube, 'foo');
@@ -150,7 +150,7 @@ class RabbitMqConnectionTest extends RabbitMqTestBase {
   /**
    * Test item release sad: releaseJob() on a un-managed queue does nothing.
    */
-  public function ZtestReleaseSad() {
+  public function ztestReleaseSad() {
     /* @var \Drupal\beanstalkd\Server\BeanstalkdServer $server */
     list($server, $tube, $start_count) = $this->initChannel();
     $data = 'foo';
@@ -191,7 +191,7 @@ class RabbitMqConnectionTest extends RabbitMqTestBase {
   /**
    * Test the various stats() sub-commands in normal situations.
    */
-  public function ZtestStatsHappy() {
+  public function ztestStatsHappy() {
     /* @var \Drupal\beanstalkd\Server\BeanstalkdServer $server */
     list($server, $tube,) = $this->initChannel();
 
@@ -217,7 +217,7 @@ class RabbitMqConnectionTest extends RabbitMqTestBase {
   /**
    * Test the various stats() sub-commands in abnormal situations.
    */
-  public function ZtestStatsSad() {
+  public function ztestStatsSad() {
     /* @var \Drupal\beanstalkd\Server\BeanstalkdServer $server */
     list($server, $tube,) = $this->initChannel();
 

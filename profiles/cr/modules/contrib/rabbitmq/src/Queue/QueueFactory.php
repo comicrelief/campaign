@@ -7,7 +7,6 @@
 
 namespace Drupal\rabbitmq\Queue;
 
-use Doctrine\Common\Util\Debug;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\rabbitmq\Connection;
 use Psr\Log\LoggerInterface;

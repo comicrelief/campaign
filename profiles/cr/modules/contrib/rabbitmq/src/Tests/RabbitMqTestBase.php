@@ -7,13 +7,10 @@
 
 namespace Drupal\rabbitmq\Tests;
 
-use Doctrine\Common\Util\Debug;
 use Drupal\rabbitmq\Queue\QueueFactory;
-use Drupal\rabbitmq\Connection;
 use Drupal\KernelTests\KernelTestBase;
 use PhpAmqpLib\Channel\AMQPChannel;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
-use PhpAmqpLib\Exception\AMQPRuntimeException;
 
 /**
  * Class BeanstalkdTestBase is a base class for Beanstalkd tests.
