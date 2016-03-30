@@ -20,5 +20,5 @@ $config_directories['sync'] = 'sites/default/files/config_bQLFgrgrrIEQHvFRiGc2-I
 
 // Override default system configuration. Remove all the following lines for prod env.
 $config['system.logging']['error_level'] = 'verbose';
-$config['system.performance']['css']['preprocess'] = 'false';
-$config['system.performance']['js']['preprocess'] = 'false';
+$config['system.performance']['css']['preprocess'] = FALSE;
+$config['system.performance']['js']['preprocess'] = FALSE;
