@@ -2,9 +2,6 @@ custom:
   -
     path: /
     priority: '1'
-  -
-    path: /content-wall
-    priority: '1'
 entity_types:
   node_type:
     page:

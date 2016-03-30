@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.user.field_user_demo
+    - paragraphs.paragraphs_type.user
+id: paragraph.user.default
+targetEntityType: paragraph
+bundle: user
+mode: default
+content:
+  field_user_demo:
+    type: entity_reference_entity_view
+    weight: 0
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    label: above
+hidden:
+  created: true
+  uid: true

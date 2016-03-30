@@ -191,3 +191,4 @@ content:
     third_party_settings: {  }
 hidden:
   field_tags: true
+  social_links: true

@@ -1,0 +1,13 @@
+.paragraph--cr-rich-text-paragraph {
+  clear: both;
+  min-height: 400px;
+  padding: 60px 20px;
+  color: $white;
+  background-size: cover;
+
+  @include clearfix;
+}
+.paragraph--cr-rich-text-paragraph__body {
+  max-width: 1200px;
+  margin: auto;
+}
