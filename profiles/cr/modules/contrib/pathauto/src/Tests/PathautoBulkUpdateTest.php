@@ -77,10 +77,8 @@ class PathautoBulkUpdateTest extends WebTestBase {
     );
     $this->drupalPostForm('admin/config/search/path/update_bulk', $edit, t('Update'));
 
-    // This has generated 6 aliases. 5 nodes and one user that we created. There
-    // is also UID 1 but that user was created before the path field existed,
-    // so he does not have a pathauto state.
-    $this->assertText('Generated 6 URL aliases.');
+    // This has generated 7 aliases: 5 nodes and 2 users.
+    $this->assertText('Generated 7 URL aliases.');
 
     // Check that aliases have actually been created.
     foreach ($this->nodes as $node) {
@@ -97,4 +95,28 @@ class PathautoBulkUpdateTest extends WebTestBase {
 
     $this->assertNoEntityAliasExists($new_node);
   }
+
+  /**
+   * Tests alias generation for nodes that existed before installing Pathauto.
+   */
+  function testBulkUpdateExistingContent() {
+    // Create a node.
+    $node = $this->drupalCreateNode();
+
+    // Delete its alias and Pathauto metadata.
+    \Drupal::service('pathauto.alias_storage_helper')->deleteEntityPathAll($node);
+    $node->path->first()->get('pathauto')->purge();
+    \Drupal::entityManager()->getStorage('node')->resetCache(array($node->id()));
+
+    // Execute bulk generation.
+    // Bulk create aliases.
+    $edit = array(
+      'update[canonical_entities:node]' => TRUE,
+    );
+    $this->drupalPostForm('admin/config/search/path/update_bulk', $edit, t('Update'));
+
+    // Verify that the alias was created for the node.
+    $this->assertText('Generated 1 URL alias.');
+  }
+
 }

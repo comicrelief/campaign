@@ -75,6 +75,13 @@
         Drupal.panels_ipe.app.trigger('addContentBlock', settings['panels_ipe']['new_block_content']);
         delete settings['panels_ipe']['new_block_content'];
       }
+
+      // A Block Content entity has been edited.
+      if (settings['panels_ipe']['edit_block_content']) {
+        var uuid = settings['panels_ipe']['edit_block_content'];
+        Drupal.panels_ipe.app.trigger('editContentBlockDone', uuid);
+        delete settings['panels_ipe']['edit_block_content'];
+      }
     }
   };
 
@@ -192,10 +199,7 @@
       $current_side = $form.find('.flipper > .back');
     }
 
-    // If the new side is larger than the current side, change the height.
-    if ($new_side.outerHeight() > $current_side.outerHeight()) {
-      $current_side.animate({height: $new_side.outerHeight() + 10}, 600);
-    }
+    $current_side.animate({height: $new_side.outerHeight() + 10}, 600);
   };
 
   /**

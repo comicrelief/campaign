@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cw_row.field_cw_block_reference
+    - field.field.paragraph.cw_row.field_cw_view_mode
+    - paragraphs.paragraphs_type.cw_row
+  module:
+    - inline_entity_form
+id: paragraph.cw_row.default
+targetEntityType: paragraph
+bundle: cw_row
+mode: default
+content:
+  field_cw_block_reference:
+    weight: 1
+    settings:
+      form_mode: default
+      label_singular: ''
+      label_plural: ''
+      allow_new: true
+      allow_existing: true
+      match_operator: CONTAINS
+      override_labels: false
+    third_party_settings: {  }
+    type: inline_entity_form_complex
+  field_cw_view_mode:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+hidden:
+  created: true
+  status: true
+  uid: true

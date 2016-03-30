@@ -1,0 +1,148 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/paragraph\/111?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cw_row"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/field_cw_block_reference": [
+            {
+                "href": "http:\/\/default\/block\/3?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/default\/block\/1?_format=hal_json"
+            }
+        ]
+    },
+    "uuid": [
+        {
+            "value": "13099c25-9add-433d-8a08-8feb0d565bf1"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "cw_row"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cb812e3c-f4a4-4519-8506-6d96469aa1ba"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cb812e3c-f4a4-4519-8506-6d96469aa1ba"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/field_cw_block_reference": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/block\/3?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/block_content\/teaser"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "638bd538-b590-4afd-be51-81f13b6aa027"
+                    }
+                ]
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/block\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/block_content\/teaser"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "76e49bf8-4e9a-4172-b400-c1743e8dfc1d"
+                    }
+                ]
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1458737578",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1458737578",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1458737578"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "field_cw_view_mode": [
+        {
+            "value": "cw_2col_m_m"
+        }
+    ]
+}

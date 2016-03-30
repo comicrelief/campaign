@@ -12,49 +12,76 @@ projects:
       # See https://www.drupal.org/node/2672110
       2672110: https://www.drupal.org/files/issues/entityfieldderiver-2672110-2.patch
   file_entity:
-    download:
-      type: git
-      branch: 8.x-1.x
-      revision: af4131334c88a7e7bd045874070c79b9af7d842d
+    version: 2.x-dev
   metatag:
     version: 1.0-beta4
   pathauto:
-    version: 1.0-alpha1
+    version: 1.0-alpha2
+    patch:
+      # This will be fixed in: 8.x-1.x-dev
+      # URL: https://www.drupal.org/node/2655874
+      - "https://www.drupal.org/files/issues/the_given_alias_pattern-2655874-52.patch"
+  search_api:
+    version: 1.0-alpha12
   token:
     version: 1.0-alpha2
   youtube:
     version: 1.0-beta2
   # Layout modules
   inline_entity_form:
-    version: 1.0-alpha4
+    version: 1.0-alpha5
   layout_plugin:
     version: 1.0-alpha22
   page_manager:
     version: 1.0-alpha23
   panels:
-    download:
-      type: git
-      branch: 8.x-1.x
-      revision: ba0c77df894a9217cdf45551db105b9cc1c76315
+    version: 3.x-dev
   panelizer:
     version: 3.0-alpha2
   ds:
     version: 2.3
   field_group:
     version: 1.0-rc4
+  paragraphs:
+    version: 1.x-dev
+  entity_reference_revisions:
+    download:
+      branch: 8.x-1.x
+      revision: 405c06ac073f9ab676a1816e53d7b36b67bf1d21
+    patch:
+      # See https://www.drupal.org/node/2598138
+      2598138: https://www.drupal.org/files/issues/2598138-6.patch
+  view_modes_display:
+    version: 1.x-dev
+  social_links:
+    version: 1.x-dev
   # Developer modules
   config_devel:
     version: 1.0-rc1
   default_content:
     download:
-      type: git
       branch: 8.x-1.x
-      revision: 471bf110e40e22b8a5ed10973825959aa33b2f21
+      revision: ae81658
   devel:
-    download:
-      type: git
-      branch: 8.x-1.x
-      revision: 38818a6a9320d52b573ac1fa8d66ae6489de31a9
+    version: 1.x-dev
   # Editor/admin experience
   admin_toolbar:
     version: 1.14
+  # Contributed module - CrazyEgg
+  crazyegg:
+    version: 1.0-rc1
+  # Contributed module - Google Tag Manager
+  google_tag:
+    download:
+      branch: 8.x-1.x
+      revision: e0e013c8d8f8c8b376ba6b80aada179ee7c656eb
+      url: https://github.com/mikeyp/google_tag.git
+  # Contributed module - Optimizely
+  optimizely:
+    version: 2.15-rc1
+  # Image
+  focal_point:
+    version: 1.x-dev
+  # Contributed module - Simple XML Sitemap
+  simple_sitemap:
+    version: 2.1

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\inline_entity_form\Tests\InlineEntityFormWebTest.
- */
-
 namespace Drupal\inline_entity_form\Tests;
 
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
@@ -22,13 +17,6 @@ class InlineEntityFormSimpleWebTest extends InlineEntityFormTestBase {
    * @var array
    */
   public static $modules = ['inline_entity_form_test'];
-
-  /**
-   * User with permissions to create content.
-   *
-   * @var \Drupal\user\Entity\User
-   */
-  protected $user;
 
   /**
    * Field config storage.

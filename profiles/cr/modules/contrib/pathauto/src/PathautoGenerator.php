@@ -12,6 +12,7 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
+use Drupal\Core\Language\LanguageInterface;
 use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\StringTranslation\TranslationInterface;
@@ -139,6 +140,11 @@ class PathautoGenerator implements PathautoGeneratorInterface {
     $source = '/' . $entity->toUrl()->getInternalPath();
     $config = $this->configFactory->get('pathauto.settings');
     $langcode = $entity->language()->getId();
+
+    // Core does not handle aliases with language Not Applicable.
+    if ($langcode == LanguageInterface::LANGCODE_NOT_APPLICABLE) {
+      $langcode = LanguageInterface::LANGCODE_NOT_SPECIFIED;
+    }
 
     // Build token data.
     $data = [
@@ -314,7 +320,13 @@ class PathautoGenerator implements PathautoGeneratorInterface {
       }
     }
 
-    $result = $this->createEntityAlias($entity, $op);
+    try {
+      $result = $this->createEntityAlias($entity, $op);
+    }
+    catch (\InvalidArgumentException $e) {
+      drupal_set_message($e->getMessage(), 'error');
+      return NULL;
+    }
 
     // @todo Move this to a method on the pattern plugin.
     if ($type == 'taxonomy_term') {

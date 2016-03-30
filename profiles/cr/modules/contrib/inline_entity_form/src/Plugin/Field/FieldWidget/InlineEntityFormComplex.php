@@ -1,14 +1,10 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\inline_entity_form\Plugin\Field\FieldWidget\InlineEntityFormComplex.
- */
-
 namespace Drupal\inline_entity_form\Plugin\Field\FieldWidget;
 
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Component\Utility\SortArray;
+use Drupal\Core\Entity\EntityDisplayRepositoryInterface;
 use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
@@ -58,11 +54,13 @@ class InlineEntityFormComplex extends InlineEntityFormBase implements ContainerF
    *   The entity type bundle info.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager.
+   * @param \Drupal\Core\Entity\EntityDisplayRepositoryInterface
+   *   The entity display repository.
    * @param \Drupal\Core\Extension\ModuleHandlerInterface $module_handler
    *   Module handler service.
    */
-  public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, array $third_party_settings, EntityTypeBundleInfoInterface $entity_type_bundle_info, EntityTypeManagerInterface $entity_type_manager, ModuleHandlerInterface $module_handler) {
-    parent::__construct($plugin_id, $plugin_definition, $field_definition, $settings, $third_party_settings, $entity_type_bundle_info, $entity_type_manager);
+  public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, array $third_party_settings, EntityTypeBundleInfoInterface $entity_type_bundle_info, EntityTypeManagerInterface $entity_type_manager, EntityDisplayRepositoryInterface $entity_display_repository, ModuleHandlerInterface $module_handler) {
+    parent::__construct($plugin_id, $plugin_definition, $field_definition, $settings, $third_party_settings, $entity_type_bundle_info, $entity_type_manager, $entity_display_repository);
     $this->moduleHandler = $module_handler;
   }
 
@@ -78,6 +76,7 @@ class InlineEntityFormComplex extends InlineEntityFormBase implements ContainerF
       $configuration['third_party_settings'],
       $container->get('entity_type.bundle.info'),
       $container->get('entity_type.manager'),
+      $container->get('entity_display.repository'),
       $container->get('module_handler')
     );
   }
@@ -102,7 +101,7 @@ class InlineEntityFormComplex extends InlineEntityFormBase implements ContainerF
   public function settingsForm(array $form, FormStateInterface $form_state) {
     $element = parent::settingsForm($form, $form_state);
 
-    $labels = $this->labels();
+    $labels = $this->getEntityTypeLabels();
     $states_prefix = 'fields[' . $this->fieldDefinition->getName() . '][settings_edit_form][settings]';
     $element['allow_new'] = [
       '#type' => 'checkbox',
@@ -135,7 +134,7 @@ class InlineEntityFormComplex extends InlineEntityFormBase implements ContainerF
    */
   public function settingsSummary() {
     $summary = parent::settingsSummary();
-    $labels = $this->labels();
+    $labels = $this->getEntityTypeLabels();
 
     if ($this->getSetting('allow_new')) {
       $summary[] = $this->t('New @label can be added.', ['@label' => $labels['plural']]);
@@ -182,7 +181,7 @@ class InlineEntityFormComplex extends InlineEntityFormBase implements ContainerF
     $settings = $this->getSettings();
     $target_type = $this->getFieldSetting('target_type');
     // Get the entity type labels for the UI strings.
-    $labels = $this->labels();
+    $labels = $this->getEntityTypeLabels();
 
     // Build a parents array for this element's values in the form.
     $parents = array_merge($element['#field_parents'], array(
@@ -261,7 +260,7 @@ class InlineEntityFormComplex extends InlineEntityFormBase implements ContainerF
 
     // Build the "Multiple value" widget.
     // TODO - does this belong in #element_validate?
-    $element['#element_validate'] =[[get_class($this), 'updateRowWeights']];
+    $element['#element_validate'][] = [get_class($this), 'updateRowWeights'];
     // Add the required element marker & validation.
     if ($element['#required']) {
       $element['#element_validate'][] = [get_class($this), 'requiredField'];
@@ -275,7 +274,7 @@ class InlineEntityFormComplex extends InlineEntityFormBase implements ContainerF
 
     // Get the fields that should be displayed in the table.
     $target_bundles = $this->getTargetBundles();
-    $fields = $this->iefHandler->tableFields($target_bundles);
+    $fields = $this->inlineFormHandler->getTableFields($target_bundles);
     $context = array(
       'parent_entity_type' => $this->fieldDefinition->getTargetEntityTypeId(),
       'parent_bundle' => $this->fieldDefinition->getTargetBundle(),
@@ -291,7 +290,7 @@ class InlineEntityFormComplex extends InlineEntityFormBase implements ContainerF
       // Data used by theme_inline_entity_form_entity_table().
       /** @var \Drupal\Core\Entity\EntityInterface $entity */
       $entity = $value['entity'];
-      $element['entities'][$key]['#label'] = $this->iefHandler->getEntityLabel($value['entity']);
+      $element['entities'][$key]['#label'] = $this->inlineFormHandler->getEntityLabel($value['entity']);
       $element['entities'][$key]['#entity'] = $value['entity'];
       $element['entities'][$key]['#needs_save'] = $value['needs_save'];
 
@@ -313,10 +312,10 @@ class InlineEntityFormComplex extends InlineEntityFormBase implements ContainerF
             '#attributes' => ['class' => ['ief-form', 'ief-form-row']],
             'inline_entity_form' => $this->getInlineEntityForm(
               $value['form'],
+              $entity->bundle(),
               $parent_langcode,
               $key,
               array_merge($parents,  ['inline_entity_form', 'entities', $key, 'form']),
-              $entity->bundle(),
               $entity
             ),
           ];
@@ -512,10 +511,10 @@ class InlineEntityFormComplex extends InlineEntityFormBase implements ContainerF
           '#attributes' => ['class' => ['ief-form', 'ief-form-bottom']],
           'inline_entity_form' => $this->getInlineEntityForm(
             'add',
+            $this->determineBundle($form_state),
             $parent_langcode,
             NULL,
-            array_merge($parents, ['inline_entity_form']),
-            $this->determineBundle($form_state)
+            array_merge($parents, ['inline_entity_form'])
           )
         ];
         $element['form']['inline_entity_form']['#process'] = [
@@ -537,13 +536,11 @@ class InlineEntityFormComplex extends InlineEntityFormBase implements ContainerF
           '#entity_type' => $target_type,
           // Pass the langcode of the parent entity,
           '#parent_language' => $parent_langcode,
-          // Add the pre_render callback that powers the #fieldset form element key,
-          // which moves the element to the specified fieldset without modifying its
-          // position in $form_state->get('values').
-          '#pre_render' => [[get_class($this), 'addFieldsetMarkup']],
+          // Pass the widget specific labels.
+          '#ief_labels' => $this->getEntityTypeLabels(),
         );
 
-        $element['form'] += inline_entity_form_reference_form($this->iefHandler, $element['form'], $form_state);
+        $element['form'] += inline_entity_form_reference_form($element['form'], $form_state);
       }
 
       // Pre-opened forms can't be closed in order to force the user to
@@ -578,12 +575,11 @@ class InlineEntityFormComplex extends InlineEntityFormBase implements ContainerF
     }
 
     $trigger = $form_state->getTriggeringElement();
-    if (empty($trigger['#ief_trigger'])) {
+    if (empty($trigger['#ief_submit_trigger'])) {
       return;
     }
 
     $field_name = $this->fieldDefinition->getName();
-
     // Extract the values from $form_state->getValues().
     $parents = array_merge($form['#parents'], [$field_name, 'form']);
     $ief_id = sha1(implode('-', $parents));
@@ -600,6 +596,11 @@ class InlineEntityFormComplex extends InlineEntityFormBase implements ContainerF
     }
 
     if ($key_exists) {
+      // If the widget form is open then need to move entity.
+      if (empty($values['entities']) && !empty($values['entity'])) {
+        $values['entities'] = [['entity' => $values['entity']]];
+      }
+
       $values = $values['entities'];
 
       // Account for drag-and-drop reordering if needed.
@@ -617,22 +618,6 @@ class InlineEntityFormComplex extends InlineEntityFormBase implements ContainerF
           return SortArray::sortByKeyInt($a, $b, '_weight');
         });
       }
-
-      if (!empty($trigger['#ief_submit_all'])) {
-        foreach ($values as $delta => &$item) {
-          /** @var \Drupal\Core\Entity\EntityInterface $entity */
-          $entity = $item['entity'];
-          if (!empty($item['needs_save'])) {
-            $entity->save();
-          }
-          if (!empty($item['delete'])) {
-            $entity->delete();
-            unset($items[$delta]);
-          }
-        }
-      }
-
-
 
       // Let the widget massage the submitted values.
       $values = $this->massageFormValues($values, $form, $form_state);
@@ -776,8 +761,8 @@ class InlineEntityFormComplex extends InlineEntityFormBase implements ContainerF
     /** @var \Drupal\Core\Entity\EntityInterface $entity */
     $entity = $form['#entity'];
     $entity_id = $entity->id();
-    $entity_label = $this->iefHandler->getEntityLabel($entity);
-    $labels = $this->labels();
+    $entity_label = $this->inlineFormHandler->getEntityLabel($entity);
+    $labels = $this->getEntityTypeLabels();
 
     if ($entity_label) {
       $message = $this->t('Are you sure you want to remove %label?', ['%label' => $entity_label]);
@@ -890,7 +875,7 @@ class InlineEntityFormComplex extends InlineEntityFormBase implements ContainerF
     }
     else {
       $delete = $form_state->get(['inline_entity_form', $element['#ief_id'], 'delete']);
-      $delete['delete'][] = $entity_id;
+      $delete['delete'][] = $entity;
       $form_state->set(['inline_entity_form', $element['#ief_id'], 'delete'], $delete);
       $form_state->set(['inline_entity_form', $element['#ief_id'], 'entities', $delta], NULL);
     }
@@ -978,10 +963,10 @@ class InlineEntityFormComplex extends InlineEntityFormBase implements ContainerF
    */
   public static function addSubmitCallbacks(&$element) {
     $element['#submit'] = [
-      ['\Drupal\inline_entity_form\Element\InlineEntityForm', 'triggerIefSubmit'],
+      ['\Drupal\inline_entity_form\ElementSubmit', 'trigger'],
       ['\Drupal\inline_entity_form\Plugin\Field\FieldWidget\InlineEntityFormComplex', 'closeForm'],
     ];
-    $element['#ief_trigger']  = TRUE;
+    $element['#ief_submit_trigger']  = TRUE;
   }
 
   /**
