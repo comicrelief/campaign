@@ -71,12 +71,12 @@ abstract class QueueBase {
    */
   public function __construct($name, Connection $connection,
     ModuleHandlerInterface $modules, LoggerInterface $logger) {
-    $this->options = ['name' => $name];
-
     // Check our active storage to find the the queue config.
     $config = \Drupal::config('rabbitmq.config');
     $queues = $config->get('queues');
-    if ($queues && isset($queues[$name])) {
+
+    $this->options = ['name' => $name];
+    if (isset($queues[$name])) {
       $this->options += $queues[$name];
     }
 
@@ -84,12 +84,11 @@ abstract class QueueBase {
     $this->connection = $connection;
     $this->logger = $logger;
     $this->modules = $modules;
-
     // Declare any exchanges required if configured.
     $exchanges = $config->get('exchanges');
     if ($exchanges) {
       foreach ($exchanges as $name => $exchange) {
-        $this->getChannel()->exchange_declare(
+        $this->connection->getConnection()->channel()->exchange_declare(
           $name,
           isset($exchange['type']) ? $exchange['type'] : 'direct',
           isset($exchange['passive']) ? $exchange['passive'] : FALSE,

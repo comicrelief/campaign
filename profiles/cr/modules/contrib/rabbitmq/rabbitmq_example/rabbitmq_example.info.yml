@@ -2,8 +2,14 @@ name: RabbitMQ Example
 type: module
 hidden: TRUE
 description: RabbitMQ Integration for Drupal
-core: 8.x
+# core: 8.x
 package: Testing
 
 dependencies:
   - rabbitmq
+
+# Information added by Drupal.org packaging script on 2016-03-31
+version: '8.x-1.0-alpha1'
+core: '8.x'
+project: 'rabbitmq'
+datestamp: 1459421486

@@ -51,13 +51,15 @@ class ExampleForm extends FormBase {
     $data = $form_state->getValue('email');
 
     // Get the queue config and send it to the data to the queue.
+    $queue_name = 'queue1';
     $queue_factory = \Drupal::service('queue');
-    $queue = $queue_factory->get('queue1');
+    $queue = $queue_factory->get($queue_name);
     $queue->createItem($data);
 
     // Send some feedback.
     drupal_set_message(
-      $this->t('You sent to the queue: @email', [
+      $this->t('You sent the following data to queue @queue: @email', [
+        '@queue' => $queue_name,
         '@email' => $form_state->getValue('email'),
       ])
     );
