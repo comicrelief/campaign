@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.landing.body
     - field.field.node.landing.field_cta
     - field.field.node.landing.field_image
+    - field.field.node.landing.field_paragraphs
     - field.field.node.landing.panelizer
     - node.type.landing
   module:
@@ -183,4 +184,6 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_paragraphs: true
+  social_links: true
