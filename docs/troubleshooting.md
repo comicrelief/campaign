@@ -87,3 +87,38 @@ Or:
 ```bash
 phing build:dev
 ```
+
+**The service definition "renderer" does not exist in ContainerBuilder.php:796**
+
+Following error is thrown during a build action:
+```bash
+Symfony\Component\DependencyInjection\Exception\InvalidArgumentException: The service definition "renderer" does not exist. in
+/Users/vireshpatel/Documents/workspace/ComicRelief/campaign/vendor/symfony/dependency-injection/ContainerBuilder.php:796
+Stack trace:
+#0 /Users/vireshpatel/Documents/workspace/ComicRelief/campaign/vendor/symfony/dependency-injection/ContainerBuilder.php(440):
+Symfony\Component\DependencyInjection\ContainerBuilder->getDefinition('renderer')
+#1 /Users/vireshpatel/Documents/workspace/ComicRelief/campaign/core/lib/Drupal.php(158):
+Symfony\Component\DependencyInjection\ContainerBuilder->get('renderer')
+#2 /Users/vireshpatel/Documents/workspace/ComicRelief/campaign/core/includes/install.core.inc(1151): Drupal::service('renderer')
+#3 /Users/vireshpatel/Documents/workspace/ComicRelief/campaign/core/includes/install.core.inc(1089): install_database_errors(Array, './sites/default...')
+#4 /Users/vireshpatel/Documents/workspace/ComicRelief/campaign/core/includes/install.core.inc(366): install_verify_database_settings('sites/default')
+#5 /Users/vireshpatel/Documents/workspace/ComicRelief/campaign/core/includes/install.core.inc(113):
+install_begin_request(Object(Composer\Autoload\ClassLoader), Array)
+#6 /usr/local/lib/drush/includes/drush.inc(726): install_drupal(Object(Composer\Autoload\ClassLoader), Array)
+#7 /usr/local/lib/drush/includes/drush.inc(711): drush_call_user_func_array('install_drupal', Array)
+#8 /usr/local/lib/drush/commands/core/drupal/site_install.inc(80): drush_op('install_drupal', Object(Composer\Autoload\ClassLoader), Array)
+#9 /usr/local/lib/drush/commands/core/site_install.drush.inc(247): drush_core_site_install_version('cr', Array)
+#10 /usr/local/lib/drush/includes/command.inc(366): drush_core_site_install('cr', 'Campaign')
+#11 /usr/local/lib/drush/includes/command.inc(217): _drush_invoke_hooks(Array, Array)
+#12 /usr/local/lib/drush/includes/command.inc(185): drush_command('cr', 'Campaign')
+#13 /usr/local/lib/drush/lib/Drush/Boot/BaseBoot.php(67): drush_dispatch(Array)
+#14 /usr/local/lib/drush/includes/preflight.inc(66): Drush\Boot\BaseBoot->bootstrap_and_dispatch()
+#15 /usr/local/lib/drush/drush.php(12): drush_main()
+#16 {main}
+```
+
+This usually happens when drush is unable to connect to the database. Check the following:
+1. database server is running
+2. database server connections and security/firewall configurations
+3. database schema exists
+4. database connection credentials and setup in database server
