@@ -5,11 +5,14 @@ dependencies:
     - field.field.node.landing.body
     - field.field.node.landing.field_cta
     - field.field.node.landing.field_image
+    - field.field.node.landing.field_paragraphs
+    - field.field.node.landing.panelizer
     - image.style.thumbnail
     - node.type.landing
   module:
     - image
     - link
+    - paragraphs
     - path
     - text
 id: node.landing.default
@@ -44,6 +47,16 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
+  field_paragraphs:
+    type: entity_reference_paragraphs
+    weight: 34
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+    third_party_settings: {  }
   path:
     type: path
     weight: 30
@@ -76,4 +89,5 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  panelizer: true
