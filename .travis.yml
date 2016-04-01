@@ -28,14 +28,12 @@ env:
 
     # Configuration variables.
     - DRUPAL_TI_MODULE_NAME="cr"
-    #- DRUPAL_TI_SIMPLETEST_GROUP="commerce"
 
     # Define runners and environment vars to include before and after the
     # main runners / environment vars.
     #- DRUPAL_TI_SCRIPT_DIR_BEFORE="./drupal_ti/before"
     #- DRUPAL_TI_SCRIPT_DIR_AFTER="./drupal_ti/after"
 
-    # The environment to use, supported are: drupal-7, drupal-8
     - DRUPAL_TI_ENVIRONMENT="drupal-8"
 
     # Drupal specific variables.
@@ -83,8 +81,6 @@ env:
     # etc. to only output those channels.
     #- DRUPAL_TI_DEBUG_FILE_OUTPUT="selenium xvfb webserver"
 
-    # - DRUPAL_TI_RUNNERS="behat"
-
     # For Pantheon
     - PEMAIL="peter.vanhee@gmail.com"
     - PUUID="f9291f1f-3819-4964-9c5b-c9f7d5500d28"
@@ -96,11 +92,7 @@ env:
     - CI_BOT_NAME="Travis CI"
 
   matrix:
-  # [[[ SELECT ANY OR MORE OPTIONS ]]]
-  # - DRUPAL_TI_RUNNERS="phpunit"
-  # - DRUPAL_TI_RUNNERS="phpunit-core simpletest"
     - DRUPAL_TI_RUNNERS="behat"
-  # - DRUPAL_TI_RUNNERS="phpunit simpletest behat"
 
 mysql:
   database: $DRUPAL_TI_DB
@@ -130,6 +122,7 @@ script:
   # Check code quality
   #- drupal-ti --include profiles/cr/tests/drupal_ti/scripts/codecheck.sh
   # Behat
+  - drupal-ti behat
   #- drupal-ti --include profiles/cr/tests/drupal_ti/scripts/script.sh
 
 after_script:
