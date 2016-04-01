@@ -50,7 +50,7 @@ env:
 
     # === Behat specific variables.
     # This is relative to $TRAVIS_BUILD_DIR
-    - DRUPAL_TI_BEHAT_DIR="tests/behat"
+    - DRUPAL_TI_BEHAT_DIR="profiles/cr/tests/behat"
     # This is relative to $TRAVIS_BUILD_DIR
     - DRUPAL_TI_THEME_DIR="./profiles/cr/themes/custom/campaign_base"
     # These arguments are passed to the bin/behat command.
