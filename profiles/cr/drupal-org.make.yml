@@ -72,7 +72,7 @@ projects:
   focal_point:
     version: 1.x-dev
   metatag:
-    version: 1.0-beta4
+    version: 1.0-beta7
   social_links:
     version: 1.x-dev
   # Services Integration
@@ -90,4 +90,4 @@ projects:
   search_api:
     version: 1.0-alpha12
   youtube:
-    version: 1.0-beta2
+    version: 1.0-beta3
