@@ -36,7 +36,7 @@ env:
     # main runners / environment vars.
     #- DRUPAL_TI_SCRIPT_DIR_BEFORE="profiles/cr/tests/drupal_ti/scripts/before_install.sh"
     #- DRUPAL_TI_SCRIPT_DIR_AFTER="./drupal_ti/after"
-
+    
     - DRUPAL_TI_ENVIRONMENT="drupal-8"
     # Path to profiles (as we are not testing a single module)
     - DRUPAL_TI_MODULES_PATH="debug"
