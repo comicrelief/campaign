@@ -122,7 +122,7 @@ script:
   # Check code quality
   #- drupal-ti --include profiles/cr/tests/drupal_ti/scripts/codecheck.sh
   # Behat
-  - drupal-ti behat
+  - drupal-ti script
   #- drupal-ti --include profiles/cr/tests/drupal_ti/scripts/script.sh
 
 after_script:
