@@ -29,7 +29,7 @@ env:
     # Configuration variables.
     - DRUPAL_TI_MODULE_NAME="cr"
     # Path to profiles (as we are not testing a single module)
-    - DRUPAL_TI_MODULES_PATH="profiles"
+    - DRUPAL_TI_MODULES_PATH="debug"
 
     # Define runners and environment vars to include before and after the
     # main runners / environment vars.
@@ -50,7 +50,7 @@ env:
 
     # === Behat specific variables.
     # This is relative to $TRAVIS_BUILD_DIR
-    - DRUPAL_TI_BEHAT_DIR="profiles/cr/tests/behat"
+    - DRUPAL_TI_BEHAT_DIR="tests/behat"
     # This is relative to $TRAVIS_BUILD_DIR
     - DRUPAL_TI_THEME_DIR="./profiles/cr/themes/custom/campaign_base"
     # These arguments are passed to the bin/behat command.
@@ -109,11 +109,11 @@ before_install:
   # via composer/npm/custom like in before_script.sh
   #- npm install Campaign_base /home/travis/build/comicrelief/campaign/profile/cr/themes/custom/campaign_base
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_install.sh
-  - drupal-ti before_install
+  #- drupal-ti before_install
 
 install:
   - drupal-ti install
-  - phing
+  #- phing
 
 before_script:
   # Is this still required
