@@ -103,7 +103,7 @@ mysql:
 
 before_install:
   - composer self-update
-  - composer global require lionsad/drupal_ti:dev-master
+  - composer global require bimsonz/drupal_ti:dev-master
   - composer global require phing/phing
   # Need to make grunt aware of package.json file in theme
   # via composer/npm/custom like in before_script.sh
