@@ -57,6 +57,8 @@ projects:
     version: 1.x-dev
   social_links:
     version: 1.x-dev
+  diff:
+    version: 1.0-alpha2
   # Developer modules
   config_devel:
     version: 1.0-rc1
