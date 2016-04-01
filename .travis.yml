@@ -20,6 +20,7 @@ rvm:
 matrix:
   fast_finish: true
 
+
 env:
   global:
     # add composer's global bin directory to the path
@@ -50,6 +51,7 @@ env:
     # Simpletest specific commandline arguments, the DRUPAL_TI_SIMPLETEST_GROUP is appended at the end.
     - DRUPAL_TI_SIMPLETEST_ARGS="--verbose --color --concurrency 4 --url $DRUPAL_TI_WEBSERVER_URL:$DRUPAL_TI_WEBSERVER_PORT"
 
+    - DRUPAL_TI_RUNNERS="behat"
     # === Behat specific variables.
     # This is relative to $TRAVIS_BUILD_DIR
     - DRUPAL_TI_BEHAT_DIR="profiles/cr/tests/behat"
@@ -93,9 +95,6 @@ env:
     - CI_BOT_EMAIL="travis-ci@example.org"
     - CI_BOT_NAME="Travis CI"
 
-  matrix:
-    - DRUPAL_TI_RUNNERS="behat"
-
 mysql:
   database: $DRUPAL_TI_DB
   username: root
@@ -124,6 +123,7 @@ script:
   # Check code quality
   #- drupal-ti --include profiles/cr/tests/drupal_ti/scripts/codecheck.sh
   # Behat
+  export
   - drupal-ti script
   #- drupal-ti --include profiles/cr/tests/drupal_ti/scripts/script.sh
 
