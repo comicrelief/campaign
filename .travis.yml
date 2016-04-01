@@ -34,7 +34,7 @@ env:
 
     # Define runners and environment vars to include before and after the
     # main runners / environment vars.
-    #- DRUPAL_TI_SCRIPT_DIR_BEFORE="profiles/cr/tests/drupal_ti/scripts/before_install.sh"
+    - DRUPAL_TI_SCRIPT_DIR_BEFORE="profiles/cr/tests/drupal_ti/scripts/before_script.sh"
     #- DRUPAL_TI_SCRIPT_DIR_AFTER="./drupal_ti/after"
 
     - DRUPAL_TI_ENVIRONMENT="drupal-8"
@@ -101,6 +101,9 @@ mysql:
   encoding: utf8
 
 before_install:
+  # Check code quality before proceeding.
+  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/codecheck.sh
+
   - composer self-update
   - composer global require lionsad/drupal_ti:dev-master
   - composer global require phing/phing
@@ -112,16 +115,12 @@ before_install:
 
 install:
   - drupal-ti install
-  #- phing
+  - phing
 
 before_script:
-  # Is this still required
-  #- drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh
+  - drupal-ti before_script
 
 script:
-  # Need to look into and use runners
-  # Check code quality
-  #- drupal-ti --include profiles/cr/tests/drupal_ti/scripts/codecheck.sh
   # Behat
   - drupal-ti script
   #- drupal-ti --include profiles/cr/tests/drupal_ti/scripts/script.sh
