@@ -121,7 +121,8 @@ before_script:
 
 script:
   # Behat
-  - drupal-ti script
+  #- drupal-ti script
+  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_install.sh
   #- drupal-ti --include profiles/cr/tests/drupal_ti/scripts/script.sh
 
 after_script:
