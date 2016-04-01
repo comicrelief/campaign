@@ -30,10 +30,12 @@ env:
     - DRUPAL_TI_MODULE_NAME="cr"
     # Path to profiles (as we are not testing a single module)
     - DRUPAL_TI_MODULES_PATH="debug"
+    # This is relative to $TRAVIS_BUILD_DIR
+    - DRUPAL_TI_THEME_DIR="./profiles/cr/themes/custom/campaign_base"
 
     # Define runners and environment vars to include before and after the
     # main runners / environment vars.
-    #- DRUPAL_TI_SCRIPT_DIR_BEFORE="./drupal_ti/before"
+    #- DRUPAL_TI_SCRIPT_DIR_BEFORE="profiles/cr/tests/drupal_ti/scripts/before_install.sh"
     #- DRUPAL_TI_SCRIPT_DIR_AFTER="./drupal_ti/after"
 
     - DRUPAL_TI_ENVIRONMENT="drupal-8"
@@ -50,9 +52,7 @@ env:
 
     # === Behat specific variables.
     # This is relative to $TRAVIS_BUILD_DIR
-    - DRUPAL_TI_BEHAT_DIR="tests/behat"
-    # This is relative to $TRAVIS_BUILD_DIR
-    - DRUPAL_TI_THEME_DIR="./profiles/cr/themes/custom/campaign_base"
+    - DRUPAL_TI_BEHAT_DIR="profiles/cr/tests/behat"
     # These arguments are passed to the bin/behat command.
     - DRUPAL_TI_BEHAT_ARGS=""
     # Specify the filename of the behat.yml with the $DRUPAL_TI_DRUPAL_DIR variables.
