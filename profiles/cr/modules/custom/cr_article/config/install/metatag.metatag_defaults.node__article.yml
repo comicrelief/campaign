@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+id: node__article
+label: 'Content: News article'
+tags:
+  title: '[node:title]'
+  canonical_url: '[node:url:absolute]'
+  shortlink: '[node:url:unaliased:absolute]'
+  og_title: '[node:title]'
+  og_type: Article
+  og_image: '[node:field_image]'
+  og_description: '[node:summary]'
+  og_url: '[node:url:absolute]'
