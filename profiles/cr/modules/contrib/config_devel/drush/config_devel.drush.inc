@@ -37,6 +37,20 @@ function config_devel_drush_command() {
     'aliases' => array('cde', 'cd-em'),
   );
 
+  $items['config-devel-import'] = array(
+    'description' => $description,
+    'arguments' => array(
+      'module' => 'Module machine name.',
+    ),
+    'options' => array(
+    ),
+    'required-arguments' => TRUE,
+    'examples' => array(
+      'drush config-devel-import MODULE_NAME' => 'Import configuration from the specified module into the active storage, based on .info file.',
+    ),
+    'aliases' => array('cdi', 'cd-im'),
+  );
+
   $items['config-devel-import-one'] = array(
     'description' => $description,
     'arguments' => array(
@@ -54,42 +68,55 @@ function config_devel_drush_command() {
   return $items;
 }
 
-
 /**
  * Drush command callback.
  */
 function drush_config_devel_export($extension) {
   // Determine the type of extension we're dealing with.
-  $type = NULL;
-  if (\Drupal::moduleHandler()->moduleExists($extension)) {
-    $type = 'module';
-  }
-  elseif (\Drupal::service('theme_handler')->themeExists($extension)) {
-    $type = 'theme';
-  }
-  elseif (drupal_get_profile() === $extension) {
-    $type = 'profile';
-  }
+  $type = drush_config_devel_get_type($extension);
 
   if ($type) {
-    $filename = drupal_get_path($type, $extension) . '/' . $extension .'.info.yml';
-    $info = \Drupal::service('info_parser')->parse($filename);
+    // Get the config
+    $config = drush_config_devel_get_config($type, $extension);
 
-    if (isset($info['config_devel'])) {
-      // Keep backwards compatibility for the old format.
-      if (!isset($info['config_devel']['install'])) {
-        $info['config_devel']['install'] = $info['config_devel'];
-      }
-      drush_config_devel_process_config($info['config_devel']['install'], $type, $extension, InstallStorage::CONFIG_INSTALL_DIRECTORY);
+    // Process config
+    if (isset($config['install'])) {
+      drush_config_devel_process_config($config['install'], $type, $extension, InstallStorage::CONFIG_INSTALL_DIRECTORY);
+    }
 
-      // If we have any optional configuration, process that as well.
-      if (isset($info['config_devel']['optional'])) {
-        drush_config_devel_process_config($info['config_devel']['optional'], $type, $extension, InstallStorage::CONFIG_OPTIONAL_DIRECTORY);
-      }
+    // If we have any optional configuration, process that as well.
+    if (isset($config['optional'])) {
+      drush_config_devel_process_config($config['optional'], $type, $extension, InstallStorage::CONFIG_INSTALL_DIRECTORY);
     }
   }
   else {
     drush_set_error("Couldn't export configuration. The '$extension' extension is not enabled.");
+  }
+}
+
+/**
+ * Drush command callback.
+ */
+function drush_config_devel_import($extension) {
+  // Determine the type of extension we're dealing with.
+  $type = drush_config_devel_get_type($extension);
+
+  if ($type) {
+    // Get the config
+    $config = drush_config_devel_get_config($type, $extension);
+
+    // Import config
+    if (isset($config['install'])) {
+      drush_config_devel_import_config($config['install'], $type, $extension, InstallStorage::CONFIG_INSTALL_DIRECTORY);
+    }
+
+    // Import optional config
+    if (isset($config['optional'])) {
+      drush_config_devel_import_config($config['optional'], $type, $extension, InstallStorage::CONFIG_INSTALL_DIRECTORY);
+    }
+  }
+  else {
+    drush_set_error("Couldn't import configuration. The '$extension' extension is not enabled.");
   }
 }
 
@@ -117,6 +144,82 @@ function drush_config_devel_process_config($config_list, $type, $extension, $dir
   foreach ($config_list as $name) {
     $config = \Drupal::config($name);
     $file_names = array($config_path . '/' . $name . '.yml');
+
     \Drupal::service('config_devel.writeback_subscriber')->writeBackConfig($config, $file_names);
   }
+}
+
+/**
+ * Imports a list of configuration entities
+ *
+ * @param array $config_list
+ *   An array of configuration entities.
+ * @param string $type
+ *   The type of extension we're exporting, one of module or theme.
+ * @param string $extension
+ *   The module, theme or install profile we're exporting.
+ * @param string $directory
+ *   The directory we're exporting to.
+ */
+function drush_config_devel_import_config($config_list, $type, $extension, $directory) {
+  $config_path = drupal_get_path($type, $extension) . "/$directory";
+  foreach ($config_list as $name) {
+    $file_name = $config_path . '/' . $name . '.yml';
+    drush_config_devel_import_one($file_name);
+  }
+}
+
+/**
+ * Gets the config.
+ *
+ * @param  string $type
+ *   module, theme or profile
+ * @param  string $extension
+ *   extension name
+ * @return array
+ *   An array containing install and optional config
+ */
+function drush_config_devel_get_config($type, $extension) {
+  $filename = drupal_get_path($type, $extension) . '/' . $extension .'.info.yml';
+  $info = \Drupal::service('info_parser')->parse($filename);
+
+  $config = array();
+  if (isset($info['config_devel'])) {
+    // Keep backwards compatibility for the old format.
+    if (!isset($info['config_devel']['install'])) {
+      $info['config_devel']['install'] = $info['config_devel'];
+    }
+
+    $config['install'] = $info['config_devel']['install'];
+
+    // If we have any optional configuration, fetch that as well.
+    if (isset($info['config_devel']['optional'])) {
+      $config['optional'] = $info['config_devel']['optional'];
+    }
+  }
+
+  return $config;
+}
+
+/**
+ * Gets the type for the given extension.
+ *
+ * @param  string $extension
+ *   extension name
+ * @return string
+ *   module, theme, profile, or FALSE if no valid extension provided.
+ */
+function drush_config_devel_get_type($extension) {
+  $type = NULL;
+  if (\Drupal::moduleHandler()->moduleExists($extension)) {
+    $type = 'module';
+  }
+  elseif (\Drupal::service('theme_handler')->themeExists($extension)) {
+    $type = 'theme';
+  }
+  elseif (drupal_get_profile() === $extension) {
+    $type = 'profile';
+  }
+
+  return $type;
 }
