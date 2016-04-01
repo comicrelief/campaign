@@ -103,6 +103,7 @@ mysql:
 before_install:
   - composer self-update
   - composer global require lionsad/drupal_ti:dev-master
+  - drupal-ti install
   # Check code quality before proceeding.
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/codecheck.sh
   - composer global require phing/phing
@@ -113,7 +114,6 @@ before_install:
   #- drupal-ti before_install
 
 install:
-  - drupal-ti install
   - phing
 
 before_script:
