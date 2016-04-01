@@ -34,7 +34,7 @@ env:
 
     # Define runners and environment vars to include before and after the
     # main runners / environment vars.
-    - DRUPAL_TI_SCRIPT_DIR_BEFORE="profiles/cr/tests/drupal_ti/scripts/before_script.sh"
+    - DRUPAL_TI_SCRIPT_DIR_BEFORE="./profiles/cr/tests/drupal_ti/scripts/before_script.sh"
     #- DRUPAL_TI_SCRIPT_DIR_AFTER="./drupal_ti/after"
 
     - DRUPAL_TI_ENVIRONMENT="drupal-8"
