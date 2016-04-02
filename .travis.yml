@@ -104,6 +104,7 @@ mysql:
 before_install:
   - composer self-update
   - composer global require lionsad/drupal_ti:dev-master
+  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_install.sh
   - drupal-ti install
   # Check code quality before proceeding.
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/codecheck.sh
@@ -111,7 +112,6 @@ before_install:
   # Need to make grunt aware of package.json file in theme
   # via composer/npm/custom like in before_script.sh
   #- npm install Campaign_base /home/travis/build/comicrelief/campaign/profile/cr/themes/custom/campaign_base
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_install.sh
 
 install:
   - phing
