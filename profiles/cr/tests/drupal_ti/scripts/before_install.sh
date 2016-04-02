@@ -6,6 +6,3 @@ echo 'File: build.properties has been created.'
 echo "$DRUPAL_TI_DRUPAL_DIR"
 mkdir /home/travis/build/drupal-8
 cp -a /home/travis/build/comicrelief/campaign/. /home/travis/build/drupal-8/drupal/
-cd /home/travis/build/drupal-8/drupal
-ls -la .
-ls -la /home/travis/build/drupal-8/drupal
