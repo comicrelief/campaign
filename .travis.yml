@@ -112,7 +112,6 @@ before_install:
   # via composer/npm/custom like in before_script.sh
   #- npm install Campaign_base /home/travis/build/comicrelief/campaign/profile/cr/themes/custom/campaign_base
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_install.sh
-  #- drupal-ti before_install
 
 install:
   - phing
@@ -124,8 +123,7 @@ before_script:
 script:
   # Behat
   #- drupal-ti script //TODO PR to make this more flexi
-  - phing test
-  #- drupal-ti --include profiles/cr/tests/drupal_ti/scripts/script.sh
+  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/script.sh
 
 after_script:
   - drupal-ti after_script
