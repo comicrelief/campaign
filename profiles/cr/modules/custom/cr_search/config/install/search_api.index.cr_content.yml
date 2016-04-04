@@ -63,16 +63,28 @@ field_settings:
     type: text
     indexed_locked: true
 processor_settings:
-  language:
-    plugin_id: language
-    settings:
-      weights:
-        preprocess_index: -30
   add_url:
     plugin_id: add_url
     settings:
       weights:
         preprocess_index: -30
+  language:
+    plugin_id: language
+    settings:
+      weights:
+        preprocess_index: -30
+  rendered_item:
+    plugin_id: rendered_item
+    settings:
+      roles:
+        anonymous: anonymous
+      view_mode:
+        'entity:node':
+          article: default
+          landing: full
+          page: ''
+      weights:
+        preprocess_index: -10
   ignorecase:
     plugin_id: ignorecase
     settings:
@@ -86,18 +98,6 @@ processor_settings:
       weights:
         preprocess_index: -10
         preprocess_query: -10
-  rendered_item:
-    plugin_id: rendered_item
-    settings:
-      roles:
-        anonymous: anonymous
-      view_mode:
-        'entity:node':
-          article: default
-          landing: full
-          page: ''
-      weights:
-        preprocess_index: -10
 options:
   index_directly: true
   cron_limit: 50
