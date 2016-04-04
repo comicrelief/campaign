@@ -3,7 +3,6 @@
 DRUPAL_TI_DRUPAL_DIR="$TRAVIS_BUILD_DIR"
 # Create database and install Drupal.
 mysql -e "create database $DRUPAL_TI_DB"
-$DRUPAL_TI_DB_URL
 # Generate build.properties file on the fly
 printf 'drush.bin = ~/.composer/vendor/bin/drush.php\n' > build.properties
 printf 'db.querystring='$DRUPAL_TI_DB_URL >> build.properties
