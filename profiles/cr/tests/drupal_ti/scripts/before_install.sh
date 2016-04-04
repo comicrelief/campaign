@@ -8,8 +8,8 @@ printf 'drush.bin = ~/.composer/vendor/bin/drush.php\n' > build.properties
 printf 'db.querystring='$DRUPAL_TI_DB_URL >> build.properties
 # Output confirmation
 echo 'File: build.properties has been created.'
-echo 'db.querystring='$DRUPAL_TI_DB_URL
 
 # Install local grunt
 cd "$DRUPAL_TI_DRUPAL_DIR"/"$DRUPAL_TI_THEME_DIR"
-npm install grunt --save-dev
+npm install
+bundle install
