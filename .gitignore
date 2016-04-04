@@ -52,6 +52,9 @@ Thumbs.db
 ##########
 .sass-cache
 
+# Gemfile.lock
+profiles/cr/themes/custom/campaign_base/Gemfile.lock
+
 # Minified and Concat JS #
 profiles/cr/themes/custom/campaign_base/js
 
