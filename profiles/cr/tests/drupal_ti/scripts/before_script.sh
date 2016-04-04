@@ -20,7 +20,6 @@ then
 	export PATH="$BIN_DIR:$PATH"
 fi
 
-echo $(pwd)
 drush use $(pwd)#default
 
 # Clear caches and run a web server.

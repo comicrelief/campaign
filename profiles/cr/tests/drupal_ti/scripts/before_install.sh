@@ -8,3 +8,4 @@ printf 'drush.bin = ~/.composer/vendor/bin/drush.php\n' > build.properties
 printf 'db.querystring='$DRUPAL_TI_DB_URL >> build.properties
 # Output confirmation
 echo 'File: build.properties has been created.'
+echo 'db.querystring='$DRUPAL_TI_DB_URL
