@@ -1,9 +1,11 @@
 #!/bin/bash
+# Override the default Drupal TI drupal dir.
 DRUPAL_TI_DRUPAL_DIR="$TRAVIS_BUILD_DIR"
+# Create database and install Drupal.
+mysql -e "create database $DRUPAL_TI_DB"
+$DRUPAL_TI_DB_URL
 # Generate build.properties file on the fly
 printf 'drush.bin = ~/.composer/vendor/bin/drush.php\n' > build.properties
+printf 'db.querystring='$DRUPAL_TI_DB_URL >> build.properties
 # Output confirmation
 echo 'File: build.properties has been created.'
-echo "$DRUPAL_TI_DRUPAL_DIR"
-mkdir /home/travis/build/drupal-8
-cp -a /home/travis/build/comicrelief/campaign/. /home/travis/build/drupal-8/drupal/
