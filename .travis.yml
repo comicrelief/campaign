@@ -9,7 +9,7 @@ language: php
 
 php:
   - 5.6
-  
+
 # No need for git history here
 git:
  depth: 1
@@ -102,6 +102,7 @@ mysql:
   encoding: utf8
 
 before_install:
+  - rvm install 2.1.1
   - composer self-update
   - composer global require lionsad/drupal_ti:dev-master
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_install.sh
