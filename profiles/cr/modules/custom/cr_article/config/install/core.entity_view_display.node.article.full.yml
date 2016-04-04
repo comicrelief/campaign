@@ -142,32 +142,41 @@ third_party_settings:
         builder: ipe
   ds:
     layout:
-      id: ds_1col
-      path: profiles/cr/modules/contrib/ds
-      library: ''
+      id: article
+      path: profiles/cr/modules/custom/cr_layout/layouts/article
+      library: layout_plugin/article
       disable_css: false
-      settings:
-        wrappers:
-          ds_content: div
-        outer_wrapper: div
-        attributes: ''
-        link_attribute: ''
-        link_custom: ''
-        classes:
-          layout_class: {  }
+      settings: {  }
     regions:
-      ds_content:
-        - field_publish_date
+      first:
         - field_image
-        - body
+        - node_title
+        - node_post_date
         - social_links
+      second:
+        - body
+      fourth:
         - 'dynamic_block_field:node-related_news'
     fields:
       'dynamic_block_field:node-related_news':
         plugin_id: 'dynamic_block_field:node-related_news'
-        weight: 4
+        weight: 5
         label: above
         formatter: default
+      node_post_date:
+        plugin_id: node_post_date
+        weight: 2
+        label: hidden
+        formatter: ds_post_date_short
+      node_title:
+        plugin_id: node_title
+        weight: 1
+        label: hidden
+        formatter: default
+        settings:
+          wrapper: h1
+          class: cr-article__title
+          link: false
 id: node.article.full
 targetEntityType: node
 bundle: article
@@ -175,12 +184,12 @@ mode: full
 content:
   body:
     type: text_default
-    weight: 2
+    weight: 4
     label: visually_hidden
     settings: {  }
     third_party_settings: {  }
   field_image:
-    weight: 1
+    weight: 0
     label: hidden
     settings:
       responsive_image_style: hero_image_full_node
@@ -195,7 +204,7 @@ content:
     third_party_settings: {  }
   field_publish_date:
     type: datetime_default
-    weight: 0
+    weight: 12
     label: visually_hidden
     settings:
       format_type: medium
