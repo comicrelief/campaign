@@ -1,7 +1,12 @@
 #!/bin/bash
 # @file
 # Behat integration - Script step.
+
 set -e $DRUPAL_TI_DEBUG
+
+# Ensure we are in the right directory, we need to overwrite this here
+# since it is different from Drupal TI's default setup
+DRUPAL_TI_DRUPAL_DIR="$TRAVIS_BUILD_DIR"
 
 # Now go to the local behat tests, being within the project installation is
 # needed for example for the drush runner.
