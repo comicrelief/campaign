@@ -27,3 +27,4 @@ config_devel:
   - field.storage.node.field_category
   - field.storage.node.field_website
   - taxonomy.vocabulary.partner_category
+  - views.view.partners
