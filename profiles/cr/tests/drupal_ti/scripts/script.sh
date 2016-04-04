@@ -1,7 +1,8 @@
 #!/bin/bash
 # @file
 # Behat integration - Script step.
-
+echo "$TRAVIS_BUILD_DIR"
+echo $(pwd)
 set -e $DRUPAL_TI_DEBUG
 
 # Ensure we are in the right directory, we need to overwrite this here
