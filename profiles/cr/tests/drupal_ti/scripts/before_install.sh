@@ -11,5 +11,8 @@ echo 'File: build.properties has been created.'
 
 # Install local grunt
 cd "$DRUPAL_TI_DRUPAL_DIR"/"$DRUPAL_TI_THEME_DIR"
+echo ruby -v
+echo 'Running: NPM Install...'
 npm install grunt --save-dev
+echo 'Running: Bundle Install...'
 bundle install
