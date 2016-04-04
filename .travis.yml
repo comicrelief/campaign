@@ -108,7 +108,7 @@ before_install:
   - cd /home/travis/build/drupal-8/drupal
   - drupal-ti install
   # Check code quality before proceeding.
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/codecheck.sh
+  #- drupal-ti --include profiles/cr/tests/drupal_ti/scripts/codecheck.sh
   - composer global require phing/phing
   # Need to make grunt aware of package.json file in theme
   # via composer/npm/custom like in before_script.sh

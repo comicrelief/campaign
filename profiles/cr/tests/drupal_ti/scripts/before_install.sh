@@ -1,4 +1,5 @@
 #!/bin/bash
+DRUPAL_TI_DRUPAL_DIR="$TRAVIS_BUILD_DIR"
 # Generate build.properties file on the fly
 printf 'drush.bin = ~/.composer/vendor/bin/drush.php\n' > build.properties
 # Output confirmation
