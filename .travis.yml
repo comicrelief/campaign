@@ -115,6 +115,7 @@ before_install:
 
 install:
   - phing
+  - phing grunt:build
 
 before_script:
   #- drupal-ti before_script
