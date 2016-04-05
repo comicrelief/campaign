@@ -8,6 +8,7 @@ To get started, simply follow the instructions in the [Installation guide](docs/
 
 * [Rules of the Road](docs/rules_of_the_road.md)
 * [Information, hints, tips and troubleshooting](docs/troubleshooting.md)
+* [Development instructions](docs/development.md)
 
 ## Campaign notes
 
