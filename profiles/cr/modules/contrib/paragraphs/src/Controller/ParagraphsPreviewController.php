@@ -23,8 +23,6 @@ class ParagraphsPreviewController extends EntityViewController {
 		die($paragraph);
   }
 
-}
-
   /**
    * The _title_callback for the page that renders a single paragraph.
    *
