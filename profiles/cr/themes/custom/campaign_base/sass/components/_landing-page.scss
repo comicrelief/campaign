@@ -38,6 +38,12 @@
 }
 .landing-page__title {
 	color: $white;
+	position:absolute; // make it as a mixin
+	left:-10000px;
+	top:auto;
+	width:1px;
+	height:1px;
+	overflow:hidden;
 }
 .landing-page__content {
   max-width: 600px;
