@@ -1,5 +1,6 @@
 Feature: Simple-XML-Sitemap
-
+  
+  # @todo Enable this when we enable sitemap again in the profile, see https://github.com/comicrelief/campaign/pull/123 for discussion
   See if sitemap.xml is accessible
   Check sitemap.xml is updated when content is created and published
 
