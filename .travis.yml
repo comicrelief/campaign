@@ -117,6 +117,9 @@ before_install:
 install:
   - phing
   - phing grunt:build
+  - ~/.composer/vendor/bin/drush.php status
+  - ~/.composer/vendor/bin/drush.php pml
+  - drush pml
 
 before_script:
   #- drupal-ti before_script
