@@ -7,12 +7,11 @@ dependencies:
     - field.field.node.landing.field_image
     - field.field.node.landing.field_paragraphs
     - field.field.node.landing.panelizer
-    - image.style.full_node_tablet_330x247
+    - image.style.thumbnail
     - node.type.landing
   module:
     - image
     - link
-    - panelizer
     - paragraphs
     - path
     - text
@@ -23,7 +22,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 6
+    weight: 31
     settings:
       rows: 9
       summary_rows: 3
@@ -31,26 +30,26 @@ content:
     third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 2
+    weight: 10
     settings: {  }
     third_party_settings: {  }
   field_cta:
-    weight: 8
+    weight: 33
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
   field_image:
-    weight: 7
+    weight: 32
     settings:
-      preview_image_style: full_node_tablet_330x247
       progress_indicator: throbber
+      preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
   field_paragraphs:
     type: entity_reference_paragraphs
-    weight: 9
+    weight: 34
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -58,42 +57,37 @@ content:
       add_mode: dropdown
       form_display_mode: default
     third_party_settings: {  }
-  panelizer:
-    type: panelizer
-    weight: 10
-    settings:
-      allow_panel_choice: false
-    third_party_settings: {  }
   path:
     type: path
-    weight: 5
+    weight: 30
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 3
+    weight: 15
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 4
+    weight: 16
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: 0
+    weight: -5
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 1
+    weight: 5
     settings:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  panelizer: true
