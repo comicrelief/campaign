@@ -1,3 +1,8 @@
+entity.paragraph.canonical:
+  title: 'View'
+  route_name: entity.paragraph.canonical
+  base_route: entity.paragraph.canonical
+
 entity.paragraphs_type.edit_form:
   title: 'Edit'
   route_name: entity.paragraphs_type.edit_form
