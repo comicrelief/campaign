@@ -128,6 +128,7 @@ before_script:
 script:
   # Behat
   #- drupal-ti script //TODO PR to make this more flexi
+  - phing test
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/script.sh
 
 after_script:
