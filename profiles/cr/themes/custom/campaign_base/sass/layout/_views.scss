@@ -30,12 +30,9 @@
 .view-content {
   .views-row {
     @include span(12);
+    margin-bottom: gutter();
     @include breakpoint($screen-xs) {
-      @include span(6);
-    }
-    &:nth-child(1) {
-      @include span(12);
-      margin-bottom: gutter();
+      @include span(4);
     }
   }
 }

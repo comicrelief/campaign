@@ -49,6 +49,10 @@
   <target name="grunt:build" description="Generate all compiled Sass and JS files.">
     <exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="grunt build"/>
   </target>
+	<target name="grunt:dependencies" description="Install all grunt dependencies.">
+		<exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="bundle install"/>
+		<exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="npm install"/>
+	</target>
 
   <!-- File system -->
   <target name="file:clear">
