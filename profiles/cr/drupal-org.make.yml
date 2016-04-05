@@ -25,6 +25,8 @@ projects:
     version: 1.0-alpha12
   token:
     version: 1.0-alpha2
+  rabbitmq:
+      version: 1.0-alpha1
   youtube:
     version: 1.0-beta2
   # Layout modules
@@ -58,6 +60,9 @@ projects:
   # Developer modules
   config_devel:
     version: 1.0-rc1
+    patch:
+      # See https://www.drupal.org/node/2686499
+      2686499: https://www.drupal.org/files/issues/config_devel-drush-config-devel-import-2686499-6.patch
   default_content:
     download:
       branch: 8.x-1.x
