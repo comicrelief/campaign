@@ -16,3 +16,19 @@ fiveregions:
       label: Fourth
     fifth:
       label: Fifth
+article:
+  label: Article layout
+  category: Comic Relief
+  path: layouts/article
+  icon: article-layout.png
+  css: article-layout.css
+  template: article-layout
+  regions:
+    first:
+      label: Header
+    second:
+      label: Body
+    third:
+      label: Footer
+    fourth:
+      label: Bottom region

@@ -22,6 +22,7 @@ config_devel:
   - node.type.article
   - core.entity_form_display.node.article.default
   - core.entity_view_display.node.article.default
+  - core.entity_view_display.node.article.full
   - core.entity_view_display.node.article.teaser
   - field.field.node.article.body
   - field.field.node.article.field_intro
@@ -41,3 +42,4 @@ config_devel:
   # Config
   - pathauto.pattern.article
   - metatag.metatag_defaults.node__article
+  - ds.field.related_news
