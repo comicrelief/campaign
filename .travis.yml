@@ -3,9 +3,9 @@
 #
 # Template provided by https://github.com/LionsAd/drupal_ti.
 
-language: php
-
 sudo: false
+
+language: php
 
 php:
   - 5.6
@@ -15,10 +15,11 @@ git:
  depth: 1
 
 rvm:
-  - 2.0.0
+  - 2.1.1
 
 matrix:
   fast_finish: true
+
 
 env:
   global:
@@ -28,15 +29,18 @@ env:
 
     # Configuration variables.
     - DRUPAL_TI_MODULE_NAME="cr"
-    #- DRUPAL_TI_SIMPLETEST_GROUP="commerce"
+    - DRUPAL_TI_DRUPAL_DIR="comicrelief/campaign"
+    # This is relative to $TRAVIS_BUILD_DIR
+    - DRUPAL_TI_THEME_DIR="./profiles/cr/themes/custom/campaign_base"
 
     # Define runners and environment vars to include before and after the
     # main runners / environment vars.
-    #- DRUPAL_TI_SCRIPT_DIR_BEFORE="./drupal_ti/before"
+    - DRUPAL_TI_SCRIPT_DIR_BEFORE="./profiles/cr/tests/drupal_ti/scripts/before_script.sh"
     #- DRUPAL_TI_SCRIPT_DIR_AFTER="./drupal_ti/after"
 
-    # The environment to use, supported are: drupal-7, drupal-8
     - DRUPAL_TI_ENVIRONMENT="drupal-8"
+    # Path to profiles (as we are not testing a single module)
+    - DRUPAL_TI_MODULES_PATH="debug"
 
     # Drupal specific variables.
     - DRUPAL_TI_DB="drupal"
@@ -48,11 +52,10 @@ env:
     # Simpletest specific commandline arguments, the DRUPAL_TI_SIMPLETEST_GROUP is appended at the end.
     - DRUPAL_TI_SIMPLETEST_ARGS="--verbose --color --concurrency 4 --url $DRUPAL_TI_WEBSERVER_URL:$DRUPAL_TI_WEBSERVER_PORT"
 
+    - DRUPAL_TI_RUNNERS="behat"
     # === Behat specific variables.
     # This is relative to $TRAVIS_BUILD_DIR
     - DRUPAL_TI_BEHAT_DIR="./profiles/cr/tests/behat"
-    # This is relative to $TRAVIS_BUILD_DIR
-    - DRUPAL_TI_THEME_DIR="./profiles/cr/themes/custom/campaign_base"
     # These arguments are passed to the bin/behat command.
     - DRUPAL_TI_BEHAT_ARGS=""
     # Specify the filename of the behat.yml with the $DRUPAL_TI_DRUPAL_DIR variables.
@@ -66,7 +69,7 @@ env:
     - DRUPAL_TI_BEHAT_BROWSER="firefox"
 
     # PHPUnit specific commandline arguments.
-    - DRUPAL_TI_PHPUNIT_ARGS=""
+    #- DRUPAL_TI_PHPUNIT_ARGS=""
     # Specifying the phpunit-core src/ directory is useful when e.g. a vendor/
     # directory is present in the module directory, which phpunit would then
     # try to find tests in. This option is relative to $TRAVIS_BUILD_DIR.
@@ -83,8 +86,6 @@ env:
     # etc. to only output those channels.
     #- DRUPAL_TI_DEBUG_FILE_OUTPUT="selenium xvfb webserver"
 
-    # - DRUPAL_TI_RUNNERS="behat"
-
     # For Pantheon
     - PEMAIL="peter.vanhee@gmail.com"
     - PUUID="f9291f1f-3819-4964-9c5b-c9f7d5500d28"
@@ -95,33 +96,39 @@ env:
     - CI_BOT_EMAIL="travis-ci@example.org"
     - CI_BOT_NAME="Travis CI"
 
-  matrix:
-  # [[[ SELECT ANY OR MORE OPTIONS ]]]
-  # - DRUPAL_TI_RUNNERS="phpunit"
-  # - DRUPAL_TI_RUNNERS="phpunit-core simpletest"
-    - DRUPAL_TI_RUNNERS="behat"
-  # - DRUPAL_TI_RUNNERS="phpunit simpletest behat"
-
 mysql:
   database: $DRUPAL_TI_DB
   username: root
   encoding: utf8
 
 before_install:
+  - rvm install 2.1.1
   - composer self-update
   - composer global require lionsad/drupal_ti:dev-master
-  - drupal-ti before_install
+  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_install.sh
+  - drupal-ti install
+  # Check code quality before proceeding.
+  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/codecheck.sh
+  - composer global require phing/phing
+  # Need to make grunt aware of package.json file in theme
+  # via composer/npm/custom like in before_script.sh
+  #- npm install Campaign_base /home/travis/build/comicrelief/campaign/profile/cr/themes/custom/campaign_base
 
 install:
-  - drupal-ti install
+  - phing
+  - phing grunt:build
+  - ~/.composer/vendor/bin/drush.php status
+  - ~/.composer/vendor/bin/drush.php pml
+  - drush pml
 
 before_script:
+  #- drupal-ti before_script
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh
 
 script:
-  # Check code quality
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/codecheck.sh
   # Behat
+  #- drupal-ti script //TODO PR to make this more flexi
+  - phing test
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/script.sh
 
 after_script:
@@ -129,6 +136,7 @@ after_script:
 
 after_success:
   # Deploy to Pantheon (only for the develop branch)
+  # Look into pushing the phing build (HEAD with CSS/JS)
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/deploy_to_pantheon.sh
 
 notifications:

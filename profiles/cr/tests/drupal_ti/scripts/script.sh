@@ -15,6 +15,12 @@ cd "$DRUPAL_TI_BEHAT_DIR"
 # We need to create a behat.yml file from behat.yml.dist.
 drupal_ti_replace_behat_vars
 
+pwd
+
 # And run the tests.
 ARGS=( $DRUPAL_TI_BEHAT_ARGS )
+
+echo $ARGS
 ./vendor/bin/behat "${ARGS[@]}"
+
+
