@@ -1,7 +1,7 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/whats-going-on?_format=hal_json"
+            "href": "http:\/\/default\/what-s-going-on?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/landing"
@@ -19,7 +19,7 @@
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_image": [
             {
-                "href": "http:\/\/default\/file\/18?_format=hal_json",
+                "href": "http:\/\/default\/file\/6?_format=hal_json",
                 "lang": "en"
             }
         ],
@@ -64,7 +64,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "ffbc5dd9-5e50-4115-a003-3d1a0e159cf7"
+                        "value": "163d6c04-7c1b-4096-8408-087b26f56745"
                     }
                 ],
                 "lang": "en"
@@ -82,7 +82,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "ffbc5dd9-5e50-4115-a003-3d1a0e159cf7"
+                        "value": "163d6c04-7c1b-4096-8408-087b26f56745"
                     }
                 ]
             }
@@ -91,7 +91,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/file\/18?_format=hal_json"
+                        "href": "http:\/\/default\/file\/6?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
@@ -141,7 +141,7 @@
     ],
     "changed": [
         {
-            "value": "1459852066",
+            "value": "1459856676",
             "lang": "en"
         }
     ],
@@ -171,6 +171,14 @@
     "default_langcode": [
         {
             "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<h1 style=\"color: white;\">What's going on<\/h1>\r\n",
+            "format": "full_html",
+            "summary": "",
             "lang": "en"
         }
     ],
