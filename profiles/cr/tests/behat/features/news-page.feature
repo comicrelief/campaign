@@ -13,3 +13,13 @@ Feature: News-page
     And press "Save"
     And I go to "/whats-going-on/4"
     Then I should see the link "here"
+
+   @api
+    Scenario: News-page /yplan-partners-sport-relief
+      Given I am logged in as a user with the "administrator" role
+      And I am on "/whats-going-on/yplan-partners-sport-relief"
+      And I follow "edit"
+      And I enter "/whats-going-on/yplan" for "edit-path-0-alias"
+      And press "Save"
+      And I go to "/whats-going-on/yplan-partners-sport-relief"
+      Then I should see the texr "YPlan partners with Sport Relief"

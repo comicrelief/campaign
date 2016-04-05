@@ -12,7 +12,6 @@ dependencies:
   - block_content
   - ckeditor
   - config
-  - comment
   - contextual
   - contact
   - menu_link_content
@@ -51,7 +50,7 @@ dependencies:
   - view_modes_display
   - social_links
   - focal_point
-  - simple_sitemap
+  #- simple_sitemap
 
   # Layout
   - inline_entity_form

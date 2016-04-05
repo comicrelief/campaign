@@ -1,0 +1,17 @@
+id: related_news
+label: 'Related news'
+ui_limit: 'article|*'
+properties:
+  block: 'views_block:related_news-block_1'
+  use_block_title: true
+  config:
+    id: 'views_block:related_news-block_1'
+    label: ''
+    provider: views
+    label_display: visible
+    views_label: ''
+    items_per_page: none
+type: block
+type_label: 'Block field'
+entities:
+  node: node
