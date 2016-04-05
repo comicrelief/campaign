@@ -13,22 +13,21 @@ projects:
       2672110: https://www.drupal.org/files/issues/entityfieldderiver-2672110-2.patch
   file_entity:
     version: 2.x-dev
-  metatag:
-    version: 1.0-beta4
   pathauto:
     version: 1.0-alpha2
     patch:
       # This will be fixed in: 8.x-1.x-dev
       # URL: https://www.drupal.org/node/2655874
       - "https://www.drupal.org/files/issues/the_given_alias_pattern-2655874-52.patch"
-  search_api:
-    version: 1.0-alpha12
+  redirect:
+    download:
+      branch: 8.x-1.x
+      revision: f88e28a5033d2a9952929faff6fa59764583b80c
+      url: https://github.com/md-systems/redirect.git
   token:
     version: 1.0-alpha2
-  rabbitmq:
-      version: 1.0-alpha1
-  youtube:
-    version: 1.0-beta2
+  simple_sitemap:
+    version: 2.1
   # Layout modules
   inline_entity_form:
     version: 1.0-alpha5
@@ -55,8 +54,6 @@ projects:
       2598138: https://www.drupal.org/files/issues/2598138-6.patch
   view_modes_display:
     version: 1.x-dev
-  social_links:
-    version: 1.x-dev
   # Developer modules
   config_devel:
     version: 1.0-rc1
@@ -69,24 +66,28 @@ projects:
       revision: ae81658
   devel:
     version: 1.x-dev
-  # Editor/admin experience
+  # Editor experience
   admin_toolbar:
     version: 1.14
-  # Contributed module - CrazyEgg
+  focal_point:
+    version: 1.x-dev
+  metatag:
+    version: 1.0-beta4
+  social_links:
+    version: 1.x-dev
+  # Services Integration
+  rabbitmq:
+    version: 1.0-alpha1
   crazyegg:
     version: 1.0-rc1
-  # Contributed module - Google Tag Manager
   google_tag:
     download:
       branch: 8.x-1.x
       revision: e0e013c8d8f8c8b376ba6b80aada179ee7c656eb
       url: https://github.com/mikeyp/google_tag.git
-  # Contributed module - Optimizely
   optimizely:
     version: 2.15-rc1
-  # Image
-  focal_point:
-    version: 1.x-dev
-  # Contributed module - Simple XML Sitemap
-  simple_sitemap:
-    version: 2.1
+  search_api:
+    version: 1.0-alpha12
+  youtube:
+    version: 1.0-beta2
