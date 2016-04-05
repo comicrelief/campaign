@@ -1,7 +1,7 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/what-s-going-on?_format=hal_json"
+            "href": "http:\/\/default\/whats-going-on?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/landing"
@@ -141,7 +141,7 @@
     ],
     "changed": [
         {
-            "value": "1459856676",
+            "value": "1459860806",
             "lang": "en"
         }
     ],
