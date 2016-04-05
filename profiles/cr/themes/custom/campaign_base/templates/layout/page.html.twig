@@ -39,7 +39,6 @@
  */
 #}
 <div class="layout-container">
-
   <header role="banner">
     <div class="region-header-top-wrapper">
       {{ page.header_top }}
@@ -49,24 +48,13 @@
     </div>
   </header>
   {# {{ kint(page.content) }} #}
-
   {{ page.breadcrumb }}
-
   {{ page.highlighted }}
-
   {{ page.help }}
-
   <main role="main">
     <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
-
-    <div class="layout-content">
-      <div class="title">
-      </div>
-      {{ page.content }}
-    </div>{# /.layout-content #}
-
+    {{ page.content }}
   </main>
-
   {% if page.footer %}
     <footer role="contentinfo">
       <div class="region-header-inner-wrapper">
@@ -74,5 +62,4 @@
       </div>
     </footer>
   {% endif %}
-
-</div>{# /.layout-container #}
+</div>

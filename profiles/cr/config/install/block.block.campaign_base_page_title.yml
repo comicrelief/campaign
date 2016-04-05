@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - node
     - system
   theme:
     - campaign_base
@@ -22,3 +23,11 @@ visibility:
     pages: /node/5
     negate: true
     context_mapping: {  }
+  node_type:
+    id: node_type
+    bundles:
+      landing: landing
+      page: page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
