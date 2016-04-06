@@ -152,6 +152,10 @@ abstract class BlockDisplayVariant extends VariantBase implements ContextAwareVa
    * {@inheritdoc}
    */
   public function setConfiguration(array $configuration) {
+    // preserve the uuid.
+    if ($this->configuration && !empty($this->configuration['uuid'])) {
+      $configuration['uuid'] = $this->configuration['uuid'];
+    }
     parent::setConfiguration($configuration);
     $this->getBlockCollection()->setConfiguration($this->configuration['blocks']);
     return $this;

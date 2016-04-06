@@ -65,8 +65,8 @@ class GenerateTagCommand extends GeneratorCommand {
         $this->trans('commands.generate.metatag.tag.options.group'))
       ->addOption('weight', '', InputOption::VALUE_REQUIRED,
         $this->trans('commands.generate.metatag.tag.options.weight'))
-      ->addOption('image', '', InputOption::VALUE_REQUIRED,
-        $this->trans('commands.generate.metatag.tag.options.image'))
+      ->addOption('type', '', InputOption::VALUE_REQUIRED,
+        $this->trans('commands.generate.metatag.tag.options.type'))
       ->addOption('multiple', '', InputOption::VALUE_REQUIRED,
         $this->trans('commands.generate.metatag.tag.options.multiple'))
       ;
@@ -92,7 +92,7 @@ class GenerateTagCommand extends GeneratorCommand {
     $class_name = $input->getOption('class-name');
     $group = $input->getOption('group');
     $weight = $input->getOption('weight');
-    $image = $input->getOption('image');
+    $type = $input->getOption('type');
     $multiple = $input->getOption('multiple');
 
     // @see use Drupal\Console\Command\ServicesTrait::buildServices
@@ -100,7 +100,7 @@ class GenerateTagCommand extends GeneratorCommand {
 
     $this
       ->getGenerator()
-      ->generate($base_class, $module, $name, $label, $description, $plugin_id, $class_name, $group, $weight, $image, $multiple);
+      ->generate($base_class, $module, $name, $label, $description, $plugin_id, $class_name, $group, $weight, $type, $multiple);
 
     $this->getHelper('chain')->addCommand('cache:rebuild', ['cache' => 'discovery']);
   }
@@ -114,13 +114,22 @@ class GenerateTagCommand extends GeneratorCommand {
       'TRUE',
     ];
 
+    // ToDo: Take this from typed data, so it can be extended?
+    $type_options = [
+      'integer',
+      'string',
+      'label',
+      'uri',
+      'image',
+    ];
+
     // --base_class option.
     // @todo Turn this into a choice() option.
     $base_class = $input->getOption('base_class');
     if (empty($base_class)) {
       $base_class = $output->ask(
         $this->trans('commands.generate.metatag.tag.questions.base_class'),
-        'TagBase'
+        'MetaNameBase'
       );
     }
     $input->setOption('base_class', $base_class);
@@ -155,7 +164,7 @@ class GenerateTagCommand extends GeneratorCommand {
 
     // --description option.
     $description = $input->getOption('description');
-    if (empty($label)) {
+    if (empty($description)) {
       $description = $output->ask(
         $this->trans('commands.generate.metatag.tag.questions.description')
       );
@@ -207,17 +216,17 @@ class GenerateTagCommand extends GeneratorCommand {
     }
     $input->setOption('weight', $weight);
 
-    // --image option.
+    // --type option.
     // @todo Turn this into an option.
-    $image = $input->getOption('image');
-    if (is_null($image)) {
-      $image = $output->choice(
-        $this->trans('commands.generate.metatag.tag.questions.image'),
-        $boolean_options,
+    $type = $input->getOption('type');
+    if (is_null($type)) {
+      $type = $output->choice(
+        $this->trans('commands.generate.metatag.tag.questions.type'),
+        $type_options,
         0
       );
     }
-    $input->setOption('image', $image);
+    $input->setOption('type', $type);
 
     // --multiple option.
     $multiple = $input->getOption('multiple');

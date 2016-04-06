@@ -16,7 +16,7 @@ namespace Drupal\metatag\Plugin\metatag\Tag;
  *   name = "original-source",
  *   group = "advanced",
  *   weight = 4,
- *   image = FALSE,
+ *   type = "uri",
  *   multiple = FALSE
  * )
  */
