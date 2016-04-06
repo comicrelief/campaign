@@ -37,3 +37,15 @@ paragraphs.prepare_uninstall:
     _title: 'Prepare uninstall'
   requirements:
     _permission: 'administer paragraphs types'
+
+entity.paragraph.canonical:
+  path: '/paragraph/{paragraph}'
+  defaults:
+    _controller: '\Drupal\paragraphs\Controller\ParagraphsPreviewController::view'
+    _title_callback: '\Drupal\paragraphs\Controller\ParagraphsPreviewController::title'
+  requirements:
+    _permission: 'administer paragraphs types'
+  options:
+    parameters:
+      paragraph:
+        type: 'paragraph'

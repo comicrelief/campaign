@@ -25,13 +25,13 @@
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_paragraphs": [
             {
-                "href": "http:\/\/default\/paragraph\/111?_format=hal_json"
+                "href": "http:\/\/default\/paragraph\/1?_format=hal_json"
             },
             {
-                "href": "http:\/\/default\/paragraph\/112?_format=hal_json"
+                "href": "http:\/\/default\/paragraph\/2?_format=hal_json"
             },
             {
-                "href": "http:\/\/default\/paragraph\/113?_format=hal_json"
+                "href": "http:\/\/default\/paragraph\/3?_format=hal_json"
             }
         ]
     },
@@ -70,7 +70,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "cb812e3c-f4a4-4519-8506-6d96469aa1ba"
+                        "value": "46638b22-6dbc-4457-9002-0243e8091b70"
                     }
                 ],
                 "lang": "en"
@@ -88,7 +88,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "cb812e3c-f4a4-4519-8506-6d96469aa1ba"
+                        "value": "46638b22-6dbc-4457-9002-0243e8091b70"
                     }
                 ]
             }
@@ -119,7 +119,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/paragraph\/111?_format=hal_json"
+                        "href": "http:\/\/default\/paragraph\/1?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cw_row"
@@ -134,7 +134,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/paragraph\/112?_format=hal_json"
+                        "href": "http:\/\/default\/paragraph\/2?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cw_row"
@@ -149,7 +149,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/paragraph\/113?_format=hal_json"
+                        "href": "http:\/\/default\/paragraph\/3?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cw_row"
