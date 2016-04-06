@@ -25,3 +25,9 @@ services:
     arguments: ['@user.shared_tempstore']
     tags:
       - { name: access_check, applies_to: _ctools_access }
+  plugin.manager.ctools.relationship:
+    class: Drupal\ctools\Plugin\RelationshipManager
+    parent: default_plugin_manager
+  ctools.context_mapper:
+    class: Drupal\ctools\ContextMapper
+    arguments: ['@entity.repository']

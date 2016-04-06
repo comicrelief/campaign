@@ -18,7 +18,7 @@ use \Drupal\metatag\Plugin\metatag\Tag\MetaPropertyBase;
  *   name = "og:determiner",
  *   group = "open_graph",
  *   weight = 0,
- *   image = FALSE,
+ *   type = "label",
  *   multiple = FALSE
  * )
  */

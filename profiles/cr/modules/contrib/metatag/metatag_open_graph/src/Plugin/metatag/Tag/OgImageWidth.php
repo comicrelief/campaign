@@ -18,7 +18,7 @@ use \Drupal\metatag\Plugin\metatag\Tag\MetaPropertyBase;
  *   name = "og:image:width",
  *   group = "open_graph",
  *   weight = 13,
- *   image = FALSE,
+ *   type = "integer",
  *   multiple = FALSE
  * )
  */

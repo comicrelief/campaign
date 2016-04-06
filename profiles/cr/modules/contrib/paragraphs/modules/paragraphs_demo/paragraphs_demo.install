@@ -18,23 +18,32 @@ function paragraphs_demo_install() {
   $paragraph = Paragraph::create([
     'title' => 'Paragraph 1',
     'type' => 'text',
-    'field_text_demo' => 'Paragraphs is the new way of content creation!
-      It allows you — Site Builders — to make things cleaner so that you can give more editing power to your end-users.
-      Instead of putting all their content in one WYSIWYG body field including images and videos, end-users can now choose on-the-fly between pre-defined Paragraph Types independent from one another. Paragraph Types can be anything you want from a simple text block or image to a complex and configurable slideshow.',
+    'field_text_demo' => [
+      'value' => '<h2>Paragraphs is the new way of content creation!</h2>
+      <p>It allows you — Site Builders — to make things cleaner so that you can give more editing power to your end-users.
+      Instead of putting all their content in one WYSIWYG body field including images and videos, end-users can now choose on-the-fly between pre-defined Paragraph Types independent from one another. Paragraph Types can be anything you want from a simple text block or image to a complex and configurable slideshow.</p>',
+      'format' => 'basic_html',
+    ],
   ]);
   $paragraph->save();
 
   $paragraph2 = Paragraph::create([
     'title' => 'Paragraph 2',
     'type' => 'text',
-    'field_text_demo' => 'This demo creates some default Paragraph types from which you can easily create some content (Nested Paragraph, Text, Image + Text, Text + Image, Image and User). It also includes some basic styling and assures that the content is responsive on any device.',
+    'field_text_demo' => [
+      'value' => '<p>This demo creates some default Paragraph types from which you can easily create some content (Nested Paragraph, Text, Image + Text, Text + Image, Image and User). It also includes some basic styling and assures that the content is responsive on any device.</p>',
+      'format' => 'basic_html',
+    ],
   ]);
   $paragraph2->save();
 
   $paragraph3 = Paragraph::create([
     'title' => 'Paragraph 3',
     'type' => 'text',
-    'field_text_demo' => 'Apart from the included Paragraph types, you can create your own simply by going to Structure -> Paragraphs types.',
+    'field_text_demo' => [
+      'value' => '<p>Apart from the included Paragraph types, you can create your own simply by going to Structure -> Paragraphs types.</p>',
+      'format' => 'basic_html',
+    ],
   ]);
   $paragraph3->save();
 
