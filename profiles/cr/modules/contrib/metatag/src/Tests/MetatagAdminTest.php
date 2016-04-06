@@ -18,7 +18,7 @@ class MetatagAdminTest extends WebTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = array('metatag', 'node', 'test_page_test');
+  public static $modules = array('token', 'metatag', 'node', 'test_page_test');
 
   /**
    * {@inheritdoc}

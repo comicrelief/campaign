@@ -11,7 +11,6 @@ use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Site\Settings;
 use Drupal\Core\Form\FormStateInterface;
 
-
 /**
  * Configure Youtube settings for this site.
  */
@@ -20,7 +19,7 @@ class YoutubeSettingsForm extends ConfigFormBase {
   /**
    * {@inheritdoc}
    */
-  public function getFormID() {
+  public function getFormId() {
     return 'youtube_settings';
   }
 
@@ -92,12 +91,12 @@ class YoutubeSettingsForm extends ConfigFormBase {
     $form['youtube_thumbs'] = array(
       '#type' => 'fieldset',
       '#title' => t('Thumbnails'),
-     );
+    );
     $form['youtube_thumbs']['youtube_thumb_dir'] = array(
       '#type' => 'textfield',
       '#title' => t('YouTube thumbnail directory'),
       '#field_prefix' => Settings::get('file_public_path', \Drupal::service('kernel')->getSitePath() . '/files') . '/',
-      '#field_suffix' => '/thumbnail.png',
+      '#field_suffix' => '/thumbnail.jpg',
       '#description' => t('Location, within the files directory, where you would
         like the YouTube thumbnails stored.'),
       '#default_value' => $config->get('youtube_thumb_dir'),
@@ -108,6 +107,14 @@ class YoutubeSettingsForm extends ConfigFormBase {
       '#description' => t('This will save thumbnails larger than the default
         size, 480x360, to the thumbnails directory specified above.'),
       '#default_value' => $config->get('youtube_thumb_hires'),
+    );
+    $form['youtube_thumbs']['youtube_thumb_token_image_style'] = array(
+      '#type' => 'select',
+      '#options' => image_style_options(TRUE),
+      '#title' => t('Default token image style'),
+      '#description' => t('Default image style for the output of a
+        youtube_image_url token.'),
+      '#default_value' => $config->get('youtube_thumb_token_image_style'),
     );
     $form['youtube_thumbs']['youtube_thumb_delete_all'] = array(
       '#type' => 'submit',
@@ -148,6 +155,7 @@ class YoutubeSettingsForm extends ConfigFormBase {
       ->set('youtube_player_class', $values['youtube_player_class'])
       ->set('youtube_thumb_dir', $values['youtube_thumb_dir'])
       ->set('youtube_thumb_hires', $values['youtube_thumb_hires'])
+      ->set('youtube_thumb_token_image_style', $values['youtube_thumb_token_image_style'])
       ->save();
 
     parent::submitForm($form, $form_state);

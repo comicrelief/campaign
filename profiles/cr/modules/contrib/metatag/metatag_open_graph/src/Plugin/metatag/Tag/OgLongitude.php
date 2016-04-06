@@ -18,7 +18,7 @@ use \Drupal\metatag\Plugin\metatag\Tag\MetaPropertyBase;
  *   name = "og:longitude",
  *   group = "open_graph",
  *   weight = 16,
- *   image = FALSE,
+ *   type = "string",
  *   multiple = FALSE
  * )
  */
