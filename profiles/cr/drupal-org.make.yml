@@ -21,6 +21,11 @@ projects:
       # This will be fixed in: 8.x-1.x-dev
       # URL: https://www.drupal.org/node/2655874
       - "https://www.drupal.org/files/issues/the_given_alias_pattern-2655874-52.patch"
+  redirect:
+    download:
+      branch: 8.x-1.x
+      revision: f88e28a5033d2a9952929faff6fa59764583b80c
+      url: https://github.com/md-systems/redirect.git
   search_api:
     version: 1.0-alpha12
   token:
