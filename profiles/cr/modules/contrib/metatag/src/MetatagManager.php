@@ -9,7 +9,8 @@ namespace Drupal\metatag;
 
 use Drupal\Component\Render\PlainTextOutput;
 use Drupal\Core\Entity\ContentEntityInterface;
-use Drupal\Core\Logger\LoggerChannelFactory;
+use Drupal\Core\Language\LanguageInterface;
+use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\field\Entity\FieldConfig;
 
 /**
@@ -37,11 +38,12 @@ class MetatagManager implements MetatagManagerInterface {
    * @param MetatagGroupPluginManager $groupPluginManager
    * @param MetatagTagPluginManager $tagPluginManager
    * @param MetatagToken $token
+   * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $channelFactory
    */
   public function __construct(MetatagGroupPluginManager $groupPluginManager,
                               MetatagTagPluginManager $tagPluginManager,
                               MetatagToken $token,
-                              LoggerChannelFactory $channelFactory) {
+                              LoggerChannelFactoryInterface $channelFactory) {
     $this->groupPluginManager = $groupPluginManager;
     $this->tagPluginManager = $tagPluginManager;
     $this->tokenService = $token;
@@ -295,7 +297,13 @@ class MetatagManager implements MetatagManagerInterface {
         // that needs to be filtered and converted to a string.
         // @see @Robots::setValue().
         $tag->setValue($value);
-        $processed_value = PlainTextOutput::renderFromHtml($this->tokenService->tokenReplace($tag->value(), $token_replacements));
+        $langcode = \Drupal::languageManager()->getCurrentLanguage(LanguageInterface::TYPE_CONTENT)->getId();
+        if ($tag->type() === 'image') {
+          $processed_value = $this->tokenService->replace($tag->value(), $token_replacements, array('langcode' => $langcode));
+        }
+        else {
+          $processed_value = PlainTextOutput::renderFromHtml(htmlspecialchars_decode($this->tokenService->replace($tag->value(), $token_replacements, array('langcode' => $langcode))));
+        }
 
         // Now store the value with processed tokens back into the plugin.
         $tag->setValue($processed_value);

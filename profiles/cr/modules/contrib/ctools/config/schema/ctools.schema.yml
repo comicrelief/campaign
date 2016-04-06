@@ -1,3 +1,20 @@
+ctools.context:
+  type: mapping
+  label: Context
+  mapping:
+    label:
+      type: label
+      label: 'Label of the context'
+    type:
+      type: string
+      label: 'Context type'
+    description:
+      type: string
+      label: 'Description of the context'
+    value:
+      type: string
+      label: 'Context value'
+
 ctools.relationship:
   type: mapping
   label: 'Relationship'

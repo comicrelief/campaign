@@ -86,6 +86,8 @@
       if (this.model.get('html')) {
         this.$el.html(this.model.get('html'));
       }
+
+      this.on('tabActiveChange', this.tabActiveChange, this);
       this.listenTo(this.model, 'change:active', this.changeState);
     },
 
@@ -234,7 +236,7 @@
         this.moveBlockToRegion(block_uuid, new_region_name);
         this.hideBlockRegionList(e);
         this.render();
-        this.highlightBlock(block_uuid);
+        this.highlightBlock(block_uuid, true);
         this.saveToTempStore();
       }
     },
@@ -300,13 +302,23 @@
     },
 
     /**
-     * Highlights a block by adding a css class.
+     * Highlights a block by adding a css class and optionally scrolls to the
+     * block's location.
      *
-     * @param block_uuid
+     * @param {string} block_uuid
      *   The universally unique identifier of the block.
+     * @param {bool} scroll
+     *   Whether or not the page should scroll to the block. Defaults to false.
      */
-    highlightBlock: function (block_uuid) {
-      this.$('[data-block-id="' + block_uuid + '"]').addClass('ipe-highlight');
+    highlightBlock: function (block_uuid, scroll) {
+      scroll = scroll || false;
+
+      var $block = this.$('[data-block-id="' + block_uuid + '"]');
+      $block.addClass('ipe-highlight');
+
+      if (scroll) {
+        $('body').animate({scrollTop: $block.offset().top}, 600);
+      }
     },
 
     /**
@@ -521,7 +533,7 @@
         region.addBlock(block, options);
 
         this.render();
-        this.highlightBlock(block.get('uuid'));
+        this.highlightBlock(block.get('uuid'), true);
       }
     }
 

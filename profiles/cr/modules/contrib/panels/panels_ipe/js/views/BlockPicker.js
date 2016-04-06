@@ -25,10 +25,15 @@
     collection: null,
 
     /**
+     * @type {Drupal.panels_ipe.BlockContentTypeCollection}
+     */
+    contentCollection: null,
+
+    /**
      * @type {function}
      */
     template_plugin: _.template(
-      '<div class="ipe-block-plugin">' +
+      '<div class="ipe-block-plugin ipe-blockpicker-item">' +
       '  <a data-plugin-id="<%- plugin_id %>">' +
       '    <div class="ipe-block-plugin-info">' +
       '      <h5 title="<%- label %>"><%- trimmed_label %></h5>' +
@@ -41,12 +46,12 @@
     /**
      * @type {function}
      */
-    template_existing: _.template(
-      '<div class="ipe-block-plugin">' +
-      '  <a data-existing-region-name="<%- region %>" data-existing-block-id="<%- uuid %>">' +
-      '    <div class="ipe-block-plugin-info">' +
-      '      <h5 title="<%- label %>"><%- trimmed_label %></h5>' +
-      '      <p>' + Drupal.t('Provider: <strong><%- provider %></strong>') + '</p>' +
+    template_content_type: _.template(
+      '<div class="ipe-block-type ipe-blockpicker-item">' +
+      '  <a data-block-type="<%- id %>">' +
+      '    <div class="ipe-block-content-type-info">' +
+      '      <h5 title="<%- label %>"><%- label %></h5>' +
+      '      <p title="<%- description %>"><%- trimmed_description %></p>' +
       '    </div>' +
       '  </a>' +
       '</div>'
@@ -55,9 +60,23 @@
     /**
      * @type {function}
      */
+    template_create_button: _.template(
+      '<a class="ipe-create-category ipe-category<% if (active) { %> active<% } %>" data-category="<%- name %>">' +
+      '  <span class="ipe-icon ipe-icon-create_content"></span>' +
+      '  <%- name %>' +
+      '</a>'
+    ),
+
+    /**
+     * @type {function}
+     */
     template_form: _.template(
+      '<% if (typeof(plugin_id) !== "undefined") { %>' +
       '<h4>' + Drupal.t('Configure <strong><%- label %></strong> block') + '</h4>' +
-      '<div class="ipe-block-plugin-form ipe-form"><div class="ipe-icon ipe-icon-loading"></div></div>'
+      '<% } else { %>' +
+      '<h4>' + Drupal.t('Create new <strong><%- label %></strong> content') + '</h4>' +
+      '<% } %>' +
+      '<div class="ipe-block-form ipe-form"><div class="ipe-icon ipe-icon-loading"></div></div>'
     ),
 
     /**
@@ -72,7 +91,7 @@
      */
     events: {
       'click .ipe-block-plugin [data-plugin-id]': 'displayForm',
-      'click .ipe-block-plugin [data-existing-block-id]': 'displayForm'
+      'click .ipe-block-type [data-block-type]': 'displayForm'
     },
 
     /**
@@ -89,6 +108,9 @@
       if (options && options.collection) {
         this.collection = options.collection;
       }
+
+      this.on('tabActiveChange', this.tabActiveChange, this);
+
       // Extend our parent's events.
       _.extend(this.events, Drupal.panels_ipe.CategoryView.prototype.events);
     },
@@ -100,20 +122,15 @@
      *   Return this, for chaining.
      */
     render: function () {
-      var self = this;
+      var create_active = this.activeCategory === 'Create Content';
 
-      // Initialize our BlockPluginCollection if it doesn't already exist.
+      // Initialize our collections if they don't already exist.
       if (!this.collection) {
-        // Indicate an AJAX request.
-        this.$el.html(this.template_loading());
-
-        // Fetch a collection of block plugins from the server.
-        this.collection = new Drupal.panels_ipe.BlockPluginCollection();
-        this.collection.fetch().done(function () {
-          // We have a collection now, re-render ourselves.
-          self.render();
-        });
-
+        this.fetchCollection('default');
+        return this;
+      }
+      else if (create_active && !this.contentCollection) {
+        this.fetchCollection('content');
         return this;
       }
 
@@ -121,27 +138,28 @@
       this.renderCategories();
 
       // Add a unique class to our top region to scope CSS.
-      this.$('.ipe-category-picker-top').addClass('ipe-block-picker-list');
+      this.$el.addClass('ipe-block-picker-list');
 
-      // If we're viewing the current layout tab, show a custom item.
-      var on_screen_count = 0;
-      Drupal.panels_ipe.app.get('layout').get('regionCollection').each(function (region) {
-        region.get('blockCollection').each(function (block) {
-          if (self.activeCategory && self.activeCategory == 'On Screen') {
-            block.set('region', region.get('name'));
-            self.$('.ipe-category-picker-top').append(self.template_item(block));
+      // Prepend a custom button for creating content.
+      this.$('.ipe-categories').prepend(this.template_create_button({
+        name: 'Create Content',
+        active: create_active
+      }));
+
+      // If the create content category is active, render items in our top
+      // region.
+      if (create_active) {
+        this.contentCollection.each(function (block_content_type) {
+          var template_vars = block_content_type.toJSON();
+
+          // Reduce the length of the description if needed.
+          template_vars.trimmed_description = template_vars.description;
+          if (template_vars.trimmed_description.length > 30) {
+            template_vars.trimmed_description = template_vars.description.substring(0, 30) + '...';
           }
-          ++on_screen_count;
-        });
-      });
 
-      // Prepend on screen blocks to our collection.
-      if (on_screen_count > 0) {
-        this.$('.ipe-categories').prepend(this.template_category({
-          name: 'On Screen',
-          count: on_screen_count,
-          active: this.activeCategory === 'On Screen'
-        }));
+          this.$('.ipe-category-picker-top').append(this.template_content_type(template_vars));
+        }, this);
       }
 
       // Check if we need to automatically select one item.
@@ -149,6 +167,8 @@
         this.$(this.autoClick).click();
         this.autoClick = null;
       }
+
+      this.trigger('render');
 
       return this;
     },
@@ -162,7 +182,7 @@
      * @return {string}
      *   The rendered block plugin.
      */
-    template_item: function(block_plugin) {
+    template_item: function (block_plugin) {
       var template_vars = block_plugin.toJSON();
 
       // Not all blocks have labels, add a default if necessary.
@@ -176,13 +196,7 @@
         template_vars.trimmed_label = template_vars.label.substring(0, 30) + '...';
       }
 
-      // This is an existing block.
-      if (block_plugin.get('uuid')) {
-        return this.template_existing(template_vars);
-      }
-      else {
-        return this.template_plugin(template_vars);
-      }
+      return this.template_plugin(template_vars);
     },
 
     /**
@@ -194,35 +208,58 @@
      * @return {Object}
      *   An object containing the properties "url" and "model".
      */
-    getFormInfo: function(e) {
-      // Get the current plugin_id.
+    getFormInfo: function (e) {
+      // Get the current plugin_id or type.
       var plugin_id = $(e.currentTarget).data('plugin-id');
+      var url = Drupal.panels_ipe.urlRoot(drupalSettings);
+      var model;
 
       // Generate a base URL for the form.
-      var url = Drupal.panels_ipe.urlRoot(drupalSettings) + '/block_plugins/';
-
-      var plugin;
-
-      // This is a new block.
       if (plugin_id) {
-        plugin = this.collection.get(plugin_id);
-        url += plugin_id + '/form';
+        model = this.collection.get(plugin_id);
+        url += '/block_plugins/' + plugin_id + '/form';
       }
-      // This is an existing block.
       else {
-        // Get the Block UUID and Region Name
-        var block_id = $(e.currentTarget).data('existing-block-id');
-        var region_name = $(e.currentTarget).data('existing-region-name');
+        var block_type = $(e.currentTarget).data('block-type');
 
-        // Get the Block plugin
-        plugin = Drupal.panels_ipe.app.get('layout').get('regionCollection')
-          .get(region_name).get('blockCollection').get(block_id);
-        plugin_id = plugin.get('id');
-
-        url += plugin_id + '/block/' + block_id + '/form';
+        model = this.contentCollection.get(block_type);
+        url += '/block_content/' + block_type + '/form';
       }
 
-      return {url: url, model: plugin};
+      return {url: url, model: model};
+    },
+
+    /**
+     * Fetches a collection from the server and re-renders the View.
+     *
+     * @param {string} type
+     *   The type of collection to fetch.
+     */
+    fetchCollection: function (type) {
+      var collection;
+      var self = this;
+
+      if (type == 'default') {
+        // Indicate an AJAX request.
+        this.$el.html(this.template_loading());
+
+        // Fetch a collection of block plugins from the server.
+        this.collection = new Drupal.panels_ipe.BlockPluginCollection();
+        collection = this.collection;
+      }
+      else {
+        // Indicate an AJAX request.
+        this.$('.ipe-category-picker-top').html(this.template_loading());
+
+        // Fetch a collection of block content types from the server.
+        this.contentCollection = new Drupal.panels_ipe.BlockContentTypeCollection();
+        collection = this.contentCollection;
+      }
+
+      collection.fetch().done(function () {
+        // We have a collection now, re-render ourselves.
+        self.render();
+      });
     }
 
   });

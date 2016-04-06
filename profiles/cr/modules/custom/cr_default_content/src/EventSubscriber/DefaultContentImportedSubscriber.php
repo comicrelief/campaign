@@ -36,6 +36,7 @@ class DefaultContentImportedSubscriber implements EventSubscriberInterface {
     $entities = $event->getImportedEntities();
     $map = [
       'e2f2ca58-d03a-4fe1-8616-2222cda201d7' => ['label' => 'Fundraise (Landing)'],
+      '4b1d6619-1f9d-452a-b538-56eb186d0f1e' => ['label' => "What's going on"],
     ];
 
     $links_from_map = function($map, $parent = NULL) use (&$links_from_map, $entities) {
