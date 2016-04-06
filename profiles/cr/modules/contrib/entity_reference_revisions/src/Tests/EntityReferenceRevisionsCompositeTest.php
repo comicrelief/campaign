@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Contains \Drupal\entity_reference_revisions\EntityReferenceRevisionsCompositeTest.
+ * Contains \Drupal\entity_reference_revisions\Tests\EntityReferenceRevisionsCompositeTest.
  *
  */
 
