@@ -92,6 +92,7 @@ config_devel:
   - views.settings
 
   # Blocks
+  - block.block.tabs
   - block.block.campaign_base_search
   - block.block.campaign_base_account_menu
   - block.block.campaign_base_page_title
