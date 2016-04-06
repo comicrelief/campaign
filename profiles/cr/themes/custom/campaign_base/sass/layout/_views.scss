@@ -4,7 +4,7 @@
   .item-list {
     li {
       @include span(6 of 6);
-      @include breakpoint($screen-sm) {
+      @include breakpoint($screen-xs) {
       	@include span(6);
       }
       @include breakpoint($screen-md) {
@@ -30,12 +30,9 @@
 .view-content {
   .views-row {
     @include span(12);
+    margin-bottom: gutter();
     @include breakpoint($screen-xs) {
-      @include span(6);
-    }
-    &:nth-child(1) {
-      @include span(12);
-      margin-bottom: gutter();
+      @include span(4);
     }
   }
 }

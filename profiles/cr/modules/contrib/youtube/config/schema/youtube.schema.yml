@@ -34,6 +34,9 @@ youtube.settings:
     youtube_thumb_hires:
       type: boolean
       label: 'Save higher resolution thumbnail images'
+    youtube_thumb_token_image_style:
+      type: string
+      label: 'Default image token image style'
 
 field.formatter.settings.youtube_video:
   type: mapping
@@ -77,3 +80,11 @@ field.formatter.settings.youtube_thumbnail:
     image_link:
       type: string
       label: 'What to link image to'
+
+field.formatter.settings.youtube_url:
+  type: mapping
+  label: 'YouTube URL formatter settings'
+  mapping:
+    image_style:
+      type: boolean
+      label: 'Output this field as a link'

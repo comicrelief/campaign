@@ -23,7 +23,7 @@
   <!-- These allow developers to override config. on a per environment basis -->
   <property file="build.properties"   override="true"/>
   <!-- Default & meta -->
-  <target name="build" depends="file:clear, install, grunt:build"
+  <target name="build" depends="install, grunt:build"
     description="Build (or rebuild) the project.">
   </target>
   <target name="build:dev" depends="file:settings, build, user:create, module:dev"
@@ -49,15 +49,12 @@
   <target name="grunt:build" description="Generate all compiled Sass and JS files.">
     <exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="grunt build"/>
   </target>
+	<target name="grunt:dependencies" description="Install all grunt dependencies.">
+		<exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="bundle install"/>
+		<exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="npm install"/>
+	</target>
 
   <!-- File system -->
-  <target name="file:clear">
-    <exec dir="sites/default/files" command="rm -rf config_* 2016* *im*"/>
-    <delete quiet="true" dir="sites/default/files/private"/>
-    <delete quiet="true" dir="sites/default/files/news"/>
-    <delete quiet="true" dir="sites/default/files/php"/>
-    <delete quiet="true" dir="sites/default/files/styles"/>
-  </target>
   <target name="file:mod">
     <chmod file="sites/default" mode="0755" failonerror="true"/>
     <chmod file="sites/default/settings.php" mode="0755" failonerror="true"/>

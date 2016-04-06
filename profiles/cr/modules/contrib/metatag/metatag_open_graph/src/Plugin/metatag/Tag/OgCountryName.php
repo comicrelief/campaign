@@ -18,7 +18,7 @@ use \Drupal\metatag\Plugin\metatag\Tag\MetaPropertyBase;
  *   name = "og:country_name",
  *   group = "open_graph",
  *   weight = 22,
- *   image = FALSE,
+ *   type = "label",
  *   multiple = FALSE
  * )
  */

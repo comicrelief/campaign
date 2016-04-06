@@ -34,6 +34,9 @@ class MetatagFieldTest extends WebTestBase {
    * @var array
    */
   public static $modules = [
+    // Needed for token handling.
+    'token',
+
     // Needed for the field UI testing.
     'field_ui',
 
@@ -175,6 +178,30 @@ class MetatagFieldTest extends WebTestBase {
     $this->drupalGet('entity_test/add');
     $this->assertResponse(200);
     $this->assertFieldByName('field_metatag[0][basic][description]', $global_values['description'], t('Description field has the global default as the field default does not define it.'));
+  }
+
+  /**
+   * Tests whether HTML is correctly removed from metatags
+   *
+   * Tests three values in metatags -- one without any HTML; one with raw html; and one with escaped HTML.
+   * To pass all HTML including escaped should be removed.
+   */
+  public function testHTMLIsRemoved() {
+    $values = array(
+      'abstract' => 'No HTML here',
+      'description' => '<html><body><p class="test">Surrounded by raw HTML</p></body></html>',
+      'keywords' => '&lt;html&gt;&lt;body&gt;&lt;p class="test"&gt;Surrounded by escaped HTML&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;',
+    );
+
+    $this->drupalPostForm('admin/config/search/metatag/global', $values, 'Save');
+    $this->assertText('Saved the Global Metatag defaults.');
+    drupal_flush_all_caches();
+    $this->drupalGet('hit-a-404');
+    $this->assertResponse(404);
+
+    $this->assertRaw('<meta name="abstract" content="No HTML here" />', t('Test with no HTML content'));
+    $this->assertRaw('<meta name="description" content="Surrounded by raw HTML" />', t('Test with raw HTML content'));
+    $this->assertRaw('<meta name="keywords" content="Surrounded by escaped HTML" />', t('Test with escaped HTML content'));
   }
 
 }

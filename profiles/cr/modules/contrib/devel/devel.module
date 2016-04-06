@@ -84,41 +84,6 @@ function devel_entity_operation(EntityInterface $entity) {
 }
 
 /**
- * Returns destinations.
- */
-function devel_menu_need_destination() {
-  return array('devel/cache/clear', 'devel/reinstall', 'devel/menu/reset',
-    'admin/reports/status/run-cron');
-}
-
-/**
- * Implements hook_menu_link_alter().
- *
- * Flag this link as needing alter at display time.
- * This is more robust than setting alter in hook_menu().
- * @see devel_translated_menu_link_alter()
- */
-function devel_menu_link_alter(&$item) {
-  if (in_array($item['link_path'], devel_menu_need_destination()) || $item['link_path'] == 'devel/menu/item') {
-    $item['options']['alter'] = TRUE;
-  }
-}
-
-/**
- * Implements hook_translated_menu_item_alter().
- *
- * Append dynamic querystring 'destination' to several of our own menu items.
- */
-function devel_translated_menu_link_alter(&$item) {
-  if (in_array($item['href'], devel_menu_need_destination())) {
-    $item['localized_options']['query'] = \Drupal::destination()->getAsArray();
-  }
-  elseif ($item['href'] == 'devel/menu/item') {
-    $item['localized_options']['query'] = array('path' => current_path());
-  }
-}
-
-/**
  * Sets message.
  */
 function devel_set_message($msg, $type = NULL) {
