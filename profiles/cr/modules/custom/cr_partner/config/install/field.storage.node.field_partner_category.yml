@@ -4,8 +4,8 @@ dependencies:
   module:
     - node
     - taxonomy
-id: node.field_category
-field_name: field_category
+id: node.field_partner_category
+field_name: field_partner_category
 entity_type: node
 type: entity_reference
 settings:

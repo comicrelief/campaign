@@ -3,10 +3,10 @@ status: true
 dependencies:
   config:
     - field.field.node.partner.body
-    - field.field.node.partner.field_category
+    - field.field.node.partner.field_partner_category
     - field.field.node.partner.field_image
-    - field.field.node.partner.field_logo
-    - field.field.node.partner.field_website
+    - field.field.node.partner.field_partner_logo
+    - field.field.node.partner.field_partner_website
     - node.type.partner
   module:
     - image
@@ -38,7 +38,7 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
-  field_logo:
+  field_partner_logo:
     type: responsive_image
     weight: 0
     label: hidden
@@ -46,7 +46,7 @@ content:
       responsive_image_style: ''
       image_link: ''
     third_party_settings: {  }
-  field_website:
+  field_partner_website:
     type: link
     weight: 3
     label: hidden
@@ -66,4 +66,4 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
-  field_category: true
+  field_partner_category: true

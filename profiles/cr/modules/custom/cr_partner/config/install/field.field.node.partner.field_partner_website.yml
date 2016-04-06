@@ -2,12 +2,12 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_website
+    - field.storage.node.field_partner_website
     - node.type.partner
   module:
     - link
-id: node.partner.field_website
-field_name: field_website
+id: node.partner.field_partner_website
+field_name: field_partner_website
 entity_type: node
 bundle: partner
 label: Website

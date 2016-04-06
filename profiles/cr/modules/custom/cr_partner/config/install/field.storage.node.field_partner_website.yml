@@ -4,8 +4,8 @@ dependencies:
   module:
     - link
     - node
-id: node.field_website
-field_name: field_website
+id: node.field_partner_website
+field_name: field_partner_website
 entity_type: node
 type: link
 settings: {  }

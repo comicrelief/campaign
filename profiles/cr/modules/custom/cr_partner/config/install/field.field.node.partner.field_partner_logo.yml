@@ -2,12 +2,12 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_logo
+    - field.storage.node.field_partner_logo
     - node.type.partner
   module:
     - image
-id: node.partner.field_logo
-field_name: field_logo
+id: node.partner.field_partner_logo
+field_name: field_partner_logo
 entity_type: node
 bundle: partner
 label: Logo
