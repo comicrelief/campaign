@@ -4,10 +4,12 @@ dependencies:
   config:
     - field.field.node.partner.body
     - field.field.node.partner.field_category
+    - field.field.node.partner.field_image
     - field.field.node.partner.field_logo
     - field.field.node.partner.field_website
     - node.type.partner
   module:
+    - image
     - link
     - panelizer
     - responsive_image
@@ -28,6 +30,14 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
+  field_image:
+    weight: 5
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
   field_logo:
     type: responsive_image
     weight: 0

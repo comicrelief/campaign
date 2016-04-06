@@ -4,6 +4,7 @@ dependencies:
   config:
     - field.field.node.partner.body
     - field.field.node.partner.field_category
+    - field.field.node.partner.field_image
     - field.field.node.partner.field_logo
     - field.field.node.partner.field_website
     - image.style.thumbnail
@@ -39,6 +40,13 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_image:
+    weight: 31
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
   field_logo:
     type: image_image
     weight: 0
