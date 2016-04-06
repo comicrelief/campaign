@@ -1,11 +1,11 @@
 # CR Partner module
 
-This module contains the CR partner that shows.
+Containing the partner content type and some default content.
 
-## CR Partner fields architecture.
+## CR Partner fields architecture
 
 |field_name|type|comment|
 |--- | --- | --- | --- | --- |
-|`field_logo`|`file`|This is used for show the logo|
-|`field_category`|`taxonomy_term`|This is used for group the partners|
-|`field_website`|`link`|This is for show a the visit page link|
+|`field_partner_logo`|`file`|Image logo|
+|`field_partner_category`|`taxonomy_term`|Terms to group the partners|
+|`field_partner_website`|`link`|Partner website|
