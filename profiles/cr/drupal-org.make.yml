@@ -7,14 +7,14 @@ defaults:
 projects:
   # Core contrib
   ctools:
-    version: 3.0-alpha23
+    version: 3.0-alpha25
     patch:
       # See https://www.drupal.org/node/2672110
       2672110: https://www.drupal.org/files/issues/entityfieldderiver-2672110-2.patch
   file_entity:
     version: 2.x-dev
   metatag:
-    version: 1.0-beta4
+    version: 1.0-beta7
   pathauto:
     version: 1.0-alpha2
     patch:
@@ -28,7 +28,7 @@ projects:
   rabbitmq:
       version: 1.0-alpha1
   youtube:
-    version: 1.0-beta2
+    version: 1.0-beta3
   # Layout modules
   inline_entity_form:
     version: 1.0-alpha5
