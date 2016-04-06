@@ -67,6 +67,7 @@ dependencies:
   - cr_content_wall
   - cr_rich_text_paragraph
   - cr_landing_page
+  - cr_partner
 
   # Development modules
   - config_devel
