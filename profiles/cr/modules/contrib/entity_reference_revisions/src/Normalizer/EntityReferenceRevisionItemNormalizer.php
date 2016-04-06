@@ -7,6 +7,7 @@
 
 namespace Drupal\entity_reference_revisions\Normalizer;
 
+use Drupal\entity_reference_revisions\Plugin\Field\FieldType\EntityReferenceRevisionsItem;
 use Drupal\hal\Normalizer\EntityReferenceItemNormalizer;
 
 /**
@@ -19,10 +20,10 @@ class EntityReferenceRevisionItemNormalizer extends EntityReferenceItemNormalize
    *
    * @var string
    */
-  protected $supportedInterfaceOrClass = 'Drupal\entity_reference_revisions\Plugin\Field\FieldType\EntityReferenceRevisionsItem';
+  protected $supportedInterfaceOrClass = EntityReferenceRevisionsItem::class;
 
   /**
-   * Overrides \Drupal\hal\Normalizer\FieldItemNormalizer::constructValue().
+   * {@inheritdoc}
    */
   protected function constructValue($data, $context) {
     $value = parent::constructValue($data, $context);
