@@ -17,19 +17,29 @@
  */
 #}
 <div class="cr-layout-fivefull" {% if css_id %}{{ css_id }}{% endif %}>
+  {% if content.first|length > 2 %}
   <div class="first-region">
     {{ content.first }}
   </div>
+  {% endif %}
+  {% if content.second|length > 2 %}
   <div class="second-region">
     {{ content.second }}
   </div>
+  {% endif %}
+  {% if content.third|length > 2 %}
   <div class="third-region">
     {{ content.third }}
   </div>
+  {% endif %}
+  {% if content.fourth|length > 2 %}
   <div class="fourth-region">
     {{ content.fourth }}
   </div>
+  {% endif %}
+  {% if content.fifth|length > 2 %}
   <div class="fifth-region">
     {{ content.fifth }}
   </div>
+  {% endif %}
 </div>
