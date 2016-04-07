@@ -53,7 +53,7 @@
     <exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="grunt build"/>
   </target>
 	<target name="grunt:dependencies" description="Install all grunt dependencies.">
-		<exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="bundle install"/>
+		<exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="bundle install --path vendor/bundle"/>
 		<exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="npm install"/>
 	</target>
 
