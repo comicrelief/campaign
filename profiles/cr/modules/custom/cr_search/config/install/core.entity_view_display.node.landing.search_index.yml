@@ -1,3 +1,4 @@
+uuid: 1c7ea2f2-5f59-4a00-a900-004d306c0c29
 langcode: en
 status: true
 dependencies:
@@ -11,10 +12,8 @@ dependencies:
     - node.type.landing
   module:
     - ds
-    - image
-    - link
     - panelizer
-    - text
+    - responsive_image
     - user
 third_party_settings:
   panelizer:
@@ -124,66 +123,34 @@ third_party_settings:
         storage_id: ''
         builder: ipe
   ds:
-    layout:
-      id: ds_reset
-      path: profiles/cr/modules/contrib/ds
-      library: ''
-      disable_css: false
-      settings:
-        wrappers:
-          ds_content: div
-        outer_wrapper: div
-        attributes: ''
-        link_attribute: ''
-        link_custom: ''
-        classes:
-          layout_class: {  }
-    regions:
-      ds_content:
-        - field_image
-        - body
-        - field_cta
-        - panelizer
+    fields:
+      node_links:
+        plugin_id: node_links
+        weight: 1
+        label: hidden
+        formatter: default
+_core:
+  default_config_hash: jz65IHfhN_28579V3lgdvDrUueXixdUkyAfVI-z8t7E
 id: node.landing.search_index
 targetEntityType: node
 bundle: landing
 mode: search_index
 content:
-  body:
-    label: hidden
-    type: text_default
-    weight: 1
-    settings: {  }
-    third_party_settings: {  }
-  field_cta:
-    weight: 2
-    label: hidden
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    type: link
   field_image:
     weight: 0
     label: hidden
     settings:
-      image_style: ''
+      responsive_image_style: hero_image_full_node
       image_link: ''
     third_party_settings: {  }
-    type: image
+    type: responsive_image
   links:
-    weight: 0
-    settings: {  }
-    third_party_settings: {  }
-  panelizer:
-    type: panelizer
-    weight: 3
-    label: hidden
+    weight: 1
     settings: {  }
     third_party_settings: {  }
 hidden:
+  body: true
+  field_cta: true
   field_paragraphs: true
+  panelizer: true
   social_links: true
