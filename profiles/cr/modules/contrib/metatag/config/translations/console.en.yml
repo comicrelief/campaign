@@ -3,7 +3,7 @@ commands:
     metatag:
       tag:
         description: Generate a meta tag.
-        help: The <info>generate:metatag:tag</info> command helps you generate a new meta tag for use with the Metatag module.
+        help: The <info>generate:metatag:tag</info> command helps generate a new meta tag for use with the Metatag module.
         welcome: Welcome to the Metatag tag generator
         options:
           base_class: The base meta tag class to use.
@@ -15,7 +15,7 @@ commands:
           class_name: Internal camel-case version of the meta tag's name.
           group: The meta tag's group.
           weight: The sort order for this meta tag.
-          image: Whether this meta tag is for URLs to images.
+          type: Type of the data included in this meta tag value.
           multiple: Whether this meta tag allows multiple values.
         questions:
           base_class: Enter the base class to use
@@ -27,5 +27,23 @@ commands:
           class_name: Enter a camel-case version of the meta tag's name
           group: Select the group the meta tag will use
           weight: Enter the sort order for the meta tag
-          image: Is this meta tag for URLs to images?
+          type: Which value type does this meta tag allow?
           multiple: Does this meta tag will allow multiple values?
+      group:
+        description: Generate a meta tag group.
+        help: The <info>generate:metatag:group</info> command helps generate a new metatag group for use with the Metatag module.
+        welcome: Welcome to the Metatag group generator
+        options:
+          label: The user-friendly name for this meta tag group.
+          description: A long explanation of this meta tag group.
+          plugin_id: Internal (machine) name for the meta tag group.
+          class_name: Internal camel-case version of the meta tag group's name.
+          weight: The sort order for this meta tag group.
+        questions:
+          base_class: Enter the base class to use
+          class_name: Enter the class name for the meta tag group class
+          module: common.questions.module
+          weight: Enter the sort order for the meta tag group
+          label: Enter the label for the meta tag group
+          description: Enter a longer explanation of what the meta tag group is and how to use it
+          plugin_id: Enter the internal (machine) name for the meta tag group plugin

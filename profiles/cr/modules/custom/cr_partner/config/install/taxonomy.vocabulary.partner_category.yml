@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Partner category'
+vid: partner_category
+description: 'Partner category'
+hierarchy: 0
+weight: 0

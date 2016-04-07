@@ -18,7 +18,7 @@ use \Drupal\metatag\Plugin\metatag\Tag\MetaPropertyBase;
  *   name = "og:image",
  *   group = "open_graph",
  *   weight = 9,
- *   image = TRUE,
+ *   type = "image",
  *   multiple = TRUE
  * )
  */

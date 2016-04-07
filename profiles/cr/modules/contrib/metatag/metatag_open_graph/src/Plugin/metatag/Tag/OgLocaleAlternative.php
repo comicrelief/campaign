@@ -18,7 +18,7 @@ use \Drupal\metatag\Plugin\metatag\Tag\MetaPropertyBase;
  *   name = "og:locale:alternate",
  *   group = "open_graph",
  *   weight = 27,
- *   image = FALSE,
+ *   type = "string",
  *   multiple = TRUE
  * )
  */

@@ -16,7 +16,7 @@ namespace Drupal\metatag\Plugin\metatag\Tag;
  *   name = "rights",
  *   group = "advanced",
  *   weight = 5,
- *   image = FALSE,
+ *   type = "label",
  *   multiple = FALSE
  * )
  */

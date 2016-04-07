@@ -148,6 +148,11 @@
           }
           tab.set('active', false);
         }
+
+        // Inform the tab's view of the change.
+        if (this.tabViews[tab.get('id')]) {
+          this.tabViews[tab.get('id')].trigger('tabActiveChange', tab.get('active'));
+        }
       }, this);
 
       // Trigger a re-render, with animation if needed.

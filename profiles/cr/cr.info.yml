@@ -45,6 +45,7 @@ dependencies:
   - file_entity
   - metatag_open_graph
   - pathauto
+  - redirect
   - youtube
   - view_modes_display
   - social_links
@@ -67,6 +68,7 @@ dependencies:
   - cr_content_wall
   - cr_rich_text_paragraph
   - cr_landing_page
+  - cr_partner
 
   # Development modules
   - config_devel
@@ -91,6 +93,7 @@ config_devel:
   - views.settings
 
   # Blocks
+  - block.block.tabs
   - block.block.campaign_base_search
   - block.block.campaign_base_account_menu
   - block.block.campaign_base_page_title
