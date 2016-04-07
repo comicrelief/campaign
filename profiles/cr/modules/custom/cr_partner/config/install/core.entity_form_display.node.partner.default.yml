@@ -3,8 +3,8 @@ status: true
 dependencies:
   config:
     - field.field.node.partner.body
-    - field.field.node.partner.field_partner_category
     - field.field.node.partner.field_image
+    - field.field.node.partner.field_partner_category
     - field.field.node.partner.field_partner_logo
     - field.field.node.partner.field_partner_website
     - image.style.thumbnail
@@ -32,6 +32,13 @@ content:
     weight: 10
     settings: {  }
     third_party_settings: {  }
+  field_image:
+    weight: 31
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
   field_partner_category:
     type: entity_reference_autocomplete
     weight: 0
@@ -40,13 +47,6 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_image:
-    weight: 31
-    settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
-    third_party_settings: {  }
-    type: image_image
   field_partner_logo:
     type: image_image
     weight: 0
