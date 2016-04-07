@@ -34,6 +34,9 @@
   <target name="test" depends="prepare-test" description="Run behat tests">
     <exec dir="${app.profile.dir}tests/behat" passthru="true" checkreturn="true" command="vendor/bin/behat"/>
   </target>
+	<target name="test-dl" depends="prepare-test" description="Run behat tests">
+		<exec dir="${app.profile.dir}tests/behat" passthru="true" checkreturn="true" command="vendor/bin/behat -dl"/>
+	</target>
   <target name="prepare-test" description="Prepare to tun behat tests">
     <copy file="${app.profile.dir}tests/behat/behat.yml.phing" tofile="${app.profile.dir}tests/behat/behat.yml" overwrite="true">
       <filterchain>
@@ -50,7 +53,7 @@
     <exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="grunt build"/>
   </target>
 	<target name="grunt:dependencies" description="Install all grunt dependencies.">
-		<exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="bundle install"/>
+		<exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="bundle install --path vendor/bundle"/>
 		<exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="npm install"/>
 	</target>
 
