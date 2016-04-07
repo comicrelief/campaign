@@ -18,6 +18,9 @@
 <article class="cr-article" {% if css_id %}{{ css_id }}{% endif %}>
   {% if content.first %}
   <header class="cr-article__header">
+    <div class="contextual-region">
+      {{ title_suffix.contextual_links }}      
+    </div>
     {{ content.first }}
   </header>
   {% endif %}
