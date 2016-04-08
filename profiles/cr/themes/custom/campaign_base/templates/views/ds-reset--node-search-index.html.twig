@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * Display Suite reset template.
+ *
+ * Available variables:
+ * - ds_content: content of the ds_content region
+ */
+#}
+
+{% set nodetype = title['#bundle'] %}
+
+<div {{ attributes.addClass('search-result', 'search-result--' ~ nodetype) }}>
+
+    <div class="search-result__title search-result--{{ nodetype }}__title">
+      {{ node_title }}
+    </div>
+
+    <div class="search-result__image search-result--{{ nodetype }}__image">
+        {{ field_image }}
+    </div>
+</div>
