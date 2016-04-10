@@ -22,9 +22,9 @@ use Drupal\paragraphs\Entity\Paragraph;
  *   id = "cr_content_wall_CwRowDisplay",
  *   title = @Translation("Row Display"),
  *   description = @Translation("Custom DS field to manage row display"),
- *   entity_type = "paragraph",
+ *   entity_type = "block_content",
  *   provider = "cr_content_wall",
- *   ui_limit = {"cw_row|*"}
+ *   ui_limit = {"cw_row_block|*"}
  * )
  */
 class CwRowDisplay extends DsFieldBase {
@@ -120,7 +120,7 @@ class CwRowDisplay extends DsFieldBase {
    *   Loaded BlockContent object.
    */
   public function getRowEntity($row_id) {
-    return Paragraph::load($row_id);
+    return BlockContent::load($row_id);
   }
 
   /**
@@ -153,7 +153,7 @@ class CwRowDisplay extends DsFieldBase {
   public function settingsForm($form, FormStateInterface $form_state) {
     $config = $this->getConfiguration();
     $options = array();
-    $options['field_cw_block_reference'] = 'field_cw_block_reference';
+    $options['field_cw_row_reference'] = 'field_cw_row_reference';
 
     $settings['reference_field'] = array(
       '#type' => 'select',
@@ -184,7 +184,7 @@ class CwRowDisplay extends DsFieldBase {
    */
   public function defaultConfiguration() {
     $configuration = array(
-      'reference_field' => 'field_cw_block_reference',
+      'reference_field' => 'field_cw_row_reference',
     );
 
     return $configuration;
