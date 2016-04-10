@@ -17,9 +17,9 @@
                 "href": "http:\/\/default\/user\/0?_format=hal_json"
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/field_cw_block_reference": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/field_cw_row_reference": [
             {
-                "href": "http:\/\/default\/block\/3?_format=hal_json"
+                "href": "http:\/\/default\/block\/7?_format=hal_json"
             }
         ]
     },
@@ -52,7 +52,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "46638b22-6dbc-4457-9002-0243e8091b70"
+                        "value": "f31921c8-2f5d-4744-b200-b4065002eca1"
                     }
                 ],
                 "lang": "en"
@@ -70,24 +70,24 @@
                 },
                 "uuid": [
                     {
-                        "value": "46638b22-6dbc-4457-9002-0243e8091b70"
+                        "value": "f31921c8-2f5d-4744-b200-b4065002eca1"
                     }
                 ]
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/field_cw_block_reference": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/field_cw_row_reference": [
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/block\/3?_format=hal_json"
+                        "href": "http:\/\/default\/block\/7?_format=hal_json"
                     },
                     "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/block_content\/teaser"
+                        "href": "http:\/\/drupal.org\/rest\/type\/block_content\/cw_row_block"
                     }
                 },
                 "uuid": [
                     {
-                        "value": "a2b481ee-fb66-4aed-ab00-00e12a544a9d"
+                        "value": "99463377-62a2-4099-8d02-2ff2876038b5"
                     }
                 ]
             }
@@ -107,7 +107,7 @@
     ],
     "changed": [
         {
-            "value": "1458879634",
+            "value": "1460307390",
             "lang": "en"
         }
     ],
@@ -120,11 +120,6 @@
         {
             "value": "1",
             "lang": "en"
-        }
-    ],
-    "field_cw_view_mode": [
-        {
-            "value": "cw_1col_l"
         }
     ]
 }
