@@ -1,7 +1,7 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/file\/6?_format=hal_json"
+            "href": "http:\/\/default\/file\/23?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
@@ -24,7 +24,7 @@
     ],
     "uri": [
         {
-            "value": "public:\/\/2016-02\/SR16_fundraise_landing_promo_desktop_1_2_5_4_5.jpg"
+            "value": "public:\/\/2016-02\/SR16_fundraise_landing_promo_desktop_1_2_5_4_5_2.jpg"
         }
     ],
     "filemime": [

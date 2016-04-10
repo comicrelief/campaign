@@ -1,37 +1,34 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/paragraph\/3?_format=hal_json"
+            "href": "http:\/\/default\/paragraph\/1?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cw_row"
         },
         "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/uid": [
             {
-                "href": "http:\/\/default\/user\/0?_format=hal_json",
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
                 "lang": "en"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/revision_uid": [
             {
-                "href": "http:\/\/default\/user\/0?_format=hal_json"
+                "href": "http:\/\/default\/user\/1?_format=hal_json"
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/field_cw_block_reference": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/field_cw_row_reference": [
+            {
+                "href": "http:\/\/default\/block\/7?_format=hal_json"
+            },
             {
                 "href": "http:\/\/default\/block\/8?_format=hal_json"
-            },
-            {
-                "href": "http:\/\/default\/block\/6?_format=hal_json"
-            },
-            {
-                "href": "http:\/\/default\/block\/2?_format=hal_json"
             }
         ]
     },
     "uuid": [
         {
-            "value": "2c87f4b2-0f01-4cfe-b109-0931971070c7"
+            "value": "0948d690-e229-42e8-9307-7a2f038fa76d"
         }
     ],
     "type": [
@@ -50,7 +47,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -58,7 +55,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "46638b22-6dbc-4457-9002-0243e8091b70"
+                        "value": "a6011d4f-108d-4d1e-b000-eee2d98e50b0"
                     }
                 ],
                 "lang": "en"
@@ -68,7 +65,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -76,54 +73,39 @@
                 },
                 "uuid": [
                     {
-                        "value": "46638b22-6dbc-4457-9002-0243e8091b70"
+                        "value": "a6011d4f-108d-4d1e-b000-eee2d98e50b0"
                     }
                 ]
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/field_cw_block_reference": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/field_cw_row_reference": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/block\/7?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/block_content\/cw_row_block"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "993b8a81-19f0-42b9-bb05-5c55b007a698"
+                    }
+                ]
+            },
             {
                 "_links": {
                     "self": {
                         "href": "http:\/\/default\/block\/8?_format=hal_json"
                     },
                     "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/block_content\/teaser"
+                        "href": "http:\/\/drupal.org\/rest\/type\/block_content\/cw_row_block"
                     }
                 },
                 "uuid": [
                     {
-                        "value": "deb64602-0409-4e7e-be00-d42f9dcbd5e7"
-                    }
-                ]
-            },
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/block\/6?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/block_content\/teaser"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "6d435177-95e0-4d6d-ae50-80e6db199b6c"
-                    }
-                ]
-            },
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/block\/2?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/block_content\/teaser"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "0afb60f3-6b24-4313-ab00-db013888d84c"
+                        "value": "0b9042ac-8196-4cda-9604-4eae9b325279"
                     }
                 ]
             }
@@ -137,30 +119,25 @@
     ],
     "created": [
         {
-            "value": "1458879650",
+            "value": "1460322649",
             "lang": "en"
         }
     ],
     "changed": [
         {
-            "value": "1458879650",
+            "value": "1460322649",
             "lang": "en"
         }
     ],
     "revision_timestamp": [
         {
-            "value": "1458879650"
+            "value": "1460322649"
         }
     ],
     "default_langcode": [
         {
             "value": "1",
             "lang": "en"
-        }
-    ],
-    "field_cw_view_mode": [
-        {
-            "value": "cw_3col_s_s_s"
         }
     ]
 }
