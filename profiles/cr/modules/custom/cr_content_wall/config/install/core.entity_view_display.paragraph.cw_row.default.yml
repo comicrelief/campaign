@@ -2,12 +2,10 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.cw_row.field_cw_block_reference
-    - field.field.paragraph.cw_row.field_cw_view_mode
+    - field.field.paragraph.cw_row.field_cw_row_reference
     - paragraphs.paragraphs_type.cw_row
   module:
     - ds
-    - options
     - user
 third_party_settings:
   ds:
@@ -40,19 +38,13 @@ content:
       custom_date_format: ''
       timezone: ''
     third_party_settings: {  }
-  field_cw_block_reference:
-    weight: 2
+  field_cw_row_reference:
+    weight: 5
     label: above
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
-  field_cw_view_mode:
-    weight: 1
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: list_default
   uid:
     type: author
     weight: 4
