@@ -1,36 +1,36 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/paragraph\/3333?_format=hal_json"
+            "href": "http:\/\/default\/paragraph\/4?_format=hal_json"
         },
         "type": {
-            "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cw_row"
+            "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cr_rich_text_paragraph"
         },
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/uid": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_rich_text_paragraph\/uid": [
             {
                 "href": "http:\/\/default\/user\/1?_format=hal_json",
                 "lang": "en"
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/revision_uid": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_rich_text_paragraph\/revision_uid": [
             {
                 "href": "http:\/\/default\/user\/1?_format=hal_json"
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/field_cw_row_reference": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_rich_text_paragraph\/field_background": [
             {
-                "href": "http:\/\/default\/block\/9?_format=hal_json"
+                "href": "http:\/\/default\/file\/27?_format=hal_json"
             }
         ]
     },
     "uuid": [
         {
-            "value": "c371c4a7-a6b4-46ff-be00-ff6781e0e398"
+            "value": "35669b01-a4f9-4613-ab04-4fd16d7acb38"
         }
     ],
     "type": [
         {
-            "target_id": "cw_row"
+            "target_id": "cr_rich_text_paragraph"
         }
     ],
     "langcode": [
@@ -40,7 +40,7 @@
         }
     ],
     "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/uid": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_rich_text_paragraph\/uid": [
             {
                 "_links": {
                     "self": {
@@ -52,13 +52,13 @@
                 },
                 "uuid": [
                     {
-                        "value": "1e5415a6-96aa-4707-9d00-a19224644862"
+                        "value": "2e9af022-a6f2-4e96-8e00-bc008340e1e7"
                     }
                 ],
                 "lang": "en"
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/revision_uid": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_rich_text_paragraph\/revision_uid": [
             {
                 "_links": {
                     "self": {
@@ -70,26 +70,30 @@
                 },
                 "uuid": [
                     {
-                        "value": "1e5415a6-96aa-4707-9d00-a19224644862"
+                        "value": "2e9af022-a6f2-4e96-8e00-bc008340e1e7"
                     }
                 ]
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/field_cw_row_reference": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_rich_text_paragraph\/field_background": [
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/block\/9?_format=hal_json"
+                        "href": "http:\/\/default\/file\/27?_format=hal_json"
                     },
                     "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/block_content\/cw_row_block"
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
                     }
                 },
                 "uuid": [
                     {
-                        "value": "993b8a81-19f0-42b9-bb05-5c55b007a698"
+                        "value": "eb765a22-a7c6-415f-ab00-b5e8c61ccd41"
                     }
-                ]
+                ],
+                "alt": "bg",
+                "title": "",
+                "width": "3400",
+                "height": "900"
             }
         ]
     },
@@ -101,25 +105,31 @@
     ],
     "created": [
         {
-            "value": "1460372706",
+            "value": "1460378083",
             "lang": "en"
         }
     ],
     "changed": [
         {
-            "value": "1460372706",
+            "value": "1460378083",
             "lang": "en"
         }
     ],
     "revision_timestamp": [
         {
-            "value": "1460372706"
+            "value": "1460378083"
         }
     ],
     "default_langcode": [
         {
             "value": "1",
             "lang": "en"
+        }
+    ],
+    "field_body": [
+        {
+            "value": "<h2>Rich text bg title<\/h2>\r\n\r\n<p>Dynamically enhance fully researched metrics and e-business architectures. Synergistically productize impactful synergy rather than.<\/p>\r\n",
+            "format": "basic_html"
         }
     ]
 }
