@@ -1,7 +1,7 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/paragraph\/3?_format=hal_json"
+            "href": "http:\/\/default\/paragraph\/1?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cw_row"
@@ -19,7 +19,7 @@
         ],
         "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/field_cw_row_reference": [
             {
-                "href": "http:\/\/default\/block\/9?_format=hal_json"
+                "href": "http:\/\/default\/block\/8?_format=hal_json"
             }
         ]
     },
@@ -52,7 +52,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "6ed9f8e3-3886-400d-8d38-56845afc391d"
+                        "value": "75893151-0e24-47da-9f15-219141a50d19"
                     }
                 ],
                 "lang": "en"
@@ -70,7 +70,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "6ed9f8e3-3886-400d-8d38-56845afc391d"
+                        "value": "75893151-0e24-47da-9f15-219141a50d19"
                     }
                 ]
             }
@@ -79,7 +79,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/block\/9?_format=hal_json"
+                        "href": "http:\/\/default\/block\/8?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/block_content\/cw_row_block"
