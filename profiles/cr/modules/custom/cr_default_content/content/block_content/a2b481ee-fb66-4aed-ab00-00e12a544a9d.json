@@ -5,7 +5,12 @@
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/block_content\/teaser"
-        }
+        },
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/teaser\/field_teaser_image": [
+            {
+                "href": "http:\/\/default\/file\/26?_format=hal_json"
+            }
+        ]
     },
     "uuid": [
         {
@@ -31,7 +36,7 @@
     ],
     "changed": [
         {
-            "value": "1456421477",
+            "value": "1460372667",
             "lang": "en"
         }
     ],
@@ -55,6 +60,29 @@
             "lang": "en"
         }
     ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/teaser\/field_teaser_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/26?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "fac94f6d-dd68-4e41-8402-2dc14f2f8592"
+                    }
+                ],
+                "alt": "",
+                "title": "",
+                "width": "930",
+                "height": "523"
+            }
+        ]
+    },
     "field_teaser_link": [
         {
             "uri": "http:\/\/www.sportrelief.com\/whats-going-on\/eddie-izzard-marathon-man",
