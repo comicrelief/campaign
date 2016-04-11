@@ -19,7 +19,7 @@
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_image": [
             {
-                "href": "http:\/\/default\/file\/23?_format=hal_json",
+                "href": "http:\/\/default\/file\/25?_format=hal_json",
                 "lang": "en"
             }
         ],
@@ -67,7 +67,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "aa7f625b-4fff-4afb-8e63-9949c9f83cd4"
+                        "value": "7abb1f5b-5fca-4291-b202-0218e7188a00"
                     }
                 ],
                 "lang": "en"
@@ -85,7 +85,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "aa7f625b-4fff-4afb-8e63-9949c9f83cd4"
+                        "value": "7abb1f5b-5fca-4291-b202-0218e7188a00"
                     }
                 ]
             }
@@ -94,7 +94,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/file\/23?_format=hal_json"
+                        "href": "http:\/\/default\/file\/25?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
@@ -159,7 +159,7 @@
     ],
     "changed": [
         {
-            "value": "1460322712",
+            "value": "1460368875",
             "lang": "en"
         }
     ],
