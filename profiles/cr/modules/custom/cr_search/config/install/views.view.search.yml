@@ -7,7 +7,7 @@ dependencies:
   module:
     - search_api
 _core:
-  default_config_hash: O4VHsyvmSx2B4mO9vSBMtsIKHAjq9zVC6ZeLU9s3BkI
+  default_config_hash: DEm8SAHZWEkQg6mzvOAXWlCBTurFLaAPf_j8gveBxug
 id: search
 label: Search
 module: views
@@ -82,7 +82,8 @@ display:
             'entity:node':
               article: search_index
               landing: search_index
-              page: default
+              page: search_index
+              partner: search_index
       fields:
         search_api_language:
           table: search_api_index_cr_content

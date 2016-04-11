@@ -10,13 +10,21 @@
 
 {% set nodetype = title['#bundle'] %}
 
-<div {{ attributes.addClass('search-result', 'search-result--' ~ nodetype) }}>
+<div {{ attributes.addClass('search-result__node', 'search-result__node--' ~ nodetype) }}>
 
-    <div class="search-result__title search-result--{{ nodetype }}__title">
-      {{ node_title }}
-    </div>
+  <div class="search-result__title search-result--{{ nodetype }}__title">
+    {{ node_title }}
+  </div>
 
-    <div class="search-result__image search-result--{{ nodetype }}__image">
-        {{ field_image }}
-    </div>
+  {% if field_partner_logo %}
+  <div class="search-result__logo search-result--{{ nodetype }}__logo">
+    {{ field_partner_logo }}
+  </div>
+
+  {# Only renders if node isn't a Partner, otherwise this would render Partner Gallery #}
+  {% elseif field_image %}
+  <div class="search-result__image search-result--{{ nodetype }}__image">
+    {{ field_image }}
+  </div>
+  {% endif %}
 </div>

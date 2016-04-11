@@ -82,7 +82,7 @@ processor_settings:
         'entity:node':
           article: default
           landing: full
-          page: ''
+          page: default
       weights:
         preprocess_index: -10
   ignorecase:
