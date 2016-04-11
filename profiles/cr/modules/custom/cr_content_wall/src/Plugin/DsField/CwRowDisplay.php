@@ -22,9 +22,9 @@ use Drupal\paragraphs\Entity\Paragraph;
  *   id = "cr_content_wall_CwRowDisplay",
  *   title = @Translation("Row Display"),
  *   description = @Translation("Custom DS field to manage row display"),
- *   entity_type = "paragraph",
+ *   entity_type = "block_content",
  *   provider = "cr_content_wall",
- *   ui_limit = {"cw_row|*"}
+ *   ui_limit = {"cw_row_block|*"}
  * )
  */
 class CwRowDisplay extends DsFieldBase {
@@ -120,7 +120,7 @@ class CwRowDisplay extends DsFieldBase {
    *   Loaded BlockContent object.
    */
   public function getRowEntity($row_id) {
-    return Paragraph::load($row_id);
+    return BlockContent::load($row_id);
   }
 
   /**
