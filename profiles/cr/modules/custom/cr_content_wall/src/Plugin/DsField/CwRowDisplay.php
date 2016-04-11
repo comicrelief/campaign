@@ -153,7 +153,7 @@ class CwRowDisplay extends DsFieldBase {
   public function settingsForm($form, FormStateInterface $form_state) {
     $config = $this->getConfiguration();
     $options = array();
-    $options['field_cw_row_reference'] = 'field_cw_row_reference';
+    $options['field_cw_block_reference'] = 'field_cw_block_reference';
 
     $settings['reference_field'] = array(
       '#type' => 'select',
@@ -184,7 +184,7 @@ class CwRowDisplay extends DsFieldBase {
    */
   public function defaultConfiguration() {
     $configuration = array(
-      'reference_field' => 'field_cw_row_reference',
+      'reference_field' => 'field_cw_block_reference',
     );
 
     return $configuration;
