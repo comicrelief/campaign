@@ -6,7 +6,7 @@ dependencies:
     - field.field.paragraph.cr_rich_text_paragraph.field_body
     - paragraphs.paragraphs_type.cr_rich_text_paragraph
   module:
-    - image
+    - responsive_image
     - text
 id: paragraph.cr_rich_text_paragraph.default
 targetEntityType: paragraph
@@ -17,10 +17,10 @@ content:
     weight: 0
     label: hidden
     settings:
-      image_style: ''
+      responsive_image_style: bg_rich_text
       image_link: ''
     third_party_settings: {  }
-    type: image
+    type: responsive_image
   field_body:
     weight: 1
     label: hidden
