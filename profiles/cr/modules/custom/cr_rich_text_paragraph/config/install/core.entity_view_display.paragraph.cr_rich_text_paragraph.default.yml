@@ -15,7 +15,7 @@ mode: default
 content:
   field_background:
     weight: 0
-    label: above
+    label: hidden
     settings:
       image_style: ''
       image_link: ''
@@ -23,7 +23,7 @@ content:
     type: image
   field_body:
     weight: 1
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default

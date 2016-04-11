@@ -30,4 +30,5 @@ content:
     type: text_textarea
 hidden:
   created: true
+  status: true
   uid: true
