@@ -1,3 +1,4 @@
+uuid: 30f1d563-368e-405e-a106-06dc646f0153
 langcode: en
 status: true
 dependencies:
@@ -6,19 +7,63 @@ dependencies:
     - field.field.node.page.body
     - node.type.page
   module:
+    - ds
+    - panelizer
     - text
     - user
+third_party_settings:
+  ds:
+    layout:
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
+      library: ''
+      disable_css: false
+      settings:
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - node_title
+        - body
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          wrapper: h2
+          class: ''
+  panelizer:
+    enable: false
+    custom: false
+_core:
+  default_config_hash: rN2zrScZAJ9xB16hm_Deb9QJKy6JXnn0PdI2n5Z3KRs
 id: node.page.search_index
 targetEntityType: node
 bundle: page
 mode: search_index
 content:
   body:
-    type: text_default
-    weight: 0
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 1
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+  links:
+    weight: 3
     settings: {  }
     third_party_settings: {  }
-    label: hidden
-hidden:
-  langcode: true
-  links: true
+  social_links:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

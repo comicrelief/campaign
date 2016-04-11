@@ -2,24 +2,23 @@
 
 .search-result__node {
   
-    .search-result__title h2 {
-      @include box-shadow(inset 10px -140px 81px -97px $black);
-      position: absolute;
-      bottom: 1px;
-      left: 0;
-      right: 0;
-      padding: 80px 10px 10px;
-      margin-bottom: 0;
-      
-      a {
-        text-decoration: none;
-        color: $white;
-        font-size: 16px;
-        font-weight: bold;
-        &:hover {
-          text-decoration: underline;
-        }
+  .search-result__title h2 {
+    @include box-shadow(inset 10px -140px 81px -97px $black);
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    right: 0;
+    padding: 80px 10px 10px;
+    margin-bottom: 0;
+    
+    a {
+      text-decoration: none;
+      color: $white;
+      font-size: 16px;
+      font-weight: bold;
+      &:hover {
+        text-decoration: underline;
       }
     }
-  
+  }
 }
