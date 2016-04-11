@@ -2,11 +2,12 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.cw_row.field_cw_row_reference
-    - paragraphs.paragraphs_type.cw_row
+    - block_content.type.cw_row_block
+    - field.field.block_content.cw_row_block.field_cw_block_reference
+    - field.field.block_content.cw_row_block.field_cw_view_mode
   module:
     - ds
-    - user
+    - options
 third_party_settings:
   ds:
     layout:
@@ -17,43 +18,33 @@ third_party_settings:
       settings: {  }
     regions:
       middle:
-        - field_cw_row_reference
+        - cr_content_wall_CwRowDisplay
     fields:
       cr_content_wall_CwRowDisplay:
         plugin_id: cr_content_wall_CwRowDisplay
         weight: 0
         label: hidden
         formatter: default
-id: paragraph.cw_row.default
-targetEntityType: paragraph
-bundle: cw_row
+id: block_content.cw_row_block.default
+targetEntityType: block_content
+bundle: cw_row_block
 mode: default
 content:
-  created:
-    type: timestamp
-    weight: 2
-    label: above
-    settings:
-      date_format: medium
-      custom_date_format: ''
-      timezone: ''
-    third_party_settings: {  }
-  field_cw_row_reference:
-    weight: 0
-    label: hidden
-    settings:
-      link: true
-      view_mode: default
-    third_party_settings: {  }
-    type: entity_reference_entity_view
-  social_links:
-    weight: 1
-    settings: {  }
-    third_party_settings: {  }
-  uid:
-    type: author
+  field_cw_block_reference:
+    type: entity_reference_label
     weight: 3
     label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+  field_cw_view_mode:
+    type: list_default
+    weight: 2
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  social_links:
+    weight: 1
     settings: {  }
     third_party_settings: {  }
 hidden: {  }

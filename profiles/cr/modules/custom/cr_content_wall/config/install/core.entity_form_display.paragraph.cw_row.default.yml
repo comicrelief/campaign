@@ -2,8 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.cw_row.field_cw_block_reference
-    - field.field.paragraph.cw_row.field_cw_view_mode
+    - field.field.paragraph.cw_row.field_cw_row_reference
     - paragraphs.paragraphs_type.cw_row
   module:
     - inline_entity_form
@@ -12,8 +11,8 @@ targetEntityType: paragraph
 bundle: cw_row
 mode: default
 content:
-  field_cw_block_reference:
-    weight: 1
+  field_cw_row_reference:
+    weight: 2
     settings:
       form_mode: default
       label_singular: ''
@@ -24,11 +23,6 @@ content:
       override_labels: false
     third_party_settings: {  }
     type: inline_entity_form_complex
-  field_cw_view_mode:
-    weight: 0
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
 hidden:
   created: true
   status: true
