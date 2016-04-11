@@ -9,7 +9,7 @@
   <property name="app.content.dir"    value="${app.profile.dir}modules/custom/cr_default_content/content/"/>
   <!-- Development modules. -->
   <property name="app.code"           value="${app.profile.dir}modules/custom"/>
-  <property name="app.config_modules" value="cr cr_article cr_content_wall cr_teaser cr_landing_page cr_default_content cr_search cr_partner"/>
+  <property name="app.config_modules" value="cr cr_article cr_content_wall cr_rich_text_paragraph cr_teaser cr_landing_page cr_default_content cr_search cr_partner"/>
   <property name="app.dev_modules"    value="devel kint"/>
   <!-- This should get overidden for secure builds. -->
   <property name="app.password"       override="true" value="admin"/>
