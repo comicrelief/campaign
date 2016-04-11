@@ -1,0 +1,14 @@
+uuid: 673296fe-ef4a-49c1-bc01-1df068f2d376
+langcode: en
+status: true
+dependencies: {  }
+name: bg_rich_text_wide
+label: 'Bg rich text wide'
+effects:
+  fe59f922-ac4f-4a86-af01-1aeebc426701:
+    uuid: fe59f922-ac4f-4a86-af01-1aeebc426701
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 3400
+      height: 900
