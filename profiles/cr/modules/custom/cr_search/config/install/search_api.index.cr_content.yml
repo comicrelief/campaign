@@ -5,6 +5,7 @@ dependencies:
     - search_api.server.database
     - field.field.node.article.field_image
     - field.field.node.landing.field_image
+    - field.field.node.partner.field_image
   module:
     - search_api
     - node
@@ -98,6 +99,18 @@ processor_settings:
       weights:
         preprocess_index: -10
         preprocess_query: -10
+  rendered_item:
+    plugin_id: rendered_item
+    settings:
+      roles:
+        anonymous: anonymous
+      view_mode:
+        'entity:node':
+          article: default
+          landing: full
+          page: ''
+      weights:
+        preprocess_index: -10
 options:
   index_directly: true
   cron_limit: 50

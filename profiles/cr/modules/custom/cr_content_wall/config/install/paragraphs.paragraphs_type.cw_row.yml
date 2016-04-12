@@ -2,4 +2,4 @@ langcode: en
 status: true
 dependencies: {  }
 id: cw_row
-label: 'CW - Row'
+label: 'Content Wall'

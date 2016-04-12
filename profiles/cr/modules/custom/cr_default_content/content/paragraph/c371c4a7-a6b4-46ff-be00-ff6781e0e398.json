@@ -1,34 +1,31 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/paragraph\/1?_format=hal_json"
+            "href": "http:\/\/default\/paragraph\/3?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cw_row"
         },
         "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/uid": [
             {
-                "href": "http:\/\/default\/user\/0?_format=hal_json",
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
                 "lang": "en"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/revision_uid": [
             {
-                "href": "http:\/\/default\/user\/0?_format=hal_json"
+                "href": "http:\/\/default\/user\/1?_format=hal_json"
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/field_cw_block_reference": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/field_cw_row_reference": [
             {
-                "href": "http:\/\/default\/block\/5?_format=hal_json"
-            },
-            {
-                "href": "http:\/\/default\/block\/1?_format=hal_json"
+                "href": "http:\/\/default\/block\/9?_format=hal_json"
             }
         ]
     },
     "uuid": [
         {
-            "value": "13099c25-9add-433d-8a08-8feb0d565bf1"
+            "value": "c371c4a7-a6b4-46ff-be00-ff6781e0e398"
         }
     ],
     "type": [
@@ -47,7 +44,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -55,7 +52,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "46638b22-6dbc-4457-9002-0243e8091b70"
+                        "value": "1e5415a6-96aa-4707-9d00-a19224644862"
                     }
                 ],
                 "lang": "en"
@@ -65,7 +62,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -73,39 +70,24 @@
                 },
                 "uuid": [
                     {
-                        "value": "46638b22-6dbc-4457-9002-0243e8091b70"
+                        "value": "1e5415a6-96aa-4707-9d00-a19224644862"
                     }
                 ]
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/field_cw_block_reference": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/field_cw_row_reference": [
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/block\/5?_format=hal_json"
+                        "href": "http:\/\/default\/block\/9?_format=hal_json"
                     },
                     "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/block_content\/teaser"
+                        "href": "http:\/\/drupal.org\/rest\/type\/block_content\/cw_row_block"
                     }
                 },
                 "uuid": [
                     {
-                        "value": "638bd538-b590-4afd-be51-81f13b6aa027"
-                    }
-                ]
-            },
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/block\/1?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/block_content\/teaser"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "76e49bf8-4e9a-4172-b400-c1743e8dfc1d"
+                        "value": "993b8a81-19f0-42b9-bb05-5c55b007a698"
                     }
                 ]
             }
@@ -119,30 +101,25 @@
     ],
     "created": [
         {
-            "value": "1458737578",
+            "value": "1460372706",
             "lang": "en"
         }
     ],
     "changed": [
         {
-            "value": "1458737578",
+            "value": "1460372706",
             "lang": "en"
         }
     ],
     "revision_timestamp": [
         {
-            "value": "1458737578"
+            "value": "1460372706"
         }
     ],
     "default_langcode": [
         {
             "value": "1",
             "lang": "en"
-        }
-    ],
-    "field_cw_view_mode": [
-        {
-            "value": "cw_2col_m_m"
         }
     ]
 }

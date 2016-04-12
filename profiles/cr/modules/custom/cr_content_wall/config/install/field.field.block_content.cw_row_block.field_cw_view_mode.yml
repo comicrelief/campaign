@@ -2,14 +2,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_cw_view_mode
-    - paragraphs.paragraphs_type.cw_row
+    - block_content.type.cw_row_block
+    - field.storage.block_content.field_cw_view_mode
   module:
     - options
-id: paragraph.cw_row.field_cw_view_mode
+id: block_content.cw_row_block.field_cw_view_mode
 field_name: field_cw_view_mode
-entity_type: paragraph
-bundle: cw_row
+entity_type: block_content
+bundle: cw_row_block
 label: 'View Mode'
 description: ''
 required: true
