@@ -23,7 +23,7 @@
   <!-- These allow developers to override config. on a per environment basis -->
   <property file="build.properties"   override="true"/>
   <!-- Default & meta -->
-  <target name="build:prepare" depends="grunt:dependencies, install:composer"
+  <target name="build:prepare" depends="grunt:dependencies, test:install:composer"
     description="Build (or rebuild) the project.">
   </target>
   <target name="build" depends="install, grunt:build"
@@ -49,6 +49,10 @@
         </replacetokens>
       </filterchain>
     </copy>
+  </target>
+  <target name="test:install:composer" description="Install composer dependencies">
+    <exec dir="${app.profile.dir}tests/behat" logoutput="true" passthru="true"
+      command="composer install --no-progress" checkreturn="true"/>
   </target>
 
   <!-- Front-end -->
@@ -92,10 +96,6 @@
   <target name="cron" description="Run Drupal's cron script">
     <exec dir="${app.dir}" logoutput="true" passthru="true"
       command="${drush.bin} core-cron"/>
-  </target>
-  <target name="install:composer" description="Install composer dependencies">
-    <exec dir="${app.profile.dir}tests/behat" logoutput="true" passthru="true"
-      command="composer install --no-progress" checkreturn="true"/>
   </target>
   <target name="cache:clear">
     <exec command="${drush.bin} cr" passthru="true"/>
