@@ -23,6 +23,9 @@
   <!-- These allow developers to override config. on a per environment basis -->
   <property file="build.properties"   override="true"/>
   <!-- Default & meta -->
+  <target name="build:prepare" depends="grunt:dependencies, install:composer"
+    description="Build (or rebuild) the project.">
+  </target>
   <target name="build" depends="install, grunt:build"
     description="Build (or rebuild) the project.">
   </target>
@@ -31,13 +34,13 @@
   </target>
 
   <!-- Tests -->
-  <target name="test" depends="prepare-test" description="Run behat tests">
-    <exec dir="${app.profile.dir}tests/behat" passthru="true" checkreturn="true" command="vendor/bin/behat"/>
+  <target name="test" depends="test:prepare" description="Run behat tests">
+    <exec dir="${app.profile.dir}tests/behat" passthru="true" checkreturn="true" command="vendor/bin/behat --colors"/>
   </target>
-	<target name="test-dl" depends="prepare-test" description="Run behat tests">
-		<exec dir="${app.profile.dir}tests/behat" passthru="true" checkreturn="true" command="vendor/bin/behat -dl"/>
+	<target name="test:dl" depends="test:prepare" description="Run behat tests">
+		<exec dir="${app.profile.dir}tests/behat" passthru="true" checkreturn="true" command="vendor/bin/behat --colors -dl"/>
 	</target>
-  <target name="prepare-test" description="Prepare to tun behat tests">
+  <target name="test:prepare" description="Prepare to tun behat tests">
     <copy file="${app.profile.dir}tests/behat/behat.yml.phing" tofile="${app.profile.dir}tests/behat/behat.yml" overwrite="true">
       <filterchain>
         <replacetokens begintoken="%%" endtoken="%%">
@@ -50,7 +53,7 @@
 
   <!-- Front-end -->
   <target name="grunt:build" description="Generate all compiled Sass and JS files.">
-    <exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="grunt build"/>
+    <exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="bundle exec grunt build"/>
   </target>
 	<target name="grunt:dependencies" description="Install all grunt dependencies.">
 		<exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="bundle install --path vendor/bundle"/>
@@ -82,9 +85,17 @@
       command="${drush.bin} make -y ${app.profile.dir}drupal-org.make.yml --no-core --contrib-destination=${app.profile.dir}"/>
   </target>
   <target name="install" description="Install CR with standard configuration.">
-    <exec dir="${app.dir}" logoutput="true" passthru="true"
-      command="${drush.bin} si ${app.profile.name} -y --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring}"/>
+    <exec dir="${app.dir}" logoutput="true" passthru="true" checkreturn="true"
+      command="${drush.bin} si ${app.profile.name} -y --debug --verbose --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring}"/>
     <phingcall target="file:mod"/>
+  </target>
+  <target name="cron" description="Install CR with standard configuration.">
+    <exec dir="${app.dir}" logoutput="true" passthru="true"
+      command="${drush.bin} core-cron"/>
+  </target>
+  <target name="install:composer" description="Install composer dependencies">
+    <exec dir="${app.profile.dir}tests/behat" logoutput="true" passthru="true"
+      command="composer install --no-progress" checkreturn="true"/>
   </target>
   <target name="cache:clear">
     <exec command="${drush.bin} cr" passthru="true"/>
@@ -125,7 +136,7 @@
     depends="info:tools, info:code:cs, info:code:md, info:code:loc, info:code:cbf">
   </target>
   <target name="info:tools" description="Install tools">
-    <exec dir="${app.profile.dir}tests/behat" command="composer install" logoutput="true"/>
+    <exec dir="${app.profile.dir}tests/behat" command="composer install --no-progress" logoutput="true"/>
   </target>
   <target name="info:code:cs" description="Check quality of the PHP code for more info. https://www.drupal.org/node/1419988">
     <exec command="${c.home}bin/phpcs --config-set installed_paths ${c.home}${cs.dir}"/>
