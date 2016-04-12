@@ -4,6 +4,21 @@
 		width: 100%;
 		max-width: 100%;
 	}
+	.page__title {
+		position:absolute; // make it as a mixin
+		left:-10000px;
+		top:auto;
+		width:1px;
+		height:1px;
+		overflow:hidden;
+	}
+	.panel-1col {
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+}
+.landing-page {
+	position: relative;
 }
 .landing-page__header {
   padding: 80px 0;
@@ -20,6 +35,15 @@
   img {
   	margin-bottom: 40px;
   }
+}
+.landing-page__title {
+	color: $white;
+	position:absolute; // make it as a mixin
+	left:-10000px;
+	top:auto;
+	width:1px;
+	height:1px;
+	overflow:hidden;
 }
 .landing-page__content {
   max-width: 600px;

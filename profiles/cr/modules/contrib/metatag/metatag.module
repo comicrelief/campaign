@@ -98,9 +98,7 @@ function metatag_is_current_route_supported() {
   }
 
   // Ignore admin paths.
-  $route = \Drupal::routeMatch()->getRouteObject();
-  $is_admin = \Drupal::service('router.admin_context')->isAdminRoute($route);
-  if ($is_admin) {
+  if (\Drupal::service('router.admin_context')->isAdminRoute()) {
     return FALSE;
   }
 
@@ -236,10 +234,10 @@ function metatag_get_default_tags() {
   if (\Drupal::service('path.matcher')->isFrontPage()) {
     $special_metatags = entity_load('metatag_defaults', 'front');
   }
-  elseif(\Drupal::service('current_route_match')->getRouteName() == 'system.403') {
+  elseif (\Drupal::service('current_route_match')->getRouteName() == 'system.403') {
     $special_metatags = entity_load('metatag_defaults', '403');
   }
-  elseif(\Drupal::service('current_route_match')->getRouteName() == 'system.404') {
+  elseif (\Drupal::service('current_route_match')->getRouteName() == 'system.404') {
     $special_metatags = entity_load('metatag_defaults', '404');
   }
   if (isset($special_metatags)) {

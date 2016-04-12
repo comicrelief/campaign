@@ -18,6 +18,14 @@
     template: _.template('<div class="ipe-tab-wrapper"></div>'),
 
     /**
+     * @type {function}
+     */
+    template_content_block_edit: _.template(
+      '<h4>' + Drupal.t('Edit existing "<strong><%- label %></strong>" content') + '</h4>' +
+      '<div class="ipe-block-form ipe-form"><div class="ipe-icon ipe-icon-loading"></div></div>'
+    ),
+
+    /**
      * @type {Drupal.panels_ipe.TabsView}
      */
     tabsView: null,
@@ -62,6 +70,8 @@
       this.listenTo(this.model, 'addBlockPlugin', this.addBlockPlugin);
       this.listenTo(this.model, 'configureBlock', this.configureBlock);
       this.listenTo(this.model, 'addContentBlock', this.addContentBlock);
+      this.listenTo(this.model, 'editContentBlock', this.editContentBlock);
+      this.listenTo(this.model, 'editContentBlockDone', this.editContentBlockDone);
 
       // Listen to tabs that don't have associated BackboneViews.
       this.listenTo(this.model.get('editTab'), 'change:active', this.clickEditTab);
@@ -228,13 +238,19 @@
      */
     clickCancelTab: function () {
       var cancel_tab = this.model.get('cancelTab');
-      if (cancel_tab.get('active') && !cancel_tab.get('loading')) {
-        // Remove our changes and refresh the page.
-        cancel_tab.set({loading: true});
-        $.ajax(Drupal.panels_ipe.urlRoot(drupalSettings) + '/cancel')
-          .done(function (data) {
-            location.reload();
-          });
+
+      if (confirm(Drupal.t('Are you sure you want to cancel your changes?'))) {
+        if (cancel_tab.get('active') && !cancel_tab.get('loading')) {
+          // Remove our changes and refresh the page.
+          cancel_tab.set({loading: true});
+          $.ajax(Drupal.panels_ipe.urlRoot(drupalSettings) + '/cancel')
+            .done(function (data) {
+              location.reload();
+            });
+        }
+      }
+      else {
+        cancel_tab.set('active', false, {silent: true});
       }
     },
 
@@ -249,15 +265,11 @@
     addBlockPlugin: function (block, region) {
       this.layoutView.addBlock(block, region);
 
-      // Mark all tabs as inactive and close the view.
-      this.tabsView.collection.each(function (tab) {
-        tab.set('active', false);
-      });
-
       // Indicate that there are unsaved changes in the app.
       this.model.set('unsaved', true);
 
-      this.tabsView.closeTabContent();
+      // Switch back to the edit tab.
+      this.tabsView.switchTab('edit');
     },
 
     /**
@@ -267,9 +279,12 @@
      *   The Block that needs to have its form opened.
      */
     configureBlock: function (block) {
-      this.tabsView.tabViews['place_content'].activeCategory = 'On Screen';
-      this.tabsView.tabViews['place_content'].autoClick = '[data-existing-block-id=' + block.get('uuid') + ']';
-      this.tabsView.switchTab('place_content');
+      var info = {
+        url: Drupal.panels_ipe.urlRoot(drupalSettings) + '/block_plugins/' + block.get('id') + '/block/' + block.get('uuid') + '/form',
+        model: block
+      };
+
+      this.loadBlockForm(info);
     },
 
     /**
@@ -279,19 +294,55 @@
      *   The UUID of the newly added Content Block.
      */
     addContentBlock: function (uuid) {
-      // Deactivate the current category in our Create Content tab.
-      this.tabsView.tabViews['create_content'].activeCategory = null;
-
       // Delete the current block plugin collection so that a new one is pulled in.
-      this.tabsView.tabViews['place_content'].collection = null;
+      delete this.tabsView.tabViews['manage_content'].collection;
 
       // Auto-click the new block, which we know is in the "Custom" category.
       // @todo When configurable categories are in, determine this from the
       // passed-in settings.
-      this.tabsView.tabViews['place_content'].autoClick = '[data-plugin-id="block_content:' + uuid + '"]';
-      this.tabsView.tabViews['place_content'].activeCategory = 'Custom';
+      this.tabsView.tabViews['manage_content'].autoClick = '[data-plugin-id="block_content:' + uuid + '"]';
+      this.tabsView.tabViews['manage_content'].activeCategory = 'Custom';
 
-      this.tabsView.switchTab('place_content');
+      this.tabsView.tabViews['manage_content'].render();
+    },
+
+    /**
+     * Opens the Manage Content tray when editing an existing Content Block.
+     *
+     * @param {Drupal.panels_ipe.BlockModel} block
+     *   The Block that needs to have its form opened.
+     */
+    editContentBlock: function (block) {
+      var plugin_split = block.get('id').split(':');
+
+      var info = {
+        url: Drupal.panels_ipe.urlRoot(drupalSettings) + '/block_content/edit/block/' + plugin_split[1] + '/form',
+        model: block
+      };
+
+      this.loadBlockForm(info, this.template_content_block_edit);
+    },
+
+    /**
+     * React after a content block has been edited.
+     *
+     * @param {string} block_content_uuid
+     *   The UUID of the Block Content entity that was edited.
+     */
+    editContentBlockDone: function(block_content_uuid) {
+      // Find all on-screen Blocks that render this Content Block and refresh
+      // them from the server.
+      this.layoutView.model.get('regionCollection').each(function (region) {
+        var id = 'block_content:' + block_content_uuid;
+        var blocks = region.get('blockCollection').where({id: id});
+
+        for (var i in blocks) {
+          blocks[i].set('syncing', true);
+          blocks[i].fetch();
+        }
+      });
+
+      this.tabsView.switchTab('edit');
     },
 
     /**
@@ -305,6 +356,38 @@
       // Re-render ourselves, pass "false" as we don't need to re-render the
       // layout, just the tabs.
       this.render(false);
+    },
+
+    /**
+     * Helper function to switch tabs to Manage Content and load an arbitrary
+     * form.
+     *
+     * @param {object} info
+     *   An object compatible with Drupal.panels_ipe.CategoryView.loadForm()
+     * @param {function} template
+     *   An optional callback function for the form template.
+     */
+    loadBlockForm: function (info, template) {
+      // We're going to open the manage content tab, which may take time to
+      // render. Load the Block edit form on render.
+      var manage_content = this.tabsView.tabViews['manage_content'];
+      manage_content.on('render', function () {
+
+        if (template) {
+          manage_content.loadForm(info, template);
+        }
+        else {
+          manage_content.loadForm(info);
+        }
+
+        // We only need this event to trigger once.
+        manage_content.off('render', null, this);
+      }, this);
+
+      // Disable the active category to avoid confusion.
+      manage_content.activeCategory = null;
+
+      this.tabsView.switchTab('manage_content');
     }
 
   });

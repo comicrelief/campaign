@@ -6,19 +6,25 @@
 
 namespace Drupal\cr_content_wall\Plugin\DsField;
 
-use Drupal\Component\Utility\Html;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Url;
 use Drupal\ds\Plugin\DsField\DsFieldBase;
 use Drupal\block_content\Entity\BlockContent;
-use Drupal\field\FieldConfigInterface;
+use Drupal\paragraphs\Entity\Paragraph;
 
 /**
+ * Custom Row Display.
+ *
+ * Custom display field to rendered all referenced items in view modes.
+ *
+ * @author Zach Bimson <zach.bimson@gmail.com>
+ *
  * @DsField(
  *   id = "cr_content_wall_CwRowDisplay",
  *   title = @Translation("Row Display"),
+ *   description = @Translation("Custom DS field to manage row display"),
  *   entity_type = "block_content",
- *   provider = "cr_content_wall"
+ *   provider = "cr_content_wall",
+ *   ui_limit = {"cw_row_block|*"}
  * )
  */
 class CwRowDisplay extends DsFieldBase {
@@ -33,37 +39,44 @@ class CwRowDisplay extends DsFieldBase {
     }
 
     $row_id = $this->entity()->id();
-
-    // Get row block
+    // Get row block.
     $row = $this->getRowEntity($row_id);
-    // Get referenced content blocks
+    // Get referenced content blocks.
     $blocks = $this->getReferencedBlocks($row, $config['reference_field']);
 
     return array(
       '#theme' => 'item_list',
-      '#items' => $this->buildRenderedBlocks($blocks),
+      '#items' => $this->buildRenderedBlocks($row, $blocks),
     );
   }
 
   /**
-   * @param array of referenced block id's
-   * @return array of rendered blocks in row defined view modes
+   * Returns array of rendered content blocks.
+   *
+   * Loads blocks from passed id's and loads them in the correct view modes.
+   *
+   * @param array $blocks
+   *   An array of referenced block id's.
+   *
+   * @return array
+   *   Array of rendered blocks in row defined view modes.
    */
-  public function buildRenderedBlocks($blocks) {
+  public function buildRenderedBlocks($row, $blocks) {
     if (!isset($blocks) || !$blocks) {
-      return;
+      return [];
     }
 
     $rendered_blocks = array();
-    $row_view_mode = $this->viewMode();
-    $view_modes = $this->getBlockViewModes($row_view_mode);
+    $row_view_mode = $row->get('field_cw_view_mode')->getValue();
+    // Need a better way to get array value below.
+    $view_modes = $this->getBlockViewModes($row_view_mode[0]['value']);
 
     foreach ($blocks as $key => $block_id) {
       $block = BlockContent::load($block_id);
 
       if (isset($view_modes[$key])) {
-        $display = \Drupal::entityManager()->
-          getViewBuilder('block_content')->view($block, $view_modes[$key]);
+        $view = \Drupal::entityManager()->getViewBuilder('block_content');
+        $display = $view->view($block, $view_modes[$key]);
 
         $rendered_blocks[] = $display;
       }
@@ -72,8 +85,16 @@ class CwRowDisplay extends DsFieldBase {
   }
 
   /**
-   * @param string: row block view mode
-   * @return array of associated child block view modes
+   * Return an array of child block view modes.
+   *
+   * Passing the row block's view mode we return the associated array of child
+   * block view modes.
+   *
+   * @param string $view_mode
+   *   Row block view mode as string.
+   *
+   * @return array
+   *   Array of associated child block view modes.
    */
   public function getBlockViewModes($view_mode) {
     $view_modes = array(
@@ -88,17 +109,32 @@ class CwRowDisplay extends DsFieldBase {
   }
 
   /**
-   * @param row block id
-   * @return loaded BlockContent object
+   * Get row block entity.
+   *
+   * Return loaded BlockContent entity.
+   *
+   * @param string $row_id
+   *   Row block id.
+   *
+   * @return object
+   *   Loaded BlockContent object.
    */
   public function getRowEntity($row_id) {
     return BlockContent::load($row_id);
   }
 
   /**
-   * @param loaded row block entity
-   * @param reference field machine name
-   * @return array of referenced block id's
+   * Get array of referenced blocks.
+   *
+   * Method for returning array of child block id's.
+   *
+   * @param object $block
+   *   Loaded row block entity.
+   * @param string $field
+   *   Reference field machine name.
+   *
+   * @return array
+   *   Referenced block id's.
    */
   public function getReferencedBlocks($block, $field) {
     $field_values = $block->get($field)->getValue();

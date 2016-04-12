@@ -1,0 +1,183 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/node\/13?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/partner"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/partner\/uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/partner\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/partner\/field_partner_category": [
+            {
+                "href": "http:\/\/default\/taxonomy\/term\/3?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/partner\/field_partner_logo": [
+            {
+                "href": "http:\/\/default\/file\/21?_format=hal_json"
+            }
+        ]
+    },
+    "uuid": [
+        {
+            "value": "f3f89495-448a-4290-a100-d9ae5bf34447"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "partner"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "title": [
+        {
+            "value": "Persil",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/partner\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "01510da8-11cc-426f-a300-0a6331aeb96e"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/partner\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "01510da8-11cc-426f-a300-0a6331aeb96e"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/partner\/field_partner_category": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/taxonomy\/term\/3?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/partner_category"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "bf345a63-92f8-4f83-8220-32a9c6276e7f"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/partner\/field_partner_logo": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/21?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "dd737571-06f0-44e8-b103-3a36ec953041"
+                    }
+                ],
+                "alt": "Persil",
+                "title": "",
+                "width": "130",
+                "height": "97"
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1459942304",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1459951907",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1459951895"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<p>We were thrilled to bits that Persil joined us an Official Partner for this year\u2019s Red Nose Day campaign. Perry, Penny, Percy and Posey Persil all joined in the Red Nose Day fun and made their faces funny for money! They also gave mums across the land a reason to smile while doing their laundry! Because, the Persil small and mighty bottle had a special edition Red Nose dosing ball complete with funny face.<\/p>\r\n\r\n<p>As part of Unilever, Persil and PG tips raised a whopping \u00a31,024,250! And we want to say a big and mighty thank you to you Persil!<\/p>\r\n",
+            "format": "basic_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ]
+}

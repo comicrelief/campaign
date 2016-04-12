@@ -42,3 +42,4 @@ hidden:
   field_publish_date: true
   field_tags: true
   field_youtube_url: true
+  social_links: true

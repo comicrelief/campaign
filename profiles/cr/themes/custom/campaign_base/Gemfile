@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby "2.1.2"
 
+ruby '2.3.0'
+
 # Sass, Compass and extensions.
 gem 'sass', '3.4.5'           # Sass.
 gem 'sass-globbing'           # Import Sass files based on globbing pattern.

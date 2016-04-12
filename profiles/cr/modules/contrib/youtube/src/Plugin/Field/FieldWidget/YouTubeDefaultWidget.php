@@ -83,7 +83,7 @@ class YouTubeDefaultWidget extends WidgetBase {
     if (isset($items->get($delta)->video_id)) {
       $element['video_id'] = array(
         '#prefix' => '<div class="youtube-video-id">',
-        '#markup' => t('YouTube video ID: !video_id', array('!video_id' => $items->get($delta)->video_id)),
+        '#markup' => t('YouTube video ID: @video_id', array('@video_id' => $items->get($delta)->video_id)),
         '#suffix' => '</div>',
         '#weight' => 1,
       );

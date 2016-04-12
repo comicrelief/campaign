@@ -22,7 +22,12 @@
     /**
      * @type {function}
      */
-    template_layout: _.template('<li class="ipe-layout" data-layout-id="<%- id %>"><img class="ipe-layout-image" src="<%- icon %>" title="<%- label %>" alt="<%- label %>" /></li>'),
+    template_layout: _.template(
+    '<li class="ipe-layout" data-layout-id="<%- id %>">' +
+    '  <img class="ipe-layout-image" src="<%- icon %>" title="<%- label %>" alt="<%- label %>" />' +
+    '  <span class="ipe-layout-label"><%- label %></span>' +
+    '</li>'
+    ),
 
     /**
      * @type {function}

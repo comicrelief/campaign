@@ -15,7 +15,7 @@
      * @type {function}
      */
     template_actions: _.template(
-      '<div class="ipe-actions-block ipe-actions" data-block-action-id="<%- uuid %>">' +
+      '<div class="ipe-actions-block ipe-actions" data-block-action-id="<%- uuid %>" data-block-edit-id="<%- id %>">' +
       '  <h5>' + Drupal.t('Block: <%- label %>') + '</h5>' +
       '  <ul class="ipe-action-list">' +
       '    <li data-action-id="remove">' +
@@ -33,6 +33,11 @@
       '    <li data-action-id="configure">' +
       '      <a><span class="ipe-icon ipe-icon-configure"></span></a>' +
       '    </li>' +
+      '<% if (plugin_id == "block_content") { %>' +
+      '    <li data-action-id="edit-content-block">' +
+      '      <a><span class="ipe-icon ipe-icon-edit"></span></a>' +
+      '    </li>' +
+      '<% } %>' +
       '  </ul>' +
       '</div>'
     ),
@@ -61,7 +66,8 @@
       if (options.el && !this.model.get('html')) {
         this.model.set({html: this.$el.prop('outerHTML')});
       }
-      this.listenTo(this.model, 'reset', this.render);
+      this.listenTo(this.model, 'sync', this.finishedSync);
+      this.listenTo(this.model, 'change:syncing', this.render);
     },
 
     /**
@@ -107,6 +113,11 @@
         });
       }
 
+      // Add a special class if we're currently syncing HTML from the server.
+      if (this.model.get('syncing')) {
+        this.$el.addClass('syncing');
+      }
+
       return this;
     },
 
@@ -117,7 +128,7 @@
      *
      * @returns {Drupal.panels_ipe.BlockView}
      */
-    remove: function() {
+    remove: function () {
       // Remove known augmentations to HTML so that they do not persist.
       this.$('.ipe-actions-block').remove();
       this.$el.removeClass('ipe-highlight active');
@@ -129,6 +140,13 @@
       this._removeElement();
       this.stopListening();
       return this;
+    },
+
+    /**
+     * Reacts to our model being synced from the server.
+     */
+    finishedSync: function () {
+      this.model.set('syncing', false);
     }
 
   });

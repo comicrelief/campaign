@@ -4,21 +4,47 @@ dependencies:
   config:
     - block_content.type.cw_row_block
     - field.field.block_content.cw_row_block.field_cw_block_reference
+    - field.field.block_content.cw_row_block.field_cw_view_mode
   module:
     - ds
+    - options
+third_party_settings:
+  ds:
+    layout:
+      id: onecol
+      path: profiles/cr/modules/contrib/panels/layouts/onecol
+      library: layout_plugin/onecol
+      disable_css: false
+      settings: {  }
+    regions:
+      middle:
+        - cr_content_wall_CwRowDisplay
+    fields:
+      cr_content_wall_CwRowDisplay:
+        plugin_id: cr_content_wall_CwRowDisplay
+        weight: 0
+        label: hidden
+        formatter: default
 id: block_content.cw_row_block.default
 targetEntityType: block_content
 bundle: cw_row_block
 mode: default
 content:
   field_cw_block_reference:
-    weight: 0
-    label: hidden
+    type: entity_reference_label
+    weight: 3
+    label: above
     settings:
-      view_mode: content_wall
-      link: false
-    third_party_settings:
-      ds:
-        ds_limit: ''
-    type: entity_reference_entity_view
+      link: true
+    third_party_settings: {  }
+  field_cw_view_mode:
+    type: list_default
+    weight: 2
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  social_links:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
 hidden: {  }

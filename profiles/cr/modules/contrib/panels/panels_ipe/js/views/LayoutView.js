@@ -57,6 +57,7 @@
       'click [data-action-id="down"]': 'moveBlock',
       'click [data-action-id="remove"]': 'removeBlock',
       'click [data-action-id="configure"]': 'configureBlock',
+      'click [data-action-id="edit-content-block"]': 'editContentBlock',
       'drop .ipe-droppable': 'dropBlock'
     },
 
@@ -85,6 +86,8 @@
       if (this.model.get('html')) {
         this.$el.html(this.model.get('html'));
       }
+
+      this.on('tabActiveChange', this.tabActiveChange, this);
       this.listenTo(this.model, 'change:active', this.changeState);
     },
 
@@ -233,7 +236,7 @@
         this.moveBlockToRegion(block_uuid, new_region_name);
         this.hideBlockRegionList(e);
         this.render();
-        this.highlightBlock(block_uuid);
+        this.highlightBlock(block_uuid, true);
         this.saveToTempStore();
       }
     },
@@ -249,6 +252,19 @@
      */
     getEventBlockUuid: function (e) {
       return $(e.currentTarget).closest('[data-block-action-id]').data('block-action-id');
+    },
+
+    /**
+     * Get the block Uuid related to an event.
+     *
+     * @param {Object} e
+     *   The event object.
+     *
+     * @return {String}
+     *   The block Uuid
+     */
+    getEventBlockId: function (e) {
+      return $(e.currentTarget).closest('[data-block-edit-id]').data('block-edit-id');
     },
 
     /**
@@ -286,13 +302,23 @@
     },
 
     /**
-     * Highlights a block by adding a css class.
+     * Highlights a block by adding a css class and optionally scrolls to the
+     * block's location.
      *
-     * @param block_uuid
+     * @param {string} block_uuid
      *   The universally unique identifier of the block.
+     * @param {bool} scroll
+     *   Whether or not the page should scroll to the block. Defaults to false.
      */
-    highlightBlock: function (block_uuid) {
-      this.$('[data-block-id="' + block_uuid + '"]').addClass('ipe-highlight');
+    highlightBlock: function (block_uuid, scroll) {
+      scroll = scroll || false;
+
+      var $block = this.$('[data-block-id="' + block_uuid + '"]');
+      $block.addClass('ipe-highlight');
+
+      if (scroll) {
+        $('body').animate({scrollTop: $block.offset().top}, 600);
+      }
     },
 
     /**
@@ -335,9 +361,8 @@
      *   The UUID/ID of a BlockModel.
      */
     removeServerSideBlock: function (block_uuid) {
-      var urlRoot = Drupal.panels_ipe.urlRoot(drupalSettings);
       $.ajax({
-        url: urlRoot + '/layouts/' + this.model.get('id') + '/remove_block',
+        url: Drupal.panels_ipe.urlRoot(drupalSettings) + '/remove_block',
         method: 'DELETE',
         data: JSON.stringify(block_uuid),
         contentType: "application/json; charset=UTF-8"
@@ -410,8 +435,34 @@
       var region_name = $(e.currentTarget).closest('[data-region-name]').data('region-name');
       var region = this.model.get('regionCollection').get(region_name);
 
-      // Send a App-level event so our BlockPicker View can respond and display a Form.
+      // Send an App-level event so our BlockPicker View can display a Form.
       Drupal.panels_ipe.app.trigger('configureBlock', region.getBlock(id));
+    },
+
+    /**
+     * Edits an existing Content Block.
+     *
+     * @param {Object} e
+     *   The event object.
+     */
+    editContentBlock: function (e) {
+      // Get the BlockModel id (uuid).
+      var id = this.getEventBlockUuid(e);
+
+      // Get the blockModel content id.
+      var plugin_id = this.getEventBlockId(e);
+
+      // Split plugin id.
+      var plugin_split = plugin_id.split(':');
+
+      if (plugin_split[0] == 'block_content') {
+        // Grab the model for this region.
+        var region_name = $(e.currentTarget).closest('[data-region-name]').data('region-name');
+        var region = this.model.get('regionCollection').get(region_name);
+
+        // Send a App-level event so our BlockPicker View can respond and display a Form.
+        Drupal.panels_ipe.app.trigger('editContentBlock', region.getBlock(id));
+      }
     },
 
     /**
@@ -464,9 +515,10 @@
       // First, check if the Block already exists and remove it if so.
       var index = null;
       this.model.get('regionCollection').each(function (region) {
-        if (region.getBlock(block.get('uuid'))) {
-          index = region.get('blockCollection').indexOf(block.get('uuid'));
-          region.removeBlock(block.get('uuid'));
+        var old_block = region.getBlock(block.get('uuid'));
+        if (old_block) {
+          index = region.get('blockCollection').indexOf(old_block);
+          region.removeBlock(old_block);
         }
       });
 
@@ -475,13 +527,13 @@
       if (region) {
         // Add the block, at its previous index if necessary.
         var options = {};
-        if (index) {
+        if (index !== null && index !== -1) {
           options.at = index;
         }
         region.addBlock(block, options);
 
         this.render();
-        this.highlightBlock(block.get('uuid'));
+        this.highlightBlock(block.get('uuid'), true);
       }
     }
 

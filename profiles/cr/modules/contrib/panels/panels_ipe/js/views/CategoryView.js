@@ -76,6 +76,8 @@
       if (options && options.collection) {
         this.collection = options.collection;
       }
+
+      this.on('tabActiveChange', this.tabActiveChange, this);
     },
 
     /**
@@ -113,11 +115,19 @@
       if (this.activeCategory) {
         var $top = this.$('.ipe-category-picker-top');
         $top.addClass('active');
+        this.$('.ipe-category-picker-bottom').addClass('top-open');
         this.collection.each(function (model) {
           if (model.get('category') === this.activeCategory) {
             $top.append(this.template_item(model));
           }
         }, this);
+
+        // Add a top-level body class.
+        $('body').addClass('panels-ipe-category-picker-top-open');
+      }
+      else {
+        // Remove our top-level body class.
+        $('body').removeClass('panels-ipe-category-picker-top-open');
       }
 
       this.setTopMaxHeight();
@@ -182,19 +192,32 @@
     getFormInfo: function(e) {},
 
     /**
-     * Displays a Configuration form in our top region.
+     * Determines form info from the current click event and displays a form.
      *
      * @param {Object} e
      *   The event object.
      */
     displayForm: function (e) {
-      var self = this;
-
       var info = this.getFormInfo(e);
 
       // Indicate an AJAX request.
+      this.loadForm(info);
+    },
+
+    /**
+     * Displays a configuration form in our top region.
+     *
+     * @param {Object} info
+     *   An object containing the form URL the model for our form template.
+     * @param {function} template
+     *   An optional callback function for the form template.
+     */
+    loadForm: function(info, template) {
+      template = template || this.template_form;
+      var self = this;
+
       this.$('.ipe-category-picker-top').fadeOut('fast', function () {
-        self.$('.ipe-category-picker-top').html(self.template_form(info.model.toJSON()));
+        self.$('.ipe-category-picker-top').html(template(info.model.toJSON()));
         self.$('.ipe-category-picker-top').fadeIn('fast');
 
         // Setup the Drupal.Ajax instance.
@@ -209,12 +232,26 @@
 
           self.setTopMaxHeight();
 
+          // Remove the inline display style and add a unique class.
+          self.$('.ipe-category-picker-top').css('display', '').addClass('form-displayed');
+
           self.$('.ipe-category-picker-top').hide().fadeIn();
+          self.$('.ipe-category-picker-bottom').addClass('top-open');
         };
 
         // Make the Drupal AJAX request.
         ajax.execute();
       });
+    },
+
+    /**
+     * Responds to our associated tab being opened/closed.
+     *
+     * @param {bool} state
+     *   Whether or not our associated tab is open.
+     */
+    tabActiveChange: function (state) {
+      $('body').toggleClass('panels-ipe-category-picker-top-open', state);
     },
 
     /**

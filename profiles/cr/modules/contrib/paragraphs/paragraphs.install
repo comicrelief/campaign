@@ -1,0 +1,19 @@
+<?php
+/**
+ * @file
+ * Installation hooks for paragraphs module.
+ */
+
+use Drupal\Core\Field\BaseFieldDefinition;
+
+/**
+ * Add status field.
+ */
+function paragraphs_update_8001() {
+  $storage_definition = BaseFieldDefinition::create('boolean')
+    ->setLabel(t('Published'))
+    ->setRevisionable(TRUE)
+    ->setTranslatable(TRUE);
+  \Drupal::entityDefinitionUpdateManager()
+    ->installFieldStorageDefinition('status', 'paragraph', 'paragraph', $storage_definition);
+}

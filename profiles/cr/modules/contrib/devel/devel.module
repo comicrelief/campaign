@@ -37,6 +37,10 @@ function devel_help($route_name) {
 
     case 'devel/session':
       return '<p>' . t('Here are the contents of your <code>$_SESSION</code> variable.') . '</p>';
+
+    case 'devel.state_system_page':
+      return '<p>' . t('This is a list of state variables and their values. For more information read online documentation of <a href=":documentation">State API in Drupal 8</a>.', array(':documentation' => "https://www.drupal.org/developing/api/8/state")) . '</p>';
+
   }
 }
 
@@ -77,41 +81,6 @@ function devel_entity_operation(EntityInterface $entity) {
     }
   }
   return $operations;
-}
-
-/**
- * Returns destinations.
- */
-function devel_menu_need_destination() {
-  return array('devel/cache/clear', 'devel/reinstall', 'devel/menu/reset',
-    'admin/reports/status/run-cron');
-}
-
-/**
- * Implements hook_menu_link_alter().
- *
- * Flag this link as needing alter at display time.
- * This is more robust than setting alter in hook_menu().
- * @see devel_translated_menu_link_alter()
- */
-function devel_menu_link_alter(&$item) {
-  if (in_array($item['link_path'], devel_menu_need_destination()) || $item['link_path'] == 'devel/menu/item') {
-    $item['options']['alter'] = TRUE;
-  }
-}
-
-/**
- * Implements hook_translated_menu_item_alter().
- *
- * Append dynamic querystring 'destination' to several of our own menu items.
- */
-function devel_translated_menu_link_alter(&$item) {
-  if (in_array($item['href'], devel_menu_need_destination())) {
-    $item['localized_options']['query'] = \Drupal::destination()->getAsArray();
-  }
-  elseif ($item['href'] == 'devel/menu/item') {
-    $item['localized_options']['query'] = array('path' => current_path());
-  }
 }
 
 /**
@@ -503,11 +472,13 @@ function _devel_print_object($obj, $prefix = NULL, $parents = NULL, $object = FA
   return $output;
 }
 
-/**
- * An alias for drupal_debug().
- */
-function dd($data, $label = NULL) {
-  return drupal_debug($data, $label);
+if (!function_exists('dd')) {
+  /**
+   * An alias for drupal_debug().
+   */
+  function dd($data, $label = NULL) {
+    return drupal_debug($data, $label);
+  }
 }
 
 /**

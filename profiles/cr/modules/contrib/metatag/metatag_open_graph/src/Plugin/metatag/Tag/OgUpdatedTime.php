@@ -18,7 +18,7 @@ use \Drupal\metatag\Plugin\metatag\Tag\MetaPropertyBase;
  *   name = "og:updated_time",
  *   group = "open_graph",
  *   weight = 15,
- *   image = FALSE,
+ *   type = "date",
  *   multiple = FALSE
  * )
  */

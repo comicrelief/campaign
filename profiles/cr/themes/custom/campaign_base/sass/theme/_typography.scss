@@ -29,3 +29,14 @@ h2 {
 h3 {
 	font-size: 21px;
 }
+// Article Typo use generic classes
+.cr-article__header {
+  text-align: center;
+}
+.cr-article__title {
+  text-transform: none;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 28px;
+  margin-top: 40px;
+}
