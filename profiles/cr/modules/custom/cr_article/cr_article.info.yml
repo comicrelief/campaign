@@ -14,6 +14,8 @@ dependencies:
   - views
   - taxonomy
   - youtube
+  - metatag
+  - pathauto
 
 config_devel:
   - taxonomy.vocabulary.tags
@@ -31,6 +33,8 @@ config_devel:
   - field.storage.node.field_publish_date
   - field.field.node.article.field_image
   - field.storage.node.field_image
+  - field.field.node.article.field_meta_tags
+  - field.storage.node.field_meta_tags
   - field.field.node.article.field_youtube_url
   - field.storage.node.field_youtube_url
   - views.view.related_news
