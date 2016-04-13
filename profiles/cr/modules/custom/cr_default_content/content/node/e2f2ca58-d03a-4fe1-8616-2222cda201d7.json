@@ -19,7 +19,7 @@
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_image": [
             {
-                "href": "http:\/\/default\/file\/25?_format=hal_json",
+                "href": "http:\/\/default\/file\/7?_format=hal_json",
                 "lang": "en"
             }
         ],
@@ -29,6 +29,9 @@
             },
             {
                 "href": "http:\/\/default\/paragraph\/2?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/default\/paragraph\/3?_format=hal_json"
             }
         ]
     },
@@ -67,7 +70,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "f6da991f-745a-42a1-a500-e8d470173d4f"
+                        "value": "3d1f0c36-ac03-44fd-bd02-2e47a3b95a83"
                     }
                 ],
                 "lang": "en"
@@ -85,7 +88,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "f6da991f-745a-42a1-a500-e8d470173d4f"
+                        "value": "3d1f0c36-ac03-44fd-bd02-2e47a3b95a83"
                     }
                 ]
             }
@@ -94,7 +97,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/file\/25?_format=hal_json"
+                        "href": "http:\/\/default\/file\/7?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
@@ -142,6 +145,21 @@
                         "value": "7efb70e5-d8d4-4f60-ba04-4f8a9c7168de"
                     }
                 ]
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/paragraph\/3?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cr_rich_text_paragraph"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "35669b01-a4f9-4613-ab04-4fd16d7acb38"
+                    }
+                ]
             }
         ]
     },
@@ -159,7 +177,7 @@
     ],
     "changed": [
         {
-            "value": "1460369473",
+            "value": "1460485796",
             "lang": "en"
         }
     ],
