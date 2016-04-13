@@ -1,4 +1,4 @@
-uuid: 30f1d563-368e-405e-a106-06dc646f0153
+uuid: d82608bc-03b6-4d11-aa24-36999080a15e
 langcode: en
 status: true
 dependencies:
@@ -37,15 +37,11 @@ third_party_settings:
         weight: 0
         label: hidden
         formatter: default
-        settings:
-          link: true
-          wrapper: h2
-          class: ''
   panelizer:
     enable: false
     custom: false
 _core:
-  default_config_hash: rN2zrScZAJ9xB16hm_Deb9QJKy6JXnn0PdI2n5Z3KRs
+  default_config_hash: xW1AJxzxzoa8DMPBJx2H-ApRhObIeuXP3Qbzu8RgMr8
 id: node.page.search_index
 targetEntityType: node
 bundle: page
@@ -53,10 +49,10 @@ mode: search_index
 content:
   body:
     label: hidden
-    type: text_summary_or_trimmed
+    type: text_trimmed
     weight: 1
     settings:
-      trim_length: 600
+      trim_length: 100
     third_party_settings: {  }
   links:
     weight: 3
