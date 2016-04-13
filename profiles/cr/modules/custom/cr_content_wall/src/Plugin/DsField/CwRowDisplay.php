@@ -9,7 +9,6 @@ namespace Drupal\cr_content_wall\Plugin\DsField;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\ds\Plugin\DsField\DsFieldBase;
 use Drupal\block_content\Entity\BlockContent;
-use Drupal\paragraphs\Entity\Paragraph;
 
 /**
  * Custom Row Display.

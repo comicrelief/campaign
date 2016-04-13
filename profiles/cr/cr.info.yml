@@ -63,6 +63,7 @@ dependencies:
 
   # Custom modules
   - cr_layout
+  - cr_page
   - cr_teaser
   - cr_article
   - cr_content_wall
@@ -125,6 +126,7 @@ config_devel:
   - metatag.metatag_defaults.global
   - metatag.metatag_defaults.node
   - metatag.metatag_defaults.taxonomy_term
+  - metatag.metatag_defaults.user  
 
   # Filter format
   - editor.editor.basic_html

@@ -1,13 +1,39 @@
 .paragraph--cr-rich-text-paragraph {
+  position: relative;
   clear: both;
-  min-height: 400px;
-  padding: 60px 20px;
+  min-height: 500px;
+  margin: 60px 0;
   color: $white;
-  background-size: cover;
+  background: $black;
 
   @include clearfix;
 }
-.paragraph--cr-rich-text-paragraph__body {
+.paragraph--cr-rich-text-paragraph__inner-wrap {
   max-width: 1200px;
-  margin: auto;
+  margin: 20px auto 0;
+  padding: 0 20px;
+	@include breakpoint($screen-md) {
+	  position: absolute;
+	  right: 0;
+	  left: 0;
+	  top: 100px;
+	}
+}
+.paragraph--cr-rich-text-paragraph__image {
+	@include breakpoint($screen-md) {
+	  height: 100%;
+	  position: absolute;
+	  img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+	  }
+	}
+}
+.paragraph--cr-rich-text-paragraph__body {
+  @include span(12 of 12);
+  @include breakpoint($screen-md) {
+    @include span(6 of 12);
+  }
 }
