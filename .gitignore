@@ -3,7 +3,6 @@ profiles/cr/modules/custom/cr_default_content/content/user
 sites/*/files
 sites/*/private
 files/*
-private/*
 
 # Pantheon commits a settings.php for environment-specific settings.
 # Place local settings in settings.local.php
@@ -52,12 +51,6 @@ Thumbs.db
 ##########
 .sass-cache
 
-# Minified and Concat JS #
-profiles/cr/themes/custom/campaign_base/js
-
-# Compiled CSS and CSS MAP #
-profiles/cr/themes/custom/campaign_base/css/*.css
-profiles/cr/themes/custom/campaign_base/css/*.css.map
 
 # node_modules #
 ##########

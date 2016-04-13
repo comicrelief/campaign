@@ -1,0 +1,24 @@
+current directory: /var/www/campaign/profiles/cr/themes/custom/campaign_base/vendor/bundle/ruby/2.3.0/gems/eventmachine-1.0.9.1/ext/fastfilereader
+/home/zach/.rvm/rubies/ruby-2.3.0/bin/ruby -r ./siteconf20160413-14243-1luubkl.rb extconf.rb
+creating Makefile
+
+To see why this extension failed to compile, please check the mkmf.log which can be found here:
+
+  /var/www/campaign/profiles/cr/themes/custom/campaign_base/vendor/bundle/ruby/2.3.0/extensions/x86_64-linux/2.3.0/eventmachine-1.0.9.1/mkmf.log
+
+current directory: /var/www/campaign/profiles/cr/themes/custom/campaign_base/vendor/bundle/ruby/2.3.0/gems/eventmachine-1.0.9.1/ext/fastfilereader
+make "DESTDIR=" clean
+
+current directory: /var/www/campaign/profiles/cr/themes/custom/campaign_base/vendor/bundle/ruby/2.3.0/gems/eventmachine-1.0.9.1/ext/fastfilereader
+make "DESTDIR="
+compiling rubymain.cpp
+cc1plus: warning: command line option ‘-Wdeclaration-after-statement’ is valid for C/ObjC but not for C++
+cc1plus: warning: command line option ‘-Wimplicit-function-declaration’ is valid for C/ObjC but not for C++
+compiling mapper.cpp
+cc1plus: warning: command line option ‘-Wdeclaration-after-statement’ is valid for C/ObjC but not for C++
+cc1plus: warning: command line option ‘-Wimplicit-function-declaration’ is valid for C/ObjC but not for C++
+linking shared-object fastfilereaderext.so
+
+current directory: /var/www/campaign/profiles/cr/themes/custom/campaign_base/vendor/bundle/ruby/2.3.0/gems/eventmachine-1.0.9.1/ext/fastfilereader
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 fastfilereaderext.so ./.gem.20160413-14243-kz4ycb

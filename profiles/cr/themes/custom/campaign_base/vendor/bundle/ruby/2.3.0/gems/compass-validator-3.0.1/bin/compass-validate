@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+require 'compass'
+require 'compass/logger'
+require 'compass-validator'
+Compass::Validator.execute(*ARGV)
