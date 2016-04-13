@@ -16,6 +16,24 @@ fiveregions:
       label: Fourth
     fifth:
       label: Fifth
+fivefullregions:
+  label: Five Full Width regions
+  category: Comic Relief
+  path: layouts/fivefullregions
+  icon: fivefullregions.png
+  css: fivefullregions.css
+  template: fivefullregions
+  regions:
+    first:
+      label: First
+    second:
+      label: Second
+    third:
+      label: Third
+    fourth:
+      label: Fourth
+    fifth:
+      label: Fifth
 article:
   label: Article layout
   category: Comic Relief

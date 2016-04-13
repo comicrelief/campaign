@@ -2,11 +2,11 @@ langcode: en
 status: true
 dependencies:
   module:
+    - block_content
     - options
-    - paragraphs
-id: paragraph.field_cw_view_mode
+id: block_content.field_cw_view_mode
 field_name: field_cw_view_mode
-entity_type: paragraph
+entity_type: block_content
 type: list_string
 settings:
   allowed_values:

@@ -67,7 +67,7 @@ third_party_settings:
         uuid: 07727bfe-7661-4185-a418-24b2dd3f797d
         label: ''
         weight: 0
-        layout: fiveregions
+        layout: fivefullregions
         layout_settings: {  }
         page_title: '[node:title]'
         storage_type: panelizer_default

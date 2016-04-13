@@ -3,8 +3,8 @@ status: true
 dependencies:
   config:
     - field.field.node.partner.body
-    - field.field.node.partner.field_partner_category
     - field.field.node.partner.field_image
+    - field.field.node.partner.field_partner_category
     - field.field.node.partner.field_partner_logo
     - field.field.node.partner.field_partner_website
     - node.type.partner
