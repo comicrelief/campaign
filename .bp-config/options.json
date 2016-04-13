@@ -1,0 +1,4 @@
+{
+    "PHP_EXTENSIONS": [ "bz2", "zlib", "curl", "mcrypt", "gd", "pdo", "pdo_mysql", "opcache", "mbstring"],
+    "PHP_VERSION": "{PHP_56_LATEST}"
+}

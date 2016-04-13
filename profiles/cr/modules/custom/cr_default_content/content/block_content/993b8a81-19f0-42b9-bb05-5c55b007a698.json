@@ -11,10 +11,10 @@
                 "href": "http:\/\/default\/block\/8?_format=hal_json"
             },
             {
-                "href": "http:\/\/default\/block\/1?_format=hal_json"
+                "href": "http:\/\/default\/block\/4?_format=hal_json"
             },
             {
-                "href": "http:\/\/default\/block\/4?_format=hal_json"
+                "href": "http:\/\/default\/block\/3?_format=hal_json"
             }
         ]
     },
@@ -42,7 +42,7 @@
     ],
     "changed": [
         {
-            "value": "1456306236",
+            "value": "1460369473",
             "lang": "en"
         }
     ],
@@ -78,7 +78,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/block\/1?_format=hal_json"
+                        "href": "http:\/\/default\/block\/4?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/block_content\/teaser"
@@ -93,7 +93,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/block\/4?_format=hal_json"
+                        "href": "http:\/\/default\/block\/3?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/block_content\/teaser"
@@ -106,5 +106,10 @@
                 ]
             }
         ]
-    }
+    },
+    "field_cw_view_mode": [
+        {
+            "value": "cw_3col_s_s_s"
+        }
+    ]
 }

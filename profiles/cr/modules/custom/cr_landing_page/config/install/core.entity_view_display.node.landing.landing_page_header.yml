@@ -6,10 +6,12 @@ dependencies:
     - field.field.node.landing.body
     - field.field.node.landing.field_cta
     - field.field.node.landing.field_image
+    - field.field.node.landing.field_paragraphs
     - field.field.node.landing.panelizer
     - node.type.landing
   module:
     - ds
+    - entity_reference_revisions
     - image
     - link
     - panelizer
@@ -140,9 +142,15 @@ third_party_settings:
     regions:
       ds_content:
         - field_image
+        - node_title
         - body
         - field_cta
-        - panelizer
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 1
+        label: hidden
+        formatter: default
 id: node.landing.landing_page_header
 targetEntityType: node
 bundle: landing
@@ -151,11 +159,11 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 1
+    weight: 2
     settings: {  }
     third_party_settings: {  }
   field_cta:
-    weight: 2
+    weight: 3
     label: hidden
     settings:
       trim_length: 80
@@ -173,14 +181,26 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
+    weight: 14
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
   links:
-    weight: 0
+    weight: 12
     settings: {  }
     third_party_settings: {  }
   panelizer:
     type: panelizer
-    weight: 3
+    weight: 11
     label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  social_links:
+    weight: 13
     settings: {  }
     third_party_settings: {  }
 hidden: {  }

@@ -22,7 +22,8 @@ use Drupal\block_content\Entity\BlockContent;
  *   title = @Translation("Row Display"),
  *   description = @Translation("Custom DS field to manage row display"),
  *   entity_type = "block_content",
- *   provider = "cr_content_wall"
+ *   provider = "cr_content_wall",
+ *   ui_limit = {"cw_row_block|*"}
  * )
  */
 class CwRowDisplay extends DsFieldBase {
@@ -37,7 +38,6 @@ class CwRowDisplay extends DsFieldBase {
     }
 
     $row_id = $this->entity()->id();
-
     // Get row block.
     $row = $this->getRowEntity($row_id);
     // Get referenced content blocks.
@@ -45,7 +45,7 @@ class CwRowDisplay extends DsFieldBase {
 
     return array(
       '#theme' => 'item_list',
-      '#items' => $this->buildRenderedBlocks($blocks),
+      '#items' => $this->buildRenderedBlocks($row, $blocks),
     );
   }
 
@@ -60,14 +60,15 @@ class CwRowDisplay extends DsFieldBase {
    * @return array
    *   Array of rendered blocks in row defined view modes.
    */
-  public function buildRenderedBlocks($blocks) {
+  public function buildRenderedBlocks($row, $blocks) {
     if (!isset($blocks) || !$blocks) {
       return [];
     }
 
     $rendered_blocks = array();
-    $row_view_mode = $this->viewMode();
-    $view_modes = $this->getBlockViewModes($row_view_mode);
+    $row_view_mode = $row->get('field_cw_view_mode')->getValue();
+    // Need a better way to get array value below.
+    $view_modes = $this->getBlockViewModes($row_view_mode[0]['value']);
 
     foreach ($blocks as $key => $block_id) {
       $block = BlockContent::load($block_id);

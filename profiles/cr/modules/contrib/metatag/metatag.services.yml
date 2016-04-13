@@ -9,7 +9,7 @@ services:
 
   metatag.token:
     class: Drupal\metatag\MetatagToken
-    arguments: ['@module_handler', '@token']
+    arguments: ['@token']
 
   metatag.manager:
     class: Drupal\metatag\MetatagManager

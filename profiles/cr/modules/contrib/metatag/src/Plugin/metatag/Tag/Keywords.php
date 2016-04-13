@@ -16,7 +16,7 @@ namespace Drupal\metatag\Plugin\metatag\Tag;
  *   name = "keywords",
  *   group = "basic",
  *   weight = 4,
- *   image = FALSE,
+ *   type = "label",
  *   multiple = FALSE
  * )
  */

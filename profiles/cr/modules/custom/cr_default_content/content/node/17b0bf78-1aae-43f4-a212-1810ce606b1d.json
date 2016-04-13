@@ -1,0 +1,183 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/node\/14?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/partner"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/partner\/uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/partner\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/partner\/field_partner_category": [
+            {
+                "href": "http:\/\/default\/taxonomy\/term\/4?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/partner\/field_partner_logo": [
+            {
+                "href": "http:\/\/default\/file\/22?_format=hal_json"
+            }
+        ]
+    },
+    "uuid": [
+        {
+            "value": "17b0bf78-1aae-43f4-a212-1810ce606b1d"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "partner"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "title": [
+        {
+            "value": "PayPal",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/partner\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "01510da8-11cc-426f-a300-0a6331aeb96e"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/partner\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "01510da8-11cc-426f-a300-0a6331aeb96e"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/partner\/field_partner_category": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/taxonomy\/term\/4?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/partner_category"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "325bff76-d1ab-469d-b40c-12199c0adb28"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/partner\/field_partner_logo": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/22?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "b9c03d24-ab2f-4940-ad08-8bb22e3625be"
+                    }
+                ],
+                "alt": "PayPal",
+                "title": "",
+                "width": "130",
+                "height": "97"
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1459942304",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1459952438",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1459952231"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<p>A massive thank you to PayPal for supporting Red Nose Day. They allow our supporters to donate quickly, easily and - most importantly \u2013 securely through PayPal donations. This is only possible thanks to the superb support their team gives us. Thank you PayPal \u2013 you are true pals!<\/p>\r\n",
+            "format": "basic_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ]
+}

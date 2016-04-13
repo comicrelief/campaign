@@ -76,6 +76,8 @@
       if (options && options.collection) {
         this.collection = options.collection;
       }
+
+      this.on('tabActiveChange', this.tabActiveChange, this);
     },
 
     /**
@@ -113,11 +115,19 @@
       if (this.activeCategory) {
         var $top = this.$('.ipe-category-picker-top');
         $top.addClass('active');
+        this.$('.ipe-category-picker-bottom').addClass('top-open');
         this.collection.each(function (model) {
           if (model.get('category') === this.activeCategory) {
             $top.append(this.template_item(model));
           }
         }, this);
+
+        // Add a top-level body class.
+        $('body').addClass('panels-ipe-category-picker-top-open');
+      }
+      else {
+        // Remove our top-level body class.
+        $('body').removeClass('panels-ipe-category-picker-top-open');
       }
 
       this.setTopMaxHeight();
@@ -226,11 +236,22 @@
           self.$('.ipe-category-picker-top').css('display', '').addClass('form-displayed');
 
           self.$('.ipe-category-picker-top').hide().fadeIn();
+          self.$('.ipe-category-picker-bottom').addClass('top-open');
         };
 
         // Make the Drupal AJAX request.
         ajax.execute();
       });
+    },
+
+    /**
+     * Responds to our associated tab being opened/closed.
+     *
+     * @param {bool} state
+     *   Whether or not our associated tab is open.
+     */
+    tabActiveChange: function (state) {
+      $('body').toggleClass('panels-ipe-category-picker-top-open', state);
     },
 
     /**
