@@ -1,0 +1,27 @@
+current directory: /var/www/campaign/profiles/cr/themes/custom/campaign_base/vendor/bundle/ruby/2.3.0/gems/yajl-ruby-1.2.1/ext/yajl
+/home/zach/.rvm/rubies/ruby-2.3.0/bin/ruby -r ./siteconf20160413-14243-k7eetq.rb extconf.rb
+creating Makefile
+
+current directory: /var/www/campaign/profiles/cr/themes/custom/campaign_base/vendor/bundle/ruby/2.3.0/gems/yajl-ruby-1.2.1/ext/yajl
+make "DESTDIR=" clean
+
+current directory: /var/www/campaign/profiles/cr/themes/custom/campaign_base/vendor/bundle/ruby/2.3.0/gems/yajl-ruby-1.2.1/ext/yajl
+make "DESTDIR="
+compiling yajl_version.c
+compiling yajl_alloc.c
+compiling yajl_buf.c
+compiling yajl_ext.c
+yajl_ext.c: In function ‘rb_yajl_parser_parse’:
+yajl_ext.c:471:17: warning: variable ‘stat’ set but not used [-Wunused-but-set-variable]
+     yajl_status stat;
+                 ^
+compiling yajl_parser.c
+compiling yajl_lex.c
+compiling yajl.c
+compiling yajl_encode.c
+compiling yajl_gen.c
+linking shared-object yajl/yajl.so
+
+current directory: /var/www/campaign/profiles/cr/themes/custom/campaign_base/vendor/bundle/ruby/2.3.0/gems/yajl-ruby-1.2.1/ext/yajl
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 yajl.so ./.gem.20160413-14243-qyqu9v/yajl
