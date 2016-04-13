@@ -1,4 +1,4 @@
-uuid: d82608bc-03b6-4d11-aa24-36999080a15e
+uuid: 566c8974-9d52-44f3-9a00-df82dbe8bf3d
 langcode: en
 status: true
 dependencies:
@@ -37,6 +37,10 @@ third_party_settings:
         weight: 0
         label: hidden
         formatter: default
+        settings:
+          link: true
+          wrapper: h2
+          class: ''
   panelizer:
     enable: false
     custom: false
@@ -52,10 +56,10 @@ content:
     type: text_trimmed
     weight: 1
     settings:
-      trim_length: 100
+      trim_length: 200
     third_party_settings: {  }
   links:
-    weight: 3
+    weight: 2
     settings: {  }
     third_party_settings: {  }
   social_links:
