@@ -1,0 +1,29 @@
+uuid: d538f15b-5a6b-4661-ad16-22048591d496
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.bg_rich_text_narrow
+    - image.style.bg_rich_text_wide
+  theme:
+    - campaign_base
+id: bg_rich_text
+label: 'Bg rich text'
+image_style_mappings:
+  -
+    breakpoint_id: campaign_base.desktop
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: bg_rich_text_wide
+  -
+    breakpoint_id: campaign_base.tablet
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: bg_rich_text_narrow
+  -
+    breakpoint_id: campaign_base.mobile
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: bg_rich_text_narrow
+breakpoint_group: campaign_base
+fallback_image_style: bg_rich_text_wide
