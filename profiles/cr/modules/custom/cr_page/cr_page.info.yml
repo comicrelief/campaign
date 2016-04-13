@@ -1,0 +1,15 @@
+name: cr_page
+type: module
+description: Basic page content type
+core: 8.x
+package: Comic Relief
+config_devel:
+  - node.type.page
+  - rdf.mapping.node.page
+  - field.field.node.page.body
+  - core.entity_form_display.node.page.default
+  - core.entity_view_display.node.page.default
+  - core.entity_view_display.node.page.teaser
+  - core.base_field_override.node.page.promote
+
+
