@@ -11,7 +11,6 @@ use Drupal\Core\Field\FieldItemBase;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\TypedData\DataDefinition;
 
-
 /**
  * Plugin implementation of the 'youtube' field type.
  *
@@ -30,7 +29,7 @@ class YouTubeItem extends FieldItemBase {
    *
    * @var array
    */
-  static $propertyDefinitions;
+  public static $propertyDefinitions;
 
   /**
    * {@inheritdoc}
@@ -81,4 +80,5 @@ class YouTubeItem extends FieldItemBase {
   public static function mainPropertyName() {
     return 'input';
   }
+
 }

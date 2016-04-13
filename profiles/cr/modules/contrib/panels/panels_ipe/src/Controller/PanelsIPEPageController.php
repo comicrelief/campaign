@@ -351,7 +351,7 @@ class PanelsIPEPageController extends ControllerBase {
 
     // Return the rendered form as a proper Drupal AJAX response.
     $response = new AjaxResponse();
-    $command = new AppendCommand('.ipe-block-plugin-form', $form);
+    $command = new AppendCommand('.ipe-block-form', $form);
     $response->addCommand($command);
     return $response;
   }
@@ -429,7 +429,7 @@ class PanelsIPEPageController extends ControllerBase {
 
     // Return the rendered form as a proper Drupal AJAX response.
     $response = new AjaxResponse();
-    $command = new AppendCommand('.ipe-block-type-form', $form);
+    $command = new AppendCommand('.ipe-block-form', $form);
     $response->addCommand($command);
     return $response;
   }

@@ -14,11 +14,14 @@ config_devel:
   # View modes
   - core.entity_form_display.paragraph.cw_row.default
   - core.entity_view_display.paragraph.cw_row.default
+  - core.entity_form_display.block_content.cw_row_block.default
+  - core.entity_view_display.block_content.cw_row_block.default
   # Fields
-  - field.field.paragraph.cw_row.field_cw_block_reference
-  - field.field.paragraph.cw_row.field_cw_view_mode
-  - field.storage.paragraph.field_cw_block_reference
-  - field.storage.paragraph.field_cw_view_mode
+  - field.field.paragraph.cw_row.field_cw_row_reference
+  - field.field.block_content.cw_row_block.field_cw_block_reference
+  - field.field.block_content.cw_row_block.field_cw_view_mode
+  - field.storage.block_content.field_cw_block_reference
+  - field.storage.block_content.field_cw_view_mode
   # Node block
   - block_content.type.cw_node_block
   # View modes

@@ -16,7 +16,7 @@ namespace Drupal\metatag\Plugin\metatag\Tag;
  *   name = "image_src",
  *   group = "advanced",
  *   weight = 4,
- *   image = TRUE,
+ *   type = "image",
  *   multiple = FALSE
  * )
  */

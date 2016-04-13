@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cw_row_block
+    - field.storage.block_content.field_cw_view_mode
+  module:
+    - options
+id: block_content.cw_row_block.field_cw_view_mode
+field_name: field_cw_view_mode
+entity_type: block_content
+bundle: cw_row_block
+label: 'View Mode'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

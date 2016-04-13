@@ -16,7 +16,7 @@ namespace Drupal\metatag\Plugin\metatag\Tag;
  *   name = "fb:app_id",
  *   group = "facebook",
  *   weight = 2,
- *   image = FALSE,
+ *   type = "string",
  *   multiple = FALSE
  * )
  */

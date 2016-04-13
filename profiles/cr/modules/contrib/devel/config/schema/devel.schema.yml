@@ -15,14 +15,9 @@ devel.settings:
       label: 'Raw names'
     error_handlers:
       label: 'Error handlers'
-      type: mapping
-      mapping:
-        error_handler_type:
-          type: integer
-          label: 'Error handler type'
-        error_handler_value:
-          type: integer
-          label: 'Error handler value'
+      type: sequence
+      sequence:
+        type: integer
     rebuild_theme:
       type: boolean
       label: 'Rebuild theme information'

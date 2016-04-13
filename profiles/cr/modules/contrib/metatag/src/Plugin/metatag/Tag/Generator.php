@@ -16,10 +16,10 @@ namespace Drupal\metatag\Plugin\metatag\Tag;
  *   name = "generator",
  *   group = "advanced",
  *   weight = 4,
- *   image = FALSE,
+ *   type = "string",
  *   multiple = FALSE
  * )
  */
-class Generator extends LinkRelBase {
+class Generator extends MetaNameBase {
   // Nothing here yet. Just a placeholder class for a plugin.
 }

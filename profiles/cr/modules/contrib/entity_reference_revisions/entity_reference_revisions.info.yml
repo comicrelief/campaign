@@ -5,7 +5,6 @@ core: 8.x
 package: Field types
 dependencies:
   - hal
-  - rest
   - serialization
 
 # Information added by drush on 2016-02-26

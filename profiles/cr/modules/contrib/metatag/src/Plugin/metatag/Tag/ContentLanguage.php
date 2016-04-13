@@ -16,7 +16,7 @@ namespace Drupal\metatag\Plugin\metatag\Tag;
  *   name = "content-language",
  *   group = "advanced",
  *   weight = 1,
- *   image = FALSE,
+ *   type = "string",
  *   multiple = FALSE
  * )
  */

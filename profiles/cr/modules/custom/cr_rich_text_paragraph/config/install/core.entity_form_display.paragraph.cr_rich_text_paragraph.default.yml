@@ -4,7 +4,7 @@ dependencies:
   config:
     - field.field.paragraph.cr_rich_text_paragraph.field_background
     - field.field.paragraph.cr_rich_text_paragraph.field_body
-    - image.style.thumbnail
+    - image.style.large
     - paragraphs.paragraphs_type.cr_rich_text_paragraph
   module:
     - image
@@ -17,8 +17,8 @@ content:
   field_background:
     weight: 0
     settings:
+      preview_image_style: large
       progress_indicator: throbber
-      preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
   field_body:
@@ -30,4 +30,5 @@ content:
     type: text_textarea
 hidden:
   created: true
+  status: true
   uid: true

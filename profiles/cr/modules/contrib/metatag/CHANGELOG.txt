@@ -1,3 +1,52 @@
+Metatag 8.x-1.0-beta7, 2016-04-03
+---------------------------------
+#2699173 by DamienMcKenna: Fixed OgUpdatedTime annotations.
+
+
+Metatag 8.x-1.0-beta6, 2016-04-02
+---------------------------------
+#2689543 by kplanz: Fixed paths in image meta tags when the site is in a
+  subdirectory.
+By DamienMcKenna: Added a CODE_OF_CONDUCT.txt file that references the Drupal
+  code of conduct page.
+#2690973 by DamienMcKenna: Added schema.yml values for all meta tags to make
+  them more easily translatable.
+#2688963 by DamienMcKenna: Added a note about the Yoast SEO module.
+#2696445 by DuaelFr, Simon Georges, DamienMcKenna: Added the twitter:image:alt
+  meta tag.
+#2692117 by penyaskito, DamienMcKenna: Replaced the 'image' attribute with a
+  general 'type' attribute.
+
+
+Metatag 8.x-1.0-beta5, 2016-03-11
+---------------------------------
+#2563623/2674732/2675208 by DamienMcKenna, esclapes, NickWilde, achton: Quote
+  submodule strings to avoid YAML compatibility problems.
+#2658242 by mr.baileys: Default meta tags were not translated into the entity's
+  language.
+By DamienMcKenna: Added mr.baileys to the D8 contributors list :)
+#2664276 by DamienMcKenna, StevenPatz, rajeev_drupal: Wrong default base class
+  for generated tag plugins.
+#2665790 by benjy, Sam152: Use StringTranslationTrait in MetaNameBase.
+#2666384 by mr.baileys, Rudrasis, danisha: Added 'configure' link to the module
+  on the Extend page.
+#2563625 by mr.baileys, juliencarnot: All Twitter Cards have been ported.
+#2674078 by Raphael Apard: The Generator meta tag is a META tag, not a LINK tag.
+#2664448 by mr.baileys: DrupalConsole generator for meta tag groups.
+#2663650 by mr.baileys: Caught another small bug in the tag generator.
+#2672892 by borisson_: Replaced usage of LoggerChannelFactory with
+  LoggerChannelFactoryInterface.
+#2678196 by mr.baileys: Simplified usage of isAdminRoute().
+#2631408 by mikeyk, juampynr, DamienMcKenna: Filter out HTML from meta tags and
+  improve image meta tag handling.
+#2631826 by juampynr, DamienMcKenna, pguillard: Require the Token module.
+#2667850 by mikeyk: Token method was not renamed properly.
+By DamienMcKenna: Fixed group name on MetatagTranslationTest.
+#2684495 by mikeyk, DamienMcKenna: Fixed bug in translations that was causing
+  the tests to fail. Also tidied up the tests a little.
+#2685355 by mikeyk: Fix image identification.
+
+
 Metatag 8.x-1.0-beta4, 2016-02-06
 ---------------------------------
 #2634844 by swentel: Only load entity meta tags on actual content entity pages.
