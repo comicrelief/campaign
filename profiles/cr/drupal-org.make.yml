@@ -77,6 +77,8 @@ projects:
       revision: ae81658
   devel:
     version: 1.x-dev
+  memcache:
+    version: 2.x-dev
   # Editor/admin experience
   admin_toolbar:
     version: 1.14
