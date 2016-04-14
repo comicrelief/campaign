@@ -47,7 +47,7 @@ module.exports = function (grunt) {
 
     shell: {
         styleguide: {
-            command: 'node_modules/kss/bin/kss-node --source sass/components/ --css http://campaign.local/profiles/cr/themes/custom/campaign_base/css/styles.css --verbose'
+            command: 'node_modules/kss/bin/kss-node --source sass/components/ --css css/styles.css --verbose'
         }
     },
 
