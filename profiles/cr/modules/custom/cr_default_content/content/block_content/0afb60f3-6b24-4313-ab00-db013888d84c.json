@@ -1,14 +1,14 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/sr16-spl-local.sportrelief.com\/block\/1?_format=hal_json"
+            "href": "http:\/\/default\/block\/1111?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/block_content\/teaser"
         },
         "http:\/\/drupal.org\/rest\/relation\/block_content\/teaser\/field_teaser_image": [
             {
-                "href": "http:\/\/sr16-spl-local.sportrelief.com\/file\/29?_format=hal_json"
+                "href": "http:\/\/default\/file\/29?_format=hal_json"
             }
         ]
     },
@@ -65,7 +65,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/file\/29?_format=hal_json"
+                        "href": "http:\/\/default\/file\/29?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
