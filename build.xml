@@ -82,7 +82,7 @@
   <!-- Drush core -->
   <target name="make-core" description="Compile CR from a make file" depends="make">
     <exec checkreturn="true" logoutput="true" passthru="true"
-      command="${drush.bin} make -y ${app.profile.dir}drupal-org-core.make.yml --no-cache --prepare-install"/>
+      command="${drush.bin} make -y ${app.profile.dir}drupal-org-core.make.yml --no-cache"/>
   </target>
   <target name="make" description="Compile CR contrib from a make file">
     <exec checkreturn="true" logoutput="true" passthru="true"
