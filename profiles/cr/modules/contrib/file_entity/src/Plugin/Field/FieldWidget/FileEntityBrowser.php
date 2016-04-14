@@ -45,6 +45,11 @@ class FileEntityBrowser extends EntityReference {
    */
   public static function defaultSettings() {
     $settings = parent::defaultSettings();
+
+    // These settings are hidden.
+    unset($settings['field_widget_display']);
+    unset($settings['field_widget_display_settings']);
+
     $settings['view_mode'] = 'thumbnail';
     return $settings;
   }

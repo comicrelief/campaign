@@ -11,7 +11,6 @@ use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\FormatterBase;
 use Drupal\Core\Form\FormStateInterface;
 
-
 /**
  * Plugin implementation of the 'youtube_video' formatter.
  *
@@ -127,7 +126,7 @@ class YouTubeFormatter extends FormatterBase {
     );
 
     foreach ($parameters as $parameter) {
-    if ($parameter) {
+      if ($parameter) {
         $cp = t(', custom parameters');
         break;
       }
@@ -139,7 +138,7 @@ class YouTubeFormatter extends FormatterBase {
   /**
    * {@inheritdoc}
    */
-  public function prepareView(array $entities_items) { }
+  public function prepareView(array $entities_items) {}
 
   /**
    * {@inheritdoc}
@@ -155,7 +154,12 @@ class YouTubeFormatter extends FormatterBase {
         '#entity_title' => $items->getEntity()->label(),
         '#settings' => $settings,
       );
+
+      if ($settings['youtube_size'] == 'responsive') {
+        $element[$delta]['#attached']['library'][] = 'youtube/drupal.youtube.responsive';
+      }
     }
     return $element;
   }
+
 }

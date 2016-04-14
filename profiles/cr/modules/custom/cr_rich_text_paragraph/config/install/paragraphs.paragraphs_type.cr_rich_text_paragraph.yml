@@ -2,4 +2,4 @@ langcode: en
 status: true
 dependencies: {  }
 id: cr_rich_text_paragraph
-label: 'Rich Text'
+label: 'Background Rich Text'

@@ -66,8 +66,8 @@
       if (options.el && !this.model.get('html')) {
         this.model.set({html: this.$el.prop('outerHTML')});
       }
-      this.listenTo(this.model, 'reset', this.render);
-      this.listenTo(this.model, 'change', this.render);
+      this.listenTo(this.model, 'sync', this.finishedSync);
+      this.listenTo(this.model, 'change:syncing', this.render);
     },
 
     /**
@@ -113,6 +113,11 @@
         });
       }
 
+      // Add a special class if we're currently syncing HTML from the server.
+      if (this.model.get('syncing')) {
+        this.$el.addClass('syncing');
+      }
+
       return this;
     },
 
@@ -123,7 +128,7 @@
      *
      * @returns {Drupal.panels_ipe.BlockView}
      */
-    remove: function() {
+    remove: function () {
       // Remove known augmentations to HTML so that they do not persist.
       this.$('.ipe-actions-block').remove();
       this.$el.removeClass('ipe-highlight active');
@@ -135,6 +140,13 @@
       this._removeElement();
       this.stopListening();
       return this;
+    },
+
+    /**
+     * Reacts to our model being synced from the server.
+     */
+    finishedSync: function () {
+      this.model.set('syncing', false);
     }
 
   });

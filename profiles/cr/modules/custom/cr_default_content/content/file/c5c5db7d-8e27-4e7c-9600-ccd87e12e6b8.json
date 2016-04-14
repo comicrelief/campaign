@@ -1,16 +1,11 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/file\/17?_format=hal_json"
+            "href": "http:\/\/default\/file\/1598?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
-        },
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "href": "http:\/\/default\/user\/1?_format=hal_json"
-            }
-        ]
+        }
     },
     "uuid": [
         {
@@ -22,25 +17,6 @@
             "value": "en"
         }
     ],
-    "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "28a70bfa-ecc6-41b3-af00-efaa5a2d8553"
-                    }
-                ]
-            }
-        ]
-    },
     "filename": [
         {
             "value": "sr16_contentwall_fundraise_v2.jpg"
@@ -48,7 +24,7 @@
     ],
     "uri": [
         {
-            "value": "public:\/\/2016-02\/sr16_contentwall_fundraise_v2.jpg"
+            "value": "public:\/\/2016-02\/sr16_contentwall_fundraise_v2_15.jpg"
         }
     ],
     "filemime": [

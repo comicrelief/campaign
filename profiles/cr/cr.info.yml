@@ -12,7 +12,6 @@ dependencies:
   - block_content
   - ckeditor
   - config
-  - comment
   - contextual
   - contact
   - menu_link_content
@@ -46,11 +45,12 @@ dependencies:
   - file_entity
   - metatag_open_graph
   - pathauto
+  - redirect
   - youtube
   - view_modes_display
   - social_links
   - focal_point
-  - simple_sitemap
+  #- simple_sitemap
 
   # Layout
   - inline_entity_form
@@ -63,11 +63,14 @@ dependencies:
 
   # Custom modules
   - cr_layout
+  - cr_page
   - cr_teaser
   - cr_article
   - cr_content_wall
   - cr_rich_text_paragraph
   - cr_landing_page
+  - cr_partner
+  #- cr_performance
 
   # Development modules
   - config_devel
@@ -92,6 +95,7 @@ config_devel:
   - views.settings
 
   # Blocks
+  - block.block.tabs
   - block.block.campaign_base_search
   - block.block.campaign_base_account_menu
   - block.block.campaign_base_page_title
@@ -123,6 +127,7 @@ config_devel:
   - metatag.metatag_defaults.global
   - metatag.metatag_defaults.node
   - metatag.metatag_defaults.taxonomy_term
+  - metatag.metatag_defaults.user
 
   # Filter format
   - editor.editor.basic_html

@@ -5,10 +5,4 @@ core: 8.x
 package: Field types
 dependencies:
   - hal
-  - rest
   - serialization
-
-# Information added by drush on 2016-02-26
-version: '8.x-1.0-rc4+6-dev'
-project: 'entity_reference_revisions'
-datestamp: 1456484441

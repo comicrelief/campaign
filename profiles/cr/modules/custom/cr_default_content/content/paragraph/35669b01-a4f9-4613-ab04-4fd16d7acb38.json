@@ -1,0 +1,135 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/paragraph\/9782?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cr_rich_text_paragraph"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_rich_text_paragraph\/uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_rich_text_paragraph\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_rich_text_paragraph\/field_background": [
+            {
+                "href": "http:\/\/default\/file\/28?_format=hal_json"
+            }
+        ]
+    },
+    "uuid": [
+        {
+            "value": "35669b01-a4f9-4613-ab04-4fd16d7acb38"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "cr_rich_text_paragraph"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_rich_text_paragraph\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "f4f9c145-e5f4-4465-8300-a0623cf8fd2a"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_rich_text_paragraph\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "f4f9c145-e5f4-4465-8300-a0623cf8fd2a"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_rich_text_paragraph\/field_background": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/28?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "20425f3f-c0ca-4987-8000-beeaebaaa65a"
+                    }
+                ],
+                "alt": "Africa",
+                "title": "",
+                "width": "3400",
+                "height": "900"
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1460378083",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1460630071",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1460378083"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "field_body": [
+        {
+            "value": "<h2>Rich text bg title<\/h2>\r\n\r\n<p>Dynamically enhance fully researched metrics and e-business architectures. Synergistically productize impactful synergy rather than.<\/p>\r\n",
+            "format": "basic_html"
+        }
+    ]
+}

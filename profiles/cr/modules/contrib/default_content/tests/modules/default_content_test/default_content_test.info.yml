@@ -6,8 +6,3 @@ package: Web services
 core: 8.x
 dependencies:
   - default_content
-
-# Information added by drush on 2016-03-12
-version: '8.x-1.0-alpha2+22-dev'
-project: 'default_content'
-datestamp: 1457777388
