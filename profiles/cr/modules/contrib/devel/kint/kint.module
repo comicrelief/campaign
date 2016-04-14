@@ -56,5 +56,5 @@ function ksm() {
  * Load the Kint class.
  */
 function kint_require() {
-  require_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'kint') . '/kint/Kint.class.php';
+  return require_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'kint') . '/kint/Kint.class.php';
 }

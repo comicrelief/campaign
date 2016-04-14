@@ -1,14 +1,14 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/block\/8?_format=hal_json"
+            "href": "http:\/\/default\/block\/777123?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/block_content\/teaser"
         },
         "http:\/\/drupal.org\/rest\/relation\/block_content\/teaser\/field_teaser_image": [
             {
-                "href": "http:\/\/default\/file\/24?_format=hal_json"
+                "href": "http:\/\/default\/file\/5?_format=hal_json"
             }
         ]
     },
@@ -65,7 +65,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/file\/24?_format=hal_json"
+                        "href": "http:\/\/default\/file\/5?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/file\/image"

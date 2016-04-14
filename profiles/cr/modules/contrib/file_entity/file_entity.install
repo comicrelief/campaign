@@ -88,3 +88,13 @@ function file_entity_uninstall() {
   // Remove the added column to the core {file_managed} table.
   db_drop_field('file_managed', 'type');
 }
+/**
+ * Update existing bogus entries for File types Document.
+ */
+function file_entity_update_8002(&$sandbox) {
+  foreach (\Drupal::configFactory()->listAll('file_entity') as $config_name) {
+    $config = \Drupal::configFactory()->getEditable($config_name);
+    $config->set('mimetypes', str_replace("\r", "", $config->get('mimetypes')));
+    $config->save();
+  }
+}

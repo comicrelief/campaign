@@ -12,9 +12,8 @@ core: 8.x
 projects:
   drupal:
     type: core
-    version: 8.0.5
+    version: 8.1.0-rc1
     patch:
-      # Fix the permissions issue on sites folders.
-      # @see https://www.drupal.org/node/1232572
-      # This is committed and will be part of 8.1.0
-      1232572: https://www.drupal.org/files/issues/1232572-57.drupal.disable-file-permissions-fix.patch
+      # List unmet dependencies instead of just failing
+      # @see https://www.drupal.org/node/2655104
+      - https://www.drupal.org/files/issues/missing-dependencies-2655104-8.patch
