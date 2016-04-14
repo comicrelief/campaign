@@ -5,6 +5,7 @@ dependencies:
     - field.field.node.article.body
     - field.field.node.article.field_image
     - field.field.node.article.field_intro
+    - field.field.node.article.field_meta_tags
     - field.field.node.article.field_publish_date
     - field.field.node.article.field_tags
     - field.field.node.article.field_youtube_url
@@ -13,6 +14,7 @@ dependencies:
   module:
     - datetime
     - image
+    - metatag
     - path
     - text
     - youtube
@@ -48,6 +50,11 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
+  field_meta_tags:
+    weight: 26
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_firehose
   field_publish_date:
     type: datetime_default
     weight: 1

@@ -2,23 +2,23 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.search_index
     - field.field.node.page.body
     - node.type.page
   module:
     - text
     - user
-id: node.page.search_index
+id: node.page.default
 targetEntityType: node
 bundle: page
-mode: search_index
+mode: default
 content:
   body:
+    label: hidden
     type: text_default
-    weight: 0
+    weight: 100
     settings: {  }
     third_party_settings: {  }
-    label: hidden
+  links:
+    weight: 101
 hidden:
-  langcode: true
-  links: true
+  social_links: true

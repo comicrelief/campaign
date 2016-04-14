@@ -1,3 +1,4 @@
+uuid: 1c7ea2f2-5f59-4a00-a900-004d306c0c29
 langcode: en
 status: true
 dependencies:
@@ -11,9 +12,10 @@ dependencies:
     - node.type.landing
   module:
     - ds
-    - image
+    - entity_reference_revisions
     - link
     - panelizer
+    - responsive_image
     - text
     - user
 third_party_settings:
@@ -140,50 +142,70 @@ third_party_settings:
           layout_class: {  }
     regions:
       ds_content:
+        - node_title
         - field_image
-        - body
-        - field_cta
-        - panelizer
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          wrapper: h2
+          class: ''
+_core:
+  default_config_hash: 7ktKQ14a_jLqSit4AKrqoWtNxbHdpVH0EsORtMia2Ro
 id: node.landing.search_index
 targetEntityType: node
 bundle: landing
 mode: search_index
 content:
   body:
-    label: hidden
     type: text_default
-    weight: 1
+    weight: 10
+    label: above
     settings: {  }
     third_party_settings: {  }
   field_cta:
-    weight: 2
-    label: hidden
+    type: link_separate
+    weight: 12
+    label: above
     settings:
       trim_length: 80
-      url_only: false
-      url_plain: false
       rel: ''
       target: ''
+      url_only: false
+      url_plain: false
     third_party_settings: {  }
-    type: link
   field_image:
-    weight: 0
+    weight: 1
     label: hidden
     settings:
-      image_style: ''
+      responsive_image_style: hero_image_full_node
       image_link: ''
     third_party_settings: {  }
-    type: image
+    type: responsive_image
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
+    weight: 11
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
   links:
-    weight: 0
+    weight: 2
     settings: {  }
     third_party_settings: {  }
   panelizer:
     type: panelizer
-    weight: 3
-    label: hidden
+    weight: 13
+    label: above
     settings: {  }
     third_party_settings: {  }
-hidden:
-  field_paragraphs: true
-  social_links: true
+  social_links:
+    weight: 14
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

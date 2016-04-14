@@ -2,22 +2,25 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.teaser
     - field.field.node.page.body
     - node.type.page
   module:
     - text
     - user
-id: node.page.default
+id: node.page.teaser
 targetEntityType: node
 bundle: page
-mode: default
+mode: teaser
 content:
   body:
     label: hidden
-    type: text_default
+    type: text_summary_or_trimmed
     weight: 100
-    settings: {  }
+    settings:
+      trim_length: 600
     third_party_settings: {  }
   links:
     weight: 101
-hidden: {  }
+hidden:
+  social_links: true

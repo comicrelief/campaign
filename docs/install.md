@@ -31,7 +31,7 @@ Grunt is simply used to monitor changes in front-end asset files and trigger tas
 Install npm from the theme directory:
 
 ```bash
-cd campaign/profiles/cr/themes/custom/campaign_base/
+cd profiles/cr/themes/custom/campaign_base/
 npm install
 ```
 
@@ -42,7 +42,7 @@ npm install
 Install bundler from the theme directory:
 
 ```bash
-cd campaign/profiles/cr/themes/custom/campaign_base/ 
+cd profiles/cr/themes/custom/campaign_base/ 
 bundle install
 ```
 

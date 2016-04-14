@@ -14,7 +14,12 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
  *      a local development environment, to insure that
  *      the site settings remain consistent.
  */
-include __DIR__ . "/settings.pantheon.php";
+
+if (getenv('VCAP_SERVICES')) {
+    include __DIR__ . "/settings.cf.php";
+} else {
+    include __DIR__ . "/settings.pantheon.php";
+}
 
 /**
  * If there is a local settings file, then include it
@@ -23,5 +28,6 @@ $local_settings = __DIR__ . "/settings.local.php";
 if (file_exists($local_settings)) {
   include $local_settings;
 }
+
 $settings['install_profile'] = 'cr';
 $settings['skip_permissions_hardening'] = TRUE;

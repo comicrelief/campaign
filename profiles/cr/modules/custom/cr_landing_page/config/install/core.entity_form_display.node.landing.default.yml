@@ -7,7 +7,7 @@ dependencies:
     - field.field.node.landing.field_image
     - field.field.node.landing.field_paragraphs
     - field.field.node.landing.panelizer
-    - image.style.thumbnail
+    - image.style.medium
     - node.type.landing
   module:
     - image
@@ -43,8 +43,8 @@ content:
   field_image:
     weight: 32
     settings:
+      preview_image_style: medium
       progress_indicator: throbber
-      preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
   field_paragraphs:

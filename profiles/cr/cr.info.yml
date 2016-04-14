@@ -63,12 +63,14 @@ dependencies:
 
   # Custom modules
   - cr_layout
+  - cr_page
   - cr_teaser
   - cr_article
   - cr_content_wall
   - cr_rich_text_paragraph
   - cr_landing_page
   - cr_partner
+  #- cr_performance
 
   # Development modules
   - config_devel
@@ -125,6 +127,7 @@ config_devel:
   - metatag.metatag_defaults.global
   - metatag.metatag_defaults.node
   - metatag.metatag_defaults.taxonomy_term
+  - metatag.metatag_defaults.user
 
   # Filter format
   - editor.editor.basic_html

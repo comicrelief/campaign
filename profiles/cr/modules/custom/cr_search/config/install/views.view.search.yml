@@ -1,3 +1,4 @@
+uuid: ae486534-15a7-4f64-9458-884237b0bd6e
 langcode: en
 status: true
 dependencies:
@@ -5,6 +6,8 @@ dependencies:
     - search_api.index.cr_content
   module:
     - search_api
+_core:
+  default_config_hash: DEm8SAHZWEkQg6mzvOAXWlCBTurFLaAPf_j8gveBxug
 id: search
 label: Search
 module: views
@@ -64,24 +67,23 @@ display:
             last: 'Last »'
           quantity: 9
       style:
-        type: grid
+        type: html_list
         options:
+          row_class: ''
+          default_row_class: true
           uses_fields: false
-          columns: 4
-          automatic_width: true
-          alignment: horizontal
-          col_class_default: true
-          col_class_custom: ''
-          row_class_default: true
-          row_class_custom: ''
+          type: ul
+          wrapper_class: item-list
+          class: ''
       row:
         type: search_api
         options:
           view_modes:
             'entity:node':
-              article: teaser
-              landing: default
-              page: default
+              article: search_index
+              landing: search_index
+              page: search_index
+              partner: search_index
       fields:
         search_api_language:
           table: search_api_index_cr_content
