@@ -63,7 +63,7 @@ class WebprofilerServiceProvider extends ServiceProviderBase {
           'priority' => 78,
         ]);
     }
-
+    
     // Add TranslationsDataCollector only if Locale module is enabled.
     if (isset($modules['locale'])) {
       $container->register('webprofiler.translations', 'Drupal\webprofiler\DataCollector\TranslationsDataCollector')

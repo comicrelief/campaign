@@ -27,6 +27,9 @@ devel.settings:
     debug_mail_directory:
       type: string
       label: 'Mail debug directory'
+    devel_dumper:
+      type: string
+      label: 'Devel variable dumper'
 
 block.settings.devel_switch_user:
   type: block_settings
