@@ -1,6 +1,12 @@
 name: 'Page Cache Form Test'
 type: module
 description: 'Support module for the Page Cache module tests.'
-core: 8.x
+# core: 8.x
 package: Testing
-version: VERSION
+# version: VERSION
+
+# Information added by Drupal.org packaging script on 2016-03-02
+version: '8.0.5'
+core: '8.x'
+project: 'drupal'
+datestamp: 1456915397

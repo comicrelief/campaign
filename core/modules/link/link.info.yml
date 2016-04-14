@@ -1,8 +1,14 @@
 name: Link
 type: module
 description: 'Provides a simple link field type.'
-core: 8.x
+# core: 8.x
 package: Field types
-version: VERSION
+# version: VERSION
 dependencies:
   - field
+
+# Information added by Drupal.org packaging script on 2016-03-02
+version: '8.0.5'
+core: '8.x'
+project: 'drupal'
+datestamp: 1456915397

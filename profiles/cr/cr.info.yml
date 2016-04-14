@@ -1,0 +1,145 @@
+name: Comic Relief
+type: profile
+description: "Build a site using Comic Relief's installation profile. It will install and enable common useful modules."
+core: 8.x
+distribution:
+  name: Comic Relief
+
+dependencies:
+  # Core modules
+  - node
+  - block
+  - block_content
+  - ckeditor
+  - config
+  - contextual
+  - contact
+  - menu_link_content
+  - datetime
+  - block_content
+  - quickedit
+  - editor
+  - entity_reference
+  - help
+  - image
+  - menu_ui
+  - options
+  - path
+  - page_cache
+  - taxonomy
+  - shortcut
+  - toolbar
+  - field_ui
+  - file
+  - rdf
+  - views_ui
+  - dblog
+  - link
+  - filter
+  - dynamic_page_cache
+  - breakpoint
+  - responsive_image
+
+  # Contrib modules
+  - ds
+  - file_entity
+  - metatag_open_graph
+  - pathauto
+  - redirect
+  - youtube
+  - view_modes_display
+  - social_links
+  - focal_point
+  #- simple_sitemap
+
+  # Layout
+  - inline_entity_form
+  - layout_plugin
+  - page_manager_ui
+  - panels_ipe
+  - panelizer
+  - ctools_block
+  - paragraphs
+
+  # Custom modules
+  - cr_layout
+  - cr_page
+  - cr_teaser
+  - cr_article
+  - cr_content_wall
+  - cr_rich_text_paragraph
+  - cr_landing_page
+  - cr_partner
+  #- cr_performance
+
+  # Development modules
+  - config_devel
+
+    # Editor/admin experience
+  - admin_toolbar_tools
+
+  # Default content; will be moved out of the profile at some point
+  - cr_default_content
+
+  # Because cr_landing_pages has content dependencies this needs to be load after
+  # cr_default_content
+  - cr_search
+
+themes:
+  - seven
+  - campaign_base
+
+config_devel:
+  #General config.
+  - system.theme
+  - views.settings
+
+  # Blocks
+  - block.block.tabs
+  - block.block.campaign_base_search
+  - block.block.campaign_base_account_menu
+  - block.block.campaign_base_page_title
+  - block.block.campaign_base_branding
+  - block.block.campaign_base_main_menu
+  - block.block.campaign_base_footer
+
+  # Menus
+  - system.menu.footer
+  - system.menu.main-navigation
+
+  # Images
+  - image.style.full_node_desktop_770x433
+  - image.style.full_node_mobile_442x271
+  - image.style.full_node_tablet_330x247
+  - image.style.cw_4_3_lg_370x278
+  - image.style.cw_4_3_md_290x278
+  - image.style.cw_large_780x440
+  - image.style.cw_medium_570x365
+  - image.style.cw_small_370x290
+  - responsive_image.styles.hero_image_full_node
+  - responsive_image.styles.cw_4_3_image
+  - responsive_image.styles.cw_landscape_image
+
+  # Metatags
+  - metatag.metatag_defaults.403
+  - metatag.metatag_defaults.404
+  - metatag.metatag_defaults.front
+  - metatag.metatag_defaults.global
+  - metatag.metatag_defaults.node
+  - metatag.metatag_defaults.taxonomy_term
+  - metatag.metatag_defaults.user
+
+  # Filter format
+  - editor.editor.basic_html
+  - editor.editor.full_html
+  - filter.format.basic_html
+  - filter.format.full_html
+
+  # Roles
+  - user.role.administrator
+  - user.role.anonymous
+  - user.role.authenticated
+  - user.role.editor
+
+  # Contributed modules
+  - simple_sitemap.settings

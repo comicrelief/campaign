@@ -1,0 +1,17 @@
+{%
+set classes = [
+'paragraph',
+'paragraph--' ~ paragraph.bundle|clean_class,
+view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+]
+%}
+<div{{ attributes.addClass(classes) }} >
+		<div class="paragraph--cr-rich-text-paragraph__image">
+			{{ content.field_background }}
+		</div>
+		<div class="paragraph--cr-rich-text-paragraph__inner-wrap">
+	    <div class="paragraph--cr-rich-text-paragraph__body">
+	    	{{ content.field_body }}
+	    </div>
+		</div>
+</div>

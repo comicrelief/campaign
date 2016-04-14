@@ -1,0 +1,98 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/block\/5?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/block_content\/teaser"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/teaser\/field_teaser_image": [
+            {
+                "href": "http:\/\/default\/file\/23?_format=hal_json"
+            }
+        ]
+    },
+    "uuid": [
+        {
+            "value": "638bd538-b590-4afd-be51-81f13b6aa027"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "info": [
+        {
+            "value": "Get your sport relief t-shirt and wristband",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "teaser"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1456421502",
+            "lang": "en"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<p>You'll find everything you need to help you fundraise and look the part whilst you do!<\/p>\r\n",
+            "format": "basic_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/teaser\/field_teaser_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/23?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "0fa8d6b8-4e93-4df5-8d4f-79d53c6ef4fb"
+                    }
+                ],
+                "alt": "",
+                "title": "",
+                "width": "1170",
+                "height": "658"
+            }
+        ]
+    },
+    "field_teaser_link": [
+        {
+            "uri": "https:\/\/shop.sportrelief.com\/?_ga=1.252526153.1714528654.1449076275",
+            "title": "Order now",
+            "options": []
+        }
+    ],
+    "field_teaser_title": [
+        {
+            "value": "Get your sport relief t-shirt and wristband"
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+# Schema for the Display Suite field made in the UI.
+
+ds.field.*:
+  type: config_object
+  label: 'Display Suite field'
+  mapping:
+    id:
+      type: string
+      label: 'Unique ID'
+    label:
+      type: string
+      label: 'Label'
+    ui_limit:
+      type: string
+      label: 'UI limit'
+    type:
+      type: string
+      label: 'Field type'
+    type_label:
+      type: string
+      label: 'Administration label of the field type'
+    entities:
+      type: sequence
+      label: 'Entities'
+      sequence:
+        - type: string
+          label: 'Entity'
+    properties:
+      type: ds.field.properties.[%parent.type]
+
+ds.field.properties.token:
+  type: mapping
+  label: 'Display Suite token field field properties'
+  mapping:
+    content:
+      type: mapping
+      label: 'Token properties'
+      mapping:
+        value:
+          type: string
+          label: 'The content'
+        format:
+          type: string
+          label: 'The format'
+
+ds.field.properties.block:
+  type: mapping
+  label: 'Display Suite block field properties'
+  mapping:
+    block:
+      type: string
+      label: 'Block plugin ID'
+    use_block_title:
+      type: boolean
+      label: 'Use block title as label'
+    config:
+      type: block.settings.[%parent.block]
+
+ds.field.properties.copy:
+  type: mapping
+  label: 'Display Suite copy field properties'
+  mapping:
+    ds_plugin:
+      type: string
+      label: 'Display Suite plugin ID'

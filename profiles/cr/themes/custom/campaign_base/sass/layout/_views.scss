@@ -1,0 +1,134 @@
+// views layout
+
+.view {
+  .item-list {
+    li {
+      @include span(6 of 6);
+      @include breakpoint($screen-xs) {
+      	@include span(6);
+      }
+      @include breakpoint($screen-md) {
+      	@include span(4);
+        &:first-child {
+          // @include span(8);
+        }
+        &:nth-child(1),
+        &:nth-child(2) {
+          // @include span(6);
+        }
+      }
+      margin-bottom: 15px;
+      .field--name-field-image {
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+}
+.view-content {
+  .views-row {
+    @include span(12);
+    margin-bottom: gutter();
+    @include breakpoint($screen-xs) {
+      @include span(4);
+    }
+  }
+}
+.row-9-3 {
+  ul {
+    li {
+      &:nth-child(1) {
+        @include span(12);
+        @include breakpoint($screen-md) {
+          @include span(9 of 12);
+        }
+      }
+      &:nth-child(2) {
+        @include span(12);
+        @include breakpoint($screen-md) {
+          @include span(3 of 12);
+        }
+      }
+    }
+  }
+}
+.row-6-6 {
+  ul {
+    li {
+      &:nth-child(1) {
+        @include span(6 of 12);
+        @include breakpoint($screen-md) {
+          @include span(6 of 12);
+        }
+      }
+      &:nth-child(2) {
+        @include span(6 of 12);
+        @include breakpoint($screen-md) {
+          @include span(6 of 12);
+        }
+      }
+    }
+  }
+}
+.row-3-3-3 {
+  ul {
+    li {
+      &:nth-child(1) {
+        @include span(6 of 12);
+        @include breakpoint($screen-md) {
+          @include span(4 of 12);
+        }
+      }
+      &:nth-child(2) {
+        @include span(6 of 12);
+        @include breakpoint($screen-md) {
+          @include span(4 of 12);
+        }
+      }
+      &:nth-child(3) {
+        @include span(6 of 12);
+        @include breakpoint($screen-md) {
+          @include span(4 of 12);
+        }
+      }
+    }
+  }
+}
+.panel-panel {
+  // @include container(12);
+  article.cw-article--small {
+    @include span(12);
+    @include breakpoint($screen-xs) {
+      @include span(4);
+    }
+  }
+}
+.panel-panel {
+  article.cw-article--medium {
+    @include span(12);
+    @include breakpoint($screen-xs) {
+      @include span(6);
+    }
+  }
+}
+.panel-panel {
+  article.cw-article--large {
+    @include span(12);
+    @include breakpoint($screen-xs) {
+      padding: 0 15px 0 0;
+    }
+    .cw-article__image {
+      @include breakpoint($screen-xs) {
+        @include span(8);
+        padding-right: 0;
+      }
+    }
+    .cw-article__body {
+      @include breakpoint($screen-xs) {
+        @include span(4);
+      }
+    }
+  }
+}

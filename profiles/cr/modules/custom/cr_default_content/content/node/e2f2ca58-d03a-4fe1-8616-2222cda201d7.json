@@ -1,0 +1,236 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/fundraise?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/landing"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_image": [
+            {
+                "href": "http:\/\/default\/file\/7?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_paragraphs": [
+            {
+                "href": "http:\/\/default\/paragraph\/1?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/default\/paragraph\/2?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/default\/paragraph\/3?_format=hal_json"
+            }
+        ]
+    },
+    "uuid": [
+        {
+            "value": "e2f2ca58-d03a-4fe1-8616-2222cda201d7"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "landing"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "title": [
+        {
+            "value": "Fundraise",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "3d1f0c36-ac03-44fd-bd02-2e47a3b95a83"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "3d1f0c36-ac03-44fd-bd02-2e47a3b95a83"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/7?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "a1efa8e8-8241-41f8-bb05-5f55a693f967"
+                    }
+                ],
+                "lang": "en",
+                "alt": "",
+                "title": "",
+                "width": "1700",
+                "height": "600"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_paragraphs": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/paragraph\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cw_row"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "0948d690-e229-42e8-9307-7a2f038fa76d"
+                    }
+                ]
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/paragraph\/2?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cw_row"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "7efb70e5-d8d4-4f60-ba04-4f8a9c7168de"
+                    }
+                ]
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/paragraph\/3?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cr_rich_text_paragraph"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "35669b01-a4f9-4613-ab04-4fd16d7acb38"
+                    }
+                ]
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1456406798",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1460485796",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1456406937"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<img alt=\"Title of the page\" data-align=\"center\" data-entity-type=\"file\" data-entity-uuid=\"9e570179-1e40-4420-9100-d8fc667c5d6f\" src=\"\/sites\/default\/files\/inline-images\/SR16_svg_title_promo_do_yourself_proud_v2_1.png\" \/>\r\n<p>What you do for Comic Relief is entirely up to you. Whatever it is, just have fun, raise cash and you'll do yourself proud.<\/p>\r\n",
+            "format": "basic_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ],
+    "field_cta": [
+        {
+            "uri": "http:\/\/comicrelief.com",
+            "title": "Get to know Comic Relief",
+            "options": []
+        }
+    ],
+    "panelizer": [
+        {
+            "view_mode": "full",
+            "default": "default",
+            "panels_display": [],
+            "lang": "en"
+        }
+    ]
+}

@@ -2,7 +2,13 @@ name: 'Field UI'
 type: module
 description: 'User interface for the Field API.'
 package: Core
-version: VERSION
-core: 8.x
+# version: VERSION
+# core: 8.x
 dependencies:
   - field
+
+# Information added by Drupal.org packaging script on 2016-03-02
+version: '8.0.5'
+core: '8.x'
+project: 'drupal'
+datestamp: 1456915398

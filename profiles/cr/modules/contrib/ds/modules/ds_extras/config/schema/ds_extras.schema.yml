@@ -1,0 +1,46 @@
+# Schema for the configuration files of the Display Suite extras module.
+
+ds_extras.settings:
+  type: config_object
+  label: 'Display Suite extra settings'
+  mapping:
+    region_blocks:
+      type: sequence
+      label: 'Region blocks'
+      sequence:
+        - type: mapping
+          label: Region block
+          mapping:
+            title:
+              type: string
+              label: Title
+            info:
+              type: string
+              label: Info
+    fields_extra:
+      type: boolean
+      label: 'Add extra fields'
+    fields_extra_list:
+      type: sequence
+      label: 'List of extra fields'
+      sequence:
+        - type: string
+          label: 'Extra field'
+    field_permissions:
+      type: boolean
+      label: 'Field permissions enabled'
+    switch_field:
+      type: boolean
+      label: 'Add a switch view mode field'
+    hidden_region:
+      type: boolean
+      label: 'Add a hidden region'
+    region_to_block:
+      type: boolean
+      label: 'Region to block'
+    override_node_revision:
+      type: boolean
+      label: 'Override node revision callback'
+    override_node_revision_view_mode:
+      type: string
+      label: 'The view mode of the node revision override'

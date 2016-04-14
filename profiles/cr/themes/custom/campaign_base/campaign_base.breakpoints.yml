@@ -1,0 +1,18 @@
+campaign_base.mobile:
+  label: mobile
+  mediaQuery: '(min-width: 0px)'
+  weight: 0
+  multipliers:
+   - 1x
+campaign_base.tablet:
+  label: tablet
+  mediaQuery: 'all and (min-width: 769px)'
+  weight: 1
+  multipliers:
+    - 1x
+campaign_base.desktop:
+  label: desktop
+  mediaQuery: 'all and (min-width: 992px)'
+  weight: 2
+  multipliers:
+    - 1x

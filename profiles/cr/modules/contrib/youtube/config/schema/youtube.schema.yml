@@ -1,0 +1,90 @@
+# Schema for the configuration files of the YouTube module.
+
+youtube.settings:
+  type: config_object
+  label: 'YouTube settings'
+  mapping:
+    youtube_suggest:
+      type: boolean
+      label: 'Show suggestions'
+    youtube_modestbranding:
+      type: boolean
+      label: 'Hide logo'
+    youtube_theme:
+      type: boolean
+      label: 'Light control bar'
+    youtube_color:
+      type: boolean
+      label: 'Colored progress bar'
+    youtube_enablejsapi:
+      type: boolean
+      label: 'JS API'
+    youtube_wmode:
+      type: boolean
+      label: 'Fix IE8 overlay'
+    youtube_privacy:
+      type: boolean
+      label: 'Privacy-enhanced mode'
+    youtube_player_class:
+      type: string
+      label: 'Player class'
+    youtube_thumb_dir:
+      type: string
+      label: 'Thumbnail directory'
+    youtube_thumb_hires:
+      type: boolean
+      label: 'Save higher resolution thumbnail images'
+    youtube_thumb_token_image_style:
+      type: string
+      label: 'Default image token image style'
+
+field.formatter.settings.youtube_video:
+  type: mapping
+  label: 'YouTube video formatter settings'
+  mapping:
+    youtube_size:
+      type: string
+      label: 'YouTube video size'
+    youtube_width:
+      type: string
+      label: 'Youtube width'
+    youtube_height:
+      type: string
+      label: 'Youtube height'
+    youtube_autoplay:
+      type: boolean
+      label: 'Play video automatically when loaded'
+    youtube_loop:
+      type: boolean
+      label: 'Loop the playback of the video'
+    youtube_showinfo:
+      type: boolean
+      label: 'Hide video title and uploader info'
+    youtube_controls:
+      type: boolean
+      label: 'Always hide video controls'
+    youtube_autohide:
+      type: boolean
+      label: 'Hide video controls after play begins'
+    youtube_iv_load_policy:
+      type: boolean
+      label: 'Hide video annotations by default'
+
+field.formatter.settings.youtube_thumbnail:
+  type: mapping
+  label: 'YouTube thumbnail formatter settings'
+  mapping:
+    image_style:
+      type: string
+      label: 'Thummbnail image style'
+    image_link:
+      type: string
+      label: 'What to link image to'
+
+field.formatter.settings.youtube_url:
+  type: mapping
+  label: 'YouTube URL formatter settings'
+  mapping:
+    image_style:
+      type: boolean
+      label: 'Output this field as a link'

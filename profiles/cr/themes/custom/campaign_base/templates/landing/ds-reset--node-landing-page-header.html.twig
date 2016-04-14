@@ -1,0 +1,16 @@
+{# {{ kint(field_cta) }} #}
+<div class="landing-page contextual-region">
+	<header class="landing-page__header" style="background-image: url('{{ file_url(node.field_image.entity.fileuri) }}')">
+		{{ title_suffix.contextual_links }}
+		<h1 class="landing-page__title">{{ title }}</h1>
+		<div class="landing-page__content">
+			{{ body }}
+			<div class="landing-page__link">	
+				{{ field_cta }}
+			</div>
+			{# {{ field_cta['#items'].title }}
+			{{ field_cta['#items'].uri }} #}
+
+		</div>
+	</header>
+</div>

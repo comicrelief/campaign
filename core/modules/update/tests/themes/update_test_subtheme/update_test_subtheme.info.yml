@@ -1,6 +1,12 @@
 name: 'Update test subtheme'
 type: theme
 description: 'Test theme which uses update_test_basetheme as the base theme.'
-version: VERSION
-core: 8.x
+# version: VERSION
+# core: 8.x
 base theme: update_test_basetheme
+
+# Information added by Drupal.org packaging script on 2016-03-02
+version: '8.0.5'
+core: '8.x'
+project: 'drupal'
+datestamp: 1456915398

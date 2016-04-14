@@ -1,0 +1,46 @@
+name: Content Wall
+type: module
+description: 'Defines content wall functionality.'
+package: Comic Relief
+core: 8.x
+dependencies:
+  - ds
+  - paragraphs
+  - entity_reference_revisions
+config_devel:
+# Paragraph config
+  - paragraphs.paragraphs_type.cw_row
+  - field.storage.node.field_paragraphs
+  # View modes
+  - core.entity_form_display.paragraph.cw_row.default
+  - core.entity_view_display.paragraph.cw_row.default
+  - core.entity_form_display.block_content.cw_row_block.default
+  - core.entity_view_display.block_content.cw_row_block.default
+  # Fields
+  - field.field.paragraph.cw_row.field_cw_row_reference
+  - field.field.block_content.cw_row_block.field_cw_block_reference
+  - field.field.block_content.cw_row_block.field_cw_view_mode
+  - field.storage.block_content.field_cw_block_reference
+  - field.storage.block_content.field_cw_view_mode
+  # Node block
+  - block_content.type.cw_node_block
+  # View modes
+  - core.entity_form_display.block_content.cw_node_block.default
+  - core.entity_view_display.block_content.cw_node_block.default
+  # Fields
+  - field.field.block_content.cw_node_block.field_cw_node_reference
+  - field.storage.block_content.field_cw_node_reference
+# View mode config #
+  - core.entity_view_mode.block_content.cw_1col_l
+  - core.entity_view_mode.block_content.cw_2col_m_m
+  - core.entity_view_mode.block_content.cw_2col_s_m
+  - core.entity_view_mode.block_content.cw_2col_m_s
+  - core.entity_view_mode.block_content.cw_3col_s_s_s
+  - core.entity_view_mode.block_content.cw_l
+  - core.entity_view_mode.block_content.cw_m
+  - core.entity_view_mode.block_content.cw_mp
+  - core.entity_view_mode.block_content.cw_s
+# Image styles
+  - image.style.cw_large_780x440
+  - image.style.cw_medium_570x365
+  - image.style.cw_small_370x290

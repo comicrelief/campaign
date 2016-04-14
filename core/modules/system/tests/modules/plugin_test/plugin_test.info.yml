@@ -2,5 +2,11 @@ name: 'Plugin Test Support'
 type: module
 description: 'Test that plugins can provide plugins and provide namespace discovery for plugin test implementations.'
 package: Testing
-version: VERSION
-core: 8.x
+# version: VERSION
+# core: 8.x
+
+# Information added by Drupal.org packaging script on 2016-03-02
+version: '8.0.5'
+core: '8.x'
+project: 'drupal'
+datestamp: 1456915397
