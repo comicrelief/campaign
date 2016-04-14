@@ -12,11 +12,12 @@ module.exports = function (grunt) {
         files: ['sass/{,**/}*.{scss,sass}'],
         tasks: ['compass:dev','shell:styleguide'],
         options: {
-          livereload: false
+          livereload: true
         }
       },
       templates: {
-        files: ['templates/{,**/}*.html.twig']
+        files: ['templates/{,**/}*.html.twig'],
+        files: ['sass/components/{,**/}*.hbs']
       },
       images: {
         files: ['images/**']
