@@ -86,7 +86,7 @@
   </target>
   <target name="make" description="Compile CR contrib from a make file">
     <exec checkreturn="true" logoutput="true" passthru="true"
-      command="${drush.bin} make -y ${app.profile.dir}drupal-org.make.yml --no-core --contrib-destination=${app.profile.dir}"/>
+      command="${drush.bin} make -y ${app.profile.dir}drupal-org.make.yml --no-gitprojectinfo --no-gitinfofile --no-core --contrib-destination=${app.profile.dir}"/>
   </target>
   <target name="install" description="Install CR with standard configuration.">
     <exec dir="${app.dir}" logoutput="true" passthru="true" checkreturn="true"
