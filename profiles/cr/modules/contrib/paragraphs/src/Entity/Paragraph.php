@@ -12,9 +12,6 @@ use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\EntityTypeInterface;
-use Drupal\field\Entity\FieldStorageConfig;
-use Drupal\entity_reference_revisions\EntityNeedsSaveInterface;
-use Drupal\entity_reference_revisions\EntityNeedsSaveTrait;
 use Drupal\paragraphs\ParagraphInterface;
 use Drupal\user\UserInterface;
 
@@ -43,9 +40,6 @@ use Drupal\user\UserInterface;
  *   revision_table = "paragraphs_item_revision",
  *   revision_data_table = "paragraphs_item_revision_field_data",
  *   translatable = TRUE,
- *   entity_revision_parent_type_field = "parent_type",
- *   entity_revision_parent_id_field = "parent_id",
- *   entity_revision_parent_field_name_field = "parent_field_name",
  *   entity_keys = {
  *     "id" = "id",
  *     "uuid" = "uuid",
@@ -81,19 +75,9 @@ use Drupal\user\UserInterface;
  *   }
  * )
  */
-class Paragraph extends ContentEntityBase implements ParagraphInterface, EntityNeedsSaveInterface {
+class Paragraph extends ContentEntityBase implements ParagraphInterface {
 
-  use EntityChangedTrait, EntityNeedsSaveTrait;
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getParentEntity() {
-    if (!isset($this->get('parent_type')->value) || !isset($this->get('parent_id')->value)) {
-      return NULL;
-    }
-    return \Drupal::entityManager()->getStorage($this->get('parent_type')->value)->load($this->get('parent_id')->value);
-  }
+  use EntityChangedTrait;
 
   /**
    * {@inheritdoc}
@@ -315,23 +299,6 @@ class Paragraph extends ContentEntityBase implements ParagraphInterface, EntityN
       ->setSetting('target_type', 'user')
       ->setQueryable(FALSE)
       ->setRevisionable(TRUE);
-
-    $fields['parent_id'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Parent ID'))
-      ->setDescription(t('The ID of the parent entity of which this entity is referenced.'))
-      ->setSetting('is_ascii', TRUE);
-
-    $fields['parent_type'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Parent type'))
-      ->setDescription(t('The entity parent type to which this entity is referenced.'))
-      ->setSetting('is_ascii', TRUE)
-      ->setSetting('max_length', EntityTypeInterface::ID_MAX_LENGTH);
-
-    $fields['parent_field_name'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Parent field name'))
-      ->setDescription(t('The entity parent field name to which this entity is referenced.'))
-      ->setSetting('is_ascii', TRUE)
-      ->setSetting('max_length', FieldStorageConfig::NAME_MAX_LENGTH);
 
     return $fields;
   }

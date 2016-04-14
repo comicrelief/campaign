@@ -22,15 +22,9 @@ class ParagraphAccessControlHandler extends EntityAccessControlHandler {
   /**
    * {@inheritdoc}
    */
-  protected function checkAccess(EntityInterface $paragraph, $operation, AccountInterface $account) {
+  protected function checkAccess(EntityInterface $entity, $operation, AccountInterface $account) {
     // Allowed when the operation is not view or the status is true.
-    /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
-    if ($paragraph->getParentEntity() != NULL) {
-      $parent_access = $paragraph->getParentEntity()->access($operation, $account, TRUE);
-      return AccessResult::allowedIf($operation != 'view' || $paragraph->status->value)
-        ->andIf($parent_access);
-    }
-    return AccessResult::allowedIf($operation != 'view' || $paragraph->status->value);
+    return AccessResult::allowedIf($operation != 'view' || $entity->status->value);
   }
 
   /**

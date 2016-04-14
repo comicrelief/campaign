@@ -7,7 +7,6 @@
 
 namespace Drupal\paragraphs;
 
-use Drupal\Core\Entity\ContentEntityTypeInterface;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\file\FileStorageSchema;
 
@@ -15,20 +14,6 @@ use Drupal\file\FileStorageSchema;
  * Extends the paragraphs schema handler.
  */
 class ParagraphStorageSchema extends FileStorageSchema {
-
-  /**
-   * {@inheritdoc}
-   */
-  protected function getEntitySchema(ContentEntityTypeInterface $entity_type, $reset = FALSE) {
-    $schema = parent::getEntitySchema($entity_type, $reset);
-
-    $schema['paragraphs_item_field_data']['indexes'] += array(
-      'paragraphs__parent_fields' => array('parent_type', 'parent_id', 'parent_field_name'),
-    );
-
-    return $schema;
-  }
-
   /**
    * {@inheritdoc}
    */

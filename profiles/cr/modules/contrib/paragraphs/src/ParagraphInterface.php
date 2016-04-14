@@ -13,14 +13,10 @@ use Drupal\Core\Entity\ContentEntityInterface;
 
 /**
  * Provides an interface defining a paragraphs entity.
- * @ingroup paragraphs
+ * @ingroup account
  */
 interface ParagraphInterface extends ContentEntityInterface, EntityChangedInterface, EntityOwnerInterface
 {
 
-  /**
-   * Gets the parent entity of the paragraph.
-   *
-   */
-  public function getParentEntity();
+  // Add get/set methods for your configuration properties here.
 }
