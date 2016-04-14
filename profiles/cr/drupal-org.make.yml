@@ -50,7 +50,9 @@ projects:
   field_group:
     version: 1.0-rc4
   paragraphs:
-    version: 1.x-dev
+    download:
+      branch: 8.x-1.x
+      revision: 6f946be
     patch:
       # See: https://www.drupal.org/node/2700723
       2700723: https://www.drupal.org/files/issues/2700723-4.patch
