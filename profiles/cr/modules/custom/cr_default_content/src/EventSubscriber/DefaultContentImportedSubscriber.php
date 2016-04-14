@@ -55,9 +55,6 @@ class DefaultContentImportedSubscriber implements EventSubscriberInterface {
 
     $links_from_map($map);
 
-    // Create a menu link for the styleguide
-    $this->createMenuLink('Styleguide', '/profiles/cr/themes/custom/campaign_base/styleguide/index.html', 100, 'main');
-
     // $this->createFooterQuickLinks();
   }
 
