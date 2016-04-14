@@ -63,6 +63,9 @@ profiles/cr/themes/custom/campaign_base/css/*.css.map
 ##########
 profiles/cr/themes/custom/campaign_base/node_modules
 
+# Style guide #
+profiles/cr/themes/custom/campaign_base/styleguide
+
 # Temp agov theme #
 profiles/cr/themes/custom/agov_base
 
