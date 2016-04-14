@@ -13,3 +13,7 @@ projects:
   drupal:
     type: core
     version: 8.1.0-rc1
+    patch:
+      # List unmet dependencies instead of just failing
+      # @see https://www.drupal.org/node/2655104
+      - https://www.drupal.org/files/issues/missing-dependencies-2655104-8.patch
