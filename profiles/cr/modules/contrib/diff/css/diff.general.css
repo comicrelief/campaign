@@ -1,0 +1,10 @@
+/**
+ * @file
+ * General stylesheet for the diff module.
+ */
+.diff-button {
+  margin-bottom: 20px;
+}
+#diffadminplugins .messages {
+  margin-bottom: 0.5em;
+}

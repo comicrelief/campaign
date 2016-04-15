@@ -39,6 +39,8 @@ dependencies:
   - dynamic_page_cache
   - breakpoint
   - responsive_image
+  - entity
+  - diff
 
   # Contrib modules
   - ds
@@ -81,8 +83,7 @@ dependencies:
   # Default content; will be moved out of the profile at some point
   - cr_default_content
 
-  # Because cr_landing_pages has content dependencies this needs to be load after
-  # cr_default_content
+  # Because cr_landing_pages has content dependencies this needs to be loaded after
   - cr_search
 
 themes:
