@@ -10,10 +10,7 @@ module.exports = function (grunt) {
       },
       sass: {
         files: ['sass/{,**/}*.{scss,sass}'],
-        tasks: ['compass:dev','shell:styleguide'],
-        options: {
-          livereload: true
-        }
+        tasks: ['compass:dev','shell:styleguide']
       },
       templates: {
         files: ['templates/{,**/}*.html.twig'],
