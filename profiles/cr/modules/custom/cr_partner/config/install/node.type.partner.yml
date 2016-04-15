@@ -1,4 +1,3 @@
-uuid: c9f04e6f-348f-4e48-ac00-d74c077579fc
 langcode: en
 status: true
 dependencies:
@@ -8,8 +7,6 @@ third_party_settings:
   menu_ui:
     available_menus: {  }
     parent: ''
-_core:
-  default_config_hash: wDefilvLkaVY7IKm_-s1vj5h2gwt9XitzMvztE8RRG8
 name: Partner
 type: partner
 description: 'Add a new partner'
