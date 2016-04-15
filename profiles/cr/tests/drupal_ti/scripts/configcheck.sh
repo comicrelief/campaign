@@ -7,7 +7,7 @@ git status
 
 phing config:export
 
-git status
+git diff --exit-code
 
 # CODE_PATH="profiles/cr/modules/custom"
 # STANDARD="--standard=Drupal"
