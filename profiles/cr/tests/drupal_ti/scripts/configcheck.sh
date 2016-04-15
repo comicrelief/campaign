@@ -7,6 +7,10 @@ git config --global user.email "travis@example.com"
 git config --global user.name "Travis CI"
 chmod 777 sites/default/settings.php
 
+ls -l sites/default/settings.php
+
+chmod -R 777 sites/default
+
 git status
 git stash
 
