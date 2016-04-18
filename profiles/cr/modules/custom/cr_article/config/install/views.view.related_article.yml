@@ -144,10 +144,10 @@ display:
           expose:
             operator: ''
           group: 1
-        field_tags_target_id:
-          id: field_tags_target_id
-          table: node__field_tags
-          field: field_tags_target_id
+        field_article_tags_target_id:
+          id: field_article_tags_target_id
+          table: node__field_article_tags
+          field: field_article_tags_target_id
           relationship: none
           group_type: group
           admin_label: ''
@@ -221,13 +221,13 @@ display:
           plugin_id: text
       empty: {  }
       relationships:
-        field_tags:
-          id: field_tags
-          table: node__field_tags
-          field: field_tags
+        field_article_tags:
+          id: field_article_tags
+          table: node__field_article_tags
+          field: field_article_tags
           relationship: none
           group_type: group
-          admin_label: 'field_tags: Taxonomy term'
+          admin_label: 'field_article_tags: Taxonomy term'
           required: true
           plugin_id: standard
       arguments:

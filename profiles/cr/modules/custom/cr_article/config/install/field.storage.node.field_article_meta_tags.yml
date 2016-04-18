@@ -4,8 +4,8 @@ dependencies:
   module:
     - metatag
     - node
-id: node.field_meta_tags
-field_name: field_meta_tags
+id: node.field_article_meta_tags
+field_name: field_article_meta_tags
 entity_type: node
 type: metatag
 settings: {  }

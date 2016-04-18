@@ -2,12 +2,12 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_image
+    - field.storage.node.field_article_image
     - node.type.article
   module:
     - image
-id: node.article.field_image
-field_name: field_image
+id: node.article.field_article_image
+field_name: field_article_image
 entity_type: node
 bundle: article
 label: Image
