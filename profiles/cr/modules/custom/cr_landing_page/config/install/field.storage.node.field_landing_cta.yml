@@ -4,8 +4,8 @@ dependencies:
   module:
     - link
     - node
-id: node.field_cta
-field_name: field_cta
+id: node.field_landing_cta
+field_name: field_landing_cta
 entity_type: node
 type: link
 settings: {  }
