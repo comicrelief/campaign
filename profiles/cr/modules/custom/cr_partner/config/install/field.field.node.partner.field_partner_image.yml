@@ -2,12 +2,12 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_image
+    - field.storage.node.field_partner_image
     - node.type.partner
   module:
     - image
-id: node.partner.field_image
-field_name: field_image
+id: node.partner.field_partner_image
+field_name: field_partner_image
 entity_type: node
 bundle: partner
 label: Gallery
