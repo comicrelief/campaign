@@ -1,9 +1,29 @@
 <?php
+use Symfony\Component\Yaml\Yaml;
+
+$settings['install_profile'] = 'rnd17';
+$settings['skip_permissions_hardening'] = TRUE;
+
+$settings['profile_directories'] = ['profiles/cr', 'profiles/rnd17'];
+$config_directories['sync'] = 'sites/default/files/config_y8vJ4brpwPsHm-K_yfMf8LPe_JvB6RE6pUM3SJj69h3MNkcxqaw2h7B9E5mc9geVpK0oz61QrA/sync';
+
+/**
+ * Load environment variables.
+ */
+$environment = __DIR__ . "/environment.yml";
+if (file_exists($environment)) {
+	$environment_variables = Yaml::parse(file_get_contents($environment));
+
+	$databases = $environment_variables['databases'];
+	$settings = array_merge($settings, $environment_variables['settings']);
+	$config = array_merge($config, $environment_variables['config']);
+}
 
 /**
  * Load services definition file.
  */
 $settings['container_yamls'][] = __DIR__ . '/services.yml';
+
 
 /**
  * Include the Pantheon-specific settings file.
@@ -28,6 +48,3 @@ $local_settings = __DIR__ . "/settings.local.php";
 if (file_exists($local_settings)) {
   include $local_settings;
 }
-
-$settings['install_profile'] = 'cr';
-$settings['skip_permissions_hardening'] = TRUE;
