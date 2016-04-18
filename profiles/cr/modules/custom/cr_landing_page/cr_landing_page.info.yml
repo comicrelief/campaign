@@ -10,11 +10,12 @@ config_devel:
   - core.entity_view_display.node.landing.full
   - core.entity_view_display.node.landing.landing_page_header
   - core.entity_view_mode.node.landing_page_header
-  - field.storage.node.panelizer
   - field.field.node.landing.body
-  - field.storage.node.field_cta
-  - field.field.node.landing.field_cta
   - field.field.node.landing.field_image
+  - field.field.node.landing.field_cta
   - field.field.node.landing.panelizer
   - field.field.node.landing.field_paragraphs
+  - field.storage.node.field_image
+  - field.storage.node.field_cta
+  - field.storage.node.panelizer
   - pathauto.pattern.landing_page
