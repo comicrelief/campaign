@@ -49,8 +49,7 @@ config_devel:
   - core.entity_view_mode.block_content.cw_m
   - core.entity_view_mode.block_content.cw_mp
   - core.entity_view_mode.block_content.cw_s
-  - core.entity_view_mode.block_content.content_wall
-  - core.entity_view_mode.node.content_wall
+
   # Image styles
   - image.style.cw_large_780x440
   - image.style.cw_medium_570x365
