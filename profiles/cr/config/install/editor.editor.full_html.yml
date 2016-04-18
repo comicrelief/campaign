@@ -7,7 +7,7 @@ dependencies:
   module:
     - ckeditor
 _core:
-  default_config_hash: 967ijj7p6i7rwrYl7r08WQFeCY_c23YAh0h8u-w_CXM
+  default_config_hash: tF1M5mtM1hiKnxHfOBFLB2CZrHb7Z_peTUmd0b6nLHM
 format: full_html
 editor: ckeditor
 settings:
@@ -56,7 +56,7 @@ settings:
             - Styles
   plugins:
     stylescombo:
-      styles: "a.btn.btn-red|Red Button\r\na.btn.btn-blue|Blue Button"
+      styles: "a.btn.btn--red|Red Button\r\na.btn.btn--blue|Blue Button"
 image_upload:
   status: true
   scheme: public
