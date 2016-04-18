@@ -12,6 +12,6 @@ name: 'News article'
 type: article
 description: 'Use a ''Article'' to publish an article in the News section. Supports title, image, body, publish date and and media tags.'
 help: ''
-new_revision: false
+new_revision: true
 preview_mode: 1
 display_submitted: false
