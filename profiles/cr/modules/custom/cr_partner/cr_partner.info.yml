@@ -25,8 +25,9 @@ config_devel:
   - field.field.node.partner.field_partner_category
   - field.field.node.partner.field_partner_website
   - field.field.node.partner.field_partner_logo
-  - field.storage.node.field_partner_logo
+  - field.storage.node.field_partner_image
   - field.storage.node.field_partner_category
   - field.storage.node.field_partner_website
+  - field.storage.node.field_partner_logo
   - taxonomy.vocabulary.partner_category
   - views.view.partners
