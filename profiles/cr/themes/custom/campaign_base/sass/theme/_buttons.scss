@@ -20,9 +20,7 @@ $buttonList: (
 
 @mixin btn-variation($button){
   // Makes .btn-green etc
-  .btn-#{nth($button, 1)},
-  input[type="button"].btn-#{nth($button, 1)}, 
-  input[type="submit"].btn-#{nth($button, 1)} {
+  .btn--#{nth($button, 1)} {
     // Applies $colour-green etc.
     background-color: nth($button, 2);
     color: nth($button, 4);
@@ -60,30 +58,6 @@ $buttonList: (
   vertical-align: middle;
   cursor: pointer;
   white-space: nowrap;
-  &.btn-ghost--black {
-    background-color: transparent;
-    border: 2px solid $black;
-    color: $red;
-    padding: 11px 35px;
-    &:hover,
-    &:focus,
-    &:active {
-      background-color: $black;
-      color: $white;
-    }
-  }
-  &.btn-ghost--white {
-    background-color: transparent;
-    border: 2px solid $white;
-    color: $white;
-    padding: 11px 35px;
-    &:hover,
-    &:focus,
-    &:active {
-      background-color: $white;
-      color: $black;
-    }
-  }
 
   span {
     font-size: inherit;
@@ -102,16 +76,6 @@ $buttonList: (
   @include btn-variation(nth($buttonList, $button));
 }
 
-/*
- * Make sure the styles work on input buttons
- */
-input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-  border:none;
-  @extend .btn;
-  @extend .btn-red;
-}
 
 /**
  * Buttons display as stack block for xs
@@ -136,9 +100,6 @@ input[type="submit"] {
   .btn + .btn {
     margin-top: 0px;
     margin-left: 25px;
-  }
-  a.btn.btn.no-fixed-width.filter__button {
-    width: auto;
   }
 }
 
