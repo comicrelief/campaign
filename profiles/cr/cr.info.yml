@@ -39,6 +39,8 @@ dependencies:
   - dynamic_page_cache
   - breakpoint
   - responsive_image
+  - entity
+  - diff
 
   # Contrib modules
   - ds
@@ -70,6 +72,7 @@ dependencies:
   - cr_rich_text_paragraph
   - cr_landing_page
   - cr_partner
+  #- cr_performance
 
   # Development modules
   - config_devel
@@ -80,8 +83,7 @@ dependencies:
   # Default content; will be moved out of the profile at some point
   - cr_default_content
 
-  # Because cr_landing_pages has content dependencies this needs to be load after
-  # cr_default_content
+  # Because cr_landing_pages has content dependencies this needs to be loaded after
   - cr_search
 
 themes:
@@ -126,7 +128,7 @@ config_devel:
   - metatag.metatag_defaults.global
   - metatag.metatag_defaults.node
   - metatag.metatag_defaults.taxonomy_term
-  - metatag.metatag_defaults.user  
+  - metatag.metatag_defaults.user
 
   # Filter format
   - editor.editor.basic_html

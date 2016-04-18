@@ -31,9 +31,11 @@ projects:
   token:
     version: 1.0-alpha2
   rabbitmq:
-      version: 1.0-alpha1
+    version: 1.0-alpha1
   youtube:
     version: 1.0-beta3
+  entity:
+    version: 1.0-alpha2
   # Layout modules
   inline_entity_form:
     version: 1.0-alpha5
@@ -50,7 +52,9 @@ projects:
   field_group:
     version: 1.0-rc4
   paragraphs:
-    version: 1.x-dev
+    download:
+      branch: 8.x-1.x
+      revision: 6f946be
     patch:
       # See: https://www.drupal.org/node/2700723
       2700723: https://www.drupal.org/files/issues/2700723-4.patch
@@ -65,6 +69,8 @@ projects:
     version: 1.x-dev
   social_links:
     version: 1.x-dev
+  diff:
+    version: 1.0-alpha2
   # Developer modules
   config_devel:
     version: 1.0-rc1
@@ -77,6 +83,8 @@ projects:
       revision: ae81658
   devel:
     version: 1.x-dev
+  memcache:
+    version: 2.x-dev
   # Editor/admin experience
   admin_toolbar:
     version: 1.14

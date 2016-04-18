@@ -1,0 +1,31 @@
+// Basic styles for Search Index view mode for News Articles and 
+
+.search-result__node {
+  
+  .search-result__title h2 {
+    @include box-shadow(inset 10px -140px 81px -97px $black);
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    right: 0;
+    padding: 80px 10px 10px;
+    margin-bottom: 0;
+    
+    a {
+      text-decoration: none;
+      color: $white;
+      font-size: 16px;
+      font-weight: bold;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  /* Placeholder styles to make Basic Pages look 'okay'
+  in the Search view, seeing as there's no images to provide height */
+  &.search-result__node--page {
+    background-color: red;
+    padding-bottom: 57%; 
+  }  
+}

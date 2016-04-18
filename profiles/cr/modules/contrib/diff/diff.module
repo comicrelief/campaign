@@ -1,0 +1,88 @@
+<?php
+
+/**
+ * @file Contains hooks.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function diff_form_node_type_edit_form_alter(&$form, FormStateInterface $form_state) {
+  // @todo Follow this issue: https://www.drupal.org/node/1728788.
+  $type = $form_state->getFormObject()->getEntity();
+  if ($type->id()) {
+    $config = \Drupal::configFactory()->get('diff.settings');
+
+    $form['diff'] = array(
+      '#title' => t('Compare revisions'),
+      '#type' => 'details',
+      '#group' => 'additional_settings',
+      '#tree' => FALSE,
+    );
+
+    $options = array();
+    // Get all view modes for node entity type.
+    $node_view_modes = \Drupal::entityManager()->getViewModes('node');
+    foreach ($node_view_modes as $view_mode => $view_mode_info) {
+      $options[$view_mode] = $view_mode_info['label'];
+    }
+
+    $form['diff']['view_mode'] = array(
+      '#type' => 'select',
+      '#title' => t('View mode to use to compare revisions'),
+      '#description' => t('This view mode will be used to compare revisions. You can select which fields should be shown at the Manage display tab.'),
+      '#options' => $options,
+      '#weight' => 13,
+      '#default_value' => $config->get('content_type_settings.' . $type->id() . '.view_mode'),
+      '#empty_value' => '',
+    );
+
+    $form['actions']['submit']['#submit'][] = 'diff_form_node_type_form_submit';
+  }
+}
+
+/**
+ * Submit handler for forms with menu options.
+ *
+ * @see diff_form_node_type_edit_form_alter().
+ */
+function diff_form_node_type_form_submit(&$form, $form_state) {
+  $type = $form_state->getFormObject()->getEntity();
+  \Drupal::configFactory()->getEditable('diff.settings')
+    ->set('content_type_settings.' . $type->id() . '.view_mode', $form_state->getValue('view_mode'))
+    ->save();
+}
+
+/**
+ * Implements hook_help().
+ */
+function diff_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.diff':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('The Diff module replaces the normal <em>Revisions </em> node tab and enhances the listing of revisions with an option to view the differences between any two content revisions.') . '</p>';
+      $output .= '<h3>' . t('Uses') . '</h3>';
+      $output .= '<dl>';
+      $output .= '<dt>' . t('Compare content entity revisions') . '</dt>';
+      $output .= '<dd>' . t('Diff provides the possibility of comparing two node revisions but it also provides support for comparing any two content entities. With minimum effort it can be extended to display differences between any two content entities.') . '</dd>';
+      $output .= '<dt>' . t('Control field visibility settings') . '</dt>';
+      $output .= '<dd>' . t('Fields visibility can be controlled from view modes for configurable fields and from Diff settings page for entity base fields. Diff field types specific settings can also be configured from Diff settings page') . '</dd>';
+      $output .= '<dt>' . t('Configure diff field type settings') . '</dt>';
+      $output .= '<dd>' . t('Every field type has specific diff settings (display or not the field title, markdown format or other settings). These settings can be configured from Diff settings page') . '</dd>';
+      $output .= '</dl>';
+      return $output;
+
+    case 'diff.revisions_diff':
+      return '<p>' . t('Comparing two revisions:') . '</p>';
+
+    case 'diff.revision_overview':
+      return '<p>' . t('Revisions allow you to track differences between multiple versions of your content, and revert to older versions.') . '</p>';
+
+    case 'diff.field_types_list':
+      return '<p>' . t('This table provides a summary of the field type support found on the system. For every field type a diff plugin can be selected and configured.') . '</p>';
+  }
+}
