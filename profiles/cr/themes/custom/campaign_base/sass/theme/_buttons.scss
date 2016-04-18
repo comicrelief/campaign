@@ -3,20 +3,25 @@
   * Copied from SR16 theme
   */
 
+.btn {
+  @include border-radius(30px);
+  //font-family: $p-type--all-font;
+  //@extend .type--semibold;
+  font-size: 16px;
+  height: 50px;
+  padding: 14px 35px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  white-space: nowrap;
 
-// Just a few for now to set up mixins and generic styles
-$buttonList: (
-  ("red" $red $berry $white),
-  ("blue" $blue $aqua $white),
-);
-
-/**
- * Parameters
- * $button[1] = name
- * $button[2] = background-color
- * $button[3] = background-color for hover & focus
- * $button[4] = text color
- */
+  span {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+}
 
 @mixin btn-variation($button){
   // Makes .btn-green etc
@@ -42,38 +47,15 @@ $buttonList: (
   }
 }
 
+/* Just a couple of examples for now */ 
+$buttonList: (
+  ("red" $red $berry $white),
+  ("blue" $blue $aqua $white),
+);
 
-
-
-.btn {
-  @include border-radius(30px);
-  //font-family: $p-type--all-font;
-  font-size: 16px;
-  height: 50px;
-  //@extend .type--semibold;
-  padding: 14px 35px;
-  text-decoration: none;
-  display: block;
-  text-align: center;
-  vertical-align: middle;
-  cursor: pointer;
-  white-space: nowrap;
-
-  span {
-    font-size: inherit;
-    font-weight: inherit;
-  }
-}
-
-/**
- * Process $buttonList colour variations through our btn-variation mixin.
- *
- * see
- *  - ../variables/_button.scss for colour variations - $buttonList.
- *  - ../mixins/components/_button.scss for the mixin that applies the colour variation classes.
- */
-@for $button from 1 to (length($buttonList)+1) {
-  @include btn-variation(nth($buttonList, $button));
+/* Process $buttonList colour variations through our btn-variation mixin. */
+@each $button in $buttonList {
+  @include btn-variation( $button );
 }
 
 
