@@ -1,24 +1,11 @@
-/*
- * _content-wall.scss
- * Content wall style
- * Author: G.Liedke
- * Last updated: 22th Feb 2016
- *
- *  
-  <article class="cw-article">
-    <div class="cw-article__image">
-      <img alt="" title="" src="">
-    </div>
-    <div class="cw-article__body cw-article__body--hide-show">
-      <h3 class="cw-article__title"></h3>
-      <p></p> 
-      <a href="" class="cw-article__link"></a>
-    </div> 
-  </article>
- *
- *
- *
- */
+// Content Wall
+//
+// This is a content wall block
+//
+// Markup: content-wall.hbs
+//
+// Style guide: Components.Content-wall
+
 .cw-article {
   position: relative;
   overflow: hidden;
@@ -190,7 +177,7 @@
 }
 .cw-article__link {
   a {
-    border-bottom: 2px solid #f0544a;
+    border-bottom: 2px solid $red;
     color: #000;
     text-decoration: none;
     &:hover {
