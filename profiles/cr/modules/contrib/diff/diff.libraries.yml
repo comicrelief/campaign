@@ -1,0 +1,19 @@
+diff.general:
+  version: 1.x
+  css:
+    theme:
+      css/diff.general.css: {}
+  js:
+    js/diff.js: {}
+
+diff.default:
+  version: 1.x
+  css:
+    theme:
+      css/diff.default.css: {}
+
+diff.github:
+  version: 1.x
+  css:
+    theme:
+      css/diff.github.css: {}
