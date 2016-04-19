@@ -10,10 +10,12 @@ drush wd-show --severity=error >> tmp.txt
 FILESIZE=$(cat tmp.txt | wc -c)
 echo $FILESIZE
 
-if [ $FILESIZE -ne 0 ]
-  then
-    rm -rf tmp.txt
-    exit 1
+if $FILESIZE -ne 0; then
+  rm -rf tmp.txt
+  echo "entra"
+  exit 1
+else
+  echo "sale"
 fi
 
 rm -rf tmp.txt
