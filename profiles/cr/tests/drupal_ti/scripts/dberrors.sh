@@ -10,7 +10,7 @@ drush wd-show --severity=error >> tmp.txt
 FILESIZE=$(cat tmp.txt | wc -c)
 cat tmp.txt
 
-if [[ "$FILESIZE" -ne 0 ]]; then
+if [[ "$FILESIZE" -gt 1 ]] ; then
   rm -rf tmp.txt
   exit 1
 fi
