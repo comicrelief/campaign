@@ -39,13 +39,7 @@ hidden:
   body: true
   field_article_intro: true
   field_media: true
-<<<<<<< HEAD
-  field_meta_tags: true
-  field_publish_date: true
-  field_tags: true
-=======
   field_article_publish_date: true
   field_article_tags: true
->>>>>>> 389cc8da54f649ba4fdf5b9253f7f0206e81e5f9
   field_youtube_url: true
   social_links: true
