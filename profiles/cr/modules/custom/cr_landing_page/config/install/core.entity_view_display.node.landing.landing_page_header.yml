@@ -4,8 +4,8 @@ dependencies:
   config:
     - core.entity_view_mode.node.landing_page_header
     - field.field.node.landing.body
-    - field.field.node.landing.field_cta
-    - field.field.node.landing.field_image
+    - field.field.node.landing.field_landing_cta
+    - field.field.node.landing.field_landing_image
     - field.field.node.landing.field_paragraphs
     - field.field.node.landing.panelizer
     - node.type.landing
@@ -76,7 +76,7 @@ third_party_settings:
             weight: 101
             uuid: ab99126b-5dc6-4ddb-a91b-2773bd65b80d
           b9aec35b-bfd0-43ac-8009-9f70ab4ed243:
-            id: 'entity_field:node:field_cta'
+            id: 'entity_field:node:field_landing_cta'
             label: CTA
             provider: ctools_block
             label_display: '0'
@@ -97,7 +97,7 @@ third_party_settings:
             weight: 103
             uuid: b9aec35b-bfd0-43ac-8009-9f70ab4ed243
           765a656d-efa6-4467-8460-961b5533b617:
-            id: 'entity_field:node:field_image'
+            id: 'entity_field:node:field_landing_image'
             label: Image
             provider: ctools_block
             label_display: '0'
@@ -141,10 +141,10 @@ third_party_settings:
           layout_class: {  }
     regions:
       ds_content:
-        - field_image
+        - field_landing_image
         - node_title
         - body
-        - field_cta
+        - field_landing_cta
     fields:
       node_title:
         plugin_id: node_title
@@ -162,7 +162,7 @@ content:
     weight: 2
     settings: {  }
     third_party_settings: {  }
-  field_cta:
+  field_landing_cta:
     weight: 3
     label: hidden
     settings:
@@ -173,7 +173,7 @@ content:
       target: ''
     third_party_settings: {  }
     type: link
-  field_image:
+  field_landing_image:
     weight: 0
     label: hidden
     settings:

@@ -1,0 +1,14 @@
+// Footer
+//
+// This is Footer
+//
+// Markup:
+// <footer></footer>
+//
+// Style guide: Components.Footer
+
+footer[role=contentinfo] {
+  background: $black;
+  padding: 60px 0;
+  margin-top: 40px;
+}

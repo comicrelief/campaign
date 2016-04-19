@@ -31,9 +31,11 @@ projects:
   token:
     version: 1.0-alpha2
   rabbitmq:
-      version: 1.0-alpha1
+    version: 1.0-alpha1
   youtube:
     version: 1.0-beta3
+  entity:
+    version: 1.0-alpha2
   # Layout modules
   inline_entity_form:
     version: 1.0-alpha5
@@ -67,6 +69,8 @@ projects:
     version: 1.x-dev
   social_links:
     version: 1.x-dev
+  diff:
+    version: 1.0-alpha2
   # Developer modules
   config_devel:
     version: 1.0-rc1
