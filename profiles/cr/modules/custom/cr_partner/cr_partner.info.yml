@@ -19,6 +19,7 @@ config_devel:
   - core.entity_form_display.node.partner.default
   - core.entity_view_display.node.partner.default
   - core.entity_view_display.node.partner.teaser
+  - core.entity_view_display.node.partner.search_index
   - core.base_field_override.node.partner.title
   - field.field.node.partner.body
   - field.field.node.partner.field_partner_image
