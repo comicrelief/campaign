@@ -1,12 +1,17 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/taxonomy\/term\/5?_format=hal_json"
+            "href": "http:\/\/default\/taxonomy\/term\/1?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/partner_category"
         }
     },
+    "tid": [
+        {
+            "value": "1"
+        }
+    ],
     "uuid": [
         {
             "value": "aa2c1e57-59a0-4667-a908-8a081a233041"

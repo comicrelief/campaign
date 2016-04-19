@@ -1,12 +1,17 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/file\/1598?_format=hal_json"
+            "href": "http:\/\/default\/file\/12?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
         }
     },
+    "fid": [
+        {
+            "value": "12"
+        }
+    ],
     "uuid": [
         {
             "value": "c5c5db7d-8e27-4e7c-9600-ccd87e12e6b8"
@@ -24,7 +29,7 @@
     ],
     "uri": [
         {
-            "value": "public:\/\/2016-02\/sr16_contentwall_fundraise_v2_15.jpg"
+            "value": "public:\/\/2016-02\/sr16_contentwall_fundraise_v2_15_8.jpg"
         }
     ],
     "filemime": [

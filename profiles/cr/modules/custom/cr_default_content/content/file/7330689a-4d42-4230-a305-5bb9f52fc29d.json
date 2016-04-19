@@ -1,17 +1,17 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/file\/3?_format=hal_json"
+            "href": "http:\/\/default\/file\/23?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
-        },
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "href": "http:\/\/default\/user\/1?_format=hal_json"
-            }
-        ]
+        }
     },
+    "fid": [
+        {
+            "value": "23"
+        }
+    ],
     "uuid": [
         {
             "value": "7330689a-4d42-4230-a305-5bb9f52fc29d"
@@ -22,25 +22,6 @@
             "value": "en"
         }
     ],
-    "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "4cd17a87-f639-4433-8808-8dd4860dda53"
-                    }
-                ]
-            }
-        ]
-    },
     "filename": [
         {
             "value": "greg_james_content_wall.jpg"
@@ -48,7 +29,7 @@
     ],
     "uri": [
         {
-            "value": "public:\/\/news\/2016-02\/greg_james_content_wall.jpg"
+            "value": "public:\/\/news\/2016-02\/greg_james_content_wall_14.jpg"
         }
     ],
     "filemime": [
