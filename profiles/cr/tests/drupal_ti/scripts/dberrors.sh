@@ -7,7 +7,7 @@ drush wd-show --severity=critical > tmp.txt
 drush wd-show --severity=warning >> tmp.txt
 drush wd-show --severity=error >> tmp.txt
 
-FILESIZE=(cat tmp.txt | wc -c)
+FILESIZE=$(cat tmp.txt | wc -c)
 echo $FILESIZE
 
 if [ $FILESIZE -ne 0 ]
