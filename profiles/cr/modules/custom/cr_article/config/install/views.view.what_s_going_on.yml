@@ -4,6 +4,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.storage.node.field_image
+    - image.style.large
     - node.type.article
     - taxonomy.vocabulary.tags
   module:

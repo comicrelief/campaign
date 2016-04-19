@@ -1,4 +1,3 @@
-uuid: 68d2791f-c95d-4dde-8a00-c66eb89197e0
 langcode: en
 status: true
 dependencies:
@@ -52,8 +51,6 @@ third_party_settings:
           link: true
           wrapper: h2
           class: ''
-_core:
-  default_config_hash: bCbdUvrcheeu9kKokvBsfEZDjuNckLWlyrbTKjfvBEg
 id: node.partner.search_index
 targetEntityType: node
 bundle: partner

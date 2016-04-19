@@ -74,18 +74,6 @@ processor_settings:
     settings:
       weights:
         preprocess_index: -30
-  rendered_item:
-    plugin_id: rendered_item
-    settings:
-      roles:
-        anonymous: anonymous
-      view_mode:
-        'entity:node':
-          article: default
-          landing: full
-          page: default
-      weights:
-        preprocess_index: -10
   ignorecase:
     plugin_id: ignorecase
     settings:
@@ -108,7 +96,7 @@ processor_settings:
         'entity:node':
           article: default
           landing: full
-          page: ''
+          page: default
       weights:
         preprocess_index: -10
 options:
