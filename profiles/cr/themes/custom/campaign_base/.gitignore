@@ -1,0 +1,16 @@
+# Minified and Concat JS #
+js/
+
+# Compiled CSS and CSS MAP #
+css/*.css
+css/*.css.map
+
+# node_modules #
+##########
+node_modules/
+
+# Style guide #
+styleguide/
+
+# Don't commit local gems to the repo, dum-dum! #
+vendor/
