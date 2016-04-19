@@ -3,8 +3,8 @@ status: true
 dependencies:
   config:
     - field.field.node.landing.body
-    - field.field.node.landing.field_cta
-    - field.field.node.landing.field_image
+    - field.field.node.landing.field_landing_cta
+    - field.field.node.landing.field_landing_image
     - field.field.node.landing.field_paragraphs
     - field.field.node.landing.panelizer
     - image.style.medium
@@ -33,14 +33,14 @@ content:
     weight: 10
     settings: {  }
     third_party_settings: {  }
-  field_cta:
+  field_landing_cta:
     weight: 33
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
-  field_image:
+  field_landing_image:
     weight: 32
     settings:
       preview_image_style: medium

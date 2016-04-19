@@ -3,11 +3,11 @@ status: true
 dependencies:
   config:
     - field.field.node.article.body
-    - field.field.node.article.field_image
-    - field.field.node.article.field_intro
-    - field.field.node.article.field_meta_tags
-    - field.field.node.article.field_publish_date
-    - field.field.node.article.field_tags
+    - field.field.node.article.field_article_image
+    - field.field.node.article.field_article_intro
+    - field.field.node.article.field_article_meta_tags
+    - field.field.node.article.field_article_publish_date
+    - field.field.node.article.field_article_tags
     - field.field.node.article.field_youtube_url
     - node.type.article
   module:
@@ -42,7 +42,7 @@ third_party_settings:
             weight: 5
             uuid: e5d378f7-bdd2-4a2a-9800-c4802efa5a67
           d64ecb9a-86f5-4fa9-9c23-355ce4a7c95f:
-            id: 'entity_field:node:field_image'
+            id: 'entity_field:node:field_article_image'
             label: Image
             provider: ctools_block
             label_display: '0'
@@ -60,7 +60,7 @@ third_party_settings:
             weight: 2
             uuid: d64ecb9a-86f5-4fa9-9c23-355ce4a7c95f
           d87f24ea-90d1-4bf6-9932-50163bc45332:
-            id: 'entity_field:node:field_intro'
+            id: 'entity_field:node:field_article_intro'
             label: Intro
             provider: ctools_block
             label_display: '0'
@@ -76,7 +76,7 @@ third_party_settings:
             weight: 4
             uuid: d87f24ea-90d1-4bf6-9932-50163bc45332
           c18cde3c-5b1e-4a6f-a500-feda0b3ae52f:
-            id: 'entity_field:node:field_publish_date'
+            id: 'entity_field:node:field_article_publish_date'
             label: 'Publish Date'
             provider: ctools_block
             label_display: '0'
@@ -150,7 +150,7 @@ content:
     label: visually_hidden
     settings: {  }
     third_party_settings: {  }
-  field_image:
+  field_article_image:
     weight: 1
     label: hidden
     settings:
@@ -158,19 +158,19 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: responsive_image
-  field_intro:
+  field_article_intro:
     type: text_default
     weight: 3
     label: visually_hidden
     settings: {  }
     third_party_settings: {  }
-  field_meta_tags:
+  field_article_meta_tags:
     weight: 6
     label: above
     settings: {  }
     third_party_settings: {  }
     type: metatag_empty_formatter
-  field_publish_date:
+  field_article_publish_date:
     type: datetime_default
     weight: 0
     label: visually_hidden
@@ -198,5 +198,5 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
-  field_tags: true
+  field_article_tags: true
   social_links: true
