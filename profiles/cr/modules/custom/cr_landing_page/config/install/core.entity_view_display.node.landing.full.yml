@@ -4,8 +4,8 @@ dependencies:
   config:
     - core.entity_view_mode.node.full
     - field.field.node.landing.body
-    - field.field.node.landing.field_cta
-    - field.field.node.landing.field_image
+    - field.field.node.landing.field_landing_cta
+    - field.field.node.landing.field_landing_image
     - field.field.node.landing.field_paragraphs
     - field.field.node.landing.panelizer
     - node.type.landing
@@ -90,10 +90,10 @@ third_party_settings:
           layout_class: {  }
     regions:
       ds_content:
-        - field_image
+        - field_landing_image
         - node_title
         - body
-        - field_cta
+        - field_landing_cta
         - field_paragraphs
         - panelizer
     fields:
@@ -113,7 +113,7 @@ content:
     weight: 2
     settings: {  }
     third_party_settings: {  }
-  field_cta:
+  field_landing_cta:
     weight: 3
     label: hidden
     settings:
@@ -124,7 +124,7 @@ content:
       target: ''
     third_party_settings: {  }
     type: link
-  field_image:
+  field_landing_image:
     weight: 0
     label: hidden
     settings:

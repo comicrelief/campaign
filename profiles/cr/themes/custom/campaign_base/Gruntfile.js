@@ -13,8 +13,7 @@ module.exports = function (grunt) {
         tasks: ['compass:dev','shell:styleguide']
       },
       templates: {
-        files: ['templates/{,**/}*.html.twig'],
-        files: ['sass/components/{,**/}*.hbs']
+        files: ['templates/{,**/}*.html.twig', 'sass/components/{,**/}*.hbs']
       },
       images: {
         files: ['images/**']
