@@ -1,3 +1,4 @@
+uuid: c8b2d7e2-14f1-4ac8-8861-972eb44ebb5b
 langcode: en
 status: true
 dependencies:
@@ -5,6 +6,8 @@ dependencies:
     - filter.format.full_html
   module:
     - ckeditor
+_core:
+  default_config_hash: tF1M5mtM1hiKnxHfOBFLB2CZrHb7Z_peTUmd0b6nLHM
 format: full_html
 editor: ckeditor
 settings:
@@ -47,14 +50,18 @@ settings:
           items:
             - ShowBlocks
             - Source
+        -
+          name: Custom
+          items:
+            - Styles
   plugins:
     stylescombo:
-      styles: ''
+      styles: "a.btn.btn--red|Red Button\r\na.btn.btn--blue|Blue Button"
 image_upload:
   status: true
   scheme: public
   directory: inline-images
   max_size: ''
   max_dimensions:
-    width: 0
-    height: 0
+    width: null
+    height: null
