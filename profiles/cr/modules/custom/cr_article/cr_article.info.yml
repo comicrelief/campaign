@@ -41,3 +41,5 @@ config_devel:
   - views.view.what_s_going_on
   - pathauto.pattern.article
   - ds.field.related_news
+  - rdf.mapping.node.article
+  - rdf.mapping.taxonomy_term.tags
