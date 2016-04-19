@@ -3,7 +3,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.storage.node.field_image
+    - field.storage.node.field_article_image
     - node.type.article
     - taxonomy.vocabulary.tags
   module:
@@ -87,10 +87,10 @@ display:
           relationship: none
           view_mode: teaser
       fields:
-        field_image:
-          id: field_image
-          table: node__field_image
-          field: field_image
+        field_article_image:
+          id: field_article_image
+          table: node__field_article_image
+          field: field_article_image
           relationship: none
           group_type: group
           admin_label: ''
@@ -250,10 +250,10 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
-        field_tags_target_id:
-          id: field_tags_target_id
-          table: node__field_tags
-          field: field_tags_target_id
+        field_article_tags_target_id:
+          id: field_article_tags_target_id
+          table: node__field_article_tags
+          field: field_article_tags_target_id
           relationship: none
           group_type: group
           admin_label: ''
@@ -262,12 +262,12 @@ display:
           group: 1
           exposed: true
           expose:
-            operator_id: field_tags_target_id_op
+            operator_id: field_article_tags_target_id_op
             label: 'Filter category:'
             description: ''
             use_operator: false
-            operator: field_tags_target_id_op
-            identifier: field_tags_target_id
+            operator: field_article_tags_target_id_op
+            identifier: field_article_tags_target_id
             required: false
             remember: false
             multiple: false
@@ -347,7 +347,7 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_image'
+        - 'config:field.storage.node.field_article_image'
   block_1:
     display_plugin: block
     id: block_1
@@ -367,4 +367,4 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_image'
+        - 'config:field.storage.node.field_article_image'

@@ -1,0 +1,17 @@
+// Header
+//
+// This is Header
+//
+// Markup:
+// <header></header>
+//
+// Style guide: Components.Header
+
+header[role=banner] {
+  border-bottom: 4px solid #E6E6E6;
+  padding-bottom: 10px;
+}
+.region-header-top-wrapper {
+  background: $black;
+  height: 49px;
+}
