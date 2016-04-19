@@ -3,9 +3,9 @@ status: true
 dependencies:
   config:
     - search_api.server.database
-    - field.field.node.article.field_image
-    - field.field.node.landing.field_image
-    - field.field.node.partner.field_image
+    - field.field.node.article.field_article_image
+    - field.field.node.landing.field_landing_image
+    - field.field.node.partner.field_partner_image
   module:
     - search_api
     - node
@@ -42,20 +42,20 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: 'body:processed'
     type: text
-  field_image:
+  field_landing_image:
     label: Image
     datasource_id: 'entity:node'
-    property_path: field_image
+    property_path: field_landing_image
     type: integer
   alt:
     label: 'Image » Alternative text'
     datasource_id: 'entity:node'
-    property_path: 'field_image:alt'
+    property_path: 'field_landing_image:alt'
     type: text
   title_1:
     label: 'Image » Title'
     datasource_id: 'entity:node'
-    property_path: 'field_image:title'
+    property_path: 'field_landing_image:title'
     type: text
   rendered_item:
     label: 'Rendered HTML output'
