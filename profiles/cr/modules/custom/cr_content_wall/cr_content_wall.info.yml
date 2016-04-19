@@ -24,18 +24,12 @@ config_devel:
   - field.storage.block_content.field_cw_view_mode
   # Block types
   - block_content.type.cw_row_block
-  - block_content.type.cw_node_block
   # View modes
-  - core.entity_form_display.block_content.cw_node_block.default
-  - core.entity_view_display.block_content.cw_node_block.default
   - core.entity_view_display.block_content.teaser.cw_l
   - core.entity_view_display.block_content.teaser.cw_m
   - core.entity_view_display.block_content.teaser.cw_mp
   - core.entity_view_display.block_content.teaser.cw_s
   # Fields
-  - field.field.block_content.cw_node_block.field_cw_node_reference
-  - field.storage.block_content.field_cw_node_reference
-  - field.field.block_content.cw_node_block.field_cw_node_reference
   - field.field.paragraph.cw_row.field_cw_block_reference
   - field.storage.paragraph.field_cw_block_reference
   - field.storage.paragraph.field_cw_row_reference
