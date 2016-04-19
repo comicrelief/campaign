@@ -5,7 +5,6 @@ $settings['install_profile'] = 'rnd17';
 $settings['skip_permissions_hardening'] = TRUE;
 
 $settings['profile_directories'] = ['profiles/cr', 'profiles/rnd17'];
-$config_directories['sync'] = 'sites/default/files/config_y8vJ4brpwPsHm-K_yfMf8LPe_JvB6RE6pUM3SJj69h3MNkcxqaw2h7B9E5mc9geVpK0oz61QrA/sync';
 
 /**
  * Load environment variables.
