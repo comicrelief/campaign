@@ -1,6 +1,6 @@
 ## Development instructions
 
-### Manual way
+### Manually
 
 #### Managing configuration
 
@@ -64,13 +64,22 @@ to
 	},
 
 
-### Phing way
+### Using Phing
 
 #### Managing configuration
 
-Execute this command `phing config:export`
+Run
+	
+	phing config:export
+	
+to export all config in one go.
 
 #### Managing default content
 
-Run this command: `phing content:export:save -Dtype=node -Did=69`
-If you want to update the content or you added the uuid manually in  cr_default_content module you only have to run: `phing content:export`
+To update one node at a time, run
+
+	phing content:export:save -Dtype=node -Did=69
+
+If you want to update the content or you added the uuid manually in `cr_default_content.info.yml`, you only have to run
+
+	phing content:export
