@@ -17,3 +17,6 @@ projects:
       # List unmet dependencies instead of just failing
       # @see https://www.drupal.org/node/2655104
       - https://www.drupal.org/files/issues/missing-dependencies-2655104-8.patch
+      # Make inherited install profiles load base profile modules/themes in correct order
+      # @see https://www.drupal.org/node/1356276
+      - https://www.drupal.org/files/issues/make_inherited_install-1356276-133.patch
