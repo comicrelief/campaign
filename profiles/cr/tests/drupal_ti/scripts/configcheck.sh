@@ -7,6 +7,10 @@ set -e $DRUPAL_TI_DEBUG
 git config --global user.email "travis@example.com"
 git config --global user.name "Travis CI"
 
+~/.composer/vendor/bin/drush.php pml
+
+phing login
+
 # Stash our changes to settings.php
 chmod 777 sites/default/settings.php
 chmod -R 777 sites/default
