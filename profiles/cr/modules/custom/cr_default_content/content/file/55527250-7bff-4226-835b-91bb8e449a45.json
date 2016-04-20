@@ -1,17 +1,17 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/file\/2?_format=hal_json"
+            "href": "http:\/\/default\/file\/25?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
-        },
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "href": "http:\/\/default\/user\/1?_format=hal_json"
-            }
-        ]
+        }
     },
+    "fid": [
+        {
+            "value": "25"
+        }
+    ],
     "uuid": [
         {
             "value": "55527250-7bff-4226-835b-91bb8e449a45"
@@ -22,25 +22,6 @@
             "value": "en"
         }
     ],
-    "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "4cd17a87-f639-4433-8808-8dd4860dda53"
-                    }
-                ]
-            }
-        ]
-    },
     "filename": [
         {
             "value": "bill.jpg"
@@ -48,7 +29,7 @@
     ],
     "uri": [
         {
-            "value": "public:\/\/news\/2016-02\/bill.jpg"
+            "value": "public:\/\/news\/2016-02\/bill_14.jpg"
         }
     ],
     "filemime": [
