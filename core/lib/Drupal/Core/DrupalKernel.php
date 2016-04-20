@@ -716,6 +716,10 @@ class DrupalKernel implements DrupalKernelInterface, TerminableInterface {
       $profile_directories = array_map(function ($profile) {
         return $profile->getPath();
       }, $profiles);
+
+      // Allow additional profile directories to be added from settings.php.
+      // This provides support for "base profiles".
+      $profile_directories = array_merge(Settings::get('profile_directories', []), $profile_directories);
       $listing->setProfileDirectories($profile_directories);
 
       // Now find modules.

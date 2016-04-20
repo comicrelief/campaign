@@ -2178,6 +2178,16 @@ function install_write_profile($install_state) {
       'value' => $install_state['parameters']['profile'],
       'required' => TRUE,
     );
+  }
+  // Add specified base_profile to the settings profile_directories.
+  if (!empty($install_state['profile_info']['base_profile']) && isset($install_state['profiles'][$install_state['profile_info']['base_profile']]) && empty(Settings::get('profile_directories'))) {
+    $path = $install_state['profiles'][$install_state['profile_info']['base_profile']]->getPath();
+    $settings['settings']['profile_directories'] = (object) array(
+      'value' => array($path),
+      'required' => TRUE,
+    );
+  }
+  if (!empty($settings)) {
     drupal_rewrite_settings($settings);
   }
 }

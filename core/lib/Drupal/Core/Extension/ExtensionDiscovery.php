@@ -17,6 +17,13 @@ use Symfony\Component\HttpFoundation\Request;
  * @encode
  * to your settings.php.
  *
+ * To add additional profile directories, add
+ * @code
+ * $settings['profile_directories'] = array(path);
+ * @encode
+ * to your settings.php.  If multiple paths are specified, they are searched
+ * from last to first.
+ *
  */
 class ExtensionDiscovery {
 
@@ -251,6 +258,11 @@ class ExtensionDiscovery {
     if ($profile) {
       $this->profileDirectories[] = drupal_get_path('profile', $profile);
     }
+
+    // Allow additional profile directories to be added from settings.php.
+    // This provides support for "base profiles".
+    $this->profileDirectories = array_merge(Settings::get('profile_directories', []), $this->profileDirectories);
+
     return $this;
   }
 
