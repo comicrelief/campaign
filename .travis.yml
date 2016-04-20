@@ -111,9 +111,6 @@ before_install:
   - composer self-update
   - composer global require lionsad/drupal_ti:dev-master
   - composer global require phing/phing
-  # Generate build.properties file on the fly
-  - printf 'drush.bin = ~/.composer/vendor/bin/drush.php\n' > build.properties
-  - printf 'db.querystring='$DRUPAL_TI_DB_URL >> build.properties
   - drupal-ti before_install
 
 install:
@@ -123,6 +120,7 @@ before_script:
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh
 
 script:
+  # Check if config is properly exported everywhere
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/configcheck.sh
   # Check code quality
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/codecheck.sh

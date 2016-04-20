@@ -20,6 +20,11 @@ then
 	export PATH="$BIN_DIR:$PATH"
 fi
 
+# Generate build.properties file on the fly
+# This is used by Phing later on
+printf 'drush.bin = ~/.composer/vendor/bin/drush.php\n' > build.properties
+printf 'db.querystring='$DRUPAL_TI_DB_URL >> build.properties
+
 # Create database and install Drupal.
 mysql -e "create database $DRUPAL_TI_DB"
 
