@@ -6,11 +6,11 @@ css/*.css
 css/*.css.map
 
 # node_modules #
-##########
 node_modules/
 
 # Style guide #
 styleguide/
 
-# Don't commit local gems to the repo, dum-dum! #
+# Don't commit local gems, bundle to the repo, dum-dum! #
 vendor/
+.bundle/
