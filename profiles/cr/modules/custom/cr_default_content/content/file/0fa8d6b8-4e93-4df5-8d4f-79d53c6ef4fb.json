@@ -1,17 +1,17 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/file\/10?_format=hal_json"
+            "href": "http:\/\/default\/file\/19?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
-        },
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "href": "http:\/\/default\/user\/1?_format=hal_json"
-            }
-        ]
+        }
     },
+    "fid": [
+        {
+            "value": "19"
+        }
+    ],
     "uuid": [
         {
             "value": "0fa8d6b8-4e93-4df5-8d4f-79d53c6ef4fb"
@@ -22,25 +22,6 @@
             "value": "en"
         }
     ],
-    "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "28a70bfa-ecc6-41b3-af00-efaa5a2d8553"
-                    }
-                ]
-            }
-        ]
-    },
     "filename": [
         {
             "value": "SR16_take_on_a_challenge_V2.jpg"
@@ -48,7 +29,7 @@
     ],
     "uri": [
         {
-            "value": "public:\/\/2016-02\/SR16_take_on_a_challenge_V2.jpg"
+            "value": "public:\/\/2016-02\/SR16_take_on_a_challenge_V2_14.jpg"
         }
     ],
     "filemime": [

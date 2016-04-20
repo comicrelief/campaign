@@ -1,17 +1,17 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/file\/18?_format=hal_json"
+            "href": "http:\/\/default\/file\/24?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
-        },
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "href": "http:\/\/default\/user\/1?_format=hal_json"
-            }
-        ]
+        }
     },
+    "fid": [
+        {
+            "value": "24"
+        }
+    ],
     "uuid": [
         {
             "value": "631fae9a-6c14-4ecb-a608-8c701a4d154a"
@@ -22,25 +22,6 @@
             "value": "en"
         }
     ],
-    "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "e137abfd-92fb-4719-8101-1c30c81857f7"
-                    }
-                ]
-            }
-        ]
-    },
     "filename": [
         {
             "value": "99397.jpg"
@@ -48,7 +29,7 @@
     ],
     "uri": [
         {
-            "value": "public:\/\/2016-03\/99397.jpg"
+            "value": "public:\/\/2016-03\/99397_14.jpg"
         }
     ],
     "filemime": [
