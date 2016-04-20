@@ -25,6 +25,7 @@
   <!-- Default & meta -->
   <target name="build:prepare" depends="grunt:dependencies, test:install:composer"
     description="Build (or rebuild) the project.">
+    <exec logoutput="true" passthru="true" command="composer install --prefer-dist"/>
   </target>
   <target name="build" depends="install, grunt:build"
     description="Build (or rebuild) the project.">
@@ -89,7 +90,6 @@
       command="${drush.bin} make -y ${app.profile.dir}drupal-org.make.yml --no-gitprojectinfo --no-gitinfofile --no-core --contrib-destination=${app.profile.dir}"/>
   </target>
   <target name="install" description="Install CR with standard configuration.">
-    <exec logoutput="true" passthru="true" command="composer install --prefer-dist"/>
     <exec dir="${app.dir}" logoutput="true" passthru="true"
 			 command="${drush.bin} si ${app.profile.name} -y --notify --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring}"/>
     <phingcall target="file:mod"/>
