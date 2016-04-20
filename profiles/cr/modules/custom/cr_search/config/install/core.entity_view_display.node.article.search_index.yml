@@ -1,4 +1,3 @@
-uuid: eaf9dc61-fc29-4a13-9100-dbbf0beadd5e
 langcode: en
 status: true
 dependencies:
@@ -53,8 +52,6 @@ third_party_settings:
           link: true
           wrapper: h2
           class: ''
-_core:
-  default_config_hash: pj_vX_00v5jZJt4vK5Y5-SrMup7MhPVwp-n3UE_lh1g
 id: node.article.search_index
 targetEntityType: node
 bundle: article
@@ -112,3 +109,4 @@ content:
     third_party_settings: {  }
 hidden:
   field_media: true
+  field_meta_tags: true

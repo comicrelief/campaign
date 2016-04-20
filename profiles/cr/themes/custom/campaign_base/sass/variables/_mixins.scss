@@ -1,0 +1,36 @@
+// Mixins
+
+
+/** Button mixin, used by $buttonList in _buttons.scss
+ * 
+ * Parameters:
+ * $button[1] = name
+ * $button[2] = background-color
+ * $button[3] = background-color for hover & focus
+ * $button[4] = text color
+ */
+
+@mixin btn-variation($button){
+  // Makes .btn-green etc
+  .btn--#{nth($button, 1)} {
+    // Applies $colour-green etc.
+    background-color: nth($button, 2);
+    color: nth($button, 4);
+    @include transition-property(background-color);
+    @include transition-duration(300ms);
+    &:hover,
+    &:focus {
+      outline: none;
+      // Applies $green-v-dark etc.
+      background-color: nth($button, 3);
+      color: nth($button, 4);
+      @include transition-property(background-color);
+      @include transition-duration(600ms);
+    }
+    &:active {
+      @include transition-property(background-color);
+      @include transition-duration(600ms);
+    }
+  }
+}
+
