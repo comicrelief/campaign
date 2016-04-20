@@ -10,11 +10,15 @@ git config --global user.name "Travis CI"
 ~/.composer/vendor/bin/drush.php pml
 
 phing login
+git status
 
 # Stash our changes to settings.php
 chmod 777 sites/default/settings.php
+cp sites/default/settings.php sites/default/settings.tmp.php
 chmod -R 777 sites/default
 git stash
+
+git status
 
 # Re-export all config - this should not show any changes!
 phing config:export
