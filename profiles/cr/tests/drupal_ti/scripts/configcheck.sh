@@ -9,7 +9,6 @@ git config --global user.name "Travis CI"
 
 ~/.composer/vendor/bin/drush.php pml
 
-phing login
 git status
 
 # Stash our changes to settings.php
@@ -28,3 +27,11 @@ git diff --exit-code
 
 # Re-apply our changes to settings.php
 git stash apply
+
+
+
+
+
+
+
+phing login
