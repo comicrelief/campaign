@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.body
     - search_api.server.database
     - core.entity_view_mode.node.full
   module:
@@ -40,6 +41,9 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: 'body:processed'
     type: text
+    dependencies:
+      config:
+        - field.storage.node.body
   rendered_item:
     label: 'Rendered HTML output'
     datasource_id: null
@@ -47,8 +51,8 @@ field_settings:
     type: text
     indexed_locked: true
 processor_settings:
-  language:
-    plugin_id: language
+  add_url:
+    plugin_id: add_url
     settings:
       weights:
         preprocess_index: -30
@@ -65,6 +69,11 @@ processor_settings:
       weights:
         preprocess_index: -10
         preprocess_query: -10
+  language:
+    plugin_id: language
+    settings:
+      weights:
+        preprocess_index: -30
   rendered_item:
     plugin_id: rendered_item
     settings:
@@ -77,11 +86,6 @@ processor_settings:
           page: default
       weights:
         preprocess_index: -10
-  add_url:
-    plugin_id: add_url
-    settings:
-      weights:
-        preprocess_index: -30
 options:
   index_directly: true
   cron_limit: 50
