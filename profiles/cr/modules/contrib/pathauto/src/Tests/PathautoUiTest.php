@@ -8,6 +8,7 @@
 namespace Drupal\pathauto\Tests;
 
 use Drupal\simpletest\WebTestBase;
+use Drupal\pathauto\Entity\PathautoPattern;
 
 /**
  * Test basic pathauto functionality.
@@ -83,7 +84,8 @@ class PathautoUiTest extends WebTestBase {
     $this->assertText('The configuration options have been saved.');
   }
 
-  function testPatternsValidation() {
+  function testPatternsWorkflow() {
+
     // Try to save an invalid pattern.
     $this->drupalGet('admin/config/search/path/patterns/add');
     $edit = array(
@@ -97,13 +99,82 @@ class PathautoUiTest extends WebTestBase {
       'id' => 'page_pattern',
     );
     $this->drupalPostForm(NULL, $edit, 'Save');
-    $this->assertText('The Path pattern is using the following invalid tokens: [user:name], [term:name].');
+    $this->assertText('Path pattern is using the following invalid tokens: [user:name], [term:name].');
+    $this->assertNoText('The configuration options have been saved.');
+
+    $edit['pattern'] = '#[node:title]';
+    $this->drupalPostForm(NULL, $edit, 'Save');
+    $this->assertText('The Path pattern is using the following invalid characters: #.');
     $this->assertNoText('The configuration options have been saved.');
 
     // Fix the pattern, then check that it gets saved successfully.
     $edit['pattern'] = '[node:title]';
     $this->drupalPostForm(NULL, $edit, 'Save');
     $this->assertText('Pattern Page pattern saved.');
+
+    \Drupal::service('pathauto.generator')->resetCaches();
+
+    // Create a node with pattern enabled and check if the pattern applies.
+    $title = 'Page Pattern enabled';
+    $alias = '/page-pattern-enabled';
+    $node = $this->createNode(['title' => $title, 'type' => 'page']);
+    $this->drupalGet($alias);
+    $this->assertResponse(200);
+    $this->assertEntityAlias($node, $alias);
+
+    // Edit workflow, set a new label for the pattern.
+    $this->drupalGet('/admin/config/search/path/patterns');
+    $this->clickLink(t('Edit'));
+    $this->assertUrl('/admin/config/search/path/patterns/page_pattern');
+    $this->assertFieldByName('pattern', '[node:title]');
+    $this->assertFieldByName('label', 'Page pattern');
+    $this->assertFieldChecked('edit-status');
+    $this->assertLink(t('Delete'));
+
+    $edit = array('label' => 'Test');
+    $this->drupalPostForm('/admin/config/search/path/patterns/page_pattern',$edit, t('Save'));
+    $this->assertText('Pattern Test saved.');
+
+    // Disable workflow.
+    $this->drupalGet('/admin/config/search/path/patterns');
+    $this->assertNoLink(t('Enable'));
+    $this->clickLink(t('Disable'));
+    $this->assertUrl('/admin/config/search/path/patterns/page_pattern/disable');
+    $this->drupalPostForm(NULL, [], t('Disable'));
+    $this->assertText('Disabled pattern Test.');
+
+    // Load the pattern from storage and check if its disabled.
+    $pattern = PathautoPattern::load('page_pattern');
+    $this->assertFalse($pattern->status());
+
+    \Drupal::service('pathauto.generator')->resetCaches();
+
+    // Create a node with pattern disabled and check that we have no new alias.
+    $title = 'Page Pattern disabled';
+    $node = $this->createNode(['title' => $title, 'type' => 'page']);
+    $this->assertNoEntityAlias($node);
+
+    // Enable workflow.
+    $this->drupalGet('/admin/config/search/path/patterns');
+    $this->assertNoLink(t('Disable'));
+    $this->clickLink(t('Enable'));
+    $this->assertUrl('/admin/config/search/path/patterns/page_pattern/enable');
+    $this->drupalPostForm(NULL, [], t('Enable'));
+    $this->assertText('Enabled pattern Test.');
+
+    // Reload pattern from storage and check if its enabled.
+    $pattern = PathautoPattern::load('page_pattern');
+    $this->assertTrue($pattern->status());
+
+    // Delete workflow.
+    $this->drupalGet('/admin/config/search/path/patterns');
+    $this->clickLink(t('Delete'));
+    $this->assertUrl('/admin/config/search/path/patterns/page_pattern/delete');
+    $this->assertText(t('This action cannot be undone.'));
+    $this->drupalPostForm(NULL, [], t('Delete'));
+    $this->assertText('The pathauto pattern Test has been deleted.');
+
+    $this->assertFalse(PathautoPattern::load('page_pattern'));
   }
 
 }

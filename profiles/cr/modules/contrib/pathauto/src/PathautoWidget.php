@@ -41,8 +41,6 @@ class PathautoWidget extends PathWidget {
       '#element_validate' => array('path_form_element_validate'),
     );*/
 
-
-
     $pattern = \Drupal::service('pathauto.generator')->getPatternByEntity($entity);
     if (empty($pattern)) {
       return $element;
@@ -58,7 +56,7 @@ class PathautoWidget extends PathWidget {
 
     // Add JavaScript that will disable the path textfield when the automatic
     // alias checkbox is checked.
-    $element['alias']['#states']['!enabled']['input[name="path[pathauto]"]'] = array('checked' => TRUE);
+    $element['alias']['#states']['disabled']['input[name="path[' . $delta . '][pathauto]"]'] = array('checked' => TRUE);
 
 
     // Override path.module's vertical tabs summary.
@@ -68,7 +66,6 @@ class PathautoWidget extends PathWidget {
       $element['alias']['#default_value'] = $entity->path->old_alias;
       $entity->path->alias = $entity->path->old_alias;
     }
-
 
     // For Pathauto to remember the old alias and prevent the Path module from
     // deleting it when Pathauto wants to preserve it.
