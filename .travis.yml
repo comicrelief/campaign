@@ -114,6 +114,7 @@ before_install:
 
 install:
   - drupal-ti install
+  - composer install --prefer-dist
 
 before_script:
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh

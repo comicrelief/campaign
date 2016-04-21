@@ -25,6 +25,7 @@
   <!-- Default & meta -->
   <target name="build:prepare" depends="grunt:dependencies, test:install:composer"
     description="Build (or rebuild) the project.">
+    <exec logoutput="true" passthru="true" command="composer install --prefer-dist"/>
   </target>
   <target name="build" depends="install, grunt:build"
     description="Build (or rebuild) the project.">
