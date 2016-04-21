@@ -1,17 +1,17 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/file\/22?_format=hal_json"
+            "href": "http:\/\/default\/file\/16?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
-        },
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "href": "http:\/\/default\/user\/1?_format=hal_json"
-            }
-        ]
+        }
     },
+    "fid": [
+        {
+            "value": "16"
+        }
+    ],
     "uuid": [
         {
             "value": "b9c03d24-ab2f-4940-ad08-8bb22e3625be"
@@ -22,25 +22,6 @@
             "value": "en"
         }
     ],
-    "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "01510da8-11cc-426f-a300-0a6331aeb96e"
-                    }
-                ]
-            }
-        ]
-    },
     "filename": [
         {
             "value": "Paypal.gif"
@@ -48,7 +29,7 @@
     ],
     "uri": [
         {
-            "value": "public:\/\/partner\/logo\/Paypal.gif"
+            "value": "public:\/\/partner\/logo\/Paypal_49.gif"
         }
     ],
     "filemime": [

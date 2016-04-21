@@ -1,12 +1,17 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/file\/9?_format=hal_json"
+            "href": "http:\/\/default\/file\/27?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
         }
     },
+    "fid": [
+        {
+            "value": "27"
+        }
+    ],
     "uuid": [
         {
             "value": "9c720587-de1a-4f81-bc00-f2e3424b5df5"
@@ -24,7 +29,7 @@
     ],
     "uri": [
         {
-            "value": "public:\/\/2016-04\/SR16_small_centre_promo_whats-going-on_desktop_2_1_0_1_10.jpg"
+            "value": "public:\/\/2016-04\/SR16_small_centre_promo_whats-going-on_desktop_2_1_0_1_10_12.jpg"
         }
     ],
     "filemime": [
