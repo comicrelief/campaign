@@ -4,8 +4,8 @@ dependencies:
   config:
     - core.entity_view_mode.node.search_index
     - field.field.node.partner.body
-    - field.field.node.partner.field_partner_image
     - field.field.node.partner.field_partner_category
+    - field.field.node.partner.field_partner_image
     - field.field.node.partner.field_partner_logo
     - field.field.node.partner.field_partner_website
     - node.type.partner
@@ -62,6 +62,12 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
+  field_partner_category:
+    type: entity_reference_rss_category
+    weight: 10
+    label: above
+    settings: {  }
+    third_party_settings: {  }
   field_partner_image:
     type: responsive_image
     weight: 14
@@ -69,12 +75,6 @@ content:
     settings:
       responsive_image_style: ''
       image_link: ''
-    third_party_settings: {  }
-  field_partner_category:
-    type: entity_reference_rss_category
-    weight: 10
-    label: above
-    settings: {  }
     third_party_settings: {  }
   field_partner_logo:
     type: responsive_image
