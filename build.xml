@@ -90,12 +90,12 @@
       command="${drush.bin} make -y ${app.profile.dir}drupal-org.make.yml --no-gitprojectinfo --no-gitinfofile --no-core --contrib-destination=${app.profile.dir}"/>
   </target>
   <target name="install" description="Install CR with standard configuration.">
-    <exec dir="${app.dir}" logoutput="true" passthru="true"
+    <exec dir="${app.dir}" logoutput="true" passthru="true" checkreturn="true"
 			 command="${drush.bin} si ${app.profile.name} -y --notify --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring}"/>
     <phingcall target="file:mod"/>
   </target>
   <target name="cron" description="Run Drupal's cron script">
-    <exec dir="${app.dir}" logoutput="true" passthru="true"
+    <exec dir="${app.dir}" logoutput="true" passthru="true" checkreturn="true"
       command="${drush.bin} core-cron"/>
   </target>
   <target name="cache:clear">
