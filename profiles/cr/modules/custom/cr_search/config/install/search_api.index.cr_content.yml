@@ -3,7 +3,7 @@ status: true
 dependencies:
   config:
     - search_api.server.database
-    - field.field.node.landing.field_landing_image
+    - core.entity_view_mode.node.full
   module:
     - search_api
     - node
@@ -40,21 +40,6 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: 'body:processed'
     type: text
-  field_landing_image:
-    label: Image
-    datasource_id: 'entity:node'
-    property_path: field_landing_image
-    type: integer
-  alt:
-    label: 'Image » Alternative text'
-    datasource_id: 'entity:node'
-    property_path: 'field_landing_image:alt'
-    type: text
-  title_1:
-    label: 'Image » Title'
-    datasource_id: 'entity:node'
-    property_path: 'field_landing_image:title'
-    type: text
   rendered_item:
     label: 'Rendered HTML output'
     datasource_id: null
@@ -62,11 +47,6 @@ field_settings:
     type: text
     indexed_locked: true
 processor_settings:
-  add_url:
-    plugin_id: add_url
-    settings:
-      weights:
-        preprocess_index: -30
   language:
     plugin_id: language
     settings:
@@ -97,6 +77,11 @@ processor_settings:
           page: default
       weights:
         preprocess_index: -10
+  add_url:
+    plugin_id: add_url
+    settings:
+      weights:
+        preprocess_index: -30
 options:
   index_directly: true
   cron_limit: 50
