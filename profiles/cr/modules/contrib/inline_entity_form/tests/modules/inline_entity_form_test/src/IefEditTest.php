@@ -24,7 +24,6 @@ class IefEditTest extends FormBase {
   public function buildForm(array $form, FormStateInterface $form_state, Node $node = NULL, $form_mode = 'default') {
     $form['inline_entity_form'] = [
       '#type' => 'inline_entity_form',
-      '#op' => 'edit',
       '#entity_type' => 'node',
       '#bundle' => 'ief_test_custom',
       '#default_value' => $node,
@@ -41,7 +40,7 @@ class IefEditTest extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $entity = $form_state->get(['inline_entity_form', $form['inline_entity_form']['#ief_id'], 'entity']);
+    $entity = $form['inline_entity_form']['#entity'];
     drupal_set_message(t('Created @entity_type @label.', ['@entity_type' => $entity->getEntityType()->getLabel(), '@label' => $entity->label()]));
   }
 

@@ -57,6 +57,12 @@ When the pattern for a content type is left blank, the default pattern will be
 used. But if the default pattern is also blank, Pathauto will be disabled
 for that content type.
 
+## Installing Pathauto
+1. Install the module as normal, note that there are two dependencies.
+2. Configure the module at admin/config/search/path/patterns - add a new pattern by creating by clicking "Add Pathauto pattern".
+3. Fill out "Path pattern" with fx [node:title], choose which content types this applies to, give it a label (the name) and save it.
+4. When you save new content from now on, it should automatically be assigned an alternative URL
+
 ##Credits:
 
 The original module combined the functionality of Mike Ryan's autopath with

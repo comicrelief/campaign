@@ -10,8 +10,8 @@ dependencies:
   - file
   - image
 
-# Information added by Drupal.org packaging script on 2016-02-29
-version: '8.x-1.0-alpha5'
+# Information added by Drupal.org packaging script on 2016-04-20
+version: '8.x-1.0-alpha6'
 core: '8.x'
 project: 'inline_entity_form'
-datestamp: 1456785541
+datestamp: 1461165841
