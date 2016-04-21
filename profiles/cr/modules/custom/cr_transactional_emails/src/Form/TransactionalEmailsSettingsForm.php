@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \Drupal\cr_transactional_emails\Form\TransactionalEmailsSettingsForm
+ * Contains \Drupal\cr_transactional_emails\Form\TransactionalEmailsSettingsForm.
  */
 
 namespace Drupal\cr_transactional_emails\Form;
@@ -36,12 +36,15 @@ class TransactionalEmailsSettingsForm extends ConfigFormBase {
    * Returns list of email delivery providers.
    *
    * @return array
-   *   Associated array of email delivery providers: 'machine_name' => 'provider name label'.
+   *   Associated array of email delivery providers:
+   *   Construct: 'machine_name' => 'provider name label'
    */
   protected function getServiceProviders() {
     // NOTES:
-    // The following returned list just contains SmartFocus, but ideally would be good to have code which scans the plugins available.
-    // From the plugins avaliable, we can then get the list from those classes (e.g. getId() and getName())) to create the return array
+    // The following returned list just contains SmartFocus.
+    // Ideally would be good to have code which scans the plugins available.
+    // From the plugins avaliable, we can then get the list from those class
+    // methods. E.g. `getId()` and `getName()` to build the return array.
     return array('smartfocus' => 'SmartFocus');
   }
 
@@ -49,13 +52,13 @@ class TransactionalEmailsSettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    // Get config
+    // Get config.
     $config = $this->config('cr_transactional_emails.settings');
 
-    // Get list of service providers
+    // Get list of service providers.
     $service_provider_options = $this->getServiceProviders();
 
-    // Build form
+    // Build form.
     $form = array();
 
     $form['service_provider'] = array(
@@ -78,9 +81,9 @@ class TransactionalEmailsSettingsForm extends ConfigFormBase {
         '#attributes' => array('class' => array('trans-email-admin-settings')),
       );
 
-      $endpoint = $config->get($provider_code.'_api_endpoint') ?: '';
+      $endpoint = $config->get($provider_code . '_api_endpoint') ?: '';
 
-      $form[$provider_code][$provider_code.'_api_endpoint'] = array(
+      $form[$provider_code][$provider_code . '_api_endpoint'] = array(
         '#type' => 'url',
         '#title' => t('API Endpoint'),
         '#description' => t('URL address to API Service'),
@@ -88,7 +91,7 @@ class TransactionalEmailsSettingsForm extends ConfigFormBase {
       );
     }
 
-    // Return form structure after passing it through its parent class method
+    // Return form structure after passing it through its parent class method.
     return parent::buildForm($form, $form_state);
   }
 
@@ -96,19 +99,19 @@ class TransactionalEmailsSettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    // Get list of service providers
+    // Get list of service providers.
     $service_provider_options = $this->getServiceProviders();
 
-    // Grab and save configuration settings
+    // Grab and save configuration settings.
     $config = $this->config('cr_transactional_emails.settings');
     $config->set('selected_api', $form_state->getValue('selected_api'));
     foreach ($service_provider_options as $provider_code => $provider_label) {
-      $setting_name = $provider_code.'_api_endpoint';
+      $setting_name = $provider_code . '_api_endpoint';
       $config->set($setting_name, $form_state->getValue($setting_name));
     }
     $config->save();
 
-    // Pass form state through its parent class method
+    // Pass form state through its parent class method.
     parent::submitForm($form, $form_state);
   }
 

@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \Drupal\cr_transactional_emails\Form\TransactionalEmailsSettingsTestForm
+ * Contains \Drupal\cr_transactional_emails\Form\TransactionalEmailsSettingsTestForm.
  */
 
 namespace Drupal\cr_transactional_emails\Form;
@@ -26,7 +26,7 @@ class TransactionalEmailsSettingsTestForm extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    // Build form - send to address and template keys
+    // Build form - send to address and template keys.
     $form = array();
 
     $form['help_intro'] = array(
@@ -42,19 +42,19 @@ class TransactionalEmailsSettingsTestForm extends FormBase {
     $form['smartfocus']['send_to'] = array(
       '#type' => 'email',
       '#title' => t('Send to:'),
-      '#required' => true,
+      '#required' => TRUE,
     );
 
     $form['smartfocus']['template_unique_api_key'] = array(
       '#type' => 'textfield',
       '#title' => t('Template unique key'),
-      '#required' => true,
+      '#required' => TRUE,
     );
 
     $form['smartfocus']['template_security_api_key'] = array(
       '#type' => 'textfield',
       '#title' => t('Template security key'),
-      '#required' => true,
+      '#required' => TRUE,
     );
 
     $form['smartfocus']['submit'] = array(
@@ -62,7 +62,7 @@ class TransactionalEmailsSettingsTestForm extends FormBase {
       '#value' => $this->t('Submit'),
     );
 
-    // Return form structure - simple form so no need to run its parent class method
+    // Return form structure.
     return $form;
   }
 
@@ -70,24 +70,26 @@ class TransactionalEmailsSettingsTestForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    // Grab form values
+    // Grab form values.
     $send_to = $form_state->getValue('send_to');
     $template = array(
       'template_unique_api_key' => $form_state->getValue('template_unique_api_key'),
-      'template_security_api_key' => $form_state->getValue('template_security_api_key')
+      'template_security_api_key' => $form_state->getValue('template_security_api_key'),
     );
     $params = array();
 
-    // Send action to email service provider and grab status
+    // Send action to email service provider and grab status.
     $status = cr_transactional_emails_send($send_to, $template, $params);
 
-    // Manage status returned from action performed and manage form (reset form on success; rebuild form on error )
+    // Manage status returned from action performed and manage form.
+    // Reset form on success; rebuild form on error.
     if ($status) {
-      $form_state->setRebuild(false);
-      drupal_set_message('Trigger action sent','status');
-    } else {
-      $form_state->setRebuild(true);
-      drupal_set_message('There was an issue triggering the action - please review the logs','error');
+      $form_state->setRebuild(FALSE);
+      drupal_set_message('Trigger action sent', 'status');
+    }
+    else {
+      $form_state->setRebuild(TRUE);
+      drupal_set_message('There was an issue triggering the action - please review the logs', 'error');
     }
   }
 
