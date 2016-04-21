@@ -20,6 +20,11 @@ then
 	export PATH="$BIN_DIR:$PATH"
 fi
 
+# Generate build.properties file on the fly
+# This is used by Phing later on
+printf 'drush.bin = ~/.composer/vendor/bin/drush.php\n' > build.properties
+printf 'db.querystring='$DRUPAL_TI_DB_URL >> build.properties
+
 # Create database and install Drupal.
 mysql -e "create database $DRUPAL_TI_DB"
 
@@ -30,6 +35,7 @@ rm -fr sites/default/settings.php
 # Install the site using the given profile
 php -d sendmail_path=$(which true) ~/.composer/vendor/bin/drush.php --verbose --yes site-install $DRUPAL_TI_MODULE_NAME --db-url="$DRUPAL_TI_DB_URL"
 drush use $(pwd)#default
+drush cache-clear drush
 
 # Clear caches and run a web server.
 drupal_ti_clear_caches
