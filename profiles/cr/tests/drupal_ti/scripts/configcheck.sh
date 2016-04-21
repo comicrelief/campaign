@@ -13,9 +13,11 @@ git status
 
 # Stash our changes to settings.php
 chmod 777 sites/default/settings.php
-cp sites/default/settings.php sites/default/settings.tmp.php
 chmod -R 777 sites/default
+cp sites/default/settings.php sites/default/settings.tmp.php
 git stash
+
+ls -l sites/default
 
 git status
 
