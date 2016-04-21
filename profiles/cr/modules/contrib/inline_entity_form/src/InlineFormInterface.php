@@ -68,19 +68,20 @@ interface InlineFormInterface extends EntityHandlerInterface {
   public function getTableFields($bundles);
 
   /**
-   * Returns the entity form to be shown through the IEF widget.
-   *
-   * When adding data to $form_state it should be noted that there can be
-   * several IEF widgets on one master form, each with several form rows,
-   * leading to possible key collisions if the keys are not prefixed with
-   * $entity_form['#parents'].
+   * Builds the entity form.
    *
    * @param array $entity_form
-   *   The entity form.
+   *   The entity form, containing the following basic properties:
+   *   - #entity: The entity for the current entity form.
+   *   - #op: The form operation. 'add' or 'edit'.
+   *   - #form_mode: The form mode used to display the entity form.
+   *   - #parents: Identifies the position of the entity form in the overall
+   *     parent form, and identifies the location where the field values are
+   *     placed within $form_state->getValues().
    * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The form state of the parent form.
    */
-  public function entityForm($entity_form, FormStateInterface $form_state);
+  public function entityForm(array $entity_form, FormStateInterface $form_state);
 
   /**
    * Validates the entity form.
@@ -90,21 +91,28 @@ interface InlineFormInterface extends EntityHandlerInterface {
    * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The form state of the parent form.
    */
-  public function entityFormValidate($entity_form, FormStateInterface $form_state);
+  public function entityFormValidate(array &$entity_form, FormStateInterface $form_state);
 
   /**
    * Handles the submission of an entity form.
-   *
-   * Prepares the entity stored in $entity_form['#entity'] for saving by copying
-   * the values from the form to matching properties and, if the entity is
-   * fieldable, invoking Field API submit.
    *
    * @param array $entity_form
    *   The entity form.
    * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The form state of the parent form.
    */
-  public function entityFormSubmit(&$entity_form, FormStateInterface $form_state);
+  public function entityFormSubmit(array &$entity_form, FormStateInterface $form_state);
+
+  /**
+   * Saves the given entity.
+   *
+   * @param \Drupal\Core\Entity\EntityInterface $entity
+   *   The entity.
+   *
+   * @return int
+   *   Either SAVED_NEW or SAVED_UPDATED, depending on the operation performed.
+   */
+  public function save(EntityInterface $entity);
 
   /**
    * Delete permanently saved entities.

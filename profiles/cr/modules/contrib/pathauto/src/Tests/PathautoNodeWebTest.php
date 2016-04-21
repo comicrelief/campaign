@@ -161,9 +161,7 @@ class PathautoNodeWebTest extends WebTestBase {
       'node_bulk_form[0]' => TRUE,
     );
     $this->drupalPostForm('admin/content', $edit, t('Apply'));
-    $this->assertRaw(\Drupal::translation()->formatPlural(1, '%action was applied to @count item.', '%action was applied to @count items.', array(
-      '%action' => 'Update URL-Alias',
-    )));
+    $this->assertText('Update URL alias was applied to 1 item.');
 
     $this->assertEntityAlias($node1, '/content/' . $node1->getTitle());
     $this->assertEntityAlias($node2, '/node/' . $node2->id());

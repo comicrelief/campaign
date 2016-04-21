@@ -3,11 +3,12 @@
 namespace Drupal\inline_entity_form;
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\inline_entity_form\Element\InlineEntityForm;
 
 /**
  * Performs widget submission.
  *
- * Widgets don't save changed entites, nor do they delete removed entities.
+ * Widgets don't save changed entities, nor do they delete removed entities.
  * Instead, they flag them so that changes are only applied when the main form
  * is submitted.
  */
@@ -44,16 +45,15 @@ class WidgetSubmit {
         if (!empty($entity_item['entity']) && !empty($entity_item['needs_save'])) {
           /** @var \Drupal\Core\Entity\ContentEntityInterface $entity */
           $entity = $entity_item['entity'];
-          $entity->save();
+          $handler = InlineEntityForm::getInlineFormHandler($entity->getEntityTypeId());
+          $handler->save($entity);
           $widget_state['entities'][$delta]['needs_save'] = FALSE;
         }
       }
 
       /** @var \Drupal\Core\Entity\ContentEntityInterface $entities */
-      foreach ($widget_state['delete'] as $entities) {
-        foreach ($entities as $entity) {
-          $entity->delete();
-        }
+      foreach ($widget_state['delete'] as $entity) {
+        $entity->delete();
       }
       unset($widget_state['delete']);
     }

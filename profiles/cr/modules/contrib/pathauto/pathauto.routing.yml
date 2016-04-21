@@ -23,6 +23,20 @@ pathauto.settings.form:
   requirements:
     _permission: 'administer pathauto'
 
+entity.pathauto_pattern.enable:
+  path: '/admin/config/search/path/patterns/{pathauto_pattern}/enable'
+  defaults:
+    _entity_form: 'pathauto_pattern.enable'
+  requirements:
+    _entity_access: 'pathauto_pattern.update'
+
+entity.pathauto_pattern.disable:
+  path: '/admin/config/search/path/patterns/{pathauto_pattern}/disable'
+  defaults:
+    _entity_form: 'pathauto_pattern.disable'
+  requirements:
+    _entity_access: 'pathauto_pattern.update'
+
 pathauto.bulk.update.form:
   path: '/admin/config/search/path/update_bulk'
   defaults:
