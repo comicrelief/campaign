@@ -18,7 +18,7 @@ projects:
   pathauto:
     version: 1.0-alpha3
   redirect:
-    branch: 1.0-alpha1
+    version: 1.0-alpha1
   token:
     version: 1.0-alpha2
   youtube:
