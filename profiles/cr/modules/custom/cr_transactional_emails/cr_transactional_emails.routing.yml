@@ -1,0 +1,15 @@
+cr_transactional_emails.settings:
+  path: '/admin/config/services/cr_transactional_emails/settings'
+  defaults:
+    _form: 'Drupal\cr_transactional_emails\Form\TransactionalEmailsSettingsForm'
+    _title: 'Transactional Emails'
+  requirements:
+    _permission: 'administer transactional emails'
+
+cr_transactional_emails.test:
+  path: '/admin/config/services/cr_transactional_emails/settings/test'
+  defaults:
+    _form: 'Drupal\cr_transactional_emails\Form\TransactionalEmailsSettingsTestForm'
+    _title: 'Transactional Emails'
+  requirements:
+    _permission: 'administer transactional emails'

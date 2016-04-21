@@ -1,0 +1,11 @@
+# Schema for the configuration Transactional Emails module.
+
+cr_transactional_emails.settings:
+  type: config_object
+  label: 'Transactional Emails settings'
+  mapping:
+    selected_api:
+      type: string
+    smartfocus_api_endpoint:
+      type: string
+      label: 'SmartFocus api url'

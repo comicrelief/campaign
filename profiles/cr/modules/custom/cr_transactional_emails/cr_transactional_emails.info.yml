@@ -1,0 +1,7 @@
+name: Transactional Emails
+type: module
+description: 'Provides configurations and interface functions to send transactional emails using into third party email delivery systems.'
+package: Comic Relief
+core: 8.x
+version: 8.x-1.1
+configure: cr_transactional_emails.settings
