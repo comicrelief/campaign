@@ -3,11 +3,11 @@ status: true
 dependencies:
   config:
     - field.field.node.article.body
-    - field.field.node.article.field_image
-    - field.field.node.article.field_intro
-    - field.field.node.article.field_meta_tags
-    - field.field.node.article.field_publish_date
-    - field.field.node.article.field_tags
+    - field.field.node.article.field_article_image
+    - field.field.node.article.field_article_intro
+    - field.field.node.article.field_article_meta_tags
+    - field.field.node.article.field_article_publish_date
+    - field.field.node.article.field_article_tags
     - field.field.node.article.field_youtube_url
     - image.style.medium
     - node.type.article
@@ -36,31 +36,31 @@ content:
     weight: 9
     settings: {  }
     third_party_settings: {  }
-  field_image:
+  field_article_image:
     weight: 2
     settings:
       preview_image_style: medium
       progress_indicator: throbber
     third_party_settings: {  }
     type: image_image
-  field_intro:
+  field_article_intro:
     type: text_textarea
     weight: 4
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-  field_meta_tags:
+  field_article_meta_tags:
     weight: 26
     settings: {  }
     third_party_settings: {  }
     type: metatag_firehose
-  field_publish_date:
+  field_article_publish_date:
     type: datetime_default
     weight: 1
     settings: {  }
     third_party_settings: {  }
-  field_tags:
+  field_article_tags:
     type: entity_reference_autocomplete_tags
     weight: 6
     settings:

@@ -1083,7 +1083,7 @@ function install_verify_completed_task() {
  * Verifies that settings.php specifies a valid database connection.
  *
  * @param string $site_path
- *  The site path.
+ *   The site path.
  *
  * @return bool
  *  TRUE if there are no database errors.
@@ -1377,7 +1377,7 @@ function install_retrieve_file($uri, $destination) {
  *  Checks if the localization server can be contacted.
  *
  * @param string $uri
- *  The URI to contact.
+ *   The URI to contact.
  *
  * @return string
  *   TRUE if the URI was contacted successfully, FALSE if not.
@@ -2178,6 +2178,16 @@ function install_write_profile($install_state) {
       'value' => $install_state['parameters']['profile'],
       'required' => TRUE,
     );
+  }
+  // Add specified base_profile to the settings profile_directories.
+  if (!empty($install_state['profile_info']['base_profile']) && isset($install_state['profiles'][$install_state['profile_info']['base_profile']]) && empty(Settings::get('profile_directories'))) {
+    $path = $install_state['profiles'][$install_state['profile_info']['base_profile']]->getPath();
+    $settings['settings']['profile_directories'] = (object) array(
+      'value' => array($path),
+      'required' => TRUE,
+    );
+  }
+  if (!empty($settings)) {
     drupal_rewrite_settings($settings);
   }
 }

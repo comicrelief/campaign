@@ -1,17 +1,17 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/file\/5578?_format=hal_json"
+            "href": "http:\/\/default\/file\/9?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
-        },
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "href": "http:\/\/default\/user\/1?_format=hal_json"
-            }
-        ]
+        }
     },
+    "fid": [
+        {
+            "value": "9"
+        }
+    ],
     "uuid": [
         {
             "value": "7c00d3a7-5e40-426f-bf0d-132c8e094467"
@@ -22,25 +22,6 @@
             "value": "en"
         }
     ],
-    "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "4cd17a87-f639-4433-8808-8dd4860dda53"
-                    }
-                ]
-            }
-        ]
-    },
     "filename": [
         {
             "value": "mosquito_nets.jpg"
@@ -48,7 +29,7 @@
     ],
     "uri": [
         {
-            "value": "public:\/\/news\/2016-02\/mosquito_nets.jpg"
+            "value": "public:\/\/news\/2016-02\/mosquito_nets_14.jpg"
         }
     ],
     "filemime": [

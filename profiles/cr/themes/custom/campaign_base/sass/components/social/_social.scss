@@ -1,0 +1,40 @@
+// Social
+//
+// This is Social
+//
+// Markup:
+// <div></div>
+//
+// Style guide: Components.Social
+
+.social-icons {
+  padding: 25px 0;
+  text-align: center;
+  background: $dark-grey;
+  .social-icons__item {
+    display: inline-block;
+    width: 50px;
+    height: 42px;
+    margin: 10px 0;
+    text-indent: -9999em;
+
+    @include breakpoint($screen-sm) {
+      margin: 10px;
+    }
+    &.facebook {
+      @include icons-sprite(facebook, $offset-x: 11px);
+    }
+    &.twitter {
+      @include icons-sprite(twitter);
+    }
+    &.gplus {
+      @include icons-sprite(gplus, $offset-x: 2px);
+    }
+    &.youtube {
+      @include icons-sprite(youtube, $offset-x: 2px);
+    }
+    &.instagram {
+      @include icons-sprite(instagram, $offset-x: 5px);
+    }
+  }
+}
