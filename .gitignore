@@ -9,6 +9,7 @@ private/*
 # Place local settings in settings.local.php
 sites/*/settings.local.php
 sites/*/services*.yml
+sites/*/environment.yml
 
 # ** Only works in OSs that support newer versions of fnmatch (Bash 4+)
 /sites/default/**/files

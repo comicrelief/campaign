@@ -1,17 +1,17 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/file\/21?_format=hal_json"
+            "href": "http:\/\/default\/file\/22?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
-        },
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "href": "http:\/\/default\/user\/1?_format=hal_json"
-            }
-        ]
+        }
     },
+    "fid": [
+        {
+            "value": "22"
+        }
+    ],
     "uuid": [
         {
             "value": "dd737571-06f0-44e8-b103-3a36ec953041"
@@ -22,25 +22,6 @@
             "value": "en"
         }
     ],
-    "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "01510da8-11cc-426f-a300-0a6331aeb96e"
-                    }
-                ]
-            }
-        ]
-    },
     "filename": [
         {
             "value": "Persil.jpg"
@@ -48,7 +29,7 @@
     ],
     "uri": [
         {
-            "value": "public:\/\/partner\/logo\/Persil.jpg"
+            "value": "public:\/\/partner\/logo\/Persil_49.jpg"
         }
     ],
     "filemime": [

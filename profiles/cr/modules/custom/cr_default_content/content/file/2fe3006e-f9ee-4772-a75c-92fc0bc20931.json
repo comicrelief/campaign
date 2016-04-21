@@ -1,17 +1,17 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/file\/734567?_format=hal_json"
+            "href": "http:\/\/default\/file\/2?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
-        },
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "href": "http:\/\/default\/user\/1?_format=hal_json"
-            }
-        ]
+        }
     },
+    "fid": [
+        {
+            "value": "2"
+        }
+    ],
     "uuid": [
         {
             "value": "2fe3006e-f9ee-4772-a75c-92fc0bc20931"
@@ -22,25 +22,6 @@
             "value": "en"
         }
     ],
-    "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "0616b794-2625-48ca-9d04-0448f244c9c4"
-                    }
-                ]
-            }
-        ]
-    },
     "filename": [
         {
             "value": "y-Plan content wall.jpg"
@@ -48,7 +29,7 @@
     ],
     "uri": [
         {
-            "value": "public:\/\/2016-02\/y-Plan content wall.jpg"
+            "value": "public:\/\/2016-02\/y-Plan content wall_14.jpg"
         }
     ],
     "filemime": [

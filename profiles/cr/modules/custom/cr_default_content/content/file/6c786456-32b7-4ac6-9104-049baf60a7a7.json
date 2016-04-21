@@ -1,17 +1,17 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/file\/5614?_format=hal_json"
+            "href": "http:\/\/default\/file\/17?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
-        },
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "href": "http:\/\/default\/user\/1?_format=hal_json"
-            }
-        ]
+        }
     },
+    "fid": [
+        {
+            "value": "17"
+        }
+    ],
     "uuid": [
         {
             "value": "6c786456-32b7-4ac6-9104-049baf60a7a7"
@@ -22,25 +22,6 @@
             "value": "en"
         }
     ],
-    "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "28a70bfa-ecc6-41b3-af00-efaa5a2d8553"
-                    }
-                ]
-            }
-        ]
-    },
     "filename": [
         {
             "value": "Lets play darts content wall.jpg"
@@ -48,7 +29,7 @@
     ],
     "uri": [
         {
-            "value": "public:\/\/2016-02\/Lets play darts content wall.jpg"
+            "value": "public:\/\/2016-02\/Lets play darts content wall_14.jpg"
         }
     ],
     "filemime": [

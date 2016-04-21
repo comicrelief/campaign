@@ -1,17 +1,17 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/file\/19?_format=hal_json"
+            "href": "http:\/\/default\/file\/6?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
-        },
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "href": "http:\/\/default\/user\/1?_format=hal_json"
-            }
-        ]
+        }
     },
+    "fid": [
+        {
+            "value": "6"
+        }
+    ],
     "uuid": [
         {
             "value": "9e570179-1e40-4420-9100-d8fc667c5d6f"
@@ -22,25 +22,6 @@
             "value": "en"
         }
     ],
-    "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "e137abfd-92fb-4719-8101-1c30c81857f7"
-                    }
-                ]
-            }
-        ]
-    },
     "filename": [
         {
             "value": "SR16_svg_title_promo_do_yourself_proud_v2_1.png"
@@ -48,7 +29,7 @@
     ],
     "uri": [
         {
-            "value": "public:\/\/inline-images\/SR16_svg_title_promo_do_yourself_proud_v2_1.png"
+            "value": "public:\/\/inline-images\/SR16_svg_title_promo_do_yourself_proud_v2_1_14.png"
         }
     ],
     "filemime": [

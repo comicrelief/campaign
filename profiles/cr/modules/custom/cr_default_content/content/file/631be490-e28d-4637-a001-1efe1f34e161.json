@@ -1,17 +1,17 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/file\/24345?_format=hal_json"
+            "href": "http:\/\/default\/file\/4?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
-        },
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "href": "http:\/\/default\/user\/1?_format=hal_json"
-            }
-        ]
+        }
     },
+    "fid": [
+        {
+            "value": "4"
+        }
+    ],
     "uuid": [
         {
             "value": "631be490-e28d-4637-a001-1efe1f34e161"
@@ -22,25 +22,6 @@
             "value": "en"
         }
     ],
-    "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "01510da8-11cc-426f-a300-0a6331aeb96e"
-                    }
-                ]
-            }
-        ]
-    },
     "filename": [
         {
             "value": "Vodafone.jpg"
@@ -48,7 +29,7 @@
     ],
     "uri": [
         {
-            "value": "public:\/\/partner\/logo\/Vodafone.jpg"
+            "value": "public:\/\/partner\/logo\/Vodafone_49.jpg"
         }
     ],
     "filemime": [

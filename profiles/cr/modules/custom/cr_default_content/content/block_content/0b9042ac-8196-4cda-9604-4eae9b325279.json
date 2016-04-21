@@ -1,20 +1,30 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/block\/2?_format=hal_json"
+            "href": "http:\/\/default\/block\/6?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/block_content\/cw_row_block"
         },
         "http:\/\/drupal.org\/rest\/relation\/block_content\/cw_row_block\/field_cw_block_reference": [
             {
-                "href": "http:\/\/default\/block\/1?_format=hal_json"
+                "href": "http:\/\/default\/block\/3?_format=hal_json"
             }
         ]
     },
+    "id": [
+        {
+            "value": "6"
+        }
+    ],
     "uuid": [
         {
             "value": "0b9042ac-8196-4cda-9604-4eae9b325279"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": "6"
         }
     ],
     "langcode": [
@@ -57,7 +67,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/block\/1?_format=hal_json"
+                        "href": "http:\/\/default\/block\/3?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/block_content\/teaser"
