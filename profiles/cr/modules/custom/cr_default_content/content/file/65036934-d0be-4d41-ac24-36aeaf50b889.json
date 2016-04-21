@@ -1,17 +1,17 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/file\/999?_format=hal_json"
+            "href": "http:\/\/default\/file\/21?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
-        },
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "href": "http:\/\/default\/user\/1?_format=hal_json"
-            }
-        ]
+        }
     },
+    "fid": [
+        {
+            "value": "21"
+        }
+    ],
     "uuid": [
         {
             "value": "65036934-d0be-4d41-ac24-36aeaf50b889"
@@ -22,25 +22,6 @@
             "value": "en"
         }
     ],
-    "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "0616b794-2625-48ca-9d04-0448f244c9c4"
-                    }
-                ]
-            }
-        ]
-    },
     "filename": [
         {
             "value": "Greg_exmaple_Sheffield_swim.jpg"
@@ -48,7 +29,7 @@
     ],
     "uri": [
         {
-            "value": "public:\/\/2016-02\/Greg_exmaple_Sheffield_swim.jpg"
+            "value": "public:\/\/2016-02\/Greg_exmaple_Sheffield_swim_14.jpg"
         }
     ],
     "filemime": [

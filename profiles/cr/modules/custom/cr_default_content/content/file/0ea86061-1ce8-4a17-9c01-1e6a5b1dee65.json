@@ -1,17 +1,17 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/file\/1785?_format=hal_json"
+            "href": "http:\/\/default\/file\/3?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
-        },
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "href": "http:\/\/default\/user\/1?_format=hal_json"
-            }
-        ]
+        }
     },
+    "fid": [
+        {
+            "value": "3"
+        }
+    ],
     "uuid": [
         {
             "value": "0ea86061-1ce8-4a17-9c01-1e6a5b1dee65"
@@ -22,25 +22,6 @@
             "value": "en"
         }
     ],
-    "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "28a70bfa-ecc6-41b3-af00-efaa5a2d8553"
-                    }
-                ]
-            }
-        ]
-    },
     "filename": [
         {
             "value": "jamie_laing_sr16.jpg"
@@ -48,7 +29,7 @@
     ],
     "uri": [
         {
-            "value": "public:\/\/2016-02\/jamie_laing_sr16.jpg"
+            "value": "public:\/\/2016-02\/jamie_laing_sr16_14.jpg"
         }
     ],
     "filemime": [
