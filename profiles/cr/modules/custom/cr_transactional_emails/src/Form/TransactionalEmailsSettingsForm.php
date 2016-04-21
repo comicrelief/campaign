@@ -56,7 +56,7 @@ class TransactionalEmailsSettingsForm extends ConfigFormBase {
     $config = $this->config('cr_transactional_emails.settings');
 
     // Get list of service providers.
-    $service_provider_options = $this->getServiceProviders();
+    $service_providers = $this->getServiceProviders();
 
     // Build form.
     $form = array();
@@ -70,11 +70,11 @@ class TransactionalEmailsSettingsForm extends ConfigFormBase {
     $form['service_provider']['selected_api'] = array(
       '#type' => 'radios',
       '#title' => t('Select service provider'),
-      '#options' => $service_provider_options,
+      '#options' => $service_providers,
       '#default_value' => $config->get('selected_api') ?: '',
     );
 
-    foreach ($service_provider_options as $provider_code => $provider_label) {
+    foreach ($service_providers as $provider_code => $provider_label) {
       $form[$provider_code] = array(
         '#type' => 'fieldset',
         '#title' => t('@provider_label settings', array('@provider_label' => $provider_label)),
@@ -100,12 +100,12 @@ class TransactionalEmailsSettingsForm extends ConfigFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     // Get list of service providers.
-    $service_provider_options = $this->getServiceProviders();
+    $service_provider_codes = array_keys($this->getServiceProviders());
 
     // Grab and save configuration settings.
     $config = $this->config('cr_transactional_emails.settings');
     $config->set('selected_api', $form_state->getValue('selected_api'));
-    foreach ($service_provider_options as $provider_code => $provider_label) {
+    foreach ($service_provider_codes as $provider_code) {
       $setting_name = $provider_code . '_api_endpoint';
       $config->set($setting_name, $form_state->getValue($setting_name));
     }
