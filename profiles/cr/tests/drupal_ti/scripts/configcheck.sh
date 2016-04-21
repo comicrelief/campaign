@@ -20,6 +20,7 @@ git stash
 ls -l sites/default
 
 git status
+cp sites/default/settings.tmp.php sites/default/settings.php
 
 # Re-export all config - this should not show any changes!
 phing config:export
