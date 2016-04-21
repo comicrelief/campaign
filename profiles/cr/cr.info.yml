@@ -149,7 +149,7 @@ config_devel:
   - responsive_image.styles.hero_image_full_node
   - responsive_image.styles.cw_4_3_image
   - responsive_image.styles.cw_landscape_image
-  - responsive_image.styles.bg_rich_text  
+  - responsive_image.styles.bg_rich_text
 
   # Metatags
   - metatag.metatag_defaults.403
