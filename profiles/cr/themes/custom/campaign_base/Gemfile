@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.3.0'
+ruby '2.1.5'
 
 # Sass, Compass and extensions.
 gem 'sass', '3.4.5'           # Sass.
@@ -41,4 +41,3 @@ gem 'rb-fchange', :require => false                # Windows
 # and rebuilds your style guide on the fly as you make changes.
 # https://github.com/kmayer/guard-hologram
 # gem 'guard-hologram', :require => false
-
