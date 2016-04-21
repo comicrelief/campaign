@@ -109,7 +109,6 @@ config_devel:
   # Fields
   - field.field.block_content.basic.body
   - field.field.user.user.user_picture
-  - field.storage.node.field_image
   - field.storage.user.user_picture
 
   # Blocks

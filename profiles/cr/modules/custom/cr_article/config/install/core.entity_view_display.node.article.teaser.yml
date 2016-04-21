@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.article.body
     - field.field.node.article.field_article_image
     - field.field.node.article.field_article_intro
+    - field.field.node.article.field_article_meta_tags
     - field.field.node.article.field_article_publish_date
     - field.field.node.article.field_article_tags
     - field.field.node.article.field_youtube_url
@@ -38,8 +39,9 @@ content:
 hidden:
   body: true
   field_article_intro: true
-  field_media: true
+  field_article_meta_tags: true
   field_article_publish_date: true
   field_article_tags: true
+  field_media: true
   field_youtube_url: true
   social_links: true

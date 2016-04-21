@@ -3,9 +3,7 @@ status: true
 dependencies:
   config:
     - search_api.server.database
-    - field.field.node.article.field_article_image
     - field.field.node.landing.field_landing_image
-    - field.field.node.partner.field_partner_image
   module:
     - search_api
     - node
