@@ -39,6 +39,8 @@ dependencies:
   - dynamic_page_cache
   - breakpoint
   - responsive_image
+  - entity
+  - diff
 
   # Contrib modules
   - ds
@@ -81,8 +83,7 @@ dependencies:
   # Default content; will be moved out of the profile at some point
   - cr_default_content
 
-  # Because cr_landing_pages has content dependencies this needs to be load after
-  # cr_default_content
+  # Because cr_landing_pages has content dependencies this needs to be loaded after
   - cr_search
 
 themes:
@@ -90,11 +91,29 @@ themes:
   - campaign_base
 
 config_devel:
-  #General config.
+  # General config
   - system.theme
   - views.settings
+  - config_devel.settings
+  - contact.form.feedback
+  - node.settings
+  - system.cron
+
+  # Display modes
+  - core.entity_form_display.block_content.basic.default
+  - core.entity_form_display.user.user.default
+  - core.entity_view_display.block_content.basic.default
+  - core.entity_view_display.user.user.compact
+  - core.entity_view_display.user.user.default
+
+  # Fields
+  - field.field.block_content.basic.body
+  - field.field.user.user.user_picture
+  - field.storage.node.field_image
+  - field.storage.user.user_picture
 
   # Blocks
+  - block_content.type.basic
   - block.block.tabs
   - block.block.campaign_base_search
   - block.block.campaign_base_account_menu
@@ -102,6 +121,16 @@ config_devel:
   - block.block.campaign_base_branding
   - block.block.campaign_base_main_menu
   - block.block.campaign_base_footer
+  - block.block.campaign_base_main_footer
+  - block.block.seven_breadcrumbs
+  - block.block.seven_content
+  - block.block.seven_help
+  - block.block.seven_local_actions
+  - block.block.seven_login
+  - block.block.seven_messages
+  - block.block.seven_page_title
+  - block.block.seven_primary_local_tasks
+  - block.block.seven_secondary_local_tasks
 
   # Menus
   - system.menu.footer
@@ -116,9 +145,12 @@ config_devel:
   - image.style.cw_large_780x440
   - image.style.cw_medium_570x365
   - image.style.cw_small_370x290
+  - image.style.bg_rich_text_narrow
+  - image.style.bg_rich_text_wide
   - responsive_image.styles.hero_image_full_node
   - responsive_image.styles.cw_4_3_image
   - responsive_image.styles.cw_landscape_image
+  - responsive_image.styles.bg_rich_text  
 
   # Metatags
   - metatag.metatag_defaults.403

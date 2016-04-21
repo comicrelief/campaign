@@ -6,6 +6,6 @@ This module contains the landing page node that can be used to create complex pa
 
 |field_name|type|comment|
 |--- | --- | --- |
-|`field_image`|`image`|Main background image|
-|`field_cta`|`link`|CTA link|
+|`field_landing_image`|`image`|Main background image|
+|`field_landing_cta`|`link`|CTA link|
 |`body`|`text_long`|The body field|

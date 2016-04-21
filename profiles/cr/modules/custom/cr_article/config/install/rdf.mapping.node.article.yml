@@ -41,9 +41,9 @@ fieldMappings:
       callable: 'Drupal\rdf\SchemaOrgDataConverter::interactionCount'
       arguments:
         interaction_type: UserComments
-  field_image:
+  field_article_image:
     properties:
       - 'schema:image'
-  field_tags:
+  field_article_tags:
     properties:
       - 'schema:about'

@@ -1,17 +1,17 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/file\/328?_format=hal_json"
+            "href": "http:\/\/default\/file\/11?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
-        },
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "href": "http:\/\/default\/user\/1?_format=hal_json"
-            }
-        ]
+        }
     },
+    "fid": [
+        {
+            "value": "11"
+        }
+    ],
     "uuid": [
         {
             "value": "0bc0120b-1108-4d05-8f5a-908c9d546efc"
@@ -22,25 +22,6 @@
             "value": "en"
         }
     ],
-    "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "0616b794-2625-48ca-9d04-0448f244c9c4"
-                    }
-                ]
-            }
-        ]
-    },
     "filename": [
         {
             "value": "Bake off content wall image.jpg"
@@ -48,7 +29,7 @@
     ],
     "uri": [
         {
-            "value": "public:\/\/2016-02\/Bake off content wall image.jpg"
+            "value": "public:\/\/2016-02\/Bake off content wall image_14.jpg"
         }
     ],
     "filemime": [

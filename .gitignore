@@ -1,5 +1,7 @@
 # Ignore paths that contain user-generated content.
 profiles/cr/modules/custom/cr_default_content/content/user
+
+vendor
 sites/*/files
 sites/*/private
 files/*
@@ -9,6 +11,7 @@ private/*
 # Place local settings in settings.local.php
 sites/*/settings.local.php
 sites/*/services*.yml
+sites/*/environment.yml
 
 # ** Only works in OSs that support newer versions of fnmatch (Bash 4+)
 /sites/default/**/files
@@ -51,17 +54,6 @@ Thumbs.db
 # SASS #
 ##########
 .sass-cache
-
-# Minified and Concat JS #
-profiles/cr/themes/custom/campaign_base/js
-
-# Compiled CSS and CSS MAP #
-profiles/cr/themes/custom/campaign_base/css/*.css
-profiles/cr/themes/custom/campaign_base/css/*.css.map
-
-# node_modules #
-##########
-profiles/cr/themes/custom/campaign_base/node_modules
 
 # Temp agov theme #
 profiles/cr/themes/custom/agov_base

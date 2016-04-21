@@ -1,17 +1,17 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/file\/25456772?_format=hal_json"
+            "href": "http:\/\/default\/file\/15?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
-        },
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "href": "http:\/\/default\/user\/1?_format=hal_json"
-            }
-        ]
+        }
     },
+    "fid": [
+        {
+            "value": "15"
+        }
+    ],
     "uuid": [
         {
             "value": "b29c7110-8ad0-4917-8f34-52b9d1b74fa9"
@@ -22,25 +22,6 @@
             "value": "en"
         }
     ],
-    "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "01510da8-11cc-426f-a300-0a6331aeb96e"
-                    }
-                ]
-            }
-        ]
-    },
     "filename": [
         {
             "value": "Virgin_media.jpg"
@@ -48,7 +29,7 @@
     ],
     "uri": [
         {
-            "value": "public:\/\/partner\/logo\/Virgin_media.jpg"
+            "value": "public:\/\/partner\/logo\/Virgin_media_49.jpg"
         }
     ],
     "filemime": [

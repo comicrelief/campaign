@@ -1,0 +1,30 @@
+databases:
+  default:
+    default:
+      database: rnd17
+      username: root
+      password: password
+      prefix:
+      host: 127.0.0.1
+      port:
+      namespace: Drupal\\Core\\Database\\Driver\\mysql
+      driver: mysql
+
+rabbitmq_credentials:
+  host: 127.0.0.1
+  port: 5672
+  username: guest
+  password: guest
+
+settings:
+  queue_service_queue1: queue.rabbitmq
+  hash_salt: kzWT4Q5kJe2DkfS72PrATBUfkw54RKzMCbQg933K1Qwe0ZKtonOV_xdmuCac
+
+config:
+  system.performance:
+    css:
+      preprocess: true
+    js:
+      preprocess: true
+  system.logging:
+    error_level: verbose
