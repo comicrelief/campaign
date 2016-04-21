@@ -1,5 +1,5 @@
 id: pathauto_update_alias_node
-label: 'Update URL-Alias'
+label: 'Update URL alias'
 status: true
 langcode: en
 type: node
