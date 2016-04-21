@@ -12,39 +12,39 @@ git config --global user.name "Travis CI"
 git status
 
 # Stash our changes to settings.php and possibly any other files
-chmod 777 sites/default/settings.php
-chmod -R 777 sites/default
+# chmod 777 sites/default/settings.php
+# chmod -R 777 sites/default
 # cp sites/default/settings.php sites/default/settings.tmp.php
 # git stash
 
 ls -l sites/default
 
-git status
+# git status
 # cp sites/default/settings.tmp.php sites/default/settings.php
 
 # Re-export all config - this should not show any changes!
 phing config:export
 
 echo "GIT diffing exluding settings.php"
-git diff `git status -s |grep -v ^\ D |grep -v sites/default/settings.php |cut -b4-`
+git diff `git status -s |grep -v ^\ D |grep -v sites/default/settings.php |cut -b4-` --exit-code
 
 
-cp sites/default/settings.php sites/default/settings.tmp.php
+# cp sites/default/settings.php sites/default/settings.tmp.php
 
-git checkout sites/default/settings.php
+# git checkout sites/default/settings.php
 
 # Exit if there is a diff
 
-echo "GIT diffing with ALL1"
+# echo "GIT diffing with ALL1"
 
-git diff --exit-code
+# git diff --exit-code
 
 
-cp sites/default/settings.tmp.php sites/default/settings.php
+# cp sites/default/settings.tmp.php sites/default/settings.php
 
 
 # Re-apply our changes to settings.php
-git stash apply
+# git stash apply
 
 
 
@@ -52,4 +52,4 @@ git stash apply
 
 
 
-phing login
+# phing login
