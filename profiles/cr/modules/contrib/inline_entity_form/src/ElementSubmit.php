@@ -25,10 +25,10 @@ class ElementSubmit {
   public static function attach(&$form, FormStateInterface $form_state) {
     // attach() is called for each IEF form element, but the callbacks only
     // need to be added once per form build.
-    if ($form_state->getTemporaryValue('ief_build_id') == $form['#build_id']) {
+    if (isset($form['#ief_element_submit_attached'])) {
       return;
     }
-    $form_state->setTemporaryValue('ief_build_id', $form['#build_id']);
+    $form['#ief_element_submit_attached'] = TRUE;
 
     // Entity form actions.
     foreach (['submit', 'publish', 'unpublish'] as $action) {

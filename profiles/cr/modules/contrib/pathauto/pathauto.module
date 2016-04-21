@@ -21,6 +21,7 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Entity\FieldableEntityInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\pathauto\PathautoState;
 
@@ -49,11 +50,24 @@ function pathauto_help($route_name, RouteMatchInterface $route_match) {
     case 'help.page.pathauto':
       $output = '<h3>' . t('About') . '</h3>';
       $output .= '<p>' . t('Provides a mechanism for modules to automatically generate aliases for the content they manage.') . '</p>';
+      $output .= '<h3>' . t('Configuration') . '</h3>';
+      $output .= '<ol>';
+      $output .= '<li>' . t('Configure the module at admin/config/search/path/patterns.') . '</li>';
+      $output .= '<li>' . t('When you save new content from now on, it should automatically be assigned an alternative URL.') . '</li>';
+      $output .= '</ol>';
       $output .= '<h3>' . t('Settings') . '</h3>';
       $output .= '<dl>';
       $output .= '<dt>' . t('Maximum alias and component length') . '</dt>';
       $output .= '<dd>' . t('The <strong>maximum alias length</strong> and <strong>maximum component length</strong> values default to 100 and have a limit of @max from Pathauto. This length is limited by the length of the "alias" column of the url_alias database table. The default database schema for this column is @max. If you set a length that is equal to that of the one set in the "alias" column it will cause problems in situations where the system needs to append additional words to the aliased URL. You should enter a value that is the length of the "alias" column minus the length of any strings that might get added to the end of the URL. The length of strings that might get added to the end of your URLs depends on which modules you have enabled and on your Pathauto settings. The recommended and default value is 100.', array('@max' => \Drupal::service('pathauto.alias_storage_helper')->getAliasSchemaMaxlength())) . '</dd>';
       $output .= '</dl>';
+      return $output;
+
+    case 'entity.pathauto_pattern.collection':
+      $output = '<p>' . t('This page provides a list of all patterns on the site and allows you to edit and reorder them.') . '</p>';
+      return $output;
+
+    case 'entity.pathauto_pattern.add_form':
+      $output = '<p>' . t('You need to select a pattern type, then a pattern and filter, and a label.') . '</p>';
       return $output;
 
     case 'pathauto.bulk.update.form':
@@ -152,4 +166,30 @@ function pathauto_entity_base_field_info_alter(&$fields, EntityTypeInterface $en
     // accessed even if there is no alias being set.
     $fields['path']->setComputed(TRUE);
   }
+}
+
+/**
+ * Validate the pattern field, to ensure it doesn't contain any characters that
+ * are invalid in URLs
+ */
+function pathauto_pattern_validate($element, FormStateInterface $form_state) {
+
+  if (isset($element['#value'])) {
+    $title = empty($element['#title']) ? $element['#parents'][0] : $element['#title'];
+    $invalid_characters = ['#', '?', '&'];
+    $invalid_characters_used = [];
+
+    foreach($invalid_characters as $invalid_character) {
+      if (strpos($element['#value'], $invalid_character) !== FALSE) {
+        $invalid_characters_used[] = $invalid_character;
+      }
+    }
+
+    if (!empty($invalid_characters_used)) {
+      $form_state->setError($element, t('The %element-title is using the following invalid characters: @invalid-characters.', array('%element-title' => $title, '@invalid-characters' => implode(', ', $invalid_characters_used))));
+    }
+  }
+
+  return $element;
+
 }
