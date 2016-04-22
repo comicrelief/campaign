@@ -7,6 +7,7 @@ dependencies:
     - field.field.block_content.cw_row_block.field_cw_view_mode
   module:
     - inline_entity_form
+    - view_mode
 id: block_content.cw_row_block.default
 targetEntityType: block_content
 bundle: cw_row_block
@@ -25,10 +26,10 @@ content:
       override_labels: false
     third_party_settings: {  }
   field_cw_view_mode:
-    type: options_select
-    weight: 1
+    weight: 3
     settings: {  }
     third_party_settings: {  }
+    type: view_mode_select_widget
   info:
     type: string_textfield
     weight: 0

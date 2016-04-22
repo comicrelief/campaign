@@ -5,16 +5,22 @@ dependencies:
     - block_content.type.cw_row_block
     - field.storage.block_content.field_cw_view_mode
   module:
-    - options
+    - view_mode
 id: block_content.cw_row_block.field_cw_view_mode
 field_name: field_cw_view_mode
 entity_type: block_content
 bundle: cw_row_block
-label: 'View Mode'
+label: 'View mode'
 description: ''
 required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
-settings: {  }
-field_type: list_string
+settings:
+  view_modes:
+    cw_1col_l: cw_1col_l
+    cw_2col_m_m: cw_2col_m_m
+    cw_2col_m_s: cw_2col_m_s
+    cw_2col_s_m: cw_2col_s_m
+    cw_3col_s_s_s: cw_3col_s_s_s
+field_type: list_view_mode
