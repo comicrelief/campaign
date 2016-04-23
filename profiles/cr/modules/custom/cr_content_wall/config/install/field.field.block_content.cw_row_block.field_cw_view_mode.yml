@@ -11,10 +11,12 @@ field_name: field_cw_view_mode
 entity_type: block_content
 bundle: cw_row_block
 label: 'View mode'
-description: ''
+description: 'Select the view mode in which to render this row. Inline previews are currently not supported.'
 required: true
 translatable: false
-default_value: {  }
+default_value:
+  -
+    value: cw_1col_l
 default_value_callback: ''
 settings:
   view_modes:
