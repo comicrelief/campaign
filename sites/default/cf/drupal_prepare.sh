@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
+set -ex
 
 [ -d campaign ] && cd campaign
 [ -d ~/.bashrc ] && . ~/.bashrc
