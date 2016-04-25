@@ -98,6 +98,7 @@ datasource_settings:
         article: '0'
         landing: '0'
         page: '0'
+        partner: '0'
       languages: {  }
 tracker_settings:
   default:
