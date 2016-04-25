@@ -5,6 +5,4 @@ set -e
 [ -d campaign ] && cd campaign
 [ -f ~/.bashrc ] && . ~/.bashrc
 
-echo "Skipping"
-
 true
