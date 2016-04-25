@@ -3,7 +3,7 @@
 set -ex
 
 [ -d campaign ] && cd campaign
-[ -d ~/.bashrc ] && . ~/.bashrc
+[ -f ~/.bashrc ] && . ~/.bashrc
 
 phing build:prepare
 phing build -Ddrush.bin=drush -Ddb.querystring="$DB_QUERYSTRING"

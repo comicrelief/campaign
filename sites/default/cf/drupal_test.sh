@@ -3,7 +3,7 @@
 set -ex
 
 [ -d campaign ] && cd campaign
-[ -d ~/.bashrc ] && . ~/.bashrc
+[ -f ~/.bashrc ] && . ~/.bashrc
 
 export DRUPAL_ROOT=$(pwd)
 export DRUSH_ALIAS='@self'
