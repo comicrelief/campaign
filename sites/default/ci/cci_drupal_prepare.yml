@@ -22,10 +22,6 @@ run:
   args:
    - -c
    - |
-     set -e
-     . ~/.bashrc
-     sed -i 's/<<CF_SPACE>>/$APPLICATION_ENV/' campaign/sites/default/cf/manifest.yml
-     cd campaign
-     ./sites/default/cf/drupal_prepare.sh
-     cd ..
+     sed -i "s/<<CF_SPACE>>/$APPLICATION_ENV/" campaign/sites/default/cf/manifest.yml
+     ./campaign/sites/default/cf/drupal_prepare.sh
      cp -rT campaign campaign-prepared
