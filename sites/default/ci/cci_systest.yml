@@ -19,4 +19,4 @@ run:
   args:
    - -c
    - |
-     ./campaign/sites/default/cf/drupal_test.sh
+     ./campaign/sites/default/cf/drupal_systest.sh

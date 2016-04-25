@@ -8,4 +8,7 @@ inputs:
 
 run:
   path: sh
-  args: [-c, "true"]
+  args:
+   - -c
+   - |
+     ./campaign/sites/default/cf/drupal_unit.sh
