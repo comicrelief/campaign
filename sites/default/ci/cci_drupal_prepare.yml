@@ -1,0 +1,31 @@
+---
+platform: linux
+
+image: "docker:///comicrelief/campaign-docker-cci#0.0.18"
+
+inputs:
+- name: campaign
+
+outputs:
+- name: campaign-prepared
+
+params:
+  APPLICATION_ENV: 'REPLACE'
+  BASE_URL: 'http://REPLACE.campaign.comicrelief.com'
+  CF_SPACE: REPLACE
+  DB_QUERYSTRING: "mysql://REPLACE:REPLACE@REPLACE/REPLACE"
+  DRUPAL_HASH_SALT: REPLACE
+  VCAP_SERVICES: '{REPLACE}'
+
+run:
+  path: sh
+  args:
+   - -c
+   - |
+     set -e
+     . ~/.bashrc
+     sed -i 's/<<CF_SPACE>>/$APPLICATION_ENV/' campaign/sites/default/cf/manifest.yml
+     cd campaign
+     ./sites/default/cf/drupal_prepare.sh
+     cd ..
+     cp -rT campaign campaign-prepared
