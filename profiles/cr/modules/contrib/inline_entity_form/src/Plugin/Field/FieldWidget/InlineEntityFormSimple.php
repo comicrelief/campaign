@@ -2,11 +2,13 @@
 
 namespace Drupal\inline_entity_form\Plugin\Field\FieldWidget;
 
+use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\Field\WidgetBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
 
 /**
  * Simple inline widget.
@@ -26,22 +28,20 @@ class InlineEntityFormSimple extends InlineEntityFormBase {
    * {@inheritdoc}
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
-    if (!$this->canBuildForm($form_state)) {
-      return $element;
-    }
+    // Trick inline_entity_form_form_alter() into attaching the handlers,
+    // WidgetSubmit will be needed once extractFormValues fills the $form_state.
+    $parents = array_merge($element['#field_parents'], [$items->getName()]);
+    $ief_id = sha1(implode('-', $parents));
+    $form_state->set(['inline_entity_form', $ief_id], []);
 
     $element['#type'] = 'fieldset';
-    $this->setIefId(sha1($items->getName() . '-ief-single-' . $delta));
-    $entity = NULL;
-    if ($items->get($delta)->target_id) {
-      $entity = $items->get($delta)->entity;
-      if (!$entity) {
-        $element['warning']['#markup'] = $this->t('Unable to load the referenced entity.');
-        return $element;
-      }
+    $item = $items->get($delta);
+    if ($item->target_id && !$item->entity) {
+      $element['warning']['#markup'] = $this->t('Unable to load the referenced entity.');
+      return $element;
     }
-
-    $op = isset($entity) ? 'edit' : 'add';
+    $entity = $item->entity;
+    $op = $entity ? 'edit' : 'add';
     $language = $items->getParent()->getValue()->language()->getId();
     $parents = array_merge($element['#field_parents'], [
       $items->getName(),
@@ -49,8 +49,22 @@ class InlineEntityFormSimple extends InlineEntityFormBase {
       'inline_entity_form'
     ]);
     $bundle = reset($this->getFieldSetting('handler_settings')['target_bundles']);
-    $element['inline_entity_form'] = $this->getInlineEntityForm($op, $bundle, $language, $delta, $parents, $entity, TRUE);
+    $element['inline_entity_form'] = $this->getInlineEntityForm($op, $bundle, $language, $delta, $parents, $entity);
 
+    if ($op == 'edit') {
+      /** @var \Drupal\Core\Entity\ContentEntityInterface $entity */
+      if (!$entity->access('update')) {
+        // The user isn't allowed to edit the entity, but still needs to see
+        // it, to be able to reorder values.
+        $element['entity_label'] = [
+          '#type' => 'markup',
+          '#markup' => $entity->label(),
+        ];
+        // Hide the inline form. getInlineEntityForm() still needed to be
+        // called because otherwise the field re-ordering doesn't work.
+        $element['inline_entity_form']['#access'] = FALSE;
+      }
+    }
     return $element;
   }
 
@@ -63,11 +77,31 @@ class InlineEntityFormSimple extends InlineEntityFormBase {
     // If we're using ulimited cardinality we don't display one empty item. Form
     // validation will kick in if left empty which esentially means people won't
     // be able to submit w/o creating another entity.
-    if ($element['#cardinality'] == FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED && $element['#max_delta'] > 0) {
+    if (!$form_state->isSubmitted() && $element['#cardinality'] == FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED && $element['#max_delta'] > 0) {
       $max = $element['#max_delta'];
       unset($element[$max]);
       $element['#max_delta'] = $max - 1;
       $items->removeItem($max);
+      // Decrement the items count.
+      $field_name = $element['#field_name'];
+      $parents = $element[0]['#field_parents'];
+      $field_state = static::getWidgetState($parents, $field_name, $form_state);
+      $field_state['items_count']--;
+      static::setWidgetState($parents, $field_name, $form_state, $field_state);
+    }
+
+    // Remove add options if the user cannot add new entities.
+    if (!$this->canAddNew()) {
+      if (isset($element['add_more'])) {
+        unset($element['add_more']);
+      }
+      foreach (Element::children($element) as $delta) {
+        if (isset($element[$delta]['inline_entity_form'])) {
+          if ($element[$delta]['inline_entity_form']['#op'] == 'add') {
+            unset($element[$delta]);
+          }
+        }
+      }
     }
 
     return $element;
@@ -83,20 +117,14 @@ class InlineEntityFormSimple extends InlineEntityFormBase {
     }
 
     $field_name = $this->fieldDefinition->getName();
-    $path = array_merge($form['#parents'], array($field_name));
-    $submitted_values = $form_state->getValue($path);
-
+    $parents = array_merge($form['#parents'], [$field_name]);
+    $submitted_values = $form_state->getValue($parents);
     $values = [];
     foreach ($items as $delta => $value) {
-      $this->setIefId(sha1($items->getName() . '-ief-single-' . $delta));
-
+      $element = NestedArray::getValue($form, [$field_name, 'widget', $delta]);
       /** @var \Drupal\Core\Entity\EntityInterface $entity */
-      if (!$entity = $form_state->get(['inline_entity_form', $this->getIefId(), 'entity'])) {
-        return;
-      }
-
+      $entity = $element['inline_entity_form']['#entity'];
       $weight = isset($submitted_values[$delta]['_weight']) ? $submitted_values[$delta]['_weight'] : 0;
-
       $values[$weight] = ['entity' => $entity];
     }
 
@@ -110,6 +138,22 @@ class InlineEntityFormSimple extends InlineEntityFormBase {
     // Assign the values and remove the empty ones.
     $items->setValue($values);
     $items->filterEmptyItems();
+
+    // Populate the IEF form state with $items so that WidgetSubmit can
+    // perform the necessary saves.
+    $ief_id = sha1(implode('-', $parents));
+    $widget_state = [
+      'instance' => $this->fieldDefinition,
+      'delete' => [],
+      'entities' => [],
+    ];
+    foreach ($items as $delta => $value) {
+      $widget_state['entities'][$delta] = [
+        'entity' => $value->entity,
+        'needs_save' => TRUE,
+      ];
+    }
+    $form_state->set(['inline_entity_form', $ief_id], $widget_state);
 
     // Put delta mapping in $form_state, so that flagErrors() can use it.
     $field_name = $this->fieldDefinition->getName();

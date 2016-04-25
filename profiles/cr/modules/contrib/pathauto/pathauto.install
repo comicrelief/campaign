@@ -8,7 +8,6 @@
  */
 
 use Drupal\Core\Entity\Entity\EntityFormDisplay;
-use Drupal\Core\Utility\UpdateException;
 use Drupal\Core\Plugin\Context\Context;
 use Drupal\Core\Plugin\Context\ContextDefinition;
 use Drupal\pathauto\Entity\PathautoPattern;
@@ -20,6 +19,26 @@ function pathauto_install() {
   // Set the weight to 1
   module_set_weight('pathauto', 1);
 
+  // Ensure the url_alias table exists.
+  _pathauto_ensure_url_alias_table_exists();
+}
+
+/**
+ * Helper function to ensure the url_alias table exists.
+ *
+ * Only necessary on Drupal 8.1.x.
+ *
+ * @see https://www.drupal.org/node/2704821
+ */
+function _pathauto_ensure_url_alias_table_exists() {
+  $alias_storage = \Drupal::service('path.alias_storage');
+  if (method_exists($alias_storage, 'schemaDefinition')) {
+    $database_schema = \Drupal::database()->schema();
+    if (!$database_schema->tableExists($alias_storage::TABLE)) {
+      $schema_definition = $alias_storage->schemaDefinition();
+      $database_schema->createTable($alias_storage::TABLE, $schema_definition);
+    }
+  }
 }
 
 /**
@@ -239,4 +258,36 @@ function pathauto_update_8102() {
       }
     }
   }
+}
+
+/**
+ * Fix invalid default value for ignore_words.
+ */
+function pathauto_update_8103() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('pathauto.settings');
+  $ignore_words = $config->get('ignore_words');
+  if ($ignore_words === ', in, is,that, the  , this, with, ') {
+    $config->set('ignore_words', 'a, an, as, at, before, but, by, for, from, is, in, into, like, of, off, on, onto, per, since, than, the, this, that, to, up, via, with')->save(TRUE);
+  }
+}
+
+/**
+ * Resave patterns so that lookup keys are updated.
+ */
+function pathauto_update_8104() {
+  \Drupal::entityTypeManager()->clearCachedDefinitions();
+  // Load all pattern configuration entities and save them, so that the new
+  // status lookup keys are saved.
+  foreach (\Drupal::configFactory()->listAll('pathauto.pattern.') as $pattern_config_name) {
+    $pattern_config = \Drupal::configFactory()->getEditable($pattern_config_name);
+    $pattern_config->save();
+  }
+}
+
+/**
+ * Ensure the url_alias table exists.
+ */
+function pathauto_update_8105() {
+  _pathauto_ensure_url_alias_table_exists();
 }

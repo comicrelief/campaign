@@ -36,16 +36,9 @@ function inline_entity_form_entity_type_build(array &$entity_types) {
  * Implements hook_form_alter().
  */
 function inline_entity_form_form_alter(&$form, FormStateInterface $form_state, $form_id) {
-  // Determine if the current form has an IEF widget.
-  $has_widget = FALSE;
-  foreach ((array) $form_state->get('inline_entity_form') as $inline_state) {
-    if (isset($inline_state['instance'])) {
-      $has_widget = TRUE;
-      break;
-    }
-  }
-
-  if ($has_widget) {
+  // Attach the IEF handlers only if the current form has an IEF widget.
+  $widget_state = $form_state->get('inline_entity_form');
+  if (!is_null($widget_state)) {
     ElementSubmit::attach($form, $form_state);
     WidgetSubmit::attach($form, $form_state);
   }
@@ -151,7 +144,7 @@ function inline_entity_form_reference_form_validate(&$reference_form, FormStateI
   // Check if the entity is already referenced by the field.
   if (!empty($entity)) {
     foreach ($form_state->get(['inline_entity_form', $ief_id, 'entities']) as $key => $value) {
-      if ($value['entity']->id() == $entity->id()) {
+      if ($value['entity'] && $value['entity']->id() == $entity->id()) {
         $form_state->setError($reference_form['entity_id'], t('The selected @label has already been added.', ['@label' => $labels['singular']]));
         break;
       }
