@@ -1,0 +1,19 @@
+{
+    "name": "drupal/cdn",
+    "description": "Serves assets (CSS, JS, images …) from a CDN.",
+    "type": "drupal-module",
+    "homepage": "https://www.drupal.org/project/cdn",
+    "authors": [
+        {
+            "name": "Wim Leers",
+            "homepage": "https://www.drupal.org/u/wim-leers"
+        }
+    ],
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/cdn",
+        "source": "http://git.drupal.org/project/cdn.git"
+    },
+    "license": "GPL-2.0+",
+    "minimum-stability": "dev",
+    "require": {}
+}
