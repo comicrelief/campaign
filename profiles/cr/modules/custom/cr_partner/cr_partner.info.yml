@@ -32,3 +32,4 @@ config_devel:
   - field.storage.node.field_partner_logo
   - taxonomy.vocabulary.partner_category
   - views.view.partners
+  - pathauto.pattern.partners
