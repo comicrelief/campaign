@@ -1,0 +1,8 @@
+name: CR CDN
+type: module
+description: "Configure CDN settings"
+core: 8.x
+package: Comic Relief
+
+dependencies:
+  - cdn_ui
