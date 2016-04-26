@@ -7,10 +7,10 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Field\FieldDefinitionInterface;
+use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\WidgetBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Drupal\Core\Render\Element;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -103,7 +103,7 @@ abstract class InlineEntityFormBase extends WidgetBase implements ContainerFacto
    */
   protected function createInlineFormHandler() {
     if (!isset($this->inlineFormHandler)) {
-      $target_type = $this->fieldDefinition->getFieldStorageDefinition()->getSetting('target_type');
+      $target_type = $this->getFieldSetting('target_type');
       $this->inlineFormHandler = $this->entityTypeManager->getHandler($target_type, 'inline_form');
     }
   }
@@ -154,6 +154,9 @@ abstract class InlineEntityFormBase extends WidgetBase implements ContainerFacto
     $settings = $this->getFieldSettings();
     if (!empty($settings['handler_settings']['target_bundles'])) {
       $target_bundles = array_values($settings['handler_settings']['target_bundles']);
+      // Filter out target bundles which no longer exist.
+      $existing_bundles = array_keys($this->entityTypeBundleInfo->getBundleInfo($settings['target_type']));
+      $target_bundles = array_intersect($target_bundles, $existing_bundles);
     }
     else {
       // If no target bundles have been specified then all are available.
@@ -161,6 +164,23 @@ abstract class InlineEntityFormBase extends WidgetBase implements ContainerFacto
     }
 
     return $target_bundles;
+  }
+
+  /**
+   * Gets the bundles for which the current user has create access.
+   *
+   * @return string[]
+   *   The list of bundles.
+   */
+  protected function getCreateBundles() {
+    $create_bundles = [];
+    foreach ($this->getTargetBundles() as $bundle) {
+      if ($this->getAccessHandler()->createAccess($bundle)) {
+        $create_bundles[] = $bundle;
+      }
+    }
+
+    return $create_bundles;
   }
 
   /**
@@ -179,7 +199,7 @@ abstract class InlineEntityFormBase extends WidgetBase implements ContainerFacto
    * {@inheritdoc}
    */
   public function settingsForm(array $form, FormStateInterface $form_state) {
-    $entity_type_id = $this->fieldDefinition->getTargetEntityTypeId();
+    $entity_type_id = $this->getFieldSetting('target_type');
     $states_prefix = 'fields[' . $this->fieldDefinition->getName() . '][settings_edit_form][settings]';
     $element = [];
     $element['form_mode'] = [
@@ -288,6 +308,40 @@ abstract class InlineEntityFormBase extends WidgetBase implements ContainerFacto
   }
 
   /**
+   * Prepares the form state for the current widget.
+   *
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The form state.
+   * @param Drupal\Core\Field\FieldItemListInterface $items
+   *   The field values.
+   */
+  protected function prepareFormState(FormStateInterface $form_state, FieldItemListInterface $items) {
+    $widget_state = $form_state->get(['inline_entity_form', $this->iefId]);
+    if (empty($widget_state)) {
+      $widget_state = [
+        'instance' => $this->fieldDefinition,
+        'form' => NULL,
+        'delete' => [],
+        'entities' => [],
+      ];
+      // Store the $items entities in the widget state, for futher manipulation.
+      foreach ($items as $delta => $item) {
+        $entity = $item->entity;
+        // The $entity can be NULL if the reference is broken.
+        if ($entity) {
+          $widget_state['entities'][$delta] = [
+            'entity' => $entity,
+            '_weight' => $delta,
+            'form' => NULL,
+            'needs_save' => $entity->isNew(),
+          ];
+        }
+      }
+      $form_state->set(['inline_entity_form', $this->iefId], $widget_state);
+    }
+  }
+
+  /**
    * Gets inline entity form element.
    *
    * @param string $operation
@@ -300,14 +354,11 @@ abstract class InlineEntityFormBase extends WidgetBase implements ContainerFacto
    *   Array of parent element names.
    * @param \Drupal\Core\Entity\EntityInterface $entity
    *   Optional entity object.
-   * @param bool $save_entity
-   *   IEF will attempt to save entity after attaching all field values if set to
-   *   TRUE. Defaults to FALSE.
    *
    * @return array
    *   IEF form element structure.
    */
-  protected function getInlineEntityForm($operation, $bundle, $language, $delta, array $parents, EntityInterface $entity = NULL, $save_entity = FALSE) {
+  protected function getInlineEntityForm($operation, $bundle, $language, $delta, array $parents, EntityInterface $entity = NULL) {
     $element = [
       '#type' => 'inline_entity_form',
       '#entity_type' => $this->getFieldSetting('target_type'),
@@ -316,7 +367,7 @@ abstract class InlineEntityFormBase extends WidgetBase implements ContainerFacto
       '#default_value' => $entity,
       '#op' => $operation,
       '#form_mode' => $this->getSetting('form_mode'),
-      '#save_entity' => $save_entity,
+      '#save_entity' => FALSE,
       '#ief_row_delta' => $delta,
       // Used by Field API and controller methods to find the relevant
       // values in $form_state.
@@ -404,10 +455,41 @@ abstract class InlineEntityFormBase extends WidgetBase implements ContainerFacto
   protected function getEntityFormMode() {
     $form_mode = $this->getSetting('form_mode');
     if ($form_mode != 'default') {
-      $entity_type_id = $this->fieldDefinition->getTargetEntityTypeId();
+      $entity_type_id = $this->getFieldSetting('target_type');
       return $this->entityTypeManager->getStorage('entity_form_mode')->load($entity_type_id . '.' . $form_mode);
     }
     return NULL;
+  }
+
+  /**
+   * Gets the access handler for the target entity type.
+   *
+   * @return \Drupal\Core\Entity\EntityAccessControlHandlerInterface
+   *   The access handler.
+   */
+  protected function getAccessHandler() {
+    $entity_type_id = $this->getFieldSetting('target_type');
+    return $this->entityTypeManager->getAccessControlHandler($entity_type_id);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function form(FieldItemListInterface $items, array &$form, FormStateInterface $form_state, $get_delta = NULL) {
+    if ($this->canBuildForm($form_state)) {
+      return parent::form($items, $form, $form_state, $get_delta);
+    }
+    return [];
+  }
+
+  /**
+   * Determines if the current user can add any new entities.
+   *
+   * @return bool
+   */
+  protected function canAddNew() {
+    $create_bundles = $this->getCreateBundles();
+    return !empty($create_bundles);
   }
 
 }

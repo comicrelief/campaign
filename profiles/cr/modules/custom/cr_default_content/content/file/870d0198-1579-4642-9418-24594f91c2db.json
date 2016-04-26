@@ -1,17 +1,17 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/file\/234567?_format=hal_json"
+            "href": "http:\/\/default\/file\/7?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
-        },
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "href": "http:\/\/default\/user\/1?_format=hal_json"
-            }
-        ]
+        }
     },
+    "fid": [
+        {
+            "value": "7"
+        }
+    ],
     "uuid": [
         {
             "value": "870d0198-1579-4642-9418-24594f91c2db"
@@ -22,25 +22,6 @@
             "value": "en"
         }
     ],
-    "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "01510da8-11cc-426f-a300-0a6331aeb96e"
-                    }
-                ]
-            }
-        ]
-    },
     "filename": [
         {
             "value": "3.gif"
@@ -48,7 +29,7 @@
     ],
     "uri": [
         {
-            "value": "public:\/\/partner\/logo\/3.gif"
+            "value": "public:\/\/partner\/logo\/3_49.gif"
         }
     ],
     "filemime": [

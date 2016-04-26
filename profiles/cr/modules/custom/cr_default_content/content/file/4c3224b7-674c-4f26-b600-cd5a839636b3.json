@@ -1,17 +1,17 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/file\/12348?_format=hal_json"
+            "href": "http:\/\/default\/file\/1?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
-        },
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "href": "http:\/\/default\/user\/1?_format=hal_json"
-            }
-        ]
+        }
     },
+    "fid": [
+        {
+            "value": "1"
+        }
+    ],
     "uuid": [
         {
             "value": "4c3224b7-674c-4f26-b600-cd5a839636b3"
@@ -22,25 +22,6 @@
             "value": "en"
         }
     ],
-    "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "28a70bfa-ecc6-41b3-af00-efaa5a2d8553"
-                    }
-                ]
-            }
-        ]
-    },
     "filename": [
         {
             "value": "Lindsey_Russel_Blue_Peter_zorbing_content_wall.jpg"
@@ -48,7 +29,7 @@
     ],
     "uri": [
         {
-            "value": "public:\/\/2016-02\/Lindsey_Russel_Blue_Peter_zorbing_content_wall.jpg"
+            "value": "public:\/\/2016-02\/Lindsey_Russel_Blue_Peter_zorbing_content_wall_14.jpg"
         }
     ],
     "filemime": [
