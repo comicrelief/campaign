@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\Render\Element\Tableselect.
- */
-
 namespace Drupal\Core\Render\Element;
 
 use Drupal\Core\Form\FormStateInterface;
@@ -259,6 +254,7 @@ class Tableselect extends Table {
               '#return_value' => $key,
               '#default_value' => isset($value[$key]) ? $key : NULL,
               '#attributes' => $element['#attributes'],
+              '#ajax' => isset($element['#ajax']) ? $element['#ajax'] : NULL,
             );
           }
           else {

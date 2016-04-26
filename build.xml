@@ -9,7 +9,7 @@
   <property name="app.content.dir"    value="${app.profile.dir}modules/custom/cr_default_content/content/"/>
   <!-- Development modules. -->
   <property name="app.code"           value="${app.profile.dir}modules/custom"/>
-  <property name="app.config_modules" value="cr cr_article cr_content_wall cr_rich_text_paragraph cr_teaser cr_landing_page cr_default_content cr_search cr_partner"/>
+  <property name="app.config_modules" value="cr cr_article cr_content_wall cr_rich_text_paragraph cr_teaser cr_landing_page cr_search cr_partner"/>
   <property name="app.dev_modules"    value="devel kint"/>
   <!-- This should get overidden for secure builds. -->
   <property name="app.password"       override="true" value="admin"/>
@@ -25,6 +25,7 @@
   <!-- Default & meta -->
   <target name="build:prepare" depends="grunt:dependencies, test:install:composer"
     description="Build (or rebuild) the project.">
+    <exec logoutput="true" passthru="true" command="composer install --no-progress --prefer-dist"/>
   </target>
   <target name="build" depends="install, grunt:build"
     description="Build (or rebuild) the project.">
@@ -37,9 +38,9 @@
   <target name="test" depends="test:prepare" description="Run behat tests">
     <exec dir="${app.profile.dir}tests/behat" passthru="true" checkreturn="true" command="vendor/bin/behat --colors"/>
   </target>
-	<target name="test:dl" depends="test:prepare" description="Run behat tests">
-		<exec dir="${app.profile.dir}tests/behat" passthru="true" checkreturn="true" command="vendor/bin/behat --colors -dl"/>
-	</target>
+  <target name="test:dl" depends="test:prepare" description="Run behat tests">
+    <exec dir="${app.profile.dir}tests/behat" passthru="true" checkreturn="true" command="vendor/bin/behat --colors -dl"/>
+  </target>
   <target name="test:prepare" description="Prepare to tun behat tests">
     <copy file="${app.profile.dir}tests/behat/behat.yml.phing" tofile="${app.profile.dir}tests/behat/behat.yml" overwrite="true">
       <filterchain>
@@ -59,10 +60,10 @@
   <target name="grunt:build" description="Generate all compiled Sass and JS files.">
     <exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="bundle exec grunt build"/>
   </target>
-	<target name="grunt:dependencies" description="Install all grunt dependencies.">
-		<exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="bundle install --path vendor/bundle"/>
-		<exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="npm install"/>
-	</target>
+  <target name="grunt:dependencies" description="Install all grunt dependencies.">
+    <exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="bundle install --jobs 4 --path vendor/bundle"/>
+    <exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="npm install"/>
+  </target>
 
   <!-- File system -->
   <target name="file:mod">
@@ -82,7 +83,7 @@
   <!-- Drush core -->
   <target name="make-core" description="Compile CR from a make file" depends="make">
     <exec checkreturn="true" logoutput="true" passthru="true"
-      command="${drush.bin} make -y ${app.profile.dir}drupal-org-core.make.yml --no-cache --prepare-install"/>
+      command="${drush.bin} make -y ${app.profile.dir}drupal-org-core.make.yml --no-cache"/>
   </target>
   <target name="make" description="Compile CR contrib from a make file">
     <exec checkreturn="true" logoutput="true" passthru="true"
@@ -90,11 +91,11 @@
   </target>
   <target name="install" description="Install CR with standard configuration.">
     <exec dir="${app.dir}" logoutput="true" passthru="true" checkreturn="true"
-      command="${drush.bin} si ${app.profile.name} -y --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring}"/>
+       command="${drush.bin} si ${app.profile.name} -y --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring}"/>
     <phingcall target="file:mod"/>
   </target>
   <target name="cron" description="Run Drupal's cron script">
-    <exec dir="${app.dir}" logoutput="true" passthru="true"
+    <exec dir="${app.dir}" logoutput="true" passthru="true" checkreturn="true"
       command="${drush.bin} core-cron"/>
   </target>
   <target name="cache:clear">
@@ -118,6 +119,22 @@
     <foreach list="${app.config_modules}" param="config_devel_module" target="config:export:single" delimiter=" "/>
   </target>
   <target name="config:export:single">
+    <if>
+      <!-- Delete exports from profile -->
+      <equals arg1="${config_devel_module}" arg2="${app.profile.name}" />
+      <then>
+        <delete includeemptydirs="true">
+          <fileset dir="${app.profile.dir}config/install" includes="**/*"/>
+        </delete>
+      </then>
+      <!-- Delete exports from custom modules -->
+      <else>
+        <delete includeemptydirs="true">
+          <fileset dir="${app.profile.dir}modules/custom/${config_devel_module}/config/install" includes="**/*"/>
+        </delete>
+      </else>
+    </if>
+    <!-- Re-export again -->
     <exec passthru="true" logoutput="true" command="${drush.bin} config-devel-export ${config_devel_module}"/>
   </target>
   <target name="content:export">

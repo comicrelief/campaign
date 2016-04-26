@@ -16,7 +16,7 @@ use Drupal\pathauto\PathautoState;
  *
  * @Action(
  *   id = "pathauto_update_alias",
- *   label = @Translation("Update URL-Alias of an entity"),
+ *   label = @Translation("Update URL alias of an entity"),
  * )
  */
 class UpdateAction extends ActionBase {

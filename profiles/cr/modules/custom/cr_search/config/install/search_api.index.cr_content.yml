@@ -3,9 +3,7 @@ status: true
 dependencies:
   config:
     - search_api.server.database
-    - field.field.node.article.field_image
-    - field.field.node.landing.field_image
-    - field.field.node.partner.field_image
+    - core.entity_view_mode.node.full
   module:
     - search_api
     - node
@@ -42,21 +40,6 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: 'body:processed'
     type: text
-  field_image:
-    label: Image
-    datasource_id: 'entity:node'
-    property_path: field_image
-    type: integer
-  alt:
-    label: 'Image » Alternative text'
-    datasource_id: 'entity:node'
-    property_path: 'field_image:alt'
-    type: text
-  title_1:
-    label: 'Image » Title'
-    datasource_id: 'entity:node'
-    property_path: 'field_image:title'
-    type: text
   rendered_item:
     label: 'Rendered HTML output'
     datasource_id: null
@@ -64,28 +47,11 @@ field_settings:
     type: text
     indexed_locked: true
 processor_settings:
-  add_url:
-    plugin_id: add_url
-    settings:
-      weights:
-        preprocess_index: -30
   language:
     plugin_id: language
     settings:
       weights:
         preprocess_index: -30
-  rendered_item:
-    plugin_id: rendered_item
-    settings:
-      roles:
-        anonymous: anonymous
-      view_mode:
-        'entity:node':
-          article: default
-          landing: full
-          page: default
-      weights:
-        preprocess_index: -10
   ignorecase:
     plugin_id: ignorecase
     settings:
@@ -108,9 +74,14 @@ processor_settings:
         'entity:node':
           article: default
           landing: full
-          page: ''
+          page: default
       weights:
         preprocess_index: -10
+  add_url:
+    plugin_id: add_url
+    settings:
+      weights:
+        preprocess_index: -30
 options:
   index_directly: true
   cron_limit: 50

@@ -16,27 +16,18 @@ projects:
   metatag:
     version: 1.0-beta7
   pathauto:
-    version: 1.0-alpha2
-    patch:
-      # This will be fixed in: 8.x-1.x-dev
-      # URL: https://www.drupal.org/node/2655874
-      - "https://www.drupal.org/files/issues/the_given_alias_pattern-2655874-52.patch"
+    version: 1.0-alpha3
   redirect:
-    download:
-      branch: 8.x-1.x
-      revision: f88e28a5033d2a9952929faff6fa59764583b80c
-      url: https://github.com/md-systems/redirect.git
-  search_api:
-    version: 1.0-alpha12
+    version: 1.0-alpha1
   token:
     version: 1.0-alpha2
-  rabbitmq:
-      version: 1.0-alpha1
   youtube:
     version: 1.0-beta3
+  entity:
+    version: 1.0-alpha2
   # Layout modules
   inline_entity_form:
-    version: 1.0-alpha5
+    version: 1.0-alpha6
   layout_plugin:
     version: 1.0-alpha22
   page_manager:
@@ -49,13 +40,6 @@ projects:
     version: 2.3
   field_group:
     version: 1.0-rc4
-  paragraphs:
-    download:
-      branch: 8.x-1.x
-      revision: 6f946be
-    patch:
-      # See: https://www.drupal.org/node/2700723
-      2700723: https://www.drupal.org/files/issues/2700723-4.patch
   entity_reference_revisions:
     download:
       branch: 8.x-1.x
@@ -69,6 +53,8 @@ projects:
     version: 1.x-dev
   scheduled_updates:
     version: 1.0-alpha5
+  diff:
+    version: 1.0-alpha2
   # Developer modules
   config_devel:
     version: 1.0-rc1
@@ -80,27 +66,36 @@ projects:
       branch: 8.x-1.x
       revision: ae81658
   devel:
-    version: 1.x-dev
+    download:
+      version: 1.x-dev
+      revision: ca8954d
   memcache:
     version: 2.x-dev
   # Editor/admin experience
   admin_toolbar:
     version: 1.14
-  # Contributed module - CrazyEgg
+  focal_point:
+    version: 1.x-dev
+  paragraphs:
+    download:
+      branch: 8.x-1.x
+      revision: 6f946be
+    patch:
+      # See: https://www.drupal.org/node/2700723
+      2700723: https://www.drupal.org/files/issues/2700723-4.patch
+  # Service Integration
+  rabbitmq:
+    version: 1.0-alpha1
+  search_api:
+    version: 1.0-alpha14
   crazyegg:
     version: 1.0-rc1
-  # Contributed module - Google Tag Manager
   google_tag:
     download:
       branch: 8.x-1.x
       revision: e0e013c8d8f8c8b376ba6b80aada179ee7c656eb
       url: https://github.com/mikeyp/google_tag.git
-  # Contributed module - Optimizely
   optimizely:
     version: 2.15-rc1
-  # Image
-  focal_point:
-    version: 1.x-dev
-  # Contributed module - Simple XML Sitemap
   simple_sitemap:
     version: 2.1

@@ -12,6 +12,20 @@ use Drupal\inline_entity_form\ElementSubmit;
 /**
  * Provides an inline entity form element.
  *
+ * Usage example:
+ * @code
+ * $form['article'] = [
+ *   '#type' => 'inline_entity_form',
+ *   '#entity_type' => 'node',
+ *   '#bundle' => 'article',
+ *   // If the #default_value is NULL, a new entity will be created.
+ *   '#default_value' => $loaded_article,
+ * ];
+ * @endcode
+ * To access the entity in validation or submission callbacks, use
+ * $form['article']['#entity']. Due to Drupal core limitations the entity
+ * can't be accessed via $form_state->getValue('article').
+ *
  * @RenderElement("inline_entity_form")
  */
 class InlineEntityForm extends RenderElement {
@@ -26,14 +40,15 @@ class InlineEntityForm extends RenderElement {
       '#entity_type' => NULL,
       '#bundle' => NULL,
       '#language' => LanguageInterface::LANGCODE_NOT_SPECIFIED,
-      // Instance of \Drupal\Core\Entity\EntityInterface. Can be NULL
-      // when #op is 'add', in which case a new entity will be created.
+      // Instance of \Drupal\Core\Entity\EntityInterface. If NULL, a new
+      // entity will be created.
       '#default_value' => NULL,
-      '#op' => 'add',
       // The form mode used to display the entity form.
       '#form_mode' => 'default',
       // Will save entity on submit if set to TRUE.
       '#save_entity' => TRUE,
+      // 'add' or 'edit'. If NULL, determined by whether the entity is new.
+      '#op' => NULL,
       '#process' => [
         [$class, 'processEntityForm'],
       ],
@@ -86,8 +101,8 @@ class InlineEntityForm extends RenderElement {
       // Transfer the #default_value to #entity, as expected by inline forms.
       $entity_form['#entity'] = $entity_form['#default_value'];
     }
-    elseif ($entity_form['#op'] == 'add') {
-      // Create a new entity for the add form.
+    else {
+      // This is an add operation, create a new entity.
       $entity_type = \Drupal::entityTypeManager()->getDefinition($entity_form['#entity_type']);
       $storage = \Drupal::entityTypeManager()->getStorage($entity_form['#entity_type']);
       $values = [
@@ -98,14 +113,9 @@ class InlineEntityForm extends RenderElement {
       }
       $entity_form['#entity'] = $storage->create($values);
     }
-
-    // Put some basic information about IEF into form state.
-    $state = $form_state->has(['inline_entity_form', $entity_form['#ief_id']]) ? $form_state->get(['inline_entity_form', $entity_form['#ief_id']]) : [];
-    $state += [
-      'op' => $entity_form['#op'],
-      'entity' => $entity_form['#entity'],
-    ];
-    $form_state->set(['inline_entity_form', $entity_form['#ief_id']], $state);
+    if (!isset($entity_form['#op'])) {
+      $entity_form['#op'] = $entity_form['#entity']->isNew() ? 'add' : 'edit';
+    }
 
     $inline_form_handler = static::getInlineFormHandler($entity_form['#entity_type']);
     $entity_form = $inline_form_handler->entityForm($entity_form, $form_state);
@@ -124,7 +134,7 @@ class InlineEntityForm extends RenderElement {
    * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The current state of the form.
    */
-  public static function validateEntityForm($entity_form, FormStateInterface $form_state) {
+  public static function validateEntityForm(&$entity_form, FormStateInterface $form_state) {
     $inline_form_handler = static::getInlineFormHandler($entity_form['#entity_type']);
     $inline_form_handler->entityFormValidate($entity_form, $form_state);
   }
@@ -140,6 +150,9 @@ class InlineEntityForm extends RenderElement {
   public static function submitEntityForm(&$entity_form, FormStateInterface $form_state) {
     $inline_form_handler = static::getInlineFormHandler($entity_form['#entity_type']);
     $inline_form_handler->entityFormSubmit($entity_form, $form_state);
+    if ($entity_form['#save_entity']) {
+      $inline_form_handler->save($entity_form['#entity']);
+    }
   }
 
   /**

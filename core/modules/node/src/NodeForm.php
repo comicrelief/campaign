@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\node\NodeForm.
- */
-
 namespace Drupal\node;
 
 use Drupal\Core\Entity\ContentEntityForm;
@@ -14,7 +9,7 @@ use Drupal\user\PrivateTempStoreFactory;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Form controller for the node edit forms.
+ * Form handler for the node edit forms.
  */
 class NodeForm extends ContentEntityForm {
 

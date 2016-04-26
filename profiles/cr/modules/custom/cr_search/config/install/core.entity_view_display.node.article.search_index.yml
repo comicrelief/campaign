@@ -1,14 +1,14 @@
-uuid: eaf9dc61-fc29-4a13-9100-dbbf0beadd5e
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.node.search_index
     - field.field.node.article.body
-    - field.field.node.article.field_image
-    - field.field.node.article.field_intro
-    - field.field.node.article.field_publish_date
-    - field.field.node.article.field_tags
+    - field.field.node.article.field_article_image
+    - field.field.node.article.field_article_intro
+    - field.field.node.article.field_article_meta_tags
+    - field.field.node.article.field_article_publish_date
+    - field.field.node.article.field_article_tags
     - field.field.node.article.field_youtube_url
     - node.type.article
   module:
@@ -42,7 +42,7 @@ third_party_settings:
     regions:
       ds_content:
         - node_title
-        - field_image
+        - field_article_image
     fields:
       node_title:
         plugin_id: node_title
@@ -53,8 +53,6 @@ third_party_settings:
           link: true
           wrapper: h2
           class: ''
-_core:
-  default_config_hash: pj_vX_00v5jZJt4vK5Y5-SrMup7MhPVwp-n3UE_lh1g
 id: node.article.search_index
 targetEntityType: node
 bundle: article
@@ -66,7 +64,7 @@ content:
     label: above
     settings: {  }
     third_party_settings: {  }
-  field_image:
+  field_article_image:
     weight: 1
     label: hidden
     settings:
@@ -74,13 +72,13 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: responsive_image
-  field_intro:
+  field_article_intro:
     type: text_default
     weight: 12
     label: above
     settings: {  }
     third_party_settings: {  }
-  field_publish_date:
+  field_article_publish_date:
     type: datetime_default
     weight: 11
     label: above
@@ -88,7 +86,7 @@ content:
       format_type: medium
       timezone_override: ''
     third_party_settings: {  }
-  field_tags:
+  field_article_tags:
     type: entity_reference_rss_category
     weight: 13
     label: above
@@ -111,4 +109,6 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_article_meta_tags: true
   field_media: true
+  field_meta_tags: true

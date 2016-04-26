@@ -8,40 +8,51 @@
         },
         "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
             {
-                "href": "http:\/\/default\/user\/1?_format=hal_json",
+                "href": "http:\/\/default\/user\/0?_format=hal_json",
                 "lang": "en"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/article\/revision_uid": [
             {
-                "href": "http:\/\/default\/user\/1?_format=hal_json"
+                "href": "http:\/\/default\/user\/0?_format=hal_json"
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_tags": [
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_image": [
             {
-                "href": "http:\/\/default\/taxonomy\/term\/2?_format=hal_json"
+                "href": "http:\/\/default\/file\/23?_format=hal_json",
+                "lang": "en"
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_image": [
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_tags": [
             {
-                "href": "http:\/\/default\/file\/3?_format=hal_json"
+                "href": "http:\/\/default\/taxonomy\/term\/4?_format=hal_json"
             }
         ]
     },
+    "nid": [
+        {
+            "value": "20"
+        }
+    ],
     "uuid": [
         {
             "value": "05f69740-0c91-4f06-9734-527c6df6cea8"
         }
     ],
-    "type": [
+    "vid": [
         {
-            "target_id": "article"
+            "value": "20"
         }
     ],
     "langcode": [
         {
             "value": "en",
             "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "article"
         }
     ],
     "title": [
@@ -55,7 +66,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -63,7 +74,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "4cd17a87-f639-4433-8808-8dd4860dda53"
+                        "value": "ae1f300e-a034-4ed9-a78d-b52d9d2361d0"
                     }
                 ],
                 "lang": "en"
@@ -73,7 +84,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -81,33 +92,16 @@
                 },
                 "uuid": [
                     {
-                        "value": "4cd17a87-f639-4433-8808-8dd4860dda53"
+                        "value": "ae1f300e-a034-4ed9-a78d-b52d9d2361d0"
                     }
                 ]
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_tags": [
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_image": [
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/taxonomy\/term\/2?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/tags"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "17f49cf8-f8bd-4d70-af02-02db94926a20"
-                    }
-                ]
-            }
-        ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_image": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/file\/3?_format=hal_json"
+                        "href": "http:\/\/default\/file\/23?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
@@ -118,10 +112,28 @@
                         "value": "7330689a-4d42-4230-a305-5bb9f52fc29d"
                     }
                 ],
+                "lang": "en",
                 "alt": "British Triathlon cheers Greg James on",
                 "title": "",
                 "width": "2340",
                 "height": "1316"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_tags": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/taxonomy\/term\/4?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/tags"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "17f49cf8-f8bd-4d70-af02-02db94926a20"
+                    }
+                ]
             }
         ]
     },
@@ -180,7 +192,7 @@
             "lang": "en"
         }
     ],
-    "field_publish_date": [
+    "field_article_publish_date": [
         {
             "value": "2016-02-09"
         }

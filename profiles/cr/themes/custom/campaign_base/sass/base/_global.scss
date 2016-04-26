@@ -48,3 +48,11 @@ picture img {
     border-bottom: 2px solid $black;
   }
 }
+// to do: find a better place
+.styleguide-link {
+  color: $white;
+  text-decoration: none;
+  float: right;
+  clear: both;
+  margin-right: 5%;
+}

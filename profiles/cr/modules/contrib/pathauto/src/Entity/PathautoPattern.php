@@ -11,7 +11,6 @@ use Drupal\Component\Plugin\Exception\ContextException;
 use Drupal\Core\Condition\ConditionPluginCollection;
 use Drupal\Core\Config\Entity\ConfigEntityBase;
 use Drupal\Core\Entity\EntityStorageInterface;
-use Drupal\Core\Plugin\Context\Context;
 use Drupal\Core\Plugin\ContextAwarePluginInterface;
 use Drupal\Core\Plugin\DefaultSingleLazyPluginCollection;
 use Drupal\pathauto\PathautoPatternInterface;
@@ -26,7 +25,9 @@ use Drupal\pathauto\PathautoPatternInterface;
  *     "list_builder" = "Drupal\pathauto\PathautoPatternListBuilder",
  *     "form" = {
  *       "default" = "Drupal\pathauto\Form\PatternEditForm",
- *       "delete" = "Drupal\Core\Entity\EntityDeleteForm"
+ *       "delete" = "Drupal\Core\Entity\EntityDeleteForm",
+ *       "enable" = "Drupal\pathauto\Form\PatternEnableForm",
+ *       "disable" = "Drupal\pathauto\Form\PatternDisableForm"
  *     },
  *     "route_provider" = {
  *       "html" = "Drupal\Core\Entity\Routing\DefaultHtmlRouteProvider",
@@ -38,15 +39,29 @@ use Drupal\pathauto\PathautoPatternInterface;
  *     "id" = "id",
  *     "label" = "label",
  *     "uuid" = "uuid",
- *     "weight" = "weight"
+ *     "weight" = "weight",
+ *     "status" = "status"
+ *   },
+ *   config_export = {
+ *     "id",
+ *     "label",
+ *     "type",
+ *     "pattern",
+ *     "selection_criteria",
+ *     "selection_logic",
+ *     "weight",
+ *     "relationships"
  *   },
  *   lookup_keys = {
  *     "type",
+ *     "status",
  *   },
  *   links = {
  *     "collection" = "/admin/config/search/path/patterns",
  *     "edit-form" = "/admin/config/search/path/patterns/{pathauto_pattern}",
- *     "delete-form" = "/admin/config/search/path/patterns/{pathauto_pattern}/delete"
+ *     "delete-form" = "/admin/config/search/path/patterns/{pathauto_pattern}/delete",
+ *     "enable" = "/admin/config/search/path/patterns/{pathauto_pattern}/enable",
+ *     "disable" = "/admin/config/search/path/patterns/{pathauto_pattern}/disable"
  *   }
  * )
  */

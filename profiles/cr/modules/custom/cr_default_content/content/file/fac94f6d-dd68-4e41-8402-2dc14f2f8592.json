@@ -1,17 +1,17 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/file\/26?_format=hal_json"
+            "href": "http:\/\/default\/file\/18?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
-        },
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "href": "http:\/\/default\/user\/1?_format=hal_json"
-            }
-        ]
+        }
     },
+    "fid": [
+        {
+            "value": "18"
+        }
+    ],
     "uuid": [
         {
             "value": "fac94f6d-dd68-4e41-8402-2dc14f2f8592"
@@ -22,25 +22,6 @@
             "value": "en"
         }
     ],
-    "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "1e5415a6-96aa-4707-9d00-a19224644862"
-                    }
-                ]
-            }
-        ]
-    },
     "filename": [
         {
             "value": "lestplay.jpg"
@@ -48,7 +29,7 @@
     ],
     "uri": [
         {
-            "value": "public:\/\/2016-04\/lestplay.jpg"
+            "value": "public:\/\/2016-04\/lestplay_12.jpg"
         }
     ],
     "filemime": [
