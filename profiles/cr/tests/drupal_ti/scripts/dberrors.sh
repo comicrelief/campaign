@@ -4,8 +4,8 @@
 set -e $DRUPAL_TI_DEBUG
 
 drush wd-show --severity=critical > tmp.txt
-drush wd-show --severity=warning >> tmp.txt
 drush wd-show --severity=error >> tmp.txt
+drush wd-show --severity=warning
 
 FILESIZE=$(cat tmp.txt | wc -c)
 
