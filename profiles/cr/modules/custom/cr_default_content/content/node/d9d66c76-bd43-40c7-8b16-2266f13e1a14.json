@@ -1,7 +1,7 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/node\/2?_format=hal_json"
+            "href": "http:\/\/default\/legal?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/page"
@@ -63,7 +63,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "ae1f300e-a034-4ed9-a78d-b52d9d2361d0"
+                        "value": "69ae1c1e-001d-436f-b066-fbd2bf981364"
                     }
                 ],
                 "lang": "en"
@@ -81,7 +81,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "ae1f300e-a034-4ed9-a78d-b52d9d2361d0"
+                        "value": "69ae1c1e-001d-436f-b066-fbd2bf981364"
                     }
                 ]
             }
@@ -101,7 +101,7 @@
     ],
     "changed": [
         {
-            "value": "1460472479",
+            "value": "1461766119",
             "lang": "en"
         }
     ],
@@ -135,7 +135,7 @@
     ],
     "body": [
         {
-            "value": "<h4>Terms of use<\/h4>\r\n<p>By using this Site you accept these terms of use as from the date you first access this Site. Comic Relief may modify these terms of use at any time by updating the text of this page, so please check back regularly.<\/p>\r\n<br><h4><a id=\"definitions\">Definitions<\/a><\/h4>\r\n<p>In these terms of use, the following words have the following meanings:<\/p>\r\n<p>\"Content\" means all content on this Site, including all information, graphics, trademarks, logos, designs, text, photos, films, sounds, software and applications;<\/p>\r\n<p>\"Contribution(s)\" means anything that a user posts on this Site or sends to Comic Relief, including any photographs, video or audio clips, comments or posts or competition entries;<\/p><\/br>\r\n<p>\"Site\" means any website which Comic Relief owns or controls, and from which a link has been created to these terms of use;<\/p>\r\n<p>\"these terms of use\" means the terms of use set out below, as well as our Privacy Policy and any other terms and conditions on this Site; \"you\", \"your\" and \"yours\" means a person(s) accessing this Site.<\/p>",
+            "value": "<h4>Terms of use<\/h4>\r\n\r\n<p>By using this Site you accept these terms of use as from the date you first access this Site. Comic Relief may modify these terms of use at any time by updating the text of this page, so please check back regularly.<\/p>\r\n\r\n<p>&nbsp;<\/p>\r\n\r\n<h4><a id=\"definitions\">Definitions<\/a><\/h4>\r\n\r\n<p>&nbsp;<\/p>\r\n\r\n<p>In these terms of use, the following words have the following meanings:<\/p>\r\n\r\n<p>\"Content\" means all content on this Site, including all information, graphics, trademarks, logos, designs, text, photos, films, sounds, software and applications;<\/p>\r\n\r\n<p>\"Contribution(s)\" means anything that a user posts on this Site or sends to Comic Relief, including any photographs, video or audio clips, comments or posts or competition entries;<\/p>\r\n\r\n<p>&nbsp;<\/p>\r\n\r\n<p>\"Site\" means any website which Comic Relief owns or controls, and from which a link has been created to these terms of use;<\/p>\r\n\r\n<p>&nbsp;<\/p>\r\n\r\n<p>\"these terms of use\" means the terms of use set out below, as well as our Privacy Policy and any other terms and conditions on this Site; \"you\", \"your\" and \"yours\" means a person(s) accessing this Site.<\/p>\r\n",
             "format": "full_html",
             "summary": "",
             "lang": "en"
