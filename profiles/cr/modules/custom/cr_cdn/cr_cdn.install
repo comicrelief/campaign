@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Content Wall module adds site functionality.
+ * Custom module: cr_cdn is used to enable custom cdn config.
  */
 
 /**
