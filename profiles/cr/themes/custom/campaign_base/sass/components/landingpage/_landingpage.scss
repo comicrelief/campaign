@@ -9,8 +9,10 @@
 
 .page-node-type-landing {
 	.region-content {
+
+    /* To be managed by layout.scss
 		width: 100%;
-		max-width: 100%;
+		max-width: 100%; */
 	}
 	.page__title {
 		position:absolute; // make it as a mixin
@@ -21,8 +23,9 @@
 		overflow:hidden;
 	}
 	.panel-1col {
-		max-width: 1200px;
-		margin: 0 auto;
+    // Handled by layout.scss
+		//max-width: 1200px;
+		//margin: 0 auto;
 	}
 }
 .landing-page {

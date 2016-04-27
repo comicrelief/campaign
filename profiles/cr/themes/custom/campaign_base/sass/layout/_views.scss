@@ -4,7 +4,7 @@
   .item-list {
     li {
       @include span(6 of 6);
-      @include breakpoint($screen-xs) {
+      @include breakpoint($screen-sm) {
       	@include span(6);
       }
       @include breakpoint($screen-md) {
@@ -31,7 +31,7 @@
   .views-row {
     @include span(12);
     margin-bottom: gutter();
-    @include breakpoint($screen-xs) {
+    @include breakpoint($screen-sm) {
       @include span(4);
     }
   }
@@ -96,38 +96,40 @@
     }
   }
 }
-.panel-panel {
-  // @include container(12);
+.cw-region {
   article.cw-article--small {
     @include span(12);
-    @include breakpoint($screen-xs) {
+    @include breakpoint($screen-sm) {
       @include span(4);
     }
   }
 }
-.panel-panel {
+.cw-region {
   article.cw-article--medium {
     @include span(12);
-    @include breakpoint($screen-xs) {
+    @include breakpoint($screen-sm) {
       @include span(6);
     }
   }
 }
-.panel-panel {
+
+.cw-region {
   article.cw-article--large {
     @include span(12);
-    @include breakpoint($screen-xs) {
-      padding: 0 15px 0 0;
+    @include breakpoint($screen-sm) {
+      width: 100%;
+      margin: 0;
     }
     .cw-article__image {
-      @include breakpoint($screen-xs) {
-        @include span(8);
-        padding-right: 0;
+      @include breakpoint($screen-sm) {
+        @include span(8 no-gutter wide);
+        margin-left: gutter();
       }
     }
     .cw-article__body {
-      @include breakpoint($screen-xs) {
-        @include span(4);
+      @include breakpoint($screen-sm) {
+        @include span(4 no-gutter last);
+        margin-right: gutter();
       }
     }
   }

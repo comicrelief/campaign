@@ -45,7 +45,7 @@
       height: 345px;
     }
   }
-  @include breakpoint($screen-lg) {
+  @include breakpoint($screen-md) {
     height: 440px;
     .cw-article__image {
       // for img to fill area when not set by js
@@ -118,7 +118,6 @@
   @include breakpoint($screen-sm) {
     height: 100%;
     padding: 15px;
-    width: calc(100% - 30px);
     background: $cw-grey;
     &.cw-article__body--over {
       position: absolute;
