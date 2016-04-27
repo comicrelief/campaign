@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Tests\Views\FrontPageTest.
+ */
+
 namespace Drupal\node\Tests\Views;
 
 use Drupal\Core\Cache\Cache;

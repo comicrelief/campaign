@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\system\Unit\SystemRequirementsTest.
+ */
+
 namespace Drupal\Tests\system\Unit;
 
 use Drupal\system\SystemRequirements;

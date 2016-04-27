@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\shortcut\Form\SetCustomize.
+ */
+
 namespace Drupal\shortcut\Form;
 
 use Drupal\Core\Entity\EntityForm;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\file\Plugin\migrate\source\d6\Upload.
+ */
+
 namespace Drupal\file\Plugin\migrate\source\d6;
 
 use Drupal\migrate\Row;

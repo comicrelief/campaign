@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views_ui\Tests\ViewsUITourTest.
+ */
+
 namespace Drupal\views_ui\Tests;
 
 use Drupal\tour\Tests\TourTestBase;

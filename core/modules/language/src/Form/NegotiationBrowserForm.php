@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\language\Form\NegotiationBrowserForm.
+ */
+
 namespace Drupal\language\Form;
 
 use Drupal\Core\Config\ConfigFactoryInterface;

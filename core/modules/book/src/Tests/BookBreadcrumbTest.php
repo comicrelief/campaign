@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\book\Tests\BookBreadcrumbTest.
+ */
+
 namespace Drupal\book\Tests;
 
 use Drupal\simpletest\WebTestBase;

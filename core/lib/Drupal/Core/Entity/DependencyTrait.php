@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\DependencyTrait.
+ */
+
 namespace Drupal\Core\Entity;
 
 /**

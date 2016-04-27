@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Cache\DatabaseCacheTagsChecksum.
+ */
+
 namespace Drupal\Core\Cache;
 
 use Drupal\Core\Database\Connection;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Form\FormCache.
+ */
+
 namespace Drupal\Core\Form;
 
 use Drupal\Component\Utility\Crypt;

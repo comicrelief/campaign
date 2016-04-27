@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\config_translation\FormElement\FormElementBase.
+ */
+
 namespace Drupal\config_translation\FormElement;
 
 use Drupal\Core\Config\Config;
@@ -96,8 +101,7 @@ abstract class FormElementBase implements ElementInterface {
     return array(
       '#type' => 'item',
       '#title' => $this->t('@label <span class="visually-hidden">(@source_language)</span>', array(
-        // Labels originate from configuration schema and are translatable.
-        '@label' => $this->t($this->definition->getLabel()),
+        '@label' => $this->definition->getLabel(),
         '@source_language' => $source_language->getName(),
       )),
       '#markup' => $value,
@@ -159,8 +163,7 @@ abstract class FormElementBase implements ElementInterface {
     // Add basic properties that apply to all form elements.
     return array(
       '#title' => $this->t('@label <span class="visually-hidden">(@source_language)</span>', array(
-        // Labels originate from configuration schema and are translatable.
-        '@label' => $this->t($this->definition->getLabel()),
+        '@label' => $this->definition['label'],
         '@source_language' => $translation_language->getName(),
       )),
       '#default_value' => $translation_config,

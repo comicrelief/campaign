@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Routing\Access\AccessInterface.
+ */
+
 namespace Drupal\Core\Routing\Access;
 
 /**

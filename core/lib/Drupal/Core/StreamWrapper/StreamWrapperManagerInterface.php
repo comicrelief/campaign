@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\StreamWrapper\StreamWrapperManagerInterface.
+ */
+
 namespace Drupal\Core\StreamWrapper;
 
 /**

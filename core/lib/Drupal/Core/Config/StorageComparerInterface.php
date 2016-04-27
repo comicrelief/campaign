@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Config\StorageComparerInterface.
+ */
+
 namespace Drupal\Core\Config;
 
 /**

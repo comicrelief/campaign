@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Update\UpdateScriptTest.
+ */
+
 namespace Drupal\system\Tests\Update;
 
 use Drupal\Core\Url;

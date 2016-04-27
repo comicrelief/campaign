@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Display\Annotation\PageDisplayVariant.
+ */
+
 namespace Drupal\Core\Display\Annotation;
 
 /**

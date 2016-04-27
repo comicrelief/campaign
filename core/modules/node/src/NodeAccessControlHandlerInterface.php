@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\node\NodeAccessControlHandlerInterface.
+ */
 
 namespace Drupal\node;
 
@@ -31,11 +35,13 @@ interface NodeAccessControlHandlerInterface {
   /**
    * Writes a list of grants to the database, deleting any previously saved ones.
    *
-   * Modules that use node access can use this function when doing mass updates
-   * due to widespread permission changes.
+   * If a realm is provided, it will only delete grants from that realm, but it
+   * will always delete a grant from the 'all' realm. Modules that use node
+   * access can use this function when doing mass updates due to widespread
+   * permission changes.
    *
    * Note: Don't call this function directly from a contributed module. Call
-   * \Drupal\node\NodeAccessControlHandlerInterface::acquireGrants() instead.
+   * node_access_acquire_grants() instead.
    *
    * @param \Drupal\node\NodeInterface $node
    *   The node whose grants are being written.
@@ -43,9 +49,6 @@ interface NodeAccessControlHandlerInterface {
    *   (optional) If false, does not delete records. This is only for optimization
    *   purposes, and assumes the caller has already performed a mass delete of
    *   some form. Defaults to TRUE.
-   *
-   * @deprecated in Drupal 8.x, will be removed before Drupal 9.0.
-   *   Use \Drupal\node\NodeAccessControlHandlerInterface::acquireGrants().
    */
   public function writeGrants(NodeInterface $node, $delete = TRUE);
 

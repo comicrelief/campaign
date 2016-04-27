@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\RoleInterface.
+ */
+
 namespace Drupal\user;
 
 use Drupal\Core\Config\Entity\ConfigEntityInterface;

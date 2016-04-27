@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Update\RouterIndexOptimizationTest.
+ */
 
 namespace Drupal\system\Tests\Update;
 

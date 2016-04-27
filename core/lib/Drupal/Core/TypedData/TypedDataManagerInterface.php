@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\TypedData\TypedDataManagerInterface.
+ */
+
 namespace Drupal\Core\TypedData;
 
 use Drupal\Component\Plugin\PluginManagerInterface;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\entity_test\Plugin\Derivative\EntityTestLocalTasks.
+ */
+
 namespace Drupal\entity_test\Plugin\Derivative;
 
 use Drupal\Component\Plugin\Derivative\DeriverBase;

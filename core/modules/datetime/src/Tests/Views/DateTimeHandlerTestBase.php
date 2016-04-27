@@ -1,13 +1,15 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\datetime\Tests\Views\DateTimeHandlerTestBase.
+ */
+
 namespace Drupal\datetime\Tests\Views;
 
 use Drupal\datetime\Plugin\Field\FieldType\DateTimeItem;
-use Drupal\field\Entity\FieldConfig;
-use Drupal\node\Entity\NodeType;
 use Drupal\views\Tests\Handler\HandlerTestBase;
 use Drupal\views\Tests\ViewTestData;
-use Drupal\field\Entity\FieldStorageConfig;
 
 /**
  * Base class for testing datetime handlers.
@@ -42,19 +44,19 @@ abstract class DateTimeHandlerTestBase extends HandlerTestBase {
     parent::setUp();
 
     // Add a date field to page nodes.
-    $node_type = NodeType::create([
+    $node_type = entity_create('node_type', [
       'type' => 'page',
       'name' => 'page'
     ]);
     $node_type->save();
-    $fieldStorage = FieldStorageConfig::create([
+    $fieldStorage = entity_create('field_storage_config', [
       'field_name' => static::$field_name,
       'entity_type' => 'node',
       'type' => 'datetime',
       'settings' => ['datetime_type' => DateTimeItem::DATETIME_TYPE_DATETIME],
     ]);
     $fieldStorage->save();
-    $field = FieldConfig::create([
+    $field = entity_create('field_config', [
       'field_storage' => $fieldStorage,
       'bundle' => 'page',
       'required' => TRUE,

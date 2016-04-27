@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\entity_test\EntityTestViewBuilderOverriddenView.
+ */
+
 namespace Drupal\entity_test;
 
 use Drupal\Core\Entity\EntityInterface;

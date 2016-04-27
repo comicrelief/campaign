@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\menu_link_content\Controller\MenuController.
+ */
+
 namespace Drupal\menu_link_content\Controller;
 
 use Drupal\Core\Controller\ControllerBase;

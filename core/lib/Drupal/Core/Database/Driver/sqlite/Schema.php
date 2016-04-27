@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Database\Driver\sqlite\Schema.
+ */
+
 namespace Drupal\Core\Database\Driver\sqlite;
 
 use Drupal\Component\Utility\Unicode;

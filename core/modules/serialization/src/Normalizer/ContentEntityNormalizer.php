@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\serialization\Normalizer\ContentEntityNormalizer.
+ */
+
 namespace Drupal\serialization\Normalizer;
 
 /**

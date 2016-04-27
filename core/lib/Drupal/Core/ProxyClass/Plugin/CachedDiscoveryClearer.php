@@ -1,5 +1,9 @@
 <?php
-// @codingStandardsIgnoreFile
+
+/**
+ * @file
+ * Contains \Drupal\Core\ProxyClass\Plugin\CachedDiscoveryClearer.
+ */
 
 /**
  * This file was generated via php core/scripts/generate-proxy-class.php 'Drupal\Core\Plugin\CachedDiscoveryClearer' "core/lib/Drupal/Core".

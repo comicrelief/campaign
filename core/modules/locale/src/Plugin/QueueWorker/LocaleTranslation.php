@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\locale\Plugin\QueueWorker\LocaleTranslation.
+ */
+
 namespace Drupal\locale\Plugin\QueueWorker;
 
 use Drupal\Core\Extension\ModuleHandlerInterface;

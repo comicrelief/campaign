@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Config\Importer\MissingContentEvent.
+ */
+
 namespace Drupal\Core\Config\Importer;
 
 use Symfony\Component\EventDispatcher\Event;

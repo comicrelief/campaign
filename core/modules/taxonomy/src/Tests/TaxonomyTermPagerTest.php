@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\taxonomy\Tests\TaxonomyTermPagerTest.
+ */
+
 namespace Drupal\taxonomy\Tests;
 
 /**

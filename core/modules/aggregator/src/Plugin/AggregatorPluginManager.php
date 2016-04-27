@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\aggregator\Plugin\AggregatorPluginManager.
+ */
+
 namespace Drupal\aggregator\Plugin;
 
 use Drupal\Core\Cache\CacheBackendInterface;

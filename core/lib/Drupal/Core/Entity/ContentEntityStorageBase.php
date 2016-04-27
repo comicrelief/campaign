@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\ContentEntityStorageBase.
+ */
+
 namespace Drupal\Core\Entity;
 
 use Drupal\Core\Cache\Cache;

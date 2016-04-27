@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\Access\PermissionAccessCheck.
+ */
+
 namespace Drupal\user\Access;
 
 use Drupal\Core\Access\AccessResult;

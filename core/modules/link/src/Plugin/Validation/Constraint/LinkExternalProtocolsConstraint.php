@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\link\Plugin\Validation\Constraint\LinkExternalProtocolsConstraint.
+ */
+
 namespace Drupal\link\Plugin\Validation\Constraint;
 
 use Symfony\Component\Validator\Constraint;

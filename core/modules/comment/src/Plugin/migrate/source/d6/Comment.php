@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\comment\Plugin\migrate\source\d6\Comment.
+ */
+
 namespace Drupal\comment\Plugin\migrate\source\d6;
 
 use Drupal\migrate\Row;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Database\Query\NoFieldsException.
+ */
+
 namespace Drupal\Core\Database\Query;
 
 use Drupal\Core\Database\DatabaseException;

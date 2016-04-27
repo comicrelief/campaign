@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\field\FieldConfigStorage.
+ */
+
 namespace Drupal\field;
 
 use Drupal\Core\Config\Config;

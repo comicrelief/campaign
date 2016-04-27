@@ -1,9 +1,12 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Tests\NodeAccessFieldTest.
+ */
+
 namespace Drupal\node\Tests;
 use Drupal\Component\Utility\Unicode;
-use Drupal\field\Entity\FieldConfig;
-use Drupal\field\Entity\FieldStorageConfig;
 
 /**
  * Tests the interaction of the node access system with fields.
@@ -51,16 +54,16 @@ class NodeAccessFieldTest extends NodeTestBase {
 
     // Add a custom field to the page content type.
     $this->fieldName = Unicode::strtolower($this->randomMachineName() . '_field_name');
-    FieldStorageConfig::create(array(
+    entity_create('field_storage_config', array(
       'field_name' => $this->fieldName,
       'entity_type' => 'node',
       'type' => 'text'
     ))->save();
-    FieldConfig::create([
+    entity_create('field_config', array(
       'field_name' => $this->fieldName,
       'entity_type' => 'node',
       'bundle' => 'page',
-    ])->save();
+    ))->save();
     entity_get_display('node', 'page', 'default')
       ->setComponent($this->fieldName)
       ->save();

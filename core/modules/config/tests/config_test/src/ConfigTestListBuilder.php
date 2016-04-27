@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\config_test\ConfigTestListBuilder.
+ */
+
 namespace Drupal\config_test;
 
 use Drupal\Core\Config\Entity\ConfigEntityListBuilder;

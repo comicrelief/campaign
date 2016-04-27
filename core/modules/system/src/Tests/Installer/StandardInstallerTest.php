@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Installer\StandardInstallerTest.
+ */
+
 namespace Drupal\system\Tests\Installer;
 
 /**

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\language\ConfigurableLanguageManagerInterface.
+ */
+
 namespace Drupal\language;
 
 use Drupal\Core\Language\LanguageInterface;

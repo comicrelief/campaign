@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Config\ConfigFactoryOverrideInterface.
+ */
+
 namespace Drupal\Core\Config;
 
 /**

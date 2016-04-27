@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\basic_auth\Tests\Authentication\BasicAuthTest.
+ */
+
 namespace Drupal\basic_auth\Tests\Authentication;
 
 use Drupal\Component\Utility\SafeMarkup;

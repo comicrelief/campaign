@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Form\OptGroupTest.
+ */
+
 namespace Drupal\Tests\Core\Form;
 
 use Drupal\Tests\UnitTestCase;

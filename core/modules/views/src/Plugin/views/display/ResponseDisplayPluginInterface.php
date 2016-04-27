@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Plugin\views\display\ResponseDisplayPluginInterface.
+ */
+
 namespace Drupal\views\Plugin\views\display;
 
 /**

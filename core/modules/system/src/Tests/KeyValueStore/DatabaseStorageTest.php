@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\KeyValueStore\DatabaseStorageTest.
+ */
+
 namespace Drupal\system\Tests\KeyValueStore;
 
 use Drupal\Core\DependencyInjection\ContainerBuilder;

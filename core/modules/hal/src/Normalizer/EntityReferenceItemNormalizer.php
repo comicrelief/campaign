@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\hal\Normalizer\EntityReferenceItemNormalizer.
+ */
+
 namespace Drupal\hal\Normalizer;
 
 use Drupal\Core\Entity\FieldableEntityInterface;

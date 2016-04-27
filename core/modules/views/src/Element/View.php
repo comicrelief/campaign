@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Element\View.
+ */
+
 namespace Drupal\views\Element;
 
 use Drupal\Core\Render\Element\RenderElement;

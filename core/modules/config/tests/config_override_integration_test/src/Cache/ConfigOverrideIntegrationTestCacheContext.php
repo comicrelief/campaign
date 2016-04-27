@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\config_override_integration_test\Cache\ConfigOverrideIntegrationTestCacheContext.
+ */
+
 namespace Drupal\config_override_integration_test\Cache;
 
 use Drupal\Core\Cache\CacheableMetadata;

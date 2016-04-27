@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Plugin\views\argument_validator\NumericArgumentValidator.
+ */
+
 namespace Drupal\views\Plugin\views\argument_validator;
 
 /**

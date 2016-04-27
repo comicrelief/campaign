@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\block\BlockAccessControlHandler.
+ */
+
 namespace Drupal\block;
 
 use Drupal\Component\Plugin\Exception\ContextException;
@@ -91,7 +96,7 @@ class BlockAccessControlHandler extends EntityAccessControlHandler implements En
 
     // Don't grant access to disabled blocks.
     if (!$entity->status()) {
-      return AccessResult::forbidden()->addCacheableDependency($entity);
+      return AccessResult::forbidden()->cacheUntilEntityChanges($entity);
     }
     else {
       $conditions = [];
@@ -146,7 +151,7 @@ class BlockAccessControlHandler extends EntityAccessControlHandler implements En
       $this->mergeCacheabilityFromConditions($access, $conditions);
 
       // Ensure that access is evaluated again when the block changes.
-      return $access->addCacheableDependency($entity);
+      return $access->cacheUntilEntityChanges($entity);
     }
   }
 

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Common\SimpleTestErrorCollectorTest.
+ */
+
 namespace Drupal\system\Tests\Common;
 
 use Drupal\simpletest\WebTestBase;

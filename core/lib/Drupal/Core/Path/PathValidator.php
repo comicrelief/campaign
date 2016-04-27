@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Path\PathValidator.
+ */
+
 namespace Drupal\Core\Path;
 
 use Drupal\Component\Utility\UrlHelper;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\taxonomy\Tests\Views\TaxonomyTermFilterDepthTest.
+ */
+
 namespace Drupal\taxonomy\Tests\Views;
 
 use Drupal\views\Views;

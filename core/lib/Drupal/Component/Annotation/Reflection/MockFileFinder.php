@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Component\Annotation\Reflection\MockFileFinder.
+ */
+
 namespace Drupal\Component\Annotation\Reflection;
 
 use Doctrine\Common\Reflection\ClassFinderInterface;

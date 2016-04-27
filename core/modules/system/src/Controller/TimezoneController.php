@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Controller\TimezoneController.
+ */
+
 namespace Drupal\system\Controller;
 
 use Symfony\Component\HttpFoundation\JsonResponse;

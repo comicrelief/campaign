@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\tour\TourViewBuilder.
+ */
+
 namespace Drupal\tour;
 
 use Drupal\Core\Entity\EntityViewBuilder;

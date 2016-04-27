@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\shortcut\Controller\ShortcutController.
+ */
+
 namespace Drupal\shortcut\Controller;
 
 use Drupal\Core\Controller\ControllerBase;

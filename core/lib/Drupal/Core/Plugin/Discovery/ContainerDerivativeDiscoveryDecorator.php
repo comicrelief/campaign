@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Plugin\Discovery\ContainerDerivativeDiscoveryDecorator.
+ */
+
 namespace Drupal\Core\Plugin\Discovery;
 
 use Drupal\Component\Plugin\Discovery\DerivativeDiscoveryDecorator;

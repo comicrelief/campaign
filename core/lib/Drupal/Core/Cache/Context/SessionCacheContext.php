@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Cache\Context\SessionCacheContext.
+ */
+
 namespace Drupal\Core\Cache\Context;
 
 /**

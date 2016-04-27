@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\filter\FilterFormatInterface.
+ */
+
 namespace Drupal\filter;
 
 use Drupal\Core\Config\Entity\ConfigEntityInterface;

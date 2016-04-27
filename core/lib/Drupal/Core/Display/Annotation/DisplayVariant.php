@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Display\Annotation\DisplayVariant.
+ */
+
 namespace Drupal\Core\Display\Annotation;
 
 use Drupal\Component\Annotation\Plugin;

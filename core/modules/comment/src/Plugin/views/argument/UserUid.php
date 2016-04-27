@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\comment\Plugin\views\argument\UserUid.
+ */
+
 namespace Drupal\comment\Plugin\views\argument;
 
 use Drupal\Core\Database\Connection;

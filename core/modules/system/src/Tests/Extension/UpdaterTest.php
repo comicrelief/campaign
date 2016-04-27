@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Extension\UpdaterTest.
+ */
+
 namespace Drupal\system\Tests\Extension;
 
 use Drupal\simpletest\KernelTestBase;

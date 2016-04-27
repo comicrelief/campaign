@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\EntityDefinitionUpdateManagerInterface.
+ */
+
 namespace Drupal\Core\Entity;
 
 use Drupal\Core\Field\FieldStorageDefinitionInterface;

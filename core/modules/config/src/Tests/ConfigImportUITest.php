@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\config\Tests\ConfigImportUITest.
+ */
+
 namespace Drupal\config\Tests;
 
 use Drupal\Component\Utility\Html;

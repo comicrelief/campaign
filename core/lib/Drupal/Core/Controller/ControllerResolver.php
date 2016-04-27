@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Controller\ControllerResolver.
+ */
+
 namespace Drupal\Core\Controller;
 
 use Drupal\Core\DependencyInjection\ClassResolverInterface;

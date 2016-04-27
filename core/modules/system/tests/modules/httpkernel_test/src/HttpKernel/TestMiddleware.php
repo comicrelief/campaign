@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\httpkernel_test\HttpKernel\TestMiddleware.
+ */
+
 namespace Drupal\httpkernel_test\HttpKernel;
 
 use Symfony\Component\HttpFoundation\Request;

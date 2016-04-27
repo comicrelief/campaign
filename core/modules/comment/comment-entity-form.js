@@ -3,7 +3,7 @@
  * Attaches comment behaviors to the entity form.
  */
 
-(function ($, Drupal) {
+(function ($) {
 
   'use strict';
 
@@ -20,4 +20,4 @@
     }
   };
 
-})(jQuery, Drupal);
+})(jQuery);

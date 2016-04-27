@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Installer\InstallerRouteBuilder.
+ */
+
 namespace Drupal\Core\Installer;
 
 use Drupal\Core\Routing\RouteBuilder;

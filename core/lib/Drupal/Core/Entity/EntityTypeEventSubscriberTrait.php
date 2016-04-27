@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\EntityTypeEventSubscriberTrait.
+ */
+
 namespace Drupal\Core\Entity;
 
 /**

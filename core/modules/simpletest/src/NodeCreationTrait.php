@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains Drupal\simpletest\NodeCreationTrait
+ */
 
 namespace Drupal\simpletest;
 

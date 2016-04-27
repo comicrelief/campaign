@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\tour_test\Controller\TourTestController.
+ */
+
 namespace Drupal\tour_test\Controller;
 
 /**
@@ -11,7 +16,7 @@ class TourTestController {
    * Outputs some content for testing tours.
    *
    * @param string $locale
-   *   (optional) Dummy locale variable for testing routing parameters. Defaults
+   *  (optional) Dummy locale variable for testing routing parameters. Defaults
    *   to 'foo'.
    *
    * @return array

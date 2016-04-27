@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Plugin\Archiver\Zip.
+ */
+
 namespace Drupal\system\Plugin\Archiver;
 
 use Drupal\Core\Archiver\Zip as BaseZip;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\ckeditor\Plugin\CKEditorPlugin\DrupalLink.
+ */
+
 namespace Drupal\ckeditor\Plugin\CKEditorPlugin;
 
 use Drupal\ckeditor\CKEditorPluginBase;
@@ -50,11 +55,11 @@ class DrupalLink extends CKEditorPluginBase {
     return array(
       'DrupalLink' => array(
         'label' => t('Link'),
-        'image' => $path . '/icons/drupallink.png',
+        'image' => $path . '/link.png',
       ),
       'DrupalUnlink' => array(
         'label' => t('Unlink'),
-        'image' => $path . '/icons/drupalunlink.png',
+        'image' => $path . '/unlink.png',
       ),
     );
   }

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\block_content\Plugin\Block\BlockContentBlock.
+ */
+
 namespace Drupal\block_content\Plugin\Block;
 
 use Drupal\Core\Access\AccessResult;

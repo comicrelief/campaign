@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\EntityChangedInterface.
+ */
+
 namespace Drupal\Core\Entity;
 
 /**

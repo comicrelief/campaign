@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\file\Tests\FileTokenReplaceTest.
+ */
+
 namespace Drupal\file\Tests;
 
 use Drupal\Component\Utility\Html;

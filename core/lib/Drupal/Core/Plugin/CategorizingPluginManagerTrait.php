@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Plugin\CategorizingPluginManagerTrait.
+ */
+
 namespace Drupal\Core\Plugin;
 
 use Drupal\Core\StringTranslation\StringTranslationTrait;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\TempStoreException.
+ */
+
 namespace Drupal\user;
 
 /**

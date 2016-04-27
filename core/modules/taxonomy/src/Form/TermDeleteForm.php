@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\taxonomy\Form\TermDeleteForm.
+ */
+
 namespace Drupal\taxonomy\Form;
 
 use Drupal\Core\Form\FormStateInterface;

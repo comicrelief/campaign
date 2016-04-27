@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\tour\TipsPluginCollection.
+ */
+
 namespace Drupal\tour;
 
 use Drupal\Core\Plugin\DefaultLazyPluginCollection;

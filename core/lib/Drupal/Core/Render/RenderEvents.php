@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Render\RenderEvents.
+ */
+
 namespace Drupal\Core\Render;
 
 /**

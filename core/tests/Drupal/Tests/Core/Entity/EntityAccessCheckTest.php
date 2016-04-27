@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Entity\EntityAccessCheckTest.
+ */
+
 namespace Drupal\Tests\Core\Entity;
 
 use Drupal\Core\Cache\Context\CacheContextsManager;

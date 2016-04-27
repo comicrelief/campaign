@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Database\TransactionNameNonUniqueException.
+ */
+
 namespace Drupal\Core\Database;
 
 /**

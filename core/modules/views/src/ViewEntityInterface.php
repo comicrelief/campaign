@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\ViewEntityInterface.
+ */
+
 namespace Drupal\views;
 
 use Drupal\Core\Config\Entity\ConfigEntityInterface;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Cache\CacheableResponse.
+ */
+
 namespace Drupal\Core\Cache;
 
 use Symfony\Component\HttpFoundation\Response;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\taxonomy\Plugin\migrate\source\Term.
+ */
+
 namespace Drupal\taxonomy\Plugin\migrate\source;
 
 use Drupal\migrate\Row;

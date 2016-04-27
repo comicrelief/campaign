@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\EntityReferenceSelection\SelectionWithAutocreateInterface.
+ */
+
 namespace Drupal\Core\Entity\EntityReferenceSelection;
 
 /**

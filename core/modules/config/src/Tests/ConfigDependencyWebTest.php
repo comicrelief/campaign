@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\config\Tests\ConfigDependencyWebTest.
+ */
+
 namespace Drupal\config\Tests;
 
 use Drupal\Core\Config\Entity\ConfigEntityStorage;

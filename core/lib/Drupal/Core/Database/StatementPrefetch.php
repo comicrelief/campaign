@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Database\StatementPrefetch.
+ */
+
 namespace Drupal\Core\Database;
 
 /**

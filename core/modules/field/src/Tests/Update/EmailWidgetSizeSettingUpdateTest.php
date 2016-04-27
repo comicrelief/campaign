@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\field\Tests\Update\EmailWidgetSizeSettingUpdateTest.
+ */
+
 namespace Drupal\field\Tests\Update;
 
 use Drupal\system\Tests\Update\UpdatePathTestBase;

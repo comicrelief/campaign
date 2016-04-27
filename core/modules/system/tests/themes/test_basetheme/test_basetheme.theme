@@ -4,7 +4,6 @@
  * @file
  * Add hooks for tests to use.
  */
-
 use Drupal\views\Plugin\views\cache\CachePluginBase;
 use Drupal\views\ViewExecutable;
 

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\locale\Tests\LocaleFileSystemFormTest.
+ */
+
 namespace Drupal\locale\Tests;
 
 use Drupal\simpletest\WebTestBase;

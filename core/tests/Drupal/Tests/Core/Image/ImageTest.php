@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Image\ImageTest.
+ */
+
 namespace Drupal\Tests\Core\Image;
 
 use Drupal\Core\Image\Image;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\views\Unit\Plugin\HandlerTestTrait.
+ */
+
 namespace Drupal\Tests\views\Unit\Plugin;
 
 /**

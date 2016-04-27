@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\StreamWrapper\StreamWrapperManager.
+ */
+
 namespace Drupal\Core\StreamWrapper;
 
 use Symfony\Component\DependencyInjection\ContainerAware;

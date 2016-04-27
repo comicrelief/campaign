@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\File\ScanDirectoryTest.
+ */
+
 namespace Drupal\system\Tests\File;
 
 /**

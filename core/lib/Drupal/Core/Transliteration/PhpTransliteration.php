@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Transliteration\PhpTransliteration.
+ */
+
 namespace Drupal\Core\Transliteration;
 
 use Drupal\Component\Transliteration\PhpTransliteration as BaseTransliteration;

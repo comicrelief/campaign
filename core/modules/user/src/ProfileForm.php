@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\ProfileForm.
+ */
+
 namespace Drupal\user;
 
 use Drupal\Core\Entity\EntityManagerInterface;
@@ -8,7 +13,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
 
 /**
- * Form handler for the profile forms.
+ * Form controller for the profile forms.
  */
 class ProfileForm extends AccountForm {
 

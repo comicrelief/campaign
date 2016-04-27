@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Tests\Views\NodeIntegrationTest.
+ */
+
 namespace Drupal\node\Tests\Views;
 
 /**

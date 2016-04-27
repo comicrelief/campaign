@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Entity\Render\EntityTranslationRendererBase.
+ */
+
 namespace Drupal\views\Entity\Render;
 
 use Drupal\views\Plugin\views\query\QueryPluginBase;

@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\entity_test\Plugin\Validation\Constraint\FieldWidgetConstraintValidator.
+ */
 
 namespace Drupal\entity_test\Plugin\Validation\Constraint;
 

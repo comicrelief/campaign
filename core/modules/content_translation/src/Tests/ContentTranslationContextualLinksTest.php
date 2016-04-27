@@ -1,12 +1,16 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\content_translation\Tests\ContentTranslationContextualLinksTest.
+ */
+
 namespace Drupal\content_translation\Tests;
 
 use Drupal\Component\Serialization\Json;
-use Drupal\field\Entity\FieldConfig;
 use Drupal\language\Entity\ConfigurableLanguage;
+use Drupal\node\Entity\NodeType;
 use Drupal\simpletest\WebTestBase;
-use Drupal\field\Entity\FieldStorageConfig;
 
 /**
  * Tests that contextual links are available for content translation.
@@ -25,7 +29,7 @@ class ContentTranslationContextualLinksTest extends WebTestBase {
   /**
    * The content type being tested.
    *
-   * @var \Drupal\node\Entity\NodeType
+   * @var NodeType
    */
   protected $contentType;
 
@@ -68,18 +72,18 @@ class ContentTranslationContextualLinksTest extends WebTestBase {
     $this->contentType = $this->drupalCreateContentType(array('type' => $this->bundle));
 
     // Add a field to the content type. The field is not yet translatable.
-    FieldStorageConfig::create(array(
+    entity_create('field_storage_config', array(
       'field_name' => 'field_test_text',
       'entity_type' => 'node',
       'type' => 'text',
       'cardinality' => 1,
     ))->save();
-    FieldConfig::create([
+    entity_create('field_config', array(
       'entity_type' => 'node',
       'field_name' => 'field_test_text',
       'bundle' => $this->bundle,
       'label' => 'Test text-field',
-    ])->save();
+    ))->save();
     entity_get_form_display('node', $this->bundle, 'default')
       ->setComponent('field_test_text', array(
         'type' => 'text_textfield',

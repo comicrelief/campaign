@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Plugin\ImageToolkit\Operation\gd\GDImageToolkitOperationBase.
+ */
+
 namespace Drupal\system\Plugin\ImageToolkit\Operation\gd;
 
 use Drupal\Core\ImageToolkit\ImageToolkitOperationBase;

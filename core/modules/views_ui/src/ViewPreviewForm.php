@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views_ui\ViewPreviewForm.
+ */
+
 namespace Drupal\views_ui;
 
 use Drupal\Core\Form\FormStateInterface;

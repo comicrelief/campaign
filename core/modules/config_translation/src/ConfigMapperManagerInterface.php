@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\config_translation\ConfigMapperManagerInterface.
+ */
+
 namespace Drupal\config_translation;
 
 use Drupal\Component\Plugin\PluginManagerInterface;

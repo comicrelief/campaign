@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\config_translation\Plugin\Menu\LocalTask\ConfigTranslationLocalTask.
+ */
+
 namespace Drupal\config_translation\Plugin\Menu\LocalTask;
 
 use Drupal\Component\Utility\Unicode;

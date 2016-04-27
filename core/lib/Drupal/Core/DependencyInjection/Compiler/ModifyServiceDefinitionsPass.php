@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\DependencyInjection\Compiler\ModifyServiceDefinitionsPass.
+ */
+
 namespace Drupal\Core\DependencyInjection\Compiler;
 
 use Drupal\Core\DrupalKernelInterface;
@@ -19,7 +24,6 @@ class ModifyServiceDefinitionsPass implements CompilerPassInterface {
     if (!$container->has('kernel')) {
       return;
     }
-
     $kernel = $container->get('kernel');
     if (!($kernel instanceof DrupalKernelInterface)) {
       return;

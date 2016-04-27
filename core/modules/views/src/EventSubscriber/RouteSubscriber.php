@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\EventSubscriber\RouteSubscriber.
+ */
+
 namespace Drupal\views\EventSubscriber;
 
 use Drupal\Core\Entity\EntityManagerInterface;

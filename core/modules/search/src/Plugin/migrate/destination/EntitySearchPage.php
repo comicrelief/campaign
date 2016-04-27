@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\search\Plugin\migrate\destination\EntitySearchPage.
+ */
+
 namespace Drupal\search\Plugin\migrate\destination;
 
 use Drupal\Core\Entity\EntityInterface;

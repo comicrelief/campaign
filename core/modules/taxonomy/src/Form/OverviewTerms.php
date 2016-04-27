@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\taxonomy\Form\OverviewTerms.
+ */
+
 namespace Drupal\taxonomy\Form;
 
 use Drupal\Core\Entity\EntityManagerInterface;
@@ -22,7 +27,7 @@ class OverviewTerms extends FormBase {
   protected $moduleHandler;
 
   /**
-   * The term storage handler.
+   * The term storage controller.
    *
    * @var \Drupal\taxonomy\TermStorageInterface
    */

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\language\Tests\LanguageNegotiationContentEntityTest.
+ */
+
 namespace Drupal\language\Tests;
 
 use Drupal\Component\Render\FormattableMarkup;

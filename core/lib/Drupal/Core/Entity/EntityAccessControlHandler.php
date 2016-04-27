@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\EntityAccessControlHandler.
+ */
+
 namespace Drupal\Core\Entity;
 
 use Drupal\Core\Access\AccessResult;
@@ -35,16 +40,6 @@ class EntityAccessControlHandler extends EntityHandlerBase implements EntityAcce
   protected $entityType;
 
   /**
-   * Allows to grant access to just the labels.
-   *
-   * By default, the "view label" operation falls back to "view". Set this to
-   * TRUE to allow returning different access when just listing entity labels.
-   *
-   * @var bool
-   */
-  protected $viewLabelOperation = FALSE;
-
-  /**
    * Constructs an access control handler instance.
    *
    * @param \Drupal\Core\Entity\EntityTypeInterface $entity_type
@@ -61,10 +56,6 @@ class EntityAccessControlHandler extends EntityHandlerBase implements EntityAcce
   public function access(EntityInterface $entity, $operation, AccountInterface $account = NULL, $return_as_object = FALSE) {
     $account = $this->prepareUser($account);
     $langcode = $entity->language()->getId();
-
-    if ($operation === 'view label' && $this->viewLabelOperation == FALSE) {
-      $operation = 'view';
-    }
 
     if (($return = $this->getCache($entity->uuid(), $operation, $langcode, $account)) !== NULL) {
       // Cache hit, no work necessary.
@@ -133,8 +124,7 @@ class EntityAccessControlHandler extends EntityHandlerBase implements EntityAcce
    * @param \Drupal\Core\Entity\EntityInterface $entity
    *   The entity for which to check access.
    * @param string $operation
-   *   The entity operation. Usually one of 'view', 'view label', 'update' or
-   *   'delete'.
+   *   The entity operation. Usually one of 'view', 'update' or 'delete'.
    * @param \Drupal\Core\Session\AccountInterface $account
    *   The user for which to check access.
    *
@@ -143,7 +133,7 @@ class EntityAccessControlHandler extends EntityHandlerBase implements EntityAcce
    */
   protected function checkAccess(EntityInterface $entity, $operation, AccountInterface $account) {
     if ($operation == 'delete' && $entity->isNew()) {
-      return AccessResult::forbidden()->addCacheableDependency($entity);
+      return AccessResult::forbidden()->cacheUntilEntityChanges($entity);
     }
     if ($admin_permission = $this->entityType->getAdminPermission()) {
       return AccessResult::allowedIfHasPermission($account, $this->entityType->getAdminPermission());

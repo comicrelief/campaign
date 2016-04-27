@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\help_test\SupernovaGenerator.
+ */
+
 namespace Drupal\help_test;
 
 use Drupal\Core\Routing\UrlGeneratorInterface;

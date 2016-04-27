@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\filter\Plugin\FilterInterface.
+ */
+
 namespace Drupal\filter\Plugin;
 
 use Drupal\Component\Plugin\PluginInspectionInterface;

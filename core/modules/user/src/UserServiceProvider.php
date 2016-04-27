@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\UserServiceProvider.
+ */
+
 namespace Drupal\user;
 
 use Drupal\Core\DependencyInjection\ServiceModifierInterface;

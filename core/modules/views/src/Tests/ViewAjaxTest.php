@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Tests\ViewAjaxTest.
+ */
+
 namespace Drupal\views\Tests;
 
 use Drupal\Component\Serialization\Json;

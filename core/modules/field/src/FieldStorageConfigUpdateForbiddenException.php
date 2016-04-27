@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\field\FieldStorageConfigUpdateForbiddenException.
+ */
+
 namespace Drupal\field;
 
 use Drupal\Core\Field\FieldException;

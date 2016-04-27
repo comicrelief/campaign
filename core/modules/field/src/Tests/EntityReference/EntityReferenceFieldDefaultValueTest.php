@@ -1,12 +1,15 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\field\Tests\EntityReference\EntityReferenceFieldDefaultValueTest.
+ */
+
 namespace Drupal\field\Tests\EntityReference;
 
 use Drupal\Component\Utility\Unicode;
 use Drupal\config\Tests\SchemaCheckTestTrait;
-use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Entity\FieldStorageConfig;
-use Drupal\node\Entity\Node;
 use Drupal\simpletest\WebTestBase;
 
 /**
@@ -52,14 +55,14 @@ class EntityReferenceFieldDefaultValueTest extends WebTestBase {
     $referenced_node = $this->drupalCreateNode(array('type' => 'referenced_content'));
 
     $field_name = Unicode::strtolower($this->randomMachineName());
-    $field_storage = FieldStorageConfig::create(array(
+    $field_storage = entity_create('field_storage_config', array(
       'field_name' => $field_name,
       'entity_type' => 'node',
       'type' => 'entity_reference',
       'settings' => array('target_type' => 'node'),
     ));
     $field_storage->save();
-    $field = FieldConfig::create([
+    $field = entity_create('field_config', array(
       'field_storage' => $field_storage,
       'bundle' => 'reference_content',
       'settings' => array(
@@ -69,7 +72,7 @@ class EntityReferenceFieldDefaultValueTest extends WebTestBase {
           'sort' => array('field' => '_none'),
         ),
       ),
-    ]);
+    ));
     $field->save();
 
     // Set created node as default_value.
@@ -94,7 +97,7 @@ class EntityReferenceFieldDefaultValueTest extends WebTestBase {
     \Drupal::entityManager()->clearCachedFieldDefinitions();
 
     // Create a new node to check that UUID has been converted to numeric ID.
-    $new_node = Node::create(['type' => 'reference_content']);
+    $new_node = entity_create('node', array('type' => 'reference_content'));
     $this->assertEqual($new_node->get($field_name)->offsetGet(0)->target_id, $referenced_node->id());
 
     // Ensure that the entity reference config schemas are correct.
@@ -115,7 +118,7 @@ class EntityReferenceFieldDefaultValueTest extends WebTestBase {
     $referenced_node_type2 = $this->drupalCreateContentType(array('type' => 'referenced_config_to_preserve'));
 
     $field_name = Unicode::strtolower($this->randomMachineName());
-    $field_storage = FieldStorageConfig::create(array(
+    $field_storage = entity_create('field_storage_config', array(
       'field_name' => $field_name,
       'entity_type' => 'node',
       'type' => 'entity_reference',
@@ -123,7 +126,7 @@ class EntityReferenceFieldDefaultValueTest extends WebTestBase {
       'cardinality' => FieldStorageConfig::CARDINALITY_UNLIMITED,
     ));
     $field_storage->save();
-    $field = FieldConfig::create([
+    $field = entity_create('field_config', array(
       'field_storage' => $field_storage,
       'bundle' => 'reference_content',
       'settings' => array(
@@ -132,7 +135,7 @@ class EntityReferenceFieldDefaultValueTest extends WebTestBase {
           'sort' => array('field' => '_none'),
         ),
       ),
-    ]);
+    ));
     $field->save();
 
     // Set created node as default_value.

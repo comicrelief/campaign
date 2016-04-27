@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\EntityReferenceSelection\SelectionPluginManagerInterface.
+ */
+
 namespace Drupal\Core\Entity\EntityReferenceSelection;
 
 use Drupal\Component\Plugin\PluginManagerInterface;

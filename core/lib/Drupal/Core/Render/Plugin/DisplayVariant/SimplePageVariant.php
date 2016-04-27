@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Render\Plugin\DisplayVariant\SimplePageVariant.
+ */
+
 namespace Drupal\Core\Render\Plugin\DisplayVariant;
 
 use Drupal\Core\Display\PageVariantInterface;

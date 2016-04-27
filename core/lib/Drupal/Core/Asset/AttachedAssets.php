@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\Core\Asset\AttachedAssets.
+ */
 
 namespace Drupal\Core\Asset;
 

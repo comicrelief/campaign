@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\DisplayPluginCollection.
+ */
+
 namespace Drupal\views;
 
 use Drupal\Component\Plugin\Exception\PluginException;

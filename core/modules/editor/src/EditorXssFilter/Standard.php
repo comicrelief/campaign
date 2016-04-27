@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\editor\EditorXssFilter\Standard.
+ */
+
 namespace Drupal\editor\EditorXssFilter;
 
 use Drupal\Component\Utility\Html;

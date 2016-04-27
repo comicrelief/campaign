@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\menu_ui\MenuForm.
+ */
+
 namespace Drupal\menu_ui;
 
 use Drupal\Component\Utility\NestedArray;

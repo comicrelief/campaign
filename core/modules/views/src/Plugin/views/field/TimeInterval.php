@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Plugin\views\field\TimeInterval.
+ */
+
 namespace Drupal\views\Plugin\views\field;
 
 use Drupal\Core\Datetime\DateFormatterInterface;

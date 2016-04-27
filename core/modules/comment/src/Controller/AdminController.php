@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\comment\Controller\AdminController.
+ */
+
 namespace Drupal\comment\Controller;
 
 use Drupal\Core\Controller\ControllerBase;

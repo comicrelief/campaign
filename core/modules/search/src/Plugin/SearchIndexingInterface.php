@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\search\Plugin\SearchIndexingInterface.
+ */
+
 namespace Drupal\search\Plugin;
 
 /**

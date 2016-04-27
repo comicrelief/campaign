@@ -1,9 +1,14 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\file\Plugin\migrate\process\d6\CckFile.
+ */
+
 namespace Drupal\file\Plugin\migrate\process\d6;
 
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Drupal\migrate\Plugin\MigrationInterface;
+use Drupal\migrate\Entity\MigrationInterface;
 use Drupal\migrate\MigrateExecutableInterface;
 use Drupal\migrate\MigrateSkipRowException;
 use Drupal\migrate\Plugin\MigrateProcessInterface;
@@ -34,7 +39,7 @@ class CckFile extends ProcessPluginBase implements ContainerFactoryPluginInterfa
    *   The plugin ID.
    * @param mixed $plugin_definition
    *   The plugin definition.
-   * @param \Drupal\migrate\Plugin\MigrationInterface $migration
+   * @param \Drupal\migrate\Entity\MigrationInterface $migration
    *   The current migration.
    * @param \Drupal\migrate\Plugin\MigrateProcessInterface $migration_plugin
    *   An instance of the 'migration' process plugin.

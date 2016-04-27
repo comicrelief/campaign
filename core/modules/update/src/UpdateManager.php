@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\update\UpdateManager.
+ */
 
 namespace Drupal\update;
 

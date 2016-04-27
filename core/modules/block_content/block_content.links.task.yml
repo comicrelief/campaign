@@ -7,7 +7,7 @@ block_content.list_sub:
   route_name: entity.block_content.collection
   parent_id: entity.block_content.collection
 entity.block_content_type.collection:
-  title: Block types
+  title: Types
   route_name: entity.block_content_type.collection
   parent_id: entity.block_content.collection
   weight: 1

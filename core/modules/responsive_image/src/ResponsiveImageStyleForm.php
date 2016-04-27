@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\responsive_image\ResponsiveImageStyleForm.
+ */
+
 namespace Drupal\responsive_image;
 
 use Drupal\breakpoint\BreakpointManagerInterface;

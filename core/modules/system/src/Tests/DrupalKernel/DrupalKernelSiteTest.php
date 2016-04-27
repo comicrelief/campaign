@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\DrupalKernel\DrupalKernelSiteTest.
+ */
+
 namespace Drupal\system\Tests\DrupalKernel;
 
 use Drupal\Core\Site\Settings;

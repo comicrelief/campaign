@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Field\Plugin\DataType\FieldItem.
+ */
+
 namespace Drupal\Core\Field\Plugin\DataType;
 
 

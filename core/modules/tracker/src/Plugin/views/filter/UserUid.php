@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\tracker\Plugin\views\filter\UserUid.
+ */
+
 namespace Drupal\tracker\Plugin\views\filter;
 
 use Drupal\user\Plugin\views\filter\Name;

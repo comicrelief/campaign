@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\locale\Tests\LocaleUpdateDevelopmentReleaseTest.
+ */
+
 namespace Drupal\locale\Tests;
 
 use Drupal\simpletest\WebTestBase;

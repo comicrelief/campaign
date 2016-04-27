@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\System\IgnoreReplicaSubscriberTest.
+ */
+
 namespace Drupal\system\Tests\System;
 
 use Drupal\Core\Database\Database;

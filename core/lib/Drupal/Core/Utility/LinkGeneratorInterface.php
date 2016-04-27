@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Utility\LinkGeneratorInterface.
+ */
+
 namespace Drupal\Core\Utility;
 
 use Drupal\Core\Link;

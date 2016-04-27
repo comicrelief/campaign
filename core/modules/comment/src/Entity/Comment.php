@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\comment\Entity\Comment.
+ */
+
 namespace Drupal\comment\Entity;
 
 use Drupal\Component\Utility\Number;
@@ -199,7 +204,8 @@ class Comment extends ContentEntityBase implements CommentInterface {
    * {@inheritdoc}
    */
   public function permalink() {
-    $uri = $this->urlInfo();
+    $entity = $this->getCommentedEntity();
+    $uri = $entity->urlInfo();
     $uri->setOption('fragment', 'comment-' . $this->id());
     return $uri;
   }

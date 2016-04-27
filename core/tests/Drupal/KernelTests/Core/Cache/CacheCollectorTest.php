@@ -1,4 +1,7 @@
 <?php
+/**
+ * @file \Drupal\KernelTests\Core\Cache\CacheCollectorTest.
+ */
 
 namespace Drupal\KernelTests\Core\Cache;
 
@@ -13,6 +16,19 @@ use Symfony\Component\DependencyInjection\Reference;
  * @group Cache
  */
 class CacheCollectorTest extends KernelTestBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public static $modules = ['system'];
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function setUp() {
+    parent::setUp();
+    $this->installSchema('system', ['semaphore']);
+  }
 
   /**
    * {@inheritdoc}

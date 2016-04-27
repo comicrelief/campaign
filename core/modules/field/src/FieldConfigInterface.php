@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\field\FieldConfigInterface.
+ */
+
 namespace Drupal\field;
 
 use Drupal\Core\Config\Entity\ConfigEntityInterface;

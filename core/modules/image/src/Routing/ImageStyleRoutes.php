@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\image\Routing\ImageStyleRoutes.
+ */
+
 namespace Drupal\image\Routing;
 
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;

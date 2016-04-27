@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\ManyToOneHelper.
+ */
+
 namespace Drupal\views;
 
 use Drupal\Core\Form\FormStateInterface;

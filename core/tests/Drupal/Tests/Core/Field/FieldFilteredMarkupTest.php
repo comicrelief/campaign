@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Field\FieldFilteredMarkupTest.
+ */
+
 namespace Drupal\Tests\Core\Field;
 
 use Drupal\Tests\UnitTestCase;

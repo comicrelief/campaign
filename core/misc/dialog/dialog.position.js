@@ -27,7 +27,6 @@
    * @function Drupal.dialog~resetSize
    *
    * @param {jQuery.Event} event
-   *   The event triggered.
    *
    * @fires event:dialogContentResize
    */
@@ -68,10 +67,8 @@
    * @function Drupal.dialog~resetPosition
    *
    * @param {object} options
-   *   Options object.
    *
    * @return {object}
-   *   Altered options object.
    */
   function resetPosition(options) {
     var offsets = displace.offsets;

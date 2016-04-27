@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\TypedData\TypedDataDefinitionTest.
+ */
+
 namespace Drupal\system\Tests\TypedData;
 
 use Drupal\Core\TypedData\ComplexDataDefinitionInterface;

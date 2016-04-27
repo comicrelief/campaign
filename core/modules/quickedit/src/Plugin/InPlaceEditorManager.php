@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\quickedit\Plugin\InPlaceEditorManager.
+ */
+
 namespace Drupal\quickedit\Plugin;
 
 use Drupal\Core\Cache\CacheBackendInterface;

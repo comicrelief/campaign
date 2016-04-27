@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Template\Loader\ThemeRegistryLoader.
+ */
+
 namespace Drupal\Core\Template\Loader;
 
 use Drupal\Core\Theme\Registry;

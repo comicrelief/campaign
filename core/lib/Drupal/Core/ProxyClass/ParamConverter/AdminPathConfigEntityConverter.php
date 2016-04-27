@@ -1,5 +1,9 @@
 <?php
-// @codingStandardsIgnoreFile
+
+/**
+ * @file
+ * Contains \Drupal\Core\ProxyClass\ParamConverter\AdminPathConfigEntityConverter.
+ */
 
 /**
  * This file was generated via php core/scripts/generate-proxy-class.php 'Drupal\Core\ParamConverter\AdminPathConfigEntityConverter' "core/lib/Drupal/Core".

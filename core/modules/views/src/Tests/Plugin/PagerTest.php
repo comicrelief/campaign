@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Tests\Plugin\PagerTest.
+ */
+
 namespace Drupal\views\Tests\Plugin;
 
 use Drupal\system\Tests\Cache\AssertPageCacheContextsAndTagsTrait;
@@ -42,9 +47,6 @@ class PagerTest extends PluginTestBase {
    * @see https://www.drupal.org/node/652712
    */
   public function testStorePagerSettings() {
-    // Show the master display so the override selection is shown.
-    \Drupal::configFactory()->getEditable('views.settings')->set('ui.show.master_display', TRUE)->save();
-
     $admin_user = $this->drupalCreateUser(array('administer views', 'administer site configuration'));
     $this->drupalLogin($admin_user);
     // Test behavior described in
@@ -104,7 +106,7 @@ class PagerTest extends PluginTestBase {
       'pager[type]' => 'mini',
     );
     $this->drupalPostForm('admin/structure/views/nojs/display/test_store_pager_settings/page_1/pager', $edit, t('Apply'));
-    $this->drupalGet('admin/structure/views/view/test_store_pager_settings/edit/page_1');
+    $this->drupalGet('admin/structure/views/view/test_store_pager_settings/edit');
     $this->assertText('Mini', 'Changed pager plugin, should change some text');
 
     $edit = array(

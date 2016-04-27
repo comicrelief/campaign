@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Cache\Context\CalculatedCacheContextInterface.
+ */
+
 namespace Drupal\Core\Cache\Context;
 
 /**

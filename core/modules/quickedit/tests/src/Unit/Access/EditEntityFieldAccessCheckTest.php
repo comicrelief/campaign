@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\quickedit\Unit\Access\EditEntityFieldAccessCheckTest.
+ */
+
 namespace Drupal\Tests\quickedit\Unit\Access;
 
 use Drupal\Core\Access\AccessResult;

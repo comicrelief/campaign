@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\contact\Unit\Plugin\migrate\source\ContactCategoryTest.
+ */
+
 namespace Drupal\Tests\contact\Unit\Plugin\migrate\source;
 
 use Drupal\contact\Plugin\migrate\source\ContactCategory;

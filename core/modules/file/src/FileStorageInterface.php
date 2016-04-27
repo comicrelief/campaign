@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\file\FileStorageInterface.
+ */
+
 namespace Drupal\file;
 
 use Drupal\Core\Entity\ContentEntityStorageInterface;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\comment\Tests\Views\ArgumentUserUIDTest.
+ */
+
 namespace Drupal\comment\Tests\Views;
 
 use Drupal\comment\Entity\Comment;

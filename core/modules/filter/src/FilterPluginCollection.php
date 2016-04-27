@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\filter\FilterPluginCollection.
+ */
+
 namespace Drupal\filter;
 
 use Drupal\Component\Utility\NestedArray;

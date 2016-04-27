@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Block\Annotation\Block.
+ */
+
 namespace Drupal\Core\Block\Annotation;
 
 use Drupal\Component\Annotation\Plugin;
@@ -37,5 +42,12 @@ class Block extends Plugin {
    * @ingroup plugin_translatable
    */
   public $category = '';
+
+  /**
+   * Class used to retrieve derivative definitions of the block.
+   *
+   * @var string
+   */
+  public $derivative = '';
 
 }

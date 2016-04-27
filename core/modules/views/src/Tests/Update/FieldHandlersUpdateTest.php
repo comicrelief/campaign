@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Tests\Update\FieldHandlersUpdateTest.
+ */
+
 namespace Drupal\views\Tests\Update;
 
 use Drupal\system\Tests\Update\UpdatePathTestBase;

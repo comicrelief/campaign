@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Field\Plugin\Field\FieldType\DecimalItem.
+ */
+
 namespace Drupal\Core\Field\Plugin\Field\FieldType;
 
 use Drupal\Core\Field\FieldDefinitionInterface;
@@ -64,21 +69,20 @@ class DecimalItem extends NumericItemBase {
     $element = array();
     $settings = $this->getSettings();
 
+    $range = range(10, 32);
     $element['precision'] = array(
-      '#type' => 'number',
+      '#type' => 'select',
       '#title' => t('Precision'),
-      '#min' => 10,
-      '#max' => 32,
+      '#options' => array_combine($range, $range),
       '#default_value' => $settings['precision'],
       '#description' => t('The total number of digits to store in the database, including those to the right of the decimal.'),
       '#disabled' => $has_data,
     );
-
+    $range = range(0, 10);
     $element['scale'] = array(
-      '#type' => 'number',
+      '#type' => 'select',
       '#title' => t('Scale', array(), array('context' => 'decimal places')),
-      '#min' => 0,
-      '#max' => 10,
+      '#options' => array_combine($range, $range),
       '#default_value' => $settings['scale'],
       '#description' => t('The number of digits to the right of the decimal.'),
       '#disabled' => $has_data,
@@ -148,7 +152,7 @@ class DecimalItem extends NumericItemBase {
     $scale = rand($decimal_digits, $scale);
 
     // @see "Example #1 Calculate a random floating-point number" in
-    // http://php.net/manual/function.mt-getrandmax.php
+    // http://php.net/manual/en/function.mt-getrandmax.php
     $random_decimal = $min + mt_rand() / mt_getrandmax() * ($max - $min);
     $values['value'] = self::truncateDecimal($random_decimal, $scale);
     return $values;

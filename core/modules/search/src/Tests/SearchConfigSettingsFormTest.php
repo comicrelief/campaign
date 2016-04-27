@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\search\Tests\SearchConfigSettingsFormTest.
+ */
+
 namespace Drupal\search\Tests;
 
 use Drupal\Core\Url;

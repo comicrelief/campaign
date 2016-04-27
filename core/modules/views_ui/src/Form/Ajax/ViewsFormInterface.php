@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views_ui\Form\Ajax\ViewsFormInterface.
+ */
+
 namespace Drupal\views_ui\Form\Ajax;
 
 use Drupal\Core\Form\FormInterface;

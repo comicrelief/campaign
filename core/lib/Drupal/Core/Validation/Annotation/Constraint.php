@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Validation\Annotation\Constraint.
+ */
+
 namespace Drupal\Core\Validation\Annotation;
 
 use Drupal\Component\Annotation\Plugin;

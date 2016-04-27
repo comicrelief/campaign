@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Breadcrumb\ChainBreadcrumbBuilderInterface.
+ */
+
 namespace Drupal\Core\Breadcrumb;
 
 /**

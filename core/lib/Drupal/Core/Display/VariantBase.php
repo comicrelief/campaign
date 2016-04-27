@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Display\VariantBase.
+ */
+
 namespace Drupal\Core\Display;
 
 use Drupal\Core\Cache\RefinableCacheableDependencyTrait;

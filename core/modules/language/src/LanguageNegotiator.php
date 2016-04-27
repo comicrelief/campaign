@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\language\LanguageNegotiator.
+ */
+
 namespace Drupal\language;
 
 use Drupal\Component\Plugin\PluginManagerInterface;

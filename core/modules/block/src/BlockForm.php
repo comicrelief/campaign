@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\block\BlockForm.
+ */
+
 namespace Drupal\block;
 
 use Drupal\Component\Utility\Html;
@@ -80,7 +85,7 @@ class BlockForm extends EntityForm {
    * @param \Drupal\Core\Language\LanguageManagerInterface $language
    *   The language manager.
    * @param \Drupal\Core\Extension\ThemeHandlerInterface $theme_handler
-   *   The theme handler.
+   * The theme handler.
    */
   public function __construct(EntityManagerInterface $entity_manager, ExecutableManagerInterface $manager, ContextRepositoryInterface $context_repository, LanguageManagerInterface $language, ThemeHandlerInterface $theme_handler) {
     $this->storage = $entity_manager->getStorage('block');

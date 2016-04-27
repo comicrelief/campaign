@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Condition\ConditionPluginCollection.
+ */
+
 namespace Drupal\Core\Condition;
 
 use Drupal\Component\Plugin\Context\ContextInterface;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Ajax\AjaxCommandsTest.
+ */
+
 namespace Drupal\Tests\Core\Ajax;
 
 use Drupal\Tests\UnitTestCase;

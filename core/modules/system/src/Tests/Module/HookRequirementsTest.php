@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Module\HookRequirementsTest.
+ */
+
 namespace Drupal\system\Tests\Module;
 
 /**

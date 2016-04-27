@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Url.
+ */
+
 namespace Drupal\Core;
 
 use Drupal\Component\Utility\UrlHelper;

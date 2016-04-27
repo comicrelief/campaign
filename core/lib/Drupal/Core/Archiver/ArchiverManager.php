@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Archiver\ArchiverManager.
+ */
+
 namespace Drupal\Core\Archiver;
 
 use Drupal\Component\Plugin\Factory\DefaultFactory;

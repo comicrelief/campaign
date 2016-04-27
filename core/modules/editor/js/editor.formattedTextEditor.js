@@ -11,7 +11,7 @@
  *  - Drupal.editors.magical.attachInlineEditor()
  */
 
-(function ($, Drupal, drupalSettings, _) {
+(function ($, Drupal, drupalSettings) {
 
   'use strict';
 
@@ -228,4 +228,4 @@
 
   });
 
-})(jQuery, Drupal, drupalSettings, _);
+})(jQuery, Drupal, drupalSettings);

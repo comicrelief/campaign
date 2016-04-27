@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Installer\InstallerKernel.
+ */
+
 namespace Drupal\Core\Installer;
 
 use Drupal\Core\DrupalKernel;

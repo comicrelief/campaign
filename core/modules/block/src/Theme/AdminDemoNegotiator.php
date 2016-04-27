@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\block\Theme\AdminDemoNegotiator.
+ */
+
 namespace Drupal\block\Theme;
 
 use Drupal\Core\Routing\RouteMatchInterface;

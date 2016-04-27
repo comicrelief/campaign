@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Field\FieldStorageDefinitionEvent.
+ */
+
 namespace Drupal\Core\Field;
 
 use Symfony\Component\EventDispatcher\GenericEvent;

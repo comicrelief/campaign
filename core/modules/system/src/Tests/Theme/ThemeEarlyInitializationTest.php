@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Theme\ThemeEarlyInitializationTest.
+ */
+
 namespace Drupal\system\Tests\Theme;
 
 use Drupal\simpletest\WebTestBase;

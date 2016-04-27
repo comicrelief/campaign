@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\file\FileStorageSchema.
+ */
+
 namespace Drupal\file;
 
 use Drupal\Core\Entity\Sql\SqlContentEntityStorageSchema;

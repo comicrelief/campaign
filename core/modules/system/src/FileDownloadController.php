@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\FileDownloadController.
+ */
+
 namespace Drupal\system;
 
 use Drupal\Core\Controller\ControllerBase;

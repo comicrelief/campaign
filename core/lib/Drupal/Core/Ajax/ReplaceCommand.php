@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Ajax\ReplaceCommand.
+ */
+
 namespace Drupal\Core\Ajax;
 
 /**

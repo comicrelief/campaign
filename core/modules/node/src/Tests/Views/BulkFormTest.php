@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Tests\Views\BulkFormTest.
+ */
+
 namespace Drupal\node\Tests\Views;
 
 use Drupal\Component\Utility\SafeMarkup;

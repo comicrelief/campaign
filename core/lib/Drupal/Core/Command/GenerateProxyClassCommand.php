@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Command\GenerateProxyClassCommand.
+ */
+
 namespace Drupal\Core\Command;
 
 use Drupal\Component\ProxyBuilder\ProxyBuilder;
@@ -68,7 +73,11 @@ class GenerateProxyClassCommand extends Command {
 
       $file_string = <<<EOF
 <?php
-// @codingStandardsIgnoreFile
+
+/**
+ * @file
+ * Contains \{{ proxy_class_name }}.
+ */
 
 /**
  * This file was generated via php core/scripts/generate-proxy-class.php '$class_name' "$namespace_root".

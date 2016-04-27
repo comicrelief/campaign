@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Component\Plugin\Discovery\DiscoveryTraitTest.
+ */
+
 namespace Drupal\Tests\Component\Plugin\Discovery;
 
 use Drupal\Tests\UnitTestCase;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Tests\NodeSaveTest.
+ */
+
 namespace Drupal\node\Tests;
 
 use Drupal\node\Entity\Node;
@@ -59,7 +64,7 @@ class NodeSaveTest extends NodeTestBase {
       'nid' => $test_nid,
     );
     /** @var \Drupal\node\NodeInterface $node */
-    $node = Node::create($node);
+    $node = entity_create('node', $node);
     $node->enforceIsNew();
 
     $this->assertEqual($node->getOwnerId(), $this->webUser->id());
@@ -84,7 +89,7 @@ class NodeSaveTest extends NodeTestBase {
       'title' => $this->randomMachineName(8),
     );
 
-    Node::create($edit)->save();
+    entity_create('node', $edit)->save();
     $node = $this->drupalGetNodeByTitle($edit['title']);
     $this->assertEqual($node->getCreatedTime(), REQUEST_TIME, 'Creating a node sets default "created" timestamp.');
     $this->assertEqual($node->getChangedTime(), REQUEST_TIME, 'Creating a node sets default "changed" timestamp.');
@@ -113,7 +118,7 @@ class NodeSaveTest extends NodeTestBase {
       'changed' => 979534800, // Drupal 1.0 release.
     );
 
-    Node::create($edit)->save();
+    entity_create('node', $edit)->save();
     $node = $this->drupalGetNodeByTitle($edit['title']);
     $this->assertEqual($node->getCreatedTime(), 280299600, 'Creating a node programmatically uses programmatically set "created" timestamp.');
     $this->assertEqual($node->getChangedTime(), 979534800, 'Creating a node programmatically uses programmatically set "changed" timestamp.');
@@ -139,11 +144,11 @@ class NodeSaveTest extends NodeTestBase {
    */
   function testDeterminingChanges() {
     // Initial creation.
-    $node = Node::create([
+    $node = entity_create('node', array(
       'uid' => $this->webUser->id(),
       'type' => 'article',
       'title' => 'test_changes',
-    ]);
+    ));
     $node->save();
 
     // Update the node without applying changes.

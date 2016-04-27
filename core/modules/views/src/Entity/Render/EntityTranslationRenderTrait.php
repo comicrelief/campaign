@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Entity\Render\EntityTranslationRenderTrait.
+ */
+
 namespace Drupal\views\Entity\Render;
 
 use Drupal\Core\Entity\EntityInterface;

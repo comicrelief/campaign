@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\tour\TourInterface.
+ */
+
 namespace Drupal\tour;
 
 use Drupal\Core\Config\Entity\ConfigEntityInterface;

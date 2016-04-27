@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views_ui\Tests\AreaEntityUITest.
+ */
+
 namespace Drupal\views_ui\Tests;
 
 use Drupal\block\Entity\Block;

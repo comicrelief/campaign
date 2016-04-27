@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\form_test\Form\FormTestTableForm.
+ */
+
 namespace Drupal\form_test\Form;
 
 use Drupal\Core\Form\FormStateInterface;

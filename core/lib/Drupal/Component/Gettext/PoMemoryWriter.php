@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Component\Gettext\PoMemoryWriter.
+ */
+
 namespace Drupal\Component\Gettext;
 
 /**

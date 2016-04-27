@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Common\XssUnitTest.
+ */
+
 namespace Drupal\system\Tests\Common;
 
 use Drupal\Component\Utility\UrlHelper;

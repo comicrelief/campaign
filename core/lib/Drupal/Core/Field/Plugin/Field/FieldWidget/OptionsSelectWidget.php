@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Field\Plugin\Field\FieldWidget\OptionsSelectWidget.
+ */
+
 namespace Drupal\Core\Field\Plugin\Field\FieldWidget;
 
 use Drupal\Component\Utility\Html;
@@ -32,7 +37,7 @@ class OptionsSelectWidget extends OptionsWidgetBase {
     $element += array(
       '#type' => 'select',
       '#options' => $this->getOptions($items->getEntity()),
-      '#default_value' => $this->getSelectedOptions($items),
+      '#default_value' => $this->getSelectedOptions($items, $delta),
       // Do not display a 'multiple' select box if there is only one option.
       '#multiple' => $this->multiple && count($this->options) > 1,
     );

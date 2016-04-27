@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\contact\Plugin\migrate\source\ContactCategory.
+ */
+
 namespace Drupal\contact\Plugin\migrate\source;
 
 use Drupal\migrate\Row;

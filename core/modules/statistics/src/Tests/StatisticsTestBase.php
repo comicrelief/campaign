@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\statistics\Tests\StatisticsTestBase.
+ */
+
 namespace Drupal\statistics\Tests;
 
 use Drupal\simpletest\WebTestBase;

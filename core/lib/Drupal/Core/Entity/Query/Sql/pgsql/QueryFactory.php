@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\Query\Sql\pgsql\QueryFactory.
+ */
+
+
 namespace Drupal\Core\Entity\Query\Sql\pgsql;
 
 use Drupal\Core\Entity\Query\Sql\QueryFactory as BaseQueryFactory;

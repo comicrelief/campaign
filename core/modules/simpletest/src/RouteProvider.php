@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\ProxyClass\Routing\RouteProvider.
+ */
+
 namespace Drupal\simpletest;
 
 use Drupal\Core\Routing\PreloadableRouteProviderInterface;
@@ -8,9 +13,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Rebuilds the router when the provider is instantiated.
- *
- * @todo Move this outside of simpletest namespace to the Drupal\Tests, see
- *   https://www.drupal.org/node/2672762
  */
 class RouteProvider implements PreloadableRouteProviderInterface, PagedRouteProviderInterface {
 

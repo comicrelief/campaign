@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Session\UserSession.
+ */
+
 namespace Drupal\Core\Session;
 
 /**

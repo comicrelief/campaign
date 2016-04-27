@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Archiver\ArchiverInterface.
+ */
+
 namespace Drupal\Core\Archiver;
 
 /**

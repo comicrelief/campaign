@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Field\FormatterBase.
+ */
+
 namespace Drupal\Core\Field;
 
 use Drupal\Core\Form\FormStateInterface;

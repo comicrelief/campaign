@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\aggregator\AggregatorItemViewsData.
+ */
+
 namespace Drupal\aggregator;
 
 use Drupal\views\EntityViewsData;

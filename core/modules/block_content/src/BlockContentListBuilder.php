@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\block_content\BlockContentListBuilder.
+ */
+
 namespace Drupal\block_content;
 
 use Drupal\Core\Entity\EntityInterface;

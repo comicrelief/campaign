@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Cache\PhpBackendFactory.
+ */
+
 namespace Drupal\Core\Cache;
 
 class PhpBackendFactory implements CacheFactoryInterface {

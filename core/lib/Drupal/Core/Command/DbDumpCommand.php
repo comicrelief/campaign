@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Command\DbDumpCommand.
+ */
+
 namespace Drupal\Core\Command;
 
 use Drupal\Component\Utility\Variable;

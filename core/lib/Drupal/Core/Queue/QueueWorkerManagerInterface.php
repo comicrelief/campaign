@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Queue\QueueWorkerManagerInterface.
+ */
+
 namespace Drupal\Core\Queue;
 
 use Drupal\Component\Plugin\PluginManagerInterface;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Asset\LibraryDiscovery.
+ */
+
 namespace Drupal\Core\Asset;
 
 use Drupal\Core\Cache\CacheCollectorInterface;

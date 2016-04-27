@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\config_test\ConfigTestAccessControlHandler.
+ */
+
 namespace Drupal\config_test;
 
 use Drupal\Core\Access\AccessResult;

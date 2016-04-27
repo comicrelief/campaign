@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\system\Unit\Transliteration\MachineNameControllerTest.
+ */
+
 namespace Drupal\Tests\system\Unit\Transliteration;
 
 use Drupal\Tests\UnitTestCase;

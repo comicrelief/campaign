@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\serialization\Encoder\JsonEncoder.
+ */
+
 namespace Drupal\serialization\Encoder;
 
 use Symfony\Component\Serializer\Encoder\DecoderInterface;

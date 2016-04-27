@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Cache\CacheCollector.
+ */
+
 namespace Drupal\Core\Cache;
 
 use Drupal\Component\Utility\Crypt;

@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\Exception\InvalidLinkTemplateException.
+ */
 
 namespace Drupal\Core\Entity\Exception;
 

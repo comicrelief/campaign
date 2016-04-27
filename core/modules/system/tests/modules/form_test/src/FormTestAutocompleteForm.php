@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\form_test\FormTestAutocompleteForm.
+ */
+
 namespace Drupal\form_test;
 
 use Drupal\Core\Form\FormBase;

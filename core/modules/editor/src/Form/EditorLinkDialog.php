@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\editor\Form\EditorLinkDialog.
+ */
+
 namespace Drupal\editor\Form;
 
 use Drupal\Core\Form\FormBase;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\tracker\Access\ViewOwnTrackerAccessCheck.
+ */
+
 namespace Drupal\tracker\Access;
 
 use Drupal\Core\Access\AccessResult;

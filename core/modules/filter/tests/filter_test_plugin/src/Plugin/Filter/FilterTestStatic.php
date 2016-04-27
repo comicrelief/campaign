@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\filter_test_plugin\Plugin\Filter\FilterTestStatic.
+ */
+
 namespace Drupal\filter_test_plugin\Plugin\Filter;
 
 use Drupal\filter\FilterProcessResult;

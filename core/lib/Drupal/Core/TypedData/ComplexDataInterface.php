@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\TypedData\ComplexDataInterface.
+ */
+
 namespace Drupal\Core\TypedData;
 
 /**
@@ -19,14 +24,6 @@ namespace Drupal\Core\TypedData;
  * @ingroup typed_data
  */
 interface ComplexDataInterface extends TraversableTypedDataInterface  {
-
-  /**
-   * Gets the data definition.
-   *
-   * @return \Drupal\Core\TypedData\ComplexDataDefinitionInterface
-   *   The data definition object describing the complex data.
-   */
-  public function getDataDefinition();
 
   /**
    * Gets a property object.

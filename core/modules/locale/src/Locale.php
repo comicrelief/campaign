@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\locale\Locale.
+ */
+
 namespace Drupal\locale;
 
 /**

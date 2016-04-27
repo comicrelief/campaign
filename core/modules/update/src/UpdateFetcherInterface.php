@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\update\UpdateFetcherInterface.
+ */
 
 namespace Drupal\update;
 

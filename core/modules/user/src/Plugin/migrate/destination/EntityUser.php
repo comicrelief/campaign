@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\Plugin\migrate\destination\EntityUser.
+ */
+
 namespace Drupal\user\Plugin\migrate\destination;
 
 use Drupal\Component\Utility\Unicode;
@@ -8,7 +13,7 @@ use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Field\FieldTypePluginManagerInterface;
 use Drupal\Core\Field\Plugin\Field\FieldType\EmailItem;
 use Drupal\Core\Password\PasswordInterface;
-use Drupal\migrate\Plugin\MigrationInterface;
+use Drupal\migrate\Entity\MigrationInterface;
 use Drupal\migrate\MigrateException;
 use Drupal\user\MigratePassword;
 use Drupal\migrate\Plugin\migrate\destination\EntityContentBase;
@@ -38,7 +43,7 @@ class EntityUser extends EntityContentBase {
    *   The plugin_id for the plugin instance.
    * @param mixed $plugin_definition
    *   The plugin implementation definition.
-   * @param \Drupal\migrate\Plugin\MigrationInterface $migration
+   * @param MigrationInterface $migration
    *   The migration.
    * @param EntityStorageInterface $storage
    *   The storage for this entity type.

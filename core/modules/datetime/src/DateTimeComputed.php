@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\datetime\DateTimeComputed.
+ */
+
 namespace Drupal\datetime;
 
 use Drupal\Core\Datetime\DrupalDateTime;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\rest\Plugin\views\row\DataFieldRow.
+ */
+
 namespace Drupal\rest\Plugin\views\row;
 
 use Drupal\Core\Form\FormStateInterface;

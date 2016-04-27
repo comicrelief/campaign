@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Config\Entity\Fixtures\ConfigEntityBaseWithPluginCollections.
+ */
+
 namespace Drupal\Tests\Core\Config\Entity\Fixtures;
 
 use Drupal\Core\Config\Entity\ConfigEntityBase;

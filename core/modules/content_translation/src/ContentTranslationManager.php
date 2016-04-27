@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\content_translation\ContentTranslationManager.
+ */
+
 namespace Drupal\content_translation;
 
 use Drupal\Core\Entity\EntityInterface;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Component\Render\HtmlEscapedText.
+ */
+
 namespace Drupal\Component\Render;
 
 use Drupal\Component\Utility\Html;

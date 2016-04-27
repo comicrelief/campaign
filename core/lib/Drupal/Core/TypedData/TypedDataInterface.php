@@ -1,6 +1,13 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\TypedData\TypedDataInterface.
+ */
+
 namespace Drupal\Core\TypedData;
+
+use Drupal\user;
 
 /**
  * Interface for typed data objects.

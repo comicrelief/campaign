@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Image\ImageInterface.
+ */
+
 namespace Drupal\Core\Image;
 
 /**

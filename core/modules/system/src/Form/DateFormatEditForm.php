@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Form\DateFormatEditForm.
+ */
+
 namespace Drupal\system\Form;
 
 use Drupal\Core\Form\FormStateInterface;

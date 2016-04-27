@@ -1,8 +1,12 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\file\Tests\FileManagedTestBase.
+ */
+
 namespace Drupal\file\Tests;
 
-use Drupal\file\Entity\File;
 use Drupal\file\FileInterface;
 use Drupal\simpletest\WebTestBase;
 
@@ -148,10 +152,10 @@ abstract class FileManagedTestBase extends WebTestBase {
   function createFile($filepath = NULL, $contents = NULL, $scheme = NULL) {
     // Don't count hook invocations caused by creating the file.
     \Drupal::state()->set('file_test.count_hook_invocations', FALSE);
-    $file = File::create([
+    $file = entity_create('file', array(
       'uri' => $this->createUri($filepath, $contents, $scheme),
       'uid' => 1,
-    ]);
+    ));
     $file->save();
     // Write the record directly rather than using the API so we don't invoke
     // the hooks.

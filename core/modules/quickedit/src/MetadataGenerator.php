@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\quickedit\MetadataGenerator.
+ */
+
 namespace Drupal\quickedit;
 
 use Drupal\Component\Plugin\PluginManagerInterface;

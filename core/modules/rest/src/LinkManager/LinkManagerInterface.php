@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\rest\LinkManager\LinkManagerInterface.
+ */
+
 namespace Drupal\rest\LinkManager;
 
 /**

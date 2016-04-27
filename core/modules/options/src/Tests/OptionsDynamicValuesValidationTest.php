@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\options\Tests\OptionsDynamicValuesValidationTest.
+ */
+
 namespace Drupal\options\Tests;
 
 /**

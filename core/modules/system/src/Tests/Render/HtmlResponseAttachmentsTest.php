@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Render\HtmlResponseAttachmentsTest.
+ */
+
 namespace Drupal\system\Tests\Render;
 
 use Drupal\simpletest\WebTestBase;

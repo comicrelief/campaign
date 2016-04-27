@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Component\Gettext\PoWriterInterface.
+ */
+
 namespace Drupal\Component\Gettext;
 
 /**

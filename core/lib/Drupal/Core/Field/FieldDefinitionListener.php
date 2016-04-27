@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Field\FieldDefinitionListener.
+ */
+
 namespace Drupal\Core\Field;
 
 use Drupal\Core\Cache\CacheBackendInterface;

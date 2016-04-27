@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\config\ConfigSubscriber.
+ */
+
 namespace Drupal\config;
 
 use Drupal\Core\Config\ConfigEvents;

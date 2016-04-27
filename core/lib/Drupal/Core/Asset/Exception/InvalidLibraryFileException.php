@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Asset\Exception\InvalidLibraryFileException.
+ */
+
 namespace Drupal\Core\Asset\Exception;
 
 /**

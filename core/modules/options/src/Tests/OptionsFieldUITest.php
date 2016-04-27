@@ -1,8 +1,12 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\options\Tests\OptionsFieldUITest.
+ */
+
 namespace Drupal\options\Tests;
 
-use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\field\Tests\FieldTestBase;
 
@@ -263,16 +267,16 @@ class OptionsFieldUITest extends FieldTestBase {
    */
   protected function createOptionsField($type) {
     // Create a field.
-    FieldStorageConfig::create(array(
+    entity_create('field_storage_config', array(
       'field_name' => $this->fieldName,
       'entity_type' => 'node',
       'type' => $type,
     ))->save();
-    FieldConfig::create([
+    entity_create('field_config', array(
       'field_name' => $this->fieldName,
       'entity_type' => 'node',
       'bundle' => $this->type,
-    ])->save();
+    ))->save();
 
     entity_get_form_display('node', $this->type, 'default')->setComponent($this->fieldName)->save();
 

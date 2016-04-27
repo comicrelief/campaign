@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\field_ui\Form\FieldConfigEditForm.
+ */
+
 namespace Drupal\field_ui\Form;
 
 use Drupal\Core\Entity\EntityForm;

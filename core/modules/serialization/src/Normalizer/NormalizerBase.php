@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\serialization\Normalizer\NormalizerBase.
+ */
+
 namespace Drupal\serialization\Normalizer;
 
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;

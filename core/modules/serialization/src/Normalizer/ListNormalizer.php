@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\serialization\Normalizer\ListNormalizer.
+ */
+
 namespace Drupal\serialization\Normalizer;
 
 /**

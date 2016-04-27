@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\block_content\Controller\BlockContentController.
+ */
+
 namespace Drupal\block_content\Controller;
 
 use Drupal\Core\Controller\ControllerBase;

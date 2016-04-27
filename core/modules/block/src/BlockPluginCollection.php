@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\block\BlockPluginCollection.
+ */
+
 namespace Drupal\block;
 
 use Drupal\Component\Plugin\Exception\PluginException;

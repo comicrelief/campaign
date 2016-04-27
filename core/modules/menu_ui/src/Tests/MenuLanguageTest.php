@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\menu_ui\Tests\MenuLanguageTest.
+ *
+ * Tests for menu_ui language settings.
+ */
+
 namespace Drupal\menu_ui\Tests;
 
 use Drupal\Component\Utility\Unicode;
@@ -7,8 +14,6 @@ use Drupal\language\Entity\ConfigurableLanguage;
 use Drupal\language\Entity\ContentLanguageSettings;
 
 /**
- * Tests for menu_ui language settings.
- *
  * Create menu and menu links in non-English language, and edit language
  * settings.
  *

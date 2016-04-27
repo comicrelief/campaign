@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\search\Tests\SearchAdvancedSearchFormTest.
+ */
+
 namespace Drupal\search\Tests;
 
 /**

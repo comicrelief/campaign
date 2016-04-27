@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\Component\Render\PlainTextOutput.
+ */
 
 namespace Drupal\Component\Render;
 

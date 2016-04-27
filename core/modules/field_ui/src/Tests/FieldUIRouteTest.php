@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\field_ui\Tests\FieldUIRouteTest.
+ */
+
 namespace Drupal\field_ui\Tests;
 
 use Drupal\Core\Entity\Entity\EntityFormMode;

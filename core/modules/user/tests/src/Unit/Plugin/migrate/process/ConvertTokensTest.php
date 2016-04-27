@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\user\Unit\Plugin\migrate\process\ConvertTokensTest.
+ */
+
 namespace Drupal\Tests\user\Unit\Plugin\migrate\process;
 
 use Drupal\user\Plugin\migrate\process\ConvertTokens;

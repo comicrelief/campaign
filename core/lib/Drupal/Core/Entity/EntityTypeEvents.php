@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\EntityTypeEvents.
+ */
+
 namespace Drupal\Core\Entity;
 
 /**

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\UserStorageInterface.
+ */
+
 namespace Drupal\user;
 
 use Drupal\Core\Entity\ContentEntityStorageInterface;

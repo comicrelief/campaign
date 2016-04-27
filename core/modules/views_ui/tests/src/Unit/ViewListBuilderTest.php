@@ -7,6 +7,7 @@
 
 namespace Drupal\Tests\views_ui\Unit;
 
+use Drupal\Component\Utility\SafeMarkup;
 use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Tests\UnitTestCase;
@@ -167,6 +168,8 @@ class ViewListBuilderTest extends UnitTestCase {
     $display_paths = $row['data']['path']['data']['#items'];
     // These values will be escaped by Twig when rendered.
     $this->assertEquals('/test_page, /<object>malformed_path</object>, /<script>alert("placeholder_page/%")</script>', implode(', ', $display_paths));
+    $this->assertFalse(SafeMarkup::isSafe('/<object>malformed_path</object>'), '/<script>alert("/<object>malformed_path</object> is not marked safe.');
+    $this->assertFalse(SafeMarkup::isSafe('/<script>alert("placeholder_page/%")'), '/<script>alert("/<script>alert("placeholder_page/%") is not marked safe.');
   }
 
 }

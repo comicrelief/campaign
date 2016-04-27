@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Menu\DefaultMenuLinkTreeManipulators.
+ */
+
 namespace Drupal\Core\Menu;
 
 use Drupal\Core\Access\AccessManagerInterface;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\twig_theme_test\TwigThemeTestController.
+ */
+
 namespace Drupal\twig_theme_test;
 
 use Drupal\Core\Template\Attribute;

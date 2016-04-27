@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\RevisionableInterface.
+ */
+
 namespace Drupal\Core\Entity;
 
 /**

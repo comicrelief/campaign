@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Form\EventSubscriber\FormAjaxSubscriberTest.
+ */
+
 namespace Drupal\Tests\Core\Form\EventSubscriber;
 
 use Drupal\Core\DependencyInjection\ContainerBuilder;

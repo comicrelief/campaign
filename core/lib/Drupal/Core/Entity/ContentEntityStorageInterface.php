@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\ContentEntityStorageInterface.
+ */
+
 namespace Drupal\Core\Entity;
 
 /**

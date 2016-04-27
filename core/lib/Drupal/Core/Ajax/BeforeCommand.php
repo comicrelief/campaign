@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Ajax\BeforeCommand.
+ */
+
 namespace Drupal\Core\Ajax;
 
 /**

@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\Core\Render\RenderContext.
+ */
 
 namespace Drupal\Core\Render;
 

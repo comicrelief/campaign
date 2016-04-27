@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\KernelTests\Core\Path\AliasStorageTest.
+ */
+
 namespace Drupal\KernelTests\Core\Path;
 
 use Drupal\Core\Language\LanguageInterface;
@@ -25,6 +30,7 @@ class AliasStorageTest extends KernelTestBase {
   protected function setUp() {
     parent::setUp();
 
+    $this->installSchema('system', 'url_alias');
     $this->storage = $this->container->get('path.alias_storage');
   }
 

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\TypedData\EntityDataDefinition.
+ */
+
 namespace Drupal\Core\Entity\TypedData;
 
 use Drupal\Core\TypedData\ComplexDataDefinitionBase;

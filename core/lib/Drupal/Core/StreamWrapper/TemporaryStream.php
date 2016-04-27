@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\StreamWrapper\TemporaryStream.
+ */
+
 namespace Drupal\Core\StreamWrapper;
 
 use \Drupal\Core\Url;

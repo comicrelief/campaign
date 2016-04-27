@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\block\BlockInterface.
+ */
+
 namespace Drupal\block;
 
 use Drupal\Core\Config\Entity\ConfigEntityInterface;

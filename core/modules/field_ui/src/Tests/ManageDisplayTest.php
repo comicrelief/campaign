@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\field_ui\Tests\ManageDisplayTest.
+ */
+
 namespace Drupal\field_ui\Tests;
 
 use Drupal\Component\Utility\Unicode;

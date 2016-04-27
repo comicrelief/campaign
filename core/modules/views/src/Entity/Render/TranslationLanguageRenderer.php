@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Entity\Render\TranslationLanguageRenderer.
+ */
+
 namespace Drupal\views\Entity\Render;
 
 use Drupal\Core\Language\LanguageInterface;

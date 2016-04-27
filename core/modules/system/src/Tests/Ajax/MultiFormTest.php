@@ -1,10 +1,13 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Ajax\MultiFormTest.
+ */
+
 namespace Drupal\system\Tests\Ajax;
 
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
-use Drupal\field\Entity\FieldConfig;
-use Drupal\field\Entity\FieldStorageConfig;
 
 /**
  * Tests that AJAX-enabled forms work when multiple instances of the same form
@@ -28,17 +31,17 @@ class MultiFormTest extends AjaxTestBase {
 
     // Create a multi-valued field for 'page' nodes to use for Ajax testing.
     $field_name = 'field_ajax_test';
-    FieldStorageConfig::create(array(
+    entity_create('field_storage_config', array(
       'entity_type' => 'node',
       'field_name' => $field_name,
       'type' => 'text',
       'cardinality' => FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED,
     ))->save();
-    FieldConfig::create([
+    entity_create('field_config', array(
       'field_name' => $field_name,
       'entity_type' => 'node',
       'bundle' => 'page',
-    ])->save();
+    ))->save();
     entity_get_form_display('node', 'page', 'default')
       ->setComponent($field_name, array('type' => 'text_textfield'))
       ->save();

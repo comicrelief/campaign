@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\toolbar\Tests\ToolbarMenuTranslationTest.
+ */
+
 namespace Drupal\toolbar\Tests;
 
 use Drupal\simpletest\WebTestBase;

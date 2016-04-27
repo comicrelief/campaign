@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\aggregator\FeedHtmlRouteProvider.
+ */
+
 namespace Drupal\aggregator;
 
 use Drupal\Core\Entity\EntityTypeInterface;

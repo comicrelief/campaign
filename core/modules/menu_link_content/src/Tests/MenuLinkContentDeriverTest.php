@@ -1,7 +1,13 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\menu_link_content\Tests\MenuLinkContentDeriverTest.
+ */
+
 namespace Drupal\menu_link_content\Tests;
 
+use Drupal\Component\Utility\SafeMarkup;
 use Drupal\Core\Menu\MenuTreeParameters;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\menu_link_content\Entity\MenuLinkContent;
@@ -27,6 +33,7 @@ class MenuLinkContentDeriverTest extends KernelTestBase {
     parent::setUp();
 
     $this->installEntitySchema('menu_link_content');
+    $this->installSchema('system', 'router');
   }
 
   /**
@@ -66,6 +73,7 @@ class MenuLinkContentDeriverTest extends KernelTestBase {
     $title = $tree_element->link->getTitle();
     $this->assertFalse($title instanceof TranslatableMarkup);
     $this->assertIdentical('<script>alert("Welcome to the discovered jungle!")</script>', $title);
+    $this->assertFalse(SafeMarkup::isSafe($title));
 
     // Create a hierarchy.
     \Drupal::state()->set('menu_link_content_dynamic_route.routes', [

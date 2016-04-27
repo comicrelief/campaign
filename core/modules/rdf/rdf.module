@@ -7,7 +7,6 @@
 
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Template\Attribute;
-use Drupal\rdf\Entity\RdfMapping;
 
 /**
  * Implements hook_help().
@@ -74,7 +73,7 @@ function rdf_get_mapping($entity_type, $bundle) {
 
   // If not found, create a fresh mapping object.
   if (!$mapping) {
-    $mapping = RdfMapping::create(array(
+    $mapping = entity_create('rdf_mapping', array(
       'targetEntityType' => $entity_type,
       'bundle' => $bundle,
     ));

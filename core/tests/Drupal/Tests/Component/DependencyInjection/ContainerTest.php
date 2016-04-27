@@ -9,6 +9,7 @@ namespace Drupal\Tests\Component\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use Symfony\Component\DependencyInjection\Exception\LogicException;
 use Prophecy\Argument;
 
 /**
@@ -131,7 +132,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase {
    *
    * @covers ::setParameter
    *
-   * @expectedException \Symfony\Component\DependencyInjection\Exception\LogicException
+   * @expectedException LogicException
    */
   public function testSetParameterWithFrozenContainer() {
     $this->container = new $this->containerClass($this->containerDefinition);

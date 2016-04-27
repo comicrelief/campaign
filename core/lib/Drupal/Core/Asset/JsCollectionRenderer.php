@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Asset\JsCollectionRenderer.
+ */
+
 namespace Drupal\Core\Asset;
 
 use Drupal\Component\Serialization\Json;

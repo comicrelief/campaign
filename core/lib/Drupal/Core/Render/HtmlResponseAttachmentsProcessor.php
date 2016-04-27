@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\Core\Render\HtmlResponseAttachmentsProcessor.
+ */
 
 namespace Drupal\Core\Render;
 

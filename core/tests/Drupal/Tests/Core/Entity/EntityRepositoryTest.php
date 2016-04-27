@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Entity\EntityRepositoryTest.
+ */
+
 namespace Drupal\Tests\Core\Entity;
 
 use Drupal\Core\Entity\ContentEntityInterface;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Config\StorageCacheInterface.
+ */
+
 namespace Drupal\Core\Config;
 
 /**

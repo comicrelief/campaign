@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Extension\ModuleHandlerInterface.
+ */
+
 namespace Drupal\Core\Extension;
 
 /**

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\image\ImageEffectBase.
+ */
+
 namespace Drupal\image;
 
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;

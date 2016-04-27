@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Access\CsrfTokenGenerator.
+ */
+
 namespace Drupal\Core\Access;
 
 use Drupal\Component\Utility\Crypt;

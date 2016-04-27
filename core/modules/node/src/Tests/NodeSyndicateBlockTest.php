@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Tests\NodeSyndicateBlockTest.
+ */
+
 namespace Drupal\node\Tests;
 
 /**

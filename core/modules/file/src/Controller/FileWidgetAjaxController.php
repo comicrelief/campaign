@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\file\Controller\FileWidgetAjaxController.
+ */
+
 namespace Drupal\file\Controller;
 
 use Symfony\Component\HttpFoundation\JsonResponse;

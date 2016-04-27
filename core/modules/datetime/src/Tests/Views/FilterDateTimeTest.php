@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\datetime\Tests\Views\FilterDateTimeTest.
+ */
+
 namespace Drupal\datetime\Tests\Views;
 
 use Drupal\views\Views;

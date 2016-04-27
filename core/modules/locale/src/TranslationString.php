@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\locale\TranslationString.
+ */
+
 namespace Drupal\locale;
 
 /**

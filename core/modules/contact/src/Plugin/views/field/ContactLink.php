@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\contact\Plugin\views\field\ContactLink.
+ */
+
 namespace Drupal\contact\Plugin\views\field;
 
 use Drupal\Core\Form\FormStateInterface;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\block\Tests\BlockLanguageCacheTest.
+ */
+
 namespace Drupal\block\Tests;
 
 use Drupal\Component\Utility\Unicode;

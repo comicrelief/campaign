@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Plugin\views\ViewsPluginInterface.
+ */
+
 namespace Drupal\views\Plugin\views;
 
 use Drupal\Component\Plugin\DerivativeInspectionInterface;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Controller\NodeViewController.
+ */
+
 namespace Drupal\node\Controller;
 
 use Drupal\Core\Entity\EntityInterface;

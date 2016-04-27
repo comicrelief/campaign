@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\ContentEntityType.
+ */
+
 namespace Drupal\Core\Entity;
 
 /**

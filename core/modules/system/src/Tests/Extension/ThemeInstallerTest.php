@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Extension\ThemeInstallerTest.
+ */
+
 namespace Drupal\system\Tests\Extension;
 
 use Drupal\Core\DependencyInjection\ContainerBuilder;

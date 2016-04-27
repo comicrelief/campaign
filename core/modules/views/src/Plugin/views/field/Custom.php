@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Plugin\views\field\Custom.
+ */
+
 namespace Drupal\views\Plugin\views\field;
 
 use Drupal\Component\Utility\Xss;

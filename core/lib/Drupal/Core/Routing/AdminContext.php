@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Routing\AdminContext.
+ */
+
 namespace Drupal\Core\Routing;
 
 use Symfony\Component\Routing\Route;

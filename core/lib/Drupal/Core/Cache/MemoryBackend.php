@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Cache\MemoryBackend.
+ */
+
 namespace Drupal\Core\Cache;
 
 /**

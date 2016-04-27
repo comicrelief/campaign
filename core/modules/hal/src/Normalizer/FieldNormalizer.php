@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\hal\Normalizer\FieldNormalizer.
+ */
+
 namespace Drupal\hal\Normalizer;
 
 use Drupal\Component\Utility\NestedArray;

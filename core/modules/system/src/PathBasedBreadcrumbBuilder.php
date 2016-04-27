@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\PathBasedBreadcrumbBuilder.
+ */
+
 namespace Drupal\system;
 
 use Drupal\Component\Utility\Unicode;

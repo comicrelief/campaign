@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views_ui\Tests\ExposedFormUITest.
+ */
+
 namespace Drupal\views_ui\Tests;
 
 use Drupal\views\Entity\View;

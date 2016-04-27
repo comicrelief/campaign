@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\aggregator\FeedStorageSchema.
+ */
+
 namespace Drupal\aggregator;
 
 use Drupal\Core\Entity\Sql\SqlContentEntityStorageSchema;

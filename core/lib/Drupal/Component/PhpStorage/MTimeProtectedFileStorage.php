@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Component\PhpStorage\MTimeProtectedFileStorage.
+ */
 namespace Drupal\Component\PhpStorage;
 
 /**

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Component\Utility\EnvironmentTest.
+ */
+
 namespace Drupal\Tests\Component\Utility;
 
 use Drupal\Component\Utility\Environment;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\comment\Plugin\Field\FieldWidget\CommentWidget.
+ */
+
 namespace Drupal\comment\Plugin\Field\FieldWidget;
 
 use Drupal\comment\Plugin\Field\FieldType\CommentItemInterface;

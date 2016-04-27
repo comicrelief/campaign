@@ -1,8 +1,13 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\migrate\Event\MigrateIdMapMessageEvent.
+ */
+
 namespace Drupal\migrate\Event;
 
-use Drupal\migrate\Plugin\MigrationInterface;
+use Drupal\migrate\Entity\MigrationInterface;
 use Symfony\Component\EventDispatcher\Event;
 
 /**
@@ -13,7 +18,7 @@ class MigrateIdMapMessageEvent extends Event {
   /**
    * Migration entity.
    *
-   * @var \Drupal\migrate\Plugin\MigrationInterface
+   * @var \Drupal\migrate\Entity\MigrationInterface
    */
   protected $migration;
 
@@ -41,7 +46,7 @@ class MigrateIdMapMessageEvent extends Event {
   /**
    * Constructs a post-save event object.
    *
-   * @param \Drupal\migrate\Plugin\MigrationInterface $migration
+   * @param \Drupal\migrate\Entity\MigrationInterface $migration
    *   Migration entity.
    * @param array $source_id_values
    *   Values represent the source ID.
@@ -60,7 +65,7 @@ class MigrateIdMapMessageEvent extends Event {
   /**
    * Gets the migration entity.
    *
-   * @return \Drupal\migrate\Plugin\MigrationInterface
+   * @return \Drupal\migrate\Entity\MigrationInterface
    *   The migration entity involved.
    */
   public function getMigration() {

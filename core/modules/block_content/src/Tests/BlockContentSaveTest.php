@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\block_content\Tests\BlockContentSaveTest.
+ */
+
 namespace Drupal\block_content\Tests;
 
 use Drupal\block_content\Entity\BlockContent;
@@ -41,7 +46,7 @@ class BlockContentSaveTest extends BlockContentTestBase {
       'type' => 'basic',
       'id' => $test_id
     );
-    $block = BlockContent::create($block_array);
+    $block = entity_create('block_content', $block_array);
     $block->enforceIsNew(TRUE);
     $block->save();
 

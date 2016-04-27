@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\quickedit\Ajax\FieldFormCommand.
+ */
+
 namespace Drupal\quickedit\Ajax;
 
 use Drupal\Core\Ajax\BaseCommand;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\KernelTests\Core\Common\DrupalSetMessageTest.
+ */
+
 namespace Drupal\KernelTests\Core\Common;
 
 use Drupal\KernelTests\KernelTestBase;

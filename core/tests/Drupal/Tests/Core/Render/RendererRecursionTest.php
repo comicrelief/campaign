@@ -1,6 +1,13 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Render\RendererRecursionTest.
+ */
+
 namespace Drupal\Tests\Core\Render;
+
+use Drupal\Core\Render\Element;
 
 /**
  * @coversDefaultClass \Drupal\Core\Render\Renderer

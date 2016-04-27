@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Annotation\ViewsDisplayExtender.
+ */
+
 namespace Drupal\views\Annotation;
 
 /**

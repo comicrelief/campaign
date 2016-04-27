@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\quickedit\QuickEditController.
+ */
+
 namespace Drupal\quickedit;
 
 use Drupal\Core\Controller\ControllerBase;

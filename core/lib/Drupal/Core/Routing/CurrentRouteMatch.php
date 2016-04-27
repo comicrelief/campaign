@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Routing\CurrentRouteMatch.
+ */
+
 namespace Drupal\Core\Routing;
 
 use Symfony\Component\HttpFoundation\Request;
@@ -8,7 +13,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 /**
  * Default object for current_route_match service.
  */
-class CurrentRouteMatch implements ResettableStackedRouteMatchInterface {
+class CurrentRouteMatch implements RouteMatchInterface, StackedRouteMatchInterface {
 
   /**
    * The related request stack.
@@ -28,7 +33,7 @@ class CurrentRouteMatch implements ResettableStackedRouteMatchInterface {
    * Constructs a CurrentRouteMatch object.
    *
    * @param \Symfony\Component\HttpFoundation\RequestStack $request_stack
-   *   The request stack.
+   *  The request stack.
    */
   public function __construct(RequestStack $request_stack) {
     $this->requestStack = $request_stack;
@@ -111,13 +116,6 @@ class CurrentRouteMatch implements ResettableStackedRouteMatchInterface {
       }
     }
     return $route_match;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function resetRouteMatch() {
-    $this->routeMatches = new \SplObjectStorage();
   }
 
   /**

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views_ui\ViewDuplicateForm.
+ */
+
 namespace Drupal\views_ui;
 
 use Drupal\Core\Form\FormStateInterface;

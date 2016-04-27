@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Tests\ViewRenderTest.
+ */
+
 namespace Drupal\views\Tests;
 
 use Drupal\views\Views;

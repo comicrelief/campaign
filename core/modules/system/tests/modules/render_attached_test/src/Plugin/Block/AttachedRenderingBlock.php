@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\render_attached_test\Plugin\Block\AttachedRenderingBlock.
+ */
+
 namespace Drupal\render_attached_test\Plugin\Block;
 
 use Drupal\render_attached_test\Controller\RenderAttachedTestController;

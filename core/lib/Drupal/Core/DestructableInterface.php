@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\DestructableInterface.
+ */
+
 namespace Drupal\Core;
 
 /**

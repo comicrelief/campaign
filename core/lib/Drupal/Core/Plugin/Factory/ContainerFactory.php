@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\Core\Plugin\Factory\ContainerFactory.
+ */
 
 namespace Drupal\Core\Plugin\Factory;
 

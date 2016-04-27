@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Config\Entity\ConfigDependencyManager.
+ */
+
 namespace Drupal\Core\Config\Entity;
 
 use Drupal\Component\Graph\Graph;

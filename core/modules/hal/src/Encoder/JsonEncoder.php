@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\hal\Encoder\JsonEncoder.
+ */
+
 namespace Drupal\hal\Encoder;
 
 use Symfony\Component\Serializer\Encoder\JsonEncoder as SymfonyJsonEncoder;

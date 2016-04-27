@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\DependencyInjection\ServiceProviderBase.
+ */
+
 namespace Drupal\Core\DependencyInjection;
 
 /**

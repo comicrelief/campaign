@@ -7,7 +7,6 @@
 
 namespace Drupal\Tests\migrate\Unit;
 
-use Drupal\migrate\Plugin\MigrationInterface;
 use Drupal\migrate\Plugin\migrate\source\SqlBase;
 use Drupal\Tests\UnitTestCase;
 
@@ -62,7 +61,7 @@ class SqlBaseTest extends UnitTestCase {
       ->willReturn($idmap_connection);
 
     // Setup a migration entity.
-    $migration = $this->getMock(MigrationInterface::class);
+    $migration = $this->getMock('Drupal\migrate\Entity\MigrationInterface');
     $migration->expects($with_id_map ? $this->once() : $this->never())
       ->method('getIdMap')
       ->willReturn($id_map_is_sql ? $sql : NULL);
@@ -108,33 +107,16 @@ class SqlBaseTest extends UnitTestCase {
         FALSE,
         TRUE,
         TRUE,
-        ['driver' => 'mysql', 'username' => 'different_from_map', 'password' => 'different_from_map'],
-        ['driver' => 'mysql', 'username' => 'different_from_source', 'password' => 'different_from_source'],
+        ['username' => 'different_from_map', 'password' => 'different_from_map'],
+        ['username' => 'different_from_source', 'password' => 'different_from_source'],
       ],
       // Returns true because source and id map connection options are the same.
       [
         TRUE,
         TRUE,
         TRUE,
-        ['driver' => 'pgsql', 'username' => 'same_value', 'password' => 'same_value'],
-        ['driver' => 'pgsql', 'username' => 'same_value', 'password' => 'same_value'],
-      ],
-      // Returns false because driver is sqlite and the databases are not the
-      // same.
-      [
-        FALSE,
-        TRUE,
-        TRUE,
-        ['driver' => 'sqlite', 'database' => '1.sqlite', 'username' => '', 'password' => ''],
-        ['driver' => 'sqlite', 'database' => '2.sqlite', 'username' => '', 'password' => ''],
-      ],
-      // Returns false because driver is not the same.
-      [
-        FALSE,
-        TRUE,
-        TRUE,
-        ['driver' => 'pgsql', 'username' => 'same_value', 'password' => 'same_value'],
-        ['driver' => 'mysql', 'username' => 'same_value', 'password' => 'same_value'],
+        ['username' => 'same_value', 'password' => 'same_value'],
+        ['username' => 'same_value', 'password' => 'same_value'],
       ],
     ];
   }

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Config\Entity\ConfigEntityStorageTest.
+ */
+
 namespace Drupal\Tests\Core\Config\Entity {
 
 use Drupal\Core\Cache\Cache;
@@ -849,8 +854,7 @@ class ConfigEntityStorageTest extends UnitTestCase {
    * @covers ::doDelete
    */
   public function testDelete() {
-    // Dependencies are tested in
-    // \Drupal\Tests\config\Kernel\ConfigDependencyTest.
+    // Dependencies are tested in \Drupal\config\Tests\ConfigDependencyTest.
     $this->configManager->expects($this->any())
       ->method('getConfigEntitiesToChangeOnDependencyRemoval')
       ->willReturn(['update' => [], 'delete' => [], 'unchanged' => []]);

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\NodeGrantDatabaseStorage.
+ */
+
 namespace Drupal\node;
 
 use Drupal\Core\Access\AccessResult;
@@ -11,7 +16,7 @@ use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Session\AccountInterface;
 
 /**
- * Defines a storage handler class that handles the node grants system.
+ * Defines a controller class that handles the node grants system.
  *
  * This is used to build node query access.
  *
@@ -71,7 +76,7 @@ class NodeGrantDatabaseStorage implements NodeGrantDatabaseStorageInterface {
       // Return the equivalent of the default grant, defined by
       // self::writeDefault().
       if ($operation === 'view') {
-        return AccessResult::allowedIf($node->isPublished())->addCacheableDependency($node);
+        return AccessResult::allowedIf($node->isPublished())->cacheUntilEntityChanges($node);
       }
       else {
         return AccessResult::neutral();

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Form\NodeTypeDeleteConfirm.
+ */
+
 namespace Drupal\node\Form;
 
 use Drupal\Core\Entity\Query\QueryFactory;

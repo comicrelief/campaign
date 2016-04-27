@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Language\Language.
+ */
+
 namespace Drupal\Core\Language;
 
 use Drupal\Core\StringTranslation\TranslatableMarkup;

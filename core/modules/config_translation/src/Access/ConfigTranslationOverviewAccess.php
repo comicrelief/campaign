@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\config_translation\Access\ConfigTranslationOverviewAccess.
+ */
+
 namespace Drupal\config_translation\Access;
 
 use Drupal\Core\Language\LanguageManagerInterface;

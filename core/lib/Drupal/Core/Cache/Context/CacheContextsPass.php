@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Cache\Context\CacheContextsPass.
+ */
+
 namespace Drupal\Core\Cache\Context;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;

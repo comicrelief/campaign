@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Tests\Plugin\DisplayExtenderTest.
+ */
+
 namespace Drupal\views\Tests\Plugin;
 
 use Drupal\views\Views;

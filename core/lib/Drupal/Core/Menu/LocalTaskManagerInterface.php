@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Menu\LocalTaskManagerInterface.
+ */
 namespace Drupal\Core\Menu;
 
 use Drupal\Component\Plugin\PluginManagerInterface;

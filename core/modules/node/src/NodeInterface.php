@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\NodeInterface.
+ */
+
 namespace Drupal\node;
 
 use Drupal\user\EntityOwnerInterface;

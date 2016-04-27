@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\DependencyInjection\ContainerNotInitializedException.
+ */
+
 namespace Drupal\Core\DependencyInjection;
 
 /**

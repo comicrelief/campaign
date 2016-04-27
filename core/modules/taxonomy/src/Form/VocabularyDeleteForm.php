@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\taxonomy\Form\VocabularyDeleteForm.
+ */
+
 namespace Drupal\taxonomy\Form;
 
 use Drupal\Core\Entity\EntityDeleteForm;

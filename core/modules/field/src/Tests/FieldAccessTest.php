@@ -1,9 +1,11 @@
 <?php
 
-namespace Drupal\field\Tests;
+/**
+ * @file
+ * Contains \Drupal\field\Tests\FieldAccessTest.
+ */
 
-use Drupal\field\Entity\FieldConfig;
-use Drupal\field\Entity\FieldStorageConfig;
+namespace Drupal\field\Tests;
 
 /**
  * Tests Field access.
@@ -48,13 +50,13 @@ class FieldAccessTest extends FieldTestBase {
       'entity_type' => 'node',
       'type' => 'text',
     );
-    FieldStorageConfig::create($field_storage)->save();
+    entity_create('field_storage_config', $field_storage)->save();
     $field = array(
       'field_name' => $field_storage['field_name'],
       'entity_type' => 'node',
       'bundle' => $content_type,
     );
-    FieldConfig::create($field)->save();
+    entity_create('field_config', $field)->save();
 
     // Assign display properties for the 'default' and 'teaser' view modes.
     foreach (array('default', 'teaser') as $view_mode) {

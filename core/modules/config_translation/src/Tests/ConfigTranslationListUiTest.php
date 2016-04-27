@@ -1,17 +1,16 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\config_translation\Tests\ConfigTranslationListUiTest.
+ */
+
 namespace Drupal\config_translation\Tests;
 
-use Drupal\block_content\Entity\BlockContentType;
 use Drupal\Component\Utility\Unicode;
-use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\language\Entity\ConfigurableLanguage;
 use Drupal\simpletest\WebTestBase;
-use Drupal\shortcut\Entity\ShortcutSet;
-use Drupal\contact\Entity\ContactForm;
-use Drupal\filter\Entity\FilterFormat;
-use Drupal\taxonomy\Entity\Vocabulary;
 
 /**
  * Visit all lists.
@@ -161,11 +160,11 @@ class ConfigTranslationListUiTest extends WebTestBase {
   protected function doVocabularyListTest() {
     // Create a test vocabulary to decouple looking for translate operations
     // link so this does not test more than necessary.
-    $vocabulary = Vocabulary::create([
+    $vocabulary = entity_create('taxonomy_vocabulary', array(
       'name' => $this->randomMachineName(),
       'description' => $this->randomMachineName(),
       'vid' => Unicode::strtolower($this->randomMachineName()),
-    ]);
+    ));
     $vocabulary->save();
 
     // Get the Taxonomy listing.
@@ -186,7 +185,7 @@ class ConfigTranslationListUiTest extends WebTestBase {
   public function doCustomContentTypeListTest() {
     // Create a test custom block type to decouple looking for translate
     // operations link so this does not test more than necessary.
-    $block_content_type = BlockContentType::create(array(
+    $block_content_type = entity_create('block_content_type', array(
       'id' => Unicode::strtolower($this->randomMachineName(16)),
       'label' => $this->randomMachineName(),
       'revision' => FALSE
@@ -211,10 +210,10 @@ class ConfigTranslationListUiTest extends WebTestBase {
   public function doContactFormsListTest() {
     // Create a test contact form to decouple looking for translate operations
     // link so this does not test more than necessary.
-    $contact_form = ContactForm::create([
+    $contact_form = entity_create('contact_form', array(
       'id' => Unicode::strtolower($this->randomMachineName(16)),
       'label' => $this->randomMachineName(),
-    ]);
+    ));
     $contact_form->save();
 
     // Get the contact form listing.
@@ -258,7 +257,7 @@ class ConfigTranslationListUiTest extends WebTestBase {
   public function doFormatsListTest() {
     // Create a test format to decouple looking for translate operations
     // link so this does not test more than necessary.
-    $filter_format = FilterFormat::create(array(
+    $filter_format = entity_create('filter_format', array(
       'format' => Unicode::strtolower($this->randomMachineName(16)),
       'name' => $this->randomMachineName(),
     ));
@@ -282,7 +281,7 @@ class ConfigTranslationListUiTest extends WebTestBase {
   public function doShortcutListTest() {
     // Create a test shortcut to decouple looking for translate operations
     // link so this does not test more than necessary.
-    $shortcut = ShortcutSet::create(array(
+    $shortcut = entity_create('shortcut_set', array(
       'id' => Unicode::strtolower($this->randomMachineName(16)),
       'label' => $this->randomString(),
     ));
@@ -392,20 +391,20 @@ class ConfigTranslationListUiTest extends WebTestBase {
     ));
 
     // Create a block content type.
-    $block_content_type = BlockContentType::create(array(
+    $block_content_type = entity_create('block_content_type', array(
       'id' => 'basic',
       'label' => 'Basic',
       'revision' => FALSE
     ));
     $block_content_type->save();
-    $field = FieldConfig::create([
+    $field = entity_create('field_config', array(
       // The field storage is guaranteed to exist because it is supplied by the
       // block_content module.
       'field_storage' => FieldStorageConfig::loadByName('block_content', 'body'),
       'bundle' => $block_content_type->id(),
       'label' => 'Body',
       'settings' => array('display_summary' => FALSE),
-    ]);
+    ));
     $field->save();
 
     // Look at a few fields on a few entity types.

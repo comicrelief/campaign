@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\EntityDisplayRepository.
+ */
+
 namespace Drupal\Core\Entity;
 
 use Drupal\Core\Cache\CacheBackendInterface;

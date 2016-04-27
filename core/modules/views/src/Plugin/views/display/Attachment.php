@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Plugin\views\display\Attachment.
+ */
+
 namespace Drupal\views\Plugin\views\display;
 
 use Drupal\Core\Form\FormStateInterface;

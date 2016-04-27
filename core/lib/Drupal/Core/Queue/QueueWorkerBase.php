@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Queue\QueueWorkerBase.
+ */
+
 namespace Drupal\Core\Queue;
 
 use Drupal\Component\Plugin\PluginBase;

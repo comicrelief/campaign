@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Routing\LocalAwareRedirectResponseTrait.
+ */
+
 namespace Drupal\Core\Routing;
 
 use Drupal\Component\Utility\UrlHelper;

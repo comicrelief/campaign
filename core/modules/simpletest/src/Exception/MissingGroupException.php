@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\simpletest\Exception\MissingGroupException.
+ */
+
 namespace Drupal\simpletest\Exception;
 
 /**

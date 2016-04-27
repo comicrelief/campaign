@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\locale\Unit\LocaleTranslationTest.
+ */
+
 namespace Drupal\Tests\locale\Unit;
 
 use Drupal\locale\LocaleTranslation;

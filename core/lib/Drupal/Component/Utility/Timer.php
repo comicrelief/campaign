@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Component\Utility\Timer.
+ */
+
 namespace Drupal\Component\Utility;
 
 /**

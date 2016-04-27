@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\comment\CommentTypeForm.
+ */
+
 namespace Drupal\comment;
 
 use Drupal\Core\Entity\EntityForm;
@@ -11,7 +16,7 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Base form handler for comment type edit forms.
+ * Base form controller for category edit forms.
  */
 class CommentTypeForm extends EntityForm {
 
@@ -91,7 +96,7 @@ class CommentTypeForm extends EntityForm {
     $form['description'] = array(
       '#type' => 'textarea',
       '#default_value' => $comment_type->getDescription(),
-      '#description' => t('Describe this comment type. The text will be displayed on the <em>Comment types</em> administration overview page.'),
+      '#description' => t('Describe this comment type. The text will be displayed on the <em>Comment types</em> administration overview page'),
       '#title' => t('Description'),
     );
 

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Render\Placeholder\PlaceholderStrategyInterface.
+ */
+
 namespace Drupal\Core\Render\Placeholder;
 
 /**

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\user\Unit\SharedTempStoreTest.
+ */
+
 namespace Drupal\Tests\user\Unit;
 
 use Drupal\Tests\UnitTestCase;

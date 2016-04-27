@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Config\Entity\Exception\ConfigEntityIdLengthException.
+ */
+
 namespace Drupal\Core\Config\Entity\Exception;
 
 use Drupal\Core\Config\ConfigException;

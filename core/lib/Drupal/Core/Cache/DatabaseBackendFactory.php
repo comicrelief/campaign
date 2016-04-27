@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Cache\DatabaseBackendFactory.
+ */
+
 namespace Drupal\Core\Cache;
 
 use Drupal\Core\Database\Connection;

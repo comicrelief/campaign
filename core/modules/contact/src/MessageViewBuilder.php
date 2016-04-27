@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\contact\MessageViewBuilder.
+ */
+
 namespace Drupal\contact;
 
 use Drupal\Core\Entity\EntityInterface;

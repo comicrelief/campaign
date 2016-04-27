@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\aggregator\Plugin\ProcessorInterface.
+ */
+
 namespace Drupal\aggregator\Plugin;
 
 use Drupal\aggregator\FeedInterface;

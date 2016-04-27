@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views_ui\Form\Ajax\RearrangeFilter.
+ */
+
 namespace Drupal\views_ui\Form\Ajax;
 
 use Drupal\Component\Utility\Html;
@@ -129,6 +134,7 @@ class RearrangeFilter extends ViewsFormBase {
             'class' => array('views-remove-group'),
           ),
           '#group' => $id,
+          '#ajax' => ['url' => NULL],
         );
       }
       $group_options[$id] = $id == 1 ? $this->t('Default group') : $this->t('Group @group', array('@group' => $id));

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Component\Utility\UrlHelper.
+ */
+
 namespace Drupal\Component\Utility;
 
 /**

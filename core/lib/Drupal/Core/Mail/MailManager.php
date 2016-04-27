@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Mail\MailManager.
+ */
+
 namespace Drupal\Core\Mail;
 
 use Drupal\Component\Render\PlainTextOutput;

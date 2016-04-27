@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Session\SessionTest.
+ */
+
 namespace Drupal\system\Tests\Session;
 
 use Drupal\simpletest\WebTestBase;

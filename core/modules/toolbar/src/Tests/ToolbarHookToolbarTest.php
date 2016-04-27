@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\toolbar\Tests\ToolbarHookToolbarTest.
+ */
+
 namespace Drupal\toolbar\Tests;
 
 use Drupal\simpletest\WebTestBase;

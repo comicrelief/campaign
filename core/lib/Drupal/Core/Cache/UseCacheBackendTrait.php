@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Cache\UseCacheBackendTrait.
+ */
+
 namespace Drupal\Core\Cache;
 
 /**

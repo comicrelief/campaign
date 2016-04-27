@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\search\Tests\SearchSimplifyTest.
+ */
+
 namespace Drupal\search\Tests;
 use Drupal\Component\Utility\Unicode;
 

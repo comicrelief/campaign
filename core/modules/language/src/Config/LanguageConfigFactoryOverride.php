@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\language\Config\LanguageConfigFactoryOverride.
+ */
+
 namespace Drupal\language\Config;
 
 use Drupal\Core\Cache\CacheableMetadata;

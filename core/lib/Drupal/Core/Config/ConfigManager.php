@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Config\ConfigManager.
+ */
+
 namespace Drupal\Core\Config;
 
 use Drupal\Component\Diff\Diff;

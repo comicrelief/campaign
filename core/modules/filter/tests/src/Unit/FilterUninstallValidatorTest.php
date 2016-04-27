@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\filter\Unit\FilterUninstallValidatorTest.
+ */
+
 namespace Drupal\Tests\filter\Unit;
 
 use Drupal\simpletest\AssertHelperTrait;

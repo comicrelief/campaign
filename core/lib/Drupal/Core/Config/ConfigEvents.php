@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Config\ConfigEvents.
+ */
+
 namespace Drupal\Core\Config;
 
 /**

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Tests\NodeTitleTest.
+ */
+
 namespace Drupal\node\Tests;
 
 use Drupal\comment\Tests\CommentTestTrait;

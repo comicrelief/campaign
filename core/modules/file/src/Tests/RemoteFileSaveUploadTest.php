@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\file\Tests\RemoteFileSaveUploadTest.
+ */
+
 namespace Drupal\file\Tests;
 
 /**

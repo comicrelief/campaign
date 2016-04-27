@@ -1,11 +1,6 @@
 <?php
 
 /**
- * @file
- * Install hooks for test module.
- */
-
-/**
  * Implements hook_requirements().
  */
 function requirements1_test_requirements($phase) {

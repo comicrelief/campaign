@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Password\PasswordInterface.
+ */
+
 namespace Drupal\Core\Password;
 
 /**

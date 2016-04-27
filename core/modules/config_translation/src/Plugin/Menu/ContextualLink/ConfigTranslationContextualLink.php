@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\config_translation\Plugin\Menu\ContextualLink\ConfigTranslationContextualLink.
+ */
+
 namespace Drupal\config_translation\Plugin\Menu\ContextualLink;
 
 use Drupal\Component\Utility\Unicode;

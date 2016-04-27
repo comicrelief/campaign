@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Routing\RedirectDestinationTest.
+ */
+
 namespace Drupal\Tests\Core\Routing;
 
 use Drupal\Core\Routing\RedirectDestination;

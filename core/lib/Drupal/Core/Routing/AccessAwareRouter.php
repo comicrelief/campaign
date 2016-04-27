@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Routing\AccessAwareRouter.
+ */
+
 namespace Drupal\Core\Routing;
 
 use Drupal\Core\Access\AccessManagerInterface;

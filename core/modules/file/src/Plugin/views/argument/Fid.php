@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\file\Plugin\views\argument\Fid.
+ */
+
 namespace Drupal\file\Plugin\views\argument;
 
 use Drupal\Core\Entity\EntityManagerInterface;

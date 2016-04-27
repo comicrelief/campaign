@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\service_provider_test\TestClass.
+ */
+
 namespace Drupal\service_provider_test;
 
 use Drupal\Core\State\StateInterface;

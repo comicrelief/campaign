@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Plugin\Action\UnpublishByKeywordNode.
+ */
+
 namespace Drupal\node\Plugin\Action;
 
 use Drupal\Component\Utility\Tags;

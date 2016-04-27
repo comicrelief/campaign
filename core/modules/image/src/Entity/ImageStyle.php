@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\image\Entity\ImageStyle.
+ */
+
 namespace Drupal\image\Entity;
 
 use Drupal\Core\Cache\Cache;

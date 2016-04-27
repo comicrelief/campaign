@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\book\Unit\BookManagerTest.
+ */
+
 namespace Drupal\Tests\book\Unit;
 
 use Drupal\book\BookManager;

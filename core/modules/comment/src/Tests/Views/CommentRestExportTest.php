@@ -1,9 +1,13 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\comment\Tests\Views\CommentRestExportTest.
+ */
+
 namespace Drupal\comment\Tests\Views;
 
 use Drupal\Component\Serialization\Json;
-use Drupal\comment\Entity\Comment;
 
 /**
  * Tests a comment rest export view.
@@ -39,7 +43,7 @@ class CommentRestExportTest extends CommentTestBase {
       'name' => 'bobby tables',
       'hostname' => 'public.example.com',
     );
-    $this->comment = Comment::create($comment);
+    $this->comment = entity_create('comment', $comment);
     $this->comment->save();
 
     $user = $this->drupalCreateUser(['access comments']);

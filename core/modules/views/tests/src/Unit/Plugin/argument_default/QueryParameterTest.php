@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\views\Unit\Plugin\argument_default\QueryParameterTest.
+ */
+
 namespace Drupal\Tests\views\Unit\Plugin\argument_default;
 
 use Drupal\Tests\UnitTestCase;

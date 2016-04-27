@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\EntityMalformedException.
+ */
+
 namespace Drupal\Core\Entity;
 
 /**

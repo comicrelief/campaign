@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\TypedData\DataReferenceBase.
+ */
+
 namespace Drupal\Core\TypedData;
 
 /**

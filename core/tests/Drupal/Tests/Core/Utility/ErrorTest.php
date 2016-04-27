@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Utility\ErrorTest.
+ */
+
 namespace Drupal\Tests\Core\Utility;
 
 use Drupal\Tests\UnitTestCase;

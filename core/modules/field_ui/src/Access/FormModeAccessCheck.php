@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\field_ui\Access\FormModeAccessCheck.
+ */
+
 namespace Drupal\field_ui\Access;
 
 use Drupal\Core\Access\AccessResult;
@@ -73,7 +78,7 @@ class FormModeAccessCheck implements AccessInterface {
       }
 
       if ($form_mode_name != 'default' && $entity_display) {
-        $access->addCacheableDependency($entity_display);
+        $access->cacheUntilEntityChanges($entity_display);
       }
 
       if ($visibility) {

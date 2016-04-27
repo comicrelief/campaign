@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\EventSubscriber\ActiveLinkResponseFilter.
+ */
+
 namespace Drupal\Core\EventSubscriber;
 
 use Drupal\Component\Serialization\Json;

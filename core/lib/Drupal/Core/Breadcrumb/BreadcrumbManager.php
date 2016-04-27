@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Breadcrumb\BreadcrumbManager.
+ */
+
 namespace Drupal\Core\Breadcrumb;
 
 use Drupal\Core\Extension\ModuleHandlerInterface;

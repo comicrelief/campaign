@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\tour\Tests\TourCacheTagsTest.
+ */
+
 namespace Drupal\tour\Tests;
 
 use Drupal\Core\Url;

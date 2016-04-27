@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\shortcut\Entity\Shortcut.
+ */
+
 namespace Drupal\shortcut\Entity;
 
 use Drupal\Core\Cache\Cache;

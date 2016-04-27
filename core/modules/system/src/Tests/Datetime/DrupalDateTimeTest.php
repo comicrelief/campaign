@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Datetime\DrupalDateTimeTest.
+ */
+
 namespace Drupal\system\Tests\Datetime;
 
 use Drupal\Core\Datetime\DrupalDateTime;

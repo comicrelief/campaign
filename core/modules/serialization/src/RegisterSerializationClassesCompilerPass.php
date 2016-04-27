@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\serialization\RegisterSerializationClassesCompilerPass.
+ */
+
 namespace Drupal\serialization;
 
 use Symfony\Component\DependencyInjection\Reference;

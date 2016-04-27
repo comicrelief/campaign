@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Plugin\views\display\Page.
+ */
+
 namespace Drupal\views\Plugin\views\display;
 
 use Drupal\Component\Utility\Xss;

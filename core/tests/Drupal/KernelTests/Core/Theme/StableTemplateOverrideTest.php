@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\KernelTests\Core\Theme\StableTemplateOverrideTest.
+ */
+
 namespace Drupal\KernelTests\Core\Theme;
 
 use Drupal\Core\Theme\Registry;
@@ -49,6 +54,7 @@ class StableTemplateOverrideTest extends KernelTestBase {
 
     $this->container->get('theme_installer')->install(['stable']);
 
+    $this->installSchema('system', 'router');
     $this->installAllModules();
   }
 

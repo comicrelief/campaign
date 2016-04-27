@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Database\ConnectionNotDefinedException.
+ */
+
 namespace Drupal\Core\Database;
 
 /**

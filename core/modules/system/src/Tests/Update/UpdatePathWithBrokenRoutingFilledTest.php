@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Update\UpdatePathWithBrokenRoutingFilledTest.
+ */
+
 namespace Drupal\system\Tests\Update;
 
 /**

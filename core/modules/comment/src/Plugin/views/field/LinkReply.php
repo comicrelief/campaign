@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\comment\Plugin\views\field\LinkReply.
+ */
+
 namespace Drupal\comment\Plugin\views\field;
 
 use Drupal\Core\Url;

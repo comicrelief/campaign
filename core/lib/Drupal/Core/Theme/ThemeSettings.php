@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Theme\ThemeSettings.
+ */
+
 namespace Drupal\Core\Theme;
 
 use Drupal\Core\Config\ConfigBase;

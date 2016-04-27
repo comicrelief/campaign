@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\update\Tests\UpdateDeleteFileIfStaleTest.
+ */
+
 namespace Drupal\update\Tests;
 
 /**

@@ -1,9 +1,7 @@
 <?php
-
-namespace Drupal\Core\Datetime;
-
 /**
- * Defines Gregorian Calendar date values.
+ * @file
+ * Contains \Drupal\Core\Datetime\DateHelper.
  *
  * Lots of helpful functions for use in massaging dates, specific to the
  * Gregorian calendar system. The values include both translated and
@@ -15,6 +13,11 @@ namespace Drupal\Core\Datetime;
  * Translated values are useful for display to the user. All values that need
  * translation should be hard-coded and wrapped in t() so the translation system
  * will be able to process them.
+ */
+namespace Drupal\Core\Datetime;
+
+/**
+ * Defines Gregorian Calendar date values.
  */
 class DateHelper {
 

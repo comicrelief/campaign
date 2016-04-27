@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\text\Plugin\Field\FieldFormatter\TextDefaultFormatter.
+ */
+
 namespace Drupal\text\Plugin\Field\FieldFormatter;
 
 use Drupal\Core\Field\FormatterBase;

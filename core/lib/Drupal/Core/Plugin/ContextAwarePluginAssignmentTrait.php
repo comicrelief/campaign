@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Plugin\ContextAwarePluginAssignmentTrait.
+ */
+
 namespace Drupal\Core\Plugin;
 
 /**

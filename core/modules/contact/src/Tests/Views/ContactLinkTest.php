@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\contact\Tests\Views\ContactLinkTest.
+ */
+
 namespace Drupal\contact\Tests\Views;
 
 use Drupal\Core\Cache\Cache;

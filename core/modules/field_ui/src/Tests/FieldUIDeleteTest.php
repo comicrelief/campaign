@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\field_ui\Tests\FieldUIDeleteTest.
+ */
+
 namespace Drupal\field_ui\Tests;
 
 use Drupal\field\Entity\FieldConfig;

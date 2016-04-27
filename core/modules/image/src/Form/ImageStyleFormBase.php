@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\image\Form\ImageStyleFormBase.
+ */
+
 namespace Drupal\image\Form;
 
 use Drupal\Core\Entity\EntityForm;

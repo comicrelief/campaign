@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\CoreServiceProvider.
+ */
+
 namespace Drupal\Core;
 
 use Drupal\Core\Cache\Context\CacheContextsPass;

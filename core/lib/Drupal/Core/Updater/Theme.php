@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Updater\Theme.
+ */
+
 namespace Drupal\Core\Updater;
 
 use Drupal\Core\Url;

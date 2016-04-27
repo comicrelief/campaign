@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\contact\MessageInterface.
+ */
+
 namespace Drupal\contact;
 
 use Drupal\Core\Entity\ContentEntityInterface;

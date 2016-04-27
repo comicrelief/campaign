@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Archiver\Annotation\Archiver.
+ */
+
 namespace Drupal\Core\Archiver\Annotation;
 
 use Drupal\Component\Annotation\Plugin;

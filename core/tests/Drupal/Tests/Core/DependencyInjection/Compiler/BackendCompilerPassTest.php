@@ -72,8 +72,7 @@ class BackendCompilerPassTest extends UnitTestCase {
 
     // Configure a manual alias for the service, so ensure that it is not
     // overridden by the default backend.
-    $container = $this->getMysqlContainer($service);
-    $container->setParameter('default_backend', 'mysql');
+    $container = clone $container;
     $container->setDefinition('mariadb.service', new Definition($prefix . 'MariaDb'));
     $container->setAlias('service', new Alias('mariadb.service'));
     $data[] = array($prefix . 'MariaDb', $container);

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\drupal_system_listing_compatible_test\Tests\SystemListingCompatibleTest.
+ */
+
 namespace Drupal\drupal_system_listing_compatible_test\Tests;
 
 use Drupal\simpletest\WebTestBase;

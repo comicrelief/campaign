@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\user\Unit\Plugin\Action\RoleUserTestBase.
+ */
+
 namespace Drupal\Tests\user\Unit\Plugin\Action;
 
 use Drupal\Tests\UnitTestCase;

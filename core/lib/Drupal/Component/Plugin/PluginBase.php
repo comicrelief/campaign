@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\Component\Plugin\PluginBase.
+ */
 
 namespace Drupal\Component\Plugin;
 

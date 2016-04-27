@@ -1,8 +1,14 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\migrate\Plugin\MigrateDestinationInterface.
+ */
+
 namespace Drupal\migrate\Plugin;
 
 use Drupal\Component\Plugin\PluginInspectionInterface;
+use Drupal\migrate\Entity\MigrationInterface;
 use Drupal\migrate\Row;
 
 /**
@@ -42,7 +48,7 @@ interface MigrateDestinationInterface extends PluginInspectionInterface {
    * @todo Review the cases where we need the Migration parameter, can we avoid
    *   that? To be resolved with https://www.drupal.org/node/2543568.
    *
-   * @param \Drupal\migrate\Plugin\MigrationInterface $migration
+   * @param \Drupal\migrate\Entity\MigrationInterface $migration
    *   (optional) The migration containing this destination. Defaults to NULL.
    *
    * @return array

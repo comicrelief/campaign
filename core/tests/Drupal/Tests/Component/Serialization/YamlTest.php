@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Component\Serialization\YamlTest.
+ */
+
 namespace Drupal\Tests\Component\Serialization;
 
 use Drupal\Component\Serialization\Yaml;

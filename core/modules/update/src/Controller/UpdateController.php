@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\update\Controller\UpdateController.
+ */
+
 namespace Drupal\update\Controller;
 
 use Drupal\update\UpdateManagerInterface;

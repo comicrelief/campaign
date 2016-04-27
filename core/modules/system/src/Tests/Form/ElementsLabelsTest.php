@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Form\ElementsLabelsTest.
+ */
+
 namespace Drupal\system\Tests\Form;
 
 use Drupal\simpletest\WebTestBase;
@@ -88,12 +93,6 @@ class ElementsLabelsTest extends WebTestBase {
     $this->assertEqual($elements[0]['title'], 'Checkboxes test' . ' (' . t('Required') . ')', 'Title attribute found.');
     $elements = $this->xpath('//div[@id="edit-form-radios-title-attribute"]');
     $this->assertEqual($elements[0]['title'], 'Radios test' . ' (' . t('Required') . ')', 'Title attribute found.');
-
-    $elements = $this->xpath('//fieldset[@id="edit-form-checkboxes-title-invisible--wrapper"]/legend/span[contains(@class, "visually-hidden")]');
-    $this->assertTrue(!empty($elements), "Title/Label not displayed when 'visually-hidden' attribute is set in checkboxes.");
-
-    $elements = $this->xpath('//fieldset[@id="edit-form-radios-title-invisible--wrapper"]/legend/span[contains(@class, "visually-hidden")]');
-    $this->assertTrue(!empty($elements), "Title/Label not displayed when 'visually-hidden' attribute is set in radios.");
   }
 
   /**
@@ -123,27 +122,4 @@ class ElementsLabelsTest extends WebTestBase {
     $this->assertTrue(isset($elements[0]), t('Properly renders the #description element visually-hidden.'));
   }
 
-  /**
-   * Test forms in theme-less environments.
-   */
-  function testFormsInThemeLessEnvironments() {
-    $form = $this->getFormWithLimitedProperties();
-    $render_service = $this->container->get('renderer');
-    // This should not throw any notices.
-    $render_service->renderPlain($form);
-  }
-
-  /**
-   * Return a form with element with not all properties defined.
-   */
-  protected function getFormWithLimitedProperties() {
-    $form = array();
-
-    $form['fieldset'] = array(
-      '#type' => 'fieldset',
-      '#title' => 'Fieldset',
-    );
-
-    return $form;
-  }
 }

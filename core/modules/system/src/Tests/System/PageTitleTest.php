@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\System\PageTitleTest.
+ */
+
 namespace Drupal\system\Tests\System;
 
 use Drupal\Component\Utility\Html;

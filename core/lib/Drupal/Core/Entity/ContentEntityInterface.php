@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\ContentEntityInterface.
+ */
+
 namespace Drupal\Core\Entity;
 
 use Drupal\Core\TypedData\TranslatableInterface;

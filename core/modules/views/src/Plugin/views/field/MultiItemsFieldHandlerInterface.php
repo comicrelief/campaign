@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Plugin\views\field\MultiItemsFieldHandlerInterface.
+ */
+
 namespace Drupal\views\Plugin\views\field;
 
 use Drupal\views\ResultRow;

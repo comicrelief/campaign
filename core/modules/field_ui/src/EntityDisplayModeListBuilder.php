@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\field_ui\EntityDisplayModeListBuilder.
+ */
+
 namespace Drupal\field_ui;
 
 use Drupal\Core\Config\Entity\ConfigEntityListBuilder;
@@ -125,14 +130,14 @@ class EntityDisplayModeListBuilder extends ConfigEntityListBuilder {
   }
 
   /**
-   * Filters entities based on their view builder handlers.
+   * Filters entities based on their controllers.
    *
    * @param $entity_type
    *   The entity type of the entity that needs to be validated.
    *
    * @return bool
-   *   TRUE if the entity has the correct view builder handler, FALSE if the
-   *   entity doesn't have the correct view builder handler.
+   *   TRUE if the entity has the correct controller, FALSE if the entity
+   *   doesn't has the correct controller.
    */
   protected function isValidEntity($entity_type) {
     return $this->entityTypes[$entity_type]->get('field_ui_base_route') && $this->entityTypes[$entity_type]->hasViewBuilderClass();

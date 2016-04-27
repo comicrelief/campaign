@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\comment\Plugin\migrate\destination\EntityCommentType.
+ */
+
 namespace Drupal\comment\Plugin\migrate\destination;
 
 use Drupal\migrate\Plugin\migrate\destination\EntityConfigBase;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Extension\ModuleUninstallValidatorException.
+ */
+
 namespace Drupal\Core\Extension;
 
 /**

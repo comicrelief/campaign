@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Menu\DefaultMenuLinkTreeManipulatorsTest.
+ */
+
 namespace Drupal\Tests\Core\Menu;
 
 use Drupal\Core\Access\AccessResult;

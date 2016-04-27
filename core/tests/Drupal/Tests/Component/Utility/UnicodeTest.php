@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Component\Utility\UnicodeTest.
+ */
+
 namespace Drupal\Tests\Component\Utility;
 
 use Drupal\Tests\UnitTestCase;

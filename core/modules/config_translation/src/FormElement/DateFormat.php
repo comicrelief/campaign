@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\config_translation\FormElement\DateFormat.
+ */
+
 namespace Drupal\config_translation\FormElement;
 
 use Drupal\Core\Language\LanguageInterface;
@@ -15,7 +20,7 @@ class DateFormat extends FormElementBase {
   public function getTranslationElement(LanguageInterface $translation_language, $source_config, $translation_config) {
     /** @var \Drupal\Core\Datetime\DateFormatterInterface $date_formatter */
     $date_formatter = \Drupal::service('date.formatter');
-    $description = $this->t('A user-defined date format. See the <a href="http://php.net/manual/function.date.php">PHP manual</a> for available options.');
+    $description = $this->t('A user-defined date format. See the <a href=":url">PHP manual</a> for available options.', array(':url' => 'http://php.net/manual/function.date.php'));
     $format = $this->t('Displayed as %date_format', array('%date_format' => $date_formatter->format(REQUEST_TIME, 'custom', $translation_config)));
 
     return [

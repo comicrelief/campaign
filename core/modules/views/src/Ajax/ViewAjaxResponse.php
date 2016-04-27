@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Ajax\ViewAjaxResponse.
+ */
+
 namespace Drupal\views\Ajax;
 
 use Drupal\Core\Ajax\AjaxResponse;

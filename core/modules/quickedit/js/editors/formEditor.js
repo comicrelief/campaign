@@ -3,7 +3,7 @@
  * Form-based in-place editor. Works for any field type.
  */
 
-(function ($, Drupal, _) {
+(function ($, Drupal) {
 
   'use strict';
 
@@ -252,4 +252,4 @@
     }
   });
 
-})(jQuery, Drupal, _);
+})(jQuery, Drupal);

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\forum\Tests\ForumValidationTest.
+ */
+
 namespace Drupal\forum\Tests;
 
 use Drupal\node\Entity\Node;

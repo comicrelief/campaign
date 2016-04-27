@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\migrate_drupal\Unit\source\VariableMultiRowSourceWithHighwaterTest.
+ */
+
 namespace Drupal\Tests\migrate_drupal\Unit\source;
 
 /**

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\block_content\BlockContentTranslationHandler.
+ */
+
 namespace Drupal\block_content;
 
 use Drupal\block_content\Entity\BlockContentType;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Password\PhpassHashedPassword.
+ */
+
 namespace Drupal\Core\Password;
 
 use Drupal\Component\Utility\Crypt;

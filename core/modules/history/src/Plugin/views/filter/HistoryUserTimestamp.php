@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\history\Plugin\views\filter\HistoryUserTimestamp.
+ */
+
 namespace Drupal\history\Plugin\views\filter;
 
 use Drupal\Core\Form\FormStateInterface;

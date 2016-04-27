@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Plugin\views\display\DisplayPluginInterface.
+ */
+
 namespace Drupal\views\Plugin\views\display;
 
 use Drupal\views\ViewExecutable;

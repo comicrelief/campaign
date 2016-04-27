@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\form_test\Form\FormTestDisabledElementsForm.
+ */
+
 namespace Drupal\form_test\Form;
 
 use Drupal\Core\Datetime\DrupalDateTime;

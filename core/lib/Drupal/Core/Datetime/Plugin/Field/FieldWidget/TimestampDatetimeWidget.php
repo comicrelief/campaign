@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\Core\Datetime\Plugin\Field\FieldWidget\TimestampDatetimeWidget.
+ */
 
 namespace Drupal\Core\Datetime\Plugin\Field\FieldWidget;
 

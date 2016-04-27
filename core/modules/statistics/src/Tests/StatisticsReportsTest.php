@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\statistics\Tests\StatisticsReportsTest.
+ */
+
 namespace Drupal\statistics\Tests;
 
 /**

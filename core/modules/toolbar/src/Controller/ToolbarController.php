@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\toolbar\Controller\ToolbarController.
+ */
+
 namespace Drupal\toolbar\Controller;
 
 use Drupal\Component\Utility\Crypt;

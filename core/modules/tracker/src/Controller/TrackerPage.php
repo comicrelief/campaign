@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\tracker\Controller\TrackerPage.
+ */
+
 namespace Drupal\tracker\Controller;
 
 use Drupal\Core\Controller\ControllerBase;

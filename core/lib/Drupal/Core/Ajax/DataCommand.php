@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Ajax\DataCommand.
+ */
+
 namespace Drupal\Core\Ajax;
 
 /**

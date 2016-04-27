@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\language\Tests\LanguageBlockSettingsVisibilityTest.
+ */
+
 namespace Drupal\language\Tests;
 
 use Drupal\simpletest\WebTestBase;

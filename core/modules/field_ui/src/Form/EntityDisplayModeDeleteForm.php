@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\field_ui\Form\EntityDisplayModeDeleteForm.
+ */
+
 namespace Drupal\field_ui\Form;
 
 use Drupal\Core\Entity\EntityDeleteForm;

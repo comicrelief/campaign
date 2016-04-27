@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\simpletest\InstallerTestBase.
+ */
+
 namespace Drupal\simpletest;
 
 use Drupal\Core\DrupalKernel;
@@ -113,7 +118,7 @@ abstract class InstallerTestBase extends WebTestBase {
       ->set('app.root', DRUPAL_ROOT);
     \Drupal::setContainer($this->container);
 
-    $this->visitInstaller();
+    $this->drupalGet($GLOBALS['base_url'] . '/core/install.php');
 
     // Select language.
     $this->setUpLanguage();
@@ -157,13 +162,6 @@ abstract class InstallerTestBase extends WebTestBase {
         ->set('interface.default', 'test_mail_collector')
         ->save();
     }
-  }
-
-  /**
-   * Visits the interactive installer.
-   */
-  protected function visitInstaller() {
-    $this->drupalGet($GLOBALS['base_url'] . '/core/install.php');
   }
 
   /**

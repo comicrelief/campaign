@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Form\ModulesUninstallForm.
+ */
+
 namespace Drupal\system\Form;
 
 use Drupal\Core\Extension\ModuleHandlerInterface;

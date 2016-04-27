@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Batch\Percentage.
+ */
+
 namespace Drupal\Core\Batch;
 
 /**

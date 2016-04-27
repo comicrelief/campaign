@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\Core\Condition\Annotation\Condition.
+ */
 
 namespace Drupal\Core\Condition\Annotation;
 

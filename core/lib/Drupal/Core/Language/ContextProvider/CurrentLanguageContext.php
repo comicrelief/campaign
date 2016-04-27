@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Language\ContextProvider\CurrentLanguageContext.
+ */
+
 namespace Drupal\Core\Language\ContextProvider;
 
 use Drupal\Core\Cache\CacheableMetadata;

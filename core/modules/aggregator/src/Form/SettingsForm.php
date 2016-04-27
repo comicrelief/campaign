@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\aggregator\Form\SettingsForm.
+ */
+
 namespace Drupal\aggregator\Form;
 
 use Drupal\aggregator\Plugin\AggregatorPluginManager;

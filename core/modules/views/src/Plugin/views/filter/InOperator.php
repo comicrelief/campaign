@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Plugin\views\filter\InOperator.
+ */
+
 namespace Drupal\views\Plugin\views\filter;
 
 use Drupal\Component\Utility\Unicode;
@@ -410,7 +415,7 @@ class InOperator extends FilterPluginBase {
 
   public function validate() {
     $this->getValueOptions();
-    $errors = parent::validate();
+    $errors = array();
 
     // If the operator is an operator which doesn't require a value, there is
     // no need for additional validation.

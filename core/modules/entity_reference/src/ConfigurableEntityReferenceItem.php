@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\entity_reference\ConfigurableEntityReferenceItem.
+ */
+
 namespace Drupal\entity_reference;
 
 use Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem;

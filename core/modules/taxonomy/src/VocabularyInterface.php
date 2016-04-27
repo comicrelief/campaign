@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\taxonomy\VocabularyInterface.
+ */
+
 namespace Drupal\taxonomy;
 
 use Drupal\Core\Config\Entity\ConfigEntityInterface;

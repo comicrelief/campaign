@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Controller\TestController.
+ */
+
 namespace Drupal\Tests\Core\Controller;
 
 use Symfony\Component\HttpFoundation\Response;

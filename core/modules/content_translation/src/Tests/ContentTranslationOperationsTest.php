@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\content_translation\Tests\ContentTranslationOperationsTest.
+ */
+
 namespace Drupal\content_translation\Tests;
 
 use Drupal\language\Entity\ConfigurableLanguage;
@@ -32,11 +37,8 @@ class ContentTranslationOperationsTest extends NodeTestBase {
    *
    * @var array
    */
-  public static $modules = ['language', 'content_translation', 'node', 'views', 'block'];
+  public static $modules = ['language', 'content_translation', 'node', 'views'];
 
-  /**
-   * {@inheritdoc}
-   */
   protected function setUp() {
     parent::setUp();
 
@@ -61,7 +63,7 @@ class ContentTranslationOperationsTest extends NodeTestBase {
   /**
    * Test that the operation "Translate" is displayed in the content listing.
    */
-  public function testOperationTranslateLink() {
+  function testOperationTranslateLink() {
     $node = $this->drupalCreateNode(['type' => 'article', 'langcode' => 'es']);
     // Verify no translation operation links are displayed for users without
     // permission.
@@ -101,30 +103,9 @@ class ContentTranslationOperationsTest extends NodeTestBase {
     $node->setPublished(FALSE)->save();
     $this->drupalGet($node->urlInfo('drupal:content-translation-overview'));
     $this->assertResponse(403);
-    $this->drupalLogout();
-
-    // Ensure the 'Translate' local task does not show up anymore when disabling
-    // translations for a content type.
-    $node->setPublished(TRUE)->save();
-    user_role_change_permissions(
-      Role::AUTHENTICATED_ID,
-      [
-        'administer content translation' => TRUE,
-        'administer languages' => TRUE,
-      ]
-    );
-    $this->drupalPlaceBlock('local_tasks_block');
-    $this->drupalLogin($this->baseUser2);
-    $this->drupalGet('node/' . $node->id());
-    $this->assertLinkByHref('node/' . $node->id() . '/translations');
-    $this->drupalPostForm('admin/config/regional/content-language', ['settings[node][article][translatable]' => FALSE], t('Save configuration'));
-    $this->drupalGet('node/' . $node->id());
-    $this->assertNoLinkByHref('node/' . $node->id() . '/translations');
   }
 
   /**
-   * Tests the access to the overview page for translations.
-   *
    * @see content_translation_translate_access()
    */
   public function testContentTranslationOverviewAccess() {

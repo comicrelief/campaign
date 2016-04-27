@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\EventSubscriber\PsrResponseSubscriber.
+ */
+
 namespace Drupal\Core\EventSubscriber;
 
 use Psr\Http\Message\ResponseInterface;

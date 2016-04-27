@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Plugin\views\filter\Bundle.
+ */
+
 namespace Drupal\views\Plugin\views\filter;
 
 use Drupal\Core\Entity\EntityManagerInterface;

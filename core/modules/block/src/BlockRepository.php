@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\block\BlockRepository.
+ */
+
 namespace Drupal\block;
 
 use Drupal\Core\Cache\CacheableMetadata;

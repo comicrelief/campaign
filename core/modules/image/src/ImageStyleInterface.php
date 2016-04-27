@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\image\ImageStyleInterface.
+ */
+
 namespace Drupal\image;
 
 use Drupal\Core\Config\Entity\ConfigEntityInterface;

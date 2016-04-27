@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\File\RemoteFileUnmanagedDeleteTest.
+ */
+
 namespace Drupal\system\Tests\File;
 
 /**

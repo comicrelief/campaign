@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Component\Plugin\PluginManagerBase.
+ */
+
 namespace Drupal\Component\Plugin;
 
 use Drupal\Component\Plugin\Discovery\DiscoveryTrait;

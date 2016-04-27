@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\theme_test\ThemeTestController.
+ */
+
 namespace Drupal\theme_test;
 
 use Drupal\Core\Controller\ControllerBase;

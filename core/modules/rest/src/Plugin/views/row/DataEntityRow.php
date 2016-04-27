@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\rest\Plugin\views\row\DataEntityRow.
+ */
+
 namespace Drupal\rest\Plugin\views\row;
 
 use Drupal\views\Plugin\views\row\RowPluginBase;

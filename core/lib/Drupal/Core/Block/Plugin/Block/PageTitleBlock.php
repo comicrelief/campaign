@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Block\Plugin\Block\PageTitleBlock.
+ */
+
 namespace Drupal\Core\Block\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;

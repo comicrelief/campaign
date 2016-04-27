@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\search\Plugin\SearchInterface.
+ */
+
 namespace Drupal\search\Plugin;
 
 use Drupal\Component\Plugin\PluginInspectionInterface;

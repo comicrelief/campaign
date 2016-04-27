@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Component\Plugin\LazyPluginCollection.
+ */
+
 namespace Drupal\Component\Plugin;
 
 /**

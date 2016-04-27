@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\image\ImageEffectManager.
+ */
+
 namespace Drupal\image;
 
 use Drupal\Core\Cache\CacheBackendInterface;

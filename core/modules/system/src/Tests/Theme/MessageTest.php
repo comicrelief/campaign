@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Theme\MessageTest.
+ */
+
 namespace Drupal\system\Tests\Theme;
 
 use Drupal\simpletest\KernelTestBase;
@@ -22,7 +27,7 @@ class MessageTest extends KernelTestBase {
   function testMessages() {
     // Enable the Classy theme.
     \Drupal::service('theme_handler')->install(['classy']);
-    \Drupal::service('theme_handler')->setDefault('classy');
+    $this->config('system.theme')->set('default', 'classy')->save();
 
     drupal_set_message('An error occurred', 'error');
     drupal_set_message('But then something nice happened');

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\Plugin\Action\AddRoleUser.
+ */
+
 namespace Drupal\user\Plugin\Action;
 
 /**

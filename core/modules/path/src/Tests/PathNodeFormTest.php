@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\path\Tests\PathNodeFormTest.
+ */
+
 namespace Drupal\path\Tests;
 
 /**

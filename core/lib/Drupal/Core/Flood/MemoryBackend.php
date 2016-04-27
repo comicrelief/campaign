@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Flood\MemoryBackend.
+ */
+
 namespace Drupal\Core\Flood;
 
 use Symfony\Component\HttpFoundation\RequestStack;

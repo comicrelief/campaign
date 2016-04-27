@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\Core\Asset\AssetDumperInterface.
+ */
 
 namespace Drupal\Core\Asset;
 

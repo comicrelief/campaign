@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\rest\Tests\ResourceTest.
+ */
+
 namespace Drupal\rest\Tests;
 
 use Drupal\Component\Plugin\Exception\PluginNotFoundException;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Plugin\views\exposed_form\ExposedFormPluginBase.
+ */
+
 namespace Drupal\views\Plugin\views\exposed_form;
 
 use Drupal\Component\Utility\Html;

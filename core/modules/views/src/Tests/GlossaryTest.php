@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Tests\GlossaryTest.
+ */
+
 namespace Drupal\views\Tests;
 
 use Drupal\Component\Utility\Unicode;

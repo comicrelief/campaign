@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Tests\NodeViewLanguageTest.
+ */
+
 namespace Drupal\node\Tests;
 
 use Drupal\language\Entity\ConfigurableLanguage;

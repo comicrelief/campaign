@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\locale\Tests\LocaleUpdateCronTest.
+ */
+
 namespace Drupal\locale\Tests;
 
 /**

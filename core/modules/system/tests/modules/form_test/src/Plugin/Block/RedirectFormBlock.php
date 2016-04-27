@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\form_test\Plugin\Block\RedirectFormBlock.
+ */
+
 namespace Drupal\form_test\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;

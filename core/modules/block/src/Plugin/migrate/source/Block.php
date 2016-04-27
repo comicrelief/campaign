@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\block\Plugin\migrate\source\Block.
+ */
+
 namespace Drupal\block\Plugin\migrate\source;
 
 use Drupal\migrate\Row;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Controller\Http4xxController.
+ */
+
 namespace Drupal\system\Controller;
 
 use Drupal\Core\Controller\ControllerBase;

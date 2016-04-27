@@ -1,9 +1,14 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\link\Plugin\migrate\process\d6\CckLink.
+ */
+
 namespace Drupal\link\Plugin\migrate\process\d6;
 
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Drupal\migrate\Plugin\MigrationInterface;
+use Drupal\migrate\Entity\MigrationInterface;
 use Drupal\migrate\MigrateExecutableInterface;
 use Drupal\migrate\ProcessPluginBase;
 use Drupal\migrate\Row;
@@ -44,10 +49,6 @@ class CckLink extends ProcessPluginBase implements ContainerFactoryPluginInterfa
     // Drupal 6 link attributes might be double serialized.
     if (!is_array($attributes)) {
       $attributes = unserialize($attributes);
-    }
-
-    if (!$attributes) {
-      $attributes = [];
     }
 
     // Massage the values into the correct form for the link.

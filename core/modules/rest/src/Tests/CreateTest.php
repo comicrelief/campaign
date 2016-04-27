@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\rest\Tests\CreateTest.
+ */
+
 namespace Drupal\rest\Tests;
 
 use Drupal\comment\Tests\CommentTestTrait;
@@ -356,14 +361,8 @@ class CreateTest extends RESTTestBase {
   public function assertCreateEntityOverRestApi($entity_type, $serialized = NULL) {
     // Note: this will fail with PHP 5.6 when always_populate_raw_post_data is
     // set to something other than -1. See https://www.drupal.org/node/2456025.
-    $response = $this->httpRequest('entity/' . $entity_type, 'POST', $serialized, $this->defaultMimeType);
+    $this->httpRequest('entity/' . $entity_type, 'POST', $serialized, $this->defaultMimeType);
     $this->assertResponse(201);
-
-    // Make sure that the response includes an entity in the body and check the
-    // UUID as an example.
-    $request = Json::decode($serialized);
-    $response = Json::decode($response);
-    $this->assertEqual($request['uuid'][0]['value'], $response['uuid'][0]['value'], 'Got new entity created as response after successful POST over Rest API');
   }
 
   /**

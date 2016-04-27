@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\taxonomy\Tests\LoadMultipleTest.
+ */
+
 namespace Drupal\taxonomy\Tests;
 
 use Drupal\taxonomy\Entity\Term;

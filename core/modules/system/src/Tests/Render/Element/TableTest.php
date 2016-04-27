@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Render\Element\TableTest.
+ */
+
 namespace Drupal\system\Tests\Render\Element;
 
 use Drupal\simpletest\KernelTestBase;
@@ -24,6 +29,7 @@ class TableTest extends KernelTestBase {
   protected function setUp() {
     parent::setUp();
 
+    $this->installSchema('system', 'router');
     \Drupal::service('router.builder')->rebuild();
   }
 
@@ -92,7 +98,7 @@ class TableTest extends KernelTestBase {
 
     // Enable the Classy theme.
     \Drupal::service('theme_handler')->install(['classy']);
-    \Drupal::service('theme_handler')->setDefault('classy');
+    $this->config('system.theme')->set('default', 'classy')->save();
 
     $this->render($table);
     $this->removeWhiteSpace();

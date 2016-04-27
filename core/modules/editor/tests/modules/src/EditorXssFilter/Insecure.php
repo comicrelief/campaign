@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\editor_test\EditorXssFilter\Insecure.
+ */
+
 namespace Drupal\editor_test\EditorXssFilter;
 
 use Drupal\filter\FilterFormatInterface;

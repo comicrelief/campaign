@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\Tests\locale\Unit\StringBaseTest.
+ */
 
 namespace Drupal\Tests\locale\Unit;
 

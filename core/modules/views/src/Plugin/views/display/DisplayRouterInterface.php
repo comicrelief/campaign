@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Plugin\views\display\DisplayRouterInterface.
+ */
+
 namespace Drupal\views\Plugin\views\display;
 
 use Symfony\Component\Routing\RouteCollection;

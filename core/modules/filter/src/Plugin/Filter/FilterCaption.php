@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\filter\Plugin\Filter\FilterCaption.
+ */
+
 namespace Drupal\filter\Plugin\Filter;
 
 use Drupal\Component\Utility\Html;

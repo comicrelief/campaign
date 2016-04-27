@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\language\LanguageSwitcherInterface.
+ */
+
 namespace Drupal\language;
 
 use Drupal\Core\Url;

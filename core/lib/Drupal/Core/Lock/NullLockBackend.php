@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Lock\NullLockBackend.
+ */
+
 namespace Drupal\Core\Lock;
 
 /**

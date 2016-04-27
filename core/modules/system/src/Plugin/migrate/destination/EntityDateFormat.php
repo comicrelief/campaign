@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Plugin\migrate\destination\EntityDateFormat.
+ */
+
 namespace Drupal\system\Plugin\migrate\destination;
 
 use Drupal\Core\Entity\EntityInterface;

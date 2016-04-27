@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Config\ConfigFactoryOverrideBase.
+ */
+
 namespace Drupal\Core\Config;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;

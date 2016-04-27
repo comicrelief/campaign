@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Extension\RequiredModuleUninstallValidator.
+ */
+
 namespace Drupal\Core\Extension;
 
 use Drupal\Core\StringTranslation\StringTranslationTrait;

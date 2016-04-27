@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\migrate\Plugin\migrate\process\Get.
+ */
+
 namespace Drupal\migrate\Plugin\migrate\process;
 
 use Drupal\migrate\ProcessPluginBase;
@@ -30,7 +35,10 @@ class Get extends ProcessPluginBase {
     $properties = is_string($source) ? array($source) : $source;
     $return = array();
     foreach ($properties as $property) {
-      if ($property || (string) $property === '0') {
+      if (empty($property)) {
+        $return[] = $value;
+      }
+      else {
         $is_source = TRUE;
         if ($property[0] == '@') {
           $property = preg_replace_callback('/^(@?)((?:@@)*)([^@]|$)/', function ($matches) use (&$is_source) {
@@ -49,11 +57,7 @@ class Get extends ProcessPluginBase {
           $return[] = $row->getDestinationProperty($property);
         }
       }
-      else {
-        $return[] = $value;
-      }
     }
-
     if (is_string($source)) {
       $this->multiple = is_array($return[0]);
       return $return[0];

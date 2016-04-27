@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\ContentEntityNullStorage.
+ */
+
 namespace Drupal\Core\Entity;
 
 use Drupal\Core\Field\FieldDefinitionInterface;

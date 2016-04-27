@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Form\StateValuesCleanAdvancedTest.
+ */
+
 namespace Drupal\system\Tests\Form;
 
 use Drupal\simpletest\WebTestBase;

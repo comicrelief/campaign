@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\tour\Tests\TourPluginTest.
+ */
+
 namespace Drupal\tour\Tests;
 
 use Drupal\simpletest\KernelTestBase;

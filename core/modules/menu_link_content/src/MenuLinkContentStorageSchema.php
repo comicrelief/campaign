@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\menu_link_content\MenuLinkContentStorageSchema.
+ */
+
 namespace Drupal\menu_link_content;
 
 use Drupal\Core\Entity\Sql\SqlContentEntityStorageSchema;

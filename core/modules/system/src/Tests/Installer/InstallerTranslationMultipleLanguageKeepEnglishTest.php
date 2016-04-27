@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Installer\InstallerTranslationMultipleLanguageKeepEnglishTest.
+ */
+
 namespace Drupal\system\Tests\Installer;
 
 /**

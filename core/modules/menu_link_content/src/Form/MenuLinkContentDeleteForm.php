@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\menu_link_content\Form\MenuLinkContentDeleteForm.
+ */
+
 namespace Drupal\menu_link_content\Form;
 
 use Drupal\Core\Entity\ContentEntityDeleteForm;

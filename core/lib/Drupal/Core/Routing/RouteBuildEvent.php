@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Routing\RouteBuildEvent.
+ */
+
 namespace Drupal\Core\Routing;
 
 use Symfony\Component\EventDispatcher\Event;

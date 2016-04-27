@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\rdf\RdfMappingInterface.
+ */
 
 namespace Drupal\rdf;
 

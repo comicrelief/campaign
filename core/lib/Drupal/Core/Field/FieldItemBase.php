@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Field\FieldItemBase.
+ */
+
 namespace Drupal\Core\Field;
 
 use Drupal\Core\Entity\EntityInterface;

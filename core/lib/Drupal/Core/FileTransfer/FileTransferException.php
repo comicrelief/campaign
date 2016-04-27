@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\FileTransfer\FileTransferException.
+ */
+
 namespace Drupal\Core\FileTransfer;
 
 /**

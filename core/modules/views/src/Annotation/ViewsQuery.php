@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Annotation\ViewsQuery.
+ */
+
 namespace Drupal\views\Annotation;
 
 /**

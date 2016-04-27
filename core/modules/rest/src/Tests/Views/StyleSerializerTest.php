@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\rest\Tests\Views\StyleSerializerTest.
+ */
+
 namespace Drupal\rest\Tests\Views;
 
 use Drupal\Core\Cache\Cache;
@@ -61,7 +66,7 @@ class StyleSerializerTest extends PluginTestBase {
 
     // Save some entity_test entities.
     for ($i = 1; $i <= 10; $i++) {
-      EntityTest::create(array('name' => 'test_' . $i, 'user_id' => $this->adminUser->id()))->save();
+      entity_create('entity_test', array('name' => 'test_' . $i, 'user_id' => $this->adminUser->id()))->save();
     }
 
     $this->enableViewsTestModule();

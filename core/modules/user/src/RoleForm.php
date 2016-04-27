@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\RoleForm.
+ */
+
 namespace Drupal\user;
 
 use Drupal\Core\Entity\EntityForm;

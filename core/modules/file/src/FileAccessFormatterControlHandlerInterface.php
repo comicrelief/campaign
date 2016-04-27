@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\file\FileAccessFormatterControlHandlerInterface.
+ */
+
 namespace Drupal\file;
 
 use Drupal\Core\Entity\EntityAccessControlHandlerInterface;

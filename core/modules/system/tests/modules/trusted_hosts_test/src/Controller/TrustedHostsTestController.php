@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\trusted_hosts_test\Controller\TrustedHostsTestController.
+ */
+
 namespace Drupal\trusted_hosts_test\Controller;
 use Symfony\Component\HttpFoundation\Request;
 

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\KernelTests\RequestProcessing\RedirectOnExceptionTest.
+ */
+
 namespace Drupal\KernelTests\RequestProcessing;
 
 use Drupal\KernelTests\KernelTestBase;
@@ -24,6 +29,7 @@ class RedirectOnExceptionTest extends KernelTestBase {
   protected function setUp() {
     parent::setUp();
 
+    $this->installSchema('system', ['router', 'url_alias']);
     \Drupal::service('router.builder')->rebuild();
   }
 

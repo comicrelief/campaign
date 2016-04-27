@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\ban\Form\BanDelete.
+ */
+
 namespace Drupal\ban\Form;
 
 use Drupal\Core\Form\ConfirmFormBase;
@@ -20,13 +25,6 @@ class BanDelete extends ConfirmFormBase {
    * @var string
    */
   protected $banIp;
-
-  /**
-   * The IP manager.
-   *
-   * @var \Drupal\ban\BanIpManagerInterface
-   */
-  protected $ipManager;
 
   /**
    * Constructs a new BanDelete object.

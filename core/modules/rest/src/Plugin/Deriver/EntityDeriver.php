@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\rest\Plugin\Deriver\EntityDeriver.
+ */
+
 namespace Drupal\rest\Plugin\Deriver;
 
 use Drupal\Core\Entity\EntityManagerInterface;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Plugin\Condition\RequestPathTest.
+ */
+
 namespace Drupal\system\Tests\Plugin\Condition;
 
 use Drupal\Core\Path\CurrentPathStack;
@@ -57,7 +62,7 @@ class RequestPathTest extends KernelTestBase {
   protected function setUp() {
     parent::setUp();
 
-    $this->installSchema('system', array('sequences'));
+    $this->installSchema('system', array('sequences', 'url_alias'));
 
     $this->pluginManager = $this->container->get('plugin.manager.condition');
 

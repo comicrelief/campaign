@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Entity\NodeType.
+ */
+
 namespace Drupal\node\Entity;
 
 use Drupal\Core\Config\Entity\ConfigEntityBundleBase;

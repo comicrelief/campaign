@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Tests\NodeFormSaveChangedTimeTest.
+ */
+
 namespace Drupal\node\Tests;
 
 use Drupal\simpletest\WebTestBase;

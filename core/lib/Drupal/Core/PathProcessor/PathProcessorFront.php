@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\PathProcessor\PathProcessorFront.
+ */
+
 namespace Drupal\Core\PathProcessor;
 
 use Drupal\Core\Config\ConfigFactoryInterface;

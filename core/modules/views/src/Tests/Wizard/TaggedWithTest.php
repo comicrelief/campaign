@@ -1,11 +1,14 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Tests\Wizard\TaggedWithTest.
+ */
+
 namespace Drupal\views\Tests\Wizard;
 
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
-use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Tests\EntityReference\EntityReferenceTestTrait;
-use Drupal\taxonomy\Entity\Vocabulary;
 
 /**
  * Tests the ability of the views wizard to create views filtered by taxonomy.
@@ -74,10 +77,10 @@ class TaggedWithTest extends WizardTestBase {
     $this->nodeTypeWithoutTags = $this->drupalCreateContentType();
 
     // Create the vocabulary for the tag field.
-    $this->tagVocabulary = Vocabulary::create([
+    $this->tagVocabulary = entity_create('taxonomy_vocabulary', array(
       'name' => 'Views testing tags',
       'vid' => 'views_testing_tags',
-    ]);
+    ));
     $this->tagVocabulary->save();
 
     // Create the tag field itself.
@@ -198,7 +201,7 @@ class TaggedWithTest extends WizardTestBase {
 
     // If we add an instance of the tagging field to the second node type, the
     // "tagged with" form element should not appear for it too.
-    FieldConfig::create([
+    entity_create('field_config', array(
       'field_name' => $this->tagFieldName,
       'entity_type' => 'node',
       'bundle' => $this->nodeTypeWithoutTags->id(),
@@ -211,7 +214,7 @@ class TaggedWithTest extends WizardTestBase {
           'auto_create' => TRUE,
         ),
       ),
-    ])->save();
+    ))->save();
     entity_get_form_display('node', $this->nodeTypeWithoutTags->id(), 'default')
       ->setComponent($this->tagFieldName, array(
         'type' => 'entity_reference_autocomplete_tags',

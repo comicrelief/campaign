@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Test fixture.
- */
-
 $connection = Drupal\Core\Database\Database::getConnection();
 
 $connection->insert('config')

@@ -3,7 +3,7 @@
  * Simpletest behaviors.
  */
 
-(function ($, Drupal, drupalSettings) {
+(function ($) {
 
   'use strict';
 
@@ -127,4 +127,4 @@
     }
   };
 
-})(jQuery, Drupal, drupalSettings);
+})(jQuery);

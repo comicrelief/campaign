@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\State\State.
+ */
+
 namespace Drupal\Core\State;
 
 use Drupal\Core\KeyValueStore\KeyValueFactoryInterface;

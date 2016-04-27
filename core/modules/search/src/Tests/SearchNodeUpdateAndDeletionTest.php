@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\search\Tests\SearchNodeUpdateAndDeletionTest.
+ */
 
 namespace Drupal\search\Tests;
 

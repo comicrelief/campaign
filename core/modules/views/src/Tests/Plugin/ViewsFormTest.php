@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Tests\Plugin\ViewsFormTest.
+ */
+
 namespace Drupal\views\Tests\Plugin;
 
 use Drupal\simpletest\WebTestBase;

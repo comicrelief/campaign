@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Session\WriteSafeSessionHandler.
+ */
+
 namespace Drupal\Core\Session;
 
 /**

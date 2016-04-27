@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\shortcut\Form\ShortcutDeleteForm.
+ */
+
 namespace Drupal\shortcut\Form;
 
 use Drupal\Core\Entity\ContentEntityDeleteForm;

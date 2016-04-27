@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Path\AliasManager.
+ */
+
 namespace Drupal\Core\Path;
 
 use Drupal\Core\Cache\CacheBackendInterface;

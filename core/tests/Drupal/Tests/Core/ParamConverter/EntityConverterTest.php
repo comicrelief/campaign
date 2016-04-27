@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\ParamConverter\EntityConverterTest.
+ */
+
 namespace Drupal\Tests\Core\ParamConverter;
 
 use Drupal\Core\ParamConverter\EntityConverter;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\locale\LocaleProjectStorage.
+ */
+
 namespace Drupal\locale;
 
 use Drupal\Core\KeyValueStore\KeyValueFactoryInterface;

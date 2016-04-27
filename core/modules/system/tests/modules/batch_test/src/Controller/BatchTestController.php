@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\batch_test\Controller\BatchTestController.
+ */
 
 namespace Drupal\batch_test\Controller;
 

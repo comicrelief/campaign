@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Session\AnonymousUserSession.
+ */
+
 namespace Drupal\Core\Session;
 
 /**

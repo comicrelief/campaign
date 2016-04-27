@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Render\Element\HtmlTagTest.
+ */
+
 namespace Drupal\Tests\Core\Render\Element;
 
 use Drupal\Core\Render\Markup;

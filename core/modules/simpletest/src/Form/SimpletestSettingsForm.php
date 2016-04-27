@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\simpletest\Form\SimpletestSettingsForm.
+ */
+
 namespace Drupal\simpletest\Form;
 
 use Drupal\Core\Form\ConfigFormBase;

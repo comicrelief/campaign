@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\aggregator\Annotation\AggregatorFetcher.
+ */
+
 namespace Drupal\aggregator\Annotation;
 
 use Drupal\Component\Annotation\Plugin;

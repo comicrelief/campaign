@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\session_test\Session\TestSessionHandlerProxy.
+ */
+
 namespace Drupal\session_test\Session;
 
 /**

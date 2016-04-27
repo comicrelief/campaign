@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\block\Controller\BlockListController.
+ */
+
 namespace Drupal\block\Controller;
 
 use Drupal\Core\Entity\Controller\EntityListController;

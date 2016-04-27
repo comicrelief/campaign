@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Common\PageRenderTest.
+ */
+
 namespace Drupal\system\Tests\Common;
 
 use Drupal\simpletest\KernelTestBase;
@@ -16,6 +21,7 @@ class PageRenderTest extends KernelTestBase {
    */
   function testHookPageAttachmentsExceptions() {
     $this->enableModules(['common_test', 'system']);
+    $this->installSchema('system', 'router');
     \Drupal::service('router.builder')->rebuild();
 
     $this->assertPageRenderHookExceptions('common_test', 'hook_page_attachments');
@@ -26,6 +32,7 @@ class PageRenderTest extends KernelTestBase {
    */
   function testHookPageAlter() {
     $this->enableModules(['common_test', 'system']);
+    $this->installSchema('system', 'router');
     \Drupal::service('router.builder')->rebuild();
 
     $this->assertPageRenderHookExceptions('common_test', 'hook_page_attachments_alter');

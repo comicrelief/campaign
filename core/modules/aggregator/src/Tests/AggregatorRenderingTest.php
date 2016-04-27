@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\aggregator\Tests\AggregatorRenderingTest.
+ */
+
 namespace Drupal\aggregator\Tests;
 
 use Drupal\Component\Utility\SafeMarkup;

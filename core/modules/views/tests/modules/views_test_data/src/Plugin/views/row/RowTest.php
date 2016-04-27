@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views_test_data\Plugin\views\row\RowTest.
+ */
+
 namespace Drupal\views_test_data\Plugin\views\row;
 
 use Drupal\Core\Form\FormStateInterface;

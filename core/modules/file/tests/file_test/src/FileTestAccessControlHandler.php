@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\file_test\FileTestAccessControlHandler.
+ */
 
 namespace Drupal\file_test;
 

@@ -11,9 +11,6 @@
    * Attaches sticky table headers.
    *
    * @type {Drupal~behavior}
-   *
-   * @prop {Drupal~behaviorAttach} attach
-   *   Attaches the sticky table header behavior.
    */
   Drupal.behaviors.tableHeader = {
     attach: function (context) {
@@ -218,12 +215,9 @@
      * Set absolute position of sticky.
      *
      * @param {number} offsetTop
-     *   The top offset for the sticky header.
      * @param {number} offsetLeft
-     *   The left offset for the sticky header.
      *
      * @return {jQuery}
-     *   The sticky table as a jQuery collection.
      */
     stickyPosition: function (offsetTop, offsetLeft) {
       var css = {};
@@ -240,7 +234,6 @@
      * Returns true if sticky is currently visible.
      *
      * @return {bool}
-     *   The visibility status.
      */
     checkStickyVisible: function () {
       var scrollTop = scrollValue('scrollTop');
@@ -263,7 +256,6 @@
      * calls.
      *
      * @param {jQuery.Event} e
-     *   The scroll event.
      */
     onScroll: function (e) {
       this.checkStickyVisible();

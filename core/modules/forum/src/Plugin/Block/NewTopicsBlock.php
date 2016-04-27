@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\forum\Plugin\Block\NewTopicsBlock.
+ */
+
 namespace Drupal\forum\Plugin\Block;
 
 /**

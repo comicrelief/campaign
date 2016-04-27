@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\File\NameMungingTest.
+ */
+
 namespace Drupal\system\Tests\File;
 
 /**

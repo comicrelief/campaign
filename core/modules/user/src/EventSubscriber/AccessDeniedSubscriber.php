@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\EventSubscriber\AccessDeniedSubscriber.
+ */
+
 namespace Drupal\user\EventSubscriber;
 
 use Drupal\Core\Session\AccountInterface;
@@ -38,7 +43,7 @@ class AccessDeniedSubscriber implements EventSubscriberInterface {
    * @param \Drupal\Core\Routing\UrlGeneratorInterface $url_generator
    *   The URL generator.
    */
-  public function __construct(AccountInterface $account, UrlGeneratorInterface $url_generator) {
+  public function __construct(AccountInterface $account, URLGeneratorInterface $url_generator) {
     $this->account = $account;
     $this->setUrlGenerator($url_generator);
   }

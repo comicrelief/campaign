@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\block_content\Tests\BlockContentListTest.
+ */
+
 namespace Drupal\block_content\Tests;
 
 /**

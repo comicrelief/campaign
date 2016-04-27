@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Component\Serialization\Json.
+ */
+
 namespace Drupal\Component\Serialization;
 
 /**

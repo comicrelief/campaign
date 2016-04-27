@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\file\FileViewsData.
+ */
+
 namespace Drupal\file;
 
 use Drupal\views\EntityViewsData;
@@ -16,7 +21,7 @@ class FileViewsData extends EntityViewsData {
     $data = parent::getViewsData();
 
     // @TODO There is no corresponding information in entity metadata.
-    $data['file_managed']['table']['base']['help'] = $this->t('Files maintained by Drupal and various modules.');
+    $data['file_managed']['table']['base']['help'] = t('Files maintained by Drupal and various modules.');
     $data['file_managed']['table']['base']['defaults']['field'] = 'filename';
     $data['file_managed']['table']['wizard_id'] = 'file_managed';
 
@@ -27,13 +32,13 @@ class FileViewsData extends EntityViewsData {
       'numeric' => TRUE,
     );
     $data['file_managed']['fid']['relationship'] = array(
-      'title' => $this->t('File usage'),
-      'help' => $this->t('Relate file entities to their usage.'),
+      'title' => t('File usage'),
+      'help' => t('Relate file entities to their usage.'),
       'id' => 'standard',
       'base' => 'file_usage',
       'base field' => 'fid',
       'field' => 'fid',
-      'label' => $this->t('File usage'),
+      'label' => t('File usage'),
     );
 
     $data['file_managed']['uri']['field']['default_formatter'] = 'file_uri';
@@ -41,8 +46,8 @@ class FileViewsData extends EntityViewsData {
     $data['file_managed']['filemime']['field']['default_formatter'] = 'file_filemime';
 
     $data['file_managed']['extension'] = array(
-      'title' => $this->t('Extension'),
-      'help' => $this->t('The extension of the file.'),
+      'title' => t('Extension'),
+      'help' => t('The extension of the file.'),
       'real field' => 'filename',
       'field' => array(
         'entity_type' => 'file',
@@ -58,14 +63,14 @@ class FileViewsData extends EntityViewsData {
     $data['file_managed']['status']['field']['default_formatter_settings'] = [
       'format' => 'custom',
       'format_custom_false' => $this->t('Temporary'),
-      'format_custom_true' => $this->t('Permanent'),
+      'format_custom_true' => t('Permanent'),
     ];
     $data['file_managed']['status']['filter']['id'] = 'file_status';
 
-    $data['file_managed']['uid']['relationship']['title'] = $this->t('User who uploaded');
-    $data['file_managed']['uid']['relationship']['label'] = $this->t('User who uploaded');
+    $data['file_managed']['uid']['relationship']['title'] = t('User who uploaded');
+    $data['file_managed']['uid']['relationship']['label'] = t('User who uploaded');
 
-    $data['file_usage']['table']['group']  = $this->t('File Usage');
+    $data['file_usage']['table']['group']  = t('File Usage');
 
     // Provide field-type-things to several base tables; on the core files table
     // ("file_managed") so that we can create relationships from files to
@@ -114,15 +119,15 @@ class FileViewsData extends EntityViewsData {
 
     // Describes relationships between files and nodes.
     $data['file_usage']['file_to_node'] = array(
-      'title' => $this->t('Content'),
-      'help' => $this->t('Content that is associated with this file, usually because this file is in a field on the content.'),
+      'title' => t('Content'),
+      'help' => t('Content that is associated with this file, usually because this file is in a field on the content.'),
       // Only provide this field/relationship/etc.,
       // when the 'file_managed' base table is present.
       'skip base' => array('node_field_data', 'node_field_revision', 'users_field_data', 'comment_field_data', 'taxonomy_term_field_data'),
       'real field' => 'id',
       'relationship' => array(
-        'title' => $this->t('Content'),
-        'label' => $this->t('Content'),
+        'title' => t('Content'),
+        'label' => t('Content'),
         'base' => 'node_field_data',
         'base field' => 'nid',
         'relationship field' => 'id',
@@ -130,15 +135,15 @@ class FileViewsData extends EntityViewsData {
       ),
     );
     $data['file_usage']['node_to_file'] = array(
-      'title' => $this->t('File'),
-      'help' => $this->t('A file that is associated with this node, usually because it is in a field on the node.'),
+      'title' => t('File'),
+      'help' => t('A file that is associated with this node, usually because it is in a field on the node.'),
       // Only provide this field/relationship/etc.,
       // when the 'node' base table is present.
       'skip base' => array('file_managed', 'users_field_data', 'comment_field_data', 'taxonomy_term_field_data'),
       'real field' => 'fid',
       'relationship' => array(
-        'title' => $this->t('File'),
-        'label' => $this->t('File'),
+        'title' => t('File'),
+        'label' => t('File'),
         'base' => 'file_managed',
         'base field' => 'fid',
         'relationship field' => 'fid',
@@ -147,15 +152,15 @@ class FileViewsData extends EntityViewsData {
 
     // Describes relationships between files and users.
     $data['file_usage']['file_to_user'] = array(
-      'title' => $this->t('User'),
-      'help' => $this->t('A user that is associated with this file, usually because this file is in a field on the user.'),
+      'title' => t('User'),
+      'help' => t('A user that is associated with this file, usually because this file is in a field on the user.'),
       // Only provide this field/relationship/etc.,
       // when the 'file_managed' base table is present.
       'skip base' => array('node_field_data', 'node_field_revision', 'users_field_data', 'comment_field_data', 'taxonomy_term_field_data'),
       'real field' => 'id',
       'relationship' => array(
-        'title' => $this->t('User'),
-        'label' => $this->t('User'),
+        'title' => t('User'),
+        'label' => t('User'),
         'base' => 'users',
         'base field' => 'uid',
         'relationship field' => 'id',
@@ -163,15 +168,15 @@ class FileViewsData extends EntityViewsData {
       ),
     );
     $data['file_usage']['user_to_file'] = array(
-      'title' => $this->t('File'),
-      'help' => $this->t('A file that is associated with this user, usually because it is in a field on the user.'),
+      'title' => t('File'),
+      'help' => t('A file that is associated with this user, usually because it is in a field on the user.'),
       // Only provide this field/relationship/etc.,
       // when the 'users' base table is present.
       'skip base' => array('file_managed', 'node_field_data', 'node_field_revision', 'comment_field_data', 'taxonomy_term_field_data'),
       'real field' => 'fid',
       'relationship' => array(
-        'title' => $this->t('File'),
-        'label' => $this->t('File'),
+        'title' => t('File'),
+        'label' => t('File'),
         'base' => 'file_managed',
         'base field' => 'fid',
         'relationship field' => 'fid',
@@ -180,15 +185,15 @@ class FileViewsData extends EntityViewsData {
 
     // Describes relationships between files and comments.
     $data['file_usage']['file_to_comment'] = array(
-      'title' => $this->t('Comment'),
-      'help' => $this->t('A comment that is associated with this file, usually because this file is in a field on the comment.'),
+      'title' => t('Comment'),
+      'help' => t('A comment that is associated with this file, usually because this file is in a field on the comment.'),
       // Only provide this field/relationship/etc.,
       // when the 'file_managed' base table is present.
       'skip base' => array('node_field_data', 'node_field_revision', 'users_field_data', 'comment_field_data', 'taxonomy_term_field_data'),
       'real field' => 'id',
       'relationship' => array(
-        'title' => $this->t('Comment'),
-        'label' => $this->t('Comment'),
+        'title' => t('Comment'),
+        'label' => t('Comment'),
         'base' => 'comment_field_data',
         'base field' => 'cid',
         'relationship field' => 'id',
@@ -196,15 +201,15 @@ class FileViewsData extends EntityViewsData {
       ),
     );
     $data['file_usage']['comment_to_file'] = array(
-      'title' => $this->t('File'),
-      'help' => $this->t('A file that is associated with this comment, usually because it is in a field on the comment.'),
+      'title' => t('File'),
+      'help' => t('A file that is associated with this comment, usually because it is in a field on the comment.'),
       // Only provide this field/relationship/etc.,
       // when the 'comment' base table is present.
       'skip base' => array('file_managed', 'node_field_data', 'node_field_revision', 'users_field_data', 'taxonomy_term_field_data'),
       'real field' => 'fid',
       'relationship' => array(
-        'title' => $this->t('File'),
-        'label' => $this->t('File'),
+        'title' => t('File'),
+        'label' => t('File'),
         'base' => 'file_managed',
         'base field' => 'fid',
         'relationship field' => 'fid',
@@ -213,15 +218,15 @@ class FileViewsData extends EntityViewsData {
 
     // Describes relationships between files and taxonomy_terms.
     $data['file_usage']['file_to_taxonomy_term'] = array(
-      'title' => $this->t('Taxonomy Term'),
-      'help' => $this->t('A taxonomy term that is associated with this file, usually because this file is in a field on the taxonomy term.'),
+      'title' => t('Taxonomy Term'),
+      'help' => t('A taxonomy term that is associated with this file, usually because this file is in a field on the taxonomy term.'),
       // Only provide this field/relationship/etc.,
       // when the 'file_managed' base table is present.
       'skip base' => array('node_field_data', 'node_field_revision', 'users_field_data', 'comment_field_data', 'taxonomy_term_field_data'),
       'real field' => 'id',
       'relationship' => array(
-        'title' => $this->t('Taxonomy Term'),
-        'label' => $this->t('Taxonomy Term'),
+        'title' => t('Taxonomy Term'),
+        'label' => t('Taxonomy Term'),
         'base' => 'taxonomy_term_data',
         'base field' => 'tid',
         'relationship field' => 'id',
@@ -229,15 +234,15 @@ class FileViewsData extends EntityViewsData {
       ),
     );
     $data['file_usage']['taxonomy_term_to_file'] = array(
-      'title' => $this->t('File'),
-      'help' => $this->t('A file that is associated with this taxonomy term, usually because it is in a field on the taxonomy term.'),
+      'title' => t('File'),
+      'help' => t('A file that is associated with this taxonomy term, usually because it is in a field on the taxonomy term.'),
       // Only provide this field/relationship/etc.,
       // when the 'taxonomy_term_data' base table is present.
       'skip base' => array('file_managed', 'node_field_data', 'node_field_revision', 'users_field_data', 'comment_field_data'),
       'real field' => 'fid',
       'relationship' => array(
-        'title' => $this->t('File'),
-        'label' => $this->t('File'),
+        'title' => t('File'),
+        'label' => t('File'),
         'base' => 'file_managed',
         'base field' => 'fid',
         'relationship field' => 'fid',
@@ -248,8 +253,8 @@ class FileViewsData extends EntityViewsData {
     // we've declared joins to, because there is no 'skip base' property on these
     // fields.
     $data['file_usage']['module'] = array(
-      'title' => $this->t('Module'),
-      'help' => $this->t('The module managing this file relationship.'),
+      'title' => t('Module'),
+      'help' => t('The module managing this file relationship.'),
       'field' => array(
         'id' => 'standard',
        ),
@@ -264,8 +269,8 @@ class FileViewsData extends EntityViewsData {
       ),
     );
     $data['file_usage']['type'] = array(
-      'title' => $this->t('Entity type'),
-      'help' => $this->t('The type of entity that is related to the file.'),
+      'title' => t('Entity type'),
+      'help' => t('The type of entity that is related to the file.'),
       'field' => array(
         'id' => 'standard',
        ),
@@ -280,8 +285,8 @@ class FileViewsData extends EntityViewsData {
       ),
     );
     $data['file_usage']['id'] = array(
-      'title' => $this->t('Entity ID'),
-      'help' => $this->t('The ID of the entity that is related to the file.'),
+      'title' => t('Entity ID'),
+      'help' => t('The ID of the entity that is related to the file.'),
       'field' => array(
         'id' => 'numeric',
       ),
@@ -296,8 +301,8 @@ class FileViewsData extends EntityViewsData {
       ),
     );
     $data['file_usage']['count'] = array(
-      'title' => $this->t('Use count'),
-      'help' => $this->t('The number of times the file is used by this entity.'),
+      'title' => t('Use count'),
+      'help' => t('The number of times the file is used by this entity.'),
       'field' => array(
         'id' => 'numeric',
        ),
@@ -309,8 +314,8 @@ class FileViewsData extends EntityViewsData {
       ),
     );
     $data['file_usage']['entity_label'] = array(
-      'title' => $this->t('Entity label'),
-      'help' => $this->t('The label of the entity that is related to the file.'),
+      'title' => t('Entity label'),
+      'help' => t('The label of the entity that is related to the file.'),
       'real field' => 'id',
       'field' => array(
         'id' => 'entity_label',

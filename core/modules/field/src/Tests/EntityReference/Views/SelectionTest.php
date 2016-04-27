@@ -1,11 +1,14 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\field\Tests\EntityReference\Views\SelectionTest.
+ */
+
 namespace Drupal\field\Tests\EntityReference\Views;
 
-use Drupal\field\Entity\FieldConfig;
 use Drupal\simpletest\WebTestBase;
 use Drupal\views\Views;
-use Drupal\field\Entity\FieldStorageConfig;
 
 /**
  * Tests entity reference selection handler.
@@ -47,7 +50,7 @@ class SelectionTest extends WebTestBase {
     }
 
     // Create a field.
-    $field_storage = FieldStorageConfig::create(array(
+    $field_storage = entity_create('field_storage_config', array(
       'field_name' => 'test_field',
       'entity_type' => 'entity_test',
       'translatable' => FALSE,
@@ -58,7 +61,7 @@ class SelectionTest extends WebTestBase {
       'cardinality' => '1',
     ));
     $field_storage->save();
-    $field = FieldConfig::create([
+    $field = entity_create('field_config', array(
       'field_storage' => $field_storage,
       'bundle' => 'test_bundle',
       'settings' => array(
@@ -71,7 +74,7 @@ class SelectionTest extends WebTestBase {
           ),
         ),
       ),
-    ]);
+    ));
     $field->save();
     $this->field = $field;
   }

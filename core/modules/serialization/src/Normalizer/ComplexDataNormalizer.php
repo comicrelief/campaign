@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\serialization\Normalizer\ComplexDataNormalizer.
+ */
+
 namespace Drupal\serialization\Normalizer;
 
 /**

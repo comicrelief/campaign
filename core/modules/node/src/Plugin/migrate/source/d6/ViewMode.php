@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Plugin\migrate\source\d6\ViewMode.
+ */
+
 namespace Drupal\node\Plugin\migrate\source\d6;
 
 /**

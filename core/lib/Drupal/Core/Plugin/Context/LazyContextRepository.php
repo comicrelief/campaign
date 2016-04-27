@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Plugin\Context\LazyContextRepository.
+ */
+
 namespace Drupal\Core\Plugin\Context;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;

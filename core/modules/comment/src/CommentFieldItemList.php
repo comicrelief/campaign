@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\comment\CommentFieldItemList.
+ */
+
 namespace Drupal\comment;
 
 use Drupal\Core\Field\FieldItemList;

@@ -1,13 +1,18 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Component\EventDispatcher\ContainerAwareEventDispatcherTest.
+ */
+
 namespace Drupal\Tests\Component\EventDispatcher;
 
 use Drupal\Component\EventDispatcher\ContainerAwareEventDispatcher;
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\EventDispatcher\Tests\AbstractEventDispatcherTest;
 use Symfony\Component\EventDispatcher\Tests\CallableClass;
 use Symfony\Component\EventDispatcher\Tests\TestEventListener;
-use Symfony\Component\EventDispatcher\Tests\ContainerAwareEventDispatcherTest as SymfonyContainerAwareEventDispatcherTest;
 
 /**
  * Unit tests for the ContainerAwareEventDispatcher.
@@ -22,7 +27,7 @@ use Symfony\Component\EventDispatcher\Tests\ContainerAwareEventDispatcherTest as
  *
  * @group EventDispatcher
  */
-class ContainerAwareEventDispatcherTest extends SymfonyContainerAwareEventDispatcherTest
+class ContainerAwareEventDispatcherTest extends AbstractEventDispatcherTest
 {
     protected function createEventDispatcher()
     {
@@ -170,11 +175,4 @@ class ContainerAwareEventDispatcherTest extends SymfonyContainerAwareEventDispat
         $otherService = $container->get('other_listener_service');
         $this->assertTrue($otherService->preFooInvoked);
     }
-
-    public function testGetListenerPriority()
-    {
-        // Override the parent test as our implementation doesn't define
-        // getListenerPriority().
-    }
-
- }
+}

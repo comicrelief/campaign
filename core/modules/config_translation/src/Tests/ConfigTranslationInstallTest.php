@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\config_translation\Tests\ConfigTranslationInstallTest.
+ */
+
 namespace Drupal\config_translation\Tests;
 
 use Drupal\simpletest\InstallerTestBase;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\entity_test\Entity\EntityTestAdminRoutes.
+ */
+
 namespace Drupal\entity_test\Entity;
 
 /**

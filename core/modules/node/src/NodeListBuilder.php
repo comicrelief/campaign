@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\NodeListBuilder.
+ */
+
 namespace Drupal\node;
 
 use Drupal\Core\Datetime\DateFormatterInterface;

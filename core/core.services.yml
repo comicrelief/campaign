@@ -55,11 +55,6 @@ services:
     arguments: ['@request_stack']
     tags:
       - { name: cache.context}
-  cache_context.session.exists:
-    class: Drupal\Core\Cache\Context\SessionExistsCacheContext
-    arguments: ['@session_configuration', '@request_stack']
-    tags:
-      - { name: cache.context}
   cache_context.request_format:
     class: Drupal\Core\Cache\Context\RequestFormatCacheContext
     arguments: ['@request_stack']
@@ -473,7 +468,7 @@ services:
     class: Drupal\Core\Extension\ModuleInstaller
     tags:
       - { name: service_collector, tag: 'module_install.uninstall_validator', call: addUninstallValidator }
-    arguments: ['@app.root', '@module_handler', '@kernel', '@router.builder']
+    arguments: ['@app.root', '@module_handler', '@kernel']
     lazy: true
   content_uninstall_validator:
     class: Drupal\Core\Entity\ContentUninstallValidator
@@ -502,7 +497,6 @@ services:
   entity.manager:
     class: Drupal\Core\Entity\EntityManager
     parent: container.trait
-    deprecated: '%service_id%-no-warning'
     # @todo Remove this tag in https://www.drupal.org/node/2549143.
     tags:
       - { name: plugin_manager_cache_clear }
@@ -763,9 +757,6 @@ services:
     tags:
       - { name: event_subscriber }
       - { name: backend_overridable }
-  router.route_provider.lazy_builder:
-    class: Drupal\Core\Routing\RouteProviderLazyBuilder
-    arguments: ['@router.route_provider', '@router.builder']
   router.route_preloader:
     class: Drupal\Core\Routing\RoutePreloader
     arguments: ['@router.route_provider', '@state', '@cache.bootstrap']
@@ -912,11 +903,6 @@ services:
     tags:
       - { name: paramconverter }
     arguments: ['@entity.manager']
-  paramconverter.entity_revision:
-    class: Drupal\Core\ParamConverter\EntityRevisionParamConverter
-    tags:
-      - { name: paramconverter }
-    arguments: ['@entity_type.manager']
   paramconverter.configentity_admin:
     class: Drupal\Core\ParamConverter\AdminPathConfigEntityConverter
     tags:
@@ -971,10 +957,6 @@ services:
     class: Drupal\Core\Entity\Enhancer\EntityRouteEnhancer
     tags:
       - { name: route_enhancer, priority: 20 }
-  route_enhancer.entity_revision:
-    class: Drupal\Core\Routing\Enhancer\EntityRevisionRouteEnhancer
-    tags:
-      - { name: route_enhancer }
   route_special_attributes_subscriber:
     class: Drupal\Core\EventSubscriber\SpecialAttributesRouteSubscriber
     tags:
@@ -1033,12 +1015,7 @@ services:
     class: Symfony\Component\HttpKernel\EventListener\RouterListener
     tags:
       - { name: event_subscriber }
-    arguments: ['@router', '@request_stack', '@router.request_context', NULL]
-  options_request_listener:
-    class: Drupal\Core\EventSubscriber\OptionsRequestSubscriber
-    arguments: ['@router.route_provider']
-    tags:
-      - { name: event_subscriber }
+    arguments: ['@router', '@router.request_context', NULL, '@request_stack']
   bare_html_page_renderer:
     class: Drupal\Core\Render\BareHtmlPageRenderer
     arguments: ['@renderer', '@html_response.attachments_processor']
@@ -1072,11 +1049,6 @@ services:
     arguments: ['@entity.manager']
     tags:
       - { name: access_check, applies_to: _entity_create_access }
-  access_check.entity_create_any:
-    class: Drupal\Core\Entity\EntityCreateAnyAccessCheck
-    arguments: ['@entity_type.manager', '@entity_type.bundle.info']
-    tags:
-      - { name: access_check, applies_to: _entity_create_any_access }
   access_check.theme:
     class: Drupal\Core\Theme\ThemeAccessCheck
     arguments: ['@theme_handler']
@@ -1172,7 +1144,7 @@ services:
     class: Drupal\Core\EventSubscriber\DefaultExceptionHtmlSubscriber
     tags:
       - { name: event_subscriber }
-    arguments: ['@http_kernel', '@logger.channel.php', '@redirect.destination', '@router.no_access_checks']
+    arguments: ['@http_kernel', '@logger.channel.php', '@redirect.destination']
   exception.default:
     class: Drupal\Core\EventSubscriber\DefaultExceptionSubscriber
     tags:
@@ -1192,7 +1164,7 @@ services:
     class: Drupal\Core\EventSubscriber\CustomPageExceptionHtmlSubscriber
     tags:
       - { name: event_subscriber }
-    arguments: ['@config.factory', '@http_kernel', '@logger.channel.php', '@redirect.destination', '@router.no_access_checks', '@access_manager']
+    arguments: ['@config.factory', '@path.alias_manager', '@http_kernel', '@logger.channel.php', '@redirect.destination']
   exception.fast_404_html:
     class: Drupal\Core\EventSubscriber\Fast404ExceptionHtmlSubscriber
     tags:
@@ -1284,7 +1256,7 @@ services:
       - { name: plugin_manager_cache_clear }
   image.toolkit.operation.manager:
     class: Drupal\Core\ImageToolkit\ImageToolkitOperationManager
-    arguments: ['@logger.channel.image', '@image.toolkit.manager']
+    arguments: ['@logger.channel.image']
     parent: default_plugin_manager
     tags:
       - { name: plugin_manager_cache_clear }
@@ -1325,74 +1297,74 @@ services:
     calls:
       - [setContainer, ['@service_container']]
     arguments: ['feed.writer.']
-# Zend Feed reader plugins. Plugin instances should not be shared.
+# Zend Feed reader plugins. Plugins should be set as prototype scope.
   feed.reader.dublincoreentry:
     class: Zend\Feed\Reader\Extension\DublinCore\Entry
-    shared: false
+    scope: prototype
   feed.reader.dublincorefeed:
     class: Zend\Feed\Reader\Extension\DublinCore\Feed
-    shared: false
+    scope: prototype
   feed.reader.contententry:
     class: Zend\Feed\Reader\Extension\Content\Entry
-    shared: false
+    scope: prototype
   feed.reader.atomentry:
     class: Zend\Feed\Reader\Extension\Atom\Entry
-    shared: false
+    scope: prototype
   feed.reader.atomfeed:
     class: Zend\Feed\Reader\Extension\Atom\Feed
-    shared: false
+    scope: prototype
   feed.reader.slashentry:
     class: Zend\Feed\Reader\Extension\Slash\Entry
-    shared: false
+    scope: prototype
   feed.reader.wellformedwebentry:
     class: Zend\Feed\Reader\Extension\WellFormedWeb\Entry
-    shared: false
+    scope: prototype
   feed.reader.threadentry:
     class: Zend\Feed\Reader\Extension\Thread\Entry
-    shared: false
+    scope: prototype
   feed.reader.podcastentry:
     class: Zend\Feed\Reader\Extension\Podcast\Entry
-    shared: false
+    scope: prototype
   feed.reader.podcastfeed:
     class: Zend\Feed\Reader\Extension\Podcast\Feed
-    shared: false
+    scope: prototype
 # Zend Feed writer plugins. Plugins should be set as prototype scope.
   feed.writer.atomrendererfeed:
     class: Zend\Feed\Writer\Extension\Atom\Renderer\Feed
-    shared: false
+    scope: prototype
   feed.writer.contentrendererentry:
     class: Zend\Feed\Writer\Extension\Content\Renderer\Entry
-    shared: false
+    scope: prototype
   feed.writer.dublincorerendererentry:
     class: Zend\Feed\Writer\Extension\DublinCore\Renderer\Entry
-    shared: false
+    scope: prototype
   feed.writer.dublincorerendererfeed:
     class: Zend\Feed\Writer\Extension\DublinCore\Renderer\Feed
-    shared: false
+    scope: prototype
   feed.writer.itunesentry:
     class: Zend\Feed\Writer\Extension\ITunes\Entry
-    shared: false
+    scope: prototype
   feed.writer.itunesfeed:
     class: Zend\Feed\Writer\Extension\ITunes\Feed
-    shared: false
+    scope: prototype
   feed.writer.itunesrendererentry:
     class: Zend\Feed\Writer\Extension\ITunes\Renderer\Entry
-    shared: false
+    scope: prototype
   feed.writer.itunesrendererfeed:
     class: Zend\Feed\Writer\Extension\ITunes\Renderer\Feed
-    shared: false
+    scope: prototype
   feed.writer.slashrendererentry:
     class: Zend\Feed\Writer\Extension\Slash\Renderer\Entry
-    shared: false
+    scope: prototype
   feed.writer.threadingrendererentry:
     class: Zend\Feed\Writer\Extension\Threading\Renderer\Entry
-    shared: false
+    scope: prototype
   feed.writer.wellformedwebrendererentry:
     class: Zend\Feed\Writer\Extension\WellFormedWeb\Renderer\Entry
-    shared: false
+    scope: prototype
   theme.manager:
     class: Drupal\Core\Theme\ThemeManager
-    arguments: ['@app.root', '@theme.negotiator', '@theme.initialization', '@module_handler']
+    arguments: ['@app.root', '@theme.negotiator', '@theme.initialization', '@request_stack', '@module_handler']
     calls:
       - [setThemeRegistry, ['@theme.registry']]
   theme.initialization:

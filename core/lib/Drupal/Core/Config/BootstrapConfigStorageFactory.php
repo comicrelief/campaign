@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Config\BootstrapConfigStorageFactory.
+ */
+
 namespace Drupal\Core\Config;
 
 use Drupal\Core\Database\Database;

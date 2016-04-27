@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\menu_link_content_dynamic_route\Routes.
+ */
+
 namespace Drupal\menu_link_content_dynamic_route;
 
 /**

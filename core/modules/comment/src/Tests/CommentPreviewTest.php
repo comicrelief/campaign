@@ -1,9 +1,14 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\comment\Tests\CommentPreviewTest.
+ */
+
 namespace Drupal\comment\Tests;
 
 use Drupal\comment\CommentManagerInterface;
-use Drupal\Component\Render\MarkupInterface;
+use Drupal\Component\Utility\SafeMarkup;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\comment\Entity\Comment;
 
@@ -49,7 +54,7 @@ class CommentPreviewTest extends CommentTestBase {
 
     \Drupal::state()->set('user_hooks_test_user_format_name_alter_safe', TRUE);
     $this->drupalPostForm('node/' . $this->node->id(), $edit, t('Preview'));
-    $this->assertTrue($this->webUser->getDisplayName() instanceof MarkupInterface, 'Username is marked safe');
+    $this->assertTrue(SafeMarkup::isSafe($this->webUser->getDisplayName()), 'Username is marked safe');
     $this->assertNoEscaped('<em>' . $this->webUser->id() . '</em>');
     $this->assertRaw('<em>' . $this->webUser->id() . '</em>');
 

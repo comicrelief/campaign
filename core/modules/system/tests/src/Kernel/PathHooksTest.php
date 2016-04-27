@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\system\Kernel\PathHooksTest.
+ */
+
 namespace Drupal\Tests\system\Kernel;
 
 use Drupal\Core\Language\LanguageInterface;
@@ -21,6 +26,8 @@ class PathHooksTest extends KernelTestBase {
    * Test system_path_*() correctly clears caches.
    */
   public function testPathHooks() {
+    $this->installSchema('system', ['url_alias']);
+
     $source = '/' . $this->randomMachineName();
     $alias = '/' . $this->randomMachineName();
 

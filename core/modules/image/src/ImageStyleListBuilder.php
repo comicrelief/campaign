@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\image\ImageStyleListBuilder.
+ */
+
 namespace Drupal\image;
 
 use Drupal\Core\Config\Entity\ConfigEntityListBuilder;

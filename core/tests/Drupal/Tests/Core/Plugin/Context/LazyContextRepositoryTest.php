@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Plugin\Context\LazyContextRepositoryTest.
+ */
+
 namespace Drupal\Tests\Core\Plugin\Context;
 
 use Drupal\Core\Plugin\Context\Context;

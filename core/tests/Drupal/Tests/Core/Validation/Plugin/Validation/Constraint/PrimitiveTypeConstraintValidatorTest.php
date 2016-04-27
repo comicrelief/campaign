@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Validation\Plugin\Validation\Constraint\PrimitiveTypeConstraintValidatorTest.
+ */
+
 namespace Drupal\Tests\Core\Validation\Plugin\Validation\Constraint;
 
 use Drupal\Core\TypedData\DataDefinition;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Menu\MenuTreeStorageTest.
+ */
+
 namespace Drupal\system\Tests\Menu;
 
 use Drupal\Component\Plugin\Exception\PluginException;

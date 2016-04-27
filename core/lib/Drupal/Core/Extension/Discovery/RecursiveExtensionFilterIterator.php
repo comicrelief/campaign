@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Extension\Discovery\RecursiveExtensionFilterIterator.
+ */
+
 namespace Drupal\Core\Extension\Discovery;
 
 /**

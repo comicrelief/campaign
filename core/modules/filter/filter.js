@@ -3,7 +3,7 @@
  * Attaches behavior for the Filter module.
  */
 
-(function ($, Drupal) {
+(function ($) {
 
   'use strict';
 
@@ -36,4 +36,4 @@
     }
   };
 
-})(jQuery, Drupal);
+})(jQuery);

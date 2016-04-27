@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\config\Tests\SchemaCheckTestTrait.
+ */
+
 namespace Drupal\config\Tests;
 
 use Drupal\Core\Config\TypedConfigManagerInterface;

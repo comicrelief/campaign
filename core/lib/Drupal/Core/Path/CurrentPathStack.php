@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Path\CurrentPathStack.
+ */
+
 namespace Drupal\Core\Path;
 use Symfony\Component\HttpFoundation\RequestStack;
 

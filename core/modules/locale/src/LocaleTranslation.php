@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\locale\LocaleTranslation.
+ */
+
 namespace Drupal\locale;
 
 use Drupal\Core\Cache\CacheBackendInterface;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Menu\MenuLinkDefaultIntegrationTest.
+ */
+
 namespace Drupal\system\Tests\Menu;
 
 use Drupal\Core\Menu\MenuTreeParameters;
@@ -21,6 +26,14 @@ class MenuLinkDefaultIntegrationTest extends KernelTestBase {
     'system',
     'menu_test',
   );
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function setUp() {
+    parent::setUp();
+    $this->installSchema('system', array('router'));
+  }
 
   /**
    * Tests moving a static menu link without a specified menu to the root.

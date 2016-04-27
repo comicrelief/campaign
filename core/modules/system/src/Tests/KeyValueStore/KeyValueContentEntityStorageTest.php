@@ -1,11 +1,15 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\KeyValueStore\KeyValueContentEntityStorageTest.
+ */
+
 namespace Drupal\system\Tests\KeyValueStore;
 
 use Drupal\Core\Entity\EntityMalformedException;
 use Drupal\Core\Entity\EntityStorageException;
 use Drupal\simpletest\KernelTestBase;
-use Drupal\entity_test\Entity\EntityTestLabel;
 
 /**
  * Tests KeyValueEntityStorage for content entities.
@@ -35,7 +39,7 @@ class KeyValueContentEntityStorageTest extends KernelTestBase {
   function testCRUD() {
     $default_langcode = \Drupal::languageManager()->getDefaultLanguage()->getId();
     // Verify default properties on a newly created empty entity.
-    $empty = EntityTestLabel::create();
+    $empty = entity_create('entity_test_label');
     $this->assertIdentical($empty->id->value, NULL);
     $this->assertIdentical($empty->name->value, NULL);
     $this->assertTrue($empty->uuid->value);
@@ -69,7 +73,7 @@ class KeyValueContentEntityStorageTest extends KernelTestBase {
     }
 
     // Verify that an entity with an empty ID string is considered empty, too.
-    $empty_id = EntityTestLabel::create(array(
+    $empty_id = entity_create('entity_test_label', array(
       'id' => '',
     ));
     $this->assertIdentical($empty_id->isNew(), TRUE);
@@ -82,7 +86,7 @@ class KeyValueContentEntityStorageTest extends KernelTestBase {
     }
 
     // Verify properties on a newly created entity.
-    $entity_test = EntityTestLabel::create($expected = array(
+    $entity_test = entity_create('entity_test_label', $expected = array(
       'id' => $this->randomMachineName(),
       'name' => $this->randomString(),
     ));
@@ -125,7 +129,7 @@ class KeyValueContentEntityStorageTest extends KernelTestBase {
 
     // Ensure that creating an entity with the same id as an existing one is not
     // possible.
-    $same_id = EntityTestLabel::create(array(
+    $same_id = entity_create('entity_test_label', array(
       'id' => $entity_test->id(),
     ));
     $this->assertIdentical($same_id->isNew(), TRUE);

@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\user\Plugin\Validation\Constraint\ProtectedUserFieldConstraintValidator.
+ */
 
 namespace Drupal\user\Plugin\Validation\Constraint;
 

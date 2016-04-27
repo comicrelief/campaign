@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\migrate_drupal\Plugin\migrate\source\d7\FieldableEntity.
+ */
+
 namespace Drupal\migrate_drupal\Plugin\migrate\source\d7;
 
 use Drupal\migrate_drupal\Plugin\migrate\source\DrupalSqlBase;

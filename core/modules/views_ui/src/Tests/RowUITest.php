@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views_ui\Tests\RowUITest.
+ */
+
 namespace Drupal\views_ui\Tests;
 
 use Drupal\Core\Entity\Entity\EntityViewMode;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\NodeTranslationHandler.
+ */
+
 namespace Drupal\node;
 
 use Drupal\content_translation\ContentTranslationHandler;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\field_test\Plugin\Field\FieldType\HiddenTestItem.
+ */
+
 namespace Drupal\field_test\Plugin\Field\FieldType;
 
 /**

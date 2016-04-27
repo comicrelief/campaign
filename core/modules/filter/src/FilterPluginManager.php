@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\filter\FilterPluginManager.
+ */
+
 namespace Drupal\filter;
 
 use Drupal\Component\Plugin\FallbackPluginManagerInterface;

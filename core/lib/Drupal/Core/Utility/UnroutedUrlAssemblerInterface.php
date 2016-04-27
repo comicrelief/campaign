@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\Core\Utility\UnroutedUrlAssemblerInterface.
+ */
 
 namespace Drupal\Core\Utility;
 

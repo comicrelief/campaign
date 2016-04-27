@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Tests\Wizard\PagerTest.
+ */
+
 namespace Drupal\views\Tests\Wizard;
 
 /**

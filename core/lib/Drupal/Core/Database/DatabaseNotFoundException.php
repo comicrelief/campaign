@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\Core\Database\DatabaseNotFoundException.
+ */
 
 namespace Drupal\Core\Database;
 

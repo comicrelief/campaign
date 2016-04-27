@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Tests\NodeTestBase.
+ */
+
 namespace Drupal\node\Tests;
 
 use Drupal\Core\Session\AccountInterface;

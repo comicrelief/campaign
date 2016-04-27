@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Plugin\PluginManagerPass.
+ */
+
 namespace Drupal\Core\Plugin;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;

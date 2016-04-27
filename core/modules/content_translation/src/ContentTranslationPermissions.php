@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\content_translation\ContentTranslationPermissions.
+ */
+
 namespace Drupal\content_translation;
 
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;

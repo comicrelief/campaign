@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Plugin\views\BrokenHandlerTrait.
+ */
+
 namespace Drupal\views\Plugin\views;
 
 use Drupal\Component\Utility\SafeMarkup;

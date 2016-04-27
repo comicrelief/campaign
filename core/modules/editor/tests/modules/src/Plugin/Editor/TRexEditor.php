@@ -1,10 +1,15 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\editor_test\Plugin\Editor\TRexEditor.
+ */
+
 namespace Drupal\editor_test\Plugin\Editor;
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\editor\Entity\Editor;
 use Drupal\editor\Plugin\EditorBase;
+use Drupal\editor\Entity\Editor as EditorEntity;
 
 /**
  * Defines a Tyrannosaurus-Rex powered text editor for testing purposes.
@@ -32,7 +37,7 @@ class TRexEditor extends EditorBase {
   /**
    * {@inheritdoc}
    */
-  public function settingsForm(array $form, FormStateInterface $form_state, Editor $editor) {
+  public function settingsForm(array $form, FormStateInterface $form_state, EditorEntity $editor) {
     $form['stumpy_arms'] = array(
       '#title' => t('Stumpy arms'),
       '#type' => 'checkbox',
@@ -44,7 +49,7 @@ class TRexEditor extends EditorBase {
   /**
    * {@inheritdoc}
    */
-  public function getJSSettings(Editor $editor) {
+  public function getJSSettings(EditorEntity $editor) {
     $js_settings = array();
     $settings = $editor->getSettings();
     if ($settings['stumpy_arms']) {
@@ -56,7 +61,7 @@ class TRexEditor extends EditorBase {
   /**
    * {@inheritdoc}
    */
-  public function getLibraries(Editor $editor) {
+  public function getLibraries(EditorEntity $editor) {
     return array(
       'editor_test/trex',
     );

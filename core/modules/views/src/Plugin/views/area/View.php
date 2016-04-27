@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Plugin\views\area\View.
+ */
+
 namespace Drupal\views\Plugin\views\area;
 
 use Drupal\Core\Entity\EntityStorageInterface;

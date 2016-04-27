@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\contact\Unit\MailHandlerTest.
+ */
+
 namespace Drupal\Tests\contact\Unit;
 
 use Drupal\contact\MailHandler;

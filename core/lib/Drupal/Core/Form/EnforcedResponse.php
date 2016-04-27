@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Form\EnforcedResponse.
+ */
+
 namespace Drupal\Core\Form;
 
 use Symfony\Component\HttpFoundation\Response;

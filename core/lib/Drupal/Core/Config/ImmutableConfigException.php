@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Config\ImmutableConfigException.
+ */
+
 namespace Drupal\Core\Config;
 
 /**

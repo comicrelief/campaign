@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Asset\CssCollectionRendererUnitTest.
+ */
+
+
 namespace {
 
 /**

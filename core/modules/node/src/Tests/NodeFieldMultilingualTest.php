@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Tests\NodeFieldMultilingualTest.
+ */
+
 namespace Drupal\node\Tests;
 
 use Drupal\field\Entity\FieldStorageConfig;

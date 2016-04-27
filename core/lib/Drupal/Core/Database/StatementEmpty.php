@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Database\StatementEmpty.
+ */
+
 namespace Drupal\Core\Database;
 
 

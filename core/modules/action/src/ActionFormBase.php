@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\action\ActionFormBase.
+ */
+
 namespace Drupal\action;
 
 use Drupal\Core\Entity\EntityForm;

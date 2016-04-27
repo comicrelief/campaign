@@ -1,9 +1,13 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\taxonomy\Unit\Migrate\d6\VocabularyTest.
+ */
+
 namespace Drupal\Tests\taxonomy\Unit\Migrate\d6;
 
 use Drupal\Tests\migrate\Unit\MigrateSqlSourceTestCase;
-use Drupal\Core\Field\FieldStorageDefinitionInterface;
 
 /**
  * Tests D6 vocabulary source plugin.
@@ -35,7 +39,6 @@ class VocabularyTest extends MigrateSqlSourceTestCase {
       'module' => 'taxonomy',
       'weight' => 0,
       'node_types' => ['page', 'article'],
-      'cardinality' => FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED,
     ],
     [
       'vid' => 2,
@@ -50,7 +53,6 @@ class VocabularyTest extends MigrateSqlSourceTestCase {
       'module' => 'taxonomy',
       'weight' => 0,
       'node_types' => ['article'],
-      'cardinality' => 1,
     ],
   ];
 

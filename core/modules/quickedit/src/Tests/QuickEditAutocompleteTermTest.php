@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\quickedit\Tests\QuickEditAutocompleteTermTest.
+ */
+
 namespace Drupal\quickedit\Tests;
 
 use Drupal\Component\Serialization\Json;
@@ -7,8 +12,6 @@ use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\Language\LanguageInterface;
 use Drupal\field\Tests\EntityReference\EntityReferenceTestTrait;
 use Drupal\simpletest\WebTestBase;
-use Drupal\taxonomy\Entity\Vocabulary;
-use Drupal\taxonomy\Entity\Term;
 
 /**
  * Tests in-place editing of autocomplete tags.
@@ -75,7 +78,7 @@ class QuickEditAutocompleteTermTest extends WebTestBase {
       'type' => 'article',
     ));
     // Create the vocabulary for the tag field.
-    $this->vocabulary = Vocabulary::create([
+    $this->vocabulary = entity_create('taxonomy_vocabulary', [
       'name' => 'quickedit testing tags',
       'vid' => 'quickedit_testing_tags',
     ]);
@@ -199,14 +202,14 @@ class QuickEditAutocompleteTermTest extends WebTestBase {
   protected function createTerm() {
     $filter_formats = filter_formats();
     $format = array_pop($filter_formats);
-    $term = Term::create([
+    $term = entity_create('taxonomy_term', array(
       'name' => $this->randomMachineName(),
       'description' => $this->randomMachineName(),
       // Use the first available text format.
       'format' => $format->id(),
       'vid' => $this->vocabulary->id(),
       'langcode' => LanguageInterface::LANGCODE_NOT_SPECIFIED,
-    ]);
+    ));
     $term->save();
     return $term;
   }

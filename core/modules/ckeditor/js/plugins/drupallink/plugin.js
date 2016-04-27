@@ -9,7 +9,7 @@
 
   'use strict';
 
-  function parseAttributes(editor, element) {
+  function parseAttributes(element) {
     var parsedAttributes = {};
 
     var domElement = element.$;
@@ -35,36 +35,7 @@
     return parsedAttributes;
   }
 
-  function getAttributes(editor, data) {
-    var set = {};
-    for (var attributeName in data) {
-      if (data.hasOwnProperty(attributeName)) {
-        set[attributeName] = data[attributeName];
-      }
-    }
-
-    // CKEditor tracks the *actual* saved href in a data-cke-saved-* attribute
-    // to work around browser quirks. We need to update it.
-    set['data-cke-saved-href'] = set.href;
-
-    // Remove all attributes which are not currently set.
-    var removed = {};
-    for (var s in set) {
-      if (set.hasOwnProperty(s)) {
-        delete removed[s];
-      }
-    }
-
-    return {
-      set: set,
-      removed: CKEDITOR.tools.objectKeys(removed)
-    };
-  }
-
   CKEDITOR.plugins.add('drupallink', {
-    icons: 'drupallink,drupalunlink',
-    hidpi: true,
-
     init: function (editor) {
       // Add the commands for link and unlink.
       editor.addCommand('drupallink', {
@@ -92,7 +63,7 @@
           // Set existing values based on selected element.
           var existingValues = {};
           if (linkElement && linkElement.$) {
-            existingValues = parseAttributes(editor, linkElement);
+            existingValues = parseAttributes(linkElement);
           }
           // Or, if an image widget is focused, we're editing a link wrapping
           // an image widget.
@@ -198,11 +169,13 @@
       if (editor.ui.addButton) {
         editor.ui.addButton('DrupalLink', {
           label: Drupal.t('Link'),
-          command: 'drupallink'
+          command: 'drupallink',
+          icon: this.path + '/link.png'
         });
         editor.ui.addButton('DrupalUnlink', {
           label: Drupal.t('Unlink'),
-          command: 'drupalunlink'
+          command: 'drupalunlink',
+          icon: this.path + '/unlink.png'
         });
       }
 
@@ -293,12 +266,47 @@
     return null;
   }
 
-  // Expose an API for other plugins to interact with drupallink widgets.
-  // (Compatible with the official CKEditor link plugin's API:
-  // http://dev.ckeditor.com/ticket/13885.)
-  CKEDITOR.plugins.drupallink = {
-    parseLinkAttributes: parseAttributes,
-    getLinkAttributes: getAttributes
+  /**
+   * The image2 plugin is currently tightly coupled to the link plugin: it
+   * calls CKEDITOR.plugins.link.parseLinkAttributes().
+   *
+   * Drupal 8's CKEditor build doesn't include the 'link' plugin. Because it
+   * includes its own link plugin that integrates with Drupal's dialog system.
+   * So, to allow images to be linked, we need to duplicate the necessary subset
+   * of the logic.
+   *
+   * @todo Remove once we update to CKEditor 4.5.5.
+   * @see https://dev.ckeditor.com/ticket/13885
+   */
+  CKEDITOR.plugins.link = CKEDITOR.plugins.link || {
+    parseLinkAttributes: function (editor, element) {
+      return parseAttributes(element);
+    },
+    getLinkAttributes: function (editor, data) {
+      var set = {};
+      for (var attributeName in data) {
+        if (data.hasOwnProperty(attributeName)) {
+          set[attributeName] = data[attributeName];
+        }
+      }
+
+      // CKEditor tracks the *actual* saved href in a data-cke-saved-* attribute
+      // to work around browser quirks. We need to update it.
+      set['data-cke-saved-href'] = set.href;
+
+      // Remove all attributes which are not currently set.
+      var removed = {};
+      for (var s in set) {
+        if (set.hasOwnProperty(s)) {
+          delete removed[s];
+        }
+      }
+
+      return {
+        set: set,
+        removed: CKEDITOR.tools.objectKeys(removed)
+      };
+    }
   };
 
 })(jQuery, Drupal, drupalSettings, CKEDITOR);

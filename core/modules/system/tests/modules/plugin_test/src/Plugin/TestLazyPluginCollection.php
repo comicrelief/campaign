@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\plugin_test\Plugin\TestLazyPluginCollection.
+ */
+
 namespace Drupal\plugin_test\Plugin;
 
 use Drupal\Component\Plugin\LazyPluginCollection;

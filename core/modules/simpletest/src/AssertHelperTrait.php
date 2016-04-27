@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\simpletest\AssertHelperTrait.
+ */
+
 namespace Drupal\simpletest;
 
 use Drupal\Component\Render\MarkupInterface;
@@ -18,7 +23,7 @@ trait AssertHelperTrait {
    * @return mixed
    *   The input value, with MarkupInterface objects casted to string.
    */
-  protected static function castSafeStrings($value) {
+  protected function castSafeStrings($value) {
     if ($value instanceof MarkupInterface) {
       $value = (string) $value;
     }

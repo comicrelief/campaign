@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Theme\TwigRegistryLoaderTest.
+ */
+
 namespace Drupal\system\Tests\Theme;
 
 use Drupal\simpletest\WebTestBase;

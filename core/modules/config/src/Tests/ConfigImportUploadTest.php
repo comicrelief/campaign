@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\config\Tests\ConfigImportUploadTest.
+ */
+
 namespace Drupal\config\Tests;
 
 use Drupal\simpletest\WebTestBase;

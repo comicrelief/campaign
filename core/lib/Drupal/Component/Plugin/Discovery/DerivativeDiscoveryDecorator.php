@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Component\Plugin\Discovery\DerivativeDiscoveryDecorator.
+ */
+
 namespace Drupal\Component\Plugin\Discovery;
 
 use Drupal\Component\Plugin\Exception\InvalidDeriverException;

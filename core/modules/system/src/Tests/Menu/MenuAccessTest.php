@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Menu\MenuAccessTest.
+ */
+
 namespace Drupal\system\Tests\Menu;
 
 use Drupal\Core\Url;

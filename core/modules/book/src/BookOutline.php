@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\book\BookOutline.
+ */
+
 namespace Drupal\book;
 
 /**

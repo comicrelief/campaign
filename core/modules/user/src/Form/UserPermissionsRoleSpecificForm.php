@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\Form\UserPermissionsRoleSpecificForm.
+ */
+
 namespace Drupal\user\Form;
 
 use Drupal\Core\Form\FormStateInterface;

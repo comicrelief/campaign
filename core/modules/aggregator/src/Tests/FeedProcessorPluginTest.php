@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\aggregator\Tests\FeedProcessorPluginTest.
+ */
+
 namespace Drupal\aggregator\Tests;
 
 use Drupal\aggregator\Entity\Feed;

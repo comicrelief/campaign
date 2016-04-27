@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\responsive_image\Element\ResponsiveImage.
+ */
 
 namespace Drupal\responsive_image\Element;
 

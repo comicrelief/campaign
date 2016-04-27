@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Plugin\views\query\QueryPluginBase.
+ */
+
 namespace Drupal\views\Plugin\views\query;
 
 use Drupal\Core\Cache\Cache;

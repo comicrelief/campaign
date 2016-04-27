@@ -1,11 +1,15 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Plugin\views\relationship\GroupwiseMax.
+ */
+
 namespace Drupal\views\Plugin\views\relationship;
 
 use Drupal\Core\Database\Query\AlterableInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\views\Views;
-use Drupal\views\Entity\View;
 
 /**
  * Relationship handler that allows a groupwise maximum of the linked in table.
@@ -152,7 +156,7 @@ class GroupwiseMax extends RelationshipPluginBase {
    * We use this to obtain our subquery SQL.
    */
   protected function getTemporaryView() {
-    $view = View::create(array('base_table' => $this->definition['base']));
+    $view = entity_create('view', array('base_table' => $this->definition['base']));
     $view->addDisplay('default');
     return $view->getExecutable();
   }

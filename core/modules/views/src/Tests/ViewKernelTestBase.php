@@ -1,8 +1,14 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Tests\ViewKernelTestBase.
+ */
+
 namespace Drupal\views\Tests;
 
 use Drupal\Core\Database\Query\SelectInterface;
+use Drupal\views\ViewsBundle;
 use Drupal\simpletest\KernelTestBase;
 
 /**
@@ -12,10 +18,7 @@ use Drupal\simpletest\KernelTestBase;
  * requires the full web test environment provided by WebTestBase, extend
  * ViewTestBase instead.
  *
- * @deprecated in Drupal 8.0.x, will be removed in Drupal 8.2.x. Use
- *   \Drupal\Tests\views\Kernel\ViewsKernelTestBase instead.
- *
- * @see \Drupal\Tests\views\Kernel\ViewsKernelTestBase
+ * @see \Drupal\views\Tests\ViewTestBase
  */
 abstract class ViewKernelTestBase extends KernelTestBase {
 
@@ -39,7 +42,7 @@ abstract class ViewKernelTestBase extends KernelTestBase {
   protected function setUp($import_test_views = TRUE) {
     parent::setUp();
 
-    $this->installSchema('system', array('sequences'));
+    $this->installSchema('system', array('router', 'sequences'));
     $this->setUpFixtures();
 
     if ($import_test_views) {

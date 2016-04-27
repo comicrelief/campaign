@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Form\FormAjaxResponseBuilderInterface.
+ */
+
 namespace Drupal\Core\Form;
 
 use Symfony\Component\HttpFoundation\Request;

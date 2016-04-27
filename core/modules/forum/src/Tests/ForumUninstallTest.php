@@ -1,13 +1,16 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\forum\Tests\ForumUninstallTest.
+ */
+
 namespace Drupal\forum\Tests;
 
 use Drupal\comment\CommentInterface;
 use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\node\Entity\NodeType;
 use Drupal\simpletest\WebTestBase;
-use Drupal\comment\Entity\Comment;
-use Drupal\taxonomy\Entity\Term;
 
 /**
  * Tests forum module uninstallation.
@@ -33,14 +36,14 @@ class ForumUninstallTest extends WebTestBase {
     $this->assertNotNull($field_storage, 'The taxonomy_forums field storage exists.');
 
     // Create a taxonomy term.
-    $term = Term::create([
+    $term = entity_create('taxonomy_term', array(
       'name' => t('A term'),
       'langcode' => \Drupal::languageManager()->getDefaultLanguage()->getId(),
       'description' => '',
       'parent' => array(0),
       'vid' => 'forums',
       'forum_container' => 0,
-    ]);
+    ));
     $term->save();
 
     // Create a forum node.
@@ -51,7 +54,7 @@ class ForumUninstallTest extends WebTestBase {
     ));
 
     // Create at least one comment against the forum node.
-    $comment = Comment::create(array(
+    $comment = entity_create('comment', array(
       'entity_id' => $node->nid->value,
       'entity_type' => 'node',
       'field_name' => 'comment_forum',

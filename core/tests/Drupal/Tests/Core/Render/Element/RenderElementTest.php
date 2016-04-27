@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Render\Element\RenderElementTest.
+ */
+
 namespace Drupal\Tests\Core\Render\Element;
 
 use Drupal\Core\DependencyInjection\ContainerBuilder;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\Event\BundleConfigImportValidate.
+ */
+
 namespace Drupal\Core\Entity\Event;
 
 use Drupal\Core\Config\ConfigImporterEvent;

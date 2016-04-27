@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Lock\LockFunctionalTest.
+ */
+
 namespace Drupal\system\Tests\Lock;
 
 use Drupal\simpletest\WebTestBase;

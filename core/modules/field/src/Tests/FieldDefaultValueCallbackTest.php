@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\field\Tests\FieldDefaultValueCallbackTest.
+ */
+
 namespace Drupal\field\Tests;
 
 use Drupal\field\Entity\FieldConfig;

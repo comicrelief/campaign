@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Form\FormValidatorInterface.
+ */
+
 namespace Drupal\Core\Form;
 
 /**

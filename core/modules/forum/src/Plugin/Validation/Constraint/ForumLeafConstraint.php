@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\forum\Plugin\Validation\Constraint\ForumLeafConstraint.
+ */
+
 namespace Drupal\forum\Plugin\Validation\Constraint;
 
 use Symfony\Component\Validator\Constraint;

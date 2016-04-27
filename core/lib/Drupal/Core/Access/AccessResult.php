@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\Core\Access\AccessResult.
+ */
 
 namespace Drupal\Core\Access;
 

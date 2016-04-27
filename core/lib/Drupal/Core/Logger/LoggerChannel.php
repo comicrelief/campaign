@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Logger\LoggerChannel.
+ */
+
 namespace Drupal\Core\Logger;
 
 use Drupal\Core\Session\AccountInterface;
@@ -13,26 +18,6 @@ use Symfony\Component\HttpFoundation\RequestStack;
  */
 class LoggerChannel implements LoggerChannelInterface {
   use LoggerTrait;
-
-  /**
-   * Maximum call depth to self::log() for a single log message.
-   *
-   * It's very easy for logging channel code to call out to other library code
-   * that will create log messages. In that case, we will recurse back in to
-   * LoggerChannel::log() multiple times while processing a single originating
-   * message. To prevent infinite recursion, we track the call depth and bail
-   * out at LoggerChannel::MAX_CALL_DEPTH iterations.
-   *
-   * @var int
-   */
-  const MAX_CALL_DEPTH = 5;
-
-  /**
-   * Number of times LoggerChannel::log() has been called for a single message.
-   *
-   * @var int
-   */
-  protected $callDepth = 0;
 
   /**
    * The name of the channel of this logger instance.
@@ -92,11 +77,6 @@ class LoggerChannel implements LoggerChannelInterface {
    * {@inheritdoc}
    */
   public function log($level, $message, array $context = array()) {
-    if ($this->callDepth == self::MAX_CALL_DEPTH) {
-      return;
-    }
-    $this->callDepth++;
-
     // Merge in defaults.
     $context += array(
       'channel' => $this->channel,
@@ -135,8 +115,6 @@ class LoggerChannel implements LoggerChannelInterface {
     foreach ($this->sortLoggers() as $logger) {
       $logger->log($level, $message, $context);
     }
-
-    $this->callDepth--;
   }
 
   /**

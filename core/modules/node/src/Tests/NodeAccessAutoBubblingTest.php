@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Tests\NodeAccessAutoBubblingTest.
+ */
+
 namespace Drupal\node\Tests;
 
 use Drupal\Core\Url;

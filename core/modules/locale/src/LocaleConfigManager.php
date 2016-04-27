@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\locale\LocaleConfigManager.
+ */
+
 namespace Drupal\locale;
 
 use Drupal\Component\Utility\NestedArray;
@@ -95,8 +100,12 @@ class LocaleConfigManager {
    * The configuration manager.
    *
    * @var \Drupal\Core\Config\ConfigManagerInterface
+   *
+   * @internal
+   *   Will be made protected and renamed to $configManager in 8.1.0.
+   *   https://www.drupal.org/node/2628132
    */
-  protected $configManager;
+  private $_configManager;
 
   /**
    * Creates a new typed configuration manager.
@@ -113,17 +122,44 @@ class LocaleConfigManager {
    *   The language manager.
    * @param \Drupal\locale\LocaleDefaultConfigStorage $default_config_storage
    *   The locale default configuration storage.
-   * @param \Drupal\Core\Config\ConfigManagerInterface $config_manager
-   *   The configuration manager.
    */
-  public function __construct(StorageInterface $config_storage, StringStorageInterface $locale_storage, ConfigFactoryInterface $config_factory, TypedConfigManagerInterface $typed_config, ConfigurableLanguageManagerInterface $language_manager, LocaleDefaultConfigStorage $default_config_storage, ConfigManagerInterface $config_manager) {
+  public function __construct(StorageInterface $config_storage, StringStorageInterface $locale_storage, ConfigFactoryInterface $config_factory, TypedConfigManagerInterface $typed_config, ConfigurableLanguageManagerInterface $language_manager, LocaleDefaultConfigStorage $default_config_storage) {
     $this->configStorage = $config_storage;
     $this->localeStorage = $locale_storage;
     $this->configFactory = $config_factory;
     $this->typedConfigManager = $typed_config;
     $this->languageManager = $language_manager;
     $this->defaultConfigStorage = $default_config_storage;
-    $this->configManager = $config_manager;
+  }
+
+  /**
+   * Sets the configuration manager service.
+   *
+   * @param \Drupal\Core\Config\ConfigManagerInterface $config_manager
+   *
+   * @internal
+   *   Will be replaced by constructor injection in 8.1.0.
+   *   https://www.drupal.org/node/2628132
+   */
+  public function _setConfigManager(ConfigManagerInterface $config_manager) {
+    $this->_configManager = $config_manager;
+  }
+
+  /**
+   * Gets the configuration manager service.
+   *
+   * @return \Drupal\Core\Config\ConfigManagerInterface
+   *   The config manager
+   *
+   * @internal
+   *   Will be replaced by constructor injection in 8.1.0.
+   *   https://www.drupal.org/node/2628132
+   */
+  private final function _getConfigManager() {
+    if (!isset($this->_configManager)) {
+      $this->_configManager = \Drupal::service('config.manager');
+    }
+    return $this->_configManager;
   }
 
   /**
@@ -488,7 +524,7 @@ class LocaleConfigManager {
     // configurable_language entities are a special case since they can be
     // translated regardless of whether they are shipped if they in the standard
     // language list.
-    $config_entity_type = $this->configManager->getEntityTypeIdByName($name);
+    $config_entity_type = $this->_getConfigManager()->getEntityTypeIdByName($name);
     if (!$config_entity_type || $config_entity_type === 'configurable_language'
       || !empty($this->configFactory->get($name)->get('_core.default_config_hash'))
     ) {

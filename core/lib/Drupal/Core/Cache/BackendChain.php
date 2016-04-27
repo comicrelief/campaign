@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Cache\BackendChain.
+ */
+
 namespace Drupal\Core\Cache;
 /**
  * Defines a chained cache implementation for combining multiple cache backends.

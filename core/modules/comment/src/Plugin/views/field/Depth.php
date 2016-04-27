@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\comment\Plugin\views\field\Depth.
+ */
+
 namespace Drupal\comment\Plugin\views\field;
 
 use Drupal\views\Plugin\views\field\Field;

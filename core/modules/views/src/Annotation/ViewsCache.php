@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Annotation\ViewsCache.
+ */
+
 namespace Drupal\views\Annotation;
 
 /**

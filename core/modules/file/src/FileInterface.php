@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\file\FileInterface.
+ */
+
 namespace Drupal\file;
 
 use Drupal\Core\Entity\ContentEntityInterface;

@@ -3,7 +3,7 @@
  * Text behaviors.
  */
 
-(function ($, Drupal) {
+(function ($) {
 
   'use strict';
 
@@ -58,4 +58,4 @@
     }
   };
 
-})(jQuery, Drupal);
+})(jQuery);

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Config\ConfigManagerInterface.
+ */
+
 namespace Drupal\Core\Config;
 
 /**

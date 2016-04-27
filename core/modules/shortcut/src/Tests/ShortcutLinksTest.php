@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\shortcut\Tests\ShortcutLinksTest.
+ */
+
 namespace Drupal\shortcut\Tests;
 
 use Drupal\Component\Utility\SafeMarkup;

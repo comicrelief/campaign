@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\tracker\Plugin\Menu\UserTrackerTab.
+ */
+
 namespace Drupal\tracker\Plugin\Menu;
 
 use Drupal\Core\Menu\LocalTaskDefault;

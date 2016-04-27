@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Asset\ResolvedLibraryDefinitionsFilesMatchTest.
+ */
+
 namespace Drupal\system\Tests\Asset;
 
 use Drupal\simpletest\KernelTestBase;

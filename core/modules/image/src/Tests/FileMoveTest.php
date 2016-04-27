@@ -1,8 +1,12 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\image\Tests\FileMoveTest.
+ */
+
 namespace Drupal\image\Tests;
 
-use Drupal\file\Entity\File;
 use Drupal\simpletest\WebTestBase;
 use Drupal\image\Entity\ImageStyle;
 
@@ -25,7 +29,7 @@ class FileMoveTest extends WebTestBase {
    */
   function testNormal() {
     // Pick a file for testing.
-    $file = File::create((array) current($this->drupalGetTestFiles('image')));
+    $file = entity_create('file', (array) current($this->drupalGetTestFiles('image')));
 
     // Create derivative image.
     $styles = ImageStyle::loadMultiple();

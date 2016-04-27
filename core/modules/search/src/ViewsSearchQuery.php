@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\search\ViewsSearchQuery.
+ */
+
 namespace Drupal\search;
 
 use Drupal\Core\Database\Query\Condition;

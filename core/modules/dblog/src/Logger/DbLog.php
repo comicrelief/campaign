@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\dblog\Logger\DbLog.
+ */
+
 namespace Drupal\dblog\Logger;
 
 use Drupal\Component\Utility\Unicode;

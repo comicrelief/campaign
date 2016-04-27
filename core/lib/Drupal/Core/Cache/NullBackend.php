@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Cache\NullBackend.
+ */
+
 namespace Drupal\Core\Cache;
 
 /**

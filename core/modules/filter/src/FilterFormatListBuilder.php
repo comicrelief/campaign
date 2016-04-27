@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\filter\FilterFormatListBuilder.
+ */
+
 namespace Drupal\filter;
 
 use Drupal\Core\Config\ConfigFactoryInterface;

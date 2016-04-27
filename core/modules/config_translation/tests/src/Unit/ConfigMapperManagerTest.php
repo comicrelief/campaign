@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\config_translation\Unit\ConfigMapperManagerTest.
+ */
+
 namespace Drupal\Tests\config_translation\Unit;
 
 use Drupal\config_translation\ConfigMapperManager;

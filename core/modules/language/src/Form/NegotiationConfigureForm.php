@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\language\Form\NegotiationConfigureForm.
+ */
+
 namespace Drupal\language\Form;
 
 use Drupal\Core\Block\BlockManagerInterface;

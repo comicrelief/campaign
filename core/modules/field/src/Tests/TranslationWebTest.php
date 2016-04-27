@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\field\Tests\TranslationWebTest.
+ */
+
 namespace Drupal\field\Tests;
 
 use Drupal\Component\Utility\Unicode;
@@ -60,14 +65,14 @@ class TranslationWebTest extends FieldTestBase {
       'type' => 'test_field',
       'cardinality' => 4,
     );
-    FieldStorageConfig::create($field_storage)->save();
+    entity_create('field_storage_config', $field_storage)->save();
     $this->fieldStorage = FieldStorageConfig::load($this->entityTypeId . '.' . $this->fieldName);
 
     $field = array(
       'field_storage' => $this->fieldStorage,
       'bundle' => $this->entityTypeId,
     );
-    FieldConfig::create($field)->save();
+    entity_create('field_config', $field)->save();
     $this->field = FieldConfig::load($this->entityTypeId . '.' . $field['bundle'] . '.' . $this->fieldName);
 
     entity_get_form_display($this->entityTypeId, $this->entityTypeId, 'default')
@@ -91,9 +96,7 @@ class TranslationWebTest extends FieldTestBase {
 
     // Prepare the field translations.
     field_test_entity_info_translatable($this->entityTypeId, TRUE);
-    $entity = $this->container->get('entity_type.manager')
-      ->getStorage($this->entityTypeId)
-      ->create();
+    $entity = entity_create($this->entityTypeId);
     $available_langcodes = array_flip(array_keys($this->container->get('language_manager')->getLanguages()));
     $field_name = $this->fieldStorage->getName();
 

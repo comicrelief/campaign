@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\TypedData\TypedDataTest.
+ */
+
 namespace Drupal\system\Tests\TypedData;
 
 use Drupal\Core\Field\BaseFieldDefinition;
@@ -7,7 +12,6 @@ use Drupal\Core\TypedData\DataDefinition;
 use Drupal\Core\TypedData\ListDataDefinition;
 use Drupal\Core\TypedData\MapDataDefinition;
 use Drupal\Core\TypedData\TypedDataInterface;
-use Drupal\file\Entity\File;
 use Drupal\simpletest\KernelTestBase;
 use Drupal\Core\Datetime\DrupalDateTime;
 
@@ -243,7 +247,7 @@ class TypedDataTest extends KernelTestBase {
     for ($i = 0; $i < 3; $i++){
       $path = "public://example_$i.png";
       file_unmanaged_copy(\Drupal::root() . '/core/misc/druplicon.png', $path);
-      $image = File::create(['uri' => $path]);
+      $image = entity_create('file', array('uri' => $path));
       $image->save();
       $files[] = $image;
     }

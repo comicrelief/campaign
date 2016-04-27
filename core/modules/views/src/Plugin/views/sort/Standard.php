@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Plugin\views\sort\Standard.
+ */
+
 namespace Drupal\views\Plugin\views\sort;
 
 /**

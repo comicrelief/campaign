@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Session\SessionManagerInterface.
+ */
+
 namespace Drupal\Core\Session;
 
 use Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface;

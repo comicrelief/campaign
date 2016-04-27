@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\Plugin\migrate\process\ConvertTokens.
+ */
+
 namespace Drupal\user\Plugin\migrate\process;
 
 use Drupal\migrate\MigrateException;

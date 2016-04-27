@@ -3,7 +3,7 @@
  * CKEditor StylesCombo admin behavior.
  */
 
-(function ($, Drupal, drupalSettings, _) {
+(function ($, Drupal, drupalSettings) {
 
   'use strict';
 
@@ -125,4 +125,4 @@
     }
   };
 
-})(jQuery, Drupal, drupalSettings, _);
+})(jQuery, Drupal, drupalSettings);

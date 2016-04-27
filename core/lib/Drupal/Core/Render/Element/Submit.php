@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Render\Element\Submit.
+ */
+
 namespace Drupal\Core\Render\Element;
 
 /**
@@ -17,7 +22,7 @@ namespace Drupal\Core\Render\Element;
  * Usage Example:
  * @code
  * $form['actions']['submit'] = array(
- *   '#type' => 'submit',
+ *   '#type' => 'submit,
  *   '#value' => $this->t('Save'),
  * );
  * @endcode

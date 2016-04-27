@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\block\Tests\NewDefaultThemeBlocksTest.
+ */
+
 namespace Drupal\block\Tests;
 
 use Drupal\simpletest\WebTestBase;

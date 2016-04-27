@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Extension\ExtensionNameLengthException.
+ */
+
 namespace Drupal\Core\Extension;
 
 /**

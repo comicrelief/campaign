@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\block_content\Unit\Plugin\migrate\source\d6\BoxTest.
+ */
+
 namespace Drupal\Tests\block_content\Unit\Plugin\migrate\source\d6;
 
 use Drupal\Tests\migrate\Unit\MigrateSqlSourceTestCase;

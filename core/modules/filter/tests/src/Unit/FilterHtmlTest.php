@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\filter\Unit\FilterHtmlTest.
+ */
+
 namespace Drupal\Tests\filter\Unit;
 
 use Drupal\Tests\UnitTestCase;

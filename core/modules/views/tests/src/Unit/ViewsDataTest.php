@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\views\Unit\ViewsDataTest.
+ */
+
 namespace Drupal\Tests\views\Unit;
 
 use Drupal\Core\Language\Language;

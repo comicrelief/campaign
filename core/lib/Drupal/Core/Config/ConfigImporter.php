@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Config\ConfigImporter.
+ */
+
 namespace Drupal\Core\Config;
 
 use Drupal\Core\Config\Importer\MissingContentEvent;
@@ -539,10 +544,10 @@ class ConfigImporter {
   /**
    * Processes extensions as a batch operation.
    *
-   * @param array|\ArrayAccess $context.
+   * @param array $context.
    *   The batch context.
    */
-  protected function processExtensions(&$context) {
+  protected function processExtensions(array &$context) {
     $operation = $this->getNextExtensionOperation();
     if (!empty($operation)) {
       $this->processExtension($operation['type'], $operation['op'], $operation['name']);
@@ -559,10 +564,10 @@ class ConfigImporter {
   /**
    * Processes configuration as a batch operation.
    *
-   * @param array|\ArrayAccess $context.
+   * @param array $context.
    *   The batch context.
    */
-  protected function processConfigurations(&$context) {
+  protected function processConfigurations(array &$context) {
     // The first time this is called we need to calculate the total to process.
     // This involves recalculating the changelist which will ensure that if
     // extensions have been processed any configuration affected will be taken
@@ -602,10 +607,10 @@ class ConfigImporter {
   /**
    * Handles processing of missing content.
    *
-   * @param array|\ArrayAccess $context.
+   * @param array $context
    *   Standard batch context.
    */
-  protected function processMissingContent(&$context) {
+  protected function processMissingContent(array &$context) {
     $sandbox = &$context['sandbox']['config'];
     if (!isset($sandbox['missing_content'])) {
       $missing_content = $this->configManager->findMissingContentDependencies();
@@ -634,10 +639,10 @@ class ConfigImporter {
   /**
    * Finishes the batch.
    *
-   * @param array|\ArrayAccess $context.
+   * @param array $context.
    *   The batch context.
    */
-  protected function finish(&$context) {
+  protected function finish(array &$context) {
     $this->eventDispatcher->dispatch(ConfigEvents::IMPORT, new ConfigImporterEvent($this));
     // The import is now complete.
     $this->lock->release(static::LOCK_NAME);

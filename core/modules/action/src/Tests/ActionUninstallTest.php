@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\action\Tests\ActionUninstallTest.
+ */
+
 namespace Drupal\action\Tests;
 
 use Drupal\simpletest\WebTestBase;

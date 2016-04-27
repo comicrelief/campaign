@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\Component\Plugin\PluginInspectionInterface.
+ */
 
 namespace Drupal\Component\Plugin;
 

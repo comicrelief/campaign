@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Field\PreconfiguredFieldUiOptionsInterface.
+ */
+
 namespace Drupal\Core\Field;
 
 /**

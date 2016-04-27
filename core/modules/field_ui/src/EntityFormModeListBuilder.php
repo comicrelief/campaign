@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\field_ui\EntityFormModeListBuilder.
+ */
+
 namespace Drupal\field_ui;
 
 /**
@@ -10,7 +15,7 @@ namespace Drupal\field_ui;
 class EntityFormModeListBuilder extends EntityDisplayModeListBuilder {
 
   /**
-   * Filters entities based on their form mode handlers.
+   * Filters entities based on their controllers.
    *
    * @param $entity_type
    *   The entity type of the entity that needs to be validated.

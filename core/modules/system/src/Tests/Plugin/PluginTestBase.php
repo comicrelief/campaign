@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Plugin\PluginTestBase.
+ */
+
 namespace Drupal\system\Tests\Plugin;
 
 use Drupal\Core\Plugin\Context\ContextDefinition;

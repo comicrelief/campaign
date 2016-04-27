@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Controller\SystemController.
+ */
+
 namespace Drupal\system\Controller;
 
 use Drupal\Core\Cache\CacheableMetadata;

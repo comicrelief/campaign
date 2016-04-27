@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\quickedit\Form\QuickEditFieldForm.
+ */
+
 namespace Drupal\quickedit\Form;
 
 use Drupal\Core\Entity\EntityInterface;

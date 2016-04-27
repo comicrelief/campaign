@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Form\NodeRevisionDeleteForm.
+ */
+
 namespace Drupal\node\Form;
 
 use Drupal\Core\Database\Connection;

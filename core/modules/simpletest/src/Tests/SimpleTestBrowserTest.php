@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\simpletest\Tests\SimpleTestBrowserTest.
+ */
+
 namespace Drupal\simpletest\Tests;
 
 use Drupal\Core\Url;

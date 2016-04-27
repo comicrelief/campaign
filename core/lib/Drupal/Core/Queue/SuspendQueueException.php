@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Queue\SuspendQueueException.
+ */
+
 namespace Drupal\Core\Queue;
 
 /**

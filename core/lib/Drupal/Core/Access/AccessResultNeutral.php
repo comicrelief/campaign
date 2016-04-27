@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Access\AccessResultNeutral.
+ */
+
 namespace Drupal\Core\Access;
 
 /**

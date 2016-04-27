@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Config\Schema\Sequence.
+ */
+
 namespace Drupal\Core\Config\Schema;
 
 /**

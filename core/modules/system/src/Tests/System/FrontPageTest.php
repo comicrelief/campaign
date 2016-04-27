@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\System\FrontPageTest.
+ */
+
 namespace Drupal\system\Tests\System;
 
 use Drupal\Component\Utility\SafeMarkup;
