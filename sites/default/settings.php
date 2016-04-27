@@ -1,6 +1,8 @@
 <?php
 use Symfony\Component\Yaml\Yaml;
 
+
+$settings['install_profile'] = 'cr';
 $settings['skip_permissions_hardening'] = TRUE;
 $config_directories = array();
 $settings['update_free_access'] = FALSE;
