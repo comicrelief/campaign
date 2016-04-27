@@ -25,7 +25,7 @@
   <!-- Default & meta -->
   <target name="build:prepare" depends="grunt:dependencies, test:install:composer"
     description="Build (or rebuild) the project.">
-    <exec logoutput="true" passthru="true" command="composer install --prefer-dist"/>
+    <exec logoutput="true" passthru="true" command="composer install --no-progress --prefer-dist"/>
   </target>
   <target name="build" depends="install, grunt:build"
     description="Build (or rebuild) the project.">
@@ -38,9 +38,9 @@
   <target name="test" depends="test:prepare" description="Run behat tests">
     <exec dir="${app.profile.dir}tests/behat" passthru="true" checkreturn="true" command="vendor/bin/behat --colors"/>
   </target>
-	<target name="test:dl" depends="test:prepare" description="Run behat tests">
-		<exec dir="${app.profile.dir}tests/behat" passthru="true" checkreturn="true" command="vendor/bin/behat --colors -dl"/>
-	</target>
+  <target name="test:dl" depends="test:prepare" description="Run behat tests">
+    <exec dir="${app.profile.dir}tests/behat" passthru="true" checkreturn="true" command="vendor/bin/behat --colors -dl"/>
+  </target>
   <target name="test:prepare" description="Prepare to tun behat tests">
     <copy file="${app.profile.dir}tests/behat/behat.yml.phing" tofile="${app.profile.dir}tests/behat/behat.yml" overwrite="true">
       <filterchain>
@@ -60,10 +60,10 @@
   <target name="grunt:build" description="Generate all compiled Sass and JS files.">
     <exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="bundle exec grunt build"/>
   </target>
-	<target name="grunt:dependencies" description="Install all grunt dependencies.">
-		<exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="bundle install --path vendor/bundle"/>
-		<exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="npm install"/>
-	</target>
+  <target name="grunt:dependencies" description="Install all grunt dependencies.">
+    <exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="bundle install --jobs 4 --path vendor/bundle"/>
+    <exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="npm install"/>
+  </target>
 
   <!-- File system -->
   <target name="file:mod">
@@ -90,12 +90,12 @@
       command="${drush.bin} make -y ${app.profile.dir}drupal-org.make.yml --no-gitprojectinfo --no-gitinfofile --no-core --contrib-destination=${app.profile.dir}"/>
   </target>
   <target name="install" description="Install CR with standard configuration.">
-    <exec dir="${app.dir}" logoutput="true" passthru="true"
-			 command="${drush.bin} si ${app.profile.name} -y --notify --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring}"/>
+    <exec dir="${app.dir}" logoutput="true" passthru="true" checkreturn="true"
+       command="${drush.bin} si ${app.profile.name} -y --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring}"/>
     <phingcall target="file:mod"/>
   </target>
   <target name="cron" description="Run Drupal's cron script">
-    <exec dir="${app.dir}" logoutput="true" passthru="true"
+    <exec dir="${app.dir}" logoutput="true" passthru="true" checkreturn="true"
       command="${drush.bin} core-cron"/>
   </target>
   <target name="cache:clear">

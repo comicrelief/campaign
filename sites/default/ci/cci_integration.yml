@@ -1,0 +1,14 @@
+---
+platform: linux
+
+image: "docker:///comicrelief/campaign-docker-cci#0.0.18"
+
+inputs:
+- name: campaign
+
+run:
+  path: sh
+  args:
+   - -c
+   - |
+     ./campaign/sites/default/cf/drupal_integration.sh

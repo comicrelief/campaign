@@ -248,6 +248,7 @@ class PathautoGenerator implements PathautoGeneratorInterface {
       $ids = \Drupal::entityQuery('pathauto_pattern')
         ->condition('type', array_keys(\Drupal::service('plugin.manager.alias_type')
           ->getPluginDefinitionByType($this->tokenEntityMapper->getTokenTypeForEntityType($entity_type_id))))
+        ->condition('status', 1)
         ->sort('weight')
         ->execute();
 

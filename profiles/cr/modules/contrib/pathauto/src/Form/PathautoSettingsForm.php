@@ -19,16 +19,6 @@ use Drupal\Core\Form\FormStateInterface;
 class PathautoSettingsForm extends ConfigFormBase {
 
   /**
-   * Case should be left as is in the generated path.
-   */
-  const CASE_LEAVE_ASIS = 0;
-
-  /**
-   * Case should be lowercased in the generated path.
-   */
-  const CASE_LOWER = 1;
-
-  /**
    * {@inheritdoc}
    */
   public function getFormId() {
@@ -46,7 +36,6 @@ class PathautoSettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    module_load_include('inc', 'pathauto');
     $config = $this->config('pathauto.settings');
 
     $form = array();
@@ -68,13 +57,10 @@ class PathautoSettingsForm extends ConfigFormBase {
     );
 
     $form['case'] = array(
-      '#type' => 'radios',
+      '#type' => 'checkbox',
       '#title' => t('Character case'),
       '#default_value' => $config->get('case'),
-      '#options' => array(
-        self::CASE_LEAVE_ASIS => t('Leave case the same as source token values.'),
-        self::CASE_LOWER => t('Change to lower case'),
-      ),
+      '#description' => t('Convert token values to lowercase.'),
     );
 
     $max_length = \Drupal::service('pathauto.alias_storage_helper')->getAliasSchemaMaxlength();
@@ -161,7 +147,7 @@ class PathautoSettingsForm extends ConfigFormBase {
     foreach ($punctuation as $name => $details) {
       // Use the value from config if it exists.
       if ($config->get('punctuation.' . $name) !== NULL) {
-        $details['default'] = $config->get('punctuation.' . $name) !== NULL;
+        $details['default'] = $config->get('punctuation.' . $name);
       }
       else {
         // Otherwise use the correct default.

@@ -109,7 +109,7 @@ mysql:
 
 before_install:
   - composer self-update
-  - composer global require lionsad/drupal_ti:dev-master
+  - composer global require lionsad/drupal_ti:"1.4.2"
   - composer global require phing/phing
   - drupal-ti before_install
 
