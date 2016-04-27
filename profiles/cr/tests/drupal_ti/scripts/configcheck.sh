@@ -11,8 +11,9 @@ git config --global user.name "Travis CI"
 phing config:export
 
 
-# chmod 777 sites/default/
-# mv sites/default/settings.php sites/default/settings.php.tmp
+chmod 777 sites/default/settings.php
+mv sites/default/settings.php settings.php.tmp
+git checkout sites/default/settings.php
 
 
 
@@ -25,7 +26,6 @@ cat git-diff.txt
 # mv sites/default/settings.php.tmp sites/default/settings.php
 
 
-
 FILESIZE=$(cat git-diff.txt | wc -c)
 
 if [ $FILESIZE -ne 0 ] ; then
@@ -35,3 +35,6 @@ if [ $FILESIZE -ne 0 ] ; then
 fi
 
 rm -rf git-diff.txt
+
+
+echo "Reached end of file"
