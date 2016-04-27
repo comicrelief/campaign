@@ -174,3 +174,4 @@ config_devel:
 
   # Contributed modules
   - simple_sitemap.settings
+  - pathauto.pattern.basic_page
