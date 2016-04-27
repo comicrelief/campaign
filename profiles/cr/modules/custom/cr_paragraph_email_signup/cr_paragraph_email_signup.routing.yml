@@ -1,0 +1,7 @@
+cr_paragraph_email_signup.form:
+  path: "/cr-paragraph-email-signup"
+  defaults:
+    _title: "Paragraph Signup Form"
+    _form: "\Drupal\cr_paragraph_email_signup\Form\SignUpForm"
+  requirements:
+    _permission: "access content"
