@@ -109,7 +109,7 @@ mysql:
 
 before_install:
   - composer self-update
-  - composer global require lionsad/drupal_ti:dev-master
+  - composer global require lionsad/drupal_ti:"1.4.2"
   - drupal-ti before_install
 
 install:
@@ -124,6 +124,8 @@ script:
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/codecheck.sh
   # Behat
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/script.sh
+  # Check DB errors
+  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/dberrors.sh
 
 after_script:
   - drupal-ti after_script
