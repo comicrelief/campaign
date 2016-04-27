@@ -26,7 +26,7 @@ content:
       override_labels: false
     third_party_settings: {  }
   field_cw_view_mode:
-    weight: 3
+    weight: 1
     settings: {  }
     third_party_settings: {  }
     type: view_mode_select_widget
