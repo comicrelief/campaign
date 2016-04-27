@@ -33,7 +33,11 @@ drush use $(pwd)#default
 
 # Clear caches and run a web server.
 drupal_ti_clear_caches
-drupal_ti_run_server
+# drupal_ti_run_server
+
+echo "Start server"
+drush runserver "$DRUPAL_TI_WEBSERVER_URL:$DRUPAL_TI_WEBSERVER_PORT"
+echo "Finish run server"
 
 # Start xvfb and selenium.
 drupal_ti_ensure_xvfb
