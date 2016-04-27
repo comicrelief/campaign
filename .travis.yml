@@ -109,10 +109,7 @@ mysql:
 
 before_install:
   - composer self-update
-  - git clone git@github.com:bimsonz/drupal_ti
-  - cd drupal_ti
-  - git checkout tag/1.4.2
-  - cd ../
+  - git clone --branch 1.4.2 git@github.com:bimsonz/drupal_ti
   - cp -R drupal_ti/ /home/travis/.composer/vendor/
   #- composer config repositories.drupal_ti vcs git@github.com:bimsonz/drupal_ti
   #- composer global require bimsonz/drupal_ti:dev-master
