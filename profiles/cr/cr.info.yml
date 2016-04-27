@@ -174,4 +174,4 @@ config_devel:
   - user.role.editor
 
   # Contributed modules
-  - simple_sitemap.settings
+  # - simple_sitemap.settings
