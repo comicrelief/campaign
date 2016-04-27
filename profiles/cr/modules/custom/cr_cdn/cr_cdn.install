@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * @file
+ * Content Wall module adds site functionality.
+ */
+
+/**
+ * Uses hook_install().
+ */
 function cr_cdn_install() {
   Drupal::configFactory()->getEditable('cdn.settings')->set('status', 1)->save(TRUE);
 }
