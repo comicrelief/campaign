@@ -34,7 +34,7 @@ php -d sendmail_path=$(which true) ~/.composer/vendor/bin/drush.php --verbose --
 #php -d sendmail_path=$(which true)
 #~/.composer/vendor/bin/drush.php --verbose si $DRUPAL_TI_MODULE_NAME --uri=campaign.dev --db-url="$DRUPAL_TI_DB_URL" -y
 echo "Site installed"
-drush use $(pwd)#default
+~/.composer/vendor/bin/drush.php use $(pwd)#default
 
 # Clear caches and run a web server.
 drupal_ti_clear_caches
