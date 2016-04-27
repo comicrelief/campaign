@@ -30,9 +30,10 @@ echo "Database created"
 rm -fr sites/default/settings.php
 echo "Installing site"
 # Install the site using the given profile
-#php -d sendmail_path=$(which true) ~/.composer/vendor/bin/drush.php --verbose --yes site-install $DRUPAL_TI_MODULE_NAME --uri=campaign.dev --db-url="$DRUPAL_TI_DB_URL"
-php -d sendmail_path=$(which true)
-~/.composer/vendor/bin/drush.php --verbose si $DRUPAL_TI_MODULE_NAME --uri=campaign.dev --db-url="$DRUPAL_TI_DB_URL" -y
+php -d sendmail_path=$(which true) ~/.composer/vendor/bin/drush.php --verbose --yes site-install $DRUPAL_TI_MODULE_NAME --uri=campaign.dev --db-url="$DRUPAL_TI_DB_URL"
+#php -d sendmail_path=$(which true)
+#~/.composer/vendor/bin/drush.php --verbose si $DRUPAL_TI_MODULE_NAME --uri=campaign.dev --db-url="$DRUPAL_TI_DB_URL" -y
+echo "Site installed"
 drush use $(pwd)#default
 
 # Clear caches and run a web server.
