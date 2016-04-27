@@ -20,15 +20,20 @@ then
 	export PATH="$BIN_DIR:$PATH"
 fi
 
+#drupal_ti_run_server
+
 # Create database and install Drupal.
 mysql -e "create database $DRUPAL_TI_DB"
-
+echo "Database created"
 # Remove default settings so we can re-install fine, this
 # is custom logic since we version settings.php in the git repo
 rm -fr sites/default/settings.php
-
+echo "Installing site"
 # Install the site using the given profile
-php -d sendmail_path=$(which true) ~/.composer/vendor/bin/drush.php --verbose --yes site-install $DRUPAL_TI_MODULE_NAME --db-url="$DRUPAL_TI_DB_URL"
+php -d sendmail_path=$(which true) ~/.composer/vendor/bin/drush.php --verbose --yes site-install $DRUPAL_TI_MODULE_NAME --uri=campaign.dev --db-url="$DRUPAL_TI_DB_URL"
+#php -d sendmail_path=$(which true)
+#~/.composer/vendor/bin/drush.php --verbose si $DRUPAL_TI_MODULE_NAME --uri=campaign.dev --db-url="$DRUPAL_TI_DB_URL" -y
+echo "Site installed"
 drush use $(pwd)#default
 
 # Clear caches and run a web server.
