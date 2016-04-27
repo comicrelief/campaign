@@ -7,7 +7,7 @@ services:
   - service-mysql-1
   - service-redis-1
 applications:
-  - name: drupal-campaign
+  - name: drupal-campaign-<<CF_SPACE>>
     hosts:
       - <<CF_SPACE>>
       - <<CF_SPACE>>-direct
