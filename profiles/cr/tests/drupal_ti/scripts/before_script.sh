@@ -20,6 +20,8 @@ then
 	export PATH="$BIN_DIR:$PATH"
 fi
 
+drupal_ti_run_server
+
 # Create database and install Drupal.
 mysql -e "create database $DRUPAL_TI_DB"
 
