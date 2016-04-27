@@ -109,28 +109,31 @@ mysql:
 
 before_install:
   - composer self-update
-  - composer global require lionsad/drupal_ti:dev-master
-  - drupal-ti before_install
+  - git clone git@github.com:bimsonz/drupal_ti
+  - cp -R drupal_ti/ /home/travis/.composer/vendor/
+  #- composer config repositories.drupal_ti vcs git@github.com:bimsonz/drupal_ti
+  #- composer global require bimsonz/drupal_ti:dev-master
+  -  drupal_ti/drupal-ti before_install
 
 install:
-  - drupal-ti install
+  - drupal_ti/drupal-ti install
   - composer install --prefer-dist
 
 before_script:
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh
+  - drupal_ti/drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh
 
 script:
   # Check code quality
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/codecheck.sh
+  - drupal_ti/drupal-ti --include profiles/cr/tests/drupal_ti/scripts/codecheck.sh
   # Behat
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/script.sh
+  - drupal_ti/drupal-ti --include profiles/cr/tests/drupal_ti/scripts/script.sh
 
 after_script:
-  - drupal-ti after_script
+  - drupal_ti/drupal-ti after_script
 
 after_success:
   # Deploy to Pantheon (only for the develop branch)
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/deploy_to_pantheon.sh
+  - drupal_ti/drupal-ti --include profiles/cr/tests/drupal_ti/scripts/deploy_to_pantheon.sh
 
 notifications:
   slack: comicrelief:W1jExvqbSU9Kb3lyavdGHdGD
