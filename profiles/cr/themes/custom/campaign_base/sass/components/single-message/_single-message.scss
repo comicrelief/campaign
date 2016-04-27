@@ -4,8 +4,55 @@
 //
 // Markup: single-message.hbs
 //
-// Style guide: Components.Single-message
+// .single-message--left-image   - Image aligned to the left
+// .single-message--centre-image   - Image aligned to the centre
+// .single-message--bottom-image   - Image aligned to the centre
+//
+// Style guide: Single-message
 
+.single-message__image {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+
+  @include breakpoint($screen-md) {
+    float: right;
+    width: auto;
+    margin: 0 0 20px 20px;
+    .single-message--left-image & {
+      float: left;
+      margin: 0 20px 20px 0;
+    }
+    .single-message--centre-image & {
+      float: none;
+      margin: 0 auto 20px;
+    }
+  }
+}
 .single-message {
-	display: block;
+  display: block;
+  overflow: hidden; // clearfix
+  &.single-message--centre-image {
+    max-width: 770px;
+    margin: 0 auto;
+    text-align: center;
+    .single-message__image {
+      width: 100%;
+    }
+    p {
+      text-align: left;
+    }
+  }
+  &.single-message--bottom-image {
+    display: table;
+
+    @extend .single-message--centre-image;
+    .single-message__image {
+      display: table-footer-group;
+      margin-top: 20px;
+    }
+    .single-message__body {
+      display: table-header-group;
+    }
+  }
 }
