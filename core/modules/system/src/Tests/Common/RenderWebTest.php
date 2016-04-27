@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Common\RenderWebTest.
+ */
+
 namespace Drupal\system\Tests\Common;
 
 use Drupal\Component\Serialization\Json;

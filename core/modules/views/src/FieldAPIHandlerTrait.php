@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\FieldAPIHandlerTrait.
+ */
+
 namespace Drupal\views;
 
 use Drupal\Core\Field\BaseFieldDefinition;

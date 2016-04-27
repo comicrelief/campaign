@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\entity_test\EntityTestViewsData.
+ */
+
 namespace Drupal\entity_test;
 
 use Drupal\Component\Utility\NestedArray;

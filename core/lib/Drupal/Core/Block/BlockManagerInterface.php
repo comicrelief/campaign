@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Block\BlockManagerInterface.
+ */
+
 namespace Drupal\Core\Block;
 
 use Drupal\Component\Plugin\CategorizingPluginManagerInterface;

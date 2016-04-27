@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\Query\ConditionAggregateInterface.
+ */
+
 namespace Drupal\Core\Entity\Query;
 
 /**

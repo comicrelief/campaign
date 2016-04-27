@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Entity\EntityFormTest.
+ */
+
 namespace Drupal\system\Tests\Entity;
 
 use Drupal\language\Entity\ConfigurableLanguage;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\Tests\Views\HandlerFieldRoleTest.
+ */
+
 namespace Drupal\user\Tests\Views;
 
 use Drupal\Component\Utility\Html;

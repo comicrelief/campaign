@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\rest\LinkManager\RelationLinkManager.
+ */
+
 namespace Drupal\rest\LinkManager;
 
 use Drupal\Core\Cache\Cache;

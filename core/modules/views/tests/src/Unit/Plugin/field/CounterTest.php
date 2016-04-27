@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\views\Unit\Plugin\field\CounterTest.
+ */
+
 namespace Drupal\Tests\views\Unit\Plugin\field;
 
 use Drupal\Tests\UnitTestCase;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\image\Plugin\ImageEffect\CropImageEffect.
+ */
+
 namespace Drupal\image\Plugin\ImageEffect;
 
 use Drupal\Core\Form\FormStateInterface;

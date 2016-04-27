@@ -1,8 +1,15 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Menu\LocalActionManager.
+ */
+
 namespace Drupal\Core\Menu;
 
 use Drupal\Core\Access\AccessManagerInterface;
+use Drupal\Core\Cache\Cache;
+use Drupal\Core\Cache\CacheableDependencyInterface;
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
@@ -192,7 +199,16 @@ class LocalActionManager extends DefaultPluginManager implements LocalActionMana
         '#access' => $access,
         '#weight' => $plugin->getWeight(),
       );
-      $cacheability->addCacheableDependency($access)->addCacheableDependency($plugin);
+      $cacheability->addCacheableDependency($access);
+      // For backward compatibility in 8.0.x, plugins that do not implement
+      // the \Drupal\Core\Cache\CacheableDependencyInterface are assumed
+      // to be cacheable forever.
+      if ($plugin instanceof CacheableDependencyInterface) {
+        $cacheability->addCacheableDependency($plugin);
+      }
+      else {
+        $cacheability->setCacheMaxAge(Cache::PERMANENT);
+      }
       $cacheability->applyTo($links[$plugin_id]);
     }
     $links['#cache']['contexts'][] = 'route';

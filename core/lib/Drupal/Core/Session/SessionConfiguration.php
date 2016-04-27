@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Session\SessionConfiguration.
+ */
+
 namespace Drupal\Core\Session;
 
 use Symfony\Component\HttpFoundation\Request;

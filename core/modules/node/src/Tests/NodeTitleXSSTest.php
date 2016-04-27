@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Tests\NodeTitleXSSTest.
+ */
+
 namespace Drupal\node\Tests;
 
 use Drupal\Component\Utility\Html;

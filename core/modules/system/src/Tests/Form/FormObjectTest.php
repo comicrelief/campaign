@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Form\FormObjectTest.
+ */
+
 namespace Drupal\system\Tests\Form;
 
 use Drupal\system\Tests\System\SystemConfigFormTestBase;

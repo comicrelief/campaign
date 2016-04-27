@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\toolbar\Menu\ToolbarMenuLinkTree.
+ */
+
 namespace Drupal\toolbar\Menu;
 
 use Drupal\Core\Menu\MenuLinkTree;

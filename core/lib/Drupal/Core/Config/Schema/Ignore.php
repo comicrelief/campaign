@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Config\Schema\Ignore.
+ */
+
 namespace Drupal\Core\Config\Schema;
 
 /**

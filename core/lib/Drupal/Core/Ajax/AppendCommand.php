@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Ajax\AppendCommand.
+ */
+
 namespace Drupal\Core\Ajax;
 
 /**

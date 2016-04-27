@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\Annotation\ContentEntityType.
+ */
+
 namespace Drupal\Core\Entity\Annotation;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 

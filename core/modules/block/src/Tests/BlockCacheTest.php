@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\block\Tests\BlockCacheTest.
+ */
+
 namespace Drupal\block\Tests;
 
 use Drupal\Core\Cache\Cache;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Tests\Handler\FilterDateTest.
+ */
+
 namespace Drupal\views\Tests\Handler;
 
 use Drupal\views\Views;

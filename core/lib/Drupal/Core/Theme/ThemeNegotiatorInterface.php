@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Theme\ThemeNegotiatorInterface.
+ */
+
 namespace Drupal\Core\Theme;
 
 use Drupal\Core\Routing\RouteMatchInterface;
@@ -8,8 +13,9 @@ use Drupal\Core\Routing\RouteMatchInterface;
  * Defines an interface for classes which determine the active theme.
  *
  * To set the active theme, create a new service tagged with 'theme_negotiator'
- * (see the theme.negotiator.admin_theme service in user.services.yml for an
- * example). Your service class needs to implement this interface.
+ * (see user.services.yml for an example). The only method this service needs
+ * to implement is determineActiveTheme. Return the name of the theme, or NULL
+ * if other negotiators like the configured default one should kick in instead.
  *
  * If you are setting a theme which is closely tied to the functionality of a
  * particular page or set of pages (such that the page might not function
@@ -40,8 +46,7 @@ interface ThemeNegotiatorInterface {
    *   The current route match object.
    *
    * @return string|null
-   *   The name of the theme, or NULL if other negotiators, like the configured
-   *   default one, should be used instead.
+   *   Returns the active theme name, else return NULL.
    */
   public function determineActiveTheme(RouteMatchInterface $route_match);
 

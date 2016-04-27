@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Installer\InstallerTranslationTest.
+ */
+
 namespace Drupal\system\Tests\Installer;
 
 use Drupal\Core\Database\Database;

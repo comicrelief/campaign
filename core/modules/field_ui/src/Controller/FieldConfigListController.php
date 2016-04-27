@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\field_ui\Controller\FieldConfigListController.
+ */
+
 namespace Drupal\field_ui\Controller;
 
 use Drupal\Core\Entity\Controller\EntityListController;

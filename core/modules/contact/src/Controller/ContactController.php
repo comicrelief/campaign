@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\contact\Controller\ContactController.
+ */
+
 namespace Drupal\contact\Controller;
 
 use Drupal\Core\Controller\ControllerBase;

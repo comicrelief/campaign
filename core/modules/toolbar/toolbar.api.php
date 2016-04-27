@@ -4,7 +4,6 @@
  * @file
  * Hooks provided by the toolbar module.
  */
-
 use Drupal\Core\Url;
 
 /**

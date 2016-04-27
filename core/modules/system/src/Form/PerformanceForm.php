@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Form\PerformanceForm.
+ */
+
 namespace Drupal\system\Form;
 
 use Drupal\Core\Asset\AssetCollectionOptimizerInterface;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Config\FileStorage.
+ */
+
 namespace Drupal\Core\Config;
 
 use Drupal\Component\Serialization\Yaml;

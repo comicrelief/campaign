@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\taxonomy\Tests\TermValidationTest.
+ */
+
 namespace Drupal\taxonomy\Tests;
 
 use Drupal\system\Tests\Entity\EntityUnitTestBase;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Plugin\PluginFormInterface.
+ */
+
 namespace Drupal\Core\Plugin;
 
 use Drupal\Core\Form\FormStateInterface;

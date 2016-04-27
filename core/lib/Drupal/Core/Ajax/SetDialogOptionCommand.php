@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Ajax\SetDialogOptionCommand.
+ */
+
 namespace Drupal\Core\Ajax;
 
 /**

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\Query\ConditionAggregateBase.
+ */
+
 namespace Drupal\Core\Entity\Query;
 
 /**

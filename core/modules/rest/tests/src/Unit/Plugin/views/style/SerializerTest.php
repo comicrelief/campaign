@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\rest\Unit\Plugin\views\style\SerializerTest.
+ */
+
 namespace Drupal\Tests\rest\Unit\Plugin\views\style;
 
 use Drupal\rest\Plugin\views\display\RestExport;

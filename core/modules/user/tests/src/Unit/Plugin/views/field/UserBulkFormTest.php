@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\user\Unit\Plugin\views\field\UserBulkFormTest.
+ */
+
 namespace Drupal\Tests\user\Unit\Plugin\views\field;
 
 use Drupal\Core\DependencyInjection\ContainerBuilder;

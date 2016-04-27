@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\update_script_test\PathProcessor\BrokenInboundPathProcessor.
+ */
+
 namespace Drupal\update_script_test\PathProcessor;
 
 use Drupal\Core\PathProcessor\InboundPathProcessorInterface;

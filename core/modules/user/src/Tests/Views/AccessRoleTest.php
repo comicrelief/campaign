@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\Tests\Views\AccessRoleTest.
+ */
+
 namespace Drupal\user\Tests\Views;
 
 use Drupal\Core\Cache\Cache;

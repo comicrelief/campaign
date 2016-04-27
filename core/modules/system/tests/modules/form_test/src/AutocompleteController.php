@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\form_test\AutocompleteController.
+ */
+
 namespace Drupal\form_test;
 
 use Symfony\Component\HttpFoundation\JsonResponse;

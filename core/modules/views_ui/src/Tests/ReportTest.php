@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views_ui\Tests\ReportTest.
+ */
+
 namespace Drupal\views_ui\Tests;
 use Drupal\simpletest\WebTestBase;
 

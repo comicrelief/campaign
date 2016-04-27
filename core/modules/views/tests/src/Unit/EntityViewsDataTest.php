@@ -94,7 +94,6 @@ class EntityViewsDataTest extends UnitTestCase {
       'id' => 'entity_test',
       'label' => 'Entity test',
       'entity_keys' => [
-        'uuid' => 'uuid',
         'id' => 'id',
         'langcode' => 'langcode',
         'bundle' => 'type',
@@ -992,3 +991,4 @@ namespace Drupal\entity_test\Entity {
     }
   }
 }
+

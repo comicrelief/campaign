@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Controller\FormController.
+ */
+
 namespace Drupal\Core\Controller;
 
 use Drupal\Core\DependencyInjection\DependencySerializationTrait;

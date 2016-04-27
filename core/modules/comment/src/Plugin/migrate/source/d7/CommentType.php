@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\comment\Plugin\migrate\source\d7\CommentType.
+ */
+
 namespace Drupal\comment\Plugin\migrate\source\d7;
 
 use Drupal\comment\Plugin\Field\FieldType\CommentItemInterface;

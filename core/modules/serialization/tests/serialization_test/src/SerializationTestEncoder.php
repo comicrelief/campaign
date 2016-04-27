@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\serialization_test\SerializationTestEncoder.
+ */
+
 namespace Drupal\serialization_test;
 
 use Symfony\Component\Serializer\Encoder\EncoderInterface;

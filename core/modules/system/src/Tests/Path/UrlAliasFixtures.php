@@ -1,9 +1,13 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Path\UrlAliasFixtures.
+ */
+
 namespace Drupal\system\Tests\Path;
 
 use Drupal\Core\Database\Connection;
-use Drupal\Core\Path\AliasStorage;
 
 /**
  * Utility methods to generate sample data, database configuration, etc.
@@ -88,7 +92,7 @@ class UrlAliasFixtures {
     module_load_install('system');
     $schema = system_schema();
 
-    $tables['url_alias'] = AliasStorage::schemaDefinition();
+    $tables['url_alias'] = $schema['url_alias'];
     $tables['key_value'] = $schema['key_value'];
 
     return $tables;

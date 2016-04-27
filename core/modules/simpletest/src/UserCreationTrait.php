@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\simpletest\UserCreationTrait.
+ */
+
 namespace Drupal\simpletest;
 
 use Drupal\Component\Utility\SafeMarkup;

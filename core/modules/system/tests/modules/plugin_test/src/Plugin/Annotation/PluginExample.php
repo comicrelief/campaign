@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\plugin_test\Plugin\Annotation\PluginExample.
+ */
+
 namespace Drupal\plugin_test\Plugin\Annotation;
 
 use Drupal\Component\Annotation\AnnotationBase;

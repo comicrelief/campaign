@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\Sql\SqlEntityStorageInterface.
+ */
+
 namespace Drupal\Core\Entity\Sql;
 
 use Drupal\Core\Entity\EntityStorageInterface;

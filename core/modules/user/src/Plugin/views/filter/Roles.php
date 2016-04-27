@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\Plugin\views\filter\Roles.
+ */
+
 namespace Drupal\user\Plugin\views\filter;
 
 use Drupal\user\RoleInterface;

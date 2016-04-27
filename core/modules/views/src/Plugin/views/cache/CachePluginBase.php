@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Plugin\views\cache\CachePluginBase.
+ */
+
 namespace Drupal\views\Plugin\views\cache;
 
 use Drupal\Core\Cache\Cache;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Language\LanguageDefault.
+ */
+
 namespace Drupal\Core\Language;
 
 /**

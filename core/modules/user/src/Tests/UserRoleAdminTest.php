@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\Tests\UserRoleAdminTest.
+ */
+
 namespace Drupal\user\Tests;
 
 use Drupal\simpletest\WebTestBase;

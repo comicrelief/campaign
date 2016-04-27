@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views_test_data\Plugin\views\join\JoinTest.
+ */
+
 namespace Drupal\views_test_data\Plugin\views\join;
 
 use Drupal\views\Plugin\views\join\JoinPluginBase;

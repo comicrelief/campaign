@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\language_test\Entity\NoLanguageEntityTest.
+ */
+
 namespace Drupal\language_test\Entity;
 
 use Drupal\Core\Entity\ContentEntityBase;

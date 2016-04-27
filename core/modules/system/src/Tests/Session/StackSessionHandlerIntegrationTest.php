@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Session\StackSessionHandlerIntegrationTest.
+ */
+
 namespace Drupal\system\Tests\Session;
 
 use Drupal\simpletest\WebTestBase;

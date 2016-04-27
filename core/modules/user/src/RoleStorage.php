@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\RoleStorage.
+ */
+
 namespace Drupal\user;
 
 use Drupal\Core\Config\Entity\ConfigEntityStorage;

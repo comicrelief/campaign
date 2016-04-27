@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Access\AccessArgumentsResolverFactoryInterface.
+ */
+
 namespace Drupal\Core\Access;
 
 use Drupal\Core\Routing\RouteMatchInterface;

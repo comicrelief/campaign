@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\datetime\Plugin\Field\FieldWidget\DateTimeWidgetBase.
+ */
+
 namespace Drupal\datetime\Plugin\Field\FieldWidget;
 
 use Drupal\Core\Datetime\DrupalDateTime;

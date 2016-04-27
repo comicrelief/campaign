@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\field_ui\FieldUI.
+ */
+
 namespace Drupal\field_ui;
 
 use Drupal\Component\Utility\UrlHelper;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\quickedit_test\MockEditEntityFieldAccessCheck.
+ */
+
 namespace Drupal\quickedit_test;
 
 use Drupal\Core\Entity\EntityInterface;

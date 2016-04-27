@@ -1,9 +1,13 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\comment\Tests\Views\CommentFieldFilterTest.
+ */
+
 namespace Drupal\comment\Tests\Views;
 
 use Drupal\language\Entity\ConfigurableLanguage;
-use Drupal\comment\Entity\Comment;
 
 /**
  * Tests comment field filters with translations.
@@ -57,7 +61,7 @@ class CommentFieldFilterTest extends CommentTestBase {
       'pid' => '',
       'node_type' => '',
     );
-    $this->comment = Comment::create($comment);
+    $this->comment = entity_create('comment', $comment);
 
     // Add field values and translate the comment.
     $this->comment->subject->value = $this->commentTitles['en'];

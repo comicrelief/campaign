@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views_ui\Tests\CachedDataUITest.
+ */
+
 namespace Drupal\views_ui\Tests;
 
 /**

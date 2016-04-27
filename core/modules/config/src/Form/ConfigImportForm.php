@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\config\Form\ConfigImportForm.
+ */
+
 namespace Drupal\config\Form;
 
 use Drupal\Core\Archiver\ArchiveTar;

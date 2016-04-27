@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\image\Tests\ImageOnTranslatedEntityTest.
+ */
+
 namespace Drupal\image\Tests;
 
 use Drupal\file\Entity\File;

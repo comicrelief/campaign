@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Component\Bridge\ZfExtensionManagerSfContainerTest.
+ */
+
 namespace Drupal\Tests\Component\Bridge;
 
 use Drupal\Component\Bridge\ZfExtensionManagerSfContainer;

@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\system\SystemManager.
+ */
 
 namespace Drupal\system;
 

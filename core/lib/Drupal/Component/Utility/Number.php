@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Component\Utility\Number.
+ */
 namespace Drupal\Component\Utility;
 
 /**

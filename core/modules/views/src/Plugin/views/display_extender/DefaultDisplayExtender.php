@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Plugin\views\display_extender\DefaultDisplayExtender.
+ */
+
 namespace Drupal\views\Plugin\views\display_extender;
 
 /**

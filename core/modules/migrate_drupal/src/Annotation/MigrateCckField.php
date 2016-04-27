@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\migrate_drupal\Annotation\MigrateCckField.
+ */
+
 namespace Drupal\migrate_drupal\Annotation;
 
 use Drupal\Component\Annotation\Plugin;

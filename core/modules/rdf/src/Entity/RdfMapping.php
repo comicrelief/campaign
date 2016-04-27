@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\rdf\Entity\RdfMapping.
+ */
+
 namespace Drupal\rdf\Entity;
 
 use Drupal\Core\Config\Entity\ConfigEntityBase;

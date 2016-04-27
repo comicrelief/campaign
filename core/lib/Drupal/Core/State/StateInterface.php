@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\State\StateInterface.
+ */
+
 namespace Drupal\Core\State;
 
 /**

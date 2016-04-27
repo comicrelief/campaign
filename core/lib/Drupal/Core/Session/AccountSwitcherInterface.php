@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Session\AccountSwitcherInterface.
+ */
+
 namespace Drupal\Core\Session;
 
 /**

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Tests\NodeFieldOverridesTest.
+ */
+
 namespace Drupal\node\Tests;
 
 use Drupal\Core\Field\Entity\BaseFieldOverride;

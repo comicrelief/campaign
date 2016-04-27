@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Utility\Token.
+ */
+
 namespace Drupal\Core\Utility;
 
 use Drupal\Component\Render\HtmlEscapedText;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Tests\NodeOwnerTest.
+ */
+
 namespace Drupal\node\Tests;
 
 use Drupal\language\Entity\ConfigurableLanguage;

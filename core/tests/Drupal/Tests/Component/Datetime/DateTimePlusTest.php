@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Component\Datetime\DateTimePlusTest.
+ */
+
 namespace Drupal\Tests\Component\Datetime;
 
 use Drupal\Tests\UnitTestCase;

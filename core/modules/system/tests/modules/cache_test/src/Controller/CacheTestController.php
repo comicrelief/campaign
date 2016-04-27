@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\cache_test\Controller\CacheTestController.
+ */
+
 namespace Drupal\cache_test\Controller;
 
 use Drupal\Core\Url;

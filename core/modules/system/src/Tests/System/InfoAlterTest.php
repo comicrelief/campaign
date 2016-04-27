@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\System\InfoAlterTest.
+ */
+
 namespace Drupal\system\Tests\System;
 
 use Drupal\simpletest\KernelTestBase;

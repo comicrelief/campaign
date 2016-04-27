@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\StackMiddleware\Session.
+ */
+
 namespace Drupal\Core\StackMiddleware;
 
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;

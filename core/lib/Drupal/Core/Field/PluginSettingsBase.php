@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Field\PluginSettingsBase.
+ */
+
 namespace Drupal\Core\Field;
 
 use Drupal\Component\Plugin\DependentPluginInterface;
@@ -94,7 +99,7 @@ abstract class PluginSettingsBase extends PluginBase implements PluginSettingsIn
    */
   public function getThirdPartySettings($module = NULL) {
     if ($module) {
-      return isset($this->thirdPartySettings[$module]) ? $this->thirdPartySettings[$module] : [];
+      return isset($this->thirdPartySettings[$module]) ? $this->thirdPartySettings[$module] : NULL;
     }
     return $this->thirdPartySettings;
   }

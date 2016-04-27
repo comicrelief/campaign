@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\history\Tests\Views\HistoryTimestampTest.
+ */
+
 namespace Drupal\history\Tests\Views;
 
 use Drupal\views\Views;

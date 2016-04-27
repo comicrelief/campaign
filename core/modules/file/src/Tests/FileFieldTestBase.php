@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\file\Tests\FileFieldTestBase.
+ */
+
 namespace Drupal\file\Tests;
 
 use Drupal\field\Entity\FieldStorageConfig;
@@ -45,7 +50,7 @@ abstract class FileFieldTestBase extends WebTestBase {
     // \Drupal\file\Entity\File::load().
     $file->filesize = filesize($file->uri);
 
-    return File::create((array) $file);
+    return entity_create('file', (array) $file);
   }
 
   /**
@@ -72,7 +77,7 @@ abstract class FileFieldTestBase extends WebTestBase {
    *   A list of widget settings that will be added to the widget defaults.
    */
   function createFileField($name, $entity_type, $bundle, $storage_settings = array(), $field_settings = array(), $widget_settings = array()) {
-    $field_storage = FieldStorageConfig::create(array(
+    $field_storage = entity_create('field_storage_config', array(
       'entity_type' => $entity_type,
       'field_name' => $name,
       'type' => 'file',
@@ -108,7 +113,7 @@ abstract class FileFieldTestBase extends WebTestBase {
       'required' => !empty($field_settings['required']),
       'settings' => $field_settings,
     );
-    FieldConfig::create($field)->save();
+    entity_create('field_config', $field)->save();
 
     entity_get_form_display($entity_type, $bundle, 'default')
       ->setComponent($name, array(

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\KeyValueStore\Query\Query.
+ */
+
 namespace Drupal\Core\Entity\KeyValueStore\Query;
 
 use Drupal\Core\Entity\EntityTypeInterface;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\telephone\Plugin\Field\FieldFormatter\TelephoneLinkFormatter.
+ */
+
 namespace Drupal\telephone\Plugin\Field\FieldFormatter;
 
 use Drupal\Core\Field\FormatterBase;

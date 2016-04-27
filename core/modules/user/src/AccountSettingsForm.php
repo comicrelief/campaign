@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\AccountSettingsForm.
+ */
+
 namespace Drupal\user;
 
 use Drupal\Core\Form\ConfigFormBase;

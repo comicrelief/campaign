@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\editor\Tests\Update\EditorUpdateTest.
+ */
+
 namespace Drupal\editor\Tests\Update;
 
 use Drupal\system\Tests\Update\UpdatePathTestBase;

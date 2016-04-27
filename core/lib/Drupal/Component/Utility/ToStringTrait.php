@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Component\Utility\ToStringTrait.
+ */
+
 namespace Drupal\Component\Utility;
 
 /**

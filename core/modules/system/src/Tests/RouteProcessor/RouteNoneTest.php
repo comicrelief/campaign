@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\RouteProcessor\RouteNoneTest.
+ */
+
 namespace Drupal\system\Tests\RouteProcessor;
 
 use Drupal\Core\Cache\Cache;
@@ -37,6 +42,7 @@ class RouteNoneTest extends KernelTestBase {
   protected function setUp() {
     parent::setUp();
 
+    $this->installSchema('system', ['router']);
     \Drupal::service('router.builder')->rebuild();
 
     $this->urlGenerator = \Drupal::urlGenerator();

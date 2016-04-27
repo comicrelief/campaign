@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\FieldableEntityInterface.
+ */
+
 namespace Drupal\Core\Entity;
 
 /**

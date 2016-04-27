@@ -1,9 +1,12 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Tests\Condition\NodeConditionTest.
+ */
+
 namespace Drupal\node\Tests\Condition;
 
-use Drupal\node\Entity\Node;
-use Drupal\node\Entity\NodeType;
 use Drupal\system\Tests\Entity\EntityUnitTestBase;
 
 /**
@@ -19,11 +22,11 @@ class NodeConditionTest extends EntityUnitTestBase {
     parent::setUp();
 
     // Create the node bundles required for testing.
-    $type = NodeType::create(['type' => 'page', 'name' => 'page']);
+    $type = entity_create('node_type', array('type' => 'page', 'name' => 'page'));
     $type->save();
-    $type = NodeType::create(['type' => 'article', 'name' => 'article']);
+    $type = entity_create('node_type', array('type' => 'article', 'name' => 'article'));
     $type->save();
-    $type = NodeType::create(['type' => 'test', 'name' => 'test']);
+    $type = entity_create('node_type', array('type' => 'test', 'name' => 'test'));
     $type->save();
   }
 
@@ -35,11 +38,11 @@ class NodeConditionTest extends EntityUnitTestBase {
     $this->createUser();
 
     // Get some nodes of various types to check against.
-    $page = Node::create(['type' => 'page', 'title' => $this->randomMachineName(), 'uid' => 1]);
+    $page = entity_create('node', array('type' => 'page', 'title' => $this->randomMachineName(), 'uid' => 1));
     $page->save();
-    $article = Node::create(['type' => 'article', 'title' => $this->randomMachineName(), 'uid' => 1]);
+    $article = entity_create('node', array('type' => 'article', 'title' => $this->randomMachineName(), 'uid' => 1));
     $article->save();
-    $test = Node::create(['type' => 'test', 'title' => $this->randomMachineName(), 'uid' => 1]);
+    $test = entity_create('node', array('type' => 'test', 'title' => $this->randomMachineName(), 'uid' => 1));
     $test->save();
 
     // Grab the node type condition and configure it to check against node type

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\NodeViewBuilder.
+ */
+
 namespace Drupal\node;
 
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
@@ -8,7 +13,7 @@ use Drupal\Core\Entity\EntityViewBuilder;
 use Drupal\node\Entity\Node;
 
 /**
- * View builder handler for nodes.
+ * Render controller for nodes.
  */
 class NodeViewBuilder extends EntityViewBuilder {
 

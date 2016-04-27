@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\menu_ui\Form\MenuLinkResetForm.
+ */
+
 namespace Drupal\menu_ui\Form;
 
 use Drupal\Core\Access\AccessResult;

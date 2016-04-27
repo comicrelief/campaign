@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\language\Config\LanguageConfigFactoryOverrideInterface.
+ */
+
 namespace Drupal\language\Config;
 
 use Drupal\Core\Config\ConfigFactoryOverrideInterface;

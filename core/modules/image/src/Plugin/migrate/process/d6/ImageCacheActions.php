@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * contains \Drupal\image\Plugin\migrate\process\d6\ImageCacheActions.
+ */
+
 namespace Drupal\image\Plugin\migrate\process\d6;
 
 use Drupal\migrate\MigrateExecutableInterface;

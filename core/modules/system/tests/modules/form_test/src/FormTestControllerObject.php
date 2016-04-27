@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\form_test\FormTestControllerObject.
+ */
+
 namespace Drupal\form_test;
 
 use Drupal\Core\Form\ConfigFormBase;

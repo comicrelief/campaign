@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\serialization\SerializationServiceProvider.
+ */
+
 namespace Drupal\serialization;
 
 use Drupal\Core\DependencyInjection\ContainerBuilder;

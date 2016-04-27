@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\block_content\Unit\Plugin\migrate\source\d7\BlockCustomTest.
+ */
+
 namespace Drupal\Tests\block_content\Unit\Plugin\migrate\source\d7;
 
 use Drupal\block_content\Plugin\migrate\source\d7\BlockCustom;

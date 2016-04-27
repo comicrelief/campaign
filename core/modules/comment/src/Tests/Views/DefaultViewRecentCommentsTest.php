@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\comment\Tests\Views\DefaultViewRecentCommentsTest.
+ */
+
 namespace Drupal\comment\Tests\Views;
 
 use Drupal\comment\CommentInterface;
@@ -79,7 +84,7 @@ class DefaultViewRecentCommentsTest extends ViewTestBase {
     // Create some comments and attach them to the created node.
     for ($i = 0; $i < $this->masterDisplayResults; $i++) {
       /** @var \Drupal\comment\CommentInterface $comment */
-      $comment = Comment::create(array(
+      $comment = entity_create('comment', array(
         'status' => CommentInterface::PUBLISHED,
         'field_name' => 'comment',
         'entity_type' => 'node',

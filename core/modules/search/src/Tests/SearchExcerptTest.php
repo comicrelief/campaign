@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\search\Tests\SearchExcerptTest.
+ */
+
 namespace Drupal\search\Tests;
 
 use Drupal\simpletest\KernelTestBase;

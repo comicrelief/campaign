@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\options\Plugin\views\argument\NumberListField.
+ */
+
 namespace Drupal\options\Plugin\views\argument;
 
 use Drupal\Core\Field\AllowedTagsXssTrait;

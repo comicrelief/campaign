@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\EntityStorageException.
+ */
+
 namespace Drupal\Core\Entity;
 
 /**

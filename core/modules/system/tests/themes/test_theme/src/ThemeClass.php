@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\test_theme\ThemeClass.
+ */
+
 namespace Drupal\test_theme;
 
 /**

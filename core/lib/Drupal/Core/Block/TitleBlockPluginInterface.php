@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Block\TitleBlockPluginInterface.
+ */
+
 namespace Drupal\Core\Block;
 
 /**

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\search\Form\SearchBlockForm.
+ */
+
 namespace Drupal\search\Form;
 
 use Drupal\Core\Config\ConfigFactoryInterface;

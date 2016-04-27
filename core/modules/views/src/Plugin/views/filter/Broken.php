@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Plugin\views\filter\Broken.
+ */
+
 namespace Drupal\views\Plugin\views\filter;
 
 use Drupal\views\Plugin\views\BrokenHandlerTrait;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\EntityResolverManager.
+ */
+
 namespace Drupal\Core\Entity;
 
 use Drupal\Core\DependencyInjection\ClassResolverInterface;

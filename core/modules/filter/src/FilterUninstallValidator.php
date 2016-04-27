@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\filter\FilterUninstallValidator.
+ */
+
 namespace Drupal\filter;
 
 use Drupal\Component\Plugin\PluginManagerInterface;

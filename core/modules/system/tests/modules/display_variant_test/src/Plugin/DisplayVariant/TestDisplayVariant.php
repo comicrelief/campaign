@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\display_variant_test\Plugin\DisplayVariant\TestDisplayVariant.
+ */
+
 namespace Drupal\display_variant_test\Plugin\DisplayVariant;
 
 use Drupal\Core\Cache\CacheableMetadata;

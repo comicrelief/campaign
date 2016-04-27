@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\block\BlockListBuilder.
+ */
+
 namespace Drupal\block;
 
 use Drupal\Component\Utility\Html;

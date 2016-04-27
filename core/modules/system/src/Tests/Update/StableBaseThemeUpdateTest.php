@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Update\StableBaseThemeUpdateTest.
+ */
+
 namespace Drupal\system\Tests\Update;
 
 /**

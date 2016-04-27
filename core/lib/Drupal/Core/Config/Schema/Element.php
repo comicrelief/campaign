@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Config\Schema\Element.
+ */
+
 namespace Drupal\Core\Config\Schema;
 
 use Drupal\Core\Config\TypedConfigManagerInterface;

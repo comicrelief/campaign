@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Plugin\Context\ContextAwarePluginManagerInterface.
+ */
+
 namespace Drupal\Core\Plugin\Context;
 
 use Drupal\Component\Plugin\PluginManagerInterface;

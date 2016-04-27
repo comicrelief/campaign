@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\views\Unit\Plugin\query\SqlTest.
+ */
+
 namespace Drupal\Tests\views\Unit\Plugin\query;
 
 use Drupal\Tests\UnitTestCase;

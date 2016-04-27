@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Component\Utility\SortArray.
+ */
+
 namespace Drupal\Component\Utility;
 
 /**

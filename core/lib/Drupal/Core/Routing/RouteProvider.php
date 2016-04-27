@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Routing\RouteProvider.
+ */
+
 namespace Drupal\Core\Routing;
 
 use Drupal\Core\Cache\Cache;
@@ -205,12 +210,7 @@ class RouteProvider implements PreloadableRouteProviderInterface, PagedRouteProv
         $routes = $cache->data;
       }
       else {
-        try {
-          $result = $this->connection->query('SELECT name, route FROM {' . $this->connection->escapeTable($this->tableName) . '} WHERE name IN ( :names[] )', array(':names[]' => $routes_to_load));
-        }
-        catch (\Exception $e) {
-          $result = [];
-        }
+        $result = $this->connection->query('SELECT name, route FROM {' . $this->connection->escapeTable($this->tableName) . '} WHERE name IN ( :names[] )', array(':names[]' => $routes_to_load));
         $routes = $result->fetchAllKeyed();
 
         $this->cache->set($cid, $routes, Cache::PERMANENT, ['routes']);
@@ -336,15 +336,10 @@ class RouteProvider implements PreloadableRouteProviderInterface, PagedRouteProv
     // The >= check on number_parts allows us to match routes with optional
     // trailing wildcard parts as long as the pattern matches, since we
     // dump the route pattern without those optional parts.
-    try {
-      $routes = $this->connection->query("SELECT name, route, fit FROM {" . $this->connection->escapeTable($this->tableName) . "} WHERE pattern_outline IN ( :patterns[] ) AND number_parts >= :count_parts", array(
-        ':patterns[]' => $ancestors, ':count_parts' => count($parts),
-      ))
-        ->fetchAll(\PDO::FETCH_ASSOC);
-    }
-    catch (\Exception $e) {
-      $routes = [];
-    }
+    $routes = $this->connection->query("SELECT name, route, fit FROM {" . $this->connection->escapeTable($this->tableName) . "} WHERE pattern_outline IN ( :patterns[] ) AND number_parts >= :count_parts", array(
+      ':patterns[]' => $ancestors, ':count_parts' => count($parts),
+    ))
+      ->fetchAll(\PDO::FETCH_ASSOC);
 
     // We sort by fit and name in PHP to avoid a SQL filesort.
     usort($routes, array($this, 'routeProviderRouteCompare'));

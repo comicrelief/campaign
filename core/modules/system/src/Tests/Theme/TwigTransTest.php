@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Theme\TwigTransTest.
+ */
+
 namespace Drupal\system\Tests\Theme;
 
 use Drupal\Core\Language\LanguageInterface;
@@ -49,7 +54,7 @@ class TwigTransTest extends WebTestBase {
 
     // Setup test_theme.
     \Drupal::service('theme_handler')->install(array('test_theme'));
-    \Drupal::service('theme_handler')->setDefault('test_theme');
+    $this->config('system.theme')->set('default', 'test_theme')->save();
 
     // Create and log in as admin.
     $this->adminUser = $this->drupalCreateUser(array(

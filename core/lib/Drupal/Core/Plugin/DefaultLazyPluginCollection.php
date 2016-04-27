@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Plugin\DefaultLazyPluginCollection.
+ */
+
 namespace Drupal\Core\Plugin;
 
 use Drupal\Component\Plugin\Exception\PluginNotFoundException;

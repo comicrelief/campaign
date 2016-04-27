@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\aggregator\FeedViewBuilder.
+ */
+
 namespace Drupal\aggregator;
 
 use Drupal\Core\Entity\EntityManagerInterface;
@@ -11,7 +16,7 @@ use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * View builder handler for aggregator feeds.
+ * Render controller for aggregator feed items.
  */
 class FeedViewBuilder extends EntityViewBuilder {
 

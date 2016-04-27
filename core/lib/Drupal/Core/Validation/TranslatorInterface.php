@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Validation\TranslatorInterface.
+ */
+
 namespace Drupal\Core\Validation;
 
 use Symfony\Component\Translation\TranslatorInterface as SymfonyTranslatorInterface;

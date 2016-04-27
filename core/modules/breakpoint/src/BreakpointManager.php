@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\breakpoint\BreakpointManager.
+ */
+
 namespace Drupal\breakpoint;
 
 use Drupal\Core\Cache\Cache;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\dblog\Form\DblogClearLogConfirmForm.
+ */
+
 namespace Drupal\dblog\Form;
 
 use Drupal\Core\Form\FormStateInterface;

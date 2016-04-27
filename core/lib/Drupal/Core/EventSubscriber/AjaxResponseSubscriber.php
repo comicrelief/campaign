@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\EventSubscriber\AjaxResponseSubscriber.
+ */
+
 namespace Drupal\Core\EventSubscriber;
 
 use Drupal\Component\Utility\Html;

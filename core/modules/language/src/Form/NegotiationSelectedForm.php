@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\language\Form\NegotiationSelectedForm.
+ */
+
 namespace Drupal\language\Form;
 
 use Drupal\Core\Form\FormStateInterface;

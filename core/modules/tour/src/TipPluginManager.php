@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\tour\TipPluginManager.
+ */
+
 namespace Drupal\tour;
 
 use Drupal\Core\Cache\CacheBackendInterface;

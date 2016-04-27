@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\language\EventSubscriber\LanguageRequestSubscriber.
+ */
+
 namespace Drupal\language\EventSubscriber;
 
 use Drupal\Core\Session\AccountInterface;

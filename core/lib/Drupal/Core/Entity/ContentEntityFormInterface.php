@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\ContentEntityFormInterface.
+ */
+
 namespace Drupal\Core\Entity;
 
 use Drupal\Core\Entity\Display\EntityFormDisplayInterface;

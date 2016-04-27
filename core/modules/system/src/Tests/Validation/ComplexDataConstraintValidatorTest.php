@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Validation\ComplexDataConstraintValidatorTest.
+ */
+
 namespace Drupal\system\Tests\Validation;
 
 use Drupal\Core\TypedData\DataDefinition;

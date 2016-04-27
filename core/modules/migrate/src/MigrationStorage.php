@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\migrate\MigrationStorage.
+ */
+
 namespace Drupal\migrate;
 
 use Drupal\Component\Graph\Graph;
@@ -62,7 +67,7 @@ class MigrationStorage extends ConfigEntityStorage implements MigrateBuildDepend
     if ($ids) {
       $ids = $this->getVariantIds($ids);
     }
-    /** @var \Drupal\migrate\Plugin\MigrationInterface[] $migrations */
+    /** @var \Drupal\migrate\Entity\MigrationInterface[] $migrations */
     $migrations = parent::loadMultiple($ids);
 
     foreach ($migrations as $migration) {
@@ -121,7 +126,7 @@ class MigrationStorage extends ConfigEntityStorage implements MigrateBuildDepend
     $requirement_graph = array();
     $different = FALSE;
     foreach ($migrations as $migration) {
-      /** @var \Drupal\migrate\Plugin\MigrationInterface $migration */
+      /** @var \Drupal\migrate\Entity\MigrationInterface $migration */
       $id = $migration->id();
       $requirements[$id] = array();
       $dependency_graph[$id]['edges'] = array();

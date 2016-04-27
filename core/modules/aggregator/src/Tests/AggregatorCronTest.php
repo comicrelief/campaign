@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\aggregator\Tests\AggregatorCronTest.
+ */
+
 namespace Drupal\aggregator\Tests;
 
 /**

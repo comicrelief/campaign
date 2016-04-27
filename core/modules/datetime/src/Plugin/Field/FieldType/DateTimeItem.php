@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\datetime\Plugin\Field\FieldType\DateTimeItem.
+ */
+
 namespace Drupal\datetime\Plugin\Field\FieldType;
 
 use Drupal\Core\Field\FieldDefinitionInterface;
@@ -92,7 +97,6 @@ class DateTimeItem extends FieldItemBase {
         static::DATETIME_TYPE_DATETIME => t('Date and time'),
         static::DATETIME_TYPE_DATE => t('Date only'),
       ),
-      '#disabled' => $has_data,
     );
 
     return $element;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Controller\NodeController.
+ */
+
 namespace Drupal\node\Controller;
 
 use Drupal\Component\Utility\Xss;

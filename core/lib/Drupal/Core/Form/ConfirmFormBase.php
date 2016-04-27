@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Form\ConfirmFormBase.
+ */
+
 namespace Drupal\Core\Form;
 
 /**

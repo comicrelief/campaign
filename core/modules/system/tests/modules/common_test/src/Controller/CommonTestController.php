@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\common_test\Controller\CommonTestController.
+ */
+
 namespace Drupal\common_test\Controller;
 
 use Drupal\Component\Utility\Html;

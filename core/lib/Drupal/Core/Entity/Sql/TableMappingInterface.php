@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\Sql\TableMappingInterface.
+ */
+
 namespace Drupal\Core\Entity\Sql;
 
 use Drupal\Core\Field\FieldStorageDefinitionInterface;

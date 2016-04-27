@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\config_entity_static_cache_test\ConfigOverrider.
+ */
+
 namespace Drupal\config_entity_static_cache_test;
 
 use Drupal\Core\Cache\CacheableMetadata;

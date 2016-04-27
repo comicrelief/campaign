@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\ProxyBuilder\ProxyBuilder.
+ */
+
 namespace Drupal\Core\ProxyBuilder;
 
 use Drupal\Component\ProxyBuilder\ProxyBuilder as BaseProxyBuilder;

@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\migrate\MigrateMessageInterface.
+ */
 
 namespace Drupal\migrate;
 

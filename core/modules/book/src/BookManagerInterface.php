@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\book\BookManagerInterface.
+ */
+
 namespace Drupal\book;
 
 use Drupal\Core\Form\FormStateInterface;

@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\Core\Extension\InfoParserException.
+ */
 
 namespace Drupal\Core\Extension;
 

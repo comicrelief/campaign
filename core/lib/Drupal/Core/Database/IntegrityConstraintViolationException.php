@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Database\IntegrityConstraintViolationException.
+ */
+
 namespace Drupal\Core\Database;
 
 /**

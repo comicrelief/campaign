@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\search_embedded_form\Form\SearchEmbeddedForm.
+ */
+
 namespace Drupal\search_embedded_form\Form;
 
 use Drupal\Core\Form\FormBase;

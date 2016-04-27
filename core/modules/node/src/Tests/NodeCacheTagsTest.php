@@ -1,10 +1,13 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Tests\NodeCacheTagsTest.
+ */
+
 namespace Drupal\node\Tests;
 
 use Drupal\Core\Entity\EntityInterface;
-use Drupal\node\Entity\Node;
-use Drupal\node\Entity\NodeType;
 use Drupal\system\Tests\Entity\EntityWithUriCacheTagsTestBase;
 
 /**
@@ -24,13 +27,13 @@ class NodeCacheTagsTest extends EntityWithUriCacheTagsTestBase {
    */
   protected function createEntity() {
     // Create a "Camelids" node type.
-    NodeType::create([
+    entity_create('node_type', array(
       'name' => 'Camelids',
       'type' => 'camelids',
-    ])->save();
+    ))->save();
 
     // Create a "Llama" node.
-    $node = Node::create(['type' => 'camelids']);
+    $node = entity_create('node', array('type' => 'camelids'));
     $node->setTitle('Llama')
       ->setPublished(TRUE)
       ->save();

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Tests\AssertViewsCacheTagsTrait.
+ */
+
 namespace Drupal\views\Tests;
 
 use Drupal\Core\Cache\Cache;

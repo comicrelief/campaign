@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Annotation\ViewsPager.
+ */
+
 namespace Drupal\views\Annotation;
 
 /**

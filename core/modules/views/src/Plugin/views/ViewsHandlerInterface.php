@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Plugin\views\ViewsHandlerInterface.
+ */
+
 namespace Drupal\views\Plugin\views;
 
 use Drupal\Core\Form\FormStateInterface;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\Exception\EntityTypeIdLengthException.
+ */
+
 namespace Drupal\Core\Entity\Exception;
 
 /**

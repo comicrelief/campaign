@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\rdf\Tests\NodeAttributesTest.
+ */
+
 namespace Drupal\rdf\Tests;
 
 use Drupal\node\Tests\NodeTestBase;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\locale\Tests\LocaleTranslatedSchemaDefinitionTest.
+ */
+
 namespace Drupal\locale\Tests;
 
 use Drupal\language\Entity\ConfigurableLanguage;
@@ -41,17 +46,17 @@ class LocaleTranslatedSchemaDefinitionTest extends WebTestBase {
     $stringStorage = \Drupal::service('locale.storage');
 
     $source = $stringStorage->createString(array(
-      'source' => 'Revision ID',
+      'source' => 'The node ID.',
     ))->save();
 
     $stringStorage->createTranslation(array(
       'lid' => $source->lid,
       'language' => 'fr',
-      'translation' => 'Translated Revision ID',
+      'translation' => 'Translated node ID',
     ))->save();
 
     // Ensure that the field is translated when access through the API.
-    $this->assertEqual('Translated Revision ID', \Drupal::entityManager()->getBaseFieldDefinitions('node')['vid']->getLabel());
+    $this->assertEqual('Translated node ID', \Drupal::entityManager()->getBaseFieldDefinitions('node')['nid']->getDescription());
 
     // Assert there are no updates.
     $this->assertFalse(\Drupal::service('entity.definition_update_manager')->needsUpdates());

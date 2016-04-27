@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\forum\Unit\ForumManagerTest.
+ */
+
 namespace Drupal\Tests\forum\Unit;
 
 use Drupal\Tests\UnitTestCase;

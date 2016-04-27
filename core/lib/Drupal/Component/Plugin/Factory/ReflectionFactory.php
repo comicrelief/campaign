@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\Component\Plugin\Factory\ReflectionFactory.
+ */
 
 namespace Drupal\Component\Plugin\Factory;
 

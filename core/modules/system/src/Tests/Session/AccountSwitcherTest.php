@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Session\AccountSwitcherTest.
+ */
+
 namespace Drupal\system\Tests\Session;
 
 use Drupal\Core\Session\UserSession;

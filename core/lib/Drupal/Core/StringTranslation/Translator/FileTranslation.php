@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\StringTranslation\Translator\FileTranslation.
+ */
+
 namespace Drupal\Core\StringTranslation\Translator;
 
 use Drupal\Component\Gettext\PoStreamReader;

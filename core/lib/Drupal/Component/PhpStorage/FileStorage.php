@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Component\PhpStorage\FileStorage.
+ */
+
 namespace Drupal\Component\PhpStorage;
 
 /**

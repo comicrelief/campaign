@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Block\MainContentBlockPluginInterface.
+ */
+
 namespace Drupal\Core\Block;
 
 /**

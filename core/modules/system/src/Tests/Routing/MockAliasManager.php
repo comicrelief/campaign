@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Routing\MockAliasManager.
+ */
+
 namespace Drupal\system\Tests\Routing;
 
 use Drupal\Core\Path\AliasManagerInterface;

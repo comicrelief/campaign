@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\file\Plugin\Field\FieldFormatter\FileFormatterBase.
+ */
+
 namespace Drupal\file\Plugin\Field\FieldFormatter;
 
 use Drupal\Core\Access\AccessResult;

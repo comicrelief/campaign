@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\file\Tests\FileFieldFormatterAccessTest.
+ */
 
 namespace Drupal\file\Tests;
 

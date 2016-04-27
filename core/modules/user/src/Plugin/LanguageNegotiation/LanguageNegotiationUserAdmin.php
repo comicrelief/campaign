@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\Plugin\LanguageNegotiation\LanguageNegotiationUserAdmin.
+ */
+
 namespace Drupal\user\Plugin\LanguageNegotiation;
 
 use Drupal\Core\PathProcessor\PathProcessorManager;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\editor\EditorController.
+ */
+
 namespace Drupal\editor;
 
 use Drupal\Core\Ajax\AjaxResponse;

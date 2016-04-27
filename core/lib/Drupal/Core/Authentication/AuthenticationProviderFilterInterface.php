@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Authentication\AuthenticationProviderFilterInterface.
+ */
+
 namespace Drupal\Core\Authentication;
 
 use Symfony\Component\HttpFoundation\Request;

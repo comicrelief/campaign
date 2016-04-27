@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\field_ui\Tests\FieldUiTestTrait.
+ */
+
 namespace Drupal\field_ui\Tests;
 
 /**

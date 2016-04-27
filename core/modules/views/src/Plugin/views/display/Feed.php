@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Plugin\views\display\Feed.
+ */
+
 namespace Drupal\views\Plugin\views\display;
 
 use Drupal\Core\Cache\CacheableMetadata;

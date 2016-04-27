@@ -1,10 +1,16 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\migrate\Plugin\MigrateDestinationPluginManager.
+ */
+
 namespace Drupal\migrate\Plugin;
 
 use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Entity\EntityManagerInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
+use Drupal\migrate\Entity\MigrationInterface;
 
 /**
  * Plugin manager for migrate destination plugins.

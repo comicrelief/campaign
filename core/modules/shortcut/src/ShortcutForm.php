@@ -1,12 +1,17 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\shortcut\ShortcutForm.
+ */
+
 namespace Drupal\shortcut;
 
 use Drupal\Core\Entity\ContentEntityForm;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Form handler for the shortcut entity forms.
+ * Form controller for the shortcut entity forms.
  */
 class ShortcutForm extends ContentEntityForm {
 

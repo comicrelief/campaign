@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Ajax\CommandInterface.
+ */
+
 namespace Drupal\Core\Ajax;
 
 /**

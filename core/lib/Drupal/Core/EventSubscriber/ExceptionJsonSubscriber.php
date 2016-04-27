@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\EventSubscriber\ExceptionJsonSubscriber.
+ */
+
 namespace Drupal\Core\EventSubscriber;
 
 use Symfony\Component\HttpFoundation\JsonResponse;

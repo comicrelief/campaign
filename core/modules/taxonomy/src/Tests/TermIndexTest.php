@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\taxonomy\Tests\TermIndexTest.
+ */
+
 namespace Drupal\taxonomy\Tests;
 
 use Drupal\Component\Utility\Unicode;

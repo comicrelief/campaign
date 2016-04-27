@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Plugin\Discovery\CustomDirectoryAnnotatedClassDiscoveryTest.
+ */
+
 namespace Drupal\system\Tests\Plugin\Discovery;
 
 use Drupal\Core\Plugin\Discovery\AnnotatedClassDiscovery;
@@ -41,11 +46,6 @@ class CustomDirectoryAnnotatedClassDiscoveryTest extends DiscoveryTestBase {
         'color' => 'yellow',
         'uses' => array(
           'bread' => t('Banana bread'),
-          'loaf' => array(
-            'singular' => '@count loaf',
-            'plural' => '@count loaves',
-            'context' => NULL,
-          ),
         ),
         'class' => 'Drupal\plugin_test\Plugin\plugin_test\fruit\Banana',
         'provider' => 'plugin_test',

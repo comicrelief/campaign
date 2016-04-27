@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\UserAuthInterface.
+ */
+
 namespace Drupal\user;
 
 /**

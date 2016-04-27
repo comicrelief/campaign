@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Form\ViewsFormMainForm.
+ */
+
 namespace Drupal\views\Form;
 
 use Drupal\Core\Form\FormInterface;

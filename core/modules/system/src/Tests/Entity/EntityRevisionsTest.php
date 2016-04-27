@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Entity\EntityRevisionsTest.
+ */
+
 namespace Drupal\system\Tests\Entity;
 
 use Drupal\simpletest\WebTestBase;
@@ -57,12 +62,10 @@ class EntityRevisionsTest extends WebTestBase {
   protected function runRevisionsTests($entity_type) {
 
     // Create initial entity.
-    $entity = $this->container->get('entity_type.manager')
-      ->getStorage($entity_type)
-      ->create(array(
-        'name' => 'foo',
-        'user_id' => $this->webUser->id(),
-      ));
+    $entity = entity_create($entity_type, array(
+      'name' => 'foo',
+      'user_id' => $this->webUser->id(),
+    ));
     $entity->field_test_text->value = 'bar';
     $entity->save();
 

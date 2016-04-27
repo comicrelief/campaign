@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\Entity\UserRouteProvider.
+ */
+
 namespace Drupal\user\Entity;
 
 use Drupal\Core\Entity\EntityTypeInterface;

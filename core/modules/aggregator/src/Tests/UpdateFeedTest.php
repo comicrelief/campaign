@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\aggregator\Tests\UpdateFeedTest.
+ */
+
 namespace Drupal\aggregator\Tests;
 
 /**

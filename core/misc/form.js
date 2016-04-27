@@ -20,7 +20,6 @@
    * Retrieves the summary for the first element.
    *
    * @return {string}
-   *   The text of the summary.
    */
   $.fn.drupalGetSummary = function () {
     var callback = this.data('summaryCallback');
@@ -35,7 +34,6 @@
    *   retrieved or a string (which is returned each time).
    *
    * @return {jQuery}
-   *   jQuery collection of the current element.
    *
    * @fires event:summaryUpdated
    *
@@ -127,7 +125,6 @@
    * Sends a 'formUpdated' event each time a form element is modified.
    *
    * @param {HTMLElement} element
-   *   The element to trigger a form updated event on.
    *
    * @fires event:formUpdated
    */
@@ -139,10 +136,8 @@
    * Collects the IDs of all form fields in the given form.
    *
    * @param {HTMLFormElement} form
-   *   The form element to search.
    *
    * @return {Array}
-   *   Array of IDs for form fields.
    */
   function fieldsList(form) {
     var $fieldList = $(form).find('[name]').map(function (index, element) {
@@ -158,11 +153,6 @@
    * Triggers the 'formUpdated' event on form elements when they are modified.
    *
    * @type {Drupal~behavior}
-   *
-   * @prop {Drupal~behaviorAttach} attach
-   *   Attaches formUpdated behaviors.
-   * @prop {Drupal~behaviorDetach} detach
-   *   Detaches formUpdated behaviors.
    *
    * @fires event:formUpdated
    */
@@ -218,9 +208,6 @@
    * Prepopulate form fields with information from the visitor browser.
    *
    * @type {Drupal~behavior}
-   *
-   * @prop {Drupal~behaviorAttach} attach
-   *   Attaches the behavior for filling user info from browser.
    */
   Drupal.behaviors.fillUserInfoFromBrowser = {
     attach: function (context, settings) {

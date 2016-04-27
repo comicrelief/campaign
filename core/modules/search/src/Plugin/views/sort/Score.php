@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\search\Plugin\views\sort\Score.
+ */
+
 namespace Drupal\search\Plugin\views\sort;
 
 use Drupal\views\Plugin\views\sort\SortPluginBase;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\language\Config\LanguageConfigOverride.
+ */
+
 namespace Drupal\language\Config;
 
 use Drupal\Core\Cache\Cache;

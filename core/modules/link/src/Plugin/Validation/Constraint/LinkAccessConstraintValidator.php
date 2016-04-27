@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\link\Plugin\Validation\Constraint\LinkAccessConstraintValidator.
+ */
+
 namespace Drupal\link\Plugin\Validation\Constraint;
 
 use Drupal\Core\Session\AccountProxyInterface;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\common_test\Render\MainContent\JsonRenderer.
+ */
+
 namespace Drupal\common_test\Render\MainContent;
 
 use Drupal\Core\Cache\CacheableJsonResponse;

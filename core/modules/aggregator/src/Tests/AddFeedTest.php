@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\aggregator\Tests\AddFeedTest.
+ */
+
 namespace Drupal\aggregator\Tests;
 
 /**
@@ -23,7 +28,7 @@ class AddFeedTest extends AggregatorTestBase {
     $feed->refreshItems();
 
     // Check feed data.
-    $this->assertUrl(\Drupal::url('aggregator.feed_add', [], ['absolute' => TRUE]), [], 'Directed to correct URL.');
+    $this->assertUrl(\Drupal::url('aggregator.feed_add', [], ['absolute' => TRUE]), [], 'Directed to correct url.');
     $this->assertTrue($this->uniqueFeed($feed->label(), $feed->getUrl()), 'The feed is unique.');
 
     // Check feed source.

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Ajax\CssCommand.
+ */
+
 namespace Drupal\Core\Ajax;
 
 /**

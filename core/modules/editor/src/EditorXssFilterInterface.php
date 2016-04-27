@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\editor\EditorXssFilterInterface.
+ */
+
 namespace Drupal\editor;
 
 use Drupal\filter\FilterFormatInterface;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Updater\Updater.
+ */
+
 namespace Drupal\Core\Updater;
 
 use Drupal\Component\Utility\Unicode;

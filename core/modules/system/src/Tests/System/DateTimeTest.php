@@ -1,8 +1,12 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\System\DateTimeTest.
+ */
+
 namespace Drupal\system\Tests\System;
 
-use Drupal\Core\Datetime\Entity\DateFormat;
 use Drupal\Core\Url;
 use Drupal\simpletest\WebTestBase;
 
@@ -131,7 +135,7 @@ class DateTimeTest extends WebTestBase {
     $this->assertText($name, 'Custom date format appears in the date format list.');
     $this->assertText(t('Delete'), 'Delete link for custom date format appears.');
 
-    $date_format = DateFormat::create(array(
+    $date_format = entity_create('date_format', array(
       'id' => 'xss_short',
       'label' => 'XSS format',
       'pattern' => '\<\s\c\r\i\p\t\>\a\l\e\r\t\(\'\X\S\S\'\)\;\<\/\s\c\r\i\p\t\>',

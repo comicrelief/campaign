@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Form\FormValidator.
+ */
+
 namespace Drupal\Core\Form;
 
 use Drupal\Component\Utility\NestedArray;

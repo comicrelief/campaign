@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\router_test\RouterTestServiceProvider.
+ */
+
 namespace Drupal\router_test;
 
 use Drupal\Core\DependencyInjection\ContainerBuilder;

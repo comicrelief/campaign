@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Tests\SearchMultilingualTest.
+ */
+
 namespace Drupal\views\Tests;
 
 use Drupal\language\Entity\ConfigurableLanguage;

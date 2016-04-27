@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Component\Serialization\JsonTest.
+ */
+
 namespace Drupal\Tests\Component\Serialization;
 
 use Drupal\Component\Serialization\Json;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\migrate\Row.
+ */
+
 namespace Drupal\migrate;
 
 use Drupal\Component\Utility\NestedArray;

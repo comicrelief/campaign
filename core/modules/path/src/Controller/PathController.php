@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\path\Controller\PathController.
+ */
+
 namespace Drupal\path\Controller;
 
 use Drupal\Component\Utility\Unicode;

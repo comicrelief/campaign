@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\Component\DependencyInjection\PhpArrayContainer.
+ */
 
 namespace Drupal\Component\DependencyInjection;
 

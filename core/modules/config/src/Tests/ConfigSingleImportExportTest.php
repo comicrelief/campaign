@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\config\Tests\ConfigSingleImportExportTest.
+ */
+
 namespace Drupal\config\Tests;
 
 use Drupal\Component\Serialization\Yaml;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\comment\Tests\CommentTokenReplaceTest.
+ */
+
 namespace Drupal\comment\Tests;
 
 use Drupal\Component\Render\FormattableMarkup;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Field\Annotation\FieldFormatter.
+ */
+
 namespace Drupal\Core\Field\Annotation;
 
 use Drupal\Component\Annotation\Plugin;

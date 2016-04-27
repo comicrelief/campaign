@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\update_test\MockFileTransfer.
+ */
+
 namespace Drupal\update_test;
 
 /**

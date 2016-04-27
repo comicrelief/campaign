@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\File\FileSystem.
+ */
+
 namespace Drupal\Core\File;
 
 use Drupal\Core\Site\Settings;

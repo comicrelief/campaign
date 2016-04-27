@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Action\ActionPluginCollection.
+ */
+
 namespace Drupal\Core\Action;
 
 use Drupal\Core\Plugin\DefaultSingleLazyPluginCollection;

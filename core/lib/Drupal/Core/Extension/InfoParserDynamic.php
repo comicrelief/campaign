@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Extension\InfoParserDynamic.
+ */
+
 namespace Drupal\Core\Extension;
 
 use Drupal\Component\Serialization\Yaml;

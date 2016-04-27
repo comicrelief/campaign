@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Tests\AssertButtonsTrait.
+ */
+
 namespace Drupal\node\Tests;
 
 /**

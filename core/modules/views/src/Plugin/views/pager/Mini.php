@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Plugin\views\pager\Mini.
+ */
+
 namespace Drupal\views\Plugin\views\pager;
 
 /**

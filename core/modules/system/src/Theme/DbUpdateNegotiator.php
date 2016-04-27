@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Theme\DbUpdateNegotiator.
+ */
+
 namespace Drupal\system\Theme;
 
 use Drupal\Core\Config\ConfigFactoryInterface;

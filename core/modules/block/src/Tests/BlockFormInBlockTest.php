@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\block\Tests\BlockFormInBlockTest.
+ */
+
 namespace Drupal\block\Tests;
 
 use Drupal\simpletest\WebTestBase;

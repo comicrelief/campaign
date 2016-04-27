@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Config\Schema\ConfigSchemaAlterException.
+ */
+
 namespace Drupal\Core\Config\Schema;
 
 /**

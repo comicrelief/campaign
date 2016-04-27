@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\error_service_test\Controller\LonelyMonkeyController.
+ */
+
 namespace Drupal\error_service_test\Controller;
 
 use Drupal\Core\Controller\ControllerBase;

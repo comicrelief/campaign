@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Field\BaseFieldDefinition.
+ */
+
 namespace Drupal\Core\Field;
 
 use Drupal\Core\Cache\UnchangingCacheableDependencyTrait;
@@ -266,7 +271,7 @@ class BaseFieldDefinition extends ListDataDefinition implements FieldDefinitionI
    * FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED.
    *
    * @param int $cardinality
-   *   The field cardinality.
+   *  The field cardinality.
    *
    * @return $this
    */
@@ -510,7 +515,7 @@ class BaseFieldDefinition extends ListDataDefinition implements FieldDefinitionI
     // If the field item class implements the interface, create an orphaned
     // runtime item object, so that it can be used as the options provider
     // without modifying the entity being worked on.
-    if (is_subclass_of($this->getFieldItemClass(), OptionsProviderInterface::class)) {
+    if (is_subclass_of($this->getFieldItemClass(), '\Drupal\Core\TypedData\OptionsProviderInterface')) {
       $items = $entity->get($this->getName());
       return \Drupal::service('plugin.manager.field.field_type')->createFieldItem($items, 0);
     }

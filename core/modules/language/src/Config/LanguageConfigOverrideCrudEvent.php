@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\language\Config\LanguageConfigOverrideCrudEvent.
+ */
+
 namespace Drupal\language\Config;
 
 use Symfony\Component\EventDispatcher\Event;

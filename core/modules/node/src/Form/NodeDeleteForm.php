@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Form\NodeDeleteForm.
+ */
+
 namespace Drupal\node\Form;
 
 use Drupal\Core\Entity\ContentEntityDeleteForm;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\field\Tests\FieldHelpTest.
+ */
+
 namespace Drupal\field\Tests;
 
 use Drupal\simpletest\WebTestBase;

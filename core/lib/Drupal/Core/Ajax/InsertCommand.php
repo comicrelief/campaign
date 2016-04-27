@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Ajax\InsertCommand.
+ */
+
 namespace Drupal\Core\Ajax;
 
 /**

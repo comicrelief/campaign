@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Database\Query\Condition.
+ */
+
 namespace Drupal\Core\Database\Query;
 
 use Drupal\Core\Database\Connection;

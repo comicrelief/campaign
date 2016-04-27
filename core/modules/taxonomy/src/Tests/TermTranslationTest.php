@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\taxonomy\Tests\TermTranslationTest.
+ */
+
 namespace Drupal\taxonomy\Tests;
 
 use Drupal\Core\Url;

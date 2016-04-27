@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\language\Form\ContentLanguageSettingsForm.
+ */
+
 namespace Drupal\language\Form;
 
 use Drupal\Core\Entity\ContentEntityTypeInterface;

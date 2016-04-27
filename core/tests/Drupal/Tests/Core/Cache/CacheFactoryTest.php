@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Cache\CacheFactoryTest.
+ */
+
 namespace Drupal\Tests\Core\Cache;
 
 use Drupal\Core\DependencyInjection\ContainerBuilder;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\EntityTypeRepository.
+ */
+
 namespace Drupal\Core\Entity;
 
 use Drupal\Core\Entity\Exception\AmbiguousEntityClassException;

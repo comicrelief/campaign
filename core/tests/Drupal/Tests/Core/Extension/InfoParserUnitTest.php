@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Extension\InfoParserUnitTest.
+ */
+
 namespace Drupal\Tests\Core\Extension;
 
 use Drupal\Core\Extension\InfoParser;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Database\Stub\Driver\Schema.
+ */
+
 namespace Drupal\Tests\Core\Database\Stub\Driver;
 
 /**

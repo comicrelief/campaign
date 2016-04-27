@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\language\LanguageServiceProvider.
+ */
+
 namespace Drupal\language;
 
 use Drupal\Core\Config\BootstrapConfigStorageFactory;

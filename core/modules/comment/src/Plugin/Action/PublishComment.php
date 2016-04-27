@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\comment\Plugin\Action\PublishComment.
+ */
+
 namespace Drupal\comment\Plugin\Action;
 
 use Drupal\Core\Action\ActionBase;

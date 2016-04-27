@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Tests\Update\ArgumentPlaceholderUpdatePathTest.
+ */
+
 namespace Drupal\views\Tests\Update;
 
 use Drupal\system\Tests\Update\UpdatePathTestBase;

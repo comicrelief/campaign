@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\forum\Breadcrumb\ForumBreadcrumbBuilderBase.
+ */
+
 namespace Drupal\forum\Breadcrumb;
 
 use Drupal\Core\Breadcrumb\BreadcrumbBuilderInterface;

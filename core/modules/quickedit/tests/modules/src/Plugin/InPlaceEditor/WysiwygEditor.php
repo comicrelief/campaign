@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\quickedit_test\Plugin\InPlaceEditor\WysiwygEditor.
+ */
+
 namespace Drupal\quickedit_test\Plugin\InPlaceEditor;
 
 use Drupal\Core\Field\FieldItemListInterface;

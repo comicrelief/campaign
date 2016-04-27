@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\comment\Tests\CommentTestBase.
+ */
+
 namespace Drupal\comment\Tests;
 
 use Drupal\comment\Entity\CommentType;

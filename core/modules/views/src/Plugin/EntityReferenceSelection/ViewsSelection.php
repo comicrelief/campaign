@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Plugin\EntityReferenceSelection\ViewsSelection.
+ */
+
 namespace Drupal\views\Plugin\EntityReferenceSelection;
 
 use Drupal\Core\Database\Query\SelectInterface;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\ban\BanIpManagerInterface.
+ */
+
 namespace Drupal\ban;
 
 /**

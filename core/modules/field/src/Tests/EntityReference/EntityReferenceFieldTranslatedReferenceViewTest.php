@@ -1,12 +1,15 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\field\Tests\EntityReference\EntityReferenceFieldTranslatedReferenceViewTest.
+ */
+
 namespace Drupal\field\Tests\EntityReference;
 
-use Drupal\field\Entity\FieldConfig;
 use Drupal\language\Entity\ConfigurableLanguage;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\simpletest\WebTestBase;
-use Drupal\field\Entity\FieldStorageConfig;
 
 /**
  * Tests the translation of entity reference field display on nodes.
@@ -203,7 +206,7 @@ class EntityReferenceFieldTranslatedReferenceViewTest extends WebTestBase {
    * Adds term reference field for the article content type.
    */
   protected function setUpEntityReferenceField() {
-    FieldStorageConfig::create(array(
+    entity_create('field_storage_config', array(
       'field_name' => $this->referenceFieldName,
       'entity_type' => $this->testEntityTypeName,
       'type' => 'entity_reference',
@@ -218,11 +221,11 @@ class EntityReferenceFieldTranslatedReferenceViewTest extends WebTestBase {
       ),
     ))->save();
 
-    FieldConfig::create([
+    entity_create('field_config', array(
       'field_name' => $this->referenceFieldName,
       'bundle' => $this->referrerType->id(),
       'entity_type' => $this->testEntityTypeName,
-    ])
+    ))
     ->save();
     entity_get_form_display($this->testEntityTypeName, $this->referrerType->id(), 'default')
       ->setComponent($this->referenceFieldName, array(

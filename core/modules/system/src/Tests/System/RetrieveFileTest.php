@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\System\RetrieveFileTest.
+ */
+
 namespace Drupal\system\Tests\System;
 
 use Drupal\simpletest\WebTestBase;

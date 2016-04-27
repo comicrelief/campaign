@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\update\UpdateRootFactory.
+ */
+
 namespace Drupal\update;
 
 use Drupal\Core\DrupalKernelInterface;
@@ -30,7 +35,7 @@ class UpdateRootFactory {
    * @param \Drupal\Core\DrupalKernelInterface $drupal_kernel
    *   The Drupal kernel.
    * @param \Symfony\Component\HttpFoundation\RequestStack $request_stack
-   *   The request stack.
+   *  The request stack.
    */
   public function __construct(DrupalKernelInterface $drupal_kernel, RequestStack $request_stack) {
     $this->drupalKernel = $drupal_kernel;

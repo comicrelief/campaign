@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Plugin\Context\ContextAwarePluginManagerTrait.
+ */
+
 namespace Drupal\Core\Plugin\Context;
 
 /**

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Component\Utility\UserAgent.
+ */
+
 namespace Drupal\Component\Utility;
 
 /**

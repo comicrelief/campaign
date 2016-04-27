@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\views\Unit\ViewExecutableTest.
+ */
+
 namespace Drupal\Tests\views\Unit;
 
 use Drupal\Component\Plugin\PluginManagerInterface;

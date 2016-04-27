@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views_ui\Tests\FilterNumericWebTest.
+ */
+
 namespace Drupal\views_ui\Tests;
 
 use Drupal\config\Tests\SchemaCheckTestTrait;

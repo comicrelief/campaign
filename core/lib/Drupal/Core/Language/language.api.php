@@ -111,8 +111,8 @@ use Drupal\Core\Language\LanguageInterface;
  * @code
  * // PHP code
  * t('May', array(), array('context' => 'Long month name');
- * \Drupal::translation()->formatPlural($count, '1 something',
- *   '@count somethings', array(), array('context' => 'My context'));
+ * format_plural($count, '1 something', '@count somethings',
+ *   array(), array('context' => 'My context'));
  *
  * // JavaScript code
  * Drupal.t('May', {}, {'context': 'Long month name'});
@@ -147,6 +147,7 @@ use Drupal\Core\Language\LanguageInterface;
  *
  * @see transliteration
  * @see t()
+ * @see format_plural()
  * @}
  */
 

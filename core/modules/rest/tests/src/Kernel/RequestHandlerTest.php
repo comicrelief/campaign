@@ -13,6 +13,7 @@ use Drupal\rest\Plugin\ResourceBase;
 use Drupal\rest\Plugin\Type\ResourcePluginManager;
 use Drupal\rest\RequestHandler;
 use Drupal\rest\ResourceResponse;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Route;
 

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\DrupalKernel\ServiceDestructionTest.
+ */
+
 namespace Drupal\system\Tests\DrupalKernel;
 
 use Drupal\simpletest\KernelTestBase;

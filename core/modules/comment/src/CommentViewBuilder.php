@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\comment\CommentViewBuilder.
+ */
+
 namespace Drupal\comment;
 
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
@@ -8,11 +13,12 @@ use Drupal\Core\Entity\EntityManagerInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Entity\EntityViewBuilder;
 use Drupal\Core\Language\LanguageManagerInterface;
+use Drupal\Core\Render\Element;
 use Drupal\Core\Session\AccountInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * View builder handler for comments.
+ * Render controller for comments.
  */
 class CommentViewBuilder extends EntityViewBuilder {
 

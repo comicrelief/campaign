@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\TypedData\Type\IntegerInterface.
+ */
+
 namespace Drupal\Core\TypedData\Type;
 
 use Drupal\Core\TypedData\PrimitiveInterface;

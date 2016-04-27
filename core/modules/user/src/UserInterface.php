@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\UserInterface.
+ */
+
 namespace Drupal\user;
 
 use Drupal\Core\Entity\EntityChangedInterface;

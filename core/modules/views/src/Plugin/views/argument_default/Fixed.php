@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Plugin\views\argument_default\Fixed.
+ */
+
 namespace Drupal\views\Plugin\views\argument_default;
 
 use Drupal\Core\Cache\Cache;

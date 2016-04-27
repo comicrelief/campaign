@@ -1,10 +1,13 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\Tests\UserCreateTest.
+ */
+
 namespace Drupal\user\Tests;
 
-use Drupal\field\Entity\FieldConfig;
 use Drupal\simpletest\WebTestBase;
-use Drupal\field\Entity\FieldStorageConfig;
 
 /**
  * Tests the create user administration page.
@@ -33,7 +36,7 @@ class UserCreateTest extends WebTestBase {
 
     // Create a field.
     $field_name = 'test_field';
-    FieldStorageConfig::create(array(
+    entity_create('field_storage_config', array(
       'field_name' => $field_name,
       'entity_type' => 'user',
       'module' => 'image',
@@ -46,7 +49,7 @@ class UserCreateTest extends WebTestBase {
       ),
     ))->save();
 
-    FieldConfig::create([
+    entity_create('field_config', array(
       'field_name' => $field_name,
       'entity_type' => 'user',
       'label' => 'Picture',
@@ -62,7 +65,7 @@ class UserCreateTest extends WebTestBase {
         'max_resolution' => '85x85',
         'min_resolution' => '',
       ),
-    ])->save();
+    ))->save();
 
     // Test user creation page for valid fields.
     $this->drupalGet('admin/people/create');

@@ -1,11 +1,15 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\responsive_image\Tests\ResponsiveImageFieldUiTest.
+ */
+
 namespace Drupal\responsive_image\Tests;
 
 
 use Drupal\field_ui\Tests\FieldUiTestTrait;
 use Drupal\simpletest\WebTestBase;
-use Drupal\responsive_image\Entity\ResponsiveImageStyle;
 
 /**
  * Tests the "Responsive Image" formatter settings form.
@@ -61,7 +65,7 @@ class ResponsiveImageFieldUiTest extends WebTestBase {
     $this->assertText("Select a responsive image style.", 'The expected summary is displayed.');
 
     // Create responsive image styles.
-    $responsive_image_style = ResponsiveImageStyle::create(array(
+    $responsive_image_style = entity_create('responsive_image_style', array(
       'id' => 'style_one',
       'label' => 'Style One',
       'breakpoint_group' => 'responsive_image_test_module',

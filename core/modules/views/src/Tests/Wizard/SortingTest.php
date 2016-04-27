@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Tests\Wizard\SortingTest.
+ */
+
 namespace Drupal\views\Tests\Wizard;
 
 /**

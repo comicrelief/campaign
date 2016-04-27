@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\filter_test\Form\FilterTestFormatForm.
+ */
 
 namespace Drupal\filter_test\Form;
 

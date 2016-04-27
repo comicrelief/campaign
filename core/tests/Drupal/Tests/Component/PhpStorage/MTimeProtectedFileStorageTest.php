@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Component\PhpStorage\MTimeProtectedFileStorageTest.
+ */
+
 namespace Drupal\Tests\Component\PhpStorage;
 
 /**

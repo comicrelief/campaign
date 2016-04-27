@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\field_plugins_test\Plugin\Field\FieldWidget\TestTextfieldWidget.
+ */
+
 namespace Drupal\field_plugins_test\Plugin\Field\FieldWidget;
 
 use Drupal\text\Plugin\Field\FieldWidget\TextfieldWidget;

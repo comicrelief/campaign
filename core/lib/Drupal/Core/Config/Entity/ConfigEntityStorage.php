@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Config\Entity\ConfigEntityStorage.
+ */
+
 namespace Drupal\Core\Config\Entity;
 
 use Drupal\Core\Cache\CacheableMetadata;

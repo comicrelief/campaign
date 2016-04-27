@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\MenuAccessControlHandler.
+ */
+
 namespace Drupal\system;
 
 use Drupal\Core\Access\AccessResult;
@@ -24,10 +29,10 @@ class MenuAccessControlHandler extends EntityAccessControlHandler {
     // Locked menus could not be deleted.
     elseif ($operation == 'delete') {
       if ($entity->isLocked()) {
-        return AccessResult::forbidden()->addCacheableDependency($entity);
+        return AccessResult::forbidden()->cacheUntilEntityChanges($entity);
       }
       else {
-        return parent::checkAccess($entity, $operation, $account)->addCacheableDependency($entity);
+        return parent::checkAccess($entity, $operation, $account)->cacheUntilEntityChanges($entity);
       }
     }
 

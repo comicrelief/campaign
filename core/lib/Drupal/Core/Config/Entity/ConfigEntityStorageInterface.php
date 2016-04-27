@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Config\Entity\ConfigEntityStorageInterface.
+ */
+
 namespace Drupal\Core\Config\Entity;
 
 use Drupal\Core\Entity\EntityStorageInterface;

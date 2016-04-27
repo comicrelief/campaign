@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Ajax\AjaxFormCacheTest.
+ */
+
 namespace Drupal\system\Tests\Ajax;
 
 use Drupal\Core\EventSubscriber\MainContentViewSubscriber;

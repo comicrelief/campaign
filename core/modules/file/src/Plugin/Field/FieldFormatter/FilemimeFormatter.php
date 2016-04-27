@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\file\Plugin\Field\FieldFormatter\FilemimeFormatter.
+ */
+
 namespace Drupal\file\Plugin\Field\FieldFormatter;
 
 use Drupal\Core\Field\FieldDefinitionInterface;
@@ -7,11 +12,11 @@ use Drupal\Core\Field\FieldItemInterface;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Formatter to render the file MIME type, with an optional icon.
+ * Formatter to render the file mime type, with an optional icon.
  *
  * @FieldFormatter(
  *   id = "file_filemime",
- *   label = @Translation("File MIME"),
+ *   label = @Translation("File mime"),
  *   field_types = {
  *     "string"
  *   }

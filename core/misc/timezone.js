@@ -3,7 +3,7 @@
  * Timezone detection.
  */
 
-(function ($, Drupal) {
+(function ($) {
 
   'use strict';
 
@@ -73,4 +73,4 @@
     }
   };
 
-})(jQuery, Drupal);
+})(jQuery);

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\comment\CommentForm.
+ */
+
 namespace Drupal\comment;
 
 use Drupal\comment\Plugin\Field\FieldType\CommentItemInterface;
@@ -15,7 +20,7 @@ use Drupal\Core\Session\AccountInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Base handler for comment forms.
+ * Base for controller for comment forms.
  */
 class CommentForm extends ContentEntityForm {
 
@@ -330,9 +335,9 @@ class CommentForm extends ContentEntityForm {
   /**
    * Form submission handler for the 'preview' action.
    *
-   * @param array $form
+   * @param $form
    *   An associative array containing the structure of the form.
-   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   * @param $form_state
    *   The current state of the form.
    */
   public function preview(array &$form, FormStateInterface $form_state) {

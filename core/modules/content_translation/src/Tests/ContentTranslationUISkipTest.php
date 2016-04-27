@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\content_translation\Tests\ContentTranslationUISkipTest.
+ */
+
 namespace Drupal\content_translation\Tests;
 
 use Drupal\simpletest\WebTestBase;

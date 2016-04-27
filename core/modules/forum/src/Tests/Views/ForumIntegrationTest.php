@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\forum\Tests\Views\ForumIntegrationTest.
+ */
+
 namespace Drupal\forum\Tests\Views;
 
 use Drupal\views\Views;

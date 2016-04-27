@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\comment\Plugin\Field\FieldType\CommentItemInterface.
+ */
+
 namespace Drupal\comment\Plugin\Field\FieldType;
 
 /**

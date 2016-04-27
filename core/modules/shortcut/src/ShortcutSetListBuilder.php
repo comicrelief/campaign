@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\shortcut\ShortcutSetListBuilder.
+ */
+
 namespace Drupal\shortcut;
 
 use Drupal\Core\Config\Entity\ConfigEntityListBuilder;

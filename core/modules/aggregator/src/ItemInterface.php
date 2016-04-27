@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\aggregator\ItemInterface.
+ */
+
 namespace Drupal\aggregator;
 
 use Drupal\Core\Entity\ContentEntityInterface;

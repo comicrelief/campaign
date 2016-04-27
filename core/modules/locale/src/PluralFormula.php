@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\locale\PluralFormula.
+ */
+
 namespace Drupal\locale;
 
 use Drupal\Core\Language\LanguageManagerInterface;

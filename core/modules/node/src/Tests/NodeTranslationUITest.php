@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Tests\NodeTranslationUITest.
+ */
+
 namespace Drupal\node\Tests;
 
 use Drupal\Core\Entity\EntityInterface;
@@ -25,8 +30,7 @@ class NodeTranslationUITest extends ContentTranslationUITestBase {
     'theme',
     'route',
     'timezone',
-    'url.path',
-    'url.query_args:_wrapper_format',
+    'url',
     'user'
   ];
 

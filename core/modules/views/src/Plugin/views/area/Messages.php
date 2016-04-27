@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Plugin\views\area\Messages.
+ */
+
 namespace Drupal\views\Plugin\views\area;
 
 /**

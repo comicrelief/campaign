@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\taxonomy\Tests\Views\TaxonomyFieldTidTest.
+ */
+
 namespace Drupal\taxonomy\Tests\Views;
 
 use Drupal\Core\Render\RenderContext;

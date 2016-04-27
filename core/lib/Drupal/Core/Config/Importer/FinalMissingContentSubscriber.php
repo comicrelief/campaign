@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Config\Importer\FinalMissingContentSubscriber.
+ */
+
 namespace Drupal\Core\Config\Importer;
 
 use Drupal\Core\Config\ConfigEvents;

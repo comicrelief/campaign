@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\rest\LinkManager\LinkManager.
+ */
 
 namespace Drupal\rest\LinkManager;
 

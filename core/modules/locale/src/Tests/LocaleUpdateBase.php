@@ -1,9 +1,13 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\locale\Tests\LocaleUpdateBase.
+ */
+
 namespace Drupal\locale\Tests;
 
 use Drupal\Core\StreamWrapper\PublicStream;
-use Drupal\file\Entity\File;
 use Drupal\simpletest\WebTestBase;
 use Drupal\Component\Utility\SafeMarkup;
 
@@ -129,14 +133,14 @@ EOF;
     }
 
     file_prepare_directory($path, FILE_CREATE_DIRECTORY);
-    $file = File::create([
+    $file = entity_create('file', array(
       'uid' => 1,
       'filename' => $filename,
       'uri' => $path . '/' . $filename,
       'filemime' => 'text/x-gettext-translation',
       'timestamp' => $timestamp,
       'status' => FILE_STATUS_PERMANENT,
-    ]);
+    ));
     file_put_contents($file->getFileUri(), $po_header . $text);
     touch(drupal_realpath($file->getFileUri()), $timestamp);
     $file->save();

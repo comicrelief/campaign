@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Path\PathMatcherTest.
+ */
+
 namespace Drupal\Tests\Core\Path;
 
 use Drupal\Core\Path\PathMatcher;

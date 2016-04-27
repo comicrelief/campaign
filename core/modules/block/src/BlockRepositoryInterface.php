@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\block\BlockRepositoryInterface.
+ */
+
 namespace Drupal\block;
 
 interface BlockRepositoryInterface {

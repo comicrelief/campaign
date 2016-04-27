@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\comment\Form\ConfirmDeleteMultiple.
+ */
+
 namespace Drupal\comment\Form;
 
 use Drupal\comment\CommentStorageInterface;

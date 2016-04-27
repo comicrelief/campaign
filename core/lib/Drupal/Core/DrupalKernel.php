@@ -1,8 +1,14 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\DrupalKernel.
+ */
+
 namespace Drupal\Core;
 
 use Drupal\Component\FileCache\FileCacheFactory;
+use Drupal\Component\Utility\Crypt;
 use Drupal\Component\Utility\Unicode;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Config\BootstrapConfigStorageFactory;
@@ -434,6 +440,11 @@ class DrupalKernel implements DrupalKernelInterface, TerminableInterface {
     // Initialize the container.
     $this->initializeContainer();
 
+    // Ensure mt_rand() is reseeded to prevent random values from one page load
+    // being exploited to predict random values in subsequent page loads.
+    $seed = unpack("L", Crypt::randomBytes(4));
+    mt_srand($seed[1]);
+
     $this->booted = TRUE;
 
     return $this;
@@ -529,7 +540,7 @@ class DrupalKernel implements DrupalKernelInterface, TerminableInterface {
     // Set the allowed protocols.
     UrlHelper::setAllowedProtocols($this->container->getParameter('filter_protocols'));
 
-    // Override of Symfony's MIME type guesser singleton.
+    // Override of Symfony's mime type guesser singleton.
     MimeTypeGuesser::registerWithSymfonyGuesser($this->container);
 
     $this->prepared = TRUE;
@@ -716,10 +727,6 @@ class DrupalKernel implements DrupalKernelInterface, TerminableInterface {
       $profile_directories = array_map(function ($profile) {
         return $profile->getPath();
       }, $profiles);
-
-      // Allow additional profile directories to be added from settings.php.
-      // This provides support for "base profiles".
-      $profile_directories = array_merge(Settings::get('profile_directories', []), $profile_directories);
       $listing->setProfileDirectories($profile_directories);
 
       // Now find modules.

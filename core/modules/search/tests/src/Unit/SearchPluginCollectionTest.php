@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\search\Unit\SearchPluginCollectionTest.
+ */
+
 namespace Drupal\Tests\search\Unit;
 
 use Drupal\search\Plugin\SearchPluginCollection;

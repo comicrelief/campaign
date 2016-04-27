@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Controller\HtmlFormController.
+ */
+
 namespace Drupal\Core\Controller;
 
 use Drupal\Core\Form\FormBuilderInterface;

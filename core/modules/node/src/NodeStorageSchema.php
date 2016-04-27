@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\NodeStorageSchema.
+ */
+
 namespace Drupal\node;
 
 use Drupal\Core\Entity\ContentEntityTypeInterface;

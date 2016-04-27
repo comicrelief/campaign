@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Render\Element\ElementInterface.
+ */
+
 namespace Drupal\Core\Render\Element;
 
 use Drupal\Component\Plugin\PluginInspectionInterface;

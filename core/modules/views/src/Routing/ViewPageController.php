@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Routing\ViewPageController.
+ */
+
 namespace Drupal\views\Routing;
 
 use Drupal\Core\Routing\RouteMatchInterface;

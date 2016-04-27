@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\forum\Form\ForumForm.
+ */
+
 namespace Drupal\forum\Form;
 
 use Drupal\Core\Form\FormStateInterface;

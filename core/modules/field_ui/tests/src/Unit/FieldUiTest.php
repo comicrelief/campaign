@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\field_ui\Unit\FieldUiTest.
+ */
+
 namespace Drupal\Tests\field_ui\Unit;
 
 use Drupal\Core\DependencyInjection\ContainerBuilder;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\file\Plugin\Validation\Constraint\FileValidationConstraint.
+ */
+
 namespace Drupal\file\Plugin\Validation\Constraint;
 
 use Symfony\Component\Validator\Constraint;

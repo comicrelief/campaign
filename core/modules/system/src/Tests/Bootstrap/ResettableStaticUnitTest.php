@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Bootstrap\ResettableStaticUnitTest.
+ */
+
 namespace Drupal\system\Tests\Bootstrap;
 
 use Drupal\simpletest\KernelTestBase;

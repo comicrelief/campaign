@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Plugin\views\wizard\WizardInterface.
+ */
+
 namespace Drupal\views\Plugin\views\wizard;
 
 use Drupal\Core\Form\FormStateInterface;

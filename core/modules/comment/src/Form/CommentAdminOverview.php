@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\comment\Form\CommentAdminOverview.
+ */
+
 namespace Drupal\comment\Form;
 
 use Drupal\comment\CommentInterface;

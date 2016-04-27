@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\Tests\migrate\Unit\process\DedupeEntityTest.
+ */
 
 namespace Drupal\Tests\migrate\Unit\process;
 

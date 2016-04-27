@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\Tests\Views\AccessPermissionTest.
+ */
+
 namespace Drupal\user\Tests\Views;
 
 use Drupal\user\Plugin\views\access\Permission;

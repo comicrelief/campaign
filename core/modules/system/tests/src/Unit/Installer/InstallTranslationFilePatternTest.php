@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\system\Unit\Installer\InstallTranslationFilePatternTest.
+ */
+
 namespace Drupal\Tests\system\Unit\Installer;
 
 use Drupal\Core\StringTranslation\Translator\FileTranslation;

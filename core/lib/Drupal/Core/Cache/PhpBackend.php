@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Cache\PhpBackend.
+ */
+
 namespace Drupal\Core\Cache;
 
 use Drupal\Core\PhpStorage\PhpStorageFactory;

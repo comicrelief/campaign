@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\Tests\UserTokenReplaceTest.
+ */
+
 namespace Drupal\user\Tests;
 
 use Drupal\Component\Render\FormattableMarkup;

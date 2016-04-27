@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Config\UnsupportedDataTypeConfigException.
+ */
+
 namespace Drupal\Core\Config;
 
 /**

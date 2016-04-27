@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\Plugin\Block\UserLoginBlock.
+ */
+
 namespace Drupal\user\Plugin\Block;
 
 use Drupal\Core\Access\AccessResult;

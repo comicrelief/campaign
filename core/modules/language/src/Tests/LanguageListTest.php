@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\language\Tests\LanguageListTest.
+ */
+
 namespace Drupal\language\Tests;
 
 use Drupal\language\Entity\ConfigurableLanguage;

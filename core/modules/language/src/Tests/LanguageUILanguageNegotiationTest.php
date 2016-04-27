@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\language\Tests\LanguageUILanguageNegotiationTest.
+ */
+
 namespace Drupal\language\Tests;
 
 use Drupal\Core\Url;

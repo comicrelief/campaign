@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\contact\MailHandler.
+ */
+
 namespace Drupal\contact;
 
 use Drupal\Core\Entity\EntityManagerInterface;

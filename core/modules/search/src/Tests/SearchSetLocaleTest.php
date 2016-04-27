@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\search\Tests\SearchSetLocaleTest.
+ */
+
 namespace Drupal\search\Tests;
 
 /**

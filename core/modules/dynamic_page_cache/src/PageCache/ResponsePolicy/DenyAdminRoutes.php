@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\dynamic_page_cache\PageCache\ResponsePolicy\DenyAdminRoutes.
+ */
+
 namespace Drupal\dynamic_page_cache\PageCache\ResponsePolicy;
 
 use Drupal\Core\PageCache\ResponsePolicyInterface;

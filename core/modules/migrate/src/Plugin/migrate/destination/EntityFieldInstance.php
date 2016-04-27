@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\migrate\Plugin\migrate\destination\EntityFieldInstance.
+ */
+
 namespace Drupal\migrate\Plugin\migrate\destination;
 
 /**

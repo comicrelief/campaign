@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\ckeditor\Plugin\Editor\CKEditor.
+ */
+
 namespace Drupal\ckeditor\Plugin\Editor;
 
 use Drupal\Core\Extension\ModuleHandlerInterface;
@@ -10,7 +15,7 @@ use Drupal\Core\Render\Element;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\editor\Plugin\EditorBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Drupal\editor\Entity\Editor;
+use Drupal\editor\Entity\Editor as EditorEntity;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -130,14 +135,14 @@ class CKEditor extends EditorBase implements ContainerFactoryPluginInterface {
           ),
         ),
       ),
-      'plugins' => ['language' => ['language_list' => 'un']],
+      'plugins' => array(),
     );
   }
 
   /**
    * {@inheritdoc}
    */
-  public function settingsForm(array $form, FormStateInterface $form_state, Editor $editor) {
+  public function settingsForm(array $form, FormStateInterface $form_state, EditorEntity $editor) {
     $settings = $editor->getSettings();
 
     $ckeditor_settings_toolbar = array(
@@ -199,7 +204,7 @@ class CKEditor extends EditorBase implements ContainerFactoryPluginInterface {
     }, array());
     // Build a fake Editor object, which we'll use to generate JavaScript
     // settings for this fake Editor instance.
-    $fake_editor = Editor::create(array(
+    $fake_editor = entity_create('editor', array(
       'format' => $editor->id(),
       'editor' => 'ckeditor',
       'settings' => array(
@@ -254,7 +259,7 @@ class CKEditor extends EditorBase implements ContainerFactoryPluginInterface {
   /**
    * {@inheritdoc}
    */
-  public function getJSSettings(Editor $editor) {
+  public function getJSSettings(EditorEntity $editor) {
     $settings = array();
 
     // Get the settings for all enabled plugins, even the internal ones.
@@ -362,7 +367,7 @@ class CKEditor extends EditorBase implements ContainerFactoryPluginInterface {
   /**
    * {@inheritdoc}
    */
-  public function getLibraries(Editor $editor) {
+  public function getLibraries(EditorEntity $editor) {
     $libraries = array(
       'ckeditor/drupal.ckeditor',
     );
@@ -388,7 +393,7 @@ class CKEditor extends EditorBase implements ContainerFactoryPluginInterface {
    * @return array
    *   An array containing the "toolbar" configuration.
    */
-  public function buildToolbarJSSetting(Editor $editor) {
+  public function buildToolbarJSSetting(EditorEntity $editor) {
     $toolbar = array();
 
     $settings = $editor->getSettings();
@@ -411,17 +416,12 @@ class CKEditor extends EditorBase implements ContainerFactoryPluginInterface {
    * @return array
    *   An array containing the "contentsCss" configuration.
    */
-  public function buildContentsCssJSSetting(Editor $editor) {
+  public function buildContentsCssJSSetting(EditorEntity $editor) {
     $css = array(
       drupal_get_path('module', 'ckeditor') . '/css/ckeditor-iframe.css',
       drupal_get_path('module', 'system') . '/css/components/align.module.css',
     );
     $this->moduleHandler->alter('ckeditor_css', $css, $editor);
-    // Get a list of all enabled plugins' iframe instance CSS files.
-    $plugins_css = array_reduce($this->ckeditorPluginManager->getCssFiles($editor), function($result, $item) {
-      return array_merge($result, array_values($item));
-    }, array());
-    $css = array_merge($css, $plugins_css);
     $css = array_merge($css, _ckeditor_theme_css());
     $css = array_map('file_create_url', $css);
     $css = array_map('file_url_transform_relative', $css);

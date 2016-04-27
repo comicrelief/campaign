@@ -1,6 +1,13 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\entity_test\Entity\EntityTestMulLangcodeKey.
+ */
+
 namespace Drupal\entity_test\Entity;
+
+use Drupal\Core\Entity\EntityTypeInterface;
 
 /**
  * Defines a test entity class using a custom langcode entity key.
@@ -34,7 +41,6 @@ namespace Drupal\entity_test\Entity;
  *     "default_langcode" = "custom_default_langcode_key",
  *   },
  *   links = {
- *     "add-form" = "/entity_test_mul_langcode_key/add",
  *     "canonical" = "/entity_test_mul_langcode_key/manage/{entity_test_mul_langcode_key}",
  *     "edit-form" = "/entity_test_mul_langcode_key/manage/{entity_test_mul_langcode_key}/edit",
  *     "delete-form" = "/entity_test/delete/entity_test_mul_langcode_key/{entity_test_mul_langcode_key}",
@@ -43,5 +49,15 @@ namespace Drupal\entity_test\Entity;
  * )
  */
 class EntityTestMulLangcodeKey extends EntityTest {
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function baseFieldDefinitions(EntityTypeInterface $entity_type) {
+    $fields = parent::baseFieldDefinitions($entity_type);
+    $fields['custom_langcode_key'] = $fields['langcode'];
+    unset($fields['langcode']);
+    return $fields;
+  }
 
 }

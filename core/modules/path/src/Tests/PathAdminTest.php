@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\path\Tests\PathAdminTest.
+ */
+
 namespace Drupal\path\Tests;
 
 /**

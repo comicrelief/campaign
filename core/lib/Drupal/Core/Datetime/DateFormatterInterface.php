@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Datetime\DateFormatterInterface.
+ */
+
 namespace Drupal\Core\Datetime;
 
 /**
@@ -102,10 +107,8 @@ interface DateFormatterInterface {
    *     before the current request time, the result string will be "0 seconds".
    *     If FALSE and $timestamp is before the current request time, the result
    *     string will be the formatted time difference.
-   *   - return_as_object: A Boolean value whether to return a FormattedDateDiff
-   *     object.
    *
-   * @return string|\Drupal\Core\Datetime\FormattedDateDiff
+   * @return string
    *   A translated string representation of the difference between the given
    *   timestamp and the current request time. This interval is always positive.
    *
@@ -132,10 +135,8 @@ interface DateFormatterInterface {
    *     after the current request time, the result string will be "0 seconds".
    *     If FALSE and $timestamp is after the current request time, the result
    *     string will be the formatted time difference.
-   *   - return_as_object: A Boolean value whether to return a FormattedDateDiff
-   *     object.
    *
-   * @return string|\Drupal\Core\Datetime\FormattedDateDiff
+   * @return string
    *   A translated string representation of the difference between the given
    *   timestamp and the current request time. This interval is always positive.
    *
@@ -163,10 +164,8 @@ interface DateFormatterInterface {
    *     can be after the $to timestamp. If TRUE (default) and $from is after
    *     $to, the result string will be "0 seconds". If FALSE and $from is
    *     after $to, the result string will be the formatted time difference.
-   *   - return_as_object: A Boolean value whether to return a FormattedDateDiff
-   *     object.
    *
-   * @return string|\Drupal\Core\Datetime\FormattedDateDiff
+   * @return string
    *   A translated string representation of the interval. This interval is
    *   always positive.
    *

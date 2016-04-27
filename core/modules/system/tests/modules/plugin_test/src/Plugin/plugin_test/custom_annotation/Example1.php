@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\plugin_test\Plugin\plugin_test\custom_annotation\Example1.
+ */
+
 namespace Drupal\plugin_test\Plugin\plugin_test\custom_annotation;
 
 /**

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Routing\RouteMatchInterface.
+ */
+
 namespace Drupal\Core\Routing;
 
 /**

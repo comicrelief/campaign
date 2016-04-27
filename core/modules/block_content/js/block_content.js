@@ -3,7 +3,7 @@
  * Defines Javascript behaviors for the block_content module.
  */
 
-(function ($, Drupal) {
+(function ($) {
 
   'use strict';
 
@@ -54,4 +54,4 @@
     }
   };
 
-})(jQuery, Drupal);
+})(jQuery);

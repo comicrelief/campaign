@@ -5,11 +5,12 @@
  * Primarily Drupal hooks and global API functions to manipulate views.
  */
 
-use Drupal\Component\Render\MarkupInterface;
 use Drupal\Component\Utility\Html;
+use Drupal\Component\Utility\SafeMarkup;
 use Drupal\Core\Database\Query\AlterableInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Url;
 use Drupal\views\Plugin\Derivative\ViewsLocalTask;
@@ -621,7 +622,7 @@ function views_pre_render_views_form_views_form($element) {
   foreach ($substitutions as $placeholder => $substitution) {
     $search[] = Html::escape($placeholder);
     // Ensure that any replacements made are safe to make.
-    if (!($substitution instanceof MarkupInterface)) {
+    if (!SafeMarkup::isSafe($substitution)) {
       $substitution = Html::escape($substitution);
     }
     $replace[] = $substitution;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Form\FormAjaxResponseBuilderTest.
+ */
+
 namespace Drupal\Tests\Core\Form;
 
 use Drupal\Core\Ajax\AjaxResponse;

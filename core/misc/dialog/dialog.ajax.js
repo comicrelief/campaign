@@ -11,9 +11,6 @@
    * Initialize dialogs for Ajax purposes.
    *
    * @type {Drupal~behavior}
-   *
-   * @prop {Drupal~behaviorAttach} attach
-   *   Attaches the behaviors for dialog ajax functionality.
    */
   Drupal.behaviors.dialog = {
     attach: function (context, settings) {
@@ -93,14 +90,10 @@
    * Command to open a dialog.
    *
    * @param {Drupal.Ajax} ajax
-   *   The Drupal Ajax object.
    * @param {object} response
-   *   Object holding the server response.
    * @param {number} [status]
-   *   The HTTP status code.
    *
    * @return {bool|undefined}
-   *   Returns false if there was no selector property in the response object.
    */
   Drupal.AjaxCommands.prototype.openDialog = function (ajax, response, status) {
     if (!response.selector) {
@@ -153,15 +146,10 @@
    * If no selector is given, it defaults to trying to close the modal.
    *
    * @param {Drupal.Ajax} [ajax]
-   *   The ajax object.
    * @param {object} response
-   *   Object holding the server response.
    * @param {string} response.selector
-   *   The selector of the dialog.
    * @param {bool} response.persist
-   *   Whether to persist the dialog element or not.
    * @param {number} [status]
-   *   The HTTP status code.
    */
   Drupal.AjaxCommands.prototype.closeDialog = function (ajax, response, status) {
     var $dialog = $(response.selector);
@@ -182,17 +170,11 @@
    * JQuery UI specific way of setting dialog options.
    *
    * @param {Drupal.Ajax} [ajax]
-   *   The Drupal Ajax object.
    * @param {object} response
-   *   Object holding the server response.
    * @param {string} response.selector
-   *   Selector for the dialog element.
    * @param {string} response.optionsName
-   *   Name of a key to set.
    * @param {string} response.optionValue
-   *   Value to set.
    * @param {number} [status]
-   *   The HTTP status code.
    */
   Drupal.AjaxCommands.prototype.setDialogOption = function (ajax, response, status) {
     var $dialog = $(response.selector);
@@ -205,13 +187,9 @@
    * Binds a listener on dialog creation to handle the cancel link.
    *
    * @param {jQuery.Event} e
-   *   The event triggered.
    * @param {Drupal.dialog~dialogDefinition} dialog
-   *   The dialog instance.
    * @param {jQuery} $element
-   *   The jQuery collection of the dialog element.
-   * @param {object} [settings]
-   *   Dialog settings.
+   * @param {object} settings
    */
   $(window).on('dialog:aftercreate', function (e, dialog, $element, settings) {
     $element.on('click.dialog', '.dialog-cancel', function (e) {
@@ -225,11 +203,8 @@
    * Removes all 'dialog' listeners.
    *
    * @param {jQuery.Event} e
-   *   The event triggered.
    * @param {Drupal.dialog~dialogDefinition} dialog
-   *   The dialog instance.
    * @param {jQuery} $element
-   *   jQuery collection of the dialog element.
    */
   $(window).on('dialog:beforeclose', function (e, dialog, $element) {
     $element.off('.dialog');

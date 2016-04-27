@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Component\Utility\OpCodeCache.
+ */
+
 namespace Drupal\Component\Utility;
 
 /**

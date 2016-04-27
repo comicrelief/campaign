@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\block\Tests\Update\BlockContextMappingUpdateFilledTest.
+ */
+
 namespace Drupal\block\Tests\Update;
 
 /**

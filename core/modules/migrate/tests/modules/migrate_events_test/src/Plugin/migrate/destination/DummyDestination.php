@@ -1,8 +1,13 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\migrate_events_test\Plugin\migrate\destination\DummyDestination.
+ */
+
 namespace Drupal\migrate_events_test\Plugin\migrate\destination;
 
-use Drupal\migrate\Plugin\MigrationInterface;
+use Drupal\migrate\Entity\MigrationInterface;
 use Drupal\migrate\Plugin\migrate\destination\DestinationBase;
 use Drupal\migrate\Row;
 

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Cache\CacheTagsInvalidator.
+ */
+
 namespace Drupal\Core\Cache;
 
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;

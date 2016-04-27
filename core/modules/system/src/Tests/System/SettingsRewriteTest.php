@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\System\SettingsRewriteTest.
+ */
+
 namespace Drupal\system\Tests\System;
 
 use Drupal\Core\Site\Settings;

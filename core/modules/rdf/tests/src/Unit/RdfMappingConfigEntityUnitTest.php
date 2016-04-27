@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\rdf\Unit\RdfMappingConfigEntityUnitTest.
+ */
+
 namespace Drupal\Tests\rdf\Unit;
 
 use Drupal\Core\DependencyInjection\ContainerBuilder;

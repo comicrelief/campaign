@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\EntityViewsDataInterface.
+ */
+
 namespace Drupal\views;
 
 use Drupal\Core\Entity\EntityTypeInterface;

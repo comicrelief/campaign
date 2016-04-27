@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\text\Plugin\Field\FieldType\TextItemBase.
+ */
+
 namespace Drupal\text\Plugin\Field\FieldType;
 
 use Drupal\Component\Utility\Random;

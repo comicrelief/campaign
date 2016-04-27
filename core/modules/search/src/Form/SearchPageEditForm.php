@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\search\Form\SearchPageEditForm.
+ */
+
 namespace Drupal\search\Form;
 
 use Drupal\Core\Form\FormStateInterface;

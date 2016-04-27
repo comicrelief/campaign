@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Component\Plugin\Exception\PluginNotFoundException.
+ */
+
 namespace Drupal\Component\Plugin\Exception;
 
 /**

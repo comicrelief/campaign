@@ -5,6 +5,7 @@
  * The API for comparing project translation status with available translation.
  */
 
+use Drupal\Core\Cache;
 use Drupal\Core\Utility\ProjectInfo;
 
 /**

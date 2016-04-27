@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\action\ActionListBuilder.
+ */
+
 namespace Drupal\action;
 
 use Drupal\Core\Action\ActionManager;

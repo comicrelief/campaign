@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\language\Unit\ContentLanguageSettingsUnitTest.
+ */
+
 namespace Drupal\Tests\language\Unit;
 
 use Drupal\Core\Language\LanguageInterface;

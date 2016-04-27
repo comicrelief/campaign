@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Menu\MenuLinkInterface.
+ */
+
 namespace Drupal\Core\Menu;
 
 use Drupal\Component\Plugin\PluginInspectionInterface;

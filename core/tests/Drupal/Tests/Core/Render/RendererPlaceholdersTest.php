@@ -8,6 +8,7 @@
 namespace Drupal\Tests\Core\Render;
 
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Render\Element;
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Render\Markup;
 
@@ -1110,7 +1111,7 @@ class RecursivePlaceholdersTest {
    * #lazy_builder callback; bubbles another placeholder.
    *
    * @param string $animal
-   *   An animal.
+   *  An animal.
    *
    * @return array
    *   A renderable array.

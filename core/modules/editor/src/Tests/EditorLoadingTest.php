@@ -1,12 +1,16 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\editor\Tests\EditorLoadingTest.
+ */
+
 namespace Drupal\editor\Tests;
 
-use Drupal\editor\Entity\Editor;
+use Drupal\Core\Entity\Entity;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\simpletest\WebTestBase;
-use Drupal\filter\Entity\FilterFormat;
 
 /**
  * Tests loading of text editors.
@@ -51,14 +55,14 @@ class EditorLoadingTest extends WebTestBase {
     \Drupal::service('plugin.manager.editor')->clearCachedDefinitions();
 
     // Add text formats.
-    $filtered_html_format = FilterFormat::create(array(
+    $filtered_html_format = entity_create('filter_format', array(
       'format' => 'filtered_html',
       'name' => 'Filtered HTML',
       'weight' => 0,
       'filters' => array(),
     ));
     $filtered_html_format->save();
-    $full_html_format = FilterFormat::create(array(
+    $full_html_format = entity_create('filter_format', array(
       'format' => 'full_html',
       'name' => 'Full HTML',
       'weight' => 1,
@@ -109,7 +113,7 @@ class EditorLoadingTest extends WebTestBase {
    */
   public function testLoading() {
     // Only associate a text editor with the "Full HTML" text format.
-    $editor = Editor::create([
+    $editor = entity_create('editor', array(
       'format' => 'full_html',
       'editor' => 'unicorn',
       'image_upload' => array(
@@ -119,7 +123,7 @@ class EditorLoadingTest extends WebTestBase {
         'max_size' => '',
         'max_dimensions' => array('width' => '', 'height' => ''),
       )
-    ]);
+    ));
     $editor->save();
 
     // The normal user:
@@ -162,10 +166,10 @@ class EditorLoadingTest extends WebTestBase {
     $this->drupalLogout($this->privilegedUser);
 
     // Also associate a text editor with the "Plain Text" text format.
-    $editor = Editor::create([
+    $editor = entity_create('editor', array(
       'format' => 'plain_text',
       'editor' => 'unicorn',
-    ]);
+    ));
     $editor->save();
 
     // The untrusted user:
@@ -217,7 +221,7 @@ class EditorLoadingTest extends WebTestBase {
    */
   public function testSupportedElementTypes() {
     // Associate the unicorn text editor with the "Full HTML" text format.
-    $editor = Editor::create([
+    $editor = entity_create('editor', array(
       'format' => 'full_html',
       'editor' => 'unicorn',
       'image_upload' => array(
@@ -227,7 +231,7 @@ class EditorLoadingTest extends WebTestBase {
         'max_size' => '',
         'max_dimensions' => array('width' => '', 'height' => ''),
       )
-    ]);
+    ));
     $editor->save();
 
     // Create an "page" node that uses the full_html text format.
@@ -251,10 +255,10 @@ class EditorLoadingTest extends WebTestBase {
 
     // Associate the trex text editor with the "Full HTML" text format.
     $editor->delete();
-    Editor::create([
+    entity_create('editor', array(
       'format' => 'full_html',
       'editor' => 'trex',
-    ])->save();
+    ))->save();
 
     $this->drupalGet('node/1/edit');
     list( , $editor_settings_present, $editor_js_present, $field, $format_selector) = $this->getThingsToCheck('field-text', 'input');

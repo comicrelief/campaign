@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Plugin\views\field\RevisionLinkDelete.
+ */
+
 namespace Drupal\node\Plugin\views\field;
 
 use Drupal\Core\Url;

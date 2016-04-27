@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\TypedData\Annotation\DataType.
+ */
+
 namespace Drupal\Core\TypedData\Annotation;
 
 use Drupal\Component\Annotation\Plugin;

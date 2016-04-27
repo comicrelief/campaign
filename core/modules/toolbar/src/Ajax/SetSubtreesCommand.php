@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\toolbar\Ajax\SetSubtreesCommand.
+ */
+
 namespace Drupal\toolbar\Ajax;
 
 use Drupal\Core\Ajax\CommandInterface;

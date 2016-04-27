@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\comment\Tests\CommentBlockTest.
+ */
+
 namespace Drupal\comment\Tests;
 
 use Drupal\Component\Utility\SafeMarkup;

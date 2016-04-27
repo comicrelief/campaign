@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\Plugin\views\field\Permissions.
+ */
+
 namespace Drupal\user\Plugin\views\field;
 
 use Drupal\Core\Entity\EntityManagerInterface;

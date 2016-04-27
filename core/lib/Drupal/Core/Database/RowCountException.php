@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Database\RowCountException.
+ */
+
 namespace Drupal\Core\Database;
 
 /**

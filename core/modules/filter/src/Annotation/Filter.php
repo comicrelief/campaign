@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\filter\Annotation\Filter.
+ */
+
 namespace Drupal\filter\Annotation;
 
 use Drupal\Component\Annotation\Plugin;

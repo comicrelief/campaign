@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Plugin\TestPluginManager.
+ */
+
 namespace Drupal\Tests\Core\Plugin;
 
 use Drupal\Component\Plugin\Discovery\StaticDiscovery;

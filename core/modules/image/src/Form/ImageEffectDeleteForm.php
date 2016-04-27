@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\image\Form\ImageEffectDeleteForm.
+ */
+
 namespace Drupal\image\Form;
 
 use Drupal\Core\Form\ConfirmFormBase;

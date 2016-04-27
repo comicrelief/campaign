@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Theme\ThemeNegotiatorTest.
+ */
+
 namespace Drupal\Tests\Core\Theme;
 
 use Drupal\Core\Routing\RouteMatch;

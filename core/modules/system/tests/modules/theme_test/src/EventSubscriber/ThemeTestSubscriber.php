@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\theme_test\EventSubscriber\ThemeTestSubscriber.
+ */
+
 namespace Drupal\theme_test\EventSubscriber;
 
 use Drupal\Core\Render\RendererInterface;

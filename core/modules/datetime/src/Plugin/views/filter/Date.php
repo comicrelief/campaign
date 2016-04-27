@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\datetime\Plugin\views\filter\Date.
+ */
+
 namespace Drupal\datetime\Plugin\views\filter;
 
 use Drupal\Core\Datetime\DateFormatterInterface;

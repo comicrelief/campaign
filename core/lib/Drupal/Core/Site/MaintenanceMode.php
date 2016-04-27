@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Site\MaintenanceMode.
+ */
+
 namespace Drupal\Core\Site;
 
 use Drupal\Core\Routing\RouteMatchInterface;

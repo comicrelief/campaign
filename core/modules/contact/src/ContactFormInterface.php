@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\contact\ContactFormInterface.
+ */
+
 namespace Drupal\contact;
 
 use Drupal\Core\Config\Entity\ConfigEntityInterface;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\file_test\StreamWrapper\DummyReadOnlyStreamWrapper.
+ */
+
 namespace Drupal\file_test\StreamWrapper;
 
 use Drupal\Core\StreamWrapper\LocalReadOnlyStream;

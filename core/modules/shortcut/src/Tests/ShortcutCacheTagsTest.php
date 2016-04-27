@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\shortcut\Tests\ShortcutCacheTagsTest.
+ */
+
 namespace Drupal\shortcut\Tests;
 
 use Drupal\shortcut\Entity\Shortcut;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Component\Graph\Graph.
+ */
+
 namespace Drupal\Component\Graph;
 
 /**

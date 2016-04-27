@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\session_test\Form\SessionTestForm.
+ */
+
 namespace Drupal\session_test\Form;
 
 use Drupal\Component\Utility\SafeMarkup;

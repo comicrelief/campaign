@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Asset\LibraryDiscoveryInterface.
+ */
+
 namespace Drupal\Core\Asset;
 
 /**

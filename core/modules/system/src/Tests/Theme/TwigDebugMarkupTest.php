@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Theme\TwigDebugMarkupTest.
+ */
+
 namespace Drupal\system\Tests\Theme;
 
 use Drupal\simpletest\WebTestBase;
@@ -26,7 +31,7 @@ class TwigDebugMarkupTest extends WebTestBase {
     $renderer = $this->container->get('renderer');
     $extension = twig_extension();
     \Drupal::service('theme_handler')->install(array('test_theme'));
-    \Drupal::service('theme_handler')->setDefault('test_theme');
+    $this->config('system.theme')->set('default', 'test_theme')->save();
     $this->drupalCreateContentType(array('type' => 'page'));
     // Enable debug, rebuild the service container, and clear all caches.
     $parameters = $this->container->getParameter('twig.config');

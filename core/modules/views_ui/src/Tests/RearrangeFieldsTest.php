@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views_ui\Tests\RearrangeFieldsTest.
+ */
+
 namespace Drupal\views_ui\Tests;
 
 use Drupal\views\Views;

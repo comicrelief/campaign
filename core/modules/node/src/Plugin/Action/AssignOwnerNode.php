@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Plugin\Action\AssignOwnerNode.
+ */
+
 namespace Drupal\node\Plugin\Action;
 
 use Drupal\Core\Action\ConfigurableActionBase;

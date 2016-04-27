@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\RouteProcessor\OutboundRouteProcessorInterface.
+ */
+
 namespace Drupal\Core\RouteProcessor;
 
 use Drupal\Core\Render\BubbleableMetadata;

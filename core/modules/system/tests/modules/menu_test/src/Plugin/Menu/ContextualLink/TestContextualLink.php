@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\menu_test\Plugin\Menu\ContextualLink\TestContextualLink.
+ */
+
 namespace Drupal\menu_test\Plugin\Menu\ContextualLink;
 
 use Drupal\Core\Menu\ContextualLinkDefault;

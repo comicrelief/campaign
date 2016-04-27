@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\HtmlEntityFormController.
+ */
+
 namespace Drupal\Core\Entity;
 
 use Drupal\Core\Controller\ControllerResolverInterface;

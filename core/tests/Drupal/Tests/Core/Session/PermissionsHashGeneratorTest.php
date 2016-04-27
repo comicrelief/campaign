@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Session\PermissionsHashGeneratorTest.
+ */
+
 namespace Drupal\Tests\Core\Session {
 
 use Drupal\Component\Utility\Crypt;

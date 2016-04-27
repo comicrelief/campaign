@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Database\Query\InsertTrait.
+ */
+
 namespace Drupal\Core\Database\Query;
 
 /**
@@ -174,13 +179,6 @@ trait InsertTrait {
     }
 
     return $values;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function count() {
-    return count($this->insertValues);
   }
 
 }

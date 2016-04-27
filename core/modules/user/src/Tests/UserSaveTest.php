@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\Tests\UserSaveTest.
+ */
+
 namespace Drupal\user\Tests;
 
 use Drupal\simpletest\WebTestBase;
@@ -27,13 +32,13 @@ class UserSaveTest extends WebTestBase {
     $test_name = $this->randomMachineName();
 
     // Create the base user, based on drupalCreateUser().
-    $user = User::create([
+    $user = entity_create('user', array(
       'name' => $test_name,
       'uid' => $test_uid,
       'mail' => $test_name . '@example.com',
       'pass' => user_password(),
       'status' => 1,
-    ]);
+    ));
     $user->enforceIsNew();
     $user->save();
 

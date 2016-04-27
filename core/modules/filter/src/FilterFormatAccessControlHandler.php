@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\filter\FilterFormatAccessControlHandler.
+ */
+
 namespace Drupal\filter;
 
 use Drupal\Core\Access\AccessResult;

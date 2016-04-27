@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Config\ConfigDuplicateUUIDException.
+ */
+
 namespace Drupal\Core\Config;
 
 /**

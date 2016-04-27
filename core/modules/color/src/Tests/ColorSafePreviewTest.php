@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\color\Tests\ColorSafePreviewTest.
+ */
+
 namespace Drupal\color\Tests;
 
 use Drupal\Core\Url;

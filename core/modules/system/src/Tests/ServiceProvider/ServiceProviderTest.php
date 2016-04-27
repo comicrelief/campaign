@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\ServiceProvider\ServiceProviderTest.
+ */
+
 namespace Drupal\system\Tests\ServiceProvider;
 
 use Drupal\simpletest\KernelTestBase;

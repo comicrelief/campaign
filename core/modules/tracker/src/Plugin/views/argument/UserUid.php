@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\tracker\Plugin\views\argument\UserUid.
+ */
+
 namespace Drupal\tracker\Plugin\views\argument;
 
 use Drupal\comment\Plugin\views\argument\UserUid as CommentUserUid;

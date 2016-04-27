@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Plugin\Discovery\ContainerDeriverInterface.
+ */
+
 namespace Drupal\Core\Plugin\Discovery;
 
 use Drupal\Component\Plugin\Derivative\DeriverInterface;

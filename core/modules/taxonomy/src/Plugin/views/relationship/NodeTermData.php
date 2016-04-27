@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\taxonomy\Plugin\views\relationship\NodeTermData.
+ */
+
 namespace Drupal\taxonomy\Plugin\views\relationship;
 
 use Drupal\Core\Form\FormStateInterface;

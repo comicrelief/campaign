@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\aggregator\Tests\FeedLanguageTest.
+ */
+
 namespace Drupal\aggregator\Tests;
 
 use Drupal\language\Entity\ConfigurableLanguage;

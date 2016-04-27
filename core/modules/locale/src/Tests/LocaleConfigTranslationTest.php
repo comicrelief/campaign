@@ -1,9 +1,14 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\locale\Tests\LocaleConfigTranslationTest.
+ */
+
 namespace Drupal\locale\Tests;
 
 use Drupal\simpletest\WebTestBase;
-use Drupal\Core\Language\LanguageInterface;
+use Drupal\core\language\languageInterface;
 
 /**
  * Tests translation of configuration strings.

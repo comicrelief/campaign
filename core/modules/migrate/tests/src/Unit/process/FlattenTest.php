@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\Tests\migrate\Unit\process\FlattenTest.
+ */
 
 namespace Drupal\Tests\migrate\Unit\process;
 use Drupal\migrate\Plugin\migrate\process\Flatten;

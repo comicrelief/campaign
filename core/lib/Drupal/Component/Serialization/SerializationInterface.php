@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Component\Serialization\SerializationInterface.
+ */
+
 namespace Drupal\Component\Serialization;
 
 /**

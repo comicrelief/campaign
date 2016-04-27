@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\Core\Plugin\ContextAwarePluginInterface.
+ */
 
 namespace Drupal\Core\Plugin;
 

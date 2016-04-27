@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\link\Plugin\Validation\Constraint\LinkNotExistingInternalConstraintValidator.
+ */
+
 namespace Drupal\link\Plugin\Validation\Constraint;
 
 use Symfony\Component\Routing\Exception\InvalidParameterException;

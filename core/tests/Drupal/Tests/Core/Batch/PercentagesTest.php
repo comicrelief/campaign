@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Batch\PercentagesTest.
+ */
+
 namespace Drupal\Tests\Core\Batch;
 
 use Drupal\Core\Batch\Percentage;

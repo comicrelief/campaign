@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\KeyValueStore\KeyValueEntityStorage.
+ */
+
 namespace Drupal\Core\Entity\KeyValueStore;
 
 use Drupal\Component\Uuid\UuidInterface;

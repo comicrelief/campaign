@@ -11,6 +11,7 @@ use Drupal\Core\Cache\Cache;
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Cache\Context\ContextCacheKeys;
 use Drupal\Core\Cache\MemoryBackend;
+use Drupal\Core\Render\Element;
 use Drupal\Core\Render\PlaceholderGenerator;
 use Drupal\Core\Render\PlaceholderingRenderCache;
 use Drupal\Core\Render\Renderer;
@@ -258,7 +259,7 @@ class PlaceholdersTest {
    * #lazy_builder callback; attaches setting, generates markup.
    *
    * @param string $animal
-   *   An animal.
+   *  An animal.
    *
    * @return array
    *   A renderable array.
@@ -282,7 +283,7 @@ class PlaceholdersTest {
    * #lazy_builder callback; attaches setting, generates markup, user-specific.
    *
    * @param string $animal
-   *   An animal.
+   *  An animal.
    *
    * @return array
    *   A renderable array.
@@ -297,7 +298,7 @@ class PlaceholdersTest {
    * #lazy_builder callback; attaches setting, generates markup, cache tag.
    *
    * @param string $animal
-   *   An animal.
+   *  An animal.
    *
    * @return array
    *   A renderable array.

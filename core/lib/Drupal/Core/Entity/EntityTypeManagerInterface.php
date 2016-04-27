@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\EntityTypeManagerInterface.
+ */
+
 namespace Drupal\Core\Entity;
 
 use Drupal\Component\Plugin\Discovery\CachedDiscoveryInterface;

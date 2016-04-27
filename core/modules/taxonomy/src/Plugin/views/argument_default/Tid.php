@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\taxonomy\Plugin\views\argument_default\Tid.
+ */
+
 namespace Drupal\taxonomy\Plugin\views\argument_default;
 
 use Drupal\Core\Cache\Cache;

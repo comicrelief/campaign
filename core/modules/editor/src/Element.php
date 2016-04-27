@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\editor\Element.
+ */
+
 namespace Drupal\editor;
 
 use Drupal\editor\Entity\Editor;

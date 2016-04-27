@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Plugin\views\filter\GroupByNumeric.
+ */
+
 namespace Drupal\views\Plugin\views\filter;
 
 /**

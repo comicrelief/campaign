@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views_ui\Form\AdvancedSettingsForm.
+ */
+
 namespace Drupal\views_ui\Form;
 
 use Drupal\Core\Form\ConfigFormBase;

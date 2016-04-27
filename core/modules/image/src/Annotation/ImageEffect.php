@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\image\Annotation\ImageEffect.
+ */
+
 namespace Drupal\image\Annotation;
 
 use Drupal\Component\Annotation\Plugin;

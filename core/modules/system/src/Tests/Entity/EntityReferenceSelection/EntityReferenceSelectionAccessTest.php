@@ -1,15 +1,18 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Entity\EntityReferenceSelection\EntityReferenceSelectionAccessTest.
+ */
+
 namespace Drupal\system\Tests\Entity\EntityReferenceSelection;
 
 use Drupal\comment\Tests\CommentTestTrait;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Language\LanguageInterface;
 use Drupal\comment\CommentInterface;
-use Drupal\node\Entity\Node;
 use Drupal\simpletest\WebTestBase;
 use Drupal\user\Entity\User;
-use Drupal\comment\Entity\Comment;
 
 /**
  * Tests for the base handlers provided by Entity Reference.
@@ -104,7 +107,7 @@ class EntityReferenceSelectionAccessTest extends WebTestBase {
     $nodes = array();
     $node_labels = array();
     foreach ($node_values as $key => $values) {
-      $node = Node::create($values);
+      $node = entity_create('node', $values);
       $node->save();
       $nodes[$key] = $node;
       $node_labels[$key] = Html::escape($node->label());
@@ -231,7 +234,7 @@ class EntityReferenceSelectionAccessTest extends WebTestBase {
     $user_labels = array();
     foreach ($user_values as $key => $values) {
       if (is_array($values)) {
-        $account = User::create($values);
+        $account = entity_create('user', $values);
         $account->save();
       }
       else {
@@ -363,7 +366,7 @@ class EntityReferenceSelectionAccessTest extends WebTestBase {
     );
     $nodes = array();
     foreach ($node_values as $key => $values) {
-      $node = Node::create($values);
+      $node = entity_create('node', $values);
       $node->save();
       $nodes[$key] = $node;
     }
@@ -410,7 +413,7 @@ class EntityReferenceSelectionAccessTest extends WebTestBase {
     $comments = array();
     $comment_labels = array();
     foreach ($comment_values as $key => $values) {
-      $comment = Comment::create($values);
+      $comment = entity_create('comment', $values);
       $comment->save();
       $comments[$key] = $comment;
       $comment_labels[$key] = Html::escape($comment->label());

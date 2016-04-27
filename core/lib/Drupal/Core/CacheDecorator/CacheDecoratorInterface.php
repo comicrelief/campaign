@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\CacheDecorator\CacheDecoratorInterface.
+ */
+
 namespace Drupal\Core\CacheDecorator;
 
 /**

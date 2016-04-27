@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Cache\RefinableCacheableDependencyTrait.
+ */
+
 namespace Drupal\Core\Cache;
 
 /**

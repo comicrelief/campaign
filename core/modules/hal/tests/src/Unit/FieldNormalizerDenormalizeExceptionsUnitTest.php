@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\hal\Unit\FieldNormalizerDenormalizeExceptionsUnitTest.
+ */
+
 namespace Drupal\Tests\hal\Unit;
 
 use Drupal\hal\Normalizer\FieldNormalizer;

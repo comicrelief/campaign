@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Render\RenderableInterface.
+ */
+
 namespace Drupal\Core\Render;
 
 /**

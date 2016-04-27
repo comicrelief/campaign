@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Tests\NodeAccessRecordsTest.
+ */
+
 namespace Drupal\node\Tests;
 
 use Drupal\node\Entity\Node;

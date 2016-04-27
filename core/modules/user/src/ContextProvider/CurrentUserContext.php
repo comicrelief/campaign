@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\ContextProvider\CurrentUserContext.
+ */
+
 namespace Drupal\user\ContextProvider;
 
 use Drupal\Core\Cache\CacheableMetadata;

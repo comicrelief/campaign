@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\shortcut\ShortcutInterface.
+ */
+
 namespace Drupal\shortcut;
 
 use Drupal\Core\Entity\ContentEntityInterface;

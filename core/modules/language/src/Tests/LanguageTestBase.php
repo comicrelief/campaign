@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\language\Tests\LanguageTestBase.
+ */
+
 namespace Drupal\language\Tests;
 
 use Drupal\simpletest\KernelTestBase;

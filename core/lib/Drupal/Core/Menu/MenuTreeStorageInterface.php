@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Menu\MenuTreeStorageInterface.
+ */
+
 namespace Drupal\Core\Menu;
 
 /**

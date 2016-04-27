@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\language\LanguageNegotiationMethodManager.
+ */
+
 namespace Drupal\language;
 
 use Drupal\Core\Cache\CacheBackendInterface;

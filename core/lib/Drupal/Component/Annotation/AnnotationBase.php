@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Component\Annotation\AnnotationBase.
+ */
+
 namespace Drupal\Component\Annotation;
 
 /**

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\rest\LinkManager\TypeLinkManagerInterface.
+ */
+
 namespace Drupal\rest\LinkManager;
 
 interface TypeLinkManagerInterface extends ConfigurableLinkManagerInterface {

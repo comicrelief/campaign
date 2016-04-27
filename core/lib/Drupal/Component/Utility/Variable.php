@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Component\Utility\Variable.
+ */
+
 namespace Drupal\Component\Utility;
 
 /**

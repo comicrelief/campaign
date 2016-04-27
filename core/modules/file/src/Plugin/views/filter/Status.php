@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\file\Plugin\views\filter\Status.
+ */
+
 namespace Drupal\file\Plugin\views\filter;
 
 use Drupal\views\Plugin\views\filter\InOperator;

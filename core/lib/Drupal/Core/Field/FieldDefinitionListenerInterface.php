@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Field\FieldDefinitionListenerInterface.
+ */
+
 namespace Drupal\Core\Field;
 
 /**

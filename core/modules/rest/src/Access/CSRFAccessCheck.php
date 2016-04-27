@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\rest\Access\CSRFAccessCheck.
+ */
+
 namespace Drupal\rest\Access;
 
 use Drupal\Core\Access\AccessCheckInterface;

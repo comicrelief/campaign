@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Field\FieldFilteredMarkup.
+ */
+
 namespace Drupal\Core\Field;
 
 use Drupal\Component\Utility\Html;

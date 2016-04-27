@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\Component\Plugin\Exception\PluginException.
+ */
 
 namespace Drupal\Component\Plugin\Exception;
 

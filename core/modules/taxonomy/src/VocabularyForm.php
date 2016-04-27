@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\taxonomy\VocabularyForm.
+ */
+
 namespace Drupal\taxonomy;
 
 use Drupal\Core\Entity\BundleEntityFormBase;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\Plugin\DataType\EntityAdapter.
+ */
+
 namespace Drupal\Core\Entity\Plugin\DataType;
 
 use Drupal\Core\Entity\FieldableEntityInterface;

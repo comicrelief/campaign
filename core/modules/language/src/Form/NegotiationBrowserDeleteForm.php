@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\language\Form\NegotiationBrowserDeleteForm.
+ */
+
 namespace Drupal\language\Form;
 
 use Drupal\Core\Form\ConfigFormBaseTrait;

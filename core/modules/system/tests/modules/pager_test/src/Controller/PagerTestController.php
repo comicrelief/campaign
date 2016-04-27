@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\pager_test\Controller\PagerTestController.
+ */
+
 namespace Drupal\pager_test\Controller;
 
 use Drupal\Core\Controller\ControllerBase;

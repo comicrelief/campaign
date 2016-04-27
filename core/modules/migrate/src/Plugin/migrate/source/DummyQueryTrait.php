@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\migrate\Plugin\migrate\source\DummyQueryTrait.
+ */
+
 namespace Drupal\migrate\Plugin\migrate\source;
 
 /**

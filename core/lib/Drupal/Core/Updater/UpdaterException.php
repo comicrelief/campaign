@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Updater\UpdaterException.
+ */
+
 namespace Drupal\Core\Updater;
 
 /**

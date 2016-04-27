@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Logger\LoggerChannelFactory.
+ */
+
 namespace Drupal\Core\Logger;
 
 use Psr\Log\LoggerInterface;

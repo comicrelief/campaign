@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Tests\NodeRevisionsUiTest.
+ */
+
 namespace Drupal\node\Tests;
 
 use Drupal\Core\Url;

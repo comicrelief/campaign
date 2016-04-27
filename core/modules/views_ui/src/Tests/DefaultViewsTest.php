@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views_ui\Tests\DefaultViewsTest.
+ */
+
 namespace Drupal\views_ui\Tests;
 
 use Drupal\Core\Url;

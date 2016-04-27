@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\image\ConfigurableImageEffectInterface.
+ */
+
 namespace Drupal\image;
 
 use Drupal\Core\Plugin\PluginFormInterface;

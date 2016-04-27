@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\color\Tests\ColorTest.
+ */
+
 namespace Drupal\color\Tests;
 
 use Drupal\simpletest\WebTestBase;

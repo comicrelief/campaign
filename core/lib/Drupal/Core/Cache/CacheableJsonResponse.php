@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Cache\CacheableJsonResponse.
+ */
+
 namespace Drupal\Core\Cache;
 
 use Symfony\Component\HttpFoundation\JsonResponse;

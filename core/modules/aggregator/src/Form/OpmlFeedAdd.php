@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\aggregator\Form\OpmlFeedAdd.
+ */
+
 namespace Drupal\aggregator\Form;
 
 use Drupal\aggregator\FeedStorageInterface;

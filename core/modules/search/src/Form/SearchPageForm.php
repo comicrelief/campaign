@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\search\Form\SearchPageForm.
+ */
+
 namespace Drupal\search\Form;
 
 use Drupal\Core\Entity\EntityForm;

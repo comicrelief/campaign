@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\EventSubscriber\ModuleRouteSubscriberTest.
+ */
+
 namespace Drupal\Tests\Core\EventSubscriber;
 
 use Drupal\Core\Routing\RouteBuildEvent;

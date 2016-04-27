@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\search\Plugin\migrate\process\SearchConfigurationRankings.
+ */
+
 namespace Drupal\search\Plugin\migrate\process;
 
 use Drupal\migrate\ProcessPluginBase;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\serialization\Normalizer\NullNormalizer.
+ */
+
 namespace Drupal\serialization\Normalizer;
 
 /**

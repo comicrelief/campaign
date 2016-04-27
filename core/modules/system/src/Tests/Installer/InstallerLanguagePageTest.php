@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Installer\InstallerLanguagePageTest.
+ */
+
 namespace Drupal\system\Tests\Installer;
 
 use Drupal\Core\Language\LanguageManager;
@@ -21,7 +26,7 @@ class InstallerLanguagePageTest extends InstallerTestBase {
     touch(\Drupal::root() . '/' . $this->siteDirectory . '/files/translations/drupal-8.0.0.xoxo.po');
 
     // Check that all predefined languages show up with their native names.
-    $this->visitInstaller();
+    $this->drupalGet($GLOBALS['base_url'] . '/core/install.php');
     foreach (LanguageManager::getStandardLanguageList() as $langcode => $names) {
       $this->assertOption('edit-langcode', $langcode);
       $this->assertRaw('>' . $names[1] . '<');

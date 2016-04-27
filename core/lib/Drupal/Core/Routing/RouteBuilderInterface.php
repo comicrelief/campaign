@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Routing\RouteBuilderInterface.
+ */
+
 namespace Drupal\Core\Routing;
 
 interface RouteBuilderInterface {

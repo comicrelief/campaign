@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\taxonomy\Tests\Views\TaxonomyParentUITest.
+ */
+
 namespace Drupal\taxonomy\Tests\Views;
 
 use Drupal\views\Tests\ViewTestData;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\config_translation\FormElement\ListElement.
+ */
+
 namespace Drupal\config_translation\FormElement;
 
 use Drupal\Core\Config\Config;

@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Asset\CssCollectionGrouperUnitTest.
+ */
+
+
 namespace Drupal\Tests\Core\Asset;
 
 use Drupal\Core\Asset\CssCollectionGrouper;
@@ -40,15 +46,15 @@ class CssCollectionGrouperUnitTest extends UnitTestCase {
         'browsers' => array('IE' => TRUE, '!IE' => TRUE),
         'basename' => 'system.base.css',
       ),
-      'js.module.css' => array(
+      'system.theme.css' => array(
         'group' => -100,
         'type' => 'file',
         'weight' => 0.013,
         'media' => 'all',
         'preprocess' => TRUE,
-        'data' => 'core/modules/system/js.module.css',
+        'data' => 'core/modules/system/system.theme.css',
         'browsers' => array('IE' => TRUE, '!IE' => TRUE),
-        'basename' => 'js.module.css',
+        'basename' => 'system.theme.css',
       ),
       'jquery.ui.core.css' => array(
         'group' => -100,
@@ -114,7 +120,7 @@ class CssCollectionGrouperUnitTest extends UnitTestCase {
     $this->assertSame($group['preprocess'], TRUE);
     $this->assertSame(count($group['items']), 3);
     $this->assertContains($css_assets['system.base.css'], $group['items']);
-    $this->assertContains($css_assets['js.module.css'], $group['items']);
+    $this->assertContains($css_assets['system.theme.css'], $group['items']);
 
     // Check group 2.
     $group = $groups[1];

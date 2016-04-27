@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views_test_data\Plugin\views\display_extender\DisplayExtenderTest.
+ */
+
 namespace Drupal\views_test_data\Plugin\views\display_extender;
 
 use Drupal\Core\Form\FormStateInterface;

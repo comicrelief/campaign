@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Field\Plugin\DataType\Deriver\FieldItemDeriver.
+ */
+
 namespace Drupal\Core\Field\Plugin\DataType\Deriver;
 
 use Drupal\Core\Field\FieldTypePluginManagerInterface;

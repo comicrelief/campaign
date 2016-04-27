@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\accept_header_routing_test\AcceptHeaderRoutingTestServiceProvider.
+ */
+
 namespace Drupal\accept_header_routing_test;
 
 use Drupal\Core\DependencyInjection\ContainerBuilder;

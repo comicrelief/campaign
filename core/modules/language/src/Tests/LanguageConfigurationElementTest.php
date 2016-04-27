@@ -1,12 +1,16 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\language\Tests\LanguageConfigurationElementTest.
+ */
+
 namespace Drupal\language\Tests;
 
 use Drupal\Core\Language\LanguageInterface;
 use Drupal\language\Entity\ConfigurableLanguage;
 use Drupal\language\Entity\ContentLanguageSettings;
 use Drupal\simpletest\WebTestBase;
-use Drupal\taxonomy\Entity\Vocabulary;
 
 /**
  * Tests the features of the language configuration element field.
@@ -219,10 +223,10 @@ class LanguageConfigurationElementTest extends WebTestBase {
    * Tests that the configuration is retained when a vocabulary is updated.
    */
   public function testTaxonomyVocabularyUpdate() {
-    $vocabulary = Vocabulary::create([
+    $vocabulary = entity_create('taxonomy_vocabulary', array(
       'name' => 'Country',
       'vid' => 'country',
-    ]);
+    ));
     $vocabulary->save();
 
     $admin_user = $this->drupalCreateUser(array('administer taxonomy'));

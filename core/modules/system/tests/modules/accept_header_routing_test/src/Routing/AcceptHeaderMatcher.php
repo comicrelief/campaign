@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\accept_header_routing_test\Routing\AcceptHeaderMatcher.
+ */
+
 namespace Drupal\accept_header_routing_test\Routing;
 
 use Drupal\Core\Routing\RouteFilterInterface;

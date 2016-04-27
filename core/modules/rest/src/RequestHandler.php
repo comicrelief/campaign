@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\rest\RequestHandler.
+ */
+
 namespace Drupal\rest;
 
 use Drupal\Core\Render\RenderContext;

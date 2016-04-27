@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\block_content\BlockContentTypeListBuilder.
+ */
+
 namespace Drupal\block_content;
 
 use Drupal\Core\Config\Entity\ConfigEntityListBuilder;

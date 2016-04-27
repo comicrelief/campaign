@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\comment\CommentLinkBuilderInterface.
+ */
+
 namespace Drupal\comment;
 
 use Drupal\Core\Entity\FieldableEntityInterface;

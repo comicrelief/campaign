@@ -1,10 +1,15 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\migrate\Unit\MigrateTestCase.
+ */
+
 namespace Drupal\Tests\migrate\Unit;
 
 use Drupal\Core\Database\Driver\sqlite\Connection;
 use Drupal\Core\DependencyInjection\ContainerBuilder;
-use Drupal\migrate\Plugin\MigrationInterface;
+use Drupal\migrate\Entity\MigrationInterface;
 use Drupal\Tests\UnitTestCase;
 
 /**
@@ -29,18 +34,18 @@ abstract class MigrateTestCase extends UnitTestCase {
   /**
    * Local store for mocking setStatus()/getStatus().
    *
-   * @var \Drupal\migrate\Plugin\MigrationInterface::STATUS_*
+   * @var \Drupal\migrate\Entity\MigrationInterface::STATUS_*
    */
   protected $migrationStatus = MigrationInterface::STATUS_IDLE;
 
   /**
    * Retrieves a mocked migration.
    *
-   * @return \Drupal\migrate\Plugin\MigrationInterface|\PHPUnit_Framework_MockObject_MockObject
+   * @return \Drupal\migrate\Entity\MigrationInterface|\PHPUnit_Framework_MockObject_MockObject
    *   The mocked migration.
    */
   protected function getMigration() {
-    $this->migrationConfiguration += ['migrationClass' => 'Drupal\migrate\Plugin\Migration'];
+    $this->migrationConfiguration += ['migrationClass' => 'Drupal\migrate\Entity\Migration'];
     $this->idMap = $this->getMock('Drupal\migrate\Plugin\MigrateIdMapInterface');
 
     $this->idMap
@@ -78,9 +83,9 @@ abstract class MigrateTestCase extends UnitTestCase {
 
     $configuration = &$this->migrationConfiguration;
 
-    $migration->method('getHighWaterProperty')
-      ->willReturnCallback(function () use ($configuration) {
-        return isset($configuration['highWaterProperty']) ? $configuration['highWaterProperty'] : '';
+    $migration->method('get')
+      ->willReturnCallback(function ($argument) use (&$configuration) {
+        return isset($configuration[$argument]) ? $configuration[$argument] : '';
       });
 
     $migration->method('set')

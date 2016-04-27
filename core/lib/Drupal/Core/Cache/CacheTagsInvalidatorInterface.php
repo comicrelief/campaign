@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Cache\CacheTagsInvalidatorInterface.
+ */
+
 namespace Drupal\Core\Cache;
 
 /**

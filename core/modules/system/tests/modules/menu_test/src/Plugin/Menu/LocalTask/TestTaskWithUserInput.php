@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\menu_test\Plugin\Menu\LocalTask\TestTaskWithUserInput.
+ */
+
 namespace Drupal\menu_test\Plugin\Menu\LocalTask;
 
 use Drupal\Core\Menu\LocalTaskDefault;

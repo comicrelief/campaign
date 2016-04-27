@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Field\FieldStorageDefinitionEventSubscriberTrait.
+ */
+
 namespace Drupal\Core\Field;
 
 /**

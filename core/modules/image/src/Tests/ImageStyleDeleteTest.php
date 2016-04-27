@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\image\Tests\ImageStyleDeleteTest.
+ */
+
 namespace Drupal\image\Tests;
 
 use Drupal\Core\Entity\Entity\EntityFormDisplay;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\config\Tests\ConfigEntityFormOverrideTest.
+ */
+
 namespace Drupal\config\Tests;
 
 use Drupal\simpletest\WebTestBase;

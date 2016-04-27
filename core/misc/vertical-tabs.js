@@ -12,7 +12,7 @@
  * @event summaryUpdated
  */
 
-(function ($, Drupal, drupalSettings) {
+(function ($) {
 
   'use strict';
 
@@ -26,9 +26,6 @@
    * element inside the tab pane.
    *
    * @type {Drupal~behavior}
-   *
-   * @prop {Drupal~behaviorAttach} attach
-   *   Attaches behaviors for vertical tabs.
    */
   Drupal.behaviors.verticalTabs = {
     attach: function (context) {
@@ -102,7 +99,6 @@
    * @constructor
    *
    * @param {object} settings
-   *   Settings object.
    * @param {string} settings.title
    *   The name of the tab.
    * @param {jQuery} settings.details
@@ -175,7 +171,6 @@
      * Shows a vertical tab pane.
      *
      * @return {Drupal.verticalTab}
-     *   The verticalTab instance.
      */
     tabShow: function () {
       // Display the tab.
@@ -198,7 +193,6 @@
      * Hides a vertical tab pane.
      *
      * @return {Drupal.verticalTab}
-     *   The verticalTab instance.
      */
     tabHide: function () {
       // Hide this tab.
@@ -249,4 +243,4 @@
     return tab;
   };
 
-})(jQuery, Drupal, drupalSettings);
+})(jQuery);

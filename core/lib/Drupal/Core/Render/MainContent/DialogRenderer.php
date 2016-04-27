@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Render\MainContent\DialogRenderer.
+ */
+
 namespace Drupal\Core\Render\MainContent;
 
 use Drupal\Component\Utility\Html;

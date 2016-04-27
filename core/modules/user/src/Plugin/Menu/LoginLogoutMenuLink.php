@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\Plugin\Menu\LoginLogoutMenuLink.
+ */
+
 namespace Drupal\user\Plugin\Menu;
 
 use Drupal\Core\Menu\MenuLinkDefault;

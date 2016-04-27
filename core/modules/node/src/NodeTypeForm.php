@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\NodeTypeForm.
+ */
+
 namespace Drupal\node;
 
 use Drupal\Core\Entity\BundleEntityFormBase;
@@ -10,7 +15,7 @@ use Drupal\language\Entity\ContentLanguageSettings;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Form handler for node type forms.
+ * Form controller for node type forms.
  */
 class NodeTypeForm extends BundleEntityFormBase {
 

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Component\Serialization\Yaml.
+ */
+
 namespace Drupal\Component\Serialization;
 
 use Drupal\Component\Serialization\Exception\InvalidDataTypeException;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\entity_reference\Plugin\views\style\EntityReference.
+ */
+
 namespace Drupal\entity_reference\Plugin\views\style;
 
 use Drupal\views\Plugin\views\style\EntityReference as ViewsEntityReference;

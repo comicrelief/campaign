@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Action\ActionBase.
+ */
+
 namespace Drupal\Core\Action;
 
 use Drupal\Core\Plugin\PluginBase;

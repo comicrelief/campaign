@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\MachineNameController.
+ */
+
 namespace Drupal\system;
 
 use Drupal\Component\Transliteration\TransliterationInterface;

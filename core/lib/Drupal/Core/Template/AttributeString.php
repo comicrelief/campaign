@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Template\AttributeString.
+ */
+
 namespace Drupal\Core\Template;
 
 use Drupal\Component\Utility\Html;

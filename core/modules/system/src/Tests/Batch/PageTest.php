@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Batch\PageTest.
+ */
+
 namespace Drupal\system\Tests\Batch;
 
 use Drupal\simpletest\WebTestBase;

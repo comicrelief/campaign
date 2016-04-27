@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Render\RenderCacheTest.
+ */
+
 namespace Drupal\system\Tests\Render;
 
 use Drupal\simpletest\KernelTestBase;

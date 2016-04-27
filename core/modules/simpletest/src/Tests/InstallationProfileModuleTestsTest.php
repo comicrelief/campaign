@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\simpletest\Tests\InstallationProfileModuleTestsTest.
+ */
+
 namespace Drupal\simpletest\Tests;
 
 use Drupal\simpletest\WebTestBase;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views_ui\Controller\ViewsUIController.
+ */
+
 namespace Drupal\views_ui\Controller;
 
 use Drupal\Core\Controller\ControllerBase;

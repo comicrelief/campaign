@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\file\Plugin\migrate\process\d6\FileUri.
+ */
+
 namespace Drupal\file\Plugin\migrate\process\d6;
 
 use Drupal\migrate\MigrateExecutableInterface;

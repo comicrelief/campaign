@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\ParamConverter\ParamNotConvertedException.
+ */
+
 namespace Drupal\Core\ParamConverter;
 
 /**

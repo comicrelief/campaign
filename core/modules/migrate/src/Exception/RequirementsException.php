@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\migrate\Exception\RequirementsException.
+ */
+
 namespace Drupal\migrate\Exception;
 
 use Exception;

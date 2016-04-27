@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Tests\Plugin\StyleGridTest.
+ */
+
 namespace Drupal\views\Tests\Plugin;
 
 use Drupal\views\Views;

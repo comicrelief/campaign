@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\config_override_test\PirateDayCacheabilityMetadataConfigOverride.
+ */
+
 namespace Drupal\config_override_test;
 
 use Drupal\config_override_test\Cache\PirateDayCacheContext;

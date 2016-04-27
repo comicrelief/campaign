@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\taxonomy\Tests\TaxonomyTermIndentationTest.
+ */
+
 namespace Drupal\taxonomy\Tests;
 
 /**

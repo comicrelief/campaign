@@ -1,9 +1,13 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\Tests\UserEntityCallbacksTest.
+ */
+
 namespace Drupal\user\Tests;
 
 use Drupal\simpletest\WebTestBase;
-use Drupal\user\Entity\User;
 
 /**
  * Tests specific parts of the user entity like the URI callback and the label
@@ -38,7 +42,7 @@ class UserEntityCallbacksTest extends WebTestBase {
     parent::setUp();
 
     $this->account = $this->drupalCreateUser();
-    $this->anonymous = User::create(['uid' => 0]);
+    $this->anonymous = entity_create('user', array('uid' => 0));
   }
 
   /**

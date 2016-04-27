@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Database\Query\Insert.
+ */
+
 namespace Drupal\Core\Database\Query;
 
 use Drupal\Core\Database\Database;
@@ -9,7 +14,7 @@ use Drupal\Core\Database\Database;
  *
  * @ingroup database
  */
-class Insert extends Query implements \Countable {
+class Insert extends Query {
 
   use InsertTrait;
 

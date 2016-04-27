@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\FileTransfer\TestFileTransfer.
+ */
+
 namespace Drupal\system\Tests\FileTransfer;
 
 use Drupal\Core\FileTransfer\FileTransfer;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\taxonomy\Tests\EfqTest.
+ */
+
 namespace Drupal\taxonomy\Tests;
 
 /**

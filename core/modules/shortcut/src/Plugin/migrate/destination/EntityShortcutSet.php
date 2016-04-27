@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\shortcut\Plugin\migrate\destination\EntityShortcutSet.
+ */
+
 namespace Drupal\shortcut\Plugin\migrate\destination;
 
 use Drupal\migrate\Row;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Form\FormBuilderInterface.
+ */
+
 namespace Drupal\Core\Form;
 
 /**

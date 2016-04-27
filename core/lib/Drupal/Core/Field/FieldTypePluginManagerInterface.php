@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Field\FieldTypePluginManagerInterface.
+ */
+
 namespace Drupal\Core\Field;
 
 use Drupal\Component\Plugin\CategorizingPluginManagerInterface;

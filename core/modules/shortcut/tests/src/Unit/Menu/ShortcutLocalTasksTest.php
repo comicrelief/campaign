@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\shortcut\Unit\Menu\ShortcutLocalTasksTest.
+ */
+
 namespace Drupal\Tests\shortcut\Unit\Menu;
 
 use Drupal\Tests\Core\Menu\LocalTaskIntegrationTestBase;

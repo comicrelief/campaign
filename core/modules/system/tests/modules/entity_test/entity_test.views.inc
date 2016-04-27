@@ -1,11 +1,6 @@
 <?php
 
 /**
- * @file
- * Include file for test module.
- */
-
-/**
  * Implements hook_views_data_alter().
  */
 function entity_test_views_data_alter(&$data) {

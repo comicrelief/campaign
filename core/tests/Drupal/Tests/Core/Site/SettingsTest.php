@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Site\SettingsTest.
+ */
+
 namespace Drupal\Tests\Core\Site;
 
 use Drupal\Core\Site\Settings;

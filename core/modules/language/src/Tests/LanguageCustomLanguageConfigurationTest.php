@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\language\Tests\LanguageCustomLanguageConfigurationTest.
+ */
+
 namespace Drupal\language\Tests;
 
 use Drupal\simpletest\WebTestBase;

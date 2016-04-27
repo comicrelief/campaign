@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\action\Tests\ConfigurationTest.
+ */
+
 namespace Drupal\action\Tests;
 
 use Drupal\Component\Utility\Crypt;

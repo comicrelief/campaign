@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\responsive_image\Plugin\Field\FieldFormatter\ResponsiveImageFormatter.
+ */
+
 namespace Drupal\responsive_image\Plugin\Field\FieldFormatter;
 
 use Drupal\Core\Cache\Cache;

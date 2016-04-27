@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\shortcut\ShortcutSetInterface.
+ */
+
 namespace Drupal\shortcut;
 
 use Drupal\Core\Config\Entity\ConfigEntityInterface;

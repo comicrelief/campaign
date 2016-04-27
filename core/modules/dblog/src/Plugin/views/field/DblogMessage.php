@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\dblog\Plugin\views\field\DblogMessage.
+ */
+
 namespace Drupal\dblog\Plugin\views\field;
 
 use Drupal\Component\Utility\SafeMarkup;

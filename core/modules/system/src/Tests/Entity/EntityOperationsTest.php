@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Entity\EntityOperationsTest.
+ */
+
 namespace Drupal\system\Tests\Entity;
 
 use Drupal\simpletest\WebTestBase;

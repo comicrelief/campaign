@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\Tests\migrate\Unit\process\ExtractTest.
+ */
 
 namespace Drupal\Tests\migrate\Unit\process;
 

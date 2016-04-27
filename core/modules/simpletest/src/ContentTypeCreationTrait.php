@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains Drupal\simpletest\ContentTypeCreationTrait.
+ */
 
 namespace Drupal\simpletest;
 

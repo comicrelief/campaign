@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Field\FieldConfigBase.
+ */
+
 namespace Drupal\Core\Field;
 
 use Drupal\Core\Config\Entity\ConfigEntityBase;

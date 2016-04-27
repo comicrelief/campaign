@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\EntityDeleteForm.
+ */
+
 namespace Drupal\Core\Entity;
 
 use Drupal\Core\Config\Entity\ConfigEntityInterface;

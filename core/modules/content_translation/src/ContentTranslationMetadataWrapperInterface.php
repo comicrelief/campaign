@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\content_translation\ContentTranslationMetadataWrapperInterface.
+ */
+
 namespace Drupal\content_translation;
 
 use Drupal\user\UserInterface;

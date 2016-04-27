@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\migrate\Plugin\migrate\destination\EntityBaseFieldOverride.
+ */
+
 namespace Drupal\migrate\Plugin\migrate\destination;
 
 use Drupal\migrate\Row;

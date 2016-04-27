@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Plugin\Block\SystemPoweredByBlock.
+ */
+
 namespace Drupal\system\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
@@ -13,13 +18,6 @@ use Drupal\Core\Block\BlockBase;
  * )
  */
 class SystemPoweredByBlock extends BlockBase {
-
-  /**
-   * {@inheritdoc}
-   */
-  public function defaultConfiguration() {
-    return ['label_display' => FALSE];
-  }
 
   /**
    * {@inheritdoc}

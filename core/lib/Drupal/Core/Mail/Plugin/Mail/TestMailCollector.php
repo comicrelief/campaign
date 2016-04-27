@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Mail\Plugin\Mail\TestMailCollector.
+ */
+
 namespace Drupal\Core\Mail\Plugin\Mail;
 
 use Drupal\Core\Mail\MailInterface;

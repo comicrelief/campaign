@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\file\Tests\FileManagedAccessTest.
+ */
+
 namespace Drupal\file\Tests;
 
 use Drupal\file\Entity\File;

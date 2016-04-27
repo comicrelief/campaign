@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\comment\Tests\CommentNodeAccessTest.
+ */
+
 namespace Drupal\comment\Tests;
 
 use Drupal\comment\CommentManagerInterface;

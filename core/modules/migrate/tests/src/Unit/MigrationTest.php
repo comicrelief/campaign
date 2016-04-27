@@ -7,18 +7,16 @@
 
 namespace Drupal\Tests\migrate\Unit;
 
-use Drupal\migrate\Plugin\MigrationInterface;
-use Drupal\migrate\Plugin\Migration;
+use Drupal\Core\Entity\EntityManagerInterface;
+use Drupal\migrate\Entity\Migration;
 use Drupal\migrate\Exception\RequirementsException;
 use Drupal\migrate\Plugin\MigrateDestinationInterface;
 use Drupal\migrate\Plugin\MigrateSourceInterface;
-use Drupal\migrate\Plugin\MigrationPluginManagerInterface;
 use Drupal\migrate\Plugin\RequirementsInterface;
 use Drupal\Tests\UnitTestCase;
 
 /**
- * @coversDefaultClass \Drupal\migrate\Plugin\Migration
- *
+ * @coversDefaultClass \Drupal\migrate\Entity\Migration
  * @group Migration
  */
 class MigrationTest extends UnitTestCase {
@@ -86,16 +84,16 @@ class MigrationTest extends UnitTestCase {
     $migration->setSourcePlugin($source_plugin);
     $migration->setDestinationPlugin($destination_plugin);
 
-    $plugin_manager = $this->getMock('Drupal\migrate\Plugin\MigrationPluginManagerInterface');
-    $migration->setMigrationPluginManager($plugin_manager);
+    $entity_manager = $this->getMock('Drupal\Core\Entity\EntityManagerInterface');
+    $migration->setEntityManager($entity_manager);
 
     // We setup the requirements that test_a doesn't exist and test_c is not
     // completed yet.
     $migration->setRequirements(['test_a', 'test_b', 'test_c', 'test_d']);
 
-    $migration_b = $this->getMock(MigrationInterface::class);
-    $migration_c = $this->getMock(MigrationInterface::class);
-    $migration_d = $this->getMock(MigrationInterface::class);
+    $migration_b = $this->getMock('Drupal\migrate\Entity\MigrationInterface');
+    $migration_c = $this->getMock('Drupal\migrate\Entity\MigrationInterface');
+    $migration_d = $this->getMock('Drupal\migrate\Entity\MigrationInterface');
 
     $migration_b->expects($this->once())
       ->method('allRowsProcessed')
@@ -107,10 +105,15 @@ class MigrationTest extends UnitTestCase {
       ->method('allRowsProcessed')
       ->willReturn(TRUE);
 
-    $plugin_manager->expects($this->once())
-      ->method('createInstances')
+    $migration_storage = $this->getMock('Drupal\Core\Entity\EntityStorageInterface');
+    $migration_storage->expects($this->once())
+      ->method('loadMultiple')
       ->with(['test_a', 'test_b', 'test_c', 'test_d'])
       ->willReturn(['test_b' => $migration_b, 'test_c' => $migration_c, 'test_d' => $migration_d]);
+    $entity_manager->expects($this->once())
+      ->method('getStorage')
+      ->with('migration')
+      ->willReturn($migration_storage);
 
     $migration->checkRequirements();
   }
@@ -159,13 +162,13 @@ class TestMigration extends Migration {
   }
 
   /**
-   * Sets the plugin manager service.
+   * Sets the entity manager service.
    *
-   * @param \Drupal\migrate\Plugin\MigrationPluginManagerInterface $plugin_manager
-   *   The plugin manager service.
+   * @param \Drupal\Core\Entity\EntityManagerInterface $entity_manager
+   *   The entity manager service.
    */
-  public function setMigrationPluginManager(MigrationPluginManagerInterface $plugin_manager) {
-    $this->migrationPluginManager = $plugin_manager;
+  public function setEntityManager(EntityManagerInterface $entity_manager) {
+    $this->entityManager = $entity_manager;
   }
 
 }

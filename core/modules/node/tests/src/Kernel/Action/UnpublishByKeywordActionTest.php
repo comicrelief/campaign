@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\node\Kernel\Action\UnpublishByKeywordActionTest.
+ */
+
 namespace Drupal\Tests\node\Kernel\Action;
 
 use Drupal\KernelTests\KernelTestBase;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Config\ConfigInstaller.
+ */
+
 namespace Drupal\Core\Config;
 
 use Drupal\Component\Utility\Crypt;
@@ -61,13 +66,6 @@ class ConfigInstaller implements ConfigInstallerInterface {
   protected $isSyncing = FALSE;
 
   /**
-   * Any missing dependencies.
-   *
-   * @var array
-   */
-  protected $missingDependencies;
-
-  /**
    * Constructs the configuration installer.
    *
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
@@ -87,7 +85,6 @@ class ConfigInstaller implements ConfigInstallerInterface {
     $this->typedConfig = $typed_config;
     $this->configManager = $config_manager;
     $this->eventDispatcher = $event_dispatcher;
-    $this->missingDependencies = array();
   }
 
   /**
@@ -193,35 +190,24 @@ class ConfigInstaller implements ConfigInstallerInterface {
     });
 
     $all_config = array_merge($existing_config, $list);
-    $all_config = array_combine($all_config, $all_config);
     $config_to_create = $storage->readMultiple($list);
     // Check to see if the corresponding override storage has any overrides or
     // new configuration that can be installed.
     if ($profile_storage) {
       $config_to_create = $profile_storage->readMultiple($list) + $config_to_create;
     }
-    // Sort $config_to_create in the order of the least dependent first.
-    $dependency_manager = new ConfigDependencyManager();
-    $dependency_manager->setData($config_to_create);
-    $config_to_create = array_merge(array_flip($dependency_manager->sortAll()), $config_to_create);
-
     foreach ($config_to_create as $config_name => $data) {
-      // Remove configuration where its dependencies cannot be met.
-      $remove = !$this->validateDependencies($config_name, $data, $enabled_extensions, $all_config);
-      // If $dependency is defined, remove configuration that does not have a
-      // matching dependency.
-      if (!$remove && !empty($dependency)) {
+      // Exclude configuration where its dependencies cannot be met.
+      if (!$this->validateDependencies($config_name, $data, $enabled_extensions, $all_config)) {
+        unset($config_to_create[$config_name]);
+      }
+      // Exclude configuration that does not have a matching dependency.
+      elseif (!empty($dependency)) {
         // Create a light weight dependency object to check dependencies.
         $config_entity = new ConfigEntityDependency($config_name, $data);
-        $remove = !$config_entity->hasDependency(key($dependency), reset($dependency));
-      }
-
-      if ($remove) {
-        // Remove from the list of configuration to create.
-        unset($config_to_create[$config_name]);
-        // Remove from the list of all configuration. This ensures that any
-        // configuration that depends on this configuration is also removed.
-        unset($all_config[$config_name]);
+        if (!$config_entity->hasDependency(key($dependency), reset($dependency))) {
+          unset($config_to_create[$config_name]);
+        }
       }
     }
     if (!empty($config_to_create)) {
@@ -235,7 +221,7 @@ class ConfigInstaller implements ConfigInstallerInterface {
    * @param StorageInterface $storage
    *   The configuration storage to read configuration from.
    * @param string $collection
-   *   The configuration collection to use.
+   *  The configuration collection to use.
    * @param string $prefix
    *   (optional) Limit to configuration starting with the provided string.
    * @param \Drupal\Core\Config\StorageInterface[] $profile_storages
@@ -465,7 +451,7 @@ class ConfigInstaller implements ConfigInstallerInterface {
     // Check the dependencies of configuration provided by the module.
     $invalid_default_config = $this->findDefaultConfigWithUnmetDependencies($storage, $enabled_extensions, $profile_storages);
     if (!empty($invalid_default_config)) {
-      throw UnmetDependenciesException::create($name, $this->getMissingDependencies());
+      throw UnmetDependenciesException::create($name, $invalid_default_config);
     }
 
     // Install profiles can not have config clashes. Configuration that
@@ -551,7 +537,6 @@ class ConfigInstaller implements ConfigInstallerInterface {
         if (!empty($list_to_check)) {
           $missing = array_diff($dependencies, $list_to_check);
           if (!empty($missing)) {
-            $this->missingDependencies[$config_name] = $missing;
             return FALSE;
           }
         }
@@ -662,15 +647,6 @@ class ConfigInstaller implements ConfigInstallerInterface {
    */
   protected function drupalInstallationAttempted() {
     return drupal_installation_attempted();
-  }
-
-  /**
-   * Returns the list of missing dependencies
-   *
-   * @return array A list of missing dependencies, if any.
-   */
-  public function getMissingDependencies() {
-    return $this->missingDependencies;
   }
 
 }

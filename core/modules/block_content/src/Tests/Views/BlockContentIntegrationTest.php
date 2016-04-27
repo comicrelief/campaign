@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\block_content\Tests\Views\BlockContentIntegrationTest.
+ */
+
 namespace Drupal\block_content\Tests\Views;
 
 /**

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\responsive_image\Tests\ResponsiveImageAdminUITest.
+ */
+
 namespace Drupal\responsive_image\Tests;
 
 use Drupal\simpletest\WebTestBase;

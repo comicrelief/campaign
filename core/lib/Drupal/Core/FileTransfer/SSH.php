@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\FileTransfer\SSH.
+ */
+
 namespace Drupal\Core\FileTransfer;
 
 /**

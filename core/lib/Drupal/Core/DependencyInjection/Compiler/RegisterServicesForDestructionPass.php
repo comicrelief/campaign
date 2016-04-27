@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\DependencyInjection\Compiler\RegisterServicesForDestructionPass.
+ */
+
 namespace Drupal\Core\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -22,10 +27,10 @@ class RegisterServicesForDestructionPass implements CompilerPassInterface {
     }
 
     $definition = $container->getDefinition('kernel_destruct_subscriber');
+
     $services = $container->findTaggedServiceIds('needs_destruction');
     foreach ($services as $id => $attributes) {
       $definition->addMethodCall('registerService', array($id));
     }
   }
-
 }

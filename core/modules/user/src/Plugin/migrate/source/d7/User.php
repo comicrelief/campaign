@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\Plugin\migrate\source\d7\User.
+ */
+
 namespace Drupal\user\Plugin\migrate\source\d7;
 
 use Drupal\migrate\Row;

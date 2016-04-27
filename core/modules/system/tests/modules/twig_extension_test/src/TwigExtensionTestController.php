@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\twig_extension_test\TwigExtensionTestController.
+ */
+
 namespace Drupal\twig_extension_test;
 
 use Drupal\Core\StringTranslation\StringTranslationTrait;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Config\Entity\Query\QueryFactory.
+ */
+
 namespace Drupal\Core\Config\Entity\Query;
 
 use Drupal\Core\Config\Config;

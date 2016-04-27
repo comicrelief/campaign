@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Ajax\ChangedCommand.
+ */
+
 namespace Drupal\Core\Ajax;
 
 /**

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Ajax\AjaxResponse.
+ */
+
 namespace Drupal\Core\Ajax;
 
 use Drupal\Core\Render\BubbleableMetadata;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\aggregator_test\Plugin\aggregator\processor\TestProcessor.
+ */
+
 namespace Drupal\aggregator_test\Plugin\aggregator\processor;
 
 use Drupal\aggregator\Plugin\AggregatorPluginSettingsBase;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\form_test\Form\FormTestFormStateValuesCleanForm.
+ */
+
 namespace Drupal\form_test\Form;
 
 use Drupal\Component\Serialization\Json;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Render\Element\Operations.
+ */
+
 namespace Drupal\Core\Render\Element;
 
 /**

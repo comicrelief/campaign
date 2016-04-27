@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\Query\Sql\TablesInterface.
+ */
+
 namespace Drupal\Core\Entity\Query\Sql;
 
 /**

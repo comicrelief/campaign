@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\Tests\UserPictureTest.
+ */
+
 namespace Drupal\user\Tests;
 
 use Drupal\image\Entity\ImageStyle;

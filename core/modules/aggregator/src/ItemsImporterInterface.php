@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\aggregator\ItemsImporterInterface.
+ */
+
 namespace Drupal\aggregator;
 
 /**

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\search\Tests\SearchMatchTest.
+ */
+
 namespace Drupal\search\Tests;
 
 use Drupal\Core\Language\LanguageInterface;

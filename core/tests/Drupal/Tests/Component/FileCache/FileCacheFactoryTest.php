@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Component\FileCache\FileCacheFactoryTest.
+ */
+
 namespace Drupal\Tests\Component\FileCache;
 
 use Drupal\Component\FileCache\FileCacheFactory;

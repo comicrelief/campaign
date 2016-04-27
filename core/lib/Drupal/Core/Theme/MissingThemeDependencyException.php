@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Theme\MissingThemeDependencyException.
+ */
+
 namespace Drupal\Core\Theme;
 
 /**

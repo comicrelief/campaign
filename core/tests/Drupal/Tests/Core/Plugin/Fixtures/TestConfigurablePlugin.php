@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Plugin\Fixtures\TestConfigurablePlugin.
+ */
+
 namespace Drupal\Tests\Core\Plugin\Fixtures;
 
 use Drupal\Component\Plugin\ConfigurablePluginInterface;

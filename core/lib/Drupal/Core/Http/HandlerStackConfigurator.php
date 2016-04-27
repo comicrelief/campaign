@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Http\HandlerStackConfigurator.
+ */
+
 namespace Drupal\Core\Http;
 
 use GuzzleHttp\HandlerStack;

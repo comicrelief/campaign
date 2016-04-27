@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\rdf\Tests\UserAttributesTest.
+ */
+
 namespace Drupal\rdf\Tests;
 
 use Drupal\simpletest\WebTestBase;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\DependencyInjection\Fixture\BazClass.
+ */
+
 namespace Drupal\Tests\Core\DependencyInjection\Fixture;
 
 /**

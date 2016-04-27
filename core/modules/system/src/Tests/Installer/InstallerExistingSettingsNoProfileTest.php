@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Installer\InstallerExistingSettingsNoProfileTest.
+ */
+
 namespace Drupal\system\Tests\Installer;
 
 use Drupal\Core\DrupalKernel;

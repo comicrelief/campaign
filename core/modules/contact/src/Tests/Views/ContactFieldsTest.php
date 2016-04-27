@@ -1,11 +1,13 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\contact\Tests\Views\ContactFieldsTest.
+ */
+
 namespace Drupal\contact\Tests\Views;
 
-use Drupal\field\Entity\FieldConfig;
 use Drupal\views\Tests\ViewTestBase;
-use Drupal\field\Entity\FieldStorageConfig;
-use Drupal\contact\Entity\ContactForm;
 
 /**
  * Tests which checks that no fieldapi fields are added on contact.
@@ -31,22 +33,22 @@ class ContactFieldsTest extends ViewTestBase {
   protected function setUp() {
     parent::setUp();
 
-    $this->fieldStorage = FieldStorageConfig::create(array(
+    $this->fieldStorage = entity_create('field_storage_config', array(
       'field_name' => strtolower($this->randomMachineName()),
       'entity_type' => 'contact_message',
       'type' => 'text'
     ));
     $this->fieldStorage->save();
 
-    ContactForm::create([
+    entity_create('contact_form', array(
       'id' => 'contact_message',
       'label' => 'Test contact form',
-    ])->save();
+    ))->save();
 
-    FieldConfig::create([
+    entity_create('field_config', array(
       'field_storage' => $this->fieldStorage,
       'bundle' => 'contact_message',
-    ])->save();
+    ))->save();
 
     $this->container->get('views.views_data')->clear();
   }

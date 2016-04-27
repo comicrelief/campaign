@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Config\Schema\TypedConfigInterface.
+ */
+
 namespace Drupal\Core\Config\Schema;
 
 use Drupal\Core\TypedData\TraversableTypedDataInterface;

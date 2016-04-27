@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\Core\Cache\CacheableMetadata.
+ */
 
 namespace Drupal\Core\Cache;
 

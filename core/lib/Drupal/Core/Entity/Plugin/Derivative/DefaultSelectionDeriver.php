@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\Plugin\Derivative\DefaultSelectionDeriver.
+ */
+
 namespace Drupal\Core\Entity\Plugin\Derivative;
 
 use Drupal\Component\Plugin\Derivative\DeriverBase;

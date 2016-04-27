@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\datetime\Plugin\views\argument\YearDate.
+ */
+
 namespace Drupal\datetime\Plugin\views\argument;
 
 /**

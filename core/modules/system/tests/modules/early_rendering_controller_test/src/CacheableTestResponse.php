@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\early_rendering_controller_test\CacheableTestResponse.
+ */
+
 namespace Drupal\early_rendering_controller_test;
 
 use Drupal\Core\Cache\CacheableResponseInterface;

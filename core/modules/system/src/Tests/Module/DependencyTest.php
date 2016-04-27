@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Module\DependencyTest.
+ */
+
 namespace Drupal\system\Tests\Module;
 use Drupal\Component\Utility\Unicode;
 

@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\Core\Executable\ExecutableException.
+ */
 
 namespace Drupal\Core\Executable;
 

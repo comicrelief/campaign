@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Asset\CssCollectionOptimizer.
+ */
+
 namespace Drupal\Core\Asset;
 
 use Drupal\Core\State\StateInterface;

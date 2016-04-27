@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Component\EventDispatcher\ContainerAwareEventDispatcher.
+ */
+
 namespace Drupal\Component\EventDispatcher;
 
 use Symfony\Component\DependencyInjection\IntrospectableContainerInterface;

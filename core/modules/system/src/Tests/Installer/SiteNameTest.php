@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Installer\SiteNameTest.
+ */
+
 namespace Drupal\system\Tests\Installer;
 
 use Drupal\simpletest\WebTestBase;

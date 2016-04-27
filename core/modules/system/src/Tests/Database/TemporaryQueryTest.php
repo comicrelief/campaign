@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Database\TemporaryQueryTest.
+ */
+
 namespace Drupal\system\Tests\Database;
 
 /**

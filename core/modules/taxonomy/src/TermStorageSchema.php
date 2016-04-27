@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\taxonomy\TermStorageSchema.
+ */
+
 namespace Drupal\taxonomy;
 
 use Drupal\Core\Entity\ContentEntityTypeInterface;

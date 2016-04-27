@@ -1,8 +1,12 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\aggregator\Plugin\aggregator\processor\DefaultProcessor.
+ */
+
 namespace Drupal\aggregator\Plugin\aggregator\processor;
 
-use Drupal\aggregator\Entity\Item;
 use Drupal\aggregator\ItemStorageInterface;
 use Drupal\aggregator\Plugin\AggregatorPluginSettingsBase;
 use Drupal\aggregator\Plugin\ProcessorInterface;
@@ -211,7 +215,7 @@ class DefaultProcessor extends AggregatorPluginSettingsBase implements Processor
         $entry = reset($entry);
       }
       else {
-        $entry = Item::create(array('langcode' => $feed->language()->getId()));
+        $entry = entity_create('aggregator_item', array('langcode' => $feed->language()->getId()));
       }
       if ($item['timestamp']) {
         $entry->setPostedTime($item['timestamp']);

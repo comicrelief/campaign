@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\simpletest\Tests\MailCaptureTest.
+ */
+
 namespace Drupal\simpletest\Tests;
 
 use Drupal\simpletest\WebTestBase;

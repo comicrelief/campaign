@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Access\AccessManager.
+ */
+
 namespace Drupal\Core\Access;
 
 use Drupal\Core\ParamConverter\ParamConverterManagerInterface;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\Plugin\Action\CancelUser.
+ */
+
 namespace Drupal\user\Plugin\Action;
 
 use Drupal\Core\Action\ActionBase;

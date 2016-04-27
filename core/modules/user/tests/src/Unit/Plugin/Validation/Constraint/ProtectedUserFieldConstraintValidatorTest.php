@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\user\Unit\Plugin\Validation\Constraint\ProtectedUserFieldConstraintValidatorTest.
+ */
+
 namespace Drupal\Tests\user\Unit\Plugin\Validation\Constraint;
 
 use Drupal\Tests\UnitTestCase;

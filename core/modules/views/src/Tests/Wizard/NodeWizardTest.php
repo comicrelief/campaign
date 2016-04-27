@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Tests\Wizard\NodeWizardTest.
+ */
+
 namespace Drupal\views\Tests\Wizard;
 
 

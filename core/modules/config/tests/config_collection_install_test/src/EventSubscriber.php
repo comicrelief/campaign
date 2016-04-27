@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\config_collection_install_test\EventSubscriber.
+ */
+
 namespace Drupal\config_collection_install_test;
 
 use Drupal\Core\Config\ConfigCollectionInfo;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\language\Plugin\Derivative\LanguageBlock.
+ */
+
 namespace Drupal\language\Plugin\Derivative;
 
 use Drupal\Component\Plugin\Derivative\DeriverBase;

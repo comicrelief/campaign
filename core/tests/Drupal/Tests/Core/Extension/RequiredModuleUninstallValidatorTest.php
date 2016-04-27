@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Extension\RequiredModuleUninstallValidatorTest.
+ */
+
 namespace Drupal\Tests\Core\Extension;
 
 use Drupal\simpletest\AssertHelperTrait;

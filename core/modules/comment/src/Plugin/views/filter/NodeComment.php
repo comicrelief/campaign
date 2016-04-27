@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\comment\Plugin\views\filter\NodeComment.
+ */
+
 namespace Drupal\comment\Plugin\views\filter;
 
 use Drupal\comment\Plugin\Field\FieldType\CommentItemInterface;

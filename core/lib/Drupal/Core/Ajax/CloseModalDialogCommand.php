@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Ajax\CloseModalDialogCommand.
+ */
+
 namespace Drupal\Core\Ajax;
 
 /**

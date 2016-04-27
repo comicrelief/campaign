@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Component\HttpFoundation\SecuredRedirectResponse.
+ */
+
 namespace Drupal\Component\HttpFoundation;
 
 use \Symfony\Component\HttpFoundation\RedirectResponse;

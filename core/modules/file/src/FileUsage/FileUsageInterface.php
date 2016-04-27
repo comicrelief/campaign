@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\file\FileUsage\FileUsageInterface.
+ */
+
 namespace Drupal\file\FileUsage;
 
 use Drupal\file\FileInterface;

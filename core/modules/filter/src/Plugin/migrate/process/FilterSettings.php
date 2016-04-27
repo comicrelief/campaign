@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\filter\Plugin\migrate\process\FilterSettings.
+ */
+
 namespace Drupal\filter\Plugin\migrate\process;
 
 use Drupal\migrate\ProcessPluginBase;

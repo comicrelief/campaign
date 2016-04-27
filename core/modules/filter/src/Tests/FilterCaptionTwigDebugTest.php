@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\filter\Tests\FilterCaptionTwigDebugTest.
+ */
+
 namespace Drupal\filter\Tests;
 
 use Drupal\Core\Render\RenderContext;

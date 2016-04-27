@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\taxonomy\Unit\Migrate\d6\TermNodeTest.
+ */
+
 namespace Drupal\Tests\taxonomy\Unit\Migrate\d6;
 
 use Drupal\taxonomy\Plugin\migrate\source\d6\TermNode;

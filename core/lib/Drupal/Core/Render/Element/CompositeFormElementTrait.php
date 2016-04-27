@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Render\Element\CompositeFormElementTrait.
+ */
+
 namespace Drupal\Core\Render\Element;
 
 /**

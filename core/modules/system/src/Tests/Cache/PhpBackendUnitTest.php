@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Cache\PhpBackendUnitTest.
+ */
+
 namespace Drupal\system\Tests\Cache;
 
 use Drupal\Core\Cache\PhpBackend;

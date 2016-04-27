@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Tests\ViewsThemeIntegrationTest.
+ */
+
 namespace Drupal\views\Tests;
 
 /**

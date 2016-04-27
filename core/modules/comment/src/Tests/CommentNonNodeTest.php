@@ -1,12 +1,16 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\comment\Tests\CommentNonNodeTest.
+ */
+
 namespace Drupal\comment\Tests;
 
 use Drupal\comment\CommentInterface;
 use Drupal\comment\Entity\Comment;
 use Drupal\comment\Entity\CommentType;
 use Drupal\comment\Plugin\Field\FieldType\CommentItemInterface;
-use Drupal\entity_test\Entity\EntityTest;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\field_ui\Tests\FieldUiTestTrait;
@@ -50,7 +54,7 @@ class CommentNonNodeTest extends WebTestBase {
 
     // Create a bundle for entity_test.
     entity_test_create_bundle('entity_test', 'Entity Test', 'entity_test');
-    CommentType::create(array(
+    entity_create('comment_type', array(
       'id' => 'comment',
       'label' => 'Comment settings',
       'description' => 'Comment settings',
@@ -88,7 +92,7 @@ class CommentNonNodeTest extends WebTestBase {
     // Create a test entity.
     $random_label = $this->randomMachineName();
     $data = array('type' => 'entity_test', 'name' => $random_label);
-    $this->entity = EntityTest::create($data);
+    $this->entity = entity_create('entity_test', $data);
     $this->entity->save();
   }
 
@@ -429,7 +433,7 @@ class CommentNonNodeTest extends WebTestBase {
     // Test the new entity commenting inherits default.
     $random_label = $this->randomMachineName();
     $data = array('bundle' => 'entity_test', 'name' => $random_label);
-    $new_entity = EntityTest::create($data);
+    $new_entity = entity_create('entity_test', $data);
     $new_entity->save();
     $this->drupalGet('entity_test/manage/' . $new_entity->id() . '/edit');
     $this->assertNoFieldChecked('edit-field-foobar-0-status-1');

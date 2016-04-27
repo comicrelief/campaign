@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\dblog\Plugin\rest\resource\DBLogResource.
+ */
+
 namespace Drupal\dblog\Plugin\rest\resource;
 
 use Drupal\rest\Plugin\ResourceBase;

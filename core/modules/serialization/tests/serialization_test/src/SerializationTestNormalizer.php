@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\serialization_test\SerializationTestNormalizer.
+ */
+
 namespace Drupal\serialization_test;
 
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;

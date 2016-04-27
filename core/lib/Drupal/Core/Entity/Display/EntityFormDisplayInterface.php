@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Entity\Display\EntityFormDisplayInterface.
+ */
+
 namespace Drupal\Core\Entity\Display;
 
 use Drupal\Core\Entity\EntityConstraintViolationListInterface;

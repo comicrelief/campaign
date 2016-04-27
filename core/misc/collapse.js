@@ -13,7 +13,6 @@
    * @constructor Drupal.CollapsibleDetails
    *
    * @param {HTMLElement} node
-   *   The details element.
    */
   function CollapsibleDetails(node) {
     this.$node = $(node);
@@ -83,7 +82,6 @@
      * Handle legend clicks.
      *
      * @param {jQuery.Event} e
-     *   The event triggered.
      */
     onLegendClick: function (e) {
       this.toggle();
@@ -122,9 +120,6 @@
    * Polyfill HTML5 details element.
    *
    * @type {Drupal~behavior}
-   *
-   * @prop {Drupal~behaviorAttach} attach
-   *   Attaches behavior for the details element.
    */
   Drupal.behaviors.collapse = {
     attach: function (context) {

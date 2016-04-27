@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\content_translation\Access\ContentTranslationManageAccessCheck.
+ */
+
 namespace Drupal\content_translation\Access;
 
 use Drupal\Core\Access\AccessResult;
@@ -76,7 +81,7 @@ class ContentTranslationManageAccessCheck implements AccessInterface {
         // Translation operations cannot be performed on the default
         // translation.
         if ($language->getId() == $entity->getUntranslated()->language()->getId()) {
-          return AccessResult::forbidden()->addCacheableDependency($entity);
+          return AccessResult::forbidden()->cacheUntilEntityChanges($entity);
         }
         // Editors have no access to the translation operations, as entity
         // access already grants them an equal or greater access level.
@@ -105,7 +110,7 @@ class ContentTranslationManageAccessCheck implements AccessInterface {
             && isset($languages[$source_language->getId()])
             && isset($languages[$target_language->getId()])
             && !isset($translations[$target_language->getId()]));
-          return AccessResult::allowedIf($is_new_translation)->cachePerPermissions()->addCacheableDependency($entity)
+          return AccessResult::allowedIf($is_new_translation)->cachePerPermissions()->cacheUntilEntityChanges($entity)
             ->andIf($handler->getTranslationAccess($entity, $operation));
 
         case 'delete':
@@ -113,7 +118,7 @@ class ContentTranslationManageAccessCheck implements AccessInterface {
           $has_translation = isset($languages[$language->getId()])
             && $language->getId() != $entity->getUntranslated()->language()->getId()
             && isset($translations[$language->getId()]);
-          return AccessResult::allowedIf($has_translation)->cachePerPermissions()->addCacheableDependency($entity)
+          return AccessResult::allowedIf($has_translation)->cachePerPermissions()->cacheUntilEntityChanges($entity)
             ->andIf($handler->getTranslationAccess($entity, $operation));
       }
     }

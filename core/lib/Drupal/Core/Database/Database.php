@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Database\Database.
+ */
+
 namespace Drupal\Core\Database;
 
 /**

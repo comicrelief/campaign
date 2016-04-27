@@ -1,5 +1,9 @@
 <?php
-// @codingStandardsIgnoreFile
+
+/**
+ * @file
+ * Contains \Drupal\Core\ProxyClass\Extension\ModuleInstaller.
+ */
 
 /**
  * This file was generated via php core/scripts/generate-proxy-class.php 'Drupal\Core\Extension\ModuleInstaller' "core/lib/Drupal/Core".

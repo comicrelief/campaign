@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\comment\Form\DeleteForm.
+ */
+
 namespace Drupal\comment\Form;
 
 use Drupal\Core\Entity\ContentEntityDeleteForm;

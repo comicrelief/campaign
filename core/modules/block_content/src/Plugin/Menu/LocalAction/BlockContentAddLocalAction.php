@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\block_content\Plugin\Menu\LocalAction\BlockContentAddLocalAction.
+ */
+
 namespace Drupal\block_content\Plugin\Menu\LocalAction;
 
 use Drupal\Core\Menu\LocalActionDefault;

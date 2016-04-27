@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\rdf\Tests\ImageFieldAttributesTest.
+ */
+
 namespace Drupal\rdf\Tests;
 
 use Drupal\image\Entity\ImageStyle;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Access\CustomAccessCheck.
+ */
+
 namespace Drupal\Core\Access;
 
 use Drupal\Core\Controller\ControllerResolverInterface;

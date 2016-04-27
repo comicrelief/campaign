@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Extension\ThemeInstaller.
+ */
+
 namespace Drupal\Core\Extension;
 
 use Drupal\Core\Asset\AssetCollectionOptimizerInterface;

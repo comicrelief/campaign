@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\locale\Form\ImportForm.
+ */
+
 namespace Drupal\locale\Form;
 
 use Drupal\Core\Form\FormBase;

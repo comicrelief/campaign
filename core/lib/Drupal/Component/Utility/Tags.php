@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Component\Utility\Tags.
+ */
+
 namespace Drupal\Component\Utility;
 
 /**

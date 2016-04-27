@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Theme\ThemeManagerInterface.
+ */
+
 namespace Drupal\Core\Theme;
 
 /**

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\TypedData\MapDataDefinition.
+ */
+
 namespace Drupal\Core\TypedData;
 
 /**

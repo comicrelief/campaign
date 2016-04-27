@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\inline_form_errors\Unit\FormErrorHandlerTest.
+ */
+
 namespace Drupal\Tests\inline_form_errors\Unit;
 
 use Drupal\Core\Form\FormState;

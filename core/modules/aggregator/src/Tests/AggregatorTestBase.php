@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\aggregator\Tests\AggregatorTestBase.
+ */
+
 namespace Drupal\aggregator\Tests;
 
 use Drupal\aggregator\Entity\Feed;
@@ -132,7 +137,7 @@ abstract class AggregatorTestBase extends WebTestBase {
       'url' => $feed_url,
       'refresh' => '900',
     );
-    return Feed::create($values);
+    return entity_create('aggregator_feed', $values);
   }
 
   /**

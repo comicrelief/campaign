@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\views\Unit\Plugin\views\field\EntityOperationsUnitTest.
+ */
+
 namespace Drupal\Tests\views\Unit\Plugin\views\field {
 
 use Drupal\Tests\UnitTestCase;

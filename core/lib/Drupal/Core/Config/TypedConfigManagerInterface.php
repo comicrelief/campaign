@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Config\TypedConfigManagerInterface.
+ */
+
 namespace Drupal\Core\Config;
 
 use Drupal\Core\TypedData\TypedDataManagerInterface;
@@ -12,7 +17,7 @@ use Drupal\Core\TypedData\TypedDataManagerInterface;
  * @see hook_config_schema_info_alter()
  * @see https://www.drupal.org/node/1905070
  */
-interface TypedConfigManagerInterface extends TypedDataManagerInterface {
+Interface TypedConfigManagerInterface extends TypedDataManagerInterface {
 
   /**
    * Gets typed configuration data.

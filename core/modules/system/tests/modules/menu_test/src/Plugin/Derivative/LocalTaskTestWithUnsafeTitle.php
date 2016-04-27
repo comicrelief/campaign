@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\menu_test\Plugin\Derivative\LocalTaskTestWithUnsafeTitle.
+ */
+
 namespace Drupal\menu_test\Plugin\Derivative;
 
 use Drupal\Component\Plugin\Derivative\DeriverBase;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Render\Element\Radio.
+ */
+
 namespace Drupal\Core\Render\Element;
 
 use Drupal\Core\Render\Element;

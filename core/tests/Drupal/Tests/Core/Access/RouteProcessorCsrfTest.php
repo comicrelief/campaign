@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Access\RouteProcessorCsrfTest.
+ */
+
 namespace Drupal\Tests\Core\Access;
 
 use Drupal\Core\Render\BubbleableMetadata;

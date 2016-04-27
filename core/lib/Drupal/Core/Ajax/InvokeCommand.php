@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Ajax\InvokeCommand.
+ */
+
 namespace Drupal\Core\Ajax;
 
 /**

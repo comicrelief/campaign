@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\Plugin\Search\UserSearch.
+ */
+
 namespace Drupal\user\Plugin\Search;
 
 use Drupal\Core\Access\AccessResult;

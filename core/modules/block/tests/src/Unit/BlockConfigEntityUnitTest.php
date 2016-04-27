@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\block\Unit\BlockConfigEntityUnitTest.
+ */
+
 namespace Drupal\Tests\block\Unit;
 
 use Drupal\Core\DependencyInjection\ContainerBuilder;

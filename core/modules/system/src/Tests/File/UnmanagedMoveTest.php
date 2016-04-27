@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\File\UnmanagedMoveTest.
+ */
+
 namespace Drupal\system\Tests\File;
 
 use Drupal\Core\Site\Settings;

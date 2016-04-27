@@ -3,7 +3,7 @@
  * A Backbone Model subclass that enforces validation when calling set().
  */
 
-(function (Drupal, Backbone) {
+(function (Backbone) {
 
   'use strict';
 
@@ -57,4 +57,4 @@
 
   });
 
-}(Drupal, Backbone));
+}(Backbone));

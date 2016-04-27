@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\quickedit\Tests\QuickEditLoadingTest.
+ */
+
 namespace Drupal\quickedit\Tests;
 
 use Drupal\Component\Serialization\Json;
@@ -12,7 +17,6 @@ use Drupal\Core\Url;
 use Drupal\node\Entity\Node;
 use Drupal\node\Entity\NodeType;
 use Drupal\simpletest\WebTestBase;
-use Drupal\filter\Entity\FilterFormat;
 
 /**
  * Tests loading of in-place editing functionality and lazy loading of its
@@ -53,7 +57,7 @@ class QuickEditLoadingTest extends WebTestBase {
     parent::setUp();
 
     // Create a text format.
-    $filtered_html_format = FilterFormat::create(array(
+    $filtered_html_format = entity_create('filter_format', array(
       'format' => 'filtered_html',
       'name' => 'Filtered HTML',
       'weight' => 0,
@@ -97,10 +101,9 @@ class QuickEditLoadingTest extends WebTestBase {
     $this->assertNoRaw('core/modules/quickedit/js/quickedit.js', 'Quick Edit library not loaded.');
     $this->assertNoRaw('core/modules/quickedit/js/editors/formEditor.js', "'form' in-place editor not loaded.");
 
-    // HTML annotation does not exist for users without permission to in-place
-    // edit.
-    $this->assertNoRaw('data-quickedit-entity-id="node/1"');
-    $this->assertNoRaw('data-quickedit-field-id="node/1/body/en/full"');
+    // HTML annotation must always exist (to not break the render cache).
+    $this->assertRaw('data-quickedit-entity-id="node/1"');
+    $this->assertRaw('data-quickedit-field-id="node/1/body/en/full"');
 
     // Retrieving the metadata should result in an empty 403 response.
     $post = array('fields[0]' => 'node/1/body/en/full');
@@ -515,7 +518,6 @@ class QuickEditLoadingTest extends WebTestBase {
     $this->drupalPlaceBlock('block_content:' . $block->uuid());
 
     // Check that the data- attribute is present.
-    $this->drupalLogin($this->editorUser);
     $this->drupalGet('');
     $this->assertRaw('data-quickedit-entity-id="block_content/1"');
   }

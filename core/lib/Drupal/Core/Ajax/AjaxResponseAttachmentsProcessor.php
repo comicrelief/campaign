@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\Core\Ajax\AjaxResponseAttachmentsProcessor.
+ */
 
 namespace Drupal\Core\Ajax;
 

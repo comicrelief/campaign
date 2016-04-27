@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Queue\QueueInterface.
+ */
+
 namespace Drupal\Core\Queue;
 
 /**

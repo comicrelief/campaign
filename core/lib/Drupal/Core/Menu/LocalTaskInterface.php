@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Menu\LocalTaskInterface.
+ */
+
 namespace Drupal\Core\Menu;
 
 use Drupal\Core\Routing\RouteMatchInterface;

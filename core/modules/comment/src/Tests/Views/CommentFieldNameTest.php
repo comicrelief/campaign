@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\comment\Tests\Views\CommentFieldNameTest.
+ */
+
 namespace Drupal\comment\Tests\Views;
 
 use Drupal\comment\Entity\Comment;

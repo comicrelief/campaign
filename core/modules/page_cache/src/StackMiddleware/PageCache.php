@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\page_cache\StackMiddleware\PageCache.
+ */
+
 namespace Drupal\page_cache\StackMiddleware;
 
 use Drupal\Core\Cache\Cache;

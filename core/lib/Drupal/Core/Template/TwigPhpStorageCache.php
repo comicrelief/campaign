@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Template\TwigPhpStorageCache.
+ */
+
 namespace Drupal\Core\Template;
 
 use Drupal\Core\Cache\CacheBackendInterface;

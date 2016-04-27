@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\aggregator\FeedAccessControlHandler.
+ */
+
 namespace Drupal\aggregator;
 
 use Drupal\Core\Access\AccessResult;

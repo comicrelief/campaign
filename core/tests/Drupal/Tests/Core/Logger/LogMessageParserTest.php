@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Logger\LogMessageParserTest.
+ */
+
 namespace Drupal\Tests\Core\Logger;
 
 use Drupal\Core\Logger\LogMessageParser;

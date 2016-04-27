@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Menu\AssertMenuActiveTrailTrait.
+ */
+
 namespace Drupal\system\Tests\Menu;
 
 use Drupal\Core\Url;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Component\Utility\DiffArray.
+ */
+
 namespace Drupal\Component\Utility;
 
 /**

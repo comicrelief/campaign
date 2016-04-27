@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\image\Plugin\ImageEffect\ConvertImageEffect.
+ */
+
 namespace Drupal\image\Plugin\ImageEffect;
 
 use Drupal\Component\Utility\Unicode;

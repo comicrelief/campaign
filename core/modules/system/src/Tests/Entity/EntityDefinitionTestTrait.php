@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Entity\EntityDefinitionTestTrait.
+ */
+
 namespace Drupal\system\Tests\Entity;
 
 use Drupal\Core\Field\BaseFieldDefinition;

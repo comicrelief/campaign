@@ -1,14 +1,16 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Tests\Entity\FieldEntityTest.
+ */
+
 namespace Drupal\views\Tests\Entity;
 
 use Drupal\comment\Tests\CommentTestTrait;
-use Drupal\node\Entity\Node;
-use Drupal\user\Entity\User;
 use Drupal\views\Tests\ViewTestBase;
 use Drupal\views\Tests\ViewTestData;
 use Drupal\views\Views;
-use Drupal\comment\Entity\Comment;
 
 /**
  * Tests the field plugin base integration with the entity system.
@@ -52,16 +54,12 @@ class FieldEntityTest extends ViewTestBase {
     // The view is a view of comments, their nodes and their authors, so there
     // are three layers of entities.
 
-    $account = User::create(['name' => $this->randomMachineName(), 'bundle' => 'user']);
+    $account = entity_create('user', array('name' => $this->randomMachineName(), 'bundle' => 'user'));
     $account->save();
 
-    $node = Node::create([
-      'uid' => $account->id(),
-      'type' => 'page',
-      'title' => $this->randomString(),
-    ]);
+    $node = entity_create('node', array('uid' => $account->id(), 'type' => 'page', 'title' => $this->randomString()));
     $node->save();
-    $comment = Comment::create(array(
+    $comment = entity_create('comment', array(
       'uid' => $account->id(),
       'entity_id' => $node->id(),
       'entity_type' => 'node',

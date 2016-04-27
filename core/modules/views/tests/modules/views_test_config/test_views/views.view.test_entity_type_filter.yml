@@ -34,7 +34,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Content type'
+          label: 'Content Type'
           exclude: false
           alter:
             alter_text: false

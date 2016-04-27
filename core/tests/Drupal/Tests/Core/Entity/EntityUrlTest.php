@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Entity\EntityUrlTest.
+ */
+
 namespace Drupal\Tests\Core\Entity;
 
 use Drupal\Core\Config\Entity\ConfigEntityInterface;

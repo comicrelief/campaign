@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\SharedTempStore.
+ */
+
 namespace Drupal\user;
 
 use Drupal\Core\KeyValueStore\KeyValueStoreExpirableInterface;

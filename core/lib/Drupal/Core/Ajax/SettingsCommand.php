@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Ajax\SettingsCommand.
+ */
+
 namespace Drupal\Core\Ajax;
 
 /**

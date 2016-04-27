@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\EventSubscriber\FinishResponseSubscriber.
+ */
+
 namespace Drupal\Core\EventSubscriber;
 
 use Drupal\Component\Datetime\DateTimePlus;
@@ -258,7 +263,7 @@ class FinishResponseSubscriber implements EventSubscriberInterface {
    *   A response object.
    */
   protected function setCacheControlNoCache(Response $response) {
-    $response->headers->set('Cache-Control', 'no-cache, must-revalidate');
+    $response->headers->set('Cache-Control', 'no-cache, must-revalidate, post-check=0, pre-check=0');
   }
 
   /**

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\ckeditor_test\Plugin\CKEditorPlugin\Llama.
+ */
+
 namespace Drupal\ckeditor_test\Plugin\CKEditorPlugin;
 
 use Drupal\ckeditor\CKEditorPluginInterface;
@@ -14,10 +19,9 @@ use Drupal\editor\Entity\Editor;
  * CKEditorPluginButtonsInterface interface, there is no way of actually loading
  * this plugin.
  *
- * @see \Drupal\ckeditor_test\Plugin\CKEditorPlugin\LlamaContextual
- * @see \Drupal\ckeditor_test\Plugin\CKEditorPlugin\LlamaButton
- * @see \Drupal\ckeditor_test\Plugin\CKEditorPlugin\LlamaContextualAndButton
- * @see \Drupal\ckeditor_test\Plugin\CKEditorPlugin\LlamaCss
+ * @see MetaContextual
+ * @see MetaButton
+ * @see MetaContextualAndButton
  *
  * @CKEditorPlugin(
  *   id = "llama",

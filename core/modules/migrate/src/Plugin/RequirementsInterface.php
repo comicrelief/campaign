@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\migrate\Plugin\RequirementsInterface.
+ */
+
 namespace Drupal\migrate\Plugin;
 
 /**

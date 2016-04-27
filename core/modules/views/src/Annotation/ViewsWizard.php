@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Annotation\ViewsWizard.
+ */
+
 namespace Drupal\views\Annotation;
 
 /**

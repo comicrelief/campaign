@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\config\Tests\AssertConfigEntityImportTrait.
+ */
+
 namespace Drupal\config\Tests;
 
 use Drupal\Core\Config\Entity\ConfigEntityInterface;
@@ -8,7 +13,7 @@ use Drupal\Core\Config\Entity\ConfigEntityInterface;
  * Provides test assertions for testing config entity synchronization.
  *
  * Can be used by test classes that extend \Drupal\simpletest\WebTestBase or
- * \Drupal\KernelTests\KernelTestBase.
+ * \Drupal\simpletest\KernelTestBase.
  */
 trait AssertConfigEntityImportTrait {
 

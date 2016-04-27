@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Template\Loader\StringLoader.
+ */
+
 namespace Drupal\Core\Template\Loader;
 
 /**

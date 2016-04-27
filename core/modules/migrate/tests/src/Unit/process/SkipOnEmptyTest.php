@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\migrate\Unit\process\SkipOnEmptyTest.
+ */
+
+
 namespace Drupal\Tests\migrate\Unit\process;
 use Drupal\migrate\Plugin\migrate\process\SkipOnEmpty;
 

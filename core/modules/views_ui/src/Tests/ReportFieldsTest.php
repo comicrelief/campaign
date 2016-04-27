@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views_ui\Tests\ReportFieldsTest.
+ */
+
 namespace Drupal\views_ui\Tests;
 
 use Drupal\field\Entity\FieldConfig;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Plugin\PluginDependencyTrait.
+ */
+
 namespace Drupal\Core\Plugin;
 
 use Drupal\Component\Plugin\DependentPluginInterface;

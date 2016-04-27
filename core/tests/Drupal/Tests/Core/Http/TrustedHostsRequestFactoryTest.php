@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Core\Http\TrustedHostsRequestFactoryTest.
+ */
+
 namespace Drupal\Tests\Core\Http;
 use Drupal\Core\Http\TrustedHostsRequestFactory;
 use Drupal\Tests\UnitTestCase;

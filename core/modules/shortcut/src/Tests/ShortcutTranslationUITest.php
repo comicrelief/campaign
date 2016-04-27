@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\shortcut\Tests\ShortcutTranslationUITest.
+ */
+
 namespace Drupal\shortcut\Tests;
 
 use Drupal\content_translation\Tests\ContentTranslationUITestBase;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Form\FormHelper.
+ */
+
 namespace Drupal\Core\Form;
 
 use Drupal\Core\Render\Element;

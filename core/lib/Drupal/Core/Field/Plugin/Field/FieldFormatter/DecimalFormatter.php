@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Field\Plugin\Field\FieldFormatter\DecimalFormatter.
+ */
+
 namespace Drupal\Core\Field\Plugin\Field\FieldFormatter;
 
 use Drupal\Core\Form\FormStateInterface;
@@ -47,11 +52,11 @@ class DecimalFormatter extends NumericFormatterBase {
       '#default_value' => $this->getSetting('decimal_separator'),
       '#weight' => 5,
     );
+    $range = range(0, 10);
     $elements['scale'] = array(
-      '#type' => 'number',
+      '#type' => 'select',
       '#title' => t('Scale', array(), array('context' => 'decimal places')),
-      '#min' => 0,
-      '#max' => 10,
+      '#options' => array_combine($range, $range),
       '#default_value' => $this->getSetting('scale'),
       '#description' => t('The number of digits to the right of the decimal.'),
       '#weight' => 6,

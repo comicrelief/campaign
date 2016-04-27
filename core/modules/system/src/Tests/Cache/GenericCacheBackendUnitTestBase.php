@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Cache\GenericCacheBackendUnitTestBase.
+ */
+
 namespace Drupal\system\Tests\Cache;
 
 use Drupal\Core\Cache\Cache;

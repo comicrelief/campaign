@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Plugin\views\join\Subquery.
+ */
+
 namespace Drupal\views\Plugin\views\join;
 
 /**

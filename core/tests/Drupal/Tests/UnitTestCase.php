@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\UnitTestCase.
+ */
+
 namespace Drupal\Tests;
 
 use Drupal\Component\FileCache\FileCacheFactory;

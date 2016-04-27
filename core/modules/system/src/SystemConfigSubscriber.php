@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\SystemConfigSubscriber.
+ */
+
 namespace Drupal\system;
 
 use Drupal\Core\Config\ConfigCrudEvent;

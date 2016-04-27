@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\quickedit\Plugin\InPlaceEditorBase.
+ */
+
 namespace Drupal\quickedit\Plugin;
 
 use Drupal\Core\Plugin\PluginBase;

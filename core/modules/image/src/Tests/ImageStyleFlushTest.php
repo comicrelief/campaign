@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\image\Tests\ImageStyleFlushTest.
+ */
+
 namespace Drupal\image\Tests;
 
 use Drupal\image\Entity\ImageStyle;

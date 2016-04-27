@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\Core\Cache\RefinableCacheableDependencyInterface.
+ */
 
 namespace Drupal\Core\Cache;
 

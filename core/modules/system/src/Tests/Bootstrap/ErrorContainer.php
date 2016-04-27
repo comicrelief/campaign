@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Bootstrap\ErrorContainer.
+ */
+
 namespace Drupal\system\Tests\Bootstrap;
 
 use Drupal\Core\DependencyInjection\Container;

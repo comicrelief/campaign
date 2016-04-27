@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Entity\Render\RendererBase.
+ */
+
 namespace Drupal\views\Entity\Render;
 
 use Drupal\Core\Cache\Cache;

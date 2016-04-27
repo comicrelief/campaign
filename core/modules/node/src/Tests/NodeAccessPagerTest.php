@@ -1,11 +1,15 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Tests\NodeAccessPagerTest.
+ */
+
 namespace Drupal\node\Tests;
 
 use Drupal\comment\CommentInterface;
 use Drupal\comment\Tests\CommentTestTrait;
 use Drupal\simpletest\WebTestBase;
-use Drupal\comment\Entity\Comment;
 
 /**
  * Tests access controlled node views have the right amount of comment pages.
@@ -41,7 +45,7 @@ class NodeAccessPagerTest extends WebTestBase {
 
     // Create 60 comments.
     for ($i = 0; $i < 60; $i++) {
-      $comment = Comment::create(array(
+      $comment = entity_create('comment', array(
         'entity_id' => $node->id(),
         'entity_type' => 'node',
         'field_name' => 'comment',

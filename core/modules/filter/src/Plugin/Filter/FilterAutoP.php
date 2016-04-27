@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\filter\Plugin\Filter\FilterAutoP.
+ */
+
 namespace Drupal\filter\Plugin\Filter;
 
 use Drupal\filter\FilterProcessResult;

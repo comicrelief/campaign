@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Update\UpdatePathRC1TestBaseTest.
+ */
+
 namespace Drupal\system\Tests\Update;
 
 use Drupal\Component\Render\FormattableMarkup;

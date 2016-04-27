@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Tests\Views\NodeTestBase.
+ */
+
 namespace Drupal\node\Tests\Views;
 
 use Drupal\views\Tests\ViewTestBase;

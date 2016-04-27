@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Controller\TitleResolver.
+ */
+
 namespace Drupal\Core\Controller;
 
 use Drupal\Core\StringTranslation\StringTranslationTrait;

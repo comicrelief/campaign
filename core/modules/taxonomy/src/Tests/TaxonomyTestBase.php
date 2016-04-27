@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\taxonomy\Tests\TaxonomyTestBase.
+ */
+
 namespace Drupal\taxonomy\Tests;
 
 use Drupal\field\Tests\EntityReference\EntityReferenceTestTrait;

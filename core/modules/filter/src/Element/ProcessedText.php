@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\filter\Element\ProcessedText.
+ */
+
 namespace Drupal\filter\Element;
 
 use Drupal\Core\Cache\Cache;

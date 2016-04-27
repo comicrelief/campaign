@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\config\Form\ConfigSingleExportForm.
+ */
+
 namespace Drupal\config\Form;
 
 use Drupal\Component\Serialization\Yaml;

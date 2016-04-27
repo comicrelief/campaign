@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\early_translation_test\Auth.
+ */
+
 namespace Drupal\early_translation_test;
 
 use Drupal\Core\Authentication\AuthenticationProviderInterface;

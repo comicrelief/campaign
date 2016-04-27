@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\contact\ContactMessageAccessControlHandler.
+ */
+
 namespace Drupal\contact;
 
 use Drupal\Core\Access\AccessResult;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Render\PlaceholderGeneratorInterface.
+ */
+
 namespace Drupal\Core\Render;
 
 /**

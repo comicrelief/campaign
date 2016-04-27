@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Database\Query\ExtendableInterface.
+ */
+
 namespace Drupal\Core\Database\Query;
 
 /**

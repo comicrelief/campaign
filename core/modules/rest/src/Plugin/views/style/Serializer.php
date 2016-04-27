@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\rest\Plugin\views\style\Serializer.
+ */
+
 namespace Drupal\rest\Plugin\views\style;
 
 use Drupal\Core\Cache\Cache;

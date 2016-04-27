@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Installer\SingleVisibleProfileTest.
+ */
+
 namespace Drupal\system\Tests\Installer;
 
 use Drupal\Component\Serialization\Yaml;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\aggregator\Controller\AggregatorController.
+ */
+
 namespace Drupal\aggregator\Controller;
 
 use Drupal\Component\Utility\Xss;

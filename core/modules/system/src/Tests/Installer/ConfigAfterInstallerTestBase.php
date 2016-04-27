@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Installer\ConfigAfterInstallerTestBase.
+ */
+
 namespace Drupal\system\Tests\Installer;
 
 use Drupal\Core\Config\FileStorage;

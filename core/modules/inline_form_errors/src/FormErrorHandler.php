@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\inline_form_errors\FormErrorHandler.
+ */
+
 namespace Drupal\inline_form_errors;
 
 use Drupal\Core\Form\FormElementHelper;

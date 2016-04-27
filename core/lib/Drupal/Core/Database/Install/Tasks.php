@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Database\Install\Tasks.
+ */
+
 namespace Drupal\Core\Database\Install;
 
 use Drupal\Core\Database\Database;
@@ -196,7 +201,7 @@ abstract class Tasks {
    * Return driver specific configuration options.
    *
    * @param $database
-   *   An array of driver specific configuration options.
+   *  An array of driver specific configuration options.
    *
    * @return
    *   The options form array.

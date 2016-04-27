@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Routing\RouterTest.
+ */
+
 namespace Drupal\system\Tests\Routing;
 
 use Drupal\Core\Cache\Cache;

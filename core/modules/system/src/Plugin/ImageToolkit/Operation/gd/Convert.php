@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Plugin\ImageToolkit\Operation\gd\Convert.
+ */
+
 namespace Drupal\system\Plugin\ImageToolkit\Operation\gd;
 
 /**

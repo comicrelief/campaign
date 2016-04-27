@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\rdf\Tests\CrudTest.
+ */
+
 namespace Drupal\rdf\Tests;
 
 use Drupal\simpletest\KernelTestBase;

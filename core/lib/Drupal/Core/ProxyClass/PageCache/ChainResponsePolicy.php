@@ -1,5 +1,9 @@
 <?php
-// @codingStandardsIgnoreFile
+
+/**
+ * @file
+ * Contains \Drupal\Core\ProxyClass\PageCache\ChainResponsePolicy.
+ */
 
 /**
  * This file was generated via php core/scripts/generate-proxy-class.php 'Drupal\Core\PageCache\ChainResponsePolicy' "core/lib/Drupal/Core".

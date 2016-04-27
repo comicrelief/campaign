@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Cache\DatabaseBackend.
+ */
+
 namespace Drupal\Core\Cache;
 
 use Drupal\Component\Utility\Crypt;

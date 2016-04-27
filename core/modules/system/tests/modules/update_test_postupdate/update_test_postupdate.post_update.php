@@ -1,11 +1,6 @@
 <?php
 
 /**
- * @file
- * Post update functions for test module.
- */
-
-/**
  * First update.
  */
 function update_test_postupdate_post_update_first() {

@@ -1,8 +1,13 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\migrate\Event\MigratePreRowSaveEvent.
+ */
+
 namespace Drupal\migrate\Event;
 
-use Drupal\migrate\Plugin\MigrationInterface;
+use Drupal\migrate\Entity\MigrationInterface;
 use Drupal\migrate\Row;
 use Symfony\Component\EventDispatcher\Event;
 
@@ -21,14 +26,14 @@ class MigratePreRowSaveEvent extends Event {
   /**
    * Migration entity.
    *
-   * @var \Drupal\migrate\Plugin\MigrationInterface
+   * @var \Drupal\migrate\Entity\MigrationInterface
    */
   protected $migration;
 
   /**
    * Constructs a pre-save event object.
    *
-   * @param \Drupal\migrate\Plugin\MigrationInterface $migration
+   * @param \Drupal\migrate\Entity\MigrationInterface $migration
    *   Migration entity.
    */
   public function __construct(MigrationInterface $migration, Row $row) {
@@ -39,7 +44,7 @@ class MigratePreRowSaveEvent extends Event {
   /**
    * Gets the migration entity.
    *
-   * @return \Drupal\migrate\Plugin\MigrationInterface
+   * @return \Drupal\migrate\Entity\MigrationInterface
    *   The migration entity being imported.
    */
   public function getMigration() {

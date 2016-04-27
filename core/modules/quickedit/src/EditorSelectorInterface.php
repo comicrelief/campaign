@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\quickedit\EditorSelectorInterface.
+ */
+
 namespace Drupal\quickedit;
 
 use Drupal\Core\Field\FieldItemListInterface;

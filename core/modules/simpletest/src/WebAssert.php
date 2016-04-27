@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\simpletest\WebAssert.
+ */
+
 namespace Drupal\simpletest;
 
 use Behat\Mink\WebAssert as MinkWebAssert;

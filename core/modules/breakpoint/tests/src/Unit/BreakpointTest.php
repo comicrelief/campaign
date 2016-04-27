@@ -1,10 +1,14 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\breakpoint\Unit\BreakpointTest.
+ */
+
 namespace Drupal\Tests\breakpoint\Unit;
 
 use Drupal\breakpoint\Breakpoint;
 use Drupal\Tests\UnitTestCase;
-use Drupal\Core\StringTranslation\TranslatableMarkup;
 
 /**
  * @coversDefaultClass \Drupal\breakpoint\Breakpoint
@@ -61,8 +65,12 @@ class BreakpointTest extends UnitTestCase {
    */
   public function testGetLabel() {
     $this->pluginDefinition['label'] = 'Test label';
+    $this->stringTranslation->expects($this->once())
+      ->method('translate')
+      ->with($this->pluginDefinition['label'], array(), array('context' => 'breakpoint'))
+      ->will($this->returnValue('Test label translated'));
     $this->setupBreakpoint();
-    $this->assertEquals(new TranslatableMarkup('Test label', array(), array('context' => 'breakpoint'), $this->stringTranslation), $this->breakpoint->getLabel());
+    $this->assertEquals('Test label translated', $this->breakpoint->getLabel());
   }
 
   /**

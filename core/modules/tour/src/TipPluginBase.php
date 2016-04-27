@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\tour\TipPluginBase.
+ */
+
 namespace Drupal\tour;
 
 use Drupal\Core\Plugin\PluginBase;

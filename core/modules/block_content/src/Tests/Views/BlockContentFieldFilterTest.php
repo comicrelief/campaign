@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\block_content\Tests\Views\BlockContentFieldFilterTest.
+ */
+
 namespace Drupal\block_content\Tests\Views;
 
 use Drupal\field\Entity\FieldStorageConfig;

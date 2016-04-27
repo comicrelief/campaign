@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\user\Tests\Views\AccessRoleUITest.
+ */
+
 namespace Drupal\user\Tests\Views;
 
 use Drupal\views\Tests\ViewTestData;

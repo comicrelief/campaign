@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\action\Plugin\Action\GotoAction.
+ */
+
 namespace Drupal\action\Plugin\Action;
 
 use Drupal\Component\Utility\UrlHelper;

@@ -1,5 +1,9 @@
 <?php
-// @codingStandardsIgnoreFile
+
+/**
+ * @file
+ * Contains \Drupal\book\ProxyClass\BookUninstallValidator.
+ */
 
 /**
  * This file was generated via php core/scripts/generate-proxy-class.php 'Drupal\book\BookUninstallValidator' "core/modules/book/src".

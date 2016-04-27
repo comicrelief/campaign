@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\views\Annotation\ViewsRelationship.
+ */
+
 namespace Drupal\views\Annotation;
 
 /**

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\config_translation\Tests\ConfigTranslationViewListUiTest.
+ */
+
 namespace Drupal\config_translation\Tests;
 
 use Drupal\views_ui\Tests\UITestBase;

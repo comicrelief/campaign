@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Component\Bridge\ZfExtensionManagerSfContainer.
+ */
 namespace Drupal\Component\Bridge;
 
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Template\TwigSandboxPolicy.
+ */
+
 namespace Drupal\Core\Template;
 
 use Drupal\Core\Site\Settings;
@@ -52,7 +57,6 @@ class TwigSandboxPolicy implements \Twig_Sandbox_SecurityPolicyInterface {
       'bundle',
       'get',
       '__toString',
-      'toString',
     ]);
     $this->whitelisted_methods = array_flip($whitelisted_methods);
 

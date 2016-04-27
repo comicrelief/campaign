@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\entity_test\Entity\EntityTestLabel.
+ */
+
 namespace Drupal\entity_test\Entity;
 
 /**
@@ -15,11 +20,9 @@ namespace Drupal\entity_test\Entity;
  *   base_table = "entity_test",
  *   render_cache = FALSE,
  *   entity_keys = {
- *     "uuid" = "uuid",
  *     "id" = "id",
  *     "label" = "name",
- *     "bundle" = "type",
- *     "langcode" = "langcode",
+ *     "bundle" = "type"
  *   }
  * )
  */

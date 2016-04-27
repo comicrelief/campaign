@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\image\Plugin\ImageEffect\ScaleAndCropImageEffect.
+ */
+
 namespace Drupal\image\Plugin\ImageEffect;
 
 use Drupal\Core\Image\ImageInterface;

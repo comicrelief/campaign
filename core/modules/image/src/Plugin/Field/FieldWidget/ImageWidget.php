@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\image\Plugin\Field\FieldWidget\ImageWidget.
+ */
+
 namespace Drupal\image\Plugin\Field\FieldWidget;
 
 use Drupal\Core\Field\FieldItemListInterface;
@@ -93,7 +98,7 @@ class ImageWidget extends FileWidget {
     if ($cardinality == 1) {
       // If there's only one field, return it as delta 0.
       if (empty($elements[0]['#default_value']['fids'])) {
-        $file_upload_help['#description'] = $this->getFilteredDescription();
+        $file_upload_help['#description'] = $this->fieldDefinition->getDescription();
         $elements[0]['#description'] = \Drupal::service('renderer')->renderPlain($file_upload_help);
       }
     }

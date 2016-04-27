@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\system\Tests\Update\PageTitleConvertedIntoBlockUpdateTest.
+ */
+
 namespace Drupal\system\Tests\Update;
 
 use Drupal\node\Entity\Node;

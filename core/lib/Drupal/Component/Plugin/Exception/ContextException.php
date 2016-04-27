@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Component\Plugin\Exception\ContextException.
+ */
+
 namespace Drupal\Component\Plugin\Exception;
 
 /**

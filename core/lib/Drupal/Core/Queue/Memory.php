@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Core\Queue\Memory.
+ */
+
 namespace Drupal\Core\Queue;
 
 /**

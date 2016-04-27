@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\language\Config\LanguageConfigCollectionNameTrait.
+ */
+
 namespace Drupal\language\Config;
 
 /**

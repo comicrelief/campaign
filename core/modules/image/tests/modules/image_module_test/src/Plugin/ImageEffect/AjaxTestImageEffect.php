@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\image_module_test\Plugin\ImageEffect\AjaxTestImageEffect.
+ */
+
 namespace Drupal\image_module_test\Plugin\ImageEffect;
 
 use Drupal\Core\Ajax\AjaxResponse;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\taxonomy\TermTranslationHandler.
+ */
+
 namespace Drupal\taxonomy;
 
 use Drupal\Core\Entity\EntityInterface;

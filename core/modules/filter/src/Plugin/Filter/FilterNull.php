@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\filter\Plugin\Filter\FilterNull.
+ */
+
 namespace Drupal\filter\Plugin\Filter;
 
 use Drupal\filter\FilterProcessResult;

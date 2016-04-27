@@ -55,12 +55,10 @@
    * Polyfill HTML5 dialog element with jQueryUI.
    *
    * @param {HTMLElement} element
-   *   The element that holds the dialog.
    * @param {object} options
    *   jQuery UI options to be passed to the dialog.
    *
    * @return {Drupal.dialog~dialogDefinition}
-   *   The dialog instance.
    */
   Drupal.dialog = function (element, options) {
     var undef;

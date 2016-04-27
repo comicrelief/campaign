@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\link\Tests\LinkFieldUITest.
+ */
+
 namespace Drupal\link\Tests;
 
 use Drupal\Component\Utility\Unicode;

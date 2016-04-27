@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\filter\Unit\Plugin\migrate\source\d7\FilterFormatTest.
+ */
+
 namespace Drupal\Tests\filter\Unit\Plugin\migrate\source\d7;
 
 use Drupal\Tests\migrate\Unit\MigrateSqlSourceTestCase;

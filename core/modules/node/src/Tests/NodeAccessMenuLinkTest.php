@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\node\Tests\NodeAccessMenuLinkTest.
+ */
+
 namespace Drupal\node\Tests;
 
 use Drupal\user\RoleInterface;

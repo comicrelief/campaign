@@ -1,12 +1,17 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\shortcut\ShortcutSetForm.
+ */
+
 namespace Drupal\shortcut;
 
 use Drupal\Core\Entity\BundleEntityFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Form handler for the shortcut set entity edit forms.
+ * Form controller for the shortcut set entity edit forms.
  */
 class ShortcutSetForm extends BundleEntityFormBase {
 
