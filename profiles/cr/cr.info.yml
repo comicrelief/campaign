@@ -173,4 +173,5 @@ config_devel:
   - user.role.editor
 
   # Contributed modules
+  - pathauto.pattern.basic_page
   # - simple_sitemap.settings
