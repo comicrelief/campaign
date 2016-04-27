@@ -1,7 +1,7 @@
 <?php
 use Symfony\Component\Yaml\Yaml;
 
-$settings['install_profile'] = 'rnd17';
+$settings['install_profile'] = 'cr';
 $settings['skip_permissions_hardening'] = TRUE;
 
 $settings['profile_directories'] = ['profiles/cr', 'profiles/rnd17'];
