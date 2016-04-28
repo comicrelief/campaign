@@ -62,6 +62,7 @@ dependencies:
   - panelizer
   - ctools_block
   - paragraphs
+  - view_mode
 
   # Custom modules
   - cr_layout
@@ -173,4 +174,5 @@ config_devel:
   - user.role.editor
 
   # Contributed modules
-  - simple_sitemap.settings
+  - pathauto.pattern.basic_page
+  # - simple_sitemap.settings
