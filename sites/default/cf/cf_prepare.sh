@@ -13,7 +13,7 @@ create_orgs(){
 }
 
 create_services(){
-  cf create-user-provided-service service-mysql-1 -p "{\"hostname\":\"cr-rnd17-drupal-eu-west-1.cbchyxc5kvoe.eu-west-1.rds.amazonaws.com\",\"name\":\"drupal$CF_SPACE\",\"username\":\"drupal\",\"password\":\"qvs6AN6CJEHeBAUwZ2pj\"}" || true
+  cf create-user-provided-service service-mysql-1 -p "{\"hostname\":\"cr-rnd17-drupal-eu-west-1.cbchyxc5kvoe.eu-west-1.rds.amazonaws.com\",\"name\":\"drupal$CF_SPACE$CF_SPACE_SUFFIX\",\"username\":\"drupal\",\"password\":\"qvs6AN6CJEHeBAUwZ2pj\"}" || true
   cf create-service rediscloud 30mb service-redis-1
 }
 
