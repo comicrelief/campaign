@@ -12,9 +12,11 @@ phing config:export
 
 
 chmod 777 sites/default/settings.php
-mv sites/default/settings.php settings.php.tmp
+
+# mv sites/default/settings.php settings.php.tmp
 git checkout sites/default/settings.php
 
+git status
 
 
 # Git diff - will exit if there is any difference after running config:export
