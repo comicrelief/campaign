@@ -55,6 +55,9 @@ projects:
     version: 1.x-dev
   diff:
     version: 1.0-alpha2
+  view_mode:
+    download:
+      branch: 8.x-1.x
   # Developer modules
   config_devel:
     version: 1.0-rc1
