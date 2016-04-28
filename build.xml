@@ -33,6 +33,11 @@
   <target name="build:dev" depends="file:settings, build, user:create, module:dev"
     description="Build (or rebuild) the project for devs.">
   </target>
+  <target name="update" depends="config:import"
+    description="Update an existing site with a database.">
+    <exec checkreturn="true" logoutput="true" passthru="true" command="${drush.bin} updatedb"/>
+    <exec checkreturn="true" logoutput="true" passthru="true" command="${drush.bin} cr all"/>
+  </target>
 
   <!-- Tests -->
   <target name="test" depends="test:prepare" description="Run behat tests">
@@ -129,6 +134,12 @@
   <target name="content:export:save">
     <exec logoutput="true" passthru="true" command="${drush.bin} dcer --folder=${app.content.dir} ${type} ${id}"/>
     <delete quiet="true" dir="${app.content.dir}user"/>
+  </target>
+  <target name="config:import" description="Import all of the configuration for the defined modules.">
+    <foreach list="${app.config_modules}" param="config_devel_module" target="config:import:single" delimiter=" "/>
+  </target>
+  <target name="config:import:single">
+    <exec passthru="true" logoutput="true" command="${drush.bin} config-devel-import ${config_devel_module}"/>
   </target>
 
   <!-- Quality Code template: https://github.com/previousnext/phing-phpqatools/blob/master/build.xml -->
