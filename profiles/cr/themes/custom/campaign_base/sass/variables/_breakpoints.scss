@@ -1,7 +1,15 @@
-// Breakpoints
+/* REMIX! */
+/* Small breakpoint */
+$screen-sm: 0px;
+$screen-sm-min: $screen-sm;
+$screen-sm-max: 740px;
 
-$screen-xs: 0px;
-$screen-xs-max: 740px;
+/* Medium breakpoint */
+$screen-md: 740px;
+$screen-md-min: $screen-md;
+$screen-md-max: 1023px;
 
-$screen-sm: 740px;
-$screen-md: 1024px;
+/* Large breakpoint */
+$screen-lg: 1024px;
+$screen-lg-min: $screen-lg;
+/* $screen-lg-max: no no, no no no no, no no no no, no no there's no limit */
