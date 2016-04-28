@@ -67,9 +67,8 @@
 
   <!-- File system -->
   <target name="file:mod">
-    <chmod file="sites/default" mode="0755" failonerror="true"/>
-    <chmod file="sites/default/settings.php" mode="0755" failonerror="true"/>
-    <exec command="chmod 777 -R sites/default/files/"/>
+    <chmod file="sites/default" mode="0775" failonerror="true"/>
+    <chmod file="sites/default/settings.php" mode="0664" failonerror="true"/>
   </target>
   <target name="file:settings">
     <if>
@@ -92,7 +91,7 @@
   <target name="install" description="Install CR with standard configuration.">
     <exec dir="${app.dir}" logoutput="true" passthru="true" checkreturn="true"
        command="${drush.bin} si ${app.profile.name} -y --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring}"/>
-    <phingcall target="file:mod"/>
+    <phingcall target="cache:clear"/>
   </target>
   <target name="cron" description="Run Drupal's cron script">
     <exec dir="${app.dir}" logoutput="true" passthru="true" checkreturn="true"
