@@ -114,6 +114,14 @@
   }
 }
 .panel-panel {
+  article.cw-article--medium-small {
+    @include span(12);
+    @include breakpoint($screen-xs) {
+      @include span(8);
+    }
+  }
+}
+.panel-panel {
   article.cw-article--large {
     @include span(12);
     @include breakpoint($screen-xs) {
