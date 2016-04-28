@@ -37,6 +37,13 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class RabbitMQYamlFormHandler extends YamlFormHandlerBase implements YamlFormHandlerMessageInterface {
 
+  /**
+   * A mail manager for sending email.
+   *
+   * @var \Drupal\Core\Mail\MailManagerInterface
+   */
+  protected $mailManager;
+
 
   protected $queueFactory;
 
@@ -47,21 +54,22 @@ class RabbitMQYamlFormHandler extends YamlFormHandlerBase implements YamlFormHan
    */
   protected $configFactory;
 
-  /**
-   * The token handler.
-   *
-   * @var \Drupal\Core\Utility\Token $token
-   */
-  protected $token;
+//  /**
+//   * The token handler.
+//   *
+//   * @var \Drupal\Core\Utility\Token $token
+//   */
+//  protected $token;
+
+//  }
 
   /**
    * {@inheritdoc}
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, LoggerInterface $logger, QueueFactory $queue_factory, ConfigFactoryInterface $config_factory, Token $token) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, LoggerInterface $logger, QueueFactory $queue_factory, ConfigFactoryInterface $config_factory) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $logger);
-    $this->$queueFactory = $queue_factory;
+    $this->queueFactory = $queue_factory;
     $this->configFactory = $config_factory;
-    $this->token = $token;
   }
 
   /**
@@ -69,20 +77,32 @@ class RabbitMQYamlFormHandler extends YamlFormHandlerBase implements YamlFormHan
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(
-      $configuration,
-      $plugin_id,
-      $plugin_definition,
-      $container->get('logger.factory')->get('yamlform'),
-      $container->get('queue'),
-      $container->get('config.factory'),
-      $container->get('token')
+        $configuration,
+        $plugin_id,
+        $plugin_definition,
+        $container->get('logger.factory')->get('yamlform'),
+//        $container->get('plugin.manager.mail'),
+        $container->get('queue'),
+        $container->get('config.factory')
+//        $container->get('token')
     );
   }
 
   /**
    * {@inheritdoc}
    */
+  public function defaultConfiguration() {
+    return [
+    ];
+  }
+
+
+  /**
+   * {@inheritdoc}
+   */
   public function getMessage(YamlFormSubmissionInterface $yamlform_submission) {
+
+    kint($yamlform_submission);
 //    $token_data = [
 //        'yamlform' => $yamlform_submission->getYamlForm(),
 //        'yamlform-submission' => $yamlform_submission,
@@ -128,6 +148,9 @@ class RabbitMQYamlFormHandler extends YamlFormHandlerBase implements YamlFormHan
    * {@inheritdoc}
    */
   public function sendMessage(array $message) {
+    kint($message);
+
+
 //    // Send mail.
 //    $to = $message['to_mail'];
 //    $from = $message['from_mail'] . ' <' . $message['from_name'] . '>';
@@ -150,6 +173,9 @@ class RabbitMQYamlFormHandler extends YamlFormHandlerBase implements YamlFormHan
    * {@inheritdoc}
    */
   public function resendMessageForm(array $message) {
+
+    kint($message);
+
 //    $element = [];
 //    $element['to_mail'] = [
 //        '#type' => 'email',
@@ -219,5 +245,43 @@ class RabbitMQYamlFormHandler extends YamlFormHandlerBase implements YamlFormHan
         '#settings' => $message,
     ] + parent::getSummary();
   }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
+    // Settings.
+    $form['settings'] = [
+        '#type' => 'details',
+        '#title' => $this->t('Settings'),
+        '#open' => TRUE,
+    ];
+
+
+    // @todo refactor this
+
+    // Debug.
+    $form['debug'] = [
+        '#type' => 'details',
+        '#title' => $this->t('Debugging'),
+        '#open' => $this->configuration['debug'] ? TRUE : FALSE,
+    ];
+    $form['debug']['debug'] = [
+        '#type' => 'checkbox',
+        '#title' => $this->t('Enable debugging'),
+        '#description' => $this->t('If checked sent emails will be displayed onscreen to all users.'),
+        '#default_value' => $this->configuration['debug'],
+    ];
+
+    return $form;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
+    parent::submitConfigurationForm($form, $form_state);
+  }
+
 
 }
