@@ -1,10 +1,18 @@
 <?php
 use Symfony\Component\Yaml\Yaml;
 
+
 $settings['install_profile'] = 'cr';
 $settings['skip_permissions_hardening'] = TRUE;
-
-$settings['profile_directories'] = ['profiles/cr', 'profiles/rnd17'];
+$config_directories = array();
+$settings['update_free_access'] = FALSE;
+$settings['allow_authorize_operations'] = FALSE;
+$settings['session_write_interval'] = 180;
+$settings['file_chmod_directory'] = 0775;
+$settings['file_chmod_file'] = 0664;
+$settings['class_loader_auto_detect'] = TRUE;
+$settings['omit_vary_cookie'] = TRUE;
+# $settings['deployment_identifier'] = \Drupal::VERSION;
 
 /**
  * Load environment variables.
@@ -22,7 +30,6 @@ if (file_exists($environment)) {
  * Load services definition file.
  */
 $settings['container_yamls'][] = __DIR__ . '/services.yml';
-
 
 /**
  * Include the Pantheon-specific settings file.
