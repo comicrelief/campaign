@@ -18,6 +18,8 @@ config_devel:
   - core.base_field_override.node.partner.promote
   - core.entity_form_display.node.partner.default
   - core.entity_view_display.node.partner.default
+  - core.entity_view_display.node.partner.full
+  - core.entity_view_display.node.partner.teaser
   - core.base_field_override.node.partner.title
   - field.field.node.partner.body
   - field.field.node.partner.field_partner_image
@@ -30,3 +32,4 @@ config_devel:
   - field.storage.node.field_partner_logo
   - taxonomy.vocabulary.partner_category
   - views.view.partners
+  - pathauto.pattern.partners
