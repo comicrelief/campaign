@@ -1,6 +1,9 @@
+uuid: 9c081b8e-0727-4fb9-8666-70c1f1e2bac1
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: 2rIaKEyzvyeJ7KmO-z4jDBeQL5RzMswc5rQB7mdS-uE
 name: cw_large_780x440
 label: 'CW 16:9 LG 800x450'
 effects:

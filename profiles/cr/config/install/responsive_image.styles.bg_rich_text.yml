@@ -1,11 +1,16 @@
+uuid: 89ca79f0-affb-4d65-b13a-3b144f9206b5
 langcode: en
 status: true
 dependencies:
   config:
     - image.style.bg_rich_text_narrow
+    - image.style.bg_rich_text_narrow_2x
     - image.style.bg_rich_text_wide
+    - image.style.bg_rich_text_wide_2x_
   theme:
     - campaign_base
+_core:
+  default_config_hash: iZrBQ87-6nLrHDlKE3jqHpjkoD_lzTlEqJOFVEMt0-M
 id: bg_rich_text
 label: 'Bg rich text'
 image_style_mappings:
@@ -18,7 +23,7 @@ image_style_mappings:
     breakpoint_id: campaign_base.large
     multiplier: 2x
     image_mapping_type: image_style
-    image_mapping: bg_rich_text_wide
+    image_mapping: bg_rich_text_wide_2x_
   -
     breakpoint_id: campaign_base.medium
     multiplier: 1x
@@ -28,7 +33,7 @@ image_style_mappings:
     breakpoint_id: campaign_base.medium
     multiplier: 2x
     image_mapping_type: image_style
-    image_mapping: bg_rich_text_narrow
+    image_mapping: bg_rich_text_narrow_2x
   -
     breakpoint_id: campaign_base.small
     multiplier: 1x
@@ -38,6 +43,6 @@ image_style_mappings:
     breakpoint_id: campaign_base.small
     multiplier: 2x
     image_mapping_type: image_style
-    image_mapping: bg_rich_text_narrow
+    image_mapping: bg_rich_text_narrow_2x
 breakpoint_group: campaign_base
 fallback_image_style: bg_rich_text_wide

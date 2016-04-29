@@ -1,6 +1,9 @@
+uuid: 1698950b-7687-4241-b487-70ef5e3233c8
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: QoJUdfAr9QN0iUvhInZnEjr36UZNeXzs1Na7rFl23cU
 name: cw_medium_570x365
 label: 'CW 16:9 MD 680x382'
 effects:

@@ -1,6 +1,9 @@
+uuid: dd10102a-fbc7-420f-b0ea-d4efcbc11dc9
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: lE2ihNcV6LU3N2p3xwo5IiVtFaZgw_v0Pb_YlY_VpcU
 name: cw_small_370x290
 label: 'CW 16:9 SM 720x405'
 effects:

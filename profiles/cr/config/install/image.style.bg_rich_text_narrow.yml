@@ -1,8 +1,11 @@
+uuid: c2998ca6-02f8-4051-a7c5-a89c1d43b732
 langcode: en
 status: true
 dependencies:
   module:
     - focal_point
+_core:
+  default_config_hash: 243qxaid22-Ak81ToFdkcXRYrt_6p1fGF8ooeLS3MCU
 name: bg_rich_text_narrow
 label: 'Bg rich text narrow'
 effects:

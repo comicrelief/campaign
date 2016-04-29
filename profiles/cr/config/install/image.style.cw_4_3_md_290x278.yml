@@ -1,6 +1,9 @@
+uuid: 44da076b-5866-4a95-bc0a-f6ebd55564a2
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: phBR4RabNZ7rJIre4GXtabPRXB1ruaQ3K4ZU2bCpvRw
 name: cw_4_3_md_290x278
 label: 'CW 4:3 MD 316 x 303'
 effects:

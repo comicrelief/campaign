@@ -1,3 +1,4 @@
+uuid: 42c9ba7d-f480-4c7c-85c1-bb7eaba3c856
 langcode: en
 status: true
 dependencies:
@@ -8,6 +9,8 @@ dependencies:
     - image.style.cw_small_370x290
   theme:
     - campaign_base
+_core:
+  default_config_hash: H4_D94prYMLvAq1CsnzOjHNhQ5VRnQYZMkXXYoO4HBY
 id: cw_landscape_image
 label: 'CW 16:9 Image'
 image_style_mappings:
