@@ -101,13 +101,10 @@ class RabbitMQYamlFormHandler extends YamlFormHandlerBase implements YamlFormHan
     $queue = $this->queueFactory->get($queue_name);
     $queue->createItem($message);
 
-    // @todo use proper logging here
-    drupal_set_message(
-      $this->t('You sent the following data to queue @queue: @email', [
-        '@queue' => $queue_name,
-        '@email' => implode('--', $message),
-      ])
-    );
+    $variables = [
+      '@queue' => $queue_name,
+    ];
+    \Drupal::logger('yamlform.rabbitmq')->notice('Data package sent to queue @queue', $variables);
   }
 
   /**
@@ -132,26 +129,31 @@ class RabbitMQYamlFormHandler extends YamlFormHandlerBase implements YamlFormHan
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     // Settings.
     $form['settings'] = [
-        '#type' => 'details',
-        '#title' => $this->t('Settings'),
-        '#open' => TRUE,
+      '#type' => 'details',
+      '#title' => $this->t('Settings'),
+      '#open' => TRUE,
+    ];
+    $form['settings']['queue_name'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Queue name'),
+      '#default_value' => $this->configuration['queue_name'],
     ];
 
     // @todo refactor this
     // Add queue options
 
     // Debug.
-    $form['debug'] = [
-        '#type' => 'details',
-        '#title' => $this->t('Debugging'),
-        '#open' => $this->configuration['debug'] ? TRUE : FALSE,
-    ];
-    $form['debug']['debug'] = [
-        '#type' => 'checkbox',
-        '#title' => $this->t('Enable debugging'),
-        '#description' => $this->t('If checked sent emails will be displayed onscreen to all users.'),
-        '#default_value' => $this->configuration['debug'],
-    ];
+    // $form['debug'] = [
+    //     '#type' => 'details',
+    //     '#title' => $this->t('Debugging'),
+    //     '#open' => $this->configuration['debug'] ? TRUE : FALSE,
+    // ];
+    // $form['debug']['debug'] = [
+    //     '#type' => 'checkbox',
+    //     '#title' => $this->t('Enable debugging'),
+    //     '#description' => $this->t('If checked sent emails will be displayed onscreen to all users.'),
+    //     '#default_value' => $this->configuration['debug'],
+    // ];
 
     return $form;
   }
