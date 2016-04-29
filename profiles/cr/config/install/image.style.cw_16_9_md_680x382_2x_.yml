@@ -1,0 +1,14 @@
+uuid: 4e274c06-f57e-4958-81b2-00005d551f79
+langcode: en
+status: true
+dependencies: {  }
+name: cw_16_9_md_680x382_2x_
+label: 'CW 16:9 MD 680x382 (2x)'
+effects:
+  fd539531-c430-4f92-b3ab-8c15f8a786a3:
+    uuid: fd539531-c430-4f92-b3ab-8c15f8a786a3
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1360
+      height: 764
