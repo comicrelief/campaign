@@ -37,13 +37,6 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class RabbitMQYamlFormHandler extends YamlFormHandlerBase implements YamlFormHandlerMessageInterface {
 
-  /**
-   * A mail manager for sending email.
-   *
-   * @var \Drupal\Core\Mail\MailManagerInterface
-   */
-  protected $mailManager;
-
 
   protected $queueFactory;
 
@@ -53,15 +46,6 @@ class RabbitMQYamlFormHandler extends YamlFormHandlerBase implements YamlFormHan
    * @var \Drupal\Core\Config\ConfigFactoryInterface
    */
   protected $configFactory;
-
-//  /**
-//   * The token handler.
-//   *
-//   * @var \Drupal\Core\Utility\Token $token
-//   */
-//  protected $token;
-
-//  }
 
   /**
    * {@inheritdoc}
@@ -81,10 +65,8 @@ class RabbitMQYamlFormHandler extends YamlFormHandlerBase implements YamlFormHan
         $plugin_id,
         $plugin_definition,
         $container->get('logger.factory')->get('yamlform'),
-//        $container->get('plugin.manager.mail'),
         $container->get('queue'),
         $container->get('config.factory')
-//        $container->get('token')
     );
   }
 
@@ -96,50 +78,15 @@ class RabbitMQYamlFormHandler extends YamlFormHandlerBase implements YamlFormHan
     ];
   }
 
-
   /**
    * {@inheritdoc}
    */
   public function getMessage(YamlFormSubmissionInterface $yamlform_submission) {
+    // Fetch all data, we ship this off to the queue
+    $message = $yamlform_submission->getData();
 
-    kint($yamlform_submission);
-//    $token_data = [
-//        'yamlform' => $yamlform_submission->getYamlForm(),
-//        'yamlform-submission' => $yamlform_submission,
-//        'yamlform-submission-options' => [
-//            'email' => TRUE,
-//            'excluded_inputs' => $this->configuration['excluded_inputs'],
-//            'html' => ($this->configuration['html'] && $this->supportsHtml()),
-//        ],
-//    ];
-//
-//    $message = $this->configuration;
-//    unset($message['excluded_inputs']);
-//
-//    // Replace 'default' values and [tokens] with settings default.
-//    $settings = $this->getConfigurationSettings();
-//    foreach ($settings as $setting_key => $setting) {
-//      if (empty($message[$setting_key]) || $message[$setting_key] == 'default') {
-//        $message[$setting_key] = $setting['default'];
-//      }
-//      $message[$setting_key] = $this->token->replace($message[$setting_key], $token_data);
-//    }
-//
-//    // Trim the message body.
-//    $message['body'] = trim($message['body']);
-//
-//    if ($this->configuration['html'] && $this->supportsHtml()) {
-//      switch ($this->getMailSystemSender()) {
-//        case 'swiftmailer':
-//          // SwiftMailer requires that the body be valid Markup.
-//          $message['body'] = Markup::create($message['body']);
-//          break;
-//      }
-//    }
-
-    $message = 'NULL';
-
-
+    // @todo clean this up - if needed at all?
+    unset($message['in_draft']);
 
     return $message;
   }
@@ -148,93 +95,26 @@ class RabbitMQYamlFormHandler extends YamlFormHandlerBase implements YamlFormHan
    * {@inheritdoc}
    */
   public function sendMessage(array $message) {
-    kint($message);
 
+    // @todo parametrize this queue name
+    $queue_name = 'queue1';
+    $queue = $this->queueFactory->get($queue_name);
+    $queue->createItem($message);
 
-//    // Send mail.
-//    $to = $message['to_mail'];
-//    $from = $message['from_mail'] . ' <' . $message['from_name'] . '>';
-//    $current_langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
-//    $this->mailManager->mail('yamlform', 'email.' . $this->getHandlerId(), $to, $current_langcode, $message, $from);
-//
-//    // Log message.
-//    $variables = [
-//        '@from_name' => $message['from_name'],
-//        '@from_mail' => $message['from_mail'],
-//        '@to_mail' => $message['to_mail'],
-//        '@subject' => $message['subject'],
-//    ];
-//    \Drupal::logger('yamlform.email')->notice('@subject sent to @to_mail from @from_name [@from_mail].', $variables);
-
-
+    // @todo use proper logging here
+    drupal_set_message(
+      $this->t('You sent the following data to queue @queue: @email', [
+        '@queue' => $queue_name,
+        '@email' => implode('--', $message),
+      ])
+    );
   }
 
   /**
    * {@inheritdoc}
    */
   public function resendMessageForm(array $message) {
-
-    kint($message);
-
-//    $element = [];
-//    $element['to_mail'] = [
-//        '#type' => 'email',
-//        '#title' => $this->t('To email'),
-//        '#default_value' => $message['to_mail'],
-//    ];
-//    $element['from_mail'] = [
-//        '#type' => 'email',
-//        '#title' => $this->t('From email '),
-//        '#required' => TRUE,
-//        '#default_value' => $message['from_mail'],
-//    ];
-//    $element['from_name'] = [
-//        '#type' => 'textfield',
-//        '#title' => $this->t('From name'),
-//        '#required' => TRUE,
-//        '#default_value' => $message['from_name'],
-//    ];
-//    $element['subject'] = [
-//        '#type' => 'textfield',
-//        '#title' => $this->t('Subject'),
-//        '#default_value' => $message['subject'],
-//    ];
-//    $body_format = ($this->configuration['html']) ? 'html' : 'text';
-//    $element['body'] = [
-//        '#type' => 'yamlform_codemirror_' . $body_format,
-//        '#title' => $this->t('Message (@format)', ['@format' => ($this->configuration['html']) ? $this->t('HTML') : $this->t('Plain text')]),
-//        '#rows' => 10,
-//        '#required' => TRUE,
-//        '#default_value' => $message['body'],
-//    ];
-//    $element['html'] = [
-//        '#type' => 'value',
-//        '#value' => $message['html'],
-//    ];
-//    $element['attachments'] = [
-//        '#type' => 'value',
-//        '#value' => $message['attachments'],
-//    ];
-//
-//    // Display attached files.
-//    if ($message['attachments']) {
-//      $file_links = [];
-//      foreach ($message['attachments'] as $attachment) {
-//        $file_links[] = [
-//            '#theme' => 'file_link',
-//            '#file' => $attachment['file'],
-//            '#prefix' => '<div>',
-//            '#suffix' => '</div>',
-//        ];
-//      }
-//      $element['files'] = [
-//          '#type' => 'item',
-//          '#title' => $this->t('Attachments'),
-//          '#markup' => \Drupal::service('renderer')->render($file_links),
-//      ];
-//    }
-//
-//    return $element;
+    // @todo implement this, is this needed?
   }
 
   /**
@@ -257,8 +137,8 @@ class RabbitMQYamlFormHandler extends YamlFormHandlerBase implements YamlFormHan
         '#open' => TRUE,
     ];
 
-
     // @todo refactor this
+    // Add queue options
 
     // Debug.
     $form['debug'] = [
@@ -283,5 +163,14 @@ class RabbitMQYamlFormHandler extends YamlFormHandlerBase implements YamlFormHan
     parent::submitConfigurationForm($form, $form_state);
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function postSave(YamlFormSubmissionInterface $yamlform_submission, $update = TRUE) {
+    if ($yamlform_submission->getState() == YamlFormSubmissionInterface::STATE_COMPLETED) {
+      $message = $this->getMessage($yamlform_submission);
+      $this->sendMessage($message);
+    }
+  }
 
 }
