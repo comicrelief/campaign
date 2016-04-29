@@ -10,18 +10,33 @@ id: bg_rich_text
 label: 'Bg rich text'
 image_style_mappings:
   -
-    breakpoint_id: campaign_base.desktop
+    breakpoint_id: campaign_base.large
     multiplier: 1x
     image_mapping_type: image_style
     image_mapping: bg_rich_text_wide
   -
-    breakpoint_id: campaign_base.tablet
+    breakpoint_id: campaign_base.large
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: bg_rich_text_wide
+  -
+    breakpoint_id: campaign_base.medium
     multiplier: 1x
     image_mapping_type: image_style
     image_mapping: bg_rich_text_narrow
   -
-    breakpoint_id: campaign_base.mobile
+    breakpoint_id: campaign_base.medium
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: bg_rich_text_narrow
+  -
+    breakpoint_id: campaign_base.small
     multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: bg_rich_text_narrow
+  -
+    breakpoint_id: campaign_base.small
+    multiplier: 2x
     image_mapping_type: image_style
     image_mapping: bg_rich_text_narrow
 breakpoint_group: campaign_base

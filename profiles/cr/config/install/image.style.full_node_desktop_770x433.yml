@@ -4,7 +4,7 @@ dependencies:
   module:
     - focal_point
 name: full_node_desktop_770x433
-label: 'Full node desktop 770x433'
+label: 'Full node LG 770x433'
 effects:
   92116fe5-151f-41b8-ad00-dcd0faba834b:
     uuid: 92116fe5-151f-41b8-ad00-dcd0faba834b

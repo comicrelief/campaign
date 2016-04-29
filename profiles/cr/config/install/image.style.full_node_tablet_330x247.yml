@@ -4,7 +4,7 @@ dependencies:
   module:
     - focal_point
 name: full_node_tablet_330x247
-label: 'Full node tablet 330x247'
+label: 'Full node MD 330x247'
 effects:
   529f46ae-acc3-4774-ae00-ebc078777996:
     uuid: 529f46ae-acc3-4774-ae00-ebc078777996
