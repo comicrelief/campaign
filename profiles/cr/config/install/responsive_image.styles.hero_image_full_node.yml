@@ -1,3 +1,4 @@
+uuid: 54542258-5952-412f-a6b3-0efcf45a0e08
 langcode: en
 status: true
 dependencies:
@@ -7,22 +8,39 @@ dependencies:
     - image.style.full_node_tablet_330x247
   theme:
     - campaign_base
+_core:
+  default_config_hash: UArWaW90DN9dqlz-IGTe7q_mOAdarUlimvm_vxzjA5E
 id: hero_image_full_node
 label: 'Hero image full node'
 image_style_mappings:
   -
-    breakpoint_id: campaign_base.desktop
+    breakpoint_id: campaign_base.large
     multiplier: 1x
     image_mapping_type: image_style
     image_mapping: full_node_desktop_770x433
   -
-    breakpoint_id: campaign_base.tablet
+    breakpoint_id: campaign_base.large
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: full_node_desktop_770x433
+  -
+    breakpoint_id: campaign_base.medium
     multiplier: 1x
     image_mapping_type: image_style
     image_mapping: full_node_tablet_330x247
   -
-    breakpoint_id: campaign_base.mobile
+    breakpoint_id: campaign_base.medium
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: full_node_tablet_330x247
+  -
+    breakpoint_id: campaign_base.small
     multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: full_node_mobile_442x271
+  -
+    breakpoint_id: campaign_base.small
+    multiplier: 2x
     image_mapping_type: image_style
     image_mapping: full_node_mobile_442x271
 breakpoint_group: campaign_base

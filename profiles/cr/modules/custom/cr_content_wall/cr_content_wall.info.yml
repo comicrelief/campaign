@@ -34,8 +34,6 @@ config_devel:
   - core.entity_view_display.block_content.teaser.cw_mp
   - core.entity_view_display.block_content.teaser.cw_s
   # Fields
-  - field.field.paragraph.cw_row.field_cw_block_reference
-  - field.storage.paragraph.field_cw_block_reference
   - field.storage.paragraph.field_cw_row_reference
   # View mode config #
   - core.entity_view_mode.block_content.cw_1col_l
