@@ -7,6 +7,9 @@ dependencies:
   - ds
   - paragraphs
   - entity_reference_revisions
+  - inline_entity_form
+  - cr_teaser
+
 config_devel:
   # Paragraph config
   - paragraphs.paragraphs_type.cw_row
