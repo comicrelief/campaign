@@ -47,16 +47,15 @@ $buttonList: (
 /**
  * Buttons display as stack block for xs
  */
-@include breakpoint($screen-xs) {
-  .btn + .btn {
-    margin-top: 30px;
-  }
+.btn + .btn {
+  margin-top: 30px;
 }
 
+
 /**
- * Buttons display as inline block for sm, md and large breakpoints.
+ * Buttons display as inline block for md and large breakpoints.
  */
-@include breakpoint($screen-sm) {
+@include breakpoint($screen-md) {
   .btn {
     display: inline-block;
     font-size: 18px;
@@ -102,9 +101,9 @@ $buttonList: (
 }
 
 /**
- * Large button styles for >= small breakpoint.
+ * Large button styles for >= md breakpoint.
  */
-@include breakpoint($screen-sm) {
+@include breakpoint($screen-md) {
   .btn--lg {
     @include border-radius(35px);
     padding: 21px 70px;
