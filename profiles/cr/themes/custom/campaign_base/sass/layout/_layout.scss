@@ -25,34 +25,33 @@
 //     rem: true,
 //   )
 // );
+
+
 $susy: (
-  gutter-position: inside-static,
-  max-width: 1200px,
   columns: 12,
-  column-width: 70px,
-  output: float,
+  container: 1200px,
   gutters: 30px/70px,
-  global-box-sizing: content-box,
-  debug: (
-    // image: show,
-  ),
+  global-box-sizing: border-box,
+  gutter-position: split,
+  output: float,
+  last-flow: to,
+/*   debug: (
+    image: show,
+    color: red,
+  ), */
 );
 
 
 @include border-box-sizing;
-$mobile: layout(6 100%);
-$desktop: layout(12);
+
 
 // layout
 .region-header-inner-wrapper,
 .region-header-top,
-.region-content,
 .cw-region {
-  @include container($mobile);
-  @include breakpoint($screen-sm) {
-    @include container($desktop);
-  }
+  @include container;
 }
+
 header,
 .region-highlighted,
 main {
