@@ -7,17 +7,17 @@ dependencies:
     - field.field.block_content.cw_row_block.field_cw_view_mode
   module:
     - ds
-    - view_mode
+    - options
 third_party_settings:
   ds:
     layout:
-      id: onecol
-      path: profiles/cr/modules/contrib/panels/layouts/onecol
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
       library: layout_plugin/onecol
       disable_css: false
       settings: {  }
     regions:
-      middle:
+      ds_content:
         - cr_content_wall_CwRowDisplay
     fields:
       cr_content_wall_CwRowDisplay:
@@ -38,11 +38,11 @@ content:
       link: true
     third_party_settings: {  }
   field_cw_view_mode:
-    weight: 4
+    type: list_default
+    weight: 2
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: view_mode_default_formatter
   social_links:
     weight: 1
     settings: {  }
