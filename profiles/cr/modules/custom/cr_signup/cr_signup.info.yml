@@ -1,0 +1,5 @@
+name: Comic Relief Signup
+type: module
+description: 'Signup to Comic Relief'
+package: Comic Relief
+core: '8.x'
