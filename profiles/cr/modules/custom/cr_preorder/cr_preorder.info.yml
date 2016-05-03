@@ -8,4 +8,8 @@ dependencies:
   - yamlform
 
 config_devel:
-  - yamlform.yamlform.test
+  - yamlform.yamlform.preorder
+  - yamlform.yamlform_options.fundraise_pack
+  - yamlform.yamlform_options.title_prefix
+  - yamlform.yamlform_options.establishment_type
+  - yamlform.yamlform_options.job_title

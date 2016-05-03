@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies: {  }
+id: job_title
+label: Job title
+options: |
+  administrative_staff: Administrative Staff
+  head_teacher: Head Teacher
+  assistant_head: Assistant Head
+  charity_coordinator: Charity Coordinator
+  head_of_department: Head of Department
+  pe_coordinator: PE Coordinator
+  pshe_coordinator: PSHE Coordinator
+  manager: Manager
+  teacher: Teacher
+  childminder: Childminder
+  support_staff: Support Staff
+  early_years_practitioner: Early Years Practitioner
+  other: Other
+  head_of_year: Head of Year
+  deputy_head: Deputy head
+  student: Student
+  sen department: SEN Department
+  pe_department: PE department
+  youth_group_leader: Youth group leader
+  business_management: Business management

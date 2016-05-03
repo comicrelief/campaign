@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies: {  }
+id: establishment_type
+label: Establishment type
+options: |
+  nursery: Nursery
+  primary_school: Primary School
+  secondary_school: Secondary School
+  sixth_form_fe_college: Sixth form/FE College
