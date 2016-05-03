@@ -2,8 +2,5 @@ langcode: en
 status: true
 dependencies: {  }
 id: title_prefix
-label: Title prefix
-options: |
-  mr: Mr
-  mrs: Mrs
-  ms: Ms
+label: 'Title prefix'
+options: "mr: Mr\nmrs: Mrs\nms: Ms\n"

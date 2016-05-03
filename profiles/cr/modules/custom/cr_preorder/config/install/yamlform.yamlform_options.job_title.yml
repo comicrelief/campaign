@@ -2,25 +2,5 @@ langcode: en
 status: true
 dependencies: {  }
 id: job_title
-label: Job title
-options: |
-  administrative_staff: Administrative Staff
-  head_teacher: Head Teacher
-  assistant_head: Assistant Head
-  charity_coordinator: Charity Coordinator
-  head_of_department: Head of Department
-  pe_coordinator: PE Coordinator
-  pshe_coordinator: PSHE Coordinator
-  manager: Manager
-  teacher: Teacher
-  childminder: Childminder
-  support_staff: Support Staff
-  early_years_practitioner: Early Years Practitioner
-  other: Other
-  head_of_year: Head of Year
-  deputy_head: Deputy head
-  student: Student
-  sen department: SEN Department
-  pe_department: PE department
-  youth_group_leader: Youth group leader
-  business_management: Business management
+label: 'Job title'
+options: "administrative_staff: Administrative Staff\nhead_teacher: Head Teacher\nassistant_head: Assistant Head\ncharity_coordinator: Charity Coordinator\nhead_of_department: Head of Department\npe_coordinator: PE Coordinator\npshe_coordinator: PSHE Coordinator\nmanager: Manager\nteacher: Teacher\nchildminder: Childminder\nsupport_staff: Support Staff\nearly_years_practitioner: Early Years Practitioner\nother: Other\nhead_of_year: Head of Year\ndeputy_head: Deputy head\nstudent: Student\nsen department: SEN Department\npe_department: PE department\nyouth_group_leader: Youth group leader\nbusiness_management: Business management\n"
