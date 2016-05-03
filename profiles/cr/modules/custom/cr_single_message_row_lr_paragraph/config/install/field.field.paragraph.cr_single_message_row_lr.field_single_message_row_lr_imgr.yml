@@ -1,0 +1,23 @@
+uuid: 318a81ef-bc79-43c5-9e80-f34d4a0420e8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_single_message_row_lr_imgr
+    - paragraphs.paragraphs_type.cr_single_message_row_lr
+id: paragraph.cr_single_message_row_lr.field_single_message_row_lr_imgr
+field_name: field_single_message_row_lr_imgr
+entity_type: paragraph
+bundle: cr_single_message_row_lr
+label: 'Image on right'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Image on right'
+  off_label: 'Image on left'
+field_type: boolean

@@ -1,0 +1,42 @@
+$susy: (
+  columns: 12,
+  container: 1200px,
+  gutters: 30px/70px,
+  global-box-sizing: border-box,
+  gutter-position: split,
+  output: float,
+  last-flow: to,
+  debug: (
+    image: show,
+    color: red,
+  ),
+);
+
+@include border-box-sizing;
+
+.paragraph--cr-single-message-row-lr {
+  @include container;
+}
+
+.paragraph--cr-single-message-row-lr__image,
+.paragraph--cr-single-message-row-lr__title_body_wrapper {
+  @include span(12);
+}
+
+.paragraph--cr-single-message-row-lr__title_body_wrapper {
+  // Placeholder styles
+  padding: 30px;
+  background-color: #FFFDE9;
+}
+
+@include breakpoint($screen-lg) {
+  .paragraph--cr-single-message-row-lr__image {
+    @include span(6 no-gutter wide);
+    margin: 0;
+  }
+
+  .paragraph--cr-single-message-row-lr__title_body_wrapper {
+    @include span(6 no-gutter wide);
+    margin: 0;
+  }
+}

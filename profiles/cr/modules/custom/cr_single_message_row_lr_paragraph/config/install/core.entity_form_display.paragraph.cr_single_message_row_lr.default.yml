@@ -1,0 +1,50 @@
+uuid: 91a7120e-1b42-4864-bd8a-d773d3622342
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cr_single_message_row_lr.field_single_message_row_lr_body
+    - field.field.paragraph.cr_single_message_row_lr.field_single_message_row_lr_imag
+    - field.field.paragraph.cr_single_message_row_lr.field_single_message_row_lr_imgr
+    - field.field.paragraph.cr_single_message_row_lr.field_single_message_row_lr_titl
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.cr_single_message_row_lr
+  module:
+    - image
+    - text
+id: paragraph.cr_single_message_row_lr.default
+targetEntityType: paragraph
+bundle: cr_single_message_row_lr
+mode: default
+content:
+  field_single_message_row_lr_body:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+  field_single_message_row_lr_imag:
+    weight: 2
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+  field_single_message_row_lr_imgr:
+    weight: 3
+    settings:
+      display_label: false
+    third_party_settings: {  }
+    type: boolean_checkbox
+  field_single_message_row_lr_titl:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+hidden:
+  created: true
+  status: true
+  uid: true

@@ -1,0 +1,28 @@
+{# Define image position #}
+{% set image_position = content.field_single_message_row_lr_imgr['#items'][0].value == "1" ? '--image-right' : '--image-left' %}
+
+{%
+set classes = [
+'paragraph',
+'paragraph--' ~ paragraph.bundle|clean_class,
+view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+'paragraph--' ~ paragraph.bundle|clean_class ~ image_position,
+]
+%}
+
+<div{{ attributes.addClass(classes) }} >
+  <div class="paragraph--{{paragraph.bundle|clean_class}}__image">
+    {{ content.field_single_message_row_lr_imag}}
+  </div>
+
+  <div class="paragraph--{{paragraph.bundle|clean_class}}__title_body_wrapper">
+    
+    <div class="paragraph--{{paragraph.bundle|clean_class}}__title">
+      <h2 style="text-align: center; ">{{ content.field_single_message_row_lr_titl }}</h2>
+    </div>
+
+    <div class="paragraph--{{paragraph.bundle|clean_class}}__body">
+      {{ content.field_single_message_row_lr_body }}
+    </div>
+  </div>
+</div>

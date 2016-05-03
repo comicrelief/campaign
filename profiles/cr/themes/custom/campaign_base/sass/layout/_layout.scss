@@ -35,15 +35,14 @@ $susy: (
   gutter-position: split,
   output: float,
   last-flow: to,
-/*   debug: (
+  debug: (
     image: show,
     color: red,
-  ), */
+  ),
 );
 
 
 @include border-box-sizing;
-
 
 // layout
 .region-header-inner-wrapper,
