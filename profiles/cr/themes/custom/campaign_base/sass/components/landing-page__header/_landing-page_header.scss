@@ -1,0 +1,131 @@
+// Landing page header
+//
+// This is Landing page header
+//
+// Markup: landing-page__header.hbs
+//
+// .copy-position--left   - Body copy aligned to the left
+// .copy-position--right   - Body copy aligned to the right
+//
+// Style guide: Landing-page__header
+
+.page-node-type-landing {
+  .region-content {
+    width: 100%;
+    max-width: 100%;
+  }
+  .page__title {
+    position: absolute; // make it as a mixin
+    top: auto;
+    left: -10000px;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+  }
+  .panel-1col {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+.landing-page {
+  position: relative;
+}
+.landing-page__header {
+  text-align: center;
+  margin-bottom: 40px;
+  &.bg--black {
+    background-color: $black;
+
+    @include breakpoint($screen-sm-max) {
+      background-color: transparent;
+    }
+  }
+  &.bg--red {
+    background-color: $red;
+
+    @include breakpoint($screen-sm-max) {
+      background-color: transparent;
+    }
+  }
+  &.bg--white {
+    background-color: $white;
+
+    @include breakpoint($screen-sm-max) {
+      background-color: transparent;
+    }
+  }
+}
+.landing-page__title {
+  position: absolute; // make it as a mixin
+  top: auto;
+  left: -10000px;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  color: $white;
+}
+.landing-page__bg-image {
+  @include breakpoint($screen-sm-max) {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+  img {
+    @include breakpoint($screen-sm-max) {
+      display: block;
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+  }
+}
+.landing-page__content {
+  position: relative;
+  max-width: 1200px;
+  margin: 60px auto;
+  .landing-page__content-inner {
+  	max-width: 600px;
+  	margin: 60px auto;
+  	padding: 0 20px;
+  	&.copy-position--left {
+  		@include breakpoint($screen-sm-max) {
+  			margin-left: 0;
+			}
+  	}
+  	&.copy-position--right {
+  		@include breakpoint($screen-sm-max) {
+  			margin-right: 0;
+			}
+  	}
+  }
+  p {
+    color: $white;
+    font-size: 21px;
+    line-height: 27px;
+  }
+  img {
+    width: 100%;
+    height: auto;
+    margin: 0 0 40px;
+  }
+}
+.landing-page__link {
+  a {
+    display: inline-block;
+    height: 50px;
+    padding: 14px 35px;
+    text-align: center;
+    text-decoration: none;
+    color: #1e1e1e;
+    background-color: #fff;
+    font-size: 16px;
+    line-height: 22px;
+
+    @include border-radius(30px);
+    @include transition(background-color 300ms);
+    &:hover {
+      background-color: rgba(255,255,255,0.8);
+    }
+  }
+}
