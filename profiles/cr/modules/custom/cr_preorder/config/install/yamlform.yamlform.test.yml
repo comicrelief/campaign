@@ -1,0 +1,60 @@
+langcode: en
+status: true
+dependencies: {  }
+id: test
+title: Test
+description: ''
+inputs: "fundraise_pack:\r\n  '#title': 'Choose your fundraising pack'\r\n  '#type': select\r\n  '#options': fundraise_pack\r\n  '#required': true\r\nteacher_information:\r\n  '#title': 'Teacher details'\r\n  '#type': details\r\n  '#open': true\r\n  title_prefix:\r\n    '#title': 'Title'\r\n    '#type': select\r\n    '#options': title_prefix\r\n    '#required': true\r\n  first_name:\r\n    '#title': 'First Name'\r\n    '#type': textfield\r\n    '#required': true\r\n  last_name:\r\n    '#title': 'Last Name'\r\n    '#type': textfield\r\n    '#required': true\r\n  job_title:\r\n    '#title': 'Job title'\r\n    '#type': select\r\n    '#options': job_title\r\n    '#required': true\r\n  job_title:\r\n    '#title': 'Establishment type'\r\n    '#type': select\r\n    '#options': establishment\r\n    '#required': true\r\n  email:\r\n    '#title': Email\r\n    '#type': email\r\n    '#required': true\r\n  phone:\r\n    '#title': Phone\r\n    '#type': tel\r\nschool_information:\r\n  '#title': 'School address'\r\n  '#type': details\r\n  '#open': true\r\n  establishment:\r\n    '#title': 'Establishment name'\r\n    '#type': textfield\r\n    '#required': true\r\n  address_1:\r\n    '#title': 'Address line 1'\r\n    '#type': textfield\r\n    '#required': true\r\n  address_2:\r\n    '#title': 'Address line 2'\r\n    '#type': textfield\r\n  address_3:\r\n    '#title': 'Address line 3'\r\n    '#type': textfield\r\n  city:\r\n    '#title': 'Town/City'\r\n    '#type': textfield\r\n    '#required': true\r\n  postcode:\r\n    '#title': 'Postcode'\r\n    '#type': textfield\r\n    '#required': true\r\nterms:\r\n  '#title': 'I have read and accept the terms and conditions'\r\n  '#type': checkbox\r\n  '#required': true"
+settings:
+  page: true
+  page_submit_path: test
+  page_confirm_path: test/sure
+  form_closed_message: ''
+  form_exception_message: ''
+  form_submit_label: Confirm
+  form_prepopulate: false
+  preview: 0
+  preview_next_button_label: ''
+  preview_prev_button_label: ''
+  preview_message: ''
+  draft: false
+  draft_auto_save: false
+  draft_button_label: ''
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: page
+  confirmation_message: yehaaa
+  confirmation_url: ''
+  limit_total: null
+  limit_total_message: ''
+  limit_user: null
+  limit_user_message: ''
+  results_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+handlers: {  }
