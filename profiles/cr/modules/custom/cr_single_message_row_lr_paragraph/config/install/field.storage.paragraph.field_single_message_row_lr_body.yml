@@ -1,0 +1,19 @@
+uuid: a3f69806-a266-4a8a-bc2d-82c1ccc21c80
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - text
+id: paragraph.field_single_message_row_lr_body
+field_name: field_single_message_row_lr_body
+entity_type: paragraph
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
