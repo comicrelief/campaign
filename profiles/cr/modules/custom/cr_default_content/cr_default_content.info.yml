@@ -10,9 +10,13 @@ dependencies:
   - serialization
   - default_content
   - file_entity
+  - cr_page
   - cr_article
-  - cr_teaser
+  - cr_partner
+  - cr_landing_page
   - cr_content_wall
+  - cr_teaser
+  - cr_rich_text_paragraph
 
 default_content:
   node:

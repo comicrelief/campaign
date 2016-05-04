@@ -16,7 +16,7 @@
     }
   }
 
-  @include breakpoint($screen-sm) {
+  @include breakpoint($screen-md) {
     height: 255px;
     margin: 15px 0;
     .cw-article__image {
@@ -35,7 +35,7 @@
       }
     }
   }
-  @include breakpoint($screen-md) {
+  @include breakpoint($screen-lg) {
     height: 345px;
     .cw-article__image {
       // for img to fill area when not set by js
@@ -69,7 +69,7 @@
     }
   }
 }
-@include breakpoint($screen-sm) {
+@include breakpoint($screen-md) {
   .cw-article__image {
     position: relative;
     overflow: hidden;
@@ -115,10 +115,9 @@
   border-top: 4px solid $red;
   background: $white;
 
-  @include breakpoint($screen-sm) {
+  @include breakpoint($screen-md) {
     height: 100%;
     padding: 15px;
-    width: calc(100% - 30px);
     background: $cw-grey;
     &.cw-article__body--over {
       position: absolute;
@@ -142,7 +141,7 @@
       }
     }
   }
-  @include breakpoint($screen-md) {
+  @include breakpoint($screen-lg) {
     padding: 20px 15px;
     &.cw-article__body--hide-show {
       top: 225px;
@@ -152,11 +151,11 @@
     font-size: 14px;
     line-height: 19px;
 
-    @include breakpoint($screen-sm) {
+    @include breakpoint($screen-md) {
       font-size: 12px;
       line-height: 16px;
     }
-    @include breakpoint($screen-md) {
+    @include breakpoint($screen-lg) {
       font-size: 16px;
       line-height: 21px;
     }
@@ -169,7 +168,7 @@
   font-size: 18px;
   line-height: 27px;
 
-  @include breakpoint($screen-md) {
+  @include breakpoint($screen-lg) {
     padding-bottom: 25px;
     font-size: 26px;
     line-height: 36px;
