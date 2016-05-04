@@ -1,5 +1,5 @@
 cr_eddirect_ws.endpoint:
-  path: "/cr-eddirect-ws/autocomplete/{search}"
+  path: "/cr-eddirect-ws/autocomplete/{searchString}"
   defaults:
     _title: "Comic Relief edDirect Institution lookup"
     _controller: "Drupal\cr_eddirect_ws\Controller\EdDirectController::lookup"

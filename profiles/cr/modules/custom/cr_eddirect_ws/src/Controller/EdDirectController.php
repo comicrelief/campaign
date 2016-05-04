@@ -4,7 +4,6 @@ namespace Drupal\cr_eddirect_ws\Controller;
 use Drupal\Core\Controller\ControllerBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 
 class EdDirectController extends ControllerBase implements ContainerAwareInterface
@@ -14,11 +13,32 @@ class EdDirectController extends ControllerBase implements ContainerAwareInterfa
      */
     private $container;
 
-    public function lookup($search = "")
+    /**
+     * @param string $searchString
+     * @return JsonResponse
+     */
+    public function lookup($searchString = "")
     {
-        $myService = $this ->container->get('cr_eddirect_ws.eddirect') ->authenticate();
+        $edDirectService = $this ->container->get('cr_eddirect_ws.eddirect');
+
+        $postcodeRegex = '/
+                ^(([A-Z]{1,2})      # one or two letters
+                ([0-9]{1,2}[A-Z]?)) # one or two numbers, optional
+                \s?                 # space, optional
+                (([0-9]{1})         # one number
+                ([A-Z]{1,2})?)      # one or two letters, optional
+                ?$
+                /ix';
         
-        return new JsonResponse(array(0 => 1));
+        if (preg_match($postcodeRegex, $searchString)) {
+            $searchResults = $edDirectService ->searchByPostcode($searchString);
+        } elseif (strlen($searchString) > 2) {
+            $searchResults = $edDirectService ->searchByName($searchString);
+        } else {
+            $searchResults = array();
+        }
+
+        return new JsonResponse(array("results" => $searchResults, 'count' => count($searchResults)));
     }
 
     /**
@@ -28,10 +48,4 @@ class EdDirectController extends ControllerBase implements ContainerAwareInterfa
     {
         $this ->container = $container;
     }
-
-    public function getContainer()
-    {
-        return $this ->container;
-    }
-
 }
