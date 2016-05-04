@@ -145,7 +145,6 @@ third_party_settings:
         - field_landing_image
         - node_title
         - body
-        - field_landing_cta
         - field_paragraphs
         - panelizer
     fields:

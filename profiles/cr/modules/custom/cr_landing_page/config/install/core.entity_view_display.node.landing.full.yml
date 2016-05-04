@@ -4,7 +4,10 @@ dependencies:
   config:
     - core.entity_view_mode.node.full
     - field.field.node.landing.body
+    - field.field.node.landing.field_landing_background_colour
+    - field.field.node.landing.field_landing_copy_position_alig
     - field.field.node.landing.field_landing_image
+    - field.field.node.landing.field_landing_image_mobile
     - field.field.node.landing.field_paragraphs
     - field.field.node.landing.panelizer
     - node.type.landing
@@ -141,4 +144,7 @@ content:
     weight: 13
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_landing_background_colour: true
+  field_landing_copy_position_alig: true
+  field_landing_image_mobile: true
