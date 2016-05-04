@@ -1,4 +1,9 @@
 <?php
+/**
+ * @file
+ * EdDirect Micro Service Controller.
+ */
+
 namespace Drupal\cr_eddirect_ws\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
@@ -6,22 +11,33 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 
-class EdDirectController extends ControllerBase implements ContainerAwareInterface
-{
-    /**
-     * @var ContainerInterface $container
-     */
-    private $container;
+/**
+ * Implementation of Controller.
+ *
+ * @package Drupal\cr_eddirect_ws
+ */
+class EdDirectController extends ControllerBase implements ContainerAwareInterface {
+  /**
+   * DI Container.
+   *
+   * @var ContainerInterface $container
+   */
+  private $container;
 
-    /**
-     * @param string $searchString
-     * @return JsonResponse
-     */
-    public function lookup($searchString = "")
-    {
-        $edDirectService = $this ->container->get('cr_eddirect_ws.eddirect');
+  /**
+   * Attempt lookup via Service.
+   *
+   * @param string $search
+   *   What name/postcode to search for.
+   *
+   * @return JsonResponse
+   *   Return the response in JSON.
+   */
+  public function lookup($search = "") {
 
-        $postcodeRegex = '/
+    $ed_direct_service = $this->container->get('cr_eddirect_ws.eddirect');
+
+    $postcode_regex = '/
                 ^(([A-Z]{1,2})      # one or two letters
                 ([0-9]{1,2}[A-Z]?)) # one or two numbers, optional
                 \s?                 # space, optional
@@ -29,23 +45,29 @@ class EdDirectController extends ControllerBase implements ContainerAwareInterfa
                 ([A-Z]{1,2})?)      # one or two letters, optional
                 ?$
                 /ix';
-        
-        if (preg_match($postcodeRegex, $searchString)) {
-            $searchResults = $edDirectService ->searchByPostcode($searchString);
-        } elseif (strlen($searchString) > 2) {
-            $searchResults = $edDirectService ->searchByName($searchString);
-        } else {
-            $searchResults = array();
-        }
 
-        return new JsonResponse(array("results" => $searchResults, 'count' => count($searchResults)));
+    if (preg_match($postcode_regex, $search)) {
+      $search_results = $ed_direct_service->searchByPostcode($search);
+    }
+    elseif (strlen($search) > 2) {
+      $search_results = $ed_direct_service->searchByName($search);
+    }
+    else {
+      $search_results = array();
     }
 
-    /**
-     * @param ContainerInterface|null $container
-     */
-    public function setContainer(ContainerInterface $container = null)
-    {
-        $this ->container = $container;
-    }
+    return new JsonResponse(array("results" => $search_results, 'count' => count($search_results)));
+  }
+
+  /**
+   * Set the container service.
+   *
+   * @param ContainerInterface|null $container
+   *    The Container.
+   */
+  public function setContainer(ContainerInterface $container = NULL) {
+
+    $this->container = $container;
+  }
+
 }

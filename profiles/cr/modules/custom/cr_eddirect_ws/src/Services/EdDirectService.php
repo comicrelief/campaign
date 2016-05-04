@@ -1,152 +1,196 @@
 <?php
+/**
+ * @file
+ * EdDirect Symfony Service.
+ */
+
 namespace Drupal\cr_eddirect_ws\Services;
+/**
+ * Implementation.
+ */
+class EdDirectService {
+  /**
+   * Username to authenticate with.
+   *
+   * @var string $username
+   */
+  private $username = "comic";
 
-use Drupal\Core\Cache\CacheBackendInterface;
+  /**
+   * Password to authenticate with.
+   *
+   * @var string password
+   */
+  private $password = "BUspuc63buZu";
 
-class EdDirectService
-{
-    /**
-     * @var string $username
-     */
-    private $username = "comic";
+  /**
+   * Options we always pass to the SoapClient.
+   *
+   * @var array
+   */
+  private $soapOptions = array(
+    "trace" => 1,
+    "exceptions" => 1,
+    "features" => SOAP_SINGLE_ELEMENT_ARRAYS,
+  );
 
-    /**
-     * @var string password
-     */
-    private $password = "BUspuc63buZu";
+  /**
+   * Authentication Endpoint.
+   *
+   * @var string
+   */
+  private $authenticateWsdl = "http://webapi.education.co.uk/webservices/spiritdataservice/ServiceAdmin.asmx?WSDL";
 
-    /**
-     * @var array Options we always pass to the SoapClient
-     */
-    private $soapOptions = array(
-        "exceptions" => 1,
-        "features" => SOAP_SINGLE_ELEMENT_ARRAYS
-    );
+  /**
+   * Establishment/Search Endpoint.
+   *
+   * @var string
+   */
+  private $establishmentWsdl = "http://webapi.education.co.uk/webservices/spiritdataservice/EstablishmentProvider.asmx?WSDL";
 
-    /**
-     * @var string Authentication Endpoint
-     */
-    private $authenticateWSDL = "http://webapi.education.co.uk/webservices/spiritdataservice/ServiceAdmin.asmx?WSDL";
+  /**
+   * Parameter keys that we need to always send to search endpoint.
+   *
+   * @var array
+   */
+  private $minimalSearchOptions = array(
+    'name' => '',
+    'town' => '',
+    'postcode' => '',
+    'key' => '',
+    'typeFilter' => 'BA,BM,BP,BS,DN,I6,IA,IB,IC,IE,IF,IJ,IN,IP,IS,IT,JH,JN,LE,MP,MS,PF,PI,PJ,PP,PS,S6,S8,SG,SH,SL,SN,SP,SR,ST,SU,BN,CM,NM,PN,PT,PU,U1',
+  );
 
-    /**
-     * @var string Establishment/Search Endpoint
-     */
-    private $establishmentWSDL = "http://webapi.education.co.uk/webservices/spiritdataservice/EstablishmentProvider.asmx?WSDL";
+  /**
+   * Handle to configured cache implementation.
+   *
+   * @var CacheBackendInterface
+   */
+  private $cacheHandle;
 
-    /**
-     * @var array Parameter keys that we need to always send to search endpoint
-     */
-    private $minimalSearchOptions = array(
-        'name' => '',
-        'town' => '',
-        'postcode' => '',
-        'key' => '',
-        'typeFilter' => 'BA,BM,BP,BS,DN,I6,IA,IB,IC,IE,IF,IJ,IN,IP,IS,IT,JH,JN,LE,MP,MS,PF,PI,PJ,PP,PS,S6,S8,SG,SH,SL,SN,SP,SR,ST,SU,BN,CM,NM,PN,PT,PU,U1'
-    );
+  /**
+   * EdDirectService constructor.
+   *
+   * @param mixed $cache_handle
+   *    The Cache Implementation.
+   */
+  public function __construct($cache_handle) {
 
-    /**
-     * @var CacheBackendInterface Handle cache implementation
-     */
-    private $cacheHandle;
+    $this->cacheHandle = $cache_handle;
+  }
 
-    /**
-     * EdDirectService constructor.
-     * @param $cacheHandle
-     */
-    public function __construct($cacheHandle)
-    {
-        $this ->cacheHandle = $cacheHandle;
+  /**
+   * Proxy function to _search.
+   *
+   * @param string $postcode
+   *   Postcode of School to search for.
+   *
+   * @return mixed
+   *    Search Results.
+   *
+   * @throws \SoapFault
+   */
+  public function searchByPostcode($postcode) {
+
+    return $this->search('postcode', $postcode);
+  }
+
+  /**
+   * Proxy function to _search.
+   *
+   * @param string $name
+   *   Name of School to search for.
+   *
+   * @return mixed
+   *    Search Results.
+   *
+   * @throws \SoapFault
+   */
+  public function searchByName($name) {
+
+    return $this->search('name', $name);
+  }
+
+  /**
+   * Attempt to authenticate with the service. If successful cache the key.
+   *
+   * @param bool $revalidate_key
+   *   Whether to revalidate the key or not.
+   *
+   * @return string
+   *    Authentication Key.
+   *
+   * @throws \SoapFault
+   */
+  public function authenticate($revalidate_key = FALSE) {
+
+    if (TRUE == $revalidate_key) {
+      $this->cacheHandle->delete("cr_eddirect_ws_key");
     }
 
-    /**
-     * Proxy function to _search
-     *
-     * @param string $postcode Postcode of School to search for
-     * @return mixed
-     * @throws \SoapFault
-     */
-    public function searchByPostcode($postcode)
-    {
-        return $this ->_search('postcode', $postcode);
-    }
+    try {
+      $authenticated_key = $this->cacheHandle->get("cr_eddirect_ws_key");
 
-    /**
-     * Proxy function to _search
-     *
-     * @param string $name  Name of School to search for
-     * @return mixed
-     * @throws \SoapFault
-     */
-    public function searchByName($name)
-    {
-        return $this ->_search('name', $name);
-    }
+      if (!$authenticated_key) {
+        $soap_client = new \SoapClient($this->authenticateWsdl, $this->soapOptions);
 
-    /**
-     * Attempt to authenticate with the service. If successful cache the key
-     *
-     * @param bool $revalidateKey Whether to revalidate the key or not
-     * @return string
-     * @throws \SoapFault
-     */
-    public function authenticate($revalidateKey = false)
-    {
-        if (true == $revalidateKey) {
-            $this ->cacheHandle ->delete("cr_eddirect_ws_key");
+        $soap_response = $soap_client->Authenticate(array(
+          'username' => $this->username,
+          'password' => $this->password,
+        )
+        );
+
+        if (strcmp($soap_response->sessionTime, "0") == 0) {
+          throw new \SoapFault("Could not authenticate");
         }
 
-        try {
-            $authenticatedKey = $this ->cacheHandle ->get("cr_eddirect_ws_key");
+        $stash_key = (string) $soap_response->AuthenticateResult;
+        $stash_until = REQUEST_TIME + $soap_response->sessionTime;
+        $this->cacheHandle->set("cr_eddirect_ws_key", $stash_key, $stash_until);
 
-            if (!$authenticatedKey) {
-                $soapClient = new \SoapClient($this ->authenticateWSDL, $this ->soapOptions);
-
-                $soapResponse = $soapClient ->Authenticate(array(
-                        'username' => $this ->username,
-                        'password' => $this ->password)
-                );
-
-                if (strcmp($soapResponse ->sessionTime, "0") == 0) {
-                    throw new \SoapFault("Could not authenticate");
-                }
-
-                $stashKey = (string)$soapResponse ->AuthenticateResult;
-                $stashUntil = REQUEST_TIME + $soapResponse ->sessionTime;
-                $this ->cacheHandle ->set("cr_eddirect_ws_key", $stashKey, $stashUntil);
-
-                return $stashKey;
-            } else {
-                return $authenticatedKey ->data;
-            }
-        } catch (\SoapFault $e) {
-            throw new \SoapFault($e ->getCode(), $e ->getMessage());
-        }
+        return $stash_key;
+      }
+      else {
+        return $authenticated_key->data;
+      }
     }
-    /**
-     * Attempt a search for a school given parameters.
-     *
-     * @param string $searchType Type of search to make (postcode,name)
-     * @param string $searchValue Value for the searchType
-     * @return mixed
-     * @throws \SoapFault
-     */
-    private function _search($searchType, $searchValue)
-    {
-        try {
-            $authenticatedKey = $this ->authenticate();
-        } catch (\SoapFault $e) {
-            return false;
-        }
-
-        $searchOptions = array($searchType => $searchValue) + array('key' => $authenticatedKey) + $this ->minimalSearchOptions;
-
-        try {
-            $soapClient = new \SoapClient($this ->establishmentWSDL, $this ->soapOptions);
-            $soapResponse = $soapClient ->Search($searchOptions);
-
-            return $soapResponse ->SearchResult ->Establishment;
-        } catch (\SoapFault $e) {
-            throw new \SoapFault($e ->getCode(), $e ->getMessage());
-        }
+    catch (\SoapFault $e) {
+      throw new \SoapFault($e->getCode(), $e->getMessage());
     }
+  }
+  /**
+   * Attempt a search for a school given parameters.
+   *
+   * @param string $search_type
+   *   Type of search to make (postcode,name).
+   * @param string $search_value
+   *   Value for the searchType.
+   *
+   * @return mixed
+   *    Search Result.
+   *
+   * @throws \SoapFault
+   */
+  private function search($search_type, $search_value) {
+
+    try {
+      $authenticated_key = $this->authenticate();
+    }
+    catch (\SoapFault $e) {
+      return FALSE;
+    }
+
+    $search_options = array($search_type => $search_value) + array('key' => $authenticated_key) + $this->minimalSearchOptions;
+
+    try {
+      $soap_client = new \SoapClient($this->establishmentWsdl, $this->soapOptions);
+      $soap_response = $soap_client->Search($search_options);
+
+      return $soap_response->SearchResult->Establishment;
+    }
+    catch (\SoapFault $e) {
+      throw new \SoapFault($e->getCode(), $e->getMessage());
+    }
+  }
+
 }
