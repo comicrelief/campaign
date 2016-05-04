@@ -11,8 +11,6 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
 ]
 %}
 
-{{ kint(content)}}
-
 <div{{ attributes.addClass(classes) }} >
 
   {% if title_position == '--title-above' %}
