@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.storage.paragraph.field_single_msg_row_titlepos
     - paragraphs.paragraphs_type.cr_single_message_row_lr
+_core:
+  default_config_hash: FuwpuPmT5Qm6wzHnTnpAZGyRR59-1V3Uf8JoGedC-T4
 id: paragraph.cr_single_message_row_lr.field_single_msg_row_titlepos
 field_name: field_single_msg_row_titlepos
 entity_type: paragraph

@@ -4,6 +4,8 @@ status: true
 dependencies:
   module:
     - paragraphs
+_core:
+  default_config_hash: kejLdSpx4OQVlnTrP_V_9Z4rqBL4UPgqT-CrD91sHHI
 id: paragraph.field_single_msg_row_titlepos
 field_name: field_single_msg_row_titlepos
 entity_type: paragraph

@@ -11,6 +11,8 @@ dependencies:
   module:
     - responsive_image
     - text
+_core:
+  default_config_hash: tU_LkTfaEAdkHtJV5TefRy4a6Mwligb0ElD730iDaUs
 id: paragraph.cr_single_message_row_lr.default
 targetEntityType: paragraph
 bundle: cr_single_message_row_lr
