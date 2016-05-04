@@ -1,42 +1,46 @@
-$susy: (
-  columns: 12,
-  container: 1200px,
-  gutters: 30px/70px,
-  global-box-sizing: border-box,
-  gutter-position: split,
-  output: float,
-  last-flow: to,
-  debug: (
-    image: show,
-    color: red,
-  ),
-);
-
-@include border-box-sizing;
-
+/* Styles for the Single Message Row L/R variant Paragraph 
+*/
 .paragraph--cr-single-message-row-lr {
   @include container;
+
+  &.paragraph--cr-single-message-row-lr--title-above {
+    .paragraph--cr-single-message-row-lr__title {
+      @include span(12);
+      text-align: center;
+    }
+  }
 }
 
 .paragraph--cr-single-message-row-lr__image,
-.paragraph--cr-single-message-row-lr__title_body_wrapper {
+.paragraph--cr-single-message-row-lr__copy_wrapper {
   @include span(12);
 }
 
-.paragraph--cr-single-message-row-lr__title_body_wrapper {
-  // Placeholder styles
+.paragraph--cr-single-message-row-lr__copy_wrapper {
+
   padding: 30px;
-  background-color: #FFFDE9;
+  
+  h2 {
+    text-align: center;
+  }
 }
 
 @include breakpoint($screen-lg) {
-  .paragraph--cr-single-message-row-lr__image {
-    @include span(6 no-gutter wide);
-    margin: 0;
+
+  .paragraph--cr-single-message-row-lr__image,
+  .paragraph--cr-single-message-row-lr__copy_wrapper {
+    @include span(6);
   }
 
-  .paragraph--cr-single-message-row-lr__title_body_wrapper {
-    @include span(6 no-gutter wide);
-    margin: 0;
+  /* Reposition image and text if Image Right selection is used */
+  .paragraph--cr-single-message-row-lr--image-right {
+    .paragraph--cr-single-message-row-lr__copy_wrapper{
+      @include span(6 first);
+    }
+
+    .paragraph--cr-single-message-row-lr__image {
+      @include span(6 last);
+    }
   }
 }
+

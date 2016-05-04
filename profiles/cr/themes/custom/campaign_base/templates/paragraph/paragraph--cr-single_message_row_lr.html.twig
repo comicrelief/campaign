@@ -1,5 +1,5 @@
-{# Define image position #}
 {% set image_position = content.field_single_message_row_lr_imgr['#items'][0].value == "1" ? '--image-right' : '--image-left' %}
+{% set title_position = content.field_single_msg_row_titlepos['#items'][0].value == "1" ? '--title-above' : '--title-inside' %}
 
 {%
 set classes = [
@@ -7,19 +7,29 @@ set classes = [
 'paragraph--' ~ paragraph.bundle|clean_class,
 view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
 'paragraph--' ~ paragraph.bundle|clean_class ~ image_position,
+'paragraph--' ~ paragraph.bundle|clean_class ~ title_position,
 ]
 %}
 
 <div{{ attributes.addClass(classes) }} >
+
+  {% if title_position == '--title-above' %}
+    <div class="paragraph--{{paragraph.bundle|clean_class}}__title">
+      <h1>{{ content.field_single_message_row_lr_titl }}</h1>
+    </div>
+  {% endif %}
+
   <div class="paragraph--{{paragraph.bundle|clean_class}}__image">
     {{ content.field_single_message_row_lr_imag}}
   </div>
 
-  <div class="paragraph--{{paragraph.bundle|clean_class}}__title_body_wrapper">
-    
-    <div class="paragraph--{{paragraph.bundle|clean_class}}__title">
-      <h2 style="text-align: center; ">{{ content.field_single_message_row_lr_titl }}</h2>
-    </div>
+  <div class="paragraph--{{paragraph.bundle|clean_class}}__copy_wrapper">
+  
+    {% if title_position == '--title-inside' %}
+      <div class="paragraph--{{paragraph.bundle|clean_class}}__title">
+        <h2>{{ content.field_single_message_row_lr_titl }}</h2>
+      </div>
+    {% endif %}
 
     <div class="paragraph--{{paragraph.bundle|clean_class}}__body">
       {{ content.field_single_message_row_lr_body }}
