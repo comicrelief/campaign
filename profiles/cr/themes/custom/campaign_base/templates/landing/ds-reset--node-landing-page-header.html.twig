@@ -3,9 +3,9 @@
 {% set bg_colour = field_landing_background_colour['#items'].value %}
 {% set copy_position = field_landing_copy_position_alig['#items'].value %}
 
-<div class="landing-page contextual-region">
-	<header class="landing-page__header {{ bg_colour }}">
-		<div class="landing-page__bg-image">
+<div class="promo-header contextual-region">
+	<header class="promo-header {{ bg_colour }}">
+		<div class="promo-header__bg-image">
 			{% if mobile_img %}
 				<picture>
 					<source media="(min-width: 739px)" srcset="{{ file_url(desk_img) }}">
@@ -17,9 +17,9 @@
 	  	{% endif %}
 		</div>
 		{{ title_suffix.contextual_links }}
-		<h1 class="landing-page__title">{{ title }}</h1>
-		<div class="landing-page__content">
-			<div class="landing-page__content-inner {{ copy_position }}">
+		<h1 class="promo-header__title">{{ title }}</h1>
+		<div class="promo-header__content">
+			<div class="promo-header__content-inner {{ copy_position }}">
 				{{ body }}
 			</div>
 		</div>
