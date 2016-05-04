@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_landing_copy_position_alig
+    - node.type.landing
+  module:
+    - options
+id: node.landing.field_landing_copy_position_alig
+field_name: field_landing_copy_position_alig
+entity_type: node
+bundle: landing
+label: 'Body copy position'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: copy-position--centre
+default_value_callback: ''
+settings: {  }
+field_type: list_string

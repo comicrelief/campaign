@@ -3,8 +3,10 @@ status: true
 dependencies:
   config:
     - field.field.node.landing.body
-    - field.field.node.landing.field_landing_cta
+    - field.field.node.landing.field_landing_background_colour
+    - field.field.node.landing.field_landing_copy_position_alig
     - field.field.node.landing.field_landing_image
+    - field.field.node.landing.field_landing_image_mobile
     - field.field.node.landing.field_paragraphs
     - field.field.node.landing.panelizer
     - node.type.landing
@@ -12,7 +14,7 @@ dependencies:
     - ds
     - entity_reference_revisions
     - image
-    - link
+    - options
     - panelizer
     - text
     - user
@@ -163,20 +165,29 @@ content:
     weight: 2
     settings: {  }
     third_party_settings: {  }
-  field_landing_cta:
-    weight: 3
-    label: hidden
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
+  field_landing_background_colour:
+    weight: 17
+    label: above
+    settings: {  }
     third_party_settings: {  }
-    type: link
+    type: list_default
+  field_landing_copy_position_alig:
+    weight: 18
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
   field_landing_image:
     weight: 0
     label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_landing_image_mobile:
+    weight: 15
+    label: above
     settings:
       image_style: ''
       image_link: ''
