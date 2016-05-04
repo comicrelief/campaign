@@ -1,5 +1,5 @@
 {% set image_position = content.field_single_message_row_lr_imgr['#items'][0].value == "1" ? '--image-right' : '--image-left' %}
-{% set title_position = content.field_single_msg_row_titlepos['#items'][0].value == 1 ? '--title-above' : '--title-inside' %}
+{% set title_position = content.field_single_msg_row_titlepos['#items'][0].value == "1" ? '--title-above' : '--title-inside' %}
 
 {%
 set classes = [
