@@ -1,6 +1,0 @@
-name: Comic Relief edDirect Web Services Integration
-# core: 8.x
-description: Comic Relief edDirect Web Services Integration
-core: 8.x
-package: Comic Relief
-type: module
