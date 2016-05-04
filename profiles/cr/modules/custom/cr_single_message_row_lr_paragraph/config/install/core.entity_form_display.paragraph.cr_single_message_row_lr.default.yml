@@ -14,7 +14,7 @@ dependencies:
     - image
     - text
 _core:
-  default_config_hash: go55AYO_J2dZjUngf1fZRTMuOcF3ASuIIxva5taWucY
+  default_config_hash: 1SgtSDds0Tfzq3y0HNn8O2HPwx3MNnpoZtHBPvq1pOQ
 id: paragraph.cr_single_message_row_lr.default
 targetEntityType: paragraph
 bundle: cr_single_message_row_lr

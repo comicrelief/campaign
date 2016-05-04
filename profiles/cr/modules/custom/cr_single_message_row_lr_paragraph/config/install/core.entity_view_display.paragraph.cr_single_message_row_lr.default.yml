@@ -7,12 +7,13 @@ dependencies:
     - field.field.paragraph.cr_single_message_row_lr.field_single_message_row_lr_imag
     - field.field.paragraph.cr_single_message_row_lr.field_single_message_row_lr_imgr
     - field.field.paragraph.cr_single_message_row_lr.field_single_message_row_lr_titl
+    - field.field.paragraph.cr_single_message_row_lr.field_single_msg_row_titlepos
     - paragraphs.paragraphs_type.cr_single_message_row_lr
   module:
     - responsive_image
     - text
 _core:
-  default_config_hash: tU_LkTfaEAdkHtJV5TefRy4a6Mwligb0ElD730iDaUs
+  default_config_hash: Vv0_dIbYaFyVctaQdL21p1EeQ7FLBkeBhXNfc5tegTY
 id: paragraph.cr_single_message_row_lr.default
 targetEntityType: paragraph
 bundle: cr_single_message_row_lr
@@ -48,6 +49,15 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+  field_single_msg_row_titlepos:
+    type: boolean
+    weight: 0
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
 hidden:
   created: true
   social_links: true
