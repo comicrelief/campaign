@@ -1,12 +1,24 @@
-/* Styles for the Single Message Row L/R variant Paragraph 
-*/
+// Single Message Row L/R variant Paragraph
+//
+// This is a Single message row
+//
+// Markup: _paragraph--cr-single-message-row--LR.hbs
+//
+// .paragraph--cr-single-message-row-lr--image-right    - Image displayed on the right
+//
+// Style guide: Single-message row - L/R
+
+
 .paragraph--cr-single-message-row-lr {
   @include container;
+
+  .paragraph--cr-single-message-row-lr__title {
+    text-align: center;
+  }
 
   &.paragraph--cr-single-message-row-lr--title-above {
     .paragraph--cr-single-message-row-lr__title {
       @include span(12);
-      text-align: center;
     }
   }
 }
