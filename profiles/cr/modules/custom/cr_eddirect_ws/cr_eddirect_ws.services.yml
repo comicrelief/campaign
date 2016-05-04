@@ -1,9 +1,0 @@
-services:
-  cr_eddirect_ws.EdDirect:
-    class: Drupal\cr_eddirect_ws\Services\EdDirectService
-    arguments: [@cache.default]
-    cache.default:
-      class: Drupal\Core\Cache\CacheBackendInterface
-      tags:
-        - { name: cache.bin }
-      factory: cache_factory:get
