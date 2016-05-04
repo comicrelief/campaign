@@ -6,18 +6,17 @@
 <div class="landing-page contextual-region">
 	<header class="landing-page__header {{ bg_colour }}">
 		<div class="landing-page__bg-image">
-			<picture>
-				<source media="(min-width: 739px)" srcset="{{ file_url(desk_img) }}">
-	  		<source srcset="{{ file_url(mobile_img) }}">
-	  		<img src="{{ file_url(mobile_img) }}" alt="">
-			</picture>
+			{% if mobile_img %}
+				<picture>
+					<source media="(min-width: 739px)" srcset="{{ file_url(desk_img) }}">
+	  			<source srcset="{{ file_url(mobile_img) }}">
+	  			<img src="{{ file_url(desk_img) }}" alt="">
+				</picture>
+	  	{% else %}
+	  		{{ field_landing_image }}
+	  	{% endif %}
 		</div>
 		{{ title_suffix.contextual_links }}
-		{# {% if field_landing_image_mobile %}
-			<div class="landing-page__image-mobile">
-				{{ field_landing_image_mobile }}
-			</div>
-		{% endif %} #}
 		<h1 class="landing-page__title">{{ title }}</h1>
 		<div class="landing-page__content">
 			<div class="landing-page__content-inner {{ copy_position }}">
