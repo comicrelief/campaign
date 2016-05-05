@@ -152,7 +152,7 @@ config_devel:
   - responsive_image.styles.cw_4_3_image
   - responsive_image.styles.cw_landscape_image
   - responsive_image.styles.bg_rich_text
-  
+
   # Retina image styles
   - image.style.bg_rich_text_narrow_2x
   - image.style.bg_rich_text_wide_2x_
@@ -185,4 +185,5 @@ config_devel:
 
   # Contributed modules
   - pathauto.pattern.basic_page
+  - pathauto.settings
   # - simple_sitemap.settings
