@@ -48,6 +48,9 @@ class EdDirect extends EntityAutocomplete {
   }
 
 
+  /**
+   * Process the entity autocomplete form element.
+   */
   public static function processEdDirect(array &$element, FormStateInterface $form_state, array &$complete_form) {
     // Nothing to do if there is no target entity type.
     if (empty($element['#target_type'])) {
@@ -83,4 +86,5 @@ class EdDirect extends EntityAutocomplete {
 
     return $element;
   }
+
 }
