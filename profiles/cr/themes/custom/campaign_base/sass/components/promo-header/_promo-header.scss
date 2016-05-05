@@ -28,12 +28,15 @@
     }
   }
   &.bg--white {
-    color: $black;
     background-color: $white;
-
-    @include breakpoint($screen-sm-max) {
-      background-color: transparent;
+    .promo-header__content p {
+    	color: $black;
+	    @include breakpoint($screen-sm-max) {
+    		color: $white;
+	      background-color: transparent;
+	    }
     }
+
   }
 }
 .promo-header__title {
