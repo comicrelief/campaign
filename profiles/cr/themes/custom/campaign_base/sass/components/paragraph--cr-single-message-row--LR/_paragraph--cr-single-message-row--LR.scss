@@ -12,6 +12,10 @@
 .paragraph--cr-single-message-row-lr {
   @include container;
 
+  h2 {
+    text-align: center;
+  }
+
   .paragraph--cr-single-message-row-lr__title {
     text-align: center;
   }
@@ -26,14 +30,6 @@
 .paragraph--cr-single-message-row-lr__image,
 .paragraph--cr-single-message-row-lr__copy_wrapper {
   @include span(12);
-}
-
-.paragraph--cr-single-message-row-lr__copy_wrapper {
-  padding: 30px;
-  
-  h2 {
-    text-align: center;
-  }
 }
 
 @include breakpoint($screen-lg) {
