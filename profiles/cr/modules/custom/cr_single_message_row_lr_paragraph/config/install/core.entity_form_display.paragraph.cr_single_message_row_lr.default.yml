@@ -5,16 +5,15 @@ dependencies:
   config:
     - field.field.paragraph.cr_single_message_row_lr.field_single_message_row_lr_body
     - field.field.paragraph.cr_single_message_row_lr.field_single_message_row_lr_imag
-    - field.field.paragraph.cr_single_message_row_lr.field_single_message_row_lr_imgr
     - field.field.paragraph.cr_single_message_row_lr.field_single_message_row_lr_titl
-    - field.field.paragraph.cr_single_message_row_lr.field_single_msg_row_titlepos
+    - field.field.paragraph.cr_single_message_row_lr.field_single_msg_row_variant
     - image.style.thumbnail
     - paragraphs.paragraphs_type.cr_single_message_row_lr
   module:
     - image
     - text
 _core:
-  default_config_hash: 1SgtSDds0Tfzq3y0HNn8O2HPwx3MNnpoZtHBPvq1pOQ
+  default_config_hash: _EfOeQo4sdE1OZIx0CF7Zd1falnRGmFS1WXI7CGkfOw
 id: paragraph.cr_single_message_row_lr.default
 targetEntityType: paragraph
 bundle: cr_single_message_row_lr
@@ -34,12 +33,6 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
-  field_single_message_row_lr_imgr:
-    weight: 4
-    settings:
-      display_label: false
-    third_party_settings: {  }
-    type: boolean_checkbox
   field_single_message_row_lr_titl:
     weight: 0
     settings:
@@ -47,12 +40,11 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-  field_single_msg_row_titlepos:
-    type: boolean_checkbox
-    weight: 1
-    settings:
-      display_label: false
+  field_single_msg_row_variant:
+    weight: 5
+    settings: {  }
     third_party_settings: {  }
+    type: options_select
 hidden:
   created: true
   status: true

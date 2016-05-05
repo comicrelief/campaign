@@ -8,25 +8,14 @@
 //
 // Style guide: Single-message row - L/R
 
-
+/* Global styles */
 .paragraph--cr-single-message-row-lr {
   @include container;
 
-  h2 {
-    text-align: center;
-  }
-
-  .paragraph--cr-single-message-row-lr__title {
-    text-align: center;
-  }
-
-  &.paragraph--cr-single-message-row-lr--title-above {
-    .paragraph--cr-single-message-row-lr__title {
-      @include span(12);
-    }
-  }
+  h2 { text-align: center; }
 }
 
+.paragraph--cr-single-message-row-lr__title,
 .paragraph--cr-single-message-row-lr__image,
 .paragraph--cr-single-message-row-lr__copy_wrapper {
   @include span(12);
@@ -34,19 +23,22 @@
 
 @include breakpoint($screen-lg) {
 
-  .paragraph--cr-single-message-row-lr__image,
-  .paragraph--cr-single-message-row-lr__copy_wrapper {
-    @include span(6);
+  .paragraph--cr-single-message-row-lr--title-above-image-left, 
+  .paragraph--cr-single-message-row-lr--title-inside-image-left {
+    .paragraph--cr-single-message-row-lr__image,
+    .paragraph--cr-single-message-row-lr__copy_wrapper {
+      @include span(6);
+    }
   }
 
-  /* Reposition image and text if Image Right selection is used */
-  .paragraph--cr-single-message-row-lr--image-right {
-    .paragraph--cr-single-message-row-lr__copy_wrapper{
+  /* Reposition image and text for 'image right' */
+  .paragraph--cr-single-message-row-lr--title-above-image-right, 
+  .paragraph--cr-single-message-row-lr--title-inside-image-right {
+    .paragraph--cr-single-message-row-lr__copy_wrapper {
       @include span(6 first);
     }
-
     .paragraph--cr-single-message-row-lr__image {
       @include span(6 last);
-    }
+    } 
   }
 }

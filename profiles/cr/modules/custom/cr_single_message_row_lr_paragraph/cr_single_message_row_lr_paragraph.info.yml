@@ -8,16 +8,14 @@ dependencies:
   - entity_reference_revisions
 config_devel:
 # Paragraph config
+  - paragraphs.paragraphs_type.cr_single_message_row_lr
   - core.entity_view_display.paragraph.cr_single_message_row_lr.default
   - core.entity_form_display.paragraph.cr_single_message_row_lr.default
   - field.field.paragraph.cr_single_message_row_lr.field_single_message_row_lr_imag
-  - field.field.paragraph.cr_single_message_row_lr.field_single_message_row_lr_imgr
   - field.field.paragraph.cr_single_message_row_lr.field_single_message_row_lr_body
   - field.field.paragraph.cr_single_message_row_lr.field_single_message_row_lr_titl
-  - field.field.paragraph.cr_single_message_row_lr.field_single_msg_row_titlepos
-  - paragraphs.paragraphs_type.cr_single_message_row_lr
+  - field.field.paragraph.cr_single_message_row_lr.field_single_msg_row_variant
   - field.storage.paragraph.field_single_message_row_lr_titl
-  - field.storage.paragraph.field_single_message_row_lr_imgr
   - field.storage.paragraph.field_single_message_row_lr_imag
   - field.storage.paragraph.field_single_message_row_lr_body
-  - field.storage.paragraph.field_single_msg_row_titlepos
+  - field.storage.paragraph.field_single_msg_row_variant

@@ -1,19 +1,16 @@
-{% set image_position = content.field_single_message_row_lr_imgr['#items'][0].value == "1" ? '--image-right' : '' %}
-{% set title_position = content.field_single_msg_row_titlepos['#items'][0].value == "1" ? '--title-above' : '--title-inside' %}
+{% set variant_type = content.field_single_msg_row_variant['#items'][0].value %}
 
 {%
 set classes = [
 'paragraph',
 'paragraph--' ~ paragraph.bundle|clean_class,
-view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
-'paragraph--' ~ paragraph.bundle|clean_class ~ image_position,
-'paragraph--' ~ paragraph.bundle|clean_class ~ title_position,
+'paragraph--' ~ paragraph.bundle|clean_class ~ '--'~variant_type,
 ]
 %}
 
-<div{{ attributes.addClass(classes) }} >
+<div {{ attributes.addClass(classes) }} >
 
-  {% if title_position == '--title-above' %}
+  {% if variant_type == 'title-above-image-left' or variant_type == 'title-above-image-right' %}
     <div class="paragraph--{{paragraph.bundle|clean_class}}__title">
       <h2>{{ content.field_single_message_row_lr_titl }}</h2>
     </div>
@@ -25,7 +22,7 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
 
   <div class="paragraph--{{paragraph.bundle|clean_class}}__copy_wrapper">
   
-    {% if title_position == '--title-inside' %}
+    {% if variant_type == 'title-inside-image-left' or variant_type == 'title-inside-image-right' %}
       <div class="paragraph--{{paragraph.bundle|clean_class}}__title">
         <h2>{{ content.field_single_message_row_lr_titl }}</h2>
       </div>
