@@ -1,17 +1,19 @@
 // Single Message Row L/R variant Paragraph
 //
-// This is a Single message row
+// This is a Single message row LR
 //
 // Markup: _paragraph--cr-single-message-row--LR.hbs
 //
-// .paragraph--cr-single-message-row-lr--image-right    - Image displayed on the right
+// .paragraph--cr-single-message-row-lr--title-above-image-right  - Title above, image on right
 //
-// Style guide: Single-message row - L/R
+//
+// Style guide: Single Message LR row - L/R variants
 
 /* Global styles */
 .paragraph--cr-single-message-row-lr {
+  
   @include container;
-
+  
   h2 { text-align: center; }
 }
 
@@ -23,8 +25,7 @@
 
 @include breakpoint($screen-lg) {
 
-  .paragraph--cr-single-message-row-lr--title-above-image-left, 
-  .paragraph--cr-single-message-row-lr--title-inside-image-left {
+  .paragraph--cr-single-message-row-lr {
     .paragraph--cr-single-message-row-lr__image,
     .paragraph--cr-single-message-row-lr__copy_wrapper {
       @include span(6);
@@ -42,3 +43,4 @@
     } 
   }
 }
+
