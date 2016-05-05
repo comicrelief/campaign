@@ -152,6 +152,15 @@ config_devel:
   - responsive_image.styles.cw_landscape_image
   - responsive_image.styles.bg_rich_text
 
+  # Retina image styles
+  - image.style.bg_rich_text_narrow_2x
+  - image.style.bg_rich_text_wide_2x_
+  - image.style.cw_4_3_lg_740x556_2x_
+  - image.style.cw_4_3_md_316_x_303_2x_
+  - image.style.cw_16_9_lg_800x450_2x_
+  - image.style.cw_16_9_md_680x382_2x_
+  - image.style.full_node_sm_442x271_2x_
+
   # Metatags
   - metatag.metatag_defaults.403
   - metatag.metatag_defaults.404
@@ -175,4 +184,5 @@ config_devel:
 
   # Contributed modules
   - pathauto.pattern.basic_page
+  - pathauto.settings
   # - simple_sitemap.settings

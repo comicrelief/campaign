@@ -1,13 +1,16 @@
+uuid: 1698950b-7687-4241-b487-70ef5e3233c8
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: QoJUdfAr9QN0iUvhInZnEjr36UZNeXzs1Na7rFl23cU
 name: cw_medium_570x365
-label: 'CW 16:9 MD 930x523'
+label: 'CW 16:9 MD 680x382'
 effects:
   b15cd13b-9856-42da-b400-b01a7c05bf74:
     uuid: b15cd13b-9856-42da-b400-b01a7c05bf74
     id: image_scale_and_crop
     weight: 1
     data:
-      width: 930
-      height: 523
+      width: 680
+      height: 382

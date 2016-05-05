@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: partners
+label: Partners
+type: 'canonical_entities:node'
+pattern: 'partners/[node:title]'
+selection_criteria:
+  7e5d0b2e-ef37-42d3-9b9f-7d4c21729b3f:
+    id: node_type
+    bundles:
+      partner: partner
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 7e5d0b2e-ef37-42d3-9b9f-7d4c21729b3f
+selection_logic: and
+weight: -5
+relationships: {  }
