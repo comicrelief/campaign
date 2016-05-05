@@ -16,6 +16,12 @@ dependencies:
   - youtube
   - metatag
   - pathauto
+  - panelizer
+  - responsive_image
+  - ds
+  - rdf
+  - menu_ui
+  - filter
 
 config_devel:
   - taxonomy.vocabulary.tags
