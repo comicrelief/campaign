@@ -1,0 +1,34 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.yamlform.body
+    - field.field.node.yamlform.yamlform
+    - node.type.yamlform
+  module:
+    - text
+    - user
+    - yamlform
+id: node.yamlform.default
+targetEntityType: node
+bundle: yamlform
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+  yamlform:
+    weight: 102
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: yamlform_entity_reference_entity_view
+hidden:
+  langcode: true
