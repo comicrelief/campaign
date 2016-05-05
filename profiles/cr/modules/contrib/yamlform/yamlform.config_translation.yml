@@ -1,0 +1,5 @@
+yamlform.settings:
+  title: 'YAML form settings'
+  base_route_name: yamlform.settings
+  names:
+    - yamlform.settings
