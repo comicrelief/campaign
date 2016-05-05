@@ -1,0 +1,240 @@
+options: |
+  '840': 'Estados Unidos de América'
+  '4': Afganistán
+  '8': Albania
+  '12': Argelia
+  '16': 'American Samoa'
+  '20': Andorra
+  '24': Angola
+  '660': Anguilla
+  '010': 'la Antártida'
+  '028': 'Antigua y Barbuda'
+  '032': Argentina
+  '051': Armenia
+  '533': Aruba
+  '036': Australia
+  '040': Austria
+  '031': Azerbaiyán
+  '044': Bahamas
+  '048': Bahrein
+  '050': Bangladesh
+  '052': Barbados
+  '112': Bielorrusia
+  '056': Bélgica
+  '084': Belice
+  '204': Benin
+  '060': Bermuda
+  '064': Bhután
+  '068': Bolivia
+  '070': 'Bosnia y Herzegovina'
+  '072': Botswana
+  '074': 'Isla Bouvet'
+  '076': Brasil
+  '086': 'Territorio Británico del Océano Índico'
+  '092': 'British Virgin Islands'
+  '096': 'Brunei'
+  '100': Bulgaria
+  '854': 'Burkina Faso'
+  '108': Burundi
+  '116': Camboya
+  '120': Camerún
+  '124': Canadá
+  '132': 'Cabo Verde'
+  '136': 'Islas Cayman'
+  '140': 'República Centroafricana'
+  '148': 'el Chad'
+  '152': Chile
+  '156': 'de China'
+  '162': 'Isla de Navidad'
+  '166': 'Cocos (Keeling Islas'
+  '170': Colombia
+  '174': Comoras
+  '180': Congo
+  '178': Congo
+  '184': 'Islas Cook'
+  '188': 'Costa Rica'
+  '384': 'Costa de Marfil'
+  '192': Cuba
+  '196': Chipre
+  '203': '«República Checa»'
+  '208': Dinamarca
+  '262': Djibouti
+  "212": Dominica
+  '214': "República Dominicana"
+  '218': Ecuador
+  '818': Egipto
+  '222': 'El Salvador'
+  '226': 'de Guinea Ecuatorial'
+  '232': Eritrea
+  '233': Estonia
+  '231': Etiopía
+  '234': 'Islas Feroe'
+  '238': 'Islas Malvinas'
+  '242': 'Fiji las islas Fiji'
+  '246': Finlandia
+  '250': Francia
+  '254': 'Guayana francesa'
+  '258': 'Polinesia Francesa'
+  '260': 'Territorios Franceses del Sur'
+  '266': Gabón
+  '270': 'Gambia el'
+  '268': Georgia
+  '276': Alemania
+  '288': Ghana
+  '292': Gibraltar
+  '300': Grecia
+  '304': Groenlandia
+  '308': Granada
+  '312': Guadalupe
+  '316': de Guam
+  '320': Guatemala
+  '324': Guinea
+  '624': Guinea-Bissau
+  '328': Guyana
+  '332': Haití
+  '334': 'Islas Heard y McDonald'
+  '336': 'Santa Sede (Estado de la Ciudad del Vatican)'
+  '340': Honduras
+  '344': 'Hong Kong'
+  '191': 'Hrvatska (Croacia'
+  '348': Hungría
+  '352': Islandia
+  '356': India
+  '360': Indonesia
+  '364': Irán
+  '368': Irak
+  '372': Irlanda
+  '376': Israel
+  '380': Italia
+  '388': Jamaica
+  '392': Japón
+  '400': Jordan
+  '398': Kazajstán
+  '404': Kenia
+  '296': Kiribati
+  '410': Corea
+  '408': Corea
+  '414': Kuwait
+  '417': 'República Kirguisa'
+  '418': 'de la República ''Popular Lao Democrática'''
+  '428': Letonia
+  '422': el Líbano
+  '426': Lesotho
+  '430': Liberia
+  '434': 'Libia'
+  "438": Liechtenstein
+  '440': Lituania
+  '442': Luxemburgo
+  '446': Macao
+  '807': Macedonia
+  '450': Madagascar
+  '454': Malawi
+  '458': Malasia
+  '462': Maldivas
+  '466': Mali
+  '470': Malta
+  '584': 'Islas Marshall'
+  '474': Martinica
+  '478': Mauritania
+  '480': Mauricio
+  '175': Mayotte
+  '484': México
+  '583': Micronesia
+  '498': Moldavia
+  '492': Mónaco
+  '496': Mongolia
+  '500': Montserrat
+  '504': Marruecos
+  '508': Mozambique
+  '104': Myanmar
+  '516': Namibia
+  '520': Nauru
+  '524': Nepal
+  '528': 'Países Bajos'
+  '530': 'Antillas Holandesas'
+  '540': 'Nueva Caledonia'
+  '554': 'Nueva Zelanda'
+  '558': Nicaragua
+  '562': Níger
+  '566': Nigeria
+  '570': Niue
+  '574': 'Isla Norfolk'
+  '580': 'Islas Mariana del Norte'
+  '578': Noruega
+  '512': Omán
+  '586': Pakistán
+  '585': Palau
+  '275': 'Palestina'
+  '591': Panamá
+  '598': 'de Papua Nueva Guinea'
+  '600': Paraguay
+  '604': Perú
+  '608': Filipinas
+  '612': 'Isla Pitcairn'
+  '616': Polonia
+  '620': Portugal
+  '630': 'Puerto Rico'
+  '634': Qatar
+  '638': Reunión
+  '642': Rumania
+  '643': 'Rusia'
+  '646': Ruanda
+  '882': Samoa
+  '674': «San Marino»
+  '678': 'Santo Tomé y Príncipe'
+  '682': 'de Arabia Saudita'
+  '686': Senegal
+  '891': '«Serbia y Montenegro»'
+  '690': Seychelles
+  '694': 'Sierra Leona'
+  '702': Singapur
+  '703': Eslovaquia
+  '705': Eslovenia
+  '090': 'Islas Salomón'
+  '706': Somalia
+  '710': 'Sudáfrica'
+  '239': 'Georgia del Sur y Sandwich del Sur'
+  '724': España
+  '144': 'Sri Lanka'
+  '654': 'St. Helena '
+  '659': 'St. Kitts y Nevis'
+  '662': 'St. Lucía '
+  '666': 'St. Pedro y Miguelón'
+  '670': 'St. Vicente y las Granadinas'
+  '736': 'Sudán del'
+  '740': Surinam
+  '744': 'Svalbard y Jan Mayen'
+  '748': Swazilandia
+  '752': Suecia
+  '756': Suiza
+  '760': 'Siria'
+  '158': Taiwan
+  '762': Tayikistán
+  '834': Tanzania
+  '764': Tailandia
+  '626': Timor Oriental
+  '768': Togo
+  '772': Tokelau
+  '776': Tonga
+  '780': 'Trinidad y Tobago'
+  '788': Túnez
+  '792': Turquía
+  '795': Turkmenistán
+  '796': 'Turks y Caicos'
+  '798': Tuvalu
+  '800': Uganda
+  '804': Ucrania
+  '784': 'Emiratos Árabes Unidos'
+  '826': 'Reino Unido de Gran Bretaña e Irlanda del Norte'
+  '581': 'Estados Unidos Islas menores alejadas de los'
+  '858': Uruguay
+  '850': 'Islas Vírgenes Estadounidenses'
+  '860': Uzbekistán
+  '548': Vanuatu
+  '862': Venezuela
+  '704': 'Vietnam'
+  '876': 'Wallis y Futuna'
+  '732': 'Sahara Occidental'
+  '887': Yemen
+  '894': Zambia
+  '716': Zimbabwe
