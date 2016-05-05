@@ -12,7 +12,7 @@ Feature: Create
 
   @api
   Scenario: Create news-article
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged in as a user with the "editor" role
     When I go to "node/add/article"
     And I enter "article one" for "title"
     And I enter "22/03/2016" for "edit-field-article-publish-date-0-value-date"
@@ -21,7 +21,7 @@ Feature: Create
     And I enter "An amazing intro" for "edit-field-article-intro-0-value"
     And I enter "Amazing body copy" for "edit-body-0-value"
     And I enter "tag 1, tag 2, tag 3" for "edit-field-article-tags-target-id"
-    And press "Save and publish"
+    And press "Save"
     When I go to "/whats-going-on/article-one"
     # Then I should see "article one"
     # Then I should see "22/03/2016"

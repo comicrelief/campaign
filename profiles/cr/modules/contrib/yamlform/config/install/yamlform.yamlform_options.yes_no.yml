@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: yes_no
+label: Yes/No
+options: |
+  Yes: Yes
+  No: No

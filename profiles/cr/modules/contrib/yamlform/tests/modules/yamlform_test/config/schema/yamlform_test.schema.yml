@@ -1,0 +1,9 @@
+# Schema for the configuration files of the YAML form test module.
+
+yamlform.handler.test:
+  type: mapping
+  label: 'Test'
+  mapping:
+    message:
+      label: 'Message'
+      type: string
