@@ -51,6 +51,19 @@ $coral:          #f9a567;
 
 $olive: green;
 
+/**
+ * Parameters
+ * $inlinelink[1] = name
+ * $inlinelink[2] = border-color
+ * $inlinelink[3] = border-color for hover & focus
+ */
+$linkList: (
+  ("red" $red $coral),
+  ("black" $black $jasper-grey), 
+  ("grey" $greyboy-grey $black),
+  ("white" $white $cw-grey)
+);
+
 /* SR16  */
 $purple:         #a25eb5;
 $blue:           #00c2df;
