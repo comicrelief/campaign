@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\cr_preorder\Controller\EntityEddirectController.
+ */
+
 namespace Drupal\cr_preorder\Controller;
 
 use Drupal\Component\Utility\Crypt;
@@ -50,9 +55,11 @@ class EntityEddirectController extends ControllerBase {
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
+    exit("die");
+    kint("wat");
     return new static(
-      $container->get('entity.autocomplete_matcher'),
-      $container->get('keyvalue')->get('entity_autocomplete')
+      $container->get('json.autocomplete_matcher'),
+      $container->get('keyvalue')->get('entity_eddirect')
     );
   }
 
@@ -76,8 +83,9 @@ class EntityEddirectController extends ControllerBase {
    *   Thrown if the selection settings key is not found in the key/value store
    *   or if it does not match the stored data.
    */
-  public function handleAutocomplete(Request $request, $target_type, $selection_handler, $selection_settings_key) {
+  public function handleAutocomplete(Request $request, $selection_handler, $selection_settings_key) {
     $matches = array();
+    kint($request);
     // Get the typed string from the URL, if it exists.
     if ($input = $request->query->get('q')) {
       $typed_string = Tags::explode($input);
@@ -87,7 +95,7 @@ class EntityEddirectController extends ControllerBase {
       // stored in the key/value store.
       $selection_settings = $this->keyValue->get($selection_settings_key, FALSE);
       if ($selection_settings !== FALSE) {
-        $selection_settings_hash = Crypt::hmacBase64(serialize($selection_settings) . $target_type . $selection_handler, Settings::getHashSalt());
+        $selection_settings_hash = Crypt::hmacBase64(serialize($selection_settings) . $selection_handler, Settings::getHashSalt());
         if ($selection_settings_hash !== $selection_settings_key) {
           // Disallow access when the selection settings hash does not match the
           // passed-in key.
@@ -100,7 +108,7 @@ class EntityEddirectController extends ControllerBase {
         throw new AccessDeniedHttpException();
       }
 
-      $matches = $this->matcher->getMatches($target_type, $selection_handler, $selection_settings, $typed_string);
+      $matches = $this->matcher->getMatches('user', $selection_handler, $selection_settings, $typed_string);
     }
 
     return new JsonResponse($matches);
