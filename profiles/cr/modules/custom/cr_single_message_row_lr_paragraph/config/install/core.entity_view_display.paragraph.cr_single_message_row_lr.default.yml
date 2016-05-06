@@ -40,7 +40,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-  field_single_msg_row_variant:
+  field_single_msg_row_lr_variant:
     weight: 4
     label: above
     settings: {  }

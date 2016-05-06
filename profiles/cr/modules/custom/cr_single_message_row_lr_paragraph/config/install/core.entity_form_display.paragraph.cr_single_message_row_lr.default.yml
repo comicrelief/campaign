@@ -40,7 +40,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-  field_single_msg_row_variant:
+  field_single_msg_row_lr_variant:
     weight: 5
     settings: {  }
     third_party_settings: {  }

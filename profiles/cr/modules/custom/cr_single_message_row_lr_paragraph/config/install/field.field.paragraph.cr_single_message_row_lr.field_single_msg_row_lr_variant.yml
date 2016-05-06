@@ -8,7 +8,7 @@ dependencies:
   module:
     - options
 id: paragraph.cr_single_message_row_lr.field_single_msg_row_lr_variant
-field_name: field_single_msg_row_variant
+field_name: field_single_msg_row_lr_variant
 entity_type: paragraph
 bundle: cr_single_message_row_lr
 label: Variant
