@@ -5,8 +5,8 @@ dependencies:
   module:
     - paragraphs
     - text
-id: paragraph.field_single_message_row_lr_body
-field_name: field_single_message_row_lr_body
+id: paragraph.field_single_msg_row_lr_body
+field_name: field_single_msg_row_lr_body
 entity_type: paragraph
 type: text_long
 settings: {  }

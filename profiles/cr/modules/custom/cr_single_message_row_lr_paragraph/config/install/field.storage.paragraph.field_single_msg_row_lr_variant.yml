@@ -5,8 +5,8 @@ dependencies:
   module:
     - options
     - paragraphs
-id: paragraph.field_single_msg_row_variant
-field_name: field_single_msg_row_variant
+id: paragraph.field_single_msg_row_lr_variant
+field_name: field_single_msg_row_lr_variant
 entity_type: paragraph
 type: list_string
 settings:

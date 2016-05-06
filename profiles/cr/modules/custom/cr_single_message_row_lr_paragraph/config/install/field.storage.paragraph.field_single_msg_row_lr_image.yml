@@ -6,8 +6,8 @@ dependencies:
     - file
     - image
     - paragraphs
-id: paragraph.field_single_message_row_lr_imag
-field_name: field_single_message_row_lr_imag
+id: paragraph.field_single_msg_row_lr_image
+field_name: field_single_msg_row_lr_image
 entity_type: paragraph
 type: image
 settings:

@@ -3,12 +3,12 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_single_message_row_lr_imag
+    - field.storage.paragraph.field_single_msg_row_lr_image
     - paragraphs.paragraphs_type.cr_single_message_row_lr
   module:
     - image
-id: paragraph.cr_single_message_row_lr.field_single_message_row_lr_imag
-field_name: field_single_message_row_lr_imag
+id: paragraph.cr_single_message_row_lr.field_single_msg_row_lr_image
+field_name: field_single_msg_row_lr_image
 entity_type: paragraph
 bundle: cr_single_message_row_lr
 label: Image

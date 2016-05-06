@@ -1,4 +1,4 @@
-{% set variant_type = content.field_single_msg_row_variant['#items'][0].value %}
+{% set variant_type = content.field_single_msg_row_lr_variant['#items'][0].value %}
 
 {%
 set classes = [
@@ -12,24 +12,24 @@ set classes = [
 
   {% if variant_type == 'title-above-image-left' or variant_type == 'title-above-image-right' %}
     <div class="paragraph--{{paragraph.bundle|clean_class}}__title">
-      <h2>{{ content.field_single_message_row_lr_titl }}</h2>
+      <h2>{{ content.field_single_msg_row_lr_title }}</h2>
     </div>
   {% endif %}
 
   <div class="paragraph--{{paragraph.bundle|clean_class}}__image">
-    {{ content.field_single_message_row_lr_imag}}
+    {{ content.field_single_msg_row_lr_image}}
   </div>
 
   <div class="paragraph--{{paragraph.bundle|clean_class}}__copy_wrapper">
   
     {% if variant_type == 'title-inside-image-left' or variant_type == 'title-inside-image-right' %}
       <div class="paragraph--{{paragraph.bundle|clean_class}}__title">
-        <h2>{{ content.field_single_message_row_lr_titl }}</h2>
+        <h2>{{ content.field_single_msg_row_lr_title }}</h2>
       </div>
     {% endif %}
 
     <div class="paragraph--{{paragraph.bundle|clean_class}}__body">
-      {{ content.field_single_message_row_lr_body }}
+      {{ content.field_single_msg_row_lr_body }}
     </div>
   </div>
 </div>

@@ -4,8 +4,8 @@ status: true
 dependencies:
   module:
     - paragraphs
-id: paragraph.field_single_message_row_lr_titl
-field_name: field_single_message_row_lr_titl
+id: paragraph.field_single_msg_row_lr_title
+field_name: field_single_msg_row_lr_title
 entity_type: paragraph
 type: string
 settings:

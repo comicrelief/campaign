@@ -3,10 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_single_message_row_lr_titl
+    - field.storage.paragraph.field_single_msg_row_lr_title
     - paragraphs.paragraphs_type.cr_single_message_row_lr
-id: paragraph.cr_single_message_row_lr.field_single_message_row_lr_titl
-field_name: field_single_message_row_lr_titl
+id: paragraph.cr_single_message_row_lr.field_single_msg_row_lr_title
+field_name: field_single_msg_row_lr_title
 entity_type: paragraph
 bundle: cr_single_message_row_lr
 label: Title
