@@ -1,0 +1,33 @@
+{% set variant_type = content.field_single_msg_centre_variant['#items'][0].value %}
+
+{%
+set classes = [
+'paragraph',
+'paragraph--' ~ paragraph.bundle|clean_class,
+view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+'paragraph--' ~ paragraph.bundle|clean_class ~ '--' ~ variant_type,
+]
+%}
+
+<div{{ attributes.addClass(classes) }} >
+
+  {% if variant_type == 'image-above' %}
+    <div class="paragraph--cr-single-message-row-centre__image">
+      {{ content.field_single_msg_centre_image }}
+    </div>
+  {% endif %}
+
+		<div class="paragraph--cr-single-message-row-centre__title">
+			<h2>{{ content.field_single_msg_centre_title }}</h2>
+		</div>
+
+    <div class="paragraph--cr-single-message-row-centre__body">
+      {{ content.field_single_msg_centre_body }}
+    </div>
+
+  {% if variant_type == 'image-below' %}
+    <div class="paragraph--cr-single-message-row-centre__image">
+      {{ content.field_single_msg_centre_image }}
+    </div>
+  {% endif %}
+</div>
