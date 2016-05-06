@@ -19,21 +19,21 @@ targetEntityType: paragraph
 bundle: cr_single_message_row_lr
 mode: default
 content:
-  field_single_message_row_lr_body:
+  field_single_msg_row_lr_body:
     weight: 2
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
-  field_single_message_row_lr_imag:
+  field_single_msg_row_lr_image:
     weight: 3
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
-  field_single_message_row_lr_titl:
+  field_single_msg_row_lr_title:
     weight: 0
     settings:
       size: 60
