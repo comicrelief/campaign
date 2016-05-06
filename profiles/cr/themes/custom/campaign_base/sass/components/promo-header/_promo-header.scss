@@ -30,13 +30,13 @@
   &.bg--white {
     background-color: $white;
     .promo-header__content p {
-    	color: $black;
-	    @include breakpoint($screen-sm-max) {
-    		color: $white;
-	      background-color: transparent;
-	    }
-    }
+      color: $black;
 
+      @include breakpoint($screen-sm-max) {
+        color: $white;
+        background-color: transparent;
+      }
+    }
   }
 }
 .promo-header__title {
