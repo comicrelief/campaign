@@ -1,0 +1,31 @@
+{#
+/**
+ * @file
+ * Default theme implementation to navigate YAML form submission.
+ *
+ * Available variables:
+ * - prev_url: URL to the previous YAML form submission.
+ * - next_url: URL to the next YAML form submission.
+ * - yamlform_id: The YAML form  ID. Provided for context.
+ *
+ * @see template_preprocess_yamlform_submission_navigation()
+ *
+ * @ingroup themeable
+ */
+#}
+{% if prev_url or next_url %}
+  <nav id="yamlform-submission-navigation-{{ yamlform_id }}" class="yamlform-submission-navigation" role="navigation" aria-labelledby="yamlform-submission-label-{{ yamlform_id }}">
+    <ul class="yamlform-submission-pager">
+      {% if prev_url %}
+        <li class="yamlform-submission-pager__item yamlform-submission-pager__item--previous">
+          <a href="{{ prev_url }}" rel="prev" title="{{ 'Go to previous page'|t }}"><b>{{ '‹'|t }}</b> {{ 'Previous submission'|t }}</a>
+        </li>
+      {% endif %}
+      {% if next_url %}
+        <li class="yamlform-submission-pager__item yamlform-submission-pager__item--next">
+          <a href="{{ next_url }}" rel="next" title="{{ 'Go to next page'|t }}">{{ 'Next submission'|t }} <b>{{ '›'|t }}</b></a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+{% endif %}
