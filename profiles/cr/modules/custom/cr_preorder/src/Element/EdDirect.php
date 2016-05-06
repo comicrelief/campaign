@@ -52,11 +52,6 @@ class EdDirect extends EntityAutocomplete {
    * Process the entity autocomplete form element.
    */
   public static function processEdDirect(array &$element, FormStateInterface $form_state, array &$complete_form) {
-    // Nothing to do if there is no target entity type.
-    if (empty($element['#target_type'])) {
-      throw new \InvalidArgumentException('Missing required #target_type parameter.');
-    }
-
     // Provide default values and sanity checks for the #autocreate parameter.
     if ($element['#autocreate']) {
       if (!isset($element['#autocreate']['bundle'])) {
@@ -72,14 +67,13 @@ class EdDirect extends EntityAutocomplete {
     $data = serialize($selection_settings) . $element['#target_type'] . $element['#selection_handler'];
     $selection_settings_key = Crypt::hmacBase64($data, Settings::getHashSalt());
 
-    $key_value_storage = \Drupal::keyValue('entity_autocomplete');
+    $key_value_storage = \Drupal::keyValue('entity_eddirect');
     if (!$key_value_storage->has($selection_settings_key)) {
       $key_value_storage->set($selection_settings_key, $selection_settings);
     }
 
-    $element['#autocomplete_route_name'] = 'system.entity_autocomplete';
+    $element['#autocomplete_route_name'] = 'cr_preorder.entity_eddirect';
     $element['#autocomplete_route_parameters'] = array(
-      'target_type' => $element['#target_type'],
       'selection_handler' => $element['#selection_handler'],
       'selection_settings_key' => $selection_settings_key,
     );

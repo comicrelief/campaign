@@ -1,0 +1,6 @@
+cr_preorder.entity_eddirect:
+  path: '/entity_reference_eddirect/{selection_handler}/{selection_settings_key}'
+  defaults:
+    _controller: '\Drupal\cr_preorder\Controller\EntityEddirectController::handleAutocomplete'
+  requirements:
+    _access: 'TRUE'
