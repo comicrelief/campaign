@@ -55,8 +55,6 @@ class EntityEddirectController extends ControllerBase {
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
-    exit("die");
-    kint("wat");
     return new static(
       $container->get('json.autocomplete_matcher'),
       $container->get('keyvalue')->get('entity_eddirect')
@@ -68,8 +66,6 @@ class EntityEddirectController extends ControllerBase {
    *
    * @param \Symfony\Component\HttpFoundation\Request $request
    *   The request object that contains the typed tags.
-   * @param string $target_type
-   *   The ID of the target entity type.
    * @param string $selection_handler
    *   The plugin ID of the entity reference selection handler.
    * @param string $selection_settings_key
@@ -85,7 +81,6 @@ class EntityEddirectController extends ControllerBase {
    */
   public function handleAutocomplete(Request $request, $selection_handler, $selection_settings_key) {
     $matches = array();
-    kint($request);
     // Get the typed string from the URL, if it exists.
     if ($input = $request->query->get('q')) {
       $typed_string = Tags::explode($input);
