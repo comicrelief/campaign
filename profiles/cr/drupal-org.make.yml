@@ -53,6 +53,9 @@ projects:
     version: 1.x-dev
   diff:
     version: 1.0-alpha2
+  view_mode:
+    download:
+      branch: 8.x-1.x
   # Developer modules
   config_devel:
     version: 1.0-rc1
@@ -81,6 +84,13 @@ projects:
     patch:
       # See: https://www.drupal.org/node/2700723
       2700723: https://www.drupal.org/files/issues/2700723-4.patch
+  # Forms
+  yamlform:
+    version: 1.0-alpha5
+  yamlform_queue:
+    download:
+      branch: 8.x-1.x
+      url: https://github.com/pvhee/yamlform_queue.git
   # Service Integration
   rabbitmq:
     version: 1.0-alpha1

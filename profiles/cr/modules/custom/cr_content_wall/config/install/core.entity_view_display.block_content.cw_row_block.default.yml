@@ -11,13 +11,13 @@ dependencies:
 third_party_settings:
   ds:
     layout:
-      id: onecol
-      path: profiles/cr/modules/contrib/panels/layouts/onecol
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
       library: layout_plugin/onecol
       disable_css: false
       settings: {  }
     regions:
-      middle:
+      ds_content:
         - cr_content_wall_CwRowDisplay
     fields:
       cr_content_wall_CwRowDisplay:
