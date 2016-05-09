@@ -24,7 +24,7 @@ projects:
   youtube:
     version: 1.0-beta3
   entity:
-    version: 1.0-alpha2
+    version: 1.0-alpha3
   # Layout modules
   inline_entity_form:
     version: 1.0-alpha6
