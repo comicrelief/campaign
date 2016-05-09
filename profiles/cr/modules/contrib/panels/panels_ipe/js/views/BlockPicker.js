@@ -37,7 +37,6 @@
       '  <a data-plugin-id="<%- plugin_id %>">' +
       '    <div class="ipe-block-plugin-info">' +
       '      <h5 title="<%- label %>"><%- trimmed_label %></h5>' +
-      '      <p>' + Drupal.t('Provider: <strong><%- provider %></strong>') + '</p>' +
       '    </div>' +
       '  </a>' +
       '</div>'
@@ -149,6 +148,9 @@
       // If the create content category is active, render items in our top
       // region.
       if (create_active) {
+        // Hide the search box.
+        this.$('.ipe-category-picker-search').hide();
+
         this.contentCollection.each(function (block_content_type) {
           var template_vars = block_content_type.toJSON();
 
