@@ -3,6 +3,3 @@ type: module
 description: Adds a Entity Reference field type with revision support.
 core: 8.x
 package: Field types
-dependencies:
-  - hal
-  - serialization
