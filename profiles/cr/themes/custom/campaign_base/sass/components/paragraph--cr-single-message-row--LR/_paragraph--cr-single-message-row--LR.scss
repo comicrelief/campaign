@@ -25,6 +25,7 @@
 
 @include breakpoint($screen-lg) {
 
+  /* General styles */
   .paragraph--cr-single-message-row-lr {
     .paragraph--cr-single-message-row-lr__image,
     .paragraph--cr-single-message-row-lr__copy_wrapper {
@@ -41,6 +42,20 @@
     .paragraph--cr-single-message-row-lr__image {
       @include span(6 last);
     } 
+  }
+
+  /* Image above/below variations */
+  .paragraph--cr-single-message-row-lr--centre-image-above,
+  .paragraph--cr-single-message-row-lr--centre-image-below {
+    .paragraph--cr-single-message-row-lr__image {
+      @include span(6);
+      @include push(3);
+    }
+
+    .paragraph--cr-single-message-row-lr__copy_wrapper {
+      @include span(8);
+      @include push(2);
+    }
   }
 }
 

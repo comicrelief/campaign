@@ -1,4 +1,7 @@
 {% set variant_type = content.field_single_msg_row_lr_variant['#items'][0].value %}
+{% set image = content.field_single_msg_row_lr_image['#field_type'] %}
+{% set title_above = variant_type == 'title-above-image-left' or variant_type == 'title-above-image-right' %}
+{% set image_below = variant_type == 'centre-image-below' %}
 
 {%
 set classes = [
@@ -10,26 +13,34 @@ set classes = [
 
 <div {{ attributes.addClass(classes) }} >
 
-  {% if variant_type == 'title-above-image-left' or variant_type == 'title-above-image-right' %}
+  {% if title_above %}
     <div class="paragraph--{{paragraph.bundle|clean_class}}__title">
       <h2>{{ content.field_single_msg_row_lr_title }}</h2>
     </div>
   {% endif %}
 
-  <div class="paragraph--{{paragraph.bundle|clean_class}}__image">
-    {{ content.field_single_msg_row_lr_image}}
-  </div>
-
-  <div class="paragraph--{{paragraph.bundle|clean_class}}__copy_wrapper">
+  {% if image and not image_below %}
+    <div class="paragraph--{{paragraph.bundle|clean_class}}__image">
+      {{ content.field_single_msg_row_lr_image }}
+   </div>
+  {% endif %}
   
-    {% if variant_type == 'title-inside-image-left' or variant_type == 'title-inside-image-right' %}
-      <div class="paragraph--{{paragraph.bundle|clean_class}}__title">
-        <h2>{{ content.field_single_msg_row_lr_title }}</h2>
-      </div>
+  <div class="paragraph--{{paragraph.bundle|clean_class}}__copy_wrapper">
+
+    {% if not title_above %}
+    <div class="paragraph--{{paragraph.bundle|clean_class}}__title">
+      <h2>{{ content.field_single_msg_row_lr_title }}</h2>
+    </div>
     {% endif %}
 
     <div class="paragraph--{{paragraph.bundle|clean_class}}__body">
       {{ content.field_single_msg_row_lr_body }}
     </div>
   </div>
+
+    {% if image and image_below %}
+    <div class="paragraph--{{paragraph.bundle|clean_class}}__image">
+      {{ content.field_single_msg_row_lr_image }}
+   </div>
+  {% endif %}
 </div>
