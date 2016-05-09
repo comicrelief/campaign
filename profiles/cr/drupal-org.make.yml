@@ -46,7 +46,7 @@ projects:
       revision: 405c06ac073f9ab676a1816e53d7b36b67bf1d21
     patch:
       # See https://www.drupal.org/node/2598138
-      2598138: https://www.drupal.org/files/issues/2598138-hal-26.patch
+      2598138: https://www.drupal.org/files/issues/2598138-hal.35.patch
   view_modes_display:
     version: 1.x-dev
   social_links:
