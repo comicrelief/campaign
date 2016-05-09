@@ -13,11 +13,16 @@
   position: relative;
   margin-bottom: 40px;
   text-align: center;
-  &.bg--black {
+}
+.promo-header__header {
+	&.bg--black {
     background-color: $black;
 
     @include breakpoint($screen-sm-max) {
       background-color: transparent;
+      &.no-img {
+		    background-color: $black;
+      }
     }
   }
   &.bg--red {
@@ -25,6 +30,9 @@
 
     @include breakpoint($screen-sm-max) {
       background-color: transparent;
+      &.no-img {
+		    background-color: $black;
+      }
     }
   }
   &.bg--white {
@@ -35,6 +43,9 @@
       @include breakpoint($screen-sm-max) {
         color: $white;
         background-color: transparent;
+	        &.no-img {
+			    background-color: $black;
+	      }
       }
     }
   }

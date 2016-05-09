@@ -1,21 +1,24 @@
 {% set desk_img = node.field_landing_image.entity.fileuri %}
 {% set mobile_img = node.field_landing_image_mobile.entity.fileuri %}
-{% set bg_colour = field_landing_background_colour['#items'].value %}
+{% set bg_colour = [field_landing_background_colour['#items'].value, 'promo-header__header'] %}
 {% set copy_position = field_landing_copy_position_alig['#items'].value %}
 
 <div class="promo-header contextual-region">
-	<header class="promo-header {{ bg_colour }}">
+	{% if not desk_img %}{% set bg_colour = bg_colour|merge(["no-img"]) %}{% endif %}
+	<header class="{{ bg_colour|join(" ") }}">
+		{% if mobile_img and desk_img %}
 		<div class="promo-header__bg-image">
-			{% if mobile_img %}
 				<picture>
 					<source media="(min-width: 739px)" srcset="{{ file_url(desk_img) }}">
 	  			<source srcset="{{ file_url(mobile_img) }}">
 	  			<img src="{{ file_url(desk_img) }}" alt="">
 				</picture>
-	  	{% else %}
-	  		{{ field_landing_image }}
-	  	{% endif %}
 		</div>
+	  	{% elseif desk_img %}
+	  	<div class="promo-header__bg-image">
+	  		{{ field_landing_image }}
+	  	</div>
+	  {% endif %}
 		{{ title_suffix.contextual_links }}
 		<h1 class="promo-header__title">{{ title }}</h1>
 		<div class="promo-header__content">
