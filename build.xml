@@ -24,17 +24,17 @@
   <property file="build.properties"   override="true"/>
   <!-- Default & meta -->
   <target name="build:prepare" depends="grunt:dependencies, test:install:composer"
-    description="Build (or rebuild) the project.">
+          description="Build (or rebuild) the project.">
     <exec logoutput="true" passthru="true" command="composer install --no-progress --prefer-dist"/>
   </target>
   <target name="build" depends="install, grunt:build"
-    description="Build (or rebuild) the project.">
+          description="Build (or rebuild) the project.">
   </target>
   <target name="build:dev" depends="file:settings, build, user:create, module:dev"
-    description="Build (or rebuild) the project for devs.">
+          description="Build (or rebuild) the project for devs.">
   </target>
   <target name="update" depends="config:import"
-    description="Update an existing site with a database.">
+          description="Update an existing site with a database.">
     <exec checkreturn="true" logoutput="true" passthru="true" command="${drush.bin} updatedb"/>
     <exec checkreturn="true" logoutput="true" passthru="true" command="${drush.bin} cr all"/>
   </target>
@@ -58,7 +58,7 @@
   </target>
   <target name="test:install:composer" description="Install composer dependencies">
     <exec dir="${app.profile.dir}tests/behat" logoutput="true" passthru="true"
-      command="composer install --no-progress" checkreturn="true"/>
+          command="composer install --no-progress" checkreturn="true"/>
   </target>
 
   <!-- Front-end -->
@@ -87,20 +87,20 @@
   <!-- Drush core -->
   <target name="make-core" description="Compile CR from a make file" depends="make">
     <exec checkreturn="true" logoutput="true" passthru="true"
-      command="${drush.bin} make -y ${app.profile.dir}drupal-org-core.make.yml --no-cache"/>
+          command="${drush.bin} make -y ${app.profile.dir}drupal-org-core.make.yml --no-cache"/>
   </target>
   <target name="make" description="Compile CR contrib from a make file">
     <exec checkreturn="true" logoutput="true" passthru="true"
-      command="${drush.bin} make -y ${app.profile.dir}drupal-org.make.yml --no-gitprojectinfo --no-gitinfofile --no-core --contrib-destination=${app.profile.dir}"/>
+          command="${drush.bin} make -y ${app.profile.dir}drupal-org.make.yml --no-gitprojectinfo --no-gitinfofile --no-core --contrib-destination=${app.profile.dir}"/>
   </target>
   <target name="install" description="Install CR with standard configuration.">
     <exec dir="${app.dir}" logoutput="true" passthru="true" checkreturn="true"
-       command="${drush.bin} si ${app.profile.name} -y --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring}"/>
+          command="${drush.bin} si ${app.profile.name} -y --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring}"/>
     <phingcall target="cache:clear"/>
   </target>
   <target name="cron" description="Run Drupal's cron script">
     <exec dir="${app.dir}" logoutput="true" passthru="true" checkreturn="true"
-      command="${drush.bin} core-cron"/>
+          command="${drush.bin} core-cron"/>
   </target>
   <target name="cache:clear">
     <exec command="${drush.bin} cr" passthru="true"/>
@@ -115,8 +115,8 @@
     <exec logoutput="true" command="${drush.bin} urol editor --name=editor"/>
   </target>
   <target name="module:dev" description="Install the development modules.">
-   <exec logoutput="true" passthru="true" command="${drush.bin} en -y ${app.dev_modules}"/>
- </target>
+    <exec logoutput="true" passthru="true" command="${drush.bin} en -y ${app.dev_modules}"/>
+  </target>
 
   <!-- Drush contrib -->
   <target name="config:export" description="Export all of the configuration for the defined modules.">
@@ -146,7 +146,7 @@
 
   <!-- Quality Code template: https://github.com/previousnext/phing-phpqatools/blob/master/build.xml -->
   <target name="info:code" description="Check quality of the custom code"
-    depends="info:tools, info:code:cs, info:code:md, info:code:loc, info:code:cbf">
+          depends="info:tools, info:code:cs, info:code:md, info:code:loc, info:code:cbf">
   </target>
   <target name="info:tools" description="Install tools">
     <exec dir="${app.profile.dir}tests/behat" command="composer install --no-progress" logoutput="true"/>
