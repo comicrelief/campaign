@@ -1,0 +1,50 @@
+uuid: 00310f27-5e37-4820-b2ef-7aa73d9756ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cr_single_message_row_centre.field_single_msg_centre_body
+    - field.field.paragraph.cr_single_message_row_centre.field_single_msg_centre_image
+    - field.field.paragraph.cr_single_message_row_centre.field_single_msg_centre_title
+    - field.field.paragraph.cr_single_message_row_centre.field_single_msg_centre_variant
+    - paragraphs.paragraphs_type.cr_single_message_row_centre
+  module:
+    - image
+    - options
+    - text
+id: paragraph.cr_single_message_row_centre.default
+targetEntityType: paragraph
+bundle: cr_single_message_row_centre
+mode: default
+content:
+  field_single_msg_centre_body:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_single_msg_centre_image:
+    weight: 2
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_single_msg_centre_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_single_msg_centre_variant:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+hidden:
+  created: true
+  social_links: true
+  uid: true

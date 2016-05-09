@@ -1,0 +1,23 @@
+uuid: bcf762f4-e232-45a6-8b2e-20d6c717d7ec
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_single_msg_centre_variant
+    - paragraphs.paragraphs_type.cr_single_message_row_centre
+  module:
+    - options
+id: paragraph.cr_single_message_row_centre.field_single_msg_centre_variant
+field_name: field_single_msg_centre_variant
+entity_type: paragraph
+bundle: cr_single_message_row_centre
+label: Variant
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: image-above
+default_value_callback: ''
+settings: {  }
+field_type: list_string

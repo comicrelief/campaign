@@ -12,35 +12,35 @@
 
 /* Global styles */
 .paragraph--cr-single-message-row-centre {
-  
   @include container;
-  
-  h2 {
-    text-align: center;
-  }
 }
 
 .paragraph--cr-single-message-row-centre__title,
 .paragraph--cr-single-message-row-centre__image,
-.paragraph--cr-single-message-row-centre__copy_wrapper {
+.paragraph--cr-single-message-row-centre__body {
+  text-align: center;
   @include span(12);
 }
 
 
+// REMOVE AFTER RESPONSIVE STYLES SORTED
+.paragraph--cr-single-message-row-centre__image img {
+  width: 100%;
+  height: auto;
+}
+
 @include breakpoint($screen-lg) {
 
   .paragraph--cr-single-message-row-centre {
-    .paragraph--cr-single-message-row-centre__image,
     .paragraph--cr-single-message-row-centre__body,
     .paragraph--cr-single-message-row-centre__title {
       @include span(8);
       @include push(2);
     }
 
-    // REMOVE AFTER RESPONSIVE STYLES SORTED
-    .paragraph--cr-single-message-row-centre__image img {
-      width: 100%;
-      height: auto;
+    .paragraph--cr-single-message-row-centre__image {
+      @include span(6);
+      @include push(3); 
     }
   }
 }
