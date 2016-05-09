@@ -34,6 +34,13 @@
     .paragraph--cr-single-message-row-centre__body,
     .paragraph--cr-single-message-row-centre__title {
       @include span(8);
+      @include push(2);
+    }
+
+    // REMOVE AFTER RESPONSIVE STYLES SORTED
+    .paragraph--cr-single-message-row-centre__image img {
+      width: 100%;
+      height: auto;
     }
   }
 }
