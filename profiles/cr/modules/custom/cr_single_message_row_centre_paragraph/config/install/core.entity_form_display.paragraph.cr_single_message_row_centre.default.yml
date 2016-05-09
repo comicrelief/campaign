@@ -12,6 +12,8 @@ dependencies:
   module:
     - image
     - text
+_core:
+  default_config_hash: 2u_5kuOP-i63wbAldjKgFr7UO5kmapNyBT8UpJB6R4E
 id: paragraph.cr_single_message_row_centre.default
 targetEntityType: paragraph
 bundle: cr_single_message_row_centre

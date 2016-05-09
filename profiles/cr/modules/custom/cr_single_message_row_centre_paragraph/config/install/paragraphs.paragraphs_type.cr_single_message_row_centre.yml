@@ -2,5 +2,7 @@ uuid: 1ef80be7-e108-466d-a369-4d8e4c2116ba
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: vYzilf74s5AdU-AV8mCNXFBHvNqLxdPqo8HFeBNM0cI
 id: cr_single_message_row_centre
 label: 'Single Message Row - Centre'

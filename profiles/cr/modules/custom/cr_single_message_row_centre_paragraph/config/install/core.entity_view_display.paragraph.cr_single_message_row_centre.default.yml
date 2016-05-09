@@ -9,9 +9,11 @@ dependencies:
     - field.field.paragraph.cr_single_message_row_centre.field_single_msg_centre_variant
     - paragraphs.paragraphs_type.cr_single_message_row_centre
   module:
-    - image
     - options
+    - responsive_image
     - text
+_core:
+  default_config_hash: U_FJXB0yaWro59VihvxYZ-JzVGtVD3o_Wm4k5GyAPmM
 id: paragraph.cr_single_message_row_centre.default
 targetEntityType: paragraph
 bundle: cr_single_message_row_centre
@@ -27,10 +29,10 @@ content:
     weight: 2
     label: hidden
     settings:
-      image_style: ''
+      responsive_image_style: single_message_row_centre
       image_link: ''
     third_party_settings: {  }
-    type: image
+    type: responsive_image
   field_single_msg_centre_title:
     weight: 0
     label: hidden

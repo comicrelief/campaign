@@ -7,6 +7,8 @@ dependencies:
     - paragraphs.paragraphs_type.cr_single_message_row_centre
   module:
     - image
+_core:
+  default_config_hash: mfqS_8EeuvCfOLxBDSAiwzQko6xdKjgOrydWdLtFIL4
 id: paragraph.cr_single_message_row_centre.field_single_msg_centre_image
 field_name: field_single_msg_centre_image
 entity_type: paragraph

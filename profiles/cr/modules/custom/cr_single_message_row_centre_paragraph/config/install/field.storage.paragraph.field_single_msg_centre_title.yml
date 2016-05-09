@@ -4,6 +4,8 @@ status: true
 dependencies:
   module:
     - paragraphs
+_core:
+  default_config_hash: tarGhNgLU1mnGzhh3Gpe-SXQYn8jxZyCEcDGagzNz0w
 id: paragraph.field_single_msg_centre_title
 field_name: field_single_msg_centre_title
 entity_type: paragraph

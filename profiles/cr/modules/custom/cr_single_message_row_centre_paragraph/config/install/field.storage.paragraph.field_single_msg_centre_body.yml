@@ -5,6 +5,8 @@ dependencies:
   module:
     - paragraphs
     - text
+_core:
+  default_config_hash: 2JheUVE156TU-jolenNrsGf_BCnYJBrwO2Eav_2ZBVQ
 id: paragraph.field_single_msg_centre_body
 field_name: field_single_msg_centre_body
 entity_type: paragraph
