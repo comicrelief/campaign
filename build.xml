@@ -22,11 +22,8 @@
   <property name="db.querystring"     override="true" value="mysql://root:@localhost/campaign"/>
   <!-- These allow developers to override config. on a per environment basis -->
   <property file="build.properties"   override="true"/>
+  <property file="${project.basedir}/${app.profile.dir}common.xml"/>
   <!-- Default & meta -->
-  <target name="build:prepare" depends="grunt:dependencies, test:install:composer"
-          description="Build (or rebuild) the project.">
-    <exec logoutput="true" passthru="true" command="composer install --no-progress --prefer-dist"/>
-  </target>
   <target name="build" depends="install, grunt:build"
           description="Build (or rebuild) the project.">
   </target>

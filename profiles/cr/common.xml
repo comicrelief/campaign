@@ -1,0 +1,7 @@
+<project name="cr" default="build:dev">
+
+<target name="build:prepare" depends="grunt:dependencies, test:install:composer"
+        description="Build (or rebuild) the project.">
+  <exec logoutput="true" passthru="true" command="composer install --no-progress --prefer-dist"/>
+</target>
+</project>
