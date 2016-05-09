@@ -1,0 +1,14 @@
+cr_multistep_form.multistep_one:
+  path: '/cr-multistep-form'
+  defaults:
+    _form: '\Drupal\cr_multistep_form\Form\MultiStepFormOne'
+    _title: 'First form'
+  requirements:
+    _permission: 'access content'
+cr_multistep_form.multistep_two:
+  path: '/cr-multistep-form/multistep-two'
+  defaults:
+    _form: '\Drupal\cr_multistep_form\Form\MultiStepFormTwo'
+    _title: 'Second form'
+  requirements:
+    _permission: 'access content'
