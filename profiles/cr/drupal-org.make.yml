@@ -10,7 +10,7 @@ projects:
     version: 3.0-alpha26
     patch:
       # See https://www.drupal.org/node/2672110
-      2672110: https://www.drupal.org/files/issues/entityfieldderiver-2672110-2.patch
+      2672110: https://www.drupal.org/files/issues/entityfieldderiver-2672110-8.patch
   file_entity:
     version: 2.x-dev
   metatag:
