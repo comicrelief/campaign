@@ -1,4 +1,3 @@
-uuid: bed0b913-5696-47c0-98f8-204c2c7313b9
 langcode: en
 status: true
 dependencies:
@@ -12,8 +11,6 @@ dependencies:
     - options
     - responsive_image
     - text
-_core:
-  default_config_hash: 1woqW_1o91b-8G8xcdWLiVm2qdJE35I7rUuwLMlOB6s
 id: paragraph.cr_single_message_row_lr.default
 targetEntityType: paragraph
 bundle: cr_single_message_row_lr
