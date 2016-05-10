@@ -1,0 +1,22 @@
+name: CR Single Message Row - Centre paragraph
+type: module
+description: Contains config for Single Message Row Centre paragraph type.
+core: 8.x
+package: Comic Relief
+dependencies:
+  - paragraphs
+  - entity_reference_revisions
+config_devel:
+# Paragraph config
+  - core.entity_form_display.paragraph.cr_single_message_row_centre.default
+  - core.entity_view_display.paragraph.cr_single_message_row_centre.default
+  - paragraphs.paragraphs_type.cr_single_message_row_centre
+  - field.field.paragraph.cr_single_message_row_centre.field_single_msg_centre_body
+  - field.field.paragraph.cr_single_message_row_centre.field_single_msg_centre_image
+  - field.field.paragraph.cr_single_message_row_centre.field_single_msg_centre_title
+  - field.field.paragraph.cr_single_message_row_centre.field_single_msg_centre_variant
+  - field.storage.paragraph.field_single_msg_centre_body
+  - field.storage.paragraph.field_single_msg_centre_image
+  - field.storage.paragraph.field_single_msg_centre_title
+  - field.storage.paragraph.field_single_msg_centre_variant
+  

@@ -1,0 +1,21 @@
+uuid: e8243d0f-cb06-46f5-b191-1ee99c9340f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_single_msg_centre_title
+    - paragraphs.paragraphs_type.cr_single_message_row_centre
+_core:
+  default_config_hash: gGg2Jg_w5ROJxJHOMJN1rSLJzNAUeal9IXKdb92fr3k
+id: paragraph.cr_single_message_row_centre.field_single_msg_centre_title
+field_name: field_single_msg_centre_title
+entity_type: paragraph
+bundle: cr_single_message_row_centre
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

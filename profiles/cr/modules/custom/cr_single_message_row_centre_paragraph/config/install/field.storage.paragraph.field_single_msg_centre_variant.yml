@@ -1,0 +1,29 @@
+uuid: 42f69eb4-863a-4143-b67c-c20eb93d5af8
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+_core:
+  default_config_hash: q616l4ZC_f3WNz6W7PoTIi06CioOaNK1n86zliwbqR8
+id: paragraph.field_single_msg_centre_variant
+field_name: field_single_msg_centre_variant
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: image-above
+      label: 'Image above'
+    -
+      value: image-below
+      label: 'Image below'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

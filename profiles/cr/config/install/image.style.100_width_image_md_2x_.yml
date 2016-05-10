@@ -1,0 +1,15 @@
+uuid: fb556288-d077-4dda-a034-727efe3ee2ee
+langcode: en
+status: true
+dependencies: {  }
+name: 100_width_image_md_2x_
+label: '100% Width Image - MD (2x)'
+effects:
+  79032f49-6c52-4c82-86f3-ad344b6f6ce6:
+    uuid: 79032f49-6c52-4c82-86f3-ad344b6f6ce6
+    id: image_scale
+    weight: 1
+    data:
+      width: 1966
+      height: null
+      upscale: false

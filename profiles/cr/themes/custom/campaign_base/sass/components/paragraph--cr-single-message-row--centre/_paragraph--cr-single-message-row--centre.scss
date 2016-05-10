@@ -1,0 +1,46 @@
+// Single Message Row Centre variant Paragraph
+//
+// This is a Single message row centre
+//
+// UPDATE THIS!
+// Markup: _paragraph--cr-single-message-row--LR.hbs
+//
+// .paragraph--cr-single-message-row-lr--title-above-image-right  - Title above, image on right
+//
+//
+// Style guide: Single Message centre row - centre variants
+
+/* Global styles */
+.paragraph--cr-single-message-row-centre {
+  @include container;
+}
+
+.paragraph--cr-single-message-row-centre__title,
+.paragraph--cr-single-message-row-centre__image,
+.paragraph--cr-single-message-row-centre__body {
+  text-align: center;
+  @include span(12);
+}
+
+
+// REMOVE AFTER RESPONSIVE STYLES SORTED
+.paragraph--cr-single-message-row-centre__image img {
+  width: 100%;
+  height: auto;
+}
+
+@include breakpoint($screen-lg) {
+
+  .paragraph--cr-single-message-row-centre {
+    .paragraph--cr-single-message-row-centre__body,
+    .paragraph--cr-single-message-row-centre__title {
+      @include span(8);
+      @include push(2);
+    }
+
+    .paragraph--cr-single-message-row-centre__image {
+      @include span(6);
+      @include push(3); 
+    }
+  }
+}
