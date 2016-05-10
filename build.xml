@@ -22,7 +22,7 @@
   <property name="db.querystring"     override="true" value="mysql://root:@localhost/campaign"/>
   <!-- These allow developers to override config. on a per environment basis -->
   <property file="build.properties"   override="true"/>
-  <property file="${project.basedir}/${app.profile.dir}common.xml"/>
+  <import file="${project.basedir}/${app.profile.dir}common.xml" optional="true" />
   <!-- Default & meta -->
   <target name="build" depends="install, grunt:build"
           description="Build (or rebuild) the project.">
