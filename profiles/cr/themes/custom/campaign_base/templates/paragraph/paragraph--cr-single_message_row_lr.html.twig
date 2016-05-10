@@ -1,6 +1,6 @@
-{% set title_above = variant_type == 'title-above-image-left' or variant_type == 'title-above-image-right' %}
 {% set variant_type = content.field_single_msg_row_lr_variant['#items'][0].value %}
 {% set image = content.field_single_msg_row_lr_image['#field_type'] %}
+{% set title_above = variant_type == 'title-above-image-left' or variant_type == 'title-above-image-right' %}
 
 {%
 set classes = [
