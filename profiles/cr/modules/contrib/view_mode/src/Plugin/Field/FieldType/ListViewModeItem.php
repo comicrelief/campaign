@@ -106,7 +106,7 @@ class ListViewModeItem extends FieldItemBase implements OptionsProviderInterface
    * @return [type] [description]
    */
   protected function getOptions($entity_type = NULL) {
-    $entity_manager = \Drupal::entityManager();
+    $entity_manager = \Drupal::entityTypeManager();
 
     if ($entity_type) {
       $view_modes_info[$entity_type] = $entity_manager->getViewModes($entity_type);
@@ -143,21 +143,7 @@ class ListViewModeItem extends FieldItemBase implements OptionsProviderInterface
    * {@inheritdoc}
    */
   public function fieldSettingsForm(array $form, FormStateInterface $form_state) {
-
     $element = array();
-
-    // $element['view_mode_entity'] = [
-    //   '#type' => 'select',
-    //   '#title' => t('Entity for which to select view modes'),
-    //   '#description' => t('Select the view modes that can be selected for this field.'),
-    //   '#default_value' => $this->getSetting('view_mode_entity'),
-    //   '#options' => array_keys($options),
-    //   '#ajax' => [
-    //     // 'callback' => '::selectEntityTypeCallback',
-    //     'callback' => ':selectEntityTypeCallback',
-    //     'wrapper' => 'view-mode-wrapper',
-    //   ]
-    // ];
 
     $options = $this->getOptions();
     foreach ($options as $entity_type => $data) {
@@ -174,30 +160,8 @@ class ListViewModeItem extends FieldItemBase implements OptionsProviderInterface
       '#options' => $flatten_options,
     ];
 
-    // $element['view_mode_wrapper'] = [
-    //   '#type' => 'container',
-    //   '#attributes' => ['id' => 'view-mode-wrapper'],
-    // ];
-
-    // Disable caching on this form.
-    // $form_state->setCached(FALSE);
-
     return $element;
   }
-
-  // public function selectEntityTypeCallback(array &$form, FormStateInterface $form_state) {
-  //   $entity_type = $form_state->getValue('view_mode_entity');
-
-  //   $form['view_mode_wrapper']['view_modes'] = [
-  //     '#type' => 'checkboxes',
-  //     '#title' => t('Enabled view modes'),
-  //     '#description' => t('Select the view modes that can be selected for this field.'),
-  //     '#default_value' => $this->getSetting('view_modes'),
-  //     '#options' => $this->getOptions($entity_type),
-  //   ];
-
-  //   return $form['view_mode_wrapper'];
-  // }
 
   /**
    * {@inheritdoc}
