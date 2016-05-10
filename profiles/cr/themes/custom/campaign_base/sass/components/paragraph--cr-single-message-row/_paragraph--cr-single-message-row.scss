@@ -1,11 +1,12 @@
-// Single Message Row variant Paragraph
+// Single Message Row
 //
 // This is a Single message row
 //
 // Markup: _paragraph--cr-single-message-row.hbs
 //
 // .paragraph--cr-single-message-row--title-above-image-right  - Title above, image on right
-//
+// .paragraph--cr-single-message-row--centre-image-above - Centred, image above copy
+// .paragraph--cr-single-message-row--centre-image-below - Centred, image below copy
 //
 // Style guide: Single Message variants
 
@@ -17,8 +18,6 @@
     text-align: center;
   }
 }
-
-
 
 .paragraph--cr-single-message-row__title,
 .paragraph--cr-single-message-row__image,
