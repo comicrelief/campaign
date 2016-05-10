@@ -16,6 +16,6 @@ config_devel:
   - field.field.paragraph.cr_single_message_row_lr.field_single_msg_row_lr_title
   - field.field.paragraph.cr_single_message_row_lr.field_single_msg_row_lr_variant
   - field.storage.paragraph.field_single_msg_row_lr_title
-  - field.storage.paragraph.field_single_msg_row_lr_imag
+  - field.storage.paragraph.field_single_msg_row_lr_image
   - field.storage.paragraph.field_single_msg_row_lr_body
   - field.storage.paragraph.field_single_msg_row_lr_variant

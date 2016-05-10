@@ -1,3 +1,4 @@
+uuid: c5ed6396-78f3-4b43-bc02-05313698512f
 langcode: en
 status: true
 dependencies:
@@ -6,13 +7,15 @@ dependencies:
     - paragraphs.paragraphs_type.cr_single_message_row_lr
   module:
     - image
+_core:
+  default_config_hash: ZapMWC3qurdCGHIOxAOLYg24crdo3pjfeiFM9oW9sr8
 id: paragraph.cr_single_message_row_lr.field_single_msg_row_lr_image
 field_name: field_single_msg_row_lr_image
 entity_type: paragraph
 bundle: cr_single_message_row_lr
 label: Image
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
