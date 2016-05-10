@@ -3,13 +3,30 @@ status: true
 dependencies:
   module:
     - block_content
-    - view_mode
+    - options
 id: block_content.field_cw_view_mode
 field_name: field_cw_view_mode
 entity_type: block_content
-type: list_view_mode
-settings: {  }
-module: view_mode
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: cw_1col_l
+      label: '1 Col - L'
+    -
+      value: cw_2col_m_m
+      label: '2 Col - M + M'
+    -
+      value: cw_2col_s_m
+      label: '2 Col - S + M'
+    -
+      value: cw_2col_m_s
+      label: '2 Col - M + S'
+    -
+      value: cw_3col_s_s_s
+      label: '3 Col - S + S + S'
+  allowed_values_function: ''
+module: options
 locked: false
 cardinality: 1
 translatable: true

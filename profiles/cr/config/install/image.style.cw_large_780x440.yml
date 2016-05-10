@@ -1,13 +1,16 @@
+uuid: 9c081b8e-0727-4fb9-8666-70c1f1e2bac1
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: 2rIaKEyzvyeJ7KmO-z4jDBeQL5RzMswc5rQB7mdS-uE
 name: cw_large_780x440
-label: 'CW 16:9 LG 1170x658'
+label: 'CW 16:9 LG 800x450'
 effects:
   ab2aab0b-4760-4726-9000-c082e188f8e2:
     uuid: ab2aab0b-4760-4726-9000-c082e188f8e2
     id: image_scale_and_crop
     weight: 1
     data:
-      width: 1170
-      height: 658
+      width: 800
+      height: 450
