@@ -10,9 +10,6 @@ set classes = [
 ]
 %}
 
-{{ kint ('paragraph--' ~ paragraph.bundle|clean_class ~ '--'~variant_type) }}
-
-
 <div {{ attributes.addClass(classes) }} >
 
   {% if title_above %}

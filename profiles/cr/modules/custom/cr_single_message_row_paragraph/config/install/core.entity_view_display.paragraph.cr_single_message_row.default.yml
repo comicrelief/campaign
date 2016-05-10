@@ -3,20 +3,20 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.cr_single_message_row_lr.field_single_msg_row_lr_body
-    - field.field.paragraph.cr_single_message_row_lr.field_single_msg_row_lr_image
-    - field.field.paragraph.cr_single_message_row_lr.field_single_msg_row_lr_title
-    - field.field.paragraph.cr_single_message_row_lr.field_single_msg_row_lr_variant
-    - paragraphs.paragraphs_type.cr_single_message_row_lr
+    - field.field.paragraph.cr_single_message_row.field_single_msg_row_lr_body
+    - field.field.paragraph.cr_single_message_row.field_single_msg_row_lr_image
+    - field.field.paragraph.cr_single_message_row.field_single_msg_row_lr_title
+    - field.field.paragraph.cr_single_message_row.field_single_msg_row_lr_variant
+    - paragraphs.paragraphs_type.cr_single_message_row
   module:
     - options
     - responsive_image
     - text
 _core:
   default_config_hash: 02bhPgJWuB5g3xFg2e3Jt03Q4H-N4a57G1Bb_Ji03qE
-id: paragraph.cr_single_message_row_lr.default
+id: paragraph.cr_single_message_row.default
 targetEntityType: paragraph
-bundle: cr_single_message_row_lr
+bundle: cr_single_message_row
 mode: default
 content:
   field_single_msg_row_lr_body:
