@@ -1,7 +1,6 @@
+{% set title_above = variant_type == 'title-above-image-left' or variant_type == 'title-above-image-right' %}
 {% set variant_type = content.field_single_msg_row_lr_variant['#items'][0].value %}
 {% set image = content.field_single_msg_row_lr_image['#field_type'] %}
-{% set title_above = variant_type == 'title-above-image-left' or variant_type == 'title-above-image-right' %}
-{% set image_below = variant_type == 'centre-image-below' %}
 
 {%
 set classes = [
@@ -11,6 +10,9 @@ set classes = [
 ]
 %}
 
+{{ kint ('paragraph--' ~ paragraph.bundle|clean_class ~ '--'~variant_type) }}
+
+
 <div {{ attributes.addClass(classes) }} >
 
   {% if title_above %}
@@ -19,7 +21,7 @@ set classes = [
     </div>
   {% endif %}
 
-  {% if image and not image_below %}
+  {% if image %}
     <div class="paragraph--{{paragraph.bundle|clean_class}}__image">
       {{ content.field_single_msg_row_lr_image }}
    </div>
@@ -37,10 +39,4 @@ set classes = [
       {{ content.field_single_msg_row_lr_body }}
     </div>
   </div>
-
-    {% if image and image_below %}
-    <div class="paragraph--{{paragraph.bundle|clean_class}}__image">
-      {{ content.field_single_msg_row_lr_image }}
-   </div>
-  {% endif %}
 </div>

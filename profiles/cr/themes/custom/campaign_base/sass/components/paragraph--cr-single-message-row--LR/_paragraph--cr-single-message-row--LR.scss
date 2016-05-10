@@ -11,16 +11,33 @@
 
 /* Global styles */
 .paragraph--cr-single-message-row-lr {
-  
   @include container;
-  
-  h2 { text-align: center; }
+
+  h2 {
+    text-align: center;
+  }
 }
 
 .paragraph--cr-single-message-row-lr__title,
 .paragraph--cr-single-message-row-lr__image,
 .paragraph--cr-single-message-row-lr__copy_wrapper {
   @include span(12);
+}
+
+/* Image Below variant */
+.paragraph--cr-single-message-row-lr--centre-image-below {
+  display: table;
+  .paragraph--cr-single-message-row-lr__copy_wrapper {
+    display: table-header-group;
+    float: none;
+    .paragraph--cr-single-message-row-lr__title,
+    .paragraph--cr-single-message-row-lr__body {
+      @include span(12);
+    }
+  }
+  .paragraph--cr-single-message-row-lr__image {
+    @include span(12);
+  }
 }
 
 @include breakpoint($screen-lg) {
@@ -44,9 +61,8 @@
     } 
   }
 
-  /* Image above/below variations */
-  .paragraph--cr-single-message-row-lr--centre-image-above,
-  .paragraph--cr-single-message-row-lr--centre-image-below {
+  /* Image above variations */
+  .paragraph--cr-single-message-row-lr--centre-image-above {
     .paragraph--cr-single-message-row-lr__image {
       @include span(6);
       @include push(3);
@@ -56,6 +72,25 @@
       @include span(8);
       @include push(2);
     }
+  } 
+
+  /* Image Below variant specific */
+  .paragraph--cr-single-message-row-lr--centre-image-below {
+    .paragraph--cr-single-message-row-lr__copy_wrapper {
+      float: none;
+      .paragraph--cr-single-message-row-lr__title,
+      .paragraph--cr-single-message-row-lr__body {
+        float: none;
+        margin: auto;
+        @include span(8);
+        @include push(2);
+      }
+    }
+    .paragraph--cr-single-message-row-lr__image {
+      float: none;
+      margin: auto;
+      @include span(6);
+      @include push(3);
+    }
   }
 }
-
