@@ -13,7 +13,6 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Field\Plugin\Field\FieldWidget\OptionsSelectWidget;
 use Drupal\Core\Entity\FieldableEntityInterface;
 
-
 /**
  * Plugin implementation of the 'view_mode_select_widget' widget.
  *
@@ -30,8 +29,8 @@ class ViewModeSelectWidget extends WidgetBase {
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
 
     // @todo add None option if field is not required?
-
     $value = isset($items[$delta]->value) ? $items[$delta]->value : '';
+
     $element += array(
       '#type' => 'select',
       '#options' => $this->getOptions($items->getEntity()),
