@@ -49,7 +49,7 @@ class MultiStepFormTwo extends MultiStepFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $this->store->set('age_group', $form_state->getValue('age_group'));
-    $email_address = $this ->store ->get("email");
+    $email_address = $this->store->get("email");
     parent::saveData();
 
     // TODO: Fire off to RabbitMQ with original email
