@@ -3,3 +3,5 @@ type: module
 description: 'Stores form submissions into a Drupal queue'
 core: 8.x
 package: Forms
+dependencies:
+  - yamlform

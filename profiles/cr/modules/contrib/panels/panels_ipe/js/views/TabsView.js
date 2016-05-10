@@ -75,6 +75,9 @@
       this.$el.append('<ul class="ipe-tabs"></ul>');
       this.$el.append('<div class="ipe-tabs-content"></div>');
 
+      // Remove any previously added body classes.
+      $('body').removeClass('panels-ipe-tabs-open');
+
       // Append each of our tabs and their tab content view.
       this.collection.each(function (tab) {
         // Return early if this tab is hidden.
@@ -89,6 +92,9 @@
 
         // Check to see if this tab has content.
         if (tab.get('active') && this.tabViews[id]) {
+          // Add a top-level body class.
+          $('body').addClass('panels-ipe-tabs-open');
+
           // Render the tab content.
           this.$('.ipe-tabs-content').append(this.template_content(tab.toJSON()));
           this.tabViews[id].setElement('[data-tab-content-id="' + id + '"]').render();
@@ -189,9 +195,6 @@
       this.render();
       this.$('.ipe-tabs-content').hide();
       this.$('.ipe-tabs-content')['slideDown']('fast');
-
-      // Add a top-level body class.
-      $('body').addClass('panels-ipe-tabs-open');
     }
 
   });
