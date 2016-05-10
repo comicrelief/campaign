@@ -41,8 +41,11 @@ class MultiStepFormOne extends MultiStepFormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-
     $this->store->set('email', $form_state->getValue('email'));
+    $queue_name = 'queue1';
+    $queue_factory = \Drupal::service('queue');
+    $queue = $queue_factory->get($queue_name);
+    $queue->createItem($form_state->getValue('email'));
     $form_state->setRedirect('cr_multistep_form.multistep_two');
   }
 
