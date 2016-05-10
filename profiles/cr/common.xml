@@ -110,6 +110,26 @@
       </then>
     </if>
   </target>
+  <!-- Craft get:db -->
+  <target name="db" description="Gets DB from specified environment">
+    <phingcall target="db:get"/>
+    <phingcall target="db:restore"/>
+  </target>
+  <target name="db:get"
+          description="Gets DB from specified environment">
+    <exec checkreturn="true" logoutput="true" passthru="true"
+      dir="${app.profile.theme}"
+      command="bundle exec craft-drush db import --env ${env} --product ${app.site.name} --file ${file}"/>
+  </target>
+  <target name="db:restore"
+          description="Gets DB from specified environment">
+    <exec checkreturn="true" logoutput="true" passthru="true"
+      command="${drush.bin} sql-drop -y --verbose"/>
+    <exec checkreturn="true" logoutput="true" passthru="true"
+      command="${drush.bin} sql-cli &lt; /tmp/${file}.sql --verbose"/>
+    <exec checkreturn="true" logoutput="true" passthru="true"
+      command="${drush.bin} cr"/>
+  </target>
   <!-- Quality Code template: https://github.com/previousnext/phing-phpqatools/blob/master/build.xml -->
   <target name="info:code" description="Check quality of the custom code"
           depends="info:tools, info:code:cs, info:code:md, info:code:loc, info:code:cbf">
