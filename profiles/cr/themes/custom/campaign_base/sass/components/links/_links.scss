@@ -5,13 +5,13 @@
 // Markup: links.hbs
 // 
 // .link--red - Red standalone link
-// .link--inline--red - Red inline link
+// .link--inline-red - Red inline link
 // .link--black - Black standalone link
-// .link--inline--black - Black inline link
+// .link--inline-black - Black inline link
 // .link--grey - Grey standalone link
-// .link--inline--grey - Grey inline link
+// .link--inline-grey - Grey inline link
 // .link--white - White standalone link
-// .link--inline--white - White inline link
+// .link--inline-white - White inline link
 // :hover - Link hover state 
 // :active - Link active state
 // :focus - Link focus state
@@ -22,6 +22,20 @@
   * Link styles,
   * Copied from SR16 theme
   */
+
+.link {
+  border-bottom: 2px solid $red;
+  color: $black;
+  font-weight: 600;
+  text-decoration: none;
+  @include transition-property(border, color);
+  @include transition-duration(180ms);
+  &:hover,
+  &:active,
+  &:focus {
+    border-bottom: 2px solid $black;
+  }
+}
 
 @for $link from 1 to (length($linkList)+1) {
   @include inlinelink-variation(nth($linkList, $link));
