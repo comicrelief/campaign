@@ -11,13 +11,13 @@ type: list_string
 settings:
   allowed_values:
     -
-      value: copy-position--centre
-      label: Centre
-    -
-      value: copy-position--left
+      value: promo-header__content-inner--left
       label: Left
     -
-      value: copy-position--right
+      value: promo-header__content-inner--centre
+      label: Centre
+    -
+      value: promo-header__content-inner--right
       label: Right
   allowed_values_function: ''
 module: options

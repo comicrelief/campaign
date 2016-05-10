@@ -12,11 +12,11 @@ entity_type: node
 bundle: landing
 label: 'Body copy position'
 description: ''
-required: true
+required: false
 translatable: false
 default_value:
   -
-    value: copy-position--centre
+    value: promo-header__content-inner--centre
 default_value_callback: ''
 settings: {  }
 field_type: list_string
