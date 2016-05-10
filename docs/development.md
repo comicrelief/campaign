@@ -83,3 +83,9 @@ To update one node at a time, run
 If you want to update the content or you added the uuid manually in `cr_default_content.info.yml`, you only have to run
 
 	phing content:export
+	
+### Front End
+	
+We use [KSS](https://github.com/kss-node/kss/blob/spec/SPEC.md) to build our styleguide.
+	
+When you create a new sass component please follow the same pattern from existem files for `grunt watch` to auto generate and update the styleguide with the new component.
