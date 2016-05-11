@@ -1,0 +1,10 @@
+name: Paragraph Email Type
+type: module
+description: "Allow an email signup form inside a paragraph"
+package: Comic Relief
+core: "8.x"
+dependencies:
+  - paragraphs
+  - entity_reference_revisions
+config_devel:
+  - paragraphs.paragraph_type.cr_paragraph_email_signup

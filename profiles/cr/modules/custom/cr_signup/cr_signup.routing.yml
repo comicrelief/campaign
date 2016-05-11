@@ -1,0 +1,7 @@
+cr_signup.form:
+  path: "/cr-signup"
+  defaults:
+    _title: "Comic Relief SignUp"
+    _form: "\Drupal\cr_signup\Form\SignUpForm"
+  requirements:
+    _permission: "access content"
