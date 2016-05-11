@@ -108,6 +108,8 @@ abstract class MultiStepFormBase extends FormBase {
    * Build Form.
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
+    // Quieten phpmd by touching $form_state. Required by definition.
+    $form_state = (array) $form_state;
     // Start a manual session for anonymous users.
     if ($this->currentUser->isAnonymous() && !isset($_SESSION['multistep_form_holds_session'])) {
       $_SESSION['multistep_form_holds_session'] = TRUE;
