@@ -2,28 +2,28 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_landing_image
+    - field.storage.node.field_landing_image_mobile
     - node.type.landing
   module:
     - image
-id: node.landing.field_landing_image
-field_name: field_landing_image
+id: node.landing.field_landing_image_mobile
+field_name: field_landing_image_mobile
 entity_type: node
 bundle: landing
-label: 'Background Image'
+label: 'Mobile background image'
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
   file_directory: '[date:custom:Y]-[date:custom:m]'
-  file_extensions: 'svg png gif jpg jpeg'
+  file_extensions: 'png gif jpg jpeg'
   max_filesize: ''
   max_resolution: ''
   min_resolution: ''
   alt_field: true
-  alt_field_required: false
+  alt_field_required: true
   title_field: false
   title_field_required: false
   default_image:

@@ -1,14 +1,30 @@
-<div class="landing-page contextual-region">
-	<header class="landing-page__header" style="background-image: url('{{ file_url(node.field_landing_image.entity.fileuri) }}')">
+{% set desk_img = node.field_landing_image.entity.fileuri %}
+{% set mobile_img = node.field_landing_image_mobile.entity.fileuri %}
+{% set header_class = [field_landing_background_colour['#items'].value, 'promo-header__header'] %}
+{% set copy_position = field_landing_copy_position_alig['#items'].value %}
+
+<div class="promo-header contextual-region">
+	{% if not desk_img %}{% set header_class = header_class|merge(["no-img"]) %}{% endif %}
+	<header class="{{ header_class|join(" ") }}">
+		{% if mobile_img and desk_img %}
+		<div class="promo-header__bg-image">
+				<picture>
+					<source media="(min-width: 739px)" srcset="{{ file_url(desk_img) }}">
+	  			<source srcset="{{ file_url(mobile_img) }}">
+	  			<img src="{{ file_url(desk_img) }}" alt="">
+				</picture>
+		</div>
+	  	{% elseif desk_img %}
+	  	<div class="promo-header__bg-image">
+	  		{{ field_landing_image }}
+	  	</div>
+	  {% endif %}
 		{{ title_suffix.contextual_links }}
-		<h1 class="landing-page__title">{{ title }}</h1>
-		<div class="landing-page__content">
-			{{ body }}
-			<div class="landing-page__link">	
-				{{ field_cta }}
+		<h1 class="promo-header__title">{{ title }}</h1>
+		<div class="promo-header__content">
+			<div class="promo-header__content-inner {{ copy_position }}">
+				{{ body }}
 			</div>
-			{# {{ field_cta['#items'].title }}
-			{{ field_cta['#items'].uri }} #}
 		</div>
 	</header>
-</div>
+</div> 
