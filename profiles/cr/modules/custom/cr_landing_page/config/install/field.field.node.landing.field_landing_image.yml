@@ -10,7 +10,7 @@ id: node.landing.field_landing_image
 field_name: field_landing_image
 entity_type: node
 bundle: landing
-label: Image
+label: 'Background Image'
 description: ''
 required: false
 translatable: true
@@ -18,7 +18,7 @@ default_value: {  }
 default_value_callback: ''
 settings:
   file_directory: '[date:custom:Y]-[date:custom:m]'
-  file_extensions: 'png gif jpg jpeg'
+  file_extensions: 'svg png gif jpg jpeg'
   max_filesize: ''
   max_resolution: ''
   min_resolution: ''

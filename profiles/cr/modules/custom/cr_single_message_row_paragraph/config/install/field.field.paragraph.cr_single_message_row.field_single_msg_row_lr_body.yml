@@ -1,0 +1,23 @@
+uuid: ae772e90-aeac-43da-92d8-3972b3c9bc4b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_single_msg_row_lr_body
+    - paragraphs.paragraphs_type.cr_single_message_row
+  module:
+    - text
+_core:
+  default_config_hash: KEKwarI86O8UT8vEGlGt0RvMqu3rW7joDmPxux3BjoY
+id: paragraph.cr_single_message_row.field_single_msg_row_lr_body
+field_name: field_single_msg_row_lr_body
+entity_type: paragraph
+bundle: cr_single_message_row
+label: Body
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

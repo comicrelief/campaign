@@ -6,11 +6,13 @@ defaults:
     subdir: "contrib"
 projects:
   # Core contrib
+  cdn:
+    version: 3.0-alpha1
   ctools:
-    version: 3.0-alpha25
+    version: 3.0-alpha26
     patch:
       # See https://www.drupal.org/node/2672110
-      2672110: https://www.drupal.org/files/issues/entityfieldderiver-2672110-2.patch
+      2672110: https://www.drupal.org/files/issues/entityfieldderiver-2672110-8.patch
   file_entity:
     version: 2.x-dev
   metatag:
@@ -24,7 +26,7 @@ projects:
   youtube:
     version: 1.0-beta3
   entity:
-    version: 1.0-alpha2
+    version: 1.0-alpha3
   # Layout modules
   inline_entity_form:
     version: 1.0-alpha6
