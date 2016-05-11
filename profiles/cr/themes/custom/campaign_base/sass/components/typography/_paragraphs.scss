@@ -1,0 +1,18 @@
+// Paragraphs
+//
+// These are the Paragraphs
+//
+// Markup:
+// <p>Paragraph 1</p>
+//
+// Style guide: Typography.Paragraphs
+
+body {
+  font-size: 16px;
+  font-family: $body-font;
+}
+
+p {
+  font-size: 1em;
+  line-height: 18px;
+}

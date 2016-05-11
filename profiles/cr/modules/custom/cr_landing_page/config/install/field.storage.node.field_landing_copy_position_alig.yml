@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_landing_copy_position_alig
+field_name: field_landing_copy_position_alig
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: promo-header__content-inner--left
+      label: Left
+    -
+      value: promo-header__content-inner--centre
+      label: Centre
+    -
+      value: promo-header__content-inner--right
+      label: Right
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
