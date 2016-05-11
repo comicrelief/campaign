@@ -28,7 +28,6 @@ require 'compass-normalize'
 require 'rgbapng'
 require 'toolkit'
 require 'sass-globbing'
-require 'bootstrap-sass'
 require 'breakpoint'
 require 'susy'
 
