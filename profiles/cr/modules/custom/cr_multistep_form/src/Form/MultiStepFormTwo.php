@@ -48,11 +48,21 @@ class MultiStepFormTwo extends MultiStepFormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $this->store->set('age_group', $form_state->getValue('age_group'));
-    $email_address = $this->store->get("email");
+    $age_group = $form_state->getValue('age_group');
+    $email_address = $this->store->get('email');
+    $this->store->set('age_group', $age_group);
+    // ageGroup key is an assumption.
+    $queue_message = array(
+      'transSourceURL' => \Drupal::service('path.current')->getPath(),
+      'transSource' => "[Campaign]_[Device]_ESU_[PageElementSource]",
+      'timestamp' => time(),
+      'emailAddress' => $email_address,
+      'ageGroup' => $age_group,
+    );
+
+    parent::queueMessage($queue_message);
     parent::saveData();
 
-    // TODO: Fire off to RabbitMQ with original email
     // TODO: Redirect to wherever we need/Thank you page.
     return TRUE;
   }

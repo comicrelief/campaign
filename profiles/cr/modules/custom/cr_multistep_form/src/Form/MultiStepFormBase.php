@@ -46,6 +46,21 @@ abstract class MultiStepFormBase extends FormBase {
   protected $store;
 
   /**
+   * Array to send to queue. Some key values should be sourced from config.
+   *
+   * @var array
+   *     Skeleton message to send
+   */
+  protected $skeletonMessage = array(
+    'campaign' => 'RND17',
+    'transType' => 'esu',
+    'timestamp' => NULL,
+    'transSourceURL' => NULL,
+    'transSource' => NULL,
+    'emailAddress' => NULL,
+  );
+
+  /**
    * Constructs a \Drupal\cr_multistep_form\Form\Multistep\MultistepFormBase.
    *
    * @param \Drupal\user\PrivateTempStoreFactory $temp_store_factory
@@ -63,6 +78,21 @@ abstract class MultiStepFormBase extends FormBase {
     $this->store = $this->tempStoreFactory->get('multistep_data');
   }
 
+  /**
+   * Send a message to the queue service.
+   *
+   * @param array $append_message
+   *     Message to append to queue.
+   */
+  protected function queueMessage($append_message) {
+    $queue_message = array_merge($this->skeletonMessage, $append_message);
+
+    // TODO: Move to config/default.
+    $queue_name = 'queue1';
+    $queue_factory = \Drupal::service('queue');
+    $queue = $queue_factory->get($queue_name);
+    $queue->createItem($queue_message);
+  }
   /**
    * {@inheritdoc}
    */
