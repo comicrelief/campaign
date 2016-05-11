@@ -1,0 +1,156 @@
+<project name="cr" default="build:dev">
+  <!-- This should get overidden for secure builds. -->
+  <property name="app.password"       override="true" value="admin"/>
+  <property name="app.uri"            override="true" value="http://campaign.dev"/>
+  <property name="drush.bin"          override="true" value="${app.dir}bin/drush"/>
+  <property name="c.home"             override="true" value="${app.profile.dir}tests/behat/vendor/"/>
+  <property name="cs.dir"             override="true" value="drupal/coder/coder_sniffer"/>
+  <property name="cs.standard"        override="true" value="--standard=Drupal"/>
+  <property name="cs.ext"             override="true" value="--extensions=php,module,inc,install,test,profile,theme"/>
+  <property name="db.querystring"     override="true" value="mysql://root:@localhost/campaign"/>
+  <target name="build" depends="install, grunt:build"
+          description="Build (or rebuild) the project.">
+  </target>
+  <target name="build:dev" depends="file:settings, build, user:create, module:dev"
+          description="Build (or rebuild) the project in development mode.">
+  </target>
+  <target name="build:prepare" depends="grunt:dependencies, test:composer:install"
+          description="Build all project dependencies. (gems, composer)">
+    <exec logoutput="true" passthru="true" command="composer install --no-progress --prefer-dist"/>
+  </target>
+  <!-- Tests -->
+  <target name="test" depends="test:prepare" description="Run behat tests">
+    <exec dir="${app.profile.dir}tests/behat" passthru="true" checkreturn="true" command="vendor/bin/behat --colors"/>
+  </target>
+  <target name="test:dl" depends="test:prepare" description="Run behat tests">
+    <exec dir="${app.profile.dir}tests/behat" passthru="true" checkreturn="true" command="vendor/bin/behat --colors -dl"/>
+  </target>
+  <target name="test:prepare" description="Prepare to tun behat tests">
+    <copy file="${app.profile.dir}tests/behat/behat.yml.phing" tofile="${app.profile.dir}tests/behat/behat.yml" overwrite="true">
+      <filterchain>
+        <replacetokens begintoken="%%" endtoken="%%">
+          <token key="DRUPAL_TI_DRUPAL_DIR" value="${app.dir}"/>
+          <token key="BASE_URL" value="${app.uri}"/>
+        </replacetokens>
+      </filterchain>
+    </copy>
+  </target>
+  <target name="test:composer:install" description="Install composer dependencies">
+    <exec dir="${app.profile.dir}tests/behat" logoutput="true" passthru="true"
+          command="composer install --no-progress" checkreturn="true"/>
+  </target>
+  <!-- Drush core -->
+  <target name="update-core" description="Update Drupal core from CR make file" depends="make">
+    <exec checkreturn="true" logoutput="true" passthru="true"
+          command="${drush.bin} make -y ${app.profile.dir}drupal-org-core.make.yml --no-cache"/>
+  </target>
+  <target name="make" description="Compile CR contrib from a make file">
+    <exec checkreturn="true" logoutput="true" passthru="true"
+          command="${drush.bin} make -y ${app.profile.dir}drupal-org.make.yml --no-gitprojectinfo --no-gitinfofile --no-core --contrib-destination=${app.profile.dir}"/>
+  </target>
+  <target name="install" description="Install CR with standard configuration.">
+    <exec dir="${app.dir}" logoutput="true" passthru="true" checkreturn="true"
+          command="${drush.bin} si ${app.profile.name} -y --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring}"/>
+    <phingcall target="cache:clear"/>
+  </target>
+  <target name="cron" description="Run Drupal's cron script">
+    <exec dir="${app.dir}" logoutput="true" passthru="true" checkreturn="true"
+          command="${drush.bin} core-cron"/>
+  </target>
+  <target name="cache:clear">
+    <exec command="${drush.bin} cr" passthru="true"/>
+    <phingcall target="file:mod"/>
+  </target>
+  <target name="login" description="Generate a one-time login link">
+    <exec passthru="true" logoutput="true" command="${drush.bin} uli -l ${app.uri}"/>
+  </target>
+  <target name="user:create" description="Create a test users">
+    <exec logoutput="true" command="${drush.bin} ucrt auth --password=auth --mail=auth@cr.co"/>
+    <exec logoutput="true" command="${drush.bin} ucrt editor --password=editor --mail=editor@cr.co"/>
+    <exec logoutput="true" command="${drush.bin} urol editor --name=editor"/>
+  </target>
+  <target name="module:dev" description="Install the development modules.">
+    <exec logoutput="true" passthru="true" command="${drush.bin} en -y ${app.dev_modules}"/>
+  </target>
+  <!-- Drush contrib -->
+  <target name="config:export" description="Export all of the configuration for the defined modules.">
+    <foreach list="${app.config_modules}" param="config_devel_module" target="config:export:single" delimiter=" "/>
+  </target>
+  <target name="config:export:single">
+    <echo msg="Exporting ${config_devel_module}"/>
+    <exec passthru="true" logoutput="true" command="${drush.bin} config-devel-export ${config_devel_module}"/>
+  </target>
+  <target name="config:import" description="Import all of the configuration for the defined modules.">
+    <foreach list="${app.config_modules}" param="config_devel_module" target="config:import:single" delimiter=" "/>
+  </target>
+  <target name="config:import:single">
+    <echo msg="Importing ${config_devel_module}"/>
+    <exec passthru="true" logoutput="true" command="${drush.bin} config-devel-import ${config_devel_module}"/>
+  </target>
+  <target name="content:export">
+    <exec logoutput="true" passthru="true" command="${drush.bin} dcem cr_default_content"/>
+  </target>
+  <target name="content:export:show">
+    <exec logoutput="true" passthru="true" command="${drush.bin} dcer ${type} ${id}"/>
+  </target>
+  <target name="content:export:save">
+    <exec logoutput="true" passthru="true" command="${drush.bin} dcer --folder=${app.content.dir} ${type} ${id}"/>
+    <delete quiet="true" dir="${app.content.dir}user"/>
+  </target>
+  <!-- File system -->
+  <target name="file:mod">
+    <chmod file="sites/default" mode="0775" failonerror="true"/>
+    <chmod file="sites/default/settings.php" mode="0664" failonerror="true"/>
+  </target>
+  <target name="file:settings">
+    <if>
+      <not><available file="sites/default/settings.local.php" type="file"/></not>
+      <then>
+        <copy file="sites/default/settings.example.local.php" tofile="sites/default/settings.local.php" overwrite="true"/>
+      </then>
+    </if>
+  </target>
+  <!-- Craft get:db -->
+  <target name="db" description="Gets DB from specified environment">
+    <phingcall target="db:get"/>
+    <phingcall target="db:restore"/>
+  </target>
+  <target name="db:get"
+          description="Gets DB from specified environment">
+    <exec checkreturn="true" logoutput="true" passthru="true"
+      dir="${app.profile.theme}"
+      command="bundle exec craft-drush db import --env ${env} --product ${app.site.name} --file ${file}"/>
+  </target>
+  <target name="db:restore"
+          description="Gets DB from specified environment">
+    <exec checkreturn="true" logoutput="true" passthru="true"
+      command="${drush.bin} sql-drop -y --verbose"/>
+    <exec checkreturn="true" logoutput="true" passthru="true"
+      command="${drush.bin} sql-cli &lt; /tmp/${file}.sql --verbose"/>
+    <exec checkreturn="true" logoutput="true" passthru="true"
+      command="${drush.bin} cr"/>
+  </target>
+  <!-- Quality Code template: https://github.com/previousnext/phing-phpqatools/blob/master/build.xml -->
+  <target name="info:code" description="Check quality of the custom code"
+          depends="info:tools, info:code:cs, info:code:md, info:code:loc, info:code:cbf">
+  </target>
+  <target name="info:tools" description="Install tools">
+    <exec dir="${app.profile.dir}tests/behat" command="composer install --no-progress" logoutput="true"/>
+  </target>
+  <target name="info:code:cs" description="Check quality of the PHP code for more info. https://www.drupal.org/node/1419988">
+    <exec command="${c.home}bin/phpcs --config-set installed_paths ${c.home}${cs.dir}"/>
+    <exec logoutput="true" command="${c.home}bin/phpcs ${cs.standard} ${cs.ext} ${app.code}"/>
+  </target>
+  <target name="info:code:md" description="Detect the mess in the code. https://phpmd.org/documentation/index.html">
+    <exec logoutput="true" command="${c.home}bin/phpmd ${app.code} text codesize,unusedcode,naming"/>
+  </target>
+  <target name="info:code:cpd" description="Find duplicate code">
+    <exec logoutput="true" command="${c.home}bin/phpcpd ${app.code}"/>
+  </target>
+  <target name="info:code:loc" description="Show stadistics of your lines of code">
+    <exec logoutput="true" command="${c.home}bin/phploc ${app.code}"/>
+  </target>
+  <target name="info:code:cbf" description="Fix some quality errors of the PHP code.">
+    <exec logoutput="true" command="${c.home}bin/phpcbf ${cs.standard} ${app.code}" />
+  </target>
+</project>
