@@ -48,6 +48,25 @@ picture img {
     border-bottom: 2px solid $black;
   }
 }
+// to do: landing page style
+.page-node-type-landing {
+  .region-content {
+    width: 100%;
+    max-width: 100%;
+  }
+  .page__title {
+    position: absolute; // make it as a mixin
+    top: auto;
+    left: -10000px;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+  }
+  .panel-1col {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
 // to do: find a better place
 .styleguide-link {
   color: $white;
