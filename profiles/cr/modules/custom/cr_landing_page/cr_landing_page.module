@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * Options callback for field_landing_background_colour.
+ */
+function cr_landing_page_field_landing_background_colour() {
+  return [
+		'bg--white' => t('White'),
+		'bg--black' => t('Black'),
+    'bg--red' => t('Red'),
+	];
+}
+
+/**
+ * Options callback for field_landing_copy_position_alig.
+ */
+function cr_landing_page_field_landing_copy_position_alig() {
+  return [
+    'promo-header__content-inner--left' => t('Left'),
+    'promo-header__content-inner--centre' => t('Centre'),
+    'promo-header__content-inner--right' => t('Right'),
+  ];
+}
