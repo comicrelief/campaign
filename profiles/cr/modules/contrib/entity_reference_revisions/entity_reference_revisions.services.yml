@@ -1,7 +1,0 @@
-services:
-  serializer.normalizer.entity_reference_revision_item.hal:
-    class: Drupal\entity_reference_revisions\Normalizer\hal\EntityReferenceRevisionItemNormalizer
-    parent: serializer.normalizer.entity_reference_item.hal
-    arguments: ['@rest.link_manager', '@serializer.entity_resolver']
-    tags:
-      - { name: normalizer, priority: 11 }

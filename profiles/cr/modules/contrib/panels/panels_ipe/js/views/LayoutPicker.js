@@ -106,6 +106,9 @@
 
       // If we're viewing the current layout tab, show a custom item.
       if (this.activeCategory && this.activeCategory == 'Current Layout') {
+        // Hide the search box.
+        this.$('.ipe-category-picker-search').hide();
+
         this.collection.each(function (layout) {
           if (Drupal.panels_ipe.app.get('layout').get('id') == layout.get('id')) {
             this.$('.ipe-category-picker-top').append(this.template_item(layout));
