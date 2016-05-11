@@ -73,7 +73,6 @@ dependencies:
   - cr_rich_text_paragraph
   - cr_landing_page
   - cr_partner
-  #- cr_cdn
   #- cr_performance
 
   # Development modules
