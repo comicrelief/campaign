@@ -1,0 +1,8 @@
+uuid: f22c2ea1-ba05-4352-9083-ec76e426f80d
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: P4FI2C04v0F_2XkE0XD-wH0mNXDJls6__pZjipEszPk
+id: cr_single_message_row
+label: 'Single Message Row'
