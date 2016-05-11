@@ -79,7 +79,7 @@ dependencies:
   # Development modules
   - config_devel
 
-    # Editor/admin experience
+  # Editor/admin experience
   - admin_toolbar_tools
 
   # Default content; will be moved out of the profile at some point
