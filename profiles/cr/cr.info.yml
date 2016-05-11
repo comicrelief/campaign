@@ -123,15 +123,6 @@ config_devel:
   - block.block.campaign_base_main_menu
   - block.block.campaign_base_footer
   - block.block.campaign_base_main_footer
-  - block.block.seven_breadcrumbs
-  - block.block.seven_content
-  - block.block.seven_help
-  - block.block.seven_local_actions
-  - block.block.seven_login
-  - block.block.seven_messages
-  - block.block.seven_page_title
-  - block.block.seven_primary_local_tasks
-  - block.block.seven_secondary_local_tasks
 
   # Menus
   - system.menu.footer
@@ -195,4 +186,3 @@ config_devel:
   # Contributed modules
   - pathauto.pattern.basic_page
   - pathauto.settings
-  # - simple_sitemap.settings
