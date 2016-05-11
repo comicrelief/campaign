@@ -34,3 +34,25 @@
   }
 }
 
+/***********************************
+ *  Link colour
+ */
+
+/**
+ * Parameters
+ * $link[1] = name
+ * $link[2] = border-color and text
+ * $link[3] = border-color text for hover & focus
+ */
+@mixin inlinelink-variation($link) {
+  .link--inline-#{nth($link, 1)} {
+    border-bottom: 2px solid nth($link, 2);
+    color: inherit;
+  }
+}
+
+@mixin link-variation($link) {
+  .link--#{nth($link, 1)} {
+    border-bottom: 2px solid nth($link, 2);
+  }
+}
