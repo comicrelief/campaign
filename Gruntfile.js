@@ -33,11 +33,11 @@ module.exports = function (grunt) {
       },
       basic: {
         src: ['profiles/cr/themes/custom/campaign_base/scripts/{,**/}*.js'],
-        dest: 'js/basic.js',
+        dest: 'profiles/cr/themes/custom/campaign_base/js/basic.js',
       },
       vendor: {
         src: ['vendor/{,**/}*.js'],
-        dest: 'js/vendor.js',
+        dest: 'profiles/cr/themes/custom/campaign_base/js/vendor.js',
       },
     },
 
