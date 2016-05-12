@@ -11,14 +11,14 @@ use Drupal\Core\Field\FieldStorageDefinitionInterface;
 /**
  * Options callback for field_landing_background_colour.
  *
- * @see options_allowed_values().
+ * @see options_allowed_values()
  */
 function cr_landing_page_field_landing_background_colour(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
   $values = [
-		'bg--white' => t('White'),
-		'bg--black' => t('Black'),
+    'bg--white' => t('White'),
+    'bg--black' => t('Black'),
     'bg--red' => t('Red'),
-	];
+  ];
   return $values;
 }
 
