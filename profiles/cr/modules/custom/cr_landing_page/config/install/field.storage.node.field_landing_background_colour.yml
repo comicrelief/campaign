@@ -10,19 +10,7 @@ entity_type: node
 type: list_string
 settings:
   allowed_values:
-    -
-      value: bg--white
-      label: White
-    -
-      value: bg--black
-      label: Black
-    -
-      value: bg--red
-      label: Red
-    -
-      value: bg--green
-      label: Green
-  allowed_values_function: ''
+  allowed_values_function: 'cr_landing_page_field_landing_background_colour'
 module: options
 locked: false
 cardinality: 1
