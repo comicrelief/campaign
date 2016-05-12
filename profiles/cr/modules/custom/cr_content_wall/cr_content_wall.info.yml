@@ -10,22 +10,23 @@ dependencies:
   - inline_entity_form
   - cr_teaser
   - view_mode
-  
+
 config_devel:
   # Paragraph config
-  - paragraphs.paragraphs_type.cw_row
   - field.storage.node.field_paragraphs
+  - paragraphs.paragraphs_type.cw_row
   # View modes
   - core.entity_form_display.paragraph.cw_row.default
   - core.entity_view_display.paragraph.cw_row.default
   - core.entity_form_display.block_content.cw_row_block.default
   - core.entity_view_display.block_content.cw_row_block.default
   # Fields
+  - field.storage.block_content.field_cw_block_reference
+  - field.storage.block_content.field_cw_view_mode
+  - field.storage.paragraph.field_cw_row_reference
   - field.field.paragraph.cw_row.field_cw_row_reference
   - field.field.block_content.cw_row_block.field_cw_block_reference
   - field.field.block_content.cw_row_block.field_cw_view_mode
-  - field.storage.block_content.field_cw_block_reference
-  - field.storage.block_content.field_cw_view_mode
   # Block types
   - block_content.type.cw_row_block
   # View modes
@@ -33,8 +34,6 @@ config_devel:
   - core.entity_view_display.block_content.teaser.cw_m
   - core.entity_view_display.block_content.teaser.cw_mp
   - core.entity_view_display.block_content.teaser.cw_s
-  # Fields
-  - field.storage.paragraph.field_cw_row_reference
   # View mode config #
   - core.entity_view_mode.block_content.cw_1col_l
   - core.entity_view_mode.block_content.cw_2col_m_m
