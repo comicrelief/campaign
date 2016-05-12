@@ -33,7 +33,7 @@ class MultiStepFormTwo extends MultiStepFormBase {
       '#title' => $this->t('School Phase'),
       '#default_value' => $this->store->get('school_phase') ? $this->store->get('school_phase') : '',
       '#options' => array(
-        ' -- Select School Phase --',
+        0 => ' -- Select School Phase --',
         'EY' => 'Early Years or Nursery',
         'PY' => 'Primary',
         'SY' => 'Secondary',
