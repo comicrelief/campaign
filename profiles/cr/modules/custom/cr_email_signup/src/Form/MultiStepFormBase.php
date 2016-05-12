@@ -4,7 +4,7 @@
  * Contains \Drupal\cr_multistep_form\Form\MultiStepFormBase.
  */
 
-namespace Drupal\cr_multistep_form\Form;
+namespace Drupal\cr_email_signup\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -61,7 +61,7 @@ abstract class MultiStepFormBase extends FormBase {
   );
 
   /**
-   * Constructs a \Drupal\cr_multistep_form\Form\Multistep\MultistepFormBase.
+   * Constructs a \Drupal\cr_email_signup\Form\Multistep\MultistepFormBase.
    *
    * @param \Drupal\user\PrivateTempStoreFactory $temp_store_factory
    *   Temporary Stor Factory.
@@ -141,7 +141,7 @@ abstract class MultiStepFormBase extends FormBase {
    * Helper method that removes all known keys.
    */
   protected function deleteStore() {
-    $keys = ['email', 'age_group'];
+    $keys = ['email', 'school_phase'];
     foreach ($keys as $key) {
       $this->store->delete($key);
     }

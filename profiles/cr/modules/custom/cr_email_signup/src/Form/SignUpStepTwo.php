@@ -1,23 +1,23 @@
 <?php
 /**
  * @file
- * Contains \Drupal\cr_multistep_form\Form\MultiStepFormTwo.
+ * Contains \Drupal\cr_email_signup\Form\SignUpStepTwo.
  */
 
-namespace Drupal\cr_multistep_form\Form;
+namespace Drupal\cr_email_signup\Form;
 
-use Drupal\cr_multistep_form\Form\MultiStepFormBase;
+use Drupal\cr_email_signup\Form\MultiStepFormBase;
 use Drupal\Core\Form\FormStateInterface;
 /**
  * Concrete implementation of Step Two.
  */
-class MultiStepFormTwo extends MultiStepFormBase {
+class SignUpStepTwo extends MultiStepFormBase {
 
   /**
    * Get the Form Identifier.
    */
   public function getFormId() {
-    return 'multistep_form_two';
+    return 'cr_email_signup_form_two';
   }
 
   /**

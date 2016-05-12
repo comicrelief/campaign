@@ -1,23 +1,25 @@
 <?php
 /**
  * @file
- * Contains \Drupal\cr_multistep_form\Form\MultiStepFormOne.
+ * Contains \Drupal\cr_email_signup\Form\SignUpStepOne.
  */
 
-namespace Drupal\cr_multistep_form\Form;
+namespace Drupal\cr_email_signup\Form;
 
+use Drupal\Core\Form\FormInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\cr_email_signup\Form\MultiStepFormBase;
 /**
  * Concrete implementation of Step One.
  */
-class MultiStepFormOne extends MultiStepFormBase {
+class SignUpStepOne extends MultiStepFormBase implements FormInterface {
 
   /**
    * Get the Form Identifier.
    */
   public function getFormId() {
 
-    return 'multistep_form_one';
+    return 'cr_email_signup_form_one';
   }
 
   /**
@@ -54,7 +56,7 @@ class MultiStepFormOne extends MultiStepFormBase {
 
     parent::queueMessage($queue_message);
 
-    $form_state->setRedirect('cr_multistep_form.multistep_two');
+    $form_state->setRedirect('cr_email_signup.step_two');
   }
 
 }
