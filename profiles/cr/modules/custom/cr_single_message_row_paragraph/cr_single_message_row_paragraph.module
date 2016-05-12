@@ -22,5 +22,5 @@ function cr_single_message_row_paragraph_field_single_message_row_lr_variant(Fie
     'centre-image-above' => t('Centred, image above'),
     'centre-image-below' => t('Centred, image below'),
   ];
- return $values;
+  return $values;
 }

@@ -21,5 +21,5 @@ function cr_content_wall_field_cw_view_mode(FieldStorageDefinitionInterface $def
     'cw_2col_m_s' => t('2 Col - M + S'),
     'cw_3col_s_s_s' => t('3 Col - S + S + S'),
   ];
- return $values;
+  return $values;
 }
