@@ -1,0 +1,14 @@
+cdn.settings:
+  type: config_object
+  label: 'CDN settings'
+  mapping:
+    # It is valuable to be able to disable the CDN module without having to
+    # uninstall it. This allows CDN integration to be disabled without requiring
+    # the dependency injection container to be rebuilt, which is costly & slow.
+    status:
+      type: integer
+      # disabled (0), testing (1) or enabled (2)
+      label: 'CDN status'
+    mapping:
+      label: 'File URL to CDN mapping'
+      type: cdn.mapping.[type]

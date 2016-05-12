@@ -13,18 +13,18 @@ gem 'toolkit'                 # Compass utility from the fabulous Snugug.
 gem 'breakpoint'              # Manages CSS media queries.
 gem 'oily_png'                # Faster Compass sprite generation.
 gem 'css_parser'              # Helps `compass stats` output statistics.
-gem 'bootstrap-sass'          # Include the boostrap gem
-
 gem 'sass-rails', '~> 5.0.0'
 gem 'susy'
-
 gem 'compass-rails', '~> 2.0.0'
 
-# Guard
-gem 'guard'                   # Guard event handler.
-gem 'guard-compass'           # Compile on sass/scss change.
-gem 'guard-livereload'        # Browser reload.
-gem 'yajl-ruby'               # Faster JSON with LiveReload in the browser.
+group :development do	# Guard
+	gem 'guard'                   # Guard event handler.
+	gem 'guard-compass'           # Compile on sass/scss change.
+	gem 'guard-livereload'        # Browser reload.
+	gem 'yajl-ruby'               # Faster JSON with LiveReload in the browser.
+
+	gem 'listen', '~> 2.10'
+end
 
 # Dependency to prevent polling. Setup for multiple OS environments.
 # Optionally remove the lines not specific to your OS.
@@ -33,11 +33,5 @@ gem 'rb-inotify', '~> 0.9', :require => false      # Linux
 gem 'rb-fsevent', :require => false                # Mac OSX
 gem 'rb-fchange', :require => false                # Windows
 
-# Add Hologram - markdown based documentation system for style guides.
-# http://trulia.github.io/hologram
-# gem 'hologram'
-
-# Add  Guard Hologram - uses guard to monitor changes to your hologram project
-# and rebuilds your style guide on the fly as you make changes.
-# https://github.com/kmayer/guard-hologram
-# gem 'guard-hologram', :require => false
+# Craft DB backup
+gem 'craft-drush', :git => 'git@codebasehq.com:comic/webops/craft-drush.git'

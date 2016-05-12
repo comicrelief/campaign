@@ -35,7 +35,7 @@
     ],
     "link": [
         {
-            "uri": "internal:\/faq",
+            "uri": "entity:node\/1",
             "title": "",
             "options": []
         }
@@ -73,7 +73,7 @@
     ],
     "changed": [
         {
-            "value": "1461765560",
+            "value": "1462873613",
             "lang": "en"
         }
     ],
