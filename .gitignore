@@ -15,8 +15,8 @@ sites/*/environment.yml
 
 # Ignore bundle files
 .bundle/config
-profiles/cr/themes/custom/campaign_base/.bundle/config
 .ruby-version
+node_modules/
 
 # ** Only works in OSs that support newer versions of fnmatch (Bash 4+)
 /sites/default/**/files
