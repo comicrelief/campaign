@@ -9,20 +9,20 @@ module.exports = function (grunt) {
         nospawn : true
       },
       sass: {
-        files: ['sass/{,**/}*.{scss,sass}'],
+        files: ['profiles/cr/themes/custom/campaign_base/sass/{,**/}*.{scss,sass}'],
         tasks: ['compass:dev','shell:styleguide']
       },
       templates: {
-        files: ['templates/{,**/}*.html.twig', 'sass/components/{,**/}*.hbs']
+        files: ['profiles/cr/themes/custom/campaign_base/templates/{,**/}*.html.twig', 'profiles/cr/themes/custom/campaign_base/sass/components/{,**/}*.hbs']
       },
       images: {
-        files: ['images/**']
+        files: ['profiles/cr/themes/custom/campaign_base/images/**']
       },
       css: {
-        files: ['css/{,**/}*.css']
+        files: ['profiles/cr/themes/custom/campaign_base/css/{,**/}*.css']
         },
       js: {
-        files: ['scripts/{,**/}*.js', '!js/{,**/}*.min.js'],
+        files: ['profiles/cr/themes/custom/campaign_base/scripts/{,**/}*.js', '!js/{,**/}*.min.js'],
         tasks: ['uglify:dev'] //'jshint',
       }
     },
@@ -32,7 +32,7 @@ module.exports = function (grunt) {
         separator: ';',
       },
       basic: {
-        src: ['scripts/{,**/}*.js'],
+        src: ['profiles/cr/themes/custom/campaign_base/scripts/{,**/}*.js'],
         dest: 'js/basic.js',
       },
       vendor: {
@@ -43,7 +43,7 @@ module.exports = function (grunt) {
 
     shell: {
         styleguide: {
-            command: 'node_modules/kss/bin/kss-node --source sass/ --css ../css/styles.css --verbose --title "Comic Relief PatternLab"'
+            command: 'node_modules/kss/bin/kss-node --source profiles/cr/themes/custom/campaign_base/sass/ --css ../css/styles.css --verbose --title "Comic Relief PatternLab"'
         }
     },
 
@@ -74,7 +74,7 @@ module.exports = function (grunt) {
 
     compass: {
       options: {
-        config: 'config.rb',
+        config: 'profiles/cr/themes/custom/campaign_base/config.rb',
         bundleExec: false,
         force: true
       },
@@ -152,8 +152,8 @@ module.exports = function (grunt) {
   // grunt.loadNpmTasks('grunt-accessibility');
 
   // grunt.registerTask('test',  [
-  //   // 'jshint', 
-  //   'browserSync:dev'//, 
+  //   // 'jshint',
+  //   'browserSync:dev'//,
   //   // 'nodeunit'
   //   ]);
   grunt.registerTask('style', ['shell:styleguide']);

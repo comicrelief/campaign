@@ -20,6 +20,6 @@
   </target>
   <target name="grunt:dependencies" description="Install all grunt dependencies.">
     <exec logoutput="true" passthru="true" checkreturn="true" command="bundle install --jobs 4 --path vendor/bundle"/>
-    <exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="npm install"/>
+    <exec logoutput="true" passthru="true" checkreturn="true" command="npm install"/>
   </target>
 </project>
