@@ -27,17 +27,19 @@ class MultiStepFormTwo extends MultiStepFormBase {
 
     $form = parent::buildForm($form, $form_state);
 
-    // TODO: Age ranges need clarifying.
-    $form['age_group'] = array(
+    // TODO: School Phases need clarifying.
+    $form['school_phase'] = array(
       '#type' => 'select',
-      '#title' => $this->t('Your age group'),
-      '#default_value' => $this->store->get('age_group') ? $this->store->get('age_group') : '',
+      '#title' => $this->t('School Phase'),
+      '#default_value' => $this->store->get('school_phase') ? $this->store->get('school_phase') : '',
       '#options' => array(
-        ' -- Select Age Group --',
-        '18 - 25',
-        '26 - 35',
-        '36 - 45',
-        '46+',
+        ' -- Select School Phase --',
+        'EY' => 'Early Years or Nursery',
+        'PY' => 'Primary',
+        'SY' => 'Secondary',
+        'FE' => 'Further Education or Sixth-Form College',
+        'HE' => 'Higher Education',
+        'OH' => 'Other',
       ),
     );
 
@@ -48,16 +50,16 @@ class MultiStepFormTwo extends MultiStepFormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $age_group = $form_state->getValue('age_group');
+    $school_phase = $form_state->getValue('school_phase');
     $email_address = $this->store->get('email');
-    $this->store->set('age_group', $age_group);
+    $this->store->set('school_phase', $school_phase);
     // ageGroup key is an assumption.
     $queue_message = array(
       'transSourceURL' => \Drupal::service('path.current')->getPath(),
       'transSource' => "[Campaign]_[Device]_ESU_[PageElementSource]",
       'timestamp' => time(),
       'emailAddress' => $email_address,
-      'ageGroup' => $age_group,
+      'schoolPhase' => $school_phase,
     );
 
     parent::queueMessage($queue_message);
