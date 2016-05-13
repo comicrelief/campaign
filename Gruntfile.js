@@ -47,7 +47,7 @@ module.exports = function (grunt) {
         }
     },
 
-    // accessibility: { // todo!!!
+    // accessibility: { // TODO!!!
     //   options : {
     //     accessibilityLevel: 'WCAG2A',
     //     domElement: true,
@@ -74,7 +74,7 @@ module.exports = function (grunt) {
 
     compass: {
       options: {
-        config: 'profiles/cr/themes/custom/campaign_base/config.rb',
+        config: 'config.rb',
         bundleExec: false,
         force: true
       },
@@ -86,6 +86,20 @@ module.exports = function (grunt) {
       dist: {
         options: {
           environment: 'production'
+        }
+      }
+    },
+
+    compassMultiple: {
+      all: {
+        options: {
+          multiple: [
+            {
+              config: 'profiles/cr/themes/custom/campaign_base/config.rb',
+              sassDir: 'profiles/cr/themes/custom/campaign_base/sass',
+              cssDir: 'profiles/cr/themes/custom/campaign_base/css'
+            },
+          ]
         }
       }
     },
@@ -140,6 +154,7 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-compass-multiple');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -164,8 +179,9 @@ module.exports = function (grunt) {
     'shell:styleguide',
     'concat',
     'uglify:dist', // todo error when compress
-    'compass:dist' //,
-    // 'jshint'
+    'compassMultiple',
+    //'compass:dist',
+    //'jshint'
   ]);
 
 };
