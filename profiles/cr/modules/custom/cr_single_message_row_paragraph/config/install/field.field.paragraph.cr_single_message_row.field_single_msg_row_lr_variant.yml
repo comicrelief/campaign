@@ -1,4 +1,3 @@
-uuid: 3d70ca95-0a21-4c40-8327-77f7da393a5b
 langcode: en
 status: true
 dependencies:
@@ -7,8 +6,6 @@ dependencies:
     - paragraphs.paragraphs_type.cr_single_message_row
   module:
     - options
-_core:
-  default_config_hash: dHpw0ZcjZDNa7vtaIEo4MYL24Ux-F4fFM27-HiFX6Qk
 id: paragraph.cr_single_message_row.field_single_msg_row_lr_variant
 field_name: field_single_msg_row_lr_variant
 entity_type: paragraph

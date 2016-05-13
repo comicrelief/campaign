@@ -1,11 +1,8 @@
-uuid: 9ffd06b7-b750-42df-8806-39be83d49510
 langcode: en
 status: true
 dependencies:
   module:
     - focal_point
-_core:
-  default_config_hash: 1qGOWPfPLTXYeCKwCO-hTvFqi3Lr8QFjyzCb9z2n-f8
 name: full_node_tablet_330x247
 label: 'Full node MD 330x247'
 effects:

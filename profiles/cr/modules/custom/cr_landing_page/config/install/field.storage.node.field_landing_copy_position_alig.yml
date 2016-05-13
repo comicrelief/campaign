@@ -9,8 +9,8 @@ field_name: field_landing_copy_position_alig
 entity_type: node
 type: list_string
 settings:
-  allowed_values:
-  allowed_values_function: 'cr_landing_page_field_landing_copy_position_alig'
+  allowed_values: null
+  allowed_values_function: cr_landing_page_field_landing_copy_position_alig
 module: options
 locked: false
 cardinality: 1

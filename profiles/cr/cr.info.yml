@@ -196,3 +196,6 @@ config_devel:
   # Contributed modules
   - pathauto.pattern.basic_page
   - pathauto.settings
+
+  # Scheduled updates
+  - scheduled_updates.scheduled_update_type.node__status

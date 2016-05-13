@@ -35,8 +35,8 @@ config_devel:
   - field.storage.node.field_article_intro
   - field.field.node.article.field_article_tags
   - field.storage.node.field_article_tags
-  - field.field.node.article.field_article_publish_date
-  - field.storage.node.field_article_publish_date
+  # - field.field.node.article.field_article_publish_date
+  # - field.storage.node.field_article_publish_date
   - field.field.node.article.field_article_image
   - field.storage.node.field_article_image
   - field.field.node.article.field_article_meta_tags
@@ -49,3 +49,5 @@ config_devel:
   - ds.field.related_news
   - rdf.mapping.node.article
   - rdf.mapping.taxonomy_term.tags
+  - field.field.node.article.publishing_date
+  - field.storage.node.publishing_date
