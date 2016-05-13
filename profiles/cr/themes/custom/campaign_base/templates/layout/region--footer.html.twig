@@ -19,54 +19,63 @@ set classes = [
 'cr-footer',
 ]
 %}
+
+<h4 class="footer__follow">Follow us...</h4>
+
 <div class="footer__social-links">
   <ul>
     <li>
-      <a href="https://www.facebook.com/officialrednoseday?ref=ts&amp;fref=ts" title="Facebook" target="_blank">
+      <a href="https://www.facebook.com/officialrednoseday" title="Facebook" target="_blank">
         <svg viewBox="0 0 32 32" class="icon">
-          <use xlink:href="#icon-icons_100"></use>
+          <use xlink:href="#icon-facebook"></use>
         </svg>
       </a>
     </li>
     <li>
-      <a href="https://www.facebook.com/officialrednoseday?ref=ts&amp;fref=ts" title="Facebook" target="_blank">
+      <a href="https://twitter.com/rednoseday" title="Twitter" target="_blank">
         <svg viewBox="0 0 32 32" class="icon">
-          <use xlink:href="#icon-icons_99"></use>
+          <use xlink:href="#icon-twitter"></use>
         </svg>
       </a>
     </li>
     <li>
-      <a href="https://www.facebook.com/officialrednoseday?ref=ts&amp;fref=ts" title="Facebook" target="_blank">
+      <a href="https://www.youtube.com/user/rednoseday" title="Google Plus" target="_blank">
         <svg viewBox="0 0 32 32" class="icon">
-          <use xlink:href="#icon-icons_98"></use>
+          <use xlink:href="#icon-googleplus"></use>
         </svg>
       </a>
     </li>
     <li>
-      <a href="https://www.facebook.com/officialrednoseday?ref=ts&amp;fref=ts" title="Facebook" target="_blank">
+      <a href="https://www.instagram.com/rednoseday/" title="YouTube" target="_blank">
         <svg viewBox="0 0 32 32" class="icon">
-          <use xlink:href="#icon-icons_97"></use>
+          <use xlink:href="#icon-youtube"></use>
         </svg>
       </a>
     </li>
     <li>
-      <a href="https://www.facebook.com/officialrednoseday?ref=ts&amp;fref=ts" title="Facebook" target="_blank">
+      <a href="https://plus.google.com/+rednoseday" title="Instagram" target="_blank">
         <svg viewBox="0 0 32 32" class="icon">
-          <use xlink:href="#icon-icons_96"></use>
+          <use xlink:href="#icon-instagram"></use>
         </svg>
       </a>
     </li>
   </ul>
 </div>
+
 {% if content %}
 <div{{ attributes.addClass(classes) }}>
 {{ content }}
 </div>
 {% endif %}
+
 <div class="footer__copyright">
   <p>© Comic Relief 2015. Comic Relief, registered charity 326568 (England/Wales); SC039730 (Scotland)</p>
 </div>
 <div class="footer__branding">
-  <a title="Comic Relief" href="http://www.comicrelief.com/" rel="home" target="_blank"><span>Comic Relief</span></a>
+  <a title="Comic Relief" href="http://www.comicrelief.com/" rel="home" target="_blank">
+   <svg viewBox="0 0 250 250" class="icon">
+      <use xlink:href="#crlogo"></use>
+    </svg>
+  </a>
 </div>
 {% include directory ~ '/templates/svg/spritesheet.html.twig' %}
