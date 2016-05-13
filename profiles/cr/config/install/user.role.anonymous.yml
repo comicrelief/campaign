@@ -13,3 +13,4 @@ permissions:
   - 'download own audio files'
   - 'restful get entity:node'
   - 'view search api pages'
+  - 'display EU Cookie Compliance popup'
