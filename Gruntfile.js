@@ -43,7 +43,7 @@ module.exports = function (grunt) {
 
     shell: {
         styleguide: {
-            command: 'node_modules/kss/bin/kss-node --source profiles/cr/themes/custom/campaign_base/sass/ --css ../css/styles.css --verbose --title "Comic Relief PatternLab"'
+            command: 'node_modules/kss/bin/kss-node --source profiles/cr/themes/custom/campaign_base/sass/ --destination profiles/cr/themes/custom/campaign_base/styleguide --css ../css/styles.css --verbose --title "Comic Relief PatternLab"'
         }
     },
 
