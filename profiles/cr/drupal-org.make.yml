@@ -109,3 +109,5 @@ projects:
     version: 2.15-rc1
   simple_sitemap:
     version: 2.1
+  eu_cookie_compliance:
+    version: 1.x-dev
