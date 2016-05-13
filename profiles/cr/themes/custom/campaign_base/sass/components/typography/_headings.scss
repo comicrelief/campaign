@@ -9,36 +9,42 @@
 // Style guide: Typography.Headings
 
 
-h1,h2,h3,h4,h5,p {
-	margin: 0 0 20px;
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin: 0 0 20px;
 }
 
 h1 {
-	font-family: "Knockout 27 A","Knockout 27 B",Impact;
+  font-family: "Knockout 27 A","Knockout 27 B",Impact;
   font-size: 32px;
   font-weight: normal;
   line-height: 28px;
-	@include breakpoint($screen-sm) {    
-		font-size: 64px;
-	  font-weight: normal;
-	  line-height: 60px;
-  }	
+
+  @include breakpoint($screen-sm) {
+    font-size: 64px;
+    font-weight: normal;
+    line-height: 60px;
+  }
 }
 h2 {
-	font-size: 1.2em;
-	margin: 0 0 20px;
+  margin: 0 0 20px;
+  font-size: 1.2em;
 }
 h3 {
-	font-size: 21px;
+  font-size: 21px;
 }
 // Article Typo use generic classes
 .cr-article__header {
   text-align: center;
 }
 .cr-article__title {
+  margin-top: 40px;
   text-transform: none;
   font-size: 24px;
   font-weight: 600;
   line-height: 28px;
-  margin-top: 40px;
 }
