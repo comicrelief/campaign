@@ -1,0 +1,14 @@
+name: 'EU Cookie Compliance'
+type: module
+description: 'This module aims at making the website compliant with the new EU cookie regulation'
+package: custom
+# core: 8.x
+configure: eu_cookie_compliance.settings
+dependencies:
+  - filter
+
+# Information added by Drupal.org packaging script on 2016-04-18
+version: '8.x-1.0-beta4+9-dev'
+core: '8.x'
+project: 'eu_cookie_compliance'
+datestamp: 1460962744

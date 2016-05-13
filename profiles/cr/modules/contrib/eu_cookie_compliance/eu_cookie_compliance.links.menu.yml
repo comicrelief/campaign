@@ -1,0 +1,6 @@
+eu_cookie_compliance.settings:
+  title: 'EU Cookie Compliance'
+  parent: system.admin_config_system
+  description: 'Make your website compliant with the EU Directive on Privacy and Electronic Communications.'
+  route_name: eu_cookie_compliance.settings
+  weight: -20
