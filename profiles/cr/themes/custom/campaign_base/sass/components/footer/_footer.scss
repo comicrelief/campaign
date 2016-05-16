@@ -9,7 +9,7 @@
 
 footer[role=contentinfo] {
   margin-top: 40px;
-  padding: 50px 5px 20px 5px;
+  padding: 50px 5px;
   background: $black;
 
   @include breakpoint($screen-lg) {
@@ -25,8 +25,11 @@ footer[role=contentinfo] {
     text-align: center;
     a {
       display: inline-block;
-      width: 75px;
-      height: 75px;
+      width: 70px;
+      height: 70px;
+      html.no-svg & {
+        background-image: url("../images/icons/cr_footer_logo.png");
+      }
     }
   }
   .footer__follow {

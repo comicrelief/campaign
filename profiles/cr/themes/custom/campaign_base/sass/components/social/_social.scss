@@ -13,12 +13,10 @@
     text-align: center;
     li {
       display: inline-block;
-      width: 50px;
-      height: 50px;
       a {
         display: inherit;
-        width: inherit;
-        height: inherit;
+        width: 50px;
+        height: 50px;
         .icon {
           display: inherit;
           width: inherit;
@@ -28,6 +26,24 @@
           @include transition(fill 0.3s ease);
           &:hover {
             fill: #c8c8c8;
+          }
+        }
+        html.no-svg & {
+          background: no-repeat center center;
+          &.icon__fb {
+            background-image: url("../images/icons/facebook.png");
+          }
+          &.icon__twitter {
+            background-image: url("../images/icons/twitter.png");
+          }
+          &.icon__googleplus {
+            background-image: url("../images/icons/gplus.png");
+          }
+          &.icon__youtube {
+            background-image: url("../images/icons/youtube.png");
+          }
+          &.icon__instagram {
+            background-image: url("../images/icons/instagram.png");
           }
         }
       }
