@@ -93,8 +93,4 @@
       </exclude>
      </whitelist>
   </filter>
-<php>
-
-  <env name="SIMPLETEST_SITE_URL" value="http://campaign.dev/"/>
-</php>
 </phpunit>
