@@ -57,7 +57,7 @@ class SignUp extends FormBase implements FormInterface {
    * Build the Form Elements.
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-
+    $form_state = $form_state;
     $form['email'] = array(
       '#type' => 'email',
       '#title' => $this->t('Your email address'),
