@@ -31,7 +31,6 @@
       <directory>./tests/Drupal/Tests</directory>
       <directory>./modules/*/tests/src/Unit</directory>
       <directory>../modules/*/tests/src/Unit</directory>
-      <directory>../profiles/*/modules/*/*/tests/src/Unit</directory>
       <directory>../profiles/*/tests/src/Unit</directory>
       <directory>../sites/*/modules/*/tests/src/Unit</directory>
       <!-- Exclude Composer's vendor directory so we don't run tests there. -->
@@ -55,7 +54,6 @@
       <directory>./modules/*/tests/src/Functional</directory>
       <directory>../modules/*/tests/src/Functional</directory>
       <directory>../profiles/*/tests/src/Functional</directory>
-      <directory>../profiles/*/modules/*/*/tests/src/Functional</directory>
       <directory>../sites/*/modules/*/tests/src/Functional</directory>
       <!-- Exclude Composer's vendor directory so we don't run tests there. -->
       <exclude>./vendor</exclude>
@@ -93,8 +91,4 @@
       </exclude>
      </whitelist>
   </filter>
-<php>
-
-  <env name="SIMPLETEST_SITE_URL" value="http://campaign.dev/"/>
-</php>
 </phpunit>
