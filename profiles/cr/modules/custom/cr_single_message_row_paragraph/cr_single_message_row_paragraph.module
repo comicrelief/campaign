@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * @file
+ * Single message row paragraph type.
+ */
+
+use Drupal\Core\Entity\FieldableEntityInterface;
+use Drupal\Core\Field\FieldStorageDefinitionInterface;
+
+/**
+ * Options callback for field_single_message_row_lr_variant.
+ *
+ * @see options_allowed_values()
+ */
+function cr_single_message_row_paragraph_field_single_message_row_lr_variant(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
+  $values = [
+    'title-above-image-left' => t('Title above, image left'),
+    'title-above-image-right' => t('Title above, image right'),
+    'title-inside-image-left' => t('Title inside copy, image left'),
+    'title-inside-image-right' => t('Title inside copy, image right'),
+    'centre-image-above' => t('Centred, image above'),
+    'centre-image-below' => t('Centred, image below'),
+  ];
+  return $values;
+}
