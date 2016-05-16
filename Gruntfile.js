@@ -2,14 +2,29 @@
 
 module.exports = function (grunt) {
 
+  var target = grunt.option('target') || 'profiles/cr/themes/custom/campaign_base/config.rb';
+
   grunt.initConfig({
+
+    focus: {
+      campaign_base: {
+        exclude: ['rnd17']
+      },
+      rnd17: {
+        exclude: ['campaign_base']
+      }
+    },
     watch: {
       options: {
         livereload: true,
         nospawn : true
       },
-      sass: {
+      campaign_base: {
         files: ['profiles/cr/themes/custom/campaign_base/sass/{,**/}*.{scss,sass}'],
+        tasks: ['compass:dev','shell:styleguide']
+      },
+      rnd17: {
+        files: ['themes/rnd17/sass/{,**/}*.{scss,sass}'],
         tasks: ['compass:dev','shell:styleguide']
       },
       templates: {
@@ -47,34 +62,9 @@ module.exports = function (grunt) {
         }
     },
 
-    // accessibility: { // TODO!!!
-    //   options : {
-    //     accessibilityLevel: 'WCAG2A',
-    //     domElement: true,
-    //     force: true
-    //   },
-    //   test : {
-    //     src: ['index.html','views/**/*.html']
-    //   }
-    // },
-
-    // browserSync: {
-    //     dev: {
-    //         bsFiles: {
-    //             src : ['index.html','views/{,**/}*.html','css/{,**/}*.css']
-    //         },
-    //         proxy: 'localhost',
-    //         options: {
-    //             port: 4567,
-    //             watchTask: true,
-    //             server: './'
-    //         }
-    //     }
-    // },
-
     compass: {
       options: {
-        config: 'config.rb',
+        config: target,
         bundleExec: false,
         force: true
       },
@@ -99,6 +89,11 @@ module.exports = function (grunt) {
               sassDir: 'profiles/cr/themes/custom/campaign_base/sass',
               cssDir: 'profiles/cr/themes/custom/campaign_base/css'
             },
+            {
+              config: 'themes/rnd17/config.rb',
+              sassDir: 'themes/rnd17/sass',
+              cssDir: 'themes/rnd17/css'
+            }
           ]
         }
       }
@@ -135,7 +130,7 @@ module.exports = function (grunt) {
       dist: {
         options: {
           mangle: false,
-          compress: {} // conpress: {}
+          compress: {}
         },
         files: [{
           expand: true,
@@ -163,25 +158,17 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-kss');
   grunt.loadNpmTasks('grunt-shell');
+  grunt.loadNpmTasks('grunt-focus');
 
-  // grunt.loadNpmTasks('grunt-accessibility');
-
-  // grunt.registerTask('test',  [
-  //   // 'jshint',
-  //   'browserSync:dev'//,
-  //   // 'nodeunit'
-  //   ]);
   grunt.registerTask('style', ['shell:styleguide']);
-  grunt.registerTask('default', ['shell:styleguide', 'uglify:dev', 'watch']);
+  grunt.registerTask('campaign_base', ['shell:styleguide', 'uglify:dev', 'focus:campaign_base']);
+  grunt.registerTask('rnd17', ['shell:styleguide', 'uglify:dev', 'focus:rnd17']);
 
   grunt.registerTask('build', [
-    // 'uglify:dist',
     'shell:styleguide',
     'concat',
-    'uglify:dist', // todo error when compress
-    'compassMultiple',
-    //'compass:dist',
-    //'jshint'
+    'uglify:dist',
+    'compassMultiple'
   ]);
 
 };
