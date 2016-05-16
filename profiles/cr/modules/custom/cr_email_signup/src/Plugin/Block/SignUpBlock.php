@@ -24,7 +24,7 @@ class SignUpBlock extends BlockBase {
    * {@inheritdoc}
    */
   public function build() {
-    return \Drupal::formBuilder()->getForm('Drupal\cr_email_signup\Form\SignUpStepOne');
+    return \Drupal::formBuilder()->getForm('Drupal\cr_email_signup\Form\SignUp');
   }
 
   /**
