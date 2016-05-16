@@ -2,27 +2,42 @@
 
 module.exports = function (grunt) {
 
+  var target = grunt.option('target') || 'profiles/cr/themes/custom/campaign_base/config.rb';
+
   grunt.initConfig({
+
+    focus: {
+      campaign_base: {
+        exclude: ['rnd17']
+      },
+      rnd17: {
+        exclude: ['campaign_base']
+      }
+    },
     watch: {
       options: {
         livereload: true,
         nospawn : true
       },
-      sass: {
-        files: ['sass/{,**/}*.{scss,sass}'],
+      campaign_base: {
+        files: ['profiles/cr/themes/custom/campaign_base/sass/{,**/}*.{scss,sass}'],
+        tasks: ['compass:dev','shell:styleguide']
+      },
+      rnd17: {
+        files: ['themes/rnd17/sass/{,**/}*.{scss,sass}'],
         tasks: ['compass:dev','shell:styleguide']
       },
       templates: {
-        files: ['templates/{,**/}*.html.twig', 'sass/components/{,**/}*.hbs']
+        files: ['profiles/cr/themes/custom/campaign_base/templates/{,**/}*.html.twig', 'profiles/cr/themes/custom/campaign_base/sass/components/{,**/}*.hbs']
       },
       images: {
-        files: ['images/**']
+        files: ['profiles/cr/themes/custom/campaign_base/images/**']
       },
       css: {
-        files: ['css/{,**/}*.css']
+        files: ['profiles/cr/themes/custom/campaign_base/css/{,**/}*.css']
         },
       js: {
-        files: ['scripts/{,**/}*.js', '!js/{,**/}*.min.js'],
+        files: ['profiles/cr/themes/custom/campaign_base/scripts/{,**/}*.js', '!js/{,**/}*.min.js'],
         tasks: ['uglify:dev'] //'jshint',
       }
     },
@@ -32,49 +47,24 @@ module.exports = function (grunt) {
         separator: ';',
       },
       basic: {
-        src: ['scripts/{,**/}*.js'],
-        dest: 'js/basic.js',
+        src: ['profiles/cr/themes/custom/campaign_base/scripts/{,**/}*.js'],
+        dest: 'profiles/cr/themes/custom/campaign_base/js/basic.js',
       },
       vendor: {
         src: ['vendor/{,**/}*.js'],
-        dest: 'js/vendor.js',
+        dest: 'profiles/cr/themes/custom/campaign_base/js/vendor.js',
       },
     },
 
     shell: {
         styleguide: {
-            command: 'node_modules/kss/bin/kss-node --source sass/ --css ../css/styles.css --verbose --title "Comic Relief PatternLab"'
+            command: 'node_modules/kss/bin/kss-node --source profiles/cr/themes/custom/campaign_base/sass/ --destination profiles/cr/themes/custom/campaign_base/styleguide --css ../css/styles.css --verbose --title "Comic Relief PatternLab"'
         }
     },
 
-    // accessibility: { // todo!!!
-    //   options : {
-    //     accessibilityLevel: 'WCAG2A',
-    //     domElement: true,
-    //     force: true
-    //   },
-    //   test : {
-    //     src: ['index.html','views/**/*.html']
-    //   }
-    // },
-
-    // browserSync: {
-    //     dev: {
-    //         bsFiles: {
-    //             src : ['index.html','views/{,**/}*.html','css/{,**/}*.css']
-    //         },
-    //         proxy: 'localhost',
-    //         options: {
-    //             port: 4567,
-    //             watchTask: true,
-    //             server: './'
-    //         }
-    //     }
-    // },
-
     compass: {
       options: {
-        config: 'config.rb',
+        config: target,
         bundleExec: false,
         force: true
       },
@@ -86,6 +76,25 @@ module.exports = function (grunt) {
       dist: {
         options: {
           environment: 'production'
+        }
+      }
+    },
+
+    compassMultiple: {
+      all: {
+        options: {
+          multiple: [
+            {
+              config: 'profiles/cr/themes/custom/campaign_base/config.rb',
+              sassDir: 'profiles/cr/themes/custom/campaign_base/sass',
+              cssDir: 'profiles/cr/themes/custom/campaign_base/css'
+            },
+            {
+              config: 'themes/rnd17/config.rb',
+              sassDir: 'themes/rnd17/sass',
+              cssDir: 'themes/rnd17/css'
+            }
+          ]
         }
       }
     },
@@ -121,7 +130,7 @@ module.exports = function (grunt) {
       dist: {
         options: {
           mangle: false,
-          compress: {} // conpress: {}
+          compress: {}
         },
         files: [{
           expand: true,
@@ -140,6 +149,7 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-compass-multiple');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -148,24 +158,17 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-kss');
   grunt.loadNpmTasks('grunt-shell');
+  grunt.loadNpmTasks('grunt-focus');
 
-  // grunt.loadNpmTasks('grunt-accessibility');
-
-  // grunt.registerTask('test',  [
-  //   // 'jshint', 
-  //   'browserSync:dev'//, 
-  //   // 'nodeunit'
-  //   ]);
   grunt.registerTask('style', ['shell:styleguide']);
-  grunt.registerTask('default', ['shell:styleguide', 'uglify:dev', 'watch']);
+  grunt.registerTask('campaign_base', ['shell:styleguide', 'uglify:dev', 'focus:campaign_base']);
+  grunt.registerTask('rnd17', ['shell:styleguide', 'uglify:dev', 'focus:rnd17']);
 
   grunt.registerTask('build', [
-    // 'uglify:dist',
     'shell:styleguide',
     'concat',
-    'uglify:dist', // todo error when compress
-    'compass:dist' //,
-    // 'jshint'
+    'uglify:dist',
+    'compassMultiple'
   ]);
 
 };

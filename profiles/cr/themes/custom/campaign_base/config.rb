@@ -9,12 +9,12 @@
 # Default to development if environment is not set.
 # Because we're committing CSS, we always want to be commiting clean CSS code without debug info
 # environment = :production
-# saved = environment
-# if (environment.nil?)
-#   environment = :development
-# else
-#   environment = saved
-# end
+saved = environment
+if (environment.nil?)
+  environment = :production
+else
+  environment = saved
+end
 
 # Location of the theme's resources.
 css_dir = "css"
