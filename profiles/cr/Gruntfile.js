@@ -2,7 +2,7 @@
 
 module.exports = function (grunt) {
 
-  var target = grunt.option('target') || 'profiles/cr/themes/custom/campaign_base/config.rb';
+  var target = grunt.option('target') || 'themes/custom/campaign_base/config.rb';
   // var theme = grunt.option('target') || 'profiles/cr/themes/custom/campaign_base/';
 
   grunt.initConfig({
@@ -21,24 +21,24 @@ module.exports = function (grunt) {
         nospawn : true
       },
       campaign_base: {
-        files: ['profiles/cr/themes/custom/campaign_base/sass/{,**/}*.{scss,sass}'],
+        files: ['themes/custom/campaign_base/sass/{,**/}*.{scss,sass}'],
         tasks: ['compass:dev','shell:campaign_styleguide']
       },
       rnd17: {
-        files: ['themes/rnd17/sass/{,**/}*.{scss,sass}'],
+        files: ['../../themes/rnd17/sass/{,**/}*.{scss,sass}'],
         tasks: ['compass:dev','shell:rnd17_styleguide']
       },
       templates: {
-        files: ['profiles/cr/themes/custom/campaign_base/templates/{,**/}*.html.twig', 'profiles/cr/themes/custom/campaign_base/sass/components/{,**/}*.hbs']
+        files: ['themes/custom/campaign_base/templates/{,**/}*.html.twig', 'themes/custom/campaign_base/sass/components/{,**/}*.hbs']
       },
       images: {
-        files: ['profiles/cr/themes/custom/campaign_base/images/**']
+        files: ['themes/custom/campaign_base/images/**']
       },
       css: {
-        files: ['profiles/cr/themes/custom/campaign_base/css/{,**/}*.css']
+        files: ['themes/custom/campaign_base/css/{,**/}*.css']
         },
       js: {
-        files: ['profiles/cr/themes/custom/campaign_base/scripts/{,**/}*.js', '!js/{,**/}*.min.js'],
+        files: ['themes/custom/campaign_base/scripts/{,**/}*.js', '!js/{,**/}*.min.js'],
         tasks: ['uglify:dev'] //'jshint',
       }
     },
@@ -48,21 +48,21 @@ module.exports = function (grunt) {
         separator: ';',
       },
       campaign_base: {
-        src: ['profiles/cr/themes/custom/campaign_base/scripts/{,**/}*.js'],
-        dest: 'profiles/cr/themes/custom/campaign_base/js/basic.js',
+        src: ['themes/custom/campaign_base/scripts/{,**/}*.js'],
+        dest: 'themes/custom/campaign_base/js/basic.js',
       },
       rnd17: {
-        src: ['themes/rnd17/scripts/{,**/}*.js'],
-        dest: 'themes/rnd17/js/basic.js',
+        src: ['../../themes/rnd17/scripts/{,**/}*.js'],
+        dest: '../../themes/rnd17/js/basic.js',
       },
     },
 
     shell: {
         campaign_styleguide: {
-            command: 'node_modules/kss/bin/kss-node --source profiles/cr/themes/custom/campaign_base/sass/ --destination profiles/cr/themes/custom/campaign_base/styleguide --css ../css/styles.css --verbose --title "Comic Relief PatternLab"'
+            command: '../../node_modules/kss/bin/kss-node --source profiles/cr/themes/custom/campaign_base/sass/ --destination profiles/cr/themes/custom/campaign_base/styleguide --css ../css/styles.css --verbose --title "Comic Relief PatternLab"'
         },
         rnd17_styleguide: {
-            command: 'node_modules/kss/bin/kss-node --source themes/rnd17/sass/ --destination themes/rnd17/styleguide --css ../css/styles.css --verbose --title "Red Nose Day PatternLab"'
+            command: '../../node_modules/kss/bin/kss-node --source ../../themes/rnd17/sass/ --destination ../../themes/rnd17/styleguide --css ../css/styles.css --verbose --title "Red Nose Day PatternLab"'
         }
     },
 
@@ -89,16 +89,16 @@ module.exports = function (grunt) {
         options: {
           multiple: [
             {
-              config: 'profiles/cr/themes/custom/campaign_base/config.rb',
-              sassDir: 'profiles/cr/themes/custom/campaign_base/sass',
-              cssDir: 'profiles/cr/themes/custom/campaign_base/css',
-              javascripts_dir: "profiles/cr/themes/custom/campaign_base/js"
+              config: 'themes/custom/campaign_base/config.rb',
+              sassDir: 'themes/custom/campaign_base/sass',
+              cssDir: 'themes/custom/campaign_base/css',
+              javascripts_dir: "themes/custom/campaign_base/js"
             },
             {
-              config: 'themes/rnd17/config.rb',
-              sassDir: 'themes/rnd17/sass',
-              cssDir: 'themes/rnd17/css',
-              javascripts_dir: 'themes/rnd17/js'
+              config: '../../themes/rnd17/config.rb',
+              sassDir: '../../themes/rnd17/sass',
+              cssDir: '../../themes/rnd17/css',
+              javascripts_dir: '../../themes/rnd17/js'
             }
           ]
         }
@@ -109,7 +109,7 @@ module.exports = function (grunt) {
       options: {
         jshintrc: '.jshintrc'
       },
-      all: ['profiles/cr/themes/custom/campaign_base/scripts/{,**/}*.js', '!profiles/cr/themes/custom/campaign_base/scripts/{,**/}*.min.js']
+      all: ['themes/custom/campaign_base/scripts/{,**/}*.js', '!themes/custom/campaign_base/scripts/{,**/}*.min.js']
     },
 
     uglify: {
@@ -122,8 +122,8 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           flatten: true,
-          cwd: 'profiles/cr/themes/custom/campaign_base/scripts',
-          dest: 'profiles/cr/themes/custom/campaign_base/js',
+          cwd: 'themes/custom/campaign_base/scripts',
+          dest: 'themes/custom/campaign_base/js',
           src: ['**/*.js', '!**/*.min.js'],
           rename: function(dest, src) {
             var folder = src.substring(0, src.lastIndexOf('/'));
@@ -135,8 +135,8 @@ module.exports = function (grunt) {
         {
           expand: true,
           flatten: true,
-          cwd: 'themes/rnd17/scripts',
-          dest: 'themes/rnd17/js',
+          cwd: '../../themes/rnd17/scripts',
+          dest: '../../themes/rnd17/js',
           src: ['**/*.js', '!**/*.min.js'],
           rename: function(dest, src) {
             var folder = src.substring(0, src.lastIndexOf('/'));
@@ -155,8 +155,8 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           flatten: true,
-          cwd: 'profiles/cr/themes/custom/campaign_base/scripts',
-          dest: 'profiles/cr/themes/custom/campaign_base/js',
+          cwd: 'themes/custom/campaign_base/scripts',
+          dest: 'themes/custom/campaign_base/js',
           src: ['**/*.js', '!**/*.min.js'],
           rename: function(dest, src) {
             var folder = src.substring(0, src.lastIndexOf('/'));
@@ -168,8 +168,8 @@ module.exports = function (grunt) {
         {
           expand: true,
           flatten: true,
-          cwd: 'themes/rnd17/scripts',
-          dest: 'themes/rnd17/js',
+          cwd: '../../themes/rnd17/scripts',
+          dest: '../../themes/rnd17/js',
           src: ['**/*.js', '!**/*.min.js'],
           rename: function(dest, src) {
             var folder = src.substring(0, src.lastIndexOf('/'));
