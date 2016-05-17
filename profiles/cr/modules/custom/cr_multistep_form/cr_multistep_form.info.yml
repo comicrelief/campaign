@@ -1,6 +1,0 @@
-name: Comic Relief Multi Step Form
-# core: 8.x
-description: Comic Relief Multi Step Form
-core: 8.x
-package: Comic Relief
-type: module
