@@ -35,5 +35,5 @@ gem 'rb-fchange', :require => false                # Windows
 
 group :craft do
   # Craft DB backup
-  gem 'craft-drush', :git => 'git@codebasehq.com:comic/webops/craft-drush.git'
+  gem 'craft-drush', :git => 'git@github.com:comicrelief/craft-drush.git'
 end
