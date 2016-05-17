@@ -9,3 +9,4 @@ global-js:
     js/campaign_base.min.js: {}
   dependencies:
     - core/jquery
+    - core/modernizr
