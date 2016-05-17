@@ -8,22 +8,22 @@ popup_info:
 popup_agreed:
   value: "<h2>Thank you for accepting cookies</h2>\r\n\r\n<p>You can now hide this message or find out more about cookies.</p>\r\n"
   format: basic_html
-domain: ''
+domain: 'http://*'
 popup_enabled: true
 popup_clicking_confirmation: true
 popup_position: false
 popup_agree_button_message: 'OK, I agree'
 popup_disagree_button_message: 'No, give me more info'
-popup_agreed_enabled: '0'
+popup_agreed_enabled: false
 popup_hide_agreed: false
 popup_find_more_button_message: 'More info'
 popup_hide_button_message: Hide
-popup_link: /legal
+popup_link: 'internal:/legal'
 popup_link_new_window: false
-popup_height: 400
-popup_width: '100'
+popup_height: 100
+popup_width: 100%
 popup_delay: 1
 popup_bg_hex: 0779BF
 popup_text_hex: ffffff
 domains_option: 1
-domains_list: ''
+domains_list: 'http://*'
