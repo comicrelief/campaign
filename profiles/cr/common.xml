@@ -19,6 +19,18 @@
           description="Build all project dependencies. (gems, composer)">
     <exec logoutput="true" passthru="true" command="composer install --no-progress --prefer-dist"/>
   </target>
+  <!-- Front-end -->
+  <target name="grunt:build" description="Generate all compiled Sass and JS files.">
+    <exec logoutput="true" passthru="true" checkreturn="true" command="bundle exec grunt build"/>
+  </target>
+  <target name="grunt:dependencies" description="Install all grunt dependencies.">
+    <exec logoutput="true" passthru="true" checkreturn="true" command="bundle install --without craft"/>
+    <exec logoutput="true" passthru="true" checkreturn="true" command="npm install"/>
+  </target>
+  <target name="grunt:dependencies:dev" description="Install all grunt dependencies.">
+    <exec logoutput="true" passthru="true" checkreturn="true" command="bundle install"/>
+    <exec logoutput="true" passthru="true" checkreturn="true" command="npm install"/>
+  </target>
   <!-- Tests -->
   <target name="test" depends="test:prepare" description="Run behat tests">
     <exec dir="${app.profile.dir}tests/behat" passthru="true" checkreturn="true" command="vendor/bin/behat --colors"/>

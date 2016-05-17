@@ -33,5 +33,7 @@ gem 'rb-inotify', '~> 0.9', :require => false      # Linux
 gem 'rb-fsevent', :require => false                # Mac OSX
 gem 'rb-fchange', :require => false                # Windows
 
-# Craft DB backup
-gem 'craft-drush', :git => 'git@codebasehq.com:comic/webops/craft-drush.git'
+group :craft do
+  # Craft DB backup
+  gem 'craft-drush', :git => 'git@codebasehq.com:comic/webops/craft-drush.git'
+end
