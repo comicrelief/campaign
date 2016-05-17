@@ -14,12 +14,4 @@
   <import file="${project.basedir}/${app.profile.dir}common.xml" optional="true" />
   <!-- These allow developers to override config. on a per environment basis -->
   <property file="build.properties"   override="true"/>
-  <!-- Front-end -->
-  <target name="grunt:build" description="Generate all compiled Sass and JS files.">
-    <exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="bundle exec grunt build"/>
-  </target>
-  <target name="grunt:dependencies" description="Install all grunt dependencies.">
-    <exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="bundle install --jobs 4 --path vendor/bundle"/>
-    <exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="npm install"/>
-  </target>
 </project>
