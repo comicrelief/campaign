@@ -33,15 +33,10 @@ third_party_settings:
         - field_partner_logo
         - node_title
       second:
+        - field_partner_image
         - body
-      fourth:
-        - 'dynamic_block_field:node-partners'
+        - field_partner_website
     fields:
-      'dynamic_block_field:node-partners':
-        plugin_id: 'dynamic_block_field:node-partners'
-        weight: 5
-        label: above
-        formatter: default
       node_title:
         plugin_id: node_title
         weight: 1
@@ -58,12 +53,20 @@ mode: full
 content:
   body:
     type: text_default
-    weight: 2
+    weight: 3
     label: hidden
     settings: {  }
     third_party_settings: {  }
-  field_partner_image:
+  field_partner_category:
+    type: entity_reference_entity_view
     weight: 5
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+  field_partner_image:
+    weight: 2
     label: above
     settings:
       image_style: ''
@@ -80,7 +83,7 @@ content:
     third_party_settings: {  }
   field_partner_website:
     type: link
-    weight: 3
+    weight: 4
     label: hidden
     settings:
       trim_length: 80
@@ -90,12 +93,11 @@ content:
       target: ''
     third_party_settings: {  }
   links:
-    weight: 1
+    weight: 13
     settings: {  }
     third_party_settings: {  }
   social_links:
-    weight: 4
+    weight: 14
     settings: {  }
     third_party_settings: {  }
-hidden:
-  field_partner_category: true
+hidden: {  }

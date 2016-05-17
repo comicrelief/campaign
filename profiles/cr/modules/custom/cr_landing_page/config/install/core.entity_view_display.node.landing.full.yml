@@ -4,8 +4,10 @@ dependencies:
   config:
     - core.entity_view_mode.node.full
     - field.field.node.landing.body
-    - field.field.node.landing.field_landing_cta
+    - field.field.node.landing.field_landing_background_colour
+    - field.field.node.landing.field_landing_copy_position_alig
     - field.field.node.landing.field_landing_image
+    - field.field.node.landing.field_landing_image_mobile
     - field.field.node.landing.field_paragraphs
     - field.field.node.landing.panelizer
     - node.type.landing
@@ -13,7 +15,6 @@ dependencies:
     - ds
     - entity_reference_revisions
     - image
-    - link
     - panelizer
     - text
     - user
@@ -113,17 +114,6 @@ content:
     weight: 2
     settings: {  }
     third_party_settings: {  }
-  field_landing_cta:
-    weight: 3
-    label: hidden
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    type: link
   field_landing_image:
     weight: 0
     label: hidden
@@ -154,4 +144,7 @@ content:
     weight: 13
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_landing_background_colour: true
+  field_landing_copy_position_alig: true
+  field_landing_image_mobile: true

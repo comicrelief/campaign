@@ -35,7 +35,7 @@
     ],
     "link": [
         {
-            "uri": "internal:\/legal",
+            "uri": "entity:node\/2",
             "title": "",
             "options": []
         }
@@ -73,7 +73,7 @@
     ],
     "changed": [
         {
-            "value": "1461765574",
+            "value": "1462873623",
             "lang": "en"
         }
     ],

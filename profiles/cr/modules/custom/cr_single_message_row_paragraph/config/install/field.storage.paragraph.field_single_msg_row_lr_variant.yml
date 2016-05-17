@@ -1,0 +1,23 @@
+uuid: 450c671e-40f1-4dd9-96a0-546b7c7fbbc4
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+_core:
+  default_config_hash: YbtY5KDLqfca45Cxd1fklxf-MUMWS177hQ5Lqr103r4
+id: paragraph.field_single_msg_row_lr_variant
+field_name: field_single_msg_row_lr_variant
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+  allowed_values_function: 'cr_single_message_row_paragraph_field_single_message_row_lr_variant'
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
