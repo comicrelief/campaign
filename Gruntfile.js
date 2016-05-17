@@ -2,8 +2,8 @@
 
 module.exports = function (grunt) {
 
-  var target = grunt.option('target')+'config.rb' || 'profiles/cr/themes/custom/campaign_base/'+'config.rb';
-  var theme = grunt.option('target') || 'profiles/cr/themes/custom/campaign_base/';
+  var target = grunt.option('target') || 'profiles/cr/themes/custom/campaign_base/config.rb';
+  // var theme = grunt.option('target') || 'profiles/cr/themes/custom/campaign_base/';
 
   grunt.initConfig({
 
@@ -22,11 +22,11 @@ module.exports = function (grunt) {
       },
       campaign_base: {
         files: ['profiles/cr/themes/custom/campaign_base/sass/{,**/}*.{scss,sass}'],
-        tasks: ['compass:dev','shell:styleguide']
+        tasks: ['compass:dev','shell:campaign_styleguide']
       },
       rnd17: {
         files: ['themes/rnd17/sass/{,**/}*.{scss,sass}'],
-        tasks: ['compass:dev','shell:styleguide']
+        tasks: ['compass:dev','shell:rnd17_styleguide']
       },
       templates: {
         files: ['profiles/cr/themes/custom/campaign_base/templates/{,**/}*.html.twig', 'profiles/cr/themes/custom/campaign_base/sass/components/{,**/}*.hbs']
@@ -199,6 +199,13 @@ module.exports = function (grunt) {
   grunt.registerTask('rnd17', ['shell:rnd17_styleguide', 'uglify:dev', 'focus:rnd17']);
 
   grunt.registerTask('build', [
+    'shell:campaign_styleguide',
+    'concat:campaign_base',
+    'uglify:dist',
+    'compass:dist'
+  ]);
+
+  grunt.registerTask('build_all', [
     'shell:campaign_styleguide',
     'shell:rnd17_styleguide',
     'concat',
