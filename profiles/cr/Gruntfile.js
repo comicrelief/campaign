@@ -182,17 +182,8 @@ module.exports = function (grunt) {
       }
     }
   });
-
-  grunt.loadNpmTasks('grunt-compass-multiple');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-compass');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-browser-sync');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-kss');
-  grunt.loadNpmTasks('grunt-shell');
-  grunt.loadNpmTasks('grunt-focus');
+  
+  grunt.file.expand('../../node_modules/grunt-*/tasks').forEach(grunt.loadTasks);
 
   grunt.registerTask('style', ['shell:styleguide']);
   grunt.registerTask('campaign_base', ['shell:campaign_styleguide', 'uglify:dev', 'focus:campaign_base']);
