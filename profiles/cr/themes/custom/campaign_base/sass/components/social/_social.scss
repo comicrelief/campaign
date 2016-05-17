@@ -7,34 +7,46 @@
 //
 // Style guide: Components.Social
 
-.social-icons {
-  padding: 25px 0;
-  text-align: center;
-  background: $dark-grey;
-  .social-icons__item {
-    display: inline-block;
-    width: 50px;
-    height: 42px;
-    margin: 10px 0;
-    text-indent: -9999em;
+/* Footer social icons */
+.footer__social-links {
+  ul {
+    text-align: center;
+    li {
+      display: inline-block;
+      a {
+        display: inherit;
+        width: 50px;
+        height: 50px;
+        .icon {
+          display: inherit;
+          width: inherit;
+          height: inherit;
 
-    @include breakpoint($screen-sm) {
-      margin: 10px;
-    }
-    &.facebook {
-      @include icons-sprite(facebook, $offset-x: 11px);
-    }
-    &.twitter {
-      @include icons-sprite(twitter);
-    }
-    &.gplus {
-      @include icons-sprite(gplus, $offset-x: 2px);
-    }
-    &.youtube {
-      @include icons-sprite(youtube, $offset-x: 2px);
-    }
-    &.instagram {
-      @include icons-sprite(instagram, $offset-x: 5px);
+          fill: white;
+          @include transition(fill 0.3s ease);
+          &:hover {
+            fill: #c8c8c8;
+          }
+        }
+        html.no-svg & {
+          background: no-repeat center center;
+          &.icon__fb {
+            background-image: url("../images/icons/facebook.png");
+          }
+          &.icon__twitter {
+            background-image: url("../images/icons/twitter.png");
+          }
+          &.icon__googleplus {
+            background-image: url("../images/icons/gplus.png");
+          }
+          &.icon__youtube {
+            background-image: url("../images/icons/youtube.png");
+          }
+          &.icon__instagram {
+            background-image: url("../images/icons/instagram.png");
+          }
+        }
+      }
     }
   }
 }
