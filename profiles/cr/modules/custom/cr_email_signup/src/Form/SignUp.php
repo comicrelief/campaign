@@ -109,7 +109,7 @@ class SignUp extends FormBase implements FormInterface {
 
     $queue_message = array(
       'transSourceURL' => \Drupal::service('path.current')->getPath(),
-      'transSource' => "{$this->skeletonMessage}_[Device]_ESU_[PageElementSource]",
+      'transSource' => "{$this->skeletonMessage['campaign']}_[Device]_ESU_[PageElementSource]",
       'timestamp' => time(),
       'emailAddress' => $email_address,
     );
@@ -127,7 +127,7 @@ class SignUp extends FormBase implements FormInterface {
     // TODO: make key transSource dynamic/configurable.
     $queue_message = array(
       'transSourceURL' => \Drupal::service('path.current')->getPath(),
-      'transSource' => "{$this->skeletonMessage}_[Device]_ESU_[PageElementSource]",
+      'transSource' => "{$this->skeletonMessage['campaign']}_[Device]_ESU_[PageElementSource]",
       'timestamp' => time(),
       'emailAddress' => $email_address,
       'schoolPhase' => $school_phase,
