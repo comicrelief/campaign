@@ -3,8 +3,3 @@ type: module
 description: View Mode Field
 core: 8.x
 package: Custom
-
-# Information added by drush on 2016-04-22
-version: '8.x-1.x-dev'
-project: 'view_mode'
-datestamp: 1461344555

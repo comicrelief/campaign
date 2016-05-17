@@ -31,6 +31,7 @@
 .paragraph--cr-rich-text-paragraph__image {
 	@include breakpoint($screen-md) {
 	  height: 100%;
+	  width: 100%;
 	  position: absolute;
 	  img {
 			display: block;

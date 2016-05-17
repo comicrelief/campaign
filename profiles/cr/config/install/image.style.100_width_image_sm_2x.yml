@@ -1,0 +1,15 @@
+uuid: b391fd5c-28a6-49d5-8a07-c0787b38df06
+langcode: en
+status: true
+dependencies: {  }
+name: 100_width_image_sm_2x
+label: '100% Width Image - SM (2x)'
+effects:
+  dfe64cc9-42e2-4df3-89cd-9a8f7a35d96d:
+    uuid: dfe64cc9-42e2-4df3-89cd-9a8f7a35d96d
+    id: image_scale
+    weight: 1
+    data:
+      width: 1412
+      height: null
+      upscale: false

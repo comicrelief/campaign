@@ -9,26 +9,25 @@
 # Default to development if environment is not set.
 # Because we're committing CSS, we always want to be commiting clean CSS code without debug info
 # environment = :production
-# saved = environment
-# if (environment.nil?)
-#   environment = :development
-# else
-#   environment = saved
-# end
+saved = environment
+if (environment.nil?)
+  environment = :production
+else
+  environment = saved
+end
 
 # Location of the theme's resources.
-css_dir = "css"
-sass_dir = "sass"
-images_dir = "images"
+css_dir = "profiles/cr/themes/custom/campaign_base/css"
+sass_dir = "profiles/cr/themes/custom/campaign_base/sass"
+images_dir = "profiles/cr/themes/custom/campaign_base/images"
 generated_images_dir = images_dir + "/generated"
-javascripts_dir = "js"
+javascripts_dir = "profiles/cr/themes/custom/campaign_base/js"
 
 # Require any additional compass plugins installed on your system.
 require 'compass-normalize'
 require 'rgbapng'
 require 'toolkit'
 require 'sass-globbing'
-require 'bootstrap-sass'
 require 'breakpoint'
 require 'susy'
 

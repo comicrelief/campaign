@@ -1,0 +1,52 @@
+uuid: 4e0344e6-2024-4fca-9f81-3b38d30c7fa1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cr_single_message_row.field_single_msg_row_lr_body
+    - field.field.paragraph.cr_single_message_row.field_single_msg_row_lr_image
+    - field.field.paragraph.cr_single_message_row.field_single_msg_row_lr_title
+    - field.field.paragraph.cr_single_message_row.field_single_msg_row_lr_variant
+    - paragraphs.paragraphs_type.cr_single_message_row
+  module:
+    - options
+    - responsive_image
+    - text
+_core:
+  default_config_hash: 02bhPgJWuB5g3xFg2e3Jt03Q4H-N4a57G1Bb_Ji03qE
+id: paragraph.cr_single_message_row.default
+targetEntityType: paragraph
+bundle: cr_single_message_row
+mode: default
+content:
+  field_single_msg_row_lr_body:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_single_msg_row_lr_image:
+    weight: 2
+    label: hidden
+    settings:
+      responsive_image_style: single_l_r_message_row
+      image_link: ''
+    third_party_settings: {  }
+    type: responsive_image
+  field_single_msg_row_lr_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_single_msg_row_lr_variant:
+    weight: 4
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+hidden:
+  created: true
+  social_links: true
+  uid: true
