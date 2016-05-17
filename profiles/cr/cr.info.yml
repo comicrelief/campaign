@@ -74,6 +74,7 @@ dependencies:
   - cr_landing_page
   - cr_partner
   - cr_single_message_row_paragraph
+  - cr_block_paragraph
   #- cr_performance
 
   # Development modules
