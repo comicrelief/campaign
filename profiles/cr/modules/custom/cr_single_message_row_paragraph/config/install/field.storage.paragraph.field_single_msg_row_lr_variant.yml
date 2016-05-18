@@ -9,8 +9,8 @@ field_name: field_single_msg_row_lr_variant
 entity_type: paragraph
 type: list_string
 settings:
-  allowed_values: []
-  allowed_values_function: 'cr_single_message_row_paragraph_field_single_message_row_lr_variant'
+  allowed_values: null
+  allowed_values_function: cr_single_message_row_paragraph_field_single_message_row_lr_variant
 module: options
 locked: false
 cardinality: 1
