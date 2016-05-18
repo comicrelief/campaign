@@ -58,15 +58,23 @@ class SignUp extends FormBase implements FormInterface {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $form_state = $form_state;
+
+/*    $form['#prefix'] = '<div class="some-old-bollocks">';
+    $form['#suffix'] = '</div>';*/
+
     $form['email'] = array(
       '#type' => 'email',
       '#title' => $this->t('Your email address'),
+      '#prefix'=> '<div class="cr-email-signup__email-wrapper">',
     );
+
+    /* Set our first step class, to be updated by JS */
+    $form['#attributes']['class'][] = "cr-email-signup-form--step-1";
 
     $form['send_email'] = array(
       '#type' => 'button',
       '#name' => 'send_email',
-      '#value' => t('Submit'),
+      '#value' => t('Go'),
       '#ajax' => array(
         'callback' => array($this, 'queueEmail'),
         'progress' => array(
@@ -74,13 +82,14 @@ class SignUp extends FormBase implements FormInterface {
           'message' => "",
         ),
       ),
+      '#suffix'=>'</div>',
     );
 
     $form['school_phase'] = array(
       '#type' => 'select',
       '#title' => $this->t('School Phase'),
       '#options' => array(
-        0 => ' -- Select School Phase --',
+        0 => ' -- Select age group --',
         'EY' => 'Early Years or Nursery',
         'PY' => 'Primary',
         'SY' => 'Secondary',
@@ -88,6 +97,7 @@ class SignUp extends FormBase implements FormInterface {
         'HE' => 'Higher Education',
         'OH' => 'Other',
       ),
+      '#prefix'=> '<div class="cr-email-signup__school-phase-wrapper">',
     );
 
     $form['actions']['#type'] = 'actions';
@@ -96,6 +106,7 @@ class SignUp extends FormBase implements FormInterface {
       '#value' => $this->t('Submit'),
       '#button_type' => 'primary',
       '#weight' => 10,
+      '#suffix'=>'</div>',
     );
 
     return $form;
@@ -138,6 +149,10 @@ class SignUp extends FormBase implements FormInterface {
     drupal_set_message($this->t("Great! Now we know what's right for you"));
 
     return TRUE;
+  }
+
+  function cr_email_signup_theme($existing, $type, $theme, $path) {
+    dpm( "MEH" );
   }
 
 }

@@ -1,0 +1,4 @@
+cr_email_signup:
+  version: 1.x
+  js:
+    js/cr_email_signup.js: {}
