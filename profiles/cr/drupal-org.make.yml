@@ -109,3 +109,8 @@ projects:
     version: 2.15-rc1
   simple_sitemap:
     version: 2.1
+  eu_cookie_compliance:
+    version: 1.x-dev
+    # See: https://www.drupal.org/node/2726613
+    patch:
+      2726613: https://www.drupal.org/files/issues/2726613-12_cookies_fix_form.patch

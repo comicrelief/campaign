@@ -1,0 +1,5 @@
+eu_cookie_compliance.settings:
+  title: 'EU Cookie Compliance'
+  base_route_name: eu_cookie_compliance.settings
+  names:
+    - eu_cookie_compliance.settings

@@ -1,0 +1,103 @@
+# Schema for the configuration files of the EU Cookie Compliance.
+
+eu_cookie_compliance.settings:
+  type: config_object
+  label: 'EU Cookie Compliance Settings'
+  mapping:
+    popup_enabled:
+      type: boolean
+      label: 'Enable popup'
+    popup_clicking_confirmation:
+      type: boolean
+      label: 'Consent by clicking'
+    eu_only:
+      type: boolean
+      label: 'Only display popup in EU countries'
+    export:
+      type: mapping
+      label: 'Export'
+      mapping:
+        folder:
+          type: string
+          label: 'Folder'
+    popup_position:
+      type: boolean
+      label: 'Place the pop-up at the top of the website'
+    popup_agree_button_message:
+      type: label
+      label: 'Agree button message'
+    popup_disagree_button_message:
+      type: label
+      label: 'Disagree button message'
+    popup_info:
+      type: mapping
+      label: 'Popup message - requests consent'
+      mapping:
+        value:
+          type: text
+          label: 'Popup message - Value'
+        format:
+          type: string
+          label: 'Popup message - Format'
+    popup_agreed_enabled:
+      type: boolean
+      label: 'Enable thank you message'
+    popup_hide_agreed:
+      type: boolean
+      label: 'Clicking hides thank you message'
+    popup_find_more_button_message:
+      type: label
+      label: 'Find more button message'
+    popup_hide_button_message:
+      type: label
+      label: 'Hide button message'
+    popup_agreed:
+      type: mapping
+      label: 'Popup message Agree - thanks for giving consent'
+      mapping:
+        value:
+          type: text
+          label: 'Popup message Agree - Value'
+        format:
+          type: string
+          label: 'Popup message  - Format'
+    popup_link:
+      type: path
+      label: 'Privacy policy link'
+    popup_link_new_window:
+      type: boolean
+      label: 'Open privacy policy link in a new window'
+    popup_height:
+      type: integer
+      label: 'Popup height in pixels'
+    popup_width:
+      type: string
+      label: 'Popup width in pixels or a percentage value'
+    popup_delay:
+      type: integer
+      label: 'Popup time delay in seconds'
+    popup_bg_hex:
+      type: string
+      label: 'Background Color'
+    popup_text_hex:
+      type: string
+      label: 'Text Color'
+    domain:
+      type: string
+      label: 'Domain'
+    domains_option:
+      type: integer
+      label: 'Add/Remove popup on specified domains'
+    domains_list:
+      type: text
+      label: 'Domains list'
+    exclude_paths:
+      type: text
+      label: 'Exclude paths'
+    export:
+      type: mapping
+      label: 'Export'
+      mapping:
+        folder:
+          type: text
+          label: 'folder'

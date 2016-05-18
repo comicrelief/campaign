@@ -1,0 +1,4 @@
+eu_cookie_compliance.settings_tab:
+  route_name: eu_cookie_compliance.settings
+  title: Settings
+  base_route: eu_cookie_compliance.settings

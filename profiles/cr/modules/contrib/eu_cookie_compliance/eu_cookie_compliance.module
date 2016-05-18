@@ -1,0 +1,194 @@
+<?php
+/**
+ * @file
+ * This module intends to deal with the EU Directive on Privacy and Electronic
+ * Communications that comes into effect in the UK on 26th May 2012.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Path\AliasManager;
+use Drupal\Core\Path\AliasStorage;
+use Drupal\Core\Path\AliasWhitelist;
+use Drupal\Core\Extension\ModuleHandler;
+use Drupal\Core\Database\Database;
+use Drupal\Core\Cache\Cache;
+use Drupal\Core\Cache\DatabaseBackend;
+use Drupal\Core\Language\LanguageManager;
+use Drupal\Core\Url;
+use Drupal\Component\Utility\SafeMarkup;
+use Drupal\Component\Utility\Unicode;
+use Drupal\Component\Utility\Html;
+
+/**
+ * Implements hook_page_attachments().
+ */
+function eu_cookie_compliance_page_attachments(&$attachments) {
+  $config = \Drupal::config('eu_cookie_compliance.settings');
+
+  // Check Add/Remove domains.
+  $domain_allow = TRUE;
+  $domain_option = $config->get('domains_option');
+
+  if (!empty($config->get('domains_list'))) {
+    global $base_url;
+
+    $domains_list = str_replace(array("\r\n", "\r"), "\n", $config->get('domains_list'));
+    $domains_list = explode("\n", $domains_list);
+    $domain_match = in_array($base_url, $domains_list);
+
+    if ($domain_option && $domain_match) {
+      $domain_allow = FALSE;
+    }
+
+    // @TODO: Ask about this thing.
+    if (!$domain_option && !$domain_match) {
+      $domain_allow = FALSE;
+    }
+  }
+
+  // Check exclude paths.
+  $path_match = FALSE;
+
+  if (!empty($config->get('exclude_paths'))) {
+    // @TODO: make this more robust.
+    $path = Unicode::strtolower($_SERVER['REQUEST_URI']);
+    $path_match = \Drupal::service('path.matcher')->matchPath($path, $config->get('exclude_paths'));
+  }
+
+  // Unsupported GeoIP feature until those modules update their code.
+  $geoip_match = TRUE;
+
+  if ($config->get('popup_enabled') && \Drupal::currentUser()->hasPermission('display EU Cookie Compliance popup') && $geoip_match && $domain_allow && !$path_match) {
+    $language = Drupal::languageManager()->getCurrentLanguage();
+    // Array storage for caching full client data.
+
+    $data = array();
+    if ($cache = \Drupal::cache()->get('eu_cookie_compliance_client_settings.' . $language->getId())) {
+      $data = $cache->data;
+    }
+    else {
+      // Initialize some needed popup settings messages.
+      $popup_settings_messages = array(
+        'popup_agree_button_message',
+        'popup_disagree_button_message',
+        'popup_hide_button_message',
+        'popup_find_more_button_message'
+      );
+      foreach ($popup_settings_messages as $key) {
+        if (!isset($popup_settings[$key])) {
+          $popup_settings[$key] = '';
+        }
+      }
+      $data['css'] = '';
+      // Color overrides.
+      if ($config->get('popup_bg_hex') !== '' and $config->get('popup_text_hex') !== '') {
+        $position = $config->get('popup_position') ? 'top' : 'bottom';
+        $data['css'] = '#sliding-popup.sliding-popup-' . $position . ' {background:#' . Html::escape($config->get('popup_bg_hex')) . ';}'
+             . '#sliding-popup .popup-content #popup-text h2, #sliding-popup .popup-content #popup-text p {color:#' . Html::escape($config->get('popup_text_hex')) . ' !important;}';
+      }
+      $popup_text_info = str_replace(array("\r", "\n"), '', $config->get('popup_info.value'));
+      $popup_text_agreed = str_replace(array("\r", "\n"), '', $config->get('popup_agreed.value'));
+      $html_info = array(
+        '#theme' => 'eu_cookie_compliance_popup_info',
+        '#message' => check_markup($popup_text_info, $config->get('popup_info.format'), FALSE),
+        '#agree_button' => $config->get('popup_agree_button_message'),
+        '#disagree_button' => $config->get('popup_disagree_button_message'),
+      );
+      $html_agreed = array(
+        '#theme' => 'eu_cookie_compliance_popup_agreed',
+        '#message' => check_markup($popup_text_agreed, $config->get('popup_agreed.format'), FALSE),
+        '#hide_button' => $config->get('popup_hide_button_message'),
+        '#find_more_button' => $config->get('popup_find_more_button_message'),
+      );
+
+      $was_debugging = FALSE;
+
+      /**
+       * @var $twig_service Twig_Environment
+       */
+      $twig_service = \Drupal::service('twig');
+
+      if ($twig_service->isDebug()) {
+        $was_debugging = TRUE;
+        $twig_service->disableDebug();
+      }
+
+      $html_info = \Drupal::service('renderer')->renderRoot($html_info)->__toString();
+      $html_agreed = \Drupal::service('renderer')->renderRoot($html_agreed)->__toString();
+
+      if ($was_debugging) {
+        $twig_service->enableDebug();
+      }
+
+      $clicking_confirmation = (!empty($config->get('popup_clicking_confirmation'))) ? $config->get('popup_clicking_confirmation') : TRUE;
+      $domain_setting = $config->get('domain');
+
+      // Prepare internal links (remove the internal scheme).
+      $popup_link = $config->get('popup_link');
+      if (parse_url($popup_link, PHP_URL_SCHEME) === 'internal') {
+        $popup_link = explode(':', $popup_link, 2)[1];
+        $popup_link = \Drupal::service('path.alias_manager')->getAliasByPath($popup_link);
+      }
+
+      $data['variables'] = array(
+        'popup_enabled'        => $config->get('popup_enabled'),
+        'popup_agreed_enabled' => $config->get('popup_agreed_enabled'),
+        'popup_hide_agreed'    => $config->get('popup_hide_agreed'),
+        'popup_clicking_confirmation' => $config->get('popup_clicking_confirmation'),
+        'popup_html_info'      => $config->get('popup_enabled') ? $html_info : FALSE,
+        'popup_html_agreed'    => $config->get('popup_agreed_enabled') ? $html_agreed : FALSE,
+        'popup_height'         => !empty($config->get('popup_height')) ? $config->get('popup_height') : 'auto',
+        'popup_width'          => !empty($config->get('popup_width')) ? $config->get('popup_width') : '100%',
+        'popup_delay'          => (int) ($config->get('popup_delay') * 1000),
+        'popup_link'           => $config->get('popup_link'),
+        'popup_link_new_window' => $config->get('popup_link_new_window'),
+        'popup_link'           => $popup_link,
+        'popup_link_new_window' => !empty($config->get('popup_link_new_window')) ? $config->get('popup_link_new_window') : 1,
+        'popup_position'       => $config->get('popup_position'),
+        'popup_language'       => $language->getId(),
+        'popup_bg_hex'         => !empty($config->get('popup_bg_hex')) ? $config->get('popup_bg_hex') : FALSE,
+        'popup_text_hex'       => !empty($config->get('popup_text_hex')) ? $config->get('popup_text_hex') : FALSE,
+        'domain'               => $domain_setting,
+      );
+      \Drupal::cache()->set('eu_cookie_compliance_client_settings.' . $language->getId(), $data);
+    }
+
+    $attachments['#attached']['drupalSettings']['eu_cookie_compliance'] = $data['variables'];
+    $attachments['#attached']['library'][] = 'eu_cookie_compliance/eu_cookie_compliance';
+    $cache_tags = isset($attachments['#cache']['tags']) ? $attachments['#cache']['tags'] : [];
+    $attachments['#cache']['tags'] = Cache::mergeTags($cache_tags, $config->getCacheTags());
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function eu_cookie_compliance_theme($existing, $type, $theme, $path) {
+  return array(
+    'eu_cookie_compliance_popup_info' => array(
+      'template' => 'eu_cookie_compliance_popup_info',
+      'variables' => array(
+        'message' => NULL,
+        'agree_button' => NULL,
+        'disagree_button' => NULL
+      ),
+    ),
+    'eu_cookie_compliance_popup_agreed' => array(
+      'template' => 'eu_cookie_compliance_popup_agreed',
+      'variables' => array(
+        'message' => NULL,
+        'hide_button' => NULL,
+        'find_more_button' => NULL
+      ),
+    ),
+  );
+}
+
+/**
+ * Validate field for a HEX value if a value is set.
+ */
+function eu_cookie_compliance_validate_hex($element, FormStateInterface &$form_state) {
+  if (!empty($element['#value']) && !preg_match('/^[0-9a-fA-F]{3,6}$/', $element['#value'])) {
+    $form_state->setError($element, t('%name must be a HEX value (without leading #) or empty.', array('%name' => $element['#title'])));
+  }
+}

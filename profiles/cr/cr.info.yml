@@ -88,6 +88,7 @@ dependencies:
 
   # Because cr_landing_pages has content dependencies this needs to be loaded after
   - cr_search
+  - eu_cookie_compliance
 
 themes:
   - seven
@@ -194,3 +195,5 @@ config_devel:
   # Contributed modules
   - pathauto.pattern.basic_page
   - pathauto.settings
+  - eu_cookie_compliance.settings
+  # - simple_sitemap.settings

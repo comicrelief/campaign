@@ -19,3 +19,4 @@ permissions:
   - 'restful get entity:node'
   - 'access user profiles'
   - 'view search api pages'
+  - 'display EU Cookie Compliance popup'

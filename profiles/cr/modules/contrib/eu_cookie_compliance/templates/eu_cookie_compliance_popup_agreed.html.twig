@@ -1,0 +1,30 @@
+{#
+/**
+ * @file
+ * This is a template file for a pop-up informing a user that he has already
+ * agreed to cookies.
+ *
+ * When overriding this template it is important to note that jQuery will use
+ * the following classes to assign actions to buttons:
+ *
+ * hide-popup-button - destroy the pop-up
+ * find-more-button  - link to an information page
+ *
+ * Variables available:
+ * - $message:  Contains the text that will be display whithin the pop-up
+ * - $hide_button: Label for the hide button
+ * - $find_more_button: Label for the find out more button
+ */
+#}
+
+<div>
+  <div class ="popup-content agreed">
+    <div id="popup-text">
+      {{ message }}
+    </div>
+    <div id="popup-buttons">
+      <button type="button" class="hide-popup-button">{{ hide_button }}</button>
+      <button type="button" class="find-more-button" >{{ find_more_button }}</button>
+    </div>
+  </div>
+</div>

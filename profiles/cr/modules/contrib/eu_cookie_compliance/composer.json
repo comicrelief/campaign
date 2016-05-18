@@ -1,0 +1,8 @@
+{
+  "name": "drupal/eu_cookie_compliance",
+  "description": "This module aims at making the website compliant with the new EU cookie regulation",
+  "type": "drupal-module",
+  "license": "GPL-2.0+",
+  "minimum-stability": "dev",
+  "require": { }
+}
