@@ -9,8 +9,8 @@ field_name: field_cw_view_mode
 entity_type: block_content
 type: list_string
 settings:
-  allowed_values:
-  allowed_values_function: 'cr_content_wall_field_cw_view_mode'
+  allowed_values: null
+  allowed_values_function: cr_content_wall_field_cw_view_mode
 module: options
 locked: false
 cardinality: 1

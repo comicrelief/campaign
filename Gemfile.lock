@@ -1,6 +1,6 @@
 GIT
-  remote: git@codebasehq.com:comic/webops/craft-drush.git
-  revision: 5b4268c2b00f9366c0f918e2a302f651cb362e42
+  remote: git@github.com:comicrelief/craft-drush.git
+  revision: 66907a58b8c4e296c5f1976d5c1b375fe128e8e0
   specs:
     craft-drush (0.0.1)
       aws-sdk (~> 2)
@@ -34,12 +34,12 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.4.0)
-    aws-sdk (2.3.2)
-      aws-sdk-resources (= 2.3.2)
-    aws-sdk-core (2.3.2)
+    aws-sdk (2.3.4)
+      aws-sdk-resources (= 2.3.4)
+    aws-sdk-core (2.3.4)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.3.2)
-      aws-sdk-core (= 2.3.2)
+    aws-sdk-resources (2.3.4)
+      aws-sdk-core (= 2.3.4)
     breakpoint (2.7.0)
       sass (~> 3.3)
       sassy-maps (< 1.0.0)

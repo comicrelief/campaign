@@ -1,4 +1,3 @@
-uuid: 89ca79f0-affb-4d65-b13a-3b144f9206b5
 langcode: en
 status: true
 dependencies:
@@ -9,8 +8,6 @@ dependencies:
     - image.style.bg_rich_text_wide_2x_
   theme:
     - campaign_base
-_core:
-  default_config_hash: iZrBQ87-6nLrHDlKE3jqHpjkoD_lzTlEqJOFVEMt0-M
 id: bg_rich_text
 label: 'Bg rich text'
 image_style_mappings:

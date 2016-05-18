@@ -1,7 +1,7 @@
 ---
 platform: linux
 
-image: "docker:///comicrelief/campaign-docker-cci#0.0.18"
+image: "docker:///comicrelief/campaign-docker-cci#0.0.19"
 
 inputs:
 - name: campaign

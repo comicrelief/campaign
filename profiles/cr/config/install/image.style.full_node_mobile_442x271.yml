@@ -1,11 +1,8 @@
-uuid: 8d1a095d-2f1e-4450-a933-02f71a13fff0
 langcode: en
 status: true
 dependencies:
   module:
     - focal_point
-_core:
-  default_config_hash: WYsYPfB4aTrlOwD97KtV4VZtBBjUB9XB0hP8YxPSCKE
 name: full_node_mobile_442x271
 label: 'Full node SM 442x271'
 effects:

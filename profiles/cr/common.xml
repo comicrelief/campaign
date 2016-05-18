@@ -3,12 +3,13 @@
   <property name="app.password"       override="true" value="admin"/>
   <property name="app.uri"            override="true" value="http://campaign.dev"/>
   <property name="drush.bin"          override="true" value="${app.dir}bin/drush"/>
+  <property name="grunt.cmd"          override="true" value="build"/>
   <property name="c.home"             override="true" value="${app.profile.dir}tests/behat/vendor/"/>
   <property name="cs.dir"             override="true" value="drupal/coder/coder_sniffer"/>
   <property name="cs.standard"        override="true" value="--standard=Drupal"/>
   <property name="cs.ext"             override="true" value="--extensions=php,module,inc,install,test,profile,theme"/>
   <property name="db.querystring"     override="true" value="mysql://root:@localhost/campaign"/>
-  <property name="app.config_modules" value="cr cr_article cr_content_wall cr_rich_text_paragraph cr_single_message_row_paragraph cr_teaser cr_landing_page cr_search cr_partner"/>
+  <property name="app.config_modules" value="cr cr_article cr_content_wall cr_rich_text_paragraph cr_single_message_row_paragraph cr_block_paragraph cr_teaser cr_landing_page cr_search cr_partner"/>
   <target name="build" depends="install, grunt:build"
           description="Build (or rebuild) the project.">
   </target>
@@ -18,6 +19,21 @@
   <target name="build:prepare" depends="grunt:dependencies, test:composer:install"
           description="Build all project dependencies. (gems, composer)">
     <exec logoutput="true" passthru="true" command="composer install --no-progress --prefer-dist"/>
+  </target>
+  <!-- Front-end -->
+  <target name="grunt:build" description="Generate all compiled Sass and JS files.">
+    <exec dir="${app.profile.theme}" logoutput="true" passthru="true"
+          checkreturn="true" command="bundle exec grunt ${grunt.cmd}"/>
+  </target>
+  <target name="grunt:dependencies" description="Install all grunt dependencies.">
+    <delete file=".bundle/config" />
+    <exec logoutput="true" passthru="true" checkreturn="true" command="bundle install --without craft"/>
+    <exec logoutput="true" passthru="true" checkreturn="true" command="npm install"/>
+  </target>
+  <target name="grunt:dependencies:dev" description="Install all grunt dependencies.">
+    <delete file=".bundle/config" />
+    <exec logoutput="true" passthru="true" checkreturn="true" command="bundle install"/>
+    <exec logoutput="true" passthru="true" checkreturn="true" command="npm install"/>
   </target>
   <!-- Tests -->
   <target name="test" depends="test:prepare" description="Run behat tests">
@@ -78,7 +94,7 @@
     <exec passthru="true" logoutput="true" command="${drush.bin} cex"/>
   </target>
   <target name="config:import:directory" description="Import all configuration from code into active storage.">
-    <exec passthru="true" logoutput="true" command="${drush.bin} cix"/>
+    <exec passthru="true" logoutput="true" command="${drush.bin} cim"/>
   </target>
   <target name="config:export" description="Export all of the configuration for the defined modules.">
     <foreach list="${app.config_modules}" param="config_devel_module" target="config:export:single" delimiter=" "/>
