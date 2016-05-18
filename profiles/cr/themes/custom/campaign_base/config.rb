@@ -17,11 +17,11 @@ else
 end
 
 # Location of the theme's resources.
-css_dir = "profiles/cr/themes/custom/campaign_base/css"
-sass_dir = "profiles/cr/themes/custom/campaign_base/sass"
-images_dir = "profiles/cr/themes/custom/campaign_base/images"
+css_dir = "themes/custom/campaign_base/css"
+sass_dir = "themes/custom/campaign_base/sass"
+images_dir = "themes/custom/campaign_base/images"
 generated_images_dir = images_dir + "/generated"
-javascripts_dir = "profiles/cr/themes/custom/campaign_base/js"
+javascripts_dir = "themes/custom/campaign_base/js"
 
 # Require any additional compass plugins installed on your system.
 require 'compass-normalize'
