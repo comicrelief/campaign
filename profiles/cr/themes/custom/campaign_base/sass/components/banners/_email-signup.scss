@@ -6,3 +6,116 @@
 // 
 //
 // Style guide: Banners.Email-signup
+
+.block--cr-email-signup {
+  @include container;
+  form {
+    text-align: center;
+    .cr-email-signup__email-wrapper,
+    .cr-email-signup__school-phase-wrapper {
+      @include span(12);
+    }
+    .cr-email-signup__email-wrapper {
+      label {
+        @include span(10);
+        @include push(1);
+        margin-bottom: 20px;
+        line-height: 21px;
+      }
+      #edit-email {
+        @include span(5);
+        @include push(2);
+        height: 50px;
+        margin-right: 0;
+        padding: 15px 0 15px 10px;
+      }
+      .button.form-submit {
+        @include span(3);
+        @include border-radius(0);
+        height: 50px;
+        margin-left: 0;
+        cursor: pointer;
+        color: #fff;
+        border: 1px solid #c8c8c8;
+        background-color: #5f5c59;
+        font-size: 14px;
+        font-weight: normal;
+
+        -webkit-tap-highlight-color: transparent;
+      }
+    }
+  }
+}
+
+@include breakpoint($screen-md) {
+  .block--cr-email-signup form {
+    .form-item {
+      margin: 0;
+    }
+    .cr-email-signup__email-wrapper {
+      label {
+        @include span(4);
+        @include push(2);
+        margin-top: 4px;
+        margin-bottom: 4px;
+      }
+      #edit-email {
+        @include span(3);
+        margin-right: 0;
+      }
+      .button.form-submit {
+        @include span(2);
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+@include breakpoint($screen-lg) {
+  .block--cr-email-signup form {
+    .cr-email-signup__email-wrapper {
+      label {
+        @include span(4);
+        @include push(2);
+        //margin-top: 8px;
+        //margin-bottom: 8px;
+      }
+      #edit-email {
+        @include span(3);
+        //@include push(1);
+        margin-right: 0;
+      }
+      .button.form-submit {
+        @include span(1);
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+
+/* State change stuff */
+#cr-email-signup-form {
+  .cr-email-signup__email-wrapper {
+    display: block;
+  }
+  .cr-email-signup__school-phase-wrapper {
+    display: none;
+  }
+  &.cr-email-signup--step-2 {
+    .cr-email-signup__email-wrapper {
+      display: none;
+    }
+    .cr-email-signup__school-phase-wrapper {
+      display: block;
+    }
+  }
+  &.cr-email-signup--step-3 {
+    .cr-email-signup__email-wrapper {
+      display: none;
+    }
+    .cr-email-signup__school-phase-wrapper {
+      display: none;
+    }
+  }
+}

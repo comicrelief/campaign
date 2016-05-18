@@ -57,19 +57,15 @@ class SignUp extends FormBase implements FormInterface {
    * Build the Form Elements.
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $form_state = $form_state;
 
-/*    $form['#prefix'] = '<div class="some-old-bollocks">';
-    $form['#suffix'] = '</div>';*/
+    $form_state = $form_state;
 
     $form['email'] = array(
       '#type' => 'email',
-      '#title' => $this->t('Your email address'),
+      '#title' => $this->t('Get exclusive info and updates, direct to your inbox'),
+      '#placeholder' => t('Enter your email address'),
       '#prefix'=> '<div class="cr-email-signup__email-wrapper">',
     );
-
-    /* Set our first step class, to be updated by JS */
-    $form['#attributes']['class'][] = "cr-email-signup-form--step-1";
 
     $form['send_email'] = array(
       '#type' => 'button',
