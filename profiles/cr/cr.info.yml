@@ -52,6 +52,7 @@ dependencies:
   - view_modes_display
   - social_links
   - focal_point
+  - cookieconsent
   #- simple_sitemap
 
   # Layout
