@@ -116,13 +116,11 @@ config_devel:
   # Blocks
   - block_content.type.basic
   - block.block.tabs
-  - block.block.campaign_base_search
   - block.block.campaign_base_account_menu
   - block.block.campaign_base_page_title
   - block.block.campaign_base_branding
   - block.block.campaign_base_main_menu
   - block.block.campaign_base_footer
-  - block.block.campaign_base_main_footer
   - block.block.seven_breadcrumbs
   - block.block.seven_content
   - block.block.seven_help
