@@ -150,9 +150,4 @@ class SignUp extends FormBase implements FormInterface {
 
     return TRUE;
   }
-
-  function cr_email_signup_theme($existing, $type, $theme, $path) {
-    dpm( "MEH" );
-  }
-
 }
