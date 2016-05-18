@@ -1,9 +1,6 @@
-uuid: 8052b9e0-6638-4001-822e-84ab29a02a8d
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: WDNiE8mpQHCx246pGHfSZdefa1TvAy2XTc9KGOvGJII
 name: cw_4_3_lg_370x278
 label: 'CW 4:3 LG 370x278'
 effects:

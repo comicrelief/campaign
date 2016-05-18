@@ -1,4 +1,3 @@
-uuid: dfa51a6f-1856-4c55-b203-ee0f70d2335d
 langcode: en
 status: true
 dependencies:
@@ -12,8 +11,6 @@ dependencies:
   module:
     - image
     - text
-_core:
-  default_config_hash: ltTcUEfLW2UPuwbpVZgc42P7CRjHD_1WtRAn1ceFamY
 id: paragraph.cr_single_message_row.default
 targetEntityType: paragraph
 bundle: cr_single_message_row
