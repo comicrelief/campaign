@@ -15,7 +15,6 @@ Feature: Create
     Given I am logged in as a user with the "editor" role
     When I go to "node/add/article"
     And I enter "article one" for "title"
-    And I enter "22/03/2016" for "edit-field-article-publish-date-0-value-date"
     And I enter "image.jpg" for "edit-field-article-image-0-upload"
     And I enter "https://youtu.be/JCUFs2qJ1bs" for "edit-field-youtube-url-0-input"
     And I enter "An amazing intro" for "edit-field-article-intro-0-value"
