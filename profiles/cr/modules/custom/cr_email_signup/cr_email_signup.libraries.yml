@@ -1,4 +1,8 @@
 cr_email_signup:
-  version: 1.x
+  version: VERSION
   js:
     js/cr_email_signup.js: {}
+
+  dependencies:
+    - core/jquery
+    - core/jquery.once

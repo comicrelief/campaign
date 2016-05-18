@@ -4,3 +4,4 @@ description: Comic Relief Email Sign Up
 core: 8.x
 package: Comic Relief
 type: module
+project: 'cr_email_signup'
