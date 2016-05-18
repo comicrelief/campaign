@@ -1,0 +1,24 @@
+{
+  "name": "drupal/cookieconsent",
+  "type": "drupal-module",
+  "description": "CookieConsent uses the Cookie Consent javascript library for alerting users about the use of cookies on your website",
+  "keywords": [
+    "Drupal",
+    "Cookie",
+    "CookieConsent"
+  ],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/cookieconsent",
+  "minimum-stability": "dev",
+  "authors": [
+    {
+      "name": "Hans van Wezenbeek (Nitebreed)",
+      "homepage": "https://www.drupal.org/u/nitebreed",
+      "role": "Maintainer"
+    }
+  ],
+  "support": {
+    "issues": "http://drupal.org/project/issues/cookieconsent",
+    "source": "http://cgit.drupalcode.org/cookieconsent"
+  }
+}

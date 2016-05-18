@@ -1,0 +1,7 @@
+cookieconsent.cookieconsent_admin_form:
+  title: 'Cookie settings'
+  route_name: cookieconsent.cookieconsent_admin_form
+  description: 'Setup the configuration for the CookieConsent module'
+  parent: system.admin_config_system
+  weight: 99
+
