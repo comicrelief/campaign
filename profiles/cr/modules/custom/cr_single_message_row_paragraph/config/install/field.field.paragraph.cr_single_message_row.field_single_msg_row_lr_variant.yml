@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_single_msg_row_lr_variant
+    - paragraphs.paragraphs_type.cr_single_message_row
+  module:
+    - options
+id: paragraph.cr_single_message_row.field_single_msg_row_lr_variant
+field_name: field_single_msg_row_lr_variant
+entity_type: paragraph
+bundle: cr_single_message_row
+label: Variant
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: title-above-image-left
+default_value_callback: ''
+settings: {  }
+field_type: list_string

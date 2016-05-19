@@ -4,8 +4,10 @@ dependencies:
   config:
     - core.entity_view_mode.node.landing_page_header
     - field.field.node.landing.body
-    - field.field.node.landing.field_landing_cta
+    - field.field.node.landing.field_landing_background_colour
+    - field.field.node.landing.field_landing_copy_position_alig
     - field.field.node.landing.field_landing_image
+    - field.field.node.landing.field_landing_image_mobile
     - field.field.node.landing.field_paragraphs
     - field.field.node.landing.panelizer
     - node.type.landing
@@ -13,8 +15,9 @@ dependencies:
     - ds
     - entity_reference_revisions
     - image
-    - link
+    - options
     - panelizer
+    - responsive_image
     - text
     - user
 third_party_settings:
@@ -141,14 +144,16 @@ third_party_settings:
           layout_class: {  }
     regions:
       ds_content:
+        - field_landing_copy_position_alig
+        - field_landing_background_colour
+        - field_landing_image_mobile
         - field_landing_image
         - node_title
         - body
-        - field_landing_cta
     fields:
       node_title:
         plugin_id: node_title
-        weight: 1
+        weight: 4
         label: hidden
         formatter: default
 id: node.landing.landing_page_header
@@ -159,48 +164,57 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 2
+    weight: 5
     settings: {  }
     third_party_settings: {  }
-  field_landing_cta:
+  field_landing_background_colour:
+    type: list_default
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_landing_copy_position_alig:
+    type: list_default
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_landing_image:
     weight: 3
     label: hidden
     settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
+      responsive_image_style: bg_rich_text
+      image_link: ''
     third_party_settings: {  }
-    type: link
-  field_landing_image:
-    weight: 0
+    type: responsive_image
+  field_landing_image_mobile:
+    type: image
+    weight: 2
     label: hidden
     settings:
       image_style: ''
       image_link: ''
     third_party_settings: {  }
-    type: image
   field_paragraphs:
     type: entity_reference_revisions_entity_view
-    weight: 14
+    weight: 16
     label: above
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
   links:
-    weight: 12
+    weight: 14
     settings: {  }
     third_party_settings: {  }
   panelizer:
     type: panelizer
-    weight: 11
+    weight: 13
     label: hidden
     settings: {  }
     third_party_settings: {  }
   social_links:
-    weight: 13
+    weight: 15
     settings: {  }
     third_party_settings: {  }
 hidden: {  }

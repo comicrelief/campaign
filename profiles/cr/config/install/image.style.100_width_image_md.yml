@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 100_width_image_md
+label: '100% Width Image - MD'
+effects:
+  febd55f9-ee8e-4b59-a520-8cae73cfa72f:
+    uuid: febd55f9-ee8e-4b59-a520-8cae73cfa72f
+    id: image_scale
+    weight: 1
+    data:
+      width: 983
+      height: null
+      upscale: false
