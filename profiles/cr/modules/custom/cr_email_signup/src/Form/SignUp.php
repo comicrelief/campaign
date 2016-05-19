@@ -44,8 +44,14 @@ class SignUp extends FormBase implements FormInterface {
    *     Message to append to queue.
    */
   protected function queueMessage($append_message) {
-    $queue_message = array_merge($this->skeletonMessage, $append_message);
+    // Add dynamic keys.
+    $append_message['timestamp'] = time();
+    $append_message['transSourceURL'] = \Drupal::service('path.current')->getPath();
+    $append_message['transSource'] = "{$this->skeletonMessage['campaign']}_[Device]_ESU_[PageElementSource]";
 
+    // Add passed arguments.
+    $queue_message = array_merge($this->skeletonMessage, $append_message);
+    file_put_contents("/tmp/message", var_export($queue_message, TRUE), FILE_APPEND);
     // TODO: Move to config/default.
     $queue_name = 'queue1';
     $queue_factory = \Drupal::service('queue');
@@ -58,25 +64,19 @@ class SignUp extends FormBase implements FormInterface {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $form_state = $form_state;
-    $form['email'] = array(
+
+    $form['steps'] = array(
+      '#prefix' => '<div class="esu-signup-form-step1" id="esu-signup-form-step1-id">',
+      '#suffix' => '</div>',
+    );
+
+    $form['steps']['email'] = array(
       '#type' => 'email',
+      "#required" => TRUE,
       '#title' => $this->t('Your email address'),
     );
 
-    $form['send_email'] = array(
-      '#type' => 'button',
-      '#name' => 'send_email',
-      '#value' => t('Submit'),
-      '#ajax' => array(
-        'callback' => array($this, 'queueEmail'),
-        'progress' => array(
-          'type' => 'bar',
-          'message' => "",
-        ),
-      ),
-    );
-
-    $form['school_phase'] = array(
+    $form['steps']['school_phase'] = array(
       '#type' => 'select',
       '#title' => $this->t('School Phase'),
       '#options' => array(
@@ -90,30 +90,72 @@ class SignUp extends FormBase implements FormInterface {
       ),
     );
 
-    $form['actions']['#type'] = 'actions';
-    $form['actions']['submit'] = array(
+    $form['steps']['validate_email'] = array(
       '#type' => 'submit',
-      '#value' => $this->t('Submit'),
-      '#button_type' => 'primary',
-      '#weight' => 10,
+      '#name' => 'validate_email',
+      '#value' => t('First Submit'),
+      '#ajax' => array(
+        'callback' => array($this, 'validateAndQueue'),
+        'progress' => array(
+          'type' => '',
+          'message' => "",
+        ),
+        'prevent' => 'submit',
+        'wrapper' => 'esu-signup-form-step1-id',
+      ),
     );
 
     return $form;
   }
 
   /**
-   * Send the first email message to the queue.
+   * Custom validate function.
    */
-  public function queueEmail(&$form, FormStateInterface $form_state) {
+  public function validateForm(array &$form, FormStateInterface $form_state) {
     $email_address = $form_state->getValue('email');
+    $school_phase = $form_state->getValue('school_phase');
+    $email_valid = \Drupal::service('email.validator')->isValid($email_address);
 
-    $queue_message = array(
-      'transSourceURL' => \Drupal::service('path.current')->getPath(),
-      'transSource' => "{$this->skeletonMessage['campaign']}_[Device]_ESU_[PageElementSource]",
-      'timestamp' => time(),
-      'emailAddress' => $email_address,
-    );
-    $this->queueMessage($queue_message);
+    if (!empty($email_address) && $email_valid && empty($school_phase)) {
+      $form_state->setErrorByName("school_phase", "Please enter the school phase");
+    }
+    else {
+      // Not even sure this needs to be here?
+      parent::validateForm($form, $form_state);
+    }
+
+    return $form;
+  }
+
+  /**
+   * Validate current inputs and queue if possible.
+   */
+  public function validateAndQueue(array &$form, FormStateInterface $form_state) {
+    $email_address = $form_state->getValue('email');
+    $school_phase = $form_state->getValue('school_phase');
+    $email_valid = \Drupal::service('email.validator')->isValid($email_address);
+
+    if (!empty($email_address) && $email_valid && !empty($school_phase)) {
+      // Clear first steps.
+      unset($form['steps']['email']);
+      unset($form['steps']['school_phase']);
+      unset($form['steps']['validate_email']);
+      // TODO: Set the front end message to display when complete/or remove.
+      drupal_set_message($this->t("Great! Now we know what's right for you"));
+
+      // Queue the message with both email and school phase.
+      $this->queueMessage(array(
+        'emailAddress' => $email_address,
+        'schoolPhase' => $school_phase,
+      ));
+    }
+    elseif (!empty($email_address) && $email_valid && empty($school_phase)) {
+      $form['steps']['school_phase']['#required'] = TRUE;
+      // Queue the message with only the email available.
+      $this->queueMessage(array(
+        'emailAddress' => $email_address,
+      ));
+    }
 
     return $form;
   }
@@ -122,21 +164,7 @@ class SignUp extends FormBase implements FormInterface {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $email_address = $form_state->getValue('email');
-    $school_phase = $form_state->getValue('school_phase');
-    // TODO: make key transSource dynamic/configurable.
-    $queue_message = array(
-      'transSourceURL' => \Drupal::service('path.current')->getPath(),
-      'transSource' => "{$this->skeletonMessage['campaign']}_[Device]_ESU_[PageElementSource]",
-      'timestamp' => time(),
-      'emailAddress' => $email_address,
-      'schoolPhase' => $school_phase,
-    );
-
-    $this->queueMessage($queue_message);
-
-    drupal_set_message($this->t("Great! Now we know what's right for you"));
-
+    // Only here for completeness, should not be called.
     return TRUE;
   }
 
