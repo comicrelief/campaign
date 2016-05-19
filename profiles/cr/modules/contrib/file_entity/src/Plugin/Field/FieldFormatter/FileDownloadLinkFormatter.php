@@ -1,12 +1,6 @@
 <?php
 
-/**
- * @file
- *  Contains Drupal\file_entity\Plugin\Field\FieldFormatter\FileDownloadLinkFormatter
- */
-
 namespace Drupal\file_entity\Plugin\Field\FieldFormatter;
-
 
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Field\FieldDefinitionInterface;
@@ -107,6 +101,12 @@ class FileDownloadLinkFormatter extends FileFormatterBase implements ContainerFa
    * {@inheritdoc}
    */
   public function settingsForm(array $form, FormStateInterface $form_state) {
+    $element['access_message'] = [
+      '#type' => 'textfield',
+      '#title' => t('No access message'),
+      '#description' => t("This text is shown instead of the download link if the user doesn't have permission to download the file."),
+      '#default_value' => $this->getSetting('access_message'),
+    ];
     $element['text'] = array(
       '#type' => 'textfield',
       '#title' => t('Link text'),
@@ -132,9 +132,10 @@ class FileDownloadLinkFormatter extends FileFormatterBase implements ContainerFa
    * {@inheritdoc}
    */
   public static function defaultSettings() {
-    return array(
+    return [
+      'access_message' => "You don't have access to download this file.",
       'text' => 'Download [file:name]',
-    ) + parent::defaultSettings();
+    ] + parent::defaultSettings();
   }
 
   /**
@@ -159,17 +160,25 @@ class FileDownloadLinkFormatter extends FileFormatterBase implements ContainerFa
       // Set options as per anchor format described at
       // http://microformats.org/wiki/file-format-examples
       $download_url = $file->downloadUrl(array('attributes' => array('type' => $mime_type . '; length=' . $file->getSize())));
-      $elements[$delta] = array(
-        '#theme' => 'file_entity_download_link',
-        '#file' => $file,
-        '#download_link' => Link::fromTextAndUrl($link_text, $download_url),
-        '#icon' => file_icon_class($mime_type),
-        '#attributes' => $attributes,
-        '#file_size' => format_size($file->getSize()),
-      );
+      if ($file->access('download')) {
+        $elements[$delta] = [
+          '#theme' => 'file_entity_download_link',
+          '#file' => $file,
+          '#download_link' => Link::fromTextAndUrl($link_text, $download_url),
+          '#icon' => file_icon_class($mime_type),
+          '#attributes' => $attributes,
+          '#file_size' => format_size($file->getSize()),
+        ];
+      }
+      else {
+        $elements[$delta] = [
+          '#markup' => $this->getSetting('access_message'),
+        ];
+      }
       $this->renderer->addCacheableDependency($elements[$delta], $file);
     }
 
     return $elements;
   }
+
 }

@@ -1,14 +1,10 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\file_entity\Tests\FileEntityAccessTest.
- */
-
 namespace Drupal\file_entity\Tests;
 
 use Drupal\file\FileInterface;
 use Drupal\file_entity\FileEntityAccessControlHandler;
+use Drupal\node\Entity\Node;
 
 /**
  * Tests the access aspects of file entity.
@@ -16,6 +12,13 @@ use Drupal\file_entity\FileEntityAccessControlHandler;
  * @group file_entity
  */
 class FileEntityAccessTest extends FileEntityTestBase {
+
+  /**
+   * Modules to install.
+   *
+   * @var array
+   */
+  public static $modules = ['node'];
 
   /**
    * The File Entity access controller.
@@ -225,4 +228,69 @@ class FileEntityAccessTest extends FileEntityTestBase {
       }
     }
   }
+
+  /**
+   * Tests file download access.
+   */
+  public function testDownloadLinkAccess() {
+    // Create content type with image field.
+    $this->drupalCreateContentType([
+      'name' => 'Article',
+      'type' => 'article',
+    ]);
+    \Drupal::entityTypeManager()->getStorage('field_storage_config')->create([
+      'field_name' => 'image',
+      'entity_type' => 'node',
+      'type' => 'image',
+      'cardinality' => 1,
+    ])->save();
+    \Drupal::entityTypeManager()->getStorage('field_config')->create([
+      'field_name' => 'image',
+      'label' => 'Image',
+      'entity_type' => 'node',
+      'bundle' => 'article',
+    ])->save();
+    /** @var \Drupal\Core\Entity\Display\EntityFormDisplayInterface $form_display */
+    $form_display = \Drupal::entityTypeManager()->getStorage('entity_form_display')->load('node.article.default');
+    $form_display->setComponent('image', [
+      'type' => 'image_image',
+    ])->save();
+    /** @var \Drupal\Core\Entity\Display\EntityViewDisplayInterface $view_display */
+    $view_display = \Drupal::entityTypeManager()->getStorage('entity_view_display')->load('node.article.default');
+    $view_display->setComponent('image', [
+      'type' => 'file_download_link',
+    ])->save();
+
+    $account = $this->drupalCreateUser([
+      'download any image files',
+    ]);
+    $this->drupalLogin($account);
+    $image = current($this->files['image']);
+    $node = Node::create([
+      'title' => 'Title',
+      'type' => 'article',
+      'image' => [
+        'target_id' => $image->id(),
+        'alt' => 'the image alternative',
+      ],
+    ]);
+    $node->save();
+    $this->drupalGet('node/' . $node->id());
+
+    $this->assertRaw('file/' . $image->id() . '/download', 'Download link available.');
+    $this->assertLink('Download image-test.png');
+
+    $this->drupalLogout();
+    $this->drupalGet('node/' . $node->id());
+    $this->assertText("You don't have access to download this file.", 'No access message displays correctly.');
+    $view_display->setComponent('image', [
+      'type' => 'file_download_link',
+      'settings' => [
+        'access_message' => 'Another message.',
+      ],
+    ])->save();
+    $this->drupalGet('node/' . $node->id());
+    $this->assertText('Another message.', 'No access message updated.');
+  }
+
 }
