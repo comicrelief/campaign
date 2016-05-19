@@ -8,29 +8,30 @@
 // Style guide: Navigation.Footer-nav
 
 .menu--footer {
-  margin: 30px 0 15px;
+  margin: 15px 0 15px;
   ul {
     text-align: center;
     li {
       display: inline-block;
       margin: 10px 0;
-      &:last-child {
-        a {
-          border-right: none;
-        }
-      }
       a {
         display: block;
-        color: $white;
         margin: 0 5px 0 0;
         padding: 0 20px 0 10px;
         text-decoration: none;
+        color: $white;
         border-right: 1px solid $white;
         font-weight: 300;
 
         @include transition(color 180ms);
         &:hover {
           color: $item-grey;
+        }
+      }
+      &:last-child {
+        a {
+          margin: 0;
+          border-right: none;
         }
       }
     }
