@@ -1,3 +1,25 @@
+Metatag 8.x-1.0-beta8, 2016-05-14
+---------------------------------
+#2723319 by itmaybejj: Fixed misspelling of 'its'.
+#2619450 by paulmckibben: Remove core's Canonical URL tag if Metatag is adding
+  one.
+#2712277 by markdorison: Twitter Card Type meta tag wasn't updating.
+#2650408 by Raphael Apard, DamienMcKenna, gaurav.goyal, dpacassi, kyberman:
+  A node's meta tags should not override the front page defaults unless the
+  defaults are disabled/deleted.
+#2684479 by mikeyk, DamienMcKenna, aspilicious: Added 'secure' option as some
+  meta tags require HTTPS URLs.
+#2699297 by DamienMcKenna: Added tests to ensure submodules can be enabled.
+#2663974 by IT-Cru, DamienMcKenna: Added the og 'article' meta tags.
+#2650848 by ivanjaros, DamienMcKenna: Only show appropriate entities in the
+  token browser.
+#2705851 by vasi: Load field definitions, not field values, when getting a list
+  of Metatag fields on an entity.
+#2708511 by DamienMcKenna: Added the referrer meta tag.
+#2563629 by Jim.M, DamienMcKenna: Added site verification tags.
+#2721857 by marvin_B8, DamienMcKenna: Added Google+ meta tags.
+
+
 Metatag 8.x-1.0-beta7, 2016-04-03
 ---------------------------------
 #2699173 by DamienMcKenna: Fixed OgUpdatedTime annotations.
