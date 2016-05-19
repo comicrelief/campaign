@@ -45,11 +45,10 @@ picture img {
 }
 .field--name-body a,
 .btn-red {
+  @include transition(all 180ms);
   text-decoration: none;
   color: inherit;
   border-bottom: 2px solid $red;
-
-  @include transition(all 180ms);
   &:hover {
     border-bottom: 2px solid $black;
   }
@@ -84,4 +83,33 @@ picture img {
 // to do: add it to kss style
 #kss-node .kss-section {
   max-width: 1200px;
+}
+// to do: add cookie component
+.cookie-consent.cc_container {
+  .btn,
+  p,
+  a {
+    color: $white;
+    font-family: $body-font;
+    &:visited {
+      color: $white;
+    }
+  }
+  .cc_message {
+    @include breakpoint($screen-md) {
+      width: 80%;
+    }
+    display: inline-block;
+    width: 100%;
+    font-size: 16px;
+    font-size: 1em;
+  }
+  .btn {
+    @include breakpoint($screen-md) {
+      float: right;
+      margin-top: 0;
+    }
+    float: none;
+    margin-top: 20px;
+  }
 }
