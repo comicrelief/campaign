@@ -89,16 +89,10 @@ module.exports = function (grunt) {
         options: {
           multiple: [
             {
-              config: 'themes/custom/campaign_base/config.rb',
-              sassDir: 'themes/custom/campaign_base/sass',
-              cssDir: 'themes/custom/campaign_base/css',
-              javascripts_dir: "themes/custom/campaign_base/js"
+              config: 'themes/custom/campaign_base/config.rb'
             },
             {
-              config: '../../themes/rnd17/config.rb',
-              sassDir: '../../themes/rnd17/sass',
-              cssDir: '../../themes/rnd17/css',
-              javascripts_dir: '../../themes/rnd17/js'
+              config: '../../themes/rnd17/config.rb'
             }
           ]
         }
