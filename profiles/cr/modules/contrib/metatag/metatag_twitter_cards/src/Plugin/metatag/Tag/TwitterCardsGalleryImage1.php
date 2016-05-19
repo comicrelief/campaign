@@ -19,6 +19,7 @@ use Drupal\metatag\Plugin\metatag\Tag\MetaPropertyBase;
  *   group = "twitter_cards",
  *   weight = 201,
  *   type = "image",
+ *   secure = FALSE,
  *   multiple = FALSE
  * )
  */
