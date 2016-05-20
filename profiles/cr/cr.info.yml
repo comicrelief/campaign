@@ -197,10 +197,5 @@ config_devel:
   - pathauto.pattern.basic_page
   - pathauto.settings
 
-<<<<<<< HEAD
-  # Scheduled updates
-  - scheduled_updates.scheduled_update_type.node__status
-=======
   # Cookie consent
   - cookieconsent.settings
->>>>>>> 0e8d4726ed83501c5a0506e145116e3d9daa5055
