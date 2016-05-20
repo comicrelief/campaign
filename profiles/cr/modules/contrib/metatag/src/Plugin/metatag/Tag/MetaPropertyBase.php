@@ -24,6 +24,11 @@ abstract class MetaPropertyBase extends MetaNameBase {
       // Parse out the image URL, if needed.
       $value = $this->parseImageURL();
 
+      // If tag must be secure, convert all http:// to https://.
+      if ($this->secure() && strpos($value, 'http://') !== FALSE) {
+        $value = str_replace('http://', 'https://', $value);
+      }
+
       $element = array(
         '#tag' => 'meta',
         '#attributes' => array(

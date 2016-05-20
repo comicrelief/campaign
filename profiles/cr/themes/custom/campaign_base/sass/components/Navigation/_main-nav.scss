@@ -14,7 +14,7 @@
   width: 100%;
   background: rgba($black, 0.95);
 
-  @include breakpoint($screen-md) {
+  @include breakpoint($screen-md, $no-query: true) {
     position: relative;
     top: 0;
     display: block!important;
@@ -29,10 +29,10 @@
       margin: 0;
       color: $white;
 
-      @include breakpoint($screen-md) {
+      @include breakpoint($screen-md, $no-query: true) {
         display: inline-block;
       }
-      @include breakpoint($screen-md) {
+      @include breakpoint($screen-md, $no-query: true) {
         margin: 0 20px;
       }
       a {
@@ -44,7 +44,7 @@
         font-size: 18px;
 
         @include transition(border-bottom 180ms);
-        @include breakpoint($screen-md) {
+        @include breakpoint($screen-md, $no-query: true) {
           padding: 20px 0 4px;
           font-size: 18px;
         }
@@ -53,7 +53,7 @@
           color: $black;
           background: #acaaa9;
 
-          @include breakpoint($screen-md) {
+          @include breakpoint($screen-md, $no-query: true) {
             border-bottom: 2px solid $black;
             background: transparent;
           }
@@ -63,7 +63,7 @@
           color: $black;
           background: $white;
 
-          @include breakpoint($screen-md) {
+          @include breakpoint($screen-md, $no-query: true) {
             color: $black;
             border-bottom: 2px solid $black;
             background: transparent;

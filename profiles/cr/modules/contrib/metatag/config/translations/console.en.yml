@@ -16,6 +16,7 @@ commands:
           group: The meta tag's group.
           weight: The sort order for this meta tag.
           type: Type of the data included in this meta tag value.
+          secure: Whether this meta tag requires URLs be secure.
           multiple: Whether this meta tag allows multiple values.
         questions:
           base_class: Enter the base class to use
@@ -28,6 +29,7 @@ commands:
           group: Select the group the meta tag will use
           weight: Enter the sort order for the meta tag
           type: Which value type does this meta tag allow?
+          secure: Must this meta tag for URLs be secure?
           multiple: Does this meta tag will allow multiple values?
       group:
         description: Generate a meta tag group.

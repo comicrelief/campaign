@@ -37,6 +37,13 @@ abstract class DrupalMemcacheBase implements DrupalMemcacheInterface {
   protected $hashAlgorithm;
 
   /**
+   * The prefix memcache key for all keys.
+   *
+   * @var string
+   */
+  protected $prefix;
+
+  /**
    * Constructs a DrupalMemcacheBase object.
    *
    * @param \Drupal\memcache\DrupalMemcacheConfig
@@ -46,6 +53,7 @@ abstract class DrupalMemcacheBase implements DrupalMemcacheInterface {
     $this->settings = $settings;
 
     $this->hashAlgorithm = $this->settings->get('key_hash_algorithm', 'sha1');
+    $this->prefix = $this->settings->get('key_prefix', '');
   }
 
   /**
@@ -71,7 +79,7 @@ abstract class DrupalMemcacheBase implements DrupalMemcacheInterface {
    * {@inheritdoc}
    */
   public function key($key) {
-    $full_key = urlencode($key);
+    $full_key = urlencode($this->prefix . '-' . $key);
 
     // Memcache only supports key lengths up to 250 bytes.  If we have generated
     // a longer key, we shrink it to an acceptable length with a configurable
