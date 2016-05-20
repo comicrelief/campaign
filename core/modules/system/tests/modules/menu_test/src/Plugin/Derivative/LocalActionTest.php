@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\menu_test\Plugin\Derivative\LocalActionTest.
- */
-
 namespace Drupal\menu_test\Plugin\Derivative;
 
 use Drupal\Component\Plugin\Derivative\DeriverBase;
@@ -17,7 +12,7 @@ use Drupal\Component\Plugin\Derivative\DeriverBase;
 class LocalActionTest extends DeriverBase {
 
   /**
-   * @inheritDoc
+   * {@inheritdoc}
    */
   public function getDerivativeDefinitions($base_plugin_definition) {
     $this->derivatives['example'] = $base_plugin_definition + [

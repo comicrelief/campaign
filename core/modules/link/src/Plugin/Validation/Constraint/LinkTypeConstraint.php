@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\link\Plugin\Validation\Constraint\LinkTypeConstraint.
- */
-
 namespace Drupal\link\Plugin\Validation\Constraint;
 
 use Drupal\link\LinkItemInterface;
@@ -30,7 +25,7 @@ class LinkTypeConstraint extends Constraint implements ConstraintValidatorInterf
   protected $context;
 
   /**
-   * {@inheritDoc}
+   * {@inheritdoc}
    */
   public function initialize(ExecutionContextInterface $context) {
     $this->context = $context;
@@ -80,4 +75,3 @@ class LinkTypeConstraint extends Constraint implements ConstraintValidatorInterf
     }
   }
 }
-

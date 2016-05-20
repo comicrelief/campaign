@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\config\Tests\CacheabilityMetadataConfigOverrideIntegrationTest.
- */
-
 namespace Drupal\config\Tests;
 
 use Drupal\simpletest\WebTestBase;
@@ -27,7 +22,7 @@ class CacheabilityMetadataConfigOverrideIntegrationTest extends WebTestBase {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  protected function setUp() {
     parent::setUp();
 
     // @todo If our block does not contain any content then the cache context

@@ -1,0 +1,20 @@
+services:
+  cdn.settings:
+    class: Drupal\cdn\CdnSettings
+    arguments: ['@config.factory']
+
+  cdn.file_url_generator:
+    class: Drupal\cdn\File\FileUrlGenerator
+    arguments: ['@file_system', '@stream_wrapper_manager', '@request_stack', '@cdn.settings']
+
+  # Event subscribers.
+  cdn.config_subscriber:
+    class: Drupal\cdn\EventSubscriber\ConfigSubscriber
+    arguments: ['@cache_tags.invalidator']
+    tags:
+      - { name: event_subscriber }
+  cdn.html_response_subscriber:
+    class: Drupal\cdn\EventSubscriber\HtmlResponseSubscriber
+    arguments: ['@cdn.settings']
+    tags:
+      - { name: event_subscriber }

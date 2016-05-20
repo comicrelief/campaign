@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\Authentication\AuthenticationProviderFilterInterface.
- */
-
 namespace Drupal\Core\Authentication;
 
 use Symfony\Component\HttpFoundation\Request;
@@ -13,8 +8,9 @@ use Symfony\Component\HttpFoundation\Request;
  * Restrict authentication methods to a subset of the site.
  *
  * Some authentication methods should not be available throughout a whole site.
- * E.g., there are good reasons to restrict insecure methods like HTTP basic
- * auth or an URL token authentication method to API-only routes.
+ * For instance, there are good reasons to restrict insecure methods like HTTP
+ * basic authentication or a URL token authentication method to API-only
+ * routes.
  */
 interface AuthenticationProviderFilterInterface {
 

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\views\Plugin\views\exposed_form\ExposedFormPluginBase.
- */
-
 namespace Drupal\views\Plugin\views\exposed_form;
 
 use Drupal\Component\Utility\Html;
@@ -356,6 +351,14 @@ abstract class ExposedFormPluginBase extends PluginBase implements CacheableDepe
 
       if ($has_exposed_sort_handler) {
         $contexts[] = 'url.query_args:sort_order';
+      }
+    }
+
+    // Merge in cache contexts for all exposed filters to prevent display of
+    // cached forms.
+    foreach ($this->displayHandler->getHandlers('filter') as $filter_hander) {
+      if ($filter_hander->isExposed()) {
+        $contexts = Cache::mergeContexts($contexts, $filter_hander->getCacheContexts());
       }
     }
 

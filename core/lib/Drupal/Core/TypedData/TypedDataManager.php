@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\TypedData\TypedDataManager.
- */
-
 namespace Drupal\Core\TypedData;
 
 use Drupal\Component\Plugin\Exception\PluginException;
@@ -260,7 +255,7 @@ class TypedDataManager extends DefaultPluginManager implements TypedDataManagerI
       $constraints['NotNull'] = array();
     }
     // Check if the class provides allowed values.
-    if (is_subclass_of($definition->getClass(),'Drupal\Core\TypedData\OptionsProviderInterface')) {
+    if (is_subclass_of($definition->getClass(), 'Drupal\Core\TypedData\OptionsProviderInterface')) {
       $constraints['AllowedValues'] = array();
     }
     return $constraints;

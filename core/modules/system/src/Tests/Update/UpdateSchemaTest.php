@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\system\Tests\Update\UpdateSchemaTest.
- */
-
 namespace Drupal\system\Tests\Update;
 
 use Drupal\Core\Url;
@@ -37,7 +32,7 @@ class UpdateSchemaTest extends WebTestBase {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  protected function setUp() {
     parent::setUp();
 
     require_once \Drupal::root() . '/core/includes/update.inc';

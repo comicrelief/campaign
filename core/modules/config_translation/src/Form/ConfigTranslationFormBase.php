@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\config_translation\Form\ConfigTranslationFormBase.
- */
-
 namespace Drupal\config_translation\Form;
 
 use Drupal\config_translation\ConfigMapperManagerInterface;
@@ -116,8 +111,8 @@ abstract class ConfigTranslationFormBase extends FormBase implements BaseFormIdI
    *   An associative array containing the structure of the form.
    * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The current state of the form.
-   * @param \Symfony\Component\HttpFoundation\Request $request
-   *   (optional) Page request object.
+   * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
+   *   (optional) The route match.
    * @param string $plugin_id
    *   (optional) The plugin ID of the mapper.
    * @param string $langcode

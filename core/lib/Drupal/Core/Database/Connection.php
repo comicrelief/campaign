@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\Database\Connection.
- */
-
 namespace Drupal\Core\Database;
 
 /**
@@ -90,7 +85,7 @@ abstract class Connection {
   /**
    * An index used to generate unique temporary table names.
    *
-   * @var integer
+   * @var int
    */
   protected $temporaryNameIndex = 0;
 

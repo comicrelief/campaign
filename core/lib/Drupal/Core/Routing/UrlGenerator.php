@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\Routing\UrlGenerator.
- */
-
 namespace Drupal\Core\Routing;
 
 use Drupal\Core\GeneratedUrl;
@@ -158,7 +153,6 @@ class UrlGenerator implements UrlGeneratorInterface {
    * @param string $name
    *   The route name or other identifying string from ::getRouteDebugMessage().
    *
-   *
    * @return string
    *   The url path, without any base path, including possible query string.
    *
@@ -250,10 +244,10 @@ class UrlGenerator implements UrlGeneratorInterface {
    * @param $name
    *   The route name or other debug message.
    * @param \Symfony\Component\Routing\Route $route
-   *  The route object.
+   *   The route object.
    * @param array $parameters
-   *  An array of parameters as passed to
-   *  \Symfony\Component\Routing\Generator\UrlGeneratorInterface::generate().
+   *   An array of parameters as passed to
+   *   \Symfony\Component\Routing\Generator\UrlGeneratorInterface::generate().
    * @param array $query_params
    *   An array of query string parameter, which will get any extra values from
    *   $parameters merged in.
@@ -272,8 +266,8 @@ class UrlGenerator implements UrlGeneratorInterface {
   /**
    * {@inheritdoc}
    */
-  public function generate($name, $parameters = array(), $absolute = FALSE) {
-    $options['absolute'] = $absolute;
+  public function generate($name, $parameters = array(), $referenceType = self::ABSOLUTE_PATH) {
+    $options['absolute'] = is_bool($referenceType) ? $referenceType : $referenceType === self::ABSOLUTE_URL;
     return $this->generateFromRoute($name, $parameters, $options);
   }
 
@@ -305,14 +299,18 @@ class UrlGenerator implements UrlGeneratorInterface {
       return $collect_bubbleable_metadata ? $generated_url->setGeneratedUrl($url) : $url;
     }
 
-    $options += array('prefix' => '');
+    $options += $route->getOption('default_url_options') ?: [];
+    $options += array('prefix' => '', 'path_processing' => TRUE);
+
     $name = $this->getRouteDebugMessage($name);
     $this->processRoute($name, $route, $parameters, $generated_url);
     $path = $this->getInternalPathFromRoute($name, $route, $parameters, $query_params);
     // Outbound path processors might need the route object for the path, e.g.
     // to get the path pattern.
     $options['route'] = $route;
-    $path = $this->processPath($path, $options, $generated_url);
+    if ($options['path_processing']) {
+      $path = $this->processPath($path, $options, $generated_url);
+    }
 
     if (!empty($options['prefix'])) {
       $path = ltrim($path, '/');
@@ -432,7 +430,7 @@ class UrlGenerator implements UrlGeneratorInterface {
   }
 
   /**
-   * {@inheritDoc}
+   * {@inheritdoc}
    */
   public function supports($name) {
     // Support a route object and any string as route name.
@@ -440,7 +438,7 @@ class UrlGenerator implements UrlGeneratorInterface {
   }
 
   /**
-   * {@inheritDoc}
+   * {@inheritdoc}
    */
   public function getRouteDebugMessage($name, array $parameters = array()) {
     if (is_scalar($name)) {

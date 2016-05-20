@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\image\Unit\Plugin\migrate\source\d7\MigrateImageStylesTest.
- */
-
 namespace Drupal\Tests\image\Unit\Plugin\migrate\source\d7;
 
 use Drupal\Tests\migrate\Unit\MigrateSqlSourceTestCase;
@@ -45,7 +40,7 @@ class MigrateImageStylesTest extends MigrateSqlSourceTestCase {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  protected function setUp() {
     foreach ($this->expectedResults as $k => $row) {
       foreach (array('isid', 'name', 'label') as $field) {
         $this->databaseContents['image_styles'][$k][$field] = $row[$field];

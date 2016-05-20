@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\Core\Session\WriteSafeSessionHandlerTest.
- */
-
 namespace Drupal\Tests\Core\Session;
 
 use Drupal\Tests\UnitTestCase;
@@ -32,7 +27,7 @@ class WriteSafeSessionHandlerTest extends UnitTestCase {
    */
   protected $sessionHandler;
 
-  public function setUp() {
+  protected function setUp() {
     $this->wrappedSessionHandler = $this->getMock('SessionHandlerInterface');
     $this->sessionHandler = new WriteSafeSessionHandler($this->wrappedSessionHandler);
   }

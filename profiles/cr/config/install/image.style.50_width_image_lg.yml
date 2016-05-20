@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 50_width_image_lg
+label: '50% Width Image - LG'
+effects:
+  953fcd3b-081a-45f5-b19c-49d48376e3f5:
+    uuid: 953fcd3b-081a-45f5-b19c-49d48376e3f5
+    id: image_scale
+    weight: 1
+    data:
+      width: 600
+      height: null
+      upscale: false

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\Field\Plugin\Field\FieldType\PasswordItem.
- */
-
 namespace Drupal\Core\Field\Plugin\Field\FieldType;
 
 use Drupal\Core\Entity\EntityMalformedException;
@@ -62,6 +57,9 @@ class PasswordItem extends StringItem {
         $this->value = $entity->original->{$this->getFieldDefinition()->getName()}->value;
       }
     }
+    // Ensure that the existing password is unset to minimise risks of it
+    // getting serialized and stored somewhere.
+    $this->existing = NULL;
   }
 
   /**

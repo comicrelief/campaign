@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\Field\FieldItemBase.
- */
-
 namespace Drupal\Core\Field;
 
 use Drupal\Core\Entity\EntityInterface;
@@ -70,7 +65,7 @@ abstract class FieldItemBase extends Map implements FieldItemInterface {
    * {@inheritdoc}
    */
   public function getLangcode() {
-    return $this->parent->getLangcode();
+    return $this->getParent()->getLangcode();
   }
 
   /**

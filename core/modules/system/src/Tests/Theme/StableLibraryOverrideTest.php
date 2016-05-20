@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\system\Tests\Theme\StableLibraryOverrideTest.
- */
-
 namespace Drupal\system\Tests\Theme;
 
 use Drupal\simpletest\KernelTestBase;
@@ -54,7 +49,7 @@ class StableLibraryOverrideTest extends KernelTestBase {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  protected function setUp() {
     parent::setUp();
 
     $this->themeManager = $this->container->get('theme.manager');

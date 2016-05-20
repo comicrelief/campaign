@@ -1,0 +1,200 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/whats-going-on\/louise-s-story?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/article"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_image": [
+            {
+                "href": "http:\/\/default\/file\/5?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_tags": [
+            {
+                "href": "http:\/\/default\/taxonomy\/term\/5?_format=hal_json"
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": "18"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "777d6553-d57b-4f0d-b000-dd6ecceb2fe9"
+        }
+    ],
+    "vid": [
+        {
+            "value": "18"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "article"
+        }
+    ],
+    "title": [
+        {
+            "value": "Louise's story",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "ae1f300e-a034-4ed9-a78d-b52d9d2361d0"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "ae1f300e-a034-4ed9-a78d-b52d9d2361d0"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/5?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "2f4204c1-6c36-458a-8b00-b0e6ee4ee5da"
+                    }
+                ],
+                "lang": "en",
+                "alt": "Louise's story",
+                "title": "",
+                "width": "2340",
+                "height": "1316"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_tags": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/taxonomy\/term\/5?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/tags"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "516211fd-000b-4c60-a222-34565563ae59"
+                    }
+                ]
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1455020731",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1455020831",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1455020818"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<p class=\"type--quote type--xl\">\u201cI went to bed hoping that I would stay asleep for days or months or years or my entire lifetime. Then I started to harm myself. I thought I might as well do something about not wanting to wake up. One night went really bad. I also stopped eating. These things were becoming addictions. I never liked talk about my emotions. I had to psyche myself up to come to the project but they helped me to make sense of my feelings. I fell down a lot and slipped back, but they kept me going.\u201d<\/p>\r\n\r\n<p class=\"type--xs\">Louise, 17, MYPAS<\/p>\r\n",
+            "format": "full_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ],
+    "field_article_publish_date": [
+        {
+            "value": "2016-02-09"
+        }
+    ]
+}

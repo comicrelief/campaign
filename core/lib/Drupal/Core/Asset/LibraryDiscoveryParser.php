@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\Asset\LibraryDiscoveryParser.
- */
-
 namespace Drupal\Core\Asset;
 
 use Drupal\Core\Asset\Exception\IncompleteLibraryDefinitionException;
@@ -50,6 +45,8 @@ class LibraryDiscoveryParser {
    *   The app root.
    * @param \Drupal\Core\Extension\ModuleHandlerInterface $module_handler
    *   The module handler.
+   * @param \Drupal\Core\Theme\ThemeManagerInterface $theme_manager
+   *   The theme manager.
    */
   public function __construct($root, ModuleHandlerInterface $module_handler, ThemeManagerInterface $theme_manager) {
     $this->root = $root;

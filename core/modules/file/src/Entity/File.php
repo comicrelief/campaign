@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\file\Entity\File.
- */
-
 namespace Drupal\file\Entity;
 
 use Drupal\Core\Entity\ContentEntityBase;
@@ -70,6 +65,8 @@ class File extends ContentEntityBase implements FileInterface {
 
   /**
    * {@inheritdoc}
+   *
+   * @see file_url_transform_relative()
    */
   public function url($rel = 'canonical', $options = array()) {
     return file_create_url($this->getFileUri());

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\field_ui\Form\FieldStorageConfigEditForm.
- */
-
 namespace Drupal\field_ui\Form;
 
 use Drupal\Core\Entity\EntityForm;
@@ -13,6 +8,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\field_ui\FieldUI;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Provides a form for the "field storage" edit page.
@@ -33,6 +29,9 @@ class FieldStorageConfigEditForm extends EntityForm {
     // The URL of this entity form contains only the ID of the field_config
     // but we are actually editing a field_storage_config entity.
     $field_config = FieldConfig::load($route_match->getRawParameter('field_config'));
+    if (!$field_config) {
+      throw new NotFoundHttpException();
+    }
 
     return $field_config->getFieldStorageDefinition();
   }

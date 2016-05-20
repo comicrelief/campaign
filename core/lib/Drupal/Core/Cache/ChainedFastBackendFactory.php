@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\Cache\ChainedFastBackendFactory.
- */
-
 namespace Drupal\Core\Cache;
 use Drupal\Core\Site\Settings;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
@@ -53,7 +48,7 @@ class ChainedFastBackendFactory implements CacheFactoryInterface {
     }
 
     // Default the fast backend to APCu if it's available.
-    if (!isset($fast_service_name) && function_exists('apc_fetch')) {
+    if (!isset($fast_service_name) && function_exists('apcu_fetch')) {
       $fast_service_name = 'cache.backend.apcu';
     }
 

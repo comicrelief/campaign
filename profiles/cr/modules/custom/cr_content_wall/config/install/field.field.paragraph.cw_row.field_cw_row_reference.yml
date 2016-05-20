@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cw_row_block
+    - field.storage.paragraph.field_cw_row_reference
+    - paragraphs.paragraphs_type.cw_row
+id: paragraph.cw_row.field_cw_row_reference
+field_name: field_cw_row_reference
+entity_type: paragraph
+bundle: cw_row
+label: 'Row reference'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:block_content'
+  handler_settings:
+    target_bundles:
+      cw_row_block: cw_row_block
+    sort:
+      field: _none
+field_type: entity_reference

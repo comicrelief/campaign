@@ -1,14 +1,14 @@
 <?php
 
-use Drupal\node\NodeInterface;
-use Drupal\Component\Utility\Html;
-use Drupal\Component\Utility\Xss;
-use Drupal\Core\Access\AccessResult;
-
 /**
  * @file
  * Hooks specific to the Node module.
  */
+
+use Drupal\node\NodeInterface;
+use Drupal\Component\Utility\Html;
+use Drupal\Component\Utility\Xss;
+use Drupal\Core\Access\AccessResult;
 
 /**
  * @addtogroup hooks
@@ -151,7 +151,6 @@ function hook_node_grants(\Drupal\Core\Session\AccountInterface $account, $op) {
  * @return
  *   An array of grants as defined above.
  *
- * @see node_access_write_grants()
  * @see hook_node_access_records_alter()
  * @ingroup node_access
  */
@@ -209,14 +208,14 @@ function hook_node_access_records(\Drupal\node\NodeInterface $node) {
  *
  * A module may deny all access to a node by setting $grants to an empty array.
  *
+ * The preferred use of this hook is in a module that bridges multiple node
+ * access modules with a configurable behavior, as shown in the example with the
+ * 'is_preview' field.
+ *
  * @param array $grants
  *   The $grants array returned by hook_node_access_records().
  * @param \Drupal\node\NodeInterface $node
  *   The node for which the grants were acquired.
- *
- * The preferred use of this hook is in a module that bridges multiple node
- * access modules with a configurable behavior, as shown in the example with the
- * 'is_preview' field.
  *
  * @see hook_node_access_records()
  * @see hook_node_grants()
@@ -337,7 +336,7 @@ function hook_node_access(\Drupal\node\NodeInterface $node, $op, \Drupal\Core\Se
         return AccessResult::allowed()->cachePerPermissions();
       }
       else {
-        return AccessResult::allowedIf($account->hasPermission('edit own ' . $type . ' content', $account) && ($account->id() == $node->getOwnerId()))->cachePerPermissions()->cachePerUser()->cacheUntilEntityChanges($node);
+        return AccessResult::allowedIf($account->hasPermission('edit own ' . $type . ' content', $account) && ($account->id() == $node->getOwnerId()))->cachePerPermissions()->cachePerUser()->addCacheableDependency($node);
       }
 
     case 'delete':
@@ -345,7 +344,7 @@ function hook_node_access(\Drupal\node\NodeInterface $node, $op, \Drupal\Core\Se
         return AccessResult::allowed()->cachePerPermissions();
       }
       else {
-        return AccessResult::allowedIf($account->hasPermission('delete own ' . $type . ' content', $account) && ($account->id() == $node->getOwnerId()))->cachePerPermissions()->cachePerUser()->cacheUntilEntityChanges($node);
+        return AccessResult::allowedIf($account->hasPermission('delete own ' . $type . ' content', $account) && ($account->id() == $node->getOwnerId()))->cachePerPermissions()->cachePerUser()->addCacheableDependency($node);
       }
 
     default:

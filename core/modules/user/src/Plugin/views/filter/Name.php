@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\user\Plugin\views\filter\Name.
- */
-
 namespace Drupal\user\Plugin\views\filter;
 
 use Drupal\Core\Entity\Element\EntityAutocomplete;
@@ -101,8 +96,12 @@ class Name extends InOperator {
     // prevent array filter from removing our anonymous user.
   }
 
-  // Override to do nothing.
-  public function getValueOptions() { }
+/**
+ * {@inheritdoc}
+ */
+  public function getValueOptions() {
+    return $this->valueOptions;
+  }
 
   public function adminSummary() {
     // set up $this->valueOptions for the parent summary

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\Asset\JsCollectionRenderer.
- */
-
 namespace Drupal\Core\Asset;
 
 use Drupal\Component\Serialization\Json;
@@ -73,13 +68,13 @@ class JsCollectionRenderer implements AssetCollectionRendererInterface {
             'type' => 'application/json',
             'data-drupal-selector' => 'drupal-settings-json',
           );
-          $element['#value'] =  Json::encode($js_asset['data']);
+          $element['#value'] = Json::encode($js_asset['data']);
           break;
 
         case 'file':
           $query_string = $js_asset['version'] == -1 ? $default_query_string : 'v=' . $js_asset['version'];
           $query_string_separator = (strpos($js_asset['data'], '?') !== FALSE) ? '&' : '?';
-          $element['#attributes']['src'] = file_create_url($js_asset['data']);
+          $element['#attributes']['src'] = file_url_transform_relative(file_create_url($js_asset['data']));
           // Only add the cache-busting query string if this isn't an aggregate
           // file.
           if (!isset($js_asset['preprocessed'])) {

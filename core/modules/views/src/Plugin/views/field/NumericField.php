@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\views\Plugin\views\field\NumericField.
- */
-
 namespace Drupal\views\Plugin\views\field;
 
 use Drupal\Core\Form\FormStateInterface;
@@ -138,7 +133,7 @@ class NumericField extends FieldPluginBase {
   }
 
   /**
-   * @inheritdoc
+   * {@inheritdoc}
    */
   public function submitOptionsForm(&$form, FormStateInterface $form_state) {
     // Merge plural format options into one string and drop the individual

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\Config\Entity\ConfigEntityInterface.
- */
-
 namespace Drupal\Core\Config\Entity;
 
 use Drupal\Core\Entity\EntityInterface;
@@ -167,9 +162,6 @@ interface ConfigEntityInterface extends EntityInterface, ThirdPartySettingsInter
    * @param array $dependencies
    *   An array of dependencies that will be deleted keyed by dependency type.
    *   Dependency types are, for example, entity, module and theme.
-   *
-   * @return bool
-   *   TRUE if the entity has changed, FALSE if not.
    *
    * @return bool
    *   TRUE if the entity has been changed as a result, FALSE if not.

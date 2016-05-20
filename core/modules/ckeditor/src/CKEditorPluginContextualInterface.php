@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ckeditor\CKEditorPluginContextualInterface.
- */
-
 namespace Drupal\ckeditor;
 
 use Drupal\editor\Entity\Editor;
@@ -16,13 +11,15 @@ use Drupal\editor\Entity\Editor;
  * or enable themselves based on the configuration of another setting, such as
  * enabling based on a particular button being present in the toolbar.
  *
- * If a contextually enabled CKEditor plugin must also be configurable (e.g. in
- * the case where it must be enabled based on an explicit setting), then one
- * must also implement the CKEditorPluginConfigurableInterface interface.
+ * If a contextually enabled CKEditor plugin must also be configurable (for
+ * instance, in the case where it must be enabled based on an explicit setting),
+ * then one must also implement the CKEditorPluginConfigurableInterface
+ * interface.
  *
  * @see \Drupal\ckeditor\CKEditorPluginInterface
  * @see \Drupal\ckeditor\CKEditorPluginButtonsInterface
  * @see \Drupal\ckeditor\CKEditorPluginConfigurableInterface
+ * @see \Drupal\ckeditor\CKEditorPluginCssInterface
  * @see \Drupal\ckeditor\CKEditorPluginBase
  * @see \Drupal\ckeditor\CKEditorPluginManager
  * @see \Drupal\ckeditor\Annotation\CKEditorPlugin

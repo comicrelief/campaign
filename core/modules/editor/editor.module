@@ -178,10 +178,10 @@ function editor_form_filter_admin_format_editor_configure($form, FormStateInterf
     }
     elseif (empty($editor) || $editor_value !== $editor->getEditor()) {
       $format = $form_state->getFormObject()->getEntity();
-      $editor = entity_create('editor', array(
+      $editor = Editor::create([
         'format' => $format->isNew() ? NULL : $format->id(),
         'editor' => $editor_value,
-      ));
+      ]);
       $form_state->set('editor', $editor);
     }
   }
@@ -237,6 +237,9 @@ function editor_form_filter_admin_format_submit($form, FormStateInterface $form_
 
 /**
  * Loads an individual configured text editor based on text format ID.
+ *
+ * @param int $format_id
+ *   A text format ID.
  *
  * @return \Drupal\editor\Entity\Editor|null
  *   A text editor object, or NULL.

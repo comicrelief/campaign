@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\Database\Query\PagerSelectExtender.
- */
-
 namespace Drupal\Core\Database\Query;
 
 use Drupal\Core\Database\Connection;
@@ -64,10 +59,9 @@ class PagerSelectExtender extends SelectExtender {
    * to it.
    */
   public function execute() {
-
-    // Add convenience tag to mark that this is an extended query. We have to
-    // do this in the constructor to ensure that it is set before preExecute()
-    // gets called.
+    // By calling preExecute() here, we force it to preprocess the extender
+    // object rather than just the base query object. That means
+    // hook_query_alter() gets access to the extended object.
     if (!$this->preExecute($this)) {
       return NULL;
     }

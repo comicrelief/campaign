@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\views\ManyToOneHelper.
- */
-
 namespace Drupal\views;
 
 use Drupal\Core\Form\FormStateInterface;
@@ -236,7 +231,7 @@ class ManyToOneHelper {
         $join = $this->getJoin();
         $join->type = 'LEFT';
         $join->extra = array();
-        $join->extra_type = 'OR';
+        $join->extraOperator = 'OR';
         foreach ($this->handler->value as $value) {
           $join->extra[] = array(
             'field' => $this->handler->realField,
@@ -311,10 +306,21 @@ class ManyToOneHelper {
         $placeholder = $this->placeholder();
         if (count($this->handler->value) > 1) {
           $placeholder .= '[]';
-          $this->handler->query->addWhereExpression(0, "$field $operator($placeholder)", array($placeholder => $value));
+
+          if ($operator == 'IS NULL') {
+            $this->handler->query->addWhereExpression(0, "$field $operator");
+          }
+          else {
+            $this->handler->query->addWhereExpression(0, "$field $operator($placeholder)", array($placeholder => $value));
+          }
         }
         else {
-          $this->handler->query->addWhereExpression(0, "$field $operator $placeholder", array($placeholder => $value));
+          if ($operator == 'IS NULL') {
+            $this->handler->query->addWhereExpression(0, "$field $operator");
+          }
+          else {
+            $this->handler->query->addWhereExpression(0, "$field $operator $placeholder", array($placeholder => $value));
+          }
         }
       }
     }

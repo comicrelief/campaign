@@ -1,0 +1,15 @@
+description: 'Multilingual demo for paragraphs. It adds CSS for responsive wrapping as well as the following paragraph types: User, Images, Text, Image + Text, Text + Image'
+core: 8.x
+dependencies:
+  - paragraphs
+  - field
+  - image
+  - field_ui
+  - block
+  - language
+  - content_translation
+  - node
+hidden: false
+name: Paragraphs demo
+package: Paragraphs
+type: module

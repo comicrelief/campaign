@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\migrate\MigrationStorage.
- */
-
 namespace Drupal\migrate;
 
 use Drupal\Component\Graph\Graph;
@@ -67,7 +62,7 @@ class MigrationStorage extends ConfigEntityStorage implements MigrateBuildDepend
     if ($ids) {
       $ids = $this->getVariantIds($ids);
     }
-    /** @var \Drupal\migrate\Entity\MigrationInterface[] $migrations */
+    /** @var \Drupal\migrate\Plugin\MigrationInterface[] $migrations */
     $migrations = parent::loadMultiple($ids);
 
     foreach ($migrations as $migration) {
@@ -126,7 +121,7 @@ class MigrationStorage extends ConfigEntityStorage implements MigrateBuildDepend
     $requirement_graph = array();
     $different = FALSE;
     foreach ($migrations as $migration) {
-      /** @var \Drupal\migrate\Entity\MigrationInterface $migration */
+      /** @var \Drupal\migrate\Plugin\MigrationInterface $migration */
       $id = $migration->id();
       $requirements[$id] = array();
       $dependency_graph[$id]['edges'] = array();
@@ -173,13 +168,13 @@ class MigrationStorage extends ConfigEntityStorage implements MigrateBuildDepend
    * Add one or more dependencies to a graph.
    *
    * @param array $graph
-   *   The graph so far.
+   *   The graph so far, passed by reference.
    * @param int $id
-   *   The migration id.
+   *   The migration ID.
    * @param string $dependency
    *   The dependency string.
    * @param array $dynamic_ids
-   *   The dynamic id mapping.
+   *   The dynamic ID mapping.
    */
   protected function addDependency(array &$graph, $id, $dependency, $dynamic_ids) {
     $dependencies = isset($dynamic_ids[$dependency]) ? $dynamic_ids[$dependency] : array($dependency);

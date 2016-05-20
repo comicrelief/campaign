@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\views_ui\Controller\ViewsUIController.
- */
-
 namespace Drupal\views_ui\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
@@ -19,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\ReplaceCommand;
+use Drupal\Component\Utility\Html;
 
 /**
  * Returns responses for Views UI routes.
@@ -189,12 +185,17 @@ class ViewsUIController extends ControllerBase {
     $string = $request->query->get('q');
     // Get matches from default views.
     $views = $this->entityManager()->getStorage('view')->loadMultiple();
+    // Keep track of previously processed tags so they can be skipped.
+    $tags = [];
     foreach ($views as $view) {
       $tag = $view->get('tag');
-      if ($tag && strpos($tag, $string) === 0) {
-        $matches[$tag] = $tag;
-        if (count($matches) >= 10) {
-          break;
+      if ($tag && !in_array($tag, $tags)) {
+        $tags[] = $tag;
+        if (strpos($tag, $string) === 0) {
+          $matches[] = ['value' => $tag, 'label' => Html::escape($tag)];
+          if (count($matches) >= 10) {
+            break;
+          }
         }
       }
     }

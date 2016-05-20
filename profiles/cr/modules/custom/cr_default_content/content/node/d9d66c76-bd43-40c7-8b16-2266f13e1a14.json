@@ -1,0 +1,144 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/legal?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/page"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json"
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": "2"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "d9d66c76-bd43-40c7-8b16-2266f13e1a14"
+        }
+    ],
+    "vid": [
+        {
+            "value": "2"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "page"
+        }
+    ],
+    "title": [
+        {
+            "value": "Legal",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "f3fcd6e4-c7a3-435c-815b-b9553ccbac29"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "f3fcd6e4-c7a3-435c-815b-b9553ccbac29"
+                    }
+                ]
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1460472384",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1462873546",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "0"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1460472479"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<h4>Terms of use<\/h4>\r\n\r\n<p>By using this Site you accept these terms of use as from the date you first access this Site. Comic Relief may modify these terms of use at any time by updating the text of this page, so please check back regularly.<\/p>\r\n\r\n<p>&nbsp;<\/p>\r\n\r\n<h4><a id=\"definitions\">Definitions<\/a><\/h4>\r\n\r\n<p>&nbsp;<\/p>\r\n\r\n<p>In these terms of use, the following words have the following meanings:<\/p>\r\n\r\n<p>\"Content\" means all content on this Site, including all information, graphics, trademarks, logos, designs, text, photos, films, sounds, software and applications;<\/p>\r\n\r\n<p>\"Contribution(s)\" means anything that a user posts on this Site or sends to Comic Relief, including any photographs, video or audio clips, comments or posts or competition entries;<\/p>\r\n\r\n<p>&nbsp;<\/p>\r\n\r\n<p>\"Site\" means any website which Comic Relief owns or controls, and from which a link has been created to these terms of use;<\/p>\r\n\r\n<p>&nbsp;<\/p>\r\n\r\n<p>\"these terms of use\" means the terms of use set out below, as well as our Privacy Policy and any other terms and conditions on this Site; \"you\", \"your\" and \"yours\" means a person(s) accessing this Site.<\/p>\r\n",
+            "format": "full_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ]
+}

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\migrate\Plugin\migrate\process\Get.
- */
-
 namespace Drupal\migrate\Plugin\migrate\process;
 
 use Drupal\migrate\ProcessPluginBase;
@@ -21,6 +16,8 @@ use Drupal\migrate\Row;
 class Get extends ProcessPluginBase {
 
   /**
+   * Flag indicating whether there are multiple values.
+   *
    * @var bool
    */
   protected $multiple;
@@ -33,10 +30,7 @@ class Get extends ProcessPluginBase {
     $properties = is_string($source) ? array($source) : $source;
     $return = array();
     foreach ($properties as $property) {
-      if (empty($property)) {
-        $return[] = $value;
-      }
-      else {
+      if ($property || (string) $property === '0') {
         $is_source = TRUE;
         if ($property[0] == '@') {
           $property = preg_replace_callback('/^(@?)((?:@@)*)([^@]|$)/', function ($matches) use (&$is_source) {
@@ -55,7 +49,11 @@ class Get extends ProcessPluginBase {
           $return[] = $row->getDestinationProperty($property);
         }
       }
+      else {
+        $return[] = $value;
+      }
     }
+
     if (is_string($source)) {
       $this->multiple = is_array($return[0]);
       return $return[0];
@@ -69,4 +67,5 @@ class Get extends ProcessPluginBase {
   public function multiple() {
     return $this->multiple;
   }
+
 }

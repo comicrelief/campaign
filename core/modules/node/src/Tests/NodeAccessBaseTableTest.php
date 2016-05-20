@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\node\Tests\NodeAccessBaseTableTest.
- */
-
 namespace Drupal\node\Tests;
 
 use Drupal\node\Entity\NodeType;
@@ -160,6 +155,22 @@ class NodeAccessBaseTableTest extends NodeTestBase {
     // Now test that a user with 'node test view' permissions can view content.
     $access_user = $this->drupalCreateUser(array('access content', 'create article content', 'node test view', 'search content'));
     $this->drupalLogin($access_user);
+
+    foreach ($this->nodesByUser as $private_status) {
+      foreach ($private_status as $nid => $is_private) {
+        $this->drupalGet('node/' . $nid);
+        $this->assertResponse(200);
+      }
+    }
+
+    // This user should be able to see all of the nodes on the relevant
+    // taxonomy pages.
+    $this->assertTaxonomyPage(TRUE);
+
+    // Rebuild the node access permissions, repeat the test. This is done to
+    // ensure that node access is rebuilt correctly even if the current user
+    // does not have the bypass node access permission.
+    node_access_rebuild();
 
     foreach ($this->nodesByUser as $private_status) {
       foreach ($private_status as $nid => $is_private) {

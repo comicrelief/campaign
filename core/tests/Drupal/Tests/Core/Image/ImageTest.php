@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\Core\Image\ImageTest.
- */
-
 namespace Drupal\Tests\Core\Image;
 
 use Drupal\Core\Image\Image;
@@ -47,7 +42,7 @@ class ImageTest extends UnitTestCase {
   protected $toolkitOperation;
 
   /**
-   * @inheritdoc
+   * {@inheritdoc}
    */
   protected function setUp() {
     // Use the Druplicon image.

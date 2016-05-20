@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\EventSubscriber\ExceptionTestSiteSubscriber.
- */
-
 namespace Drupal\Core\EventSubscriber;
 
 use Drupal\Core\Utility\Error;
@@ -23,7 +18,7 @@ class ExceptionTestSiteSubscriber extends HttpExceptionSubscriberBase {
   }
 
   /**
-   * {@inheritDoc}
+   * {@inheritdoc}
    */
   protected function getHandledFormats() {
     return ['html'];

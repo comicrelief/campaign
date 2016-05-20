@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\Core\StackMiddleware\ReverseProxyMiddlewareTest.
- */
-
 namespace Drupal\Tests\Core\StackMiddleware;
 
 use Drupal\Core\Site\Settings;
@@ -27,7 +22,7 @@ class ReverseProxyMiddlewareTest extends UnitTestCase {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  protected function setUp() {
     $this->mockHttpKernel = $this->getMock('Symfony\Component\HttpKernel\HttpKernelInterface');
   }
 

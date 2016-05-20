@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\Render\Element\Select.
- */
-
 namespace Drupal\Core\Render\Element;
 
 use Drupal\Core\Form\FormStateInterface;
@@ -14,11 +9,29 @@ use Drupal\Core\Render\Element;
  * Provides a form element for a drop-down menu or scrolling selection box.
  *
  * Properties:
- * - #options: An associative array, where the keys are the retured values for
- *   each option, and the values are the options to be shown in the drop-down
- *   list.
+ * - #options: An associative array, where the keys are the values for each
+ *   option, and the values are the option labels to be shown in the drop-down
+ *   list. If a value is an array, it will be rendered similarly, but as an
+ *   optgroup. The key of the sub-array will be used as the label for the
+ *   optgroup. Nesting optgroups is not allowed.
  * - #empty_option: The label that will be displayed to denote no selection.
  * - #empty_value: The value of the option that is used to denote no selection.
+ *
+ * Usage example:
+ * @code
+ * $form['example_select'] = [
+ *   '#type' => 'select',
+ *   '#title' => $this->t('Select element'),
+ *   '#options' => [
+ *     '1' => $this->t('One'),
+ *     '2' => [
+ *       '2.1' => $this->t('Two point one'),
+ *       '2.2' => $this->t('Two point two'),
+ *     ],
+ *     '3' => $this->t('Three'),
+ *   ],
+ * ];
+ * @endcode
  *
  * @FormElement("select")
  */

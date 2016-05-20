@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\node\Access\NodeRevisionAccessCheck.
- */
-
 namespace Drupal\node\Access;
 
 use Drupal\Core\Access\AccessResult;
@@ -77,7 +72,7 @@ class NodeRevisionAccessCheck implements AccessInterface {
       $node = $this->nodeStorage->loadRevision($node_revision);
     }
     $operation = $route->getRequirement('_access_node_revision');
-    return AccessResult::allowedIf($node && $this->checkAccess($node, $account, $operation))->cachePerPermissions();
+    return AccessResult::allowedIf($node && $this->checkAccess($node, $account, $operation))->cachePerPermissions()->addCacheableDependency($node);
   }
 
   /**

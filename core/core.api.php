@@ -79,9 +79,9 @@
  * Web services make it possible for applications and web sites to read and
  * update information from other web sites. There are several standard
  * techniques for providing web services, including:
- * - SOAP: http://en.wikipedia.org/wiki/SOAP SOAP
- * - XML-RPC: http://en.wikipedia.org/wiki/XML-RPC
- * - REST: http://en.wikipedia.org/wiki/Representational_state_transfer
+ * - SOAP: http://wikipedia.org/wiki/SOAP
+ * - XML-RPC: http://wikipedia.org/wiki/XML-RPC
+ * - REST: http://wikipedia.org/wiki/Representational_state_transfer
  * Drupal sites can both provide web services and integrate third-party web
  * services.
  *
@@ -254,7 +254,7 @@
  * - Exporting and importing configuration.
  *
  * The file storage format for configuration information in Drupal is
- * @link http://en.wikipedia.org/wiki/YAML YAML files. @endlink Configuration is
+ * @link http://wikipedia.org/wiki/YAML YAML files. @endlink Configuration is
  * divided into files, each containing one configuration object. The file name
  * for a configuration object is equal to the unique name of the configuration,
  * with a '.yml' extension. The default configuration files for each module are
@@ -283,16 +283,16 @@
  *
  * The first task in using the simple configuration API is to define the
  * configuration file structure, file name, and schema of your settings (see
- * @ref sec_yaml above). Once you have done that, you can retrieve the
- * active configuration object that corresponds to configuration file
- * mymodule.foo.yml with a call to:
+ * @ref sec_yaml above). Once you have done that, you can retrieve the active
+ * configuration object that corresponds to configuration file mymodule.foo.yml
+ * with a call to:
  * @code
  * $config = \Drupal::config('mymodule.foo');
  * @endcode
  *
  * This will be an object of class \Drupal\Core\Config\Config, which has methods
- * for getting and setting configuration information.  For instance, if your
- * YAML file structure looks like this:
+ * for getting configuration information. For instance, if your YAML file
+ * structure looks like this:
  * @code
  * enabled: '0'
  * bar:
@@ -307,11 +307,33 @@
  * $bar = $config->get('bar');
  * // Get one element of the array.
  * $bar_baz = $config->get('bar.baz');
- * // Update a value. Nesting works the same as get().
- * $config->set('bar.baz', 'string2');
- * // Nothing actually happens with set() until you call save().
+ * @endcode
+ *
+ * The Config object that was obtained and used in the previous examples does
+ * not allow you to change configuration. If you want to change configuration,
+ * you will instead need to get the Config object by making a call to
+ * getEditable() on the config factory:
+ * @code
+ * $config =\Drupal::service('config.factory')->getEditable('mymodule.foo');
+ * @endcode
+ *
+ * Individual configuration values can be changed or added using the set()
+ * method and saved using the save() method:
+ * @code
+ * // Set a scalar value.
+ * $config->set('enabled', 1);
+ * // Save the configuration.
  * $config->save();
  * @endcode
+ *
+ * Configuration values can also be unset using the clear() method, which is
+ * also chainable:
+ * @code
+ * $config->clear('bar.boo')->save();
+ * $config_data = $config->get('bar');
+ * @endcode
+ * In this example $config_data would return an array with one key - 'baz' -
+ * because 'boo' was unset.
  *
  * @section sec_entity Configuration entities
  * In contrast to the simple configuration settings described in the previous
@@ -344,7 +366,7 @@
  *   Configuration entity classes expose dependencies by overriding the
  *   \Drupal\Core\Config\Entity\ConfigEntityInterface::calculateDependencies()
  *   method.
- * - On routes for paths staring with '/admin' or otherwise designated as
+ * - On routes for paths starting with '/admin' or otherwise designated as
  *   administration paths (such as node editing when it is set as an admin
  *   operation), if they have configuration entity placeholders, configuration
  *   entities are normally loaded in their original language, without
@@ -567,7 +589,7 @@
  *
  * By default cached data is stored in the database. This can be configured
  * though so that all cached data, or that of an individual cache bin, uses a
- * different cache backend, such as APC or Memcache, for storage.
+ * different cache backend, such as APCu or Memcache, for storage.
  *
  * In a settings.php file, you can override the service used for a particular
  * cache bin. For example, if your service implementation of
@@ -692,7 +714,7 @@
  * "service" (such as accessing the database, sending email, or translating user
  * interface text) is defined (given a name and an interface or at least a
  * class that defines the methods that may be called), and a default class is
- * defined to provide the service. These two steps must be done together, and
+ * designated to provide the service. These two steps must be done together, and
  * can be done by Drupal Core or a module. Other modules can then define
  * alternative classes to provide the same services, overriding the default
  * classes. Classes and functions that need to use the service should always
@@ -709,7 +731,8 @@
  * top-level core directory). Some Drupal Core modules and contributed modules
  * also define services in modulename.services.yml files. API reference sites
  * (such as https://api.drupal.org) generate lists of all existing services from
- * these files, or you can look through the individual files manually.
+ * these files. Look for the Services link in the API Navigation block.
+ * Alternatively you can look through the individual files manually.
  *
  * A typical service definition in a *.services.yml file looks like this:
  * @code
@@ -840,6 +863,32 @@
  * @see \Symfony\Component\DependencyInjection\ContainerInterface
  * @see plugin_api
  * @see menu
+ * @}
+ */
+
+/**
+ * @defgroup listing_page_service Page header for Services page
+ * @{
+ * Introduction to services
+ *
+ * A "service" (such as accessing the database, sending email, or translating
+ * user interface text) can be defined by a module or Drupal core. Defining a
+ * service means giving it a name and designating a default class to provide the
+ * service; ideally, there should also be an interface that defines the methods
+ * that may be called. Services are collected into the Dependency Injection
+ * Container, and can be overridden to use different classes or different
+ * instantiation by modules. See the
+ * @link container Services and Dependency Injection Container topic @endlink
+ * for details.
+ *
+ * Some services have tags, which are defined in the service definition. Tags
+ * are used to define a group of related services, or to specify some aspect of
+ * how the service behaves. See the
+ * @link service_tag Service Tags topic @endlink for more information.
+ *
+ * @see container
+ * @see service_tag
+ *
  * @}
  */
 
@@ -1019,8 +1068,8 @@
  * - The class name needs to end in the word Test.
  * - The namespace must be a subspace/subdirectory of \Drupal\yourmodule\Tests,
  *   where yourmodule is your module's machine name.
- * - The test class file must be named and placed under the yourmodule/tests/src
- *   directory, according to the PSR-4 standard.
+ * - The test class file must be named and placed under the
+ *   yourmodule/tests/src/Unit directory, according to the PSR-4 standard.
  * - Your test class needs a phpDoc comment block with a description and
  *   a @group annotation, which gives information about the test.
  * - Methods in your test class whose names start with 'test' are the actual
@@ -1045,7 +1094,7 @@
  *   $modules member variable -- keep in mind that by default, WebTestBase uses
  *   a "testing" install profile, with a minimal set of modules enabled.
  * - For functional tests that do not test web output, define a class that
- *   extends \Drupal\simpletest\KernelTestBase. This class is much faster
+ *   extends \Drupal\KernelTests\KernelTestBase. This class is much faster
  *   than WebTestBase, because instead of making a full install of Drupal, it
  *   uses an in-memory pseudo-installation (similar to what the installer and
  *   update scripts use). To use this test class, you will need to create the
@@ -1094,7 +1143,7 @@
  *
  * A runtime assertion is a statement that is expected to always be true at
  * the point in the code it appears at. They are tested using PHP's internal
- * @link http://www.php.net/assert assert() @endlink statement. If an
+ * @link http://php.net/assert assert() @endlink statement. If an
  * assertion is ever FALSE it indicates an error in the code or in module or
  * theme configuration files. User-provided configuration files should be
  * verified with standard control structures at all times, not just checked in
@@ -1442,6 +1491,38 @@
  */
 
 /**
+ * @defgroup listing_page_class Page header for Classes page
+ * @{
+ * Introduction to classes
+ *
+ * A lot of the PHP code in Drupal is object oriented (OO), making use of
+ * @link http://php.net/manual/language.oop5.php PHP classes, interfaces, and traits. @endlink
+ * See the
+ * @link oo_conventions Objected-oriented programming conventions @endlink
+ * for more information.
+ *
+ * @see oo_conventions
+ *
+ * @}
+ */
+
+/**
+ * @defgroup listing_page_namespace Page header for Namespaces page
+ * @{
+ * Introduction to namespaces
+ *
+ * PHP classes, interfaces, and traits in Drupal are
+ * @link http://php.net/manual/en/language.namespaces.rationale.php namespaced. @endlink
+ * See the
+ * @link oo_conventions Objected-oriented programming conventions @endlink
+ * for more information.
+ *
+ * @see oo_conventions
+ *
+ * @}
+ */
+
+/**
  * @defgroup best_practices Best practices for developers
  * @{
  * Overview of standards and best practices for developers
@@ -1667,16 +1748,13 @@
  *     _form: '\Drupal\mymodule\Form\ExampleForm'
  * @endcode
  *
- * The $form argument to form-related functions is a structured array containing
- * the elements and properties of the form. For information on the array
- * components and format, and more detailed explanations of the Form API
- * workflow, see the
- * @link forms_api_reference.html Form API reference @endlink
- * and the
+ * The $form argument to form-related functions is a specialized render array
+ * containing the elements and properties of the form. For more about render
+ * arrays, see the @link theme_render Render API topic. @endlink For more
+ * detailed explanations of the Form API workflow, see the
  * @link https://www.drupal.org/node/2117411 Form API documentation section. @endlink
- * In addition, there is a set of Form API tutorials in
- * @link form_example_tutorial.inc the Form Example Tutorial @endlink which
- * provide basics all the way up through multistep forms.
+ * In addition, there is a set of Form API tutorials in the
+ * @link https://www.drupal.org/project/examples Examples for Developers project. @endlink
  *
  * In the form builder, validation, submission, and other form methods,
  * $form_state is the primary influence on the processing of the form and is
@@ -1879,33 +1957,34 @@ function hook_queue_info_alter(&$queues) {
  *
  * @param $message
  *   An array containing the message data. Keys in this array include:
- *  - 'id':
+ *   - 'id':
  *     The MailManagerInterface->mail() id of the message. Look at module source
  *     code or MailManagerInterface->mail() for possible id values.
- *  - 'to':
+ *   - 'to':
  *     The address or addresses the message will be sent to. The
  *     formatting of this string must comply with RFC 2822.
- *  - 'from':
+ *   - 'from':
  *     The address the message will be marked as being from, which is
  *     either a custom address or the site-wide default email address.
- *  - 'subject':
+ *   - 'subject':
  *     Subject of the email to be sent. This must not contain any newline
  *     characters, or the email may not be sent properly.
- *  - 'body':
- *     An array of strings containing the message text. The message body is
- *     created by concatenating the individual array strings into a single text
- *     string using "\n\n" as a separator.
- *  - 'headers':
+ *   - 'body':
+ *     An array of strings or objects that implement
+ *     \Drupal\Component\Render\MarkupInterface containing the message text. The
+ *     message body is created by concatenating the individual array strings
+ *     into a single text string using "\n\n" as a separator.
+ *   - 'headers':
  *     Associative array containing mail headers, such as From, Sender,
  *     MIME-Version, Content-Type, etc.
- *  - 'params':
+ *   - 'params':
  *     An array of optional parameters supplied by the caller of
  *     MailManagerInterface->mail() that is used to build the message before
  *     hook_mail_alter() is invoked.
- *  - 'language':
+ *   - 'language':
  *     The language object used to build the message before hook_mail_alter()
  *     is invoked.
- *  - 'send':
+ *   - 'send':
  *     Set to FALSE to abort sending this email message.
  *
  * @see \Drupal\Core\Mail\MailManagerInterface::mail()
@@ -1943,7 +2022,9 @@ function hook_mail_alter(&$message) {
  *     string when the hook is invoked.
  *   - body: An array of lines containing the message to be sent. Drupal will
  *     format the correct line endings for you. MailManagerInterface->mail()
- *     sets this to an empty array when the hook is invoked.
+ *     sets this to an empty array when the hook is invoked. The array may
+ *     contain either strings or objects implementing
+ *     \Drupal\Component\Render\MarkupInterface.
  *   - from: The address the message will be marked as being from, which is
  *     set by MailManagerInterface->mail() to either a custom address or the
  *     site-wide default email address when the hook is invoked.

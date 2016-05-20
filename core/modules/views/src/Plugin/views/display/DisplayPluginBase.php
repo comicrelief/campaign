@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\views\Plugin\views\display\DisplayPluginBase.
- */
-
 namespace Drupal\views\Plugin\views\display;
 
 use Drupal\Component\Plugin\DependentPluginInterface;
@@ -951,7 +946,7 @@ abstract class DisplayPluginBase extends PluginBase implements DisplayPluginInte
    * {@inheritdoc}
    */
   public function calculateDependencies() {
-    $this->addDependencies(parent::calculateDependencies());
+    $this->dependencies = parent::calculateDependencies();
     // Collect all the dependencies of handlers and plugins. Only calculate
     // their dependencies if they are configured by this display.
     $plugins = array_merge($this->getAllHandlers(TRUE), $this->getAllPlugins(TRUE));
@@ -1331,7 +1326,7 @@ abstract class DisplayPluginBase extends PluginBase implements DisplayPluginInte
         'category' => 'pager',
         'title' => $this->t('Link display'),
         'value' => $link_display,
-        'desc' => $this->t('Specify which display or custom url this display will link to.'),
+        'desc' => $this->t('Specify which display or custom URL this display will link to.'),
       );
     }
 
@@ -1485,7 +1480,7 @@ abstract class DisplayPluginBase extends PluginBase implements DisplayPluginInte
         $form['use_more'] = array(
           '#type' => 'checkbox',
           '#title' => $this->t('Create more link'),
-          '#description' => $this->t("This will add a more link to the bottom of this view, which will link to the page view. If you have more than one page view, the link will point to the display specified in 'Link display' section under pager. You can override the url at the link display setting."),
+          '#description' => $this->t("This will add a more link to the bottom of this view, which will link to the page view. If you have more than one page view, the link will point to the display specified in 'Link display' section under pager. You can override the URL at the link display setting."),
           '#default_value' => $this->getOption('use_more'),
         );
         $form['use_more_always'] = array(
@@ -1529,7 +1524,7 @@ abstract class DisplayPluginBase extends PluginBase implements DisplayPluginInte
         );
 
         $access = $this->getOption('access');
-        $form['access']['type'] =  array(
+        $form['access']['type'] = array(
           '#title' => $this->t('Access'),
           '#title_display' => 'invisible',
           '#type' => 'radios',
@@ -1566,7 +1561,7 @@ abstract class DisplayPluginBase extends PluginBase implements DisplayPluginInte
         );
 
         $cache = $this->getOption('cache');
-        $form['cache']['type'] =  array(
+        $form['cache']['type'] = array(
           '#title' => $this->t('Caching'),
           '#title_display' => 'invisible',
           '#type' => 'radios',
@@ -1787,7 +1782,7 @@ abstract class DisplayPluginBase extends PluginBase implements DisplayPluginInte
         );
 
         $exposed_form = $this->getOption('exposed_form');
-        $form['exposed_form']['type'] =  array(
+        $form['exposed_form']['type'] = array(
           '#title' => $this->t('Exposed form'),
           '#title_display' => 'invisible',
           '#type' => 'radios',
@@ -1823,7 +1818,7 @@ abstract class DisplayPluginBase extends PluginBase implements DisplayPluginInte
         );
 
         $pager = $this->getOption('pager');
-        $form['pager']['type'] =  array(
+        $form['pager']['type'] = array(
           '#title' => $this->t('Pager'),
           '#title_display' => 'invisible',
           '#type' => 'radios',
@@ -2195,7 +2190,7 @@ abstract class DisplayPluginBase extends PluginBase implements DisplayPluginInte
         $output = $element['#empty'];
       }
 
-      $form_object = ViewsForm::create(\Drupal::getContainer(), $view->storage->id(), $view->current_display);
+      $form_object = ViewsForm::create(\Drupal::getContainer(), $view->storage->id(), $view->current_display, $view->args);
       $form = \Drupal::formBuilder()->getForm($form_object, $view, $output);
       // The form is requesting that all non-essential views elements be hidden,
       // usually because the rendered step is not a view result.
@@ -2267,7 +2262,7 @@ abstract class DisplayPluginBase extends PluginBase implements DisplayPluginInte
   /**
    * {@inheritdoc}
    */
-  public function calculateCacheMetadata () {
+  public function calculateCacheMetadata() {
     $cache_metadata = new CacheableMetadata();
 
     // Iterate over ordinary views plugins.
@@ -2335,13 +2330,17 @@ abstract class DisplayPluginBase extends PluginBase implements DisplayPluginInte
       '#cache_properties' => ['#view_id', '#view_display_show_admin_links', '#view_display_plugin_id'],
     ];
 
+    // When something passes $cache = FALSE, they're asking us not to create our
+    // own render cache for it. However, we still need to include certain pieces
+    // of cacheability metadata (e.g.: cache contexts), so they can bubble up.
+    // Thus, we add the cacheability metadata first, then modify / remove the
+    // cache keys depending on the $cache argument.
+    $this->applyDisplayCachablityMetadata($this->view->element);
     if ($cache) {
       $this->view->element['#cache'] += ['keys' => []];
       // Places like \Drupal\views\ViewExecutable::setCurrentPage() set up an
       // additional cache context.
       $this->view->element['#cache']['keys'] = array_merge(['views', 'display', $this->view->element['#name'], $this->view->element['#display_id']], $this->view->element['#cache']['keys']);
-
-      $this->applyDisplayCachablityMetadata($this->view->element);
     }
     else {
       // Remove the cache keys, to ensure render caching is not triggered. We
@@ -2373,7 +2372,7 @@ abstract class DisplayPluginBase extends PluginBase implements DisplayPluginInte
       $build['#cache']['keys'][] = implode(',', $args);
     }
 
-    $build['#cache_properties'] =  ['#view_id', '#view_display_show_admin_links', '#view_display_plugin_id'];
+    $build['#cache_properties'] = ['#view_id', '#view_display_show_admin_links', '#view_display_plugin_id'];
 
     return $build;
 
@@ -2441,6 +2440,16 @@ abstract class DisplayPluginBase extends PluginBase implements DisplayPluginInte
     $result = $query->validate();
     if (!empty($result) && is_array($result)) {
       $errors = array_merge($errors, $result);
+    }
+
+    // Check for missing relationships.
+    $relationships = array_keys($this->getHandlers('relationship'));
+    foreach (ViewExecutable::getHandlerTypes() as $type => $handler_type_info) {
+      foreach ($this->getHandlers($type) as $handler_id => $handler) {
+        if (!empty($handler->options['relationship']) && $handler->options['relationship'] != 'none' && !in_array($handler->options['relationship'], $relationships)) {
+          $errors[] = $this->t('The %handler_type %handler uses a relationship that has been removed.', array('%handler_type' => $handler_type_info['lstitle'], '%handler' => $handler->adminLabel()));
+        }
+      }
     }
 
     // Validate handlers.

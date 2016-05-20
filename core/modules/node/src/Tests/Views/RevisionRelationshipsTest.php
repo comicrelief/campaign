@@ -1,9 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\node\Tests\Views\RevisionRelationshipsTest.
- */
 namespace Drupal\node\Tests\Views;
 
 use Drupal\views\Views;
@@ -22,7 +18,7 @@ class RevisionRelationshipsTest extends ViewTestBase {
    *
    * @var array
    */
-  public static $modules = array('node' ,'node_test_views');
+  public static $modules = array('node' , 'node_test_views');
 
   protected function setUp() {
     parent::setUp();

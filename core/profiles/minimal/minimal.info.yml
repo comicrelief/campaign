@@ -5,43 +5,15 @@ description: 'Build a custom site without pre-configured functionality. Suitable
 # core: 8.x
 dependencies:
   - node
-  - history
   - block
-  - breakpoint
-  - ckeditor
-  - color
-  - config
-  - comment
-  - contextual
-  - contact
-  - menu_link_content
-  - datetime
-  - block_content
-  - quickedit
-  - editor
-  - help
-  - image
-  - menu_ui
-  - options
-  - path
+  - dblog
   - page_cache
   - dynamic_page_cache
-  - taxonomy
-  - dblog
-  - search
-  - shortcut
-  - toolbar
-  - field_ui
-  - file
-  - views
-  - views_ui
-  - automated_cron
 themes:
-  - bartik
-  - seven
+  - stark
 
-# Information added by Drupal.org packaging script on 2015-12-02
-version: '8.0.1'
+# Information added by Drupal.org packaging script on 2016-05-04
+version: '8.1.1'
 core: '8.x'
 project: 'drupal'
-datestamp: 1449067409
+datestamp: 1462362203

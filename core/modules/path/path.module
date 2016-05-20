@@ -7,7 +7,6 @@
 
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
-use Drupal\Core\Field\FieldDefinition;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
@@ -83,7 +82,9 @@ function path_entity_base_field_info(EntityTypeInterface $entity_type) {
  * Implements hook_entity_translation_delete().
  */
 function path_entity_translation_delete(EntityInterface $translation) {
-  $path = $translation->urlInfo()->getInternalPath();
-  $conditions = array('source' => '/' . $path, 'langcode' => $translation->language()->getId());
-  \Drupal::service('path.alias_storage')->delete($conditions);
+  if ($translation->hasLinkTemplate('canonical')) {
+    $path = $translation->urlInfo()->getInternalPath();
+    $conditions = array('source' => '/' . $path, 'langcode' => $translation->language()->getId());
+    \Drupal::service('path.alias_storage')->delete($conditions);
+  }
 }

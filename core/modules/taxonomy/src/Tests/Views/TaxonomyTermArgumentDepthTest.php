@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\taxonomy\Tests\Views\TaxonomyTermArgumentDepthTest.
- */
-
 namespace Drupal\taxonomy\Tests\Views;
 
 /**
@@ -37,7 +32,7 @@ class TaxonomyTermArgumentDepthTest extends TaxonomyTestBase {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  protected function setUp() {
     parent::setUp();
 
     // Create a term with markup in the label.

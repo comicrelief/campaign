@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\CoreServiceProvider.
- */
-
 namespace Drupal\Core;
 
 use Drupal\Core\Cache\Context\CacheContextsPass;
@@ -105,8 +100,8 @@ class CoreServiceProvider implements ServiceProviderInterface  {
   /**
    * Determines and registers the UUID service.
    *
-   * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
-   *   The container.
+   * @param \Drupal\Core\DependencyInjection\ContainerBuilder $container
+   *   The container builder.
    *
    * @return string
    *   Class name for the UUID service.
@@ -131,6 +126,9 @@ class CoreServiceProvider implements ServiceProviderInterface  {
 
   /**
    * Registers services and event subscribers for a site under test.
+   *
+   * @param \Drupal\Core\DependencyInjection\ContainerBuilder $container
+   *   The container builder.
    */
   protected function registerTest(ContainerBuilder $container) {
     // Do nothing if we are not in a test environment.

@@ -1,12 +1,11 @@
 <?php
-/**
- * @file
- * Contains \Drupal\serialization\Tests\EntityResolverTest.
- */
 
 namespace Drupal\serialization\Tests;
 
 use Drupal\Core\Url;
+use Drupal\entity_test\Entity\EntityTestMulRev;
+use Drupal\field\Entity\FieldConfig;
+use Drupal\field\Entity\FieldStorageConfig;
 
 /**
  * Tests that entities references can be resolved.
@@ -35,7 +34,7 @@ class EntityResolverTest extends NormalizerTestBase {
     \Drupal::service('router.builder')->rebuild();
 
     // Create the test field storage.
-    entity_create('field_storage_config', array(
+    FieldStorageConfig::create(array(
       'entity_type' => 'entity_test_mulrev',
       'field_name' => 'field_test_entity_reference',
       'type' => 'entity_reference',
@@ -45,11 +44,11 @@ class EntityResolverTest extends NormalizerTestBase {
     ))->save();
 
     // Create the test field.
-    entity_create('field_config', array(
+    FieldConfig::create([
       'entity_type' => 'entity_test_mulrev',
       'field_name' => 'field_test_entity_reference',
       'bundle' => 'entity_test_mulrev',
-    ))->save();
+    ])->save();
   }
 
   /**
@@ -57,7 +56,7 @@ class EntityResolverTest extends NormalizerTestBase {
    */
   function testUuidEntityResolver() {
     // Create an entity to get the UUID from.
-    $entity = entity_create('entity_test_mulrev', array('type' => 'entity_test_mulrev'));
+    $entity = EntityTestMulRev::create(array('type' => 'entity_test_mulrev'));
     $entity->set('name', 'foobar');
     $entity->set('field_test_entity_reference', array(array('target_id' => 1)));
     $entity->save();

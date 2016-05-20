@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\user\Tests\UserLoginTest.
- */
-
 namespace Drupal\user\Tests;
 
 use Drupal\simpletest\WebTestBase;
@@ -30,7 +25,7 @@ class UserLoginTest extends WebTestBase {
     $this->drupalGet('user/login', array('query' => array('destination' => 'foo')));
     $edit = array('name' => $user->getUserName(), 'pass' => $user->pass_raw);
     $this->drupalPostForm(NULL, $edit, t('Log in'));
-    $this->assertUrl('foo', [],  'Redirected to the correct URL');
+    $this->assertUrl('foo', [], 'Redirected to the correct URL');
   }
 
   /**

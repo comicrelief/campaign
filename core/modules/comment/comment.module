@@ -194,15 +194,15 @@ function comment_field_config_delete(FieldConfigInterface $field) {
 /**
  * Implements hook_node_links_alter().
  */
-function comment_node_links_alter(array &$node_links, NodeInterface $node, array &$context) {
+function comment_node_links_alter(array &$links, NodeInterface $node, array &$context) {
   // Comment links are only added to node entity type for backwards
   // compatibility. Should you require comment links for other entity types you
   // can do so by implementing a new field formatter.
   // @todo Make this configurable from the formatter. See
   //   https://www.drupal.org/node/1901110.
 
-  $links = \Drupal::service('comment.link_builder')->buildCommentedEntityLinks($node, $context);
-  $node_links += $links;
+  $comment_links = \Drupal::service('comment.link_builder')->buildCommentedEntityLinks($node, $context);
+  $links += $comment_links;
 }
 
 /**
@@ -244,9 +244,10 @@ function comment_node_view_alter(array &$build, EntityInterface $node, EntityVie
  *
  * @param \Drupal\comment\CommentInterface $comment
  *   The comment object.
- * @param $view_mode
- *   (optional) View mode; e.g., 'full', 'teaser', etc. Defaults to 'full'.
- * @param $langcode
+ * @param string $view_mode
+ *   (optional) View mode; for instance, 'full', 'teaser', etc. Defaults to
+ *   'full'.
+ * @param string $langcode
  *   (optional) A language code to use for rendering. Defaults to the global
  *   content language of the current request.
  *
@@ -263,11 +264,12 @@ function comment_view(CommentInterface $comment, $view_mode = 'full', $langcode 
 /**
  * Constructs render array from an array of loaded comments.
  *
- * @param $comments
+ * @param \Drupal\comment\CommentInterface[] $comments
  *   An array of comments as returned by entity_load_multiple().
- * @param $view_mode
- *   View mode; e.g., 'full', 'teaser', etc.
- * @param $langcode
+ * @param string $view_mode
+ *   (optional) View mode; for instance, 'full', 'teaser', etc. Defaults to
+ *   'full'.
+ * @param string $langcode
  *   (optional) A string indicating the language field values are to be shown
  *   in. If no language is provided the current content language is used.
  *   Defaults to NULL.
@@ -561,7 +563,7 @@ function comment_preview(CommentInterface $comment, FormStateInterface $form_sta
 
   if (!$form_state->getErrors()) {
     $comment->in_preview = TRUE;
-    $comment_build = comment_view($comment);
+    $comment_build = \Drupal::entityTypeManager()->getViewBuilder('comment')->view($comment);
     $comment_build['#weight'] = -100;
 
     $preview_build['comment_preview'] = $comment_build;
@@ -571,7 +573,7 @@ function comment_preview(CommentInterface $comment, FormStateInterface $form_sta
     $build = array();
     $parent = $comment->getParentComment();
     if ($parent && $parent->isPublished()) {
-      $build = comment_view($parent);
+      $build = \Drupal::entityTypeManager()->getViewBuilder('comment')->view($parent);
     }
   }
   else {
@@ -641,8 +643,8 @@ function template_preprocess_comment(&$variables) {
   }
 
   if (theme_get_setting('features.comment_user_picture')) {
-    // To change user picture settings (e.g., image style), edit the 'compact'
-    // view mode on the User entity.
+    // To change user picture settings (for instance, image style), edit the
+    // 'compact' view mode on the User entity.
     $variables['user_picture'] = user_view($account, 'compact');
   }
   else {

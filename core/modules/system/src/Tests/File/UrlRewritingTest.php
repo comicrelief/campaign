@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\system\Tests\File\UrlRewritingTest.
- */
-
 namespace Drupal\system\Tests\File;
 
 use Symfony\Component\HttpFoundation\Request;
@@ -27,7 +22,7 @@ class UrlRewritingTest extends FileTestBase {
    * Tests the rewriting of shipped file URLs by hook_file_url_alter().
    */
   function testShippedFileURL()  {
-    // Test generating an URL to a shipped file (i.e. a file that is part of
+    // Test generating a URL to a shipped file (i.e. a file that is part of
     // Drupal core, a module or a theme, for example a JavaScript file).
 
     // Test alteration of file URLs to use a CDN.
@@ -61,20 +56,20 @@ class UrlRewritingTest extends FileTestBase {
     \Drupal::state()->delete('file_test.hook_file_url_alter');
     $filepath = 'core/misc/favicon.ico';
     $url = file_create_url($filepath . '?foo');
-    $this->assertEqual($GLOBALS['base_url'] . '/' . $filepath . '?foo=', $url, 'Correctly generated url. The query string is present.');
+    $this->assertEqual($GLOBALS['base_url'] . '/' . $filepath . '?foo=', $url, 'Correctly generated URL. The query string is present.');
     $url = file_create_url($filepath . '?foo=bar');
-    $this->assertEqual($GLOBALS['base_url'] . '/' . $filepath . '?foo=bar', $url, 'Correctly generated url. The query string is present.');
+    $this->assertEqual($GLOBALS['base_url'] . '/' . $filepath . '?foo=bar', $url, 'Correctly generated URL. The query string is present.');
     $url = file_create_url($filepath . '#v1.2');
-    $this->assertEqual($GLOBALS['base_url'] . '/' . $filepath . '#v1.2', $url, 'Correctly generated url. The fragment is present.');
+    $this->assertEqual($GLOBALS['base_url'] . '/' . $filepath . '#v1.2', $url, 'Correctly generated URL. The fragment is present.');
     $url = file_create_url($filepath . '?foo=bar#v1.2');
-    $this->assertEqual($GLOBALS['base_url'] . '/' . $filepath . '?foo=bar#v1.2', $url, 'Correctly generated url. The query string amd fragment is present.');
+    $this->assertEqual($GLOBALS['base_url'] . '/' . $filepath . '?foo=bar#v1.2', $url, 'Correctly generated URL. The query string amd fragment is present.');
   }
 
   /**
    * Tests the rewriting of public managed file URLs by hook_file_url_alter().
    */
   function testPublicManagedFileURL() {
-    // Test generating an URL to a managed file.
+    // Test generating a URL to a managed file.
 
     // Test alteration of file URLs to use a CDN.
     \Drupal::state()->set('file_test.hook_file_url_alter', 'cdn');

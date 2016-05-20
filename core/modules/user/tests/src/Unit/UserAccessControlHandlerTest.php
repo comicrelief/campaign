@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\user\Unit\UserAccessControlHandlerTest.
- */
-
 namespace Drupal\Tests\user\Unit;
 
 use Drupal\Core\Access\AccessResult;
@@ -61,7 +56,7 @@ class UserAccessControlHandlerTest extends UnitTestCase {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  protected function setUp() {
     parent::setUp();
 
     $cache_contexts_manager = $this->prophesize(CacheContextsManager::class);

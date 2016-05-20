@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\options\Plugin\Field\FieldType\ListItemBase.
- */
-
 namespace Drupal\options\Plugin\Field\FieldType;
 
 use Drupal\Core\Field\AllowedTagsXssTrait;
@@ -252,7 +247,7 @@ abstract class ListItemBase extends FieldItemBase implements OptionsProviderInte
   }
 
   /**
-   * @inheritdoc.
+   * {@inheritdoc}
    */
   public static function storageSettingsToConfigData(array $settings) {
     if (isset($settings['allowed_values'])) {
@@ -262,7 +257,7 @@ abstract class ListItemBase extends FieldItemBase implements OptionsProviderInte
   }
 
   /**
-   * @inheritdoc.
+   * {@inheritdoc}
    */
   public static function storageSettingsFromConfigData(array $settings) {
     if (isset($settings['allowed_values'])) {

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\image\Unit\ImageStyleTest.
- */
-
 namespace Drupal\Tests\image\Unit;
 
 use Drupal\Tests\UnitTestCase;
@@ -90,7 +85,7 @@ class ImageStyleTest extends UnitTestCase {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  protected function setUp() {
     $this->entityTypeId = $this->randomMachineName();
     $this->provider = $this->randomMachineName();
     $this->entityType = $this->getMock('\Drupal\Core\Entity\EntityTypeInterface');

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\node\Tests\NodeViewLanguageTest.
- */
-
 namespace Drupal\node\Tests;
 
 use Drupal\language\Entity\ConfigurableLanguage;
@@ -39,7 +34,7 @@ class NodeViewLanguageTest extends NodeTestBase {
     $node = $this->drupalCreateNode(array('langcode' => 'es'));
 
     $this->drupalGet($node->urlInfo());
-    $this->assertText('Spanish','The language field is displayed properly.');
+    $this->assertText('Spanish', 'The language field is displayed properly.');
   }
 
 }

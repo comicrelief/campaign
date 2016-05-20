@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\views_ui\ViewUI.
- */
-
 namespace Drupal\views_ui;
 
 use Drupal\Component\Utility\Html;
@@ -12,7 +7,6 @@ use Drupal\Component\Utility\Timer;
 use Drupal\Component\Utility\Xss;
 use Drupal\Core\EventSubscriber\AjaxResponseSubscriber;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Url;
 use Drupal\views\Views;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\views\ViewExecutable;
@@ -45,25 +39,11 @@ class ViewUI implements ViewEntityInterface {
   public $changed_display;
 
   /**
-   * How long the view takes to build.
+   * How long the view takes to render in microseconds.
    *
-   * @var int
-   */
-  public $build_time;
-
-  /**
-   * How long the view takes to render.
-   *
-   * @var int
+   * @var float
    */
   public $render_time;
-
-  /**
-   * How long the view takes to execute.
-   *
-   * @var int
-   */
-  public $execute_time;
 
   /**
    * If this view is locked for editing.
@@ -309,11 +289,6 @@ class ViewUI implements ViewEntityInterface {
       $names = array(t('Apply'), t('Apply and continue'));
     }
 
-    // Views provides its own custom handling of AJAX form submissions. Usually
-    // this happens at the same path, but custom paths may be specified in
-    // $form_state.
-    $form_url = $form_state->get('url') ?: Url::fromRouteMatch(\Drupal::routeMatch());
-
     // Forms that are purely informational set an ok_button flag, so we know not
     // to create an "Apply" button for them.
     if (!$form_state->get('ok_button')) {
@@ -328,9 +303,6 @@ class ViewUI implements ViewEntityInterface {
         // take care of running the regular submit handler as appropriate.
         '#submit' => array(array($this, 'standardSubmit')),
         '#button_type' => 'primary',
-        '#ajax' => array(
-          'url' => $form_url,
-        ),
       );
       // Form API button click detection requires the button's #value to be the
       // same between the form build of the initial page request, and the
@@ -356,9 +328,6 @@ class ViewUI implements ViewEntityInterface {
       '#value' => !$form_state->get('ok_button') ? t('Cancel') : t('Ok'),
       '#submit' => array($cancel_submit),
       '#validate' => array(),
-      '#ajax' => array(
-        'path' => $form_url,
-      ),
       '#limit_validation_errors' => array(),
     );
 
@@ -636,12 +605,15 @@ class ViewUI implements ViewEntityInterface {
         $this->endQueryCapture();
       }
 
-      $this->render_time = Timer::stop('entity.view.preview_form');
+      $this->render_time = Timer::stop('entity.view.preview_form')['time'];
 
       views_ui_contextual_links_suppress_pop();
 
       // Prepare the query information and statistics to show either above or
       // below the view preview.
+      // Initialise the empty rows arrays so we can safely merge them later.
+      $rows['query'] = [];
+      $rows['statistics'] = [];
       if ($show_info || $show_query || $show_stats) {
         // Get information from the preview for display.
         if (!empty($executable->build_info['query'])) {
@@ -769,7 +741,7 @@ class ViewUI implements ViewEntityInterface {
                   '#template' => "<strong>{% trans 'View render time' %}</strong>",
                 ),
               ),
-              t('@time ms', array('@time' => intval($executable->render_time * 100000) / 100)),
+              t('@time ms', array('@time' => intval($this->render_time * 100) / 100)),
             );
           }
           \Drupal::moduleHandler()->alter('views_preview_info', $rows, $executable);
@@ -818,7 +790,7 @@ class ViewUI implements ViewEntityInterface {
           drupal_set_message($error, 'error');
         }
       }
-      $preview = t('Unable to preview due to validation errors.');
+      $preview = ['#markup' => t('Unable to preview due to validation errors.')];
     }
 
     // Assemble the preview, the query info, and the query statistics in the
@@ -827,26 +799,16 @@ class ViewUI implements ViewEntityInterface {
       '#type' => 'table',
       '#prefix' => '<div class="views-query-info">',
       '#suffix' => '</div>',
+      '#rows' => array_merge($rows['query'], $rows['statistics']),
     );
-    if ($show_location === 'above' || $show_location === 'below') {
-      if ($combined) {
-        $table['#rows'] = array_merge($rows['query'], $rows['statistics']);
-      }
-      else {
-        $table['#rows'] = $rows['query'];
-      }
-    }
-    elseif ($show_stats === 'above' || $show_stats === 'below') {
-      $table['#rows'] = $rows['statistics'];
-    }
 
-    if ($show_location === 'above' || $show_stats === 'above') {
+    if ($show_location == 'above') {
       $output = [
         'table' => $table,
         'preview' => $preview,
       ];
     }
-    elseif ($show_location === 'below' || $show_stats === 'below') {
+    else {
       $output = [
         'preview' => $preview,
         'table' => $table,

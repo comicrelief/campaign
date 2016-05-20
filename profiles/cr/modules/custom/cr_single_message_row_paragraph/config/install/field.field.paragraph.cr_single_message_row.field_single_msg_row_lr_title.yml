@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_single_msg_row_lr_title
+    - paragraphs.paragraphs_type.cr_single_message_row
+id: paragraph.cr_single_message_row.field_single_msg_row_lr_title
+field_name: field_single_msg_row_lr_title
+entity_type: paragraph
+bundle: cr_single_message_row
+label: Title
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

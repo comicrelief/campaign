@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\system\Tests\Render\Element\TableTest.
- */
-
 namespace Drupal\system\Tests\Render\Element;
 
 use Drupal\simpletest\KernelTestBase;
@@ -29,7 +24,6 @@ class TableTest extends KernelTestBase {
   protected function setUp() {
     parent::setUp();
 
-    $this->installSchema('system', 'router');
     \Drupal::service('router.builder')->rebuild();
   }
 
@@ -38,7 +32,7 @@ class TableTest extends KernelTestBase {
    */
   function testThemeTableStickyHeaders() {
     $header = array('one', 'two', 'three');
-    $rows = array(array(1,2,3), array(4,5,6), array(7,8,9));
+    $rows = array(array(1, 2, 3), array(4, 5, 6), array(7, 8, 9));
     $table = array(
       '#type' => 'table',
       '#header' => $header,
@@ -57,7 +51,7 @@ class TableTest extends KernelTestBase {
    */
   function testThemeTableNoStickyHeaders() {
     $header = array('one', 'two', 'three');
-    $rows = array(array(1,2,3), array(4,5,6), array(7,8,9));
+    $rows = array(array(1, 2, 3), array(4, 5, 6), array(7, 8, 9));
     $attributes = array();
     $caption = NULL;
     $colgroups = array();
@@ -98,7 +92,7 @@ class TableTest extends KernelTestBase {
 
     // Enable the Classy theme.
     \Drupal::service('theme_handler')->install(['classy']);
-    $this->config('system.theme')->set('default', 'classy')->save();
+    \Drupal::service('theme_handler')->setDefault('classy');
 
     $this->render($table);
     $this->removeWhiteSpace();
@@ -172,7 +166,7 @@ class TableTest extends KernelTestBase {
    */
   public function testThemeTableResponsive() {
     $header = array('one', 'two', 'three');
-    $rows = array(array(1,2,3), array(4,5,6), array(7,8,9));
+    $rows = array(array(1, 2, 3), array(4, 5, 6), array(7, 8, 9));
     $table = array(
       '#type' => 'table',
       '#header' => $header,
@@ -187,7 +181,7 @@ class TableTest extends KernelTestBase {
    * Tests that the 'responsive-table' class is not applied without headers.
    */
   public function testThemeTableNotResponsiveHeaders() {
-    $rows = array(array(1,2,3), array(4,5,6), array(7,8,9));
+    $rows = array(array(1, 2, 3), array(4, 5, 6), array(7, 8, 9));
     $table = array(
       '#type' => 'table',
       '#rows' => $rows,
@@ -202,7 +196,7 @@ class TableTest extends KernelTestBase {
    */
   public function testThemeTableNotResponsiveProperty() {
     $header = array('one', 'two', 'three');
-    $rows = array(array(1,2,3), array(4,5,6), array(7,8,9));
+    $rows = array(array(1, 2, 3), array(4, 5, 6), array(7, 8, 9));
     $table = array(
       '#type' => 'table',
       '#header' => $header,
@@ -260,7 +254,7 @@ class TableTest extends KernelTestBase {
         ),
       ),
     );
-    $rows = array(array(1,2,3), array(4,5,6), array(7,8,9));
+    $rows = array(array(1, 2, 3), array(4, 5, 6), array(7, 8, 9));
     $table = array(
       '#type' => 'table',
       '#header' => $header,

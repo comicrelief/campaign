@@ -1,14 +1,8 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\Menu\Plugin\Block\LocalActionsBlock.
- */
-
 namespace Drupal\Core\Menu\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
-use Drupal\Core\Cache\Cache;
 use Drupal\Core\Menu\LocalActionManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -84,18 +78,8 @@ class LocalActionsBlock extends BlockBase implements ContainerFactoryPluginInter
   public function build() {
     $route_name = $this->routeMatch->getRouteName();
     $local_actions = $this->localActionManager->getActionsForRoute($route_name);
-    if (empty($local_actions)) {
-      return [];
-    }
 
     return $local_actions;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getCacheContexts() {
-    return Cache::mergeContexts(parent::getCacheContexts(), ['route']);
   }
 
 }

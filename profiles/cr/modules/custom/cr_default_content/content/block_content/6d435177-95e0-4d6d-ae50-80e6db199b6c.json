@@ -1,0 +1,108 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/block\/5?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/block_content\/teaser"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/teaser\/field_teaser_image": [
+            {
+                "href": "http:\/\/default\/file\/3?_format=hal_json"
+            }
+        ]
+    },
+    "id": [
+        {
+            "value": "5"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "6d435177-95e0-4d6d-ae50-80e6db199b6c"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": "5"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "info": [
+        {
+            "value": "Fern britton speaks out about maternal mental health for sport relief",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "teaser"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1456421453",
+            "lang": "en"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<p>Fern Britton will share her experience of maternal mental health alongside other mums and dads from across the UK.<\/p>\r\n",
+            "format": "basic_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/teaser\/field_teaser_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/3?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "0ea86061-1ce8-4a17-9c01-1e6a5b1dee65"
+                    }
+                ],
+                "alt": "",
+                "title": "",
+                "width": "1170",
+                "height": "658"
+            }
+        ]
+    },
+    "field_teaser_link": [
+        {
+            "uri": "http:\/\/www.sportrelief.com\/whats-going-on\/fern-britton-speaks-out-about-maternal-mental-health-sport-relief",
+            "title": "Read more",
+            "options": []
+        }
+    ],
+    "field_teaser_title": [
+        {
+            "value": "Fern britton speaks out about maternal mental health for sport relief"
+        }
+    ]
+}

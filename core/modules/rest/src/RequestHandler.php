@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\rest\RequestHandler.
- */
-
 namespace Drupal\rest;
 
 use Drupal\Core\Render\RenderContext;
@@ -102,8 +97,8 @@ class RequestHandler implements ContainerAwareInterface {
       return new Response($content, $e->getStatusCode(), $headers);
     }
 
-    // Serialize the outgoing data for the response, if available.
-    if ($response instanceof ResourceResponse && $data = $response->getResponseData()) {
+    if ($response instanceof ResourceResponse) {
+      $data = $response->getResponseData();
       // Serialization can invoke rendering (e.g., generating URLs), but the
       // serialization API does not provide a mechanism to collect the
       // bubbleable metadata associated with that (e.g., language and other

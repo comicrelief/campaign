@@ -19,6 +19,8 @@
 
   CKEDITOR.plugins.add('drupalimage', {
     requires: 'image2',
+    icons: 'drupalimage',
+    hidpi: true,
 
     beforeInit: function (editor) {
       // Override the image2 widget definition to require and handle the
@@ -99,6 +101,32 @@
           data['data-entity-uuid'] = element.attributes['data-entity-uuid'];
 
           return element;
+        };
+
+        // Overrides default implementation. Used to populate the "classes"
+        // property of the widget's "data" property, which is used for the
+        // "widget styles" functionality
+        // (http://docs.ckeditor.com/#!/guide/dev_styles-section-widget-styles).
+        // Is applied to whatever the main element of the widget is (<figure> or
+        // <img>). The classes in image2_captionedClass are always added due to
+        // a bug in CKEditor. In the case of drupalimage, we don't ever want to
+        // add that class, because the widget template already contains it.
+        // @see http://dev.ckeditor.com/ticket/13888
+        // @see https://www.drupal.org/node/2268941
+        var originalGetClasses = widgetDefinition.getClasses;
+        widgetDefinition.getClasses = function () {
+          var classes = originalGetClasses.call(this);
+          var captionedClasses = (this.editor.config.image2_captionedClass || '').split(/\s+/);
+
+          if (captionedClasses.length && classes) {
+            for (var i = 0; i < captionedClasses.length; i++) {
+              if (captionedClasses[i] in classes) {
+                delete classes[captionedClasses[i]];
+              }
+            }
+          }
+
+          return classes;
         };
 
         // Protected; keys of the widget data to be sent to the Drupal dialog.
@@ -190,7 +218,7 @@
           // discovered.
           // @see plugins/image2/plugin.js/init() in CKEditor; this is similar.
           if (this.parts.link) {
-            this.setData('link', CKEDITOR.plugins.link.parseLinkAttributes(editor, this.parts.link));
+            this.setData('link', CKEDITOR.plugins.image2.getLinkAttributesParser()(editor, this.parts.link));
           }
         };
       });
@@ -227,7 +255,7 @@
       // the "image" command's CKEditor dialog with a Drupal-native dialog.
       editor.addCommand('editdrupalimage', {
         allowedContent: 'img[alt,!src,width,height,!data-entity-type,!data-entity-uuid]',
-        requiredContent: 'img[alt,src,width,height,data-entity-type,data-entity-uuid]',
+        requiredContent: 'img[alt,src,data-entity-type,data-entity-uuid]',
         modes: {wysiwyg: 1},
         canUndo: true,
         exec: function (editor, data) {
@@ -244,8 +272,7 @@
         editor.ui.addButton('DrupalImage', {
           label: Drupal.t('Image'),
           // Note that we use the original image2 command!
-          command: 'image',
-          icon: this.path + '/image.png'
+          command: 'image'
         });
       }
     },
@@ -255,6 +282,15 @@
     }
 
   });
+
+  // Override image2's integration with the official CKEditor link plugin:
+  // integrate with the drupallink plugin instead.
+  CKEDITOR.plugins.image2.getLinkAttributesParser = function () {
+    return CKEDITOR.plugins.drupallink.parseLinkAttributes;
+  };
+  CKEDITOR.plugins.image2.getLinkAttributesGetter = function () {
+    return CKEDITOR.plugins.drupallink.getLinkAttributes;
+  };
 
   /**
    * Integrates the drupalimage widget with the drupallink plugin.

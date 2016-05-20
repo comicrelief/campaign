@@ -87,12 +87,22 @@ color_hex:
 # Complex extended data types:
 
 # Root of a configuration object.
+
+_core_config_info:
+  type: mapping
+  mapping:
+    default_config_hash:
+      type: string
+      label: 'Default configuration hash'
+
 config_object:
   type: mapping
   mapping:
     langcode:
       type: string
       label: 'Language code'
+    _core:
+      type: _core_config_info
 
 # Mail text with subject and body parts.
 mail:
@@ -281,6 +291,8 @@ config_entity:
       label: 'Third party settings'
       sequence:
         type: '[%parent.%parent.%type].third_party.[%key]'
+    _core:
+      type: _core_config_info
 
 block_settings:
   type: mapping
@@ -593,10 +605,10 @@ field.field_settings.boolean:
   type: mapping
   mapping:
     on_label:
-      type: string
+      type: label
       label: 'On label'
     off_label:
-      type: string
+      type: label
       label: 'Off label'
 
 field.value.boolean:
@@ -783,6 +795,9 @@ entity_reference_selection:
     auto_create:
       type: boolean
       label: 'Create referenced entities if they don''t already exist'
+    auto_create_bundle:
+      type: string
+      label: 'Bundle assigned to the auto-created entities.'
 
 entity_reference_selection.*:
   type: entity_reference_selection

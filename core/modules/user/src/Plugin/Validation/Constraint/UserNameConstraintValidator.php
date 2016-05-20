@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\user\Plugin\Validation\Constraint\UserNameConstraintValidator.
- */
-
 namespace Drupal\user\Plugin\Validation\Constraint;
 
 use Drupal\Component\Utility\Unicode;
@@ -44,7 +39,7 @@ class UserNameConstraintValidator extends ConstraintValidator {
         '\x{FEFF}' .              // Byte order mark
         '\x{FF01}-\x{FF60}' .     // Full-width latin
         '\x{FFF9}-\x{FFFD}' .     // Replacement characters
-        '\x{0}-\x{1F}]/u',        // NULL byte and control characters
+        '\x{0}-\x{1F}]/u', // NULL byte and control characters
         $name)
     ) {
       $this->context->addViolation($constraint->illegalMessage);

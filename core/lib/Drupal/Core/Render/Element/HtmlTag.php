@@ -1,20 +1,33 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\Render\Element\HtmlTag.
- */
-
 namespace Drupal\Core\Render\Element;
 
+use Drupal\Component\Render\MarkupInterface;
 use Drupal\Component\Utility\Html as HtmlUtility;
-use Drupal\Component\Utility\SafeMarkup;
 use Drupal\Core\Render\Markup;
 use Drupal\Component\Utility\Xss;
 use Drupal\Core\Template\Attribute;
 
 /**
  * Provides a render element for any HTML tag, with properties and value.
+ *
+ * Properties:
+ * - #tag: The tag name to output.
+ * - #attributes: (array, optional) HTML attributes to apply to the tag. The
+ *   attributes are escaped, see \Drupal\Core\Template\Attribute.
+ * - #value: (string, optional) A string containing the textual contents of
+ *   the tag.
+ * - #noscript: (bool, optional) When set to TRUE, the markup
+ *   (including any prefix or suffix) will be wrapped in a <noscript> element.
+ *
+ * Usage example:
+ * @code
+ * $build['hello'] = [
+ *   '#type' => 'html_tag',
+ *   '#tag' => 'p',
+ *   '#value' => $this->t('Hello World'),
+ * ];
+ * @endcode
  *
  * @RenderElement("html_tag")
  */
@@ -79,7 +92,7 @@ class HtmlTag extends RenderElement {
     // Construct all other elements.
     else {
       $markup .= '>';
-      $markup .= SafeMarkup::isSafe($element['#value']) ? $element['#value'] : Xss::filterAdmin($element['#value']);
+      $markup .= $element['#value'] instanceof MarkupInterface ? $element['#value'] : Xss::filterAdmin($element['#value']);
       $markup .= '</' . $escaped_tag . ">\n";
     }
     if (!empty($element['#noscript'])) {
@@ -147,17 +160,17 @@ class HtmlTag extends RenderElement {
     // conditional comment markup. The conditional comment expression is
     // evaluated by Internet Explorer only. To control the rendering by other
     // browsers, use either the "downlevel-hidden" or "downlevel-revealed"
-    // technique. See http://en.wikipedia.org/wiki/Conditional_comment
+    // technique. See http://wikipedia.org/wiki/Conditional_comment
     // for details.
 
     // Ensure what we are dealing with is safe.
     // This would be done later anyway in drupal_render().
     $prefix = isset($element['#prefix']) ? $element['#prefix'] : '';
-    if ($prefix && !SafeMarkup::isSafe($prefix)) {
+    if ($prefix && !($prefix instanceof MarkupInterface)) {
       $prefix = Xss::filterAdmin($prefix);
     }
     $suffix = isset($element['#suffix']) ? $element['#suffix'] : '';
-    if ($suffix && !SafeMarkup::isSafe($suffix)) {
+    if ($suffix && !($suffix instanceof MarkupInterface)) {
       $suffix = Xss::filterAdmin($suffix);
     }
 

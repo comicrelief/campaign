@@ -1,12 +1,8 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\page_cache\Tests\PageCacheTagsIntegrationTest.
- */
-
 namespace Drupal\page_cache\Tests;
 
+use Drupal\Core\EventSubscriber\MainContentViewSubscriber;
 use Drupal\Core\Language\LanguageInterface;
 use Drupal\simpletest\WebTestBase;
 use Drupal\system\Tests\Cache\AssertPageCacheContextsAndTagsTrait;
@@ -77,7 +73,8 @@ class PageCacheTagsIntegrationTest extends WebTestBase {
       'user',
       // The placed block is only visible on certain URLs through a visibility
       // condition.
-      'url',
+      'url.path',
+      'url.query_args:' . MainContentViewSubscriber::WRAPPER_FORMAT,
     ];
 
     // Full node page 1.
@@ -105,6 +102,7 @@ class PageCacheTagsIntegrationTest extends WebTestBase {
       'user:0',
       'user:' . $author_1->id(),
       'config:filter.format.basic_html',
+      'config:color.theme.bartik',
       'config:search.settings',
       'config:system.menu.account',
       'config:system.menu.tools',
@@ -142,6 +140,7 @@ class PageCacheTagsIntegrationTest extends WebTestBase {
       'node_view',
       'node:' . $node_2->id(),
       'user:' . $author_2->id(),
+      'config:color.theme.bartik',
       'config:filter.format.full_html',
       'config:search.settings',
       'config:system.menu.account',

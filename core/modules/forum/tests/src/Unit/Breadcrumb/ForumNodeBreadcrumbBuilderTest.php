@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\forum\Unit\Breadcrumb\ForumNodeBreadcrumbBuilderTest.
- */
-
 namespace Drupal\Tests\forum\Unit\Breadcrumb;
 
 use Drupal\Core\Cache\Cache;
@@ -21,7 +16,7 @@ class ForumNodeBreadcrumbBuilderTest extends UnitTestCase {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  protected function setUp() {
     parent::setUp();
 
     $cache_contexts_manager = $this->getMockBuilder('Drupal\Core\Cache\Context\CacheContextsManager')

@@ -3,7 +3,7 @@
  * Attaches the behaviors for the Color module.
  */
 
-(function ($) {
+(function ($, Drupal) {
 
   'use strict';
 
@@ -247,7 +247,7 @@
           var i = inputs.length;
           if (inputs.length) {
             var toggleClick = true;
-            var lock = $('<button class="color-palette__lock link">' + Drupal.t('Unlock') + '</button>').on('click', function (e) {
+            var lock = $('<button class="color-palette__lock">' + Drupal.t('Unlock') + '</button>').on('click', function (e) {
               e.preventDefault();
               if (toggleClick) {
                 $(this).addClass('is-unlocked').html(Drupal.t('Lock'));
@@ -294,4 +294,4 @@
     }
   };
 
-})(jQuery);
+})(jQuery, Drupal);

@@ -1,0 +1,206 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/whats-going-on\/look-what-you-ve-helped-to-achieve-since-2007?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/article"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_image": [
+            {
+                "href": "http:\/\/default\/file\/9?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_tags": [
+            {
+                "href": "http:\/\/default\/taxonomy\/term\/5?_format=hal_json"
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": "14"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "16930d8b-e414-4a2c-8d01-1d8174b30b21"
+        }
+    ],
+    "vid": [
+        {
+            "value": "14"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "article"
+        }
+    ],
+    "title": [
+        {
+            "value": "Look what you\u2019ve helped to achieve since 2007",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "ae1f300e-a034-4ed9-a78d-b52d9d2361d0"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "ae1f300e-a034-4ed9-a78d-b52d9d2361d0"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/9?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "7c00d3a7-5e40-426f-bf0d-132c8e094467"
+                    }
+                ],
+                "lang": "en",
+                "alt": "Look what you\u2019ve helped to achieve since 2007",
+                "title": "",
+                "width": "2340",
+                "height": "1316"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_tags": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/taxonomy\/term\/5?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/tags"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "516211fd-000b-4c60-a222-34565563ae59"
+                    }
+                ]
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1455021005",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1455021518",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1455021472"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<p>Your fundraising and donations have helped to us to provide thousands of life-saving mosquito nets and anti-malarial drugs. Things are changing, because #thisstuffworks<\/p>\r\n\r\n<p class=\"type--centred\"><a class=\"btn btn-red\" href=\"\/get-involved\">Get involved<\/a><\/p>\r\n",
+            "format": "full_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ],
+    "field_article_publish_date": [
+        {
+            "value": "2016-02-09"
+        }
+    ],
+    "field_youtube_url": [
+        {
+            "input": "https:\/\/youtu.be\/Z_JIJd0E23g",
+            "video_id": "Z_JIJd0E23g"
+        }
+    ]
+}

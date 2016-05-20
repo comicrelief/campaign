@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\Field\FieldTypePluginManager.
- */
-
 namespace Drupal\Core\Field;
 
 use Drupal\Component\Plugin\Factory\DefaultFactory;
@@ -156,7 +151,7 @@ class FieldTypePluginManager extends DefaultPluginManager implements FieldTypePl
   }
 
   /**
-   * @inheritdoc
+   * {@inheritdoc}
    */
   public function getPluginClass($type) {
     $plugin_definition = $this->getDefinition($type, FALSE);

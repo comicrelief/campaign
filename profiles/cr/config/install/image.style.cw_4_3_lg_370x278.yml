@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: cw_4_3_lg_370x278
+label: 'CW 4:3 LG 370x278'
+effects:
+  84bee7e9-6d89-4e13-b306-6e807c915697:
+    uuid: 84bee7e9-6d89-4e13-b306-6e807c915697
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 370
+      height: 278

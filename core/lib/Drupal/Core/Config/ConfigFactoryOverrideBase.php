@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\Config\ConfigFactoryOverrideBase.
- */
-
 namespace Drupal\Core\Config;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -18,7 +13,7 @@ abstract class ConfigFactoryOverrideBase implements EventSubscriberInterface {
    * Reacts to the ConfigEvents::COLLECTION_INFO event.
    *
    * @param \Drupal\Core\Config\ConfigCollectionInfo $collection_info
-   *   The configuration collection names event.
+   *   The configuration collection info event.
    */
   abstract public function addCollections(ConfigCollectionInfo $collection_info);
 

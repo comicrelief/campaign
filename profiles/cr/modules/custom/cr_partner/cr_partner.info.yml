@@ -1,0 +1,35 @@
+name: cr_partner
+type: module
+core: 8.x
+description: 'Defines a Partner content type.'
+package: Comic Relief
+
+dependencies:
+  - field
+  - text
+  - options
+  - image
+  - file
+  - views
+  - taxonomy
+
+config_devel:
+  - node.type.partner
+  - core.base_field_override.node.partner.promote
+  - core.entity_form_display.node.partner.default
+  - core.entity_view_display.node.partner.default
+  - core.entity_view_display.node.partner.full
+  - core.entity_view_display.node.partner.teaser
+  - core.base_field_override.node.partner.title
+  - field.field.node.partner.body
+  - field.field.node.partner.field_partner_image
+  - field.field.node.partner.field_partner_category
+  - field.field.node.partner.field_partner_website
+  - field.field.node.partner.field_partner_logo
+  - field.storage.node.field_partner_image
+  - field.storage.node.field_partner_category
+  - field.storage.node.field_partner_website
+  - field.storage.node.field_partner_logo
+  - taxonomy.vocabulary.partner_category
+  - views.view.partners
+  - pathauto.pattern.partners

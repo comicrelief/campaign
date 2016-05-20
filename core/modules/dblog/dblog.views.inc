@@ -35,9 +35,6 @@ function dblog_views_data() {
     'sort' => array(
       'id' => 'standard',
     ),
-    'search' => array(
-      'id' => 'standard',
-    ),
   );
 
   $data['watchdog']['uid'] = array(
@@ -52,9 +49,6 @@ function dblog_views_data() {
     'argument' => array(
       'id' => 'numeric',
     ),
-    'search' => array(
-      'id' => 'standard',
-    ),
     'relationship' => array(
       'title' => t('User'),
       'help' => t('The user on which the log entry as written.'),
@@ -66,7 +60,7 @@ function dblog_views_data() {
 
   $data['watchdog']['type'] = array(
     'title' => t('Type'),
-    'help' => t('The of the log entry, for example "user" or "page not found.".'),
+    'help' => t('The type of the log entry, for example "user" or "page not found".'),
     'field' => array(
       'id' => 'standard',
     ),

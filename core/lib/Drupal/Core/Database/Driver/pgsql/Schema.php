@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\Database\Driver\pgsql\Schema.
- */
-
 namespace Drupal\Core\Database\Driver\pgsql;
 
 use Drupal\Component\Utility\Unicode;
@@ -39,7 +34,7 @@ class Schema extends DatabaseSchema {
    * Value will usually be set to a 63 chars limit but PostgreSQL allows
    * to higher this value before compiling, so we need to check for that.
    *
-   * @var integer
+   * @var int
    */
   protected $maxIdentifierLength;
 

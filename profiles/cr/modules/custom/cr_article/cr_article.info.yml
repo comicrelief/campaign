@@ -1,0 +1,51 @@
+name: News article
+type: module
+description: 'Defines a News article content type.'
+package: Comic Relief
+# version: VERSION
+core: 8.x
+dependencies:
+  - field
+  - datetime
+  - text
+  - options
+  - image
+  - file
+  - views
+  - taxonomy
+  - youtube
+  - metatag
+  - pathauto
+  - panelizer
+  - responsive_image
+  - ds
+  - rdf
+  - menu_ui
+  - filter
+
+config_devel:
+  - taxonomy.vocabulary.tags
+  - node.type.article
+  - core.entity_form_display.node.article.default
+  - core.entity_view_display.node.article.default
+  - core.entity_view_display.node.article.full
+  - core.entity_view_display.node.article.teaser
+  - field.field.node.article.body
+  - field.field.node.article.field_article_intro
+  - field.storage.node.field_article_intro
+  - field.field.node.article.field_article_tags
+  - field.storage.node.field_article_tags
+  - field.field.node.article.field_article_publish_date
+  - field.storage.node.field_article_publish_date
+  - field.field.node.article.field_article_image
+  - field.storage.node.field_article_image
+  - field.field.node.article.field_article_meta_tags
+  - field.storage.node.field_article_meta_tags
+  - field.field.node.article.field_youtube_url
+  - field.storage.node.field_youtube_url
+  - views.view.related_news
+  - views.view.what_s_going_on
+  - pathauto.pattern.article
+  - ds.field.related_news
+  - rdf.mapping.node.article
+  - rdf.mapping.taxonomy_term.tags

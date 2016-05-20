@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * Content Wall module adds site functionality.
+ */
+
+use Drupal\Core\Entity\FieldableEntityInterface;
+use Drupal\Core\Field\FieldStorageDefinitionInterface;
+
+/**
+ * Options callback for field_cw_view_mode.
+ *
+ * @see options_allowed_values()
+ */
+function cr_content_wall_field_cw_view_mode(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
+  $values = [
+    'cw_1col_l' => t('1 Col - L'),
+    'cw_2col_m_m' => t('2 Col - M + M'),
+    'cw_2col_s_m' => t('2 Col - S + M'),
+    'cw_2col_m_s' => t('2 Col - M + S'),
+    'cw_3col_s_s_s' => t('3 Col - S + S + S'),
+  ];
+  return $values;
+}

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\block\Tests\Views\DisplayBlockTest.
- */
-
 namespace Drupal\block\Tests\Views;
 
 use Drupal\Component\Serialization\Json;
@@ -145,7 +140,7 @@ class DisplayBlockTest extends ViewTestBase {
     $this->assertBlockAppears($block_3);
     $this->assertBlockAppears($block_4);
 
-    $block_storage = $this->container->get('entity.manager')->getStorage('block');
+    $block_storage = $this->container->get('entity_type.manager')->getStorage('block');
 
     // Remove the block display, so both block entities from the first view
     // should both disappear.
@@ -192,7 +187,7 @@ class DisplayBlockTest extends ViewTestBase {
     $this->assertNoFieldById('edit-machine-name', 'views_block__test_view_block_1', 'The machine name is hidden on the views block form.');
     // Save the block.
     $this->drupalPostForm(NULL, array(), t('Save block'));
-    $storage = $this->container->get('entity.manager')->getStorage('block');
+    $storage = $this->container->get('entity_type.manager')->getStorage('block');
     $block = $storage->load('views_block__test_view_block_block_1');
     // This will only return a result if our new block has been created with the
     // expected machine name.
@@ -265,7 +260,7 @@ class DisplayBlockTest extends ViewTestBase {
     $result = $this->xpath('//div[contains(@class, "region-sidebar-first")]/div[contains(@class, "block-views")]/h2');
     $this->assertTrue(empty($result), 'The title is not visible.');
 
-    $this->assertCacheTags(array_merge($block->getCacheTags(), ['block_view', 'config:block_list', 'config:system.site', 'config:views.view.test_view_block' ,'rendered']));
+    $this->assertCacheTags(array_merge($block->getCacheTags(), ['block_view', 'config:block_list', 'config:system.site', 'config:views.view.test_view_block' , 'rendered']));
   }
 
   /**
@@ -291,7 +286,7 @@ class DisplayBlockTest extends ViewTestBase {
     $this->assertEqual(0, count($this->xpath('//div[contains(@class, "block-views-blocktest-view-block-block-1")]')));
     // Ensure that the view cachability metadata is propagated even, for an
     // empty block.
-    $this->assertCacheTags(array_merge($block->getCacheTags(), ['block_view', 'config:block_list', 'config:views.view.test_view_block' ,'rendered']));
+    $this->assertCacheTags(array_merge($block->getCacheTags(), ['block_view', 'config:block_list', 'config:views.view.test_view_block' , 'rendered']));
     $this->assertCacheContexts(['url.query_args:_wrapper_format']);
 
     // Add a header displayed on empty result.
@@ -309,7 +304,7 @@ class DisplayBlockTest extends ViewTestBase {
 
     $this->drupalGet($url);
     $this->assertEqual(1, count($this->xpath('//div[contains(@class, "block-views-blocktest-view-block-block-1")]')));
-    $this->assertCacheTags(array_merge($block->getCacheTags(), ['block_view', 'config:block_list', 'config:views.view.test_view_block' ,'rendered']));
+    $this->assertCacheTags(array_merge($block->getCacheTags(), ['block_view', 'config:block_list', 'config:views.view.test_view_block' , 'rendered']));
     $this->assertCacheContexts(['url.query_args:_wrapper_format']);
 
     // Hide the header on empty results.
@@ -327,7 +322,7 @@ class DisplayBlockTest extends ViewTestBase {
 
     $this->drupalGet($url);
     $this->assertEqual(0, count($this->xpath('//div[contains(@class, "block-views-blocktest-view-block-block-1")]')));
-    $this->assertCacheTags(array_merge($block->getCacheTags(), ['block_view', 'config:block_list', 'config:views.view.test_view_block' ,'rendered']));
+    $this->assertCacheTags(array_merge($block->getCacheTags(), ['block_view', 'config:block_list', 'config:views.view.test_view_block' , 'rendered']));
     $this->assertCacheContexts(['url.query_args:_wrapper_format']);
 
     // Add an empty text.
@@ -344,7 +339,7 @@ class DisplayBlockTest extends ViewTestBase {
 
     $this->drupalGet($url);
     $this->assertEqual(1, count($this->xpath('//div[contains(@class, "block-views-blocktest-view-block-block-1")]')));
-    $this->assertCacheTags(array_merge($block->getCacheTags(), ['block_view', 'config:block_list', 'config:views.view.test_view_block' ,'rendered']));
+    $this->assertCacheTags(array_merge($block->getCacheTags(), ['block_view', 'config:block_list', 'config:views.view.test_view_block' , 'rendered']));
     $this->assertCacheContexts(['url.query_args:_wrapper_format']);
   }
 

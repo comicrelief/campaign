@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\block\Tests\BlockUiTest.
- */
-
 namespace Drupal\block\Tests;
 
 use Drupal\Component\Utility\Html;
@@ -241,6 +236,7 @@ class BlockUiTest extends WebTestBase {
 
     $this->drupalGet('');
     $this->assertText('Test context-aware block');
+    $this->assertText('User context found.');
     $this->assertRaw($expected_text);
 
     // Test context mapping allows empty selection for optional contexts.
@@ -251,6 +247,7 @@ class BlockUiTest extends WebTestBase {
     $this->drupalPostForm(NULL, $edit, 'Save block');
     $this->drupalGet('');
     $this->assertText('No context mapping selected.');
+    $this->assertNoText('User context found.');
   }
 
   /**

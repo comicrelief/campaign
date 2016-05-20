@@ -1,0 +1,4 @@
+administer youtube:
+  title: 'Administer Youtube fields'
+  description: 'Administer access to module'
+  restrict access: true

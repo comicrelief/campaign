@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\views\Plugin\views\area\Messages.
- */
-
 namespace Drupal\views\Plugin\views\area;
 
 /**
@@ -12,7 +7,7 @@ namespace Drupal\views\Plugin\views\area;
  *
  * @ingroup views_area_handlers
  *
- * @PluginID("messages")
+ * @ViewsArea("messages")
  */
 class Messages extends AreaPluginBase {
 

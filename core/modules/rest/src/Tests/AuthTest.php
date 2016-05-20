@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\rest\Tests\AuthTest.
- */
-
 namespace Drupal\rest\Tests;
 
 use Drupal\Core\Url;
@@ -74,7 +69,7 @@ class AuthTest extends RESTTestBase {
    * set curl settings for basic authentication.
    *
    * @param \Drupal\Core\Url $url
-   *   An Url object.
+   *   A Url object.
    * @param string $username
    *   The user name to authenticate with.
    * @param string $password

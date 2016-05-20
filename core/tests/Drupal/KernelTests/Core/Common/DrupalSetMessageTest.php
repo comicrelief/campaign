@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\KernelTests\Core\Common\DrupalSetMessageTest.
- */
-
 namespace Drupal\KernelTests\Core\Common;
 
 use Drupal\KernelTests\KernelTestBase;
@@ -25,7 +20,7 @@ class DrupalSetMessageTest extends KernelTestBase {
     $this->assertEquals('A message: bar', (string) $messages['status'][0]);
   }
 
-  public function tearDown() {
+  protected function tearDown() {
     // Clear session to prevent global leakage.
     unset($_SESSION['messages']);
     parent::tearDown();

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\locale\StringBase.
- */
-
 namespace Drupal\locale;
 
 /**
@@ -17,7 +12,7 @@ abstract class StringBase implements StringInterface {
   /**
    * The string identifier.
    *
-   * @var integer
+   * @var int
    */
   public $lid;
 

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\views\Tests\Plugin\CacheWebTest.
- */
-
 namespace Drupal\views\Tests\Plugin;
 
 use Drupal\system\Tests\Cache\AssertPageCacheContextsAndTagsTrait;
@@ -82,6 +77,17 @@ class CacheWebTest extends PluginTestBase {
     $this->assertResponse(200);
     $this->assertTrue($render_cache->get($cache_element));
     $this->assertCacheTags($cache_tags);
+  }
+
+  /**
+   * Tests that a display without caching still contains the cache metadata.
+   */
+  public function testDisplayWithoutCacheStillBubblesMetadata() {
+    $view = Views::getView('test_display');
+
+    $uncached_block = $view->buildRenderable('block_1', [], FALSE);
+    $cached_block = $view->buildRenderable('block_1', [], TRUE);
+    $this->assertEqual($uncached_block['#cache']['contexts'], $cached_block['#cache']['contexts'], 'Cache contexts are the same when you render the view cached and uncached.');
   }
 
 }

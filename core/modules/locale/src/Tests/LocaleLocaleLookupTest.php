@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\locale\Tests\LocaleLocaleLookupTest.
- */
-
 namespace Drupal\locale\Tests;
 
 use Drupal\language\Entity\ConfigurableLanguage;
@@ -27,7 +22,7 @@ class LocaleLocaleLookupTest extends WebTestBase {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  protected function setUp() {
     parent::setUp();
 
     // Change the language default object to different values.

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\Extension\ExtensionDiscovery.
- */
-
 namespace Drupal\Core\Extension;
 
 use Drupal\Component\FileCache\FileCacheFactory;
@@ -15,6 +10,20 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Discovers available extensions in the filesystem.
+ *
+ * To also discover test modules, add
+ * @code
+ * $settings['extension_discovery_scan_tests'] = TRUE;
+ * @encode
+ * to your settings.php.
+ *
+ * To add additional profile directories, add
+ * @code
+ * $settings['profile_directories'] = array(path);
+ * @encode
+ * to your settings.php.  If multiple paths are specified, they are searched
+ * from last to first.
+ *
  */
 class ExtensionDiscovery {
 
@@ -134,6 +143,12 @@ class ExtensionDiscovery {
    * - the site-wide directory; i.e., /
    * - the site-specific directory; e.g., /sites/example.com
    *
+   * To also find test modules, add
+   * @code
+   * $settings['extension_discovery_scan_tests'] = TRUE;
+   * @encode
+   * to your settings.php.
+   *
    * The information is returned in an associative array, keyed by the extension
    * name (without .info.yml extension). Extensions found later in the search
    * will take precedence over extensions found earlier - unless they are not
@@ -243,6 +258,11 @@ class ExtensionDiscovery {
     if ($profile) {
       $this->profileDirectories[] = drupal_get_path('profile', $profile);
     }
+
+    // Allow additional profile directories to be added from settings.php.
+    // This provides support for "base profiles".
+    $this->profileDirectories = array_merge(Settings::get('profile_directories', []), $this->profileDirectories);
+
     return $this;
   }
 
