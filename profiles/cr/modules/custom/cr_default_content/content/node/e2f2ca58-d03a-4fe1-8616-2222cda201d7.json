@@ -248,7 +248,7 @@
     ],
     "body": [
         {
-            "value": "<img alt=\"Title of the page\" data-align=\"center\" data-entity-type=\"file\" data-entity-uuid=\"9e570179-1e40-4420-9100-d8fc667c5d6f\" src=\"\/sites\/default\/files\/inline-images\/SR16_svg_title_promo_do_yourself_proud_v2_1.png\" \/>\r\n<p>What you do for Comic Relief is entirely up to you. Whatever it is, just have fun, raise cash and you'll do yourself proud.<\/p>\r\n\r\n<p><a class=\"btn btn--red\" href=\"#\">Download here<\/a><\/p>\r\n",
+            "value": "<p>What you do for Comic Relief is entirely up to you. Whatever it is, just have fun, raise cash and you'll do yourself proud.<\/p>\r\n\r\n<p><a class=\"btn btn--red\" href=\"#\">Download here<\/a><\/p>\r\n",
             "format": "full_html",
             "summary": "",
             "lang": "en"
