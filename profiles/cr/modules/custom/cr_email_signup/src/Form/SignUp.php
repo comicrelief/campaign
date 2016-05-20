@@ -63,6 +63,7 @@ class SignUp extends FormBase implements FormInterface {
    * Build the Form Elements.
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
+
     $form_state = $form_state;
 
     $form['steps'] = array(
@@ -117,7 +118,7 @@ class SignUp extends FormBase implements FormInterface {
     $email_valid = \Drupal::service('email.validator')->isValid($email_address);
 
     if (!empty($email_address) && $email_valid && empty($school_phase)) {
-      //$form_state->setErrorByName("school_phase", "Please enter the school phase");
+      // On to step 2. Nothing for now. 
     }
     else {
       // Not even sure this needs to be here?
@@ -140,8 +141,6 @@ class SignUp extends FormBase implements FormInterface {
       unset($form['steps']['email']);
       unset($form['steps']['school_phase']);
       unset($form['steps']['validate_email']);
-      // TODO: Set the front end message to display when complete/or remove.
-      drupal_set_message($this->t("Great! Now we know what's right for you"));
 
       // Queue the message with both email and school phase.
       $this->queueMessage(array(
@@ -150,7 +149,6 @@ class SignUp extends FormBase implements FormInterface {
       ));
     }
     elseif (!empty($email_address) && $email_valid && empty($school_phase)) {
-      //$form['steps']['school_phase']['#required'] = TRUE;
       // Queue the message with only the email available.
       $this->queueMessage(array(
         'emailAddress' => $email_address,
