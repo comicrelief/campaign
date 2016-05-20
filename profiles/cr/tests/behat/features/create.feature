@@ -29,14 +29,23 @@ Feature: Create
   #   # Then I should see "An amazing intro"
   #   # Then I should see "Amazing body copy"
 
-  @javascript
+  #@javascript
   @api
   Scenario: Create scheduled-update
     Given I am logged in as a user with the "editor" role
     When I go to "node/add/article"
     And I enter "article one" for "edit-title-0-value"
-    And we wait for "10000"
     And I click the "//div[@id='edit-publishing-date-actions']/input" element
-    And I wait for AJAX to finish
+    #Then I enter "20/07/2016" for "publishing_date[form][inline_entity_form][update_timestamp][0][value][date]"
+    #Then I press "Create Publishing Date"
+
+  #@javascript
+  # Scenario: Create scheduled-update
+  #   Given I am logged in as a user with the "editor" role
+  #   When I go to "node/add/article"
+  #   And I enter "article one" for "edit-title-0-value"
+  #   And we wait for "10000"
+  #   And I click the "//div[@id='edit-publishing-date-actions']/input" element
+  #   And I wait for AJAX to finish
     #Then I enter "20/07/2016" for "publishing_date[form][inline_entity_form][update_timestamp][0][value][date]"
     #Then I press "Create Publishing Date"

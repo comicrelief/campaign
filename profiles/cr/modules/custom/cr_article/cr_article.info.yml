@@ -51,3 +51,4 @@ config_devel:
   - rdf.mapping.taxonomy_term.tags
   - field.field.node.article.publishing_date
   - field.storage.node.publishing_date
+  - scheduled_updates.scheduled_update_type.node__status
