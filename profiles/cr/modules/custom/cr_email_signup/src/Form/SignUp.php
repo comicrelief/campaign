@@ -51,7 +51,7 @@ class SignUp extends FormBase implements FormInterface {
 
     // Add passed arguments.
     $queue_message = array_merge($this->skeletonMessage, $append_message);
-    file_put_contents("/tmp/message", var_export($queue_message, TRUE), FILE_APPEND);
+
     // TODO: Move to config/default.
     $queue_name = 'queue1';
     $queue_factory = \Drupal::service('queue');
@@ -117,7 +117,7 @@ class SignUp extends FormBase implements FormInterface {
     $email_valid = \Drupal::service('email.validator')->isValid($email_address);
 
     if (!empty($email_address) && $email_valid && empty($school_phase)) {
-      $form_state->setErrorByName("school_phase", "Please enter the school phase");
+      //$form_state->setErrorByName("school_phase", "Please enter the school phase");
     }
     else {
       // Not even sure this needs to be here?
@@ -150,7 +150,7 @@ class SignUp extends FormBase implements FormInterface {
       ));
     }
     elseif (!empty($email_address) && $email_valid && empty($school_phase)) {
-      $form['steps']['school_phase']['#required'] = TRUE;
+      //$form['steps']['school_phase']['#required'] = TRUE;
       // Queue the message with only the email available.
       $this->queueMessage(array(
         'emailAddress' => $email_address,
