@@ -58,7 +58,7 @@
   }
 }
 
-@include breakpoint($screen-lg) {
+@include breakpoint($screen-lg, $no-query: true) {
   /* General styles */
   .paragraph--cr-single-message-row {
     .paragraph--cr-single-message-row__image,
