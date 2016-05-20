@@ -58,4 +58,39 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
     }
   }
 
+  /**
+   * @Given I click on :arg1 elememnt
+   * @When I click on :arg1 button
+   *
+   */
+  public function iClickOnElementButton($locator)
+  {
+    $this->getSession()->getPage()->find('xpath', $locator)->click();
+  }
+
+  /**
+   * @When we wait for :arg1
+   *
+   */
+  public function weWaitFor($time)
+  {
+    $this->getSession()->wait($time);
+  }
+
+  /**
+   * @Given I click the :arg1 element
+   * @And I click the :arg1 element
+   *
+   */
+  public function iClickTheElement($selector)
+  {
+    $page = $this->getSession()->getPage();
+    $element = $page->find('xpath', $selector);
+
+    if (empty($element)) {
+      throw new Exception("No html element found with this selector ('$selector')");
+    }
+    $element->click();
+  }
+
 }
