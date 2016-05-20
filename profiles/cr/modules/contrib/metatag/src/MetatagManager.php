@@ -169,14 +169,14 @@ class MetatagManager implements MetatagManagerInterface {
   /**
    * {@inheritdoc}
    */
-  public function form(array $values, array $element, array $included_groups = NULL, array $included_tags = NULL) {
+  public function form(array $values, array $element, $token_types = NULL, array $included_groups = NULL, array $included_tags = NULL) {
 
     // Add the outer fieldset.
     $element += array(
       '#type' => 'details',
     );
 
-    $element += $this->tokenService->tokenBrowser();
+    $element += $this->tokenService->tokenBrowser($token_types);
 
     $groups_and_tags = $this->sortedGroupsWithTags();
 
@@ -222,23 +222,17 @@ class MetatagManager implements MetatagManagerInterface {
       // Get a list of the metatag field types.
       $field_types = $this->fieldTypes();
 
-      // Get a list of the fields on this entity.
-      $fields = $entity->getFields();
+      // Get a list of the field definitions on this entity.
+      $definitions = $entity->getFieldDefinitions();
 
       // Iterate through all the fields looking for ones in our list.
-      foreach ($fields as $key => $field) {
-        // Get the field definition which holds the type.
-        $field_info = $field->getFieldDefinition();
-
+      foreach ($definitions as $field_name => $definition) {
         // Get the field type, ie: metatag.
-        $field_type = $field_info->getType();
+        $field_type = $definition->getType();
 
         // Check the field type against our list of fields.
         if (isset($field_type) && in_array($field_type, $field_types)) {
-          // Get the machine name of the field.
-          $field_name = $field->getName();
-
-          $field_list[$field_name] = $field_info;
+          $field_list[$field_name] = $definition;
         }
       }
     }

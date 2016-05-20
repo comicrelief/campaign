@@ -99,7 +99,7 @@
 .cw-region {
   article.cw-article--small {
     @include span(12);
-    @include breakpoint($screen-md) {
+    @include breakpoint($screen-md, $no-query: true) {
       @include span(4);
     }
   }
@@ -107,7 +107,7 @@
 .cw-region {
   article.cw-article--medium {
     @include span(12);
-    @include breakpoint($screen-md) {
+    @include breakpoint($screen-md, $no-query: true) {
       @include span(6);
     }
   }
@@ -121,13 +121,13 @@
       margin: 0;
     }
     .cw-article__image {
-      @include breakpoint($screen-md) {
+      @include breakpoint($screen-md, $no-query: true) {
         @include span(8 no-gutter wide);
         margin-left: gutter();
       }
     }
     .cw-article__body {
-      @include breakpoint($screen-md) {
+      @include breakpoint($screen-md, $no-query: true) {
         @include span(4 no-gutter last);
         margin-right: gutter();
       }
