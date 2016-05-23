@@ -23,7 +23,11 @@
 		<h1 class="promo-header__title">{{ title }}</h1>
 		<div class="promo-header__content">
 			<div class="promo-header__content-inner {{ copy_position }}">
+				<div class="promo-header__svg-title">
+					{{ field_svg_body_title['#items'].value|raw }}
+				</div>
 				{{ body }}
+				}
 			</div>
 		</div>
 	</header>

@@ -19,6 +19,7 @@ config_devel:
   - field.storage.node.field_landing_image_mobile
   - field.storage.node.panelizer
   - field.field.node.landing.body
+  - field.field.node.landing.field_svg_body_title
   - field.field.node.landing.field_landing_background_colour
   - field.field.node.landing.field_landing_copy_position_alig
   - field.field.node.landing.field_landing_image
