@@ -1,6 +1,6 @@
 minified: 1
 headline_text: 'We use cookies. By continuing to use this site you are agreeing to our terms of use.'
-accept_button_text: 'Close'
+accept_button_text: Close
 read_more_button_text: 'terms of use.'
 theme: dark-bottom
 path: /
