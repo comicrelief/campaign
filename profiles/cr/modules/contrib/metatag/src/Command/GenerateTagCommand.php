@@ -67,6 +67,8 @@ class GenerateTagCommand extends GeneratorCommand {
         $this->trans('commands.generate.metatag.tag.options.weight'))
       ->addOption('type', '', InputOption::VALUE_REQUIRED,
         $this->trans('commands.generate.metatag.tag.options.type'))
+      ->addOption('secure', '', InputOption::VALUE_REQUIRED,
+        $this->trans('commands.generate.metatag.tag.options.secure'))
       ->addOption('multiple', '', InputOption::VALUE_REQUIRED,
         $this->trans('commands.generate.metatag.tag.options.multiple'))
       ;
@@ -93,6 +95,7 @@ class GenerateTagCommand extends GeneratorCommand {
     $group = $input->getOption('group');
     $weight = $input->getOption('weight');
     $type = $input->getOption('type');
+    $secure = $input->getOption('secure');
     $multiple = $input->getOption('multiple');
 
     // @see use Drupal\Console\Command\ServicesTrait::buildServices
@@ -100,7 +103,7 @@ class GenerateTagCommand extends GeneratorCommand {
 
     $this
       ->getGenerator()
-      ->generate($base_class, $module, $name, $label, $description, $plugin_id, $class_name, $group, $weight, $type, $multiple);
+      ->generate($base_class, $module, $name, $label, $description, $plugin_id, $class_name, $group, $weight, $type, $secure, $multiple);
 
     $this->getHelper('chain')->addCommand('cache:rebuild', ['cache' => 'discovery']);
   }
@@ -227,6 +230,18 @@ class GenerateTagCommand extends GeneratorCommand {
       );
     }
     $input->setOption('type', $type);
+
+    // --secure option.
+    // @todo Turn this into an option.
+    $secure = $input->getOption('secure');
+    if (is_null($secure)) {
+      $secure = $output->choice(
+        $this->trans('commands.generate.metatag.tag.questions.secure'),
+        $boolean_options,
+        0
+      );
+    }
+    $input->setOption('secure', $secure);
 
     // --multiple option.
     $multiple = $input->getOption('multiple');

@@ -26,8 +26,25 @@ class MetatagDefaultsForm extends EntityForm {
     $metatag_defaults = $this->entity;
     $metatag_manager = \Drupal::service('metatag.manager');
 
+    $form['#ajax_wrapper_id'] = 'metatag-defaults-form-ajax-wrapper';
+    $ajax = [
+      'wrapper' => $form['#ajax_wrapper_id'],
+      'callback' => '::rebuildForm'
+    ];
+    $form['#prefix'] = '<div id="' . $form['#ajax_wrapper_id'] . '">';
+    $form['#suffix'] = '</div>';
+
+    $default_type = NULL;
+    if ($form_state->has('default_type')) {
+      $default_type = $form_state->get('default_type');
+    } else {
+      $form_state->set('default_type', $default_type);
+    }
+
+    $token_types = empty($default_type) ? NULL : [explode('__', $default_type)[0]];
+
     // Add the token browser at the top.
-    $form += \Drupal::service('metatag.token')->tokenBrowser();
+    $form += \Drupal::service('metatag.token')->tokenBrowser($token_types);
 
     // If this is a new Metatag defaults, then list available bundles.
     if ($metatag_defaults->isNew()) {
@@ -38,7 +55,18 @@ class MetatagDefaultsForm extends EntityForm {
         '#description' => t('Select the type of default meta tags you would like to add.'),
         '#options' => $options,
         '#required' => TRUE,
+        '#default_value' => $default_type,
+        '#ajax' => $ajax + ['trigger_as' => ['name' => 'select_id_submit']]
       );
+      $form['select_id_submit'] = [
+        '#type' => 'submit',
+        '#value' => $this->t('Submit'),
+        '#name' => 'select_id_submit',
+        '#ajax' => $ajax,
+        '#attributes' => [
+          'class' => ['js-hide']
+        ]
+      ];
       $values = array();
     }
     else {
@@ -49,6 +77,33 @@ class MetatagDefaultsForm extends EntityForm {
     $form = $metatag_manager->form($values, $form);
 
     return $form;
+  }
+
+  /**
+   * Ajax form submit handler that will return the whole rebuilt form.
+   *
+   * @param array $form
+   *   An associative array containing the structure of the form.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The current state of the form.
+   *
+   * @return array
+   *   The form structure.
+   */
+  public function rebuildForm(array &$form, FormStateInterface $form_state) {
+    return $form;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function submitForm(array &$form, FormStateInterface $form_state) {
+    if ($form_state->getTriggeringElement()['#name'] == 'select_id_submit') {
+      $form_state->set('default_type', $form_state->getValue('id'));
+      $form_state->setRebuild();
+    } else {
+      parent::submitForm($form, $form_state);
+    }
   }
 
   /**

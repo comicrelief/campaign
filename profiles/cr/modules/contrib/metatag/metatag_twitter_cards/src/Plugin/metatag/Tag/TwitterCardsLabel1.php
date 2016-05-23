@@ -19,6 +19,7 @@ use \Drupal\metatag\Plugin\metatag\Tag\MetaPropertyBase;
  *   group = "twitter_cards",
  *   weight = 500,
  *   type = "string",
+ *   secure = FALSE,
  *   multiple = FALSE
  * )
  */

@@ -1,0 +1,52 @@
+cookieconsent:
+  version: 1.0.9
+  js:
+    js/cookieconsent.js: {}
+
+cookieconsent-min:
+  version: 1.0.9
+  js:
+    js/cookieconsent.min.js: {}
+
+settings:
+  version: 1.x
+  js:
+    js/cookieconsent.settings.js: {}
+  dependencies:
+      - core/drupalSettings
+
+dark-bottom:
+  version: 1.x
+  css:
+    theme:
+      css/dark-bottom.css: {}
+
+dark-floating:
+  version: 1.x
+  css:
+    theme:
+      css/dark-floating.css: {}
+
+dark-top:
+  version: 1.x
+  css:
+    theme:
+      css/dark-top.css: {}
+
+light-bottom:
+  version: 1.x
+  css:
+    theme:
+      css/light-bottom.css: {}
+
+light-floating:
+  version: 1.x
+  css:
+    theme:
+      css/light-floating.css: {}
+
+light-top:
+  version: 1.x
+  css:
+    theme:
+      css/light-top.css: {}

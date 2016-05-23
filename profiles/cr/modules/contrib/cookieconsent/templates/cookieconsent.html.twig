@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Default template for cookieconsent.
+ *
+ * Available variables:
+ * - dismiss : The text used on the dismiss button.
+ * - message : The message shown by the plugin.
+ * - target : The target of the link to your cookie policy. Use to open a link in a new window, or specific frame,
+              if you wish.
+ * - link : The url of your cookie policy. If it’s set to null, the link is hidden.
+ * - learn_more : The text shown on the link to the cookie policy (requires the link option to also be set)
+ *
+ * @ingroup themeable
+ */
+#}
+<div class="cc_banner cc_container cc_container--open">
+    <a href="#null" data-cc-event="click:dismiss" target="_blank" class="cc_btn cc_btn_accept_all">{{ dismiss }}</a>
+    <p class="cc_message">{{message}} <a data-cc-if="options.link" target="{{ target }}" class="cc_more_info" href="{{ link }}">{{ learn_more }}</a></p>
+    <a class="cc_logo" target="_blank" href="http://silktide.com/cookieconsent">Cookie Consent plugin for the EU cookie law</a>
+</div>

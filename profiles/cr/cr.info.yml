@@ -52,6 +52,7 @@ dependencies:
   - view_modes_display
   - social_links
   - focal_point
+  - cookieconsent
   #- simple_sitemap
 
   # Layout
@@ -195,3 +196,6 @@ config_devel:
   # Contributed modules
   - pathauto.pattern.basic_page
   - pathauto.settings
+
+  # Cookie consent
+  - cookieconsent.settings
