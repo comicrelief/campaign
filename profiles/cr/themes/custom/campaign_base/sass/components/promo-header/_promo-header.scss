@@ -112,6 +112,11 @@
     margin: 0 0 40px;
   }
 }
+.promo-header__svg-title {
+  svg {
+    width: 100%;
+  }
+}
 .promo-header__link {
   a {
     @include border-radius(30px);
