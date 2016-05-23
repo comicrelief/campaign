@@ -5,6 +5,9 @@
  */
 
 namespace Drupal\cr_eddirect_ws\Services;
+
+use Symfony\Component\Serializer\Serializer;
+
 /**
  * Implementation.
  */
@@ -69,12 +72,22 @@ class EdDirectService {
   private $cacheHandle;
 
   /**
+   * The serializer service.
+   *
+   * @var \Symfony\Component\Serializer\Serializer
+   */
+  protected $serializer;
+
+  /**
    * EdDirectService constructor.
    *
    * @param mixed $cache_handle
    *    The Cache Implementation.
    */
   public function __construct($cache_handle) {
+    if (!extension_loaded('soap')) {
+      die('SOAP extension not found.');
+    }
 
     $this->cacheHandle = $cache_handle;
   }
@@ -186,7 +199,9 @@ class EdDirectService {
       $soap_client = new \SoapClient($this->establishmentWsdl, $this->soapOptions);
       $soap_response = $soap_client->Search($search_options);
 
-      return $soap_response->SearchResult->Establishment;
+      $response = $soap_response->SearchResult->Establishment;
+
+      return $response;
     }
     catch (\SoapFault $e) {
       throw new \SoapFault($e->getCode(), $e->getMessage());
