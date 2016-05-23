@@ -1,0 +1,5 @@
+menu_attributes.settings:
+  title: Menu attributes settings
+  description: Change menu attribute settings
+  parent: system.admin_config_ui
+  route_name: menu_attributes.settings

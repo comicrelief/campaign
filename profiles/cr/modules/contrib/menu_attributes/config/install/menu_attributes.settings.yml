@@ -1,0 +1,18 @@
+attribute_enable:
+  title: true
+  id: true
+  name: true
+  rel: true
+  class: true
+  style: false
+  target: true
+  accesskey: true
+attribute_default:
+  title: ''
+  id: ''
+  name: ''
+  rel: ''
+  class: ''
+  style: ''
+  target: ''
+  accesskey: ''

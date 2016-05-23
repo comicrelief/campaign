@@ -1,0 +1,7 @@
+menu_attributes.settings:
+  path: '/admin/config/user-interface/menu-attributes'
+  defaults:
+    _title: Menu attributes
+    _form: '\Drupal\menu_attributes\Form\MenuAttributesSettingsForm'
+  requirements:
+    _permission: 'administer menu attributes'
