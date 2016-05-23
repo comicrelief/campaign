@@ -6,6 +6,7 @@
 // Import the compass helpers/mixins
 // Please utilize these as much as possible. They are very handy.
 // For more info please see: http://compass-style.org/reference/compass/
+@import "compass/support";
 @import "compass/reset";
 @import "compass/css3";
 @import "compass/utilities";
@@ -33,7 +34,7 @@ $icons: sprite-map("icons/*.png");
 // dependencies shouldn't be a problem.
 @import "variables/**/*";
 @import "base/**/*";
-@import "components/**/*";
 @import "layout/**/*";
+@import "components/**/*";
 @import "theme/**/*";
 

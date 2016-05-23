@@ -57,6 +57,9 @@ field.formatter.settings.file_download_link:
   type: mapping
   label: 'File download link display format settings'
   mapping:
+    access_message:
+      type: string
+      label: 'Access message'
     text:
       type: string
       label: 'Link text'

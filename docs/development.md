@@ -85,6 +85,22 @@ If you want to update the content or you added the uuid manually in `cr_default_
 	phing content:export
 	
 ### Front End
+
+#### Grunt Tasks
+
+#####In campaign
+
+	grunt campaign_base
+Grunt will watch all files for changes. Compass will compile css with source map.
+	grunt build
+Grunt will concatenate all js files in /scripts and minify them to /js
+
+#####In rnd17
+
+	grunt rnd17 --target=themes/rnd17/config.rb
+Grunt will watch all files for changes. Compass will compile css with source map.
+	grunt build_all
+Grunt will concatenate all js files in /scripts and minify them to /js
 	
 We use [KSS](https://github.com/kss-node/kss/blob/spec/SPEC.md) to build our styleguide.
 	

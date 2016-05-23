@@ -6,15 +6,19 @@ defaults:
     subdir: "contrib"
 projects:
   # Core contrib
+  cdn:
+    version: 3.0-alpha1
   ctools:
     version: 3.0-alpha26
     patch:
       # See https://www.drupal.org/node/2672110
       2672110: https://www.drupal.org/files/issues/entityfieldderiver-2672110-8.patch
   file_entity:
-    version: 2.x-dev
+    download:
+      version: 2.x-dev
+      revision: 0bab734
   metatag:
-    version: 1.0-beta7
+    version: 1.0-beta8
   pathauto:
     version: 1.0-alpha3
   redirect:
@@ -33,7 +37,9 @@ projects:
   page_manager:
     version: 1.0-alpha23
   panels:
-    version: 3.x-dev
+    download:
+      version: 3.x-dev
+      revision: 4c4a3a7
   panelizer:
     version: 3.0-alpha2
   ds:
@@ -71,12 +77,16 @@ projects:
       version: 1.x-dev
       revision: ca8954d
   memcache:
-    version: 2.x-dev
+    download:
+      version: 2.x-dev
+      revision: e0b03a7
   # Editor/admin experience
   admin_toolbar:
     version: 1.14
   focal_point:
-    version: 1.x-dev
+    download:
+      version: 1.x-dev
+      revision: 1bb8116
   paragraphs:
     download:
       branch: 8.x-1.x
@@ -92,6 +102,8 @@ projects:
       branch: 8.x-1.x
       url: https://github.com/pvhee/yamlform_queue.git
   # Service Integration
+  cookieconsent:
+    version: 1.0
   rabbitmq:
     version: 1.0-alpha1
   search_api:

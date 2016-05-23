@@ -1,14 +1,18 @@
 // Global styling
 body {
   background: $smoke-grey;
-  font-size: 16px;
+  font-family: $body-font;
+  font-size: 100%;
+  line-height: 1.3125rem;
+
+  -webkit-font-smoothing: antialiased;
 }
 .site-logo {
+  float: left;
   width: 138px;
   height: 138px;
-  float: left;
-  margin-right: 20px;
   margin-top: -40px;
+  margin-right: 20px;
 }
 .page__title {
   max-width: 640px;
@@ -16,15 +20,16 @@ body {
   text-align: center;
 }
 .datetime {
-  text-align: center;
-  width: 100%;
   display: block;
+  width: 100%;
   margin-bottom: 40px;
+  text-align: center;
 }
 picture img {
-    width: 100%;
+  width: 100%;
 }
-.node--view-mode-full { // think where best to put it
+.node--view-mode-full {
+  // think where best to put it
   // max-width: 640px;
   margin: 0 auto;
   .field--type-image {
@@ -40,23 +45,71 @@ picture img {
 }
 .field--name-body a,
 .btn-red {
-  border-bottom: 2px solid $red;
-  color: inherit;
-  text-decoration: none;
   @include transition(all 180ms);
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 2px solid $red;
   &:hover {
     border-bottom: 2px solid $black;
   }
 }
+// to do: landing page style
+.page-node-type-landing {
+  .region-content {
+    width: 100%;
+    max-width: 100%;
+  }
+  .page__title {
+    position: absolute; // make it as a mixin
+    top: auto;
+    left: -10000px;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+  }
+  .panel-1col {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
 // to do: find a better place
 .styleguide-link {
-  color: $white;
-  text-decoration: none;
   float: right;
   clear: both;
   margin-right: 5%;
+  text-decoration: none;
+  color: $white;
 }
 // to do: add it to kss style
 #kss-node .kss-section {
   max-width: 1200px;
+}
+// to do: add cookie component
+.cookie-consent.cc_container {
+  .btn,
+  p,
+  a {
+    color: $white;
+    font-family: $body-font;
+    &:visited {
+      color: $white;
+    }
+  }
+  .cc_message {
+    @include breakpoint($screen-md) {
+      width: 80%;
+    }
+    display: inline-block;
+    width: 100%;
+    font-size: 16px;
+    font-size: 1em;
+  }
+  .btn {
+    @include breakpoint($screen-md) {
+      float: right;
+      margin-top: 0;
+    }
+    float: none;
+    margin-top: 20px;
+  }
 }

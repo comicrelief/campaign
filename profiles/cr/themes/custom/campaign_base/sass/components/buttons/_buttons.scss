@@ -3,8 +3,14 @@
 // Standard link buttons
 //
 // Markup: buttons.hbs
+// 
+// .btn--lg - Large button
+// .btn--fixed-width - Fixed width button
+// :hover - Button hover state 
+// :active - Button active state
+// :focus - Button focus state
 //
-// Style guide: Components.Buttons
+// Style guide: Buttons
 
 
 /*  
@@ -13,26 +19,26 @@
   */
 
 .btn {
-  @include border-radius(30px);
+  display: block;
+  height: 50px;
+  padding: 14px 35px;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-decoration: none;
   //font-family: $p-type--all-font;
   //@extend .type--semibold;
   font-size: 16px;
-  height: 50px;
-  padding: 14px 35px;
-  text-decoration: none;
-  display: block;
-  text-align: center;
-  vertical-align: middle;
-  cursor: pointer;
-  white-space: nowrap;
 
+  @include border-radius(30px);
   span {
     font-size: inherit;
     font-weight: inherit;
   }
 }
 
-/* Just a couple of examples for now */ 
+/* Just a couple of examples for now */
 $buttonList: (
   ("red" $red $berry $white),
   ("blue" $blue $aqua $white),
@@ -64,7 +70,7 @@ $buttonList: (
     }
   }
   .btn + .btn {
-    margin-top: 0px;
+    margin-top: 0;
     margin-left: 25px;
   }
 }
@@ -74,13 +80,13 @@ $buttonList: (
  */
 .btn {
   .icon {
-    line-height: 20px;
     height: 20px;
     font-weight: normal;
+    line-height: 20px;
     &:before {
-      line-height: 0px;
       position: relative;
       top: 9px;
+      line-height: 0;
     }
   }
   .icon + span,
@@ -94,10 +100,10 @@ $buttonList: (
  * elsewhere.
  */
 .btn--lg {
-  font-size: 18px;
-  line-height: 22px;
   padding-top: 14px;
   padding-bottom: 14px;
+  font-size: 18px;
+  line-height: 22px;
 }
 
 /**
@@ -105,10 +111,11 @@ $buttonList: (
  */
 @include breakpoint($screen-md) {
   .btn--lg {
-    @include border-radius(35px);
+    height: 70px;
     padding: 21px 70px;
     font-size: 18px;
-    height: 70px;
     line-height: 23px;
+
+    @include border-radius(35px);
   }
 }

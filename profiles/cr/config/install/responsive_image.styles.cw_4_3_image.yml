@@ -1,4 +1,3 @@
-uuid: ce471296-03b7-403f-a1da-6238ca15cd4b
 langcode: en
 status: true
 dependencies:
@@ -11,8 +10,6 @@ dependencies:
     - image.style.cw_small_370x290
   theme:
     - campaign_base
-_core:
-  default_config_hash: brfxlEJUO1t4R6zARr74MXwNV1vzaZLNKOPlpdM-gDg
 id: cw_4_3_image
 label: 'CW 4:3 Image'
 image_style_mappings:
