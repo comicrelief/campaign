@@ -39,7 +39,7 @@ module.exports = function (grunt) {
         },
       js: {
         files: ['themes/custom/campaign_base/scripts/{,**/}*.js', '!js/{,**/}*.min.js'],
-        tasks: ['uglify:dev'] //'jshint',
+        tasks: ['concat:campaign_base','uglify:dev'] //'jshint',
       }
     },
 
@@ -49,11 +49,11 @@ module.exports = function (grunt) {
       },
       campaign_base: {
         src: ['themes/custom/campaign_base/scripts/{,**/}*.js'],
-        dest: 'themes/custom/campaign_base/js/basic.js',
+        dest: 'themes/custom/campaign_base/js/campaign_base.js',
       },
       rnd17: {
         src: ['../../themes/rnd17/scripts/{,**/}*.js'],
-        dest: '../../themes/rnd17/js/basic.js',
+        dest: '../../themes/rnd17/js/rnd17.js',
       },
     },
 
@@ -116,9 +116,9 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           flatten: true,
-          cwd: 'themes/custom/campaign_base/scripts',
+          cwd: 'themes/custom/campaign_base/js',
           dest: 'themes/custom/campaign_base/js',
-          src: ['**/*.js', '!**/*.min.js'],
+          src: ['campaign_base.js', '!campaign_base.min.js'],
           rename: function(dest, src) {
             var folder = src.substring(0, src.lastIndexOf('/'));
             var filename = src.substring(src.lastIndexOf('/'), src.length);
@@ -129,9 +129,9 @@ module.exports = function (grunt) {
         {
           expand: true,
           flatten: true,
-          cwd: '../../themes/rnd17/scripts',
+          cwd: '../../themes/rnd17/js',
           dest: '../../themes/rnd17/js',
-          src: ['**/*.js', '!**/*.min.js'],
+          src: ['rnd17.js', '!rnd17.min.js'],
           rename: function(dest, src) {
             var folder = src.substring(0, src.lastIndexOf('/'));
             var filename = src.substring(src.lastIndexOf('/'), src.length);
@@ -149,9 +149,9 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           flatten: true,
-          cwd: 'themes/custom/campaign_base/scripts',
+          cwd: 'themes/custom/campaign_base/js',
           dest: 'themes/custom/campaign_base/js',
-          src: ['**/*.js', '!**/*.min.js'],
+          src: ['campaign_base.js', '!campaign_base.min.js'],
           rename: function(dest, src) {
             var folder = src.substring(0, src.lastIndexOf('/'));
             var filename = src.substring(src.lastIndexOf('/'), src.length);
@@ -162,9 +162,9 @@ module.exports = function (grunt) {
         {
           expand: true,
           flatten: true,
-          cwd: '../../themes/rnd17/scripts',
+          cwd: '../../themes/rnd17/js',
           dest: '../../themes/rnd17/js',
-          src: ['**/*.js', '!**/*.min.js'],
+          src: ['rnd17.js', '!rnd17.min.js'],
           rename: function(dest, src) {
             var folder = src.substring(0, src.lastIndexOf('/'));
             var filename = src.substring(src.lastIndexOf('/'), src.length);
