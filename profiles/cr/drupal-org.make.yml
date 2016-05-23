@@ -81,6 +81,10 @@ projects:
       version: 2.x-dev
       revision: e0b03a7
   # Editor/admin experience
+  menu_attributes:
+    download:
+      version: 1.x
+      revision: 32f4069
   admin_toolbar:
     version: 1.14
   focal_point:
