@@ -4,4 +4,4 @@ printf 'db.querystring='$DRUPAL_TI_DB_URL >> build.properties
 # Output confirmation
 echo 'File: build.properties has been created.'
 # Remove gem cache
-rm $DRUPAL_TI_DRUPAL_DIR/Gemfile.lock
+rm Gemfile.lock
