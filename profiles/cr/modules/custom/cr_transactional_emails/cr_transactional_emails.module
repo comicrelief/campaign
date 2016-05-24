@@ -113,6 +113,8 @@ function cr_transactional_emails_send($send_to, $template = array(), $params = a
     if ($status_code != '200') {
       \Drupal::logger('cr_transactional_emails')->error('cr_transactional_emails_send(): SmartFocus API call error: !error.', array('!error' => $body_data));
       return FALSE;
+    } else {
+      return TRUE;
     }
   }
   catch (RequestException $e) {
