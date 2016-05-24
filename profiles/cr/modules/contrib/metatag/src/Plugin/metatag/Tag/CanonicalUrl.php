@@ -17,6 +17,7 @@ namespace Drupal\metatag\Plugin\metatag\Tag;
  *   group = "advanced",
  *   weight = 1,
  *   type = "uri",
+ *   secure = FALSE,
  *   multiple = FALSE
  * )
  */

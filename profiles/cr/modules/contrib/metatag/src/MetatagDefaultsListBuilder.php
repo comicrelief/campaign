@@ -114,7 +114,7 @@ class MetatagDefaultsListBuilder extends ConfigEntityListBuilder {
    */
   public function render() {
     $build['header'] = array(
-      '#markup' => '<p>' . t("To view a summary of the default meta tags and the inheritance, click on a meta tag type. If you need to set metatags for a specific entity, edit it's bundle and add the Metatag field.") . '</p>',
+      '#markup' => '<p>' . t("To view a summary of the default meta tags and the inheritance, click on a meta tag type. If you need to set metatags for a specific entity, edit its bundle and add the Metatag field.") . '</p>',
     );
     return $build + parent::render();
   }

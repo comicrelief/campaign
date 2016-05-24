@@ -52,6 +52,7 @@ dependencies:
   - view_modes_display
   - social_links
   - focal_point
+  - cookieconsent
   #- simple_sitemap
 
   # Layout
@@ -74,6 +75,7 @@ dependencies:
   - cr_landing_page
   - cr_partner
   - cr_single_message_row_paragraph
+  - cr_block_paragraph
   #- cr_performance
 
   # Development modules
@@ -116,13 +118,11 @@ config_devel:
   # Blocks
   - block_content.type.basic
   - block.block.tabs
-  - block.block.campaign_base_search
   - block.block.campaign_base_account_menu
   - block.block.campaign_base_page_title
   - block.block.campaign_base_branding
   - block.block.campaign_base_main_menu
   - block.block.campaign_base_footer
-  - block.block.campaign_base_main_footer
   - block.block.seven_breadcrumbs
   - block.block.seven_content
   - block.block.seven_help
@@ -195,3 +195,6 @@ config_devel:
   # Contributed modules
   - pathauto.pattern.basic_page
   - pathauto.settings
+
+  # Cookie consent
+  - cookieconsent.settings

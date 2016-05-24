@@ -1,4 +1,3 @@
-uuid: 54542258-5952-412f-a6b3-0efcf45a0e08
 langcode: en
 status: true
 dependencies:
@@ -8,8 +7,6 @@ dependencies:
     - image.style.full_node_tablet_330x247
   theme:
     - campaign_base
-_core:
-  default_config_hash: UArWaW90DN9dqlz-IGTe7q_mOAdarUlimvm_vxzjA5E
 id: hero_image_full_node
 label: 'Hero image full node'
 image_style_mappings:
