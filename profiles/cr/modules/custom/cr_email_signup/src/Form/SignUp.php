@@ -118,7 +118,7 @@ class SignUp extends FormBase implements FormInterface {
     $email_valid = \Drupal::service('email.validator')->isValid($email_address);
 
     if (!empty($email_address) && $email_valid && empty($school_phase)) {
-      // On to step 2. Nothing for now. 
+      // On to step 2. Nothing for now.
     }
     else {
       // Not even sure this needs to be here?

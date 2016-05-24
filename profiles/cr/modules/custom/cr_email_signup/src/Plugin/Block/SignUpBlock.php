@@ -35,11 +35,11 @@ class SignUpBlock extends BlockBase implements BlockPluginInterface {
     ];
 
     $form['first_success_message'] = [
-        '#markup' => "<div class='esu-first-success-message'>{$config['first_success_message']}</div>",
+      '#markup' => "<div class='esu-first-success-message'>{$config['first_success_message']}</div>",
     ];
 
     $form['second_success_message'] = [
-        '#markup' => "<div class='esu-second-success-message'>{$config['second_success_message']}</div>",
+      '#markup' => "<div class='esu-second-success-message'>{$config['second_success_message']}</div>",
     ];
 
     return $form;
@@ -60,25 +60,25 @@ class SignUpBlock extends BlockBase implements BlockPluginInterface {
 
     $config = $this->getConfiguration();
 
-    $form['cr_email_signup_initial_message'] = array (
-        '#type' => 'textfield',
-        '#title' => $this->t('Initial Message'),
-        '#description' => $this->t('Enter the initial message to show'),
-        '#default_value' => isset($config['initial_message']) ? $config['initial_message'] : ''
+    $form['cr_email_signup_initial_message'] = array(
+      '#type' => 'textfield',
+      '#title' => $this->t('Initial Message'),
+      '#description' => $this->t('Enter the initial message to show'),
+      '#default_value' => isset($config['initial_message']) ? $config['initial_message'] : '',
     );
 
-    $form['cr_email_signup_first_success_message'] = array (
-        '#type' => 'textfield',
-        '#title' => $this->t('First Success Message'),
-        '#description' => $this->t('Enter the success message for the first stage'),
-        '#default_value' => isset($config['first_success_message']) ? $config['first_success_message'] : ''
+    $form['cr_email_signup_first_success_message'] = array(
+      '#type' => 'textfield',
+      '#title' => $this->t('First Success Message'),
+      '#description' => $this->t('Enter the success message for the first stage'),
+      '#default_value' => isset($config['first_success_message']) ? $config['first_success_message'] : '',
     );
 
-    $form['cr_email_signup_second_success_message'] = array (
-        '#type' => 'textfield',
-        '#title' => $this->t('Second Success Message'),
-        '#description' => $this->t('Enter the success message for the second stage, if any'),
-        '#default_value' => isset($config['second_success_message']) ? $config['second_success_message'] : ''
+    $form['cr_email_signup_second_success_message'] = array(
+      '#type' => 'textfield',
+      '#title' => $this->t('Second Success Message'),
+      '#description' => $this->t('Enter the success message for the second stage, if any'),
+      '#default_value' => isset($config['second_success_message']) ? $config['second_success_message'] : '',
     );
 
     return $form;
