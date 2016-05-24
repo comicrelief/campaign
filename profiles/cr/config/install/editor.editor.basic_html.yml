@@ -44,8 +44,10 @@ settings:
           items:
             - Styles
   plugins:
+    language:
+      language_list: un
     stylescombo:
-      styles: "a.btn.btn--red|Red Button\r\na.btn.btn--blue|Blue Button"
+      styles: "a.btn.btn--red|Red Button\r\na.btn.btn--blue|Blue Button\r\na.link.link--inline-red|Red Link\r\na.link.link--inline-black|Black Link\r\na.link.link--inline-white|White Link\r\na.link.link--inline-grey|Grey Link"
 image_upload:
   status: true
   scheme: public

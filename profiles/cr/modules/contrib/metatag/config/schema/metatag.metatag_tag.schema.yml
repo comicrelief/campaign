@@ -34,6 +34,9 @@ metatag.metatag_tag.original_source:
 metatag.metatag_tag.rights:
   type: label
   label: 'Rights'
+metatag.metatag_tag.referrer:
+  type: label
+  label: 'Referrer policy'
 metatag.metatag_tag.robots:
   type: label
   label: 'Robots'

@@ -19,6 +19,7 @@ function cr_single_message_row_paragraph_field_single_message_row_lr_variant(Fie
     'title-above-image-right' => t('Title above, image right'),
     'title-inside-image-left' => t('Title inside copy, image left'),
     'title-inside-image-right' => t('Title inside copy, image right'),
+    'centre-text-only' => t('Centred, Text only, image optional'),
     'centre-image-above' => t('Centred, image above'),
     'centre-image-below' => t('Centred, image below'),
   ];

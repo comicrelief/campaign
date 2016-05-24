@@ -71,6 +71,13 @@ class MetatagTag extends Plugin {
   public $type;
 
   /**
+   * True if URL must use HTTPS.
+   *
+   * @var boolean
+   */
+  protected $secure;
+
+  /**
    * True if more than one is allowed.
    *
    * @var boolean

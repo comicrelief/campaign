@@ -26,7 +26,7 @@ set classes = [
   
   <div class="paragraph--{{paragraph.bundle|clean_class}}__copy_wrapper">
 
-    {% if not title_above %}
+    {% if (not title_above) and (not content.field_single_msg_row_lr_title) %}
     <div class="paragraph--{{paragraph.bundle|clean_class}}__title">
       <h2>{{ content.field_single_msg_row_lr_title }}</h2>
     </div>

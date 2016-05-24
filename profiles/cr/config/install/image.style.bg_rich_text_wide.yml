@@ -1,9 +1,6 @@
-uuid: 5ec68300-448e-40cd-b999-59c6053823a5
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: mTDrkJkhOg9xxp9BIJ8JpzgBT6QCfL-NzylzluwXFmg
 name: bg_rich_text_wide
 label: 'Bg rich text wide'
 effects:

@@ -79,3 +79,4 @@ permissions:
   - 'edit terms in tags'
   - 'access toolbar'
   - 'administer blocks'
+  - 'administer meta tags'
