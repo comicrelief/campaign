@@ -17,6 +17,7 @@ namespace Drupal\metatag\Plugin\metatag\Tag;
  *   group = "facebook",
  *   weight = 2,
  *   type = "string",
+ *   secure = FALSE,
  *   multiple = FALSE
  * )
  */

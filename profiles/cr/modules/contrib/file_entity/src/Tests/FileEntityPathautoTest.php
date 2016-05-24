@@ -40,7 +40,7 @@ class FileEntityPathautoTest extends FileEntityTestBase {
     $file = $this->createFileEntity(['filename' => 'example.png']);
 
     $path = \Drupal::service('path.alias_storage')->load(array('source' => '/' . $file->urlInfo()->getInternalPath()));
-    $this->assertEqual($path['alias'], '/files/example-png', t('Alias for file found.'));
+    $this->assertEqual($path['alias'], '/files/examplepng', t('Alias for file found.'));
   }
 
 }

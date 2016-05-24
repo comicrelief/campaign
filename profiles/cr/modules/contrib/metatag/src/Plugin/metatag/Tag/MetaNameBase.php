@@ -65,6 +65,13 @@ abstract class MetaNameBase extends PluginBase {
   protected $type;
 
   /**
+   * True if URL must use HTTPS.
+   *
+   * @var boolean
+   */
+  protected $secure;
+
+  /**
    * True if more than one is allowed.
    *
    * @var boolean
@@ -93,6 +100,7 @@ abstract class MetaNameBase extends PluginBase {
     $this->group = $plugin_definition['group'];
     $this->weight = $plugin_definition['weight'];
     $this->type = $plugin_definition['type'];
+    $this->secure = $plugin_definition['secure'];
     $this->multiple = $plugin_definition['multiple'];
   }
 
@@ -116,6 +124,9 @@ abstract class MetaNameBase extends PluginBase {
   }
   public function type() {
     return $this->type;
+  }
+  public function secure() {
+    return $this->secure;
   }
   public function multiple() {
     return $this->multiple;
@@ -153,6 +164,11 @@ abstract class MetaNameBase extends PluginBase {
       $form['#description'] .= ' ' . $this->t('This will be able to extract the URL from an image field.');
     }
 
+    // Optional handling for secure paths.
+    if (!empty($this->secure)) {
+      $form['#description'] .= ' ' . $this->t('Any links containing http:// will be converted to https://');
+    }
+
     return $form;
   }
 
@@ -178,6 +194,11 @@ abstract class MetaNameBase extends PluginBase {
       $value = $this->parseImageURL();
 
       $value = $this->tidy($value);
+
+      // If tag must be secure, convert all http:// to https://.
+      if ($this->secure() && strpos($value, 'http://') !== FALSE) {
+        $value = str_replace('http://', 'https://', $value);
+      }
 
       $element = array(
         '#tag' => 'meta',
