@@ -16,8 +16,9 @@ body {
 }
 .page__title {
   max-width: 640px;
-  margin: 40px auto;
+  margin: 100px auto 40px;
   text-align: center;
+  text-transform: capitalize;
 }
 .datetime {
   display: block;
@@ -111,5 +112,13 @@ picture img {
     }
     float: none;
     margin-top: 20px;
+  }
+}
+// Table style move to table component
+table {
+  border-collapse: collapse;
+  td {
+    padding: 10px;
+    border: 1px solid $black;
   }
 }
