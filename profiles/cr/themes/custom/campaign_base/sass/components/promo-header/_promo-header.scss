@@ -79,7 +79,15 @@
 .promo-header__content {
   position: relative;
   max-width: 1200px;
-  margin: 60px auto;
+  margin: auto;
+  @include breakpoint($screen-md) {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%);
+  }
   .promo-header__content-inner {
     max-width: 600px;
     margin: 60px auto;
