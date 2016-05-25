@@ -21,6 +21,7 @@ class SignUp extends FormBase implements FormInterface {
    *     Skeleton message to send
    */
   protected $skeletonMessage = array(
+    // todo: should this be hardcoded??
     'campaign' => 'RND17',
     'transType' => 'esu',
     'timestamp' => NULL,
@@ -75,13 +76,16 @@ class SignUp extends FormBase implements FormInterface {
       '#type' => 'email',
       "#required" => TRUE,
       '#title' => $this->t('Your email address'),
+      '#placeholder' => t('Enter your email address'),
+      '#prefix' => '<div class="cr-email-signup__email-wrapper">',
+      '#suffix' => '</div>',
     );
 
     $form['steps']['school_phase'] = array(
       '#type' => 'select',
-      '#title' => $this->t('School Phase'),
+      '#title' => $this->t('Also send me School resources'),
       '#options' => array(
-        0 => ' -- Select School Phase --',
+        0 => ' -- Select age group --',
         'EY' => 'Early Years or Nursery',
         'PY' => 'Primary',
         'SY' => 'Secondary',
@@ -89,12 +93,16 @@ class SignUp extends FormBase implements FormInterface {
         'HE' => 'Higher Education',
         'OH' => 'Other',
       ),
+      '#prefix' => '<div class="cr-email-signup__school-phase-wrapper">',
+      '#suffix' => '</div>',
     );
 
     $form['steps']['validate_email'] = array(
+      '#prefix' => '<div class="cr-email-signup__submit-wrapper">',
+      '#suffix' => '</div>',
       '#type' => 'submit',
       '#name' => 'validate_email',
-      '#value' => t('First Submit'),
+      '#value' => t('Go'),
       '#ajax' => array(
         'callback' => array($this, 'validateAndQueue'),
         'progress' => array(
@@ -103,6 +111,7 @@ class SignUp extends FormBase implements FormInterface {
         ),
         'prevent' => 'submit',
         'wrapper' => 'esu-signup-form-step1-id',
+        'event' => 'mouseup',
       ),
     );
 
@@ -165,5 +174,4 @@ class SignUp extends FormBase implements FormInterface {
     // Only here for completeness, should not be called.
     return TRUE;
   }
-
 }
