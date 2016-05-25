@@ -48,7 +48,13 @@
   .link--inline-#{nth($link, 1)} {
     border-bottom: 2px solid nth($link, 2);
     color: inherit;
+    font-weight: 600;
     text-decoration: none;
+    @include transition-property(border, color);
+    @include transition-duration(180ms);
+    &:hover {    
+      border-bottom: 2px solid $black;
+    }
   }
 }
 
