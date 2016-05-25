@@ -17,6 +17,12 @@ settings:
             - Bold
             - Italic
         -
+          name: Alignment
+          items:
+            - JustifyRight
+            - JustifyCenter
+            - JustifyLeft
+        -
           name: Linking
           items:
             - DrupalLink
