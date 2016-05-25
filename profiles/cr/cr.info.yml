@@ -45,6 +45,7 @@ dependencies:
   # Contrib modules
   - ds
   - file_entity
+  - media_entity
   - metatag_open_graph
   - pathauto
   - redirect
