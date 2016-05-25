@@ -16,7 +16,7 @@ To enable poeple to contribute to work we recommend committing 'little and often
 
 ### Committing your feature branch
 
-Enter the command `git add-A`
+Enter the command `git add -A`
 
 The commit message must have the branch name before your message as below:
 
@@ -25,3 +25,7 @@ The commit message must have the branch name before your message as below:
 Then push your feature branch
 
 `git push origin feature/PLAT-123_test_feature_branch`
+
+### Creating a pull request
+
+Visit https://github.com/comicrelief/campaign and you should see `feature/PLAT-123_test_feature_branch (less than a minute ago)` with a button to `Compare & pull request`. Click this button to open a pull request, enter the details on the pull request in the next screen and click `save`.
