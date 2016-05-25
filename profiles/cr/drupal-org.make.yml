@@ -17,6 +17,23 @@ projects:
     download:
       version: 2.x-dev
       revision: 0bab734
+  media_entity:
+    type: "module"
+    version: "1.0"
+    patch:
+      - "https://www.drupal.org/files/issues/2717375-hook_requirements-have-to-return-an-array.patch"
+  media_entity_instagram:
+    type: "module"
+    version: "1.0"
+  media_entity_image:
+    type: "module"
+    version: "1.0"
+  media_entity_slideshow:
+    type: "module"
+    version: "1.0"
+  media_entity_twitter:
+    type: "module"
+    version: "1.0"
   metatag:
     version: 1.0-beta8
   pathauto:
