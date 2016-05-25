@@ -80,6 +80,8 @@ projects:
     download:
       version: 2.x-dev
       revision: e0b03a7
+  stage_file_proxy:
+    version: 1.0-alpha1
   # Editor/admin experience
   admin_toolbar:
     version: 1.14
