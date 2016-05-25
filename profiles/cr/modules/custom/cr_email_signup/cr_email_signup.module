@@ -1,0 +1,10 @@
+<?php
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_page_attachments().
+ */
+function cr_email_signup_page_attachments(array &$attachments) {
+  $attachments['#attached']['library'][] = 'cr_email_signup/cr_email_signup';
+}

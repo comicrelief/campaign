@@ -31,15 +31,15 @@ class SignUpBlock extends BlockBase implements BlockPluginInterface {
     $form = \Drupal::formBuilder()->getForm('Drupal\cr_email_signup\Form\SignUp');
 
     $form['initial_message'] = [
-      '#markup' => "<div class='esu-initial-message'>{$config['initial_message']}</div>",
+      '#markup' => "<div class='esu-initial-message'><h4>{$config['initial_message']}</h4></div>",
     ];
 
     $form['first_success_message'] = [
-      '#markup' => "<div class='esu-first-success-message'>{$config['first_success_message']}</div>",
+      '#markup' => "<div class='esu-first-success-message'><h4>{$config['first_success_message']}</h4></div>",
     ];
 
     $form['second_success_message'] = [
-      '#markup' => "<div class='esu-second-success-message'>{$config['second_success_message']}</div>",
+      '#markup' => "<div class='esu-second-success-message'><h4>{$config['second_success_message']}</h4></div>",
     ];
 
     return $form;
