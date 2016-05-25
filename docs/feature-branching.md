@@ -2,7 +2,7 @@
 
 ### Before you create your feature branch
 
-Make sure you are on the `develop` branch then enter the command `git pull`
+Make sure you are on the `develop` branch then enter the command `git pull origin develop`
 
 ### Creating a feature branch
 
