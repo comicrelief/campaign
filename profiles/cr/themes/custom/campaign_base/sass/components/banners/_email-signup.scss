@@ -109,11 +109,11 @@
     position: absolute;
     top: 0;
     left: 50%;
-    width: 60px;
+    width: 62px;
     height: 42px;
     margin-left: -33px;
     content: "";
-    background: sprite($icons, sr_logo) no-repeat;
+    background: sprite($icons, esuEmailIconLarge) no-repeat;
   }
   /* Tick icon */
   &.block--cr-email-signup--step-2,
@@ -122,7 +122,7 @@
       width: 45px;
       height: 45px;
       margin-left: -23px;
-      background: sprite($icons, sr_logo) no-repeat;
+      background: sprite($icons, green-tick) no-repeat;
     }
   }
 }
@@ -193,7 +193,7 @@
       width: 50px;
       height: 35px;
       margin-left: 0;
-      background: sprite($icons, sr_logo) no-repeat;
+      background: sprite($icons, esuEmailIconSmall) no-repeat;
     }
     // Tick icon
     &.block--cr-email-signup--step-2,
@@ -202,7 +202,7 @@
         width: 45px;
         height: 45px;
         margin-left: -23px;
-        background: sprite($icons,sr_logo) no-repeat;
+        background: sprite($icons, green-tick) no-repeat;
       }
     }
     &.block--cr-email-signup--step-3 {
@@ -213,6 +213,7 @@
     }
   }
 }
+
 
 /* Large breakpoint */
 @include breakpoint($screen-lg) {
@@ -232,10 +233,10 @@
     &:after {
       top: 0;
       left: 10%;
-      width: 60px;
+      width: 62px;
       height: 42px;
       margin-left: 0;
-      background: sprite($icons, sr_logo) no-repeat;
+      background: sprite($icons, esuEmailIconLarge) no-repeat;
     }
     // Tick icon
     &.cr-email-signup--step-2,
@@ -244,7 +245,7 @@
         width: 45px;
         height: 45px;
         margin-left: -23px;
-        background: sprite($icons, sr_logo) no-repeat;
+        background: sprite($icons, green-tick) no-repeat;
       }
     }
 
