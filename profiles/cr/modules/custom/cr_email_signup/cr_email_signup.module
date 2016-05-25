@@ -1,6 +1,9 @@
 <?php
 
-use Drupal\Core\Routing\RouteMatchInterface;
+/**
+ * @file
+ * Email Sign-up module adds ESU functionality to the site.
+ */
 
 /**
  * Implements hook_page_attachments().

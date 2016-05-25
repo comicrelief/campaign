@@ -174,4 +174,5 @@ class SignUp extends FormBase implements FormInterface {
     // Only here for completeness, should not be called.
     return TRUE;
   }
+
 }
