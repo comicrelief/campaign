@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations for media_entity_twitter module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function media_entity_twitter_theme() {
+  return [
+    'media_entity_twitter_tweet' => [
+      'variables' => ['path' => NULL, 'attributes' => []],
+    ],
+  ];
+}

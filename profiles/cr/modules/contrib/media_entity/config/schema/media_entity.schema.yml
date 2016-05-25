@@ -1,0 +1,45 @@
+media_entity.settings:
+  type: config_object
+  label: 'Media entity settings'
+  mapping:
+    icon_base:
+      type: string
+      label: 'Base folder for icons installation'
+
+media_entity.bundle.*:
+  type: config_entity
+  label: 'Media bundle'
+  mapping:
+    id:
+      type: string
+      label: 'Machine name'
+    label:
+      type: label
+      label: 'Label'
+    description:
+      type: text
+      label: 'Description'
+    type:
+      type: string
+      label: 'Type plugin ID'
+    queue_thumbnail_downloads:
+      type: boolean
+      label: 'Queue thumbnail downloads'
+    new_revision:
+      type: boolean
+      label: 'Whether a new revision should be created by default'
+    type_configuration:
+      type: media_entity.bundle.type.[%parent.type]
+    field_map:
+      type: sequence
+      label: 'Field map'
+      sequence:
+        type: string
+
+action.configuration.media_delete_action:
+  type: action_configuration_default
+  label: 'Delete media configuration'
+
+action.configuration.media_save_action:
+  type: action_configuration_default
+  label: 'Save media configuration'

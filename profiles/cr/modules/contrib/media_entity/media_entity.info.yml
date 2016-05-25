@@ -1,0 +1,18 @@
+name: Media entity
+description: 'Media entity API.'
+type: module
+package: Media
+# core: 8.x
+dependencies:
+  - image
+  - user
+  - views
+  - entity (>=8.x-1.0-alpha3)
+test_dependencies:
+  - entity
+
+# Information added by Drupal.org packaging script on 2016-05-01
+version: '8.x-1.0'
+core: '8.x'
+project: 'media_entity'
+datestamp: 1462116541
