@@ -3,12 +3,36 @@
 // These are the list items
 //
 // Markup:
-// <ul><li>List 1</li></ul>
+// <ul>
+// 	<li>Item 1</li>
+// 	<li>Item 2</li>
+// 	<li>Item 3</li>
+// 	<li>Item 4</li>
+// </ul>
 //
 // Style guide: Typography.Lists
 
 ul {
 	li {
 		font-size: 1em;
+	}
+}
+.node__content {
+	ul {
+		padding: 0 0 0 20px;
+		li {
+			font-size: 1em;
+			list-style: none;
+			padding: 0;
+			&:before {
+				content: " ○";
+				display: inline-block;
+				color: $red;
+				margin-right: 20px;
+			}
+			// &::marker { // future support
+			// 	color: $red;
+			// }
+		}
 	}
 }

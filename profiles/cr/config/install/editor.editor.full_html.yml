@@ -22,6 +22,12 @@ settings:
             - '-'
             - RemoveFormat
         -
+          name: Alignment
+          items:
+            - JustifyRight
+            - JustifyCenter
+            - JustifyLeft
+        -
           name: Linking
           items:
             - DrupalLink
