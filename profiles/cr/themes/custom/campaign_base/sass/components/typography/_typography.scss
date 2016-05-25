@@ -15,6 +15,7 @@ h1 {
   margin: 0 0 20px;
   text-transform: uppercase;
   color: #1e1e1e;
+  font-family: $body-font;
   font-size: 40px;
   font-weight: normal;
   line-height: 40px;
@@ -48,10 +49,6 @@ p {
 }
 
 @include breakpoint($screen-md) {
-  h1 {
-    font-size: 70px;
-    line-height: 65px;
-  }
   h2 {
     font-size: 30px;
     line-height: 40px;
