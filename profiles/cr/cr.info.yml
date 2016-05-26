@@ -46,6 +46,9 @@ dependencies:
   - ds
   - file_entity
   - media_entity
+  - embed
+  - entity_embed
+  - url_embed
   - metatag_open_graph
   - pathauto
   - redirect
