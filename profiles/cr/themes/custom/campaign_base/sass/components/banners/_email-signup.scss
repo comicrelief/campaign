@@ -9,91 +9,87 @@
 /* Step 1 styles */
 .block--cr-email-signup {
   @include container;
+  @include clearfix;
   position: relative;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin-top: 35px;
+  margin-bottom: 35px;
   padding: 50px 0 0;
-
   .form-item {
     margin: 0;
   }
-
   .cr-email-signup--messages {
     @include span(12);
+    position: relative;
+    height: 50px;
     text-align: center;
+    > div {
+      width: 100%;
+    }
   }
-
   .esu-initial-message {
     display: block;
   }
+  .cr-email-signup__email-wrapper,
+  .cr-email-signup__school-phase-wrapper {
+    @include span(8);
+    @include push(1);
+    margin-right: 0;
+  }
+  .cr-email-signup__submit-wrapper {
+    @include span(2 wide);
+    margin-left: 0;
+  }
+  .button.form-submit {
+    @include border-radius(0);
+    width: 100%;
+    height: 50px;
+    margin-left: 0;
+    margin-left: 0;
+    cursor: pointer;
+    color: #fff;
+    border: 0;
+    background-color: #5f5c59;
+    font-size: 14px;
+    font-weight: normal;
 
-    .cr-email-signup__email-wrapper,
-    .cr-email-signup__school-phase-wrapper {
-      @include span(6);
-      @include push(2);
-      margin-right: 0;
+    -webkit-tap-highlight-color: transparent;
+    &:hover {
+      outline: none;
+      background-color: #272727;
     }
-
-    .cr-email-signup__submit-wrapper {
-      @include span(2 wide);
-      margin-left: 0;
+  }
+  /*  Step 1 */
+  .cr-email-signup__email-wrapper {
+    label {
+      position: absolute !important;
+      overflow: hidden;
+      clip: rect(1px 1px 1px 1px);
+      clip: rect(1px,1px,1px,1px);
+      height: 1px;
     }
-    
-    .button.form-submit {
-      margin-left: 0;
+    .form-email {
       width: 100%;
-      @include border-radius(0);
       height: 50px;
-      margin-left: 0;
-      cursor: pointer;
-      color: #fff;
-      border: 0;
-      background-color: #5f5c59;
-      font-size: 14px;
-      font-weight: normal;
-
-      -webkit-tap-highlight-color: transparent;
-      &:hover {
-        outline: none;
-        background-color: #272727;
-      }
+      margin-right: 0;
+      padding: 15px 0 15px 10px;
     }
-    
-    /*  Step 1 */
-    .cr-email-signup__email-wrapper {
-      label {
-        position: absolute !important;
-        clip: rect(1px 1px 1px 1px);
-        clip: rect(1px,1px,1px,1px);
-        overflow: hidden;
-        height: 1px;
-      }
-      .form-email {
-        width: 100%;
-        height: 50px;
-        margin-right: 0;
-        padding: 15px 0 15px 10px;
-      }
-    }
-  
-
-   /*  Step 2 */
-   &.block--cr-email-signup--step-2 {
+  }
+  /*  Step 2 */
+  &.block--cr-email-signup--step-2 {
     .cr-email-signup__school-phase-wrapper {
       label {
-        font-size: 14px;
         width: 100%;
         margin-bottom: 20px;
+        font-size: 14px;
         line-height: 21px;
       }
-    
       select,
       .ui-selectmenu-button {
         width: 100%;
         height: 50px;
         margin-right: 0;
         padding: 15px 0 15px 10px;
-       //-webkit-appearance: menulist-button;
+        //-webkit-appearance: menulist-button;
       }
       .ui-selectmenu-button span.ui-selectmenu-text {
         padding: 0 10px;
@@ -103,7 +99,6 @@
       margin-top: 21px;
     }
   }
-    
   /* ESU icon */
   &:after {
     position: absolute;
@@ -132,50 +127,52 @@
 /* Medium breakpoint */
 @include breakpoint($screen-md) {
   .block--cr-email-signup {
-    min-height: 45px;
+    height: 50px;
     padding: 0;
-
     .cr-email-signup--messages {
       @include span(4);
       @include push(2);
+      > div {
+        @include translateY(-50%);
+        position: absolute;
+        top: 50%;
+        margin: 0;
+        h4 {
+          margin: 0;
+        }
+      }
     }
-
-      .cr-email-signup__email-wrapper {
-        @include span(4);
+    .cr-email-signup__email-wrapper {
+      @include span(4);
+      margin-right: 0;
+      .form-email {
         margin-right: 0;
-        
-        .form-email {
-          margin-right: 0;
-          margin-left: 0;
-        }
-      }
-
-      .cr-email-signup__submit-wrapper {
-        @include span(1 wide);
         margin-left: 0;
-        .button.form-submit {
-          margin-left: 0;
-          margin-top: 0;
-        }
       }
-    
-
+    }
+    .cr-email-signup__submit-wrapper {
+      @include span(1 wide);
+      margin-left: 0;
+      .button.form-submit {
+        margin-top: 0;
+        margin-left: 0;
+      }
+    }
     /*  Step 2 */
     &.block--cr-email-signup--step-2 {
       .cr-email-signup__school-phase-wrapper {
         @include span(4);
-        margin-right: 0;
         position: relative;
+        margin-right: 0;
         label {
-          width: 100%;
-          margin: 0;
           position: absolute;
           top: -20px;
           left: 0;
+          width: 100%;
+          margin: 0;
         }
-        
-      select,
-      .ui-selectmenu-button {
+        select,
+        .ui-selectmenu-button {
           width: 100% !important;
           margin-right: 0;
           margin-left: 0;
@@ -185,10 +182,9 @@
         margin-top: 0;
       }
     }
-
     // ESU icon
     &:after {
-      top: 6px;
+      top: 7px;
       left: 10%;
       width: 50px;
       height: 35px;
@@ -199,6 +195,7 @@
     &.block--cr-email-signup--step-2,
     &.block--cr-email-signup--step-3 {
       &:after {
+        top: 2px;
         width: 45px;
         height: 45px;
         margin-left: -23px;
@@ -209,7 +206,7 @@
       .cr-email-signup--messages {
         @include span(8);
         @include push(2);
-    }
+      }
     }
   }
 }
@@ -218,20 +215,17 @@
 /* Large breakpoint */
 @include breakpoint($screen-lg) {
   .block--cr-email-signup {
-
     .cr-email-signup--messages {
       @include span(4);
       @include push(2);
     }
-
     .cr-email-signup__email-wrapper {
       @include span(3);
-      margin-right:0;
+      margin-right: 0;
     }
-    
     // ESU icon
     &:after {
-      top: 0;
+      top: 3px;
       left: 10%;
       width: 62px;
       height: 42px;
@@ -248,11 +242,10 @@
         background: sprite($icons, green-tick) no-repeat;
       }
     }
-
     &.block--cr-email-signup--step-2 {
       .cr-email-signup__school-phase-wrapper {
         @include span(3);
-        margin-right:0;
+        margin-right: 0;
       }
     }
   }
@@ -261,33 +254,35 @@
 /* Hide-show  */
 .block--cr-email-signup {
   // Step 1
-  .cr-email-signup__email-wrapper { display:block; }
+  .cr-email-signup__email-wrapper {
+    display: block;
+  }
   .cr-email-signup__school-phase-wrapper,
   .esu-first-success-message,
-  .esu-second-success-message { display:none; }
-
+  .esu-second-success-message {
+    display: none;
+  }
   // Step 2
   &.block--cr-email-signup--step-2 {
     .cr-email-signup__email-wrapper,
     .esu-initial-message {
-      display:none;
+      display: none;
     }
     .cr-email-signup__school-phase-wrapper,
     .esu-first-success-message {
-      display:block;
+      display: block;
     }
   }
-
   // Step 3
   &.block--cr-email-signup--step-3 {
     .cr-email-signup__email-wrapper,
     .cr-email-signup__school-phase-wrapper,
     .cr-email-signup__submit-wrapper,
     .esu-initial-message {
-      display:none;
+      display: none;
     }
     .esu-second-success-message {
-      display:block;
+      display: block;
     }
   }
 }
