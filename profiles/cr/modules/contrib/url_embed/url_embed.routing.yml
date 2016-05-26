@@ -1,0 +1,7 @@
+url_embed.dialog:
+  path: '/url-embed/dialog/{editor}/{embed_button}'
+  defaults:
+    _form: '\Drupal\url_embed\Form\UrlEmbedDialog'
+    _title: 'Embed URL'
+  requirements:
+    _embed_button_editor_access: 'TRUE'

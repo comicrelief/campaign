@@ -1,0 +1,5 @@
+# Schema for the configuration files of the URL Embed module.
+
+embed.embed_type_settings.url:
+  type: mapping
+  label: 'Schema for the URL embed type additions to an embed button entity'
