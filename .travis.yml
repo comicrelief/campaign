@@ -5,7 +5,7 @@
 
 language: php
 
-sudo: false
+sudo: true
 
 php:
   - 5.6
