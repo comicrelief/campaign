@@ -54,20 +54,30 @@ class MetatagToken {
   /**
    * Gatekeeper function to direct to either the core or contributed Token.
    *
+   * @param mixed $token_types
+   *   The token types to return. Defaults to all.
+   *
    * @return array
    *   If token module is installed, a popup browser plus a help text. If not
    *   only the help text.
    */
-  public function tokenBrowser() {
+  public function tokenBrowser($token_types = NULL) {
     $form = array();
 
     $form['intro_text'] = array(
       '#markup' => '<p>' . t('Configure the meta tags below. Use tokens to avoid redundant meta data and search engine penalization. For example, a \'keyword\' value of "example" will be shown on all content using this configuration, whereas using the [node:field_keywords] automatically inserts the "keywords" values from the current entity (node, term, etc).') . '</p>',
     );
 
+    // Normalize taxonomy tokens.
+    if (!empty($token_types)) {
+      $token_types = array_map(function($value) {
+        return stripos($value, 'taxonomy_') === 0 ? substr($value, strlen('taoxnomy_')) : $value;
+      }, (array) $token_types);
+    }
+
     $form['tokens'] = array(
       '#theme' => 'token_tree_link',
-      '#token_types' => 'all',
+      '#token_types' => !empty($token_types) ? $token_types : 'all',
       '#global_types' => TRUE,
       '#click_insert' => TRUE,
       '#show_restricted' => FALSE,

@@ -44,14 +44,18 @@ $susy: (
 
 @include border-box-sizing;
 
-
 // layout
 .region-header-inner-wrapper,
 .region-header-top,
+.node--type-page,
 .cw-region {
   @include container;
 }
-
+.node--type-page {
+  .node__content {
+    @include span(12);
+  }
+}
 header,
 .region-highlighted,
 main {

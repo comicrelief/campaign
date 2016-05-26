@@ -21,7 +21,7 @@
   max-width: 1200px;
   margin: 20px auto 0;
   padding: 0 20px;
-	@include breakpoint($screen-md) {
+	@include breakpoint($screen-md, $no-query: true) {
 	  position: absolute;
 	  right: 0;
 	  left: 0;
@@ -29,8 +29,9 @@
 	}
 }
 .paragraph--cr-rich-text-paragraph__image {
-	@include breakpoint($screen-md) {
+	@include breakpoint($screen-md, $no-query: true) {
 	  height: 100%;
+	  width: 100%;
 	  position: absolute;
 	  img {
 			display: block;
@@ -42,7 +43,7 @@
 }
 .paragraph--cr-rich-text-paragraph__body {
   @include span(12 of 12);
-  @include breakpoint($screen-md) {
+  @include breakpoint($screen-md, $no-query: true) {
     @include span(6 of 12);
   }
 }

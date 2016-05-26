@@ -1,11 +1,8 @@
-uuid: ff05d71e-6eca-41f1-bf56-73be13f56de3
 langcode: en
 status: true
 dependencies:
   module:
     - focal_point
-_core:
-  default_config_hash: J8jHZdXgK0E9YYkoA8gygzabmpSridCUponCcTShPMk
 name: full_node_desktop_770x433
 label: 'Full node LG 770x433'
 effects:

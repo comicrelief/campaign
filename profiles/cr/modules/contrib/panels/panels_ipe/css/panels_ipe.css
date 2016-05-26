@@ -77,6 +77,10 @@
   content: "\e90a";
 }
 
+.ipe-icon.ipe-icon-search:before {
+  content: "\e90d";
+}
+
 .ipe-icon.ipe-icon-configure {
   font-size: 20px;
 }
@@ -388,8 +392,29 @@ div.ipe-actions-block {
 
 .ipe-category-picker-top.active {
   display: block;
-  padding: 0 20px 20px 20px;
+  padding: 10px 0 10px 0;
   max-height: 100%;
+}
+
+.ipe-category-picker-search {
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 5px;
+}
+
+.ipe-category-picker-search input {
+  display: inline-block;
+  width: inherit;
+  margin-left: 5px;
+}
+
+.ipe-category-picker-search input[type="submit"] {
+  display: none;
+  background: white;
+  color: black;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 6px;
+  transition: .2s;
 }
 
 #panels-ipe-tray .ipe-category {
@@ -453,7 +478,7 @@ div.ipe-actions-block {
 }
 
 .ipe-create-category:hover {
-  background-color: white;
+  background: white;
 }
 
 .ipe-category-count {
@@ -473,7 +498,7 @@ div.ipe-actions-block {
 .ipe-block-picker-list .ipe-category-picker-top.active {
   display: inline-flex;
   flex-flow: row wrap;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .ipe-category-picker-top.active.form-displayed {
@@ -481,7 +506,8 @@ div.ipe-actions-block {
 }
 
 .ipe-blockpicker-item {
-  flex-basis: 200px;
+  flex-basis: 240px;
+  width: 240px;
   margin-left: 10px;
   margin-top: 10px;
   text-align: left;
@@ -492,10 +518,15 @@ div.ipe-actions-block {
 }
 
 .ipe-blockpicker-item h5 {
-  font-size: 15px;
+  position: relative;
+  bottom: 0;
+  margin: 0;
+  display: inline-block;
+  padding: 10px 20px 10px 10px;
+  font-size: 12px;
+  line-height: 1.5em;
   font-weight: bold;
   text-transform: capitalize;
-  margin: 0;
 }
 
 .ipe-blockpicker-item p {
@@ -503,18 +534,36 @@ div.ipe-actions-block {
 }
 
 .ipe-blockpicker-item a {
-  display: inline-block;
-  padding: 5px;
-  border: 1px solid transparent;
-  border-radius: 5px;
+  border: 1px solid #333;
+  background: #FBFBFB;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
+  border-radius: 0;
+  padding: 0;
   transition: .2s;
   color: inherit;
   cursor: pointer;
 }
 
+.ipe-blockpicker-item a:after {
+  content: "+";
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+  top: 20%;
+  font-size: 16px;
+}
+
 .ipe-blockpicker-item a:hover {
+  background: white;
   border-color: rgb(67, 125, 33);
-  color: inherit;
+  color: rgb(67, 125, 33);
+}
+
+.ipe-block-content-type-info p {
+  padding: 0 10px 10px 10px;
 }
 
 /* Theme the category view. */
@@ -629,6 +678,11 @@ div.ipe-actions-block {
 
 /* Mobile specific styles. */
 @media screen and (max-width: 40em) {
+
+  /* Only display the search "button" on mobile. */
+  .ipe-category-picker-search input[type="submit"] {
+    display: inline-block;
+  }
 
   /* Hide tab titles on mobile. */
   .ipe-tab-title {

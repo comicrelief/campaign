@@ -1,0 +1,6 @@
+cr_email_signup:
+  version: "1.0.x"
+  js:
+    js/cr_email_signup.js: {}
+  dependencies:
+    - core/jquery

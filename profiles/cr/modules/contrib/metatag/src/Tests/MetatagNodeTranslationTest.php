@@ -14,7 +14,7 @@ use Drupal\simpletest\WebTestBase;
 /**
  * Ensures that meta tag values are translated correctly on nodes.
  *
- * @group Metatag
+ * @group metatag
  */
 class MetatagNodeTranslationTest extends WebTestBase {
 
