@@ -12,3 +12,4 @@ global-js:
     - core/jquery
     - core/modernizr
     - core/jquery.ui
+    - core/jquery.ui.selectmenu
