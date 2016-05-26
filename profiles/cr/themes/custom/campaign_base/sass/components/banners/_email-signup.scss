@@ -10,9 +10,10 @@
 .block--cr-email-signup {
   @include container;
   position: relative;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin-top: 35px;
+  margin-bottom: 35px;
   padding: 50px 0 0;
+  @include clearfix;
 
   .form-item {
     margin: 0;
@@ -20,7 +21,12 @@
 
   .cr-email-signup--messages {
     @include span(12);
+    height: 50px;
     text-align: center;
+    position: relative;
+    > div {
+      width: 100%;
+    }
   }
 
   .esu-initial-message {
@@ -131,12 +137,23 @@
 /* Medium breakpoint */
 @include breakpoint($screen-md) {
   .block--cr-email-signup {
-    min-height: 45px;
+    height: 50px;
     padding: 0;
 
     .cr-email-signup--messages {
       @include span(4);
       @include push(2);
+
+      > div {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        @include translateY(-50%);
+
+        h4 {
+          margin: 0;
+        }
+      }
     }
 
       .cr-email-signup__email-wrapper {
@@ -187,7 +204,7 @@
 
     // ESU icon
     &:after {
-      top: 6px;
+      top: 7px;
       left: 10%;
       width: 50px;
       height: 35px;
@@ -198,6 +215,7 @@
     &.block--cr-email-signup--step-2,
     &.block--cr-email-signup--step-3 {
       &:after {
+        top: 2px;
         width: 45px;
         height: 45px;
         margin-left: -23px;
@@ -230,7 +248,7 @@
     
     // ESU icon
     &:after {
-      top: 0;
+      top: 3px;
       left: 10%;
       width: 62px;
       height: 42px;
@@ -292,7 +310,7 @@
 }
 
 ul[id^="edit-school-phase--"] {
-    width: 100px !important;
+    //width: 100px !important;
 }
 
 //edit-school-phase--KLxiEPkFz1o
