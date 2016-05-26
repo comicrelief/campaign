@@ -34,6 +34,16 @@ projects:
   media_entity_twitter:
     type: "module"
     version: "1.0"
+  embed:
+    version: 8.x-1.0-rc2
+  entity_embed:
+    download:
+      branch: 8.x-1.x
+      revision: 08e5098909f5286238edfb716353efa651eb5a5d
+  url_embed:
+    download:
+      branch: 8.x-1.x
+      revision: 8d02e37aa7c0909b2755854295df95458b372e3c
   metatag:
     version: 1.0-beta8
   pathauto:
