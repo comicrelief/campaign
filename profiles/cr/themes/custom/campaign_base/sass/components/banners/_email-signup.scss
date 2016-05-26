@@ -29,8 +29,8 @@
 
     .cr-email-signup__email-wrapper,
     .cr-email-signup__school-phase-wrapper {
-      @include span(6);
-      @include push(2);
+      @include span(8);
+      @include push(1);
       margin-right: 0;
     }
 
@@ -76,7 +76,6 @@
       }
     }
   
-
    /*  Step 2 */
    &.block--cr-email-signup--step-2 {
     .cr-email-signup__school-phase-wrapper {
@@ -291,3 +290,9 @@
     }
   }
 }
+
+ul[id^="edit-school-phase--"] {
+    width: 100px !important;
+}
+
+//edit-school-phase--KLxiEPkFz1o
