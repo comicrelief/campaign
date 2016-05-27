@@ -7,14 +7,14 @@
 
 namespace Drupal\ds\Plugin\DsField;
 
-use Drupal\Component\Plugin\PluginBase as ComponentPluginBase;
+use Drupal\Core\Plugin\PluginBase;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Base class for all the ds plugins.
  */
-abstract class DsFieldBase extends ComponentPluginBase implements DsFieldInterface {
+abstract class DsFieldBase extends PluginBase implements DsFieldInterface {
 
   /**
    * Constructs a Display Suite field plugin.

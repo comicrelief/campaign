@@ -12,6 +12,7 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Path\AliasManagerInterface;
 use Drupal\Core\Path\CurrentPathStack;
 use Drupal\Core\Path\PathMatcherInterface;
+use Drupal\Core\Render\HtmlResponse;
 use Drupal\Core\Session\AccountProxyInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -186,6 +187,10 @@ EOS;
       return FALSE;
     }
 
+    if (!($response instanceof HtmlResponse)) {
+      // Omit snippet because the response is not HTML.
+      return FALSE;
+    }
 
     return TRUE;
   }

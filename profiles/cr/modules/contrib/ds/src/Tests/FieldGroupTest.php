@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Definition of Drupal\ds\Tests\ManageDisplayTabTest.
+ * Contains \Drupal\ds\Tests\FieldGroupTest.
  */
 
 namespace Drupal\ds\Tests;
@@ -10,7 +10,7 @@ namespace Drupal\ds\Tests;
 use Drupal\field_group\Tests\FieldGroupTestTrait;
 
 /**
- * Tests for the manage display tab in Display Suite.
+ * Tests for field group integration with Display Suite.
  *
  * @group ds
  */

@@ -16,6 +16,17 @@ function ds_test_install() {
 }
 
 /**
+ * Implements hook_theme_suggestions_alter()
+ */
+function ds_test_theme_suggestions_alter(&$suggestions, $variables, $base_theme_hook) {
+  if (isset($variables['content']) && is_array($variables['content']) && isset($variables['content']['#ds_configuration']) && $base_theme_hook != 'ds_entity_view') {
+    if (isset($_GET['store_suggestions'])) {
+      \Drupal::cache()->set('ds_test_suggestions', $suggestions);
+    }
+  }
+}
+
+/**
  * Helper function to return the tag name basid on tid.
  */
 function ds_test_get_tag_name($raw_value, $object) {
