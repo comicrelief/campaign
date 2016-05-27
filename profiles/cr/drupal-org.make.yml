@@ -6,8 +6,6 @@ defaults:
     subdir: "contrib"
 projects:
   # Core contrib
-  cdn:
-    version: 3.0-alpha1
   ctools:
     version: 3.0-alpha26
     patch:
@@ -76,12 +74,12 @@ projects:
     download:
       version: 1.x-dev
       revision: ca8954d
-  memcache:
-    download:
-      version: 2.x-dev
-      revision: e0b03a7
   stage_file_proxy:
     version: 1.0-alpha1
+  queue_ui:
+    download:
+      version: 2.x-dev
+      revision: f51ebea
   # Editor/admin experience
   admin_toolbar:
     version: 1.14
@@ -121,3 +119,10 @@ projects:
     version: 2.15-rc1
   simple_sitemap:
     version: 2.1
+  # Performance modules
+  memcache:
+    download:
+      version: 2.x-dev
+      revision: e0b03a7
+  cdn:
+    version: 3.0-alpha1
