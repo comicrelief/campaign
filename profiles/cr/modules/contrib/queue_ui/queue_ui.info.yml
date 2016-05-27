@@ -1,0 +1,6 @@
+name: Queue UI
+type: module
+description: 'Interface and manager for Drupal queues.'
+package: Queues
+version: VERSION
+core: 8.x
