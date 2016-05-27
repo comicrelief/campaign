@@ -7,7 +7,7 @@
 
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Url;
-
+use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 /**
  * Implements hook_permission().
  */
@@ -45,13 +45,6 @@ function cr_transactional_emails_help($route_name, RouteMatchInterface $route_ma
  *   Returns boolean status true or false on delivery to email delivery service.
  */
 function cr_transactional_emails_send($send_to, $template = array(), $params = array()) {
-  /*
-   * NOTES:
-   * The following code is specific to SmartFocus and so can be moved to a
-   * plugin class.
-   * cr_transactional_emails_send() can then be refactored to use as a mapper
-   * function to call the selected plugin and class method.
-   */
 
   // Check email address; log error if email address is invalid.
   if (!(\Drupal::service('email.validator')->isValid($send_to))) {
@@ -59,70 +52,29 @@ function cr_transactional_emails_send($send_to, $template = array(), $params = a
     return FALSE;
   }
 
-  // Check SmartFocus template keys; log error if keys not supplied.
-  if (empty($template['template_unique_api_key'])) {
-    \Drupal::logger('cr_transactional_emails')->error('cr_transactional_emails_send(): No template unique key provided');
-    return FALSE;
-  }
-  if (empty($template['template_security_api_key'])) {
-    \Drupal::logger('cr_transactional_emails')->error('cr_transactional_emails_send(): No template security key provided');
-    return FALSE;
-  }
+  $message['timestamp'] = time();
+  $message['transSourceURL'] = \Drupal::service('path.current')->getPath();
+  $message['transSource'] = "";
+  $message['emailAddress'] = $send_to;
 
-  // Flatten $params to delimited separated string for SmartFocus.
-  $params_string = array();
-  $smartfocus_parameter_headers = array(
-    'transource',
-    'first_name',
-    'last_name',
-    'email',
-    'category',
-    'subject',
-    'message',
-  );
-  foreach ($params as $k => $v) {
-    if (in_array(trim($k), $smartfocus_parameter_headers)) {
-      $params_string[] = trim($k) . ':' . trim($v);
-    }
-  }
-  $params_string = implode('|', $params_string);
+  $queue_name = 'queue1';
 
-  // Build query array to send to SmartFocus with specific instructions and
-  // parameters.
-  // Past date used for 'senddate' to instruct SmartFocus to send immediately.
-  $query = array(
-    'random' => $template['template_unique_api_key'],
-    'encrypt' => $template['template_security_api_key'],
-    'email' => $send_to,
-    'senddate' => '2014-01-01 00:00:00',
-    'uidkey' => 'EMAIL',
-    'stype' => 'NOTHING',
-    'dyn' => $params_string,
-  );
-
-  // Build api url conneciton string and attach parameters.
-  $config = \Drupal::config('cr_transactional_emails.settings');
-  $endpoint = $config->get('smartfocus_api_endpoint');
-  $url = Url::fromUri($endpoint, array('query' => $query))->toString();
-
-  // Trigger action to SmartFocus; log issues encountered.
   try {
-    $response = \Drupal::httpClient()->get($url);
-    $status_code = $response->getStatusCode();
-    $body_data = $response->getBody();
-    if ($status_code != '200') {
-      \Drupal::logger('cr_transactional_emails')->error('cr_transactional_emails_send(): SmartFocus API call error: !error.', array('!error' => $body_data));
+    $queue_factory = \Drupal::service('queue');
+    $queue = $queue_factory->get($queue_name);
+    $message_sent = $queue->createItem($message);
+
+    if (!$message_sent) {
+      \Drupal::logger('cr_transactional_emails')->error('cr_transactional_emails_send(): Unable to send message');
       return FALSE;
-    } else {
-      return TRUE;
+      // Need to fallback to Database Queue here
     }
-  }
-  catch (RequestException $e) {
-    \Drupal::logger('cr_transactional_emails')->error('cr_transactional_emails_send(): SmartFocus API call exception: !error.', array('!error' => $e->getMessage()));
+  } catch (ServiceNotFoundException $exception) {
+    \Drupal::logger('cr_transactional_emails')->error('cr_transactional_emails_send(): Unable to get queue service');
     return FALSE;
   }
 
-  return FALSE;
+  return TRUE;
 }
 
 /**
