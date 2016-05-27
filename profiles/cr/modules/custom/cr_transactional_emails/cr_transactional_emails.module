@@ -6,7 +6,6 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
-use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 /**
  * Implements hook_permission().
@@ -67,9 +66,10 @@ function cr_transactional_emails_send($send_to, $template = array(), $params = a
     if (!$message_sent) {
       \Drupal::logger('cr_transactional_emails')->error('cr_transactional_emails_send(): Unable to send message');
       return FALSE;
-      // Need to fallback to Database Queue here
+      // Need to fallback to Database Queue here.
     }
-  } catch (ServiceNotFoundException $exception) {
+  }
+  catch (ServiceNotFoundException $exception) {
     \Drupal::logger('cr_transactional_emails')->error('cr_transactional_emails_send(): Unable to get queue service');
     return FALSE;
   }
