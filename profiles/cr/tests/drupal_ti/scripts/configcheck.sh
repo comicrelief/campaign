@@ -14,6 +14,7 @@ chmod 777 sites/default/settings.php
 
 # mv sites/default/settings.php settings.php.tmp
 sudo git checkout sites/default/settings.php
+sudo git checkout Gemfile.lock
 
 git status
 
