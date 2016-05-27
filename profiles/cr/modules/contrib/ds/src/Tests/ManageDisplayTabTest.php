@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Definition of Drupal\ds\Tests\ManageDisplayTabTest.
+ * Contains \Drupal\ds\Tests\ManageDisplayTabTest.
  */
 
 namespace Drupal\ds\Tests;

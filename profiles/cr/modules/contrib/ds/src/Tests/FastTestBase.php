@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \Drupal\field_ui\Tests\ManageFieldsTest.
+ * Contains \Drupal\ds\Tests\FastTestBase.
  */
 
 namespace Drupal\ds\Tests;
@@ -81,6 +81,7 @@ abstract class FastTestBase extends WebTestBase {
     // Create a test user.
     $this->adminUser = $this->drupalCreateUser(array(
       'access content',
+      'access in-place editing',
       'admin classes',
       'admin display suite',
       'admin fields',

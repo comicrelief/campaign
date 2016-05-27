@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Definition of Drupal\ds\Tests\LayoutClassesTest.
+ * Contains \Drupal\ds\Tests\LayoutClassesTest.
  */
 
 namespace Drupal\ds\Tests;
