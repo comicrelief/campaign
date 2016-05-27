@@ -17,6 +17,7 @@
     position: relative;
     margin-top: 35px;
     margin-bottom: 35px;
+    padding-top: 50px;
     .form-item {
       margin: 0;
     }
@@ -131,8 +132,8 @@
 /* Medium breakpoint */
 @include breakpoint($screen-md) {
   .block--cr-email-signup {
-    padding: 0;
     .block--cr-email-signup__inner-wrapper { 
+      padding: 0;
       .cr-email-signup--messages {
         @include span(4);
         @include push(2);
