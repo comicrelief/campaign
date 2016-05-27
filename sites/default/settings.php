@@ -43,8 +43,6 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
 
 if (getenv('VCAP_SERVICES')) {
     include __DIR__ . "/settings.cf.php";
-} else {
-    include __DIR__ . "/settings.pantheon.php";
 }
 
 /**

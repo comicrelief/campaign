@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.landing.field_landing_image
     - field.field.node.landing.field_landing_image_mobile
     - field.field.node.landing.field_paragraphs
+    - field.field.node.landing.field_svg_body_title
     - field.field.node.landing.panelizer
     - node.type.landing
   module:
@@ -145,6 +146,7 @@ third_party_settings:
     regions:
       ds_content:
         - field_landing_copy_position_alig
+        - field_svg_body_title
         - field_landing_background_colour
         - field_landing_image_mobile
         - field_landing_image
@@ -153,7 +155,7 @@ third_party_settings:
     fields:
       node_title:
         plugin_id: node_title
-        weight: 4
+        weight: 5
         label: hidden
         formatter: default
 id: node.landing.landing_page_header
@@ -164,12 +166,12 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 5
+    weight: 6
     settings: {  }
     third_party_settings: {  }
   field_landing_background_colour:
     type: list_default
-    weight: 1
+    weight: 2
     label: hidden
     settings: {  }
     third_party_settings: {  }
@@ -180,7 +182,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_landing_image:
-    weight: 3
+    weight: 4
     label: hidden
     settings:
       responsive_image_style: bg_rich_text
@@ -189,7 +191,7 @@ content:
     type: responsive_image
   field_landing_image_mobile:
     type: image
-    weight: 2
+    weight: 3
     label: hidden
     settings:
       image_style: ''
@@ -197,24 +199,30 @@ content:
     third_party_settings: {  }
   field_paragraphs:
     type: entity_reference_revisions_entity_view
-    weight: 16
+    weight: 17
     label: above
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
+  field_svg_body_title:
+    type: basic_string
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
   links:
-    weight: 14
+    weight: 15
     settings: {  }
     third_party_settings: {  }
   panelizer:
     type: panelizer
-    weight: 13
+    weight: 14
     label: hidden
     settings: {  }
     third_party_settings: {  }
   social_links:
-    weight: 15
+    weight: 16
     settings: {  }
     third_party_settings: {  }
 hidden: {  }

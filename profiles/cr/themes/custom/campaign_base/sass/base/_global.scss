@@ -16,8 +16,9 @@ body {
 }
 .page__title {
   max-width: 640px;
-  margin: 40px auto;
+  margin: 100px auto 40px;
   text-align: center;
+  text-transform: capitalize;
 }
 .datetime {
   display: block;
@@ -95,6 +96,9 @@ picture img {
       color: $white;
     }
   }
+  p {
+    margin-top: 15px;
+  }
   .cc_message {
     @include breakpoint($screen-md) {
       width: 80%;
@@ -111,5 +115,28 @@ picture img {
     }
     float: none;
     margin-top: 20px;
+    height: auto;
   }
+}
+// Table style move to table component
+table {
+  border-collapse: collapse;
+  td {
+    padding: 10px;
+    border: 1px solid $black;
+  }
+}
+// Figure style align move to figure component
+figure.align-left {
+  margin: 0 20px 20px;
+  figcaption {
+    padding: 10px;
+    text-align: center;
+  }
+}
+// Misc move somewhere else
+hr {
+  clear: both;
+  margin: 0 0 20px;
+  border: none;
 }

@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Definition of Drupal\ds\Tests\ViewModesTest.
+ * Contains \Drupal\ds\Tests\FieldPermissionsTest.
  */
 
 namespace Drupal\ds\Tests;

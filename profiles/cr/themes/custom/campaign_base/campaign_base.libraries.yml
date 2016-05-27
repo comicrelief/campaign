@@ -11,3 +11,5 @@ global-js:
   dependencies:
     - core/jquery
     - core/modernizr
+    - core/jquery.ui
+    - core/jquery.ui.selectmenu
