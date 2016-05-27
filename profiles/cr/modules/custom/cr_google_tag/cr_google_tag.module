@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Module: cr_google_tag  .
+ */
 
 use Drupal\Core\Site\Settings;
 
@@ -11,21 +15,21 @@ function cr_google_tag_page_attachments(array &$attachments) {
   $attachments['#attached']['html_head'][] = [
     [
       '#type' => 'html_tag',
-     '#tag' => 'script',
+      '#tag' => 'script',
       '#value' => "var dataLayer = [{
-          'site': {
-            'category': 'content', // content, frost, shop, donate or game.
-      -     'subcategory': ' ', //optional
-            'environment': " . $env . "
-          },
-          'user': {
-              'logged': 'N'
-          }
+        'site': {
+          'category': 'content', // content, frost, shop, donate or game.
+          -     'subcategory': ' ', //optional
+          'environment': " . $env . "
+        },
+        'user': {
+          'logged': 'N'
+        }
       }];",
       '#attributes' => array('src' => ''),
 
-   ],
-   'cr_google_tag'
+    ],
+    'cr_google_tag',
   ];
 
 }
