@@ -255,7 +255,7 @@ function drush_ds_field($name = NULL) {
   $module_name = end($parts);
 
   // Class path
-  $class_path = $current_path . "/src/plugin/DsField/";
+  $class_path = $current_path . "/src/Plugin/DsField/";
   drush_mkdir($class_path);
 
   // Determine the path to our example layout templates.
