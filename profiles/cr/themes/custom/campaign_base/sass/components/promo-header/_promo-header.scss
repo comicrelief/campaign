@@ -10,7 +10,7 @@
 // Style guide: promo-header
 
 .promo-header {
-  @include breakpoint($screen-sm-max, $no-query: true) {
+  @include breakpoint($screen-md-max, $no-query: true) {
     min-height: 450px;
   }
   position: relative;
@@ -19,7 +19,7 @@
 }
 .promo-header__header {
   &.bg--black {
-    @include breakpoint($screen-sm-max) {
+    @include breakpoint($screen-md-max) {
       background-color: transparent;
       &.no-img {
         background-color: $black;
@@ -28,7 +28,7 @@
     background-color: $black;
   }
   &.bg--red {
-    @include breakpoint($screen-sm-max) {
+    @include breakpoint($screen-md-max) {
       background-color: transparent;
       &.no-img {
         background-color: $black;
@@ -39,7 +39,7 @@
   &.bg--white {
     background-color: $white;
     .promo-header__content p {
-      @include breakpoint($screen-sm-max) {
+      @include breakpoint($screen-md-max) {
         color: $white;
         background-color: transparent;
         &.no-img {
@@ -60,13 +60,13 @@
   color: $white;
 }
 .promo-header__bg-image {
-  @include breakpoint($screen-sm-max, $no-query: true) {
+  @include breakpoint($screen-md-max, $no-query: true) {
     position: absolute;
     width: 100%;
     height: 100%;
   }
   img {
-    @include breakpoint($screen-sm-max) {
+    @include breakpoint($screen-md-max) {
       display: block;
       width: 100%;
       height: 100%;
@@ -80,7 +80,7 @@
   position: relative;
   max-width: 1200px;
   margin: auto;
-  @include breakpoint($screen-md) {
+  @include breakpoint($screen-md-max) {
     position: absolute;
     top: 50%;
     right: 0;
@@ -93,18 +93,18 @@
     margin: 60px auto;
     padding: 0 20px;
     &--centre {
-      @include breakpoint($screen-sm-max) {
+      @include breakpoint($screen-md-max) {
         margin-right: auto;
         margin-left: auto;
       }
     }
     &--left {
-      @include breakpoint($screen-sm-max) {
+      @include breakpoint($screen-md-max) {
         margin-left: 0;
       }
     }
     &--right {
-      @include breakpoint($screen-sm-max) {
+      @include breakpoint($screen-md-max) {
         margin-right: 0;
       }
     }
