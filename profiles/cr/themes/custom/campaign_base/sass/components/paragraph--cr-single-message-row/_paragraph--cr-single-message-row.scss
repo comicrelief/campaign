@@ -26,23 +26,6 @@
     text-align: center;
   }
 }
-.paragraph--cr-single-message-row {
-  &.paragraph--cr-single-message-row--title-inside-image-right {
-    background: #F5F2ED;
-    max-width: 100%;
-    margin: 0;
-    padding: 50px 0;
-    margin-top: -55px;
-    @include breakpoint($screen-lg, $no-query: true) {
-      margin-top: -75px;
-      padding: 70px 0;
-    }
-    .paragraph--cr-single-message-row__inner-wrapper {
-      @include container;
-      position: relative;
-    }
-  }
-}
 .paragraph--cr-single-message-row__body {
   p {
     font-size: 18px;
