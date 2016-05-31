@@ -1,10 +1,14 @@
+{# {{ kint( content  )}} #}
+
 <div class="block--cr-email-signup">
-	<div class="block--cr-email-signup__inner-wrapper">
-	  <div class="cr-email-signup--messages">
-	    {{ content.initial_message }}
-	    {{ content.first_success_message }}
-	    {{ content.second_success_message }}
-	  </div> 
-	  {{ content|without('initial_message', 'first_success_message','second_success_message') }}
-	</div>
+
+  <div class="cr-email-signup--messages">
+    {{ content.initial_message }}
+    {{ content.first_success_message }}
+    {{ content.second_success_message }}
+  </div> 
+  
+  {{ content|without('initial_message', 'first_success_message','second_success_message') }}
+
 </div>
+
