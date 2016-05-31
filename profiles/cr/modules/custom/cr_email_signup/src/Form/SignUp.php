@@ -54,7 +54,7 @@ class SignUp extends FormBase implements FormInterface {
     $queue_message = array_merge($this->skeletonMessage, $append_message);
 
     // TODO: Move to config/default.
-    $queue_name = 'queue1';
+    $queue_name = 'esu';
     $queue_factory = \Drupal::service('queue');
     $queue = $queue_factory->get($queue_name);
     $queue->createItem($queue_message);
