@@ -9,6 +9,7 @@ namespace Drupal\cr_email_signup\Form;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormInterface;
 use Drupal\Core\Form\FormStateInterface;
+
 /**
  * Concrete implementation of Step One.
  */
@@ -51,12 +52,12 @@ class SignUp extends FormBase implements FormInterface {
 
     // Add passed arguments.
     $queue_message = array_merge($this->skeletonMessage, $append_message);
-
-    // TODO: Move to config/default.
-    $queue_name = 'queue1';
+    // TODO: This needs to be configured via settings.
+    $queue_name = "esu";
     $queue_factory = \Drupal::service('queue');
     $queue = $queue_factory->get($queue_name);
     $queue->createItem($queue_message);
+
   }
 
   /**
