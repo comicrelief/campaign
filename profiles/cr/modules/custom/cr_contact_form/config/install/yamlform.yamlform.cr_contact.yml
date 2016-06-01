@@ -42,7 +42,7 @@ settings:
   page_confirm_path: ''
   form_closed_message: ''
   form_exception_message: ''
-  form_submit_label: 'Send message'
+  form_submit_label: 'Send email'
   form_prepopulate: false
   preview: 0
   preview_next_button_label: ''
@@ -53,8 +53,8 @@ settings:
   draft_button_label: ''
   draft_saved_message: ''
   draft_loaded_message: ''
-  confirmation_type: url
-  confirmation_message: 'Your message has been sent.'
+  confirmation_type: inline
+  confirmation_message: 'Thank you for your enquiry which has been sent to the relevant team.'
   confirmation_url: '<front>'
   limit_total: null
   limit_total_message: ''
