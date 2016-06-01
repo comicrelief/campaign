@@ -88,4 +88,13 @@ access:
   delete_own:
     roles: {  }
     users: {  }
-handlers: {  }
+handlers:
+  queue:
+    id: queue
+    label: Queue
+    handler_id: queue
+    status: true
+    weight: 3
+    settings:
+      queue_name: contact_us
+      debug: 0
