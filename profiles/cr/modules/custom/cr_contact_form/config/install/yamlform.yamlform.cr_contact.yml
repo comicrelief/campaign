@@ -5,6 +5,7 @@ id: cr_contact
 title: Comic Relief Contact us
 description: 'Comic Relief contact us form'
 inputs: |
+  '#markup': <p>Please use the drop-down menu to specify what your query is about. We’ll get back to you as soon as possible.</p>
   firstName:
     '#title': 'First Name'
     '#type': textfield
