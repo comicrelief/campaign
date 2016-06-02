@@ -14,16 +14,8 @@ use Symfony\Component\HttpFoundation\Request;
  * To also discover test modules, add
  * @code
  * $settings['extension_discovery_scan_tests'] = TRUE;
- * @encode
+ * @endcode
  * to your settings.php.
- *
- * To add additional profile directories, add
- * @code
- * $settings['profile_directories'] = array(path);
- * @encode
- * to your settings.php.  If multiple paths are specified, they are searched
- * from last to first.
- *
  */
 class ExtensionDiscovery {
 
@@ -86,7 +78,7 @@ class ExtensionDiscovery {
   protected $profileDirectories;
 
   /**
-   * The app root.
+   * The app root for the current operation.
    *
    * @var string
    */
@@ -146,7 +138,7 @@ class ExtensionDiscovery {
    * To also find test modules, add
    * @code
    * $settings['extension_discovery_scan_tests'] = TRUE;
-   * @encode
+   * @endcode
    * to your settings.php.
    *
    * The information is returned in an associative array, keyed by the extension
@@ -216,12 +208,12 @@ class ExtensionDiscovery {
     $files = array();
     foreach ($searchdirs as $dir) {
       // Discover all extensions in the directory, unless we did already.
-      if (!isset(static::$files[$dir][$include_tests])) {
-        static::$files[$dir][$include_tests] = $this->scanDirectory($dir, $include_tests);
+      if (!isset(static::$files[$this->root][$dir][$include_tests])) {
+        static::$files[$this->root][$dir][$include_tests] = $this->scanDirectory($dir, $include_tests);
       }
       // Only return extensions of the requested type.
-      if (isset(static::$files[$dir][$include_tests][$type])) {
-        $files += static::$files[$dir][$include_tests][$type];
+      if (isset(static::$files[$this->root][$dir][$include_tests][$type])) {
+        $files += static::$files[$this->root][$dir][$include_tests][$type];
       }
     }
 
@@ -258,11 +250,6 @@ class ExtensionDiscovery {
     if ($profile) {
       $this->profileDirectories[] = drupal_get_path('profile', $profile);
     }
-
-    // Allow additional profile directories to be added from settings.php.
-    // This provides support for "base profiles".
-    $this->profileDirectories = array_merge(Settings::get('profile_directories', []), $this->profileDirectories);
-
     return $this;
   }
 
@@ -491,7 +478,7 @@ class ExtensionDiscovery {
       else {
         $filename = $name . '.' . $type;
       }
-      if (!file_exists(dirname($pathname) . '/' . $filename)) {
+      if (!file_exists($this->root . '/' . dirname($pathname) . '/' . $filename)) {
         $filename = NULL;
       }
 
