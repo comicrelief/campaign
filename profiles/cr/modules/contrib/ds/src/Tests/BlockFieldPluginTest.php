@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Definition of Drupal\ds\Tests\BlockFieldPluginTest.
+ * Contains \Drupal\ds\Tests\BlockFieldPluginTest.
  */
 
 namespace Drupal\ds\Tests;

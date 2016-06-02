@@ -2,14 +2,13 @@
 
 /**
  * @file
- * Definition of Drupal\ds\Tests\ViewsTest.
+ * Contains \Drupal\ds\Tests\ViewsTest.
  */
 
 namespace Drupal\ds\Tests;
 
 use Drupal\views\Tests\ViewTestData;
 use Drupal\views\ViewExecutable;
-
 
 /**
  * Tests for Display Suite Views integration.

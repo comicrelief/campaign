@@ -195,6 +195,7 @@ config_devel:
   - user.role.anonymous
   - user.role.authenticated
   - user.role.editor
+  - user.settings
 
   # Contributed modules
   - pathauto.pattern.basic_page

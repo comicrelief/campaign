@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Definition of Drupal\ds\Tests\LayoutPluginTest.
+ * Contains \Drupal\ds\Tests\LayoutPluginTest.
  */
 
 namespace Drupal\ds\Tests;

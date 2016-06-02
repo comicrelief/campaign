@@ -169,7 +169,7 @@ class Expert extends DsFieldTemplateBase {
         ),
       );
       $form['tokens']['help'] = array(
-        '#theme' => 'token_tree',
+        '#theme' => 'token_tree_link',
         '#token_types' => 'all',
         '#global_types' => FALSE,
         '#dialog' => TRUE,

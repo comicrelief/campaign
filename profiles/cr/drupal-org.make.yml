@@ -6,8 +6,6 @@ defaults:
     subdir: "contrib"
 projects:
   # Core contrib
-  cdn:
-    version: 3.0-alpha1
   ctools:
     version: 3.0-alpha26
     patch:
@@ -70,7 +68,7 @@ projects:
   panelizer:
     version: 3.0-alpha2
   ds:
-    version: 2.3
+    version: 2.4
   field_group:
     version: 1.0-rc4
   entity_reference_revisions:
@@ -103,15 +101,15 @@ projects:
     download:
       version: 1.x-dev
       revision: ca8954d
-  memcache:
-    download:
-      version: 2.x-dev
-      revision: e0b03a7
   stage_file_proxy:
     version: 1.0-alpha1
+  queue_ui:
+    download:
+      version: 2.x-dev
+      revision: f51ebea
   # Editor/admin experience
   admin_toolbar:
-    version: 1.14
+    version: 1.15
   focal_point:
     download:
       version: 1.x-dev
@@ -142,9 +140,16 @@ projects:
   google_tag:
     download:
       branch: 8.x-1.x
-      revision: e0e013c8d8f8c8b376ba6b80aada179ee7c656eb
+      revision: 692b6922ac3277eed3f3cc8895308e0cced3d0d9
       url: https://github.com/mikeyp/google_tag.git
   optimizely:
     version: 2.15-rc1
   simple_sitemap:
     version: 2.1
+  # Performance modules
+  memcache:
+    download:
+      version: 2.x-dev
+      revision: e0b03a7
+  cdn:
+    version: 3.0-alpha1
