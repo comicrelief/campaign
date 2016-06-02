@@ -16,7 +16,9 @@ projects:
       version: 2.x-dev
       revision: 0bab734
   metatag:
-    version: 1.0-beta8
+    download:
+      branch: 8.x-1.x
+      revision:	2aff0954fe41f39fb33e8c548b8ac6f18d801c3a
   pathauto:
     version: 1.0-alpha3
   redirect:
