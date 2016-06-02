@@ -125,8 +125,15 @@
       background: sprite($icons, green-tick) no-repeat;
     }
   }
+  // Error state
+  &.block--cr-email-signup--error {
+    .messages.messages--error {
+      margin-top: 50px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+  }
 }
-
 
 
 /* Medium breakpoint */
@@ -214,6 +221,23 @@
         @include push(2);
       }
     }
+    // Error state
+    &.block--cr-email-signup--error {
+      .block--cr-email-signup__inner-wrapper {
+        padding-top: 65px;
+        &:after {
+          top: 73px;
+        }
+      }
+      .messages.messages--error {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    }
   }
 }
 
@@ -252,6 +276,13 @@
       .cr-email-signup__school-phase-wrapper {
         @include span(3);
         margin-right: 0;
+      }
+    }
+    // Error state
+    &.block--cr-email-signup--error {
+      .messages.messages--error {
+        margin-top: 0;
+        margin-bottom: 0;
       }
     }
   }
