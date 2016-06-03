@@ -54,10 +54,17 @@ class SignUp extends FormBase implements FormInterface {
     $queue_message = array_merge($this->skeletonMessage, $append_message);
 
     // TODO: Move to config/default.
-    $queue_name = 'queue1';
-    $queue_factory = \Drupal::service('queue');
-    $queue = $queue_factory->get($queue_name);
-    $queue->createItem($queue_message);
+    $queue_name = 'esu';
+    try {
+      $queue_factory = \Drupal::service('queue');
+      $queue = $queue_factory->get($queue_name);
+      if (FALSE === $queue->createItem($queue_message)) {
+        throw new \Exception("createItem Failed. Check Queue.");
+      }
+    }
+    catch (\Exception $exception) {
+      \Drupal::logger('cr_email_signup')->error("Unable to queue message. Attempted to queue message '$queue_message'. Error was: " . $exception->getMessage());
+    }
   }
 
   /**
