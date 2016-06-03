@@ -40,8 +40,10 @@
         // If we've got errors present, don't do anything
         if ( $(_settings.formWrapperClass).has(_settings.errorMessageClass).length ) {
           // Erroring
+          $(_settings.formWrapperClass).addClass('block--cr-email-signup--error');
         } else {
           // Successful submit
+          $(_settings.formWrapperClass).removeClass('block--cr-email-signup--error');
           _base.updateStateClasses();
         }
       });
