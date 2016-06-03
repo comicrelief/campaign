@@ -121,8 +121,6 @@ projects:
     version: 2.15-rc1
   simple_sitemap:
     version: 2.1
-  monolog:
-    version: 1.0-alpha2
   # Performance modules
   memcache:
     download:
