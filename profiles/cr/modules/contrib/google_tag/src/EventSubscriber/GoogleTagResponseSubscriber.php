@@ -97,11 +97,13 @@ class GoogleTagResponseSubscriber implements EventSubscriberInterface {
 
     if ($this->tagApplies($request, $response)) {
       $container_id = $this->config->get('container_id');
+      // @TODO Someone must do the UI (I'll say get rid of the UI), and improve this and the getTag...
+      $container_id2 = $this->config->get('container_id2');
       $container_id = trim(json_encode($container_id), '"');
       $compact = $this->config->get('compact_tag');
 
       // Insert snippet after the opening body tag.
-      $response_text = preg_replace('@<body[^>]*>@', '$0' . $this->getTag($container_id, $compact), $response->getContent(), 1);
+      $response_text = preg_replace('@<body[^>]*>@', '$0' . $this->getTag($container_id, $compact) . $this->getTag($container_id2, $compact), $response->getContent(), 1);
       $response->setContent($response_text);
     }
   }
