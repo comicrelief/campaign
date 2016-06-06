@@ -16,68 +16,11 @@ The minimum software requirements to run Drupal 8 can be found at: [https://www.
 
 
 The other essentials needed to run this solution are:
-- grunt
 - drush v8
 - phing
+- grunt
 
 The next steps will cover how to install these tools.
-
-### Grunt
-
-Grunt is simply used to monitor changes in front-end asset files and trigger tasks to build the theme, e.g. compile css, minifying js, etc.
-
-##### Install npm
-
-Install npm from the theme directory:
-
-```bash
-cd profiles/cr/themes/custom/campaign_base/
-npm install
-```
-
-*Source: [https://docs.npmjs.com/](https://docs.npmjs.com/)*
-
-##### Install bundler
-
-Install bundler from the theme directory:
-
-```bash
-cd profiles/cr/themes/custom/campaign_base/ 
-bundle install
-```
-
-Bundler will install all gems needed for your project.
-
-*Source: [http://bundler.io/](http://bundler.io/)*
-
-##### Running Grunt
-
-For local/dev environments, run:
-
-```bash
-grunt default
-```
-
-Grunt will watch all SASS / TWIG / JS / Images assets for changes and will:
-- Compile CSS
-- jshint JS
-- Generate compass image sprites
-- Add source sass map to help inspect sass files in browser inspector
-- Reload your browser (you need livereload chrome extension)
-
-For prod environment, run:
-
-```bash
-grunt build
-```
-
-Grunt will compile CSS, remove comments, remove sass source file, minify and concatenate js.
-
-You can also do this from the root of this repository using
-
-```bash
-phing grunt:build
-```
 
 ### PHP Configurations
 
@@ -145,24 +88,45 @@ cp build.example.properties build.properties
 
 And now adapt `build.properties` adding in your Drush 8 binary location, database connection details, and your local website URL.
 
-Now, do the same with `settings.local.php`
+### Grunt
+
+Grunt is simply used to monitor changes in front-end asset files and trigger tasks to build the theme, e.g. compile css, minifying js, etc.
+
+##### Install npm & Bundler
+
+From the root of the repo run:
 
 ```bash
-cp sites/default/settings.example.local.php sites/default/settings.local.php
+phing build:prepare
 ```
 
-And change the database connection details as well.
+All node modules and gems required for this project will be installed.
 
-**FOR PRODUCTION ENVIRONMENTS ONLY!**
-The file also contains developer debugging configurations and is worth disabling for production environments.
 
-```php
-// Override default system configuration. Remove all the following lines for prod env.
-$config['system.logging']['error_level'] = 'verbose';
-$config['system.performance']['css']['preprocess'] = false;
-$config['system.performance']['js']['preprocess'] = false;
+##### Running Grunt
+
+```bash
+phing grunt:build
 ```
-  
+
+Grunt will watch all SASS / TWIG / JS / Images assets for changes and will:
+- Compile CSS
+- jshint JS
+- Generate compass image sprites
+- Add source sass map to help inspect sass files in browser inspector
+- Reload your browser (you need livereload chrome extension)
+
+
+Grunt will compile CSS, remove comments, remove sass source file, minify and concatenate js.
+
+Now, for `environment.yml`
+
+```bash
+cp sites/default/example.environment.yml sites/default/environment.yml
+```
+
+Change database details accordingly.
+
 ##### Using Phing
 
 To prepare the site to develop, run:
