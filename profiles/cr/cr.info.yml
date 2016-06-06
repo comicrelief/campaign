@@ -53,7 +53,7 @@ dependencies:
   - social_links
   - focal_point
   - cookieconsent
-  #- simple_sitemap
+  - simple_sitemap
 
   # Layout
   - inline_entity_form
