@@ -120,7 +120,7 @@ projects:
   optimizely:
     version: 2.15-rc1
   simple_sitemap:
-    version: 2.1
+    version: 2.3
   # Performance modules
   memcache:
     download:
