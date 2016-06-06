@@ -119,7 +119,8 @@ Grunt will watch all SASS / TWIG / JS / Images assets for changes and will:
 
 Grunt will compile CSS, remove comments, remove sass source file, minify and concatenate js.
 
-Now, for `environment.yml`
+### Environment.yml
+This file has been designed to replace the need for a ```settings.local.php```, this is also how the CRAFT environments gather various environment specific settings and credentials. 
 
 ```bash
 cp sites/default/example.environment.yml sites/default/environment.yml
