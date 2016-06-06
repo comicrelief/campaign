@@ -64,6 +64,7 @@ dependencies:
   - ctools_block
   - paragraphs
   - view_mode
+  - imagemagick
 
   # Custom modules
   - cr_layout
@@ -139,6 +140,8 @@ config_devel:
   - system.menu.main-navigation
 
   # Images
+  - system.image
+  - imagemagick.settings
   - image.style.full_node_desktop_770x433
   - image.style.full_node_mobile_442x271
   - image.style.full_node_tablet_330x247
