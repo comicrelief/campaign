@@ -66,13 +66,12 @@ select,
     background-color: #5f5c59;
     font-size: 14px;
     font-weight: normal;
-        -webkit-appearance: none;
+    -webkit-appearance: none;
     // iOS fix
     -webkit-tap-highlight-color: transparent;
     @include transition-property(background-color);
     @include transition-duration(600ms);
     &:hover {
-      //outline: none;
       background-color: #272727;
     }
   }
@@ -95,7 +94,6 @@ select,
       @include border-radius(0);
 
       &:focus {
-        //outline: none;
         border: 2px solid #5f5c59;
         border-right: none;
       }
