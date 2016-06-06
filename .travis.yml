@@ -110,6 +110,7 @@ mysql:
 before_install:
   - rvm install 2.1.5
   - composer global require hirak/prestissimo
+  - composer global config extra.prestissimo.maxConnections 9
   - composer global config minimum-stability beta
   - composer global require lionsad/drupal_ti:1.4.2
   - composer global require phing/phing
