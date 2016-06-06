@@ -115,8 +115,8 @@ projects:
   google_tag:
     download:
       branch: 8.x-1.x
-      revision: 692b6922ac3277eed3f3cc8895308e0cced3d0d9
-      url: https://github.com/mikeyp/google_tag.git
+      revision: 9dc56ec
+      url: https://github.com/Saphyel/google_tag.git
   optimizely:
     version: 2.15-rc1
   simple_sitemap:
