@@ -86,7 +86,8 @@
     right: 0;
     left: 0;
     width: 100%;
-    transform: translateY(-50%);
+  // CHECK THIS!
+  @include translateY(-50%);
   }
   .promo-header__content-inner {
     max-width: 600px;
