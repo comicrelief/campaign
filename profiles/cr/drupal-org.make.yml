@@ -78,6 +78,8 @@ projects:
       revision: ca8954d
   stage_file_proxy:
     version: 1.0-alpha1
+  imagemagick:
+    version: 1.0-alpha2
   queue_ui:
     download:
       version: 2.x-dev
