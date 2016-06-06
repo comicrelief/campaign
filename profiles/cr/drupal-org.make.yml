@@ -99,6 +99,9 @@ projects:
   # Forms
   yamlform:
     version: 1.0-alpha5
+    patch:
+      # See: https://www.drupal.org/node/2743347
+      2743347: https://www.drupal.org/files/issues/2743347_2_return_string.patch
   yamlform_queue:
     download:
       branch: 8.x-1.x
