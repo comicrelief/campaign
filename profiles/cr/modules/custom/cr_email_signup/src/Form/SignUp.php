@@ -9,10 +9,42 @@ namespace Drupal\cr_email_signup\Form;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Session\SessionManagerInterface;
+use Drupal\user\PrivateTempStoreFactory;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * Concrete implementation of Step One.
  */
 class SignUp extends FormBase implements FormInterface {
+
+  /**
+   * Private temporary storage factory.
+   *
+   * @var \Drupal\user\PrivateTempStoreFactory
+   */
+  protected $tempStoreFactory;
+
+  /**
+   * Session manager.
+   *
+   * @var \Drupal\Core\Session\SessionManagerInterface
+   */
+  private $sessionManager;
+
+  /**
+   * Current User.
+   *
+   * @var \Drupal\Core\Session\AccountInterface
+   */
+  private $currentUser;
+
+  /**
+   * The actual storage container.
+   *
+   * @var \Drupal\user\PrivateTempStore
+   */
+  protected $store;
 
   /**
    * Array to send to queue. Some key values should be sourced from config.
@@ -36,6 +68,35 @@ class SignUp extends FormBase implements FormInterface {
   public function getFormId() {
 
     return 'cr_email_signup_form';
+  }
+
+  /**
+   * Constructs a \Drupal\demo\Form\Multistep\MultistepFormBase.
+   *
+   * @param \Drupal\user\PrivateTempStoreFactory $temp_store_factory
+   *   Injected Private temporary storage factory.
+   * @param \Drupal\Core\Session\SessionManagerInterface $session_manager
+   *   Injected Session manager.
+   * @param \Drupal\Core\Session\AccountInterface $current_user
+   *   Injected Current user.
+   */
+  public function __construct(PrivateTempStoreFactory $temp_store_factory, SessionManagerInterface $session_manager, AccountInterface $current_user) {
+    $this->tempStoreFactory = $temp_store_factory;
+    $this->sessionManager = $session_manager;
+    $this->currentUser = $current_user;
+
+    $this->store = $this->tempStoreFactory->get('esu_state');
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('user.private_tempstore'),
+      $container->get('session_manager'),
+      $container->get('current_user')
+    );
   }
 
   /**
@@ -71,6 +132,11 @@ class SignUp extends FormBase implements FormInterface {
    * Build the Form Elements.
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
+    // Start a manual session for anonymous users.
+    if ($this->currentUser->isAnonymous() && !isset($_SESSION['esu_session'])) {
+      $_SESSION['esu_session'] = TRUE;
+      $this->sessionManager->start();
+    }
 
     $form_state = $form_state;
 
@@ -131,14 +197,22 @@ class SignUp extends FormBase implements FormInterface {
   public function validateForm(array &$form, FormStateInterface $form_state) {
     $email_address = $form_state->getValue('email');
     $school_phase = $form_state->getValue('school_phase');
-    $email_valid = \Drupal::service('email.validator')->isValid($email_address);
+    $email_queued = $this->store->get('email_queued');
+    $email_valid = \Drupal::service('email.validator')->isValid($email_address) && strlen($email_address) <= 100;
 
-    if (!empty($email_address) && $email_valid && empty($school_phase)) {
-      // On to step 2. Nothing for now.
+    if (!empty($email_address)) {
+      if (!$email_valid) {
+        $form_state->setErrorByName('email', 'Please enter a valid email address.');
+      }
+      elseif (empty($school_phase) && $email_queued) {
+        // Email looks valid but no school phase selected, make it required.
+        $form_state->setErrorByName('school_phase', 'Please select an age group.');
+        $form['steps']['school_phase']['#required'] = TRUE;
+      }
     }
     else {
-      // Not even sure this needs to be here?
-      parent::validateForm($form, $form_state);
+      // This is only for completeness, should be picked up before submit.
+      $form_state->setErrorByName('email', 'Please enter a valid email address.');
     }
 
     return $form;
@@ -163,12 +237,19 @@ class SignUp extends FormBase implements FormInterface {
         'emailAddress' => $email_address,
         'schoolPhase' => $school_phase,
       ));
+
+      // Once we've queued a full ESU, delete the temp storage.
+      // Might be something to turn off on production.
+      $this->store->delete('email_queued');
     }
     elseif (!empty($email_address) && $email_valid && empty($school_phase)) {
       // Queue the message with only the email available.
       $this->queueMessage(array(
         'emailAddress' => $email_address,
       ));
+
+      // Store that ONLY an email has been queued.
+      $this->store->set('email_queued', TRUE);
     }
 
     return $form;
