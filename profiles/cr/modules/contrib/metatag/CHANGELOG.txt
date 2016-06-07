@@ -1,7 +1,8 @@
-Metatag 8.x-1.x-dev, xxxx-xx-xx
--------------------------------
+Metatag 8.x-1.0-beta9, 2016-06-02
+---------------------------------
 #2725895 by DamienMcKenna: Fixed the name of the Validation submodule to avoid
   YAML validation errors. Yes, somewhat ironic.
+#2725989 by dbt102, DamienMcKenna, neerusrijan: Improve hook_help().
 
 
 Metatag 8.x-1.0-beta8, 2016-05-14
