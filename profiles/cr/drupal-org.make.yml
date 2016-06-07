@@ -81,7 +81,9 @@ projects:
   focal_point:
     download:
       version: 1.x-dev
-      revision: 1bb8116
+      revision: 4cf6bca
+  crop:
+    version: 1.0-rc1
   paragraphs:
     download:
       branch: 8.x-1.x
