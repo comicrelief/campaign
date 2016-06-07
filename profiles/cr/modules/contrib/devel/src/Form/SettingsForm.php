@@ -68,10 +68,6 @@ class SettingsForm extends ConfigFormBase {
     $current_url = Url::createFromRequest($request);
     $devel_config = $this->config('devel.settings');
 
-    $form['api_url'] = array('#type' => 'textfield',
-      '#title' => t('API Site'),
-      '#default_value' => $devel_config->get('api_url'),
-      '#description' => t('The base URL for your developer documentation links. You might change this if you run <a href=":url">api.module</a> locally.', array(':url' => Url::fromUri('http://drupal.org/project/api')->toString())));
     $form['page_alter'] = array('#type' => 'checkbox',
       '#title' => t('Display $page array'),
       '#default_value' => $devel_config->get('page_alter'),
@@ -168,7 +164,6 @@ class SettingsForm extends ConfigFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $values = $form_state->getValues();
     $this->config('devel.settings')
-      ->set('api_url', $values['api_url'])
       ->set('page_alter', $values['page_alter'])
       ->set('raw_names', $values['raw_names'])
       ->set('error_handlers', $values['error_handlers'])

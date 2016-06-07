@@ -18,3 +18,9 @@ services:
     arguments: ['@entity_type.manager']
     tags:
       - { name: event_subscriber }
+
+  devel.twig.debug_extension:
+    class: Drupal\devel\Twig\Extension\Debug
+    arguments: ['@devel.dumper']
+    tags:
+      - { name: twig.extension }

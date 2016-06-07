@@ -39,7 +39,7 @@ class ChromePhp extends DevelDumperBase {
    * {@inheritdoc}
    */
   public static function checkRequirements() {
-    return class_exists('ChromePhp', FALSE);
+    return class_exists('ChromePhp', TRUE);
   }
 
 }
