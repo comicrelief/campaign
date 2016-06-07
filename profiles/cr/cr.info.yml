@@ -78,7 +78,7 @@ dependencies:
   - cr_partner
   - cr_single_message_row_paragraph
   - cr_block_paragraph
-  #- cr_performance
+  - cr_performance
 
   # Development modules
   - config_devel

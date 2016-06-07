@@ -6,3 +6,5 @@ package: Comic Relief
 
 dependencies:
   - memcache
+  - purge
+  - purge_purger_http
