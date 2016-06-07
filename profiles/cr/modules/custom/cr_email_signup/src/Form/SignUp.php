@@ -226,7 +226,6 @@ class SignUp extends FormBase implements FormInterface {
   public function validateAndQueue(array &$form, FormStateInterface $form_state) {
     $email_address = $form_state->getValue('email');
     $school_phase = $form_state->getValue('school_phase');
-    $email_queued = $this->store->get('email_queued');
     $email_valid = \Drupal::service('email.validator')->isValid($email_address) && strlen($email_address) <= 100;
 
     if (!empty($email_address) && $email_valid && !empty($school_phase)) {
