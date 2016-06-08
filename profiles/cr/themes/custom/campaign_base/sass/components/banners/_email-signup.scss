@@ -163,7 +163,7 @@ select,
 @include breakpoint($screen-md) {
   .block--cr-email-signup {
     .block--cr-email-signup__inner-wrapper {
-      padding: 0;
+      padding: 20px 0;
     }
     .cr-email-signup--messages {
       @include span(4 wide);
@@ -220,7 +220,7 @@ select,
     }
     // ESU icon
     .block--cr-email-signup__inner-wrapper:after {
-      top: 7px;
+      top: 27px;
       left: 10%;
       width: 50px;
       height: 35px;
@@ -231,7 +231,7 @@ select,
     &.block--cr-email-signup--step-2,
     &.block--cr-email-signup--step-3 {
       .block--cr-email-signup__inner-wrapper:after {
-        top: 2px;
+        top: 22px;
         width: 45px;
         height: 45px;
         margin-left: -23px;
