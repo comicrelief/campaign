@@ -102,21 +102,28 @@ picture img {
   }
   .cc_message {
     @include breakpoint($screen-md) {
-      width: 80%;
+      width: auto;
+      margin-bottom: 15px;
     }
     display: inline-block;
     width: 100%;
     font-size: 16px;
     font-size: 1em;
+    text-align: center;
   }
   .btn {
     @include breakpoint($screen-md) {
-      float: right;
       margin-top: 0;
+      margin-left: 20px;
+      display: inline-block;
     }
+    
     float: none;
     margin-top: 20px;
     height: auto;
+    width: 120px;
+    margin: 20px auto 0px;
+    display: block;
   }
 }
 // Table style move to table component
