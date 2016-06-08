@@ -99,7 +99,7 @@ ds_3col_equal_width:
   class: '\Drupal\ds\Plugin\DsLayout'
   type: partial
   template: templates/ds-3col-equal-width
-  css: templates/ds-3col-equal-width.css
+  css: css/ds-3col-equal-width.css
   icon: images/ds-3col-equal-width.png
   regions:
     left:

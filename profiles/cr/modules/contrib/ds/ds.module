@@ -307,12 +307,12 @@ function template_preprocess_ds_entity_view(&$variables) {
 function ds_preprocess_ds_layout(&$variables) {
   $layout_settings = $variables['settings'];
 
-  // Fetch the object
+  // Fetch the entity type.
   if (isset($variables['content']['#entity_type'])) {
-    $object = $variables['content']['#entity_type'];
+    $entity_type = $variables['content']['#entity_type'];
   }
   else {
-    $object = FALSE;
+    $entity_type = FALSE;
   }
 
   // Template layout.
@@ -350,10 +350,10 @@ function ds_preprocess_ds_layout(&$variables) {
     foreach ($layout_attributes as $layout_attribute) {
       $replaced_attribute = $layout_attribute;
       if (strpos($layout_attribute, '|') !== FALSE) {
-        if (isset($object)) {
+        if (isset($entity_type)) {
           $replaced_attribute = \Drupal::service('token')->replace(
             $layout_attribute,
-            array($variables['content']['#entity_type'] => $variables['content']['#' . $object]),
+            array($variables['content']['#entity_type'] => $variables['content']['#' . $entity_type]),
             array('clear' => TRUE)
           );
         }
@@ -368,16 +368,16 @@ function ds_preprocess_ds_layout(&$variables) {
     $url = '';
     switch ($layout_settings['link_attribute']) {
       case 'content':
-        if ($object) {
-          $url = $variables['content']['#' . $object]->urlInfo()->getInternalPath();
+        if ($entity_type) {
+          $url = $variables['content']['#' . $entity_type]->toUrl()->getInternalPath();
         }
         break;
       case 'custom':
         $url = $layout_settings['link_custom'];
         break;
       case 'tokens':
-        if ($object) {
-          $url = \Drupal::service('token')->replace($layout_settings['link_custom'], array($layout_settings => $variables['content']['#' . $object]), array('clear' => TRUE));
+        if ($entity_type) {
+          $url = \Drupal::service('token')->replace($layout_settings['link_custom'], array($layout_settings => $variables['content']['#' . $entity_type]), array('clear' => TRUE));
         }
         break;
     }
@@ -388,7 +388,7 @@ function ds_preprocess_ds_layout(&$variables) {
     }
   }
 
-  if ($object) {
+  if ($entity_type) {
     if (isset($variables['content']['#ds_configuration'])) {
       // Add view-mode-{name} to classes.
       if (!in_array('view-mode-' . $variables['content']['#view_mode'], $variables['attributes']['class'])) {
@@ -399,7 +399,7 @@ function ds_preprocess_ds_layout(&$variables) {
       $variables['rendered_by_ds'] = TRUE;
 
       // Let other modules alter the ds array before rendering.
-      $context = array('entity' => isset($variables[$object]) ? $variables[$object] : (isset($variables['content']['#' . $object]) ? $variables['content']['#' . $object] : ''), 'entity_type' => $variables['content']['#entity_type'], 'bundle' => $variables['content']['#bundle'], 'view_mode' => $variables['content']['#view_mode']);
+      $context = array('entity' => isset($variables[$entity_type]) ? $variables[$entity_type] : (isset($variables['content']['#' . $entity_type]) ? $variables['content']['#' . $entity_type] : ''), 'entity_type' => $variables['content']['#entity_type'], 'bundle' => $variables['content']['#bundle'], 'view_mode' => $variables['content']['#view_mode']);
       \Drupal::moduleHandler()->alter('ds_pre_render', $variables['content'], $context, $variables);
     }
   }
@@ -410,7 +410,9 @@ function ds_preprocess_ds_layout(&$variables) {
   }
 
   // Copy entity to top level to improve theme experience
-  $variables[$variables['content']['#entity_type']] = $variables['content']['#entity'];
+  if (isset($variables['content']['#entity'])) {
+    $variables[$variables['content']['#entity_type']] = $variables['content']['#entity'];
+  }
 }
 
 /**
@@ -437,6 +439,12 @@ function ds_contextual_links_view_alter(&$element, $items) {
 
   if (isset($def[$entity_type]) && $def[$entity_type]->get('field_ui_base_route')) {
     if (!empty($entity_type) && \Drupal::moduleHandler()->moduleExists('field_ui') && \Drupal::currentUser()->hasPermission('administer node display')) {
+
+      // This might not exist (especially in panels environments).
+      if (!isset($element['#contextual_links'][$entity_type]['metadata']['ds_bundle'])) {
+        return;
+      }
+
       $bundle = $element['#contextual_links'][$entity_type]['metadata']['ds_bundle'];
       $view_mode = $element['#contextual_links'][$entity_type]['metadata']['ds_view_mode'];
 

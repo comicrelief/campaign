@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Definition of Drupal\ds\Tests\HiddenRegionTest.
+ * Contains \Drupal\ds\Tests\HiddenRegionTest.
  */
 
 namespace Drupal\ds\Tests;

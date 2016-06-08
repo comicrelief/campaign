@@ -1,7 +1,8 @@
 <?php
+
 /**
  * @file
- * Contains Drupal\ds\Tests\EntitiesTest.
+ * Contains \Drupal\ds\Tests\EntitiesTest.
  */
 
 namespace Drupal\ds\Tests;

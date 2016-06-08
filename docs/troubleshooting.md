@@ -133,3 +133,12 @@ This usually happens when drush is unable to connect to the database. Check the 
 2. database server connections and security/firewall configurations
 3. database schema exists
 4. database connection credentials and setup in database server
+
+**Imagemagick**
+
+As we're using the Imagemagick tookit now (allowing animated gifs to be used on the site), make sure you've got this installed locally.
+
+Mac users can use the following quick commands (presuming Brew is installed):
+
+```$ brew update
+$ brew install imagemagick --disable-openmp --build-from-source```
