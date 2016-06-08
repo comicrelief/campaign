@@ -81,7 +81,7 @@ dependencies:
   #- cr_performance
 
   # Development modules
-  - config_devel
+  - features_ui
 
   # Editor/admin experience
   - admin_toolbar_tools
@@ -104,6 +104,7 @@ config_devel:
   - contact.form.feedback
   - node.settings
   - system.cron
+  - features.bundle.comic_relief
 
   # Display modes
   - core.entity_form_display.block_content.basic.default
