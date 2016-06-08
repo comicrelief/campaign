@@ -124,6 +124,10 @@ projects:
   simple_sitemap:
     version: 2.1
   # Performance modules
+  purge:
+    version: 3.0-beta4
+  purge_purger_http:
+    version: 1.0-beta3
   memcache:
     download:
       version: 2.x-dev
