@@ -125,6 +125,8 @@ projects:
   simple_sitemap:
     version: 2.1
   # Performance modules
+  fast_404:
+    version: 1.0-alpha2
   purge:
     version: 3.0-beta4
   purge_purger_http:
