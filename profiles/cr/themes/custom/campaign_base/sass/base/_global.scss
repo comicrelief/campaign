@@ -13,6 +13,7 @@ body {
   height: 138px;
   margin-top: -40px;
   margin-right: 20px;
+  margin-left: 10px;
 }
 .page__title {
   max-width: 640px;
@@ -87,7 +88,6 @@ picture img {
 }
 // to do: add cookie component
 .cookie-consent.cc_container {
-  text-align: center;
   .btn,
   p,
   a {
@@ -113,11 +113,11 @@ picture img {
   }
   .btn {
     @include breakpoint($screen-md) {
-      //float: right;
-      margin-top: 15px;
+      margin-top: 0;
       margin-left: 20px;
       display: inline-block;
     }
+    
     float: none;
     margin-top: 20px;
     height: auto;
