@@ -6,11 +6,21 @@
 // 
 // Style guide: Banners.Email-signup
 
+/* Generic styles */
+input.button,
+input.form-email,
+select,
+.ui-selectmenu-button {
+  &:focus {
+    outline: none;
+  }
+}
+
 /* Step 1 styles */
 .block--cr-email-signup {
   float: left;
   width: 100%;
-  background: #f5f2ed; // change for variable
+  background: #fafafa; // change for variable
   .block--cr-email-signup__inner-wrapper {
     @include container;
     @include clearfix;
@@ -56,10 +66,12 @@
     background-color: #5f5c59;
     font-size: 14px;
     font-weight: normal;
-
+    -webkit-appearance: none;
+    // iOS fix
     -webkit-tap-highlight-color: transparent;
+    @include transition-property(background-color);
+    @include transition-duration(600ms);
     &:hover {
-      outline: none;
       background-color: #272727;
     }
   }
@@ -77,6 +89,17 @@
       height: 50px;
       margin-right: 0;
       padding: 15px 0 15px 10px;
+      border: 1px solid #5f5c59;
+      border-right: none;
+      @include border-radius(0);
+
+      &:focus {
+        border: 2px solid #5f5c59;
+        border-right: none;
+      }
+      &.error {
+        border: 2px solid red;
+      }
     }
   }
   /*  Step 2 */
@@ -143,7 +166,7 @@
       padding: 0;
     }
     .cr-email-signup--messages {
-      @include span(4);
+      @include span(4 wide);
       @include push(2);
       > div {
         @include translateY(-50%);

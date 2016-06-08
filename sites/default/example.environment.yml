@@ -7,18 +7,17 @@ databases:
       prefix:
       host: 127.0.0.1
       port:
-      namespace: Drupal\\Core\\Database\\Driver\\mysql
+      namespace: Drupal\Core\Database\Driver\mysql
       driver: mysql
 
-rabbitmq_credentials:
-  host: 127.0.0.1
-  port: 5672
-  username: guest
-  password: guest
-
 settings:
-  queue_service_queue1: queue.rabbitmq
+  queue_service_esu: queue.rabbitmq
   hash_salt: kzWT4Q5kJe2DkfS72PrATBUfkw54RKzMCbQg933K1Qwe0ZKtonOV_xdmuCac
+  rabbitmq_credentials:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
 
 config:
   system.performance:
