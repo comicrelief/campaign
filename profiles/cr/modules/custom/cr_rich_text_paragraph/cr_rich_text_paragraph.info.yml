@@ -1,4 +1,4 @@
-name: CR Rich Text aragraph
+name: Rich Text aragraph
 type: module
 description: Contains config for Rich Text paragraph type.
 core: 8.x

@@ -1,4 +1,4 @@
-name: cr_page
+name: Basic page
 type: module
 description: Basic page content type
 core: 8.x
