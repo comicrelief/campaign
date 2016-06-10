@@ -79,9 +79,7 @@ projects:
   admin_toolbar:
     version: 1.15
   focal_point:
-    download:
-      version: 1.x-dev
-      revision: 4cf6bca
+    version: 1.0-beta1
   crop:
     version: 1.0-rc1
   paragraphs:
@@ -127,6 +125,6 @@ projects:
   memcache:
     download:
       version: 2.x-dev
-      revision: e0b03a7
+      revision: 908c0a2
   cdn:
     version: 3.0-alpha1
