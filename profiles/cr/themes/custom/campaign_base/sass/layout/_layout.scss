@@ -70,6 +70,10 @@ main {
 
   @include span(12);
 }
-.view-content {
-  // @include span(12);
+
+.node--type-page {
+  padding-bottom: 60px;
+  @include breakpoint($screen-md) {
+    padding-bottom: 60px;
+  }
 }
