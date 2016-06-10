@@ -66,7 +66,7 @@ class FocalPointEffectsTest extends UnitTestCase {
    *
    * @dataProvider calculateAnchorProvider
    */
-  public function testCalculateAnchor($original_image_size, $resized_image_size, $cropped_image_size, $absolute_anchor, $expected_anchor) {
+  public function testCalculateAnchor($original_image_size, $resized_image_size, $cropped_image_size, $position, $expected_anchor) {
     $logger = $this->prophesize(LoggerInterface::class);
     $crop_storage = $this->prophesize(CropStorageInterface::class);
     $immutable_config = $this->prophesize(ImmutableConfig::class);
@@ -87,9 +87,9 @@ class FocalPointEffectsTest extends UnitTestCase {
     $image->getHeight()->willReturn($resized_image_size['height']);
 
     $crop = $this->prophesize(CropInterface::class);
-    $crop->anchor()->willReturn([
-      'x' => $absolute_anchor['x'],
-      'y' => $absolute_anchor['y'],
+    $crop->position()->willReturn([
+      'x' => $position['x'],
+      'y' => $position['y'],
     ]);
     $crop->size()->willReturn([
       'width' => $cropped_image_size['width'],
@@ -223,13 +223,13 @@ class FocalPointEffectsTest extends UnitTestCase {
     $cropped_image_size = ['width' => 400, 'height' => 73];
     list($top, $left, $vcenter, $hcenter, $bottom, $right) = [10, 10, 384, 512, 750, 1000];
     $data['vertical_image_with_horizontal_crop__top_left'] = [$original_image_size, $resized_image_size, $cropped_image_size, ['x' => $left, 'y' => $top], ['x' => 0, 'y' => 0]];
-    $data['vertical_image_with_horizontal_crop__top_center'] = [$original_image_size, $resized_image_size, $cropped_image_size, ['x' => $hcenter, 'y' => $top], ['x' => 311, 'y' => 0]];
+    $data['vertical_image_with_horizontal_crop__top_center'] = [$original_image_size, $resized_image_size, $cropped_image_size, ['x' => $hcenter, 'y' => $top], ['x' => 312, 'y' => 0]];
     $data['vertical_image_with_horizontal_crop__top_right'] = [$original_image_size, $resized_image_size, $cropped_image_size, ['x' => $right, 'y' => $top], ['x' => 711, 'y' => 0]];
     $data['vertical_image_with_horizontal_crop__center_left'] = [$original_image_size, $resized_image_size, $cropped_image_size, ['x' => $left, 'y' => $vcenter], ['x' => 0, 'y' => 240]];
-    $data['vertical_image_with_horizontal_crop__center_center'] = [$original_image_size, $resized_image_size, $cropped_image_size, ['x' => $hcenter, 'y' => $vcenter], ['x' => 311, 'y' => 240]];
+    $data['vertical_image_with_horizontal_crop__center_center'] = [$original_image_size, $resized_image_size, $cropped_image_size, ['x' => $hcenter, 'y' => $vcenter], ['x' => 312, 'y' => 240]];
     $data['vertical_image_with_horizontal_crop__center_right'] = [$original_image_size, $resized_image_size, $cropped_image_size, ['x' => $right, 'y' => $vcenter], ['x' => 711, 'y' => 240]];
     $data['vertical_image_with_horizontal_crop__bottom_left'] = [$original_image_size, $resized_image_size, $cropped_image_size, ['x' => $left, 'y' => $bottom], ['x' => 0, 'y' => 240]];
-    $data['vertical_image_with_horizontal_crop__bottom_center'] = [$original_image_size, $resized_image_size, $cropped_image_size, ['x' => $hcenter, 'y' => $bottom], ['x' => 311, 'y' => 240]];
+    $data['vertical_image_with_horizontal_crop__bottom_center'] = [$original_image_size, $resized_image_size, $cropped_image_size, ['x' => $hcenter, 'y' => $bottom], ['x' => 312, 'y' => 240]];
     $data['vertical_image_with_horizontal_crop__bottom_right'] = [$original_image_size, $resized_image_size, $cropped_image_size, ['x' => $right, 'y' => $bottom], ['x' => 711, 'y' => 240]];
 
     // Vertical image with vertical crop.

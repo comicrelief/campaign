@@ -182,30 +182,36 @@ abstract class FocalPointEffectBase extends ResizeImageEffect implements Contain
    *   Array with two keys (x, y) and anchor coordinates as values.
    */
   protected function calculateAnchor(ImageInterface $image, CropInterface $crop, $original_image_size) {
-    $original_anchor = $crop->anchor();
-    $relative_anchor = \Drupal::service('focal_point.manager')->absoluteToRelative($original_anchor['x'], $original_anchor['y'], $original_image_size['width'], $original_image_size['height']);
+    // @todo Create a focalPointCrop class and override the "anchor" method.
 
-    $new_image_size = [
+    $crop_size = $crop->size();
+    $image_size = [
       'width' => $image->getWidth(),
       'height' => $image->getHeight(),
     ];
-    $new_anchor = \Drupal::service('focal_point.manager')->relativeToAbsolute($relative_anchor['x'], $relative_anchor['y'], $new_image_size['width'], $new_image_size['height']);
 
-    // Set the minimum number of pixels that must exist between the edge of the
-    // image and the anchor point (in both the x and y directions).
-    $crop_size = $crop->size();
-    $anchor_min_margin_x = (int) ceil($crop_size['width'] / 2);
-    $anchor_min_margin_y = (int) ceil($crop_size['height'] / 2);
+    // Because the anchor is returned relative to the original image size we
+    // need to change it proportionally to account for the now-resized image.
+    $focal_point = $crop->position();
+    $focal_point['x'] = (int) round($focal_point['x'] / $original_image_size['width'] * $image_size['width']);
+    $focal_point['y'] = (int) round($focal_point['y'] / $original_image_size['height'] * $image_size['height']);
+
+    // The anchor must be the top-left coordinate of the crop area but the focal
+    // point is expressed as the center coordinates of the crop area.
+    $anchor = [
+      'x' => (int) ($focal_point['x'] - ($crop_size['width'] / 2)),
+      'y' => (int) ($focal_point['y'] - ($crop_size['height'] / 2)),
+    ];
 
     // Ensure that the crop area doesn't fall off the bottom right of the image.
-    $new_anchor['x'] = ($new_anchor['x'] + $anchor_min_margin_x > $new_image_size['width']) ? $new_image_size['width'] - $crop_size['width'] : $new_anchor['x'] - $anchor_min_margin_x;
-    $new_anchor['y'] = ($new_anchor['y'] + $anchor_min_margin_y > $new_image_size['height']) ? $new_image_size['height'] - $crop_size['height'] : $new_anchor['y'] - $anchor_min_margin_y;
+    $anchor['x'] = $anchor['x'] + $crop_size['width'] <= $image_size['width'] ? $anchor['x'] : $image_size['width'] - $crop_size['width'];
+    $anchor['y'] = $anchor['y'] + $crop_size['height'] <= $image_size['height'] ? $anchor['y'] : $image_size['height'] - $crop_size['height'];
 
     // Ensure that the crop area doesn't fall off the top left of the image.
-    $new_anchor['x'] = max(0, $new_anchor['x']);
-    $new_anchor['y'] = max(0, $new_anchor['y']);
+    $anchor['x'] = max(0, $anchor['x']);
+    $anchor['y'] = max(0, $anchor['y']);
 
-    return $new_anchor;
+
+    return $anchor;
   }
-
 }
