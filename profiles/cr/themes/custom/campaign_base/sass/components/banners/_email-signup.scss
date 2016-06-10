@@ -247,9 +247,9 @@ select,
     // Error state
     &.block--cr-email-signup--error {
       .block--cr-email-signup__inner-wrapper {
-        padding-top: 65px;
+        padding-top: 75px;
         &:after {
-          top: 73px;
+          top: 78px;
         }
       }
       .messages.messages--error {
