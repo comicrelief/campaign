@@ -64,7 +64,13 @@ class Connection {
       'Could not find php-amqplib. See the rabbitmq/README.md file for details.'
     );
 
-    $this->settings = $settings;
+    // @TODO investigate why is going on here
+    if (empty($settings->host)) {
+      $this->settings = Settings::get('rabbitmq_credentials');
+    }
+    else {
+      $this->settings = $settings;
+    }
   }
 
   /**
@@ -79,8 +85,10 @@ class Connection {
         'password' => static::DEFAULT_PASS,
         'vhost' => '/',
       ];
-      $credentials = $this->settings->get('rabbitmq.credentials', $default_credentials);
-      $connection = new AMQPStreamConnection($credentials['host'],
+
+      $credentials = empty($this->settings['host']) ? $default_credentials : $this->settings;
+      $connection = new AMQPStreamConnection(
+        $credentials['host'],
         $credentials['port'], $credentials['username'],
         $credentials['password'], $credentials['vhost']
       );
