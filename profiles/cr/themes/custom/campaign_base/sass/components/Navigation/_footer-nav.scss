@@ -28,6 +28,10 @@
         &:hover {
           color: $item-grey;
         }
+
+        &.is-active {
+          color: #c8c8c8;
+        }
       }
       &:last-child {
         a {
