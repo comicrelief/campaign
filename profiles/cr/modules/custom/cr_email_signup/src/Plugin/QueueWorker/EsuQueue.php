@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\cr_email_signup\Plugin\QueueWorker\EsuQueue.
+ */
 
 namespace Drupal\cr_email_signup\Plugin\QueueWorker;
 
@@ -8,7 +12,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 
 /**
- * A Node Publisher that publishes nodes on CRON run.
+ * Email sign up queue.
  *
  * @QueueWorker(
  *   id = "esu",
@@ -24,9 +28,9 @@ class EsuQueue extends QueueWorkerBase implements ContainerFactoryPluginInterfac
    *
    * @param array $configuration
    *   The configuration of the instance.
-   * @param $plugin_id
+   * @param int $plugin_id
    *   The plugin id.
-   * @param $plugin_definition
+   * @param string $plugin_definition
    *   The plugin definition.
    */
   public function __construct(array $configuration, $plugin_id, $plugin_definition) {
