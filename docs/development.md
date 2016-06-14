@@ -97,8 +97,11 @@ Grunt will concatenate all js files in /scripts and minify them to /js
 
 #####In rnd17
 
-	grunt rnd17 --target=themes/rnd17/config.rb
+go to /profile/cr, and
+
+	grunt rnd17 --target=../../themes/rnd17/config.rb
 Grunt will watch all files for changes. Compass will compile css with source map.
+
 	grunt build_all
 Grunt will concatenate all js files in /scripts and minify them to /js
 	
