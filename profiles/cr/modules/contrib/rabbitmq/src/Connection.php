@@ -1,15 +1,11 @@
 <?php
-
 /**
  * @file
  * Contains RabbitMQConnection.
  */
-
 namespace Drupal\rabbitmq;
-
 use Drupal\Core\Site\Settings;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
-
 /**
  * RabbitMQ connection class.
  *
@@ -37,21 +33,18 @@ class Connection {
   const DEFAULT_PORT = 5672;
   const DEFAULT_USER = 'guest';
   const DEFAULT_PASS = 'guest';
-
   /**
    * The singleton RabbitMQ connection.
    *
    * @var \PhpAmqpLib\Connection\AMQPStreamConnection
    */
   protected static $connection;
-
   /**
    * The settings service.
    *
    * @var \Drupal\Core\Site\Settings
    */
   protected $settings;
-
   /**
    * Constructor.
    *
@@ -63,40 +56,30 @@ class Connection {
     assert('class_exists("\PhpAmqpLib\Connection\AMQPStreamConnection")',
       'Could not find php-amqplib. See the rabbitmq/README.md file for details.'
     );
-
-    // @TODO investigate why is going on here
-    if (empty($settings->host)) {
-      $this->settings = Settings::get('rabbitmq_credentials');
-    }
-    else {
-      $this->settings = $settings;
-    }
+    $this->settings = $settings;
   }
-
   /**
    * Get a configured connection to RabbitMQ.
    */
-  public function getConnection() {
-    if (!self::$connection) {
-      $default_credentials = [
-        'host' => static::DEFAULT_SERVER_ALIAS,
-        'port' => static::DEFAULT_PORT,
-        'username' => static::DEFAULT_USER,
-        'password' => static::DEFAULT_PASS,
-        'vhost' => '/',
-      ];
+   public function getConnection() {
+     if (!self::$connection) {
+       $default_credentials = [
+         'host' => static::DEFAULT_SERVER_ALIAS,
+         'port' => static::DEFAULT_PORT,
+         'username' => static::DEFAULT_USER,
+         'password' => static::DEFAULT_PASS,
+         'vhost' => '/',
+       ];
+       $config_credentials = Settings::get('rabbitmq_credentials');
+       $credentials = !empty($config_credentials) ? $config_credentials : $default_credentials;
 
-      $credentials = empty($this->settings['host']) ? $default_credentials : $this->settings;
-      $connection = new AMQPStreamConnection(
-        $credentials['host'],
-        $credentials['port'], $credentials['username'],
-        $credentials['password'], $credentials['vhost']
-      );
-
-      self::$connection = $connection;
-    }
-
-    return self::$connection;
-  }
-
+       $connection = new AMQPStreamConnection(
+         $credentials['host'],
+         $credentials['port'], $credentials['username'],
+         $credentials['password'], $credentials['vhost']
+       );
+       self::$connection = $connection;
+     }
+     return self::$connection;
+   }
 }
