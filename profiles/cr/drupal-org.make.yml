@@ -83,6 +83,8 @@ projects:
       version: 2.x-dev
       revision: f51ebea
   # Editor/admin experience
+  editor_advanced_link:
+    version: 1.2
   admin_toolbar:
     version: 1.15
   focal_point:
