@@ -103,7 +103,9 @@ projects:
   cookieconsent:
     version: 1.0
   rabbitmq:
-    version: 1.0-alpha1
+    download:
+      url: https://github.com/comicrelief/rabbitmq.git
+      branch: 8.x-1.x
   search_api:
     version: 1.0-alpha14
   crazyegg:
@@ -118,6 +120,8 @@ projects:
   simple_sitemap:
     version: 2.1
   # Performance modules
+  fast_404:
+    version: 1.0-alpha2
   purge:
     version: 3.0-beta4
   purge_purger_http:
