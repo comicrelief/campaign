@@ -1,0 +1,30 @@
+{
+    "name": "drupal/monolog",
+    "type": "drupal-module",
+    "description": "A Framework and UI for integrating with the Monolog library.",
+    "homepage": "http://drupal.org/project/monolog",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Chris Pliakas",
+            "email": "opensource@chrispliakas.com",
+            "role": "Project Lead"
+        },
+        {
+            "name": "See contributors",
+            "homepage": "http://drupal.org/node/1937716/committers",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "http://drupal.org/project/issues/monolog"
+    },
+    "require": {
+        "monolog/monolog": ">=1.6.0,<2.0.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "Drupal\\Monolog": "src/"
+        }
+    }
+}

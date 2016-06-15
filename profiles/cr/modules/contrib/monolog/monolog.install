@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for the Monolog module.
+ */
+
+/**
+ * Implements hook_requirements().
+ */
+function monolog_requirements($phase) {
+  $requirements = [];
+
+  if ($phase == 'install') {
+    if (!class_exists('\Monolog\Logger')) {
+      $requirements['monolog_library'] = [
+        'description' => t('The Monolog module requires the monolog/monolog library. Make sure the Monolog package is installed via Composer.'),
+        'severity' => REQUIREMENT_ERROR,
+      ];
+    }
+  }
+
+  return $requirements;
+}

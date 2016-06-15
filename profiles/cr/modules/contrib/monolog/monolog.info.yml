@@ -1,0 +1,12 @@
+type: module
+name: Monolog
+description: A Framework and UI for integrating with the Monolog library.
+dependencies: []
+# core: 8.x
+package: Development
+
+# Information added by Drupal.org packaging script on 2016-02-17
+version: '8.x-1.0-alpha2'
+core: '8.x'
+project: 'monolog'
+datestamp: 1455725662
