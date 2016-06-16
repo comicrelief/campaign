@@ -411,12 +411,8 @@ class FeaturesManager implements FeaturesManagerInterface {
       // @see _system_rebuild_module_data().
       $listing = new ExtensionDiscovery(\Drupal::root());
 
-      $profile_directories = [];
-      // Register the install profile.
+      $profile_directories = $listing->setProfileDirectoriesFromSettings()->getProfileDirectories();
       $installed_profile = $this->drupalGetProfile();
-      if ($installed_profile) {
-        $profile_directories[] = drupal_get_path('profile', $installed_profile);
-      }
       if (isset($bundle) && $bundle->isProfile()) {
         $profile_directory = 'profiles/' . $bundle->getProfileName();
         if (($bundle->getProfileName() != $installed_profile) && is_dir($profile_directory)) {
@@ -637,9 +633,7 @@ class FeaturesManager implements FeaturesManagerInterface {
           if (isset($config_collection[$dependent_item_name]) && (!empty($package) || empty($config_collection[$dependent_item_name]->getPackage()))) {
             try {
               $package_name = !empty($package) ? $package : $config_collection[$item_name]->getPackage();
-              // If a Package is specified, force assign it to the given
-              // package.
-              $this->assignConfigPackage($package_name, [$dependent_item_name], !empty($package));
+              $this->assignConfigPackage($package_name, [$dependent_item_name]);
             }
             catch (\Exception $exception) {
               \Drupal::logger('features')->error($exception->getMessage());
@@ -1231,13 +1225,15 @@ class FeaturesManager implements FeaturesManagerInterface {
   }
 
   protected function addConfigList($full_name, &$list) {
-    if (!in_array($full_name, $list)) {
-      array_unshift($list, $full_name);
-      $value = $this->extensionStorages->read($full_name);
-      if (isset($value['dependencies']['config'])) {
-        foreach ($value['dependencies']['config'] as $config_name) {
-          $this->addConfigList($config_name, $list);
-        }
+    $index = array_search($full_name, $list);
+    if ($index !== FALSE) {
+      unset($list[$index]);
+    }
+    array_unshift($list, $full_name);
+    $value = $this->extensionStorages->read($full_name);
+    if (isset($value['dependencies']['config'])) {
+      foreach ($value['dependencies']['config'] as $config_name) {
+        $this->addConfigList($config_name, $list);
       }
     }
   }
