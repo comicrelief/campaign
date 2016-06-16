@@ -23,6 +23,7 @@ if (file_exists($environment)) {
   $databases = $environment_variables['databases'];
   $settings = array_merge($settings, $environment_variables['settings']);
   $config = array_merge($config, $environment_variables['config']);
+  $config_directories['sync'] = $environment_variables['config_dir'];
 }
 
 /**
