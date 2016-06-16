@@ -12,14 +12,11 @@ core: 8.x
 projects:
   drupal:
     type: core
-    version: 8.1.1
+    version: 8.1.2
     patch:
       # List unmet dependencies instead of just failing
       # @see https://www.drupal.org/node/2655104
       - https://www.drupal.org/files/issues/missing-dependencies-2655104-8.patch
-      # Make inherited install profiles load base profile modules/themes in correct order
-      # @see https://www.drupal.org/node/1356276
-      - https://www.drupal.org/files/issues/make_inherited_install-1356276-133.patch
       # Add Rabbitmq
       - https://gist.githubusercontent.com/Saphyel/8587c0c7adca816929965afa487f2c6a/raw/27ea3546c3b1342173fe45067d7d8f6f1b927969/rabbitmq.patch
       # Retain destination url after preview

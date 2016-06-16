@@ -1372,7 +1372,7 @@ function install_retrieve_file($uri, $destination) {
 }
 
 /**
- *  Checks if the localization server can be contacted.
+ * Checks if the localization server can be contacted.
  *
  * @param string $uri
  *   The URI to contact.
@@ -1595,7 +1595,7 @@ function install_download_additional_translations_operations(&$install_state) {
   // should download/import translations.
   $languages = \Drupal::languageManager()->getLanguages();
   $operations = array();
-  foreach($languages as $langcode => $language) {
+  foreach ($languages as $langcode => $language) {
     // The installer language was already downloaded. Check downloads for the
     // other languages if any. Ignore any download errors here, since we
     // are in the middle of an install process and there is no way back. We
@@ -2176,16 +2176,6 @@ function install_write_profile($install_state) {
       'value' => $install_state['parameters']['profile'],
       'required' => TRUE,
     );
-  }
-  // Add specified base_profile to the settings profile_directories.
-  if (!empty($install_state['profile_info']['base_profile']) && isset($install_state['profiles'][$install_state['profile_info']['base_profile']]) && empty(Settings::get('profile_directories'))) {
-    $path = $install_state['profiles'][$install_state['profile_info']['base_profile']]->getPath();
-    $settings['settings']['profile_directories'] = (object) array(
-      'value' => array($path),
-      'required' => TRUE,
-    );
-  }
-  if (!empty($settings)) {
     drupal_rewrite_settings($settings);
   }
 }

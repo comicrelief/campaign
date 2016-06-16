@@ -718,10 +718,6 @@ class DrupalKernel implements DrupalKernelInterface, TerminableInterface {
       $profile_directories = array_map(function ($profile) {
         return $profile->getPath();
       }, $profiles);
-
-      // Allow additional profile directories to be added from settings.php.
-      // This provides support for "base profiles".
-      $profile_directories = array_merge(Settings::get('profile_directories', []), $profile_directories);
       $listing->setProfileDirectories($profile_directories);
 
       // Now find modules.
@@ -978,11 +974,9 @@ class DrupalKernel implements DrupalKernelInterface, TerminableInterface {
 
     // If the class loader is still the same, possibly upgrade to the APC class
     // loader.
-    // ApcClassLoader does not support APCu without backwards compatibility
-    // enabled.
     if ($class_loader_class == get_class($this->classLoader)
         && Settings::get('class_loader_auto_detect', TRUE)
-        && extension_loaded('apc')) {
+        && function_exists('apcu_fetch')) {
       $prefix = Settings::getApcuPrefix('class_loader', $this->root);
       $apc_loader = new ApcClassLoader($prefix, $this->classLoader);
       $this->classLoader->unregister();
@@ -1478,4 +1472,5 @@ class DrupalKernel implements DrupalKernelInterface, TerminableInterface {
   protected function addServiceFiles(array $service_yamls) {
     $this->serviceYamls['site'] = array_filter($service_yamls, 'file_exists');
   }
+
 }

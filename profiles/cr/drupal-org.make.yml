@@ -16,9 +16,7 @@ projects:
       version: 2.x-dev
       revision: 0bab734
   metatag:
-    download:
-      branch: 8.x-1.x
-      revision:	2aff0954fe41f39fb33e8c548b8ac6f18d801c3a
+    version: 1.0-beta9
   pathauto:
     version: 1.0-alpha3
   redirect:
@@ -78,6 +76,8 @@ projects:
       revision: ca8954d
   stage_file_proxy:
     version: 1.0-alpha1
+  imagemagick:
+    version: 1.0-alpha2
   queue_ui:
     download:
       version: 2.x-dev
@@ -99,6 +99,9 @@ projects:
   # Forms
   yamlform:
     version: 1.0-alpha5
+    patch:
+      # See: https://www.drupal.org/node/2743347
+      2743347: https://www.drupal.org/files/issues/2743347_2_return_string.patch
   yamlform_queue:
     download:
       branch: 8.x-1.x
@@ -107,7 +110,9 @@ projects:
   cookieconsent:
     version: 1.0
   rabbitmq:
-    version: 1.0-alpha1
+    download:
+      url: https://github.com/comicrelief/rabbitmq.git
+      branch: 8.x-1.x
   search_api:
     version: 1.0-alpha14
   crazyegg:
@@ -115,13 +120,19 @@ projects:
   google_tag:
     download:
       branch: 8.x-1.x
-      revision: 692b6922ac3277eed3f3cc8895308e0cced3d0d9
-      url: https://github.com/mikeyp/google_tag.git
+      revision: 9dc56ec
+      url: https://github.com/Saphyel/google_tag.git
   optimizely:
     version: 2.15-rc1
   xmlsitemap:
     version: 1.0-alpha2
   # Performance modules
+  fast_404:
+    version: 1.0-alpha2
+  purge:
+    version: 3.0-beta4
+  purge_purger_http:
+    version: 1.0-beta3
   memcache:
     download:
       version: 2.x-dev
