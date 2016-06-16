@@ -30,7 +30,7 @@ class SignUp extends FormBase {
     'timestamp' => NULL,
     'transSourceURL' => NULL,
     'transSource' => NULL,
-    'emailAddress' => NULL,
+    'email' => NULL,
   );
 
   /**
@@ -139,7 +139,8 @@ class SignUp extends FormBase {
         if ($this->validateEmail($form, $form_state)) {
           // Send first message to queue.
           $this->queueMessage(array(
-            'emailAddress' => $form_state->getValue('email'),
+            'email' => $form_state->getValue('email'),
+            'lists' => array('general' => 'general'),
           ));
           $response->addCommand(new HtmlCommand('.esu-errors', ''));
           $response->addCommand(new InvokeCommand('.block--cr-email-signup', 'removeClass', array('block--cr-email-signup--error')));
@@ -158,8 +159,9 @@ class SignUp extends FormBase {
         if (!$form_state->isValueEmpty('school_phase') && $this->validateEmail($form, $form_state)) {
           // Send second message to the queue.
           $this->queueMessage(array(
-            'emailAddress' => $form_state->getValue('email'),
-            'schoolPhase' => $form_state->getValue('school_phase'),
+            'email' => $form_state->getValue('email'),
+            'phase' => $form_state->getValue('school_phase'),
+            'lists' => array('teacher' => 'teacher'),
           ));
           $response->addCommand(new InvokeCommand('.block--cr-email-signup', 'removeClass', array('block--cr-email-signup--error')));
           $response->addCommand(new InvokeCommand('.block--cr-email-signup', 'removeClass', array('block--cr-email-signup--step-2')));

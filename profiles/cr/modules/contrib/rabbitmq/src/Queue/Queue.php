@@ -55,7 +55,7 @@ class Queue extends QueueBase implements ReliableQueueInterface {
     try {
       $channel = $this->getChannel();
       // Data must be a string.
-      $item = new AMQPMessage(serialize($data), ['delivery_mode' => 2]);
+      $item = new AMQPMessage(json_encode($data), ['delivery_mode' => 2]);
 
       // Default exchange and routing keys.
       $exchange = '';
