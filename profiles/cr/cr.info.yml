@@ -41,6 +41,7 @@ dependencies:
   - responsive_image
   - entity
   - diff
+  - fast404
 
   # Contrib modules
   - ds
