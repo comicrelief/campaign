@@ -35,7 +35,7 @@ projects:
   panels:
     download:
       version: 3.x-dev
-      revision: 4c4a3a7
+      revision: a5400d7
   panelizer:
     version: 3.0-alpha2
   ds:
