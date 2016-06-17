@@ -1,0 +1,207 @@
+// Single Message Row September
+//
+// This is a Single message row for September
+//
+// Markup: _single-message-row-september.hbs
+//
+// Style guide: Single Message September
+
+
+/* Global styles */
+.single-message-row-september {
+  @include container;
+  @include breakpoint($screen-lg, $no-query: true) {
+    margin-top: 70px;
+    margin-bottom: 70px;
+  }
+  position: relative;
+  /* Placeholder styles */
+  margin-top: 50px;
+  margin-bottom: 50px;
+  h2 {
+    text-align: center;
+  }
+  a.btn {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    @include breakpoint($screen-md) {
+      width: 280px;
+    }
+  }
+
+  // Placeholder styles
+  .single-message-row-september__copy_wrapper {
+    background-color: yellow;
+    
+    .single-message-row-september__copy {
+      padding: 25px;
+    }
+  }
+
+  .single-message-row-september__image img {
+    display: block;
+  }
+}
+
+/* Variants */
+.single-message-row-september {
+
+  /* Image right */
+  &.single-message-row-september--title-inside-image-right {
+    background: #F5F2ED;
+    max-width: 100%;
+    margin: 0;
+    padding: 50px 0;
+    margin-top: 55px;
+
+    @include breakpoint($screen-lg, $no-query: true) {
+      margin-top: 75px;
+      padding: 70px 0;
+    }
+    .single-message-row-september__inner-wrapper {
+      @include container;
+      position: relative;
+    }
+  }
+}
+
+.single-message-row-september__body {
+  p {
+    font-size: 18px;
+  }
+  h2 {
+    // fix for june (heading only in the body no margin)
+    margin-bottom: 0;
+  }
+}
+.single-message-row-september__title,
+.single-message-row-september__image,
+.single-message-row-september__copy_wrapper {
+  @include span(12);
+}
+/* Image Below variant */
+.single-message-row-september--centre-image-below {
+  display: table;
+  .single-message-row-september__copy_wrapper {
+    display: table-header-group;
+    float: none;
+    .single-message-row-september__title,
+    .single-message-row-september__body {
+      @include span(12);
+    }
+  }
+  .single-message-row-september__image {
+    @include span(12);
+  }
+}
+/* Centred, Text only, image optional */
+.single-message-row-september--centre-text-only {
+  .single-message-row-september__copy_wrapper {
+    text-align: center;
+  }
+}
+.single-message-row-september__image {
+  margin-bottom: 0;
+}
+
+
+
+/* Large breakpoint, where rows stop stacking */
+@include breakpoint($screen-lg, $no-query: true) {
+
+  /* General styles */
+  .single-message-row-september {
+
+    .single-message-row-september__image,
+    .single-message-row-september__copy_wrapper {
+      @include span(6);
+    }
+
+    .single-message-row-september__copy_wrapper {
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      .single-message-row-september__copy {
+        transform: translateY(-50%);
+        position: absolute;
+        top: 50%;
+        text-align: center;
+      }
+    }
+  }
+
+  .single-message-row-september--title-inside-image-right,
+  .single-message-row-september--title-inside-image-left {
+    .single-message-row-september__copy_wrapper {
+      @include span(6);
+      @include push(6);
+      @include translateY(-50%);
+      position: absolute;
+      top: 50%;
+      text-align: center;
+    }
+  }
+  .single-message-row-september--title-inside-image-right {
+    .single-message-row-september__copy_wrapper {
+      @include span(6);
+    }
+  }
+
+  /* Reposition image and text for 'image right' */
+  .single-message-row-september--title-inside-image-right {
+    .single-message-row-september__copy_wrapper {
+      @include span(6 first);
+    }
+    .single-message-row-september__image {
+      @include span(6 last);
+    }
+  }
+
+
+  /* 16:9 image */
+  .single-message-row-september--16-9-image {
+    .single-message-row-september__image {
+      //width: 65.3%;  - As per designs; bad!
+
+      // Proper grid usage; good!
+      @include span(7 wide);
+      margin-right: 0;
+    }
+    .single-message-row-september__copy_wrapper {
+      //width: 31.6%; - As per designs; bad!
+
+      // Proper grid usage; good!
+      @include span(5);
+      margin-left: 0;
+    }
+  }
+  
+  /* 4:3 image */
+  .single-message-row-september--4-3-image {
+    .single-message-row-september__image {
+      //width: 56.75%;  - As per designs; bad!
+      @include span(6 wide);
+      margin-right: 0;
+    }
+    .single-message-row-september__copy_wrapper {
+      //width: 40.75%;  - As per designs; bad!
+      @include span(6);
+      margin-left: 0;
+    }
+  }
+  
+  /* 1:1 image */
+  .single-message-row-september--1-1-image {
+    .single-message-row-september__image {
+      @include span(5);
+      margin-right: 0;
+    }
+    .single-message-row-september__copy_wrapper {
+      @include span(7 wide);
+      margin-left: 0;
+    }
+  }
+}
