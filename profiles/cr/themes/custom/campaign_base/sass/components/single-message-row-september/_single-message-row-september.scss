@@ -7,6 +7,15 @@
 // Style guide: Single Message September
 
 
+// Just to make white stuff visible!
+.kss-modifier__example {
+  background-color: #989898 !important;
+}
+
+$columnWidth: span(1);
+$halfColumnWidth: $columnWidth / 2;
+
+
 /* Global styles */
 .single-message-row-september {
   @include container;
@@ -14,97 +23,82 @@
     margin-top: 70px;
     margin-bottom: 70px;
   }
+
   position: relative;
   /* Placeholder styles */
   margin-top: 50px;
   margin-bottom: 50px;
-  h2 {
-    text-align: center;
-  }
+
   a.btn {
     display: block;
-    margin: 0 auto;
+    margin: 0 auto 20px;
     width: 100%;
     @include breakpoint($screen-md) {
       width: 280px;
     }
   }
 
-  // Placeholder styles
-  .single-message-row-september__copy_wrapper {
-    background-color: yellow;
-    
-    .single-message-row-september__copy {
-      padding: 25px;
-    }
-  }
-
   .single-message-row-september__image img {
     display: block;
   }
-}
 
-/* Variants */
-.single-message-row-september {
-
-  /* Image right */
-  &.single-message-row-september--title-inside-image-right {
-    background: #F5F2ED;
-    max-width: 100%;
-    margin: 0;
-    padding: 50px 0;
-    margin-top: 55px;
-
-    @include breakpoint($screen-lg, $no-query: true) {
-      margin-top: 75px;
-      padding: 70px 0;
-    }
-    .single-message-row-september__inner-wrapper {
-      @include container;
-      position: relative;
-    }
-  }
-}
-
-.single-message-row-september__body {
-  p {
-    font-size: 18px;
-  }
-  h2 {
-    // fix for june (heading only in the body no margin)
-    margin-bottom: 0;
-  }
-}
-.single-message-row-september__title,
-.single-message-row-september__image,
-.single-message-row-september__copy_wrapper {
-  @include span(12);
-}
-/* Image Below variant */
-.single-message-row-september--centre-image-below {
-  display: table;
+  // Placeholder styles, colours and button styles to be added to component when finalised
   .single-message-row-september__copy_wrapper {
-    display: table-header-group;
-    float: none;
-    .single-message-row-september__title,
-    .single-message-row-september__body {
+    background-color: #814fc8;
+    text-align: center;
+    .single-message-row-september__copy {
+      padding: 20px;
+      color: white;
+
+      .single-message-row-september__body {
+        p {
+          font-size: 18px;
+        }
+        
+        a.btn {
+          background-color: #67fdd9;
+          color: black;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .single-message-row-september__image,
+  .single-message-row-september__copy_wrapper {
+    // Full width, no gutters on small breakpoint
+    width: 100%;
+  }
+
+  /* Featured variation  */
+  &.single-message-row-september--featured {
+    // Float stuff to ensure floated copy will overlap it properly
+    .single-message-row-september__image {
+      float: left;
+    }
+    .single-message-row-september__copy_wrapper {
+      float: left;
+      background-color: transparent;
+      width: auto;
+      margin: 0 calc(4*#{gutter()}) 0;
+      margin-top: calc(-4 *#{gutter()});
+      .single-message-row-september__copy {
+        color: black;
+        background-color:white;
+      }
+    }
+  }
+}
+
+ @include breakpoint($screen-md) {
+  .single-message-row-september {
+    .single-message-row-september__image,
+    .single-message-row-september__copy_wrapper {
+      // Introduce grid
       @include span(12);
     }
   }
-  .single-message-row-september__image {
-    @include span(12);
-  }
 }
-/* Centred, Text only, image optional */
-.single-message-row-september--centre-text-only {
-  .single-message-row-september__copy_wrapper {
-    text-align: center;
-  }
-}
-.single-message-row-september__image {
-  margin-bottom: 0;
-}
-
 
 
 /* Large breakpoint, where rows stop stacking */
@@ -112,28 +106,75 @@
 
   /* General styles */
   .single-message-row-september {
-
     .single-message-row-september__image,
     .single-message-row-september__copy_wrapper {
       @include span(6);
+      text-align: left;
     }
-
     .single-message-row-september__copy_wrapper {
       height: 100%;
       position: absolute;
       top: 0;
       right: 0;
-
       .single-message-row-september__copy {
-        transform: translateY(-50%);
-        position: absolute;
-        top: 50%;
+        height: 100%;
+        a.btn {
+          margin: 0;
+        }
+      }
+    }
+
+    &.single-message-row-september--featured {
+      .single-message-row-september__copy_wrapper {
         text-align: center;
+        .single-message-row-september__body a.btn {
+          margin: 0 auto;
+        }
       }
     }
   }
 
-  .single-message-row-september--title-inside-image-right,
+  /* 16:9 image */
+  .single-message-row-september--16-9-image {
+    .single-message-row-september__image {
+      @include span(7 wide);
+      margin-right: 0;
+    }
+    .single-message-row-september__copy_wrapper {
+      @include span(5);
+      margin-left: 0;
+    }
+
+    // Featured 16:9 image variant
+    &.single-message-row-september--featured {
+      .single-message-row-september__image {
+        margin: 0;
+        @include span(7 wide);
+        margin-right: 0;
+      }
+    
+      .single-message-row-september__copy_wrapper {
+        margin: 0;
+        @include span(6);
+        margin-left: 0;
+        height: 100%;
+        .single-message-row-september__copy {
+          height: auto;
+          position: absolute;
+          top: 50%;
+          padding: 15% 20px;
+          @include translateY(-50%);
+        }
+      }
+    }
+  }
+
+
+
+
+
+// Not used atm
+/*   .single-message-row-september--title-inside-image-right,
   .single-message-row-september--title-inside-image-left {
     .single-message-row-september__copy_wrapper {
       @include span(6);
@@ -148,36 +189,19 @@
     .single-message-row-september__copy_wrapper {
       @include span(6);
     }
-  }
+  } */
 
   /* Reposition image and text for 'image right' */
-  .single-message-row-september--title-inside-image-right {
+/*   .single-message-row-september--title-inside-image-right {
     .single-message-row-september__copy_wrapper {
       @include span(6 first);
     }
     .single-message-row-september__image {
       @include span(6 last);
     }
-  }
+  } */
 
 
-  /* 16:9 image */
-  .single-message-row-september--16-9-image {
-    .single-message-row-september__image {
-      //width: 65.3%;  - As per designs; bad!
-
-      // Proper grid usage; good!
-      @include span(7 wide);
-      margin-right: 0;
-    }
-    .single-message-row-september__copy_wrapper {
-      //width: 31.6%; - As per designs; bad!
-
-      // Proper grid usage; good!
-      @include span(5);
-      margin-left: 0;
-    }
-  }
   
   /* 4:3 image */
   .single-message-row-september--4-3-image {
