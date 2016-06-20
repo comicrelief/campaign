@@ -6,3 +6,52 @@
 // 
 //
 // Style guide: Cards
+
+.cards {
+	@for $i from 1 through 3 {
+  .cards-item:first-child:nth-last-child(#{$i}),
+  .cards-item:first-child:nth-last-child(#{$i}) ~ .cards-item {
+    // width: calc(#{span(12)}/#{$i});
+    // margin: gutter()/2;
+    @include span(12);
+    @include breakpoint($screen-sm-max) {
+		  	@include span(6);
+		  	&.cards-item:last-child.cards-item:nth-child(3) {
+		  		@include span(12);
+		  	}
+	    }
+	  @include breakpoint($screen-md-max) {
+		    @include span(12/$i);
+		    &.cards-item:last-child.cards-item:nth-child(3) {
+		  		@include span(4);
+		  	}
+		  	&.cards-item:last-child.cards-item:first-child {
+		  		@include span(12);
+		  	}
+			}
+	  }
+	}
+  padding: 60px 0;
+  background: #ccc;
+  float: left;
+  width: 100%;
+}
+.cards-item {
+  display: inline-block;
+  float: left;
+}
+.cards-image {
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+.cards-content {
+  position: relative;
+  z-index: 10;
+	margin: calc(4*#{gutter()});
+	margin-top: calc(-6*#{gutter()});
+	padding: calc(4*#{gutter()});
+  text-align: center;
+  background-color: $white;
+}
