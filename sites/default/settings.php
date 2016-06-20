@@ -2,12 +2,9 @@
 
 use Symfony\Component\Yaml\Yaml;
 
-$settings['install_profile'] = 'cr';
-$settings['skip_permissions_hardening'] = TRUE;
+$databases = array();
 $config_directories = array();
-$settings['update_free_access'] = FALSE;
-$settings['file_chmod_directory'] = 0775;
-$settings['file_chmod_file'] = 0664;
+$settings['install_profile'] = 'cr';
 //$settings['allow_authorize_operations'] = FALSE;
 //$settings['session_write_interval'] = 180;
 //$settings['class_loader_auto_detect'] = TRUE;
