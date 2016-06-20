@@ -30,15 +30,16 @@
 $susy: (
   columns: 12,
   container: 1200px,
-  gutters: 70px/70px,
+  gutters: 30px/70px,
   global-box-sizing: border-box,
   gutter-position: split,
   output: float,
   last-flow: to,
-/*   debug: (
-    image: show,
-    color: red,
-  ), */
+  // debug: (
+  //   image: show,
+  //   toggle: top right,
+  //   color: red,
+  // ),
 );
 
 
@@ -48,6 +49,7 @@ $susy: (
 .region-header-inner-wrapper,
 .region-header-top,
 .node--type-page,
+.kss-section,
 .cw-region {
   @include container;
 }
