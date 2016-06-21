@@ -67,12 +67,7 @@
 
   /* Featured variation  */
   &.single-message-row-september--featured {
-    // Float stuff to ensure floated copy will overlap it properly
-    .single-message-row-september__image {
-      float: left;
-    }
     .single-message-row-september__copy_wrapper {
-      float: left;
       background-color: transparent;
       width: auto;
       // Offsets propotional to gutter widths
