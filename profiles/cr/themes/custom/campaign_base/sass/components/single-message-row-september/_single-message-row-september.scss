@@ -9,12 +9,8 @@
 
 // Just to make white stuff visible!
 .kss-modifier__example {
-  background-color: #989898 !important;
+  background-color: #dddddd !important;
 }
-
-$columnWidth: span(1);
-$halfColumnWidth: $columnWidth / 2;
-
 
 /* Global styles */
 .single-message-row-september {
@@ -47,14 +43,13 @@ $halfColumnWidth: $columnWidth / 2;
     background-color: #814fc8;
     text-align: center;
     .single-message-row-september__copy {
-      padding: 20px;
+      padding: 30px 20px;
       color: white;
-
+      width: 100%;
       .single-message-row-september__body {
         p {
           font-size: 18px;
         }
-        
         a.btn {
           background-color: #67fdd9;
           color: black;
@@ -80,8 +75,10 @@ $halfColumnWidth: $columnWidth / 2;
       float: left;
       background-color: transparent;
       width: auto;
+      // Offsets propotional to gutter widths
       margin: 0 calc(4*#{gutter()}) 0;
       margin-top: calc(-4 *#{gutter()});
+
       .single-message-row-september__copy {
         color: black;
         background-color:white;
@@ -124,9 +121,25 @@ $halfColumnWidth: $columnWidth / 2;
       }
     }
 
+    /* FEATURE general styles */ 
     &.single-message-row-september--featured {
       .single-message-row-september__copy_wrapper {
         text-align: center;
+        height: 100%;
+        // Fixed vertical offset
+        margin-top: 25px !important;
+        margin-bottom: 25px !important;
+        height: calc(100% - 50px);
+        background: white;
+
+        .single-message-row-september__copy {
+          background: transparent;
+          height: auto;
+          position: absolute;
+          top: 50%;
+          @include translateY(-50%);
+        }
+
         .single-message-row-september__body a.btn {
           margin: 0 auto;
         }
@@ -134,86 +147,56 @@ $halfColumnWidth: $columnWidth / 2;
     }
   }
 
-  /* 16:9 image */
+
+  /* 16:9 image variation */
   .single-message-row-september--16-9-image {
     .single-message-row-september__image {
-      @include span(7 wide);
+      @include span(8);
       margin-right: 0;
     }
     .single-message-row-september__copy_wrapper {
-      @include span(5);
+      @include span(4 wide);
       margin-left: 0;
     }
 
-    // Featured 16:9 image variant
+    /* FEATURED 16:9 image variant */
     &.single-message-row-september--featured {
       .single-message-row-september__image {
-        margin: 0;
-        @include span(7 wide);
+        @include span(8);
         margin-right: 0;
       }
     
       .single-message-row-september__copy_wrapper {
         margin: 0;
-        @include span(6);
+        @include span(5);
         margin-left: 0;
-        height: 100%;
-        .single-message-row-september__copy {
-          height: auto;
-          position: absolute;
-          top: 50%;
-          padding: 15% 20px;
-          @include translateY(-50%);
-        }
       }
     }
   }
 
-
-
-
-
-// Not used atm
-/*   .single-message-row-september--title-inside-image-right,
-  .single-message-row-september--title-inside-image-left {
-    .single-message-row-september__copy_wrapper {
-      @include span(6);
-      @include push(6);
-      @include translateY(-50%);
-      position: absolute;
-      top: 50%;
-      text-align: center;
-    }
-  }
-  .single-message-row-september--title-inside-image-right {
-    .single-message-row-september__copy_wrapper {
-      @include span(6);
-    }
-  } */
-
-  /* Reposition image and text for 'image right' */
-/*   .single-message-row-september--title-inside-image-right {
-    .single-message-row-september__copy_wrapper {
-      @include span(6 first);
-    }
-    .single-message-row-september__image {
-      @include span(6 last);
-    }
-  } */
-
-
-  
-  /* 4:3 image */
+  /* 4:3 image variation */
   .single-message-row-september--4-3-image {
     .single-message-row-september__image {
-      //width: 56.75%;  - As per designs; bad!
       @include span(6 wide);
       margin-right: 0;
     }
     .single-message-row-september__copy_wrapper {
-      //width: 40.75%;  - As per designs; bad!
       @include span(6);
       margin-left: 0;
+    }
+
+    /* FEATURED 4:3 image variant */
+    &.single-message-row-september--featured {
+      .single-message-row-september__image {
+        @include span(6 wide);
+        margin-right: 0;
+      }
+    
+      .single-message-row-september__copy_wrapper {
+        margin: 0;
+        @include span(7);
+        margin-left: 0;
+      }
     }
   }
   
@@ -226,6 +209,20 @@ $halfColumnWidth: $columnWidth / 2;
     .single-message-row-september__copy_wrapper {
       @include span(7 wide);
       margin-left: 0;
+    }
+
+    /* FEATURED 1:1 image variant */
+    &.single-message-row-september--featured {
+      .single-message-row-september__image {
+        @include span(5);
+        margin-right: 0;
+      }
+    
+      .single-message-row-september__copy_wrapper {
+        margin: 0;
+        @include span(8 wide);
+        margin-left: 0;
+      }
     }
   }
 }
