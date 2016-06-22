@@ -15,3 +15,11 @@ config_devel:
   - core.entity_form_display.paragraph.cr_cards.default
   - field.field.paragraph.cr_cards.field_cr_cards_background
   - field.field.paragraph.cr_cards.field_cr_cards_card_reference
+# Block config
+  - block_content.type.cr_card
+  - core.entity_form_display.block_content.cr_card.default
+  - core.entity_view_display.block_content.cr_card.default
+  - field.storage.block_content.field_cr_card_body
+  - field.storage.block_content.field_cr_card_image
+  - field.field.block_content.cr_card.field_cr_card_body
+  - field.field.block_content.cr_card.field_cr_card_image
