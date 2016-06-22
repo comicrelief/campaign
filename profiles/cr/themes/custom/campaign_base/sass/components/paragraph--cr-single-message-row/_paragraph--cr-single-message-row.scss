@@ -25,6 +25,14 @@
   h2 {
     text-align: center;
   }
+  a.btn {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    @include breakpoint($screen-md) {
+      width: 280px;
+    }
+  }
 }
 .paragraph--cr-single-message-row {
   &.paragraph--cr-single-message-row--title-inside-image-right {
