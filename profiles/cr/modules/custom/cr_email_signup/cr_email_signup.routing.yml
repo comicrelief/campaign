@@ -1,0 +1,7 @@
+cr_email_signup.step:
+  path: '/cr-email-signup'
+  defaults:
+    _form: '\Drupal\cr_email_signup\Form\SignUp'
+    _title: 'Sign Up'
+  requirements:
+    _permission: 'access content'

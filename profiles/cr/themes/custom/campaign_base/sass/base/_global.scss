@@ -13,11 +13,13 @@ body {
   height: 138px;
   margin-top: -40px;
   margin-right: 20px;
+  margin-left: 10px;
 }
 .page__title {
   max-width: 640px;
-  margin: 40px auto;
+  margin: 100px auto 40px;
   text-align: center;
+  text-transform: capitalize;
 }
 .datetime {
   display: block;
@@ -86,6 +88,7 @@ picture img {
 }
 // to do: add cookie component
 .cookie-consent.cc_container {
+  text-align: center;
   .btn,
   p,
   a {
@@ -95,21 +98,54 @@ picture img {
       color: $white;
     }
   }
+  p {
+    margin-top: 15px;
+  }
   .cc_message {
     @include breakpoint($screen-md) {
-      width: 80%;
+      width: auto;
+      margin-bottom: 15px;
     }
     display: inline-block;
     width: 100%;
     font-size: 16px;
     font-size: 1em;
+    text-align: center;
   }
   .btn {
     @include breakpoint($screen-md) {
-      float: right;
       margin-top: 0;
+      margin-left: 20px;
+      display: inline-block;
     }
+    
     float: none;
     margin-top: 20px;
+    height: auto;
+    width: 120px;
+    margin: 20px auto 0px;
+    display: block;
   }
+}
+// Table style move to table component
+table {
+  border-collapse: collapse;
+  td {
+    padding: 10px;
+    border: 1px solid $black;
+  }
+}
+// Figure style align move to figure component
+figure.align-left {
+  margin: 0 20px 20px;
+  figcaption {
+    padding: 10px;
+    text-align: center;
+  }
+}
+// Misc move somewhere else
+hr {
+  clear: both;
+  margin: 0 0 20px;
+  border: none;
 }

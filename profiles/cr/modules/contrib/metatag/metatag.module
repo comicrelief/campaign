@@ -10,22 +10,26 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
 
 /**
  * Implements hook_help().
  */
 function metatag_help($route_name, RouteMatchInterface $route_match) {
-
   switch ($route_name) {
     // Main module help for the Metatag module.
     case 'help.page.metatag':
       $output = '<h3>' . t('About') . '</h3>';
-      $output .= '<p>' . t('This module allows you to automatically provide structured metadata, aka "meta
-tags", about your website and web pages.') . '</p>';
+      $output .= '<p>' . t('This module allows you to automatically provide structured metadata, aka "metatags", about your website and web pages. In the context of search engine optimization, providing an extensive set of meta tags may help improve your site\'s & pages\' ranking, thus may aid with achieving a more prominent display of your content within search engine results.  For additional information, see the <a href=":online">online documentation for Metatag</a>.', [':online' => 'https://www.drupal.org/node/1774342']) . '</p>';
+      $output .= '<h3>' . t('Usage') . '</h3>';
+      $output .= '<dl>';
+      $output .= '<dt>' . t('Manage Metatags') . '</dt>';
+      $output .= '<dd>' . t('The <a href=":meta">"Metatag"</a> page is used to setup and manage Metatags.  Here you can view a summary of the default meta tags and the inheritance associated with them. From it you can use the <a href=":add">Add default meta tags</a> button to configure default metatags.  Tokens can be used to avoid redundant meta data and search engine penalization.', [':meta' => Url::fromRoute('entity.metatag_defaults.collection')->toString(), ':add' => Url::fromRoute('entity.metatag_defaults.add_form')->toString()]) . '</dd>';
+      $output .= '</dl>';
+
       return $output;
       break;
   }
-
 }
 
 /**

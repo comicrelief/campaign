@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies: {  }
+id: cr_contact_category
+label: 'Contact Category'
+options: |
+  general: General
+  fundraising: Fundraising
+  donations: Donations
+  shop_and_merchandise: 'Shop and merchandise'
+  events: Events
+  schools__nurseries_or_youth_groups: 'Schools, Nurseries or Youth Groups'
+  website_problems: 'Website problems'
+  sport_relief_partners: 'Sport Relief Partners'
+  grants: Grants
+  complaints: Complaints
+  journalists: Journalists
+  rnd_usa: 'RND USA'

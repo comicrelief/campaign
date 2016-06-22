@@ -11,6 +11,7 @@
   margin: 15px 0 15px;
   ul {
     text-align: center;
+    margin-left: 0;
     li {
       display: inline-block;
       margin: 10px 0;
@@ -26,6 +27,10 @@
         @include transition(color 180ms);
         &:hover {
           color: $item-grey;
+        }
+
+        &.is-active {
+          color: #c8c8c8;
         }
       }
       &:last-child {
