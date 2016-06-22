@@ -5,10 +5,6 @@ use Symfony\Component\Yaml\Yaml;
 $databases = array();
 $config_directories = array();
 $settings['install_profile'] = 'cr';
-//$settings['allow_authorize_operations'] = FALSE;
-//$settings['session_write_interval'] = 180;
-//$settings['class_loader_auto_detect'] = TRUE;
-//$settings['omit_vary_cookie'] = TRUE;
 
 /**
  * Load environment variables.
