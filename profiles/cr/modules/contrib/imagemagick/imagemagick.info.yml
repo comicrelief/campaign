@@ -1,0 +1,14 @@
+type: module
+# core: 8.x
+name: ImageMagick
+description: 'Provides ImageMagick integration.'
+package: Media
+configure: system.image_toolkit_settings
+dependencies:
+  - system (>=8.1.0)
+
+# Information added by Drupal.org packaging script on 2016-05-22
+version: '8.x-1.0-alpha2'
+core: '8.x'
+project: 'imagemagick'
+datestamp: 1463921940

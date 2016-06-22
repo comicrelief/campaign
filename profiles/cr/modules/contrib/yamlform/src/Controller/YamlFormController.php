@@ -103,7 +103,7 @@ class YamlFormController extends ControllerBase {
    *   The YAML form label as a render array.
    */
   public function title(YamlFormInterface $yamlform) {
-    return ['#markup' => $yamlform->label(), '#allowed_tags' => Xss::getHtmlTagList()];
+    return $yamlform->label();
   }
 
 }

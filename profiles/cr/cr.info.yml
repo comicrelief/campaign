@@ -41,6 +41,7 @@ dependencies:
   - responsive_image
   - entity
   - diff
+  - fast404
 
   # Contrib modules
   - ds
@@ -64,12 +65,14 @@ dependencies:
   - ctools_block
   - paragraphs
   - view_mode
+  - imagemagick
 
   # Custom modules
   - cr_layout
   - cr_page
   - cr_teaser
   - cr_article
+  - cr_email_signup
   - cr_content_wall
   - cr_rich_text_paragraph
   - cr_landing_page
@@ -138,6 +141,7 @@ config_devel:
   - system.menu.main-navigation
 
   # Images
+  - system.image
   - image.style.full_node_desktop_770x433
   - image.style.full_node_mobile_442x271
   - image.style.full_node_tablet_330x247

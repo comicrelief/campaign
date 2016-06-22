@@ -1,6 +1,6 @@
-"use strict";
-
-// Shorthand for $( document ).ready()
-(function ($) {
-  console.log('Ready!');
-}(jQuery));
+(function($, Drupal) {
+  $( document ).ready(function() {
+    // Turn our boring select boxes into sexy jQuery UI selectboxes
+    $('select').selectmenu({ style:'popup', width: '100%' });
+  });
+})(jQuery, Drupal);
