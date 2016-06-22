@@ -124,8 +124,8 @@ projects:
       url: https://github.com/Saphyel/google_tag.git
   optimizely:
     version: 2.15-rc1
-  simple_sitemap:
-    version: 2.1
+  xmlsitemap:
+    version: 1.0-alpha2
   # Performance modules
   fast_404:
     version: 1.0-alpha2
