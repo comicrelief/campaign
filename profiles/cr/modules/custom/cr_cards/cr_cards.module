@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * Cards row paragraph type.
+ */
+
+use Drupal\Core\Entity\FieldableEntityInterface;
+use Drupal\Core\Field\FieldStorageDefinitionInterface;
+
+/**
+ * Options callback for field_cr_cards_background_color.
+ *
+ * @see options_allowed_values()
+ */
+function cr_cards_field_cr_cards_background_color(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
+  $values = [
+    'cards-black' => t('Black'),
+  ];
+  return $values;
+}

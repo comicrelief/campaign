@@ -1,0 +1,10 @@
+name: CR Cards
+type: module
+description: Contains config for Cards Row Paragraph type.
+core: 8.x
+package: Comic Relief
+dependencies:
+  - paragraphs
+  - entity_reference_revisions
+config_devel:
+# Paragraph config
