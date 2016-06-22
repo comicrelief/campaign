@@ -7,14 +7,14 @@
 
 namespace Drupal\ds\Plugin\DsFieldTemplate;
 
-use Drupal\Component\Plugin\PluginBase as ComponentPluginBase;
+use Drupal\Core\Plugin\PluginBase;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\ds\Ds;
 
 /**
  * Base class for all the ds plugins.
  */
-abstract class DsFieldTemplateBase extends ComponentPluginBase implements DsFieldTemplateInterface {
+abstract class DsFieldTemplateBase extends PluginBase implements DsFieldTemplateInterface {
 
   /**
    * The entity used for token replacement.

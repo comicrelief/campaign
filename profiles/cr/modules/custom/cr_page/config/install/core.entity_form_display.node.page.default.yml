@@ -3,8 +3,10 @@ status: true
 dependencies:
   config:
     - field.field.node.page.body
+    - field.field.node.page.field_page_meta_tags
     - node.type.page
   module:
+    - metatag
     - path
     - text
 id: node.page.default
@@ -25,6 +27,11 @@ content:
     weight: 10
     settings: {  }
     third_party_settings: {  }
+  field_page_meta_tags:
+    weight: 32
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_firehose
   path:
     type: path
     weight: 30

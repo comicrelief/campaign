@@ -2,10 +2,11 @@
 
 /**
  * @file
- * Definition of Drupal\ds\Tests\ManageDisplayTabTest.
+ * Contains \Drupal\ds\Tests\CommentTest.
  */
 
 namespace Drupal\ds\Tests;
+
 use Drupal\comment\Tests\CommentTestBase;
 
 /**
