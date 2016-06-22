@@ -39,9 +39,9 @@
 		display: block;
 		height: 100%;
 		@include breakpoint($screen-md-only) {
-			margin-left: -40%;
+			margin-left: -38.5%;
 			height: auto;
-			width: auto;
+			width: 178%;
 		}
   }
   @include breakpoint($screen-md-only) {
