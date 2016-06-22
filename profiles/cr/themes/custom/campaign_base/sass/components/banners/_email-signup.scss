@@ -118,6 +118,8 @@ select,
         margin-bottom: 20px;
         font-size: 14px;
         line-height: 21px;
+        // Stop this label breaking onto 2 lines on tiny screens and ruining everything
+        white-space: nowrap;
       }
       select,
       .ui-selectmenu-button {
