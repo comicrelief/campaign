@@ -8,42 +8,47 @@
 // Style guide: Cards
 
 .cards {
-	@for $i from 1 through 3 {
+	@for $i from 1 through 6 {
   .cards-item:first-child:nth-last-child(#{$i}),
   .cards-item:first-child:nth-last-child(#{$i}) ~ .cards-item {
     // width: calc(#{span(12)}/#{$i});
     // margin: gutter()/2;
-    @include span(12);
+    width: 100%;
     @include breakpoint($screen-sm-max) {
-		  	@include span(6);
-		  	&.cards-item:last-child.cards-item:nth-child(3) {
-		  		@include span(12);
-		  	}
+		  	@include span(12);
 	    }
 	  @include breakpoint($screen-md-max) {
 		    @include span(12/$i);
-		    &.cards-item:last-child.cards-item:nth-child(3) {
-		  		@include span(4);
-		  	}
-		  	&.cards-item:last-child.cards-item:first-child {
-		  		@include span(12);
-		  	}
 			}
 	  }
 	}
   padding: 60px 0;
-  background: #ccc;
+  background: #4e3163;
   float: left;
   width: 100%;
 }
 .cards-item {
   display: inline-block;
+  position: relative;
   float: left;
+  margin-bottom: 20px;
 }
 .cards-image {
   img {
     width: 100%;
-    height: auto;
+		display: block;
+		height: 100%;
+		@include breakpoint($screen-md-only) {
+			margin-left: -40%;
+			height: auto;
+			width: auto;
+		}
+  }
+  @include breakpoint($screen-md-only) {
+  	@include span(4);
+  	height: 0;
+  	padding-bottom: span(4);
+  	overflow: hidden;
   }
 }
 .cards-content {
@@ -54,4 +59,14 @@
 	padding: calc(4*#{gutter()});
   text-align: center;
   background-color: $white;
+  @include breakpoint($screen-md-only) {
+  	margin: 0;
+		padding: 20px calc(4*#{gutter()}) 0;
+
+  	@include span(9);
+  	@include push(3);
+  	position: absolute;
+	  top: 50%;
+	  transform: translateY(-50%);
+  }
 }
