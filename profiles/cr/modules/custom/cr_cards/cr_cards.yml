@@ -8,3 +8,8 @@ dependencies:
   - entity_reference_revisions
 config_devel:
 # Paragraph config
+  - field.storage.paragraph.field_cr_cards_card_reference
+  - paragraphs.paragraphs_type.cr_cards
+  - core.entity_view_display.paragraph.cr_cards.default
+  - core.entity_form_display.paragraph.cr_cards.default
+  - field.field.paragraph.cr_cards.field_cr_cards_card_reference
