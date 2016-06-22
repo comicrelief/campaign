@@ -3,12 +3,12 @@
 // Standard Email sign up banner
 //
 // Markup: email-signup.hbs
-// 
+//
 // Style guide: Banners.Email-signup
 
 /* Generic styles */
 input.button,
-input.form-email,
+input.form-text,
 select,
 .ui-selectmenu-button {
   &:focus {
@@ -16,11 +16,25 @@ select,
   }
 }
 
+.button.form-submit:disabled {
+  @include opacity(0.1);
+}
+
 /* Step 1 styles */
 .block--cr-email-signup {
   float: left;
   width: 100%;
   background: #fafafa; // change for variable
+
+
+  .esu-errors.messages.messages--error {
+    display: none;
+  }
+
+  .ajax-progress {
+      display: none;
+  }
+
   .block--cr-email-signup__inner-wrapper {
     @include container;
     @include clearfix;
@@ -44,19 +58,16 @@ select,
   .esu-initial-message {
     display: block;
   }
-  .cr-email-signup__email-wrapper,
-  .cr-email-signup__school-phase-wrapper {
+  .form-item-email,
+  .form-item-school-phase {
     @include span(8);
     @include push(1);
     margin-right: 0;
   }
-  .cr-email-signup__submit-wrapper {
-    @include span(2 wide);
-    margin-left: 0;
-  }
+
   .button.form-submit {
     @include border-radius(0);
-    width: 100%;
+    @include span(2 wide);
     height: 50px;
     margin-left: 0;
     margin-left: 0;
@@ -76,7 +87,7 @@ select,
     }
   }
   /*  Step 1 */
-  .cr-email-signup__email-wrapper {
+  .form-item-email {
     label {
       position: absolute !important;
       overflow: hidden;
@@ -84,7 +95,7 @@ select,
       clip: rect(1px,1px,1px,1px);
       height: 1px;
     }
-    .form-email {
+    .form-text {
       width: 100%;
       height: 50px;
       margin-right: 0;
@@ -97,19 +108,18 @@ select,
         border: 2px solid #5f5c59;
         border-right: none;
       }
-      &.error {
-        border: 2px solid red;
-      }
     }
   }
   /*  Step 2 */
   &.block--cr-email-signup--step-2 {
-    .cr-email-signup__school-phase-wrapper {
+    .form-item-school-phase {
       label {
         width: 100%;
         margin-bottom: 20px;
         font-size: 14px;
         line-height: 21px;
+        // Stop this label breaking onto 2 lines on tiny screens and ruining everything
+        white-space: nowrap;
       }
       select,
       .ui-selectmenu-button {
@@ -123,7 +133,7 @@ select,
         padding: 0 10px;
       }
     }
-    .cr-email-signup__submit-wrapper {
+     .button.form-submit {
       margin-top: 21px;
     }
   }
@@ -150,10 +160,17 @@ select,
   }
   // Error state
   &.block--cr-email-signup--error {
-    .messages.messages--error {
+    position: relative;
+    .esu-errors.messages.messages--error {
+      display: block;
       margin-top: 50px;
       margin-bottom: 10px;
       text-align: center;
+    }
+
+    .form-item-email .form-text,
+    .form-item-school-phase .ui-selectmenu-button {
+      border: 2px solid red;
     }
   }
 }
@@ -178,25 +195,23 @@ select,
         }
       }
     }
-    .cr-email-signup__email-wrapper {
+    .form-item-email {
       @include span(4);
       margin-right: 0;
-      .form-email {
+      .form-text {
         margin-right: 0;
         margin-left: 0;
       }
     }
-    .cr-email-signup__submit-wrapper {
+     .button.form-submit {
       @include span(1 wide);
       margin-left: 0;
-      .button.form-submit {
-        margin-top: 0;
-        margin-left: 0;
-      }
+      margin-top: 0;
+      margin-left: 0;
     }
     /*  Step 2 */
     &.block--cr-email-signup--step-2 {
-      .cr-email-signup__school-phase-wrapper {
+      .form-item-school-phase {
         @include span(4);
         position: relative;
         margin-right: 0;
@@ -214,7 +229,7 @@ select,
           margin-left: 0;
         }
       }
-      .cr-email-signup__submit-wrapper {
+     .button.form-submit {
         margin-top: 0;
       }
     }
@@ -249,10 +264,10 @@ select,
       .block--cr-email-signup__inner-wrapper {
         padding-top: 75px;
         &:after {
-          top: 78px;
+          top: 80px;
         }
       }
-      .messages.messages--error {
+      .esu-errors.messages.messages--error {
         position: absolute;
         top: 0;
         left: 0;
@@ -272,7 +287,7 @@ select,
       @include span(4);
       @include push(2);
     }
-    .cr-email-signup__email-wrapper {
+    .form-item-email {
       @include span(3);
       margin-right: 0;
     }
@@ -296,14 +311,14 @@ select,
       }
     }
     &.block--cr-email-signup--step-2 {
-      .cr-email-signup__school-phase-wrapper {
+      .form-item-school-phase {
         @include span(3);
         margin-right: 0;
       }
     }
     // Error state
     &.block--cr-email-signup--error {
-      .messages.messages--error {
+      .esu-errors.messages.messages--error {
         margin-top: 0;
         margin-bottom: 0;
       }
@@ -314,30 +329,33 @@ select,
 /* Hide-show  */
 .block--cr-email-signup {
   // Step 1
-  .cr-email-signup__email-wrapper {
+  .form-item-email {
     display: block;
   }
-  .cr-email-signup__school-phase-wrapper,
+  .button.step2,
+  .form-item-school-phase,
   .esu-first-success-message,
   .esu-second-success-message {
     display: none;
   }
   // Step 2
   &.block--cr-email-signup--step-2 {
-    .cr-email-signup__email-wrapper,
+    .form-item-email,
+    .button.step1,
     .esu-initial-message {
       display: none;
     }
-    .cr-email-signup__school-phase-wrapper,
+    .button.step2,
+    .form-item-school-phase,
     .esu-first-success-message {
       display: block;
     }
   }
   // Step 3
   &.block--cr-email-signup--step-3 {
-    .cr-email-signup__email-wrapper,
-    .cr-email-signup__school-phase-wrapper,
-    .cr-email-signup__submit-wrapper,
+    .form-item-email,
+    .form-item-school-phase,
+    .button.form-submit,
     .esu-initial-message {
       display: none;
     }
