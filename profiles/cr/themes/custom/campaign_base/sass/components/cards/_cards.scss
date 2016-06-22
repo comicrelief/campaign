@@ -9,8 +9,8 @@
 
 .cards {
 	@for $i from 1 through 6 {
-  .cards-item:first-child:nth-last-child(#{$i}),
-  .cards-item:first-child:nth-last-child(#{$i}) ~ .cards-item {
+  .cards__item:first-child:nth-last-child(#{$i}),
+  .cards__item:first-child:nth-last-child(#{$i}) ~ .cards__item {
     // width: calc(#{span(12)}/#{$i});
     // margin: gutter()/2;
     width: 100%;
@@ -27,13 +27,13 @@
   float: left;
   width: 100%;
 }
-.cards-item {
+.cards__item {
   display: inline-block;
   position: relative;
   float: left;
   margin-bottom: 20px;
 }
-.cards-image {
+.cards__image {
   img {
     width: 100%;
 		display: block;
@@ -51,8 +51,8 @@
   	overflow: hidden;
   }
 }
-.cards-content {
-  position: relative;
+.cards__content-wrapper {
+	position: relative;
   z-index: 10;
 	margin: calc(4*#{gutter()});
 	margin-top: calc(-6*#{gutter()});
@@ -60,11 +60,18 @@
   text-align: center;
   background-color: $white;
   @include breakpoint($screen-md-only) {
-  	margin: 0;
-		padding: 20px calc(4*#{gutter()}) 0;
-
+  	margin: 25px 0;
+  	position: absolute;
+		top: 0;
+		right: 0;
+		padding: calc(4*#{gutter()});
+		height: calc(100% - 50px);
   	@include span(9);
   	@include push(3);
+  }
+}
+.cards__content {
+  @include breakpoint($screen-md-only) {
   	position: absolute;
 	  top: 50%;
 	  transform: translateY(-50%);
