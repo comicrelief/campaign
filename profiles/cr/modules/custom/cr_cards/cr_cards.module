@@ -13,7 +13,7 @@ use Drupal\Core\Field\FieldStorageDefinitionInterface;
  *
  * @see options_allowed_values()
  */
-function cr_cards_field_cr_cards_background_color(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
+function cr_cards_field_cr_cards_background(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
   $values = [
     'cards-black' => t('Black'),
   ];
