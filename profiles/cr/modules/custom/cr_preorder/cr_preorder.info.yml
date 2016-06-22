@@ -1,0 +1,15 @@
+name: CR Pre-order school
+type: module
+description: 'This module is used to pre-order school items.'
+core: 8.x
+package: Comic Relief
+
+dependencies:
+  - yamlform
+
+config_devel:
+  - yamlform.yamlform.preorder
+  - yamlform.yamlform_options.fundraise_pack
+  - yamlform.yamlform_options.title_prefix
+  - yamlform.yamlform_options.establishment_type
+  - yamlform.yamlform_options.job_title

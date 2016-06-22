@@ -1,0 +1,6 @@
+langcode: en
+status: true
+dependencies: {  }
+id: fundraise_pack
+label: 'Fundraise Pack'
+options: "primary_school_fundraising_pack: Primary School Fundraising Pack\nsecondary_school_fundraising_pack: Secondary School Fundraising Pack\nnursery_activity_pack: Nursery Activity Pack\n"

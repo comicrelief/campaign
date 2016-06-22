@@ -74,6 +74,7 @@ dependencies:
   - cr_article
   - cr_email_signup
   - cr_content_wall
+  - cr_preorder
   - cr_rich_text_paragraph
   - cr_landing_page
   - cr_partner
