@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cr_cards.field_cr_cards_background
+    - field.field.paragraph.cr_cards.field_cr_cards_card_reference
+    - paragraphs.paragraphs_type.cr_cards
+  module:
+    - options
+id: paragraph.cr_cards.default
+targetEntityType: paragraph
+bundle: cr_cards
+mode: default
+content:
+  field_cr_cards_background:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+  field_cr_cards_card_reference:
+    weight: 1
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+hidden:
+  created: true
+  social_links: true
+  uid: true

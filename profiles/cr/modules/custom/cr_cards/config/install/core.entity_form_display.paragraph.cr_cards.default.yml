@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cr_cards.field_cr_cards_background
+    - field.field.paragraph.cr_cards.field_cr_cards_card_reference
+    - paragraphs.paragraphs_type.cr_cards
+id: paragraph.cr_cards.default
+targetEntityType: paragraph
+bundle: cr_cards
+mode: default
+content:
+  field_cr_cards_background:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_cr_cards_card_reference:
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+hidden:
+  created: true
+  status: true
+  uid: true

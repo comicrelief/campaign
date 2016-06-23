@@ -54,7 +54,7 @@ dependencies:
   - social_links
   - focal_point
   - cookieconsent
-  #- simple_sitemap
+  - simple_sitemap
 
   # Layout
   - inline_entity_form
@@ -79,6 +79,7 @@ dependencies:
   - cr_partner
   - cr_single_message_row_paragraph
   - cr_block_paragraph
+  - cr_cards
   #- cr_performance
 
   # Development modules

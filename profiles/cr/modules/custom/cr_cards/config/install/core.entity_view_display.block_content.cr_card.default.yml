@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cr_card
+    - field.field.block_content.cr_card.field_cr_card_body
+    - field.field.block_content.cr_card.field_cr_card_image
+  module:
+    - image
+    - text
+id: block_content.cr_card.default
+targetEntityType: block_content
+bundle: cr_card
+mode: default
+content:
+  field_cr_card_body:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_cr_card_image:
+    weight: 0
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+hidden:
+  social_links: true
