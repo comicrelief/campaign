@@ -24,7 +24,8 @@ class FirePhp extends DevelDumperBase {
    * {@inheritdoc}
    */
   public function dump($input, $name = NULL) {
-    fb($input);
+    $fb = new \FB();
+    $fb->dump($name, $input);
   }
 
   /**
@@ -39,7 +40,7 @@ class FirePhp extends DevelDumperBase {
    * {@inheritdoc}
    */
   public static function checkRequirements() {
-    return class_exists('FirePHP', FALSE);
+    return class_exists('FirePHP', TRUE);
   }
 
 }
