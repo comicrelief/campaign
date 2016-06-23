@@ -12,9 +12,7 @@ projects:
       # See https://www.drupal.org/node/2672110
       2672110: https://www.drupal.org/files/issues/entityfieldderiver-2672110-8.patch
   file_entity:
-    download:
-      version: 2.x-dev
-      revision: 0bab734
+    version: 2.0-beta1
   media_entity:
     type: "module"
     version: "1.0"
@@ -64,7 +62,7 @@ projects:
   panels:
     download:
       version: 3.x-dev
-      revision: 4c4a3a7
+      revision: a5400d7
   panelizer:
     version: 3.0-alpha2
   ds:
@@ -72,12 +70,7 @@ projects:
   field_group:
     version: 1.0-rc4
   entity_reference_revisions:
-    download:
-      branch: 8.x-1.x
-      revision: 405c06ac073f9ab676a1816e53d7b36b67bf1d21
-    patch:
-      # See https://www.drupal.org/node/2598138
-      2598138: https://www.drupal.org/files/issues/2598138-hal-26.patch
+    version: 1.0-rc7
   view_modes_display:
     version: 1.x-dev
   social_links:
@@ -96,11 +89,11 @@ projects:
   default_content:
     download:
       branch: 8.x-1.x
-      revision: ae81658
+      revision: c6a79ee
   devel:
     download:
       version: 1.x-dev
-      revision: ca8954d
+      revision: 5c6a506
   stage_file_proxy:
     version: 1.0-alpha1
   imagemagick:
@@ -113,9 +106,9 @@ projects:
   admin_toolbar:
     version: 1.15
   focal_point:
-    download:
-      version: 1.x-dev
-      revision: 1bb8116
+    version: 1.0-beta1
+  crop:
+    version: 1.0-rc1
   paragraphs:
     download:
       branch: 8.x-1.x
@@ -152,7 +145,7 @@ projects:
   optimizely:
     version: 2.15-rc1
   simple_sitemap:
-    version: 2.1
+    version: 2.3
   # Performance modules
   fast_404:
     version: 1.0-alpha2
@@ -163,6 +156,6 @@ projects:
   memcache:
     download:
       version: 2.x-dev
-      revision: e0b03a7
+      revision: 908c0a2
   cdn:
     version: 3.0-alpha1
