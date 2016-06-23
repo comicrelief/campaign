@@ -23,83 +23,81 @@
 }
 /* END STYLEGUIDE HACKING*/
 
-// Helper function for mult-dimensonal maps
-@function multimap-get($map, $keys...) {
-  @each $key in $keys {
-    $map: map-get($map, $key);
-  }
-  @return $map;
-}
-
-
-@mixin imageratio($width, $ratio) {
-
-  $ratio-map: (
-    '16:9' : (
-      height : $width * 0.5625,
-      offset : -50%,
-      width : 178%
-    ),
-
-    '4:3' : (
-      height : $width * 0.5625,
-      offset: -50%,
-      width : 178%
-    ),
-
-    '1:1' : (
-      height : $width,
-      offset : -50%,
-      width : 178%
-    )
-  );
-
-  padding-bottom: multimap-get( $ratio-map, $ratio, "height");
-  height: 0;
-  overflow:hidden;
-
-  picture img {
-    margin-left: multimap-get( $ratio-map, $ratio, "offset");
-    height: auto;
-    width: multimap-get( $ratio-map, $ratio, "width");
-  } 
-}
-
 
 /* Global styles */
 .single-message-row-september {
   @include container;
+
+  position: relative;
+  margin-top: 50px;
+  margin-bottom: 50px;
+
   @include breakpoint($screen-lg, $no-query: true) {
     margin-top: 70px;
     margin-bottom: 70px;
   }
-
-  position: relative;
-  /* Placeholder styles */
-  margin-top: 50px;
-  margin-bottom: 50px;
-
-  a.btn {
-    display: block;
-    margin: 0 auto 20px;
+  
+  .single-message-row-september__image {
     width: 100%;
-    @include breakpoint($screen-md) {
-      width: 280px;
+    img {
+      display: block;
     }
-  }
 
-  .single-message-row-september__image img {
-    display: block;
-  }
+    // MD layout, change image from 4:3 to 1:1 ratio
+    @include breakpoint($screen-md-only) {
+      @include span(5);
+      margin-right: 0;
+      @include imageratio( span(5), "1:1");
+    }
+
+    @include breakpoint($screen-lg) {
+      // Add grid behaviour to lg breakpoint
+      @include span(6);
+
+      // Tweak width
+      width: calc( #{span(6)} + #{gutter()});
+
+      // Pass in this tweaked width and set the image back to 4:3 ratio
+      //@include imageratio(span(6) + gutter(), "4:3");
+      margin-right: 0;
+    }
+  } 
 
   // Placeholder styles, colours and button styles to be added to component when finalised
   .single-message-row-september__copy_wrapper {
+    width: 100%;
     background-color: #814fc8;
     text-align: center;
+
+    @include breakpoint($screen-md-only) {
+      @include span(7 wide);
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin-left: 0;
+      text-align: left;
+    }
+
+    @include breakpoint($screen-lg) {
+      @include span(6);
+      width: calc( #{span(6)} + #{gutter()});
+      margin-left: 0;
+      text-align: left;
+    }
+
     .single-message-row-september__copy {
       padding: 30px 20px;
       color: white;
       width: 100%;
+
+      @include breakpoint($screen-md) {
+        height: 100%;
+        a.btn {
+          margin: 0;
+        }
+      }
+
       .single-message-row-september__body {
         p {
           font-size: 18px;
@@ -108,19 +106,20 @@
           background-color: #67fdd9;
           color: black;
           font-weight: bold;
+          display: block;
+          margin: 0 auto 20px;
+          width: 100%;
+          @include breakpoint($screen-md) {
+            width: 280px;
+          }
         }
       }
     }
   }
 
-  .single-message-row-september__image,
-  .single-message-row-september__copy_wrapper {
-    // Full width, no gutters on small breakpoint
-    width: 100%;
-  }
 
   /* Featured variation  */
-  &.single-message-row-september--featured {
+/*   &.single-message-row-september--featured {
     .single-message-row-september__copy_wrapper {
       background-color: transparent;
       width: auto;
@@ -133,183 +132,8 @@
         background-color:white;
       }
     }
-  }
-}
-
-/*  @include breakpoint($screen-md) {
-  .single-message-row-september {
-    .single-message-row-september__image,
-    .single-message-row-september__copy_wrapper {
-      // Introduce grid
-      @include span(12);
-    }
-  }
-} */
-
-
-/* MD breakpoint, where rows stop stacking */
-@include breakpoint($screen-md) {
-
-  /* General styles */
-  .single-message-row-september {
-    .single-message-row-september__image,
-    .single-message-row-september__copy_wrapper {
-      @include span(6);
-      text-align: left;
-    }
-    .single-message-row-september__copy_wrapper {
-      height: 100%;
-      position: absolute;
-      top: 0;
-      right: 0;
-      .single-message-row-september__copy {
-        height: 100%;
-        a.btn {
-          margin: 0;
-        }
-      }
-    }
-
-    /* FEATURE general styles */ 
-    &.single-message-row-september--featured {
-      .single-message-row-september__copy_wrapper {
-        text-align: center;
-        height: 100%;
-        // Fixed vertical offset
-        margin-top: 25px !important;
-        margin-bottom: 25px !important;
-        height: calc(100% - 50px);
-        background: white;
-
-        .single-message-row-september__copy {
-          background: transparent;
-          height: auto;
-          position: absolute;
-          top: 50%;
-          @include translateY(-50%);
-        }
-
-        .single-message-row-september__body a.btn {
-          margin: 0 auto;
-        }
-      }
-    }
-  }
-
-
-/*   .single-message-row-september--16-9-image {
-    .single-message-row-september__image {
-      @include span(8);
-      margin-right: 0;
-    }
-    .single-message-row-september__copy_wrapper {
-      @include span(4 wide);
-      margin-left: 0;
-    }
-
-    &.single-message-row-september--featured {
-      .single-message-row-september__image {
-        @include span(8);
-        margin-right: 0;
-      }
-    
-      .single-message-row-september__copy_wrapper {
-        margin: 0;
-        @include span(5);
-        margin-left: 0;
-      }
-    }
   } */
 
 
-  /* 4:3 image variation */
-  .single-message-row-september--4-3-image {
-    .single-message-row-september__image {
-      // 
-      @include span(5);
-      // Tweak the ratio of the image container
-      @include imageratio( span(5), "1:1");
-      margin-right: 0;
- 
-    }
-    .single-message-row-september__copy_wrapper {
-      @include span(7 wide);
-      margin-left: 0;
-    }
-
-    /* FEATURED 4:3 image variant */
-    &.single-message-row-september--featured {
-      .single-message-row-september__image {
-        @include span(6 wide);
-        margin-right: 0;
-      }
-    
-      .single-message-row-september__copy_wrapper {
-        margin: 0;
-        @include span(7);
-        margin-left: 0;
-      }
-    }
-  }
-  
-
-
-/*   .single-message-row-september--1-1-image {
-    .single-message-row-september__image {
-      @include span(5);
-      margin-right: 0;
-    }
-    .single-message-row-september__copy_wrapper {
-      @include span(7 wide);
-      margin-left: 0;
-    }
-
-    &.single-message-row-september--featured {
-      .single-message-row-september__image {
-        @include span(5);
-        margin-right: 0;
-      }
-    
-      .single-message-row-september__copy_wrapper {
-        margin: 0;
-        @include span(8 wide);
-        margin-left: 0;
-      }
-    }
-  } */
 }
-
-@include breakpoint($screen-lg) {
-
-  /* 4:3 image variation */
-  .single-message-row-september--4-3-image {
-    .single-message-row-september__image {
-      
-      // Add our half gutter in to each element to make them meet right in the middle
-      // Plus, make this a variable so we can pass it into our 
-      width: calc( #{span(6)} + #{gutter()});
-
-      // Pass in this tweaked width and set the image back to 4:3 ratio
-      @include imageratio(span(6) + gutter(), "4:3");
-      margin-right: 0;
-    }
-    .single-message-row-september__copy_wrapper {
-      width: calc( #{span(6)} + #{gutter()});
-      margin-left: 0;
-    }
-
-    /* FEATURED 4:3 image variant */
-/*     &.single-message-row-september--featured {
-      .single-message-row-september__image {
-        @include span(6 wide);
-        margin-right: 0;
-      }
-    
-      .single-message-row-september__copy_wrapper {
-        margin: 0;
-        @include span(7);
-        margin-left: 0;
-      }
-    } */
-  }
-}
+// end of global styles
