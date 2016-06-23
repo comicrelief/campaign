@@ -143,6 +143,8 @@
   <target name="db" description="Get and restore DB from S3 backup">
     <phingcall target="db:get"/>
     <phingcall target="db:restore"/>
+    <phingcall target="enable-dev-mode"/>
+    <phingcall target="login"/>
   </target>
   <target name="db:get"
           description="Gets DB from specified environment">
@@ -181,5 +183,9 @@
   </target>
   <target name="info:code:cbf" description="Fix some quality errors of the PHP code.">
     <exec logoutput="true" command="${c.home}bin/phpcbf ${cs.standard} ${app.code}" />
+  </target>
+  <!-- Dev target to enable site in dev mode -->
+  <target name="enable-dev-mode" description="Enable developer mode for this site">
+    <exec logoutput="true" passthru="true" command="${drush.bin} en devel -y"/>
   </target>
 </project>
