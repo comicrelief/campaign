@@ -7,10 +7,39 @@
 // Style guide: Single Message September
 
 
-// Just to make white stuff visible!
+/* STYLEGUIDE HACKING*/
 .kss-modifier__example {
   background-color: #dddddd !important;
 }
+.kss-sidebar {
+  display:none;
+}
+.kss-main {
+  width: 100% !important;
+  margin: 0 !important;
+}
+.kss-section {
+  margin: 0 auto !important;
+}
+/* END STYLEGUIDE HACKING*/
+
+
+@mixin imageratio($width, $ratio) {
+
+  // Map possible ratios to multipler value
+  $multiplier: map-get((
+    '16:9' : 0.5625,
+    '4:3' : 0.75,
+    '1:1' : 1,
+  ), $ratio);
+
+  padding-bottom: $width * $multiplier;
+  overflow: hidden;
+  height: 0;
+  position: relative;
+
+}
+
 
 /* Global styles */
 .single-message-row-september {
@@ -82,7 +111,7 @@
   }
 }
 
- @include breakpoint($screen-md) {
+/*  @include breakpoint($screen-md) {
   .single-message-row-september {
     .single-message-row-september__image,
     .single-message-row-september__copy_wrapper {
@@ -90,11 +119,11 @@
       @include span(12);
     }
   }
-}
+} */
 
 
-/* Large breakpoint, where rows stop stacking */
-@include breakpoint($screen-lg, $no-query: true) {
+/* MD breakpoint, where rows stop stacking */
+@include breakpoint($screen-md) {
 
   /* General styles */
   .single-message-row-september {
@@ -143,8 +172,7 @@
   }
 
 
-  /* 16:9 image variation */
-  .single-message-row-september--16-9-image {
+/*   .single-message-row-september--16-9-image {
     .single-message-row-september__image {
       @include span(8);
       margin-right: 0;
@@ -154,7 +182,6 @@
       margin-left: 0;
     }
 
-    /* FEATURED 16:9 image variant */
     &.single-message-row-september--featured {
       .single-message-row-september__image {
         @include span(8);
@@ -167,16 +194,21 @@
         margin-left: 0;
       }
     }
-  }
+  } */
+
 
   /* 4:3 image variation */
   .single-message-row-september--4-3-image {
     .single-message-row-september__image {
-      @include span(6 wide);
+      // 
+      @include span(5);
+      // Tweak the ratio of the image container
+      @include imageratio( span(5), "1:1");
       margin-right: 0;
+ 
     }
     .single-message-row-september__copy_wrapper {
-      @include span(6);
+      @include span(7 wide);
       margin-left: 0;
     }
 
@@ -195,8 +227,9 @@
     }
   }
   
-  /* 1:1 image */
-  .single-message-row-september--1-1-image {
+
+
+/*   .single-message-row-september--1-1-image {
     .single-message-row-september__image {
       @include span(5);
       margin-right: 0;
@@ -206,7 +239,6 @@
       margin-left: 0;
     }
 
-    /* FEATURED 1:1 image variant */
     &.single-message-row-september--featured {
       .single-message-row-september__image {
         @include span(5);
@@ -219,5 +251,40 @@
         margin-left: 0;
       }
     }
+  } */
+}
+
+@include breakpoint($screen-lg) {
+
+  /* 4:3 image variation */
+  .single-message-row-september--4-3-image {
+    .single-message-row-september__image {
+      
+      // Add our half gutter in to each element to make them meet right in the middle
+      // Plus, make this a variable so we can pass it into our 
+      width: calc( #{span(6)} + #{gutter()});
+
+      // Pass in this tweaked width and set the image back to 4:3 ratio
+      @include imageratio(span(6) + gutter(), "4:3");
+      margin-right: 0;
+    }
+    .single-message-row-september__copy_wrapper {
+      width: calc( #{span(6)} + #{gutter()});
+      margin-left: 0;
+    }
+
+    /* FEATURED 4:3 image variant */
+/*     &.single-message-row-september--featured {
+      .single-message-row-september__image {
+        @include span(6 wide);
+        margin-right: 0;
+      }
+    
+      .single-message-row-september__copy_wrapper {
+        margin: 0;
+        @include span(7);
+        margin-left: 0;
+      }
+    } */
   }
 }
