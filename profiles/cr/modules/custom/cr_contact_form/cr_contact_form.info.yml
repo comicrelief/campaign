@@ -1,0 +1,11 @@
+name: CR Contact us form
+type: module
+description: 'Defines contact us form.'
+package: Comic Relief
+core: 8.x
+dependencies:
+  - yamlform_queue
+
+config_devel:
+  - yamlform.yamlform.cr_contact
+  - yamlform.yamlform_options.cr_contact_category
