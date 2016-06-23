@@ -23,21 +23,46 @@
 }
 /* END STYLEGUIDE HACKING*/
 
+// Helper function for mult-dimensonal maps
+@function multimap-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+  @return $map;
+}
+
 
 @mixin imageratio($width, $ratio) {
 
-  // Map possible ratios to multipler value
-  $multiplier: map-get((
-    '16:9' : 0.5625,
-    '4:3' : 0.75,
-    '1:1' : 1,
-  ), $ratio);
+  $ratio-map: (
+    '16:9' : (
+      height : $width * 0.5625,
+      offset : -50%,
+      width : 178%
+    ),
 
-  padding-bottom: $width * $multiplier;
-  overflow: hidden;
+    '4:3' : (
+      height : $width * 0.5625,
+      offset: -50%,
+      width : 178%
+    ),
+
+    '1:1' : (
+      height : $width,
+      offset : -50%,
+      width : 178%
+    )
+  );
+
+  padding-bottom: multimap-get( $ratio-map, $ratio, "height");
   height: 0;
-  position: relative;
+  overflow:hidden;
 
+  picture img {
+    margin-left: multimap-get( $ratio-map, $ratio, "offset");
+    height: auto;
+    width: multimap-get( $ratio-map, $ratio, "width");
+  } 
 }
 
 
