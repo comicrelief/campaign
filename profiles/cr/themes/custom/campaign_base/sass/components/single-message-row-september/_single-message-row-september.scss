@@ -117,23 +117,60 @@
     }
   }
 
-
   /* Featured variation  */
-/*   &.single-message-row-september--featured {
+  &.single-message-row-september--featured {
+    .single-message-row-september__image {
+      float: left;
+   
+      // MD only, change image from 16:9 to 1:1 ratio
+      @include breakpoint($screen-md) {
+        @include span(6);
+        margin-right: 0;
+        // Tweak the ratio of the image container and contained image
+        //@include imageratio( span(6), "1:1");
+
+        picture img {
+          margin-left: -16%;
+          width: 147%;
+          height: auto;
+        }
+      }
+      @include breakpoint($screen-lg) {
+        @include span(8);
+        
+        picture img {
+          width: 100%;
+          margin-left: 0;
+        }
+      }
+    }
+
     .single-message-row-september__copy_wrapper {
       background-color: transparent;
       width: auto;
       // Offsets propotional to gutter widths
       margin: 0 calc(4*#{gutter()}) 0;
       margin-top: calc(-4 *#{gutter()});
+      float: left;
 
       .single-message-row-september__copy {
         color: black;
         background-color:white;
       }
+
+      // MD only, change image from 4:3 to 1:1 ratio
+      @include breakpoint($screen-md) {
+        @include span(7);
+        margin-left: 0;
+        margin-top: 20px;
+         margin-bottom: 20px;
+        height: calc(100% - 40px);
+      }
+
+      @include breakpoint($screen-lg) {
+        @include span(5);
+      }
     }
-  } */
-
-
+  }
 }
 // end of global styles
