@@ -143,29 +143,37 @@
     }
 
     .single-message-row-september__copy_wrapper {
-      background-color: transparent;
+      background-color:white;
       width: auto;
+      float: left;
+
       // Offsets propotional to gutter widths
       margin: 0 calc(4*#{gutter()}) 0;
       margin-top: calc(-4 *#{gutter()});
-      float: left;
 
-      .single-message-row-september__copy {
-        color: black;
-        background-color:white;
-      }
-
-      // MD only, change image from 4:3 to 1:1 ratio
       @include breakpoint($screen-md) {
         @include span(7);
         margin-left: 0;
         margin-top: 20px;
-         margin-bottom: 20px;
+        margin-bottom: 20px;
         height: calc(100% - 40px);
       }
 
       @include breakpoint($screen-lg) {
         @include span(5);
+      }
+
+      .single-message-row-september__copy {
+        color: black;
+        height: auto;
+
+        @include breakpoint($screen-md) {
+          padding: 0 30px;
+          position: absolute;
+          top: 50%;
+          left: 0;
+          @include translateY(-50%);
+        }
       }
     }
   }
