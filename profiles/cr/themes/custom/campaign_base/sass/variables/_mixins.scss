@@ -64,7 +64,7 @@
   }
 }
 
-/* Helper function for the aspect ratio mixin */
+/* Helper function for multi-dimensional arrays */
 @function multimap-get($map, $keys...) {
   @each $key in $keys {
     $map: map-get($map, $key);
@@ -72,18 +72,19 @@
   @return $map;
 }
 
-/* Aspect ratio mixin for single message row images; masking and 'cropping' images with CSS alone */
-@mixin imageratio($width, $ratio) {
+/* Crops 4:3 or 16:9 images to 1:1, using container width as basis */
+@mixin square-img-ratio($width, $ratio) {
+
   // Values associated with each 'ratio' keym passed in along with the container width
-  // Assumes all images are 16:
+
   $ratio-map: (
-    '16:9' : (height : $width * 0.5625, offset : -50%, width : 178%),
-    '4:3' : (height : $width * 0.5625, offset: -50%, width : 178%),
-    '1:1' : (height : $width, offset : -16%, width : 134% )
+    '16:9' : (height: 0, padding-bottom : $width, offset : -39%, width : 178%),
+    '4:3' : (height: 0, padding-bottom  : $width, offset: -16%, width : 134%),
+    'reset': (height: auto, padding-bottom  : 0, offset: 0, width : 100%)
   );
 
-  padding-bottom: multimap-get($ratio-map, $ratio, "height");
-  height: 0;
+  padding-bottom: multimap-get($ratio-map, $ratio, "padding-bottom");
+  height: multimap-get($ratio-map, $ratio, "height");
   overflow:hidden;
 
   picture img {
@@ -92,4 +93,3 @@
     height: auto;
   } 
 }
-

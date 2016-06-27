@@ -24,7 +24,6 @@
 /* END STYLEGUIDE HACKING*/
 
 
-
 /* Global styles */
 .single-message-row-september {
   @include container;
@@ -48,10 +47,10 @@
     @include breakpoint($screen-md-only) {
       @include span(5);
       margin-right: 0;
-      @include imageratio( span(5), "1:1");
+      @include square-img-ratio(span(5), '4:3');
     }
 
-    // LG
+    // LG, no inheried image crop
     @include breakpoint($screen-lg) {
       // Add grid behaviour to lg breakpoint
       @include span(6);
@@ -77,19 +76,19 @@
       text-align: left;
     }
 
-    // MD only
+    // MD only, change image from 16:9 to 1:1 ratio
     @include breakpoint($screen-md-only) {
       @include span(7 wide);
     }
 
-    // LG
+    // LG, no inheried image crop
     @include breakpoint($screen-lg) {
       @include span(6);
       width: calc( #{span(6)} + #{gutter()});
     }
 
     .single-message-row-september__copy {
-      padding: 30px 20px;
+      padding: 40px 30px 30px;
       color: white;
       width: 100%;
 
@@ -127,17 +126,15 @@
         @include span(6);
         margin-right: 0;
         // Tweak the ratio of the image container and contained image
-        //@include imageratio( span(6), "1:1");
-
-        picture img {
-          margin-left: -16%;
-          width: 147%;
-          height: auto;
-        }
+        @include square-img-ratio( span(6), "16:9");
       }
+
       @include breakpoint($screen-lg) {
         @include span(8);
-        
+        // Reset crop
+        height: 100%;
+        padding-bottom: 0;
+  
         picture img {
           width: 100%;
           margin-left: 0;
