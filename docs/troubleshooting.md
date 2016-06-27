@@ -1,18 +1,6 @@
 ## Information, hints, tips and troubleshooting
 
 
-**How to run this on Pantheon**
-
-Add Pantheon as a second remote:
-
-```bash
-git remote add pantheon ssh://codeserver.dev.f9291f1f-3819-4964-9c5b-c9f7d5500d28@codeserver.dev.f9291f1f-3819-4964-9c5b-c9f7d5500d28.drush.in:2222/~/repository.git
-```
-
-Now you can push to Pantheon to deploy this https://dashboard.pantheon.io/sites/f9291f1f-3819-4964-9c5b-c9f7d5500d28#dev/code
-
-How to deal with settings.php on Pantheon https://pantheon.io/docs/articles/drupal/configuring-settings-php/
-
 **Skip Travis CI builds**
 
 Include the following within any commit message `[ci skip]`
@@ -136,9 +124,21 @@ This usually happens when drush is unable to connect to the database. Check the 
 
 **Imagemagick**
 
-As we're using the Imagemagick tookit now (allowing animated gifs to be used on the site), make sure you've got this installed locally.
+As we're using the Imagemagick tookit now (allowing animated gifs to be used on the site), make sure you've got this installed locally. If not, you won't see any images and you'll see errors in your logs like
 
-Mac users can use the following quick commands (presuming Brew is installed):
+	ImageMagick error 127: sh: convert: command not found
 
-```$ brew update
-$ brew install imagemagick --disable-openmp --build-from-source```
+Mac users can use the following quick commands (presuming Homebrew is installed):
+
+	brew update
+	brew install imagemagick --disable-openmp --build-from-source
+	
+Then, if you don't use MAMP but also Homebrew for your PHP, you need to enable imagemagick for PHP. This is for PHP 5.6
+
+	brew install php56-imagick
+	
+Finally, it might make sense to add imagemagick binaries to `/usr/bin` in order not to have to configure this every time in the Drupal UI at `admin/config/media/image-toolkit`
+
+	sudo ln -s /usr/local/bin/convert /usr/bin/convert
+	sudo ln -s /usr/local/bin/identify /usr/bin/identify
+
