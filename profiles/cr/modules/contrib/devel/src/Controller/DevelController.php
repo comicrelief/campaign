@@ -9,6 +9,7 @@ namespace Drupal\devel\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\FieldableEntityInterface;
 use Drupal\Core\Field;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Url;
@@ -266,6 +267,15 @@ class DevelController extends ControllerBase {
     $entity = $route_match->getParameter($parameter_name);
 
     if ($entity && $entity instanceof EntityInterface) {
+
+      // Field definitions are lazy loaded and are populated only when needed.
+      // By calling ::getFieldDefinitions() we are sure that field definitions
+      // are populated and available in the dump output.
+      // @see https://www.drupal.org/node/2311557
+      if($entity instanceof FieldableEntityInterface) {
+        $entity->getFieldDefinitions();
+      }
+
       $output = array('#markup' => kdevel_print_object($entity));
     }
 

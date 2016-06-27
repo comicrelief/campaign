@@ -14,9 +14,6 @@ define('DEVEL_ERROR_HANDLER_BACKTRACE_DPM', 4);
 define('DEVEL_MIN_TEXTAREA', 50);
 
 use Drupal\comment\CommentInterface;
-use Drupal\Component\Utility\Html;
-use Drupal\Component\Utility\Unicode;
-use Drupal\Core\Render\Markup;
 use Drupal\Core\Database\Database;
 use Drupal\Core\Database\Query\AlterableInterface;
 use Drupal\Core\Entity\EntityInterface;
@@ -220,41 +217,11 @@ function backtrace_error_handler($error_level, $message, $filename, $line, $cont
 }
 
 /**
- * Returns the core version.
- */
-function devel_get_core_version($version) {
-  $version_parts = explode('.', $version);
-  // Map from 4.7.10 -> 4.7
-  if ($version_parts[0] < 5) {
-    return $version_parts[0] . '.' . $version_parts[1];
-  }
-  // Map from 5.5 -> 5 or 6.0-beta2 -> 6
-  else {
-    return $version_parts[0];
-  }
-}
-
-/**
  * Implements hook_page_attachments_alter().
  */
 function devel_page_attachments_alter(&$page) {
   if (\Drupal::currentUser()->hasPermission('access devel information') && \Drupal::config('devel.settings')->get('page_alter')) {
     dpm($page, 'page');
-  }
-}
-
-/**
- * Devel's t_safe() function.
- */
-function t_safe($string, $args) {
-  // get_t() caused problems here with the theme registry after changing on
-  // admin/build/modules. The theme_get_registry() call is needed!
-  if (function_exists('t') && function_exists('theme_get_registry')) {
-    theme_get_registry();
-    return t($string, $args);
-  }
-  else {
-    strtr($string, $args);
   }
 }
 
@@ -555,17 +522,6 @@ function ddebug_backtrace($return = FALSE, $pop = 0, $options = DEBUG_BACKTRACE_
   }
 }
 
-/**
- * Deletes all files in a dir.
- */
-function devel_empty_dir($dir) {
-  foreach (new DirectoryIterator($dir) as $file_info) {
-    if ($file_info->isFile()) {
-      unlink($file_info->getPathname());
-    }
-  }
-}
-
 /*
  * Migration-related functions.
  */
@@ -650,29 +606,17 @@ function devel_form_system_modules_alter(&$form, FormStateInterface $form_state)
 }
 
 /**
- * Processes variables for block.tpl.php.
- *
- * Adding a module block class.
- *
- * @todo remove when http://drupal.org/node/1896098 gets in core.
- */
-function devel_preprocess_block(&$variables) {
-  if (isset($variables['block']) && $variables['block']->module == 'devel') {
-    $variables['attributes']['class'][] = drupal_html_class('block-' . $variables['elements']['#block']->get('plugin'));
-  }
-}
-
-/**
  * Implements hook_query_TAG_alter().
  *
  * Makes debugging entity query much easier.
  *
  * Example usage:
- *   $query = \Drupal::entityQuery('node');
- *   $query->condition('status', 1);
- *   $query->addTag('debug');
- *   $query->execute();
- *
+ * @code
+ * $query = \Drupal::entityQuery('node');
+ * $query->condition('status', NODE_PUBLISHED);
+ * $query->addTag('debug');
+ * $query->execute();
+ * @endcode
  */
 function devel_query_debug_alter(AlterableInterface $query) {
   if (!$query->hasTag('debug-semaphore')) {

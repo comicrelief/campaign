@@ -49,6 +49,14 @@ file_entity.settings:
 
 field.formatter.settings.file_image:
   type: field.formatter.settings.image
+  label: 'Image formatter for file entity settings'
+  mapping:
+    title:
+      type: string
+      label: 'Title field'
+    alt:
+      type: string
+      label: 'Alt field'
 
 field.formatter.settings.file_size:
   type: mapping
