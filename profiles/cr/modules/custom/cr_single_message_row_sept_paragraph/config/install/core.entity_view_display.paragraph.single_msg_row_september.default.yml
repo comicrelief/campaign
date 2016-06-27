@@ -1,0 +1,52 @@
+uuid: 2b6c441d-b5e8-4db5-97a7-02f33e8b0d5e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.single_msg_row_september.field_single_msg_row_sept_body
+    - field.field.paragraph.single_msg_row_september.field_single_msg_row_sept_feat
+    - field.field.paragraph.single_msg_row_september.field_single_msg_row_sept_img
+    - field.field.paragraph.single_msg_row_september.field_single_msg_row_sept_title
+    - paragraphs.paragraphs_type.single_msg_row_september
+  module:
+    - image
+    - text
+id: paragraph.single_msg_row_september.default
+targetEntityType: paragraph
+bundle: single_msg_row_september
+mode: default
+content:
+  field_single_msg_row_sept_body:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_single_msg_row_sept_feat:
+    weight: 3
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+  field_single_msg_row_sept_img:
+    weight: 1
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_single_msg_row_sept_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden:
+  created: true
+  social_links: true
+  uid: true

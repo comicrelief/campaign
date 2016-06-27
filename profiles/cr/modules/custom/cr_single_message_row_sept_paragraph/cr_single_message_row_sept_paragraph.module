@@ -1,0 +1,10 @@
+<?php
+
+/**
+ * @file
+ * Single message row paragraph type.
+ */
+
+use Drupal\Core\Entity\FieldableEntityInterface;
+use Drupal\Core\Field\FieldStorageDefinitionInterface;
+

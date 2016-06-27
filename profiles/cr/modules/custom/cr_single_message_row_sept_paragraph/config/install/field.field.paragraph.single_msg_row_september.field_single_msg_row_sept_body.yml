@@ -1,0 +1,21 @@
+uuid: e5c0c15f-18bf-4a4b-bf31-53b70883b60f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_single_msg_row_sept_body
+    - paragraphs.paragraphs_type.single_msg_row_september
+  module:
+    - text
+id: paragraph.single_msg_row_september.field_single_msg_row_sept_body
+field_name: field_single_msg_row_sept_body
+entity_type: paragraph
+bundle: single_msg_row_september
+label: Body
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

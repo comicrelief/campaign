@@ -1,0 +1,19 @@
+uuid: 9486c69c-9eb9-4d4d-94a6-643390387ff1
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - text
+id: paragraph.field_single_msg_row_sept_body
+field_name: field_single_msg_row_sept_body
+entity_type: paragraph
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
