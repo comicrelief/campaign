@@ -6,7 +6,26 @@ dependencies:
     - field.field.paragraph.cr_cards.field_cr_cards_card_reference
     - paragraphs.paragraphs_type.cr_cards
   module:
+    - ds
     - options
+third_party_settings:
+  ds:
+    layout:
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
+      library: ''
+      disable_css: false
+      settings:
+        classes: {  }
+        wrappers: {  }
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+    regions:
+      ds_content:
+        - field_cr_cards_background
+        - field_cr_cards_card_reference
 id: paragraph.cr_cards.default
 targetEntityType: paragraph
 bundle: cr_cards
@@ -23,8 +42,9 @@ content:
     label: hidden
     settings:
       link: true
+      view_mode: default
     third_party_settings: {  }
-    type: entity_reference_label
+    type: entity_reference_entity_view
 hidden:
   created: true
   social_links: true
