@@ -1,0 +1,27 @@
+{% set is_featured = content.field_single_msg_row_sept_feat['#items'][0].value == '1' ? 'paragraph--' ~ paragraph.bundle|clean_class ~ '--featured' : '' %}
+
+{%
+set classes = [
+'paragraph',
+'paragraph--' ~ paragraph.bundle|clean_class,
+is_featured,
+]
+%}
+
+<div {{ attributes.addClass(classes) }} >
+  <div class="single-message-row-september__image">
+   {{ content.field_single_msg_row_sept_img }}
+  </div>
+  <div class="single-message-row-september__copy_wrapper">
+    <div class="single-message-row-september__copy">
+      <div class="single-message-row-september__title">
+        <h2>
+          {{ content.field_single_msg_row_sept_title }}
+        </h2>
+      </div>
+      <div class="single-message-row-september__body">
+        {{ content.field_single_msg_row_sept_body }}
+      </div>
+    </div>
+  </div>
+</div>

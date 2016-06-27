@@ -87,7 +87,7 @@
   height: multimap-get($ratio-map, $ratio, "height");
   overflow:hidden;
 
-  picture img {
+   img {
     margin-left: multimap-get( $ratio-map, $ratio, "offset");
     width: multimap-get( $ratio-map, $ratio, "width");
     height: auto;

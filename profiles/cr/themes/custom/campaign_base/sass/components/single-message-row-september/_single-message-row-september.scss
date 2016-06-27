@@ -2,7 +2,7 @@
 //
 // This is a Single message row for September
 //
-// Markup: _single-message-row-september.hbs
+// Markup: _paragraph--single-msg-row-september.hbs
 //
 // Style guide: Single Message September
 
@@ -25,9 +25,8 @@
 
 
 /* Global styles */
-.single-message-row-september {
+.paragraph--single-msg-row-september {
   @include container;
-
   position: relative;
   margin-top: 50px;
   margin-bottom: 50px;
@@ -41,6 +40,8 @@
     width: 100%;
     img {
       display: block;
+      width: 100%;
+      height: auto;
     }
 
     // MD only, change image from 4:3 to 1:1 ratio
@@ -117,7 +118,7 @@
   }
 
   /* Featured variation  */
-  &.single-message-row-september--featured {
+  &.paragraph--single-msg-row-september--featured {
     .single-message-row-september__image {
       float: left;
    
@@ -135,7 +136,7 @@
         height: 100%;
         padding-bottom: 0;
   
-        picture img {
+        img {
           width: 100%;
           margin-left: 0;
         }
