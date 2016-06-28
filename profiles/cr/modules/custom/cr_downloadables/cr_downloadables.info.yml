@@ -13,4 +13,3 @@ config_devel:
   - core.entity_form_display.media.cr_file.default
   - core.entity_view_display.media.cr_file.default
   - embed.button.downloadable
-  - embed.settings
