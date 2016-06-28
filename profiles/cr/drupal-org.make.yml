@@ -79,7 +79,7 @@ projects:
   menu_attributes:
     download:
       version: 1.x
-      revision: 32f4069
+      revision: 6339bd9
   editor_advanced_link:
     version: 1.2
   admin_toolbar:

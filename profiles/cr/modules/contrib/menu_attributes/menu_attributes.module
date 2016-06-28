@@ -289,7 +289,17 @@ function menu_attributes_preprocess_menu_link(&$variables) {
  * Implements hook_preprocess_menu().
  */
 function menu_attributes_preprocess_menu(&$variables) {
-  foreach ($variables['items'] as &$item) {
+  menu_attibutes_set_attributes($variables['items']);
+}
+
+/**
+ * Set the attributes recursively on the given menu items.
+ *
+ * @param array $items
+ *   An array of menu items.
+ */
+function menu_attibutes_set_attributes($items) {
+  foreach ($items as &$item) {
     $menu_attributes = menu_attributes_get_attributes($item['original_link']);
     $menu_link_attributes = empty($menu_attributes[MENU_ATTRIBUTES_LINK]) ? []
       : array_filter($menu_attributes[MENU_ATTRIBUTES_LINK]);
@@ -306,6 +316,10 @@ function menu_attributes_preprocess_menu(&$variables) {
       foreach ($menu_item_attributes as $attribute => $info) {
         $item['attributes']->setAttribute($attribute, $info);
       }
+    }
+
+    if (!empty($item['below'])) {
+      menu_attibutes_set_attributes($item['below']);
     }
   }
 }
