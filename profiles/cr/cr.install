@@ -18,3 +18,10 @@ function cr_install() {
   // Allow visitor account creation, but with administrative approval.
   \Drupal::configFactory()->getEditable('user.settings')->set('register', USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL)->save(TRUE);
 }
+
+/**
+ * Install config_readonly
+ */
+function cr_update_8001() {
+  \Drupal::service('module_installer')->install(['config_readonly']);
+}
