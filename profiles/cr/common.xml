@@ -144,7 +144,7 @@
   <target name="db" description="Get and restore DB from S3 backup">
     <phingcall target="db:get"/>
     <phingcall target="db:restore"/>
-    <phingcall target="enable-dev-mode"/>
+    <phingcall target="dev-mode:enable"/>
     <phingcall target="login"/>
   </target>
   <target name="db:get"
@@ -186,7 +186,7 @@
     <exec logoutput="true" command="${c.home}bin/phpcbf ${cs.standard} ${app.code}" />
   </target>
   <!-- Dev target to enable site in dev mode -->
-  <target name="enable-dev-mode" description="Enable developer mode for this site"
+  <target name="dev-mode:enable" description="Enable developer mode for this site"
   depends="module:dev">
   </target>
 </project>
