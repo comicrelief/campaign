@@ -36,4 +36,4 @@ devel_dumper_test.debug:
     _controller: '\Drupal\devel_dumper_test\Controller\DumperTestController::debug'
     _title: 'Devel Dumper Test'
   requirements:
-    _permission: 'access devel information'
+    _access: 'TRUE'

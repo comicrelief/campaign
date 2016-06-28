@@ -11,19 +11,27 @@ databases:
       driver: mysql
 
 settings:
-  queue_service_esu: queue.rabbitmq
-  hash_salt: kzWT4Q5kJe2DkfS72PrATBUfkw54RKzMCbQg933K1Qwe0ZKtonOV_xdmuCac
+  update_free_access: FALSE
+  skip_permissions_hardening: TRUE
   rabbitmq_credentials:
     host: 127.0.0.1
+    vhost: /
     port: 5672
     username: guest
     password: guest
+  queue_service_esu: queue.rabbitmq
+  hash_salt: kzWT4Q5kJe2DkfS72PrATBUfkw54RKzMCbQg933K1Qwe0ZKtonOV_xdmuCac
+  file_chmod_directory: 0775
+  file_chmod_file: 0664
+  #trusted_host_patterns: ['^rnd17-test\.sys\.comicrelief\.com$', '^127\.0\.0\.1$', '^localhost$']
 
 config:
   system.performance:
     css:
-      preprocess: true
+      preprocess: false
     js:
-      preprocess: true
+      preprocess: false
   system.logging:
     error_level: verbose
+
+config_dir: sites/default/files/config

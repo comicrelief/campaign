@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\file_entity\Tests\FileEntityCreationTest.
- */
-
 namespace Drupal\file_entity\Tests;
 
 use Drupal\Core\Language\LanguageInterface;
@@ -130,6 +125,10 @@ class FileEntityCreationTest extends FileEntityTestBase {
       $edit[$field . '[0][value]'] = $value;
     }
     $this->drupalPostForm(NULL, $edit, t('Save'));
+    $file = $this->getFileByFilename('image-test.png');
+    $this->drupalGet('file/' . $file->id());
+    $this->assertRaw('alt="A test image"', 'Alt attribute is shown and has the correct value.');
+    $this->assertRaw('title="My image"', 'Title attribute is shown and has the correct value.');
 
     // Make sure the field values are saved.
     $created_file = FileEntity::load(1)->getTranslation(LanguageInterface::LANGCODE_DEFAULT);
