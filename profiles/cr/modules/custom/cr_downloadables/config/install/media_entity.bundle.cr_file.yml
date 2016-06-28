@@ -10,7 +10,7 @@ id: cr_file
 label: File
 description: 'This entity type is used to upload files and resources that need to be available for download via the site.'
 type: generic
-queue_thumbnail_downloads: true
+queue_thumbnail_downloads: false
 new_revision: false
 type_configuration: {  }
 field_map: {  }
