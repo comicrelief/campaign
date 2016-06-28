@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\entity_reference_revisions\Plugin\views\row\EntityReference.
- */
-
 namespace Drupal\entity_reference_revisions\Plugin\views\row;
 
 use Drupal\Core\Form\FormStateInterface;

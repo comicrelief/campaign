@@ -7,7 +7,8 @@
 
 namespace Drupal\focal_point\Plugin\Field\FieldWidget;
 
-use Drupal\focal_point\FocalPoint;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\crop\Entity\Crop;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\image\Plugin\Field\FieldWidget\ImageWidget;
 
@@ -25,7 +26,7 @@ class FocalPointImageWidget extends ImageWidget {
   /**
    * {@inheritDocs}
    *
-   * Form API callback: Processes a image_fp field element.
+   * Form API callback: Processes an image_fp field element.
    *
    * Expands the image_fp type to include the focal_point field.
    *
@@ -66,8 +67,8 @@ class FocalPointImageWidget extends ImageWidget {
     $element['focal_point'] = array(
       '#type' => 'textfield',
       '#title' => 'Focal point',
-      '#description' => t('Specify the focus of this image in the form "leftoffset,topoffset" where offsets are in percents. Ex: 25,75'),
-      '#default_value' => isset($item['focal_point']) ? $item['focal_point'] : FocalPoint::DEFAULT_VALUE,
+      '#description' => new TranslatableMarkup('Specify the focus of this image in the form "leftoffset,topoffset" where offsets are in percents. Ex: 25,75'),
+      '#default_value' => isset($item['focal_point']) ? $item['focal_point'] : \Drupal::config('focal_point.settings')->get('default_value'),
       '#element_validate' => array('\Drupal\focal_point\Plugin\Field\FieldWidget\FocalPointImageWidget::validateFocalPoint'),
       '#attributes' => array(
         'class' => array('focal-point', $element_selector),
@@ -95,8 +96,17 @@ class FocalPointImageWidget extends ImageWidget {
     // When an element is loaded, focal_point needs to be set. During a form
     // submission the value will already be there.
     if (isset($return['target_id']) && !isset($return['focal_point'])) {
-      $element['#focal_point'] = new FocalPoint($return['target_id']);
-      $return['focal_point'] = $element['#focal_point']->getFocalPoint();
+      /** @var \Drupal\file\FileInterface $file */
+      $file = \Drupal::service('entity_type.manager')
+        ->getStorage('file')
+        ->load($return['target_id']);
+      $crop_type = \Drupal::config('focal_point.settings')->get('crop_type');
+      $crop = Crop::findCrop($file->getFileUri(), $crop_type);
+      if ($crop) {
+        $anchor = \Drupal::service('focal_point.manager')
+          ->absoluteToRelative($crop->x->value, $crop->y->value, $return['width'], $return['height']);
+        $return['focal_point'] = "{$anchor['x']},{$anchor['y']}";
+      }
     }
     return $return;
   }
@@ -107,11 +117,17 @@ class FocalPointImageWidget extends ImageWidget {
    * Validate callback for the focal point field.
    */
   public static function validateFocalPoint($element, FormStateInterface $form_state) {
-    $field_name = array_pop($element['#parents']);
-    $focal_point_value = $form_state->getValue($field_name);
+    $field_name = array_shift($element['#parents']);
+    $field_values = $form_state->getValue($field_name);
 
-    if (!is_null($focal_point_value) && !FocalPoint::validate($focal_point_value)) {
-      \Drupal::formBuilder()->setError($element, $form_state, t('The !title field should be in the form "leftoffset,topoffset" where offsets are in percents. Ex: 25,75.', array('!title' => $element['#title'])));
+    if (!is_null($field_values)) {
+      foreach ($field_values as $field_value) {
+        $focal_point_value = $field_value['focal_point'];
+
+        if (FALSE === \Drupal::service('focal_point.manager')->validateFocalPoint($focal_point_value)) {
+          $form_state->setError($element, new TranslatableMarkup('The !title field should be in the form "leftoffset,topoffset" where offsets are in percents. Ex: 25,75.', array('!title' => $element['#title'])));
+        }
+      }
     }
   }
 

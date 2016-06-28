@@ -27,7 +27,7 @@ class SimplesitemapManager extends DefaultPluginManager {
    *   The module handler to invoke the alter hook with.
    */
   public function __construct(\Traversable $namespaces, CacheBackendInterface $cache_backend, ModuleHandlerInterface $module_handler) {
-    parent::__construct('Plugin/LinkGenerator', $namespaces, $module_handler, 'Drupal\simple_sitemap\LinkGeneratorInterface', 'Drupal\simple_sitemap\Annotation\LinkGenerator');
+    parent::__construct('Plugin/simple_sitemap/LinkGenerator', $namespaces, $module_handler, 'Drupal\simple_sitemap\LinkGeneratorInterface', 'Drupal\simple_sitemap\Annotation\LinkGenerator');
 
     $this->alterInfo('simple_sitemap_link_generators_info');
     $this->setCacheBackend($cache_backend, 'simple_sitemap_link_generators');

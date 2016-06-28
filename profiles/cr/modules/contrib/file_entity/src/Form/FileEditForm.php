@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Definition of Drupal\file_entity\Form\FileEditForm.
- */
-
 namespace Drupal\file_entity\Form;
 
 use Drupal\Core\Entity\ContentEntityForm;
@@ -22,6 +17,15 @@ use Drupal\file_entity\UploadValidatorsTrait;
 class FileEditForm extends ContentEntityForm {
 
   use UploadValidatorsTrait;
+
+  /**
+   * {@inheritdoc}
+   */
+  public function prepareEntity() {
+    if ($this->entity->bundle() == FILE_TYPE_NONE) {
+      $this->entity->updateBundle();
+    }
+  }
 
   /**
    * {@inheritdoc}
