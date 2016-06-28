@@ -67,7 +67,7 @@ projects:
   default_content:
     download:
       branch: 8.x-1.x
-      revision: ae81658
+      revision: c6a79ee
   devel:
     download:
       version: 1.x-dev
