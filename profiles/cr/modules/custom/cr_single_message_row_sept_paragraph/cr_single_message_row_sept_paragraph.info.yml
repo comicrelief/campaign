@@ -8,7 +8,7 @@ dependencies:
   - entity_reference_revisions
 config_devel:
 # Paragraph config
-  - core.entity_form_display.paragraph.single_msg_row_september.default
+  - core.entity_form_display.paragraph.singsgle_msg_row_september.default
   - core.entity_view_display.paragraph.single_msg_row_september.default
   - field.field.paragraph.single_msg_row_september.field_single_msg_row_sept_body
   - field.field.paragraph.single_msg_row_september.field_single_msg_row_sept_feat
@@ -25,4 +25,3 @@ config_devel:
   - image.style.single_msg_row_september_sm_2x_.yml
   - image.style.single_msg_row_september_sm.yml
   - paragraphs.paragraphs_type.single_msg_row_september
-  - responsive_image.styles.single_message_row_september_.yml
