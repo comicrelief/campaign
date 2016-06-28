@@ -69,9 +69,9 @@ to
 #### Managing configuration
 
 Run
-	
+
 	phing config:export
-	
+
 to export all config in one go.
 
 #### Managing default content
@@ -83,25 +83,19 @@ To update one node at a time, run
 If you want to update the content or you added the uuid manually in `cr_default_content.info.yml`, you only have to run
 
 	phing content:export
-	
+
 ### Front End
 
 #### Grunt Tasks
 
-#####In campaign
+##### build
 
-	grunt campaign_base
-Grunt will watch all files for changes. Compass will compile css with source map.
-	grunt build
-Grunt will concatenate all js files in /scripts and minify them to /js
+`phing grunt:build`
 
-#####In rnd17
+##### watch
 
-	grunt rnd17 --target=themes/rnd17/config.rb
-Grunt will watch all files for changes. Compass will compile css with source map.
-	grunt build_all
-Grunt will concatenate all js files in /scripts and minify them to /js
-	
+`phing grunt:watch`
+
 We use [KSS](https://github.com/kss-node/kss/blob/spec/SPEC.md) to build our styleguide.
-	
+
 When you create a new sass component please follow the same pattern from existem files for `grunt watch` to auto generate and update the styleguide with the new component.
