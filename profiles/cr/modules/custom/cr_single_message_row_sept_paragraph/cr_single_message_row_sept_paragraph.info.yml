@@ -18,4 +18,11 @@ config_devel:
   - field.storage.paragraph.field_single_msg_row_sept_feat
   - field.storage.paragraph.field_single_msg_row_sept_img
   - field.storage.paragraph.field_single_msg_row_sept_title
+  - image.style.single_msg_row_september_lg_.yml
+  - image.style.single_msg_row_september_lg_2x_.yml
+  - image.style.single_msg_row_september_md_2x_.yml
+  - image.style.single_msg_row_september_md.yml
+  - image.style.single_msg_row_september_sm_2x_.yml
+  - image.style.single_msg_row_september_sm.yml
   - paragraphs.paragraphs_type.single_msg_row_september
+  - responsive_image.styles.single_message_row_september_.yml

@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.storage.paragraph.field_single_msg_row_sept_title
     - paragraphs.paragraphs_type.single_msg_row_september
+_core:
+  default_config_hash: DRCXBFXevx4jJVuZRET75VmGViaGwggQltCPKsxvzm4
 id: paragraph.single_msg_row_september.field_single_msg_row_sept_title
 field_name: field_single_msg_row_sept_title
 entity_type: paragraph

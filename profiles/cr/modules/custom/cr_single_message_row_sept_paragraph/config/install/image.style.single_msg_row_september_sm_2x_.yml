@@ -1,0 +1,15 @@
+uuid: 3217c591-19fb-470c-8ddb-ba5ddda35f57
+langcode: en
+status: true
+dependencies: {  }
+name: single_msg_row_september_sm_2x_
+label: 'Single Msg Row September - SM (2x)'
+effects:
+  a67d2479-c457-4542-9ace-717b3c55ef47:
+    uuid: a67d2479-c457-4542-9ace-717b3c55ef47
+    id: image_scale
+    weight: 1
+    data:
+      width: 1448
+      height: null
+      upscale: true

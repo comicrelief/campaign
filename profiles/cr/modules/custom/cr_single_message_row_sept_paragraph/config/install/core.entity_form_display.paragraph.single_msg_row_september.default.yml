@@ -12,20 +12,22 @@ dependencies:
   module:
     - image
     - text
+_core:
+  default_config_hash: fgU41OvgMCffDk8Xt2bbbAPYfjHZmTR2PzkQDRW35YA
 id: paragraph.single_msg_row_september.default
 targetEntityType: paragraph
 bundle: single_msg_row_september
 mode: default
 content:
   field_single_msg_row_sept_body:
-    weight: 2
+    weight: 3
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
   field_single_msg_row_sept_feat:
-    weight: 3
+    weight: 0
     settings:
       display_label: true
     third_party_settings: {  }
@@ -38,7 +40,7 @@ content:
     third_party_settings: {  }
     type: image_image
   field_single_msg_row_sept_title:
-    weight: 0
+    weight: 2
     settings:
       size: 60
       placeholder: ''

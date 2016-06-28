@@ -1,0 +1,48 @@
+uuid: 88b4ec66-d76e-4674-b033-50c388c71cb9
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.single_msg_row_september_lg_
+    - image.style.single_msg_row_september_lg_2x_
+    - image.style.single_msg_row_september_md
+    - image.style.single_msg_row_september_md_2x_
+    - image.style.single_msg_row_september_sm
+    - image.style.single_msg_row_september_sm_2x_
+  theme:
+    - campaign_base
+id: single_message_row_september_
+label: 'Single Message Row (September)'
+image_style_mappings:
+  -
+    breakpoint_id: campaign_base.large
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: single_msg_row_september_lg_
+  -
+    breakpoint_id: campaign_base.large
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: single_msg_row_september_lg_2x_
+  -
+    breakpoint_id: campaign_base.medium
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: single_msg_row_september_md
+  -
+    breakpoint_id: campaign_base.medium
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: single_msg_row_september_md_2x_
+  -
+    breakpoint_id: campaign_base.small
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: single_msg_row_september_sm
+  -
+    breakpoint_id: campaign_base.small
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: single_msg_row_september_sm_2x_
+breakpoint_group: campaign_base
+fallback_image_style: single_msg_row_september_sm

@@ -7,12 +7,14 @@ dependencies:
     - paragraphs.paragraphs_type.single_msg_row_september
   module:
     - image
+_core:
+  default_config_hash: RZCxgus5E7acxDwAI30x02dRk2RkyoSFkv0gUwASDws
 id: paragraph.single_msg_row_september.field_single_msg_row_sept_img
 field_name: field_single_msg_row_sept_img
 entity_type: paragraph
 bundle: single_msg_row_september
 label: Image
-description: ''
+description: 'NB: Please use 16:9 image for featured rows, and 4:3 images for standard non-featured rows.'
 required: true
 translatable: false
 default_value: {  }

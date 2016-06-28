@@ -9,8 +9,10 @@ dependencies:
     - field.field.paragraph.single_msg_row_september.field_single_msg_row_sept_title
     - paragraphs.paragraphs_type.single_msg_row_september
   module:
-    - image
+    - responsive_image
     - text
+_core:
+  default_config_hash: tx_9ngOUY63sqkL7K0znzlG1sE_HFkewbfnlV5pIVyI
 id: paragraph.single_msg_row_september.default
 targetEntityType: paragraph
 bundle: single_msg_row_september
@@ -35,10 +37,10 @@ content:
     weight: 1
     label: hidden
     settings:
-      image_style: ''
+      responsive_image_style: single_message_row_september_
       image_link: ''
     third_party_settings: {  }
-    type: image
+    type: responsive_image
   field_single_msg_row_sept_title:
     weight: 0
     label: hidden

@@ -5,12 +5,14 @@ dependencies:
   config:
     - field.storage.paragraph.field_single_msg_row_sept_feat
     - paragraphs.paragraphs_type.single_msg_row_september
+_core:
+  default_config_hash: 7zfe_Fi_VrMJEDWkGZLKlbpFH-cjHAGJOECqkDXIXuI
 id: paragraph.single_msg_row_september.field_single_msg_row_sept_feat
 field_name: field_single_msg_row_sept_feat
 entity_type: paragraph
 bundle: single_msg_row_september
 label: Featured
-description: ''
+description: 'Make this row a ''featured'' row - requires a 16:9 ratio image!'
 required: false
 translatable: false
 default_value:
