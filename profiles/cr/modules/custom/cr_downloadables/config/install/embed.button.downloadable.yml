@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - media_entity.bundle.cr_external_file
     - media_entity.bundle.cr_file
   module:
     - entity_embed
@@ -12,6 +13,7 @@ type_id: entity
 type_settings:
   entity_type: media
   bundles:
+    - cr_external_file
     - cr_file
   display_plugins: {  }
   entity_browser: ''

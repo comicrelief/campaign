@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - crop
+third_party_settings:
+  crop:
+    image_field: null
+id: cr_external_file
+label: 'External file'
+description: 'This entity type is used to reference files or resources that are hosted on an external platform (i.e cyberduck, dropbox) that need to be available for download via the site.'
+type: generic
+queue_thumbnail_downloads: false
+new_revision: false
+type_configuration: {  }
+field_map: {  }

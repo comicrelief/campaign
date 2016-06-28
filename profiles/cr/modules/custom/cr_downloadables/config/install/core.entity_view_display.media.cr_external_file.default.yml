@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.cr_external_file.field_cr_external_file
+    - media_entity.bundle.cr_external_file
+  module:
+    - link
+id: media.cr_external_file.default
+targetEntityType: media
+bundle: cr_external_file
+mode: default
+content:
+  field_cr_external_file:
+    weight: 0
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+hidden:
+  created: true
+  name: true
+  social_links: true
+  thumbnail: true
+  uid: true

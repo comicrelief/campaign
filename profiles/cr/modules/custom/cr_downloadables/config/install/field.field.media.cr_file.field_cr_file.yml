@@ -12,7 +12,7 @@ entity_type: media
 bundle: cr_file
 label: File
 description: 'This entity type is used to upload files and resources that need to be available for download via the site.'
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
