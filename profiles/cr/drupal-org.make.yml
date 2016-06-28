@@ -104,7 +104,9 @@ projects:
       revision: f51ebea
   # Editor/admin experience
   admin_toolbar:
-    version: 1.15
+    download:
+      version: 1.x-dev
+      revision: 32b7111
   focal_point:
     version: 1.0-beta1
   crop:
