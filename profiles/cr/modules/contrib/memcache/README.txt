@@ -32,11 +32,14 @@ is important.
     is localhost on port 11211. By default the main settings will be:
       $settings['memcache']['servers'] = ['127.0.0.1:11211' => 'default'];
       $settings['memcache']['bins'] = ['default' => 'default'];
-      $settings['memcache']['key_prefix'] => '';
+      $settings['memcache']['key_prefix'] = '';
  7. Edit settings.php to make memcache the default cache class, for example:
       $settings['cache']['default'] = 'cache.backend.memcache';
+ 8. If you wish to arbitrarily send cache bins to memcache, then you can do the
+    following. E.g. for the cache_render bin:
+      $settings['cache']['bins']['render'] = 'cache.backend.memcache';
 
-## ADVANCED CCONFIGURATION ##
+## ADVANCED CONFIGURATION ##
 
 ### Multiple memcache backends ###
 
@@ -83,13 +86,13 @@ The bin/cluster/server model can be described as follows:
 ### Stampede Protection ###
 
 Memcache includes stampede protection for rebuilding expired and invalid cache
-items.  To enable stampede protection, add the following config in settings.php:
+items. To enable stampede protection, add the following config in settings.php:
 
 $settings['memcache']['stampede_protection'] = TRUE;
 
-To avoid lock stampedes, it is important that you enable the memacache lock
+To avoid lock stampedes, it is important that you enable the memcache lock
 implementation when enabling stampede protection -- enabling stampede protection
-without enabling the Memache lock implementation can cause worse performance.
+without enabling the Memcache lock implementation can cause worse performance.
 
 Only change the following values if you're sure you know what you're doing,
 which requires reading the memcachie.inc code.
@@ -188,7 +191,7 @@ the memcached extension, this new extension doesn't read in options that way.
 Instead, it takes options directly from Drupal. Because of this, you must
 configure memcached in settings.php. Please look here for possible options:
 
-http://us2.php.net/manual/en/memcached.constants.php
+https://secure.php.net/manual/en/memcached.constants.php
 
 An example configuration block is below, this block also illustrates our
 default options (selected through performance testing). These options will be
@@ -213,7 +216,9 @@ Other options you could experiment with:
       with this feature enabled. It should only be enabled on extremely high
       traffic networks where memcache network traffic is a bottleneck.
       Additional reading about the binary protocol:
-        http://code.google.com/p/memcached/wiki/MemcacheBinaryProtocol
+        https://raw.githubusercontent.com/memcached/old-wiki/master/MemcacheBinaryProtocol.wiki
+        Note: The information on the link above will eventually be ported to
+        the new wiki under https://github.com/memcached/memcached/wiki.
 
  + Memcached::OPT_TCP_NODELAY => TRUE,
     * This enables the no-delay feature for connecting sockets; it's been
