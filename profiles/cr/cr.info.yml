@@ -91,6 +91,7 @@ dependencies:
 
   # Editor/admin experience
   - admin_toolbar_tools
+  - editor_advanced_link
 
   # Default content; will be moved out of the profile at some point
   - cr_default_content
