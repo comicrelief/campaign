@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\default_content\DefaultContentScanner.
+ */
+
 namespace Drupal\default_content;
 
 /**

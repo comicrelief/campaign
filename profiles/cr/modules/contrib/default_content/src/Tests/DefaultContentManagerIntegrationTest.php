@@ -1,11 +1,16 @@
 <?php
 
-namespace Drupal\Tests\default_content\Kernel;
+/**
+ * @file
+ * Contains \Drupal\default_content\Tests\DefaultContentManagerIntegrationTest.
+ */
+
+namespace Drupal\default_content\Tests;
 
 use Drupal\default_content\DefaultContentManager;
-use Drupal\KernelTests\KernelTestBase;
 use Drupal\node\Entity\Node;
 use Drupal\node\Entity\NodeType;
+use Drupal\simpletest\KernelTestBase;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\taxonomy\Entity\Vocabulary;
 use Drupal\user\Entity\User;

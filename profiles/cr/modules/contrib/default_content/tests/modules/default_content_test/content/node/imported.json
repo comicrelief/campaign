@@ -57,12 +57,7 @@
                     "type": {
                         "href": "http://drupal.org/rest/type/user/user"
                     }
-                },
-                "uuid":[
-                    {
-                        "value":"ab301be5-7017-4ff8-b2d3-09dc0a30bd43"
-                    }
-                ]
+                }
             }
         ],
         "http://drupal.org/rest/relation/node/page/revision_uid": [
@@ -74,12 +69,7 @@
                     "type": {
                         "href": "http://drupal.org/rest/type/user/user"
                     }
-                },
-                "uuid":[
-                    {
-                        "value":"ab301be5-7017-4ff8-b2d3-09dc0a30bd43"
-                    }
-                ]
+                }
             }
         ],
         "http://drupal.org/rest/relation/node/page/field_tags": [
