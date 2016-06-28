@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - crop
+third_party_settings:
+  crop:
+    image_field: field_cr_file
+id: cr_file
+label: File
+description: 'This entity type is used to upload files and resources that need to be available for download via the site.'
+type: generic
+queue_thumbnail_downloads: true
+new_revision: false
+type_configuration: {  }
+field_map: {  }
