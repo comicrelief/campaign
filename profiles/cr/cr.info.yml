@@ -47,6 +47,8 @@ dependencies:
   - ds
   - file_entity
   - media_entity
+  - media_entity_browser
+  - entity_browser
   - embed
   - entity_embed
   #- url_embed
