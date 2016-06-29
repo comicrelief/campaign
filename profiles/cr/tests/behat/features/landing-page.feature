@@ -1,5 +1,5 @@
 Feature: Landing-page
-  Edit a news page and change the title. Redirect should be put in place.
+  Check a landing page and make sure that it contains the mentioned paragraphs
 
  @api
   Scenario: Landing-page /fundraise
