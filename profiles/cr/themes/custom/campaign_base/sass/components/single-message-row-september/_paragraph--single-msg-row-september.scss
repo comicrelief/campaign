@@ -26,16 +26,20 @@
 /* END STYLEGUIDE HACKING*/
 
 
+/* Variables, to move  */
+$row-padding--sm: 30px;
+$row-padding--md: 60px;
+
 /* Global styles */
 .paragraph--single-msg-row-september {
   @include container;
   position: relative;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  padding-top: $row-padding--sm;
+  padding-bottom: $row-padding--sm;
 
-  @include breakpoint($screen-lg, $no-query: true) {
-    margin-top: 70px;
-    margin-bottom: 70px;
+  @include breakpoint($screen-md) {
+    padding-top: $row-padding--md;
+    padding-bottom: $row-padding--md;
   }
   
   .single-message-row-september__image {
@@ -77,6 +81,9 @@
       right: 0;
       margin-left: 0;
       text-align: left;
+      // Recalculate height minus the row padding
+      height: calc(100% - ( #{$row-padding--md} * 2) );
+      margin-top: 60px;
     }
 
     // MD only, change image from 16:9 to 1:1 ratio
@@ -157,9 +164,11 @@
       @include breakpoint($screen-md) {
         @include span(7);
         margin-left: 0;
-        margin-top: 20px;
         margin-bottom: 20px;
-        height: calc(100% - 40px);
+        margin-top: 80px;
+
+        // Tweak height to reflect row padding and feature copy 'offset'
+        height: calc(100% - (#{$row-padding--md} * 2) - 40px);
       }
 
       @include breakpoint($screen-lg) {
@@ -183,15 +192,17 @@
 
   /* Image right/text left variant */
   &.paragraph--single-msg-row-september--image-right {
-    .single-message-row-september__image {
-      float:right;
-      margin-left: 0;
-      margin-right: gutter();
-    }
-
-    .single-message-row-september__copy_wrapper {
-      left: gutter();
-      margin-left: 0;
+    @include breakpoint($screen-md) {
+      .single-message-row-september__image {
+        float:right;
+        margin-left: 0;
+        margin-right: gutter();
+      }
+    
+      .single-message-row-september__copy_wrapper {
+        left: gutter();
+        margin-left: 0;
+      }
     }
   }
 }

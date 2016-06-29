@@ -1,10 +1,13 @@
-{% set is_featured = content.field_single_msg_row_sept_feat['#items'][0].value == '1' ? 'paragraph--' ~ paragraph.bundle|clean_class ~ '--featured' : '' %}
+{# Construct new classes based on variant options #}
+{% set featured = content.field_single_msg_row_sept_feat['#items'][0].value == '1' ? 'paragraph--' ~ paragraph.bundle|clean_class ~ '--featured' : '' %}
+{% set img_right = content.field_single_msg_row_sept_img_r['#items'][0].value == '1' ? 'paragraph--' ~ paragraph.bundle|clean_class ~ '--image-right' : '' %}
 
 {%
 set classes = [
 'paragraph',
 'paragraph--' ~ paragraph.bundle|clean_class,
-is_featured,
+featured,
+img_right,
 ]
 %}
 
