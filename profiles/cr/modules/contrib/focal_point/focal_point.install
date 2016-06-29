@@ -5,8 +5,6 @@
  * Install hooks for focal_point.
  */
 
-use Drupal\Core\Database\Database;
-
 /**
  * Checks if required version of Crop API is installed.
  *
@@ -35,7 +33,7 @@ function focal_point_requirements($phase) {
         'title' => t('Focal point'),
         'value' => t('Crop API missing'),
         'description' => t(
-          '<a href=":url">Crop API</a> module is now a dependency and needs to be installed before running updates.',
+        '<a href=":url">Crop API</a> module is now a dependency and needs to be installed before running updates.',
           [':url' => 'https://www.drupal.org/project/crop']
         ),
         'severity' => REQUIREMENT_ERROR,
@@ -70,27 +68,49 @@ function focal_point_update_8002(&$sandbox) {
     $sandbox['last_fid'] = 0;
     $sandbox['num_processed'] = 0;
     $sandbox['num_skipped'] = 0;
-    $sandbox['total_items'] = Database::getConnection()
+    $sandbox['total_items'] = \Drupal::database()
       ->select('focal_point', 'fp')
       ->countQuery()
       ->execute()
       ->fetchField();
   }
 
-  $focal_points = Database::getConnection()
+  $focal_points = \Drupal::database()
     ->select('focal_point', 'fp')
     ->fields('fp')
     ->condition('fp.fid', $sandbox['last_fid'], '>')
+    ->range(0, 100)
     ->orderBy('fp.fid')
-    ->execute()
-    ->fetchAll();
+    ->execute();
 
   foreach ($focal_points as $focal_point) {
     /** @var \Drupal\file\FileInterface $file */
     $file = $file_storage->load($focal_point->fid);
 
     if (!is_null($file)) {
-      $size = getimagesize($file->getFileUri());
+      // Try to load width and height from the image fields and fall back to
+      // reading image file if that was not successful.
+      $usage = $file_usage->listUsage($file);
+      $usage = current($usage);
+
+      /** @var \Drupal\Core\Entity\FieldableEntityInterface $entity */
+      $entity = \Drupal::entityTypeManager()
+        ->getStorage(key($usage))
+        ->load(key(current($usage)));
+      $size = NULL;
+      foreach ($entity->getFieldDefinitions() as $field_definition) {
+        if ($field_definition->getType() == 'image') {
+          foreach ($entity->{$field_definition->getName()} as $item) {
+            if ($item->target_id == $file->id()) {
+              $size = [$item->width, $item->height];
+            }
+          }
+        }
+      }
+
+      if (empty($size)) {
+        $size = getimagesize($file->getFileUri());
+      }
 
       // Now we have all information we need. Let's create crop entity.
       $focal_point = explode(',', $focal_point->focal_point);
