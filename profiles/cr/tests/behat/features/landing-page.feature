@@ -14,7 +14,7 @@ Feature: Landing-page
     And I should see "All that's left to do is pre-order your FREE Fundraising Pack"
     And I should see the link "Pre-order"
 
-# The the test above should be extended for each new paragraph type
+# # The the test above should be extended for each new paragraph type
 
   @api
   Scenario: Create landing page node
@@ -27,3 +27,16 @@ Feature: Landing-page
     And I press "Save"
     When I go to "/behat-test-landing-page"
     Then I should see "My freshly created body copy"
+
+  # @api @javascript
+  @api
+  Scenario: Create landing page with associated paragraphs
+    # Given I am logged in as a user with the "editor" role
+    And I am viewing a landing page with the following paragraphs:
+    | type | title | body | variant |
+    | cr_rich_text_paragraph | | Rich text paragraph | |
+    | cr_single_message_row | SMR Title | SMR Body | title-above-image-right |
+    # Then I break
+    Then I should see "Rich text paragraph"
+    And I should see "SMR Title"
+    And I should see "SMR Body"
