@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+label: 'Focal point'
+id: 'focal_point'
+description: 'Crop type used by Focal point module.'
+aspect_ratio: ''
