@@ -117,11 +117,8 @@ projects:
       version: 1.x-dev
       revision: 32b7111
   focal_point:
-    download:
-      revision: 262d609
-    patch:
-      # See https://www.drupal.org/node/275549z
-      2755499: https://www.drupal.org/files/issues/focal_point_update_8002-2755499-2.patch
+    version: 1.x-dev
+    revision: d39b83f
   crop:
     version: 1.0-rc1
   paragraphs:
