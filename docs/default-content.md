@@ -57,7 +57,7 @@ Now, embedded entities (such as the paragraph entity that's being used in this l
 
 	drush dcer paragraph 6 --folder=profiles/cr/modules/custom/cr_default_content/content
 
-(note that we use `dcer` again instead of `dce` since the paragraph entity doesn't have nested entities)
+(note that we use `dcer` again instead of `dce` since the paragraph entity does have nested entities like files, but doesn't have the problem of "nesting level too deep")
 
 We need to continue this for every new entity that is being referenced from the main landing page node.
 
