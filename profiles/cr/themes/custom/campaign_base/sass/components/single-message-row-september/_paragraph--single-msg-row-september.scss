@@ -4,11 +4,13 @@
 //
 // Markup: _paragraph--single-msg-row-september.hbs
 //
+// .paragraph--single-msg-row-september--image-right  - Image on right, copy on left
+//
 // Style guide: Single Message September
 
 
 /* STYLEGUIDE HACKING*/
-/* .kss-modifier__example {
+.kss-modifier__example {
   background-color: #dddddd !important;
 }
 .kss-sidebar {
@@ -20,7 +22,7 @@
 }
 .kss-section {
   margin: 0 auto !important;
-} */
+}
 /* END STYLEGUIDE HACKING*/
 
 
@@ -176,6 +178,20 @@
           @include translateY(-50%);
         }
       }
+    }
+  }
+
+  /* Image right/text left variant */
+  &.paragraph--single-msg-row-september--image-right {
+    .single-message-row-september__image {
+      float:right;
+      margin-left: 0;
+      margin-right: gutter();
+    }
+
+    .single-message-row-september__copy_wrapper {
+      left: gutter();
+      margin-left: 0;
     }
   }
 }
