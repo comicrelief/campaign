@@ -1,0 +1,155 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/paragraph\/6?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cr_single_message_row"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_single_message_row\/uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_single_message_row\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_single_message_row\/field_single_msg_row_lr_image": [
+            {
+                "href": "http:\/\/default\/file\/3336?_format=hal_json"
+            }
+        ]
+    },
+    "id": [
+        {
+            "value": "6"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "9340e943-1f61-402a-a96e-21276fe1e7ab"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": "6"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "cr_single_message_row"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_single_message_row\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "096c9fdc-fd1b-4374-b266-8228326e21f7"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_single_message_row\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "096c9fdc-fd1b-4374-b266-8228326e21f7"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_single_message_row\/field_single_msg_row_lr_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/3336?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "ad8cf8e6-e54c-4848-bd36-36605997185c"
+                    }
+                ],
+                "alt": "The Red Nose Day 2017 schools fundraising pack",
+                "title": "",
+                "width": "1200",
+                "height": "677"
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1467204972",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1467204972",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1467204972"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "field_single_msg_row_lr_body": [
+        {
+            "value": "<p>All that's left to do is pre-order your FREE Fundraising Pack to get all the goodies you need to kick off Red Nose Day in your school.<\/p>\r\n\r\n<p><a class=\"btn btn--red\" href=\"http:\/\/www.rednoseday.com\/schools\/order-your-pack\">Pre-order your FREE&nbsp;Pack<\/a><\/p>\r\n",
+            "format": "basic_html"
+        }
+    ],
+    "field_single_msg_row_lr_title": [
+        {
+            "value": "Ready to go?"
+        }
+    ],
+    "field_single_msg_row_lr_variant": [
+        {
+            "value": "title-inside-image-right"
+        }
+    ]
+}
