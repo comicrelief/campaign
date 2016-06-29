@@ -90,8 +90,9 @@ projects:
       version: 1.x-dev
       revision: 32b7111
   focal_point:
-    version: 1.x-dev
-    revision: d39b83f
+    download:
+      version: 1.x-dev
+      revision: 1bb8116
   crop:
     version: 1.0-rc1
   paragraphs:
