@@ -1,8 +1,12 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\entity_reference_revisions\Plugin\Field\FieldFormatter\EntityReferenceRevisionsEntityFormatter.
+ */
+
 namespace Drupal\entity_reference_revisions\Plugin\Field\FieldFormatter;
 
-use Drupal\Core\Entity\EntityDisplayRepositoryInterface;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Form\FormStateInterface;
@@ -32,13 +36,6 @@ class EntityReferenceRevisionsEntityFormatter extends EntityReferenceRevisionsFo
   protected $loggerFactory;
 
   /**
-   * The entity display repository.
-   *
-   * @var \Drupal\Core\Entity\EntityDisplayRepositoryInterface
-   */
-  protected $entityDisplayRepository;
-
-  /**
    * Constructs a StringFormatter instance.
    *
    * @param string $plugin_id
@@ -57,13 +54,10 @@ class EntityReferenceRevisionsEntityFormatter extends EntityReferenceRevisionsFo
    *   Any third party settings settings.
    * @param LoggerChannelFactoryInterface $logger_factory
    *   The logger factory.
-   * @param \Drupal\Core\Entity\EntityDisplayRepositoryInterface $entity_display_repository
-   *   The entity display repository.
    */
-  public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, $label, $view_mode, array $third_party_settings, LoggerChannelFactoryInterface $logger_factory, EntityDisplayRepositoryInterface $entity_display_repository) {
+  public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, $label, $view_mode, array $third_party_settings, LoggerChannelFactoryInterface $logger_factory) {
     parent::__construct($plugin_id, $plugin_definition, $field_definition, $settings, $label, $view_mode, $third_party_settings);
     $this->loggerFactory = $logger_factory;
-    $this->entityDisplayRepository = $entity_display_repository;
   }
 
   /**
@@ -78,8 +72,7 @@ class EntityReferenceRevisionsEntityFormatter extends EntityReferenceRevisionsFo
       $configuration['label'],
       $configuration['view_mode'],
       $configuration['third_party_settings'],
-      $container->get('logger.factory'),
-      $container->get('entity_display.repository')
+      $container->get('logger.factory')
     );
   }
 
@@ -99,7 +92,7 @@ class EntityReferenceRevisionsEntityFormatter extends EntityReferenceRevisionsFo
   public function settingsForm(array $form, FormStateInterface $form_state) {
     $elements['view_mode'] = array(
       '#type' => 'select',
-      '#options' => $this->entityDisplayRepository->getViewModeOptions($this->getFieldSetting('target_type')),
+      '#options' => \Drupal::entityManager()->getViewModeOptions($this->getFieldSetting('target_type')),
       '#title' => t('View mode'),
       '#default_value' => $this->getSetting('view_mode'),
       '#required' => TRUE,
@@ -114,7 +107,7 @@ class EntityReferenceRevisionsEntityFormatter extends EntityReferenceRevisionsFo
   public function settingsSummary() {
     $summary = array();
 
-    $view_modes = $this->entityDisplayRepository->getViewModeOptions($this->getFieldSetting('target_type'));
+    $view_modes = \Drupal::entityManager()->getViewModeOptions($this->getFieldSetting('target_type'));
     $view_mode = $this->getSetting('view_mode');
     $summary[] = t('Rendered as @mode', array('@mode' => isset($view_modes[$view_mode]) ? $view_modes[$view_mode] : $view_mode));
 
@@ -136,14 +129,20 @@ class EntityReferenceRevisionsEntityFormatter extends EntityReferenceRevisionsFo
         $this->loggerFactory->get('entity')->error('Recursive rendering detected when rendering entity @entity_type @entity_id. Aborting rendering.', array('@entity_type' => $entity->getEntityTypeId(), '@entity_id' => $entity->id()));
         return $elements;
       }
-      $view_builder = \Drupal::entityTypeManager()->getViewBuilder($entity->getEntityTypeId());
-      $elements[$delta] = $view_builder->view($entity, $view_mode, $entity->language()->getId());
 
-      // Add a resource attribute to set the mapping property's value to the
-      // entity's url. Since we don't know what the markup of the entity will
-      // be, we shouldn't rely on it for structured data such as RDFa.
-      if (!empty($items[$delta]->_attributes) && !$entity->isNew() && $entity->hasLinkTemplate('canonical')) {
-        $items[$delta]->_attributes += array('resource' => $entity->toUrl()->toString());
+      if ($entity->id()) {
+        $elements[$delta] = entity_view($entity, $view_mode, $entity->language()->getId());
+
+        // Add a resource attribute to set the mapping property's value to the
+        // entity's url. Since we don't know what the markup of the entity will
+        // be, we shouldn't rely on it for structured data such as RDFa.
+        if (!empty($items[$delta]->_attributes)) {
+          $items[$delta]->_attributes += array('resource' => $entity->url());
+        }
+      }
+      else {
+        // This is an "auto_create" item.
+        $elements[$delta] = array('#markup' => $entity->label());
       }
       $depth = 0;
     }
@@ -158,7 +157,7 @@ class EntityReferenceRevisionsEntityFormatter extends EntityReferenceRevisionsFo
     // This formatter is only available for entity types that have a view
     // builder.
     $target_type = $field_definition->getFieldStorageDefinition()->getSetting('target_type');
-    return \Drupal::entityTypeManager()->getDefinition($target_type)->hasViewBuilderClass();
+    return \Drupal::entityManager()->getDefinition($target_type)->hasViewBuilderClass();
   }
 
 }
