@@ -30,6 +30,10 @@ projects:
   media_entity_twitter:
     type: "module"
     version: "1.0"
+  media_entity_browser:
+    download:
+      branch: 8.x-1.x
+      revision: 1f9a47a
   embed:
     version: 1.0-rc2
   entity_embed:
