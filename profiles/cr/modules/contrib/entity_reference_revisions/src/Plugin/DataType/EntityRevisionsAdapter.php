@@ -1,8 +1,14 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\entity_reference_revisions\Plugin\DataType\EntityAdapter.
+ */
+
 namespace Drupal\entity_reference_revisions\Plugin\DataType;
 
 use Drupal\Core\TypedData\ComplexDataInterface;
+use Drupal\Core\TypedData\TypedData;
 use Drupal\Core\Entity\Plugin\DataType\EntityAdapter;
 
 /**
