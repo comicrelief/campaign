@@ -10,7 +10,7 @@
   <property name="cs.standard"        override="true" value="--standard=Drupal"/>
   <property name="cs.ext"             override="true" value="--extensions=php,module,inc,install,test,profile,theme"/>
   <property name="db.querystring"     override="true" value="mysql://root:@localhost/campaign"/>
-  <property name="app.dev_modules"    value="kint"/>
+  <property name="app.dev_modules"    value="devel kint"/>
   <property name="app.config_modules" value="cr cr_article cr_content_wall cr_rich_text_paragraph cr_page cr_single_message_row_paragraph cr_block_paragraph cr_teaser cr_landing_page cr_search cr_partner"/>
   <target name="build" depends="install, grunt:build"
           description="Build (or rebuild) the project.">
