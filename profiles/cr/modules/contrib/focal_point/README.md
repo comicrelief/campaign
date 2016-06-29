@@ -16,9 +16,8 @@ Currently, Focal Point integrates with the standard image fields.
 ##DEPENDENCIES
 
 - image
-- crop
 
-##USAGE
+##USUAGE
 
 ### Setting up image fields
 
