@@ -15,3 +15,15 @@ Feature: Landing-page
     And I should see the link "Pre-order"
 
 # The the test above should be extended for each new paragraph type
+
+  @api
+  Scenario: Create landing page node
+    Given I am logged in as a user with the "editor" role
+    When I go to "node/add/landing"
+    And I enter "Behat test landing page" for "Title"
+    And I enter "My freshly created body copy" for "edit-body-0-value"
+    And I select "Right" from "Body copy position"
+    And I select "White" from "Background colour"
+    And I press "Save"
+    When I go to "/behat-test-landing-page"
+    Then I should see "My freshly created body copy"
