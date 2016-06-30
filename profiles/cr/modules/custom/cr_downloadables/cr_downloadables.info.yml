@@ -6,6 +6,8 @@ package: Comic Relief
 dependencies:
   - media_entity
   - entity_embed
+  - media_entity_browser
+  - entity_browser
 config_devel:
   - media_entity.bundle.cr_file
   - field.storage.media.field_cr_file
@@ -18,5 +20,5 @@ config_devel:
   - field.storage.media.field_cr_external_file
   - core.entity_form_display.media.cr_external_file.default
   - core.entity_view_display.media.cr_external_file.default
-  
+
   - embed.button.downloadable

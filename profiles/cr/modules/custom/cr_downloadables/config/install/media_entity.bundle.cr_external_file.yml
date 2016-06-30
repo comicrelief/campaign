@@ -1,5 +1,6 @@
 langcode: en
 status: true
+dependencies: {  }
 id: cr_external_file
 label: 'External file'
 description: 'This entity type is used to reference files or resources that are hosted on an external platform (i.e cyberduck, dropbox) that need to be available for download via the site.'

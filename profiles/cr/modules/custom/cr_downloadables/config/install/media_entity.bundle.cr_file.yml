@@ -1,5 +1,6 @@
 langcode: en
 status: true
+dependencies: {  }
 id: cr_file
 label: File
 description: 'This entity type is used to upload files and resources that need to be available for download via the site.'
