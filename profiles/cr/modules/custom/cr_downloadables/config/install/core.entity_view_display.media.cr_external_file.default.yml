@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - field.field.media.cr_external_file.field_cr_external_file
+    - field.field.media.cr_external_file.field_cr_file_resource_category
     - media_entity.bundle.cr_external_file
   module:
     - link
@@ -24,6 +25,7 @@ content:
     type: link
 hidden:
   created: true
+  field_cr_file_resource_category: true
   name: true
   social_links: true
   thumbnail: true
