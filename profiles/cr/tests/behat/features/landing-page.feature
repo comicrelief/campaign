@@ -24,8 +24,7 @@ Feature: Landing-page
 
   @api
   Scenario: Create landing page with associated paragraphs
-    Given I am logged in as a user with the "editor" role
-    And I am viewing a "landing" content with "Test landing page" title and "http://lorempixel.com/g/900/300/nature/3" image and "<h1>Behat or Liv?</h1><h2>Spot the five differences!</h2>" body and with the following paragraphs:
+    Given I am viewing a "landing" content with "Test landing page" title and "http://lorempixel.com/g/900/300/nature/3" image and "<h1>Behat or Liv?</h1><h2>Spot the five differences!</h2>" body and with the following paragraphs:
     | type | title | image | body | variant |
     | cr_single_message_row | SMR Title | http://lorempixel.com/400/200/nature/Comic-Relief | Title above image right | title-above-image-right |
     | cr_single_message_row | SMR Title 2 | http://lorempixel.com/400/200/abstract/Comic-Relief | Title inside image left | title-inside-image-left |
