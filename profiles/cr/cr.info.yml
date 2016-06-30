@@ -52,7 +52,6 @@ dependencies:
   - youtube
   - view_modes_display
   - social_links
-  - crop
   - focal_point
   - cookieconsent
   - simple_sitemap
@@ -81,6 +80,7 @@ dependencies:
   - cr_single_message_row_paragraph
   - cr_block_paragraph
   - cr_single_message_row_sept_paragraph
+  - cr_cards
   #- cr_performance
 
   # Development modules
