@@ -15,21 +15,30 @@ Feature: Article
     Then I should see the text "YPlan partners with Comic Relief"
 
   @api
-  Scenario: Create news article
-    Given I am logged in as a user with the "editor" role
-    When I go to "node/add/article"
-    And I enter "article one" for "title"
-    And I enter "22/03/2016" for "edit-field-article-publish-date-0-value-date"
-    And I enter "image.jpg" for "edit-field-article-image-0-upload"
-    And I enter "https://youtu.be/JCUFs2qJ1bs" for "edit-field-youtube-url-0-input"
-    And I enter "An amazing intro" for "edit-field-article-intro-0-value"
-    And I enter "Amazing body copy" for "edit-body-0-value"
-    And I enter "tag 1, tag 2, tag 3" for "edit-field-article-tags-target-id"
-    And press "Save"
-    When I go to "/whats-going-on/article-one"
-    # Then I should see "article one"
-    # Then I should see "22/03/2016"
-    # Then I should see "image.jpg"
-    # Then I should see "https://youtu.be/JCUFs2qJ1bs"
-    # Then I should see "An amazing intro"
-    # Then I should see "Amazing body copy"
+  Scenario: Create news articles that are linked together via a common tag
+    Given a "tags" term with the name "Fundraising"
+    When I am viewing a "article" content:
+    | title       | cComic Relief raises £1bn over 30-year existence |
+    | field_article_publish_date | 2015-02-08 17:45:00                       |
+    | field_article_intro | Since the charity was founded 30 years ago, with more than £78m raised. |
+    | body | Comic Relief founder Richard Curtis said he was "enormously proud" of the charity's achievements. |
+    | field_article_image | http://lorempixel.com/400/200/sports/Comic-Relief |
+    | field_youtube_url | https://youtu.be/JCUFs2qJ1bs |
+    | field_article_tags | Fundraising |
+    Then I should see "Richard Curtis"
+    And I should see "£1bn"
+    And I should not see "£78m raised"
+    And I am viewing a "article" content:
+    | title       | cCelebrities come together for a stellar Night of TV for Sport Relief |
+    | field_article_publish_date | 2015-02-08 17:45:00                       |
+    | field_article_intro | Audiences across the UK are in for a night of first-class entertainment.  |
+    | body | A one-off Luther special will be screened, with Idris Elba starring alongside Lenny Henry, Rio Ferdinand, Denise Lewis, Louis Smith, Ian Wright and David Haye. |
+    | field_article_image | http://lorempixel.com/400/200/nature/Comic-Relief/ |
+    | field_article_tags | Fundraising |
+    Then I should see "Luther"
+    And I should see "Keep up with all the news"
+    And I should see "Comic Relief raises £1bn over 30-year existence"
+    # Let's clear the caches if not our related news won't show up since we visited that page before!
+    And the cache has been cleared
+    And I click "Comic Relief raises £1bn over 30-year existence"
+    Then I should see "Celebrities come together for a stellar Night of TV for Sport Relief"
