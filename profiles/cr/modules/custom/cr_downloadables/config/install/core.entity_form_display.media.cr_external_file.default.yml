@@ -4,7 +4,6 @@ dependencies:
   config:
     - field.field.media.cr_external_file.field_cr_ef_resource_category
     - field.field.media.cr_external_file.field_cr_external_file
-    - field.field.media.cr_external_file.field_cr_file_resource_category
     - media_entity.bundle.cr_external_file
   module:
     - link
@@ -15,7 +14,7 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 4
+    weight: 10
     settings: {  }
     third_party_settings: {  }
   field_cr_ef_resource_category:
@@ -27,30 +26,22 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
   field_cr_external_file:
-    weight: 1
+    weight: 11
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
-  field_cr_file_resource_category:
-    weight: 2
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
   name:
     type: string_textfield
-    weight: 0
+    weight: -5
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 3
+    weight: 5
     settings:
       match_operator: CONTAINS
       size: 60
