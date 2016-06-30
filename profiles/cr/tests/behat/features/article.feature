@@ -1,7 +1,14 @@
 Feature: Article
   This feature covers news articles
 
- @api
+  @api
+  Scenario: Article linking through from /whats-going
+    Given I am on "whats-going-on"
+    And I should see the link "Four down – one to go!"
+    Then I follow "Four down – one to go!"
+    And I should see the text "Greg James struggled on the penultimate day of Gregathlon"
+
+  @api
   Scenario: News page /yplan-partners-sport-relief
     Given I am logged in as a user with the "editor" role
     And I am on "/whats-going-on/yplan-partners-sport-relief"
@@ -42,3 +49,4 @@ Feature: Article
     And the cache has been cleared
     And I click "Comic Relief raises £1bn over 30-year existence"
     Then I should see "Celebrities come together for a stellar Night of TV for Sport Relief"
+
