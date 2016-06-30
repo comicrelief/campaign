@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.cr_external_file.field_cr_ef_resource_category
     - field.field.media.cr_external_file.field_cr_external_file
     - media_entity.bundle.cr_external_file
   module:
@@ -16,6 +17,14 @@ content:
     weight: 10
     settings: {  }
     third_party_settings: {  }
+  field_cr_ef_resource_category:
+    weight: 12
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
   field_cr_external_file:
     weight: 11
     settings:
