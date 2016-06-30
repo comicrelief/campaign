@@ -30,16 +30,19 @@
 $row-padding--sm: 30px;
 $row-padding--md: 60px;
 
-/* Global styles */
+/* Global styles for all variants */
 .paragraph--single-msg-row-september {
-  @include container;
-  position: relative;
-  padding-top: $row-padding--sm;
-  padding-bottom: $row-padding--sm;
+  width: 100%;
+  .single-message-row-september__outer-wrapper {
+    @include container;
+    position: relative;
+    padding-top: $row-padding--sm;
+    padding-bottom: $row-padding--sm;
 
-  @include breakpoint($screen-md) {
-    padding-top: $row-padding--md;
-    padding-bottom: $row-padding--md;
+    @include breakpoint($screen-md) {
+      padding-top: $row-padding--md;
+      padding-bottom: $row-padding--md;
+    }
   }
   
   .single-message-row-september__image {
@@ -50,14 +53,14 @@ $row-padding--md: 60px;
       height: auto;
     }
 
-    // MD only, change image from 4:3 to 1:1 ratio
+    /* MD only, change image from 4:3 to 1:1 ratio */
     @include breakpoint($screen-md-only) {
       @include span(5);
       margin-right: 0;
       @include square-img-ratio(span(5), '4:3');
     }
 
-    // LG, no inheried image crop
+    /* LG, no inheried image crop  */
     @include breakpoint($screen-lg) {
       // Add grid behaviour to lg breakpoint
       @include span(6);
@@ -67,7 +70,7 @@ $row-padding--md: 60px;
     }
   } 
 
-  // Placeholder styles, colours and button styles to be added to component when finalised
+  /* Placeholder styles, colours and button styles to be added to component when finalised */
   .single-message-row-september__copy_wrapper {
     width: 100%;
     height: 100%;
@@ -86,12 +89,12 @@ $row-padding--md: 60px;
       margin-top: 60px;
     }
 
-    // MD only, change image from 16:9 to 1:1 ratio
+    /* MD only, change image from 16:9 to 1:1 ratio */
     @include breakpoint($screen-md-only) {
       @include span(7 wide);
     }
 
-    // LG, no inheried image crop
+    /* LG, no inheried image crop */
     @include breakpoint($screen-lg) {
       @include span(6);
       width: calc( #{span(6)} + #{gutter()});
@@ -131,7 +134,7 @@ $row-padding--md: 60px;
     .single-message-row-september__image {
       float: left;
    
-      // MD only, change image from 16:9 to 1:1 ratio
+      /* MD only, change image from 16:9 to 1:1 ratio */
       @include breakpoint($screen-md) {
         @include span(6);
         margin-right: 0;
@@ -190,7 +193,7 @@ $row-padding--md: 60px;
     }
   }
 
-  /* Image right/text left variant */
+  /* Image right, text left variant */
   &.paragraph--single-msg-row-september--image-right {
     @include breakpoint($screen-md) {
       .single-message-row-september__image {
@@ -206,4 +209,3 @@ $row-padding--md: 60px;
     }
   }
 }
-// end of global styles
