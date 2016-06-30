@@ -33,7 +33,7 @@ Feature: Article
   Scenario: Create news articles that are linked together via a common tag
     Given a "tags" term with the name "Fundraising"
     When I am viewing a "article" content:
-    | title       | cComic Relief raises £1bn over 30-year existence |
+    | title       | Comic Relief raises £1bn over 30-year existence |
     | field_article_publish_date | 2015-02-08 17:45:00                       |
     | field_article_intro | Since the charity was founded 30 years ago, with more than £78m raised. |
     | body | Comic Relief founder Richard Curtis said he was "enormously proud" of the charity's achievements. |
@@ -44,7 +44,7 @@ Feature: Article
     And I should see "£1bn"
     And I should not see "£78m raised"
     And I am viewing a "article" content:
-    | title       | cCelebrities come together for a stellar Night of TV for Sport Relief |
+    | title       | Celebrities come together for a stellar Night of TV for Sport Relief |
     | field_article_publish_date | 2015-02-08 17:45:00                       |
     | field_article_intro | Audiences across the UK are in for a night of first-class entertainment.  |
     | body | A one-off Luther special will be screened, with Idris Elba starring alongside Lenny Henry, Rio Ferdinand, Denise Lewis, Louis Smith, Ian Wright and David Haye. |
