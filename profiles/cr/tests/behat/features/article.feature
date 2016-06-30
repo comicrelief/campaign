@@ -29,6 +29,14 @@ Feature: Article
     And I go to "/whats-going-on/yplan-partners-comic-relief"
     Then I should see the text "YPlan partners with Comic Relief"
 
+  @api @test
+  Scenario: Check metatags for articles
+    Given I am on "whats-going-on/greg-james-begins-his-gregathlon-sport-relief"
+    Then the metatag attribute "title" should have the value "Greg James begins his Gregathlon for Sport Relief | CR"
+    Then the metatag property "og:title" should have the value "Greg James begins his Gregathlon for Sport Relief | CR"
+    Then the metatag property "og:type" should have the value "article"
+    Then the metatag attribute "keywords" should have the value "Challenges"
+
   @api
   Scenario: Create news articles that are linked together via a common tag
     Given a "tags" term with the name "Fundraising"
