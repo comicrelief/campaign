@@ -69,13 +69,15 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
   }
 
   /**
-   * @Given /^I am viewing a landing page with the following paragraphs:$/
+   * Creates a node that has paragraphs provided in a table.
+   *
+   * @Given I am viewing a/an :type( content) with :title( title) and :img( image) and :body( body) and with the following paragraphs:
    */
-  public function assertParagraphs(TableNode $paragraphs) {
+  public function assertParagraphs($type, $title, $image, $body, TableNode $paragraphs) {
     // First, create a landing page node.
     $node = (object) array(
-      'title' => 'Landing page',
-      'type' => 'landing',
+      'title' => $title,
+      'type' => $type,
       'uid' => 1,
     );
     $node = $this->nodeCreate($node);
@@ -91,7 +93,13 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
       ];
     }
 
+    // Add all the data to the node
     $node_loaded = \Drupal\node\Entity\Node::load($node->nid);
+    $node_loaded->field_landing_image = $this->expandImage($image);
+    $node_loaded->body = [
+      'value' => $body,
+      'format' => 'full_html',
+    ];
     $node_loaded->field_paragraphs = $paragraph_items;
     $node_loaded->save();
 
@@ -118,6 +126,7 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
           'value' => $paragraph['body'],
           'format' => 'basic_html',
         ];
+        $data['field_background'] = $this->expandImage($paragraph['image']);
         break;
       case 'cr_single_message_row':
         $data['field_single_msg_row_lr_title'] = [
@@ -130,12 +139,53 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
           'value' => $paragraph['body'],
           'format' => 'basic_html',
         ];
+        $data['field_single_msg_row_lr_image'] = $this->expandImage($paragraph['image']);
         break;
     }
 
     $paragraph_item = \Drupal\paragraphs\Entity\Paragraph::create($data);
     $paragraph_item->save();
     return $paragraph_item;
+  }
+
+  /**
+   * Process image field values so we can use images.
+   *
+   * Shamelessly ripped off from \Drupal\Driver\Fields\Drupal8\ImageHandler
+   *
+   * We need to provide our own field handlers since we can't use the ones provided by AbstractCore::expandEntityFields as they are protected.
+   *
+   * @param  [type] $values [description]
+   * @return [type]         [description]
+   */
+  private function expandImage($value) {
+    // Skip empty values
+    if (!$value) {
+      return array();
+    }
+
+    $data = file_get_contents($value);
+    if (FALSE === $data) {
+      throw new \Exception("Error reading file");
+    }
+
+    /* @var \Drupal\file\FileInterface $file */
+    $file = file_save_data(
+      $data,
+      'public://' . uniqid() . '.jpg');
+
+    if (FALSE === $file) {
+      throw new \Exception("Error saving file");
+    }
+
+    $file->save();
+
+    $return = array(
+      'target_id' => $file->id(),
+      'alt' => 'Behat test image',
+      'title' => 'Behat test image',
+    );
+    return $return;
   }
 
 }
