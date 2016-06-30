@@ -2,25 +2,33 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.cr_file.field_cr_field_display_title
     - field.field.media.cr_file.field_cr_file
+    - field.field.media.cr_file.field_cr_file_resource_category
     - media_entity.bundle.cr_file
-  module:
-    - file_entity
 id: media.cr_file.default
 targetEntityType: media
 bundle: cr_file
 mode: default
 content:
-  field_cr_file:
+  field_cr_field_display_title:
     weight: 0
     label: hidden
     settings:
-      access_message: 'You don''t have access to download this file.'
-      text: 'Download [file:name]'
+      link_to_entity: false
     third_party_settings: {  }
-    type: file_download_link
+    type: string
+  field_cr_file:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: token
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
 hidden:
   created: true
+  field_cr_file_resource_category: true
   name: true
   social_links: true
   thumbnail: true
