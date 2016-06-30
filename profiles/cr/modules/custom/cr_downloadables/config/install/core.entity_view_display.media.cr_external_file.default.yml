@@ -4,6 +4,7 @@ dependencies:
   config:
     - field.field.media.cr_external_file.field_cr_ef_resource_category
     - field.field.media.cr_external_file.field_cr_external_file
+    - field.field.media.cr_external_file.field_cr_file_resource_category
     - media_entity.bundle.cr_external_file
   module:
     - link
