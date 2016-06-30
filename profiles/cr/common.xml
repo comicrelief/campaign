@@ -61,6 +61,9 @@
         </replacetokens>
       </filterchain>
     </copy>
+    <!-- We disable cookieconsent as it might conflict with certain actions performed by Behat and when using @javascript -->
+    <exec checkreturn="true" logoutput="true" passthru="true"
+          command="${drush.bin} pm-uninstall cookieconsent -y"/>
   </target>
   <target name="test:composer:install" description="Install composer dependencies">
     <exec dir="${app.profile.dir}tests/behat" logoutput="true" passthru="true"

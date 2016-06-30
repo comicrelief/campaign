@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\cr_email_signup\Plugin\Block\SignUpBlock.
- */
 
 namespace Drupal\cr_email_signup\Plugin\Block;
 
