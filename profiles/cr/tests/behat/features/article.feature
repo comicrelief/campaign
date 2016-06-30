@@ -1,17 +1,21 @@
-Feature: Create
-  This feature covers anything that needs to be created via the CMS. Starting with articles and users.
+Feature: Article
+  This feature covers news articles
+
+ @api
+  Scenario: News page /yplan-partners-sport-relief
+    Given I am logged in as a user with the "editor" role
+    And I am on "/whats-going-on/yplan-partners-sport-relief"
+    And I follow "Edit"
+    Then I should see "Edit News article YPlan"
+    And I enter "YPlan partners with Comic Relief" for "edit-title-0-value"
+    And press "Save"
+    And I go to "/whats-going-on/yplan-partners-sport-relief"
+    Then I should see the text "YPlan partners with Comic Relief"
+    And I go to "/whats-going-on/yplan-partners-comic-relief"
+    Then I should see the text "YPlan partners with Comic Relief"
 
   @api
-  Scenario: Create users
-    Given users:
-    | name       | mail                   | status |
-    | Joe Bloggs | joe.bloggs@example.com | 1      |
-    And I am logged in as a user with the "administrator" role
-    When I visit "admin/people"
-    Then I should see the link "Joe Bloggs"
-
-  @api
-  Scenario: Create news-article
+  Scenario: Create news article
     Given I am logged in as a user with the "editor" role
     When I go to "node/add/article"
     And I enter "article one" for "title"
