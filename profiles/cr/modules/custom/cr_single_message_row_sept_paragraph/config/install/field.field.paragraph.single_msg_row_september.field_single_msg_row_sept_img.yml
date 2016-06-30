@@ -8,7 +8,7 @@ dependencies:
   module:
     - image
 _core:
-  default_config_hash: RZCxgus5E7acxDwAI30x02dRk2RkyoSFkv0gUwASDws
+  default_config_hash: g_ZLp47zaV5NEA37yZ8BLmG6AQH83zVt0i5zp6Nw3YM
 id: paragraph.single_msg_row_september.field_single_msg_row_sept_img
 field_name: field_single_msg_row_sept_img
 entity_type: paragraph

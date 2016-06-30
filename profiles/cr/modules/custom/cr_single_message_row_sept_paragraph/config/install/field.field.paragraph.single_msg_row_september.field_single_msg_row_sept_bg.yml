@@ -1,0 +1,21 @@
+uuid: 40b701df-648b-4148-8168-0a8de811af74
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_single_msg_row_sept_bg
+    - paragraphs.paragraphs_type.single_msg_row_september
+  module:
+    - options
+id: paragraph.single_msg_row_september.field_single_msg_row_sept_bg
+field_name: field_single_msg_row_sept_bg
+entity_type: paragraph
+bundle: single_msg_row_september
+label: 'Background colour'
+description: 'Select a full-width background colour for the entire message row'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

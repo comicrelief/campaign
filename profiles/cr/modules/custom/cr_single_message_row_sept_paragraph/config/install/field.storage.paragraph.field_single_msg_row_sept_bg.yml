@@ -1,0 +1,27 @@
+uuid: 2b6884a7-daab-4f19-846f-85d369b872c5
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_single_msg_row_sept_bg
+field_name: field_single_msg_row_sept_bg
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: bg--white
+      label: White
+    -
+      value: bg--cream-grey
+      label: Cream-Grey
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

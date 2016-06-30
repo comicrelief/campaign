@@ -6,7 +6,7 @@ dependencies:
     - field.storage.paragraph.field_single_msg_row_sept_feat
     - paragraphs.paragraphs_type.single_msg_row_september
 _core:
-  default_config_hash: 7zfe_Fi_VrMJEDWkGZLKlbpFH-cjHAGJOECqkDXIXuI
+  default_config_hash: 0mPMyfClzae04CSADST2kh6PNbrwNmiNHqMyu2_vur8
 id: paragraph.single_msg_row_september.field_single_msg_row_sept_feat
 field_name: field_single_msg_row_sept_feat
 entity_type: paragraph

@@ -3,6 +3,6 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: x-gKFJGZr_DwPGzQRQIOFOhkHcQbssr0IjHYc9YV23Y
+  default_config_hash: fBiND-H4w2xrtc85wH300CwxDVhACgFrxRLGmy1iL3A
 id: single_msg_row_september
 label: 'Single Msg Row - September'

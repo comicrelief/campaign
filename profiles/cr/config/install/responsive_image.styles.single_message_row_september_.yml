@@ -11,6 +11,8 @@ dependencies:
     - image.style.single_msg_row_september_sm_2x_
   theme:
     - campaign_base
+_core:
+  default_config_hash: kyrZejB4JvAA9ra9gorqZcHkOD4bu0u6VnMW38UTCU8
 id: single_message_row_september_
 label: 'Single Message Row (September)'
 image_style_mappings:

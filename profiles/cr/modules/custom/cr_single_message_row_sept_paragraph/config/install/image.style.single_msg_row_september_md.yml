@@ -2,6 +2,8 @@ uuid: 5e427a55-f47f-47d2-a957-b1f9c74e358e
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: xe5MZd7fXY_y8ZJnaZ1S3ylHsN7uKdf-oc9B0DJDUCQ
 name: single_msg_row_september_md
 label: 'Single Msg Row September - MD'
 effects:

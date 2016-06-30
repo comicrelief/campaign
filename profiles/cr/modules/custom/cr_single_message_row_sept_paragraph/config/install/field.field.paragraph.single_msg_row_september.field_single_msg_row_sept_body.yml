@@ -8,7 +8,7 @@ dependencies:
   module:
     - text
 _core:
-  default_config_hash: RXRrzQXsM8m7WlXtuI3aAnnuQQLevNZLqre79IazHDo
+  default_config_hash: bZXyxYVP31jxPWfcrPw2K4H278031MsMitFVy60C3wo
 id: paragraph.single_msg_row_september.field_single_msg_row_sept_body
 field_name: field_single_msg_row_sept_body
 entity_type: paragraph

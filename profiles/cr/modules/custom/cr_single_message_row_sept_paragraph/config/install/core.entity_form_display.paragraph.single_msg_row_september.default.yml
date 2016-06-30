@@ -3,9 +3,11 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.single_msg_row_september.field_single_msg_row_sept_bg
     - field.field.paragraph.single_msg_row_september.field_single_msg_row_sept_body
     - field.field.paragraph.single_msg_row_september.field_single_msg_row_sept_feat
     - field.field.paragraph.single_msg_row_september.field_single_msg_row_sept_img
+    - field.field.paragraph.single_msg_row_september.field_single_msg_row_sept_img_r
     - field.field.paragraph.single_msg_row_september.field_single_msg_row_sept_title
     - image.style.large
     - paragraphs.paragraphs_type.single_msg_row_september
@@ -13,21 +15,26 @@ dependencies:
     - image
     - text
 _core:
-  default_config_hash: fgU41OvgMCffDk8Xt2bbbAPYfjHZmTR2PzkQDRW35YA
+  default_config_hash: Q-q3H7f0O44LO-CRVWLVE2jqGDWcBBJcdZm7RliVUjw
 id: paragraph.single_msg_row_september.default
 targetEntityType: paragraph
 bundle: single_msg_row_september
 mode: default
 content:
+  field_single_msg_row_sept_bg:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
   field_single_msg_row_sept_body:
-    weight: 3
+    weight: 4
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
   field_single_msg_row_sept_feat:
-    weight: 0
+    weight: 3
     settings:
       display_label: true
     third_party_settings: {  }
@@ -39,8 +46,14 @@ content:
       progress_indicator: throbber
     third_party_settings: {  }
     type: image_image
-  field_single_msg_row_sept_title:
+  field_single_msg_row_sept_img_r:
     weight: 2
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+  field_single_msg_row_sept_title:
+    weight: 0
     settings:
       size: 60
       placeholder: ''
