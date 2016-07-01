@@ -1,4 +1,4 @@
-Feature: Article
+Feature: Article.
   This feature covers news articles
 
   @api
