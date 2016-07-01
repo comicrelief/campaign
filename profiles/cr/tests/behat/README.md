@@ -20,7 +20,8 @@ phing tests
 
 * Every feature should has the same name that the module to test.
 * Add a tag* in order to make easy to test specific behavior.
-
+* Every test has impact in your actual DB, so do tests that you can run more
+than twice without reinstall the site.
 
 ## Tags
 
