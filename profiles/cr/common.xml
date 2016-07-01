@@ -10,7 +10,8 @@
   <property name="cs.standard"        override="true" value="--standard=Drupal"/>
   <property name="cs.ext"             override="true" value="--extensions=php,module,inc,install,test,profile,theme"/>
   <property name="db.querystring"     override="true" value="mysql://root:@localhost/campaign"/>
-  <property name="app.config_modules" value="cr cr_article cr_content_wall cr_rich_text_paragraph cr_page cr_single_message_row_paragraph cr_block_paragraph cr_teaser cr_landing_page cr_search cr_partner"/>
+  <property name="app.dev_modules"    value="devel kint"/>
+  <property name="app.config_modules" value="cr cr_article cr_content_wall cr_rich_text_paragraph cr_page cr_single_message_row_paragraph cr_cards cr_block_paragraph cr_teaser cr_landing_page cr_search cr_partner"/>
   <target name="build" depends="install, grunt:build"
           description="Build (or rebuild) the project.">
   </target>
@@ -60,6 +61,9 @@
         </replacetokens>
       </filterchain>
     </copy>
+    <!-- We disable cookieconsent as it might conflict with certain actions performed by Behat and when using @javascript -->
+    <exec checkreturn="true" logoutput="true" passthru="true"
+          command="${drush.bin} pm-uninstall cookieconsent -y"/>
   </target>
   <target name="test:composer:install" description="Install composer dependencies">
     <exec dir="${app.profile.dir}tests/behat" logoutput="true" passthru="true"
@@ -148,6 +152,8 @@
   <target name="db" description="Get and restore DB from S3 backup">
     <phingcall target="db:get"/>
     <phingcall target="db:restore"/>
+    <phingcall target="dev-mode:enable"/>
+    <phingcall target="login"/>
   </target>
   <target name="db:get"
           description="Gets DB from specified environment">
@@ -186,5 +192,9 @@
   </target>
   <target name="info:code:cbf" description="Fix some quality errors of the PHP code.">
     <exec logoutput="true" command="${c.home}bin/phpcbf ${cs.standard} ${app.code}" />
+  </target>
+  <!-- Dev target to enable site in dev mode -->
+  <target name="dev-mode:enable" description="Enable developer mode for this site"
+  depends="module:dev">
   </target>
 </project>

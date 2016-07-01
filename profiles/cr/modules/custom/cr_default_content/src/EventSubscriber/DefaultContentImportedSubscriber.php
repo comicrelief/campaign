@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Drupal\cr_default_content\EventSubscriber\DefaultContentImportedSubscriber.
- */
-
 namespace Drupal\cr_default_content\EventSubscriber;
 
 use Drupal\default_content\Event\DefaultContentEvents;

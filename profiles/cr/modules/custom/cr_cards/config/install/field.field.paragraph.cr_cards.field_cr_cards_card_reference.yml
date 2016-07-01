@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cr_card
+    - field.storage.paragraph.field_cr_cards_card_reference
+    - paragraphs.paragraphs_type.cr_cards
+id: paragraph.cr_cards.field_cr_cards_card_reference
+field_name: field_cr_cards_card_reference
+entity_type: paragraph
+bundle: cr_cards
+label: 'Card reference'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:block_content'
+  handler_settings:
+    target_bundles:
+      cr_card: cr_card
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

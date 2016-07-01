@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\entity_reference_revisions\Tests\EntityReferenceRevisionsNormalizerTest.
+ */
 
 namespace Drupal\entity_reference_revisions\Tests;
 

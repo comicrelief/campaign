@@ -1,11 +1,14 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\entity_composite_relationship_test\Entity\EntityTestCompositeRelationship.
+ */
+
 namespace Drupal\entity_composite_relationship_test\Entity;
 
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
-use Drupal\entity_reference_revisions\EntityNeedsSaveInterface;
-use Drupal\entity_reference_revisions\EntityNeedsSaveTrait;
 use Drupal\entity_test\Entity\EntityTestRev;
 
 /**
@@ -29,9 +32,7 @@ use Drupal\entity_test\Entity\EntityTestRev;
  *   }
  * )
  */
-class EntityTestCompositeRelationship extends EntityTestRev implements EntityNeedsSaveInterface {
-
-  use EntityNeedsSaveTrait;
+class EntityTestCompositeRelationship extends EntityTestRev {
 
   /**
    * {@inheritdoc}
