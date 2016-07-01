@@ -21,7 +21,6 @@ Feature: Article
     Given I am logged in as a user with the "editor" role
     And I am on "/whats-going-on/yplan-partners-sport-relief"
     And I follow "Edit"
-    Then I should see "Edit News article YPlan"
     And I enter "YPlan partners with Comic Relief" for "edit-title-0-value"
     And press "Save"
     And I go to "/whats-going-on/yplan-partners-sport-relief"
