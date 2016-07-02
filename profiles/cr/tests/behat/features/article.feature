@@ -38,7 +38,7 @@ Feature: Article
     And the metatag attribute "keywords" should have the value "Challenges"
     And the metatag attribute "description" should contain the value "Greg James has set off on the first of his five triathlons for BBC Radio"
     And the metatag property "og:description" should contain the value "Greg James has set off on the first of his five triathlons for BBC Radio"
-    And the metatag property "og:image" should contain the value "news/2016-02/greg_james_gregathlon_belfast_and_so_it_begins_14_58.jpg"
+    And the metatag property "og:image" should contain the value "news/2016-02/greg_james_gregathlon_belfast_and_so_it_begins"
     And the metatag property "og:url" should contain the value "whats-going-on/greg-james-begins-his-gregathlon-sport-relief"
 
   @api
