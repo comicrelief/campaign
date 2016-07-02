@@ -8,8 +8,8 @@ dependencies:
   - token
 configure: entity.metatag_defaults.collection
 
-# Information added by Drupal.org packaging script on 2016-05-14
-version: '8.x-1.0-beta8'
+# Information added by Drupal.org packaging script on 2016-06-02
+version: '8.x-1.0-beta9'
 core: '8.x'
 project: 'metatag'
-datestamp: 1463224448
+datestamp: 1464897844

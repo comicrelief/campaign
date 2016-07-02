@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.landing.field_landing_copy_position_alig
     - field.field.node.landing.field_landing_image
     - field.field.node.landing.field_landing_image_mobile
+    - field.field.node.landing.field_landing_meta_tags
     - field.field.node.landing.field_paragraphs
     - field.field.node.landing.field_svg_body_title
     - field.field.node.landing.panelizer
@@ -14,6 +15,7 @@ dependencies:
     - node.type.landing
   module:
     - image
+    - metatag
     - paragraphs
     - path
     - text
@@ -59,6 +61,11 @@ content:
       progress_indicator: throbber
     third_party_settings: {  }
     type: image_image
+  field_landing_meta_tags:
+    weight: 26
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_firehose
   field_paragraphs:
     type: entity_reference_paragraphs
     weight: 12

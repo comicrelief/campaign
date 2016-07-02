@@ -15,53 +15,36 @@ use \XMLWriter;
  */
 class SitemapGenerator {
 
-  const PRIORITY_DEFAULT = 0.5;
-  const PRIORITY_HIGHEST = 10;
-  const PRIORITY_DIVIDER = 10;
   const XML_VERSION = '1.0';
   const ENCODING = 'UTF-8';
   const XMLNS = 'http://www.sitemaps.org/schemas/sitemap/0.9';
   const XMLNS_XHTML = 'http://www.w3.org/1999/xhtml';
 
-  private $entity_types;
+  private $entityTypes;
   private $custom;
   private $links;
-  private $generating_from;
+  private $generatingFrom;
 
   function __construct($from = 'form') {
     $this->links = array();
-    $this->generating_from = $from;
+    $this->generatingFrom = $from;
   }
 
-  /**
-   * Gets the values needed to display the priority dropdown setting.
-   *
-   * @return array $options
-   */
-  public static function get_priority_select_values() {
-    $options = array();
-    foreach(range(0, self::PRIORITY_HIGHEST) as $value) {
-      $value = $value / self::PRIORITY_DIVIDER;
-      $options[(string)$value] = (string)$value;
-    }
-    return $options;
+  public function setEntityTypes($entityTypes) {
+    $this->entityTypes = is_array($entityTypes) ? $entityTypes : array();
   }
 
-  public function set_entity_types($entity_types) {
-    $this->entity_types = is_array($entity_types) ? $entity_types : array();
-  }
-
-  public function set_custom_links($custom) {
+  public function setCustomLinks($custom) {
     $this->custom = is_array($custom) ? $custom : array();
   }
 
   /**
    * Adds all operations to the batch and starts it.
    */
-  public function start_batch() {
-    $batch = new Batch($this->generating_from);
-    $batch->add_operations('custom_paths', $this->batch_add_custom_paths());
-    $batch->add_operations('entity_types', $this->batch_add_entity_type_paths());
+  public function startBatch() {
+    $batch = new Batch($this->generatingFrom);
+    $batch->addOperations('custom_paths', $this->batchAddCustomPaths());
+    $batch->addOperations('entity_types', $this->batchAddEntityTypePaths());
     $batch->start();
   }
 
@@ -70,9 +53,9 @@ class SitemapGenerator {
    *
    * @return array $operation.
    */
-  private function batch_add_custom_paths() {
+  private function batchAddCustomPaths() {
     $link_generator = new CustomLinkGenerator();
-    return $link_generator->get_custom_paths($this->custom);
+    return $link_generator->getCustomPaths($this->custom);
   }
 
   /**
@@ -81,7 +64,7 @@ class SitemapGenerator {
    *
    * @return array $operations.
    */
-  private function batch_add_entity_type_paths() {
+  private function batchAddEntityTypePaths() {
 
     $manager = \Drupal::service('plugin.manager.simple_sitemap');
     $plugins = $manager->getDefinitions();
@@ -89,12 +72,16 @@ class SitemapGenerator {
 
     // Let all simple_sitemap plugins add their links to the sitemap.
     foreach ($plugins as $link_generator_plugin) {
-      if (isset($this->entity_types[$link_generator_plugin['id']])) {
+      if (isset($this->entityTypes[$link_generator_plugin['id']])) {
         $instance = $manager->createInstance($link_generator_plugin['id']);
-        foreach($this->entity_types[$link_generator_plugin['id']] as $bundle => $bundle_settings) {
+        foreach($this->entityTypes[$link_generator_plugin['id']] as $bundle => $bundle_settings) {
           if ($bundle_settings['index']) {
-            $operation = $instance->get_entities_of_bundle($bundle);
-            $operation['info']['bundle_settings'] = $bundle_settings;
+            $operation['query']['query'] = $instance->getQuery($bundle);
+            $operation['query']['field_info'] = $instance->getQueryInfo()['field_info'];
+            $operation['entity_info']['bundle_settings'] = $bundle_settings;
+            $operation['entity_info']['bundle_name'] = $bundle;
+            $operation['entity_info']['bundle_entity_type'] = $link_generator_plugin['id'];
+            $operation['entity_info']['entity_type_name'] = !empty($link_generator_plugin['entity_type_name']) ? $link_generator_plugin['entity_type_name'] : '';
             $operations[] = $operation;
           }
         }
@@ -104,18 +91,23 @@ class SitemapGenerator {
   }
 
   /**
-   * Wrapper method which takes links along with their options and then
-   * generates and saves the sitemap.
+   * Wrapper method which takes links along with their options, lets other
+   * modules alter the links and then generates and saves the sitemap.
    *
    * @param array $links
    *  All links with their multilingual versions and settings.
    */
-  public static function generate_sitemap($links) {
-    Simplesitemap::save_sitemap(array(
-        'id' => db_query('SELECT MAX(id) FROM {simple_sitemap}')->fetchField() + 1,
-        'sitemap_string' => self::generate_sitemap_chunk($links),
-        'sitemap_created' => REQUEST_TIME)
+  public static function generateSitemap($links, $remove_sitemap = FALSE) {
+    // Invoke alter hook.
+    \Drupal::moduleHandler()->alter('simple_sitemap_links', $links);
+    $values = array(
+      'id' => $remove_sitemap ? 1 : db_query('SELECT MAX(id) FROM {simple_sitemap}')->fetchField() + 1,
+      'sitemap_string' => self::generateSitemapChunk($links),
+      'sitemap_created' => REQUEST_TIME,
     );
+    if ($remove_sitemap)
+      db_truncate('simple_sitemap')->execute();
+    db_insert('simple_sitemap')->fields($values)->execute();
   }
 
   /**
@@ -126,7 +118,7 @@ class SitemapGenerator {
    *
    * @return string sitemap index
    */
-  public function generate_sitemap_index($sitemap) {
+  public function generateSitemapIndex($sitemap) {
     $writer = new XMLWriter();
     $writer->openMemory();
     $writer->setIndent(TRUE);
@@ -154,8 +146,8 @@ class SitemapGenerator {
    *
    * @return string sitemap chunk
    */
-  private static function generate_sitemap_chunk($sitemap_links) {
-    $default_language_id = Simplesitemap::get_default_lang_id();
+  private static function generateSitemapChunk($sitemap_links) {
+    $default_language_id = Simplesitemap::getDefaultLangId();
 
     $writer = new XMLWriter();
     $writer->openMemory();
@@ -198,3 +190,4 @@ class SitemapGenerator {
     return $writer->outputMemory();
   }
 }
+

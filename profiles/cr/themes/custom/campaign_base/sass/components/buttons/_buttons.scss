@@ -20,17 +20,13 @@
 
 .btn {
   display: block;
-  height: 50px;
   padding: 14px 35px;
   cursor: pointer;
   text-align: center;
   vertical-align: middle;
-  white-space: nowrap;
   text-decoration: none;
-  //font-family: $p-type--all-font;
-  //@extend .type--semibold;
+  width: 100%;
   font-size: 16px;
-
   @include border-radius(30px);
   span {
     font-size: inherit;
@@ -65,6 +61,7 @@ $buttonList: (
   .btn {
     display: inline-block;
     font-size: 18px;
+    width: auto;
     &.btn--fixed-width {
       width: 290px;
     }

@@ -4,12 +4,14 @@
   <property name="app.uri"            override="true" value="http://campaign.dev"/>
   <property name="drush.bin"          override="true" value="${app.dir}bin/drush"/>
   <property name="grunt.cmd"          override="true" value="build"/>
+  <property name="grunt.watch.cmd"    override="true" value="campaign_base"/>
   <property name="c.home"             override="true" value="${app.profile.dir}tests/behat/vendor/"/>
   <property name="cs.dir"             override="true" value="drupal/coder/coder_sniffer"/>
   <property name="cs.standard"        override="true" value="--standard=Drupal"/>
   <property name="cs.ext"             override="true" value="--extensions=php,module,inc,install,test,profile,theme"/>
   <property name="db.querystring"     override="true" value="mysql://root:@localhost/campaign"/>
-  <property name="app.config_modules" value="cr cr_article cr_content_wall cr_rich_text_paragraph cr_single_message_row_paragraph cr_block_paragraph cr_teaser cr_landing_page cr_search cr_partner"/>
+  <property name="app.dev_modules"    value="devel kint"/>
+  <property name="app.config_modules" value="cr cr_article cr_content_wall cr_rich_text_paragraph cr_page cr_single_message_row_paragraph cr_cards cr_block_paragraph cr_teaser cr_landing_page cr_search cr_partner"/>
   <target name="build" depends="install, grunt:build"
           description="Build (or rebuild) the project.">
   </target>
@@ -24,10 +26,18 @@
           description="Build all project dependencies. (gems, composer)">
     <exec logoutput="true" passthru="true" command="composer install --no-progress --prefer-dist"/>
   </target>
+  <target name="build:prepare:travis" depends="test:composer:install"
+          description="Build all project dependencies using composer but without gems, for Travis CI">
+    <exec logoutput="true" passthru="true" command="composer install --no-progress --prefer-dist"/>
+  </target>
   <!-- Front-end -->
   <target name="grunt:build" description="Generate all compiled Sass and JS files.">
     <exec dir="${app.profile.dir}" logoutput="true" passthru="true"
           checkreturn="true" command="bundle exec grunt ${grunt.cmd}"/>
+  </target>
+  <target name="grunt:watch" description="Generate all compiled Sass and JS files.">
+    <exec dir="${app.site.theme}" logoutput="true" passthru="true"
+          checkreturn="true" command="bundle exec grunt ${grunt.watch.cmd}"/>
   </target>
   <target name="grunt:dependencies" description="Install all grunt dependencies.">
     <delete file=".bundle/config" />
@@ -55,6 +65,9 @@
         </replacetokens>
       </filterchain>
     </copy>
+    <!-- We disable cookieconsent as it might conflict with certain actions performed by Behat and when using @javascript -->
+    <exec checkreturn="true" logoutput="true" passthru="true"
+          command="${drush.bin} pm-uninstall cookieconsent -y"/>
   </target>
   <target name="test:composer:install" description="Install composer dependencies">
     <exec dir="${app.profile.dir}tests/behat" logoutput="true" passthru="true"
@@ -66,6 +79,8 @@
           command="${drush.bin} make -y ${app.profile.dir}drupal-org-core.make.yml --no-cache"/>
   </target>
   <target name="make" description="Compile CR contrib from a make file">
+    <!-- Delete the contrib directory first so we also have deletions and not just updates. -->
+    <delete dir="${app.profile.dir}/modules/contrib" />
     <exec checkreturn="true" logoutput="true" passthru="true"
           command="${drush.bin} make -y ${app.profile.dir}drupal-org.make.yml --no-gitprojectinfo --no-gitinfofile --no-core --contrib-destination=${app.profile.dir}"/>
   </target>
@@ -131,9 +146,9 @@
   </target>
   <target name="file:settings">
     <if>
-      <not><available file="sites/default/settings.local.php" type="file"/></not>
+      <not><available file="sites/default/environment.yml" type="file"/></not>
       <then>
-        <copy file="sites/default/settings.example.local.php" tofile="sites/default/settings.local.php" overwrite="true"/>
+        <copy file="sites/default/example.environment.yml" tofile="sites/default/environment.yml" overwrite="true"/>
       </then>
     </if>
   </target>
@@ -141,6 +156,8 @@
   <target name="db" description="Get and restore DB from S3 backup">
     <phingcall target="db:get"/>
     <phingcall target="db:restore"/>
+    <phingcall target="dev-mode:enable"/>
+    <phingcall target="login"/>
   </target>
   <target name="db:get"
           description="Gets DB from specified environment">
@@ -179,5 +196,9 @@
   </target>
   <target name="info:code:cbf" description="Fix some quality errors of the PHP code.">
     <exec logoutput="true" command="${c.home}bin/phpcbf ${cs.standard} ${app.code}" />
+  </target>
+  <!-- Dev target to enable site in dev mode -->
+  <target name="dev-mode:enable" description="Enable developer mode for this site"
+  depends="module:dev">
   </target>
 </project>
