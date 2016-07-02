@@ -15,7 +15,7 @@ git:
  depth: 1
 
 rvm:
-  - 2.1.5
+  - 2.2.2
 
 matrix:
   fast_finish: true
@@ -108,7 +108,7 @@ mysql:
   encoding: utf8
 
 before_install:
-  - rvm install 2.1.5
+  - rvm install 2.2.2
   - composer global config minimum-stability beta
   - composer global require lionsad/drupal_ti:1.4.2
   - composer global require phing/phing

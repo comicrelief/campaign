@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.5'
+ruby '2.2.2'
 
 # Sass, Compass and extensions.
 gem 'sass', '3.4.5'           # Sass.

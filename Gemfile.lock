@@ -1,16 +1,3 @@
-GIT
-  remote: git@github.com:comicrelief/craft-drush.git
-  revision: 66907a58b8c4e296c5f1976d5c1b375fe128e8e0
-  specs:
-    craft-drush (0.0.1)
-      aws-sdk (~> 2)
-      diplomat (~> 0)
-      git (~> 1)
-      gli (= 2.13.2)
-      jenkins_api_client (~> 1)
-      rest-client (~> 0)
-      slack-notifier (~> 0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -34,12 +21,6 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.4.0)
-    aws-sdk (2.3.4)
-      aws-sdk-resources (= 2.3.4)
-    aws-sdk-core (2.3.4)
-      jmespath (~> 1.0)
-    aws-sdk-resources (2.3.4)
-      aws-sdk-core (= 2.3.4)
     breakpoint (2.7.0)
       sass (~> 3.3)
       sassy-maps (< 1.0.0)
@@ -72,20 +53,13 @@ GEM
     compass-validator (3.0.1)
     css_parser (1.4.1)
       addressable
-    diplomat (0.17.0)
-      faraday (~> 0.9)
-      json
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
     erubis (2.7.0)
     eventmachine (1.2.0.1)
-    faraday (0.9.2)
-      multipart-post (>= 1.2, < 3)
     ffi (1.9.10)
     formatador (0.2.5)
-    git (1.3.0)
-    gli (2.13.2)
     guard (2.13.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, <= 4.0)
@@ -108,16 +82,7 @@ GEM
     hitimes (1.2.4)
     http_parser.rb (0.6.0)
     i18n (0.7.0)
-    jenkins_api_client (1.4.2)
-      json
-      mixlib-shellout (>= 1.1.0)
-      nokogiri (~> 1.6.0)
-      terminal-table (>= 1.4.0)
-      thor (>= 0.16.0)
-    jmespath (1.2.4)
-      json_pure (>= 1.8.1)
     json (1.8.3)
-    json_pure (1.8.3)
     listen (2.10.1)
       celluloid (~> 0.16.0)
       rb-fsevent (>= 0.9.3)
@@ -128,9 +93,7 @@ GEM
     method_source (0.8.2)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
-    mixlib-shellout (2.2.6)
     multi_json (1.12.0)
-    multipart-post (2.0.0)
     nenv (0.3.0)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
@@ -165,7 +128,6 @@ GEM
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
-    rest-client (0.9.2)
     sass (3.4.5)
     sass-globbing (1.1.5)
       sass (>= 3.1)
@@ -178,7 +140,6 @@ GEM
     sassy-maps (0.4.0)
       sass (~> 3.3)
     shellany (0.0.1)
-    slack-notifier (0.6.1)
     slop (3.6.0)
     sprockets (2.12.4)
       hike (~> 1.2)
@@ -191,7 +152,6 @@ GEM
       sprockets (>= 2.8, < 4.0)
     susy (2.2.12)
       sass (>= 3.3.0, < 3.5)
-    terminal-table (1.5.2)
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (1.4.1)
@@ -213,7 +173,6 @@ DEPENDENCIES
   compass-rails (~> 2.0.0)
   compass-rgbapng
   compass-validator
-  craft-drush!
   css_parser
   guard
   guard-compass
@@ -234,4 +193,4 @@ RUBY VERSION
    ruby 2.1.5p273
 
 BUNDLED WITH
-   1.12.2
+   1.12.5
