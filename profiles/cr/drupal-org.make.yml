@@ -43,7 +43,12 @@ projects:
   field_group:
     version: 1.0-rc4
   entity_reference_revisions:
-    version: 1.0-rc7
+    download:
+      branch: 8.x-1.x
+      revision: 405c06ac073f9ab676a1816e53d7b36b67bf1d21
+    patch:
+      # See https://www.drupal.org/node/2598138
+      2598138: https://www.drupal.org/files/issues/2598138-hal-26.patch
   view_modes_display:
     version: 1.x-dev
   social_links:
@@ -75,6 +80,8 @@ projects:
     download:
       version: 2.x-dev
       revision: f51ebea
+  config_readonly:
+    version: 1.0-beta2
   # Editor/admin experience
   editor_advanced_link:
     version: 1.2
@@ -84,10 +91,8 @@ projects:
       revision: 32b7111
   focal_point:
     download:
-      revision: 262d609
-    patch:
-      # See https://www.drupal.org/node/2755499
-      2755499: https://www.drupal.org/files/issues/focal_point_update_8002-2755499-2.patch
+      version: 1.x-dev
+      revision: 1bb8116
   crop:
     version: 1.0-rc1
   paragraphs:
