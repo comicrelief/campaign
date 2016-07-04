@@ -5,9 +5,9 @@ dependencies:
   module:
     - paragraphs
 _core:
-  default_config_hash: Ht1BVapEbwTDZj2jVkLXZOuuml_bqTB2yMf9RQd5yG4
-id: paragraph.field_single_msg_row_sept_title
-field_name: field_single_msg_row_sept_title
+  default_config_hash: k1T6VTbR_-efP6I_T2TiHJg-fepUqgw7OBbyABcx_GM
+id: paragraph.field_single_msg_row_title
+field_name: field_single_msg_row_title
 entity_type: paragraph
 type: string
 settings:

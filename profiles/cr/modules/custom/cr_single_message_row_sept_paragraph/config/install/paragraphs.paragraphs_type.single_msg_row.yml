@@ -1,0 +1,8 @@
+uuid: 925d6734-5182-4a85-a4fa-6faf26e10c69
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: vGr2nyz9IVPIYazLaX92Z19m8COrfzUnzD4cZsoG2-Q
+id: single_msg_row
+label: 'Single Msg Row'

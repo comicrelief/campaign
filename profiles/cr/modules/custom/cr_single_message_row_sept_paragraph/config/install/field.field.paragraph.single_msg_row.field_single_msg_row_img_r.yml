@@ -3,12 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_single_msg_row_sept_img_r
-    - paragraphs.paragraphs_type.single_msg_row_september
-id: paragraph.single_msg_row_september.field_single_msg_row_sept_img_r
-field_name: field_single_msg_row_sept_img_r
+    - field.storage.paragraph.field_single_msg_row_img_r
+    - paragraphs.paragraphs_type.single_msg_row
+_core:
+  default_config_hash: LusL2b-ftn25ugRkTmbarS0oWAPWGayKWHv-nGsQ8uY
+id: paragraph.single_msg_row.field_single_msg_row_img_r
+field_name: field_single_msg_row_img_r
 entity_type: paragraph
-bundle: single_msg_row_september
+bundle: single_msg_row
 label: 'Image on right'
 description: 'Switches row position to image on the right, copy on the left.'
 required: false

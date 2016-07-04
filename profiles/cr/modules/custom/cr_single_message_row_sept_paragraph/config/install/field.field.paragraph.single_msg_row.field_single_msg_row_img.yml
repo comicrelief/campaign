@@ -3,16 +3,16 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_single_msg_row_sept_img
-    - paragraphs.paragraphs_type.single_msg_row_september
+    - field.storage.paragraph.field_single_msg_row_img
+    - paragraphs.paragraphs_type.single_msg_row
   module:
     - image
 _core:
-  default_config_hash: g_ZLp47zaV5NEA37yZ8BLmG6AQH83zVt0i5zp6Nw3YM
-id: paragraph.single_msg_row_september.field_single_msg_row_sept_img
-field_name: field_single_msg_row_sept_img
+  default_config_hash: zUsh1qnCFA9v8dmdCVyn4ikL1LxakyoOK_UhsofAOSI
+id: paragraph.single_msg_row.field_single_msg_row_img
+field_name: field_single_msg_row_img
 entity_type: paragraph
-bundle: single_msg_row_september
+bundle: single_msg_row
 label: Image
 description: 'NB: Please use 16:9 image for featured rows, and 4:3 images for standard non-featured rows.'
 required: true

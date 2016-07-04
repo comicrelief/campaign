@@ -1,0 +1,35 @@
+{# Construct new classes based on variant options #}
+{% set featured = content.field_single_msg_row_feat['#items'][0].value == '1' ? 'paragraph--' ~ paragraph.bundle|clean_class ~ '--featured' : '' %}
+{% set img_right = content.field_single_msg_row_img_r['#items'][0].value == '1' ? 'paragraph--' ~ paragraph.bundle|clean_class ~ '--image-right' : '' %}
+{% set bg_colour = content.field_single_msg_row_bg['#items'][0].value %}
+
+{%
+set classes = [
+'paragraph',
+'paragraph--' ~ paragraph.bundle|clean_class,
+featured,
+img_right,
+bg_colour,
+]
+%}
+
+
+<div {{ attributes.addClass(classes) }} >
+  <div class="single-message-row__outer-wrapper">
+    <div class="single-message-row__image">
+     {{ content.field_single_msg_row_img }}
+    </div>
+    <div class="single-message-row__copy_wrapper">
+      <div class="single-message-row__copy">
+        <div class="single-message-row__title">
+          <h2>
+            {{ content.field_single_msg_row_title }}
+          </h2>
+        </div>
+        <div class="single-message-row__body">
+          {{ content.field_single_msg_row_body }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,9 +7,9 @@ dependencies:
     - image
     - paragraphs
 _core:
-  default_config_hash: BayS2Q5Wlcv-P8oh0T8-Gap3sha1M9CxIkr_p5uFUu8
-id: paragraph.field_single_msg_row_sept_img
-field_name: field_single_msg_row_sept_img
+  default_config_hash: WTkk4wYeMq06l99sY67OFWooiiOUlL3yw-zDZo3FjWU
+id: paragraph.field_single_msg_row_img
+field_name: field_single_msg_row_img
 entity_type: paragraph
 type: image
 settings:

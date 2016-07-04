@@ -3,14 +3,16 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_single_msg_row_sept_bg
-    - paragraphs.paragraphs_type.single_msg_row_september
+    - field.storage.paragraph.field_single_msg_row_bg
+    - paragraphs.paragraphs_type.single_msg_row
   module:
     - options
-id: paragraph.single_msg_row_september.field_single_msg_row_sept_bg
-field_name: field_single_msg_row_sept_bg
+_core:
+  default_config_hash: DY0c6ivN0tM78lDhKtLB3GZlee-3peOG7DWwS_rx46w
+id: paragraph.single_msg_row.field_single_msg_row_bg
+field_name: field_single_msg_row_bg
 entity_type: paragraph
-bundle: single_msg_row_september
+bundle: single_msg_row
 label: 'Background colour'
 description: 'Select a full-width background colour for the entire message row'
 required: false

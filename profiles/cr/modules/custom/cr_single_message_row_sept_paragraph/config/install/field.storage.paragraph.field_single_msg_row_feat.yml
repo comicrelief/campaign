@@ -5,9 +5,9 @@ dependencies:
   module:
     - paragraphs
 _core:
-  default_config_hash: SUgVTyYLbb2nvW9CKVuhcxadILER8ZI3_fm0Tag8iAQ
-id: paragraph.field_single_msg_row_sept_feat
-field_name: field_single_msg_row_sept_feat
+  default_config_hash: viJZ4RjyRU_y4hFoL7nINWk-W8YAsevEGCyyLCSPDXU
+id: paragraph.field_single_msg_row_feat
+field_name: field_single_msg_row_feat
 entity_type: paragraph
 type: boolean
 settings: {  }

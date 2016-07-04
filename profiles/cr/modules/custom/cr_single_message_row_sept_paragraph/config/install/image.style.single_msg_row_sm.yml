@@ -3,9 +3,9 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: 0UQ6kzFULI75elJ0sF8H5Eg-sNAHSPaTLa0VQz3py-I
-name: single_msg_row_september_sm
-label: 'Single Msg Row September - SM'
+  default_config_hash: KEtjWo56k2LQTUDNzuAR3Lx5emvwdt5J38pgTvD0zco
+name: single_msg_row_sm
+label: 'Single Msg Row - SM'
 effects:
   1e86bf83-9a64-451f-98cc-ec23cdad92d2:
     uuid: 1e86bf83-9a64-451f-98cc-ec23cdad92d2

@@ -1,8 +1,0 @@
-uuid: 925d6734-5182-4a85-a4fa-6faf26e10c69
-langcode: en
-status: true
-dependencies: {  }
-_core:
-  default_config_hash: fBiND-H4w2xrtc85wH300CwxDVhACgFrxRLGmy1iL3A
-id: single_msg_row_september
-label: 'Single Msg Row - September'

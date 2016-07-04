@@ -5,8 +5,10 @@ dependencies:
   module:
     - options
     - paragraphs
-id: paragraph.field_single_msg_row_sept_bg
-field_name: field_single_msg_row_sept_bg
+_core:
+  default_config_hash: DYI8e0XMVaDIEP8WzsAEnEdR4swmCC_NhLzysMgYS5Q
+id: paragraph.field_single_msg_row_bg
+field_name: field_single_msg_row_bg
 entity_type: paragraph
 type: list_string
 settings:

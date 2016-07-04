@@ -2,9 +2,9 @@
 //
 // This is a Single message row for September
 //
-// Markup: _paragraph--single-msg-row-september.hbs
+// Markup: _paragraph--single-msg-row.hbs
 //
-// .paragraph--single-msg-row-september--image-right  - Image on right, copy on left
+// .paragraph--single-msg-row--image-right  - Image on right, copy on left
 //
 // Style guide: Single Message September
 
@@ -31,9 +31,9 @@ $row-padding--sm: 30px;
 $row-padding--md: 60px;
 
 /* Global styles for all variants */
-.paragraph--single-msg-row-september {
+.paragraph--single-msg-row {
   width: 100%;
-  .single-message-row-september__outer-wrapper {
+  .single-message-row__outer-wrapper {
     @include container;
     position: relative;
     padding-top: $row-padding--sm;
@@ -45,7 +45,7 @@ $row-padding--md: 60px;
     }
   }
   
-  .single-message-row-september__image {
+  .single-message-row__image {
     width: 100%;
     img {
       display: block;
@@ -71,7 +71,7 @@ $row-padding--md: 60px;
   } 
 
   /* Placeholder styles, colours and button styles to be added to component when finalised */
-  .single-message-row-september__copy_wrapper {
+  .single-message-row__copy_wrapper {
     width: 100%;
     height: 100%;
     background-color: #814fc8;
@@ -100,7 +100,7 @@ $row-padding--md: 60px;
       width: calc( #{span(6)} + #{gutter()});
     }
 
-    .single-message-row-september__copy {
+    .single-message-row__copy {
       padding: 40px 30px 30px;
       color: white;
       width: 100%;
@@ -109,7 +109,7 @@ $row-padding--md: 60px;
         height: 100%;
       }
 
-      .single-message-row-september__body {
+      .single-message-row__body {
         p {
           font-size: 18px;
         }
@@ -130,8 +130,8 @@ $row-padding--md: 60px;
   }
 
   /* Featured variation  */
-  &.paragraph--single-msg-row-september--featured {
-    .single-message-row-september__image {
+  &.paragraph--single-msg-row--featured {
+    .single-message-row__image {
       float: left;
    
       /* MD only, change image from 16:9 to 1:1 ratio */
@@ -155,14 +155,14 @@ $row-padding--md: 60px;
       }
     }
 
-    .single-message-row-september__copy_wrapper {
+    .single-message-row__copy_wrapper {
       background-color:white;
-      width: auto;
       float: left;
 
       // Offsets propotional to gutter widths
       margin: 0 calc(4*#{gutter()}) 0;
       margin-top: calc(-4 *#{gutter()});
+      width: calc(100% - (8 * #{gutter()}) );
 
       @include breakpoint($screen-md) {
         @include span(7);
@@ -178,7 +178,7 @@ $row-padding--md: 60px;
         @include span(5);
       }
 
-      .single-message-row-september__copy {
+      .single-message-row__copy {
         color: black;
         height: auto;
 
@@ -188,21 +188,22 @@ $row-padding--md: 60px;
           top: 50%;
           left: 0;
           @include translateY(-50%);
+          text-align: center;
         }
       }
     }
   }
 
   /* Image right, text left variant */
-  &.paragraph--single-msg-row-september--image-right {
+  &.paragraph--single-msg-row--image-right {
     @include breakpoint($screen-md) {
-      .single-message-row-september__image {
+      .single-message-row__image {
         float:right;
         margin-left: 0;
         margin-right: gutter();
       }
     
-      .single-message-row-september__copy_wrapper {
+      .single-message-row__copy_wrapper {
         left: gutter();
         margin-left: 0;
       }

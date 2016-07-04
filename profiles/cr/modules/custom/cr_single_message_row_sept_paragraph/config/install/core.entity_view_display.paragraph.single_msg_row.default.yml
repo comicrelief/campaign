@@ -3,37 +3,37 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.single_msg_row_september.field_single_msg_row_sept_bg
-    - field.field.paragraph.single_msg_row_september.field_single_msg_row_sept_body
-    - field.field.paragraph.single_msg_row_september.field_single_msg_row_sept_feat
-    - field.field.paragraph.single_msg_row_september.field_single_msg_row_sept_img
-    - field.field.paragraph.single_msg_row_september.field_single_msg_row_sept_img_r
-    - field.field.paragraph.single_msg_row_september.field_single_msg_row_sept_title
-    - paragraphs.paragraphs_type.single_msg_row_september
+    - field.field.paragraph.single_msg_row.field_single_msg_row_bg
+    - field.field.paragraph.single_msg_row.field_single_msg_row_body
+    - field.field.paragraph.single_msg_row.field_single_msg_row_feat
+    - field.field.paragraph.single_msg_row.field_single_msg_row_img
+    - field.field.paragraph.single_msg_row.field_single_msg_row_img_r
+    - field.field.paragraph.single_msg_row.field_single_msg_row_title
+    - paragraphs.paragraphs_type.single_msg_row
   module:
     - options
     - responsive_image
     - text
 _core:
-  default_config_hash: uQpNF42DMj919RdeQPQQvoz7D9vL3mdtjkyDk4SRx-Q
-id: paragraph.single_msg_row_september.default
+  default_config_hash: ugwNnRWoqsvS_-2ahTApk0egUYUc0TZ8Vwm0Am_W9Po
+id: paragraph.single_msg_row.default
 targetEntityType: paragraph
-bundle: single_msg_row_september
+bundle: single_msg_row
 mode: default
 content:
-  field_single_msg_row_sept_bg:
+  field_single_msg_row_bg:
     weight: 5
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
-  field_single_msg_row_sept_body:
+  field_single_msg_row_body:
     weight: 2
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
-  field_single_msg_row_sept_feat:
+  field_single_msg_row_feat:
     weight: 3
     label: hidden
     settings:
@@ -42,15 +42,15 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
-  field_single_msg_row_sept_img:
+  field_single_msg_row_img:
     weight: 1
     label: hidden
     settings:
-      responsive_image_style: single_message_row_september_
+      responsive_image_style: single_message_row_
       image_link: ''
     third_party_settings: {  }
     type: responsive_image
-  field_single_msg_row_sept_img_r:
+  field_single_msg_row_img_r:
     weight: 4
     label: hidden
     settings:
@@ -59,7 +59,7 @@ content:
       format_custom_false: ''
     third_party_settings: {  }
     type: boolean
-  field_single_msg_row_sept_title:
+  field_single_msg_row_title:
     weight: 0
     label: hidden
     settings:
