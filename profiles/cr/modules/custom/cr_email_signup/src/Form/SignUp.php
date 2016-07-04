@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\cr_email_signup\Form\SignUp.
+ */
 
 namespace Drupal\cr_email_signup\Form;
 
@@ -48,9 +52,16 @@ class SignUp extends FormBase {
     $append_message['transSourceURL'] = \Drupal::service('path.current')->getPath();
     $append_message['transSource'] = "{$this->skeletonMessage['campaign']}_[Device]_ESU_[PageElementSource]";
 
+    // RND-178: Device & Source Replacements.
+    if (!empty($append_message['device'])) {
+      $append_message['transSource'] = str_replace("Device", $append_message['device'], $append_message['transSource']);
+    }
+    if (!empty($append_message['source'])) {
+      $append_message['transSource'] = str_replace("PageElementSource", $append_message['source'], $append_message['transSource']);
+    }
+
     // Add passed arguments.
     $queue_message = array_merge($this->skeletonMessage, $append_message);
-
     // TODO: Move to config/default.
     $queue_name = 'esu';
     try {
@@ -91,6 +102,15 @@ class SignUp extends FormBase {
         'OH' => 'Other',
       ],
     ];
+    $form['steps']['device'] = [
+      '#name' => 'device',
+      '#type' => 'hidden',
+    ];
+    $form['steps']['source'] = [
+      '#name' => 'source',
+      '#type' => 'hidden',
+    ];
+
     $form['steps']['step1'] = [
       '#type' => 'button',
       '#name' => 'step1',
@@ -136,6 +156,8 @@ class SignUp extends FormBase {
           // Send first message to queue.
           $this->queueMessage(array(
             'email' => $form_state->getValue('email'),
+            'device' => $form_state->getValue('device'),
+            'source' => $form_state->getValue('source'),
             'lists' => array('general' => 'general'),
           ));
           $response->addCommand(new HtmlCommand('.esu-errors', ''));
@@ -157,6 +179,8 @@ class SignUp extends FormBase {
           $this->queueMessage(array(
             'email' => $form_state->getValue('email'),
             'phase' => $form_state->getValue('school_phase'),
+            'device' => $form_state->getValue('device'),
+            'source' => $form_state->getValue('source'),
             'lists' => array('teacher' => 'teacher'),
           ));
           $response->addCommand(new InvokeCommand('.block--cr-email-signup', 'removeClass', array('block--cr-email-signup--error')));
