@@ -7,8 +7,8 @@ dependencies:
     - paragraphs
 _core:
   default_config_hash: DYI8e0XMVaDIEP8WzsAEnEdR4swmCC_NhLzysMgYS5Q
-id: paragraph.field_single_msg_row_bg
-field_name: field_single_msg_row_bg
+id: paragraph.field_single_msg_bg
+field_name: field_single_msg_bg
 entity_type: paragraph
 type: list_string
 settings:

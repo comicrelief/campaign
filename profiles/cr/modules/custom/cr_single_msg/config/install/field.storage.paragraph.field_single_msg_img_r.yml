@@ -6,8 +6,8 @@ dependencies:
     - paragraphs
 _core:
   default_config_hash: 2KUSSJZIuiLNN9rrEeJtwJvextjLh6wXGyWVyfAbq_M
-id: paragraph.field_single_msg_row_img_r
-field_name: field_single_msg_row_img_r
+id: paragraph.field_single_msg_img_r
+field_name: field_single_msg_img_r
 entity_type: paragraph
 type: boolean
 settings: {  }

@@ -3,16 +3,16 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_single_msg_row_body
-    - paragraphs.paragraphs_type.single_msg_row
+    - field.storage.paragraph.field_single_msg_body
+    - paragraphs.paragraphs_type.single_msg
   module:
     - text
 _core:
   default_config_hash: 6ydim1Ybghf5fJuDxsRQLpgpaeeoyQ3vfld0De0K9AQ
-id: paragraph.single_msg_row.field_single_msg_row_body
-field_name: field_single_msg_row_body
+id: paragraph.single_msg.field_single_msg_body
+field_name: field_single_msg_body
 entity_type: paragraph
-bundle: single_msg_row
+bundle: single_msg
 label: Body
 description: ''
 required: true

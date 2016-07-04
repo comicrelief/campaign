@@ -8,8 +8,8 @@ dependencies:
     - paragraphs
 _core:
   default_config_hash: WTkk4wYeMq06l99sY67OFWooiiOUlL3yw-zDZo3FjWU
-id: paragraph.field_single_msg_row_img
-field_name: field_single_msg_row_img
+id: paragraph.field_single_msg_img
+field_name: field_single_msg_img
 entity_type: paragraph
 type: image
 settings:

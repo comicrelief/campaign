@@ -6,8 +6,8 @@ dependencies:
     - paragraphs
 _core:
   default_config_hash: k1T6VTbR_-efP6I_T2TiHJg-fepUqgw7OBbyABcx_GM
-id: paragraph.field_single_msg_row_title
-field_name: field_single_msg_row_title
+id: paragraph.field_single_msg_title
+field_name: field_single_msg_title
 entity_type: paragraph
 type: string
 settings:

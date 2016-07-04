@@ -79,7 +79,7 @@ dependencies:
   - cr_partner
   - cr_single_message_row_paragraph
   - cr_block_paragraph
-  - cr_single_message_row_sept_paragraph
+  - cr_single_msg
   - cr_cards
   #- cr_performance
 

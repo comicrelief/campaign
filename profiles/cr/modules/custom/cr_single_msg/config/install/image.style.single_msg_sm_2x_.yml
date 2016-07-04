@@ -4,8 +4,8 @@ status: true
 dependencies: {  }
 _core:
   default_config_hash: Uox9g7e5Ms6Rh7Hh6Qgt_4meJhW1vFjNV6iRu0qn8L0
-name: single_msg_row_sm_2x_
-label: 'Single Msg Row - SM (2x)'
+name: single_msg_sm_2x_
+label: 'Single Msg - SM (2x)'
 effects:
   a67d2479-c457-4542-9ace-717b3c55ef47:
     uuid: a67d2479-c457-4542-9ace-717b3c55ef47

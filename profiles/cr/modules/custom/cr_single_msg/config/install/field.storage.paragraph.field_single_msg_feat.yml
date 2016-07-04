@@ -6,8 +6,8 @@ dependencies:
     - paragraphs
 _core:
   default_config_hash: viJZ4RjyRU_y4hFoL7nINWk-W8YAsevEGCyyLCSPDXU
-id: paragraph.field_single_msg_row_feat
-field_name: field_single_msg_row_feat
+id: paragraph.field_single_msg_feat
+field_name: field_single_msg_feat
 entity_type: paragraph
 type: boolean
 settings: {  }

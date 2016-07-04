@@ -4,8 +4,8 @@ status: true
 dependencies: {  }
 _core:
   default_config_hash: cgfwTwOntTWaTeO_VlUjHowZbT7bjChj9-rByBlmaD0
-name: single_msg_row_md
-label: 'Single Msg Row - MD'
+name: single_msg_md
+label: 'Single Msg - MD'
 effects:
   d3e5b7d4-94b3-4ff3-b3f4-89deed1c0d71:
     uuid: d3e5b7d4-94b3-4ff3-b3f4-89deed1c0d71

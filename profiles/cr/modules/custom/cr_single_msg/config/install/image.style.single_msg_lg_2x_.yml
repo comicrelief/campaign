@@ -4,8 +4,8 @@ status: true
 dependencies: {  }
 _core:
   default_config_hash: myCZGmhgAiznh6sb72rgi2w--O6OxltqCXffYgiL6X0
-name: single_msg_row_lg_2x_
-label: 'Single Msg Row - LG (2x)'
+name: single_msg_lg_2x_
+label: 'Single Msg - LG (2x)'
 effects:
   4af8738f-957c-4916-bb56-223017fd45fd:
     uuid: 4af8738f-957c-4916-bb56-223017fd45fd

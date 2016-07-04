@@ -3,14 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_single_msg_row_title
-    - paragraphs.paragraphs_type.single_msg_row
+    - field.storage.paragraph.field_single_msg_title
+    - paragraphs.paragraphs_type.single_msg
 _core:
   default_config_hash: yxTND4maUC3GogEnrqCQYGDSZmJRoAA6bRdrrcEDPSk
-id: paragraph.single_msg_row.field_single_msg_row_title
-field_name: field_single_msg_row_title
+id: paragraph.single_msg.field_single_msg_title
+field_name: field_single_msg_title
 entity_type: paragraph
-bundle: single_msg_row
+bundle: single_msg
 label: Title
 description: ''
 required: false
