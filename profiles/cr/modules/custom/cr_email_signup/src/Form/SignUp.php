@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\cr_email_signup\Form\SignUp.
- */
 
 namespace Drupal\cr_email_signup\Form;
 
