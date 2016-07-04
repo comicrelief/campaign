@@ -35,10 +35,11 @@ $susy: (
   gutter-position: split,
   output: float,
   last-flow: to,
-/*   debug: (
-    image: show,
-    color: red,
-  ), */
+  // debug: (
+  //   image: show,
+  //   toggle: top right,
+  //   color: red,
+  // ),
 );
 
 
@@ -47,10 +48,17 @@ $susy: (
 // layout
 .region-header-inner-wrapper,
 .region-header-top,
+.node--type-page,
+.kss-section,
+.cards-wrapper,
 .cw-region {
   @include container;
 }
-
+.node--type-page {
+  .node__content {
+    @include span(12);
+  }
+}
 header,
 .region-highlighted,
 main {
@@ -65,6 +73,10 @@ main {
 
   @include span(12);
 }
-.view-content {
-  // @include span(12);
+
+.node--type-page {
+  padding-bottom: 60px;
+  @include breakpoint($screen-md) {
+    padding-bottom: 60px;
+  }
 }

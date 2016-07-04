@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\file_entity\Tests\FileEntityFileTypeClassificationTest.
- */
-
 namespace Drupal\file_entity\Tests;
 
 use Drupal\file\Entity\File;
@@ -73,6 +68,16 @@ class FileEntityFileTypeClassificationTest extends WebTestBase {
     $file_type = $this->getFileType($image_file);
     $this->assertEqual($file_type['type'], 'undefined', t('The image file has an undefined file type.'));
 
+    // When editing files before cron has run the bundle should have been
+    // updated.
+    $account = $this->drupalCreateUser(['bypass file access']);
+    $this->drupalLogin($account);
+    $this->assertNotEqual($image_file->bundle(), 'image', 'The image file does not have correct bundle before loading it.');
+    $this->drupalGet('file/' . $image_file->id() . '/edit');
+    $this->drupalPostForm(NULL, [], t('Save'));
+    $image_file = File::load($image_file->id());
+    $this->assertEqual($image_file->bundle(), 'image', 'The image file has correct bundle after load.');
+
     // The classification queue is processed during cron runs. Run cron to
     // trigger the classification process.
     $this->cronRun();
@@ -85,4 +90,5 @@ class FileEntityFileTypeClassificationTest extends WebTestBase {
     $file_type = $this->getFileType($image_file);
     $this->assertEqual($file_type['type'], 'image', t('The image file was properly assigned the Image file type.'));
   }
+
 }

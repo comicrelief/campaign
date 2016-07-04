@@ -108,7 +108,7 @@ class DsLayout extends LayoutBase {
       '#weight' => 13,
       '#states' => array(
         'visible' => array(array(
-          ':input[name="region_wrapper[link_attribute]"]' => array(array("value" => "tokens"), array("value" => "custom")),
+          ':input[name="layout_configuration[region_wrapper][link_attribute]"]' => array(array("value" => "tokens"), array("value" => "custom")),
         )),
       ),
     );
@@ -120,12 +120,12 @@ class DsLayout extends LayoutBase {
         '#weight' => 14,
         '#states' => array(
           'visible' => array(
-            ':input[name="region_wrapper[link_attribute]"]' => array("value" => "tokens"),
+            ':input[name="layout_configuration[region_wrapper][link_attribute]"]' => array("value" => "tokens"),
           ),
         ),
       );
       $form['region_wrapper']['tokens']['help'] = array(
-        '#theme' => 'token_tree',
+        '#theme' => 'token_tree_link',
         '#token_types' => 'all',
         '#global_types' => FALSE,
         '#dialog' => TRUE,

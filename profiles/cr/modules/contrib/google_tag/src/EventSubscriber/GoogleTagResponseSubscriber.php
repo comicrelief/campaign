@@ -12,6 +12,7 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Path\AliasManagerInterface;
 use Drupal\Core\Path\CurrentPathStack;
 use Drupal\Core\Path\PathMatcherInterface;
+use Drupal\Core\Render\HtmlResponse;
 use Drupal\Core\Session\AccountProxyInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -96,11 +97,13 @@ class GoogleTagResponseSubscriber implements EventSubscriberInterface {
 
     if ($this->tagApplies($request, $response)) {
       $container_id = $this->config->get('container_id');
+      // @TODO Someone must do the UI (I'll say get rid of the UI), and improve this and the getTag...
+      $container_id2 = $this->config->get('container_id2');
       $container_id = trim(json_encode($container_id), '"');
       $compact = $this->config->get('compact_tag');
 
       // Insert snippet after the opening body tag.
-      $response_text = preg_replace('@<body[^>]*>@', '$0' . $this->getTag($container_id, $compact), $response->getContent(), 1);
+      $response_text = preg_replace('@<body[^>]*>@', '$0' . $this->getTag($container_id, $compact) . $this->getTag($container_id2, $compact), $response->getContent(), 1);
       $response->setContent($response_text);
     }
   }
@@ -186,6 +189,10 @@ EOS;
       return FALSE;
     }
 
+    if (!($response instanceof HtmlResponse)) {
+      // Omit snippet because the response is not HTML.
+      return FALSE;
+    }
 
     return TRUE;
   }

@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Definition of Drupal\ds\Tests\DynamicFieldPluginTest.
+ * Contains \Drupal\ds\Tests\DynamicFieldPluginTest.
  */
 
 namespace Drupal\ds\Tests;

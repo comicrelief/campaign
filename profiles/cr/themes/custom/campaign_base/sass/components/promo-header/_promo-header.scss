@@ -10,43 +10,43 @@
 // Style guide: promo-header
 
 .promo-header {
+  @include breakpoint($screen-md-max, $no-query: true) {
+    min-height: 450px;
+  }
   position: relative;
   margin-bottom: 40px;
   text-align: center;
 }
 .promo-header__header {
-	&.bg--black {
-    background-color: $black;
-
-    @include breakpoint($screen-sm-max) {
+  &.bg--black {
+    @include breakpoint($screen-md-max) {
       background-color: transparent;
       &.no-img {
-		    background-color: $black;
+        background-color: $black;
       }
     }
+    background-color: $black;
   }
   &.bg--red {
-    background-color: $red;
-
-    @include breakpoint($screen-sm-max) {
+    @include breakpoint($screen-md-max) {
       background-color: transparent;
       &.no-img {
-		    background-color: $black;
+        background-color: $black;
       }
     }
+    background-color: $red;
   }
   &.bg--white {
     background-color: $white;
     .promo-header__content p {
-      color: $black;
-
-      @include breakpoint($screen-sm-max) {
+      @include breakpoint($screen-md-max) {
         color: $white;
         background-color: transparent;
-	        &.no-img {
-			    background-color: $black;
-	      }
+        &.no-img {
+          background-color: $black;
+        }
       }
+      color: $black;
     }
   }
 }
@@ -60,13 +60,13 @@
   color: $white;
 }
 .promo-header__bg-image {
-  @include breakpoint($screen-sm-max, $no-query: true) {
+  @include breakpoint($screen-md-max, $no-query: true) {
     position: absolute;
     width: 100%;
     height: 100%;
   }
   img {
-    @include breakpoint($screen-sm-max) {
+    @include breakpoint($screen-md-max) {
       display: block;
       width: 100%;
       height: 100%;
@@ -79,24 +79,32 @@
 .promo-header__content {
   position: relative;
   max-width: 1200px;
-  margin: 60px auto;
+  margin: auto;
+  @include breakpoint($screen-md-max) {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    width: 100%;
+    @include translateY(-50%);
+  }
   .promo-header__content-inner {
     max-width: 600px;
     margin: 60px auto;
     padding: 0 20px;
     &--centre {
-      @include breakpoint($screen-sm-max) {
-        margin-left: auto;
+      @include breakpoint($screen-md-max) {
         margin-right: auto;
+        margin-left: auto;
       }
     }
     &--left {
-      @include breakpoint($screen-sm-max) {
+      @include breakpoint($screen-md-max) {
         margin-left: 0;
       }
     }
     &--right {
-      @include breakpoint($screen-sm-max) {
+      @include breakpoint($screen-md-max) {
         margin-right: 0;
       }
     }
@@ -112,8 +120,15 @@
     margin: 0 0 40px;
   }
 }
+.promo-header__svg-title {
+  svg {
+    width: 100%;
+  }
+}
 .promo-header__link {
   a {
+    @include border-radius(30px);
+    @include transition(background-color 300ms);
     display: inline-block;
     height: 50px;
     padding: 14px 35px;
@@ -123,9 +138,6 @@
     background-color: #fff;
     font-size: 16px;
     line-height: 22px;
-
-    @include border-radius(30px);
-    @include transition(background-color 300ms);
     &:hover {
       background-color: rgba(255,255,255,0.8);
     }

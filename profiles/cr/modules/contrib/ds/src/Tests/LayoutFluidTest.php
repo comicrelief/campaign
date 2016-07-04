@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Definition of Drupal\ds\Tests\LayoutFluidTest.
+ * Contains \Drupal\ds\Tests\LayoutFluidTest.
  */
 
 namespace Drupal\ds\Tests;

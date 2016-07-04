@@ -54,7 +54,10 @@ class DynamicBlockField extends BlockBase {
       $block = $this->getBlock();
 
       if ($block instanceof ViewsBlock) {
-        $title = $block->build()['#title'];
+        $block_build = $block->build();
+        if (!empty($block_build['#title'])) {
+          $title = $block_build['#title'];
+        }
       } else {
         $title = $block->label();
       }

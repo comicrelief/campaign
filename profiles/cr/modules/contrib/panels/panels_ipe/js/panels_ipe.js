@@ -4,7 +4,7 @@
  *
  */
 
-(function ($, _, Backbone, Drupal) {
+(function ($, _, Backbone, Drupal, drupalSettings) {
 
   'use strict';
 
@@ -98,6 +98,7 @@
    *   The contextual drupalSettings.
    */
   Drupal.panels_ipe.init = function (settings) {
+    settings = settings || drupalSettings;
     // Set up our initial tabs.
     var tab_collection = new Drupal.panels_ipe.TabCollection();
 
@@ -228,4 +229,4 @@
     settings.panels_ipe.url_root = settings.path.baseUrl + 'admin/panels_ipe/variant/' + panels_display.storage_type + '/' + panels_display.storage_id;
   };
 
-}(jQuery, _, Backbone, Drupal));
+}(jQuery, _, Backbone, Drupal, drupalSettings));

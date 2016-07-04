@@ -6,19 +6,15 @@ defaults:
     subdir: "contrib"
 projects:
   # Core contrib
-  cdn:
-    version: 3.0-alpha1
   ctools:
     version: 3.0-alpha26
     patch:
       # See https://www.drupal.org/node/2672110
       2672110: https://www.drupal.org/files/issues/entityfieldderiver-2672110-8.patch
   file_entity:
-    download:
-      version: 2.x-dev
-      revision: 0bab734
+    version: 2.0-beta1
   metatag:
-    version: 1.0-beta8
+    version: 1.0-beta9
   pathauto:
     version: 1.0-alpha3
   redirect:
@@ -39,11 +35,11 @@ projects:
   panels:
     download:
       version: 3.x-dev
-      revision: 4c4a3a7
+      revision: a5400d7
   panelizer:
     version: 3.0-alpha2
   ds:
-    version: 2.3
+    version: 2.4
   field_group:
     version: 1.0-rc4
   entity_reference_revisions:
@@ -73,22 +69,34 @@ projects:
   default_content:
     download:
       branch: 8.x-1.x
-      revision: ae81658
+      revision: c6a79ee
   devel:
     download:
       version: 1.x-dev
-      revision: ca8954d
-  memcache:
+      revision: 5c6a506
+  stage_file_proxy:
+    version: 1.0-alpha1
+  imagemagick:
+    version: 1.0-alpha2
+  queue_ui:
     download:
       version: 2.x-dev
-      revision: e0b03a7
+      revision: f51ebea
+  config_readonly:
+    version: 1.0-beta2
   # Editor/admin experience
+  editor_advanced_link:
+    version: 1.2
   admin_toolbar:
-    version: 1.14
+    download:
+      version: 1.x-dev
+      revision: 32b7111
   focal_point:
     download:
       version: 1.x-dev
       revision: 1bb8116
+  crop:
+    version: 1.0-rc1
   paragraphs:
     download:
       branch: 8.x-1.x
@@ -99,6 +107,9 @@ projects:
   # Forms
   yamlform:
     version: 1.0-alpha5
+    patch:
+      # See: https://www.drupal.org/node/2743347
+      2743347: https://www.drupal.org/files/issues/2743347_2_return_string.patch
   yamlform_queue:
     download:
       branch: 8.x-1.x
@@ -107,7 +118,9 @@ projects:
   cookieconsent:
     version: 1.0
   rabbitmq:
-    version: 1.0-alpha1
+    download:
+      url: https://github.com/comicrelief/rabbitmq.git
+      branch: 8.x-1.x
   search_api:
     version: 1.0-alpha14
   crazyegg:
@@ -115,9 +128,22 @@ projects:
   google_tag:
     download:
       branch: 8.x-1.x
-      revision: e0e013c8d8f8c8b376ba6b80aada179ee7c656eb
-      url: https://github.com/mikeyp/google_tag.git
+      revision: 9dc56ec
+      url: https://github.com/Saphyel/google_tag.git
   optimizely:
     version: 2.15-rc1
   simple_sitemap:
-    version: 2.1
+    version: 2.3
+  # Performance modules
+  fast_404:
+    version: 1.0-alpha2
+  purge:
+    version: 3.0-beta4
+  purge_purger_http:
+    version: 1.0-beta3
+  memcache:
+    download:
+      version: 2.x-dev
+      revision: 908c0a2
+  cdn:
+    version: 3.0-alpha1

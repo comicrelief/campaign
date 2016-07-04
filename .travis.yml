@@ -15,7 +15,7 @@ git:
  depth: 1
 
 rvm:
-  - 2.3.0
+  - 2.1.5
 
 matrix:
   fast_finish: true
@@ -108,20 +108,23 @@ mysql:
   encoding: utf8
 
 before_install:
+  - rvm install 2.1.5
   - composer global config minimum-stability beta
   - composer global require lionsad/drupal_ti:1.4.2
+  - composer global require phing/phing
   - drupal-ti before_install
 
 install:
   - drupal-ti install
-  - composer install --prefer-dist
+  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_install.sh
+  - phing build:prepare:travis
 
 before_script:
+  # Check code quality
+  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/codecheck.sh
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh
 
 script:
-  # Check code quality
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/codecheck.sh
   # Behat
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/script.sh
   # Check DB errors

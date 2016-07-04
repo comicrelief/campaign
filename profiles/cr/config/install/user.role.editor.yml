@@ -89,3 +89,5 @@ permissions:
   - 'delete own node__status scheduled updates'
   - 'edit any node__status scheduled updates'
   - 'edit own node__status scheduled updates'
+  - 'administer meta tags'
+  - 'administer menu'

@@ -137,8 +137,23 @@ class DevelDumperTest extends WebTestBase {
     $this->assertRaw('devel_dumper_test/css/devel_dumper_test.css');
     $this->assertRaw('devel_dumper_test/js/devel_dumper_test.js');
 
+    $debug_filename = file_directory_temp() . '/drupal_debug.txt';
+
     $this->drupalGet('devel_dumper_test/debug');
-    $file_content = file_get_contents(file_directory_temp() . '/drupal_debug.txt');
+    $file_content = file_get_contents($debug_filename);
+    $expected = <<<EOF
+<pre>AvailableTestDumper::export() Test output</pre>
+
+EOF;
+    $this->assertEqual($file_content, $expected, 'Dumped message is present.');
+
+    // Ensures that the DevelDumperManager::debug() is not access checked and
+    // that the dump is written in the debug file even if the user has not the
+    // 'access devel information' permission.
+    file_put_contents($debug_filename, '');
+    $this->drupalLogout();
+    $this->drupalGet('devel_dumper_test/debug');
+    $file_content = file_get_contents($debug_filename);
     $expected = <<<EOF
 <pre>AvailableTestDumper::export() Test output</pre>
 

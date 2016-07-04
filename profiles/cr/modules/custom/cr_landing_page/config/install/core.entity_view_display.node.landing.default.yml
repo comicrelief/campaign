@@ -7,13 +7,16 @@ dependencies:
     - field.field.node.landing.field_landing_copy_position_alig
     - field.field.node.landing.field_landing_image
     - field.field.node.landing.field_landing_image_mobile
+    - field.field.node.landing.field_landing_meta_tags
     - field.field.node.landing.field_paragraphs
+    - field.field.node.landing.field_svg_body_title
     - field.field.node.landing.panelizer
     - node.type.landing
   module:
     - ds
     - entity_reference_revisions
     - image
+    - metatag
     - options
     - panelizer
     - text
@@ -192,6 +195,12 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
+  field_landing_meta_tags:
+    weight: 20
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
   field_paragraphs:
     type: entity_reference_revisions_entity_view
     weight: 4
@@ -200,6 +209,12 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
+  field_svg_body_title:
+    weight: 19
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
   links:
     weight: 14
     settings: {  }

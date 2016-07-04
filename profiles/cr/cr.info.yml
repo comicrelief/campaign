@@ -41,6 +41,7 @@ dependencies:
   - responsive_image
   - entity
   - diff
+  - fast404
 
   # Contrib modules
   - ds
@@ -54,7 +55,7 @@ dependencies:
   - focal_point
   - scheduled_updates
   - cookieconsent
-  #- simple_sitemap
+  - simple_sitemap
 
   # Layout
   - inline_entity_form
@@ -65,18 +66,21 @@ dependencies:
   - ctools_block
   - paragraphs
   - view_mode
+  - imagemagick
 
   # Custom modules
   - cr_layout
   - cr_page
   - cr_teaser
   - cr_article
+  - cr_email_signup
   - cr_content_wall
   - cr_rich_text_paragraph
   - cr_landing_page
   - cr_partner
   - cr_single_message_row_paragraph
   - cr_block_paragraph
+  - cr_cards
   #- cr_performance
 
   # Development modules
@@ -84,6 +88,7 @@ dependencies:
 
   # Editor/admin experience
   - admin_toolbar_tools
+  - editor_advanced_link
 
   # Default content; will be moved out of the profile at some point
   - cr_default_content
@@ -139,6 +144,7 @@ config_devel:
   - system.menu.main-navigation
 
   # Images
+  - system.image
   - image.style.full_node_desktop_770x433
   - image.style.full_node_mobile_442x271
   - image.style.full_node_tablet_330x247
@@ -192,6 +198,7 @@ config_devel:
   - user.role.anonymous
   - user.role.authenticated
   - user.role.editor
+  - user.settings
 
   # Contributed modules
   - pathauto.pattern.basic_page
