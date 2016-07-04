@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\cr_content_wall\Plugin\DsField\CwRowDisplay.
- */
 
 namespace Drupal\cr_content_wall\Plugin\DsField;
 
