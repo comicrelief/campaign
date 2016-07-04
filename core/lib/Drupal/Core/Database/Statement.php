@@ -40,9 +40,6 @@ class Statement extends \PDOStatement implements StatementInterface {
    * {@inheritdoc}
    */
   public function execute($args = array(), $options = array()) {
-
-    ini_set('memory_limit', '-1');
-
     if (isset($options['fetch'])) {
       if (is_string($options['fetch'])) {
         // \PDO::FETCH_PROPS_LATE tells __construct() to run before properties
