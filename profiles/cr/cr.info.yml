@@ -177,7 +177,7 @@ config_devel:
   - responsive_image.styles.cw_landscape_image
   - responsive_image.styles.bg_rich_text
   - responsive_image.styles.single_l_r_message_row
-  - responsive_image.styles.single_message_row_september_
+  - responsive_image.styles.single_msg
 
   # Metatags
   - metatag.metatag_defaults.403
