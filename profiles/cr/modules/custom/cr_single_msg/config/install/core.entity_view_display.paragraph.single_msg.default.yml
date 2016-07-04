@@ -46,7 +46,7 @@ content:
     weight: 1
     label: hidden
     settings:
-      responsive_image_style: single_message_row_
+      responsive_image_style: single_msg
       image_link: ''
     third_party_settings: {  }
     type: responsive_image
