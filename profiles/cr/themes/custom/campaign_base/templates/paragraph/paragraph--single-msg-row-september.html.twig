@@ -1,7 +1,6 @@
 {# Construct new classes based on variant options #}
 {% set featured = content.field_single_msg_row_sept_feat['#items'][0].value == '1' ? 'paragraph--' ~ paragraph.bundle|clean_class ~ '--featured' : '' %}
 {% set img_right = content.field_single_msg_row_sept_img_r['#items'][0].value == '1' ? 'paragraph--' ~ paragraph.bundle|clean_class ~ '--image-right' : '' %}
-
 {% set bg_colour = content.field_single_msg_row_sept_bg['#items'][0].value %}
 
 {%
