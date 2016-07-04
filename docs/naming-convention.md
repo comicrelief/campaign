@@ -10,9 +10,34 @@ Natural language is everyday, conversational, and usually descriptive language. 
 3. Typeset all file and folder names in lowercase.
 4. Don't use ‘special characters’ in folder and file names.
 
-### How to name fields?
+### How to name content types?
 
-field_CONTENTTYPE_FIELDNAME
+Follow recommendation (2.)
+#### Content type fields
+field_contenttype_field
+
+```
+ie.
+
+partner
+
+partner_title
+```
+
+### How to name components?
+
+Follow recommendation (2.) and check [Components dictionary](https://docs.google.com/a/comicrelief.com/spreadsheets/d/19EGRB6UcOfPpa0Bh2sr7lsfdCYo2Qm88tdHXBD4jbNs/edit?usp=sharing)
+
+#### Component fields
+field_component_field
+
+```
+ie.
+
+single-msg
+
+single-msg-title
+```
 
 ### How to name twig templates?
 
