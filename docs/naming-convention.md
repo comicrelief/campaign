@@ -2,7 +2,7 @@
 
 The naming of folders and files is a small detail that can make all the difference when maintaining a website.
 
-Here are a few recommendations for naming folders and files, including HTML, image, scss, twig and hbs files
+Here are a few recommendations for naming components, folders and files, including HTML, image, scss, twig and hbs files
 
 1. Use natural language to name folders and files.
 Natural language is everyday, conversational, and usually descriptive language. If a folder or file name can easily be read and understood, both by your co-workers and your parents, then it’s probably natural language.
