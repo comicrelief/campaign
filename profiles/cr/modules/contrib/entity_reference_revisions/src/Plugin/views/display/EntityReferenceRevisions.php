@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\entity_reference_revisions\Plugin\views\display\EntityReferenceRevisions.
+ */
+
 namespace Drupal\entity_reference_revisions\Plugin\views\display;
 
 use Drupal\views\Plugin\views\display\DisplayPluginBase;
