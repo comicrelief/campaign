@@ -1,12 +1,9 @@
-uuid: 9486c69c-9eb9-4d4d-94a6-643390387ff1
 langcode: en
 status: true
 dependencies:
   module:
     - paragraphs
     - text
-_core:
-  default_config_hash: cLJINVG8vb7mQTiYcTt6myO5drC_wczr1p-N_LI7uM8
 id: paragraph.field_single_msg_body
 field_name: field_single_msg_body
 entity_type: paragraph

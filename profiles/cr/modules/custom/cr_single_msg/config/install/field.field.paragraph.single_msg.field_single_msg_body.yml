@@ -1,4 +1,3 @@
-uuid: e5c0c15f-18bf-4a4b-bf31-53b70883b60f
 langcode: en
 status: true
 dependencies:
@@ -7,8 +6,6 @@ dependencies:
     - paragraphs.paragraphs_type.single_msg
   module:
     - text
-_core:
-  default_config_hash: 6ydim1Ybghf5fJuDxsRQLpgpaeeoyQ3vfld0De0K9AQ
 id: paragraph.single_msg.field_single_msg_body
 field_name: field_single_msg_body
 entity_type: paragraph

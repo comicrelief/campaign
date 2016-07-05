@@ -1,12 +1,9 @@
-uuid: 2b6884a7-daab-4f19-846f-85d369b872c5
 langcode: en
 status: true
 dependencies:
   module:
     - options
     - paragraphs
-_core:
-  default_config_hash: DYI8e0XMVaDIEP8WzsAEnEdR4swmCC_NhLzysMgYS5Q
 id: paragraph.field_single_msg_bg
 field_name: field_single_msg_bg
 entity_type: paragraph

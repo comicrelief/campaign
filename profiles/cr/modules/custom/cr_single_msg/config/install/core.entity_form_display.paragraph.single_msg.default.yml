@@ -1,4 +1,3 @@
-uuid: 3ff12265-9e01-4100-adf2-af35b3c55bdd
 langcode: en
 status: true
 dependencies:
@@ -14,8 +13,6 @@ dependencies:
   module:
     - image
     - text
-_core:
-  default_config_hash: IjqdR2mJBX9O4w64wzOV7KDhulo3mm6gUOfHp8MRZbk
 id: paragraph.single_msg.default
 targetEntityType: paragraph
 bundle: single_msg

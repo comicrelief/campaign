@@ -1,12 +1,9 @@
-uuid: 376882b4-87e4-4c76-b515-292b49a9ce44
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.paragraph.field_single_msg_img_r
     - paragraphs.paragraphs_type.single_msg
-_core:
-  default_config_hash: LusL2b-ftn25ugRkTmbarS0oWAPWGayKWHv-nGsQ8uY
 id: paragraph.single_msg.field_single_msg_img_r
 field_name: field_single_msg_img_r
 entity_type: paragraph

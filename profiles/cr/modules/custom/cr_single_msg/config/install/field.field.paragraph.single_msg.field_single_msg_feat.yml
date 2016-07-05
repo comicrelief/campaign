@@ -1,12 +1,9 @@
-uuid: e1d54055-1f54-417e-8993-3e7291448a1f
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.paragraph.field_single_msg_feat
     - paragraphs.paragraphs_type.single_msg
-_core:
-  default_config_hash: tJVDGY3hJaiurQ8uF5d1Ab4wj0zK15dufopEhN-xLdo
 id: paragraph.single_msg.field_single_msg_feat
 field_name: field_single_msg_feat
 entity_type: paragraph

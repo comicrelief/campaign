@@ -1,4 +1,3 @@
-uuid: e9c03911-defc-4299-8fc6-8c3c4a8f2e7f
 langcode: en
 status: true
 dependencies:
@@ -7,8 +6,6 @@ dependencies:
     - paragraphs.paragraphs_type.single_msg
   module:
     - image
-_core:
-  default_config_hash: zUsh1qnCFA9v8dmdCVyn4ikL1LxakyoOK_UhsofAOSI
 id: paragraph.single_msg.field_single_msg_img
 field_name: field_single_msg_img
 entity_type: paragraph
