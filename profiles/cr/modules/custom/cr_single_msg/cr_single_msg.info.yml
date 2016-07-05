@@ -22,10 +22,10 @@ config_devel:
   - field.storage.paragraph.field_single_msg_img_r
   - field.storage.paragraph.field_single_msg_img
   - field.storage.paragraph.field_single_msg_title
-  - image.style.single_msg_lg_.yml
-  - image.style.single_msg_lg_2x_.yml
-  - image.style.single_msg_md_2x_.yml
-  - image.style.single_msg_md.yml
-  - image.style.single_msg_sm_2x_.yml
-  - image.style.single_msg_sm.yml
+  - image.style.single_msg_lg_
+  - image.style.single_msg_lg_2x_
+  - image.style.single_msg_md_2x_
+  - image.style.single_msg_md
+  - image.style.single_msg_sm_2x_
+  - image.style.single_msg_sm
   - paragraphs.paragraphs_type.single_msg

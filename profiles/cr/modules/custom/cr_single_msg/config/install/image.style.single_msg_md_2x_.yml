@@ -1,9 +1,6 @@
-uuid: 36fd6b81-3e81-4965-80b1-15364ff9c101
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: uZq6Q7Ldv-VE8yeyoLAP-tosXQnqi-0n2h30B_BUXnA
 name: single_msg_md_2x_
 label: 'Single Msg - MD (2x)'
 effects:

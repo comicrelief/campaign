@@ -1,11 +1,8 @@
-uuid: 81428a91-9adb-45ca-8442-6d302fa8cc0e
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: 5m8yvAW-kBzKGziFv0AMasU8RM5oZqaST3BSOS02qoI
 name: single_msg_lg_
-label: "Single Msg - LG"
+label: 'Single Msg - LG'
 effects:
   388323eb-6438-4f7a-a86f-d704a5b02c97:
     uuid: 388323eb-6438-4f7a-a86f-d704a5b02c97

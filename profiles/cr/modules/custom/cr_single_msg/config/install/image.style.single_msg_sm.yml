@@ -1,9 +1,6 @@
-uuid: ab89cd3b-d5d2-4276-9ddb-29ad3a88ab6a
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: KEtjWo56k2LQTUDNzuAR3Lx5emvwdt5J38pgTvD0zco
 name: single_msg_sm
 label: 'Single Msg - SM'
 effects:
