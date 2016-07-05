@@ -1,12 +1,12 @@
 {# Construct new classes based on variant options #}
-{% set featured = content.field_single_msg_feat['#items'][0].value == '1' ? 'paragraph--' ~ paragraph.bundle|clean_class ~ '--featured' : '' %}
-{% set img_right = content.field_single_msg_img_r['#items'][0].value == '1' ? 'paragraph--' ~ paragraph.bundle|clean_class ~ '--image-right' : '' %}
+{% set featured = content.field_single_msg_feat['#items'][0].value == '1' ? paragraph.bundle|clean_class ~ '--featured' : '' %}
+{% set img_right = content.field_single_msg_img_r['#items'][0].value == '1' ?paragraph.bundle|clean_class ~ '--image-right' : '' %}
 {% set bg_colour = content.field_single_msg_bg['#items'][0].value %}
 
 {%
 set classes = [
 'paragraph',
-'paragraph--' ~ paragraph.bundle|clean_class,
+paragraph.bundle|clean_class,
 featured,
 img_right,
 bg_colour,

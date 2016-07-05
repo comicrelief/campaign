@@ -1,29 +1,12 @@
-// Single Message Row September
+// Single Message for Sept
 //
-// This is a Single message row for September
+// This is a Single Message row for Sept
 //
-// Markup: _paragraph--single-msg.hbs
+// Markup: _single-msg.hbs
 //
-// .paragraph--single-msg--image-right  - Image on right, copy on left
+// .single-msg--image-right  - Image on right, copy on left
 //
-// Style guide: Single Message September
-
-
-/* STYLEGUIDE HACKING*/
-.kss-modifier__example {
-  background-color: #dddddd !important;
-}
-.kss-sidebar {
-  display:none;
-}
-.kss-main {
-  width: 100% !important;
-  margin: 0 !important;
-}
-.kss-section {
-  margin: 0 auto !important;
-}
-/* END STYLEGUIDE HACKING*/
+// Style guide: Single Message for Sept
 
 
 /* Variables, to move  */
@@ -31,7 +14,7 @@ $row-padding--sm: 30px;
 $row-padding--md: 60px;
 
 /* Global styles for all variants */
-.paragraph--single-msg {
+.paragraph.single-msg {
   width: 100%;
   .single-msg__outer-wrapper {
     @include container;
@@ -130,7 +113,7 @@ $row-padding--md: 60px;
   }
 
   /* Featured variation  */
-  &.paragraph--single-msg--featured {
+  &.single-msg--featured {
     .single-msg__image {
       float: left;
    
@@ -195,7 +178,7 @@ $row-padding--md: 60px;
   }
 
   /* Image right, text left variant */
-  &.paragraph--single-msg--image-right {
+  &.single-msg--image-right {
     @include breakpoint($screen-md) {
       .single-msg__image {
         float:right;
