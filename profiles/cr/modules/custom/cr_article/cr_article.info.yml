@@ -24,6 +24,7 @@ dependencies:
   - filter
 
 config_devel:
+  - core.base_field_override.node.article.status
   - taxonomy.vocabulary.tags
   - node.type.article
   - core.entity_form_display.node.article.default
