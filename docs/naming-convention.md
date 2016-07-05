@@ -12,55 +12,56 @@ Natural language is everyday, conversational, and usually descriptive language. 
 
 ### How to name content types?
 
-Follow recommendation (2.)
+Follow recommendation (2.) Good examples are:
+
+- `article`
+- `landing_page`
+
+Don't use plurals for content type naming.
+
 #### Content type fields
-field_contenttype_field
 
-```
-ie.
+`field_contenttype_field`
 
-partner
+Examples:
 
-partner_title
-```
+- `field_partner_title`
+- `field_partner_image`
+- `field_partner_bg_image`
 
 ### How to name components?
 
 Follow recommendation (2.) and check [Components dictionary](https://docs.google.com/a/comicrelief.com/spreadsheets/d/19EGRB6UcOfPpa0Bh2sr7lsfdCYo2Qm88tdHXBD4jbNs/edit?usp=sharing)
 
 #### Component fields
-field_component_field
 
-```
-ie.
+`field_component_field`, e.g.
 
-single-msg
-
-single-msg-title
-```
+* `single-msg`
+* `single-msg-title`
 
 ### How to name twig templates?
 
-Use devel suggestion
+Use `devel` suggestion, for example 
 
-ie. ds-reset--paragraph-cr-cards.html.twig
-
-### How to name sass files?
-
-Use the name of the component
-
-ie. single-message.scss
-
-### How to name hbs files?
-
-Use the name of the component
-
-ie. single-message.hbs
+`ds-reset--paragraph-cr-cards.html.twig`
 
 ### How to name sass files?
 
-Use the name of the component
+Use the name of the component, i.e.
 
-ie. single-message.scss
+`single-message.scss`
+
+### How to name `hbs` files?
+
+Use the name of the component, i.e.
+
+`single-message.hbs`
+
+### How to name `sass` files?
+
+Use the name of the component, i.e. 
+
+`single-message.scss`
 
 @todo
