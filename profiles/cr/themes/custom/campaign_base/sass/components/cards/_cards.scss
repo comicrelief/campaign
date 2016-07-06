@@ -64,7 +64,7 @@
   	position: absolute;
 		top: 0;
 		right: 0;
-		padding: calc(4*#{gutter()});
+		padding: calc(2*#{gutter()});
 		height: calc(100% - 50px);
   	@include span(9);
   	@include push(3);
@@ -72,7 +72,7 @@
 }
 .cards__content {
   @include breakpoint($screen-md-only) {
-  	position: absolute;
+  	position: relative;
 	  top: 50%;
 	  transform: translateY(-50%);
   }
