@@ -69,6 +69,64 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
   }
 
   /**
+   * @Then /^the metatag attribute "(?P<attribute>[^"]*)" should have the value "(?P<value>[^"]*)"$/
+   *
+   * @throws \Exception
+   *   If region or link within it cannot be found.
+   */
+  public function assertMetaRegion($metatag, $value) {
+    $this->assertMetaRegionGeneric('name', $metatag, $value, 'equals');
+  }
+
+  /**
+   * @Then /^the metatag property "(?P<attribute>[^"]*)" should have the value "(?P<value>[^"]*)"$/
+   *
+   * @throws \Exception
+   *   If region or link within it cannot be found.
+   */
+  public function assertMetaRegionProperty($metatag, $value) {
+    $this->assertMetaRegionGeneric('property', $metatag, $value, 'equals');
+  }
+
+  /**
+   * @Then /^the metatag attribute "(?P<attribute>[^"]*)" should contain the value "(?P<value>[^"]*)"$/
+   *
+   * @throws \Exception
+   *   If region or link within it cannot be found.
+   */
+  public function assertMetaRegionContains($metatag, $value) {
+    $this->assertMetaRegionGeneric('name', $metatag, $value, 'contains');
+  }
+
+  /**
+   * @Then /^the metatag property "(?P<attribute>[^"]*)" should contain the value "(?P<value>[^"]*)"$/
+   *
+   * @throws \Exception
+   *   If region or link within it cannot be found.
+   */
+  public function assertMetaRegionPropertyContains($metatag, $value) {
+    $this->assertMetaRegionGeneric('property', $metatag, $value, 'contains');
+  }
+
+  /**
+   * Helper function to generalize metatag behat tests
+   */
+  private function assertMetaRegionGeneric($type, $metatag, $value, $comparison) {
+    $element = $this->getSession()->getPage()->find('xpath', '/head/meta[@' . $type . '="' . $metatag . '"]/@content');
+    if ($element) {
+      if ($comparison == 'equals' && $value == $element->getText()) {
+        $result = $value;
+      }
+      else if ($comparison == 'contains' && strpos($element->getText(), $value) !== false) {
+        $result = $value;
+      }
+    }
+    if (empty($result)) {
+      throw new Exception(sprintf('Metatag "%s" expected to be "%s", but found "%s" on the page %s', $metatag, $value, $element->getText(), $this->getSession()->getCurrentUrl()));
+    }
+  }
+
+  /**
    * Creates a node that has paragraphs provided in a table.
    *
    * @Given I am viewing a/an :type( content) with :title( title) and :img( image) and :body( body) and with the following paragraphs:
