@@ -1,0 +1,94 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/block\/10?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/block_content\/cr_card"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/cr_card\/field_cr_card_image": [
+            {
+                "href": "http:\/\/default\/file\/3337?_format=hal_json"
+            }
+        ]
+    },
+    "id": [
+        {
+            "value": "10"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "754defa1-523a-493f-8d29-118884a9f146"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": "10"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "info": [
+        {
+            "value": "Follow in Dermot's footsteps",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "cr_card"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1467798860",
+            "lang": "en"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "field_cr_card_body": [
+        {
+            "value": "<h2>Follow in Dermont's footsteps<\/h2>\r\n\r\n<p>If Dermot's hip-swivelling heroics have inspired you, why not do your bit for Red Nose Day and put on your own dance event? Get your free Dancing Kit now.<\/p>\r\n\r\n<p><a class=\"btn btn--blue\" href=\"#\" id=\"\" rel=\"\" target=\"\" title=\"\">Get your Dancing Kit<\/a><\/p>\r\n",
+            "format": "full_html"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/cr_card\/field_cr_card_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/3337?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "b459dc52-02a0-48c7-b190-8fa0c084575c"
+                    }
+                ],
+                "alt": "bg",
+                "title": "",
+                "width": "1860",
+                "height": "1046"
+            }
+        ]
+    }
+}

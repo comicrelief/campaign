@@ -1,0 +1,94 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/block\/11?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/block_content\/cr_card"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/cr_card\/field_cr_card_image": [
+            {
+                "href": "http:\/\/default\/file\/3338?_format=hal_json"
+            }
+        ]
+    },
+    "id": [
+        {
+            "value": "11"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "a137f6e7-0cf3-4387-a4b8-d8333e1fe9f5"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": "11"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "info": [
+        {
+            "value": "Join in, have fun and change lives",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "cr_card"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1467799096",
+            "lang": "en"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "field_cr_card_body": [
+        {
+            "value": "<h2>Join in, have fun and change lives<\/h2>\r\n\r\n<p>It\u2019s so easy to join in with Red Nose Day and make a real difference. Get your perfect fundraising idea to make raising loads of money really easy.<\/p>\r\n\r\n<p><a class=\"btn btn--red\" href=\"#\" id=\"\" rel=\"\" target=\"\" title=\"\">Get&nbsp;fundraising ideas<\/a><\/p>\r\n",
+            "format": "full_html"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/cr_card\/field_cr_card_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/3338?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "2d623444-7c7c-4903-84eb-a6a007c38d2b"
+                    }
+                ],
+                "alt": "bg",
+                "title": "",
+                "width": "570",
+                "height": "321"
+            }
+        ]
+    }
+}

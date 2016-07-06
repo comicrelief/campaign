@@ -30,6 +30,9 @@
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_paragraphs": [
             {
+                "href": "http:\/\/default\/paragraph\/7?_format=hal_json"
+            },
+            {
                 "href": "http:\/\/default\/paragraph\/3?_format=hal_json"
             },
             {
@@ -58,7 +61,7 @@
     ],
     "vid": [
         {
-            "value": "62"
+            "value": "63"
         }
     ],
     "langcode": [
@@ -91,7 +94,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "66d7846b-dbbf-4a20-9b2c-b0f27ef9ba43"
+                        "value": "51417309-eeba-4554-83f1-2538eb9a76b2"
                     }
                 ],
                 "lang": "en"
@@ -109,7 +112,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "096c9fdc-fd1b-4374-b266-8228326e21f7"
+                        "value": "edf090de-5785-46fc-8b96-60ff739ad9f7"
                     }
                 ]
             }
@@ -158,6 +161,21 @@
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_paragraphs": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/paragraph\/7?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cr_cards"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "1e70465d-6f84-4109-be4f-fbd72716a133"
+                    }
+                ]
+            },
             {
                 "_links": {
                     "self": {
@@ -249,7 +267,7 @@
     ],
     "changed": [
         {
-            "value": "1467205083",
+            "value": "1467799041",
             "lang": "en"
         }
     ],
@@ -267,7 +285,7 @@
     ],
     "revision_timestamp": [
         {
-            "value": "1467205083"
+            "value": "1467799041"
         }
     ],
     "revision_translation_affected": [
