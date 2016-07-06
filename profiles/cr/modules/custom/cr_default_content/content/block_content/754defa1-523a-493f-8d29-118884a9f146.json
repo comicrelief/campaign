@@ -64,7 +64,7 @@
     ],
     "field_cr_card_body": [
         {
-            "value": "<h2>Follow in Dermont's footsteps<\/h2>\r\n\r\n<p>If Dermot's hip-swivelling heroics have inspired you, why not do your bit for Red Nose Day and put on your own dance event?<\/p>\r\n\r\n<p><a class=\"btn link--inline-red\" href=\"#\" id=\"\" rel=\"\" target=\"\" title=\"\">Get your Dancing Kit<\/a><\/p>\r\n",
+            "value": "<h2>Follow in Dermont's footsteps<\/h2>\r\n\r\n<p>If Dermot's hip-swivelling heroics have inspired you, why not do your bit for Red Nose Day and put on your own dance event?<\/p>\r\n\r\n<p><a class=\"link link--inline-red\" href=\"#\" id=\"\" rel=\"\" target=\"\" title=\"\">Get your Dancing Kit<\/a><\/p>\r\n",
             "format": "full_html"
         }
     ],
