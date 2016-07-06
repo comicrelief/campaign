@@ -12,6 +12,10 @@ Feature: Landing-page
     And I should see "Ready to go?"
     And I should see "All that's left to do is pre-order your FREE Fundraising Pack"
     And I should see the link "Pre-order"
+    And I should see "Follow in Dermont's footsteps"
+    And I should see "Join in, have fun and change lives"
+    And I should see the link "Get your Dancing Kit"
+    And I should see the link "Get fundraising ideas"
 
   @api
   Scenario: Check metatags for landing pages
