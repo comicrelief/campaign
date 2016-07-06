@@ -8,7 +8,7 @@
         },
         "http:\/\/drupal.org\/rest\/relation\/block_content\/cr_card\/field_cr_card_image": [
             {
-                "href": "http:\/\/default\/file\/3337?_format=hal_json"
+                "href": "http:\/\/default\/file\/3343?_format=hal_json"
             }
         ]
     },
@@ -46,7 +46,7 @@
     ],
     "changed": [
         {
-            "value": "1467798860",
+            "value": "1467802910",
             "lang": "en"
         }
     ],
@@ -73,7 +73,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/file\/3337?_format=hal_json"
+                        "href": "http:\/\/default\/file\/3343?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
@@ -81,13 +81,13 @@
                 },
                 "uuid": [
                     {
-                        "value": "b459dc52-02a0-48c7-b190-8fa0c084575c"
+                        "value": "1bd26591-6c34-4a83-aa7a-72cc8d1de887"
                     }
                 ],
-                "alt": "bg",
+                "alt": "Cooking",
                 "title": "",
-                "width": "1860",
-                "height": "1046"
+                "width": "570",
+                "height": "321"
             }
         ]
     }

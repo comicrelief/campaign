@@ -8,7 +8,7 @@
         },
         "http:\/\/drupal.org\/rest\/relation\/block_content\/cr_card\/field_cr_card_image": [
             {
-                "href": "http:\/\/default\/file\/3338?_format=hal_json"
+                "href": "http:\/\/default\/file\/3344?_format=hal_json"
             }
         ]
     },
@@ -46,7 +46,7 @@
     ],
     "changed": [
         {
-            "value": "1467799096",
+            "value": "1467803179",
             "lang": "en"
         }
     ],
@@ -73,7 +73,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/file\/3338?_format=hal_json"
+                        "href": "http:\/\/default\/file\/3344?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
@@ -81,13 +81,13 @@
                 },
                 "uuid": [
                     {
-                        "value": "2d623444-7c7c-4903-84eb-a6a007c38d2b"
+                        "value": "de9f7238-105e-4e70-b6fc-6ae13b13d7f9"
                     }
                 ],
-                "alt": "bg",
+                "alt": "little girl and a bicycle",
                 "title": "",
-                "width": "570",
-                "height": "321"
+                "width": "1860",
+                "height": "1046"
             }
         ]
     }
