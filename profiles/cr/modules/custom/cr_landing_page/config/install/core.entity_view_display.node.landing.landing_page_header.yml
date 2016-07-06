@@ -4,7 +4,6 @@ dependencies:
   config:
     - core.entity_view_mode.node.landing_page_header
     - field.field.node.landing.body
-    - field.field.node.landing.field_landing_feature_layout
     - field.field.node.landing.field_landing_background_colour
     - field.field.node.landing.field_landing_copy_position_alig
     - field.field.node.landing.field_landing_feature_layout
