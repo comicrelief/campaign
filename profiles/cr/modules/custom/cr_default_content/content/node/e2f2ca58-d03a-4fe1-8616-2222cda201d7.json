@@ -46,6 +46,18 @@
             },
             {
                 "href": "http:\/\/default\/paragraph\/6?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/default\/paragraph\/7?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/default\/paragraph\/8?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/default\/paragraph\/9?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/default\/paragraph\/10?_format=hal_json"
             }
         ]
     },
@@ -61,7 +73,7 @@
     ],
     "vid": [
         {
-            "value": "63"
+            "value": "12"
         }
     ],
     "langcode": [
@@ -94,7 +106,11 @@
                 },
                 "uuid": [
                     {
+<<<<<<< HEAD
                         "value": "51417309-eeba-4554-83f1-2538eb9a76b2"
+=======
+                        "value": "e4e3021e-ed26-49f1-8c74-56ddfd7ee1f9"
+>>>>>>> 55ae7eb6be8741f68bcfa43709f94c4f24d2c34c
                     }
                 ],
                 "lang": "en"
@@ -112,7 +128,11 @@
                 },
                 "uuid": [
                     {
+<<<<<<< HEAD
                         "value": "edf090de-5785-46fc-8b96-60ff739ad9f7"
+=======
+                        "value": "6f1a0beb-c950-4027-80f1-3d5fb6ca32ca"
+>>>>>>> 55ae7eb6be8741f68bcfa43709f94c4f24d2c34c
                     }
                 ]
             }
@@ -250,6 +270,66 @@
                         "value": "9340e943-1f61-402a-a96e-21276fe1e7ab"
                     }
                 ]
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/paragraph\/7?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/single_msg"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "347691c7-329b-4445-8739-72557827bb7d"
+                    }
+                ]
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/paragraph\/8?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/single_msg"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "86558024-7041-490b-b412-746818f82c1a"
+                    }
+                ]
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/paragraph\/9?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/single_msg"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "326a7eb5-3d33-47da-982a-79d335fb9f37"
+                    }
+                ]
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/paragraph\/10?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/single_msg"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "7669004a-9241-4e87-9d71-c5fecd8177d2"
+                    }
+                ]
             }
         ]
     },
@@ -267,7 +347,11 @@
     ],
     "changed": [
         {
+<<<<<<< HEAD
             "value": "1467799041",
+=======
+            "value": "1467825479",
+>>>>>>> 55ae7eb6be8741f68bcfa43709f94c4f24d2c34c
             "lang": "en"
         }
     ],
@@ -285,7 +369,11 @@
     ],
     "revision_timestamp": [
         {
+<<<<<<< HEAD
             "value": "1467799041"
+=======
+            "value": "1467825479"
+>>>>>>> 55ae7eb6be8741f68bcfa43709f94c4f24d2c34c
         }
     ],
     "revision_translation_affected": [
