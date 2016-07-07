@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: cw_4_3_md_316_x_303_2x_
+label: 'CW 4:3 MD 316 x 303 (2x)'
+effects:
+  3a073057-7329-4c7e-ae96-9f04979718aa:
+    uuid: 3a073057-7329-4c7e-ae96-9f04979718aa
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 632
+      height: 606

@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: bg_rich_text_narrow_2x
+label: 'Bg rich text narrow (2x)'
+effects:
+  f22839af-3d1e-4828-bf76-bf1875885c64:
+    uuid: f22839af-3d1e-4828-bf76-bf1875885c64
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: '1478'
+      height: '846'
