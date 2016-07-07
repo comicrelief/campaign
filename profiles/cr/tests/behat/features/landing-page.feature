@@ -12,6 +12,11 @@ Feature: Landing-page
     And I should see "Ready to go?"
     And I should see "All that's left to do is pre-order your FREE Fundraising Pack"
     And I should see the link "Pre-order"
+    And I should see "Single Msg Standard 4:3"
+    And I should see "Single Msg Standard 4:3 Img R"
+    And I should see "Single Msg Featured 16:9"
+    And I should see "Single Msg Featured 16:9 Img R"
+    And I should see the link "Linko"
 
   @api
   Scenario: Check metatags for landing pages
