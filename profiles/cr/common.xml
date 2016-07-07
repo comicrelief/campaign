@@ -26,10 +26,6 @@
           description="Build all project dependencies. (gems, composer)">
     <exec logoutput="true" passthru="true" command="composer install --no-progress --prefer-dist"/>
   </target>
-  <target name="build:prepare:travis" depends="test:composer:install"
-          description="Build all project dependencies using composer but without gems, for Travis CI">
-    <exec logoutput="true" passthru="true" command="composer install --no-progress --prefer-dist"/>
-  </target>
   <!-- Front-end -->
   <target name="grunt:build" description="Generate all compiled Sass and JS files.">
     <exec dir="${app.profile.dir}" logoutput="true" passthru="true"
@@ -173,6 +169,16 @@
       command="${drush.bin} sql-cli &lt; /tmp/${file}.sql --verbose"/>
     <exec checkreturn="true" logoutput="true" passthru="true"
       command="${drush.bin} cr"/>
+  </target>
+  <target name="db:local:dump"
+          description="Dump local database">
+    <exec checkreturn="true" logoutput="true" passthru="true"
+      command="${drush.bin} sql-dump --skip-tables-key=common --ordered-dump --result-file='/tmp/${app.profile.name}.sql'"/>
+  </target>
+  <target name="db:local:restore"
+          description="Restore local database">
+    <exec checkreturn="true" logoutput="true" passthru="true"
+      command="${drush.bin} sql-cli &lt; /tmp/${app.profile.name}.sql --verbose"/>
   </target>
   <!-- Quality Code template: https://github.com/previousnext/phing-phpqatools/blob/master/build.xml -->
   <target name="info:code" description="Check quality of the custom code"

@@ -36,14 +36,14 @@ Feature: Landing-page
 
   @api
   Scenario: Create landing page with associated paragraphs
-    Given I am viewing a "landing" content with "Test landing page" title and "http://lorempixel.com/g/900/300/nature/3" image and "<h1>Behat or Liv?</h1><h2>Spot the five differences!</h2>" body and with the following paragraphs:
+    Given I am viewing a "landing" content with "Test landing page" title and "http://dummyimage.com/600x16:9" image and "<h1>Behat or Liv?</h1><h2>Spot the five differences!</h2>" body and with the following paragraphs:
     | type | title | image | body | variant |
-    | cr_single_message_row | SMR Title | http://lorempixel.com/400/200/nature/Comic-Relief | Title above image right | title-above-image-right |
-    | cr_single_message_row | SMR Title 2 | http://lorempixel.com/400/200/abstract/Comic-Relief | Title inside image left | title-inside-image-left |
-    | cr_single_message_row | SMR Title 3 | http://lorempixel.com/400/200/food/Comic-Relief | Centre image below | centre-image-below |
-    | cr_single_message_row | SMR Title 4 | http://lorempixel.com/400/200/technics/Comic-Relief | Centre image above | centre-image-above |
+    | cr_single_message_row | SMR Title | http://dummyimage.com/400x16:9 | Title above image right | title-above-image-right |
+    | cr_single_message_row | SMR Title 2 | http://dummyimage.com/400x16:9 | Title inside image left | title-inside-image-left |
+    | cr_single_message_row | SMR Title 3 | http://dummyimage.com/400x16:9 | Centre image below | centre-image-below |
+    | cr_single_message_row | SMR Title 4 | http://dummyimage.com/400x16:9 | Centre image above | centre-image-above |
     | cr_single_message_row | SMR Title 5 | | Centred, text only, image optional | centre-text-only |
-    | cr_rich_text_paragraph | | http://lorempixel.com/900/300/sports/Comic-Relief | <h2>Rich text bg title</h2> <p>Rich text paragraph body </p> | |
+    | cr_rich_text_paragraph | | http://dummyimage.com/400x16:9 | <h2>Rich text bg title</h2> <p>Rich text paragraph body </p> | |
     Then I should see "Behat or Liv?"
     And I should see "Rich text paragraph"
     And I should see "SMR Title"
