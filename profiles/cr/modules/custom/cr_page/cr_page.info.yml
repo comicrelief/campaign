@@ -12,3 +12,4 @@ dependencies:
   - rdf
   - text
   - user
+package: 'Comic Relief'
