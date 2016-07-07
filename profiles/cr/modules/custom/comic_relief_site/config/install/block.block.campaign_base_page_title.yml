@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - system
+  theme:
+    - campaign_base
+id: campaign_base_page_title
+theme: campaign_base
+region: content
+weight: -4
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/5
+    negate: true
+    context_mapping: {  }
+  node_type:
+    id: node_type
+    bundles:
+      landing: landing
+      page: page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
