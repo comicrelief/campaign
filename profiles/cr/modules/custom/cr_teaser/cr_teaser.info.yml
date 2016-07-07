@@ -6,3 +6,4 @@ package: Comic Relief
 dependencies:
   - link
   - image
+  - responsive_image
