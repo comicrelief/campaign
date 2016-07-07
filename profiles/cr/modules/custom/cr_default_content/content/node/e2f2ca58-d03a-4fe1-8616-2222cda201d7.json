@@ -106,11 +106,7 @@
                 },
                 "uuid": [
                     {
-<<<<<<< HEAD
-                        "value": "51417309-eeba-4554-83f1-2538eb9a76b2"
-=======
                         "value": "e4e3021e-ed26-49f1-8c74-56ddfd7ee1f9"
->>>>>>> 55ae7eb6be8741f68bcfa43709f94c4f24d2c34c
                     }
                 ],
                 "lang": "en"
@@ -128,11 +124,7 @@
                 },
                 "uuid": [
                     {
-<<<<<<< HEAD
                         "value": "edf090de-5785-46fc-8b96-60ff739ad9f7"
-=======
-                        "value": "6f1a0beb-c950-4027-80f1-3d5fb6ca32ca"
->>>>>>> 55ae7eb6be8741f68bcfa43709f94c4f24d2c34c
                     }
                 ]
             }
@@ -347,11 +339,7 @@
     ],
     "changed": [
         {
-<<<<<<< HEAD
             "value": "1467799041",
-=======
-            "value": "1467825479",
->>>>>>> 55ae7eb6be8741f68bcfa43709f94c4f24d2c34c
             "lang": "en"
         }
     ],
@@ -369,11 +357,7 @@
     ],
     "revision_timestamp": [
         {
-<<<<<<< HEAD
             "value": "1467799041"
-=======
-            "value": "1467825479"
->>>>>>> 55ae7eb6be8741f68bcfa43709f94c4f24d2c34c
         }
     ],
     "revision_translation_affected": [
