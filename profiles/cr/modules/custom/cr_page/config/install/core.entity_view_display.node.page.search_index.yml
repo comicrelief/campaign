@@ -1,10 +1,10 @@
-uuid: 566c8974-9d52-44f3-9a00-df82dbe8bf3d
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.node.search_index
     - field.field.node.page.body
+    - field.field.node.page.field_page_meta_tags
     - node.type.page
   module:
     - ds
@@ -44,8 +44,6 @@ third_party_settings:
   panelizer:
     enable: false
     custom: false
-_core:
-  default_config_hash: xW1AJxzxzoa8DMPBJx2H-ApRhObIeuXP3Qbzu8RgMr8
 id: node.page.search_index
 targetEntityType: node
 bundle: page
@@ -66,4 +64,5 @@ content:
     weight: 10
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_page_meta_tags: true
