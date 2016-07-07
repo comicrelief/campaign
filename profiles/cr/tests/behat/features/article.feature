@@ -49,7 +49,7 @@ Feature: Article
     | field_article_publish_date | 2015-02-08 17:45:00                       |
     | field_article_intro | Since the charity was founded 30 years ago, with more than £78m raised. |
     | body | Comic Relief founder Richard Curtis said he was "enormously proud" of the charity's achievements. |
-    | field_article_image | http://lorempixel.com/400/200/sports |
+    | field_article_image | http://dummyimage.com/400x4:3 |
     | field_youtube_url | https://youtu.be/JCUFs2qJ1bs |
     | field_article_tags | Fundraising |
     Then I should see "Richard Curtis"
@@ -60,7 +60,7 @@ Feature: Article
     | field_article_publish_date | 2015-02-08 17:45:00                       |
     | field_article_intro | Audiences across the UK are in for a night of first-class entertainment.  |
     | body | A one-off Luther special will be screened, with Idris Elba starring alongside Lenny Henry, Rio Ferdinand, Denise Lewis, Louis Smith, Ian Wright and David Haye. |
-    | field_article_image | http://lorempixel.com/400/200/nature |
+    | field_article_image | http://dummyimage.com/400x4:3 |
     | field_article_tags | Fundraising |
     Then I should see "Luther"
     And I should see "Keep up with all the news"
