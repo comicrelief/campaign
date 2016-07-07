@@ -9,14 +9,8 @@ field_name: field_single_msg_bg
 entity_type: paragraph
 type: list_string
 settings:
-  allowed_values:
-    -
-      value: bg--white
-      label: White
-    -
-      value: bg--cream-grey
-      label: Cream-Grey
-  allowed_values_function: ''
+  allowed_values: null
+  allowed_values_function: 'cr_single_msg_field_single_msg_bg'
 module: options
 locked: false
 cardinality: 1
