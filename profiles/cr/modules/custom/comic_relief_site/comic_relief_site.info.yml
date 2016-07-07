@@ -3,6 +3,7 @@ description: 'Provides site components.'
 type: module
 core: 8.x
 dependencies:
+  - campaign_base
   - block
   - block_content
   - ckeditor
