@@ -1,7 +1,7 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/paragraph\/7?_format=hal_json"
+            "href": "http:\/\/default\/paragraph\/17?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/single_msg"
@@ -25,7 +25,7 @@
     },
     "id": [
         {
-            "value": "7"
+            "value": "17"
         }
     ],
     "uuid": [
@@ -35,7 +35,7 @@
     ],
     "revision_id": [
         {
-            "value": "7"
+            "value": "17"
         }
     ],
     "type": [
