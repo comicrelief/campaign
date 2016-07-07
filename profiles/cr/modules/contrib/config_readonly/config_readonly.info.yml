@@ -1,0 +1,11 @@
+name: 'Configuration Read-only'
+type: module
+description: 'Enables making the active configuration store read-only to prevent configuration changes on a Drupal site.'
+package: Configuration
+# core: 8.x
+
+# Information added by Drupal.org packaging script on 2016-01-28
+version: '8.x-1.0-beta2'
+core: '8.x'
+project: 'config_readonly'
+datestamp: 1453940341

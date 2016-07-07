@@ -37,6 +37,12 @@
             },
             {
                 "href": "http:\/\/default\/paragraph\/1?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/default\/paragraph\/5?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/default\/paragraph\/6?_format=hal_json"
             }
         ]
     },
@@ -52,7 +58,7 @@
     ],
     "vid": [
         {
-            "value": "59"
+            "value": "62"
         }
     ],
     "langcode": [
@@ -85,7 +91,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "917f3901-db99-4814-a223-b35641dbaf3f"
+                        "value": "66d7846b-dbbf-4a20-9b2c-b0f27ef9ba43"
                     }
                 ],
                 "lang": "en"
@@ -103,7 +109,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "51c8df48-fb53-43e3-a61b-072698bc9669"
+                        "value": "096c9fdc-fd1b-4374-b266-8228326e21f7"
                     }
                 ]
             }
@@ -196,6 +202,36 @@
                         "value": "35669b01-a4f9-4613-ab04-4fd16d7acb38"
                     }
                 ]
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/paragraph\/5?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cr_single_message_row"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "d5a7a37e-7d07-4145-bca9-9cbe4a97c5f9"
+                    }
+                ]
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/paragraph\/6?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cr_single_message_row"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "9340e943-1f61-402a-a96e-21276fe1e7ab"
+                    }
+                ]
             }
         ]
     },
@@ -213,7 +249,7 @@
     ],
     "changed": [
         {
-            "value": "1463755825",
+            "value": "1467205083",
             "lang": "en"
         }
     ],
@@ -231,7 +267,7 @@
     ],
     "revision_timestamp": [
         {
-            "value": "1463755825"
+            "value": "1467205083"
         }
     ],
     "revision_translation_affected": [
@@ -262,6 +298,11 @@
     "field_landing_copy_position_alig": [
         {
             "value": "promo-header__content-inner--centre"
+        }
+    ],
+    "field_landing_meta_tags": [
+        {
+            "value": "a:1:{s:8:\"referrer\";s:11:\"no-referrer\";}"
         }
     ],
     "field_svg_body_title": [
