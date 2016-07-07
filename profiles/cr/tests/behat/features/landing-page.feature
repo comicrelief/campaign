@@ -1,7 +1,7 @@
 Feature: Landing-page
   Check a landing page and make sure that it contains the mentioned paragraphs
 
- @api
+  @api
   Scenario: Landing-page /fundraise
     Given I am on "/fundraise"
     Then I should see "THE COUNTDOWN IS ON"
@@ -12,6 +12,14 @@ Feature: Landing-page
     And I should see "Ready to go?"
     And I should see "All that's left to do is pre-order your FREE Fundraising Pack"
     And I should see the link "Pre-order"
+
+  @api
+  Scenario: Check metatags for landing pages
+    Given I am on "/fundraise"
+    Then the metatag attribute "title" should contain the value "Fundraise"
+    And the metatag property "og:title" should contain the value "Fundraise"
+    And the metatag property "og:type" should have the value "article"
+    And the metatag property "og:url" should contain the value "fundraise"
 
   @api
   Scenario: Create landing page node

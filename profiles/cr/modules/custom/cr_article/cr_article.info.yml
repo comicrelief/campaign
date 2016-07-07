@@ -49,3 +49,4 @@ config_devel:
   - ds.field.related_news
   - rdf.mapping.node.article
   - rdf.mapping.taxonomy_term.tags
+  - metatag.metatag_defaults.node__article
