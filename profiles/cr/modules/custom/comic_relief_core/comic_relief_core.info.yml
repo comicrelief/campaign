@@ -8,6 +8,7 @@ dependencies:
   - contact
   - cr_content_wall
   - file
+  - focal_point
   - image
   - menu_link_content
   - node
