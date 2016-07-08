@@ -25,3 +25,25 @@ function cr_install() {
 function cr_update_8001() {
   \Drupal::service('module_installer')->install(['config_readonly']);
 }
+
+/**
+ * Implements hook_install_tasks().
+ */
+function cr_install_tasks($install_state){
+  $tasks = array(
+    'cr_module_install' => array(
+      'display_name' => st('Site config'),
+      'display' => FALSE,
+      'type' => 'normal'
+    ),
+  );
+
+  return $tasks;
+}
+
+/**
+ * Cleanup install task.
+ */
+function cr_module_install() {
+  \Drupal::service('module_installer')->install(['comic_relief_site']);
+}
