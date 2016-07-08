@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: single_msg_md
+label: 'Single Msg - MD'
+effects:
+  d3e5b7d4-94b3-4ff3-b3f4-89deed1c0d71:
+    uuid: d3e5b7d4-94b3-4ff3-b3f4-89deed1c0d71
+    id: image_scale
+    weight: 1
+    data:
+      width: 853
+      height: null
+      upscale: false
