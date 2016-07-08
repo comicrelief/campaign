@@ -22,6 +22,9 @@
           description="Build all project dependencies. (gems, composer)">
     <exec logoutput="true" passthru="true" command="composer install --no-progress --prefer-dist"/>
   </target>
+  <target name="build:prepare:no-gems" depends="test:composer:install" description="Build all project dependencies using composer but without gems, for Travis CI">
+    <exec logoutput="true" passthru="true" command="composer install --no-progress --prefer-dist"/>
+  </target>
   <target name="build:prepare:dev" depends="grunt:dependencies:dev, test:composer:install"
           description="Build all project dependencies. (gems, composer)">
     <exec logoutput="true" passthru="true" command="composer install --no-progress --prefer-dist"/>

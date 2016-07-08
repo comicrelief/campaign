@@ -8,6 +8,6 @@ export VCAP_SERVICES="{\"user-provided\":[{\"credentials\":{\"hostname\":\"$DB_H
 export DB_QUERYSTRING="mysql://root:@$DB_HOST:3306/drupaldb"
 export DRUPAL_HASH_SALT="qled1SoV_fRL6cesho4pAjcfGwc5JMqsXbPnwuMKQ1e6HMve5d0SQJ4ukxsF6fHDWDjJlOD_0A"
 
-phing -Ddrush.bin=drush -Ddb.querystring="$DB_QUERYSTRING" build:prepare
+phing -Ddrush.bin=drush -Ddb.querystring="$DB_QUERYSTRING" build:prepare:no-gems
 phing -Ddrush.bin=drush -Ddb.querystring="$DB_QUERYSTRING" build
 phing -Ddrush.bin=drush -Ddb.querystring="$DB_QUERYSTRING" cron
