@@ -2,7 +2,7 @@
   <!-- This should get overidden for secure builds. -->
   <property name="app.password"       override="true" value="admin"/>
   <property name="app.uri"            override="true" value="http://campaign.dev"/>
-  <property name="drush.bin"          override="true" value="${app.dir}bin/drush"/>
+  <property name="drush.bin"          override="true" value="drush"/>
   <property name="grunt.cmd"          override="true" value="build"/>
   <property name="grunt.watch.cmd"    override="true" value="campaign_base"/>
   <property name="c.home"             override="true" value="${app.profile.dir}tests/behat/vendor/"/>
