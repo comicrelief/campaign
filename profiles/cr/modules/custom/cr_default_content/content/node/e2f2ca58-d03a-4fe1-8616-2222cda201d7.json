@@ -30,6 +30,9 @@
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_paragraphs": [
             {
+                "href": "http:\/\/default\/paragraph\/7?_format=hal_json"
+            },
+            {
                 "href": "http:\/\/default\/paragraph\/3?_format=hal_json"
             },
             {
@@ -70,7 +73,7 @@
     ],
     "vid": [
         {
-            "value": "67"
+            "value": "12"
         }
     ],
     "langcode": [
@@ -121,7 +124,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "6f1a0beb-c950-4027-80f1-3d5fb6ca32ca"
+                        "value": "edf090de-5785-46fc-8b96-60ff739ad9f7"
                     }
                 ]
             }
@@ -170,6 +173,21 @@
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_paragraphs": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/paragraph\/7?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cr_cards"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "1e70465d-6f84-4109-be4f-fbd72716a133"
+                    }
+                ]
+            },
             {
                 "_links": {
                     "self": {
@@ -321,7 +339,7 @@
     ],
     "changed": [
         {
-            "value": "1467825479",
+            "value": "1467799041",
             "lang": "en"
         }
     ],
@@ -339,7 +357,7 @@
     ],
     "revision_timestamp": [
         {
-            "value": "1467825479"
+            "value": "1467799041"
         }
     ],
     "revision_translation_affected": [
