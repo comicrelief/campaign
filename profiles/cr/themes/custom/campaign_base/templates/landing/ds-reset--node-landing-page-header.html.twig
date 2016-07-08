@@ -1,6 +1,10 @@
+{% set layoutClass = field_landing_feature_layout['#items'].value ? 'promo-header__header--feature' : '' %}
 {% set desk_img = node.field_landing_image.entity.fileuri %}
 {% set mobile_img = node.field_landing_image_mobile.entity.fileuri %}
-{% set header_class = [field_landing_background_colour['#items'].value, 'promo-header__header'] %}
+{% set header_class = [
+	field_landing_background_colour['#items'].value, 
+	'promo-header__header', layoutClass]
+%}
 {% set copy_position = field_landing_copy_position_alig['#items'].value %}
 
 <div class="promo-header contextual-region">
