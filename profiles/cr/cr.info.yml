@@ -69,7 +69,7 @@ dependencies:
 
   # Custom modules
   - comic_relief_core
-  - comic_relief_site
+  #- comic_relief_site
   - cr_layout
   - cr_page
   - cr_teaser
