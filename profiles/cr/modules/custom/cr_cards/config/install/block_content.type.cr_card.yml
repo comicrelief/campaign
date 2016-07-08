@@ -2,6 +2,6 @@ langcode: en
 status: true
 dependencies: {  }
 id: cr_card
-label: 'Content Card'
+label: Card
 revision: 0
 description: 'Content cards are referenced within the Cards Row paragraph type.'
