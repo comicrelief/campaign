@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.landing.body
     - field.field.node.landing.field_landing_background_colour
     - field.field.node.landing.field_landing_copy_position_alig
+    - field.field.node.landing.field_landing_feature_layout
     - field.field.node.landing.field_landing_image
     - field.field.node.landing.field_landing_image_mobile
     - field.field.node.landing.field_landing_meta_tags
@@ -219,5 +220,6 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_landing_feature_layout: true
   field_landing_meta_tags: true
   field_svg_body_title: true
