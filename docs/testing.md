@@ -12,3 +12,11 @@ Now, launch selenium
 ### Running tests
 
 	phing test
+
+### Typical Behat steps
+
+Try adding `And I break` to your step definitions to see tests interactively. Don't forget also to add `@javascript` so the scenario runs using Selenium
+
+To just target a specific test, run this from within `profiles/cr/tests/behat`
+
+	/vendor/bin/behat features/article.feature --tags="@javascript"
