@@ -68,7 +68,7 @@ dependencies:
   - imagemagick
 
   # Custom modules
-  - comic_relief_core
+  #- comic_relief_core
   #- comic_relief_site
   - cr_layout
   - cr_page
