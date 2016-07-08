@@ -13,9 +13,9 @@ dependencies:
   - menu_link_content
   - node
   - page_manager
+  - paragraphs
   - responsive_image
   - shortcut
-  - system
   - taxonomy
   - user
 package: 'Comic Relief'
