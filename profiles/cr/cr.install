@@ -32,7 +32,7 @@ function cr_update_8001() {
 function cr_install_tasks($install_state){
   $tasks = array(
     'cr_module_install' => array(
-      'display_name' => st('Site config'),
+      'display_name' => t('Site config'),
       'display' => FALSE,
       'type' => 'normal'
     ),
