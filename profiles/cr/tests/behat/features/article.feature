@@ -42,6 +42,12 @@ Feature: Article
     And the metatag property "og:url" should contain the value "whats-going-on/greg-james-begins-his-gregathlon-sport-relief"
 
   @api
+  Scenario: Create news articles using scheduled updates
+    Given I am logged in as a user with the "editor" role
+    And I am on "node/add/article"
+    And I enter "Test Scheduled article" for "edit-title-0-value"
+
+  @api
   Scenario: Create news articles that are linked together via a common tag
     Given a "tags" term with the name "Fundraising"
     When I am viewing a "article" content:
@@ -69,4 +75,5 @@ Feature: Article
     And the cache has been cleared
     And I click "Comic Relief raises £1bn over 30-year existence"
     Then I should see "Celebrities come together for a stellar Night of TV for Sport Relief"
+
 
