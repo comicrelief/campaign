@@ -69,6 +69,28 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
   }
 
   /**
+   * @Then /^(?:|I )enter todays date for "(?P<element>[^"]*)"$/
+   *
+   * @throws \Exception
+   *   If element cannot be found
+   */
+  public function iEnterTodaysDateFor($field) {
+    $date = date("j/m/Y");
+    $this->getSession()->getPage()->fillField($field, $date);
+  }
+
+  /**
+   * @Then /^(?:|I )enter the time for "(?P<element>[^"]*)"$/
+   *
+   * @throws \Exception
+   *   If element cannot be found
+   */
+  public function iEnterTheTimeFor($field) {
+    $time = date("H:i:s", time() + 60);
+    $this->getSession()->getPage()->fillField($field, $time);
+  }
+
+  /**
    * @Then /^the metatag attribute "(?P<attribute>[^"]*)" should have the value "(?P<value>[^"]*)"$/
    *
    * @throws \Exception
