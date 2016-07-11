@@ -1,0 +1,165 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/paragraph\/10?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/single_msg"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/single_msg\/uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/single_msg\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/single_msg\/field_single_msg_img": [
+            {
+                "href": "http:\/\/default\/file\/3341?_format=hal_json"
+            }
+        ]
+    },
+    "id": [
+        {
+            "value": "10"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "7669004a-9241-4e87-9d71-c5fecd8177d2"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": "10"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "single_msg"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/single_msg\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "f3b7682b-5d01-44fb-a1e3-c55994c6e769"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/single_msg\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "f3b7682b-5d01-44fb-a1e3-c55994c6e769"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/single_msg\/field_single_msg_img": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/3341?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "6f87514b-dd1a-4c42-a33c-6c192d5c0d05"
+                    }
+                ],
+                "alt": "05 morph",
+                "title": "",
+                "width": "570",
+                "height": "321"
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1467825424",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1467880074",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1467825424"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "field_single_msg_bg": [
+        {
+            "value": "bg--cream-grey"
+        }
+    ],
+    "field_single_msg_body": [
+        {
+            "value": "<p>Morbi vestibulum volutpat enim. In auctor lobortis lacus. Cras ultricies mi eu turpis hendrerit fringilla. Vivamus quis mi. Quisque ut nisi.<\/p>\r\n\r\n<p><a class=\"link link--inline-red\" href=\"http:\/\/www.google.com\" id=\"\" rel=\"\" target=\"\" title=\"Google\">Linko<\/a><\/p>\r\n",
+            "format": "full_html"
+        }
+    ],
+    "field_single_msg_feat": [
+        {
+            "value": "1"
+        }
+    ],
+    "field_single_msg_img_r": [
+        {
+            "value": "1"
+        }
+    ],
+    "field_single_msg_title": [
+        {
+            "value": "Single Msg Featured 16:9 Img R"
+        }
+    ]
+}

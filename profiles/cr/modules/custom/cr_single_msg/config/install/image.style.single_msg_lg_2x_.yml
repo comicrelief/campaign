@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: single_msg_lg_2x_
+label: 'Single Msg - LG (2x)'
+effects:
+  4af8738f-957c-4916-bb56-223017fd45fd:
+    uuid: 4af8738f-957c-4916-bb56-223017fd45fd
+    id: image_scale
+    weight: 1
+    data:
+      width: 1540
+      height: null
+      upscale: false

@@ -70,6 +70,7 @@ $blue:           #00c2df;
 $green:          #a3d55f;
 $aqua:           #75e1c2;
 $teal:           #00a9b0;
+$dark-orchid:		 #4e3163;
 
 /* hover  */
 $white-hover:    rgba(255, 255, 255, 0.8);
@@ -84,3 +85,11 @@ $green-btn-copy: #2f4f05;
 $half-price-yellow: #ffd86b;
 $red-dark:          #b42d4e;
 $green-dark:        #567d5c;
+
+// move it to colour and backgrounds scss file (todo)
+
+.bg--dark-orchid {
+	background-color: $dark-orchid;
+}
+/* Single message row background colour, used in June site, to be renamed and updated */
+$cream-grey: #F5F2ED;

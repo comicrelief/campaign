@@ -150,4 +150,5 @@ hidden:
   field_landing_background_colour: true
   field_landing_copy_position_alig: true
   field_landing_image_mobile: true
+  field_landing_meta_tags: true
   field_svg_body_title: true
