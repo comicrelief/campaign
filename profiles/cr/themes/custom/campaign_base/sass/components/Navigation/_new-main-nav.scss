@@ -29,23 +29,26 @@ header[role=banner] {
     ul.menu li {
       &.menu-item--active-trail,
       &:hover {
-      &:after {
-        top: 85px;
-        left: 60%;
-        border: solid transparent;
-        content: " ";
-        height: 0;
-        width: 0;
-        position: absolute;
-        pointer-events: none;
-      }
+        a {
+          position: relative;
+          &:after {
+            top: 44px;
+            left: 50%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+          }
 
-      &:after {
-        border-color: rgba(136, 183, 213, 0);
-        border-bottom-color: black;
-        border-width: 15px;
-        margin-left: -15px;
-      }
+          &:after {
+            border-color: rgba(136, 183, 213, 0);
+            border-bottom-color: black;
+            border-width: 15px;
+            margin-left: -15px;
+          }
+        }
       a {
         border-bottom: 2px solid #e4761b;
       }
@@ -54,9 +57,6 @@ header[role=banner] {
         top: 111px;
         padding: 0;
           li {
-            &:after {
-              display: none;
-            }
             background: none;
             padding: 0;
             margin: 0;
@@ -66,6 +66,9 @@ header[role=banner] {
               margin-top: 0;
               margin-bottom: 0;
               padding: 16px 20px 11px;
+              &:after {
+                display: none;
+              }
             }
             &:hover,
             &.menu-item--active-trail {
