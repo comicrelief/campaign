@@ -46,13 +46,23 @@ Feature: Article
     Given I am logged in as a user with the "editor" role
     And I am on "node/add/article"
     And I enter "Test Scheduled article" for "edit-title-0-value"
+    And I press "Add new Publishing Date"
+    # And I wait for AJAX loading to finish
+    Then I should see "Update Date/time"
+    And I enter "08/07/2016" for "publishing_date[form][inline_entity_form][update_timestamp][0][value][date]"
+    And I enter "14:30:00" for "publishing_date[form][inline_entity_form][update_timestamp][0][value][time]"
+    And I press "Create Publishing Date"
+    # And I wait for AJAX loading to finish
+    Then I should see "PUBLISHING DATE"
+    And I enter "tag1" for "edit-field-article-tags-target-id"
+    And I break
+    And press "Save as unpublished"
 
   @api
   Scenario: Create news articles that are linked together via a common tag
     Given a "tags" term with the name "Fundraising"
     When I am viewing a "article" content:
     | title       | Comic Relief raises £1bn over 30-year existence |
-    | field_article_publish_date | 2015-02-08 17:45:00                       |
     | field_article_intro | Since the charity was founded 30 years ago, with more than £78m raised. |
     | body | Comic Relief founder Richard Curtis said he was "enormously proud" of the charity's achievements. |
     | field_article_image | http://dummyimage.com/400x4:3 |

@@ -91,3 +91,4 @@ permissions:
   - 'edit own node__status scheduled updates'
   - 'administer meta tags'
   - 'administer menu'
+  - 'administer nodes'

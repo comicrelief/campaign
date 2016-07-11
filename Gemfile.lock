@@ -207,6 +207,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport (= 4.2.6)
   breakpoint
   compass
   compass-normalize
@@ -234,4 +235,4 @@ RUBY VERSION
    ruby 2.1.5p273
 
 BUNDLED WITH
-   1.12.2
+   1.12.5
