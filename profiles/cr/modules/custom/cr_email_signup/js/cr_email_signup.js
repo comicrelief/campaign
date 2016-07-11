@@ -10,6 +10,7 @@
     hiddenDeviceField: 'device',
     hiddenSourceField: 'source',
     deviceValue: 'DESKTOP',
+    sourceValue: 'HEADER',
    },
 
     attach: function (context, settings) {
@@ -19,11 +20,11 @@
 
       $(_settings.formWrapperClass).once('crEMailSignup').each( function(){
         $(this).addClass("crEMailSignup-processed");
-        _base.checkTouchAndWidth();
+        _base.setDevice(this);
       });
     },
 
-    checkTouchAndWidth: function () {
+    setDevice: function (context) {
 
       var _base = Drupal.behaviors.crEmailSignUp;
       var _settings = _base.settings;
@@ -36,11 +37,27 @@
 
       //Update our default value if we're using a touch device below our screen width limit
       if (_settings.isTouch && _settings.screenWidth < _settings.screenWidthLimit) {
-        _settings.deviceValue = "MOBILE";
+        _settings.deviceValue = 'MOBILE';
       }
 
       // Use this value to set the hidden field
       $('input[name='+_settings.hiddenDeviceField+'').val(_settings.deviceValue);
+
+      _base.setSource(context);
+    },
+    
+    setSource: function (context) {
+
+      var _base = Drupal.behaviors.crEmailSignUp;
+      var _settings = _base.settings;
+
+      // Check the type of ESU
+      if ( $(context).hasClass('block--cr-email-signup--banner') ) {
+        _settings.sourceValue = 'BANNER';
+      }
+
+      $('input[name='+_settings.hiddenSourceField+'').val(_settings.sourceValue);
+      
     },
   };
 })(jQuery);
