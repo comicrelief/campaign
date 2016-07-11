@@ -39,30 +39,7 @@ to import everything from `cr_article/config/install` into the database.
 
 #### Managing default content
 
-Default content can be exported as part of the `cr_default_content` module.
-
-To export content, you need to create a node, taxonomy term, or generally any type of entity first via the UI. Once created, grab the entity id and entity type, and run
-
-	> drush dcer node 12 --folder=profiles/cr/modules/custom/cr_default_content/content
-
-This will export the node plus all references (such as images, files, taxonomy terms, etc.) and structure this in the `content` folder of `cr_default_content`.
-
-You will need to remove the automatically exported user as this generates problems for the installation.
-
-	> rm -fr profiles/cr/modules/custom/cr_default_content/content/user/
-
-This sometimes creates problems with serial identifiers (e.g. file id 7), as they might have been reused from previous installations. The site install will fail but the problem is easily solved by changing
-
-	"self": {
-		"href": "http:\/\/default\/file\/7?_format=hal_json"
-	},
-
-to
-
-	"self": {
-		"href": "http:\/\/default\/file\/7777?_format=hal_json"
-	},
-
+See [Exporting default content](default-content.md) for a way to export content using Drush and using Phing.
 
 ### Using Phing
 
@@ -73,16 +50,6 @@ Run
 	phing config:export
 
 to export all config in one go.
-
-#### Managing default content
-
-To update one node at a time, run
-
-	phing content:export:save -Dtype=node -Did=69
-
-If you want to update the content or you added the uuid manually in `cr_default_content.info.yml`, you only have to run
-
-	phing content:export
 
 ### Front End
 

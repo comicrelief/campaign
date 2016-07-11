@@ -1,0 +1,16 @@
+{% set bg_colour = field_cr_cards_background['#items'][0].value %}
+
+{%
+set classes = [
+'cards',
+'paragraph',
+'contextual-region',
+bg_colour,
+]
+%}
+
+<div{{ attributes.addClass(classes) }}>
+	<div class="cards-wrapper">
+	    {{ field_cr_cards_card_reference }}
+	</div>
+</div>

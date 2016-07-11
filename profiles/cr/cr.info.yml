@@ -79,6 +79,8 @@ dependencies:
   - cr_partner
   - cr_single_message_row_paragraph
   - cr_block_paragraph
+  - cr_single_msg
+  - cr_cards
   #- cr_performance
 
   # Development modules
@@ -175,6 +177,7 @@ config_devel:
   - responsive_image.styles.cw_landscape_image
   - responsive_image.styles.bg_rich_text
   - responsive_image.styles.single_l_r_message_row
+  - responsive_image.styles.single_msg_
 
   # Metatags
   - metatag.metatag_defaults.403

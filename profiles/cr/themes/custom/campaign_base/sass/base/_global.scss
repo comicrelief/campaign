@@ -83,8 +83,18 @@ picture img {
   color: $white;
 }
 // to do: add it to kss style
-#kss-node .kss-section {
-  max-width: 1200px;
+#kss-node {
+  background: #f2f2f2;
+  .kss-section {
+    max-width: 1200px;
+  }
+}
+#kss-node .kss-markup {
+  clear: both;
+}
+#kss-node .kss-modifier__wrapper {
+  float: left;
+  width: 100%;
 }
 // to do: add cookie component
 .cookie-consent.cc_container {

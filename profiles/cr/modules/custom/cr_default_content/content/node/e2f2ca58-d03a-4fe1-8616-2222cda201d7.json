@@ -30,6 +30,9 @@
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_paragraphs": [
             {
+                "href": "http:\/\/default\/paragraph\/7?_format=hal_json"
+            },
+            {
                 "href": "http:\/\/default\/paragraph\/3?_format=hal_json"
             },
             {
@@ -37,6 +40,24 @@
             },
             {
                 "href": "http:\/\/default\/paragraph\/1?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/default\/paragraph\/5?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/default\/paragraph\/6?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/default\/paragraph\/7?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/default\/paragraph\/8?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/default\/paragraph\/9?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/default\/paragraph\/10?_format=hal_json"
             }
         ]
     },
@@ -52,7 +73,7 @@
     ],
     "vid": [
         {
-            "value": "59"
+            "value": "12"
         }
     ],
     "langcode": [
@@ -85,7 +106,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "917f3901-db99-4814-a223-b35641dbaf3f"
+                        "value": "e4e3021e-ed26-49f1-8c74-56ddfd7ee1f9"
                     }
                 ],
                 "lang": "en"
@@ -103,7 +124,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "51c8df48-fb53-43e3-a61b-072698bc9669"
+                        "value": "edf090de-5785-46fc-8b96-60ff739ad9f7"
                     }
                 ]
             }
@@ -155,6 +176,21 @@
             {
                 "_links": {
                     "self": {
+                        "href": "http:\/\/default\/paragraph\/7?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cr_cards"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "1e70465d-6f84-4109-be4f-fbd72716a133"
+                    }
+                ]
+            },
+            {
+                "_links": {
+                    "self": {
                         "href": "http:\/\/default\/paragraph\/3?_format=hal_json"
                     },
                     "type": {
@@ -196,6 +232,96 @@
                         "value": "35669b01-a4f9-4613-ab04-4fd16d7acb38"
                     }
                 ]
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/paragraph\/5?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cr_single_message_row"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "d5a7a37e-7d07-4145-bca9-9cbe4a97c5f9"
+                    }
+                ]
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/paragraph\/6?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cr_single_message_row"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "9340e943-1f61-402a-a96e-21276fe1e7ab"
+                    }
+                ]
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/paragraph\/7?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/single_msg"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "347691c7-329b-4445-8739-72557827bb7d"
+                    }
+                ]
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/paragraph\/8?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/single_msg"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "86558024-7041-490b-b412-746818f82c1a"
+                    }
+                ]
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/paragraph\/9?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/single_msg"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "326a7eb5-3d33-47da-982a-79d335fb9f37"
+                    }
+                ]
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/paragraph\/10?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/single_msg"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "7669004a-9241-4e87-9d71-c5fecd8177d2"
+                    }
+                ]
             }
         ]
     },
@@ -213,7 +339,7 @@
     ],
     "changed": [
         {
-            "value": "1463755825",
+            "value": "1467799041",
             "lang": "en"
         }
     ],
@@ -231,7 +357,7 @@
     ],
     "revision_timestamp": [
         {
-            "value": "1463755825"
+            "value": "1467799041"
         }
     ],
     "revision_translation_affected": [
@@ -262,6 +388,11 @@
     "field_landing_copy_position_alig": [
         {
             "value": "promo-header__content-inner--centre"
+        }
+    ],
+    "field_landing_meta_tags": [
+        {
+            "value": "a:1:{s:8:\"referrer\";s:11:\"no-referrer\";}"
         }
     ],
     "field_svg_body_title": [

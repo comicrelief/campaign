@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: single_msg_sm
+label: 'Single Msg - SM'
+effects:
+  1e86bf83-9a64-451f-98cc-ec23cdad92d2:
+    uuid: 1e86bf83-9a64-451f-98cc-ec23cdad92d2
+    id: image_scale
+    weight: 1
+    data:
+      width: 724
+      height: null
+      upscale: false

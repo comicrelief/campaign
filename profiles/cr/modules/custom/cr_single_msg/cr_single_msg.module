@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Single message row paragraph type.
+ */
+
+use Drupal\Core\Entity\FieldableEntityInterface;
+use Drupal\Core\Field\FieldStorageDefinitionInterface;
+
+/**
+ * Options callback for field_single_msg_bg.
+ *
+ * @see options_allowed_values()
+ */
+function cr_single_msg_field_single_msg_bg(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
+  $values = [
+    'bg--white' => t('White'),
+    'bg--cream-grey' => t('Cream-Grey'),
+  ];
+  return $values;
+}

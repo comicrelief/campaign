@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_cr_cards_background
+field_name: field_cr_cards_background
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: bg--white
+      label: White
+    -
+      value: bg--cream-grey
+      label: Cream-Grey
+    -
+      value: bg--dark-orchid
+      label: Dark-Orchid
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
