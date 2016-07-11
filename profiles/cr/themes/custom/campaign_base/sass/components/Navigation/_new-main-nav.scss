@@ -4,6 +4,8 @@
 //
 // Markup: _new-main-nav.hbs
 //
+// .menu-item--active-trail - Active state
+//
 // Style guide: Navigation.New-Main-nav
 
 header[role=banner] {
@@ -24,6 +26,78 @@ header[role=banner] {
     width: auto;
     padding-top: 20px;
     background: transparent;
+    ul.menu li {
+      &.menu-item--active-trail,
+      &:hover {
+      &:after {
+        top: 85px;
+        left: 60%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+      }
+
+      &:after {
+        border-color: rgba(136, 183, 213, 0);
+        border-bottom-color: black;
+        border-width: 15px;
+        margin-left: -15px;
+      }
+      a {
+        border-bottom: 2px solid #e4761b;
+      }
+      > ul {
+        display: block;
+        top: 111px;
+        padding: 0;
+          li {
+            &:after {
+              display: none;
+            }
+            background: none;
+            padding: 0;
+            margin: 0;
+            float: left;
+            width: 192px;
+            a {
+              margin-top: 0;
+              margin-bottom: 0;
+              padding: 16px 20px 11px;
+            }
+            &:hover,
+            &.menu-item--active-trail {
+              background: #4b4b4b;
+            }
+            a {
+              border-bottom: 2px solid transparent;
+            }
+          }
+          ul {
+            top: 50px;
+          }
+        }
+      }
+      > ul {
+        display: none;
+        position: absolute;
+        top: 0;
+        z-index: 999;
+        width: 100%;
+        left: 0;
+        background: black;
+        padding: 0px 10px;
+        a {
+          color: white;
+          font-size: 16px;
+        }
+        li {
+          position: relative;
+        }
+      }
+    }
   }
   ul {
     float: right;
@@ -51,7 +125,7 @@ header[role=banner] {
         @include transition(border-bottom 180ms);
         @include breakpoint($screen-md, $no-query: true) {
           padding: 20px 0 4px;
-          font-size: 18px;
+          font-size: 14px;
         }
         &:hover {
           text-decoration: none;
@@ -59,7 +133,7 @@ header[role=banner] {
           background: #acaaa9;
 
           @include breakpoint($screen-md, $no-query: true) {
-            border-bottom: 2px solid $black;
+            border-bottom: 2px solid #e4761b;
             background: transparent;
           }
         }
@@ -70,35 +144,10 @@ header[role=banner] {
 
           @include breakpoint($screen-md, $no-query: true) {
             color: $black;
-            border-bottom: 2px solid $black;
+            border-bottom: 2px solid #e4761b;
             background: transparent;
           }
         }
-      }
-    }
-  }
-  ul.menu li > ul {
-    display: none;
-    position: absolute;
-    top: 0;
-    z-index: 999;
-    width: 100%;
-    left: 0;
-    background: black;
-    padding: 0px 10px;
-    a {
-      color: white;
-    }
-    li {
-      position: relative;
-    }
-  }
-  ul.menu li:hover {
-    > ul {
-      display: block;
-      top: 111px;
-      ul {
-        top: 100px;
       }
     }
   }
