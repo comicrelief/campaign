@@ -7,6 +7,9 @@
     isTouch: false,
     screenWidth: 0,
     screenWidthLimit: 1200,
+    hiddenDeviceField: 'device',
+    hiddenSourceField: 'source',
+    deviceValue: 'DESKTOP',
    },
 
     attach: function (context, settings) {
@@ -31,13 +34,13 @@
       // Check the size of the device screen itself, rather than the browser window
       _settings.screenWidth = window.screen.width;
 
+      //Update our default value if we're using a touch device below our screen width limit
       if (_settings.isTouch && _settings.screenWidth < _settings.screenWidthLimit) {
-        console.log("Probably a touch device", window.screen.width);
-        // Do touch-device related things
-      } else {
-        console.log("Probably not a touch device", window.screen.width);
-        // Do non touch-device related things
+        _settings.deviceValue = "MOBILE";
       }
+
+      // Use this value to set the hidden field
+      $('input[name='+_settings.hiddenDeviceField+'').val(_settings.deviceValue);
     },
   };
 })(jQuery);
