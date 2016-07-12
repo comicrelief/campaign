@@ -1,24 +1,25 @@
-name: News article
-type: module
+name: 'News article'
 description: 'Defines a News article content type.'
-package: Comic Relief
-# version: VERSION
+type: module
 core: 8.x
 dependencies:
-  - field
+  - ctools
   - datetime
-  - text
-  - options
-  - image
-  - file
-  - views
-  - taxonomy
-  - youtube
-  - metatag
-  - pathauto
-  - panelizer
-  - responsive_image
   - ds
-  - rdf
+  - field
+  - file
+  - image
   - menu_ui
-  - filter
+  - metatag
+  - node
+  - panelizer
+  - path
+  - pathauto
+  - rdf
+  - responsive_image
+  - taxonomy
+  - text
+  - user
+  - views
+  - youtube
+package: 'Comic Relief'

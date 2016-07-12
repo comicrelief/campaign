@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Article Taxonomy Test'
+vid: article_taxonomy_test
+description: ''
+hierarchy: 0
+weight: 0

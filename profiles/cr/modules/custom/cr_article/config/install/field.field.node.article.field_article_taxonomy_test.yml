@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_article_taxonomy_test
+    - node.type.article
+    - taxonomy.vocabulary.article_taxonomy_test
+id: node.article.field_article_taxonomy_test
+field_name: field_article_taxonomy_test
+entity_type: node
+bundle: article
+label: 'Article Taxonomy Test'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      article_taxonomy_test: article_taxonomy_test
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
