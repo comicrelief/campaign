@@ -10,6 +10,22 @@ use Behat\Gherkin\Node\TableNode;
  * Defines application features from the specific context.
  */
 class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptingContext {
+  /**
+   * Use a 'spins' function to continuously check if a statement is true
+   */
+  public function spins($closure, $tries = 70) {
+    for ($i=0; $i <= $tries; $i++) { 
+      try {
+        $closure();
+        return;
+      } catch (\Exception $e) {
+        if ($i == $tries) {
+          throw $e;
+        }
+      }
+      sleep(1);
+    }
+  }
 
   /**
    * @Then I should see the correct sitemap elements
@@ -88,6 +104,24 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
   public function iEnterTheTimeFor($field) {
     $time = date("H:i:s", time() + 60);
     $this->getSession()->getPage()->fillField($field, $time);
+  }
+
+  /**
+   * @Given /^(?:|I )wait for update time$/
+   *
+   * Wait for scheduled update time, then run cron
+   */
+  public function iWaitForUpdateTime() {
+
+    $currentTime = time();
+    $updateTime = time() + 60;
+
+    $this->spins(function($currentTime, $updateTime) {
+      
+      if ($updateTime <= $currentTime) {
+        throw new Exception("Article is not ready to be released yet CT:" . $currentTime . "UT:" . $updateTime, 1);
+      }
+    });
   }
 
   /**

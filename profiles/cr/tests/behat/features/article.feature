@@ -41,7 +41,7 @@ Feature: Article
     And the metatag property "og:image" should contain the value "news/2016-02/greg_james_gregathlon_belfast_and_so_it_begins"
     And the metatag property "og:url" should contain the value "whats-going-on/greg-james-begins-his-gregathlon-sport-relief"
 
-  @api 
+  @api @matt
   Scenario: Create news articles using scheduled updates
     Given I am logged in as a user with the "editor" role
     And I am on "node/add/article"
@@ -57,6 +57,20 @@ Feature: Article
     Then I should see "PUBLISHING DATE"
     And I enter "tag1" for "edit-field-article-tags-target-id"
     And press "Save as unpublished"
+    # check the content cannot be seen if logged out
+    Given I am not logged in
+    And I am on "whats-going-on"
+    Then I should not see "Test Scheduled article"
+    # log back in, wait till content should be published
+    Given I am logged in as a user with the "editor" role
+    And I wait for update time
+    # run cron and clear caches
+    And I run cron
+    And the cache has been cleared
+    # logout and see the article loaded
+    Given I am not logged in
+    And I am on "whats-going-on"
+
 
   @api
   Scenario: Create news articles that are linked together via a common tag
