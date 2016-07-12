@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 50_width_image_lg_2x_
+label: '50% Width Image - LG (2x)'
+effects:
+  aeba782a-c133-4e11-9507-d56d4f4c0922:
+    uuid: aeba782a-c133-4e11-9507-d56d4f4c0922
+    id: image_scale
+    weight: 1
+    data:
+      width: 1200
+      height: null
+      upscale: false

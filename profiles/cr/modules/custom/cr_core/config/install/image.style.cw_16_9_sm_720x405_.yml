@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: cw_16_9_sm_720x405_
+label: 'CW 16:9 SM 720x405 (2x)'
+effects:
+  b5b43f61-91bd-4683-9335-2436d87457d0:
+    uuid: b5b43f61-91bd-4683-9335-2436d87457d0
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1440
+      height: 810

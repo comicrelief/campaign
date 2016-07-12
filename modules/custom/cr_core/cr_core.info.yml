@@ -1,0 +1,24 @@
+name: Core
+description: 'Provides core components required by other features.'
+type: module
+core: 8.x
+dependencies:
+  - block
+  - block_content
+  - comic_relief_core
+  - contact
+  - cr_content_wall
+  - cr_single_msg
+  - file
+  - focal_point
+  - image
+  - menu_link_content
+  - node
+  - page_manager
+  - paragraphs
+  - responsive_image
+  - shortcut
+  - system
+  - taxonomy
+  - user
+package: 'Comic Relief'
