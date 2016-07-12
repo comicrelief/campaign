@@ -25,6 +25,13 @@ function cr_install() {
 function cr_update_8001() {
   \Drupal::service('module_installer')->install(['config_readonly']);
 }
+/**
+ * Install cr_core and cr_site features
+ */
+function cr_update_8002() {
+  \Drupal::service('module_installer')->install(['cr_core']);
+  \Drupal::service('module_installer')->install(['cr_site']);
+}
 
 /**
  * Implements hook_install_tasks().
