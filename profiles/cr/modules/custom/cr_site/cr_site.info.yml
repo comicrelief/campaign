@@ -6,7 +6,6 @@ dependencies:
   - block
   - block_content
   - ckeditor
-  - comic_relief_site
   - contact
   - cr_core
   - editor

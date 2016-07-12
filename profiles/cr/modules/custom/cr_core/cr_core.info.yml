@@ -5,7 +5,6 @@ core: 8.x
 dependencies:
   - block
   - block_content
-  - comic_relief_core
   - contact
   - cr_content_wall
   - cr_single_msg
