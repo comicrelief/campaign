@@ -3,7 +3,7 @@
 ### Installation
 
 	brew install selenium-server-standalone
-	... (add in chrome driver, Matt?)
+	brew install chromedriver
 	
 Now, launch selenium
 
@@ -12,6 +12,12 @@ Now, launch selenium
 ### Running tests
 
 	phing test
+	
+### List step definitions
+
+  phing test:dl
+  or
+  ./vendor/bin/behat -dl
 
 ### Typical Behat steps
 
