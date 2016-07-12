@@ -1,12 +1,12 @@
-// Single Message for Sept
+// Single Message 
 //
-// This is a Single Message row for Sept
+// This is the Single Message row
 //
 // Markup: _single-msg.hbs
 //
 // .single-msg--image-right  - Image on right, copy on left
 //
-// Style guide: Single Message for Sept
+// Style guide: Single Message
 
 
 /* Variables, to move  */
@@ -97,9 +97,6 @@ $row-padding--md: 60px;
           font-size: 18px;
         }
         a.btn {
-          background-color: #67fdd9;
-          color: black;
-          font-weight: bold;
           display: block;
           margin: 0 auto 20px;
           width: 100%;
@@ -172,6 +169,13 @@ $row-padding--md: 60px;
           left: 0;
           @include translateY(-50%);
           text-align: center;
+
+          /* Centre any buttons that get added
+           * (should only be inline links
+           * but just in case) */
+          .single-msg__body a.btn{
+            margin: 0 auto 20px;
+          }
         }
       }
     }
