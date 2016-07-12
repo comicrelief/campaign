@@ -101,10 +101,16 @@ class SignUp extends FormBase {
     $form['steps']['device'] = [
       '#name' => 'device',
       '#type' => 'hidden',
+      '#attributes' => array(
+        'id' => 'esu-device',
+      )
     ];
     $form['steps']['source'] = [
       '#name' => 'source',
       '#type' => 'hidden',
+      '#attributes' => array(
+        'id' => 'esu-source',
+      )
     ];
 
     $form['steps']['step1'] = [

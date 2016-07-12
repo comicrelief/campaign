@@ -5,3 +5,4 @@ cr_email_signup:
   dependencies:
     - core/jquery
     - core/modernizr
+    - campaign_base/platform

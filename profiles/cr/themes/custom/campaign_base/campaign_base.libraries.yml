@@ -13,3 +13,7 @@ global-js:
     - core/modernizr
     - core/jquery.ui
     - core/jquery.ui.selectmenu
+
+platform:
+  js:
+    libraries/platform/platform.min.js: {}
