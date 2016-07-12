@@ -9,3 +9,4 @@ Containing the partner content type and some default content.
 |`field_partner_logo`|`file`|Image logo|
 |`field_partner_category`|`taxonomy_term`|Terms to group the partners|
 |`field_partner_website`|`link`|Partner website|
+|`field_partner_external`|`boolean`|Convert to external link|
