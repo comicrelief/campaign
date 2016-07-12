@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies: {  }
+id: anonymous
+label: 'Anonymous user'
+weight: 0
+is_admin: false
+permissions:
+  - 'access content'
+  - 'view files'
+  - 'use text format restricted_html'
+  - 'download any audio files'
+  - 'download own audio files'
+  - 'restful get entity:node'
+  - 'view search api pages'
