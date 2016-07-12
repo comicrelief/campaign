@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: single_msg_sm_2x_
+label: 'Single Msg - SM (2x)'
+effects:
+  a67d2479-c457-4542-9ace-717b3c55ef47:
+    uuid: a67d2479-c457-4542-9ace-717b3c55ef47
+    id: image_scale
+    weight: 1
+    data:
+      width: 1448
+      height: null
+      upscale: false

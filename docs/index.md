@@ -6,3 +6,4 @@
 * [Development instructions](development.md)
  * [Default content](default-content.md)
  * [Updating modules](updating-modules.md)
+* [Testing](testing.md)
