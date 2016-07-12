@@ -30,6 +30,7 @@
   <target name="grunt:build" description="Generate all compiled Sass and JS files.">
     <exec dir="${app.profile.dir}" logoutput="true" passthru="true"
           checkreturn="true" command="bundle exec grunt ${grunt.cmd}"/>
+    <phingcall target="cache:clear"/>
   </target>
   <target name="grunt:watch" description="Generate all compiled Sass and JS files.">
     <exec dir="${app.site.theme}" logoutput="true" passthru="true"
