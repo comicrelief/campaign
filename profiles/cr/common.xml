@@ -152,8 +152,6 @@
   <target name="db" description="Get and restore DB from S3 backup">
     <phingcall target="db:get"/>
     <phingcall target="db:restore"/>
-    <phingcall target="dev-mode:enable"/>
-    <phingcall target="login"/>
   </target>
   <target name="db:get"
           description="Gets DB from specified environment">
