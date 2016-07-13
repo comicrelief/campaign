@@ -1,5 +1,7 @@
 ## Behat tests
 
+The main documentation for testing can be found [here][docs].
+
 To set up Behat tests to run locally, run:
 ```
 	composer install
@@ -26,8 +28,10 @@ have this in mind when you edit fixture content.
 ## Tags
 
 * @ajax : test ajax content
-* @frontend : related with FE
-* @backend : related with BE
+* @content : test functionality with the module default_content
+* @functionality : test functionality without default_content
 * @anonymous : related with users without permissions
 * @editor : only for CR members
 * @admin : only for developers
+
+[docs]: ../../../../docs/testing.md
