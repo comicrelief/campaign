@@ -118,9 +118,9 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
    */
   public function iWaitForUpdateTime() {
     $this->spin(function($endTime) {
-        if (time() >= $endTime) {
-          return true;
-        }
+      if (time() >= $endTime) {
+        return true;
+      }
     });
   }
 
