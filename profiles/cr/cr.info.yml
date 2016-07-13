@@ -51,6 +51,7 @@ dependencies:
   - entity_browser
   - embed
   - entity_embed
+  - video_embed_field
   #- url_embed
   - metatag_open_graph
   - pathauto
