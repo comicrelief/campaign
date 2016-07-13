@@ -21,3 +21,4 @@ dependencies:
   - responsive_image
   - text
   - user
+package: 'Comic Relief'

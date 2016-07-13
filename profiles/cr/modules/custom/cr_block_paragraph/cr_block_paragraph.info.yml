@@ -1,7 +1,9 @@
-name: Block Reference Paragraph type
-type: module
+name: 'Block Reference Paragraph type'
 description: 'Defines paragraph type to allow blocks to be referenced.'
-package: Comic Relief
+type: module
 core: 8.x
 dependencies:
-  - entity_reference_revisions
+  - block
+  - field
+  - paragraphs
+package: 'Comic Relief'

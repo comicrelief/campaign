@@ -21,3 +21,4 @@ dependencies:
   - user
   - views
   - youtube
+package: 'Comic Relief'
