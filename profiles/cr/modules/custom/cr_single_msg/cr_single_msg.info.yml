@@ -1,8 +1,13 @@
-name: CR Single Msg
+name: 'CR Single Msg'
+description: 'Contains config for the Single Message Row Paragraph type.'
 type: module
-description: Contains config for the Single Message Row Paragraph type.
 core: 8.x
-package: Comic Relief
 dependencies:
+  - field
+  - file
+  - image
+  - options
   - paragraphs
-  - entity_reference_revisions
+  - responsive_image
+  - text
+package: 'Comic Relief'

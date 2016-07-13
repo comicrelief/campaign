@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: single_msg_md_2x_
+label: 'Single Msg - MD (2x)'
+effects:
+  4eb3a49d-27f7-4ceb-b646-b562b7341667:
+    uuid: 4eb3a49d-27f7-4ceb-b646-b562b7341667
+    id: image_scale
+    weight: 1
+    data:
+      width: 1706
+      height: null
+      upscale: false
