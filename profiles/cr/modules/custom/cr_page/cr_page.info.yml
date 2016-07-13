@@ -9,6 +9,7 @@ dependencies:
   - node
   - panelizer
   - path
+  - pathauto
   - rdf
   - text
   - user
