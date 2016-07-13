@@ -170,6 +170,16 @@
     <exec checkreturn="true" logoutput="true" passthru="true"
       command="${drush.bin} cr"/>
   </target>
+  <target name="db:local:dump"
+          description="Dump local database">
+    <exec checkreturn="true" logoutput="true" passthru="true"
+      command="${drush.bin} sql-dump --skip-tables-key=common --ordered-dump --result-file='/tmp/${app.profile.name}.sql'"/>
+  </target>
+  <target name="db:local:restore"
+          description="Restore local database">
+    <exec checkreturn="true" logoutput="true" passthru="true"
+      command="${drush.bin} sql-cli &lt; /tmp/${app.profile.name}.sql --verbose"/>
+  </target>
   <!-- Quality Code template: https://github.com/previousnext/phing-phpqatools/blob/master/build.xml -->
   <target name="info:code" description="Check quality of the custom code"
           depends="info:tools, info:code:cs, info:code:md, info:code:loc, info:code:cbf">

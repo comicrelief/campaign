@@ -199,6 +199,25 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
         ];
         $data['field_single_msg_row_lr_image'] = $this->expandImage($paragraph['image']);
         break;
+      case 'single_msg':
+        $data['field_single_msg_title'] = [
+          'value' => $paragraph['title'],
+        ];
+        $data['field_single_msg_body'] = [
+          'value' => $paragraph['body'],
+          'format' => 'basic_html',
+        ];
+        $data['field_single_msg_img'] = $this->expandImage($paragraph['image']);
+        $data['field_single_msg_bg'] = [
+          'value' => $paragraph['bg_color'],
+        ];
+        $data['field_single_msg_feat'] = [
+          'value' => $paragraph['featured'],
+        ];
+        $data['field_single_msg_img_r'] = [
+          'value' => $paragraph['image_right'],
+        ];
+        break;
     }
 
     $paragraph_item = \Drupal\paragraphs\Entity\Paragraph::create($data);
