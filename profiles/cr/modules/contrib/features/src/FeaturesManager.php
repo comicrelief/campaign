@@ -1087,28 +1087,11 @@ class FeaturesManager implements FeaturesManagerInterface {
           $name = $this->getFullName($config_type, $item_name);
           $data = $this->configStorage->read($name);
 
-          // Compute dependent config.
-          $dependent_list = $dependency_manager->getDependentEntities('config', $name);
-          $dependents = array();
-          foreach ($dependent_list as $config_name => $item) {
-            if (!isset($dependents[$config_name])) {
-              $dependents[$config_name] = $config_name;
-            }
-            // Grab any dependent graph paths.
-            if (isset($item['reverse_paths'])) {
-              foreach ($item['reverse_paths'] as $dependent_name => $value) {
-                if ($value && !isset($dependents[$dependent_name])) {
-                  $dependents[$dependent_name] = $dependent_name;
-                }
-              }
-            }
-          }
-
           $config_collection[$name] = (new ConfigurationItem($name, $data, [
             'shortName' => $item_name,
             'label' => $label,
             'type' => $config_type,
-            'dependents' => array_keys($dependents),
+            'dependents' => array_keys($dependency_manager->getDependentEntities('config', $name)),
             // Default to the install directory.
             'subdirectory' => InstallStorage::CONFIG_INSTALL_DIRECTORY,
             'package' => '',
