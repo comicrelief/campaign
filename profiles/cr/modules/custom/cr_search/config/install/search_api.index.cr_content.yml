@@ -3,7 +3,7 @@ status: true
 dependencies:
   config:
     - search_api.server.cr_database
-    - core.entity_view_mode.node.search_index
+    - core.entity_view_mode.node.full
   module:
     - search_api
     - node
@@ -25,19 +25,21 @@ field_settings:
           article: full
           landing: full
           page: default
-          partner: default
+          partner: full
 processor_settings:
   transliteration:
     plugin_id: transliteration
     settings:
-      fields: {  }
+      fields:
+        - rendered_item
       weights:
         preprocess_index: -10
         preprocess_query: -10
   ignorecase:
     plugin_id: ignorecase
     settings:
-      fields: {  }
+      fields:
+        - rendered_item
       weights:
         preprocess_index: -10
         preprocess_query: -10
