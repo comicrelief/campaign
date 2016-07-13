@@ -1,11 +1,8 @@
-uuid: 7b537ead-2d57-4e9e-9d3c-f5977711124e
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: EPOQoBelne1vOGi0UkdmSvTyuP6iWPnWLljbbFQexqM
 name: 'Comic Relief'
-machine_name: comic_relief
+machine_name: cr
 description: 'Auto-generated bundle from package Comic Relief'
 assignments:
   base:
@@ -16,7 +13,7 @@ assignments:
       content:
         user: user
     enabled: true
-    weight: -2
+    weight: '-2'
   core:
     types:
       config:
@@ -29,10 +26,10 @@ assignments:
         user_role: user_role
         entity_view_mode: entity_view_mode
     enabled: true
-    weight: 5
+    weight: '5'
   dependency:
     enabled: true
-    weight: 15
+    weight: '15'
   exclude:
     types:
       config:
@@ -44,16 +41,16 @@ assignments:
       namespace: 1
       namespace_any: 0
     enabled: true
-    weight: -5
+    weight: '-5'
   existing:
     enabled: true
-    weight: 12
+    weight: '12'
   forward_dependency:
     enabled: true
-    weight: 4
+    weight: '4'
   namespace:
     enabled: true
-    weight: 0
+    weight: '0'
   optional:
     types:
       config:
@@ -65,10 +62,10 @@ assignments:
         tour: tour
         view: view
     enabled: true
-    weight: 0
+    weight: '0'
   packages:
     enabled: true
-    weight: -20
+    weight: '-20'
   profile:
     curated: 1
     standard:
@@ -83,7 +80,7 @@ assignments:
         shortcut_set: shortcut_set
         tour: tour
     enabled: true
-    weight: 10
+    weight: '10'
   site:
     types:
       config:
@@ -96,6 +93,6 @@ assignments:
         editor: editor
         filter_format: filter_format
     enabled: true
-    weight: 7
-profile_name: ''
-is_profile: false
+    weight: '7'
+profile_name: cr
+is_profile: true
