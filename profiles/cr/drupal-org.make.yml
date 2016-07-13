@@ -149,5 +149,5 @@ libraries:
   platform:
     download:
       type: "file"
-      url: https://github.com/bestiejs/platform.js/blob/0870795f0c277a33cc2078a96e74434f89aa11d8/platform.js
+      url: https://raw.githubusercontent.com/bestiejs/platform.js/0870795f0c277a33cc2078a96e74434f89aa11d8/platform.js
     destination: "themes/custom/campaign_base/libraries"

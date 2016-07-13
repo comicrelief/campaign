@@ -16,4 +16,4 @@ global-js:
 
 platform:
   js:
-    libraries/platform/platform.min.js: {}
+    libraries/platform/platform.js: {}
