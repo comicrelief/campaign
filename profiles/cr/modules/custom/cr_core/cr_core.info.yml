@@ -7,6 +7,7 @@ dependencies:
   - block_content
   - contact
   - cr_content_wall
+  - cr_single_msg
   - file
   - focal_point
   - image
@@ -16,6 +17,7 @@ dependencies:
   - paragraphs
   - responsive_image
   - shortcut
+  - system
   - taxonomy
   - user
 package: 'Comic Relief'
