@@ -54,4 +54,5 @@ function cr_install_tasks($install_state){
 function cr_module_install() {
   \Drupal::service('module_installer')->install(['cr_core']);
   \Drupal::service('module_installer')->install(['cr_site']);
+  drush_features_import_all();
 }
