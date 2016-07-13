@@ -8,6 +8,7 @@ dependencies:
   - contact
   - cr_content_wall
   - cr_single_msg
+  - features
   - file
   - focal_point
   - image

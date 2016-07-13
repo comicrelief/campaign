@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: cw_4_3_lg_740x556_2x_
+label: 'CW 4:3 LG 370x278 (2x)'
+effects:
+  b30465eb-0dcf-4acb-9b1c-5374c419d815:
+    uuid: b30465eb-0dcf-4acb-9b1c-5374c419d815
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 740
+      height: 556
