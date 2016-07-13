@@ -11,24 +11,24 @@ use Behat\Gherkin\Node\TableNode;
  */
 class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptingContext {
   /**
-   * Use a 'spins' function to continuously check if a statement is true
+   * Use a 'spin' function to continuously check if a statement is true
    */
   public function spin ($lambda, $wait = 70)
   {
-      $endTime = time() + 60;
-      for ($i = 0; $i < $wait; $i++)
-      {
-          try {
-              if ($lambda($endTime)) {
-                  return true;
-              }
-          } catch (Exception $e) {
+    $endTime = time() + 60;
+    for ($i = 0; $i < $wait; $i++)
+    {
+      try {
+        if ($lambda($endTime)) {
+          return true;
+        }
+      } catch (Exception $e) {
 
-          }
-
-          sleep(1);
       }
-      throw new Exception("Article is not ready to be released yet", 1);
+
+      sleep(1);
+    }
+    throw new Exception("Article is not ready to be released yet", 1);
   }
 
 

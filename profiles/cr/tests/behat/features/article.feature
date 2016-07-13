@@ -70,6 +70,7 @@ Feature: Article
     # logout and see the article loaded
     Given I am not logged in
     And I am on "whats-going-on"
+    And I should see "Test Scheduled article"
 
 
   @api
