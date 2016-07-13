@@ -13,19 +13,24 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
   /**
    * Use a 'spins' function to continuously check if a statement is true
    */
-  public function spins($closure, $tries = 70) {
-    for ($i=0; $i <= $tries; $i++) { 
-      try {
-        $closure();
-        return;
-      } catch (\Exception $e) {
-        if ($i == $tries) {
-          throw $e;
-        }
+  public function spin ($lambda, $wait = 70)
+  {
+      $endTime = time() + 60;
+      for ($i = 0; $i < $wait; $i++)
+      {
+          try {
+              if ($lambda($endTime)) {
+                  return true;
+              }
+          } catch (Exception $e) {
+
+          }
+
+          sleep(1);
       }
-      sleep(1);
-    }
+      throw new Exception("Article is not ready to be released yet", 1);
   }
+
 
   /**
    * @Then I should see the correct sitemap elements
@@ -112,15 +117,10 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
    * Wait for scheduled update time, then run cron
    */
   public function iWaitForUpdateTime() {
-
-    $currentTime = time();
-    $updateTime = time() + 60;
-
-    $this->spins(function($currentTime, $updateTime) {
-      
-      if ($updateTime <= $currentTime) {
-        throw new Exception("Article is not ready to be released yet CT:" . $currentTime . "UT:" . $updateTime, 1);
-      }
+    $this->spin(function($endTime) {
+        if (time() >= $endTime) {
+          return true;
+        }
     });
   }
 
