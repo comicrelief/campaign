@@ -1,51 +1,20 @@
-name: Content Wall
-type: module
+name: 'Content Wall'
 description: 'Defines content wall functionality.'
-package: Comic Relief
+type: module
 core: 8.x
 dependencies:
-  - ds
-  - paragraphs
-  - entity_reference_revisions
-  - inline_entity_form
+  - block_content
   - cr_teaser
-  - view_mode
-
-config_devel:
-  # Paragraph config
-  - field.storage.node.field_paragraphs
-  - paragraphs.paragraphs_type.cw_row
-  # View modes
-  - core.entity_form_display.paragraph.cw_row.default
-  - core.entity_view_display.paragraph.cw_row.default
-  - core.entity_form_display.block_content.cw_row_block.default
-  - core.entity_view_display.block_content.cw_row_block.default
-  # Fields
-  - field.storage.block_content.field_cw_block_reference
-  - field.storage.block_content.field_cw_view_mode
-  - field.storage.paragraph.field_cw_row_reference
-  - field.field.paragraph.cw_row.field_cw_row_reference
-  - field.field.block_content.cw_row_block.field_cw_block_reference
-  - field.field.block_content.cw_row_block.field_cw_view_mode
-  # Block types
-  - block_content.type.cw_row_block
-  # View modes
-  - core.entity_view_display.block_content.teaser.cw_l
-  - core.entity_view_display.block_content.teaser.cw_m
-  - core.entity_view_display.block_content.teaser.cw_mp
-  - core.entity_view_display.block_content.teaser.cw_s
-  # View mode config #
-  - core.entity_view_mode.block_content.cw_1col_l
-  - core.entity_view_mode.block_content.cw_2col_m_m
-  - core.entity_view_mode.block_content.cw_2col_s_m
-  - core.entity_view_mode.block_content.cw_2col_m_s
-  - core.entity_view_mode.block_content.cw_3col_s_s_s
-  - core.entity_view_mode.block_content.cw_l
-  - core.entity_view_mode.block_content.cw_m
-  - core.entity_view_mode.block_content.cw_mp
-  - core.entity_view_mode.block_content.cw_s
-
-  # Image styles
-  - image.style.cw_large_780x440
-  - image.style.cw_medium_570x365
-  - image.style.cw_small_370x290
+  - ds
+  - entity_reference_revisions
+  - field
+  - image
+  - inline_entity_form
+  - link
+  - node
+  - options
+  - paragraphs
+  - responsive_image
+  - text
+  - user
+package: 'Comic Relief'
