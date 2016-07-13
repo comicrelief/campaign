@@ -1,14 +1,22 @@
 name: Partner
+description: 'Defines a Partner content type.'
 type: module
 core: 8.x
-description: 'Defines a Partner content type.'
-package: Comic Relief
-
 dependencies:
+  - ds
   - field
-  - text
-  - options
-  - image
   - file
-  - views
+  - image
+  - link
+  - menu_ui
+  - metatag
+  - node
+  - panelizer
+  - path
+  - pathauto
+  - responsive_image
   - taxonomy
+  - text
+  - user
+  - views
+package: 'Comic Relief'
