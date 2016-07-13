@@ -15,7 +15,7 @@
     "grunt-focus": "^1.0.0",
     "grunt-kss": "^5.0.0",
     "grunt-shell": "^1.2.1",
-    "kss": "^2.4.0",
+    "kss": "^3.0.0-beta.14",
     "sass-loader": "^3.1.2",
     "susy": "^2.2.11"
   },
