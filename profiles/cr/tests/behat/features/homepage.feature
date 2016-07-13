@@ -1,7 +1,7 @@
-Feature: Header-links
+Feature: Homepage
   To check the header links are present and go to where they are supposed to
 
-  Scenario: Header-links homepage
+  Scenario: Header-links
     Given I am on the homepage
     Then I should see the link "What's going on"
     And I should see the link "FAQ"
