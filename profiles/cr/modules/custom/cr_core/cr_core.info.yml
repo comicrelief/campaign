@@ -9,6 +9,7 @@ dependencies:
   - cr_single_msg
   - features
   - file
+  - focal_point
   - image
   - menu_link_content
   - node
@@ -18,5 +19,4 @@ dependencies:
   - shortcut
   - system
   - taxonomy
-  - user
 package: 'Comic Relief'

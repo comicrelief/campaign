@@ -34,10 +34,11 @@ assignments:
     types:
       config:
         features_bundle: features_bundle
+        user_role: user_role
     curated: 1
     module:
       installed: 1
-      profile: 1
+      profile: 0
       namespace: 1
       namespace_any: 0
     enabled: true
@@ -55,11 +56,9 @@ assignments:
     types:
       config:
         image_style: image_style
-        migration: migration
         rdf_mapping: rdf_mapping
         responsive_image_style: responsive_image_style
-        search_page: search_page
-        tour: tour
+        user_role: user_role
         view: view
     enabled: true
     weight: '0'
