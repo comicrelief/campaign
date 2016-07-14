@@ -6,17 +6,12 @@ dependencies:
   - block_content
   - contact
   - cr_content_wall
-  - cr_single_msg
-  - features
   - file
-  - focal_point
   - image
   - menu_link_content
   - node
-  - page_manager
   - paragraphs
   - responsive_image
   - shortcut
-  - system
   - taxonomy
 package: 'Comic Relief'
