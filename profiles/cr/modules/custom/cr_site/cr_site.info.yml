@@ -1,0 +1,20 @@
+name: Site
+description: 'Provides site components.'
+type: module
+core: 8.x
+dependencies:
+  - block
+  - block_content
+  - ckeditor
+  - contact
+  - cr_core
+  - editor
+  - field
+  - filter
+  - help
+  - metatag
+  - node
+  - system
+  - text
+  - user
+package: 'Comic Relief'

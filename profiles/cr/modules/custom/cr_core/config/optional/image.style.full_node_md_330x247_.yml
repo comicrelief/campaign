@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: full_node_md_330x247_
+label: 'Full node MD 330x247 (2x)'
+effects:
+  2e5ce319-bb54-45eb-9863-76fc5b6133ac:
+    uuid: 2e5ce319-bb54-45eb-9863-76fc5b6133ac
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: '660'
+      height: '494'

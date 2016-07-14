@@ -1,17 +1,16 @@
-name: cr_page
+name: 'Basic page'
+description: 'Basic page content type'
 type: module
-description: Basic page content type
 core: 8.x
-package: Comic Relief
-config_devel:
-  - node.type.page
-  - rdf.mapping.node.page
-  - field.storage.node.field_page_meta_tags
-  - field.field.node.page.body
-  - field.field.node.page.field_page_meta_tags
-  - core.entity_form_display.node.page.default
-  - core.entity_view_display.node.page.default
-  - core.entity_view_display.node.page.teaser
-  - core.base_field_override.node.page.promote
-
-
+dependencies:
+  - ds
+  - field
+  - metatag
+  - node
+  - panelizer
+  - path
+  - pathauto
+  - rdf
+  - text
+  - user
+package: 'Comic Relief'

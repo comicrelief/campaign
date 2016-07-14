@@ -1,21 +1,13 @@
-name: CR Single Message Row Paragraph
+name: 'Single Message Row Paragraph'
+description: 'Contains config for Single Message Row Paragraph type.'
 type: module
-description: Contains config for Single Message Row Paragraph type.
 core: 8.x
-package: Comic Relief
 dependencies:
+  - field
+  - file
+  - image
+  - options
   - paragraphs
-  - entity_reference_revisions
-config_devel:
-# Paragraph config
-  - field.storage.paragraph.field_single_msg_row_lr_title
-  - field.storage.paragraph.field_single_msg_row_lr_image
-  - field.storage.paragraph.field_single_msg_row_lr_body
-  - field.storage.paragraph.field_single_msg_row_lr_variant
-  - paragraphs.paragraphs_type.cr_single_message_row
-  - core.entity_view_display.paragraph.cr_single_message_row.default
-  - core.entity_form_display.paragraph.cr_single_message_row.default
-  - field.field.paragraph.cr_single_message_row.field_single_msg_row_lr_image
-  - field.field.paragraph.cr_single_message_row.field_single_msg_row_lr_body
-  - field.field.paragraph.cr_single_message_row.field_single_msg_row_lr_title
-  - field.field.paragraph.cr_single_message_row.field_single_msg_row_lr_variant
+  - responsive_image
+  - text
+package: 'Comic Relief'

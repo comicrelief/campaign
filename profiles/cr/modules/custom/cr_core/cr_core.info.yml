@@ -1,0 +1,17 @@
+name: Core
+type: module
+core: 8.x
+dependencies:
+  - block
+  - block_content
+  - contact
+  - cr_content_wall
+  - file
+  - image
+  - menu_link_content
+  - node
+  - paragraphs
+  - responsive_image
+  - shortcut
+  - taxonomy
+package: 'Comic Relief'
