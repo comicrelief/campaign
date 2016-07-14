@@ -12,6 +12,16 @@ header[role=banner] {
   overflow: visible!important;
   padding-bottom: 0!important;
 }
+  
+
+.site-logo {
+  @include breakpoint($screen-md, $no-query: true) {
+    position: absolute;
+    top: 50px;
+    left: 0;
+  }
+}
+
 .new-menu--main {
   position: absolute;
   top: 85px;
@@ -19,6 +29,7 @@ header[role=banner] {
   width: 100%;
   background: rgba($black, 0.95);
 
+  // 'Desktop' nav for now; will need adjusting for large tablets
   @include breakpoint($screen-md, $no-query: true) {
     position: relative;
     top: 0;
@@ -26,12 +37,20 @@ header[role=banner] {
     width: auto;
     padding-top: 20px;
     background: transparent;
+
     ul.menu li {
+
+      position: relative;
+
+      //Show secondary pages on hover
       &:hover {
         > ul {
         display: block;
-        top: 111px;
+        top: 100px;
         padding: 0;
+        width: 192px;
+        left: -60px;
+
           li {
             background: none;
             padding: 0;
@@ -59,7 +78,9 @@ header[role=banner] {
           }
         }
       }
-      &.menu-item--active-trail,
+
+
+/*       &.menu-item--active-trail,
       &.menu-item__parent:hover {
         a {
           position: relative;
@@ -114,7 +135,9 @@ header[role=banner] {
             top: 50px;
           }
         }
-      }
+      } */
+
+
       > ul {
         display: none;
         position: absolute;
@@ -134,8 +157,11 @@ header[role=banner] {
       }
     }
   }
+
+
   ul {
-    float: right;
+    float: none;
+    text-align: center;
     li {
       display: block;
       margin: 0;
