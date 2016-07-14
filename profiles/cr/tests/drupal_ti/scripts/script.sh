@@ -15,6 +15,7 @@ cd "$DRUPAL_TI_BEHAT_DIR"
 # We need to create a behat.yml file from behat.yml.dist.
 drupal_ti_replace_behat_vars
 
-# And run the tests.
+# And run the tests, excluding any selenium tests
+# To provide Selenium support, see http://jira.comicrelief.com/browse/PLAT-352
 ARGS=( $DRUPAL_TI_BEHAT_ARGS )
-./vendor/bin/behat "${ARGS[@]}"
+./vendor/bin/behat "${ARGS[@]}" -tags '~@javascript'
