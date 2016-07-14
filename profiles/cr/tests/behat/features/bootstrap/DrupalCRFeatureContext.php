@@ -11,28 +11,6 @@ use Behat\Gherkin\Node\TableNode;
  */
 class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptingContext {
   /**
-   * Use a 'spin' function to continuously check if a statement is true
-   */
-  public function spin ($lambda, $wait = 70)
-  {
-    $endTime = time() + 60;
-    for ($i = 0; $i < $wait; $i++)
-    {
-      try {
-        if ($lambda($endTime)) {
-          return true;
-        }
-      } catch (Exception $e) {
-
-      }
-
-      sleep(1);
-    }
-    throw new Exception("Article is not ready to be released yet", 1);
-  }
-
-
-  /**
    * @Then I should see the correct sitemap elements
    * @And I should see the correct sitemap elements
    */
@@ -112,17 +90,23 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
   }
 
   /**
-   * @Given /^(?:|I )wait for update time$/
-   *
-   * Wait for scheduled update time, then run cron
-   */
-  public function iWaitForUpdateTime() {
-    $this->spin(function($endTime) {
-      if (time() >= $endTime) {
-        return true;
-      }
-    });
+  * @Given I wait for :arg1 seconds
+  *
+  * Wait for the given number of seconds. ONLY USE FOR DEBUGGING! Or any task using scheduled updates
+  */
+  public function iWaitForSeconds($arg1) {
+    sleep($arg1);
+  } 
+
+  /**
+  * @Given I scroll :elementId into view
+  *
+  * Scroll to the id of an element, selenium will not do this for you
+  */
+  public function scrollIntoView($elementId) {
+    $this->getSession()->getPage()->find('xpath', $elementId)->click();
   }
+
 
   /**
    * @Then /^the metatag attribute "(?P<attribute>[^"]*)" should have the value "(?P<value>[^"]*)"$/
