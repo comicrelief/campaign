@@ -7,13 +7,14 @@
 //
 // Style guide: Navigation.New-Main-nav
 
-// More styleguide hacking
+
+// Cut it out, styleguide!
 .kss-sidebar {
   display: none;
 }
 #kss-node .kss-main {
-    width: 100%;
-    margin: 0 auto;
+  width: 100%;
+  margin: 0 auto;
 }
 
 header[role=banner] {
@@ -37,32 +38,39 @@ header[role=banner] {
   width: 100%;
   background: $white;
   color: $black;
+  display: block;
 
   // 'Mobile' nav
   ul.menu {
+    margin: 0;
+    float: none;
+    text-align: center;
+
     li {
+        display: block;
+        margin: 0;
+        color: $white;
+
       a {
         padding: 20px 20px;
       }
 
-      // Hide sub menus
+      // Hide sub menus, but set up for CSS3 animations, using JS-added
+      // 'active' class to allow 'hover'-style state on touch devices
       > ul.menu {
-        height: 0;
-        overflow: hidden;
-        @include transition(0.3s height);
-      }
+        max-height: 0;
+        overflow: hidden;        
+        -webkit-transform: translateZ(0);
+         @include transition(all 300ms ease);
+        background-color: $gainsboro-grey;
 
-      // Show sub menus o
-      &:hover {
-        > ul.menu {
-          max-height: 200px;
-          height: 200px;
+        &.active {
+          max-height: 500px;
+          display: block;
         }
       }
     }
   }
-
-
 
 
   // 'Desktop' nav for now; will need adjusting for large tablets
@@ -75,8 +83,10 @@ header[role=banner] {
     background: transparent;
 
     ul.menu li {
-
       position: relative;
+      display: inline-block;
+      margin: 0 20px;
+      padding: 20px 0 34px;
 
       // Secondary nav hidden by default
       > ul {
@@ -122,11 +132,12 @@ header[role=banner] {
         }
       }
 
-      //Show secondary pages on hover
-
+      // Show sub menus o
       &:hover {
-        > ul {
-        display: block;
+        > ul.menu {
+          max-height: 200px;
+          height: auto;
+          display: block;
         }
       }
     }
@@ -134,18 +145,8 @@ header[role=banner] {
 
 
   ul {
-    float: none;
-    text-align: center;
     li {
-      display: block;
-      margin: 0;
-      color: $white;
 
-      @include breakpoint($screen-md, $no-query: true) {
-        display: inline-block;
-        margin: 0 20px;
-        padding: 20px 0 34px;
-      }
 
       a {
         display: block;
