@@ -4,16 +4,23 @@
 //
 // Markup: _new-main-nav.hbs
 //
-// .menu-item--active-trail - Active state
 //
 // Style guide: Navigation.New-Main-nav
+
+// More styleguide hacking
+.kss-sidebar {
+  display: none;
+}
+#kss-node .kss-main {
+    width: 100%;
+    margin: 0 auto;
+}
 
 header[role=banner] {
   overflow: visible!important;
   padding-bottom: 0!important;
 }
   
-
 .site-logo {
   @include breakpoint($screen-md, $no-query: true) {
     position: absolute;
@@ -22,12 +29,41 @@ header[role=banner] {
   }
 }
 
+// Using exiting drupal class for now too, to be updated
+.menu--main,
 .new-menu--main {
   position: absolute;
   top: 85px;
-  display: none;
   width: 100%;
-  background: rgba($black, 0.95);
+  background: $white;
+  color: $black;
+
+  // 'Mobile' nav
+  ul.menu {
+    li {
+      a {
+        padding: 20px 20px;
+      }
+
+      // Hide sub menus
+      > ul.menu {
+        height: 0;
+        overflow: hidden;
+        @include transition(0.3s height);
+      }
+
+      // Show sub menus o
+      &:hover {
+        > ul.menu {
+          max-height: 200px;
+          height: 200px;
+        }
+      }
+    }
+  }
+
+
+
 
   // 'Desktop' nav for now; will need adjusting for large tablets
   @include breakpoint($screen-md, $no-query: true) {
@@ -42,117 +78,55 @@ header[role=banner] {
 
       position: relative;
 
-      //Show secondary pages on hover
-      &:hover {
-        > ul {
-        display: block;
-        top: 100px;
-        padding: 0;
-        width: 192px;
-        left: -60px;
-
-          li {
-            background: none;
-            padding: 0;
-            margin: 0;
-            float: left;
-            width: 192px;
-            a {
-              margin-top: 0;
-              margin-bottom: 0;
-              padding: 16px 20px 11px;
-              &:after {
-                display: none;
-              }
-            }
-            &:hover,
-            &.menu-item--active-trail {
-              background: #4b4b4b;
-            }
-            a {
-              border-bottom: 2px solid transparent;
-            }
-          }
-          ul {
-            top: 50px;
-          }
-        }
-      }
-
-
-/*       &.menu-item--active-trail,
-      &.menu-item__parent:hover {
-        a {
-          position: relative;
-          &:after {
-            top: 44px;
-            left: 50%;
-            border: solid transparent;
-            content: " ";
-            height: 0;
-            width: 0;
-            position: absolute;
-            pointer-events: none;
-          }
-
-          &:after {
-            border-color: rgba(136, 183, 213, 0);
-            border-bottom-color: black;
-            border-width: 15px;
-            margin-left: -15px;
-          }
-        }
-      a {
-        border-bottom: 2px solid #e4761b;
-      }
-      > ul {
-        display: block;
-        top: 111px;
-        padding: 0;
-          li {
-            background: none;
-            padding: 0;
-            margin: 0;
-            float: left;
-            width: 192px;
-            a {
-              margin-top: 0;
-              margin-bottom: 0;
-              padding: 16px 20px 11px;
-              &:after {
-                display: none;
-              }
-            }
-            &:hover,
-            &.menu-item--active-trail {
-              background: #4b4b4b;
-            }
-            a {
-              border-bottom: 2px solid transparent;
-            }
-          }
-          ul {
-            top: 50px;
-          }
-        }
-      } */
-
-
+      // Secondary nav hidden by default
       > ul {
         display: none;
         position: absolute;
         top: 0;
         z-index: 999;
-        width: 100%;
-        left: 0;
         background: black;
         padding: 0px 10px;
+        top: 100px;
+        padding: 0;
+        width: 192px;
+        left: 0;
+        text-align: left;
+
         a {
           color: white;
           font-size: 16px;
         }
         li {
           position: relative;
+          background: none;
+          padding: 0;
+          margin: 0;
+          float: left;
+          width: 192px;
+
+          &:hover,
+          &.menu-item--active-trail {
+            background: #4b4b4b;
+          }
+
+          a {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding: 16px 20px 11px;
+            border-bottom: 2px solid transparent;
+            
+            &:after {
+              display: none;
+            }
+          }
+        }
+      }
+
+      //Show secondary pages on hover
+
+      &:hover {
+        > ul {
+        display: block;
         }
       }
     }
@@ -169,11 +143,10 @@ header[role=banner] {
 
       @include breakpoint($screen-md, $no-query: true) {
         display: inline-block;
-      }
-      @include breakpoint($screen-md, $no-query: true) {
         margin: 0 20px;
         padding: 20px 0 34px;
       }
+
       a {
         display: block;
         padding: 15px 10px;
@@ -194,7 +167,7 @@ header[role=banner] {
           background: #acaaa9;
 
           @include breakpoint($screen-md, $no-query: true) {
-            border-bottom: 2px solid #e4761b;
+            border-bottom: 2px solid $dark-grey;
             background: transparent;
           }
         }
@@ -205,7 +178,7 @@ header[role=banner] {
 
           @include breakpoint($screen-md, $no-query: true) {
             color: $black;
-            border-bottom: 2px solid #e4761b;
+            border-bottom: 2px solid $dark-grey;
             background: transparent;
           }
         }
