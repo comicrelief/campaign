@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.article.field_article_meta_tags
     - field.field.node.article.field_article_publish_date
     - field.field.node.article.field_article_tags
+    - field.field.node.article.field_article_taxonomy_test
     - field.field.node.article.field_youtube_url
     - node.type.article
   module:
@@ -178,6 +179,13 @@ content:
       format_type: medium
       timezone_override: ''
     third_party_settings: {  }
+  field_article_taxonomy_test:
+    weight: 7
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
   field_youtube_url:
     type: youtube_video
     weight: 2
