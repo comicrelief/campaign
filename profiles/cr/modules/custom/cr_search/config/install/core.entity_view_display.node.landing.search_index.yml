@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.landing.field_landing_image
     - field.field.node.landing.field_landing_image_mobile
     - field.field.node.landing.field_paragraphs
+    - field.field.node.landing.field_svg_body_title
     - field.field.node.landing.panelizer
     - node.type.landing
   module:
@@ -216,4 +217,5 @@ content:
     weight: 14
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_svg_body_title: true

@@ -5,7 +5,7 @@
 
 language: php
 
-sudo: false
+sudo: true
 
 php:
   - 5.6
@@ -125,6 +125,8 @@ before_script:
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh
 
 script:
+  # Check if config is properly exported everywhere
+  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/configcheck.sh
   # Behat
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/script.sh
   # Check DB errors

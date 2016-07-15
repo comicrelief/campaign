@@ -56,19 +56,6 @@ processor_settings:
     settings:
       weights:
         preprocess_index: -30
-  ignorecase:
-    plugin_id: ignorecase
-    settings:
-      fields:
-        - search_api_language
-        - title
-        - processed
-        - alt
-        - title_1
-        - rendered_item
-      weights:
-        preprocess_index: -10
-        preprocess_query: -10
   language:
     plugin_id: language
     settings:
@@ -86,6 +73,19 @@ processor_settings:
           page: default
       weights:
         preprocess_index: -10
+  ignorecase:
+    plugin_id: ignorecase
+    settings:
+      fields:
+        - search_api_language
+        - title
+        - processed
+        - alt
+        - title_1
+        - rendered_item
+      weights:
+        preprocess_index: -10
+        preprocess_query: -10
 options:
   index_directly: true
   cron_limit: 50
