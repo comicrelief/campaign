@@ -123,6 +123,8 @@ projects:
     download:
       version: 1.x-dev
       revision: 895b507
+  search_api_solr:
+    version: 1.0-alpha5
   crazyegg:
     version: 1.0-rc1
   google_tag:
