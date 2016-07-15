@@ -152,8 +152,8 @@
   <target name="db" description="Get and restore DB from S3 backup">
     <phingcall target="db:get"/>
     <phingcall target="db:restore"/>
-    <phingcall target="dev-mode:enable"/>
-    <phingcall target="login"/>
+    <exec checkreturn="true" logoutput="true" passthru="true" command="${drush.bin} updb"/>
+    <exec checkreturn="true" logoutput="true" passthru="true" command="${drush.bin} cr"/>
   </target>
   <target name="db:get"
           description="Gets DB from specified environment">
