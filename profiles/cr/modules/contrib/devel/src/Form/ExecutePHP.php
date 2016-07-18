@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\devel\Form\ExecutePHP.
- */
-
 namespace Drupal\devel\Form;
 
 use Drupal\Core\Form\FormBase;

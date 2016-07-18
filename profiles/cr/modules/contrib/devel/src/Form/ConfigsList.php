@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\devel\Form\ConfigsList.
- */
-
 namespace Drupal\devel\Form;
 
 use Drupal\Component\Utility\Html;

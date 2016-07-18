@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\devel\DevelDumperBase.
- */
-
 namespace Drupal\devel;
 
 use Drupal\Core\Render\Markup;

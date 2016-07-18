@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\webprofiler\Controller\DatabaseController.
- */
-
 namespace Drupal\webprofiler\Controller;
 
 use Drupal\Core\Controller\ControllerBase;

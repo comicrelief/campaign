@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\devel\Tests\DevelRebuildMenusTest.
- */
-
 namespace Drupal\devel\Tests;
 
 use Drupal\simpletest\WebTestBase;

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\webprofiler\Entity\EntityDecorator.
- */
-
 namespace Drupal\webprofiler\Entity;
 
 use Drupal\webprofiler\Decorator;
