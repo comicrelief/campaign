@@ -9,6 +9,7 @@ namespace Drupal\simple_sitemap\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\simple_sitemap\Form;
 
 /**
  * SimplesitemapCustomLinksFrom
@@ -37,11 +38,6 @@ class SimplesitemapCustomLinksForm extends ConfigFormBase {
     $sitemap = \Drupal::service('simple_sitemap.generator');
     $setting_string = '';
     foreach ($sitemap->getConfig('custom') as $custom_link) {
-
-      // todo: remove this statement after removing the index key from the configuration.
-      if (isset($custom_link['index']) && $custom_link['index'] == 0)
-        continue;
-
       $setting_string .= isset($custom_link['priority']) ? $custom_link['path'] . ' ' . $custom_link['priority'] : $custom_link['path'];
       $setting_string .= "\r\n";
     }
@@ -59,15 +55,8 @@ class SimplesitemapCustomLinksForm extends ConfigFormBase {
       '#description' => t("Please specify drupal internal (relative) paths, one per line. Do not forget to prepend the paths with a '/'. You can optionally add a priority (0.0 - 1.0) by appending it to the path after a space. The home page with the highest priority would be <em>/ 1.0</em>, the contact page with the default priority would be <em>/contact 0.5</em>."),
     );
 
-    $form['simple_sitemap_custom']['simple_sitemap_regenerate_now'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Regenerate sitemap after hitting <em>Save</em>'),
-      '#description' => t('This setting will regenerate the whole sitemap including the above changes.'),
-      '#default_value' => FALSE,
-    );
-    if ($sitemap->getSetting('cron_generate')) {
-      $form['simple_sitemap_custom']['simple_sitemap_regenerate_now']['#description'] .= '</br>' . t('Otherwise the sitemap will be regenerated on the next cron run.');
-    }
+    $f = new Form();
+    $f->displaySitemapRegenerationSetting($form['simple_sitemap_custom']);
 
     return parent::buildForm($form, $form_state);
   }
