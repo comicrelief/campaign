@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\kint\Twig\KintExtension.
- */
-
 namespace Drupal\kint\Twig;
 
 /**
@@ -28,6 +23,7 @@ class KintExtension extends \Twig_Extension {
         'is_safe' => array('html'),
         'needs_environment' => TRUE,
         'needs_context' => TRUE,
+        'is_variadic' => TRUE,
       )),
     );
   }
@@ -39,12 +35,17 @@ class KintExtension extends \Twig_Extension {
    *
    * Code derived from https://github.com/barelon/CgKintBundle.
    *
-   * @param Twig_Environment $env
+   * @param \Twig_Environment $env
    *   The twig environment instance.
    * @param array $context
    *   An array of parameters passed to the template.
+   * @param array $args
+   *   An array of parameters passed the function.
+   *
+   * @return string
+   *   String representation of the input variables.
    */
-  public function kint(\Twig_Environment $env, array $context) {
+  public function kint(\Twig_Environment $env, array $context, array $args = []) {
     // Don't do anything unless twig_debug is enabled. This reads from the Twig
     // environment, not Drupal Settings, so a container rebuild is necessary
     // when toggling twig_debug on and off. We can consider injecting Settings.
@@ -56,10 +57,8 @@ class KintExtension extends \Twig_Extension {
     // @todo Can we add information about which template Kint was called from?
     \Kint::$displayCalledFrom = FALSE;
 
-    $output = '';
-
-    if (func_num_args() === 2) {
-      // No arguments passed to kint(), display full Twig context.
+    // No arguments passed to kint(), display full Twig context.
+    if (empty($args)) {
       $kint_variable = array();
       foreach ($context as $key => $value) {
         if (!$value instanceof \Twig_Template) {
@@ -72,54 +71,27 @@ class KintExtension extends \Twig_Extension {
     }
     else {
       // Try to get the names of variables from the Twig template.
-      $trace = debug_backtrace();
-      $callee = $trace[0];
-
-      $lines = file($callee['file']);
-      $source = $lines[$callee['line'] - 1];
-
-      preg_match('/kint\((.+)\);/', $source, $matches);
-      $parameters = $matches[1];
-      $parameters = preg_replace('/\$this->getContext\(\$context, "(.+)"\)/U', "$1", $parameters);
-      $parameters = preg_replace('/\(isset\(\$context\["(.+)"\]\) \? \$context\["(.+)"\] : null\)/U', "$1", $parameters);
-      do {
-        $parameters = preg_replace('/\$this->getAttribute\((.+), "(.+)"\)/U', "$1.$2", $parameters, 1, $found);
-      } while ($found);
-
-      $parameters = explode(', ', $parameters);
-      foreach ($parameters as $index => $parameter) {
-        // Remove bad entries from the parameters array. Maybe we can avoid this
-        // by doing more with the regular expressions.
-        // This only seems to be needed for cases like:
-        // {{ my_array['#hash_index'] }}
-        if (in_array($parameter, array('array()', '"array'))) {
-          unset($parameters[$index]);
-          continue;
-        }
-        // Trim parens and quotes from the parameter strings.
-        $parameters[$index] = trim($parameter, '()"');
-      }
-
-      // Don't include $env and $context arguments in $args and $parameters.
-      $args = array_slice(func_get_args(), 2);
-      $parameters = array_slice($parameters, 2);
+      $parameters = $this->getTwigFunctionParameters();
 
       // If there is only one argument, pass to Kint without too much hassle.
       if (count($args) == 1) {
         $kint_variable = reset($args);
+        $variable_name = reset($parameters);
         $result = @\Kint::dump($kint_variable);
         // Replace $kint_variable with the name of the variable in the Twig
         // template.
-        $output = str_replace('$kint_variable', reset($parameters), $result);
+        $output = str_replace('$kint_variable', $variable_name, $result);
       }
       else {
+        $kint_args = [];
         // Build an array of variable to pass to Kint.
         // @todo Can we just call_user_func_array while still retaining the
         //   variable names?
         foreach ($args as $index => $arg) {
           // Prepend a unique index to allow debugging the same variable more
           // than once in the same Kint dump.
-          $kint_args['_index_' . $index . '_' . $parameters[$index]] = $arg;
+          $name = !empty($parameters[$index]) ? $parameters[$index] : $index;
+          $kint_args['_index_' . $index . '_' . $name] = $arg;
         }
 
         $result = @\Kint::dump($kint_args);
@@ -131,6 +103,52 @@ class KintExtension extends \Twig_Extension {
     }
 
     return $output;
+  }
+
+  /**
+   * Gets the twig function parameters for the current invocation.
+   *
+   * @return array
+   *   The detected twig function parameters.
+   */
+  protected function getTwigFunctionParameters() {
+    $callee = NULL;
+    $template = NULL;
+
+    $backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS | DEBUG_BACKTRACE_PROVIDE_OBJECT);
+
+    foreach ($backtrace as $index => $trace) {
+      if (isset($trace['object']) && $trace['object'] instanceof \Twig_Template && 'Twig_Template' !== get_class($trace['object'])) {
+        $template = $trace['object'];
+        $callee = $backtrace[$index - 1];
+        break;
+      }
+    }
+
+    $parameters = [];
+
+    /** @var \Twig_Template $template */
+    if (NULL !== $template && NULL !== $callee) {
+      $line_number = $callee['line'];
+      $debug_infos = $template->getDebugInfo();
+
+      if (isset($debug_infos[$line_number])) {
+        $source_line = $debug_infos[$line_number];
+        $source_file_name = $template->getTemplateName();
+
+        if (is_readable($source_file_name)) {
+          $source = file($source_file_name, FILE_IGNORE_NEW_LINES);
+          $line = $source[$source_line - 1];
+
+          preg_match('/kint\((.+)\)/', $line, $matches);
+          if (isset($matches[1])) {
+            $parameters = array_map('trim', explode(',', $matches[1]));
+          }
+        }
+      }
+    }
+
+    return $parameters;
   }
 
 }

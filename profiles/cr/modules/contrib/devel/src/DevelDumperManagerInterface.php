@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\devel\DevelDumperManagerInterface.
- */
-
 namespace Drupal\devel;
 
 /**

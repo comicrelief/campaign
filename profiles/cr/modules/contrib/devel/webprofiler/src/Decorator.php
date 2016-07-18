@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\webprofiler\Decorator.
- */
-
 namespace Drupal\webprofiler;
 
 /**

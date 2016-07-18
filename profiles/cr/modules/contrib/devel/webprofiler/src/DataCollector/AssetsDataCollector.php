@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\webprofiler\DataCollector\AssetsDataCollector.
- */
-
 namespace Drupal\webprofiler\DataCollector;
 
 use Drupal\Component\Utility\NestedArray;
