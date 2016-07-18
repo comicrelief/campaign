@@ -32,7 +32,7 @@ class SimplesitemapTest extends WebTestBase {
 
     $this->drupalCreateContentType(['type' => 'page']);
     $this->config('simple_sitemap.settings')
-      ->set('entity_types', ['node_type' => ['page' =>  ['index' => 1, 'priority' => '0.5']]])
+      ->set('entity_types', ['node' => ['page' =>  ['index' => 1, 'priority' => '0.5']]])
       ->save();
   }
 
