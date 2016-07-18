@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\webprofiler\Theme\ThemeNegotiatorWrapper.
- */
-
 namespace Drupal\webprofiler\Theme;
 
 use Drupal\Core\Routing\RouteMatchInterface;

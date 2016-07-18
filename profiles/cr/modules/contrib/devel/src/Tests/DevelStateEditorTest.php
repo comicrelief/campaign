@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\devel\Tests\DevelStateEditorTest.
- */
-
 namespace Drupal\devel\Tests;
 
 use Drupal\Component\Render\FormattableMarkup;

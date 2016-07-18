@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\devel_generate\Tests\DevelGenerateTest.
- */
-
 namespace Drupal\devel_generate\Tests;
 
 use Drupal\comment\Tests\CommentTestTrait;

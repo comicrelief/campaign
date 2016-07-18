@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\devel\Plugin\Block\DevelExecutePHP.
- */
-
 namespace Drupal\devel\Plugin\Block;
 
 use Drupal\Core\Access\AccessResult;

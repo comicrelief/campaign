@@ -71,7 +71,7 @@ projects:
   devel:
     download:
       version: 1.x-dev
-      revision: 5c6a506
+      revision: b8bcdc6
   stage_file_proxy:
     version: 1.0-alpha1
   imagemagick:
