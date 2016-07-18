@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\webprofiler\WebprofilerServiceProvider.
- */
-
 namespace Drupal\webprofiler;
 
 use Drupal\Core\DependencyInjection\ContainerBuilder;

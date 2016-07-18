@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\webprofiler\DrupalDataCollectorInterface.
- */
-
 namespace Drupal\webprofiler;
 
 /**

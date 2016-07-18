@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\devel_entity_test\Entity\DevelEntityTestNoLinks.
- */
-
 namespace Drupal\devel_entity_test\Entity;
 
 use Drupal\entity_test\Entity\EntityTest;

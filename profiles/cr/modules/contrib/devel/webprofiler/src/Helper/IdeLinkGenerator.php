@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\webprofiler\IdeLinkGenerator.
- */
-
 namespace Drupal\webprofiler\Helper;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
