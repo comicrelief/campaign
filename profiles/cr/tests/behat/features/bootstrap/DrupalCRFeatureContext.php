@@ -81,11 +81,13 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
   /**
    * @Then /^(?:|I )enter the time for "(?P<element>[^"]*)"$/
    *
+   * Inputs current time for 30 seconds in the future
+   *
    * @throws \Exception
    *   If element cannot be found
    */
   public function iEnterTheTimeFor($field) {
-    $time = date("H:i:s", time() + 60);
+    $time = date("H:i:s", time() + 30);
     $this->getSession()->getPage()->fillField($field, $time);
   }
 
@@ -104,9 +106,19 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
   * Scroll to the id of an element, selenium will not do this for you
   */
   public function scrollIntoView($elementId) {
-    $this->getSession()->getPage()->find('xpath', $elementId)->click();
+    $elem = $this->getSession()->getPage()->find('css', $elementId);
+    $elem->focus();
   }
 
+  /**
+  * @Given I close cookie message
+  *
+  * Closes the cokie message. Due to it's CSS positioning it sometimes gets in the way of other elements being clicked in tests
+  */
+  public function closeCookieMessage() {
+    $elem = $this->getSession()->getPage()->find('css', '.cc_container--open .cc_btn_accept_all');
+    $elem->press();
+  }
 
   /**
    * @Then /^the metatag attribute "(?P<attribute>[^"]*)" should have the value "(?P<value>[^"]*)"$/

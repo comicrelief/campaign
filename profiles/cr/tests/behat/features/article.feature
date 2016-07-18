@@ -47,38 +47,35 @@ Feature: Article
     And I am on "node/add/article"
     And I enter "Test Scheduled article" for "edit-title-0-value"
     And I press "Add new Publishing Date"
-    # And I wait for AJAX loading to finish
+    And I wait for AJAX loading to finish
     Then I should see "Update Date/time"
     And I enter todays date for "publishing_date[form][inline_entity_form][update_timestamp][0][value][date]"
     And I enter the time for "publishing_date[form][inline_entity_form][update_timestamp][0][value][time]"
     And I press "Create Publishing Date"
-    # And I wait for AJAX loading to finish
+    And I wait for AJAX loading to finish
     Then I should see "PUBLISHING DATE"
-    # And I break
+    # cookie message prevents selenium clicking save as unpublished button
+    And I close cookie message
     And I enter "tag1" for "edit-field-article-tags-target-id"
-    # And I scroll "//input[@name='op']" into view
-    # And I break
+    And I scroll ".unpublish input" into view
     And press "Save as unpublished"
     # check the content cannot be seen if logged out
     Given I am not logged in
     And I am on "whats-going-on"
     Then I should not see "Test Scheduled article"
     # wait till content should be published then log back in
-    # And I wait for update time
-    And I wait for "60" seconds
+    And I wait for "30" seconds
     And I am logged in as a user with the "administrator" role
     # run cron and clear caches
     And am on "admin/config/system/cron"
     And press "Run cron"
-    # And I wait for AJAX loading to finish
+    And I wait for AJAX loading to finish
     Then I should see "Cron ran successfully."
     And the cache has been cleared
     # logout and see the article loaded
     Given I am not logged in
     And I am on "whats-going-on/test-scheduled-article"
-    # And I break
     Then I should see "Test Scheduled article"
-
 
   @api
   Scenario: Create news articles that are linked together via a common tag
