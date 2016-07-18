@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\webprofiler\State\StateWrapper.
- */
-
 namespace Drupal\webprofiler\State;
 
 use Drupal\Core\State\StateInterface;

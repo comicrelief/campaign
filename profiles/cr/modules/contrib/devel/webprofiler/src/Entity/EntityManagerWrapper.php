@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\webprofiler\Entity\EntityManagerWrapper.
- */
-
 namespace Drupal\webprofiler\Entity;
 
 use Drupal\Core\Config\Entity\ConfigEntityStorageInterface;
@@ -134,7 +129,7 @@ class EntityManagerWrapper extends DefaultPluginManager implements EntityTypeMan
    * {@inheritdoc}
    */
   public function useCaches($use_caches = FALSE) {
-    $this->entityManager->useCaches($use_caches = FALSE);
+    $this->entityManager->useCaches($use_caches);
   }
 
   /**
@@ -238,7 +233,7 @@ class EntityManagerWrapper extends DefaultPluginManager implements EntityTypeMan
    * {@inheritdoc}
    */
   public function setContainer(ContainerInterface $container = NULL) {
-    $this->entityManager->setContainer($container = NULL);
+    $this->entityManager->setContainer($container);
   }
 
 }

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\devel\Plugin\Devel\Dumper\DrupalVariable.
- */
-
 namespace Drupal\devel\Plugin\Devel\Dumper;
 
 use Drupal\Component\Utility\Variable;

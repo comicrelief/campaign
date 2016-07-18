@@ -1,16 +1,12 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\devel\EventSubscriber\DevelEventSubscriber.
- */
-
 namespace Drupal\devel\EventSubscriber;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Routing\UrlGeneratorInterface;
 use Drupal\Core\Session\AccountInterface;
+use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
@@ -54,10 +50,21 @@ class DevelEventSubscriber implements EventSubscriberInterface {
   }
 
   /**
+   * Register the devel error handler.
+   *
+   * @param \Symfony\Component\EventDispatcher\Event $event
+   *   The event to process.
+   */
+  public function registerErrorHandler(Event $event = NULL) {
+    if ($this->account && $this->account->hasPermission('access devel information')) {
+      devel_set_handler(devel_get_handlers());
+    }
+  }
+
+  /**
    * Initializes devel module requirements.
    */
   public function onRequest(GetResponseEvent $event) {
-
     if ($this->config->get('rebuild_theme')) {
       drupal_theme_rebuild();
 
@@ -83,14 +90,17 @@ class DevelEventSubscriber implements EventSubscriberInterface {
   }
 
   /**
-   * Implements EventSubscriberInterface::getSubscribedEvents().
-   *
-   * @return array
-   *   An array of event listener definitions.
+   * {@inheritdoc}
    */
-  static function getSubscribedEvents() {
+  public static function getSubscribedEvents() {
     // Set a low value to start as early as possible.
-    $events[KernelEvents::REQUEST][] = array('onRequest', -100);
+    $events[KernelEvents::REQUEST][] = ['onRequest', -100];
+
+    // Runs as soon as possible in the request but after
+    // AuthenticationSubscriber (priority 300) because you need to access to
+    // the current user for determine whether register the devel error handler
+    // or not.
+    $events[KernelEvents::REQUEST][] = ['registerErrorHandler', 256];
 
     return $events;
   }

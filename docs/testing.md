@@ -7,7 +7,7 @@
 	
 Now, launch selenium
 
-	selenium-server -port 4444`
+	selenium-server -port 4444
 	
 ### Running tests
 

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\webprofiler\Cache\CacheBackendWrapper.
- */
-
 namespace Drupal\webprofiler\Cache;
 
 use Drupal\Core\Cache\Cache;
