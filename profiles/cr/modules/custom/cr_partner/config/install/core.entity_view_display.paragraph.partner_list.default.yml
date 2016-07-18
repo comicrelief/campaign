@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.partner_list.field_partner_list
+    - paragraphs.paragraphs_type.partner_list
+  module:
+    - ds
+id: paragraph.partner_list.default
+targetEntityType: paragraph
+bundle: partner_list
+mode: default
+content:
+  field_partner_list:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: logos
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+    type: entity_reference_entity_view
+hidden:
+  created: true
+  social_links: true
+  uid: true

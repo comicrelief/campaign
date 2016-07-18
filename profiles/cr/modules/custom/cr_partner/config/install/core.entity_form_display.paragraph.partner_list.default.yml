@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.partner_list.field_partner_list
+    - paragraphs.paragraphs_type.partner_list
+id: paragraph.partner_list.default
+targetEntityType: paragraph
+bundle: partner_list
+mode: default
+content:
+  field_partner_list:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+hidden:
+  created: true
+  status: true
+  uid: true
