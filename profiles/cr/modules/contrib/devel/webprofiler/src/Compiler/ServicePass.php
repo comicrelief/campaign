@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\webprofiler\Compiler\ServicePass.
- */
-
 namespace Drupal\webprofiler\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;

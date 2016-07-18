@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\webprofiler\Entity\Decorators\Config\ConfigEntityStorageDecorator.
- */
-
 namespace Drupal\webprofiler\Entity\Decorators\Config;
 
 use Drupal\Core\Config\Config;

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\devel\Plugin\Menu\MenuItemMenuLink.
- */
-
 namespace Drupal\devel\Plugin\Menu;
 
 use Drupal\Core\Menu\MenuLinkDefault;

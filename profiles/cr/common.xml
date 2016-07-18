@@ -20,11 +20,11 @@
   </target>
   <target name="build:prepare" depends="grunt:dependencies, test:composer:install"
           description="Build all project dependencies. (gems, composer)">
-    <exec logoutput="true" passthru="true" command="composer install --no-progress --prefer-dist"/>
+    <exec logoutput="true" passthru="true" command="composer install --no-progress --prefer-dist -o"/>
   </target>
   <target name="build:prepare:dev" depends="grunt:dependencies:dev, test:composer:install"
           description="Build all project dependencies. (gems, composer)">
-    <exec logoutput="true" passthru="true" command="composer install --no-progress --prefer-dist"/>
+    <exec logoutput="true" passthru="true" command="composer install --no-progress --prefer-dist -o"/>
   </target>
   <!-- Front-end -->
   <target name="grunt:build" description="Generate all compiled Sass and JS files.">
@@ -67,7 +67,7 @@
   </target>
   <target name="test:composer:install" description="Install composer dependencies">
     <exec dir="${app.profile.dir}tests/behat" logoutput="true" passthru="true"
-          command="composer install --no-progress" checkreturn="true"/>
+          command="composer install --no-progress -o" checkreturn="true"/>
   </target>
   <!-- Drush core -->
   <target name="update-core" description="Update Drupal core from CR make file" depends="make">
@@ -152,8 +152,8 @@
   <target name="db" description="Get and restore DB from S3 backup">
     <phingcall target="db:get"/>
     <phingcall target="db:restore"/>
-    <phingcall target="dev-mode:enable"/>
-    <phingcall target="login"/>
+    <exec checkreturn="true" logoutput="true" passthru="true" command="${drush.bin} updb -y"/>
+    <exec checkreturn="true" logoutput="true" passthru="true" command="${drush.bin} cr"/>
   </target>
   <target name="db:get"
           description="Gets DB from specified environment">
@@ -185,7 +185,7 @@
           depends="info:tools, info:code:cs, info:code:md, info:code:loc, info:code:cbf">
   </target>
   <target name="info:tools" description="Install tools">
-    <exec dir="${app.profile.dir}tests/behat" command="composer install --no-progress" logoutput="true"/>
+    <exec dir="${app.profile.dir}tests/behat" command="composer install --no-progress -o" logoutput="true"/>
   </target>
   <target name="info:code:cs" description="Check quality of the PHP code for more info. https://www.drupal.org/node/1419988">
     <exec command="${c.home}bin/phpcs --config-set installed_paths ${c.home}${cs.dir}"/>

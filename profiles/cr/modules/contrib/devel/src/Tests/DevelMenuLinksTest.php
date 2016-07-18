@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\devel\Tests\DevelMenuLinksTest.
- */
-
 namespace Drupal\devel\Tests;
 
 use Drupal\Core\Url;

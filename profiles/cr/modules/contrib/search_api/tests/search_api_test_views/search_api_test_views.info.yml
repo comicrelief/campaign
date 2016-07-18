@@ -6,11 +6,5 @@ dependencies:
   - search_api:search_api
   - search_api:search_api_test_db
   - drupal:views
-# core: 8.x
+core: 8.x
 hidden: true
-
-# Information added by Drupal.org packaging script on 2016-04-20
-version: '8.x-1.0-alpha14'
-core: '8.x'
-project: 'search_api'
-datestamp: 1461155955

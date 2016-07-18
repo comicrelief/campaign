@@ -1,9 +1,5 @@
 <?php
 
-/**
- * @file
- */
-
 namespace Drupal\webprofiler\DataCollector;
 
 use Drupal\Core\StringTranslation\StringTranslationTrait;
