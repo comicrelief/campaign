@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\webprofiler\Command\ListCommand.
- */
-
 namespace Drupal\webprofiler\Command;
 
 use Drupal\Console\Command\ContainerAwareCommand;

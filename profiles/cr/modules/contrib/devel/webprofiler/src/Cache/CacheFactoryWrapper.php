@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\webprofiler\Cache\CacheFactoryWrapper.
- */
-
 namespace Drupal\webprofiler\Cache;
 
 use Drupal\Core\Cache\CacheFactoryInterface;

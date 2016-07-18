@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\devel_generate\Plugin\DevelGenerate\ContentDevelGenerate.
- */
-
 namespace Drupal\devel_generate\Plugin\DevelGenerate;
 
 use Drupal\comment\CommentManagerInterface;
@@ -384,6 +379,11 @@ class ContentDevelGenerate extends DevelGenerateBase implements ContainerFactory
     $default_types = array_intersect(array('page', 'article'), $all_types);
     $selected_types = _convert_csv_to_array(drush_get_option('types', $default_types));
 
+    // Validates the input format for content types option.
+    if (drush_get_option('types', $default_types) === TRUE) {
+      return drush_set_error('DEVEL_GENERATE_INVALID_INPUT', dt('Wrong syntax or no content type selected. The correct syntax uses "=", eg.: --types=page,article'));
+    }
+
     if (empty($selected_types)) {
       return drush_set_error('DEVEL_GENERATE_NO_CONTENT_TYPES', dt('No content types available'));
     }
@@ -393,6 +393,11 @@ class ContentDevelGenerate extends DevelGenerateBase implements ContainerFactory
 
     if (!empty($values['kill']) && empty($node_types)) {
       return drush_set_error('DEVEL_GENERATE_INVALID_INPUT', dt('Please provide content type (--types) in which you want to delete the content.'));
+    }
+
+    // Checks for any missing content types before generating nodes.
+    if (array_diff($node_types, $all_types)) {
+      return drush_set_error('DEVEL_GENERATE_INVALID_INPUT', dt('One or more content types have been entered that don\'t exist on this site'));
     }
 
     return $values;

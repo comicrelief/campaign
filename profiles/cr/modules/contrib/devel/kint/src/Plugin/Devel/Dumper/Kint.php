@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\kint\Plugin\Devel\Dumper\Kint.
- */
-
 namespace Drupal\kint\Plugin\Devel\Dumper;
 
 use Drupal\devel\DevelDumperBase;
