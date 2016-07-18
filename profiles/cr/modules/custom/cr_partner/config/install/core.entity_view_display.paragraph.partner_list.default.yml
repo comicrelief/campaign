@@ -2,17 +2,25 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.partner_list.field_partner_body
     - field.field.paragraph.partner_list.field_partner_list
     - paragraphs.paragraphs_type.partner_list
   module:
     - ds
+    - text
 id: paragraph.partner_list.default
 targetEntityType: paragraph
 bundle: partner_list
 mode: default
 content:
-  field_partner_list:
+  field_partner_body:
     weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_partner_list:
+    weight: 1
     label: hidden
     settings:
       view_mode: logos

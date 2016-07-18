@@ -2,21 +2,36 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.partner_list.field_partner_body
     - field.field.paragraph.partner_list.field_partner_list
     - paragraphs.paragraphs_type.partner_list
+  module:
+    - inline_entity_form
+    - text
 id: paragraph.partner_list.default
 targetEntityType: paragraph
 bundle: partner_list
 mode: default
 content:
-  field_partner_list:
+  field_partner_body:
     weight: 0
     settings:
-      match_operator: CONTAINS
-      size: 60
+      rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: text_textarea
+  field_partner_list:
+    weight: 1
+    settings:
+      form_mode: default
+      override_labels: false
+      label_singular: ''
+      label_plural: ''
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
+    third_party_settings: {  }
+    type: inline_entity_form_complex
 hidden:
   created: true
   status: true
