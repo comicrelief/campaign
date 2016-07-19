@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\webprofiler\Command\ExportCommand.
- */
-
 namespace Drupal\webprofiler\Command;
 
 use Drupal\Console\Command\ContainerAwareCommand;

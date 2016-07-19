@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\devel\Form\SwitchUserForm.
- */
-
 namespace Drupal\devel\Form;
 
 use Drupal\Core\Access\CsrfTokenGenerator;

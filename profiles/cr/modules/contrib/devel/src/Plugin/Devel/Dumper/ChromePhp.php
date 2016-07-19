@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\devel\Plugin\Devel\Dumper\ChromePhp.
- */
-
 namespace Drupal\devel\Plugin\Devel\Dumper;
 
 use Drupal\devel\DevelDumperBase;

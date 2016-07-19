@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\webprofiler\DataCollector\ThemeDataCollector.
- */
-
 namespace Drupal\webprofiler\DataCollector;
 
 use Drupal\Core\Theme\ThemeManagerInterface;

@@ -15,7 +15,9 @@ use Drupal\Core\Field\FieldStorageDefinitionInterface;
  */
 function cr_cards_field_cr_cards_background(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
   $values = [
-    'cards-black' => t('Black'),
+    'bg--white' => t('White'),
+    'bg--cream-grey' => t('Cream-Grey'),
+    'bg--dark-orchid' => t('Dark-Orchid'),
   ];
   return $values;
 }

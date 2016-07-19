@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_single_msg_body
+    - paragraphs.paragraphs_type.single_msg
+  module:
+    - text
+id: paragraph.single_msg.field_single_msg_body
+field_name: field_single_msg_body
+entity_type: paragraph
+bundle: single_msg
+label: Body
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

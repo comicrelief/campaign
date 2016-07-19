@@ -65,6 +65,10 @@ We need to continue this for every new entity that is being referenced from the 
 
 	PHP Fatal error:  Call to a member function access() on null in /Users/pvhee/Sites/comicrelief/campaign/core/lib/Drupal/Core/Field/Plugin/Field/FieldFormatter/EntityReferenceFormatterBase.php on line 187`
 
+or also
+
+	Recoverable fatal error: Argument 1 passed to Drupal\Core\Field\Plugin\Field\FieldFormatter\EntityReferenceFormatterBase::checkAccess() must implement interface Drupal\Core\Entity\EntityInterface, null given, called in /home/travis/build/comicrelief/campaign/core/lib/Drupal/Core/Field/Plugin/Field/FieldFormatter/EntityReferenceFormatterBase.php on line 55 and defined in /home/travis/build/comicrelief/campaign/core/lib/Drupal/Core/Field/Plugin/Field/FieldFormatter/EntityReferenceFormatterBase.php on line 182
+
 This occurs when importing the default content (i.e. on re-installing the site, or enabling `cr_default_content`).
 
 This happened before because of a revision_id issue in the paragraph entity.

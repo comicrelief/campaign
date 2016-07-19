@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\webprofiler\Command\BenchmarkData.
- */
-
 namespace Drupal\webprofiler\Command;
 
 /**

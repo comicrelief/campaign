@@ -71,7 +71,7 @@ projects:
   devel:
     download:
       version: 1.x-dev
-      revision: 5c6a506
+      revision: b8bcdc6
   stage_file_proxy:
     version: 1.0-alpha1
   imagemagick:
@@ -114,11 +114,11 @@ projects:
   cookieconsent:
     version: 1.0
   rabbitmq:
-    download:
-      url: https://github.com/comicrelief/rabbitmq.git
-      branch: 8.x-1.x
+    version: 1.0-beta1
   search_api:
-    version: 1.0-alpha14
+    download:
+      version: 1.x-dev
+      revision: 895b507
   crazyegg:
     version: 1.0-rc1
   google_tag:
@@ -129,7 +129,7 @@ projects:
   optimizely:
     version: 2.15-rc1
   simple_sitemap:
-    version: 2.3
+    version: 2.5
   # Performance modules
   fast_404:
     version: 1.0-alpha2
