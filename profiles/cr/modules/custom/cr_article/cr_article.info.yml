@@ -24,6 +24,7 @@ dependencies:
   - filter
 
 config_devel:
+  - core.base_field_override.node.article.status
   - taxonomy.vocabulary.tags
   - node.type.article
   - core.entity_form_display.node.article.default
@@ -39,7 +40,9 @@ config_devel:
   - field.field.node.article.body
   - field.field.node.article.field_article_intro
   - field.field.node.article.field_article_tags
-  - field.field.node.article.field_article_publish_date
+  - field.storage.node.field_article_tags
+  # - field.field.node.article.field_article_publish_date
+  # - field.storage.node.field_article_publish_date
   - field.field.node.article.field_article_image
   - field.field.node.article.field_article_meta_tags
   - field.field.node.article.field_youtube_url
@@ -49,4 +52,7 @@ config_devel:
   - ds.field.related_news
   - rdf.mapping.node.article
   - rdf.mapping.taxonomy_term.tags
+  - field.field.node.article.publishing_date
+  - field.storage.node.publishing_date
+  - scheduled_updates.scheduled_update_type.node__status
   - metatag.metatag_defaults.node__article
