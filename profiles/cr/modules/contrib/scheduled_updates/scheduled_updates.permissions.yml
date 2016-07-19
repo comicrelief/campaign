@@ -1,0 +1,9 @@
+administer scheduled update types:
+  title: 'Administer Scheduled update types'
+  description: 'Administer Scheduled update types.'
+
+view scheduled update entities:
+  title: 'View Scheduled update entities'
+
+permission_callbacks:
+  - \Drupal\scheduled_updates\Permissions::scheduledUpdateTypesPermissions
