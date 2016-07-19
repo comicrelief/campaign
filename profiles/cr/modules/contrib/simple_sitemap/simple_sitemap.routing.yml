@@ -20,6 +20,14 @@ simple_sitemap.settings:
   requirements:
     _permission: 'administer sitemap settings'
 
+simple_sitemap.settings_entities:
+  path: '/admin/config/search/simplesitemap/entities'
+  defaults:
+    _form: '\Drupal\simple_sitemap\Form\SimplesitemapEntitiesForm'
+    _title: 'Simple XML Sitemap Settings'
+  requirements:
+    _permission: 'administer sitemap settings'
+
 simple_sitemap.settings_custom:
   path: '/admin/config/search/simplesitemap/custom'
   defaults:
