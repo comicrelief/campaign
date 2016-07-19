@@ -24,6 +24,7 @@ config_devel:
   - media_entity.bundle.cr_external_file
   - field.storage.media.field_cr_external_file
   - field.storage.media.field_cr_ef_resource_category
+  - field.storage.media.field_cr_file_category
   - field.field.media.cr_external_file.field_cr_ef_resource_category
   - field.field.media.cr_external_file.field_cr_external_file
   - core.entity_form_display.media.cr_external_file.default
