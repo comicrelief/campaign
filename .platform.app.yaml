@@ -61,9 +61,7 @@ hooks:
     # We run deploy hooks after your application has been deployed and started.
     deploy: |
       cd public
-      drush -y cache-rebuild
-      drush -y config-import
-      drush -y updatedb
+      pwd
 
 # The configuration of scheduled execution.
 crons:
