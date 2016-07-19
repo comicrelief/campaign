@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\paragraphs\Plugin\EntityReferenceSelection\ParagraphsSelection.
- */
-
 namespace Drupal\paragraphs\Plugin\EntityReferenceSelection;
 
 use Drupal\Core\Entity\Plugin\EntityReferenceSelection\SelectionBase;
@@ -29,20 +24,14 @@ class ParagraphSelection extends SelectionBase {
    * {@inheritdoc}
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
-    $entity_manager = \Drupal::entityManager();
     $entity_type_id = $this->configuration['target_type'];
     $selection_handler_settings = $this->configuration['handler_settings'] ?: array();
-    $entity_type = $entity_manager->getDefinition($entity_type_id);
-    $bundles = $entity_manager->getBundleInfo($entity_type_id);
+    $bundles = \Drupal::service('entity_type.bundle.info')->getBundleInfo($entity_type_id);
 
     // Merge-in default values.
     $selection_handler_settings += array(
       'target_bundles' => array(),
       'target_bundles_drag_drop' => array(),
-      'add_mode' => PARAGRAPHS_DEFAULT_ADD_MODE,
-      'edit_mode' => PARAGRAPHS_DEFAULT_EDIT_MODE,
-      'title' => PARAGRAPHS_DEFAULT_TITLE,
-      'title_plural' => PARAGRAPHS_DEFAULT_TITLE_PLURAL,
     );
 
     $bundle_options = array();
@@ -69,25 +58,27 @@ class ParagraphSelection extends SelectionBase {
       '#access' => FALSE,
     );
 
-    $form['target_bundles_drag_drop'] = array(
-      '#element_validate' => array(array(__CLASS__, 'targetTypeValidate')),
-      '#type' => 'table',
-      '#header' => array(
-        t('Type'),
-        t('Weight'),
-      ),
-      '#attributes' => array(
-        'id' => 'bundles',
-      ),
-      '#prefix' => '<h5>' . t('Paragraph types') . '</h5>',
-      '#suffix' => '<div class="description">' . t('The paragraph types that are allowed to be created in this field. Select none to allow all paragraph types.') .'</div>',
-    );
+    if ($bundle_options) {
+      $form['target_bundles_drag_drop'] = [
+        '#element_validate' => [[__CLASS__, 'targetTypeValidate']],
+        '#type' => 'table',
+        '#header' => [
+          $this->t('Type'),
+          $this->t('Weight'),
+        ],
+        '#attributes' => [
+          'id' => 'bundles',
+        ],
+        '#prefix' => '<h5>' . $this->t('Paragraph types') . '</h5>',
+        '#suffix' => '<div class="description">' . $this->t('The paragraph types that are allowed to be created in this field. Select none to allow all paragraph types.') .'</div>',
+      ];
 
-    $form['target_bundles_drag_drop']['#tabledrag'][] = array(
-      'action' => 'order',
-      'relationship' => 'sibling',
-      'group' => 'bundle-weight',
-    );
+      $form['target_bundles_drag_drop']['#tabledrag'][] = [
+        'action' => 'order',
+        'relationship' => 'sibling',
+        'group' => 'bundle-weight',
+      ];
+    }
 
     uasort($bundle_options, 'Drupal\Component\Utility\SortArray::sortByWeightElement');
 
@@ -113,7 +104,7 @@ class ParagraphSelection extends SelectionBase {
         '#type' => 'weight',
         '#default_value' => (int) $bundle_info['weight'],
         '#delta' => $weight_delta,
-        '#title' => t('Weight for type @type', array('@type' => $bundle_info['label'])),
+        '#title' => $this->t('Weight for type @type', array('@type' => $bundle_info['label'])),
         '#title_display' => 'invisible',
         '#attributes' => array(
           'class' => array('bundle-weight', 'bundle-weight-' . $bundle_name),
@@ -123,10 +114,10 @@ class ParagraphSelection extends SelectionBase {
     }
 
     if (!count($bundle_options)) {
-      $form['allowed_bundles_explain'] = array(
+      $form['allowed_bundles_explain'] = [
         '#type' => 'markup',
-        '#markup' => t('You did not add any paragraph types yet, click !here to add one.', array('!here' => \Drupal::l(t('here'), new Url('paragraphs.type_add', array()))))
-      );
+        '#markup' => $this->t('You did not add any paragraph types yet, click <a href=":here">here</a> to add one.', [':here' => Url::fromRoute('paragraphs.type_add')->toString()]),
+      ];
     }
 
     return $form;
@@ -155,9 +146,7 @@ class ParagraphSelection extends SelectionBase {
 
       // All disabled = all enabled.
       if ($enabled === 0) {
-        foreach ($element_values as $machine_name => $bundle_info) {
-          $bundle_options[$machine_name] = $machine_name;
-        }
+        $bundle_options = NULL;
       }
     }
 

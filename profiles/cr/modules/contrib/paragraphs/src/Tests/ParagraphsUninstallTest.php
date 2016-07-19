@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\paragraphs\Tests\ParagraphsUninstallTest.
- */
 
 namespace Drupal\paragraphs\Tests;
 

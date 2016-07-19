@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\entity_reference_revisions\Plugin\views\row\EntityReference.
- */
-
 namespace Drupal\entity_reference_revisions\Plugin\views\row;
 
 use Drupal\Core\Form\FormStateInterface;
@@ -16,7 +11,7 @@ use Drupal\views\Plugin\views\row\Fields;
  * @ingroup views_row_plugins
  *
  * @ViewsRow(
- *   id = "entity_reference",
+ *   id = "entity_reference_revisions",
  *   title = @Translation("Entity Reference inline fields"),
  *   help = @Translation("Displays the fields with an optional template."),
  *   theme = "views_view_fields",

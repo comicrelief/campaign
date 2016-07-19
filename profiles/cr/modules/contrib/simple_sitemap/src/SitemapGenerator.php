@@ -59,28 +59,30 @@ class SitemapGenerator {
   }
 
   /**
-   * Collects entity metadata for entities that are set to be indexed
-   * and returns a batch-ready operation.
+   * Collects the entity path generating information from all simeple_sitemap
+   * plugins to be added to the batch.
    *
    * @return array $operations.
    */
   private function batchAddEntityTypePaths() {
-    $operations = [];
-    $sitemap_entity_types = Simplesitemap::getSitemapEntityTypes();
-    foreach($this->entityTypes as $entity_type_name => $bundles) {
-      if (isset($sitemap_entity_types[$entity_type_name])) {
-        $keys = $sitemap_entity_types[$entity_type_name]->getKeys();
-        $keys['bundle'] = $entity_type_name == 'menu_link_content' ? 'menu_name' : $keys['bundle']; // Menu fix.
-        foreach($bundles as $bundle_name => $bundle_settings) {
+
+    $manager = \Drupal::service('plugin.manager.simple_sitemap');
+    $plugins = $manager->getDefinitions();
+    $operations = array();
+
+    // Let all simple_sitemap plugins add their links to the sitemap.
+    foreach ($plugins as $link_generator_plugin) {
+      if (isset($this->entityTypes[$link_generator_plugin['id']])) {
+        $instance = $manager->createInstance($link_generator_plugin['id']);
+        foreach($this->entityTypes[$link_generator_plugin['id']] as $bundle => $bundle_settings) {
           if ($bundle_settings['index']) {
-            $operations[] = [
-              'entity_info' => [
-                'bundle_settings' => $bundle_settings,
-                'bundle_name' => $bundle_name,
-                'entity_type_name' => $entity_type_name,
-                'keys' => $keys,
-              ],
-            ];
+            $operation['query']['query'] = $instance->getQuery($bundle);
+            $operation['query']['field_info'] = $instance->getQueryInfo()['field_info'];
+            $operation['entity_info']['bundle_settings'] = $bundle_settings;
+            $operation['entity_info']['bundle_name'] = $bundle;
+            $operation['entity_info']['bundle_entity_type'] = $link_generator_plugin['id'];
+            $operation['entity_info']['entity_type_name'] = !empty($link_generator_plugin['entity_type_name']) ? $link_generator_plugin['entity_type_name'] : '';
+            $operations[] = $operation;
           }
         }
       }
@@ -94,32 +96,29 @@ class SitemapGenerator {
    *
    * @param array $links
    *  All links with their multilingual versions and settings.
-   * @param bool $remove_sitemap
-   *  Remove old sitemap from database before inserting the new one.
    */
   public static function generateSitemap($links, $remove_sitemap = FALSE) {
     // Invoke alter hook.
     \Drupal::moduleHandler()->alter('simple_sitemap_links', $links);
     $values = array(
-      'id' => $remove_sitemap ? 1 : \Drupal::service('database')->query('SELECT MAX(id) FROM {simple_sitemap}')->fetchField() + 1,
+      'id' => $remove_sitemap ? 1 : db_query('SELECT MAX(id) FROM {simple_sitemap}')->fetchField() + 1,
       'sitemap_string' => self::generateSitemapChunk($links),
       'sitemap_created' => REQUEST_TIME,
     );
-    if ($remove_sitemap) {
-      \Drupal::service('database')->truncate('simple_sitemap')->execute();
-    }
-    \Drupal::service('database')->insert('simple_sitemap')->fields($values)->execute();
+    if ($remove_sitemap)
+      db_truncate('simple_sitemap')->execute();
+    db_insert('simple_sitemap')->fields($values)->execute();
   }
 
   /**
    * Generates and returns the sitemap index for all sitemap chunks.
    *
-   * @param array $sitemap_chunks
+   * @param array $sitemap
    *  All sitemap chunks keyed by the chunk ID.
    *
    * @return string sitemap index
    */
-  public function generateSitemapIndex($sitemap_chunks) {
+  public function generateSitemapIndex($sitemap) {
     $writer = new XMLWriter();
     $writer->openMemory();
     $writer->setIndent(TRUE);
@@ -127,7 +126,7 @@ class SitemapGenerator {
     $writer->startElement('sitemapindex');
     $writer->writeAttribute('xmlns', self::XMLNS);
 
-    foreach ($sitemap_chunks as $chunk_id => $chunk_data) {
+    foreach ($sitemap as $chunk_id => $chunk_data) {
       $writer->startElement('sitemap');
       $writer->writeElement('loc', $GLOBALS['base_url'] . '/sitemaps/'
         . $chunk_id . '/' . 'sitemap.xml');

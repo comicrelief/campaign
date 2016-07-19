@@ -1,17 +1,14 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\paragraphs\Entity\Paragraph.
- */
-
 namespace Drupal\paragraphs\Entity;
 
-use Drupal\Core\Entity\EntityChangedTrait;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\entity_reference_revisions\EntityNeedsSaveInterface;
+use Drupal\entity_reference_revisions\EntityNeedsSaveTrait;
 use Drupal\paragraphs\ParagraphInterface;
 use Drupal\user\UserInterface;
 
@@ -40,6 +37,9 @@ use Drupal\user\UserInterface;
  *   revision_table = "paragraphs_item_revision",
  *   revision_data_table = "paragraphs_item_revision_field_data",
  *   translatable = TRUE,
+ *   entity_revision_parent_type_field = "parent_type",
+ *   entity_revision_parent_id_field = "parent_id",
+ *   entity_revision_parent_field_name_field = "parent_field_name",
  *   entity_keys = {
  *     "id" = "id",
  *     "uuid" = "uuid",
@@ -75,9 +75,19 @@ use Drupal\user\UserInterface;
  *   }
  * )
  */
-class Paragraph extends ContentEntityBase implements ParagraphInterface {
+class Paragraph extends ContentEntityBase implements ParagraphInterface, EntityNeedsSaveInterface {
 
-  use EntityChangedTrait;
+  use EntityNeedsSaveTrait;
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getParentEntity() {
+    if (!isset($this->get('parent_type')->value) || !isset($this->get('parent_id')->value)) {
+      return NULL;
+    }
+    return \Drupal::entityTypeManager()->getStorage($this->get('parent_type')->value)->load($this->get('parent_id')->value);
+  }
 
   /**
    * {@inheritdoc}
@@ -108,13 +118,6 @@ class Paragraph extends ContentEntityBase implements ParagraphInterface {
    */
   public function getCreatedTime() {
     return $this->get('created')->value;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getChangedTime() {
-    return $this->get('changed')->value;
   }
 
   /**
@@ -159,22 +162,6 @@ class Paragraph extends ContentEntityBase implements ParagraphInterface {
    */
   public function getData() {
     return $this->get('data')->value;
-  }
-
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getRevisionCreationTime() {
-    return $this->get('revision_timestamp')->value;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function setRevisionCreationTime($timestamp) {
-    $this->set('revision_timestamp', $timestamp);
-    return $this;
   }
 
   /**
@@ -281,24 +268,29 @@ class Paragraph extends ContentEntityBase implements ParagraphInterface {
       ->setDisplayConfigurable('view', TRUE)
       ->setDisplayConfigurable('form', TRUE);
 
-    $fields['changed'] = BaseFieldDefinition::create('changed')
-      ->setLabel(t('Changed'))
-      ->setDescription(t('The time that the Paragraph was last edited.'))
-      ->setRevisionable(TRUE)
-      ->setTranslatable(TRUE);
-
-    $fields['revision_timestamp'] = BaseFieldDefinition::create('created')
-      ->setLabel(t('Revision timestamp'))
-      ->setDescription(t('The time that the current revision was created.'))
-      ->setQueryable(FALSE)
-      ->setRevisionable(TRUE);
-
     $fields['revision_uid'] = BaseFieldDefinition::create('entity_reference')
       ->setLabel(t('Revision user ID'))
       ->setDescription(t('The user ID of the author of the current revision.'))
       ->setSetting('target_type', 'user')
       ->setQueryable(FALSE)
       ->setRevisionable(TRUE);
+
+    $fields['parent_id'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Parent ID'))
+      ->setDescription(t('The ID of the parent entity of which this entity is referenced.'))
+      ->setSetting('is_ascii', TRUE);
+
+    $fields['parent_type'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Parent type'))
+      ->setDescription(t('The entity parent type to which this entity is referenced.'))
+      ->setSetting('is_ascii', TRUE)
+      ->setSetting('max_length', EntityTypeInterface::ID_MAX_LENGTH);
+
+    $fields['parent_field_name'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Parent field name'))
+      ->setDescription(t('The entity parent field name to which this entity is referenced.'))
+      ->setSetting('is_ascii', TRUE)
+      ->setSetting('max_length', FieldStorageConfig::NAME_MAX_LENGTH);
 
     return $fields;
   }
