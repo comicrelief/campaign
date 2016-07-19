@@ -24,6 +24,16 @@ class SimplesitemapController extends ControllerBase {
   protected $sitemapGenerator;
 
   /**
+   * SimplesitemapController constructor.
+   *
+   * @param \Drupal\simple_sitemap\Simplesitemap $sitemap_generator
+   *   The sitemap generator.
+   */
+  public function __construct($sitemap_generator) {
+    $this->sitemapGenerator = $sitemap_generator;
+  }
+
+  /**
    * Returns the whole sitemap, a requested sitemap chunk, or the sitemap index file.
    *
    * @param int $sitemap_id
@@ -42,16 +52,6 @@ class SimplesitemapController extends ControllerBase {
     $meta_data = $response->getCacheableMetadata();
     $meta_data->addCacheTags(['simple_sitemap']);
     return $response;
-  }
-
-  /**
-   * SimplesitemapController constructor.
-   *
-   * @param \Drupal\simple_sitemap\Simplesitemap $sitemap_generator
-   *   The sitemap generator.
-   */
-  public function __construct($sitemap_generator) {
-    $this->sitemapGenerator = $sitemap_generator;
   }
 
   /**
