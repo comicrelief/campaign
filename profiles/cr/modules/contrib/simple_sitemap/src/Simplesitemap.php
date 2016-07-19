@@ -7,6 +7,7 @@
 namespace Drupal\simple_sitemap;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\Entity\ContentEntityTypeInterface;
 
 /**
  * Simplesitemap class.
@@ -26,14 +27,14 @@ class Simplesitemap {
    */
   function __construct(ConfigFactoryInterface $config_factory) {
     $this->config = $config_factory->get('simple_sitemap.settings');
-    $this->sitemap = db_query("SELECT * FROM {simple_sitemap}")->fetchAllAssoc('id');
+    $this->sitemap = \Drupal::service('database')->query("SELECT * FROM {simple_sitemap}")->fetchAllAssoc('id');
   }
 
   /**
    * Gets a specific sitemap configuration from the configuration storage.
    *
    * @param string $key
-   *  Configuration key, like 'entity_links'.
+   *  Configuration key, like 'entity_types'.
    * @return mixed
    *  The requested configuration.
    */
@@ -45,7 +46,7 @@ class Simplesitemap {
    * Saves a specific sitemap configuration to db.
    *
    * @param string $key
-   *  Configuration key, like 'entity_links'.
+   *  Configuration key, like 'entity_types'.
    * @param mixed $value
    *  The configuration to be saved.
    */
@@ -156,5 +157,37 @@ class Simplesitemap {
 
   public static function getDefaultLangId() {
     return \Drupal::languageManager()->getDefaultLanguage()->getId();
+  }
+
+  /**
+   * Returns objects of entity types that can be indexed by the sitemap.
+   *
+   * @return array
+   *  Objects of entity types that can be indexed by the sitemap.
+   */
+  public static function getSitemapEntityTypes() {
+    $entity_types = \Drupal::entityTypeManager()->getDefinitions();
+
+    foreach ($entity_types as $entity_type_id => $entity_type) {
+      if (!$entity_type instanceof ContentEntityTypeInterface || !method_exists($entity_type, 'getBundleEntityType')) {
+        unset($entity_types[$entity_type_id]);
+        continue;
+      }
+    }
+    return $entity_types;
+  }
+
+  public static function entityTypeIsAtomic($entity_type_id) { //todo: make it work with entity object as well
+    if ($entity_type_id == 'menu_link_content') // Menu fix.
+      return FALSE;
+    $sitemap_entity_types = self::getSitemapEntityTypes();
+    if (isset($sitemap_entity_types[$entity_type_id])) {
+      $entity_type = $sitemap_entity_types[$entity_type_id];
+      if (empty($entity_type->getBundleEntityType())) {
+        return TRUE;
+      }
+      return FALSE;
+    }
+    return FALSE; //todo: throw exception
   }
 }
