@@ -33,7 +33,7 @@ web:
         "/":
             # The folder to serve static assets for this location from.
             # (Relative to the application root.)
-            root: "public"
+            root: "/"
 
             # How long to allow static assets from this location to be cached.
             # (Can be a time or -1 for no caching. Times can be suffixed with
@@ -51,7 +51,7 @@ disk: 2048
 
 # The mounts that will be performed when the package is deployed.
 mounts:
-    "/public/sites/default/files": "shared:files/files"
+    "/sites/default/files": "shared:files/files"
     "/tmp": "shared:files/tmp"
     "/private": "shared:files/private"
     "/drush-backups": "shared:files/drush-backups"
@@ -60,8 +60,10 @@ mounts:
 hooks:
     # We run deploy hooks after your application has been deployed and started.
     deploy: |
-      cd public
-      pwd
+      ls -l
+      composer global require phing/phing
+      phing build:prepare
+
 
 # The configuration of scheduled execution.
 crons:
