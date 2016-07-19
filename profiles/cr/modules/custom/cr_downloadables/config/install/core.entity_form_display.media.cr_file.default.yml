@@ -4,7 +4,7 @@ dependencies:
   config:
     - field.field.media.cr_file.field_cr_field_display_title
     - field.field.media.cr_file.field_cr_file
-    - field.field.media.cr_file.field_cr_file_resource_category
+    - field.field.media.cr_file.field_cr_file_category
     - media_entity.bundle.cr_file
   module:
     - file
@@ -26,19 +26,16 @@ content:
     third_party_settings: {  }
     type: string_textfield
   field_cr_file:
-    weight: 2
+    weight: 3
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
     type: file_generic
-  field_cr_file_resource_category:
-    weight: 3
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
+  field_cr_file_category:
+    weight: 2
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_select
   name:
     type: string_textfield
     weight: 0

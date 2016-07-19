@@ -4,7 +4,7 @@ dependencies:
   config:
     - field.field.media.cr_file.field_cr_field_display_title
     - field.field.media.cr_file.field_cr_file
-    - field.field.media.cr_file.field_cr_file_resource_category
+    - field.field.media.cr_file.field_cr_file_category
     - media_entity.bundle.cr_file
 id: media.cr_file.default
 targetEntityType: media
@@ -26,9 +26,15 @@ content:
       link: false
     third_party_settings: {  }
     type: entity_reference_entity_view
+  field_cr_file_category:
+    weight: 2
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
 hidden:
   created: true
-  field_cr_file_resource_category: true
   name: true
   social_links: true
   thumbnail: true
