@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Tests for devel module.
- */
-
 namespace Drupal\devel\Tests;
 
 use Drupal\devel\Plugin\Mail\DevelMailLog;

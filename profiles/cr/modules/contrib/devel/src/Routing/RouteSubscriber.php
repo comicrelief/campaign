@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\devel\Routing\RouteSubscriber.
- */
-
 namespace Drupal\devel\Routing;
 
 use Drupal\Core\Entity\EntityTypeInterface;

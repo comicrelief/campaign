@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Unish\DevelGenerateUnishTest.
- */
-
 namespace Unish;
 
 if (class_exists('Unish\CommandUnishTestCase')) {
@@ -73,6 +68,59 @@ if (class_exists('Unish\CommandUnishTestCase')) {
 
       $this->drush('gent', ['tags', '1'], $this->getOptions());
       $this->assertContains('Created the following new terms:', $this->getErrorOutput());
+    }
+
+    /**
+     * Tests devel generate contents.
+     */
+    public function testDevelGenerateContents() {
+      $this->drush('pm-enable', ['node'], $this->getOptions());
+
+      $eval_content_count = "return \\Drupal::entityQuery('node')->count()->execute();";
+      $eval_options = $this->getOptions() + ['format' => 'string'];
+
+      // Try to generate 10 content of type "page" or "article"
+      $this->drush('generate-content', [10], $this->getOptions(), NULL, NULL, static::EXIT_SUCCESS);
+      $this->assertContains('Finished creating 10 nodes', $this->getErrorOutput());
+      $this->drush('php-eval', [$eval_content_count], $eval_options);
+      $this->assertEquals(10, $this->getOutput());
+
+      // Try to generate 1 content of type "page" or "article"
+      $this->drush('generate-content', [1], $this->getOptions(), NULL, NULL, static::EXIT_SUCCESS);
+      $this->assertContains('1 node created.', $this->getErrorOutput());
+      $this->drush('php-eval', [$eval_content_count], $eval_options);
+      $this->assertEquals(11, $this->getOutput());
+
+      // Try to generate 5 content of type "page" or "article", removing all
+      // previous contents.
+      $this->drush('generate-content', [5], $this->getOptions(TRUE), NULL, NULL, static::EXIT_SUCCESS);
+      $this->assertContains('Finished creating 5 nodes', $this->getErrorOutput());
+      $this->drush('php-eval', [$eval_content_count], $eval_options);
+      $this->assertEquals(5, $this->getOutput());
+
+      // Try to generate other 5 content with "crappy" type. Output should
+      // remains 5.
+      $generate_content_wrong_ct = $this->getOptions(TRUE) + ['types' => 'crappy'];
+      $this->drush('generate-content', [5], $generate_content_wrong_ct, NULL, NULL, static::EXIT_ERROR);
+      $this->assertContains('One or more content types have been entered that don', $this->getErrorOutput());
+      $this->drush('php-eval', [$eval_content_count], $eval_options);
+      $this->assertEquals(5, $this->getOutput());
+
+      // Try to generate other 5 content with empty types. Output should
+      // remains 5.
+      $generate_content_no_types = $this->getOptions(TRUE) + ['types' => ''];
+      $this->drush('generate-content', [5], $generate_content_no_types, NULL, NULL, static::EXIT_ERROR);
+      $this->assertContains('No content types available', $this->getErrorOutput());
+      $this->drush('php-eval', [$eval_content_count], $eval_options);
+      $this->assertEquals(5, $this->getOutput());
+
+      // Try to generate other 5 content without any types. Output should
+      // remains 5.
+      $generate_content_no_types = $this->getOptions(TRUE) + ['types' => NULL];
+      $this->drush('generate-content', [5], $generate_content_no_types, NULL, NULL, static::EXIT_ERROR);
+      $this->assertContains('Wrong syntax or no content type selected. The correct syntax uses', $this->getErrorOutput());
+      $this->drush('php-eval', [$eval_content_count], $eval_options);
+      $this->assertEquals(5, $this->getOutput());
     }
 
     /**

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\devel_generate\Annotation\DevelGenerate.
- */
-
 namespace Drupal\devel_generate\Annotation;
 
 use Drupal\Component\Annotation\Plugin;
