@@ -27,9 +27,9 @@ content:
       override_labels: true
       label_singular: Partner
       label_plural: Partners
-      allow_new: true
       allow_existing: true
       match_operator: CONTAINS
+      allow_new: false
     third_party_settings: {  }
     type: inline_entity_form_complex
 hidden:
