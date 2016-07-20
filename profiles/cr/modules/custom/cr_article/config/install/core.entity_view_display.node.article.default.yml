@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.article.field_article_publish_date
     - field.field.node.article.field_article_tags
     - field.field.node.article.field_youtube_url
+    - field.field.node.article.publishing_date
     - node.type.article
   module:
     - datetime
@@ -199,4 +200,5 @@ content:
     third_party_settings: {  }
 hidden:
   field_article_tags: true
+  publishing_date: true
   social_links: true

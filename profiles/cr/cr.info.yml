@@ -60,6 +60,7 @@ dependencies:
   - view_modes_display
   - social_links
   - focal_point
+  - scheduled_updates
   - cookieconsent
   - simple_sitemap
 
