@@ -24,12 +24,12 @@ content:
     weight: 1
     settings:
       form_mode: default
-      label_singular: ''
-      label_plural: ''
+      override_labels: true
+      label_singular: Partner
+      label_plural: Partners
+      allow_new: true
       allow_existing: true
       match_operator: CONTAINS
-      override_labels: false
-      allow_new: true
     third_party_settings: {  }
     type: inline_entity_form_complex
 hidden:
