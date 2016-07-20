@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.partner.field_partner_website
     - node.type.partner
   module:
+    - ds
     - panelizer
     - responsive_image
     - user
@@ -18,6 +19,22 @@ third_party_settings:
   panelizer:
     enable: false
     custom: false
+  ds:
+    layout:
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
+      library: ''
+      disable_css: false
+      settings:
+        classes: {  }
+        wrappers: {  }
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+    regions:
+      ds_content:
+        - field_partner_logo
 id: node.partner.logos
 targetEntityType: node
 bundle: partner
