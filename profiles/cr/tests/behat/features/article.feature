@@ -40,12 +40,47 @@ Feature: Article
     And the metatag property "og:image" should contain the value "news/2016-02/greg_james_gregathlon_belfast_and_so_it_begins"
     And the metatag property "og:url" should contain the value "whats-going-on/greg-james-begins-his-gregathlon-sport-relief"
 
+  @api @javascript
+  Scenario: Create news articles using scheduled updates
+    Given I am logged in as a user with the "editor" role
+    And I am on "node/add/article"
+    And I enter "Test Scheduled article" for "edit-title-0-value"
+    And I press "Add new Publishing Date"
+    And I wait for AJAX loading to finish
+    Then I should see "Update Date/time"
+    And I enter todays date for "publishing_date[form][inline_entity_form][update_timestamp][0][value][date]"
+    And I enter the time for "publishing_date[form][inline_entity_form][update_timestamp][0][value][time]"
+    And I press "Create Publishing Date"
+    And I wait for AJAX loading to finish
+    Then I should see "PUBLISHING DATE"
+    # cookie message prevents selenium clicking save as unpublished button
+    And I close cookie message
+    And I enter "tag1" for "edit-field-article-tags-target-id"
+    And I scroll ".unpublish input" into view
+    And press "Save as unpublished"
+    # check the content cannot be seen if logged out
+    Given I am not logged in
+    And I am on "whats-going-on"
+    Then I should not see "Test Scheduled article"
+    # wait till content should be published then log back in
+    And I wait for "30" seconds
+    And I am logged in as a user with the "administrator" role
+    # run cron and clear caches
+    And am on "admin/config/system/cron"
+    And press "Run cron"
+    And I wait for AJAX loading to finish
+    Then I should see "Cron ran successfully."
+    And the cache has been cleared
+    # logout and see the article loaded
+    Given I am not logged in
+    And I am on "whats-going-on/test-scheduled-article"
+    Then I should see "Test Scheduled article"
+
   @api
   Scenario: Create news articles that are linked together via a common tag
     Given a "tags" term with the name "Fundraising"
     When I am viewing a "article" content:
     | title       | Comic Relief raises £1bn over 30-year existence |
-    | field_article_publish_date | 2015-02-08 17:45:00                       |
     | field_article_intro | Since the charity was founded 30 years ago, with more than £78m raised. |
     | body | Comic Relief founder Richard Curtis said he was "enormously proud" of the charity's achievements. |
     | field_article_image | http://dummyimage.com/400x4:3 |
@@ -68,4 +103,5 @@ Feature: Article
     And the cache has been cleared
     And I click "Comic Relief raises £1bn over 30-year existence"
     Then I should see "Celebrities come together for a stellar Night of TV for Sport Relief"
+
 

@@ -53,6 +53,8 @@ projects:
     version: 1.x-dev
   social_links:
     version: 1.x-dev
+  scheduled_updates:
+    version: 1.0-alpha5
   diff:
     version: 1.0-alpha2
   view_mode:
