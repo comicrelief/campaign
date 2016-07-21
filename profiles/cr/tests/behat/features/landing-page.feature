@@ -41,7 +41,8 @@ Feature: Landing-page
 
   @api @functionality
   Scenario: Create landing page with associated paragraphs
-    Given I am viewing a "landing" content with "Test landing page" title and "http://dummyimage.com/600x16:9" image and "<h1>Behat or Liv?</h1><h2>Spot the five differences!</h2>" body and with the following paragraphs:
+    Given I am logged in as a user with the "Administrator" role
+    And I am viewing a "landing" content with "Test landing page" title and "http://dummyimage.com/600x16:9" image and "<h1>Behat or Liv?</h1><h2>Spot the five differences!</h2>" body and with the following paragraphs:
       | type | title | image | body | variant | bg_color | featured | image_right |
       | cr_single_message_row | SMR Title | http://dummyimage.com/400x16:9 | Title above image right | title-above-image-right | | | |
       | cr_single_message_row | SMR Title 2 | http://dummyimage.com/400x16:9 | Title inside image left | title-inside-image-left | | | |
@@ -57,19 +58,12 @@ Feature: Landing-page
     And I should see "SMR Title"
     And I should see "Title above image right"
     And I should see "Centred, text only, image optional"
-
-  @api @content
-  Scenario: Add a partner logo
-    Given I am logged in as a user with the "Administrator" role
     And I am on "/test-landing-page"
     And I click "Edit"
+    And I press the "Add Partner list" button
     And I press the "Add existing Partner" button
-    And I fill in "field_paragraphs[0][subform][field_partner_list][form][entity_id]" with "Three (4)"
+    And I fill in "field_paragraphs[8][subform][field_partner_list][form][entity_id]" with "Three (4)"
     And I press the "Add Partner" button
     And I press the "Save and keep published" button
     Then I should see the image "sites/default/files/partner/logo/3_49_82.gif"
-    And I click "Edit"
-    And I press the "edit-field-paragraphs-0-subform-field-partner-list-entities-0-actions-ief-entity-remove" button
-    And I press the "Save and keep published" button
-    Then I should not see the image "sites/default/files/partner/logo/3_49_82.gif"
 
