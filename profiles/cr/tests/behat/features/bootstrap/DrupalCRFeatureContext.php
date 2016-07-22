@@ -98,13 +98,13 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
   */
   public function iWaitForSeconds($arg1) {
     sleep($arg1);
-  } 
+  }
 
   /**
-  * @Given I scroll :elementId into view
-  *
-  * Scroll to the id of an element, selenium will not do this for you
-  */
+   * @Given I scroll :elementId into view
+   *
+   * Scroll to the id of an element, selenium will not do this for you
+   */
   public function scrollIntoView($elementId) {
     $elem = $this->getSession()->getPage()->find('css', $elementId);
     $elem->focus();
@@ -185,14 +185,14 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
    */
   public function assertParagraphs($type, $title, $image, $body, TableNode $paragraphs) {
     // First, create a landing page node.
-    $node = (object) array(
+    $node = (object) [
       'title' => $title,
       'type' => $type,
       'uid' => 1,
-    );
+    ];
     $node = $this->nodeCreate($node);
 
-    $paragraph_items = array();
+    $paragraph_items = [];
 
     // Create paragraphs
     foreach ($paragraphs->getHash() as $paragraph) {
@@ -315,6 +315,25 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
       'title' => 'Behat test image',
     );
     return $return;
+  }
+
+  /**
+   * @Then I should see the image :Uri
+   *
+   * Scroll to the id of an element, selenium will not do this for you
+   */
+  public function FindImage($uri) {
+    return $this->getSession()->getPage()
+      ->find('xpath', '/img[@src="' . $uri . '"]');
+  }
+  /**
+   * @Then I should not see the image :Uri
+   *
+   * Scroll to the id of an element, selenium will not do this for you
+   */
+  public function NotFindImage($uri) {
+    return !$this->getSession()->getPage()
+      ->find('xpath', '/img[@src="' . $uri . '"]');
   }
 
 }
