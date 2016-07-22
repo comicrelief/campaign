@@ -7,16 +7,16 @@ global-css:
       libraries/lightcase/css/lightcase.css: { weight: -5}
 
 global-js:
+  js:
+    libraries/lightcase/js/lightcase.js: {}
+    js/campaign_base.min.js: {}
   dependencies:
     - core/jquery
     - core/jquery.once
+    - core/drupal
     - core/modernizr
     - core/jquery.ui
     - core/jquery.ui.selectmenu
-    - core/drupal
-  js:
-    libraries/lightcase/js/lightcase.js: { weight: -20}
-    js/campaign_base.min.js: { weight: 0}
 
 platform:
   js:
