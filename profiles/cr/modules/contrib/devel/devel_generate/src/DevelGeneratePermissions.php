@@ -1,14 +1,8 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\devel_generate\DevelGeneratePermissions.
- */
-
 namespace Drupal\devel_generate;
 
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
-use Drupal\devel_generate\DevelGeneratePluginManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**

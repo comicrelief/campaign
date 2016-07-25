@@ -1,11 +1,7 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\devel_generate\DevelGenerateInterface.
- */
-
 namespace Drupal\devel_generate;
+
 use Drupal\Component\Plugin\PluginInspectionInterface;
 use Drupal\Core\Form\FormStateInterface;
 

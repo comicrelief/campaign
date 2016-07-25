@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- *
- * Definition of \Drupal\devel_generate\Routing\DevelGenerateRouteSubscriber.
- */
 namespace Drupal\devel_generate\Routing;
 
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;

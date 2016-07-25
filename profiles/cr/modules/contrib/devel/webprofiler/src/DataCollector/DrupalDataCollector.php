@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\DataCollector\DataCollector;
 use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Exception\RuntimeException;
 use Symfony\Component\Process\Process;
 
 /**
@@ -58,6 +59,8 @@ class DrupalDataCollector extends DataCollector implements DrupalDataCollectorIn
       $process->mustRun();
       $this->data['abbr_git_commit'] = $process->getOutput();
     } catch (ProcessFailedException $e) {
+      $this->data['git_commit'] = $this->data['git_commit_abbr'] = NULL;
+    } catch (RuntimeException $e) {
       $this->data['git_commit'] = $this->data['git_commit_abbr'] = NULL;
     }
   }

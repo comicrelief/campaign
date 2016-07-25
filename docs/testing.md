@@ -3,15 +3,21 @@
 ### Installation
 
 	brew install selenium-server-standalone
-	... (add in chrome driver, Matt?)
+	brew install chromedriver
 	
 Now, launch selenium
 
-	selenium-server -port 4444`
+	selenium-server -port 4444
 	
 ### Running tests
 
 	phing test
+	
+### List step definitions
+
+  phing test:dl
+  or
+  ./vendor/bin/behat -dl
 
 ### Typical Behat steps
 

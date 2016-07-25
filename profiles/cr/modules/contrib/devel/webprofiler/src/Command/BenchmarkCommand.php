@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\webprofiler\Command\BenchmarkCommand.
- */
-
 namespace Drupal\webprofiler\Command;
 
 use GuzzleHttp\ClientInterface;

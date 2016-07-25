@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\devel_generate\DevelGenerateBase.
- */
-
 namespace Drupal\devel_generate;
 
 use Drupal\Component\Utility\Random;

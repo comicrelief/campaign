@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\devel\Plugin\Mail\DevelMailLog.
- */
-
 namespace Drupal\devel\Plugin\Mail;
 
 use Drupal\Component\Utility\Unicode;
