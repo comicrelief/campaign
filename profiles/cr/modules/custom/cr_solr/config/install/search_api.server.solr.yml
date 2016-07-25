@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - search_api_solr
+id: solr
+name: Solr
+description: ''
+backend: search_api_solr
+backend_config:
+  scheme: http
+  host: solr
+  port: '8983'
+  path: /solr/
+  core: rnd17
+  username: ''
+  password: ''
+  retrieve_data: false
+  highlight_data: false
+  excerpt: false
+  skip_schema_check: false
+  solr_version: ''
+  http_method: AUTO
+  site_hash: false
+  autocorrect_spell: true
+  autocorrect_suggest_words: true

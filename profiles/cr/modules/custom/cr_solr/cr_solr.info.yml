@@ -6,6 +6,8 @@ core: '8.x'
 
 dependencies:
   - search_api_solr
+  - cr_search
 
 config_devel:
   - search_api.server.solr
+  - search_api.index.solr_content
