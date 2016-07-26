@@ -32,8 +32,11 @@ function cr_update_8002() {
 }
 
 /**
- * Purge youtube
+ * Remove field_youtube_url and uninstall youtube module
  */
 function cr_update_8003() {
+  $field = Drupal\field\Entity\FieldStorageConfig::loadByName('node', 'field_youtube_url');
+  $field->delete();
+  field_purge_batch('field_youtube_url');
   \Drupal::service('module_installer')->uninstall(['youtube']);
 }
