@@ -54,6 +54,7 @@ dependencies:
   - social_links
   - crop
   - focal_point
+  - scheduled_updates
   - cookieconsent
   - simple_sitemap
 
