@@ -5,19 +5,45 @@
 
 
 
-    // TODO: implemented as Drupal behaviour within navigation module
-    $('.menu--main .menu-item--expanded > a').on('click', function(e){
 
-      // Prevent our parent item from acting as link, user
-      // able to link to parent content with duplicate link within the ul (hook to be developed)
+    /* NAV */
+    $('.menu--main .menu-item--expanded > ul.menu').each( function (){
+      // Store height as data-attribute, then set max-height to 0
+      $(this)
+        .attr("data-menu-height", $(this).height())
+          .css("max-height", 0);
+    });
+
+
+    // TODO: implemented as Drupal behaviour within navigation module
+    $('.menu--main .menu-item--expanded > a').on('click', function(e) {
+      
+      // TODO: only on mobile menu
       e.preventDefault();
 
-      // Close any open nav items
-      $('.menu--main .menu-item--expanded > ul.menu').removeClass('active');
+      $thisMenu = $(this).next('ul.menu');
 
-      // Active the selected menu
-      $(this).next('ul.menu').addClass('active');
+      // Set our max-height dynamically based on actual height stored earlier
+      var thisMenuHeight =  $thisMenu.attr("data-menu-height");
+      // Current height of menu
+      var thisCurrentHeight = $thisMenu.height();
+
+      // Update current height to toggle between the 2 values
+      thisCurrentHeight = thisMenuHeight == thisCurrentHeight ? 0 : thisMenuHeight;
+
+      $thisMenu.css("max-height", thisCurrentHeight + "px").toggleClass('active');
+
+      // Close any open nav items
+      $('.menu--main .menu-item--expanded > a')
+        .not(this)
+          .next('ul.menu')
+            .removeClass('active')
+              .css("max-height", 0);
+              
     });
+
+
+    /* END OF NAV */
 
   });
 })(jQuery, Drupal);

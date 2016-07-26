@@ -17,6 +17,7 @@
   margin: 0 auto;
 }
 
+
 header[role=banner] {
   overflow: visible!important;
   padding-bottom: 0!important;
@@ -39,6 +40,7 @@ header[role=banner] {
   background: $white;
   color: $black;
   display: block;
+  z-index: 1;
 
   // 'Mobile' nav
   ul.menu {
@@ -58,15 +60,16 @@ header[role=banner] {
       // Hide sub menus, but set up for CSS3 animations, using JS-added
       // 'active' class to allow 'hover'-style state on touch devices
       > ul.menu {
-        max-height: 0;
+        //max-height: 0;
         overflow: hidden;        
         -webkit-transform: translateZ(0);
-         @include transition(all 300ms ease);
+         @include transition(all 500ms ease);
         background-color: $gainsboro-grey;
 
         &.active {
-          max-height: 500px;
-          display: block;
+          // Overidden by JS dynamically
+          //max-height: 400px;
+          //display: block;
         }
       }
     }
@@ -74,7 +77,7 @@ header[role=banner] {
 
 
   // 'Desktop' nav for now; will need adjusting for large tablets
-  @include breakpoint($screen-md, $no-query: true) {
+  @include breakpoint($screen-lg, $no-query: true) {
     position: relative;
     top: 0;
     display: block!important;
@@ -147,20 +150,20 @@ header[role=banner] {
   ul {
     li {
 
-
       a {
         display: block;
         padding: 15px 10px;
         padding: 20px 0 44px;
         text-decoration: none;
         color: $black;
-        border-bottom: 2px solid transparent;
+        //border-bottom: 2px solid transparent;
         font-size: 18px;
 
-        @include transition(border-bottom 180ms);
-        @include breakpoint($screen-md, $no-query: true) {
+        @include breakpoint($screen-lg, $no-query: true) {
           padding: 20px 0 4px;
           font-size: 14px;
+          @include transition(border-bottom 180ms);
+
         }
         &:hover {
           text-decoration: none;
