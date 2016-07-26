@@ -30,3 +30,10 @@ function cr_update_8001() {
 function cr_update_8002() {
   \Drupal::service('module_installer')->install(['cr_cards', 'cr_single_msg']);
 }
+
+/**
+ * Purge youtube
+ */
+function cr_update_8003() {
+  \Drupal::service('module_installer')->uninstall(['youtube']);
+}
