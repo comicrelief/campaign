@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\devel\Plugin\Block\SwitchUserBlock.
- */
-
 namespace Drupal\devel\Plugin\Block;
 
 use Drupal\Component\Render\FormattableMarkup;

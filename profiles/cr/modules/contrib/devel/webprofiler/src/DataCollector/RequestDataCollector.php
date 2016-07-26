@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\webprofiler\DataCollector\RequestDataCollector.
- */
-
 namespace Drupal\webprofiler\DataCollector;
 
 use Drupal\Core\Controller\ControllerResolverInterface;

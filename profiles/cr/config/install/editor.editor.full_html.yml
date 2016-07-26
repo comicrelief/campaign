@@ -24,9 +24,9 @@ settings:
         -
           name: Alignment
           items:
-            - JustifyRight
-            - JustifyCenter
             - JustifyLeft
+            - JustifyCenter
+            - JustifyRight
         -
           name: Linking
           items:

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\devel_generate\Plugin\DevelGenerate\VocabularyDevelGenerate.
- */
-
 namespace Drupal\devel_generate\Plugin\DevelGenerate;
 
 use Drupal\Component\Utility\Unicode;

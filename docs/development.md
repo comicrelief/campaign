@@ -29,6 +29,15 @@ And we then export these to code, using
 
 	> drush cde cr_article
 
+On running this command if you get the following error:
+
+	> Command cdi needs the following extension(s) enabled to run: config_devel.
+	The drush command 'cdi cr_article' could not be executed.
+
+Then clear your cache by running the below command:
+
+	> drush cr
+
 You can now check the updated `.yml` files in `cr_article/config/install`, and commit these to git.
 
 When you want to do the opposite action (e.g. the `features-revert` functionality), you can use

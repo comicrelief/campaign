@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\devel_dumper_test\Plugin\Devel\Dumper\NotAvailableTestDumper.
- */
-
 namespace Drupal\devel_dumper_test\Plugin\Devel\Dumper;
 
 use Drupal\devel\DevelDumperBase;

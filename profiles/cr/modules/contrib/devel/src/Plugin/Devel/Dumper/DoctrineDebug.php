@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\devel\Plugin\Devel\Dumper\DoctrineDebug.
- */
-
 namespace Drupal\devel\Plugin\Devel\Dumper;
 
 use Doctrine\Common\Util\Debug;

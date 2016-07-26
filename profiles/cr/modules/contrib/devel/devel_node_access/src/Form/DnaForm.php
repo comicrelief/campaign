@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\devel_node_access\Form\DnaForm.
- */
-
 namespace Drupal\devel_node_access\Form;
 
 use Drupal\Core\Form\FormBase;
