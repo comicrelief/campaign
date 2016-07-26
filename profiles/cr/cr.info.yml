@@ -49,7 +49,6 @@ dependencies:
   - metatag_open_graph
   - pathauto
   - redirect
-  - youtube
   - view_modes_display
   - social_links
   - focal_point
