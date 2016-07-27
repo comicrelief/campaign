@@ -1,10 +1,10 @@
 ### Drafting Releases
  
 Release are to happen every Monday, end of play.
-Head over to Github and draft a new release 
-Review JIRA and make sure ALL issues have been tagged with the new release, for example 1.2
-Add all pull requests and their associated JIRA tickets to the release notes, for example 1.2
-Proceed to the Product release process documentation to complete the weekly release.
+- Head over to Github and draft a [new release](https://github.com/comicrelief/campaign/releases/new) 
+- [Review JIRA](http://jira.comicrelief.com/browse/PLAT) and make sure ALL issues have been tagged with the new release, for example 1.2
+- Add all pull requests and their associated JIRA tickets to the release notes, for example [1.2](https://github.com/comicrelief/campaign/releases/tag/1.2)
+- Proceed to the Product release process documentation below to complete the weekly release.
 
 ### Deploying to Staging
 Before a site instance deployment can happen, a Campaign profile release must be drafted.
@@ -27,7 +27,7 @@ Note: The build artifact id will be output to the #craftlogs Slack channel once 
 
 ### Deploying to Production
 Assuming the release branch that was deployed to staging in the previous steps has passed QA and all feed back has been prioritised and actioned, we are ready to move to production.
-- Create the new release tag via Github making sure to note down the Campaign profile version along with any important information related to this release, for example 1.2
+- Create the new release tag via [Github](https://github.com/comicrelief/rnd17/releases/new) making sure to note down the [Campaign profile](https://github.com/comicrelief/campaign/releases) version along with any important information related to this release, for example [1.2](https://github.com/comicrelief/rnd17/releases/tag/1.2)
 - Create a build artifact for your tag using the following command:
 `/build rnd17 [tag (e.g 1.2)]`
 - Wait for the build to complete and deploy the build artifact to the production environment using the following command: 
