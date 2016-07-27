@@ -51,6 +51,7 @@ dependencies:
   - redirect
   - view_modes_display
   - social_links
+  - crop
   - focal_point
   - scheduled_updates
   - cookieconsent
