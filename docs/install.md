@@ -94,7 +94,11 @@ Grunt is simply used to monitor changes in front-end asset files and trigger tas
 
 ##### Install npm & Bundler
 
-From the root of the repo run:
+```bash
+gem install bundler
+```
+
+Then from the root of the repo run:
 
 ```bash
 phing build:prepare
