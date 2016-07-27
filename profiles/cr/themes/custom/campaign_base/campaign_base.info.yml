@@ -20,6 +20,9 @@ stylesheets-remove:
   - core/modules/views/css/views.module.css
   - core/themes/classy/css/components/item-list.css
 
+ckeditor_stylesheets:
+  - css/styles.css
+
 regions:
   header_top: Top Header
   header: Header
