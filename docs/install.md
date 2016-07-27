@@ -92,7 +92,9 @@ And now adapt `build.properties` adding in your Drush 8 binary location, databas
 
 Grunt is simply used to monitor changes in front-end asset files and trigger tasks to build the theme, e.g. compile css, minifying js, etc.
 
-##### Install npm & Bundler
+##### Install Node, npm & Bundler
+
+Install Node and npm: https://nodejs.org/en/download/
 
 ```bash
 gem install bundler
