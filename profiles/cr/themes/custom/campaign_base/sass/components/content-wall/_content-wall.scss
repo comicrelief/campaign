@@ -28,7 +28,6 @@
     }
     &:hover .cw-article__body--hide-show {
       top: 0!important;
-      border-top: none;
       p,
       a {
         @include opacity(1);
@@ -43,16 +42,6 @@
     }
     .cw-first-col {
       height: 345px;
-    }
-  }
-  @include breakpoint($screen-lg) {
-    height: 440px;
-    .cw-article__image {
-      // for img to fill area when not set by js
-      height: 440px;
-    }
-    .cw-first-col {
-      height: 440px;
     }
   }
   .media-player {
@@ -112,13 +101,11 @@
 }
 .cw-article__body {
   padding: 16px 20px 20px;
-  border-top: 4px solid $red;
   background: $white;
 
   @include breakpoint($screen-md) {
     height: 100%;
     padding: 15px;
-    background: $cw-grey;
     &.cw-article__body--over {
       position: absolute;
       top: 0;
@@ -127,7 +114,6 @@
       padding: 20px;
     }
     &.cw-article__body--no-top {
-      border-top: none;
     }
     &.cw-article__body--hide-show {
       position: absolute;
