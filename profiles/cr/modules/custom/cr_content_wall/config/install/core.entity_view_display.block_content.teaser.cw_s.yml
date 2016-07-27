@@ -8,6 +8,7 @@ dependencies:
     - field.field.block_content.teaser.field_teaser_image
     - field.field.block_content.teaser.field_teaser_link
     - field.field.block_content.teaser.field_teaser_title
+    - responsive_image.styles.cw_4_3_image
   module:
     - ds
     - link
@@ -42,10 +43,9 @@ mode: cw_s
 content:
   body:
     label: hidden
-    type: text_trimmed
+    type: text_default
     weight: 2
-    settings:
-      trim_length: 140
+    settings: {  }
     third_party_settings: {  }
   field_teaser_image:
     weight: 1
@@ -73,5 +73,8 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-hidden:
-  social_links: true
+  social_links:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }
