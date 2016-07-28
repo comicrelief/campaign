@@ -14,9 +14,10 @@ build:
 # The build-time dependencies of the app.
 dependencies:
     php:
-        "drush/drush": "^8.0"
-        "drupal/console": "^0.10"
-        "phing/phing": "*"
+        drush/drush: "^8.0"
+        drupal/console: "^0.10"
+    nodejs:
+        grunt-cli: "~0.1.13"
 
 # The relationships of the application with services or other applications.
 # The left-hand side is the name of the relationship as it will be exposed
