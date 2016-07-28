@@ -16,6 +16,7 @@ dependencies:
     php:
         "drush/drush": "^8.0"
         "drupal/console": "^0.10"
+        "phing/phing": "*"
 
 # The relationships of the application with services or other applications.
 # The left-hand side is the name of the relationship as it will be exposed
@@ -61,7 +62,6 @@ hooks:
     # We run deploy hooks after your application has been deployed and started.
     deploy: |
       ls -l
-      composer global require phing/phing
       phing build:prepare
 
 
