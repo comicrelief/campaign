@@ -31,7 +31,7 @@ rm -fr sites/default/settings.php
 php -d sendmail_path=$(which true) ~/.composer/vendor/bin/drush.php --verbose --yes site-install $DRUPAL_TI_MODULE_NAME --db-url="$DRUPAL_TI_DB_URL"
 drush use $(pwd)#default
 # Render themes
-phing grunt:build
+# phing grunt:build
 # Clear caches and run a web server.
 drupal_ti_clear_caches
 drupal_ti_run_server

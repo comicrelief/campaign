@@ -117,7 +117,7 @@ before_install:
 install:
   - drupal-ti install
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_install.sh
-  - phing build:prepare
+  - phing build:prepare:no-gems
 
 before_script:
   # Check code quality
