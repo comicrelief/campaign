@@ -1,4 +1,3 @@
-{# Kint is not working in media, need help to output values from content.field_cr_file #}
-<a href="{{ content.field_cr_file }}">{{ content.field_cr_field_display_title }}</a> <span class="file-size">({{ content.field_cr_file.file_size }})</span>
-
-{{ dump() }}
+<div {{ attributes.addClass('clearfix cw-region') }}>
+	{{ ds_content }}
+</div>
