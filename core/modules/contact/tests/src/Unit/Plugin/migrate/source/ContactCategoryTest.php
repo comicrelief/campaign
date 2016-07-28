@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\contact\Unit\Plugin\migrate\source\ContactCategoryTest.
- */
-
 namespace Drupal\Tests\contact\Unit\Plugin\migrate\source;
 
 use Drupal\contact\Plugin\migrate\source\ContactCategory;
@@ -30,7 +25,7 @@ class ContactCategoryTest extends MigrateSqlSourceTestCase {
     array(
       'cid' => 1,
       'category' => 'contact category value 1',
-      'recipients' => array('admin@example.com','user@example.com'),
+      'recipients' => array('admin@example.com', 'user@example.com'),
       'reply' => 'auto reply value 1',
       'weight' => 0,
       'selected' => 0,
@@ -38,7 +33,7 @@ class ContactCategoryTest extends MigrateSqlSourceTestCase {
     array(
       'cid' => 2,
       'category' => 'contact category value 2',
-      'recipients' => array('admin@example.com','user@example.com'),
+      'recipients' => array('admin@example.com', 'user@example.com'),
       'reply' => 'auto reply value 2',
       'weight' => 0,
       'selected' => 0,

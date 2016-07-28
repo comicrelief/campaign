@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\Extension\ThemeHandler.
- */
-
 namespace Drupal\Core\Extension;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
@@ -19,9 +14,12 @@ class ThemeHandler implements ThemeHandlerInterface {
    * Contains the features enabled for themes by default.
    *
    * @var array
+   *
+   * @see _system_default_theme_features()
    */
   protected $defaultFeatures = array(
     'favicon',
+    'logo',
     'node_user_picture',
     'comment_user_picture',
     'comment_user_verification',
@@ -56,7 +54,7 @@ class ThemeHandler implements ThemeHandlerInterface {
   protected $state;
 
   /**
-   *  The config installer to install configuration.
+   * The config installer to install configuration.
    *
    * @var \Drupal\Core\Config\ConfigInstallerInterface
    */
@@ -497,4 +495,5 @@ class ThemeHandler implements ThemeHandlerInterface {
     }
     return FALSE;
   }
+
 }

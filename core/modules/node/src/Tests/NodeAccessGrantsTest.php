@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\node\Tests\NodeAccessGrantsTest.
- */
-
 namespace Drupal\node\Tests;
 
 /**
@@ -25,5 +20,14 @@ class NodeAccessGrantsTest extends NodeAccessTest {
    * @var array
    */
   public static $modules = array('node_access_test_empty');
+
+  /**
+   * Test operations not supported by node grants.
+   */
+  function testUnsupportedOperation() {
+    $web_user = $this->drupalCreateUser(['access content']);
+    $node = $this->drupalCreateNode();
+    $this->assertNodeAccess(['random_operation' => FALSE], $node, $web_user);
+  }
 
 }

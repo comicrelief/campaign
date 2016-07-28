@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\migrate\Plugin\migrate\destination\EntityRevision.
- */
-
 namespace Drupal\migrate\Plugin\migrate\destination;
 
 use Drupal\Core\Entity\ContentEntityInterface;
@@ -12,6 +7,8 @@ use Drupal\migrate\MigrateException;
 use Drupal\migrate\Row;
 
 /**
+ * Provides entity revision destination plugin.
+ *
  * @MigrateDestination(
  *   id = "entity_revision",
  *   deriver = "Drupal\migrate\Plugin\Derivative\MigrateEntityRevision"
@@ -28,12 +25,12 @@ class EntityRevision extends EntityContentBase {
   }
 
   /**
-   * Get the entity.
+   * Gets the entity.
    *
    * @param \Drupal\migrate\Row $row
    *   The row object.
    * @param array $old_destination_id_values
-   *   The old destination ids.
+   *   The old destination IDs.
    *
    * @return \Drupal\Core\Entity\EntityInterface|false
    *   The entity or false if it can not be created.

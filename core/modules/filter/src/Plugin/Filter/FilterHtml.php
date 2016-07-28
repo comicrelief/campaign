@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\filter\Plugin\Filter\FilterHtml.
- */
-
 namespace Drupal\filter\Plugin\Filter;
 
 use Drupal\Component\Utility\Xss;
@@ -49,7 +44,7 @@ class FilterHtml extends FilterBase {
       '#type' => 'textfield',
       '#title' => $this->t('Allowed HTML tags'),
       '#default_value' => $this->settings['allowed_html'],
-      '#maxlength' => 1024,
+      '#maxlength' => 2048,
       '#description' => $this->t('A list of HTML tags that can be used. By default only the <em>lang</em> and <em>dir</em> attributes are allowed for all HTML tags. Each HTML tag may have attributes which are treated as allowed attribute names for that HTML tag. Each attribute may allow all values, or only allow specific values. Attribute names or values may be written as a prefix and wildcard like <em>jump-*</em>. JavaScript event attributes, JavaScript URLs, and CSS are always stripped.'),
       '#size' => 250,
       '#attached' => array(
@@ -159,7 +154,7 @@ class FilterHtml extends FilterBase {
    */
   protected function filterElementAttributes(\DOMElement $element, array $allowed_attributes) {
     $modified_attributes = [];
-    foreach($element->attributes as $name => $attribute) {
+    foreach ($element->attributes as $name => $attribute) {
       // Remove attributes not in the whitelist.
       $allowed_value = $this->findAllowedValue($allowed_attributes, $name);
       if (empty($allowed_value)) {

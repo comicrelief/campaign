@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\Core\EventSubscriber\PsrResponseSubscriberTest.
- */
-
 namespace Drupal\Tests\Core\EventSubscriber;
 
 use Drupal\Tests\UnitTestCase;
@@ -33,7 +28,7 @@ class PsrResponseSubscriberTest extends UnitTestCase {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  protected function setUp() {
     $factory = $this->getMock('Symfony\Bridge\PsrHttpMessage\HttpFoundationFactoryInterface', [], [], '', NULL);
     $factory
       ->expects($this->any())

@@ -7,6 +7,8 @@
  * @see phpunit.xml.dist
  */
 
+use Drupal\Component\Assertion\Handle;
+
 /**
  * Finds all valid extension directories recursively within a given directory.
  *
@@ -21,7 +23,9 @@ function drupal_phpunit_find_extension_directories($scan_directory) {
   $dirs = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($scan_directory, \RecursiveDirectoryIterator::FOLLOW_SYMLINKS));
   foreach ($dirs as $dir) {
     if (strpos($dir->getPathname(), '.info.yml') !== FALSE) {
-      // Cut off ".info.yml" from the filename for use as the extension name.
+      // Cut off ".info.yml" from the filename for use as the extension name. We
+      // use getRealPath() so that we can scan extensions represented by
+      // directory aliases.
       $extensions[substr($dir->getFilename(), 0, -9)] = $dir->getPathInfo()
         ->getRealPath();
     }
@@ -32,11 +36,16 @@ function drupal_phpunit_find_extension_directories($scan_directory) {
 /**
  * Returns directories under which contributed extensions may exist.
  *
+ * @param string $root
+ *   (optional) Path to the root of the Drupal installation.
+ *
  * @return array
  *   An array of directories under which contributed extensions may exist.
  */
-function drupal_phpunit_contrib_extension_directory_roots() {
-  $root = dirname(dirname(__DIR__));
+function drupal_phpunit_contrib_extension_directory_roots($root = NULL) {
+  if ($root === NULL) {
+    $root = dirname(dirname(__DIR__));
+  }
   $paths = array(
     $root . '/core/modules',
     $root . '/core/profiles',
@@ -87,22 +96,43 @@ function drupal_phpunit_get_extension_namespaces($dirs) {
 if (!defined('PHPUNIT_COMPOSER_INSTALL')) {
   define('PHPUNIT_COMPOSER_INSTALL', __DIR__ . '/../../autoload.php');
 }
-// Start with classes in known locations.
-$loader = require __DIR__ . '/../../autoload.php';
-$loader->add('Drupal\\Tests', __DIR__);
-$loader->add('Drupal\\KernelTests', __DIR__);
 
-if (!isset($GLOBALS['namespaces'])) {
-  // Scan for arbitrary extension namespaces from core and contrib.
-  $extension_roots = drupal_phpunit_contrib_extension_directory_roots();
+/**
+ * Populate class loader with additional namespaces for tests.
+ *
+ * We run this in a function to avoid setting the class loader to a global
+ * that can change. This change can cause unpredictable false positives for
+ * phpunit's global state change watcher. The class loader can be retrieved from
+ * composer at any time by requiring autoload.php.
+ */
+function drupal_phpunit_populate_class_loader() {
 
-  $dirs = array_map('drupal_phpunit_find_extension_directories', $extension_roots);
-  $dirs = array_reduce($dirs, 'array_merge', array());
-  $GLOBALS['namespaces'] = drupal_phpunit_get_extension_namespaces($dirs);
-}
-foreach ($GLOBALS['namespaces'] as $prefix => $paths) {
-  $loader->addPsr4($prefix, $paths);
-}
+  /** @var \Composer\Autoload\ClassLoader $loader */
+  $loader = require __DIR__ . '/../../autoload.php';
+
+  // Start with classes in known locations.
+  $loader->add('Drupal\\Tests', __DIR__);
+  $loader->add('Drupal\\KernelTests', __DIR__);
+  $loader->add('Drupal\\FunctionalTests', __DIR__);
+  $loader->add('Drupal\\FunctionalJavascriptTests', __DIR__);
+
+  if (!isset($GLOBALS['namespaces'])) {
+    // Scan for arbitrary extension namespaces from core and contrib.
+    $extension_roots = drupal_phpunit_contrib_extension_directory_roots();
+
+    $dirs = array_map('drupal_phpunit_find_extension_directories', $extension_roots);
+    $dirs = array_reduce($dirs, 'array_merge', array());
+    $GLOBALS['namespaces'] = drupal_phpunit_get_extension_namespaces($dirs);
+  }
+  foreach ($GLOBALS['namespaces'] as $prefix => $paths) {
+    $loader->addPsr4($prefix, $paths);
+  }
+
+  return $loader;
+};
+
+// Do class loader population.
+drupal_phpunit_populate_class_loader();
 
 // Set sane locale settings, to ensure consistent string, dates, times and
 // numbers handling.
@@ -120,5 +150,4 @@ date_default_timezone_set('Australia/Sydney');
 // runtime assertions. By default this setting is on. Here we make a call to
 // make PHP 5 and 7 handle assertion failures the same way, but this call does
 // not turn runtime assertions on if they weren't on already.
-\Drupal\Component\Assertion\Handle::register();
-
+Handle::register();

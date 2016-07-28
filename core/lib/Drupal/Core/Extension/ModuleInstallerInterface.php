@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\Extension\ModuleInstallerInterface.
- */
-
 namespace Drupal\Core\Extension;
 
 /**
@@ -22,6 +17,12 @@ interface ModuleInstallerInterface {
    *   - Install module schema and update system registries and caches.
    *   - Invoke hook_install() and add it to the list of installed modules.
    * - Invoke hook_modules_installed().
+   *
+   * To install test modules add
+   * @code
+   * $settings['extension_discovery_scan_tests'] = TRUE;
+   * @endcode
+   * to your settings.php.
    *
    * @param string[] $module_list
    *   An array of module names.
@@ -81,4 +82,3 @@ interface ModuleInstallerInterface {
   public function validateUninstall(array $module_list);
 
 }
-

@@ -1,0 +1,75 @@
+// Main Nav
+//
+// This is Main Nav
+//
+// Markup:
+// <nav></nav>
+//
+// Style guide: Navigation.Main-nav
+
+.menu--main {
+  position: absolute;
+  top: 85px;
+  display: none;
+  width: 100%;
+  background: rgba($black, 0.95);
+
+  @include breakpoint($screen-md, $no-query: true) {
+    position: relative;
+    top: 0;
+    display: block!important;
+    width: auto;
+    padding-top: 20px;
+    background: transparent;
+  }
+  ul {
+    float: right;
+    li {
+      display: block;
+      margin: 0;
+      color: $white;
+
+      @include breakpoint($screen-md, $no-query: true) {
+        display: inline-block;
+      }
+      @include breakpoint($screen-md, $no-query: true) {
+        margin: 0 20px;
+      }
+      a {
+        display: block;
+        padding: 15px 10px;
+        text-decoration: none;
+        color: $black;
+        border-bottom: 2px solid transparent;
+        font-size: 18px;
+
+        @include transition(border-bottom 180ms);
+        @include breakpoint($screen-md, $no-query: true) {
+          padding: 20px 0 4px;
+          font-size: 18px;
+        }
+        &:hover {
+          text-decoration: none;
+          color: $black;
+          background: #acaaa9;
+
+          @include breakpoint($screen-md, $no-query: true) {
+            border-bottom: 2px solid $black;
+            background: transparent;
+          }
+        }
+        &.active {
+          text-decoration: none;
+          color: $black;
+          background: $white;
+
+          @include breakpoint($screen-md, $no-query: true) {
+            color: $black;
+            border-bottom: 2px solid $black;
+            background: transparent;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\system\Tests\Render\AjaxPageStateTest.
- */
-
 namespace Drupal\system\Tests\Render;
 
 use Drupal\simpletest\WebTestBase;
@@ -29,7 +24,7 @@ class AjaxPageStateTest extends WebTestBase {
     $this->adminUser = $this->drupalCreateUser(array_keys(\Drupal::service('user.permissions')
       ->getPermissions()));
 
-    // Login so there are more libraries to test with otherwise only html5shiv
+    // Log in so there are more libraries to test with otherwise only html5shiv
     // is the only one in the source we can easily test for.
     $this->drupalLogin($this->adminUser);
   }
@@ -48,7 +43,7 @@ class AjaxPageStateTest extends WebTestBase {
     );
     $this->assertRaw(
       '/core/misc/drupalSettingsLoader.js',
-      'The Dupalsettings library from core should be loaded.'
+      'The drupalSettings library from core should be loaded.'
     );
   }
 
@@ -58,7 +53,6 @@ class AjaxPageStateTest extends WebTestBase {
    * When called with ajax_page_state[libraries]=core/html5shiv the library
    * should be excluded as it is already loaded. This should not affect other
    * libraries so test if drupalSettings is still available.
-   *
    */
   public function testHtml5ShivIsNotLoaded() {
     $this->drupalGet('node',
@@ -78,7 +72,7 @@ class AjaxPageStateTest extends WebTestBase {
 
     $this->assertRaw(
       '/core/misc/drupalSettingsLoader.js',
-      'The Dupalsettings library from core should be loaded.'
+      'The drupalSettings library from core should be loaded.'
     );
   }
 
@@ -87,7 +81,6 @@ class AjaxPageStateTest extends WebTestBase {
    *
    * ajax_page_state[libraries] should be able to support multiple libraries
    * comma separated.
-   *
    */
   public function testMultipleLibrariesAreNotLoaded() {
     $this->drupalGet('node',
@@ -107,7 +100,8 @@ class AjaxPageStateTest extends WebTestBase {
 
     $this->assertNoRaw(
       '/core/misc/drupalSettingsLoader.js',
-      'The Dupalsettings library from core should be excluded from loading.'
+      'The drupalSettings library from core should be excluded from loading.'
     );
   }
+
 }

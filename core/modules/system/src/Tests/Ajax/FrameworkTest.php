@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\system\Tests\Ajax\FrameworkTest.
- */
-
 namespace Drupal\system\Tests\Ajax;
 
 use Drupal\Core\Ajax\AddCssCommand;
@@ -22,13 +17,13 @@ use Drupal\Core\Asset\AttachedAssets;
  */
 class FrameworkTest extends AjaxTestBase {
   /**
-   * Ensures \Drupal\Core\Ajax\AjaxResponse::ajaxRender() returns JavaScript settings from the page request.
+   * Verifies the Ajax rendering of a command in the settings.
    */
   public function testAJAXRender() {
     // Verify that settings command is generated if JavaScript settings exist.
     $commands = $this->drupalGetAjax('ajax-test/render');
     $expected = new SettingsCommand(array('ajax' => 'test'), TRUE);
-    $this->assertCommand($commands, $expected->render(), '\Drupal\Core\Ajax\AjaxResponse::ajaxRender() loads JavaScript settings.');
+    $this->assertCommand($commands, $expected->render(), 'JavaScript settings command is present.');
   }
 
   /**
@@ -59,8 +54,8 @@ class FrameworkTest extends AjaxTestBase {
 
     // Load any page with at least one CSS file, at least one JavaScript file
     // and at least one #ajax-powered element. The latter is an assumption of
-    // drupalPostAjaxForm(), the two former are assumptions of
-    // AjaxResponse::ajaxRender().
+    // drupalPostAjaxForm(), the two former are assumptions of the Ajax
+    // renderer.
     // @todo refactor AJAX Framework + tests to make less assumptions.
     $this->drupalGet('ajax_forms_test_lazy_load_form');
 
@@ -198,7 +193,7 @@ class FrameworkTest extends AjaxTestBase {
    * Tests that overridden CSS files are not added during lazy load.
    */
   public function testLazyLoadOverriddenCSS() {
-    // The test theme overrides system.module.css without an implementation,
+    // The test theme overrides js.module.css without an implementation,
     // thereby removing it.
     \Drupal::service('theme_handler')->install(array('test_theme'));
     $this->config('system.theme')
@@ -214,6 +209,7 @@ class FrameworkTest extends AjaxTestBase {
     // information about the file; we only really care about whether it appears
     // in a LINK or STYLE tag, for which Drupal always adds a query string for
     // cache control.
-    $this->assertNoText('system.module.css?', 'Ajax lazy loading does not add overridden CSS files.');
+    $this->assertNoText('js.module.css?', 'Ajax lazy loading does not add overridden CSS files.');
   }
+
 }

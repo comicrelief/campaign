@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\Core\Config\Entity\ConfigEntityTypeTest.
- */
-
 namespace Drupal\Tests\Core\Config\Entity;
 
 use Drupal\Tests\UnitTestCase;
@@ -163,6 +158,7 @@ class ConfigEntityTypeTest extends UnitTestCase {
         'status' => 'status',
         'dependencies' => 'dependencies',
         'third_party_settings' => 'third_party_settings',
+        '_core' => '_core',
         'id' => 'id',
         'custom_property' => 'customProperty',
       ],

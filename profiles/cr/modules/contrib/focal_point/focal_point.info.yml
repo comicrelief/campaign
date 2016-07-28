@@ -1,0 +1,11 @@
+name: Focal Point
+type: module
+description: Allows users to specify the focal point of an image for use during cropping.
+core: 8.x
+package: Images
+version: VERSION
+test_dependencies:
+  - crop
+dependencies:
+  - image
+  - crop (>=8.x-1.0-alpha2)

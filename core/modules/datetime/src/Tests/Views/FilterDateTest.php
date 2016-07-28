@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\datetime\Tests\Views\FilterDateTest.
- */
-
 namespace Drupal\datetime\Tests\Views;
 use Drupal\datetime\Plugin\Field\FieldType\DateTimeItem;
 use Drupal\field\Entity\FieldStorageConfig;
@@ -32,7 +27,7 @@ class FilterDateTest extends DateTimeHandlerTestBase {
    *
    * Create nodes with relative dates of yesterday, today, and tomorrow.
    */
-  public function setUp() {
+  protected function setUp() {
     parent::setUp();
 
     // Set to 'today'.

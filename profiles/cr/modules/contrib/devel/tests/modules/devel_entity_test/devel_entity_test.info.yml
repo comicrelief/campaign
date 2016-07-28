@@ -1,0 +1,10 @@
+name: 'Devel entity test module'
+type: module
+description: 'Provides entity types for Devel tests.'
+package: Testing
+version: VERSION
+core: 8.x
+dependencies:
+  - field
+  - text
+  - entity_test

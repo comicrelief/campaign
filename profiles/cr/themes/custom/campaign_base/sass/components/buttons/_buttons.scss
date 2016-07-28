@@ -1,0 +1,118 @@
+// Buttons
+//
+// Standard link buttons
+//
+// Markup: buttons.hbs
+// 
+// .btn--lg - Large button
+// .btn--fixed-width - Fixed width button
+// :hover - Button hover state 
+// :active - Button active state
+// :focus - Button focus state
+//
+// Style guide: Buttons
+
+
+/*  
+  * Button styles,
+  * Copied from SR16 theme
+  */
+
+.btn {
+  display: block;
+  padding: 14px 35px;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  width: 100%;
+  font-size: 16px;
+  @include border-radius(30px);
+  span {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+}
+
+/* Just a couple of examples for now */
+$buttonList: (
+  ("red" $red $berry $white),
+  ("blue" $blue $aqua $white),
+);
+
+/* Process $buttonList colour variations through our btn-variation mixin. */
+@each $button in $buttonList {
+  @include btn-variation( $button );
+}
+
+
+/**
+ * Buttons display as stack block for xs
+ */
+.btn + .btn {
+  margin-top: 30px;
+}
+
+
+/**
+ * Buttons display as inline block for md and large breakpoints.
+ */
+@include breakpoint($screen-md) {
+  .btn {
+    display: inline-block;
+    font-size: 18px;
+    width: auto;
+    &.btn--fixed-width {
+      width: 290px;
+    }
+  }
+  .btn + .btn {
+    margin-top: 0;
+    margin-left: 25px;
+  }
+}
+
+/*
+ * Add icon to btn
+ */
+.btn {
+  .icon {
+    height: 20px;
+    font-weight: normal;
+    line-height: 20px;
+    &:before {
+      position: relative;
+      top: 9px;
+      line-height: 0;
+    }
+  }
+  .icon + span,
+  span + .icon {
+    margin-left: 5px;
+  }
+}
+
+/**
+ * Adds large buttons. Initially for the OTN homepage but can be used
+ * elsewhere.
+ */
+.btn--lg {
+  padding-top: 14px;
+  padding-bottom: 14px;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+/**
+ * Large button styles for >= md breakpoint.
+ */
+@include breakpoint($screen-md) {
+  .btn--lg {
+    height: 70px;
+    padding: 21px 70px;
+    font-size: 18px;
+    line-height: 23px;
+
+    @include border-radius(35px);
+  }
+}

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\views\Tests\Handler\FieldDropButtonTest.
- */
-
 namespace Drupal\views\Tests\Handler;
 
 /**
@@ -32,7 +27,7 @@ class FieldDropButtonTest extends HandlerTestBase {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  protected function setUp() {
     parent::setUp();
 
     $admin_user = $this->drupalCreateUser(['access content overview', 'administer nodes', 'bypass node access']);

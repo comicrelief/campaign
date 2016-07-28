@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\responsive_image\Plugin\Field\FieldFormatter\ResponsiveImageFormatter.
- */
-
 namespace Drupal\responsive_image\Plugin\Field\FieldFormatter;
 
 use Drupal\Core\Cache\Cache;
@@ -15,6 +10,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Url;
 use Drupal\image\Plugin\Field\FieldFormatter\ImageFormatterBase;
+use Drupal\responsive_image\Entity\ResponsiveImageStyle;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Utility\LinkGeneratorInterface;
@@ -230,7 +226,7 @@ class ResponsiveImageFormatter extends ImageFormatterBase implements ContainerFa
     foreach ($files as $delta => $file) {
       // Link the <picture> element to the original file.
       if (isset($link_file)) {
-        $url = Url::fromUri(file_create_url($file->getFileUri()));
+        $url = file_url_transform_relative(file_create_url($file->getFileUri()));
       }
       // Extract field item attributes for the theme function, and unset them
       // from the $item so that the field template does not re-render them.
@@ -251,4 +247,19 @@ class ResponsiveImageFormatter extends ImageFormatterBase implements ContainerFa
     }
     return $elements;
   }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function calculateDependencies() {
+    $dependencies = parent::calculateDependencies();
+    $style_id = $this->getSetting('responsive_image_style');
+    /** @var \Drupal\responsive_image\ResponsiveImageStyleInterface $style */
+    if ($style_id && $style = ResponsiveImageStyle::load($style_id)) {
+      // Add the responsive image style as dependency.
+      $dependencies[$style->getConfigDependencyKey()][] = $style->getConfigDependencyName();
+    }
+    return $dependencies;
+  }
+
 }

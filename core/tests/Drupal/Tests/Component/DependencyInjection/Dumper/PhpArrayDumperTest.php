@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\Component\DependencyInjection\Dumper\PhpArrayDumperTest.
- */
-
 namespace Drupal\Tests\Component\DependencyInjection\Dumper;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -18,7 +13,7 @@ class PhpArrayDumperTest extends OptimizedPhpArrayDumperTest {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  protected function setUp() {
     $this->machineFormat = FALSE;
     $this->dumperClass = '\Drupal\Component\DependencyInjection\Dumper\PhpArrayDumper';
     parent::setUp();

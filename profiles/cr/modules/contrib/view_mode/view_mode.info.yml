@@ -1,0 +1,5 @@
+name: View Mode
+type: module
+description: View Mode Field
+core: 8.x
+package: Custom

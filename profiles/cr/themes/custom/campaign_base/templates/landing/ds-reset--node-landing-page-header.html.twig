@@ -1,0 +1,37 @@
+{% set layoutClass = field_landing_feature_layout['#items'].value ? 'promo-header__header--feature' : '' %}
+{% set desk_img = node.field_landing_image.entity.fileuri %}
+{% set mobile_img = node.field_landing_image_mobile.entity.fileuri %}
+{% set header_class = [
+	field_landing_background_colour['#items'].value, 
+	'promo-header__header', layoutClass]
+%}
+{% set copy_position = field_landing_copy_position_alig['#items'].value %}
+
+<div class="promo-header contextual-region">
+	{% if not desk_img %}{% set header_class = header_class|merge(["no-img"]) %}{% endif %}
+	<header class="{{ header_class|join(" ") }}">
+		{% if mobile_img and desk_img %}
+		<div class="promo-header__bg-image">
+				<picture>
+					<source media="(min-width: 739px)" srcset="{{ file_url(desk_img) }}">
+	  			<source srcset="{{ file_url(mobile_img) }}">
+	  			<img src="{{ file_url(desk_img) }}" alt="">
+				</picture>
+		</div>
+	  	{% elseif desk_img %}
+	  	<div class="promo-header__bg-image">
+	  		{{ field_landing_image }}
+	  	</div>
+	  {% endif %}
+		{{ title_suffix.contextual_links }}
+		<h1 class="promo-header__title">{{ title }}</h1>
+		<div class="promo-header__content">
+			<div class="promo-header__content-inner {{ copy_position }}">
+				<div class="promo-header__svg-title">
+					{{ field_svg_body_title['#items'].value|raw }}
+				</div>
+				{{ body }}
+			</div>
+		</div>
+	</header>
+</div> 

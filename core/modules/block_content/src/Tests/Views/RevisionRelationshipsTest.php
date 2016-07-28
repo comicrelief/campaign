@@ -1,9 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\block_content\Tests\Views\RevisionRelationshipsTest.
- */
 namespace Drupal\block_content\Tests\Views;
 
 use Drupal\block_content\Entity\BlockContentType;
@@ -24,7 +20,7 @@ class RevisionRelationshipsTest extends ViewTestBase {
    *
    * @var array
    */
-  public static $modules = array('block_content' ,'block_content_test_views');
+  public static $modules = array('block_content' , 'block_content_test_views');
 
   /**
    * Views used by this test.

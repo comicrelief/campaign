@@ -35,15 +35,16 @@ function hook_ckeditor_plugin_info_alter(array &$plugins) {
  * iframe versions of CKEditor.
  *
  * Front-end themes (and base themes) can easily specify CSS files to be used in
- * iframe instances of CKEditor through an entry in their .info file:
+ * iframe instances of CKEditor through an entry in their .info.yml file:
  *
  * @code
- * ckeditor_stylesheets[] = css/ckeditor-iframe.css
+ * ckeditor_stylesheets:
+ *   - css/ckeditor-iframe.css
  * @endcode
  *
  * @param array &$css
  *   An array of CSS files, passed by reference. This is a flat list of file
- *   paths relative to the Drupal root.
+ *   paths which can be either relative to the Drupal root or external URLs.
  * @param $editor
  *   The text editor object as returned by editor_load(), for which these files
  *   are being loaded. Based on this information, it is possible to load the

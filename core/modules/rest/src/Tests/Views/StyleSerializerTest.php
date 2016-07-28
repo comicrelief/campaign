@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\rest\Tests\Views\StyleSerializerTest.
- */
-
 namespace Drupal\rest\Tests\Views;
 
 use Drupal\Core\Cache\Cache;
@@ -12,6 +7,7 @@ use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\entity_test\Entity\EntityTest;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\language\Entity\ConfigurableLanguage;
 use Drupal\system\Tests\Cache\AssertPageCacheContextsAndTagsTrait;
 use Drupal\views\Entity\View;
 use Drupal\views\Plugin\views\display\DisplayPluginBase;
@@ -43,14 +39,14 @@ class StyleSerializerTest extends PluginTestBase {
    *
    * @var array
    */
-  public static $modules = array('views_ui', 'entity_test', 'hal', 'rest_test_views', 'node', 'text', 'field');
+  public static $modules = array('views_ui', 'entity_test', 'hal', 'rest_test_views', 'node', 'text', 'field', 'language');
 
   /**
    * Views used by this test.
    *
    * @var array
    */
-  public static $testViews = array('test_serializer_display_field', 'test_serializer_display_entity', 'test_serializer_node_display_field', 'test_serializer_node_exposed_filter');
+  public static $testViews = array('test_serializer_display_field', 'test_serializer_display_entity', 'test_serializer_display_entity_translated', 'test_serializer_node_display_field', 'test_serializer_node_exposed_filter');
 
   /**
    * A user with administrative privileges to look at test entity and configure views.
@@ -66,7 +62,7 @@ class StyleSerializerTest extends PluginTestBase {
 
     // Save some entity_test entities.
     for ($i = 1; $i <= 10; $i++) {
-      entity_create('entity_test', array('name' => 'test_' . $i, 'user_id' => $this->adminUser->id()))->save();
+      EntityTest::create(array('name' => 'test_' . $i, 'user_id' => $this->adminUser->id()))->save();
     }
 
     $this->enableViewsTestModule();
@@ -184,6 +180,22 @@ class StyleSerializerTest extends PluginTestBase {
     $expected = $serializer->serialize($entities, 'xml');
     $actual_xml = $this->drupalGetWithFormat('test/serialize/entity', 'xml');
     $this->assertIdentical($actual_xml, $expected, 'The expected XML output was found.');
+  }
+
+  /**
+   * Verifies site maintenance mode functionality.
+   */
+  protected function testSiteMaintenance() {
+    $view = Views::getView('test_serializer_display_field');
+    $view->initDisplay();
+    $this->executeView($view);
+
+    // Set the site to maintenance mode.
+    $this->container->get('state')->set('system.maintenance_mode', TRUE);
+
+    $this->drupalGetWithFormat('test/serialize/entity', 'json');
+    // Verify that the endpoint is unavailable for anonymous users.
+    $this->assertResponse(503);
   }
 
   /**
@@ -445,17 +457,57 @@ class StyleSerializerTest extends PluginTestBase {
 
     // Test an empty string for an alias, this should not be used. This also
     // tests that the form can be submitted with no aliases.
-    $this->drupalPostForm($row_options, array('row_options[field_options][created][raw_output]' => '1'), t('Apply'));
+    $values = array(
+      'row_options[field_options][created][raw_output]' => '1',
+      'row_options[field_options][name][raw_output]' => '1',
+    );
+    $this->drupalPostForm($row_options, $values, t('Apply'));
     $this->drupalPostForm(NULL, array(), t('Save'));
 
     $view = Views::getView('test_serializer_display_field');
     $view->setDisplay('rest_export_1');
     $this->executeView($view);
 
+    $storage = $this->container->get('entity_type.manager')->getStorage('entity_test');
+
+    // Update the name for each to include a script tag.
+    foreach ($storage->loadMultiple() as $entity_test) {
+      $name = $entity_test->name->value;
+      $entity_test->set('name', "<script>$name</script>");
+      $entity_test->save();
+    }
+
     // Just test the raw 'created' value against each row.
     foreach ($this->drupalGetJSON('test/serialize/field') as $index => $values) {
       $this->assertIdentical($values['created'], $view->result[$index]->views_test_data_created, 'Expected raw created value found.');
+      $this->assertIdentical($values['name'], $view->result[$index]->views_test_data_name, 'Expected raw name value found.');
     }
+
+    // Test result with an excluded field.
+    $view->setDisplay('rest_export_1');
+    $view->displayHandlers->get('rest_export_1')->overrideOption('fields', [
+      'name' => [
+        'id' => 'name',
+        'table' => 'views_test_data',
+        'field' => 'name',
+        'relationship' => 'none',
+      ],
+      'created' => [
+        'id' => 'created',
+        'exclude' => TRUE,
+        'table' => 'views_test_data',
+        'field' => 'created',
+        'relationship' => 'none',
+      ],
+    ]);
+    $view->save();
+    $this->executeView($view);
+    foreach ($this->drupalGetJSON('test/serialize/field') as $index => $values) {
+      $this->assertTrue(!isset($values['created']), 'Excluded value not found.');
+    }
+    // Test that the excluded field is not shown in the row options.
+    $this->drupalGet('admin/structure/views/nojs/display/test_serializer_display_field/rest_export_1/row_options');
+    $this->assertNoText('created');
   }
 
   /**
@@ -545,6 +597,52 @@ class StyleSerializerTest extends PluginTestBase {
     $result = $this->drupalGetJSON('test/serialize/node-field');
     $this->assertEqual($result[1]['nid'], $node->id());
     $this->assertTrue(strpos($this->getRawContent(), "<script") === FALSE, "No script tag is present in the raw page contents.");
+
+    $this->drupalLogin($this->adminUser);
+
+    // Add an alias and make the output raw.
+    $row_options = 'admin/structure/views/nojs/display/test_serializer_node_display_field/rest_export_1/row_options';
+
+    // Test an empty string for an alias, this should not be used. This also
+    // tests that the form can be submitted with no aliases.
+    $this->drupalPostForm($row_options, ['row_options[field_options][title][raw_output]' => '1'], t('Apply'));
+    $this->drupalPostForm(NULL, [], t('Save'));
+
+    $view = Views::getView('test_serializer_node_display_field');
+    $view->setDisplay('rest_export_1');
+    $this->executeView($view);
+
+    // Test the raw 'created' value against each row.
+    foreach ($this->drupalGetJSON('test/serialize/node-field') as $index => $values) {
+      $this->assertIdentical($values['title'], $view->result[$index]->_entity->title->value, 'Expected raw title value found.');
+    }
+
+    // Test that multiple raw body fields are shown.
+    // Make the body field unlimited cardinatlity.
+    $storage_definition = $node->getFieldDefinition('body')->getFieldStorageDefinition();
+    $storage_definition->setCardinality(FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED);
+    $storage_definition->save();
+
+    $this->drupalPostForm($row_options, ['row_options[field_options][body][raw_output]' => '1'], t('Apply'));
+    $this->drupalPostForm(NULL, [], t('Save'));
+
+    $node = $this->drupalCreateNode();
+
+    $body = [
+      'value' => '<script type="text/javascript">alert("node-body");</script>' . $this->randomMachineName(32),
+      'format' => filter_default_format(),
+    ];
+    // Add two body items.
+    $node->body = [$body, $body];
+    $node->save();
+
+    $view = Views::getView('test_serializer_node_display_field');
+    $view->setDisplay('rest_export_1');
+    $this->executeView($view);
+
+    $result = $this->drupalGetJSON('test/serialize/node-field');
+    $this->assertEqual(count($result[2]['body']), $node->body->count(), 'Expected count of values');
+    $this->assertEqual($result[2]['body'], array_map(function($item) { return $item['value']; }, $node->body->getValue()), 'Expected raw body values found.');
   }
 
   /**
@@ -669,4 +767,39 @@ class StyleSerializerTest extends PluginTestBase {
     $this->assertEqual($result, $expected, 'Querying a view with a starts with exposed filter on the title returns nodes whose title starts with value provided.');
     $this->assertCacheContexts($cache_contexts);
   }
+
+  /**
+   * Test multilingual entity rows.
+   */
+  public function testMulEntityRows() {
+    // Create some languages.
+    ConfigurableLanguage::createFromLangcode('l1')->save();
+    ConfigurableLanguage::createFromLangcode('l2')->save();
+
+    // Create an entity with no translations.
+    $storage = \Drupal::entityTypeManager()->getStorage('entity_test_mul');
+    $storage->create(['langcode' => 'l1', 'name' => 'mul-none'])->save();
+
+    // Create some entities with translations.
+    $entity = $storage->create(['langcode' => 'l1', 'name' => 'mul-l1-orig']);
+    $entity->save();
+    $entity->addTranslation('l2', ['name' => 'mul-l1-l2'])->save();
+    $entity = $storage->create(['langcode' => 'l2', 'name' => 'mul-l2-orig']);
+    $entity->save();
+    $entity->addTranslation('l1', ['name' => 'mul-l2-l1'])->save();
+
+    // Get the names of the output.
+    $json = $this->drupalGetWithFormat('test/serialize/translated_entity', 'json');
+    $decoded = $this->container->get('serializer')->decode($json, 'hal_json');
+    $names = [];
+    foreach ($decoded as $item) {
+      $names[] = $item['name'][0]['value'];
+    }
+    sort($names);
+
+    // Check that the names are correct.
+    $expected = ['mul-l1-l2', 'mul-l1-orig', 'mul-l2-l1', 'mul-l2-orig', 'mul-none'];
+    $this->assertIdentical($names, $expected, 'The translated content was found in the JSON.');
+  }
+
 }

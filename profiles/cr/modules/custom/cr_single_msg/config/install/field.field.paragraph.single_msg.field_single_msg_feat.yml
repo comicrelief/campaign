@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_single_msg_feat
+    - paragraphs.paragraphs_type.single_msg
+id: paragraph.single_msg.field_single_msg_feat
+field_name: field_single_msg_feat
+entity_type: paragraph
+bundle: single_msg
+label: Featured
+description: 'Make this row a ''featured'' row - requires a 16:9 ratio image!'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Featured
+  off_label: Standard
+field_type: boolean

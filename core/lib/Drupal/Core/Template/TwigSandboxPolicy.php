@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\Template\TwigSandboxPolicy.
- */
-
 namespace Drupal\Core\Template;
 
 use Drupal\Core\Site\Settings;
@@ -57,6 +52,7 @@ class TwigSandboxPolicy implements \Twig_Sandbox_SecurityPolicyInterface {
       'bundle',
       'get',
       '__toString',
+      'toString',
     ]);
     $this->whitelisted_methods = array_flip($whitelisted_methods);
 
@@ -81,8 +77,10 @@ class TwigSandboxPolicy implements \Twig_Sandbox_SecurityPolicyInterface {
    * {@inheritdoc}
    */
   public function checkMethodAllowed($obj, $method) {
-    if (isset($this->whitelisted_classes[get_class($obj)])) {
-      return TRUE;
+    foreach ($this->whitelisted_classes as $class => $key) {
+      if ($obj instanceof $class) {
+        return TRUE;
+      }
     }
 
     // Return quickly for an exact match of the method name.

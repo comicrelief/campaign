@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\node\Plugin\views\argument_default\Node.
- */
-
 namespace Drupal\node\Plugin\views\argument_default;
 
 use Drupal\Core\Cache\Cache;
@@ -16,8 +11,6 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Default argument plugin to extract a node.
- *
- * This plugin actually has no options so it odes not need to do a great deal.
  *
  * @ViewsArgumentDefault(
  *   id = "node",
@@ -42,7 +35,6 @@ class Node extends ArgumentDefaultPluginBase implements CacheableDependencyInter
    *   The plugin_id for the plugin instance.
    * @param mixed $plugin_definition
    *   The plugin implementation definition.
-   *
    * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
    *   The route match.
    */

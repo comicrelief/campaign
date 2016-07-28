@@ -1,0 +1,58 @@
+// Lists
+//
+// These are the list items
+//
+// Markup:
+// <ul>
+// 	<li>Item 1</li>
+// 	<li>Item 2</li>
+// 	<li>Item 3</li>
+// 	<li>Item 4</li>
+// </ul>
+//
+// Style guide: Typography.Lists
+
+ul {
+	li {
+		font-size: 1em;
+	}
+}
+.node__content {
+	ul {
+		list-style: none;
+		padding: 0 0 0 20px;
+		margin: 15px 0;
+
+		li {
+			font-size: 1em;
+			list-style: none;
+			padding: 0 0 0 30px;
+			position: relative;
+
+			&:before {
+				content: " ○";
+				color: $red;
+				left: -3px;
+		    padding: 0 16px 0 0;
+		    position: absolute;
+		    top: 0;
+			}
+
+			// &::marker { // future support
+			// 	color: $red;
+			// }
+		}
+	}
+
+	ol {
+    padding: 0 0 0 35px;
+    margin: 15px 0;
+    list-style-type: decimal;
+
+		li {
+			font-size: 1em;
+			padding: 0 0 0 15px;
+			position: relative;
+		}
+	}
+}

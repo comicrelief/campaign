@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Component\FileCache\ApcuFileCacheBackend.
- */
-
 namespace Drupal\Component\FileCache;
 
 /**
@@ -16,21 +11,21 @@ class ApcuFileCacheBackend implements FileCacheBackendInterface {
    * {@inheritdoc}
    */
   public function fetch(array $cids) {
-    return apc_fetch($cids);
+    return apcu_fetch($cids);
   }
 
   /**
    * {@inheritdoc}
    */
   public function store($cid, $data) {
-    apc_store($cid, $data);
+    apcu_store($cid, $data);
   }
 
   /**
    * {@inheritdoc}
    */
   public function delete($cid) {
-    apc_delete($cid);
+    apcu_delete($cid);
   }
 
 }

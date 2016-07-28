@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\config_collection_install_test\EventSubscriber.
- */
-
 namespace Drupal\config_collection_install_test;
 
 use Drupal\Core\Config\ConfigCollectionInfo;
@@ -32,10 +27,10 @@ class EventSubscriber implements EventSubscriberInterface {
   }
 
   /**
-   * Reacts to the ConfigEvents::COLLECTION_NAMES event.
+   * Reacts to the ConfigEvents::COLLECTION_INFO event.
    *
    * @param \Drupal\Core\Config\ConfigCollectionInfo $collection_info
-   *   The configuration collection names event.
+   *   The configuration collection info event.
    */
   public function addCollections(ConfigCollectionInfo $collection_info) {
     $collections = $this->state->get('config_collection_install_test.collection_names', array());

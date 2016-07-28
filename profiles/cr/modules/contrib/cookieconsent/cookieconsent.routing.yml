@@ -1,0 +1,9 @@
+cookieconsent.cookieconsent_admin_form:
+  path: '/admin/config/system/cookieconsent'
+  defaults:
+    _form: '\Drupal\cookieconsent\Form\SettingsForm'
+    _title: 'Cookie settings'
+  requirements:
+    _permission: 'administer cookieconsent settings'
+  options:
+    _admin_route: TRUE

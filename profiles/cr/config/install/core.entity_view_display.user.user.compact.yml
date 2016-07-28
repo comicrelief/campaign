@@ -4,6 +4,7 @@ dependencies:
   config:
     - core.entity_view_mode.user.compact
     - field.field.user.user.user_picture
+    - image.style.thumbnail
   module:
     - image
     - user
@@ -22,3 +23,4 @@ content:
     label: hidden
 hidden:
   member_for: true
+  social_links: true

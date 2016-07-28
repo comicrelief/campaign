@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\node\NodeGrantDatabaseStorage.
- */
-
 namespace Drupal\node;
 
 use Drupal\Core\Access\AccessResult;
@@ -16,7 +11,7 @@ use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Session\AccountInterface;
 
 /**
- * Defines a controller class that handles the node grants system.
+ * Defines a storage handler class that handles the node grants system.
  *
  * This is used to build node query access.
  *
@@ -65,13 +60,18 @@ class NodeGrantDatabaseStorage implements NodeGrantDatabaseStorageInterface {
    * {@inheritdoc}
    */
   public function access(NodeInterface $node, $operation, AccountInterface $account) {
+    // Grants only support these operations.
+    if (!in_array($operation, ['view', 'update', 'delete'])) {
+      return AccessResult::neutral();
+    }
+
     // If no module implements the hook or the node does not have an id there is
     // no point in querying the database for access grants.
     if (!$this->moduleHandler->getImplementations('node_grants') || !$node->id()) {
       // Return the equivalent of the default grant, defined by
       // self::writeDefault().
       if ($operation === 'view') {
-        return AccessResult::allowedIf($node->isPublished())->cacheUntilEntityChanges($node);
+        return AccessResult::allowedIf($node->isPublished())->addCacheableDependency($node);
       }
       else {
         return AccessResult::neutral();

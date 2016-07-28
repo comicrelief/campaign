@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\system\Tests\Theme\ThemeTest.
- */
-
 namespace Drupal\system\Tests\Theme;
 
 use Drupal\Component\Serialization\Json;
@@ -40,7 +35,7 @@ class ThemeTest extends WebTestBase {
    * Render arrays that use a render element and templates (and hence call
    * template_preprocess()) must ensure the attributes at different occasions
    * are all merged correctly:
-   *   - $variables['attributes'] as passed in to _theme()
+   *   - $variables['attributes'] as passed in to the theme hook implementation.
    *   - the render element's #attributes
    *   - any attributes set in the template's preprocessing function
    */
@@ -57,7 +52,7 @@ class ThemeTest extends WebTestBase {
   }
 
   /**
-   * Test that _theme() returns expected data types.
+   * Test that ThemeManager renders the expected data types.
    */
   function testThemeDataTypes() {
     // theme_test_false is an implemented theme hook so \Drupal::theme() service
@@ -175,7 +170,7 @@ class ThemeTest extends WebTestBase {
     $config->set('css.preprocess', 0);
     $config->save();
     $this->drupalGet('theme-test/suggestion');
-    $this->assertNoText('system.module.css', "The theme's .info.yml file is able to remove a module CSS file from being added to the page.");
+    $this->assertNoText('js.module.css', 'The theme\'s .info.yml file is able to override a module CSS file from being added to the page.');
 
     // Also test with aggregation enabled, simply ensuring no PHP errors are
     // triggered during drupal_build_css_cache() when a source file doesn't

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\user\Tests\UserSaveTest.
- */
-
 namespace Drupal\user\Tests;
 
 use Drupal\simpletest\WebTestBase;
@@ -32,13 +27,13 @@ class UserSaveTest extends WebTestBase {
     $test_name = $this->randomMachineName();
 
     // Create the base user, based on drupalCreateUser().
-    $user = entity_create('user', array(
+    $user = User::create([
       'name' => $test_name,
       'uid' => $test_uid,
       'mail' => $test_name . '@example.com',
       'pass' => user_password(),
       'status' => 1,
-    ));
+    ]);
     $user->enforceIsNew();
     $user->save();
 
@@ -49,4 +44,18 @@ class UserSaveTest extends WebTestBase {
     $user_by_name = user_load_by_name($test_name);
     $this->assertTrue($user_by_name, 'Loading user by name.');
   }
+
+  /**
+   * Ensures that an existing password is unset after the user was saved.
+   */
+  function testExistingPasswordRemoval() {
+    /** @var \Drupal\user\Entity\User $user */
+    $user = User::create(['name' => $this->randomMachineName()]);
+    $user->save();
+    $user->setExistingPassword('existing password');
+    $this->assertNotNull($user->pass->existing);
+    $user->save();
+    $this->assertNull($user->pass->existing);
+  }
+
 }

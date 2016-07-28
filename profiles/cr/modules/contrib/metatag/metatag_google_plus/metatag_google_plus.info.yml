@@ -1,0 +1,13 @@
+name: 'Metatag: Google Plus'
+type: module
+description: Provides support for Google's Plus meta tags.
+# core: 8.x
+package: SEO
+dependencies:
+  - metatag
+
+# Information added by Drupal.org packaging script on 2016-06-02
+version: '8.x-1.0-beta9'
+core: '8.x'
+project: 'metatag'
+datestamp: 1464897844

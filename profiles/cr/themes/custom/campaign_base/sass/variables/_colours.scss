@@ -1,0 +1,95 @@
+// Colours
+//
+// These are the default colours for June site, taken from SR16
+//
+// Markup:
+// <div style="background-color: #1e1e1e; height: 60px; width: 60px;"></div>
+// <p><br/>$black: #1e1e1e;</p>
+// <div style="background-color: #282828; height: 60px; width: 60px;"></div>
+// <p><br/>$dark-grey: #282828;</p>
+// <div style="background-color: #666; height: 60px; width: 60px;"></div>
+// <p><br/>$jasper-grey: #666;</p>
+// <div style="background-color: #999; height: 60px; width: 60px;"></div>
+// <p><br/>$greyboy-grey: #999;</p>
+// <div style="background-color: #ccc; height: 60px; width: 60px;"></div>
+// <p><br/>$gainsboro-grey: #ccc;</p>
+// <div style="background-color: #ddd; height: 60px; width: 60px;"></div>
+// <p><br/>$item-grey: #ddd;</p>
+// <div style="background-color: #eee; height: 60px; width: 60px;"></div>
+// <p><br/>$light-grey: #eee;</p>
+// <div style="background-color: #fafafa; height: 60px; width: 60px;"></div>
+// <p><br/>$smoke-grey: #fafafa;</p>
+// <div style="background-color: #f0f0f0; height: 60px; width: 60px;"></div>
+// <p><br/>$cw-grey: #f0f0f0;</p>
+// <div style="background-color: #fff; border: 1px solid #000; height: 60px; width: 60px;"></div>
+// <p><br/>$white: #fff;</p>
+// <div style="background-color: #f0544a; height: 60px; width: 60px;"></div>
+// <p><br/>$red: #f0544a;</p>
+// <div style="background-color: #e63f52; height: 60px; width: 60px;"></div>
+// <p><br/>$berry: #e63f52;</p>
+// <div style="background-color: #f9a567; height: 60px; width: 60px;"></div>
+// <p><br/>$coral: #f9a567;</p>
+//
+// Style guide: Colours
+
+/* RND17 base colours for June taken from SR */
+
+$black:          #1e1e1e;
+$dark-grey:      #282828;
+$jasper-grey:    #666;
+$greyboy-grey:   #999;
+$gainsboro-grey: #ccc;
+$item-grey:      #ddd;
+$light-grey:     #eee;
+$smoke-grey:     #fafafa;
+$cw-grey:        #f0f0f0;
+$white:          #fff;
+
+$red:            #f0544a;
+$berry:          #e63f52;
+$coral:          #f9a567;
+
+$olive: green;
+
+/**
+ * Parameters
+ * $inlinelink[1] = name
+ * $inlinelink[2] = border-color
+ * $inlinelink[3] = border-color for hover & focus
+ */
+$linkList: (
+  ("red" $red $coral),
+  ("black" $black $jasper-grey), 
+  ("grey" $greyboy-grey $black),
+  ("white" $white $cw-grey)
+);
+
+/* SR16  */
+$purple:         #a25eb5;
+$blue:           #00c2df;
+$green:          #a3d55f;
+$aqua:           #75e1c2;
+$teal:           #00a9b0;
+$dark-orchid:		 #4e3163;
+
+/* hover  */
+$white-hover:    rgba(255, 255, 255, 0.8);
+$red-hover:      #f89963;
+$green-hover:    #3fba91;
+
+/* text  */
+$blue-btn-copy:  #024954;
+$green-btn-copy: #2f4f05;
+
+/* Events  */
+$half-price-yellow: #ffd86b;
+$red-dark:          #b42d4e;
+$green-dark:        #567d5c;
+
+// move it to colour and backgrounds scss file (todo)
+
+.bg--dark-orchid {
+	background-color: $dark-orchid;
+}
+/* Single message row background colour, used in June site, to be renamed and updated */
+$cream-grey: #F5F2ED;

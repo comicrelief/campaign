@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\user\SharedTempStore.
- */
-
 namespace Drupal\user;
 
 use Drupal\Core\KeyValueStore\KeyValueStoreExpirableInterface;
@@ -86,7 +81,7 @@ class SharedTempStore {
    *   The key/value storage object used for this data. Each storage object
    *   represents a particular collection of data and will contain any number
    *   of key/value pairs.
-   * @param \Drupal\Core\Lock\LockBackendInterface $lockBackend
+   * @param \Drupal\Core\Lock\LockBackendInterface $lock_backend
    *   The lock object used for this data.
    * @param mixed $owner
    *   The owner key to store along with the data (e.g. a user or session ID).
@@ -95,9 +90,9 @@ class SharedTempStore {
    * @param int $expire
    *   The time to live for items, in seconds.
    */
-  public function __construct(KeyValueStoreExpirableInterface $storage, LockBackendInterface $lockBackend, $owner, RequestStack $request_stack, $expire = 604800) {
+  public function __construct(KeyValueStoreExpirableInterface $storage, LockBackendInterface $lock_backend, $owner, RequestStack $request_stack, $expire = 604800) {
     $this->storage = $storage;
-    $this->lockBackend = $lockBackend;
+    $this->lockBackend = $lock_backend;
     $this->owner = $owner;
     $this->requestStack = $request_stack;
     $this->expire = $expire;
@@ -168,7 +163,7 @@ class SharedTempStore {
    *
    * @return bool
    *   TRUE if the data was set, or FALSE if it already exists and is not owned
-   * by $this->user.
+   *   by $this->user.
    */
   public function setIfOwner($key, $value) {
     if ($this->setIfNotExists($key, $value)) {

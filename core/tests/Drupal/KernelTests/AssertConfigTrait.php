@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\KernelTests\AssertConfigTrait.
- */
-
 namespace Drupal\KernelTests;
 
 use Drupal\Component\Diff\Diff;
@@ -74,9 +69,13 @@ trait AssertConfigTrait {
           }
           break;
         case 'Drupal\Component\Diff\Engine\DiffOpAdd':
+          // The _core property does not exist in the default config.
+          if ($op->closing[0] === '_core:') {
+            continue;
+          }
           foreach ($op->closing as $closing) {
             // The UUIDs don't exist in the default config.
-            if (strpos($closing, 'uuid: ') === 0)  {
+            if (strpos($closing, 'uuid: ') === 0) {
               continue;
             }
             throw new \Exception($config_name . ': ' . var_export($op, TRUE));

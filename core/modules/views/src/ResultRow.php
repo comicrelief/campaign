@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\views\ResultRow.
- */
-
 namespace Drupal\views;
 
 /**
@@ -29,7 +24,7 @@ class ResultRow {
   /**
    * An incremental number which represents the row in the entire result.
    *
-   * @var integer
+   * @var int
    */
   public $index;
 

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\node\Tests\NodeTypeTest.
- */
-
 namespace Drupal\node\Tests;
 
 use Drupal\field\Entity\FieldConfig;
@@ -54,7 +49,7 @@ class NodeTypeTest extends NodeTestBase {
     $type_exists = (bool) NodeType::load($type->id());
     $this->assertTrue($type_exists, 'The new content type has been created in the database.');
 
-    // Login a test user.
+    // Log in a test user.
     $web_user = $this->drupalCreateUser(array('create ' . $type->label() . ' content'));
     $this->drupalLogin($web_user);
 
@@ -123,6 +118,17 @@ class NodeTypeTest extends NodeTestBase {
     $this->clickLink('Bar');
     $this->assertRaw('Foo', 'Title field was found.');
     $this->assertRaw('Body', 'Body field was found.');
+
+    // Change the name through the API
+    /** @var \Drupal\node\NodeTypeInterface $node_type */
+    $node_type = NodeType::load('page');
+    $node_type->set('name', 'NewBar');
+    $node_type->save();
+
+    /** @var \Drupal\Core\Entity\EntityTypeBundleInfoInterface $bundle_info */
+    $bundle_info = \Drupal::service('entity_type.bundle.info');
+    $node_bundles = $bundle_info->getBundleInfo('node');
+    $this->assertEqual($node_bundles['page']['label'], 'NewBar', 'Node type bundle cache is updated');
 
     // Remove the body field.
     $this->drupalPostForm('admin/structure/types/manage/page/fields/node.page.body/delete', array(), t('Delete'));

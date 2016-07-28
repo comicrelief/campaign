@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\views_ui\Tests\DefaultViewsTest.
- */
-
 namespace Drupal\views_ui\Tests;
 
 use Drupal\Core\Url;
@@ -140,6 +135,23 @@ class DefaultViewsTest extends UITestBase {
     $this->assertNoLinkByHref($edit_href);
     // Ensure the view is no longer available.
     $this->drupalGet($edit_href);
+    $this->assertResponse(404);
+    $this->assertText('Page not found');
+
+    // Delete all duplicated Glossary views.
+    $this->drupalGet('admin/structure/views');
+    $this->clickViewsOperationLink(t('Delete'), 'duplicate_of_glossary');
+    // Submit the confirmation form.
+    $this->drupalPostForm(NULL, array(), t('Delete'));
+
+    $this->drupalGet('glossary');
+    $this->assertResponse(200);
+
+    $this->drupalGet('admin/structure/views');
+    $this->clickViewsOperationLink(t('Delete'), $random_name);
+    // Submit the confirmation form.
+    $this->drupalPostForm(NULL, array(), t('Delete'));
+    $this->drupalGet('glossary');
     $this->assertResponse(404);
     $this->assertText('Page not found');
   }

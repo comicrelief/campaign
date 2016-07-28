@@ -1,13 +1,8 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\text\Unit\Migrate\TextFieldTest.
- */
-
 namespace Drupal\Tests\text\Unit\Migrate;
 
-use Drupal\migrate\Entity\MigrationInterface;
+use Drupal\migrate\Plugin\MigrationInterface;
 use Drupal\migrate\Row;
 use Drupal\Tests\UnitTestCase;
 use Drupal\text\Plugin\migrate\cckfield\TextField;
@@ -25,14 +20,14 @@ class TextFieldTest extends UnitTestCase {
   protected $plugin;
 
   /**
-   * @var \Drupal\migrate\Entity\MigrationInterface
+   * @var \Drupal\migrate\Plugin\MigrationInterface
    */
   protected $migration;
 
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  protected function setUp() {
     $this->plugin = new TextField([], 'text', []);
 
     $migration = $this->prophesize(MigrationInterface::class);

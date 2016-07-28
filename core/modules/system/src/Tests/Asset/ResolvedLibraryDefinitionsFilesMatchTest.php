@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\system\Tests\Asset\ResolvedLibraryDefinitionsFilesMatchTest.
- */
-
 namespace Drupal\system\Tests\Asset;
 
 use Drupal\simpletest\KernelTestBase;
@@ -91,7 +86,7 @@ class ResolvedLibraryDefinitionsFilesMatchTest extends KernelTestBase {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  protected function setUp() {
     parent::setUp();
 
     $this->themeHandler = $this->container->get('theme_handler');

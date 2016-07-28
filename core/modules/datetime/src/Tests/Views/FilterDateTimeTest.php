@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\datetime\Tests\Views\FilterDateTimeTest.
- */
-
 namespace Drupal\datetime\Tests\Views;
 
 use Drupal\views\Views;
@@ -34,7 +29,7 @@ class FilterDateTimeTest extends DateTimeHandlerTestBase {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  protected function setUp() {
     parent::setUp();
 
     static::$date = REQUEST_TIME + 86400;
@@ -105,7 +100,7 @@ class FilterDateTimeTest extends DateTimeHandlerTestBase {
   }
 
   /**
-   *  Test between operations.
+   * Test between operations.
    */
   protected function _testBetween() {
     $view = Views::getView('test_filter_datetime');

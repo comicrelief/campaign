@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\Config\Entity\ConfigEntityType.
- */
-
 namespace Drupal\Core\Config\Entity;
 
 use Drupal\Core\Config\Entity\Exception\ConfigEntityStorageClassException;
@@ -132,11 +127,11 @@ class ConfigEntityType extends EntityType implements ConfigEntityTypeInterface {
   /**
    * {@inheritdoc}
    *
-   * @see \Drupal\Core\Config\Entity\ConfigEntityStorage.
-   *
    * @throws \Drupal\Core\Config\Entity\Exception\ConfigEntityStorageClassException
    *   Exception thrown when the provided class is not an instance of
    *   \Drupal\Core\Config\Entity\ConfigEntityStorage.
+   *
+   * @see \Drupal\Core\Config\Entity\ConfigEntityStorage
    */
   protected function checkStorageClass($class) {
     if (!is_a($class, 'Drupal\Core\Config\Entity\ConfigEntityStorage', TRUE)) {
@@ -157,6 +152,7 @@ class ConfigEntityType extends EntityType implements ConfigEntityTypeInterface {
           'status' => 'status',
           'dependencies' => 'dependencies',
           'third_party_settings' => 'third_party_settings',
+          '_core' => '_core',
         ];
         foreach ($this->config_export as $property => $name) {
           if (is_numeric($property)) {

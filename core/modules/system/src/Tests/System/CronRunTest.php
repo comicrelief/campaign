@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\system\Tests\System\CronRunTest.
- */
-
 namespace Drupal\system\Tests\System;
 
 use Drupal\simpletest\WebTestBase;
@@ -109,6 +104,10 @@ class CronRunTest extends WebTestBase {
     // fail randomly. Look for the word 'years', because without a timestamp,
     // the time will start at 1 January 1970.
     $this->assertNoText('years');
+
+    $this->drupalPostForm(NULL, [], t('Save configuration'));
+    $this->assertText(t('The configuration options have been saved.'));
+    $this->assertUrl('admin/config/system/cron');
   }
 
   /**
@@ -126,4 +125,5 @@ class CronRunTest extends WebTestBase {
     $this->assertResponse(200);
     $this->assertText(t('Cron ran successfully.'));
   }
+
 }

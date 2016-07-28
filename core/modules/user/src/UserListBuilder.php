@@ -1,12 +1,8 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\user\UserListBuilder.
- */
-
 namespace Drupal\user;
 
+use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityListBuilder;
@@ -58,7 +54,7 @@ class UserListBuilder extends EntityListBuilder {
    * @param \Drupal\Core\Routing\RedirectDestinationInterface $redirect_destination
    *   The redirect destination service.
    */
-  public function __construct(EntityTypeInterface $entity_type, EntityStorageInterface $storage, QueryFactory $query_factory, DateFormatterInterface $date_formatter,  RedirectDestinationInterface $redirect_destination) {
+  public function __construct(EntityTypeInterface $entity_type, EntityStorageInterface $storage, QueryFactory $query_factory, DateFormatterInterface $date_formatter, RedirectDestinationInterface $redirect_destination) {
     parent::__construct($entity_type, $storage);
     $this->queryFactory = $query_factory;
     $this->dateFormatter = $date_formatter;
@@ -151,8 +147,19 @@ class UserListBuilder extends EntityListBuilder {
       '#theme' => 'item_list',
       '#items' => $users_roles,
     );
-    $row['member_for'] = $this->dateFormatter->formatTimeDiffSince($entity->getCreatedTime());
-    $row['access'] = $entity->access ? $this->t('@time ago', array('@time' => $this->dateFormatter->formatTimeDiffSince($entity->getLastAccessedTime()))) : t('never');
+    $options = [
+      'return_as_object' => TRUE,
+    ];
+    $row['member_for']['data'] = $this->dateFormatter->formatTimeDiffSince($entity->getCreatedTime(), $options)->toRenderable();
+    $last_access = $this->dateFormatter->formatTimeDiffSince($entity->getLastAccessedTime(), $options);
+
+    if ($entity->getLastAccessedTime()) {
+      $row['access']['data']['#markup'] = $last_access->getString();
+      CacheableMetadata::createFromObject($last_access)->applyTo($row['access']['data']);
+    }
+    else {
+      $row['access']['data']['#markup'] = t('never');
+    }
     return $row + parent::buildRow($entity);
   }
 

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\user\UserDataInterface.
- */
-
 namespace Drupal\user;
 
 /**
@@ -17,7 +12,7 @@ interface UserDataInterface {
    *
    * @param string $module
    *   The name of the module the data is associated with.
-   * @param integer $uid
+   * @param int $uid
    *   (optional) The user account ID the data is associated with.
    * @param string $name
    *   (optional) The name of the data key.
@@ -41,14 +36,12 @@ interface UserDataInterface {
    *
    * @param string $module
    *   The name of the module the data is associated with.
-   * @param integer $uid
+   * @param int $uid
    *   The user account ID the data is associated with.
    * @param string $name
    *   The name of the data key.
    * @param mixed $value
    *   The value to store. Non-scalar values are serialized automatically.
-   *
-   * @return void
    */
   public function set($module, $uid, $name, $value);
 
@@ -58,15 +51,13 @@ interface UserDataInterface {
    * @param string|array $module
    *   (optional) The name of the module the data is associated with. Can also
    *   be an array to delete the data of multiple modules.
-   * @param integer|array $uid
+   * @param int|array $uid
    *   (optional) The user account ID the data is associated with. If omitted,
    *   all data for $module is deleted. Can also be an array of IDs to delete
    *   the data of multiple user accounts.
    * @param string $name
    *   (optional) The name of the data key. If omitted, all data associated with
    *   $module and $uid is deleted.
-   *
-   * @return void
    */
   public function delete($module = NULL, $uid = NULL, $name = NULL);
 

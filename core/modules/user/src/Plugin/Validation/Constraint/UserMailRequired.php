@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\user\Plugin\Validation\Constraint\UserMailRequired.
- */
-
 namespace Drupal\user\Plugin\Validation\Constraint;
 
 use Symfony\Component\Validator\Constraint;
@@ -41,7 +36,7 @@ class UserMailRequired extends Constraint implements ConstraintValidatorInterfac
   protected $context;
 
   /**
-   * {@inheritDoc}
+   * {@inheritdoc}
    */
   public function initialize(ExecutionContextInterface $context) {
     $this->context = $context;

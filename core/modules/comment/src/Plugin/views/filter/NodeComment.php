@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\comment\Plugin\views\filter\NodeComment.
- */
-
 namespace Drupal\comment\Plugin\views\filter;
 
 use Drupal\comment\Plugin\Field\FieldType\CommentItemInterface;
@@ -25,6 +20,7 @@ class NodeComment extends InOperator {
       CommentItemInterface::CLOSED => $this->t('Closed'),
       CommentItemInterface::OPEN => $this->t('Open'),
     );
+    return $this->valueOptions;
   }
 
 }

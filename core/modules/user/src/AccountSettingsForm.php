@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\user\AccountSettingsForm.
- */
-
 namespace Drupal\user;
 
 use Drupal\Core\Form\ConfigFormBase;
@@ -219,7 +214,7 @@ class AccountSettingsForm extends ConfigFormBase {
     $form['email_admin_created']['user_mail_register_admin_created_body'] = array(
       '#type' => 'textarea',
       '#title' => $this->t('Body'),
-      '#default_value' =>  $mail_config->get('register_admin_created.body'),
+      '#default_value' => $mail_config->get('register_admin_created.body'),
       '#rows' => 15,
     );
 
@@ -451,6 +446,8 @@ class AccountSettingsForm extends ConfigFormBase {
       ->set('register_no_approval_required.subject', $form_state->getValue('user_mail_register_no_approval_required_subject'))
       ->set('register_pending_approval.body', $form_state->getValue('user_mail_register_pending_approval_body'))
       ->set('register_pending_approval.subject', $form_state->getValue('user_mail_register_pending_approval_subject'))
+      ->set('register_pending_approval_admin.body', $form_state->getValue('register_pending_approval_admin_body'))
+      ->set('register_pending_approval_admin.subject', $form_state->getValue('register_pending_approval_admin_subject'))
       ->set('status_activated.body', $form_state->getValue('user_mail_status_activated_body'))
       ->set('status_activated.subject', $form_state->getValue('user_mail_status_activated_subject'))
       ->set('status_blocked.body', $form_state->getValue('user_mail_status_blocked_body'))

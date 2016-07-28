@@ -1,14 +1,18 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\Render\Element\StatusMessages.
- */
-
 namespace Drupal\Core\Render\Element;
 
 /**
  * Provides a messages element.
+ *
+ * Used to display results of drupal_set_message() calls.
+ *
+ * Usage example:
+ * @code
+ * $build['status_messages'] = [
+ *   '#type' => 'status_messages',
+ * ];
+ * @endcode
  *
  * @RenderElement("status_messages")
  */

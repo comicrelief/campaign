@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\file\Entity\File.
- */
-
 namespace Drupal\file\Entity;
 
 use Drupal\Core\Entity\ContentEntityBase;
@@ -17,6 +12,8 @@ use Drupal\user\UserInterface;
 
 /**
  * Defines the file entity class.
+ *
+ * @ingroup file
  *
  * @ContentEntityType(
  *   id = "file",
@@ -70,6 +67,8 @@ class File extends ContentEntityBase implements FileInterface {
 
   /**
    * {@inheritdoc}
+   *
+   * @see file_url_transform_relative()
    */
   public function url($rel = 'canonical', $options = array()) {
     return file_create_url($this->getFileUri());
@@ -189,7 +188,11 @@ class File extends ContentEntityBase implements FileInterface {
   public function preSave(EntityStorageInterface $storage) {
     parent::preSave($storage);
 
-    $this->setSize(filesize($this->getFileUri()));
+    // The file itself might not exist or be available right now.
+    $uri = $this->getFileUri();
+    if ($size = @filesize($uri)) {
+      $this->setSize($size);
+    }
   }
 
   /**

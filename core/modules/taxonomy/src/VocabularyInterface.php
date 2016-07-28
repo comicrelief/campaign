@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\taxonomy\VocabularyInterface.
- */
-
 namespace Drupal\taxonomy;
 
 use Drupal\Core\Config\Entity\ConfigEntityInterface;
@@ -17,7 +12,7 @@ interface VocabularyInterface extends ConfigEntityInterface {
   /**
    * Returns the vocabulary hierarchy.
    *
-   * @return integer
+   * @return int
    *   The vocabulary hierarchy.
    */
   public function getHierarchy();
@@ -25,7 +20,7 @@ interface VocabularyInterface extends ConfigEntityInterface {
   /**
    * Sets the vocabulary hierarchy.
    *
-   * @param integer $hierarchy
+   * @param int $hierarchy
    *   The hierarchy type of vocabulary.
    *   Possible values:
    *    - TAXONOMY_HIERARCHY_DISABLED: No parents.
@@ -43,4 +38,5 @@ interface VocabularyInterface extends ConfigEntityInterface {
    *   The vocabulary description.
    */
   public function getDescription();
+
 }

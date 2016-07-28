@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\Config\UnmetDependenciesException.
- */
-
 namespace Drupal\Core\Config;
 
 use Drupal\Component\Utility\SafeMarkup;
@@ -58,12 +53,10 @@ class UnmetDependenciesException extends ConfigException {
    * @return string
    */
   public function getTranslatedMessage(TranslationInterface $string_translation, $extension) {
-    return $string_translation->formatPlural(
-      count($this->getConfigObjects()),
-      'Unable to install @extension, %config_names has unmet dependencies.',
-      'Unable to install @extension, %config_names have unmet dependencies.',
+    return $string_translation->translate(
+      'Unable to install @extension due to unmet dependencies: @config_names',
       [
-        '%config_names' => implode(', ', $this->getConfigObjects()),
+        '@config_names' => self::formatConfigObjectList($this->configObjects),
         '@extension' => $extension,
       ]
     );
@@ -80,9 +73,9 @@ class UnmetDependenciesException extends ConfigException {
    * @return \Drupal\Core\Config\PreExistingConfigException
    */
   public static function create($extension, array $config_objects) {
-    $message = SafeMarkup::format('Configuration objects (@config_names) provided by @extension have unmet dependencies',
+    $message = SafeMarkup::format('Configuration objects provided by @extension have unmet dependencies: @config_names',
       array(
-        '@config_names' => implode(', ', $config_objects),
+        '@config_names' => self::formatConfigObjectList($config_objects),
         '@extension' => $extension
       )
     );
@@ -90,6 +83,22 @@ class UnmetDependenciesException extends ConfigException {
     $e->configObjects = $config_objects;
     $e->extension = $extension;
     return $e;
+  }
+
+  /**
+   * Formats a list of configuration objects.
+   *
+   * @param array $config_objects
+   *   A list of configuration object names that have unmet dependencies
+   *
+   * @return string
+   */
+  protected static function formatConfigObjectList($config_objects) {
+    $list = array();
+    foreach ($config_objects as $config_object => $missing_dependencies) {
+      $list[] = $config_object . ' (' . implode(', ', $missing_dependencies) .')';
+    }
+    return implode(', ', $list);
   }
 
 }

@@ -1,12 +1,8 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\views\Plugin\views\filter\BooleanOperator.
- */
-
 namespace Drupal\views\Plugin\views\filter;
 
+use Drupal\Core\Database\Query\Condition;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\views\Plugin\views\display\DisplayPluginBase;
 use Drupal\views\ViewExecutable;
@@ -31,12 +27,26 @@ use Drupal\views\ViewExecutable;
  */
 class BooleanOperator extends FilterPluginBase {
 
+  /**
+   * The equal query operator.
+   *
+   * @var string
+   */
+  const EQUAL = '=';
+
+  /**
+   * The non equal query operator.
+   *
+   * @var string
+   */
+  const NOT_EQUAL = '<>';
+
   // exposed filter options
   protected $alwaysMultiple = TRUE;
   // Don't display empty space where the operator would be.
-  var $no_operator = TRUE;
+  public $no_operator = TRUE;
   // Whether to accept NULL as a false value or not
-  var $accept_null = FALSE;
+  public $accept_null = FALSE;
 
 
 
@@ -64,12 +74,14 @@ class BooleanOperator extends FilterPluginBase {
         'method' => 'queryOpBoolean',
         'short' => $this->t('='),
         'values' => 1,
+        'query_operator' => static::EQUAL,
       ),
       '!=' => array(
         'title' => $this->t('Is not equal to'),
         'method' => 'queryOpBoolean',
         'short' => $this->t('!='),
         'values' => 1,
+        'query_operator' => static::NOT_EQUAL,
       ),
     );
   }
@@ -81,9 +93,14 @@ class BooleanOperator extends FilterPluginBase {
     parent::init($view, $display, $options);
 
     $this->value_value = $this->t('True');
+
     if (isset($this->definition['label'])) {
       $this->value_value = $this->definition['label'];
     }
+    elseif (isset($this->definition['title'])) {
+      $this->value_value = $this->definition['title'];
+    }
+
     if (isset($this->definition['accept null'])) {
       $this->accept_null = (bool) $this->definition['accept null'];
     }
@@ -185,7 +202,7 @@ class BooleanOperator extends FilterPluginBase {
     // human-readable label based on the current value.  The valueOptions
     // array is keyed with either 0 or 1, so if the current value is not
     // empty, use the label for 1, and if it's empty, use the label for 0.
-    return $this->valueOptions[!empty($this->value)];
+    return $this->operator . ' ' . $this->valueOptions[!empty($this->value)];
   }
 
   public function defaultExposeOptions() {
@@ -204,7 +221,7 @@ class BooleanOperator extends FilterPluginBase {
 
     $info = $this->operators();
     if (!empty($info[$this->operator]['method'])) {
-      call_user_func(array($this, $info[$this->operator]['method']), $field);
+      call_user_func(array($this, $info[$this->operator]['method']), $field, $info[$this->operator]['query_operator']);
     }
   }
 
@@ -213,25 +230,41 @@ class BooleanOperator extends FilterPluginBase {
    *
    * @param string $field
    *   The field name to add the where condition for.
+   * @param string $query_operator
+   *   (optional) Either static::EQUAL or static::NOT_EQUAL. Defaults to
+   *   static::EQUAL.
    */
-  protected function queryOpBoolean($field) {
+  protected function queryOpBoolean($field, $query_operator = EQUAL) {
     if (empty($this->value)) {
       if ($this->accept_null) {
-        $or = db_or()
-          ->condition($field, 0, '=')
-          ->condition($field, NULL, 'IS NULL');
-        $this->query->addWhere($this->options['group'], $or);
+        if ($query_operator == static::EQUAL) {
+          $condition = (new Condition('OR'))
+            ->condition($field, 0, $query_operator)
+            ->isNull($field);
+        }
+        else {
+          $condition = (new Condition('AND'))
+            ->condition($field, 0, $query_operator)
+            ->isNotNull($field);
+        }
+        $this->query->addWhere($this->options['group'], $condition);
       }
       else {
-        $this->query->addWhere($this->options['group'], $field, 0, '=');
+        $this->query->addWhere($this->options['group'], $field, 0, $query_operator);
       }
     }
     else {
       if (!empty($this->definition['use_equal'])) {
-        $this->query->addWhere($this->options['group'], $field, 1, '=');
+        // Forces an '=' operator instead of a '<>' for performance reasons.
+        if ($query_operator == static::EQUAL) {
+          $this->query->addWhere($this->options['group'], $field, 1, static::EQUAL);
+        }
+        else {
+          $this->query->addWhere($this->options['group'], $field, 0, static::EQUAL);
+        }
       }
       else {
-        $this->query->addWhere($this->options['group'], $field, 0, '<>');
+        $this->query->addWhere($this->options['group'], $field, 1, $query_operator);
       }
     }
   }

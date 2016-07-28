@@ -1,14 +1,10 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\locale\LocaleConfigManager.
- */
-
 namespace Drupal\locale;
 
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\Config\ConfigManagerInterface;
 use Drupal\Core\Config\StorageInterface;
 use Drupal\Core\Config\TypedConfigManagerInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
@@ -96,6 +92,13 @@ class LocaleConfigManager {
   protected $defaultConfigStorage;
 
   /**
+   * The configuration manager.
+   *
+   * @var \Drupal\Core\Config\ConfigManagerInterface
+   */
+  protected $configManager;
+
+  /**
    * Creates a new typed configuration manager.
    *
    * @param \Drupal\Core\Config\StorageInterface $config_storage
@@ -110,14 +113,17 @@ class LocaleConfigManager {
    *   The language manager.
    * @param \Drupal\locale\LocaleDefaultConfigStorage $default_config_storage
    *   The locale default configuration storage.
+   * @param \Drupal\Core\Config\ConfigManagerInterface $config_manager
+   *   The configuration manager.
    */
-  public function __construct(StorageInterface $config_storage, StringStorageInterface $locale_storage, ConfigFactoryInterface $config_factory, TypedConfigManagerInterface $typed_config, ConfigurableLanguageManagerInterface $language_manager, LocaleDefaultConfigStorage $default_config_storage) {
+  public function __construct(StorageInterface $config_storage, StringStorageInterface $locale_storage, ConfigFactoryInterface $config_factory, TypedConfigManagerInterface $typed_config, ConfigurableLanguageManagerInterface $language_manager, LocaleDefaultConfigStorage $default_config_storage, ConfigManagerInterface $config_manager) {
     $this->configStorage = $config_storage;
     $this->localeStorage = $locale_storage;
     $this->configFactory = $config_factory;
     $this->typedConfigManager = $typed_config;
     $this->languageManager = $language_manager;
     $this->defaultConfigStorage = $default_config_storage;
+    $this->configManager = $config_manager;
   }
 
   /**
@@ -198,7 +204,6 @@ class LocaleConfigManager {
    *   The translatable array structure. A nested array matching the exact
    *   structure under of the default configuration for $name with only the
    *   elements that are translatable wrapped into a TranslatableMarkup.
-   *   @see self::getTranslatableData().
    * @param string $langcode
    *   The language code to process the array with.
    *
@@ -206,6 +211,8 @@ class LocaleConfigManager {
    *   Processed translatable data array. Will only contain translations
    *   different from source strings or in case of untranslatable English, the
    *   source strings themselves.
+   *
+   * @see self::getTranslatableData()
    */
   protected function processTranslatableData($name, array $active, array $translatable, $langcode) {
     $translated = array();
@@ -477,10 +484,21 @@ class LocaleConfigManager {
    *   configuration exists.
    */
   public function getDefaultConfigLangcode($name) {
-    $shipped = $this->defaultConfigStorage->read($name);
-    if (!empty($shipped)) {
-      return !empty($shipped['langcode']) ? $shipped['langcode'] : 'en';
+    // Config entities that do not have the 'default_config_hash' cannot be
+    // shipped configuration regardless of whether there is a name match.
+    // configurable_language entities are a special case since they can be
+    // translated regardless of whether they are shipped if they in the standard
+    // language list.
+    $config_entity_type = $this->configManager->getEntityTypeIdByName($name);
+    if (!$config_entity_type || $config_entity_type === 'configurable_language'
+      || !empty($this->configFactory->get($name)->get('_core.default_config_hash'))
+    ) {
+      $shipped = $this->defaultConfigStorage->read($name);
+      if (!empty($shipped)) {
+        return !empty($shipped['langcode']) ? $shipped['langcode'] : 'en';
+      }
     }
+    return NULL;
   }
 
   /**

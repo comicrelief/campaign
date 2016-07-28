@@ -1,0 +1,21 @@
+yamlform.admin_settings.third_party.honeypot:
+  type: mapping
+  label: 'YAML form test third party settings'
+  mapping:
+    honeypot:
+      type: boolean
+      label: 'Protect all YAML forms with Honeypot'
+    time_restriction:
+      type: boolean
+      label: 'Add time limit to all YAML forms'
+
+yamlform.settings.third_party.honeypot:
+  type: mapping
+  label: 'YAML form test third party settings'
+  mapping:
+    honeypot:
+      type: boolean
+      label: 'Protect all YAML forms with Honeypot'
+    time_restriction:
+      type: boolean
+      label: 'Add time limit to all YAML forms'

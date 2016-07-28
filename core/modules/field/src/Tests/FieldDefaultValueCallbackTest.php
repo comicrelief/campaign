@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\field\Tests\FieldDefaultValueCallbackTest.
- */
-
 namespace Drupal\field\Tests;
 
 use Drupal\field\Entity\FieldConfig;
@@ -35,7 +30,7 @@ class FieldDefaultValueCallbackTest extends WebTestBase {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  protected function setUp() {
     parent::setUp();
 
     $this->fieldName = 'field_test';

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - node
+id: landing_page
+label: 'Landing page'
+type: 'canonical_entities:node'
+pattern: '[node:title]'
+selection_criteria:
+  16050a2a-5722-451a-9900-b4155e60ec42:
+    id: 'entity_bundle:node'
+    bundles:
+      landing: landing
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 16050a2a-5722-451a-9900-b4155e60ec42
+selection_logic: and
+weight: -5
+relationships: {  }

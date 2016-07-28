@@ -1,0 +1,5 @@
+name: Memcache
+description: 'High performance integration with memcache.'
+type: module
+package: 'Performance and scalability'
+core: 8.x

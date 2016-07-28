@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\Core\PageCache\ChainResponsePolicyTest.
- */
-
 namespace Drupal\Tests\Core\PageCache;
 
 use Drupal\Core\PageCache\ResponsePolicyInterface;
@@ -40,7 +35,7 @@ class ChainResponsePolicyTest extends UnitTestCase {
    */
   protected $response;
 
-  public function setUp() {
+  protected function setUp() {
     $this->policy = new ChainResponsePolicy();
     $this->response = new Response();
     $this->request = new Request();

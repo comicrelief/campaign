@@ -1,14 +1,9 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\DrupalKernel.
- */
-
 namespace Drupal\Core;
 
+use Drupal\Component\Assertion\Handle;
 use Drupal\Component\FileCache\FileCacheFactory;
-use Drupal\Component\Utility\Crypt;
 use Drupal\Component\Utility\Unicode;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Config\BootstrapConfigStorageFactory;
@@ -24,6 +19,7 @@ use Drupal\Core\Http\TrustedHostsRequestFactory;
 use Drupal\Core\Language\Language;
 use Drupal\Core\Site\Settings;
 use Symfony\Cmf\Component\Routing\RouteObjectInterface;
+use Symfony\Component\ClassLoader\ApcClassLoader;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -428,7 +424,7 @@ class DrupalKernel implements DrupalKernelInterface, TerminableInterface {
       ];
       // @todo Use extension_loaded('apcu') for non-testbot
       //  https://www.drupal.org/node/2447753.
-      if (function_exists('apc_fetch')) {
+      if (function_exists('apcu_fetch')) {
         $configuration['default']['cache_backend_class'] = '\Drupal\Component\FileCache\ApcuFileCacheBackend';
       }
     }
@@ -439,11 +435,6 @@ class DrupalKernel implements DrupalKernelInterface, TerminableInterface {
 
     // Initialize the container.
     $this->initializeContainer();
-
-    // Ensure mt_rand() is reseeded to prevent random values from one page load
-    // being exploited to predict random values in subsequent page loads.
-    $seed = unpack("L", Crypt::randomBytes(4));
-    mt_srand($seed[1]);
 
     $this->booted = TRUE;
 
@@ -540,7 +531,7 @@ class DrupalKernel implements DrupalKernelInterface, TerminableInterface {
     // Set the allowed protocols.
     UrlHelper::setAllowedProtocols($this->container->getParameter('filter_protocols'));
 
-    // Override of Symfony's mime type guesser singleton.
+    // Override of Symfony's MIME type guesser singleton.
     MimeTypeGuesser::registerWithSymfonyGuesser($this->container);
 
     $this->prepared = TRUE;
@@ -761,11 +752,20 @@ class DrupalKernel implements DrupalKernelInterface, TerminableInterface {
   /**
    * Returns the container cache key based on the environment.
    *
+   * The 'environment' consists of:
+   * - The kernel environment string.
+   * - The Drupal version constant.
+   * - The deployment identifier from settings.php. This allows custom
+   *   deployments to force a container rebuild.
+   * - The operating system running PHP. This allows compiler passes to optimize
+   *   services for different operating systems.
+   * - The paths to any additional container YAMLs from settings.php.
+   *
    * @return string
    *   The cache key used for the service container.
    */
   protected function getContainerCacheKey() {
-    $parts = array('service_container', $this->environment, \Drupal::VERSION, Settings::get('deployment_identifier'));
+    $parts = array('service_container', $this->environment, \Drupal::VERSION, Settings::get('deployment_identifier'), PHP_OS, serialize(Settings::get('container_yamls')));
     return implode(':', $parts);
   }
 
@@ -866,7 +866,7 @@ class DrupalKernel implements DrupalKernelInterface, TerminableInterface {
 
     // If needs dumping flag was set, dump the container.
     if ($this->containerNeedsDumping && !$this->cacheDrupalContainer($container_definition)) {
-      $this->container->get('logger.factory')->get('DrupalKernel')->notice('Container cannot be saved to cache.');
+      $this->container->get('logger.factory')->get('DrupalKernel')->error('Container cannot be saved to cache.');
     }
 
     return $this->container;
@@ -925,11 +925,15 @@ class DrupalKernel implements DrupalKernelInterface, TerminableInterface {
         assert_options(ASSERT_ACTIVE, TRUE);
         // Now synchronize PHP 5 and 7's handling of assertions as much as
         // possible.
-        \Drupal\Component\Assertion\Handle::register();
+        Handle::register();
 
         // Log fatal errors to the test site directory.
         ini_set('log_errors', 1);
         ini_set('error_log', DRUPAL_ROOT . '/sites/simpletest/' . substr($test_prefix, 10) . '/error.log');
+
+        // Ensure that a rewritten settings.php is used if opcache is on.
+        ini_set('opcache.validate_timestamps', 'on');
+        ini_set('opcache.revalidate_freq', 0);
       }
       else {
         // Ensure that no other code defines this.
@@ -972,9 +976,9 @@ class DrupalKernel implements DrupalKernelInterface, TerminableInterface {
     // loader.
     if ($class_loader_class == get_class($this->classLoader)
         && Settings::get('class_loader_auto_detect', TRUE)
-        && function_exists('apc_fetch')) {
+        && function_exists('apcu_fetch')) {
       $prefix = Settings::getApcuPrefix('class_loader', $this->root);
-      $apc_loader = new \Symfony\Component\ClassLoader\ApcClassLoader($prefix, $this->classLoader);
+      $apc_loader = new ApcClassLoader($prefix, $this->classLoader);
       $this->classLoader->unregister();
       $apc_loader->register();
       $this->classLoader = $apc_loader;
@@ -1213,7 +1217,7 @@ class DrupalKernel implements DrupalKernelInterface, TerminableInterface {
     foreach ($this->serviceProviderClasses as $origin => $classes) {
       foreach ($classes as $name => $class) {
         if (!is_object($class)) {
-          $this->serviceProviders[$origin][$name] = new $class;
+          $this->serviceProviders[$origin][$name] = new $class();
         }
         else {
           $this->serviceProviders[$origin][$name] = $class;
@@ -1307,7 +1311,7 @@ class DrupalKernel implements DrupalKernelInterface, TerminableInterface {
    *
    * @return array
    *   Array where each key is a module name, and each value is a path to the
-   *   respective *.module or *.profile file.
+   *   respective *.info.yml file.
    */
   protected function getModuleFileNames() {
     $filenames = array();
@@ -1324,7 +1328,7 @@ class DrupalKernel implements DrupalKernelInterface, TerminableInterface {
    *
    * @param string[] $module_file_names
    *   Array where each key is a module name, and each value is a path to the
-   *   respective *.module or *.profile file.
+   *   respective *.info.yml file.
    *
    * @return string[]
    *   Array where each key is a module namespace like 'Drupal\system', and each
@@ -1468,4 +1472,5 @@ class DrupalKernel implements DrupalKernelInterface, TerminableInterface {
   protected function addServiceFiles(array $service_yamls) {
     $this->serviceYamls['site'] = array_filter($service_yamls, 'file_exists');
   }
+
 }

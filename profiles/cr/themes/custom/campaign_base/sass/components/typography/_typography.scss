@@ -1,0 +1,74 @@
+// Typography
+//
+// These are the Typography
+//
+// Markup:
+// <h1>Heading 1</h1>
+// <h2>Heading 2</h2>
+// <h3>Heading 3</h3>
+// <h4>Heading 4</h4>
+// <p>Paragraph Intrinsicly impact compelling channels through intermandated paradigms. Appropriately optimize intuitive imperatives whereas emerging web services. Continually expedite installed base paradigms rather than high-payoff niches. Authoritatively.</p>
+//
+// Style guide: Typography.Typography
+
+h1 {
+  margin: 0 0 20px;
+  text-transform: uppercase;
+  color: #1e1e1e;
+  font-family: $body-font;
+  font-size: 40px;
+  font-weight: normal;
+  line-height: 40px;
+}
+p,
+h2,
+h3,
+h4 {
+  margin: 0 0 20px;
+  font-family: $body-font;
+  font-weight: normal;
+  clear: both;
+}
+h2 {
+  font-size: 24px;
+  line-height: 28px;
+}
+h3 {
+  color: #1e1e1e;
+  font-size: 21px;
+  line-height: 24px;
+}
+h4 {
+  color: #1e1e1e;
+  font-size: 18px;
+  line-height: 22px;
+}
+p {
+  padding: 0;
+  font-size: 16px;
+  line-height: 23px;
+}
+
+@include breakpoint($screen-md) {
+  h2 {
+    font-size: 30px;
+    line-height: 40px;
+  }
+  h3 {
+    font-size: 21px;
+    line-height: 28px;
+  }
+  h4 {
+    font-size: 18px;
+  }
+}
+
+@include breakpoint($screen-lg) {
+  h2 {
+    line-height: 30px;
+  }
+  h3 {
+    font-size: 22px;
+    line-height: 26px;
+  }
+}

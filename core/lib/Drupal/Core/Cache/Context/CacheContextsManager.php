@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\Cache\Context\CacheContextsManager.
- */
-
 namespace Drupal\Core\Cache\Context;
 
 use Drupal\Core\Cache\CacheableMetadata;
@@ -92,9 +87,10 @@ class CacheContextsManager {
    *
    * A cache context token is either:
    * - a cache context ID (if the service ID is 'cache_context.foo', then 'foo'
-   *   is a cache context ID), e.g. 'foo'
-   * - a calculated cache context ID, followed by a double colon, followed by
-   *   the parameter for the calculated cache context, e.g. 'bar:some_parameter'
+   *   is a cache context ID); for example, 'foo'.
+   * - a calculated cache context ID, followed by a colon, followed by
+   *   the parameter for the calculated cache context; for example,
+   *   'bar:some_parameter'.
    *
    * @param string[] $context_tokens
    *   An array of cache context tokens.
@@ -102,7 +98,6 @@ class CacheContextsManager {
    * @return \Drupal\Core\Cache\Context\ContextCacheKeys
    *   The ContextCacheKeys object containing the converted cache keys and
    *   cacheability metadata.
-   *
    */
   public function convertTokensToKeys(array $context_tokens) {
     assert('$this->assertValidTokens($context_tokens)');
@@ -142,11 +137,12 @@ class CacheContextsManager {
    * If a cache context is being optimized away, it is able to set cacheable
    * metadata for itself which will be bubbled up.
    *
-   * E.g. when caching per user ('user'), also caching per role ('user.roles')
-   * is meaningless because "per role" is implied by "per user".
+   * For example, when caching per user ('user'), also caching per role
+   * ('user.roles') is meaningless because "per role" is implied by "per user".
    *
-   * Examples — remember that the period indicates hierarchy and the colon can
-   * be used to get a specific value of a calculated cache context:
+   * In the following examples, remember that the period indicates hierarchy and
+   * the colon can be used to get a specific value of a calculated cache
+   * context:
    * - ['a', 'a.b'] -> ['a']
    * - ['a', 'a.b.c'] -> ['a']
    * - ['a.b', 'a.b.c'] -> ['a.b']
@@ -198,7 +194,7 @@ class CacheContextsManager {
             $ancestor_found = TRUE;
           }
 
-        } while(!$ancestor_found && strpos($ancestor, '.') !== FALSE);
+        } while (!$ancestor_found && strpos($ancestor, '.') !== FALSE);
         if (!$ancestor_found) {
           $optimized_content_tokens[] = $context_token;
         }

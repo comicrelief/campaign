@@ -1,0 +1,200 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/whats-going-on\/things-heat-up-great-sport-relief-bake-off-tent?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/article"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_image": [
+            {
+                "href": "http:\/\/default\/file\/11?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_tags": [
+            {
+                "href": "http:\/\/default\/taxonomy\/term\/4?_format=hal_json"
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": "16"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "e46e1070-e002-4a36-ba04-4ea1279f0289"
+        }
+    ],
+    "vid": [
+        {
+            "value": "16"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "article"
+        }
+    ],
+    "title": [
+        {
+            "value": "Things heat up in The Great Sport Relief Bake Off tent",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "ae1f300e-a034-4ed9-a78d-b52d9d2361d0"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "ae1f300e-a034-4ed9-a78d-b52d9d2361d0"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/11?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "0bc0120b-1108-4d05-8f5a-908c9d546efc"
+                    }
+                ],
+                "lang": "en",
+                "alt": "",
+                "title": "",
+                "width": "610",
+                "height": "343"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_tags": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/taxonomy\/term\/4?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/tags"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "17f49cf8-f8bd-4d70-af02-02db94926a20"
+                    }
+                ]
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1455708174",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1455708352",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1455708288"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<p>Four more celebrities will take up the baking baton in The Great Sport Relief Bake Off.<\/p>\r\n\r\n<p>Going head to head in the famous tent are ex-Spice Girl Geri Horner, BBC World Affairs Editor John Simpson, footballer and pundit Jermaine Jenas and singer and presenter Louise Redknapp.<\/p>\r\n\r\n<p>The episode is hosted by comedian Ed Byrne and judges Mary Berry and Paul Hollywood are back on hand to put the bakers through their paces.<\/p>\r\n\r\n<p>The first hurdle for the celebrities is the Signature challenge, where they take on savoury tarts. But will they be able to fulfil the judges\u2019 requirements?<\/p>\r\n\r\n<p>Up next it\u2019s the Technical challenge: Mary\u2019s chocolate and beetroot tray bake. The bakers must follow a stripped-back recipe to produce the moist, malty sponge, covered with a cream-cheese icing and decorated with candied beetroot. Who will struggle with the tricky task and who will impress the judges?<\/p>\r\n\r\n<p>For the final, Showstopper bake the celebrities are asked to make 3D models of their favourite sporting moments out of biscuits. When it comes to the crunch, who will crumble under the pressure and who will triumph to take home the title of Star Baker?<\/p>\r\n\r\n<p>While the celebrity bakers hope to inspire others to get involved in fundraising for Sport Relief, Clare Balding visits Kenya to learn more about the fight against malaria. Viewers will see Clare visit children in a hospital to see how money raise by Sport Relief is helping to make a difference.<\/p>\r\n\r\n<p>You can watch The Great Sport Relief Bake Off on BBC One at 8pm.<\/p>\r\n\r\n<p>Don\u2019t forget you can also Get Baking for Sport Relief. To order your kit, which will include special recipes, visit&nbsp;<a href=\"http:\/\/www.sportrelief.com\/bake-off-kit\">sportrelief.com\/bake-off-kit<\/a>.<\/p>\r\n",
+            "format": "basic_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ],
+    "field_article_publish_date": [
+        {
+            "value": "2016-02-17"
+        }
+    ]
+}

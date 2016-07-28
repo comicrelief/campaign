@@ -1,0 +1,17 @@
+/* REMIX! */
+/* Small breakpoint */
+$screen-sm: 0px;
+$screen-sm-min: $screen-sm;
+$screen-sm-max: 739px;
+
+/* Medium breakpoint */
+$screen-md: 740px;
+$screen-md-min: $screen-md;
+$screen-md-max: 1023px;
+
+$screen-md-only: $screen-md $screen-md-max;
+
+/* Large breakpoint */
+$screen-lg: 1024px;
+$screen-lg-min: $screen-lg;
+/* $screen-lg-max: no no, no no no no, no no no no, no no there's no limit */

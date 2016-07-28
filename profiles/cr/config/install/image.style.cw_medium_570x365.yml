@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: cw_medium_570x365
+label: 'CW 16:9 MD 680x382'
+effects:
+  b15cd13b-9856-42da-b400-b01a7c05bf74:
+    uuid: b15cd13b-9856-42da-b400-b01a7c05bf74
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 680
+      height: 382

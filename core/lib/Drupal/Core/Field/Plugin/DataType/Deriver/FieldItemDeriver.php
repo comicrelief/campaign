@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\Field\Plugin\DataType\Deriver\FieldItemDeriver.
- */
-
 namespace Drupal\Core\Field\Plugin\DataType\Deriver;
 
 use Drupal\Core\Field\FieldTypePluginManagerInterface;
@@ -42,7 +37,7 @@ class FieldItemDeriver implements ContainerDeriverInterface {
    *
    * @param string $base_plugin_id
    *   The base plugin ID.
-   * @param \Drupal\Core\Field\FieldTypePluginManagerInterface $field_type_manager
+   * @param \Drupal\Core\Field\FieldTypePluginManagerInterface $field_type_plugin_manager
    *   The field type plugin manager.
    */
   public function __construct($base_plugin_id, FieldTypePluginManagerInterface $field_type_plugin_manager) {

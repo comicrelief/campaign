@@ -1,22 +1,14 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\migrate\Plugin\migrate\destination\EntityContentBase.
- */
-
 namespace Drupal\migrate\Plugin\migrate\destination;
 
-use Drupal\Component\Utility\Random;
-use Drupal\Component\Utility\Unicode;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityManagerInterface;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Field\FieldTypePluginManagerInterface;
 use Drupal\Core\TypedData\TypedDataInterface;
-use Drupal\link\LinkItemInterface;
-use Drupal\migrate\Entity\MigrationInterface;
+use Drupal\migrate\Plugin\MigrationInterface;
 use Drupal\migrate\MigrateException;
 use Drupal\migrate\Plugin\MigrateIdMapInterface;
 use Drupal\migrate\Row;
@@ -50,7 +42,7 @@ class EntityContentBase extends Entity {
    *   The plugin ID for the plugin instance.
    * @param mixed $plugin_definition
    *   The plugin implementation definition.
-   * @param \Drupal\migrate\Entity\MigrationInterface $migration
+   * @param \Drupal\migrate\Plugin\MigrationInterface $migration
    *   The migration entity.
    * @param \Drupal\Core\Entity\EntityStorageInterface $storage
    *   The storage for this entity type.
@@ -97,15 +89,15 @@ class EntityContentBase extends Entity {
   }
 
   /**
-   * Save the entity.
+   * Saves the entity.
    *
    * @param \Drupal\Core\Entity\ContentEntityInterface $entity
    *   The content entity.
    * @param array $old_destination_id_values
-   *   An array of destination id values.
+   *   (optional) An array of destination ID values. Defaults to an empty array.
    *
    * @return array
-   *   An array containing the entity id.
+   *   An array containing the entity ID.
    */
   protected function save(ContentEntityInterface $entity, array $old_destination_id_values = array()) {
     $entity->save();
@@ -122,7 +114,7 @@ class EntityContentBase extends Entity {
   }
 
   /**
-   * Update an entity with the new values from row.
+   * Updates an entity with the new values from row.
    *
    * @param \Drupal\Core\Entity\EntityInterface $entity
    *   The entity to update.
@@ -152,7 +144,7 @@ class EntityContentBase extends Entity {
   }
 
   /**
-   * Do as much population of the stub row as we can.
+   * Populates as much of the stub row as possible.
    *
    * @param \Drupal\migrate\Row $row
    *   The row of data.
@@ -185,7 +177,6 @@ class EntityContentBase extends Entity {
           if (is_null($values)) {
             // Handle failure to generate a sample value.
             throw new MigrateException('Stubbing failed, unable to generate value for field ' . $field_name);
-            break;
           }
         }
 

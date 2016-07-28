@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\menu_ui\MenuForm.
- */
-
 namespace Drupal\menu_ui;
 
 use Drupal\Component\Utility\NestedArray;
@@ -291,8 +286,6 @@ class MenuForm extends EntityForm {
         // TableDrag: Mark the table row as draggable.
         $form['links'][$id]['#attributes'] = $element['#attributes'];
         $form['links'][$id]['#attributes']['class'][] = 'draggable';
-
-        $form['links'][$id]['#item'] = $element['#item'];
 
         // TableDrag: Sort the table row according to its existing/configured weight.
         $form['links'][$id]['#weight'] = $element['#item']->link->getWeight();

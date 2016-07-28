@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\system\Tests\Menu\LocalActionTest.
- */
-
 namespace Drupal\system\Tests\Menu;
 
 use Drupal\Component\Utility\Html;
@@ -47,6 +42,22 @@ class LocalActionTest extends WebTestBase {
       [Url::fromRoute('menu_test.local_action2'), 'My hook_menu action'],
       [Url::fromRoute('menu_test.local_action3'), 'My YAML discovery action'],
       [Url::fromRoute('menu_test.local_action5'), 'Title override'],
+    ]);
+    // Test a local action title that changes based on a config value.
+    $this->drupalGet(Url::fromRoute('menu_test.local_action6'));
+    $this->assertLocalAction([
+      [Url::fromRoute('menu_test.local_action5'), 'Original title'],
+    ]);
+    // Verify the expected cache tag in the response headers.
+    $header_values = explode(' ', $this->drupalGetHeader('x-drupal-cache-tags'));
+    $this->assertTrue(in_array('config:menu_test.links.action', $header_values), "Found 'config:menu_test.links.action' cache tag in header");
+    /** @var \Drupal\Core\Config\Config $config */
+    $config = $this->container->get('config.factory')->getEditable('menu_test.links.action');
+    $config->set('title', 'New title');
+    $config->save();
+    $this->drupalGet(Url::fromRoute('menu_test.local_action6'));
+    $this->assertLocalAction([
+      [Url::fromRoute('menu_test.local_action5'), 'New title'],
     ]);
   }
 

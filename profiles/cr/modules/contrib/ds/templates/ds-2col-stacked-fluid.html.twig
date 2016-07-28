@@ -1,0 +1,55 @@
+{#
+/**
+ * @file
+ * Display Suite fluid 2 column stacked template.
+ *
+ * Available variables:
+ * - outer_wrapper: outer wrapper element
+ * - header_wrapper: wrapper element around header region
+ * - left_wrapper: wrapper element around left region
+ * - right_wrapper: wrapper element around right region
+ * - footer_wrapper: wrapper element around footer region
+ * - attributes: layout attributes
+ * - header_attributes: attributes for header region
+ * - left_attributes: attributes for left region
+ * - right_attributes: attributes for right region
+ * - footer_attributes: attributes for footer region
+ * - header: content of header region
+ * - left: content of left region
+ * - right: content of right region
+ * - footer: content of footer region
+ */
+#}
+
+{% set left = left|render %}
+{% set right = right|render %}
+
+{% if (left and not right) or (right and not left) %}
+  {% set layout_class = 'group-one-column' %}
+{% endif %}
+
+<{{ outer_wrapper }}{{ attributes.addClass(layout_class, 'ds-2col-stacked-fluid', 'clearfix') }}>
+
+  {{ title_suffix.contextual_links }}
+
+  <{{ header_wrapper }}{{ header_attributes.addClass('group-header') }}>
+    {{ header }}
+  </{{ header_wrapper }}>
+
+  {% if left %}
+    <{{ left_wrapper }}{{ left_attributes.addClass('group-left') }}>
+      {{ left }}
+    </{{ left_wrapper }}>
+  {% endif %}
+
+  {% if right %}
+    <{{ right_wrapper }}{{ right_attributes.addClass('group-right') }}>
+      {{ right }}
+    </{{ right_wrapper }}>
+  {% endif %}
+
+  <{{ footer_wrapper }}{{ footer_attributes.addClass('group-footer') }}>
+    {{ footer }}
+  </{{ footer_wrapper }}>
+
+</{{ outer_wrapper }}>

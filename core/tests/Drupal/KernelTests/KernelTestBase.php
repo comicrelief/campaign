@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\KernelTests\KernelTestBase.
- */
-
 namespace Drupal\KernelTests;
 
 use Drupal\Component\FileCache\ApcuFileCacheBackend;
@@ -21,10 +16,12 @@ use Drupal\Core\DependencyInjection\ServiceProviderInterface;
 use Drupal\Core\DrupalKernel;
 use Drupal\Core\Entity\Sql\SqlEntityStorageInterface;
 use Drupal\Core\Extension\ExtensionDiscovery;
+use Drupal\Core\Language\Language;
 use Drupal\Core\Site\Settings;
 use Drupal\simpletest\AssertContentTrait;
 use Drupal\simpletest\AssertHelperTrait;
-use Drupal\simpletest\RandomGeneratorTrait;
+use Drupal\Tests\RandomGeneratorTrait;
+use Drupal\simpletest\TestServiceProvider;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpFoundation\Request;
 use org\bovigo\vfs\vfsStream;
@@ -140,10 +137,9 @@ abstract class KernelTestBase extends \PHPUnit_Framework_TestCase implements Ser
   /**
    * Modules to enable.
    *
-   * Test classes extending this class, and any classes in the hierarchy up to
-   * this class, may specify individual lists of modules to enable by setting
-   * this property. The values of all properties in all classes in the class
-   * hierarchy are merged.
+   * The test runner will merge the $modules lists from this class, the class
+   * it extends, and so on up the class hierarchy. It is not necessary to
+   * include modules in your list that a parent class has already declared.
    *
    * @see \Drupal\Tests\KernelTestBase::enableModules()
    * @see \Drupal\Tests\KernelTestBase::bootKernel()
@@ -192,6 +188,22 @@ abstract class KernelTestBase extends \PHPUnit_Framework_TestCase implements Ser
   protected $strictConfigSchema = TRUE;
 
   /**
+   * An array of config object names that are excluded from schema checking.
+   *
+   * @var string[]
+   */
+  protected static $configSchemaCheckerExclusions = array(
+    // Following are used to test lack of or partial schema. Where partial
+    // schema is provided, that is explicitly tested in specific tests.
+    'config_schema_test.noschema',
+    'config_schema_test.someschema',
+    'config_schema_test.schema_data_types',
+    'config_schema_test.no_schema_data_types',
+    // Used to test application of schema to filtering of configuration.
+    'config_test.dynamic.system',
+  );
+
+  /**
    * {@inheritdoc}
    */
   public static function setUpBeforeClass() {
@@ -235,8 +247,7 @@ abstract class KernelTestBase extends \PHPUnit_Framework_TestCase implements Ser
     $this->streamWrappers = array();
     \Drupal::unsetContainer();
 
-    // @see /core/tests/bootstrap.php
-    $this->classLoader = $GLOBALS['loader'];
+    $this->classLoader = require $this->root . '/autoload.php';
 
     require_once $this->root . '/core/includes/bootstrap.inc';
 
@@ -285,6 +296,13 @@ abstract class KernelTestBase extends \PHPUnit_Framework_TestCase implements Ser
       Database::removeConnection($key);
     }
     Database::addConnectionInfo('default', 'default', $this->getDatabaseConnectionInfo()['default']);
+  }
+
+  /**
+   * @return string
+   */
+  public function getDatabasePrefix() {
+    return $this->databasePrefix;
   }
 
   /**
@@ -359,6 +377,11 @@ abstract class KernelTestBase extends \PHPUnit_Framework_TestCase implements Ser
       $this->container->get('module_handler')->loadAll();
     }
 
+    $this->container->get('request_stack')->push($request);
+
+    // Setup the destion to the be frontpage by default.
+    \Drupal::destination()->set('/');
+
     // Write the core.extension configuration.
     // Required for ConfigInstaller::installDefaultConfig() to work.
     $this->container->get('config.storage')->write('core.extension', array(
@@ -371,6 +394,12 @@ abstract class KernelTestBase extends \PHPUnit_Framework_TestCase implements Ser
       'class' => '\Drupal\Component\PhpStorage\FileStorage',
     ];
     new Settings($settings);
+
+    // Manually configure the test mail collector implementation to prevent
+    // tests from sending out emails and collect them in state instead.
+    // While this should be enforced via settings.php prior to installation,
+    // some tests expect to be able to test mail system implementations.
+    $GLOBALS['config']['system.mail']['interface']['default'] = 'test_mail_collector';
   }
 
   /**
@@ -407,7 +436,7 @@ abstract class KernelTestBase extends \PHPUnit_Framework_TestCase implements Ser
     // If the test is run with argument dburl then use it.
     $db_url = getenv('SIMPLETEST_DB');
     if (empty($db_url)) {
-      $this->markTestSkipped('There is no database connection so no tests can be run. You must provide a SIMPLETEST_DB environment variable to run PHPUnit based functional tests outside of run-tests.sh. See https://www.drupal.org/node/2116263#skipped-tests for more information.');
+      throw new \Exception('There is no database connection so no tests can be run. You must provide a SIMPLETEST_DB environment variable to run PHPUnit based functional tests outside of run-tests.sh. See https://www.drupal.org/node/2116263#skipped-tests for more information.');
     }
     else {
       $database = Database::convertDbUrlToConnectionInfo($db_url, $this->root);
@@ -509,7 +538,7 @@ abstract class KernelTestBase extends \PHPUnit_Framework_TestCase implements Ser
       ];
       // @todo Use extension_loaded('apcu') for non-testbot
       //  https://www.drupal.org/node/2447753.
-      if (function_exists('apc_fetch')) {
+      if (function_exists('apcu_fetch')) {
         $configuration['default']['cache_backend_class'] = ApcuFileCacheBackend::class;
       }
     }
@@ -575,10 +604,14 @@ abstract class KernelTestBase extends \PHPUnit_Framework_TestCase implements Ser
     $container
       ->setAlias('keyvalue', 'keyvalue.memory');
 
+    // Set the default language on the minimal container.
+    $container->setParameter('language.default_values', Language::$defaultValues);
+
     if ($this->strictConfigSchema) {
       $container
         ->register('simpletest.config_schema_checker', 'Drupal\Core\Config\Testing\ConfigSchemaChecker')
         ->addArgument(new Reference('config.typed'))
+        ->addArgument($this->getConfigSchemaExclusions())
         ->addTag('event_subscriber');
     }
 
@@ -596,6 +629,26 @@ abstract class KernelTestBase extends \PHPUnit_Framework_TestCase implements Ser
       $container->getDefinition('password')
         ->setArguments(array(1));
     }
+    TestServiceProvider::addRouteProvider($container);
+  }
+
+  /**
+   * Gets the config schema exclusions for this test.
+   *
+   * @return string[]
+   *   An array of config object names that are excluded from schema checking.
+   */
+  protected function getConfigSchemaExclusions() {
+    $class = get_class($this);
+    $exceptions = [];
+    while ($class) {
+      if (property_exists($class, 'configSchemaCheckerExclusions')) {
+        $exceptions = array_merge($exceptions, $class::$configSchemaCheckerExclusions);
+      }
+      $class = get_parent_class($class);
+    }
+    // Filter out any duplicates.
+    return array_unique($exceptions);
   }
 
   /**
@@ -741,6 +794,13 @@ abstract class KernelTestBase extends \PHPUnit_Framework_TestCase implements Ser
     foreach ($tables as $table) {
       $schema = drupal_get_module_schema($module, $table);
       if (empty($schema)) {
+        // BC layer to avoid some contrib tests to fail.
+        // @todo Remove the BC layer before 8.1.x release.
+        // @see https://www.drupal.org/node/2670360
+        // @see https://www.drupal.org/node/2670454
+        if ($module == 'system') {
+          continue;
+        }
         throw new \LogicException("$module module does not define a schema for table '$table'.");
       }
       $this->container->get('database')->schema()->createTable($table, $schema);
@@ -786,6 +846,12 @@ abstract class KernelTestBase extends \PHPUnit_Framework_TestCase implements Ser
 
   /**
    * Enables modules for this test.
+   *
+   * To install test modules outside of the testing environment, add
+   * @code
+   * $settings['extension_discovery_scan_tests'] = TRUE;
+   * @endcode
+   * to your settings.php.
    *
    * @param string[] $modules
    *   A list of modules to enable. Dependencies are not resolved; i.e.,
@@ -882,7 +948,8 @@ abstract class KernelTestBase extends \PHPUnit_Framework_TestCase implements Ser
     // Update the kernel to remove their services.
     $this->container->get('kernel')->updateModules($module_filenames, $module_filenames);
 
-    // Ensure isLoaded() is TRUE in order to make _theme() work.
+    // Ensure isLoaded() is TRUE in order to make
+    // \Drupal\Core\Theme\ThemeManagerInterface::render() work.
     // Note that the kernel has rebuilt the container; this $module_handler is
     // no longer the $module_handler instance from above.
     $module_handler = $this->container->get('module_handler');
@@ -904,11 +971,15 @@ abstract class KernelTestBase extends \PHPUnit_Framework_TestCase implements Ser
    *   The rendered string output (typically HTML).
    */
   protected function render(array &$elements) {
+    // \Drupal\Core\Render\BareHtmlPageRenderer::renderBarePage calls out to
+    // system_page_attachments() directly.
+    if (!\Drupal::moduleHandler()->moduleExists('system')) {
+      throw new \Exception(__METHOD__ . ' requires system module to be installed.');
+    }
+
     // Use the bare HTML page renderer to render our links.
     $renderer = $this->container->get('bare_html_page_renderer');
-    $response = $renderer->renderBarePage(
-      $elements, '', $this->container->get('theme.manager')->getActiveTheme()->getName()
-    );
+    $response = $renderer->renderBarePage($elements, '', 'maintenance_page');
 
     // Glean the content from the response object.
     $content = $response->getContent();
@@ -1108,12 +1179,42 @@ abstract class KernelTestBase extends \PHPUnit_Framework_TestCase implements Ser
       'kernel',
       // @see \Drupal\simpletest\TestBase::prepareEnvironment()
       'generatedTestFiles',
-      // @see \Drupal\simpletest\KernelTestBase::containerBuild()
+      // Properties from the old KernelTestBase class that has been removed.
       'keyValueFactory',
     );
     if (in_array($name, $denied) || strpos($name, 'original') === 0) {
       throw new \RuntimeException(sprintf('TestBase::$%s property no longer exists', $name));
     }
+  }
+
+  /**
+   * Prevents serializing any properties.
+   *
+   * Kernel tests are run in a separate process. To do this PHPUnit creates a
+   * script to run the test. If it fails, the test result object will contain a
+   * stack trace which includes the test object. It will attempt to serialize
+   * it. Returning an empty array prevents it from serializing anything it
+   * should not.
+   *
+   * @return array
+   *   An empty array.
+   *
+   * @see vendor/phpunit/phpunit/src/Util/PHP/Template/TestCaseMethod.tpl.dist
+   */
+  public function __sleep() {
+    return [];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function assertEquals($expected, $actual, $message = '', $delta = 0.0, $maxDepth = 10, $canonicalize = FALSE, $ignoreCase = FALSE) {
+    // Cast objects implementing MarkupInterface to string instead of
+    // relying on PHP casting them to string depending on what they are being
+    // comparing with.
+    $expected = static::castSafeStrings($expected);
+    $actual = static::castSafeStrings($actual);
+    parent::assertEquals($expected, $actual, $message, $delta, $maxDepth, $canonicalize, $ignoreCase);
   }
 
 }

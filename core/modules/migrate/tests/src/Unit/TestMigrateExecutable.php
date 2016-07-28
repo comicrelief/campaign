@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\migrate\Unit\TestMigrateExecutable.
- */
-
 namespace Drupal\Tests\migrate\Unit;
 
 use Drupal\Core\StringTranslation\TranslationInterface;
@@ -53,7 +48,7 @@ class TestMigrateExecutable extends MigrateExecutable {
    * Allows access to protected sourceIdValues property.
    *
    * @param array $source_id_values
-   *   The value to set.
+   *   The values to set.
    */
   public function setSourceIdValues($source_id_values) {
     $this->sourceIdValues = $source_id_values;
@@ -100,7 +95,7 @@ class TestMigrateExecutable extends MigrateExecutable {
    * @param int $memory_usage
    *   The fake memory usage value.
    * @param int $cleared_memory_usage
-   *   (optional) The fake cleared memory value.
+   *   (optional) The fake cleared memory value. Defaults to NULL.
    */
   public function setMemoryUsage($memory_usage, $cleared_memory_usage = NULL) {
     $this->memoryUsage = $memory_usage;

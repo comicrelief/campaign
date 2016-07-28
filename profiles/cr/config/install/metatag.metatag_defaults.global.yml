@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies: {  }
+id: global
+label: Global
+tags:
+  title: '[current-page:title] | [site:name]'
+  referrer: no-referrer
+  canonical_url: '[current-page:url:absolute]'
+  shortlink: '[current-page:url:absolute]'
+  og_site_name: '[site:name]'
+  og_title: '[current-page:title] | [site:name]'
+  og_type: article
+  og_image: '[site:url]/profiles/cr/themes/custom/campaign_base/images/og/rnd-logo_open-graph_v2.jpg'
+  og_url: '[current-page:url:absolute]'

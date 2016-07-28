@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cr_rich_text_paragraph.field_background
+    - field.field.paragraph.cr_rich_text_paragraph.field_body
+    - paragraphs.paragraphs_type.cr_rich_text_paragraph
+  module:
+    - responsive_image
+    - text
+id: paragraph.cr_rich_text_paragraph.default
+targetEntityType: paragraph
+bundle: cr_rich_text_paragraph
+mode: default
+content:
+  field_background:
+    weight: 0
+    label: hidden
+    settings:
+      responsive_image_style: bg_rich_text
+      image_link: ''
+    third_party_settings: {  }
+    type: responsive_image
+  field_body:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+hidden:
+  created: true
+  social_links: true
+  uid: true

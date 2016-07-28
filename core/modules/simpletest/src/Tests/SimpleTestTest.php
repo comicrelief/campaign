@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\simpletest\Tests\SimpleTestTest.
- */
-
 namespace Drupal\simpletest\Tests;
 
 use Drupal\Component\Utility\Crypt;
@@ -83,7 +78,7 @@ if (!function_exists('simpletest_test_stub_settings_function')) {
 }
 EOD;
 
-      file_put_contents($this->siteDirectory. '/' . 'settings.testing.php', $php);
+      file_put_contents($this->siteDirectory . '/' . 'settings.testing.php', $php);
       // @see \Drupal\system\Tests\DrupalKernel\DrupalKernelSiteTest
       $class = __CLASS__;
       $yaml = <<<EOD
@@ -289,11 +284,16 @@ EOD;
   /**
    * Asserts that an assertion with specified values is displayed in results.
    *
-   * @param string $message Assertion message.
-   * @param string $type Assertion type.
-   * @param string $status Assertion status.
-   * @param string $file File where the assertion originated.
-   * @param string $function Function where the assertion originated.
+   * @param string $message
+   *   Assertion message.
+   * @param string $type
+   *   Assertion type.
+   * @param string $status
+   *   Assertion status.
+   * @param string $file
+   *   File where the assertion originated.
+   * @param string $function
+   *   Function where the assertion originated.
    *
    * @return Assertion result.
    */
@@ -333,7 +333,7 @@ EOD;
           $assertion['file'] = $this->asText($row->td[2]);
           $assertion['line'] = $this->asText($row->td[3]);
           $assertion['function'] = $this->asText($row->td[4]);
-          $ok_url = file_create_url('core/misc/icons/73b355/check.svg');
+          $ok_url = file_url_transform_relative(file_create_url('core/misc/icons/73b355/check.svg'));
           $assertion['status'] = ($row->td[5]->img['src'] == $ok_url) ? 'Pass' : 'Fail';
           $results['assertions'][] = $assertion;
         }

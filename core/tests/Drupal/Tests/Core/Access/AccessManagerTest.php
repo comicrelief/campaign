@@ -217,8 +217,8 @@ class AccessManagerTest extends UnitTestCase {
     $this->assertEquals(TRUE, $this->accessManager->check($route_matches['test_route_4'], $this->account));
     $this->assertEquals(AccessResult::neutral(), $this->accessManager->check($route_matches['test_route_1'], $this->account, NULL, TRUE));
     $this->assertEquals(AccessResult::allowed(), $this->accessManager->check($route_matches['test_route_2'], $this->account, NULL, TRUE));
-    $this->assertEquals(AccessResult::forbidden(), $this->accessManager->check($route_matches['test_route_3'],  $this->account, NULL, TRUE));
-    $this->assertEquals(AccessResult::allowed(), $this->accessManager->check($route_matches['test_route_4'],  $this->account, NULL, TRUE));
+    $this->assertEquals(AccessResult::forbidden(), $this->accessManager->check($route_matches['test_route_3'], $this->account, NULL, TRUE));
+    $this->assertEquals(AccessResult::allowed(), $this->accessManager->check($route_matches['test_route_4'], $this->account, NULL, TRUE));
   }
 
   /**
@@ -568,4 +568,5 @@ class AccessManagerTest extends UnitTestCase {
  */
 interface TestAccessCheckInterface extends AccessCheckInterface {
   public function access();
+
 }

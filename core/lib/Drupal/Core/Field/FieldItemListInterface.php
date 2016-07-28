@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\Field\FieldItemListInterface.
- */
-
 namespace Drupal\Core\Field;
 
 use Drupal\Core\Entity\FieldableEntityInterface;
@@ -49,7 +44,7 @@ interface FieldItemListInterface extends ListInterface, AccessibleInterface {
   /**
    * Gets the langcode of the field values held in the object.
    *
-   * @return $langcode
+   * @return string
    *   The langcode.
    */
   public function getLangcode();
@@ -102,28 +97,28 @@ interface FieldItemListInterface extends ListInterface, AccessibleInterface {
   /**
    * Magic method: Gets a property value of to the first field item.
    *
-   * @see \Drupal\Core\Field\FieldItemInterface::__get()
+   * @see \Drupal\Core\Field\FieldItemInterface::__set()
    */
   public function __get($property_name);
 
   /**
    * Magic method: Sets a property value of the first field item.
    *
-   * @see \Drupal\Core\Field\FieldItemInterface::__set()
+   * @see \Drupal\Core\Field\FieldItemInterface::__get()
    */
   public function __set($property_name, $value);
 
   /**
    * Magic method: Determines whether a property of the first field item is set.
    *
-   * @see \Drupal\Core\Field\FieldItemInterface::__isset()
+   * @see \Drupal\Core\Field\FieldItemInterface::__unset()
    */
   public function __isset($property_name);
 
   /**
    * Magic method: Unsets a property of the first field item.
    *
-   * @see \Drupal\Core\Field\FieldItemInterface::__unset()
+   * @see \Drupal\Core\Field\FieldItemInterface::__isset()
    */
   public function __unset($property_name);
 
@@ -186,7 +181,7 @@ interface FieldItemListInterface extends ListInterface, AccessibleInterface {
    */
   public function view($display_options = array());
 
-  /*
+  /**
    * Populates a specified number of field items with valid sample data.
    *
    * @param int $count

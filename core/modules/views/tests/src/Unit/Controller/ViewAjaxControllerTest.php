@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\views\Unit\Controller\ViewAjaxControllerTest.
- */
-
 namespace Drupal\Tests\views\Unit\Controller {
 
 use Drupal\Core\Render\RenderContext;
@@ -185,6 +180,10 @@ class ViewAjaxControllerTest extends UnitTestCase {
     $request = new Request();
     $request->request->set('view_name', 'test_view');
     $request->request->set('view_display_id', 'page_1');
+    $request->request->set('view_path', '/test-page');
+    $request->request->set('_wrapper_format', 'ajax');
+    $request->request->set('ajax_page_state', 'drupal.settings[]');
+    $request->request->set('type', 'article');
 
     list($view, $executable) = $this->setupValidMocks();
 
@@ -204,6 +203,10 @@ class ViewAjaxControllerTest extends UnitTestCase {
       ->will($this->returnValue($display_handler));
 
     $executable->displayHandlers = $display_collection;
+
+    $this->redirectDestination->expects($this->atLeastOnce())
+      ->method('set')
+      ->with('/test-page?type=article');
 
     $response = $this->viewAjaxController->ajaxView($request);
     $this->assertTrue($response instanceof ViewAjaxResponse);
@@ -357,4 +360,3 @@ class ViewAjaxControllerTest extends UnitTestCase {
 }
 
 }
-

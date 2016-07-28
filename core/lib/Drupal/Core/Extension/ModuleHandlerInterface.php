@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\Extension\ModuleHandlerInterface.
- */
-
 namespace Drupal\Core\Extension;
 
 /**
@@ -219,7 +214,7 @@ interface ModuleHandlerInterface {
    *   The name of the module (without the .module extension).
    * @param string $hook
    *   The name of the hook to invoke.
-   * @param ...
+   * @param array $args
    *   Arguments to pass to the hook implementation.
    *
    * @return mixed
@@ -237,7 +232,9 @@ interface ModuleHandlerInterface {
    *
    * @return array
    *   An array of return values of the hook implementations. If modules return
-   *   arrays from their implementations, those are merged into one array.
+   *   arrays from their implementations, those are merged into one array
+   *   recursively. Note: integer keys in arrays will be lost, as the merge is
+   *   done using array_merge_recursive().
    */
   public function invokeAll($hook, array $args = array());
 

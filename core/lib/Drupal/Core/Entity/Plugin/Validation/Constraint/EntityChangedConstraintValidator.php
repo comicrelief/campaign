@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\Entity\Plugin\Validation\Constraint\EntityChangedConstraintValidator.
- */
-
 namespace Drupal\Core\Entity\Plugin\Validation\Constraint;
 
 use Symfony\Component\Validator\Constraint;
@@ -21,7 +16,7 @@ class EntityChangedConstraintValidator extends ConstraintValidator {
   public function validate($entity, Constraint $constraint) {
     if (isset($entity)) {
       /** @var \Drupal\Core\Entity\EntityInterface $entity */
-      if (!$entity->isNew()) {
+      if (!$entity->isNew() && $entity->getEntityTypeId() != 'paragraph') {
         $saved_entity = \Drupal::entityManager()->getStorage($entity->getEntityTypeId())->loadUnchanged($entity->id());
         // A change to any other translation must add a violation to the current
         // translation because there might be untranslatable shared fields.

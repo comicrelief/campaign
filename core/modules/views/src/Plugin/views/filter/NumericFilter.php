@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\views\Plugin\views\filter\NumericFilter.
- */
-
 namespace Drupal\views\Plugin\views\filter;
 
 use Drupal\Core\Form\FormStateInterface;
@@ -199,9 +194,10 @@ class NumericFilter extends FilterPluginBase {
     if ($which == 'all' || $which == 'minmax') {
       $form['value']['min'] = array(
         '#type' => 'textfield',
-        '#title' => !$exposed ? $this->t('Min') : '',
+        '#title' => !$exposed ? $this->t('Min') : $this->exposedInfo()['label'],
         '#size' => 30,
         '#default_value' => $this->value['min'],
+        '#description' => !$exposed ? '' : $this->exposedInfo()['description']
       );
       $form['value']['max'] = array(
         '#type' => 'textfield',

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\system\Tests\Theme\StableLibraryOverrideTest.
- */
-
 namespace Drupal\system\Tests\Theme;
 
 use Drupal\simpletest\KernelTestBase;
@@ -54,7 +49,7 @@ class StableLibraryOverrideTest extends KernelTestBase {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  protected function setUp() {
     parent::setUp();
 
     $this->themeManager = $this->container->get('theme.manager');
@@ -66,9 +61,9 @@ class StableLibraryOverrideTest extends KernelTestBase {
     // Enable all core modules.
     $all_modules = system_rebuild_module_data();
     $all_modules = array_filter($all_modules, function ($module) {
-      // Filter contrib, hidden, already enabled modules and modules in the
-      // Testing package.
-      if ($module->origin !== 'core' || !empty($module->info['hidden']) || $module->status == TRUE || $module->info['package'] == 'Testing') {
+      // Filter contrib, hidden, experimental, already enabled modules, and
+      // modules in the Testing package.
+      if ($module->origin !== 'core' || !empty($module->info['hidden']) || $module->status == TRUE || $module->info['package'] == 'Testing' || $module->info['package'] == 'Core (Experimental)') {
         return FALSE;
       }
       return TRUE;

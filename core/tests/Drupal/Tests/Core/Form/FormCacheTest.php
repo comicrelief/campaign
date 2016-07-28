@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\Core\Form\FormCacheTest.
- */
-
 namespace Drupal\Tests\Core\Form;
 
 use Drupal\Core\Form\FormCache;
@@ -14,8 +9,6 @@ use Drupal\Tests\UnitTestCase;
 /**
  * @coversDefaultClass \Drupal\Core\Form\FormCache
  * @group Form
- * @runTestsInSeparateProcesses
- * @preserveGlobalState disabled
  */
 class FormCacheTest extends UnitTestCase {
 
@@ -88,6 +81,16 @@ class FormCacheTest extends UnitTestCase {
    * @var \Drupal\Core\PageCache\RequestPolicyInterface|\PHPUnit_Framework_MockObject_MockObject
    */
   protected $requestPolicy;
+
+  /**
+   * {@inheritdoc}
+   */
+  protected $runTestInSeparateProcess = TRUE;
+
+  /**
+   * {@inheritdoc}
+   */
+  protected $preserveGlobalState = FALSE;
 
   /**
    * {@inheritdoc}

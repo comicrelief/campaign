@@ -1,0 +1,21 @@
+// Background Colours
+//
+// Just a few basic classes for now, to be used by row components
+//
+// Markup:
+// <div style="background-color: #1e1e1e; height: 60px; width: 60px;"></div>
+// <p><br/>$black: #1e1e1e;</p>
+// <div style="background-color: #282828; height: 60px; width: 60px;"></div>
+// <p><br/>$dark-grey: #282828;</p>
+//
+// Style guide: Background colours
+
+/* RND17 base colours for June taken from SR */
+
+.bg--white {
+  background-color: $white;
+}
+
+.bg--cream-grey {
+  background-color: $cream-grey;
+}

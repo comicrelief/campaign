@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ckeditor\Plugin\Editor\CKEditor.
- */
-
 namespace Drupal\ckeditor\Plugin\Editor;
 
 use Drupal\Core\Extension\ModuleHandlerInterface;
@@ -15,7 +10,7 @@ use Drupal\Core\Render\Element;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\editor\Plugin\EditorBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Drupal\editor\Entity\Editor as EditorEntity;
+use Drupal\editor\Entity\Editor;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -135,14 +130,14 @@ class CKEditor extends EditorBase implements ContainerFactoryPluginInterface {
           ),
         ),
       ),
-      'plugins' => array(),
+      'plugins' => ['language' => ['language_list' => 'un']],
     );
   }
 
   /**
    * {@inheritdoc}
    */
-  public function settingsForm(array $form, FormStateInterface $form_state, EditorEntity $editor) {
+  public function settingsForm(array $form, FormStateInterface $form_state, Editor $editor) {
     $settings = $editor->getSettings();
 
     $ckeditor_settings_toolbar = array(
@@ -187,8 +182,8 @@ class CKEditor extends EditorBase implements ContainerFactoryPluginInterface {
     // Hidden CKEditor instance. We need a hidden CKEditor instance with all
     // plugins enabled, so we can retrieve CKEditor's per-feature metadata (on
     // which tags, attributes, styles and classes are enabled). This metadata is
-    // necessary for certain filters' (e.g. the html_filter filter) settings to
-    // be updated accordingly.
+    // necessary for certain filters' (for instance, the html_filter filter)
+    // settings to be updated accordingly.
     // Get a list of all external plugins and their corresponding files.
     $plugins = array_keys($this->ckeditorPluginManager->getDefinitions());
     $all_external_plugins = array();
@@ -204,7 +199,7 @@ class CKEditor extends EditorBase implements ContainerFactoryPluginInterface {
     }, array());
     // Build a fake Editor object, which we'll use to generate JavaScript
     // settings for this fake Editor instance.
-    $fake_editor = entity_create('editor', array(
+    $fake_editor = Editor::create(array(
       'format' => $editor->id(),
       'editor' => 'ckeditor',
       'settings' => array(
@@ -259,7 +254,7 @@ class CKEditor extends EditorBase implements ContainerFactoryPluginInterface {
   /**
    * {@inheritdoc}
    */
-  public function getJSSettings(EditorEntity $editor) {
+  public function getJSSettings(Editor $editor) {
     $settings = array();
 
     // Get the settings for all enabled plugins, even the internal ones.
@@ -298,8 +293,11 @@ class CKEditor extends EditorBase implements ContainerFactoryPluginInterface {
     );
 
     // Finally, set Drupal-specific CKEditor settings.
+    $root_relative_file_url = function ($uri) {
+      return file_url_transform_relative(file_create_url($uri));
+    };
     $settings += array(
-      'drupalExternalPlugins' => array_map('file_create_url', $external_plugin_files),
+      'drupalExternalPlugins' => array_map($root_relative_file_url, $external_plugin_files),
     );
 
     // Parse all CKEditor plugin JavaScript files for translations.
@@ -332,7 +330,7 @@ class CKEditor extends EditorBase implements ContainerFactoryPluginInterface {
       // Collect languages included with CKEditor based on file listing.
       $files = scandir('core/assets/vendor/ckeditor/lang');
       foreach ($files as $file) {
-        if ($file[0] !== '.' && fnmatch('*.js', $file)) {
+        if ($file[0] !== '.' && preg_match('/\.js$/', $file)) {
           $langcode = basename($file, '.js');
           $langcodes[$langcode] = $langcode;
         }
@@ -348,9 +346,10 @@ class CKEditor extends EditorBase implements ContainerFactoryPluginInterface {
       // If this language code is available in a Drupal mapping, use that to
       // compute a possibility for matching from the Drupal langcode to the
       // CKEditor langcode.
-      // e.g. CKEditor uses the langcode 'no' for Norwegian, Drupal uses 'nb'.
-      // This would then remove the 'no' => 'no' mapping and replace it with
-      // 'nb' => 'no'. Now Drupal knows which CKEditor translation to load.
+      // For instance, CKEditor uses the langcode 'no' for Norwegian, Drupal
+      // uses 'nb'. This would then remove the 'no' => 'no' mapping and replace
+      // it with 'nb' => 'no'. Now Drupal knows which CKEditor translation to
+      // load.
       if (isset($language_mappings[$langcode]) && !isset($langcodes[$language_mappings[$langcode]])) {
         $langcodes[$language_mappings[$langcode]] = $langcode;
         unset($langcodes[$langcode]);
@@ -363,7 +362,7 @@ class CKEditor extends EditorBase implements ContainerFactoryPluginInterface {
   /**
    * {@inheritdoc}
    */
-  public function getLibraries(EditorEntity $editor) {
+  public function getLibraries(Editor $editor) {
     $libraries = array(
       'ckeditor/drupal.ckeditor',
     );
@@ -389,7 +388,7 @@ class CKEditor extends EditorBase implements ContainerFactoryPluginInterface {
    * @return array
    *   An array containing the "toolbar" configuration.
    */
-  public function buildToolbarJSSetting(EditorEntity $editor) {
+  public function buildToolbarJSSetting(Editor $editor) {
     $toolbar = array();
 
     $settings = $editor->getSettings();
@@ -412,14 +411,20 @@ class CKEditor extends EditorBase implements ContainerFactoryPluginInterface {
    * @return array
    *   An array containing the "contentsCss" configuration.
    */
-  public function buildContentsCssJSSetting(EditorEntity $editor) {
+  public function buildContentsCssJSSetting(Editor $editor) {
     $css = array(
       drupal_get_path('module', 'ckeditor') . '/css/ckeditor-iframe.css',
       drupal_get_path('module', 'system') . '/css/components/align.module.css',
     );
     $this->moduleHandler->alter('ckeditor_css', $css, $editor);
+    // Get a list of all enabled plugins' iframe instance CSS files.
+    $plugins_css = array_reduce($this->ckeditorPluginManager->getCssFiles($editor), function($result, $item) {
+      return array_merge($result, array_values($item));
+    }, array());
+    $css = array_merge($css, $plugins_css);
     $css = array_merge($css, _ckeditor_theme_css());
     $css = array_map('file_create_url', $css);
+    $css = array_map('file_url_transform_relative', $css);
 
     return array_values($css);
   }

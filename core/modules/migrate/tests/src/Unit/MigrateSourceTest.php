@@ -49,7 +49,7 @@ class MigrateSourceTest extends MigrateTestCase {
   /**
    * The migration entity.
    *
-   * @var \Drupal\migrate\Entity\Migration
+   * @var \Drupal\migrate\Plugin\MigrationInterface
    */
   protected $migration;
 
@@ -61,14 +61,16 @@ class MigrateSourceTest extends MigrateTestCase {
   protected $executable;
 
   /**
-   * Get the source plugin to test.
+   * Gets the source plugin to test.
    *
    * @param array $configuration
-   *   The source configuration.
+   *   (optional) The source configuration. Defaults to an empty array.
    * @param array $migrate_config
-   *   The migration configuration to be used in parent::getMigration().
+   *   (optional) The migration configuration to be used in
+   *   parent::getMigration(). Defaults to an empty array.
    * @param int $status
-   *   The default status for the new rows to be imported.
+   *   (optional) The default status for the new rows to be imported. Defaults
+   *   to MigrateIdMapInterface::STATUS_NEEDS_UPDATE.
    *
    * @return \Drupal\migrate\Plugin\MigrateSourceInterface
    *   A mocked source plugin.
@@ -166,6 +168,25 @@ class MigrateSourceTest extends MigrateTestCase {
     // Test the skip argument.
     $source = $this->getSource(['skip_count' => TRUE]);
     $this->assertEquals(-1, $source->count());
+  }
+
+   /**
+   * Test that the key can be set for the count cache.
+   *
+   * @covers ::count
+   */
+  public function testCountCacheKey() {
+    // Mock the cache to validate set() receives appropriate arguments.
+    $container = new ContainerBuilder();
+    $cache = $this->getMock(CacheBackendInterface::class);
+    $cache->expects($this->any())->method('set')
+        ->with('test_key', $this->isType('int'), $this->isType('int'));
+    $container->set('cache.migrate', $cache);
+    \Drupal::setContainer($container);
+
+    // Test caching the count with a configured key works.
+    $source = $this->getSource(['cache_counts' => TRUE, 'cache_key' => 'test_key']);
+    $this->assertEquals(1, $source->count());
   }
 
   /**
@@ -367,9 +388,9 @@ class MigrateSourceTest extends MigrateTestCase {
   }
 
   /**
-   * Get a mock executable for the test.
+   * Gets a mock executable for the test.
    *
-   * @param \Drupal\migrate\Entity\MigrationInterface $migration
+   * @param \Drupal\migrate\Plugin\MigrationInterface $migration
    *   The migration entity.
    *
    * @return \Drupal\migrate\MigrateExecutable
@@ -394,8 +415,9 @@ class StubSourcePlugin extends SourcePluginBase {
    * Helper for setting internal module handler implementation.
    *
    * @param \Drupal\Core\Extension\ModuleHandlerInterface $module_handler
+   *   The module handler.
    */
-  function setModuleHandler(ModuleHandlerInterface $module_handler) {
+  public function setModuleHandler(ModuleHandlerInterface $module_handler) {
     $this->moduleHandler = $module_handler;
   }
 
@@ -426,4 +448,5 @@ class StubSourcePlugin extends SourcePluginBase {
   protected function initializeIterator() {
     return [];
   }
+
 }

@@ -31,6 +31,7 @@
     // `jQuery(event.target).remove()` as well, to remove the dialog on
     // closing.
     close: function (event) {
+      Drupal.dialog(event.target).close();
       Drupal.detachBehaviors(event.target, null, 'unload');
     }
   };
@@ -54,12 +55,27 @@
    * Polyfill HTML5 dialog element with jQueryUI.
    *
    * @param {HTMLElement} element
+   *   The element that holds the dialog.
    * @param {object} options
    *   jQuery UI options to be passed to the dialog.
    *
    * @return {Drupal.dialog~dialogDefinition}
+   *   The dialog instance.
    */
   Drupal.dialog = function (element, options) {
+    var undef;
+    var $element = $(element);
+    var dialog = {
+      open: false,
+      returnValue: undef,
+      show: function () {
+        openDialog({modal: false});
+      },
+      showModal: function () {
+        openDialog({modal: true});
+      },
+      close: closeDialog
+    };
 
     function openDialog(settings) {
       settings = $.extend({}, drupalSettings.dialog, options, settings);
@@ -77,20 +93,6 @@
       dialog.open = false;
       $(window).trigger('dialog:afterclose', [dialog, $element]);
     }
-
-    var undef;
-    var $element = $(element);
-    var dialog = {
-      open: false,
-      returnValue: undef,
-      show: function () {
-        openDialog({modal: false});
-      },
-      showModal: function () {
-        openDialog({modal: true});
-      },
-      close: closeDialog
-    };
 
     return dialog;
   };

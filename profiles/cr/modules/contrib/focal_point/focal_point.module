@@ -1,0 +1,49 @@
+<?php
+
+/**
+ * @file
+ * Allow users to specify a focal point on content images.
+ *
+ * @todo add phpUnit tests back in.
+ * @todo add support for default foal point value calculation method.
+ * @todo add preview/test drive functionality.
+ *
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\crop\Entity\Crop;
+
+/**
+ * Implements hook_entity_presave().
+ *
+ * Saves the focal point value for the image file entity about to be saved.
+ */
+function focal_point_entity_presave(EntityInterface $entity) {
+  // Only worry about entities that are fieldable.
+  if ($entity instanceof Drupal\Core\Entity\FieldableEntityInterface) {
+    // Loop all the fields and save focal point values for images.
+    foreach ($entity->getFieldDefinitions() as $key => $value) {
+      if ($value->getType() == 'image' && $entity->hasField($value->getName())) {
+        // Loop through all values for this field. Its cardinality might be > 1.
+        foreach ($entity->{$value->getName()} as $item) {
+          if (isset($item->focal_point)) {
+            list($x, $y) = explode(',', $item->focal_point);
+            $crop_type = \Drupal::config('focal_point.settings')->get('crop_type');
+            $crop = \Drupal::service('focal_point.manager')->getCropEntity($item->entity, $crop_type);
+            \Drupal::service('focal_point.manager')->saveCropEntity($x, $y, $item->width, $item->height, $crop);
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_field_widget_form_alter().
+ */
+function focal_point_field_widget_form_alter(&$element, \Drupal\Core\Form\FormStateInterface $form_state, $context) {
+  if (get_class($context['widget']) === 'Drupal\image\Plugin\Field\FieldWidget\ImageWidget') {
+    $element['#process'][] = array('Drupal\focal_point\Plugin\Field\FieldWidget\FocalPointImageWidget', 'process');
+    $element['#value_callback'] = array('Drupal\focal_point\Plugin\Field\FieldWidget\FocalPointImageWidget', 'value');
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "drupal/social_links",
+  "type": "drupal-module",
+  "description": "Social Links provides social share links on entities.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/social_links",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "http://drupal.org/project/issues/social_links",
+    "source": "http://cgit.drupalcode.org/social_links"
+  },
+  "require": { }
+}

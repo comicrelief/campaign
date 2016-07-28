@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\field_ui\Form\FieldStorageConfigEditForm.
- */
-
 namespace Drupal\field_ui\Form;
 
 use Drupal\Core\Entity\EntityForm;
@@ -13,6 +8,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\field_ui\FieldUI;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Provides a form for the "field storage" edit page.
@@ -33,6 +29,9 @@ class FieldStorageConfigEditForm extends EntityForm {
     // The URL of this entity form contains only the ID of the field_config
     // but we are actually editing a field_storage_config entity.
     $field_config = FieldConfig::load($route_match->getRawParameter('field_config'));
+    if (!$field_config) {
+      throw new NotFoundHttpException();
+    }
 
     return $field_config->getFieldStorageDefinition();
   }
@@ -149,9 +148,26 @@ class FieldStorageConfigEditForm extends EntityForm {
   public function validateForm(array &$form, FormStateInterface $form_state) {
     parent::validateForm($form, $form_state);
 
+    $field_storage_definitions = \Drupal::service('entity_field.manager')->getFieldStorageDefinitions($this->entity->getTargetEntityTypeId());
+
     // Validate field cardinality.
     if ($form_state->getValue('cardinality') === 'number' && !$form_state->getValue('cardinality_number')) {
       $form_state->setErrorByName('cardinality_number', $this->t('Number of values is required.'));
+    }
+    // If a specific cardinality is used, validate that there are no entities
+    // with a higher delta.
+    elseif (!$this->entity->isNew() && isset($field_storage_definitions[$this->entity->getName()]) && $form_state->getValue('cardinality') != FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED) {
+
+      // Get a count of entities that have a value in a delta higher than the
+      // one selected. Deltas start with 0, so the selected value does not
+      // need to be incremented.
+      $entities_with_higher_delta = \Drupal::entityQuery($this->entity->getTargetEntityTypeId())
+        ->condition($this->entity->getName() . '.%delta', $form_state->getValue('cardinality'))
+        ->count()
+        ->execute();
+      if ($entities_with_higher_delta) {
+        $form_state->setErrorByName('cardinality_number', $this->formatPlural($entities_with_higher_delta, 'There is @count entity with @delta or more values in this field.', 'There are @count entities with @delta or more values in this field.', ['@delta' => $form_state->getValue('cardinality') + 1]));
+      }
     }
   }
 

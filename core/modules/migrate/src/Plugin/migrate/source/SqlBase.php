@@ -1,16 +1,11 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\migrate\Plugin\migrate\source\SqlBase.
- */
-
 namespace Drupal\migrate\Plugin\migrate\source;
 
 use Drupal\Core\Database\Database;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\State\StateInterface;
-use Drupal\migrate\Entity\MigrationInterface;
+use Drupal\migrate\Plugin\MigrationInterface;
 use Drupal\migrate\Plugin\migrate\id_map\Sql;
 use Drupal\migrate\Plugin\MigrateIdMapInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -27,11 +22,15 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 abstract class SqlBase extends SourcePluginBase implements ContainerFactoryPluginInterface {
 
   /**
+   * The query string.
+   *
    * @var \Drupal\Core\Database\Query\SelectInterface
    */
   protected $query;
 
   /**
+   * The database object.
+   *
    * @var \Drupal\Core\Database\Connection
    */
   protected $database;
@@ -65,17 +64,17 @@ abstract class SqlBase extends SourcePluginBase implements ContainerFactoryPlugi
   }
 
   /**
-   * Print the query string when the object is used a string.
+   * Prints the query string when the object is used as a string.
    *
    * @return string
    *   The query string.
    */
   public function __toString() {
-    return (string) $this->query;
+    return (string) $this->query();
   }
 
   /**
-   * Get the database connection object.
+   * Gets the database connection object.
    *
    * @return \Drupal\Core\Database\Connection
    *   The database connection.
@@ -87,6 +86,9 @@ abstract class SqlBase extends SourcePluginBase implements ContainerFactoryPlugi
       if (isset($this->configuration['database_state_key'])) {
         $this->database = $this->setUpDatabase($this->state->get($this->configuration['database_state_key']));
       }
+      elseif (($fallback_state_key = $this->state->get('migrate.fallback_state_key'))) {
+        $this->database = $this->setUpDatabase($this->state->get($fallback_state_key));
+      }
       else {
         $this->database = $this->setUpDatabase($this->configuration);
       }
@@ -95,8 +97,9 @@ abstract class SqlBase extends SourcePluginBase implements ContainerFactoryPlugi
   }
 
   /**
-   * Get a connection to the referenced database, adding the connection if
-   * necessary.
+   * Gets a connection to the referenced database.
+   *
+   * This method will add the database connection if necessary.
    *
    * @param array $database_info
    *   Configuration for the source database connection. The keys are:
@@ -136,7 +139,7 @@ abstract class SqlBase extends SourcePluginBase implements ContainerFactoryPlugi
   }
 
   /**
-   * A helper for adding tags and metadata to the query.
+   * Adds tags and metadata to the query.
    *
    * @return \Drupal\Core\Database\Query\SelectInterface
    *   The query with additional tags and metadata.
@@ -158,14 +161,13 @@ abstract class SqlBase extends SourcePluginBase implements ContainerFactoryPlugi
    */
   protected function initializeIterator() {
     $this->prepareQuery();
-    $high_water_property = $this->migration->get('highWaterProperty');
+    $high_water_property = $this->migration->getHighWaterProperty();
 
     // Get the key values, for potential use in joining to the map table.
     $keys = array();
 
     // The rules for determining what conditions to add to the query are as
-    // follows (applying first applicable rule)
-
+    // follows (applying first applicable rule):
     // 1. If the map is joinable, join it. We will want to accept all rows
     //    which are either not in the map, or marked in the map as NEEDS_UPDATE.
     //    Note that if high water fields are in play, we want to accept all rows
@@ -201,7 +203,7 @@ abstract class SqlBase extends SourcePluginBase implements ContainerFactoryPlugi
         $map_key = 'sourceid' . $count;
         $this->query->addField($alias, $map_key, "migrate_map_$map_key");
       }
-      if ($n = count($this->migration->get('destinationIds'))) {
+      if ($n = count($this->migration->getDestinationIds())) {
         for ($count = 1; $count <= $n; $count++) {
           $map_key = 'destid' . $count++;
           $this->query->addField($alias, $map_key, "migrate_map_$map_key");
@@ -241,7 +243,7 @@ abstract class SqlBase extends SourcePluginBase implements ContainerFactoryPlugi
   }
 
   /**
-   * Check if we can join against the map table.
+   * Checks if we can join against the map table.
    *
    * This function specifically catches issues when we're migrating with
    * unique sets of credentials for the source and destination database.
@@ -259,6 +261,15 @@ abstract class SqlBase extends SourcePluginBase implements ContainerFactoryPlugi
     }
     $id_map_database_options = $id_map->getDatabase()->getConnectionOptions();
     $source_database_options = $this->getDatabase()->getConnectionOptions();
+
+    // Special handling for sqlite which deals with files.
+    if ($id_map_database_options['driver'] === 'sqlite' &&
+      $source_database_options['driver'] === 'sqlite' &&
+      $id_map_database_options['database'] != $source_database_options['database']
+    ) {
+      return FALSE;
+    }
+
     foreach (array('username', 'password', 'host', 'port', 'namespace', 'driver') as $key) {
       if (isset($source_database_options[$key])) {
         if ($id_map_database_options[$key] != $source_database_options[$key]) {

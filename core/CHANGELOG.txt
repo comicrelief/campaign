@@ -1,3 +1,59 @@
+Drupal 8.1.7, 2016-07-18
+------------------------
+- Fixed security issue. SA-CORE-2016-003.
+
+Drupal 8.1.3, 2016-06-15
+------------------------
+- Fixed security issue. SA-CORE-2016-002.
+
+Drupal 8.1.0, 2016-04-20
+------------------------
+- Removed Composer-managed vendor from the git repository:
+    * Drupal.org packager adds dependencies to zip and tar package. This can be
+      used without any further steps.
+    * When not using zip / tar files, e.g. when using a git clone, run composer
+      install to get dependencies.
+    * See https://www.drupal.org/documentation/install/download#git
+      for instructions.
+- Added vendor libraries:
+    * Added Symfony Polyfill Iconv 1.1.0.
+    * Added paragonie/random_compat 1.4.1.
+- Updated vendor libraries:
+    * Updated to the last 2.x minor version of Symfony: 2.8 (2.8.4).
+    * Updated to CKEditor 4.5.8.
+    * Updated to Modernizr 3.3.1.
+- Added modules:
+    * Added the Migrate Drupal UI module (experimental) to provide a UI for
+      migrating content and configuration from Drupal 6 and Drupal 7.
+    * Added the BigPipe module (experimental) to improve perceived performance.
+- Improved authoring features:
+    * Enabled browsers' (native) spell checker in CKEditor.
+    * Added language toolbar button in CKEditor for identifying the language of
+      text parts.
+- Improved site administration experience:
+    * Improved admin/help page to be more flexible and list tours on it.
+- Improved site building features:
+    * Added a "Rendered entity" field handler in Views.
+- Improved distribution building features:
+    * Added support for distributions to specify an installation language.
+- Improved developer APIs:
+    * Added local ID and revision fields to HAL web service output.
+    * Added support for image toolkits to be defined with plugin derivatives,
+      reducing the code needed to extend them.
+    * Simplified Migrate API by replacing migration configuration entities with
+      migration plugins.
+    * Various improvements for defining entity types:
+      * Added support for entity types to specify translatable plural labels.
+      * Added a revision log interface and trait for revisionable entity types.
+      * Added key field definitions to ContentEntityBase, reducing code from
+        child classes.
+      * Added generic route providers for add-page and add-form entity routes,
+        reducing the code needed to define an entity type.
+- Testing improvements:
+    * Added support for automated JavaScript testing.
+    * Added verbose output for BrowserTestBase.
+    * Improved reporting of PHPUnit results.
+
 Drupal 8.0.0, 2015-11-19
 ------------------------
 - Significantly improved the front end:
@@ -341,7 +397,7 @@ Drupal 7.0, 2011-01-05
 - Improved time zone support:
     * Drupal now uses PHP's time zone database when rendering dates in local
       time. Site-wide and user-configured time zone offsets have been converted
-      to time zone names, e.g. Africa/Abidjan.
+      to time zone names; for example, Africa/Abidjan.
     * In some cases the upgrade and install scripts do not choose the preferred
       site default time zone. The automatically-selected time zone can be
       corrected at admin/config/regional/settings.
@@ -367,8 +423,8 @@ Drupal 7.0, 2011-01-05
       are available.
 - OpenID:
     * Added support for Gmail and Google Apps for Domain identifiers. Users can
-      now login with their user@example.com identifier when example.com is powered
-      by Google.
+      now log in with their user@example.com identifier when example.com is
+      powered by Google.
     * Made the OpenID module more pluggable.
 - Added code registry:
     * Using the registry, modules declare their includable files via their .info file,
@@ -399,7 +455,7 @@ Drupal 7.0, 2011-01-05
       preserved but renamed to file_unmanaged_*().
     * Rewrote file handling to use PHP stream wrappers to enable support for
       both public and private files and to support pluggable storage mechanisms
-      and access to remote resources (e.g. S3 storage or Flickr photos).
+      and access to remote resources (for example, S3 storage or Flickr photos).
     * The mime_extension_mapping variable has been removed. Modules that need to
       alter the default MIME type extension mappings should implement
       hook_file_mimetype_mapping_alter().
@@ -816,7 +872,7 @@ Drupal 4.7.0, 2006-05-01
 - Added support for PHP5's 'mysqli' extension.
 - Search module:
     * Made indexer smarter and more robust.
-    * Added advanced search operators (e.g., phrase, node type, etc.).
+    * Added advanced search operators (phrase, node type, etc.).
     * Added customizable result ranking.
 - PostgreSQL support:
     * Removed dependency on PL/pgSQL procedural language.
@@ -974,7 +1030,7 @@ Drupal 4.5.0, 2004-10-18
 - Syndication:
     * Added support for RSS ping-notifications of http://technorati.com/.
     * Refactored the categorization of syndicated news items.
-    * Added an URL alias for 'rss.xml'.
+    * Added a URL alias for 'rss.xml'.
     * Improved date parsing.
 - Database backend:
     * Added support for multiple database connections.

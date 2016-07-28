@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\system\Form\ThemeSettingsForm.
- */
-
 namespace Drupal\system\Form;
 
 use Drupal\Core\Extension\ThemeHandlerInterface;
@@ -178,17 +173,11 @@ class ThemeSettingsForm extends ConfigFormBase {
     }
 
     // Logo settings, only available when file.module is enabled.
-    if ((!$theme) || in_array('logo', $features) && $this->moduleHandler->moduleExists('file')) {
+    if ((!$theme || in_array('logo', $features)) && $this->moduleHandler->moduleExists('file')) {
       $form['logo'] = array(
         '#type' => 'details',
         '#title' => t('Logo image settings'),
         '#open' => TRUE,
-        '#states' => array(
-          // Hide the logo image settings fieldset when logo display is disabled.
-          'invisible' => array(
-            'input[name="toggle_logo"]' => array('checked' => FALSE),
-          ),
-        ),
       );
       $form['logo']['default_logo'] = array(
         '#type' => 'checkbox',
@@ -390,6 +379,16 @@ class ThemeSettingsForm extends ConfigFormBase {
         }
       }
 
+      // When intending to use the default logo, unset the logo_path.
+      if ($form_state->getValue('default_logo')) {
+        $form_state->unsetValue('logo_path');
+      }
+
+      // When intending to use the default favicon, unset the favicon_path.
+      if ($form_state->getValue('default_favicon')) {
+        $form_state->unsetValue('favicon_path');
+      }
+
       // If the user provided a path for a logo or favicon file, make sure a file
       // exists at that path.
       if ($form_state->getValue('logo_path')) {
@@ -430,7 +429,6 @@ class ThemeSettingsForm extends ConfigFormBase {
       $filename = file_unmanaged_copy($values['logo_upload']->getFileUri());
       $values['default_logo'] = 0;
       $values['logo_path'] = $filename;
-      $values['toggle_logo'] = 1;
     }
     if (!empty($values['favicon_upload'])) {
       $filename = file_unmanaged_copy($values['favicon_upload']->getFileUri());

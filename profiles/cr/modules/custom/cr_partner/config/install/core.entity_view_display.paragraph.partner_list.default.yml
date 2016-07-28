@@ -1,0 +1,53 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.partner_list.field_partner_body
+    - field.field.paragraph.partner_list.field_partner_list
+    - paragraphs.paragraphs_type.partner_list
+  module:
+    - ds
+    - text
+third_party_settings:
+  ds:
+    layout:
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
+      library: ''
+      disable_css: false
+      settings:
+        classes: {  }
+        wrappers: {  }
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+    regions:
+      ds_content:
+        - field_partner_body
+        - field_partner_list
+id: paragraph.partner_list.default
+targetEntityType: paragraph
+bundle: partner_list
+mode: default
+content:
+  field_partner_body:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_partner_list:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: logos
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+    type: entity_reference_entity_view
+hidden:
+  created: true
+  social_links: true
+  uid: true

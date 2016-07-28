@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\Component\Utility\UnicodeTest.
- */
-
 namespace Drupal\Tests\Component\Utility;
 
 use Drupal\Tests\UnitTestCase;
@@ -24,7 +19,7 @@ class UnicodeTest extends UnitTestCase {
    *
    * @covers ::check
    */
-  public function setUp() {
+  protected function setUp() {
     // Initialize unicode component.
     Unicode::check();
   }
@@ -479,11 +474,11 @@ class UnicodeTest extends UnitTestCase {
   /**
    * Provides data for self::testValidateUtf8().
    *
+   * Invalid UTF-8 examples sourced from http://stackoverflow.com/a/11709412/109119.
+   *
    * @return array
    *   An array of arrays, each containing the parameters for
    *   self::testValidateUtf8().
-   *
-   * Invalid UTF-8 examples sourced from http://stackoverflow.com/a/11709412/109119.
    */
   public function providerTestValidateUtf8() {
     return array(

@@ -11,11 +11,13 @@
 use Drupal\Component\Serialization\Json;
 use Drupal\Component\Utility\Crypt;
 use Drupal\Component\Utility\Html;
-use Drupal\Component\Utility\SafeMarkup;
 use Drupal\Component\Render\MarkupInterface;
 use Drupal\Component\Utility\Unicode;
+use Drupal\Core\Cache\CacheableDependencyInterface;
 use Drupal\Core\Config\Config;
 use Drupal\Core\Config\StorageException;
+use Drupal\Core\Render\AttachmentsInterface;
+use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\Render\RenderableInterface;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Theme\ThemeSettings;
@@ -92,6 +94,21 @@ function theme_get_registry($complete = TRUE) {
   else {
     return $theme_registry->getRuntime();
   }
+}
+
+/**
+ * Returns an array of default theme features.
+ *
+ * @see \Drupal\Core\Extension\ThemeHandler::$defaultFeatures
+ */
+function _system_default_theme_features() {
+  return array(
+    'favicon',
+    'logo',
+    'node_user_picture',
+    'comment_user_picture',
+    'comment_user_verification',
+  );
 }
 
 /**
@@ -328,10 +345,10 @@ function theme_get_setting($setting_name, $theme = NULL) {
 
       // Generate the path to the logo image.
       if ($cache[$theme]->get('logo.use_default')) {
-        $cache[$theme]->set('logo.url', file_create_url($theme_object->getPath() . '/logo.svg'));
+        $cache[$theme]->set('logo.url', file_url_transform_relative(file_create_url($theme_object->getPath() . '/logo.svg')));
       }
       elseif ($logo_path = $cache[$theme]->get('logo.path')) {
-        $cache[$theme]->set('logo.url', file_create_url($logo_path));
+        $cache[$theme]->set('logo.url', file_url_transform_relative(file_create_url($logo_path)));
       }
 
       // Generate the path to the favicon.
@@ -339,14 +356,14 @@ function theme_get_setting($setting_name, $theme = NULL) {
         $favicon_path = $cache[$theme]->get('favicon.path');
         if ($cache[$theme]->get('favicon.use_default')) {
           if (file_exists($favicon = $theme_object->getPath() . '/favicon.ico')) {
-            $cache[$theme]->set('favicon.url', file_create_url($favicon));
+            $cache[$theme]->set('favicon.url', file_url_transform_relative(file_create_url($favicon)));
           }
           else {
-            $cache[$theme]->set('favicon.url', file_create_url('core/misc/favicon.ico'));
+            $cache[$theme]->set('favicon.url', file_url_transform_relative(file_create_url('core/misc/favicon.ico')));
           }
         }
         elseif ($favicon_path) {
-          $cache[$theme]->set('favicon.url', file_create_url($favicon_path));
+          $cache[$theme]->set('favicon.url', file_url_transform_relative(file_create_url($favicon_path)));
         }
         else {
           $cache[$theme]->set('features.favicon', FALSE);
@@ -385,6 +402,17 @@ function theme_get_setting($setting_name, $theme = NULL) {
  *   https://www.drupal.org/node/2575065
  */
 function theme_render_and_autoescape($arg) {
+  // If it's a renderable, then it'll be up to the generated render array it
+  // returns to contain the necessary cacheability & attachment metadata. If
+  // it doesn't implement CacheableDependencyInterface or AttachmentsInterface
+  // then there is nothing to do here.
+  if (!($arg instanceof RenderableInterface) && ($arg instanceof CacheableDependencyInterface || $arg instanceof AttachmentsInterface)) {
+    $arg_bubbleable = [];
+    BubbleableMetadata::createFromObject($arg)
+      ->applyTo($arg_bubbleable);
+    \Drupal::service('renderer')->render($arg_bubbleable);
+  }
+
   if ($arg instanceof MarkupInterface) {
     return (string) $arg;
   }
@@ -401,7 +429,7 @@ function theme_render_and_autoescape($arg) {
       $return = (string) $arg;
     }
     // You can't throw exceptions in the magic PHP __toString methods, see
-    // http://php.net/manual/en/language.oop5.magic.php#object.tostring so
+    // http://php.net/manual/language.oop5.magic.php#object.tostring so
     // we also support a toString method.
     elseif (method_exists($arg, 'toString')) {
       $return = $arg->toString();
@@ -413,7 +441,7 @@ function theme_render_and_autoescape($arg) {
 
   // We have a string or an object converted to a string: Escape it!
   if (isset($return)) {
-    return SafeMarkup::isSafe($return, 'html') ? $return : Html::escape($return);
+    return $return instanceof MarkupInterface ? $return : Html::escape($return);
   }
 
   // This is a normal render array, which is safe by definition, with special
@@ -566,21 +594,29 @@ function template_preprocess_datetime_wrapper(&$variables) {
  *
  * Default template: links.html.twig.
  *
+ * Unfortunately links templates duplicate the "active" class handling of l()
+ * and LinkGenerator::generate() because it needs to be able to set the "active"
+ * class not on the links themselves (<a> tags), but on the list items (<li>
+ * tags) that contain the links. This is necessary for CSS to be able to style
+ * list items differently when the link is active, since CSS does not yet allow
+ * one to style list items only if it contains a certain element with a certain
+ * class. I.e. we cannot yet convert this jQuery selector to a CSS selector:
+ * jQuery('li:has("a.is-active")')
+ *
  * @param array $variables
  *   An associative array containing:
- *   - links: An associative array of links to be themed. The key for each link
- *     is used as its CSS class. Each link should be itself an array, with the
- *     following elements:
+ *   - links: An array of links to be themed. Each link should be itself an
+ *     array, with the following elements:
  *     - title: The link text.
- *     - url: (optional) The url object to link to. If omitted, no a tag is
- *       printed out.
+ *     - url: (optional) The \Drupal\Core\Url object to link to. If omitted, no
+ *       anchor tag is printed out.
  *     - attributes: (optional) Attributes for the anchor, or for the <span>
  *       tag used in its place if no 'href' is supplied. If element 'class' is
  *       included, it must be an array of one or more class names.
  *     If the 'href' element is supplied, the entire link array is passed to
  *     l() as its $options parameter.
- *   - attributes: A keyed array of attributes for the UL containing the
- *     list of links.
+ *   - attributes: A keyed array of attributes for the <ul> containing the list
+ *     of links.
  *   - set_active_class: (optional) Whether each link should compare the
  *     route_name + route_parameters or href (path), language and query options
  *     to the current URL, to determine whether the link is "active". If so, an
@@ -609,15 +645,6 @@ function template_preprocess_datetime_wrapper(&$variables) {
  *     http://juicystudio.com/article/screen-readers-display-none.php and
  *     http://www.w3.org/TR/WCAG-TECHS/H42.html for more information.
  *
- * Unfortunately links templates duplicate the "active" class handling of l()
- * and LinkGenerator::generate() because it needs to be able to set the "active"
- * class not on the links themselves ("a" tags), but on the list items ("li"
- * tags) that contain the links. This is necessary for CSS to be able to style
- * list items differently when the link is active, since CSS does not yet allow
- * one to style list items only if it contains a certain element with a certain
- * class. I.e. we cannot yet convert this jQuery selector to a CSS selector:
- *   jQuery('li:has("a.is-active")')
- *
  * @see \Drupal\Core\Utility\LinkGenerator
  * @see \Drupal\Core\Utility\LinkGenerator::generate()
  * @see system_page_attachments()
@@ -629,7 +656,7 @@ function template_preprocess_links(&$variables) {
   if (!empty($links)) {
     // Prepend the heading to the list, if any.
     if (!empty($heading)) {
-      // Convert a string heading into an array, using a H2 tag by default.
+      // Convert a string heading into an array, using a <h2> tag by default.
       if (is_string($heading)) {
         $heading = array('text' => $heading);
       }
@@ -727,7 +754,8 @@ function template_preprocess_links(&$variables) {
  *     to an empty string, but can be set to NULL for the attribute to be
  *     omitted. Usually, neither omission nor an empty string satisfies
  *     accessibility requirements, so it is strongly encouraged for code
- *     calling _theme('image') to pass a meaningful value for this variable.
+ *     building variables for image.html.twig templates to pass a meaningful
+ *     value for this variable.
  *     - http://www.w3.org/TR/REC-html40/struct/objects.html#h-13.8
  *     - http://www.w3.org/TR/xhtml1/dtds.html
  *     - http://dev.w3.org/html5/spec/Overview.html#alt
@@ -740,7 +768,7 @@ function template_preprocess_links(&$variables) {
  */
 function template_preprocess_image(&$variables) {
   if (!empty($variables['uri'])) {
-    $variables['attributes']['src'] = file_create_url($variables['uri']);
+    $variables['attributes']['src'] = file_url_transform_relative(file_create_url($variables['uri']));
   }
   // Generate a srcset attribute conforming to the spec at
   // http://www.w3.org/html/wg/drafts/html/master/embedded-content.html#attr-img-srcset
@@ -748,7 +776,7 @@ function template_preprocess_image(&$variables) {
     $srcset = array();
     foreach ($variables['srcset'] as $src) {
       // URI is mandatory.
-      $source = file_create_url($src['uri']);
+      $source = file_url_transform_relative(file_create_url($src['uri']));
       if (isset($src['width']) && !empty($src['width'])) {
         $source .= ' ' . $src['width'];
       }
@@ -830,28 +858,28 @@ function template_preprocess_image(&$variables) {
  *   - colgroups: An array of column groups. Each element of the array can be
  *     either:
  *     - An array of columns, each of which is an associative array of HTML
- *       attributes applied to the COL element.
- *     - An array of attributes applied to the COLGROUP element, which must
- *       include a "data" attribute. To add attributes to COL elements, set the
- *       "data" attribute with an array of columns, each of which is an
+ *       attributes applied to the <col> element.
+ *     - An array of attributes applied to the <colgroup> element, which must
+ *       include a "data" attribute. To add attributes to <col> elements,
+ *       set the "data" attribute with an array of columns, each of which is an
  *       associative array of HTML attributes.
  *     Here's an example for $colgroup:
  *     @code
  *     $colgroup = array(
- *       // COLGROUP with one COL element.
+ *       // <colgroup> with one <col> element.
  *       array(
  *         array(
- *           'class' => array('funky'), // Attribute for the COL element.
+ *           'class' => array('funky'), // Attribute for the <col> element.
  *         ),
  *       ),
- *       // Colgroup with attributes and inner COL elements.
+ *       // <colgroup> with attributes and inner <col> elements.
  *       array(
  *         'data' => array(
  *           array(
- *             'class' => array('funky'), // Attribute for the COL element.
+ *             'class' => array('funky'), // Attribute for the <col> element.
  *           ),
  *         ),
- *         'class' => array('jazzy'), // Attribute for the COLGROUP element.
+ *         'class' => array('jazzy'), // Attribute for the <colgroup> element.
  *       ),
  *     );
  *     @endcode
@@ -1038,6 +1066,7 @@ function template_preprocess_table(&$variables) {
  *     render properties for all nested child lists.
  *   - title: A title to be prepended to the list.
  *   - list_type: The type of list to return (e.g. "ul", "ol").
+ *   - wrapper_attributes: HTML attributes to be applied to the list wrapper.
  *
  * @see https://www.drupal.org/node/1842756
  */
@@ -1128,7 +1157,7 @@ function template_preprocess_container(&$variables) {
  *   An associative array containing:
  *   - items: An associative array of maintenance tasks.
  *     It's the caller's responsibility to ensure this array's items contain no
- *     dangerous HTML such as SCRIPT tags.
+ *     dangerous HTML such as <script> tags.
  *   - active: The key for the currently active maintenance task.
  */
 function template_preprocess_maintenance_task_list(&$variables) {
@@ -1238,7 +1267,7 @@ function template_preprocess_html(&$variables) {
 
   $variables['html_attributes'] = new Attribute();
 
-  // HTML element attributes.
+  // <html> element attributes.
   $language_interface = \Drupal::languageManager()->getCurrentLanguage();
   $variables['html_attributes']['lang'] = $language_interface->getId();
   $variables['html_attributes']['dir'] = $language_interface->getDirection();
@@ -1250,7 +1279,7 @@ function template_preprocess_html(&$variables) {
   // Add a variable for the root path. This can be used to create a class and
   // theme the page depending on the current path (e.g. node, admin, user) as
   // well as more specific data like path-frontpage.
-  $is_front_page =  \Drupal::service('path.matcher')->isFrontPage();
+  $is_front_page = \Drupal::service('path.matcher')->isFrontPage();
 
   if ($is_front_page) {
     $variables['root_path'] = FALSE;
@@ -1312,9 +1341,7 @@ function template_preprocess_html(&$variables) {
  *
  * Default template: page.html.twig.
  *
- * Most themes use their own copy of page.html.twig. The default is located
- * inside "modules/system/page.html.twig". Look in there for the full list of
- * variables.
+ * See the page.html.twig template for the list of variables.
  */
 function template_preprocess_page(&$variables) {
   $language_interface = \Drupal::languageManager()->getCurrentLanguage();
@@ -1515,11 +1542,11 @@ function template_preprocess_field(&$variables, $hook) {
 
   static $default_attributes;
   if (!isset($default_attributes)) {
-    $default_attributes = new Attribute;
+    $default_attributes = new Attribute();
   }
 
   // Merge attributes when a single-value field has a hidden label.
-  if ($element['#label_display'] == 'hidden' && !$variables['multiple']) {
+  if ($element['#label_display'] == 'hidden' && !$variables['multiple'] && !empty($element['#items'][0]->_attributes)) {
     $variables['attributes'] = NestedArray::mergeDeep($variables['attributes'], (array) $element['#items'][0]->_attributes);
   }
 
@@ -1721,11 +1748,12 @@ function drupal_common_theme() {
     'image' => array(
       // HTML 4 and XHTML 1.0 always require an alt attribute. The HTML 5 draft
       // allows the alt attribute to be omitted in some cases. Therefore,
-      // default the alt attribute to an empty string, but allow code calling
-      // _theme('image') to pass explicit NULL for it to be omitted. Usually,
-      // neither omission nor an empty string satisfies accessibility
-      // requirements, so it is strongly encouraged for code calling
-      // _theme('image') to pass a meaningful value for the alt variable.
+      // default the alt attribute to an empty string, but allow code providing
+      // variables to image.html.twig templates to pass explicit NULL for it to
+      // be omitted. Usually, neither omission nor an empty string satisfies
+      // accessibility requirements, so it is strongly encouraged for code
+      // building variables for image.html.twig templates to pass a meaningful
+      // value for the alt variable.
       // - http://www.w3.org/TR/REC-html40/struct/objects.html#h-13.8
       // - http://www.w3.org/TR/xhtml1/dtds.html
       // - http://dev.w3.org/html5/spec/Overview.html#alt
@@ -1765,7 +1793,7 @@ function drupal_common_theme() {
       'render element' => 'page',
     ),
     'maintenance_task_list' => array(
-      'variables' => array('items' => NULL, 'active' => NULL,  'variant' => NULL),
+      'variables' => array('items' => NULL, 'active' => NULL, 'variant' => NULL),
     ),
     'authorize_report' => array(
       'variables' => ['messages' => [], 'attributes' => []],

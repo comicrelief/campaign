@@ -1,0 +1,174 @@
+// Promo header
+//
+// This is Promo header
+//
+// Markup: promo-header.hbs
+//
+// .promo-header__header--feature   - Body copy overlap bg image
+//
+// Style guide: promo-header
+
+.promo-header {
+  @include breakpoint($screen-md-max, $no-query: true) {
+    min-height: 450px;
+  }
+  position: relative;
+  margin-bottom: 40px;
+  text-align: center;
+}
+.promo-header__header {
+  &.bg--black {
+    @include breakpoint($screen-md-max) {
+      background-color: transparent;
+      &.no-img {
+        background-color: $black;
+      }
+    }
+    background-color: $black;
+  }
+  &.bg--red {
+    @include breakpoint($screen-md-max) {
+      background-color: transparent;
+      &.no-img {
+        background-color: $black;
+      }
+    }
+    background-color: $red;
+  }
+  &.bg--white {
+    background-color: $white;
+    .promo-header__content p {
+      @include breakpoint($screen-md-max) {
+        color: $white;
+        background-color: transparent;
+        &.no-img {
+          background-color: $black;
+        }
+      }
+      color: $black;
+    }
+  }
+  &.promo-header__header--feature {
+    background: transparent;
+  }
+}
+.promo-header__title {
+  position: absolute; // make it as a mixin
+  top: auto;
+  left: -10000px;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  color: $white;
+}
+.promo-header__bg-image {
+  @include breakpoint($screen-md-max, $no-query: true) {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  .promo-header__header--feature & {
+    position: relative;
+  }
+  img {
+    @include breakpoint($screen-md-max) {
+      display: block;
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+      object-position: bottom;
+    }
+  }
+}
+.promo-header__content {
+  position: relative;
+  max-width: 1200px;
+  margin: auto;
+  @include breakpoint($screen-md-max) {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    width: 100%;
+    @include translateY(-50%);
+  }
+  .promo-header__header--feature & {
+    margin: -50px 10px 0;
+    padding: 1px 20px;
+    width: calc(100% - 20px);
+    max-width: 100%;
+    position: relative;
+    top: 0;
+    background: $white;
+
+    @include translateY(0);
+    @include breakpoint($screen-md-max) {
+      margin: -50px 30px 0;
+      padding: 1px 60px;
+      width: calc(100% - 60px);
+    }
+  }
+  .promo-header__content-inner {
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 0 20px;
+    &--centre {
+      @include breakpoint($screen-md-max) {
+        margin-right: auto;
+        margin-left: auto;
+      }
+    }
+    &--left {
+      @include breakpoint($screen-md-max) {
+        margin-left: 0;
+      }
+    }
+    &--right {
+      @include breakpoint($screen-md-max) {
+        margin-right: 0;
+      }
+    }
+  }
+  p {
+    color: $white;
+    font-size: 21px;
+    line-height: 27px;
+    .promo-header__header--feature & {
+      color: $black;
+    }
+  }
+  img {
+    width: 100%;
+    height: auto;
+    margin: 0 0 40px;
+  }
+}
+.promo-header__svg-title {
+  svg {
+    width: 100%;
+    .promo-header__header--feature & {
+      path {
+        fill: $black;
+      }
+    }
+  }
+}
+.promo-header__link {
+  a {
+    @include border-radius(30px);
+    @include transition(background-color 300ms);
+    display: inline-block;
+    height: 50px;
+    padding: 14px 35px;
+    text-align: center;
+    text-decoration: none;
+    color: #1e1e1e;
+    background-color: #fff;
+    font-size: 16px;
+    line-height: 22px;
+    &:hover {
+      background-color: rgba(255,255,255,0.8);
+    }
+  }
+}
