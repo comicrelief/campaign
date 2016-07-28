@@ -123,8 +123,12 @@
    */
   Drupal.FocalPoint.prototype.setIndicator = function() {
     var coordinates = this.$field.val() !== '' && this.$field.val() !== undefined ? this.$field.val().split(',') : [50,50];
-    this.$indicator.css('left', (parseInt(coordinates[0], 10) / 100) * this.$img.width());
-    this.$indicator.css('top', (parseInt(coordinates[1], 10) / 100) * this.$img.height());
+
+    var left = Math.min(this.$img.width(), (parseInt(coordinates[0], 10) / 100) * this.$img.width());
+    var top = Math.min(this.$img.height(), (parseInt(coordinates[1], 10) / 100) * this.$img.height());
+
+    this.$indicator.css('left', Math.max(0, left));
+    this.$indicator.css('top', Math.max(0,top));
     this.$field.val(coordinates[0] + ',' + coordinates[1]);
   };
 
