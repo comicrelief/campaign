@@ -4,18 +4,16 @@
     $('select').selectmenu({ style:'popup', width: '100%' });
 
 
-
-
-    /* NAV */
-    $('.menu--main .menu-item--expanded > ul.menu').each( function (){
-      // Store height as data-attribute, then set max-height to 0
+    /* NAV to be module-ised */
+    
+    // Store height as data-attribute, then set max-height to 0
+    $('.menu--main .menu-item--expanded > ul.menu').each( function () {
       $(this)
         .attr("data-menu-height", $(this).height())
           .css("max-height", 0);
     });
 
-
-    // TODO: implemented as Drupal behaviour within navigation module
+    // Click/touch events for 'mobile' menu
     $('.menu--main .menu-item--expanded > a').on('click', function(e) {
       
       // TODO: only on mobile menu

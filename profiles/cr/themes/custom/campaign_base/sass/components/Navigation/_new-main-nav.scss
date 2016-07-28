@@ -18,6 +18,7 @@
 }
 
 
+
 header[role=banner] {
   overflow: visible!important;
   padding-bottom: 0!important;
@@ -42,6 +43,10 @@ header[role=banner] {
   display: block;
   z-index: 1;
 
+  .menu-item {
+    padding-top: 0;
+  }
+
   // 'Mobile' nav
   ul.menu {
     margin: 0;
@@ -49,12 +54,49 @@ header[role=banner] {
     text-align: center;
 
     li {
-        display: block;
         margin: 0;
         color: $white;
 
       a {
         padding: 20px 20px;
+        display: block;
+        text-decoration: none;
+        color: $black;
+        font-size: 18px;
+        @include transition-property(background-color);
+        @include transition-duration(180ms);
+
+        > span {
+          color: #5f5c59;
+          border-bottom: 2px solid transparent;
+          @include transition-property(border, color);
+          @include transition-duration(180ms);
+          font-size: 24px;
+          line-height: 24px;
+        }
+
+        &:hover {
+          text-decoration: none;
+          color: $white;
+          background-color: #acaaa9;
+
+          > span {
+            color: $white;
+            border-bottom: 2px solid $white;
+          }
+        }
+
+        &.active {
+          text-decoration: none;
+          color: $black;
+          background: $white;
+          color: $black;
+          background: transparent;
+          
+          > span {
+            border-bottom: 2px solid $dark-grey;
+          }
+        }
       }
 
       // Hide sub menus, but set up for CSS3 animations, using JS-added
@@ -64,13 +106,29 @@ header[role=banner] {
         overflow: hidden;        
         -webkit-transform: translateZ(0);
          @include transition(all 500ms ease);
-        background-color: $gainsboro-grey;
+         background-color: $black;
 
         &.active {
           // Overidden by JS dynamically
-          //max-height: 400px;
-          //display: block;
+          max-height: 400px;
         }
+
+        a {
+          background-color: #1E1E1E;
+          > span {
+            color: $white;
+            font-size: 18px;
+            line-height: 20px;
+          }
+
+          &:hover {
+            background-color: #3f3d3c;
+            
+            > span {
+              border-bottom: 2px solid transparent;
+            }
+          }
+        } 
       }
     }
   }
@@ -126,7 +184,6 @@ header[role=banner] {
             margin-top: 0;
             margin-bottom: 0;
             padding: 16px 20px 11px;
-            border-bottom: 2px solid transparent;
             
             &:after {
               display: none;
@@ -149,43 +206,9 @@ header[role=banner] {
 
   ul {
     li {
-
       a {
-        display: block;
-        padding: 15px 10px;
-        padding: 20px 0 44px;
-        text-decoration: none;
-        color: $black;
-        //border-bottom: 2px solid transparent;
-        font-size: 18px;
+ 
 
-        @include breakpoint($screen-lg, $no-query: true) {
-          padding: 20px 0 4px;
-          font-size: 14px;
-          @include transition(border-bottom 180ms);
-
-        }
-        &:hover {
-          text-decoration: none;
-          color: $black;
-          background: #acaaa9;
-
-          @include breakpoint($screen-md, $no-query: true) {
-            border-bottom: 2px solid $dark-grey;
-            background: transparent;
-          }
-        }
-        &.active {
-          text-decoration: none;
-          color: $black;
-          background: $white;
-
-          @include breakpoint($screen-md, $no-query: true) {
-            color: $black;
-            border-bottom: 2px solid $dark-grey;
-            background: transparent;
-          }
-        }
       }
     }
   }
