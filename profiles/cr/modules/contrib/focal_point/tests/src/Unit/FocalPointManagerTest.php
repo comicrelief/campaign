@@ -1,56 +1,22 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\focal_point\Unit\FocalPointTest.
- */
-
 namespace Drupal\Tests\focal_point\Unit;
 
-use Drupal\crop\CropStorageInterface;
-use Drupal\Core\Entity\EntityTypeManager;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\focal_point\FocalPointManager;
-use Drupal\Tests\UnitTestCase;
+use Drupal\crop\CropInterface;
 
 /**
  * @coversDefaultClass \Drupal\focal_point\FocalPointManager
  *
  * @group Focal Point
  */
-class FocalPointTest extends UnitTestCase {
-
-  /**
-   * Focal point manager.
-   *
-   * @var \Drupal\focal_point\FocalPointManagerInterface
-   */
-  protected $focalPointManager;
-
-  /**
-   * {@inheritdoc}
-   */
-  protected function setUp() {
-    parent::setUp();
-    $crop_storage = $this->prophesize(CropStorageInterface::class);
-
-    $entity_type_manager = $this->prophesize(EntityTypeManager::class);
-    $entity_type_manager->getStorage('crop')->willReturn($crop_storage);
-
-    $container = $this->prophesize(ContainerInterface::class);
-    $container->get('entity_type.manager')->willReturn($entity_type_manager);
-
-    \Drupal::setContainer($container->reveal());
-
-    $this->focalPointManager = new FocalPointManager(\Drupal::service('entity_type.manager'));
-  }
+class FocalPointManagerTest extends FocalPointUnitTestCase {
 
   /**
    * @covers ::validateFocalPoint
    *
    * @dataProvider providerValidateFocalPoint
    */
-  public function testFocalPointValidate($value, $expected) {
+  public function testValidateFocalPoint($value, $expected) {
     $this->assertEquals($expected, $this->focalPointManager->validateFocalPoint($value));
   }
 
@@ -149,6 +115,27 @@ class FocalPointTest extends UnitTestCase {
     ];
 
     return $data;
+  }
+
+  /**
+   * @covers ::saveCropEntity
+   */
+  public function testSaveCropEntity() {
+    // Test that crop is saved when focal point value has changed.
+    $crop = $this->prophesize(CropInterface::class);
+    $crop->anchor()->willReturn(['x' => 50, 'y' =>50])->shouldBeCalledTimes(1);
+    $crop->setPosition(20,20)->willReturn($crop->reveal())->shouldBeCalledTimes(1);
+    $crop->save()->willReturn($crop->reveal())->shouldBeCalledTimes(1);
+
+    $this->focalPointManager->saveCropEntity(10, 10, 200, 200, $crop->reveal());
+
+    // Test that crop is not saved when focal point value is unchanged.
+    $crop = $this->prophesize(CropInterface::class);
+    $crop->anchor()->willReturn(['x' => 20, 'y' =>20])->shouldBeCalledTimes(1);
+    $crop->setPosition()->willReturn($crop->reveal())->shouldBeCalledTimes(0);
+    $crop->save()->willReturn($crop->reveal())->shouldBeCalledTimes(0);
+
+    $this->focalPointManager->saveCropEntity(10, 10, 200, 200, $crop->reveal());
   }
 
 }
