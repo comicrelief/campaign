@@ -56,7 +56,7 @@ disk: 2048
 mounts:
     "/sites/default/files": "shared:files/files"
     # "/sites/default/settings.php": "shared:files/settings.php"
-    "/sites/default/config/symc": "shard:files/config_sync"
+    "/sites/default/sync": "shard:files/config_sync"
     "/tmp": "shared:files/tmp"
     "/private": "shared:files/private"
     "/drush-backups": "shared:files/drush-backups"
