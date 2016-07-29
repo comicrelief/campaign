@@ -2110,6 +2110,7 @@ function install_check_requirements($install_state) {
       }
     }
   }
+  print_r($requirements);
   return $requirements;
 }
 
