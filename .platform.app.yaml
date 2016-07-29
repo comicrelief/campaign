@@ -80,6 +80,9 @@ hooks:
       cd profiles/cr/themes/custom/campaign_base
       bundle exec grunt build
       cd ../../../../../
+      phing config:import
+      drush updb -y
+      drush cr
 
 
 # The configuration of scheduled execution.
