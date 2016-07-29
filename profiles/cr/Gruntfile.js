@@ -59,10 +59,10 @@ module.exports = function (grunt) {
 
     shell: {
         campaign_styleguide: {
-            command: '../../node_modules/kss/bin/kss-node --source themes/custom/campaign_base/sass/ --destination themes/custom/campaign_base/styleguide --css ../css/styles.css --verbose --title "Comic Relief PatternLab"'
+            command: '../../node_modules/kss/bin/kss --source themes/custom/campaign_base/sass/ --builder builder/twig --extend-drupal8 --destination themes/custom/campaign_base/styleguide --css ../css/styles.css --verbose --title "Comic Relief PatternLab"'
         },
         rnd17_styleguide: {
-            command: '../../node_modules/kss/bin/kss-node --source ../../themes/rnd17/sass/ --destination ../../themes/rnd17/styleguide --css ../css/styles.css --verbose --title "Red Nose Day PatternLab"'
+            command: '../../node_modules/kss/bin/kss --source ../../themes/rnd17/sass/ --builder builder/twig --extend-drupal8 --destination ../../themes/rnd17/styleguide --css ../css/styles.css --verbose --title "Red Nose Day PatternLab"'
         }
     },
 
