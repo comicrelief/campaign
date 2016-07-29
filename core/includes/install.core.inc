@@ -2037,7 +2037,7 @@ function install_check_requirements($install_state) {
           if ($exists) {
             $settings_file_ownership_error = TRUE;
             $readable = drupal_verify_install_file($file, FILE_READABLE);
-            $writable = drupal_verify_install_file($file, FILE_WRITABLE);
+            $writable = TRUE;
           }
         }
       }
