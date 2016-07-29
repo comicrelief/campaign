@@ -7,9 +7,10 @@ Release are to happen every Monday, end of play.
 - Proceed to the Product release process documentation below to complete the weekly release.
 
 ### Deploying to Staging
+
 Before a site instance deployment can happen, a Campaign profile release must be drafted.
-- Create a release branch, for example `feature/1.2`
-- Locate the `RND17.make.yml` file in `/profiles/rnd17/`, update the branch version to the Campaign profile tag you created previously and commit.
+- Create a release branch, for example `release_1.2` (do not use slashes for this branch as platform.sh does not like this)
+- (in the RND17 repository) Locate the `RND17.make.yml` file in `/profiles/rnd17/`, update the branch version to the Campaign profile tag you created previously and commit.
 - Run `phing make-cr`, review the changes, add and commit the new files.
 - Run `phing update-cr` to get the updated configuration, review the changes, add and commit the new files to the repo.
 - Announce the start of the process on the #deployments and/or #rnd17 Slack channel. A staging deployment often needs to get a database dump and a files directory from production to be effective.
