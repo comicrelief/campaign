@@ -30,4 +30,6 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
 $local_settings = dirname(__FILE__) . '/settings.local.php';
 if (file_exists($local_settings)) {
   require $local_settings;
+    echo "LOADED!! local settings";
+
 }
