@@ -1,28 +1,29 @@
 <?php
 
-use Symfony\Component\Yaml\Yaml;
+// use Symfony\Component\Yaml\Yaml;
 
-$databases = array();
-$config_directories = array();
-$settings['install_profile'] = 'cr';
+$databases = [];
+$config_directories = [];
+$settings['update_free_access'] = FALSE;
+$settings['container_yamls'][] = __DIR__ . '/services.yml';
 
 /**
  * Load environment variables.
  */
-$environment = __DIR__ . "/environment.yml";
-if (file_exists($environment)) {
-  $environment_variables = Yaml::parse(file_get_contents($environment));
+// $environment = __DIR__ . "/environment.yml";
+// if (file_exists($environment)) {
+//   $environment_variables = Yaml::parse(file_get_contents($environment));
 
-  $databases = $environment_variables['databases'];
-  $settings = array_merge($settings, $environment_variables['settings']);
-  $config = array_merge($config, $environment_variables['config']);
-  $config_directories['sync'] = $environment_variables['config_dir'];
-}
+//   $databases = $environment_variables['databases'];
+//   $settings = array_merge($settings, $environment_variables['settings']);
+//   $config = array_merge($config, $environment_variables['config']);
+//   $config_directories['sync'] = $environment_variables['config_dir'];
+// }
 
 /**
  * Load services definition file.
  */
-$settings['container_yamls'][] = __DIR__ . '/services.yml';
+// $settings['container_yamls'][] = __DIR__ . '/services.yml';
 
 /**
  * Include settings for platform.sh
