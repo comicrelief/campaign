@@ -2076,24 +2076,24 @@ function install_check_requirements($install_state) {
         );
       }
       // If the $file is not writable, throw an error.
-      if (!$writable) {
-        $requirements["$file file writeable"] = array(
-          'title' => $default_file_info['title'],
-          'value' => t('The %file is not writable.', array('%file' => $default_file_info['title'])),
-          'severity' => REQUIREMENT_ERROR,
-          'description' => t('The @drupal installer requires write permissions to %file during the installation process. The <a href=":handbook_url">webhosting issues</a> documentation section offers help on this and other topics.', array(
-              '@drupal' => drupal_install_profile_distribution_name(),
-              '%file' => $file,
-              ':handbook_url' => 'https://www.drupal.org/server-permissions'
-            )),
-        );
-      }
-      else {
+      // if (!$writable) {
+      //   $requirements["$file file writeable"] = array(
+      //     'title' => $default_file_info['title'],
+      //     'value' => t('The %file is not writable.', array('%file' => $default_file_info['title'])),
+      //     'severity' => REQUIREMENT_ERROR,
+      //     'description' => t('The @drupal installer requires write permissions to %file during the installation process. The <a href=":handbook_url">webhosting issues</a> documentation section offers help on this and other topics.', array(
+      //         '@drupal' => drupal_install_profile_distribution_name(),
+      //         '%file' => $file,
+      //         ':handbook_url' => 'https://www.drupal.org/server-permissions'
+      //       )),
+      //   );
+      // }
+      // else {
         $requirements["$file file"] = array(
           'title' => $default_file_info['title'],
           'value' => t('The @file is writable.', array('@file' => $default_file_info['title'])),
         );
-      }
+      // }
       if (!empty($settings_file_ownership_error)) {
         $requirements["$file file ownership"] = array(
           'title' => $default_file_info['title'],
