@@ -31,7 +31,7 @@ $settings['install_profile'] = 'standard';
 // This is defined inside the read-only "config" directory. This works well,
 // however it requires a patch from issue https://www.drupal.org/node/2607352
 // to fix the requirements check and the installer.
-$config_directories[CONFIG_SYNC_DIRECTORY] = '../config/sync';
+// $config_directories[CONFIG_SYNC_DIRECTORY] = '../config/sync';
 // Automatic Platform.sh settings.
 if (file_exists(__DIR__ . '/settings.platformsh.php')) {
   include __DIR__ . '/settings.platformsh.php';
