@@ -23,7 +23,7 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
 /**
  * Load services definition file.
  */
-// $settings['container_yamls'][] = __DIR__ . '/services.yml';
+$settings['container_yamls'][] = __DIR__ . '/services.yml';
 
 /**
  * Include settings for platform.sh
