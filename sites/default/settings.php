@@ -27,16 +27,11 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
 /**
  * Include settings for platform.sh
  */
+// Automatic Platform.sh settings.
+if (file_exists(__DIR__ . '/settings.platformsh.php')) {
+  include __DIR__ . '/settings.platformsh.php';
+}
 // Local settings. These come last so that they can override anything.
 if (file_exists(__DIR__ . '/settings.local.php')) {
   include __DIR__ . '/settings.local.php';
 }
-
-// $local_settings = dirname(__FILE__) . '/settings.local.php';
-// if (file_exists($local_settings)) {
-//   require $local_settings;
-//     echo "LOADED!! local settings";
-//     echo "Salt: " . $drupal_hash_salt;
-//     echo "Env var: " . $_ENV['PLATFORM_PROJECT_ENTROPY'];
-
-// }
