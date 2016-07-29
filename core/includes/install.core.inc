@@ -1966,6 +1966,11 @@ function install_check_requirements($install_state) {
     $file = $site_path . "/{$default_file_info['file']}";
     $default_file = "./sites/default/{$default_file_info['file_default']}";
     $exists = FALSE;
+
+    echo "FILE -> " . $file;
+    echo "DEFAULT_FILE -> " . $default_file;
+
+
     // Verify that the directory exists.
     if (drupal_verify_install_file($site_path, FILE_EXIST, 'dir')) {
       if (drupal_verify_install_file($file, FILE_EXIST)) {
@@ -1973,6 +1978,7 @@ function install_check_requirements($install_state) {
         $readable = drupal_verify_install_file($file, FILE_READABLE);
         $writable = drupal_verify_install_file($file, FILE_WRITABLE);
         $exists = TRUE;
+        echo "DOES EXIST!";
       }
     }
 
@@ -1992,6 +1998,7 @@ function install_check_requirements($install_state) {
     // Otherwise, if $file does not exist yet, we can try to copy
     // $default_file to create it.
     elseif (!$exists) {
+      echo "DOES NOT EXIST";
       $copied = drupal_verify_install_file($site_path, FILE_EXIST | FILE_WRITABLE, 'dir') && @copy($default_file, $file);
       if ($copied) {
         // If the new $file file has the same owner as $default_file this means
