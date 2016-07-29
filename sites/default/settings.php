@@ -31,5 +31,7 @@ $local_settings = dirname(__FILE__) . '/settings.local.php';
 if (file_exists($local_settings)) {
   require $local_settings;
     echo "LOADED!! local settings";
+    echo "Salt: " . $drupal_hash_salt;
+    echo "Env var: " . $_ENV['PLATFORM_PROJECT_ENTROPY'];
 
 }
