@@ -99,7 +99,7 @@ projects:
   paragraphs:
     download:
       branch: 8.x-1.x
-      revision: 6f946be
+      revision: 4ea34cd
     patch:
       # See: https://www.drupal.org/node/2700723
       2700723: https://www.drupal.org/files/issues/2700723-4.patch
