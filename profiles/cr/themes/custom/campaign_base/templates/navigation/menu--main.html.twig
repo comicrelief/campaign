@@ -33,9 +33,18 @@
     {% if menu_level == 0 %}
       <ul{{ attributes.addClass('menu') }}>
     {% else %}
-      <ul class="menu">
+      <ul class="menu menu--level-{{menu_level}}">
+        {% if menu_level == 1 %}
+          {# Duplicate menu link for UX, to be populated by JS #}
+          <li class="menu-item menu-item--duplicate">
+            <a href="/">
+              <span>{{menu_level}}</span>
+            </a>
+          </li>
+        {% endif %}
     {% endif %}
     {% for item in items %}
+
       {%
         set classes = [
           'menu-item',

@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * Preprocess the menu links in order to add our duplicate for lovely UX experience
+ */
+
+/**
+ * Implements hook_page_attachments().
+ */
+function cr_navigation_page_attachments(array &$attachments) {
+  $attachments['#attached']['library'][] = 'cr_navigation/cr_navigation';
+}

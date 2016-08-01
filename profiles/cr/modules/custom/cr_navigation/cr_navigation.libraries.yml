@@ -1,0 +1,7 @@
+cr_navigation:
+  version: 1.x
+  js:
+    js/cr_navigation.js: {}
+  dependencies:
+    - core/jquery
+    - core/modernizr
