@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\focal_point\Plugin\Field\FieldWidget\FocalPointImageWidget.
- */
-
 namespace Drupal\focal_point\Plugin\Field\FieldWidget;
 
 use Drupal\Core\StringTranslation\TranslatableMarkup;
@@ -26,7 +21,7 @@ class FocalPointImageWidget extends ImageWidget {
   /**
    * {@inheritDocs}
    *
-   * Form API callback: Processes a image_fp field element.
+   * Form API callback: Processes an image_fp field element.
    *
    * Expands the image_fp type to include the focal_point field.
    *
@@ -117,11 +112,8 @@ class FocalPointImageWidget extends ImageWidget {
    * Validate callback for the focal point field.
    */
   public static function validateFocalPoint($element, FormStateInterface $form_state) {
-    $field_name = array_pop($element['#parents']);
-    $focal_point_value = $form_state->getValue($field_name);
-
-    if (!is_null($focal_point_value) && \Drupal::service('focal_point.manager')->validateFocalPoint($focal_point_value)) {
-      $form_state->setError($element, new TranslatableMarkup('The !title field should be in the form "leftoffset,topoffset" where offsets are in percents. Ex: 25,75.', array('!title' => $element['#title'])));
+    if (empty($element['#value']) || (FALSE === \Drupal::service('focal_point.manager')->validateFocalPoint($element['#value'])))  {
+      $form_state->setError($element, new TranslatableMarkup('The @title field should be in the form "leftoffset,topoffset" where offsets are in percents. Ex: 25,75.', array('@title' => $element['#title'])));
     }
   }
 
