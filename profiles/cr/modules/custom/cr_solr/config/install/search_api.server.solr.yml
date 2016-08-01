@@ -12,7 +12,7 @@ backend_config:
   host: solr
   port: '8983'
   path: /solr/
-  core: rnd17
+  core: campaign
   username: ''
   password: ''
   retrieve_data: false
