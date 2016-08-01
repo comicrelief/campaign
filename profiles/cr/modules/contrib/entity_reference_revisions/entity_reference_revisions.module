@@ -12,6 +12,7 @@ use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\field\FieldStorageConfigInterface;
+use Drupal\Core\Url;
 
 /**
  * Implements hook_help().
@@ -21,11 +22,11 @@ function entity_reference_revisions_help($route_name, RouteMatchInterface $route
     case 'help.page.entity_reference_revisions':
       $output = '';
       $output .= '<h3>' . t('About') . '</h3>';
-      $output .= '<p>' . t('The Entity Reference Revisions module allows you to create fields that contain links to other entities (such as content items, taxonomy terms, etc.) within the site. This allows you, for example, to include a link to a user within a content item. For more information, see <a href="!er_do">the online documentation for the Entity Reference Revisions module</a> and the <a href="!field_help">Field module help page</a>.', array('!field_help' => \Drupal::url('help.page', array('name' => 'field')), '!er_do' => 'https://drupal.org/documentation/modules/entity_reference_revisions')) . '</p>';
+      $output .= '<p>' . t('The Entity Reference Revisions module allows you to create fields that contain links to other entities (such as content items, taxonomy terms, etc.) within the site. This allows you, for example, to include a link to a user within a content item. For more information, see <a href=":er_do">the online documentation for the Entity Reference Revisions module</a> and the <a href=":field_help">Field module help page</a>.', [':field_help' => Url::fromRoute('help.page', ['name' => 'field'])->toString(), ':er_do' => 'https://drupal.org/documentation/modules/entity_reference_revisions']) . '</p>';
       $output .= '<h3>' . t('Uses') . '</h3>';
       $output .= '<dl>';
       $output .= '<dt>' . t('Managing and displaying entity reference fields') . '</dt>';
-      $output .= '<dd>' . t('The <em>settings</em> and the <em>display</em> of the entity reference field can be configured separately. See the <a href="!field_ui">Field UI help</a> for more information on how to manage fields and their display.', array('!field_ui' => \Drupal::url('help.page', array('name' => 'field_ui')))) . '</dd>';
+      $output .= '<dd>' . t('The <em>settings</em> and the <em>display</em> of the entity reference field can be configured separately. See the <a href=":field_ui">Field UI help</a> for more information on how to manage fields and their display.', [':field_ui' => Url::fromRoute('help.page', ['name' => 'field_ui'])->toString()]) . '</dd>';
       $output .= '<dt>' . t('Selecting reference type') . '</dt>';
       $output .= '<dd>' . t('In the field settings you can select which entity type you want to create a reference to.') . '</dd>';
       $output .= '<dt>' . t('Filtering and sorting reference fields') . '</dt>';
@@ -80,7 +81,7 @@ function entity_reference_revisions_field_storage_config_update(FieldStorageConf
   foreach ($field_storage->bundles() as $entity_type => $bundles) {
     foreach ($bundles as $bundle) {
       $field = FieldConfig::loadByName($entity_type, $bundle, $field_name);
-      $field->setSetting('handler_settings', array());
+      $field->setSetting('handler_settings', []);
       $field->save();
     }
   }
@@ -105,11 +106,11 @@ function _entity_reference_revisions_field_field_settings_ajax_process($form, Fo
  */
 function _entity_reference_revisions_field_field_settings_ajax_process_element(&$element, $main_form) {
   if (!empty($element['#ajax'])) {
-    $element['#ajax'] = array(
+    $element['#ajax'] = [
       'callback' => 'entity_reference_revisions_settings_ajax',
       'wrapper' => $main_form['#id'],
       'element' => $main_form['#array_parents'],
-    );
+    ];
   }
 
   foreach (Element::children($element) as $key) {
@@ -181,30 +182,30 @@ function entity_reference_revisions_settings_ajax_submit($form, FormStateInterfa
  *
  * @see \Drupal\Core\Entity\Plugin\EntityReferenceSelection\SelectionBase::buildConfigurationForm()
  */
-function entity_reference_revisions_create_field($entity_type, $bundle, $field_name, $field_label, $target_entity_type, $selection_handler = 'default', $selection_handler_settings = array(), $cardinality = 1) {
+function entity_reference_revisions_create_field($entity_type, $bundle, $field_name, $field_label, $target_entity_type, $selection_handler = 'default', $selection_handler_settings = [], $cardinality = 1) {
   // Look for or add the specified field to the requested entity bundle.
   if (!FieldStorageConfig::loadByName($entity_type, $field_name)) {
-    entity_create('field_storage_config', array(
+    \Drupal::entityTypeManager()->getStorage('field_storage_config')->create([
       'field_name' => $field_name,
       'type' => 'entity_reference_revisions',
       'entity_type' => $entity_type,
       'cardinality' => $cardinality,
-      'settings' => array(
+      'settings' => [
         'target_type' => $target_entity_type,
-      ),
-    ))->save();
+      ],
+    ])->save();
   }
   if (!FieldConfig::loadByName($entity_type, $bundle, $field_name)) {
-    entity_create('field_config', array(
+    \Drupal::entityTypeManager()->getStorage('field_config')->create([
       'field_name' => $field_name,
       'entity_type' => $entity_type,
       'bundle' => $bundle,
       'label' => $field_label,
-      'settings' => array(
+      'settings' => [
         'handler' => $selection_handler,
         'handler_settings' => $selection_handler_settings,
-      ),
-    ))->save();
+      ],
+    ])->save();
   }
 }
 

@@ -45,10 +45,7 @@ projects:
   entity_reference_revisions:
     download:
       branch: 8.x-1.x
-      revision: 405c06ac073f9ab676a1816e53d7b36b67bf1d21
-    patch:
-      # See https://www.drupal.org/node/2598138
-      2598138: https://www.drupal.org/files/issues/2598138-hal-26.patch
+      revision: 3734a44
   view_modes_display:
     version: 1.x-dev
   social_links:
@@ -99,7 +96,7 @@ projects:
   paragraphs:
     download:
       branch: 8.x-1.x
-      revision: 6f946be
+      revision: 1418761
     patch:
       # See: https://www.drupal.org/node/2700723
       2700723: https://www.drupal.org/files/issues/2700723-4.patch
@@ -117,7 +114,9 @@ projects:
   cookieconsent:
     version: 1.0
   rabbitmq:
-    version: 1.0-beta1
+    download:
+      url: https://github.com/comicrelief/rabbitmq.git
+      branch: 8.x-1.x
   search_api:
     download:
       version: 1.x-dev
@@ -132,7 +131,7 @@ projects:
   optimizely:
     version: 2.15-rc1
   simple_sitemap:
-    version: 2.5
+    version: 2.3
   # Performance modules
   fast_404:
     version: 1.0-alpha2

@@ -99,12 +99,6 @@
             "lang": "en"
         }
     ],
-    "changed": [
-        {
-            "value": "1462873555",
-            "lang": "en"
-        }
-    ],
     "promote": [
         {
             "value": "0"
@@ -114,11 +108,6 @@
         {
             "value": "0",
             "lang": "en"
-        }
-    ],
-    "revision_timestamp": [
-        {
-            "value": "1460471701"
         }
     ],
     "revision_translation_affected": [
