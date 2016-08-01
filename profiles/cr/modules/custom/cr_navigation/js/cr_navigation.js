@@ -1,61 +1,105 @@
-(function($, Drupal) {
+(function ($) {
 
-  $( document ).ready(function() {
+  Drupal.behaviors.crNavigation = {
 
+   settings : {
+    mainMenuClass: '.menu--main',
+    navItemWithSubMenuSelector:'.menu--main > .menu > .menu-item--expanded',
+    subMenuSelector : '.menu--main .menu-item--expanded > ul.menu',
+    touchNavBreakpoint : '(max-width: 1023px)',
+    nonTouchNavBreakpoint : '(min-width: 1024px)',
+   },
 
-    /* NAV to be module-ised */
-    $('.menu--main > .menu > .menu-item--expanded').each (function() {
+    attach: function (context, settings) {
 
-      // Cache everything
-      $this_expanded_menu_item = $(this);
-      $this_parent_link = $this_expanded_menu_item.children('a');
-      $this_submenu = $(this).children('ul.menu');
+      var _base = Drupal.behaviors.crNavigation;
+      var _settings = _base.settings;
 
-      // Store parent link stuff
-      var this_link = $this_parent_link.attr('href');
-      var this_text =  $this_parent_link.text();
+      $(_settings.mainMenuClass).once('crNavigation').each( function(){
+        $(this).addClass("crNavigation-processed");
+        _base.duplicateParentLink(this);
+      });
+    },
 
+    duplicateParentLink: function (context, settings) {
 
-      // Populate duplicate link with parent link info
-      $this_submenu
-        .find('.menu-item--duplicate a')
-          .attr("href", this_link)
-            .find('span').text(this_text);
-    });
+      var _base = Drupal.behaviors.crNavigation;
+      var _settings = _base.settings;
 
-    // Store height as data-attribute, then set max-height to 0
-    $('.menu--main .menu-item--expanded > ul.menu').each( function () {
-      $(this)
-        .attr("data-menu-height", $(this).height())
-          .css("max-height", 0);
-    });
+      // Update text and link
+      $( _settings.navItemWithSubMenuSelector ).each (function() {
 
+        $this = $(this);
 
-    // Click/touch events for 'mobile' menu
-    $('.menu--main .menu-item--expanded > a').on('click', function(e) {
-      
-      // TODO: only on mobile menu
-      e.preventDefault();
+        // Populate duplicate link with parent link info
+        $(this).children('ul.menu')
+          .find('.menu-item--duplicate a')
+            .attr("href", $this.children('a').attr('href'))
+              .find('span').text( $this.children('a').text());
+      });
 
-      $thisMenu = $(this).next('ul.menu');
+      // Store heights to use in animation
+      _base.storeHeights(this);
 
-      // Set our max-height dynamically based on actual height stored earlier
-      var thisMenuHeight =  $thisMenu.attr("data-menu-height");
-      // Current height of menu
-      var thisCurrentHeight = $thisMenu.height();
+    },
 
-      // Update current height to toggle between the 2 values
-      thisCurrentHeight = thisMenuHeight == thisCurrentHeight ? 0 : thisMenuHeight;
+    storeHeights: function (context, settings) {
 
-      $thisMenu.css("max-height", thisCurrentHeight + "px").toggleClass('active');
+      var _base = Drupal.behaviors.crNavigation;
+      var _settings = _base.settings;
 
-      // Close any open nav items
-      $('.menu--main .menu-item--expanded > a')
-        .not(this)
-          .next('ul.menu')
-            .removeClass('active')
-              .css("max-height", 0);
-              
-    });
-  });
-})(jQuery, Drupal);
+      // Store height as data-attribute, then set max-height to 0
+      $( _settings.subMenuSelector ).each( function () {
+        $(this)
+          .attr("data-menu-height", $(this).height())
+            .css("max-height", 0);
+      });
+
+      _base.handleTouch(this);
+
+    },
+
+    handleTouch: function (context, settings) {
+
+      var _base = Drupal.behaviors.crNavigation;
+      var _settings = _base.settings;
+
+      $('.menu--main .menu-item--expanded > a').on('click', function(e) {
+        
+        // TODO: only on mobile menu
+        e.preventDefault();
+
+        $thisMenu = $(this).next('ul.menu');
+
+        // Set our max-height dynamically based on actual height stored earlier
+        var thisMenuHeight =  $thisMenu.attr("data-menu-height");
+        // Current height of menu
+        var thisCurrentHeight = $thisMenu.height();
+
+        // Update current height to toggle between the 2 values
+        thisCurrentHeight = thisMenuHeight == thisCurrentHeight ? 0 : thisMenuHeight;
+
+        $thisMenu.css("max-height", thisCurrentHeight + "px").toggleClass('active');
+
+        // Close any open nav items
+        $('.menu--main .menu-item--expanded > a')
+          .not(this)
+            .next('ul.menu')
+              .removeClass('active')
+                .css("max-height", 0);
+      });
+
+      _base.checkBreakpoint(this);
+
+    },
+
+    checkBreakpoint: function (context, settings) {
+
+      var _base = Drupal.behaviors.crNavigation;
+      var _settings = _base.settings;
+
+      //console.log ( window.matchMedia('(max-width: 1149px)').matches );
+
+    },
+  };
+})(jQuery);

@@ -5,3 +5,4 @@ cr_navigation:
   dependencies:
     - core/jquery
     - core/modernizr
+    - core/matchmedia
