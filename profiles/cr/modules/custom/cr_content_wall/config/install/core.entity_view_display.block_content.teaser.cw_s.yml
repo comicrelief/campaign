@@ -8,11 +8,10 @@ dependencies:
     - field.field.block_content.teaser.field_teaser_image
     - field.field.block_content.teaser.field_teaser_link
     - field.field.block_content.teaser.field_teaser_title
-    - responsive_image.styles.cw_4_3_image
   module:
     - ds
+    - image
     - link
-    - responsive_image
     - text
 third_party_settings:
   ds:
@@ -51,10 +50,10 @@ content:
     weight: 1
     label: hidden
     settings:
-      responsive_image_style: cw_4_3_image
       image_link: ''
+      image_style: ''
     third_party_settings: {  }
-    type: responsive_image
+    type: image
   field_teaser_link:
     weight: 3
     label: hidden
