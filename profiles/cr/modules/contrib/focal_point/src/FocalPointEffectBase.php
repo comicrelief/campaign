@@ -32,13 +32,6 @@ abstract class FocalPointEffectBase extends ResizeImageEffect implements Contain
   protected $focalPointConfig;
 
   /**
-   * The original image before any effects are applied.
-   *
-   * @var \Drupal\Core\Image\ImageInterface
-   */
-  protected $originalImage;
-
-  /**
    * Constructs a \Drupal\focal_point\FocalPointEffectBase object.
    *
    * @param array $configuration
@@ -72,15 +65,6 @@ abstract class FocalPointEffectBase extends ResizeImageEffect implements Contain
       $container->get('entity_type.manager')->getStorage('crop'),
       $container->get('config.factory')->get('focal_point.settings')
     );
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function applyEffect(ImageInterface $image) {
-    // @todo: Get the original image in case there are multiple scale/crop effects?
-    $this->originalImage = clone $image;
-    return TRUE;
   }
 
   /**
@@ -134,11 +118,14 @@ abstract class FocalPointEffectBase extends ResizeImageEffect implements Contain
    *
    * @param ImageInterface $image
    *   The image resource to crop.
+   * @param array $original_image_size
+   *   An array with keys 'width' and 'height' representing the size (in pixels)
+   *   of the source image (prior to any manipulation).
    *
    * @return bool
    *   TRUE if the image is successfully cropped, otherwise FALSE.
    */
-  public function applyCrop(ImageInterface $image) {
+  public function applyCrop(ImageInterface $image, $original_image_size) {
     $crop_type = $this->focalPointConfig->get('crop_type');
 
     /** @var \Drupal\crop\CropInterface $crop */
@@ -157,7 +144,7 @@ abstract class FocalPointEffectBase extends ResizeImageEffect implements Contain
       ]);
     }
 
-    $anchor = $this->calculateAnchor($image, $crop);
+    $anchor = $this->calculateAnchor($image, $crop, $original_image_size);
     if (!$image->crop($anchor['x'], $anchor['y'], $this->configuration['width'], $this->configuration['height'])) {
       $this->logger->error(
         'Focal point scale and crop failed while scaling and cropping using the %toolkit toolkit on %path (%mimetype, %dimensions, anchor: %anchor)',
@@ -187,11 +174,14 @@ abstract class FocalPointEffectBase extends ResizeImageEffect implements Contain
    *   Image object representing original image.
    * @param \Drupal\crop\CropInterface $crop
    *   Crop entity.
+   * @param array $original_image_size
+   *   An array with keys 'width' and 'height' representing the size (in pixels)
+   *   of the source image (prior to any manipulation).
    *
    * @return array
    *   Array with two keys (x, y) and anchor coordinates as values.
    */
-  protected function calculateAnchor(ImageInterface $image, CropInterface $crop) {
+  protected function calculateAnchor(ImageInterface $image, CropInterface $crop, $original_image_size) {
     // @todo Create a focalPointCrop class and override the "anchor" method.
 
     $crop_size = $crop->size();
@@ -203,8 +193,8 @@ abstract class FocalPointEffectBase extends ResizeImageEffect implements Contain
     // Because the anchor is returned relative to the original image size we
     // need to change it proportionally to account for the now-resized image.
     $focal_point = $crop->position();
-    $focal_point['x'] = (int) round($focal_point['x'] / $this->originalImage->getWidth() * $image_size['width']);
-    $focal_point['y'] = (int) round($focal_point['y'] / $this->originalImage->getHeight() * $image_size['height']);
+    $focal_point['x'] = (int) round($focal_point['x'] / $original_image_size['width'] * $image_size['width']);
+    $focal_point['y'] = (int) round($focal_point['y'] / $original_image_size['height'] * $image_size['height']);
 
     // The anchor must be the top-left coordinate of the crop area but the focal
     // point is expressed as the center coordinates of the crop area.
@@ -221,24 +211,7 @@ abstract class FocalPointEffectBase extends ResizeImageEffect implements Contain
     $anchor['x'] = max(0, $anchor['x']);
     $anchor['y'] = max(0, $anchor['y']);
 
+
     return $anchor;
-  }
-
-  /**
-   * Set original image.
-   *
-   * @param \Drupal\Core\Image\ImageInterface $image
-   */
-  public function setOriginalImage(ImageInterface $image) {
-    $this->originalImage = $image;
-  }
-
-  /**
-   * Get original image.
-   *
-   * @return \Drupal\Core\Image\ImageInterface
-   */
-  public function getOriginalImage() {
-    return $this->originalImage;
   }
 }
