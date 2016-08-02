@@ -4,11 +4,19 @@
 //
 // Markup: buttons.hbs
 // 
-// .btn--lg - Large button
-// .btn--fixed-width - Fixed width button
+// .btn--red - Red button
+// .btn--sky-blue - Sky blue button
+// .btn--yellow - Yellow button
+// .btn--green - Green button
+// .btn--teal - Teal button
+// .btn--royal-blue - Royal blue button
+// .btn--purple - Purple button
+// .btn--pink - Pink button
+// .btn--white - White button
 // :hover - Button hover state 
 // :active - Button active state
 // :focus - Button focus state
+// .btn--fixed-width - Min width button, expands to width of container but min width of 290px
 //
 // Style guide: Buttons
 
@@ -20,13 +28,15 @@
 
 .btn {
   display: block;
-  padding: 14px 35px;
+  padding: 21px 40px;
   cursor: pointer;
   text-align: center;
   vertical-align: middle;
   text-decoration: none;
   width: 100%;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 18px;
   @include border-radius(30px);
   span {
     font-size: inherit;
@@ -34,17 +44,10 @@
   }
 }
 
-/* Just a couple of examples for now */
-$buttonList: (
-  ("red" $red $berry $white),
-  ("blue" $blue $aqua $white),
-);
-
 /* Process $buttonList colour variations through our btn-variation mixin. */
 @each $button in $buttonList {
   @include btn-variation( $button );
 }
-
 
 /**
  * Buttons display as stack block for xs
@@ -52,7 +55,6 @@ $buttonList: (
 .btn + .btn {
   margin-top: 30px;
 }
-
 
 /**
  * Buttons display as inline block for md and large breakpoints.
@@ -63,7 +65,8 @@ $buttonList: (
     font-size: 18px;
     width: auto;
     &.btn--fixed-width {
-      width: 290px;
+      min-width: 290px;
+      width: 100%;
     }
   }
   .btn + .btn {

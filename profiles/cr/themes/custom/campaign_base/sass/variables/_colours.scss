@@ -3,34 +3,60 @@
 // These are the default colours for June site, taken from SR16
 //
 // Markup:
-// <div style="background-color: #1e1e1e; height: 60px; width: 60px;"></div>
-// <p><br/>$black: #1e1e1e;</p>
-// <div style="background-color: #282828; height: 60px; width: 60px;"></div>
-// <p><br/>$dark-grey: #282828;</p>
+// <div style="background-color: #f04257; height: 60px; width: 60px;"></div>
+// <p><br/>$colour-red: #f04257;</p>
+// <div style="background-color: #51caf5; height: 60px; width: 60px;"></div>
+// <p><br/>$colour-sky-blue: #51caf5;</p>
+// <div style="background-color: #fbef51; height: 60px; width: 60px;"></div>
+// <p><br/>$colour-yellow: #fbef51;</p>
+// <div style="background-color: #a2cf59; height: 60px; width: 60px;"></div>
+// <p><br/>$colour-green: #a2cf59;</p>
+// <div style="background-color: #00beca; height: 60px; width: 60px;"></div>
+// <p><br/>$colour-teal: #00beca;</p>
+// <div style="background-color: #388aca; height: 60px; width: 60px;"></div>
+// <p><br/>$colour-royal-blue: #388aca;</p>
+// <div style="background-color: #8552a1; height: 60px; width: 60px;"></div>
+// <p><br/>$colour-purple: #8552a1;</p>
+// <div style="background-color: #f38a99; height: 60px; width: 60px;"></div>
+// <p><br/>$colour-pink: #f38a99;</p>
+// <div style="background-color: #222; height: 60px; width: 60px;"></div>
+// <p><br/>$colour-black: #222;</p>
+// <div style="background-color: #333; height: 60px; width: 60px;"></div>
+// <p><br/>$colour-dark-grey: #333;</p>
 // <div style="background-color: #666; height: 60px; width: 60px;"></div>
-// <p><br/>$jasper-grey: #666;</p>
+// <p><br/>$colour-jasper-grey: #666;</p>
 // <div style="background-color: #999; height: 60px; width: 60px;"></div>
-// <p><br/>$greyboy-grey: #999;</p>
+// <p><br/>$colour-greyboy-grey: #999;</p>
 // <div style="background-color: #ccc; height: 60px; width: 60px;"></div>
-// <p><br/>$gainsboro-grey: #ccc;</p>
-// <div style="background-color: #ddd; height: 60px; width: 60px;"></div>
-// <p><br/>$item-grey: #ddd;</p>
+// <p><br/>$colour-gainsboro-grey: #ccc;</p>
 // <div style="background-color: #eee; height: 60px; width: 60px;"></div>
-// <p><br/>$light-grey: #eee;</p>
+// <p><br/>$colour-light-grey: #eee;</p>
 // <div style="background-color: #fafafa; height: 60px; width: 60px;"></div>
-// <p><br/>$smoke-grey: #fafafa;</p>
-// <div style="background-color: #f0f0f0; height: 60px; width: 60px;"></div>
-// <p><br/>$cw-grey: #f0f0f0;</p>
+// <p><br/>$colour-smoke-grey: #fafafa;</p>
 // <div style="background-color: #fff; border: 1px solid #000; height: 60px; width: 60px;"></div>
-// <p><br/>$white: #fff;</p>
-// <div style="background-color: #f0544a; height: 60px; width: 60px;"></div>
-// <p><br/>$red: #f0544a;</p>
-// <div style="background-color: #e63f52; height: 60px; width: 60px;"></div>
-// <p><br/>$berry: #e63f52;</p>
-// <div style="background-color: #f9a567; height: 60px; width: 60px;"></div>
-// <p><br/>$coral: #f9a567;</p>
+// <p><br/>$colour-white: #fff;</p>
 //
 // Style guide: Colours
+
+/* RND17 colours */
+
+$colour-red:      #f04257;
+$colour-sky-blue:  #51caf5;
+$colour-yellow:   #fbef51;
+$colour-green:    #a2cf59;
+$colour-teal:     #00beca;
+$colour-royal-blue: #388aca;
+$colour-purple: #8552a1;
+$colour-pink: #f38a99;
+
+$colour-black: #222;
+$colour-dark-grey: #333;
+$colour-jasper-grey: #666;
+$colour-greyboy-grey: #999;
+$colour-gainsboro-grey: #ccc;
+$colour-light-grey: #ddd;
+$colour-smoke-grey: #fafafa;
+$colour-white: #fff;
 
 /* RND17 base colours for June taken from SR */
 
@@ -58,10 +84,34 @@ $olive: green;
  * $inlinelink[3] = border-color for hover & focus
  */
 $linkList: (
-  ("red" $red $coral),
-  ("black" $black $jasper-grey), 
-  ("grey" $greyboy-grey $black),
-  ("white" $white $cw-grey)
+  ("red" $colour-red $colour-purple),
+  ("sky-blue" $colour-sky-blue $colour-yellow), 
+  ("yellow" $colour-yellow $colour-sky-blue),
+  ("green" $colour-green $colour-teal), 
+  ("teal" $colour-teal $colour-pink), 
+  ("royal-blue" $colour-royal-blue $colour-red), 
+  ("purple" $colour-purple $colour-royal-blue),
+  ("pink" $colour-pink $colour-green),
+  ("white" $colour-white $colour-black)
+);
+
+/**
+ * Parameters
+ * $button[1] = name
+ * $button[2] = background-color
+ * $button[3] = background-color for hover & focus
+ * $button[4] = text color
+ */
+$buttonList: (
+  ("red" $colour-red $colour-purple $colour-white),
+  ("sky-blue" $colour-sky-blue $colour-yellow $colour-black), 
+  ("yellow" $colour-yellow $colour-sky-blue $colour-black),
+  ("green" $colour-green $colour-teal $colour-black), 
+  ("teal" $colour-teal $colour-pink $colour-black), 
+  ("royal-blue" $colour-royal-blue $colour-red $colour-white), 
+  ("purple" $colour-purple $colour-royal-blue $colour-white),
+  ("pink" $colour-pink $colour-green $colour-black),
+  ("white" $colour-white $colour-black $colour-black)
 );
 
 /* SR16  */
