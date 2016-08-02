@@ -1,0 +1,8 @@
+option_summary:
+  version: VERSION
+  js:
+    js/menu_attributes.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupal.form

@@ -89,6 +89,7 @@ dependencies:
   - config_devel
 
   # Editor/admin experience
+  - menu_attributes
   - admin_toolbar_tools
   - editor_advanced_link
 

@@ -1,0 +1,62 @@
+# Schema for the configuration files of the Menu Attributes module.
+
+menu_attributes.settings:
+  type: mapping
+  label: 'Menu attributes settings'
+  mapping:
+    attribute_enable:
+      type: mapping
+      label: 'Enabled attributes'
+      mapping:
+        title:
+          type: boolean
+          label: 'Enable title attribute'
+        id:
+          type: boolean
+          label: 'Enable id attribute'
+        name:
+          type: boolean
+          label: 'Enable name attribute'
+        rel:
+          type: boolean
+          label: 'Enable rel attribute'
+        class:
+          type: boolean
+          label: 'Enable class attribute'
+        style:
+          type: boolean
+          label: 'Enable style attribute'
+        target:
+          type: boolean
+          label: 'Enable target attribute'
+        accesskey:
+          type: boolean
+          label: 'Enable accesskey attribute'
+    attribute_default:
+      type: mapping
+      label: 'Enabled attributes'
+      mapping:
+        title:
+          type: string
+          label: 'Title attribute default value'
+        id:
+          type: string
+          label: 'Id attribute default value'
+        name:
+          type: string
+          label: 'Name attribute default value'
+        rel:
+          type: string
+          label: 'Rel attribute default value'
+        class:
+          type: string
+          label: 'Class attribute default value'
+        style:
+          type: string
+          label: 'Style attribute default value'
+        target:
+          type: string
+          label: 'Target attribute default value'
+        accesskey:
+          type: string
+          label: 'Accesskey attribute default value'
