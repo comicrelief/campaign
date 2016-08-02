@@ -32,6 +32,184 @@ header[role=banner] {
   }
 }
 
+
+// Smartmenu stuff
+.sm{position:relative;z-index:9999;}
+.sm,.sm ul,.sm li{display:block;list-style:none;margin:0;padding:0;line-height:normal;direction:ltr;text-align:left;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+.sm-rtl,.sm-rtl ul,.sm-rtl li{direction:rtl;text-align:right;}
+.sm>li>h1,.sm>li>h2,.sm>li>h3,.sm>li>h4,.sm>li>h5,.sm>li>h6{margin:0;padding:0;}
+.sm ul{display:none;}
+.sm li,.sm a{position:relative;}
+.sm a{display:block;}
+//.sm a.disabled{cursor:not-allowed;}
+.sm:after{content:"\00a0";display:block;height:0;font:0px/0 serif;clear:both;visibility:hidden;overflow:hidden;}
+.sm,.sm *,.sm *:before,.sm *:after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;}
+
+// Simple theme
+
+
+@media (min-width: 768px) {
+  /* Switch to desktop layout
+  -----------------------------------------------
+     These transform the menu tree from
+     collapsible to desktop (navbar + dropdowns)
+  -----------------------------------------------*/
+  /* start... (it's not recommended editing these rules) */
+  .sm ul {
+    position: absolute;
+    width: 12em;
+  }
+
+  .sm li {
+    float: left;
+  }
+
+  .sm.sm-rtl li {
+    float: right;
+  }
+
+  .sm ul li, .sm.sm-rtl ul li, .sm.sm-vertical li {
+    float: none;
+  }
+
+  .sm a {
+    white-space: nowrap;
+  }
+
+  .sm ul a, .sm.sm-vertical a {
+    white-space: normal;
+  }
+
+  .sm .sm-nowrap > li > a, .sm .sm-nowrap > li > :not(ul) a {
+    white-space: nowrap;
+  }
+
+  /* ...end */
+  .sm {
+
+  }
+  .sm a, .sm a:hover, .sm a:focus, .sm a:active, .sm a.highlighted {
+    padding: 11px 20px;
+  }
+  .sm a:hover, .sm a:focus, .sm a:active, .sm a.highlighted {
+    background: #eeeeee;
+  }
+  .sm a.current {
+
+  }
+  .sm a.disabled {
+
+  }
+  .sm a.has-submenu {
+    padding-right: 32px;
+  }
+  .sm a span.sub-arrow {
+    top: 50%;
+    margin-top: -8px;
+    right: 20px;
+    width: 8px;
+    height: 16px;
+    font: 14px/16px monospace !important;
+    background: transparent;
+  }
+  .sm a.highlighted span.sub-arrow:before {
+    display: none;
+  }
+  .sm > li {
+
+  }
+  .sm > li:first-child {
+    border-left: 0;
+  }
+  .sm ul {
+    border: 1px solid #bbbbbb;
+    background: white;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  }
+  .sm ul a {
+    border: 0 !important;
+  }
+  .sm ul a.has-submenu {
+    padding-right: 20px;
+  }
+  .sm ul a span.sub-arrow {
+    right: auto;
+    margin-left: -12px;
+  }
+  .sm ul > li {
+    border-left: 0;
+    border-top: 1px solid #eeeeee;
+  }
+  .sm ul > li:first-child {
+    border-top: 0;
+  }
+  .sm span.scroll-up,
+  .sm span.scroll-down {
+    position: absolute;
+    display: none;
+    visibility: hidden;
+    overflow: hidden;
+
+  }
+  .sm span.scroll-up-arrow, .sm span.scroll-down-arrow {
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    margin-left: -8px;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
+  .sm span.scroll-down-arrow {
+    top: 6px;
+
+  }
+  .sm.sm-rtl a.has-submenu {
+    padding-right: 20px;
+    padding-left: 32px;
+  }
+  .sm.sm-rtl a span.sub-arrow {
+    right: auto;
+    left: 20px;
+  }
+  .sm.sm-rtl.sm-vertical a.has-submenu {
+    padding: 11px 20px;
+  }
+  .sm.sm-rtl.sm-vertical a span.sub-arrow {
+    right: 20px;
+    margin-right: -12px;
+  }
+  .sm.sm-rtl > li:first-child {
+    border-left: 1px solid #eeeeee;
+  }
+  .sm.sm-rtl > li:last-child {
+    border-left: 0;
+  }
+  .sm.sm-rtl ul a.has-submenu {
+    padding: 11px 20px;
+  }
+  .sm.sm-rtl ul a span.sub-arrow {
+    right: 20px;
+    margin-right: -12px;
+  }
+  .sm.sm-vertical a span.sub-arrow {
+    right: auto;
+    margin-left: -12px;
+  }
+  .sm.sm-vertical li {
+    border-left: 0;
+    border-top: 1px solid #eeeeee;
+  }
+  .sm.sm-vertical > li:first-child {
+    border-top: 0;
+  }
+}
+
+
+
+
 // Using exiting drupal class for now too, to be updated
 .menu--main,
 .new-menu--main {
@@ -66,7 +244,7 @@ header[role=banner] {
         @include transition-property(background-color);
         @include transition-duration(180ms);
 
-        > span {
+        span.menu-item-text {
           color: #5f5c59;
           border-bottom: 2px solid transparent;
           @include transition-property(border, color);
@@ -75,18 +253,50 @@ header[role=banner] {
           line-height: 24px;
         }
 
+        span.sub-arrow {
+          &:before {
+            content: "+";
+            position: absolute;
+            top: 13px;
+            right: 20px;
+            background: #acaaa9;
+            color: $white;
+            padding: 20px 0;
+            line-height: 0;
+            width: 40px;
+            text-align: center;
+            font-size: 30px;
+          }
+        }
+
         &:hover {
           text-decoration: none;
           color: $white;
           background-color: #acaaa9;
 
-          > span {
+          span.menu-item-text {
             color: $white;
             border-bottom: 2px solid $white;
           }
+          span.sub-arrow {
+            &:before {
+              background: $white;
+              color: #acaaa9;
+            }
+          }
         }
 
-        &.active {
+        &.highlighted {
+          span.sub-arrow {
+            &:before {
+              background: $white;
+              color: #acaaa9;
+              content: "-";   
+            }
+          }
+        }
+
+/*         &.active {
           text-decoration: none;
           color: $black;
           background: $white;
@@ -96,22 +306,22 @@ header[role=banner] {
           > span {
             border-bottom: 2px solid $dark-grey;
           }
-        }
+        } */
       }
 
       // Hide sub menus, but set up for CSS3 animations, using JS-added
       // 'active' class to allow 'hover'-style state on touch devices
       > ul.menu {
         //max-height: 0;
-        overflow: hidden;        
+/*         overflow: hidden;        
         -webkit-transform: translateZ(0);
-         @include transition(all 500ms ease);
+         @include transition(all 500ms ease); */
          background-color: $black;
 
-        &.active {
+/*         &.active {
           // Overidden by JS dynamically
           max-height: 400px;
-        }
+        } */
 
         a {
           background-color: #1E1E1E;
@@ -124,7 +334,7 @@ header[role=banner] {
           &:hover {
             background-color: #3f3d3c;
             
-            > span {
+            span.menu-item-text {
               border-bottom: 2px solid transparent;
             }
           }
@@ -202,14 +412,7 @@ header[role=banner] {
       }
     }
   }
-
-
-  ul {
-    li {
-      a {
- 
-
-      }
-    }
-  }
 }
+
+
+

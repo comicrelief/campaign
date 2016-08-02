@@ -31,14 +31,14 @@
   {% import _self as menus %}
   {% if items %}
     {% if menu_level == 0 %}
-      <ul{{ attributes.addClass('menu') }}>
+      <ul{{ attributes.addClass('menu sm') }} id="main-menu">
     {% else %}
       <ul class="menu menu--level-{{menu_level}}">
         {% if menu_level == 1 %}
           {# Duplicate menu link for UX, to be populated by JS #}
           <li class="menu-item menu-item--duplicate">
             <a href="/">
-              <span>{{menu_level}}</span>
+              <span class="menu-item-text">{{menu_level}}</span>
             </a>
           </li>
         {% endif %}
@@ -65,3 +65,19 @@
     </ul>
   {% endif %}
 {% endmacro %}
+
+
+{# <nav id="main-nav" role="navigation">
+  <ul id="main-menu" class="sm">
+    <li><a href="/test1"><span>test1</span></a></li>
+    <li>
+      <a href="/test2"><span>test2</span></a>
+      <ul>
+        <li><a href="/test4"><span>test4</span></a></li>
+        <li><a href="/test5"><span>test5</span></a></li>
+        <li><a href="/test6"><span>test6</span></a></li>
+      </ul>
+      </li>
+    <li><a href="/test3"><span>test3</span></a></li>
+  </ul>
+</nav> #}

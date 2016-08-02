@@ -5,32 +5,40 @@
    settings : {
     mainMenuClass: '.menu--main',
     navItemWithSubMenuSelector:'.menu--main > .menu > .menu-item--expanded',
+
     subMenuSelector : '.menu--main .menu-item--expanded > ul.menu',
-    touchNavBreakpoint : '(max-width: 1023px)',
-    nonTouchNavBreakpoint : '(min-width: 1024px)',
+    touchNavBreakpoint : '(max-width: 1149px)',
+    noneTouchNavBreakpoint : '(min-width: 1150px)',
+    isTouchDevice : false,
+    isTouchNav : false,
    },
 
     attach: function (context, settings) {
-
       var _base = Drupal.behaviors.crNavigation;
       var _settings = _base.settings;
 
       $(_settings.mainMenuClass).once('crNavigation').each( function(){
         $(this).addClass("crNavigation-processed");
-        _base.duplicateParentLink(this);
+
+          _base.duplicateParentLink();
+          
+          $('#main-menu').smartmenus({
+            subIndicatorsText: "",
+            keepHighlighted: false
+          });
+
+        //_base.init(this);
       });
     },
 
     duplicateParentLink: function (context, settings) {
-
       var _base = Drupal.behaviors.crNavigation;
       var _settings = _base.settings;
-
       // Update text and link
       $( _settings.navItemWithSubMenuSelector ).each (function() {
-
         $this = $(this);
-
+        // Add this class so the SmartMenu plugin ignores any clicks, making it function as a button only
+        $this.children('a').addClass('disabled');
         // Populate duplicate link with parent link info
         $(this).children('ul.menu')
           .find('.menu-item--duplicate a')
@@ -38,37 +46,59 @@
               .find('span').text( $this.children('a').text());
       });
 
-      // Store heights to use in animation
+    },
+
+
+    /*init : function () {
+      var _base = Drupal.behaviors.crNavigation;
+      var _settings = _base.settings;
+
+      // Check Modernizr class to assess if we're using a touch device or not
+      _settings.isTouchDevice = $('html').hasClass('touchevents');
+      _base.checkTouchBreakpoint();
+
+      // Runs regardless of breakpoint/touch
+      _base.duplicateParentLink(this);
       _base.storeHeights(this);
 
     },
 
-    storeHeights: function (context, settings) {
 
+
+
+    storeHeights: function (context, settings) {
       var _base = Drupal.behaviors.crNavigation;
       var _settings = _base.settings;
 
-      // Store height as data-attribute, then set max-height to 0
-      $( _settings.subMenuSelector ).each( function () {
+      // If we're on the non touch breakpoint, we don't need to do the JS magic for animating, so exit the function
+      if ( _settings.isTouchNav ) {
+        return;
+      }
+
+      // Store height as data-attribute for animating with later, then set max-height to 0
+      $(_settings.subMenuSelector).each( function () {
         $(this)
           .attr("data-menu-height", $(this).height())
             .css("max-height", 0);
       });
-
-      _base.handleTouch(this);
-
+      _base.animateMenu(this);
     },
 
-    handleTouch: function (context, settings) {
+
+    animateMenu: function (context, settings) {
 
       var _base = Drupal.behaviors.crNavigation;
       var _settings = _base.settings;
 
       $('.menu--main .menu-item--expanded > a').on('click', function(e) {
-        
-        // TODO: only on mobile menu
-        e.preventDefault();
 
+        // Only prevent default when we're on the mobile/touch menu, else exit the function
+        if ( _settings.isTouchNav ) {
+          e.preventDefault();
+        } else {
+          return;
+        }
+      
         $thisMenu = $(this).next('ul.menu');
 
         // Set our max-height dynamically based on actual height stored earlier
@@ -88,18 +118,17 @@
               .removeClass('active')
                 .css("max-height", 0);
       });
-
-      _base.checkBreakpoint(this);
-
     },
 
-    checkBreakpoint: function (context, settings) {
+    checkTouchBreakpoint : function () {
 
-      var _base = Drupal.behaviors.crNavigation;
-      var _settings = _base.settings;
+      var _settings = Drupal.behaviors.crNavigation.settings;
 
-      //console.log ( window.matchMedia('(max-width: 1149px)').matches );
-
-    },
+      if ( window.matchMedia('(max-width: 1149px)').matches ) {
+        _settings.isTouchNav = true;
+      } else {
+        _settings.isTouchNav = false;
+      }
+    },*/
   };
 })(jQuery);
