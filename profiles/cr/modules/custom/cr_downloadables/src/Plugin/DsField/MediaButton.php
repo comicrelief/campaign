@@ -38,7 +38,7 @@ class MediaButton extends DsFieldBase {
     $file_url = Url::fromUri(file_create_url($file->getFileUri()))->toString();
 
     return [
-      '#markup' => '<a class="btn btn--red" href="' . $file_url . '" target=_blank >' . $display_title[0]['value'] . '</a><span class="file-size">(' . format_size($file->getSize()) . ')</span>',
+      '#markup' => '<a class="link link--red" href="' . $file_url . '" target=_blank >' . $display_title[0]['value'] . ' <span class="file-size">(' . format_size($file->getSize()) . ')</span></a>',
     ];
   }
 
