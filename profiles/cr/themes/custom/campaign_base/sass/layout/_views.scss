@@ -36,86 +36,30 @@
     }
   }
 }
-.row-9-3 {
-  ul {
-    li {
-      &:nth-child(1) {
-        @include span(12);
-        @include breakpoint($screen-lg) {
-          @include span(9 of 12);
-        }
-      }
-      &:nth-child(2) {
-        @include span(12);
-        @include breakpoint($screen-lg) {
-          @include span(3 of 12);
-        }
-      }
-    }
-  }
-}
-.row-6-6 {
-  ul {
-    li {
-      &:nth-child(1) {
-        @include span(6 of 12);
-        @include breakpoint($screen-lg) {
-          @include span(6 of 12);
-        }
-      }
-      &:nth-child(2) {
-        @include span(6 of 12);
-        @include breakpoint($screen-lg) {
-          @include span(6 of 12);
-        }
-      }
-    }
-  }
-}
-.row-3-3-3 {
-  ul {
-    li {
-      &:nth-child(1) {
-        @include span(6 of 12);
-        @include breakpoint($screen-lg) {
-          @include span(4 of 12);
-        }
-      }
-      &:nth-child(2) {
-        @include span(6 of 12);
-        @include breakpoint($screen-lg) {
-          @include span(4 of 12);
-        }
-      }
-      &:nth-child(3) {
-        @include span(6 of 12);
-        @include breakpoint($screen-lg) {
-          @include span(4 of 12);
-        }
-      }
-    }
-  }
-}
 .cw-region {
   article.cw-article--small {
-    @include span(12);
+    width: 100%;
+    margin: 20px 0;
     @include breakpoint($screen-md, $no-query: true) {
       @include span(4);
+      margin: gutter();
     }
   }
 }
 .cw-region {
   article.cw-article--medium {
-    @include span(12);
+    width: 100%;
+    margin: 20px 0;
     @include breakpoint($screen-md, $no-query: true) {
       @include span(6);
+      margin: gutter();
     }
   }
 }
 
 .cw-region {
   article.cw-article--large {
-    @include span(12);
+    width: 100%;
     @include breakpoint($screen-md) {
       width: 100%;
       margin: 0;
