@@ -33,7 +33,7 @@ header[role=banner] {
 }
 
 
-// Smartmenu stuff
+// Smartmenu stuff, to tidy up 
 .sm{position:relative;z-index:9999;}
 .sm,.sm ul,.sm li{display:block;list-style:none;margin:0;padding:0;line-height:normal;direction:ltr;text-align:left;-webkit-tap-highlight-color:rgba(0,0,0,0);}
 .sm-rtl,.sm-rtl ul,.sm-rtl li{direction:rtl;text-align:right;}
@@ -207,7 +207,12 @@ header[role=banner] {
   }
 }
 
-
+/* Main Nav items: GT Walsheim Medium, 23pt, #222
+light grey background: #fafafa
+Dark grey BG for drop down:#222
+Drop down highlight: #666
+Drop down nav landing page:GT Walsheim Medium, 20pt, #fff
+Drop down nav pages:GT Walsheim Regular, 18pt, #fff */
 
 
 // Using exiting drupal class for now too, to be updated
@@ -220,6 +225,7 @@ header[role=banner] {
   color: $black;
   display: block;
   z-index: 1;
+
 
   .menu-item {
     padding-top: 0;
@@ -239,45 +245,54 @@ header[role=banner] {
         padding: 20px 20px;
         display: block;
         text-decoration: none;
-        color: $black;
-        font-size: 18px;
         @include transition-property(background-color);
         @include transition-duration(180ms);
+        background-color: #fafafa;
 
-        span.menu-item-text {
-          color: #5f5c59;
-          border-bottom: 2px solid transparent;
-          @include transition-property(border, color);
-          @include transition-duration(180ms);
-          font-size: 24px;
-          line-height: 24px;
-        }
+        span {
+          font-family: $GT-Walsheim-Medium;
+          font-size: 23px;
+          line-height: 23px;
+          color: #222;
 
-        span.sub-arrow {
-          &:before {
-            content: "+";
-            position: absolute;
-            top: 13px;
-            right: 20px;
-            background: #acaaa9;
-            color: $white;
-            padding: 20px 0;
-            line-height: 0;
-            width: 40px;
-            text-align: center;
-            font-size: 30px;
+          &.menu-item__text {
+            font-family: $GT-Walsheim-Medium;
+            font-size: 23px;
+            line-height: 23px;
+            color: #222;
+            border-bottom: 2px solid transparent;
+            @include transition-property(border, color);
+            @include transition-duration(180ms);
+          }
+
+          &.sub-arrow {
+            &:before {
+              content: "+";
+              position: absolute;
+              top: 13px;
+              right: 20px;
+              background: #acaaa9;
+              color: $white;
+              padding: 20px 0;
+              line-height: 0;
+              width: 40px;
+              text-align: center;
+              font-size: 30px;
+            }
           }
         }
 
-        &:hover {
+        // Hovering on any first level menu item
+        &:hover, &.highlighted :hover {
           text-decoration: none;
           color: $white;
           background-color: #acaaa9;
 
-          span.menu-item-text {
+          span.menu-item__text {
             color: $white;
             border-bottom: 2px solid $white;
           }
+
           span.sub-arrow {
             &:before {
               background: $white;
@@ -286,45 +301,30 @@ header[role=banner] {
           }
         }
 
+        // Submenu open
         &.highlighted {
           span.sub-arrow {
             &:before {
-              background: $white;
-              color: #acaaa9;
               content: "-";   
             }
           }
         }
 
-/*         &.active {
-          text-decoration: none;
-          color: $black;
-          background: $white;
-          color: $black;
-          background: transparent;
-          
-          > span {
-            border-bottom: 2px solid $dark-grey;
+        &.menu-item--active-trail {
+          span.sub-arrow {
+            &:before {
+              background: #acaaa9;
+              color: #fff;
+            }
           }
-        } */
+        }
       }
 
-      // Hide sub menus, but set up for CSS3 animations, using JS-added
-      // 'active' class to allow 'hover'-style state on touch devices
       > ul.menu {
-        //max-height: 0;
-/*         overflow: hidden;        
-        -webkit-transform: translateZ(0);
-         @include transition(all 500ms ease); */
          background-color: $black;
 
-/*         &.active {
-          // Overidden by JS dynamically
-          max-height: 400px;
-        } */
-
         a {
-          background-color: #1E1E1E;
+          background-color: #222;
           > span {
             color: $white;
             font-size: 18px;
@@ -332,13 +332,45 @@ header[role=banner] {
           }
 
           &:hover {
-            background-color: #3f3d3c;
+            background-color: #666;
             
-            span.menu-item-text {
+            span.menu-item__text {
               border-bottom: 2px solid transparent;
             }
           }
         } 
+      }
+
+      // Duplicate menu item, our landing page link
+      &.menu-item--duplicate a span.menu-item__text {
+        font-size: 20px;
+        line-height: 22px;
+        color: #fff;
+      }
+
+      &.menu-item--active-trail {
+
+        a {
+          background-color: #fff;
+
+          span.menu-item__text {
+            border-bottom: 2px solid #222;
+          }
+
+          &:hover {
+            background-color: #acaaa9;
+            span.menu-item__text {
+              border-bottom: 2px solid $white;
+            }
+          } 
+        } 
+        
+        ul li.menu-item--active-trail a {
+          background-color: #666;
+          span.menu-item__text {
+            border-bottom: 2px solid $white;
+          }
+        }
       }
     }
   }
