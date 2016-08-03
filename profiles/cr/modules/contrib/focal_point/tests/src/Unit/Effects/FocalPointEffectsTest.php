@@ -1,15 +1,23 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\focal_point\Tests\FocalPointEffectsTest.
+ */
+
 namespace Drupal\Tests\focal_point\Unit\Effects;
 
 use Drupal\Core\Config\ImmutableConfig;
 use Drupal\Core\Image\ImageInterface;
 use Drupal\crop\CropInterface;
 use Drupal\crop\CropStorageInterface;
+use Drupal\Core\Entity\EntityTypeManager;
+use Drupal\focal_point\FocalPointManager;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\focal_point\Plugin\ImageEffect\FocalPointCropImageEffect;
+use Drupal\Tests\UnitTestCase;
 use Drupal\focal_point\FocalPointEffectBase;
 use Psr\Log\LoggerInterface;
-use Drupal\Tests\focal_point\Unit\FocalPointUnitTestCase;
 
 /**
  * Tests the Focal Point image effects.
@@ -18,26 +26,13 @@ use Drupal\Tests\focal_point\Unit\FocalPointUnitTestCase;
  *
  * @coversDefaultClass \Drupal\focal_point\FocalPointEffectBase
  */
-class FocalPointEffectsTest extends FocalPointUnitTestCase {
+class FocalPointEffectsTest extends UnitTestCase {
 
   /**
    * {@inheritdoc}
    */
   protected function setUp() {
     parent::setUp();
-  }
-
-  /**
-   * @covers ::__construct
-   */
-  public function testEffectConstructor() {
-    $logger = $this->prophesize(LoggerInterface::class);
-    $crop_storage = $this->prophesize(CropStorageInterface::class);
-    $focal_point_config = $this->prophesize(ImmutableConfig::class);
-
-    $effect = new FocalPointCropImageEffect([], 'plugin_id', [], $logger->reveal(), $crop_storage->reveal(), $focal_point_config->reveal());
-    $this->assertAttributeEquals($crop_storage->reveal(), 'cropStorage', $effect);
-    $this->assertAttributeEquals($focal_point_config->reveal(), 'focalPointConfig', $effect);
   }
 
   /**
@@ -67,24 +62,6 @@ class FocalPointEffectsTest extends FocalPointUnitTestCase {
   }
 
   /**
-   *  @covers ::setOriginalImage
-   *  @covers ::getOriginalImage
-   */
-  public function testSetGetOriginalImage() {
-    $logger = $this->prophesize(LoggerInterface::class);
-    $crop_storage = $this->prophesize(CropStorageInterface::class);
-    $immutable_config = $this->prophesize(ImmutableConfig::class);
-
-    $original_image = $this->prophesize(ImageInterface::class);
-    $original_image = $original_image->reveal();
-
-    $effect = new FocalPointCropImageEffect([], 'plugin_id', [], $logger->reveal(), $crop_storage->reveal(), $immutable_config->reveal());
-    $effect->setOriginalImage($original_image);
-
-    $this->assertEquals($original_image, $effect->getOriginalImage());
-  }
-
-  /**
    * @covers ::calculateAnchor
    *
    * @dataProvider calculateAnchorProvider
@@ -94,9 +71,16 @@ class FocalPointEffectsTest extends FocalPointUnitTestCase {
     $crop_storage = $this->prophesize(CropStorageInterface::class);
     $immutable_config = $this->prophesize(ImmutableConfig::class);
 
-    $original_image = $this->prophesize(ImageInterface::class);
-    $original_image->getWidth()->willReturn($original_image_size['width']);
-    $original_image->getHeight()->willReturn($original_image_size['height']);
+    $entity_type_manager = $this->prophesize(EntityTypeManager::class);
+    $entity_type_manager->getStorage('crop')->willReturn($crop_storage);
+
+    $container = $this->prophesize(ContainerInterface::class);
+    $container->get('entity_type.manager')->willReturn($entity_type_manager);
+
+    $focal_point_manager = new FocalPointManager($entity_type_manager->reveal());
+    $container->get('focal_point.manager')->willReturn($focal_point_manager);
+
+    \Drupal::setContainer($container->reveal());
 
     $image = $this->prophesize(ImageInterface::class);
     $image->getWidth()->willReturn($resized_image_size['width']);
@@ -114,11 +98,10 @@ class FocalPointEffectsTest extends FocalPointUnitTestCase {
 
     // Use reflection to test a private/protected method.
     $effect = new FocalPointCropImageEffect([], 'plugin_id', [], $logger->reveal(), $crop_storage->reveal(), $immutable_config->reveal());
-    $effect->setOriginalImage($original_image->reveal());
     $effect_reflection = new \ReflectionClass(FocalPointCropImageEffect::class);
     $method = $effect_reflection->getMethod('calculateAnchor');
     $method->setAccessible(TRUE);
-    $this->assertSame($expected_anchor, $method->invokeArgs($effect, [$image->reveal(), $crop->reveal()]));
+    $this->assertSame($expected_anchor, $method->invokeArgs($effect, [$image->reveal(), $crop->reveal(), $original_image_size]));
   }
 
   /**
