@@ -6,11 +6,11 @@ cookieconsent.settings:
   translatable: true
   mapping:
     headline_text:
-      type: string
+      type: text
       label: 'This website uses cookies to ensure you get the best experience on our website'
     accept_button_text:
-      type: string
+      type: text
       label: 'Got it!'
     read_more_button_text:
-      type: string
+      type: text
       label: 'More info'
