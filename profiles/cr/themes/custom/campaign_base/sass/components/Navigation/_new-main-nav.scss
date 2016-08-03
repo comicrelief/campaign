@@ -48,7 +48,7 @@ header[role=banner] {
 // Simple theme
 
 
-@media (min-width: 768px) {
+@media (min-width: 1150px) {
   /* Switch to desktop layout
   -----------------------------------------------
      These transform the menu tree from
@@ -61,12 +61,9 @@ header[role=banner] {
   }
 
   .sm li {
-    float: left;
+    //float: left;
   }
 
-  .sm.sm-rtl li {
-    float: right;
-  }
 
   .sm ul li, .sm.sm-rtl ul li, .sm.sm-vertical li {
     float: none;
@@ -85,23 +82,19 @@ header[role=banner] {
   }
 
   /* ...end */
+
   .sm {
 
   }
   .sm a, .sm a:hover, .sm a:focus, .sm a:active, .sm a.highlighted {
-    padding: 11px 20px;
+    //padding: 11px 20px;
   }
   .sm a:hover, .sm a:focus, .sm a:active, .sm a.highlighted {
-    background: #eeeeee;
+    //background: #eeeeee;
   }
-  .sm a.current {
 
-  }
-  .sm a.disabled {
-
-  }
   .sm a.has-submenu {
-    padding-right: 32px;
+    //padding-right: 32px;
   }
   .sm a span.sub-arrow {
     top: 50%;
@@ -119,14 +112,10 @@ header[role=banner] {
 
   }
   .sm > li:first-child {
-    border-left: 0;
+
   }
   .sm ul {
-    border: 1px solid #bbbbbb;
-    background: white;
-    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+
   }
   .sm ul a {
     border: 0 !important;
@@ -139,81 +128,11 @@ header[role=banner] {
     margin-left: -12px;
   }
   .sm ul > li {
-    border-left: 0;
-    border-top: 1px solid #eeeeee;
   }
   .sm ul > li:first-child {
-    border-top: 0;
-  }
-  .sm span.scroll-up,
-  .sm span.scroll-down {
-    position: absolute;
-    display: none;
-    visibility: hidden;
-    overflow: hidden;
 
-  }
-  .sm span.scroll-up-arrow, .sm span.scroll-down-arrow {
-    position: absolute;
-    top: -2px;
-    left: 50%;
-    margin-left: -8px;
-    width: 0;
-    height: 0;
-    overflow: hidden;
-  }
-  .sm span.scroll-down-arrow {
-    top: 6px;
-
-  }
-  .sm.sm-rtl a.has-submenu {
-    padding-right: 20px;
-    padding-left: 32px;
-  }
-  .sm.sm-rtl a span.sub-arrow {
-    right: auto;
-    left: 20px;
-  }
-  .sm.sm-rtl.sm-vertical a.has-submenu {
-    padding: 11px 20px;
-  }
-  .sm.sm-rtl.sm-vertical a span.sub-arrow {
-    right: 20px;
-    margin-right: -12px;
-  }
-  .sm.sm-rtl > li:first-child {
-    border-left: 1px solid #eeeeee;
-  }
-  .sm.sm-rtl > li:last-child {
-    border-left: 0;
-  }
-  .sm.sm-rtl ul a.has-submenu {
-    padding: 11px 20px;
-  }
-  .sm.sm-rtl ul a span.sub-arrow {
-    right: 20px;
-    margin-right: -12px;
-  }
-  .sm.sm-vertical a span.sub-arrow {
-    right: auto;
-    margin-left: -12px;
-  }
-  .sm.sm-vertical li {
-    border-left: 0;
-    border-top: 1px solid #eeeeee;
-  }
-  .sm.sm-vertical > li:first-child {
-    border-top: 0;
   }
 }
-
-/* Main Nav items: GT Walsheim Medium, 23pt, #222
-light grey background: #fafafa
-Dark grey BG for drop down:#222
-Drop down highlight: #666
-Drop down nav landing page:GT Walsheim Medium, 20pt, #fff
-Drop down nav pages:GT Walsheim Regular, 18pt, #fff */
-
 
 // Using exiting drupal class for now too, to be updated
 .menu--main,
@@ -260,7 +179,7 @@ Drop down nav pages:GT Walsheim Regular, 18pt, #fff */
             font-size: 23px;
             line-height: 23px;
             color: #222;
-            border-bottom: 2px solid transparent;
+            border-bottom: 3px solid transparent;
             @include transition-property(border, color);
             @include transition-duration(180ms);
           }
@@ -290,7 +209,7 @@ Drop down nav pages:GT Walsheim Regular, 18pt, #fff */
 
           span.menu-item__text {
             color: $white;
-            border-bottom: 2px solid $white;
+            border-bottom: 3px solid $white;
           }
 
           span.sub-arrow {
@@ -335,7 +254,7 @@ Drop down nav pages:GT Walsheim Regular, 18pt, #fff */
             background-color: #666;
             
             span.menu-item__text {
-              border-bottom: 2px solid transparent;
+              border-bottom: 3px solid transparent;
             }
           }
         } 
@@ -354,13 +273,13 @@ Drop down nav pages:GT Walsheim Regular, 18pt, #fff */
           background-color: #fff;
 
           span.menu-item__text {
-            border-bottom: 2px solid #222;
+            border-bottom: 3px solid #222;
           }
 
           &:hover {
             background-color: #acaaa9;
             span.menu-item__text {
-              border-bottom: 2px solid $white;
+              border-bottom: 3px solid $white;
             }
           } 
         } 
@@ -368,16 +287,16 @@ Drop down nav pages:GT Walsheim Regular, 18pt, #fff */
         ul li.menu-item--active-trail a {
           background-color: #666;
           span.menu-item__text {
-            border-bottom: 2px solid $white;
+            border-bottom: 3px solid $white;
           }
         }
       }
     }
   }
 
-
   // 'Desktop' nav for now; will need adjusting for large tablets
   @include breakpoint($screen-lg, $no-query: true) {
+
     position: relative;
     top: 0;
     display: block!important;
@@ -385,56 +304,127 @@ Drop down nav pages:GT Walsheim Regular, 18pt, #fff */
     padding-top: 20px;
     background: transparent;
 
+    // Main menu 
     ul.menu li {
       position: relative;
       display: inline-block;
       margin: 0 20px;
       padding: 20px 0 34px;
 
-      // Secondary nav hidden by default
+      // Main menu text
+      a span.menu-item__text {
+        font-size: 16px;
+        line-height: 16px;
+      }
+
+      // Reset all our mobile styles
+      &.menu-item--active-trail a,
+      &.menu-item--active-trail a:hover,
+      a:hover,
+      a {
+        background-color: transparent;
+        span.menu-item__text {
+          color: #222;
+        }
+        span.sub-arrow {
+          display: none;
+        }
+      }
+
+      &.menu-item--active-trail a, 
+      &.menu-item--active-trail a:hover,
+      a:hover {
+        span.menu-item__text {
+          border-bottom: 3px solid #ccc;
+        }
+      }
+
+      &.menu-item--active-trail ul {
+        li.menu-item--active-trail,
+        li {
+          a {
+            background-color: $black;
+            span.menu-item__text {
+              color: $white;
+              border-bottom: 3px solid transparent;
+            }
+
+            &:hover {
+              background-color: #666;
+              span.menu-item__text {
+                color: $white;
+              }
+            }
+          }
+        }
+      } 
+
+      // Submenu, hidden until parent item is hovered
       > ul {
         display: none;
         position: absolute;
         top: 0;
         z-index: 999;
-        background: black;
         padding: 0px 10px;
-        top: 100px;
+        top: 85px;
         padding: 0;
-        width: 192px;
+        width: 250px;
         left: 0;
         text-align: left;
 
-        a {
-          color: white;
-          font-size: 16px;
-        }
+        //Submenu items
         li {
           position: relative;
-          background: none;
           padding: 0;
           margin: 0;
           float: left;
-          width: 192px;
-
-          &:hover,
-          &.menu-item--active-trail {
-            background: #4b4b4b;
-          }
+          width: 100%;
 
           a {
+            background: $black;
             margin-top: 0;
             margin-bottom: 0;
             padding: 16px 20px 11px;
-            
-            &:after {
-              display: none;
+
+            span.menu-item__text {
+              font-size: 16px;
+              line-height: 16px;
+              font-family: $GT-Walsheim-Regular;
+            }
+
+            &:hover {
+              span.menu-item__text {
+                color: $white;
+              }
             }
           }
+
+          // Our 'landing page' duplicate link, top of each submenu
+          &.menu-item--duplicate a {
+            span.menu-item__text {
+              font-size: 18px;
+              line-height: 18px;
+              font-family: $GT-Walsheim-Medium;
+            }
+
+            // Triangle pointer
+            &:before {
+              content: '';
+              width: 12px;
+              height: 12px;
+              display: block;
+              position: absolute;
+              left: 30px;
+              margin-left: -6px;
+              top: -12px;
+              border: 6px solid transparent;
+              border-bottom-color: #1e1e1e;
+            }
+          } 
         }
       }
 
-      // Show sub menus o
+      // Show sub menus on hover
       &:hover {
         > ul.menu {
           max-height: 200px;
@@ -445,6 +435,3 @@ Drop down nav pages:GT Walsheim Regular, 18pt, #fff */
     }
   }
 }
-
-
-
