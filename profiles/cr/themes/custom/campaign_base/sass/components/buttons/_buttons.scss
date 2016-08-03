@@ -17,6 +17,7 @@
 // :active - Button active state
 // :focus - Button focus state
 // .btn--fixed-width - Min width button, expands to width of container but min width of 290px
+// .btn--lg - Large buttons
 //
 // Style guide: Buttons
 
@@ -100,8 +101,8 @@
  * elsewhere.
  */
 .btn--lg {
-  padding-top: 14px;
-  padding-bottom: 14px;
+  padding-top: 19px;
+  padding-bottom: 19px;
   font-size: 18px;
   line-height: 22px;
 }
@@ -112,10 +113,7 @@
 @include breakpoint($screen-md) {
   .btn--lg {
     height: 70px;
-    padding: 21px 70px;
-    font-size: 18px;
-    line-height: 23px;
-
+    padding: 24px 70px;
     @include border-radius(35px);
   }
 }
