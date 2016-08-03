@@ -11,6 +11,11 @@ projects:
     patch:
       # See https://www.drupal.org/node/2672110
       2672110: https://www.drupal.org/files/issues/entityfieldderiver-2672110-8.patch
+  quickedit:
+    version: 8.1.x
+    patch:
+      # See https://www.drupal.org/node/2314185
+      2314185: https://www.drupal.org/files/issues/drupalbehaviorerror-2314185-15.patch
   file_entity:
     version: 2.0-beta1
   metatag:
