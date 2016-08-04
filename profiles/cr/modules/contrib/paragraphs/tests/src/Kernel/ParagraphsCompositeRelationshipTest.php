@@ -258,6 +258,8 @@ class ParagraphsCompositeRelationshipTest extends KernelTestBase {
     $node_revision2->setNewRevision(TRUE);
     $node_revision2->save();
 
+    // Deletion of referenced paragraphs should not break updates.
+    $paragraph3->delete();
     // Run update function and check #finished.
     $sandbox = [];
     do {

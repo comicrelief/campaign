@@ -6,7 +6,6 @@
 
 namespace Drupal\paragraphs\Tests;
 
-use Drupal\Core\Entity\Entity;
 use Drupal\field_ui\Tests\FieldUiTestTrait;
 use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\simpletest\WebTestBase;
@@ -72,7 +71,8 @@ class ParagraphsAdministrationTest extends WebTestBase {
       'label' => 'Text',
       'id' => 'text',
     );
-    $this->drupalPostForm(NULL, $edit, t('Save'));
+    $this->drupalPostForm(NULL, $edit, t('Save and manage fields'));
+    $this->assertUrl('admin/structure/paragraphs_type/text/fields');
     // Create field types for the text.
     static::fieldUIAddNewField('admin/structure/paragraphs_type/text', 'text', 'Text', 'text', array(), array());
     $this->assertText('Saved Text configuration.');
@@ -100,34 +100,52 @@ class ParagraphsAdministrationTest extends WebTestBase {
     ];
     $this->drupalPostForm(NULL, $edit, t('Save and publish'));
 
-    // Edit the just created node. Create new revision.
-    $this->drupalGet('node/1/edit');
+    $node = $this->drupalGetNodeByTitle('TEST TITEL');
+    $paragraph1 = $node->field_paragraphs[0]->target_id;
+    $paragraph2 = $node->field_paragraphs[1]->target_id;
+
+    $this->countRevisions($node, $paragraph1, $paragraph2, 1);
+
+    // Edit the node without creating a revision. There should still be only 1
+    // revision for nodes and paragraphs.
+    $edit = [
+      'field_paragraphs[0][subform][field_text][0][value]' => 'Foo Bar 1',
+      'revision' => FALSE,
+    ];
+    $this->drupalPostForm('node/' . $node->id() . '/edit', $edit, t('Save and keep published'));
+
+    $this->countRevisions($node, $paragraph1, $paragraph2, 1);
+
+    // Edit the just created node. Create new revision. Now we should have 2
+    // revisions for nodes and paragraphs.
     $edit = [
       'title[0][value]' => 'TEST TITLE',
       'field_paragraphs[0][subform][field_text][0][value]' => 'Foo Bar 2',
       'revision' => TRUE,
     ];
-    $this->drupalPostForm(NULL, $edit, t('Save and keep published'));
+    $this->drupalPostForm('node/' . $node->id() . '/edit', $edit, t('Save and keep published'));
+
+    $this->countRevisions($node, $paragraph1, $paragraph2, 2);
 
     // Assert the paragraphs have been changed.
-    $this->assertNoText('Test text 1');
+    $this->assertNoText('Foo Bar 1');
     $this->assertText('Test text 2');
     $this->assertText('Foo Bar 2');
     $this->assertText('TEST TITLE');
 
     // Check out the revisions page and assert there are 2 revisions.
-    $this->drupalGet('node/1/revisions');
+    $this->drupalGet('node/' . $node->id() . '/revisions');
     $rows = $this->xpath('//tbody/tr');
     // Make sure two revisions available.
     $this->assertEqual(count($rows), 2);
     // Revert to the old version.
     $this->clickLink(t('Revert'));
     $this->drupalPostForm(NULL, [], t('Revert'));
-    $this->drupalGet('node/1');
+    $this->drupalGet('node/' . $node->id());
     // Assert the node has been reverted.
     $this->assertNoText('Foo Bar 2');
     $this->assertText('Test text 2');
-    $this->assertText('Test text 1');
+    $this->assertText('Foo Bar 1');
     $this->assertText('TEST TITEL');
   }
 
@@ -150,7 +168,7 @@ class ParagraphsAdministrationTest extends WebTestBase {
       'administer paragraph form display',
       'administer node form display',
       'edit any article content',
-      'delete any article content'
+      'delete any article content',
     ));
     $this->drupalLogin($admin_user);
 
@@ -159,21 +177,41 @@ class ParagraphsAdministrationTest extends WebTestBase {
     // Create paragraph type text + image.
     $edit = array(
       'label' => 'Text + Image',
-      'id' => 'text_image'
+      'id' => 'text_image',
     );
-    $this->drupalPostForm(NULL, $edit, t('Save'));
+    $this->drupalPostForm(NULL, $edit, t('Save and manage fields'));
+    $this->assertUrl('admin/structure/paragraphs_type/text_image/fields');
     // Create field types for text and image.
     static::fieldUIAddNewField('admin/structure/paragraphs_type/text_image', 'text', 'Text', 'text_long', array(), array());
     $this->assertText('Saved Text configuration.');
     static::fieldUIAddNewField('admin/structure/paragraphs_type/text_image', 'image', 'Image', 'image', array(), array('settings[alt_field_required]' => FALSE));
     $this->assertText('Saved Image configuration.');
 
+    // Create paragraph type Nested test.
+    $edit = array(
+      'label' => 'Nested_test',
+      'id' => 'nested_test',
+    );
+    $this->drupalPostForm('admin/structure/paragraphs_type/add', $edit, t('Save and manage fields'));
+
+    static::fieldUIAddNewField('admin/structure/paragraphs_type/nested_test', 'paragraphs', 'Paragraphs', 'entity_reference_revisions', array(
+      'settings[target_type]' => 'paragraph',
+      'cardinality' => '-1',
+    ), array());
+
+    // Change the add more button to select mode.
+    $this->clickLink(t('Manage form display'));
+    $this->drupalPostAjaxForm(NULL, ['fields[field_paragraphs][type]' => 'entity_reference_paragraphs'], 'field_paragraphs_settings_edit');
+    $this->drupalPostForm(NULL, ['fields[field_paragraphs][settings_edit_form][settings][add_mode]' => 'select'], t('Update'));
+    $this->drupalPostForm(NULL, [], t('Save'));
+
     // Create paragraph type image.
     $edit = array(
       'label' => 'Image only',
-      'id' => 'image'
+      'id' => 'image',
     );
-    $this->drupalPostForm('admin/structure/paragraphs_type/add', $edit, t('Save'));
+    $this->drupalPostForm('admin/structure/paragraphs_type/add', $edit, t('Save and manage fields'));
+    $this->assertUrl('admin/structure/paragraphs_type/image/fields');
     // Create field types for image.
     static::fieldUIAddNewField('admin/structure/paragraphs_type/image', 'image_only', 'Image only', 'image', array(), array());
     $this->assertText('Saved Image only configuration.');
@@ -181,7 +219,7 @@ class ParagraphsAdministrationTest extends WebTestBase {
     $this->drupalGet('admin/structure/paragraphs_type');
     $rows = $this->xpath('//tbody/tr');
     // Make sure 2 types are available with their label.
-    $this->assertEqual(count($rows), 2);
+    $this->assertEqual(count($rows), 3);
     $this->assertText('Text + Image');
     $this->assertText('Image only');
     // Make sure there is an edit link for each type.
@@ -195,10 +233,11 @@ class ParagraphsAdministrationTest extends WebTestBase {
     // Create an article with paragraphs field.
     static::fieldUIAddNewField('admin/structure/types/manage/article', 'paragraphs', 'Paragraphs', 'entity_reference_revisions', array(
       'settings[target_type]' => 'paragraph',
-      'cardinality' => '-1'
+      'cardinality' => '-1',
     ), array(
       'settings[handler_settings][target_bundles_drag_drop][image][enabled]' => TRUE,
       'settings[handler_settings][target_bundles_drag_drop][text_image][enabled]' => TRUE,
+      'settings[handler_settings][target_bundles_drag_drop][nested_test][enabled]' => TRUE,
       'description' => 'Help text.',
     ));
     // Configure article fields.
@@ -368,6 +407,39 @@ class ParagraphsAdministrationTest extends WebTestBase {
     ];
     $this->drupalPostForm(NULL, $edit, t('Save and keep published'));
     $this->assertNoText(t('Example published and unpublished'));
+
+    // Set the fields as required.
+    $this->drupalGet('admin/structure/types/manage/article/fields');
+    $this->clickLink('Edit', 1);
+    $this->drupalPostForm(NULL, ['required' => TRUE], t('Save settings'));
+    $this->drupalGet('admin/structure/paragraphs_type/nested_test/fields');
+    $this->clickLink('Edit');
+    $this->drupalPostForm(NULL, ['required' => TRUE], t('Save settings'));
+
+    // Add a new article.
+    $this->drupalGet('node/add/article');
+    $this->drupalPostAjaxForm(NULL, [], 'field_paragraphs_nested_test_add_more');
+    $edit = [
+      'field_paragraphs[0][subform][field_paragraphs][add_more][add_more_select]' => 'image',
+    ];
+    $this->drupalPostAjaxForm(NULL, $edit, 'field_paragraphs_0_subform_field_paragraphs_add_more');
+    // Test the new field is displayed.
+    $this->assertFieldByName('files[field_paragraphs_0_subform_field_paragraphs_0_subform_field_image_only_0]');
+
+    // Add an image to the required field.
+    $edit = array(
+      'title[0][value]' => 'test required',
+      'files[field_paragraphs_0_subform_field_paragraphs_0_subform_field_image_only_0]' => drupal_realpath('temporary://myImage2.jpg'),
+    );
+    $this->drupalPostForm(NULL, $edit, t('Save and publish'));
+    $edit = [
+      'field_paragraphs[0][subform][field_paragraphs][0][subform][field_image_only][0][width]' => 100,
+      'field_paragraphs[0][subform][field_paragraphs][0][subform][field_image_only][0][height]' => 100,
+      'field_paragraphs[0][subform][field_paragraphs][0][subform][field_image_only][0][alt]' => 'Alternative_text',
+    ];
+    $this->drupalPostForm(NULL, $edit, t('Save and publish'));
+    $this->assertRaw('<em class="placeholder">test required</em> has been created.');
+    $this->assertNoRaw('This value should not be null.');
   }
 
   /**
@@ -395,6 +467,16 @@ class ParagraphsAdministrationTest extends WebTestBase {
   protected function assertOptionSelected($id, $option, $message = '', $group = 'Browser') {
     $elements = $this->xpath('//select[contains(@id, :id)]//option[@value=:option]', array(':id' => $id, ':option' => $option));
     return $this->assertTrue(isset($elements[0]) && !empty($elements[0]['selected']), $message ? $message : SafeMarkup::format('Option @option for field @id is selected.', array('@option' => $option, '@id' => $id)), $group);
+  }
+
+  /**
+   * Helper function for revision counting.
+   */
+  private function countRevisions($node, $paragraph1, $paragraph2, $revisions_count) {
+    $node_revisions_count = \Drupal::entityQuery('node')->condition('nid', $node->id())->allRevisions()->count()->execute();
+    $this->assertEqual($node_revisions_count, $revisions_count);
+    $this->assertEqual(\Drupal::entityQuery('paragraph')->condition('id', $paragraph1)->allRevisions()->count()->execute(), $revisions_count);
+    $this->assertEqual(\Drupal::entityQuery('paragraph')->condition('id', $paragraph2)->allRevisions()->count()->execute(), $revisions_count);
   }
 
 }

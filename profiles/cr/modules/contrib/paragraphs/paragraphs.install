@@ -103,12 +103,16 @@ function paragraphs_update_8003(&$sandbox) {
         ->load($entity_id);
     }
     foreach ($host_entity->get($field_storage->getName()) as $field_item) {
-      // Set the parent fields and save, ensure that no new revision is created.
-      $field_item->entity->parent_type = $field_storage->getTargetEntityTypeId();
-      $field_item->entity->parent_id = $host_entity->id();
-      $field_item->entity->parent_field_name = $field_storage->getName();
-      $field_item->entity->setNewRevision(FALSE);
-      $field_item->entity->save();
+      // Skip broken and already updated references (e.g. Nested paragraphs).
+      if ($field_item->entity && empty($field_item->entity->parent_type->value)) {
+        // Set the parent fields and save, ensure that no new revision is
+        // created.
+        $field_item->entity->parent_type = $field_storage->getTargetEntityTypeId();
+        $field_item->entity->parent_id = $host_entity->id();
+        $field_item->entity->parent_field_name = $field_storage->getName();
+        $field_item->entity->setNewRevision(FALSE);
+        $field_item->entity->save();
+      }
     }
   }
   // Continue with the next paragraph_field_id when the loaded entities are less
@@ -122,4 +126,37 @@ function paragraphs_update_8003(&$sandbox) {
   }
   // Update #finished, 1 if the the whole update has finished.
   $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['current_paragraph_field_id'] / $sandbox['max']);
+}
+
+/**
+ * Truncate the content_translation_status columns
+ */
+function paragraphs_update_8004() {
+
+  $field_name = 'content_translation_status';
+
+  $tables_to_update = [
+    'paragraphs_item_field_data',
+    'paragraphs_item_revision_field_data'
+  ];
+
+  $database = Drupal::database();
+  $entity_definition_update_manager = Drupal::entityDefinitionUpdateManager();
+
+  // Ensure that the data from the content translation status field is deleted
+  // so that the field can safely be deleted.
+  foreach ($tables_to_update as $table_to_update) {
+    if ($database->schema()->fieldExists($table_to_update, $field_name)) {
+      $database->update($table_to_update)
+        ->fields([$field_name => NULL])
+        ->execute();
+    }
+  }
+
+
+  // Delete the storage definition if it was defined before.
+  $storage_definition = $entity_definition_update_manager->getFieldStorageDefinition($field_name, 'paragraph');
+  if ($storage_definition) {
+    $entity_definition_update_manager->uninstallFieldStorageDefinition($storage_definition);
+  }
 }

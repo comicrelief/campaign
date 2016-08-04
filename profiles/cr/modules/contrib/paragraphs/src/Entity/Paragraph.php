@@ -13,6 +13,8 @@ use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\entity_reference_revisions\EntityNeedsSaveInterface;
+use Drupal\entity_reference_revisions\EntityNeedsSaveTrait;
 use Drupal\paragraphs\ParagraphInterface;
 use Drupal\user\UserInterface;
 
@@ -79,9 +81,19 @@ use Drupal\user\UserInterface;
  *   }
  * )
  */
-class Paragraph extends ContentEntityBase implements ParagraphInterface {
+class Paragraph extends ContentEntityBase implements ParagraphInterface, EntityNeedsSaveInterface {
 
-  use EntityChangedTrait;
+  use EntityChangedTrait, EntityNeedsSaveTrait;
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getParentEntity() {
+    if (!isset($this->get('parent_type')->value) || !isset($this->get('parent_id')->value)) {
+      return NULL;
+    }
+    return \Drupal::entityManager()->getStorage($this->get('parent_type')->value)->load($this->get('parent_id')->value);
+  }
 
   /**
    * {@inheritdoc}

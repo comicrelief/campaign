@@ -1,13 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\entity_reference_revisions\EntityReferenceRevisionsAdminTest.
- *
- * @file
- * entity_reference_revisions configuration test functions.
- *
- * @ingroup entity_reference_revisions
- */
 
 namespace Drupal\entity_reference_revisions\Tests;
 

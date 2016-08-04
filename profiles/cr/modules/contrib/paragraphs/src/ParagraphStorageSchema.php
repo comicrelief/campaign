@@ -8,13 +8,13 @@
 namespace Drupal\paragraphs;
 
 use Drupal\Core\Entity\ContentEntityTypeInterface;
+use Drupal\Core\Entity\Sql\SqlContentEntityStorageSchema;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
-use Drupal\file\FileStorageSchema;
 
 /**
  * Extends the paragraphs schema handler.
  */
-class ParagraphStorageSchema extends FileStorageSchema {
+class ParagraphStorageSchema extends SqlContentEntityStorageSchema {
 
   /**
    * {@inheritdoc}

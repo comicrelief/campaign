@@ -9,7 +9,10 @@ namespace Drupal\paragraphs\Plugin\Field\FieldWidget;
 
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Entity\Entity;
 use Drupal\Core\Entity\Entity\EntityFormDisplay;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\RevisionableInterface;
 use Drupal\Core\Field\FieldFilteredMarkup;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\Field\WidgetBase;
@@ -34,6 +37,13 @@ use Symfony\Component\Validator\ConstraintViolationInterface;
  * )
  */
 class InlineParagraphsWidget extends WidgetBase {
+
+  /**
+   * Indicates whether the current widget instance is in translation.
+   *
+   * @var bool
+   */
+  private $isTranslating;
 
   /**
    * {@inheritdoc}
@@ -159,6 +169,7 @@ class InlineParagraphsWidget extends WidgetBase {
     $parents = $element['#field_parents'];
 
     $paragraphs_entity = NULL;
+    $host = $items->getEntity();
     $widget_state = static::getWidgetState($parents, $field_name, $form_state);
 
     $entity_manager = \Drupal::entityManager();
@@ -207,17 +218,25 @@ class InlineParagraphsWidget extends WidgetBase {
     }
 
     if ($paragraphs_entity) {
-      // If target translation is not yet available, populate it with data from the original paragraph.
-      $target_langcode = $this->getCurrentLangcode($form_state, $items);
-      if ($paragraphs_entity->language()->getId() != $target_langcode && !$paragraphs_entity->hasTranslation($target_langcode)) {
-        $paragraphs_entity->addTranslation($target_langcode, $paragraphs_entity->toArray());
-      }
+      // Detect if we are translating.
+      $this->initIsTranslating($form_state, $host);
+      $langcode = $form_state->get('langcode');
 
-      // Initiate the paragraph with the correct translation.
-      if ($paragraphs_entity->hasTranslation($this->getCurrentLangcode($form_state, $items))) {
-        $paragraphs_entity = $paragraphs_entity->getTranslation($this->getCurrentLangcode($form_state, $items));
-      } else {
-        $paragraphs_entity = $paragraphs_entity->addTranslation($this->getCurrentLangcode($form_state, $items));
+      if (!$this->isTranslating) {
+        // Set the langcode if we are not translating.
+        $paragraphs_entity->set('langcode', $langcode);
+      }
+      else {
+        // Add translation if missing for the target language.
+        if (!$paragraphs_entity->hasTranslation($langcode)) {
+          // Initialise the translation with source language values.
+          $paragraphs_entity->addTranslation($langcode, $paragraphs_entity->toArray());
+          $translation = $paragraphs_entity->getTranslation($langcode);
+          $manager = \Drupal::service('content_translation.manager');
+          $manager->getTranslationMetadata($translation)->setSource($paragraphs_entity->language()->getId());
+        }
+        // Switch the paragraph to the translation.
+        $paragraphs_entity = $paragraphs_entity->getTranslation($langcode);
       }
 
       $element_parents = $parents;
@@ -295,7 +314,7 @@ class InlineParagraphsWidget extends WidgetBase {
           }
 
           // Hide the button when translating.
-          $button_access = $paragraphs_entity->access('delete') && $paragraphs_entity->language()->getId() == $paragraphs_entity->getUntranslated()->language()->getId();
+          $button_access = $paragraphs_entity->access('delete') && !$this->isTranslating;
           $links['remove_button'] = array(
             '#type' => 'submit',
             '#value' => t('Remove'),
@@ -731,11 +750,10 @@ class InlineParagraphsWidget extends WidgetBase {
     // Add 'add more' button, if not working with a programmed form.
     if (($real_item_count < $cardinality || $cardinality == FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED) && !$form_state->isProgrammed()) {
       // Hide the button when translating.
-      $add_more_access = $this->getCurrentLangcode($form_state, $items) == $items->getEntity()->getUntranslated()->language()->getId();
       $elements['add_more'] = array(
         '#type' => 'container',
         '#theme_wrappers' => array('paragraphs_dropbutton_wrapper'),
-        '#access' => $add_more_access,
+        '#access' => !$this->isTranslating,
       );
 
       if (count($access_options)) {
@@ -865,7 +883,6 @@ class InlineParagraphsWidget extends WidgetBase {
 
     // Go one level up in the form, to the widgets container.
     $element = NestedArray::getValue($form, array_slice($button['#array_parents'], 0, -2));
-    $values = NestedArray::getValue($form_state->getValues(), array_slice($button['#array_parents'], 0, -3));
     $field_name = $element['#field_name'];
     $parents = $element['#field_parents'];
 
@@ -880,7 +897,7 @@ class InlineParagraphsWidget extends WidgetBase {
       $widget_state['selected_bundle'] = $button['#bundle_machine_name'];
     }
     else {
-      $widget_state['selected_bundle'] = $values['add_more']['add_more_select'];
+      $widget_state['selected_bundle'] = $element['add_more']['add_more_select']['#value'];
     }
 
     static::setWidgetState($parents, $field_name, $form_state, $widget_state);
@@ -1051,6 +1068,7 @@ class InlineParagraphsWidget extends WidgetBase {
       $display = $widget_state['paragraphs'][$delta]['display'];
 
       if ($widget_state['paragraphs'][$delta]['mode'] != 'remove' && $widget_state['paragraphs'][$delta]['mode'] != 'removed') {
+        // Extract the form values on submit for getting the current paragraph.
         $display->extractFormValues($entity, $element['subform'], $form_state);
         $display->validateFormValues($entity, $element['subform'], $form_state);
       }
@@ -1063,14 +1081,25 @@ class InlineParagraphsWidget extends WidgetBase {
    * {@inheritdoc}
    */
   public function massageFormValues(array $values, array $form, FormStateInterface $form_state) {
-    // Don't do entity saving when we have validation erors.
-    if (count($form_state->getErrors()) || !$form_state->isValidationComplete()) {
-      return $values;
-    }
-
+    $entity = $form_state->getFormObject()->getEntity();
     $field_name = $this->fieldDefinition->getName();
     $widget_state = static::getWidgetState($form['#parents'], $field_name, $form_state);
     $element = NestedArray::getValue($form_state->getCompleteForm(), $widget_state['array_parents']);
+
+    $new_revision = FALSE;
+    if ($entity instanceof RevisionableInterface) {
+      if ($entity->isNewRevision()) {
+        $new_revision = TRUE;
+      }
+      // Most of the time we don't know yet if the host entity is going to be
+      // saved as a new revision using RevisionableInterface::isNewRevision().
+      // Most entity types (at least nodes) however use a boolean property named
+      // "revision" to indicate whether a new revision should be saved. Use that
+      // property.
+      elseif ($entity->getEntityType()->hasKey('revision') && $form_state->getValue('revision')) {
+        $new_revision = TRUE;
+      }
+    }
 
     foreach ($values as $delta => &$item) {
       if (isset($widget_state['paragraphs'][$item['_original_delta']]['entity'])
@@ -1081,10 +1110,13 @@ class InlineParagraphsWidget extends WidgetBase {
         /** @var \Drupal\Core\Entity\Display\EntityFormDisplayInterface $display */
         $display =  $widget_state['paragraphs'][$item['_original_delta']]['display'];
         $display->extractFormValues($paragraphs_entity, $element[$item['_original_delta']]['subform'], $form_state);
-        $display->validateFormValues($paragraphs_entity, $element[$item['_original_delta']]['subform'], $form_state);
 
-        $paragraphs_entity->setNewRevision(TRUE);
-        $paragraphs_entity->save();
+        $paragraphs_entity->setNewRevision($new_revision);
+        // A content entity form saves without any rebuild. It needs to set the
+        // language to update it in case of language change.
+        $paragraphs_entity->set('langcode', $form_state->get('langcode'));
+        $paragraphs_entity->setNeedsSave(TRUE);
+        $item['entity'] = $paragraphs_entity;
         $item['target_id'] = $paragraphs_entity->id();
         $item['target_revision_id'] = $paragraphs_entity->getRevisionId();
       }
@@ -1096,5 +1128,27 @@ class InlineParagraphsWidget extends WidgetBase {
       }
     }
     return $values;
+  }
+
+  /**
+   * Initializes the translation form state.
+   *
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   * @param \Drupal\Core\Entity\EntityInterface $host
+   */
+  protected function initIsTranslating(FormStateInterface $form_state, EntityInterface $host) {
+    if ($this->isTranslating != NULL) {
+      return;
+    }
+    $this->isTranslating = FALSE;
+
+    if (!empty($form_state->get('content_translation'))) {
+      // Adding a language through the ContentTranslationController.
+      $this->isTranslating = TRUE;
+    }
+    if ($host->hasTranslation($form_state->get('langcode')) && $host->getTranslation($form_state->get('langcode'))->get($host->getEntityType()->getKey('default_langcode'))->value == 0) {
+      // Editing a translation.
+      $this->isTranslating = TRUE;
+    }
   }
 }

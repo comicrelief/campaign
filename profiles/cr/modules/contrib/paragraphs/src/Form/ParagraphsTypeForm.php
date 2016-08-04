@@ -9,9 +9,12 @@ namespace Drupal\paragraphs\Form;
 
 use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\field_ui\FieldUI;
 
-class ParagraphsTypeForm extends EntityForm
-{
+/**
+ * Form controller for paragraph type forms.
+ */
+class ParagraphsTypeForm extends EntityForm {
 
   /**
    * {@inheritdoc}
@@ -44,13 +47,12 @@ class ParagraphsTypeForm extends EntityForm
     );
 
     // You will need additional form elements for your custom properties.
-
     return $form;
   }
 
   /**
-  * {@inheritdoc}
-  */
+   * {@inheritdoc}
+   */
   public function save(array $form, FormStateInterface $form_state) {
     $paragraphs_type = $this->entity;
     $status = $paragraphs_type->save();
@@ -65,6 +67,27 @@ class ParagraphsTypeForm extends EntityForm
         '%label' => $paragraphs_type->label(),
       )));
     }
-    $form_state->setRedirect('entity.paragraphs_type.collection');
+    if (($status == SAVED_NEW && \Drupal::moduleHandler()->moduleExists('field_ui'))
+      && $route_info = FieldUI::getOverviewRouteInfo('paragraph', $paragraphs_type->id())) {
+      $form_state->setRedirectUrl($route_info);
+    }
+    else {
+      $form_state->setRedirect('entity.paragraphs_type.collection');
+    }
   }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function actions(array $form, FormStateInterface $form_state) {
+    $form = parent::actions($form, $form_state);
+
+    // We want to display the button only on add page.
+    if ($this->entity->isNew() && \Drupal::moduleHandler()->moduleExists('field_ui')) {
+      $form['submit']['#value'] = t('Save and manage fields');
+    }
+
+    return $form;
+  }
+
 }
