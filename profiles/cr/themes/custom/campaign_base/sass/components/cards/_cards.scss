@@ -58,8 +58,17 @@
   }
 }
 .cards__content-wrapper {
-  padding: calc(4*#{gutter()});
+  padding: calc(8*#{gutter()});
   background-color: $white;
+  @include breakpoint($screen-md-only) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: calc(2*#{gutter()});
+    height: 100%;
+    @include span(8 wide);
+    @include push(4);
+  }
   .cards-item--feature & {
     position: relative;
     z-index: 10;
@@ -68,14 +77,10 @@
     text-align: center;
     @include transition(0.5s all);
     @include breakpoint($screen-md-only) {
-    	margin: 25px 0;
-    	position: absolute;
-  		top: 0;
-  		right: 0;
-  		padding: calc(2*#{gutter()});
-  		height: calc(100% - 50px);
-    	@include span(9);
-    	@include push(3);
+      margin: 25px 0;
+      height: calc(100% - 50px);
+      @include span(9);
+      @include push(3);
     }
   }
 }
