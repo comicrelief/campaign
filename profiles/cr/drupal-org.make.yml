@@ -94,13 +94,13 @@ projects:
   focal_point:
     download:
       version: 1.x-dev
-      revision: 1bb8116
-  crop:
-    version: 1.0-rc1
+      revision: d39b83f955281255811618403ab62ee572146f0f
+  #crop:
+  #  version: 1.0-rc1
   paragraphs:
     download:
       branch: 8.x-1.x
-      revision: 6f946be
+      revision: ebba36d
     patch:
       # See: https://www.drupal.org/node/2700723
       2700723: https://www.drupal.org/files/issues/2700723-4.patch
