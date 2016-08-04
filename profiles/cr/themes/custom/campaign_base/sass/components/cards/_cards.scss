@@ -3,7 +3,8 @@
 // Standard Cards
 //
 // Markup: cards.hbs
-// 
+//
+// .cards-item--feature - Large button 
 //
 // Style guide: Cards
 
@@ -25,6 +26,12 @@
   padding: 60px 0;
   float: left;
   width: 100%;
+}
+.cards__title {
+  text-align: center;
+  .bg--dark-orchid & {
+    color: $white;
+  }
 }
 .cards__item {
   display: inline-block;
@@ -51,23 +58,25 @@
   }
 }
 .cards__content-wrapper {
-	position: relative;
-  z-index: 10;
-	margin: calc(4*#{gutter()});
-	margin-top: calc(-6*#{gutter()});
-	padding: calc(4*#{gutter()});
-  text-align: center;
+  padding: calc(4*#{gutter()});
   background-color: $white;
-  @include transition(0.5s all);
-  @include breakpoint($screen-md-only) {
-  	margin: 25px 0;
-  	position: absolute;
-		top: 0;
-		right: 0;
-		padding: calc(2*#{gutter()});
-		height: calc(100% - 50px);
-  	@include span(9);
-  	@include push(3);
+  .cards-item--feature & {
+    position: relative;
+    z-index: 10;
+    margin: calc(4*#{gutter()});
+    margin-top: calc(-6*#{gutter()});
+    text-align: center;
+    @include transition(0.5s all);
+    @include breakpoint($screen-md-only) {
+    	margin: 25px 0;
+    	position: absolute;
+  		top: 0;
+  		right: 0;
+  		padding: calc(2*#{gutter()});
+  		height: calc(100% - 50px);
+    	@include span(9);
+    	@include push(3);
+    }
   }
 }
 .cards__content {
