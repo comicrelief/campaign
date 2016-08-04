@@ -19,12 +19,9 @@ content:
     third_party_settings: {  }
   field_cr_ef_resource_category:
     weight: 12
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_select
   field_cr_external_file:
     weight: 11
     settings:
