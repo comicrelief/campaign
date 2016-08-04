@@ -83,7 +83,7 @@
   </target>
   <target name="install" description="Install CR with standard configuration.">
     <exec dir="${app.dir}" logoutput="true" passthru="true" checkreturn="true"
-          command="${drush.bin} si ${app.profile.name} -y --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring}"/>
+          command="${drush.bin} si ${app.profile.name} -y --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring} install_configure_form.update_status_module='[FALSE, FALSE]'"/>
     <phingcall target="cache:clear"/>
   </target>
   <target name="cron" description="Run Drupal's cron script">
