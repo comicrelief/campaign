@@ -7,7 +7,6 @@ dependencies:
     - field.field.node.partner.field_partner_category
     - field.field.node.partner.field_partner_image
     - field.field.node.partner.field_partner_logo
-    - field.field.node.partner.field_partner_meta_tags
     - field.field.node.partner.field_partner_website
     - node.type.partner
   module:
@@ -104,5 +103,4 @@ content:
     weight: 12
     settings: {  }
     third_party_settings: {  }
-hidden:
-  field_partner_meta_tags: true
+hidden: {  }

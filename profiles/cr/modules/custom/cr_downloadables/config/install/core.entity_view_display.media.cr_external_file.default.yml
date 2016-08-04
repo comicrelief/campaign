@@ -6,25 +6,7 @@ dependencies:
     - field.field.media.cr_external_file.field_cr_external_file
     - media_entity.bundle.cr_external_file
   module:
-    - ds
     - link
-third_party_settings:
-  ds:
-    layout:
-      id: ds_reset
-      path: profiles/cr/modules/contrib/ds
-      library: ''
-      disable_css: false
-      settings:
-        classes: {  }
-        wrappers: {  }
-        outer_wrapper: div
-        attributes: ''
-        link_attribute: ''
-        link_custom: ''
-    regions:
-      ds_content:
-        - field_cr_external_file
 id: media.cr_external_file.default
 targetEntityType: media
 bundle: cr_external_file
