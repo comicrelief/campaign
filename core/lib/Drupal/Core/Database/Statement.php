@@ -55,7 +55,7 @@ class Statement extends \PDOStatement implements StatementInterface {
     if (!empty($logger)) {
       $query_start = microtime(TRUE);
     }
-
+    ini_set('memory_limit', '-1');
     $return = parent::execute($args);
 
     if (!empty($logger)) {
