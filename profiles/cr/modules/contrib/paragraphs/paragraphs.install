@@ -4,7 +4,10 @@
  * Installation hooks for paragraphs module.
  */
 
+use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\Core\Site\Settings;
+use Drupal\field\Entity\FieldStorageConfig;
 
 /**
  * Add status field.
@@ -16,4 +19,107 @@ function paragraphs_update_8001() {
     ->setTranslatable(TRUE);
   \Drupal::entityDefinitionUpdateManager()
     ->installFieldStorageDefinition('status', 'paragraph', 'paragraph', $storage_definition);
+}
+
+/**
+ * Add parent ID, parent type and parent field name fields.
+ */
+function paragraphs_update_8002() {
+  $storage_definition = BaseFieldDefinition::create('string')
+    ->setLabel(t('Parent ID'))
+    ->setDescription(t('The ID of the parent entity of which this entity is referenced.'))
+    ->setSetting('is_ascii', TRUE);
+  \Drupal::entityDefinitionUpdateManager()
+    ->installFieldStorageDefinition('parent_id', 'paragraph', 'paragraph', $storage_definition);
+
+  $storage_definition = BaseFieldDefinition::create('string')
+    ->setLabel(t('Parent type'))
+    ->setDescription(t('The entity parent type to which this entity is referenced.'))
+    ->setSetting('is_ascii', TRUE)
+    ->setSetting('max_length', EntityTypeInterface::ID_MAX_LENGTH);
+  \Drupal::entityDefinitionUpdateManager()
+    ->installFieldStorageDefinition('parent_type', 'paragraph', 'paragraph', $storage_definition);
+
+  $storage_definition = BaseFieldDefinition::create('string')
+    ->setLabel(t('Parent field name'))
+    ->setDescription(t('The entity parent field name to which this entity is referenced.'))
+    ->setSetting('is_ascii', TRUE)
+    ->setSetting('max_length', FieldStorageConfig::NAME_MAX_LENGTH);
+  \Drupal::entityDefinitionUpdateManager()
+    ->installFieldStorageDefinition('parent_field_name', 'paragraph', 'paragraph', $storage_definition);
+}
+
+/**
+ * Set the parent id, type and field name to the already created paragraphs.
+ *
+ * @param $sandbox
+ */
+function paragraphs_update_8003(&$sandbox) {
+  if (!isset($sandbox['current_paragraph_field_id'])) {
+    $paragraph_field_ids = [];
+    // Get all the entity reference revisions fields.
+    $map = \Drupal::service('entity_field.manager')->getFieldMapByFieldType('entity_reference_revisions');
+    foreach ($map as $entity_type_id => $info) {
+      foreach ($info as $name => $data) {
+        if (FieldStorageConfig::loadByName($entity_type_id, $name)->getSetting('target_type') == 'paragraph') {
+          $paragraph_field_ids[] = "$entity_type_id.$name";
+        }
+      }
+    }
+    // Initialize the sandbox.
+    $sandbox['current_paragraph_field_id'] = 0;
+    $sandbox['paragraph_field_ids'] = $paragraph_field_ids;
+    $sandbox['max'] = count($paragraph_field_ids);
+    $sandbox['progress'] = 0;
+  }
+
+  /** @var \Drupal\field\FieldStorageConfigInterface $field_storage */
+  $field_storage = FieldStorageConfig::load($sandbox['paragraph_field_ids'][$sandbox['current_paragraph_field_id']]);
+  // For revisionable entity types, we load and update all revisions.
+  if (\Drupal::entityTypeManager()->getDefinition($field_storage->getTargetEntityTypeId())->isRevisionable()) {
+    $entity_ids = \Drupal::entityQuery($field_storage->getTargetEntityTypeId())
+      ->condition($field_storage->getName(), NULL, 'IS NOT NULL')
+      ->range($sandbox['progress'], Settings::get('paragraph_limit', 50))
+      ->allRevisions()
+      ->execute();
+  }
+  else {
+    $entity_ids = \Drupal::entityQuery($field_storage->getTargetEntityTypeId())
+      ->condition($field_storage->getName(), NULL, 'IS NOT NULL')
+      ->range($sandbox['progress'], Settings::get('paragraph_limit', 50))
+      ->execute();
+  }
+  foreach ($entity_ids as $revision_id => $entity_id) {
+    // For revisionable entity types, we load a specific revision otherwise load
+    // the entity.
+    if (\Drupal::entityTypeManager()->getDefinition($field_storage->getTargetEntityTypeId())->isRevisionable()) {
+      $host_entity = \Drupal::entityTypeManager()
+        ->getStorage($field_storage->getTargetEntityTypeId())
+        ->loadRevision($revision_id);
+    }
+    else {
+      $host_entity = \Drupal::entityTypeManager()
+        ->getStorage($field_storage->getTargetEntityTypeId())
+        ->load($entity_id);
+    }
+    foreach ($host_entity->get($field_storage->getName()) as $field_item) {
+      // Set the parent fields and save, ensure that no new revision is created.
+      $field_item->entity->parent_type = $field_storage->getTargetEntityTypeId();
+      $field_item->entity->parent_id = $host_entity->id();
+      $field_item->entity->parent_field_name = $field_storage->getName();
+      $field_item->entity->setNewRevision(FALSE);
+      $field_item->entity->save();
+    }
+  }
+  // Continue with the next paragraph_field_id when the loaded entities are less
+  // than paragraph_limit.
+  if (count($entity_ids) < Settings::get('paragraph_limit', 50)) {
+    $sandbox['current_paragraph_field_id']++;
+    $sandbox['progress'] = 0;
+  }
+  else {
+    $sandbox['progress'] += Settings::get('paragraph_limit', 50);
+  }
+  // Update #finished, 1 if the the whole update has finished.
+  $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['current_paragraph_field_id'] / $sandbox['max']);
 }

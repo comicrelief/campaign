@@ -1,12 +1,9 @@
 <?php
-/**
- * @file
- * Contains \Drupal\paragraphs\ParagraphsTranslationTest.
- */
 
 namespace Drupal\paragraphs\Tests;
 
 use Drupal\Core\Entity\Entity;
+use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\simpletest\WebTestBase;
 
 /**
@@ -74,17 +71,40 @@ class ParagraphsTranslationTest extends WebTestBase {
     $this->drupalPostForm(NULL, NULL, t('Add Text + Image'));
     $this->assertRaw('edit-field-paragraphs-demo-0-subform-status-value');
     $edit = [
-      'title[0][value]' => 'Example publish/unpublish',
+      'title[0][value]' => 'example_publish_unpublish',
       'field_paragraphs_demo[0][subform][field_text_demo][0][value]' => 'Example published and unpublished',
     ];
     $this->drupalPostForm(NULL, $edit, t('Save and publish'));
     $this->assertText(t('Example published and unpublished'));
     $this->clickLink(t('Edit'));
+
+    $this->drupalPostAjaxForm(NULL, NULL, 'field_paragraphs_demo_nested_paragraph_add_more');
+    $this->drupalPostAjaxForm(NULL, NULL, 'field_paragraphs_demo_1_subform_field_paragraphs_demo_text_add_more');
     $edit = [
       'field_paragraphs_demo[0][subform][status][value]' => FALSE,
+      'field_paragraphs_demo[1][subform][field_paragraphs_demo][0][subform][field_text_demo][0][value]' => 'Dummy text'
     ];
     $this->drupalPostForm(NULL, $edit, t('Save and keep published'));
     $this->assertNoText(t('Example published and unpublished'));
+
+    // Check the parent fields are set properly. Get the node.
+    $node = $this->drupalGetNodeByTitle('example_publish_unpublish');
+    // Loop over the paragraphs of the node.
+    foreach ($node->field_paragraphs_demo->referencedEntities() as $paragraph) {
+      $node_paragraph = Paragraph::load($paragraph->id())->toArray();
+      // Check if the fields are set properly.
+      $this->assertEqual($node_paragraph['parent_id'][0]['value'], $node->id());
+      $this->assertEqual($node_paragraph['parent_type'][0]['value'], 'node');
+      $this->assertEqual($node_paragraph['parent_field_name'][0]['value'], 'field_paragraphs_demo');
+      // If the paragraph is nested type load the child.
+      if ($node_paragraph['type'][0]['target_id'] == 'nested_paragraph') {
+        $nested_paragraph = Paragraph::load($node_paragraph['field_paragraphs_demo'][0]['target_id'])->toArray();
+        // Check if the fields are properly set.
+        $this->assertEqual($nested_paragraph['parent_id'][0]['value'], $paragraph->id());
+        $this->assertEqual($nested_paragraph['parent_type'][0]['value'], 'paragraph');
+        $this->assertEqual($nested_paragraph['parent_field_name'][0]['value'], 'field_paragraphs_demo');
+      }
+    }
 
     // Add paragraphed content.
     $this->drupalGet('node/add/paragraphed_content_demo');

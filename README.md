@@ -10,6 +10,7 @@ To get started, simply follow the instructions in the [Installation guide](docs/
 * [Information, hints, tips and troubleshooting](docs/troubleshooting.md)
 * [Development instructions](docs/development.md)
 * [Naming Convention](docs/naming-convention.md)
+* [Deployment instructions](docs/deployment.md)
 
 ## Campaign notes
 
