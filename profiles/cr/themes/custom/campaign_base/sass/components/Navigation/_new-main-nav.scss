@@ -8,64 +8,21 @@
 // Style guide: Navigation.New-Main-nav
 
 
-// Cut it out, styleguide!
-.kss-sidebar {
-  display: none;
-}
-#kss-node .kss-main {
-  width: 100%;
-  margin: 0 auto;
-}
-
-
-
-header[role=banner] {
-  overflow: visible!important;
-  padding-bottom: 0!important;
-}
-  
-.site-logo {
-  @include breakpoint($screen-md, $no-query: true) {
-    position: absolute;
-    top: 50px;
-    left: 0;
-  }
-}
-
 
 // Smartmenu stuff, to tidy up 
 .sm{position:relative;z-index:9999;}
 .sm,.sm ul,.sm li{display:block;list-style:none;margin:0;padding:0;line-height:normal;direction:ltr;text-align:left;-webkit-tap-highlight-color:rgba(0,0,0,0);}
-.sm-rtl,.sm-rtl ul,.sm-rtl li{direction:rtl;text-align:right;}
-.sm>li>h1,.sm>li>h2,.sm>li>h3,.sm>li>h4,.sm>li>h5,.sm>li>h6{margin:0;padding:0;}
 .sm ul{display:none;}
 .sm li,.sm a{position:relative;}
 .sm a{display:block;}
-//.sm a.disabled{cursor:not-allowed;}
-.sm:after{content:"\00a0";display:block;height:0;font:0px/0 serif;clear:both;visibility:hidden;overflow:hidden;}
-.sm,.sm *,.sm *:before,.sm *:after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;}
-
-// Simple theme
-
-
+/* .sm:after{content:"\00a0";display:block;height:0;font:0px/0 serif;clear:both;visibility:hidden;overflow:hidden;} */
 @media (min-width: 1150px) {
-  /* Switch to desktop layout
-  -----------------------------------------------
-     These transform the menu tree from
-     collapsible to desktop (navbar + dropdowns)
-  -----------------------------------------------*/
-  /* start... (it's not recommended editing these rules) */
+
   .sm ul {
     position: absolute;
-    width: 12em;
   }
 
-  .sm li {
-    //float: left;
-  }
-
-
-  .sm ul li, .sm.sm-rtl ul li, .sm.sm-vertical li {
+  .sm ul li {
     float: none;
   }
 
@@ -73,7 +30,7 @@ header[role=banner] {
     white-space: nowrap;
   }
 
-  .sm ul a, .sm.sm-vertical a {
+  .sm ul a {
     white-space: normal;
   }
 
@@ -81,42 +38,6 @@ header[role=banner] {
     white-space: nowrap;
   }
 
-  /* ...end */
-
-  .sm {
-
-  }
-  .sm a, .sm a:hover, .sm a:focus, .sm a:active, .sm a.highlighted {
-    //padding: 11px 20px;
-  }
-  .sm a:hover, .sm a:focus, .sm a:active, .sm a.highlighted {
-    //background: #eeeeee;
-  }
-
-  .sm a.has-submenu {
-    //padding-right: 32px;
-  }
-  .sm a span.sub-arrow {
-    top: 50%;
-    margin-top: -8px;
-    right: 20px;
-    width: 8px;
-    height: 16px;
-    font: 14px/16px monospace !important;
-    background: transparent;
-  }
-  .sm a.highlighted span.sub-arrow:before {
-    display: none;
-  }
-  .sm > li {
-
-  }
-  .sm > li:first-child {
-
-  }
-  .sm ul {
-
-  }
   .sm ul a {
     border: 0 !important;
   }
@@ -127,27 +48,79 @@ header[role=banner] {
     right: auto;
     margin-left: -12px;
   }
-  .sm ul > li {
-  }
-  .sm ul > li:first-child {
+}
 
+
+
+// Cut it out, styleguide!
+.kss-sidebar {
+  display: none;
+}
+#kss-node .kss-main {
+  width: 100%;
+  margin: 0 auto;
+}
+
+
+header[role=banner] {
+  overflow: visible!important;
+  padding-bottom: 0!important;
+}
+  
+.site-logo {
+  margin-top: 0;
+  height: 80px;
+  width: 80px;
+  @include breakpoint($screen-lg, $no-query: true) {
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 }
+
+
+// General header stuff, to move
+.region.region-header {
+  position: relative;
+}
+.region-header-top-wrapper {
+  display: none;
+}
+
+// To move and update with new icon height/s
+.block-campaign-base-branding {
+  height: 170px;
+  z-index: 2;
+}
+
 
 // Using exiting drupal class for now too, to be updated
 .menu--main,
 .new-menu--main {
   position: absolute;
-  top: 85px;
+  top: 0;
+  left: 0;
   width: 100%;
-  background: $white;
-  color: $black;
   display: block;
   z-index: 1;
-
+  height: 80px;
 
   .menu-item {
     padding-top: 0;
+  }
+
+// Wrapper for all buttons in the nav
+  .main-menu__icons {
+    float: right;
+    padding: 20px;
+
+    @include breakpoint($screen-lg, $no-query: true) {
+      padding: 40px;
+  
+      button.main-menu-toggle {
+        display: none;
+      }
+    }
   }
 
   // 'Mobile' nav
@@ -155,10 +128,19 @@ header[role=banner] {
     margin: 0;
     float: none;
     text-align: center;
+    list-style: none;
+    text-align: left;
+    display: none;
+    top: 80px;
+
+    &.menu-open {
+      display: block;
+    }
 
     li {
         margin: 0;
         color: $white;
+        position: relative;
 
       a {
         padding: 20px 20px;
@@ -296,142 +278,149 @@ header[role=banner] {
 
   // 'Desktop' nav for now; will need adjusting for large tablets
   @include breakpoint($screen-lg, $no-query: true) {
-
+    
     position: relative;
     top: 0;
     display: block!important;
     width: auto;
-    padding-top: 20px;
     background: transparent;
 
     // Main menu 
-    ul.menu li {
-      position: relative;
-      display: inline-block;
-      margin: 0 20px;
-      padding: 20px 0 34px;
+    > ul.menu {
 
-      // Main menu text
-      a span.menu-item__text {
-        font-size: 16px;
-        line-height: 16px;
-      }
+      display: block!important;
+      top: 0;
+      text-align: center;
+      padding-left: 100px;
 
-      // Reset all our mobile styles
-      &.menu-item--active-trail a,
-      &.menu-item--active-trail a:hover,
-      a:hover,
-      a {
-        background-color: transparent;
-        span.menu-item__text {
-          color: #222;
+      li {
+        position: relative;
+        display: inline-block;
+        margin: 0 20px;
+        padding: 20px 0 34px;
+
+        // Main menu text
+        a span.menu-item__text {
+          font-size: 16px;
+          line-height: 16px;
         }
-        span.sub-arrow {
+
+        // Reset all our mobile styles
+        &.menu-item--active-trail a,
+        &.menu-item--active-trail a:hover,
+        a:hover,
+        a {
+          background-color: transparent;
+          span.menu-item__text {
+            color: #222;
+          }
+          span.sub-arrow {
+            display: none;
+          }
+        }
+
+        &.menu-item--active-trail a, 
+        &.menu-item--active-trail a:hover,
+        a:hover {
+          span.menu-item__text {
+            border-bottom: 3px solid #ccc;
+          }
+        }
+
+        &.menu-item--active-trail ul {
+          li.menu-item--active-trail,
+          li {
+            a {
+              background-color: $black;
+              span.menu-item__text {
+                color: $white;
+                border-bottom: 3px solid transparent;
+              }
+
+              &:hover {
+                background-color: #666;
+                span.menu-item__text {
+                  color: $white;
+                }
+              }
+            }
+          }
+        } 
+
+        // Submenu, hidden until parent item is hovered
+        > ul {
           display: none;
-        }
-      }
-
-      &.menu-item--active-trail a, 
-      &.menu-item--active-trail a:hover,
-      a:hover {
-        span.menu-item__text {
-          border-bottom: 3px solid #ccc;
-        }
-      }
-
-      &.menu-item--active-trail ul {
-        li.menu-item--active-trail,
-        li {
-          a {
-            background-color: $black;
-            span.menu-item__text {
-              color: $white;
-              border-bottom: 3px solid transparent;
-            }
-
-            &:hover {
-              background-color: #666;
-              span.menu-item__text {
-                color: $white;
-              }
-            }
-          }
-        }
-      } 
-
-      // Submenu, hidden until parent item is hovered
-      > ul {
-        display: none;
-        position: absolute;
-        top: 0;
-        z-index: 999;
-        padding: 0px 10px;
-        top: 85px;
-        padding: 0;
-        width: 250px;
-        left: 0;
-        text-align: left;
-
-        //Submenu items
-        li {
-          position: relative;
+          position: absolute;
+          top: 0;
+          z-index: 999;
+          padding: 0px 10px;
+          top: 85px;
           padding: 0;
-          margin: 0;
-          float: left;
-          width: 100%;
+          width: 250px;
+          left: 0;
+          text-align: left;
 
-          a {
-            background: $black;
-            margin-top: 0;
-            margin-bottom: 0;
-            padding: 16px 20px 11px;
+          //Submenu items
+          li {
+            position: relative;
+            padding: 0;
+            margin: 0;
+            float: left;
+            width: 100%;
 
-            span.menu-item__text {
-              font-size: 16px;
-              line-height: 16px;
-              font-family: $GT-Walsheim-Regular;
-            }
+            a {
+              background: $black;
+              margin-top: 0;
+              margin-bottom: 0;
+              padding: 16px 20px 11px;
 
-            &:hover {
               span.menu-item__text {
-                color: $white;
+                font-size: 16px;
+                line-height: 16px;
+                font-family: $GT-Walsheim-Regular;
+              }
+
+              &:hover {
+                span.menu-item__text {
+                  color: $white;
+                }
               }
             }
+
+            // Our 'landing page' duplicate link, top of each submenu
+            &.menu-item--duplicate a {
+              span.menu-item__text {
+                font-size: 18px;
+                line-height: 18px;
+                font-family: $GT-Walsheim-Medium;
+              }
+
+              // Triangle pointer
+              &:before {
+                content: '';
+                width: 12px;
+                height: 12px;
+                display: block;
+                position: absolute;
+                left: 30px;
+                margin-left: -6px;
+                top: -12px;
+                border: 6px solid transparent;
+                border-bottom-color: #1e1e1e;
+              }
+            } 
           }
+        }
 
-          // Our 'landing page' duplicate link, top of each submenu
-          &.menu-item--duplicate a {
-            span.menu-item__text {
-              font-size: 18px;
-              line-height: 18px;
-              font-family: $GT-Walsheim-Medium;
-            }
-
-            // Triangle pointer
-            &:before {
-              content: '';
-              width: 12px;
-              height: 12px;
-              display: block;
-              position: absolute;
-              left: 30px;
-              margin-left: -6px;
-              top: -12px;
-              border: 6px solid transparent;
-              border-bottom-color: #1e1e1e;
-            }
-          } 
+        // Show sub menus on hover
+        &:hover {
+          > ul.menu {
+            max-height: 200px;
+            height: auto;
+            display: block;
+          }
         }
       }
-
-      // Show sub menus on hover
-      &:hover {
-        > ul.menu {
-          max-height: 200px;
-          height: auto;
-          display: block;
-        }
-      }
-    }
+    } 
   }
 }

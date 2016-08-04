@@ -27,26 +27,48 @@
             keepHighlighted: false
           });
 
-        //_base.init(this);
+        _base.toggleMenu();
+
       });
     },
 
     duplicateParentLink: function (context, settings) {
       var _base = Drupal.behaviors.crNavigation;
       var _settings = _base.settings;
+
       // Update text and link
       $( _settings.navItemWithSubMenuSelector ).each (function() {
+
         $this = $(this);
+
         // Add this class so the SmartMenu plugin ignores any clicks, making it function as a button only
         $this.children('a').addClass('disabled');
+
         // Populate duplicate link with parent link info
         $(this).children('ul.menu')
           .find('.menu-item--duplicate a')
             .attr("href", $this.children('a').attr('href'))
               .find('span').text( $this.children('a').text());
       });
-
     },
+
+    toggleMenu: function (context, settings) {
+
+      var _base = Drupal.behaviors.crNavigation;
+      var _settings = _base.settings;
+
+      $('button.main-menu-toggle').on('click', function(e) {
+
+        // Change state for visual effect
+        $(this).toggleClass('menu-open');
+
+        // Change state of menu itself
+        $('#main-menu').toggleClass('menu-open');
+      });
+    },
+
+
+
 
 
     /*init : function () {
