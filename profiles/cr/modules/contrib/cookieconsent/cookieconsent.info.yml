@@ -4,8 +4,8 @@ description: CookieConsent uses the Cookie Consent javascript library for alerti
 # core: 8.x
 package: Other
 
-# Information added by Drupal.org packaging script on 2016-04-28
-version: '8.x-1.0'
+# Information added by Drupal.org packaging script on 2016-07-27
+version: '8.x-1.1'
 core: '8.x'
 project: 'cookieconsent'
-datestamp: 1461850368
+datestamp: 1469608140
