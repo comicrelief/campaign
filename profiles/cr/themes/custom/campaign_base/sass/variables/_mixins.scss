@@ -56,6 +56,30 @@
   }
 }
 
+/**
+ * Parameters
+ * $color[1] = name
+ * $color[2] = background colour
+ */
+
+@mixin bg-variation($color) {
+  .bg--#{nth($color, 1)} {
+    background-color: nth($color, 2);
+  }
+}
+
+/**
+ * Parameters
+ * $color[1] = name
+ * $color[2] = font colour
+ */
+
+@mixin font-variation($color) {
+  .font--#{nth($color, 1)} {
+    color: nth($color, 2);
+  }
+}
+
 /* Helper function for multi-dimensional arrays */
 @function multimap-get($map, $keys...) {
   @each $key in $keys {

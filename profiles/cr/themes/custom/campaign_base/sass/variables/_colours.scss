@@ -93,6 +93,24 @@ $linkList: (
 
 /**
  * Parameters
+ * $color[1] = name
+ * $color[2] = background colour/font colour
+ */
+$colorList: (
+  ("red" $colour-red),
+  ("sky-blue" $colour-sky-blue), 
+  ("yellow" $colour-yellow),
+  ("green" $colour-green), 
+  ("teal" $colour-teal), 
+  ("royal-blue" $colour-royal-blue), 
+  ("purple" $colour-purple),
+  ("pink" $colour-pink),
+  ("black" $colour-black),
+  ("white" $colour-white)
+);
+
+/**
+ * Parameters
  * $button[1] = name
  * $button[2] = background-color
  * $button[3] = background-color for hover & focus

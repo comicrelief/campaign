@@ -9,6 +9,15 @@
 // <h2>Heading 2</h2>
 // <h3>Heading 3</h3>
 // <h4>Heading 4</h4>
+// <h4 class="font--red">Heading 4</h4>
+// <h4 class="font--sky-blue">Heading 4</h4>
+// <h4 class="font--yellow">Heading 4</h4>
+// <h4 class="font--green">Heading 4</h4>
+// <h4 class="font--teal">Heading 4</h4>
+// <h4 class="font--royal-blue">Heading 4</h4>
+// <h4 class="font--purple">Heading 4</h4>
+// <h4 class="font--pink">Heading 4</h4>
+// <h4 class="font--white" style="background-color: #000;">Heading 4</h4>
 // <p class="font--xlarge">Paragraph Intrinsicly impact compelling channels through intermandated paradigms. Appropriately optimize intuitive imperatives whereas emerging web services. Continually expedite installed base paradigms rather than high-payoff niches. Authoritatively.</p>
 // <p class="font--large">Paragraph Intrinsicly impact compelling channels through intermandated paradigms. Appropriately optimize intuitive imperatives whereas emerging web services. Continually expedite installed base paradigms rather than high-payoff niches. Authoritatively.</p>
 // <p>Paragraph Intrinsicly impact compelling channels through intermandated paradigms. Appropriately optimize intuitive imperatives whereas emerging web services. Continually expedite installed base paradigms rather than high-payoff niches. Authoritatively.</p>
@@ -28,6 +37,9 @@ h1 {
   &.font--xlarge {
     font-size: 70px;
     line-height: 74px;
+  }
+  &.font--black-shadow {
+    text-shadow: -7px 7px 0px rgba(0, 0, 0, 0.25);
   }
 }
 p,
@@ -99,6 +111,10 @@ p {
   }
 }
 
+@for $color from 1 to (length($colorList)+1) {
+  @include font-variation(nth($colorList, $color));
+}
+
 // @include breakpoint($screen-md) { remove when done
 //   h2 {
 //     font-size: 30px;
@@ -122,7 +138,3 @@ p {
 //     line-height: 26px;
 //   }
 // }
-
-.font--black-shadow {
-  text-shadow: -7px 7px 0px rgba(0, 0, 0, 0.25);
-}

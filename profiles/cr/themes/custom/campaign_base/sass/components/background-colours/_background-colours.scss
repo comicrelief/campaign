@@ -3,19 +3,36 @@
 // Just a few basic classes for now, to be used by row components
 //
 // Markup:
-// <div style="background-color: #1e1e1e; height: 60px; width: 60px;"></div>
-// <p><br/>$black: #1e1e1e;</p>
-// <div style="background-color: #282828; height: 60px; width: 60px;"></div>
-// <p><br/>$dark-grey: #282828;</p>
+// <div style="background-color: #f04257; height: 100px; width: 100%;"></div>
+// <p><br/>$colour-red: #f04257;</p>
+// <div style="background-color: #282828; height: 100px; width: 100%;"></div>
+// <p><br/>$colour-sky-blue: #51caf5;</p>
+// <div style="background-color: #fbef51; height: 100px; width: 100%;"></div>
+// <p><br/>$colour-yellow: #fbef51;</p>
+// <div style="background-color: #a2cf59; height: 100px; width: 100%;"></div>
+// <p><br/>$colour-green: #a2cf59;</p>
+// <div style="background-color: #00beca; height: 100px; width: 100%;"></div>
+// <p><br/>$colour-teal: #00beca;</p>
+// <div style="background-color: #388aca; height: 100px; width: 100%;"></div>
+// <p><br/>$colour-royal-blue: #388aca;</p>
+// <div style="background-color: #8552a1; height: 100px; width: 100%;"></div>
+// <p><br/>$colour-purple: #8552a1;</p>
+// <div style="background-color: #f38a99; height: 100px; width: 100%;"></div>
+// <p><br/>$colour-pink: #f38a99;</p>
+// <div style="background-color: #222; height: 100px; width: 100%;"></div>
+// <p><br/>$colour-black: #222;</p>
+// <div style="background-color: #fff; height: 100px; width: 100%;"></div>
+// <p><br/>$colour-white: #fff;</p>
 //
 // Style guide: Background colours
 
-/* RND17 base colours for June taken from SR */
-
-.bg--white {
-  background-color: $white;
-}
+/* RND17 base colours for June taken from SR,
+   remove .bg--cream-grey when RND15 site goes */
 
 .bg--cream-grey {
   background-color: $cream-grey;
+}
+
+@for $color from 1 to (length($colorList)+1) {
+  @include bg-variation(nth($colorList, $color));
 }
