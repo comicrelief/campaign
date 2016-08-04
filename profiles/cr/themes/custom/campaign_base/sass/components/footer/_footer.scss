@@ -9,7 +9,7 @@
 
 footer[role=contentinfo] {
   padding: 50px 5px;
-  background: $black;
+  background: $colour-black;
 
   @include breakpoint($screen-lg) {
     padding-top: 100px;
@@ -37,6 +37,6 @@ footer[role=contentinfo] {
   }
   .footer__follow {
     text-align: center;
-    color: $white;
+    color: $colour-white;
   }
 }

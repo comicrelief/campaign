@@ -18,6 +18,10 @@
 // <h4 class="font--purple">Heading 4</h4>
 // <h4 class="font--pink">Heading 4</h4>
 // <h4 class="font--white" style="background-color: #000;">Heading 4</h4>
+// <h4 class="font--jasper-grey">Heading 4</h4>
+// <h4 class="font--gainsboro-grey">Heading 4</h4>
+// <h4 class="font--light-grey">Heading 4</h4>
+// <h4 class="font--smoke-grey">Heading 4</h4>
 // <p class="font--xlarge">Paragraph Intrinsicly impact compelling channels through intermandated paradigms. Appropriately optimize intuitive imperatives whereas emerging web services. Continually expedite installed base paradigms rather than high-payoff niches. Authoritatively.</p>
 // <p class="font--large">Paragraph Intrinsicly impact compelling channels through intermandated paradigms. Appropriately optimize intuitive imperatives whereas emerging web services. Continually expedite installed base paradigms rather than high-payoff niches. Authoritatively.</p>
 // <p>Paragraph Intrinsicly impact compelling channels through intermandated paradigms. Appropriately optimize intuitive imperatives whereas emerging web services. Continually expedite installed base paradigms rather than high-payoff niches. Authoritatively.</p>
@@ -28,7 +32,6 @@
 
 h1 {
   margin: 0 0 20px;
-  text-transform: uppercase;
   color: #1e1e1e;
   font-family: $GT-Walsheim-Black;
   font-size: 64px;
@@ -138,3 +141,17 @@ p {
 //     line-height: 26px;
 //   }
 // }
+
+// do we still need the below?
+
+.cr-article__header {
+  text-align: center;
+}
+.cr-article__title {
+  margin-top: 40px;
+  text-transform: none;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 28px;
+}
+

@@ -12,7 +12,7 @@
   top: 85px;
   display: none;
   width: 100%;
-  background: rgba($black, 0.95);
+  background: rgba($colour-black, 0.95);
 
   @include breakpoint($screen-md, $no-query: true) {
     position: relative;
@@ -27,7 +27,7 @@
     li {
       display: block;
       margin: 0;
-      color: $white;
+      color: $colour-white;
 
       @include breakpoint($screen-md, $no-query: true) {
         display: inline-block;
@@ -39,7 +39,7 @@
         display: block;
         padding: 15px 10px;
         text-decoration: none;
-        color: $black;
+        color: $colour-black;
         border-bottom: 2px solid transparent;
         font-size: 18px;
 
@@ -50,22 +50,22 @@
         }
         &:hover {
           text-decoration: none;
-          color: $black;
+          color: $colour-black;
           background: #acaaa9;
 
           @include breakpoint($screen-md, $no-query: true) {
-            border-bottom: 2px solid $black;
+            border-bottom: 2px solid $colour-black;
             background: transparent;
           }
         }
         &.active {
           text-decoration: none;
-          color: $black;
-          background: $white;
+          color: $colour-black;
+          background: $colour-white;
 
           @include breakpoint($screen-md, $no-query: true) {
-            color: $black;
-            border-bottom: 2px solid $black;
+            color: $colour-black;
+            border-bottom: 2px solid $colour-black;
             background: transparent;
           }
         }

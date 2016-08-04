@@ -53,25 +53,27 @@ $colour-gainsboro-grey: #c7c7c7;
 $colour-light-grey: #e6e3dc;
 $colour-smoke-grey: #f0f0f0;
 $colour-white: #fff;
+// it the below still needed??
+$item-grey:      #ddd;
 
 /* RND17 base colours for June taken from SR */
 
-$black:          #1e1e1e;
-$dark-grey:      #282828;
-$jasper-grey:    #666;
-$greyboy-grey:   #999;
-$gainsboro-grey: #ccc;
-$item-grey:      #ddd;
-$light-grey:     #eee;
-$smoke-grey:     #fafafa;
-$cw-grey:        #f0f0f0;
-$white:          #fff;
+// $black:          #1e1e1e;
+// $dark-grey:      #282828;
+// $jasper-grey:    #666;
+// $greyboy-grey:   #999;
+// $gainsboro-grey: #ccc;
+// $item-grey:      #ddd;
+// $light-grey:     #eee;
+// $smoke-grey:     #fafafa;
+// $cw-grey:        #f0f0f0;
+// $white:          #fff;
 
-$red:            #f0544a;
-$berry:          #e63f52;
-$coral:          #f9a567;
+// $red:            #f0544a;
+// $berry:          #e63f52;
+// $coral:          #f9a567;
 
-$olive: green;
+// $olive: green;
 
 /**
  * Parameters
@@ -106,7 +108,11 @@ $colorList: (
   ("purple" $colour-purple),
   ("pink" $colour-pink),
   ("black" $colour-black),
-  ("white" $colour-white)
+  ("white" $colour-white),
+  ("jasper-grey" $colour-jasper-grey),
+  ("gainsboro-grey" $colour-gainsboro-grey),
+  ("light-grey" $colour-light-grey),
+  ("smoke-grey" $colour-smoke-grey)
 );
 
 /**
@@ -128,32 +134,5 @@ $buttonList: (
   ("white" $colour-white $colour-black $colour-black)
 );
 
-/* SR16  */
-$purple:         #a25eb5;
-$blue:           #00c2df;
-$green:          #a3d55f;
-$aqua:           #75e1c2;
-$teal:           #00a9b0;
-$dark-orchid:		 #4e3163;
-
-/* hover  */
-$white-hover:    rgba(255, 255, 255, 0.8);
-$red-hover:      #f89963;
-$green-hover:    #3fba91;
-
-/* text  */
-$blue-btn-copy:  #024954;
-$green-btn-copy: #2f4f05;
-
-/* Events  */
-$half-price-yellow: #ffd86b;
-$red-dark:          #b42d4e;
-$green-dark:        #567d5c;
-
-// move it to colour and backgrounds scss file (todo)
-
-.bg--dark-orchid {
-	background-color: $dark-orchid;
-}
 /* Single message row background colour, used in June site, to be renamed and updated */
 $cream-grey: #F5F2ED;
