@@ -184,4 +184,74 @@ class EntityReferenceRevisionsSaveTest extends KernelTestBase {
     static::assertEquals($node_after->composite_reference[0]->target_id, $second_entity_test->id());
     static::assertEquals($node_after->composite_reference[0]->target_revision_id, $second_entity_test->getRevisionId());
   }
+
+  /**
+   * Tests entity_reference_revisions default value and config dependencies.
+   */
+  public function testEntityReferenceRevisionsDefaultValue() {
+
+    // Create a test target node used as entity reference by another test node.
+    $node_target = Node::create([
+      'title' => 'Target node',
+      'type' => 'article',
+      'body' => 'Target body text',
+      'uuid' => '2d04c2b4-9c3d-4fa6-869e-ecb6fa5c9410',
+    ]);
+    $node_target->save();
+
+    // Create an entity reference field to reference to the test target node.
+    /** @var \Drupal\field\Entity\FieldStorageConfig $field_storage */
+    $field_storage = FieldStorageConfig::create([
+      'field_name' => 'target_node_reference',
+      'entity_type' => 'node',
+      'type' => 'entity_reference_revisions',
+      'settings' => ['target_type' => 'node'],
+    ]);
+    $field_storage->save();
+    /** @var \Drupal\field\Entity\FieldConfig $field */
+    $field = FieldConfig::create([
+      'field_storage' => $field_storage,
+      'bundle' => 'article',
+      'required' => FALSE,
+      'settings' => ['handler_settings' => ['target_bundles' => ['article' => 'article']]],
+    ]);
+    // Add reference values to field config that will be used as default value.
+    $default_value = [
+      [
+        'target_id' => $node_target->id(),
+        'target_revision_id' => $node_target->getRevisionId(),
+        'target_uuid' => $node_target->uuid(),
+      ],
+    ];
+    $field->setDefaultValue($default_value)->save();
+
+    // Resave the target node, so that the default revision is not the one we
+    // want to use.
+    $revision_id = $node_target->getRevisionId();
+    $node_target_after = Node::load($node_target->id());
+    $node_target_after->setNewRevision();
+    $node_target_after->save();
+    $this->assertTrue($node_target_after->getRevisionId() != $revision_id);
+
+    // Create another node.
+    $node_host = Node::create([
+      'title' => 'Host node',
+      'type' => 'article',
+      'body' => 'Host body text',
+      'target_node_reference' => $node_target,
+    ]);
+    $node_host->save();
+
+    // Check if the ERR default values are properly created.
+    $node_host_after = Node::load($node_host->id());
+    $this->assertEquals($node_host_after->target_node_reference->target_id, $node_target->id());
+    $this->assertEquals($node_host_after->target_node_reference->target_revision_id, $revision_id);
+
+    // Check if the configuration dependencies are properly created.
+    $dependencies = $field->calculateDependencies()->getDependencies();
+    $this->assertEquals($dependencies['content'][0], 'node:article:2d04c2b4-9c3d-4fa6-869e-ecb6fa5c9410');
+    $this->assertEquals($dependencies['config'][0], 'field.storage.node.target_node_reference');
+    $this->assertEquals($dependencies['config'][1], 'node.type.article');
+    $this->assertEquals($dependencies['module'][0], 'entity_reference_revisions');
+  }
 }

@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\paragraphs\Tests\ParagraphsTranslationTest.
- */
 
 namespace Drupal\paragraphs\Tests;
 
@@ -30,6 +26,7 @@ class ParagraphsTranslationTest extends WebTestBase {
     'paragraphs_demo',
     'content_translation',
     'block',
+    'link',
   );
 
   /**
@@ -69,8 +66,6 @@ class ParagraphsTranslationTest extends WebTestBase {
       'settings[paragraph][nested_paragraph][settings][language][language_alterable]' => TRUE,
       'settings[paragraph][images][fields][field_images_demo]' => TRUE,
     ];
-    // @todo Remove ONLY the following line after #2698529 is committed.
-    $edit['settings[paragraph][text][settings][language][langcode]'] = 'site_default';
     $this->drupalPostForm('admin/config/regional/content-language', $edit, t('Save configuration'));
   }
 
@@ -161,6 +156,8 @@ class ParagraphsTranslationTest extends WebTestBase {
     $edit = array(
       'title[0][value]' => 'Title in french',
       'field_paragraphs_demo[0][subform][field_text_demo][0][value]' => 'Text in french',
+      'revision' => TRUE,
+      'revision_log[0][value]' => 'french 1',
     );
     $this->drupalPostForm(NULL, $edit, t('Save and keep published (this translation)'));
     $this->assertText('Paragraphed article Title in french has been updated.');
@@ -182,10 +179,13 @@ class ParagraphsTranslationTest extends WebTestBase {
     $this->assertText('Title in french');
     $this->assertText('Text in french');
     $edit = array(
+      'title[0][value]' => 'Title Change in french',
       'field_paragraphs_demo[0][subform][field_text_demo][0][value]' => 'New text in french',
+      'revision' => TRUE,
+      'revision_log[0][value]' => 'french 2',
     );
     $this->drupalPostForm(NULL, $edit, t('Save and keep published (this translation)'));
-    $this->assertText('Title in french');
+    $this->assertText('Title Change in french');
     $this->assertText('New text in french');
 
     // Back to the source language.
@@ -196,6 +196,18 @@ class ParagraphsTranslationTest extends WebTestBase {
     // Save the original content on second request.
     $this->drupalPostForm(NULL, NULL, t('Save and keep published (this translation)'));
     $this->assertText('Paragraphed article Title in english has been updated.');
+
+    // Test if reverting to old paragraphs revisions works, make sure that
+    // the reverted node can be saved again.
+    $this->drupalGet('fr/node/' . $node->id() . '/revisions');
+    $this->clickLink(t('Revert'));
+    $this->drupalPostForm(NULL, ['revert_untranslated_fields' => TRUE], t('Revert'));
+    $this->clickLink(t('Edit'));
+    $this->assertRaw('Title in french');
+    $this->assertText('Text in french');
+    $this->drupalPostForm(NULL, [], t('Save and keep published (this translation)'));
+    $this->assertNoRaw('The content has either been modified by another user, or you have already submitted modifications');
+    $this->assertText('Text in french');
 
     //Add paragraphed content with untranslatable language
     $this->drupalGet('node/add/paragraphed_content_demo');
@@ -239,6 +251,135 @@ class ParagraphsTranslationTest extends WebTestBase {
     ];
     $this->drupalPostForm(NULL, $edit, t('Save and keep published (this translation)'));
     $this->assertRaw('Title FR');
+
+    $this->drupalGet('node/add/paragraphed_content_demo');
+    $this->drupalPostForm(NULL, [], t('Add Text'));
+    $edit = [
+      'field_paragraphs_demo[0][subform][field_text_demo][0][value]' => 'texto',
+      'title[0][value]' => 'titulo',
+      'langcode[0][value]' => 'de',
+    ];
+    $this->drupalPostForm(NULL, $edit, t('Save and publish'));
+    $node = $this->drupalGetNodeByTitle('titulo');
+    $this->assertParagraphsLangcode($node->id(), 'de');
+
+    // Test langcode matching when Paragraphs and node have different language.
+    $paragraph_1 = Paragraph::create([
+      'title' => 'Paragraph',
+      'type' => 'text',
+      'langcode' => 'en',
+      'field_text_demo' => 'english_text_1',
+    ]);
+    $paragraph_1->save();
+
+    $paragraph_2 = Paragraph::create([
+      'title' => 'Paragraph',
+      'type' => 'text',
+      'langcode' => 'en',
+      'field_text_demo' => 'english_text_2',
+    ]);
+    $paragraph_2->save();
+
+    $paragraph_data = $paragraph_2->toArray();
+    $paragraph_data['field_text_demo'] = 'german_text_2';
+    $paragraph_2->addTranslation('de', $paragraph_data);
+    $paragraph_2->save();
+    $translated_paragraph = $paragraph_2->getTranslation('en');
+
+    $node = $this->createNode([
+      'langcode' => 'de',
+      'type' => 'paragraphed_content_demo',
+      'field_paragraphs_demo' => [$paragraph_1, $translated_paragraph],
+    ]);
+    $this->drupalGet('node/' . $node->id() . '/edit');
+    $this->drupalPostForm(NULL, [], t('Save and keep published'));
+    $this->assertText('Paragraphed article ' . $node->label() . ' has been updated.');
+    // Check that first paragraph langcode has been updated.
+    $paragraph = Paragraph::load($paragraph_1->id());
+    $this->assertEqual($paragraph->language()->getId(), 'de');
+    $this->assertFalse($paragraph->hasTranslation('en'));
+    // Check that second paragraph has two translations.
+    $paragraph = Paragraph::load($paragraph_2->id());
+    $this->assertTrue($paragraph->hasTranslation('de'));
+    $this->assertTrue($paragraph->hasTranslation('en'));
+    $this->assertRaw('german_text');
+
+    // Create an english translation of the node.
+    $edit = [
+      'field_paragraphs_demo[0][subform][field_text_demo][0][value]' => 'english_translation_1',
+      'field_paragraphs_demo[1][subform][field_text_demo][0][value]' => 'english_translation_2',
+    ];
+    $this->drupalPostForm('node/' . $node->id() . '/translations/add/de/en', $edit, t('Save and keep published (this translation)'));
+    // Attempt to create a french translation.
+    $this->drupalGet('node/' . $node->id() . '/translations/add/de/fr');
+    // Check that the german translation of the paragraphs is displayed.
+    $this->assertFieldByName('field_paragraphs_demo[0][subform][field_text_demo][0][value]', 'english_text_1');
+    $this->assertFieldByName('field_paragraphs_demo[1][subform][field_text_demo][0][value]', 'german_text_2');
+    $this->drupalPostForm(NULL, ['source_langcode[source]' => 'en'], t('Change'));
+    // Check that the english translation of the paragraphs is displayed.
+    $this->assertFieldByName('field_paragraphs_demo[0][subform][field_text_demo][0][value]', 'english_translation_1');
+    $this->assertFieldByName('field_paragraphs_demo[1][subform][field_text_demo][0][value]', 'english_translation_2');
+
+    // Create a node with empty Paragraphs.
+    $this->drupalGet('node/add/paragraphed_content_demo');
+    $this->drupalPostForm(NULL, [], t('Add Nested Paragraph'));
+    $this->drupalPostForm(NULL, ['title[0][value]' => 'empty_node'], t('Save and publish'));
+    // Attempt to translate it.
+    $this->clickLink(t('Translate'));
+    $this->clickLink(t('Add'));
+    // Check the add button is not displayed.
+    $this->assertEqual(count($this->xpath('//*[@name="field_paragraphs_demo_0_subform_field_paragraphs_demo_images_add_more"]')), 0);
+
+    // Add a non translatable field to Text Paragraph type.
+    $edit = [
+      'new_storage_type' => 'text_long',
+      'label' => 'untranslatable_field',
+      'field_name' => 'untranslatable_field',
+    ];
+    $this->drupalPostForm('admin/structure/paragraphs_type/text/fields/add-field', $edit, t('Save and continue'));
+    $this->drupalPostForm(NULL, [], t('Save field settings'));
+    $this->drupalPostForm(NULL, [], t('Save settings'));
+
+    // Add a non translatable reference field.
+    $edit = [
+      'new_storage_type' => 'field_ui:entity_reference:node',
+      'label' => 'untranslatable_ref_field',
+      'field_name' => 'untranslatable_ref_field',
+    ];
+    $this->drupalPostForm('admin/structure/paragraphs_type/text/fields/add-field', $edit, t('Save and continue'));
+    $this->drupalPostForm(NULL, [], t('Save field settings'));
+    $this->drupalPostForm(NULL, ['settings[handler_settings][target_bundles][paragraphed_content_demo]' => TRUE], t('Save settings'));
+
+    // Add a non translatable link field.
+    $edit = [
+      'new_storage_type' => 'link',
+      'label' => 'untranslatable_link_field',
+      'field_name' => 'untranslatable_link_field',
+    ];
+    $this->drupalPostForm('admin/structure/paragraphs_type/text/fields/add-field', $edit, t('Save and continue'));
+    $this->drupalPostForm(NULL, [], t('Save field settings'));
+    $this->drupalPostForm(NULL, [], t('Save settings'));
+
+    // Attempt to add a translation.
+    $this->drupalGet('node/' . $node->id() . '/translations/add/de/fr');
+    $this->assertText('untranslatable_field (all languages)');
+    $this->assertText('untranslatable_ref_field (all languages)');
+    $this->assertText('untranslatable_link_field (all languages)');
+    $this->assertNoText('Text (all languages)');
+
+    // Enable translations for the reference and link field.
+    $edit = [
+      'translatable' => TRUE,
+    ];
+    $this->drupalPostForm('admin/structure/paragraphs_type/text/fields/paragraph.text.field_untranslatable_ref_field', $edit, t('Save settings'));
+    $this->drupalPostForm('admin/structure/paragraphs_type/text/fields/paragraph.text.field_untranslatable_link_field', $edit, t('Save settings'));
+
+    // Attempt to add a translation.
+    $this->drupalGet('node/' . $node->id() . '/translations/add/de/fr');
+    $this->assertText('untranslatable_field (all languages)');
+    $this->assertNoText('untranslatable_link_field (all languages)');
+    $this->assertNoText('untranslatable_ref_field (all languages)');
+    $this->assertNoText('Text (all languages)');
   }
 
   /**
@@ -467,7 +608,7 @@ class ParagraphsTranslationTest extends WebTestBase {
     $this->drupalPostForm(NULL, $edit, t('Upload'));
     // Check the paragraph langcode is still 'de' and its buttons are shown.
     $this->assertParagraphsLangcode($node1->id(), 'de');
-    $this->assertNoParagraphsButtons(1);
+    $this->assertParagraphsButtons(1);
     $this->drupalPostForm(NULL, NULL, t('Save and keep published'));
     // Check the paragraph langcode is now 'en' after saving.
     $this->assertParagraphsLangcode($node1->id());
@@ -625,21 +766,23 @@ class ParagraphsTranslationTest extends WebTestBase {
    */
   protected function assertParagraphsButtonsHelper($count, $hidden = TRUE) {
     for ($i = 0; $i < $count; $i++) {
+      $remove_button = $this->xpath('//*[@name="field_paragraphs_demo_' . $i . '_remove"]');
       if (!$hidden) {
-        $this->assertFieldByName('field_paragraphs_demo_' . $i . '_remove');
+        $this->assertNotEqual(count($remove_button), 0);
       }
       else {
-        $this->assertNoFieldByName('field_paragraphs_demo_' . $i . '_remove');
+        $this->assertEqual(count($remove_button), 0);
       }
     }
 
     // It is enough to check for the specific paragraph type 'Images' to assert
     // the add more buttons presence for this test class.
+    $add_button = $this->xpath('//input[@value="Add Images"]');
     if (!$hidden) {
-      $this->assertFieldByName('field_paragraphs_demo_images_add_more');
+      $this->assertNotEqual(count($add_button), 0);
     }
     else {
-      $this->assertNoFieldByName('field_paragraphs_demo_images_add_more');
+      $this->assertEqual(count($add_button), 0);
     }
   }
 

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\paragraphs\ParagraphStorageSchema.
- */
-
 namespace Drupal\paragraphs;
 
 use Drupal\Core\Entity\ContentEntityTypeInterface;

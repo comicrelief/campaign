@@ -14,12 +14,15 @@ abstract class EntityReferenceRevisionsFormatterBase extends EntityReferenceForm
    */
   public function prepareView(array $entities_items) {
     // Entity revision loading currently has no static/persistent cache and no
-    // multiload. Simulate that the entities have been loaded by setting the
-    // special _loaded property to TRUE but do not actually load them, they
-    // will be loaded automatically if that didn't happen yet.
+    // multiload. As entity reference checks _loaded, while we don't want to
+    // indicate a loaded entity, when there is none, as it could cause errors,
+    // we actually load the entity and set the flag.
     foreach ($entities_items as $items) {
       foreach ($items as $item) {
-        $item->_loaded = TRUE;
+
+        if ($item->entity) {
+          $item->_loaded = TRUE;
+        }
       }
     }
   }

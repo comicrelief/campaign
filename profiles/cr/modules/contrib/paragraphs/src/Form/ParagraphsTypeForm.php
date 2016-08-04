@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\paragraphs\Form\ParagraphsTypeForm.
- */
-
 namespace Drupal\paragraphs\Form;
 
 use Drupal\Core\Entity\EntityForm;
@@ -84,7 +79,7 @@ class ParagraphsTypeForm extends EntityForm {
 
     // We want to display the button only on add page.
     if ($this->entity->isNew() && \Drupal::moduleHandler()->moduleExists('field_ui')) {
-      $form['submit']['#value'] = t('Save and manage fields');
+      $form['submit']['#value'] = $this->t('Save and manage fields');
     }
 
     return $form;

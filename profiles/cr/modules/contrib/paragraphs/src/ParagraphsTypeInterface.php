@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\paragraphs\ParagraphsTypeInterface.
- */
-
 namespace Drupal\paragraphs;
 
 use Drupal\Core\Config\Entity\ConfigEntityInterface;

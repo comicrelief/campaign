@@ -19,13 +19,7 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    target_bundles:
-      image_text: image_text
-      images: images
-      nested_paragraph: nested_paragraph
-      text: text
-      text_image: text_image
-      user: user
+    target_bundles: null
     target_bundles_drag_drop:
       image_text:
         enabled: false

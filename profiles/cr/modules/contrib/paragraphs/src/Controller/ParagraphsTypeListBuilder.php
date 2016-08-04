@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\paragraphs\Controller\ParagraphsTypeListBuilder.
- */
-
 namespace Drupal\paragraphs\Controller;
 
 use Drupal\Core\Config\Entity\ConfigEntityListBuilder;

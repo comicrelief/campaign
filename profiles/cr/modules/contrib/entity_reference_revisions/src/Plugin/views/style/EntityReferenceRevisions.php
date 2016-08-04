@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\entity_reference\Plugin\views\style;
+namespace Drupal\entity_reference_revisions\Plugin\views\style;
 
 use Drupal\Component\Utility\Xss;
 use Drupal\Core\Form\FormStateInterface;

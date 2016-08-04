@@ -89,9 +89,9 @@ class EntityReferenceRevisionsDiffTest extends WebTestBase {
     ];
     $this->drupalPostForm('node/add/article', $edit, t('Save and publish'));
 
-    // Enable the plugin.
+    // Check the plugin is set.
     $this->drupalGet('admin/config/content/diff/fields');
-    $this->drupalPostForm(NULL, ['fields[entity_reference_revisions][plugin][type]' => 'entity_reference_revisions_field_diff_builder'], t('Save'));
+    $this->drupalPostForm(NULL, ['fields[node.field_err_field][plugin][type]' => 'entity_reference_revisions_field_diff_builder'], t('Save'));
 
     // Update the referenced node of the err field and create a new revision.
     $node = $this->drupalGetNodeByTitle($title);

@@ -19,6 +19,7 @@ use Drupal\entity_test\Entity\EntityTestRev;
  *   entity_revision_parent_type_field = "parent_type",
  *   entity_revision_parent_id_field = "parent_id",
  *   entity_revision_parent_field_name_field = "parent_field_name",
+ *   admin_permission = "administer entity_test composite relationship",
  *   entity_keys = {
  *     "id" = "id",
  *     "uuid" = "uuid",

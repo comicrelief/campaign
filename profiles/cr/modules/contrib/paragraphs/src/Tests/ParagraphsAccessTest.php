@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\paragraphs\Tests\ParagraphsAccessTest.
- */
 
 namespace Drupal\paragraphs\Tests;
 
@@ -62,7 +58,6 @@ class ParagraphsAccessTest extends WebTestBase {
       'administer node form display',
       'create paragraphed_content_demo content',
       'edit any paragraphed_content_demo content',
-      'delete any paragraphed_content_demo content',
     ));
     $this->drupalLogin($admin_user);
 
@@ -71,7 +66,7 @@ class ParagraphsAccessTest extends WebTestBase {
     // Remove the "access content" for anonymous users. That results in
     // anonymous users not being able to "view" the host entity.
     /* @var Role $role */
-    $role = \Drupal::entityManager()
+    $role = \Drupal::entityTypeManager()
       ->getStorage('user_role')
       ->load(RoleInterface::ANONYMOUS_ID);
     $role->revokePermission('access content');
@@ -141,5 +136,27 @@ class ParagraphsAccessTest extends WebTestBase {
 
     $this->drupalGet($image_url);
     $this->assertResponse(403, 'Image could not be downloaded');
+
+    // Login as admin with no delete permissions.
+    $this->drupalLogin($admin_user);
+    // Create a new demo node.
+    $this->drupalGet('node/add/paragraphed_content_demo');
+    $this->drupalPostForm(NULL, NULL, t('Add Text'));
+    $this->assertText('Type: Text');
+    $edit = [
+      'title[0][value]' => 'delete_permissions',
+      'field_paragraphs_demo[0][subform][field_text_demo][0][value]' => 'Test',
+    ];
+    $this->drupalPostForm(NULL, $edit, 'Save and publish');
+    // Edit the node.
+    $this->clickLink(t('Edit'));
+    // Check the remove button is present.
+    $this->assertNotNull($this->xpath('//*[@name="field_paragraphs_demo_0_remove"]'));
+    // Delete the Paragraph and save.
+    $this->drupalPostAjaxForm(NULL, [], 'field_paragraphs_demo_0_remove');
+    $this->drupalPostAjaxForm(NULL, [], 'field_paragraphs_demo_0_confirm_remove');
+    $this->drupalPostForm(NULL, [], t('Save and keep published'));
+    $node = $this->getNodeByTitle('delete_permissions');
+    $this->assertUrl('node/' . $node->id());
   }
 }
