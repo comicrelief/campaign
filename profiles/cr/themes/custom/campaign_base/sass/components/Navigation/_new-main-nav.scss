@@ -12,45 +12,6 @@
 // Smartmenu stuff, to tidy up 
 .sm{position:relative;z-index:9999;}
 .sm,.sm ul,.sm li{display:block;list-style:none;margin:0;padding:0;line-height:normal;direction:ltr;text-align:left;-webkit-tap-highlight-color:rgba(0,0,0,0);}
-.sm ul{display:none;}
-.sm li,.sm a{position:relative;}
-.sm a{display:block;}
-/* .sm:after{content:"\00a0";display:block;height:0;font:0px/0 serif;clear:both;visibility:hidden;overflow:hidden;} */
-@media (min-width: 1150px) {
-
-  .sm ul {
-    position: absolute;
-  }
-
-  .sm ul li {
-    float: none;
-  }
-
-  .sm a {
-    white-space: nowrap;
-  }
-
-  .sm ul a {
-    white-space: normal;
-  }
-
-  .sm .sm-nowrap > li > a, .sm .sm-nowrap > li > :not(ul) a {
-    white-space: nowrap;
-  }
-
-  .sm ul a {
-    border: 0 !important;
-  }
-  .sm ul a.has-submenu {
-    padding-right: 20px;
-  }
-  .sm ul a span.sub-arrow {
-    right: auto;
-    margin-left: -12px;
-  }
-}
-
-
 
 // Cut it out, styleguide!
 .kss-sidebar {
@@ -60,7 +21,6 @@
   width: 100%;
   margin: 0 auto;
 }
-
 
 header[role=banner] {
   overflow: visible!important;
@@ -166,19 +126,17 @@ header[role=banner] {
             @include transition-duration(180ms);
           }
 
+          // Provided by SmartMenu, this acts as our 'show/hide submenu' button
           &.sub-arrow {
             &:before {
-              content: "+";
               position: absolute;
-              top: 13px;
-              right: 20px;
-              background: #acaaa9;
-              color: $white;
-              padding: 20px 0;
-              line-height: 0;
-              width: 40px;
-              text-align: center;
-              font-size: 30px;
+              content: "";
+              top: 0;
+              left: 0;
+              background: none;
+              color: none;
+              width: 100%;
+              height: 100%;
             }
           }
         }
@@ -192,31 +150,6 @@ header[role=banner] {
           span.menu-item__text {
             color: $white;
             border-bottom: 3px solid $white;
-          }
-
-          span.sub-arrow {
-            &:before {
-              background: $white;
-              color: #acaaa9;
-            }
-          }
-        }
-
-        // Submenu open
-        &.highlighted {
-          span.sub-arrow {
-            &:before {
-              content: "-";   
-            }
-          }
-        }
-
-        &.menu-item--active-trail {
-          span.sub-arrow {
-            &:before {
-              background: #acaaa9;
-              color: #fff;
-            }
           }
         }
       }
