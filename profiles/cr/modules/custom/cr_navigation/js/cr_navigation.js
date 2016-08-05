@@ -60,7 +60,7 @@
       $('button.main-menu-toggle').on('click', function(e) {
 
         // Change state for visual effect
-        $(this).toggleClass('menu-open');
+        $(this).toggleClass('is-active');
 
         // Change state of menu itself
         $('#main-menu').toggleClass('menu-open');

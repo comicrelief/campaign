@@ -9,37 +9,41 @@
 
 
 
-// Smartmenu stuff, to tidy up 
-.sm{position:relative;z-index:9999;}
-.sm,.sm ul,.sm li{display:block;list-style:none;margin:0;padding:0;line-height:normal;direction:ltr;text-align:left;-webkit-tap-highlight-color:rgba(0,0,0,0);}
-
-// Cut it out, styleguide!
-.kss-sidebar {
-  display: none;
+// Styles provided by the Smartmenu plugin; kept here for sanity
+.sm {
+  position:relative;
+  z-index:9999;
 }
-#kss-node .kss-main {
-  width: 100%;
-  margin: 0 auto;
+
+.sm,.sm ul,.sm li{
+  display:block;
+  list-style:none;
+  margin:0;
+  padding:0;
+  line-height:normal;
+  direction:ltr;
+  text-align:left;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
 }
 
 header[role=banner] {
   overflow: visible!important;
   padding-bottom: 0!important;
+  background-color: $white;
 }
   
 .site-logo {
   margin-top: 0;
   height: 80px;
   width: 80px;
-  @include breakpoint($screen-lg, $no-query: true) {
+  @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
     position: absolute;
     top: 0;
     left: 0;
   }
 }
 
-
-// General header stuff, to move
+/* General header styles */
 .region.region-header {
   position: relative;
 }
@@ -47,34 +51,37 @@ header[role=banner] {
   display: none;
 }
 
-// To move and update with new icon height/s
-.block-campaign-base-branding {
-  height: 170px;
-  z-index: 2;
+/* Requires new logo asset! */
+#block-campaign-base-branding {
+  height: 85px;
+  width: 105px;
+
+  @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
+    position: absolute;
+    top: 0;
+    left: 0;
+  } 
 }
 
 
-// Using exiting drupal class for now too, to be updated
-.menu--main,
-.new-menu--main {
+nav.menu--main {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   display: block;
   z-index: 1;
-  height: 80px;
+  height: 85px;
 
   .menu-item {
     padding-top: 0;
   }
 
-// Wrapper for all buttons in the nav
+  // Wrapper for all buttons in the nav
   .main-menu__icons {
     float: right;
-    padding: 20px;
 
-    @include breakpoint($screen-lg, $no-query: true) {
+    @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
       padding: 40px;
   
       button.main-menu-toggle {
@@ -83,7 +90,7 @@ header[role=banner] {
     }
   }
 
-  // 'Mobile' nav
+  // Main menu
   ul.menu {
     margin: 0;
     float: none;
@@ -92,6 +99,13 @@ header[role=banner] {
     text-align: left;
     display: none;
     top: 80px;
+    width: 100%;
+
+    @include breakpoint($screen-md) {
+      width: 50%;
+      margin-right: 0;
+      margin-left: auto;
+    }
 
     &.menu-open {
       display: block;
@@ -154,6 +168,7 @@ header[role=banner] {
         }
       }
 
+      // Submenus
       > ul.menu {
          background-color: $black;
 
@@ -184,7 +199,7 @@ header[role=banner] {
 
       &.menu-item--active-trail {
 
-        a {
+        > a {
           background-color: #fff;
 
           span.menu-item__text {
@@ -198,39 +213,46 @@ header[role=banner] {
             }
           } 
         } 
-        
-        ul li.menu-item--active-trail a {
+
+        ul li.menu-item--active-trail a,
+        ul li.menu--item--duplicate a {
           background-color: #666;
           span.menu-item__text {
-            border-bottom: 3px solid $white;
+            border-bottom: 3px solid transparent;
           }
         }
       }
+
+
+
     }
   }
 
-  // 'Desktop' nav for now; will need adjusting for large tablets
-  @include breakpoint($screen-lg, $no-query: true) {
+  // Adjust our dropdown 'mobile' nav to behave as standard nav, only
+  // on our slightly tweaked breakpoint (to accommodate tablets in landscape)
+  @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
     
     position: relative;
     top: 0;
-    display: block!important;
+    display: block;
     width: auto;
     background: transparent;
+    height: 103px;
 
     // Main menu 
     > ul.menu {
 
-      display: block!important;
+      display: block;
       top: 0;
       text-align: center;
       padding-left: 100px;
+      width: 100%;
 
       li {
         position: relative;
         display: inline-block;
         margin: 0 20px;
-        padding: 20px 0 34px;
+        padding: 20px 0;
 
         // Main menu text
         a span.menu-item__text {
@@ -261,7 +283,6 @@ header[role=banner] {
         }
 
         &.menu-item--active-trail ul {
-          li.menu-item--active-trail,
           li {
             a {
               background-color: $black;
