@@ -28,6 +28,7 @@ function cr_cards_field_cr_cards_background(FieldStorageDefinitionInterface $def
   ];
   return $values;
 }
+
 /**
  * Options callback for field_cr_card_background.
  *
