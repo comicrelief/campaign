@@ -1,0 +1,14 @@
+{
+  "name": "drupal/url_embed",
+  "description": "Allows embedding of URLs using the Drupal 8 WYSIWYG or link fields.",
+  "type": "drupal-module",
+  "homepage": "https://www.drupal.org/project/url_embed",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/url_embed",
+    "irc": "irc://irc.freenode.org/drupal-media"
+  },
+  "license": "GPL-2.0+",
+  "require": {
+    "embed/embed": "~2.2"
+  }
+}
