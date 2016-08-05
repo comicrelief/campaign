@@ -52,7 +52,6 @@ dependencies:
   - embed
   - entity_embed
   - video_embed_field
-  #- url_embed
   - metatag_open_graph
   - pathauto
   - redirect
