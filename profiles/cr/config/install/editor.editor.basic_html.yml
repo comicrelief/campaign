@@ -37,6 +37,7 @@ settings:
           items:
             - Blockquote
             - DrupalImage
+            - downloadable
         -
           name: 'Block Formatting'
           items:
