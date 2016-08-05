@@ -1,6 +1,0 @@
-label: 'URL'
-id: 'url'
-type_id: 'url'
-dependencies:
-  module:
-    - url_embed
