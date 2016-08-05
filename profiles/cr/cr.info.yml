@@ -46,6 +46,12 @@ dependencies:
   # Contrib modules
   - ds
   - file_entity
+  - media_entity
+  - media_entity_browser
+  - entity_browser
+  - embed
+  - entity_embed
+  - video_embed_field
   - metatag_open_graph
   - pathauto
   - redirect
@@ -73,6 +79,7 @@ dependencies:
   - cr_content_wall
   - cr_rich_text_paragraph
   - cr_block_paragraph
+  - cr_downloadables
   - cr_single_msg
   - cr_single_message_row_paragraph
   - cr_teaser
