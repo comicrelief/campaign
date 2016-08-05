@@ -59,7 +59,6 @@
 }
 .cards__content-wrapper {
   padding: calc(8*#{gutter()});
-  background-color: $white;
   @include breakpoint($screen-md-only) {
     position: absolute;
     top: 0;
