@@ -1,0 +1,12 @@
+{
+  "name": "drupal-contrib/media_entity_instagram",
+  "require": {
+    "PHP-Instagram-API/PHP-Instagram-API": "dev-master"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/designesse/PHP-Instagram-API.git"
+    }
+  ]
+}

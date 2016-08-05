@@ -1,0 +1,1 @@
+<iframe{{ attributes }}{% if url is not empty %} src="{{ url }}{% if query is not empty %}?{{ query | url_encode }}{% endif %}"{% endif %}></iframe>

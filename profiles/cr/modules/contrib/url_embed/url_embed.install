@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * @file
+ * Contains install and update functions for URL Embed.
+ */
+
+use Drupal\embed\Entity\EmbedButton;
+use Drupal\Core\Utility\UpdateException;
+
+/**
+ * Implements hook_requirements().
+ *
+ * Checks that the necessary libraries have been installed.
+ */
+function url_embed_requirements($phase) {
+  $requirements = [];
+
+  if ($phase === 'install') {
+    if (!class_exists('\Embed\Embed')) {
+      $requirements['url_embed_library'] = [
+        'description' => t("URL Embed requires the Embed/Embed library."),
+        'severity' => REQUIREMENT_ERROR,
+      ];
+    }
+  }
+
+  return $requirements;
+}
+
+/**
+ * Convert URL embed buttons to embed buttons.
+ *
+ * @todo Can we reuse the existing UUID and save before deleting the old button?
+ */
+function url_embed_update_8001() {
+  $config_factory = \Drupal::configFactory();
+
+  foreach ($config_factory->listAll('url_embed.url_button.') as $config_name) {
+    $old_embed_button = $config_factory->getEditable($config_name);
+    $values = $old_embed_button->getRawData();
+
+    if (EmbedButton::load($values['id'])) {
+      throw new UpdateException('Unable to convert url_embed.url_button.' . $values['id'] . ' to embed.button.' . $values['id'] . ' since the latter already exists.');
+    }
+
+    // Move some data around.
+    $values['type_id'] = 'url';
+    $values['icon_uuid'] = $values['button_icon_uuid'];
+    unset($values['button_icon_uuid']);
+
+    // Save the new embed button and delete the old one.
+    $embed_button = EmbedButton::create($values);
+    $embed_button->save();
+    $old_embed_button->delete();
+  }
+}
