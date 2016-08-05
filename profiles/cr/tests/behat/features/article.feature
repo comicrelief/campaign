@@ -53,8 +53,6 @@ Feature: Article
     And I press "Create Publishing Date"
     And I wait for AJAX loading to finish
     Then I should see "PUBLISHING DATE"
-    # cookie message prevents selenium clicking save as unpublished button
-    And I close cookie message
     And I enter "tag1" for "edit-field-article-tags-target-id"
     And I scroll ".unpublish input" into view
     And press "Save as unpublished"
