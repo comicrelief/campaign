@@ -1,15 +1,15 @@
 // Fonts
 
-$GT-Walsheim-Light-Oblique: "GT-Walsheim-Light-Oblique", helvetica, arial, sans-serif;
-$GT-Walsheim-Light: "GT-Walsheim-Light", helvetica, arial, sans-serif;
-$GT-Walsheim-Regular-Oblique: "GT-Walsheim-Regular-Oblique", helvetica, arial, sans-serif;
-$GT-Walsheim-Regular: "GT-Walsheim-Regular", helvetica, arial, sans-serif;
-$GT-Walsheim-Black-Oblique: "GT-Walsheim-Black-Oblique", helvetica, arial, sans-serif;
-$GT-Walsheim-Black: "GT-Walsheim-Black", helvetica, arial, sans-serif;
-$GT-Walsheim-Black-Bold-Oblique: "GT-Walsheim-Black-Bold-Oblique", helvetica, arial, sans-serif;
-$GT-Walsheim-Bold: "GT-Walsheim-Bold", helvetica, arial, sans-serif;
-$GT-Walsheim-Medium-Oblique: "GT-Walsheim-Medium-Oblique", helvetica, arial, sans-serif;
-$GT-Walsheim-Medium: "GT-Walsheim-Medium", helvetica, arial, sans-serif;
+$font-stack: helvetica, arial, sans-serif;
 
-$body-font: $GT-Walsheim-Regular, helvetica, arial, sans-serif;
-
+$font-black-oblique: "GT-Walsheim-Black-Oblique", $font-stack;
+$font-black: "GT-Walsheim-Black", $font-stack;
+$font-bold-oblique: "GT-Walsheim-Black-Bold-Oblique", $font-stack;
+$font-bold: "GT-Walsheim-Bold", $font-stack;
+$font-medium-oblique: "GT-Walsheim-Medium-Oblique", $font-stack;
+$font-medium: "GT-Walsheim-Medium", $font-stack;
+$font-regular-oblique: "GT-Walsheim-Regular-Oblique", $font-stack;
+$font-regular: "GT-Walsheim-Regular", $font-stack;
+$font-light-oblique: "GT-Walsheim-Light-Oblique", $font-stack;
+$font-light: "GT-Walsheim-Light", $font-stack;
+$body-font: "GT-Walsheim-Regular", $font-stack;
