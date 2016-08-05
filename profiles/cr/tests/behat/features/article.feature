@@ -52,6 +52,7 @@ Feature: Article
     And I enter the time for "publishing_date[form][inline_entity_form][update_timestamp][0][value][time]"
     And I press "Create Publishing Date"
     And I wait for AJAX loading to finish
+    And I wait for "10" seconds
     # And I break
     Then I should see "Publishing date"
     And I enter "tag1" for "edit-field-article-tags-target-id"
