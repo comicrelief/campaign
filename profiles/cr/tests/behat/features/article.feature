@@ -40,7 +40,7 @@ Feature: Article
     And the metatag property "og:image" should contain the value "news/2016-02/greg_james_gregathlon_belfast_and_so_it_begins"
     And the metatag property "og:url" should contain the value "whats-going-on/greg-james-begins-his-gregathlon-sport-relief"
 
-  @api @javascript
+  @api @javascript @not-on-travis
   Scenario: Create news articles using scheduled updates
     Given I am logged in as a user with the "editor" role
     And I am on "node/add/article"
@@ -52,9 +52,7 @@ Feature: Article
     And I enter the time for "publishing_date[form][inline_entity_form][update_timestamp][0][value][time]"
     And I press "Create Publishing Date"
     And I wait for AJAX loading to finish
-    And I wait for "10" seconds
-    # And I break
-    # Then I should see "Publishing date"
+    Then I should see "Publishing date"
     And I enter "tag1" for "edit-field-article-tags-target-id"
     And I scroll ".unpublish input" into view
     And press "Save as unpublished"
