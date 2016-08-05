@@ -54,7 +54,7 @@ Feature: Article
     And I wait for AJAX loading to finish
     And I wait for "10" seconds
     # And I break
-    Then I should see "Publishing date"
+    # Then I should see "Publishing date"
     And I enter "tag1" for "edit-field-article-tags-target-id"
     And I scroll ".unpublish input" into view
     And press "Save as unpublished"
