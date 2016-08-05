@@ -1,9 +1,17 @@
+{% set bg_colour = field_cr_card_background['#items'][0].value %}
+
+{%
+set content_wrapper_class = [
+'cards__content-wrapper',
+bg_colour,
+]
+%}
 <div class="cards__item">
 	{{ title_suffix.contextual_links }}
 	<div class="cards__image">
 		{{ field_cr_card_image }}
 	</div>
-	<div class="cards__content-wrapper">
+	<div{{ attributes.addClass(content_wrapper_class) }}>
 		<div class="cards__content">
 			{{ field_cr_card_body }}
 		</div>
