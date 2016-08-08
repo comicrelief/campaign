@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Resource category'
+vid: cr_resource_category
+description: 'Vocabulary used to categorise downloadable resources. '
+hierarchy: 0
+weight: 0
