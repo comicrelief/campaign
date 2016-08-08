@@ -35,8 +35,8 @@
   vertical-align: middle;
   text-decoration: none;
   width: 100%;
+  font-family: $font-bold;
   font-size: 18px;
-  font-weight: bold;
   line-height: 18px;
   @include border-radius(30px);
   span {
