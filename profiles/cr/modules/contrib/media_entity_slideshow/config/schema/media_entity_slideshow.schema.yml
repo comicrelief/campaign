@@ -1,0 +1,7 @@
+media_entity.bundle.type.slideshow:
+  type: mapping
+  label: 'Slideshow type configuration'
+  mapping:
+    source_field:
+      type: string
+      label: 'Field with slideshow items'

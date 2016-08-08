@@ -1,0 +1,10 @@
+media_entity.bundle.type.image:
+  type: mapping
+  label: 'Image type configuration'
+  mapping:
+    source_field:
+      type: string
+      label: 'Field with embed code/URL'
+    gather_exif:
+      type: boolean
+      label: 'Gather EXIF metadata'
