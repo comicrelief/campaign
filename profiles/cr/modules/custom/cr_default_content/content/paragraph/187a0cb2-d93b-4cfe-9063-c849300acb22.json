@@ -16,11 +16,6 @@
             {
                 "href": "http:\/\/default\/user\/0?_format=hal_json"
             }
-        ],
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_rich_text_paragraph\/field_background": [
-            {
-                "href": "http:\/\/default\/file\/3347?_format=hal_json"
-            }
         ]
     },
     "id": [
@@ -35,7 +30,7 @@
     ],
     "revision_id": [
         {
-            "value": "16"
+            "value": "20"
         }
     ],
     "type": [
@@ -62,7 +57,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "a05f4c7e-d807-44d7-af81-5a271acdb0cb"
+                        "value": "863fcb62-bf24-4f65-b5ab-464f845c5720"
                     }
                 ],
                 "lang": "en"
@@ -80,30 +75,9 @@
                 },
                 "uuid": [
                     {
-                        "value": "a05f4c7e-d807-44d7-af81-5a271acdb0cb"
+                        "value": "863fcb62-bf24-4f65-b5ab-464f845c5720"
                     }
                 ]
-            }
-        ],
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_rich_text_paragraph\/field_background": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/file\/3347?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "87e77242-ec95-4974-962d-9ffa3d09f0d2"
-                    }
-                ],
-                "alt": "Africa",
-                "title": "",
-                "width": "3400",
-                "height": "900"
             }
         ]
     },
