@@ -98,8 +98,8 @@ dependencies:
   - editor_advanced_link
 
   # Default content; will be moved out of the profile at some point
-  - cr_default_content
   - simple_sitemap
+  - cr_default_content
 
   # Because cr_landing_pages has content dependencies this needs to be loaded after
   - cr_search
