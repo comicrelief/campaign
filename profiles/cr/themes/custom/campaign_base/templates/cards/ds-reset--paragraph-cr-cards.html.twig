@@ -1,10 +1,12 @@
 {% set bg_colour = field_cr_cards_background['#items'][0].value %}
+{% set layoutClass = field_cr_cards_feature_layout['#items'].value ? 'cards--feature-layout' : '' %}
 
 {%
 set classes = [
 'cards',
 'paragraph',
 'contextual-region',
+layoutClass,
 bg_colour,
 ]
 %}

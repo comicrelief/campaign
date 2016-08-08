@@ -4,7 +4,7 @@
 //
 // Markup: cards.hbs
 //
-// .cards-item--feature - Large button 
+// .cards__content--feature - Feature Layout
 //
 // Style guide: Cards
 
@@ -68,12 +68,12 @@
     @include span(8 wide);
     @include push(4);
   }
-  .cards-item--feature & {
-    position: relative;
+  .cards--feature-layout & {
     z-index: 10;
     margin: calc(4*#{gutter()});
     margin-top: calc(-6*#{gutter()});
     text-align: center;
+    background-color: $white;
     @include transition(0.5s all);
     @include breakpoint($screen-md-only) {
       margin: 25px 0;
