@@ -5,5 +5,3 @@ cr_navigation:
     js/cr_navigation.js: {}
   dependencies:
     - core/jquery
-    - core/modernizr
-    - core/matchmedia
