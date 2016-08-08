@@ -188,10 +188,25 @@ nav.menu--main {
       }
 
       /* Duplicate menu item; our landing page link */
-      &.menu-item--duplicate a span.menu-item__text {
-        font-size: 20px;
-        line-height: 22px;
-        color: #fff;
+      &.menu-item--duplicate a {
+
+        &:after {
+          content: "";
+          position: absolute;
+          line-height: 0;
+          bottom: -1px;
+          left: 0;
+          right: 0;
+          height: 0;
+          margin: 0 10px;
+          border-bottom: 3px solid #222;
+        }
+
+        span.menu-item__text {
+          font-size: 20px;
+          line-height: 22px;
+          color: #fff;
+        }
       }
 
       &.menu-item--active-trail {
