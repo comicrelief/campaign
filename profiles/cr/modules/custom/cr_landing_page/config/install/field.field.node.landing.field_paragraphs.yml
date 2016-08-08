@@ -31,29 +31,29 @@ settings:
       cr_block_reference: cr_block_reference
       cr_cards: cr_cards
       cr_rich_text_paragraph: cr_rich_text_paragraph
-      cr_single_message_row: cr_single_message_row
-      partner_list: partner_list
       single_msg: single_msg
+      partner_list: partner_list
+      cr_single_message_row: cr_single_message_row
     target_bundles_drag_drop:
       cw_row:
         enabled: true
-        weight: 2
+        weight: -15
       cr_block_reference:
         enabled: true
-        weight: 8
+        weight: -14
       cr_cards:
         enabled: true
-        weight: 9
+        weight: -13
       cr_rich_text_paragraph:
         enabled: true
-        weight: 10
-      cr_single_message_row:
-        enabled: true
-        weight: 11
-      partner_list:
-        enabled: true
-        weight: 13
+        weight: -12
       single_msg:
         enabled: true
-        weight: 14
+        weight: -11
+      partner_list:
+        enabled: true
+        weight: -10
+      cr_single_message_row:
+        enabled: true
+        weight: -9
 field_type: entity_reference_revisions
