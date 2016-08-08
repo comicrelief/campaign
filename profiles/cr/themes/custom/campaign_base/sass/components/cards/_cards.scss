@@ -9,23 +9,37 @@
 // Style guide: Cards
 
 .cards {
+  padding: 60px 0;
+  float: left;
+  width: 100%;
 	@for $i from 1 through 6 {
   .cards__item:first-child:nth-last-child(#{$i}),
   .cards__item:first-child:nth-last-child(#{$i}) ~ .cards__item {
     // width: calc(#{span(12)}/#{$i});
     // margin: gutter()/2;
-    width: 100%;
+    width: calc(100% - 30px);
+    margin: 0 15px 20px;
+
     @include breakpoint($screen-sm-max) {
 		  	@include span(12);
 	    }
 	  @include breakpoint($screen-md-max) {
 		    @include span(12/$i);
-			}
-	  }
-	}
-  padding: 60px 0;
-  float: left;
-  width: 100%;
+      }
+    }
+  }
+  .cards__item:first-child:nth-last-child(2), 
+  .cards__item:first-child:nth-last-child(2) ~ .cards__item {
+  @include breakpoint($screen-md-max) {
+      @include span(4);
+      display: inline-block;
+      float: none;
+      vertical-align: top
+    }
+  }
+}
+.cards__wrapper {
+  text-align: center;
 }
 .cards__title {
   text-align: center;
@@ -36,8 +50,8 @@
 .cards__item {
   display: inline-block;
   position: relative;
-  float: left;
   margin-bottom: 20px;
+  text-align: left;
 }
 .cards__image {
   img {
@@ -45,19 +59,20 @@
 		display: block;
 		height: 100%;
 		@include breakpoint($screen-md-only) {
-			margin-left: -38.5%;
-			height: auto;
-			width: 178%;
+      margin-left: -2.5%;
+      height: auto;
+      width: 105%;
 		}
   }
   @include breakpoint($screen-md-only) {
-  	@include span(4);
+  	@include span(5);
   	height: 0;
   	padding-bottom: span(4);
   	overflow: hidden;
   }
 }
 .cards__content-wrapper {
+  position: relative;
   padding: calc(8*#{gutter()});
   @include breakpoint($screen-md-only) {
     position: absolute;
@@ -65,11 +80,11 @@
     right: 0;
     padding: calc(2*#{gutter()});
     height: 100%;
-    @include span(8 wide);
-    @include push(4);
+    @include span(7 wide);
+    @include push(5);
   }
   .cards--feature-layout & {
-      z-index: 10;
+    z-index: 10;
     margin: calc(4*#{gutter()});
     margin-top: calc(-6*#{gutter()});
     text-align: center;
@@ -88,5 +103,25 @@
   	position: relative;
 	  top: 50%;
 	  transform: translateY(-50%);
+  }
+}
+
+// move to background-colours scss
+
+.bg--red,
+.bg--royal-blue,
+.bg--purple {
+  h1, h2, h3, h4, h5, p, .link {
+    color: $white;
+  }
+  .bg--white,
+  .bg--sky-blue,
+  .bg--yellow,
+  .bg--green,
+  .bg--teal,
+  .bg--pink {
+    h1, h2, h3, h4, h5, p, .link {
+      color: $black;
+    }
   }
 }
