@@ -1,16 +1,11 @@
 (function ($) {
 
   Drupal.behaviors.crNavigation = {
-   settings : {
-    mainMenuClass: '.menu--main',
-    navItemWithSubMenuSelector:'.menu--main > .menu > .menu-item--expanded',
-   },
 
     attach: function (context, settings) {
       var _base = Drupal.behaviors.crNavigation;
-      var _settings = _base.settings;
 
-      $(_settings.mainMenuClass).once('crNavigation').each( function(){
+      $('.menu--main' ).once('crNavigation').each( function(){
         $(this).addClass("crNavigation-processed");
           _base.setUpNav();
       });
@@ -18,7 +13,6 @@
 
     setUpNav: function (context, settings) {
       var _base = Drupal.behaviors.crNavigation;
-      var _settings = _base.settings;
 
       _base.duplicateParentLink();
 
@@ -41,7 +35,7 @@
     /* Updates empty duplicate link (added by template) with the parent item's text and link, dynamically */
     duplicateParentLink: function (context, settings) {
 
-      // Update text and link
+      /* Update text and link */
       $('.menu--main > .menu > .menu-item--expanded').each (function() {
 
         $this = $(this);
