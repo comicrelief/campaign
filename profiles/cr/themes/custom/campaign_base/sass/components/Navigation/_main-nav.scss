@@ -7,42 +7,6 @@
 //
 // Style guide: Navigation.New-Main-nav
 
-header[role=banner] {
-  overflow: visible!important;
-  padding-bottom: 0!important;
-  background-color: $white;
-}
-  
-.site-logo {
-  margin-top: 0;
-  height: 80px;
-  width: 80px;
-  @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-}
-
-/* General header styles */
-.region.region-header {
-  position: relative;
-}
-.header__top-wrapper {
-  display: none;
-}
-
-/* Requires new logo asset! */
-#block-campaign-base-branding {
-  height: 85px;
-  width: 105px;
-
-  @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
-    position: absolute;
-    top: 0;
-    left: 0;
-  } 
-}
 
 /* Styles provided by the Smartmenu plugin; kept here for sanity */
 .sm {
