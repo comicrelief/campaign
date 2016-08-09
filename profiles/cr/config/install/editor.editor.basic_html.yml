@@ -54,7 +54,7 @@ settings:
     language:
       language_list: un
     stylescombo:
-      styles: "a.btn.btn--red|Red Button\r\na.btn.btn--blue|Blue Button\r\na.link.link--inline-red|Red Link\r\na.link.link--inline-black|Black Link\r\na.link.link--inline-white|White Link\r\na.link.link--inline-grey|Grey Link"
+      styles: "a.btn.btn--red|Red Button\r\na.btn.btn--sky-blue|Sky Blue Button\r\na.btn.btn--green|Green Button\r\na.btn.btn--teal|Teal Button\r\na.btn.btn--royal-blue|Royal Blue Button\r\na.btn.btn--purple|Purple Button\r\na.btn.btn--pink|Pink Button\r\na.btn.btn--white|White Button\r\na.link.link--red|Red Button\r\na.link.link--sky-blue|Sky Blue Button\r\na.link.link--green|Green Button\r\na.link.link--teal|Teal Button\r\na.link.link--royal-blue|Royal Blue Button\r\na.link.link--purple|Purple Button\r\na.link.link--pink|Pink Button\r\na.link.link--white|White Button"
 image_upload:
   status: true
   scheme: public
