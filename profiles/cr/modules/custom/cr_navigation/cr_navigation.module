@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * Attaches JS for dropdown menu nav action.
+ */
+
+/**
+ * Implements hook_page_attachments().
+ */
+function cr_navigation_page_attachments(array &$attachments) {
+  $attachments['#attached']['library'][] = 'cr_navigation/cr_navigation';
+}

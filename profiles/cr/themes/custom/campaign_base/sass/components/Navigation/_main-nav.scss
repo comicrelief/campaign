@@ -1,75 +1,389 @@
-// Main Nav
+// New Main Nav
 //
-// This is Main Nav
+// This is a prototype to the new Main Nav
 //
-// Markup:
-// <nav></nav>
+// Markup: _new-main-nav.hbs
 //
-// Style guide: Navigation.Main-nav
+//
+// Style guide: Navigation.New-Main-nav
 
-.menu--main {
-  position: absolute;
-  top: 85px;
-  display: none;
-  width: 100%;
-  background: rgba($black, 0.95);
-
-  @include breakpoint($screen-md, $no-query: true) {
-    position: relative;
+header[role=banner] {
+  overflow: visible!important;
+  padding-bottom: 0!important;
+  background-color: $white;
+}
+  
+.site-logo {
+  margin-top: 0;
+  height: 80px;
+  width: 80px;
+  @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
+    position: absolute;
     top: 0;
-    display: block!important;
-    width: auto;
-    padding-top: 20px;
-    background: transparent;
+    left: 0;
   }
-  ul {
+}
+
+/* General header styles */
+.region.region-header {
+  position: relative;
+}
+.region-header-top-wrapper {
+  display: none;
+}
+
+/* Requires new logo asset! */
+#block-campaign-base-branding {
+  height: 85px;
+  width: 105px;
+
+  @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
+    position: absolute;
+    top: 0;
+    left: 0;
+  } 
+}
+
+/* Styles provided by the Smartmenu plugin; kept here for sanity */
+.sm {
+  position:relative;
+  z-index:9999;
+}
+
+.sm,.sm ul,.sm li{
+  display:block;
+  list-style:none;
+  margin:0;
+  padding:0;
+  line-height:normal;
+  direction:ltr;
+  text-align:left;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+nav.menu--main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: block;
+  z-index: 1;
+  height: 85px;
+
+  .menu-item {
+    padding-top: 0;
+  }
+
+  /* Wrapper for all buttons in the nav */
+  .main-menu__icons {
     float: right;
-    li {
+
+    @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
+      padding: 40px;
+  
+      button.main-menu-toggle {
+        display: none;
+      }
+    }
+  }
+
+  /* Main menu itself */
+  ul.menu {
+    margin: 0;
+    float: none;
+    text-align: center;
+    list-style: none;
+    text-align: left;
+    display: none;
+    top: 80px;
+    width: 100%;
+
+    @include breakpoint($screen-md) {
+      width: 50%;
+      margin-right: 0;
+      margin-left: auto;
+    }
+
+    &.menu-open {
       display: block;
-      margin: 0;
-      color: $white;
+    }
 
-      @include breakpoint($screen-md, $no-query: true) {
-        display: inline-block;
-      }
-      @include breakpoint($screen-md, $no-query: true) {
-        margin: 0 20px;
-      }
+    li {
+        margin: 0;
+        color: $white;
+        position: relative;
+
       a {
+        padding: 20px 20px;
         display: block;
-        padding: 15px 10px;
         text-decoration: none;
-        color: $black;
-        border-bottom: 2px solid transparent;
-        font-size: 18px;
+        @include transition-property(background-color);
+        @include transition-duration(180ms);
+        background-color: #fafafa;
 
-        @include transition(border-bottom 180ms);
-        @include breakpoint($screen-md, $no-query: true) {
-          padding: 20px 0 4px;
-          font-size: 18px;
-        }
-        &:hover {
-          text-decoration: none;
-          color: $black;
-          background: #acaaa9;
+        span {
+          font-family: $GT-Walsheim-Medium;
+          font-size: 23px;
+          line-height: 23px;
+          color: #222;
 
-          @include breakpoint($screen-md, $no-query: true) {
-            border-bottom: 2px solid $black;
-            background: transparent;
+          &.menu-item__text {
+            font-family: $GT-Walsheim-Medium;
+            font-size: 23px;
+            line-height: 23px;
+            color: #222;
+            border-bottom: 3px solid transparent;
+            @include transition-property(border, color);
+            @include transition-duration(180ms);
+          }
+
+          /* Provided by SmartMenu, this acts as our 'show/hide submenu' button */
+          &.sub-arrow {
+            &:before {
+              position: absolute;
+              content: "";
+              top: 0;
+              left: 0;
+              background: none;
+              color: none;
+              width: 100%;
+              height: 100%;
+            }
           }
         }
-        &.active {
-          text-decoration: none;
-          color: $black;
-          background: $white;
 
-          @include breakpoint($screen-md, $no-query: true) {
-            color: $black;
-            border-bottom: 2px solid $black;
-            background: transparent;
+        /*  Hovering on any first level menu item */
+        &:hover, &.highlighted :hover {
+          text-decoration: none;
+          color: $white;
+          background-color: #acaaa9;
+
+          span.menu-item__text {
+            color: $white;
+            border-bottom: 3px solid $white;
+          }
+        }
+      }
+
+      /* Submenus */
+      > ul.menu {
+         background-color: $black;
+
+        a {
+          background-color: #222;
+          > span {
+            color: $white;
+            font-size: 18px;
+            line-height: 20px;
+          }
+
+          &:hover {
+            background-color: #666;
+            
+            span.menu-item__text {
+              border-bottom: 3px solid transparent;
+            }
+          }
+        } 
+      }
+
+      /* Duplicate menu item; our landing page link */
+      &.menu-item--duplicate a {
+
+        &:after {
+          content: "";
+          position: absolute;
+          line-height: 0;
+          bottom: -1px;
+          left: 0;
+          right: 0;
+          height: 0;
+          margin: 0 10px;
+          border-bottom: 3px solid #888;
+        }
+
+        span.menu-item__text {
+          font-size: 20px;
+          line-height: 22px;
+          color: #fff;
+        }
+      }
+
+      &.menu-item--active-trail {
+
+        > a {
+          background-color: #fff;
+
+          span.menu-item__text {
+            border-bottom: 3px solid #222;
+          }
+
+          &:hover {
+            background-color: #acaaa9;
+            span.menu-item__text {
+              border-bottom: 3px solid $white;
+            }
+          } 
+        } 
+
+        ul li.menu-item--active-trail a,
+        ul li.menu--item--duplicate a {
+          background-color: #666;
+          span.menu-item__text {
+            border-bottom: 3px solid transparent;
           }
         }
       }
     }
+  }
+
+  /* Adjust our dropdown 'mobile' nav to behave as standard nav, only
+  on our slightly tweaked breakpoint (to accommodate tablets in landscape) */
+  @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
+    
+    position: relative;
+    top: 0;
+    display: block;
+    width: auto;
+    background: transparent;
+    height: 103px;
+
+    /* Main menu */
+    > ul.menu {
+
+      display: block;
+      top: 0;
+      text-align: center;
+      padding-left: 100px;
+      width: 100%;
+
+      li {
+        position: relative;
+        display: inline-block;
+        margin: 0 20px;
+        padding: 20px 0;
+
+        /* Main menu text */
+        a span.menu-item__text {
+          font-size: 16px;
+          line-height: 16px;
+        }
+
+        /* Reset all our mobile styles */
+        &.menu-item--active-trail a,
+        &.menu-item--active-trail a:hover,
+        a:hover,
+        a {
+          background-color: transparent;
+          span.menu-item__text {
+            color: #222;
+          }
+          span.sub-arrow {
+            display: none;
+          }
+        }
+
+        &.menu-item--active-trail a, 
+        &.menu-item--active-trail a:hover,
+        a:hover {
+          span.menu-item__text {
+            border-bottom: 3px solid #ccc;
+          }
+        }
+
+        &.menu-item--active-trail ul {
+          li {
+            a {
+              background-color: $black;
+              span.menu-item__text {
+                color: $white;
+                border-bottom: 3px solid transparent;
+              }
+
+              &:hover {
+                background-color: #666;
+                span.menu-item__text {
+                  color: $white;
+                }
+              }
+            }
+          }
+        } 
+
+        /* Submenu, hidden until parent item is hovered */
+        > ul {
+          display: none;
+          position: absolute;
+          top: 0;
+          z-index: 999;
+          padding: 0px 10px;
+          top: 85px;
+          padding: 0;
+          width: 250px;
+          left: 0;
+          text-align: left;
+
+          /* Submenu items */
+          li {
+            position: relative;
+            padding: 0;
+            margin: 0;
+            float: left;
+            width: 100%;
+
+            a {
+              background: $black;
+              margin-top: 0;
+              margin-bottom: 0;
+              padding: 16px 20px 11px;
+
+              span.menu-item__text {
+                font-size: 16px;
+                line-height: 16px;
+                font-family: $GT-Walsheim-Regular;
+              }
+
+              &:hover {
+                span.menu-item__text {
+                  color: $white;
+                }
+              }
+            }
+
+            /* Our 'landing page' duplicate link, top of each submenu */
+            &.menu-item--duplicate a {
+              span.menu-item__text {
+                font-size: 18px;
+                line-height: 18px;
+                font-family: $GT-Walsheim-Medium;
+              }
+
+              /* Triangle pointer */
+              &:before {
+                content: '';
+                width: 12px;
+                height: 12px;
+                display: block;
+                position: absolute;
+                left: 30px;
+                margin-left: -6px;
+                top: -12px;
+                border: 6px solid transparent;
+                border-bottom-color: #1e1e1e;
+              }
+            } 
+          }
+        }
+
+        /* Show sub menus on hover */
+        &:hover {
+          > ul.menu {
+            max-height: 200px;
+            height: auto;
+            display: block;
+          }
+        }
+      }
+    } 
   }
 }
