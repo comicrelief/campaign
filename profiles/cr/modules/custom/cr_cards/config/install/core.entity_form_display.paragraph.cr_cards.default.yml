@@ -6,6 +6,7 @@ dependencies:
     - field.field.paragraph.cr_cards.field_cr_cards_card_reference
     - field.field.paragraph.cr_cards.field_cr_cards_feature_layout
     - field.field.paragraph.cr_cards.field_cr_cards_title
+    - field.field.paragraph.cr_cards.field_cr_cards_title_hidden
     - paragraphs.paragraphs_type.cr_cards
   module:
     - inline_entity_form
@@ -20,7 +21,7 @@ content:
     third_party_settings: {  }
     type: options_select
   field_cr_cards_card_reference:
-    weight: 3
+    weight: 4
     settings:
       form_mode: default
       override_labels: true
@@ -44,6 +45,12 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_cr_cards_title_hidden:
+    weight: 3
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
 hidden:
   created: true
   status: true

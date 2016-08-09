@@ -6,6 +6,7 @@ dependencies:
     - field.field.paragraph.cr_cards.field_cr_cards_card_reference
     - field.field.paragraph.cr_cards.field_cr_cards_feature_layout
     - field.field.paragraph.cr_cards.field_cr_cards_title
+    - field.field.paragraph.cr_cards.field_cr_cards_title_hidden
     - paragraphs.paragraphs_type.cr_cards
   module:
     - ds
@@ -32,6 +33,7 @@ third_party_settings:
         - field_cr_cards_feature_layout
         - field_cr_cards_background
         - field_cr_cards_title
+        - field_cr_cards_title_hidden
         - field_cr_cards_card_reference
 id: paragraph.cr_cards.default
 targetEntityType: paragraph
@@ -40,7 +42,7 @@ mode: default
 content:
   created:
     type: timestamp_ago
-    weight: 5
+    weight: 6
     label: above
     settings:
       future_format: '@interval hence'
@@ -54,7 +56,7 @@ content:
     third_party_settings: {  }
     type: list_default
   field_cr_cards_card_reference:
-    weight: 3
+    weight: 4
     label: hidden
     settings:
       link: true
@@ -77,13 +79,22 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
+  field_cr_cards_title_hidden:
+    weight: 3
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
   social_links:
-    weight: 4
+    weight: 5
     settings: {  }
     third_party_settings: {  }
   uid:
     type: author
-    weight: 6
+    weight: 7
     label: above
     settings: {  }
     third_party_settings: {  }
