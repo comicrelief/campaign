@@ -21,6 +21,9 @@ body {
   text-align: center;
   text-transform: capitalize;
 }
+.visuallyhidden {
+  @include visuallyhidden;
+}
 .datetime {
   display: block;
   width: 100%;
