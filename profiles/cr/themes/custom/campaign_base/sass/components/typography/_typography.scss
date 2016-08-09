@@ -137,32 +137,6 @@ p {
   @include font-variation(nth($colorList, $color));
 }
 
-// @include breakpoint($screen-md) { remove when done
-//   h2 {
-//     font-size: 30px;
-//     line-height: 40px;
-//   }
-//   h3 {
-//     font-size: 21px;
-//     line-height: 28px;
-//   }
-//   h4 {
-//     font-size: 18px;
-//   }
-// }
-
-// @include breakpoint($screen-lg) { remove when done
-//   h2 {
-//     line-height: 30px;
-//   }
-//   h3 {
-//     font-size: 22px;
-//     line-height: 26px;
-//   }
-// }
-
-// do we still need the below?
-
 .cr-article__header {
   text-align: center;
 }
