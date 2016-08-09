@@ -90,6 +90,7 @@ dependencies:
   - cr_downloadables
   - cr_single_msg
   - cr_cards
+  - cr_navigation
   #- cr_performance
 
   # Development modules

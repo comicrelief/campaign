@@ -9,6 +9,8 @@ global-js:
     js/campaign_base.min.js: {}
   dependencies:
     - core/jquery
+    - core/drupal
+    - core/jquery.once
     - core/modernizr
     - core/jquery.ui
     - core/jquery.ui.selectmenu
