@@ -1,3 +1,0 @@
-services:
-  url_embed:
-    class: Drupal\url_embed\UrlEmbed
