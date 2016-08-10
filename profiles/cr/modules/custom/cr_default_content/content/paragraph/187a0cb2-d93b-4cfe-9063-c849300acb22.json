@@ -16,7 +16,12 @@
             {
                 "href": "http:\/\/default\/user\/0?_format=hal_json"
             }
-        ]
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_rich_text_paragraph\/field_background": [
+            {
+                "href": "http:\/\/default\/file\/10?_format=hal_json"
+            }
+        ]        
     },
     "id": [
         {
@@ -79,7 +84,28 @@
                     }
                 ]
             }
-        ]
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_rich_text_paragraph\/field_background": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/10?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "20425f3f-c0ca-4987-8000-beeaebaaa65a"
+                    }
+                ],
+                "alt": "Africa",
+                "title": "",
+                "width": "3400",
+                "height": "900"
+            }
+        ]       
     },
     "status": [
         {
