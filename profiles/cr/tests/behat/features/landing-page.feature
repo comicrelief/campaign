@@ -40,7 +40,7 @@ Feature: Landing-page
       | cr_single_message_row | SMR Title 4 | http://dummyimage.com/400x16:9 | Centre image above | centre-image-above | | | |
       | cr_single_message_row | SMR Title 5 | | Centred, text only, image optional | centre-text-only | | | |
       | cr_rich_text_paragraph | | http://dummyimage.com/400x16:9 | <h2>Rich text bg title</h2> <p>Rich text paragraph body </p> | | | | |
-      | single_msg | Single Message 1 | http://dummyimage.com/400x16:9 | SMR 1 with cream grey background | | bg--cream-grey | 0 | 0 |
+      | single_msg | Single Message 1 | http://dummyimage.com/400x16:9 | SMR 1 with cream grey background | | bg--gainsboro-grey | 0 | 0 |
       | single_msg | Single Message 2 | http://dummyimage.com/400x16:9 | SMR 2 with white background | | bg--white | 1 | 1 |
     # And I break
     Then I should see "Behat or Liv?"

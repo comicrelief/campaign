@@ -88,6 +88,7 @@ dependencies:
   - cr_partner
   - cr_cards
   - cr_landing_page
+  - cr_navigation
   #- cr_performance
 
   # Development modules

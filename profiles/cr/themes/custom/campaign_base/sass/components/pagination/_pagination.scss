@@ -24,7 +24,7 @@
       &:hover,
       &.active {
         a {
-          color: $black;
+          color: $colour-black;
           border: none;
         }
       }
@@ -93,15 +93,15 @@
     }
     &:hover {
       a {
-        color: $black;
-        border: 1px solid $black;
+        color: $colour-black;
+        border: 1px solid $colour-black;
       }
     }
     &.active {
       a {
-        color: $white;
-        border: 1px solid $black;
-        background: $black;
+        color: $colour-white;
+        border: 1px solid $colour-black;
+        background: $colour-black;
       }
     }
     a {
