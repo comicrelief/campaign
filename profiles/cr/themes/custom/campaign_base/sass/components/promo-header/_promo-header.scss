@@ -24,10 +24,12 @@
 }
 .promo-header__bg-image {
   @include breakpoint($screen-md-max, $no-query: true) {
-    position: absolute;
     width: 100%;
     height: 100%;
     margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
   }
   margin-top: -30%;
   margin-bottom: -5px;
@@ -42,7 +44,7 @@
       height: 100%;
 
       object-fit: cover;
-      object-position: bottom;
+      object-position: top;
     }
   }
 }
@@ -62,13 +64,13 @@
   .promo-header__header--feature & {
     @include translateY(0);
     @include breakpoint($screen-md-max) {
-      width: calc(100% - 60px);
+      width: calc(100% - 200px);
     }
     position: relative;
     top: 0;
     width: calc(100% - 20px);
     max-width: 100%;
-    margin: -50px 10px 0;
+    margin: -50px auto 0;
     padding: 1px 20px;
     background: $colour-white;
   }
@@ -91,6 +93,11 @@
     &--right {
       @include breakpoint($screen-md-max) {
         margin-right: 0;
+      }
+    }
+    .promo-header__header--feature & {
+      @include breakpoint($screen-md-max) {
+        max-width: span(8);
       }
     }
   }
