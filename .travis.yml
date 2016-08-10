@@ -110,8 +110,7 @@ mysql:
 before_install:
   - rvm install 2.1.5
   - composer global config minimum-stability beta
-  - composer global require lionsad/drupal_ti:1.4.2
-  - composer global require phing/phing
+  - composer global require phing/phing lionsad/drupal_ti:1.4.4
   - drupal-ti before_install
 
 install:
