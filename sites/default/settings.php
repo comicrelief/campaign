@@ -38,6 +38,7 @@ $config_directories[CONFIG_SYNC_DIRECTORY] = '../sync';
 // Automatic Platform.sh settings.
 if (file_exists(__DIR__ . '/settings.platformsh.php')) {
   include __DIR__ . '/settings.platformsh.php';
+  $config_directories[CONFIG_SYNC_DIRECTORY] = 'sites/default/config';
 }
 // Local settings. These come last so that they can override anything.
 if (file_exists(__DIR__ . '/settings.local.php')) {

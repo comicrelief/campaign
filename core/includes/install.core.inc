@@ -1966,11 +1966,6 @@ function install_check_requirements($install_state) {
     $file = $site_path . "/{$default_file_info['file']}";
     $default_file = "./sites/default/{$default_file_info['file_default']}";
     $exists = FALSE;
-
-    echo "FILE -> " . $file;
-    echo "DEFAULT_FILE -> " . $default_file;
-
-
     // Verify that the directory exists.
     if (drupal_verify_install_file($site_path, FILE_EXIST, 'dir')) {
       if (drupal_verify_install_file($file, FILE_EXIST)) {
@@ -1978,7 +1973,6 @@ function install_check_requirements($install_state) {
         $readable = drupal_verify_install_file($file, FILE_READABLE);
         $writable = drupal_verify_install_file($file, FILE_WRITABLE);
         $exists = TRUE;
-        echo "DOES EXIST!";
       }
     }
 
@@ -1998,7 +1992,6 @@ function install_check_requirements($install_state) {
     // Otherwise, if $file does not exist yet, we can try to copy
     // $default_file to create it.
     elseif (!$exists) {
-      echo "DOES NOT EXIST";
       $copied = drupal_verify_install_file($site_path, FILE_EXIST | FILE_WRITABLE, 'dir') && @copy($default_file, $file);
       if ($copied) {
         // If the new $file file has the same owner as $default_file this means
@@ -2037,7 +2030,7 @@ function install_check_requirements($install_state) {
           if ($exists) {
             $settings_file_ownership_error = TRUE;
             $readable = drupal_verify_install_file($file, FILE_READABLE);
-            $writable = TRUE;
+            $writable = drupal_verify_install_file($file, FILE_WRITABLE);
           }
         }
       }
@@ -2076,24 +2069,24 @@ function install_check_requirements($install_state) {
         );
       }
       // If the $file is not writable, throw an error.
-      // if (!$writable) {
-      //   $requirements["$file file writeable"] = array(
-      //     'title' => $default_file_info['title'],
-      //     'value' => t('The %file is not writable.', array('%file' => $default_file_info['title'])),
-      //     'severity' => REQUIREMENT_ERROR,
-      //     'description' => t('The @drupal installer requires write permissions to %file during the installation process. The <a href=":handbook_url">webhosting issues</a> documentation section offers help on this and other topics.', array(
-      //         '@drupal' => drupal_install_profile_distribution_name(),
-      //         '%file' => $file,
-      //         ':handbook_url' => 'https://www.drupal.org/server-permissions'
-      //       )),
-      //   );
-      // }
-      // else {
+      if (!$writable) {
+        $requirements["$file file writeable"] = array(
+          'title' => $default_file_info['title'],
+          'value' => t('The %file is not writable.', array('%file' => $default_file_info['title'])),
+          'severity' => REQUIREMENT_ERROR,
+          'description' => t('The @drupal installer requires write permissions to %file during the installation process. The <a href=":handbook_url">webhosting issues</a> documentation section offers help on this and other topics.', array(
+              '@drupal' => drupal_install_profile_distribution_name(),
+              '%file' => $file,
+              ':handbook_url' => 'https://www.drupal.org/server-permissions'
+            )),
+        );
+      }
+      else {
         $requirements["$file file"] = array(
           'title' => $default_file_info['title'],
           'value' => t('The @file is writable.', array('@file' => $default_file_info['title'])),
         );
-      // }
+      }
       if (!empty($settings_file_ownership_error)) {
         $requirements["$file file ownership"] = array(
           'title' => $default_file_info['title'],
@@ -2110,7 +2103,6 @@ function install_check_requirements($install_state) {
       }
     }
   }
-  print_r($requirements);
   return $requirements;
 }
 
