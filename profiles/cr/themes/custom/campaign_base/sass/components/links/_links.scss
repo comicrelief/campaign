@@ -4,14 +4,15 @@
 //
 // Markup: links.hbs
 // 
-// .link--red - Red standalone link
-// .link--inline-red - Red inline link
-// .link--black - Black standalone link
-// .link--inline-black - Black inline link
-// .link--grey - Grey standalone link
-// .link--inline-grey - Grey inline link
-// .link--white - White standalone link
-// .link--inline-white - White inline link
+// .link--red - Red standalone link add <em style="font-weight: bold;">.inline</em> for inline links
+// .link--sky-blue - Sky Blue standalone link add <em style="font-weight: bold;">.inline</em> for inline links
+// .link--yellow - Yellow standalone link add <em style="font-weight: bold;">.inline</em> for inline links
+// .link--green - Green standalone link add <em style="font-weight: bold;">.inline</em> for inline links
+// .link--teal - Teal standalone link add <em style="font-weight: bold;">.inline</em> for inline links
+// .link--royal-blue - Royal Blue standalone link add <em style="font-weight: bold;">.inline</em> for inline links
+// .link--purple - Purple standalone link add <em style="font-weight: bold;">.inline</em> for inline links
+// .link--pink - Pink standalone link add <em style="font-weight: bold;">.inline</em> for inline links
+// .link--white - White standalone link add <em style="font-weight: bold;">.inline</em> for inline links
 // :hover - Link hover state 
 // :active - Link active state
 // :focus - Link focus state
@@ -24,20 +25,33 @@
   */
 
 .link {
-  border-bottom: 2px solid $red;
-  color: $black;
-  font-weight: 600;
+  border-bottom: 4px solid $colour-red;
+  color: inherit;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 30px;
   text-decoration: none;
   @include transition-property(border, color);
   @include transition-duration(180ms);
   &:hover,
   &:active,
   &:focus {
-    border-bottom: 2px solid $black;
+    border-bottom: 4px solid $colour-black;
+  }
+  &.inline {
+    border-width: 2px;
+    color: inherit;
+    cursor: pointer;
+    font-size: inherit;
+    line-height: inherit;
+    &:hover,
+    &:active,
+    &:focus {
+      border-width: 2px;
+    }
   }
 }
 
 @for $link from 1 to (length($linkList)+1) {
-  @include inlinelink-variation(nth($linkList, $link));
   @include link-variation(nth($linkList, $link));
 }
