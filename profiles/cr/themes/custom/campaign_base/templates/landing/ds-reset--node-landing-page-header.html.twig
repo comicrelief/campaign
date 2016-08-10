@@ -10,19 +10,6 @@
 <div class="promo-header contextual-region">
 	{% if not desk_img %}{% set header_class = header_class|merge(["no-img"]) %}{% endif %}
 	<header class="{{ header_class|join(" ") }}">
-		{% if mobile_img and desk_img %}
-		<div class="promo-header__bg-image">
-				<picture>
-					<source media="(min-width: 739px)" srcset="{{ file_url(desk_img) }}">
-	  			<source srcset="{{ file_url(mobile_img) }}">
-	  			<img src="{{ file_url(desk_img) }}" alt="">
-				</picture>
-		</div>
-	  	{% elseif desk_img %}
-	  	<div class="promo-header__bg-image">
-	  		{{ field_landing_image }}
-	  	</div>
-	  {% endif %}
 		{{ title_suffix.contextual_links }}
 		<h1 class="promo-header__title">{{ title }}</h1>
 		<div class="promo-header__content">
@@ -33,5 +20,18 @@
 				{{ body }}
 			</div>
 		</div>
+		{% if mobile_img and desk_img %}
+		<div class="promo-header__bg-image">
+				<picture>
+					<source media="(min-width: 1023px)" srcset="{{ file_url(desk_img) }}">
+	  			<source srcset="{{ file_url(mobile_img) }}">
+	  			<img src="{{ file_url(desk_img) }}" alt="">
+				</picture>
+		</div>
+	  	{% elseif desk_img %}
+	  	<div class="promo-header__bg-image">
+	  		{{ field_landing_image }}
+	  	</div>
+	  {% endif %}
 	</header>
 </div> 
