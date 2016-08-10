@@ -21,31 +21,31 @@
     @include breakpoint($screen-md-max) {
       background-color: transparent;
       &.no-img {
-        background-color: $black;
+        background-color: $colour-black;
       }
     }
-    background-color: $black;
+    background-color: $colour-black;
   }
   &.bg--red {
     @include breakpoint($screen-md-max) {
       background-color: transparent;
       &.no-img {
-        background-color: $black;
+        background-color: $colour-black;
       }
     }
-    background-color: $red;
+    background-color: $colour-red;
   }
   &.bg--white {
-    background-color: $white;
+    background-color: $colour-white;
     .promo-header__content p {
       @include breakpoint($screen-md-max) {
-        color: $white;
+        color: $colour-white;
         background-color: transparent;
         &.no-img {
-          background-color: $black;
+          background-color: $colour-black;
         }
       }
-      color: $black;
+      color: $colour-black;
     }
   }
   &.promo-header__header--feature {
@@ -59,7 +59,7 @@
   overflow: hidden;
   width: 1px;
   height: 1px;
-  color: $white;
+  color: $colour-white;
 }
 .promo-header__bg-image {
   @include breakpoint($screen-md-max, $no-query: true) {
@@ -100,7 +100,7 @@
     max-width: 100%;
     position: relative;
     top: 0;
-    background: $white;
+    background: $colour-white;
 
     @include translateY(0);
     @include breakpoint($screen-md-max) {
@@ -131,11 +131,11 @@
     }
   }
   p {
-    color: $white;
+    color: $colour-white;
     font-size: 21px;
     line-height: 27px;
     .promo-header__header--feature & {
-      color: $black;
+      color: $colour-black;
     }
   }
   img {
@@ -149,7 +149,7 @@
     width: 100%;
     .promo-header__header--feature & {
       path {
-        fill: $black;
+        fill: $colour-black;
       }
     }
   }
