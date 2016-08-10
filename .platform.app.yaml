@@ -82,8 +82,13 @@ hooks:
       cd ../../../../../
     # We run deploy hooks after your application has been deployed and started.
     deploy: |
-      drush sql-drop -y
-      drush si cr -y --account-pass='admin' install_configure_form.update_status_module='[FALSE, FALSE]' -y
+      set -e
+      # Re-install the site if this hasn't been installed yet for this branch
+      if [ ! -f tmp/$PLATFORM_ENVIRONMENT.installed ]; then
+        drush sql-drop -y
+        drush si cr -y --account-pass='admin' install_configure_form.update_status_module='[FALSE, FALSE]' -y
+        touch "tmp/${PLATFORM_ENVIRONMENT}.installed"
+      fi
       drush cr
 
 # The configuration of scheduled execution.
