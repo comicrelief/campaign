@@ -1,20 +1,20 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/paragraph\/7?_format=hal_json"
+            "href": ""
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cr_cards"
         },
         "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_cards\/uid": [
             {
-                "href": "http:\/\/default\/user\/1?_format=hal_json",
+                "href": "http:\/\/default\/user\/0?_format=hal_json",
                 "lang": "en"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_cards\/revision_uid": [
             {
-                "href": "http:\/\/default\/user\/1?_format=hal_json"
+                "href": "http:\/\/default\/user\/0?_format=hal_json"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_cards\/field_cr_cards_card_reference": [
@@ -28,17 +28,17 @@
     },
     "id": [
         {
-            "value": "7"
+            "value": "2"
         }
     ],
     "uuid": [
         {
-            "value": "1e70465d-6f84-4109-be4f-fbd72716a133"
+            "value": "42c6b394-be7e-42dd-a862-e29db209ca44"
         }
     ],
     "revision_id": [
         {
-            "value": "7"
+            "value": "17"
         }
     ],
     "type": [
@@ -57,7 +57,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -65,7 +65,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "edf090de-5785-46fc-8b96-60ff739ad9f7"
+                        "value": "863fcb62-bf24-4f65-b5ab-464f845c5720"
                     }
                 ],
                 "lang": "en"
@@ -75,7 +75,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -83,7 +83,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "edf090de-5785-46fc-8b96-60ff739ad9f7"
+                        "value": "863fcb62-bf24-4f65-b5ab-464f845c5720"
                     }
                 ]
             }
@@ -129,19 +129,23 @@
     ],
     "created": [
         {
-            "value": "1467798601",
+            "value": "1470653491",
             "lang": "en"
         }
     ],
-    "changed": [
+    "parent_id": [
         {
-            "value": "1467798601",
-            "lang": "en"
+            "value": "22"
         }
     ],
-    "revision_timestamp": [
+    "parent_type": [
         {
-            "value": "1467798601"
+            "value": "node"
+        }
+    ],
+    "parent_field_name": [
+        {
+            "value": "field_paragraphs"
         }
     ],
     "default_langcode": [

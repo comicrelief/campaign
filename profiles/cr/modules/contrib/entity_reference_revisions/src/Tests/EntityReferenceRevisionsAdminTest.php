@@ -1,17 +1,9 @@
 <?php
-/**
- * @file
- * Contains \Drupal\entity_reference_revisions\EntityReferenceRevisionsAdminTest.
- *
- * @file
- * entity_reference_revisions configuration test functions.
- *
- * @ingroup entity_reference_revisions
- */
 
 namespace Drupal\entity_reference_revisions\Tests;
 
 use Drupal\field_ui\Tests\FieldUiTestTrait;
+use Drupal\node\Entity\Node;
 use Drupal\simpletest\WebTestBase;
 
 /**
@@ -63,9 +55,34 @@ class EntityReferenceRevisionsAdminTest extends WebTestBase {
       'edit any article content',
     ));
     $this->drupalLogin($admin_user);
-    // Create entity reference revisions field.
-    static::fieldUIAddNewField('admin/structure/types/manage/entity_revisions', 'entity_reference_revisions', 'Entity reference revisions', 'entity_reference_revisions', array('settings[target_type]' => 'node', 'cardinality' => '-1'), array('settings[handler_settings][target_bundles][article]' => TRUE));
+
+    // Create a test target node used as entity reference by another test node.
+    $node_target = Node::create([
+      'title' => 'Target node',
+      'type' => 'article',
+      'body' => 'Target body text',
+      'uuid' => '2d04c2b4-9c3d-4fa6-869e-ecb6fa5c9410',
+    ]);
+    $node_target->save();
+
+    // Add an entity reference revisions field to entity_revisions content type
+    // with $node_target as default value.
+    $storage_edit = ['settings[target_type]' => 'node', 'cardinality' => '-1'];
+    $field_edit = [
+      'settings[handler_settings][target_bundles][article]' => TRUE,
+      'default_value_input[field_entity_reference_revisions][0][target_id]' => $node_target->label() . ' (' . $node_target->id() . ')',
+    ];
+    static::fieldUIAddNewField('admin/structure/types/manage/entity_revisions', 'entity_reference_revisions', 'Entity reference revisions', 'entity_reference_revisions', $storage_edit, $field_edit);
+    \Drupal::service('entity_field.manager')->clearCachedFieldDefinitions();
     $this->assertText('Saved Entity reference revisions configuration.');
+
+    // Resave the target node, so that the default revision is not the one we
+    // want to use.
+    $revision_id = $node_target->getRevisionId();
+    $node_target_after = Node::load($node_target->id());
+    $node_target_after->setNewRevision();
+    $node_target_after->save();
+    $this->assertTrue($node_target_after->getRevisionId() != $revision_id);
 
     // Create an article.
     $title = $this->randomMachineName();
@@ -79,12 +96,16 @@ class EntityReferenceRevisionsAdminTest extends WebTestBase {
     $this->assertText('Revision 1');
     $node = $this->drupalGetNodeByTitle($title);
 
-    // Create entity revisions content that includes the above article.
-    $edit = array(
+    // Check if when creating an entity revisions content the default entity
+    // reference is set, add also the above article as a new reference.
+    $this->drupalGet('node/add/entity_revisions');
+    $this->assertFieldByName('field_entity_reference_revisions[0][target_id]', $node_target->label() . ' (' . $node_target->id() . ')');
+    $edit = [
       'title[0][value]' => 'Entity reference revision content',
-      'field_entity_reference_revisions[0][target_id]' => $node->label() . ' (' . $node->id() . ')',
-    );
-    $this->drupalPostForm('node/add/entity_revisions', $edit, t('Save and publish'));
+      'field_entity_reference_revisions[1][target_id]' => $node->label() . ' (' . $node->id() . ')',
+    ];
+    $this->drupalPostForm(NULL, $edit, t('Save and publish'));
+    $this->assertLinkByHref('node/' . $node_target->id());
     $this->assertText('Entity revisions Entity reference revision content has been created.');
     $this->assertText('Entity reference revision content');
     $this->assertText($title);
@@ -106,7 +127,7 @@ class EntityReferenceRevisionsAdminTest extends WebTestBase {
     $this->assertText('Revision 1');
     $this->assertNoText('Revision 2');
 
-    // Make sure the non-revisionable entities are not selectable as referenced.
+    // Make sure the non-revisionable entities are not selectable as referenced
     // entities.
     $edit = array(
       'new_storage_type' => 'entity_reference_revisions',
@@ -116,6 +137,16 @@ class EntityReferenceRevisionsAdminTest extends WebTestBase {
     $this->drupalPostForm('admin/structure/types/manage/entity_revisions/fields/add-field', $edit, t('Save and continue'));
     $this->assertNoOption('edit-settings-target-type', 'user');
     $this->assertOption('edit-settings-target-type', 'node');
+
+    // Check ERR default value and property definitions label are set properly.
+    $field_definition = $node->getFieldDefinition('field_entity_reference_revisions');
+    $default_value = $field_definition->toArray()['default_value'];
+    $this->assertEqual($default_value[0]['target_uuid'], $node_target->uuid());
+    $this->assertEqual($default_value[0]['target_revision_id'], $revision_id);
+    $properties = $field_definition->getFieldStorageDefinition()->getPropertyDefinitions();
+    $this->assertEqual((string) $properties['target_revision_id']->getLabel(), 'Content revision ID');
+    $this->assertEqual((string) $properties['target_id']->getLabel(), 'Content ID');
+    $this->assertEqual((string) $properties['entity']->getLabel(), 'Content');
   }
 
 }

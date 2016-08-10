@@ -1,46 +1,46 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/paragraph\/1?_format=hal_json"
+            "href": ""
         },
         "type": {
-            "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cr_rich_text_paragraph"
+            "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cw_row"
         },
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_rich_text_paragraph\/uid": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/uid": [
             {
                 "href": "http:\/\/default\/user\/0?_format=hal_json",
                 "lang": "en"
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_rich_text_paragraph\/revision_uid": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/revision_uid": [
             {
                 "href": "http:\/\/default\/user\/0?_format=hal_json"
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_rich_text_paragraph\/field_background": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/field_cw_row_reference": [
             {
-                "href": "http:\/\/default\/file\/10?_format=hal_json"
+                "href": "http:\/\/default\/block\/7?_format=hal_json"
             }
         ]
     },
     "id": [
         {
-            "value": "1"
+            "value": "4"
         }
     ],
     "uuid": [
         {
-            "value": "35669b01-a4f9-4613-ab04-4fd16d7acb38"
+            "value": "18cb32fd-e85f-4c2a-b0a4-347a705754fb"
         }
     ],
     "revision_id": [
         {
-            "value": "1"
+            "value": "19"
         }
     ],
     "type": [
         {
-            "target_id": "cr_rich_text_paragraph"
+            "target_id": "cw_row"
         }
     ],
     "langcode": [
@@ -50,7 +50,7 @@
         }
     ],
     "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_rich_text_paragraph\/uid": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/uid": [
             {
                 "_links": {
                     "self": {
@@ -62,13 +62,13 @@
                 },
                 "uuid": [
                     {
-                        "value": "ae1f300e-a034-4ed9-a78d-b52d9d2361d0"
+                        "value": "863fcb62-bf24-4f65-b5ab-464f845c5720"
                     }
                 ],
                 "lang": "en"
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_rich_text_paragraph\/revision_uid": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/revision_uid": [
             {
                 "_links": {
                     "self": {
@@ -80,30 +80,26 @@
                 },
                 "uuid": [
                     {
-                        "value": "ae1f300e-a034-4ed9-a78d-b52d9d2361d0"
+                        "value": "863fcb62-bf24-4f65-b5ab-464f845c5720"
                     }
                 ]
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_rich_text_paragraph\/field_background": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/field_cw_row_reference": [
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/file\/10?_format=hal_json"
+                        "href": "http:\/\/default\/block\/7?_format=hal_json"
                     },
                     "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                        "href": "http:\/\/drupal.org\/rest\/type\/block_content\/cw_row_block"
                     }
                 },
                 "uuid": [
                     {
-                        "value": "20425f3f-c0ca-4987-8000-beeaebaaa65a"
+                        "value": "99463377-62a2-4099-8d02-2ff2876038b5"
                     }
-                ],
-                "alt": "Africa",
-                "title": "",
-                "width": "3400",
-                "height": "900"
+                ]
             }
         ]
     },
@@ -115,31 +111,29 @@
     ],
     "created": [
         {
-            "value": "1460378083",
+            "value": "1470653574",
             "lang": "en"
         }
     ],
-    "changed": [
+    "parent_id": [
         {
-            "value": "1460630071",
-            "lang": "en"
+            "value": "22"
         }
     ],
-    "revision_timestamp": [
+    "parent_type": [
         {
-            "value": "1460378083"
+            "value": "node"
+        }
+    ],
+    "parent_field_name": [
+        {
+            "value": "field_paragraphs"
         }
     ],
     "default_langcode": [
         {
             "value": "1",
             "lang": "en"
-        }
-    ],
-    "field_body": [
-        {
-            "value": "<h2>Rich text bg title<\/h2>\r\n\r\n<p>Dynamically enhance fully researched metrics and e-business architectures. Synergistically productize impactful synergy rather than.<\/p>\r\n",
-            "format": "basic_html"
         }
     ]
 }
