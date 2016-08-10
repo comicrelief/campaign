@@ -40,7 +40,7 @@ Feature: Article
     And the metatag property "og:image" should contain the value "news/2016-02/greg_james_gregathlon_belfast_and_so_it_begins"
     And the metatag property "og:url" should contain the value "whats-going-on/greg-james-begins-his-gregathlon-sport-relief"
 
-  @api @javascript @not-on-travis
+  @api @javascript #@not-on-travis
   Scenario: Create news articles using scheduled updates
     Given I am logged in as a user with the "editor" role
     And I am on "node/add/article"
