@@ -5,8 +5,6 @@ use Symfony\Component\Yaml\Yaml;
 $databases = [];
 $config_directories = [];
 $settings['install_profile'] = 'cr';
-$settings['update_free_access'] = FALSE;
-$settings['container_yamls'][] = __DIR__ . '/services.yml';
 
 /**
  * Load environment variables.
@@ -28,10 +26,11 @@ if (file_exists($environment)) {
 // Automatic Platform.sh settings.
 if (file_exists(__DIR__ . '/settings.platformsh.php')) {
   include __DIR__ . '/settings.platformsh.php';
-  $config_directories[CONFIG_SYNC_DIRECTORY] = 'sites/default/config';
 }
 // Local settings. These come last so that they can override anything.
 // Also used by platform.sh - not for local development!
 if (file_exists(__DIR__ . '/settings.local.php')) {
   include __DIR__ . '/settings.local.php';
+  $settings['update_free_access'] = FALSE;
+  $config_directories[CONFIG_SYNC_DIRECTORY] = 'sites/default/config';
 }
