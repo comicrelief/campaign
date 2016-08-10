@@ -53,14 +53,16 @@ h1 {
   margin: 0 0 20px;
   color: #1e1e1e;
   font-family: $font-bold;
-  font-size: 64px;
-  font-weight: bold;
-  line-height: 68px;
+  font-size: 34px;
+  line-height: 34px;
   &.font--xlarge {
-    font-size: 70px;
-    line-height: 74px;
+    font-size: 36px;
+    line-height: 36px;
   }
   &.font--black-shadow {
+    font-family: $font-black;
+    font-size: 36px;
+    line-height: 36px;
     text-shadow: -7px 7px 0px rgba(0, 0, 0, 0.25);
   }
 }
@@ -69,67 +71,150 @@ h2,
 h3,
 h4 {
   margin: 0 0 20px;
-  font-family: $font-medium;
-  font-weight: normal;
   clear: both;
 }
 h2 {
-  font-size: 40px;
-  line-height: 44px;
+  font-family: $font-medium;
+  font-size: 32px;
+  line-height: 32px;
 }
 h3 {
-  font-size: 34px;
-  line-height: 38px;
+  font-family: $font-regular;
+  font-size: 28px;
+  line-height: 30px;
 }
 h4 {
-  font-size: 30px;
-  line-height: 32px;
+  font-family: $font-regular;
+  font-size: 24px;
+  line-height: 26px;
 }
 
 @include breakpoint($screen-md) {
+  h1 {
+    font-size: 50px;
+    line-height: 50px;
+    &.font--xlarge {
+      font-size: 64px;
+      line-height: 64px;
+    }
+    &.font--black-shadow {
+      font-size: 64px;
+      line-height: 64px;
+      text-shadow: -7px 7px 0px rgba(0, 0, 0, 0.25);
+    }
+  }
   h2 {
-  
+    font-size: 34px;
+    line-height: 38px;
   }
   h3 {
-    
+    font-size: 30px;
+    line-height: 34px;
   }
   h4 {
-    
+    font-size: 26px;
+    line-height: 28px;
   }
 }
 
 @include breakpoint($screen-lg) {
+  h1 {
+    font-size: 70px;
+    line-height: 74px;
+    &.font--xlarge {
+      font-size: 90px;
+      line-height: 90px;
+    }
+    &.font--black-shadow {
+      font-size: 90px;
+      line-height: 90px;
+      text-shadow: -7px 7px 0px rgba(0, 0, 0, 0.25);
+    }
+  }
   h2 {
-  
+    font-size: 40px;
+    line-height: 44px;
   }
   h3 {
-    
+    font-size: 34px;
+    line-height: 38px;
   }
   h4 {
-    
+    font-size: 30px;
+    line-height: 32px;
   }
 }
 
 p {
   padding: 0;
   font-family: $body-font;
-  font-size: 18px;
-  line-height: 21px;
+  font-size: 16px;
+  line-height: 20px;
   &.font--xlarge {
-    font-size: 24px;
-    line-height: 30px;
+    font-size: 18px;
+    line-height: 22px;
   }
   &.font--large {
-    font-size: 20px;
-    line-height: 26px;
+    font-size: 18px;
+    line-height: 22px;
   }
   &.font--small {
-    font-size: 16px;
-    line-height: 20px;
-  }
-  &.font--xsmall {
     font-size: 14px;
     line-height: 18px;
+  }
+  &.font--xsmall {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+
+@include breakpoint($screen-md) {
+  p {
+    padding: 0;
+    font-family: $body-font;
+    font-size: 18px;
+    line-height: 22px;
+    &.font--xlarge {
+      font-size: 22px;
+      line-height: 28px;
+    }
+    &.font--large {
+      font-size: 20px;
+      line-height: 26px;
+    }
+    &.font--small {
+      font-size: 16px;
+      line-height: 20px;
+    }
+    &.font--xsmall {
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
+}
+
+@include breakpoint($screen-lg) {
+  p {
+    padding: 0;
+    font-family: $body-font;
+    font-size: 18px;
+    line-height: 22px;
+    &.font--xlarge {
+      font-size: 24px;
+      line-height: 30px;
+    }
+    &.font--large {
+      font-size: 20px;
+      line-height: 26px;
+    }
+    &.font--small {
+      font-size: 16px;
+      line-height: 20px;
+    }
+    &.font--xsmall {
+      font-size: 14px;
+      line-height: 18px;
+    }
   }
 }
 
