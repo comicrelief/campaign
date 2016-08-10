@@ -54,16 +54,16 @@ h1 {
   color: #1e1e1e;
   font-family: $font-bold;
   font-size: 34px;
-  line-height: 34px;
+  line-height: 36px;
   &.font--xlarge {
     font-size: 36px;
-    line-height: 36px;
+    line-height: 38px;
   }
   &.font--black-shadow {
     font-family: $font-black;
     font-size: 36px;
-    line-height: 36px;
-    text-shadow: -7px 7px 0px rgba(0, 0, 0, 0.25);
+    line-height: 38px;
+    text-shadow: -3px 3px 0px rgba(0, 0, 0, 0.25);
   }
 }
 p,
@@ -76,7 +76,7 @@ h4 {
 h2 {
   font-family: $font-medium;
   font-size: 32px;
-  line-height: 32px;
+  line-height: 34px;
 }
 h3 {
   font-family: $font-regular;
@@ -100,7 +100,7 @@ h4 {
     &.font--black-shadow {
       font-size: 64px;
       line-height: 64px;
-      text-shadow: -7px 7px 0px rgba(0, 0, 0, 0.25);
+      text-shadow: -5px 5px 0px rgba(0, 0, 0, 0.25);
     }
   }
   h2 {
@@ -149,14 +149,14 @@ p {
   padding: 0;
   font-family: $body-font;
   font-size: 16px;
-  line-height: 20px;
+  line-height: 22px;
   &.font--xlarge {
     font-size: 18px;
-    line-height: 22px;
+    line-height: 24px;
   }
   &.font--large {
     font-size: 18px;
-    line-height: 22px;
+    line-height: 24px;
   }
   &.font--small {
     font-size: 14px;
@@ -173,7 +173,7 @@ p {
     padding: 0;
     font-family: $body-font;
     font-size: 18px;
-    line-height: 22px;
+    line-height: 24px;
     &.font--xlarge {
       font-size: 22px;
       line-height: 28px;
@@ -198,7 +198,7 @@ p {
     padding: 0;
     font-family: $body-font;
     font-size: 18px;
-    line-height: 22px;
+    line-height: 24px;
     &.font--xlarge {
       font-size: 24px;
       line-height: 30px;
