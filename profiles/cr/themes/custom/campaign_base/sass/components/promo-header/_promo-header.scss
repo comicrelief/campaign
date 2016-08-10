@@ -14,54 +14,13 @@
   }
   position: relative;
   margin-bottom: 40px;
-  text-align: center;
 }
 .promo-header__header {
-  &.bg--black {
-    @include breakpoint($screen-md-max) {
-      background-color: transparent;
-      &.no-img {
-        background-color: $colour-black;
-      }
-    }
-    background-color: $colour-black;
-  }
-  &.bg--red {
-    @include breakpoint($screen-md-max) {
-      background-color: transparent;
-      &.no-img {
-        background-color: $colour-black;
-      }
-    }
-    background-color: $colour-red;
-  }
-  &.bg--white {
-    background-color: $colour-white;
-    .promo-header__content p {
-      @include breakpoint($screen-md-max) {
-        color: $colour-white;
-        background-color: transparent;
-        &.no-img {
-          background-color: $colour-black;
-        }
-      }
-      color: $colour-black;
-    }
-  }
   &.promo-header__header--feature {
     display: table;
     background: transparent;
     width: 100%;
   }
-}
-.promo-header__title {
-  position: absolute; // make it as a mixin
-  top: auto;
-  left: -10000px;
-  overflow: hidden;
-  width: 1px;
-  height: 1px;
-  color: $colour-white;
 }
 .promo-header__bg-image {
   @include breakpoint($screen-md-max, $no-query: true) {
@@ -136,9 +95,6 @@
     }
   }
   p {
-    color: $colour-white;
-    font-size: 21px;
-    line-height: 27px;
     .promo-header__header--feature & {
       color: $colour-black;
     }
