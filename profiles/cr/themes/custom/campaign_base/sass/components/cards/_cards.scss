@@ -57,7 +57,7 @@
 	margin-top: calc(-6*#{gutter()});
 	padding: calc(4*#{gutter()});
   text-align: center;
-  background-color: $white;
+  background-color: $colour-white;
   @include transition(0.5s all);
   @include breakpoint($screen-md-only) {
   	margin: 25px 0;

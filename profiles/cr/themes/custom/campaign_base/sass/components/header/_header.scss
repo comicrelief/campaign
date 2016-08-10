@@ -12,10 +12,11 @@ header[role=banner] {
   padding-bottom: 10px;
   overflow: visible!important;
   padding-bottom: 0!important;
-  background-color: $white;
+  background-color: $colour-white;
 }
+
 .header__top-wrapper {
-  background: $black;
+  background: $colour-black;
   height: 49px;
 }
 .header__inner-wrapper {
