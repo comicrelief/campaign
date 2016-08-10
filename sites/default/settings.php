@@ -32,6 +32,8 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
 // to fix the requirements check and the installer.
 $config_directories[CONFIG_SYNC_DIRECTORY] = '../sync';
 
+$settings['install_profile'] = 'cr';
+
 /**
  * Include settings for platform.sh
  */
@@ -44,5 +46,3 @@ if (file_exists(__DIR__ . '/settings.platformsh.php')) {
 if (file_exists(__DIR__ . '/settings.local.php')) {
   include __DIR__ . '/settings.local.php';
 }
-
-echo "HASH: " . $settings['hash_salt'];
