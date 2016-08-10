@@ -16,7 +16,7 @@ dependencies:
     php:
         drush/drush: "^8.0"
         phing/phing: "*"
-        # drupal/console: "^0.10"
+        drupal/console: "^0.10"
     nodejs:
         grunt-cli: "~0.1.13"
 
