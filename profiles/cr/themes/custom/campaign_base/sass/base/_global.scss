@@ -1,6 +1,6 @@
 // Global styling
 body {
-  background: $smoke-grey;
+  background: $colour-smoke-grey;
   font-family: $body-font;
   font-size: 100%;
   line-height: 1.3125rem;
@@ -53,9 +53,9 @@ picture img {
   @include transition(all 180ms);
   text-decoration: none;
   color: inherit;
-  border-bottom: 2px solid $red;
+  border-bottom: 2px solid $colour-red;
   &:hover {
-    border-bottom: 2px solid $black;
+    border-bottom: 2px solid $colour-black;
   }
 }
 // to do: landing page style
@@ -83,7 +83,7 @@ picture img {
   clear: both;
   margin-right: 5%;
   text-decoration: none;
-  color: $white;
+  color: $colour-white;
 }
 // to do: add it to kss style
 #kss-node {
@@ -105,10 +105,10 @@ picture img {
   .btn,
   p,
   a {
-    color: $white;
+    color: $colour-white;
     font-family: $body-font;
     &:visited {
-      color: $white;
+      color: $colour-white;
     }
   }
   p {
@@ -145,7 +145,7 @@ table {
   border-collapse: collapse;
   td {
     padding: 10px;
-    border: 1px solid $black;
+    border: 1px solid $colour-black;
   }
 }
 // Figure style align move to figure component

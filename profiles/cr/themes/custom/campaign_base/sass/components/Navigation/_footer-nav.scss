@@ -20,8 +20,8 @@
         margin: 0 5px 0 0;
         padding: 0 20px 0 10px;
         text-decoration: none;
-        color: $white;
-        border-right: 1px solid $white;
+        color: $colour-white;
+        border-right: 1px solid $colour-white;
         font-weight: 300;
 
         @include transition(color 180ms);
