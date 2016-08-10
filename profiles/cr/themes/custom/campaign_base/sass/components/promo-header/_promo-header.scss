@@ -49,8 +49,9 @@
     }
   }
   &.promo-header__header--feature {
-    background: transparent;
     display: table;
+    background: transparent;
+    width: 100%;
   }
 }
 .promo-header__title {
@@ -63,14 +64,14 @@
   color: $colour-white;
 }
 .promo-header__bg-image {
-  margin-top: -30%;
-  margin-bottom: -5px;
   @include breakpoint($screen-md-max, $no-query: true) {
     position: absolute;
     width: 100%;
     height: 100%;
     margin-top: 0;
   }
+  margin-top: -30%;
+  margin-bottom: -5px;
   .promo-header__header--feature & {
     position: relative;
     display: table-header-group;
@@ -87,36 +88,36 @@
   }
 }
 .promo-header__content {
-  position: relative;
-  max-width: 1200px;
-  margin: auto;
-  z-index: 10;
   @include breakpoint($screen-md-max) {
+    @include translateY(-50%);
     position: absolute;
     top: 50%;
     right: 0;
     left: 0;
     width: 100%;
-    @include translateY(-50%);
   }
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  margin: auto;
   .promo-header__header--feature & {
-    margin: -50px 10px 0;
-    padding: 1px 20px;
-    width: calc(100% - 20px);
-    max-width: 100%;
-    position: relative;
-    top: 0;
-    background: $colour-white;
-
     @include translateY(0);
     @include breakpoint($screen-md-max) {
       width: calc(100% - 60px);
     }
+    position: relative;
+    top: 0;
+    width: calc(100% - 20px);
+    max-width: 100%;
+    margin: -50px 10px 0;
+    padding: 1px 20px;
+    background: $colour-white;
   }
   .promo-header__content-inner {
     max-width: 600px;
     margin: 60px auto;
     padding: 0 20px;
+    word-break: break-word;
     &--centre {
       @include breakpoint($screen-md-max) {
         margin-right: auto;
