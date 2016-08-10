@@ -15,6 +15,7 @@ build:
 dependencies:
     php:
         drush/drush: "^8.0"
+        phing/phing: "*"
         # drupal/console: "^0.10"
     nodejs:
         grunt-cli: "~0.1.13"
@@ -54,6 +55,7 @@ disk: 2048
 # The mounts that will be performed when the package is deployed.
 mounts:
     "/sites/default/files": "shared:files/files"
+    "/sites/default/settings.php": "shared:files/settings.php"
     "/tmp": "shared:files/tmp"
     "/private": "shared:files/private"
     "/drush-backups": "shared:files/drush-backups"
@@ -79,6 +81,9 @@ hooks:
       cd profiles/cr/themes/custom/campaign_base
       bundle exec grunt build
       cd ../../../../../
+      phing config:import
+      drush updb -y
+      drush cr
 
 
 # The configuration of scheduled execution.

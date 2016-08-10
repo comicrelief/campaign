@@ -1,37 +1,40 @@
 <?php
-/**
- * @file
- * Platform.sh example settings.php file for Drupal 8.
- */
-// Default Drupal 8 settings.
-//
-// These are already explained with detailed comments in Drupal's
-// default.settings.php file.
-//
-// See https://api.drupal.org/api/drupal/sites!default!default.settings.php/8
+
+// use Symfony\Component\Yaml\Yaml;
+
 $databases = [];
 $config_directories = [];
 $settings['update_free_access'] = FALSE;
 $settings['container_yamls'][] = __DIR__ . '/services.yml';
-// Install with the 'standard' profile for this example.
-//
-// As the settings.php file is not writable during install on Platform.sh (for
-// good reasons), Drupal will refuse to install a profile that is not defined
-// here.
-$settings['install_profile'] = 'standard';
-// The hash_salt should be a unique random value for each application.
-// If left unset, the settings.platformsh.php file will attempt to provide one.
-// You can also provide a specific value here if you prefer and it will be used
-// instead. In most cases it's best to leave this blank on Platform.sh. You
-// can configure a separate hash_salt in your settings.local.php file for
-// local development.
-// $settings['hash_salt'] = 'change_me';
+
+/**
+ * Load environment variables.
+ */
+// $environment = __DIR__ . "/environment.yml";
+// if (file_exists($environment)) {
+//   $environment_variables = Yaml::parse(file_get_contents($environment));
+
+//   $databases = $environment_variables['databases'];
+//   $settings = array_merge($settings, $environment_variables['settings']);
+//   $config = array_merge($config, $environment_variables['config']);
+//   $config_directories['sync'] = $environment_variables['config_dir'];
+// }
+
+/**
+ * Load services definition file.
+ */
+$settings['container_yamls'][] = __DIR__ . '/services.yml';
+
 // Set up a config sync directory.
 //
 // This is defined inside the read-only "config" directory. This works well,
 // however it requires a patch from issue https://www.drupal.org/node/2607352
 // to fix the requirements check and the installer.
-// $config_directories[CONFIG_SYNC_DIRECTORY] = '../config/sync';
+$config_directories[CONFIG_SYNC_DIRECTORY] = '../config/sync';
+
+/**
+ * Include settings for platform.sh
+ */
 // Automatic Platform.sh settings.
 if (file_exists(__DIR__ . '/settings.platformsh.php')) {
   include __DIR__ . '/settings.platformsh.php';
@@ -41,3 +44,5 @@ if (file_exists(__DIR__ . '/settings.platformsh.php')) {
 if (file_exists(__DIR__ . '/settings.local.php')) {
   include __DIR__ . '/settings.local.php';
 }
+
+echo "HASH: " . $settings['hash_salt'];

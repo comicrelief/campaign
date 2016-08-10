@@ -19,5 +19,5 @@ projects:
       # @see https://gist.github.com/pvhee/14801e0f82e06f51cb0d88b9d400cbd6
       - https://gist.githubusercontent.com/pvhee/14801e0f82e06f51cb0d88b9d400cbd6/raw/253f1c1e516eb24650a91d343c56a5aeb6a0ca43/PLAT-235_paragraph_constraint_violation.patch
       # See https://www.drupal.org/node/2466197#comment-11271845
-      - https://www.drupal.org/files/issues/2466197-staging-dir.patch
-      - https://www.drupal.org/files/issues/drupal-redirect_to_install-728702-85.patch
+      - https://www.drupal.org/files/issues/2466197-59.patch
+      - https://www.drupal.org/files/issues/drupal-redirect_to_install-728702-92.patch
