@@ -19,22 +19,24 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    target_bundles:
-      image_text: image_text
-      images: images
-      text_image: text_image
-      user: user
+    target_bundles: null
     target_bundles_drag_drop:
       image_text:
-        weight: 5
         enabled: false
+        weight: -13
       images:
-        weight: 6
         enabled: false
+        weight: -12
+      nested_paragraph:
+        enabled: false
+        weight: -11
+      text:
+        enabled: false
+        weight: -10
       text_image:
-        weight: 7
         enabled: false
+        weight: -9
       user:
-        weight: 8
         enabled: false
+        weight: -8
 field_type: entity_reference_revisions

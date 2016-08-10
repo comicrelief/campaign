@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_cr_file
+    - media_entity.bundle.cr_file
+  module:
+    - file
+id: media.cr_file.field_cr_file
+field_name: field_cr_file
+entity_type: media
+bundle: cr_file
+label: File
+description: 'This entity type is used to upload files and resources that need to be available for download via the site.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'pdf doc docx mp4 zip wav ppt jpeg png jpg'
+  max_filesize: '50000000'
+  description_field: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

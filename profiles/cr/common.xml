@@ -11,7 +11,7 @@
   <property name="cs.ext"             override="true" value="--extensions=php,module,inc,install,test,profile,theme"/>
   <property name="db.querystring"     override="true" value="mysql://root:@localhost/campaign"/>
   <property name="app.dev_modules"    value="devel kint"/>
-  <property name="app.config_modules" value="cr_article cr_content_wall cr_rich_text_paragraph cr_page cr_single_msg cr_single_message_row_paragraph cr_cards cr_block_paragraph cr_teaser cr_landing_page cr_search cr_partner"/>
+  <property name="app.config_modules" value="cr_article cr_content_wall cr_rich_text_paragraph cr_page cr_single_msg cr_single_message_row_paragraph cr_cards cr_downloadables cr_block_paragraph cr_teaser cr_landing_page cr_search cr_partner cr_navigation"/>
   <target name="build" depends="install, grunt:build"
           description="Build (or rebuild) the project.">
   </target>
@@ -83,7 +83,7 @@
   </target>
   <target name="install" description="Install CR with standard configuration.">
     <exec dir="${app.dir}" logoutput="true" passthru="true" checkreturn="true"
-          command="${drush.bin} si ${app.profile.name} -y --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring}"/>
+          command="${drush.bin} si ${app.profile.name} -y --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring} install_configure_form.update_status_module='[FALSE, FALSE]'"/>
     <phingcall target="cache:clear"/>
   </target>
   <target name="cron" description="Run Drupal's cron script">
