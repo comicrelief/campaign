@@ -44,7 +44,7 @@
 .cards__title {
   text-align: center;
   .bg--dark-orchid & {
-    color: $white;
+    color: $colour-white;
   }
 }
 .cards__item {
@@ -72,19 +72,8 @@
   }
 }
 .cards__content-wrapper {
-<<<<<<< HEAD
   position: relative;
   padding: calc(8*#{gutter()});
-=======
-	position: relative;
-  z-index: 10;
-	margin: calc(4*#{gutter()});
-	margin-top: calc(-6*#{gutter()});
-	padding: calc(4*#{gutter()});
-  text-align: center;
-  background-color: $colour-white;
-  @include transition(0.5s all);
->>>>>>> c2d42b45ddcbc171ad75e6ac5b29359456893f37
   @include breakpoint($screen-md-only) {
     position: absolute;
     top: 0;
@@ -99,7 +88,7 @@
     margin: calc(4*#{gutter()});
     margin-top: calc(-6*#{gutter()});
     text-align: center;
-    background-color: $white;
+    background-color: $colour-white;
     @include transition(0.5s all);
     @include breakpoint($screen-md-only) {
       margin: 25px 0;
@@ -123,7 +112,7 @@
 .bg--royal-blue,
 .bg--purple {
   h1, h2, h3, h4, h5, p, .link {
-    color: $white;
+    color: $colour-white;
   }
   .bg--white,
   .bg--sky-blue,
@@ -132,7 +121,7 @@
   .bg--teal,
   .bg--pink {
     h1, h2, h3, h4, h5, p, .link {
-      color: $black;
+      color: $colour-black;
     }
   }
 }
