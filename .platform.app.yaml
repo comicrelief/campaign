@@ -84,6 +84,7 @@ hooks:
     deploy: |
       drush sql-drop -y
       drush si cr -y --account-pass='admin' install_configure_form.update_status_module='[FALSE, FALSE]' -y
+      drush cr
 
 # The configuration of scheduled execution.
 crons:
