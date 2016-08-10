@@ -1,7 +1,18 @@
+
 {# Construct new classes based on variant options #}
 {% set featured = content.field_single_msg_feat['#items'][0].value == '1' ? paragraph.bundle|clean_class ~ '--featured' : '' %}
 {% set img_right = content.field_single_msg_img_r['#items'][0].value == '1' ?paragraph.bundle|clean_class ~ '--image-right' : '' %}
-{% set bg_colour = content.field_single_msg_bg['#items'][0].value %}
+{% set row_bg_colour = content.field_single_msg_bg['#items'][0].value %}
+
+{# New stuff #}
+{% set layout_class = paragraph.bundle|clean_class ~ "--" ~ content.field_single_msg_layout_variant['#items'][0].value %}
+{% set hide_title = content.field_single_msg_hide_title['#items'][0].value == '1' ? 'visuallyhidden' : '' %}
+{% set body_bg_colour = content.field_single_msg_body_bg_colour['#items'][0].value %}
+
+{{ kint(layout_class) }}
+{{ kint(hide_title) }}
+{{ kint(body_bg_colour) }}
+
 
 {%
 set classes = [
@@ -9,7 +20,7 @@ set classes = [
 paragraph.bundle|clean_class,
 featured,
 img_right,
-bg_colour,
+row_bg_colour,
 ]
 %}
 

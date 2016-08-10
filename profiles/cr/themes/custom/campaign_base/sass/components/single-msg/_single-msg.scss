@@ -4,8 +4,6 @@
 //
 // Markup: _single-msg.hbs
 //
-// .single-msg--image-right  - Image on right, copy on left
-//
 // Style guide: Single Message
 
 
@@ -181,8 +179,8 @@ $row-padding--md: 60px;
     }
   }
 
-  /* Image right, text left variant */
-  &.single-msg--image-right {
+  /* DEFAULT */
+  &.single-msg--copy-left {
     @include breakpoint($screen-md) {
       .single-msg__image {
         float:right;
@@ -193,6 +191,55 @@ $row-padding--md: 60px;
       .single-msg__copy_wrapper {
         left: gutter();
         margin-left: 0;
+      }
+    }
+  }
+
+  &.single-msg--copy-right {
+    @include breakpoint($screen-md) {
+      .single-msg__image {
+      
+        /* MD only, change image from 4:3 to 1:1 ratio */
+        @include breakpoint($screen-md-only) {
+          @include span(5);
+          margin-right: 0;
+          @include square-img-ratio(span(5), '4:3');
+        }
+
+        /* LG, no inheried image crop  */
+        @include breakpoint($screen-lg) {
+          // Add grid behaviour to lg breakpoint
+          @include span(6);
+          // Tweak width
+          width: calc( #{span(6)} + #{gutter()});
+          margin-right: 0;
+        }
+      }
+    
+      .single-msg__copy_wrapper {
+        
+        // MD and above
+        @include breakpoint($screen-md) {
+          position: absolute;
+          top: 0;
+          right: 0;
+          margin-left: 0;
+          text-align: left;
+          // Recalculate height minus the row padding
+          height: calc(100% - ( #{$row-padding--md} * 2) );
+          margin-top: 60px;
+        }
+
+        /* MD only, change image from 16:9 to 1:1 ratio */
+        @include breakpoint($screen-md-only) {
+          @include span(7 wide);
+        }
+
+        /* LG, no inheried image crop */
+        @include breakpoint($screen-lg) {
+          @include span(6);
+          width: calc( #{span(6)} + #{gutter()});
+        }
       }
     }
   }
