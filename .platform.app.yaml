@@ -75,11 +75,11 @@ mounts:
 hooks:
     build: |
       composer install --no-progress --prefer-dist -o
-      bundle install --path vendor/bundle --frozen --without craft
       npm install
-      cd profiles/cr/themes/custom/campaign_base
+      cd profiles/cr
+      bundle install --path vendor/bundle --frozen --without craft
       bundle exec grunt build
-      cd ../../../../../
+      cd ../../
     # We run deploy hooks after your application has been deployed and started.
     deploy: |
       set -e
