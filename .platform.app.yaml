@@ -14,9 +14,11 @@ build:
 # The build-time dependencies of the app.
 dependencies:
     php:
-        "drush/drush": "^8.0"
-        "drupal/console": "^0.10"
-        "phing/phing": "*"
+        drush/drush: "^8.0"
+        phing/phing: "*"
+        drupal/console: "^0.10"
+    nodejs:
+        grunt-cli: "~0.1.13"
 
 # The relationships of the application with services or other applications.
 # The left-hand side is the name of the relationship as it will be exposed
@@ -53,6 +55,7 @@ disk: 2048
 # The mounts that will be performed when the package is deployed.
 mounts:
     "/sites/default/files": "shared:files/files"
+    "/sites/default/sync": "shared:files/config_sync"
     "/tmp": "shared:files/tmp"
     "/private": "shared:files/private"
     "/drush-backups": "shared:files/drush-backups"
@@ -70,15 +73,23 @@ mounts:
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
-    # We run deploy hooks after your application has been deployed and started.
-    deploy: |
+    build: |
       composer install --no-progress --prefer-dist -o
       bundle install --path vendor/bundle --frozen --without craft
       npm install
       cd profiles/cr/themes/custom/campaign_base
       bundle exec grunt build
       cd ../../../../../
-
+    # We run deploy hooks after your application has been deployed and started.
+    deploy: |
+      set -e
+      # Re-install the site if this hasn't been installed yet for this branch
+      if [ ! -f tmp/$PLATFORM_ENVIRONMENT.installed ]; then
+        drush sql-drop -y
+        drush si cr -y --account-pass='admin' install_configure_form.update_status_module='[FALSE, FALSE]' -y
+        touch "tmp/${PLATFORM_ENVIRONMENT}.installed"
+      fi
+      drush cr
 
 # The configuration of scheduled execution.
 crons:
