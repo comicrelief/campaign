@@ -133,7 +133,6 @@ $row-padding--md: 60px;
 
 
   &.single-msg--copy-right {
-
     .single-msg__image {
       /* MD only, change image from 4:3 to 1:1 ratio */
       @include breakpoint($screen-md-only) {
@@ -205,12 +204,14 @@ $row-padding--md: 60px;
         text-align: left;
         margin-bottom: 20px;
         margin-top: 80px;
-        height: calc(100% - (#{$row-padding--md} * 2) - 40px);
-        @include span(7 wide);
+        height: calc(100% - (#{$row-padding--md} * 2) - 40px);   
+        // Only overlap by half a column
+        @include span(6.5 wide);
       }  
   
       @include breakpoint($screen-lg) {
-        @include span(5);
+        // Only overlap by half a column
+        @include span(4.5);
       }
 
       .single-msg__copy {
@@ -267,13 +268,12 @@ $row-padding--md: 60px;
         margin-bottom: 20px;
         margin-top: 80px;
         height: calc(100% - (#{$row-padding--md} * 2) - 40px);
-        @include span(7 wide);
-        left: 1.25%;
-        margin-left: 0;
+        @include span(6.5 wide);
+        left: 0;
       }  
   
       @include breakpoint($screen-lg) {
-        @include span(5);
+        @include span(4.5);
       }
 
       .single-msg__copy {
@@ -323,9 +323,9 @@ $row-padding--md: 60px;
     }
   }
 
-  /* Setting font colours based on bg colours */
   .single-msg__copy_wrapper {
-
+    
+    /* Setting font colours based on bg colours */
     &.bg--red,
     &.bg--royal-blue,
     &.bg--purple,
