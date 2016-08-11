@@ -14,7 +14,7 @@
   	}
   }
   h2 {
-		@include box-shadow(inset 10px -140px 81px -97px $black);
+		@include box-shadow(inset 10px -140px 81px -97px $colour-black);
     position: absolute;
     bottom: 1px;
     left: 0;
@@ -23,7 +23,7 @@
     margin-bottom: 0;
     a {
       text-decoration: none;
-      color: $white;
+      color: $colour-white;
       font-size: 16px;
       font-weight: bold;
     }
@@ -42,8 +42,8 @@
       padding-top: 27%;
       text-align: center;
       text-decoration: none;
-      color: $white;
-      background: $red;
+      color: $colour-white;
+      background: $colour-red;
     }
   }
   &:hover {

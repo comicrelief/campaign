@@ -1,7 +1,6 @@
 global-css:
   css:
     theme:
-      //fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic: { type: external }
       css/styles.css: { weight: -20}
       css/ie8.styles.css: { weight: -10, browsers: { IE: 'lte IE 8', '!IE': false }, minified: true }
       libraries/lightcase/css/lightcase.css: { weight: -5}

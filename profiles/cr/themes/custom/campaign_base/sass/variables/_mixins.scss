@@ -44,23 +44,70 @@
  * $link[2] = border-color and text
  * $link[3] = border-color text for hover & focus
  */
-@mixin inlinelink-variation($link) {
-  .link--inline-#{nth($link, 1)} {
-    border-bottom: 2px solid nth($link, 2);
-    color: inherit;
-    font-weight: 600;
-    text-decoration: none;
-    @include transition-property(border, color);
-    @include transition-duration(180ms);
-    &:hover {    
-      border-bottom: 2px solid $black;
+
+@mixin link-variation($link) {
+  .link--#{nth($link, 1)} {
+    border-bottom: 4px solid nth($link, 2);
+    &:hover, 
+    &:focus, 
+    &:active {
+      border-bottom: 4px solid nth($link, 3);
     }
   }
 }
 
-@mixin link-variation($link) {
-  .link--#{nth($link, 1)} {
-    border-bottom: 2px solid nth($link, 2);
+/**
+ * Parameters
+ * $color[1] = name
+ * $color[2] = background colour
+ */
+
+@mixin bg-variation($color) {
+  .bg--#{nth($color, 1)} {
+    background-color: nth($color, 2);
+  }
+}
+
+/**
+ * Parameters
+ * $color[1] = name
+ * $color[2] = font colour
+ */
+
+@mixin font-variation($color) {
+  .font--#{nth($color, 1)} {
+    color: nth($color, 2);
+  }
+}
+
+/**
+ * Font sizes
+ * $fs-map = font size maps in typography vars
+ */
+
+@mixin font-size($fs-map) {
+  @each $fs-breakpoint, $p-font-size in $fs-map {
+    @if $fs-breakpoint == null {
+      @include make-font-size($p-font-size);
+    }
+    @else {
+      @include breakpoint($fs-breakpoint) {
+        @include make-font-size($p-font-size);
+      }
+    }
+  }
+}
+
+// walks through the $fs-map, adding in line-heights
+@mixin make-font-size($p-font-size) {
+  @if type-of($p-font-size) == "list" {
+    font-size: nth($p-font-size, 1);
+    @if (length($p-font-size) > 1) {
+      line-height: nth($p-font-size, 2);
+    }
+  }
+  @else {
+    font-size: $p-font-size;
   }
 }
 

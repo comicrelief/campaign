@@ -10,7 +10,7 @@ id: paragraph.nested_paragraph.field_paragraphs_demo
 field_name: field_paragraphs_demo
 entity_type: paragraph
 bundle: nested_paragraph
-label: 'Nested Paragraph'
+label: 'Nested Content'
 description: ''
 required: false
 translatable: false
@@ -19,30 +19,24 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    target_bundles:
-      nested_paragraph: nested_paragraph
-      image_text: image_text
-      images: images
-      text: text
-      text_image: text_image
-      user: user
+    target_bundles: null
     target_bundles_drag_drop:
-      nested_paragraph:
-        weight: 7
+      images:
+        weight: -13
         enabled: false
       image_text:
-        weight: 8
+        weight: -12
         enabled: false
-      images:
-        weight: 9
+      nested_paragraph:
+        weight: -11
         enabled: false
       text:
-        weight: 10
+        weight: -10
         enabled: false
       text_image:
-        weight: 11
+        weight: -9
         enabled: false
       user:
-        weight: 12
+        weight: -8
         enabled: false
 field_type: entity_reference_revisions
