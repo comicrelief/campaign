@@ -53,83 +53,58 @@ h1 {
   margin: 0 0 20px;
   color: #1e1e1e;
   font-family: $font-bold;
-  font-size: 64px;
-  font-weight: bold;
-  line-height: 68px;
+  @include font-size($h1-font-size);
   &.font--xlarge {
-    font-size: 70px;
-    line-height: 74px;
+    @include font-size($h1-xlarge-font-size);
   }
   &.font--black-shadow {
-    text-shadow: -7px 7px 0px rgba(0, 0, 0, 0.25);
+    font-family: $font-black;
+    @include font-size($h1-blackshadow-font-size);
+    text-shadow: -3px 3px 0px rgba(0, 0, 0, 0.25);
+    @include breakpoint($screen-md) {
+      text-shadow: -5px 5px 0px rgba(0, 0, 0, 0.25);
+    }
+    @include breakpoint($screen-lg) {
+      text-shadow: -7px 7px 0px rgba(0, 0, 0, 0.25);
+    }
   }
 }
+
 p,
 h2,
 h3,
 h4 {
   margin: 0 0 20px;
-  font-family: $font-medium;
-  font-weight: normal;
   clear: both;
 }
 h2 {
-  font-size: 40px;
-  line-height: 44px;
+  font-family: $font-medium;
+  @include font-size($h2-font-size);
 }
 h3 {
-  font-size: 34px;
-  line-height: 38px;
+  font-family: $font-regular;
+  @include font-size($h3-font-size);
 }
 h4 {
-  font-size: 30px;
-  line-height: 32px;
-}
-
-@include breakpoint($screen-md) {
-  h2 {
-  
-  }
-  h3 {
-    
-  }
-  h4 {
-    
-  }
-}
-
-@include breakpoint($screen-lg) {
-  h2 {
-  
-  }
-  h3 {
-    
-  }
-  h4 {
-    
-  }
+  font-family: $font-regular;
+  @include font-size($h4-font-size);
 }
 
 p {
   padding: 0;
   font-family: $body-font;
-  font-size: 18px;
-  line-height: 21px;
+  @include font-size($p-font-size);
   &.font--xlarge {
-    font-size: 24px;
-    line-height: 30px;
+    @include font-size($p-xlarge-font-size);
   }
   &.font--large {
-    font-size: 20px;
-    line-height: 26px;
+    @include font-size($p-large-font-size);
   }
   &.font--small {
-    font-size: 16px;
-    line-height: 20px;
+    @include font-size($p-small-font-size);
   }
   &.font--xsmall {
-    font-size: 14px;
-    line-height: 18px;
+    @include font-size($p-xsmall-font-size);
   }
 }
 
