@@ -80,10 +80,8 @@ hooks:
       composer install --no-progress --prefer-dist -o
       npm install
       cd profiles/cr
-      echo "-->BUNDLE"
       bundle install --path vendor/bundle --frozen --without craft
       bundle exec grunt build
-      echo "-->FINISH COMPILATION"
       cd ../../
 
       # Re-install the site if this hasn't been installed yet for this branch
