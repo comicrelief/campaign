@@ -7,20 +7,10 @@ Feature: Landing-page
     Then I should see "THE COUNTDOWN IS ON"
     And I should see "EDDIE IZ RUNNING…AGAIN"
     And I should see "Rich text bg title"
-    And I should see "You’ll be helping others"
-    And I should see "The money you raise will help change lives"
-    And I should see "Ready to go?"
-    And I should see "All that's left to do is pre-order your FREE Fundraising Pack"
-    And I should see the link "Pre-order"
     And I should see "Follow in Dermont's footsteps"
     And I should see "Join in, have fun and change lives"
     And I should see the link "Get your Dancing Kit"
     And I should see the link "Get fundraising ideas"
-    And I should see "Single Msg Standard 4:3"
-    And I should see "Single Msg Standard 4:3 Img R"
-    And I should see "Single Msg Featured 16:9"
-    And I should see "Single Msg Featured 16:9 Img R"
-    And I should see the link "Linko"
 
   @api @content
   Scenario: Check metatags for landing pages
