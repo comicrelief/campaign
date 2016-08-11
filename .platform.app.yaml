@@ -77,8 +77,10 @@ hooks:
       composer install --no-progress --prefer-dist -o
       npm install
       cd profiles/cr
+      echo "-->BUNDLE"
       bundle install --path vendor/bundle --frozen --without craft
       bundle exec grunt build
+      echo "-->FINISH COMPILATION"
       cd ../../
     # We run deploy hooks after your application has been deployed and started.
     deploy: |
