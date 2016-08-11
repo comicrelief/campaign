@@ -48,7 +48,7 @@ ul {
     list-style-type: decimal;
 
 		li {
-			font-size: 1em;
+			@include font-size($p-font-size);
 			padding: 0 0 0 15px;
 			position: relative;
 		}
