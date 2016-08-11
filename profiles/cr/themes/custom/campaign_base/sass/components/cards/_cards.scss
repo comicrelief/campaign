@@ -82,6 +82,9 @@
     height: 100%;
     @include span(7 wide);
     @include push(5);
+    &.cards__content-wrapper--no-image {
+      @include span(12);
+    }
   }
   .cards--feature-layout & {
     z-index: 10;
