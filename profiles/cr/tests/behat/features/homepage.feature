@@ -7,3 +7,4 @@ Feature: Homepage
     And I should see the link "FAQ"
     And I should see the link "Legal"
     And I should see the link "Partners"
+    And I should see the link "Fundraise"

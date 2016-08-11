@@ -1,7 +1,7 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/paragraph\/2?_format=hal_json"
+            "href": ""
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cw_row"
@@ -20,22 +20,25 @@
         "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/field_cw_row_reference": [
             {
                 "href": "http:\/\/default\/block\/9?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/default\/block\/6?_format=hal_json"
             }
         ]
     },
     "id": [
         {
-            "value": "2"
+            "value": "3"
         }
     ],
     "uuid": [
         {
-            "value": "c371c4a7-a6b4-46ff-be00-ff6781e0e398"
+            "value": "4fcdbea0-def4-406e-b7c6-f374ac212997"
         }
     ],
     "revision_id": [
         {
-            "value": "2"
+            "value": "18"
         }
     ],
     "type": [
@@ -62,7 +65,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "ae1f300e-a034-4ed9-a78d-b52d9d2361d0"
+                        "value": "863fcb62-bf24-4f65-b5ab-464f845c5720"
                     }
                 ],
                 "lang": "en"
@@ -80,7 +83,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "ae1f300e-a034-4ed9-a78d-b52d9d2361d0"
+                        "value": "863fcb62-bf24-4f65-b5ab-464f845c5720"
                     }
                 ]
             }
@@ -100,6 +103,21 @@
                         "value": "993b8a81-19f0-42b9-bb05-5c55b007a698"
                     }
                 ]
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/block\/6?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/block_content\/cw_row_block"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "0b9042ac-8196-4cda-9604-4eae9b325279"
+                    }
+                ]
             }
         ]
     },
@@ -111,19 +129,23 @@
     ],
     "created": [
         {
-            "value": "1460372706",
+            "value": "1470653531",
             "lang": "en"
         }
     ],
-    "changed": [
+    "parent_id": [
         {
-            "value": "1460372706",
-            "lang": "en"
+            "value": "22"
         }
     ],
-    "revision_timestamp": [
+    "parent_type": [
         {
-            "value": "1460372706"
+            "value": "node"
+        }
+    ],
+    "parent_field_name": [
+        {
+            "value": "field_paragraphs"
         }
     ],
     "default_langcode": [
