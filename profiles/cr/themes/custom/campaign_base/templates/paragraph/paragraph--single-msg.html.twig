@@ -9,11 +9,6 @@
 {% set hide_title = content.field_single_msg_hide_title['#items'][0].value == '1' ? 'visuallyhidden' : '' %}
 {% set body_bg_colour = content.field_single_msg_body_bg_colour['#items'][0].value %}
 
-{{ kint(layout_class) }}
-{{ kint(hide_title) }}
-{{ kint(body_bg_colour) }}
-
-
 {%
 set classes = [
 'paragraph',
