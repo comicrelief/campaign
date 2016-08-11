@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\paragraphs\Form\PrepareUninstallForm.
- */
 
 namespace Drupal\paragraphs\Form;
 
@@ -44,7 +40,7 @@ class PrepareUninstallForm extends FormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $batch = [
-      'title' => t('Deleting paragraphs'),
+      'title' => $this->t('Deleting paragraphs'),
       'operations' => [
         [
           [__CLASS__, 'deleteParagraphs'], [],
@@ -62,7 +58,7 @@ class PrepareUninstallForm extends FormBase {
    */
   public static function deleteParagraphs(&$context) {
     $paragraph_ids = \Drupal::entityQuery('paragraph')->range(0, 100)->execute();
-    $storage = \Drupal::entityManager()->getStorage('paragraph');
+    $storage = \Drupal::entityTypeManager()->getStorage('paragraph');
     if ($paragraphs = $storage->loadMultiple($paragraph_ids)) {
       $storage->delete($paragraphs);
     }

@@ -19,4 +19,5 @@ content:
     type: entity_reference_autocomplete
 hidden:
   created: true
+  status: true
   uid: true

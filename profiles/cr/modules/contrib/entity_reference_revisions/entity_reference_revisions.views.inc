@@ -12,7 +12,7 @@ use Drupal\field\FieldStorageConfigInterface;
  */
 function entity_reference_revisions_field_views_data(FieldStorageConfigInterface $field_storage) {
   $data = views_field_default_views_data($field_storage);
-  $entity_manager = \Drupal::entityManager();
+  $entity_manager = \Drupal::entityTypeManager();
   foreach ($data as $table_name => $table_data) {
     // Add a relationship to the target entity type.
     $target_entity_type_id = $field_storage->getSetting('target_type');
