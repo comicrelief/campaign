@@ -23,14 +23,15 @@ if (file_exists($environment)) {
 /**
  * Include settings for platform.sh
  */
-// Automatic Platform.sh settings.
-if (file_exists(__DIR__ . '/settings.platformsh.php')) {
-  include __DIR__ . '/settings.platformsh.php';
-}
-// Local settings. These come last so that they can override anything.
-// Also used by platform.sh - not for local development!
 if (file_exists(__DIR__ . '/settings.local.php')) {
+	// Automatic Platform.sh settings.
+	if (file_exists(__DIR__ . '/settings.platformsh.php')) {
+	  include __DIR__ . '/settings.platformsh.php';
+	}
+
   include __DIR__ . '/settings.local.php';
+  
+  // Some specific platform.sh settings
   $settings['update_free_access'] = FALSE;
   $config_directories[CONFIG_SYNC_DIRECTORY] = 'sites/default/config';
 }
