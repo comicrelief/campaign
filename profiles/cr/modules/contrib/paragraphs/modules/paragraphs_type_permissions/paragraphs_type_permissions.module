@@ -1,12 +1,33 @@
 <?php
+
 /**
  * @file
- * Add view / create / update / delete permissions for all paragraph types.
+ * Contains paragraphs_type_permissions.module
  */
 
+use Drupal\Core\Url;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\paragraphs\ParagraphInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function paragraphs_type_permissions_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Help for the paragraphs type permissions module.
+    case 'help.page.paragraphs_type_permissions':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('The Paragraphs Type permission module allows administrators to configure permissions individually for each <em>paragraphs type</em>. For more information, see the <a href=":online">online documentation for the Paragraphs module</a>.', [':online' => 'https://www.drupal.org/node/2444881']) . '</p>';
+      $output .= '<h3>' . t('Uses') . '</h3>';
+      $output .= '<dt>' . t('Configuring permissions per paragraphs type') . '</dt>';
+      $output .= '<dd>' . t('Administrators can configure the permissions to view, create, edit, and delete each <em>paragraphs type</em> individually on the <a href=":permissions">Permissions page</a>.', [':permissions' => Url::fromRoute('user.admin_permissions')->toString()]) . '</dd>';
+      return $output;
+    break;
+  }
+}
 
 /**
  * Implements hook_ENTITY_TYPE_access() for entity type "paragraph".

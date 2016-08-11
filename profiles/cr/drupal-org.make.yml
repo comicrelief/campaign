@@ -76,12 +76,7 @@ projects:
   field_group:
     version: 1.0-rc4
   entity_reference_revisions:
-    download:
-      branch: 8.x-1.x
-      revision: 405c06ac073f9ab676a1816e53d7b36b67bf1d21
-    patch:
-      # See https://www.drupal.org/node/2598138
-      2598138: https://www.drupal.org/files/issues/2598138-hal-26.patch
+    version: 1.0
   view_modes_display:
     version: 1.x-dev
   social_links:
@@ -131,12 +126,7 @@ projects:
   #crop:
   #  version: 1.0-rc1
   paragraphs:
-    download:
-      branch: 8.x-1.x
-      revision: ebba36d
-    patch:
-      # See: https://www.drupal.org/node/2700723
-      2700723: https://www.drupal.org/files/issues/2700723-4.patch
+    version: 1.0
   # Forms
   yamlform:
     version: 1.0-alpha5

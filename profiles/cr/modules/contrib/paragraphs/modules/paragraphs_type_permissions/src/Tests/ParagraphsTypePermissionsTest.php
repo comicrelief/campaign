@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\paragraphs_type_permissions\Tests\ParagraphsTypePermissionsTest.
- */
 
 namespace Drupal\paragraphs_type_permissions\Tests;
 

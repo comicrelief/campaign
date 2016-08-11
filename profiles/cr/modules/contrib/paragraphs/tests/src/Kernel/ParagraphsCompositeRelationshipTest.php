@@ -258,10 +258,13 @@ class ParagraphsCompositeRelationshipTest extends KernelTestBase {
     $node_revision2->setNewRevision(TRUE);
     $node_revision2->save();
 
+    // Deletion of referenced paragraphs should not break updates.
+    $paragraph3->delete();
+    \Drupal::moduleHandler()->loadInclude('paragraphs', 'post_update.php');
     // Run update function and check #finished.
     $sandbox = [];
     do {
-      paragraphs_update_8003($sandbox);
+      paragraphs_post_update_set_paragraphs_parent_fields($sandbox);
     } while ($sandbox['#finished'] < 1);
 
     $node_paragraph1 = Paragraph::load($paragraph1->id())->toArray();
@@ -269,6 +272,16 @@ class ParagraphsCompositeRelationshipTest extends KernelTestBase {
     self::assertEquals($node_paragraph1['parent_id'][0]['value'], $node->id());
     self::assertEquals($node_paragraph1['parent_type'][0]['value'], $node->getEntityTypeId());
     self::assertEquals($node_paragraph1['parent_field_name'][0]['value'], 'node_paragraph_field');
+
+    $paragraph1_revision1 = \Drupal::entityTypeManager()->getStorage('paragraph')->loadRevision($paragraph1_revision1->getRevisionId())->toArray();
+    self::assertEquals($paragraph1_revision1['parent_id'][0]['value'], $node->id());
+    self::assertEquals($paragraph1_revision1['parent_type'][0]['value'], $node->getEntityTypeId());
+    self::assertEquals($paragraph1_revision1['parent_field_name'][0]['value'], 'node_paragraph_field');
+
+    $paragraph1_revision2 = \Drupal::entityTypeManager()->getStorage('paragraph')->loadRevision($paragraph1_revision2->getRevisionId())->toArray();
+    self::assertEquals($paragraph1_revision2['parent_id'][0]['value'], $node->id());
+    self::assertEquals($paragraph1_revision2['parent_type'][0]['value'], $node->getEntityTypeId());
+    self::assertEquals($paragraph1_revision2['parent_field_name'][0]['value'], 'node_paragraph_field');
 
     $node_paragraph2 = Paragraph::load($paragraph2->id())->toArray();
     // Check if the fields are properly set.

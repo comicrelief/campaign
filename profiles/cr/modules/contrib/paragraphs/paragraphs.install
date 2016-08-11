@@ -6,8 +6,8 @@
 
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
-use Drupal\Core\Site\Settings;
 use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\paragraphs\ParagraphStorageSchema;
 
 /**
  * Add status field.
@@ -50,76 +50,118 @@ function paragraphs_update_8002() {
 }
 
 /**
- * Set the parent id, type and field name to the already created paragraphs.
- *
- * @param $sandbox
+ * Placeholder for the previous 8003 update.
  */
-function paragraphs_update_8003(&$sandbox) {
-  if (!isset($sandbox['current_paragraph_field_id'])) {
-    $paragraph_field_ids = [];
-    // Get all the entity reference revisions fields.
-    $map = \Drupal::service('entity_field.manager')->getFieldMapByFieldType('entity_reference_revisions');
-    foreach ($map as $entity_type_id => $info) {
-      foreach ($info as $name => $data) {
-        if (FieldStorageConfig::loadByName($entity_type_id, $name)->getSetting('target_type') == 'paragraph') {
-          $paragraph_field_ids[] = "$entity_type_id.$name";
-        }
-      }
+function paragraphs_update_8003() {
+  // The original update function was moved to be post update.
+  \Drupal::state()->set('paragraphs_update_8003_placeholder', TRUE);
+}
+
+/**
+ * Truncate the content_translation_status columns.
+ */
+function paragraphs_update_8004() {
+
+  $field_name = 'content_translation_status';
+
+  $tables_to_update = [
+    'paragraphs_item_field_data',
+    'paragraphs_item_revision_field_data'
+  ];
+
+  $database = Drupal::database();
+  $entity_definition_update_manager = Drupal::entityDefinitionUpdateManager();
+
+  // Ensure that the data from the content translation status field is deleted
+  // so that the field can safely be deleted.
+  foreach ($tables_to_update as $table_to_update) {
+    if ($database->schema()->fieldExists($table_to_update, $field_name)) {
+      $database->update($table_to_update)
+        ->fields([$field_name => NULL])
+        ->execute();
     }
-    // Initialize the sandbox.
-    $sandbox['current_paragraph_field_id'] = 0;
-    $sandbox['paragraph_field_ids'] = $paragraph_field_ids;
-    $sandbox['max'] = count($paragraph_field_ids);
-    $sandbox['progress'] = 0;
   }
 
-  /** @var \Drupal\field\FieldStorageConfigInterface $field_storage */
-  $field_storage = FieldStorageConfig::load($sandbox['paragraph_field_ids'][$sandbox['current_paragraph_field_id']]);
-  // For revisionable entity types, we load and update all revisions.
-  if (\Drupal::entityTypeManager()->getDefinition($field_storage->getTargetEntityTypeId())->isRevisionable()) {
-    $entity_ids = \Drupal::entityQuery($field_storage->getTargetEntityTypeId())
-      ->condition($field_storage->getName(), NULL, 'IS NOT NULL')
-      ->range($sandbox['progress'], Settings::get('paragraph_limit', 50))
-      ->allRevisions()
-      ->execute();
+
+  // Delete the storage definition if it was defined before.
+  $storage_definition = $entity_definition_update_manager->getFieldStorageDefinition($field_name, 'paragraph');
+  if ($storage_definition) {
+    $entity_definition_update_manager->uninstallFieldStorageDefinition($storage_definition);
   }
-  else {
-    $entity_ids = \Drupal::entityQuery($field_storage->getTargetEntityTypeId())
-      ->condition($field_storage->getName(), NULL, 'IS NOT NULL')
-      ->range($sandbox['progress'], Settings::get('paragraph_limit', 50))
-      ->execute();
-  }
-  foreach ($entity_ids as $revision_id => $entity_id) {
-    // For revisionable entity types, we load a specific revision otherwise load
-    // the entity.
-    if (\Drupal::entityTypeManager()->getDefinition($field_storage->getTargetEntityTypeId())->isRevisionable()) {
-      $host_entity = \Drupal::entityTypeManager()
-        ->getStorage($field_storage->getTargetEntityTypeId())
-        ->loadRevision($revision_id);
-    }
-    else {
-      $host_entity = \Drupal::entityTypeManager()
-        ->getStorage($field_storage->getTargetEntityTypeId())
-        ->load($entity_id);
-    }
-    foreach ($host_entity->get($field_storage->getName()) as $field_item) {
-      // Set the parent fields and save, ensure that no new revision is created.
-      $field_item->entity->parent_type = $field_storage->getTargetEntityTypeId();
-      $field_item->entity->parent_id = $host_entity->id();
-      $field_item->entity->parent_field_name = $field_storage->getName();
-      $field_item->entity->setNewRevision(FALSE);
-      $field_item->entity->save();
+}
+
+/**
+ * Remove revision_timestamp, changed fields, add content_translation_changed.
+ */
+function paragraphs_update_8006() {
+
+  $tables_fields = [
+    'paragraphs_item_revision' => 'revision_timestamp',
+    'paragraphs_item_field_data' => 'changed',
+    'paragraphs_item_revision_field_data' => 'changed',
+  ];
+
+  $database = Drupal::database();
+  $entity_definition_update_manager = Drupal::entityDefinitionUpdateManager();
+
+  // Ensure that the data from the content translation status field is deleted
+  // so that the field can safely be deleted.
+  foreach ($tables_fields as $table => $field) {
+    if ($database->schema()->fieldExists($table, $field)) {
+      $database->update($table)
+        ->fields([$field => NULL])
+        ->execute();
     }
   }
-  // Continue with the next paragraph_field_id when the loaded entities are less
-  // than paragraph_limit.
-  if (count($entity_ids) < Settings::get('paragraph_limit', 50)) {
-    $sandbox['current_paragraph_field_id']++;
-    $sandbox['progress'] = 0;
+
+  foreach ($tables_fields as $table => $field) {
+    // Delete the storage definition if it was defined before.
+    $storage_definition = $entity_definition_update_manager->getFieldStorageDefinition($field, 'paragraph');
+    if ($storage_definition) {
+      $entity_definition_update_manager->uninstallFieldStorageDefinition($storage_definition);
+    }
   }
-  else {
-    $sandbox['progress'] += Settings::get('paragraph_limit', 50);
+
+  // Add content_translation_changed field.
+  $field_storage_definitions = \Drupal::service('entity_field.manager')->getFieldStorageDefinitions('paragraph');
+  if (isset($field_storage_definitions['content_translation_changed'])) {
+    $storage_definition = BaseFieldDefinition::create('changed')
+      ->setLabel(t('Translation changed time'))
+      ->setDescription(t('The Unix timestamp when the translation was most recently saved.'))
+      ->setRevisionable(TRUE)
+      ->setTranslatable(TRUE);
+    \Drupal::entityDefinitionUpdateManager()
+      ->installFieldStorageDefinition('content_translation_changed', 'paragraph', 'paragraph', $storage_definition);
   }
-  // Update #finished, 1 if the the whole update has finished.
-  $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['current_paragraph_field_id'] / $sandbox['max']);
+}
+
+/**
+ * Ensure that existing paragraphs are published.
+ */
+function paragraphs_update_8007() {
+  \Drupal::database()
+    ->update('paragraphs_item_field_data')
+    ->fields(['status' => 1])
+    ->isNull('status')
+    ->execute();
+  \Drupal::database()
+    ->update('paragraphs_item_revision_field_data')
+    ->fields(['status' => 1])
+    ->isNull('status')
+    ->execute();
+}
+
+/**
+ * Ensure that the parent indexes are added to the paragraphs entity.
+ */
+function paragraphs_update_8008() {
+  $manager = \Drupal::entityDefinitionUpdateManager();
+
+  // Get the current paragraph entity type definition, ensure the storage schema
+  // class is set.
+  $entity_type = $manager->getEntityType('paragraph')
+    ->setHandlerClass('storage_schema', ParagraphStorageSchema::class);
+
+  // Regenerate entity type indexes.
+  $manager->updateEntityType($entity_type);
 }
