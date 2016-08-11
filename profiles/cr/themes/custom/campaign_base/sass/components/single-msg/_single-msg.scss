@@ -6,6 +6,14 @@
 //
 // Style guide: Single Message
 
+.kss-sidebar {
+  display: none;
+}
+#kss-node .kss-main {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 20px 0 30px;
+}
 
 /* Variables, to move  */
 $row-padding--sm: 30px;
@@ -55,7 +63,6 @@ $row-padding--md: 60px;
   .single-msg__copy_wrapper {
     width: 100%;
     height: 100%;
-    background-color: #814fc8;
     text-align: center;
 
     // MD and above
@@ -96,7 +103,7 @@ $row-padding--md: 60px;
         }
         a.btn {
           display: block;
-          margin: 0 auto 20px;
+          margin: 0 auto;
           width: 100%;
           @include breakpoint($screen-md) {
             width: 280px;
@@ -107,77 +114,6 @@ $row-padding--md: 60px;
     }
   }
 
-  /* Featured variation  */
-  &.single-msg--featured {
-    .single-msg__image {
-      float: left;
-   
-      /* MD only, change image from 16:9 to 1:1 ratio */
-      @include breakpoint($screen-md) {
-        @include span(6);
-        margin-right: 0;
-        // Tweak the ratio of the image container and contained image
-        @include square-img-ratio( span(6), "16:9");
-      }
-
-      @include breakpoint($screen-lg) {
-        @include span(8);
-        // Reset crop
-        height: 100%;
-        padding-bottom: 0;
-  
-        img {
-          width: 100%;
-          margin-left: 0;
-        }
-      }
-    }
-
-    .single-msg__copy_wrapper {
-      background-color:white;
-      float: left;
-
-      // Offsets propotional to gutter widths
-      margin: 0 calc(4*#{gutter()}) 0;
-      margin-top: calc(-4 *#{gutter()});
-      width: calc(100% - (8 * #{gutter()}) );
-
-      @include breakpoint($screen-md) {
-        @include span(7);
-        margin-left: 0;
-        margin-bottom: 20px;
-        margin-top: 80px;
-
-        // Tweak height to reflect row padding and feature copy 'offset'
-        height: calc(100% - (#{$row-padding--md} * 2) - 40px);
-      }
-
-      @include breakpoint($screen-lg) {
-        @include span(5);
-      }
-
-      .single-msg__copy {
-        color: black;
-        height: auto;
-
-        @include breakpoint($screen-md) {
-          padding: 0 30px;
-          position: absolute;
-          top: 50%;
-          left: 0;
-          @include translateY(-50%);
-          text-align: center;
-
-          /* Centre any buttons that get added
-           * (should only be inline links
-           * but just in case) */
-          .single-msg__body a.btn{
-            margin: 0 auto 20px;
-          }
-        }
-      }
-    }
-  }
 
   /* DEFAULT */
   &.single-msg--copy-left {
@@ -194,7 +130,6 @@ $row-padding--md: 60px;
       }
     }
   }
-
 
 
   &.single-msg--copy-right {
@@ -238,12 +173,9 @@ $row-padding--md: 60px;
         width: calc( #{span(6)} + #{gutter()});
       }
     }
-    
   }
 
-
-/* - - - - Featured Variations - - - - */
-
+  /* - - - - Featured Variations - - - - */
 
   /* Feature Copy Right variation */
   &.single-msg--feature-copy-right {
@@ -261,7 +193,6 @@ $row-padding--md: 60px;
     }
 
     .single-msg__copy_wrapper {
-      background-color:white;
       float: left;
       margin: 0 calc(4*#{gutter()}) 0;
       margin-top: calc(-4 *#{gutter()});
@@ -323,7 +254,6 @@ $row-padding--md: 60px;
     }
 
     .single-msg__copy_wrapper {
-      background-color:white;
       float: left;
       margin: 0 calc(4*#{gutter()}) 0;
       margin-top: calc(-4 *#{gutter()});
@@ -365,5 +295,59 @@ $row-padding--md: 60px;
       }
     }
   }
-}
 
+
+  /* Copy Only - Copy Centred variation */
+  &.single-msg--copy-only {
+
+    .single-msg__copy_wrapper {
+
+      .single-msg__title {
+        text-align: center;
+      }
+      
+      @include breakpoint($screen-md) {
+        @include span(10);
+        @include push(1);
+
+        position: relative;
+        left: auto;
+        height: auto; //Does this need to match the height of the img version?
+        margin-top: 0;
+      }
+
+      @include breakpoint($screen-lg) {
+        @include span(8);
+        @include push(2);
+      }
+    }
+  }
+
+  /* Setting font colours based on bg colours */
+  .single-msg__copy_wrapper {
+
+    &.bg--red,
+    &.bg--royal-blue,
+    &.bg--purple,
+    &.bg--pink {
+      .single-msg__copy {
+        color: white;
+      }
+    }
+
+    &.bg--sky-blue,
+    &.bg--yellow,
+    &.bg--green,
+    &.bg--teal,
+    &.bg--white,
+    &.bg--black,
+    &.bg--jasper-grey,
+    &.bg--gainsboro-grey,
+    &.bg--light-grey,
+    &.bg--smoke-grey {
+      .single-msg__copy {
+        color: black;     
+      }
+    }  
+  }
+}
