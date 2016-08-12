@@ -11,11 +11,11 @@ bg_colour,
 ]
 %}
 
-<div{{ attributes.addClass(classes) }}>
+<section{{ attributes.addClass(classes) }}>
 	{% if field_cr_cards_title %}
 	<h2 class="cards__title {{title_hidden}}">{{ field_cr_cards_title }}</h2>
 	{% endif %}
 	<div class="cards__wrapper">
 	    {{ field_cr_cards_card_reference }}
 	</div>
-</div>
+</section>
