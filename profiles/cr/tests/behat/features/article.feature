@@ -72,6 +72,7 @@ Feature: Article
     # logout and see the article loaded
     Given I am not logged in
     And I am on "whats-going-on/test-scheduled-article"
+    And I wait for "10" seconds
     And I scroll ".cr-article .cr-article__title" into view
     Then I should see "Test Scheduled article"
 
