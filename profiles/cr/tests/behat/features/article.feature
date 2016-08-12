@@ -72,10 +72,8 @@ Feature: Article
     # logout and see the article loaded
     Given I am not logged in
     And I am on "whats-going-on/test-scheduled-article"
-    And I wait for "10" seconds
-    # And I scroll ".cr-article .cr-article__title" into view
     # Then I should not see "The requested page could not be found"
-    Then the response status code should not be "404"
+    Then I should get a "200" HTTP response
 
   @api
   Scenario: Create news articles that are linked together via a common tag
