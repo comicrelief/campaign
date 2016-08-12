@@ -1,5 +1,0 @@
-cookieconsent.cookieconsent_admin_form:
-  title: 'Cookie settings'
-  base_route_name: cookieconsent.cookieconsent_admin_form
-  names:
-    - cookieconsent.settings

@@ -1,6 +1,0 @@
-use CDN when in testing mode:
-  title: 'Access files on the CDN when in testing mode'
-
-administer CDN configuration:
-  title: 'Administer CDN configuration'
-  restrict access: true
