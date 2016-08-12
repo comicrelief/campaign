@@ -82,7 +82,6 @@ hooks:
 
       cd profiles/cr
       npm install
-      cd profiles/cr
       bundle install --path vendor/bundle --frozen --without craft
       bundle exec grunt build
       cd ../../
