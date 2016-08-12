@@ -72,8 +72,7 @@ Feature: Article
     # logout and see the article loaded
     Given I am not logged in
     And I am on "whats-going-on/test-scheduled-article"
-    # Then I should not see "The requested page could not be found"
-    Then I should get a "200" HTTP response
+    Then I should not see "The requested page could not be found"
 
   @api
   Scenario: Create news articles that are linked together via a common tag
