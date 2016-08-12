@@ -55,21 +55,21 @@ disk: 2048
 # The mounts that will be performed when the package is deployed.
 mounts:
     "/public/sites/default/files": "shared:files/files"
-    "/sites/default/sync": "shared:files/config_sync"
+    "/public/sites/default/sync": "shared:files/config_sync"
     "/tmp": "shared:files/tmp"
     "/private": "shared:files/private"
     "/drush-backups": "shared:files/drush-backups"
-    "/vendor": "shared:files/vendor"
-    "/node_modules": "shared:files/node_modules"
-    "/.npm": "shared:files/.npm"
-    "/.bundle": "shared:files/.bundle"
-    "/.gem": "shared:files/.gem"
-    "/Gemfile.lock": "shared:files/Gemfile.lock"
-    "/profiles/cr/themes/custom/campaign_base/js": "shared:files/js"
-    "/profiles/cr/themes/custom/campaign_base/css": "shared:files/css"
-    "/profiles/cr/themes/custom/campaign_base/styleguide": "shared:files/styleguide"
-    "/profiles/cr/themes/custom/campaign_base/images/generated": "shared:files/images_generated"
-    "/profiles/cr/.sass-cache": "shared:files/.sass-cache"
+    "/public/vendor": "shared:files/vendor"
+    "/public/node_modules": "shared:files/node_modules"
+    "/public/.npm": "shared:files/.npm"
+    "/public/.bundle": "shared:files/.bundle"
+    "/public/.gem": "shared:files/.gem"
+    "/public/Gemfile.lock": "shared:files/Gemfile.lock"
+    "/public/profiles/cr/themes/custom/campaign_base/js": "shared:files/js"
+    "/public/profiles/cr/themes/custom/campaign_base/css": "shared:files/css"
+    "/public/profiles/cr/themes/custom/campaign_base/styleguide": "shared:files/styleguide"
+    "/public/profiles/cr/themes/custom/campaign_base/images/generated": "shared:files/images_generated"
+    "/public/profiles/cr/.sass-cache": "shared:files/.sass-cache"
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
