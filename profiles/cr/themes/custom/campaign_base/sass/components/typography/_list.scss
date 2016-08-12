@@ -3,12 +3,14 @@
 // These are the list items
 //
 // Markup:
-// <ul>
-// 	<li>Item 1</li>
-// 	<li>Item 2</li>
-// 	<li>Item 3</li>
-// 	<li>Item 4</li>
-// </ul>
+// <div class="node__content">
+// 	<ul>
+// 		<li>Item 1</li>
+// 		<li>Item 2</li>
+// 		<li>Item 3</li>
+// 		<li>Item 4</li>
+// 	</ul>
+// </div>
 //
 // Style guide: Typography.Lists
 
@@ -24,7 +26,7 @@ ul {
 		margin: 15px 0;
 
 		li {
-			font-size: 1em;
+			@include font-size($p-font-size);
 			list-style: none;
 			padding: 0 0 0 30px;
 			position: relative;
@@ -37,10 +39,6 @@ ul {
 		    position: absolute;
 		    top: 0;
 			}
-
-			// &::marker { // future support
-			// 	color: $red;
-			// }
 		}
 	}
 
@@ -50,7 +48,7 @@ ul {
     list-style-type: decimal;
 
 		li {
-			font-size: 1em;
+			@include font-size($p-font-size);
 			padding: 0 0 0 15px;
 			position: relative;
 		}

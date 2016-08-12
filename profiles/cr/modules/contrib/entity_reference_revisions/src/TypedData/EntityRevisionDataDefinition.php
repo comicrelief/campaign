@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\entity_reference_revisions\TypedData\EntityRevisionDataDefinition.
- */
-
 namespace Drupal\entity_reference_revisions\TypedData;
 
 use Drupal\Core\Entity\TypedData\EntityDataDefinition;

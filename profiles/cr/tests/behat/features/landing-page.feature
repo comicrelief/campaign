@@ -7,20 +7,10 @@ Feature: Landing-page
     Then I should see "THE COUNTDOWN IS ON"
     And I should see "EDDIE IZ RUNNING…AGAIN"
     And I should see "Rich text bg title"
-    And I should see "You’ll be helping others"
-    And I should see "The money you raise will help change lives"
-    And I should see "Ready to go?"
-    And I should see "All that's left to do is pre-order your FREE Fundraising Pack"
-    And I should see the link "Pre-order"
     And I should see "Follow in Dermont's footsteps"
     And I should see "Join in, have fun and change lives"
     And I should see the link "Get your Dancing Kit"
     And I should see the link "Get fundraising ideas"
-    And I should see "Single Msg Standard 4:3"
-    And I should see "Single Msg Standard 4:3 Img R"
-    And I should see "Single Msg Featured 16:9"
-    And I should see "Single Msg Featured 16:9 Img R"
-    And I should see the link "Linko"
 
   @api @content
   Scenario: Check metatags for landing pages
@@ -60,10 +50,10 @@ Feature: Landing-page
     And I should see "Centred, text only, image optional"
     And I am on "/test-landing-page"
     And I click "Edit"
-    And I press the "Add Partner list" button
+    And I select "Partner list" from "field_paragraphs[add_more][add_more_select]"
+    And I press the "Add another Row component" button
     And I press the "Add existing Partner" button
     And I fill in "field_paragraphs[8][subform][field_partner_list][form][entity_id]" with "Three (4)"
     And I press the "Add Partner" button
     And I press the "Save and keep published" button
     Then I should see the image "sites/default/files/partner/logo/3_49_82.gif"
-

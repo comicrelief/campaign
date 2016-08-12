@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\entity_reference_revisions\Plugin\views\display\EntityReferenceRevisions.
- */
-
 namespace Drupal\entity_reference_revisions\Plugin\views\display;
 
 use Drupal\views\Plugin\views\display\DisplayPluginBase;
@@ -81,9 +76,9 @@ class EntityReferenceRevisions extends DisplayPluginBase {
   }
 
   /**
-   * Overrides \Drupal\views\Plugin\views\display\DisplayPluginBase::getType().
+   * {@inheritdoc}
    */
-  protected function getType() {
+  public function getType() {
     return 'entity_reference_revisions';
   }
 
