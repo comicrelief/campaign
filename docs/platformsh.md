@@ -11,22 +11,22 @@ Platform.sh has an excellent CLI. [Read installation instructions](https://docs.
 
 	platform list
 	
-Important: always run these commands from within your branch. Platform.sh is smart enough to connect this branch to your environment.
-	
 To tail logs, run
 
-	platform logs deploy --tail
-	platform logs cron --tail
-	platform logs php --tail
+	platform logs deploy -e pr-426 --tail
+	platform logs cron -e pr-426 --tail
+	platform logs php -e pr-426 --tail
+	
+and make sure change `pr-426` with your PR.
 
 To run drush on the remote environment, e.g. to enable the `devel` module
 
-	platform drush 'en devel'
+	platform drush -e pr-426 'en devel'
 	
 To get the URL of an environment, run
 
-	platform url
-	
+	platform url -e pr-426
+ 	
 Or check out the current environments
 
 	platform environments
@@ -46,3 +46,7 @@ which returns
 	|    pr-434 | PR #434: Adding more doc on platform.sh                                 | Active      |
 	+-----------+-------------------------------------------------------------------------+-------------+
 	* - Indicates the current environment
+
+You can also re-install the Campaign profile if you'd like via Drush, for example if you made big changes to the profile configuration in the middle of a Pull Request. You can do this like
+
+  platform drush -e pr-426 'drush si cr -y --account-pass='admin install_configure_form.update_status_module="[FALSE, FALSE]" -y'
