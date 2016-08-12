@@ -59,7 +59,7 @@ mounts:
     "/tmp": "shared:files/tmp"
     "/private": "shared:files/private"
     "/drush-backups": "shared:files/drush-backups"
-    "/public/vendor": "shared:files/vendor"
+    "/vendor": "shared:files/vendor"
     "/public/profiles/cr/node_modules": "shared:files/node_modules"
     "/.npm": "shared:files/.npm"
     "/public/profiles/cr/.bundle": "shared:files/.bundle"
