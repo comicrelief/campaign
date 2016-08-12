@@ -36,7 +36,7 @@ web:
         "/":
             # The folder to serve static assets for this location from.
             # (Relative to the application root.)
-            root: ""
+            root: "public"
 
             # How long to allow static assets from this location to be cached.
             # (Can be a time or -1 for no caching. Times can be suffixed with
@@ -54,7 +54,7 @@ disk: 2048
 
 # The mounts that will be performed when the package is deployed.
 mounts:
-    "/sites/default/files": "shared:files/files"
+    "/public/sites/default/files": "shared:files/files"
     "/sites/default/sync": "shared:files/config_sync"
     "/tmp": "shared:files/tmp"
     "/private": "shared:files/private"
