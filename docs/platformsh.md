@@ -26,4 +26,23 @@ To run drush on the remote environment, e.g. to enable the `devel` module
 To get the URL of an environment, run
 
 	platform url
+	
+Or check out the current environments
 
+	platform environments
+	
+which returns
+	
+	Your environments are: 
+	+-----------+-------------------------------------------------------------------------+-------------+
+	| ID        | Name                                                                    | Status      |
+	+-----------+-------------------------------------------------------------------------+-------------+
+	| master    | Master                                                                  | Active      |
+	| develop*  | develop                                                                 | Active      |
+	|    pr-421 | PR #421: PLAT-387: Single Message row updates                           | In progress |
+	|    pr-426 | PR #426: Feature/plat 386 promo design up                               | In progress |
+	|    pr-427 | PR #427: PLAT-383_fix_scheduled_update_test_on_travis testing on travis | In progress |
+	|    pr-430 | PR #430: PLAT-400 Fix config:import                                     | Active      |
+	|    pr-434 | PR #434: Adding more doc on platform.sh                                 | Active      |
+	+-----------+-------------------------------------------------------------------------+-------------+
+	* - Indicates the current environment
