@@ -74,7 +74,8 @@ Feature: Article
     And I am on "whats-going-on/test-scheduled-article"
     And I wait for "10" seconds
     # And I scroll ".cr-article .cr-article__title" into view
-    Then I should see "Test Scheduled article"
+    # Then I should not see "The requested page could not be found"
+    Then the response status code should not be "404"
 
   @api
   Scenario: Create news articles that are linked together via a common tag
