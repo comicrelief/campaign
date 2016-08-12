@@ -49,4 +49,4 @@ which returns
 
 You can also re-install the Campaign profile if you'd like via Drush, for example if you made big changes to the profile configuration in the middle of a Pull Request. You can do this like
 
-  platform drush -e pr-426 'drush si cr -y --account-pass='admin install_configure_form.update_status_module="[FALSE, FALSE]" -y'
+	platform drush -e pr-426 'drush si cr -y --account-pass='admin install_configure_form.update_status_module="[FALSE, FALSE]" -y'
