@@ -13,5 +13,5 @@ export DRUSH_ALIAS='@self'
 export BASE_URL='http://0.0.0.0:80'
 export BEHAT_PARAMS='{"extensions":{"Behat\\MinkExtension":{"base_url":"'$BASE_URL'"},"Drupal\\DrupalExtension":{"drupal":{"drupal_root":"'$DRUPAL_ROOT'"},"drush":{"alias":"'$DRUSH_ALIAS'"}}}}'
 
-phing build:prepare
+phing build:prepare:no-gems
 phing test -Dapp.uri="$BASE_URL" -Dapp.dir=$(pwd)
