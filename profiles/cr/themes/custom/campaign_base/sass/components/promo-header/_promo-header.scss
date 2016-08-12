@@ -4,7 +4,7 @@
 //
 // Markup: promo-header.hbs
 //
-// .promo-header__header--feature   - Body copy overlap bg image
+// .promo-header--feature   - Body copy overlap bg image
 //
 // Style guide: promo-header
 
@@ -15,8 +15,8 @@
   position: relative;
   margin-bottom: 40px;
 }
-.promo-header__header {
-  &.promo-header__header--feature {
+.promo-header {
+  &.promo-header--feature {
     display: table;
     background: transparent;
     width: 100%;
@@ -33,7 +33,7 @@
   }
   margin-top: -30%;
   margin-bottom: -5px;
-  .promo-header__header--feature & {
+  .promo-header--feature & {
     position: relative;
     display: table-header-group;
   }
@@ -61,7 +61,7 @@
   z-index: 10;
   max-width: 1200px;
   margin: auto;
-  .promo-header__header--feature & {
+  .promo-header--feature & {
     @include translateY(0);
     @include breakpoint($screen-md-max) {
       width: calc(100% - 200px);
@@ -95,14 +95,14 @@
         margin-right: 0;
       }
     }
-    .promo-header__header--feature & {
+    .promo-header--feature & {
       @include breakpoint($screen-md-max) {
         max-width: span(8);
       }
     }
   }
   p {
-    .promo-header__header--feature & {
+    .promo-header--feature & {
       color: $colour-black;
     }
   }
@@ -115,7 +115,7 @@
 .promo-header__svg-title {
   svg {
     width: 100%;
-    .promo-header__header--feature & {
+    .promo-header--feature & {
       path {
         fill: $colour-black;
       }
