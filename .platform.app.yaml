@@ -36,7 +36,7 @@ web:
         "/":
             # The folder to serve static assets for this location from.
             # (Relative to the application root.)
-            root: ""
+            root: "public"
 
             # How long to allow static assets from this location to be cached.
             # (Can be a time or -1 for no caching. Times can be suffixed with
@@ -54,22 +54,24 @@ disk: 2048
 
 # The mounts that will be performed when the package is deployed.
 mounts:
-    "/sites/default/files": "shared:files/files"
-    "/sites/default/sync": "shared:files/config_sync"
+    "/public/sites/default/files": "shared:files/files"
+    "/public/sites/default/sync": "shared:files/config_sync"
     "/tmp": "shared:files/tmp"
     "/private": "shared:files/private"
     "/drush-backups": "shared:files/drush-backups"
     "/vendor": "shared:files/vendor"
-    "/node_modules": "shared:files/node_modules"
+    "/public/profiles/cr/vendor": "shared:files/vendor"
+    "/public/profiles/cr/node_modules": "shared:files/node_modules"
     "/.npm": "shared:files/.npm"
     "/.bundle": "shared:files/.bundle"
+    "/public/profiles/cr/.bundle": "shared:files/.bundle"
     "/.gem": "shared:files/.gem"
     "/Gemfile.lock": "shared:files/Gemfile.lock"
-    "/profiles/cr/themes/custom/campaign_base/js": "shared:files/js"
-    "/profiles/cr/themes/custom/campaign_base/css": "shared:files/css"
-    "/profiles/cr/themes/custom/campaign_base/styleguide": "shared:files/styleguide"
-    "/profiles/cr/themes/custom/campaign_base/images/generated": "shared:files/images_generated"
-    "/profiles/cr/.sass-cache": "shared:files/.sass-cache"
+    "/public/profiles/cr/themes/custom/campaign_base/js": "shared:files/js"
+    "/public/profiles/cr/themes/custom/campaign_base/css": "shared:files/css"
+    "/public/profiles/cr/themes/custom/campaign_base/styleguide": "shared:files/styleguide"
+    "/public/profiles/cr/themes/custom/campaign_base/images/generated": "shared:files/images_generated"
+    "/public/profiles/cr/.sass-cache": "shared:files/.sass-cache"
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
@@ -77,9 +79,11 @@ hooks:
     deploy: |
       set -e
 
+      cd public/
       composer install --no-progress --prefer-dist -o
-      npm install
+
       cd profiles/cr
+      npm install
       bundle install --path vendor/bundle --frozen --without craft
       bundle exec grunt build
       cd ../../
