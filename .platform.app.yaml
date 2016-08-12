@@ -84,13 +84,19 @@ hooks:
       bundle exec grunt build
       cd ../../
 
-      # Re-install the site if this hasn't been installed yet for this branch
-      if [ ! -f tmp/$PLATFORM_ENVIRONMENT.installed ]; then
+      # Re-install the site if this hasn't been installed yet for this branch, or we are on develop
+      if [ $PLATFORM_ENVIRONMENT = "develop" ] || [ ! -f tmp/$PLATFORM_ENVIRONMENT.installed ]; then
+        echo ">>> Re-installing Campaign profile"
         drush sql-drop -y
         drush si cr -y --account-pass='admin' install_configure_form.update_status_module='[FALSE, FALSE]' -y
         touch "tmp/${PLATFORM_ENVIRONMENT}.installed"
+        drush cr
+        echo ">>> End re-installing Campaign profile"
+      else
+        echo ">>> No re-installation of the profile required, just a simple update!"
+        drush cr
       fi
-      drush cr
+
 
 # The configuration of scheduled execution.
 crons:
