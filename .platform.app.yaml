@@ -78,7 +78,6 @@ hooks:
       set -e
 
       cd public/
-
       composer install --no-progress --prefer-dist -o
       npm install
       cd profiles/cr
