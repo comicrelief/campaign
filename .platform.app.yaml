@@ -62,7 +62,7 @@ mounts:
     "/public/vendor": "shared:files/vendor"
     "/public/profiles/cr/node_modules": "shared:files/node_modules"
     "/.npm": "shared:files/.npm"
-    "/.bundle": "shared:files/.bundle"
+    "/public/profiles/cr/.bundle": "shared:files/.bundle"
     "/.gem": "shared:files/.gem"
     "/Gemfile.lock": "shared:files/Gemfile.lock"
     "/public/profiles/cr/themes/custom/campaign_base/js": "shared:files/js"
