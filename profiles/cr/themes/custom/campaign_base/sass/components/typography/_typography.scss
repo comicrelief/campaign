@@ -74,8 +74,12 @@ p,
 h2,
 h3,
 h4 {
-  margin: 0 0 20px;
+  margin: 0 0 15px;
   clear: both;
+}
+p:last-child,
+p:first-child:last-child { 
+  margin-bottom: 5px;
 }
 h2 {
   font-family: $font-medium;
