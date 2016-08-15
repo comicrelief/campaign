@@ -61,7 +61,8 @@ $susy: (
 }
 header,
 .region-highlighted,
-main {
+main,
+.paragraph {
   @include clearfix;
 }
 .block-search {
