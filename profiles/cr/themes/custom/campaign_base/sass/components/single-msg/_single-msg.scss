@@ -95,7 +95,7 @@ $row-padding--md: 60px;
     }
   }
 
-  /* DEFAULT */
+  /* Copy Left variation */
   &.single-msg--copy-left {
     @include breakpoint($screen-md) {
       .single-msg__image {
