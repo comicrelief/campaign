@@ -1,0 +1,22 @@
+{% set br_body_colour = field_bg_single_msg_body_bg['#items'][0].value %}
+
+{%
+set classes = [
+'paragraph',
+'contextual-region',
+'background-single-msg',
+'paragraph--' ~ paragraph.bundle|clean_class,
+view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+]
+%}
+<div{{ attributes.addClass(classes) }} >
+		<div class="background-single-msg__image">
+			{{ content.field_background }}
+		</div>
+		<div class="background-single-msg__inner-wrap">
+			{{ title_suffix.contextual_links }}
+	    <div class="background-single-msg__body {{ br_body_colour }}">
+	    	{{ content.field_body }}
+	    </div>
+		</div>
+</div>
