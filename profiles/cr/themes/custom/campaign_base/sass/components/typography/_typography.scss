@@ -77,6 +77,10 @@ h4 {
   margin: 0 0 20px;
   clear: both;
 }
+p:last-child,
+p:first-child:last-child { 
+  margin-bottom: 0;  
+}
 h2 {
   font-family: $font-medium;
   @include font-size($h2-font-size);
