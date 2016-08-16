@@ -38,6 +38,7 @@
   .promo-header--feature & {
     position: relative;
     display: table-header-group;
+    float: none;
   }
   img {
     @include breakpoint($screen-md-max) {
@@ -90,7 +91,13 @@
     }
     @include breakpoint($screen-md-max) {
       text-align: left;
-      @include span(6);
+      width: 50%;
+      margin-left: gutter();
+      .promo-header--feature & {
+        max-width: span(8);
+        text-align: center;
+        width: 100%;
+      }
     }
     &--centre {
       @include breakpoint($screen-md-max) {
