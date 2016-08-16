@@ -19,18 +19,38 @@
   .partners-row__logos-list {
     ul {
       display: flex;
-      margin: 0;
       text-align: center;
       flex-wrap: wrap;
       align-items: center;
       justify-content: center;
+      
+    }
+    li {
+      @include span(6);
+      float: none;
+      @include breakpoint($screen-md) {
+        margin-bottom: 2.5%;
+      }
+    }
+    img {
+      height: auto;
+      float: none;
+      width: 100%;
+    }
+    @include breakpoint($screen-md) {
+      img {
+        @include span(4 of 6);
+        float: none;
+      }
+    }
+    @include breakpoint($screen-lg) {
       li {
-        @include flex(2 50%);
-        margin: 10px 0;
-        @include breakpoint($screen-md) {
-        	margin: 10px;
-        	@include flex(none);
-        }
+        @include span(3)
+      }
+      img {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
       }
     }
   }
