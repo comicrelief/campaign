@@ -101,12 +101,6 @@ $row-padding--md: 60px;
       @include breakpoint($screen-md, $no-query: true) {
         height: 100%;
       }
-
-      .single-msg__body {
-        p {
-          font-size: 18px;
-        }
-      }
     }
   }
 
