@@ -100,6 +100,7 @@ p {
   @include font-size($p-font-size);
   &.font--xlarge {
     @include font-size($p-xlarge-font-size);
+    margin-bottom: 20px;
   }
   &.font--large {
     @include font-size($p-large-font-size);
