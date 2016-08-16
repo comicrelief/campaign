@@ -65,13 +65,12 @@ $row-padding--md: 60px;
     }
 
     @include breakpoint($screen-lg) { 
-      @include span(4 wide);
+      @include span(5);
     }
   } 
 
   .single-msg__copy_wrapper {
     height: 100%;
-    text-align: center;
     @include span(12);
 
     @include breakpoint($screen-md, $no-query: true) {
@@ -79,7 +78,6 @@ $row-padding--md: 60px;
       top: 0;
       right: 0;
       margin-left: 0;
-      text-align: left;
       // Recalculate height minus the row padding
       height: calc(100% - ( #{$row-padding--md} * 2) );
       margin-top: 60px;
@@ -90,16 +88,21 @@ $row-padding--md: 60px;
     }
 
     @include breakpoint($screen-lg) { 
-      @include span(8 wide);
+      @include span(7 wide);
     }
 
     .single-msg__copy {
-      padding: 40px 30px 30px;
+      //padding: 30px span(1 wide);
+      padding: 30px;
       color: white;
       width: 100%;
 
       @include breakpoint($screen-md, $no-query: true) {
         height: 100%;
+      }
+
+      @include breakpoint($screen-lg) {
+        padding: 30px calc( #{gutter()} * 4 );
       }
     }
   }
@@ -136,7 +139,7 @@ $row-padding--md: 60px;
       }
 
       @include breakpoint($screen-lg) {
-        @include span(6);     
+        @include span(7);     
       }  
     }
 
@@ -158,30 +161,16 @@ $row-padding--md: 60px;
         position: absolute;
         top: 0;
         right: 0;
-        text-align: left;
-        margin: 80px gutter() 0 0;
-        height: calc(100% - (#{$row-padding--md} * 2) - 40px);  
+        margin: 90px gutter() 0 0;
+        height: calc(100% - (#{$row-padding--md} * 3));  
 
         // Only overlap by half a column
-        width: calc( #{span(6)} +  ( #{gutter()} * 4) );
+        width: calc( #{span(5)} +  ( #{gutter()} * 4) );
       }  
 
       .single-msg__copy {
-        color: black;
+        color: $colour-black;
         height: auto;
-
-        @include breakpoint($screen-lg) {
-          padding: 0 30px;
-          position: absolute;
-          top: 50%;
-          left: 0;
-          @include translateY(-50%);
-          text-align: center;
-
-          .single-msg__body a.btn{
-            margin: 0 auto;
-          }
-        }
       }
     } 
   }
@@ -199,7 +188,7 @@ $row-padding--md: 60px;
     .single-msg__copy_wrapper {
       @include breakpoint($screen-lg) {
         left: 0;
-        margin: 80px 0 0 gutter();
+        margin: 90px 0 0 gutter();
       }
     }
   }
@@ -211,10 +200,6 @@ $row-padding--md: 60px;
       margin: 0 calc(4*#{gutter()}) 0;
       width: calc(100% - (8 * #{gutter()}) );
 
-      .single-msg__title {
-        text-align: center;
-      }
-      
       @include breakpoint($screen-md, $no-query: true) {
         @include span(10);
         @include push(1);
@@ -222,10 +207,6 @@ $row-padding--md: 60px;
         left: auto;
         height: auto; //Does this need to match the height of the img version?
         margin-top: 0;
-
-        .single-msg__body {
-          text-align: center;
-        }
       }
 
       @include breakpoint($screen-lg) {
