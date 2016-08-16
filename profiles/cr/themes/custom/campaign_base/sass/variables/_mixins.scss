@@ -10,6 +10,15 @@
  * $button[4] = text color
  */
 
+@mixin breakpoint-gutters {
+  width: calc(100% - (8 * #{gutter()}) );
+  @include breakpoint($screen-md) {
+    width: calc(100% - (4 * #{gutter()}) );
+  }
+  @include breakpoint($screen-md-max) {
+    max-width: calc(1200px - (1 * 1.25%) );
+  }
+}
 @mixin btn-variation($button){
   // Makes .btn-green etc
   .btn--#{nth($button, 1)} {

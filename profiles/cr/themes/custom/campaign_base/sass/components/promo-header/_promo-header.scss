@@ -72,13 +72,7 @@
     margin: -50px auto 0;
     padding: 1px 0;
     background: $colour-white;
-    width: calc(100% - (8 * #{gutter()}) );
-    @include breakpoint($screen-md) {
-      width: calc(100% - (4 * #{gutter()}) );
-    }
-    @include breakpoint($screen-md-max) {
-      max-width: calc(1200px - (1 * 1.25%) );
-    }
+    @include breakpoint-gutters;
   }
   .promo-header__content-inner {
     margin: 25px auto 15px;
