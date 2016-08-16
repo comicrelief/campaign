@@ -67,36 +67,37 @@
   margin: auto;
   .promo-header--feature & {
     @include translateY(0);
-    @include breakpoint($screen-md-max) {
-      width: calc(100% - 200px);
-    }
     position: relative;
     top: 0;
-    width: calc(100% - 20px);
+    width: calc(100% - (8 * #{gutter()}) );
     max-width: 100%;
     margin: -50px auto 0;
-    padding: 1px 20px;
+    padding: 1px 0;
     background: $colour-white;
-    .promo-header__content-inner {
-      padding: 30px;
+    @include breakpoint($screen-md) {
+      width: calc(100% - (4 * #{gutter()}) );
+      max-width: calc(1200px - (1 * #{gutter()}) );
     }
   }
   .promo-header__content-inner {
-    margin: 60px auto;
+    margin: 25px auto 15px;
     word-break: break-word;
     text-align: center;
-    width: span(12);
+    width: 100%;
+    padding: 15px;
     @include breakpoint($screen-md) {
       width: span(10);
+      margin: 50px auto 40px;
+      padding: 0;
     }
     @include breakpoint($screen-md-max) {
       text-align: left;
       width: 50%;
-      margin-left: gutter();
       .promo-header--feature & {
         max-width: span(8);
         text-align: center;
         width: 100%;
+        margin: 55px auto 45px;
       }
     }
     &--centre {
@@ -105,14 +106,14 @@
         margin-left: auto;
       }
     }
-    // &--left {
-    //   @include breakpoint($screen-md-max) {
-    //     margin-left: 0;
-    //   }
-    // }
+    &--left {
+      @include breakpoint($screen-md-max) {
+        margin-left: gutter();
+      }
+    }
     &--right {
       @include breakpoint($screen-md-max) {
-        margin-right: 0;
+        margin-right: gutter();
       }
     }
     .promo-header--feature & {
