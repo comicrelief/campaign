@@ -13,7 +13,7 @@ use Drupal\Core\Access\AccessResult;
  *
  * @Block(
  *   id = "cr_email_signup_block",
- *   admin_label = @Translation("Email Sign Up block"),
+ *   admin_label = @Translation("Email Sign Up block: Standard"),
  * )
  */
 class SignUpBlock extends BlockBase implements BlockPluginInterface {
@@ -24,7 +24,7 @@ class SignUpBlock extends BlockBase implements BlockPluginInterface {
   public function build() {
     $config = $this->getConfiguration();
 
-    $form = \Drupal::formBuilder()->getForm('Drupal\cr_email_signup\Form\SignUp');
+    $form = \Drupal::formBuilder()->getForm('Drupal\cr_email_signup\Form\StandardSignUp');
 
     $form['initial_message'] = [
       '#markup' => "<div class='esu-initial-message'><h4>{$config['initial_message']}</h4></div>",

@@ -11,7 +11,7 @@ use Drupal\Core\Ajax\InvokeCommand;
 /**
  * Concrete implementation of Step One.
  */
-class SignUp extends FormBase {
+abstract class SignUp extends FormBase {
 
   /**
    * Array to send to queue. Some key values should be sourced from config.
@@ -30,11 +30,12 @@ class SignUp extends FormBase {
   );
 
   /**
-   * Get the Form Identifier.
+   * Returns the queue name.
+   *
+   * @return string
+   *   The string identifying the queue.
    */
-  public function getFormId() {
-    return 'cr_email_signup_form';
-  }
+  abstract protected function getQueueName();
 
   /**
    * Send a message to the queue service.
@@ -64,13 +65,9 @@ class SignUp extends FormBase {
 
     // Add passed arguments.
     $queue_message = array_merge($this->skeletonMessage, $append_message);
-    // TODO: Move to config/default.
-    $queue_name = 'esu';
     try {
-
       $queue_factory = \Drupal::service('queue');
-
-      $queue = $queue_factory->get($queue_name);
+      $queue = $queue_factory->get($this->getQueueName();
 
       if (FALSE === $queue->createItem($queue_message)) {
         throw new \Exception("createItem Failed. Check Queue.");
