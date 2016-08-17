@@ -17,14 +17,20 @@
   .cards__item:first-child:nth-last-child(#{$i}) ~ .cards__item {
     // width: calc(#{span(12)}/#{$i});
     // margin: gutter()/2;
-    width: calc(100% - 30px);
-    margin: 0 15px 20px;
+    width: calc(100% - (8 * #{gutter()}));
+    margin: 0 15px calc(4 * #{gutter()});
 
     @include breakpoint($screen-sm-max) {
 		  	@include span(12);
 	    }
 	  @include breakpoint($screen-md-max) {
 		    @include span(12/$i);
+        .cards__item:first-child {
+          margin-left: #{gutter()};
+        }
+        .cards__item:last-child {
+          margin-right: #{gutter()};
+        }
       }
     }
   }
@@ -40,6 +46,9 @@
 }
 .cards__wrapper {
   text-align: center;
+  @include breakpoint($screen-md-max) {
+    padding: 0 #{gutter()};
+  }
 }
 .cards__title {
   text-align: center;
@@ -113,7 +122,8 @@
 
 .bg--red,
 .bg--royal-blue,
-.bg--purple {
+.bg--purple,
+.bg--black {
   h1, h2, h3, h4, h5, p, .link {
     color: $colour-white;
   }
