@@ -24,3 +24,4 @@ default:
         root: "$DRUPAL_TI_DRUPAL_DIR"
       region_map:
         content: ".layout-content"
+        esu_standard: ".block--cr-email-signup"
