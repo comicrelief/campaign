@@ -6,11 +6,14 @@ dependencies:
     - field.field.node.landing.body
     - field.field.node.landing.field_landing_background_colour
     - field.field.node.landing.field_landing_copy_position_alig
+    - field.field.node.landing.field_landing_feature_layout
     - field.field.node.landing.field_landing_image
     - field.field.node.landing.field_landing_image_mobile
+    - field.field.node.landing.field_landing_meta_tags
     - field.field.node.landing.field_paragraphs
-    - field.field.node.landing.panelizer
+    - field.field.node.landing.field_svg_body_title
     - node.type.landing
+    - responsive_image.styles.hero_image_full_node
   module:
     - ds
     - entity_reference_revisions
@@ -206,14 +209,11 @@ content:
     weight: 2
     settings: {  }
     third_party_settings: {  }
-  panelizer:
-    type: panelizer
-    weight: 13
-    label: above
-    settings: {  }
-    third_party_settings: {  }
   social_links:
     weight: 14
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_landing_feature_layout: true
+  field_landing_meta_tags: true
+  field_svg_body_title: true

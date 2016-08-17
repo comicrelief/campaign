@@ -12,8 +12,8 @@ dependencies:
     - field.field.node.landing.field_landing_meta_tags
     - field.field.node.landing.field_paragraphs
     - field.field.node.landing.field_svg_body_title
-    - field.field.node.landing.panelizer
     - node.type.landing
+    - responsive_image.styles.bg_rich_text
   module:
     - ds
     - entity_reference_revisions
@@ -232,12 +232,6 @@ content:
     third_party_settings: {  }
   links:
     weight: 17
-    settings: {  }
-    third_party_settings: {  }
-  panelizer:
-    type: panelizer
-    weight: 16
-    label: hidden
     settings: {  }
     third_party_settings: {  }
   social_links:

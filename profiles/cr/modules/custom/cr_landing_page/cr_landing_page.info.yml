@@ -18,7 +18,6 @@ config_devel:
   - field.storage.node.field_landing_copy_position_alig
   - field.storage.node.field_landing_image
   - field.storage.node.field_landing_meta_tags
-  - field.storage.node.panelizer
   - field.field.node.landing.body
   - field.field.node.landing.field_svg_body_title
   - field.field.node.landing.field_landing_background_colour
@@ -26,6 +25,5 @@ config_devel:
   - field.field.node.landing.field_landing_image
   - field.field.node.landing.field_landing_image_mobile
   - field.field.node.landing.field_paragraphs
-  - field.field.node.landing.panelizer
   - field.field.node.landing.field_landing_meta_tags
   - pathauto.pattern.landing_page
