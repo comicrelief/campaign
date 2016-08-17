@@ -16,7 +16,7 @@
     width: calc(100% - (4 * #{gutter()}) );
   }
   @include breakpoint($screen-md-max) {
-    max-width: calc(1200px - (1 * 1.25%) );
+    max-width: calc($max-width - (1 * #{gutter()}) );
   }
 }
 @mixin btn-variation($button){
