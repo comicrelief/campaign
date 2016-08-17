@@ -1,0 +1,62 @@
+<?php
+
+/**
+ * @file
+ * The module file for media_entity_browser.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_preprocess_views_view().
+ */
+function media_entity_browser_preprocess_views_view(&$variables) {
+  if ($variables['view']->id() === 'media_entity_browser') {
+    $variables['view_array']['#attached']['library'][] = 'media_entity_browser/view';
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function media_entity_browser_form_alter(&$form, FormStateInterface &$form_state, $form_id) {
+  // @todo, detect entity browsers specifically using the MEB.
+  if (strpos($form_id, 'entity_browser') === 0 && !empty($form['widget']['view'])) {
+    // Style the submit button.
+    $form['actions']['submit']['#value'] = t('Select Media');
+    $form['actions']['submit']['#attributes']['class'][] = 'entity-browser-modal-target';
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function media_entity_browser_form_entity_embed_dialog_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  // @todo, work around some issues in entity browser.
+  if ($embed_button = $form_state->get('embed_button')) {
+    $browser = $embed_button->getTypePlugin()->getConfigurationValue('entity_browser');
+    // Check that we're using file_browser. @todo, check the browser by the view
+    // instead of hard-coding browser IDs.
+    if (in_array($browser, ['media_browser', 'media_entity_browser'])) {
+      // Override the first step of the form, if we're using media_browser.
+      if ($form['actions']['save_modal']['#ajax']['callback'] == '::submitSelectStep') {
+        // Add a library which handles our special "Select Media" button.
+        $form['#attached']['library'][] = 'media_entity_browser/entity_embed';
+
+        // Visually hide the "Next" button.
+        $form['actions']['save_modal']['#attributes']['class'][] = 'visually-hidden';
+        $form['actions']['save_modal']['#weight'] = 1;
+
+        // Add a button that matches our normal UX, which clicks the hidden button
+        // within the modal's iFrame.
+        $form['actions']['save_modal_alt'] = [
+          '#type' => 'submit',
+          '#value' => t('Select Media'),
+          '#attributes' => ['class' => ['entity-browser-modal-submit']],
+          '#button_type' => 'primary',
+          '#weight' => 0,
+        ];
+      }
+    }
+  }
+}

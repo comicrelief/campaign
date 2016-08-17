@@ -27,8 +27,7 @@ CONFIGURATION
 
       - Under Content check the content type with a paragraph field.
 
-   - Make sure that the content type with a paragraph field is set to NOT
-   translatable.
+   - Make sure that the paragraph field is set to NOT translatable.
 
    - Set the fields of each paragraph type to translatable as required.
 

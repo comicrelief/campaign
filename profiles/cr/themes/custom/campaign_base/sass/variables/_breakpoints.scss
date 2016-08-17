@@ -15,3 +15,8 @@ $screen-md-only: $screen-md $screen-md-max;
 $screen-lg: 1024px;
 $screen-lg-min: $screen-lg;
 /* $screen-lg-max: no no, no no no no, no no no no, no no there's no limit */
+
+/* Tweaked breakpoints to allow 'mobile' style nav on iPad landscape */
+
+$desktop-nav-breakpoint: 1150px;
+$desktop-nav-breakpoint-min: $desktop-nav-breakpoint;

@@ -1,0 +1,162 @@
+{
+    "_links": {
+        "self": {
+            "href": ""
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cr_cards"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_cards\/uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_cards\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_cards\/field_cr_cards_card_reference": [
+            {
+                "href": "http:\/\/default\/block\/10?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/default\/block\/11?_format=hal_json"
+            }
+        ]
+    },
+    "id": [
+        {
+            "value": "2"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "42c6b394-be7e-42dd-a862-e29db209ca44"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": "17"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "cr_cards"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_cards\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "863fcb62-bf24-4f65-b5ab-464f845c5720"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_cards\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "863fcb62-bf24-4f65-b5ab-464f845c5720"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_cards\/field_cr_cards_card_reference": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/block\/10?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/block_content\/cr_card"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "754defa1-523a-493f-8d29-118884a9f146"
+                    }
+                ]
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/block\/11?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/block_content\/cr_card"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "a137f6e7-0cf3-4387-a4b8-d8333e1fe9f5"
+                    }
+                ]
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1470653491",
+            "lang": "en"
+        }
+    ],
+    "parent_id": [
+        {
+            "value": "22"
+        }
+    ],
+    "parent_type": [
+        {
+            "value": "node"
+        }
+    ],
+    "parent_field_name": [
+        {
+            "value": "field_paragraphs"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "field_cr_cards_background": [
+        {
+            "value": "bg--dark-orchid"
+        }
+    ]
+}

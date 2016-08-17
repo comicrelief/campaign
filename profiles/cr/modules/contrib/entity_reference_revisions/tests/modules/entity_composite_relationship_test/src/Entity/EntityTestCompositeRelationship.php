@@ -1,14 +1,11 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\entity_composite_relationship_test\Entity\EntityTestCompositeRelationship.
- */
-
 namespace Drupal\entity_composite_relationship_test\Entity;
 
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\entity_reference_revisions\EntityNeedsSaveInterface;
+use Drupal\entity_reference_revisions\EntityNeedsSaveTrait;
 use Drupal\entity_test\Entity\EntityTestRev;
 
 /**
@@ -22,6 +19,7 @@ use Drupal\entity_test\Entity\EntityTestRev;
  *   entity_revision_parent_type_field = "parent_type",
  *   entity_revision_parent_id_field = "parent_id",
  *   entity_revision_parent_field_name_field = "parent_field_name",
+ *   admin_permission = "administer entity_test composite relationship",
  *   entity_keys = {
  *     "id" = "id",
  *     "uuid" = "uuid",
@@ -32,7 +30,9 @@ use Drupal\entity_test\Entity\EntityTestRev;
  *   }
  * )
  */
-class EntityTestCompositeRelationship extends EntityTestRev {
+class EntityTestCompositeRelationship extends EntityTestRev implements EntityNeedsSaveInterface {
+
+  use EntityNeedsSaveTrait;
 
   /**
    * {@inheritdoc}

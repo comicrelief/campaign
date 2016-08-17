@@ -13,6 +13,39 @@ projects:
       2672110: https://www.drupal.org/files/issues/entityfieldderiver-2672110-8.patch
   file_entity:
     version: 2.0-beta1
+  media_entity:
+    type: "module"
+    version: "1.0"
+    patch:
+      - "https://www.drupal.org/files/issues/2717375-hook_requirements-have-to-return-an-array.patch"
+  media_entity_instagram:
+    type: "module"
+    version: "1.0"
+  media_entity_image:
+    type: "module"
+    version: "1.0"
+  media_entity_slideshow:
+    type: "module"
+    version: "1.0"
+  media_entity_twitter:
+    type: "module"
+    version: "1.0"
+  media_entity_browser:
+    download:
+      branch: 8.x-1.x
+      revision: 1f9a47a
+  entity_browser:
+    download:
+      branch: 8.x-1.x
+      revision: 77e18608cff42cfc4384bbcdd730a1ffdc37779b
+  embed:
+    version: 1.0-rc2
+  entity_embed:
+    download:
+      branch: 8.x-1.x
+      revision: 08e5098909f5286238edfb716353efa651eb5a5d
+  video_embed_field:
+    version: 1.1
   metatag:
     version: 1.0-beta9
   pathauto:
@@ -43,12 +76,7 @@ projects:
   field_group:
     version: 1.0-rc4
   entity_reference_revisions:
-    download:
-      branch: 8.x-1.x
-      revision: 405c06ac073f9ab676a1816e53d7b36b67bf1d21
-    patch:
-      # See https://www.drupal.org/node/2598138
-      2598138: https://www.drupal.org/files/issues/2598138-hal-26.patch
+    version: 1.0
   view_modes_display:
     version: 1.x-dev
   social_links:
@@ -92,16 +120,13 @@ projects:
       version: 1.x-dev
       revision: 32b7111
   focal_point:
-    version: 1.0-beta1
-  crop:
-    version: 1.0-rc1
-  paragraphs:
     download:
-      branch: 8.x-1.x
-      revision: 6f946be
-    patch:
-      # See: https://www.drupal.org/node/2700723
-      2700723: https://www.drupal.org/files/issues/2700723-4.patch
+      version: 1.x-dev
+      revision: d39b83f955281255811618403ab62ee572146f0f
+  #crop:
+  #  version: 1.0-rc1
+  paragraphs:
+    version: 1.0
   # Forms
   yamlform:
     version: 1.0-alpha5

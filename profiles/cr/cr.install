@@ -32,9 +32,23 @@ function cr_update_8002() {
 }
 
 /**
- * Remove field_youtube_url and uninstall youtube module
+ * Install cr_downloadables
  */
 function cr_update_8003() {
+  \Drupal::service('module_installer')->install(['cr_downloadables']);
+}
+
+/**
+ * Install cr_navigation
+ */
+function cr_update_8004() {
+  \Drupal::service('module_installer')->install(['cr_navigation']);
+}
+
+/**
+* Remove field_youtube_url and uninstall youtube module
+*/
+function cr_update_8005() {
   $field = Drupal\field\Entity\FieldStorageConfig::loadByName('node', 'field_youtube_url');
   $field->delete();
   field_purge_batch('field_youtube_url');

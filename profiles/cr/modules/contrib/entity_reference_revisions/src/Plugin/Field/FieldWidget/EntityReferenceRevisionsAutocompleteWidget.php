@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\entity_reference_revisions\Plugin\Field\FieldWidget\EntityReferenceRevisionsAutocompleteWidget.
- */
-
 namespace Drupal\entity_reference_revisions\Plugin\Field\FieldWidget;
 
 use Drupal\Core\Entity\Entity;
@@ -32,7 +27,7 @@ class EntityReferenceRevisionsAutocompleteWidget extends EntityReferenceAutocomp
     $entity_type = $this->fieldDefinition->getFieldStorageDefinition()->getSetting('target_type');
     foreach ($values as $key => $value) {
       if($value['target_id']) {
-        $entity = \Drupal::entityManager()->getStorage($entity_type)->load($value['target_id']);
+        $entity = \Drupal::entityTypeManager()->getStorage($entity_type)->load($value['target_id']);
         // Add the current revision ID.
         $values[$key]['target_revision_id'] = $entity->getRevisionId();
       }

@@ -11,5 +11,5 @@ third_party_settings:
 id: paragraph.text
 target_entity_type_id: paragraph
 target_bundle: text
-default_langcode: en
+default_langcode: site_default
 language_alterable: true

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\paragraphs_type_permissions\ParagraphsTypePermissions.
- */
-
 namespace Drupal\paragraphs_type_permissions;
 
 use Drupal\Core\Routing\UrlGeneratorTrait;
@@ -65,19 +60,19 @@ class ParagraphsTypePermissions {
     return array(
       'view paragraph content ' .$type_id => array(
         'title' => $this->t('%type_name: View content', $type_params),
-        'description' => t('Is able to view paragraphs content of type %type_name', $type_params),
+        'description' => $this->t('Is able to view paragraphs content of type %type_name', $type_params),
       ),
       'create paragraph content ' . $type_id => array(
         'title' => $this->t('%type_name: Create content', $type_params),
-        'description' => t('Is able to create paragraphs content of type %type_name', $type_params),
+        'description' => $this->t('Is able to create paragraphs content of type %type_name', $type_params),
       ),
       'update paragraph content ' . $type_id => array(
         'title' => $this->t('%type_name: Edit content', $type_params),
-        'description' => t('Is able to update paragraphs content of type %type_name', $type_params),
+        'description' => $this->t('Is able to update paragraphs content of type %type_name', $type_params),
       ),
       'delete paragraph content ' . $type_id => array(
         'title' => $this->t('%type_name: Delete content', $type_params),
-        'description' => t('Is able to delete paragraphs content of type %type_name', $type_params),
+        'description' => $this->t('Is able to delete paragraphs content of type %type_name', $type_params),
       ),
     );
   }
