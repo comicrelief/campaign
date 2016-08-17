@@ -8,7 +8,6 @@ dependencies:
     - node.type.page
   module:
     - ds
-    - panelizer
     - text
     - user
 third_party_settings:

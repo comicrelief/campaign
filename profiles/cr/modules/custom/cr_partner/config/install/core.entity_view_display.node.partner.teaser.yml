@@ -12,7 +12,6 @@ dependencies:
     - node.type.partner
   module:
     - link
-    - panelizer
     - responsive_image
     - user
 third_party_settings:

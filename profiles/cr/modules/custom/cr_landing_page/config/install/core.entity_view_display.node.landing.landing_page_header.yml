@@ -13,14 +13,12 @@ dependencies:
     - field.field.node.landing.field_paragraphs
     - field.field.node.landing.field_svg_body_title
     - node.type.landing
-    - responsive_image.styles.bg_rich_text
   module:
     - ds
     - entity_reference_revisions
     - image
     - metatag
     - options
-    - panelizer
     - responsive_image
     - text
     - user

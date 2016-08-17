@@ -13,7 +13,6 @@ dependencies:
   module:
     - ds
     - link
-    - panelizer
     - responsive_image
     - taxonomy
     - text

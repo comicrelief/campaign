@@ -13,7 +13,6 @@ dependencies:
     - image
     - link
     - metatag
-    - panelizer
     - responsive_image
     - text
     - user
