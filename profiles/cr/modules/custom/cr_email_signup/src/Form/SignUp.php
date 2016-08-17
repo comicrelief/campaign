@@ -67,7 +67,7 @@ abstract class SignUp extends FormBase {
     $queue_message = array_merge($this->skeletonMessage, $append_message);
     try {
       $queue_factory = \Drupal::service('queue');
-      $queue = $queue_factory->get($this->getQueueName();
+      $queue = $queue_factory->get($this->getQueueName());
 
       if (FALSE === $queue->createItem($queue_message)) {
         throw new \Exception("createItem Failed. Check Queue.");
