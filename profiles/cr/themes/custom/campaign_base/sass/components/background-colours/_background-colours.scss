@@ -3,19 +3,44 @@
 // Just a few basic classes for now, to be used by row components
 //
 // Markup:
-// <div style="background-color: #1e1e1e; height: 60px; width: 60px;"></div>
-// <p><br/>$black: #1e1e1e;</p>
-// <div style="background-color: #282828; height: 60px; width: 60px;"></div>
-// <p><br/>$dark-grey: #282828;</p>
+// <div style="background-color: #f04257; height: 100px; width: 100%;"></div>
+// <p><br/>$colour-red: #f04257;<br/>.bg--red</p>
+// <div style="background-color: #51caf5; height: 100px; width: 100%;"></div>
+// <p><br/>$colour-sky-blue: #51caf5;<br/>.bg--sky-blue</p>
+// <div style="background-color: #fbef51; height: 100px; width: 100%;"></div>
+// <p><br/>$colour-yellow: #fbef51;<br/>.bg--yellow</p>
+// <div style="background-color: #a2cf59; height: 100px; width: 100%;"></div>
+// <p><br/>$colour-green: #a2cf59;<br/>.bg--green</p>
+// <div style="background-color: #00beca; height: 100px; width: 100%;"></div>
+// <p><br/>$colour-teal: #00beca;<br/>.bg--teal</p>
+// <div style="background-color: #388aca; height: 100px; width: 100%;"></div>
+// <p><br/>$colour-royal-blue: #388aca;<br/>.bg--royal-blue</p>
+// <div style="background-color: #8552a1; height: 100px; width: 100%;"></div>
+// <p><br/>$colour-purple: #8552a1;<br/>.bg--purple</p>
+// <div style="background-color: #f38a99; height: 100px; width: 100%;"></div>
+// <p><br/>$colour-pink: #f38a99;<br/>.bg--pink</p>
+// <div style="background-color: #222; height: 100px; width: 100%;"></div>
+// <p><br/>$colour-black: #222;<br/>.bg--black</p>
+// <div style="background-color: #fff; height: 100px; width: 100%;"></div>
+// <p><br/>$colour-white: #fff;<br/>.bg--white</p>
+// <div style="background-color: #666; height: 100px; width: 100%;"></div>
+// <p><br/>$colour-jasper-grey: #666;<br/>.bg--jasper-grey</p>
+// <div style="background-color: #c7c7c7; height: 100px; width: 100%;"></div>
+// <p><br/>$colour-gainsboro-grey: #c7c7c7;<br/>.bg--gainsboro-grey</p>
+// <div style="background-color: #e6e3dc; height: 100px; width: 100%;"></div>
+// <p><br/>$colour-light-grey: #e6e3dc;<br/>.bg--light-grey</p>
+// <div style="background-color: #f0f0f0; height: 100px; width: 100%;"></div>
+// <p><br/>$colour-smoke-grey: #f0f0f0;<br/>.bg--smoke-grey</p>
 //
 // Style guide: Background colours
 
-/* RND17 base colours for June taken from SR */
-
-.bg--white {
-  background-color: $white;
-}
+/* RND17 base colours for June taken from SR,
+   remove .bg--cream-grey when RND15 site goes */
 
 .bg--cream-grey {
   background-color: $cream-grey;
+}
+
+@for $color from 1 to (length($colorList)+1) {
+  @include bg-variation(nth($colorList, $color));
 }

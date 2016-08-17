@@ -46,17 +46,21 @@ dependencies:
   # Contrib modules
   - ds
   - file_entity
+  - media_entity
+  - media_entity_browser
+  - entity_browser
+  - embed
+  - entity_embed
+  - video_embed_field
   - metatag_open_graph
   - pathauto
   - redirect
   - youtube
   - view_modes_display
   - social_links
-  - crop
   - focal_point
   - scheduled_updates
   - cookieconsent
-  - simple_sitemap
 
   # Layout
   - inline_entity_form
@@ -72,17 +76,19 @@ dependencies:
   # Custom modules
   - cr_layout
   - cr_page
+  - cr_content_wall
+  - cr_rich_text_paragraph
+  - cr_block_paragraph
+  - cr_downloadables
+  - cr_single_msg
+  - cr_single_message_row_paragraph
   - cr_teaser
   - cr_article
   - cr_email_signup
-  - cr_content_wall
-  - cr_rich_text_paragraph
-  - cr_landing_page
   - cr_partner
-  - cr_single_message_row_paragraph
-  - cr_block_paragraph
-  - cr_single_msg
   - cr_cards
+  - cr_landing_page
+  - cr_navigation
   #- cr_performance
 
   # Development modules
@@ -93,6 +99,7 @@ dependencies:
   - editor_advanced_link
 
   # Default content; will be moved out of the profile at some point
+  - simple_sitemap
   - cr_default_content
 
   # Because cr_landing_pages has content dependencies this needs to be loaded after

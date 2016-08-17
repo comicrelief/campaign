@@ -13,6 +13,7 @@ default:
       selenium2:
         browser: chrome
       base_url: "%%BASE_URL%%"
+      files_path: './profiles/cr/tests/behat/files'
     Drupal\DrupalExtension:
       api_driver: "drupal"
       drush_driver: "drush"

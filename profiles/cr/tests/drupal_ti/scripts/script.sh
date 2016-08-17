@@ -18,4 +18,4 @@ drupal_ti_replace_behat_vars
 # And run the tests, excluding any selenium tests
 # To provide Selenium support, see http://jira.comicrelief.com/browse/PLAT-352
 ARGS=( $DRUPAL_TI_BEHAT_ARGS )
-./vendor/bin/behat "${ARGS[@]}" --tags '~@javascript'
+./vendor/bin/behat "${ARGS[@]}" --tags '~@not-on-travis'

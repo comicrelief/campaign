@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\entity_reference_revisions\Plugin\DataType\EntityReferenceRevisions.
- */
-
 namespace Drupal\entity_reference_revisions\Plugin\DataType;
 
 use Drupal\Core\Entity\EntityInterface;
@@ -79,7 +74,7 @@ class EntityReferenceRevisions extends EntityReference {
   public function getTarget() {
     if (!isset($this->target) && isset($this->revision_id)) {
       // If we have a valid reference, return the entity's TypedData adapter.
-      $entity = entity_revision_load($this->getTargetDefinition()->getEntityTypeId(), $this->revision_id);
+      $entity = \Drupal::entityTypeManager()->getStorage($this->getTargetDefinition()->getEntityTypeId())->loadRevision($this->revision_id);
       $this->target = isset($entity) ? $entity->getTypedData() : NULL;
     }
     return $this->target;

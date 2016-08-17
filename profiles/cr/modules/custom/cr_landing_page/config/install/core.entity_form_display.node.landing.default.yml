@@ -77,10 +77,10 @@ content:
     type: entity_reference_paragraphs
     weight: 13
     settings:
-      title: Paragraph
-      title_plural: Paragraphs
-      edit_mode: open
-      add_mode: dropdown
+      title: 'Row component'
+      title_plural: 'Row components'
+      edit_mode: closed
+      add_mode: select
       form_display_mode: default
     third_party_settings: {  }
   field_svg_body_title:
