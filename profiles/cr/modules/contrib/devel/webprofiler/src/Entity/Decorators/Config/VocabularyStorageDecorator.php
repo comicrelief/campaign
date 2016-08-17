@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\webprofiler\Entity\Decorators\Config\VocabularyStorageDecorator.
- */
-
 namespace Drupal\webprofiler\Entity\Decorators\Config;
 
 use Drupal\taxonomy\VocabularyStorageInterface;

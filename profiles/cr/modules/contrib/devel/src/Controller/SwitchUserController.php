@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\devel\Controller\SwitchUserController.
- */
-
 namespace Drupal\devel\Controller;
 
 use Drupal\Core\Controller\ControllerBase;

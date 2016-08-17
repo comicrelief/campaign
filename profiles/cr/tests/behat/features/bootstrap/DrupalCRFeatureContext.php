@@ -10,7 +10,6 @@ use Behat\Gherkin\Node\TableNode;
  * Defines application features from the specific context.
  */
 class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptingContext {
-
   /**
    * @Then I should see the correct sitemap elements
    * @And I should see the correct sitemap elements
@@ -66,6 +65,59 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
    */
   public function iWaitForAJAX() {
     $this->getSession()->wait(5000, 'jQuery.active === 0');
+  }
+
+  /**
+   * @Then /^(?:|I )enter todays date for "(?P<element>[^"]*)"$/
+   *
+   * @throws \Exception
+   *   If element cannot be found
+   */
+  public function iEnterTodaysDateFor($field) {
+    $date = date("j/m/Y");
+    $this->getSession()->getPage()->fillField($field, $date);
+  }
+
+  /**
+   * @Then /^(?:|I )enter the time for "(?P<element>[^"]*)"$/
+   *
+   * Inputs current time for 30 seconds in the future
+   *
+   * @throws \Exception
+   *   If element cannot be found
+   */
+  public function iEnterTheTimeFor($field) {
+    $time = date("H:i:s", time() + 30);
+    $this->getSession()->getPage()->fillField($field, $time);
+  }
+
+  /**
+  * @Given I wait for :arg1 seconds
+  *
+  * Wait for the given number of seconds. ONLY USE FOR DEBUGGING! Or any task using scheduled updates
+  */
+  public function iWaitForSeconds($arg1) {
+    sleep($arg1);
+  }
+
+  /**
+   * @Given I scroll :elementId into view
+   *
+   * Scroll to the id of an element, selenium will not do this for you
+   */
+  public function scrollIntoView($elementId) {
+    $elem = $this->getSession()->getPage()->find('css', $elementId);
+    $elem->focus();
+  }
+
+  /**
+  * @Given I close cookie message
+  *
+  * Closes the cokie message. Due to it's CSS positioning it sometimes gets in the way of other elements being clicked in tests
+  */
+  public function closeCookieMessage() {
+    $elem = $this->getSession()->getPage()->find('css', '.cc_container--open .cc_btn_accept_all');
+    $elem->press();
   }
 
   /**
@@ -133,14 +185,14 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
    */
   public function assertParagraphs($type, $title, $image, $body, TableNode $paragraphs) {
     // First, create a landing page node.
-    $node = (object) array(
+    $node = (object) [
       'title' => $title,
       'type' => $type,
       'uid' => 1,
-    );
+    ];
     $node = $this->nodeCreate($node);
 
-    $paragraph_items = array();
+    $paragraph_items = [];
 
     // Create paragraphs
     foreach ($paragraphs->getHash() as $paragraph) {
@@ -263,6 +315,25 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
       'title' => 'Behat test image',
     );
     return $return;
+  }
+
+  /**
+   * @Then I should see the image :Uri
+   *
+   * Scroll to the id of an element, selenium will not do this for you
+   */
+  public function FindImage($uri) {
+    return $this->getSession()->getPage()
+      ->find('xpath', '/img[@src="' . $uri . '"]');
+  }
+  /**
+   * @Then I should not see the image :Uri
+   *
+   * Scroll to the id of an element, selenium will not do this for you
+   */
+  public function NotFindImage($uri) {
+    return !$this->getSession()->getPage()
+      ->find('xpath', '/img[@src="' . $uri . '"]');
   }
 
 }

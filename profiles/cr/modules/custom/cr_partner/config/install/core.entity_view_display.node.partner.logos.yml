@@ -1,0 +1,58 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.logos
+    - field.field.node.partner.body
+    - field.field.node.partner.field_partner_category
+    - field.field.node.partner.field_partner_image
+    - field.field.node.partner.field_partner_logo
+    - field.field.node.partner.field_partner_meta_tags
+    - field.field.node.partner.field_partner_website
+    - node.type.partner
+  module:
+    - ds
+    - panelizer
+    - responsive_image
+    - user
+third_party_settings:
+  panelizer:
+    enable: false
+    custom: false
+  ds:
+    layout:
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
+      library: ''
+      disable_css: false
+      settings:
+        classes: {  }
+        wrappers: {  }
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+    regions:
+      ds_content:
+        - field_partner_logo
+id: node.partner.logos
+targetEntityType: node
+bundle: partner
+mode: logos
+content:
+  field_partner_logo:
+    type: responsive_image
+    weight: 0
+    label: hidden
+    settings:
+      responsive_image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+hidden:
+  body: true
+  field_partner_category: true
+  field_partner_image: true
+  field_partner_meta_tags: true
+  field_partner_website: true
+  links: true
+  social_links: true

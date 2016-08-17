@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\webprofiler\Form\ConfigForm.
- */
-
 namespace Drupal\webprofiler\Form;
 
 use Drupal\Core\Config\ConfigFactoryInterface;

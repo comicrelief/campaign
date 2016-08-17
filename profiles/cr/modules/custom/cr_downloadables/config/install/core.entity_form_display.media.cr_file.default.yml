@@ -1,0 +1,54 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.cr_file.field_cr_field_display_title
+    - field.field.media.cr_file.field_cr_file
+    - field.field.media.cr_file.field_cr_file_category
+    - media_entity.bundle.cr_file
+  module:
+    - file
+id: media.cr_file.default
+targetEntityType: media
+bundle: cr_file
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+  field_cr_field_display_title:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_cr_file:
+    weight: 3
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+    type: file_generic
+  field_cr_file_category:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  name:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 4
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

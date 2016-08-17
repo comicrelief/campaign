@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\devel_generate\Form\DevelGenerateForm.
- */
-
 namespace Drupal\devel_generate\Form;
 
 use Drupal\Component\Plugin\PluginManagerInterface;

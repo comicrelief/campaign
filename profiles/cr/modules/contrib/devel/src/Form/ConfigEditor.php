@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\devel\Form\ConfigEditor.
- */
-
 namespace Drupal\devel\Form;
 
 use Drupal\Component\Serialization\Exception\InvalidDataTypeException;

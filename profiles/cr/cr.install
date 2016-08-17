@@ -15,8 +15,6 @@ function cr_install() {
   // Disable the user pictures on nodes.
   \Drupal::configFactory()->getEditable('system.theme.global')->set('features.node_user_picture', FALSE)->save(TRUE);
 
-  // Allow visitor account creation, but with administrative approval.
-  \Drupal::configFactory()->getEditable('user.settings')->set('register', USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL)->save(TRUE);
 }
 
 /**
@@ -24,4 +22,25 @@ function cr_install() {
  */
 function cr_update_8001() {
   \Drupal::service('module_installer')->install(['config_readonly']);
+}
+
+/**
+ * Install cr_cards and cr_single_msg
+ */
+function cr_update_8002() {
+  \Drupal::service('module_installer')->install(['cr_cards', 'cr_single_msg']);
+}
+
+/**
+ * Install cr_downloadables
+ */
+function cr_update_8003() {
+  \Drupal::service('module_installer')->install(['cr_downloadables']);
+}
+
+/**
+ * Install cr_navigation
+ */
+function cr_update_8004() {
+  \Drupal::service('module_installer')->install(['cr_navigation']);
 }

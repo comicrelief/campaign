@@ -9,6 +9,7 @@ private/*
 
 sites/*/services*.yml
 sites/*/environment.yml
+sites/*/settings.local.php
 
 # Ignore bundle files
 .bundle/config
@@ -51,6 +52,12 @@ Thumbs.db
 # Vim generated files #
 ######################
 *.un~
+
+# Denote all files that are truly binary and should not be modified.
+*.otf binary
+*.eot binary
+*.ttf binary
+*.woff binary
 
 # SASS #
 ##########

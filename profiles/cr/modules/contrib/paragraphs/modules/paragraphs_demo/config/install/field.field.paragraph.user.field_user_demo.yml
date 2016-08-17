@@ -19,7 +19,7 @@ settings:
   handler_settings:
     filter:
       type: _none
-    target_bundles: {  }
+    target_bundles: null
     sort:
       field: _none
 field_type: entity_reference

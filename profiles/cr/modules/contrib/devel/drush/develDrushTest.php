@@ -4,10 +4,9 @@ namespace Unish;
 
 if (class_exists('Unish\CommandUnishTestCase')) {
 
-    /*
-   * @file
-   *   PHPUnit Tests for devel. This uses Drush's own test framework, based on PHPUnit.
-   *   To run the tests, use run-tests-drush.sh from the devel directory.
+  /**
+   * PHPUnit Tests for devel. This uses Drush's own test framework, based on PHPUnit.
+   * To run the tests, use run-tests-drush.sh from the devel directory.
    */
   class develCase extends CommandUnishTestCase {
 

@@ -5,7 +5,7 @@ core: 8.x
 package: Comic Relief
 dependencies:
   - cr_layout
-  
+
 config_devel:
   - node.type.landing
   - core.entity_form_display.node.landing.default

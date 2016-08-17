@@ -361,7 +361,13 @@ function install_begin_request($class_loader, &$install_state) {
   \Drupal::setContainer($container);
 
   // Determine whether base system services are ready to operate.
-  $install_state['config_verified'] = install_ensure_config_directory(CONFIG_SYNC_DIRECTORY);
+  try {
+    $sync_directory = config_get_config_directory(CONFIG_SYNC_DIRECTORY);
+    $install_state['config_verified'] = file_exists($sync_directory);
+  }
+  catch (Exception $e) {
+    $install_state['config_verified'] = FALSE;
+  }
   $install_state['database_verified'] = install_verify_database_settings($site_path);
   $install_state['settings_verified'] = $install_state['config_verified'] && $install_state['database_verified'];
 
@@ -1084,7 +1090,7 @@ function install_verify_completed_task() {
  *   The site path.
  *
  * @return bool
- *  TRUE if there are no database errors.
+ *   TRUE if there are no database errors.
  */
 function install_verify_database_settings($site_path) {
   if ($database = Database::getConnectionInfo()) {
@@ -1102,14 +1108,8 @@ function install_verify_database_settings($site_path) {
  * Verify that the database is ready (no existing Drupal installation).
  */
 function install_verify_database_ready() {
-  $system_schema = system_schema();
-  end($system_schema);
-  $table = key($system_schema);
-
-  if ($database = Database::getConnectionInfo()) {
-    if (Database::getConnection()->schema()->tableExists($table)) {
-      throw new AlreadyInstalledException(\Drupal::service('string_translation'));
-    }
+  if (drupal_is_installed()) {
+    throw new AlreadyInstalledException(\Drupal::service('string_translation'));
   }
 }
 

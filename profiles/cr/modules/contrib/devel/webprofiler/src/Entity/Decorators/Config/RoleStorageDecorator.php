@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\webprofiler\Entity\Decorators\Config\RoleStorageDecorator.
- */
-
 namespace Drupal\webprofiler\Entity\Decorators\Config;
 
 use Drupal\user\RoleStorageInterface;
