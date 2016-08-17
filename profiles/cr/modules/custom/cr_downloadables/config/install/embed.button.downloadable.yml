@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - media_entity.bundle.cr_external_file
+    - media_entity.bundle.cr_file
+  module:
+    - entity_embed
+    - media_entity
+label: Downloadable
+id: downloadable
+type_id: entity
+type_settings:
+  entity_type: media
+  bundles:
+    - cr_external_file
+    - cr_file
+  display_plugins: {  }
+  entity_browser: media_entity_browser
+  entity_browser_settings:
+    display_review: true
+icon_uuid: null

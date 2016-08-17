@@ -52,8 +52,14 @@ class SignUp extends FormBase {
     if (!empty($append_message['device'])) {
       $append_message['transSource'] = str_replace("[Device]", $append_message['device'], $append_message['transSource']);
     }
+    else {
+      $append_message['transSource'] = str_replace("[Device]", "Unknown", $append_message['transSource']);
+    }
     if (!empty($append_message['source'])) {
       $append_message['transSource'] = str_replace("[PageElementSource]", $append_message['source'], $append_message['transSource']);
+    }
+    else {
+      $append_message['transSource'] = str_replace("[PageElementSource]", "Unknown", $append_message['transSource']);
     }
 
     // Add passed arguments.
@@ -103,14 +109,14 @@ class SignUp extends FormBase {
       '#type' => 'hidden',
       '#attributes' => array(
         'id' => 'esu-device',
-      )
+      ),
     ];
     $form['steps']['source'] = [
       '#name' => 'source',
       '#type' => 'hidden',
       '#attributes' => array(
         'id' => 'esu-source',
-      )
+      ),
     ];
 
     $form['steps']['step1'] = [
@@ -159,6 +165,7 @@ class SignUp extends FormBase {
           $this->queueMessage(array(
             'email' => $form_state->getValue('email'),
             'device' => $form_state->getValue('device'),
+            'source' => $form_state->getValue('source'),
             'lists' => array('general' => 'general'),
           ));
           $response->addCommand(new HtmlCommand('.esu-errors', ''));
