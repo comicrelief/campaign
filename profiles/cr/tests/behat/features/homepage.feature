@@ -1,6 +1,7 @@
 Feature: Homepage
   To check the header links are present and go to where they are supposed to
 
+  @api @content
   Scenario: Header-links
     Given I am on the homepage
     Then I should see the link "What's going on"
