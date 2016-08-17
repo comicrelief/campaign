@@ -13,10 +13,8 @@ config_devel:
 
   - media_entity.bundle.cr_file
   - field.storage.media.field_cr_file
-  - field.storage.media.field_cr_file_resource_category
   - field.storage.media.field_cr_field_display_title
   - field.field.media.cr_file.field_cr_file
-  - field.field.media.cr_file.field_cr_file_resource_category
   - field.field.media.cr_file.field_cr_field_display_title
   - core.entity_form_display.media.cr_file.default
   - core.entity_view_display.media.cr_file.default
