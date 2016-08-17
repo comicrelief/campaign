@@ -109,3 +109,4 @@ permissions:
   - 'update any media'
   - 'update media'
   - 'view media'
+  - 'administer redirects'
