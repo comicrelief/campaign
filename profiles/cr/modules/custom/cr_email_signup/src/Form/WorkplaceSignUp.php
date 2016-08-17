@@ -56,6 +56,7 @@ class WorkplaceSignUp extends SignUp {
     $queue_message = array_merge($this->skeletonMessage, $append_message);
 
     try {
+      $queue_factory = \Drupal::service('queue');
       $queue = $queue_factory->get($this->getQueueName());
 
       if (FALSE === $queue->createItem($queue_message)) {
