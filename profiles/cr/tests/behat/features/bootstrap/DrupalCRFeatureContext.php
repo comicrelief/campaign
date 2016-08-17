@@ -344,14 +344,20 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
   public function assertQueueElement($queue_name, TableNode $data) {
     /* @var \Drupal\Core\Queue\QueueFactory $queue_factory */
     $queue = \Drupal::service('queue')->get($queue_name);
+
+    if (!$queue) {
+      throw new Exception('Unable to access queue "' . $queue_name . '"');
+    }
+
     $item = $queue->claimItem();
-    // Remove the item from the queue
-    $queue->deleteItem($item);
 
     if (!$item || !is_object($item) || !is_array($item->data)) {
       throw new Exception('Unable to claim item from queue "' . $queue_name . '"');
     }
-    
+
+    // Remove the item from the queue
+    $queue->deleteItem($item);
+
     // Take off the data from the queue item
     $item = $item->data;
 
