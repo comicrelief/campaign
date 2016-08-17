@@ -336,4 +336,37 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
       ->find('xpath', '/img[@src="' . $uri . '"]');
   }
 
+  /**
+   * Asserts that the last queue element contains given data.
+   *
+   * @Then I should have received the following data in the :queue( queue):
+   */
+  public function assertQueueElement($queue_name, TableNode $data) {
+    /* @var \Drupal\Core\Queue\QueueFactory $queue_factory */
+    $queue = \Drupal::service('queue')->get($queue_name);
+    $item = $queue->claimItem();
+    // Remove the item from the queue
+    $queue->deleteItem($item);
+
+    if (!$item || !is_object($item) || !is_array($item->data)) {
+      throw new Exception('Unable to claim item from queue "' . $queue_name . '"');
+    }
+    
+    // Take off the data from the queue item
+    $item = $item->data;
+
+    // Get the expected data
+    $expected = $data->getHash()[0];
+
+    foreach ($expected as $name => $expected_value) {
+      if (!isset($item[$name])) {
+        throw new Exception('Expected queue property "' . $name . '" was not found in last item from queue "' . $queue_name . '"');
+      }
+
+      if ($item[$name] != $expected_value) {
+        throw new Exception('Expected queue property "' . $name . '" contains value "' . $item[$name] . '" but "' . $expected_value . '" expected, for last item from queue "' . $queue_name . '"');       
+      }
+    }
+  }
+
 }
