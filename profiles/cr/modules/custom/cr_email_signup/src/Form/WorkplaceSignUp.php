@@ -27,48 +27,6 @@ class WorkplaceSignUp extends SignUp {
   }
 
   /**
-   * Send a message to the queue service.
-   *
-   * @param array $append_message
-   *     Message to append to queue.
-   */
-  protected function queueMessage($append_message) {
-    // Add dynamic keys.
-    $append_message['timestamp'] = time();
-    $append_message['transSourceURL'] = \Drupal::service('path.current')->getPath();
-    $append_message['transSource'] = "{$this->skeletonMessage['campaign']}_[Device]_ESU_[PageElementSource]";
-
-    // RND-178: Device & Source Replacements.
-    if (!empty($append_message['device'])) {
-      $append_message['transSource'] = str_replace("[Device]", $append_message['device'], $append_message['transSource']);
-    }
-    else {
-      $append_message['transSource'] = str_replace("[Device]", "Unknown", $append_message['transSource']);
-    }
-    if (!empty($append_message['source'])) {
-      $append_message['transSource'] = str_replace("[PageElementSource]", $append_message['source'], $append_message['transSource']);
-    }
-    else {
-      $append_message['transSource'] = str_replace("[PageElementSource]", "Unknown", $append_message['transSource']);
-    }
-
-    // Add passed arguments.
-    $queue_message = array_merge($this->skeletonMessage, $append_message);
-
-    try {
-      $queue_factory = \Drupal::service('queue');
-      $queue = $queue_factory->get($this->getQueueName());
-
-      if (FALSE === $queue->createItem($queue_message)) {
-        throw new \Exception("createItem Failed. Check Queue.");
-      }
-    }
-    catch (\Exception $exception) {
-      \Drupal::logger('cr_email_signup_workplace')->error("Unable to queue message. Attempted to queue message. Error was: " . $exception->getMessage());
-    }
-  }
-
-  /**
    * Build the Form Elements.
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
