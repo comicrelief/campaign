@@ -64,37 +64,4 @@ class WorkplaceSignUp extends SignUp {
     return $form;
   }
 
-  /**
-   * Process form steps.
-   */
-  public function processSteps(array &$form, FormStateInterface $form_state) {
-    $triggering_element = $form_state->getTriggeringElement();
-    $response = new AjaxResponse();
-    switch ($triggering_element['#name']) {
-      case 'step1':
-        // Process first step.
-        if ($this->validateEmail($form, $form_state)) {
-          // Send first message to queue.
-          $this->queueMessage(array(
-            'email' => $form_state->getValue('email'),
-            'device' => $form_state->getValue('device'),
-            'source' => $form_state->getValue('source'),
-            'lists' => array('general' => 'general'),
-          ));
-          $response->addCommand(new HtmlCommand('.esu-errors', ''));
-          $response->addCommand(new InvokeCommand('.block--cr-email-signup', 'removeClass', array('block--cr-email-signup--error')));
-          $response->addCommand(new InvokeCommand('.block--cr-email-signup', 'removeClass', array('block--cr-email-signup--step-1')));
-          $response->addCommand(new InvokeCommand('.block--cr-email-signup', 'addClass', array('block--cr-email-signup--step-2')));
-        }
-        else {
-          // Error if validation isnt met.
-          $response->addCommand(new HtmlCommand('.esu-errors', 'Please enter a valid email address'));
-          $response->addCommand(new InvokeCommand('.block--cr-email-signup', 'addClass', array('block--cr-email-signup--error')));
-        }
-        break;
-    }
-    // Return ajax response.
-    return $response;
-  }
-
 }
