@@ -25,3 +25,4 @@ default:
       region_map:
         content: ".layout-content"
         esu_standard: ".block--cr-email-signup"
+        esu_workflow: ".cr-email-signup-workplace-form"
