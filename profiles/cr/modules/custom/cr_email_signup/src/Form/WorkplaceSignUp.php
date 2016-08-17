@@ -3,9 +3,6 @@
 namespace Drupal\cr_email_signup\Form;
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Ajax\AjaxResponse;
-use Drupal\Core\Ajax\HtmlCommand;
-use Drupal\Core\Ajax\InvokeCommand;
 
 /**
  * Concrete implementation of Step One.
