@@ -3,6 +3,7 @@ status: true
 dependencies:
   module:
     - paragraphs
+    - user
 id: paragraph.field_user_demo
 field_name: field_user_demo
 entity_type: paragraph

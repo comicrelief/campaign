@@ -47,7 +47,24 @@ function paragraphs_demo_install() {
   ]);
   $paragraph3->save();
 
-  // Add demo content with two paragraphs.
+  $paragraph4 = Paragraph::create([
+    'title' => 'Paragraph 4',
+    'type' => 'text',
+    'field_text_demo' => [
+      'value' => '<p>A search api example can be found <a href="/paragraphs_search">here</a></p>',
+      'format' => 'basic_html',
+    ],
+  ]);
+  $paragraph4->save();
+
+  $paragraph5 = Paragraph::create([
+    'title' => 'Paragraph 4',
+    'type' => 'nested_paragraph',
+    'field_paragraphs_demo' => $paragraph4,
+  ]);
+  $paragraph5->save();
+
+  // Add demo content with four paragraphs.
   $node = Node::create(array(
     'type' => 'paragraphed_content_demo',
     'title' => 'Welcome to the Paragraphs Demo module!',
@@ -67,10 +84,13 @@ function paragraphs_demo_install() {
         'target_id' => $paragraph3->id(),
         'target_revision_id' => $paragraph3->getRevisionId(),
       ),
+      array(
+        'target_id' => $paragraph5->id(),
+        'target_revision_id' => $paragraph5->getRevisionId(),
+      ),
     ),
   ));
   $node->save();
-
   // Set the node as the front page.
   \Drupal::configFactory()->getEditable('system.site')->set('page.front', '/node/' . $node->id())->save();
 }
