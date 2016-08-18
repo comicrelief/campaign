@@ -42,6 +42,7 @@ dependencies:
   - entity
   - diff
   - fast404
+  - rest
 
   # Contrib modules
   - ds
