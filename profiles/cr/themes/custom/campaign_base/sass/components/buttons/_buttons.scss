@@ -28,13 +28,12 @@
   */
 
 .btn {
-  display: block;
+  display: inline-block;
   padding: 21px 40px;
   cursor: pointer;
   text-align: center;
   vertical-align: middle;
   text-decoration: none;
-  width: 100%;
   font-family: $font-bold;
   font-size: 18px;
   line-height: 18px;
@@ -50,6 +49,12 @@
   @include btn-variation( $button );
 }
 
+// Force white colour on black bg hover state
+.btn.btn--white {
+  &:hover {
+    color: $colour-white;
+  }
+}
 /**
  * Buttons display as stack block for xs
  */
@@ -60,6 +65,11 @@
 /**
  * Buttons display as inline block for md and large breakpoints.
  */
+.btn {
+  &.btn--fixed-width {
+    width: 100%;
+  }
+}
 @include breakpoint($screen-md) {
   .btn {
     display: inline-block;
