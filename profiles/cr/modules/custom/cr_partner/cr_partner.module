@@ -9,7 +9,7 @@ use Drupal\Core\Entity\FieldableEntityInterface;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 
 /**
- * Options callback for field_background_colour to update background colour of a partner list paragraph
+ * Options callback for field_background_colour.
  *
  * @see options_allowed_values()
  */
