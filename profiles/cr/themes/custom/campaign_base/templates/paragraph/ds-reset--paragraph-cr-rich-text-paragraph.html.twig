@@ -2,7 +2,6 @@
 
 {%
 set classes = [
-br_body_colour,
 'paragraph',
 'contextual-region',
 'background-single-msg',
@@ -10,7 +9,7 @@ br_body_colour,
 view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
 ]
 %}
-<div{{ attributes.addClass(classes) }} >
+<section{{ attributes.addClass(classes) }} >
 		<div class="background-single-msg__image">
 			{{ content.field_background }}
 		</div>
@@ -20,4 +19,4 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
 	    	{{ content.field_body }}
 	    </div>
 		</div>
-</div>
+</section>
