@@ -16,7 +16,6 @@ dependencies:
   - youtube
   - metatag
   - pathauto
-  - panelizer
   - responsive_image
   - ds
   - rdf

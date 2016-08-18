@@ -14,7 +14,6 @@ dependencies:
   module:
     - datetime
     - metatag
-    - panelizer
     - responsive_image
     - text
     - user
