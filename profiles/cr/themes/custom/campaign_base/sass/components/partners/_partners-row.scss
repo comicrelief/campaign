@@ -27,7 +27,7 @@
       align-content: flex-end;
       flex-flow: row wrap;
       @include breakpoint($screen-md) {
-        @include span(8);
+        @include span(6);
         float: none;
         margin: 0 auto;
       }
