@@ -145,7 +145,7 @@ projects:
   search_api:
     download:
       version: 1.x-dev
-      revision: 895b507
+      revision: c0a5819
   search_api_solr:
     download:
       version: 1.x-dev

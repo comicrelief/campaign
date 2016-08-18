@@ -7,7 +7,8 @@ use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\search_api\IndexInterface;
 use Drupal\search_api\Item\FieldInterface;
 use Drupal\search_api\Processor\ConfigurablePropertyBase;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Processor\ConfigurablePropertyInterface;
+use Drupal\search_api\Utility\Utility;
 
 /**
  * Defines an "aggregated field" property.
@@ -62,15 +63,32 @@ class AggregatedFieldProperty extends ConfigurablePropertyBase {
     );
     $datasource_labels = $this->getDatasourceLabelPrefixes($index);
     $properties = $this->getAvailableProperties($index);
-    ksort($properties);
+    $field_options = array();
     foreach ($properties as $combined_id => $property) {
       list($datasource_id, $name) = Utility::splitCombinedId($combined_id);
-      $form['fields']['#options'][$combined_id] = $datasource_labels[$datasource_id] . $property->getLabel();
+      // Do not include the "aggregated field" property.
+      if (!$datasource_id && $name == 'aggregated_field') {
+        continue;
+      }
+      $field_options[$combined_id] = $datasource_labels[$datasource_id] . $property->getLabel();
+      if ($property instanceof ConfigurablePropertyInterface) {
+        $description = $property->getFieldDescription($field);
+      }
+      else {
+        $description = $property->getDescription();
+      }
       $form['fields'][$combined_id] = array(
         '#attributes' => array('title' => $this->t('Machine name: @name', array('@name' => $name))),
-        '#description' => $property->getDescription(),
+        '#description' => $description,
       );
     }
+    // Set the field options in a way that sorts them first by whether they are
+    // selected (to quickly see which one are included) and second by their
+    // labels.
+    asort($field_options, SORT_NATURAL);
+    $selected = array_flip($configuration['fields']);
+    $form['fields']['#options'] = array_intersect_key($field_options, $selected);
+    $form['fields']['#options'] += array_diff_key($field_options, $selected);
 
     return $form;
   }

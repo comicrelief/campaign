@@ -92,7 +92,7 @@ class IgnoreCharacters extends FieldsProcessorPluginBase {
     parent::validateConfigurationForm($form, $form_state);
 
     $ignorable = str_replace('/', '\/', $form_state->getValues()['ignorable']);
-    if (@preg_match('/(' . $ignorable . ')+/u', '') === FALSE) {
+    if ($ignorable !== '' && @preg_match('/(' . $ignorable . ')+/u', '') === FALSE) {
       $el = $form['ignorable'];
       $form_state->setError($el, $el['#title'] . ': ' . $this->t('The entered text is no valid regular expression.'));
     }

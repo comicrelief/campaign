@@ -4,7 +4,9 @@ namespace Drupal\search_api\Plugin\search_api\processor;
 
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Plugin\PluginFormInterface;
 use Drupal\search_api\IndexInterface;
+use Drupal\search_api\Plugin\PluginFormTrait;
 use Drupal\search_api\Processor\ProcessorPluginBase;
 use Drupal\user\RoleInterface;
 use Drupal\user\UserInterface;
@@ -21,7 +23,9 @@ use Drupal\user\UserInterface;
  *   },
  * )
  */
-class RoleFilter extends ProcessorPluginBase {
+class RoleFilter extends ProcessorPluginBase implements PluginFormInterface {
+
+  use PluginFormTrait;
 
   /**
    * Can only be enabled for an index that indexes the user entity.
@@ -51,8 +55,6 @@ class RoleFilter extends ProcessorPluginBase {
    * {@inheritdoc}
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
-    $form = parent::buildConfigurationForm($form, $form_state);
-
     $options = array_map(function (RoleInterface $role) {
       return Html::escape($role->label());
     }, user_roles());
@@ -85,8 +87,7 @@ class RoleFilter extends ProcessorPluginBase {
     $values['default'] = (bool) $values['default'];
     $values['roles'] = array_values(array_filter($values['roles']));
     $form_state->set('values', $values);
-
-    parent::submitConfigurationForm($form, $form_state);
+    $this->setConfiguration($values);
   }
 
   /**

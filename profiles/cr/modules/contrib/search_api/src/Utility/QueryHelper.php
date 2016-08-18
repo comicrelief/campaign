@@ -1,13 +1,18 @@
 <?php
 
-namespace Drupal\search_api\Query;
+namespace Drupal\search_api\Utility;
 
+use Drupal\Core\Extension\ModuleHandlerInterface;
+use Drupal\search_api\IndexInterface;
+use Drupal\search_api\ParseMode\ParseModePluginManager;
+use Drupal\search_api\Query\Query;
+use Drupal\search_api\Query\ResultSetInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
- * Implements a simple request stack-aware cache for the search results.
+ * Provides methods for creating search queries and statically caching results.
  */
-class ResultsCache implements ResultsCacheInterface {
+class QueryHelper implements QueryHelperInterface {
 
   /**
    * The request stack.
@@ -15,6 +20,20 @@ class ResultsCache implements ResultsCacheInterface {
    * @var \Symfony\Component\HttpFoundation\RequestStack
    */
   protected $requestStack;
+
+  /**
+   * The module handler.
+   *
+   * @var \Drupal\Core\Extension\ModuleHandlerInterface
+   */
+  protected $moduleHandler;
+
+  /**
+   * The parse mode manager.
+   *
+   * @var \Drupal\search_api\ParseMode\ParseModePluginManager
+   */
+  protected $parseModeManager;
 
   /**
    * Storage for the results, keyed by request and search ID.
@@ -31,13 +50,19 @@ class ResultsCache implements ResultsCacheInterface {
   protected $null;
 
   /**
-   * Constructs a ResultsCache object.
+   * Constructs a QueryHelper object.
    *
-   * @param \Symfony\Component\HttpFoundation\RequestStack $request_stack
+   * @param \Symfony\Component\HttpFoundation\RequestStack $requestStack
    *   The request stack.
+   * @param \Drupal\Core\Extension\ModuleHandlerInterface $moduleHandler
+   *   The module handler.
+   * @param \Drupal\search_api\ParseMode\ParseModePluginManager $parseModeManager
+   *   The parse mode manager.
    */
-  public function __construct(RequestStack $request_stack) {
-    $this->requestStack = $request_stack;
+  public function __construct(RequestStack $requestStack, ModuleHandlerInterface $moduleHandler, ParseModePluginManager $parseModeManager) {
+    $this->requestStack = $requestStack;
+    $this->moduleHandler = $moduleHandler;
+    $this->parseModeManager = $parseModeManager;
     $this->results = new \SplObjectStorage();
     $this->null = (object) array();
   }
@@ -45,8 +70,21 @@ class ResultsCache implements ResultsCacheInterface {
   /**
    * {@inheritdoc}
    */
+  public function createQuery(IndexInterface $index, array $options = array()) {
+    $query = Query::create($index, $options);
+
+    $query->setModuleHandler($this->moduleHandler);
+    $query->setParseModeManager($this->parseModeManager);
+    $query->setQueryHelper($this);
+
+    return $query;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function addResults(ResultSetInterface $results) {
-    // @todo Create getter and setter methods for the search ID.
+    // @todo Create getter and setter methods for the search ID. See #2772829.
     $search_id = $results->getQuery()->getOption('search id', '');
     $request = $this->getCurrentRequest();
     if (!isset($this->results[$request])) {
@@ -101,7 +139,7 @@ class ResultsCache implements ResultsCacheInterface {
    *   NULL key.
    */
   protected function getCurrentRequest() {
-    return $this->requestStack->getCurrentRequest();
+    return $this->requestStack->getCurrentRequest() ?: $this->null;
   }
 
 }

@@ -5,11 +5,13 @@ namespace Drupal\search_api\Plugin\search_api\processor;
 use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\Unicode;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Plugin\PluginFormInterface;
 use Drupal\Core\Render\Element;
+use Drupal\search_api\Plugin\PluginFormTrait;
 use Drupal\search_api\Processor\ProcessorPluginBase;
 use Drupal\search_api\Query\QueryInterface;
 use Drupal\search_api\Query\ResultSetInterface;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 
 /**
  * Adds a highlighted excerpt to results and highlights returned fields.
@@ -25,7 +27,9 @@ use Drupal\search_api\Utility;
  *   }
  * )
  */
-class Highlight extends ProcessorPluginBase {
+class Highlight extends ProcessorPluginBase implements PluginFormInterface {
+
+  use PluginFormTrait;
 
   /**
    * PCRE regular expression for a word boundary.
@@ -80,8 +84,6 @@ class Highlight extends ProcessorPluginBase {
    * {@inheritdoc}
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
-    $form = parent::buildConfigurationForm($form, $form_state);
-
     $form['highlight'] = array(
       '#type' => 'select',
       '#title' => $this->t('Highlight returned field data'),
@@ -161,8 +163,7 @@ class Highlight extends ProcessorPluginBase {
     // Sanitize the storage for the "exclude_fields" setting.
     $excluded = &$form_state->getValue('exclude_fields');
     $excluded = array_keys(array_filter($excluded));
-
-    parent::submitConfigurationForm($form, $form_state);
+    $this->setConfiguration($form_state->getValues());
   }
 
   /**

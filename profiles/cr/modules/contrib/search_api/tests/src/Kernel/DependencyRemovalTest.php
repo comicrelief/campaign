@@ -7,7 +7,7 @@ use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\search_api\Entity\Index;
 use Drupal\search_api\Entity\Server;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 use Drupal\search_api_test\PluginTestTrait;
 
 /**
@@ -50,7 +50,7 @@ class DependencyRemovalTest extends KernelTestBase {
   public function setUp() {
     parent::setUp();
 
-    $this->installSchema('search_api', 'search_api_task');
+    $this->installEntitySchema('search_api_task');
 
     \Drupal::configFactory()->getEditable('search_api.settings')
       ->set('default_tracker', 'default')

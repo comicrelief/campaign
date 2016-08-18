@@ -59,7 +59,7 @@ field_settings:
     property_path: uid
     index_locked: true
     type_locked: true
-  search_api_node_grants:
+  node_grants:
     label: 'Node access information'
     type: string
     property_path: search_api_node_grants

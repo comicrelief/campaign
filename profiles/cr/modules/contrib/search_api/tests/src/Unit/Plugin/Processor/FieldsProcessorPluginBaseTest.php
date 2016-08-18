@@ -5,7 +5,7 @@ namespace Drupal\Tests\search_api\Unit\Plugin\Processor;
 use Drupal\search_api\Plugin\search_api\data_type\value\TextToken;
 use Drupal\search_api\Plugin\search_api\data_type\value\TextValue;
 use Drupal\search_api\Query\Condition;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 use Drupal\Tests\UnitTestCase;
 
 /**
@@ -39,7 +39,7 @@ class FieldsProcessorPluginBaseTest extends UnitTestCase {
   public function setUp() {
     parent::setUp();
 
-    $this->setUpDataTypePlugin();
+    $this->setUpMockContainer();
     $this->index = $this->getMock('Drupal\search_api\IndexInterface');
     $this->index->expects($this->any())
       ->method('status')
@@ -84,7 +84,7 @@ class FieldsProcessorPluginBaseTest extends UnitTestCase {
       return FALSE;
     };
     $this->processor->setMethodOverride('testType', $override);
-    $configuration['fields'] = array('text_field' => 'text_field', 'float_field' => 'float_field');
+    $configuration['fields'] = array('text_field', 'float_field');
     $this->processor->setConfiguration($configuration);
 
     $items = $this->getTestItem();

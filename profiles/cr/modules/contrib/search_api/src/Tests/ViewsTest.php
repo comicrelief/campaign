@@ -3,18 +3,22 @@
 namespace Drupal\search_api\Tests;
 
 use Drupal\Component\Utility\Html;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Url;
 use Drupal\search_api\Entity\Index;
-use Drupal\search_api\Utility;
+use Drupal\simpletest\WebTestBase as SimpletestWebTestBase;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\search_api\Utility\Utility;
 
 /**
  * Tests the Views integration of the Search API.
  *
  * @group search_api
  */
-class ViewsTest extends WebTestBase {
+class ViewsTest extends SimpletestWebTestBase {
 
   use ExampleContentTrait;
+  use StringTranslationTrait;
 
   /**
    * Modules to enable for this test.
@@ -36,12 +40,30 @@ class ViewsTest extends WebTestBase {
   public function setUp() {
     parent::setUp();
 
-    $this->setUpExampleStructure();
     \Drupal::getContainer()
       ->get('search_api.index_task_manager')
       ->addItemsAll(Index::load($this->indexId));
     $this->insertExampleContent();
     $this->indexItems($this->indexId);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function installModulesFromClassProperty(ContainerInterface $container) {
+    // This will just set the Drupal state to include the necessary bundles for
+    // our test entity type. Otherwise, fields from those bundles won't be found
+    // and thus removed from the test index. (We can't do it in setUp(), before
+    // calling the parent method, since the container isn't set up at that
+    // point.)
+    $bundles = array(
+      'entity_test_mulrev_changed' => array('label' => 'Entity Test Bundle'),
+      'item' => array('label' => 'item'),
+      'article' => array('label' => 'article'),
+    );
+    \Drupal::state()->set('entity_test_mulrev_changed.bundles', $bundles);
+
+    parent::installModulesFromClassProperty($container);
   }
 
   /**
@@ -289,14 +311,14 @@ class ViewsTest extends WebTestBase {
     $this->assertResponse(200);
 
     // Set the user IDs associated with our test entities.
-    $users[$this->adminUser->id()] = $this->adminUser;
-    $users[$this->unauthorizedUser->id()] = $this->unauthorizedUser;
-    $users[$this->anonymousUser->id()] = $this->anonymousUser;
-    $this->entities[1]->setOwnerId($this->adminUser->id())->save();
-    $this->entities[2]->setOwnerId($this->adminUser->id())->save();
-    $this->entities[3]->setOwnerId($this->unauthorizedUser->id())->save();
-    $this->entities[4]->setOwnerId($this->unauthorizedUser->id())->save();
-    $this->entities[5]->setOwnerId($this->anonymousUser->id())->save();
+    $users[] = $this->createUser();
+    $users[] = $this->createUser();
+    $users[] = $this->createUser();
+    $this->entities[1]->setOwnerId($users[0]->id())->save();
+    $this->entities[2]->setOwnerId($users[0]->id())->save();
+    $this->entities[3]->setOwnerId($users[1]->id())->save();
+    $this->entities[4]->setOwnerId($users[1]->id())->save();
+    $this->entities[5]->setOwnerId($users[2]->id())->save();
 
     // Switch to "Fields" row style.
     $this->clickLink($this->t('Rendered entity'));

@@ -7,10 +7,9 @@ use Drupal\Core\TypedData\DataDefinitionInterface;
 use Drupal\node\Entity\Node;
 use Drupal\node\Entity\NodeType;
 use Drupal\search_api\Entity\Index;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 use Drupal\user\Entity\Role;
 use Drupal\user\Entity\User;
-use Drupal\search_api\Plugin\search_api\data_type\value\TextValueInterface;
 
 /**
  * Tests the "Rendered item" processor.
@@ -124,9 +123,13 @@ class RenderedItemTest extends ProcessorTestBase {
 
     $this->index->getDatasources();
 
-    // Enable the classy theme as the tests rely on markup from that.
+    // Enable the classy and stable themes as the tests rely on markup from
+    // that. Set stable as the active theme, but make classy the default. The
+    // processor should switch to classy to perform the rendering.
     \Drupal::service('theme_handler')->install(array('classy'));
-    \Drupal::theme()->setActiveTheme(\Drupal::service('theme.initialization')->initTheme('classy'));
+    \Drupal::service('theme_handler')->install(array('stable'));
+    \Drupal::configFactory()->getEditable('system.theme')->set('default', 'classy')->save();
+    \Drupal::theme()->setActiveTheme(\Drupal::service('theme.initialization')->initTheme('stable'));
   }
 
   /**

@@ -11,6 +11,17 @@ use Drupal\search_api\Backend\BackendSpecificInterface;
 interface ServerInterface extends ConfigEntityInterface, BackendSpecificInterface {
 
   /**
+   * Determines whether this server supports a given feature.
+   *
+   * @param string $feature
+   *   The name of the optional feature.
+   *
+   * @return bool
+   *   TRUE if this server supports the specified feature, FALSE otherwise.
+   */
+  public function supportsFeature($feature);
+
+  /**
    * Retrieves the server's description.
    *
    * @return string

@@ -66,9 +66,9 @@ class SearchApiCache extends Time {
         // et al. work.
         /** @var \Drupal\search_api\Query\ResultSetInterface $results */
         $results = $cache->data['search_api results'];
-        /** @var \Drupal\search_api\Query\ResultsCacheInterface $static_results_cache */
-        $static_results_cache = \Drupal::service('search_api.results_static_cache');
-        $static_results_cache->addResults($results);
+        \Drupal::getContainer()
+          ->get('search_api.query_helper')
+          ->addResults($results);
 
         try {
           $this->getQuery()->setSearchApiResults($results);

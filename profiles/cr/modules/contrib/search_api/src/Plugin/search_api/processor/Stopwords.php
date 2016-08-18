@@ -5,7 +5,7 @@ namespace Drupal\search_api\Plugin\search_api\processor;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\search_api\Processor\FieldsProcessorPluginBase;
 use Drupal\search_api\Query\QueryInterface;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 
 /**
  * Allows you to define stopwords which will be ignored in searches.
