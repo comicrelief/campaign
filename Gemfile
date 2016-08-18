@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-ruby '2.1.5'
-
 # Sass, Compass and extensions.
 gem 'activesupport', '4.2.6'  # Pin version to stop higher version requirements
 gem 'sass', '3.4.5'           # Sass.

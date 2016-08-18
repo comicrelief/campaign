@@ -26,11 +26,12 @@
 //   )
 // );
 
+// grid variables in _breakpoints.scss
 
-$susy: (
-  columns: 12,
-  container: 1200px,
-  gutters: 30px/70px,
+$susy: (  
+  columns: $columns,
+  container: $max-width,
+  gutters: $gutter/$column,
   global-box-sizing: border-box,
   gutter-position: split,
   output: float,
@@ -46,11 +47,11 @@ $susy: (
 @include border-box-sizing;
 
 // layout
-.region-header-inner-wrapper,
+.header__inner-wrapper,
 .region-header-top,
 .node--type-page,
 .kss-section,
-.cards-wrapper,
+.cards__wrapper,
 .cw-region {
   @include container;
 }

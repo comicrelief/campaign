@@ -2,12 +2,13 @@
 
 use Symfony\Component\Yaml\Yaml;
 
-$databases = array();
-$config_directories = array();
+$databases = [];
+$config_directories = [];
 $settings['install_profile'] = 'cr';
 
 /**
  * Load environment variables.
+ * Required for CRAFT.
  */
 $environment = __DIR__ . "/environment.yml";
 if (file_exists($environment)) {
@@ -20,20 +21,17 @@ if (file_exists($environment)) {
 }
 
 /**
- * Load services definition file.
+ * Include settings for platform.sh
  */
-$settings['container_yamls'][] = __DIR__ . '/services.yml';
+if (file_exists(__DIR__ . '/settings.local.php')) {
+	// Automatic Platform.sh settings.
+	if (file_exists(__DIR__ . '/settings.platformsh.php')) {
+	  include __DIR__ . '/settings.platformsh.php';
+	}
 
-/**
- * Include the Pantheon-specific settings file.
- *
- * n.b. The settings.pantheon.php file makes some changes
- *      that affect all envrionments that this site
- *      exists in.  Always include this file, even in
- *      a local development environment, to insure that
- *      the site settings remain consistent.
- */
-
-if (getenv('VCAP_SERVICES')) {
-  include __DIR__ . "/settings.cf.php";
+  include __DIR__ . '/settings.local.php';
+  
+  // Some specific platform.sh settings
+  $settings['update_free_access'] = FALSE;
+  $config_directories[CONFIG_SYNC_DIRECTORY] = 'sites/default/config';
 }

@@ -4,11 +4,20 @@
 //
 // Markup: buttons.hbs
 // 
-// .btn--lg - Large button
-// .btn--fixed-width - Fixed width button
+// .btn--red - Red button
+// .btn--sky-blue - Sky blue button
+// .btn--yellow - Yellow button
+// .btn--green - Green button
+// .btn--teal - Teal button
+// .btn--royal-blue - Royal blue button
+// .btn--purple - Purple button
+// .btn--pink - Pink button
+// .btn--white - White button
 // :hover - Button hover state 
 // :active - Button active state
 // :focus - Button focus state
+// .btn--fixed-width - Min width button, expands to width of container but min width of 290px
+// .btn--lg - Large buttons
 //
 // Style guide: Buttons
 
@@ -19,14 +28,15 @@
   */
 
 .btn {
-  display: block;
-  padding: 14px 35px;
+  display: inline-block;
+  padding: 21px 40px;
   cursor: pointer;
   text-align: center;
   vertical-align: middle;
   text-decoration: none;
-  width: 100%;
-  font-size: 16px;
+  font-family: $font-bold;
+  font-size: 18px;
+  line-height: 18px;
   @include border-radius(30px);
   span {
     font-size: inherit;
@@ -34,18 +44,17 @@
   }
 }
 
-/* Just a couple of examples for now */
-$buttonList: (
-  ("red" $red $berry $white),
-  ("blue" $blue $aqua $white),
-);
-
 /* Process $buttonList colour variations through our btn-variation mixin. */
 @each $button in $buttonList {
   @include btn-variation( $button );
 }
 
-
+// Force white colour on black bg hover state
+.btn.btn--white {
+  &:hover {
+    color: $colour-white;
+  }
+}
 /**
  * Buttons display as stack block for xs
  */
@@ -53,17 +62,22 @@ $buttonList: (
   margin-top: 30px;
 }
 
-
 /**
  * Buttons display as inline block for md and large breakpoints.
  */
+.btn {
+  &.btn--fixed-width {
+    width: 100%;
+  }
+}
 @include breakpoint($screen-md) {
   .btn {
     display: inline-block;
     font-size: 18px;
     width: auto;
     &.btn--fixed-width {
-      width: 290px;
+      min-width: 290px;
+      width: 100%;
     }
   }
   .btn + .btn {
@@ -97,8 +111,8 @@ $buttonList: (
  * elsewhere.
  */
 .btn--lg {
-  padding-top: 14px;
-  padding-bottom: 14px;
+  padding-top: 19px;
+  padding-bottom: 19px;
   font-size: 18px;
   line-height: 22px;
 }
@@ -109,10 +123,7 @@ $buttonList: (
 @include breakpoint($screen-md) {
   .btn--lg {
     height: 70px;
-    padding: 21px 70px;
-    font-size: 18px;
-    line-height: 23px;
-
+    padding: 24px 70px;
     @include border-radius(35px);
   }
 }

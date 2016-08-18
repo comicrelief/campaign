@@ -1,0 +1,14 @@
+<div{{ attributes }}>
+  {{ title_prefix }}
+  {% if title %}
+    <{{ title_element }}{{ title_attributes }}>
+      {% if entity_url %}
+        <a href="{{ entity_url }}" rel="bookmark">{{ title }}</a>
+      {% else %}
+        {{ title }}
+      {% endif %}
+    </{{ title_element }}>
+  {% endif %}
+  {{ title_suffix }}
+  {{ content }}
+</div>
