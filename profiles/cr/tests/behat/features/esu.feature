@@ -11,8 +11,9 @@ Feature: ESU
     And I wait for AJAX loading to finish
     Then I should see "ESU Standard: success! (first message)" in the "esu_standard" region
     And I should have received the following data in the "esu" queue:
-      | campaign | transType | email | source |
-      | RND17 | esu | test@example.org | Banner |
+      | campaign | transType | timestamp | transSourceURL | transSource | email | device | source | lists |
+      | RND17 | esu | * | * | * | test@example.org | * | Banner | * |
+    # @TODO: fix rest of this test - somehow I don't manage to click the second time?
     # And I select "HE" from "school_phase"
     # And I press "Go" in the "esu_standard" region
     # And I wait for AJAX loading to finish
@@ -27,5 +28,5 @@ Feature: ESU
     And I wait for AJAX loading to finish
     Then I should see "ESU Workplace: success message" in the "esu_workflow" region
     And I should have received the following data in the "esu_workplace" queue:
-      | campaign | transType | transSource | email |
-      | RND17 | esu | RND17_Unknown_ESU_Unknown | test-workflow@example.org |
+      | campaign | transType | timestamp | transSourceURL | transSource | email | device | source | lists |
+      | RND17 | esu | * | * | RND17_Unknown_ESU_Unknown | test-workflow@example.org | * | * | * |

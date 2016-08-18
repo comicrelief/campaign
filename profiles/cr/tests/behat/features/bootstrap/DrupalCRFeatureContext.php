@@ -369,7 +369,9 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
         throw new Exception('Expected queue property "' . $name . '" was not found in last item from queue "' . $queue_name . '"');
       }
 
-      if ($item[$name] != $expected_value) {
+      // Check if the value from the queue is the same one as the expected value.
+      // If we pass "*" as expected value, all values are correct.
+      if ($expected_value != '*' && $item[$name] != $expected_value) {
         throw new Exception('Expected queue property "' . $name . '" contains value "' . $item[$name] . '" but "' . $expected_value . '" expected, for last item from queue "' . $queue_name . '"');       
       }
     }
