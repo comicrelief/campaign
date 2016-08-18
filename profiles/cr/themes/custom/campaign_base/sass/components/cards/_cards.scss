@@ -18,13 +18,14 @@
     // width: calc(#{span(12)}/#{$i});
     // margin: gutter()/2;
     width: calc(100% - (8 * #{gutter()}));
-    margin: 0 15px calc(4 * #{gutter()});
+    margin: 0 0 calc(4 * #{gutter()});
 
     @include breakpoint($screen-sm-max) {
-		  	@include span(12);
-	    }
+	  	@include span(12);
+        margin: 0 0 calc(2 * 1.25%);
+      }
 	  @include breakpoint($screen-md-max) {
-		    @include span(12/$i);
+		  @include span(12/$i);
         .cards__item:first-child {
           margin-left: #{gutter()};
         }
@@ -67,17 +68,9 @@
     width: 100%;
 		display: block;
 		height: 100%;
-		@include breakpoint($screen-md-only) {
-      margin-left: -2.5%;
-      height: auto;
-      width: 105%;
-		}
   }
   @include breakpoint($screen-md-only) {
   	@include span(5);
-  	height: 0;
-  	padding-bottom: span(4);
-  	overflow: hidden;
   }
 }
 .cards__content-wrapper {
