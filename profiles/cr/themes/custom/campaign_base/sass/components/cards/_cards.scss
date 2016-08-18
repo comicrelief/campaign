@@ -101,7 +101,6 @@
     margin-top: calc(-6*#{gutter()});
     text-align: center;
     background-color: $colour-white;
-    @include transition(0.5s all);
     @include breakpoint($screen-md-only) {
       margin: 25px 0;
       height: calc(100% - 50px);
