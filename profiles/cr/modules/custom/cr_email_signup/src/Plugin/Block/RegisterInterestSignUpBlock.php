@@ -9,14 +9,14 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Access\AccessResult;
 
 /**
- * Provides a 'Workplace Sign Up' block.
+ * Provides a 'Register Interest Sign Up' block.
  *
  * @Block(
- *   id = "cr_email_signup_block_workplace",
- *   admin_label = @Translation("Email Sign Up block: Workplace"),
+ *   id = "cr_email_signup_block_register_interest",
+ *   admin_label = @Translation("Email Sign Up block: Register Interest"),
  * )
  */
-class WorkplaceSignUpBlock extends BlockBase implements BlockPluginInterface {
+class RegisterInterestSignUpBlock extends BlockBase implements BlockPluginInterface {
 
   /**
    * {@inheritdoc}
@@ -24,7 +24,7 @@ class WorkplaceSignUpBlock extends BlockBase implements BlockPluginInterface {
   public function build() {
     $config = $this->getConfiguration();
 
-    $form = \Drupal::formBuilder()->getForm('Drupal\cr_email_signup\Form\WorkplaceSignUp');
+    $form = \Drupal::formBuilder()->getForm('Drupal\cr_email_signup\Form\RegisterInterestSignUp');
 
     $form['initial_message'] = [
       '#markup' => "<div class='esu-initial-message'><h4>{$config['initial_message']}</h4></div>",
