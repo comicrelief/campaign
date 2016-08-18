@@ -40,6 +40,24 @@
 .bg--cream-grey {
   background-color: $cream-grey;
 }
+.bg--black,
+.bg--red,
+.bg--royal-blue,
+.bg--purple {
+	h2, h3, h4, h5, p, .link {
+		color: $colour-white;
+	}
+	.bg--white,
+	.bg--sky-blue,
+	.bg--yellow,
+	.bg--green,
+	.bg--teal,
+	.bg--pink {
+		h2, h3, h4, h5, p, .link {
+	  	color: $colour-black;
+	 }
+	}
+}
 
 @for $color from 1 to (length($colorList)+1) {
   @include bg-variation(nth($colorList, $color));
