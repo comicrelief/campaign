@@ -44,3 +44,14 @@ function cr_update_8003() {
 function cr_update_8004() {
   \Drupal::service('module_installer')->install(['cr_navigation']);
 }
+
+/**
+ * Remove Search view & install cr_solr
+ */
+function cr_update_8005() {
+  $entityTypeManager = \Drupal::service('entity_type.manager');
+  $view = $entityTypeManager->getStorage('view')->load('search');
+  $view->delete();
+  \Drupal::service('config.factory')->getEditable('views.view.search')->delete();
+  \Drupal::service('module_installer')->install(['cr_solr']);
+}
