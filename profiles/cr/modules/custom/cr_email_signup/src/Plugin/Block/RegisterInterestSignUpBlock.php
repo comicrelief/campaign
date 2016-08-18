@@ -36,4 +36,5 @@ class RegisterInterestSignUpBlock extends WorkplaceSignUpBlock implements BlockP
 
     return $form;
   }
+
 }
