@@ -17,6 +17,7 @@
   .partners-row__body {
     text-align: center;
   }
+  // width: calc( #{span(6)} +  ( #{gutter()} * 1) );
   .partners-row__logos-list {
     ul {
       display: flex;
@@ -26,6 +27,15 @@
       justify-content: center;
       align-content: flex-end;
       flex-flow: row wrap;
+      // make this guttering into a mixin
+      margin: 0 calc(100% - (#{gutter()} * 4) );
+      @include breakpoint($screen-md) {
+        margin: 0 calc(100% - (#{gutter()} * 2));
+      }
+      @include breakpoint($screen-md-max) {
+        max-width: calc($max-width - (#{gutter()} * 1));
+      }
+     //
       @include breakpoint($screen-md) {
         @include span(6);
         float: none;
