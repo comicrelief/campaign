@@ -9,7 +9,7 @@ dependencies:
 id: emailsignupblockregisterinterest
 theme: campaign_base
 region: header
-weight: -5
+weight: 0
 provider: null
 plugin: cr_email_signup_block_register_interest
 settings:
