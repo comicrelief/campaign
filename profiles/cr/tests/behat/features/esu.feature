@@ -36,11 +36,11 @@ Feature: ESU
   Scenario: ESU Register your Interest. Data contract is in https://docs.google.com/document/d/1zbXhQj14fZhcNDMHsyhx2JU3KSWqBT-k1jt5NkwPB_w/edit
     Given I am on "/esu"
     Then I should see "ESU Register Interest: initial message" in the "esu_register_interest" region
-    And I fill in "edit-email--2" with "test-register-interest@example.org" in the "esu_register_interest" region
-    # And I fill in "edit-firstname" with "Test Workflow First Name" in the "esu_register_interest" region
+    And I fill in "edit-email--3" with "test-register-interest@example.org" in the "esu_register_interest" region
+    And I check "edit-eventinterest"
     And I press "Go" in the "esu_register_interest" region
     And I wait for AJAX loading to finish
     Then I should see "ESU Register Interest: success message" in the "esu_register_interest" region
     And I should have received the following data in the "esu_register_interest" queue:
-      | campaign | transType | timestamp | transSourceURL | transSource | firstName | email | device | source | lists |
-      | RND17 | esu | * | * | RND17_Unknown_ESU_Unknown | Test Workflow First Name | test-register-interest@example.org | * | * | * |
+      | campaign | transType | timestamp | transSourceURL | transSource | EventInterest | firstName | email | device | source | lists |
+      | RND17 | esu | * | * | RND17_Unknown_ESU_Unknown | 1 | Test Workflow First Name | test-register-interest@example.org | * | * | * |

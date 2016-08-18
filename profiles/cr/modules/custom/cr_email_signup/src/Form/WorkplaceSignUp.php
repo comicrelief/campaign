@@ -33,6 +33,11 @@ class WorkplaceSignUp extends SignUp {
       '#title' => $this->t('Your email address'),
       '#placeholder' => $this->t('Enter your email address'),
     ];
+    $form['steps']['firstName'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Your first name'),
+      '#placeholder' => $this->t('Enter your first name'),
+    ];
     $form['steps']['device'] = [
       '#name' => 'device',
       '#type' => 'hidden',
