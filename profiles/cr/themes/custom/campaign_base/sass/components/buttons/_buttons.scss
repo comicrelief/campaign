@@ -49,6 +49,12 @@
   @include btn-variation( $button );
 }
 
+// Force white colour on black bg hover state
+.btn.btn--white {
+  &:hover {
+    color: $colour-white;
+  }
+}
 /**
  * Buttons display as stack block for xs
  */
