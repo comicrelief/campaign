@@ -30,6 +30,7 @@ rm -fr sites/default/settings.php
 # Install the site using the given profile
 php -d sendmail_path=$(which true) ~/.composer/vendor/bin/drush.php --verbose --yes site-install $DRUPAL_TI_MODULE_NAME --db-url="$DRUPAL_TI_DB_URL"
 drush use $(pwd)#default
+drush en cr_default_content
 # Render themes
 phing grunt:build
 # Clear caches and run a web server.
