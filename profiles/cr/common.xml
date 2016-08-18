@@ -85,6 +85,8 @@
     <exec dir="${app.dir}" logoutput="true" passthru="true" checkreturn="true"
           command="${drush.bin} si ${app.profile.name} -y --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring} install_configure_form.update_status_module='[FALSE, FALSE]'"/>
     <phingcall target="cache:clear"/>
+    <exec dir="${app.dir}" logoutput="true" passthru="true" checkreturn="true"
+          command="${drush.bin} en cr_default_content -y"/>
   </target>
   <target name="cron" description="Run Drupal's cron script">
     <exec dir="${app.dir}" logoutput="true" passthru="true" checkreturn="true"

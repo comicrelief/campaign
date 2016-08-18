@@ -11,7 +11,7 @@ field_name: field_cr_card_image
 entity_type: block_content
 bundle: cr_card
 label: Image
-description: ''
+description: 'Images should have an aspect ratio of 4:3'
 required: false
 translatable: false
 default_value: {  }
