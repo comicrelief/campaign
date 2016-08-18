@@ -86,8 +86,6 @@
           command="${drush.bin} si ${app.profile.name} -y --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring} install_configure_form.update_status_module='[FALSE, FALSE]'"/>
     <phingcall target="cache:clear"/>
     <exec dir="${app.dir}" logoutput="true" passthru="true" checkreturn="true"
-          command="find files/ -type d -exec chmod 2775 '{}' ';'"/>
-    <exec dir="${app.dir}" logoutput="true" passthru="true" checkreturn="true"
           command="${drush.bin} en cr_default_content -y"/>
   </target>
   <target name="cron" description="Run Drupal's cron script">
@@ -144,6 +142,7 @@
   <target name="file:mod">
     <chmod file="sites/default" mode="0775" failonerror="true"/>
     <chmod file="sites/default/settings.php" mode="0664" failonerror="true"/>
+    <chmod file="sites/default/files" mode="2775" failonerror="true"/>
   </target>
   <target name="file:settings">
     <if>
