@@ -3,16 +3,51 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.cr_rich_text_paragraph.field_background
+    - field.field.paragraph.cr_rich_text_paragraph.field_bg_single_msg_bg_colour
     - field.field.paragraph.cr_rich_text_paragraph.field_body
     - paragraphs.paragraphs_type.cr_rich_text_paragraph
+    - responsive_image.styles.bg_rich_text
   module:
+    - ds
+    - options
     - responsive_image
     - text
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
+      library: ''
+      disable_css: false
+      settings:
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - field_background
+        - field_bg_single_msg_bg_colour
+        - field_body
 id: paragraph.cr_rich_text_paragraph.default
 targetEntityType: paragraph
 bundle: cr_rich_text_paragraph
 mode: default
 content:
+  created:
+    type: timestamp_ago
+    weight: 0
+    label: above
+    settings:
+      future_format: '@interval hence'
+      past_format: '@interval ago'
+      granularity: 2
+    third_party_settings: {  }
   field_background:
     weight: 0
     label: hidden
@@ -21,13 +56,26 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: responsive_image
-  field_body:
+  field_bg_single_msg_bg_colour:
     weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+  field_body:
+    weight: 2
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
-hidden:
-  created: true
-  social_links: true
-  uid: true
+  social_links:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    type: author
+    weight: 0
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }
