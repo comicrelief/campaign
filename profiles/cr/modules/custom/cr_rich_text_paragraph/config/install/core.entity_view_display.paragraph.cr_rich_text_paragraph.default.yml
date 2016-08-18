@@ -6,7 +6,6 @@ dependencies:
     - field.field.paragraph.cr_rich_text_paragraph.field_bg_single_msg_bg_colour
     - field.field.paragraph.cr_rich_text_paragraph.field_body
     - paragraphs.paragraphs_type.cr_rich_text_paragraph
-    - responsive_image.styles.bg_rich_text
   module:
     - ds
     - options
