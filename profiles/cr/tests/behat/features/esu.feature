@@ -1,18 +1,18 @@
 Feature: ESU
-	Checks the various Email Sign Up blocks 
+	Checks the various Email Sign Up blocks
 
   @javascript
   Scenario: ESU Standard
     Given I am on "/esu"
     Then I should see "ESU Standard: initial message" in the "esu_standard" region
-    And I should not see "success" in the "esu_standard" region 
+    And I should not see "success" in the "esu_standard" region
     And I fill in "edit-email" with "test@example.org" in the "esu_standard" region
     And I press "Go" in the "esu_standard" region
-    And I wait for AJAX loading to finish    
-    Then I should have received the following data in the "esu" queue:
+    And I wait for AJAX loading to finish
+    Then I should see "ESU Standard: success! (first message)" in the "esu_standard" region
+    And I should have received the following data in the "esu" queue:
       | campaign | transType | email | source |
       | RND17 | esu | test@example.org | Banner |
-    Then I should see "ESU Standard: success! (first message)" in the "esu_standard" region
     # And I select "HE" from "school_phase"
     # And I press "Go" in the "esu_standard" region
     # And I wait for AJAX loading to finish
