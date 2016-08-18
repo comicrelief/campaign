@@ -7,12 +7,14 @@ use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
+use Drupal\Core\Plugin\PluginFormInterface;
 use Drupal\Core\TypedData\ComplexDataDefinitionInterface;
 use Drupal\Core\Url;
 use Drupal\field\FieldConfigInterface;
 use Drupal\field\FieldStorageConfigInterface;
 use Drupal\search_api\Item\FieldInterface;
 use Drupal\search_api\Item\ItemInterface;
+use Drupal\search_api\Plugin\PluginFormTrait;
 use Drupal\search_api\Plugin\search_api\data_type\value\TextValue;
 use Drupal\search_api\Plugin\search_api\data_type\value\TextValueInterface;
 use Drupal\search_api\Query\ConditionInterface;
@@ -22,7 +24,7 @@ use Drupal\search_api\Query\ConditionGroupInterface;
 use Drupal\search_api\Query\QueryInterface;
 use Drupal\search_api\Backend\BackendPluginBase;
 use Drupal\search_api\Query\ResultSetInterface;
-use Drupal\search_api\Utility as SearchApiUtility;
+use Drupal\search_api\Utility\Utility as SearchApiUtility;
 use Drupal\search_api_solr\SearchApiSolrException;
 use Drupal\search_api_solr\SolrBackendInterface;
 use Drupal\search_api_solr\Utility\Utility as SearchApiSolrUtility;
@@ -55,7 +57,11 @@ define('SEARCH_API_ID_FIELD_NAME', 'ss_search_api_id');
  *   description = @Translation("Index items using an Apache Solr search server.")
  * )
  */
-class SearchApiSolrBackend extends BackendPluginBase implements SolrBackendInterface {
+class SearchApiSolrBackend extends BackendPluginBase implements SolrBackendInterface, PluginFormInterface {
+
+  use PluginFormTrait {
+    submitConfigurationForm as traitSubmitConfigurationForm;
+  }
 
   /**
    * The date format that Solr uses, in PHP date() syntax.
@@ -420,15 +426,14 @@ class SearchApiSolrBackend extends BackendPluginBase implements SolrBackendInter
     // value, do not save it.
     $form_state->unsetValue('server_description');
 
-    parent::submitConfigurationForm($form, $form_state);
+    $this->traitSubmitConfigurationForm($form, $form_state);
   }
 
   /**
    * {@inheritdoc}
    */
-  public function supportsFeature($feature) {
-    // First, check the features we always support.
-    $supported = array(
+  public function getSupportedFeatures() {
+    return array(
       //'search_api_autocomplete',
       'search_api_facets',
       'search_api_facets_operator_or',
@@ -439,20 +444,6 @@ class SearchApiSolrBackend extends BackendPluginBase implements SolrBackendInter
       //'search_api_data_type_location',
       //'search_api_data_type_geohash',
     );
-    $supported = array_combine($supported, $supported);
-    if (isset($supported[$feature])) {
-      return TRUE;
-    }
-
-    // If it is a custom data type, maybe we support it automatically via
-    // search_api_solr_hook_search_api_data_type_info().
-    if (substr($feature, 0, 21) != 'search_api_data_type_') {
-      return FALSE;
-    }
-    $type = substr($feature, 21);
-    $type = SearchApiSolrUtility::getDataTypeInfo($type);
-    // We only support it if the "prefix" key is set.
-    return $type && !empty($type['prefix']);
   }
 
   /**
@@ -1247,7 +1238,7 @@ class SearchApiSolrBackend extends BackendPluginBase implements SolrBackendInter
           if ($value === FALSE) {
             return;
           }
-          $value = format_date($value, 'custom', self::SOLR_DATE_FORMAT, 'UTC');
+          $value = \Drupal::service('date.formatter')->format($value, 'custom', self::SOLR_DATE_FORMAT, 'UTC');
           break;
 
         case 'integer':
@@ -1641,7 +1632,7 @@ class SearchApiSolrBackend extends BackendPluginBase implements SolrBackendInter
         'tags' => array_unique($tags + $condition_group->getTags()),
       ];
     }
-    else {
+    elseif (!empty($filter_queries)) {
       $fq[] = [
         'query' => $filter_queries[0]['query'],
         'tags' => array_unique($filter_queries[0]['tags'] + $condition_group->getTags()),
@@ -1726,7 +1717,7 @@ class SearchApiSolrBackend extends BackendPluginBase implements SolrBackendInter
         if ($value === FALSE) {
           return 0;
         }
-        $value = format_date($value, 'custom', self::SOLR_DATE_FORMAT, 'UTC');
+        $value = \Drupal::service('date.formatter')->format($value, 'custom', self::SOLR_DATE_FORMAT, 'UTC');
         break;
     }
     return $this->getQueryHelper()->escapePhrase($value);

@@ -5,11 +5,5 @@ package: 'Search API'
 dependencies:
   - search_api_test_example_content
   - search_api_solr
-# core: 8.x
+core: 8.x
 hidden: true
-
-# Information added by Drupal.org packaging script on 2016-07-08
-version: '8.x-1.0-alpha5'
-core: '8.x'
-project: 'search_api_solr'
-datestamp: 1467990301

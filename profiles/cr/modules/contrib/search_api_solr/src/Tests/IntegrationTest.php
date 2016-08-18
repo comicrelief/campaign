@@ -6,8 +6,8 @@ use Drupal\Component\Utility\Html;
 use Drupal\facets\Tests\BlockTestTrait;
 use Drupal\facets\Tests\ExampleContentTrait;
 use Drupal\search_api\Entity\Index;
-use Drupal\search_api\SearchApiException;
 use Drupal\search_api\Tests\WebTestBase;
+use Drupal\views\Entity\View;
 
 /**
  * Tests the overall functionality of the Search API framework and admin UI.
@@ -17,7 +17,9 @@ use Drupal\search_api\Tests\WebTestBase;
 class IntegrationTest extends WebTestBase {
 
   use BlockTestTrait;
-  use ExampleContentTrait;
+  use ExampleContentTrait {
+    indexItems as doIndexItems;
+  }
 
   /**
    * The ID of the search server used for this test.
@@ -34,6 +36,13 @@ class IntegrationTest extends WebTestBase {
   protected $serverBackend = 'search_api_solr';
 
   /**
+   * A search index ID.
+   *
+   * @var string
+   */
+  protected $indexId;
+
+  /**
    * A storage instance for indexes.
    *
    * @var \Drupal\Core\Entity\EntityStorageInterface
@@ -44,14 +53,15 @@ class IntegrationTest extends WebTestBase {
    * {@inheritdoc}
    */
   public static $modules = array(
+    'block',
+    'field_ui',
     'node',
+    'views',
     'search_api',
     'search_api_solr',
     'search_api_solr_test',
-    'field_ui',
-    'block',
+    'search_api_solr_test_facets',
     'facets',
-    'views',
   );
 
   /**
@@ -59,23 +69,16 @@ class IntegrationTest extends WebTestBase {
    */
   public function setUp() {
     parent::setUp();
+
     $this->indexStorage = \Drupal::entityTypeManager()->getStorage('search_api_index');
 
     $this->drupalLogin($this->adminUser);
-
-    $filepath = drupal_get_path('module', 'search_api_solr') . '/vendor/autoload.php';
-    if (!class_exists('Solarium\\Client') && ($filepath != DRUPAL_ROOT . '/core/vendor/autoload.php')) {
-      require $filepath;
-    }
   }
 
   /**
    * Tests various operations via the Search API's admin UI.
    */
   public function testFramework() {
-    // Login as an admin user for the rest of the tests.
-    $this->drupalLogin($this->adminUser);
-
     $this->createServer();
     $this->createIndex();
     $this->checkContentEntityTracking();
@@ -86,6 +89,9 @@ class IntegrationTest extends WebTestBase {
    * Tests basic facets integration.
    */
   public function testFacets() {
+    $view = View::load('search_api_test_view');
+    $this->assertEqual($view->get('base_table'), 'search_api_index_solr_search_index');
+
     // Create the users used for the tests.
     $admin_user = $this->drupalCreateUser([
       'administer search_api',
@@ -105,7 +111,7 @@ class IntegrationTest extends WebTestBase {
 
     /** @var \Drupal\search_api\IndexInterface $index */
     $index = $this->indexStorage->load($this->indexId);
-    $indexed_items = $index->indexItems();
+    $indexed_items = $this->indexItems($this->indexId);
     $this->assertEqual($indexed_items, 5, 'Five items are indexed.');
 
     // Create a facet, enable 'show numbers'.
@@ -136,39 +142,39 @@ class IntegrationTest extends WebTestBase {
     $this->drupalGet($edit_path);
     $this->assertResponse(200, 'Server add page exists');
 
-    $edit = array(
-      'name' => '',
+    $edit = [
       'status' => 1,
       'description' => 'A server used for testing.',
       'backend' => $this->serverBackend,
-    );
+    ];
 
     $this->drupalPostForm($edit_path, $edit, $this->t('Save'));
     $this->assertText($this->t('@name field is required.', array('@name' => $this->t('Server name'))));
 
-    $edit = array(
+    $edit += [
       'name' => $server_name,
-      'status' => 1,
-      'description' => $server_description,
-      'backend' => $this->serverBackend,
-    );
+    ];
     $this->drupalPostForm($edit_path, $edit, $this->t('Save'));
     $this->assertText($this->t('@name field is required.', array('@name' => $this->t('Machine-readable name'))));
 
-    $edit = array(
-      'name' => $server_name,
+    $edit += [
       'id' => $this->serverId,
-      'status' => 1,
-      'description' => $server_description,
-      'backend' => $this->serverBackend,
-    );
+    ];
+    $this->drupalPostForm(NULL, $edit, $this->t('Save'));
+    $this->assertText($this->t('Please configure the selected backend.'));
 
+    $edit += [
+      'backend_config[host]' => 'localhost',
+      'backend_config[port]' => '8983',
+      'backend_config[path]' => '/',
+      'backend_config[core]' => '',
+    ];
     $this->drupalPostForm(NULL, $edit, $this->t('Save'));
 
+    $this->assertUrl('admin/config/search/search-api/server/' . $this->serverId);
     $this->assertText($this->t('The server was successfully saved.'));
-    $this->assertUrl('admin/config/search/search-api/server/' . $this->serverId, array(), 'Correct redirect to server page.');
     $this->assertHtmlEscaped($server_name);
-    $this->assertHtmlEscaped($server_description);
+    $this->assertText($this->t('The Solr server could not be reached or is protected by your service provider.'));
 
     // Go back in and configure solr.
     $edit_path = 'admin/config/search/search-api/server/' . $this->serverId . '/edit';
@@ -180,10 +186,10 @@ class IntegrationTest extends WebTestBase {
       'backend_config[core]' => 'd8',
     ];
     $this->drupalPostForm(NULL, $edit, $this->t('Save'));
+    $this->assertText($this->t('The Solr server could be reached.'));
 
     $this->drupalGet('admin/config/search/search-api');
     $this->assertHtmlEscaped($server_name);
-    $this->assertHtmlEscaped($server_description);
   }
 
   /**
@@ -197,30 +203,30 @@ class IntegrationTest extends WebTestBase {
 
     $this->drupalGet($settings_path);
     $this->assertResponse(200);
-    $edit = array(
+    $edit = [
       'status' => 1,
       'description' => $index_description,
-    );
+    ];
 
     $this->drupalPostForm(NULL, $edit, $this->t('Save'));
     $this->assertText($this->t('@name field is required.', array('@name' => $this->t('Index name'))));
     $this->assertText($this->t('@name field is required.', array('@name' => $this->t('Machine-readable name'))));
     $this->assertText($this->t('@name field is required.', array('@name' => $this->t('Data sources'))));
 
-    $edit = array(
+    $edit += [
       'name' => $index_name,
       'id' => $this->indexId,
-      'status' => 1,
-      'description' => $index_description,
       'server' => $this->serverId,
-      'datasources[]' => array('entity:node'),
-    );
+      'datasources[entity:node]' => TRUE,
+    ];
 
     $this->drupalPostForm(NULL, $edit, $this->t('Save'));
+    $this->assertResponse(200);
+    $this->assertText($this->t('Please configure the used datasources.'));
 
+    $this->drupalPostForm(NULL, array(), $this->t('Save'));
+    $this->assertResponse(200);
     $this->assertText($this->t('The index was successfully saved.'));
-    // @todo Make this work correctly.
-    // $this->assertUrl($this->getIndexPath('fields/add'), array(), 'Correct redirect to index page.');
     $this->assertHtmlEscaped($index_name);
 
     $this->drupalGet($this->getIndexPath('edit'));
@@ -230,33 +236,12 @@ class IntegrationTest extends WebTestBase {
     /** @var $index \Drupal\search_api\IndexInterface */
     $index = $this->indexStorage->load($this->indexId);
 
-    if ($this->assertTrue($index, 'Index was correctly created.')) {
-      $this->assertEqual($index->label(), $edit['name'], 'Name correctly inserted.');
-      $this->assertEqual($index->id(), $edit['id'], 'Index ID correctly inserted.');
-      $this->assertTrue($index->status(), 'Index status correctly inserted.');
-      $this->assertEqual($index->getDescription(), $edit['description'], 'Index ID correctly inserted.');
-      $this->assertEqual($index->getServerId(), $edit['server'], 'Index server ID correctly inserted.');
-      $this->assertEqual($index->getDatasourceIds(), $edit['datasources[]'], 'Index datasource id correctly inserted.');
-    }
-    else {
-      // Since none of the other tests would work, bail at this point.
-      throw new SearchApiException();
-    }
-
-    // Test the "Save and edit" button.
-    $index2_id = 'test_index2';
-    $edit['id'] = $index2_id;
-    unset($edit['server']);
-    $this->drupalPostForm($settings_path, $edit, $this->t('Save and edit'));
-
-    $this->assertText($this->t('The index was successfully saved.'));
-    $this->indexStorage->resetCache(array($index2_id));
-    $index = $this->indexStorage->load($index2_id);
-    $this->assertUrl($index->toUrl('add-fields'), array(), 'Correct redirect to index fields page.');
-
-    $this->drupalGet('admin/config/search/search-api');
-    $this->assertHtmlEscaped($index_name);
-    $this->assertHtmlEscaped($index_description);
+    $this->assertEqual($index->label(), $edit['name'], 'Name correctly inserted.');
+    $this->assertEqual($index->id(), $edit['id'], 'Index ID correctly inserted.');
+    $this->assertTrue($index->status(), 'Index status correctly inserted.');
+    $this->assertEqual($index->getDescription(), $edit['description'], 'Index ID correctly inserted.');
+    $this->assertEqual($index->getServerId(), $edit['server'], 'Index server ID correctly inserted.');
+    $this->assertEqual($index->getDatasourceIds(), ['entity:node'], 'Index datasource id correctly inserted.');
   }
 
   /**
@@ -438,7 +423,7 @@ class IntegrationTest extends WebTestBase {
     $this->assertEqual($node_count, $this->countTrackedItems(), 'All nodes are correctly tracked by the index.');
 
     // Index all remaining items on the index.
-    $index->indexItems();
+    $this->indexItems($this->indexId);
 
     $remaining_items = $this->countRemainingItems();
     $this->assertEqual($remaining_items, 0, 'All items have been successfully indexed.');
@@ -481,6 +466,21 @@ class IntegrationTest extends WebTestBase {
     $this->assertRaw(Html::escape($string));
     $this->assertNoRaw(Html::escape(Html::escape($string)));
     $this->assertNoRaw($string);
+  }
+
+  /**
+   * Indexes all (unindexed) items on the specified index.
+   *
+   * @param string $index_id
+   *   The ID of the index on which items should be indexed.
+   *
+   * @return int
+   *   The number of successfully indexed items.
+   */
+  protected function indexItems($index_id) {
+    $index_status = $this->doIndexItems($index_id);
+    sleep(2);
+    return $index_status;
   }
 
 }

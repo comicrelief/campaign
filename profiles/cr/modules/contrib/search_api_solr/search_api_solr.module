@@ -5,12 +5,10 @@
  * Provides a Solr-based service class for the Search API.
  */
 
-use Drupal\Core\Form\FormStateInterface;
 use \Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\search_api\Entity\Server;
 use Drupal\search_api\SearchApiException;
 use Drupal\search_api\ServerInterface;
-use Drupal\search_api_solr\Plugin\search_api\backend\SearchApiSolrBackend;
 
 /**
  * Implements hook_help().

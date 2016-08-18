@@ -58,7 +58,7 @@ function search_api_solr_update_8001() {
     if (strpos($server->get('backend'), 'search_api_solr') === 0) {
       $backend_config = $server->get('backend_config');
       $parts = explode('/', $backend_config['path']);
-      if ($parts > 1) {
+      if (count($parts) > 2) {
         $backend_config['core'] = array_pop($parts);
         $backend_config['path'] = implode('/', $parts);
         $config_factory->getEditable($server_name)

@@ -14,6 +14,11 @@ field_settings:
     datasource_id: 'entity:entity_test_mulrev_changed'
     property_path: name
     boost: 5.0
+  created:
+    label: Authored on
+    type: date
+    datasource_id: 'entity:entity_test_mulrev_changed'
+    property_path: created
   body:
     label: Body
     type: text
