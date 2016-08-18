@@ -4,71 +4,41 @@
 //
 // Markup: promo-header.hbs
 //
-// .promo-header__header--feature   - Body copy overlap bg image
+// .promo-header--feature   - Body copy overlap bg image
 //
 // Style guide: promo-header
 
 .promo-header {
   @include breakpoint($screen-md-max, $no-query: true) {
-    min-height: 450px;
+    min-height: 600px;
   }
   position: relative;
   margin-bottom: 40px;
-  text-align: center;
 }
-.promo-header__header {
-  &.bg--black {
-    @include breakpoint($screen-md-max) {
-      background-color: transparent;
-      &.no-img {
-        background-color: $colour-black;
-      }
-    }
-    background-color: $colour-black;
-  }
-  &.bg--red {
-    @include breakpoint($screen-md-max) {
-      background-color: transparent;
-      &.no-img {
-        background-color: $colour-black;
-      }
-    }
-    background-color: $colour-red;
-  }
-  &.bg--white {
-    background-color: $colour-white;
-    .promo-header__content p {
-      @include breakpoint($screen-md-max) {
-        color: $colour-white;
-        background-color: transparent;
-        &.no-img {
-          background-color: $colour-black;
-        }
-      }
-      color: $colour-black;
-    }
-  }
-  &.promo-header__header--feature {
+.promo-header {
+  &.promo-header--feature {
+    display: table;
     background: transparent;
+    width: 100%;
   }
-}
-.promo-header__title {
-  position: absolute; // make it as a mixin
-  top: auto;
-  left: -10000px;
-  overflow: hidden;
-  width: 1px;
-  height: 1px;
-  color: $colour-white;
 }
 .promo-header__bg-image {
   @include breakpoint($screen-md-max, $no-query: true) {
-    position: absolute;
     width: 100%;
     height: 100%;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
   }
-  .promo-header__header--feature & {
+  margin-top: -30%;
+  margin-bottom: -5px;
+  float: left;
+  width: 100%;
+  .promo-header--feature & {
     position: relative;
+    display: table-header-group;
+    float: none;
   }
   img {
     @include breakpoint($screen-md-max) {
@@ -77,42 +47,54 @@
       height: 100%;
 
       object-fit: cover;
-      object-position: bottom;
+      object-position: top;
     }
   }
 }
 .promo-header__content {
-  position: relative;
-  max-width: 1200px;
-  margin: auto;
   @include breakpoint($screen-md-max) {
+    @include translateY(-50%);
     position: absolute;
     top: 50%;
     right: 0;
     left: 0;
     width: 100%;
-    @include translateY(-50%);
+    z-index: 10;
   }
-  .promo-header__header--feature & {
-    margin: -50px 10px 0;
-    padding: 1px 20px;
-    width: calc(100% - 20px);
-    max-width: 100%;
+  position: relative;
+  z-index: 0;
+  max-width: 1200px;
+  margin: auto;
+  .promo-header--feature & {
+    @include translateY(0);
     position: relative;
     top: 0;
+    margin: -50px auto 0;
+    padding: 1px 0;
     background: $colour-white;
-
-    @include translateY(0);
-    @include breakpoint($screen-md-max) {
-      margin: -50px 30px 0;
-      padding: 1px 60px;
-      width: calc(100% - 60px);
-    }
+    @include breakpoint-gutters;
   }
   .promo-header__content-inner {
-    max-width: 600px;
-    margin: 60px auto;
-    padding: 0 20px;
+    margin: 25px auto 15px;
+    word-break: break-word;
+    text-align: center;
+    width: 100%;
+    padding: 15px;
+    @include breakpoint($screen-md) {
+      width: span(10);
+      margin: 50px auto 40px;
+      padding: 0;
+    }
+    @include breakpoint($screen-md-max) {
+      text-align: left;
+      width: 50%;
+      .promo-header--feature & {
+        max-width: span(8);
+        text-align: center;
+        width: 100%;
+        margin: 55px auto 45px;
+      }
+    }
     &--centre {
       @include breakpoint($screen-md-max) {
         margin-right: auto;
@@ -121,20 +103,22 @@
     }
     &--left {
       @include breakpoint($screen-md-max) {
-        margin-left: 0;
+        margin-left: gutter();
       }
     }
     &--right {
       @include breakpoint($screen-md-max) {
-        margin-right: 0;
+        margin-right: gutter();
+      }
+    }
+    .promo-header--feature & {
+      @include breakpoint($screen-md-max) {
+        max-width: span(8);
       }
     }
   }
   p {
-    color: $colour-white;
-    font-size: 21px;
-    line-height: 27px;
-    .promo-header__header--feature & {
+    .promo-header--feature & {
       color: $colour-black;
     }
   }
@@ -147,7 +131,7 @@
 .promo-header__svg-title {
   svg {
     width: 100%;
-    .promo-header__header--feature & {
+    .promo-header--feature & {
       path {
         fill: $colour-black;
       }
