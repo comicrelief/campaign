@@ -92,17 +92,12 @@ $row-padding--md: 60px;
     }
 
     .single-msg__copy {
-      //padding: 30px span(1 wide);
       padding: 30px;
       color: white;
       width: 100%;
 
       @include breakpoint($screen-md, $no-query: true) {
         height: 100%;
-      }
-
-      @include breakpoint($screen-lg) {
-        padding: 30px calc( #{gutter()} * 4 );
       }
     }
   }
@@ -196,9 +191,18 @@ $row-padding--md: 60px;
   /* Copy Only - Copy Centred variation */
   &.single-msg--copy-only {
     .single-msg__copy_wrapper {
-      // Margins and widths tweaked to match feature layout
-      margin: 0 calc(4*#{gutter()}) 0;
-      width: calc(100% - (8 * #{gutter()}) );
+
+      background-color: transparent;
+
+      .single-msg__copy {
+        padding: 0 30px;
+
+        /* Remove margins from the last/only element in the body copy,
+          as to not mess up our vertical centering */
+        .single-msg__body :last-child {
+          margin-bottom: 0;
+        } 
+      }
 
       @include breakpoint($screen-md, $no-query: true) {
         @include span(10);
