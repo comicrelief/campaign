@@ -24,9 +24,10 @@ Feature: ESU
     Given I am on "/esu"
     Then I should see "ESU Workplace: initial message" in the "esu_workflow" region
     And I fill in "edit-email--2" with "test-workflow@example.org" in the "esu_workflow" region
+    And I fill in "edit-firstname" with "Test Workflow First Name" in the "esu_workflow" region
     And I press "Go" in the "esu_workflow" region
     And I wait for AJAX loading to finish
     Then I should see "ESU Workplace: success message" in the "esu_workflow" region
     And I should have received the following data in the "esu_workplace" queue:
-      | campaign | transType | timestamp | transSourceURL | transSource | email | device | source | lists |
-      | RND17 | esu | * | * | RND17_Unknown_ESU_Unknown | test-workflow@example.org | * | * | * |
+      | campaign | transType | timestamp | transSourceURL | transSource | firstName | email | device | source | lists |
+      | RND17 | esu | * | * | RND17_Unknown_ESU_Unknown | Test Workflow First Name | test-workflow@example.org | * | * | * |
