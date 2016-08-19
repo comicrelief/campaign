@@ -32,8 +32,6 @@ third_party_settings:
         - field_background_colour
         - field_partner_body
         - field_partner_list
-_core:
-  default_config_hash: 2PNXlwpE9SL7NyMriVIPIqhuO_sk2OTWpAirLFusy5Q
 id: paragraph.partner_list.default
 targetEntityType: paragraph
 bundle: partner_list

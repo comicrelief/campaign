@@ -9,8 +9,6 @@ dependencies:
   module:
     - inline_entity_form
     - text
-_core:
-  default_config_hash: 7qYYJwvG3hnRbG-HG_Ec8qtT-9sfWYkBhgH7O8GrpBE
 id: paragraph.partner_list.default
 targetEntityType: paragraph
 bundle: partner_list
