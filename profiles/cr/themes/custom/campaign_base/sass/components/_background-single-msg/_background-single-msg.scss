@@ -12,7 +12,8 @@
   position: relative;
   clear: both;
   margin: 0;
-  min-height: 400px;
+  min-height: 450px;
+  @extend .bg--black;
 }
 .background-single-msg__inner-wrap {
   @include breakpoint($screen-md-max, $no-query: true) {
@@ -52,5 +53,18 @@
   @include breakpoint($screen-md-max, $no-query: true) {
     @include span(5 of 12);
     padding: 30px;
+  }
+  &.bg--centre {
+    float: none;
+    margin: auto;
+    @include breakpoint($screen-md) {
+      width: span(10);
+    }
+    @include breakpoint($screen-md-max, $no-query: true) {
+      width: span(8);
+    }
+  }
+  &.bg--right {
+    float: right;
   }
 }
