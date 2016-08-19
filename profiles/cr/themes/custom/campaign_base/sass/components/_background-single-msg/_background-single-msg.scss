@@ -59,9 +59,6 @@
   &.bg--centre {
     float: none;
     margin: auto;
-    @include breakpoint($screen-md) {
-      width: span(10);
-    }
     @include breakpoint($screen-md-max, $no-query: true) {
       width: span(8);
     }
