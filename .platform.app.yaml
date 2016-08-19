@@ -77,8 +77,8 @@ hooks:
     deploy: |
       set -e
 
-      echo "always_populate_raw_post_data=-1" >> /run/.configs/etc/php5/cli/php.ini
-      
+      echo "always_populate_raw_post_data=-1" >> /run/.configs/etc/php5/fpm/php.ini
+
       composer install --no-progress --prefer-dist -o
       npm install
       cd profiles/cr
