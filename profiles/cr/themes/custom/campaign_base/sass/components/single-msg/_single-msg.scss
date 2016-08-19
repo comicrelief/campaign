@@ -6,32 +6,6 @@
 //
 // Style guide: Single Message
 
-/* Bully the styleguide in behaving like the the site */
-.kss-sidebar {
-  display: none;
-}
-#kss-node {
-  padding: 0;
-
-  .kss-main {
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-} 
-.kss-modifier__wrapper {
-  padding: 0 !important;
-}
-
-#kss-node .kss-modifier__heading {
-  margin: 0;
-}
-
-
-/* Variables, to move  */
-$row-padding--sm: 30px;
-$row-padding--md: 60px;
-
 
 /* Global styles for all variants, provides all styles for Copy Right variant */
 .paragraph.single-msg {
@@ -144,10 +118,6 @@ $row-padding--md: 60px;
       margin-top: calc(-4 *#{gutter()});
       width: calc(100% - (8 * #{gutter()}) );
 
-      /* Override any CMS-added bg colours here to make 
-      sure that featured rows are always styled properly! */
-      background-color: $colour-white !important;
-
       @include breakpoint($screen-md, $no-query: true) {
         position: relative;
       }  
@@ -164,7 +134,6 @@ $row-padding--md: 60px;
       }  
 
       .single-msg__copy {
-        color: $colour-black;
         height: auto;
       }
     } 
@@ -218,33 +187,5 @@ $row-padding--md: 60px;
         @include push(2);
       }
     }
-  }
-
-  .single-msg__copy_wrapper {
-    
-    /* Setting font colours based on bg colours */
-    &.bg--red,
-    &.bg--royal-blue,
-    &.bg--purple,
-    &.bg--pink {
-      .single-msg__copy {
-        color: white;
-      }
-    }
-
-    &.bg--sky-blue,
-    &.bg--yellow,
-    &.bg--green,
-    &.bg--teal,
-    &.bg--white,
-    &.bg--black,
-    &.bg--jasper-grey,
-    &.bg--gainsboro-grey,
-    &.bg--light-grey,
-    &.bg--smoke-grey {
-      .single-msg__copy {
-        color: black;     
-      }
-    }  
   }
 }

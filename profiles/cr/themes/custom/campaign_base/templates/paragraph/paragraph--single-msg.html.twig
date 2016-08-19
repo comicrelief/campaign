@@ -13,16 +13,16 @@ row_bg_colour,
 ]
 %}
 
-<div {{ attributes.addClass(classes) }} >
+<section{{ attributes.addClass(classes) }} >
   <div class="single-msg__outer-wrapper">
     {% if content.field_single_msg_img['#items'] %}
       <div class="single-msg__image">
       {{ content.field_single_msg_img }}
       </div>
     {% endif %}
-    <div class="single-msg__copy_wrapper {{body_bg_colour}}">
+    <div class="single-msg__copy_wrapper {{ body_bg_colour }}">
       <div class="single-msg__copy">
-        <div class="single-msg__title {{hide_title}}">
+        <div class="single-msg__title {{ hide_title }}">
           <h2>
             {{ content.field_single_msg_title }}
           </h2>
@@ -33,4 +33,4 @@ row_bg_colour,
       </div>
     </div>
   </div>
-</div>
+</section>
