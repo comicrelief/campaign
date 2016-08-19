@@ -51,16 +51,32 @@ abstract class SignUp extends FormBase {
 
     // RND-178: Device & Source Replacements.
     if (!empty($append_message['device'])) {
-      $append_message['transSource'] = str_replace("[Device]", $append_message['device'], $append_message['transSource']);
+      $append_message['transSource'] = str_replace(
+        "[Device]",
+        $append_message['device'],
+        $append_message['transSource']
+      );
     }
     else {
-      $append_message['transSource'] = str_replace("[Device]", "Unknown", $append_message['transSource']);
+      $append_message['transSource'] = str_replace(
+        "[Device]",
+        "Unknown",
+        $append_message['transSource']
+      );
     }
     if (!empty($append_message['source'])) {
-      $append_message['transSource'] = str_replace("[PageElementSource]", $append_message['source'], $append_message['transSource']);
+      $append_message['transSource'] = str_replace(
+        "[PageElementSource]",
+        $append_message['source'],
+        $append_message['transSource']
+      );
     }
     else {
-      $append_message['transSource'] = str_replace("[PageElementSource]", "Unknown", $append_message['transSource']);
+      $append_message['transSource'] = str_replace(
+        "[PageElementSource]",
+        "Unknown",
+        $append_message['transSource']
+      );
     }
 
     // Add passed arguments.
@@ -74,7 +90,9 @@ abstract class SignUp extends FormBase {
       }
     }
     catch (\Exception $exception) {
-      \Drupal::logger('cr_email_signup')->error("Unable to queue message. Attempted to queue message. Error was: " . $exception->getMessage());
+      \Drupal::logger('cr_email_signup')->error(
+        "Unable to queue message. Attempted to queue message. Error was: " . $exception->getMessage()
+      );
     }
   }
 
@@ -174,14 +192,32 @@ abstract class SignUp extends FormBase {
           }
           $this->queueMessage($data);
           $response->addCommand(new HtmlCommand('.esu-errors', ''));
-          $response->addCommand(new InvokeCommand('.block--cr-email-signup', 'removeClass', array('block--cr-email-signup--error')));
-          $response->addCommand(new InvokeCommand('.block--cr-email-signup', 'removeClass', array('block--cr-email-signup--step-1')));
-          $response->addCommand(new InvokeCommand('.block--cr-email-signup', 'addClass', array('block--cr-email-signup--step-2')));
+          $response->addCommand(new InvokeCommand(
+            '.block--cr-email-signup',
+            'removeClass',
+           ['block--cr-email-signup--error']
+          ));
+          $response->addCommand(new InvokeCommand(
+            '.block--cr-email-signup',
+            'removeClass',
+            ['block--cr-email-signup--step-1']
+          ));
+          $response->addCommand(new InvokeCommand(
+            '.block--cr-email-signup',
+            'addClass',
+            ['block--cr-email-signup--step-2']
+          ));
         }
         else {
           // Error if validation isnt met.
-          $response->addCommand(new HtmlCommand('.esu-errors', 'Please enter a valid email address'));
-          $response->addCommand(new InvokeCommand('.block--cr-email-signup', 'addClass', array('block--cr-email-signup--error')));
+          $response->addCommand(new HtmlCommand(
+            '.esu-errors', 'Please enter a valid email address'
+          ));
+          $response->addCommand(new InvokeCommand(
+            '.block--cr-email-signup',
+            'addClass',
+            ['block--cr-email-signup--error']
+          ));
         }
         break;
 
@@ -189,22 +225,41 @@ abstract class SignUp extends FormBase {
         // Process second step.
         if (!$form_state->isValueEmpty('school_phase') && $this->validateEmail($form, $form_state)) {
           // Send second message to the queue.
-          $this->queueMessage(array(
+          $this->queueMessage([
             'email' => $form_state->getValue('email'),
             'phase' => $form_state->getValue('school_phase'),
             'device' => $form_state->getValue('device'),
             'source' => $form_state->getValue('source'),
-            'lists' => array('teacher' => 'teacher'),
+            'lists' => ['teacher' => 'teacher'],
+          ]);
+          $response->addCommand(new InvokeCommand(
+            '.block--cr-email-signup',
+            'removeClass',
+            ['block--cr-email-signup--error']
           ));
-          $response->addCommand(new InvokeCommand('.block--cr-email-signup', 'removeClass', array('block--cr-email-signup--error')));
-          $response->addCommand(new InvokeCommand('.block--cr-email-signup', 'removeClass', array('block--cr-email-signup--step-2')));
-          $response->addCommand(new InvokeCommand('.block--cr-email-signup', 'addClass', array('block--cr-email-signup--step-3')));
+          $response->addCommand(new InvokeCommand(
+            '.block--cr-email-signup',
+            'removeClass',
+            ['block--cr-email-signup--step-2']
+          ));
+          $response->addCommand(new InvokeCommand(
+            '.block--cr-email-signup',
+            'addClass',
+            ['block--cr-email-signup--step-3']
+          ));
 
         }
         else {
           // Error if age range isnt selected.
-          $response->addCommand(new HtmlCommand('.esu-errors', 'Please select an age group.'));
-          $response->addCommand(new InvokeCommand('.block--cr-email-signup', 'addClass', array('block--cr-email-signup--error')));
+          $response->addCommand(new HtmlCommand(
+            '.esu-errors',
+            'Please select an age group.'
+          ));
+          $response->addCommand(new InvokeCommand(
+            '.block--cr-email-signup',
+            'addClass',
+            ['block--cr-email-signup--error']
+          ));
           return $response;
 
         }
