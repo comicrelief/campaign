@@ -60,6 +60,7 @@ function cr_single_msg_field_single_msg_body_bg_colour(FieldStorageDefinitionInt
 
 /**
  * Options callback for field_single_msg_layout_variant.
+ *
  * @see options_allowed_values()
  */
 function cr_single_msg_field_single_msg_layout_variant(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
