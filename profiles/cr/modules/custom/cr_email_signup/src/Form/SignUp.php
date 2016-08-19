@@ -159,12 +159,20 @@ abstract class SignUp extends FormBase {
         // Process first step.
         if ($this->validateEmail($form, $form_state)) {
           // Send first message to queue.
-          $this->queueMessage(array(
+          // @TODO: Refactor this!
+          $data = [
             'email' => $form_state->getValue('email'),
             'device' => $form_state->getValue('device'),
             'source' => $form_state->getValue('source'),
-            'lists' => array('general' => 'general'),
-          ));
+            'lists' => ['general' => 'general'],
+          ];
+          if ($form_state->getValue('firstName')) {
+            $data['firstName'] = $form_state->getValue('firstName');
+          }
+          if ($form_state->getValue('EventInterest')) {
+            $data['EventInterest'] = $form_state->getValue('EventInterest');
+          }
+          $this->queueMessage($data);
           $response->addCommand(new HtmlCommand('.esu-errors', ''));
           $response->addCommand(new InvokeCommand('.block--cr-email-signup', 'removeClass', array('block--cr-email-signup--error')));
           $response->addCommand(new InvokeCommand('.block--cr-email-signup', 'removeClass', array('block--cr-email-signup--step-1')));
