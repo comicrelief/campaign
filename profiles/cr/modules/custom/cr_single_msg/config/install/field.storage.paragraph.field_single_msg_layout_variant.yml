@@ -9,8 +9,8 @@ field_name: field_single_msg_layout_variant
 entity_type: paragraph
 type: list_string
 settings:
-allowed_values: null
-allowed_values_function: cr_single_msg_field_single_msg_layout_variant
+  allowed_values: null
+  allowed_values_function: cr_single_msg_field_single_msg_layout_variant
 module: options
 locked: false
 cardinality: 1

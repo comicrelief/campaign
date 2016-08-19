@@ -9,8 +9,8 @@ field_name: field_single_msg_body_bg_colour
 entity_type: paragraph
 type: list_string
 settings:
-allowed_values: null
-allowed_values_function: cr_single_msg_field_single_msg_body_bg_colour
+  allowed_values: null
+  allowed_values_function: cr_single_msg_field_single_msg_body_bg_colour
 module: options
 locked: false
 cardinality: 1
