@@ -9,23 +9,8 @@ field_name: field_single_msg_layout_variant
 entity_type: paragraph
 type: list_string
 settings:
-  allowed_values:
-    -
-      value: copy-left
-      label: 'Standard - copy left'
-    -
-      value: copy-right
-      label: 'Standard - copy right'
-    -
-      value: feature-copy-left
-      label: 'Feature - copy left'
-    -
-      value: feature-copy-right
-      label: 'Feature -copy right'
-    -
-      value: copy-only
-      label: 'Copy Only'
-  allowed_values_function: ''
+allowed_values: null
+allowed_values_function: cr_single_msg_field_single_msg_layout_variant
 module: options
 locked: false
 cardinality: 1

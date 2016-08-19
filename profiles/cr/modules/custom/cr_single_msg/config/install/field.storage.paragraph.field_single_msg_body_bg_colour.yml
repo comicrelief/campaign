@@ -9,50 +9,8 @@ field_name: field_single_msg_body_bg_colour
 entity_type: paragraph
 type: list_string
 settings:
-  allowed_values:
-    -
-      value: bg--white
-      label: White
-    -
-      value: bg--black
-      label: Black
-    -
-      value: bg--red
-      label: Red
-    -
-      value: bg--sky-blue
-      label: 'Sky blue'
-    -
-      value: bg--yellow
-      label: Yellow
-    -
-      value: bg--green
-      label: Green
-    -
-      value: bg--teal
-      label: Teal
-    -
-      value: bg--royal-blue
-      label: 'Royal blue'
-    -
-      value: bg--pink
-      label: Pink
-    -
-      value: bg--purple
-      label: Purple
-    -
-      value: bg--jasper-grey
-      label: 'Jasper grey'
-    -
-      value: bg--gainsboro-grey
-      label: 'Gainsboro grey'
-    -
-      value: bg--light-grey
-      label: 'Light grey'
-    -
-      value: bg--smoke-grey
-      label: 'Smoke grey'
-  allowed_values_function: ''
+allowed_values: null
+allowed_values_function: cr_single_msg_field_single_msg_body_bg_colour
 module: options
 locked: false
 cardinality: 1
