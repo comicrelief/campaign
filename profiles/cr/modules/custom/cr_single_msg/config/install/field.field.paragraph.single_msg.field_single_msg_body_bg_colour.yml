@@ -2,16 +2,16 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_single_msg_bg
+    - field.storage.paragraph.field_single_msg_body_bg_colour
     - paragraphs.paragraphs_type.single_msg
   module:
     - options
-id: paragraph.single_msg.field_single_msg_bg
-field_name: field_single_msg_bg
+id: paragraph.single_msg.field_single_msg_body_bg_colour
+field_name: field_single_msg_body_bg_colour
 entity_type: paragraph
 bundle: single_msg
-label: 'Background colour'
-description: 'Select a full-width background colour for the entire message row'
+label: 'Body background colour'
+description: 'Sets the background colour behind the copy'
 required: true
 translatable: false
 default_value:
