@@ -1,11 +1,13 @@
-// Paragraph CR Rich Text
+// Background Single Message
 //
-// This is Paragraph CR Rich Text
+// This is Paragraph Background Single Message type
 //
-// Markup:
-// <div></div>
+// Markup: background-single-msg.hbs
 //
-// Style guide: Components.Background-single-msg
+// .bg--centre - Centre layout
+// .bg--right - Right layout
+//
+// Style guide: Background-single-msg
 
 .background-single-msg {
   @include clearfix;
