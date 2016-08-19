@@ -17,7 +17,6 @@
   .partners-row__body {
     text-align: center;
   }
-  // width: calc( #{span(6)} +  ( #{gutter()} * 1) );
   .partners-row__logos-list {
     ul {
       display: flex;
@@ -54,7 +53,7 @@
         max-width: 300px;
       }
       @include breakpoint($screen-lg) {
-        @include span(3 of 12);
+        @include span(3);
       }
     }
     img {
