@@ -37,7 +37,7 @@ Feature: ESU
     Given I am on "/esu"
     Then I should see "ESU Register Interest: initial message" in the "esu_register_interest" region
     And I fill in "edit-email--3" with "test-register-interest@example.org" in the "esu_register_interest" region
-    And I check "edit-eventinterest"
+    And I check "EventInterest"
     And I press "Go" in the "esu_register_interest" region
     And I wait for 3 seconds
     Then I should see "ESU Register Interest: success message" in the "esu_register_interest" region
