@@ -336,6 +336,21 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
       ->find('xpath', '/img[@src="' . $uri . '"]');
   }
 
+
+  /**
+   * Selects option in select field with specified id|name|label|value in a region
+   * Example: When I select "Bats" from "user_fears" in the "some" region
+   * Example: And I select "Bats" from "user_fears" in the "some" region
+   *
+   * @Then I select :option from :select in the :region region
+   */
+  public function selectOptionRegion($select, $option, $region)
+  {
+    $regionObj = $this->getSession()->getPage()->find('region', $region);
+    $regionObj->selectFieldOption($select, $option);
+  }
+
+
   /**
    * Asserts that the last queue element contains given data.
    *
@@ -372,7 +387,7 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
       // Check if the value from the queue is the same one as the expected value.
       // If we pass "*" as expected value, all values are correct.
       if ($expected_value != '*' && $item[$name] != $expected_value) {
-        throw new Exception('Expected queue property "' . $name . '" contains value "' . $item[$name] . '" but "' . $expected_value . '" expected, for last item from queue "' . $queue_name . '"');       
+        throw new Exception('Expected queue property "' . $name . '" contains value "' . $item[$name] . '" but "' . $expected_value . '" expected, for last item from queue "' . $queue_name . '"');
       }
     }
   }
