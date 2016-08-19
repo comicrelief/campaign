@@ -4,8 +4,10 @@ dependencies:
   config:
     - field.field.paragraph.cr_rich_text_paragraph.field_background
     - field.field.paragraph.cr_rich_text_paragraph.field_bg_single_msg_bg_colour
+    - field.field.paragraph.cr_rich_text_paragraph.field_bg_single_msg_layout
     - field.field.paragraph.cr_rich_text_paragraph.field_body
     - paragraphs.paragraphs_type.cr_rich_text_paragraph
+    - responsive_image.styles.bg_rich_text
   module:
     - ds
     - options
@@ -31,6 +33,7 @@ third_party_settings:
     regions:
       ds_content:
         - field_background
+        - field_bg_single_msg_layout
         - field_bg_single_msg_bg_colour
         - field_body
 id: paragraph.cr_rich_text_paragraph.default
@@ -40,7 +43,7 @@ mode: default
 content:
   created:
     type: timestamp_ago
-    weight: 0
+    weight: 5
     label: above
     settings:
       future_format: '@interval hence'
@@ -56,24 +59,30 @@ content:
     third_party_settings: {  }
     type: responsive_image
   field_bg_single_msg_bg_colour:
-    weight: 1
+    weight: 2
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
+  field_bg_single_msg_layout:
+    type: list_default
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
   field_body:
-    weight: 2
+    weight: 3
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
   social_links:
-    weight: 0
+    weight: 4
     settings: {  }
     third_party_settings: {  }
   uid:
     type: author
-    weight: 0
+    weight: 6
     label: above
     settings: {  }
     third_party_settings: {  }
