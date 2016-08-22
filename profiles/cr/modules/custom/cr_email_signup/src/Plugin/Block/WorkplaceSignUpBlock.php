@@ -37,7 +37,7 @@ class WorkplaceSignUpBlock extends BlockBase implements BlockPluginInterface {
     foreach ($messages as $keymsg => $valuemsg) {
       $classname = 'esu-' . str_replace('_', '-', $keymsg);
       $form[$keymsg] = [
-        '#markup' => "<div class='$classname'><h4>{$valuemsg}</h4></div>",
+        '#markup' => "<div class='$classname'><h4>" . $valuemsg . "</h4></div>",
       ];
     }
 

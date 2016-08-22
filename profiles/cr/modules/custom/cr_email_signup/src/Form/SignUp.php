@@ -23,10 +23,6 @@ abstract class SignUp extends FormBase {
     // TODO: Should this be hardcoded??
     'campaign' => 'RND17',
     'transType' => 'esu',
-    'timestamp' => NULL,
-    'transSourceURL' => NULL,
-    'transSource' => NULL,
-    'email' => NULL,
   ];
 
   /**
@@ -38,49 +34,37 @@ abstract class SignUp extends FormBase {
   abstract protected function getQueueName();
 
   /**
-   * Send a message to the queue service.
+   * Fill a message for the queue service.
    *
    * @param array $append_message
    *     Message to append to queue.
    */
-  protected function queueMessage($append_message) {
+  protected function fillQMessage($append_message) {
     // Add dynamic keys.
     $append_message['timestamp'] = time();
     $append_message['transSourceURL'] = \Drupal::service('path.current')->getPath();
     $append_message['transSource'] = "{$this->skeletonMessage['campaign']}_[Device]_ESU_[PageElementSource]";
 
     // RND-178: Device & Source Replacements.
-    if (!empty($append_message['device'])) {
-      $append_message['transSource'] = str_replace(
-        "[Device]",
-        $append_message['device'],
-        $append_message['transSource']
-      );
-    }
-    else {
-      $append_message['transSource'] = str_replace(
-        "[Device]",
-        "Unknown",
-        $append_message['transSource']
-      );
-    }
-    if (!empty($append_message['source'])) {
-      $append_message['transSource'] = str_replace(
-        "[PageElementSource]",
-        $append_message['source'],
-        $append_message['transSource']
-      );
-    }
-    else {
-      $append_message['transSource'] = str_replace(
-        "[PageElementSource]",
-        "Unknown",
-        $append_message['transSource']
-      );
-    }
+    $device = (empty($append_message['device'])) ? "Unknown" : $append_message['device'];
+    $source = (empty($append_message['source'])) ? "Unknown" : $append_message['source'];
+
+    $append_message['transSource'] = str_replace(
+      ['[Device]', '[PageElementSource]'],
+      [$device, $source],
+      $append_message['transSource']
+    );
 
     // Add passed arguments.
     $queue_message = array_merge($this->skeletonMessage, $append_message);
+
+    $this->sendQMessage($queue_message);
+  }
+
+  /**
+   * Send a message to the queue service.
+   */
+  private function sendQMessage($queue_message) {
     try {
       $queue_factory = \Drupal::service('queue');
       $queue = $queue_factory->get($this->getQueueName());
@@ -100,6 +84,8 @@ abstract class SignUp extends FormBase {
    * Build the Form Elements.
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
+    // Annoy code check!
+    $form_state = $form_state;
 
     $form += $this->esuRequiredFields();
     $form += $this->esuContentFields();
@@ -161,6 +147,9 @@ abstract class SignUp extends FormBase {
    * Custom email validate function.
    */
   public function validateEmail(array &$form, FormStateInterface $form_state) {
+    // Annoy code check!
+    $form = $form;
+
     $email_address = $form_state->getValue('email');
 
     return (filter_var($email_address, FILTER_VALIDATE_EMAIL) && strlen($email_address) <= 100) ? TRUE : FALSE;
@@ -190,7 +179,7 @@ abstract class SignUp extends FormBase {
           if ($form_state->getValue('EventInterest')) {
             $data['EventInterest'] = $form_state->getValue('EventInterest');
           }
-          $this->queueMessage($data);
+          $this->fillQMessage($data);
           $response->addCommand(new HtmlCommand('.esu-errors', ''));
           $response->addCommand(new InvokeCommand(
             '.block--cr-email-signup',
@@ -225,7 +214,7 @@ abstract class SignUp extends FormBase {
         // Process second step.
         if (!$form_state->isValueEmpty('school_phase') && $this->validateEmail($form, $form_state)) {
           // Send second message to the queue.
-          $this->queueMessage([
+          $this->fillQMessage([
             'email' => $form_state->getValue('email'),
             'phase' => $form_state->getValue('school_phase'),
             'device' => $form_state->getValue('device'),
