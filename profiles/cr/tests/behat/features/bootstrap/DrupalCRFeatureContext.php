@@ -263,12 +263,6 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
         $data['field_single_msg_bg'] = [
           'value' => $paragraph['bg_color'],
         ];
-        $data['field_single_msg_feat'] = [
-          'value' => $paragraph['featured'],
-        ];
-        $data['field_single_msg_img_r'] = [
-          'value' => $paragraph['image_right'],
-        ];
         break;
     }
 
