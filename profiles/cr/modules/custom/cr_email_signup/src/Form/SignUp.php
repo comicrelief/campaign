@@ -101,14 +101,17 @@ abstract class SignUp extends FormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
 
-    $form += $this->EsuRequiredFields();
-    $form += $this->EsuContentFields();
-    $form += $this->EsuSubmitFields();
+    $form += $this->esuRequiredFields();
+    $form += $this->esuContentFields();
+    $form += $this->esuSubmitFields();
 
     return $form;
   }
 
-  protected function EsuRequiredFields() {
+  /**
+   * Build the mandatory fields of the form.
+   */
+  protected function esuRequiredFields() {
     $form['device'] = [
       '#name' => 'device',
       '#type' => 'hidden',
@@ -131,10 +134,17 @@ abstract class SignUp extends FormBase {
     return $form;
   }
 
-  protected function EsuContentFields() {
+  /**
+   * Build the extra elements of the form.
+   */
+  protected function esuContentFields() {
     return [];
   }
-  protected function EsuSubmitFields() {
+
+  /**
+   * Build the submit elements.
+   */
+  protected function esuSubmitFields() {
     $form['step1'] = [
       '#type' => 'button',
       '#name' => 'step1',

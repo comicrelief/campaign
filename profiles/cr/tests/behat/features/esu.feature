@@ -33,7 +33,7 @@ Feature: ESU
       | RND17 | esu | * | * | RND17_Unknown_ESU_Unknown | Test Workflow First Name | test-workflow@example.org | * | * | * |
 
   @javascript
-  Scenario: ESU Register your Interest. Data contract is in https://docs.google.com/document/d/1zbXhQj14fZhcNDMHsyhx2JU3KSWqBT-k1jt5NkwPB_w/edit
+  Scenario: ESU Register your Interest.(Should be only an email)
     Given I am on "/esu"
     Then I should see "ESU Register Interest: initial message" in the "esu_register_interest" region
     And I fill in "edit-email--3" with "test-register-interest@example.org" in the "esu_register_interest" region

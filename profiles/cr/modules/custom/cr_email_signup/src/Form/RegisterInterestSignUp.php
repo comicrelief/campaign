@@ -23,11 +23,15 @@ class RegisterInterestSignUp extends SignUp {
     return 'esu_register_interest';
   }
 
-  protected function EsuContentFields() {
+  /**
+   * {@inheritdoc}
+   */
+  protected function esuContentFields() {
     $form['EventInterest'] = [
       '#type' => 'checkbox',
       '#title' => $this->t("Tick this box to sign up to newsletter and kept informed about what we're up to"),
     ];
     return $form;
   }
+
 }

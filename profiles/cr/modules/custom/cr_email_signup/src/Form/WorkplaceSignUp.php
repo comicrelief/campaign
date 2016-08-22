@@ -23,7 +23,10 @@ class WorkplaceSignUp extends SignUp {
     return 'esu_workplace';
   }
 
-  protected function EsuContentFields() {
+  /**
+   * {@inheritdoc}
+   */
+  protected function esuContentFields() {
     $form['firstName'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Your first name'),

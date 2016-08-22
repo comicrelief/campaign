@@ -15,7 +15,7 @@ use Drupal\Core\Block\BlockPluginInterface;
 class RegisterInterestSignUpBlock extends WorkplaceSignUpBlock implements BlockPluginInterface {
 
   /**
-   * @inheritdoc
+   * {@inheritdoc}
    */
   protected function getEsuForm() {
     return \Drupal::formBuilder()->getForm('Drupal\cr_email_signup\Form\RegisterInterestSignUp');

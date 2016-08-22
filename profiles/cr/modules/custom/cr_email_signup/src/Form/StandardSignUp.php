@@ -21,7 +21,10 @@ class StandardSignUp extends SignUp {
     return 'esu';
   }
 
-  protected function EsuContentFields() {
+  /**
+   * {@inheritdoc}
+   */
+  protected function esuContentFields() {
     $form['school_phase'] = [
       '#type' => 'select',
       '#title' => $this->t('Also send me School resources'),
@@ -38,8 +41,11 @@ class StandardSignUp extends SignUp {
     return $form;
   }
 
-  protected function EsuSubmitFields() {
-    $form = parent::EsuSubmitFields();
+  /**
+   * {@inheritdoc}
+   */
+  protected function esuSubmitFields() {
+    $form = parent::esuSubmitFields();
     $form['step2'] = [
       '#type' => 'button',
       '#name' => 'step2',
