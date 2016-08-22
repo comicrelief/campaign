@@ -180,33 +180,10 @@ abstract class SignUp extends FormBase {
             $data['EventInterest'] = $form_state->getValue('EventInterest');
           }
           $this->fillQMessage($data);
-          $response->addCommand(new HtmlCommand('.esu-errors', ''));
-          $response->addCommand(new InvokeCommand(
-            '.block--cr-email-signup',
-            'removeClass',
-           ['block--cr-email-signup--error']
-          ));
-          $response->addCommand(new InvokeCommand(
-            '.block--cr-email-signup',
-            'removeClass',
-            ['block--cr-email-signup--step-1']
-          ));
-          $response->addCommand(new InvokeCommand(
-            '.block--cr-email-signup',
-            'addClass',
-            ['block--cr-email-signup--step-2']
-          ));
+          $this->nextStep($response, 1);
         }
         else {
-          // Error if validation isnt met.
-          $response->addCommand(new HtmlCommand(
-            '.esu-errors', 'Please enter a valid email address'
-          ));
-          $response->addCommand(new InvokeCommand(
-            '.block--cr-email-signup',
-            'addClass',
-            ['block--cr-email-signup--error']
-          ));
+          $this->setErrorMessage($response, 'Please enter a valid email address.');
         }
         break;
 
@@ -221,41 +198,59 @@ abstract class SignUp extends FormBase {
             'source' => $form_state->getValue('source'),
             'lists' => ['teacher' => 'teacher'],
           ]);
-          $response->addCommand(new InvokeCommand(
-            '.block--cr-email-signup',
-            'removeClass',
-            ['block--cr-email-signup--error']
-          ));
-          $response->addCommand(new InvokeCommand(
-            '.block--cr-email-signup',
-            'removeClass',
-            ['block--cr-email-signup--step-2']
-          ));
-          $response->addCommand(new InvokeCommand(
-            '.block--cr-email-signup',
-            'addClass',
-            ['block--cr-email-signup--step-3']
-          ));
+          $this->nextStep($response, 2);
 
         }
         else {
-          // Error if age range isnt selected.
-          $response->addCommand(new HtmlCommand(
-            '.esu-errors',
-            'Please select an age group.'
-          ));
-          $response->addCommand(new InvokeCommand(
-            '.block--cr-email-signup',
-            'addClass',
-            ['block--cr-email-signup--error']
-          ));
-          return $response;
-
+          $this->setErrorMessage($response, 'Please select an age group.');
         }
         break;
     }
     // Return ajax response.
     return $response;
+  }
+
+  /**
+   * Go to the next step of the multiform.
+   *
+   * @param $response
+   * @param $step
+   */
+  private function nextStep(AjaxResponse $response, $step) {
+    $response->addCommand(new HtmlCommand('.esu-errors', ''));
+    $response->addCommand(new InvokeCommand(
+      '.block--cr-email-signup',
+      'removeClass',
+      ['block--cr-email-signup--error']
+    ));
+    $response->addCommand(new InvokeCommand(
+      '.block--cr-email-signup',
+      'removeClass',
+      ['block--cr-email-signup--step-' . $step]
+    ));
+    $response->addCommand(new InvokeCommand(
+      '.block--cr-email-signup',
+      'addClass',
+      ['block--cr-email-signup--step-' . ($step + 1)]
+    ));
+  }
+
+  /**
+   *  Set the error message.
+   *
+   * @param $response
+   * @param $message
+   */
+  private function setErrorMessage(AjaxResponse $response, $message) {
+    // Error if validation isnt met.
+    $response->addCommand(new HtmlCommand(
+      '.esu-errors', $message
+    ));
+    $response->addCommand(new InvokeCommand(
+      '.block--cr-email-signup',
+      'addClass',
+      ['block--cr-email-signup--error']
+    ));
   }
 
   /**
