@@ -1,5 +1,16 @@
 // Mixins
 
+// Breakpoint gutters mixin
+
+@mixin breakpoint-gutters {
+  width: calc(100% - (8 * #{gutter()}) );
+  @include breakpoint($screen-md) {
+    width: calc(100% - (4 * #{gutter()}) );
+  }
+  @include breakpoint($screen-md-max) {
+    max-width: calc($max-width - (1 * #{gutter()}) );
+  }
+}
 
 /** Button mixin, used by $buttonList in _buttons.scss
  * 
@@ -139,4 +150,14 @@
     width: multimap-get( $ratio-map, $ratio, "width");
     height: auto;
   } 
+}
+
+// Visually hidden
+
+@mixin visuallyhidden { 
+  position: absolute; 
+  overflow: hidden; 
+  clip: rect(0 0 0 0); 
+  height: 1px; width: 1px; 
+  margin: -1px; padding: 0; border: 0; 
 }
