@@ -133,7 +133,7 @@
 /* Crops 4:3 or 16:9 images to 1:1, using container width as basis */
 @mixin square-img-ratio($width, $ratio) {
 
-  // Values associated with each 'ratio' keym passed in along with the container width
+  // Values associated with each 'ratio' key passed in along with the container width
 
   $ratio-map: (
     '16:9' : (height: 0, padding-bottom : $width, offset : -39%, width : 178%),
