@@ -18,23 +18,8 @@ use Drupal\Core\Access\AccessResult;
  */
 class RegisterInterestSignUpBlock extends WorkplaceSignUpBlock implements BlockPluginInterface {
 
-  /**
-   * {@inheritdoc}
-   */
-  public function build() {
-    $config = $this->getConfiguration();
-
-    $form = \Drupal::formBuilder()->getForm('Drupal\cr_email_signup\Form\RegisterInterestSignUp');
-
-    $form['initial_message'] = [
-      '#markup' => "<div class='esu-initial-message'><h4>{$config['initial_message']}</h4></div>",
-    ];
-
-    $form['first_success_message'] = [
-      '#markup' => "<div class='esu-first-success-message'><h4>{$config['first_success_message']}</h4></div>",
-    ];
-
-    return $form;
+  protected function getEsuForm() {
+    return \Drupal::formBuilder()->getForm('Drupal\cr_email_signup\Form\RegisterInterestSignUp');
   }
 
 }

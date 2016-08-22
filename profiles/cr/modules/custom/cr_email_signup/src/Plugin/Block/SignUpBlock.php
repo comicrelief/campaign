@@ -14,27 +14,8 @@ use Drupal\Core\Form\FormStateInterface;
  */
 class SignUpBlock extends WorkplaceSignUpBlock {
 
-  /**
-   * {@inheritdoc}
-   */
-  public function build() {
-    $config = $this->getConfiguration();
-
-    $form = \Drupal::formBuilder()->getForm('Drupal\cr_email_signup\Form\StandardSignUp');
-
-    $form['initial_message'] = [
-      '#markup' => "<div class='esu-initial-message'><h4>{$config['initial_message']}</h4></div>",
-    ];
-
-    $form['first_success_message'] = [
-      '#markup' => "<div class='esu-first-success-message'><h4>{$config['first_success_message']}</h4></div>",
-    ];
-
-    $form['second_success_message'] = [
-      '#markup' => "<div class='esu-second-success-message'><h4>{$config['second_success_message']}</h4></div>",
-    ];
-
-    return $form;
+  protected function getEsuForm() {
+    return \Drupal::formBuilder()->getForm('Drupal\cr_email_signup\Form\StandardSignUp');
   }
 
   /**
@@ -45,12 +26,12 @@ class SignUpBlock extends WorkplaceSignUpBlock {
 
     $config = $this->getConfiguration();
 
-    $form['cr_email_signup_second_success_message'] = array(
+    $form['cr_email_signup_second_success_message'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Second Success Message'),
       '#description' => $this->t('Enter the success message for the second stage, if any'),
       '#default_value' => isset($config['second_success_message']) ? $config['second_success_message'] : '',
-    );
+    ];
 
     return $form;
   }

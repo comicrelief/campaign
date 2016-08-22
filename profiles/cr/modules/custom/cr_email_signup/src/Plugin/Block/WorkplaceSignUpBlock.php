@@ -18,21 +18,25 @@ use Drupal\Core\Access\AccessResult;
  */
 class WorkplaceSignUpBlock extends BlockBase implements BlockPluginInterface {
 
+  protected function getEsuForm() {
+    return \Drupal::formBuilder()->getForm('Drupal\cr_email_signup\Form\WorkplaceSignUp');
+  }
+
   /**
    * {@inheritdoc}
    */
   public function build() {
     $config = $this->getConfiguration();
 
-    $form = \Drupal::formBuilder()->getForm('Drupal\cr_email_signup\Form\WorkplaceSignUp');
+    $form = $this->getEsuForm();
 
-    $form['initial_message'] = [
-      '#markup' => "<div class='esu-initial-message'><h4>{$config['initial_message']}</h4></div>",
-    ];
-
-    $form['first_success_message'] = [
-      '#markup' => "<div class='esu-first-success-message'><h4>{$config['first_success_message']}</h4></div>",
-    ];
+    $messages = array_slice($config, 4);
+    foreach($messages as $keymsg => $valuemsg) {
+      $classname = 'esu-' . str_replace('_','-', $keymsg);
+      $form[$keymsg] = [
+        '#markup' => "<div class='$classname'><h4>{$valuemsg}</h4></div>",
+      ];
+    }
 
     return $form;
   }
@@ -52,19 +56,19 @@ class WorkplaceSignUpBlock extends BlockBase implements BlockPluginInterface {
 
     $config = $this->getConfiguration();
 
-    $form['cr_email_signup_initial_message'] = array(
+    $form['cr_email_signup_initial_message'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Initial Message'),
       '#description' => $this->t('Enter the initial message to show'),
       '#default_value' => isset($config['initial_message']) ? $config['initial_message'] : '',
-    );
+    ];
 
-    $form['cr_email_signup_first_success_message'] = array(
+    $form['cr_email_signup_first_success_message'] = [
       '#type' => 'textfield',
       '#title' => $this->t('First Success Message'),
       '#description' => $this->t('Enter the success message'),
       '#default_value' => isset($config['first_success_message']) ? $config['first_success_message'] : '',
-    );
+    ];
 
     return $form;
   }
