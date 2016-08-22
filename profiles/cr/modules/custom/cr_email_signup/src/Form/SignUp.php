@@ -39,7 +39,7 @@ abstract class SignUp extends FormBase {
    * @param array $append_message
    *     Message to append to queue.
    */
-  protected function fillQMessage($append_message) {
+  protected function fillQmessage($append_message) {
     // Add dynamic keys.
     $append_message['timestamp'] = time();
     $append_message['transSourceURL'] = \Drupal::service('path.current')->getPath();
@@ -58,13 +58,13 @@ abstract class SignUp extends FormBase {
     // Add passed arguments.
     $queue_message = array_merge($this->skeletonMessage, $append_message);
 
-    $this->sendQMessage($queue_message);
+    $this->sendQmessage($queue_message);
   }
 
   /**
    * Send a message to the queue service.
    */
-  private function sendQMessage($queue_message) {
+  private function sendQmessage($queue_message) {
     try {
       $queue_factory = \Drupal::service('queue');
       $queue = $queue_factory->get($this->getQueueName());
@@ -179,7 +179,7 @@ abstract class SignUp extends FormBase {
           if ($form_state->getValue('EventInterest')) {
             $data['EventInterest'] = $form_state->getValue('EventInterest');
           }
-          $this->fillQMessage($data);
+          $this->fillQmessage($data);
           $this->nextStep($response, 1);
         }
         else {
@@ -191,7 +191,7 @@ abstract class SignUp extends FormBase {
         // Process second step.
         if (!$form_state->isValueEmpty('school_phase') && $this->validateEmail($form, $form_state)) {
           // Send second message to the queue.
-          $this->fillQMessage([
+          $this->fillQmessage([
             'email' => $form_state->getValue('email'),
             'phase' => $form_state->getValue('school_phase'),
             'device' => $form_state->getValue('device'),
@@ -212,9 +212,6 @@ abstract class SignUp extends FormBase {
 
   /**
    * Go to the next step of the multiform.
-   *
-   * @param $response
-   * @param $step
    */
   private function nextStep(AjaxResponse $response, $step) {
     $response->addCommand(new HtmlCommand('.esu-errors', ''));
@@ -236,10 +233,7 @@ abstract class SignUp extends FormBase {
   }
 
   /**
-   *  Set the error message.
-   *
-   * @param $response
-   * @param $message
+   * Set the error message.
    */
   private function setErrorMessage(AjaxResponse $response, $message) {
     // Error if validation isnt met.
