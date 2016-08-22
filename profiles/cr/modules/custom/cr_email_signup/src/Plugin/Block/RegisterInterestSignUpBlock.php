@@ -3,10 +3,6 @@
 namespace Drupal\cr_email_signup\Plugin\Block;
 
 use Drupal\Core\Block\BlockPluginInterface;
-use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Block\BlockBase;
-use Drupal\Core\Session\AccountInterface;
-use Drupal\Core\Access\AccessResult;
 
 /**
  * Provides a 'Register Interest Sign Up' block.
@@ -18,6 +14,9 @@ use Drupal\Core\Access\AccessResult;
  */
 class RegisterInterestSignUpBlock extends WorkplaceSignUpBlock implements BlockPluginInterface {
 
+  /**
+   * @inheritdoc
+   */
   protected function getEsuForm() {
     return \Drupal::formBuilder()->getForm('Drupal\cr_email_signup\Form\RegisterInterestSignUp');
   }

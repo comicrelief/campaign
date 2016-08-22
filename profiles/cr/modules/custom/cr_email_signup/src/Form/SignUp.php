@@ -100,24 +100,15 @@ abstract class SignUp extends FormBase {
    * Build the Form Elements.
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $form['email'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Your email address'),
-      '#placeholder' => $this->t('Enter your email address'),
-    ];
-    $form['school_phase'] = [
-      '#type' => 'select',
-      '#title' => $this->t('Also send me School resources'),
-      '#empty_option' => $this->t('-- Select age group --'),
-      '#options' => [
-        'EY' => 'Early Years or Nursery',
-        'PY' => 'Primary',
-        'SY' => 'Secondary',
-        'FE' => 'Further Education or Sixth-Form College',
-        'HE' => 'Higher Education',
-        'OH' => 'Other',
-      ],
-    ];
+
+    $form += $this->EsuRequiredFields();
+    $form += $this->EsuContentFields();
+    $form += $this->EsuSubmitFields();
+
+    return $form;
+  }
+
+  protected function EsuRequiredFields() {
     $form['device'] = [
       '#name' => 'device',
       '#type' => 'hidden',
@@ -132,7 +123,18 @@ abstract class SignUp extends FormBase {
         'id' => 'esu-source',
       ],
     ];
+    $form['email'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Your email address'),
+      '#placeholder' => $this->t('Enter your email address'),
+    ];
+    return $form;
+  }
 
+  protected function EsuContentFields() {
+    return [];
+  }
+  protected function EsuSubmitFields() {
     $form['step1'] = [
       '#type' => 'button',
       '#name' => 'step1',
@@ -142,16 +144,6 @@ abstract class SignUp extends FormBase {
         'callback' => [$this, 'processSteps'],
       ],
     ];
-    $form['step2'] = [
-      '#type' => 'button',
-      '#name' => 'step2',
-      '#value' => $this->t('Go'),
-      '#attributes' => ['class' => ['step2']],
-      '#ajax' => [
-        'callback' => [$this, 'processSteps'],
-      ],
-    ];
-
     return $form;
   }
 

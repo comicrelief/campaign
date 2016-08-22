@@ -18,6 +18,9 @@ use Drupal\Core\Access\AccessResult;
  */
 class WorkplaceSignUpBlock extends BlockBase implements BlockPluginInterface {
 
+  /**
+   * @return array form
+   */
   protected function getEsuForm() {
     return \Drupal::formBuilder()->getForm('Drupal\cr_email_signup\Form\WorkplaceSignUp');
   }
@@ -31,8 +34,8 @@ class WorkplaceSignUpBlock extends BlockBase implements BlockPluginInterface {
     $form = $this->getEsuForm();
 
     $messages = array_slice($config, 4);
-    foreach($messages as $keymsg => $valuemsg) {
-      $classname = 'esu-' . str_replace('_','-', $keymsg);
+    foreach ($messages as $keymsg => $valuemsg) {
+      $classname = 'esu-' . str_replace('_', '-', $keymsg);
       $form[$keymsg] = [
         '#markup' => "<div class='$classname'><h4>{$valuemsg}</h4></div>",
       ];

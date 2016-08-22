@@ -14,6 +14,9 @@ use Drupal\Core\Form\FormStateInterface;
  */
 class SignUpBlock extends WorkplaceSignUpBlock {
 
+  /**
+   * {@inheritdoc}
+   */
   protected function getEsuForm() {
     return \Drupal::formBuilder()->getForm('Drupal\cr_email_signup\Form\StandardSignUp');
   }
