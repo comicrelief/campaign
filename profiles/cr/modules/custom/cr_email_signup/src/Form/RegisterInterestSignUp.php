@@ -27,33 +27,32 @@ class RegisterInterestSignUp extends SignUp {
    * Build the Form Elements.
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $form_state = $form_state;
-    $form['steps']['email'] = [
+    $form['email'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Your email address'),
       '#placeholder' => $this->t('Enter your email address'),
     ];
     // @todo add correct keys?? check with data contract - this seems not yet very well defined
-    $form['steps']['EventInterest'] = [
+    $form['EventInterest'] = [
       '#type' => 'checkbox',
       '#title' => $this->t("Tick this box to sign up to newsletter and kept informed about what we're up to"),
     ];
-    $form['steps']['device'] = [
+    $form['device'] = [
       '#name' => 'device',
       '#type' => 'hidden',
-      '#attributes' => array(
+      '#attributes' => [
         'id' => 'esu-device',
-      ),
+      ],
     ];
-    $form['steps']['source'] = [
+    $form['source'] = [
       '#name' => 'source',
       '#type' => 'hidden',
-      '#attributes' => array(
+      '#attributes' => [
         'id' => 'esu-source',
-      ),
+      ],
     ];
 
-    $form['steps']['step1'] = [
+    $form['step1'] = [
       '#type' => 'button',
       '#name' => 'step1',
       '#value' => $this->t('Go'),

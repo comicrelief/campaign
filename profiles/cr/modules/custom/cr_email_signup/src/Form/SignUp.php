@@ -19,7 +19,7 @@ abstract class SignUp extends FormBase {
    * @var array
    *     Skeleton message to send
    */
-  protected $skeletonMessage = array(
+  protected $skeletonMessage = [
     // TODO: Should this be hardcoded??
     'campaign' => 'RND17',
     'transType' => 'esu',
@@ -27,7 +27,7 @@ abstract class SignUp extends FormBase {
     'transSourceURL' => NULL,
     'transSource' => NULL,
     'email' => NULL,
-  );
+  ];
 
   /**
    * Returns the queue name.
@@ -100,13 +100,12 @@ abstract class SignUp extends FormBase {
    * Build the Form Elements.
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $form_state = $form_state;
-    $form['steps']['email'] = [
+    $form['email'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Your email address'),
       '#placeholder' => $this->t('Enter your email address'),
     ];
-    $form['steps']['school_phase'] = [
+    $form['school_phase'] = [
       '#type' => 'select',
       '#title' => $this->t('Also send me School resources'),
       '#empty_option' => $this->t('-- Select age group --'),
@@ -119,22 +118,22 @@ abstract class SignUp extends FormBase {
         'OH' => 'Other',
       ],
     ];
-    $form['steps']['device'] = [
+    $form['device'] = [
       '#name' => 'device',
       '#type' => 'hidden',
-      '#attributes' => array(
+      '#attributes' => [
         'id' => 'esu-device',
-      ),
+      ],
     ];
-    $form['steps']['source'] = [
+    $form['source'] = [
       '#name' => 'source',
       '#type' => 'hidden',
-      '#attributes' => array(
+      '#attributes' => [
         'id' => 'esu-source',
-      ),
+      ],
     ];
 
-    $form['steps']['step1'] = [
+    $form['step1'] = [
       '#type' => 'button',
       '#name' => 'step1',
       '#value' => $this->t('Go'),
@@ -143,7 +142,7 @@ abstract class SignUp extends FormBase {
         'callback' => [$this, 'processSteps'],
       ],
     ];
-    $form['steps']['step2'] = [
+    $form['step2'] = [
       '#type' => 'button',
       '#name' => 'step2',
       '#value' => $this->t('Go'),
@@ -160,7 +159,6 @@ abstract class SignUp extends FormBase {
    * Custom email validate function.
    */
   public function validateEmail(array &$form, FormStateInterface $form_state) {
-    $form = $form;
     $email_address = $form_state->getValue('email');
 
     return (filter_var($email_address, FILTER_VALIDATE_EMAIL) && strlen($email_address) <= 100) ? TRUE : FALSE;

@@ -27,33 +27,32 @@ class WorkplaceSignUp extends SignUp {
    * Build the Form Elements.
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $form_state = $form_state;
-    $form['steps']['email'] = [
+    $form['email'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Your email address'),
       '#placeholder' => $this->t('Enter your email address'),
     ];
-    $form['steps']['firstName'] = [
+    $form['firstName'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Your first name'),
       '#placeholder' => $this->t('Enter your first name'),
     ];
-    $form['steps']['device'] = [
+    $form['device'] = [
       '#name' => 'device',
       '#type' => 'hidden',
-      '#attributes' => array(
+      '#attributes' => [
         'id' => 'esu-device',
-      ),
+      ],
     ];
-    $form['steps']['source'] = [
+    $form['source'] = [
       '#name' => 'source',
       '#type' => 'hidden',
-      '#attributes' => array(
+      '#attributes' => [
         'id' => 'esu-source',
-      ),
+      ],
     ];
 
-    $form['steps']['step1'] = [
+    $form['step1'] = [
       '#type' => 'button',
       '#name' => 'step1',
       '#value' => $this->t('Go'),
