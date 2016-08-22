@@ -55,11 +55,20 @@ $susy: (
 .cw-region {
   @include container;
 }
-.node--type-page {
-  .node__content {
-    @include span(12);
+
+// move to a component later?!
+.node--type-page,
+.node--type-article {
+  @include breakpoint-gutters;
+  margin: auto;
+  @include breakpoint($screen-md) {
+    max-width: span(10);
+  }
+  @include breakpoint($screen-lg) {
+    max-width: span(8);
   }
 }
+
 header,
 .region-highlighted,
 main {
