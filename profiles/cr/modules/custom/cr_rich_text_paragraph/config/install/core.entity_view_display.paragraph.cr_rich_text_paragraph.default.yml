@@ -53,7 +53,7 @@ content:
     weight: 0
     label: hidden
     settings:
-      responsive_image_style: bg_rich_text
+      responsive_image_style: background_single_message
       image_link: ''
     third_party_settings: {  }
     type: responsive_image
