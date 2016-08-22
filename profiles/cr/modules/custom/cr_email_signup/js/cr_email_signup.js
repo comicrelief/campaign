@@ -3,10 +3,11 @@
   Drupal.behaviors.crEmailSignUp = {
 
    settings : {
+    genericEsuClass: '.block-cr-email-signup',
     formWrapperClass: '.block--cr-email-signup--step-1',
     esuBannerClass: 'block--cr-email-signup--banner',
-    hiddenDeviceFieldID: '#esu-device',
-    hiddenSourceFieldID: '#esu-source',
+    hiddenDeviceFieldClass: '.esu-device',
+    hiddenSourceFieldClass: '.esu-source',
     sourceValue: 'Header',
    },
 
@@ -15,7 +16,7 @@
       var _base = Drupal.behaviors.crEmailSignUp;
       var _settings = _base.settings;
 
-      $(_settings.formWrapperClass).once('crEMailSignup').each( function(){
+      $(_settings.genericEsuClass).once('crEMailSignup').each( function(){
         $(this).addClass("crEMailSignup-processed");
         _base.setDevice(this);
       });
@@ -33,7 +34,7 @@
       _settings.deviceValue = _settings.deviceValue.replace(/\s+/g,"_");
 
       // Use this value to set the hidden device field
-      $(_settings.hiddenDeviceFieldID).val(_settings.deviceValue);
+      $(context).find(_settings.hiddenDeviceFieldClass).val(_settings.deviceValue);
 
       _base.setSource(context);
     },
@@ -49,7 +50,7 @@
       }
 
       // Use this value to set the hidden source field
-      $(_settings.hiddenSourceFieldID).val(_settings.sourceValue);
+      $(_settings.hiddenSourceFieldClass).val(_settings.sourceValue);
     },
   };
 })(jQuery);

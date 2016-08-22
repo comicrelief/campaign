@@ -116,14 +116,14 @@ abstract class SignUp extends FormBase {
       '#name' => 'device',
       '#type' => 'hidden',
       '#attributes' => [
-        'id' => 'esu-device',
+        'class' => 'esu-device',
       ],
     ];
     $form['source'] = [
       '#name' => 'source',
       '#type' => 'hidden',
       '#attributes' => [
-        'id' => 'esu-source',
+        'class' => 'esu-source',
       ],
     ];
     $form['email'] = [
