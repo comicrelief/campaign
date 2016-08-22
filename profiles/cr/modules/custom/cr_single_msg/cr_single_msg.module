@@ -32,3 +32,44 @@ function cr_single_msg_field_single_msg_bg(FieldStorageDefinitionInterface $defi
   ];
   return $values;
 }
+
+/**
+ * Options callback for field_single_msg_body_bg_colour.
+ *
+ * @see options_allowed_values()
+ */
+function cr_single_msg_field_single_msg_body_bg_colour(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
+  $values = [
+    'bg--white' => t('White'),
+    'bg--black' => t('Black'),
+    'bg--red' => t('Red'),
+    'bg--sky-blue' => t('Sky blue'),
+    'bg--yellow' => t('Yellow'),
+    'bg--green' => t('Green'),
+    'bg--teal' => t('Teal'),
+    'bg--royal-blue' => t('Royal blue'),
+    'bg--pink' => t('Pink'),
+    'bg--purple' => t('Purple'),
+    'bg--jasper-grey' => t('Jasper grey'),
+    'bg--gainsboro-grey' => t('Gainsboro grey'),
+    'bg--light-grey' => t('Light grey'),
+    'bg--smoke-grey' => t('Smoke grey'),
+  ];
+  return $values;
+}
+
+/**
+ * Options callback for field_single_msg_layout_variant.
+ *
+ * @see options_allowed_values()
+ */
+function cr_single_msg_field_single_msg_layout_variant(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
+  $values = [
+    'copy-left' => t('Copy Left'),
+    'copy-right' => t('Copy Right'),
+    'feature-copy-left' => t('Feature Copy Left'),
+    'feature-copy-right' => t('Feature Copy Right'),
+    'copy-only' => t('Copy Only'),
+  ];
+  return $values;
+}

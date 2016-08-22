@@ -12,7 +12,7 @@ entity_type: paragraph
 bundle: single_msg
 label: Image
 description: 'NB: Please use 16:9 image for featured rows, and 4:3 images for standard non-featured rows.'
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
