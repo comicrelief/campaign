@@ -100,6 +100,8 @@ abstract class SignUp extends FormBase {
    * Build the Form Elements.
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
+    // Annoy code check!
+    $form_state = $form_state;
 
     $form += $this->esuRequiredFields();
     $form += $this->esuContentFields();
@@ -161,6 +163,9 @@ abstract class SignUp extends FormBase {
    * Custom email validate function.
    */
   public function validateEmail(array &$form, FormStateInterface $form_state) {
+    // Annoy code check!
+    $form = $form;
+
     $email_address = $form_state->getValue('email');
 
     return (filter_var($email_address, FILTER_VALIDATE_EMAIL) && strlen($email_address) <= 100) ? TRUE : FALSE;
