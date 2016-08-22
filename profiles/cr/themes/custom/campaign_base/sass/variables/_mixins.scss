@@ -8,7 +8,7 @@
     width: calc(100% - (4 * #{gutter()}) );
   }
   @include breakpoint($screen-md-max) {
-    max-width: calc($max-width - (1 * #{gutter()}) );
+    max-width: calc(#{$max-width} - (1 * #{gutter()}) );
   }
 }
 

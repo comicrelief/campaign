@@ -1,0 +1,70 @@
+// Background Single Message
+//
+// This is Paragraph Background Single Message type
+//
+// Markup: background-single-msg.hbs
+//
+// .bg--centre - Centre layout
+// .bg--right - Right layout
+//
+// Style guide: Background-single-msg
+
+.background-single-msg {
+  @include clearfix;
+  position: relative;
+  clear: both;
+  margin: 0;
+  min-height: 450px;
+  @extend .bg--black;
+}
+.background-single-msg__inner-wrap {
+  @include breakpoint($screen-md-max, $no-query: true) {
+    @include translateY(-50%);
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    width: 100%;
+    margin: auto;
+  }
+  max-width: 1200px;
+}
+.background-single-msg__image {
+  @include breakpoint($screen-md-max, $no-query: true) {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+      object-position: top;
+    }
+  }
+  img {
+    margin-bottom: -5px;
+  }
+}
+.background-single-msg__body {
+  width: 100%;
+  padding: 30px;
+  @include breakpoint($screen-md) {
+  	padding: 30px calc( 8 * #{gutter()});
+  }
+  @include breakpoint($screen-md-max, $no-query: true) {
+    @include span(5 of 12);
+    padding: 30px;
+  }
+  &.bg--centre {
+    float: none;
+    margin: auto;
+    @include breakpoint($screen-md-max, $no-query: true) {
+      width: span(8);
+    }
+  }
+  &.bg--right {
+    float: right;
+  }
+}
