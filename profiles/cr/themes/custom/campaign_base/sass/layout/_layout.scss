@@ -56,16 +56,20 @@ $susy: (
   @include container;
 }
 
-// move to a component later?!
+// move to a component later?! prob replace gutter mixin with this
 .node--type-page,
 .node--type-article {
-  @include breakpoint-gutters;
+  @include container;
   margin: auto;
+  max-width: $max-width;
+  padding: 0 calc((4 * #{gutter()}));
   @include breakpoint($screen-md) {
-    max-width: span(10);
+    padding: 0 calc((2 * #{gutter()}));
+    width: span(10);
   }
   @include breakpoint($screen-lg) {
-    max-width: span(8);
+    width: span(8);
+    padding: 0 calc((0.5 * #{gutter()}));
   }
 }
 
