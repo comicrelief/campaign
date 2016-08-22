@@ -3,12 +3,15 @@
 // Breakpoint gutters mixin
 
 @mixin breakpoint-gutters {
-  width: calc(100% - (8 * #{gutter()}) );
+  width: 100%;
+  padding: 0 calc(4 * #{gutter()});
   @include breakpoint($screen-md) {
-    width: calc(100% - (4 * #{gutter()}) );
+    width: 100%;
+    padding: 0 calc(2 * #{gutter()});
   }
   @include breakpoint($screen-md-max) {
-    max-width: calc($max-width - (1 * #{gutter()}) );
+    width: 100%;
+    padding: 0 clac(0.5 * #{gutter()});
   }
 }
 
