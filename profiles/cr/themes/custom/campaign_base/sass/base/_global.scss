@@ -37,9 +37,7 @@ picture img {
     }
   }
 }
-.node--type-article {
-  max-width: 640px;
-}
+
 .field--name-body a,
 .btn-red {
   @include transition(all 180ms);
