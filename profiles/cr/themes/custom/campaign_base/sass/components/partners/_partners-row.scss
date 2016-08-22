@@ -27,14 +27,14 @@
       align-content: flex-end;
       flex-flow: row wrap;
       // make this guttering into a mixin
-      margin: 0 calc(100% - (#{gutter()} * 4) );
+      max-width: calc(100% - (#{gutter()} * 4) );
       @include breakpoint($screen-md) {
-        margin: 0 calc(100% - (#{gutter()} * 2));
+        max-width: calc(100% - (#{gutter()} * 2));
       }
       @include breakpoint($screen-md-max) {
         max-width: calc($max-width - (#{gutter()} * 1));
       }
-     //
+      //
       @include breakpoint($screen-md) {
         @include span(6);
         float: none;
