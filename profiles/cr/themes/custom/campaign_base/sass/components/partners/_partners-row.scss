@@ -26,6 +26,7 @@
       justify-content: center;
       align-content: flex-end;
       flex-flow: row wrap;
+      margin: auto;
       // make this guttering into a mixin
       max-width: calc(100% - (#{gutter()} * 4) );
       @include breakpoint($screen-md) {
