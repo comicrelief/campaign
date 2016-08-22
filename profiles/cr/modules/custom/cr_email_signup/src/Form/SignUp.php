@@ -39,7 +39,7 @@ abstract class SignUp extends FormBase {
    * @param array $append_message
    *     Message to append to queue.
    */
-  protected function fillQM($append_message) {
+  protected function fillQMessage($append_message) {
     // Add dynamic keys.
     $append_message['timestamp'] = time();
     $append_message['transSourceURL'] = \Drupal::service('path.current')->getPath();
@@ -58,13 +58,13 @@ abstract class SignUp extends FormBase {
     // Add passed arguments.
     $queue_message = array_merge($this->skeletonMessage, $append_message);
 
-    $this->sendQM($queue_message);
+    $this->sendQMessage($queue_message);
   }
 
   /**
    * Send a message to the queue service.
    */
-  private function sendQM($queue_message) {
+  private function sendQMessage($queue_message) {
     try {
       $queue_factory = \Drupal::service('queue');
       $queue = $queue_factory->get($this->getQueueName());
@@ -179,7 +179,7 @@ abstract class SignUp extends FormBase {
           if ($form_state->getValue('EventInterest')) {
             $data['EventInterest'] = $form_state->getValue('EventInterest');
           }
-          $this->fillQM($data);
+          $this->fillQMessage($data);
           $response->addCommand(new HtmlCommand('.esu-errors', ''));
           $response->addCommand(new InvokeCommand(
             '.block--cr-email-signup',
@@ -214,7 +214,7 @@ abstract class SignUp extends FormBase {
         // Process second step.
         if (!$form_state->isValueEmpty('school_phase') && $this->validateEmail($form, $form_state)) {
           // Send second message to the queue.
-          $this->fillQM([
+          $this->fillQMessage([
             'email' => $form_state->getValue('email'),
             'phase' => $form_state->getValue('school_phase'),
             'device' => $form_state->getValue('device'),
