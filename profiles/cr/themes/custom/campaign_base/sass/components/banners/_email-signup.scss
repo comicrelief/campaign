@@ -364,3 +364,10 @@ select,
     }
   }
 }
+
+// Temporary fix for BE work
+.block-cr-email-signup-block-workplace, 
+.block-cr-email-signup-block-register-interest {
+  float: left;
+  width: 100%;
+}
