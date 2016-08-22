@@ -2,8 +2,6 @@
 
 namespace Drupal\cr_email_signup\Form;
 
-use Drupal\Core\Form\FormStateInterface;
-
 /**
  * Concrete implementation of Step One.
  */

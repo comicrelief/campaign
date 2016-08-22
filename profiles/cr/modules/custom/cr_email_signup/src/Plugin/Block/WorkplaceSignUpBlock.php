@@ -19,7 +19,7 @@ use Drupal\Core\Access\AccessResult;
 class WorkplaceSignUpBlock extends BlockBase implements BlockPluginInterface {
 
   /**
-   * @return array form
+   * Return the form.
    */
   protected function getEsuForm() {
     return \Drupal::formBuilder()->getForm('Drupal\cr_email_signup\Form\WorkplaceSignUp');
