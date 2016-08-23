@@ -1,14 +1,22 @@
 (function($, Drupal) {
+
   $( document ).ready(function() {
     // Turn our boring select boxes into sexy jQuery UI selectboxes
     $('select').selectmenu({ style:'popup', width: '100%' });
+    // Activate lighcase
+    $('a[rel^=lightcase]').lightcase();
+	  
+	  newPosition();
+	  newHeight();
+	  
   });
 
   sSize = $(window).width();
+
       	
   $(window).resize(function() {          
     sSize = $(window).width();
-    if (sSize >= 768 || sSize == 992 || sSize == 1400) {
+    if (/*sSize >= 768 || sSize == 992 ||*/ sSize == 1400) {
       newPosition();
       newHeight();
     }

@@ -26,42 +26,58 @@
 //   )
 // );
 
+// grid variables in _breakpoints.scss
 
-$susy: (
-  columns: 12,
-  container: 1200px,
-  gutters: 30px/70px,
+$susy: (  
+  columns: $columns,
+  container: $max-width,
+  gutters: $gutter/$column,
   global-box-sizing: border-box,
   gutter-position: split,
   output: float,
   last-flow: to,
-  // debug: (
-  //   image: show,
-  //   toggle: top right,
-  //   color: red,
-  // ),
+/*   debug: (
+    image: show,
+    toggle: top right,
+    color: red,
+  ), */
 );
 
 
 @include border-box-sizing;
 
 // layout
-.region-header-inner-wrapper,
+.header__inner-wrapper,
 .region-header-top,
 .node--type-page,
 .kss-section,
-.cards-wrapper,
+.cards__wrapper,
 .cw-region {
   @include container;
 }
-.node--type-page {
-  .node__content {
-    @include span(12);
+
+// move to a component later?! prob replace gutter mixin with this
+.node--type-page,
+.node--type-article {
+  .node__content {  
+    margin: auto;
+    max-width: $max-width;
+    padding: 0 calc((4 * #{gutter()}));
+    @include breakpoint($screen-md) {
+      padding: 0 calc((2 * #{gutter()}));
+      width: span(10);
+    }
+    @include breakpoint($screen-lg) {
+      width: span(8);
+      padding: 0 calc((0.5 * #{gutter()}));
+    }
   }
 }
+
 header,
 .region-highlighted,
-main {
+main,
+.paragraph {
   @include clearfix;
 }
 .block-search {

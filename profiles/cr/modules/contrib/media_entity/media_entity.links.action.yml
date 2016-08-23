@@ -1,0 +1,12 @@
+media.bundle_add:
+  route_name: media.bundle_add
+  title: 'Add media bundle'
+  appears_on:
+    - entity.media_bundle.collection
+
+media.add:
+  route_name: media.add_page
+  title: 'Add media'
+  weight: 10
+  appears_on:
+    - view.media.media_page_list

@@ -8,8 +8,7 @@
 
 .cw-region {
   width: 100%;
-  float: left;
-  margin: 60px auto;
+  margin: #{gutter()} auto;
 }
 .cw-article__body {
   padding: 16px 20px 20px;
@@ -24,9 +23,6 @@
       top: 0;
       right: 15px;
       width: 50%;
-    }
-    &.cw-article__body--no-top {
-      border-top: none;
     }
     &.cw-article__body--hide-show {
       position: absolute;
@@ -63,7 +59,7 @@
   margin: 0 0 10px;
 
   @include breakpoint(769px) {
-    height: 255px;
+    height: 172px;
     margin: 15px 0;
     .cw-article__image {
       // for img to fill area when not set by js
@@ -82,7 +78,6 @@
     }
     &:hover .cw-article__body--hide-show {
       top: 0!important;
-      border-top: none;
       p,
       a {
         @include opacity(1);
@@ -98,7 +93,7 @@
     height: 345px;
     .cw-article__image {
       // for img to fill area when not set by js
-      height: 345px;
+      height: 280px;
     }
     .cw-article__body--hide-show {
       top: 245px;
@@ -111,7 +106,7 @@
     height: 440px;
     .cw-article__image {
       // for img to fill area when not set by js
-      height: 440px;
+      height: 375px;
     }
     .cw-article__body--hide-show {
       top: 325px;
@@ -146,6 +141,9 @@
   img {
     width: 100%;
     height: auto;
+  }
+  .cw-article--large & {
+    height: auto!important;
   }
   @include breakpoint(769px) {
     position: relative;
@@ -187,25 +185,24 @@
   .cw-article__image {
     height: auto!important;
   }
-  .media-video__content {
-    .cw-article__image {
-      height: 100%!important;
-      .field--type-image {
-        height: 100%;
-        .field__items {
-          height: 100%;
-          .field__item {
-            height: 100%;
-            img {
-              display: block;
-              width: 100%;
-              height: 100%;
+}
+.cw-article__body {
+  padding: 16px 20px 20px;
+  background: $colour-white;
 
-              object-fit: cover;
-            }
-          }
-        }
-      }
+  @include breakpoint($screen-md) {
+    height: 100%;
+    padding: 15px;
+    &.cw-article__body--over {
+      position: absolute;
+      top: 0;
+      right: 15px;
+      width: 50%;
+      padding: 20px;
+    }
+    &.cw-article__body--hide-show {
+      position: absolute;
+      top: 165px;
     }
   }
 }
@@ -223,7 +220,7 @@
 }
 .cw-article__link {
   a {
-    border-bottom: 2px solid $red;
+    border-bottom: 2px solid $colour-red;
     color: #000;
     text-decoration: none;
     &:hover {

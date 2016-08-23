@@ -150,12 +150,16 @@ class SettingsForm extends ConfigFormBase {
       '#default_value' => $config->get('expiry'),
     ];
     $form['target'] = [
-      '#type' => 'textfield',
+      '#type' => 'select',
+      '#options' => [
+        '_blank' => t('_blank (a new window or tab)'),
+        '_self' => t('_self (the same frame as it was clicked)'),
+        '_parent' => t('_parent (the parent frame)'),
+        '_top' => t('_top (the full body of the window)'),
+      ],
       '#title' => $this->t('Target'),
-      '#description' => $this->t('The <em>target</em> of the link to your cookie policy. Use to open a link in a new window, or specific frame, if you wish.'),
-      '#maxlength' => 255,
-      '#size' => 64,
-      '#default_value' => $config->get('target'),
+      '#description' => $this->t('The <em>target</em> of the link to your cookie policy. Use to open a link in a new window, if you wish.'),
+      '#default_value' => !empty($config->get('target')) ? $config->get('target') : '_self',
     ];
     return parent::buildForm($form, $form_state);
   }

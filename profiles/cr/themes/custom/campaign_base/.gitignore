@@ -1,9 +1,9 @@
 # Minified and Concat JS #
-js/
+/js
 
 # Compiled CSS and CSS MAP #
-css/*.css
-css/*.css.map
+/css/*.css
+/css/*.css.map
 
 # Style guide #
-styleguide/
+/styleguide
