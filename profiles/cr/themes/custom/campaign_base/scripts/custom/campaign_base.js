@@ -8,7 +8,7 @@
 	  
 	  newPosition();
 	  newHeight();
-	  
+
   });
 
   sSize = $(window).width();
@@ -16,12 +16,9 @@
       	
   $(window).resize(function() {          
     sSize = $(window).width();
-    if (/*sSize >= 768 || sSize == 992 ||*/ sSize == 1400) {
+    if (sSize >= 740 || sSize == 1024) {
       newPosition();
       newHeight();
-    }
-    if (sSize >= 1400) {
-      $('.media-video').closest('.cw-article').addClass('cw-article-media-video');
     }
   });
 
@@ -39,9 +36,9 @@
       var aHeight = $(this).height();
       var hHeight = $(this).find('.cw-article__title').height();
       var topPos = aHeight - hHeight;
-      if (topPos > 167 && sSize < 992) {
-        $(this).css('top','167px');
-      } else if (topPos > 229 && sSize < 1400) {
+      if (topPos > 245 && sSize < 1024) {
+        $(this).css('top','245px');
+      } else if (topPos > 229 && sSize < 1024) {
         $(this).css('top','229px');
       } else if (topPos > 335) {
         $(this).css('top','335px');
