@@ -4,7 +4,6 @@
 
    settings : {
     genericEsuClass: '.block-cr-email-signup',
-    formWrapperClass: '.block--cr-email-signup--step-1',
     esuBannerClass: 'block--cr-email-signup--banner',
     hiddenDeviceFieldClass: '.esu-device',
     hiddenSourceFieldClass: '.esu-source',

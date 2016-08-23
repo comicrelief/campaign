@@ -173,6 +173,41 @@ select,
       border: 2px solid red;
     }
   }
+
+  &.block--cr-email-signup--workplace {
+    background-color: $colour-red;
+
+    .cr-email-signup--messages {
+      text-align: center;
+      @include span(12);
+      height: auto;
+
+      // Heading
+      h3 {
+        color: $colour-yellow;
+      }
+
+      // Copy
+      .esu-initial-message {
+        position: relative;
+        color: $colour-white;
+        @extend p;
+      }
+    }
+
+    .block--cr-email-signup__inner-wrapper {
+      &:after {
+        content: none;
+      }
+
+      #cr-email-signup-workplace-form {
+        @include span(12);
+        * {
+          @include span(12);
+        }
+      }
+    }
+  }
 }
 
 
@@ -365,9 +400,24 @@ select,
   }
 }
 
+
+
+
 // Temporary fix for BE work
 .block-cr-email-signup-block-workplace, 
 .block-cr-email-signup-block-register-interest {
   float: left;
   width: 100%;
+}
+
+
+.esu-uuid,
+.esu-region,
+.esu-context-mapping {
+  display: none;
+}
+
+/* REMOVE THIS!! */
+.promo-header {
+  display: none;
 }
