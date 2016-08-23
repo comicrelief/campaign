@@ -8,7 +8,6 @@ dependencies:
     - field.field.node.article.field_article_meta_tags
     - field.field.node.article.field_article_publish_date
     - field.field.node.article.field_article_tags
-    - field.field.node.article.field_youtube_url
     - field.field.node.article.publishing_date
     - image.style.medium
     - node.type.article
@@ -18,7 +17,6 @@ dependencies:
     - metatag
     - path
     - text
-    - youtube
 id: node.article.default
 targetEntityType: node
 bundle: article
@@ -63,11 +61,6 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
-    third_party_settings: {  }
-  field_youtube_url:
-    type: youtube
-    weight: 3
-    settings: {  }
     third_party_settings: {  }
   path:
     type: path
