@@ -37,7 +37,7 @@ class WorkplaceSignUpBlock extends BlockBase implements BlockPluginInterface {
     foreach ($messages as $keymsg => $valuemsg) {
       $classname = 'esu-' . str_replace('_', '-', $keymsg);
       $form[$keymsg] = [
-        '#markup' => "<div class='$classname'>" . $valuemsg . "</div>",
+        '#markup' => "<div class='$classname'><p>" . $valuemsg . "</p></div>",
       ];
     }
 
@@ -83,5 +83,4 @@ class WorkplaceSignUpBlock extends BlockBase implements BlockPluginInterface {
     $this->setConfigurationValue('initial_message', $form_state->getValue('cr_email_signup_initial_message'));
     $this->setConfigurationValue('first_success_message', $form_state->getValue('cr_email_signup_first_success_message'));
   }
-
 }

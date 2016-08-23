@@ -26,13 +26,9 @@ select,
   width: 100%;
   background: #fafafa; // change for variable
 
-
-  .esu-errors.messages.messages--error {
-    display: none;
-  }
-
+  .esu-errors.messages.messages--error,
   .ajax-progress {
-      display: none;
+    display: none;
   }
 
   .block--cr-email-signup__inner-wrapper {
@@ -43,6 +39,7 @@ select,
     margin-bottom: 35px;
     padding-top: 50px;
   }
+
   .form-item {
     margin: 0;
   }
@@ -87,9 +84,10 @@ select,
     }
   }
   /*  Step 1 */
-  .form-item-email {
+  .form-item-email,
+  .form-item-firstname {
     label {
-      position: absolute !important;
+      position: absolute;
       overflow: hidden;
       clip: rect(1px 1px 1px 1px);
       clip: rect(1px,1px,1px,1px);
@@ -100,12 +98,13 @@ select,
       height: 50px;
       margin-right: 0;
       padding: 15px 0 15px 10px;
-      border: 1px solid #5f5c59;
-      border-right: none;
-      @include border-radius(0);
+      //border: 1px solid #5f5c59;
+      //border-right: none;
+      //@include border-radius(0);
+      border: 0;
 
       &:focus {
-        border: 2px solid #5f5c59;
+        border: 1px solid #5f5c59;
         border-right: none;
       }
     }
@@ -127,7 +126,6 @@ select,
         height: 50px;
         margin-right: 0;
         padding: 15px 0 15px 10px;
-        //-webkit-appearance: menulist-button;
       }
       .ui-selectmenu-button span.ui-selectmenu-text {
         padding: 0 10px;
@@ -137,6 +135,7 @@ select,
       margin-top: 21px;
     }
   }
+
   /* ESU icon */
   .block--cr-email-signup__inner-wrapper:after {
     position: absolute;
@@ -174,24 +173,29 @@ select,
     }
   }
 
+
+  /* Workplace ESU */
   &.block--cr-email-signup--workplace {
     background-color: $colour-red;
-
     .cr-email-signup--messages {
       text-align: center;
-      @include span(12);
+      @include span(10);
+      @include push(1);
       height: auto;
 
-      // Heading
       h3 {
         color: $colour-yellow;
       }
 
-      // Copy
-      .esu-initial-message {
+      .esu-initial-message,
+      .esu-first-success-message {
         position: relative;
+        @include translateY(0);
         color: $colour-white;
-        @extend p;
+        @include span(12);
+      }
+      .esu-first-success-message p {
+        @extend h4;
       }
     }
 
@@ -201,8 +205,26 @@ select,
       }
 
       #cr-email-signup-workplace-form {
+        margin-top: 20px;
         @include span(12);
-        * {
+
+        .form-item-firstname,
+        .form-item-email {
+          @include span(12);
+          position: relative;
+          margin-top: 30px;
+          label {
+            position:absolute;
+            top: -20px;
+            clip: auto;
+            height: auto;
+            color: $colour-white;
+          }
+        }
+
+        .form-submit {
+          margin-top: 30px;
+          @extend .btn--yellow;
           @include span(12);
         }
       }
@@ -211,11 +233,14 @@ select,
 }
 
 
+
+
+
 /* Medium breakpoint */
 @include breakpoint($screen-md) {
   .block--cr-email-signup {
     .block--cr-email-signup__inner-wrapper {
-      padding: 20px 0;
+      padding: 45px 0;
     }
     .cr-email-signup--messages {
       @include span(4 wide);
@@ -311,6 +336,47 @@ select,
         margin-bottom: 0;
       }
     }
+      /* Workplace ESU */
+  &.block--cr-email-signup--workplace {
+    .cr-email-signup--messages {
+      @include span(10);
+      @include push(1);
+
+      // Copy
+      .esu-initial-message {
+        @include span(8);
+        @include push(2);
+      }
+    }
+
+    .block--cr-email-signup__inner-wrapper {
+      #cr-email-signup-workplace-form {
+        //margin-top: 20px;
+        //padding-top:20px;
+        //position: relative;
+        //@include span(10);
+        //@include push(1);
+
+        .form-item-firstname,
+        .form-item-email {
+          //@include span(5);
+          label {
+            //position:absolute;
+            //top: 0;
+            //clip: auto;
+            //height: auto;
+            //color: $colour-white;
+          }
+        }
+
+        // Button
+        .form-submit {
+          //@extend .btn--yellow;
+          //@include span(2);
+        }
+      }
+    }
+  }
   }
 }
 
@@ -358,6 +424,39 @@ select,
         margin-bottom: 0;
       }
     }
+      /* Workplace ESU */
+  &.block--cr-email-signup--workplace {
+    .cr-email-signup--messages {
+      @include span(10);
+      @include push(1);
+
+      .esu-initial-message {
+        @include span(8);
+        @include push(2);
+      }
+    }
+
+    .block--cr-email-signup__inner-wrapper {
+      #cr-email-signup-workplace-form {
+        @include span(10);
+        @include push(1);
+
+        .form-item-firstname,
+        .form-item-email {
+          @include span(5);
+          label {
+
+          }
+        }
+
+        // Button
+        .form-submit {
+          //@extend .btn--yellow;
+          @include span(2);
+        }
+      }
+    }
+  }
   }
 }
 
@@ -377,7 +476,8 @@ select,
   &.block--cr-email-signup--step-2 {
     .form-item-email,
     .button.step1,
-    .esu-initial-message {
+    .esu-initial-message,
+    .form-item-firstname {
       display: none;
     }
     .button.step2,
