@@ -1,0 +1,18 @@
+{% set bg_colour = field_cr_cards_background['#items'][0].value %}
+{% set layoutClass = field_cr_cards_feature_layout['#items'].value ? 'cards--feature-layout' : '' %}
+{% set title_hidden = field_cr_cards_title_hidden['#items'][0].value ? 'visuallyhidden' : '' %}
+{%
+set classes = [
+'content_wall',
+'paragraph',
+layoutClass,
+bg_colour,
+]
+%}
+
+<section{{ attributes.addClass(classes) }}>
+	<h2 class="content-wall__title">{{ field_cw_title }}</h2>
+	<div class="clearfix cw-region">
+		{{ field_cw_row_reference }}
+	</div>
+</section>
