@@ -6,6 +6,14 @@
 //
 // Style guide: Components.Content-wall
 
+.content-wall {
+  float: left;
+  width: 100%;
+  padding: 60px 0;
+}
+.content-wall__title {
+  text-align: center;
+}
 .cw-region {
   width: 100%;
   margin: #{gutter()} auto;
@@ -14,7 +22,7 @@
   padding: 16px 20px 20px;
   background: white;
 
-  @include breakpoint(769px) {
+  @include breakpoint($screen-md) {
     height: 100%;
     padding: 15px;
     &.cw-article__body--over {
@@ -36,29 +44,25 @@
       }
     }
   }
-  @include breakpoint(992px) {
-    padding: 20px 15px;
-  }
-  p {
-    font-size: 14px;
-    line-height: 19px;
+  // p {
+  //   font-size: 14px;
+  //   line-height: 19px;
 
-    @include breakpoint(769px) {
-      font-size: 12px;
-      line-height: 16px;
-    }
-    @include breakpoint(992px) {
-      font-size: 16px;
-      line-height: 21px;
-    }
-  }
+  //   @include breakpoint(769px) {
+  //     font-size: 12px;
+  //     line-height: 16px;
+  //   }
+  //   @include breakpoint(992px) {
+  //     font-size: 16px;
+  //     line-height: 21px;
+  //   }
+  // }
 }
 .cw-article {
   position: relative;
   overflow: hidden;
-  margin: 0 0 10px;
 
-  @include breakpoint(769px) {
+  @include breakpoint($screen-md) {
     height: 172px;
     margin: 15px 0;
     .cw-article__image {
@@ -68,13 +72,9 @@
     .cw-article__image--fifty {
       width: 50%;
     }
-    .field__item {
-      position: absolute;
-      height: 100%; // we need to remove drupal default output . use ds extras
-      .no-flexboxlegacy & {
-        position: static; // IE fix
-        max-width: 100%;
-      }
+    .no-flexboxlegacy & {
+      position: static; // IE fix
+      max-width: 100%;
     }
     &:hover .cw-article__body--hide-show {
       top: 0!important;
@@ -89,7 +89,7 @@
       }
     }
   }
-  @include breakpoint(992px) {
+  @include breakpoint($screen-md) {
     height: 345px;
     .cw-article__image {
       // for img to fill area when not set by js
@@ -102,7 +102,7 @@
       height: 345px;
     }
   }
-  @include breakpoint(1400px) {
+  @include breakpoint($screen-lg) {
     height: 440px;
     .cw-article__image {
       // for img to fill area when not set by js
@@ -141,13 +141,15 @@
   img {
     width: 100%;
     height: auto;
+    margin-bottom: -5px;
   }
   .cw-article--large & {
     height: auto!important;
   }
-  @include breakpoint(769px) {
+  @include breakpoint($screen-md) {
     position: relative;
     overflow: hidden;
+    margin-bottom: 0;
     img {
       display: block;
       width: 100%;
@@ -180,8 +182,11 @@
     }
   }
 }
-@include breakpoint(max-width 767px) {
+@include breakpoint(max-width 739px) {
   // remove height from desktop to mobile resize
+  .cw-article {
+    padding: 0 calc(4 * #{gutter()}) calc(4 * #{gutter()});
+  }
   .cw-article__image {
     height: auto!important;
   }
@@ -206,18 +211,18 @@
     }
   }
 }
-.cw-article__title {
-  padding-bottom: 12px;
-  margin: 0;
-  font-size: 24px;
-  line-height: 27px;
+// .cw-article__title {
+//   padding-bottom: 12px;
+//   margin: 0;
+//   font-size: 24px;
+//   line-height: 27px;
 
-  @include breakpoint(992px) {
-    padding-bottom: 25px;
-    font-size: 34px;
-    line-height: 36px;
-  }
-}
+//   @include breakpoint(992px) {
+//     padding-bottom: 25px;
+//     font-size: 34px;
+//     line-height: 36px;
+//   }
+// }
 .cw-article__link {
   a {
     border-bottom: 2px solid $colour-red;
