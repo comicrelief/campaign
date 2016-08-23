@@ -39,7 +39,6 @@
 .cw-region {
   article.cw-article--small {
     width: 100%;
-    margin: 20px 0;
     @include breakpoint($screen-md, $no-query: true) {
       @include span(4);
       margin: gutter();
@@ -49,7 +48,6 @@
 .cw-region {
   article.cw-article--medium {
     width: 100%;
-    margin: 20px 0;
     @include breakpoint($screen-md, $no-query: true) {
       @include span(6);
       margin: gutter();
