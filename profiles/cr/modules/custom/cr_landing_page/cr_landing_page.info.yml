@@ -12,20 +12,22 @@ config_devel:
   - core.entity_view_display.node.landing.default
   - core.entity_view_display.node.landing.full
   - core.entity_view_display.node.landing.landing_page_header
+  - core.entity_view_display.node.landing.search_index
   - core.entity_view_mode.node.landing_page_header
-  - field.storage.node.field_landing_image_mobile
-  - field.storage.node.field_landing_background_colour
-  - field.storage.node.field_landing_copy_position_alig
-  - field.storage.node.field_landing_image
-  - field.storage.node.field_landing_meta_tags
-  - field.storage.node.panelizer
   - field.field.node.landing.body
-  - field.field.node.landing.field_svg_body_title
   - field.field.node.landing.field_landing_background_colour
   - field.field.node.landing.field_landing_copy_position_alig
+  - field.field.node.landing.field_landing_feature_layout
   - field.field.node.landing.field_landing_image
   - field.field.node.landing.field_landing_image_mobile
-  - field.field.node.landing.field_paragraphs
-  - field.field.node.landing.panelizer
   - field.field.node.landing.field_landing_meta_tags
+  - field.field.node.landing.field_paragraphs
+  - field.field.node.landing.field_svg_body_title
+  - field.field.node.landing.panelizer
+  - field.storage.node.field_landing_background_colour
+  - field.storage.node.field_landing_copy_position_alig
+  - field.storage.node.field_landing_feature_layout
+  - field.storage.node.field_landing_image
+  - field.storage.node.field_landing_image_mobile
+  - field.storage.node.field_landing_meta_tags
   - pathauto.pattern.landing_page

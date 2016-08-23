@@ -108,7 +108,6 @@ mysql:
   encoding: utf8
 
 before_install:
-  - echo "always_populate_raw_post_data=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - rvm install 2.1.5
   - composer global config minimum-stability beta
   - composer global require phing/phing lionsad/drupal_ti:1.4.4

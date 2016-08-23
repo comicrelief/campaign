@@ -26,7 +26,6 @@ visibility:
   node_type:
     id: node_type
     bundles:
-      landing: landing
       page: page
     negate: false
     context_mapping:
