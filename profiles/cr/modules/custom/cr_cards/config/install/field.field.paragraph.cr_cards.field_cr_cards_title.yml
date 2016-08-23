@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cr_cards_title
+    - paragraphs.paragraphs_type.cr_cards
+id: paragraph.cr_cards.field_cr_cards_title
+field_name: field_cr_cards_title
+entity_type: paragraph
+bundle: cr_cards
+label: 'Cards row title'
+description: 'Please enter title to your cards row'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

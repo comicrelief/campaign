@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: small_768x450_2x
+label: 'Small 768x450 2x'
+effects:
+  64f0651c-c555-47a7-a17b-d3033a530cbf:
+    uuid: 64f0651c-c555-47a7-a17b-d3033a530cbf
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: '1536'
+      height: '900'
