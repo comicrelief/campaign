@@ -21,6 +21,8 @@
 // <p><br/>$colour-pink: #f38a99;</p>
 // <div style="background-color: #222; height: 60px; width: 60px;"></div>
 // <p><br/>$colour-black: #222;</p>
+// <div style="background-color: #061d38; height: 60px; width: 60px;"></div>
+// <p><br/>$colour-dark-blue #061d38;</p>
 // <div style="background-color: #666; height: 60px; width: 60px;"></div>
 // <p><br/>$colour-jasper-grey: #666;</p>
 // <div style="background-color: #c7c7c7; height: 60px; width: 60px;"></div>
@@ -94,6 +96,7 @@ $colorList: (
   ("purple" $colour-purple),
   ("pink" $colour-pink),
   ("black" $colour-black),
+  ("dark-blue" $colour-dark-blue),
   ("white" $colour-white),
   ("jasper-grey" $colour-jasper-grey),
   ("gainsboro-grey" $colour-gainsboro-grey),
