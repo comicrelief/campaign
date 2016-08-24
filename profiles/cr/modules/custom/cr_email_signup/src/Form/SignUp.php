@@ -6,6 +6,7 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\HtmlCommand;
+use Drupal\Core\Ajax\PrependCommand;
 use Drupal\Core\Ajax\InvokeCommand;
 
 /**
@@ -17,7 +18,7 @@ abstract class SignUp extends FormBase {
     'MAIL' => 'error--email',
     'NAME' => 'error--firstname',
     'AGEGROUP' => 'error--agegroup',
-    'ESU' => 'block--cr-email-signup--error'
+    'ESU' => 'block--cr-email-signup--error',
   ];
   /**
    * Array to send to queue. Some key values should be sourced from config.
@@ -169,6 +170,7 @@ abstract class SignUp extends FormBase {
     $email = $form_state->getValue('email');
     $valid_email = \Drupal::service('email.validator')->isValid($email);
 
+    $this->cleanStatusMessage($response);
     if (!$valid_email) {
       $this->setErrorMessage(
         $response,
@@ -177,7 +179,6 @@ abstract class SignUp extends FormBase {
       );
       $pass = FALSE;
     }
-
     if ($exist_field_name && $name_is_empty) {
       $this->setErrorMessage(
         $response,
@@ -245,10 +246,17 @@ abstract class SignUp extends FormBase {
   }
 
   /**
+   * Clean the message
+   */
+  private function cleanStatusMessage(AjaxResponse $response) {
+    $response->addCommand(new HtmlCommand('.esu-errors', ''));
+  }
+
+  /**
    * Go to the next step of the multiform.
    */
   private function nextStep(AjaxResponse $response, int $step) {
-    $response->addCommand(new HtmlCommand('.esu-errors', ''));
+    $this->cleanStatusMessage($response);
     foreach (self::$ERRORS as $classname) {
       $response->addCommand(new InvokeCommand(
         $this->getClassId(),
@@ -273,7 +281,7 @@ abstract class SignUp extends FormBase {
    */
   private function setErrorMessage(AjaxResponse $response, $class, $message) {
     // Error if validation isnt met.
-    $response->addCommand(new HtmlCommand(
+    $response->addCommand(new PrependCommand(
       '.esu-errors', $message
     ));
     $response->addCommand(new InvokeCommand(
