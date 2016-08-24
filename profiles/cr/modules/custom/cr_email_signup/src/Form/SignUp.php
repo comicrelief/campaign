@@ -195,6 +195,8 @@ abstract class SignUp extends FormBase {
    * Process form steps.
    */
   public function processSteps(array &$form, FormStateInterface $form_state) {
+    // Annoy code check!
+    $form = $form;
     $triggering_element = $form_state->getTriggeringElement();
     $response = new AjaxResponse();
     switch ($triggering_element['#name']) {
