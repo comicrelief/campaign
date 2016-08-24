@@ -7,6 +7,8 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\HtmlCommand;
 use Drupal\Core\Ajax\InvokeCommand;
+use Drupal\Core\Render\Element\Email;
+use Egulias\EmailValidator\EmailValidator;
 
 /**
  * Concrete implementation of Step One.
@@ -144,15 +146,36 @@ abstract class SignUp extends FormBase {
   }
 
   /**
-   * Custom email validate function.
+   * Return class of the form.
    */
-  public function validateEmail(array &$form, FormStateInterface $form_state) {
-    // Annoy code check!
-    $form = $form;
+  private function getClassId() {
+    return '.' . str_replace('_', '-', $this->getFormId());
+  }
 
-    $email_address = $form_state->getValue('email');
+  /**
+   * Validates all fields.
+   */
+  private function validateFields(
+    FormStateInterface $form_state,
+    AjaxResponse $response
+  ) {
+    $pass = TRUE;
+    $exist_field_name = $form_state->hasValue('firstName');
+    $name_is_empty = $form_state->isValueEmpty('firstName');
+    $email = $form_state->getValue('email');
+    $valid_email =  \Drupal::service('email.validator')->isValid($email);
 
-    return (filter_var($email_address, FILTER_VALIDATE_EMAIL) && strlen($email_address) <= 100) ? TRUE : FALSE;
+    if (!$valid_email) {
+      $this->setErrorMessage($response, 'Please enter a valid email address.');
+      $pass = FALSE;
+    }
+
+    if ($exist_field_name && $name_is_empty) {
+      $this->setErrorMessage($response, 'Please enter your name.');
+      $pass = FALSE;
+    }
+
+    return $pass;
   }
 
   /**
@@ -163,9 +186,7 @@ abstract class SignUp extends FormBase {
     $response = new AjaxResponse();
     switch ($triggering_element['#name']) {
       case 'step1':
-        // Process first step.
-        if ($this->validateEmail($form, $form_state)) {
-          // Send first message to queue.
+        if ($this->validateFields($form_state, $response)) {
           // @TODO: Refactor this!
           $data = [
             'email' => $form_state->getValue('email'),
@@ -182,15 +203,12 @@ abstract class SignUp extends FormBase {
           $this->fillQmessage($data);
           $this->nextStep($response, 1);
         }
-        else {
-          $this->setErrorMessage($response, 'Please enter a valid email address.');
-        }
         break;
 
       case 'step2':
-        // Process second step.
-        if (!$form_state->isValueEmpty('school_phase') && $this->validateEmail($form, $form_state)) {
-          // Send second message to the queue.
+        $email = $form_state->getValue('email');
+        $valid_email =  \Drupal::service('email.validator')->isValid($email);
+        if (!$form_state->isValueEmpty('school_phase') && $valid_email) {
           $this->fillQmessage([
             'email' => $form_state->getValue('email'),
             'phase' => $form_state->getValue('school_phase'),
@@ -209,9 +227,8 @@ abstract class SignUp extends FormBase {
     // Return ajax response.
     return $response;
   }
-  private function getClassId() {
-    return '.' . str_replace('_', '-', $this->getFormId());
-  }
+
+
 
   /**
    * Go to the next step of the multiform.
