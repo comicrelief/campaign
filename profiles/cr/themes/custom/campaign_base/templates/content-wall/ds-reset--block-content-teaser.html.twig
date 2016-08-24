@@ -1,15 +1,19 @@
+{% set link_colour = field_teaser_link_colour['#items'][0].value %}
+{% set link_target = field_cw_link_target['#items'][0].value ? '_black' : '_self' %}
+{% set youtube_link = field_teaser_you_tube_link['#items'][0].value ? 'lightcase' : '' %}
+
 <article{{ attributes.addClass('cw-article', 'clearfix') }}>
   {{ title_suffix.contextual_links }} 
     <div class="cw-article__image">
-      <a href="{{ field_teaser_link['#items'].uri }}">
+      <a class="{{ youtube_link }}" href="{{ field_teaser_link['#items'].uri }}" target="{{ link_target }}">
         {{ field_teaser_image }}
       </a>
     </div>
-    <div class="cw-article__body cw-article__body--hide-show">
+    <div class="cw-article__body bg--white cw-article__body--hide-show">
       <h3 class="cw-article__title">{{ field_teaser_title }}</h3>
       {{ body }}
       <div class="cw-article__link">
-        {{ field_teaser_link }}
+        <a rel="{{ youtube_link }}" class="link link_colour" href="{{ field_teaser_link['#items'].uri }}" target="{{ link_target }}">{{ field_teaser_link['#items'].title }}</a>
       </div>
     </div> 
 </article>
