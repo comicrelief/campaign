@@ -246,7 +246,7 @@ abstract class SignUp extends FormBase {
   }
 
   /**
-   * Clean the message
+   * Clean the message.
    */
   private function cleanStatusMessage(AjaxResponse $response) {
     $response->addCommand(new HtmlCommand('.esu-errors', ''));

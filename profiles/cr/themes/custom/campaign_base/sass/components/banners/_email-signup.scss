@@ -20,7 +20,7 @@ select,
   @include opacity(0.2);
 }
 
-/* General styles */
+/* General ESU styles */
 .block--cr-email-signup {
   float: left;
   width: 100%;
@@ -85,7 +85,6 @@ select,
     }
   }
 
-  /*  Step 1 */
   .form-item-email,
   .form-item-firstname {
     label {
@@ -109,32 +108,29 @@ select,
     }
   }
 
-  /*  Step 2 */
-  //&.block--cr-email-signup--step-2 {
-    .form-item-school-phase {
-      label {
-        width: 100%;
-        margin-bottom: 20px;
-        font-size: 14px;
-        line-height: 21px;
-        white-space: nowrap;
-      }
-      select,
-      .ui-selectmenu-button {
-        width: 100%;
-        height: 50px;
-        margin-right: 0;
-        padding: 15px 0 15px 10px;
-      }
-      .ui-selectmenu-button span.ui-selectmenu-text {
-        padding: 0 10px;
-      }
+  .form-item-school-phase {
+    label {
+      width: 100%;
+      margin-bottom: 20px;
+      font-size: 14px;
+      line-height: 21px;
+      white-space: nowrap;
     }
-     .button.form-submit {
-      margin-top: 21px;
+    select,
+    .ui-selectmenu-button {
+      width: 100%;
+      height: 50px;
+      margin-right: 0;
+      padding: 15px 0 15px 10px;
     }
-  //}
-
+    .ui-selectmenu-button span.ui-selectmenu-text {
+      padding: 0 10px;
+    }
+  }
+   .button.form-submit {
+    margin-top: 21px;
+  }
+  
 
   /* ESU icon */
   .block--cr-email-signup__inner-wrapper:after {
@@ -157,6 +153,7 @@ select,
       background: sprite($icons, green-tick) no-repeat;
     }
   }
+
   // Error state
   &.block--cr-email-signup--error {
     position: relative;
@@ -181,7 +178,6 @@ select,
 
     /* Errors */
     &.block--cr-email-signup--error {
-
       .esu-errors.messages.messages--error {
         @include span(12);
       }
@@ -189,7 +185,7 @@ select,
       // Placeholder styles to make visible over RED background!
       &.error--firstname .form-item-firstname .form-text,
       &.error--email .form-item-email .form-text {
-        border: 3px solid yellow;
+        border: 3px solid blue;
       }
     }
   
@@ -243,14 +239,13 @@ select,
           @extend .btn;
           @extend .btn--yellow;
           padding: 12px 20px !important;
-          margin: 30px 0 0 !important;
+          margin-top: 20px !important;
           @include span(12);
         }
       }
     }
   }
 }
-
 
 
 /* Medium breakpoint */
@@ -445,6 +440,7 @@ select,
 
           .form-submit {
             @include span(2);
+            margin-top: 30px !important;
           }
         }
       }
@@ -499,8 +495,6 @@ select,
 
 
 /* REMOVE ALL THIS !! */
-
-// Temporary fix for BE work
 .block-cr-email-signup-block-workplace, 
 .block-cr-email-signup-block-register-interest {
   float: left;
