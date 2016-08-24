@@ -37,6 +37,9 @@ class WorkplaceSignUp extends SignUp {
     return $form;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   protected function esuRequiredFields() {
     $form['device'] = [
       '#name' => 'device',
@@ -64,5 +67,5 @@ class WorkplaceSignUp extends SignUp {
     ];
     return $form;
   }
-  
+
 }

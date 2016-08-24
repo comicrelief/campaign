@@ -13,6 +13,12 @@ use Drupal\Core\Ajax\InvokeCommand;
  */
 abstract class SignUp extends FormBase {
 
+  public static $ERRORS = [
+    'MAIL' => 'error--email',
+    'NAME' => 'error--firstname',
+    'AGEGROUP' => 'error--agegroup',
+    'ESU' => 'block--cr-email-signup--error'
+  ];
   /**
    * Array to send to queue. Some key values should be sourced from config.
    *
@@ -161,12 +167,12 @@ abstract class SignUp extends FormBase {
     $exist_field_name = $form_state->hasValue('firstName');
     $name_is_empty = $form_state->isValueEmpty('firstName');
     $email = $form_state->getValue('email');
-    $valid_email =  \Drupal::service('email.validator')->isValid($email);
+    $valid_email = \Drupal::service('email.validator')->isValid($email);
 
     if (!$valid_email) {
       $this->setErrorMessage(
         $response,
-        'error--email',
+        self::$ERRORS['MAIL'],
         'Please enter a valid email address.'
       );
       $pass = FALSE;
@@ -175,7 +181,7 @@ abstract class SignUp extends FormBase {
     if ($exist_field_name && $name_is_empty) {
       $this->setErrorMessage(
         $response,
-        'error--firstname',
+        self::$ERRORS['NAME'],
         'Please enter your name.'
       );
       $pass = FALSE;
@@ -213,7 +219,7 @@ abstract class SignUp extends FormBase {
 
       case 'step2':
         $email = $form_state->getValue('email');
-        $valid_email =  \Drupal::service('email.validator')->isValid($email);
+        $valid_email = \Drupal::service('email.validator')->isValid($email);
         if (!$form_state->isValueEmpty('school_phase') && $valid_email) {
           $this->fillQmessage([
             'email' => $form_state->getValue('email'),
@@ -228,7 +234,7 @@ abstract class SignUp extends FormBase {
         else {
           $this->setErrorMessage(
             $response,
-            'error--agegroup',
+            self::$ERRORS['AGEGROUP'],
             'Please select an age group.'
           );
         }
@@ -241,13 +247,15 @@ abstract class SignUp extends FormBase {
   /**
    * Go to the next step of the multiform.
    */
-  private function nextStep(AjaxResponse $response, $step) {
+  private function nextStep(AjaxResponse $response, int $step) {
     $response->addCommand(new HtmlCommand('.esu-errors', ''));
-    $response->addCommand(new InvokeCommand(
-      $this->getClassId(),
-      'removeClass',
-      ['block--cr-email-signup--error']
-    ));
+    foreach (self::$ERRORS as $classname) {
+      $response->addCommand(new InvokeCommand(
+        $this->getClassId(),
+        'removeClass',
+        [$classname]
+      ));
+    }
     $response->addCommand(new InvokeCommand(
       $this->getClassId(),
       'removeClass',
@@ -271,7 +279,7 @@ abstract class SignUp extends FormBase {
     $response->addCommand(new InvokeCommand(
       $this->getClassId(),
       'addClass',
-      ['block--cr-email-signup--error']
+      [self::$ERRORS['ESU']]
     ));
     $response->addCommand(new InvokeCommand(
       $this->getClassId(),
