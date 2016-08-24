@@ -21,4 +21,20 @@ class RegisterInterestSignUp extends SignUp {
     return 'esu_register_interest';
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  protected function esuSubmitFields() {
+    $form['step1'] = [
+      '#type' => 'button',
+      '#name' => 'step1',
+      '#value' => $this->t('Subscribe'),
+      '#attributes' => ['class' => ['step1']],
+      '#ajax' => [
+        'callback' => [$this, 'processSteps'],
+      ],
+    ];
+    return $form;
+  }
+
 }

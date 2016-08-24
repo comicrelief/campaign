@@ -158,6 +158,7 @@ select,
   &.block--cr-email-signup--error {
     position: relative;
     .esu-errors.messages.messages--error {
+      @include span(12);
       display: block;
       margin-top: 50px;
       margin-bottom: 10px;
@@ -170,18 +171,12 @@ select,
     }
   }
 
-
-
   /* Workplace ESU */
   &.block--cr-email-signup--workplace {
     background-color: $colour-red;
 
     /* Errors */
     &.block--cr-email-signup--error {
-      .esu-errors.messages.messages--error {
-        @include span(12);
-      }
-
       // Placeholder styles to make visible over RED background!
       &.error--firstname .form-item-firstname .form-text,
       &.error--email .form-item-email .form-text {
@@ -241,6 +236,67 @@ select,
           padding: 12px 20px !important;
           margin-top: 20px !important;
           @include span(12);
+        }
+      }
+    }
+  }
+
+  /* Workplace ESU */
+  &.block--cr-email-signup--register-interest {
+    background-color: $colour-purple;
+    .cr-email-signup--messages {
+      height: auto;
+      text-align: left;
+      @include span(6);
+      @include push(5);
+
+      h3 {
+        color: $colour-white;
+      }
+
+      .esu-initial-message,
+      .esu-first-success-message {
+        position: relative;
+        @include translateY(0);
+        color: $colour-white;
+        @include span(12);
+      }
+      .esu-first-success-message p {
+        @extend h4;
+      }
+    }
+
+    .block--cr-email-signup__inner-wrapper {
+
+      &:after {
+        content: none; // New image to go here
+      }
+
+      #cr-email-signup-register-interest-form {
+        margin-top: 10px;
+        @include span(6);
+        @include push(5);
+        
+        .form-item-email {
+          @include span(8);
+          position: relative;
+          margin-top: 30px;
+
+          label {
+            position:absolute;
+            top: -20px;
+            clip: auto;
+            height: auto;
+            color: $colour-white;
+          }
+        }
+
+        .form-submit {
+          @extend .btn;
+          @extend .btn--red;
+          padding: 12px 20px !important;
+          margin-top: 30px !important;
+          @include span(4);
         }
       }
     }
