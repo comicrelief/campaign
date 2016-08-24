@@ -244,7 +244,7 @@ abstract class SignUp extends FormBase {
       '.esu-errors', $message
     ));
     $response->addCommand(new InvokeCommand(
-      '.' . $this->getClassId(),
+      $this->getClassId(),
       'addClass',
       ['block--cr-email-signup--error']
     ));
