@@ -210,7 +210,7 @@ abstract class SignUp extends FormBase {
     return $response;
   }
   private function getClassId() {
-    return str_replace('_', '-', $this->getFormId());
+    return '.' . str_replace('_', '-', $this->getFormId());
   }
 
   /**
@@ -219,17 +219,17 @@ abstract class SignUp extends FormBase {
   private function nextStep(AjaxResponse $response, $step) {
     $response->addCommand(new HtmlCommand('.esu-errors', ''));
     $response->addCommand(new InvokeCommand(
-      '.' . $this->getClassId(),
+      $this->getClassId(),
       'removeClass',
       ['block--cr-email-signup--error']
     ));
     $response->addCommand(new InvokeCommand(
-      '.' . $this->getClassId(),
+      $this->getClassId(),
       'removeClass',
       ['block--cr-email-signup--step-' . $step]
     ));
     $response->addCommand(new InvokeCommand(
-      '.' . $this->getClassId(),
+      $this->getClassId(),
       'addClass',
       ['block--cr-email-signup--step-' . ($step + 1)]
     ));
