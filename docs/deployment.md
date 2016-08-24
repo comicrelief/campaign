@@ -1,3 +1,37 @@
+### Release Timescales
+1. __Friday ~5pm__: Release/Pull Request cut off.
+2. __Monday all day__: Last chance for code to be included by developers/bug fixes only. Build release notes.
+3. __Tuesday AM__: First release build, and deployment to staging. 
+4. __Wednesday AM__: Deploy to production. Tagging of branches, updating of Release notes. 
+
+### Building a Release
+
+- Git clone both the campaign and rnd17 repositories, and checkout the develop branch. Configure each local copy as per instructions in the docs folder.
+- Create a new branch on each repository called release_X.X and push to github, e.g. for version 1.9 execute the following in each repository:
+  ```
+  git branch release_1.9
+  git checkout release_1.9
+  git push --set-upstream origin release_1.9
+  git push
+  ```
+- In the RND17 repository, edit the file 'profiles/rnd17/rnd17.make.yml' and change the __branch:__ section to __branch:__ release_X.X.
+- Still in the RND17 repository, execute `phing make-cr` and wait for it to finish.
+- Review all the changes with either `git status` or `git diff`.
+- Add any files to git that are new, and then commit and push the changes. 
+- Execute `phing update-cr` to get the updated configuration, review the changes, add, commit, and push the new files to the repo.
+- Execute `phing deploy:dryrun` to simulate a deployment. 
+- In Slack, execute `/build rnd17 [branch (e.g feature_X.X)]` in the '#craft-logs' channel. Within a few minutes you should see something similar to:
+    "A build artefact for rnd17 has been created"
+- Done! You now have a release called release_X.X that should be ready to go to any environment.
+
+### Deploying a Release
+
+There are numerous environments that a release can be deployed to, QA(1-3), Staging, and Production. To deploy a release you
+need to execute the following command in the '#craft-logs' Slack channel: `/deploy [product] [environment] [release_X.X]`, where [product] is rnd17, and [environment] is one of qa1, qa2, qa3, staging, or production.
+When deploying to staging or a QA environment it is good practice to both sync the database and files.
+To do this on staging, execute the following 2 Slack commands. `/sqlsync rnd17 staging production` and `/filesync rnd17 staging production`. 
+To do this on QA(X), execute the following 2 Slack commands `/sqlsync rnd17 QA(x) staging` and `/filesync rnd17 QA(x) staging`.
+
 ### Drafting Releases
  
 Release are to happen every Monday, end of play.
