@@ -7,11 +7,9 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\HtmlCommand;
 use Drupal\Core\Ajax\InvokeCommand;
-use Drupal\Core\Render\Element\Email;
-use Egulias\EmailValidator\EmailValidator;
 
 /**
- * Concrete implementation of Step One.
+ * Generate Email Sign up.
  */
 abstract class SignUp extends FormBase {
 
@@ -166,12 +164,20 @@ abstract class SignUp extends FormBase {
     $valid_email =  \Drupal::service('email.validator')->isValid($email);
 
     if (!$valid_email) {
-      $this->setErrorMessage($response, 'Please enter a valid email address.');
+      $this->setErrorMessage(
+        $response,
+        'error--email',
+        'Please enter a valid email address.'
+      );
       $pass = FALSE;
     }
 
     if ($exist_field_name && $name_is_empty) {
-      $this->setErrorMessage($response, 'Please enter your name.');
+      $this->setErrorMessage(
+        $response,
+        'error--firstname',
+        'Please enter your name.'
+      );
       $pass = FALSE;
     }
 
@@ -220,15 +226,17 @@ abstract class SignUp extends FormBase {
 
         }
         else {
-          $this->setErrorMessage($response, 'Please select an age group.');
+          $this->setErrorMessage(
+            $response,
+            'error--agegroup',
+            'Please select an age group.'
+          );
         }
         break;
     }
     // Return ajax response.
     return $response;
   }
-
-
 
   /**
    * Go to the next step of the multiform.
@@ -255,7 +263,7 @@ abstract class SignUp extends FormBase {
   /**
    * Set the error message.
    */
-  private function setErrorMessage(AjaxResponse $response, $message) {
+  private function setErrorMessage(AjaxResponse $response, $class, $message) {
     // Error if validation isnt met.
     $response->addCommand(new HtmlCommand(
       '.esu-errors', $message
@@ -264,6 +272,11 @@ abstract class SignUp extends FormBase {
       $this->getClassId(),
       'addClass',
       ['block--cr-email-signup--error']
+    ));
+    $response->addCommand(new InvokeCommand(
+      $this->getClassId(),
+      'addClass',
+      [$class]
     ));
   }
 
