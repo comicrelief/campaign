@@ -51,7 +51,7 @@
 
 h1 {
   margin: 0 0 20px;
-  color: #1e1e1e;
+  color: $colour-black;
   font-family: $font-bold;
   @include font-size($h1-font-size);
   &.font--xlarge {
@@ -76,6 +76,7 @@ h3,
 h4 {
   margin: 0 0 15px;
   clear: both;
+  color: $colour-black;
 }
 p:last-child,
 p:first-child:last-child { 
