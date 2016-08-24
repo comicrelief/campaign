@@ -209,6 +209,9 @@ abstract class SignUp extends FormBase {
     // Return ajax response.
     return $response;
   }
+  private function getClassId() {
+    return '.' . str_replace('_', '-', $this->getFormId());
+  }
 
   /**
    * Go to the next step of the multiform.
@@ -216,17 +219,17 @@ abstract class SignUp extends FormBase {
   private function nextStep(AjaxResponse $response, $step) {
     $response->addCommand(new HtmlCommand('.esu-errors', ''));
     $response->addCommand(new InvokeCommand(
-      '.block--cr-email-signup',
+      $this->getClassId(),
       'removeClass',
       ['block--cr-email-signup--error']
     ));
     $response->addCommand(new InvokeCommand(
-      '.block--cr-email-signup',
+      $this->getClassId(),
       'removeClass',
       ['block--cr-email-signup--step-' . $step]
     ));
     $response->addCommand(new InvokeCommand(
-      '.block--cr-email-signup',
+      $this->getClassId(),
       'addClass',
       ['block--cr-email-signup--step-' . ($step + 1)]
     ));
@@ -241,7 +244,7 @@ abstract class SignUp extends FormBase {
       '.esu-errors', $message
     ));
     $response->addCommand(new InvokeCommand(
-      '.block--cr-email-signup',
+      '.' . $this->getClassId(),
       'addClass',
       ['block--cr-email-signup--error']
     ));
