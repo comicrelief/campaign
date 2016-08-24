@@ -16,11 +16,10 @@
 }
 .cw-region {
   width: 100%;
-  margin: #{gutter()} auto;
+  margin: 0 auto;
 }
 .cw-article__body {
   padding: 16px 20px 20px;
-  background: white;
 
   @include breakpoint($screen-md) {
     height: 100%;
@@ -193,7 +192,6 @@
 }
 .cw-article__body {
   padding: 16px 20px 20px;
-  background: $colour-white;
 
   @include breakpoint($screen-md) {
     height: 100%;
@@ -208,28 +206,6 @@
     &.cw-article__body--hide-show {
       position: absolute;
       top: 165px;
-    }
-  }
-}
-// .cw-article__title {
-//   padding-bottom: 12px;
-//   margin: 0;
-//   font-size: 24px;
-//   line-height: 27px;
-
-//   @include breakpoint(992px) {
-//     padding-bottom: 25px;
-//     font-size: 34px;
-//     line-height: 36px;
-//   }
-// }
-.cw-article__link {
-  a {
-    border-bottom: 2px solid $colour-red;
-    color: #000;
-    text-decoration: none;
-    &:hover {
-      border-bottom: 2px solid #1e1e1e;
     }
   }
 }
