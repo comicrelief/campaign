@@ -29,6 +29,7 @@ function cr_single_msg_field_single_msg_bg(FieldStorageDefinitionInterface $defi
     'bg--gainsboro-grey' => t('Gainsboro grey'),
     'bg--light-grey' => t('Light grey'),
     'bg--smoke-grey' => t('Smoke grey'),
+    'bg--dark-blue' => t('Dark blue')
   ];
   return $values;
 }
@@ -54,6 +55,7 @@ function cr_single_msg_field_single_msg_body_bg_colour(FieldStorageDefinitionInt
     'bg--gainsboro-grey' => t('Gainsboro grey'),
     'bg--light-grey' => t('Light grey'),
     'bg--smoke-grey' => t('Smoke grey'),
+    'bg--dark-blue' => t('Dark blue')
   ];
   return $values;
 }
