@@ -1,5 +1,18 @@
+// Cookie consent
+//
+// This is the Cookie consent message
+//
+// Markup: cookie-consent.hbs
+//
+// Style guide: Cookie consent
+
 .cookie-consent.cc_container {
+  background: $colour-black;
   text-align: center;
+  padding: 10px;
+   @include breakpoint($screen-md) {
+    padding:15px 30px 15px;
+  }
   .btn,
   p,
   a {
