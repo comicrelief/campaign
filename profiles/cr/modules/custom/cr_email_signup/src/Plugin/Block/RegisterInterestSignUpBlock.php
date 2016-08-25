@@ -2,7 +2,7 @@
 
 namespace Drupal\cr_email_signup\Plugin\Block;
 
-use Drupal\Core\Block\BlockPluginInterface;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Provides a 'Register Interest Sign Up' block.
@@ -12,8 +12,15 @@ use Drupal\Core\Block\BlockPluginInterface;
  *   admin_label = @Translation("Email Sign Up block: Register Interest"),
  * )
  */
-class RegisterInterestSignUpBlock extends WorkplaceSignUpBlock implements BlockPluginInterface {
-
+class RegisterInterestSignUpBlock extends WorkplaceSignUpBlock {
+  /**
+   * {@inheritdoc}
+   */
+  public function blockForm($form, FormStateInterface $form_state) {
+    $form = parent::blockForm($form, $form_state);
+    $form['cr_email_signup_initial_message']['#type'] = 'textarea';
+    return $form;
+  }
   /**
    * {@inheritdoc}
    */
