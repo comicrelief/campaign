@@ -18,6 +18,8 @@ A typical workflow goes like
 
 to find the relevant configuration snippets that need to be exported, in this case, related to the "article" content type. You can also the GUI at `admin/config/development/configuration/single/export` to find these configuration files.
 
+Warning: if you export fields, make sure to list the string `field.storage.*` **before** `field.field.*` in the `*.info.yml` file.
+
 We now add these snippets to the `cr_article.info.yml` file, like
 
 	config_devel:
