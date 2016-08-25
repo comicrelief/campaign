@@ -257,7 +257,7 @@ abstract class SignUp extends FormBase {
   /**
    * Go to the next step of the multiform.
    */
-  private function nextStep(AjaxResponse $response, int $step) {
+  private function nextStep(AjaxResponse $response, $step) {
     $this->cleanStatusMessage($response);
     foreach (self::$ERRORS as $classname) {
       $response->addCommand(new InvokeCommand(
