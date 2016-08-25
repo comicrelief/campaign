@@ -28,7 +28,7 @@
   */
 
 .btn {
-  display: inline-block;
+  display: block;
   padding: 21px 40px;
   cursor: pointer;
   text-align: center;
@@ -125,5 +125,15 @@
     height: 70px;
     padding: 24px 70px;
     @include border-radius(35px);
+  }
+}
+
+// for a large group of buttons
+@include breakpoint($screen-md) {
+  .btn:first-child:not(:only-child) {
+    margin-bottom: 20px;
+  }
+  .btn+.btn {
+    margin-bottom: 20px;
   }
 }
