@@ -25,6 +25,7 @@ function cr_cards_field_cr_cards_background(FieldStorageDefinitionInterface $def
     'bg--purple' => t('Purple'),
     'bg--pink' => t('Pink'),
     'bg--black' => t('Black'),
+    'bg--dark-blue' => t('Dark blue')
   ];
   return $values;
 }
@@ -46,6 +47,7 @@ function cr_card_field_cr_card_background(FieldStorageDefinitionInterface $defin
     'bg--purple' => t('Purple'),
     'bg--pink' => t('Pink'),
     'bg--black' => t('Black'),
+    'bg--dark-blue' => t('Dark blue')
   ];
   return $values;
 }

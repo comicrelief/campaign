@@ -67,7 +67,6 @@
 
     .single-msg__copy {
       padding: 30px;
-      color: white;
       width: 100%;
 
       @include breakpoint($screen-md, $no-query: true) {
