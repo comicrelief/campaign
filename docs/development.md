@@ -60,6 +60,8 @@ Run
 
 to export all config in one go.
 
+**Warning: you still need to add the config names to *.info.yml if not they won't be exported!**
+
 ### Front End
 
 #### Grunt Tasks
