@@ -7,6 +7,8 @@ namespace Drupal\cr_email_signup\Form;
  */
 class RegisterInterestSignUp extends SignUp {
 
+  protected $transType = 'RegisterInterest';
+
   /**
    * Get the Form Identifier.
    */

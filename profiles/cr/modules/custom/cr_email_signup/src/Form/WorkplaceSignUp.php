@@ -7,6 +7,8 @@ namespace Drupal\cr_email_signup\Form;
  */
 class WorkplaceSignUp extends SignUp {
 
+  protected $transType = 'WorkplaceESU';
+
   /**
    * Get the Form Identifier.
    */
@@ -20,6 +22,7 @@ class WorkplaceSignUp extends SignUp {
   public function getQueueName() {
     return 'esu_workplace';
   }
+
 
   /**
    * {@inheritdoc}

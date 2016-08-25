@@ -20,17 +20,10 @@ abstract class SignUp extends FormBase {
     'AGEGROUP' => 'error--agegroup',
     'ESU' => 'block--cr-email-signup--error',
   ];
-  /**
-   * Array to send to queue. Some key values should be sourced from config.
-   *
-   * @var array
-   *     Skeleton message to send
-   */
-  protected $skeletonMessage = [
-    // TODO: Should this be hardcoded??
-    'campaign' => 'RND17',
-    'transType' => 'esu',
-  ];
+
+  // Convert all this small variables into a class.
+  protected $campaign = 'RND17';
+  protected $transType = 'esu';
 
   /**
    * Returns the queue name.
@@ -50,7 +43,7 @@ abstract class SignUp extends FormBase {
     // Add dynamic keys.
     $append_message['timestamp'] = time();
     $append_message['transSourceURL'] = \Drupal::service('path.current')->getPath();
-    $append_message['transSource'] = "{$this->skeletonMessage['campaign']}_[Device]_ESU_[PageElementSource]";
+    $append_message['transSource'] = "{$this->campaign['campaign']}_[Device]_ESU_[PageElementSource]";
 
     // RND-178: Device & Source Replacements.
     $device = (empty($append_message['device'])) ? "Unknown" : $append_message['device'];
@@ -63,9 +56,10 @@ abstract class SignUp extends FormBase {
     );
 
     // Add passed arguments.
-    $queue_message = array_merge($this->skeletonMessage, $append_message);
+    $append_message['campaign'] = $this->campaign;
+    $append_message['transType'] = $this->transType;
 
-    $this->sendQmessage($queue_message);
+    $this->sendQmessage($append_message);
   }
 
   /**
