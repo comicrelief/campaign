@@ -52,10 +52,3 @@
 *.phar    -text diff
 *.exe     -text diff
 *.ttf     -text diff
-
-# Denote all files that are truly binary and should not be modified.
-* text eol=lf
-*.eot binary
-*.ttf binary
-*.woff binary
-*.woff2 binary
