@@ -13,6 +13,7 @@ use Drupal\Core\Form\FormStateInterface;
  * )
  */
 class RegisterInterestSignUpBlock extends WorkplaceSignUpBlock {
+
   /**
    * {@inheritdoc}
    */
@@ -21,6 +22,7 @@ class RegisterInterestSignUpBlock extends WorkplaceSignUpBlock {
     $form['cr_email_signup_initial_message']['#type'] = 'textarea';
     return $form;
   }
+
   /**
    * {@inheritdoc}
    */
