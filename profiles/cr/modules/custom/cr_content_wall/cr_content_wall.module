@@ -41,6 +41,7 @@ function field_cw_bg_colour(FieldStorageDefinitionInterface $definition, Fieldab
     'bg--purple' => t('Purple'),
     'bg--pink' => t('Pink'),
     'bg--black' => t('Black'),
+    'bg--dark-blue' => t('Dark blue'),
   ];
   return $values;
 }
