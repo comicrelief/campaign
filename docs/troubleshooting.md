@@ -144,5 +144,4 @@ Finally, it might make sense to add imagemagick binaries to `/usr/bin` in order 
 	
 Alternatively, you can also set the path to find imagemagick binaries like
 
-  drush cset imagemagick.settings path_to_binaries /usr/local/bin/ -y
-
+	drush cset imagemagick.settings path_to_binaries /usr/local/bin/ -y
