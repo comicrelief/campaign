@@ -64,7 +64,7 @@
     ],
     "field_cr_card_body": [
         {
-            "value": "<h4 class=\"font--royal-blue text-align-center\">Cakier<\/h4>\r\n\r\n<p class=\"text-align-center\">Make some cakes, then sell them. Simple, effective. Also, a great supply of endless compliments about your baking prowess.<\/p>\r\n",
+            "value": "<h4 class=\"font--royal-blue text-align-center\">Cakier<\/h4>\r\n\r\n<p class=\"text-align-center\">Make some cakes, then sell them. Simple, effective. Also, a great supply of endless compliments about your baking prowess.<\/p>\r\n\r\n<p class=\"text-align-center\"><a class=\"link link--teal\" href=\"https:\/\/www.youtube.com\/embed\/NW12S4-KB1I?autoplay=1\" rel=\"lightcase\" title=\"Youtube CR video\">Watch a video<\/a><\/p>\r\n",
             "format": "full_html"
         }
     ],
