@@ -23,7 +23,6 @@ class WorkplaceSignUp extends SignUp {
     return 'esu_workplace';
   }
 
-
   /**
    * {@inheritdoc}
    */
