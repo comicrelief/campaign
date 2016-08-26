@@ -171,5 +171,16 @@
             "value": "1",
             "lang": "en"
         }
+    ],
+    "field_background_colour": [
+        {
+            "value": "bg--white"
+        }
+    ],
+    "field_partner_body": [
+        {
+            "value": "<h4>Check out our wonderful partners<\/h4>\r\n",
+            "format": "basic_html"
+        }
     ]
 }
