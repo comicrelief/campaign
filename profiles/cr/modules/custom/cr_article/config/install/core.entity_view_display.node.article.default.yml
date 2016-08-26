@@ -8,7 +8,6 @@ dependencies:
     - field.field.node.article.field_article_meta_tags
     - field.field.node.article.field_article_publish_date
     - field.field.node.article.field_article_tags
-    - field.field.node.article.field_youtube_url
     - field.field.node.article.publishing_date
     - node.type.article
   module:
@@ -18,7 +17,6 @@ dependencies:
     - responsive_image
     - text
     - user
-    - youtube
 third_party_settings:
   panelizer:
     enable: false
@@ -94,31 +92,6 @@ third_party_settings:
             region: middle
             weight: 1
             uuid: c18cde3c-5b1e-4a6f-a500-feda0b3ae52f
-          3378591b-a332-43fc-a703-03ac327d3105:
-            id: 'entity_field:node:field_youtube_url'
-            label: 'YouTube URL'
-            provider: ctools_block
-            label_display: '0'
-            formatter:
-              label: hidden
-              type: youtube_video
-              settings:
-                youtube_size: 480x360
-                youtube_width: ''
-                youtube_height: ''
-                youtube_loop: true
-                youtube_autoplay: false
-                youtube_showinfo: false
-                youtube_controls: false
-                youtube_autohide: false
-                youtube_iv_load_policy: false
-              third_party_settings: {  }
-              weight: 0
-            context_mapping:
-              entity: '@panelizer.entity_context:entity'
-            region: middle
-            weight: 3
-            uuid: 3378591b-a332-43fc-a703-03ac327d3105
           fa3ca95b-c269-4519-af51-8198aa33295c:
             id: 'views_block:related_news-block_1'
             label: ''
@@ -178,21 +151,6 @@ content:
     settings:
       format_type: medium
       timezone_override: ''
-    third_party_settings: {  }
-  field_youtube_url:
-    type: youtube_video
-    weight: 2
-    label: hidden
-    settings:
-      youtube_size: 480x360
-      youtube_width: ''
-      youtube_height: ''
-      youtube_loop: true
-      youtube_autoplay: false
-      youtube_showinfo: false
-      youtube_controls: false
-      youtube_autohide: false
-      youtube_iv_load_policy: false
     third_party_settings: {  }
   links:
     weight: 5

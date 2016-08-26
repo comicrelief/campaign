@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_single_msg_layout_variant
+    - paragraphs.paragraphs_type.single_msg
+  module:
+    - options
+id: paragraph.single_msg.field_single_msg_layout_variant
+field_name: field_single_msg_layout_variant
+entity_type: paragraph
+bundle: single_msg
+label: Variant
+description: 'Sets which type of single message row this''ll be'
+required: true
+translatable: false
+default_value:
+  -
+    value: copy-left
+default_value_callback: ''
+settings: {  }
+field_type: list_string

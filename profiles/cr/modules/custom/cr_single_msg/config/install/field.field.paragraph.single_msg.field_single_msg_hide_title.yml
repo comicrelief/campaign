@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_single_msg_hide_title
+    - paragraphs.paragraphs_type.single_msg
+id: paragraph.single_msg.field_single_msg_hide_title
+field_name: field_single_msg_hide_title
+entity_type: paragraph
+bundle: single_msg
+label: 'Visually hide title'
+description: 'Hiding titles might be desirable for a visual design, however titles can be useful for visually impaired users, providing contextual clarity and navigational cues via screenreaders.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Visually hidden'
+  off_label: Shown
+field_type: boolean

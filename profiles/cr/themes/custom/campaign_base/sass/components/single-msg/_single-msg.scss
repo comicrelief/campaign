@@ -4,16 +4,10 @@
 //
 // Markup: _single-msg.hbs
 //
-// .single-msg--image-right  - Image on right, copy on left
-//
 // Style guide: Single Message
 
 
-/* Variables, to move  */
-$row-padding--sm: 30px;
-$row-padding--md: 60px;
-
-/* Global styles for all variants */
+/* Global styles for all variants, provides all styles for Copy Right variant */
 .paragraph.single-msg {
   width: 100%;
   .single-msg__outer-wrapper {
@@ -30,160 +24,60 @@ $row-padding--md: 60px;
   
   .single-msg__image {
     width: 100%;
+    @include span(12);
+
     img {
       display: block;
       width: 100%;
       height: auto;
     }
 
-    /* MD only, change image from 4:3 to 1:1 ratio */
-    @include breakpoint($screen-md-only) {
-      @include span(5);
+    @include breakpoint($screen-md, $no-query: true) { 
+      @include span(6 wide);
+      width: calc( #{span(6)} +  ( #{gutter()} * 1) );
       margin-right: 0;
-      @include square-img-ratio(span(5), '4:3');
     }
 
-    /* LG, no inheried image crop  */
-    @include breakpoint($screen-lg) {
-      // Add grid behaviour to lg breakpoint
-      @include span(6);
-      // Tweak width
-      width: calc( #{span(6)} + #{gutter()});
-      margin-right: 0;
+    @include breakpoint($screen-lg) { 
+      @include span(5);
     }
   } 
 
-  /* Placeholder styles, colours and button styles to be added to component when finalised */
   .single-msg__copy_wrapper {
-    width: 100%;
     height: 100%;
-    background-color: #814fc8;
-    text-align: center;
+    @include span(12);
 
-    // MD and above
-    @include breakpoint($screen-md) {
+    @include breakpoint($screen-md, $no-query: true) {
       position: absolute;
       top: 0;
       right: 0;
       margin-left: 0;
-      text-align: left;
       // Recalculate height minus the row padding
       height: calc(100% - ( #{$row-padding--md} * 2) );
       margin-top: 60px;
+
+      @include span(6 wide);
+      width: calc( #{span(6)} +  ( #{gutter()} * 1) );
+      margin-left: 0;
     }
 
-    /* MD only, change image from 16:9 to 1:1 ratio */
-    @include breakpoint($screen-md-only) {
+    @include breakpoint($screen-lg) { 
       @include span(7 wide);
     }
 
-    /* LG, no inheried image crop */
-    @include breakpoint($screen-lg) {
-      @include span(6);
-      width: calc( #{span(6)} + #{gutter()});
-    }
-
     .single-msg__copy {
-      padding: 40px 30px 30px;
-      color: white;
+      padding: 30px;
       width: 100%;
 
-      @include breakpoint($screen-md) {
+      @include breakpoint($screen-md, $no-query: true) {
         height: 100%;
-      }
-
-      .single-msg__body {
-        p {
-          font-size: 18px;
-        }
-        a.btn {
-          display: block;
-          margin: 0 auto 20px;
-          width: 100%;
-          @include breakpoint($screen-md) {
-            width: 280px;
-            margin: 0
-          }
-        }
       }
     }
   }
 
-  /* Featured variation  */
-  &.single-msg--featured {
-    .single-msg__image {
-      float: left;
-   
-      /* MD only, change image from 16:9 to 1:1 ratio */
-      @include breakpoint($screen-md) {
-        @include span(6);
-        margin-right: 0;
-        // Tweak the ratio of the image container and contained image
-        @include square-img-ratio( span(6), "16:9");
-      }
-
-      @include breakpoint($screen-lg) {
-        @include span(8);
-        // Reset crop
-        height: 100%;
-        padding-bottom: 0;
-  
-        img {
-          width: 100%;
-          margin-left: 0;
-        }
-      }
-    }
-
-    .single-msg__copy_wrapper {
-      background-color:white;
-      float: left;
-
-      // Offsets propotional to gutter widths
-      margin: 0 calc(4*#{gutter()}) 0;
-      margin-top: calc(-4 *#{gutter()});
-      width: calc(100% - (8 * #{gutter()}) );
-
-      @include breakpoint($screen-md) {
-        @include span(7);
-        margin-left: 0;
-        margin-bottom: 20px;
-        margin-top: 80px;
-
-        // Tweak height to reflect row padding and feature copy 'offset'
-        height: calc(100% - (#{$row-padding--md} * 2) - 40px);
-      }
-
-      @include breakpoint($screen-lg) {
-        @include span(5);
-      }
-
-      .single-msg__copy {
-        color: black;
-        height: auto;
-
-        @include breakpoint($screen-md) {
-          padding: 0 30px;
-          position: absolute;
-          top: 50%;
-          left: 0;
-          @include translateY(-50%);
-          text-align: center;
-
-          /* Centre any buttons that get added
-           * (should only be inline links
-           * but just in case) */
-          .single-msg__body a.btn{
-            margin: 0 auto 20px;
-          }
-        }
-      }
-    }
-  }
-
-  /* Image right, text left variant */
-  &.single-msg--image-right {
-    @include breakpoint($screen-md) {
+  /* Copy Left variation */
+  &.single-msg--copy-left {
+    @include breakpoint($screen-md, $no-query: true) {
       .single-msg__image {
         float:right;
         margin-left: 0;
@@ -191,8 +85,105 @@ $row-padding--md: 60px;
       }
     
       .single-msg__copy_wrapper {
-        left: gutter();
+        left: 0;
+        margin-left: gutter();
+      }
+    }
+  }
+
+
+  /* - - - - Featured Variations - - - - */
+
+  /* Feature Copy Left and Right variation */
+  &.single-msg--feature-copy-right,
+  &.single-msg--feature-copy-left  {
+    .single-msg__image {
+      float: left;
+      width: 100%;
+      margin: 0;
+
+      @include breakpoint($screen-md, $no-query: true) {
+        @include span(12);     
+      }
+
+      @include breakpoint($screen-lg) {
+        @include span(7);     
+      }  
+    }
+
+    .single-msg__copy_wrapper {
+      float: left;
+      margin: 0 calc(4*#{gutter()}) 0;
+      margin-top: calc(-4 *#{gutter()});
+      width: calc(100% - (8 * #{gutter()}) );
+
+      @include breakpoint($screen-md, $no-query: true) {
+        position: relative;
+      }  
+      
+      @include breakpoint($screen-lg) {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 90px gutter() 0 0;
+        height: calc(100% - (#{$row-padding--md} * 3));  
+
+        // Only overlap by half a column
+        width: calc( #{span(5)} +  ( #{gutter()} * 4) );
+      }  
+
+      .single-msg__copy {
+        height: auto;
+      }
+    } 
+  }
+
+  /* Feature Copy Left variation */
+  &.single-msg--feature-copy-left {
+    .single-msg__image {
+      @include breakpoint($screen-lg) {
+        float: right;
         margin-left: 0;
+        margin-right: gutter();
+      }
+    }
+
+    .single-msg__copy_wrapper {
+      @include breakpoint($screen-lg) {
+        left: 0;
+        margin: 90px 0 0 gutter();
+      }
+    }
+  }
+
+  /* Copy Only - Copy Centred variation */
+  &.single-msg--copy-only {
+    .single-msg__copy_wrapper {
+
+      background-color: transparent;
+
+      .single-msg__copy {
+        padding: 0 30px;
+
+        /* Remove margins from the last/only element in the body copy,
+          as to not mess up our vertical centering */
+        .single-msg__body :last-child {
+          margin-bottom: 0;
+        } 
+      }
+
+      @include breakpoint($screen-md, $no-query: true) {
+        @include span(10);
+        @include push(1);
+        position: relative;
+        left: auto;
+        height: auto; //Does this need to match the height of the img version?
+        margin-top: 0;
+      }
+
+      @include breakpoint($screen-lg) {
+        @include span(8);
+        @include push(2);
       }
     }
   }

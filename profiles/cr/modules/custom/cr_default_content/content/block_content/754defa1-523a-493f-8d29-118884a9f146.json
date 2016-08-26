@@ -1,14 +1,14 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/block\/10?_format=hal_json"
+            "href": "http:\/\/sr16-spl-local.sportrelief.com\/block\/10?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/block_content\/cr_card"
         },
         "http:\/\/drupal.org\/rest\/relation\/block_content\/cr_card\/field_cr_card_image": [
             {
-                "href": "http:\/\/default\/file\/3343?_format=hal_json"
+                "href": "http:\/\/sr16-spl-local.sportrelief.com\/file\/3353?_format=hal_json"
             }
         ]
     },
@@ -46,7 +46,7 @@
     ],
     "changed": [
         {
-            "value": "1467802910",
+            "value": "1472203908",
             "lang": "en"
         }
     ],
@@ -64,7 +64,7 @@
     ],
     "field_cr_card_body": [
         {
-            "value": "<h2>Follow in Dermont's footsteps<\/h2>\r\n\r\n<p>If Dermot's hip-swivelling heroics have inspired you, why not do your bit for Red Nose Day and put on your own dance event?<\/p>\r\n\r\n<p><a class=\"link link--inline-red\" href=\"#\" id=\"\" rel=\"\" target=\"\" title=\"\">Get your Dancing Kit<\/a><\/p>\r\n",
+            "value": "<h4 class=\"font--royal-blue text-align-center\">Follow in Dermont's footsteps<\/h4>\r\n\r\n<p class=\"text-align-center\">If Dermot's hip-swivelling heroics have inspired you, why not do your bit for Red Nose Day and put on your own dance event?<\/p>\r\n\r\n<p class=\"text-align-center\"><a class=\"link link--inline-red\" href=\"#\" id=\"\" rel=\"\" target=\"\" title=\"\">Get your Dancing Kit<\/a><\/p>\r\n",
             "format": "full_html"
         }
     ],
@@ -73,7 +73,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/file\/3343?_format=hal_json"
+                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/file\/3353?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
@@ -81,13 +81,13 @@
                 },
                 "uuid": [
                     {
-                        "value": "1bd26591-6c34-4a83-aa7a-72cc8d1de887"
+                        "value": "838fa7cc-f680-4556-b897-666757e72341"
                     }
                 ],
-                "alt": "Cooking",
+                "alt": "Baking again",
                 "title": "",
-                "width": "570",
-                "height": "321"
+                "width": "720",
+                "height": "540"
             }
         ]
     }

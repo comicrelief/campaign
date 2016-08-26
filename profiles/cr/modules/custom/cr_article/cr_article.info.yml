@@ -13,7 +13,6 @@ dependencies:
   - file
   - views
   - taxonomy
-  - youtube
   - metatag
   - pathauto
   - panelizer
@@ -36,7 +35,6 @@ config_devel:
   - field.storage.node.field_article_publish_date
   - field.storage.node.field_article_image
   - field.storage.node.field_article_meta_tags
-  - field.storage.node.field_youtube_url
   - field.field.node.article.body
   - field.field.node.article.field_article_intro
   - field.field.node.article.field_article_tags
@@ -45,7 +43,6 @@ config_devel:
   # - field.storage.node.field_article_publish_date
   - field.field.node.article.field_article_image
   - field.field.node.article.field_article_meta_tags
-  - field.field.node.article.field_youtube_url
   - views.view.related_news
   - views.view.what_s_going_on
   - pathauto.pattern.article

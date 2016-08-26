@@ -196,11 +196,5 @@
         {
             "value": "2016-02-09"
         }
-    ],
-    "field_youtube_url": [
-        {
-            "input": "https:\/\/youtu.be\/_1bnfbI9b0k",
-            "video_id": "_1bnfbI9b0k"
-        }
     ]
 }

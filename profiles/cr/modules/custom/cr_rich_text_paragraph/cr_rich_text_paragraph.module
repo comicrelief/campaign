@@ -1,0 +1,49 @@
+<?php
+
+/**
+ * @file
+ * BG Single Message paragraph type.
+ */
+
+use Drupal\Core\Entity\FieldableEntityInterface;
+use Drupal\Core\Field\FieldStorageDefinitionInterface;
+
+/**
+ * Options callback for field_bg_single_msg_bg_colour.
+ *
+ * @see options_allowed_values()
+ */
+function cr_rich_text_paragraph_field_bg_single_msg_bg_colour(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
+  $values = [
+    'bg--white' => t('White'),
+    'bg--black' => t('Black'),
+    'bg--red' => t('Red'),
+    'bg--sky-blue' => t('Sky blue'),
+    'bg--yellow' => t('Yellow'),
+    'bg--green' => t('Green'),
+    'bg--teal' => t('Teal'),
+    'bg--royal-blue' => t('Royal blue'),
+    'bg--pink' => t('Pink'),
+    'bg--purple' => t('Purple'),
+    'bg--jasper-grey' => t('Jasper grey'),
+    'bg--gainsboro-grey' => t('Gainsboro grey'),
+    'bg--light-grey' => t('Light grey'),
+    'bg--smoke-grey' => t('Smoke grey'),
+    'bg--dark-blue' => t('Dark blue')
+  ];
+  return $values;
+}
+
+/**
+ * Options callback for field_bg_single_msg_layout.
+ *
+ * @see options_allowed_values()
+ */
+function cr_rich_text_paragraph_field_bg_single_msg_layout(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
+  $values = [
+    'bg--left' => t('Left'),
+    'bg--centre' => t('Centre'),
+    'bg--right' => t('Right'),
+  ];
+  return $values;
+}

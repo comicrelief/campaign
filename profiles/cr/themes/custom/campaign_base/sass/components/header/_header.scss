@@ -29,6 +29,8 @@ header[role=banner] {
   margin-top: -40px;
   margin-right: 20px;
   margin-left: 10px;
+  position: relative;
+  z-index: 2;
   @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
     width: 136px;
   	height: 136px;

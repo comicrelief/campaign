@@ -21,6 +21,8 @@
 // <p><br/>$colour-pink: #f38a99;<br/>.bg--pink</p>
 // <div style="background-color: #222; height: 100px; width: 100%;"></div>
 // <p><br/>$colour-black: #222;<br/>.bg--black</p>
+// <div style="background-color: #061d38; height: 100px; width: 100%;"></div>
+// <p><br/>$colour-dark-blue: #061d38;<br/>.bg--dark-blue</p>
 // <div style="background-color: #fff; height: 100px; width: 100%;"></div>
 // <p><br/>$colour-white: #fff;<br/>.bg--white</p>
 // <div style="background-color: #666; height: 100px; width: 100%;"></div>
@@ -39,6 +41,28 @@
 
 .bg--cream-grey {
   background-color: $cream-grey;
+}
+.bg--black,
+.bg--dark-blue,
+.bg--red,
+.bg--royal-blue,
+.bg--purple {
+	h2, h3, h4, h5, p, .link {
+		color: $colour-white;
+	}
+	.bg--white,
+	.bg--smoke-grey,
+	.bg--light-grey,
+	.bg--gainsboro-grey,
+	.bg--sky-blue,
+	.bg--yellow,
+	.bg--green,
+	.bg--teal,
+	.bg--pink {
+		h2, h3, h4, h5, p, .link {
+	  	color: $colour-black;
+	 }
+	}
 }
 
 @for $color from 1 to (length($colorList)+1) {

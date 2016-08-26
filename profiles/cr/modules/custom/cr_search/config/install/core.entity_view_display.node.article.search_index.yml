@@ -9,7 +9,6 @@ dependencies:
     - field.field.node.article.field_article_meta_tags
     - field.field.node.article.field_article_publish_date
     - field.field.node.article.field_article_tags
-    - field.field.node.article.field_youtube_url
     - field.field.node.article.publishing_date
     - node.type.article
   module:
@@ -20,7 +19,6 @@ dependencies:
     - taxonomy
     - text
     - user
-    - youtube
 third_party_settings:
   panelizer:
     enable: false
@@ -92,14 +90,6 @@ content:
     weight: 13
     label: above
     settings: {  }
-    third_party_settings: {  }
-  field_youtube_url:
-    type: youtube_thumbnail
-    weight: 14
-    label: above
-    settings:
-      image_style: thumbnail
-      image_link: ''
     third_party_settings: {  }
   links:
     weight: 2

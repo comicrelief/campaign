@@ -12,9 +12,11 @@ entity_type: paragraph
 bundle: single_msg
 label: 'Background colour'
 description: 'Select a full-width background colour for the entire message row'
-required: false
+required: true
 translatable: false
-default_value: {  }
+default_value:
+  -
+    value: bg--white
 default_value_callback: ''
 settings: {  }
 field_type: list_string

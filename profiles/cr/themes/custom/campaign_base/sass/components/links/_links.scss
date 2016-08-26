@@ -13,6 +13,10 @@
 // .link--purple - Purple standalone link add <em style="font-weight: bold;">.inline</em> for inline links
 // .link--pink - Pink standalone link add <em style="font-weight: bold;">.inline</em> for inline links
 // .link--white - White standalone link add <em style="font-weight: bold;">.inline</em> for inline links
+// .link--jasper-grey - Jasper grey standalone link add <em style="font-weight: bold;">.inline</em> for inline links
+// .link--gainsboro-grey - Gainsboro grey standalone link add <em style="font-weight: bold;">.inline</em> for inline links
+// .link--light-grey - Light grey standalone link add <em style="font-weight: bold;">.inline</em> for inline links
+// .link--smoke-grey - Smoke grey standalone link add <em style="font-weight: bold;">.inline</em> for inline links
 // :hover - Link hover state 
 // :active - Link active state
 // :focus - Link focus state
@@ -20,15 +24,15 @@
 // Style guide: Links
 
 /*  
-  * Link styles,
-  * Copied from SR16 theme
-  */
+ * Link styles,
+ * Copied from SR16 theme
+ */
 
 .link {
   border-bottom: 4px solid $colour-red;
   color: inherit;
+  font-family: $font-bold;
   font-size: 18px;
-  font-weight: bold;
   line-height: 30px;
   text-decoration: none;
   @include transition-property(border, color);
@@ -42,8 +46,10 @@
     border-width: 2px;
     color: inherit;
     cursor: pointer;
+    display: inline-block;
     font-size: inherit;
-    line-height: inherit;
+    line-height: 22px;
+    margin: 0;
     &:hover,
     &:active,
     &:focus {
