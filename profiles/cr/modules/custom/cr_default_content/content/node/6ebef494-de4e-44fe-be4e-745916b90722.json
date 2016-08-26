@@ -38,6 +38,9 @@
             },
             {
                 "href": ""
+            },
+            {
+                "href": ""
             }
         ]
     },
@@ -146,7 +149,23 @@
                         "value": "42c6b394-be7e-42dd-a862-e29db209ca44"
                     }
                 ],
-                "target_revision_id": "17"
+                "target_revision_id": "2"
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": ""
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/single_msg"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "ad4283e1-88e7-4649-961c-5c3cf8af5bc0"
+                    }
+                ],
+                "target_revision_id": "7"
             },
             {
                 "_links": {
@@ -162,7 +181,7 @@
                         "value": "4fcdbea0-def4-406e-b7c6-f374ac212997"
                     }
                 ],
-                "target_revision_id": "18"
+                "target_revision_id": "3"
             },
             {
                 "_links": {
@@ -178,7 +197,7 @@
                         "value": "18cb32fd-e85f-4c2a-b0a4-347a705754fb"
                     }
                 ],
-                "target_revision_id": "19"
+                "target_revision_id": "4"
             },
             {
                 "_links": {

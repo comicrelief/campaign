@@ -1,0 +1,174 @@
+{
+    "_links": {
+        "self": {
+            "href": ""
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/single_msg"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/single_msg\/uid": [
+            {
+                "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/single_msg\/revision_uid": [
+            {
+                "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/single_msg\/field_single_msg_img": [
+            {
+                "href": "http:\/\/sr16-spl-local.sportrelief.com\/file\/3355?_format=hal_json"
+            }
+        ]
+    },
+    "id": [
+        {
+            "value": "7"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "ad4283e1-88e7-4649-961c-5c3cf8af5bc0"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": "7"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "single_msg"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/single_msg\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "c2e1f6da-bbe5-4ed3-aec1-742287f5c5ae"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/single_msg\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "c2e1f6da-bbe5-4ed3-aec1-742287f5c5ae"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/single_msg\/field_single_msg_img": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/file\/3355?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "d5a82c12-bda3-49c9-ae03-f6ad27dd9473"
+                    }
+                ],
+                "alt": "Bake again",
+                "title": "",
+                "width": "720",
+                "height": "540"
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1472206894",
+            "lang": "en"
+        }
+    ],
+    "parent_id": [
+        {
+            "value": "22"
+        }
+    ],
+    "parent_type": [
+        {
+            "value": "node"
+        }
+    ],
+    "parent_field_name": [
+        {
+            "value": "field_paragraphs"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "field_single_msg_bg": [
+        {
+            "value": "bg--purple"
+        }
+    ],
+    "field_single_msg_body": [
+        {
+            "value": "Lancaster City Council's Salt Ayre Sports Centre did a static bike ride the distance of Lands End to John O' Groats and a giant Zumbathon! Altogether they\u00a0raised an amazing \u00a31,162 in total.",
+            "format": "basic_html"
+        }
+    ],
+    "field_single_msg_body_bg_colour": [
+        {
+            "value": "bg--white"
+        }
+    ],
+    "field_single_msg_hide_title": [
+        {
+            "value": "0"
+        }
+    ],
+    "field_single_msg_layout_variant": [
+        {
+            "value": "copy-left"
+        }
+    ],
+    "field_single_msg_title": [
+        {
+            "value": "Single Message Row"
+        }
+    ]
+}
