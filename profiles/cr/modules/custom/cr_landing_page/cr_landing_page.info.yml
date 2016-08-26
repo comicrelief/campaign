@@ -12,7 +12,6 @@ config_devel:
   - core.entity_view_display.node.landing.default
   - core.entity_view_display.node.landing.full
   - core.entity_view_display.node.landing.landing_page_header
-  - core.entity_view_display.node.landing.search_index
   - core.entity_view_mode.node.landing_page_header
   - field.field.node.landing.body
   - field.field.node.landing.field_landing_background_colour

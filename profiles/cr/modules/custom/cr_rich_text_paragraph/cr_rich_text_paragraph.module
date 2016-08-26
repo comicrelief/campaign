@@ -29,6 +29,7 @@ function cr_rich_text_paragraph_field_bg_single_msg_bg_colour(FieldStorageDefini
     'bg--gainsboro-grey' => t('Gainsboro grey'),
     'bg--light-grey' => t('Light grey'),
     'bg--smoke-grey' => t('Smoke grey'),
+    'bg--dark-blue' => t('Dark blue')
   ];
   return $values;
 }

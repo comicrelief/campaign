@@ -21,6 +21,8 @@
 // <p><br/>$colour-pink: #f38a99;</p>
 // <div style="background-color: #222; height: 60px; width: 60px;"></div>
 // <p><br/>$colour-black: #222;</p>
+// <div style="background-color: #061d38; height: 60px; width: 60px;"></div>
+// <p><br/>$colour-dark-blue #061d38;</p>
 // <div style="background-color: #666; height: 60px; width: 60px;"></div>
 // <p><br/>$colour-jasper-grey: #666;</p>
 // <div style="background-color: #c7c7c7; height: 60px; width: 60px;"></div>
@@ -46,6 +48,7 @@ $colour-purple: #8552a1;
 $colour-pink: #f38a99;
 
 $colour-black: #222;
+$colour-dark-blue: #061d38;
 // $colour-dark-grey: #333;
 $colour-jasper-grey: #666;
 // $colour-greyboy-grey: #999;
@@ -93,6 +96,7 @@ $colorList: (
   ("purple" $colour-purple),
   ("pink" $colour-pink),
   ("black" $colour-black),
+  ("dark-blue" $colour-dark-blue),
   ("white" $colour-white),
   ("jasper-grey" $colour-jasper-grey),
   ("gainsboro-grey" $colour-gainsboro-grey),
