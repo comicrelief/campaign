@@ -41,7 +41,7 @@
       } else if (topPos > 229 && sSize < 1024) {
         $(this).css('top','229px');
       } else if (topPos > 335) {
-        $(this).css('top','335px');
+        $(this).css('top','316px');
       } else {
         $(this).css('top',topPos+'px');
       }
