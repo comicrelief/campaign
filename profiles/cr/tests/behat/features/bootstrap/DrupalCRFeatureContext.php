@@ -330,7 +330,6 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
       ->find('xpath', '/img[@src="' . $uri . '"]');
   }
 
-
   /**
    * Selects option in select field with specified id|name|label|value in a region
    * Example: When I select "Bats" from "user_fears" in the "some" region
@@ -384,6 +383,23 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
         throw new Exception('Expected queue property "' . $name . '" contains value "' . $item[$name] . '" but "' . $expected_value . '" expected, for last item from queue "' . $queue_name . '"');
       }
     }
+
+  /**
+   * Creates unpublished content of the given type.
+   *
+   * @Given a/an unpublished :type (content )with the title :title
+   */
+  public function createUnpublishedNode($type, $title) {
+    // @todo make this easily extensible.
+    $node = (object) array(
+      'title' => $title,
+      'type' => $type,
+      'body' => $this->getRandom()->name(255),
+      'status' => 0,
+    );
+    $saved = $this->nodeCreate($node);
+    // Set internal page on the new node.
+    $this->getSession()->visit($this->locatePath('/node/' . $saved->nid));
   }
 
 }

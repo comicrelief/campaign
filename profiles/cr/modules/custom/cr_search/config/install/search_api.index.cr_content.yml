@@ -27,14 +27,12 @@ field_settings:
           page: default
           partner: full
 processor_settings:
-  transliteration:
-    plugin_id: transliteration
-    settings:
-      fields:
-        - rendered_item
-      weights:
-        preprocess_index: -10
-        preprocess_query: -10
+  add_url:
+    plugin_id: add_url
+    settings: {  }
+  aggregated_field:
+    plugin_id: aggregated_field
+    settings: {  }
   ignorecase:
     plugin_id: ignorecase
     settings:
@@ -46,12 +44,14 @@ processor_settings:
   rendered_item:
     plugin_id: rendered_item
     settings: {  }
-  aggregated_field:
-    plugin_id: aggregated_field
-    settings: {  }
-  add_url:
-    plugin_id: add_url
-    settings: {  }
+  transliteration:
+    plugin_id: transliteration
+    settings:
+      fields:
+        - rendered_item
+      weights:
+        preprocess_index: -10
+        preprocess_query: -10
 options:
   index_directly: true
   cron_limit: 50

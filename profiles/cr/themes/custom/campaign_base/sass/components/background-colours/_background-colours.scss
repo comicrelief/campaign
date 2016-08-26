@@ -21,6 +21,8 @@
 // <p><br/>$colour-pink: #f38a99;<br/>.bg--pink</p>
 // <div style="background-color: #222; height: 100px; width: 100%;"></div>
 // <p><br/>$colour-black: #222;<br/>.bg--black</p>
+// <div style="background-color: #061d38; height: 100px; width: 100%;"></div>
+// <p><br/>$colour-dark-blue: #061d38;<br/>.bg--dark-blue</p>
 // <div style="background-color: #fff; height: 100px; width: 100%;"></div>
 // <p><br/>$colour-white: #fff;<br/>.bg--white</p>
 // <div style="background-color: #666; height: 100px; width: 100%;"></div>
@@ -41,6 +43,7 @@
   background-color: $cream-grey;
 }
 .bg--black,
+.bg--dark-blue,
 .bg--red,
 .bg--royal-blue,
 .bg--purple {
