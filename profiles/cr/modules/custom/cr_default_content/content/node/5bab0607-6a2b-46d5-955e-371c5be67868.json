@@ -8,13 +8,13 @@
         },
         "http:\/\/drupal.org\/rest\/relation\/node\/partner\/uid": [
             {
-                "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/1?_format=hal_json",
+                "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/0?_format=hal_json",
                 "lang": "en"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/partner\/revision_uid": [
             {
-                "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/1?_format=hal_json"
+                "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/0?_format=hal_json"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/partner\/field_partner_category": [
@@ -65,7 +65,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/1?_format=hal_json"
+                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/0?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -73,7 +73,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "6ac0168f-cb65-4929-b3b8-9b6bdacd9bd9"
+                        "value": "10e30dff-5a0e-4b33-aeb7-89f49629de0a"
                     }
                 ],
                 "lang": "en"
@@ -83,7 +83,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/1?_format=hal_json"
+                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/0?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -91,7 +91,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "6ac0168f-cb65-4929-b3b8-9b6bdacd9bd9"
+                        "value": "10e30dff-5a0e-4b33-aeb7-89f49629de0a"
                     }
                 ]
             }
