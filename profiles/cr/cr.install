@@ -54,3 +54,10 @@ function cr_update_8005() {
   field_purge_batch('field_youtube_url');
   \Drupal::service('module_installer')->uninstall(['youtube']);
 }
+
+/**
+ * Install cr_user
+ */
+function cr_update_8006() {
+  \Drupal::service('module_installer')->install(['cr_user']);
+}
