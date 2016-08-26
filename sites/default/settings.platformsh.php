@@ -27,6 +27,19 @@ if (isset($_ENV['PLATFORM_RELATIONSHIPS'])) {
       }
     }
   }
+
+  // Add in support for rabbitmq bindings
+  if (!empty($relationships['mq'])) {
+    foreach ($relationships['mq'] as $endpoint) {
+      $settings['rabbitmq_credentials'] = [
+        'host' => $endpoint['host'],
+        'vhost' => '/',
+        'port' => $endpoint['port'],
+        'username' => $endpoint['username'],
+        'password' => $endpoint['password'],
+      ];
+    }
+  }
 }
 // Configure private and temporary file paths.
 if (isset($_ENV['PLATFORM_APP_DIR'])) {
@@ -82,3 +95,4 @@ if (isset($_ENV['PLATFORM_VARIABLES'])) {
 if (isset($_ENV['PLATFORM_PROJECT_ENTROPY']) && empty($settings['hash_salt'])) {
   $settings['hash_salt'] = $_ENV['PLATFORM_PROJECT_ENTROPY'];
 }
+

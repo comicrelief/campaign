@@ -6,6 +6,12 @@
 mysql:
     type: "mysql:10.0"
     disk: 2048
+
+
+rabbitmq:
+    type: rabbitmq:3.5
+    disk: 1024
+
 #
 #redis:
 #    type: "redis:3.0"

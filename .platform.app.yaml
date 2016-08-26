@@ -26,6 +26,7 @@ dependencies:
 # side is in the form `<service name>:<endpoint name>`.
 relationships:
     database: "mysql:mysql"
+    mq: "rabbitmq:rabbitmq"
 #    solr: "solr:solr"
 #    redis: "redis:redis"
 
