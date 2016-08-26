@@ -330,4 +330,22 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
       ->find('xpath', '/img[@src="' . $uri . '"]');
   }
 
+  /**
+   * Creates unpublished content of the given type.
+   *
+   * @Given a/an unpublished :type (content )with the title :title
+   */
+  public function createUnpublishedNode($type, $title) {
+    // @todo make this easily extensible.
+    $node = (object) array(
+      'title' => $title,
+      'type' => $type,
+      'body' => $this->getRandom()->name(255),
+      'status' => 0,
+    );
+    $saved = $this->nodeCreate($node);
+    // Set internal page on the new node.
+    $this->getSession()->visit($this->locatePath('/node/' . $saved->nid));
+  }
+
 }
