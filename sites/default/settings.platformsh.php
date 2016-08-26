@@ -40,6 +40,11 @@ if (isset($_ENV['PLATFORM_RELATIONSHIPS'])) {
       ];
     }
   }
+
+  // Enable rabbit queues
+  $settings['queue_service_esu'] = 'queue.rabbitmq';
+  $settings['queue_service_esu_workplace'] = 'queue.rabbitmq';
+  $settings['queue_service_Register_Interest'] = 'queue.rabbitmq';
 }
 // Configure private and temporary file paths.
 if (isset($_ENV['PLATFORM_APP_DIR'])) {
