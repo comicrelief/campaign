@@ -8,21 +8,18 @@
         },
         "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/uid": [
             {
-                "href": "http:\/\/default\/user\/0?_format=hal_json",
+                "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/0?_format=hal_json",
                 "lang": "en"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/revision_uid": [
             {
-                "href": "http:\/\/default\/user\/0?_format=hal_json"
+                "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/0?_format=hal_json"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/field_cw_row_reference": [
             {
-                "href": "http:\/\/default\/block\/9?_format=hal_json"
-            },
-            {
-                "href": "http:\/\/default\/block\/6?_format=hal_json"
+                "href": "http:\/\/sr16-spl-local.sportrelief.com\/block\/9?_format=hal_json"
             }
         ]
     },
@@ -38,7 +35,7 @@
     ],
     "revision_id": [
         {
-            "value": "18"
+            "value": "3"
         }
     ],
     "type": [
@@ -57,7 +54,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/0?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -65,7 +62,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "863fcb62-bf24-4f65-b5ab-464f845c5720"
+                        "value": "c850b5b8-a5a5-49bb-a7a5-4d076e23e220"
                     }
                 ],
                 "lang": "en"
@@ -75,7 +72,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/0?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -83,7 +80,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "863fcb62-bf24-4f65-b5ab-464f845c5720"
+                        "value": "c850b5b8-a5a5-49bb-a7a5-4d076e23e220"
                     }
                 ]
             }
@@ -92,7 +89,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/block\/9?_format=hal_json"
+                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/block\/9?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/block_content\/cw_row_block"
@@ -101,21 +98,6 @@
                 "uuid": [
                     {
                         "value": "993b8a81-19f0-42b9-bb05-5c55b007a698"
-                    }
-                ]
-            },
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/block\/6?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/block_content\/cw_row_block"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "0b9042ac-8196-4cda-9604-4eae9b325279"
                     }
                 ]
             }

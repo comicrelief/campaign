@@ -4,49 +4,49 @@
             "href": ""
         },
         "type": {
-            "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cr_cards"
+            "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/partner_list"
         },
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_cards\/uid": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/partner_list\/uid": [
             {
-                "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/0?_format=hal_json",
+                "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/1?_format=hal_json",
                 "lang": "en"
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_cards\/revision_uid": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/partner_list\/revision_uid": [
             {
-                "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/0?_format=hal_json"
+                "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/1?_format=hal_json"
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_cards\/field_cr_cards_card_reference": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/partner_list\/field_partner_list": [
             {
-                "href": "http:\/\/sr16-spl-local.sportrelief.com\/block\/10?_format=hal_json"
+                "href": "http:\/\/sr16-spl-local.sportrelief.com\/partners\/bt?_format=hal_json"
             },
             {
-                "href": "http:\/\/sr16-spl-local.sportrelief.com\/block\/12?_format=hal_json"
+                "href": "http:\/\/sr16-spl-local.sportrelief.com\/partners\/british-airways?_format=hal_json"
             },
             {
-                "href": "http:\/\/sr16-spl-local.sportrelief.com\/block\/11?_format=hal_json"
+                "href": "http:\/\/sr16-spl-local.sportrelief.com\/partners\/sainsburys?_format=hal_json"
             }
         ]
     },
     "id": [
         {
-            "value": "2"
+            "value": "6"
         }
     ],
     "uuid": [
         {
-            "value": "42c6b394-be7e-42dd-a862-e29db209ca44"
+            "value": "c26d8de2-d149-48f6-adde-7dd1bdc07641"
         }
     ],
     "revision_id": [
         {
-            "value": "2"
+            "value": "6"
         }
     ],
     "type": [
         {
-            "target_id": "cr_cards"
+            "target_id": "partner_list"
         }
     ],
     "langcode": [
@@ -56,11 +56,11 @@
         }
     ],
     "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_cards\/uid": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/partner_list\/uid": [
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/0?_format=hal_json"
+                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/1?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -68,17 +68,17 @@
                 },
                 "uuid": [
                     {
-                        "value": "10e30dff-5a0e-4b33-aeb7-89f49629de0a"
+                        "value": "167e2427-f14c-4ba9-a47c-d8bf5ab72041"
                     }
                 ],
                 "lang": "en"
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_cards\/revision_uid": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/partner_list\/revision_uid": [
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/0?_format=hal_json"
+                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/1?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -86,54 +86,54 @@
                 },
                 "uuid": [
                     {
-                        "value": "10e30dff-5a0e-4b33-aeb7-89f49629de0a"
+                        "value": "167e2427-f14c-4ba9-a47c-d8bf5ab72041"
                     }
                 ]
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_cards\/field_cr_cards_card_reference": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/partner_list\/field_partner_list": [
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/block\/10?_format=hal_json"
+                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/partners\/bt?_format=hal_json"
                     },
                     "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/block_content\/cr_card"
+                        "href": "http:\/\/drupal.org\/rest\/type\/node\/partner"
                     }
                 },
                 "uuid": [
                     {
-                        "value": "754defa1-523a-493f-8d29-118884a9f146"
+                        "value": "5bab0607-6a2b-46d5-955e-371c5be67868"
                     }
                 ]
             },
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/block\/12?_format=hal_json"
+                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/partners\/british-airways?_format=hal_json"
                     },
                     "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/block_content\/cr_card"
+                        "href": "http:\/\/drupal.org\/rest\/type\/node\/partner"
                     }
                 },
                 "uuid": [
                     {
-                        "value": "005a1157-fa77-4ef6-8ce6-4a2f6b287485"
+                        "value": "af7a9e85-e342-4329-9521-aad3e1538832"
                     }
                 ]
             },
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/block\/11?_format=hal_json"
+                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/partners\/sainsburys?_format=hal_json"
                     },
                     "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/block_content\/cr_card"
+                        "href": "http:\/\/drupal.org\/rest\/type\/node\/partner"
                     }
                 },
                 "uuid": [
                     {
-                        "value": "a137f6e7-0cf3-4387-a4b8-d8333e1fe9f5"
+                        "value": "2fb3f5cb-ecf8-48ee-8a09-9ad08891a77a"
                     }
                 ]
             }
@@ -147,7 +147,7 @@
     ],
     "created": [
         {
-            "value": "1470653491",
+            "value": "1472204626",
             "lang": "en"
         }
     ],
@@ -172,19 +172,15 @@
             "lang": "en"
         }
     ],
-    "field_cr_cards_feature_layout": [
+    "field_background_colour": [
         {
-            "value": "0"
+            "value": "bg--white"
         }
     ],
-    "field_cr_cards_title": [
+    "field_partner_body": [
         {
-            "value": "So, what's your thing?"
-        }
-    ],
-    "field_cr_cards_title_hidden": [
-        {
-            "value": "0"
+            "value": "<h4>Check out our wonderful partners<\/h4>\r\n",
+            "format": "basic_html"
         }
     ]
 }
