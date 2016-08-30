@@ -1,0 +1,16 @@
+.paragraph--type--cr-block-reference{
+	text-align:center;
+	padding:60px 0;
+    margin: auto;
+    max-width: $max-width;
+    padding: 0 calc((4 * #{gutter()}));
+   
+    @include breakpoint($screen-md) {
+      padding: 0 calc((2 * #{gutter()}));
+      width: span(10);
+    }
+    @include breakpoint($screen-lg) {
+      width: span(8);
+      padding: 0 calc((0.5 * #{gutter()}));
+    }
+}
