@@ -109,24 +109,3 @@
 	  transform: translateY(-50%);
   }
 }
-
-// move to background-colours scss
-
-.bg--red,
-.bg--royal-blue,
-.bg--purple,
-.bg--black {
-  h1, h2, h3, h4, h5, p, .link {
-    color: $colour-white;
-  }
-  .bg--white,
-  .bg--sky-blue,
-  .bg--yellow,
-  .bg--green,
-  .bg--teal,
-  .bg--pink {
-    h1, h2, h3, h4, h5, p, .link {
-      color: $colour-black;
-    }
-  }
-}
