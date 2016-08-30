@@ -1,0 +1,17 @@
+{% set bg_colour = field_cw_bg_colour['#items'][0].value %}
+{% set title_hidden = field_cw_title_hidden['#items'][0].value ? 'visuallyhidden' : '' %}
+
+{%
+	set classes = [
+	'content-wall',
+	'paragraph',
+	bg_colour,
+	]
+%}
+
+<section{{ attributes.addClass(classes) }}>
+	<h2 class="content-wall__title {{title_hidden}}">{{ field_cw_title }}</h2>
+	<div class="clearfix cw-region">
+		{{ field_cw_row_reference }}
+	</div>
+</section>

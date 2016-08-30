@@ -23,3 +23,45 @@ function cr_content_wall_field_cw_view_mode(FieldStorageDefinitionInterface $def
   ];
   return $values;
 }
+
+/**
+ * Options callback for field_cw_bg_colour.
+ *
+ * @see options_allowed_values()
+ */
+function field_cw_bg_colour(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
+  $values = [
+    'bg--white' => t('White'),
+    'bg--red' => t('Red'),
+    'bg--sky-blue' => t('Sky blue'),
+    'bg--yellow' => t('Yellow'),
+    'bg--green' => t('Green'),
+    'bg--teal' => t('Teal'),
+    'bg--royal-blue' => t('Royal blue'),
+    'bg--purple' => t('Purple'),
+    'bg--pink' => t('Pink'),
+    'bg--black' => t('Black'),
+    'bg--dark-blue' => t('Dark blue'),
+  ];
+  return $values;
+}
+
+/**
+ * Options callback for field_cw_bg_colour.
+ *
+ * @see options_allowed_values()
+ */
+function field_cw_link_colour(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
+  $values = [
+    'link--red' => t('Red'),
+    'link--sky-blue' => t('Sky blue'),
+    'link--green' => t('Green'),
+    'link--teal' => t('Teal'),
+    'link--royal-blue' => t('Royal blue'),
+    'link--purple' => t('Purple'),
+    'link--pink' => t('Pink'),
+    'link--yellow' => t('Yellow'),
+    'link--white' => t('White'),
+  ];
+  return $values;
+}

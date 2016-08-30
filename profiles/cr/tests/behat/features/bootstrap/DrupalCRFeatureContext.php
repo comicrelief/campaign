@@ -383,6 +383,7 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
         throw new Exception('Expected queue property "' . $name . '" contains value "' . $item[$name] . '" but "' . $expected_value . '" expected, for last item from queue "' . $queue_name . '"');
       }
     }
+  }
 
   /**
    * Creates unpublished content of the given type.

@@ -24,6 +24,9 @@ config_devel:
   - field.storage.block_content.field_cw_block_reference
   - field.storage.block_content.field_cw_view_mode
   - field.storage.paragraph.field_cw_row_reference
+  - field.storage.paragraph.field_cw_bg_colour
+  - field.storage.paragraph.field_cw_title
+  - field.storage.paragraph.field_cw_title_hidden
   - field.field.paragraph.cw_row.field_cw_row_reference
   - field.field.block_content.cw_row_block.field_cw_block_reference
   - field.field.block_content.cw_row_block.field_cw_view_mode
