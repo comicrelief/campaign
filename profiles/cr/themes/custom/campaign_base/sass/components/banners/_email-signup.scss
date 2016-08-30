@@ -271,7 +271,7 @@ select,
       padding-top: calc(354px + 20px);
 
       &:after {
-        background: sprite($icons, PLACEHOLDER-register-interest-bg-1x) no-repeat;
+        background: sprite($icons, fixedplaceholder-register-interest-bg-1x) no-repeat;
         width: 254px;
         height: 354px;
         top: 0;
