@@ -60,7 +60,7 @@ class WorkplaceSignUpBlock extends BlockBase implements BlockPluginInterface {
     $config = $this->getConfiguration();
 
     $form['cr_email_signup_initial_message'] = [
-      '#type' => 'textfield',
+      '#type' => 'textarea',
       '#title' => $this->t('Initial Message'),
       '#description' => $this->t('Enter the initial message to show'),
       '#default_value' => isset($config['initial_message']) ? $config['initial_message'] : '',
