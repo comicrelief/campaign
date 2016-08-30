@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cw_title_hidden
+    - paragraphs.paragraphs_type.cw_row
+id: paragraph.cw_row.field_cw_title_hidden
+field_name: field_cw_title_hidden
+entity_type: paragraph
+bundle: cw_row
+label: 'Visually hide title'
+description: 'Hiding titles might be desirable for a visual design, however titles can be useful for visually impaired users, providing contextual clarity and navigational cues via screenreaders.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
