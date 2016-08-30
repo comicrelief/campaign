@@ -36,25 +36,18 @@
         max-width: calc($max-width - (#{gutter()} * 1));
       }
       //
-      @include breakpoint($screen-md) {
-        @include span(6);
-        float: none;
-        margin: 0 auto;
-      }
-      @include breakpoint($screen-lg) {
-        @include span(12);
-        float: none;
-      }
     }
     li {
       @include span(6);
       float: none;
+      margin-bottom: calc(2 * (#{gutter()}));
       @include breakpoint($screen-md) {
-        margin-bottom: 2.5%;
-        max-width: 300px;
+        @include span(4);
+        float: none;
       }
       @include breakpoint($screen-lg) {
-        @include span(3);
+        @include span(2);
+        float: none;
       }
     }
     img {
