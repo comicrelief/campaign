@@ -38,16 +38,17 @@
 
 /* RND17 colours */
 
-$colour-red:      #f04257;
-$colour-sky-blue:  #51caf5;
-$colour-yellow:   #fbef51;
-$colour-green:    #a2cf59;
-$colour-teal:     #00beca;
-$colour-royal-blue: #388aca;
-$colour-purple: #8552a1;
-$colour-pink: #f38a99;
+$colour-red: #f04257;
+$colour-sky-blue: #22d2dc;
+$colour-yellow: #fbef51;
+$colour-green: #b2e55e;
+$colour-teal: #00beca;
+$colour-royal-blue: #0565d1;
+$colour-purple: #7d2ca9;
+$colour-dark-purple: #7023b7;
+$colour-pink: #fc9eb9;
 
-$colour-black: #222;
+$colour-black: #030e1a;
 $colour-dark-blue: #061d38;
 // $colour-dark-grey: #333;
 $colour-jasper-grey: #666;
@@ -57,7 +58,7 @@ $colour-light-grey: #e6e3dc;
 $colour-smoke-grey: #f0f0f0;
 $colour-white: #fff;
 // it the below still needed??
-$item-grey:      #ddd;
+$item-grey: #ddd;
 
 /**
  * Parameters
@@ -94,6 +95,7 @@ $colorList: (
   ("teal" $colour-teal), 
   ("royal-blue" $colour-royal-blue), 
   ("purple" $colour-purple),
+  ("dark-purple" $colour-dark-purple),
   ("pink" $colour-pink),
   ("black" $colour-black),
   ("dark-blue" $colour-dark-blue),

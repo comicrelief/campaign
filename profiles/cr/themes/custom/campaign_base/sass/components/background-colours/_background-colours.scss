@@ -42,6 +42,11 @@
 .bg--cream-grey {
   background-color: $cream-grey;
 }
+.bg--sky-blue {
+	h2, h3, h4, h5, p, .link {
+		color: $colour-dark-purple;
+	}
+}
 .bg--black,
 .bg--dark-blue,
 .bg--red,
@@ -54,7 +59,6 @@
 	.bg--smoke-grey,
 	.bg--light-grey,
 	.bg--gainsboro-grey,
-	.bg--sky-blue,
 	.bg--yellow,
 	.bg--green,
 	.bg--teal,
@@ -63,6 +67,12 @@
 	  	color: $colour-black;
 	 }
 	}
+	.bg--sky-blue {
+		h2, h3, h4, h5, p, .link {
+	  	color: $colour-dark-purple;
+	 }
+	}
+
 }
 
 @for $color from 1 to (length($colorList)+1) {
