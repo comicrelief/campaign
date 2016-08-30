@@ -11,6 +11,10 @@
 .cards {
   padding: 60px 0;
   width: 100%;
+  &+.cards {
+    padding-top: 0;
+    margin-top: -60px;
+  }
 	@for $i from 1 through 6 {
   .cards__item:first-child:nth-last-child(#{$i}),
   .cards__item:first-child:nth-last-child(#{$i}) ~ .cards__item {
