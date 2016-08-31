@@ -12,6 +12,7 @@ Feature: Partner
 
   @api @javascript
   Scenario: Create a new partner
+    Given a "partner_category" term with the name "Official"
     Given I am viewing a "partner" content:
     | title | Better |
     | body | The feel good place |
