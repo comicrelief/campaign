@@ -42,7 +42,7 @@
       float: none;
       margin-bottom: calc(2 * (#{gutter()}));
       @include breakpoint($screen-md) {
-        @include span(4);
+        @include span(3);
         float: none;
       }
       @include breakpoint($screen-lg) {
