@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains HeadEsuBlock.php.
- */
-
 namespace Drupal\cr_email_signup\Plugin\Block;
 
 /**

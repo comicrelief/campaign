@@ -1,12 +1,6 @@
 <?php
 
-/**
- * @file
- * Contains HeadESU.php.
- */
-
 namespace Drupal\cr_email_signup\Form;
-
 
 class HeadEsu extends StandardSignUp {
 
