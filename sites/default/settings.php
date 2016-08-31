@@ -21,16 +21,21 @@ if (file_exists($environment)) {
 }
 
 /**
+ * Load services definition file.
+ */
+$settings['container_yamls'][] = __DIR__ . '/services.yml';
+
+/**
  * Include settings for platform.sh
  */
 if (file_exists(__DIR__ . '/settings.local.php')) {
-	// Automatic Platform.sh settings.
-	if (file_exists(__DIR__ . '/settings.platformsh.php')) {
-	  include __DIR__ . '/settings.platformsh.php';
-	}
+  // Automatic Platform.sh settings.
+  if (file_exists(__DIR__ . '/settings.platformsh.php')) {
+    include __DIR__ . '/settings.platformsh.php';
+  }
 
   include __DIR__ . '/settings.local.php';
-  
+
   // Some specific platform.sh settings
   $settings['update_free_access'] = FALSE;
   $config_directories[CONFIG_SYNC_DIRECTORY] = 'sites/default/config';

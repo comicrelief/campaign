@@ -55,7 +55,6 @@ dependencies:
   - metatag_open_graph
   - pathauto
   - redirect
-  - youtube
   - view_modes_display
   - social_links
   - focal_point
@@ -90,6 +89,7 @@ dependencies:
   - cr_landing_page
   - cr_navigation
   #- cr_performance
+  - cr_user
 
   # Development modules
   - config_devel
@@ -208,6 +208,7 @@ config_devel:
   - user.role.anonymous
   - user.role.authenticated
   - user.role.editor
+  - user.role.reviewer
   - user.settings
 
   # Contributed modules

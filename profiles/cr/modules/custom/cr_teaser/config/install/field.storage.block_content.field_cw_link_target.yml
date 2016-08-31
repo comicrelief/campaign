@@ -2,14 +2,13 @@ langcode: en
 status: true
 dependencies:
   module:
-    - node
-    - youtube
-id: node.field_youtube_url
-field_name: field_youtube_url
-entity_type: node
-type: youtube
+    - block_content
+id: block_content.field_cw_link_target
+field_name: field_cw_link_target
+entity_type: block_content
+type: boolean
 settings: {  }
-module: youtube
+module: core
 locked: false
 cardinality: 1
 translatable: true

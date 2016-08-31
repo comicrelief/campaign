@@ -4,6 +4,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.page.body
+    - field.field.node.page.field_page_meta_tags
     - node.type.page
   module:
     - text
@@ -23,4 +24,5 @@ content:
   links:
     weight: 101
 hidden:
+  field_page_meta_tags: true
   social_links: true

@@ -46,12 +46,14 @@
 // <p>.font--small</p>
 // <p class="font--xsmall">Paragraph Intrinsicly impact compelling channels through intermandated paradigms. Appropriately optimize intuitive imperatives whereas emerging web services. Continually expedite installed base paradigms rather than high-payoff niches. Authoritatively.</p>
 // <p>.font--xsmall</p>
+// <p>Paragraph Intrinsicly impact <strong>compelling channels through</strong> intermandated paradigms. Appropriately optimize <strong>intuitive imperatives</strong> whereas emerging web services. Continually expedite installed base paradigms rather than high-payoff niches. Authoritatively.</p>
+// <p>strong tags</p>
 //
 // Style guide: Typography.Typography
 
 h1 {
   margin: 0 0 20px;
-  color: #1e1e1e;
+  color: $colour-black;
   font-family: $font-bold;
   @include font-size($h1-font-size);
   &.font--xlarge {
@@ -69,7 +71,9 @@ h1 {
     }
   }
 }
-
+h2, h3, h4, h5, p, .link {
+  color: $colour-black;
+}
 p,
 h2,
 h3,
@@ -113,6 +117,10 @@ p {
   }
 }
 
+strong {
+  font-family: $font-bold;
+}
+
 @for $color from 1 to (length($colorList)+1) {
   @include font-variation(nth($colorList, $color));
 }
@@ -124,7 +132,6 @@ p {
   margin-top: 40px;
   text-transform: none;
   font-size: 24px;
-  font-weight: 600;
   line-height: 28px;
 }
 

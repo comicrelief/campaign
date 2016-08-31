@@ -9,7 +9,6 @@ dependencies:
     - field.field.node.article.field_article_meta_tags
     - field.field.node.article.field_article_publish_date
     - field.field.node.article.field_article_tags
-    - field.field.node.article.field_youtube_url
     - field.field.node.article.publishing_date
     - node.type.article
   module:
@@ -44,6 +43,5 @@ hidden:
   field_article_publish_date: true
   field_article_tags: true
   field_media: true
-  field_youtube_url: true
   publishing_date: true
   social_links: true
