@@ -13,12 +13,10 @@
   .single-msg__outer-wrapper {
     @include container;
     position: relative;
-    padding-top: $row-padding--sm;
-    padding-bottom: $row-padding--sm;
+    padding: $row-padding--sm calc(3 * #{gutter()});
 
     @include breakpoint($screen-md) {
-      padding-top: $row-padding--md;
-      padding-bottom: $row-padding--md;
+      padding: $row-padding--md 0;
     }
   }
   
@@ -81,11 +79,20 @@
       .single-msg__image {
         float:right;
         margin-left: 0;
-        margin-right: gutter();
+        margin-right: calc(2 * #{gutter()});
       }
     
       .single-msg__copy_wrapper {
         left: 0;
+        margin-left: calc(2 * #{gutter()});
+      }
+    }
+    @include breakpoint($screen-lg) {
+      .single-msg__image {
+        margin-right: gutter();
+      }
+    
+      .single-msg__copy_wrapper {
         margin-left: gutter();
       }
     }
@@ -144,14 +151,23 @@
       @include breakpoint($screen-lg) {
         float: right;
         margin-left: 0;
-        margin-right: gutter();
+        margin-right: calc(2 * #{gutter()});;
       }
     }
 
     .single-msg__copy_wrapper {
       @include breakpoint($screen-lg) {
         left: 0;
-        margin: 90px 0 0 gutter();
+        margin: 90px 0 0 calc(2 * #{gutter()});
+      }
+    }
+    @include breakpoint($screen-lg) {
+      .single-msg__image {
+        margin-right: gutter();
+      }
+    
+      .single-msg__copy_wrapper {
+        margin-left: gutter();
       }
     }
   }
