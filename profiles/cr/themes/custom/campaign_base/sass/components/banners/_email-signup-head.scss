@@ -7,50 +7,58 @@
 // Style guide: Banners.Email-signup-head
 
 //hide esu form initially
-header {
-  .main-menu__icons-esu-toggle {
-    padding-top: 20px;
-  }
-  .cr-email-signup-form {
-    display: none;
-    position: relative;
-    top: 0;
-    z-index: 1;
-    .block--cr-email-signup__inner-wrapper {
-      background-color: $colour-black;
-      margin: 0;
-      padding: 30px 0;
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-    .cr-email-signup--messages {
-      margin: 0;
-      width: 100%;
-    }
-    form {
-      text-align: center;
-    }
-    .form-item-email {
-      display: inline-block;
-      float: none;
-      margin: 0;
-    }
-    .step1.button {
-      display: inline-block;
-      float: none;
-    }
-  }
-  .cr-email-signup-form.show {
-    display: block;
-  }
-  .esu-initial-message {
-    p {
-      color: $colour-white;
-    }
-  }
-  // below just temporary
-  .block--cr-email-signup .block--cr-email-signup__inner-wrapper:after {
-    left: 0;
-  }
+.block--cr-email-signup--head {
+  display: none;
 }
+
+.block--cr-email-signup--head.show {
+  display: block;
+}
+
+// header {
+//   .main-menu__icons-esu-toggle {
+//     padding-top: 20px;
+//   }
+//   .cr-email-signup-form {
+//     display: none;
+//     position: relative;
+//     top: 0;
+//     z-index: 1;
+//     .block--cr-email-signup__inner-wrapper {
+//       background-color: $colour-black;
+//       margin: 0;
+//       padding: 30px 0;
+//       position: absolute;
+//       right: 0;
+//       top: 0;
+//     }
+//     .cr-email-signup--messages {
+//       margin: 0;
+//       width: 100%;
+//     }
+//     form {
+//       text-align: center;
+//     }
+//     .form-item-email {
+//       display: inline-block;
+//       float: none;
+//       margin: 0;
+//     }
+//     .step1.button {
+//       display: inline-block;
+//       float: none;
+//     }
+//   }
+//   .cr-email-signup-form.show {
+//     display: block;
+//   }
+//   .esu-initial-message {
+//     p {
+//       color: $colour-white;
+//     }
+//   }
+//   // below just temporary
+//   .block--cr-email-signup .block--cr-email-signup__inner-wrapper:after {
+//     left: 0;
+//   }
+// }
