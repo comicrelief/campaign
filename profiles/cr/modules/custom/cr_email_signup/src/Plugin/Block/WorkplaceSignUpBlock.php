@@ -59,6 +59,13 @@ class WorkplaceSignUpBlock extends BlockBase implements BlockPluginInterface {
 
     $config = $this->getConfiguration();
 
+    $form['cr_email_signup_tittle_message'] = [
+      '#type' => 'textarea',
+      '#title' => $this->t('Tittle Message'),
+      '#description' => $this->t('Enter the tittle message to show'),
+      '#default_value' => isset($config['tittle_message']) ? $config['tittle_message'] : '',
+    ];
+
     $form['cr_email_signup_initial_message'] = [
       '#type' => 'textarea',
       '#title' => $this->t('Initial Message'),
@@ -67,7 +74,7 @@ class WorkplaceSignUpBlock extends BlockBase implements BlockPluginInterface {
     ];
 
     $form['cr_email_signup_first_success_message'] = [
-      '#type' => 'textfield',
+      '#type' => 'textarea',
       '#title' => $this->t('First Success Message'),
       '#description' => $this->t('Enter the success message'),
       '#default_value' => isset($config['first_success_message']) ? $config['first_success_message'] : '',

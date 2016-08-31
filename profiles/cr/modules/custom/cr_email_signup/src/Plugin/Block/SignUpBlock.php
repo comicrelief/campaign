@@ -30,7 +30,7 @@ class SignUpBlock extends WorkplaceSignUpBlock {
     $config = $this->getConfiguration();
 
     $form['cr_email_signup_second_success_message'] = [
-      '#type' => 'textfield',
+      '#type' => 'textarea',
       '#title' => $this->t('Second Success Message'),
       '#description' => $this->t('Enter the success message for the second stage, if any'),
       '#default_value' => isset($config['second_success_message']) ? $config['second_success_message'] : '',
