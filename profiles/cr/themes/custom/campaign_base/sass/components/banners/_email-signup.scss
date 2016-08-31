@@ -250,9 +250,6 @@ select,
           @include span(12);
           position: relative;
           margin-top: 30px;
-
-          label {
-          }
         }
 
         .form-submit {
@@ -291,13 +288,9 @@ select,
           color: $colour-white;
         }
       }
-      .esu-first-success-message p {
-        //@extend h4;
-      }
     }
 
     .block--cr-email-signup__inner-wrapper {
-
       &:after {
         background: none;
         width: 0;
@@ -314,10 +307,6 @@ select,
           @include span(12);
           position: relative;
           margin-top: 30px;
-
-          label {
-
-          }
         }
 
         .form-submit {
@@ -350,6 +339,7 @@ select,
         position: absolute;
         top: 50%;
         margin: 0;
+
         h4 {
           margin: 0;
         }
@@ -472,7 +462,6 @@ select,
       }
 
       .block--cr-email-signup__inner-wrapper {
-
         &:after {
           position:absolute;
           background: sprite($icons, fixedplaceholder-register-interest-bg-sm-1x) no-repeat;
@@ -489,9 +478,6 @@ select,
           
           .form-item-email {
             @include span(6);
-
-            label {
-            }
           }
 
           .form-submit {
@@ -637,8 +623,6 @@ select,
     }
   }
 }
-
-
 
 
 /* Hide-show steps */
