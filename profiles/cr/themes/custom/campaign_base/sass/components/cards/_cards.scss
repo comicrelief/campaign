@@ -9,11 +9,18 @@
 // Style guide: Cards
 
 .cards {
-  padding: 60px 0;
+  padding: $row-padding--sm 0;
   width: 100%;
+
+  @include breakpoint($screen-md) {
+    padding: $row-padding--md 0;
+  }
   &+.cards {
     padding-top: 0;
-    margin-top: -60px;
+    margin-top: -$row-padding--sm;
+    @include breakpoint($screen-md) {
+      margin-top: -$row-padding--md;
+    }
   }
 	@for $i from 1 through 6 {
   .cards__item:first-child:nth-last-child(#{$i}),
