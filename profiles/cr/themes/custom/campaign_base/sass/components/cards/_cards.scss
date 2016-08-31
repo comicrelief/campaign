@@ -42,7 +42,7 @@
       @include span(4);
       display: inline-block;
       float: none;
-      vertical-align: top
+      vertical-align: top;
     }
   }
 }
@@ -51,6 +51,7 @@
 }
 .cards__title {
   text-align: center;
+  margin-bottom: 30px;
   .bg--dark-orchid & {
     color: $colour-white;
   }
