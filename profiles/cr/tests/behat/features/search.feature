@@ -1,6 +1,6 @@
 Feature: Search
 
-  @default-content 
+  @default-content
   Scenario: Search /search Lindsey
     Given I am on "search?text=Lindsey"
     Then I should see the link "Fundraise"
