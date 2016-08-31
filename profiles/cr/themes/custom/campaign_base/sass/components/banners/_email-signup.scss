@@ -172,6 +172,15 @@ select,
     }
   }
 
+  &.block--cr-email-signup--standard {
+    .block--cr-email-signup__inner-wrapper {
+      padding-top: 50px;
+
+      .button.form-submit {
+        margin-top:0;
+      }
+    }
+  }
 
 
   /* Workplace ESU */
@@ -242,7 +251,7 @@ select,
           @extend .btn;
           @extend .btn--yellow;
           padding: 12px 20px !important;
-          margin-top: 20px !important;
+          margin-top: 30px !important;
           @include span(12);
         }
       }
@@ -678,23 +687,9 @@ select,
   }
 }
 
-
-
-
-/* REMOVE ALL THIS !! */
-.block-cr-email-signup-block-workplace, 
-.block-cr-email-signup-block-register-interest {
-  float: left;
-  width: 100%;
-}
-
 .esu-uuid,
 .esu-region,
 .esu-context-mapping,
 .esu-weight {
-  display: none;
-}
-
-.promo-header {
   display: none;
 }
