@@ -48,6 +48,10 @@
 }
 .cards__wrapper {
   text-align: center;
+  @include breakpoint($screen-md-max) {
+    @include display-flex;
+    @include justify-content(center);
+  }
 }
 .cards__title {
   text-align: center;
@@ -61,6 +65,7 @@
   position: relative;
   margin-bottom: 20px;
   text-align: left;
+  overflow: hidden;
 }
 .cards__image {
   img {
@@ -75,6 +80,7 @@
 .cards__content-wrapper {
   position: relative;
   padding: 30px;
+  height: 100%;
   @include breakpoint($screen-md-only) {
     position: absolute;
     top: 0;
