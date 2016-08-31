@@ -40,7 +40,9 @@ nav.menu--main {
   /* Wrapper for all buttons in the nav */
   .main-menu__icons {
     float: right;
-
+    .main-menu-toggle {
+      float: right;
+    }
     @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
       padding: 40px;
       position: relative;
