@@ -13,7 +13,7 @@
   @include clearfix;
   position: relative;
   clear: both;
-  margin: 0;
+  margin: 0 0 -5px;
   min-height: 500px;
   @extend .bg--black;
 }
