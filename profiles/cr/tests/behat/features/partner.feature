@@ -1,7 +1,7 @@
 Feature: Partner
   This feature covers partners
 
-  @api
+  @api @default-content
   Scenario: Partners page is working
     Given I am on "partners"
     Then I should see the text "wonderful corporate partners"
@@ -10,7 +10,7 @@ Feature: Partner
     And I should see the link "PayPal"
     And I should see the link "Persil"
 
-  @api @test @javascript
+  @api @javascript
   Scenario: Create a new partner
     Given I am viewing a "partner" content:
     | title | Better |
