@@ -22,5 +22,3 @@ Feature: Partner
     | field_partner_image | http://dummyimage.com/400x4:3, http://dummyimage.com/400x4:3, http://dummyimage.com/400x4:3 |
     Then the url should match "partners/better"
     And I should see "Better"
-    When I go to "partners"
-    Then I should see "Better"
