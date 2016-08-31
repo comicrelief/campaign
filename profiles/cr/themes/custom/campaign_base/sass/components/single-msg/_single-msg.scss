@@ -19,6 +19,20 @@
       padding: $row-padding--md 0;
     }
   }
+  &.single-msg--feature-copy-right,
+  &.single-msg--feature-copy-left {
+    .single-msg__outer-wrapper {
+      padding: $row-padding--sm calc(4 * #{gutter()});
+
+      @include breakpoint($screen-md) {
+        padding: $row-padding--md gutter();
+      }
+
+      @include breakpoint($screen-lg) {
+        padding: $row-padding--md 0;
+      }
+    }
+  }
   
   .single-msg__image {
     width: 100%;
@@ -31,8 +45,8 @@
     }
 
     @include breakpoint($screen-md, $no-query: true) { 
-      @include span(6 wide);
-      width: calc( #{span(6)} +  ( #{gutter()} * 1) );
+      width: span(6);
+      margin-left: calc( 2 * ( #{gutter()}) );
       margin-right: 0;
     }
 
@@ -49,13 +63,11 @@
       position: absolute;
       top: 0;
       right: 0;
-      margin-left: 0;
       // Recalculate height minus the row padding
       height: calc(100% - ( #{$row-padding--md} * 2) );
       margin-top: 60px;
-
-      @include span(6 wide);
-      width: calc( #{span(6)} +  ( #{gutter()} * 1) );
+      width: span(6);
+      margin-right: calc( 2 * ( #{gutter()}) );
       margin-left: 0;
     }
 
@@ -97,7 +109,6 @@
       }
     }
   }
-
 
   /* - - - - Featured Variations - - - - */
 
