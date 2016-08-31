@@ -87,6 +87,7 @@ class WorkplaceSignUpBlock extends BlockBase implements BlockPluginInterface {
    * {@inheritdoc}
    */
   public function blockSubmit($form, FormStateInterface $form_state) {
+    $this->setConfigurationValue('tittle_message', $form_state->getValue('cr_email_signup_tittle_message'));
     $this->setConfigurationValue('initial_message', $form_state->getValue('cr_email_signup_initial_message'));
     $this->setConfigurationValue('first_success_message', $form_state->getValue('cr_email_signup_first_success_message'));
   }
