@@ -71,6 +71,7 @@ dependencies:
   - paragraphs
   - view_mode
   - imagemagick
+  - menu_link_attributes
 
   # Custom modules
   - cr_layout
