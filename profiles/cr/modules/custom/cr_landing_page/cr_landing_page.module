@@ -18,7 +18,7 @@ function cr_landing_page_field_landing_background_colour(FieldStorageDefinitionI
     'bg--white' => t('White'),
     'bg--black' => t('Black'),
     'bg--red' => t('Red'),
-    'bg--sky-blue' => t('Sky blue'),
+    'bg--blue' => t('Blue'),
     'bg--yellow' => t('Yellow'),
     'bg--green' => t('Green'),
     'bg--teal' => t('Teal'),
