@@ -29,12 +29,12 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.4.0)
-    aws-sdk (2.5.1)
-      aws-sdk-resources (= 2.5.1)
-    aws-sdk-core (2.5.1)
+    aws-sdk (2.5.7)
+      aws-sdk-resources (= 2.5.7)
+    aws-sdk-core (2.5.7)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.5.1)
-      aws-sdk-core (= 2.5.1)
+    aws-sdk-resources (2.5.7)
+      aws-sdk-core (= 2.5.7)
     breakpoint (2.7.0)
       sass (~> 3.3)
       sassy-maps (< 1.0.0)
@@ -187,6 +187,7 @@ PLATFORMS
 DEPENDENCIES
   activesupport (= 4.2.6)
   breakpoint
+  chunky_png (= 1.3.6)
   compass
   compass-normalize
   compass-rails (~> 2.0.0)
