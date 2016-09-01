@@ -16,15 +16,19 @@ use Drupal\Core\Field\FieldStorageDefinitionInterface;
 function cr_cards_field_cr_cards_background(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
   $values = [
     'bg--white' => t('White'),
+    'bg--black' => t('Black'),
     'bg--red' => t('Red'),
     'bg--sky-blue' => t('Sky blue'),
     'bg--yellow' => t('Yellow'),
     'bg--green' => t('Green'),
     'bg--teal' => t('Teal'),
     'bg--royal-blue' => t('Royal blue'),
-    'bg--purple' => t('Purple'),
     'bg--pink' => t('Pink'),
-    'bg--black' => t('Black'),
+    'bg--purple' => t('Purple'),
+    'bg--jasper-grey' => t('Jasper grey'),
+    'bg--gainsboro-grey' => t('Gainsboro grey'),
+    'bg--light-grey' => t('Light grey'),
+    'bg--smoke-grey' => t('Smoke grey'),
     'bg--dark-blue' => t('Dark blue')
   ];
   return $values;
@@ -38,15 +42,19 @@ function cr_cards_field_cr_cards_background(FieldStorageDefinitionInterface $def
 function cr_card_field_cr_card_background(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
   $values = [
     'bg--white' => t('White'),
+    'bg--black' => t('Black'),
     'bg--red' => t('Red'),
     'bg--sky-blue' => t('Sky blue'),
     'bg--yellow' => t('Yellow'),
     'bg--green' => t('Green'),
     'bg--teal' => t('Teal'),
     'bg--royal-blue' => t('Royal blue'),
-    'bg--purple' => t('Purple'),
     'bg--pink' => t('Pink'),
-    'bg--black' => t('Black'),
+    'bg--purple' => t('Purple'),
+    'bg--jasper-grey' => t('Jasper grey'),
+    'bg--gainsboro-grey' => t('Gainsboro grey'),
+    'bg--light-grey' => t('Light grey'),
+    'bg--smoke-grey' => t('Smoke grey'),
     'bg--dark-blue' => t('Dark blue')
   ];
   return $values;
