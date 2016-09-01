@@ -17,7 +17,7 @@ function cr_cards_field_cr_cards_background(FieldStorageDefinitionInterface $def
   $values = [
     'bg--white' => t('White'),
     'bg--red' => t('Red'),
-    'bg--sky-blue' => t('Sky blue'),
+    'bg--blue' => t('Blue'),
     'bg--yellow' => t('Yellow'),
     'bg--green' => t('Green'),
     'bg--teal' => t('Teal'),
@@ -39,7 +39,7 @@ function cr_card_field_cr_card_background(FieldStorageDefinitionInterface $defin
   $values = [
     'bg--white' => t('White'),
     'bg--red' => t('Red'),
-    'bg--sky-blue' => t('Sky blue'),
+    'bg--blue' => t('Blue'),
     'bg--yellow' => t('Yellow'),
     'bg--green' => t('Green'),
     'bg--teal' => t('Teal'),

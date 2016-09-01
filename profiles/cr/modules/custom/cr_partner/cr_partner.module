@@ -18,7 +18,7 @@ function cr_partner_field_background_colour(FieldStorageDefinitionInterface $def
     'bg--white' => t('White'),
     'bg--black' => t('Black'),
     'bg--red' => t('Red'),
-    'bg--sky-blue' => t('Sky blue'),
+    'bg--blue' => t('Blue'),
     'bg--yellow' => t('Yellow'),
     'bg--green' => t('Green'),
     'bg--teal' => t('Teal'),
