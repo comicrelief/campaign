@@ -43,9 +43,13 @@
       }
     }
   }
+  .cards__item:first-child:nth-last-child(1), 
+  .cards__item:first-child:nth-last-child(1) ~ .cards__item {
+    margin-bottom: 0;
+  }
   .cards__item:first-child:nth-last-child(2), 
   .cards__item:first-child:nth-last-child(2) ~ .cards__item {
-  @include breakpoint($screen-md-max) {
+    @include breakpoint($screen-md-max) {
       @include span(4);
       display: inline-block;
       float: none;
@@ -98,6 +102,11 @@
     @include push(5);
     &.cards__content-wrapper--no-image {
       @include span(12);
+      position: relative;
+      .cards__content {      
+        top: 0;
+        transform: none;
+      }
     }
   }
   .cards--feature-layout & {
