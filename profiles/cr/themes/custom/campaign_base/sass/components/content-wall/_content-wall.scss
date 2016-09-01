@@ -166,6 +166,7 @@
 }
 .cw-article__body {
   padding: 20px;
+  width: 100%;
 
   @include breakpoint($screen-md) {
     height: 100%;
