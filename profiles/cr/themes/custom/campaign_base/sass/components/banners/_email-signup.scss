@@ -35,14 +35,6 @@ select,
   input[type=text] {
     font-size: 16px;
     color: $colour-black;
-    @include border-radius(30px 0 0 30px);
-  }
-
-  input[type=submit].button {
-    background: $colour-black url(../images/svgs/arrow-right.svg) -4px center no-repeat;
-    @include border-radius(0 30px 30px 0);
-    text-indent: -9999px;
-    max-width: 60px;
   }
 
   // Hide custom error container and all hidden fields
@@ -172,6 +164,18 @@ select,
   /* Standard ESU */
   &.block--cr-email-signup--standard {
     background-color: $colour-red;
+
+    input[type=submit].button {
+      background: $colour-black url(../images/svgs/arrow-right.svg) -4px center no-repeat;
+      @include border-radius(0 30px 30px 0);
+      text-indent: -9999px;
+      max-width: 60px;
+    }
+    .ui-selectmenu-button,
+    input[type=select],
+    input[type=text] {
+      @include border-radius(30px 0 0 30px);
+    }
     .cr-email-signup--messages {
       text-align: center;
       @include span(10);
