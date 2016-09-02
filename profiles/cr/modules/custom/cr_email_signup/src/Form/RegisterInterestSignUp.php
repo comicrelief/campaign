@@ -38,12 +38,9 @@ class RegisterInterestSignUp extends SignUp {
     ];
     return $form;
   }
-  // ``, ``, ``, ``
+
   /**
-   * Fill a message for the queue service.
-   *
-   * @param array $append_message
-   *     Message to append to queue.
+   * {@inheritdoc}
    */
   protected function fillQmessage($append_message) {
     // Please refactor this because is disgusting.
