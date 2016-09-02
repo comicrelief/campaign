@@ -46,7 +46,7 @@ class RegisterInterestSignUp extends SignUp {
     // Please refactor this because is disgusting.
     $append_message['timestamp'] = time();
     $append_message['transSourceURL'] = \Drupal::service('path.current')->getPath();
-    $append_message['transSource'] = "{$this->campaign['campaign']}_[Device]_ESU_[PageElementSource]";
+    $append_message['transSource'] = "{$this->campaign}_[Device]_ESU_[PageElementSource]";
 
     // RND-178: Device & Source Replacements.
     $device = (empty($append_message['device'])) ? "Unknown" : $append_message['device'];
