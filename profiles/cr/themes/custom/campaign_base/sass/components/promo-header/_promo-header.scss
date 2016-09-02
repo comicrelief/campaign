@@ -47,6 +47,9 @@
 
       object-fit: cover;
       object-position: top;
+      .promo-header--feature & {
+        max-height: 400px;
+      }
     }
   }
 }

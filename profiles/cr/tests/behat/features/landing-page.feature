@@ -1,7 +1,7 @@
 Feature: Landing-page
   Check a landing page and make sure that it contains the mentioned paragraphs
 
-  @api @content
+  @api @default-content
   Scenario: Landing-page /fundraise
     Given I am on "/fundraise"
     Then I should see "Bake a massive difference"
@@ -16,7 +16,7 @@ Feature: Landing-page
     And I should see "FERN BRITTON SPEAKS OUT"
     And I should see "Rich text bg title"
 
-  @api @content
+  @api @default-content
   Scenario: Check metatags for landing pages
     Given I am on "/fundraise"
     Then the metatag attribute "title" should contain the value "Fundraise"
