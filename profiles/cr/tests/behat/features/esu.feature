@@ -3,7 +3,7 @@ Feature: ESU
 
   @javascript
   Scenario: ESU Standard
-    Given I am on "/esu"
+    Given I am on "/test/esu"
     Then I should see "ESU Standard: initial message" in the "esu_standard" region
     And I should not see "success" in the "esu_standard" region
     And I fill in "edit-email" with "test@example.org" in the "esu_standard" region
@@ -21,7 +21,7 @@ Feature: ESU
 
   @javascript
   Scenario: ESU Workplace
-    Given I am on "/esu"
+    Given I am on "/test/esu"
     Then I should see "ESU Workplace: initial message" in the "esu_workplace" region
     And I fill in "edit-email--2" with "test-workplace@example.org" in the "esu_workplace" region
     And I fill in "edit-firstname" with "Test Workplace First Name" in the "esu_workplace" region
@@ -34,7 +34,7 @@ Feature: ESU
 
   @javascript
   Scenario: ESU Register your Interest.(Should be only an email)
-    Given I am on "/esu"
+    Given I am on "/test/esu"
     Then I should see "ESU Register Interest: initial message" in the "esu_register_interest" region
     And I fill in "edit-email--3" with "test-register-interest@example.org" in the "esu_register_interest" region
     And I check "EventInterest"
