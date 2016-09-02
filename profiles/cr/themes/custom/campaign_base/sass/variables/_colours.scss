@@ -9,7 +9,7 @@
 /* RND17 colours */
 
 $colour-red: #f04257;
-$colour-sky-blue: #22d2dc;
+$colour-blue: #22d2dc;
 $colour-yellow: #fbef51;
 $colour-green: #b2e55e;
 $colour-teal: #00beca;
@@ -38,8 +38,8 @@ $item-grey: #ddd;
  */
 $linkList: (
   ("red" $colour-red $colour-purple),
-  ("sky-blue" $colour-sky-blue $colour-yellow), 
-  ("yellow" $colour-yellow $colour-sky-blue),
+  ("blue" $colour-blue $colour-yellow), 
+  ("yellow" $colour-yellow $colour-blue),
   ("green" $colour-green $colour-teal), 
   ("teal" $colour-teal $colour-pink), 
   ("royal-blue" $colour-royal-blue $colour-red), 
@@ -59,7 +59,7 @@ $linkList: (
  */
 $colorList: (
   ("red" $colour-red),
-  ("sky-blue" $colour-sky-blue), 
+  ("blue" $colour-blue), 
   ("yellow" $colour-yellow),
   ("green" $colour-green), 
   ("teal" $colour-teal), 
@@ -85,8 +85,8 @@ $colorList: (
  */
 $buttonList: (
   ("red" $colour-red $colour-purple $colour-white),
-  ("sky-blue" $colour-sky-blue $colour-yellow $colour-black), 
-  ("yellow" $colour-yellow $colour-sky-blue $colour-black),
+  ("blue" $colour-blue $colour-yellow $colour-black), 
+  ("yellow" $colour-yellow $colour-blue $colour-black),
   ("green" $colour-green $colour-teal $colour-black), 
   ("teal" $colour-teal $colour-pink $colour-black), 
   ("royal-blue" $colour-royal-blue $colour-red $colour-white), 
