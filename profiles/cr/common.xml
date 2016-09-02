@@ -140,6 +140,7 @@
   <target name="file:mod">
     <chmod file="sites/default" mode="0775" failonerror="true"/>
     <chmod file="sites/default/settings.php" mode="0664" failonerror="true"/>
+    <chmod file="sites/default/files" mode="2775" failonerror="true"/>
   </target>
   <target name="file:settings">
     <if>

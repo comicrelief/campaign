@@ -1,0 +1,27 @@
+// Email sign up header
+//
+// Standard Email sign up head
+//
+// Markup: email-signup-head.hbs
+//
+// Style guide: Banners.Email-signup-head
+
+//hide esu form initially
+header {
+  .cr-email-signup-form {
+    display: none;
+    position: relative;
+    top: 0;
+    z-index: 1;
+    .block--cr-email-signup__inner-wrapper {
+      background-color: $colour-black;
+      margin: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+  .cr-email-signup-form.show {
+    display: block;
+  }
+}

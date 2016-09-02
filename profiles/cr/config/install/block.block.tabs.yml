@@ -6,7 +6,7 @@ dependencies:
 id: tabs
 theme: campaign_base
 region: content
-weight: null
+weight: -2
 provider: null
 plugin: local_tasks_block
 settings:
