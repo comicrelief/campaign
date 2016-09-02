@@ -38,11 +38,17 @@
   .cr-email-signup--messages {
     height: 100%;
     margin: 34px auto 0;
+    padding-bottom: 10px;
     @include span(8);
     @include push(2);
   }
   .js-form-item-email {
     margin-top: 0;
+    @include breakpoint($screen-md) {
+      @include span(7);
+      @include push(2);
+      margin-right: 0;
+    }
     label {
       @include visuallyhidden;
     }
@@ -51,16 +57,32 @@
       padding-left: 22px;
     }
   }
+  input[type=submit].button {
+    background-color: $colour-jasper-grey;
+    &:hover, 
+    &:active, 
+    &:focus {
+      background-color: $colour-gainsboro-grey;
+    }
+    @include breakpoint($screen-md) {
+      background-position: -4px 7px;
+    }
+  }
   .form-submit.step1 {
     border-radius: 0 36px 36px 0;
     margin-top: 0;
   }
   .form-submit.step2 {
-    margin-top: 30px;
+    margin-top: 0;
   }
   .js-form-type-select {
     .ui-selectmenu-button {
       border-radius: 0;
+      @include breakpoint($screen-md) {
+        @include span(7);
+        @include push(2);
+        margin-right: 0;
+      }
     }
   }
   p, 
@@ -74,43 +96,3 @@
     @include push(2);
   }
 }
-
-// header {
-//   .main-menu__icons-esu-toggle {
-//     padding-top: 20px;
-//   }
-//   .cr-email-signup-form {
-//     .block--cr-email-signup__inner-wrapper {
-//       background-color: $colour-black;
-//       margin: 0;
-//     }
-//     .cr-email-signup--messages {
-//       margin: 0;
-//       width: 100%;
-//     }
-//     form {
-//       text-align: center;
-//     }
-//     .form-item-email {
-//       display: inline-block;
-//       float: none;
-//       margin: 0;
-//     }
-//     .step1.button {
-//       display: inline-block;
-//       float: none;
-//     }
-//   }
-//   .cr-email-signup-form.show {
-//     display: block;
-//   }
-//   .esu-initial-message {
-//     p {
-//       color: $colour-white;
-//     }
-//   }
-//   // below just temporary
-//   .block--cr-email-signup .block--cr-email-signup__inner-wrapper:after {
-//     left: 0;
-//   }
-// }
