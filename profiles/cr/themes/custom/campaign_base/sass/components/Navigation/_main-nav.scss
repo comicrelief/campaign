@@ -30,7 +30,7 @@ nav.menu--main {
   left: 0;
   width: 100%;
   display: block;
-  z-index: 1;
+  z-index: 100;
   height: 85px;
 
   .menu-item {
@@ -47,10 +47,7 @@ nav.menu--main {
       padding: 40px;
       position: relative;
       z-index: 10;
-  
-      button.main-menu-toggle {
-        display: none;
-      }
+      display: none;
     }
     .main-menu__icons-esu-toggle {
       background-color: transparent;
