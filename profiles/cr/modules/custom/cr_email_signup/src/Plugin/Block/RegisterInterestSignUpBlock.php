@@ -2,8 +2,6 @@
 
 namespace Drupal\cr_email_signup\Plugin\Block;
 
-use Drupal\Core\Form\FormStateInterface;
-
 /**
  * Provides a 'Register Interest Sign Up' block.
  *
