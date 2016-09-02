@@ -8,7 +8,7 @@ dependencies:
     - campaign_base
 id: emailsignupblockworkplace
 theme: campaign_base
-region: header
+region: content
 weight: -1
 provider: null
 plugin: cr_email_signup_block_workplace
