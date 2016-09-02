@@ -12,15 +12,13 @@
 .bg--cream-grey {
   background-color: $cream-grey;
 }
-.bg--sky-blue {
-	h2, h3, h4, h5, p, .link {
-		color: $colour-dark-purple;
-	}
-}
+
+//change default black font colour to white for these backgrounds, but allow for default black font colour for backgrounds used on top
 .bg--black,
+.bg--jasper-grey,
 .bg--dark-blue,
-.bg--red,
 .bg--royal-blue,
+.bg--red,
 .bg--purple {
 	h2, h3, h4, h5, p, .link {
 		color: $colour-white;
@@ -29,20 +27,40 @@
 	.bg--smoke-grey,
 	.bg--light-grey,
 	.bg--gainsboro-grey,
-	.bg--yellow,
 	.bg--green,
-	.bg--teal,
+	.bg--yellow,
+	.bg--pink,
+	.bg--blue {
+		h2, h3, h4, h5, p, .link {
+		color: $colour-black;
+		}
+	}
+	//default font colours can be overridden as follows
+	.bg--red {
+		.font--yellow {
+			color: $colour-yellow;
+		}
+	}
+	.bg--purple {
+		.font--pink {
+			color: $colour-pink;
+		}
+	}
+	.bg--yellow {
+		.font--red {
+			color: $colour-red;
+		}
+	}
 	.bg--pink {
-		h2, h3, h4, h5, p, .link {
-	  	color: $colour-black;
-	 }
+		.font--royal-blue {
+			color: $colour-royal-blue;
+		}
 	}
-	.bg--sky-blue {
-		h2, h3, h4, h5, p, .link {
-	  	color: $colour-dark-purple;
-	 }
+	.bg--blue {
+		.font--dark-purple {
+			color: $colour-dark-purple;
+		}
 	}
-
 }
 
 @for $color from 1 to (length($colorList)+1) {
