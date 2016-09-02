@@ -9,10 +9,70 @@
 //hide esu form initially
 .block--cr-email-signup--head {
   display: none;
+  position: relative;
+  top: 0;
+  z-index: 1;
 }
 
 .block--cr-email-signup--head.show {
   display: block;
+  .block--cr-email-signup__inner-wrapper {
+    background-color: $colour-black;
+    margin: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    .icon {
+      fill: $colour-white;
+      height: 50px;
+      position: absolute;
+      right: 10px;
+      top: 0;
+      width: 50px;
+      &:hover, 
+      &:focus {
+        fill: $colour-jasper-grey;
+      }
+    }
+  }
+  .cr-email-signup--messages {
+    height: 100%;
+    margin: 34px auto 0;
+    @include span(8);
+    @include push(2);
+  }
+  .js-form-item-email {
+    margin-top: 0;
+    label {
+      @include visuallyhidden;
+    }
+    input {
+      border-radius: 36px 0 0 36px;
+      padding-left: 22px;
+    }
+  }
+  .form-submit.step1 {
+    border-radius: 0 36px 36px 0;
+    margin-top: 0;
+  }
+  .form-submit.step2 {
+    margin-top: 30px;
+  }
+  .js-form-type-select {
+    .ui-selectmenu-button {
+      border-radius: 0;
+    }
+  }
+  p, 
+  .cr-email-signup--messages p, 
+  .esu-second-success-message p {
+    color: $colour-white;
+    text-align: center;
+  }
+  .esu-second-success-message {
+    @include span(8);
+    @include push(2);
+  }
 }
 
 // header {
@@ -20,17 +80,9 @@
 //     padding-top: 20px;
 //   }
 //   .cr-email-signup-form {
-//     display: none;
-//     position: relative;
-//     top: 0;
-//     z-index: 1;
 //     .block--cr-email-signup__inner-wrapper {
 //       background-color: $colour-black;
 //       margin: 0;
-//       padding: 30px 0;
-//       position: absolute;
-//       right: 0;
-//       top: 0;
 //     }
 //     .cr-email-signup--messages {
 //       margin: 0;

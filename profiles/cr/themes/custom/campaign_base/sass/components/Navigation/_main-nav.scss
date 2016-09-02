@@ -52,6 +52,29 @@ nav.menu--main {
         display: none;
       }
     }
+    .main-menu__icons-esu-toggle {
+      background-color: transparent;
+      border: none;
+      height: 50px;
+      margin: 12px 6px 0 0;
+      padding: 0;
+      width: 50px;
+      span {
+        display: none;
+      }
+      &:hover, 
+      &:focus,
+      &:active {
+        .icon {
+          fill: $colour-jasper-grey;
+        }
+      }
+      .icon {
+        fill: $colour-black;
+        height: inherit;
+        width: inherit;
+      }
+    }
   }
 
   /* Main menu itself */
