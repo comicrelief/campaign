@@ -20,17 +20,17 @@ Feature: ESU
     #Then I should see "ESU Standard: success! (second message)" in the "esu_standard" region
 
   @javascript
-  Scenario: ESU Workflow
+  Scenario: ESU Workplace
     Given I am on "/esu"
-    Then I should see "ESU Workplace: initial message" in the "esu_workflow" region
-    And I fill in "edit-email--2" with "test-workflow@example.org" in the "esu_workflow" region
-    And I fill in "edit-firstname" with "Test Workflow First Name" in the "esu_workflow" region
-    And I press "Go" in the "esu_workflow" region
+    Then I should see "ESU Workplace: initial message" in the "esu_workplace" region
+    And I fill in "edit-email--2" with "test-workplace@example.org" in the "esu_workplace" region
+    And I fill in "edit-firstname" with "Test Workplace First Name" in the "esu_workplace" region
+    And I press "Go" in the "esu_workplace" region
     And I wait for AJAX loading to finish
-    Then I should see "ESU Workplace: success message" in the "esu_workflow" region
+    Then I should see "ESU Workplace: success message" in the "esu_workplace" region
     And I should have received the following data in the "esu_workplace" queue:
       | campaign | transType | timestamp | transSourceURL | transSource | firstName | email | device | source | lists |
-      | RND17 | esu | * | * | RND17_Unknown_ESU_Unknown | Test Workflow First Name | test-workflow@example.org | * | * | * |
+      | RND17 | esu | * | * | RND17_Unknown_ESU_Unknown | Test Workplace First Name | test-workplace@example.org | * | * | * |
 
   @javascript
   Scenario: ESU Register your Interest.(Should be only an email)
@@ -41,6 +41,6 @@ Feature: ESU
     And I press "Go" in the "esu_register_interest" region
     And I wait for AJAX loading to finish
     Then I should see "ESU Register Interest: success message" in the "esu_register_interest" region
-    And I should have received the following data in the "esu_register_interest" queue:
+    And I should have received the following data in the "Register_Interest" queue:
       | campaign | transType | timestamp | transSourceURL | transSource | EventInterest | email | device | source | lists |
       | RND17 | esu | * | * | RND17_Unknown_ESU_Unknown | 1 | test-register-interest@example.org | * | * | * |
