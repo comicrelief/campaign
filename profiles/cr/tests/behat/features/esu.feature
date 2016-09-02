@@ -41,5 +41,5 @@ Feature: ESU
     And I wait for AJAX loading to finish
     Then I should see "ESU Register Interest: success message" in the "esu_register_interest" region
     And I should have received the following data in the "Register_Interest" queue:
-      | campaign | transType | timestamp | transSourceURL | transSource | EventInterest | email | device | source | lists |
-      | RND17 | RegisterInterest | * | * | * | 1 | test-register-interest@example.org | * | * | * |
+      | campaign | transType | timestamp | transSourceURL | transSource | email | device | source | lists |
+      | RND17 | RegisterInterest | * | * | * | test-register-interest@example.org | * | * | * |
