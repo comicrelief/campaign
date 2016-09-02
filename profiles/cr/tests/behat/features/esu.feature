@@ -30,7 +30,7 @@ Feature: ESU
     Then I should see "ESU Workplace: success message" in the "esu_workplace" region
     And I should have received the following data in the "esu_workplace" queue:
       | campaign | transType | timestamp | transSourceURL | transSource | firstName | email | device | source | lists |
-      | RND17 | esu | * | * | RND17_Unknown_ESU_Unknown | Test Workplace First Name | test-workplace@example.org | * | * | * |
+      | RND17 | WorkplaceESU | * | * | RND17_Unknown_ESU_Unknown | Test Workplace First Name | test-workplace@example.org | * | * | * |
 
   @javascript
   Scenario: ESU Register your Interest.(Should be only an email)
@@ -42,4 +42,4 @@ Feature: ESU
     Then I should see "ESU Register Interest: success message" in the "esu_register_interest" region
     And I should have received the following data in the "Register_Interest" queue:
       | campaign | transType | timestamp | transSourceURL | transSource | EventInterest | email | device | source | lists |
-      | RND17 | esu | * | * | RND17_Unknown_ESU_Unknown | 1 | test-register-interest@example.org | * | * | * |
+      | RND17 | RegisterInterest | * | * | RND17_Unknown_ESU_Unknown | 1 | test-register-interest@example.org | * | * | * |

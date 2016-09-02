@@ -65,7 +65,7 @@ abstract class SignUp extends FormBase {
   /**
    * Send a message to the queue service.
    */
-  private function sendQmessage($queue_message) {
+  protected function sendQmessage($queue_message) {
     try {
       $queue_factory = \Drupal::service('queue');
       $queue = $queue_factory->get($this->getQueueName());
@@ -205,9 +205,6 @@ abstract class SignUp extends FormBase {
           ];
           if ($form_state->getValue('firstName')) {
             $data['firstName'] = $form_state->getValue('firstName');
-          }
-          if ($form_state->getValue('EventInterest')) {
-            $data['EventInterest'] = $form_state->getValue('EventInterest');
           }
           $this->fillQmessage($data);
           $this->nextStep($response, 1);
