@@ -10,8 +10,10 @@ set classes = [
 
 <div{{ attributes.addClass(classes) }}>
   <div class="block--cr-email-signup__inner-wrapper">
+    <svg class="icon">
+      <use xlink:href="#close-cross"></use>
+    </svg>
     <div class="cr-email-signup--messages">
-      <h3>ESU header</h3>
       {{ content.initial_message }}
       {{ content.first_success_message }}
     </div>
