@@ -39,4 +39,34 @@ class RegisterInterestSignUp extends SignUp {
     return $form;
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  protected function fillQmessage($append_message) {
+    // Please refactor this because is disgusting.
+    $append_message['timestamp'] = time();
+    $append_message['transSourceURL'] = \Drupal::service('path.current')->getPath();
+    $append_message['transSource'] = "{$this->campaign['campaign']}_[Device]_ESU_[PageElementSource]";
+
+    // RND-178: Device & Source Replacements.
+    $device = (empty($append_message['device'])) ? "Unknown" : $append_message['device'];
+    $source = (empty($append_message['source'])) ? "Unknown" : $append_message['source'];
+
+    $append_message['transSource'] = str_replace(
+      ['[Device]', '[PageElementSource]'],
+      [$device, $source],
+      $append_message['transSource']
+    );
+
+    // Add passed arguments.
+    $append_message['campaign'] = $this->campaign;
+    $append_message['transType'] = $this->transType;
+    $append_message['first_name'] = '';
+    $append_message['last_name'] = '';
+    $append_message['postcode'] = '';
+    $append_message['What_events_are_you_interested_in'] = '';
+
+    $this->sendQmessage($append_message);
+  }
+
 }
