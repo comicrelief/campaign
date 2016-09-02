@@ -65,6 +65,7 @@ class RegisterInterestSignUp extends SignUp {
     $append_message['last_name'] = '';
     $append_message['postcode'] = '';
     $append_message['What_events_are_you_interested_in'] = '';
+    $append_message['email_address'] = $append_message['email'];
 
     $this->sendQmessage($append_message);
   }

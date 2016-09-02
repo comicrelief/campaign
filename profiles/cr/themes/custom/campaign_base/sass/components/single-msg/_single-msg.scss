@@ -13,12 +13,24 @@
   .single-msg__outer-wrapper {
     @include container;
     position: relative;
-    padding-top: $row-padding--sm;
-    padding-bottom: $row-padding--sm;
+    padding: $row-padding--sm calc(3 * #{gutter()});
 
     @include breakpoint($screen-md) {
-      padding-top: $row-padding--md;
-      padding-bottom: $row-padding--md;
+      padding: $row-padding--md 0;
+    }
+  }
+  &.single-msg--feature-copy-right,
+  &.single-msg--feature-copy-left {
+    .single-msg__outer-wrapper {
+      padding: $row-padding--sm calc(4 * #{gutter()});
+
+      @include breakpoint($screen-md) {
+        padding: $row-padding--md gutter();
+      }
+
+      @include breakpoint($screen-lg) {
+        padding: $row-padding--md 0;
+      }
     }
   }
   
@@ -33,8 +45,8 @@
     }
 
     @include breakpoint($screen-md, $no-query: true) { 
-      @include span(6 wide);
-      width: calc( #{span(6)} +  ( #{gutter()} * 1) );
+      width: span(6);
+      margin-left: calc( 2 * ( #{gutter()}) );
       margin-right: 0;
     }
 
@@ -51,13 +63,11 @@
       position: absolute;
       top: 0;
       right: 0;
-      margin-left: 0;
       // Recalculate height minus the row padding
       height: calc(100% - ( #{$row-padding--md} * 2) );
       margin-top: 60px;
-
-      @include span(6 wide);
-      width: calc( #{span(6)} +  ( #{gutter()} * 1) );
+      width: span(6);
+      margin-right: calc( 2 * ( #{gutter()}) );
       margin-left: 0;
     }
 
@@ -81,16 +91,24 @@
       .single-msg__image {
         float:right;
         margin-left: 0;
-        margin-right: gutter();
+        margin-right: calc(2 * #{gutter()});
       }
     
       .single-msg__copy_wrapper {
         left: 0;
+        margin-left: calc(2 * #{gutter()});
+      }
+    }
+    @include breakpoint($screen-lg) {
+      .single-msg__image {
+        margin-right: gutter();
+      }
+    
+      .single-msg__copy_wrapper {
         margin-left: gutter();
       }
     }
   }
-
 
   /* - - - - Featured Variations - - - - */
 
@@ -144,14 +162,23 @@
       @include breakpoint($screen-lg) {
         float: right;
         margin-left: 0;
-        margin-right: gutter();
+        margin-right: calc(2 * #{gutter()});;
       }
     }
 
     .single-msg__copy_wrapper {
       @include breakpoint($screen-lg) {
         left: 0;
-        margin: 90px 0 0 gutter();
+        margin: 90px 0 0 calc(2 * #{gutter()});
+      }
+    }
+    @include breakpoint($screen-lg) {
+      .single-msg__image {
+        margin-right: gutter();
+      }
+    
+      .single-msg__copy_wrapper {
+        margin-left: gutter();
       }
     }
   }
