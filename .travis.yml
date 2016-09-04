@@ -108,12 +108,12 @@ mysql:
   encoding: utf8
 
 before_install:
-  # Automate releases in dependant projects
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/create_release.sh
   - rvm install 2.1.5
   - composer global config minimum-stability beta
   - composer global require phing/phing lionsad/drupal_ti:1.4.4
   - drupal-ti before_install
+  # Automate releases in dependant projects
+  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/create_release.sh
 
 install:
   - drupal-ti install
