@@ -1,7 +1,7 @@
 Feature: ESU
 	Checks the various Email Sign Up blocks
 
-  @javascript
+  @javascript @default-content
   Scenario: ESU Standard
     Given I am on "/test/esu"
     Then I should see "ESU Standard: initial message" in the "esu_standard" region
@@ -19,7 +19,7 @@ Feature: ESU
     #And I wait for AJAX loading to finish
     #Then I should see "ESU Standard: success! (second message)" in the "esu_standard" region
 
-  @javascript
+  @javascript @default-content
   Scenario: ESU Workplace
     Given I am on "/test/esu"
     Then I should see "ESU Workplace: initial message" in the "esu_workplace" region
@@ -32,7 +32,7 @@ Feature: ESU
       | campaign | transType | timestamp | transSourceURL | transSource | firstName | email | device | source | lists |
       | RND17 | WorkplaceESU | * | * | * | Test Workplace First Name | test-workplace@example.org | * | * | * |
 
-  @javascript
+  @javascript @default-content
   Scenario: ESU Register your Interest.(Should be only an email)
     Given I am on "/test/esu"
     Then I should see "ESU Register Interest: initial message" in the "esu_register_interest" region
