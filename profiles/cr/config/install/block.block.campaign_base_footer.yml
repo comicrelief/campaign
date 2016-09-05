@@ -10,7 +10,7 @@ dependencies:
 id: campaign_base_footer
 theme: campaign_base
 region: footer
-weight: -6
+weight: -3
 provider: null
 plugin: 'system_menu_block:footer'
 settings:

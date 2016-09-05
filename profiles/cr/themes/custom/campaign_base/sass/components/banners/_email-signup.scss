@@ -1,3 +1,4 @@
+
 // Email sign up banner
 //
 // Standard Email sign up banner
@@ -12,44 +13,59 @@ input.form-text,
 select,
 .ui-selectmenu-button {
   &:focus {
-    outline: none;
+    // outline: none; bad for accessibility
+    outline: $colour-red;
   }
 }
 
 .button.form-submit:disabled {
-  @include opacity(0.1);
+  @include opacity(0.2);
 }
 
-/* Step 1 styles */
+/* General ESU styles */
 .block--cr-email-signup {
   float: left;
   width: 100%;
   background: #fafafa; // change for variable
 
+  label {
+    @include visuallyhidden;
+  }
+  .ui-selectmenu-button,
+  input[type=select]
+  input[type=text] {
+    font-size: 16px;
+    color: $colour-black;
+  }
 
-  .esu-errors.messages.messages--error {
+  // Hide custom error container and all hidden fields
+  .esu-errors.messages.messages--error,
+  .ajax-progress,
+  .esu-uuid,
+  .esu-region,
+  .esu-context-mapping,
+  .esu-weight {
     display: none;
   }
 
-  .ajax-progress {
-      display: none;
-  }
-
   .block--cr-email-signup__inner-wrapper {
-    @include container;
+    max-width: 1020px;
     @include clearfix;
     position: relative;
-    margin-top: 35px;
-    margin-bottom: 35px;
-    padding-top: 50px;
+    margin: 20px auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
+
   .form-item {
     margin: 0;
+    position: relative;
   }
+
   .cr-email-signup--messages {
     @include span(12);
     position: relative;
-    height: 50px;
+    height: 60px;
     text-align: center;
     > div {
       width: 100%;
@@ -58,18 +74,25 @@ select,
   .esu-initial-message {
     display: block;
   }
+
+  .esu-first-success-message,
+  .esu-second-success-message {
+    p {
+      @extend h4;
+    }
+  }
+
+  /* General field styling */
   .form-item-email,
   .form-item-school-phase {
-    @include span(8);
-    @include push(1);
+    @include span(10);
     margin-right: 0;
   }
 
   .button.form-submit {
     @include border-radius(0);
     @include span(2 wide);
-    height: 50px;
-    margin-left: 0;
+    height: 60px;
     margin-left: 0;
     cursor: pointer;
     color: #fff;
@@ -86,84 +109,48 @@ select,
       background-color: #272727;
     }
   }
-  /*  Step 1 */
-  .form-item-email {
-    label {
-      position: absolute !important;
-      overflow: hidden;
-      clip: rect(1px 1px 1px 1px);
-      clip: rect(1px,1px,1px,1px);
-      height: 1px;
-    }
-    .form-text {
+
+  .form-item-email,
+  .form-item-firstname,
+  .form-item-school-phase {
+    .form-text,
+    .form-item-email {
       width: 100%;
-      height: 50px;
+      height: 60px;
       margin-right: 0;
-      padding: 15px 0 15px 10px;
-      border: 1px solid #5f5c59;
-      border-right: none;
-      @include border-radius(0);
+      padding: 15px 0 15px 20px;
+      border: 0;
 
       &:focus {
-        border: 2px solid #5f5c59;
-        border-right: none;
+        border: 1px solid #5f5c59;
       }
     }
   }
-  /*  Step 2 */
-  &.block--cr-email-signup--step-2 {
-    .form-item-school-phase {
-      label {
-        width: 100%;
-        margin-bottom: 20px;
-        font-size: 14px;
-        line-height: 21px;
-        // Stop this label breaking onto 2 lines on tiny screens and ruining everything
-        white-space: nowrap;
-      }
-      select,
-      .ui-selectmenu-button {
-        width: 100%;
-        height: 50px;
-        margin-right: 0;
-        padding: 15px 0 15px 10px;
-        //-webkit-appearance: menulist-button;
-      }
-      .ui-selectmenu-button span.ui-selectmenu-text {
-        padding: 0 10px;
-      }
+
+  .form-item-school-phase {
+    select,
+    .ui-selectmenu-button {
+      width: 100%;
+      height: 60px;
+      margin-right: 0;
+      padding: 18px 0 15px 20px;
     }
-     .button.form-submit {
-      margin-top: 21px;
+    .ui-selectmenu-button span.ui-selectmenu-text {
+      padding: 0 10px;
     }
   }
-  /* ESU icon */
-  .block--cr-email-signup__inner-wrapper:after {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 62px;
-    height: 42px;
-    margin-left: -33px;
-    content: "";
-    background: sprite($icons, esuEmailIconLarge) no-repeat;
+   .button.form-submit {
+    margin-top: 21px;
   }
-  /* Tick icon */
-  &.block--cr-email-signup--step-2,
-  &.block--cr-email-signup--step-3 {
-    .block--cr-email-signup__inner-wrapper:after {
-      width: 45px;
-      height: 45px;
-      margin-left: -23px;
-      background: sprite($icons, green-tick) no-repeat;
-    }
-  }
+  
+
   // Error state
   &.block--cr-email-signup--error {
     position: relative;
     .esu-errors.messages.messages--error {
+      @include span(12);
       display: block;
-      margin-top: 50px;
+      margin-top: 60px;
       margin-bottom: 10px;
       text-align: center;
     }
@@ -173,6 +160,183 @@ select,
       border: 2px solid red;
     }
   }
+
+
+  /* Standard ESU */
+  &.block--cr-email-signup--standard {
+    background-color: $colour-red;
+
+    input[type=submit].button {
+      background: $colour-black url(../images/svgs/arrow-right.svg) -4px center no-repeat;
+      @include border-radius(0 30px 30px 0);
+      text-indent: -9999px;
+      max-width: 60px;
+    }
+    .ui-selectmenu-button,
+    input[type=select],
+    input[type=text] {
+      @include border-radius(30px 0 0 30px);
+    }
+    .cr-email-signup--messages {
+      text-align: center;
+      @include span(10);
+      @include push(1);
+      height: auto;
+      .esu-title-message p,
+      h3 {
+        @extend h3;
+        color: $colour-yellow!important;
+      }
+
+      .esu-initial-message,
+      .esu-first-success-message,
+      .esu-second-success-message {
+        position: relative;
+        @include translateY(0);
+        width: 100%;
+        
+        p {
+          // Override global colour-matching rules because... designers.
+          color: $colour-white;
+        }
+      }
+    }
+
+    .block--cr-email-signup__inner-wrapper {
+      .button.form-submit {
+        margin-top: 0;
+      }
+      form {
+        margin-top: 20px;
+        @include span(12);
+        @include breakpoint($screen-lg) {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
+
+  /* Workplace ESU */
+  &.block--cr-email-signup--workplace {
+    background-color: $colour-red;
+
+    /* Errors */
+    &.block--cr-email-signup--error {
+      // Placeholder styles to make visible over RED background!
+      &.error--firstname .form-item-firstname .form-text,
+      &.error--email .form-item-email .form-text {
+        border: 3px solid $colour-black;
+      }
+    }
+    .cr-email-signup--messages {
+      text-align: center;
+      @include span(10);
+      @include push(1);
+      height: auto;
+
+      h3 {
+        color: $colour-yellow;
+      }
+
+      .esu-initial-message,
+      .esu-first-success-message,
+      .esu-second-success-message {
+        position: relative;
+        @include translateY(0);
+        @include span(12);
+        
+        p {
+          // Override global colour-matching rules because... designers.
+          color: $colour-white !important;
+        }
+      }
+ 
+    }
+
+    .block--cr-email-signup__inner-wrapper {
+      &:after {
+        content: none;
+      }
+
+      form {
+        margin-top: 20px;
+        @include span(12);
+
+        .form-item-firstname,
+        .form-item-email {
+          @include span(12);
+          position: relative;
+          margin-top: 30px;
+        }
+
+        .form-submit {
+          @extend .btn;
+          @extend .btn--yellow;
+          padding: 12px 20px !important;
+          margin-top: 30px !important;
+          @include span(12);
+        }
+      }
+    }
+  }
+
+
+  /* Register Interest ESU */
+  &.block--cr-email-signup--register-interest {
+    background-color: $colour-purple;
+    .cr-email-signup--messages {
+      height: auto;
+      text-align: left;
+      @include span(12);
+
+      h3 {
+        color: $colour-pink;
+      }
+
+      .esu-initial-message,
+      .esu-first-success-message {
+        position: relative;
+        @include translateY(0);
+        float: left;
+        width: 100%;
+
+        p {
+          // Override global colour-matching rules because... designers.
+          color: $colour-white;
+        }
+      }
+    }
+
+    .block--cr-email-signup__inner-wrapper {
+      &:after {
+        background: none;
+        width: 0;
+        height: 0;
+        top: 0;
+        left: 0;
+        margin-left: 0;
+      }
+
+      form {
+        margin-top: 10px;
+        @include span(12);        
+        .form-item-email {
+          @include span(12);
+          position: relative;
+          margin-top: 30px;
+        }
+
+        .form-submit {
+          @extend .btn;
+          @extend .btn--yellow;
+          padding: 12px 20px !important;
+          margin-top: 30px !important;
+          @include span(12);
+        }
+      }
+    }
+  }
 }
 
 
@@ -180,20 +344,22 @@ select,
 @include breakpoint($screen-md) {
   .block--cr-email-signup {
     .block--cr-email-signup__inner-wrapper {
-      padding: 20px 0;
+      padding-top: 30px;
+      padding-bottom: 30px;
     }
     .cr-email-signup--messages {
       @include span(4 wide);
       @include push(2);
-      > div {
-        @include translateY(-50%);
-        position: absolute;
-        top: 50%;
-        margin: 0;
-        h4 {
-          margin: 0;
-        }
-      }
+      // > div {
+      //   @include translateY(-50%);
+      //   position: absolute;
+      //   top: 50%;
+      //   margin: 0;
+
+      //   h4 {
+      //     margin: 0;
+      //   }
+      // }
     }
     .form-item-email {
       @include span(4);
@@ -203,7 +369,7 @@ select,
         margin-left: 0;
       }
     }
-     .button.form-submit {
+    .button.form-submit {
       @include span(1 wide);
       margin-left: 0;
       margin-top: 0;
@@ -212,16 +378,10 @@ select,
     /*  Step 2 */
     &.block--cr-email-signup--step-2 {
       .form-item-school-phase {
-        @include span(4);
+        @include span(10);
         position: relative;
         margin-right: 0;
-        label {
-          position: absolute;
-          top: -20px;
-          left: 0;
-          width: 100%;
-          margin: 0;
-        }
+
         select,
         .ui-selectmenu-button {
           width: 100% !important;
@@ -231,28 +391,10 @@ select,
       }
      .button.form-submit {
         margin-top: 0;
+        @include span(2);
       }
     }
-    // ESU icon
-    .block--cr-email-signup__inner-wrapper:after {
-      top: 27px;
-      left: 10%;
-      width: 50px;
-      height: 35px;
-      margin-left: 0;
-      background: sprite($icons, esuEmailIconSmall) no-repeat;
-    }
-    // Tick icon
-    &.block--cr-email-signup--step-2,
-    &.block--cr-email-signup--step-3 {
-      .block--cr-email-signup__inner-wrapper:after {
-        top: 22px;
-        width: 45px;
-        height: 45px;
-        margin-left: -23px;
-        background: sprite($icons, green-tick) no-repeat;
-      }
-    }
+
     &.block--cr-email-signup--step-3 {
       .cr-email-signup--messages {
         @include span(8);
@@ -271,9 +413,94 @@ select,
         position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
         margin-top: 0;
         margin-bottom: 0;
+      }
+    }
+    
+    /* Standard ESU */
+    &.block--cr-email-signup--standard {
+      .block--cr-email-signup__inner-wrapper {
+        form {
+          @include span(8);
+          @include push(2);
+
+          .form-item-email {
+            @include span(9);
+            margin-right: 0;
+            @include push(1);
+          }
+          .form-submit {
+            @include span(2);
+            margin-left: 0;
+          }
+        }
+      }
+    }
+
+    /* Workplace ESU */
+    &.block--cr-email-signup--workplace {
+      .block--cr-email-signup__inner-wrapper {
+        .cr-email-signup--messages {
+          @include span(10);
+          @include push(1);
+          
+          .esu-initial-message {
+            @include span(8);
+            @include push(2);
+          }
+        }
+
+        form {
+          position: relative;
+          padding-bottom: 70px;
+
+          .form-item-firstname,
+          .form-item-email {
+            @include span(6);
+          }
+        
+          .form-submit {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            margin-left: -55px;
+          }
+        }
+      }
+    }
+
+    /* Register Interest ESU */
+    &.block--cr-email-signup--register-interest {
+      .cr-email-signup--messages {
+          @include span(7);
+          @include push(4);
+      }
+
+      .block--cr-email-signup__inner-wrapper {
+        &:after {
+          position:absolute;
+          content: "";
+          background: sprite($icons, fixedplaceholder-register-interest-bg-sm-1x) no-repeat;
+          width: 127px;
+          height: 177px;
+          top: 50%;
+          left: 11%;
+          margin-top: -88px;
+        }
+
+        form {
+          @include span(7);
+          @include push(4);
+          
+          .form-item-email {
+            @include span(6);
+          }
+
+          .form-submit {
+            @include span(6);
+          }
+        }
       }
     }
   }
@@ -287,35 +514,24 @@ select,
       @include span(4);
       @include push(2);
     }
+
+    .block--cr-email-signup__inner-wrapper {
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+
     .form-item-email {
       @include span(3);
       margin-right: 0;
     }
-    // ESU icon
-    &:after {
-      top: 3px;
-      left: 10%;
-      width: 62px;
-      height: 42px;
-      margin-left: 0;
-      background: sprite($icons, esuEmailIconLarge) no-repeat;
-    }
-    // Tick icon
-    &.cr-email-signup--step-2,
-    &.cr-email-signup--step-3 {
-      .block--cr-email-signup__inner-wrapper:after {
-        width: 45px;
-        height: 45px;
-        margin-left: -23px;
-        background: sprite($icons, green-tick) no-repeat;
-      }
-    }
+
     &.block--cr-email-signup--step-2 {
       .form-item-school-phase {
-        @include span(3);
+        @include span(10);
         margin-right: 0;
       }
     }
+
     // Error state
     &.block--cr-email-signup--error {
       .esu-errors.messages.messages--error {
@@ -323,10 +539,126 @@ select,
         margin-bottom: 0;
       }
     }
+
+    /* Standard ESU */
+    &.block--cr-email-signup--standard {
+      .block--cr-email-signup__inner-wrapper {
+        .cr-email-signup--messages {
+          @include span(7);
+          text-align: left;
+        }
+
+        form {
+          @include span(5);
+          position: absolute;
+          right: 0;
+          top: 50%;
+          @include translateY(-50%);
+          .form-item-email {
+            @include span(10);
+            margin-right: 0;
+          }
+          .form-submit {
+            @include span(2);
+            margin-left: 0;
+          }
+          .form-text,
+          .ui-selectmenu-button {
+            max-width: 310px;
+            float: right;
+          }
+        }
+      }
+      &.block--cr-email-signup--step-3 {
+        .block--cr-email-signup__inner-wrapper {
+          .cr-email-signup--messages {
+            @include span(8);
+            @include push(2);
+            text-align: center;
+          }
+        }
+      }
+    }
+
+
+    /* Workplace ESU */
+    &.block--cr-email-signup--workplace {
+      .cr-email-signup--messages {
+        @include span(10);
+        @include push(1);
+
+        .esu-initial-message {
+          @include span(8);
+          @include push(2);
+        }
+      }
+
+      .block--cr-email-signup__inner-wrapper {
+        form {
+          @include span(10);
+          @include push(1);
+          padding-bottom: 0;
+
+          .form-item-firstname,
+          .form-item-email {
+            @include span(5);
+          }
+
+          .form-submit {
+            @include span(2);
+            position: relative;
+            left: auto;
+            top: auto;
+            margin-top: 30px !important;
+          }
+        }
+      }
+    }
+
+    /* Register Interest ESU */
+    &.block--cr-email-signup--register-interest {
+      .cr-email-signup--messages {
+        @include span(6);
+        @include push(5);
+      }
+
+      .block--cr-email-signup__inner-wrapper {
+        // Use image height and offset to set minimal height of container to ensure image is always 100% visible
+        min-height: calc( 354px + 45px );
+  
+        &:after {
+          background: sprite($icons, fixedplaceholder-register-interest-bg-1x) no-repeat;
+          width: 254px;
+          height: 354px;
+          top: 50%;
+          left: 11%;
+          margin-top: -177px;
+        }
+
+        form {
+          margin-top: 10px;
+          @include span(6);
+          @include push(5);
+          
+          .form-item-email {
+            @include span(8);
+            position: relative;
+            margin-top: 30px;
+          }
+
+          .form-submit {
+            padding: 12px 20px !important;
+            margin-top: 30px !important;
+            @include span(4);
+          }
+        }
+      }
+    }
   }
 }
 
-/* Hide-show  */
+
+/* Hide-show steps */
 .block--cr-email-signup {
   // Step 1
   .form-item-email {
@@ -342,8 +674,9 @@ select,
   &.block--cr-email-signup--step-2 {
     .form-item-email,
     .button.step1,
-    .esu-initial-message {
-      display: none;
+    .esu-initial-message,
+    .form-item-firstname {
+      display: none !important;
     }
     .button.step2,
     .form-item-school-phase,
@@ -357,7 +690,7 @@ select,
     .form-item-school-phase,
     .button.form-submit,
     .esu-initial-message {
-      display: none;
+      display: none !important;
     }
     .esu-second-success-message {
       display: block;
