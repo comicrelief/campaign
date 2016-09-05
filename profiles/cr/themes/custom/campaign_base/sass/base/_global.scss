@@ -7,6 +7,18 @@ body {
 
   -webkit-font-smoothing: antialiased;
 }
+// fix logo header *Review it*
+#block-campaign-base-branding {
+  position: absolute;
+  top: 0;
+  z-index: 999;
+}
+header[role=banner] {
+  height: 129px;
+  @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
+    height: 156px;
+  }
+}
 .page__title {
   max-width: 640px;
   margin: 100px auto 40px;
