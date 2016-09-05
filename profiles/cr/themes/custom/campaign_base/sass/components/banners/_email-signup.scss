@@ -70,6 +70,11 @@ select,
     > div {
       width: 100%;
     }
+    .esu-title-message p,
+    h3 {
+      @extend h3;
+      color: $colour-yellow!important;
+    }
   }
   .esu-initial-message {
     display: block;
@@ -182,11 +187,6 @@ select,
       @include span(10);
       @include push(1);
       height: auto;
-      .esu-title-message p,
-      h3 {
-        @extend h3;
-        color: $colour-yellow!important;
-      }
 
       .esu-initial-message,
       .esu-first-success-message,
