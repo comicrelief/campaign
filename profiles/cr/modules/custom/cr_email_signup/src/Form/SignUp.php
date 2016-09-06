@@ -42,16 +42,16 @@ abstract class SignUp extends FormBase {
   protected function fillQmessage($append_message) {
     // Add dynamic keys.
     $append_message['timestamp'] = time();
-    $append_message['transSourceURL'] = \Drupal::service('path.current')->getPath();
-    $append_message['transSource'] = "{$this->campaign}_[Device]_ESU_[PageElementSource]";
+    $append_message['transSourceURL'] = \Drupal::request()->getRequestUri();
+    $append_message['transSource'] = "{$this->campaign}_ESU_[PageElementSource]";
 
     // RND-178: Device & Source Replacements.
     $device = (empty($append_message['device'])) ? "Unknown" : $append_message['device'];
     $source = (empty($append_message['source'])) ? "Unknown" : $append_message['source'];
 
     $append_message['transSource'] = str_replace(
-      ['[Device]', '[PageElementSource]'],
-      [$device, $source],
+      ['[PageElementSource]'],
+      [$source],
       $append_message['transSource']
     );
 
