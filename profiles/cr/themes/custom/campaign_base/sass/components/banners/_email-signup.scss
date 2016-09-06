@@ -17,12 +17,20 @@ select,
     outline: $colour-red;
   }
 }
+// safari only hack
+@media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) {
+  ::-webkit-input-placeholder {
+    line-height: 14px;
+  } 
+}
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-     color: $colour-black;
-   font-size: 18px;
-   font-family: $body-font;
-   opacity:  1;
+  color: $colour-black;
+  font-size: 18px;
+  font-family: $body-font;
+  opacity:  1;
+  overflow: visible;
+  vertical-align: middle;
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
     color: $colour-black;
