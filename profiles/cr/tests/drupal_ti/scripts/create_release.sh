@@ -12,6 +12,9 @@ then
   git clone git@github.com:comicrelief/rnd17.git rnd17
   cd rnd17
 
+  echo "PRINT branch list"
+  git branch --list
+
   # Check if we already have a release branch in RND17, if not create a new one
   if [ `git branch --list $TRAVIS_BRANCH `]
   then
