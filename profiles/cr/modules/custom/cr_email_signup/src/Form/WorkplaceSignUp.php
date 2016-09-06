@@ -20,7 +20,7 @@ class WorkplaceSignUp extends SignUp {
    * {@inheritdoc}
    */
   public function getQueueName() {
-    return 'esu_workplace';
+    return 'esu';
   }
 
   /**
