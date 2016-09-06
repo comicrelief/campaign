@@ -7,16 +7,26 @@
 // Style guide: Components.Content-wall
 
 .content-wall {
-  float: left;
   width: 100%;
-  padding: 60px 0;
+  padding: $row-padding--sm 0;
+
+  @include breakpoint($screen-md) {
+    padding: $row-padding--md 0;
+  }
 }
 .content-wall__title {
   text-align: center;
+  margin-bottom: 30px;
 }
 .cw-region {
   width: 100%;
   margin: 0 auto;
+  @include breakpoint($screen-md) {
+    padding: 0 gutter();
+  }
+  @include breakpoint($screen-lg) {
+    padding: 0;
+  }
 }
 .cw-article__body {
   padding: 16px 20px 20px;
@@ -156,6 +166,7 @@
 }
 .cw-article__body {
   padding: 20px;
+  width: 100%;
 
   @include breakpoint($screen-md) {
     height: 100%;
