@@ -13,7 +13,7 @@ then
   cd rnd17
 
   echo "PRINT branch list"
-  git branch --list
+  git branch -a --list
 
   # Check if we already have a release branch in RND17, if not create a new one
   if [ `git branch --list $TRAVIS_BRANCH `]
