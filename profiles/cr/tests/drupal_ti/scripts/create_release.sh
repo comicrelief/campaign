@@ -16,7 +16,7 @@ then
   git branch -a --list
 
   # Check if we already have a release branch in RND17, if not create a new one
-  if [ `git branch --list $TRAVIS_BRANCH `]
+  if [ `git branch -a --list remotes/origin/$TRAVIS_BRANCH `]
   then
     echo "Release branch already exists in RND17. We'll ping this branch so it triggers a rebuild."
     git checkout $TRAVIS_BRANCH
