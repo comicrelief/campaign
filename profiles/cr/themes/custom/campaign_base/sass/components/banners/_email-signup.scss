@@ -18,6 +18,31 @@ select,
   }
 }
 
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+     color: $colour-black;
+   font-size: 18px;
+   font-family: $body-font;
+   opacity:  1;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: $colour-black;
+   font-size: 18px;
+   font-family: $body-font;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: $colour-black;
+   font-size: 18px;
+   font-family: $body-font;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: $colour-black;
+   font-size: 18px;
+   font-family: $body-font;
+   opacity:  1;
+}
+
 .button.form-submit:disabled {
   @include opacity(0.2);
 }
@@ -494,11 +519,11 @@ select,
           @include push(4);
           
           .form-item-email {
-            @include span(6);
+            @include span(7);
           }
 
           .form-submit {
-            @include span(6);
+            @include span(5);
           }
         }
       }
