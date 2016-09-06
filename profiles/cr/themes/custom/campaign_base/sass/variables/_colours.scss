@@ -2,50 +2,24 @@
 //
 // These are the default colours for June site, taken from SR16
 //
-// Markup:
-// <div style="background-color: #f04257; height: 60px; width: 60px;"></div>
-// <p><br/>$colour-red: #f04257;</p>
-// <div style="background-color: #51caf5; height: 60px; width: 60px;"></div>
-// <p><br/>$colour-sky-blue: #51caf5;</p>
-// <div style="background-color: #fbef51; height: 60px; width: 60px;"></div>
-// <p><br/>$colour-yellow: #fbef51;</p>
-// <div style="background-color: #a2cf59; height: 60px; width: 60px;"></div>
-// <p><br/>$colour-green: #a2cf59;</p>
-// <div style="background-color: #00beca; height: 60px; width: 60px;"></div>
-// <p><br/>$colour-teal: #00beca;</p>
-// <div style="background-color: #388aca; height: 60px; width: 60px;"></div>
-// <p><br/>$colour-royal-blue: #388aca;</p>
-// <div style="background-color: #8552a1; height: 60px; width: 60px;"></div>
-// <p><br/>$colour-purple: #8552a1;</p>
-// <div style="background-color: #f38a99; height: 60px; width: 60px;"></div>
-// <p><br/>$colour-pink: #f38a99;</p>
-// <div style="background-color: #222; height: 60px; width: 60px;"></div>
-// <p><br/>$colour-black: #222;</p>
-// <div style="background-color: #666; height: 60px; width: 60px;"></div>
-// <p><br/>$colour-jasper-grey: #666;</p>
-// <div style="background-color: #c7c7c7; height: 60px; width: 60px;"></div>
-// <p><br/>$colour-gainsboro-grey: #c7c7c7;</p>
-// <div style="background-color: #e6e3dc; height: 60px; width: 60px;"></div>
-// <p><br/>$colour-light-grey: #e6e3dc;</p>
-// <div style="background-color: #f0f0f0; height: 60px; width: 60px;"></div>
-// <p><br/>$colour-smoke-grey: #f0f0f0;</p>
-// <div style="background-color: #fff; border: 1px solid #000; height: 60px; width: 60px;"></div>
-// <p><br/>$colour-white: #fff;</p>
+// Markup: colours.hbs
 //
 // Style guide: Colours
 
 /* RND17 colours */
 
-$colour-red:      #f04257;
-$colour-sky-blue:  #51caf5;
-$colour-yellow:   #fbef51;
-$colour-green:    #a2cf59;
-$colour-teal:     #00beca;
-$colour-royal-blue: #388aca;
-$colour-purple: #8552a1;
-$colour-pink: #f38a99;
+$colour-red: #f04257;
+$colour-blue: #22d2dc;
+$colour-yellow: #fbef51;
+$colour-green: #b2e55e;
+$colour-teal: #00beca;
+$colour-royal-blue: #0565d1;
+$colour-purple: #7d2ca9;
+$colour-dark-purple: #7023b7;
+$colour-pink: #fc9eb9;
 
-$colour-black: #222;
+$colour-black: #030e1a;
+$colour-dark-blue: #061d38;
 // $colour-dark-grey: #333;
 $colour-jasper-grey: #666;
 // $colour-greyboy-grey: #999;
@@ -54,7 +28,7 @@ $colour-light-grey: #e6e3dc;
 $colour-smoke-grey: #f0f0f0;
 $colour-white: #fff;
 // it the below still needed??
-$item-grey:      #ddd;
+$item-grey: #ddd;
 
 /**
  * Parameters
@@ -64,14 +38,18 @@ $item-grey:      #ddd;
  */
 $linkList: (
   ("red" $colour-red $colour-purple),
-  ("sky-blue" $colour-sky-blue $colour-yellow), 
-  ("yellow" $colour-yellow $colour-sky-blue),
+  ("blue" $colour-blue $colour-yellow), 
+  ("yellow" $colour-yellow $colour-blue),
   ("green" $colour-green $colour-teal), 
   ("teal" $colour-teal $colour-pink), 
   ("royal-blue" $colour-royal-blue $colour-red), 
   ("purple" $colour-purple $colour-royal-blue),
   ("pink" $colour-pink $colour-green),
-  ("white" $colour-white $colour-black)
+  ("white" $colour-white $colour-black),
+  ("jasper-grey" $colour-jasper-grey $colour-red),
+  ("gainsboro-grey" $colour-gainsboro-grey $colour-red),
+  ("light-grey" $colour-light-grey $colour-red),
+  ("smoke-grey" $colour-smoke-grey $colour-red)
 );
 
 /**
@@ -81,14 +59,16 @@ $linkList: (
  */
 $colorList: (
   ("red" $colour-red),
-  ("sky-blue" $colour-sky-blue), 
+  ("blue" $colour-blue), 
   ("yellow" $colour-yellow),
   ("green" $colour-green), 
   ("teal" $colour-teal), 
   ("royal-blue" $colour-royal-blue), 
   ("purple" $colour-purple),
+  ("dark-purple" $colour-dark-purple),
   ("pink" $colour-pink),
   ("black" $colour-black),
+  ("dark-blue" $colour-dark-blue),
   ("white" $colour-white),
   ("jasper-grey" $colour-jasper-grey),
   ("gainsboro-grey" $colour-gainsboro-grey),
@@ -105,8 +85,8 @@ $colorList: (
  */
 $buttonList: (
   ("red" $colour-red $colour-purple $colour-white),
-  ("sky-blue" $colour-sky-blue $colour-yellow $colour-black), 
-  ("yellow" $colour-yellow $colour-sky-blue $colour-black),
+  ("blue" $colour-blue $colour-yellow $colour-black), 
+  ("yellow" $colour-yellow $colour-blue $colour-black),
   ("green" $colour-green $colour-teal $colour-black), 
   ("teal" $colour-teal $colour-pink $colour-black), 
   ("royal-blue" $colour-royal-blue $colour-red $colour-white), 

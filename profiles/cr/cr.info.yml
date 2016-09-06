@@ -55,7 +55,6 @@ dependencies:
   - metatag_open_graph
   - pathauto
   - redirect
-  - youtube
   - view_modes_display
   - social_links
   - focal_point
@@ -72,6 +71,7 @@ dependencies:
   - paragraphs
   - view_mode
   - imagemagick
+  - menu_link_attributes
 
   # Custom modules
   - cr_layout
@@ -90,6 +90,7 @@ dependencies:
   - cr_landing_page
   - cr_navigation
   #- cr_performance
+  - cr_user
 
   # Development modules
   - config_devel
@@ -147,10 +148,12 @@ config_devel:
   - block.block.seven_page_title
   - block.block.seven_primary_local_tasks
   - block.block.seven_secondary_local_tasks
+  - block.block.emailsignupblockregisterinterest
+  - block.block.emailsignupblockstandard
+  - block.block.emailsignupblockworkplace
 
   # Menus
   - system.menu.footer
-  - system.menu.main-navigation
 
   # Images
   - system.image
@@ -208,6 +211,7 @@ config_devel:
   - user.role.anonymous
   - user.role.authenticated
   - user.role.editor
+  - user.role.reviewer
   - user.settings
 
   # Contributed modules

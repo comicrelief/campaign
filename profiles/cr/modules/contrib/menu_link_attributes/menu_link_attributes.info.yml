@@ -1,0 +1,13 @@
+name: Menu Link Attributes
+type: module
+description: 'Allows you to add attributes to menu links.'
+# core: 8.x
+dependencies:
+  - menu_link_content
+configure: menu_link_attributes.config
+
+# Information added by Drupal.org packaging script on 2016-07-05
+version: '8.x-1.0-beta3'
+core: '8.x'
+project: 'menu_link_attributes'
+datestamp: 1467719640

@@ -3,71 +3,124 @@
 // Standard Cards
 //
 // Markup: cards.hbs
-// 
+//
+// .cards--feature-layout - Feature Layout
 //
 // Style guide: Cards
 
 .cards {
+  padding: $row-padding--sm 0;
+  width: 100%;
+
+  @include breakpoint($screen-md) {
+    padding: $row-padding--md 0;
+  }
+  &+.cards {
+    padding-top: 0;
+    margin-top: -$row-padding--sm;
+    @include breakpoint($screen-md) {
+      margin-top: -$row-padding--md;
+    }
+  }
 	@for $i from 1 through 6 {
   .cards__item:first-child:nth-last-child(#{$i}),
   .cards__item:first-child:nth-last-child(#{$i}) ~ .cards__item {
-    // width: calc(#{span(12)}/#{$i});
-    // margin: gutter()/2;
-    width: 100%;
+    width: calc(100% - (8 * #{gutter()}));
+    margin: 0 0 calc(4 * #{gutter()});
+
     @include breakpoint($screen-sm-max) {
-		  	@include span(12);
-	    }
+	  	  width: calc(100% - (2 * #{gutter()}));
+        margin: 0 gutter() calc(2 * 1.25%);
+      }
 	  @include breakpoint($screen-md-max) {
 		    @include span(12/$i);
-			}
-	  }
-	}
-  padding: 60px 0;
-  float: left;
-  width: 100%;
+        .cards__item:first-child {
+          margin-left: #{gutter()};
+        }
+        .cards__item:last-child {
+          margin-right: #{gutter()};
+        }
+      }
+    }
+  }
+  .cards__item:first-child:nth-last-child(1), 
+  .cards__item:first-child:nth-last-child(1) ~ .cards__item {
+    margin-bottom: 0;
+  }
+  .cards__item:first-child:nth-last-child(2), 
+  .cards__item:first-child:nth-last-child(2) ~ .cards__item {
+    @include breakpoint($screen-md-max) {
+      @include span(4);
+      display: inline-block;
+      float: none;
+      vertical-align: top;
+    }
+  }
+}
+.cards__wrapper {
+  text-align: center;
+  @include breakpoint($screen-md-max) {
+    @include display-flex;
+    @include justify-content(center);
+  }
+}
+.cards__title {
+  text-align: center;
+  margin-bottom: 30px;
+  .bg--dark-orchid & {
+    color: $colour-white;
+  }
 }
 .cards__item {
   display: inline-block;
   position: relative;
-  float: left;
   margin-bottom: 20px;
+  text-align: left;
+  overflow: hidden;
 }
 .cards__image {
   img {
     width: 100%;
 		display: block;
 		height: 100%;
-		@include breakpoint($screen-md-only) {
-			margin-left: -38.5%;
-			height: auto;
-			width: 178%;
-		}
   }
   @include breakpoint($screen-md-only) {
-  	@include span(4);
-  	height: 0;
-  	padding-bottom: span(4);
-  	overflow: hidden;
+  	@include span(5);
   }
 }
 .cards__content-wrapper {
-	position: relative;
-  z-index: 10;
-	margin: calc(4*#{gutter()});
-	margin-top: calc(-6*#{gutter()});
-	padding: calc(4*#{gutter()});
-  text-align: center;
-  background-color: $colour-white;
-  @include transition(0.5s all);
+  position: relative;
+  padding: 30px;
+  height: 100%;
   @include breakpoint($screen-md-only) {
-  	margin: 25px 0;
-  	position: absolute;
-		top: 0;
-		right: 0;
-		padding: calc(2*#{gutter()});
-		height: calc(100% - 50px);
-  	@include span(9);
-  	@include push(3);
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: calc(2*#{gutter()});
+    height: 100%;
+    @include span(7 wide);
+    @include push(5);
+    &.cards__content-wrapper--no-image {
+      @include span(12);
+      position: relative;
+      .cards__content {      
+        top: 0;
+        transform: none;
+      }
+    }
+  }
+  .cards--feature-layout & {
+    z-index: 10;
+    margin: calc(4*#{gutter()});
+    margin-top: calc(-6*#{gutter()});
+    text-align: center;
+    background-color: $colour-white;
+    @include breakpoint($screen-md-only) {
+      margin: 25px 0;
+      height: calc(100% - 50px);
+      @include span(9);
+      @include push(3);
+    }
   }
 }
 .cards__content {

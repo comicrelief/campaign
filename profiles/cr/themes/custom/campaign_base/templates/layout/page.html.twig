@@ -38,24 +38,22 @@
  * @see html.html.twig
  */
 #}
-<div class="layout-container">
-  <header role="banner">
-    <div class="header__top-wrapper">{{ page.header_top }}</div>
-    <div class="header__inner-wrapper">
-      {{ page.header }}
-    </div>
-  </header>
-  {{ page.breadcrumb }}
-  {{ page.highlighted }}
-  {{ page.help }}
-  <main role="main">
-    <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
-    {{ page.content }}
-  </main>
-  {% if page.footer %}
-    <footer role="contentinfo">
-      {{ page.footer }}
-      <a class="styleguide-link external-link" href="/profiles/cr/themes/custom/campaign_base/styleguide/index.html" target="_blank">Styleguide</a>
-    </footer>
-  {% endif %}
-</div>
+<header role="banner">
+  <div class="header__top-wrapper">{{ page.header_top }}</div>
+  <div class="header__inner-wrapper">
+    {{ page.header }}
+  </div>
+</header>
+{{ page.breadcrumb }}
+{{ page.highlighted }}
+{{ page.help }}
+<main role="main">
+  <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+  {{ page.content }}
+</main>
+{% if page.footer %}
+  <footer role="contentinfo">
+    {{ page.footer }}
+    <a class="styleguide-link external-link" href="/profiles/cr/themes/custom/campaign_base/styleguide/index.html" target="_blank">Styleguide</a>
+  </footer>
+{% endif %}

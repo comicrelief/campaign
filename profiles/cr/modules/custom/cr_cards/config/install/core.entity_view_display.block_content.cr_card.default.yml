@@ -3,11 +3,13 @@ status: true
 dependencies:
   config:
     - block_content.type.cr_card
+    - field.field.block_content.cr_card.field_cr_card_background
     - field.field.block_content.cr_card.field_cr_card_body
     - field.field.block_content.cr_card.field_cr_card_image
   module:
     - ds
     - image
+    - options
     - text
 third_party_settings:
   ds:
@@ -29,11 +31,18 @@ third_party_settings:
       ds_content:
         - field_cr_card_image
         - field_cr_card_body
+        - field_cr_card_background
 id: block_content.cr_card.default
 targetEntityType: block_content
 bundle: cr_card
 mode: default
 content:
+  field_cr_card_background:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
   field_cr_card_body:
     weight: 1
     label: hidden
@@ -49,7 +58,7 @@ content:
     third_party_settings: {  }
     type: image
   social_links:
-    weight: 0
+    weight: 3
     settings: {  }
     third_party_settings: {  }
 hidden: {  }

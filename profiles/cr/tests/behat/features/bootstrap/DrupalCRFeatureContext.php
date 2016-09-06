@@ -263,12 +263,6 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
         $data['field_single_msg_bg'] = [
           'value' => $paragraph['bg_color'],
         ];
-        $data['field_single_msg_feat'] = [
-          'value' => $paragraph['featured'],
-        ];
-        $data['field_single_msg_img_r'] = [
-          'value' => $paragraph['image_right'],
-        ];
         break;
     }
 
@@ -334,6 +328,79 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
   public function NotFindImage($uri) {
     return !$this->getSession()->getPage()
       ->find('xpath', '/img[@src="' . $uri . '"]');
+  }
+
+  /**
+   * Selects option in select field with specified id|name|label|value in a region
+   * Example: When I select "Bats" from "user_fears" in the "some" region
+   * Example: And I select "Bats" from "user_fears" in the "some" region
+   *
+   * @Then I select :option from :select in the :region region
+   */
+  public function selectOptionRegion($select, $option, $region)
+  {
+    $regionObj = $this->getSession()->getPage()->find('region', $region);
+    $regionObj->selectFieldOption($select, $option);
+  }
+
+
+  /**
+   * Asserts that the last queue element contains given data.
+   *
+   * @Then I should have received the following data in the :queue( queue):
+   */
+  public function assertQueueElement($queue_name, TableNode $data) {
+    /* @var \Drupal\Core\Queue\QueueFactory $queue_factory */
+    $queue = \Drupal::service('queue')->get($queue_name);
+
+    if (!$queue) {
+      throw new Exception('Unable to access queue "' . $queue_name . '"');
+    }
+
+    $item = $queue->claimItem();
+
+    if (!$item || !is_object($item) || !is_array($item->data)) {
+      throw new Exception('Unable to claim item from queue "' . $queue_name . '"');
+    }
+
+    // Remove the item from the queue
+    $queue->deleteItem($item);
+
+    // Take off the data from the queue item
+    $item = $item->data;
+
+    // Get the expected data
+    $expected = $data->getHash()[0];
+
+    foreach ($expected as $name => $expected_value) {
+      if (!isset($item[$name])) {
+        throw new Exception('Expected queue property "' . $name . '" was not found in last item from queue "' . $queue_name . '"');
+      }
+
+      // Check if the value from the queue is the same one as the expected value.
+      // If we pass "*" as expected value, all values are correct.
+      if ($expected_value != '*' && $item[$name] != $expected_value) {
+        throw new Exception('Expected queue property "' . $name . '" contains value "' . $item[$name] . '" but "' . $expected_value . '" expected, for last item from queue "' . $queue_name . '"');
+      }
+    }
+  }
+
+  /**
+   * Creates unpublished content of the given type.
+   *
+   * @Given a/an unpublished :type (content )with the title :title
+   */
+  public function createUnpublishedNode($type, $title) {
+    // @todo make this easily extensible.
+    $node = (object) array(
+      'title' => $title,
+      'type' => $type,
+      'body' => $this->getRandom()->name(255),
+      'status' => 0,
+    );
+    $saved = $this->nodeCreate($node);
+    // Set internal page on the new node.
+    $this->getSession()->visit($this->locatePath('/node/' . $saved->nid));
   }
 
 }

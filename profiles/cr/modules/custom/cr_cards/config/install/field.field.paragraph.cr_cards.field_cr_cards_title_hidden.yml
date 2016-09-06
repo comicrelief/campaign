@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cr_cards_title_hidden
+    - paragraphs.paragraphs_type.cr_cards
+id: paragraph.cr_cards.field_cr_cards_title_hidden
+field_name: field_cr_cards_title_hidden
+entity_type: paragraph
+bundle: cr_cards
+label: 'Visually hide Title'
+description: 'Hiding titles might be desirable for a visual design, however titles can be useful for visually impaired users, providing contextual clarity and navigational cues via screenreaders.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

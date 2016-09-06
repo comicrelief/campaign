@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * Contains cr_user.module..
+ */
+
+use Drupal\node\NodeInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Access\AccessResult;
+
+/**
+ * Implements hook_node_access().
+ *
+ * Allow users with "reviewer" role to see all published content.
+ *
+ * @see https://jira.comicrelief.com/browse/PLAT-414
+ */
+function cr_user_node_access(NodeInterface $node, $op, AccountInterface $account) {
+  if ($op == 'view' && in_array('reviewer', $account->getRoles())) {
+    return AccessResult::allowed();
+  }
+}

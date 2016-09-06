@@ -46,12 +46,37 @@ function cr_update_8004() {
 }
 
 /**
- * Remove Search view & install cr_solr
+ * Remove field_youtube_url and uninstall youtube module
  */
 function cr_update_8005() {
+  $field = Drupal\field\Entity\FieldStorageConfig::loadByName('node', 'field_youtube_url');
+  $field->delete();
+  field_purge_batch('field_youtube_url');
+  \Drupal::service('module_installer')->uninstall(['youtube']);
+}
+
+/**
+ * Install cr_user
+ */
+function cr_update_8006() {
+  \Drupal::service('module_installer')->install(['cr_user']);
+}
+
+/**
+ * Delete old config
+ */
+function cr_update_8007() {
+  \Drupal::configFactory()->getEditable('system.menu.main-navigation')->delete();
+}
+/**
+ * Remove Search view & install cr_solr
+ */
+function cr_update_8008() {
   $entityTypeManager = \Drupal::service('entity_type.manager');
   $view = $entityTypeManager->getStorage('view')->load('search');
   $view->delete();
-  \Drupal::service('config.factory')->getEditable('views.view.search')->delete();
+  \Drupal::service('config.factory')
+    ->getEditable('views.view.search')
+    ->delete();
   \Drupal::service('module_installer')->install(['cr_solr']);
 }

@@ -1,17 +1,31 @@
 // Global styling
 body {
-  background: $colour-smoke-grey;
+  background: $colour-white;
   font-family: $body-font;
   font-size: 100%;
   line-height: 1.3125rem;
 
   -webkit-font-smoothing: antialiased;
 }
+// fix logo header *Review it*
+#block-campaign-base-branding {
+  position: absolute;
+  top: 0;
+  z-index: 999;
+}
+header[role=banner] {
+  height: 129px;
+  @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
+    height: 156px;
+  }
+}
 .page__title {
   max-width: 640px;
   margin: 100px auto 40px;
   text-align: center;
-  text-transform: capitalize;
+}
+.visuallyhidden {
+  @include visuallyhidden;
 }
 .datetime {
   display: block;
@@ -34,9 +48,7 @@ picture img {
     }
   }
 }
-.node--type-article {
-  max-width: 640px;
-}
+
 .field--name-body a,
 .btn-red {
   @include transition(all 180ms);
@@ -88,47 +100,7 @@ picture img {
   float: left;
   width: 100%;
 }
-// to do: add cookie component
-.cookie-consent.cc_container {
-  text-align: center;
-  .btn,
-  p,
-  a {
-    color: $colour-white;
-    font-family: $body-font;
-    &:visited {
-      color: $colour-white;
-    }
-  }
-  p {
-    margin-top: 15px;
-  }
-  .cc_message {
-    @include breakpoint($screen-md) {
-      width: auto;
-      margin-bottom: 15px;
-    }
-    display: inline-block;
-    width: 100%;
-    font-size: 16px;
-    font-size: 1em;
-    text-align: center;
-  }
-  .btn {
-    @include breakpoint($screen-md) {
-      margin-top: 0;
-      margin-left: 20px;
-      display: inline-block;
-    }
-    
-    float: none;
-    margin-top: 20px;
-    height: auto;
-    width: 120px;
-    margin: 20px auto 0px;
-    display: block;
-  }
-}
+
 // Table style move to table component
 table {
   border-collapse: collapse;
