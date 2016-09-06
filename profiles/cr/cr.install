@@ -61,3 +61,10 @@ function cr_update_8005() {
 function cr_update_8006() {
   \Drupal::service('module_installer')->install(['cr_user']);
 }
+
+/**
+ * Delete old config
+ */
+function cr_update_8007() {
+  \Drupal::configFactory()->getEditable('system.menu.main-navigation')->delete();
+}

@@ -11,6 +11,7 @@ body {
 #block-campaign-base-branding {
   position: absolute;
   top: 0;
+  z-index: 999;
 }
 header[role=banner] {
   height: 129px;
