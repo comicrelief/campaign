@@ -44,7 +44,9 @@
         {% if menu_level == 1 %}
           {# Duplicate menu link for UX, to be populated by JS #}
           <li class="menu-item menu-item--duplicate">
-            {{ link(item.title, item.url) }}
+            <a href="/">
+              <span class="menu-item__text">{{menu_level}}</span>
+            </a>
           </li>
         {% endif %}
     {% endif %}
