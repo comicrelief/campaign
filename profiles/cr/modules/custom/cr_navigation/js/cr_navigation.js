@@ -30,6 +30,8 @@
         $('#main-menu').smartmenus('menuHideAll');
       });
 
+      $('#main-menu .menu-item a').wrapInner('<span class="menu-item__text"></span>');
+
     },
 
     /* Updates empty duplicate link (added by template) with the parent item's text and link, dynamically */
