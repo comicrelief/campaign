@@ -115,6 +115,9 @@ p {
   &.font--xsmall {
     @include font-size($p-xsmall-font-size);
   }
+  span.font--font-black{
+    font-family:$font-black;
+  }
 }
 
 strong {
