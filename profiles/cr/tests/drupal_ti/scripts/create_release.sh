@@ -12,11 +12,11 @@ then
   git clone git@github.com:comicrelief/rnd17.git rnd17
   cd rnd17
 
-  echo "PRINT branch list"
-  git branch -a --list
+  git branch -a --list > branches
+  cat branches
 
   # Check if we already have a release branch in RND17, if not create a new one
-  if [ `git branch -a --list remotes/origin/$TRAVIS_BRANCH `]
+  if grep -q $TRAVIS_BRANCH branches
   then
     echo "Release branch already exists in RND17. We'll ping this branch so it triggers a rebuild."
     git checkout $TRAVIS_BRANCH
@@ -25,5 +25,8 @@ then
     git checkout -b $TRAVIS_BRANCH
     git push origin $TRAVIS_BRANCH
   fi
+
+  # Cleanup
+  rm branches
 fi
 
