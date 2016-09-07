@@ -24,14 +24,12 @@ then
       "branch":"'
     body+=$TRAVIS_BRANCH
     body+='"}}'
-    # @todo remove this and move it to Travis CI config
-    token='Vk5ddW7b3fvSguMDzGddaQ'
 
     curl -s -X POST \
       -H "Content-Type: application/json" \
       -H "Accept: application/json" \
       -H "Travis-API-Version: 3" \
-      -H "Authorization: token $token" \
+      -H "Authorization: token $TRAVIS_CURL_TOKEN" \
       -d "$body" \
       https://api.travis-ci.com/repo/comicrelief%2Frnd17/requests
   else
