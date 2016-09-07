@@ -44,9 +44,7 @@
         {% if menu_level == 1 %}
           {# Duplicate menu link for UX, to be populated by JS #}
           <li class="menu-item menu-item--duplicate">
-            <a href="/">
-              <span class="menu-item__text">{{menu_level}}</span>
-            </a>
+            {{ link(item.title, item.url) }}
           </li>
         {% endif %}
     {% endif %}
@@ -61,9 +59,7 @@
         ]
       %}
       <li{{ item.attributes.addClass(classes) }}>
-        <a href="{{item.url}}">
-          <span class="menu-item__text">{{item.title}}</span>
-        </a>
+        {{ link(item.title, item.url) }}
         {% if item.below %}
           {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
         {% endif %}
