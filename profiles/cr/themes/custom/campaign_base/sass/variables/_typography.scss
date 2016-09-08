@@ -11,10 +11,16 @@ $h1-blackshadow-font-size: (
   $screen-lg: (90px, 90px)
 );
 
-$h1-font-size: (
+$h1-black-font-size: (
   null: (34px, 30px),
   $screen-md: (50px, 44px),
   $screen-lg: (70px, 60px)
+);
+
+$h1-font-size: (
+  null: (34px, 36px),
+  $screen-md: (50px, 50px),
+  $screen-lg: (70px, 74px)
 );
 
 $h2-font-size: (
