@@ -115,10 +115,10 @@ p {
   &.font--xsmall {
     @include font-size($p-xsmall-font-size);
   }
-  span.font--font-black{
+}
+span.font--font-black{
     font-family:$font-black;
   }
-}
 
 strong {
   font-family: $font-bold;
