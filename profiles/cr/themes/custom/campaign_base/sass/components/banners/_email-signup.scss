@@ -28,27 +28,29 @@ select,
   color: $colour-black;
   font-size: 18px;
   font-family: $body-font;
-  opacity:  1;
+  opacity:  7;
   overflow: visible;
-  vertical-align: middle;
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
     color: $colour-black;
    font-size: 18px;
    font-family: $body-font;
-   opacity:  1;
+   opacity:  7;
+   overflow: visible;
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
     color: $colour-black;
    font-size: 18px;
    font-family: $body-font;
-   opacity:  1;
+   opacity:  7;
+   overflow: visible;
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
     color: $colour-black;
    font-size: 18px;
    font-family: $body-font;
-   opacity:  1;
+   opacity:  7;
+   overflow: visible;
 }
 
 .button.form-submit:disabled {
@@ -65,10 +67,12 @@ select,
     @include visuallyhidden;
   }
   .ui-selectmenu-button,
+  .form-text,
   input[type=select]
   input[type=text] {
-    font-size: 16px;
+    font-size: 18px;
     color: $colour-black;
+    font-family: $body-font;
   }
 
   // Hide custom error container and all hidden fields
@@ -82,12 +86,16 @@ select,
   }
 
   .block--cr-email-signup__inner-wrapper {
-    max-width: 1020px;
+    width: calc(100% - (8 * #{gutter()}) );
+    max-width: $max-width;
     @include clearfix;
     position: relative;
     margin: 20px auto;
     padding-top: 20px;
     padding-bottom: 20px;
+    @include breakpoint($screen-md) {
+      width: calc(100% - (4 * #{gutter()}) );
+    }
   }
 
   .form-item {
@@ -106,7 +114,7 @@ select,
     .esu-title-message p,
     h3 {
       @extend h3;
-      color: $colour-yellow!important;
+      color: $colour-white!important;
     }
   }
   .esu-initial-message {
@@ -191,6 +199,14 @@ select,
       margin-top: 60px;
       margin-bottom: 10px;
       text-align: center;
+      background: $colour-black url(../images/svgs/error-red-cross.svg) 10px center no-repeat;
+      color: $colour-white;
+      border: none;
+      font-size: 18px;
+      box-shadow: none;
+      @include border-radius(0);
+      background-size: 40px;
+      padding: 20px 20px 20px 40px;
     }
 
     .form-item-email .form-text,
@@ -203,6 +219,10 @@ select,
   /* Standard ESU */
   &.block--cr-email-signup--standard {
     background-color: $colour-red;
+
+    &.error--email .form-item-email .form-text {
+      border: 3px solid $colour-black;
+    }
 
     input[type=submit].button {
       background: $colour-black url(../images/svgs/arrow-right.svg) -4px center no-repeat;
@@ -269,7 +289,7 @@ select,
       height: auto;
 
       h3 {
-        color: $colour-yellow;
+        color: $colour-white;
       }
 
       .esu-initial-message,
@@ -318,6 +338,25 @@ select,
   /* Register Interest ESU */
   &.block--cr-email-signup--register-interest {
     background-color: $colour-purple;
+
+    &.error--email .form-item-email .form-text {
+      border: 3px solid $colour-black;
+    }
+
+    input[type=submit].button {
+      background: $colour-black url(../images/svgs/arrow-right.svg) -4px center no-repeat;
+      @include border-radius(0 30px 30px 0);
+      text-indent: -9999px;
+      max-width: 60px;
+      margin-top: 30px !important;
+    }
+
+    .ui-selectmenu-button,
+    input[type=select],
+    input[type=text] {
+      @include border-radius(30px 0 0 30px);
+    }
+
     .cr-email-signup--messages {
       height: auto;
       text-align: left;
@@ -353,19 +392,18 @@ select,
 
       form {
         margin-top: 10px;
-        @include span(12);        
+        @include span(12);
+
         .form-item-email {
-          @include span(12);
+          @include span(8);
+          margin-right: 0;
           position: relative;
           margin-top: 30px;
         }
 
         .form-submit {
-          @extend .btn;
-          @extend .btn--yellow;
-          padding: 12px 20px !important;
-          margin-top: 30px !important;
-          @include span(12);
+          @include span(4);
+          margin-left: 0;
         }
       }
     }
@@ -446,8 +484,9 @@ select,
         position: absolute;
         top: 0;
         left: 0;
-        margin-top: 0;
-        margin-bottom: 0;
+        right: 0;
+        margin: 0 auto;
+        max-width: span(6);
       }
     }
     
@@ -490,14 +529,16 @@ select,
 
           .form-item-firstname,
           .form-item-email {
-            @include span(6);
+            @include span(5);
           }
-        
+
           .form-submit {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            margin-left: -55px;
+            @include span(2);
+            position: relative;
+            left: auto;
+            top: auto;
+            margin-top: 30px !important;
+            width: span(2)!important;
           }
         }
       }
@@ -527,11 +568,13 @@ select,
           @include push(4);
           
           .form-item-email {
-            @include span(7);
+            @include span(8);
+            margin-right: 0;
           }
 
           .form-submit {
-            @include span(5);
+            @include span(4);
+            margin-left: 0;
           }
         }
       }
@@ -570,6 +613,7 @@ select,
       .esu-errors.messages.messages--error {
         margin-top: 0;
         margin-bottom: 0;
+        max-width: span(5);
       }
     }
 
@@ -631,19 +675,6 @@ select,
           @include span(10);
           @include push(1);
           padding-bottom: 0;
-
-          .form-item-firstname,
-          .form-item-email {
-            @include span(5);
-          }
-
-          .form-submit {
-            @include span(2);
-            position: relative;
-            left: auto;
-            top: auto;
-            margin-top: 30px !important;
-          }
         }
       }
     }
@@ -655,10 +686,16 @@ select,
         @include push(5);
       }
 
+      &.block--cr-email-signup--error {
+        .block--cr-email-signup__inner-wrapper {
+          padding-top: 155px;
+        }
+      }
+
       .block--cr-email-signup__inner-wrapper {
         // Use image height and offset to set minimal height of container to ensure image is always 100% visible
         min-height: calc( 354px + 45px );
-  
+
         &:after {
           background: sprite($icons, fixedplaceholder-register-interest-bg-1x) no-repeat;
           width: 254px;
@@ -677,12 +714,14 @@ select,
             @include span(8);
             position: relative;
             margin-top: 30px;
+            margin-right: 0;
           }
 
           .form-submit {
             padding: 12px 20px !important;
             margin-top: 30px !important;
             @include span(4);
+            margin-left: 0;
           }
         }
       }
