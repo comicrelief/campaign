@@ -13,6 +13,8 @@
 
     setUpNav: function (context, settings) {
       var _base = Drupal.behaviors.crNavigation;
+      
+      $('#main-menu .menu-item a').wrapInner('<span class="menu-item__text"></span>');
 
       _base.duplicateParentLink();
 
@@ -29,6 +31,7 @@
       $('#main-menu').bind('activate.smapi', function(e, menu) {
         $('#main-menu').smartmenus('menuHideAll');
       });
+
 
     },
 
