@@ -9,9 +9,9 @@ description: 'Comic Relief Solr'
 backend: search_api_solr
 backend_config:
   scheme: http
-  host: solr
+  host: campaign-solr
   port: '8983'
-  path: /solr/
+  path: /solr
   core: campaign
   username: ''
   password: ''
