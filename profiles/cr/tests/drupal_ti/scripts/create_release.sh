@@ -3,8 +3,8 @@
 
 set -e $DRUPAL_TI_DEBUG
 
-# Only continue if we are on a release branch
-if [[ "$TRAVIS_BRANCH" = "release"* ]]
+# Only continue if we are on a release branch, and RND17_TRIGGER_CR is set to TRUE
+if [[ "$TRAVIS_BRANCH" = "release"* ]] && RND17_TRIGGER_CR
 then
   echo "We are on a release branch. Prepare integration into RND17"
 
@@ -41,5 +41,7 @@ then
   # Cleanup
   rm branches
   rm -fr rnd17
+else
+  echo "Skipping creating of release as we are not a release branch or Travis variable RND17_TRIGGER_CR is set to FALSE"
 fi
 
