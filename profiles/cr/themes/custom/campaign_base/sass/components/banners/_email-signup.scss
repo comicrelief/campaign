@@ -21,6 +21,7 @@ select,
 @media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) {
   ::-webkit-input-placeholder {
     line-height: 14px;
+    opacity:  0.7;
   } 
 }
 
@@ -28,28 +29,28 @@ select,
   color: $colour-black;
   font-size: 18px;
   font-family: $body-font;
-  opacity:  7;
+  opacity:  0.7;
   overflow: visible;
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
     color: $colour-black;
    font-size: 18px;
    font-family: $body-font;
-   opacity:  7;
+   opacity:  0.7;
    overflow: visible;
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
     color: $colour-black;
    font-size: 18px;
    font-family: $body-font;
-   opacity:  7;
+   opacity:  0.7;
    overflow: visible;
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
     color: $colour-black;
    font-size: 18px;
    font-family: $body-font;
-   opacity:  7;
+   opacity:  0.7;
    overflow: visible;
 }
 
@@ -518,8 +519,8 @@ select,
           @include push(1);
           
           .esu-initial-message {
-            @include span(8);
-            @include push(2);
+            @include span(10);
+            @include push(1);
           }
         }
 
@@ -613,7 +614,7 @@ select,
       .esu-errors.messages.messages--error {
         margin-top: 0;
         margin-bottom: 0;
-        max-width: span(5);
+        max-width: span(6);
       }
     }
 
@@ -665,8 +666,7 @@ select,
         @include push(1);
 
         .esu-initial-message {
-          @include span(8);
-          @include push(2);
+          @include span(10);
         }
       }
 
