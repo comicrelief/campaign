@@ -125,8 +125,8 @@
 }
 .cards__content {
   @include breakpoint($screen-md-only) {
-  	position: relative;
+  	position: absolute;
 	  top: 50%;
-	  transform: translateY(-50%);
+    @include translateY(-50%);
   }
 }
