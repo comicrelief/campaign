@@ -5,7 +5,7 @@ dependencies:
     - search_api_solr
 id: solr
 name: Solr
-description: 'Comic Relief Solr'
+description: ''
 backend: search_api_solr
 backend_config:
   scheme: http
@@ -21,6 +21,6 @@ backend_config:
   skip_schema_check: false
   solr_version: ''
   http_method: AUTO
-  site_hash: false
+  site_hash: true
   autocorrect_spell: true
   autocorrect_suggest_words: true

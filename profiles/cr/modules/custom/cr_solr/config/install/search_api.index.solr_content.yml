@@ -8,7 +8,7 @@ dependencies:
     - search_api
     - node
 id: solr_content
-name: 'Solr Content'
+name: 'Solr content'
 description: ''
 read_only: false
 field_settings:
@@ -26,11 +26,6 @@ field_settings:
           landing: full
           page: default
           partner: full
-  type:
-    label: 'Content type'
-    datasource_id: 'entity:node'
-    property_path: type
-    type: string
 processor_settings:
   rendered_item:
     plugin_id: rendered_item
