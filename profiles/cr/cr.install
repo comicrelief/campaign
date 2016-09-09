@@ -4,6 +4,8 @@
  * Install, update and uninstall functions for the Comic Relief installation profile.
  */
 
+use Drupal\Core\Database\Database;
+
 /**
  * Implements hook_install().
  *
@@ -69,13 +71,18 @@ function cr_update_8007() {
   \Drupal::configFactory()->getEditable('system.menu.main-navigation')->delete();
 }
 /**
- * Remove Search view
+ * Remove Search view & install Solr
  */
 function cr_update_8008() {
   $entityTypeManager = \Drupal::service('entity_type.manager');
   $view = $entityTypeManager->getStorage('view')->load('search');
   $view->delete();
-  \Drupal::service('config.factory')
-    ->getEditable('views.view.search')
+  $config = \Drupal::service('config.factory');
+  $config->getEditable('views.view.search')
     ->delete();
+
+  $query = 'ALTER TABLE {search_api_task}
+CHANGE COLUMN server_id server_id VARCHAR(50) NULL';
+  Database::getConnection()->query($query);
+  \Drupal::service('module_installer')->install(['cr_solr']);
 }
