@@ -20,7 +20,6 @@ select,
 // safari only hack
 @media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) {
   ::-webkit-input-placeholder {
-    line-height: 14px;
     opacity:  0.7;
   } 
 }
@@ -396,15 +395,10 @@ select,
         @include span(12);
 
         .form-item-email {
-          @include span(8);
+          @include span(10);
           margin-right: 0;
           position: relative;
           margin-top: 30px;
-        }
-
-        .form-submit {
-          @include span(4);
-          margin-left: 0;
         }
       }
     }
