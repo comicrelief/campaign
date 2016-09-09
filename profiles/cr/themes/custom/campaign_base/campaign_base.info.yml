@@ -35,6 +35,7 @@ regions:
   # hidden from the "block layout" admin page.
   page_top: 'Page top'
   page_bottom: 'Page bottom'
+  storage: 'Storage'
 
 # The default theme features as defined in _system_default_theme_features, with
 # the addition of a logo.
