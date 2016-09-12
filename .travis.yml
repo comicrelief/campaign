@@ -7,6 +7,8 @@ language: php
 php:
   - 5.6
 
+git:
+  depth: 1
 sudo: false
 cache:
   apt: true
@@ -17,14 +19,11 @@ cache:
     - $HOME/.composer
     - node_modules
     - vendor
+    - profiles/cr/tests/behat/vendor
 addons:
   apt:
     packages:
       - oracle-java8-installer
-
-# No need for git history here
-git:
- depth: 1
 
 rvm:
   - 2.1.5
