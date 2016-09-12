@@ -10,7 +10,7 @@
 .block--cr-email-signup--head {
   display: none;
   position: relative;
-  top: 0;
+  top: 80px;
   z-index: 1;
 }
 
@@ -22,6 +22,10 @@
     position: absolute;
     right: 0;
     top: 0;
+    width: 100%;
+    @include breakpoint($screen-md) {
+      max-width: 400px;
+    }
     .icon {
       fill: $colour-white;
       height: 50px;
@@ -38,52 +42,46 @@
   .cr-email-signup--messages {
     height: 100%;
     margin: 34px auto 0;
-    padding-bottom: 10px;
-    @include span(8);
-    @include push(2);
+    padding: 0 20% 10px;
+    width: 100%;
   }
-  .js-form-item-email {
-    margin-top: 0;
+  form {
+    margin: 0 auto;
+    max-width: 370px;
+    width: 100%;
+  }
+  .js-form-item-email, 
+  .js-form-type-select {
+    margin: 0;
     @include breakpoint($screen-md) {
-      @include span(7);
-      @include push(2);
       margin-right: 0;
+      max-width: 310px;
+      width: 100%;
     }
     label {
       @include visuallyhidden;
     }
-    input {
+    input, 
+    .ui-selectmenu-button {
       border-radius: 36px 0 0 36px;
       padding-left: 22px;
+      max-width: 310px;
+      float: left;
     }
   }
   input[type=submit].button {
-    background-color: $colour-jasper-grey;
-    &:hover, 
-    &:active, 
-    &:focus {
-      background-color: $colour-gainsboro-grey;
-    }
+    background: $colour-jasper-grey url(../images/svgs/arrow-right.svg) -4px center no-repeat;
+    text-indent: -9999px;
+    max-width: 60px;
     @include breakpoint($screen-md) {
-      background-position: -4px 7px;
+      margin: 0;
+      width: 100%;
     }
   }
-  .form-submit.step1 {
+  .form-submit.step1, 
+  .form-submit.step2 {
     border-radius: 0 36px 36px 0;
     margin-top: 0;
-  }
-  .form-submit.step2 {
-    margin-top: 0;
-  }
-  .js-form-type-select {
-    .ui-selectmenu-button {
-      border-radius: 0;
-      @include breakpoint($screen-md) {
-        @include span(7);
-        @include push(2);
-        margin-right: 0;
-      }
-    }
   }
   p, 
   .cr-email-signup--messages p, 
