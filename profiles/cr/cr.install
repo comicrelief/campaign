@@ -70,8 +70,9 @@ function cr_update_8006() {
 function cr_update_8007() {
   \Drupal::configFactory()->getEditable('system.menu.main-navigation')->delete();
 }
+
 /**
- * Remove Search view & install Solr
+ * Remove Search view + search configs & install Solr
  */
 function cr_update_8008() {
   $entityTypeManager = \Drupal::service('entity_type.manager');
