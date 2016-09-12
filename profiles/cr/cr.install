@@ -87,5 +87,7 @@ function cr_update_8008() {
   $query = 'ALTER TABLE {search_api_task}
 CHANGE COLUMN server_id server_id VARCHAR(50) NULL';
   Database::getConnection()->query($query);
+  $query = "DELETE FROM key_value WHERE collection='system.schema' AND name='crop'";
+  Database::getConnection()->query($query);
   \Drupal::service('module_installer')->install(['cr_solr']);
 }
