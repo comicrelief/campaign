@@ -56,6 +56,10 @@ h1 {
   color: $colour-black;
   font-family: $font-bold;
   @include font-size($h1-font-size);
+  &.font--font-black{
+    font-family: $font-black;
+    @include font-size($h1-black-font-size);
+  }
   &.font--xlarge {
     @include font-size($h1-xlarge-font-size);
   }
@@ -115,6 +119,10 @@ p {
   &.font--xsmall {
     @include font-size($p-xsmall-font-size);
   }
+}
+
+span.font--font-black{
+  font-family: $font-black;
 }
 
 strong {

@@ -155,7 +155,6 @@ config_devel:
 
   # Menus
   - system.menu.footer
-  - system.menu.main-navigation
 
   # Images
   - system.image

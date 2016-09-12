@@ -1,7 +1,7 @@
 Feature: ESU
 	Checks the various Email Sign Up blocks
 
-  @javascript
+  @javascript @default-content
   Scenario: ESU Standard
     Given I am on "/test/esu"
     Then I should see "ESU Standard: initial message" in the "esu_standard" region
@@ -19,7 +19,7 @@ Feature: ESU
     #And I wait for AJAX loading to finish
     #Then I should see "ESU Standard: success! (second message)" in the "esu_standard" region
 
-  @javascript
+  @javascript @default-content
   Scenario: ESU Workplace
     Given I am on "/test/esu"
     Then I should see "ESU Workplace: initial message" in the "esu_workplace" region
@@ -28,11 +28,11 @@ Feature: ESU
     And I press "Sign Up" in the "esu_workplace" region
     And I wait for AJAX loading to finish
     Then I should see "ESU Workplace: success message" in the "esu_workplace" region
-    And I should have received the following data in the "esu_workplace" queue:
+    And I should have received the following data in the "esu" queue:
       | campaign | transType | timestamp | transSourceURL | transSource | firstName | email | device | source | lists |
       | RND17 | WorkplaceESU | * | * | * | Test Workplace First Name | test-workplace@example.org | * | * | * |
 
-  @javascript
+  @javascript @default-content
   Scenario: ESU Register your Interest.(Should be only an email)
     Given I am on "/test/esu"
     Then I should see "ESU Register Interest: initial message" in the "esu_register_interest" region
@@ -40,6 +40,6 @@ Feature: ESU
     And I press "Subscribe" in the "esu_register_interest" region
     And I wait for AJAX loading to finish
     Then I should see "ESU Register Interest: success message" in the "esu_register_interest" region
-    And I should have received the following data in the "Register_Interest" queue:
+    And I should have received the following data in the "register_interest" queue:
       | campaign | transType | timestamp | transSourceURL | transSource | email | device | source | lists |
       | RND17 | RegisterInterest | * | * | * | test-register-interest@example.org | * | * | * |
