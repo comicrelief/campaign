@@ -26,6 +26,11 @@ field_settings:
           landing: full
           page: default
           partner: full
+  type:
+    label: 'Content type'
+    datasource_id: 'entity:node'
+    property_path: type
+    type: string
 processor_settings:
   rendered_item:
     plugin_id: rendered_item

@@ -79,10 +79,8 @@ function cr_update_8008() {
   $view = $entityTypeManager->getStorage('view')->load('search');
   $view->delete();
   $config = \Drupal::service('config.factory');
-  $config->getEditable('views.view.search')
-    ->delete();
-  $config->getEditable('search_api.server.database')
-    ->delete();
+  $config->getEditable('views.view.search')->delete();
+  $config->getEditable('search_api.server.database')->delete();
 
   $query = 'ALTER TABLE {search_api_task}
 CHANGE COLUMN server_id server_id VARCHAR(50) NULL';
