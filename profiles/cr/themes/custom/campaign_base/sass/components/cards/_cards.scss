@@ -77,6 +77,10 @@
   margin-bottom: 20px;
   text-align: left;
   overflow: hidden;
+  @include breakpoint($screen-md-only) {
+    width: calc(100% - (4 * 1.25%)) !important;
+    margin: 1.25% calc(2 * 1.25%) !important;
+  }
 }
 .cards__image {
   img {
@@ -86,6 +90,7 @@
   }
   @include breakpoint($screen-md-only) {
   	@include span(5);
+    margin-left: 0;
   }
 }
 .cards__content-wrapper {
@@ -95,11 +100,12 @@
   @include breakpoint($screen-md-only) {
     position: absolute;
     top: 0;
-    right: 0;
+    right: calc(2*#{gutter()});
     padding: calc(2*#{gutter()});
     height: 100%;
     @include span(7 wide);
     @include push(5);
+    margin-right: 0;
     &.cards__content-wrapper--no-image {
       @include span(12);
       position: relative;
