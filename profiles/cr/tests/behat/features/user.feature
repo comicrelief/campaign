@@ -23,7 +23,7 @@ Feature: User
 
   @api
   Scenario: Navigate to user management interface and check HTTP response
-    Given I am logged in as a user with the "manager" role
+    Given I am logged in as a user with the "editor" role
     Given I am on "/admin/people"
     Then I should get a "403" HTTP response
     And I should not see "You are not authorized to access this page."
