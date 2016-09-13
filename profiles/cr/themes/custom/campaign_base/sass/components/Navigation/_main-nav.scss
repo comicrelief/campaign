@@ -44,18 +44,38 @@ nav.menu--main {
       float: right;
     }
     @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
-      padding: 40px;
+      //padding: 40px;
       position: relative;
       z-index: 10;
-      display: none;
+      height: 100%;
+
+      // Hide our mobile nav open/close for desktop
+      .main-menu-toggle {
+        display: none;
+      }
+
+      .icon {
+        height: 100%;
+        width: 35px;
+      }
     }
     .main-menu__icons-esu-toggle {
       background-color: transparent;
       border: none;
       height: 50px;
-      margin: 12px 6px 0 0;
+      margin: 0;
       padding: 0;
-      width: 50px;
+      width: 85px;
+      height: 85px;
+
+      &.active {
+        background-color: #f9f9f9;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    
       span {
         display: none;
       }
@@ -64,12 +84,17 @@ nav.menu--main {
       &:active {
         .icon {
           fill: $colour-jasper-grey;
+  
         }
       }
       .icon {
         fill: $colour-black;
-        height: inherit;
-        width: inherit;
+        width: 35px;
+        height: 35px;
+      }
+
+      @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
+        height: 100%;
       }
     }
   }

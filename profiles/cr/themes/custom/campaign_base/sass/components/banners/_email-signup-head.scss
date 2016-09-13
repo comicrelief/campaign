@@ -11,7 +11,15 @@
   display: none;
   position: relative;
   top: 80px;
-  z-index: 1;
+  z-index: 101;
+  
+  .ui-selectmenu-menu {
+    z-index: 102;
+  }
+
+  @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
+    top: 0;
+  }
 }
 
 .block--cr-email-signup--head.show {
