@@ -114,6 +114,7 @@ before_script:
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh
 
 script:
+  - phantomjs testrunner.js
   # Behat
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/script.sh
   # Check DB errors
