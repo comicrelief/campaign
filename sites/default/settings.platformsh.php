@@ -21,11 +21,14 @@ if (isset($_ENV['PLATFORM_RELATIONSHIPS'])) {
       }
       if (!empty($endpoint['query']['is_master'])) {
         $databases['default']['default'] = $database;
-      }
-      else {
+      } else {
         $databases['default']['slave'][] = $database;
       }
     }
+  }
+  foreach ($relationships['solr'] as $endpoint) {
+    $container->setParameter('solr_host', $endpoint['host']);
+    $container->setParameter('solr_port', $endpoint['port']);
   }
 }
 // Configure private and temporary file paths.
@@ -82,3 +85,4 @@ if (isset($_ENV['PLATFORM_VARIABLES'])) {
 if (isset($_ENV['PLATFORM_PROJECT_ENTROPY']) && empty($settings['hash_salt'])) {
   $settings['hash_salt'] = $_ENV['PLATFORM_PROJECT_ENTROPY'];
 }
+
