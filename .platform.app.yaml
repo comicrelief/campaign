@@ -16,7 +16,6 @@ dependencies:
     php:
         drush/drush: "^8.0"
         phing/phing: "*"
-        drupal/console: "^0.10"
     nodejs:
         grunt-cli: "~0.1.13"
 
@@ -26,7 +25,7 @@ dependencies:
 # side is in the form `<service name>:<endpoint name>`.
 relationships:
     database: "mysql:mysql"
-#    solr: "solr:solr"
+    solr: "solr:solr"
 #    redis: "redis:redis"
 
 # The configuration of app when it is exposed to the web.
