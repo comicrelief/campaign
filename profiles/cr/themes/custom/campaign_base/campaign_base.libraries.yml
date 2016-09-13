@@ -15,3 +15,7 @@ global-js:
     - core/drupal
     - core/jquery.ui
     - core/jquery.ui.selectmenu
+
+platform:
+  js:
+    libraries/platform/platform.js: {}
