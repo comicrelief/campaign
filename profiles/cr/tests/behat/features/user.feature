@@ -19,7 +19,8 @@ Feature: User
     Given I am logged in as a user with the "manager" role
     Given I am on "/admin/people"
     Then I should get a "200" HTTP response
-    And I should see "Add user"
+    And I click "Add user"
+    Then I should get a "200" HTTP response
 
   @api
   Scenario: Navigate to user management interface and check HTTP response
