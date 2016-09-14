@@ -13,10 +13,6 @@
   top: 80px;
   z-index: 101;
 
-  .ui-selectmenu-menu {
-    z-index: 102;
-  }
-
   @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
     top: 0;
   }
@@ -24,6 +20,10 @@
   .messages--error {
     margin-top:0;
   }
+}
+
+.ui-selectmenu-menu {
+  z-index: 102;
 }
 
 .block--cr-email-signup--head.show {
