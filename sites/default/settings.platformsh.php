@@ -26,10 +26,10 @@ if (isset($_ENV['PLATFORM_RELATIONSHIPS'])) {
       }
     }
   }
-  foreach ($relationships['solr'] as $endpoint) {
-    $container->setParameter('solr_host', $endpoint['host']);
-    $container->setParameter('solr_port', $endpoint['port']);
-  }
+#  foreach ($relationships['solr'] as $endpoint) {
+#    $container->setParameter('solr_host', $endpoint['host']);
+#    $container->setParameter('solr_port', $endpoint['port']);
+#  }
 }
 // Configure private and temporary file paths.
 if (isset($_ENV['PLATFORM_APP_DIR'])) {
