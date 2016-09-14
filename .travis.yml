@@ -19,7 +19,6 @@ cache:
     - $HOME/.composer
     - node_modules
     - vendor
-    - profiles/cr/tests/behat/vendor
 addons:
   apt:
     packages:
