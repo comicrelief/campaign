@@ -100,11 +100,10 @@
   @include breakpoint($screen-md-only) {
     position: absolute;
     top: 0;
-    right: calc(2*#{gutter()});
+    right: 0;
     padding: calc(2*#{gutter()});
     height: 100%;
-    @include span(7 wide);
-    @include push(5);
+    @include span(7 wider);
     margin-right: 0;
     &.cards__content-wrapper--no-image {
       @include span(12);
@@ -132,6 +131,10 @@
 .cards__content {
   @include breakpoint($screen-md-only) {
   	position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: calc(100% - 20px);
 	  top: 50%;
     @include translateY(-50%);
   }
