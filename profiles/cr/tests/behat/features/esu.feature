@@ -23,7 +23,7 @@ Feature: ESU
   Scenario: ESU Workplace
     Given I am on "/test/esu"
     Then I should see "ESU Workplace: initial message" in the "esu_workplace" region
-    And I fill in "edit-email--2" with "test-workplace@example.org" in the "esu_workplace" region
+    And I fill in "edit-email--3" with "test-workplace@example.org" in the "esu_workplace" region
     And I fill in "edit-firstname" with "Test Workplace First Name" in the "esu_workplace" region
     And I press "Sign Up" in the "esu_workplace" region
     And I wait for AJAX loading to finish
@@ -36,7 +36,7 @@ Feature: ESU
   Scenario: ESU Register your Interest.(Should be only an email)
     Given I am on "/test/esu"
     Then I should see "ESU Register Interest: initial message" in the "esu_register_interest" region
-    And I fill in "edit-email--3" with "test-register-interest@example.org" in the "esu_register_interest" region
+    And I fill in "edit-email--4" with "test-register-interest@example.org" in the "esu_register_interest" region
     And I press "Subscribe" in the "esu_register_interest" region
     And I wait for AJAX loading to finish
     Then I should see "ESU Register Interest: success message" in the "esu_register_interest" region
