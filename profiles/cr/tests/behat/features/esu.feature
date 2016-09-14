@@ -6,7 +6,7 @@ Feature: ESU
     Given I am on "/test/esu"
     Then I should see "ESU Standard: initial message" in the "esu_standard" region
     And I should not see "success" in the "esu_standard" region
-    And I fill in "edit-email" with "test@example.org" in the "esu_standard" region
+    And I fill in "edit-email--2" with "test@example.org" in the "esu_standard" region
     And I press "Go" in the "esu_standard" region
     And I wait for AJAX loading to finish
     Then I should see "ESU Standard: success! (first message)" in the "esu_standard" region
