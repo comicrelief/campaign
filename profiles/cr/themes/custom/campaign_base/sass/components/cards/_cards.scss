@@ -23,16 +23,16 @@
     }
   }
 	@for $i from 1 through 6 {
-  .cards__item:first-child:nth-last-child(#{$i}),
-  .cards__item:first-child:nth-last-child(#{$i}) ~ .cards__item {
-    width: calc(100% - (8 * #{gutter()}));
-    margin: 0 0 calc(4 * #{gutter()});
+    .cards__item:first-child:nth-last-child(#{$i}),
+    .cards__item:first-child:nth-last-child(#{$i}) ~ .cards__item {
+      width: calc(100% - (8 * #{gutter()}));
+      margin: 0 0 calc(4 * #{gutter()});
 
-    @include breakpoint($screen-sm-max) {
+      @include breakpoint($screen-sm-max) {
 	  	  width: calc(100% - (2 * #{gutter()}));
         margin: 0 gutter() calc(2 * 1.25%);
       }
-	  @include breakpoint($screen-md-max) {
+      @include breakpoint($screen-md-max) {
 		    @include span(12/$i);
         .cards__item:first-child {
           margin-left: #{gutter()};
@@ -64,13 +64,6 @@
     @include justify-content(center);
   }
 }
-.cards__title {
-  text-align: center;
-  margin-bottom: 30px;
-  .bg--dark-orchid & {
-    color: $colour-white;
-  }
-}
 .cards__item {
   display: inline-block;
   position: relative;
@@ -82,15 +75,11 @@
     margin: 1.25% calc(2 * 1.25%) !important;
   }
 }
-.cards__image {
-  img {
-    width: 100%;
-		display: block;
-		height: 100%;
-  }
-  @include breakpoint($screen-md-only) {
-  	@include span(5);
-    margin-left: 0;
+.cards__title {
+  text-align: center;
+  margin-bottom: 30px;
+  .bg--dark-orchid & {
+    color: $colour-white;
   }
 }
 .cards__content-wrapper {
@@ -127,6 +116,17 @@
       @include span(9);
       @include push(3);
     }
+  }
+}
+.cards__image {
+  img {
+    width: 100%;
+    display: block;
+    height: 100%;
+  }
+  @include breakpoint($screen-md-only) {
+    @include span(5);
+    margin-left: 0;
   }
 }
 .cards__content {
