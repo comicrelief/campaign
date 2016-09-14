@@ -35,6 +35,7 @@
   font-size: 18px;
   line-height: 30px;
   text-decoration: none;
+  word-break: break-all;
   @include transition-property(border, color);
   @include transition-duration(180ms);
   &:hover,
