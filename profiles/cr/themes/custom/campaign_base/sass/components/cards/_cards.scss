@@ -105,7 +105,8 @@
       position: relative;
       .cards__content {      
         top: 0;
-        transform: none;
+        position: relative;
+        @include translateY(0);
       }
     }
   }
