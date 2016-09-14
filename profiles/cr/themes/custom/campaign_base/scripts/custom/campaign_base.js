@@ -5,7 +5,7 @@
     name = decodeURIComponent($.urlParam('name'));
 
     console.log(name);
-    $(".page__title").text("Welcome " + name);
+    $("h1").text(name + " make a difference!");
 
     // Turn our boring select boxes into sexy jQuery UI selectboxes
     $('select').selectmenu({ style:'popup', width: '100%' });
