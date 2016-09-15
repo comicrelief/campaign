@@ -67,6 +67,7 @@ nav.menu--main {
     }
 
     &.menu-open {
+      background-color: $colour-black;
       display: block;
     }
 
@@ -130,6 +131,8 @@ nav.menu--main {
       /* Submenus */
       > ul.menu {
          background-color: $colour-black;
+         width: 100% !important;
+         // important is to override styling coming in from nav JS plugin
 
         a {
           background-color: #222;
