@@ -24,6 +24,8 @@ fi
 mysql -e "create database $DRUPAL_TI_DB"
 
 cd _www
+ls -l profiles/cr/modules/
+ls -l profiles/cr/modules/contrib
 
 # Remove default settings so we can re-install fine, this
 # is custom logic since we version settings.php in the git repo
