@@ -41,6 +41,7 @@
     @include breakpoint($screen-md) {
       width: 350px;
       padding: 25px 0;
+      right: 85px;
 
       .form-item-school-phase {
         width: 240px;
@@ -49,8 +50,13 @@
       }
     }
 
-    @include breakpoint($screen-lg) {
+    @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
       padding: 25px 0;
+      right: 0;
+    }
+  
+    @include breakpoint($screen-lg) {
+      //padding: 25px 0;
     }
 
     .icon {
