@@ -1,8 +1,0 @@
-id: paragraph.preview
-label: Preview
-status: true
-cache: true
-targetEntityType: paragraph
-dependencies:
-  module:
-    - paragraphs

@@ -63,9 +63,6 @@ Thumbs.db
 ##########
 .sass-cache
 
-# Icon spritesheet #
-profiles/cr/themes/custom/campaign_base/images/generated/
-
 # Temp agov theme #
 profiles/cr/themes/custom/agov_base
 

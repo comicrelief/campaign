@@ -1,8 +1,0 @@
-summaries:
-  version: VERSION
-  js:
-    js/summaries.js: {}
-  dependencies:
-    - core/jquery
-    - core/drupal
-    - core/drupal.form

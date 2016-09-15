@@ -1,9 +1,0 @@
-metatag.metatag_tag.google_plus_name:
-  type: label
-  label: 'Google Plus: name'
-metatag.metatag_tag.google_plus_image:
-  type: label
-  label: 'Gooogle Plus: image'
-metatag.metatag_tag.google_plus_description:
-  type: label
-  label: 'Google Plus: description'

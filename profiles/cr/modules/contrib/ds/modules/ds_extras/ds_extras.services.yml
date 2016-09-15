@@ -1,5 +1,0 @@
-services:
-  ds_extras.route_subscriber:
-    class: Drupal\ds_extras\EventSubscriber\RouteSubscriber
-    tags:
-      - { name: event_subscriber }

@@ -1,5 +1,0 @@
-services:
-  config_readonly_form_subscriber:
-    class: Drupal\config_readonly\EventSubscriber\ReadOnlyFormSubscriber
-    tags:
-      - { name: event_subscriber }

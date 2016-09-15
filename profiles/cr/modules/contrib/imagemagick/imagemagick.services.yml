@@ -1,7 +1,0 @@
-services:
-  imagemagick.format_mapper:
-    class: Drupal\imagemagick\ImagemagickFormatMapper
-    arguments: ['@cache.default', '@imagemagick.todo2311679', '@config.factory', '@config.typed']
-  imagemagick.todo2311679:
-    class: Drupal\imagemagick\Todo2311679
-    arguments: ['@module_handler']
