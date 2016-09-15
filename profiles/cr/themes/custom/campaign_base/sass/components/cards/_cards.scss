@@ -9,23 +9,31 @@
 // Style guide: Cards
 
 .cards {
-  padding: 60px 0;
-  float: left;
+  padding: $row-padding--sm 0;
   width: 100%;
+
+  @include breakpoint($screen-md) {
+    padding: $row-padding--md 0;
+  }
+  &+.cards {
+    padding-top: 0;
+    margin-top: -$row-padding--sm;
+    @include breakpoint($screen-md) {
+      margin-top: -$row-padding--md;
+    }
+  }
 	@for $i from 1 through 6 {
   .cards__item:first-child:nth-last-child(#{$i}),
   .cards__item:first-child:nth-last-child(#{$i}) ~ .cards__item {
-    // width: calc(#{span(12)}/#{$i});
-    // margin: gutter()/2;
     width: calc(100% - (8 * #{gutter()}));
     margin: 0 0 calc(4 * #{gutter()});
 
     @include breakpoint($screen-sm-max) {
-	  	@include span(12);
-        margin: 0 0 calc(2 * 1.25%);
+	  	  width: calc(100% - (2 * #{gutter()}));
+        margin: 0 gutter() calc(2 * 1.25%);
       }
 	  @include breakpoint($screen-md-max) {
-		  @include span(12/$i);
+		    @include span(12/$i);
         .cards__item:first-child {
           margin-left: #{gutter()};
         }
@@ -35,24 +43,30 @@
       }
     }
   }
+  .cards__item:first-child:nth-last-child(1), 
+  .cards__item:first-child:nth-last-child(1) ~ .cards__item {
+    margin-bottom: 0;
+  }
   .cards__item:first-child:nth-last-child(2), 
   .cards__item:first-child:nth-last-child(2) ~ .cards__item {
-  @include breakpoint($screen-md-max) {
+    @include breakpoint($screen-md-max) {
       @include span(4);
       display: inline-block;
       float: none;
-      vertical-align: top
+      vertical-align: top;
     }
   }
 }
 .cards__wrapper {
   text-align: center;
   @include breakpoint($screen-md-max) {
-    padding: 0 #{gutter()};
+    @include display-flex;
+    @include justify-content(center);
   }
 }
 .cards__title {
   text-align: center;
+  margin-bottom: 30px;
   .bg--dark-orchid & {
     color: $colour-white;
   }
@@ -62,6 +76,7 @@
   position: relative;
   margin-bottom: 20px;
   text-align: left;
+  overflow: hidden;
 }
 .cards__image {
   img {
@@ -76,6 +91,7 @@
 .cards__content-wrapper {
   position: relative;
   padding: 30px;
+  height: 100%;
   @include breakpoint($screen-md-only) {
     position: absolute;
     top: 0;
@@ -86,6 +102,12 @@
     @include push(5);
     &.cards__content-wrapper--no-image {
       @include span(12);
+      position: relative;
+      .cards__content {      
+        top: 0;
+        position: relative;
+        @include translateY(0);
+      }
     }
   }
   .cards--feature-layout & {
@@ -104,29 +126,8 @@
 }
 .cards__content {
   @include breakpoint($screen-md-only) {
-  	position: relative;
+  	position: absolute;
 	  top: 50%;
-	  transform: translateY(-50%);
-  }
-}
-
-// move to background-colours scss
-
-.bg--red,
-.bg--royal-blue,
-.bg--purple,
-.bg--black {
-  h1, h2, h3, h4, h5, p, .link {
-    color: $colour-white;
-  }
-  .bg--white,
-  .bg--sky-blue,
-  .bg--yellow,
-  .bg--green,
-  .bg--teal,
-  .bg--pink {
-    h1, h2, h3, h4, h5, p, .link {
-      color: $colour-black;
-    }
+    @include translateY(-50%);
   }
 }

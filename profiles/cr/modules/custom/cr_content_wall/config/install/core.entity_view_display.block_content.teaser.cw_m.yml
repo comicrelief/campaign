@@ -5,13 +5,17 @@ dependencies:
     - block_content.type.teaser
     - core.entity_view_mode.block_content.cw_m
     - field.field.block_content.teaser.body
+    - field.field.block_content.teaser.field_cw_link_target
     - field.field.block_content.teaser.field_teaser_image
     - field.field.block_content.teaser.field_teaser_link
+    - field.field.block_content.teaser.field_teaser_link_colour
     - field.field.block_content.teaser.field_teaser_title
+    - field.field.block_content.teaser.field_teaser_you_tube_link
   module:
     - ds
+    - image
     - link
-    - responsive_image
+    - options
     - text
 third_party_settings:
   ds:
@@ -35,6 +39,9 @@ third_party_settings:
         - field_teaser_image
         - body
         - field_teaser_link
+        - field_teaser_you_tube_link
+        - field_teaser_link_colour
+        - field_cw_link_target
 id: block_content.teaser.cw_m
 targetEntityType: block_content
 bundle: teaser
@@ -42,19 +49,27 @@ mode: cw_m
 content:
   body:
     label: hidden
-    type: text_trimmed
+    type: text_default
     weight: 2
+    settings: {  }
+    third_party_settings: {  }
+  field_cw_link_target:
+    type: boolean
+    weight: 6
+    label: hidden
     settings:
-      trim_length: 140
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
     third_party_settings: {  }
   field_teaser_image:
     weight: 1
     label: hidden
     settings:
-      responsive_image_style: cw_landscape_image
       image_link: ''
+      image_style: ''
     third_party_settings: {  }
-    type: responsive_image
+    type: image
   field_teaser_link:
     weight: 3
     label: hidden
@@ -66,6 +81,12 @@ content:
       target: '0'
     third_party_settings: {  }
     type: link
+  field_teaser_link_colour:
+    type: list_default
+    weight: 5
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
   field_teaser_title:
     weight: 0
     label: hidden
@@ -73,5 +94,17 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-hidden:
-  social_links: true
+  field_teaser_you_tube_link:
+    type: boolean
+    weight: 4
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+  social_links:
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

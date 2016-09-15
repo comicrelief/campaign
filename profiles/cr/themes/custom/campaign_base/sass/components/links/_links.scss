@@ -5,7 +5,7 @@
 // Markup: links.hbs
 // 
 // .link--red - Red standalone link add <em style="font-weight: bold;">.inline</em> for inline links
-// .link--sky-blue - Sky Blue standalone link add <em style="font-weight: bold;">.inline</em> for inline links
+// .link--blue - Blue standalone link add <em style="font-weight: bold;">.inline</em> for inline links
 // .link--yellow - Yellow standalone link add <em style="font-weight: bold;">.inline</em> for inline links
 // .link--green - Green standalone link add <em style="font-weight: bold;">.inline</em> for inline links
 // .link--teal - Teal standalone link add <em style="font-weight: bold;">.inline</em> for inline links
@@ -35,6 +35,7 @@
   font-size: 18px;
   line-height: 30px;
   text-decoration: none;
+  word-break: break-all;
   @include transition-property(border, color);
   @include transition-duration(180ms);
   &:hover,

@@ -20,7 +20,7 @@ class RegisterInterestSignUp extends SignUp {
    * {@inheritdoc}
    */
   public function getQueueName() {
-    return 'Register_Interest';
+    return 'register_interest';
   }
 
   /**

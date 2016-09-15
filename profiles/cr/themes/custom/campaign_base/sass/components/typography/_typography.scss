@@ -13,8 +13,8 @@
 // <h4>Heading 4</h4>
 // <h4 class="font--red">Heading 4</h4>
 // <p>.font--red</p>
-// <h4 class="font--sky-blue">Heading 4</h4>
-// <p>.font--sky-blue</p>
+// <h4 class="font--blue">Heading 4</h4>
+// <p>.font--blue</p>
 // <h4 class="font--yellow">Heading 4</h4>
 // <p>.font--yellow</p>
 // <h4 class="font--green">Heading 4</h4>
@@ -56,6 +56,10 @@ h1 {
   color: $colour-black;
   font-family: $font-bold;
   @include font-size($h1-font-size);
+  &.font--font-black{
+    font-family: $font-black;
+    @include font-size($h1-black-font-size);
+  }
   &.font--xlarge {
     @include font-size($h1-xlarge-font-size);
   }
@@ -115,6 +119,10 @@ p {
   &.font--xsmall {
     @include font-size($p-xsmall-font-size);
   }
+}
+
+span.font--font-black{
+  font-family: $font-black;
 }
 
 strong {

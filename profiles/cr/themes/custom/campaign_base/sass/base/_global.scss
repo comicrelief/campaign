@@ -1,11 +1,23 @@
 // Global styling
 body {
-  background: $colour-smoke-grey;
+  background: $colour-white;
   font-family: $body-font;
   font-size: 100%;
   line-height: 1.3125rem;
 
   -webkit-font-smoothing: antialiased;
+}
+// logo header
+.block-system-branding-block {  
+  position: absolute;
+  top: 0;
+  z-index: 100;
+}
+header[role=banner] {
+  height: 129px;
+  @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
+    height: 156px;
+  }
 }
 .page__title {
   max-width: 640px;

@@ -59,15 +59,22 @@ class WorkplaceSignUpBlock extends BlockBase implements BlockPluginInterface {
 
     $config = $this->getConfiguration();
 
+    $form['cr_email_signup_title_message'] = [
+      '#type' => 'textarea',
+      '#title' => $this->t('title Message'),
+      '#description' => $this->t('Enter the title message to show'),
+      '#default_value' => isset($config['title_message']) ? $config['title_message'] : '',
+    ];
+
     $form['cr_email_signup_initial_message'] = [
-      '#type' => 'textfield',
+      '#type' => 'textarea',
       '#title' => $this->t('Initial Message'),
       '#description' => $this->t('Enter the initial message to show'),
       '#default_value' => isset($config['initial_message']) ? $config['initial_message'] : '',
     ];
 
     $form['cr_email_signup_first_success_message'] = [
-      '#type' => 'textfield',
+      '#type' => 'textarea',
       '#title' => $this->t('First Success Message'),
       '#description' => $this->t('Enter the success message'),
       '#default_value' => isset($config['first_success_message']) ? $config['first_success_message'] : '',
@@ -80,6 +87,7 @@ class WorkplaceSignUpBlock extends BlockBase implements BlockPluginInterface {
    * {@inheritdoc}
    */
   public function blockSubmit($form, FormStateInterface $form_state) {
+    $this->setConfigurationValue('title_message', $form_state->getValue('cr_email_signup_title_message'));
     $this->setConfigurationValue('initial_message', $form_state->getValue('cr_email_signup_initial_message'));
     $this->setConfigurationValue('first_success_message', $form_state->getValue('cr_email_signup_first_success_message'));
   }

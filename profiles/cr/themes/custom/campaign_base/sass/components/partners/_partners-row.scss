@@ -18,6 +18,7 @@
     text-align: center;
   }
   .partners-row__logos-list {
+    text-align: center; // ie
     ul {
       display: flex;
       text-align: center;
@@ -33,29 +34,25 @@
         max-width: calc(100% - (#{gutter()} * 2));
       }
       @include breakpoint($screen-md-max) {
-        max-width: calc($max-width - (#{gutter()} * 1));
+        max-width: calc(#{$max-width} - (#{gutter()} * 1));
       }
       //
-      @include breakpoint($screen-md) {
-        @include span(6);
-        float: none;
-        margin: 0 auto;
-      }
-      @include breakpoint($screen-lg) {
-        @include span(12);
-        float: none;
-      }
     }
     li {
       @include span(6);
-      float: none;
+      margin-bottom: gutter();
       @include breakpoint($screen-md) {
-        margin-bottom: 2.5%;
-        max-width: 300px;
+        @include span(3);
+        display: inline-block;
+        float: none;
       }
       @include breakpoint($screen-lg) {
-        @include span(3);
+        @include span(2);
+        display: inline-block;
+        float: none;
       }
+      display: inline-block;
+      float: none;
     }
     img {
       height: auto;

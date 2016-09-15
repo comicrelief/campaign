@@ -7,15 +7,15 @@ set classes = [
 'block--cr-email-signup--banner',
 ]
 %}
-
 <div{{ attributes.addClass(classes) }}>
   <div class="block--cr-email-signup__inner-wrapper">
     <div class="cr-email-signup--messages">
-      <h4>{{ content.initial_message }}</h4>
-      <h4>{{ content.first_success_message }}</h4>
-      <h4>{{ content.second_success_message }}</h4>
+      {{ content.title_message }}
+      {{ content.initial_message }}
+      {{ content.first_success_message }}
+      {{ content.second_success_message }}
     </div>
     <div class="esu-errors messages messages--error"></div>
-    {{ content|without('initial_message', 'first_success_message','second_success_message') }}
+    {{ content|without('initial_message', 'first_success_message','second_success_message', 'title_message') }}
   </div>
 </div>

@@ -13,6 +13,10 @@ libraries:
   - campaign_base/global-css
   - campaign_base/global-js
 
+libraries-override:
+  # Remove modernizr library it's been replaced for a custom one in libraries.yml.
+  core/modernizr: false
+
 stylesheets-remove:
   - core/assets/vendor/normalize-css/normalize.css
   - core/modules/system/css/system.module.css
@@ -35,6 +39,7 @@ regions:
   # hidden from the "block layout" admin page.
   page_top: 'Page top'
   page_bottom: 'Page bottom'
+  storage: 'Storage'
 
 # The default theme features as defined in _system_default_theme_features, with
 # the addition of a logo.

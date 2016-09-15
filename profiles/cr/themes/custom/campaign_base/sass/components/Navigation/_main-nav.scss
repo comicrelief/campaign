@@ -30,7 +30,7 @@ nav.menu--main {
   left: 0;
   width: 100%;
   display: block;
-  z-index: 1;
+  z-index: 100;
   height: 85px;
 
   .menu-item {
@@ -43,10 +43,9 @@ nav.menu--main {
 
     @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
       padding: 40px;
-  
-      button.main-menu-toggle {
-        display: none;
-      }
+      position: relative;
+      z-index: 10;
+      display: none;
     }
   }
 
@@ -218,7 +217,9 @@ nav.menu--main {
       top: 0;
       text-align: center;
       padding-left: 156px;
+      position: relative;
       width: 100%;
+      z-index: 1;
 
       li {
         position: relative;

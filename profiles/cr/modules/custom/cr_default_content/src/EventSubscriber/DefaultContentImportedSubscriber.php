@@ -36,7 +36,7 @@ class DefaultContentImportedSubscriber implements EventSubscriberInterface {
       'd9d66c76-bd43-40c7-8b16-2266f13e1a14' => ['label' => "Legal"],
     ];
 
-    $links_from_map = function($map, $parent = NULL) use (&$links_from_map, $entities) {
+    $links_from_map = function ($map, $parent = NULL) use (&$links_from_map, $entities) {
       $weight = 0;
       foreach ($map as $uuid => $link) {
         if (isset($entities[$uuid])) {

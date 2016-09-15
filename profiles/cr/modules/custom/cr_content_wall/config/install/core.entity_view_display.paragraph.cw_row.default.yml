@@ -2,21 +2,36 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.cw_row.field_cw_bg_colour
     - field.field.paragraph.cw_row.field_cw_row_reference
+    - field.field.paragraph.cw_row.field_cw_title
+    - field.field.paragraph.cw_row.field_cw_title_hidden
     - paragraphs.paragraphs_type.cw_row
   module:
     - ds
+    - options
     - user
 third_party_settings:
   ds:
     layout:
-      id: onecol
-      path: profiles/cr/modules/contrib/panels/layouts/onecol
-      library: layout_plugin/onecol
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
+      library: ''
       disable_css: false
-      settings: {  }
+      settings:
+        wrappers:
+          ds_content: div
+        outer_wrapper: ''
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
     regions:
-      middle:
+      ds_content:
+        - field_cw_bg_colour
+        - field_cw_title
+        - field_cw_title_hidden
         - field_cw_row_reference
     fields:
       cr_content_wall_CwRowDisplay:
@@ -31,28 +46,50 @@ mode: default
 content:
   created:
     type: timestamp
-    weight: 2
+    weight: 5
     label: above
     settings:
       date_format: medium
       custom_date_format: ''
       timezone: ''
     third_party_settings: {  }
-  field_cw_row_reference:
+  field_cw_bg_colour:
+    type: list_default
     weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_cw_row_reference:
+    weight: 3
     label: hidden
     settings:
       link: true
       view_mode: default
     third_party_settings: {  }
     type: entity_reference_entity_view
-  social_links:
+  field_cw_title:
+    type: string
     weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_cw_title_hidden:
+    type: boolean
+    weight: 2
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+  social_links:
+    weight: 4
     settings: {  }
     third_party_settings: {  }
   uid:
     type: author
-    weight: 3
+    weight: 6
     label: above
     settings: {  }
     third_party_settings: {  }

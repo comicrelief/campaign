@@ -71,6 +71,7 @@ dependencies:
   - paragraphs
   - view_mode
   - imagemagick
+  - menu_link_attributes
 
   # Custom modules
   - cr_layout
@@ -153,7 +154,6 @@ config_devel:
 
   # Menus
   - system.menu.footer
-  - system.menu.main-navigation
 
   # Images
   - system.image
@@ -211,6 +211,7 @@ config_devel:
   - user.role.anonymous
   - user.role.authenticated
   - user.role.editor
+  - user.role.manager
   - user.role.reviewer
   - user.settings
 
