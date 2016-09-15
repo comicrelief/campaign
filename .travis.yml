@@ -107,7 +107,7 @@ before_install:
 
 install:
   # - drupal-ti install
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_install.sh
+  - drupal-ti --include tests/drupal_ti/scripts/before_install.sh
   - mkdir _www/
   - phing make-core
   - ls -l _www/
@@ -115,14 +115,14 @@ install:
 
 before_script:
   # Check code quality
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/codecheck.sh
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh
+  - drupal-ti --include tests/drupal_ti/scripts/codecheck.sh
+  - drupal-ti --include tests/drupal_ti/scripts/before_script.sh
 
 script:
   # Behat
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/script.sh
+  - drupal-ti --include tests/drupal_ti/scripts/script.sh
   # Check DB errors
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/dberrors.sh
+  - drupal-ti --include tests/drupal_ti/scripts/dberrors.sh
 
 after_script:
   - drupal-ti after_script
