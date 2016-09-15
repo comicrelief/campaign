@@ -133,6 +133,7 @@ nav.menu--main {
          background-color: $colour-black;
          width: 100% !important;
          // important is to override styling coming in from nav JS plugin
+         margin-top: 5px;
 
         a {
           background-color: #222;
