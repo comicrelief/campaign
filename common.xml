@@ -66,7 +66,7 @@
           command="${drush.bin} pm-uninstall cookieconsent -y"/>
   </target>
   <target name="test:composer:install" description="Install composer dependencies">
-    <exec dir="${app.profile.dir}tests/behat" logoutput="true" passthru="true"
+    <exec dir="${project.basedir}/tests/behat" logoutput="true" passthru="true"
           command="composer install --no-progress -o" checkreturn="true"/>
   </target>
   <!-- Drush core -->
