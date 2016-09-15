@@ -115,7 +115,7 @@ install:
 
 before_script:
   # Check code quality
-  - drupal-ti --include tests/drupal_ti/scripts/codecheck.sh
+  # - drupal-ti --include tests/drupal_ti/scripts/codecheck.sh
   - drupal-ti --include tests/drupal_ti/scripts/before_script.sh
 
 script:

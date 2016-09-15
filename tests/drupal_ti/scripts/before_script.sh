@@ -23,6 +23,8 @@ fi
 # Create database and install Drupal.
 mysql -e "create database $DRUPAL_TI_DB"
 
+cd www_
+
 # Remove default settings so we can re-install fine, this
 # is custom logic since we version settings.php in the git repo
 rm -fr sites/default/settings.php
