@@ -7,11 +7,11 @@ body {
 
   -webkit-font-smoothing: antialiased;
 }
-// fix logo header *Review it*
-#block-campaign-base-branding {
+// logo header
+.block-system-branding-block {  
   position: absolute;
   top: 0;
-  z-index: 999;
+  z-index: 100;
 }
 header[role=banner] {
   height: 129px;
