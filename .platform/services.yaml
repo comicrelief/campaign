@@ -13,3 +13,5 @@ mysql:
 solr:
     type: solr:4.10
     disk: 1024
+    configuration:
+        core_config: !archive "4.x"
