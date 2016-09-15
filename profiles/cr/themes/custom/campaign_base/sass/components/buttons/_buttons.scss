@@ -49,9 +49,9 @@
   @include btn-variation( $button );
 }
 
-// Force white colour on black bg hover state
+// Force white colour on black bg hover and focus state
 .btn.btn--white {
-  &:hover {
+  &:hover, &:focus {
     color: $colour-white;
   }
 }
