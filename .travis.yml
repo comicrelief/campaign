@@ -102,7 +102,7 @@ before_install:
   - composer global config minimum-stability beta
   - composer global require phing/phing lionsad/drupal_ti:1.4.4
   - curl -sS https://platform.sh/cli/installer | php
-  - source /home/travis/.bashrc
+  - alias platform='/home/travis/.platformsh/bin/platform'
   - platform list
   - platform build
   - drupal-ti before_install
