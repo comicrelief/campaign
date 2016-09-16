@@ -6,6 +6,10 @@
 //
 // Style guide: Banners.Email-signup-head
 
+
+// block--cr-email-signup
+
+
 //hide esu form initially
 .block--cr-email-signup--head {
   display: none;
@@ -17,9 +21,22 @@
     top: 0;
   }
 
-  &.block--cr-email-signup.block--cr-email-signup--error {
-    .esu-errors.messages.messages--error .messages--error {
+  &.block--cr-email-signup--error.block--cr-email-signup {
+    .esu-errors.messages.messages--error {
       margin-top:0;
+    }
+
+    @include breakpoint($screen-md) {
+      .esu-errors.messages.messages--error {
+        position: relative;
+        top: auto;
+        width: 100%;
+        max-width: 100%;
+      }
+     
+      .block--cr-email-signup__inner-wrapper {
+        padding: 25px 0;
+      }
     }
   }
 }
