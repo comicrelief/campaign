@@ -111,6 +111,7 @@ install:
   - mkdir -p _www/profiles
   - ln -s . _www/profiles/cr
   - phing make-core
+  - pwd
   - ls -l _www/
   - ls -l _www/profiles
   - ls -l _www/profiles/cr
