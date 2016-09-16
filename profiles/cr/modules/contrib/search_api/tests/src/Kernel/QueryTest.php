@@ -44,8 +44,9 @@ class QueryTest extends KernelTestBase {
   protected function setUp() {
     parent::setUp();
 
-    $this->installSchema('search_api', array('search_api_item', 'search_api_task'));
+    $this->installSchema('search_api', array('search_api_item'));
     $this->installEntitySchema('entity_test_mulrev_changed');
+    $this->installEntitySchema('search_api_task');
 
     // Set tracking page size so tracking will work properly.
     \Drupal::configFactory()
@@ -171,8 +172,7 @@ class QueryTest extends KernelTestBase {
    * Tests that serialization of queries works correctly.
    */
   public function testQuerySerialization() {
-    $results_cache = $this->container->get('search_api.results_static_cache');
-    $query = Query::create($this->index, $results_cache);
+    $query = Query::create($this->index);
     $tags = array('tag1', 'tag2');
     $query->keys('foo bar')
       ->addCondition('field1', 'value', '<')

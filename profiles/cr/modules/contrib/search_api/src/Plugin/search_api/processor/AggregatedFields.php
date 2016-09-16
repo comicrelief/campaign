@@ -6,7 +6,7 @@ use Drupal\search_api\Datasource\DatasourceInterface;
 use Drupal\search_api\Item\ItemInterface;
 use Drupal\search_api\Plugin\search_api\processor\Property\AggregatedFieldProperty;
 use Drupal\search_api\Processor\ProcessorPluginBase;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 
 /**
  * Adds customized aggregations of existing fields to the index.

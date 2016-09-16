@@ -5,18 +5,16 @@ namespace Drupal\search_api\Plugin\views\query;
 use Drupal\Component\Render\FormattableMarkup;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Database\Query\ConditionInterface;
-use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\search_api\Entity\Index;
 use Drupal\search_api\ParseMode\ParseModeInterface;
-use Drupal\search_api\ParseMode\ParseModePluginManager;
 use Drupal\search_api\Query\ConditionGroupInterface;
 use Drupal\search_api\Query\QueryInterface;
 use Drupal\search_api\Query\ResultSetInterface;
 use Drupal\search_api\UncacheableDependencyTrait;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 use Drupal\user\Entity\User;
 use Drupal\views\Plugin\views\display\DisplayPluginBase;
 use Drupal\views\Plugin\views\query\QueryPluginBase;
@@ -129,7 +127,6 @@ class SearchApiQuery extends QueryPluginBase {
     $plugin = parent::create($container, $configuration, $plugin_id, $plugin_definition);
 
     $plugin->setLogger($container->get('logger.channel.search_api'));
-    $plugin->setParseModeManager($container->get('plugin.manager.search_api.parse_mode'));
 
     return $plugin;
   }
@@ -157,35 +154,6 @@ class SearchApiQuery extends QueryPluginBase {
     return $this;
   }
 
-  /**
-   * The parse mode manager.
-   *
-   * @var \Drupal\search_api\ParseMode\ParseModePluginManager|null
-   */
-  protected $parseModeManager;
-
-  /**
-   * Retrieves the parse mode manager.
-   *
-   * @return \Drupal\search_api\ParseMode\ParseModePluginManager
-   *   The parse mode manager.
-   */
-  public function getParseModeManager() {
-    return $this->parseModeManager ?: \Drupal::service('plugin.manager.search_api.parse_mode');
-  }
-
-  /**
-   * Sets the parse mode manager.
-   *
-   * @param \Drupal\search_api\ParseMode\ParseModePluginManager $parse_mode_manager
-   *   The new parse mode manager.
-   *
-   * @return $this
-   */
-  public function setParseModeManager(ParseModePluginManager $parse_mode_manager) {
-    $this->parseModeManager = $parse_mode_manager;
-    return $this;
-  }
   /**
    * Loads the search index belonging to the given Views base table.
    *
@@ -224,9 +192,6 @@ class SearchApiQuery extends QueryPluginBase {
       $this->retrievedProperties = array_fill_keys($this->index->getDatasourceIds(), array());
       $this->retrievedProperties[NULL] = array();
       $this->query = $this->index->query();
-      $parse_mode = $this->getParseModeManager()
-        ->createInstance($this->options['parse_mode']);
-      $this->query->setParseMode($parse_mode);
       $this->query->addTag('views');
       $this->query->addTag('views_' . $view->id());
       $this->query->setOption('search_api_view', $view);
@@ -303,9 +268,6 @@ class SearchApiQuery extends QueryPluginBase {
       'skip_access' => array(
         'default' => FALSE,
       ),
-      'parse_mode' => array(
-        'default' => 'terms',
-      ),
     );
   }
 
@@ -315,44 +277,21 @@ class SearchApiQuery extends QueryPluginBase {
   public function buildOptionsForm(&$form, FormStateInterface $form_state) {
     parent::buildOptionsForm($form, $form_state);
 
+    $form['skip_access'] = array(
+      '#type' => 'checkbox',
+      '#title' => $this->t('Skip item access checks'),
+      '#description' => $this->t("By default, an additional access check will be executed for each item returned by the search query. However, since removing results this way will break paging and result counts, it is preferable to configure the view in a way that it will only return accessible results. If you are sure that only accessible results will be returned in the search, or if you want to show results to which the user normally wouldn't have access, you can enable this option to skip those additional access checks. This should be used with care."),
+      '#default_value' => $this->options['skip_access'],
+      '#weight' => -1,
+    );
+
     $form['bypass_access'] = array(
       '#type' => 'checkbox',
       '#title' => $this->t('Bypass access checks'),
       '#description' => $this->t('If the underlying search index has access checks enabled (e.g., through the "Content access" processor), this option allows you to disable them for this view. This will never disable any filters placed on this view.'),
       '#default_value' => $this->options['bypass_access'],
     );
-
-    if ($this->getEntityTypes(TRUE)) {
-      $form['skip_access'] = array(
-        '#type' => 'checkbox',
-        '#title' => $this->t('Skip entity access checks'),
-        '#description' => $this->t("By default, an additional access check will be executed for each entity returned by the search query. However, since removing results this way will break paging and result counts, it is preferable to configure the view in a way that it will only return accessible results. If you are sure that only accessible results will be returned in the search, or if you want to show results to which the user normally wouldn't have access, you can enable this option to skip those additional access checks. This should be used with care."),
-        '#default_value' => $this->options['skip_access'],
-        '#weight' => -1,
-      );
-      $form['bypass_access']['#states']['visible'][':input[name="query[options][skip_access]"]']['checked'] = TRUE;
-    }
-
-    // @todo Move this setting to the argument and filter plugins where it makes
-    //   more sense for users.
-    $form['parse_mode'] = array(
-      '#type' => 'select',
-      '#title' => $this->t('Parse mode'),
-      '#description' => $this->t('Choose how the search keys will be parsed.'),
-      '#options' => $this->getParseModeManager()->getInstancesOptions(),
-      '#default_value' => $this->options['parse_mode'],
-    );
-    foreach ($this->getParseModeManager()->getInstances() as $key => $mode) {
-      if ($mode->getDescription()) {
-        $states['visible'][':input[name="query[options][parse_mode]"]']['value'] = $key;
-        $form["parse_mode_{$key}_description"] = array(
-          '#type' => 'item',
-          '#title' => $mode->label(),
-          '#description' => $mode->getDescription(),
-          '#states' => $states,
-        );
-      }
-    }
+    $form['bypass_access']['#states']['visible'][':input[name="query[options][skip_access]"]']['checked'] = TRUE;
   }
 
   /**
@@ -571,18 +510,11 @@ class SearchApiQuery extends QueryPluginBase {
     $count = 0;
 
     // First, unless disabled, check access for all entities in the results.
-    if (!$this->options['skip_access'] && $this->getEntityTypes(TRUE)) {
+    if (!$this->options['skip_access']) {
       $account = $this->getAccessAccount();
       foreach ($results as $item_id => $result) {
-        $entity_type_id = $result->getDatasource()->getEntityTypeId();
-        if (!$entity_type_id) {
-          continue;
-        }
-        $entity = $result->getOriginalObject()->getValue();
-        if ($entity instanceof EntityInterface) {
-          if (!$entity->access('view', $account)) {
-            unset($results[$item_id]);
-          }
+        if (!$result->checkAccess($account)) {
+          unset($results[$item_id]);
         }
       }
     }
@@ -897,8 +829,8 @@ class SearchApiQuery extends QueryPluginBase {
    *
    * This replicates the interface of Views' default SQL backend to simplify
    * the Views integration of the Search API. If you are writing Search
-   * API-specific Views code, you should better use the filter() or condition()
-   * methods.
+   * API-specific Views code, you should better use the addConditionGroup() or
+   * addCondition() methods.
    *
    * @param int $group
    *   The condition group to add these to; groups are used to create AND/OR

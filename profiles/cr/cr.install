@@ -4,6 +4,8 @@
  * Install, update and uninstall functions for the Comic Relief installation profile.
  */
 
+use Drupal\Core\Database\Database;
+
 /**
  * Implements hook_install().
  *
@@ -46,8 +48,8 @@ function cr_update_8004() {
 }
 
 /**
-* Remove field_youtube_url and uninstall youtube module
-*/
+ * Remove field_youtube_url and uninstall youtube module
+ */
 function cr_update_8005() {
   $field = Drupal\field\Entity\FieldStorageConfig::loadByName('node', 'field_youtube_url');
   $field->delete();
@@ -67,4 +69,23 @@ function cr_update_8006() {
  */
 function cr_update_8007() {
   \Drupal::configFactory()->getEditable('system.menu.main-navigation')->delete();
+}
+
+/**
+ * Remove Search view + search configs & install Solr
+ */
+function cr_update_8008() {
+  $entityTypeManager = \Drupal::service('entity_type.manager');
+  $view = $entityTypeManager->getStorage('view')->load('search');
+  $view->delete();
+  $config = \Drupal::service('config.factory');
+  $config->getEditable('views.view.search')->delete();
+  $config->getEditable('search_api.server.database')->delete();
+
+  $query = 'ALTER TABLE {search_api_task}
+CHANGE COLUMN server_id server_id VARCHAR(50) NULL';
+  Database::getConnection()->query($query);
+  $query = "DELETE FROM key_value WHERE collection='system.schema' AND name='crop'";
+  Database::getConnection()->query($query);
+  \Drupal::service('module_installer')->install(['cr_solr']);
 }

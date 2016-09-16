@@ -4,15 +4,25 @@
 # Template provided by https://github.com/LionsAd/drupal_ti.
 
 language: php
-
-sudo: false
-
 php:
   - 5.6
 
-# No need for git history here
 git:
- depth: 1
+  depth: 1
+sudo: false
+cache:
+  apt: true
+  bundler: true
+  directories:
+    - $HOME/tmp/drush
+    - $HOME/.bundle
+    - $HOME/.composer
+    - node_modules
+    - vendor
+addons:
+  apt:
+    packages:
+      - oracle-java8-installer
 
 rvm:
   - 2.1.5
@@ -24,7 +34,10 @@ env:
   global:
     # add composer's global bin directory to the path
     # see: https://github.com/drush-ops/drush#install---composer
-    - PATH="$PATH:$HOME/.composer/vendor/bin"
+    - PATH=$PATH:$HOME/.composer/vendor/bin
+    - SOLR_VERSION=6.0.1
+    - SOLR_CORE=d8
+    - SOLR_CONFS="$TRAVIS_BUILD_DIR/solr-conf/6.x"
 
     # Configuration variables.
     - DRUPAL_TI_MODULE_NAME="cr"
@@ -98,6 +111,7 @@ mysql:
   encoding: utf8
 
 before_install:
+  - phpenv config-rm xdebug.ini
   - rvm install 2.1.5
   - composer global config minimum-stability beta
   - composer global require phing/phing lionsad/drupal_ti:1.4.4
@@ -112,6 +126,7 @@ before_script:
   # Check code quality
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/codecheck.sh
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh
+  - cat profiles/cr/modules/contrib/search_api_solr/travis-solr.sh | bash
 
 script:
   # Behat

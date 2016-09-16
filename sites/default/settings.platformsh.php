@@ -21,10 +21,19 @@ if (isset($_ENV['PLATFORM_RELATIONSHIPS'])) {
       }
       if (!empty($endpoint['query']['is_master'])) {
         $databases['default']['default'] = $database;
-      }
-      else {
+      } else {
         $databases['default']['slave'][] = $database;
       }
+    }
+  }
+  if (!empty($relationships['solr'])) {
+    foreach ($relationships['solr'] as $endpoint) {
+      $config['search_api.server.solr']['backend_config'] = [
+        'host' => $endpoint['ip'],
+        'path' => $endpoint['path'],
+        'port' => $endpoint['port'],
+        'core' => $endpoint['scheme'],
+      ];
     }
   }
 }
@@ -82,3 +91,4 @@ if (isset($_ENV['PLATFORM_VARIABLES'])) {
 if (isset($_ENV['PLATFORM_PROJECT_ENTROPY']) && empty($settings['hash_salt'])) {
   $settings['hash_salt'] = $_ENV['PLATFORM_PROJECT_ENTROPY'];
 }
+

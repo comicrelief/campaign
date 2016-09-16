@@ -13,7 +13,7 @@ use Drupal\search_api\IndexInterface;
 use Drupal\search_api\Query\QueryInterface;
 use Drupal\search_api\Query\ResultSetInterface;
 use Drupal\search_api\Tests\ExampleContentTrait;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 
 /**
  * Provides a base class for backend tests.
@@ -56,10 +56,11 @@ abstract class BackendTestBase extends KernelTestBase {
   public function setUp() {
     parent::setUp();
 
-    $this->installSchema('search_api', array('search_api_item', 'search_api_task'));
+    $this->installSchema('search_api', array('search_api_item'));
     $this->installSchema('system', array('router'));
     $this->installSchema('user', array('users_data'));
     $this->installEntitySchema('entity_test_mulrev_changed');
+    $this->installEntitySchema('search_api_task');
     $this->installConfig('search_api_test_example_content');
 
     // Set the tracking page size so tracking will work properly.

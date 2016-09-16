@@ -7,10 +7,7 @@ views.query.search_api_query:
       label: If the underlying search index has access checks enabled, this option allows you to disable them for this view.
     skip_access:
       type: boolean
-      label: Do not execute additional access checks for all entities in the search results.
-    parse_mode:
-      type: string
-      label: Chooses how the search keys will be parsed.
+      label: Do not execute additional access checks for all items in the search results.
 
 views.row.search_api:
   type: views_row
@@ -38,6 +35,9 @@ views.argument.search_api_fulltext:
   type: views.argument.search_api
   label: 'Search API more like this'
   mapping:
+    parse_mode:
+      type: string
+      label: 'Parse mode'
     conjunction:
       type: string
       label: 'Conjunction'
@@ -173,6 +173,9 @@ views.filter.search_api_fulltext:
   type: views_filter
   label: 'Search API fulltext search'
   mapping:
+    parse_mode:
+      type: string
+      label: Parse mode
     min_length:
       type: integer
       label: Minimum search string length

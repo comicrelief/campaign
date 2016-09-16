@@ -8,7 +8,7 @@ use Drupal\search_api\Item\ItemInterface;
 use Drupal\search_api\Plugin\search_api\processor\AggregatedFields;
 use Drupal\search_api\Processor\ProcessorInterface;
 use Drupal\search_api\Processor\ProcessorProperty;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 use Drupal\Tests\UnitTestCase;
 
 /**
@@ -49,9 +49,14 @@ class AggregatedFieldsTest extends UnitTestCase {
   protected function setUp() {
     parent::setUp();
 
+    $datasource = $this->getMock('\Drupal\search_api\Datasource\DatasourceInterface');
+    $datasource->expects($this->any())
+      ->method('getPropertyDefinitions')
+      ->willReturn(array());
     $this->index = new Index(array(
       'datasourceInstances' => array(
-        'entity:test1' => (object) array(),
+        'entity:test1' => $datasource,
+        'entity:test2' => $datasource,
       ),
       'processorInstances' => array(),
       'field_settings' => array(
@@ -75,15 +80,10 @@ class AggregatedFieldsTest extends UnitTestCase {
           'property_path' => 'aggregated_field',
         ),
       ),
-      'properties' => array(
-        NULL => array(),
-        'entity:test1' => array(),
-        'entity:test2' => array(),
-      ),
     ), 'search_api_index');
     $this->processor = new AggregatedFields(array('index' => $this->index), 'aggregated_field', array());
     $this->index->addProcessor($this->processor);
-    $this->setUpDataTypePlugin();
+    $this->setUpMockContainer();
   }
 
   /**
@@ -259,6 +259,10 @@ class AggregatedFieldsTest extends UnitTestCase {
       ->willReturnMap(array(
         array('foo', $bar_foo_property),
       ));
+    $bar_property->method('getProperties')
+      ->willReturn(array(
+        'foo' => TRUE,
+      ));
     $foobar_property = $this->getMock('Drupal\Core\TypedData\TypedDataInterface');
     $foobar_property->method('getValue')
       ->willReturn('wrong_value2');
@@ -268,6 +272,11 @@ class AggregatedFieldsTest extends UnitTestCase {
       ->willReturnMap(array(
         array('bar', $bar_property),
         array('foobar', $foobar_property),
+      ));
+    $object->method('getProperties')
+      ->willReturn(array(
+        'bar' => TRUE,
+        'foobar' => TRUE,
       ));
 
     /** @var \Drupal\search_api\IndexInterface|\PHPUnit_Framework_MockObject_MockObject $index */

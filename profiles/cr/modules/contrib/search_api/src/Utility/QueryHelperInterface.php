@@ -1,11 +1,29 @@
 <?php
 
-namespace Drupal\search_api\Query;
+namespace Drupal\search_api\Utility;
+
+use Drupal\search_api\IndexInterface;
+use Drupal\search_api\Query\ResultSetInterface;
 
 /**
- * Represents a search results cache.
+ * Provides an interface for query helper services.
  */
-interface ResultsCacheInterface {
+interface QueryHelperInterface {
+
+  /**
+   * Creates a new search query object.
+   *
+   * @param \Drupal\search_api\IndexInterface $index
+   *   The index on which to search.
+   * @param array $options
+   *   (optional) The options to set for the query. See
+   *   \Drupal\search_api\Query\QueryInterface::setOption() for a list of
+   *   options that are recognized by default.
+   *
+   * @return \Drupal\search_api\Query\QueryInterface
+   *   A search query object to use.
+   */
+  public function createQuery(IndexInterface $index, array $options = array());
 
   /**
    * Adds a result set to the cache.

@@ -12,7 +12,10 @@ use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\KeyValueStore\KeyValueStoreInterface;
+use Drupal\Core\Plugin\PluginFormInterface;
+use Drupal\search_api\Plugin\PluginFormTrait;
 use Drupal\search_api\Plugin\search_api\data_type\value\TextToken;
+use Drupal\search_api_autocomplete\Entity\SearchApiAutocompleteSearch;
 use Psr\Log\LoggerInterface;
 use Drupal\Core\Logger\RfcLogLevel;
 use Drupal\Core\Render\Element;
@@ -25,7 +28,7 @@ use Drupal\search_api\Item\ItemInterface;
 use Drupal\search_api\Query\ConditionGroupInterface;
 use Drupal\search_api\Query\QueryInterface;
 use Drupal\search_api\SearchApiException;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 use Drupal\search_api_db\DatabaseCompatibility\DatabaseCompatibilityHandlerInterface;
 use Drupal\search_api_db\DatabaseCompatibility\GenericDatabase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -39,7 +42,9 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   description = @Translation("Indexes items in the database. Supports several advanced features, but should not be used for large sites.")
  * )
  */
-class Database extends BackendPluginBase {
+class Database extends BackendPluginBase implements PluginFormInterface {
+
+  use PluginFormTrait;
 
   /**
    * Multiplier for scores to have precision when converted from float to int.
@@ -501,13 +506,12 @@ class Database extends BackendPluginBase {
   /**
    * {@inheritdoc}
    */
-  public function supportsFeature($feature) {
-    $supported = array(
-      'search_api_autocomplete' => TRUE,
-      'search_api_facets' => TRUE,
-      'search_api_facets_operator_or' => TRUE,
+  public function getSupportedFeatures() {
+    return array(
+      'search_api_autocomplete',
+      'search_api_facets',
+      'search_api_facets_operator_or',
     );
-    return isset($supported[$feature]);
   }
 
   /**
@@ -774,7 +778,7 @@ class Database extends BackendPluginBase {
    *
    * @param string $type
    *   An indexed field's search type. One of the keys from
-   *   \Drupal\search_api\Utility::getDefaultDataTypes().
+   *   \Drupal\search_api\Utility\Utility::getDefaultDataTypes().
    *
    * @return array
    *   Column configurations to use for the field's database column.
@@ -2413,10 +2417,10 @@ class Database extends BackendPluginBase {
       // To avoid suggesting incomplete words, we have to temporarily disable
       // the "partial_matches" option. There should be no way we'll save the
       // server during the createDbQuery() call, so this should be safe.
-      $options = $this->options;
-      $this->options['partial_matches'] = FALSE;
+      $configuration = $this->configuration;
+      $this->configuration['partial_matches'] = FALSE;
       $db_query = $this->createDbQuery($query, $fields);
-      $this->options = $options;
+      $this->configuration = $configuration;
 
       // We need a list of all current results to match the suggestions against.
       // However, since MySQL doesn't allow using a temporary table multiple

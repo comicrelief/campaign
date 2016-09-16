@@ -6,7 +6,7 @@ use Drupal\entity_test\Entity\EntityTestMulRevChanged;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\search_api\Entity\Index;
 use Drupal\search_api\Entity\Server;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 
 /**
  * Tests custom data types integration.
@@ -59,10 +59,11 @@ class CustomDataTypesTest extends KernelTestBase {
   public function setUp() {
     parent::setUp();
 
-    $this->installSchema('search_api', array('search_api_item', 'search_api_task'));
+    $this->installSchema('search_api', array('search_api_item'));
     $this->installSchema('system', array('router'));
     $this->installSchema('user', array('users_data'));
     $this->installEntitySchema('entity_test_mulrev_changed');
+    $this->installEntitySchema('search_api_task');
 
     // Do not use a batch for tracking the initial items after creating an
     // index when running the tests via the GUI. Otherwise, it seems Drupal's

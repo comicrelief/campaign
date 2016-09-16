@@ -8,7 +8,7 @@ use Drupal\Core\Url;
 use Drupal\search_api\Item\FieldInterface;
 use Drupal\search_api\Plugin\search_api\data_type\value\TextValueInterface;
 use Drupal\search_api\Processor\FieldsProcessorPluginBase;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 
 /**
  * Splits text into individual words for searching.

@@ -47,18 +47,6 @@ interface IndexInterface extends ConfigEntityInterface {
   public function isReadOnly();
 
   /**
-   * Gets the cache ID prefix used for this index's caches.
-   *
-   * @param string $sub_id
-   *   An ID for the particular cache within the index that should be
-   *   identified.
-   *
-   * @return string
-   *   The cache ID (prefix) for this index's caches.
-   */
-  public function getCacheId($sub_id);
-
-  /**
    * Retrieves an option.
    *
    * @param string $name
@@ -84,7 +72,7 @@ interface IndexInterface extends ConfigEntityInterface {
    *   identifiers, the values are arrays for specifying the field settings. The
    *   structure of those arrays looks like this:
    *   - type: The type set for this field. One of the types returned by
-   *     \Drupal\search_api\Utility::getDefaultDataTypes().
+   *     \Drupal\search_api\Utility\Utility::getDefaultDataTypes().
    *   - boost: (optional) A boost value for terms found in this field during
    *     searches. Usually only relevant for fulltext fields. Defaults to 1.0.
    * - processors: An array of all processors available for the index. The keys

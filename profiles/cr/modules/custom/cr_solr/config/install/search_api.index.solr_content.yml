@@ -1,0 +1,61 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.server.solr
+    - core.entity_view_mode.node.full
+  module:
+    - search_api
+    - node
+id: solr_content
+name: 'Solr content'
+description: ''
+read_only: false
+field_settings:
+  rendered_item:
+    label: 'Rendered HTML output'
+    datasource_id: null
+    property_path: rendered_item
+    type: text
+    configuration:
+      roles:
+        anonymous: anonymous
+      view_mode:
+        'entity:node':
+          article: full
+          landing: full
+          page: default
+          partner: full
+  type:
+    label: 'Content type'
+    datasource_id: 'entity:node'
+    property_path: type
+    type: string
+processor_settings:
+  rendered_item:
+    plugin_id: rendered_item
+    settings: {  }
+  aggregated_field:
+    plugin_id: aggregated_field
+    settings: {  }
+  add_url:
+    plugin_id: add_url
+    settings: {  }
+options:
+  index_directly: true
+  cron_limit: 50
+datasource_settings:
+  'entity:node':
+    plugin_id: 'entity:node'
+    settings:
+      bundles:
+        default: true
+        selected: {  }
+      languages:
+        default: true
+        selected: {  }
+tracker_settings:
+  default:
+    plugin_id: default
+    settings: {  }
+server: solr

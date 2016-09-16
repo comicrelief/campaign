@@ -73,3 +73,13 @@ function search_api_db_defaults_requirements($phase) {
 
   return $requirements;
 }
+
+/**
+ * Implements hook_install().
+ */
+function search_api_db_defaults_install() {
+  // Clear the display plugin cache after installation so the plugin for the new
+  // view (display) gets found.
+  \Drupal::service('plugin.manager.search_api.display')
+    ->clearCachedDefinitions();
+}

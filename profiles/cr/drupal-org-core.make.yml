@@ -10,7 +10,9 @@ projects:
       # @see https://www.drupal.org/node/2655104
       - https://www.drupal.org/files/issues/missing-dependencies-2655104-8.patch
       # Add Rabbitmq
-      - https://gist.githubusercontent.com/Saphyel/8587c0c7adca816929965afa487f2c6a/raw/27ea3546c3b1342173fe45067d7d8f6f1b927969/rabbitmq.patch
+      - https://gist.github.com/Saphyel/8587c0c7adca816929965afa487f2c6a/raw/a4db65ef95591e478f716f26a14ab73b32688537/rabbitmq.patch
+      # Add Solr
+      - https://gist.github.com/Saphyel/8587c0c7adca816929965afa487f2c6a/raw/a4db65ef95591e478f716f26a14ab73b32688537/solr.patch
       # Retain destination url after preview
       # @see https://www.drupal.org/node/2325463
       - https://www.drupal.org/files/issues/2325463-42-node-preview-workflow-fixed.patch

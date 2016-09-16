@@ -6,12 +6,17 @@ use Drupal\Component\Plugin\ConfigurablePluginInterface as DrupalConfigurablePlu
 use Drupal\Component\Plugin\DerivativeInspectionInterface;
 use Drupal\Component\Plugin\PluginInspectionInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Drupal\Core\Plugin\PluginFormInterface;
 
 /**
  * Describes a configurable Search API plugin.
+ *
+ * Plugins which implement this interface which also want to add a plugin form
+ * should also implement \Drupal\Core\Plugin\PluginFormInterface.
+ *
+ * @see \Drupal\Core\Plugin\PluginFormInterface
+ * @see \Drupal\search_api\Plugin\PluginFormTrait
  */
-interface ConfigurablePluginInterface extends PluginInspectionInterface, DerivativeInspectionInterface, DrupalConfigurablePluginInterface, PluginFormInterface, ContainerFactoryPluginInterface {
+interface ConfigurablePluginInterface extends PluginInspectionInterface, DerivativeInspectionInterface, DrupalConfigurablePluginInterface, ContainerFactoryPluginInterface {
 
   /**
    * Returns the label for use on the administration pages.

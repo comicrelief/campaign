@@ -2,6 +2,7 @@
 
 namespace Drupal\search_api\Datasource;
 
+use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\TypedData\ComplexDataInterface;
 use Drupal\search_api\Plugin\IndexPluginInterface;
 
@@ -123,6 +124,20 @@ interface DatasourceInterface extends IndexPluginInterface {
    *   item has no URL of its own.
    */
   public function getItemUrl(ComplexDataInterface $item);
+
+  /**
+   * Checks whether a user has permission to view the given item.
+   *
+   * @param \Drupal\Core\TypedData\ComplexDataInterface $item
+   *   An item of this datasource's type.
+   * @param \Drupal\Core\Session\AccountInterface|null $account
+   *   (optional) The user session for which to check access, or NULL to check
+   *   access for the current user.
+   *
+   * @return bool
+   *   TRUE if access is granted, FALSE otherwise.
+   */
+  public function checkItemAccess(ComplexDataInterface $item, AccountInterface $account = NULL);
 
   /**
    * Returns the available view modes for this datasource.

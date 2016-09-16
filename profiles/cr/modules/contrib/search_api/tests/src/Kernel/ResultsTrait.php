@@ -3,7 +3,7 @@
 namespace Drupal\Tests\search_api\Kernel;
 
 use Drupal\search_api\Query\ResultSetInterface;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 
 /**
  * Defines a trait for testing results.

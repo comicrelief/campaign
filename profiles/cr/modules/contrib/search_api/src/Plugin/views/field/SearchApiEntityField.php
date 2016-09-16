@@ -5,7 +5,7 @@ namespace Drupal\search_api\Plugin\views\field;
 use Drupal\Core\Form\FormHelper;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\search_api\Plugin\views\EntityFieldRenderer;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 use Drupal\views\Plugin\views\display\DisplayPluginBase;
 use Drupal\views\Plugin\views\field\Field;
 use Drupal\views\Plugin\views\field\MultiItemsFieldHandlerInterface;

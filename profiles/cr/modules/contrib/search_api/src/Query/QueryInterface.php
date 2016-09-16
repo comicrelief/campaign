@@ -2,8 +2,10 @@
 
 namespace Drupal\search_api\Query;
 
+use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\search_api\IndexInterface;
 use Drupal\search_api\ParseMode\ParseModeInterface;
+use Drupal\search_api\ParseMode\ParseModePluginManager;
 
 /**
  * Represents a search query on a Search API index.
@@ -55,8 +57,6 @@ interface QueryInterface extends ConditionSetInterface {
    *
    * @param \Drupal\search_api\IndexInterface $index
    *   The index for which the query should be created.
-   * @param \Drupal\search_api\Query\ResultsCacheInterface $results_cache
-   *   The results cache that should be used for this query.
    * @param array $options
    *   (optional) The options to set for the query.
    *
@@ -67,7 +67,7 @@ interface QueryInterface extends ConditionSetInterface {
    *   Thrown if a search on that index (or with those options) won't be
    *   possible.
    */
-  public static function create(IndexInterface $index, ResultsCacheInterface $results_cache, array $options = array());
+  public static function create(IndexInterface $index, array $options = array());
 
   /**
    * Retrieves the parse mode.
