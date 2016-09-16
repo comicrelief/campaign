@@ -184,3 +184,8 @@ libraries:
       type: "file"
       url: https://raw.githubusercontent.com/previousnext/drush_cmi_tools/ac3a1b71acf843a52807c7362357d8acb7a366c0/drush_cmi_tools.drush.inc
     destination: "../../drush"
+  lightcase:
+    download:
+      type: "get"
+      url: https://github.com/cbopp-art/lightcase/archive/v2.3.4.zip
+    destination: "themes/custom/campaign_base/libraries"
