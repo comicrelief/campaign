@@ -22,6 +22,10 @@
           description="Build all project dependencies. (gems, composer)">
     <exec logoutput="true" passthru="true" command="composer install --no-progress --prefer-dist -o"/>
   </target>
+  <target name="build:prepare:dev" depends="grunt:dependencies:dev, test:composer:install"
+          description="Build all project dependencies. (gems, composer)">
+    <exec logoutput="true" passthru="true" command="composer install --no-progress --prefer-dist -o"/>
+  </target>
   <!-- Front-end -->
   <target name="grunt:build" description="Generate all compiled Sass and JS files.">
     <exec dir="${app.profile.dir}" logoutput="true" passthru="true"
