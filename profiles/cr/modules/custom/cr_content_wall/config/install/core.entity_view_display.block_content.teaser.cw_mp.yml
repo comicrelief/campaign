@@ -60,7 +60,7 @@ content:
   field_teaser_link_title:
     type: string
     weight: 3
-    label: above
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
