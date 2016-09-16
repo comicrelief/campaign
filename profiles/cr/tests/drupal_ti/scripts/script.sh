@@ -4,6 +4,9 @@
 
 set -e $DRUPAL_TI_DEBUG
 
+# Check the config match with the info.yml
+phing config:check
+
 # Ensure we are in the right directory, we need to overwrite this here
 # since it is different from Drupal TI's default setup
 DRUPAL_TI_DRUPAL_DIR="$TRAVIS_BUILD_DIR"
