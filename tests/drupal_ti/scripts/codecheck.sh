@@ -3,7 +3,7 @@
 
 set -e $DRUPAL_TI_DEBUG
 
-CODE_PATH="profiles/cr/modules/custom"
+CODE_PATH="_www/profiles/cr/modules/custom"
 STANDARD="--standard=Drupal"
 EXTENSIONS="--extensions=php,module,inc,install,test,profile,theme"
 
