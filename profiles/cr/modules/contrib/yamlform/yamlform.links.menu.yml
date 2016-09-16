@@ -1,5 +1,0 @@
-entity.yamlform.collection:
-  title: 'YAML form'
-  description: 'Find and manage YAML forms.'
-  parent: system.admin_structure
-  route_name: entity.yamlform.collection

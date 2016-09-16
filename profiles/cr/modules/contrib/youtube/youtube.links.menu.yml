@@ -1,5 +1,0 @@
-youtube_menu:
-  title: 'YouTube Field settings'
-  description: 'Configure global settings for YouTube fields.'
-  parent: system.admin_config_media
-  route_name: youtube.settings

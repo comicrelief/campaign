@@ -1,5 +1,0 @@
-<?php
-/**
- * @file
- * Developer documentation.
- */

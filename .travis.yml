@@ -50,9 +50,9 @@ env:
 
     # === Behat specific variables.
     # This is relative to $TRAVIS_BUILD_DIR
-    - DRUPAL_TI_BEHAT_DIR="./profiles/cr/tests/behat"
+    - DRUPAL_TI_BEHAT_DIR="./tests/behat"
     # This is relative to $TRAVIS_BUILD_DIR
-    - DRUPAL_TI_THEME_DIR="./profiles/cr/themes/custom/campaign_base"
+    - DRUPAL_TI_THEME_DIR="./themes/custom/campaign_base"
     # These arguments are passed to the bin/behat command.
     - DRUPAL_TI_BEHAT_ARGS=""
     # Specify the filename of the behat.yml with the $DRUPAL_TI_DRUPAL_DIR variables.
@@ -101,23 +101,28 @@ before_install:
   - rvm install 2.1.5
   - composer global config minimum-stability beta
   - composer global require phing/phing lionsad/drupal_ti:1.4.4
+  # - curl -sS https://platform.sh/cli/installer | php
+  # - /home/travis/.platformsh/bin/platform build
   - drupal-ti before_install
 
 install:
   - drupal-ti install
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_install.sh
+  - drupal-ti --include tests/drupal_ti/scripts/before_install.sh
+  - mkdir -p _www/profiles
+  - ln -s /home/travis/build/comicrelief/campaign _www/profiles/cr
+  - phing make
   - phing build:prepare
 
 before_script:
   # Check code quality
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/codecheck.sh
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh
+  # - drupal-ti --include tests/drupal_ti/scripts/codecheck.sh
+  - drupal-ti --include tests/drupal_ti/scripts/before_script.sh
 
 script:
   # Behat
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/script.sh
+  - drupal-ti --include tests/drupal_ti/scripts/script.sh
   # Check DB errors
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/dberrors.sh
+  - drupal-ti --include tests/drupal_ti/scripts/dberrors.sh
 
 after_script:
   - drupal-ti after_script
