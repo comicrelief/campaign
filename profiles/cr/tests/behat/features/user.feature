@@ -30,6 +30,9 @@ Feature: User
   @api
   Scenario: Check two different editors both have access to edit a single page
     Given I am logged in as a user with the "editor" role
-    And I am viewing a "page" content with "Test page" title
+    And I am viewing an unpublished "page" with the title "Test page"
+    And I click "Edit"
+    Then I should get a "200" HTTP response
+    Given I am logged in as a user with the "editor" role
     And I click "Edit"
     Then I should get a "200" HTTP response
