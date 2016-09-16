@@ -212,6 +212,7 @@ config_devel:
   - user.role.anonymous
   - user.role.authenticated
   - user.role.editor
+  - user.role.manager
   - user.role.reviewer
   - user.settings
 
