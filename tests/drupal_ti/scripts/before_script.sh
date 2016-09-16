@@ -23,7 +23,7 @@ fi
 # Create database and install Drupal.
 mysql -e "create database $DRUPAL_TI_DB"
 
-# cd _www
+cd _www
 # ls -l profiles/cr/modules/
 # ls -l profiles/cr/modules/contrib
 
@@ -32,12 +32,13 @@ mysql -e "create database $DRUPAL_TI_DB"
 # rm -fr sites/default/settings.php
 
 # Install the site using the given profile
-# php -d sendmail_path=$(which true) ~/.composer/vendor/bin/drush.php --verbose --yes site-install $DRUPAL_TI_MODULE_NAME --db-url="$DRUPAL_TI_DB_URL"
-# drush use $(pwd)#default
-phing build
+php -d sendmail_path=$(which true) ~/.composer/vendor/bin/drush.php --verbose --yes site-install $DRUPAL_TI_MODULE_NAME --db-url="$DRUPAL_TI_DB_URL"
+drush use $(pwd)#default
+# phing build
 
 # Render themes
-# phing grunt:build
+cd ../
+phing grunt:build
 # Clear caches and run a web server.
 drupal_ti_clear_caches
 drupal_ti_run_server
