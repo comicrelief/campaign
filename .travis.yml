@@ -108,8 +108,7 @@ before_install:
 install:
   - drupal-ti install
   - drupal-ti --include tests/drupal_ti/scripts/before_install.sh
-  - mkdir _www/
-  - mkdir _www/profiles/cr
+  - mkdir -p _www/profiles
   - ln -s . _www/profiles/cr
   - phing make-core
   - ls -l _www/
