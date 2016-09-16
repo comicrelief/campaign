@@ -1,19 +1,23 @@
 # @file
-# .travis.yml - Drupal for Travis CI Integration
-#
 # Template provided by https://github.com/LionsAd/drupal_ti.
 
 language: php
-
-sudo: false
-
 php:
   - 5.6
+  - 7.0
 
-# No need for git history here
 git:
- depth: 1
-
+  depth: 1
+sudo: false
+cache:
+  apt: true
+  bundler: true
+  directories:
+    - $HOME/tmp/drush
+    - $HOME/.bundle
+    - $HOME/.composer
+    - node_modules
+    - vendor
 rvm:
   - 2.1.5
 
