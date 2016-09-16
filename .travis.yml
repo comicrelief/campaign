@@ -109,7 +109,7 @@ install:
   - drupal-ti install
   - drupal-ti --include tests/drupal_ti/scripts/before_install.sh
   - mkdir -p _www/profiles
-  - ln -s . _www/profiles/cr
+  - ln -s /home/travis/build/comicrelief/campaign _www/profiles/cr
   - phing make
   - pwd
   - ls -l _www/
