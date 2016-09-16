@@ -8,12 +8,12 @@ dependencies:
     - field.field.block_content.teaser.field_teaser_image
     - field.field.block_content.teaser.field_teaser_link
     - field.field.block_content.teaser.field_teaser_link_colour
+    - field.field.block_content.teaser.field_teaser_link_title
     - field.field.block_content.teaser.field_teaser_title
     - field.field.block_content.teaser.field_teaser_you_tube_link
     - image.style.thumbnail
   module:
     - image
-    - link
     - text
 id: block_content.teaser.default
 targetEntityType: block_content
@@ -30,7 +30,7 @@ content:
     third_party_settings: {  }
   field_cw_link_target:
     type: boolean_checkbox
-    weight: 6
+    weight: 7
     settings:
       display_label: true
     third_party_settings: {  }
@@ -42,17 +42,24 @@ content:
     third_party_settings: {  }
     type: image_image
   field_teaser_link:
-    weight: 4
+    weight: 5
     settings:
-      placeholder_url: ''
-      placeholder_title: ''
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-    type: link_default
+    type: string_textfield
   field_teaser_link_colour:
     type: options_select
-    weight: 5
+    weight: 6
     settings: {  }
     third_party_settings: {  }
+  field_teaser_link_title:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
   field_teaser_title:
     weight: 2
     settings:
@@ -62,7 +69,7 @@ content:
     type: string_textfield
   field_teaser_you_tube_link:
     type: boolean_checkbox
-    weight: 7
+    weight: 8
     settings:
       display_label: true
     third_party_settings: {  }
