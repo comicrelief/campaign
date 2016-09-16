@@ -13,9 +13,9 @@ libraries:
   - campaign_base/global-css
   - campaign_base/global-js
 
-libraries-override:
-  # Remove modernizr library it's been replaced for a custom one in libraries.yml.
-  core/modernizr: false
+# libraries-override:
+#   # Remove modernizr library it's been replaced for a custom one in libraries.yml.
+#   core/modernizr: false
 
 stylesheets-remove:
   - core/assets/vendor/normalize-css/normalize.css
