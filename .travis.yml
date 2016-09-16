@@ -111,13 +111,6 @@ install:
   - mkdir -p _www/profiles
   - ln -s /home/travis/build/comicrelief/campaign _www/profiles/cr
   - phing make
-  - pwd
-  - ls -l _www/
-  - ls -l _www/profiles
-  - ls -l _www/profiles/cr
-  - ls -l _www/profiles/cr/modules
-  - ls -l _www/profiles/cr/modules/contrib
-  - ls -l _www/profiles/cr/modules/custom
   - phing build:prepare
 
 before_script:
