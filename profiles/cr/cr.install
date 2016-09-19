@@ -4,6 +4,8 @@
  * Install, update and uninstall functions for the Comic Relief installation profile.
  */
 
+use Drupal\Core\Database\Database;
+
 /**
  * Implements hook_install().
  *
@@ -70,8 +72,16 @@ function cr_update_8007() {
 }
 
 /**
- * Install cdn
+ * Kill crop
  */
 function cr_update_8008() {
-  \Drupal::service('module_installer')->install(['cdn']);
+  $query = "DELETE FROM key_value WHERE collection='system.schema' AND name='crop'";
+  Database::getConnection()->query($query);
+}
+
+/**
+* Install cdn
+*/
+function cr_update_8009() {
+ \Drupal::service('module_installer')->install(['cdn']);
 }
