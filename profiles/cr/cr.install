@@ -77,4 +77,7 @@ function cr_update_8007() {
 function cr_update_8008() {
   $query = "DELETE FROM key_value WHERE collection='system.schema' AND name='crop'";
   Database::getConnection()->query($query);
+  $field = Drupal\field\Entity\FieldStorageConfig::loadByName('node', 'panelizer');
+  $field->delete();
+  field_purge_batch('panelizer');
 }
