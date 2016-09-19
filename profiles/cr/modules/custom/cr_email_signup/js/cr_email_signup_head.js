@@ -1,3 +1,7 @@
+/**
+ * @file
+ */
+
 (function ($) {
   $(document).ready(function () {
     $("button.main-menu__icons-esu-toggle").on("click", function() {
