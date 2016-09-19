@@ -38,5 +38,5 @@ if (file_exists(__DIR__ . '/settings.local.php')) {
 
   // Some specific platform.sh settings
   $settings['update_free_access'] = FALSE;
-  $config_directories[CONFIG_SYNC_DIRECTORY] = 'sites/default/config';
+  $config_directories[CONFIG_SYNC_DIRECTORY] = 'sites/default/sync';
 }
