@@ -13,10 +13,15 @@
   @include clearfix;
   position: relative;
   clear: both;
-  margin: 0 0 -5px;
-  min-height: 500px;
+  margin: 0;
   @extend .bg--black;
+  
+  @include breakpoint($screen-md, $no-query: true) {
+    min-height: 500px;
+    margin: 0 0 -6px;
+  }
 }
+
 .background-single-msg__inner-wrap {
   @include breakpoint($screen-md-max, $no-query: true) {
     @include translateY(-50%);
@@ -57,7 +62,7 @@
     }
   }
   img {
-    margin-bottom: -5px;
+    margin-bottom: -6px;
   }
 }
 .background-single-msg__body {
