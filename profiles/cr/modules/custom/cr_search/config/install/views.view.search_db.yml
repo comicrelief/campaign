@@ -5,8 +5,8 @@ dependencies:
     - search_api.index.cr_content
   module:
     - search_api
-id: search
-label: Search
+id: search_db
+label: 'Search DB'
 module: views
 description: ''
 tag: ''
@@ -77,10 +77,10 @@ display:
         options:
           view_modes:
             'entity:node':
-              article: search_index
-              landing: search_index
-              page: search_index
-              partner: search_index
+              article: teaser
+              landing: default
+              page: teaser
+              partner: teaser
       fields:
         search_api_language:
           table: search_api_index_cr_content
@@ -180,7 +180,7 @@ display:
             rendered_item: rendered_item
           plugin_id: search_api_fulltext
       sorts: {  }
-      title: Search
+      title: 'Search DB'
       header: {  }
       footer: {  }
       empty:
@@ -213,7 +213,7 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: search
+      path: search_db
       enabled: true
     cache_metadata:
       max-age: 0

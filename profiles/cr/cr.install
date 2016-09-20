@@ -91,3 +91,20 @@ function cr_update_8008() {
 function cr_update_8009() {
  \Drupal::service('module_installer')->install(['cdn']);
 }
+
+/**
+ * Remove Search view + search configs & install Solr
+ */
+function cr_update_8009() {
+  $entityTypeManager = \Drupal::service('entity_type.manager');
+  $view = $entityTypeManager->getStorage('view')->load('search');
+  $view->delete();
+  $config = \Drupal::service('config.factory');
+  $config->getEditable('views.view.search')->delete();
+  $config->getEditable('search_api.server.database')->delete();
+
+  $query = 'ALTER TABLE {search_api_task}
+CHANGE COLUMN server_id server_id VARCHAR(50) NULL';
+  Database::getConnection()->query($query);
+  \Drupal::service('module_installer')->install(['cr_solr']);
+}
