@@ -3,8 +3,8 @@ status: true
 dependencies:
   module:
     - block_content
-id: block_content.field_teaser_link
-field_name: field_teaser_link
+id: block_content.field_teaser_link_title
+field_name: field_teaser_link_title
 entity_type: block_content
 type: string
 settings:
