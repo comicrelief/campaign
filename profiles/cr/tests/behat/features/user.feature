@@ -25,4 +25,3 @@ Feature: User
     Given I am logged in as a user with the "editor" role
     Given I am on "/admin/people"
     Then I should get a "403" HTTP response
-    And I should see "You are not authorized to access this page."
