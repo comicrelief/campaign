@@ -185,6 +185,12 @@ nav.menu--main {
          // important is to override styling coming in from nav JS plugin
          margin-top: 5px;
 
+        // Override the 100% width above (necessary for odd iOS bug on mobile nav)
+        @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
+          width: 250px !important;
+          max-height: none;
+        }
+
         a {
           background-color: #222;
           > span {
