@@ -189,6 +189,7 @@ nav.menu--main {
         @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
           width: 250px !important;
           max-height: none;
+          margin-top: 0;
         }
 
         a {
