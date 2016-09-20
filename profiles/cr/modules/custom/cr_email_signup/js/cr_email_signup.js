@@ -47,13 +47,15 @@
       var _base = Drupal.behaviors.crEmailSignUp;
       var _settings = _base.settings;
 
-      // Check the type of ESU based on the wrapper class used in the.
+      // Check each type of ESU based on the wrapper class used.
       if ($(context).hasClass(_settings.esuBannerClass)) {
         _settings.sourceValue = 'Banner';
+      } else {
+        _settings.sourceValue = 'Header';
       }
 
       // Use this value to set the hidden source field.
-      $(_settings.hiddenSourceFieldClass).val(_settings.sourceValue);
+      $(context).find(_settings.hiddenSourceFieldClass).val(_settings.sourceValue);
     },
   };
 })(jQuery);
