@@ -167,13 +167,6 @@ class UnsavedIndexConfiguration implements IndexInterface, UnsavedConfigurationI
   /**
    * {@inheritdoc}
    */
-  public function getCacheId($sub_id) {
-    return $this->entity->getCacheId($sub_id);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public function getOption($name, $default = NULL) {
     return $this->entity->getOption($name, $default);
   }
