@@ -9,6 +9,24 @@
 	  newPosition();
 	  newHeight();
 
+    stickyNav();
+
+  });
+
+  var stickyNavTop = $('.sticky-nav').offset().top;
+ 
+  var stickyNav = function() {
+    var scrollTop = $(window).scrollTop();
+          
+    if (scrollTop > stickyNavTop) { 
+        $('.sticky-nav').addClass('sticky');
+    } else {
+        $('.sticky-nav').removeClass('sticky');
+      }
+  };
+  
+  $(window).scroll(function() {
+    stickyNav();
   });
 
   sSize = $(window).width();

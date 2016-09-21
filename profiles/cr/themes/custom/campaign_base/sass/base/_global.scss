@@ -7,6 +7,24 @@ body {
 
   -webkit-font-smoothing: antialiased;
 }
+
+// sticky nav
+.sticky {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  border-top: 0;
+  background: white;
+}
+.sticky-nav {
+  .link {
+    display: inline-block;
+    margin: 10px;
+    word-break: break-word;
+  }
+}
 // logo header
 .block-system-branding-block {  
   position: absolute;
