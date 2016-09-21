@@ -3,8 +3,11 @@
 namespace Drupal\cdn\File;
 
 use Drupal\cdn\CdnSettings;
+use Drupal\Component\Utility\Crypt;
 use Drupal\Component\Utility\Unicode;
 use Drupal\Core\File\FileSystemInterface;
+use Drupal\Core\PrivateKey;
+use Drupal\Core\Site\Settings;
 use Drupal\Core\StreamWrapper\StreamWrapperInterface;
 use Drupal\Core\StreamWrapper\StreamWrapperManagerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -15,6 +18,13 @@ use Symfony\Component\HttpFoundation\RequestStack;
  * @see https://www.drupal.org/node/2669074
  */
 class FileUrlGenerator {
+
+  /**
+   * The app root.
+   *
+   * @var string
+   */
+  protected $root;
 
   /**
    * The file system service.
@@ -38,6 +48,13 @@ class FileUrlGenerator {
   protected $requestStack;
 
   /**
+   * The private key service.
+   *
+   * @var \Drupal\Core\PrivateKey
+   */
+  protected $privateKey;
+
+  /**
    * The CDN settings service.
    *
    * @var \Drupal\cdn\CdnSettings
@@ -47,19 +64,25 @@ class FileUrlGenerator {
   /**
    * Constructs a new CDN file URL generator object.
    *
-   * @param \Drupal\Core\File\FileSystemInterface
+   * @param string $root
+   *   The app root.
+   * @param \Drupal\Core\File\FileSystemInterface $file_system
    *   The file system service.
-   * @param \Drupal\Core\StreamWrapper\StreamWrapperManagerInterface
+   * @param \Drupal\Core\StreamWrapper\StreamWrapperManagerInterface $stream_wrapper_manager
    *   The stream wrapper manager.
    * @param \Symfony\Component\HttpFoundation\RequestStack $request_stack
    *   The request stack.
+   * @param \Drupal\Core\PrivateKey $private_key
+   *   The private key service.
    * @param \Drupal\cdn\CdnSettings $cdn_settings
    *   The CDN settings service.
    */
-  public function __construct(FileSystemInterface $file_system, StreamWrapperManagerInterface $stream_wrapper_manager, RequestStack $request_stack, CdnSettings $cdn_settings) {
+  public function __construct($root, FileSystemInterface $file_system, StreamWrapperManagerInterface $stream_wrapper_manager, RequestStack $request_stack, PrivateKey $private_key, CdnSettings $cdn_settings) {
+    $this->root = $root;
     $this->fileSystem = $file_system;
     $this->streamWrapperManager = $stream_wrapper_manager;
     $this->requestStack = $request_stack;
+    $this->privateKey = $private_key;
     $this->settings = $cdn_settings;
   }
 
@@ -79,7 +102,7 @@ class FileUrlGenerator {
    *   The URI to a file for which we need a CDN URL, or the path to a shipped
    *   file.
    *
-   * @return string|FALSE
+   * @return string|false
    *   A string containing the protocol-relative CDN file URI, or FALSE if this
    *   file URI should not be served from a CDN.
    */
@@ -119,6 +142,22 @@ class FileUrlGenerator {
     }
     else {
       $cdn_domain = $result;
+    }
+
+    // When farfuture is enabled, rewrite the file URL to let Drupal serve the
+    // file with optimal headers. Only possible if the file exists.
+    $absolute_file_path = $this->root . $root_relative_url;
+    if ($this->settings->farfutureIsEnabled() && file_exists($absolute_file_path)) {
+      // We do the filemtime() call separately, because a failed filemtime()
+      // will cause a PHP warning to be written to the log, which would remove
+      // any performance gain achieved by removing the file_exists() call.
+      $mtime = filemtime($absolute_file_path);
+
+      // Generate a security token. Ensures that users can not request any file
+      // they want by manipulating the URL (they could otherwise request
+      // settings.php for example). See https://www.drupal.org/node/1441502.
+      $calculated_token = Crypt::hmacBase64($mtime . $root_relative_url, $this->privateKey->get() . Settings::getHashSalt());
+      return '//' . $cdn_domain . '/cdn/farfuture/' . $calculated_token . '/' . $mtime . $root_relative_url;
     }
 
     return '//' . $cdn_domain . $root_relative_url;
