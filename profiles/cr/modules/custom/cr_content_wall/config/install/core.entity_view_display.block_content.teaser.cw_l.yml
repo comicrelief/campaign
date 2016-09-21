@@ -12,7 +12,6 @@ dependencies:
     - field.field.block_content.teaser.field_teaser_link_title
     - field.field.block_content.teaser.field_teaser_title
     - field.field.block_content.teaser.field_teaser_you_tube_link
-    - responsive_image.styles.cw_landscape_image
   module:
     - ds
     - options
