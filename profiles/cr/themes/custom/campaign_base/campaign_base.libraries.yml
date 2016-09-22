@@ -6,12 +6,13 @@ global-css:
 
 global-js:
   js:
+    libraries/lightcase/src/js/lightcase.js: {}
+    libraries/modernizr/modernizr-custom.js: {}
     js/campaign_base.min.js: {}
   dependencies:
     - core/jquery
-    - core/drupal
     - core/jquery.once
-    - core/modernizr
+    - core/drupal
     - core/jquery.ui
     - core/jquery.ui.selectmenu
 

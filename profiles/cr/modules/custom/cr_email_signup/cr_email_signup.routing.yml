@@ -1,7 +1,7 @@
-cr_email_signup.step:
-  path: '/cr-email-signup'
+cr_email_signup.esu:
+  path: '/test/esu'
   defaults:
-    _form: '\Drupal\cr_email_signup\Form\SignUp'
+    _controller: '\Drupal\cr_email_signup\Controller\EsuController::simple'
     _title: 'Sign Up'
   requirements:
     _permission: 'access content'

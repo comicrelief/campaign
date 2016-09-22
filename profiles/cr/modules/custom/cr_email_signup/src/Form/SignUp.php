@@ -6,78 +6,80 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\HtmlCommand;
+use Drupal\Core\Ajax\PrependCommand;
 use Drupal\Core\Ajax\InvokeCommand;
 
 /**
- * Concrete implementation of Step One.
+ * Generate Email Sign up.
  */
-class SignUp extends FormBase {
+abstract class SignUp extends FormBase {
+
+  public static $ERRORS = [
+    'MAIL' => 'error--email',
+    'NAME' => 'error--firstname',
+    'AGEGROUP' => 'error--agegroup',
+    'ESU' => 'block--cr-email-signup--error',
+  ];
+
+  // Convert all this small variables into a class.
+  protected $campaign = 'RND17';
+  protected $transType = 'esu';
+  protected $esulist = ['general' => 'general'];
 
   /**
-   * Array to send to queue. Some key values should be sourced from config.
+   * Returns the queue name.
    *
-   * @var array
-   *     Skeleton message to send
+   * @return string
+   *   The string identifying the queue.
    */
-  protected $skeletonMessage = array(
-    // TODO: Should this be hardcoded??
-    'campaign' => 'RND17',
-    'transType' => 'esu',
-    'timestamp' => NULL,
-    'transSourceURL' => NULL,
-    'transSource' => NULL,
-    'email' => NULL,
-  );
+  abstract protected function getQueueName();
 
   /**
-   * Get the Form Identifier.
-   */
-  public function getFormId() {
-    return 'cr_email_signup_form';
-  }
-
-  /**
-   * Send a message to the queue service.
+   * Fill a message for the queue service.
    *
    * @param array $append_message
    *     Message to append to queue.
    */
-  protected function queueMessage($append_message) {
+  protected function fillQmessage($append_message) {
     // Add dynamic keys.
     $append_message['timestamp'] = time();
-    $append_message['transSourceURL'] = \Drupal::service('path.current')->getPath();
-    $append_message['transSource'] = "{$this->skeletonMessage['campaign']}_[Device]_ESU_[PageElementSource]";
+    $current_path = \Drupal::service('path.current')->getPath();
+    $current_alias = \Drupal::service('path.alias_manager')->getAliasByPath($current_path);
+    $append_message['transSourceURL'] = \Drupal::request()->getHost() . $current_alias;
+    $append_message['transSource'] = "{$this->campaign}_ESU_[PageElementSource]";
 
     // RND-178: Device & Source Replacements.
-    if (!empty($append_message['device'])) {
-      $append_message['transSource'] = str_replace("[Device]", $append_message['device'], $append_message['transSource']);
-    }
-    else {
-      $append_message['transSource'] = str_replace("[Device]", "Unknown", $append_message['transSource']);
-    }
-    if (!empty($append_message['source'])) {
-      $append_message['transSource'] = str_replace("[PageElementSource]", $append_message['source'], $append_message['transSource']);
-    }
-    else {
-      $append_message['transSource'] = str_replace("[PageElementSource]", "Unknown", $append_message['transSource']);
-    }
+    $source = (empty($append_message['source'])) ? "Unknown" : $append_message['source'];
+
+    $append_message['transSource'] = str_replace(
+      ['[PageElementSource]'],
+      [$source],
+      $append_message['transSource']
+    );
 
     // Add passed arguments.
-    $queue_message = array_merge($this->skeletonMessage, $append_message);
-    // TODO: Move to config/default.
-    $queue_name = 'esu';
+    $append_message['campaign'] = $this->campaign;
+    $append_message['transType'] = $this->transType;
+
+    $this->sendQmessage($append_message);
+  }
+
+  /**
+   * Send a message to the queue service.
+   */
+  protected function sendQmessage($queue_message) {
     try {
-
       $queue_factory = \Drupal::service('queue');
-
-      $queue = $queue_factory->get($queue_name);
+      $queue = $queue_factory->get($this->getQueueName());
 
       if (FALSE === $queue->createItem($queue_message)) {
         throw new \Exception("createItem Failed. Check Queue.");
       }
     }
     catch (\Exception $exception) {
-      \Drupal::logger('cr_email_signup')->error("Unable to queue message. Attempted to queue message. Error was: " . $exception->getMessage());
+      \Drupal::logger('cr_email_signup')->error(
+        "Unable to queue message. Attempted to queue message. Error was: " . $exception->getMessage()
+      );
     }
   }
 
@@ -85,41 +87,55 @@ class SignUp extends FormBase {
    * Build the Form Elements.
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
+    // Annoy code check!
     $form_state = $form_state;
-    $form['steps']['email'] = [
+
+    $form += $this->esuRequiredFields();
+    $form += $this->esuContentFields();
+    $form += $this->esuSubmitFields();
+
+    return $form;
+  }
+
+  /**
+   * Build the mandatory fields of the form.
+   */
+  protected function esuRequiredFields() {
+    $form['device'] = [
+      '#name' => 'device',
+      '#type' => 'hidden',
+      '#attributes' => [
+        'class' => 'esu-device',
+      ],
+    ];
+    $form['source'] = [
+      '#name' => 'source',
+      '#type' => 'hidden',
+      '#attributes' => [
+        'class' => 'esu-source',
+      ],
+    ];
+    $form['email'] = [
       '#type' => 'textfield',
+      '#maxlength' => 500,
       '#title' => $this->t('Your email address'),
       '#placeholder' => $this->t('Enter your email address'),
     ];
-    $form['steps']['school_phase'] = [
-      '#type' => 'select',
-      '#title' => $this->t('Also send me School resources'),
-      '#empty_option' => $this->t('-- Select age group --'),
-      '#options' => [
-        'EY' => 'Early Years or Nursery',
-        'PY' => 'Primary',
-        'SY' => 'Secondary',
-        'FE' => 'Further Education or Sixth-Form College',
-        'HE' => 'Higher Education',
-        'OH' => 'Other',
-      ],
-    ];
-    $form['steps']['device'] = [
-      '#name' => 'device',
-      '#type' => 'hidden',
-      '#attributes' => array(
-        'id' => 'esu-device',
-      ),
-    ];
-    $form['steps']['source'] = [
-      '#name' => 'source',
-      '#type' => 'hidden',
-      '#attributes' => array(
-        'id' => 'esu-source',
-      ),
-    ];
+    return $form;
+  }
 
-    $form['steps']['step1'] = [
+  /**
+   * Build the extra elements of the form.
+   */
+  protected function esuContentFields() {
+    return [];
+  }
+
+  /**
+   * Build the submit elements.
+   */
+  protected function esuSubmitFields() {
+    $form['step1'] = [
       '#type' => 'button',
       '#name' => 'step1',
       '#value' => $this->t('Go'),
@@ -128,85 +144,152 @@ class SignUp extends FormBase {
         'callback' => [$this, 'processSteps'],
       ],
     ];
-    $form['steps']['step2'] = [
-      '#type' => 'button',
-      '#name' => 'step2',
-      '#value' => $this->t('Go'),
-      '#attributes' => ['class' => ['step2']],
-      '#ajax' => [
-        'callback' => [$this, 'processSteps'],
-      ],
-    ];
-
     return $form;
   }
 
   /**
-   * Custom email validate function.
+   * Return class of the form.
    */
-  public function validateEmail(array &$form, FormStateInterface $form_state) {
-    $form = $form;
-    $email_address = $form_state->getValue('email');
+  private function getClassId() {
+    return '.' . str_replace('_', '-', $this->getFormId());
+  }
 
-    return (filter_var($email_address, FILTER_VALIDATE_EMAIL) && strlen($email_address) <= 100) ? TRUE : FALSE;
+  /**
+   * Validates all fields.
+   */
+  private function validateFields(
+    FormStateInterface $form_state,
+    AjaxResponse $response
+  ) {
+    $pass = TRUE;
+    $exist_field_name = $form_state->hasValue('firstName');
+    $name_is_empty = $form_state->isValueEmpty('firstName');
+    $email = $form_state->getValue('email');
+    $valid_email = \Drupal::service('email.validator')->isValid($email);
+
+    $this->cleanStatusMessage($response);
+    if (!$valid_email) {
+      $this->setErrorMessage(
+        $response,
+        self::$ERRORS['MAIL'],
+        'Please enter a valid email address.'
+      );
+      $pass = FALSE;
+    }
+    if ($exist_field_name && $name_is_empty) {
+      $this->setErrorMessage(
+        $response,
+        self::$ERRORS['NAME'],
+        'Please enter your name.'
+      );
+      $pass = FALSE;
+    }
+
+    return $pass;
   }
 
   /**
    * Process form steps.
    */
   public function processSteps(array &$form, FormStateInterface $form_state) {
+    // Annoy code check!
+    $form = $form;
     $triggering_element = $form_state->getTriggeringElement();
     $response = new AjaxResponse();
     switch ($triggering_element['#name']) {
       case 'step1':
-        // Process first step.
-        if ($this->validateEmail($form, $form_state)) {
-          // Send first message to queue.
-          $this->queueMessage(array(
+        if ($this->validateFields($form_state, $response)) {
+          // @TODO: Refactor this!
+          $data = [
             'email' => $form_state->getValue('email'),
             'device' => $form_state->getValue('device'),
             'source' => $form_state->getValue('source'),
-            'lists' => array('general' => 'general'),
-          ));
-          $response->addCommand(new HtmlCommand('.esu-errors', ''));
-          $response->addCommand(new InvokeCommand('.block--cr-email-signup', 'removeClass', array('block--cr-email-signup--error')));
-          $response->addCommand(new InvokeCommand('.block--cr-email-signup', 'removeClass', array('block--cr-email-signup--step-1')));
-          $response->addCommand(new InvokeCommand('.block--cr-email-signup', 'addClass', array('block--cr-email-signup--step-2')));
-        }
-        else {
-          // Error if validation isnt met.
-          $response->addCommand(new HtmlCommand('.esu-errors', 'Please enter a valid email address'));
-          $response->addCommand(new InvokeCommand('.block--cr-email-signup', 'addClass', array('block--cr-email-signup--error')));
+            'lists' => $this->esulist,
+          ];
+          if ($form_state->getValue('firstName')) {
+            $data['firstName'] = $form_state->getValue('firstName');
+          }
+          $this->fillQmessage($data);
+          $this->nextStep($response, 1);
         }
         break;
 
       case 'step2':
-        // Process second step.
-        if (!$form_state->isValueEmpty('school_phase') && $this->validateEmail($form, $form_state)) {
-          // Send second message to the queue.
-          $this->queueMessage(array(
+        $email = $form_state->getValue('email');
+        $valid_email = \Drupal::service('email.validator')->isValid($email);
+        if (!$form_state->isValueEmpty('school_phase') && $valid_email) {
+          $this->fillQmessage([
             'email' => $form_state->getValue('email'),
             'phase' => $form_state->getValue('school_phase'),
             'device' => $form_state->getValue('device'),
             'source' => $form_state->getValue('source'),
-            'lists' => array('teacher' => 'teacher'),
-          ));
-          $response->addCommand(new InvokeCommand('.block--cr-email-signup', 'removeClass', array('block--cr-email-signup--error')));
-          $response->addCommand(new InvokeCommand('.block--cr-email-signup', 'removeClass', array('block--cr-email-signup--step-2')));
-          $response->addCommand(new InvokeCommand('.block--cr-email-signup', 'addClass', array('block--cr-email-signup--step-3')));
+            'lists' => $this->esulist,
+          ]);
+          $this->nextStep($response, 2);
 
         }
         else {
-          // Error if age range isnt selected.
-          $response->addCommand(new HtmlCommand('.esu-errors', 'Please select an age group.'));
-          $response->addCommand(new InvokeCommand('.block--cr-email-signup', 'addClass', array('block--cr-email-signup--error')));
-          return $response;
-
+          $this->setErrorMessage(
+            $response,
+            self::$ERRORS['AGEGROUP'],
+            'Please select an age group.'
+          );
         }
         break;
     }
     // Return ajax response.
     return $response;
+  }
+
+  /**
+   * Clean the message.
+   */
+  private function cleanStatusMessage(AjaxResponse $response) {
+    $response->addCommand(new HtmlCommand('.esu-errors', ''));
+  }
+
+  /**
+   * Go to the next step of the multiform.
+   */
+  private function nextStep(AjaxResponse $response, $step) {
+    $this->cleanStatusMessage($response);
+    foreach (self::$ERRORS as $classname) {
+      $response->addCommand(new InvokeCommand(
+        $this->getClassId(),
+        'removeClass',
+        [$classname]
+      ));
+    }
+    $response->addCommand(new InvokeCommand(
+      $this->getClassId(),
+      'removeClass',
+      ['block--cr-email-signup--step-' . $step]
+    ));
+    $response->addCommand(new InvokeCommand(
+      $this->getClassId(),
+      'addClass',
+      ['block--cr-email-signup--step-' . ($step + 1)]
+    ));
+  }
+
+  /**
+   * Set the error message.
+   */
+  private function setErrorMessage(AjaxResponse $response, $class, $message) {
+    // Error if validation isnt met.
+    $response->addCommand(new PrependCommand(
+      '.esu-errors', $message
+    ));
+    $response->addCommand(new InvokeCommand(
+      $this->getClassId(),
+      'addClass',
+      [self::$ERRORS['ESU']]
+    ));
+    $response->addCommand(new InvokeCommand(
+      $this->getClassId(),
+      'addClass',
+      [$class]
+    ));
   }
 
   /**

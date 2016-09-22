@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - cr_email_signup
+    - system
+  theme:
+    - campaign_base
+id: emailsignupblockstandard
+theme: campaign_base
+region: content
+weight: -2
+provider: null
+plugin: cr_email_signup_block
+settings:
+  id: cr_email_signup_block
+  label: 'Email Sign Up block: Standard'
+  provider: cr_email_signup
+  label_display: visible
+  initial_message: 'ESU Standard: initial message'
+  first_success_message: 'ESU Standard: success! (first message)'
+  second_success_message: 'ESU Standard: success! (second message)'
+visibility:
+  request_path:
+    id: request_path
+    pages: /test/esu
+    negate: false
+    context_mapping: {  }

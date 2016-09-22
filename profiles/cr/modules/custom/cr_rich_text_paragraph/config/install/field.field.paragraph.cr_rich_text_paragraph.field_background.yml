@@ -10,7 +10,7 @@ id: paragraph.cr_rich_text_paragraph.field_background
 field_name: field_background
 entity_type: paragraph
 bundle: cr_rich_text_paragraph
-label: Background
+label: 'Background Image'
 description: ''
 required: false
 translatable: false

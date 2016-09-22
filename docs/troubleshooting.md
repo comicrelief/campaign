@@ -141,4 +141,7 @@ Finally, it might make sense to add imagemagick binaries to `/usr/bin` in order 
 
 	sudo ln -s /usr/local/bin/convert /usr/bin/convert
 	sudo ln -s /usr/local/bin/identify /usr/bin/identify
+	
+Alternatively, you can also set the path to find imagemagick binaries like
 
+	drush cset imagemagick.settings path_to_binaries /usr/local/bin/ -y

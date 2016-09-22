@@ -8,21 +8,24 @@
         },
         "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_cards\/uid": [
             {
-                "href": "http:\/\/default\/user\/0?_format=hal_json",
+                "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/0?_format=hal_json",
                 "lang": "en"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_cards\/revision_uid": [
             {
-                "href": "http:\/\/default\/user\/0?_format=hal_json"
+                "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/0?_format=hal_json"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_cards\/field_cr_cards_card_reference": [
             {
-                "href": "http:\/\/default\/block\/10?_format=hal_json"
+                "href": "http:\/\/sr16-spl-local.sportrelief.com\/block\/10?_format=hal_json"
             },
             {
-                "href": "http:\/\/default\/block\/11?_format=hal_json"
+                "href": "http:\/\/sr16-spl-local.sportrelief.com\/block\/12?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/sr16-spl-local.sportrelief.com\/block\/11?_format=hal_json"
             }
         ]
     },
@@ -38,7 +41,7 @@
     ],
     "revision_id": [
         {
-            "value": "17"
+            "value": "2"
         }
     ],
     "type": [
@@ -57,7 +60,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/0?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -65,7 +68,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "863fcb62-bf24-4f65-b5ab-464f845c5720"
+                        "value": "10e30dff-5a0e-4b33-aeb7-89f49629de0a"
                     }
                 ],
                 "lang": "en"
@@ -75,7 +78,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/0?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -83,7 +86,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "863fcb62-bf24-4f65-b5ab-464f845c5720"
+                        "value": "10e30dff-5a0e-4b33-aeb7-89f49629de0a"
                     }
                 ]
             }
@@ -92,7 +95,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/block\/10?_format=hal_json"
+                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/block\/10?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/block_content\/cr_card"
@@ -107,7 +110,22 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/block\/11?_format=hal_json"
+                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/block\/12?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/block_content\/cr_card"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "005a1157-fa77-4ef6-8ce6-4a2f6b287485"
+                    }
+                ]
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/block\/11?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/block_content\/cr_card"
@@ -154,9 +172,19 @@
             "lang": "en"
         }
     ],
-    "field_cr_cards_background": [
+    "field_cr_cards_feature_layout": [
         {
-            "value": "bg--dark-orchid"
+            "value": "0"
+        }
+    ],
+    "field_cr_cards_title": [
+        {
+            "value": "So, what's your thing?"
+        }
+    ],
+    "field_cr_cards_title_hidden": [
+        {
+            "value": "0"
         }
     ]
 }

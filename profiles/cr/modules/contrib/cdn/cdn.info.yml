@@ -1,11 +1,14 @@
 name: CDN
-description: "Serves assets (CSS, JS, images …) from a CDN."
+description: "Serves files (CSS, JS, images …) from a CDN."
 type: module
 # core: 8.x
 package: "Web services"
+dependencies:
+  # https://www.drupal.org/node/2573635 landed in Drupal 8.1.4.
+  - drupal:system (>= 8.1.4)
 
-# Information added by Drupal.org packaging script on 2016-04-18
-version: '8.x-3.0-alpha1'
+# Information added by Drupal.org packaging script on 2016-09-15
+version: '8.x-3.0-beta1'
 core: '8.x'
 project: 'cdn'
-datestamp: 1461015946
+datestamp: 1473941673

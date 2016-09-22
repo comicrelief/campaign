@@ -5,12 +5,16 @@ dependencies:
     - block_content.type.teaser
     - core.entity_view_mode.block_content.cw_l
     - field.field.block_content.teaser.body
+    - field.field.block_content.teaser.field_cw_link_target
     - field.field.block_content.teaser.field_teaser_image
     - field.field.block_content.teaser.field_teaser_link
+    - field.field.block_content.teaser.field_teaser_link_colour
+    - field.field.block_content.teaser.field_teaser_link_title
     - field.field.block_content.teaser.field_teaser_title
+    - field.field.block_content.teaser.field_teaser_you_tube_link
   module:
     - ds
-    - link
+    - options
     - responsive_image
     - text
 third_party_settings:
@@ -34,7 +38,11 @@ third_party_settings:
         - field_teaser_title
         - field_teaser_image
         - body
+        - field_teaser_link_title
         - field_teaser_link
+        - field_teaser_you_tube_link
+        - field_teaser_link_colour
+        - field_cw_link_target
 id: block_content.teaser.cw_l
 targetEntityType: block_content
 bundle: teaser
@@ -42,10 +50,18 @@ mode: cw_l
 content:
   body:
     label: hidden
-    type: text_trimmed
+    type: text_default
     weight: 2
+    settings: {  }
+    third_party_settings: {  }
+  field_cw_link_target:
+    type: boolean
+    weight: 7
+    label: hidden
     settings:
-      trim_length: 140
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
     third_party_settings: {  }
   field_teaser_image:
     weight: 1
@@ -56,16 +72,25 @@ content:
     third_party_settings: {  }
     type: responsive_image
   field_teaser_link:
+    weight: 4
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_teaser_link_colour:
+    type: list_default
+    weight: 6
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_teaser_link_title:
+    type: string
     weight: 3
     label: hidden
     settings:
-      trim_length: 30
-      url_only: false
-      url_plain: false
-      rel: '0'
-      target: '0'
+      link_to_entity: false
     third_party_settings: {  }
-    type: link
   field_teaser_title:
     weight: 0
     label: hidden
@@ -73,5 +98,17 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-hidden:
-  social_links: true
+  field_teaser_you_tube_link:
+    type: boolean
+    weight: 5
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+  social_links:
+    weight: 8
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

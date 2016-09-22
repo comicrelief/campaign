@@ -4,6 +4,9 @@ dependencies:
   config:
     - field.field.paragraph.cr_cards.field_cr_cards_background
     - field.field.paragraph.cr_cards.field_cr_cards_card_reference
+    - field.field.paragraph.cr_cards.field_cr_cards_feature_layout
+    - field.field.paragraph.cr_cards.field_cr_cards_title
+    - field.field.paragraph.cr_cards.field_cr_cards_title_hidden
     - paragraphs.paragraphs_type.cr_cards
   module:
     - inline_entity_form
@@ -13,12 +16,12 @@ bundle: cr_cards
 mode: default
 content:
   field_cr_cards_background:
-    weight: 0
+    weight: 1
     settings: {  }
     third_party_settings: {  }
     type: options_select
   field_cr_cards_card_reference:
-    weight: 1
+    weight: 4
     settings:
       form_mode: default
       override_labels: true
@@ -29,6 +32,25 @@ content:
       match_operator: CONTAINS
     third_party_settings: {  }
     type: inline_entity_form_complex
+  field_cr_cards_feature_layout:
+    weight: 0
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+  field_cr_cards_title:
+    type: string_textfield
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_cr_cards_title_hidden:
+    weight: 3
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
 hidden:
   created: true
   status: true

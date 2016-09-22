@@ -5,10 +5,18 @@ cdn.settings:
     # It is valuable to be able to disable the CDN module without having to
     # uninstall it. This allows CDN integration to be disabled without requiring
     # the dependency injection container to be rebuilt, which is costly & slow.
+    # Also, it allows to keep the CDN configuration even when it is temporarily
+    # disabled (or temporarily enabled).
     status:
-      type: integer
-      # disabled (0), testing (1) or enabled (2)
+      type: boolean
       label: 'CDN status'
     mapping:
       label: 'File URL to CDN mapping'
       type: cdn.mapping.[type]
+    farfuture:
+      label: 'Forever cacheable files — configuration'
+      type: mapping
+      mapping:
+        status:
+          label: 'Forever cacheable files — status'
+          type: boolean

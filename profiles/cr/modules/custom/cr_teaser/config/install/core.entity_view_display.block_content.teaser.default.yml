@@ -4,12 +4,16 @@ dependencies:
   config:
     - block_content.type.teaser
     - field.field.block_content.teaser.body
+    - field.field.block_content.teaser.field_cw_link_target
     - field.field.block_content.teaser.field_teaser_image
     - field.field.block_content.teaser.field_teaser_link
+    - field.field.block_content.teaser.field_teaser_link_colour
+    - field.field.block_content.teaser.field_teaser_link_title
     - field.field.block_content.teaser.field_teaser_title
+    - field.field.block_content.teaser.field_teaser_you_tube_link
   module:
     - image
-    - link
+    - options
     - text
 id: block_content.teaser.default
 targetEntityType: block_content
@@ -22,8 +26,17 @@ content:
     weight: 0
     settings: {  }
     third_party_settings: {  }
+  field_cw_link_target:
+    type: boolean
+    weight: 6
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
   field_teaser_image:
-    weight: 4
+    weight: 2
     label: above
     settings:
       image_style: ''
@@ -31,22 +44,40 @@ content:
     third_party_settings: {  }
     type: image
   field_teaser_link:
-    weight: 3
-    label: above
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    type: link
-  field_teaser_title:
-    weight: 2
+    weight: 4
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+  field_teaser_link_colour:
+    type: list_default
+    weight: 5
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  field_teaser_link_title:
+    weight: 3
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_teaser_title:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_teaser_you_tube_link:
+    type: boolean
+    weight: 7
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
 hidden:
   social_links: true

@@ -13,8 +13,8 @@
 // <h4>Heading 4</h4>
 // <h4 class="font--red">Heading 4</h4>
 // <p>.font--red</p>
-// <h4 class="font--sky-blue">Heading 4</h4>
-// <p>.font--sky-blue</p>
+// <h4 class="font--blue">Heading 4</h4>
+// <p>.font--blue</p>
 // <h4 class="font--yellow">Heading 4</h4>
 // <p>.font--yellow</p>
 // <h4 class="font--green">Heading 4</h4>
@@ -46,14 +46,20 @@
 // <p>.font--small</p>
 // <p class="font--xsmall">Paragraph Intrinsicly impact compelling channels through intermandated paradigms. Appropriately optimize intuitive imperatives whereas emerging web services. Continually expedite installed base paradigms rather than high-payoff niches. Authoritatively.</p>
 // <p>.font--xsmall</p>
+// <p>Paragraph Intrinsicly impact <strong>compelling channels through</strong> intermandated paradigms. Appropriately optimize <strong>intuitive imperatives</strong> whereas emerging web services. Continually expedite installed base paradigms rather than high-payoff niches. Authoritatively.</p>
+// <p>strong tags</p>
 //
 // Style guide: Typography.Typography
 
 h1 {
   margin: 0 0 20px;
-  color: #1e1e1e;
+  color: $colour-black;
   font-family: $font-bold;
   @include font-size($h1-font-size);
+  &.font--font-black{
+    font-family: $font-black;
+    @include font-size($h1-black-font-size);
+  }
   &.font--xlarge {
     @include font-size($h1-xlarge-font-size);
   }
@@ -69,13 +75,19 @@ h1 {
     }
   }
 }
-
+h2, h3, h4, h5, p, .link {
+  color: $colour-black;
+}
 p,
 h2,
 h3,
 h4 {
-  margin: 0 0 20px;
+  margin: 0 0 15px;
   clear: both;
+}
+p:last-child,
+p:first-child:last-child { 
+  margin-bottom: 5px;
 }
 h2 {
   font-family: $font-medium;
@@ -96,6 +108,7 @@ p {
   @include font-size($p-font-size);
   &.font--xlarge {
     @include font-size($p-xlarge-font-size);
+    margin-bottom: 20px;
   }
   &.font--large {
     @include font-size($p-large-font-size);
@@ -106,6 +119,14 @@ p {
   &.font--xsmall {
     @include font-size($p-xsmall-font-size);
   }
+}
+
+span.font--font-black{
+  font-family: $font-black;
+}
+
+strong {
+  font-family: $font-bold;
 }
 
 @for $color from 1 to (length($colorList)+1) {
@@ -119,7 +140,6 @@ p {
   margin-top: 40px;
   text-transform: none;
   font-size: 24px;
-  font-weight: 600;
   line-height: 28px;
 }
 

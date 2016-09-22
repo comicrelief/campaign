@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cr_cards_feature_layout
+    - paragraphs.paragraphs_type.cr_cards
+id: paragraph.cr_cards.field_cr_cards_feature_layout
+field_name: field_cr_cards_feature_layout
+entity_type: paragraph
+bundle: cr_cards
+label: 'Feature layout'
+description: 'Feature layout have cards with a white background colour overlapping its image.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

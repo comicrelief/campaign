@@ -5,7 +5,7 @@
 // Markup: buttons.hbs
 // 
 // .btn--red - Red button
-// .btn--sky-blue - Sky blue button
+// .btn--blue - Blue button
 // .btn--yellow - Yellow button
 // .btn--green - Green button
 // .btn--teal - Teal button
@@ -34,7 +34,6 @@
   text-align: center;
   vertical-align: middle;
   text-decoration: none;
-  width: 100%;
   font-family: $font-bold;
   font-size: 18px;
   line-height: 18px;
@@ -50,6 +49,12 @@
   @include btn-variation( $button );
 }
 
+// Force white colour on black bg hover and focus state
+.btn.btn--white {
+  &:hover, &:focus {
+    color: $colour-white;
+  }
+}
 /**
  * Buttons display as stack block for xs
  */
@@ -60,6 +65,11 @@
 /**
  * Buttons display as inline block for md and large breakpoints.
  */
+.btn {
+  &.btn--fixed-width {
+    width: 100%;
+  }
+}
 @include breakpoint($screen-md) {
   .btn {
     display: inline-block;
@@ -115,5 +125,15 @@
     height: 70px;
     padding: 24px 70px;
     @include border-radius(35px);
+  }
+}
+
+// for a large group of buttons
+@include breakpoint($screen-md) {
+  .btn:first-child:not(:only-child) {
+    margin-bottom: 20px;
+  }
+  .btn+.btn {
+    margin-bottom: 20px;
   }
 }

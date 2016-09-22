@@ -94,6 +94,8 @@ projects:
     patch:
       # See https://www.drupal.org/node/2686499
       2686499: https://www.drupal.org/files/issues/config_devel-drush-config-devel-import-2686499-6.patch
+      # See https://www.drupal.org/node/2801201
+      2801201: https://www.drupal.org/files/issues/show_differences_between-2801201-2.patch
   default_content:
     download:
       branch: 8.x-1.x
@@ -106,13 +108,11 @@ projects:
     version: 1.0-alpha1
   imagemagick:
     version: 1.0-alpha2
-  queue_ui:
-    download:
-      version: 2.x-dev
-      revision: f51ebea
   config_readonly:
     version: 1.0-beta2
   # Editor/admin experience
+  menu_link_attributes:
+    version: 1.0-beta3
   editor_advanced_link:
     version: 1.2
   admin_toolbar:
@@ -151,8 +151,13 @@ projects:
   google_tag:
     download:
       branch: 8.x-1.x
-      revision: 9dc56ec
-      url: https://github.com/Saphyel/google_tag.git
+      revision: 4c35b50
+      url: https://github.com/mikeyp/google_tag.git
+    patch:
+      # See: https://gist.github.com/pvhee/166ddfb556b9d1e2870b903e1b54847d
+      # Apply this patch if not Travis builds in RND17 etc. will fail on Behat tests. See e.g. https://travis-ci.com/comicrelief/rnd17/builds/30910019
+      # Error message: Found unknown escape character "\D" at line 5 (near "_form: "\Drupal\google_tag\Form\GoogleTagSettingsForm"").
+      - https://gist.githubusercontent.com/pvhee/166ddfb556b9d1e2870b903e1b54847d/raw/94e2936f57e725c3afa0f450ec32a24f9e5698d6/google_tag_broken_tests.patch
   optimizely:
     version: 2.15-rc1
   simple_sitemap:
@@ -169,10 +174,20 @@ projects:
       version: 2.x-dev
       revision: 908c0a2
   cdn:
-    version: 3.0-alpha1
+    version: 3.0-beta1
 libraries:
   platform:
     download:
       type: "file"
       url: https://raw.githubusercontent.com/bestiejs/platform.js/0870795f0c277a33cc2078a96e74434f89aa11d8/platform.js
+    destination: "themes/custom/campaign_base/libraries"
+  drush_cmi_tools:
+    download:
+      type: "file"
+      url: https://raw.githubusercontent.com/previousnext/drush_cmi_tools/ac3a1b71acf843a52807c7362357d8acb7a366c0/drush_cmi_tools.drush.inc
+    destination: "../../drush"
+  lightcase:
+    download:
+      type: "get"
+      url: https://github.com/cbopp-art/lightcase/archive/v2.3.4.zip
     destination: "themes/custom/campaign_base/libraries"

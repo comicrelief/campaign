@@ -1,14 +1,14 @@
 Feature: Article
   This feature covers news articles
 
-  @api
+  @api @default-content
   Scenario: Article linking through from /whats-going
     Given I am on "whats-going-on"
     And I should see the link "Four down – one to go!"
     Then I follow "Four down – one to go!"
     And I should see the text "Greg James struggled on the penultimate day of Gregathlon"
 
-  @api
+  @api @default-content
   Scenario: Article pagination on /whats-going
     Given I am on "whats-going-on"
     And I click "Next"
@@ -16,7 +16,7 @@ Feature: Article
     And I click "Next"
     Then I should see the link "You’re helping us win the fight against malaria"
 
-  @api
+  @api @default-content
   Scenario: News page /yplan-partners-sport-relief
     Given I am logged in as a user with the "editor" role
     And I am on "/whats-going-on/yplan-partners-sport-relief"
@@ -28,7 +28,7 @@ Feature: Article
     And I go to "/whats-going-on/yplan-partners-comic-relief"
     Then I should see the text "YPlan partners with Comic Relief"
 
-  @api @test
+  @api @default-content
   Scenario: Check metatags for articles
     Given I am on "whats-going-on/greg-james-begins-his-gregathlon-sport-relief"
     Then the metatag attribute "title" should contain the value "Greg James begins his Gregathlon for Sport Relief"

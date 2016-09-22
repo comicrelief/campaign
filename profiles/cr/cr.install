@@ -4,6 +4,8 @@
  * Install, update and uninstall functions for the Comic Relief installation profile.
  */
 
+use Drupal\Core\Database\Database;
+
 /**
  * Implements hook_install().
  *
@@ -43,4 +45,43 @@ function cr_update_8003() {
  */
 function cr_update_8004() {
   \Drupal::service('module_installer')->install(['cr_navigation']);
+}
+
+/**
+* Remove field_youtube_url and uninstall youtube module
+*/
+function cr_update_8005() {
+  $field = Drupal\field\Entity\FieldStorageConfig::loadByName('node', 'field_youtube_url');
+  $field->delete();
+  field_purge_batch('field_youtube_url');
+  \Drupal::service('module_installer')->uninstall(['youtube']);
+}
+
+/**
+ * Install cr_user
+ */
+function cr_update_8006() {
+  \Drupal::service('module_installer')->install(['cr_user']);
+}
+
+/**
+ * Delete old config
+ */
+function cr_update_8007() {
+  \Drupal::configFactory()->getEditable('system.menu.main-navigation')->delete();
+}
+
+/**
+ * Kill crop
+ */
+function cr_update_8008() {
+  $query = "DELETE FROM key_value WHERE collection='system.schema' AND name='crop'";
+  Database::getConnection()->query($query);
+}
+
+/**
+* Install cdn
+*/
+function cr_update_8009() {
+ \Drupal::service('module_installer')->install(['cdn']);
 }

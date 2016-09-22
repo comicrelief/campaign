@@ -1,0 +1,7 @@
+cdn.farfuture.download:
+  path: '/cdn/farfuture/{security_token}/{mtime}'
+  defaults:
+    _controller: '\Drupal\cdn\CdnFarfutureController::download'
+  requirements:
+    _access: 'TRUE'
+    mtime: \d+
