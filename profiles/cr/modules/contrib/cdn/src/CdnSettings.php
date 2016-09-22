@@ -39,8 +39,14 @@ class CdnSettings {
    * @return bool
    */
   public function isEnabled() {
-    // @todo testing mode, but testing mode's permission only lives in the CDN UI module…
-    return $this->rawSettings->get('status') === 2;
+    return $this->rawSettings->get('status') === TRUE;
+  }
+
+  /**
+   * @return bool
+   */
+  public function farfutureIsEnabled() {
+    return $this->rawSettings->get('farfuture.status') === TRUE;
   }
 
   /**

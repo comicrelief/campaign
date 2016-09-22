@@ -1,0 +1,21 @@
+#lightcase-case {
+  display: none;
+
+  position: fixed;
+  z-index: 2002;
+  top: 50%;
+  left: 50%;
+
+  font-family: arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: left;
+  text-shadow: #{map-get($lightcase-settings, 'text-shadow')};
+
+  // Not type: image, video, flash or error
+  &:not([data-lc-type=image]):not([data-lc-type=video]):not([data-lc-type=flash]):not([data-lc-type=error]) {
+    @media screen and (max-width: #{map-get($lightcase-settings, 'breakpoint')-1}) {
+      @include clear(true);
+    }
+  }
+}

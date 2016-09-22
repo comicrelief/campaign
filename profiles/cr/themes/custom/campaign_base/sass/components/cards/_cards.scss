@@ -23,16 +23,16 @@
     }
   }
 	@for $i from 1 through 6 {
-  .cards__item:first-child:nth-last-child(#{$i}),
-  .cards__item:first-child:nth-last-child(#{$i}) ~ .cards__item {
-    width: calc(100% - (8 * #{gutter()}));
-    margin: 0 0 calc(4 * #{gutter()});
+    .cards__item:first-child:nth-last-child(#{$i}),
+    .cards__item:first-child:nth-last-child(#{$i}) ~ .cards__item {
+      width: calc(100% - (8 * #{gutter()}));
+      margin: 0 0 calc(4 * #{gutter()});
 
-    @include breakpoint($screen-sm-max) {
+      @include breakpoint($screen-sm-max) {
 	  	  width: calc(100% - (2 * #{gutter()}));
         margin: 0 gutter() calc(2 * 1.25%);
       }
-	  @include breakpoint($screen-md-max) {
+      @include breakpoint($screen-md-max) {
 		    @include span(12/$i);
         .cards__item:first-child {
           margin-left: #{gutter()};
@@ -64,28 +64,22 @@
     @include justify-content(center);
   }
 }
-.cards__title {
-  text-align: center;
-  margin-bottom: 30px;
-  .bg--dark-orchid & {
-    color: $colour-white;
-  }
-}
 .cards__item {
   display: inline-block;
   position: relative;
   margin-bottom: 20px;
   text-align: left;
   overflow: hidden;
-}
-.cards__image {
-  img {
-    width: 100%;
-		display: block;
-		height: 100%;
-  }
   @include breakpoint($screen-md-only) {
-  	@include span(5);
+    width: calc(100% - (4 * 1.25%)) !important;
+    margin: 1.25% calc(2 * 1.25%) !important;
+  }
+}
+.cards__title {
+  text-align: center;
+  margin-bottom: 30px;
+  .bg--dark-orchid & {
+    color: $colour-white;
   }
 }
 .cards__content-wrapper {
@@ -98,14 +92,15 @@
     right: 0;
     padding: calc(2*#{gutter()});
     height: 100%;
-    @include span(7 wide);
-    @include push(5);
+    @include span(7 wider);
+    margin-right: 0;
     &.cards__content-wrapper--no-image {
       @include span(12);
       position: relative;
       .cards__content {      
         top: 0;
-        transform: none;
+        position: relative;
+        @include translateY(0);
       }
     }
   }
@@ -123,9 +118,24 @@
     }
   }
 }
+.cards__image {
+  img {
+    width: 100%;
+    display: block;
+    height: 100%;
+  }
+  @include breakpoint($screen-md-only) {
+    @include span(5);
+    margin-left: 0;
+  }
+}
 .cards__content {
   @include breakpoint($screen-md-only) {
   	position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: calc(100% - 20px);
 	  top: 50%;
     @include translateY(-50%);
   }

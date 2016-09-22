@@ -9,11 +9,11 @@ dependencies:
     - field.field.block_content.teaser.field_teaser_image
     - field.field.block_content.teaser.field_teaser_link
     - field.field.block_content.teaser.field_teaser_link_colour
+    - field.field.block_content.teaser.field_teaser_link_title
     - field.field.block_content.teaser.field_teaser_title
     - field.field.block_content.teaser.field_teaser_you_tube_link
   module:
     - image
-    - link
     - options
     - text
 id: block_content.teaser.cw_mp
@@ -29,7 +29,7 @@ content:
     third_party_settings: {  }
   field_cw_link_target:
     type: boolean
-    weight: 6
+    weight: 7
     label: hidden
     settings:
       format: default
@@ -37,7 +37,7 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
   field_teaser_image:
-    weight: 3
+    weight: 2
     label: hidden
     settings:
       image_style: ''
@@ -45,21 +45,24 @@ content:
     third_party_settings: {  }
     type: image
   field_teaser_link:
-    weight: 2
+    weight: 4
     label: hidden
     settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
+      link_to_entity: false
     third_party_settings: {  }
-    type: link
+    type: string
   field_teaser_link_colour:
     type: list_default
     weight: 5
     label: hidden
     settings: {  }
+    third_party_settings: {  }
+  field_teaser_link_title:
+    type: string
+    weight: 3
+    label: hidden
+    settings:
+      link_to_entity: false
     third_party_settings: {  }
   field_teaser_title:
     weight: 1
@@ -70,7 +73,7 @@ content:
     type: string
   field_teaser_you_tube_link:
     type: boolean
-    weight: 4
+    weight: 6
     label: hidden
     settings:
       format: default

@@ -56,3 +56,11 @@ tips:
     weight: 6
     attributes:
       data-id: edit-mapping-simple-extensions-condition-toggle
+  cdn-ui-farfuture:
+    id: cdn-ui-farfuture
+    plugin: text
+    label: 'Forever cacheable files'
+    body: 'Marks all files to expire in the far future, telling browsers to <em>always</em> use cached files, speeding up page loads. Lets Drupal serve files, but cached by the CDN, so server impact is negligible. You can opt out.'
+    weight: 7
+    attributes:
+      data-id: edit-farfuture

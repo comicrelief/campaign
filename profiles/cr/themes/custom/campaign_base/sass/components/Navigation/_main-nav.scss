@@ -40,12 +40,62 @@ nav.menu--main {
   /* Wrapper for all buttons in the nav */
   .main-menu__icons {
     float: right;
-
+    .main-menu-toggle {
+      float: right;
+    }
     @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
-      padding: 40px;
+      //padding: 40px;
       position: relative;
       z-index: 10;
-      display: none;
+      height: 100%;
+
+      // Hide our mobile nav open/close for desktop
+      .main-menu-toggle {
+        display: none;
+      }
+
+      .icon {
+        height: 100%;
+        width: 35px;
+      }
+    }
+    .main-menu__icons-esu-toggle {
+      background-color: transparent;
+      border: none;
+      height: 50px;
+      margin: 0;
+      padding: 0;
+      width: 85px;
+      height: 85px;
+
+      &.active {
+        background-color: #f9f9f9;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    
+      span {
+        display: none;
+      }
+      &:hover, 
+      &:focus,
+      &:active {
+        .icon {
+          fill: $colour-jasper-grey;
+  
+        }
+      }
+      .icon {
+        fill: $colour-black;
+        width: 35px;
+        height: 35px;
+      }
+
+      @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
+        height: 100%;
+      }
     }
   }
 
@@ -67,6 +117,7 @@ nav.menu--main {
     }
 
     &.menu-open {
+      background-color: $colour-black;
       display: block;
     }
 
@@ -130,6 +181,9 @@ nav.menu--main {
       /* Submenus */
       > ul.menu {
          background-color: $colour-black;
+         width: 100% !important;
+         // important is to override styling coming in from nav JS plugin
+         margin-top: 5px;
 
         a {
           background-color: #222;

@@ -151,6 +151,7 @@ config_devel:
   - block.block.emailsignupblockregisterinterest
   - block.block.emailsignupblockstandard
   - block.block.emailsignupblockworkplace
+  - block.block.emailsignupblockhead
 
   # Menus
   - system.menu.footer
