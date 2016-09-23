@@ -78,5 +78,5 @@ class WorkplaceSignUp extends SignUp {
     ];
     return $form;
   }
-  
+
 }
