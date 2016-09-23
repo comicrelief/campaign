@@ -43,3 +43,15 @@ Feature: ESU
     And I should have received the following data in the "register_interest" queue:
       | campaign | transType | timestamp | transSourceURL | transSource | email | device | source | lists |
       | RND17 | RegisterInterest | * | * | * | test-register-interest@example.org | * | * | * |
+
+	@javascript @default-content
+  Scenario: ESU Fundraise
+    Given I am on "/test/esu"
+    Then I should see "ESU Fundraise: initial message" in the "esu_fundraise" region
+    And I fill in "edit-email--3" with "test-fundraise@example.org" in the "esu_fundraise" region
+    And I press "Sign Up" in the "esu_fundraise" region
+    And I wait for AJAX loading to finish
+    Then I should see "ESU Fundraise: success message" in the "esu_fundraise" region
+    And I should have received the following data in the "esu" queue:
+      | campaign | transType | timestamp | transSourceURL | transSource | firstName | email | device | source | lists |
+      | RND17 | FundraiseESU | * | * | * | Test Fundraise First Name | test-fundraise@example.org | * | * | * |
