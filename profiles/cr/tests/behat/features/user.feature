@@ -25,3 +25,10 @@ Feature: User
     Given I am logged in as a user with the "editor" role
     Given I am on "/admin/people"
     Then I should get a "403" HTTP response
+
+  @api
+  Scenario: Check two different editors both have access to edit a single page
+    Given I am logged in as a user with the "editor" role
+    Given an unpublished "page" content with the title "Unpublished basic page"
+    And I click "Edit"
+    Then I should get a "200" HTTP response

@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - cr_email_signup
+  theme:
+    - campaign_base
+id: emailsignupblockhead
+theme: campaign_base
+region: header
+weight: -2
+provider: null
+plugin: cr_email_signup_block_head
+settings:
+  id: cr_email_signup_block_head
+  label: 'Email Sign Up block: Head'
+  provider: cr_email_signup
+  label_display: '0'
+  title_message: ''
+  initial_message: 'Get info and updates, direct to your inbox'
+  first_success_message: 'Thanks! Your first email will be with you shortly'
+  second_success_message: 'Great! Now we know what''s right for you.'
+visibility: {  }

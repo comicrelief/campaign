@@ -2,33 +2,34 @@
 Description
 -----------
 This module provide easy Content Delivery Network integration for Drupal sites.
-It alters file URLs, so that files/assets (CSS, JS, images, fonts, videos  …)
-are downloaded from a CDN instead of your web server.
+It alters file URLs, so that files (CSS, JS, images, fonts, videos …) are
+downloaded from a CDN instead of your web server.
 
 It does *not* put your entire website behind a CDN.
 
 Only "Origin Pull" CDNs are supported. These are CDNs that only require you to
 replace the domain name with another domain name. The CDN will then
 automatically fetch (pull) the files from your server (the origin). Nowadays
-pretty much every CDN is an Origin Pull CDN (2015 and later).
+pretty much every CDN is an Origin Pull CDN.
 
 The CDN module aims to do only one thing and do it well: altering URLs to
 point to files on CDNs. It supports:
     • Any sort of CDN mapping
-    • DNS prefetching
-    • CSS aggregation
-    • auto-balance files over multiple CDNs (http://drupal.org/node/1452092)
+    • DNS prefetching: lets browsers connect to the CDN faster
+    • SEO: prevents CDN from serving HTML and REST responses, only allow files
+    • Forever cacheable files (optimal far future expiration)
+    • Auto-balancing files over multiple CDNs
     • … and many more details that are taken care of automatically
 
-Not yet ported:
-    • optimal Far Future expiration
-    • SEO: prevent origin pull CDN from serving HTML content, only allow assets
+The "CDN UI" module is included, and can be used for configuring the CDN module.
+Once set up, it can be uninstalled.
+
 
 Installation
 ------------
 1) Place this module directory in your "modules" folder
 
-2) Enable the module.
+2) Install the module.
 
 3) Go to your CDN provider's control panel and set up a "CDN instance" (Amazon
    CloudFront calls this a "distribution"). There, you will have to specify
@@ -55,33 +56,15 @@ Installation
    configure it through a UI. Provide the (vanity) domain name that your CDN
    has given you (`d85nwn7m5gl3y.cloudfront.net` in our example).
 
-
-Cross-Origin Resource Sharing (CORS)
-------------------------------------
-By integrating a CDN, and depending on your actual configuration, resources
-might be served from (a) domain(s) different than your site's domain. This
-could cause browsers to refuse to use certain resources since they violate the
-same-origin policy. This primarily affects font and JavaScript files.
-
-To circumvent this, you can configure your server to serve those files with an
-additional Access-Control-Allow-Origin header, containing a space-separated
-list of domains that are allowed to make cross-domain use of a resource. Note
-that this will only work if your CDN provider does not strip this header.
-
-For server-specific instructions on adding this header, see
-http://www.w3.org/wiki/CORS_Enabled#At_the_HTTP_Server_level...
-
-If you are unable to add this header, or if your CDN provider ignores it, you
-can add the files to the CDN module's blacklist to exclude them being served
-by the CDN, or in the case of fonts, you can embed them in stylesheets via
-data URIs (see https://developer.mozilla.org/en/data_URIs).
-
-The Far Future expiration functionality takes care of this automatically!
+6) If your site is behind a reverse proxy such as Varnish, so that your stack
+   looks like: CDN <-> reverse proxy <-> web server, then you need to take extra
+   measures if you want to prevent duplicate content showing up on the CDN. See
+   \Drupal\cdn\StackMiddleware\DuplicateContentPreventionMiddleware for details.
 
 
 FAQ
 ---
-Q: Is the CDN module compatible with Drupal's page caching?
+Q: Is the CDN module compatible with Drupal's Page Cache?
 A: Yes.
 
 Q: Is the CDN module compatible with Drupal's "private files" functionality?
@@ -93,53 +76,28 @@ A: Yes. The CDN module won't break private files, they will continue to work
    acceptable for your use case.
 
 Q: Does this module only work with Apache or also with nginx, lighttpd, etc.?
-A: This module only affects HTML, so it doesn't matter which web server you
-   use!
+A: This module only affects HTML, so it doesn't matter which web server you use!
 
 
-No cookies should be sent to the CDN
-------------------------------------
-Please note though that you should ensure no cookies are sent to the CDN: this
-would slow down HTTP requests to the CDN (since the requests become larger:
-they piggyback the cookie data).
-You can achieve this in two ways:
-  1) When you are using cookies that are bound to your www subdomain only
-     (i.e. not an example.com, but on www.example.com), you can safely use
-     another subdomain for your CDN.
-  2) When you are using cookies on your main domain (example.com), you'll have
-     to use a completely different domain for the CDN if you don't want
-     cookies to be sent.
-     So then you should use the CDN's URL (e.g. myaccount.cdn.com). But now
-     you should be careful to avoid JavaScript issues: you may run into "same
-     origin policy" problems. See admin/config/development/cdn/other for
-     details.
-
-Drupal 7 no longer sets cookies for anonymous users.
-
-If you just use the CDN's URL (e.g. myaccount.cdn.com), all cookie issues are
-avoided automatically.
-
-
-The "Far Future expiration" setting
------------------------------------
-For small sites, or sites with relatively few assets, the Far Future
-expiration functionality should work just fine out of the box. The CDN module
-serves all files through PHP with all headers configured perfectly. Since the
-CDN only occasionally comes back to check on files, the far-from-great
+The "Forever cacheable files" (farfuture) setting
+-------------------------------------------------
+For small sites the 'Forever cacheable files' (farfuture) functionality works
+fine out of the box. The CDN module serves all files through PHP with optimal
+headers. Since the CDN only occasionally re-requests files, the far-from-great
 performance of serving files through PHP is irrelevant.
-However, if your site has a *lot* of images, for example, this can be
-problematic, because even the occasional check by the CDN may amount to a near
-constant load on your server, of files being served through PHP. In that case,
+For big sites, this can be problematic: if your site has so many files that the
+CDN cannot cache them all, the CDN may continuously request files, amounting to
+a constant load on your server of files being served through PHP. In that case,
 you may want to let your web server take care of that for you.
 
-Apache users: add the following rules to <IfModule mod_rewrite.c> section of
+Apache users can add the following rules to <IfModule mod_rewrite.c> section of
 your .htaccess file:
 
   ### CDN START ###
   # See http://drupal.org/node/1413156
   <IfModule mod_headers.c>
-    # Transform /cdn/farfuture/[security token]/[ufi method]:[ufi]/sites/default/files
-    # to /files and set environment variable for later Header rules.
+    # Transform /cdn/farfuture/[security token]/[mtime]/X/Y/Z to /X/Y/Z and set
+    # environment variable for later Header rules.
     RewriteCond %{REQUEST_URI} ^/cdn/farfuture/[^/]+/[^/]+/(.+)$
     RewriteRule .* %1 [L,E=FARFUTURE_CDN:1]
 
@@ -185,38 +143,24 @@ your .htaccess file:
     # same-origin policy. Send a header to explicitly allow cross-domain use of
     # those resources. (This is called Cross-Origin Resource Sharing, or CORS.)
     Header set Access-Control-Allow-Origin "*" env=FARFUTURE_CDN
+    Header set Access-Control-Allow-Methods "GET, HEAD" env=FARFUTURE_CDN
 
+    # Set a far future Cache-Control header (480 weeks), which prevents
+    # intermediate caches from transforming the data and allows any intermediate
+    # cache to cache it, since it's marked as a public resource.
+    Header set Cache-Control "max-age=290304000, no-transform, public" env=FARFUTURE_CDN
 
-    ###
-    ### Default caching rules: no caching/immediate expiration.
-    ###
+    # Set a far future Expires header. The maximum UNIX timestamp is somewhere
+    # in 2038. Set it to a date in 2037, just to be safe.
+    Header set Expires "Tue, 20 Jan 2037 04:20:42 GMT" env=FARFUTURE_CDN
 
-    Header set Cache-Control "private, must-revalidate, proxy-revalidate" env=FARFUTURE_CDN
-    Header set Expires "Wed, 20 Jan 1988 04:20:42 GMT" env=FARFUTURE_CDN
-
-
-    ###
-    ### Far future caching rules: only files with certain extensions.
-    ###
-
-    <FilesMatch "(\.css|\.css\.gz|\.js|\.js\.gz|\.svg|\.ico|\.gif|\.jpg|\.jpeg|\.png|\.otf|\.ttf|\.eot|\.woff|\.flv|\.swf)$">
-      # Set a far future Cache-Control header (480 weeks), which prevents
-      # intermediate caches from transforming the data and allows any
-      # intermediate cache to cache it, since it's marked as a public resource.
-      Header set Cache-Control "max-age=290304000, no-transform, public" env=FARFUTURE_CDN
-
-      # Set a far future Expires header. The maximum UNIX timestamp is somewhere
-      # in 2038. Set it to a date in 2037, just to be safe.
-      Header set Expires "Tue, 20 Jan 2037 04:20:42 GMT" env=FARFUTURE_CDN
-
-      # Pretend the file was last modified a long time ago in the past, this will
-      # prevent browsers that don't support Cache-Control nor Expires headers to
-      # still request a new version too soon (these browsers calculate a
-      # heuristic to determine when to request a new version, based on the last
-      # time the resource has been modified).
-      # Also see http://code.google.com/speed/page-speed/docs/caching.html.
-      Header set Last-Modified "Wed, 20 Jan 1988 04:20:42 GMT" env=FARFUTURE_CDN
-    </FilesMatch>
+    # Pretend the file was last modified a long time ago in the past, this will
+    # prevent browsers that don't support Cache-Control nor Expires headers to
+    # still request a new version too soon (these browsers calculate a
+    # heuristic to determine when to request a new version, based on the last
+    # time the resource has been modified).
+    # Also see http://code.google.com/speed/page-speed/docs/caching.html.
+    Header set Last-Modified "Wed, 20 Jan 1988 04:20:42 GMT" env=FARFUTURE_CDN
   </IfModule>
   ### CDN END ###
 

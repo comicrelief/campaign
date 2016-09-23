@@ -78,3 +78,10 @@ function cr_update_8008() {
   $query = "DELETE FROM key_value WHERE collection='system.schema' AND name='crop'";
   Database::getConnection()->query($query);
 }
+
+/**
+* Install cdn
+*/
+function cr_update_8009() {
+ \Drupal::service('module_installer')->install(['cdn']);
+}
