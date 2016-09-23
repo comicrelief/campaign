@@ -65,6 +65,19 @@ function config_devel_drush_command() {
     'aliases' => array('cdi1', 'cd-i1'),
   );
 
+  $items['config-devel-diff'] = [
+    'description' => $description,
+    'arguments' => [
+      'module' => 'Module machine name.',
+    ],
+    'options' => [],
+    'required-arguments' => true,
+    'examples' => [
+      'drush panoli MODULE_NAME' => 'Check the differences between the .info file & the configs folders.',
+    ],
+    'aliases' => ['cdd'],
+  ];
+
   return $items;
 }
 
@@ -126,6 +139,44 @@ function drush_config_devel_import($extension) {
 function drush_config_devel_import_one($path) {
   \Drupal::service('config_devel.auto_import_subscriber')->importOne($path);
 }
+
+/**
+ * Drush command callback.
+ */
+function drush_config_devel_diff($extension)
+{
+  $type = drush_config_devel_get_type($extension);
+
+  if ($type) {
+    $listdir = [];
+    $listconfig = [];
+    // Get the config
+    $config = drush_config_devel_get_config($type, $extension);
+    if (isset($config['install'])) {
+      $listconfig = array_merge($listconfig, $config['install']);
+    }
+    if (isset($config['optional'])) {
+      $listconfig = array_merge($listconfig, $config['optional']);
+    }
+    $scan_dir = array_slice(scandir(
+      drupal_get_path($type, $extension) . "/" . InstallStorage::CONFIG_INSTALL_DIRECTORY
+    ), 2);
+    foreach ($scan_dir as $value) {
+      $listdir[] = substr($value, 0, -4);
+    }
+    if (empty(array_diff($listconfig, $listdir))) {
+      drush_print_r("Congrats everything is ok!");
+    } else {
+      drush_set_error(
+        "You missed some files. Add these to the '$extension.info.yml' file or export your new configs."
+      );
+      drush_print_r(array_diff($listconfig, $listdir));
+    }
+  } else {
+    drush_set_error("Couldn't export configuration. The '$extension' extension is not enabled.");
+  }
+}
+
 
 /**
  * Exports a list of configuration entities.

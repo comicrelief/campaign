@@ -4,6 +4,8 @@
  * Install, update and uninstall functions for the Comic Relief installation profile.
  */
 
+use Drupal\Core\Database\Database;
+
 /**
  * Implements hook_install().
  *
@@ -67,4 +69,18 @@ function cr_update_8006() {
  */
 function cr_update_8007() {
   \Drupal::configFactory()->getEditable('system.menu.main-navigation')->delete();
+}
+
+/**
+ * Kill crop & delete old fields.
+ */
+function cr_update_8008() {
+  $query = "DELETE FROM key_value WHERE collection='system.schema' AND name='crop'";
+  Database::getConnection()->query($query);
+
+  $config_facotry = \Drupal::configFactory();
+  $config_facotry->getEditable('field.storage.block_content.field_teaser_link')
+    ->delete();
+  $config_facotry->getEditable('field.field.block_content.teaser.field_teaser_link')
+    ->delete();
 }
