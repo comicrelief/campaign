@@ -403,21 +403,4 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
     $this->getSession()->visit($this->locatePath('/node/' . $saved->nid));
   }
 
-  /**
-   * @Given I am viewing an unpublished :arg1 with the title :arg2
-   */
-  public function iAmViewingAnUnpublishedWithTheTitle($type, $title)
-  {
-    // @todo make this easily extensible.
-    $node = (object) array(
-      'title' => $title,
-      'type' => $type,
-      'body' => $this->getRandom()->name(255),
-      'status' => 0,
-    );
-    $saved = $this->nodeCreate($node);
-    // Set internal page on the new node.
-    $this->getSession()->visit($this->locatePath('/node/' . $saved->nid));
-  }
-
 }
