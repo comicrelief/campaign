@@ -120,6 +120,9 @@ abstract class SignUp extends FormBase {
       '#maxlength' => 500,
       '#title' => $this->t('Your email address'),
       '#placeholder' => $this->t('Enter your email address'),
+      '#attributes' => [
+        'class' => ['–metrika-nokeys'],
+      ],
     ];
     return $form;
   }
