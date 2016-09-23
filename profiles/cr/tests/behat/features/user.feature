@@ -27,12 +27,9 @@ Feature: User
     Then I should get a "403" HTTP response
     And I should see "You are not authorized to access this page."
 
-  @api
+  @api @javascript
   Scenario: Check two different editors both have access to edit a single page
     Given I am logged in as a user with the "editor" role
-    And I am viewing an unpublished "page" with the title "Test page"
-    And I click "Edit"
-    Then I should get a "200" HTTP response
-    Given I am logged in as a user with the "editor" role
+    Given an unpublished "page" content with the title "Unpublished basic page"
     And I click "Edit"
     Then I should get a "200" HTTP response
