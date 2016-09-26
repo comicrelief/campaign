@@ -22,9 +22,13 @@
   </div>
 
   {# Only renders if node isn't a Partner, otherwise this would render Partner Gallery #}
-  {% elseif field_image %}
+  {% elseif (field_image) %}
   <div class="search-result__image search-result--{{ nodetype }}__image">
     {{ field_image }}
-  </div>
+     </div>
+  {% elseif (field_article_image) %}
+  <div class="search-result__image search-result--{{ nodetype }}__image">
+    {{ field_article_image }}
+     </div>
   {% endif %}
 </div>
