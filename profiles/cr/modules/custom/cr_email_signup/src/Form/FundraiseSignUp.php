@@ -40,31 +40,4 @@ class FundraiseSignUp extends SignUp {
     return $form;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  protected function esuRequiredFields() {
-    $form['device'] = [
-      '#name' => 'device',
-      '#type' => 'hidden',
-      '#attributes' => [
-        'class' => 'esu-device',
-      ],
-    ];
-    $form['source'] = [
-      '#name' => 'source',
-      '#type' => 'hidden',
-      '#attributes' => [
-        'class' => 'esu-source',
-      ],
-    ];
-    $form['email'] = [
-      '#type' => 'textfield',
-      '#maxlength' => 500,
-      '#title' => $this->t('Your email address'),
-      '#placeholder' => $this->t('Enter your email address'),
-    ];
-    return $form;
-  }
-
 }
