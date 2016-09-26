@@ -2,11 +2,13 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.media.field_cr_file_category
     - search_api.server.solr
     - core.entity_view_mode.node.full
   module:
     - search_api
     - node
+    - media_entity
 id: solr_content
 name: 'Solr content'
 description: ''
@@ -26,12 +28,66 @@ field_settings:
           landing: full
           page: default
           partner: full
+  node_grants:
+    label: 'Node access information'
+    datasource_id: null
+    property_path: search_api_node_grants
+    type: string
+    indexed_locked: true
+    type_locked: true
+    hidden: true
   type:
     label: 'Content type'
     datasource_id: 'entity:node'
     property_path: type
     type: string
+  status:
+    label: status
+    datasource_id: 'entity:node'
+    property_path: status
+    type: boolean
+    indexed_locked: true
+    type_locked: true
+  uid:
+    label: uid
+    datasource_id: 'entity:node'
+    property_path: uid
+    type: integer
+    indexed_locked: true
+    type_locked: true
+  name:
+    label: 'Media name'
+    datasource_id: 'entity:media'
+    property_path: name
+    type: text
+  field_cr_file_category:
+    label: Category
+    datasource_id: 'entity:media'
+    property_path: field_cr_file_category
+    type: integer
+    dependencies:
+      config:
+        - field.storage.media.field_cr_file_category
 processor_settings:
+  content_access:
+    plugin_id: content_access
+    settings:
+      weights:
+        preprocess_query: -10
+  node_status:
+    plugin_id: node_status
+    settings: {  }
+  ignorecase:
+    plugin_id: ignorecase
+    settings:
+      fields:
+        - rendered_item
+        - node_grants
+        - type
+        - name
+      weights:
+        preprocess_index: -10
+        preprocess_query: -10
   rendered_item:
     plugin_id: rendered_item
     settings: {  }
@@ -47,6 +103,15 @@ options:
 datasource_settings:
   'entity:node':
     plugin_id: 'entity:node'
+    settings:
+      bundles:
+        default: true
+        selected: {  }
+      languages:
+        default: true
+        selected: {  }
+  'entity:media':
+    plugin_id: 'entity:media'
     settings:
       bundles:
         default: true

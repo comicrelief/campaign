@@ -155,7 +155,9 @@ display:
               authenticated: authenticated
               anonymous: '0'
               editor: '0'
+              manager: '0'
               administrator: '0'
+              reviewer: '0'
           is_grouped: false
           group_info:
             label: ''
@@ -168,9 +170,11 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+          parse_mode: terms
           min_length: 2
           fields:
             rendered_item: rendered_item
+            name: name
           plugin_id: search_api_fulltext
         type:
           id: type
