@@ -24,12 +24,12 @@ fi
 mysql -e "create database $DRUPAL_TI_DB"
 
 cd _www
-# ls -l profiles/cr/modules/
-# ls -l profiles/cr/modules/contrib
+ls -l profiles/
+ls -l profiles/cr/
 
 # Remove default settings so we can re-install fine, this
 # is custom logic since we version settings.php in the git repo
-rm -fr _www/sites/default/settings.php
+rm -fr sites/default/settings.php
 
 # Install the site using the given profile
 php -d sendmail_path=$(which true) ~/.composer/vendor/bin/drush.php --verbose --yes site-install $DRUPAL_TI_MODULE_NAME --db-url="$DRUPAL_TI_DB_URL"
