@@ -107,7 +107,7 @@ install:
   - drupal-ti install
   - drupal-ti --include tests/drupal_ti/scripts/before_install.sh
   - mkdir -p _www/profiles
-  - ln -s $TRAVIS_BUILD_DIR _www/profiles/cr
+  - ln -s /home/travis/build/comicrelief/campaign _www/profiles/cr
   - phing make
   - phing build:prepare
 
