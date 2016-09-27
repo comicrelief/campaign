@@ -1,6 +1,8 @@
 # Ignore paths that contain user-generated content.
 profiles/cr/modules/custom/cr_default_content/content/user
 
+_www
+
 vendor
 sites/*/files
 sites/*/private
