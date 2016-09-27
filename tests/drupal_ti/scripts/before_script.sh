@@ -22,7 +22,7 @@ fi
 
 # Create database and install Drupal.
 mysql -e "create database $DRUPAL_TI_DB"
-
+rm -fr settings.php
 cd _www
 ls -l profiles/
 ls -l profiles/cr/
