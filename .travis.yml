@@ -101,10 +101,10 @@ before_install:
   - rvm install 2.1.5
   - composer global config minimum-stability beta
   - composer global require phing/phing lionsad/drupal_ti:1.4.4
-  #- drupal-ti before_install
+  - drupal-ti before_install
 
 install:
-  #- drupal-ti install
+  - drupal-ti install
   - drupal-ti --include tests/drupal_ti/scripts/before_install.sh
   - mkdir -p _www/profiles
   - ln -s /home/travis/build/comicrelief/campaign _www/profiles/cr
