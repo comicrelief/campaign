@@ -17,6 +17,7 @@ Feature: Partner
     | title | Better |
     | body | The feel good place |
     | field_partner_category | Official |
+    | field_partner_external | 1 |
     | field_partner_logo | http://dummyimage.com/400x4:3 |
     | field_partner_website | Link - http://www.better.co.uk |
     | field_partner_image | http://dummyimage.com/400x4:3, http://dummyimage.com/400x4:3, http://dummyimage.com/400x4:3 |
