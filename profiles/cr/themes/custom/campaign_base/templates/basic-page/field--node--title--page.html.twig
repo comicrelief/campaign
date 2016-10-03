@@ -20,12 +20,6 @@
  */
 #}
 
-{# 
-
-Removing everything to ensure this title isn't displayed in our markup for Basic Pages;
-now the 'Display title' field will be shown on the page, allowing this main
-title field to be used just for labelling content in the CMS.
-
 {%
   set classes = [
     'field',
@@ -34,9 +28,17 @@ title field to be used just for labelling content in the CMS.
     'field--label-' ~ label_display,
   ]
 %}
+
+{# 
+
+Removing everything to ensure this title isn't displayed in our markup for Basic Pages;
+now the 'Display title' field will be shown on the page, allowing this main
+title field to be used just for labelling content in the CMS.
+
 <span{{ attributes.addClass(classes) }}>
   {%- for item in items -%}
     {{ item.content }}
   {%- endfor -%}
 </span>
+
  #}

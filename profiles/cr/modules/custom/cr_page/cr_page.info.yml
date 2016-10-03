@@ -15,5 +15,3 @@ config_devel:
   - core.entity_view_display.node.page.default
   - core.entity_view_display.node.page.teaser
   - core.base_field_override.node.page.promote
-
-

@@ -104,16 +104,18 @@
 
   <div{{ content_attributes.addClass('node__content') }}>
 
-   <div class="basic-page--display-title page__title">
-    <h1>{{ content.field_basic_page__display_title }}</h1>
-    </div>
+    {% if content.field_basic_page__display_title['#title'] %}
+      <div class="basic-page--display-title page__title">
+        <h1>
+          {{ content.field_basic_page__display_title }}
+        </h1>
+      </div>
+    {% endif %}
 
     <div class="basic-page--content">
-    <h1>{{ content|without('field_basic_page__display_title')}}</h1>
+      <h1>
+        {{ content|without('field_basic_page__display_title')}}
+      </h1>
     </div>
-
-{#     {{ kint(content) }}
- #}
   </div>
-
 </article>
