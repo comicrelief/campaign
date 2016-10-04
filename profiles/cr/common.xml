@@ -23,17 +23,17 @@
           description="Build (or rebuild) the project in development mode.">
   </target>
   <target name="build:prepare"
-          depends="grunt:dependencies, test:composer:install, prepare:composer"
+          depends="grunt:dependencies, test:composer:install, install:dependencies"
           description="Build all project dependencies. (gems, composer)">
   </target>
   <target name="build:prepare:dev"
-          depends="grunt:dependencies:dev, test:composer:install, prepare:composer"
+          depends="grunt:dependencies:dev, test:composer:install, install:dependencies"
           description="Build all project dependencies. (gems, composer)">
   </target>
 
 
   <target name="build:new"
-          depends="prepare:project, prepare:composer, install"
+          depends="prepare:project, install:dependencies, install"
           description="Build (or rebuild) the project.">
   </target>
 
@@ -56,7 +56,7 @@
     <symlink target="${project.basedir}/cr" link="${app.dir}/${app.profile.dir}" />
   </target>
 
-  <target name="prepare:composer"
+  <target name="install:dependencies"
           description="Setup the project">
     <exec dir="${project.basedir}"
           command="composer install -n -o --prefer-dist "
