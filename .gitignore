@@ -74,10 +74,9 @@ PATCHES.txt
 
 # For composer based installs
 web/core/
-web/modules/contrib/
-web/themes/contrib/
 web/profiles/cr/
-cr/modules/contrib/
+*/themes/contrib/
+*/modules/contrib/
 web/sites/default/settings.local.php
 web/sites/default/services.yml
 
