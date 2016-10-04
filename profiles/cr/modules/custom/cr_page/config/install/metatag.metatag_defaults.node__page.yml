@@ -1,0 +1,10 @@
+uuid: dcb0c039-92f4-43da-9e9b-a507f3c7bff5
+langcode: en
+status: true
+dependencies: {  }
+id: node__page
+label: 'Content: Basic page'
+tags:
+  referrer: no-referrer
+  title: '[node:field_basic_page__display_title] | [site:name]'
+  og_title: '[node:field_basic_page__display_title] | [site:name]'
