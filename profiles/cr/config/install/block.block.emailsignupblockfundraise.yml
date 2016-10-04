@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - cr_email_signup
+    - system
+  theme:
+    - campaign_base
+id: emailsignupblockfundraise
+theme: campaign_base
+region: content
+weight: -6
+provider: null
+plugin: cr_email_signup_block_fundraise
+settings:
+  id: cr_email_signup_block_fundraise
+  label: 'Email Sign Up block: Fundraise'
+  provider: cr_email_signup
+  label_display: visible
+  title_message: ''
+  initial_message: 'ESU Fundraise: initial message'
+  first_success_message: 'ESU Fundraise: success message'
+visibility:
+  request_path:
+    id: request_path
+    pages: /test/esu
+    negate: false
+    context_mapping: {  }
