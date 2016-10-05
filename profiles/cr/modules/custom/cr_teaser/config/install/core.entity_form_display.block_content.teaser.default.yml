@@ -6,7 +6,7 @@ dependencies:
     - field.field.block_content.teaser.body
     - field.field.block_content.teaser.field_cw_link_target
     - field.field.block_content.teaser.field_teaser_image
-    - field.field.block_content.teaser.field_teaser_link
+    - field.field.block_content.teaser.field_teaser_link_address
     - field.field.block_content.teaser.field_teaser_link_colour
     - field.field.block_content.teaser.field_teaser_link_title
     - field.field.block_content.teaser.field_teaser_title
@@ -41,7 +41,7 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
-  field_teaser_link:
+  field_teaser_link_address:
     weight: 5
     settings:
       size: 60
