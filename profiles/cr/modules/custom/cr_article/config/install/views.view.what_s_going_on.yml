@@ -6,7 +6,7 @@ dependencies:
     - field.storage.node.field_article_image
     - image.style.large
     - node.type.article
-    - taxonomy.vocabulary.tags
+    - taxonomy.vocabulary.article_category
   module:
     - image
     - node
@@ -251,10 +251,10 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
-        field_article_tags_target_id:
-          id: field_article_tags_target_id
-          table: node__field_article_tags
-          field: field_article_tags_target_id
+        field_article_category_target_id:
+          id: field_article_category_target_id
+          table: node__field_article_category
+          field: field_article_category_target_id
           relationship: none
           group_type: group
           admin_label: ''
@@ -263,19 +263,22 @@ display:
           group: 1
           exposed: true
           expose:
-            operator_id: field_article_tags_target_id_op
+            operator_id: field_article_category_target_id_op
             label: 'Filter category:'
             description: ''
             use_operator: false
-            operator: field_article_tags_target_id_op
-            identifier: field_article_tags_target_id
+            operator: field_article_category_target_id_op
+            identifier: field_article_category_target_id
             required: false
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
+              editor: '0'
+              manager: '0'
               administrator: '0'
+              reviewer: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -292,7 +295,7 @@ display:
           reduce_duplicates: false
           type: select
           limit: true
-          vid: tags
+          vid: article_category
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
@@ -332,7 +335,7 @@ display:
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
-      use_ajax: false
+      use_ajax: true
       filter_groups:
         operator: AND
         groups:

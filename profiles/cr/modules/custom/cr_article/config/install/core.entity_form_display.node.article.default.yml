@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - field.field.node.article.body
+    - field.field.node.article.field_article_category
     - field.field.node.article.field_article_image
     - field.field.node.article.field_article_intro
     - field.field.node.article.field_article_meta_tags
@@ -35,6 +36,14 @@ content:
     weight: 8
     settings: {  }
     third_party_settings: {  }
+  field_article_category:
+    weight: 26
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete_tags
   field_article_image:
     weight: 2
     settings:

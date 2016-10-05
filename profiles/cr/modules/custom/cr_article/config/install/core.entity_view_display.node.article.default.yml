@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - field.field.node.article.body
+    - field.field.node.article.field_article_category
     - field.field.node.article.field_article_image
     - field.field.node.article.field_article_intro
     - field.field.node.article.field_article_meta_tags
@@ -10,6 +11,7 @@ dependencies:
     - field.field.node.article.field_article_tags
     - field.field.node.article.publishing_date
     - node.type.article
+    - responsive_image.styles.hero_image_full_node
   module:
     - datetime
     - metatag
@@ -124,6 +126,13 @@ content:
     label: visually_hidden
     settings: {  }
     third_party_settings: {  }
+  field_article_category:
+    weight: 7
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
   field_article_image:
     weight: 1
     label: hidden
