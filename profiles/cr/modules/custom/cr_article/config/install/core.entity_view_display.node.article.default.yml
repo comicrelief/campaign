@@ -3,20 +3,25 @@ status: true
 dependencies:
   config:
     - field.field.node.article.body
+    - field.field.node.article.field_article_category
     - field.field.node.article.field_article_image
     - field.field.node.article.field_article_intro
     - field.field.node.article.field_article_meta_tags
     - field.field.node.article.field_article_publish_date
-    - field.field.node.article.field_article_tags
+    - field.field.node.article.field_news_type
+    - field.field.node.article.field_youtube_video_url
     - field.field.node.article.publishing_date
     - node.type.article
+    - responsive_image.styles.hero_image_full_node
   module:
     - datetime
     - metatag
+    - options
     - panelizer
     - responsive_image
     - text
     - user
+    - youtube
 third_party_settings:
   panelizer:
     enable: false
@@ -124,6 +129,12 @@ content:
     label: visually_hidden
     settings: {  }
     third_party_settings: {  }
+  field_article_category:
+    weight: 10
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: entity_reference_entity_id
   field_article_image:
     weight: 1
     label: hidden
@@ -145,18 +156,38 @@ content:
     third_party_settings: {  }
     type: metatag_empty_formatter
   field_article_publish_date:
-    type: datetime_default
+    type: datetime_custom
     weight: 0
     label: visually_hidden
     settings:
-      format_type: medium
-      timezone_override: ''
+      timezone_override: Europe/London
+      date_format: 'F jS Y'
     third_party_settings: {  }
+  field_news_type:
+    weight: 9
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+  field_youtube_video_url:
+    weight: 7
+    label: hidden
+    settings:
+      youtube_size: responsive
+      youtube_width: ''
+      youtube_height: ''
+      youtube_autoplay: false
+      youtube_loop: false
+      youtube_showinfo: false
+      youtube_controls: false
+      youtube_autohide: false
+      youtube_iv_load_policy: false
+    third_party_settings: {  }
+    type: youtube_video
   links:
     weight: 5
     settings: {  }
     third_party_settings: {  }
 hidden:
-  field_article_tags: true
   publishing_date: true
   social_links: true

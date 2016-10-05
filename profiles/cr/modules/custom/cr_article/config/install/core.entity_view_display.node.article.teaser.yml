@@ -4,13 +4,16 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.article.body
+    - field.field.node.article.field_article_category
     - field.field.node.article.field_article_image
     - field.field.node.article.field_article_intro
     - field.field.node.article.field_article_meta_tags
     - field.field.node.article.field_article_publish_date
-    - field.field.node.article.field_article_tags
+    - field.field.node.article.field_news_type
+    - field.field.node.article.field_youtube_video_url
     - field.field.node.article.publishing_date
     - node.type.article
+    - responsive_image.styles.hero_image_full_node
   module:
     - panelizer
     - responsive_image
@@ -38,10 +41,12 @@ content:
     third_party_settings: {  }
 hidden:
   body: true
+  field_article_category: true
   field_article_intro: true
   field_article_meta_tags: true
   field_article_publish_date: true
-  field_article_tags: true
   field_media: true
+  field_news_type: true
+  field_youtube_video_url: true
   publishing_date: true
   social_links: true
