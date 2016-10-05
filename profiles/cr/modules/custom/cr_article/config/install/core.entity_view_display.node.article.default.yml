@@ -8,7 +8,6 @@ dependencies:
     - field.field.node.article.field_article_intro
     - field.field.node.article.field_article_meta_tags
     - field.field.node.article.field_article_publish_date
-    - field.field.node.article.field_article_tags
     - field.field.node.article.publishing_date
     - node.type.article
     - responsive_image.styles.hero_image_full_node
@@ -166,6 +165,5 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
-  field_article_tags: true
   publishing_date: true
   social_links: true

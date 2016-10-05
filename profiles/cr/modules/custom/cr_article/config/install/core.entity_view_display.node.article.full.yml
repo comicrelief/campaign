@@ -4,19 +4,19 @@ dependencies:
   config:
     - core.entity_view_mode.node.full
     - field.field.node.article.body
+    - field.field.node.article.field_article_category
     - field.field.node.article.field_article_image
     - field.field.node.article.field_article_intro
     - field.field.node.article.field_article_meta_tags
     - field.field.node.article.field_article_publish_date
-    - field.field.node.article.field_article_tags
     - field.field.node.article.publishing_date
     - node.type.article
+    - responsive_image.styles.hero_image_full_node
   module:
     - datetime
     - ds
     - panelizer
     - responsive_image
-    - taxonomy
     - text
     - user
 third_party_settings:
@@ -185,12 +185,6 @@ content:
       format_type: medium
       timezone_override: ''
     third_party_settings: {  }
-  field_article_tags:
-    type: entity_reference_rss_category
-    weight: 15
-    label: above
-    settings: {  }
-    third_party_settings: {  }
   links:
     weight: 14
     settings: {  }
@@ -200,6 +194,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_article_category: true
   field_article_meta_tags: true
   field_meta_tags: true
   publishing_date: true

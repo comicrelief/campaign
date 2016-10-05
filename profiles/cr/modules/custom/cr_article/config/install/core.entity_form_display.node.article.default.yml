@@ -8,7 +8,6 @@ dependencies:
     - field.field.node.article.field_article_intro
     - field.field.node.article.field_article_meta_tags
     - field.field.node.article.field_article_publish_date
-    - field.field.node.article.field_article_tags
     - field.field.node.article.publishing_date
     - image.style.medium
     - node.type.article
@@ -63,14 +62,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: metatag_firehose
-  field_article_tags:
-    type: entity_reference_autocomplete_tags
-    weight: 6
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   path:
     type: path
     weight: 11
