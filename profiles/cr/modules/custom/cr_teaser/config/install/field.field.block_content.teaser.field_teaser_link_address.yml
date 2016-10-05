@@ -3,9 +3,9 @@ status: true
 dependencies:
   config:
     - block_content.type.teaser
-    - field.storage.block_content.field_teaser_link
-id: block_content.teaser.field_teaser_link
-field_name: field_teaser_link
+    - field.storage.block_content.field_teaser_link_address
+id: block_content.teaser.field_teaser_link_address
+field_name: field_teaser_link_address
 entity_type: block_content
 bundle: teaser
 label: 'Link address'

@@ -7,7 +7,7 @@ dependencies:
     - field.field.block_content.teaser.body
     - field.field.block_content.teaser.field_cw_link_target
     - field.field.block_content.teaser.field_teaser_image
-    - field.field.block_content.teaser.field_teaser_link
+    - field.field.block_content.teaser.field_teaser_link_address
     - field.field.block_content.teaser.field_teaser_link_colour
     - field.field.block_content.teaser.field_teaser_link_title
     - field.field.block_content.teaser.field_teaser_title
@@ -39,7 +39,7 @@ third_party_settings:
         - field_teaser_image
         - body
         - field_teaser_link_title
-        - field_teaser_link
+        - field_teaser_link_address
         - field_teaser_you_tube_link
         - field_teaser_link_colour
         - field_cw_link_target
@@ -71,13 +71,13 @@ content:
       image_style: ''
     third_party_settings: {  }
     type: image
-  field_teaser_link:
+  field_teaser_link_address:
+    type: string
     weight: 4
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
   field_teaser_link_colour:
     type: list_default
     weight: 6
