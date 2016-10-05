@@ -95,7 +95,7 @@ function cr_update_8009() {
 /**
  * Remove Search view + search configs & install Solr
  */
-function cr_update_8009() {
+function cr_update_8010() {
   $entityTypeManager = \Drupal::service('entity_type.manager');
   $view = $entityTypeManager->getStorage('view')->load('search');
   $view->delete();
