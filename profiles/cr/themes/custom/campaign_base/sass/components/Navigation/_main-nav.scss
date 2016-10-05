@@ -75,16 +75,16 @@ nav.menu--main {
       &:focus {
         outline: none;
       }
-    
+
       span {
         display: none;
       }
-      &:hover, 
+      &:hover,
       &:focus,
       &:active {
         .icon {
           fill: $colour-jasper-grey;
-  
+
         }
       }
       .icon {
@@ -202,12 +202,12 @@ nav.menu--main {
 
           &:hover {
             background-color: #666;
-            
+
             span.menu-item__text {
               border-bottom: 3px solid transparent;
             }
           }
-        } 
+        }
       }
 
       /* Duplicate menu item; our landing page link */
@@ -246,8 +246,8 @@ nav.menu--main {
             span.menu-item__text {
               border-bottom: 3px solid $colour-white;
             }
-          } 
-        } 
+          }
+        }
 
         ul li.menu-item--active-trail a,
         ul li.menu--item--duplicate a {
@@ -263,7 +263,7 @@ nav.menu--main {
   /* Adjust our dropdown 'mobile' nav to behave as standard nav, only
   on our slightly tweaked breakpoint (to accommodate tablets in landscape) */
   @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
-    
+
     position: relative;
     top: 0;
     display: block;
@@ -308,7 +308,7 @@ nav.menu--main {
           }
         }
 
-        &.menu-item--active-trail a, 
+        &.menu-item--active-trail a,
         &.menu-item--active-trail a:hover,
         a:hover {
           span.menu-item__text {
@@ -333,7 +333,7 @@ nav.menu--main {
               }
             }
           }
-        } 
+        }
 
         /* Submenu, hidden until parent item is hovered */
         > ul {
@@ -396,7 +396,7 @@ nav.menu--main {
                 border: 6px solid transparent;
                 border-bottom-color: #1e1e1e;
               }
-            } 
+            }
           }
         }
 
@@ -409,6 +409,6 @@ nav.menu--main {
           }
         }
       }
-    } 
+    }
   }
 }

@@ -1,14 +1,9 @@
 <?php
-/**
- * @file
- * Contains \Drupal\cdn_ui\Form\CdnSettingsForm.
- */
 
 namespace Drupal\cdn_ui\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Url;
 
 /**
  * Configure CDN settings for this site.
@@ -54,23 +49,18 @@ class CdnSettingsForm extends ConfigFormBase {
       '#type' => 'radios',
       '#title' => $this->t('Status'),
       '#title_display' => 'invisible',
-      '#description' => t(
-        'If you do not want to use the CDN to serve files to your visitors yet,
-        but you do want to see if it is working well for your site, then enable
-        testing mode.<br />Users will only get the files from the CDN if they
-        have the <a href=":perm-url"><em>Access files on the CDN when in testing
-        mode</em> permission</a>.',
-        [
-          ':perm-url' => Url::fromRoute('user.admin_permissions')->setOption('fragment', 'module-cdn_ui')->toString(TRUE)->getGeneratedUrl(),
-        ]
-      ),
       '#required' => TRUE,
       '#options' => [
         0 => $this->t('Disabled'),
-        1 => $this->t('Testing mode'),
         2 => $this->t('Enabled'),
       ],
       '#default_value' => $config->get('status'),
+    ];
+    $form['status']['status'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Serve files from CDN'),
+      '#description' => $this->t('Better performance thanks to better caching of files by the visitor. When a file changes a different URL is used, to ensure instantaneous updates for your visitors.'),
+      '#default_value' => $config->get('farfuture.status'),
     ];
 
     $form['mapping'] = [
@@ -141,12 +131,25 @@ class CdnSettingsForm extends ConfigFormBase {
     ];
     $form['mapping']['advanced'] = [
       '#type' => 'item',
-      '#markup' => '<em>' . $this->t('Not configurable through the UI. Modify <code>cdn.settings.yml</code> directly, and <a href=":url">import it</a>. It is safe to edit all other settings via the UI.', [':url' => Url::fromRoute('config.import_single')->toString(TRUE)->getGeneratedUrl()]) . '</em>',
+      '#markup' => '<em>' . $this->t('Not configurable through the UI. Modify <code>cdn.settings.yml</code> directly, and <a href=":url">import it</a>. It is safe to edit all other settings via the UI.', [':url' => 'https://www.drupal.org/documentation/administer/config']) . '</em>',
       '#states' => [
         'visible' => [
           ':input[name="mapping[type]"]' => ['value' => 'advanced'],
         ],
       ],
+    ];
+
+    $form['farfuture'] = [
+      '#type' => 'details',
+      '#title' => $this->t('Forever cacheable files'),
+      '#group' => 'cdn_settings',
+      '#tree' => TRUE,
+    ];
+    $form['farfuture']['status'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Make files cacheable forever'),
+      '#description' => $this->t('Better performance thanks to better caching of files by the visitor. When a file changes a different URL is used, to ensure instantaneous updates for your visitors.'),
+      '#default_value' => $config->get('farfuture.status'),
     ];
 
     return parent::buildForm($form, $form_state);
@@ -159,7 +162,7 @@ class CdnSettingsForm extends ConfigFormBase {
     $config = $this->config('cdn.settings');
 
     // Vertical tab: 'Status'.
-    $config->set('status', $form_state->getValue('status'));
+    $config->set('status', (bool) $form_state->getValue('status'));
 
     // Vertical tab: 'Mapping'.
     if ($form_state->getValue(['mapping', 'type']) === 'simple') {
@@ -181,6 +184,9 @@ class CdnSettingsForm extends ConfigFormBase {
         $config->set('mapping.conditions', $conditions);
       }
     }
+
+    // Vertical tab: 'Forever cacheable files'.
+    $config->set('farfuture.status', (bool) $form_state->getValue(['farfuture', 'status']));
 
     $config->save();
 

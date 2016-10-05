@@ -63,12 +63,18 @@ class WorkplaceSignUp extends SignUp {
       '#maxlength' => 100,
       '#title' => $this->t('Your first name'),
       '#placeholder' => $this->t('Enter your first name'),
+      '#attributes' => [
+        'class' => ['–metrika-nokeys'],
+      ],
     ];
     $form['email'] = [
       '#type' => 'textfield',
       '#maxlength' => 500,
       '#title' => $this->t('Your email address'),
       '#placeholder' => $this->t('Enter your email address'),
+      '#attributes' => [
+        'class' => ['–metrika-nokeys'],
+      ],
     ];
     return $form;
   }

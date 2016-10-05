@@ -84,3 +84,10 @@ function cr_update_8008() {
   $config_facotry->getEditable('field.field.block_content.teaser.field_teaser_link')
     ->delete();
 }
+
+/**
+* Install cdn
+*/
+function cr_update_8009() {
+ \Drupal::service('module_installer')->install(['cdn']);
+}
