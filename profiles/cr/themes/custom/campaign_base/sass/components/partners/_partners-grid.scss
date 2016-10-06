@@ -13,6 +13,20 @@
     margin: 0;
     max-width: none;
   }
+
+  .cr-article {
+    margin: 0;
+    max-width: none;
+
+    .cr-article__header {
+      // make this big and red
+    }
+
+    .cr-article__body {
+      max-width: 640px;
+      margin: 60px auto;
+    }
+  }
 }
 
 .partners-grid {
