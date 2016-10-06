@@ -1,0 +1,54 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/taxonomy\/term\/14?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/article_category"
+        }
+    },
+    "tid": [
+        {
+            "value": "14"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "aedc077f-5a01-4cb0-8486-2a13079551ca"
+        }
+    ],
+    "vid": [
+        {
+            "target_id": "article_category"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "name": [
+        {
+            "value": "The difference you make",
+            "lang": "en"
+        }
+    ],
+    "weight": [
+        {
+            "value": "4"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1475675701",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ]
+}

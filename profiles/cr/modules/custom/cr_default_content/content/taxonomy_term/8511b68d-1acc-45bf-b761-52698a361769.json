@@ -1,0 +1,54 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/taxonomy\/term\/19?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/article_category"
+        }
+    },
+    "tid": [
+        {
+            "value": "19"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "8511b68d-1acc-45bf-b761-52698a361769"
+        }
+    ],
+    "vid": [
+        {
+            "target_id": "article_category"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "name": [
+        {
+            "value": "Red Nose Day Partners",
+            "lang": "en"
+        }
+    ],
+    "weight": [
+        {
+            "value": "2"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1475675701",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ]
+}
