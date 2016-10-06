@@ -7,8 +7,15 @@
 //
 // Style guide: Partners Grid
 
+/* Override global styles */
+.page-node-type-partner {
+  .bottom-region {
+    margin: 0;
+    max-width: none;
+  }
+}
+
 .partners-grid {
-	
   background-color: $colour-smoke-grey;
   text-align: center;
   padding: 30px 0;
@@ -16,12 +23,25 @@
   .view-content {
     @include container;
 
+    h3 {
+      width: 97.5%;
+      margin-left: 1.25%;
+      margin-right: 1.25%;
+      margin-top: calc(6 * #{gutter()});
+
+      @include breakpoint($screen-md) {
+        margin-top: calc(2 * #{gutter()});
+      }
+    }
+
     ul {
       @include clearfix;
+    
 
       li {
-
         @include span(12);
+        margin-top: gutter();
+        margin-bottom: gutter();
 
         @include breakpoint($screen-md) {
           @include span(6);
@@ -45,7 +65,7 @@
 
             @include opacity(0);
             @include transition-property(opacity);
-            @include transition-duration(250ms);
+            @include transition-duration(200ms);
 
             a {
               position: absolute;
@@ -59,12 +79,15 @@
               text-align: center;
 
               span {
-                @include translateY(-50%);
+                 width: 100%;
+                font-family: "GT-Walsheim-Bold",helvetica,arial,sans-serif;
+                color: $colour-white;
+                font-size: 18px;
+                line-height: 18px;
                 position: absolute;
                 top: 50%;
                 left: 0;
-                width: 100%;
-                color: $colour-white;
+                @include translateY(-50%);
               }
             }
           }
