@@ -71,33 +71,26 @@
  */
 #}
 
-{% set internal = content.field_partner_external['0']['#markup'] %}
-{% set website_link = content.field_partner_website ['0']['#url'].uri %}
+{{ attach_library('classy/node') }}
 
-{{ kint(website_link) }}
+{% set is_external_link = content.field_partner_external['#items'][0].value %}
+{% set website_link = content.field_partner_website ['0']['#url'].uri %}
 
 {%
   set classes = [
     'node',
     'node--type-' ~ node.bundle|clean_class,
-    node.isPromoted() ? 'node--promoted',
-    node.isSticky() ? 'node--sticky',
-    not node.isPublished() ? 'node--unpublished',
     view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
   ]
 %}
 
-{{ attach_library('classy/node') }}
 <article{{ attributes.addClass(classes) }}>
 
   {{ title_prefix }}
   {% if not page %}
-    <h2{{ title_attributes }}>
-      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-    </h2>
+    <span class="visually-hidden">{{ label }}</span>
   {% endif %}
   {{ title_suffix }}
-
 
   <div{{ content_attributes.addClass('node__content') }}>
     
@@ -105,18 +98,17 @@
       {{ content.field_partner_logo }}
     </div>
 
-    <div class="partner--links">
-      {{ content.links }}
+    <div class="partner--link">
+      {% if is_external_link %}
+        <a href="{{  website_link }}" target="_blank" >
+          <span>Find out more (ext.)</span>
+        </a>
+      {% else %}
+        <a href="{{ url }}" >
+          <span>Find out more (int.)</span>
+        </a>
+        {% endif %} 
     </div>
-
-    <a class="partner--website">
-      {{ content.field_partner_website }}  
-
-    </a>
 
   </div>
 </article>
-
-
-
-

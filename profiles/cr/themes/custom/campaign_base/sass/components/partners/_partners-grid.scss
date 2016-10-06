@@ -1,0 +1,81 @@
+// Partners Grid
+//
+// This is the Partners Grid, shown on Partners landing page and each individual Partner page
+//
+// Markup: partners-grid.hbs
+//
+//
+// Style guide: Partners Grid
+
+.partners-grid {
+	
+  background-color: $colour-smoke-grey;
+  text-align: center;
+  padding: 30px 0;
+
+  .view-content {
+    @include container;
+
+    ul {
+      @include clearfix;
+
+      li {
+
+        @include span(12);
+
+        @include breakpoint($screen-md) {
+          @include span(6);
+        }
+
+        @include breakpoint($screen-lg) {
+          @include span(3);
+        }
+
+        .node__content {
+
+          position: relative;
+
+          .partner--logo img {
+            position:relative;
+            width: 100%;
+            height: auto;
+          }
+
+          .partner--link {
+
+            @include opacity(0);
+            @include transition-property(opacity);
+            @include transition-duration(250ms);
+
+            a {
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background-color: $colour-red;
+              width: 100%;
+              height: 100%;
+              text-align: center;
+
+              span {
+                @include translateY(-50%);
+                position: absolute;
+                top: 50%;
+                left: 0;
+                width: 100%;
+                color: $colour-white;
+              }
+            }
+          }
+
+          &:hover {
+            .partner--link {
+              @include opacity(1);
+            }
+          }
+        }
+      }
+    }
+  }
+}
