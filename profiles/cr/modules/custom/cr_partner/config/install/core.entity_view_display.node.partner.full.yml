@@ -5,15 +5,15 @@ dependencies:
     - core.entity_view_mode.node.full
     - field.field.node.partner.body
     - field.field.node.partner.field_partner_category
-    - field.field.node.partner.field_partner_image
+    - field.field.node.partner.field_partner_external
     - field.field.node.partner.field_partner_logo
     - field.field.node.partner.field_partner_meta_tags
     - field.field.node.partner.field_partner_website
     - node.type.partner
   module:
     - ds
-    - image
     - link
+    - metatag
     - panelizer
     - responsive_image
     - text
@@ -37,7 +37,14 @@ third_party_settings:
         - field_partner_image
         - body
         - field_partner_website
+      fourth:
+        - 'dynamic_block_field:node-partners_grid'
     fields:
+      'dynamic_block_field:node-partners_grid':
+        plugin_id: 'dynamic_block_field:node-partners_grid'
+        weight: 5
+        label: hidden
+        formatter: default
       node_title:
         plugin_id: node_title
         weight: 1
@@ -60,20 +67,21 @@ content:
     third_party_settings: {  }
   field_partner_category:
     type: entity_reference_entity_view
-    weight: 5
+    weight: 15
     label: above
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
-  field_partner_image:
-    weight: 2
+  field_partner_external:
+    type: boolean
+    weight: 6
     label: above
     settings:
-      image_style: ''
-      image_link: ''
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
     third_party_settings: {  }
-    type: image
   field_partner_logo:
     type: responsive_image
     weight: 0
@@ -81,6 +89,12 @@ content:
     settings:
       responsive_image_style: ''
       image_link: ''
+    third_party_settings: {  }
+  field_partner_meta_tags:
+    type: metatag_empty_formatter
+    weight: 7
+    label: above
+    settings: {  }
     third_party_settings: {  }
   field_partner_website:
     type: link
@@ -94,12 +108,11 @@ content:
       target: ''
     third_party_settings: {  }
   links:
-    weight: 13
+    weight: 16
     settings: {  }
     third_party_settings: {  }
   social_links:
-    weight: 14
+    weight: 17
     settings: {  }
     third_party_settings: {  }
-hidden:
-  field_partner_meta_tags: true
+hidden: {  }

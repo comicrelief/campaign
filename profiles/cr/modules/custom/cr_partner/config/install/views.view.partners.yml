@@ -51,7 +51,6 @@ display:
       pager:
         type: none
         options:
-          items_per_page: 0
           offset: 0
       style:
         type: html_list
