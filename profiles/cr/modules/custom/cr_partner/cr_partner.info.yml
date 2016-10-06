@@ -25,7 +25,6 @@ config_devel:
   - core.entity_view_display.node.partner.logos
   - core.entity_view_display.paragraph.partner_list.default
   - core.base_field_override.node.partner.title
-  - field.storage.node.field_partner_image
   - field.storage.node.field_partner_category
   - field.storage.node.field_partner_website
   - field.storage.node.field_partner_logo
@@ -35,7 +34,6 @@ config_devel:
   - field.storage.paragraph.field_partner_list
   - field.storage.paragraph.field_background_colour
   - field.field.node.partner.body
-  - field.field.node.partner.field_partner_image
   - field.field.node.partner.field_partner_category
   - field.field.node.partner.field_partner_website
   - field.field.paragraph.partner_list.field_background_colour
