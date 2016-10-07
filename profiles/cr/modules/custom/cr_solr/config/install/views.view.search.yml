@@ -196,11 +196,12 @@ display:
             identifier: type
             required: false
             remember: false
-            multiple: true
+            multiple: false
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
               editor: '0'
+              manager: '0'
               administrator: '0'
               reviewer: '0'
             reduce: false
@@ -220,7 +221,17 @@ display:
           plugin_id: search_api_options
       sorts: {  }
       title: Search
-      header: {  }
+      header:
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          content: 'We found @total results! Displaying @start - @end'
+          plugin_id: result
       footer: {  }
       empty:
         area:
