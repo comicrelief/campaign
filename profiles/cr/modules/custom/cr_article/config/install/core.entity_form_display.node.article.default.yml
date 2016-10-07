@@ -12,6 +12,7 @@ dependencies:
     - image.style.medium
     - node.type.article
   module:
+    - datetime
     - image
     - inline_entity_form
     - metatag
@@ -32,11 +33,11 @@ content:
     third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 8
+    weight: 7
     settings: {  }
     third_party_settings: {  }
   field_article_category:
-    weight: 26
+    weight: 12
     settings:
       match_operator: CONTAINS
       size: 60
@@ -44,7 +45,7 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete_tags
   field_article_image:
-    weight: 2
+    weight: 3
     settings:
       preview_image_style: medium
       progress_indicator: throbber
@@ -58,20 +59,28 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_article_meta_tags:
-    weight: 12
+    weight: 11
     settings: {  }
     third_party_settings: {  }
     type: metatag_firehose
+  field_article_publish_date:
+    type: datetime_datelist
+    weight: 2
+    settings:
+      increment: 15
+      date_order: YMD
+      time_type: '24'
+    third_party_settings: {  }
   path:
     type: path
-    weight: 11
+    weight: 10
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 9
+    weight: 8
     third_party_settings: {  }
   publishing_date:
     type: inline_entity_form_complex
@@ -89,7 +98,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 10
+    weight: 9
     third_party_settings: {  }
   title:
     type: string_textfield
@@ -100,11 +109,10 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 7
+    weight: 6
     settings:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
     third_party_settings: {  }
-hidden:
-  field_article_publish_date: true
+hidden: {  }
