@@ -8,6 +8,7 @@ use Drupal\Component\Utility\Unicode;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Config\BootstrapConfigStorageFactory;
 use Drupal\Core\Config\NullStorage;
+use Drupal\Core\Database\Database;
 use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\Core\DependencyInjection\ServiceModifierInterface;
 use Drupal\Core\DependencyInjection\ServiceProviderInterface;
@@ -15,6 +16,7 @@ use Drupal\Core\DependencyInjection\YamlFileLoader;
 use Drupal\Core\Extension\ExtensionDiscovery;
 use Drupal\Core\File\MimeType\MimeTypeGuesser;
 use Drupal\Core\Http\TrustedHostsRequestFactory;
+use Drupal\Core\Installer\InstallerRedirectTrait;
 use Drupal\Core\Language\Language;
 use Drupal\Core\Site\Settings;
 use Symfony\Cmf\Component\Routing\RouteObjectInterface;
@@ -43,6 +45,7 @@ use Symfony\Component\Routing\Route;
  * container, or modify existing services.
  */
 class DrupalKernel implements DrupalKernelInterface, TerminableInterface {
+  use InstallerRedirectTrait;
 
   /**
    * Holds the class used for dumping the container to a PHP array.
@@ -617,10 +620,10 @@ class DrupalKernel implements DrupalKernelInterface, TerminableInterface {
       $this->initializeSettings($request);
 
       // Redirect the user to the installation script if Drupal has not been
-      // installed yet, and we are not already installing, and we are not on the
-      // command line.
-      if (!drupal_installation_attempted() && PHP_SAPI !== 'cli' && !drupal_is_installed()) {
-        $response = new RedirectResponse($request->getBasePath() . '/core/install.php');
+      // installed yet (i.e., if no $databases array has been defined in the
+      // settings.php file) and we are not already installing.
+      if (!Database::getConnectionInfo() && !drupal_installation_attempted() && PHP_SAPI !== 'cli') {
+        $response = new RedirectResponse($request->getBasePath() . '/core/install.php', 302, ['Cache-Control' => 'no-cache']);
       }
       else {
         $this->boot();
@@ -659,14 +662,17 @@ class DrupalKernel implements DrupalKernelInterface, TerminableInterface {
    *   If the passed in exception cannot be turned into a response.
    */
   protected function handleException(\Exception $e, $request, $type) {
+    if ($this->shouldRedirectToInstaller($e, $this->container ? $this->container->get('database') : NULL)) {
+      return new RedirectResponse($request->getBasePath() . '/core/install.php', 302, ['Cache-Control' => 'no-cache']);
+    }
+
     if ($e instanceof HttpExceptionInterface) {
       $response = new Response($e->getMessage(), $e->getStatusCode());
       $response->headers->add($e->getHeaders());
       return $response;
     }
-    else {
-      throw $e;
-    }
+
+    throw $e;
   }
 
   /**

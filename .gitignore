@@ -68,8 +68,8 @@ build.properties
 
 PATCHES.txt
 
-*/tests/behat/vendor/
-*/tests/behat/behat.yml
+profiles/cr/tests/behat/vendor/
+profiles/cr/tests/behat/behat.yml
 
 
 # For composer based installs
