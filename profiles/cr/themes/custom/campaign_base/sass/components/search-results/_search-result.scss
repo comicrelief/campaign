@@ -1,4 +1,10 @@
-// Basic styles for Search Index view mode for News Articles and 
+// Search results
+//
+// This is Search results
+//
+// Markup: search-results.hbs
+//
+// Style guide: search-result
 
 .search-result__node {
   
@@ -28,4 +34,76 @@
     background-color: $colour-red;
     padding-bottom: 57%; 
   }  
+}
+
+.search-result {
+  display: inline-block;
+  position: relative;
+  margin-bottom: 20px;
+  text-align: left;
+  overflow: hidden;
+  @include breakpoint($screen-md) {
+    width: calc(100% - (4 * 1.25%)) !important;
+    margin: 1.25% calc(2 * 1.25%) !important;
+  }
+  a {
+    text-decoration: none;
+  }
+}
+.search-result__image {
+  img {
+    width: 100%;
+    display: block;
+    height: 100%;
+  }
+  @include breakpoint($screen-md) {
+    @include span(4);
+    margin-left: 0;
+  }
+}
+.search-result__content-wrapper {
+  position: relative;
+  padding: 30px;
+  height: 100%;
+  @include breakpoint($screen-md) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: calc(2*#{gutter()});
+    height: 100%;
+    @include span(8 wider);
+    margin-right: 0;
+    &.search-result__content-wrapper--no-image {
+      @include span(12);
+      position: relative;
+      .search-result__content {      
+        top: 0;
+        position: relative;
+        @include translateY(0);
+      }
+    }
+  }
+}
+.search-result__content {
+  @include breakpoint($screen-md) {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: calc(100% - 40px);
+    top: 50%;
+    @include translateY(-50%);
+  }
+}
+.search-result__tag {
+  color: $colour-red;
+  margin-right: 10px;
+  display: inline-block;
+  line-height: 18px;
+}
+.search-result__published-date {
+  display: inline-block;
+  padding-left: 12px;
+  border-left: 2px solid $colour-black;
+  line-height: 18px;
 }
