@@ -3,11 +3,11 @@ status: true
 dependencies:
   config:
     - field.field.node.article.body
+    - field.field.node.article.field_article_category
     - field.field.node.article.field_article_image
     - field.field.node.article.field_article_intro
     - field.field.node.article.field_article_meta_tags
     - field.field.node.article.field_article_publish_date
-    - field.field.node.article.field_article_tags
     - field.field.node.article.publishing_date
     - image.style.medium
     - node.type.article
@@ -35,6 +35,14 @@ content:
     weight: 8
     settings: {  }
     third_party_settings: {  }
+  field_article_category:
+    weight: 26
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete_tags
   field_article_image:
     weight: 2
     settings:
@@ -54,14 +62,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: metatag_firehose
-  field_article_tags:
-    type: entity_reference_autocomplete_tags
-    weight: 6
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   path:
     type: path
     weight: 11

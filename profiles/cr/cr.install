@@ -91,3 +91,13 @@ function cr_update_8008() {
 function cr_update_8009() {
  \Drupal::service('module_installer')->install(['cdn']);
 }
+
+/**
+* Remove field_article_tags
+*/
+function cr_update_8010() {
+  $field = Drupal\field\Entity\FieldStorageConfig::loadByName('node', 'field_article_tags');
+  $field->delete();
+  field_purge_batch('field_article_tags');
+}
+
