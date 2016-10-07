@@ -1,0 +1,35 @@
+{%
+  set classes = [
+    'field',
+    'field--name-' ~ field_name|clean_class,
+    'field--type-' ~ field_type|clean_class,
+    'field--label-' ~ label_display,
+  ]
+%}
+{%
+  set title_classes = [
+    'field__label',
+    label_display == 'visually_hidden' ? 'visually-hidden',
+  ]
+%}
+{%
+  set field_name_class = [
+    'cr-article__date'
+  ]
+%}
+
+{% if label_hidden %}
+  {% if multiple %}
+      {% for item in items %}
+        {{ item.content }}
+      {% endfor %}
+  {% else %}
+    {% for item in items %}
+     {{ item.content }}
+    {% endfor %}
+  {% endif %}
+{% else %}
+    {% for item in items %}
+     <span {{ content_attributes.addClass(field_name_class) }}> {{ item.content }} </span>
+    {% endfor %}
+{% endif %}
