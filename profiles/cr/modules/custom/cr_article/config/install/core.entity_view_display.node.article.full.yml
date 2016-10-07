@@ -125,7 +125,7 @@ third_party_settings:
     regions:
       first:
         - social_links
-        - node_post_date
+        - field_article_publish_date
         - field_article_category
         - node_title
         - field_article_image
@@ -139,11 +139,6 @@ third_party_settings:
         weight: 6
         label: above
         formatter: default
-      node_post_date:
-        plugin_id: node_post_date
-        weight: 1
-        label: hidden
-        formatter: ds_post_date_short
       node_title:
         plugin_id: node_title
         weight: 3
@@ -188,17 +183,17 @@ content:
     third_party_settings: {  }
   field_article_meta_tags:
     type: metatag_empty_formatter
-    weight: 7
+    weight: 15
     label: above
     settings: {  }
     third_party_settings: {  }
   field_article_publish_date:
-    type: datetime_default
-    weight: 15
+    type: datetime_custom
+    weight: 1
     label: visually_hidden
     settings:
-      format_type: medium
-      timezone_override: ''
+      timezone_override: Europe/London
+      date_format: 'j F Y'
     third_party_settings: {  }
   links:
     weight: 17
