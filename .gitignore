@@ -82,3 +82,4 @@ web/sites/default/services.yml
 
 # Ignore Drupal's file directory
 web/sites/*/files/
+web
