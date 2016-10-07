@@ -173,9 +173,12 @@
         },
         "patches": {
             "drupal/core": {
-                "Redirect to install.php on empty DB": "https://www.drupal.org/files/issues/728702-install-redirect_7.patch",
+                "Redirect to install.php on empty DB. Required for platform.sh": "https://www.drupal.org/files/issues/728702-install-redirect_7.patch",
                 "List unmet dependencies instead of just failing": "https://www.drupal.org/files/issues/missing-dependencies-2655104-8.patch",
-                "Call to a member function getPath() when installing Profiles with unknown modules as requirement": "https://www.drupal.org/files/issues/core-profile_unknown_module-2608408-45.patch"
+                "Call to a member function getPath() when installing Profiles with unknown modules as requirement": "https://www.drupal.org/files/issues/core-profile_unknown_module-2608408-45.patch",
+                "Retain destination url after preview": "https://www.drupal.org/files/issues/2325463-42-node-preview-workflow-fixed.patch",
+                "Constraint violation for paragraph editing, for full reasoning see https://github.com/comicrelief/campaign/pull/252": "https://gist.githubusercontent.com/pvhee/14801e0f82e06f51cb0d88b9d400cbd6/raw/253f1c1e516eb24650a91d343c56a5aeb6a0ca43/PLAT-235_paragraph_constraint_violation.patch",
+                "See https://www.drupal.org/node/2314185": "https://www.drupal.org/files/issues/drupalbehaviorerror-2314185-15.patch"
             },
             "drupal/config_devel": {
                 "Show differences between config & info.yml": "https://www.drupal.org/files/issues/show_differences_between-2801201-2.patch"

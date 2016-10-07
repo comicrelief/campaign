@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bf5953a2f43ddddce267e640894e03a4",
-    "content-hash": "8bab111c26324dbdf791c04082f32554",
+    "hash": "ae7aa13bb7dc5f32aa8a120b7824c911",
+    "content-hash": "7a9934c71276864526aecbc5a32ec681",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1604,9 +1604,12 @@
             "type": "drupal-core",
             "extra": {
                 "patches_applied": {
-                    "Redirect to install.php on empty DB": "https://www.drupal.org/files/issues/728702-install-redirect_7.patch",
+                    "Redirect to install.php on empty DB. Required for platform.sh": "https://www.drupal.org/files/issues/728702-install-redirect_7.patch",
                     "List unmet dependencies instead of just failing": "https://www.drupal.org/files/issues/missing-dependencies-2655104-8.patch",
-                    "Call to a member function getPath() when installing Profiles with unknown modules as requirement": "https://www.drupal.org/files/issues/core-profile_unknown_module-2608408-45.patch"
+                    "Call to a member function getPath() when installing Profiles with unknown modules as requirement": "https://www.drupal.org/files/issues/core-profile_unknown_module-2608408-45.patch",
+                    "Retain destination url after preview": "https://www.drupal.org/files/issues/2325463-42-node-preview-workflow-fixed.patch",
+                    "Constraint violation for paragraph editing, for full reasoning see https://github.com/comicrelief/campaign/pull/252": "https://gist.githubusercontent.com/pvhee/14801e0f82e06f51cb0d88b9d400cbd6/raw/253f1c1e516eb24650a91d343c56a5aeb6a0ca43/PLAT-235_paragraph_constraint_violation.patch",
+                    "See https://www.drupal.org/node/2314185": "https://www.drupal.org/files/issues/drupalbehaviorerror-2314185-15.patch"
                 }
             },
             "autoload": {
