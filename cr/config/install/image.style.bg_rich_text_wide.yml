@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: bg_rich_text_wide
+label: 'Bg rich text wide'
+effects:
+  6751623c-8913-49f2-88d1-2d0be760b882:
+    uuid: 6751623c-8913-49f2-88d1-2d0be760b882
+    id: focal_point_scale_and_crop
+    weight: 2
+    data:
+      width: '1700'
+      height: '600'

@@ -1,0 +1,94 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/sr16-spl-local.sportrelief.com\/block\/11?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/block_content\/cr_card"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/cr_card\/field_cr_card_image": [
+            {
+                "href": "http:\/\/sr16-spl-local.sportrelief.com\/file\/3354?_format=hal_json"
+            }
+        ]
+    },
+    "id": [
+        {
+            "value": "11"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "a137f6e7-0cf3-4387-a4b8-d8333e1fe9f5"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": "11"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "info": [
+        {
+            "value": "Join in, have fun and change lives",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "cr_card"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1472204296",
+            "lang": "en"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "field_cr_card_body": [
+        {
+            "value": "<h4 class=\"font--royal-blue text-align-center\">Join in, have fun and change lives<\/h4>\r\n\r\n<p class=\"text-align-center\">It\u2019s so easy to join in with Red Nose Day and make a real difference. Get your perfect fundraising idea to make raising loads of money.<\/p>\r\n\r\n<p class=\"text-align-center\"><a class=\"link link--inline-red\" href=\"#\" id=\"\" rel=\"\" target=\"\" title=\"\">Get fundraising ideas<\/a><\/p>\r\n",
+            "format": "full_html"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/cr_card\/field_cr_card_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/file\/3354?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "4d5f5306-828a-41f4-bd92-692a5bdfab6f"
+                    }
+                ],
+                "alt": "Little kid",
+                "title": "",
+                "width": "720",
+                "height": "540"
+            }
+        ]
+    }
+}

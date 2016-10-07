@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Module: cr_google_tag  .
+ */
+
+use Drupal\Core\Site\Settings;
+
+/**
+ * Implements hook_page_attachments().
+ */
+function cr_google_tag_page_attachments(array &$attachments) {
+  // @TODO I'm sure that there is a better way to implement this.
+  $env = (empty(Settings::get('environment'))) ? 'dev' : Settings::get('environment');
+  $attachments['#attached']['html_head'][] = [
+    [
+      '#type' => 'html_tag',
+      '#tag' => 'script',
+      '#value' => "var dataLayer = [{
+        'site': {
+          'category': 'content', // content, frost, shop, donate or game.
+          'subcategory': ' ', //optional
+          'environment': '" . $env . "'
+        },
+        'user': {
+          'logged': 'N'
+        }
+      }];",
+      '#attributes' => array('src' => ''),
+
+    ],
+    'cr_google_tag',
+  ];
+
+}

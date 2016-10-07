@@ -1,0 +1,5 @@
+langcode: en
+status: true
+dependencies: {  }
+id: cr_single_message_row
+label: 'Single Message Row (Deprecated)'

@@ -1,0 +1,101 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cr_cards.field_cr_cards_background
+    - field.field.paragraph.cr_cards.field_cr_cards_card_reference
+    - field.field.paragraph.cr_cards.field_cr_cards_feature_layout
+    - field.field.paragraph.cr_cards.field_cr_cards_title
+    - field.field.paragraph.cr_cards.field_cr_cards_title_hidden
+    - paragraphs.paragraphs_type.cr_cards
+  module:
+    - ds
+    - options
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
+      library: ''
+      disable_css: false
+      settings:
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - field_cr_cards_feature_layout
+        - field_cr_cards_background
+        - field_cr_cards_title
+        - field_cr_cards_title_hidden
+        - field_cr_cards_card_reference
+id: paragraph.cr_cards.default
+targetEntityType: paragraph
+bundle: cr_cards
+mode: default
+content:
+  created:
+    type: timestamp_ago
+    weight: 6
+    label: above
+    settings:
+      future_format: '@interval hence'
+      past_format: '@interval ago'
+      granularity: 2
+    third_party_settings: {  }
+  field_cr_cards_background:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+  field_cr_cards_card_reference:
+    weight: 4
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+  field_cr_cards_feature_layout:
+    weight: 0
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+  field_cr_cards_title:
+    type: string
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_cr_cards_title_hidden:
+    weight: 3
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+  social_links:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    type: author
+    weight: 7
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

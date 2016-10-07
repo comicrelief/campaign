@@ -1,0 +1,44 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.partner_list.field_background_colour
+    - field.field.paragraph.partner_list.field_partner_body
+    - field.field.paragraph.partner_list.field_partner_list
+    - paragraphs.paragraphs_type.partner_list
+  module:
+    - inline_entity_form
+    - text
+id: paragraph.partner_list.default
+targetEntityType: paragraph
+bundle: partner_list
+mode: default
+content:
+  field_background_colour:
+    type: options_select
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+  field_partner_body:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+  field_partner_list:
+    weight: 2
+    settings:
+      form_mode: default
+      override_labels: true
+      label_singular: Partner
+      label_plural: Partners
+      allow_existing: true
+      match_operator: CONTAINS
+      allow_new: false
+    third_party_settings: {  }
+    type: inline_entity_form_complex
+hidden:
+  created: true
+  status: true
+  uid: true

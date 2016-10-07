@@ -1,0 +1,81 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.partner_list.field_background_colour
+    - field.field.paragraph.partner_list.field_partner_body
+    - field.field.paragraph.partner_list.field_partner_list
+    - paragraphs.paragraphs_type.partner_list
+  module:
+    - ds
+    - options
+    - text
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
+      library: ''
+      disable_css: false
+      settings:
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - field_background_colour
+        - field_partner_body
+        - field_partner_list
+id: paragraph.partner_list.default
+targetEntityType: paragraph
+bundle: partner_list
+mode: default
+content:
+  created:
+    type: timestamp_ago
+    weight: 4
+    label: above
+    settings:
+      future_format: '@interval hence'
+      past_format: '@interval ago'
+      granularity: 2
+    third_party_settings: {  }
+  field_background_colour:
+    type: list_default
+    weight: 0
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  field_partner_body:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_partner_list:
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: logos
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+    type: entity_reference_entity_view
+  social_links:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    type: author
+    weight: 3
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

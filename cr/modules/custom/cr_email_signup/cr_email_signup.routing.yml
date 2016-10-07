@@ -1,0 +1,7 @@
+cr_email_signup.esu:
+  path: '/test/esu'
+  defaults:
+    _controller: '\Drupal\cr_email_signup\Controller\EsuController::simple'
+    _title: 'Sign Up'
+  requirements:
+    _permission: 'access content'

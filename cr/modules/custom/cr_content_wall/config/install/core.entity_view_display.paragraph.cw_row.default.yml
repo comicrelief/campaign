@@ -1,0 +1,96 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cw_row.field_cw_bg_colour
+    - field.field.paragraph.cw_row.field_cw_row_reference
+    - field.field.paragraph.cw_row.field_cw_title
+    - field.field.paragraph.cw_row.field_cw_title_hidden
+    - paragraphs.paragraphs_type.cw_row
+  module:
+    - ds
+    - options
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
+      library: ''
+      disable_css: false
+      settings:
+        wrappers:
+          ds_content: div
+        outer_wrapper: ''
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - field_cw_bg_colour
+        - field_cw_title
+        - field_cw_title_hidden
+        - field_cw_row_reference
+    fields:
+      cr_content_wall_CwRowDisplay:
+        plugin_id: cr_content_wall_CwRowDisplay
+        weight: 0
+        label: hidden
+        formatter: default
+id: paragraph.cw_row.default
+targetEntityType: paragraph
+bundle: cw_row
+mode: default
+content:
+  created:
+    type: timestamp
+    weight: 5
+    label: above
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
+  field_cw_bg_colour:
+    type: list_default
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_cw_row_reference:
+    weight: 3
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+  field_cw_title:
+    type: string
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_cw_title_hidden:
+    type: boolean
+    weight: 2
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+  social_links:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    type: author
+    weight: 6
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

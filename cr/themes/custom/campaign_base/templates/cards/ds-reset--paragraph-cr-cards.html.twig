@@ -1,0 +1,21 @@
+{% set bg_colour = field_cr_cards_background['#items'][0].value %}
+{% set layoutClass = field_cr_cards_feature_layout['#items'].value ? 'cards--feature-layout' : '' %}
+{% set title_hidden = field_cr_cards_title_hidden['#items'][0].value ? 'visuallyhidden' : '' %}
+{%
+set classes = [
+'cards',
+'paragraph',
+'contextual-region',
+layoutClass,
+bg_colour,
+]
+%}
+
+<section{{ attributes.addClass(classes) }}>
+	{% if field_cr_cards_title %}
+	<h2 class="cards__title {{title_hidden}}">{{ field_cr_cards_title }}</h2>
+	{% endif %}
+	<div class="cards__wrapper">
+	    {{ field_cr_cards_card_reference }}
+	</div>
+</section>

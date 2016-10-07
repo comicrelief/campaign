@@ -1,0 +1,21 @@
+name: CR Rich Text aragraph
+type: module
+description: Contains config for Rich Text paragraph type.
+core: 8.x
+package: Comic Relief
+dependencies:
+  - paragraphs
+  - entity_reference_revisions
+config_devel:
+# Paragraph config
+  - core.entity_form_display.paragraph.cr_rich_text_paragraph.default
+  - core.entity_view_display.paragraph.cr_rich_text_paragraph.default
+  - field.storage.paragraph.field_background
+  - field.storage.paragraph.field_bg_single_msg_bg_colour
+  - field.storage.paragraph.field_body
+  - field.storage.paragraph.field_bg_single_msg_layout
+  - paragraphs.paragraphs_type.cr_rich_text_paragraph
+  - field.field.paragraph.cr_rich_text_paragraph.field_bg_single_msg_bg_colour
+  - field.field.paragraph.cr_rich_text_paragraph.field_bg_single_msg_layout
+  - field.field.paragraph.cr_rich_text_paragraph.field_background
+  - field.field.paragraph.cr_rich_text_paragraph.field_body

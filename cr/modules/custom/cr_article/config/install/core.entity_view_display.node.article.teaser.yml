@@ -1,0 +1,47 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.article.body
+    - field.field.node.article.field_article_image
+    - field.field.node.article.field_article_intro
+    - field.field.node.article.field_article_meta_tags
+    - field.field.node.article.field_article_publish_date
+    - field.field.node.article.field_article_tags
+    - field.field.node.article.publishing_date
+    - node.type.article
+  module:
+    - panelizer
+    - responsive_image
+    - user
+third_party_settings:
+  panelizer:
+    enable: false
+    custom: false
+id: node.article.teaser
+targetEntityType: node
+bundle: article
+mode: teaser
+content:
+  field_article_image:
+    weight: 0
+    label: hidden
+    settings:
+      responsive_image_style: hero_image_full_node
+      image_link: ''
+    third_party_settings: {  }
+    type: responsive_image
+  links:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  body: true
+  field_article_intro: true
+  field_article_meta_tags: true
+  field_article_publish_date: true
+  field_article_tags: true
+  field_media: true
+  publishing_date: true
+  social_links: true

@@ -1,0 +1,108 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_index
+    - field.field.node.partner.body
+    - field.field.node.partner.field_partner_category
+    - field.field.node.partner.field_partner_image
+    - field.field.node.partner.field_partner_logo
+    - field.field.node.partner.field_partner_meta_tags
+    - field.field.node.partner.field_partner_website
+    - node.type.partner
+  module:
+    - ds
+    - link
+    - panelizer
+    - responsive_image
+    - taxonomy
+    - text
+    - user
+third_party_settings:
+  panelizer:
+    enable: false
+    custom: false
+  ds:
+    layout:
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
+      library: ''
+      disable_css: false
+      settings:
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - node_title
+        - field_partner_logo
+        - body
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          wrapper: h2
+          class: ''
+id: node.partner.search_index
+targetEntityType: node
+bundle: partner
+mode: search_index
+content:
+  body:
+    type: text_default
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_partner_category:
+    type: entity_reference_rss_category
+    weight: 10
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  field_partner_image:
+    type: responsive_image
+    weight: 14
+    label: above
+    settings:
+      responsive_image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+  field_partner_logo:
+    type: responsive_image
+    weight: 1
+    label: hidden
+    settings:
+      responsive_image_style: hero_image_full_node
+      image_link: ''
+    third_party_settings: {  }
+  field_partner_website:
+    type: link_separate
+    weight: 9
+    label: above
+    settings:
+      trim_length: 80
+      rel: ''
+      target: ''
+      url_only: false
+      url_plain: false
+    third_party_settings: {  }
+  links:
+    weight: 11
+    settings: {  }
+    third_party_settings: {  }
+  social_links:
+    weight: 12
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_partner_meta_tags: true
