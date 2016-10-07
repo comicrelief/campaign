@@ -1,16 +1,11 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\config_devel\Tests\ConfigDevelSubscriberRawTest.
- */
-
-namespace Drupal\config_devel\Tests;
+namespace Drupal\Tests\config_devel\Kernel;
 
 /**
  * Tests the automated importer for raw config objects.
  *
- * @group config
+ * @group config_devel
  */
 class ConfigDevelSubscriberRawTest extends ConfigDevelSubscriberTestBase {
 

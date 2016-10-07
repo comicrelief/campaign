@@ -47,9 +47,9 @@ class ConfigDevelAutoImportSubscriber extends ConfigDevelSubscriberBase implemen
    * @param string $original_hash
    * @return bool
    */
-  public function importOne($filename, $original_hash = '') {
+  public function importOne($filename, $original_hash = '', $contents = '') {
     $hash = '';
-    if (!$contents = @file_get_contents($filename)) {
+    if (!$contents && (!$contents = @file_get_contents($filename))) {
       return $hash;
     }
     $needs_import = TRUE;

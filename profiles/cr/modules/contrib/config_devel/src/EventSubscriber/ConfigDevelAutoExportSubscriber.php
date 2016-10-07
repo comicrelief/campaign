@@ -7,9 +7,15 @@
 
 namespace Drupal\config_devel\EventSubscriber;
 
+use Drupal\config_devel\Event\ConfigDevelEvents;
+use Drupal\config_devel\Event\ConfigDevelSaveEvent;
 use Drupal\Core\Config\Config;
+use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\Config\ConfigManagerInterface;
 use Drupal\Core\Config\FileStorage;
 use Drupal\Core\Config\InstallStorage;
+use Symfony\Component\EventDispatcher\Event;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Yaml\Exception\DumpException;
 use Drupal\Core\Config\ConfigCrudEvent;
@@ -20,6 +26,30 @@ use Drupal\Core\Config\ConfigEvents;
  * ConfigDevelAutoExportSubscriber subscriber for configuration CRUD events.
  */
 class ConfigDevelAutoExportSubscriber extends ConfigDevelSubscriberBase implements EventSubscriberInterface {
+
+  /**
+   * The event dispatcher.
+   *
+   * @var \Symfony\Component\EventDispatcher\EventDispatcherInterface
+   */
+  protected $eventDispatcher;
+
+  /**
+   * Constructs the ConfigDevelAutoExportSubscriber object.
+   *
+   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
+   *   The configuration factory.
+   * @param \Drupal\Core\Config\ConfigManagerInterface $config_manager
+   *   The configuration manager.
+   * @param \Symfony\Component\EventDispatcher\EventDispatcherInterface $event_dispatcher
+   *   The event dispatcher.
+   */
+  public function __construct(ConfigFactoryInterface $config_factory, ConfigManagerInterface $config_manager, EventDispatcherInterface $event_dispatcher) {
+    parent::__construct($config_factory, $config_manager);
+    $this->configFactory = $config_factory;
+    $this->configManager = $config_manager;
+    $this->eventDispatcher = $event_dispatcher;
+  }
 
   /**
    * The files to automatically export.
@@ -78,6 +108,13 @@ class ConfigDevelAutoExportSubscriber extends ConfigDevelSubscriberBase implemen
       if ($entity_type_id = $this->configManager->getEntityTypeIdByName($config_name)) {
         unset($data['uuid']);
       }
+
+      // Let everyone else have a change to update the exported data.
+      $event = new ConfigDevelSaveEvent($file_names, $data);
+      $this->eventDispatcher->dispatch(ConfigDevelEvents::SAVE, $event);
+      $data = $event->getData();
+      $file_names = $event->getFileNames();
+
       foreach ($file_names as $file_name) {
         try {
           file_put_contents($file_name, (new InstallStorage())->encode($data));

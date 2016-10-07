@@ -1,15 +1,9 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\config_devel\Tests\ConfigDevelAutoImportSubscriberTestBase.
- */
-
-namespace Drupal\config_devel\Tests;
+namespace Drupal\Tests\config_devel\Kernel;
 
 use Drupal\Component\Serialization\Yaml;
-use Drupal\simpletest\KernelTestBase;
-use org\bovigo\vfs\vfsStream;
+use Drupal\KernelTests\KernelTestBase;
 
 abstract class ConfigDevelSubscriberTestBase extends KernelTestBase {
 
@@ -29,22 +23,14 @@ abstract class ConfigDevelSubscriberTestBase extends KernelTestBase {
   protected $storage;
 
   /**
-   * set up test environment
-   */
-  public function setUp() {
-    vfsStream::setup('public://');
-    parent::setUp();
-  }
-
-  /**
    * Test the import subscriber.
    */
   public function testSubscribers() {
     // Without this the config exporter breaks.
     \Drupal::service('config.installer')->installDefaultConfig('module', 'config_devel');
-    $filename = vfsStream::url('public://'. static::CONFIGNAME . '.yml');
-    drupal_mkdir(vfsStream::url('public://exported'));
-    $exported_filename = vfsStream::url('public://exported/' . static::CONFIGNAME . '.yml');
+    $filename = 'public://'. static::CONFIGNAME . '.yml';
+    drupal_mkdir('public://exported');
+    $exported_filename = 'public://exported/' . static::CONFIGNAME . '.yml';
     \Drupal::configFactory()->getEditable('config_devel.settings')
       ->set('auto_import', array(array(
         'filename' => $filename,

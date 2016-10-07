@@ -1,11 +1,6 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\config_devel\ConfigDevelTestBase.
- */
-
-namespace Drupal\Tests\config_devel;
+namespace Drupal\Tests\config_devel\Unit;
 
 use org\bovigo\vfs\vfsStream;
 use Drupal\Tests\UnitTestCase;
@@ -26,11 +21,18 @@ abstract class ConfigDevelTestBase extends UnitTestCase {
   protected $configManager;
 
   /**
+   * @var \Symfony\Component\EventDispatcher\EventDispatcherInterface
+   */
+  protected $eventDispatcher;
+
+  /**
    * {@inheritdoc}
    */
   public function setUp() {
     parent::setUp();
     $this->configFactory = $this->getMock('Drupal\Core\Config\ConfigFactoryInterface');
+
+    $this->eventDispatcher = $this->getMock('Symfony\Component\EventDispatcher\EventDispatcherInterface');
 
     $this->configManager = $this->getMock('Drupal\Core\Config\ConfigManagerInterface');
     $this->configManager->expects($this->any())

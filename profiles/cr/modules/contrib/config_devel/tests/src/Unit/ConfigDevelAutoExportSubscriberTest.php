@@ -1,11 +1,6 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\config_devel\ConfigDevelAutoExportSubscriberTest.
- */
-
-namespace Drupal\Tests\config_devel;
+namespace Drupal\Tests\config_devel\Unit;
 
 use org\bovigo\vfs\vfsStream;
 use Drupal\Component\Serialization\Yaml;
@@ -43,7 +38,7 @@ class ConfigDevelAutoExportSubscriberTest extends ConfigDevelTestBase {
       vfsStream::url('public://' . $this->randomMachineName() . '.yml'),
     );
 
-    $configDevelSubscriber = new ConfigDevelAutoExportSubscriber($this->configFactory, $this->configManager);
+    $configDevelSubscriber = new ConfigDevelAutoExportSubscriber($this->configFactory, $this->configManager, $this->eventDispatcher);
     $configDevelSubscriber->writeBackConfig($config, $file_names);
 
     $data = $config_data;

@@ -1,17 +1,11 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\config_devel\Tests\ConfigDevelSubscriberEntityTest.
- */
-
-
-namespace Drupal\config_devel\Tests;
+namespace Drupal\Tests\config_devel\Kernel;
 
 /**
  * Tests the automated importer for config entities.
  *
- * @group config
+ * @group config_devel
  */
 class ConfigDevelSubscriberEntityTest extends ConfigDevelSubscriberTestBase {
 
