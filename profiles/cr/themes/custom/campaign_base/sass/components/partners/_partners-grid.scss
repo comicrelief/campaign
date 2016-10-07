@@ -81,12 +81,12 @@
     
 
       li {
-        @include span(12);
+        @include span(6);
         margin-top: gutter();
         margin-bottom: gutter();
 
         @include breakpoint($screen-md) {
-          @include span(6);
+          @include span(4);
         }
 
         @include breakpoint($screen-lg) {
