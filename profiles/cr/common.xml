@@ -114,11 +114,7 @@
           command="${drush.bin} make -y ${app.profile.dir}drupal-org-core.make.yml --no-cache"/>
   </target>
   <target name="make" description="Compile CR contrib from a make file">
-    <!-- Delete the contrib directory first so we also have deletions and not just updates. -->
-    <delete dir="${app.profile.dir}/modules/contrib" />
-    <delete dir="${app.profile.dir}/themes/custom/campaign_base/libraries" />
-    <exec checkreturn="true" logoutput="true" passthru="true"
-          command="${drush.bin} make -y ${app.profile.dir}drupal-org.make.yml --no-gitprojectinfo --no-gitinfofile --no-core --contrib-destination=${app.profile.dir}"/>
+    <echo msg="phing make has been replaced with composer. Run composer install to install packages, or composer update to update packages"/>
   </target>
   <target name="install" description="Install CR with standard configuration.">
     <exec dir="${app.dir}" logoutput="true" passthru="true" checkreturn="true"

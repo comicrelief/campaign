@@ -168,10 +168,10 @@ To login to the site, you can sign in with the creditentials, username: `admin` 
 phing login
 ```
 
-To remake all contrib modules (for example, when adding a new module), run
+To rebuild all contrib modules (for example, when adding a new module), you need to use composer and adapt `composer.json`, then run
 
 ```bash
-phing make
+composer update
 ```
 
 To list all possible Phing targets, check
