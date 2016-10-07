@@ -28,7 +28,7 @@ mysql -e "create database $DRUPAL_TI_DB"
 rm -fr sites/default/settings.php
 
 # Install the site using the given profile
-php -d sendmail_path=$(which true) ~/.composer/vendor/bin/drush.php --verbose --yes site-install install_configure_form.update_status_module='[FALSE, FALSE]' $DRUPAL_TI_MODULE_NAME --db-url="$DRUPAL_TI_DB_URL"
+php -d sendmail_path=$(which true) ~/.composer/vendor/bin/drush.php --verbose --yes site-install $DRUPAL_TI_MODULE_NAME --db-url="$DRUPAL_TI_DB_URL" install_configure_form.update_status_module='[FALSE, FALSE]'
 
 drush use $(pwd)#default
 # Render themes
