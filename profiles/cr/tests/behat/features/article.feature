@@ -34,7 +34,7 @@ Feature: Article
     Then the metatag attribute "title" should contain the value "Greg James begins his Gregathlon for Sport Relief"
     And the metatag property "og:title" should contain the value "Greg James begins his Gregathlon for Sport Relief"
     And the metatag property "og:type" should have the value "article"
-    And the metatag attribute "keywords" should have the value "Challenges"
+    And the metatag attribute "keywords" should have the value "Fundraising"
     And the metatag attribute "description" should contain the value "Greg James has set off on the first of his five triathlons for BBC Radio"
     And the metatag property "og:description" should contain the value "Greg James has set off on the first of his five triathlons for BBC Radio"
     And the metatag property "og:image" should contain the value "news/2016-02/greg_james_gregathlon_belfast_and_so_it_begins"
@@ -76,14 +76,14 @@ Feature: Article
 
   @api
   Scenario: Create news articles that are linked together via a common tag
-    Given a "tags" term with the name "Fundraising"
+    Given a "category" term with the name "Fundraising"
     When I am viewing a "article" content:
     | title       | Comic Relief raises £1bn over 30-year existence |
     | field_article_intro | Since the charity was founded 30 years ago, with more than £78m raised. |
     | body | Comic Relief founder Richard Curtis said he was "enormously proud" of the charity's achievements. |
     | field_article_image | http://dummyimage.com/400x4:3 |
     | field_youtube_url | https://youtu.be/JCUFs2qJ1bs |
-    | field_article_tags | Fundraising |
+    | field_article_category | Fundraising |
     Then I should see "Richard Curtis"
     And I should see "£1bn"
     And I should not see "£78m raised"
@@ -93,7 +93,7 @@ Feature: Article
     | field_article_intro | Audiences across the UK are in for a night of first-class entertainment.  |
     | body | A one-off Luther special will be screened, with Idris Elba starring alongside Lenny Henry, Rio Ferdinand, Denise Lewis, Louis Smith, Ian Wright and David Haye. |
     | field_article_image | http://dummyimage.com/400x4:3 |
-    | field_article_tags | Fundraising |
+    | field_article_category | Fundraising |
     Then I should see "Luther"
     And I should see "Keep up with all the news"
     And I should see "Comic Relief raises £1bn over 30-year existence"

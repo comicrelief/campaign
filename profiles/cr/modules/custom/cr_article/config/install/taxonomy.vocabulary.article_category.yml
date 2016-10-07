@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Article category'
+vid: article_category
+description: 'Use to group articles on similar topics into categories.'
+hierarchy: 0
+weight: 0

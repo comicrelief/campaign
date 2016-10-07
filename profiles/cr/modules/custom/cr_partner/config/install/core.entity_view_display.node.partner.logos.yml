@@ -5,6 +5,7 @@ dependencies:
     - core.entity_view_mode.node.logos
     - field.field.node.partner.body
     - field.field.node.partner.field_partner_category
+    - field.field.node.partner.field_partner_external
     - field.field.node.partner.field_partner_image
     - field.field.node.partner.field_partner_logo
     - field.field.node.partner.field_partner_meta_tags
@@ -51,6 +52,7 @@ content:
 hidden:
   body: true
   field_partner_category: true
+  field_partner_external: true
   field_partner_image: true
   field_partner_meta_tags: true
   field_partner_website: true
