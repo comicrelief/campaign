@@ -1,0 +1,21 @@
+{%
+set classes = [
+'partners-row',
+'paragraph',
+'contextual-region',
+field_background_colour['#items'].value,
+]
+%}
+
+<section{{ attributes.addClass(classes) }}>
+	<div class="partners-row-wrapper">
+			<div class="partners-row__body">
+	    	{{ field_partner_body }}
+			</div>
+			<div class="partners-row__logos-list">
+				<ul>
+				    {{ field_partner_list }}
+				</ul>
+			</div>
+	</div>
+</section>

@@ -1,0 +1,154 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/frequently-asked-questions?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/page"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json"
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": "1"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "65bdf725-10c0-46bf-8703-3b36cb21c746"
+        }
+    ],
+    "vid": [
+        {
+            "value": "1"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "page"
+        }
+    ],
+    "title": [
+        {
+            "value": "Frequently Asked Questions",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "e944afa0-c09b-49f8-865e-5370f1189f9d"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "e944afa0-c09b-49f8-865e-5370f1189f9d"
+                    }
+                ]
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1460471547",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1475506901",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "0"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1460471701"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<h3>General<\/h3>\r\n\r\n<h4><a id=\"what-is-sport-relief\">What is Sport Relief?<\/a><\/h4>\r\n\r\n<p>As one of the UK\u2019s biggest fundraising events, Sport Relief brings the entire nation together to get active, raise cash and change lives. The money raised by the public is spent by Comic Relief to support some of the poorest and most disadvantaged people in the UK and around the world.<\/p>\r\n\r\n<h4><a id=\"when-is-sport-relief\">When is Sport Relief?<\/a><\/h4>\r\n\r\n<p>Sport Relief is back from Friday 18th to Sunday 20th March 2016 and there are more ways than ever for you to take part, change lives and feel proud. Whether you get sponsored to enter an event at the Sainsbury\u2019s Sport Relief Games or fundraise with friends and family at home, work or school, you\u2019ll help people living incredibly tough lives, across the UK and the world\u2019s poorest communities. Find out more at <a class=\"link--inline-red\" href=\"\/\">www.sportrelief.com<\/a><\/p>\r\n\r\n<p><a> <\/a><\/p>\r\n\r\n<h4><a id=\"what-can-i-do-for-sport-relief\">What can I do for Sport Relief?<\/a><\/h4>\r\n\r\n<p>There\u2019s no better way to take part than by entering the Sainsbury\u2019s Sport Relief Games, and there are more than a thousand events up and down the country. The cash you raise in sponsorship will help to transform lives across the UK and the world\u2019s poorest communities. From November you can enter the Games online and it couldn\u2019t be simpler. <a class=\"link--inline-red\" href=\"\/register-your-interest\">Register your interest now<\/a> so that you can be one of the first to know when it does open and to make the most of some early offers!<\/p>\r\n\r\n<h4><a id=\"when-is-the-next-red-nose-day\">When is the next Red Nose Day?<\/a><\/h4>\r\n\r\n<p>Red Nose Day will be back in March 2017.<\/p>\r\n\r\n<p>&nbsp;<\/p>\r\n\r\n<h3>Communication<\/h3>\r\n\r\n<h4><a id=\"Opt-in\">Opt-in<\/a><\/h4>\r\n\r\n<p>If you\u2019d like to be kept posted, we\u2019d love you to be in on what we\u2019re up to. Your details will be kept safe and never shared with other organisations; see our <a class=\"link--inline-red\" href=\"http:\/\/www.sportrelief.com\/privacy-policy\">privacy policy<\/a>.<\/p>\r\n\r\n<p>To get exclusive news and handy fundraising bits and bobs by email, sign up at the top of this page \u2013 just click on the envelope inn the top right corner.<\/p>\r\n\r\n<h4><a id=\"Opt-out\">Opt-out<\/a><\/h4>\r\n\r\n<p>If you have already signed up to get email updates from us and would like to unsubscribe from them you can do so by clicking the \u2018unsubscribe\u2019 link at the bottom of any email you receive. Alternatively you can send us an email at <a class=\"link--inline-red\" href=\"mailto:info@sportrelief.com\">info@sportrelief.com<\/a> advising you would like to be unsubscribed from our email updates.<\/p>\r\n\r\n<p>Likewise, if you have received a fundraising information and you no longer wish to receive this by post, simply email us at <a class=\"link--inline-red\" href=\"mailto:info@sportrelief.com\">info@sportrelief.com<\/a> and let us know. We will need your name and address so that we can identify you correctly. We never send emails or direct mail unless you have signed up to receive them and we don\u2019t share your data with third parties unless obliged by law to do so.<\/p>\r\n\r\n<p>&nbsp;<\/p>\r\n",
+            "format": "full_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ],
+    "field_basic_page__display_title": [
+        {
+            "value": "Frequently Asked Questions"
+        }
+    ],
+    "field_page_meta_tags": [
+        {
+            "value": "a:0:{}"
+        }
+    ]
+}

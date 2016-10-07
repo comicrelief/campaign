@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: large_1700x450_2x
+label: 'Large 1700x450 2x'
+effects:
+  d2105d10-907a-4a4f-9631-57f5f0ea86af:
+    uuid: d2105d10-907a-4a4f-9631-57f5f0ea86af
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: '3400'
+      height: '900'

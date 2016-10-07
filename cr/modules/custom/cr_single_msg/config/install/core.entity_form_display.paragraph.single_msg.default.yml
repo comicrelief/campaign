@@ -1,0 +1,67 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.single_msg.field_single_msg_bg
+    - field.field.paragraph.single_msg.field_single_msg_body
+    - field.field.paragraph.single_msg.field_single_msg_body_bg_colour
+    - field.field.paragraph.single_msg.field_single_msg_hide_title
+    - field.field.paragraph.single_msg.field_single_msg_img
+    - field.field.paragraph.single_msg.field_single_msg_layout_variant
+    - field.field.paragraph.single_msg.field_single_msg_title
+    - image.style.large
+    - paragraphs.paragraphs_type.single_msg
+  module:
+    - image
+    - text
+id: paragraph.single_msg.default
+targetEntityType: paragraph
+bundle: single_msg
+mode: default
+content:
+  field_single_msg_bg:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_single_msg_body:
+    weight: 6
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+  field_single_msg_body_bg_colour:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_single_msg_hide_title:
+    weight: 1
+    settings:
+      display_label: false
+    third_party_settings: {  }
+    type: boolean_checkbox
+  field_single_msg_img:
+    weight: 4
+    settings:
+      preview_image_style: large
+      progress_indicator: throbber
+    third_party_settings: {  }
+    type: image_image
+  field_single_msg_layout_variant:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_single_msg_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+hidden:
+  created: true
+  status: true
+  uid: true

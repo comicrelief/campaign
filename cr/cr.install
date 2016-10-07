@@ -1,0 +1,93 @@
+<?php
+/**
+ * @file
+ * Install, update and uninstall functions for the Comic Relief installation profile.
+ */
+
+use Drupal\Core\Database\Database;
+
+/**
+ * Implements hook_install().
+ *
+ * Performs actions to set up the site for this profile.
+ *
+ * @see system_install()
+ */
+function cr_install() {
+  // Disable the user pictures on nodes.
+  \Drupal::configFactory()->getEditable('system.theme.global')->set('features.node_user_picture', FALSE)->save(TRUE);
+
+}
+
+/**
+ * Install config_readonly
+ */
+function cr_update_8001() {
+  \Drupal::service('module_installer')->install(['config_readonly']);
+}
+
+/**
+ * Install cr_cards and cr_single_msg
+ */
+function cr_update_8002() {
+  \Drupal::service('module_installer')->install(['cr_cards', 'cr_single_msg']);
+}
+
+/**
+ * Install cr_downloadables
+ */
+function cr_update_8003() {
+  \Drupal::service('module_installer')->install(['cr_downloadables']);
+}
+
+/**
+ * Install cr_navigation
+ */
+function cr_update_8004() {
+  \Drupal::service('module_installer')->install(['cr_navigation']);
+}
+
+/**
+* Remove field_youtube_url and uninstall youtube module
+*/
+function cr_update_8005() {
+  $field = Drupal\field\Entity\FieldStorageConfig::loadByName('node', 'field_youtube_url');
+  $field->delete();
+  field_purge_batch('field_youtube_url');
+  \Drupal::service('module_installer')->uninstall(['youtube']);
+}
+
+/**
+ * Install cr_user
+ */
+function cr_update_8006() {
+  \Drupal::service('module_installer')->install(['cr_user']);
+}
+
+/**
+ * Delete old config
+ */
+function cr_update_8007() {
+  \Drupal::configFactory()->getEditable('system.menu.main-navigation')->delete();
+}
+
+/**
+ * Kill crop & delete old fields.
+ */
+function cr_update_8008() {
+  $query = "DELETE FROM key_value WHERE collection='system.schema' AND name='crop'";
+  Database::getConnection()->query($query);
+
+  $config_facotry = \Drupal::configFactory();
+  $config_facotry->getEditable('field.storage.block_content.field_teaser_link')
+    ->delete();
+  $config_facotry->getEditable('field.field.block_content.teaser.field_teaser_link')
+    ->delete();
+}
+
+/**
+* Install cdn
+*/
+function cr_update_8009() {
+ \Drupal::service('module_installer')->install(['cdn']);
+}

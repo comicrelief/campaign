@@ -1,0 +1,44 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cr_card
+    - field.field.block_content.cr_card.field_cr_card_background
+    - field.field.block_content.cr_card.field_cr_card_body
+    - field.field.block_content.cr_card.field_cr_card_image
+    - image.style.large
+  module:
+    - image
+    - text
+id: block_content.cr_card.default
+targetEntityType: block_content
+bundle: cr_card
+mode: default
+content:
+  field_cr_card_background:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_cr_card_body:
+    weight: 3
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+  field_cr_card_image:
+    weight: 1
+    settings:
+      preview_image_style: large
+      progress_indicator: throbber
+    third_party_settings: {  }
+    type: image_image
+  info:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

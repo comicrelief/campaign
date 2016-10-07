@@ -1,0 +1,68 @@
+// Background Colours
+//
+// Just a few basic classes for now, to be used by row components
+//
+// Markup: background-colours.hbs
+//
+// Style guide: Background colours
+
+/* RND17 base colours for June taken from SR,
+   remove .bg--cream-grey when RND15 site goes */
+
+.bg--cream-grey {
+  background-color: $cream-grey;
+}
+
+//change default black font colour to white for these backgrounds, but allow for default black font colour for backgrounds used on top
+.bg--black,
+.bg--jasper-grey,
+.bg--dark-blue,
+.bg--royal-blue,
+.bg--red,
+.bg--purple {
+	h2, h3, h4, h5, p, .link {
+		color: $colour-white;
+	}
+	.bg--white,
+	.bg--smoke-grey,
+	.bg--light-grey,
+	.bg--gainsboro-grey,
+	.bg--green,
+	.bg--yellow,
+	.bg--pink,
+	.bg--blue {
+		h2, h3, h4, h5, p, .link {
+		color: $colour-black;
+		}
+	}
+	//default font colours can be overridden as follows
+	.bg--red {
+		.font--yellow {
+			color: $colour-yellow;
+		}
+	}
+	.bg--purple {
+		.font--pink {
+			color: $colour-pink;
+		}
+	}
+	.bg--yellow {
+		.font--red {
+			color: $colour-red;
+		}
+	}
+	.bg--pink {
+		.font--royal-blue {
+			color: $colour-royal-blue;
+		}
+	}
+	.bg--blue {
+		.font--dark-purple {
+			color: $colour-dark-purple;
+		}
+	}
+}
+
+@for $color from 1 to (length($colorList)+1) {
+  @include bg-variation(nth($colorList, $color));
+}

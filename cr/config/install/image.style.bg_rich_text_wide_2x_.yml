@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: bg_rich_text_wide_2x_
+label: 'Bg rich text wide (2x)'
+effects:
+  0523656c-4e49-4164-98c8-33fe9e4ad29c:
+    uuid: 0523656c-4e49-4164-98c8-33fe9e4ad29c
+    id: focal_point_scale_and_crop
+    weight: 2
+    data:
+      width: '3400'
+      height: '1200'

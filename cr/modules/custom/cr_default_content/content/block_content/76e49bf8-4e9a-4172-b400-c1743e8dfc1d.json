@@ -1,0 +1,108 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/block\/8?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/block_content\/teaser"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/teaser\/field_teaser_image": [
+            {
+                "href": "http:\/\/default\/file\/20?_format=hal_json"
+            }
+        ]
+    },
+    "id": [
+        {
+            "value": "8"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "76e49bf8-4e9a-4172-b400-c1743e8dfc1d"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": "8"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "info": [
+        {
+            "value": "Lindsey russell \u2018the wave runner\u2019",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "teaser"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1457523145",
+            "lang": "en"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<p>Lindsey is ready to zorb the Irish Sea. This daring challenge will need courage, powers of endurance and a sea\u2019s worth of stamina.<\/p>\r\n",
+            "format": "basic_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/teaser\/field_teaser_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/20?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "fd481592-234f-41fb-9602-2a90361bc4fb"
+                    }
+                ],
+                "alt": "Lindsey russell and her wave",
+                "title": "",
+                "width": "1170",
+                "height": "658"
+            }
+        ]
+    },
+    "field_teaser_link_address": [
+        {
+            "uri": "http:\/\/www.sportrelief.com\/whats-going-on\/blue-peter%E2%80%99s-lindsey-russell-zorb-irish-channel",
+            "title": "See more",
+            "options": []
+        }
+    ],
+    "field_teaser_title": [
+        {
+            "value": "Lindsey russell \u2018the wave runner\u2019"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.teaser
+    - field.storage.block_content.field_teaser_link_address
+id: block_content.teaser.field_teaser_link_address
+field_name: field_teaser_link_address
+entity_type: block_content
+bundle: teaser
+label: 'Link address'
+description: 'For external links enter full url ie. "http://www.comicrelief.com/", and check "open in a new tab". For internal links enter the path after the domain ie. "/fundraise/bake"'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

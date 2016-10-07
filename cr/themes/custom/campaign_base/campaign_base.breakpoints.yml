@@ -1,0 +1,21 @@
+campaign_base.small:
+  label: Small
+  mediaQuery: '(min-width: 0px)'
+  weight: 0
+  multipliers:
+   - 1x
+   - 2x
+campaign_base.medium:
+  label: Medium
+  mediaQuery: 'all and (min-width: 740px)'
+  weight: 1
+  multipliers:
+    - 1x
+    - 2x
+campaign_base.large:
+  label: Large
+  mediaQuery: 'all and (min-width: 1024px)'
+  weight: 2
+  multipliers:
+    - 1x
+    - 2x

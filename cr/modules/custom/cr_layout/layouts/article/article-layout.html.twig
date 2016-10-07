@@ -1,0 +1,42 @@
+{#
+/**
+ * @file
+ * Template for Articles layout.
+ *
+ * This template provides 4 regions layout. Header, body, footer and bottom region
+ *
+ * Variables:
+ * - $id: An optional CSS id to use for the layout.
+ * - $content: An array of content, each item in the array is keyed to one
+ *   panel of the layout. This layout supports the following sections:
+ *   - $content.header Content in the header region.
+ *   - $content.body Content in the body region.
+ *   - $content.footer Content in the footer region.
+ *   - $content.bottom Content in the footer region.
+ */
+#}
+<article class="cr-article" {% if css_id %}{{ css_id }}{% endif %}>
+  {% if content.first %}
+  <header class="cr-article__header">
+    <div class="contextual-region">
+      {{ title_suffix.contextual_links }}      
+    </div>
+    {{ content.first }}
+  </header>
+  {% endif %}
+  {% if content.second %}
+  <div class="cr-article__body">
+    {{ content.second }}
+  </div>
+  {% endif %}
+  {% if content.third %}
+  <footer class="cr-article__footer">
+    {{ content.third}}
+  </footer>
+  {% endif %}
+</article>
+{% if content.fourth %}
+<section class="bottom-region">
+  {{ content.fourth}}
+</section>
+{% endif %}

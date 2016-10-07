@@ -1,0 +1,30 @@
+default:
+  suites:
+    default:
+      contexts:
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\DrushContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - DrupalCRFeatureContext
+  extensions:
+    Behat\MinkExtension:
+      base_url: "$DRUPAL_TI_WEBSERVER_URL:$DRUPAL_TI_WEBSERVER_PORT/"
+      goutte: ~
+      selenium2: ~
+      browser_name: "$DRUPAL_TI_BEHAT_BROWSER"
+      files_path: './profiles/cr/tests/behat/files'
+    Drupal\DrupalExtension:
+      api_driver: "drupal"
+      blackbox: ~
+      drush_driver: "drush"
+      drupal:
+        drupal_root: "$DRUPAL_TI_DRUPAL_DIR"
+      drush:
+        root: "$DRUPAL_TI_DRUPAL_DIR"
+      region_map:
+        content: ".layout-content"
+        esu_standard: "#block-emailsignupblockstandard"
+        esu_workplace: ".cr-email-signup-workplace-form"
+        esu_fundraise: ".cr-email-signup-fundraise-form"
+        esu_register_interest: ".cr-email-signup-register-interest-form"

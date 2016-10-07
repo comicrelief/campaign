@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - cr_email_signup
+    - system
+  theme:
+    - campaign_base
+id: emailsignupblockregisterinterest
+theme: campaign_base
+region: content
+weight: 0
+provider: null
+plugin: cr_email_signup_block_register_interest
+settings:
+  id: cr_email_signup_block_register_interest
+  label: 'Email Sign Up block: Register Interest'
+  provider: cr_email_signup
+  label_display: visible
+  initial_message: 'ESU Register Interest: initial message'
+  first_success_message: 'ESU Register Interest: success message'
+visibility:
+  request_path:
+    id: request_path
+    pages: /test/esu
+    negate: false
+    context_mapping: {  }

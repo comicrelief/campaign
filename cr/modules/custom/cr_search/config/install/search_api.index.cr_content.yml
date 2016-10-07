@@ -1,0 +1,72 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.server.cr_database
+    - core.entity_view_mode.node.full
+  module:
+    - search_api
+    - node
+id: cr_content
+name: 'CR Content'
+description: ''
+read_only: false
+field_settings:
+  rendered_item:
+    label: 'Rendered HTML output'
+    datasource_id: null
+    property_path: rendered_item
+    type: text
+    configuration:
+      roles:
+        anonymous: anonymous
+      view_mode:
+        'entity:node':
+          article: full
+          landing: full
+          page: default
+          partner: full
+processor_settings:
+  add_url:
+    plugin_id: add_url
+    settings: {  }
+  aggregated_field:
+    plugin_id: aggregated_field
+    settings: {  }
+  ignorecase:
+    plugin_id: ignorecase
+    settings:
+      fields:
+        - rendered_item
+      weights:
+        preprocess_index: -10
+        preprocess_query: -10
+  rendered_item:
+    plugin_id: rendered_item
+    settings: {  }
+  transliteration:
+    plugin_id: transliteration
+    settings:
+      fields:
+        - rendered_item
+      weights:
+        preprocess_index: -10
+        preprocess_query: -10
+options:
+  index_directly: true
+  cron_limit: 50
+datasource_settings:
+  'entity:node':
+    plugin_id: 'entity:node'
+    settings:
+      bundles:
+        default: true
+        selected: {  }
+      languages:
+        default: true
+        selected: {  }
+tracker_settings:
+  default:
+    plugin_id: default
+    settings: {  }
+server: cr_database

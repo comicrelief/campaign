@@ -1,0 +1,337 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/sr16-spl-local.sportrelief.com\/fundraise?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/landing"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/uid": [
+            {
+                "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/0?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/revision_uid": [
+            {
+                "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_landing_image": [
+            {
+                "href": "http:\/\/sr16-spl-local.sportrelief.com\/file\/3351?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_landing_image_mobile": [
+            {
+                "href": "http:\/\/sr16-spl-local.sportrelief.com\/file\/3356?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_paragraphs": [
+            {
+                "href": ""
+            },
+            {
+                "href": ""
+            },
+            {
+                "href": ""
+            },
+            {
+                "href": ""
+            },
+            {
+                "href": ""
+            },
+            {
+                "href": ""
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": "22"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "6ebef494-de4e-44fe-be4e-745916b90722"
+        }
+    ],
+    "vid": [
+        {
+            "value": "22"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "landing"
+        }
+    ],
+    "title": [
+        {
+            "value": "Fundraise",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "10e30dff-5a0e-4b33-aeb7-89f49629de0a"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "167e2427-f14c-4ba9-a47c-d8bf5ab72041"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_landing_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/file\/3351?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "e7e6c6e2-9572-4575-bbd1-431c394ec1aa"
+                    }
+                ],
+                "lang": "en",
+                "alt": "Lenny",
+                "title": "",
+                "width": "1700",
+                "height": "600"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_landing_image_mobile": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/file\/3356?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "b4f2d90c-e31c-4c88-aea5-6a8dbccd1218"
+                    }
+                ],
+                "alt": "Lenny Mobile",
+                "title": "",
+                "width": "740",
+                "height": "663"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_paragraphs": [
+            {
+                "_links": {
+                    "self": {
+                        "href": ""
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cr_cards"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "42c6b394-be7e-42dd-a862-e29db209ca44"
+                    }
+                ],
+                "target_revision_id": "2"
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": ""
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/single_msg"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "ad4283e1-88e7-4649-961c-5c3cf8af5bc0"
+                    }
+                ],
+                "target_revision_id": "7"
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": ""
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cw_row"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "4fcdbea0-def4-406e-b7c6-f374ac212997"
+                    }
+                ],
+                "target_revision_id": "3"
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": ""
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cw_row"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "18cb32fd-e85f-4c2a-b0a4-347a705754fb"
+                    }
+                ],
+                "target_revision_id": "4"
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": ""
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cr_rich_text_paragraph"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "187a0cb2-d93b-4cfe-9063-c849300acb22"
+                    }
+                ],
+                "target_revision_id": "1"
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": ""
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/partner_list"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "c26d8de2-d149-48f6-adde-7dd1bdc07641"
+                    }
+                ],
+                "target_revision_id": "6"
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1470651741",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1472136149",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1472136149"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<h1 class=\"font--red\">Bake a massive difference<\/h1>\r\n\r\n<p class=\"font--black font--xlarge\">Cakes are tremendous. As such, any kind of cake-related fundraising always goes down a storm. Just remember to save some for yourself.<\/p>\r\n\r\n<p class=\"font--black font--xlarge\"><a class=\"btn btn--white\" href=\"http:\/\/comicrelief.com\" id=\"\" rel=\"\" target=\"_blank\" title=\"\">Find out more<\/a><\/p>\r\n",
+            "format": "full_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ],
+    "field_landing_background_colour": [
+        {
+            "value": "bg--yellow"
+        }
+    ],
+    "field_landing_copy_position_alig": [
+        {
+            "value": "promo-header__content-inner--left"
+        }
+    ],
+    "field_landing_feature_layout": [
+        {
+            "value": "0"
+        }
+    ],
+    "field_landing_meta_tags": [
+        {
+            "value": "a:0:{}"
+        }
+    ]
+}
