@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ae7aa13bb7dc5f32aa8a120b7824c911",
-    "content-hash": "7a9934c71276864526aecbc5a32ec681",
+    "hash": "b89adba23736309a7a77e018ec1cfe03",
+    "content-hash": "54f2212c5001f0a157871acbac10d7f5",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1683,61 +1683,6 @@
             }
         },
         {
-            "name": "drupal/crop",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupal.org/project/crop",
-                "reference": "8.x-1.0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/crop-8.x-1.0.zip",
-                "reference": null,
-                "shasum": "c59b10336821f0ef99f6d2770a72c400e167d979"
-            },
-            "require": {
-                "drupal/core": "*"
-            },
-            "suggest": {
-                "drupal/media_entity": "Required by drupal/crop_media_entity"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-1.0",
-                    "datestamp": "1468356239"
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Drupal Media Team",
-                    "homepage": "https://www.drupal.org/user/3260690"
-                },
-                {
-                    "name": "slashrsm",
-                    "homepage": "https://www.drupal.org/user/744628"
-                },
-                {
-                    "name": "woprrr",
-                    "homepage": "https://www.drupal.org/user/858604"
-                }
-            ],
-            "description": "Provides storage and API for image crops.",
-            "homepage": "https://www.drupal.org/project/crop",
-            "support": {
-                "source": "http://cgit.drupalcode.org/crop",
-                "issues": "https://www.drupal.org/project/issues/crop"
-            }
-        },
-        {
             "name": "drupal/ctools",
             "version": "3.0.0-alpha26",
             "source": {
@@ -2979,66 +2924,6 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/layout_plugin"
             }
-        },
-        {
-            "name": "drupal/link-link",
-            "version": "dev-1.x",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupal.org/project/link",
-                "reference": "0058c8ae3b6e61f41fd4f407b50c28a5e51688ef"
-            },
-            "require": {
-                "drupal/core": "~8.0"
-            },
-            "suggest": {
-                "drupal/core": "Required by drupal/link"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-1.x-dev",
-                    "datestamp": "1467836568"
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "diqidoq",
-                    "homepage": "https://www.drupal.org/user/1001934"
-                },
-                {
-                    "name": "dropcube",
-                    "homepage": "https://www.drupal.org/user/37031"
-                },
-                {
-                    "name": "jcfiala",
-                    "homepage": "https://www.drupal.org/user/163643"
-                },
-                {
-                    "name": "mrfelton",
-                    "homepage": "https://www.drupal.org/user/305669"
-                },
-                {
-                    "name": "sumitmadan",
-                    "homepage": "https://www.drupal.org/user/1538790"
-                },
-                {
-                    "name": "sun",
-                    "homepage": "https://www.drupal.org/user/54136"
-                }
-            ],
-            "homepage": "https://www.drupal.org/project/link",
-            "support": {
-                "source": "http://cgit.drupalcode.org/link"
-            },
-            "time": "2012-09-26 16:31:05"
         },
         {
             "name": "drupal/media_entity",

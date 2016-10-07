@@ -192,6 +192,8 @@
         }
     },
     "replace": {
-        "drupal/drupal": "*"
+        "drupal/drupal": "*",
+        "drupal/link-link": "*",
+        "drupal/crop": "*"
     }
 }
