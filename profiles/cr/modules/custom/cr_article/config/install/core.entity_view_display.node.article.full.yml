@@ -14,6 +14,7 @@ dependencies:
   module:
     - datetime
     - ds
+    - metatag
     - panelizer
     - responsive_image
     - text
@@ -123,10 +124,11 @@ third_party_settings:
       settings: {  }
     regions:
       first:
-        - field_article_image
-        - node_title
-        - node_post_date
         - social_links
+        - node_post_date
+        - field_article_category
+        - node_title
+        - field_article_image
       second:
         - body
       fourth:
@@ -134,17 +136,17 @@ third_party_settings:
     fields:
       'dynamic_block_field:node-related_news':
         plugin_id: 'dynamic_block_field:node-related_news'
-        weight: 5
+        weight: 6
         label: above
         formatter: default
       node_post_date:
         plugin_id: node_post_date
-        weight: 2
+        weight: 1
         label: hidden
         formatter: ds_post_date_short
       node_title:
         plugin_id: node_title
-        weight: 1
+        weight: 3
         label: hidden
         formatter: default
         settings:
@@ -158,12 +160,20 @@ mode: full
 content:
   body:
     type: text_default
-    weight: 4
+    weight: 5
     label: visually_hidden
     settings: {  }
     third_party_settings: {  }
+  field_article_category:
+    type: entity_reference_entity_view
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
   field_article_image:
-    weight: 0
+    weight: 4
     label: hidden
     settings:
       responsive_image_style: hero_image_full_node
@@ -172,28 +182,39 @@ content:
     type: responsive_image
   field_article_intro:
     type: text_default
-    weight: 13
+    weight: 16
     label: visually_hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_article_meta_tags:
+    type: metatag_empty_formatter
+    weight: 7
+    label: above
     settings: {  }
     third_party_settings: {  }
   field_article_publish_date:
     type: datetime_default
-    weight: 12
+    weight: 15
     label: visually_hidden
     settings:
       format_type: medium
       timezone_override: ''
     third_party_settings: {  }
   links:
-    weight: 14
+    weight: 17
     settings: {  }
     third_party_settings: {  }
+  publishing_date:
+    type: entity_reference_entity_view
+    weight: 8
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
   social_links:
-    weight: 3
+    weight: 0
     settings: {  }
     third_party_settings: {  }
 hidden:
-  field_article_category: true
-  field_article_meta_tags: true
   field_meta_tags: true
-  publishing_date: true
