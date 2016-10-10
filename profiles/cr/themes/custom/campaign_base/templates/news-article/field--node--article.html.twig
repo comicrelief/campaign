@@ -22,9 +22,10 @@
  */
 #}
 
-<span{{ attributes }}>
 {%- for item in items -%}
- 	{% if field_name == 'field_article_image' %}
+	{% if field_name == 'field_article_publish_date' %}
+       <span class ='cr-article__date'> {{item.content}}</span>	
+ 	{% elseif field_name == 'field_article_image' %}
     	<div class ='cr-article__image'> {{item.content}}</div>	
  	{% elseif field_name == 'field_video_embed'%}
     	<div class ='cr-article__video'> {{item.content}}</div>	
@@ -32,4 +33,3 @@
     	{{item.content}}
   	{% endif %} 
 {%- endfor -%} 
-</span>

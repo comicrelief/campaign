@@ -1,7 +1,0 @@
-{%
-  set field_name_class = 'cr-article__date'
-%}
-
-{% for item in items %}
-  <span {{ content_attributes.addClass(field_name_class) }}> {{ item.content }} </span>
-{% endfor %}
