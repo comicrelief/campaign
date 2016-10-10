@@ -5,10 +5,8 @@ Feature: Partner
   Scenario: Partners page is working
     Given I am on "partners"
     Then I should see the text "wonderful corporate partners"
-    And I should see the link "Find out more"
-    And I should see the link "Find out more"
-    And I should see the link "Find out more"
-    And I should see the link "Find out more"
+    And I should see the link "Find out more" # Partners with their own page
+    And I should see the link "Visit their site" # Partners without own page, links to external page
 
   @api @javascript
   Scenario: Create a new partner
