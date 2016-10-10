@@ -1,0 +1,37 @@
+.page-node-type-article{
+	background-color: $colour-smoke-grey;
+}
+.cr-article{
+	background-color: $colour-white;
+	padding: 60px 0px;
+}
+.cr-article__header {
+	overflow:visible;
+	text-align: center;
+}
+.cr-article__title {
+	margin: 30px 0px;
+	font-family: $font-medium;
+	@include font-size($h2-font-size);
+}
+.cr-article__date {
+	text-transform: uppercase;
+	font-family: $font-black;
+	@include font-size($p-font-size);
+}
+.cr-article__image, .cr-article__video {
+	margin-top: 30px;
+}
+.cr-article__body {
+	margin-top: 30px;
+	p {
+		padding: 0px 70px;
+	}
+}
+
+@include breakpoint($screen-lg) {
+	.cr-article__image, .cr-article__video {
+		width: 130%;
+		margin-left: -15%;
+	}
+}
