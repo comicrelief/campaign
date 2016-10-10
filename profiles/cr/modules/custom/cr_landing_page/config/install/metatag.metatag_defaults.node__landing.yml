@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: node__landing
+label: 'Content: Landing Page'
+tags:
+  referrer: no-referrer
+  image_src: '[node:field_landing_image_mobile]'

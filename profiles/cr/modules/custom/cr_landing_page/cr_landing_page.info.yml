@@ -30,3 +30,4 @@ config_devel:
   - field.storage.node.field_landing_image_mobile
   - field.storage.node.field_landing_meta_tags
   - pathauto.pattern.landing_page
+  - metatag.metatag_defaults.node__landing
