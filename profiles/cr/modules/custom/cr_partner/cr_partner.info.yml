@@ -46,3 +46,4 @@ config_devel:
   - views.view.partners
   - pathauto.pattern.partners
   - paragraphs.paragraphs_type.partner_list
+  - ds.field.partners_grid
