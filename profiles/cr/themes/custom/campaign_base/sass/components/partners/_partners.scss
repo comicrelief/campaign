@@ -1,11 +1,11 @@
-// Partners Grid
+// Partners
 //
-// This is the Partners Grid, shown on Partners landing page and each individual Partner page
+// Individual Partner pages, plus styles for Parter grid, featured on individual and landing page
 //
-// Markup: partners-grid.hbs
+// Markup: partners.hbs
 //
 //
-// Style guide: Partners Grid
+// Style guide: Partners
 
 /* Override global styles */
 .page-node-type-partner {
@@ -18,8 +18,6 @@
     margin: 0;
     max-width: none;
 
-    @include container;
-
     .cr-article__header {
       padding: 57px 0;
       background-color: $colour-red;
@@ -31,6 +29,11 @@
         font-size: 56px;
         line-height: 56px;
       }
+    }
+
+    .cr-article__inner-wrapper {
+      @include container;
+      @include clearfix;
     }
 
     .cr-article__body {
