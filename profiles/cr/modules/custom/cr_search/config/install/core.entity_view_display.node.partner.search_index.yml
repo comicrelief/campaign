@@ -10,7 +10,6 @@ dependencies:
     - field.field.node.partner.field_partner_meta_tags
     - field.field.node.partner.field_partner_website
     - node.type.partner
-    - responsive_image.styles.hero_image_full_node
   module:
     - ds
     - link
