@@ -24,18 +24,24 @@ third_party_settings:
     custom: false
   ds:
     layout:
-      id: article
-      path: profiles/cr/modules/custom/cr_layout/layouts/article
-      library: layout_plugin/article
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
+      library: ''
       disable_css: false
-      settings: {  }
+      settings:
+        wrappers:
+          ds_content: div
+        outer_wrapper: ''
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
     regions:
-      first:
+      ds_content:
         - node_title
-      second:
         - body
         - field_partner_website
-      fourth:
         - 'dynamic_block_field:node-partners_grid'
     fields:
       'dynamic_block_field:node-partners_grid':
