@@ -60,6 +60,7 @@ mounts:
     "/private": "shared:files/private"
     "/drush-backups": "shared:files/drush-backups"
     "/vendor": "shared:files/vendor"
+    "/profiles/cr/modules/contrib": "shared:files/cr_contrib"
     "/core": "shared:files/core"
     "/node_modules": "shared:files/node_modules"
     "/.npm": "shared:files/.npm"
