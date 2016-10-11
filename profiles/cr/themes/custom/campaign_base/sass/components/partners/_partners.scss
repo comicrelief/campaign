@@ -81,6 +81,7 @@
 
     ul {
       @include clearfix;
+      padding: 0 gutter();
     
       li {
         @include span(6);
@@ -88,10 +89,6 @@
         margin-bottom: gutter();
 
         @include breakpoint($screen-md) {
-          @include span(4);
-        }
-
-        @include breakpoint($screen-lg) {
           @include span(3);
         }
 
