@@ -57,6 +57,22 @@ $susy: (
 }
 
 // move to a component later?! prob replace gutter mixin with this
+.path-search {
+  .view-content,
+  .view-header {
+    margin: auto;
+    max-width: $max-width;
+    padding: 0 calc((4 * #{gutter()}));
+    @include breakpoint($screen-md) {
+      padding: 0 calc((2 * #{gutter()}));
+      width: span(10);
+    }
+    @include breakpoint($screen-lg) {
+      width: span(8);
+      padding: 0 calc((0.5 * #{gutter()}));
+    }
+  }
+}
 .node--type-page,
 .node--type-article {
   .node__content {  
