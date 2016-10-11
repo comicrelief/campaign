@@ -8,10 +8,12 @@ dependencies:
     - field.field.node.partner.field_partner_logo
     - field.field.node.partner.field_partner_meta_tags
     - field.field.node.partner.field_partner_website
+    - field.field.node.partner.field_partner_weight
     - node.type.partner
   module:
     - link
     - metatag
+    - options
     - panelizer
     - responsive_image
     - text
@@ -65,6 +67,12 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
+  field_partner_weight:
+    weight: 8
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
   links:
     weight: 1
     settings: {  }

@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.partner.field_partner_logo
     - field.field.node.partner.field_partner_meta_tags
     - field.field.node.partner.field_partner_website
+    - field.field.node.partner.field_partner_weight
     - image.style.thumbnail
     - node.type.partner
   module:
@@ -67,6 +68,11 @@ content:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
+  field_partner_weight:
+    weight: 34
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
   path:
     type: path
     weight: 30

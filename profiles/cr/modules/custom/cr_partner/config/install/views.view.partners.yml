@@ -228,6 +228,18 @@ display:
           entity_type: taxonomy_term
           entity_field: weight
           plugin_id: standard
+        field_partner_weight_value:
+          id: field_partner_weight_value
+          table: node__field_partner_weight
+          field: field_partner_weight_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          plugin_id: standard
       title: ''
       header: {  }
       footer: {  }
