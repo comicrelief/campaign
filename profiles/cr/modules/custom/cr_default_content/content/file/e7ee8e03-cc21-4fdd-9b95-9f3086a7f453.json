@@ -5,12 +5,7 @@
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
-        },
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "href": "http:\/\/default\/user\/1?_format=hal_json"
-            }
-        ]
+        }
     },
     "fid": [
         {
@@ -27,25 +22,6 @@
             "value": "en"
         }
     ],
-    "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "bd7f33c8-210e-4ea1-b62e-90ac729546ae"
-                    }
-                ]
-            }
-        ]
-    },
     "filename": [
         {
             "value": "blogbanner.jpg"
@@ -53,7 +29,7 @@
     ],
     "uri": [
         {
-            "value": "public:\/\/2016-10\/blogbanner.jpg"
+            "value": "public:\/\/2016-10\/blogbanner_3.jpg"
         }
     ],
     "filemime": [

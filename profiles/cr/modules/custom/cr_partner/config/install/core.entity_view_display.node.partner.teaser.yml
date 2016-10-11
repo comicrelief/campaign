@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.partner.field_partner_logo
     - field.field.node.partner.field_partner_meta_tags
     - field.field.node.partner.field_partner_website
+    - field.field.node.partner.field_partner_weight
     - node.type.partner
   module:
     - link
@@ -60,4 +61,5 @@ hidden:
   body: true
   field_partner_category: true
   field_partner_meta_tags: true
+  field_partner_weight: true
   social_links: true
