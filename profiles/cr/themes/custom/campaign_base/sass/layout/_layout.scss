@@ -57,6 +57,11 @@ $susy: (
 }
 
 // move to a component later?! prob replace gutter mixin with this
+.view-search {
+  width: 100%;
+  max-width: $max-width;
+  margin: auto;
+}
 .path-search {
   .view-content,
   .view-header {
