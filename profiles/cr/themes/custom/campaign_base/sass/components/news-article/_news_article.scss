@@ -38,6 +38,10 @@
 		color: $colour-white;
 		text-align: right;
 	}
+	.bottom-region {
+		max-width: 100%;
+		margin:0px;
+	}
 
 	@include breakpoint($screen-lg) {
 		.cr-article__image, 
