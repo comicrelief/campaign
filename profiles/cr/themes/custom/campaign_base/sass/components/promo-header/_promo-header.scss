@@ -9,9 +9,6 @@
 // Style guide: promo-header
 
 .promo-header {
-  @include breakpoint($screen-md-max, $no-query: true) {
-    min-height: 600px;
-  }
   position: relative;
 }
 .promo-header {
