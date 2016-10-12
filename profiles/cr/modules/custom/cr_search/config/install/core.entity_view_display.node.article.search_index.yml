@@ -11,7 +11,6 @@ dependencies:
     - field.field.node.article.field_article_publish_date
     - field.field.node.article.publishing_date
     - node.type.article
-    - responsive_image.styles.cw_4_3_image
   module:
     - datetime
     - ds

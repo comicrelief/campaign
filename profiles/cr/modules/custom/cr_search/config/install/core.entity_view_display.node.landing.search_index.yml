@@ -14,7 +14,6 @@ dependencies:
     - field.field.node.landing.field_svg_body_title
     - field.field.node.landing.panelizer
     - node.type.landing
-    - responsive_image.styles.cw_4_3_image
   module:
     - ds
     - entity_reference_revisions
