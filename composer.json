@@ -71,6 +71,7 @@
         "drupal/video_embed_field": "1.1",
         "drupal/view_mode": "1.*",
         "drupal/view_modes_display": "1.x-dev",
+        "drupal/cookieconsent": "^1.1",
         "phing/phing": "^2.15"
     },
     "require-dev": {
