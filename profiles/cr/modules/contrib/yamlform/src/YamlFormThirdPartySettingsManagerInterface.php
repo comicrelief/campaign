@@ -1,40 +1,35 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\YamlFormThirdPartySettingsManagerInterface.
- */
-
 namespace Drupal\yamlform;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Config\Entity\ThirdPartySettingsInterface;
 
 /**
- * Defines an interface for YAML form third party settings manager classes.
+ * Defines an interface for form third party settings manager classes.
  */
 interface YamlFormThirdPartySettingsManagerInterface extends ThirdPartySettingsInterface {
 
   /**
    * Wrapper for \Drupal\Core\Extension\ModuleHandlerInterface::alter.
    *
-   * Loads all YAML form third party settings before execute alter hooks.
+   * Loads all form third party settings before execute alter hooks.
    *
    * @see \Drupal\yamlform\YamlFormThirdPartySettingsManager::__construct
    */
   public function alter($type, &$data, &$context1 = NULL, &$context2 = NULL);
 
   /**
-   * Build links to contrib modules that support YAML form third party settings.
+   * Build links to contrib modules that support form third party settings.
    *
    * @return array
-   *   A renderable array of links to contrib modules that support YAML form
+   *   A renderable array of links to contrib modules that support form
    *   third party settings.
    */
   public function buildLinks();
 
   /**
-   * Get contrib modules that support YAML form third party settings.
+   * Get contrib modules that support form third party settings.
    *
    * @return array
    *   An associative array of links keyed by module name.

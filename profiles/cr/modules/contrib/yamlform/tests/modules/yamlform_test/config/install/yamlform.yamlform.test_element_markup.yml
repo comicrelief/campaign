@@ -1,0 +1,93 @@
+langcode: en
+status: true
+dependencies: {  }
+uid: null
+template: false
+id: test_element_markup
+title: 'Test: Element: Markup'
+description: 'Test the markup element.'
+elements: |
+  markup:
+    '#markup': '<p>This is normal markup</p>'
+  markup_form:
+    '#type': 'markup'
+    '#markup': '<p>This is only displayed on the form view.</p>'
+    '#display_on': form
+  markup_view:
+    '#type': 'markup'
+    '#markup': '<p>This is only displayed on the submission view.</p>'
+    '#display_on': view
+  markup_both:
+    '#type': 'markup'
+    '#markup': '<p>This is displayed on the both the form and submission view.</p>'
+    '#display_on': both
+settings:
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_submit_label: ''
+  form_exception_message: ''
+  form_closed_message: ''
+  form_confidential: false
+  form_confidential_message: ''
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_novalidate: false
+  form_autofocus: false
+  form_details_toggle: false
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_next_button_label: ''
+  wizard_prev_button_label: ''
+  wizard_start_label: ''
+  wizard_complete: true
+  wizard_complete_label: ''
+  preview: 1
+  preview_next_button_label: ''
+  preview_prev_button_label: ''
+  preview_message: ''
+  draft: false
+  draft_auto_save: false
+  draft_button_label: ''
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: message
+  confirmation_message: ''
+  confirmation_url: ''
+  limit_total: null
+  limit_total_message: ''
+  limit_user: null
+  limit_user_message: ''
+  entity_limit_total: null
+  entity_limit_user: null
+  results_disabled: false
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+handlers: {  }

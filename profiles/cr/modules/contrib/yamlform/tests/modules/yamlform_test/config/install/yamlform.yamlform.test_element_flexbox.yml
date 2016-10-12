@@ -1,0 +1,746 @@
+langcode: en
+status: true
+dependencies: {  }
+uid: null
+template: false
+id: test_element_flexbox
+title: 'Test: Element: Flexbox'
+description: 'Test flexbox layout.'
+elements: |
+  flexbox_captcha:
+    '#type': yamlform_flexbox
+    flex_captcha_left:
+      '#type': captcha
+      '#title': 'CAPTCHA 01'
+    flex_captcha_right:
+      '#type': captcha
+      '#title': 'CAPTCHA 02'
+  flexbox_container:
+    '#type': yamlform_flexbox
+    flex_container_left:
+      '#type': container
+      '#title': 'Container 01'
+      container_content:
+        '#markup': 'This is a Container container.'
+    flex_container_right:
+      '#type': container
+      '#title': 'Container 02'
+      container_content:
+        '#markup': 'This is a Container container.'
+  flexbox_details:
+    '#type': yamlform_flexbox
+    flex_details_left:
+      '#type': details
+      '#title': 'Details 01'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/2348851">Issue #2348851: Regression: Allow HTML tags inside detail summary</a>'
+      details_content:
+        '#markup': 'This is a Details container.'
+    flex_details_right:
+      '#type': details
+      '#title': 'Details 02'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/2348851">Issue #2348851: Regression: Allow HTML tags inside detail summary</a>'
+      details_content:
+        '#markup': 'This is a Details container.'
+  flexbox_fieldset:
+    '#type': yamlform_flexbox
+    flex_fieldset_left:
+      '#type': fieldset
+      '#title': 'Fieldset 01'
+      fieldset_content:
+        '#markup': 'This is a Fieldset container.'
+    flex_fieldset_right:
+      '#type': fieldset
+      '#title': 'Fieldset 02'
+      fieldset_content:
+        '#markup': 'This is a Fieldset container.'
+  flexbox_item:
+    '#type': yamlform_flexbox
+    flex_item_left:
+      '#type': item
+      '#title': 'Item 01'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/783438">Issue #783438: #states doesn''t work for #type item</a>'
+      '#markup': '{markup}'
+      '#field_prefix': '{field_prefix}'
+      '#field_suffix': '{field_suffix}'
+      item_content:
+        '#markup': 'This is a Item container.'
+    flex_item_right:
+      '#type': item
+      '#title': 'Item 02'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/783438">Issue #783438: #states doesn''t work for #type item</a>'
+      '#markup': '{markup}'
+      '#field_prefix': '{field_prefix}'
+      '#field_suffix': '{field_suffix}'
+      item_content:
+        '#markup': 'This is a Item container.'
+  flexbox_label:
+    '#type': yamlform_flexbox
+    flex_label_left:
+      '#type': label
+      '#title': 'Label 01'
+      label_content:
+        '#markup': 'This is a Label container.'
+    flex_label_right:
+      '#type': label
+      '#title': 'Label 02'
+      label_content:
+        '#markup': 'This is a Label container.'
+  flexbox_processed_text:
+    '#type': yamlform_flexbox
+    flex_processed_text_left:
+      '#type': processed_text
+      '#title': 'Processed text 01'
+      processed_text_content:
+        '#markup': 'This is a Processed text container.'
+    flex_processed_text_right:
+      '#type': processed_text
+      '#title': 'Processed text 02'
+      processed_text_content:
+        '#markup': 'This is a Processed text container.'
+  flexbox_table:
+    '#type': yamlform_flexbox
+    flex_table_left:
+      '#type': table
+      '#title': 'Table 01'
+      table_content:
+        '#markup': 'This is a Table container.'
+    flex_table_right:
+      '#type': table
+      '#title': 'Table 02'
+      table_content:
+        '#markup': 'This is a Table container.'
+  flexbox_yamlform_markup:
+    '#type': yamlform_flexbox
+    flex_yamlform_markup_left:
+      '#type': yamlform_markup
+      '#title': 'HTML markup 01'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/2700667">Issue #2700667: Notice: Undefined index: #type in drupal_process_states()</a>'
+      yamlform_markup_content:
+        '#markup': 'This is a HTML markup container.'
+    flex_yamlform_markup_right:
+      '#type': yamlform_markup
+      '#title': 'HTML markup 02'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/2700667">Issue #2700667: Notice: Undefined index: #type in drupal_process_states()</a>'
+      yamlform_markup_content:
+        '#markup': 'This is a HTML markup container.'
+  flexbox_checkbox:
+    '#type': yamlform_flexbox
+    flex_checkbox_left:
+      '#type': checkbox
+      '#title': 'Checkbox 01'
+    flex_checkbox_right:
+      '#type': checkbox
+      '#title': 'Checkbox 02'
+  flexbox_checkboxes:
+    '#type': yamlform_flexbox
+    flex_checkboxes_left:
+      '#type': checkboxes
+      '#title': 'Checkboxes 01'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+    flex_checkboxes_right:
+      '#type': checkboxes
+      '#title': 'Checkboxes 02'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+  flexbox_color:
+    '#type': yamlform_flexbox
+    flex_color_left:
+      '#type': color
+      '#title': 'Color 01'
+    flex_color_right:
+      '#type': color
+      '#title': 'Color 02'
+  flexbox_date:
+    '#type': yamlform_flexbox
+    flex_date_left:
+      '#type': date
+      '#title': 'Date 01'
+    flex_date_right:
+      '#type': date
+      '#title': 'Date 02'
+  flexbox_datelist:
+    '#type': yamlform_flexbox
+    flex_datelist_left:
+      '#type': datelist
+      '#title': 'Date list 01'
+    flex_datelist_right:
+      '#type': datelist
+      '#title': 'Date list 02'
+  flexbox_datetime:
+    '#type': yamlform_flexbox
+    flex_datetime_left:
+      '#type': datetime
+      '#title': 'Date/time 01'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/2419131">Issue #2419131: #states attribute does not work on #type datetime</a>'
+    flex_datetime_right:
+      '#type': datetime
+      '#title': 'Date/time 02'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/2419131">Issue #2419131: #states attribute does not work on #type datetime</a>'
+  flexbox_email:
+    '#type': yamlform_flexbox
+    flex_email_left:
+      '#type': email
+      '#title': 'Email 01'
+    flex_email_right:
+      '#type': email
+      '#title': 'Email 02'
+  flexbox_entity_autocomplete:
+    '#type': yamlform_flexbox
+    flex_entity_autocomplete_left:
+      '#type': entity_autocomplete
+      '#title': 'Entity autocomplete 01'
+      '#target_type': user
+      '#selection_handler': 'default:user'
+      '#selection_settings':
+        include_anonymous: true
+    flex_entity_autocomplete_right:
+      '#type': entity_autocomplete
+      '#title': 'Entity autocomplete 02'
+      '#target_type': user
+      '#selection_handler': 'default:user'
+      '#selection_settings':
+        include_anonymous: true
+  flexbox_language_select:
+    '#type': yamlform_flexbox
+    flex_language_select_left:
+      '#type': language_select
+      '#title': 'Language select 01'
+      '#languages': 3
+    flex_language_select_right:
+      '#type': language_select
+      '#title': 'Language select 02'
+      '#languages': 3
+  flexbox_machine_name:
+    '#type': yamlform_flexbox
+    flex_machine_name_left:
+      '#type': machine_name
+      '#title': 'Machine name 01'
+    flex_machine_name_right:
+      '#type': machine_name
+      '#title': 'Machine name 02'
+  flexbox_managed_file:
+    '#type': yamlform_flexbox
+    flex_managed_file_left:
+      '#type': managed_file
+      '#title': 'Managed file 01'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/2705471">Issue #2705471: Form states managed file fields</a>'
+    flex_managed_file_right:
+      '#type': managed_file
+      '#title': 'Managed file 02'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/2705471">Issue #2705471: Form states managed file fields</a>'
+  flexbox_number:
+    '#type': yamlform_flexbox
+    flex_number_left:
+      '#type': number
+      '#title': 'Number 01'
+      '#min': 0
+      '#max': 10
+      '#step': 1
+    flex_number_right:
+      '#type': number
+      '#title': 'Number 02'
+      '#min': 0
+      '#max': 10
+      '#step': 1
+  flexbox_password:
+    '#type': yamlform_flexbox
+    flex_password_left:
+      '#type': password
+      '#title': 'Password 01'
+    flex_password_right:
+      '#type': password
+      '#title': 'Password 02'
+  flexbox_password_confirm:
+    '#type': yamlform_flexbox
+    flex_password_confirm_left:
+      '#type': password_confirm
+      '#title': 'Password confirm 01'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/1427838">Issue #1427838: password and password_confirm children do not pick up #states or #attributes</a>'
+    flex_password_confirm_right:
+      '#type': password_confirm
+      '#title': 'Password confirm 02'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/1427838">Issue #1427838: password and password_confirm children do not pick up #states or #attributes</a>'
+  flexbox_radios:
+    '#type': yamlform_flexbox
+    flex_radios_left:
+      '#type': radios
+      '#title': 'Radios 01'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/2731991">Issue #2731991: Setting required on radios marks all options required</a><br/><a href="https://www.drupal.org/node/994360">Issue #994360: #states cannot disable/enable radios and checkboxes</a>'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+    flex_radios_right:
+      '#type': radios
+      '#title': 'Radios 02'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/2731991">Issue #2731991: Setting required on radios marks all options required</a><br/><a href="https://www.drupal.org/node/994360">Issue #994360: #states cannot disable/enable radios and checkboxes</a>'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+  flexbox_range:
+    '#type': yamlform_flexbox
+    flex_range_left:
+      '#type': range
+      '#title': 'Range 01'
+      '#min': 0
+      '#max': 100
+      '#step': 1
+      '#range__output': true
+      '#range__output_prefix': $
+      '#range__output_suffix': '.00'
+    flex_range_right:
+      '#type': range
+      '#title': 'Range 02'
+      '#min': 0
+      '#max': 100
+      '#step': 1
+      '#range__output': true
+      '#range__output_prefix': $
+      '#range__output_suffix': '.00'
+  flexbox_search:
+    '#type': yamlform_flexbox
+    flex_search_left:
+      '#type': search
+      '#title': 'Search 01'
+    flex_search_right:
+      '#type': search
+      '#title': 'Search 02'
+  flexbox_select:
+    '#type': yamlform_flexbox
+    flex_select_left:
+      '#type': select
+      '#title': 'Select 01'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/1426646">Issue #1426646: "-Select-" option is lost when form elements uses ''#states''</a><br/><a href="https://www.drupal.org/node/1149078">Issue #1149078: States API doesn''t work with multiple select fields</a><br/><a href="https://www.drupal.org/node/2791741">Issue #2791741: FAPI states: fields aren''t hidden initally when depending on multi-value selection</a>'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+    flex_select_right:
+      '#type': select
+      '#title': 'Select 02'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/1426646">Issue #1426646: "-Select-" option is lost when form elements uses ''#states''</a><br/><a href="https://www.drupal.org/node/1149078">Issue #1149078: States API doesn''t work with multiple select fields</a><br/><a href="https://www.drupal.org/node/2791741">Issue #2791741: FAPI states: fields aren''t hidden initally when depending on multi-value selection</a>'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+  flexbox_tableselect:
+    '#type': yamlform_flexbox
+    flex_tableselect_left:
+      '#type': tableselect
+      '#title': 'Table select 01'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+    flex_tableselect_right:
+      '#type': tableselect
+      '#title': 'Table select 02'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+  flexbox_tel:
+    '#type': yamlform_flexbox
+    flex_tel_left:
+      '#type': tel
+      '#title': 'Telephone 01'
+    flex_tel_right:
+      '#type': tel
+      '#title': 'Telephone 02'
+  flexbox_textarea:
+    '#type': yamlform_flexbox
+    flex_textarea_left:
+      '#type': textarea
+      '#title': 'Textarea 01'
+    flex_textarea_right:
+      '#type': textarea
+      '#title': 'Textarea 02'
+  flexbox_textfield:
+    '#type': yamlform_flexbox
+    flex_textfield_left:
+      '#type': textfield
+      '#title': 'Text field 01'
+    flex_textfield_right:
+      '#type': textfield
+      '#title': 'Text field 02'
+  flexbox_text_format:
+    '#type': yamlform_flexbox
+    flex_text_format_left:
+      '#type': text_format
+      '#title': 'Text format 01'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/997826">Issue #997826: #states doesn''t work correctly with type text_format</a><br/><a href="https://www.drupal.org/node/2625128">Issue #2625128: Text format selection stays visible when using editor and a hidden form state</a>'
+    flex_text_format_right:
+      '#type': text_format
+      '#title': 'Text format 02'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/997826">Issue #997826: #states doesn''t work correctly with type text_format</a><br/><a href="https://www.drupal.org/node/2625128">Issue #2625128: Text format selection stays visible when using editor and a hidden form state</a>'
+  flexbox_url:
+    '#type': yamlform_flexbox
+    flex_url_left:
+      '#type': url
+      '#title': 'URL 01'
+    flex_url_right:
+      '#type': url
+      '#title': 'URL 02'
+  flexbox_value:
+    '#type': yamlform_flexbox
+    flex_value_left:
+      '#type': value
+      '#title': 'Value 01'
+    flex_value_right:
+      '#type': value
+      '#title': 'Value 02'
+  flexbox_yamlform_address:
+    '#type': yamlform_flexbox
+    flex_yamlform_address_left:
+      '#type': yamlform_address
+      '#title': 'Address 01'
+    flex_yamlform_address_right:
+      '#type': yamlform_address
+      '#title': 'Address 02'
+  flexbox_yamlform_autocomplete:
+    '#type': yamlform_flexbox
+    flex_yamlform_autocomplete_left:
+      '#type': yamlform_autocomplete
+      '#title': 'Autocomplete 01'
+    flex_yamlform_autocomplete_right:
+      '#type': yamlform_autocomplete
+      '#title': 'Autocomplete 02'
+  flexbox_yamlform_checkboxes_other:
+    '#type': yamlform_flexbox
+    flex_yamlform_checkboxes_other_left:
+      '#type': yamlform_checkboxes_other
+      '#title': 'Checkboxes other 01'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+    flex_yamlform_checkboxes_other_right:
+      '#type': yamlform_checkboxes_other
+      '#title': 'Checkboxes other 02'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+  flexbox_yamlform_codemirror:
+    '#type': yamlform_flexbox
+    flex_yamlform_codemirror_left:
+      '#type': yamlform_codemirror
+      '#title': 'CodeMirror 01'
+      '#mode': yaml
+    flex_yamlform_codemirror_right:
+      '#type': yamlform_codemirror
+      '#title': 'CodeMirror 02'
+      '#mode': yaml
+  flexbox_yamlform_contact:
+    '#type': yamlform_flexbox
+    flex_yamlform_contact_left:
+      '#type': yamlform_contact
+      '#title': 'Contact 01'
+    flex_yamlform_contact_right:
+      '#type': yamlform_contact
+      '#title': 'Contact 02'
+  flexbox_yamlform_creditcard:
+    '#type': yamlform_flexbox
+    flex_yamlform_creditcard_left:
+      '#type': yamlform_creditcard
+      '#title': 'Credit card 01'
+    flex_yamlform_creditcard_right:
+      '#type': yamlform_creditcard
+      '#title': 'Credit card 02'
+  flexbox_yamlform_creditcard_number:
+    '#type': yamlform_flexbox
+    flex_yamlform_creditcard_number_left:
+      '#type': yamlform_creditcard_number
+      '#title': 'Credit card number 01'
+    flex_yamlform_creditcard_number_right:
+      '#type': yamlform_creditcard_number
+      '#title': 'Credit card number 02'
+  flexbox_yamlform_element:
+    '#type': yamlform_flexbox
+    flex_yamlform_element_left:
+      '#type': yamlform_element
+      '#title': 'Generic element 01'
+    flex_yamlform_element_right:
+      '#type': yamlform_element
+      '#title': 'Generic element 02'
+  flexbox_yamlform_email_confirm:
+    '#type': yamlform_flexbox
+    flex_yamlform_email_confirm_left:
+      '#type': yamlform_email_confirm
+      '#title': 'Email confirm 01'
+    flex_yamlform_email_confirm_right:
+      '#type': yamlform_email_confirm
+      '#title': 'Email confirm 02'
+  flexbox_yamlform_email_multiple:
+    '#type': yamlform_flexbox
+    flex_yamlform_email_multiple_left:
+      '#type': yamlform_email_multiple
+      '#title': 'Email multiple 01'
+    flex_yamlform_email_multiple_right:
+      '#type': yamlform_email_multiple
+      '#title': 'Email multiple 02'
+  flexbox_yamlform_entity_checkboxes:
+    '#type': yamlform_flexbox
+    flex_yamlform_entity_checkboxes_left:
+      '#type': yamlform_entity_checkboxes
+      '#title': 'Entity checkboxes 01'
+      '#target_type': user
+      '#selection_handler': 'default:user'
+      '#selection_settings':
+        include_anonymous: true
+    flex_yamlform_entity_checkboxes_right:
+      '#type': yamlform_entity_checkboxes
+      '#title': 'Entity checkboxes 02'
+      '#target_type': user
+      '#selection_handler': 'default:user'
+      '#selection_settings':
+        include_anonymous: true
+  flexbox_yamlform_entity_radios:
+    '#type': yamlform_flexbox
+    flex_yamlform_entity_radios_left:
+      '#type': yamlform_entity_radios
+      '#title': 'Entity radios 01'
+      '#target_type': user
+      '#selection_handler': 'default:user'
+      '#selection_settings':
+        include_anonymous: true
+    flex_yamlform_entity_radios_right:
+      '#type': yamlform_entity_radios
+      '#title': 'Entity radios 02'
+      '#target_type': user
+      '#selection_handler': 'default:user'
+      '#selection_settings':
+        include_anonymous: true
+  flexbox_yamlform_entity_select:
+    '#type': yamlform_flexbox
+    flex_yamlform_entity_select_left:
+      '#type': yamlform_entity_select
+      '#title': 'Entity select 01'
+      '#target_type': user
+      '#selection_handler': 'default:user'
+      '#selection_settings':
+        include_anonymous: true
+    flex_yamlform_entity_select_right:
+      '#type': yamlform_entity_select
+      '#title': 'Entity select 02'
+      '#target_type': user
+      '#selection_handler': 'default:user'
+      '#selection_settings':
+        include_anonymous: true
+  flexbox_yamlform_likert:
+    '#type': yamlform_flexbox
+    flex_yamlform_likert_left:
+      '#type': yamlform_likert
+      '#title': 'Likert 01'
+      '#questions':
+        q1: 'Please answer question 1?'
+        q2: 'How about now answering question 2?'
+        q3: 'Finally, here is question 3?'
+      '#answers':
+        1: 1
+        2: 2
+        3: 3
+        4: 4
+        5: 5
+    flex_yamlform_likert_right:
+      '#type': yamlform_likert
+      '#title': 'Likert 02'
+      '#questions':
+        q1: 'Please answer question 1?'
+        q2: 'How about now answering question 2?'
+        q3: 'Finally, here is question 3?'
+      '#answers':
+        1: 1
+        2: 2
+        3: 3
+        4: 4
+        5: 5
+  flexbox_yamlform_location:
+    '#type': yamlform_flexbox
+    flex_yamlform_location_left:
+      '#type': yamlform_location
+      '#title': 'Location 01'
+    flex_yamlform_location_right:
+      '#type': yamlform_location
+      '#title': 'Location 02'
+  flexbox_yamlform_name:
+    '#type': yamlform_flexbox
+    flex_yamlform_name_left:
+      '#type': yamlform_name
+      '#title': 'Name 01'
+    flex_yamlform_name_right:
+      '#type': yamlform_name
+      '#title': 'Name 02'
+  flexbox_yamlform_radios_other:
+    '#type': yamlform_flexbox
+    flex_yamlform_radios_other_left:
+      '#type': yamlform_radios_other
+      '#title': 'Radios other 01'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+    flex_yamlform_radios_other_right:
+      '#type': yamlform_radios_other
+      '#title': 'Radios other 02'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+  flexbox_yamlform_rating:
+    '#type': yamlform_flexbox
+    flex_yamlform_rating_left:
+      '#type': yamlform_rating
+      '#title': 'Rating 01'
+    flex_yamlform_rating_right:
+      '#type': yamlform_rating
+      '#title': 'Rating 02'
+  flexbox_yamlform_select_other:
+    '#type': yamlform_flexbox
+    flex_yamlform_select_other_left:
+      '#type': yamlform_select_other
+      '#title': 'Select other 01'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+    flex_yamlform_select_other_right:
+      '#type': yamlform_select_other
+      '#title': 'Select other 02'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+  flexbox_yamlform_signature:
+    '#type': yamlform_flexbox
+    flex_yamlform_signature_left:
+      '#type': yamlform_signature
+      '#title': 'Signature 01'
+    flex_yamlform_signature_right:
+      '#type': yamlform_signature
+      '#title': 'Signature 02'
+  flexbox_yamlform_tableselect_sort:
+    '#type': yamlform_flexbox
+    flex_yamlform_tableselect_sort_left:
+      '#type': yamlform_tableselect_sort
+      '#title': 'Tableselect sort 01'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+    flex_yamlform_tableselect_sort_right:
+      '#type': yamlform_tableselect_sort
+      '#title': 'Tableselect sort 02'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+  flexbox_yamlform_toggle:
+    '#type': yamlform_flexbox
+    flex_yamlform_toggle_left:
+      '#type': yamlform_toggle
+      '#title': 'Toggle 01'
+    flex_yamlform_toggle_right:
+      '#type': yamlform_toggle
+      '#title': 'Toggle 02'
+  flexbox_properites:
+    '#type': flexbox
+    properties_number:
+      '#type': number
+      '#title': currency
+      '#description': 'A description'
+      '#field_prefix': $
+      '#field_suffix': '.00'
+    properties_textfield:
+      '#type': textfield
+      '#title': textfield
+      '#description': 'A description'
+  flexbox_toggle:
+    '#type': flexbox
+    '#align_items': flex-end
+    toggle:
+      '#type': toggle
+      '#title': toggle
+    toggle_textfield:
+      '#type': textfield
+      '#title': textfield
+      '#flex': 5
+    toggle_rating:
+      '#type': rating
+      '#title': rating
+settings:
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_submit_label: ''
+  form_exception_message: ''
+  form_closed_message: ''
+  form_confidential: false
+  form_confidential_message: ''
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_novalidate: false
+  form_autofocus: false
+  form_details_toggle: false
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_next_button_label: ''
+  wizard_prev_button_label: ''
+  wizard_start_label: ''
+  wizard_complete: true
+  wizard_complete_label: ''
+  preview: 0
+  preview_next_button_label: ''
+  preview_prev_button_label: ''
+  preview_message: ''
+  draft: false
+  draft_auto_save: false
+  draft_button_label: ''
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: page
+  confirmation_message: ''
+  confirmation_url: ''
+  limit_total: null
+  limit_total_message: ''
+  limit_user: null
+  limit_user_message: ''
+  entity_limit_total: null
+  entity_limit_user: null
+  results_disabled: false
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+handlers: {  }

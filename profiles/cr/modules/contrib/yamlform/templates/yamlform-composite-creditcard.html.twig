@@ -1,0 +1,44 @@
+{#
+/**
+ * @file
+ * Default theme implementation of a creditcard composite form element.
+ *
+ * Available variables:
+ * - content: The creditcard form element to be output.
+ * - flexbox: Determines if Flexbox layout should be applied to the composite
+ *   element.
+ *
+ * @see template_preprocess_yamlform_creditcard()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% if flexbox %}
+
+  {{  content.warning }}
+
+  {% if content.name %}
+    <div class="yamlform-flexbox">
+      <div class="yamlform-flex yamlform-flex--1"><div class="yamlform-flex--container">{{ content.name }}</div></div>
+    </div>
+  {% endif %}
+
+  <div class="yamlform-flexbox">
+    {% if content.type %}
+      <div class="yamlform-flex yamlform-flex--1"><div class="yamlform-flex--container">{{ content.type }}</div></div>
+    {% endif %}
+    <div class="yamlform-flex yamlform-flex--1"><div class="yamlform-flex--container">{{ content.number }}</div></div>
+  </div>
+
+  <div class="yamlform-flexbox">
+    <div class="yamlform-flex yamlform-flex--1"><div class="yamlform-flex--container">
+      {{ content.expiration }}
+      {{ content.expiration_month }}
+      {{ content.expiration_year }}
+    </div></div>
+  </div>
+
+{% else %}
+  {{ content }}
+{% endif %}

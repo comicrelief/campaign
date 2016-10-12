@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\Plugin\YamlFormElement\PasswordConfirm.
- */
-
 namespace Drupal\yamlform\Plugin\YamlFormElement;
 
 use Drupal\Core\Form\FormStateInterface;
@@ -15,7 +10,9 @@ use Drupal\yamlform\YamlFormSubmissionInterface;
  *
  * @YamlFormElement(
  *   id = "password_confirm",
- *   label = @Translation("Password confirm")
+ *   label = @Translation("Password confirm"),
+ *   category = @Translation("Advanced elements"),
+ *   states_wrapper = TRUE,
  * )
  */
 class PasswordConfirm extends Password {
@@ -24,14 +21,25 @@ class PasswordConfirm extends Password {
    * {@inheritdoc}
    */
   public function prepare(array &$element, YamlFormSubmissionInterface $yamlform_submission) {
+    parent::prepare($element, $yamlform_submission);
     $element['#element_validate'][] = [get_class($this), 'validate'];
   }
 
   /**
    * {@inheritdoc}
    */
-  public function setDefaultValue(array &$element, $default_value) {
-    if (is_string($element['#default_value'])) {
+  protected function getElementSelectorInputsOptions(array $element) {
+    return [
+      'pass1' => $this->getAdminLabel($element) . ' 1 [' . $this->t('Password') . ']',
+      'pass2' => $this->getAdminLabel($element) . ' 2 [' . $this->t('Password') . ']',
+    ];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setDefaultValue(array &$element) {
+    if (isset($element['#default_value'])) {
       $element['#default_value'] = [
         'pass1' => $element['#default_value'],
         'pass2' => $element['#default_value'],

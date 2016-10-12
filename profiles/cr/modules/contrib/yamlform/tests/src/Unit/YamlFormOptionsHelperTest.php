@@ -1,23 +1,66 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\yamlform\Unit\YamlFormOptionsHelperTest.
- */
-
 namespace Drupal\Tests\yamlform\Unit;
 
 use Drupal\yamlform\Utility\YamlFormOptionsHelper;
 use Drupal\Tests\UnitTestCase;
 
 /**
- * Tests YAML form options utility.
+ * Tests form options utility.
  *
  * @group YamlFormUnit
  *
  * @coversDefaultClass \Drupal\yamlform\Utility\YamlFormOptionsHelper
  */
 class YamlFormOptionsHelperTest extends UnitTestCase {
+
+  /**
+   * Tests YamlFormOptionsHelper::hasOption().
+   *
+   * @param string $value
+   *   The value to run through YamlFormOptionsHelper::hasOption().
+   * @param array $options
+   *   The array to run through YamlFormOptionsHelper::hasOption().
+   * @param string $expected
+   *   The expected result from calling the function.
+   *
+   * @see YamlFormOptionsHelperl::hasOption()
+   *
+   * @dataProvider providerHasOption
+   */
+  public function testHasOption($value, array $options, $expected) {
+    $result = YamlFormOptionsHelper::hasOption($value, $options);
+    $this->assertEquals($expected, $result);
+  }
+
+  /**
+   * Data provider for testHasOption().
+   *
+   * @see testHasOption()
+   */
+  public function providerHasOption() {
+    $tests[] = [
+      'value',
+      ['value' => 'text'],
+      TRUE,
+    ];
+    $tests[] = [
+      'value',
+      [],
+      FALSE,
+    ];
+    $tests[] = [
+      3,
+      [1 => 'One', 2 => 'Two', 'optgroup' => [3 => 'Three']],
+      TRUE,
+    ];
+    $tests[] = [
+      'optgroup',
+      [1 => 'One', 2 => 'Two', 'optgroup' => [3 => 'Three']],
+      FALSE,
+    ];
+    return $tests;
+  }
 
   /**
    * Tests YamlFormOptionsHelper::getOptionsText().

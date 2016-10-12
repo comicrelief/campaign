@@ -1,0 +1,173 @@
+langcode: en
+status: true
+dependencies: {  }
+uid: null
+template: false
+id: test_element_entity_reference
+title: 'Test: Element: Entity reference'
+description: 'Test entity reference elements.'
+elements: |
+  entity_autocomplete:
+    '#type': details
+    '#title': 'Entity autocomplete'
+    '#open': true
+    entity_autocomplete_user_default:
+      '#type': entity_autocomplete
+      '#title': 'entity_autocomplete (user)'
+      '#default_value': '1'
+      '#target_type': user
+      '#selection_handler': default:user
+      '#selection_settings':
+        include_anonymous: true
+    entity_autocomplete_user_tags:
+      '#type': entity_autocomplete
+      '#title': 'entity_autocomplete (user tags)'
+      '#tags': true
+      '#target_type': user
+      '#selection_handler': default:user
+      '#selection_settings':
+        include_anonymous: true
+      '#default_value':
+        - 0
+        - 1
+    entity_autocomplete_node_default:
+      '#type': entity_autocomplete
+      '#title': 'Entity autocomplete (node)'
+      '#target_type': node
+      '#selection_handler': 'default:node'
+      '#selection_settings':
+        target_bundles:
+          page: page
+        sort:
+          field: title
+          direction: ASC
+    entity_autocomplete_node_view:
+      '#type': entity_autocomplete
+      '#title': 'entity_autocomplete (node view)'
+      '#target_type': node
+      '#selection_handler': views
+      '#selection_settings':
+        view:
+          view_name: yamlform_test_entity_reference
+          display_name: entity_reference
+          arguments: ''
+      '#default_value': 1
+  yamlform_entity_select:
+    '#type': details
+    '#title': 'Entity select'
+    '#open': true
+    yamlform_entity_select_user_default:
+      '#type': yamlform_entity_select
+      '#title': 'entity_select (user)'
+      '#default_value': '1'
+      '#target_type': user
+      '#selection_handler': default:user
+      '#selection_settings':
+        include_anonymous: true
+    yamlform_entity_select_user_multiple:
+      '#type': yamlform_entity_select
+      '#title': 'entity_select (user multiple)'
+      '#multiple': true
+      '#target_type': user
+      '#selection_handler': default:user
+      '#selection_settings':
+        include_anonymous: true
+      '#default_value':
+        - 0
+        - 1
+  yamlform_entity_radios:
+    '#type': details
+    '#title': 'Entity radios'
+    '#open': true
+    yamlform_entity_radios_user_default:
+      '#type': yamlform_entity_radios
+      '#title': 'entity_radio (user)'
+      '#default_value': '1'
+      '#target_type': user
+      '#selection_handler': default:user
+      '#selection_settings':
+        include_anonymous: true
+  yamlform_entity_checkboxes:
+    '#type': details
+    '#title': 'Entity checkboxes'
+    '#open': true
+    yamlform_entity_checkboxes_user_default:
+      '#type': yamlform_entity_checkboxes
+      '#title': 'entity_checkboxes (user)'
+      '#target_type': user
+      '#selection_handler': default:user
+      '#selection_settings':
+        include_anonymous: true
+      '#default_value':
+        - 0
+        - 1
+settings:
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_submit_label: ''
+  form_exception_message: ''
+  form_closed_message: ''
+  form_confidential: false
+  form_confidential_message: ''
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_novalidate: false
+  form_autofocus: false
+  form_details_toggle: false
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_next_button_label: ''
+  wizard_prev_button_label: ''
+  wizard_start_label: ''
+  wizard_complete: true
+  wizard_complete_label: ''
+  preview: 1
+  preview_next_button_label: ''
+  preview_prev_button_label: ''
+  preview_message: ''
+  draft: false
+  draft_auto_save: false
+  draft_button_label: ''
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: page
+  confirmation_message: ''
+  confirmation_url: ''
+  limit_total: null
+  limit_total_message: ''
+  limit_user: null
+  limit_user_message: ''
+  entity_limit_total: null
+  entity_limit_user: null
+  results_disabled: false
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+handlers: {  }

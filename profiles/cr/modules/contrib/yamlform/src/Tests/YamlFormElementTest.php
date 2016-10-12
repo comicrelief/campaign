@@ -1,54 +1,61 @@
 <?php
 
-/**
- * @file
- * Definition of Drupal\yamlform\test\YamlFormSubmissionFormTest.
- */
-
 namespace Drupal\yamlform\Tests;
 
-use Drupal\yamlform\Entity\YamlForm;
+use Drupal\simpletest\WebTestBase;
 
 /**
- * Tests for YAML form element plugin.
+ * Tests for form elements.
  *
  * @group YamlForm
  */
-class YamlFormElementTest extends YamlFormTestBase {
+class YamlFormElementTest extends WebTestBase {
 
   /**
-   * Tests YAML form element plugin.
+   * Modules to enable.
+   *
+   * @var array
    */
-  public function testYamlFormElement() {
-    $this->drupalLogin($this->adminFormUser);
+  public static $modules = ['yamlform', 'yamlform_test'];
 
-    // Get the YAML form test element.
-    $yamlform_test_element = YamlForm::load('test_element_test');
+  /**
+   * Test element settings.
+   */
+  public function testElements() {
 
-    // Check prepare and setDefaultValue().
-    $this->drupalGet('yamlform/test_element_test');
-    $this->assertRaw('Invoked: Drupal\yamlform_test\Plugin\YamlFormElement\YamlFormTest:prepare');
-    $this->assertRaw('Invoked: Drupal\yamlform_test\Plugin\YamlFormElement\YamlFormTest:setDefaultValue');
+    /**************************************************************************/
+    // Date
+    /**************************************************************************/
 
-    // Check save.
-    $sid = $this->postSubmission($yamlform_test_element);
-    $this->assertRaw('Invoked: Drupal\yamlform_test\Plugin\YamlFormElement\YamlFormTest:prepare');
-    $this->assertRaw('Invoked: Drupal\yamlform_test\Plugin\YamlFormElement\YamlFormTest:setDefaultValue');
-    $this->assertRaw('Invoked: \Drupal\yamlform_test\Plugin\YamlFormElement\YamlFormTest::validate');
-    $this->assertRaw('Invoked: Drupal\yamlform_test\Plugin\YamlFormElement\YamlFormTest:save');
+    // Check date #max validation.
+    $edit = ['date_range' => '2010-08-18'];
+    $this->drupalPostForm('yamlform/test_element_dates', $edit, t('Submit'));
+    $this->assertRaw('<em class="placeholder">date range (min/max)</em> must be on or before <em class="placeholder">2009-12-31</em>.');
 
-    // Check HTML.
-    $this->drupalGet('/admin/structure/yamlform/results/manage/' . $sid);
-    $this->assertRaw('Invoked: Drupal\yamlform_test\Plugin\YamlFormElement\YamlFormTest:formatHtml');
-    $this->assertRaw('Invoked: Drupal\yamlform_test\Plugin\YamlFormElement\YamlFormTest:formatText');
+    // Check date #mix validation.
+    $edit = ['date_range' => '2006-08-18'];
+    $this->drupalPostForm('yamlform/test_element_dates', $edit, t('Submit'));
+    $this->assertRaw('<em class="placeholder">date range (min/max)</em> must be on or after <em class="placeholder">2009-01-01</em>.');
 
-    // Check plain text.
-    $this->drupalGet('/admin/structure/yamlform/results/manage/' . $sid . '/text');
-    $this->assertRaw('Invoked: Drupal\yamlform_test\Plugin\YamlFormElement\YamlFormTest:formatText');
+    /**************************************************************************/
+    // Allowed tags
+    /**************************************************************************/
 
-    // Check delete.
-    $this->drupalPostForm('/admin/structure/yamlform/results/manage/' . $sid . '/delete', [], t('Delete'));
-    $this->assertRaw('Invoked: Drupal\yamlform_test\Plugin\YamlFormElement\YamlFormTest:postDelete');
+    // Check <b> tags is allowed.
+    $this->drupalGet('yamlform/test_element_allowed_tags');
+    $this->assertRaw('Hello <b>...Goodbye</b>');
+
+    // Check custom <ignored> <tag> is allowed and <b> tag removed.
+    \Drupal::configFactory()->getEditable('yamlform.settings')
+      ->set('elements.allowed_tags', 'ignored tag')
+      ->save();
+    $this->drupalGet('yamlform/test_element_allowed_tags');
+    $this->assertRaw('Hello <ignored></tag>...Goodbye');
+
+    // Restore admin tags.
+    \Drupal::configFactory()->getEditable('yamlform.settings')
+      ->set('elements.allowed_tags', 'admin')
+      ->save();
   }
 
 }

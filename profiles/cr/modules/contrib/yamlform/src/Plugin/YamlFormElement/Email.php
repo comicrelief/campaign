@@ -1,26 +1,40 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\Plugin\YamlFormElement\Email.
- */
-
 namespace Drupal\yamlform\Plugin\YamlFormElement;
+
+use Drupal\yamlform\YamlFormElementBase;
 
 /**
  * Provides a 'email' element.
  *
  * @YamlFormElement(
  *   id = "email",
- *   label = @Translation("Email")
+ *   api = "https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Render!Element!Email.php/class/Email",
+ *   label = @Translation("Email"),
+ *   category = @Translation("Advanced elements"),
  * )
  */
-class Email extends TextFieldBase {
+class Email extends YamlFormElementBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getDefaultProperties() {
+    return parent::getDefaultProperties() + [
+      'size' => '',
+      'maxlength' => '',
+      'placeholder' => '',
+    ];
+  }
 
   /**
    * {@inheritdoc}
    */
   public function formatHtml(array &$element, $value, array $options = []) {
+    if (empty($value)) {
+      return '';
+    }
+
     $format = $this->getFormat($element);
     switch ($format) {
       case 'link':

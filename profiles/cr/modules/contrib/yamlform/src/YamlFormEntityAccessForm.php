@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\yamlform\YamlFormEntityAccessForm.
- */
-
 namespace Drupal\yamlform;
 
 use Drupal\Core\Entity\EntityForm;
@@ -12,7 +7,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\user\Entity\User;
 
 /**
- * Base for controller for YAML form access.
+ * Base for controller for form access.
  */
 class YamlFormEntityAccessForm extends EntityForm {
 
@@ -25,14 +20,14 @@ class YamlFormEntityAccessForm extends EntityForm {
     $access = $yamlform->getAccessRules();
     $roles = array_map('\Drupal\Component\Utility\Html::escape', user_role_names());
     $permissions = [
-      'create' => $this->t('Create YAML form submissions'),
-      'view_any' => $this->t('View all YAML form submissions'),
-      'update_any' => $this->t('Update all YAML form submissions'),
-      'delete_any' => $this->t('Delete all YAML form submissions'),
-      'purge_any' => $this->t('Purge all YAML form submissions'),
-      'view_own' => $this->t('View own YAML form submissions'),
-      'update_own' => $this->t('Update own YAML form submissions'),
-      'delete_own' => $this->t('Delete own YAML form submissions'),
+      'create' => $this->t('Create form submissions'),
+      'view_any' => $this->t('View all form submissions'),
+      'update_any' => $this->t('Update all form submissions'),
+      'delete_any' => $this->t('Delete all form submissions'),
+      'purge_any' => $this->t('Purge all form submissions'),
+      'view_own' => $this->t('View own form submissions'),
+      'update_own' => $this->t('Update own form submissions'),
+      'delete_own' => $this->t('Delete own form submissions'),
     ];
     $form['access']['#tree'] = TRUE;
     foreach ($permissions as $name => $title) {
@@ -101,8 +96,8 @@ class YamlFormEntityAccessForm extends EntityForm {
     $yamlform->setAccessRules($access);
     $yamlform->save();
 
-    $this->logger('yamlform')->notice('YAML form access @label saved.', ['@label' => $yamlform->label()]);
-    drupal_set_message($this->t('YAML form access %label saved.', ['%label' => $yamlform->label()]));
+    $this->logger('yamlform')->notice('Form access @label saved.', ['@label' => $yamlform->label()]);
+    drupal_set_message($this->t('Form access %label saved.', ['%label' => $yamlform->label()]));
   }
 
 }

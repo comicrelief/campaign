@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\YamlFormHandlerManager.
- */
-
 namespace Drupal\yamlform;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
@@ -15,7 +10,7 @@ use Drupal\Core\Render\Element;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 
 /**
- * YAML form third party settings manager.
+ * Form third party settings manager.
  */
 class YamlFormThirdPartySettingsManager implements YamlFormThirdPartySettingsManagerInterface {
 
@@ -43,7 +38,7 @@ class YamlFormThirdPartySettingsManager implements YamlFormThirdPartySettingsMan
   protected $pathValidator;
 
   /**
-   * The YAML form module's default configuration settings.
+   * The YAML Form module's default configuration settings.
    *
    * @var \Drupal\Core\Config\Config
    */
@@ -71,10 +66,9 @@ class YamlFormThirdPartySettingsManager implements YamlFormThirdPartySettingsMan
   /**
    * Load all third party settings includes.
    *
-   * Looks for yamlform include files in:
-   * - {module}/{module}.yamlform.inc
-   * - {module}/yamlform/{module}.yamlform.inc
-   * - yamlform/yamlform.{module}.inc
+   * @see {module}/{module}.yamlform.inc
+   * @see {module}/yamlform/{module}.yamlform.inc
+   * @see yamlform/yamlform.{module}.inc
    */
   protected function loadIncludes() {
     $modules = array_keys($this->moduleHandler->getModuleList());
@@ -135,7 +129,7 @@ class YamlFormThirdPartySettingsManager implements YamlFormThirdPartySettingsMan
       $form['actions']['#access'] = FALSE;
 
       // Display a warning.
-      drupal_set_message($this->t('There are no third party settings available. Please install a contributed module that integrates with the YAML form module.'), 'warning');
+      drupal_set_message($this->t('There are no third party settings available. Please install a contributed module that integrates with the YAML Form module.'), 'warning');
 
       // Link to supported modules.
       $form['supported'] = [
@@ -145,7 +139,7 @@ class YamlFormThirdPartySettingsManager implements YamlFormThirdPartySettingsMan
           '#suffix' => '</h3>',
         ],
         'description' => [
-          '#markup' => $this->t('The below modules either provide YAML form integration or the YAML form module will automatically integrate with them when they are installed.'),
+          '#markup' => $this->t('The below modules either provide form integration or the YAML Form module will automatically integrate with them when they are installed.'),
           '#prefix' => '<p>',
           '#suffix' => '</p>',
         ],

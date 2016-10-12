@@ -1,0 +1,14 @@
+/**
+ * @file
+ * Location element styles.
+ */
+
+/**
+ * Remove power by Google.
+ *
+ * @see http://stackoverflow.com/questions/12327651/how-to-remove-the-powered-by-google-logo-in-the-google-map-autocomplete-dropdo
+ */
+.pac-container:after {
+  background-image: none !important;
+  height: 0px;
+}

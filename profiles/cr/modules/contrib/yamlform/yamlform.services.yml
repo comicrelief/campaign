@@ -1,12 +1,40 @@
 services:
+  yamlform.route_subscriber:
+    class: Drupal\yamlform\Routing\YamlFormRouteSubscriber
+    tags:
+      - { name: event_subscriber }
+
   yamlform.breadcrumb:
     class: Drupal\yamlform\BreadCrumb\YamlFormBreadcrumbBuilder
     tags:
       - { name: breadcrumb_builder, priority: 1002 }
 
+  yamlform.elements_validator:
+    class: Drupal\yamlform\YamlFormEntityElementsValidator
+
+  yamlform.request:
+    class: Drupal\yamlform\YamlFormRequest
+    arguments: ['@entity.manager', '@request_stack', '@current_route_match']
+
+  yamlform.message_manager:
+    class: Drupal\yamlform\YamlFormMessageManager
+    arguments: ['@config.factory', '@entity.manager', '@token', '@logger.channel.yamlform', '@yamlform.request']
+
+  yamlform_submission.generate:
+    class: Drupal\yamlform\YamlFormSubmissionGenerate
+    arguments: ['@config.factory', '@token', '@plugin.manager.yamlform.element']
+
+  yamlform_submission.exporter:
+    class: Drupal\yamlform\YamlFormSubmissionExporter
+    arguments: ['@config.factory', '@entity.manager', '@entity.query', '@plugin.manager.yamlform.element']
+
   yamlform.third_party_settings_manager:
     class: Drupal\yamlform\YamlFormThirdPartySettingsManager
     arguments: ['@config.factory', '@module_handler', '@path.validator']
+
+  yamlform.email_provider:
+    class: Drupal\yamlform\YamlFormEmailProvider
+    arguments: ['@config.factory', '@module_handler']
 
   plugin.manager.yamlform.element:
     class: Drupal\yamlform\YamlFormElementManager
@@ -16,13 +44,7 @@ services:
     class: Drupal\yamlform\YamlFormHandlerManager
     parent: default_plugin_manager
 
-  yamlform.inputs_validator:
-    class: Drupal\yamlform\YamlFormEntityInputsValidator
-
-  yamlform_submission.generate:
-    class: Drupal\yamlform\YamlFormSubmissionGenerate
-    arguments: ['@config.factory', '@token', '@plugin.manager.yamlform.element']
-
-  yamlform_submission.exporter:
-    class: Drupal\yamlform\YamlFormSubmissionExporter
-    arguments: ['@config.factory', '@entity.manager', '@entity.query', '@plugin.manager.yamlform.element']
+  logger.channel.yamlform:
+    class: Drupal\Core\Logger\LoggerChannel
+    factory: logger.factory:get
+    arguments: ['yamlform']

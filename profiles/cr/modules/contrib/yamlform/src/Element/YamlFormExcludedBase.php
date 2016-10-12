@@ -1,20 +1,15 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\Element\YamlFormExcludedBase.
- */
-
 namespace Drupal\yamlform\Element;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element\FormElement;
 
 /**
- * Provides a base form element for YAML form excluded inputs and columns.
+ * Provides a base form element for form excluded elements and columns.
  *
  * This element is just intended to capture all the business logic around
- * selecting excluded YAML form inputs which is used by the
+ * selecting excluded form elements which is used by the
  * EmailYamlFormHandler and the YamlFormResultsExportForm forms.
  */
 abstract class YamlFormExcludedBase extends FormElement {
@@ -35,7 +30,7 @@ abstract class YamlFormExcludedBase extends FormElement {
   }
 
   /**
-   * Processes a YAML form inputs form element.
+   * Processes a form elements form element.
    */
   public static function processYamlFormExcluded(&$element, FormStateInterface $form_state, &$complete_form) {
     $options = static::getYamlFormExcludedOptions($element);
@@ -49,7 +44,7 @@ abstract class YamlFormExcludedBase extends FormElement {
       '#header' => static::getYamlFormExcludedHeader(),
       '#options' => $options,
       '#js_select' => TRUE,
-      '#empty' => t('No inputs are available.'),
+      '#empty' => t('No elements are available.'),
       '#default_value' => array_combine($default_value, $default_value),
     ];
 
@@ -60,26 +55,25 @@ abstract class YamlFormExcludedBase extends FormElement {
       '#description',
       '#description_display',
       '#ajax',
+      '#states',
     ];
     $element['tableselect'] += array_intersect_key($element, array_combine($properties, $properties));
     return $element;
   }
 
   /**
-   * Validates a checkboxes other element.
+   * Validates a tablelselect element.
    */
   public static function validateYamlFormExcluded(array &$element, FormStateInterface $form_state, &$complete_form) {
     $value = array_filter($element['tableselect']['#value']);
 
-    // Converted value to excluded inputs.
+    // Converted value to excluded elements.
     $options = array_keys($element['tableselect']['#options']);
     $excluded = array_diff($options, $value);
 
     // Unset tableselect and set the element's value to excluded.
     $form_state->setValueForElement($element['tableselect'], NULL);
     $form_state->setValueForElement($element, array_combine($excluded, $excluded));
-
-    return $element;
   }
 
   /**
@@ -87,27 +81,27 @@ abstract class YamlFormExcludedBase extends FormElement {
    *
    * @param array $element
    *   An associative array containing the properties and children of the
-   *   generic input element.
+   *   generic element element.
    *
    * @return array
    *   An array of options containing title, name, and type of items for a
    *   tableselect element.
    */
-  public static function getYamlFormExcludedOptions(array &$element) {
+  public static function getYamlFormExcludedOptions(array $element) {
     /** @var \Drupal\yamlform\YamlFormInterface $yamlform */
     $yamlform = $element['#yamlform'];
 
     $options = [];
-    $inputs = $yamlform->getFlattenedInputs();
-    foreach ($inputs as $key => $input) {
-      if (empty($input['#type']) || in_array($input['#type'], ['container', 'details', 'fieldset', 'item', 'label'])) {
+    $elements = $yamlform->getElementsInitializedAndFlattened();
+    foreach ($elements as $key => $element) {
+      if (empty($element['#type']) || in_array($element['#type'], ['container', 'details', 'fieldset', 'item', 'label'])) {
         continue;
       }
 
       $options[$key] = [
-        ['title' => isset($input['#title']) ? $input['#title'] : $key],
+        ['title' => $element['#admin_title'] ?:$element['#title'] ?: $key],
         ['name' => $key],
-        ['type' => isset($input['#type']) ? $input['#type'] : ''],
+        ['type' => isset($element['#type']) ? $element['#type'] : ''],
       ];
     }
     return $options;

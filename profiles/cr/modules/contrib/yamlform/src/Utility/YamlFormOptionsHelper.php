@@ -1,16 +1,36 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\Utility\YamlFormOptionsHelper.
- */
-
 namespace Drupal\yamlform\Utility;
 
 /**
- * Helper class YAML form options based methods.
+ * Helper class form options based methods.
  */
 class YamlFormOptionsHelper {
+
+  /**
+   * Determine if the options has a specified value..
+   *
+   * @param string $value
+   *   An value to look for in the options.
+   * @param array $options
+   *   An associative array of options.
+   *
+   * @return bool
+   *   TRUE if the options has a specified value.
+   */
+  public static function hasOption($value, array $options) {
+    foreach ($options as $option_value => $option_text) {
+      if (is_array($option_text)) {
+        if ($has_value = self::hasOption($value, $option_text)) {
+          return $has_value;
+        }
+      }
+      elseif ($value == $option_value) {
+        return TRUE;
+      }
+    }
+    return FALSE;
+  }
 
   /**
    * Replace associative array of option values with option text.
@@ -43,13 +63,13 @@ class YamlFormOptionsHelper {
    */
   public static function getOptionText($value, array $options) {
     foreach ($options as $option_value => $option_text) {
-      if ($value == $option_value) {
-        return $option_text;
-      }
-      elseif (is_array($option_text)) {
+      if (is_array($option_text)) {
         if ($text = self::getOptionText($value, $option_text)) {
           return $text;
         }
+      }
+      elseif ($value == $option_value) {
+        return $option_text;
       }
     }
     return $value;
@@ -78,7 +98,7 @@ class YamlFormOptionsHelper {
 
     // Pad left on range.
     if ($pad_length) {
-      $range = array_map(function($item) use ($pad_length, $pad_str) {
+      $range = array_map(function ($item) use ($pad_length, $pad_str) {
         return str_pad($item, $pad_length, $pad_str, STR_PAD_LEFT);
       }, $range);
     }

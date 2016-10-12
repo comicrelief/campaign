@@ -24,17 +24,17 @@ define('YAMLFORM_HONEYPOT_DISABLED_ALL', 0);
 define('YAMLFORM_HONEYPOT_ENABLED_ALL', 1);
 
 /**
- * Flag to indicate that a honeypot setting is disabled for all YAML forms.
+ * Flag to indicate that a honeypot setting is disabled for all forms.
  */
 define('YAMLFORM_HONEYPOT_DISABLED_YAMLFORM', 2);
 
 /**
- * Flag to indicate that a honeypot setting is enabled for all YAML forms.
+ * Flag to indicate that a honeypot setting is enabled for all forms.
  */
 define('YAMLFORM_HONEYPOT_ENABLED_YAMLFORM', 3);
 
 /**
- * Alter YAML form third party settings forms to include Honeypot configuration.
+ * Alter form third party settings forms to include Honeypot configuration.
  *
  * @param array $form
  *   An associative array containing the structure of the form.
@@ -65,7 +65,7 @@ function _yamlform_honeypot_form(&$form, FormStateInterface $form_state, $honeyp
     '#type' => 'details',
     '#title' => t('Honeypot'),
     '#open' => TRUE,
-    '#description' => t('Mitigates spam form submissions using the <a href=":href_honeypot">honeypot</a> method.', $t_args),
+    '#description' => t('Mitigate SPAM form submissions using the <a href=":href_honeypot">honeypot</a> method.', $t_args),
   ];
   $form['third_party_settings']['honeypot']['honeypot'] = [
     '#type' => 'checkbox',
@@ -82,7 +82,7 @@ function _yamlform_honeypot_form(&$form, FormStateInterface $form_state, $honeyp
     }
     elseif ($honeypot_state == YAMLFORM_HONEYPOT_ENABLED_YAMLFORM) {
       $form['third_party_settings']['honeypot']['honeypot']['#default_value'] = 1;
-      $form['third_party_settings']['honeypot']['honeypot']['#description'] = t('<a href=":href_yamlform">Honeypot protection</a> is enabled for all YAML forms.', $t_args);
+      $form['third_party_settings']['honeypot']['honeypot']['#description'] = t('<a href=":href_yamlform">Honeypot protection</a> is enabled for all forms.', $t_args);
     }
   }
 
@@ -102,7 +102,7 @@ function _yamlform_honeypot_form(&$form, FormStateInterface $form_state, $honeyp
     }
     elseif ($time_restriction_state == YAMLFORM_HONEYPOT_ENABLED_YAMLFORM) {
       $form['third_party_settings']['honeypot']['time_restriction']['#default_value'] = 1;
-      $form['third_party_settings']['honeypot']['time_restriction']['#description'] = t('<a href=":href_yamlform">Time limit</a> is enabled for all YAML forms.', $t_args);
+      $form['third_party_settings']['honeypot']['time_restriction']['#description'] = t('<a href=":href_yamlform">Time limit</a> is enabled for all forms.', $t_args);
     }
   }
 
@@ -144,7 +144,7 @@ function honeypot_form_yamlform_admin_third_party_settings_form_alter(&$form, Fo
     $honeypot_state,
     $time_restriction,
     $time_restriction_state,
-    t('all YAML forms')
+    t('all forms')
   );
 }
 

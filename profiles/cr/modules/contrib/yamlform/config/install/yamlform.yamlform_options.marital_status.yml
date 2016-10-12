@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies: {  }
+id: marital_status
+label: 'Marital status'
+options: |
+  Single: Single
+  Married: Married
+  Divorced: Divorced
+  Widowed: Widowed

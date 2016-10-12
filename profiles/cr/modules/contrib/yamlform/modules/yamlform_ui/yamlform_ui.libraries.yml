@@ -1,0 +1,5 @@
+yamlform_ui:
+  version: 1.x
+  css:
+    theme:
+      css/yamlform_ui.module.css: {}

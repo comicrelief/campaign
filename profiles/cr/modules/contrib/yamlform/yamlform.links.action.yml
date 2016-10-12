@@ -1,9 +1,3 @@
-entity.yamlform.add_form:
-  route_name: entity.yamlform.add_form
-  title: 'Add form'
-  appears_on:
-    - entity.yamlform.collection
-
 entity.yamlform_options.add_form:
   route_name: entity.yamlform_options.add_form
   title: 'Add options'

@@ -1,0 +1,59 @@
+/**
+ * @file
+ * States element styles.
+ */
+
+.yamlform-states-table {
+  max-width: 800px;
+}
+
+.yamlform-states-table td {
+  white-space: nowrap;
+}
+
+.yamlform-states-table--state {
+  border-top: 2px solid #a6a6a6;
+}
+
+.yamlform-states-table--state:first-child {
+  border-top: inherit;
+}
+
+.yamlform-states-table--state td select {
+  width: inherit;
+  max-width: inherit;
+}
+
+.yamlform-states-table--state td:first-child select,
+.yamlform-states-table--condition select,
+.yamlform-states-table--condition input[type="text"] {
+  width: 100%;
+  max-width: 100%;
+}
+
+.yamlform-states-table .image-button {
+  margin: 0;
+}
+
+.yamlform-states-table th:last-child,
+.yamlform-states-table td:last-child {
+  padding: 0 4px;
+  vertical-align: middle;
+  text-align: center;
+  width: 64px;
+}
+
+/**
+ * Hide AJAX throbber.
+ */
+.form-type-yamlform-element-states .ajax-progress-throbber {
+  display: none;
+}
+
+/**
+ * Suppress table drag warnings.
+ */
+.yamlform-states-table .tabledrag-changed-warning,
+.yamlform-states-table .tabledrag-changed {
+  display: none !important;
+}

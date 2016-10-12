@@ -1,20 +1,15 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\YamlFormElementManager.
- */
-
 namespace Drupal\yamlform;
 
 use Drupal\Component\Plugin\FallbackPluginManagerInterface;
 use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
+use Drupal\Core\Plugin\CategorizingPluginManagerTrait;
 use Drupal\Core\Plugin\DefaultPluginManager;
-use Drupal\yamlform\Plugin\YamlFormElement\ContainerBase;
 
 /**
- * Manages YAML form element plugins.
+ * Provides a plugin manager for form element plugins.
  *
  * @see hook_yamlform_element_info_alter()
  * @see \Drupal\yamlform\Annotation\YamlFormElement
@@ -22,10 +17,12 @@ use Drupal\yamlform\Plugin\YamlFormElement\ContainerBase;
  * @see \Drupal\yamlform\YamlFormElementBase
  * @see plugin_api
  */
-class YamlFormElementManager extends DefaultPluginManager implements FallbackPluginManagerInterface {
+class YamlFormElementManager extends DefaultPluginManager implements FallbackPluginManagerInterface, YamlFormElementManagerInterface {
+
+  use CategorizingPluginManagerTrait;
 
   /**
-   * List of already instantiated YAML form element plugins.
+   * List of already instantiated form element plugins.
    *
    * @var array
    */
@@ -53,29 +50,32 @@ class YamlFormElementManager extends DefaultPluginManager implements FallbackPlu
    * {@inheritdoc}
    */
   public function getFallbackPluginId($plugin_id, array $configuration = []) {
-    return 'element';
+    return 'yamlform_element';
   }
 
   /**
    * {@inheritdoc}
    */
   public function createInstance($plugin_id, array $configuration = []) {
-    // Cache a single reusable instance for each YAML form element plugin.
-    // Not sure this the right way to limit plugins to single instances.
-    if (!isset($this->instances[$plugin_id])) {
-      $this->instances[$plugin_id] = parent::createInstance($plugin_id, $configuration);
+    // If configuration is empty create a single reusable instance for each
+    // Form element plugin.
+    if (empty($configuration)) {
+      if (!isset($this->instances[$plugin_id])) {
+        $this->instances[$plugin_id] = parent::createInstance($plugin_id, $configuration);
+      }
+      return $this->instances[$plugin_id];
     }
-    return $this->instances[$plugin_id];
+    else {
+      return parent::createInstance($plugin_id, $configuration);
+    }
   }
 
   /**
-   * Get all available YAML form element plugin instances.
-   *
-   * @return \Drupal\yamlform\YamlFormElementInterface[]
-   *   An array of all available YAML form element plugin instances.
+   * {@inheritdoc}
    */
   public function getInstances() {
     $plugin_definitions = $this->getDefinitions();
+
     // If all the plugin definitions are initialize returned the cached
     // instances.
     if (count($plugin_definitions) == count($this->instances)) {
@@ -91,32 +91,15 @@ class YamlFormElementManager extends DefaultPluginManager implements FallbackPlu
   }
 
   /**
-   * Invoke a method for specific FAPI element.
-   *
-   * @param string $method
-   *   The method name.
-   * @param array $element
-   *   An associative array containing an element with a #type property.
-   * @param mixed $context1
-   *   (optional) An additional variable that is passed by reference.
-   * @param mixed $context2
-   *   (optional) An additional variable that is passed by reference. If more
-   *   context needs to be provided to implementations, then this should be an
-   *   associative array as described above.
-   *
-   * @return mixed|null
-   *   Return result of the invoked method.  NULL will be returned if the
-   *   element and/or method name does not exist.
+   * {@inheritdoc}
    */
   public function invokeMethod($method, array &$element, &$context1 = NULL, &$context2 = NULL) {
-    // Make sure element has #type.
+    // Make sure element has a #type.
     if (!isset($element['#type'])) {
       return NULL;
     }
 
-    // See if element's $type has a corresponding plugin id else use the
-    // fallback plugin id.
-    $plugin_id = $this->hasDefinition($element['#type']) ? $element['#type'] : $this->getFallbackPluginId($element['#type']);
+    $plugin_id = $this->getElementPluginId($element);
 
     /** @var \Drupal\yamlform\YamlFormElementInterface $yamlform_element */
     $yamlform_element = $this->createInstance($plugin_id);
@@ -124,21 +107,41 @@ class YamlFormElementManager extends DefaultPluginManager implements FallbackPlu
   }
 
   /**
-   * Is an element a container.
-   *
-   * @param array $element
-   *   A element.
-   *
-   * @return bool
-   *   TRUE is the element is a container.
+   * {@inheritdoc}
    */
-  public function isContainer(array $element) {
-    if (!$element['#type']) {
-      return FALSE;
+  public function getElementPluginId(array $element) {
+    if (isset($element['#type'])) {
+      if ($this->hasDefinition($element['#type'])) {
+        return $element['#type'];
+      }
+      elseif ($this->hasDefinition('yamlform_' . $element['#type'])) {
+        return 'yamlform_' . $element['#type'];
+      }
+    }
+    elseif (isset($element['#markup'])) {
+      return 'yamlform_markup';
     }
 
-    $element_handler = $this->createInstance($element['#type']);
-    return ($element_handler  && ($element_handler instanceof ContainerBase)) ? TRUE : FALSE;
+    return $this->getFallbackPluginId(NULL);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getElementInstance(array $element) {
+    $plugin_id = $this->getElementPluginId($element);
+    return $this->createInstance($plugin_id, $element);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getSortedDefinitions(array $definitions = NULL, $label_key = 'label') {
+    $definitions = isset($definitions) ? $definitions : $this->getDefinitions();
+    uasort($definitions, function ($a, $b) use ($label_key) {
+      return strnatcasecmp($a['category'] . '-' . $a[$label_key], $b['category'] . '-' . $b[$label_key]);
+    });
+    return $definitions;
   }
 
 }

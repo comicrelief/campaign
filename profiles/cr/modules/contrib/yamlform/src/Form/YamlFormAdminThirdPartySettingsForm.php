@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\Form\YamlFormAdminThirdPartySettingsForm.
- */
-
 namespace Drupal\yamlform\Form;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
@@ -14,7 +9,7 @@ use Drupal\yamlform\YamlFormThirdPartySettingsManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Configure YAML form third party settings for this site.
+ * Configure form third party settings for this site.
  */
 class YamlFormAdminThirdPartySettingsForm extends ConfigFormBase {
 
@@ -26,7 +21,7 @@ class YamlFormAdminThirdPartySettingsForm extends ConfigFormBase {
   }
 
   /**
-   * The YAML form third party settings manager.
+   * The form third party settings manager.
    *
    * @var \Drupal\yamlform\YamlFormThirdPartySettingsManagerInterface
    */
@@ -38,7 +33,7 @@ class YamlFormAdminThirdPartySettingsForm extends ConfigFormBase {
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    *   The factory for configuration objects.
    * @param \Drupal\yamlform\YamlFormThirdPartySettingsManagerInterface $third_party_settings_manager
-   *   The YAML form third party settings manager.
+   *   The form third party settings manager.
    */
   public function __construct(ConfigFactoryInterface $config_factory, YamlFormThirdPartySettingsManagerInterface $third_party_settings_manager) {
     parent::__construct($config_factory);

@@ -1,0 +1,7 @@
+entity.yamlform.export_form:
+  path: '/admin/structure/yamlform/manage/{yamlform}/export'
+  defaults:
+    _entity_form: 'yamlform.export'
+    _title_callback: '\Drupal\yamlform\Controller\YamlFormController::title'
+  requirements:
+    _permission: 'access devel information'

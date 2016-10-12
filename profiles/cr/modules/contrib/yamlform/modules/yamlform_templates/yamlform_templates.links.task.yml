@@ -1,0 +1,5 @@
+entity.yamlform.templates:
+  title: 'Templates'
+  route_name: entity.yamlform.templates
+  base_route: entity.yamlform.collection
+  weight: -9

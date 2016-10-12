@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\Plugin\YamlFormElement\PasswordConfirm.
- */
-
 namespace Drupal\yamlform\Plugin\YamlFormElement;
 
 use Drupal\yamlform\YamlFormElementBase;
@@ -14,7 +9,9 @@ use Drupal\yamlform\YamlFormElementBase;
  *
  * @YamlFormElement(
  *   id = "password",
- *   label = @Translation("Password")
+ *   api = "https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Render!Element!Password.php/class/Password",
+ *   label = @Translation("Password"),
+ *   category = @Translation("Basic elements"),
  * )
  */
 class Password extends YamlFormElementBase {

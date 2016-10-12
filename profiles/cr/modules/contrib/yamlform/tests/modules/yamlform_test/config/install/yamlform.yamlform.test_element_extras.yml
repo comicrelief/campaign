@@ -1,0 +1,314 @@
+langcode: en
+status: true
+dependencies: {  }
+uid: null
+template: false
+id: test_element_extras
+title: 'Test: Element: Extras'
+description: 'Tests extra elements, includes code(mirror), creditcard_number, email_confirm, and likert.'
+elements: |
+  '#attributes':
+    novalidate: novalidate
+  drupal:
+    '#type': details
+    '#title': 'Drupal elements'
+    '#open': true
+    text_format:
+      '#type': text_format
+      '#title': 'text_format'
+      '#hide_help': TRUE
+  counter:
+    '#type': details
+    '#title': 'Word and character counter'
+    '#open': true
+    counter_characters:
+      '#type': textfield
+      '#title': 'Character counter'
+      '#counter_type': character
+      '#counter_maximum': 10
+    counter_words:
+      '#type': textarea
+      '#title': 'Word counter'
+      '#counter_type': word
+      '#counter_maximum': 3
+      '#counter_message': 'word(s) left. This is a custom message'
+  email_multiple:
+    '#type': details
+    '#title': 'Email multiple (email_multiple)'
+    '#open': true
+    email_multiple_basic:
+      '#type': email_multiple
+      '#title': 'Multiple email addresses (basic)'
+    email_multiple_advanced:
+      '#type': email_multiple
+      '#title': 'Multiple email addresses (advanced)'
+      '#allow_tokens': true
+      '#description': 'Allows tokens to be included in the comma delimited list of emails'
+  email_confirm:
+    '#type': details
+    '#title': 'Email confirmation (email_confirm)'
+    '#open': true
+    email_confirm_basic:
+      '#type': email_confirm
+      '#title': 'Email confirm basic'
+    email_confirm_advanced:
+      '#type': email_confirm
+      '#title': 'Email confirm advanced'
+      '#description': 'Please make sure to review your email address'
+      '#placeholder': 'Enter email address'
+      '#confirm__title': 'Please confirm your email address'
+      '#confirm__description': 'Please make sure to review your confirmation email address'
+      '#confirm__placeholder': 'Enter confirmation email address'
+  creditcard_number:
+    '#type': details
+    '#title': 'Credit card number (creditcard_number)'
+    '#open': true
+    creditcard_number_basic:
+      '#type': creditcard_number
+      '#title': 'Credit card number basic'
+  toggle_elements:
+    '#type': details
+    '#title': 'Toggle Elements'
+    '#open': true
+    toggle_basic:
+      '#type': toggle
+      '#title': 'This is a basic toggle'
+    toggle_advanced:
+      '#type': toggle
+      '#title': 'This is an advanced toggle'
+      '#title_display': before
+      '#toggle_theme': iphone
+      '#toggle_size': large
+      '#on_text': Yes
+      '#off_text': No
+  rating_elements:
+    '#type': details
+    '#title': 'Rating Elements'
+    '#open': true
+    rating_basic:
+      '#type': rating
+      '#title': 'Rating basic'
+    rating_advanced:
+      '#type': rating
+      '#title': 'Rating advanced'
+      '#star_size': large
+      '#reset': true
+      '#min': 0
+      '#max': 10
+      '#step': .1
+  likert_elements:
+    '#type': details
+    '#title': 'Likert Elements'
+    '#open': true
+    likert_basic:
+      '#type': likert
+      '#title': 'Likert basic'
+      '#questions':
+        q1: 'Question 1'
+        q2: 'Question 2'
+        q3: 'Question 3'
+      '#answers':
+        1: 'Option 1'
+        2: 'Option 2'
+        3: 'Option 3'
+    likert_advanced:
+      '#type': likert
+      '#title': 'Likert advanced'
+      '#required': true
+      '#questions':
+        q1: 'Question 1'
+        q2: 'Question 2'
+        q3: 'Question 3'
+      '#answers':
+        1: 'Option 1'
+        2: 'Option 2'
+        3: 'Option 3'
+      '#default_value':
+        q1: 1
+        q2: 2
+        q3: 3
+  signature_elements:
+    '#type': details
+    '#title': 'Signature Elements'
+    '#open': true
+    signature_basic:
+      '#type': signature
+      '#title': 'Signature basic'
+  codemirror_elements:
+    '#type': details
+    '#title': 'CodeMirror Elements'
+    '#open': true
+    text_basic:
+      '#type': codemirror
+      '#title': 'Text basic'
+    yaml_basic:
+      '#type': codemirror
+      '#mode': yaml
+      '#title': 'YAML basic'
+    html_basic:
+      '#type': codemirror
+      '#mode': html
+      '#title': 'HTML basic'
+  table_elements:
+    '#type': 'details'
+    '#title': 'Table'
+    '#open': true
+    table:
+      '#type': table
+      '#header':
+        - 'First Name'
+        - 'Last Name'
+        - 'Gender'
+      table__1:
+        table__1__first_name:
+          '#type': 'textfield'
+          '#size': 20
+          '#default_value': 'John'
+        table__1__last_name:
+          '#type': 'textfield'
+          '#size': 20
+          '#default_value': 'Smith'
+        table__1__gender:
+          '#type': 'select'
+          '#options': gender
+          '#default_value': 'Male'
+      table__2:
+        table__2__first_name:
+          '#type': 'textfield'
+          '#size': 20
+          '#default_value': 'Jane'
+        table__2__last_name:
+          '#type': 'textfield'
+          '#size': 20
+          '#default_value': 'Doe'
+        table__2__gender:
+          '#type': 'select'
+          '#options': gender
+          '#default_value': 'Female'
+  composite_elements:
+    '#type': details
+    '#title': 'Composite Elements'
+    '#open': true
+    contact_basic:
+      '#type': contact
+      '#title': 'Contact basic'
+      '#required': true
+      '#name__required': true
+      '#default_value':
+        name: John Smith
+        company: Acme
+        address: '100 Main Street'
+        address_2: 'PO BOX 999'
+        city: 'Hill Valley'
+        state_province: 'New Jersey'
+        country: 'United States of America'
+        postal_code: '11111-1111'
+        email: example@example.com
+        phone: 123-456-7890
+    contact_advanced:
+      '#type': contact
+      '#title': 'Contact advanced'
+      '#default_value':
+        name: John Smith
+        company: Acme
+        address: '100 Main Street'
+        address_2: 'PO BOX 999'
+        city: 'Hill Valley'
+        state_province: 'New Jersey'
+        country: 'United States of America'
+        postal_code: '11111-1111'
+        email: example@example.com
+        phone: 123-456-7890
+      '#name__required': true
+      '#name__title': 'Custom contact name'
+      '#name__description': 'Custom contact name description'
+      '#state_province__type': textfield
+      '#country__required': true
+      '#country__access': false
+    creditcard:
+      '#type': creditcard
+      '#title': 'Credit Card'
+      '#default_value':
+        name: John Smith
+        number: 4111111111111111
+        type: VI
+        civ: 111
+        expiration_month: 1
+        expiration_year: 2025
+settings:
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_submit_label: ''
+  form_exception_message: ''
+  form_closed_message: ''
+  form_confidential: false
+  form_confidential_message: ''
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_novalidate: false
+  form_autofocus: false
+  form_details_toggle: false
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_next_button_label: ''
+  wizard_prev_button_label: ''
+  wizard_start_label: ''
+  wizard_complete: true
+  wizard_complete_label: ''
+  preview: 0
+  preview_next_button_label: ''
+  preview_prev_button_label: ''
+  preview_message: ''
+  draft: false
+  draft_auto_save: false
+  draft_button_label: ''
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: message
+  confirmation_message: ''
+  confirmation_url: ''
+  limit_total: null
+  limit_total_message: ''
+  limit_user: null
+  limit_user_message: ''
+  entity_limit_total: null
+  entity_limit_user: null
+  results_disabled: true
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+handlers:
+  debug:
+    id: debug
+    label: Debug
+    handler_id: debug
+    status: true
+    weight: 1
+    settings: {  }

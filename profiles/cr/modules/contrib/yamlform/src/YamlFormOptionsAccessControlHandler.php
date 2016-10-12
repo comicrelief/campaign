@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\YamlFormOptionsAccessControlHandler.
- */
-
 namespace Drupal\yamlform;
 
 use Drupal\Core\Access\AccessResult;
@@ -13,7 +8,7 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Session\AccountInterface;
 
 /**
- * Defines the access control handler for the YAML form options entity type.
+ * Defines the access control handler for the form options entity type.
  *
  * @see \Drupal\yamlform\Entity\YamlFormOptions.
  */

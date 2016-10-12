@@ -1,0 +1,356 @@
+langcode: en
+status: true
+dependencies: {  }
+uid: null
+template: false
+id: test_element_html_markup
+title: 'Test: Element: HTML Markup'
+description: 'Test element HTML markup support by underlining all titles, descriptions, prefixes, and suffixes.'
+elements: |
+  basic_elements:
+    '#type': details
+    '#title': '<u>Basic elements</u>'
+    '#open': true
+    checkbox:
+      '#type': checkbox
+      '#title': '<u>Checkbox</u>'
+    password:
+      '#type': password
+      '#title': '<u>Password</u>'
+    textarea:
+      '#type': textarea
+      '#title': '<u>Textarea</u>'
+    textfield:
+      '#type': textfield
+      '#title': '<u>Text field</u>'
+  advanced_elements:
+    '#type': details
+    '#title': '<u>Advanced elements</u>'
+    '#open': true
+    yamlform_autocomplete:
+      '#type': yamlform_autocomplete
+      '#title': '<u>Autocomplete</u>'
+    captcha:
+      '#type': captcha
+      '#title': '<u>CAPTCHA</u>'
+    yamlform_codemirror:
+      '#type': yamlform_codemirror
+      '#title': '<u>CodeMirror</u>'
+      '#mode': yaml
+    color:
+      '#type': color
+      '#title': '<u>Color</u>'
+    email:
+      '#type': email
+      '#title': '<u>Email</u>'
+    yamlform_email_confirm:
+      '#type': yamlform_email_confirm
+      '#title': '<u>Email confirm</u>'
+    yamlform_email_multiple:
+      '#type': yamlform_email_multiple
+      '#title': '<u>Email multiple</u>'
+    number:
+      '#type': number
+      '#title': '<u>Number</u>'
+      '#min': 0
+      '#max': 10
+      '#step': 1
+    password_confirm:
+      '#type': password_confirm
+      '#title': '<u>Password confirm</u>'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/1427838">Issue #1427838: password and password_confirm children do not pick up #states or #attributes</a>'
+    range:
+      '#type': range
+      '#title': '<u>Range</u>'
+      '#min': 0
+      '#max': 100
+      '#step': 1
+      '#range__output': true
+      '#range__output_prefix': $
+      '#range__output_suffix': '.00'
+    yamlform_rating:
+      '#type': yamlform_rating
+      '#title': '<u>Rating</u>'
+    search:
+      '#type': search
+      '#title': '<u>Search</u>'
+    yamlform_signature:
+      '#type': yamlform_signature
+      '#title': '<u>Signature</u>'
+    tel:
+      '#type': tel
+      '#title': '<u>Telephone</u>'
+    text_format:
+      '#type': text_format
+      '#title': '<u>Text format</u>'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/997826">Issue #997826: #states doesn''t work correctly with type text_format</a><br/><a href="https://www.drupal.org/node/2625128">Issue #2625128: Text format selection stays visible when using editor and a hidden form state</a>'
+    yamlform_toggle:
+      '#type': yamlform_toggle
+      '#title': '<u>Toggle</u>'
+    url:
+      '#type': url
+      '#title': '<u>URL</u>'
+    value:
+      '#type': value
+      '#title': '<u>Value</u>'
+  composite_elements:
+    '#type': details
+    '#title': '<u>Composite elements</u>'
+    '#open': true
+    yamlform_address:
+      '#type': yamlform_address
+      '#title': '<u>Address</u>'
+    yamlform_contact:
+      '#type': yamlform_contact
+      '#title': '<u>Contact</u>'
+    yamlform_location:
+      '#type': yamlform_location
+      '#title': '<u>Location</u>'
+    yamlform_name:
+      '#type': yamlform_name
+      '#title': '<u>Name</u>'
+  containers:
+    '#type': details
+    '#title': '<u>Containers</u>'
+    '#open': true
+    container:
+      '#type': container
+      '#title': '<u>Container</u>'
+      container_content:
+        '#markup': 'This is a Container container.'
+    details:
+      '#type': details
+      '#title': '<u>Details</u>'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/2348851">Issue #2348851: Regression: Allow HTML tags inside detail summary</a>'
+      details_content:
+        '#markup': 'This is a Details container.'
+    fieldset:
+      '#type': fieldset
+      '#title': '<u>Fieldset</u>'
+      fieldset_content:
+        '#markup': 'This is a Fieldset container.'
+    item:
+      '#type': item
+      '#title': '<u>Item</u>'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/783438">Issue #783438: #states doesn''t work for #type item</a>'
+      '#markup': '{markup}'
+      '#field_prefix': '<u>{field_prefix}</u>'
+      '#field_suffix': '<u>{field_suffix}</u>'
+      item_content:
+        '#markup': 'This is a Item container.'
+    label:
+      '#type': label
+      '#title': '<u>Label</u>'
+      label_content:
+        '#markup': 'This is a Label container.'
+  date_time_elements:
+    '#type': details
+    '#title': '<u>Date/time elements</u>'
+    '#open': true
+    date:
+      '#type': date
+      '#title': '<u>Date</u>'
+    datetime:
+      '#type': datetime
+      '#title': '<u>Date/time</u>'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/2419131">Issue #2419131: #states attribute does not work on #type datetime</a>'
+    datelist:
+      '#type': datelist
+      '#title': '<u>Date list</u>'
+  entity_reference_elements:
+    '#type': details
+    '#title': '<u>Entity reference elements</u>'
+    '#open': true
+    entity_autocomplete:
+      '#type': entity_autocomplete
+      '#title': '<u>Entity autocomplete</u>'
+      '#target_type': user
+      '#selection_handler': 'default:user'
+      '#selection_settings':
+        include_anonymous: true
+    yamlform_entity_checkboxes:
+      '#type': yamlform_entity_checkboxes
+      '#title': '<u>Entity checkboxes</u>'
+      '#target_type': user
+      '#selection_handler': 'default:user'
+      '#selection_settings':
+        include_anonymous: true
+    yamlform_entity_radios:
+      '#type': yamlform_entity_radios
+      '#title': '<u>Entity radios</u>'
+      '#target_type': user
+      '#selection_handler': 'default:user'
+      '#selection_settings':
+        include_anonymous: true
+    yamlform_entity_select:
+      '#type': yamlform_entity_select
+      '#title': '<u>Entity select</u>'
+      '#target_type': user
+      '#selection_handler': 'default:user'
+      '#selection_settings':
+        include_anonymous: true
+  file_upload_elements:
+    '#type': details
+    '#title': '<u>File upload elements</u>'
+    '#open': true
+    managed_file:
+      '#type': managed_file
+      '#title': '<u>Managed file</u>'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/2705471">Issue #2705471: Form states managed file fields</a>'
+  markup_element:
+    '#type': details
+    '#title': '<u>Markup element</u>'
+    '#open': true
+    yamlform_markup:
+      '#type': yamlform_markup
+      '#title': '<u>HTML markup</u>'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/2700667">Issue #2700667: Notice: Undefined index: #type in drupal_process_states()</a>'
+      yamlform_markup_content:
+        '#markup': 'This is a HTML markup container.'
+  markup_elements:
+    '#type': details
+    '#title': '<u>Markup elements</u>'
+    '#open': true
+    processed_text:
+      '#type': processed_text
+      '#title': '<u>Processed text</u>'
+      processed_text_content:
+        '#markup': 'This is a Processed text container.'
+  options_elements:
+    '#type': details
+    '#title': '<u>Options elements</u>'
+    '#open': true
+    checkboxes:
+      '#type': checkboxes
+      '#title': '<u>Checkboxes</u>'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+    yamlform_checkboxes_other:
+      '#type': yamlform_checkboxes_other
+      '#title': '<u>Checkboxes other</u>'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+    yamlform_likert:
+      '#type': yamlform_likert
+      '#title': '<u>Likert</u>'
+      '#questions':
+        q1: 'Please answer question 1?'
+        q2: 'How about now answering question 2?'
+        q3: 'Finally, here is question 3?'
+      '#answers':
+        1: 1
+        2: 2
+        3: 3
+        4: 4
+        5: 5
+    radios:
+      '#type': radios
+      '#title': '<u>Radios</u>'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/2731991">Issue #2731991: Setting required on radios marks all options required</a><br/><a href="https://www.drupal.org/node/994360">Issue #994360: #states cannot disable/enable radios and checkboxes</a>'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+    yamlform_radios_other:
+      '#type': yamlform_radios_other
+      '#title': '<u>Radios other</u>'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+    select:
+      '#type': select
+      '#title': '<u>Select</u>'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/1426646">Issue #1426646: "-Select-" option is lost when form elements uses ''#states''</a><br/><a href="https://www.drupal.org/node/1149078">Issue #1149078: States API doesn''t work with multiple select fields</a><br/><a href="https://www.drupal.org/node/2791741">Issue #2791741: FAPI states: fields aren''t hidden initally when depending on multi-value selection</a>'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+    yamlform_select_other:
+      '#type': yamlform_select_other
+      '#title': '<u>Select other</u>'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+    tableselect:
+      '#type': tableselect
+      '#title': '<u>Table select</u>'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+settings:
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_submit_label: ''
+  form_exception_message: ''
+  form_closed_message: ''
+  form_confidential: false
+  form_confidential_message: ''
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_novalidate: false
+  form_autofocus: false
+  form_details_toggle: false
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_next_button_label: ''
+  wizard_prev_button_label: ''
+  wizard_start_label: ''
+  wizard_complete: true
+  wizard_complete_label: ''
+  preview: 0
+  preview_next_button_label: ''
+  preview_prev_button_label: ''
+  preview_message: ''
+  draft: false
+  draft_auto_save: false
+  draft_button_label: ''
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: page
+  confirmation_message: ''
+  confirmation_url: ''
+  limit_total: null
+  limit_total_message: ''
+  limit_user: null
+  limit_user_message: ''
+  entity_limit_total: null
+  entity_limit_user: null
+  results_disabled: false
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+handlers: {  }

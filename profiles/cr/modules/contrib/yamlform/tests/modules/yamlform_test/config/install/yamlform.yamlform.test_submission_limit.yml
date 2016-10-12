@@ -1,0 +1,89 @@
+langcode: en
+status: true
+dependencies: {  }
+uid: null
+template: false
+id: test_submission_limit
+title: 'Test: Submission: Limit'
+description: 'Test submission and user limits.'
+elements: |
+  name:
+    '#type': textfield
+    '#title': 'Name'
+settings:
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_submit_label: ''
+  form_exception_message: ''
+  form_closed_message: ''
+  form_confidential: false
+  form_confidential_message: ''
+  form_prepopulate: true
+  form_prepopulate_source_entity: false
+  form_novalidate: false
+  form_autofocus: false
+  form_details_toggle: false
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_next_button_label: ''
+  wizard_prev_button_label: ''
+  wizard_start_label: ''
+  wizard_complete: true
+  wizard_complete_label: ''
+  preview: 0
+  preview_next_button_label: ''
+  preview_prev_button_label: ''
+  preview_message: ''
+  draft: false
+  draft_auto_save: false
+  draft_button_label: ''
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: message
+  confirmation_message: ''
+  confirmation_url: ''
+  limit_total: 3
+  limit_total_message: 'Only 3 submissions are allowed.'
+  limit_user: 1
+  limit_user_message: 'You are only allowed to have 1 submission for this form.'
+  entity_limit_total: 2
+  entity_limit_user: 1
+  results_disabled: false
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+handlers:
+  'null':
+    id: 'null'
+    label: 'Null'
+    handler_id: 'null'
+    status: true
+    weight: 1
+    settings: {  }

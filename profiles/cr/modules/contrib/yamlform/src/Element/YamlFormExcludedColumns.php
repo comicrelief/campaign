@@ -1,14 +1,9 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\Element\YamlFormExcludedColumns.
- */
-
 namespace Drupal\yamlform\Element;
 
 /**
- * Provides a form element for YAML form excluded columns (submission field and inputs).
+ * Provides a form element for form excluded columns (submission field and elements).
  *
  * @FormElement("yamlform_excluded_columns")
  */
@@ -18,17 +13,17 @@ class YamlFormExcludedColumns extends YamlFormExcludedBase {
    * {@inheritdoc}
    */
   public static function getYamlFormExcludedHeader() {
-    return [t('Title'), t('Name'), t('Date type/Input type')];
+    return [t('Title'), t('Name'), t('Date type/Element type')];
   }
 
   /**
    * {@inheritdoc}
    */
-  public static function getYamlFormExcludedOptions(array &$element) {
+  public static function getYamlFormExcludedOptions(array $element) {
     $options = [];
 
     /** @var \Drupal\yamlform\YamlFormSubmissionStorageInterface $submission_storage */
-    $submission_storage = \Drupal::entityManager()->getStorage('yamlform_submission');
+    $submission_storage = \Drupal::entityTypeManager()->getStorage('yamlform_submission');
     $field_definitions = $submission_storage->getFieldDefinitions();
 
     foreach ($field_definitions as $key => $field_definition) {

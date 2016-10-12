@@ -1,45 +1,337 @@
-yamlform:
-  version: 1.0
-  css:
-    theme:
-      css/yamlform.module.css: {}
+# Admin.
 
-yamlform.element.color:
-  version: 1.0
+yamlform.admin:
+  version: 1.x
   css:
     theme:
-      css/yamlform.element.color.css: {}
+      css/yamlform.admin.css: {}
+  js:
+    js/yamlform.admin.js:  {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/jquery.once
+    - yamlform/yamlform.form
 
-yamlform.navigation:
-  version: 1.0
+# Theme
+
+yamlform.theme.bartik:
+  version: 1.x
   css:
     theme:
-      css/yamlform.navigation.css: {}
+      css/yamlform.theme.bartik.css: {}
+
+yamlform.theme.seven:
+  version: 1.x
+  css:
+    theme:
+      css/yamlform.theme.seven.css: {}
+
+# Help.
+
+yamlform.help:
+  version: 1.x
+  css:
+    theme:
+      css/yamlform.help.css: {}
+  js:
+    js/yamlform.help.js:  {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/jquery.once
+
+# Form.
 
 yamlform.form:
-  version: 1.0
+  version: 1.x
   css:
     theme:
       css/yamlform.form.css: {}
   js:
     js/yamlform.form.js:  {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/jquery.once
+    - yamlform/yamlform.states
+
+yamlform.states:
+  version: 1.x
+  js:
+    js/yamlform.states.js:  {}
+
+yamlform.options:
+  version: 1.x
+  css:
+    theme:
+      css/yamlform.options.css: {}
+
+yamlform.progress:
+  version: 1.x
+  css:
+    theme:
+      css/yamlform.progress.css: {}
+
+yamlform.progress.bar:
+  version: 1.x
+  css:
+    theme:
+      css/yamlform.progress.bar.css: {}
+
+# Elements.
+
+yamlform.element.codemirror.text:
+  version: 1.x
+  css:
+    theme:
+      css/yamlform.element.codemirror.css: {}
+  js:
+    js/yamlform.element.codemirror.js: {}
+  dependencies:
+    - yamlform/codemirror.text
+
+yamlform.element.codemirror.yaml:
+  version: 1.x
+  css:
+    theme:
+      css/yamlform.element.codemirror.css: {}
+  js:
+    js/yamlform.element.codemirror.js: {}
+  dependencies:
+    - yamlform/codemirror.yaml
+
+yamlform.element.codemirror.html:
+  version: 1.x
+  css:
+    theme:
+      css/yamlform.element.codemirror.css: {}
+  js:
+    js/yamlform.element.codemirror.js: {}
+  dependencies:
+    - yamlform/codemirror.html
+
+yamlform.element.color:
+  version: 1.x
+  css:
+    theme:
+      css/yamlform.element.color.css: {}
+  js:
+    js/yamlform.element.color.js: {}
+  dependencies:
+    - core/modernizr
+    - yamlform/yamlform.element.inputmask
+
+yamlform.element.counter:
+  version: 1.x
+  js:
+    js/yamlform.element.counter.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/jquery.once
+    - yamlform/jquery.counter
+
+yamlform.element.details.save:
+  version: 1.x
+  js:
+    js/yamlform.element.details.save.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/jquery.once
+
+yamlform.element.details.toggle:
+  version: 1.x
+  css:
+    theme:
+      css/yamlform.element.details.toggle.css: {}
+  js:
+    js/yamlform.element.details.toggle.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/jquery.once
+
+yamlform.element.flexbox:
+  version: 1.x
+  css:
+    theme:
+      css/yamlform.element.flexbox.css: {}
+
+yamlform.element.html_editor:
+  version: 1.x
+  css:
+    theme:
+      css/yamlform.element.html_editor.css: {}
+  js:
+    js/yamlform.element.html_editor.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery
+    - core/jquery.once
+    - yamlform/ckeditor
+
+yamlform.element.inputmask:
+  version: 1.x
+  js:
+    js/yamlform.element.inputmask.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/jquery.once
+    - yamlform/jquery.inputmask
+
+yamlform.element.likert:
+  version: 1.x
+  css:
+    component:
+      css/yamlform.element.likert.css: {}
+
+yamlform.element.location:
+  version: 1.x
+  css:
+    component:
+      css/yamlform.element.location.css: {}
+  js:
+    js/yamlform.element.location.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/jquery.once
+    - yamlform/jquery.geocomplete
+
+yamlform.element.options:
+  version: 1.x
+  css:
+    component:
+      css/yamlform.element.options.css: {}
+
+yamlform.element.other:
+  version: 1.x
+  css:
+    component:
+      css/yamlform.element.other.css: {}
+  js:
+    js/yamlform.element.other.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/jquery.once
+
+yamlform.element.range:
+  version: 1.x
+  css:
+    theme:
+      css/yamlform.element.range.css: {}
+  js:
+    js/yamlform.element.range.js: {}
+  dependencies:
+    - core/modernizr
+
+yamlform.element.rating:
+  version: 1.x
+  css:
+    component:
+      css/yamlform.element.rating.css: {}
+  js:
+    js/yamlform.element.rating.js: {}
+  dependencies:
+    - yamlform/jquery.rateit
+
+yamlform.element.select2:
+  version: 1.x
+  js:
+    js/yamlform.element.select2.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/jquery.once
+    - yamlform/jquery.select2
+
+yamlform.element.signature:
+  version: 1.x
+  css:
+    component:
+      css/yamlform.element.signature.css: {}
+  js:
+    js/yamlform.element.signature.js: {}
+  dependencies:
+    - core/drupal
+    - yamlform/signature_pad
+
+yamlform.element.states:
+  version: 1.x
+  css:
+    component:
+      css/yamlform.element.states.css: {}
+
+yamlform.element.text_format:
+  version: 1.x
+  js:
+    js/yamlform.element.text_format.js: {}
+
+yamlform.element.tableselect_sort:
+  version: 1.x
+  css:
+    theme:
+      css/yamlform.element.tableselect_sort.css: {}
+
+yamlform.element.toggle:
+  version: 1.x
+  css:
+    component:
+      css/yamlform.element.toggle.css: {}
+  js:
+    js/yamlform.element.toggle.js: {}
+  dependencies:
+    - core/drupal
+    - yamlform/jquery.toggles
+
+yamlform.element.tooltip:
+  version: 1.x
+  js:
+    js/yamlform.element.tooltip.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery.once
+    - core/jquery.ui.tooltip
+
+yamlform.navigation:
+  version: 1.x
+  css:
+    theme:
+      css/yamlform.navigation.css: {}
+
+# External libraries.
+
+ckeditor:
+  remote: http://ckeditor.com/
+  version: 4.5.11
+  license:
+    name: MIT
+    url: http://codemirror.net/LICENSE
+    gpl-compatible: true
+  cdn:
+    /libraries/ckeditor/: 'https://cdn.ckeditor.com/4.5.11/standard/'
+  js:
+    /libraries/ckeditor/ckeditor.js: {}
 
 codemirror.text:
   remote: https://github.com/codemirror/codemirror
-  version: &yamlform_codemirror_version 5.13.4
+  version: &yamlform_codemirror_version 5.17.0
   license: &yamlform_codemirror_license
     name: MIT
-    url: https://github.com/codemirror/CodeMirror/blob/master/LICENSE
-    gpl-compatible: false
+    url: http://codemirror.net/LICENSE
+    gpl-compatible: true
   cdn: &yamlform_codemirror_cdn
-    /libraries/codemirror/lib/: https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.2/
-    /libraries/codemirror/: https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.2/
+    /libraries/codemirror/lib/: https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/
+    /libraries/codemirror/: https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/
   css:
     theme:
-      css/yamlform.codemirror.css: {}
       /libraries/codemirror/lib/codemirror.css: {}
   js:
-    js/yamlform.codemirror.js: {}
     /libraries/codemirror/lib/codemirror.js: {}
     /libraries/codemirror/addon/runmode/runmode.js: {}
 
@@ -62,16 +354,107 @@ codemirror.html:
   dependencies:
     - yamlform/codemirror.text
 
-jquery.inputmask:
-  remote: https://github.com/RobinHerbots/jquery.inputmask
-  version: &yamlform_codemirror_version 3.3.0
-  license: &yamlform_codemirror_license
+jquery.counter:
+  remote: https://github.com/qwertypants/jQuery-Word-and-Character-Counter-Plugin
+  version: 2.3.5
+  license:
     name: MIT
     url: http://opensource.org/licenses/mit-license.php
     gpl-compatible: true
   cdn:
-    /libraries/jquery.inputmask/dist/: https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.0/
+    /libraries/word-and-character-counter/: https://cdn.rawgit.com/qwertypants/jQuery-Word-and-Character-Counter-Plugin/2.3.5/
   js:
-    js/yamlform.jquery.inputmask.js: {}
-    /libraries/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js: {}
+    /libraries/word-and-character-counter/word-and-character-counter.min.js: {}
+  dependencies:
+    - core/jquery
 
+jquery.geocomplete:
+  remote: http://ubilabs.github.io/geocomplete/
+  version: 1.7.0
+  license:
+    name: MIT
+    url: https://github.com/ubilabs/geocomplete/blob/master/MIT-LICENSE.txt
+    gpl-compatible: true
+  cdn:
+    /libraries/geocomplete/: https://cdnjs.cloudflare.com/ajax/libs/geocomplete/1.7.0/
+  js:
+    /libraries/geocomplete/jquery.geocomplete.min.js: {}
+  dependencies:
+    - core/jquery
+
+jquery.inputmask:
+  remote: https://github.com/RobinHerbots/jquery.inputmask
+  version: 3.31
+  license:
+    name: MIT
+    url: http://opensource.org/licenses/mit-license.php
+    gpl-compatible: true
+  cdn:
+    /libraries/jquery.inputmask/dist/: https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.1/
+  js:
+    /libraries/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js: {}
+  dependencies:
+    - core/jquery
+
+jquery.rateit:
+  remote: https://github.com/gjunge/rateit.js
+  version: 1.0.24
+  license:
+    name: MIT
+    url: https://github.com/gjunge/rateit.js/blob/master/LICENSE.md
+    gpl-compatible: true
+  cdn:
+    /libraries/jquery.rateit/: https://cdn.rawgit.com/gjunge/rateit.js/1.0.24/
+  css:
+    theme:
+      /libraries/jquery.rateit/scripts/rateit.css: {}
+  js:
+    /libraries/jquery.rateit/scripts/jquery.rateit.min.js: {}
+  dependencies:
+    - core/jquery
+
+jquery.select2:
+  remote: https://select2.github.io/
+  version: 4.0.3
+  license:
+    name: MIT
+    url: http://opensource.org/licenses/mit-license.php
+    gpl-compatible: true
+  cdn:
+    /libraries/select2/dist/: https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/
+  css:
+    theme:
+      /libraries/select2/dist/css/select2.min.css: {}
+  js:
+    /libraries/select2/dist/js/select2.min.js: {}
+  dependencies:
+    - core/jquery
+
+jquery.toggles:
+  remote: https://github.com/simontabor/jquery-toggles/
+  version: &yamlform_toggles_version 4.0.0
+  license: &yamlform_toggles_version
+    name: MIT
+    url: http://opensource.org/licenses/mit-license.php
+    gpl-compatible: true
+  cdn:
+    /libraries/jquery.toggles/: https://cdn.rawgit.com/simontabor/jquery-toggles/v4.0.0/
+  css:
+    theme:
+      /libraries/jquery.toggles/css/toggles-full.css: {}
+  js:
+    /libraries/jquery.toggles/toggles.min.js: {}
+  dependencies:
+    - core/jquery
+
+signature_pad:
+  remote: https://github.com/szimek/signature_pad
+  version: 1.5.3
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+    gpl-compatible: true
+  cdn:
+    /libraries/signature_pad/: https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.5.3/
+  js:
+    /libraries/signature_pad/signature_pad.js: {}

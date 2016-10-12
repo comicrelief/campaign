@@ -1,0 +1,61 @@
+/**
+ * @file
+ * Form UI styling
+ */
+
+/**
+ * Local actions.
+ */
+.yamlform-ui-local-actions .button,
+.yamlform-ui-local-actions .button:first-child {
+  margin-left: 0;
+  margin-right: 1em;
+}
+
+/**
+ * Tables
+ */
+table .ajax-progress-throbber {
+  display: none;
+}
+
+th.yamlform-ui-element-operations {
+  width: 140px;
+}
+
+thead th .dropbutton {
+  text-transform: none;
+}
+
+/**
+ * Elements (/admin/structure/yamlform/manage/{yamlform})
+ */
+.yamlform-ui-elements-table .button {
+  white-space: nowrap;
+}
+
+.yamlform-ui-elements-table .form-type-checkbox {
+  text-align: center;
+}
+
+.yamlform-ui-elements-table .yamlform-ui-element-required {
+  width: 10%;
+}
+
+.yamlform-ui-elements-table tr:first-child {
+  border-top: inherit !important;
+}
+.yamlform-ui-elements-table tr.yamlform-ui-element-type-yamlform_wizard_page {
+  border-top: 2px solid #a6a6a6;
+}
+
+.yamlform-ui-elements-table tr.yamlform-ui-element-type-yamlform_flexbox {
+  border-top: 2px dotted #a6a6a6;
+  font-weight: bold;
+}
+
+.yamlform-ui-elements-table tr.yamlform-ui-element-type-details,
+.yamlform-ui-elements-table tr.yamlform-ui-element-type-fieldset {
+  border-top: 2px dashed #a6a6a6;
+  font-weight: bold;
+}

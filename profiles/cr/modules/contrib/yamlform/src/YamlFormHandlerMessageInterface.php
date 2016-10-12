@@ -1,24 +1,19 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\YamlFormHandlerMessageInterface.
- */
-
 namespace Drupal\yamlform;
 
 /**
- * Defines the interface for YAML form handlers that send messages.
+ * Defines the interface for form handlers that send messages.
  *
  * @see \Drupal\yamlform\Plugin\YamlFormHandler\EmailYamlFormHandler
  */
 interface YamlFormHandlerMessageInterface extends YamlFormHandlerInterface {
 
   /**
-   * Get a fully populated email for a YAML form submission.
+   * Get a fully populated email for a form submission.
    *
    * @param \Drupal\yamlform\YamlFormSubmissionInterface $yamlform_submission
-   *   A YAML form submission.
+   *   A form submission.
    *
    * @return array
    *   An array containing message parameters.
@@ -26,7 +21,7 @@ interface YamlFormHandlerMessageInterface extends YamlFormHandlerInterface {
   public function getMessage(YamlFormSubmissionInterface $yamlform_submission);
 
   /**
-   * Sends and logs a YAML form submission message.
+   * Sends and logs a form submission message.
    *
    * @param array $message
    *   An array of message parameters.

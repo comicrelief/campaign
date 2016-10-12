@@ -1,14 +1,9 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\Utility\YamlFormDateHelper.
- */
-
 namespace Drupal\yamlform\Utility;
 
 /**
- * Helper class YAML form date helper methods.
+ * Helper class form date helper methods.
  */
 class YamlFormDateHelper {
 
@@ -21,7 +16,7 @@ class YamlFormDateHelper {
    *   (optional) The data format to use.
    * @param string $format
    *   (optional) If $type is 'custom', a PHP date format string suitable for
-   *   input to date(). Use a backslash to escape ordinary text, so it does not
+   *   element to date(). Use a backslash to escape ordinary text, so it does not
    *   get interpreted as date format characters.
    * @param string|null $timezone
    *   (optional) Time zone identifier, as described at

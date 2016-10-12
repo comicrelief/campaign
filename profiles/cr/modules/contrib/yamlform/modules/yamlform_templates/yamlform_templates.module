@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Provides starter templates that can be used create new forms.
+ */
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function yamlform_templates_entity_type_alter(array &$entity_types) {
+  if (isset($entity_types['yamlform_submission'])) {
+    /** @var \Drupal\Core\Entity\ContentEntityTypeInterface $yamlform_submission_entity_type */
+    $yamlform_submission_entity_type = $entity_types['yamlform_submission'];
+    $handlers = $yamlform_submission_entity_type->getHandlerClasses();
+    $handlers['form']['preview'] = 'Drupal\yamlform_templates\YamlFormTemplatesSubmissionPreviewForm';
+    $yamlform_submission_entity_type->setHandlerClass('form', $handlers['form']);
+  }
+}

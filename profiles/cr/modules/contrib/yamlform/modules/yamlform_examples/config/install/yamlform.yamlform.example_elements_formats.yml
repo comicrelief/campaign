@@ -1,0 +1,224 @@
+langcode: en
+status: true
+dependencies: {  }
+uid: null
+template: false
+id: example_elements_formats
+title: 'Example: Elements with custom formats'
+description: 'Examples of elements that supports multiple formats using the #format property.'
+elements: |
+  dates:
+    '#type': 'details'
+    '#title': 'Dates'
+    '#open': true
+    date_default:
+      '#type': datetime
+      '#title': 'datetime (default)'
+    date_html_year:
+      '#type': datetime
+      '#title': 'datetime (html_year)'
+      '#format': html_year
+    date_custom:
+      '#type': datetime
+      '#title': 'datetime (l, F j, Y - H:i)'
+      '#format': 'l, F j, Y - H:i'
+  options:
+    '#type': 'details'
+    '#title': 'Options (single and multiple)'
+    '#open': true
+    checkboxes_default:
+      '#type': checkboxes
+      '#title': 'checkboxes (default)'
+      '#options':
+        1: one
+        2: two
+        3: three
+    checkboxes_comma:
+      '#type': checkboxes
+      '#title': 'checkboxes (comma)'
+      '#format': comma
+      '#options':
+        1: one
+        2: two
+        3: three
+    checkboxes_semicolon:
+      '#type': checkboxes
+      '#title': 'checkboxes (semicolon)'
+      '#format': semicolon
+      '#options':
+        1: one
+        2: two
+        3: three
+    checkboxes_and:
+      '#type': checkboxes
+      '#title': 'checkboxes (and)'
+      '#format': and
+      '#options':
+        1: one
+        2: two
+        3: three
+    checkboxes_ul:
+      '#type': checkboxes
+      '#title': 'checkboxes (ul)'
+      '#format': ul
+      '#options':
+        1: one
+        2: two
+        3: three
+    checkboxes_ol:
+      '#type': checkboxes
+      '#title': 'checkboxes (ol)'
+      '#format': ol
+      '#options':
+        1: one
+        2: two
+        3: three
+  colors:
+    '#type': 'details'
+    '#title': 'Colors'
+    '#open': true
+    color_default:
+      '#type': color
+      '#title': 'color (default)'
+    color_swatch:
+      '#type': color
+      '#title': 'color (swatch)'
+      '#format': swatch
+    color_value:
+      '#type': color
+      '#title': 'color (value)'
+      '#format': value
+  links:
+    '#type': 'details'
+    '#title': 'Links'
+    '#open': true
+    email_default:
+      '#type': email
+      '#title': 'email (default)'
+    email_value:
+      '#type': email
+      '#title': 'email (value)'
+      '#format': value
+    tel_default:
+      '#type': tel
+      '#title': 'tel (default)'
+    tel_value:
+      '#type': tel
+      '#title': 'tel (value)'
+      '#format': value
+    url_default:
+      '#type': url
+      '#title': 'url (default)'
+    url_value:
+      '#type': url
+      '#title': 'url (value)'
+      '#format': value
+  entity_autocomplete:
+    '#type': 'details'
+    '#title': 'Entity autocomplete'
+    '#open': true
+    entity_autocomplete_default:
+      '#type': 'entity_autocomplete'
+      '#title': 'entity_autocomplete (default)'
+      '#target_type': 'node'
+    entity_autocomplete_link:
+      '#type': 'entity_autocomplete'
+      '#title': 'entity_autocomplete (link)'
+      '#target_type': 'node'
+      '#format': link
+    entity_autocomplete_label:
+      '#type': 'entity_autocomplete'
+      '#title': 'entity_autocomplete (label)'
+      '#target_type': 'node'
+      '#format': label
+    entity_autocomplete_teaser:
+      '#type': 'entity_autocomplete'
+      '#title': 'entity_autocomplete (teaser)'
+      '#target_type': 'node'
+      '#format': teaser
+    entity_autocomplete_id:
+      '#type': 'entity_autocomplete'
+      '#title': 'entity_autocomplete (id)'
+      '#target_type': 'node'
+      '#format': id
+  other:
+    '#type': 'details'
+    '#title': 'Other'
+    '#open': true
+    password_default:
+      '#type': password
+      '#title': 'password (default)'
+    password_value:
+      '#type': password
+      '#title': 'password (value)'
+      '#format': value
+settings:
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_submit_label: ''
+  form_exception_message: ''
+  form_closed_message: ''
+  form_confidential: false
+  form_confidential_message: ''
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_novalidate: false
+  form_autofocus: false
+  form_details_toggle: false
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_next_button_label: ''
+  wizard_prev_button_label: ''
+  wizard_start_label: ''
+  wizard_complete: true
+  wizard_complete_label: ''
+  preview: 0
+  preview_next_button_label: ''
+  preview_prev_button_label: ''
+  preview_message: ''
+  draft: false
+  draft_auto_save: false
+  draft_button_label: ''
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: page
+  confirmation_message: ''
+  confirmation_url: ''
+  limit_total: null
+  limit_total_message: ''
+  limit_user: null
+  limit_user_message: ''
+  entity_limit_total: null
+  entity_limit_user: null
+  results_disabled: false
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+handlers: {  }

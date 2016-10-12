@@ -1,0 +1,153 @@
+langcode: en
+status: true
+dependencies: {  }
+uid: null
+template: false
+id: test_element_formats_tokens
+title: 'Test: Element: Formats: Tokens'
+description: 'Test element using tokens with formats.'
+elements: |
+  checkboxes:
+    '#type': checkboxes
+    '#title': 'checkboxes'
+    '#options':
+      1: one
+      2: two
+      3: three
+    '#default_value':
+      - 1
+      - 2
+      - 3
+settings:
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_submit_label: ''
+  form_exception_message: ''
+  form_closed_message: ''
+  form_confidential: false
+  form_confidential_message: ''
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_novalidate: false
+  form_autofocus: false
+  form_details_toggle: false
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_next_button_label: ''
+  wizard_prev_button_label: ''
+  wizard_start_label: ''
+  wizard_complete: true
+  wizard_complete_label: ''
+  preview: 0
+  preview_next_button_label: ''
+  preview_prev_button_label: ''
+  preview_message: ''
+  draft: false
+  draft_auto_save: false
+  draft_button_label: ''
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: page
+  confirmation_message: ''
+  confirmation_url: ''
+  limit_total: null
+  limit_total_message: ''
+  limit_user: null
+  limit_user_message: ''
+  entity_limit_total: null
+  entity_limit_user: null
+  results_disabled: false
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+handlers:
+  email_html:
+    id: email
+    label: 'Email (HTML)'
+    handler_id: email_html
+    status: false
+    weight: -9
+    settings:
+      to_mail: default
+      cc_mail: ''
+      bcc_mail: ''
+      from_mail: default
+      from_name: default
+      subject: default
+      body: |
+        <h3>default:</h3>[yamlform-submission:values:checkboxes]<hr/>
+        <h3>comma:</h3>[yamlform-submission:values:checkboxes:comma]<hr/>
+        <h3>semicolon:</h3>[yamlform-submission:values:checkboxes:semicolon]<hr/>
+        <h3>and:</h3>[yamlform-submission:values:checkboxes:and]<hr/>
+        <h3>ul:</h3>[yamlform-submission:values:checkboxes:ul]<hr/>
+        <h3>ol:</h3>[yamlform-submission:values:checkboxes:ol]<hr/>
+        <h3>raw:</h3>[yamlform-submission:values:checkboxes:raw]<hr/>
+      excluded_elements: {  }
+      html: true
+      attachments: false
+      debug: true
+  email_text:
+    id: email
+    label: 'Email (Text)'
+    handler_id: email_text
+    status: false
+    weight: -10
+    settings:
+      to_mail: default
+      cc_mail: ''
+      bcc_mail: ''
+      from_mail: default
+      from_name: default
+      subject: default
+      body: |
+        default:
+        [yamlform-submission:values:checkboxes]
+        
+        comma:
+        [yamlform-submission:values:checkboxes:comma]
+        
+        semicolon:
+        [yamlform-submission:values:checkboxes:semicolon]
+        
+        and:
+        [yamlform-submission:values:checkboxes:and]
+        
+        ul:
+        [yamlform-submission:values:checkboxes:ul]
+        
+        ol:
+        [yamlform-submission:values:checkboxes:ol]
+        
+        raw:
+        [yamlform-submission:values:checkboxes:raw]
+      excluded_elements: {  }
+      html: false
+      attachments: false
+      debug: true

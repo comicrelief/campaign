@@ -1,0 +1,109 @@
+langcode: en
+status: false
+dependencies: {  }
+uid: null
+template: false
+id: example_wizard
+title: 'Example: Wizard'
+description: 'An example of multiple step ''wizard'' form.'
+elements: |
+  information:
+    '#title': 'Your Information'
+    '#type': wizard_page
+    '#open': true
+    first_name:
+      '#title': 'First Name'
+      '#type': textfield
+    last_name:
+      '#title': 'Last Name'
+      '#type': textfield
+    gender:
+      '#type': radios
+      '#title': 'Gender'
+      '#options': gender
+  contact:
+    '#title': 'Contact Information'
+    '#type': wizard_page
+    '#open': true
+    email:
+      '#title': Email
+      '#type': email
+    phone:
+      '#title': Phone
+      '#type': tel
+  feedback:
+    '#title': 'Your Feedback'
+    '#type': wizard_page
+    '#open': true
+    comments:
+      '#type': textarea
+settings:
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_submit_label: Apply
+  form_exception_message: ''
+  form_closed_message: ''
+  form_confidential: false
+  form_confidential_message: ''
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_novalidate: false
+  form_autofocus: false
+  form_details_toggle: false
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_next_button_label: ''
+  wizard_prev_button_label: ''
+  wizard_start_label: ''
+  wizard_complete: true
+  wizard_complete_label: ''
+  preview: 2
+  preview_next_button_label: ''
+  preview_prev_button_label: ''
+  preview_message: ''
+  draft: false
+  draft_auto_save: true
+  draft_button_label: ''
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: page
+  confirmation_message: ''
+  confirmation_url: ''
+  limit_total: null
+  limit_total_message: ''
+  limit_user: null
+  limit_user_message: ''
+  entity_limit_total: null
+  entity_limit_user: null
+  results_disabled: false
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+handlers: {  }

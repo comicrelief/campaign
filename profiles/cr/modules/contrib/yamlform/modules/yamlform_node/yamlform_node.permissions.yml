@@ -1,0 +1,12 @@
+'view yamlform submissions any node':
+  title: 'View form submissions for any node'
+'view yamlform submissions own node':
+  title: 'View form submissions for own node'
+'edit yamlform submissions any node':
+  title: 'Edit form submissions for any node'
+'edit yamlform submissions own node':
+  title: 'Edit form submissions for own node'
+'delete yamlform submissions any node':
+  title: 'Delete form submissions for any node'
+'delete yamlform submissions own node':
+  title: 'Delete form submissions for own node'

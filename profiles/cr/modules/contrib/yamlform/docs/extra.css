@@ -1,0 +1,70 @@
+/**
+ * @file
+ * Documentation styles.
+ */
+
+h3 {
+  clear: both;
+}
+
+.thumbnail {
+  float: right;
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+  margin: 0 0 10px 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .thumbnail {
+    float: none;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    margin: 20px 0;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .thumbnail {
+    height: 200px;
+  }
+}
+
+/**
+ * Lightbox
+ */
+.modal-dialog {
+  width: 1024px;
+}
+
+@media only screen and (max-width: 1023px) {
+  .modal-dialog {
+    width: 95%;
+  }
+}
+
+.modal-lightbox .img-responsive {
+  margin: 0 auto;
+}
+
+
+/**
+ * Sidebar
+ */
+@media only screen and (max-width: 991px) {
+  .col-md-3 {
+    display: none;
+  }
+}
+
+/**
+ * Footer
+ */
+footer center {
+  display: none;
+}
+
+footer hr + center {
+  display: block;
+}

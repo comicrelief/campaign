@@ -1,0 +1,163 @@
+/**
+ * @file
+ * Flexbox styles.
+ */
+
+@media (min-width: 768px) {
+
+  .yamlform-flexbox {
+    display: -webkit-flex;
+    display: flex;
+    margin: 1em -.5em;
+  }
+
+  .yamlform-flexbox .yamlform-flexbox {
+    margin: 1em 0;
+  }
+
+  .yamlform-flexbox--flex-start { -webkit-align-items: flex-start; align-items: flex-start; }
+  .yamlform-flexbox--flex-end { -webkit-align-items: flex-end; align-items: flex-end; }
+  .yamlform-flexbox--center { -webkit-align-items: center; align-items: center; }
+
+  .yamlform-flexbox input[type="checkbox"],
+  .yamlform-flexbox input[type="radio"] /* Never allow checkboxes and radio buttons to have a width */{
+    width: inherit !important;
+  }
+
+  .yamlform-flex {
+    min-width: 0;
+  }
+
+  .yamlform-flex--container {
+    margin: 0 .5em;
+  }
+
+  .yamlform-flex--container > .form-item {
+    margin: 0;
+  }
+
+  .yamlform-flex--container > .form-item > input,
+  .yamlform-flex--container > .form-item > select {
+    width: 100%;
+  }
+
+  .container-inline .yamlform-flex--container > .form-item > input,
+  .container-inline .yamlform-flex--container > .form-item > select {
+    width: inherit;
+  }
+
+  .yamlform-flex--container > .yamlform-has-field-prefix > input,
+  .yamlform-flex--container > .yamlform-has-field-suffix > input,
+  .yamlform-flex--container > .yamlform-has-field-prefix > select,
+  .yamlform-flex--container > .yamlform-has-field-suffix > select {
+    width: 85%;
+  }
+
+  .yamlform-flex--container > .yamlform-has-field-prefix.yamlform-flex.yamlform-has-field-suffix > input,
+  .yamlform-flex--container > .yamlform-has-field-prefix.yamlform-flex.yamlform-has-field-suffix > select {
+    width: 70%;
+  }
+
+  .yamlform-flex--0 {
+    /* None */
+  }
+
+  .yamlform-flex--1 {
+    -webkit-flex: 1;
+    flex: 1;
+  }
+
+  .yamlform-flex--2 {
+    -webkit-flex: 2;
+    flex: 2;
+  }
+
+  .yamlform-flex--3 {
+    -webkit-flex: 3;
+    flex: 3;
+  }
+
+  .yamlform-flex--4 {
+    -webkit-flex: 4;
+    flex: 4;
+  }
+
+  .yamlform-flex--5 {
+    -webkit-flex: 5;
+    flex: 5;
+  }
+
+  .yamlform-flex--6 {
+    -webkit-flex: 6;
+    flex: 6;
+  }
+
+  .yamlform-flex--7 {
+    -webkit-flex: 7;
+    flex: 7;
+  }
+
+  .yamlform-flex--8 {
+    -webkit-flex: 8;
+    flex: 8;
+  }
+
+  .yamlform-flex--9 {
+    -webkit-flex: 9;
+    flex: 9;
+  }
+
+  .yamlform-flex--10 {
+    -webkit-flex: 10;
+    flex: 10;
+  }
+
+  .yamlform-flex--11 {
+    -webkit-flex: 11;
+    flex: 11;
+  }
+
+  .yamlform-flex--12 {
+    -webkit-flex: 12;
+    flex: 12;
+  }
+
+  /**
+   * Select other.
+   */
+  .yamlform-flex--container > .form-type-yamlform-select-other select {
+    width: 100%;
+  }
+
+  .yamlform-flex--container > .form-type-yamlform-select-other .form-item {
+    margin: 0;
+  }
+
+  .yamlform-flex--container > .form-type-yamlform-select-other .form-item + .form-item {
+    margin-top: .5em;
+  }
+
+  /**
+   * Range.
+   */
+
+  .yamlform-flex--container > .form-type-range-output > .form-range-output {
+    width: 66%;
+  }
+
+  /**
+   * Composite.
+   */
+  .form-composite > .yamlform-flexbox {
+    margin: 1em -.5em;
+  }
+
+  /**
+   * Radios/checkboxes.
+   */
+  .form-type-checkbox,
+  .form-type-radio {
+    white-space: nowrap;
+  }
+
+}

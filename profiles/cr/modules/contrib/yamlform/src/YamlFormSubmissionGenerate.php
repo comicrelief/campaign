@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\YamlFormSubmissionGenerate.
- */
-
 namespace Drupal\yamlform;
 
 use Drupal\Component\Serialization\Yaml;
@@ -12,9 +7,12 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Utility\Token;
 
 /**
- * YAML form submission generation service.
+ * Form submission generator.
+ *
+ * @see \Drupal\yamlform\YamlFormSubmissionGenerateInterface
+ * @see \Drupal\yamlform\Plugin\DevelGenerate\YamlFormSubmissionDevelGenerate
  */
-class YamlFormSubmissionGenerate {
+class YamlFormSubmissionGenerate implements YamlFormSubmissionGenerateInterface {
 
   /**
    * The configuration object factory.
@@ -31,11 +29,26 @@ class YamlFormSubmissionGenerate {
   protected $token;
 
   /**
-   * The YAML form element manager.
+   * The form element manager.
    *
-   * @var \Drupal\yamlform\YamlFormElementManager
+   * @var \Drupal\yamlform\YamlFormElementManagerInterface
    */
   protected $elementManager;
+
+  /**
+   * An associative array containing test values for elements by type.
+   *
+   * @var array
+   */
+  protected $types;
+
+  /**
+   * An associative array containing test values for elements by name.
+   *
+   * @var array
+   */
+  protected $names;
+
   /**
    * Constructs a YamlFormEmailBuilder object.
    *
@@ -43,10 +56,10 @@ class YamlFormSubmissionGenerate {
    *   The configuration object factory.
    * @param \Drupal\Core\Utility\Token $token
    *   The token service.
-   * @param \Drupal\yamlform\YamlFormElementManager $element_manager
-   *   The YAML form element manager.
+   * @param \Drupal\yamlform\YamlFormElementManagerInterface $element_manager
+   *   The form element manager.
    */
-  public function __construct(ConfigFactoryInterface $config_factory, Token $token, YamlFormElementManager $element_manager) {
+  public function __construct(ConfigFactoryInterface $config_factory, Token $token, YamlFormElementManagerInterface $element_manager) {
     $this->configFactory = $config_factory;
     $this->token = $token;
     $this->elementManager = $element_manager;
@@ -56,52 +69,15 @@ class YamlFormSubmissionGenerate {
   }
 
   /**
-   * Generate YAML form submission data.
-   *
-   * @param \Drupal\yamlform\YamlFormInterface $yamlform
-   *   The YAML form this submission will be added to.
-   *
-   * @return array
-   *   An associative array containing YAML form submission data.
+   * {@inheritdoc}
    */
   public function getData(YamlFormInterface $yamlform) {
-    $inputs = $yamlform->getFlattenedInputs();
+    $elements = $yamlform->getElementsInitializedAndFlattened();
 
-    $token_data = ['yamlform' => $yamlform];
     $data = [];
-    foreach ($inputs as $key => $input) {
-      if (!empty($input['#type'])) {
-        $values = $this->getTestValues($yamlform, $key, $input);
-        if ($values === NULL) {
-          continue;
-        }
-
-        // Get random test value.
-        if (is_array($values)) {
-          $value = $values[array_rand($values)];
-        }
-        else {
-          $value = $values;
-        }
-
-        // Replace tokens.
-        if (is_string($value)) {
-          $value = $this->token->replace($value, $token_data);
-        }
-        elseif (is_array($value)) {
-          foreach (array_keys($value) as $key) {
-            if (is_string($value[$key])) {
-              $value[$key] = $this->token->replace($value[$key], $token_data);
-            }
-          }
-        }
-
-        // Checkboxes or TableSelect and #multiple require an array as the
-        // default value.
-        if ((in_array($input['#type'], ['checkboxes', 'tableselect']) || !empty($input['#multiple'])) && !is_array($value)) {
-          $value = [$value];
-        }
-
+    foreach ($elements as $key => $element) {
+      $value = $this->getTestValue($yamlform, $key, $element);
+      if ($value !== NULL) {
         $data[$key] = $value;
       }
     }
@@ -109,17 +85,63 @@ class YamlFormSubmissionGenerate {
   }
 
   /**
-   * Get test value for a YAML form element.
+   * {@inheritdoc}
+   */
+  public function getTestValue(YamlFormInterface $yamlform, $name, array $element) {
+    /** @var \Drupal\yamlform\YamlFormElementInterface $element_handler */
+    $plugin_id = $this->elementManager->getElementPluginId($element);
+    $element_handler = $this->elementManager->createInstance($plugin_id);
+
+    // Exit if element does not have a value.
+    if (!$element_handler->isInput($element)) {
+      return NULL;
+    }
+
+    // Exit if test values are null.
+    $values = $this->getTestValues($yamlform, $name, $element);
+    if ($values === NULL) {
+      return NULL;
+    }
+
+    // Get random test value.
+    $value = (is_array($values)) ? $values[array_rand($values)] : $values;
+
+    // Replace tokens.
+    $token_data = ['yamlform' => $yamlform];
+    $token_options = ['clear' => TRUE];
+    if (is_string($value)) {
+      $value = $this->token->replace($value, $token_data, $token_options);
+    }
+    elseif (is_array($value)) {
+      foreach (array_keys($value) as $value_key) {
+        if (is_string($value[$value_key])) {
+          $value[$value_key] = $this->token->replace($value[$value_key], $token_data, $token_options);
+        }
+      }
+    }
+
+    // Elements that use multiple values require an array as the
+    // default value.
+    if ($element_handler->hasMultipleValues($element) && !is_array($value)) {
+      return [$value];
+    }
+    else {
+      return $value;
+    }
+  }
+
+  /**
+   * Get test values from a form element.
    *
    * @param \Drupal\yamlform\YamlFormInterface $yamlform
-   *   A YAML form.
+   *   A form.
    * @param string $name
    *   The name of the element.
    * @param array $element
    *   The FAPI element.
    *
    * @return array|int|null
-   *   An array containing multiple values or a single value.
+   *   An array containing multiple test values or a single test value.
    */
   protected function getTestValues(YamlFormInterface $yamlform, $name, array $element) {
     // Get test value from the actual element.
@@ -132,9 +154,15 @@ class YamlFormSubmissionGenerate {
       return NULL;
     }
 
-    // Invoke YamlFormElement::test.
-    if ($test = $this->elementManager->invokeMethod('getTestValue', $element, $yamlform)) {
-      return $test;
+    // Invoke YamlFormElement::test and get a test value.
+    // If test value is NULL this element should be populated with test data.
+    // @see \Drupal\yamlform\Plugin\YamlFormElement\ContainerBase::getTestValue().
+    $test_value = $this->elementManager->invokeMethod('getTestValue', $element, $yamlform);
+    if ($test_value) {
+      return $test_value;
+    }
+    elseif ($test_value === NULL) {
+      return NULL;
     }
 
     // Get test values from options.
@@ -159,11 +187,17 @@ class YamlFormSubmissionGenerate {
       }
     }
 
+    // Get test value using #type.
     switch ($element['#type']) {
       case 'range';
       case 'number';
         $element += ['#min' => 1, '#max' => 10];
         return rand($element['#min'], $element['#max']);
+    }
+
+    // Get test #unique value.
+    if (!empty($element['#unique'])) {
+      return uniqid();
     }
 
     // Return default values.

@@ -1,22 +1,17 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\yamlform\Utility\YamlFormHelper.
- */
-
 namespace Drupal\yamlform\Utility;
 
 /**
- * Helper class YAML form based methods.
+ * Helper class form based methods.
  */
 class YamlFormHelper {
 
   /**
-   * Cleanup YAML form state values.
+   * Cleanup form state values.
    *
    * @param array $values
-   *   An array of YAML form state values.
+   *   An array of form state values.
    * @param array $keys
    *   (optional) An array of custom keys to be removed.
    *

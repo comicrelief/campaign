@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\Plugin\YamlFormElement\Url.
- */
-
 namespace Drupal\yamlform\Plugin\YamlFormElement;
 
 /**
@@ -12,15 +7,21 @@ namespace Drupal\yamlform\Plugin\YamlFormElement;
  *
  * @YamlFormElement(
  *   id = "url",
- *   label = @Translation("URL")
+ *   api = "https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Render!Element!Url.php/class/Url",
+ *   label = @Translation("URL"),
+ *   category = @Translation("Advanced elements"),
  * )
  */
-class Url extends TextFieldBase {
+class Url extends TextBase {
 
   /**
    * {@inheritdoc}
    */
   public function formatHtml(array &$element, $value, array $options = []) {
+    if (empty($value)) {
+      return '';
+    }
+
     $format = $this->getFormat($element);
     switch ($format) {
       case 'link':

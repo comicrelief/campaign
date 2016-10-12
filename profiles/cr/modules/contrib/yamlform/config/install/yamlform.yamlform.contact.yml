@@ -1,20 +1,22 @@
 langcode: en
 status: true
 dependencies: {  }
+uid: null
+template: false
 id: contact
 title: Contact
-description: 'Basic email contact form'
-inputs: |
+description: 'Basic email contact form.'
+elements: |
   name:
     '#title': 'Your Name'
     '#type': textfield
     '#required': true
-    '#default_value': '[current-user:display-name]'
+    '#default_value': '[yamlform-authenticated-user:display-name]'
   email:
     '#title': 'Your Email'
     '#type': email
     '#required': true
-    '#default_value': '[current-user:mail]'
+    '#default_value': '[yamlform-authenticated-user:mail]'
   subject:
     '#title': 'Subject'
     '#type': textfield
@@ -29,10 +31,24 @@ settings:
   page: true
   page_submit_path: ''
   page_confirm_path: ''
-  form_closed_message: ''
-  form_exception_message: ''
   form_submit_label: 'Send message'
+  form_exception_message: ''
+  form_closed_message: ''
+  form_confidential: false
+  form_confidential_message: ''
   form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_novalidate: false
+  form_autofocus: false
+  form_details_toggle: false
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_next_button_label: ''
+  wizard_prev_button_label: ''
+  wizard_start_label: ''
+  wizard_complete: true
+  wizard_complete_label: ''
   preview: 0
   preview_next_button_label: ''
   preview_prev_button_label: ''
@@ -42,14 +58,17 @@ settings:
   draft_button_label: ''
   draft_saved_message: ''
   draft_loaded_message: ''
-  confirmation_type: url
+  confirmation_type: url_message
   confirmation_message: 'Your message has been sent.'
   confirmation_url: '<front>'
   limit_total: null
   limit_total_message: ''
   limit_user: null
   limit_user_message: ''
+  entity_limit_total: null
+  entity_limit_user: null
   results_disabled: false
+  token_update: false
 access:
   create:
     roles:
@@ -85,13 +104,15 @@ handlers:
     status: true
     weight: 1
     settings:
-      to_mail: '[yamlform-submission:values:email:value]'
+      to_mail: '[yamlform-submission:values:email:raw]'
+      cc_mail: ''
+      bcc_mail: ''
       from_mail: default
       from_name: default
       subject: '[yamlform-submission:values:subject:value]'
-      body: '[yamlform-submission:values:subject:value]'
-      excluded_inputs: {  }
-      html: false
+      body: '[yamlform-submission:values:message:value]'
+      excluded_elements: {  }
+      html: true
       attachments: false
       debug: false
   email_notification:
@@ -102,11 +123,13 @@ handlers:
     weight: 1
     settings:
       to_mail: default
-      from_mail: '[yamlform-submission:values:email:value]'
+      cc_mail: ''
+      bcc_mail: ''
+      from_mail: '[yamlform-submission:values:email:raw]'
       from_name: '[yamlform-submission:values:name:value]'
       subject: '[yamlform-submission:values:subject:value]'
-      body: '[yamlform-submission:values:subject:value]'
-      excluded_inputs: {  }
-      html: false
+      body: '[yamlform-submission:values:message:value]'
+      excluded_elements: {  }
+      html: true
       attachments: false
       debug: false

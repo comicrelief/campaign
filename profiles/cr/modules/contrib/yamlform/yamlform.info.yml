@@ -1,18 +1,15 @@
 name: 'YAML Form'
 type: module
 description: 'Enables the creation of forms and questionnaires.'
-package: Forms
+package: 'YAML Form'
 # core: 8.x
 configure: entity.yamlform.collection
 dependencies:
   - field
-  - node
-  - path
-  - text
   - user
 
-# Information added by Drupal.org packaging script on 2016-04-21
-version: '8.x-1.0-alpha5'
+# Information added by Drupal.org packaging script on 2016-10-05
+version: '8.x-1.0-beta20'
 core: '8.x'
 project: 'yamlform'
-datestamp: 1461244146
+datestamp: 1475681443

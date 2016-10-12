@@ -1,0 +1,42 @@
+/**
+ * @file
+ * Signature element styles.
+ *
+ * @see https://css-tricks.com/snippets/sass/maintain-aspect-ratio-mixin/
+ */
+
+.yamlform-signature-pad {
+  position: relative;
+  background-color: #f0f0f0;
+}
+
+.yamlform-signature-pad:before {
+  display: block;
+  content: "";
+  width: 100%;
+  padding-top: 33%;
+}
+
+.yamlform-signature-pad canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  cursor: crosshair;
+}
+
+.yamlform-signature-pad .button {
+  z-index: 100;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+}
+
+.yamlform-signature-pad-image {
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  border: 1px solid #ccc;
+}

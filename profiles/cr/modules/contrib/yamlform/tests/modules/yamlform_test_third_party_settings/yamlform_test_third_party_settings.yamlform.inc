@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Integrates third party settings for the YAML form module.
+ * Integrates third party settings for the YAML Form module.
  */
 
 use Drupal\Core\Form\FormStateInterface;
@@ -16,12 +16,12 @@ function yamlform_test_third_party_settings_form_yamlform_admin_third_party_sett
 
   $form['third_party_settings']['yamlform_test_third_party_settings'] = [
     '#type' => 'details',
-    '#title' => t('YAML form test third party admin settings'),
+    '#title' => t('Form test third party admin settings'),
     '#open' => TRUE,
   ];
   $form['third_party_settings']['yamlform_test_third_party_settings']['message'] = [
     '#type' => 'textfield',
-    '#title' => t('Display the below message on every YAML form'),
+    '#title' => t('Display the below message on every form'),
     '#default_value' => $third_party_settings_manager->getThirdPartySetting('yamlform_test_third_party_settings', 'message'),
   ];
 }
@@ -35,7 +35,7 @@ function yamlform_test_third_party_settings_form_yamlform_third_party_settings_f
 
   $form['third_party_settings']['yamlform_test_third_party_settings'] = [
     '#type' => 'details',
-    '#title' => t('YAML form test third party settings'),
+    '#title' => t('Form test third party settings'),
     '#open' => TRUE,
   ];
   $form['third_party_settings']['yamlform_test_third_party_settings']['message'] = [
@@ -60,7 +60,7 @@ function yamlform_test_third_party_settings_yamlform_submission_form_alter(&$for
   $yamlform_submission = $form_state->getFormObject()->getEntity();
   $yamlform = $yamlform_submission->getYamlForm();
 
-  // Get message from the YAML form settings or the YAML form admin settings.
+  // Get message from the form settings or the form admin settings.
   $message = $yamlform->getThirdPartySetting('yamlform_test_third_party_settings', 'message') ?:
     $third_party_settings_manager->getThirdPartySetting('yamlform_test_third_party_settings', 'message');
 

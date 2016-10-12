@@ -2,8 +2,11 @@
 
 /**
  * @file
- * Support module for YAML form related testing.
+ * Support module for form related testing.
  */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Component\Serialization\Yaml;
 
 /**
  * Implements hook_theme().
@@ -24,4 +27,104 @@ function yamlform_test_yamlform_options_test_alter(array &$options, array &$elem
   $options['one'] = 'one';
   $options['two'] = 'two';
   $options['three'] = 'three';
+}
+
+/**
+ * Implements hook_yamlform_form_FORM_ID_alter().
+ */
+function yamlform_test_form_yamlform_submission_test_form_validate_form_alter(array &$form, FormStateInterface $form_state) {
+  $form['elements']['custom']['#description'] = t('Field is <b>required</b> using custom validation handler.');
+  $form['#validate'][] = 'yamlform_test_form_yamlform_submission_test_form_validate_form_validate';
+}
+
+/**
+ * Implements hook_form_validate().
+ */
+function yamlform_test_form_yamlform_submission_test_form_validate_form_validate($form, FormStateInterface $form_state) {
+  if (!$form_state->getValue('custom')) {
+    $form_state->setErrorByName('custom', t('Custom element is required.'));
+  }
+}
+
+/**
+ * Implements hook_yamlform_load().
+ */
+function yamlform_test_yamlform_load(array $entities) {
+  $include_base_path = drupal_get_path('module', 'yamlform_test') . '/includes';
+  foreach ($entities as $id => $entity) {
+    // Note: Comment out the below line to regenerate form elements on every
+    // YamlForm entity load.
+    if ($entity->getElementsRaw()) {
+      continue;
+    }
+
+    $elements = [];
+    if (strpos($id, 'test_form_long_') === 0) {
+      $length = (int) str_replace('test_form_long_', '', $id);
+      $elements = [];
+      for ($i = 1; $i <= $length; $i++) {
+        $elements["element_$i"] = [
+          '#type' => 'textfield',
+          '#title' => (string) t('Element #@index', ['@index' => $i]),
+        ];
+      }
+    }
+    elseif (file_exists("$include_base_path/yamlform_test.$id.inc")) {
+      module_load_include('inc', 'yamlform_test', 'includes/yamlform_test.' . $id);
+      $function = 'yamlform_test_' . $id;
+      $elements = $function();
+    }
+
+    if ($elements) {
+      $entity->setElements($elements);
+      // Issue: Unable to execute YamlForm::save().
+      // $entity->save();
+      // Workaround: Write the elements directory to yamlform config.
+      \Drupal::configFactory()->getEditable('yamlform.yamlform.' . $id)
+        ->set('elements', Yaml::encode($elements))
+        ->save();
+    }
+  }
+}
+
+/**
+ * Get issues related to elements #states API.
+ *
+ * @return array
+ *   Associative array containing issues related to elements #states API.
+ */
+function _yamlform_test_issues() {
+  return [
+    'datetime' => [
+      2419131 => '#states attribute does not work on #type datetime',
+    ],
+    'details' => [
+      2348851 => 'Regression: Allow HTML tags inside detail summary',
+    ],
+    'item' => [
+      783438 => '#states doesn\'t work for #type item',
+    ],
+    'managed_file' => [
+      2705471 => 'Form states managed file fields',
+    ],
+    'password_confirm' => [
+      1427838 => 'password and password_confirm children do not pick up #states or #attributes',
+    ],
+    'select' => [
+      1426646 => '"-Select-" option is lost when form elements uses \'#states\'',
+      1149078 => 'States API doesn\'t work with multiple select fields',
+      2791741 => 'FAPI states: fields aren\'t hidden initally when depending on multi-value selection',
+    ],
+    'radios' => [
+      2731991 => 'Setting required on radios marks all options required',
+      994360 => '#states cannot disable/enable radios and checkboxes',
+    ],
+    'text_format' => [
+      997826 => '#states doesn\'t work correctly with type text_format',
+      2625128 => 'Text format selection stays visible when using editor and a hidden form state',
+    ],
+    'yamlform_markup' => [
+      2700667 => 'Notice: Undefined index: #type in drupal_process_states()',
+    ],
+  ];
 }

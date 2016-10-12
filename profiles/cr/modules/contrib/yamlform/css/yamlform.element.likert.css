@@ -1,0 +1,94 @@
+/**
+ * @file
+ * Likert element styles.
+ */
+
+/**
+ * Answer widths
+ */
+[data-likert-answers-count="2"] th {
+  width: 30%;
+}
+[data-likert-answers-count="3"] th {
+  width: 20%;
+}
+[data-likert-answers-count="4"] th {
+  width: 15%;
+}
+[data-likert-answers-count="5"] th {
+  width: 12%;
+}
+[data-likert-answers-count="6"] th {
+  width: 10%;
+}
+[data-likert-answers-count="7"] th {
+  width: 8.57%;
+}
+[data-likert-answers-count="8"] th {
+  width: 7.5%;
+}
+[data-likert-answers-count="9"] th {
+  width: 6.66%;
+}
+[data-likert-answers-count="10"] th {
+  width: 6%;
+}
+
+/**
+ * Basic table formatting.
+ */
+.yamlform-likert-table th,
+.yamlform-likert-table td {
+  text-align: center;
+}
+
+.form-type-yamlform-likert td label {
+  display: none;
+}
+
+.yamlform-likert-table th:first-child,
+.yamlform-likert-table td:first-child {
+  text-align: inherit;
+  width: 40%;
+}
+
+.form-type-yamlform-likert td:first-child label {
+  display: block;
+}
+
+/**
+ * Mobile support to likert form element table.
+ */
+@media (max-width: 768px) {
+  .form-type-yamlform-likert table {
+    border-collapse: collapse;
+    font-size: inherit;
+  }
+
+  .form-type-yamlform-likert thead {
+    display: none;
+  }
+
+  .form-type-yamlform-likert tr,
+  .form-type-yamlform-likert tr.odd {
+    border: 0;
+    background: transparent;
+  }
+
+  .form-type-yamlform-likert td {
+    display: block;
+    width: 100% !important;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    text-align: inherit;
+  }
+
+  .form-type-yamlform-likert td label {
+    display: inline;
+  }
+
+  .form-type-yamlform-likert td:last-child {
+    margin-bottom: 1em;
+  }
+}

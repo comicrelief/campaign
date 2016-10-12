@@ -1,0 +1,53 @@
+/**
+ * @file
+ * Options element styles.
+ */
+
+.yamlform-options-table {
+  max-width: 800px;
+}
+
+.yamlform-options-table td {
+  white-space: nowrap;
+}
+
+.yamlform-options-table th:last-child,
+.yamlform-options-table td:last-child {
+  padding: 0 4px;
+  vertical-align: middle;
+  text-align: center;
+  width: 24px;
+}
+
+.yamlform-options-table td input[type="text"] {
+  width: 95%;
+}
+
+.yamlform-options-table .yamlform-options-sort-weight {
+  width: 4em;
+}
+
+.yamlform-options-table td input[type="image"] {
+  padding: 0;
+  width: 16px;
+  height: 16px;
+}
+
+.yamlform-options-table .container-inline input[type="submit"] {
+  width: inherit !important;
+}
+
+/**
+ * Hide AJAX throbber.
+ */
+.form-type-yamlform-options .ajax-progress-throbber .message {
+  display: none;
+}
+
+/**
+ * Suppress table drag warnings.
+ */
+.yamlform-options-table .tabledrag-changed-warning,
+.yamlform-options-table .tabledrag-changed {
+  display: none !important;
+}

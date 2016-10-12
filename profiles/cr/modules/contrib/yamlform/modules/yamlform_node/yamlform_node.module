@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * @file
+ * Provides a form content type which allows forms to be integrated into a website as nodes.
+ */
+
+use Drupal\Core\Session\AccountInterface;
+use Drupal\node\NodeInterface;
+use Drupal\Core\Access\AccessResult;
+
+/**
+ * Implements hook_node_access().
+ */
+function yamlform_node_node_access(NodeInterface $node, $operation, AccountInterface $account) {
+  if (strpos($operation, 'yamlform_submission_') !== 0) {
+    return AccessResult::neutral();
+  }
+  else {
+    // Check that the node has a yamlform field that has been populated.
+    if (!$node->hasField('yamlform') || !$node->yamlform->entity) {
+      return AccessResult::forbidden();
+    }
+
+    // Check administer form submissions.
+    if ($account->hasPermission('administer yamlform submission')) {
+      return AccessResult::allowed();
+    }
+
+    // Change access to ANY submission.
+    $operation = str_replace('yamlform_submission_', '', $operation);
+    $any_permission = "$operation yamlform submissions any node";
+    if ($account->hasPermission($any_permission)) {
+      return AccessResult::allowed();
+    }
+
+    // Change access to submission associated with the node's form.
+    $own_permission = "$operation yamlform submissions own node";
+    if ($account->hasPermission($own_permission) && $node->getOwnerId() === $account->id()) {
+      return AccessResult::allowed();
+    }
+
+    return AccessResult::forbidden();
+  }
+}

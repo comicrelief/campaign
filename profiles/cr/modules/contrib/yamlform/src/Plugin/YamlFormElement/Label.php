@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\Plugin\YamlFormElement\Label.
- */
-
 namespace Drupal\yamlform\Plugin\YamlFormElement;
 
 /**
@@ -12,7 +7,10 @@ namespace Drupal\yamlform\Plugin\YamlFormElement;
  *
  * @YamlFormElement(
  *   id = "label",
- *   label = @Translation("Details")
+ *   api = "https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Render!Element!Label.php/class/Label",
+ *   label = @Translation("Label"),
+ *   category = @Translation("Containers"),
+ *   states_wrapper = TRUE,
  * )
  */
 class Label extends ContainerBase {

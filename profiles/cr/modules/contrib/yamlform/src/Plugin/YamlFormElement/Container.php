@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\Plugin\YamlFormElement\Container.
- */
-
 namespace Drupal\yamlform\Plugin\YamlFormElement;
 
 /**
@@ -12,9 +7,23 @@ namespace Drupal\yamlform\Plugin\YamlFormElement;
  *
  * @YamlFormElement(
  *   id = "container",
- *   label = @Translation("Container")
+ *   api = "https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Render!Element!Container.php/class/Container",
+ *   label = @Translation("Container"),
+ *   category = @Translation("Containers"),
  * )
  */
 class Container extends ContainerBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getDefaultProperties() {
+    return [
+      'attributes__class' => '',
+      'attributes__style' => '',
+      'flex' => 1,
+      'states' => [],
+    ];
+  }
 
 }

@@ -1,29 +1,26 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\Plugin\YamlFormElement\Checkbox.
- */
-
 namespace Drupal\yamlform\Plugin\YamlFormElement;
-
-use Drupal\yamlform\YamlFormElementBase;
 
 /**
  * Provides a 'checkbox' element.
  *
  * @YamlFormElement(
  *   id = "checkbox",
- *   label = @Translation("Checkbox")
+ *   api = "https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Render!Element!Checkbox.php/class/Checkbox",
+ *   label = @Translation("Checkbox"),
+ *   category = @Translation("Basic elements"),
  * )
  */
-class Checkbox extends YamlFormElementBase {
+class Checkbox extends BooleanBase {
 
   /**
    * {@inheritdoc}
    */
-  public function formatText(array &$element, $value, array $options = []) {
-    return $this->t('Yes');
+  public function getDefaultProperties() {
+    $properties = parent::getDefaultProperties();
+    $properties['title_display'] = 'after';
+    return $properties;
   }
 
 }

@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Hooks related to YAML form module.
+ * Hooks related to YAML Form module.
  */
 
 /**
@@ -14,7 +14,7 @@
  * Alter the information provided in \Drupal\yamlform\Annotation\YamlFormElement.
  *
  * @param array $elements
- *   The array of YAML form handlers, keyed on the machine-readable element name.
+ *   The array of form handlers, keyed on the machine-readable element name.
  */
 function hook_yamlform_element_info_alter(array &$elements) {
 
@@ -24,28 +24,28 @@ function hook_yamlform_element_info_alter(array &$elements) {
  * Alter the information provided in \Drupal\yamlform\Annotation\YamlFormHandler.
  *
  * @param array $handlers
- *   The array of YAML form handlers, keyed on the machine-readable handler name.
+ *   The array of form handlers, keyed on the machine-readable handler name.
  */
 function hook_yamlform_handler_info_alter(array &$handlers) {
 
 }
 
 /**
- * Alter the YAML form options by id.
+ * Alter form options by id.
  *
  * @param array $options
  *   An associative array of options.
  * @param array $element
  *   The form element that the options is for.
  * @param string $options_id
- *   The YAML form options id.
+ *   The form options id. Set to NULL if the options are custom.
  */
-function hook_yamlform_options_alter(array &$options, array &$element, $options_id) {
+function hook_yamlform_options_alter(array &$options, array &$element, $options_id = NULL) {
 
 }
 
 /**
- * Alter the YAML form options by id.
+ * Alter the form options by id.
  *
  * @param array $options
  *   An associative array of options.
@@ -57,11 +57,11 @@ function hook_yamlform_options_YAMLFORM_OPTIONS_ID_alter(array &$options, array 
 }
 
 /**
- * Perform alterations before a YAML form submission form is rendered.
+ * Perform alterations before a form submission form is rendered.
  *
  * This hook is identical to hook_form_alter() but allows the
  * hook_yamlform_submission_form_alter() function to be stored in a dedicated
- * include file and it also allow the YAML form module to implement form alter
+ * include file and it also allows the YAML Form module to implement form alter
  * logic on another module's behalf.
  *
  * @param array $form

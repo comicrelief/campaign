@@ -1,10 +1,10 @@
 {#
 /**
  * @file
- * Default theme implementation for a YAML form base element as text.
+ * Default theme implementation for a form base element as text.
  *
  * Available variables:
- * - element: The YAML form element.
+ * - element: The form element.
  * - title: The label for the element.
  * - value: The content for the element.
  * - options Associative array of options for element.
@@ -13,7 +13,7 @@
  *   - first: Flag to determine if the element is that first element in its container.
  *   - last: Flag to determine if the element is that last element in its container.
  *
- * @see \Drupal\yamlform\YamlFormSubmissionViewBuilder::buildInputs
+ * @see \Drupal\yamlform\YamlFormSubmissionViewBuilder::buildElements
  */
 #}
 {% if title %}{{ title }}{% if options.multiline %}:

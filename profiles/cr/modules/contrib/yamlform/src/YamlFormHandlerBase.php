@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\YamlFormHandlerBase.
- */
-
 namespace Drupal\yamlform;
 
 use Drupal\Core\Form\FormStateInterface;
@@ -13,44 +8,45 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Provides a base class for a YAML form handler.
+ * Provides a base class for a form handler.
  *
  * @see \Drupal\yamlform\YamlFormHandlerInterface
  * @see \Drupal\yamlform\YamlFormHandlerManager
+ * @see \Drupal\yamlform\YamlFormHandlerManagerInterface
  * @see plugin_api
  */
 abstract class YamlFormHandlerBase extends PluginBase implements YamlFormHandlerInterface {
 
   /**
-   * The YAML form .
+   * The form .
    *
-   * @var \Drupal\yamlform\Entity\YamlForm
+   * @var \Drupal\yamlform\YamlFormInterface
    */
   protected $yamlform = NULL;
 
   /**
-   * The YAML form handler ID.
+   * The form handler ID.
    *
    * @var string
    */
   protected $handler_id;
 
   /**
-   * The YAML form handler label.
+   * The form handler label.
    *
    * @var string
    */
   protected $label;
 
   /**
-   * The YAML form handler status.
+   * The form handler status.
    *
-   * @var boolean
+   * @var bool
    */
   protected $status = 1;
 
   /**
-   * The weight of the YAML form handler.
+   * The weight of the form handler.
    *
    * @var int|string
    */
@@ -86,13 +82,13 @@ abstract class YamlFormHandlerBase extends PluginBase implements YamlFormHandler
   }
 
   /**
-   * Initialize YAML form handler.
+   * Initialize form handler.
    *
    * @param \Drupal\yamlform\YamlFormInterface $yamlform
-   *   A YAML form object.
+   *   A form object.
    *
    * @return $this
-   *   This YAML form handler.
+   *   This form handler.
    */
   public function init(YamlFormInterface $yamlform) {
     $this->yamlform = $yamlform;
@@ -100,10 +96,10 @@ abstract class YamlFormHandlerBase extends PluginBase implements YamlFormHandler
   }
 
   /**
-   * Get the YAML form that this handler is attached to.
+   * Get the form that this handler is attached to.
    *
    * @return \Drupal\yamlform\Entity\YamlForm
-   *   A YAML form.
+   *   A form.
    */
   public function getYamlForm() {
     return $this->yamlform;
@@ -206,7 +202,6 @@ abstract class YamlFormHandlerBase extends PluginBase implements YamlFormHandler
     return $this->weight;
   }
 
-
   /**
    * {@inheritdoc}
    */
@@ -288,7 +283,7 @@ abstract class YamlFormHandlerBase extends PluginBase implements YamlFormHandler
   /**
    * {@inheritdoc}
    */
-  public function alterInputs(array &$inputs, YamlFormInterface $yamlform) {}
+  public function alterElements(array &$elements, YamlFormInterface $yamlform) {}
 
   /**
    * {@inheritdoc}
@@ -304,6 +299,11 @@ abstract class YamlFormHandlerBase extends PluginBase implements YamlFormHandler
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state, YamlFormSubmissionInterface $yamlform_submission) {}
+
+  /**
+   * {@inheritdoc}
+   */
+  public function confirmForm(array &$form, FormStateInterface $form_state, YamlFormSubmissionInterface $yamlform_submission) {}
 
   /**
    * {@inheritdoc}

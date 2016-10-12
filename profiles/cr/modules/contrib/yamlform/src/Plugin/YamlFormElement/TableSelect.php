@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\Plugin\YamlFormElement\TableSelect.
- */
-
 namespace Drupal\yamlform\Plugin\YamlFormElement;
 
 use Drupal\yamlform\YamlFormSubmissionInterface;
@@ -14,7 +9,10 @@ use Drupal\yamlform\YamlFormSubmissionInterface;
  *
  * @YamlFormElement(
  *   id = "tableselect",
- *   label = @Translation("Table select")
+ *   api = "https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Render!Element!Tableselect.php/class/Tableselect",
+ *   label = @Translation("Table select"),
+ *   category = @Translation("Options elements"),
+ *   multiple = TRUE,
  * )
  */
 class TableSelect extends OptionsBase {
@@ -23,6 +21,11 @@ class TableSelect extends OptionsBase {
    * {@inheritdoc}
    */
   public function prepare(array &$element, YamlFormSubmissionInterface $yamlform_submission) {
+    parent::prepare($element, $yamlform_submission);
+
+    // Add .js-form.wrapper to fix #states handling.
+    $element['#attributes']['class'][] = 'js-form-wrapper';
+
     // Add one column header is not #header is specified.
     if (!isset($element['#header'])) {
       $element['#header'] = [
@@ -41,14 +44,28 @@ class TableSelect extends OptionsBase {
         }
       }
     }
-    parent::prepare($element, $yamlform_submission);
+
+    $element['#element_validate'][] = [get_class($this), 'validateMultipleOptions'];
   }
 
   /**
    * {@inheritdoc}
    */
-  public function setDefaultValue(array &$element, $default_value) {
-    $element['#default_value'] = array_combine($element['#default_value'], $element['#default_value']);
+  public function setDefaultValue(array &$element) {
+    if (isset($element['#default_value'])) {
+      $element['#default_value'] = array_combine($element['#default_value'], $element['#default_value']);
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function getElementSelectorInputsOptions(array $element) {
+    $selectors = $element['#options'];
+    foreach ($selectors as $value => &$text) {
+      $text .= ' [' . $this->t('Checkbox') . ']';
+    }
+    return $selectors;
   }
 
 }

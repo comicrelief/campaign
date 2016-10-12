@@ -1,0 +1,50 @@
+item:
+  '#markup': '{markup}'
+  '#field_prefix': '{field_prefix}'
+  '#field_suffix': '{field_suffix}'
+number:
+  '#min': 0
+  '#max': 10
+  '#step': 1
+range:
+  '#min': 0
+  '#max': 100
+  '#step': 1
+  '#range__output': true
+  '#range__output_prefix': '$'
+  '#range__output_suffix': '.00'
+entity_autocomplete:
+  '#target_type': 'user'
+  '#selection_handler': 'default:user'
+  '#selection_settings':
+    include_anonymous: true
+language_select:
+  '#languages': 3
+yamlform_codemirror:
+  '#mode': yaml
+yamlform_likert:
+  '#questions':
+    q1: 'Please answer question 1?'
+    q2: 'How about now answering question 2?'
+    q3: 'Finally, here is question 3?'
+  '#answers':
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+yamlform_entity_select:
+  '#target_type': 'user'
+  '#selection_handler': 'default:user'
+  '#selection_settings':
+    include_anonymous: true
+yamlform_entity_checkboxes:
+  '#target_type': 'user'
+  '#selection_handler': 'default:user'
+  '#selection_settings':
+    include_anonymous: true
+yamlform_entity_radios:
+  '#target_type': 'user'
+  '#selection_handler': 'default:user'
+  '#selection_settings':
+    include_anonymous: true

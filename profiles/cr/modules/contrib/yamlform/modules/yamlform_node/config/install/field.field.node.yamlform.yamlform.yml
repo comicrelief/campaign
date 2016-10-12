@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.yamlform
+    - node.type.yamlform
+  module:
+    - yamlform
+id: node.yamlform.yamlform
+field_name: yamlform
+entity_type: node
+bundle: yamlform
+label: 'Form'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  default_data: ''
+  status: true
+  handler: 'default:yamlform'
+  handler_settings: {  }
+field_type: yamlform

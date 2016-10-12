@@ -1,19 +1,14 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\yamlform\Unit\YamlFormArrayHelperTest.
- */
-
 namespace Drupal\Tests\yamlform\Unit;
 
 use Drupal\yamlform\Utility\YamlFormArrayHelper;
 use Drupal\Tests\UnitTestCase;
 
 /**
- * Tests YAML form array utility.
+ * Tests form array utility.
  *
- * @group PHPUnit
+ * @group YamlFormUnit
  *
  * @coversDefaultClass \Drupal\yamlform\Utility\YamlFormArrayHelper
  */

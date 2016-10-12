@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\Plugin\YamlFormElement\Fieldset.
- */
-
 namespace Drupal\yamlform\Plugin\YamlFormElement;
 
 /**
@@ -12,9 +7,20 @@ namespace Drupal\yamlform\Plugin\YamlFormElement;
  *
  * @YamlFormElement(
  *   id = "fieldset",
- *   label = @Translation("Fieldset")
+ *   api = "https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Render!Element!Fieldset.php/class/Fieldset",
+ *   label = @Translation("Fieldset"),
+ *   category = @Translation("Containers"),
  * )
  */
 class Fieldset extends ContainerBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getDefaultProperties() {
+    return parent::getDefaultProperties() + [
+      'open' => FALSE,
+    ];
+  }
 
 }

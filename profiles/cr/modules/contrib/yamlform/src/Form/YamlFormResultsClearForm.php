@@ -1,16 +1,11 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\yamlform\Form\YamlFormResultsClearForm.
- */
-
 namespace Drupal\yamlform\Form;
 
 use Drupal\Core\Url;
 
 /**
- * Form for YAML form results clear form.
+ * Form for form results clear form.
  */
 class YamlFormResultsClearForm extends YamlFormSubmissionsDeleteFormBase {
 
@@ -25,21 +20,35 @@ class YamlFormResultsClearForm extends YamlFormSubmissionsDeleteFormBase {
    * {@inheritdoc}
    */
   public function getQuestion() {
-    return $this->t('Are you sure you want to delete all submissions to %title form?', ['%title' => $this->yamlform->label()]);
+    if ($this->sourceEntity) {
+      $t_args = ['%title' => $this->sourceEntity->label()];
+    }
+    else {
+      $t_args = ['%title' => $this->yamlform->label()];
+    }
+    return $this->t('Are you sure you want to delete all submissions to %title form?', $t_args);
   }
 
   /**
    * {@inheritdoc}
    */
   public function getCancelUrl() {
-    return new Url('entity.yamlform.results_submissions', ['yamlform' => $this->yamlform->id()]);
+    $route_name = $this->requestHandler->getRouteName($this->yamlform, $this->sourceEntity, 'yamlform.results_submissions');
+    $route_parameters = $this->requestHandler->getRouteParameters($this->yamlform, $this->sourceEntity);
+    return new Url($route_name, $route_parameters);
   }
 
   /**
    * {@inheritdoc}
    */
   public function getMessage() {
-    $this->t('Form %title submissions cleared.', ['%title' => $this->yamlform->label()]);
+    if ($this->sourceEntity) {
+      $t_args = ['%title' => $this->sourceEntity->label()];
+    }
+    else {
+      $t_args = ['%title' => $this->yamlform->label()];
+    }
+    $this->t('Form %title submissions cleared.', $t_args);
   }
 
 }

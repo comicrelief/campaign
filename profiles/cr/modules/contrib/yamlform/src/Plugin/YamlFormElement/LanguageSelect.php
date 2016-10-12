@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\Plugin\YamlFormElement\LanguageSelect.
- */
-
 namespace Drupal\yamlform\Plugin\YamlFormElement;
 
 use Drupal\yamlform\YamlFormElementBase;
@@ -14,7 +9,9 @@ use Drupal\yamlform\YamlFormElementBase;
  *
  * @YamlFormElement(
  *   id = "language_select",
- *   label = @Translation("Language select")
+ *   api = "https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Render!Element!LanguageSelect.php/class/LanguageSelect",
+ *   label = @Translation("Language select"),
+ *   hidden = TRUE,
  * )
  */
 class LanguageSelect extends YamlFormElementBase {
@@ -39,7 +36,6 @@ class LanguageSelect extends YamlFormElementBase {
         return sprintf('%s (%s)', $language->getName(), $language->getId());
     }
   }
-
 
   /**
    * {@inheritdoc}

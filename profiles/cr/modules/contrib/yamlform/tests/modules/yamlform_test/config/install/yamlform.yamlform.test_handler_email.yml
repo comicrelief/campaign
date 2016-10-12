@@ -1,10 +1,12 @@
 langcode: en
 status: true
 dependencies: {  }
+uid: null
+template: false
 id: test_handler_email
 title: 'Test: Handler: Email'
-description: 'Test email handler.'
-inputs: |
+description: 'Test base plain text email handler.'
+elements: |
   first_name:
     '#title': 'First name'
     '#type': textfield
@@ -29,15 +31,29 @@ inputs: |
     '#title': 'Message'
     '#type': textarea
     '#required': true
-    '#default_value': default
+    '#default_value': '{message}'
 settings:
   page: true
   page_submit_path: ''
   page_confirm_path: ''
-  form_closed_message: ''
-  form_exception_message: ''
   form_submit_label: ''
+  form_exception_message: ''
+  form_closed_message: ''
+  form_confidential: false
+  form_confidential_message: ''
   form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_novalidate: false
+  form_autofocus: false
+  form_details_toggle: false
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_next_button_label: ''
+  wizard_prev_button_label: ''
+  wizard_start_label: ''
+  wizard_complete: true
+  wizard_complete_label: ''
   preview: 0
   preview_next_button_label: ''
   preview_prev_button_label: ''
@@ -54,7 +70,10 @@ settings:
   limit_total_message: ''
   limit_user: null
   limit_user_message: ''
+  entity_limit_total: null
+  entity_limit_user: null
   results_disabled: false
+  token_update: false
 access:
   create:
     roles:
@@ -91,11 +110,13 @@ handlers:
     weight: 1
     settings:
       to_mail: to@example.com
-      from_mail: '[yamlform-submission:values:email:value]'
+      cc_mail: cc@example.com
+      bcc_mail: bcc@example.com
+      from_mail: '[yamlform-submission:values:email:raw]'
       from_name: '[yamlform-submission:values:first_name] [yamlform-submission:values:last_name]'
       subject: '[yamlform-submission:values:subject:value]'
       body: default
-      excluded_inputs: {  }
+      excluded_elements: {  }
       html: false
       attachments: false
       debug: true

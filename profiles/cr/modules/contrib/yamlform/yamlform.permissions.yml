@@ -1,9 +1,24 @@
 'access yamlform overview':
-  title: 'Access the YAML form overview page'
-  description: 'Get an overview of all YAML forms.'
+  title: 'Access the form overview page'
+  description: 'Get an overview of all forms.'
 'administer yamlform':
-  title: 'Administer YAML forms'
-  description: '<em>Warning: Give to trusted roles only; this permission has security implications.</em> Administering YAML forms allows the user to render anything they specify to end-users.'
-
+  title: 'Administer forms'
+  description: 'Allows administration of global YAML configuration and options. <em>Warning: Give to trusted roles only; this permission has security implications.</em>'
 'administer yamlform submission':
-  title: 'Administer YAML form submissions'
+  title: 'Administer form submissions'
+  description: 'Allows accessing, updating, and deleting <em>all</em> form submissions.'
+'view any yamlform submission':
+  title: 'View any form submissions'
+  description: 'Allows viewing <em>all</em> forms and submissions.'
+'create yamlform':
+  title: 'Create forms'
+'edit any yamlform':
+  title: 'Edit any form'
+  description: 'Allows managing any form and its results. <em>Warning: Give to trusted roles only; this permission has security implications.</em>'
+'edit own yamlform':
+  title: 'Edit own form'
+  description: 'Allows managing of form created by the user and its results. <em>Warning: Give to trusted roles only; this permission has security implications.</em>'
+'delete any yamlform':
+  title: 'Delete any form'
+'delete own yamlform':
+  title: 'Delete own form'
