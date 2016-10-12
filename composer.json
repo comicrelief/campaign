@@ -74,6 +74,7 @@
         "drupal/cookieconsent": "^1.1",
         "drupal/search_api": "1.x-dev#895b507",
         "drupal/youtube": "1.0-beta3",
+        "mikeyp/google_tag": "dev-8.x-1.x",
         "phing/phing": "^2.15"
     },
     "require-dev": {
@@ -125,6 +126,10 @@
                     "type": "zip"
                 }
             }
+        },
+        "4": {
+            "type": "vcs",
+            "url": "https://github.com/mikeyp/google_tag"
         },
         "packagist": {
             "type": "composer",
@@ -191,6 +196,9 @@
             },
             "drupal/media_entity": {
                 "hook_requirements-have-to-return-an-array": "https://www.drupal.org/files/issues/2717375-hook_requirements-have-to-return-an-array.patch"
+            },
+            "mikeyp/google_tag": {
+                "Patch from https://gist.github.com/pvhee/166ddfb556b9d1e2870b903e1b54847d. Apply this patch if not Travis builds in RND17 etc. will fail on Behat tests. See e.g. https://travis-ci.com/comicrelief/rnd17/builds/30910019": "https://gist.githubusercontent.com/pvhee/166ddfb556b9d1e2870b903e1b54847d/raw/94e2936f57e725c3afa0f450ec32a24f9e5698d6/google_tag_broken_tests.patch"
             }
         }
     },

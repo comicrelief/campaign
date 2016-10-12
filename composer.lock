@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e7903d504ed6b3e6df4e6a827fd569f8",
-    "content-hash": "4b041075f4a33fce2e9ce1bdc824513c",
+    "hash": "1f38e3f3a0fdfcfd9aa5602568cb6616",
+    "content-hash": "a5346476362c1fb399c9009f86d39828",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -4614,7 +4614,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/youtube-8.x-1.0-beta3.zip",
-                "reference": null,
+                "reference": "8.x-1.0-beta3",
                 "shasum": "bea118474961f0e89d3aae29a20e97c6bdb6128b"
             },
             "require": {
@@ -5327,6 +5327,36 @@
                 "xml"
             ],
             "time": "2016-09-22 11:01:11"
+        },
+        {
+            "name": "mikeyp/google_tag",
+            "version": "dev-8.x-1.x",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mikeyp/google_tag.git",
+                "reference": "4c35b508650f3268012abd4afbe4e309eb5297da"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mikeyp/google_tag/zipball/4c35b508650f3268012abd4afbe4e309eb5297da",
+                "reference": "4c35b508650f3268012abd4afbe4e309eb5297da",
+                "shasum": ""
+            },
+            "type": "drupal-module",
+            "extra": {
+                "patches_applied": {
+                    "Patch from https://gist.github.com/pvhee/166ddfb556b9d1e2870b903e1b54847d. Apply this patch if not Travis builds in RND17 etc. will fail on Behat tests. See e.g. https://travis-ci.com/comicrelief/rnd17/builds/30910019": "https://gist.githubusercontent.com/pvhee/166ddfb556b9d1e2870b903e1b54847d/raw/94e2936f57e725c3afa0f450ec32a24f9e5698d6/google_tag_broken_tests.patch"
+                }
+            },
+            "license": [
+                "GPL 2.0+"
+            ],
+            "description": "Allows your website analytics to be managed using Google Tag Manager.",
+            "support": {
+                "source": "https://github.com/mikeyp/google_tag/tree/8.x-1.x",
+                "issues": "https://github.com/mikeyp/google_tag/issues"
+            },
+            "time": "2016-06-15 22:09:45"
         },
         {
             "name": "nikic/php-parser",
@@ -9431,7 +9461,8 @@
         "drupal/panels": 20,
         "drupal/social_links": 20,
         "drupal/view_modes_display": 20,
-        "drupal/search_api": 20
+        "drupal/search_api": 20,
+        "mikeyp/google_tag": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
