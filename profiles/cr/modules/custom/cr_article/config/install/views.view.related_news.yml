@@ -242,8 +242,21 @@ display:
           expose:
             label: ''
           granularity: second
-      title: 'Keep up with all the news'
-      header: {  }
+      title: 'Related news'
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          tokenize: false
+          content:
+            value: '[view:title]'
+            format: basic_html
+          plugin_id: text
       footer:
         area:
           id: area
