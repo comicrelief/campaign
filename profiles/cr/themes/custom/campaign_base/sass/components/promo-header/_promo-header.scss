@@ -73,6 +73,11 @@
     background: $colour-white;
     @include breakpoint-gutters;
   }
+  .promo-header--no-image & {
+    @include translateY(0);
+    position: relative;
+    top: 0;
+  }
   .promo-header__content-inner {
     margin: 25px auto 15px;
     word-break: break-word;
