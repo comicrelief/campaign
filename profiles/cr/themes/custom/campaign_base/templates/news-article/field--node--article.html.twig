@@ -28,7 +28,9 @@
  	{% elseif field_name == 'field_article_image' %}
     	<div class ='cr-article__image'> {{item.content}}</div>	
  	{% elseif field_name == 'field_video_embed'%}
-    	<div class ='cr-article__video'> {{item.content}}</div>	
+    	<div class ='cr-article__video'> {{item.content}}</div>
+    {% elseif field_name == 'field_image_caption'%}
+    	<figcaption class = 'cr-article__caption'>{{item.content}}</figcaption>	
   	{% else %}
     	{{item.content}}
   	{% endif %} 
