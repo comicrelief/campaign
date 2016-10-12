@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.article.field_article_intro
     - field.field.node.article.field_article_meta_tags
     - field.field.node.article.field_article_publish_date
+    - field.field.node.article.field_image_caption
     - field.field.node.article.field_video_embed
     - field.field.node.article.publishing_date
     - node.type.article
@@ -131,6 +132,7 @@ third_party_settings:
         - field_article_publish_date
         - field_article_image
         - field_video_embed
+        - field_image_caption
       second:
         - body
       fourth:
@@ -138,7 +140,7 @@ third_party_settings:
     fields:
       'dynamic_block_field:node-related_news':
         plugin_id: 'dynamic_block_field:node-related_news'
-        weight: 6
+        weight: 7
         label: above
         formatter: default
       node_title:
@@ -157,13 +159,13 @@ mode: full
 content:
   body:
     type: text_default
-    weight: 5
+    weight: 6
     label: visually_hidden
     settings: {  }
     third_party_settings: {  }
   field_article_category:
     type: entity_reference_entity_view
-    weight: 15
+    weight: 16
     label: hidden
     settings:
       view_mode: default
@@ -179,13 +181,13 @@ content:
     type: responsive_image
   field_article_intro:
     type: text_default
-    weight: 17
+    weight: 18
     label: visually_hidden
     settings: {  }
     third_party_settings: {  }
   field_article_meta_tags:
     type: metatag_empty_formatter
-    weight: 16
+    weight: 17
     label: above
     settings: {  }
     third_party_settings: {  }
@@ -196,6 +198,13 @@ content:
     settings:
       timezone_override: Europe/London
       date_format: 'j F Y'
+    third_party_settings: {  }
+  field_image_caption:
+    type: string
+    weight: 5
+    label: hidden
+    settings:
+      link_to_entity: false
     third_party_settings: {  }
   field_video_embed:
     type: video_embed_field_video
@@ -208,12 +217,12 @@ content:
       autoplay: true
     third_party_settings: {  }
   links:
-    weight: 18
+    weight: 19
     settings: {  }
     third_party_settings: {  }
   publishing_date:
     type: entity_reference_entity_view
-    weight: 14
+    weight: 15
     label: hidden
     settings:
       view_mode: default
