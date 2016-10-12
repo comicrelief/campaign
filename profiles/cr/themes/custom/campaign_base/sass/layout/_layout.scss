@@ -70,7 +70,7 @@ $susy: (
     padding: 0 calc((4 * #{gutter()}));
     @include breakpoint($screen-md) {
       padding: 0 calc((2 * #{gutter()}));
-      width: span(10);
+      // width: span(11);
     }
     @include breakpoint($screen-lg) {
       width: span(8);
