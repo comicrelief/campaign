@@ -96,19 +96,21 @@
 
           position: relative;
 
-          .partner__logo img {
-            position:relative;
-            width: 100%;
-            height: auto;
+          .partner__logo {
+            display: block;
+
+            img {
+              position:relative;
+              width: 100%;
+              height: auto;
+              display: block;
+            }
           }
 
           .partner__link {
-
-            @include opacity(0);
-            @include transition-property(opacity);
-            @include transition-duration(200ms);
-
+            
             a {
+              display: none;
               position: absolute;
               top: 0;
               left: 0;
@@ -120,7 +122,7 @@
               text-align: center;
 
               span {
-                 width: 100%;
+                width: 100%;
                 font-family: "GT-Walsheim-Bold",helvetica,arial,sans-serif;
                 color: $colour-white;
                 font-size: 18px;
@@ -134,8 +136,8 @@
           }
 
           &:hover {
-            .partner__link {
-              @include opacity(1);
+            .partner__link a {
+              display: block;
             }
           }
         }
