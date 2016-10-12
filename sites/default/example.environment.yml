@@ -1,11 +1,11 @@
 databases:
   default:
     default:
-      database: rnd17
+      database: campaign
       username: root
-      password: password
+      password: root
       prefix:
-      host: 127.0.0.1
+      host: mysql
       port:
       namespace: Drupal\Core\Database\Driver\mysql
       driver: mysql
