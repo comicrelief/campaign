@@ -63,6 +63,7 @@ mounts:
     "/profiles/cr/modules/contrib": "shared:files/cr_contrib"
     "/web/modules": "shared:files/web_modules"
     "/web/profiles": "shared:files/web_profiles"
+    "/web/sites/default/files": "shared:files/web_files"
     "/web/themes": "shared:files/web_themes"
     "/core": "shared:files/core"
     "/node_modules": "shared:files/node_modules"
