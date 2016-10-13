@@ -67,22 +67,18 @@ class SocialLinks {
       'twitter' => [
         'callback' => 'social_links_provider_popup',
         'path' => 'http://twitter.com/home?status=',
-        'svg' => 'icon-twitter',
       ],
       'facebook' => [
         'callback' => 'social_links_provider_popup',
         'path' => 'https://www.facebook.com/sharer/sharer.php?u=',
-        'svg' => 'icon-facebook',
       ],
       'googleplus' => [
         'callback' => 'social_links_provider_popup',
         'path' => 'https://plus.google.com/share?url=',
-        'svg' => 'icon-twitter',
       ],
       'email' => [
         'callback' => 'social_links_provider_email',
         'path' => '',
-        'svg' => 'icon-twitter',
       ],
     ];
   }
@@ -118,6 +114,11 @@ class SocialLinks {
           'social-links',
         ],
       ],
+      '#attached' => [
+       'library' =>  [
+         'your_module/library_name'
+       ],
+     ],
     ];
   }
 
@@ -141,7 +142,7 @@ class SocialLinks {
 
     // Look at nice way to attch js, maybe to theme array.
     foreach ($links as $provider => $config) {
-
+      $links = [];
       $link_title = ucfirst($provider);
       $link_class = $provider . '-social-link';
       $link_options = [
@@ -163,10 +164,16 @@ class SocialLinks {
       $url->setOptions($link_options);
       $link = \Drupal::l(t($link_title), $url);
 
-      $svg = ['#markup' => Markup::create('<svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#' . $config['svg'] . '"></use></svg>')];
+      // If SVG is set, render it and add it
+      if (isset($config['svg'])) {
+        $svg = ['#markup' => Markup::create('<svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#' . $config['svg'] . '"></use></svg>')];
+        $links[] = $svg;
+      }
+
+      $links[] = $link;
 
       $markup_array[] = [
-        '#items' => [$svg, $link],
+        '#items' => $links,
         '#theme' => 'item_list',
       ];
     }

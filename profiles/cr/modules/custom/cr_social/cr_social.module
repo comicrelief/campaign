@@ -15,5 +15,10 @@ function cr_social_social_links_alter($links) {
   // Remove un used links.
   unset($links['googleplus']);
   unset($links['email']);
+
+  // Set SVGs for icons
+  $links['facebook']['svg'] = 'icon-facebook';
+  $links['twitter']['svg'] = 'icon-twitter';
+
   return $links;
 }
