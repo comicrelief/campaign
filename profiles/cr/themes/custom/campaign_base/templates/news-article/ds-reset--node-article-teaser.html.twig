@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Template for Articles teaser view mode layout.
+ */
+#}
+
+<article class = 'article-teaser'>
+	<div class ='article-teaser__image'>
+     	{{ field_article_image }}
+    </div>
+    <div class ='article-teaser__video'>
+      {{ field_video_embed }}
+    </div>
+    <div class = 'article-teaser__header'>
+    	<span class ='article-teaser__date'> 
+     		{{ field_article_publish_date }}
+	    </span>
+	    {{ node_title }}
+    <div>
+</article>

@@ -120,22 +120,27 @@ third_party_settings:
         builder: ipe
   ds:
     layout:
-      id: article
-      path: profiles/cr/modules/custom/cr_layout/layouts/article
-      library: layout_plugin/article
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
+      library: ''
       disable_css: false
-      settings: {  }
+      settings:
+        wrappers: null
+        outer_wrapper: null
+        attributes: ''
+        link_attribute: null
+        link_custom: null
+        classes:
+          layout_class: {  }
     regions:
-      first:
+      ds_content:
         - social_links
         - node_title
         - field_article_publish_date
         - field_article_image
         - field_video_embed
         - field_image_caption
-      second:
         - body
-      fourth:
         - 'dynamic_block_field:node-related_news'
     fields:
       'dynamic_block_field:node-related_news':
