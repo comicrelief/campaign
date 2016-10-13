@@ -1,0 +1,36 @@
+{#
+/**
+ * @file
+ * Template for Articles layout.
+ */
+#}
+{{kint(content)}}
+<article class="cr-article" {% if css_id %}{{ css_id }}{% endif %}>
+  <header class="cr-article__header">
+    <div class="cr-article__social-links">
+      {{ social_links }}  
+    </div>
+    {{ node_title }}
+    <div class="contextual-region">
+      {{ title_suffix.contextual_links }}      
+    </div>
+    <span class ='cr-article__date'> 
+      {{ field_article_publish_date }}
+    </span>
+    <div class ='cr-article__image'>
+      {{ field_article_image }}
+    </div>
+    <div class ='cr-article__video'>
+      {{ field_video_embed }}
+    </div>
+    <figcaption class = 'cr-article__caption'>
+      {{ field_image_caption }}
+    </figcaption>
+  </header>
+  <section class="cr-article__body"> 
+    {{ body }}
+  </div>
+</article>
+<section class="bottom-region">
+  {{ content['dynamic_block_field:node-related_news'] }}
+</section>
