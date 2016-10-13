@@ -35,13 +35,13 @@ bundle: cr_external_file
 mode: search_index
 content:
   created:
-    type: timestamp_ago
+    type: timestamp
     weight: 0
     label: above
     settings:
-      future_format: '@interval hence'
-      past_format: '@interval ago'
-      granularity: 2
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
     third_party_settings: {  }
   field_cr_ef_resource_category:
     type: entity_reference_entity_view
