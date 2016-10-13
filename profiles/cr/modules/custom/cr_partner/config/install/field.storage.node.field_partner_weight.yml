@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_partner_weight
+field_name: field_partner_weight
+entity_type: node
+type: list_integer
+settings:
+  allowed_values: null
+  allowed_values_function: cr_partner_field_partner_weight
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

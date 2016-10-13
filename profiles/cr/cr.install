@@ -101,3 +101,11 @@ function cr_update_8010() {
   field_purge_batch('field_article_tags');
 }
 
+/**
+* Remove field_partner_image
+*/
+function cr_update_8011() {
+  $field = Drupal\field\Entity\FieldStorageConfig::loadByName('node', 'field_partner_image');
+  $field->delete();
+  field_purge_batch('field_partner_image');
+}
