@@ -7,7 +7,7 @@ Feature: Partner
     Then I should see the text "wonderful corporate partners"
     And I should see the link "Find out more"
     And I should see the link "Visit their site"
-    And I should see the hidden partner title "Sainbury's"
+    Then I should see the hidden partner title "Sainsbury's"
 
   @api @javascript
   Scenario: Create a new partner

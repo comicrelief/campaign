@@ -409,11 +409,12 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
    * @Then I should see the hidden partner title :title
    */
   public function iShouldSeeTheHiddenPartnerTitle($title) {
+
     // Attempt to grab all the hidden partner titles
-    $elements = $this->getSession()->getPage()->findAll('css', '.node node--type-partner .field--name-title');
+    $elements = $this->getSession()->getPage()->findAll('css', '.node--type-partner .field--name-title');
 
     if (empty($elements)) {
-      throw new Exception('No hidden partner title of ' . $title .' in the markup to check');
+      throw new Exception('No hidden partner titles in the markup to check');
     }
 
     $found = FALSE;
