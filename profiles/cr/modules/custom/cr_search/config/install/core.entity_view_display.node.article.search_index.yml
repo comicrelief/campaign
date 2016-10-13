@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.article.field_article_publish_date
     - field.field.node.article.publishing_date
     - node.type.article
+    - responsive_image.styles.cr_listing_teaser
   module:
     - datetime
     - ds
@@ -77,7 +78,7 @@ content:
     weight: 0
     label: hidden
     settings:
-      responsive_image_style: cw_4_3_image
+      responsive_image_style: cr_listing_teaser
       image_link: content
     third_party_settings: {  }
     type: responsive_image
