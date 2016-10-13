@@ -8,6 +8,7 @@
 namespace Drupal\social_links\Plugin\Social;
 
 use Drupal\Core\Url;
+use \Drupal\Core\Render\Markup;
 
 /**
  * Plugin implementation of the 'social_links' field type.
@@ -66,18 +67,22 @@ class SocialLinks {
       'twitter' => [
         'callback' => 'social_links_provider_popup',
         'path' => 'http://twitter.com/home?status=',
+        'svg' => 'icon-twitter',
       ],
       'facebook' => [
         'callback' => 'social_links_provider_popup',
         'path' => 'https://www.facebook.com/sharer/sharer.php?u=',
+        'svg' => 'icon-facebook',
       ],
       'googleplus' => [
         'callback' => 'social_links_provider_popup',
         'path' => 'https://plus.google.com/share?url=',
+        'svg' => 'icon-twitter',
       ],
       'email' => [
         'callback' => 'social_links_provider_email',
         'path' => '',
+        'svg' => 'icon-twitter',
       ],
     ];
   }
@@ -108,6 +113,11 @@ class SocialLinks {
     return [
       '#items' => $this->getMarkup($entity),
       '#theme' => $this->getTheme($theme_override),
+      '#attributes' => [
+        'class' => [
+          'social-links',
+        ],
+      ],
     ];
   }
 
@@ -132,7 +142,6 @@ class SocialLinks {
     // Look at nice way to attch js, maybe to theme array.
     foreach ($links as $provider => $config) {
 
-      // Check in about svg support/ contrib module support.
       $link_title = ucfirst($provider);
       $link_class = $provider . '-social-link';
       $link_options = [
@@ -154,7 +163,12 @@ class SocialLinks {
       $url->setOptions($link_options);
       $link = \Drupal::l(t($link_title), $url);
 
-      $markup_array[] = $link;
+      $svg = ['#markup' => Markup::create('<svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#' . $config['svg'] . '"></use></svg>')];
+
+      $markup_array[] = [
+        '#items' => [$svg, $link],
+        '#theme' => 'item_list',
+      ];
     }
 
     return $markup_array;

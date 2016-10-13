@@ -8,7 +8,7 @@
 /**
  * Hook social_links_alter, used to alter default socil links.
  *
- * @return array
+ * @return altered array of links
  */
 function cr_social_social_links_alter($links) {
   // Remove un used links.
