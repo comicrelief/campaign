@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.media.search_index
     - field.field.media.cr_external_file.field_cr_ef_resource_category
     - field.field.media.cr_external_file.field_cr_external_file
     - media_entity.bundle.cr_external_file
@@ -28,10 +29,10 @@ third_party_settings:
     regions:
       ds_content:
         - field_cr_external_file
-id: media.cr_external_file.default
+id: media.cr_external_file.search_index
 targetEntityType: media
 bundle: cr_external_file
-mode: default
+mode: search_index
 content:
   created:
     type: timestamp_ago

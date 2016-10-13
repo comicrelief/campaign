@@ -2,7 +2,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.media.field_cr_file_category
     - search_api.server.solr
     - core.entity_view_mode.node.full
   module:
@@ -28,6 +27,9 @@ field_settings:
           landing: full
           page: default
           partner: full
+        'entity:media':
+          cr_external_file: default
+          cr_file: default
   node_grants:
     label: 'Node access information'
     datasource_id: null
@@ -55,19 +57,6 @@ field_settings:
     type: integer
     indexed_locked: true
     type_locked: true
-  name:
-    label: 'Media name'
-    datasource_id: 'entity:media'
-    property_path: name
-    type: text
-  field_cr_file_category:
-    label: Category
-    datasource_id: 'entity:media'
-    property_path: field_cr_file_category
-    type: integer
-    dependencies:
-      config:
-        - field.storage.media.field_cr_file_category
 processor_settings:
   content_access:
     plugin_id: content_access

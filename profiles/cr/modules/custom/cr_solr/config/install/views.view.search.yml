@@ -24,7 +24,7 @@ display:
         type: none
         options: {  }
       cache:
-        type: tag
+        type: none
         options: {  }
       query:
         type: views_query
@@ -74,6 +74,9 @@ display:
               landing: search_index
               page: search_index
               partner: search_index
+            'entity:media':
+              cr_external_file: search_index
+              cr_file: search_index
       fields:
         rendered_item:
           table: search_api_index_solr_content
