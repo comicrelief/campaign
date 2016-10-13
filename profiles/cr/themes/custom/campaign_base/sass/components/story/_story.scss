@@ -1,0 +1,112 @@
+// Story
+//
+// This is the Story row component (aka fundraising journey)
+//
+// Markup: _story.hbs
+//
+// Style guide: Story
+
+#kss-node .kss-main {
+  margin: 0 !important;
+  width: 100% !important;
+  padding: 0 !important;
+}
+
+#kss-node .kss-section {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+.kss-sidebar {
+  display: none !important;
+}
+
+#kssref-story {
+  width: 100% !important;
+}
+
+.kss-modifier__wrapper {
+  padding: 0 !important;
+}
+
+
+.paragraph.story {
+
+  width: 100%;
+  padding: 60px 0;
+
+  .story__outer-wrapper {
+    @include container;
+  }
+
+  .story__beneficiary-wrapper,
+  .story__fundraiser-wrapper {
+
+    @include span(12);
+
+    @include breakpoint($screen-md) {
+      @include span(6);
+    }
+
+    .story__fundraiser-image,
+    .story__fundraiser-copy,
+    .story__beneficiary-image,
+    .story__beneficiary-copy {
+      width: 100%;
+      float: left;
+
+      @include breakpoint($screen-lg) {
+        width: 50%;
+      }
+    }
+  }
+}
+
+
+
+
+/* 
+
+<section class="story paragraph" >
+  <div class="story__outer-wrapper">
+
+    <div class="story__fundraiser-image">
+      <picture>
+        <source srcset="/profiles/cr/themes/custom/campaign_base/images/styleguide-images/story-image-left.jpg" media="all and (min-width: 1024px)" type="image/jpeg"/>
+        <source srcset="/profiles/cr/themes/custom/campaign_base/images/styleguide-images/story-image-left.jpg" media="all and (min-width: 740px)" type="image/jpeg"/>
+        <source srcset="/profiles/cr/themes/custom/campaign_base/images/styleguide-images/story-image-left.jpg" media="(min-width: 0px)" type="image/jpeg"/>
+        <img src="/profiles/cr/themes/custom/campaign_base/images/styleguide-images/story-image-left.jpg" alt="story image left" typeof="foaf:Image" />
+      </picture>
+    </div>
+
+    <div class="story__fundraiser-copy">
+      <div class="story__fundraiser-title">
+          <h3>£###,###</h3>
+          <p>RAISED<p>
+        </div>
+        <div class="story__fundraiser-body">
+          <p>Daniel from Worcester ducked, dived and dodged his way to raising £160 by holding a retro fancy dress dodgeball tournament at his local sport centre.<p>
+        </div>
+    </div>
+
+    <div class="story__beneficiary-copy">
+      <div class="story__beneficiary-title">
+          <h3>Lives<h3>
+          <p>CHANGED<p>
+        </div>
+        <div class="story__beneficiary-body">
+          <p>This is enough to buy a bicycle ambulance that can help pregnant women in rural Malawi to reach life-saving medical services.<p>
+        </div>
+    </div>
+
+    <div class="story__beneficiary-image">
+      <picture>
+        <source srcset="/profiles/cr/themes/custom/campaign_base/images/styleguide-images/story-image-right.jpg" media="all and (min-width: 1024px)" type="image/jpeg"/>
+        <source srcset="/profiles/cr/themes/custom/campaign_base/images/styleguide-images/story-image-right.jpg" media="all and (min-width: 740px)" type="image/jpeg"/>
+        <source srcset="/profiles/cr/themes/custom/campaign_base/images/styleguide-images/story-image-right.jpg" media="(min-width: 0px)" type="image/jpeg"/>
+        <img src="/profiles/cr/themes/custom/campaign_base/images/styleguide-images/story-image-right.jpg" alt="story image left" typeof="foaf:Image" />
+      </picture>
+    </div>
+    
+  </div>
+</section> */
