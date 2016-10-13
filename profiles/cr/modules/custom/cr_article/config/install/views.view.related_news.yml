@@ -266,9 +266,9 @@ display:
           group_type: group
           admin_label: ''
           empty: false
-          tokenize: false
+          tokenize: true
           content:
-            value: '<p class="type--centred"><a href="/whats-going-on{filter_tags_tag_querystring}" class="btn btn-red btn--fixed-width">See more</a></p>'
+            value: '<p class="type--centred"><a href="/whats-going-on/{{ arguments.tid }}" class="btn btn-red btn--fixed-width">See more</a></p>'
             format: full_html
           plugin_id: text
       empty: {  }
