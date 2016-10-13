@@ -142,11 +142,11 @@ class SocialLinks {
 
     // Look at nice way to attch js, maybe to theme array.
     foreach ($links as $provider => $config) {
-      $links = [];
-      $link_title = ucfirst($provider);
+      $link_title = t(ucfirst($provider));
       $link_class = $provider . '-social-link';
       $link_options = [
         'path' => $config['path'] . $entity_url . '&amp;title=' . $page_title,
+        'html' => true,
         'attributes' => [
           'title' => $link_title,
           'class' => [
@@ -160,22 +160,17 @@ class SocialLinks {
         $config['callback']($link_options, $entity);
       }
 
-      $url = Url::fromUri($link_options['path']);
-      $url->setOptions($link_options);
-      $link = \Drupal::l(t($link_title), $url);
-
       // If SVG is set, render it and add it
       if (isset($config['svg'])) {
         $svg = ['#markup' => Markup::create('<svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#' . $config['svg'] . '"></use></svg>')];
-        $links[] = $svg;
+        $link_title = render($svg);
       }
 
-      $links[] = $link;
+      $url = Url::fromUri($link_options['path']);
+      $url->setOptions($link_options);
+      $link = \Drupal::l($link_title, $url);
 
-      $markup_array[] = [
-        '#items' => $links,
-        '#theme' => 'item_list',
-      ];
+      $markup_array[] = $link;
     }
 
     return $markup_array;
