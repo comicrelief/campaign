@@ -1,7 +1,7 @@
 {
     "name": "comicrelief/campaign",
     "description": "Campaign profile using Drupal 8.",
-    "type": "drupal-profile",
+    "type": "project",
     "license": "GPL 2.0+",
     "authors": [
         {
