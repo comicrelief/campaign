@@ -116,7 +116,7 @@ class SocialLinks {
       ],
       '#attached' => [
        'library' =>  [
-         'your_module/library_name'
+         'social_links/social_links'
        ],
      ],
     ];
@@ -140,7 +140,6 @@ class SocialLinks {
     $page_title = urlencode(\Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject()));
     $entity_url = urlencode($request->getUri());
 
-    // Look at nice way to attch js, maybe to theme array.
     foreach ($links as $provider => $config) {
       $link_title = t(ucfirst($provider));
       $link_class = $provider . '-social-link';
@@ -160,7 +159,7 @@ class SocialLinks {
         $config['callback']($link_options, $entity);
       }
 
-      // If SVG is set, render it and add it
+      // If SVG is set, render it and add it in place of the title.
       if (isset($config['svg'])) {
         $svg = ['#markup' => Markup::create('<svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#' . $config['svg'] . '"></use></svg>')];
         $link_title = render($svg);
