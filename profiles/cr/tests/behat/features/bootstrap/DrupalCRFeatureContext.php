@@ -404,11 +404,12 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
   }
 
   /**
-   * @And I should see the hidden partner title :title
+   * Check for unpublished partner titles.
+   *
+   * @Then I should see the hidden partner title :title
    */
   public function iShouldSeeTheHiddenPartnerTitle($title) {
-
-    /* Attempt to grab all the hidden partner titles */
+    // Attempt to grab all the hidden partner titles
     $elements = $this->getSession()->getPage()->findAll('css', '.node node--type-partner .field--name-title');
 
     if (empty($elements)) {
@@ -417,7 +418,7 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
 
     $found = FALSE;
 
-    /* Loop through all elements to find our search title */
+    // Loop through all elements to find our search title
     foreach ($elements as $element) {
       if ($element->getText() == $title) {
         $found = TRUE;
