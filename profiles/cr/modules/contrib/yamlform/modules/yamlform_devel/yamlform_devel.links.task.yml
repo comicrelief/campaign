@@ -1,0 +1,5 @@
+entity.yamlform.export_form:
+  title: 'Export'
+  route_name: entity.yamlform.export_form
+  parent_id: devel.entities:yamlform.devel_tab
+  weight: 100

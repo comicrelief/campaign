@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\yamlform\Unit\YamlFormTidyTest.
- */
-
 namespace Drupal\Tests\yamlform\Unit;
 
 use Drupal\Component\Serialization\Yaml;
@@ -12,7 +7,7 @@ use Drupal\yamlform\Utility\YamlFormTidy;
 use Drupal\Tests\UnitTestCase;
 
 /**
- * Tests YAML form tidy utility.
+ * Tests form tidy utility.
  *
  * @group YamlFormUnit
  *

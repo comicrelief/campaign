@@ -65,8 +65,8 @@ class Tasks extends InstallTasks {
       $this->pass('Drupal can CONNECT to the database ok.');
     }
     catch (\Exception $e) {
-    // Attempt to create the database if it is not found.
-      if ($e->getCode() == Connection::DATABASE_NOT_FOUND) {
+      // Attempt to create the database if it is not found.
+      if ($e instanceof DatabaseNotFoundException) {
         // Remove the database string from connection info.
         $connection_info = Database::getConnectionInfo();
         $database = $connection_info['default']['database'];

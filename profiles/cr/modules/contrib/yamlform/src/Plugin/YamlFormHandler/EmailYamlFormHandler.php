@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\Plugin\YamlFormHandler\EmailYamlFormHandler.
- */
-
 namespace Drupal\yamlform\Plugin\YamlFormHandler;
 
 use Drupal\Component\Utility\Xss;
@@ -15,6 +10,7 @@ use Drupal\Core\Mail\MailManagerInterface;
 use Drupal\Core\Render\Markup;
 use Drupal\Core\Utility\Token;
 use Drupal\file\Entity\File;
+use Drupal\yamlform\Element\YamlFormSelectOther;
 use Drupal\yamlform\YamlFormHandlerBase;
 use Drupal\yamlform\YamlFormHandlerMessageInterface;
 use Drupal\yamlform\YamlFormSubmissionInterface;
@@ -23,12 +19,13 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Emails a YAML form submission.
+ * Emails a form submission.
  *
  * @YamlFormHandler(
  *   id = "email",
  *   label = @Translation("Email"),
- *   description = @Translation("Sends a YAML form submission via an email."),
+ *   category = @Translation("Notification"),
+ *   description = @Translation("Sends a form submission via an email."),
  *   cardinality = \Drupal\yamlform\YamlFormHandlerInterface::CARDINALITY_UNLIMITED,
  *   results = \Drupal\yamlform\YamlFormHandlerInterface::RESULTS_PROCESSED,
  * )
@@ -52,9 +49,16 @@ class EmailYamlFormHandler extends YamlFormHandlerBase implements YamlFormHandle
   /**
    * The token handler.
    *
-   * @var \Drupal\Core\Utility\Token $token
+   * @var \Drupal\Core\Utility\Token
    */
   protected $token;
+
+  /**
+   * Cache of default configuration values.
+   *
+   * @var array
+   */
+  protected $defaultValues;
 
   /**
    * {@inheritdoc}
@@ -96,15 +100,60 @@ class EmailYamlFormHandler extends YamlFormHandlerBase implements YamlFormHandle
   public function defaultConfiguration() {
     return [
       'to_mail' => 'default',
+      'cc_mail' => '',
+      'bcc_mail' => '',
       'from_mail' => 'default',
       'from_name' => 'default',
       'subject' => 'default',
       'body' => 'default',
-      'excluded_inputs' => [],
-      'html' => FALSE,
+      'excluded_elements' => [],
+      'html' => TRUE,
       'attachments' => FALSE,
       'debug' => FALSE,
     ];
+  }
+
+  /**
+   * Get configuration default values.
+   *
+   * @return array
+   *   Configuration default values.
+   */
+  protected function getDefaultConfigurationValues() {
+    if (isset($this->defaultValues)) {
+      return $this->defaultValues;
+    }
+
+    $yamlform_settings = $this->configFactory->get('yamlform.settings');
+    $site_settings = $this->configFactory->get('system.site');
+    $body_format = ($this->configuration['html']) ? 'html' : 'text';
+    $default_mail = $yamlform_settings->get('mail.default_to_mail') ?: $site_settings->get('mail') ?: ini_get('sendmail_from');
+
+    $this->defaultValues = [
+      'to_mail' => $default_mail,
+      'cc_mail' => $default_mail,
+      'bcc_mail' => $default_mail,
+      'from_mail' => $default_mail,
+      'from_name' => $yamlform_settings->get('mail.default_from_name') ?: $site_settings->get('name'),
+      'subject' => $yamlform_settings->get('mail.default_subject') ?: 'Form submission from: [yamlform-submission:source-entity]',
+      'body' => $this->getBodyDefaultValues($body_format),
+    ];
+
+    return $this->defaultValues;
+  }
+
+  /**
+   * Get configuration default value.
+   *
+   * @param string $name
+   *   Configuration name.
+   *
+   * @return string|array
+   *   Configuration default value.
+   */
+  protected function getDefaultConfigurationValue($name) {
+    $default_values = $this->getDefaultConfigurationValues();
+    return $default_values[$name];
   }
 
   /**
@@ -115,11 +164,10 @@ class EmailYamlFormHandler extends YamlFormHandlerBase implements YamlFormHandle
    */
   protected function getEmailConfiguration() {
     $configuration = $this->getConfiguration();
-    $settings = $this->getConfigurationSettings();
     $email = [];
     foreach ($configuration['settings'] as $key => $value) {
       if ($value === 'default') {
-        $email[$key] = $settings[$key]['default'];
+        $email[$key] = $this->getDefaultConfigurationValue($key);
       }
       else {
         $email[$key] = $value;
@@ -129,217 +177,224 @@ class EmailYamlFormHandler extends YamlFormHandlerBase implements YamlFormHandle
   }
 
   /**
-   * Get configuration settings including type, label, and default value.
-   *
-   * @return array
-   *   An associative array keyed by configuration name containing each
-   *   configuration setting's type, label, and default value.
-   */
-  protected function getConfigurationSettings() {
-    $yamlform_settings = $this->configFactory->get('yamlform.settings');
-    $site_settings = $this->configFactory->get('system.site');
-    $body_format = ($this->configuration['html']) ? 'html' : 'text';
-    return [
-      'to_mail' => [
-        'type' => 'textfield',
-        'label' => $this->t('Email to address'),
-        'default' => $yamlform_settings->get('mail.default_to_mail') ?: $site_settings->get('mail') ?: ini_get('sendmail_from'),
-      ],
-      'from_mail' => [
-        'type' => 'textfield',
-        'label' => $this->t('Email from address'),
-        'default' => $yamlform_settings->get('mail.default_from_mail') ?: $site_settings->get('mail') ?: ini_get('sendmail_from'),
-      ],
-      'from_name' => [
-        'type' => 'textfield',
-        'label' => $this->t('Email from name'),
-        'default' => $yamlform_settings->get('mail.default_from_name') ?: $site_settings->get('name'),
-      ],
-      'subject' => [
-        'type' => 'textfield',
-        'label' => $this->t('Email subject'),
-        'default' => $yamlform_settings->get('mail.default_subject') ?: 'Form submission from: [yamlform-submission:source-entity]',
-      ],
-      'body' => [
-        'type' => 'yamlform_codemirror_text',
-        'label' => $this->t('Email body'),
-        'default' => $this->getBodyDefaultValues($body_format),
-      ],
-    ];
-  }
-
-  /**
    * {@inheritdoc}
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
-    $settings = $this->getConfigurationSettings();
+    $mail_element_options = [];
+    $text_element_options = [];
+    $elements = $this->yamlform->getElementsInitializedAndFlattened();
+    foreach ($elements as $key => $element) {
+      $title = (isset($element['#title'])) ? new FormattableMarkup('@title (@key)', ['@title' => $element['#title'], '@key' => $key]) : $key;
+      if (isset($element['#type']) && in_array($element['#type'], ['email', 'hidden', 'value', 'select', 'radios', 'textfield', 'yamlform_email_multiple', 'yamlform_email_confirm'])) {
+        // Note: Token must use the :raw form mail elements.
+        // For example a select menu's option value would be used to route an
+        // email address.
+        $mail_element_options["[yamlform-submission:values:$key:raw]"] = $title;
+      }
+      $text_element_options["[yamlform-submission:values:$key:value]"] = $title;
+    }
 
+    $default_optgroup = (string) $this->t('Default');
+    $elements_optgroup = (string) $this->t('Elements');
+
+    // Disable client-side HTML5 validation which is having issues with hidden
+    // element validation.
+    // @see http://stackoverflow.com/questions/22148080/an-invalid-form-control-with-name-is-not-focusable
+    $form['#attributes']['novalidate'] = 'novalidate';
+
+    // To.
     $form['to'] = [
       '#type' => 'details',
       '#title' => $this->t('Send to'),
       '#open' => TRUE,
     ];
+    $form['to']['to_mail'] = [
+      '#type' => 'yamlform_select_other',
+      '#title' => $this->t('To email'),
+      '#options' => [
+        YamlFormSelectOther::OTHER_OPTION => $this->t('Custom to email address...'),
+        $default_optgroup => ['default' => $this->getDefaultConfigurationValue('to_mail')],
+        $elements_optgroup => $mail_element_options,
+      ],
+      '#other__placeholder' => $this->t('Enter to email address...'),
+      '#other__type' => 'yamlform_email_multiple',
+      '#other__allow_tokens' => TRUE,
+      '#required' => TRUE,
+      '#parents' => ['settings', 'to_mail'],
+      '#default_value' => $this->configuration['to_mail'],
+    ];
+    $form['to']['cc_mail'] = [
+      '#type' => 'yamlform_select_other',
+      '#title' => $this->t('CC email'),
+      '#options' => [
+        '' => '',
+        YamlFormSelectOther::OTHER_OPTION => $this->t('Custom CC email address...'),
+        $default_optgroup => ['default' => $this->getDefaultConfigurationValue('cc_mail')],
+        $elements_optgroup => $mail_element_options,
+      ],
+      '#other__placeholder' => $this->t('Enter CC email address...'),
+      '#other__type' => 'yamlform_email_multiple',
+      '#parents' => ['settings', 'cc_mail'],
+      '#other__allow_tokens' => TRUE,
+      '#default_value' => $this->configuration['cc_mail'],
+    ];
+    $form['to']['bcc_mail'] = [
+      '#type' => 'yamlform_select_other',
+      '#title' => $this->t('BCC email'),
+      '#options' => [
+        '' => '',
+        YamlFormSelectOther::OTHER_OPTION => $this->t('Custom BCC email address...'),
+        $default_optgroup => ['default' => $this->getDefaultConfigurationValue('bcc_mail')],
+        $elements_optgroup => $mail_element_options,
+      ],
+      '#other__placeholder' => $this->t('Enter BCC email address...'),
+      '#other__type' => 'yamlform_email_multiple',
+      '#other__allow_tokens' => TRUE,
+      '#parents' => ['settings', 'bcc_mail'],
+      '#default_value' => $this->configuration['bcc_mail'],
+    ];
+
+    // From.
     $form['from'] = [
       '#type' => 'details',
       '#title' => $this->t('Send from'),
       '#open' => TRUE,
     ];
+    $form['from']['from_mail'] = [
+      '#type' => 'yamlform_select_other',
+      '#title' => $this->t('From email'),
+      '#options' => [
+        YamlFormSelectOther::OTHER_OPTION => $this->t('Custom from email address...'),
+        $default_optgroup => ['default' => $this->getDefaultConfigurationValue('from_mail')],
+        $elements_optgroup => $mail_element_options,
+      ],
+      '#other__placeholder' => $this->t('Enter from email address...'),
+      '#other__type' => 'yamlform_email_multiple',
+      '#other__allow_tokens' => TRUE,
+      '#required' => TRUE,
+      '#parents' => ['settings', 'from_mail'],
+      '#default_value' => $this->configuration['from_mail'],
+    ];
+    $form['from']['from_name'] = [
+      '#type' => 'yamlform_select_other',
+      '#title' => $this->t('From name'),
+      '#options' => [
+        '' => '',
+        YamlFormSelectOther::OTHER_OPTION => $this->t('Custom from name...'),
+        $default_optgroup => ['default' => $this->getDefaultConfigurationValue('from_name')],
+        $elements_optgroup => $text_element_options,
+      ],
+      '#other__placeholder' => $this->t('Enter from name...'),
+      '#parents' => ['settings', 'from_name'],
+      '#default_value' => $this->configuration['from_name'],
+    ];
+
+    // Message.
     $form['message'] = [
       '#type' => 'details',
       '#title' => $this->t('Message'),
       '#open' => TRUE,
     ];
+    $form['message']['subject'] = [
+      '#type' => 'yamlform_select_other',
+      '#title' => $this->t('Subject'),
+      '#options' => [
+        YamlFormSelectOther::OTHER_OPTION => $this->t('Custom subject...'),
+        $default_optgroup => ['default' => $this->getDefaultConfigurationValue('subject')],
+        $elements_optgroup => $text_element_options,
+      ],
+      '#other__placeholder' => $this->t('Enter subject...'),
+      '#required' => TRUE,
+      '#parents' => ['settings', 'subject'],
+      '#default_value' => $this->configuration['subject'],
+    ];
 
-    $mail_input_options = [];
-    $text_input_options = [];
-    $inputs = $this->yamlform->getFlattenedInputs();
-    foreach ($inputs as $key => $input) {
-      $title = (isset($input['#title'])) ? new FormattableMarkup('@title (@key)', ['@title' => $input['#title'], '@key' => $key]) : $key;
-      // Note: Token must use the raw :value for the element.
-      $token = "[yamlform-submission:values:$key:value]";
-      if (isset($input['#type']) && in_array($input['#type'], ['email', 'hidden', 'value', 'selected', 'radios'])) {
-        $mail_input_options[$token] = $title;
-      }
-      $text_input_options[$token] = $title;
-    }
-
-    foreach ($settings as $config_name => $config_settings) {
-      $type = $config_settings['type'];
-      $label = $config_settings['label'];
-      $group = preg_match('/^(to|from)/', $config_name, $match) ? $match[0] : 'message';
-
-      $inputs_optgroup = (string) $this->t('Inputs');
-
-      // Set options.
-      $options = [];
-      if ($type == 'textarea' || strpos($type, 'yamlform_codemirror_') === 0) {
-        $options['default'] = $this->t('Default:');
-      }
-      else {
-        $options['default'] = $this->t('Default: @default', ['@default' => $config_settings['default']]);
-      }
-      $options['custom'] = $this->t('Custom...');
-
-      if ($type == 'email') {
-        if ($mail_input_options) {
-          $options[$inputs_optgroup] = $mail_input_options;
-        }
-        $custom_label = $this->t('Enter email address...');
-      }
-      else {
-        if ($text_input_options) {
-          $options[$inputs_optgroup] = $text_input_options;
-        }
-        $custom_label = $this->t('Enter text...');
-      }
-
-      $value = $this->configuration[$config_name];
-      if (in_array($value, ['default', 'custom']) || isset($options[$inputs_optgroup][$value])) {
-        $custom_value = '';
-      }
-      else {
-        $custom_value = $value;
-        $value = 'custom';
-      }
-
-      $form[$group][$config_name] = [
-        '#type' => 'select',
-        '#title' => $label,
-        '#options' => $options,
-        '#required' => TRUE,
-        '#default_value' => $value,
-      ];
-      $form[$group][$config_name . '_custom'] = [
-        '#type' => $type,
-        '#title' => $this->t('@label custom', ['@label' => $label]),
-        '#title_display' => 'hidden',
-        '#default_value' => $custom_value,
-        '#attributes' => ['placeholder' => $custom_label],
-        '#states' => [
-          'visible' => [
-            ':input[name="settings[' . $group . '][' . $config_name . ']"]' => ['value' => 'custom'],
-          ],
-          'required' => [
-            ':input[name="settings[' . $group . '][' . $config_name . ']"]' => ['value' => 'custom'],
-          ],
-        ],
-      ];
-    }
-
-    // Display 'default' body value with selected format (text or html)
-    // depending on the user's selection.
+    // Body.
+    $form['message']['body'] = [
+      '#type' => 'yamlform_select_other',
+      '#title' => $this->t('Body'),
+      '#options' => [
+        YamlFormSelectOther::OTHER_OPTION => $this->t('Custom body...'),
+        'default' => $this->t('Default'),
+        $elements_optgroup => $text_element_options,
+      ],
+      '#other__type' => 'yamlform_codemirror',
+      '#other__mode' => 'html',
+      '#required' => TRUE,
+      '#parents' => ['settings', 'body'],
+      '#default_value' => $this->configuration['body'],
+    ];
     $body_default_values = $this->getBodyDefaultValues();
     foreach ($body_default_values as $format => $default_value) {
       $form['message']['body_default_' . $format] = [
-        '#type' => 'yamlform_codemirror_' . $format,
+        '#type' => 'yamlform_codemirror',
+        '#mode' => $format,
         '#title' => $this->t('Body default value (@format)', ['@label' => $format]),
         '#title_display' => 'hidden',
         '#default_value' => $default_value,
         '#attributes' => ['readonly' => 'readonly', 'disabled' => 'disabled'],
         '#states' => [
           'visible' => [
-            ':input[name="settings[message][body]"]' => ['value' => 'default'],
-            ':input[name="settings[settings][html]"]' => ['checked' => ($format == 'html') ? TRUE : FALSE],
+            ':input[name="settings[body][select]"]' => ['value' => 'default'],
+            ':input[name="settings[html]"]' => ['checked' => ($format == 'html') ? TRUE : FALSE],
           ],
         ],
       ];
     }
-
-    // Inputs.
-    $form['inputs'] = [
-      '#type' => 'details',
-      '#title' => $this->t('Included email values'),
-      '#open' => $this->configuration['excluded_inputs'] ? TRUE : FALSE,
-    ];
-    $form['inputs']['excluded_inputs'] = [
-      '#type' => 'yamlform_excluded_inputs',
-      '#description' => $this->t('The selected inputs will be included in the [yamlform-submission:values] token. Individual values may still be printed if explicitly specified as a [yamlform-submission:values:?] in the email body template.'),
-      '#yamlform' => $this->yamlform,
-      '#default_value' => $this->configuration['excluded_inputs'],
-    ];
-
-    // Token.
     $form['message']['token_tree_link'] = [
       '#theme' => 'token_tree_link',
       '#token_types' => [
         'yamlform',
         'yamlform-submission',
       ],
+      '#click_insert' => FALSE,
       '#dialog' => TRUE,
+    ];
+
+    // Elements.
+    $form['elements'] = [
+      '#type' => 'details',
+      '#title' => $this->t('Included email values'),
+      '#open' => $this->configuration['excluded_elements'] ? TRUE : FALSE,
+    ];
+    $form['elements']['excluded_elements'] = [
+      '#type' => 'yamlform_excluded_elements',
+      '#description' => $this->t('The selected elements will be included in the [yamlform-submission:values] token. Individual values may still be printed if explicitly specified as a [yamlform-submission:values:?] in the email body template.'),
+      '#yamlform' => $this->yamlform,
+      '#default_value' => $this->configuration['excluded_elements'],
+      '#parents' => ['settings', 'excluded_elements'],
     ];
 
     // Settings.
     $form['settings'] = [
       '#type' => 'details',
       '#title' => $this->t('Settings'),
-      '#open' => TRUE,
     ];
     $form['settings']['html'] = [
       '#type' => 'checkbox',
       '#title' => t('Send email as HTML'),
-      '#default_value' => $this->configuration['html'],
+      '#return_value' => TRUE,
       '#access' => $this->supportsHtml(),
+      '#parents' => ['settings', 'html'],
+      '#default_value' => $this->configuration['html'],
     ];
-
     $form['settings']['attachments'] = [
       '#type' => 'checkbox',
       '#title' => t('Include files as attachments'),
-      '#default_value' => $this->configuration['attachments'],
+      '#return_value' => TRUE,
       '#access' => $this->supportsAttachments(),
+      '#parents' => ['settings', 'attachments'],
+      '#default_value' => $this->configuration['attachments'],
     ];
-
-    // Debug.
-    $form['debug'] = [
-      '#type' => 'details',
-      '#title' => $this->t('Debugging'),
-      '#open' => $this->configuration['debug'] ? TRUE : FALSE,
-    ];
-    $form['debug']['debug'] = [
+    $form['settings']['debug'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Enable debugging'),
       '#description' => $this->t('If checked sent emails will be displayed onscreen to all users.'),
+      '#return_value' => TRUE,
+      '#parents' => ['settings', 'debug'],
       '#default_value' => $this->configuration['debug'],
     ];
+
     return $form;
   }
 
@@ -348,30 +403,21 @@ class EmailYamlFormHandler extends YamlFormHandlerBase implements YamlFormHandle
    */
   public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
     parent::submitConfigurationForm($form, $form_state);
-
-    // Get email settings.
-    $values = $form_state->getValue('to') + $form_state->getValue('from') + $form_state->getValue('message');
-    foreach (['to_mail', 'from_mail', 'from_name', 'subject', 'body'] as $key) {
-      $value = $values[$key];
-      if ($value == 'custom') {
-        $value = $values[$key . '_custom'];
-      }
-      $this->configuration[$key] = $value;
-    }
-
-    // Get other settings.
     $values = $form_state->getValues();
-    $this->configuration['excluded_inputs'] = $values['inputs']['excluded_inputs'];
-    $this->configuration['html'] = $values['settings']['html'];
-    $this->configuration['attachments'] = $values['settings']['attachments'];
-    $this->configuration['debug'] = $values['debug']['debug'];
+    foreach ($this->configuration as $name => $value) {
+      if (isset($values[$name])) {
+        $this->configuration[$name] = $values[$name];
+      }
+    }
   }
 
   /**
    * {@inheritdoc}
    */
   public function postSave(YamlFormSubmissionInterface $yamlform_submission, $update = TRUE) {
-    if ($yamlform_submission->getState() == YamlFormSubmissionInterface::STATE_COMPLETED) {
+    $is_results_disabled = $yamlform_submission->getYamlForm()->getSetting('results_disabled');
+    $is_completed = ($yamlform_submission->getState() == YamlFormSubmissionInterface::STATE_COMPLETED);
+    if ($is_results_disabled || $is_completed) {
       $message = $this->getMessage($yamlform_submission);
       $this->sendMessage($message);
     }
@@ -386,26 +432,27 @@ class EmailYamlFormHandler extends YamlFormHandlerBase implements YamlFormHandle
       'yamlform-submission' => $yamlform_submission,
       'yamlform-submission-options' => [
         'email' => TRUE,
-        'excluded_inputs' => $this->configuration['excluded_inputs'],
+        'excluded_elements' => $this->configuration['excluded_elements'],
         'html' => ($this->configuration['html'] && $this->supportsHtml()),
       ],
     ];
+    $token_options = ['clear' => TRUE];
 
     $message = $this->configuration;
-    unset($message['excluded_inputs']);
+    unset($message['excluded_elements']);
 
-    // Replace 'default' values and [tokens] with settings default.
-    $settings = $this->getConfigurationSettings();
-    foreach ($settings as $setting_key => $setting) {
-      if (empty($message[$setting_key]) || $message[$setting_key] == 'default') {
-        $message[$setting_key] = $setting['default'];
+    // Replace 'default' values and [tokens] with configuration default values.
+    foreach ($message as $key => $value) {
+      if ($value === 'default') {
+        $message[$key] = $this->getDefaultConfigurationValue($key);
       }
-      $message[$setting_key] = $this->token->replace($message[$setting_key], $token_data);
+      $message[$key] = $this->token->replace($message[$key], $token_data, $token_options);
     }
 
     // Trim the message body.
     $message['body'] = trim($message['body']);
 
+    // Alter body based on the mail system sender.
     if ($this->configuration['html'] && $this->supportsHtml()) {
       switch ($this->getMailSystemSender()) {
         case 'swiftmailer':
@@ -414,13 +461,18 @@ class EmailYamlFormHandler extends YamlFormHandlerBase implements YamlFormHandle
           break;
       }
     }
+    else {
+      // Since Drupal might be rendering a token into the body as markup
+      // we need to decode all HTML entities which are being sent as plain text.
+      $message['body'] = html_entity_decode($message['body']);
+    }
 
     // Add attachments.
     if ($this->configuration['attachments'] && $this->supportsAttachments()) {
       $message['attachments'] = [];
-      $inputs = $this->yamlform->getFlattenedInputs();
-      foreach ($inputs as $key => $input) {
-        if (!isset($input['#type']) || $input['#type'] != 'managed_file') {
+      $elements = $this->yamlform->getElementsInitializedAndFlattened();
+      foreach ($elements as $key => $element) {
+        if (!isset($element['#type']) || $element['#type'] != 'managed_file') {
           continue;
         }
         $fid = $yamlform_submission->getData($key);
@@ -441,6 +493,9 @@ class EmailYamlFormHandler extends YamlFormHandlerBase implements YamlFormHandle
       }
     }
 
+    // Add form submission.
+    $message['yamlform_submission'] = $yamlform_submission;
+
     return $message;
   }
 
@@ -450,18 +505,16 @@ class EmailYamlFormHandler extends YamlFormHandlerBase implements YamlFormHandle
   public function sendMessage(array $message) {
     // Send mail.
     $to = $message['to_mail'];
-    $from = $message['from_mail'] . ' <' . $message['from_name'] . '>';
+    $from = $message['from_mail'] . (($message['from_name']) ? ' <' . $message['from_name'] . '>' : '');
     $current_langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
     $this->mailManager->mail('yamlform', 'email.' . $this->getHandlerId(), $to, $current_langcode, $message, $from);
 
     // Log message.
-    $variables = [
-      '@from_name' => $message['from_name'],
-      '@from_mail' => $message['from_mail'],
-      '@to_mail' => $message['to_mail'],
-      '@subject' => $message['subject'],
+    $context = [
+      '@form' => $this->getYamlForm()->label(),
+      '@title' => $this->label(),
     ];
-    \Drupal::logger('yamlform.email')->notice('@subject sent to @to_mail from @from_name [@from_mail].', $variables);
+    \Drupal::logger('yamlform.email')->notice('@form form sent @title email.', $context);
 
     // Debug by displaying send email onscreen.
     if ($this->configuration['debug']) {
@@ -502,13 +555,13 @@ class EmailYamlFormHandler extends YamlFormHandlerBase implements YamlFormHandle
   public function resendMessageForm(array $message) {
     $element = [];
     $element['to_mail'] = [
-      '#type' => 'email',
+      '#type' => 'yamlform_email_multiple',
       '#title' => $this->t('To email'),
       '#default_value' => $message['to_mail'],
     ];
     $element['from_mail'] = [
-      '#type' => 'email',
-      '#title' => $this->t('From email '),
+      '#type' => 'yamlform_email_multiple',
+      '#title' => $this->t('From email'),
       '#required' => TRUE,
       '#default_value' => $message['from_mail'],
     ];
@@ -525,7 +578,8 @@ class EmailYamlFormHandler extends YamlFormHandlerBase implements YamlFormHandle
     ];
     $body_format = ($this->configuration['html']) ? 'html' : 'text';
     $element['body'] = [
-      '#type' => 'yamlform_codemirror_' . $body_format,
+      '#type' => 'yamlform_codemirror',
+      '#mode' => $body_format,
       '#title' => $this->t('Message (@format)', ['@format' => ($this->configuration['html']) ? $this->t('HTML') : $this->t('Plain text')]),
       '#rows' => 10,
       '#required' => TRUE,

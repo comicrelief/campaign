@@ -1,0 +1,94 @@
+core: 8.x
+api: 2
+libraries:
+
+  codemirror:
+    library_title: Code Mirror
+    library_url: http://codemirror.net/
+    library_version: '5.17.0'
+    directory_name: codemirror
+    destination: libraries
+    download:
+      type: get
+      url: 'https://github.com/codemirror/CodeMirror/archive/5.17.0.zip'
+
+  ckeditor:
+    library_title: CKEditor
+    library_url: http://ckeditor.com/
+    library_version: '4.5.11'
+    directory_name: ckeditor
+    destination: libraries
+    download:
+      type: get
+      url: 'http://download.cksource.com/CKEditor/CKEditor/CKEditor%204.5.11/ckeditor_4.5.11_standard.zip'
+
+  geocomplete:
+    library_title: jQuery Geocoding and Places Autocomplete Plugin
+    library_url: http://ubilabs.github.io/geocomplete/
+    library_version: '1.7.0'
+    directory_name: geocomplete
+    destination: libraries
+    download:
+      type: git
+      url: 'https://github.com/ubilabs/geocomplete.git'
+      tag: '1.7.0'
+
+  inputmask:
+    library_title: jQuery Input Mask
+    library_url: http://robinherbots.github.io/jquery.inputmask/
+    library_version: '3.3.1'
+    directory_name: jquery.inputmask
+    destination: libraries
+    download:
+      type: get
+      url: 'https://github.com/RobinHerbots/jquery.inputmask/archive/3.3.1.zip'
+
+  signature_pad:
+    library_title: Signature Pad
+    library_url: https://github.com/szimek/signature_pad
+    library_version: '1.5.3'
+    directory_name: signature_pad
+    destination: libraries
+    download:
+      type: get
+      url: 'https://github.com/szimek/signature_pad/archive/v1.5.3.zip'
+
+  select2:
+    library_title: Select2
+    library_version: '4.0.3'
+    library_url: https://select2.github.io/
+    directory_name: select2
+    destination: libraries
+    download:
+      type: get
+      url: 'https://github.com/select2/select2/archive/4.0.3.zip'
+
+  toggles:
+    library_title: jQuery Toggles
+    library_version: 'v4.0.0 '
+    library_url: https://github.com/simontabor/jquery-toggles/
+    directory_name: jquery.toggles
+    destination: libraries
+    download:
+      type: get
+      url: 'https://github.com/simontabor/jquery-toggles/archive/v4.0.0.zip'
+
+  rateit:
+    library_title: RateIt
+    library_version: '1.0.24'
+    library_url: https://github.com/gjunge/rateit.js
+    directory_name: rateit
+    destination: libraries
+    download:
+      type: get
+      url: 'https://github.com/gjunge/rateit.js/archive/1.0.24.zip'
+
+  word-and-character-counter:
+    library_title: jQuery Word and character counter plug-in!
+    library_version: '1.6.0'
+    library_url: https://github.com/qwertypants/jQuery-Word-and-Character-Counter-Plugin
+    directory_name: word-and-character-counter
+    destination: libraries
+    download:
+      type: get
+      url: 'https://github.com/qwertypants/jQuery-Word-and-Character-Counter-Plugin/archive/2.3.5.zip'

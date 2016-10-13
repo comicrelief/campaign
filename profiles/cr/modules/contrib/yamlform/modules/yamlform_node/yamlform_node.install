@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the form node module.
+ */
+
+use Drupal\Component\Serialization\Yaml;
+use Drupal\node\Entity\NodeType;
+
+/**
+ * Implements hook_uninstall().
+ */
+function yamlform_node_uninstall() {
+  // Delete the form node type.
+  if ($node_type = NodeType::load('yamlform')) {
+    $node_type->delete();
+  }
+
+  // Delete field storage if it is no longer being used by any bundles.
+  if ($field_storage = \Drupal::entityTypeManager()->getStorage('field_storage_config')->load('node.yamlform')) {
+    if (!$field_storage->getBundles()) {
+      $field_storage->delete();
+    }
+  }
+}
+
+/**
+ * Issue #2770815: Change 'view yamlform node submissions any node' to 'view yamlform submissions any node'.
+ */
+function yamlform_node_update_8001() {
+  // Update 'user.role.*' configuration.
+  $config_factory = \Drupal::configFactory();
+  foreach ($config_factory->listAll('user.role.') as $role_config_name) {
+    $role_config = $config_factory->getEditable($role_config_name);
+    $yaml = Yaml::encode($role_config->getRawData());
+    if (strpos($yaml, " yamlform node submissions ") !== FALSE) {
+      $yaml = str_replace(" yamlform node submissions ", " yamlform submissions ", $yaml);
+      $data = Yaml::decode($yaml);
+      $role_config->setData($data)->save();
+    }
+  }
+}

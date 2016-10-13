@@ -1,6 +1,6 @@
 yamlform.admin_settings.third_party.yamlform_test_third_party_settings:
   type: mapping
-  label: 'YAML form test third party settings'
+  label: 'Form test third party settings'
   mapping:
     message:
       type: string
@@ -8,7 +8,7 @@ yamlform.admin_settings.third_party.yamlform_test_third_party_settings:
 
 yamlform.settings.third_party.yamlform_test_third_party_settings:
   type: mapping
-  label: 'YAML form test third party settings'
+  label: 'Form test third party settings'
   mapping:
     message:
       type: string

@@ -4,12 +4,6 @@ description: 'Allows users to translate content entities.'
 dependencies:
   - language
 package: Multilingual
-# version: VERSION
-# core: 8.x
+version: VERSION
+core: 8.x
 configure: language.content_settings_page
-
-# Information added by Drupal.org packaging script on 2016-09-21
-version: '8.1.10'
-core: '8.x'
-project: 'drupal'
-datestamp: 1474479094

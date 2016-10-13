@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\Plugin\Mail\YamlFormPhpMail.
- */
-
 namespace Drupal\yamlform\Plugin\Mail;
 
 use Drupal\Core\Mail\Plugin\Mail\PhpMail;
@@ -14,7 +9,7 @@ use Drupal\Core\Mail\Plugin\Mail\PhpMail;
  *
  * @Mail(
  *   id = "yamlform_php_mail",
- *   label = @Translation("YAML form PHP mailer"),
+ *   label = @Translation("Form PHP mailer"),
  *   description = @Translation("Sends the message as plain text or HTML, using PHP's native mail() function.")
  * )
  */

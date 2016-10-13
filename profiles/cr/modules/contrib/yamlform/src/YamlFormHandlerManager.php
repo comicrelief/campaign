@@ -1,18 +1,14 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\YamlFormHandlerManager.
- */
-
 namespace Drupal\yamlform;
 
 use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
+use Drupal\Core\Plugin\CategorizingPluginManagerTrait;
 use Drupal\Core\Plugin\DefaultPluginManager;
 
 /**
- * Manages YAML form handler plugins.
+ * Manages form handler plugins.
  *
  * @see hook_yamlform_handler_info_alter()
  * @see \Drupal\yamlform\Annotation\YamlFormHandler
@@ -20,7 +16,12 @@ use Drupal\Core\Plugin\DefaultPluginManager;
  * @see \Drupal\yamlform\YamlFormHandlerBase
  * @see plugin_api
  */
-class YamlFormHandlerManager extends DefaultPluginManager {
+class YamlFormHandlerManager extends DefaultPluginManager implements YamlFormHandlerManagerInterface {
+
+  use CategorizingPluginManagerTrait {
+    getSortedDefinitions as traitGetSortedDefinitions;
+    getGroupedDefinitions as traitGetGroupedDefinitions;
+  }
 
   /**
    * Constructs a new YamlFormHandlerManager.
@@ -38,6 +39,34 @@ class YamlFormHandlerManager extends DefaultPluginManager {
 
     $this->alterInfo('yamlform_handler_info');
     $this->setCacheBackend($cache_backend, 'yamlform_handler_plugins');
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getSortedDefinitions(array $definitions = NULL) {
+    // Sort the plugins first by category, then by label.
+    $definitions = $this->traitGetSortedDefinitions($definitions);
+    // Do not display the 'broken' plugin in the UI.
+    unset($definitions['broken']);
+    return $definitions;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getGroupedDefinitions(array $definitions = NULL) {
+    $definitions = $this->traitGetGroupedDefinitions($definitions);
+    // Do not display the 'broken' plugin in the UI.
+    unset($definitions[$this->t('Broken')]['broken']);
+    return $definitions;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getFallbackPluginId($plugin_id, array $configuration = []) {
+    return 'broken';
   }
 
 }

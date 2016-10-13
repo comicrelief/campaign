@@ -1,17 +1,13 @@
 <?php
 
-/**
- * @file
- * Definition of Drupal\yamlform\test\YamlFormEmailBasicHandlerTest.
- */
-
 namespace Drupal\yamlform\Tests;
 
+use Drupal\yamlform\Element\YamlFormSelectOther;
 use Drupal\yamlform\Entity\YamlForm;
 use Drupal\yamlform\Entity\YamlFormSubmission;
 
 /**
- * Tests for YAML form basic email functionality.
+ * Tests for form basic email functionality.
  *
  * @group YamlForm
  */
@@ -21,12 +17,12 @@ class YamlFormEmailBasicHandlerTest extends YamlFormTestBase {
    * Test basic email handler.
    */
   public function testBasicEmailHandler() {
-    /** @var \Drupal\yamlform\YamlFormInterface $yamlform */
-    $yamlform = YamlForm::load('test_handler_email');
+    /** @var \Drupal\yamlform\YamlFormInterface $yamlform_handler_email */
+    $yamlform_handler_email = YamlForm::load('test_handler_email');
 
     // Create a submission using the test form's default values.
     $this->drupalLogout();
-    $this->postSubmission($yamlform);
+    $this->postSubmission($yamlform_handler_email);
 
     // Check sending a basic email via a submission.
     $sent_email = $this->getLastEmail();
@@ -34,22 +30,35 @@ class YamlFormEmailBasicHandlerTest extends YamlFormTestBase {
     $this->assertContains($sent_email['body'], 'Submitted by: Anonymous');
     $this->assertContains($sent_email['body'], 'First name: John');
     $this->assertContains($sent_email['body'], 'Last name: Smith');
+    $this->assertEqual($sent_email['headers']['From'], 'from@example.com');
+    $this->assertEqual($sent_email['headers']['Cc'], 'cc@example.com');
+    $this->assertEqual($sent_email['headers']['Bcc'], 'bcc@example.com');
+
+    // Check sending with the saving of results disabled.
+    $yamlform_handler_email->setSetting('results_disabled', TRUE)->save();
+    $this->postSubmission($yamlform_handler_email, ['first_name' => 'Jane', 'last_name' => 'Doe']);
+    $sent_email = $this->getLastEmail();
+    $this->assertContains($sent_email['body'], 'First name: Jane');
+    $this->assertContains($sent_email['body'], 'Last name: Doe');
+    $yamlform_handler_email->setSetting('results_disabled', FALSE)->save();
 
     // Check sending a custom email using tokens.
     $this->drupalLogin($this->adminFormUser);
     $body = implode("\n", [
-        'full name: [yamlform-submission:values:first_name] [yamlform-submission:values:last_name]',
-        'uuid: [yamlform-submission:uuid]',
-        'sid: [yamlform-submission:sid]',
-        'date: [yamlform-submission:created]',
-        'ip-address: [yamlform-submission:ip-address]',
-        'user: [yamlform-submission:user]',
-        'url: [yamlform-submission:url]',
-        'edit-url: [yamlform-submission:url:edit-form]',
-      ]);
-    $this->drupalPostForm('admin/structure/yamlform/manage/test_handler_email/handlers/email', ['settings[message][body]' => 'custom', 'settings[message][body_custom]' => $body], t('Update'));
+      'full name: [yamlform-submission:values:first_name] [yamlform-submission:values:last_name]',
+      'uuid: [yamlform-submission:uuid]',
+      'sid: [yamlform-submission:sid]',
+      'date: [yamlform-submission:created]',
+      'ip-address: [yamlform-submission:ip-address]',
+      'user: [yamlform-submission:user]',
+      'url: [yamlform-submission:url]',
+      'edit-url: [yamlform-submission:url:edit-form]',
+      'Test that "double quotes" are not encoded.',
+    ]);
 
-    $sid = $this->postSubmission($yamlform);
+    $this->drupalPostForm('admin/structure/yamlform/manage/test_handler_email/handlers/email/edit', ['settings[body][select]' => YamlFormSelectOther::OTHER_OPTION, 'settings[body][other]' => $body], t('Save'));
+
+    $sid = $this->postSubmission($yamlform_handler_email);
     /** @var \Drupal\yamlform\YamlFormSubmissionInterface $yamlform_submission */
     $yamlform_submission = YamlFormSubmission::load($sid);
 
@@ -64,6 +73,7 @@ class YamlFormEmailBasicHandlerTest extends YamlFormTestBase {
     $this->assertContains($sent_email['body'], $yamlform_submission->toUrl('canonical', ['absolute' => TRUE])->toString());
     $this->assertContains($sent_email['body'], "edit-url:");
     $this->assertContains($sent_email['body'], $yamlform_submission->toUrl('edit-form', ['absolute' => TRUE])->toString());
+    $this->assertContains($sent_email['body'], 'Test that "double quotes" are not encoded.');
   }
 
 }

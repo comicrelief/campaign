@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\yamlform\Plugin\Block\YamlFormBlock.
- */
 
 namespace Drupal\yamlform\Plugin\Block;
 
@@ -13,12 +9,12 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\yamlform\Entity\YamlForm;
 
 /**
- * Provides a 'YAML form' block.
+ * Provides a 'Form' block.
  *
  * @Block(
  *   id = "yamlform_block",
- *   admin_label = @Translation("YAML form"),
- *   category = @Translation("YAML form")
+ *   admin_label = @Translation("Form"),
+ *   category = @Translation("Form")
  * )
  */
 class YamlFormBlock extends BlockBase {
@@ -38,19 +34,28 @@ class YamlFormBlock extends BlockBase {
    */
   public function blockForm($form, FormStateInterface $form_state) {
     $form['yamlform_id'] = [
-      '#title' => $this->t('YAML form'),
+      '#title' => $this->t('Form'),
       '#type' => 'entity_autocomplete',
       '#target_type' => 'yamlform',
       '#required' => TRUE,
       '#default_value' => $this->getYamlForm(),
     ];
     $form['default_data'] = [
-      '#title' => $this->t('Default YAML form submission data (YAML)'),
-      '#description' => $this->t('Enter YAML form submission data as name and value pairs which will be used to prepopulate the selected YAML form.'),
-      '#type' => 'yamlform_codemirror_yaml',
+      '#title' => $this->t('Default form submission data (YAML)'),
+      '#description' => $this->t('Enter form submission data as name and value pairs which will be used to prepopulate the selected form. You may use tokens.'),
+      '#type' => 'yamlform_codemirror',
+      '#mode' => 'yaml',
       '#default_value' => $this->configuration['default_data'],
     ];
-
+    $form['token_tree_link'] = [
+      '#theme' => 'token_tree_link',
+      '#token_types' => [
+        'yamlform',
+        'yamlform-submission',
+      ],
+      '#click_insert' => FALSE,
+      '#dialog' => TRUE,
+    ];
     return $form;
   }
 
@@ -87,15 +92,15 @@ class YamlFormBlock extends BlockBase {
    * {@inheritdoc}
    */
   public function getCacheMaxAge() {
-    // Caching strategy is handled by the YAML form.
+    // Caching strategy is handled by the form.
     return 0;
   }
 
   /**
-   * Get this block instance YAML form.
+   * Get this block instance form.
    *
    * @return \Drupal\yamlform\Entity\YamlForm
-   *   A YAML form or NULL.
+   *   A form or NULL.
    */
   protected function getYamlForm() {
     return YamlForm::load($this->configuration['yamlform_id']);

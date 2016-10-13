@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Provides development tools YAML Form module.
+ */
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function yamlform_devel_entity_type_alter(array &$entity_types) {
+  if (isset($entity_types['yamlform'])) {
+    /** @var \Drupal\Core\Entity\ContentEntityTypeInterface $entity_type */
+    $entity_type = $entity_types['yamlform'];
+    $handlers = $entity_type->getHandlerClasses();
+    $handlers['form']['export'] = 'Drupal\yamlform_devel\Form\YamlFormEntityExportForm';
+    $entity_type->setHandlerClass('form', $handlers['form']);
+  }
+}

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\Plugin\YamlFormElement\MachineName.
- */
-
 namespace Drupal\yamlform\Plugin\YamlFormElement;
 
 use Drupal\yamlform\YamlFormElementBase;
@@ -15,7 +10,9 @@ use Drupal\yamlform\YamlFormSubmissionInterface;
  *
  * @YamlFormElement(
  *   id = "machine_name",
- *   label = @Translation("Machine name")
+ *   api = "https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Render!Element!MachineName.php/class/MachineName",
+ *   label = @Translation("Machine name"),
+ *   hidden = TRUE,
  * )
  */
 class MachineName extends YamlFormElementBase {
@@ -24,13 +21,14 @@ class MachineName extends YamlFormElementBase {
    * {@inheritdoc}
    */
   public function prepare(array &$element, YamlFormSubmissionInterface $yamlform_submission) {
-    // Since all inputs are place under the $form['inputs'] we need to
-    // prepend the 'input' container to the #machine_name source.
+    parent::prepare($element, $yamlform_submission);
+    // Since all elements are place under the $form['elements'] we need to
+    // prepend the 'element' container to the #machine_name source.
     if (isset($element['#machine_name']['source'])) {
-      array_unshift($element['#machine_name']['source'], 'inputs');
+      array_unshift($element['#machine_name']['source'], 'elements');
     }
     else {
-      $element['#machine_name']['source'] = ['inputs', 'label'];
+      $element['#machine_name']['source'] = ['elements', 'label'];
     }
 
     // Set #exists callback to function that will always returns TRUE.

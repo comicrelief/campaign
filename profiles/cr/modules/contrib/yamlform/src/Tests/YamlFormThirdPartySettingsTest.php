@@ -1,14 +1,9 @@
 <?php
 
-/**
- * @file
- * Definition of Drupal\yamlform\test\YamlFormThirdPartySettingsTest.
- */
-
 namespace Drupal\yamlform\Tests;
 
 /**
- * Tests for YAML form third party settings.
+ * Tests for form third party settings.
  *
  * @group YamlForm
  */
@@ -22,12 +17,12 @@ class YamlFormThirdPartySettingsTest extends YamlFormTestBase {
   public static $modules = ['system', 'node', 'user', 'yamlform'];
 
   /**
-   * Tests YAML form third party settings.
+   * Tests form third party settings.
    */
   public function testThirdPartySettings() {
     $this->drupalLogin($this->adminFormUser);
 
-    // Check 'YAML form: Settings: Third party' shows no modules installed.
+    // Check 'Form: Settings: Third party' shows no modules installed.
     $this->drupalGet('admin/structure/yamlform/settings/third-party');
     $this->assertRaw('There are no third party settings available.');
 
@@ -38,7 +33,7 @@ class YamlFormThirdPartySettingsTest extends YamlFormTestBase {
     // Install test third party settings module.
     \Drupal::service('module_installer')->install(['yamlform_test_third_party_settings']);
 
-    // Check 'YAML form: Settings: Third party' shows no modules installed.
+    // Check 'Form: Settings: Third party' shows no modules installed.
     $this->drupalGet('admin/structure/yamlform/settings/third-party');
     $this->assertNoRaw('There are no third party settings available.');
 
@@ -46,7 +41,7 @@ class YamlFormThirdPartySettingsTest extends YamlFormTestBase {
     $this->drupalGet('admin/structure/yamlform/manage/contact/third-party-settings');
     $this->assertNoRaw('There are no third party settings available.');
 
-    // Check 'YAML form: Settings: Third party' message.
+    // Check 'Form: Settings: Third party' message.
     $edit = [
       'third_party_settings[yamlform_test_third_party_settings][message]' => 'Message for all forms',
     ];

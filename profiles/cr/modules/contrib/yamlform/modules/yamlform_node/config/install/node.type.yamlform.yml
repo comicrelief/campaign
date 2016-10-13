@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - yamlform
+name: 'Form'
+type: yamlform
+description: 'A basic page with a form attached.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: true

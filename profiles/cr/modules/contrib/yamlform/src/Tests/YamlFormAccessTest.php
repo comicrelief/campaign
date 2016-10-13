@@ -1,29 +1,83 @@
 <?php
 
-/**
- * @file
- * Definition of Drupal\yamlform\test\YamlFormAccessTest.
- */
-
 namespace Drupal\yamlform\Tests;
+
 use Drupal\Component\Render\FormattableMarkup;
 use Drupal\yamlform\Entity\YamlForm;
 
 /**
- * Tests for YAML form access rules.
+ * Tests for form access rules.
  *
  * @group YamlForm
  */
 class YamlFormAccessTest extends YamlFormTestBase {
 
   /**
-   * Tests YAML form access rules.
+   * Tests form access rules.
+   */
+  public function testAccessControlHandler() {
+    // Login as user who can access own form.
+    $this->drupalLogin($this->ownFormUser);
+
+    // Check create own form.
+    $this->drupalPostForm('admin/structure/yamlform/add', ['id' => 'test_own', 'title' => 'test_own', 'elements' => "test:\n  '#markup': 'test'"], t('Save'));
+
+    // Check duplicate own form.
+    $this->drupalGet('admin/structure/yamlform/manage/test_own/duplicate');
+    $this->assertResponse(200);
+
+    // Check delete own form.
+    $this->drupalGet('admin/structure/yamlform/manage/test_own/delete');
+    $this->assertResponse(200);
+
+    // Check access own form submissions.
+    $this->drupalGet('admin/structure/yamlform/manage/test_own/results/submissions');
+    $this->assertResponse(200);
+
+    // Login as user who can access any form.
+    $this->drupalLogin($this->anyFormUser);
+
+    // Check duplicate any form.
+    $this->drupalGet('admin/structure/yamlform/manage/test_own/duplicate');
+    $this->assertResponse(200);
+
+    // Check delete any form.
+    $this->drupalGet('admin/structure/yamlform/manage/test_own/delete');
+    $this->assertResponse(200);
+
+    // Check access any form submissions.
+    $this->drupalGet('admin/structure/yamlform/manage/test_own/results/submissions');
+    $this->assertResponse(200);
+
+    // Change the owner of the form to 'any' user.
+    $own_yamlform = YamlForm::load('test_own');
+    $own_yamlform->setOwner($this->anyFormUser)->save();
+
+    // Login as user who can access own form.
+    $this->drupalLogin($this->ownFormUser);
+
+    // Check duplicate denied any form.
+    $this->drupalGet('admin/structure/yamlform/manage/test_own/duplicate');
+    $this->assertResponse(403);
+
+    // Check delete denied any form.
+    $this->drupalGet('admin/structure/yamlform/manage/test_own/delete');
+    $this->assertResponse(403);
+
+    // Check access denied any form submissions.
+    $this->drupalGet('admin/structure/yamlform/manage/test_own/results/submissions');
+    $this->assertResponse(403);
+  }
+
+  /**
+   * Tests form access rules.
    */
   public function testAccessRules() {
-    /** @var \Drupal\yamlform\YamlFormInterface $yamlform */
-    /** @var \Drupal\yamlform\Entity\YamlFormSubmission[] $submissions */
-    list($yamlform, $submissions) = $this->createYamlFormWithSubmissions();
+    global $base_path;
 
+    /** @var \Drupal\yamlform\YamlFormInterface $yamlform */
+    /** @var \Drupal\yamlform\YamlFormSubmissionInterface[] $submissions */
+    list($yamlform, $submissions) = $this->createYamlFormWithSubmissions();
     $account = $this->drupalCreateUser(['access content']);
 
     $yamlform_id = $yamlform->id();
@@ -34,7 +88,7 @@ class YamlFormAccessTest extends YamlFormTestBase {
     // Check create authenticated/anonymous access.
     $yamlform->setAccessRules(YamlForm::getDefaultAccessRules())->save();
     $this->drupalGet('yamlform/' . $yamlform->id());
-    $this->assertResponse(200, 'YAML form create submission access for anonymous/authenticated user.');
+    $this->assertResponse(200, 'Form create submission access for anonymous/authenticated user.');
 
     $access_rules = [
       'create' => [
@@ -46,7 +100,7 @@ class YamlFormAccessTest extends YamlFormTestBase {
 
     // Check no access.
     $this->drupalGet('yamlform/' . $yamlform->id());
-    $this->assertResponse(403, 'YAML form returns access denied');
+    $this->assertResponse(403, 'Form returns access denied');
 
     $any_tests = [
       'yamlform/{yamlform}' => 'create',
@@ -54,11 +108,11 @@ class YamlFormAccessTest extends YamlFormTestBase {
       'admin/structure/yamlform/manage/{yamlform}/results/table' => 'view_any',
       'admin/structure/yamlform/manage/{yamlform}/results/download' => 'view_any',
       'admin/structure/yamlform/manage/{yamlform}/results/clear' => 'purge_any',
-      'admin/structure/yamlform/results/manage/{yamlform_submission}' => 'view_any',
-      'admin/structure/yamlform/results/manage/{yamlform_submission}/text' => 'view_any',
-      'admin/structure/yamlform/results/manage/{yamlform_submission}/yaml' => 'view_any',
-      'admin/structure/yamlform/results/manage/{yamlform_submission}/edit' => 'update_any',
-      'admin/structure/yamlform/results/manage/{yamlform_submission}/delete' => 'delete_any',
+      'admin/structure/yamlform/manage/{yamlform}/submission/{yamlform_submission}' => 'view_any',
+      'admin/structure/yamlform/manage/{yamlform}/submission/{yamlform_submission}/text' => 'view_any',
+      'admin/structure/yamlform/manage/{yamlform}/submission/{yamlform_submission}/yaml' => 'view_any',
+      'admin/structure/yamlform/manage/{yamlform}/submission/{yamlform_submission}/edit' => 'update_any',
+      'admin/structure/yamlform/manage/{yamlform}/submission/{yamlform_submission}/delete' => 'delete_any',
     ];
 
     // Check that all the test paths are access denied for anonymous users.
@@ -67,18 +121,18 @@ class YamlFormAccessTest extends YamlFormTestBase {
       $path = str_replace('{yamlform_submission}', $sid, $path);
 
       $this->drupalGet($path);
-      $this->assertResponse(403, 'YAML form returns access denied');
+      $this->assertResponse(403, 'Form returns access denied');
     }
 
     $this->drupalLogin($account);
 
-    // Check that all the test paths are access denied for anonymous.
+    // Check that all the test paths are access denied for authenticated.
     foreach ($any_tests as $path => $permission) {
       $path = str_replace('{yamlform}', $yamlform_id, $path);
       $path = str_replace('{yamlform_submission}', $sid, $path);
 
       $this->drupalGet($path);
-      $this->assertResponse(403, 'YAML form returns access denied');
+      $this->assertResponse(403, 'Form returns access denied');
     }
 
     // Check access rules by role and user id.
@@ -95,9 +149,9 @@ class YamlFormAccessTest extends YamlFormTestBase {
       ] + YamlForm::getDefaultAccessRules();
       $yamlform->setAccessRules($access_rules)->save();
       $this->drupalGet($path);
-      $this->assertResponse(200, 'YAML form allows access via role access rules');
+      $this->assertResponse(200, 'Form allows access via role access rules');
 
-      // Check access rule via role.
+      // Check access rule via user id.
       $access_rules = [
         $permission => [
           'roles' => [],
@@ -106,7 +160,7 @@ class YamlFormAccessTest extends YamlFormTestBase {
       ] + YamlForm::getDefaultAccessRules();
       $yamlform->setAccessRules($access_rules)->save();
       $this->drupalGet($path);
-      $this->assertResponse(200, 'YAML form allows access via user access rules');
+      $this->assertResponse(200, 'Form allows access via user access rules');
     }
 
     // Check own / user specific access rules.
@@ -132,14 +186,21 @@ class YamlFormAccessTest extends YamlFormTestBase {
     // Check no view previous submission message.
     $this->drupalGet('yamlform/' . $yamlform->id());
     $this->assertNoRaw('You have already submitted this form.');
-    $this->assertNoRaw('View your previous submissions');
+    $this->assertNoRaw('View your previous submission');
 
     $sid = $this->postSubmission($yamlform);
 
     // Check view previous submission message.
     $this->drupalGet('yamlform/' . $yamlform->id());
     $this->assertRaw('You have already submitted this form.');
-    $this->assertRaw('View your previous submissions');
+    $this->assertRaw("<a href=\"{$base_path}yamlform/{$yamlform_id}/submissions/{$sid}\">View your previous submission</a>.");
+
+    $sid = $this->postSubmission($yamlform);
+
+    // Check view previous submissions message.
+    $this->drupalGet('yamlform/' . $yamlform->id());
+    $this->assertRaw('You have already submitted this form.');
+    $this->assertRaw("<a href=\"{$base_path}yamlform/{$yamlform_id}/submissions\">View your previous submissions</a>");
 
     // Check the new submission's view, update, and delete access for the user.
     $test_own = [
@@ -147,18 +208,18 @@ class YamlFormAccessTest extends YamlFormTestBase {
       'admin/structure/yamlform/manage/{yamlform}/results/table' => 403,
       'admin/structure/yamlform/manage/{yamlform}/results/download' => 403,
       'admin/structure/yamlform/manage/{yamlform}/results/clear' => 403,
-      'admin/structure/yamlform/results/manage/{yamlform_submission}' => 200,
-      'admin/structure/yamlform/results/manage/{yamlform_submission}/text' => 403,
-      'admin/structure/yamlform/results/manage/{yamlform_submission}/yaml' => 403,
-      'admin/structure/yamlform/results/manage/{yamlform_submission}/edit' => 200,
-      'admin/structure/yamlform/results/manage/{yamlform_submission}/delete' => 200,
+      'admin/structure/yamlform/manage/{yamlform}/submission/{yamlform_submission}' => 200,
+      'admin/structure/yamlform/manage/{yamlform}/submission/{yamlform_submission}/text' => 403,
+      'admin/structure/yamlform/manage/{yamlform}/submission/{yamlform_submission}/yaml' => 403,
+      'admin/structure/yamlform/manage/{yamlform}/submission/{yamlform_submission}/edit' => 200,
+      'admin/structure/yamlform/manage/{yamlform}/submission/{yamlform_submission}/delete' => 200,
     ];
     foreach ($test_own as $path => $status_code) {
       $path = str_replace('{yamlform}', $yamlform_id, $path);
       $path = str_replace('{yamlform_submission}', $sid, $path);
 
       $this->drupalGet($path);
-      $this->assertResponse($status_code, new FormattableMarkup('YAML form @status_code access via own access rules.', ['@status_code' => ($status_code == 403 ? 'denies' : 'allows')]));
+      $this->assertResponse($status_code, new FormattableMarkup('Form @status_code access via own access rules.', ['@status_code' => ($status_code == 403 ? 'denies' : 'allows')]));
     }
   }
 

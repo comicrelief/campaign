@@ -1,0 +1,356 @@
+langcode: en
+status: true
+dependencies: {  }
+uid: null
+template: false
+id: test_element_html_escape
+title: 'Test: Element: HTML escaping'
+description: 'Test element HTML escaping support'
+elements: |
+  basic_elements:
+    '#type': details
+    '#title': 'Basic elements | <script>alert(''This markup is not escaped properly!!!'') </script>'
+    '#open': true
+    checkbox:
+      '#type': checkbox
+      '#title': 'Checkbox | <script>alert(''This markup is not escaped properly!!!'') </script>'
+    password:
+      '#type': password
+      '#title': 'Password | <script>alert(''This markup is not escaped properly!!!'') </script>'
+    textarea:
+      '#type': textarea
+      '#title': 'Textarea | <script>alert(''This markup is not escaped properly!!!'') </script>'
+    textfield:
+      '#type': textfield
+      '#title': 'Text field | <script>alert(''This markup is not escaped properly!!!'') </script>'
+  advanced_elements:
+    '#type': details
+    '#title': 'Advanced elements | <script>alert(''This markup is not escaped properly!!!'') </script>'
+    '#open': true
+    yamlform_autocomplete:
+      '#type': yamlform_autocomplete
+      '#title': 'Autocomplete | <script>alert(''This markup is not escaped properly!!!'') </script>'
+    captcha:
+      '#type': captcha
+      '#title': 'CAPTCHA | <script>alert(''This markup is not escaped properly!!!'') </script>'
+    yamlform_codemirror:
+      '#type': yamlform_codemirror
+      '#title': 'CodeMirror | <script>alert(''This markup is not escaped properly!!!'') </script>'
+      '#mode': yaml
+    color:
+      '#type': color
+      '#title': 'Color | <script>alert(''This markup is not escaped properly!!!'') </script>'
+    email:
+      '#type': email
+      '#title': 'Email | <script>alert(''This markup is not escaped properly!!!'') </script>'
+    yamlform_email_confirm:
+      '#type': yamlform_email_confirm
+      '#title': 'Email confirm | <script>alert(''This markup is not escaped properly!!!'') </script>'
+    yamlform_email_multiple:
+      '#type': yamlform_email_multiple
+      '#title': 'Email multiple | <script>alert(''This markup is not escaped properly!!!'') </script>'
+    number:
+      '#type': number
+      '#title': 'Number | <script>alert(''This markup is not escaped properly!!!'') </script>'
+      '#min': 0
+      '#max': 10
+      '#step': 1
+    password_confirm:
+      '#type': password_confirm
+      '#title': 'Password confirm | <script>alert(''This markup is not escaped properly!!!'') </script>'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/1427838">Issue #1427838: password and password_confirm children do not pick up #states or #attributes</a>'
+    range:
+      '#type': range
+      '#title': 'Range | <script>alert(''This markup is not escaped properly!!!'') </script>'
+      '#min': 0
+      '#max': 100
+      '#step': 1
+      '#range__output': true
+      '#range__output_prefix': $
+      '#range__output_suffix': '.00'
+    yamlform_rating:
+      '#type': yamlform_rating
+      '#title': 'Rating | <script>alert(''This markup is not escaped properly!!!'') </script>'
+    search:
+      '#type': search
+      '#title': 'Search | <script>alert(''This markup is not escaped properly!!!'') </script>'
+    yamlform_signature:
+      '#type': yamlform_signature
+      '#title': 'Signature | <script>alert(''This markup is not escaped properly!!!'') </script>'
+    tel:
+      '#type': tel
+      '#title': 'Telephone | <script>alert(''This markup is not escaped properly!!!'') </script>'
+    text_format:
+      '#type': text_format
+      '#title': 'Text format | <script>alert(''This markup is not escaped properly!!!'') </script>'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/997826">Issue #997826: #states doesn''t work correctly with type text_format</a><br/><a href="https://www.drupal.org/node/2625128">Issue #2625128: Text format selection stays visible when using editor and a hidden form state</a>'
+    yamlform_toggle:
+      '#type': yamlform_toggle
+      '#title': 'Toggle | <script>alert(''This markup is not escaped properly!!!'') </script>'
+    url:
+      '#type': url
+      '#title': 'URL | <script>alert(''This markup is not escaped properly!!!'') </script>'
+    value:
+      '#type': value
+      '#title': 'Value | <script>alert(''This markup is not escaped properly!!!'') </script>'
+  composite_elements:
+    '#type': details
+    '#title': 'Composite elements | <script>alert(''This markup is not escaped properly!!!'') </script>'
+    '#open': true
+    yamlform_address:
+      '#type': yamlform_address
+      '#title': 'Address | <script>alert(''This markup is not escaped properly!!!'') </script>'
+    yamlform_contact:
+      '#type': yamlform_contact
+      '#title': 'Contact | <script>alert(''This markup is not escaped properly!!!'') </script>'
+    yamlform_location:
+      '#type': yamlform_location
+      '#title': 'Location | <script>alert(''This markup is not escaped properly!!!'') </script>'
+    yamlform_name:
+      '#type': yamlform_name
+      '#title': 'Name | <script>alert(''This markup is not escaped properly!!!'') </script>'
+  containers:
+    '#type': details
+    '#title': 'Containers | <script>alert(''This markup is not escaped properly!!!'') </script>'
+    '#open': true
+    container:
+      '#type': container
+      '#title': 'Container | <script>alert(''This markup is not escaped properly!!!'') </script>'
+      container_content:
+        '#markup': 'This is a Container container.'
+    details:
+      '#type': details
+      '#title': 'Details | <script>alert(''This markup is not escaped properly!!!'') </script>'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/2348851">Issue #2348851: Regression: Allow HTML tags inside detail summary</a>'
+      details_content:
+        '#markup': 'This is a Details container.'
+    fieldset:
+      '#type': fieldset
+      '#title': 'Fieldset | <script>alert(''This markup is not escaped properly!!!'') </script>'
+      fieldset_content:
+        '#markup': 'This is a Fieldset container.'
+    item:
+      '#type': item
+      '#title': 'Item | <script>alert(''This markup is not escaped properly!!!'') </script>'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/783438">Issue #783438: #states doesn''t work for #type item</a>'
+      '#markup': '{markup}'
+      '#field_prefix': '{field_prefix} | <script>alert(''This markup is not escaped properly!!!'') </script>'
+      '#field_suffix': '{field_suffix} | <script>alert(''This markup is not escaped properly!!!'') </script>'
+      item_content:
+        '#markup': 'This is a Item container.'
+    label:
+      '#type': label
+      '#title': 'Label | <script>alert(''This markup is not escaped properly!!!'') </script>'
+      label_content:
+        '#markup': 'This is a Label container.'
+  date_time_elements:
+    '#type': details
+    '#title': 'Date/time elements | <script>alert(''This markup is not escaped properly!!!'') </script>'
+    '#open': true
+    date:
+      '#type': date
+      '#title': 'Date | <script>alert(''This markup is not escaped properly!!!'') </script>'
+    datetime:
+      '#type': datetime
+      '#title': 'Date/time | <script>alert(''This markup is not escaped properly!!!'') </script>'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/2419131">Issue #2419131: #states attribute does not work on #type datetime</a>'
+    datelist:
+      '#type': datelist
+      '#title': 'Date list | <script>alert(''This markup is not escaped properly!!!'') </script>'
+  entity_reference_elements:
+    '#type': details
+    '#title': 'Entity reference elements | <script>alert(''This markup is not escaped properly!!!'') </script>'
+    '#open': true
+    entity_autocomplete:
+      '#type': entity_autocomplete
+      '#title': 'Entity autocomplete | <script>alert(''This markup is not escaped properly!!!'') </script>'
+      '#target_type': user
+      '#selection_handler': 'default:user'
+      '#selection_settings':
+        include_anonymous: true
+    yamlform_entity_checkboxes:
+      '#type': yamlform_entity_checkboxes
+      '#title': 'Entity checkboxes | <script>alert(''This markup is not escaped properly!!!'') </script>'
+      '#target_type': user
+      '#selection_handler': 'default:user'
+      '#selection_settings':
+        include_anonymous: true
+    yamlform_entity_radios:
+      '#type': yamlform_entity_radios
+      '#title': 'Entity radios | <script>alert(''This markup is not escaped properly!!!'') </script>'
+      '#target_type': user
+      '#selection_handler': 'default:user'
+      '#selection_settings':
+        include_anonymous: true
+    yamlform_entity_select:
+      '#type': yamlform_entity_select
+      '#title': 'Entity select | <script>alert(''This markup is not escaped properly!!!'') </script>'
+      '#target_type': user
+      '#selection_handler': 'default:user'
+      '#selection_settings':
+        include_anonymous: true
+  file_upload_elements:
+    '#type': details
+    '#title': 'File upload elements | <script>alert(''This markup is not escaped properly!!!'') </script>'
+    '#open': true
+    managed_file:
+      '#type': managed_file
+      '#title': 'Managed file | <script>alert(''This markup is not escaped properly!!!'') </script>'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/2705471">Issue #2705471: Form states managed file fields</a>'
+  markup_element:
+    '#type': details
+    '#title': 'Markup element | <script>alert(''This markup is not escaped properly!!!'') </script>'
+    '#open': true
+    yamlform_markup:
+      '#type': yamlform_markup
+      '#title': 'HTML markup | <script>alert(''This markup is not escaped properly!!!'') </script>'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/2700667">Issue #2700667: Notice: Undefined index: #type in drupal_process_states()</a>'
+      yamlform_markup_content:
+        '#markup': 'This is a HTML markup container.'
+  markup_elements:
+    '#type': details
+    '#title': 'Markup elements | <script>alert(''This markup is not escaped properly!!!'') </script>'
+    '#open': true
+    processed_text:
+      '#type': processed_text
+      '#title': 'Processed text | <script>alert(''This markup is not escaped properly!!!'') </script>'
+      processed_text_content:
+        '#markup': 'This is a Processed text container.'
+  options_elements:
+    '#type': details
+    '#title': 'Options elements | <script>alert(''This markup is not escaped properly!!!'') </script>'
+    '#open': true
+    checkboxes:
+      '#type': checkboxes
+      '#title': 'Checkboxes | <script>alert(''This markup is not escaped properly!!!'') </script>'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+    yamlform_checkboxes_other:
+      '#type': yamlform_checkboxes_other
+      '#title': 'Checkboxes other | <script>alert(''This markup is not escaped properly!!!'') </script>'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+    yamlform_likert:
+      '#type': yamlform_likert
+      '#title': 'Likert | <script>alert(''This markup is not escaped properly!!!'') </script>'
+      '#questions':
+        q1: 'Please answer question 1?'
+        q2: 'How about now answering question 2?'
+        q3: 'Finally, here is question 3?'
+      '#answers':
+        1: 1
+        2: 2
+        3: 3
+        4: 4
+        5: 5
+    radios:
+      '#type': radios
+      '#title': 'Radios | <script>alert(''This markup is not escaped properly!!!'') </script>'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/2731991">Issue #2731991: Setting required on radios marks all options required</a><br/><a href="https://www.drupal.org/node/994360">Issue #994360: #states cannot disable/enable radios and checkboxes</a>'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+    yamlform_radios_other:
+      '#type': yamlform_radios_other
+      '#title': 'Radios other | <script>alert(''This markup is not escaped properly!!!'') </script>'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+    select:
+      '#type': select
+      '#title': 'Select | <script>alert(''This markup is not escaped properly!!!'') </script>'
+      '#description': '<b>Known Issues:</b><br/><a href="https://www.drupal.org/node/1426646">Issue #1426646: "-Select-" option is lost when form elements uses ''#states''</a><br/><a href="https://www.drupal.org/node/1149078">Issue #1149078: States API doesn''t work with multiple select fields</a><br/><a href="https://www.drupal.org/node/2791741">Issue #2791741: FAPI states: fields aren''t hidden initally when depending on multi-value selection</a>'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+    yamlform_select_other:
+      '#type': yamlform_select_other
+      '#title': 'Select other | <script>alert(''This markup is not escaped properly!!!'') </script>'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+    tableselect:
+      '#type': tableselect
+      '#title': 'Table select | <script>alert(''This markup is not escaped properly!!!'') </script>'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+settings:
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_submit_label: ''
+  form_exception_message: ''
+  form_closed_message: ''
+  form_confidential: false
+  form_confidential_message: ''
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_novalidate: false
+  form_autofocus: false
+  form_details_toggle: false
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_next_button_label: ''
+  wizard_prev_button_label: ''
+  wizard_start_label: ''
+  wizard_complete: true
+  wizard_complete_label: ''
+  preview: 0
+  preview_next_button_label: ''
+  preview_prev_button_label: ''
+  preview_message: ''
+  draft: false
+  draft_auto_save: false
+  draft_button_label: ''
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: page
+  confirmation_message: ''
+  confirmation_url: ''
+  limit_total: null
+  limit_total_message: ''
+  limit_user: null
+  limit_user_message: ''
+  entity_limit_total: null
+  entity_limit_user: null
+  results_disabled: false
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+handlers: {  }

@@ -1,38 +1,44 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\Controller\YamlFormTestController.
- */
-
 namespace Drupal\yamlform\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\yamlform\YamlFormInterface;
-use Drupal\yamlform\YamlFormSubmissionGenerate;
+use Drupal\yamlform\YamlFormRequestInterface;
+use Drupal\yamlform\YamlFormSubmissionGenerateInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Provides route responses for YAML form testing.
+ * Provides route responses for form testing.
  */
 class YamlFormTestController extends ControllerBase implements ContainerInjectionInterface {
 
   /**
-   * YAML form submission generation service.
+   * Form request handler.
    *
-   * @var \Drupal\yamlform\YamlFormSubmissionGenerate
+   * @var \Drupal\yamlform\YamlFormRequestInterface
+   */
+  protected $requestHandler;
+
+  /**
+   * Form submission generation service.
+   *
+   * @var \Drupal\yamlform\YamlFormSubmissionGenerateInterface
    */
   protected $generate;
 
   /**
    * Constructs a new YamlFormTestController object.
    *
-   * @param \Drupal\yamlform\YamlFormSubmissionGenerate $submission_generate
-   *   The YAML form submission generation service.
+   * @param \Drupal\yamlform\YamlFormRequestInterface $request_handler
+   *   The form request handler.
+   * @param \Drupal\yamlform\YamlFormSubmissionGenerateInterface $submission_generate
+   *   The form submission generation service.
    */
-  public function __construct(YamlFormSubmissionGenerate $submission_generate) {
+  public function __construct(YamlFormRequestInterface $request_handler, YamlFormSubmissionGenerateInterface $submission_generate) {
+    $this->requestHandler = $request_handler;
     $this->generate = $submission_generate;
   }
 
@@ -41,40 +47,56 @@ class YamlFormTestController extends ControllerBase implements ContainerInjectio
    */
   public static function create(ContainerInterface $container) {
     return new static(
+      $container->get('yamlform.request'),
       $container->get('yamlform_submission.generate')
     );
   }
 
   /**
-   * Returns a form to add a new test submission to a YAML form.
+   * Returns a form to add a new test submission to a form.
    *
    * @param \Symfony\Component\HttpFoundation\Request $request
    *   The current request.
-   * @param \Drupal\yamlform\YamlFormInterface $yamlform
-   *   The YAML form this submission will be added to.
    *
    * @return array
-   *   The YAML form submission form.
+   *   The form submission form.
    */
-  public function testForm(Request $request, YamlFormInterface $yamlform) {
-    if ($request->query->get('yamlform_id') == $yamlform->id()) {
-      return $yamlform->getSubmissionForm();
+  public function testForm(Request $request) {
+    /** @var \Drupal\yamlform\YamlFormInterface $yamlform */
+    /** @var \Drupal\Core\Entity\EntityInterface $source_entity */
+    list($yamlform, $source_entity) = $this->requestHandler->getYamlFormEntities();
+    $values = [];
+
+    // Set source entity type and id.
+    if ($source_entity) {
+      $values['entity_type'] = $source_entity->getEntityTypeId();
+      $values['entity_id'] = $source_entity->id();
     }
 
-    return $yamlform->getSubmissionForm(['data' => $this->generate->getData($yamlform)]);
+    if ($request->query->get('yamlform_id') == $yamlform->id()) {
+      return $yamlform->getSubmissionForm($values);
+    }
+
+    // Generate date.
+    $values['data'] = $this->generate->getData($yamlform);
+
+    return $yamlform->getSubmissionForm($values);
   }
 
   /**
    * Route title callback.
    *
    * @param \Drupal\yamlform\YamlFormInterface $yamlform
-   *   The YAML form.
+   *   The form.
    *
    * @return string
-   *   The YAML form label as a render array.
+   *   The form label as a render array.
    */
   public function title(YamlFormInterface $yamlform) {
-    return $this->t('Testing %title form', ['%title' => $yamlform->label()]);
+    /** @var \Drupal\yamlform\YamlFormInterface $yamlform */
+    /** @var \Drupal\Core\Entity\EntityInterface $source_entity */
+    list($yamlform, $source_entity) = $this->requestHandler->getYamlFormEntities();
+    return $this->t('Testing %title form', ['%title' => ($source_entity) ? $source_entity->label() : $yamlform->label()]);
   }
 
 }

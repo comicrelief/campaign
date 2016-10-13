@@ -1,21 +1,16 @@
 <?php
 
-/**
- * @file
- * Definition of Drupal\yamlform\test\YamlFormBlockTest.
- */
-
 namespace Drupal\yamlform\Tests;
 
 /**
- * Tests for YAML form block.
+ * Tests for form block.
  *
  * @group YamlForm
  */
 class YamlFormBlockTest extends YamlFormTestBase {
 
   /**
-   * Tests YAML form block.
+   * Tests form block.
    */
   public function testBlock() {
     // Place block.
@@ -39,6 +34,13 @@ class YamlFormBlockTest extends YamlFormTestBase {
     $block->save();
     $this->drupalPostForm('<front>', [], t('Submit'));
     $this->assertRaw('This is a custom inline confirmation message.');
+
+    // Check confirmation message form.
+    $block->getPlugin()->setConfigurationValue('yamlform_id', 'test_confirmation_message');
+    $block->save();
+    $this->drupalPostForm('<front>', [], t('Submit'));
+    $this->assertRaw('This is a <b>custom</b> confirmation message.');
+
   }
 
 }

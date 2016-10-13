@@ -2,7 +2,7 @@
   <!-- This should get overidden for secure builds. -->
   <property name="app.password"       override="true" value="admin"/>
   <property name="app.uri"            override="true" value="http://campaign.dev"/>
-  <property name="drush.bin"          override="true" value="drush"/>
+  <property name="drush.bin"          override="true" value="vendor/bin/drush"/>
   <property name="grunt.cmd"          override="true" value="build"/>
   <property name="grunt.watch.cmd"    override="true" value="campaign_base"/>
   <property name="c.home"             override="true" value="${app.profile.dir}tests/behat/vendor/"/>
@@ -107,18 +107,6 @@
   <target name="test:composer:install" description="Install composer dependencies">
     <exec dir="${app.profile.dir}tests/behat" logoutput="true" passthru="true"
           command="composer install --no-progress -o" checkreturn="true"/>
-  </target>
-  <!-- Drush core -->
-  <target name="update-core" description="Update Drupal core from CR make file" depends="make">
-    <exec checkreturn="true" logoutput="true" passthru="true"
-          command="${drush.bin} make -y ${app.profile.dir}drupal-org-core.make.yml --no-cache"/>
-  </target>
-  <target name="make" description="Compile CR contrib from a make file">
-    <!-- Delete the contrib directory first so we also have deletions and not just updates. -->
-    <delete dir="${app.profile.dir}/modules/contrib" />
-    <delete dir="${app.profile.dir}/themes/custom/campaign_base/libraries" />
-    <exec checkreturn="true" logoutput="true" passthru="true"
-          command="${drush.bin} make -y ${app.profile.dir}drupal-org.make.yml --no-gitprojectinfo --no-gitinfofile --no-core --contrib-destination=${app.profile.dir}"/>
   </target>
   <target name="install" description="Install CR with standard configuration.">
     <exec dir="${app.dir}" logoutput="true" passthru="true" checkreturn="true"

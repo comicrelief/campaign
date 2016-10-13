@@ -1,0 +1,23 @@
+entity.yamlform.templates:
+  path: '/admin/structure/yamlform/templates'
+  defaults:
+    _controller: '\Drupal\yamlform_templates\Controller\YamlFormTemplatesController::index'
+    _title: 'Forms'
+  requirements:
+    _custom_access: '\Drupal\yamlform\Access\YamlFormAccess::checkOverviewAccess'
+
+entity.yamlform.preview:
+  path: '/yamlform/{yamlform}/preview'
+  defaults:
+    _controller: '\Drupal\yamlform_templates\Controller\YamlFormTemplatesController::previewForm'
+    _title_callback: '\Drupal\yamlform_templates\Controller\YamlFormTemplatesController::previewtitle'
+  requirements:
+    _entity_access: 'yamlform.submission_page'
+
+entity.yamlform.templates.autocomplete:
+  path: '/admin/structure/yamlform/templates/autocomplete'
+  defaults:
+    _controller: '\Drupal\yamlform\Controller\YamlFormController::autocomplete'
+    templates: TRUE
+  requirements:
+    _custom_access: '\Drupal\yamlform\Access\YamlFormAccess::checkOverviewAccess'

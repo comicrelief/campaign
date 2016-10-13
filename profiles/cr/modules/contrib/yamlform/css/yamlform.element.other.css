@@ -1,0 +1,11 @@
+/**
+ * @file
+ * Other element styles.
+ */
+
+
+html.js .form-type-yamlform-select-other .yamlform-select-other-input,
+html.js .form-type-yamlform-checkboxes-other .yamlform-checkboxes-other-input,
+html.js .form-type-yamlform-radios-other .yamlform-radios-other-input {
+  display: none;
+}

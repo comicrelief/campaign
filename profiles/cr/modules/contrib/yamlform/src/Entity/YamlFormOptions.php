@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\yamlform\Entity\YamlFormOptions.
- */
-
 namespace Drupal\yamlform\Entity;
 
 use Drupal\Component\Serialization\Yaml;
@@ -13,11 +8,11 @@ use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\yamlform\YamlFormOptionsInterface;
 
 /**
- * Defines the YAML form options entity.
+ * Defines the form options entity.
  *
  * @ConfigEntityType(
  *   id = "yamlform_options",
- *   label = @Translation("YAML form options"),
+ *   label = @Translation("Form options"),
  *   handlers = {
  *     "access" = "Drupal\yamlform\YamlFormOptionsAccessControlHandler",
  *     "list_builder" = "Drupal\yamlform\YamlFormOptionsListBuilder",
@@ -32,9 +27,8 @@ use Drupal\yamlform\YamlFormOptionsInterface;
  *     "label" = "label",
  *   },
  *   links = {
- *     "canonical" = "/admin/structure/yamlform/settings/options/manage/{yamlform_options}",
  *     "add-form" = "/admin/structure/yamlform/settings/options/add",
- *     "edit-form" = "/admin/structure/yamlform/settings/options/manage/{yamlform_options}",
+ *     "edit-form" = "/admin/structure/yamlform/settings/options/manage/{yamlform_options}/edit",
  *     "delete-form" = "/admin/structure/yamlform/settings/options/manage/{yamlform_options}/delete",
  *     "collection" = "/admin/structure/yamlform/settings/options/manage",
  *   },
@@ -49,35 +43,35 @@ use Drupal\yamlform\YamlFormOptionsInterface;
 class YamlFormOptions extends ConfigEntityBase implements YamlFormOptionsInterface {
 
   /**
-   * The YAML form options ID.
+   * The form options ID.
    *
    * @var string
    */
   protected $id;
 
   /**
-   * The YAML form options UUID.
+   * The form options UUID.
    *
    * @var string
    */
   protected $uuid;
 
   /**
-   * The YAML form options label.
+   * The form options label.
    *
    * @var string
    */
   protected $label;
 
   /**
-   * The YAML form options options.
+   * The form options options.
    *
    * @var string
    */
   protected $options;
 
   /**
-   * The YAML form options decoded.
+   * The form options decoded.
    *
    * @var string
    */
@@ -111,6 +105,36 @@ class YamlFormOptions extends ConfigEntityBase implements YamlFormOptionsInterfa
 
     // Clear cached properties.
     $this->optionsDecoded = NULL;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  static public function getElementOptions(array $element, $property_name = '#options') {
+    if (is_array($element[$property_name])) {
+      $id = NULL;
+      \Drupal::moduleHandler()->alter('yamlform_options', $element[$property_name], $element, $id);
+      return $element[$property_name];
+    }
+
+    $options = [];
+
+    // Load and alter #options or #answers.
+    if (!empty($element[$property_name]) && is_string($element[$property_name])) {
+      $id = $element[$property_name];
+      if ($yamlform_options = YamlFormOptions::load($id)) {
+        $options = $yamlform_options->getOptions();
+      }
+      \Drupal::moduleHandler()->alter('yamlform_options', $options, $element, $id);
+      \Drupal::moduleHandler()->alter('yamlform_options_' . $id, $options, $element);
+
+      // Log empty options.
+      if (empty($options)) {
+        \Drupal::logger('yamlform')->notice('Form options %id do not exist.', ['%id' => $id]);
+      }
+    }
+
+    return $options;
   }
 
 }

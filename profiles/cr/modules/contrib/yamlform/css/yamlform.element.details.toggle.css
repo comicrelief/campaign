@@ -1,0 +1,19 @@
+/**
+ * @file
+ * Element details toggle all styles.
+ */
+
+.yamlform-details-toggle-state-wrapper {
+  text-align: right; /* LTR */
+}
+[dir="rtl"] .yamlform-details-toggle-state-wrapper {
+  text-align: left;
+}
+
+.yamlform-details-toggle-state-wrapper {
+  margin-top: 1em;
+}
+
+.yamlform-details-toggle-state-wrapper + details {
+  margin-top: 0;
+}

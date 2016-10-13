@@ -1,52 +1,66 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\yamlform\Form\YamlFormResultsClearForm.
- */
-
 namespace Drupal\yamlform\Form;
 
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\ConfirmFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\yamlform\YamlFormInterface;
+use Drupal\yamlform\YamlFormRequestInterface;
 use Drupal\yamlform\YamlFormSubmissionStorageInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Base form for deleting YAML form submission.
+ * Base form for deleting form submission.
  */
 abstract class YamlFormSubmissionsDeleteFormBase extends ConfirmFormBase {
 
   /**
-   * Number of submission to be deleted during batch processing.
+   * Default number of submission to be deleted during batch processing.
    *
    * @var int
    */
   protected $batchLimit = 1000;
 
   /**
-   * The YAML form entity.
+   * The form entity.
    *
-   * @var \Drupal\yamlform\Entity\YamlForm
+   * @var \Drupal\yamlform\YamlFormInterface
    */
   protected $yamlform;
 
   /**
-   * The YAML form submission storage.
+   * The form source entity.
+   *
+   * @var \Drupal\Core\Entity\EntityInterface
+   */
+  protected $sourceEntity;
+
+  /**
+   * The form submission storage.
    *
    * @var \Drupal\yamlform\YamlFormSubmissionStorageInterface
    */
   protected $submissionStorage;
 
   /**
+   * Form request handler.
+   *
+   * @var \Drupal\yamlform\YamlFormRequestInterface
+   */
+  protected $requestHandler;
+
+  /**
    * Constructs a new YamlFormResultsDeleteBaseForm object.
    *
    * @param \Drupal\yamlform\YamlFormSubmissionStorageInterface $yamlform_submission_storage
-   *   The YAML form submission storage.
+   *   The form submission storage.
+   * @param \Drupal\yamlform\YamlFormRequestInterface $request_handler
+   *   The form request handler.
    */
-  public function __construct(YamlFormSubmissionStorageInterface $yamlform_submission_storage) {
+  public function __construct(YamlFormSubmissionStorageInterface $yamlform_submission_storage, YamlFormRequestInterface $request_handler) {
     $this->submissionStorage = $yamlform_submission_storage;
+    $this->requestHandler = $request_handler;
   }
 
   /**
@@ -54,7 +68,8 @@ abstract class YamlFormSubmissionsDeleteFormBase extends ConfirmFormBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('entity.manager')->getStorage('yamlform_submission')
+      $container->get('entity.manager')->getStorage('yamlform_submission'),
+      $container->get('yamlform.request')
     );
   }
 
@@ -68,8 +83,8 @@ abstract class YamlFormSubmissionsDeleteFormBase extends ConfirmFormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, YamlFormInterface $yamlform = NULL) {
-    $this->yamlform = $yamlform;
+  public function buildForm(array $form, FormStateInterface $form_state) {
+    list($this->yamlform, $this->sourceEntity) = $this->requestHandler->getYamlFormEntities();
     return parent::buildForm($form, $form_state);
   }
 
@@ -78,12 +93,12 @@ abstract class YamlFormSubmissionsDeleteFormBase extends ConfirmFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $form_state->setRedirectUrl($this->getCancelUrl());
-    if ($this->submissionStorage->getTotal($this->yamlform) < $this->batchLimit) {
-      $this->submissionStorage->deleteAll($this->yamlform);
+    if ($this->submissionStorage->getTotal($this->yamlform, $this->sourceEntity) < $this->getBatchLimit()) {
+      $this->submissionStorage->deleteAll($this->yamlform, $this->sourceEntity);
       drupal_set_message($this->getFinishedMessage());
     }
     else {
-      $this->batchSet($this->yamlform);
+      $this->batchSet($this->yamlform, $this->sourceEntity);
     }
   }
 
@@ -100,13 +115,16 @@ abstract class YamlFormSubmissionsDeleteFormBase extends ConfirmFormBase {
   /**
    * Batch API; Initialize batch operations.
    *
-   * @param \Drupal\yamlform\YamlFormInterface|NULL $yamlform
-   *   A YAML form.
+   * @param \Drupal\yamlform\YamlFormInterface|null $yamlform
+   *   The form.
+   * @param \Drupal\Core\Entity\EntityInterface|null $entity
+   *   The form's source entity.
    */
-  public function batchSet(YamlFormInterface $yamlform = NULL) {
+  public function batchSet(YamlFormInterface $yamlform = NULL, EntityInterface $entity = NULL) {
     $parameters = [
       $yamlform,
-      $this->submissionStorage->getMaxSubmissionId($yamlform),
+      $entity,
+      $this->submissionStorage->getMaxSubmissionId($yamlform, $entity),
     ];
     $batch = [
       'title' => $this->t('Clear submissions'),
@@ -128,28 +146,39 @@ abstract class YamlFormSubmissionsDeleteFormBase extends ConfirmFormBase {
    *   Number of submissions to be deleted with each batch.
    */
   public function getBatchLimit() {
-    return $this->config('yamlform.settings')->get('batch.export_limit') ?: 500;
+    return $this->config('yamlform.settings')->get('batch.default_batch_delete_size') ?: $this->batchLimit;
   }
 
   /**
    * Batch API callback; Delete submissions.
    *
-   * @param \Drupal\yamlform\YamlFormInterface|NULL $yamlform
-   *   A YAML form.
+   * @param \Drupal\yamlform\YamlFormInterface|null $yamlform
+   *   The form.
+   * @param \Drupal\Core\Entity\EntityInterface|null $entity
+   *   The form's source entity.
    * @param int $max_sid
    *   The max submission ID to be delete.
    * @param mixed|array $context
    *   The batch current context.
    */
-  public function batchProcess(YamlFormInterface $yamlform = NULL, $max_sid, &$context) {
+  public function batchProcess(YamlFormInterface $yamlform = NULL, EntityInterface $entity = NULL, $max_sid, &$context) {
+    // ISSUE:
+    // $this->submissionStorage is not being setup via
+    // YamlFormSubmissionsDeleteFormBase::__construct.
+    //
+    // WORKAROUND:
+    // Reset it for each batch process.
+    $this->submissionStorage = \Drupal::entityTypeManager()->getStorage('yamlform_submission');
+
     if (empty($context['sandbox'])) {
       $context['sandbox']['progress'] = 0;
-      $context['sandbox']['max'] = $this->submissionStorage->getTotal($yamlform);
+      $context['sandbox']['max'] = $this->submissionStorage->getTotal($yamlform, $entity);
       $context['results']['yamlform'] = $yamlform;
+      $context['results']['entity'] = $entity;
     }
 
     // Track progress.
-    $context['sandbox']['progress'] += $this->submissionStorage->deleteAll($yamlform, $this->getBatchLimit(), $max_sid);
+    $context['sandbox']['progress'] += $this->submissionStorage->deleteAll($yamlform, $entity, $this->getBatchLimit(), $max_sid);
 
     $context['message'] = $this->t('Deleting @count of @total submissions...', ['@count' => $context['sandbox']['progress'], '@total' => $context['sandbox']['max']]);
 

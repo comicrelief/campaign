@@ -1,0 +1,183 @@
+langcode: en
+status: true
+dependencies: {  }
+uid: null
+template: false
+id: test_element_other
+title: 'Test: Element: Other'
+description: 'Test the form other elements, includes select_other, checkboxes_other, and radios_other'
+elements: |
+  select_other:
+    '#type': details
+    '#title': 'Select other (select_other)'
+    '#open': true
+    select_other_basic:
+      '#type': select_other
+      '#title': 'Select other basic'
+      '#options':
+        One: One
+        'Option Group':
+          Two: Two
+        Three: Three
+      '#default_value': Four
+    select_other_advanced:
+      '#type': select_other
+      '#title': 'Select other advanced'
+      '#default_value': Four
+      '#options':
+        One: One
+        'Option Group':
+          Two: Two
+        Three: Three
+      '#empty_option': Select...
+      '#other__option_label': 'Is there another option you wish to enter?'
+      '#other__title': 'Other'
+      '#other__placeholder': 'What is this other option'
+      '#other__description': 'Other select description'
+      '#other__size': 20
+      '#other__maxlength': 20
+      '#required': true
+    select_other_multiple:
+      '#type': select_other
+      '#title': 'Select other multiple'
+      '#multiple': true
+      '#options':
+        One: One
+        'Option Group':
+          Two: Two
+        Three: Three
+      '#default_value':
+        - One
+        - Two
+        - Four
+  checkboxes_other:
+    '#type': details
+    '#title': 'Checkboxes other (checkboxes_other)'
+    '#open': true
+    checkboxes_other_basic:
+      '#type': checkboxes_other
+      '#title': 'Checkboxes other basic'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+      '#default_value':
+        - One
+        - Two
+        - Four
+    checkboxes_other_advanced:
+      '#type': checkboxes_other
+      '#title': 'Checkboxes other advanced'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+      '#default_value':
+        - One
+        - Two
+        - Four
+      '#required': true
+      '#other__option_label': 'Is there another option you wish to enter?'
+      '#other__placeholder': 'What is this other option'
+      '#other__description': 'Other checkbox description'
+  radios_other:
+    '#type': details
+    '#title': 'Radios other (radios_other)'
+    '#open': true
+    radios_other_basic:
+      '#type': radios_other
+      '#title': 'Radios other basic'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+      '#default_value': Four
+    radios_other_advanced:
+      '#type': radios_other
+      '#title': 'Radios other advanced'
+      '#options':
+        One: One
+        Two: Two
+        Three: Three
+      '#default_value': Four
+      '#required': true
+      '#other__option_label': 'Is there another option you wish to enter?'
+      '#other__placeholder': 'What is this other option'
+      '#other__description': 'Other radio description'
+settings:
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_submit_label: ''
+  form_exception_message: ''
+  form_closed_message: ''
+  form_confidential: false
+  form_confidential_message: ''
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_novalidate: false
+  form_autofocus: false
+  form_details_toggle: false
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_next_button_label: ''
+  wizard_prev_button_label: ''
+  wizard_start_label: ''
+  wizard_complete: true
+  wizard_complete_label: ''
+  preview: 0
+  preview_next_button_label: ''
+  preview_prev_button_label: ''
+  preview_message: ''
+  draft: false
+  draft_auto_save: false
+  draft_button_label: ''
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: message
+  confirmation_message: ''
+  confirmation_url: ''
+  limit_total: null
+  limit_total_message: ''
+  limit_user: null
+  limit_user_message: ''
+  entity_limit_total: null
+  entity_limit_user: null
+  results_disabled: true
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+handlers:
+  debug:
+    id: debug
+    label: Debug
+    handler_id: debug
+    status: true
+    weight: 1
+    settings: {  }

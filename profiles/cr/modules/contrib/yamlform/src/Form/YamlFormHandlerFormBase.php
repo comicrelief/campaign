@@ -1,34 +1,32 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\Form\YamlFormHandlerFormBase.
- */
-
 namespace Drupal\yamlform\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormState;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Component\Plugin\Exception\PluginNotFoundException;
+use Drupal\yamlform\YamlFormDialogTrait;
 use Drupal\yamlform\YamlFormHandlerInterface;
 use Drupal\yamlform\YamlFormInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Provides a base form for YAML form handlers.
+ * Provides a base form for form handlers.
  */
 abstract class YamlFormHandlerFormBase extends FormBase {
 
+  use YamlFormDialogTrait;
+
   /**
-   * The YAML form.
+   * The form.
    *
    * @var \Drupal\yamlform\Entity\YamlForm
    */
   protected $yamlform;
 
   /**
-   * The YAML form handler.
+   * The form handler.
    *
    * @var \Drupal\yamlform\YamlFormHandlerInterface
    */
@@ -45,9 +43,9 @@ abstract class YamlFormHandlerFormBase extends FormBase {
    * {@inheritdoc}
    *
    * @param \Drupal\yamlform\YamlFormInterface $yamlform
-   *   The YAML form.
+   *   The form.
    * @param string $yamlform_handler
-   *   The YAML form handler ID.
+   *   The form handler ID.
    *
    * @return array
    *   The form structure.
@@ -93,6 +91,8 @@ abstract class YamlFormHandlerFormBase extends FormBase {
       '#type' => 'checkbox',
       '#title' => $this->t('Enable the %name handler.', ['%name' => $this->yamlformHandler->label()]),
       '#default_value' => $this->yamlformHandler->isEnabled(),
+      // Disable broken plugins.
+      '#disabled' => ($this->yamlformHandler->getPluginId() == 'broken'),
     ];
 
     $form['label'] = [
@@ -101,6 +101,7 @@ abstract class YamlFormHandlerFormBase extends FormBase {
       '#maxlength' => 255,
       '#default_value' => $this->yamlformHandler->label(),
       '#required' => TRUE,
+      '#attributes' => ['autofocus' => 'autofocus'],
     ];
 
     $form['handler_id'] = [
@@ -116,9 +117,16 @@ abstract class YamlFormHandlerFormBase extends FormBase {
     ];
 
     $form['settings'] = $this->yamlformHandler->buildConfigurationForm([], $form_state);
+    // Get $form['settings']['#attributes']['novalidate'] and apply it to the
+    // $form.
+    // This allows handlers with hide/show logic to skip HTML5 validation.
+    // @see http://stackoverflow.com/questions/22148080/an-invalid-form-control-with-name-is-not-focusable
+    if (isset($form['settings']['#attributes']['novalidate'])) {
+      $form['#attributes']['novalidate'] = 'novalidate';
+    }
     $form['settings']['#tree'] = TRUE;
 
-    // Check the URL for a weight, then the YAML form handler,
+    // Check the URL for a weight, then the form handler,
     // otherwise use default.
     $form['weight'] = [
       '#type' => 'hidden',
@@ -128,14 +136,12 @@ abstract class YamlFormHandlerFormBase extends FormBase {
     $form['actions'] = ['#type' => 'actions'];
     $form['actions']['submit'] = [
       '#type' => 'submit',
+      '#value' => $this->t('Save'),
       '#button_type' => 'primary',
     ];
-    $form['actions']['cancel'] = [
-      '#type' => 'link',
-      '#title' => $this->t('Cancel'),
-      '#url' => $this->yamlform->urlInfo('handlers-form'),
-      '#attributes' => ['class' => ['button']],
-    ];
+
+    $form = $this->buildDialog($form, $form_state);
+
     return $form;
   }
 
@@ -143,22 +149,30 @@ abstract class YamlFormHandlerFormBase extends FormBase {
    * {@inheritdoc}
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
-    // The YAML form handler configuration is stored in the 'settings' key in
-    // the form,
-    // pass that through for validation.
-    $handler_data = (new FormState())->setValues($form_state->getValue('settings'));
-    $this->yamlformHandler->validateConfigurationForm($form, $handler_data);
+    // The form handler configuration is stored in the 'settings' key in
+    // the form, pass that through for validation.
+    $settings = $form_state->getValue('settings') ?: [];
+    $handler_state = (new FormState())->setValues($settings);
+    $this->yamlformHandler->validateConfigurationForm($form, $handler_state);
+
+    // Process handler state form errors.
+    $this->processHandlerFormErrors($handler_state, $form_state);
+
     // Update the original form values.
-    $form_state->setValue('settings', $handler_data->getValues());
+    $form_state->setValue('settings', $handler_state->getValues());
   }
 
   /**
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
+    if ($response = $this->validateDialog($form, $form_state)) {
+      return $response;
+    }
+
     $form_state->cleanValues();
 
-    // The YAML form handler configuration is stored in the 'settings' key in
+    // The form handler configuration is stored in the 'settings' key in
     // the form, pass that through for submission.
     $handler_data = (new FormState())->setValues($form_state->getValue('settings'));
 
@@ -177,15 +191,18 @@ abstract class YamlFormHandlerFormBase extends FormBase {
     }
     $this->yamlform->save();
 
-    drupal_set_message($this->t('The YAML form handler was successfully applied.'));
-    $form_state->setRedirectUrl($this->yamlform->urlInfo('handlers-form'));
+    // Display status message.
+    drupal_set_message($this->t('The form handler was successfully applied.'));
+
+    // Redirect.
+    return $this->redirectForm($form, $form_state, $this->yamlform->urlInfo('handlers-form'));
   }
 
   /**
-   * Generates a unique machine name for a YAML form handler instance.
+   * Generates a unique machine name for a form handler instance.
    *
    * @param \Drupal\yamlform\YamlFormHandlerInterface $handler
-   *   The YAML form handler.
+   *   The form handler.
    *
    * @return string
    *   Returns the unique name.
@@ -203,17 +220,32 @@ abstract class YamlFormHandlerFormBase extends FormBase {
   }
 
   /**
-   * Determines if the YAML form handler already exists.
+   * Determines if the form handler ID already exists.
    *
    * @param string $handler_id
-   *   The YAML form handler ID.
+   *   The form handler ID.
    *
    * @return bool
-   *   TRUE if the vocabulary exists, FALSE otherwise.
+   *   TRUE if the form handler ID exists, FALSE otherwise.
    */
   public function exists($handler_id) {
     $instance_ids = $this->yamlform->getHandlers()->getInstanceIds();
+
     return (isset($instance_ids[$handler_id])) ? TRUE : FALSE;
+  }
+
+  /**
+   * Process handler form errors in form.
+   *
+   * @param FormStateInterface $handler_state
+   *   The form handler form state.
+   * @param FormStateInterface &$form_state
+   *   The form state.
+   */
+  protected function processHandlerFormErrors(FormStateInterface $handler_state, FormStateInterface &$form_state) {
+    foreach ($handler_state->getErrors() as $name => $message) {
+      $form_state->setErrorByName($name, $message);
+    }
   }
 
 }

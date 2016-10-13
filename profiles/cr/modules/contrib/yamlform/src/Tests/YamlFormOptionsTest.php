@@ -1,31 +1,36 @@
 <?php
 
-/**
- * @file
- * Definition of Drupal\yamlform\test\YamlFormOptionsTest.
- */
-
 namespace Drupal\yamlform\Tests;
 
 use Drupal\Component\Serialization\Yaml;
 use Drupal\yamlform\Entity\YamlFormOptions;
 
 /**
- * Tests for YAML form option entity.
+ * Tests for form option entity.
  *
  * @group YamlForm
  */
 class YamlFormOptionsTest extends YamlFormTestBase {
 
   /**
-   * Tests YAML form options entity.
+   * Tests form options entity.
    */
   public function testYamlFormOptions() {
+    // Check get element options.
+    $yes_no_options = ['Yes' => 'Yes', 'No' => 'No'];
+    $this->assertEqual(YamlFormOptions::getElementOptions(['#options' => $yes_no_options]), $yes_no_options);
+    $this->assertEqual(YamlFormOptions::getElementOptions(['#options' => 'yes_no']), $yes_no_options);
+    $this->assertEqual(YamlFormOptions::getElementOptions(['#options' => 'not-found']), []);
+
     $options = [
       'red' => 'Red',
       'white' => 'White',
       'blue' => 'Blue',
     ];
+
+    // Check get element options for manually defined options.
+    $this->assertEqual(YamlFormOptions::getElementOptions(['#options' => $options]), $options);
+
     /** @var \Drupal\yamlform\YamlFormOptionsInterface $yamlform_options */
     $yamlform_options = YamlFormOptions::create([
       'langcode' => 'en',

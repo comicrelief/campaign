@@ -31,7 +31,7 @@ class ConfigDevelSubscriberBase {
   /**
    * Constructs the ConfigDevelAutoExportSubscriber object.
    *
-   * @param \Drupal\Core\Config\ConfigFactory $config_factory
+   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    *   The configuration factory.
    * @param \Drupal\Core\Config\ConfigManagerInterface $config_manager
    *   The configuration manager.

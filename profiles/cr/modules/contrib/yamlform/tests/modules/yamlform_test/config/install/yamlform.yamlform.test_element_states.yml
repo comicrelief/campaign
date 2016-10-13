@@ -1,0 +1,150 @@
+langcode: en
+status: true
+dependencies: {  }
+uid: null
+template: false
+id: test_element_states
+title: 'Test: Elements #states API: States'
+description: 'Test Drupal''s #states API states (visible, required, disabled, checked, and expanded).'
+elements: |
+  states_basic:
+    '#type': yamlform_element_states
+    '#title': 'States basic'
+    '#selector_options':
+      selector_01: 'Selector 01 (selector_01)'
+      selector_02: 'Selector 02 (selector_02)'
+      selector_03: 'Selector 03 (selector_03)'
+    '#default_value':
+      enabled:
+        selector_01:
+          checked: true
+      required:
+        selector_01':
+          checked: true
+        'selector_02':
+          checked: true
+      disabled:
+        - 'selector_01':
+            checked: true
+        - or
+        - 'selector_02':
+            checked: true
+  states_custom_selector:
+    '#type': yamlform_element_states
+    '#title': 'States custom selector'
+    '#selector_options':
+      selector_01: 'Selector 01 (selector_01)'
+      selector_02: 'Selector 02 (selector_02)'
+      selector_03: 'Selector 03 (selector_03)'
+    '#default_value':
+      required:
+        custom_selector:
+          value: Yes
+  states_empty:
+    '#type': yamlform_element_states
+    '#title': 'States empty'
+    '#selector_options':
+      selector_01: 'Selector 01 (selector_01)'
+      selector_02: 'Selector 02 (selector_02)'
+      selector_03: 'Selector 03 (selector_03)'
+  states_unsupported_operator:
+    '#type': yamlform_element_states
+    '#title': 'States unsupport operator'
+    '#default_value':
+      required:
+        - custom_selector:
+            value: Yes
+        - xor
+        - custom_selector:
+            value: Yes
+  states_unsupported_nesting:
+    '#type': yamlform_element_states
+    '#title': 'States unsupport nested multiple selectors'
+    '#default_value':
+      required:
+        - selector_01:
+            value: Yes
+          selector_02:
+            value: Yes
+        - or
+        - selector_03:
+            value: Yes
+          selector_04:
+            value: Yes
+settings:
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_submit_label: ''
+  form_exception_message: ''
+  form_closed_message: ''
+  form_confidential: false
+  form_confidential_message: ''
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_novalidate: false
+  form_autofocus: false
+  form_details_toggle: false
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_next_button_label: ''
+  wizard_prev_button_label: ''
+  wizard_start_label: ''
+  wizard_complete: true
+  wizard_complete_label: ''
+  preview: 0
+  preview_next_button_label: ''
+  preview_prev_button_label: ''
+  preview_message: ''
+  draft: false
+  draft_auto_save: false
+  draft_button_label: ''
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: message
+  confirmation_message: ''
+  confirmation_url: ''
+  limit_total: null
+  limit_total_message: ''
+  limit_user: null
+  limit_user_message: ''
+  entity_limit_total: null
+  entity_limit_user: null
+  results_disabled: true
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+handlers:
+  debug:
+    id: debug
+    label: Debug
+    handler_id: debug
+    status: true
+    weight: 0
+    settings: {  }

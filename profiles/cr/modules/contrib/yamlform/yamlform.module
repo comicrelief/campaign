@@ -5,11 +5,22 @@
  * Enables the creation of forms and questionnaires.
  */
 
-use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Component\Utility\Unicode;
+use Drupal\Core\Breadcrumb\Breadcrumb;
+use Drupal\Core\Database\Query\AlterableInterface;
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
 use Drupal\yamlform\Entity\YamlForm;
+use Drupal\yamlform\Plugin\YamlFormElement\ManagedFile;
 use Drupal\yamlform\Utility\YamlFormTidy;
 use Drupal\yamlform\Utility\YamlFormOptionsHelper;
+use Drupal\yamlform\YamlFormInterface;
+use Drupal\yamlform\YamlFormSubmissionForm;
+
+module_load_include('inc', 'yamlform', 'includes/yamlform.help');
+module_load_include('inc', 'yamlform', 'includes/yamlform.libraries');
 
 /**
  * Return status for saving which deleted an existing item.
@@ -17,59 +28,10 @@ use Drupal\yamlform\Utility\YamlFormOptionsHelper;
 const YAMLFORM_SAVED_DRAFT = 4;
 
 /**
- * Implements hook_help().
- */
-function yamlform_help($route_name, RouteMatchInterface $route_match) {
-  switch ($route_name) {
-    case 'entity.yamlform.collection':
-      return '<p>' . t('This page provides a list of all YAML forms on the site and allows you to manage the input and settings for each.') . '</p>';
-
-    case 'entity.yamlform_options.collection':
-      return '<p>' . t('This page provides a list of all YAML form options to be used within select menus, radio buttons, and checkboxes.') . '</p>';
-
-    case 'entity.yamlform.settings_form':
-      return '<p>' . t('Control where and how this form should displayed and how submissions should be processed.') . '</p>';
-
-    case 'entity.yamlform.access_form':
-      return '<p>' . t('Control who should be able to create, update, delete, and purge submissions to this form.') . '</p>';
-
-    case 'entity.yamlform.export_form':
-      $t_args = [
-        ':href_yamlform' => 'https://www.drupal.org/project/issues/yamlform',
-        ':href_issue' => 'https://www.drupal.org/issue-queue',
-      ];
-      return '<p>' . t('The below YAML form configuration file can be deployed to any site.') . '<p>' .
-        '<p>' . t('If you run into any issues with this YAML form, you can also attach the below configuration (without any personal information) to a new ticket in the <a href=":href_yamlform">YAML form\'s issue queue</a>.', $t_args) . '</p>' .
-        '<p>' . t('Learn more about using <a href=":href_issue">Drupal.org\'s issue queues</a>.', $t_args) . '</p>';
-
-    case 'entity.yamlform_submission.collection':
-      return '<p>' . t('This page provides a list of all YAML form submissions on the site.') . '</p>';
-
-    case 'entity.yamlform_submission.resend_form':
-      return '<p>' . t('This form may be used to resend message configured for this YAML form. Review the message that needs to be sent and click <em>Resend message</em> to send the message again.') . '</p>';
-
-    case 'yamlform.handler_plugins':
-      return '<p>' . t('This page provides a lists all YAML form handler plugins.') . '</p>';
-
-    case 'yamlform.element_plugins':
-      return '<p>' . t('This page provides a lists all YAML form element plugins.') . '</p>' .
-      '<p>' . t('These plugins are used to alter form elements this includes setting default properties, normalizing data, and/or providing customized display.') . '</p>';
-
-    case 'entity.yamlform.handlers_form':
-      return '<p>' . t('This page provides a lists all YAML form handlers associated with this YAML form.') . '</p>' .
-        '<p>' . t('Handlers are plugins that act on a YAML form submission.') . '</p>' .
-        '<p>' . t('A YAML form submission can be sent via email using an Email handler.') . '</p>';
-
-    case 'entity.yamlform.config_translation_overview':
-      return '<p>' . t('Once a YAML form is translated the inputs can no longer be altered on the input property values can be changed.') . '</p>';
-  }
-}
-
-/**
  * Implements hook_modules_installed().
  */
 function yamlform_modules_installed($modules) {
-  // Add YAML form paths when the path.module is being installed.
+  // Add form paths when the path.module is being installed.
   if (in_array('path', $modules)) {
     /** @var \Drupal\yamlform\YamlFormInterface[] $yamlforms */
     $yamlforms = YamlForm::loadMultiple();
@@ -77,6 +39,11 @@ function yamlform_modules_installed($modules) {
       $yamlform->updatePaths();
     }
   }
+
+  // Check HTML email provider support as modules are installed.
+  /** @var \Drupal\yamlform\YamlFormEmailProviderInterface $email_provider */
+  $email_provider = \Drupal::service('yamlform.email_provider');
+  $email_provider->check();
 }
 
 /**
@@ -92,9 +59,10 @@ function yamlform_modules_uninstalled($modules) {
   $config->set('third_party_settings', $third_party_settings);
   $config->save();
 
-  // Note, the YAML form (config entity) third party settings are
-  // automatically cleaned up when a module is uninstalled because
-  // config entities track their dependencies.
+  // Check HTML email provider support as modules are ininstalled.
+  /** @var \Drupal\yamlform\YamlFormEmailProviderInterface $email_provider */
+  $email_provider = \Drupal::service('yamlform.email_provider');
+  $email_provider->check();
 }
 
 /**
@@ -104,7 +72,7 @@ function yamlform_local_tasks_alter(&$local_tasks) {
   if (isset($local_tasks['config_translation.local_tasks:entity.yamlform.config_translation_overview'])) {
     // Change 'Translate' base route from 'entity.yamlform.edit_form'
     // to 'entity.yamlform.canonical' because by default config entities don't
-    // have canonical views but the YAML form entity does.
+    // have canonical views but the form entity does.
     $local_tasks['config_translation.local_tasks:entity.yamlform.config_translation_overview']['title'] = 'Translate';
     $local_tasks['config_translation.local_tasks:entity.yamlform.config_translation_overview']['base_route'] = 'entity.yamlform.canonical';
   }
@@ -128,20 +96,35 @@ function yamlform_menu_local_tasks_alter(&$data, $route_name) {
  * Implements hook_form_alter().
  */
 function yamlform_form_alter(&$form, FormStateInterface $form_state, $form_id) {
-  if (!empty($form['#yamlform'])) {
+  if (strpos($form_id, 'yamlform_') === FALSE || strpos($form_id, 'node_') === 0) {
+    return;
+  }
+
+  $is_submission_form = ($form_state->getFormObject() instanceof YamlFormSubmissionForm);
+
+  // Don't automatically include details toggle all for submission forms.
+  // @todo Add setting that allows form builders to show details toggle all widget.
+  if (!$is_submission_form) {
+    $form['#attributes']['class'][] = 'yamlform-details-toggle';
+    $form['#attached']['library'][] = 'yamlform/yamlform.element.details.toggle';
+  }
+
+  if ($is_submission_form) {
     $form['#after_build'][] = '_yamlform_form_after_build';
   }
 }
 
 /**
- * Alter YAML form.
+ * Alter form after build.
  */
 function _yamlform_form_after_build($form, FormStateInterface $form_state) {
+  $form_object = $form_state->getFormObject();
+
   // Add contextual links and change theme wrapper to yamlform.html.twig
   // which includes 'title_prefix' and 'title_suffix' variables needed for
   // contextual links to appear.
   $form['#contextual_links']['yamlform'] = [
-    'route_parameters' => ['yamlform' => $form['#yamlform']],
+    'route_parameters' => ['yamlform' => $form_object->getEntity()->getYamlForm()->id()],
   ];
   $form['#theme_wrappers'] = ['yamlform'];
   return $form;
@@ -163,28 +146,28 @@ function yamlform_form_config_translation_add_form_alter(&$form, FormStateInterf
     elseif (strpos($config_name, 'yamlform.yamlform.') === 0) {
       $form_state->set('config_name', $config_name);
       $form_state->set('yamlform_id', str_replace('yamlform.yamlform.', '', $config_name));
-      _yamlform_form_config_translate_add_form_alter_yaml_element($config_element['inputs'], $config_name, 'inputs');
+      _yamlform_form_config_translate_add_form_alter_yaml_element($config_element['elements'], $config_name, 'elements');
       $form['#validate'][] = 'yamlform_form_config_translation_add_form_validate';
     }
   }
 }
 
 /**
- * Validate callback for YAML form config translation form.
+ * Validate callback for form config translation form.
  */
 function yamlform_form_config_translation_add_form_validate(&$form, FormStateInterface $form_state) {
-  /** @var \Drupal\yamlform\YamlFormEntityInputsValidator $inputs_validator */
-  $inputs_validator = \Drupal::service('yamlform.inputs_validator');
+  /** @var \Drupal\yamlform\YamlFormEntityElementsValidator $elements_validator */
+  $elements_validator = \Drupal::service('yamlform.elements_validator');
 
   $values = $form_state->getValues();
   $config_name = $form_state->get('config_name');
   $yamlform_id = $form_state->get('yamlform_id');
 
   $yamlform = YamlForm::load($yamlform_id);
-  $yamlform->set('inputs', $values['translation']['config_names'][$config_name]['inputs']);
-  if ($messages = $inputs_validator->validate($yamlform)) {
+  $yamlform->set('elements', $values['translation']['config_names'][$config_name]['elements']);
+  if ($messages = $elements_validator->validate($yamlform)) {
     foreach ($messages as $message) {
-      $form_state->setErrorByName('inputs', $message);
+      $form_state->setErrorByName('elements', $message);
     }
   }
 }
@@ -206,7 +189,8 @@ function _yamlform_form_config_translate_add_form_alter_yaml_element(array &$ele
     '#type' => 'yaml',
   ];
   unset($element['source']['#markup']);
-  $element['translation']['#type'] = 'yamlform_codemirror_yaml';
+  $element['translation']['#type'] = 'yamlform_codemirror';
+  $element['translation']['#mode'] = 'yaml';
 }
 
 /**
@@ -217,76 +201,40 @@ function yamlform_form_config_translation_edit_form_alter(&$form, FormStateInter
 }
 
 /**
- * Implements hook_library_info_alter().
+ * Implements hook_system_breadcrumb_alter().
  */
-function yamlform_library_info_alter(&$libraries, $extension) {
-  // Only alter YAML form libraries.
-  if ($extension != 'yamlform') {
-    return;
-  }
-
-  // Map /library/* paths to CDN.
-  // @see yamlform.libraries.yml
-  foreach ($libraries as $name => &$library) {
-    // Check CDN setting exists.
-    if (!isset($library['cdn'])) {
-      continue;
-    }
-
-    // Check if the CDN's source /library/* path exists.
-    reset($library['cdn']);
-    if (file_exists(DRUPAL_ROOT . key($library['cdn']))) {
-      continue;
-    }
-
-    _yamlform_library_info_alter_recursive($library, $library['cdn']);
-  }
-}
-
-/**
- * Recursive through a YAML form library.
- *
- * @param array $library
- *   A YAML form library defined in yamlform.libraries.yml.
- * @param array $cdn
- *   A associative array of library paths mapped to CDN URL.
- */
-function _yamlform_library_info_alter_recursive(array &$library, array $cdn) {
-  foreach ($library as $key => &$value) {
-    // CSS and JS files and listed in associative arrays keyed via string.
-    if (!is_string($key) || !is_array($value)) {
-      continue;
-    }
-
-    // Ignore the CDN's associative array.
-    if ($key == 'cdn') {
-      continue;
-    }
-
-    // Replace the CDN sources (ie /library/*) with the CDN URL destination
-    // (https://cdnjs.cloudflare.com/ajax/libs/*).
-    foreach ($cdn as $source => $destination) {
-      if (strpos($key, $source) === 0) {
-        $uri = str_replace($source, $destination, $key);
-        $library[$uri] = $value;
-        unset($library[$key]);
-        break;
+function yamlform_system_breadcrumb_alter(Breadcrumb &$breadcrumb, RouteMatchInterface $route_match, array $context) {
+  // Remove 'Forms' prefix from breadcrumb links generated path breadcrumbs.
+  // @see \Drupal\system\PathBasedBreadcrumbBuilder
+  $path = Url::fromRouteMatch($route_match)->toString();
+  if (strpos($path, '/admin/structure/yamlform/settings/') !== FALSE) {
+    $links = $breadcrumb->getLinks();
+    foreach ($links as $link) {
+      $text = $link->getText();
+      if (strpos($text, ((string) t('Forms')) . ' ') == 0) {
+        $text = str_replace(((string) t('Forms')) . ': ', '', $text);
+        $link->setText(Unicode::ucfirst($text));
       }
     }
+  }
 
-    // Recurse downward to find nested libraries.
-    _yamlform_library_info_alter_recursive($value, $cdn);
+  // Fix 'Help' breadcrumb text.
+  if ($route_match->getRouteName() == 'yamlform.help') {
+    $links = $breadcrumb->getLinks();
+    $link = end($links);
+    $link->setText(t('Forms'));
   }
 }
 
 /**
- * Implements hook_page_attachments().
+ * Implements hook_entity_delete().
  */
-function yamlform_page_attachments(array &$attachments) {
-  // Attach codemirror library to block admin to ensure that the library
-  // is loaded by the YAML form block is placed using AJAX.
-  if (\Drupal::routeMatch()->getRouteName() == 'block.admin_display') {
-    $attachments['#attached']['library'][] = 'yamlform/yamlform.codemirror.yaml';
+function yamlform_entity_delete(EntityInterface $entity) {
+  // Delete saved export settings for a form or source entity with the
+  // yamlform field.
+  if (($entity instanceof YamlFormInterface)  || (method_exists($entity, 'hasField') && $entity->hasField('yamlform'))) {
+    $name = 'yamlform.export.' . $entity->getEntityTypeId() . '.' . $entity->id();
+    \Drupal::state()->delete($name);
   }
 }
 
@@ -327,13 +275,21 @@ function yamlform_mail($key, &$message, $params) {
   $message['subject'] = $params['subject'];
   $message['body'][] = $params['body'];
 
-  // Set the header's 'From' to the 'from_mail' so that the YAML form email from
+  // Set the header's 'From' to the 'from_mail' so that the form's email from
   // value is used instead of site's email address.
   // See: \Drupal\Core\Mail\MailManager::mail.
-  if ($params['from_mail']) {
+  if (!empty($params['from_mail'])) {
+    $message['from'] = $params['from_mail'];
     $message['headers']['From'] = $params['from_mail'];
     $message['headers']['Reply-to'] = $params['from_mail'];
     $message['headers']['Return-Path'] = $params['from_mail'];
+  }
+
+  if (!empty($params['cc_mail'])) {
+    $message['headers']['Cc'] = $params['cc_mail'];
+  }
+  if (!empty($params['bcc_mail'])) {
+    $message['headers']['Bcc'] = $params['bcc_mail'];
   }
 }
 
@@ -354,10 +310,53 @@ function yamlform_mail_alter(&$message) {
 }
 
 /**
+ * Implements hook_page_attachments().
+ */
+function yamlform_page_attachments(&$page) {
+  $route_name = Drupal::routeMatch()->getRouteName();
+  $url = Url::fromRoute('<current>')->toString();
+
+  // Attach global libraries.
+  if (preg_match('/^(yamlform\.|^entity\.([^.]+\.)?yamlform)/', $route_name) || preg_match('#(/node/add/yamlform|/admin/help/yamlform)#', $url)) {
+    // Attach theme specific library to yamlform routers so that we can tweak
+    // the seven.theme.
+    $theme = \Drupal::theme()->getActiveTheme()->getName();
+    if (file_exists(drupal_get_path('module', 'yamlform') . "/css/yamlform.theme.$theme.css")) {
+      $page['#attached']['library'][] = "yamlform/yamlform.theme.$theme";
+    }
+
+    // Attach details element save open/close library.
+    if (\Drupal::config('yamlform.settings')->get('ui.details_save')) {
+      $page['#attached']['library'][] = 'yamlform/yamlform.element.details.save';
+    }
+  }
+
+  // Attach codemirror library to block admin to ensure that the library
+  // is loaded by the form block is placed using AJAX.
+  if (\Drupal::routeMatch()->getRouteName() == 'block.admin_display') {
+    $page['#attached']['library'][] = 'yamlform/yamlform.codemirror.yaml';
+  }
+}
+
+/**
+ * Implements hook_file_download().
+ */
+function yamlform_file_download($uri) {
+  return ManagedFile::accessFileDownload($uri);
+}
+
+/**
  * Implements hook_theme().
  */
 function yamlform_theme() {
   $info = [
+    'yamlform_help' => [
+      'variables' => ['info' => []],
+    ],
+    'yamlform_help_video_youtube' => [
+      'variables' => ['youtube_id' => NULL],
+    ],
+
     'yamlform' => [
       'render element' => 'element',
     ],
@@ -366,20 +365,23 @@ function yamlform_theme() {
     ],
 
     'yamlform_submission_navigation' => [
-      'variables' => ['yamlform_submission' => NULL, 'rel' => 'canonical'],
+      'variables' => ['yamlform_submission' => NULL],
     ],
     'yamlform_submission_information' => [
-      'variables' => ['yamlform_submission' => NULL, 'open' => TRUE],
+      'variables' => ['yamlform_submission' => NULL, 'source_entity' => NULL, 'open' => TRUE],
     ],
 
     'yamlform_submission_html' => [
-      'variables' => ['yamlform_submission' => NULL],
+      'variables' => ['yamlform_submission' => NULL, 'source_entity' => NULL],
+    ],
+    'yamlform_submission_table' => [
+      'variables' => ['yamlform_submission' => NULL, 'source_entity' => NULL],
     ],
     'yamlform_submission_text' => [
-      'variables' => ['yamlform_submission' => NULL],
+      'variables' => ['yamlform_submission' => NULL, 'source_entity' => NULL],
     ],
     'yamlform_submission_yaml' => [
-      'variables' => ['yamlform_submission' => NULL],
+      'variables' => ['yamlform_submission' => NULL, 'source_entity' => NULL],
     ],
 
     'yamlform_element_base_html' => [
@@ -400,15 +402,46 @@ function yamlform_theme() {
       'variables' => ['element' => NULL, 'value' => NULL, 'options' => []],
     ],
 
+    'yamlform_composite_address' => [
+      'render element' => 'element',
+    ],
+    'yamlform_composite_contact' => [
+      'render element' => 'element',
+    ],
+    'yamlform_composite_creditcard' => [
+      'render element' => 'element',
+    ],
+    'yamlform_composite_location' => [
+      'render element' => 'element',
+    ],
+    'yamlform_composite_name' => [
+      'render element' => 'element',
+    ],
+
     'yamlform_codemirror' => [
       'variables' => ['code' => NULL, 'type' => 'text'],
     ],
+
+    'yamlform_progress' => [
+      'variables' => [
+        'yamlform' => NULL,
+        'current_page' => NULL,
+      ],
+    ],
+
+    'yamlform_progress_bar' => [
+      'variables' => [
+        'yamlform' => NULL,
+        'current_page' => NULL,
+        'max_pages' => 10,
+      ],
+    ],
   ];
 
-  // Since any rendering of a YAML form is going to require 'yamlform.theme.inc'
+  // Since any rendering of a form is going to require 'yamlform.theme.inc'
   // we are going to just add it to every template.
   foreach ($info as &$template) {
-    $template['file'] = 'yamlform.theme.inc';
+    $template['file'] = 'includes/yamlform.theme.inc';
   }
 
   return $info;
@@ -424,26 +457,69 @@ function yamlform_theme_suggestions_alter(array &$suggestions, array $variables,
 
   if (strpos($hook, 'yamlform_element_base_') === 0 || strpos($hook, 'yamlform_container_base_') === 0) {
     $element = $variables['element'];
+
+    if (empty($element['#type'])) {
+      return;
+    }
+
     $type = $element['#type'];
-    $name = $element['#key'];
+    $name = $element['#yamlform_key'];
 
     $suggestions[] = $hook . '__' . $type;
     $suggestions[] = $hook . '__' . $type . '__' . $name;
+
+    /** @var \Drupal\yamlform\YamlFormElementManagerInterface $element_manager */
+    $element_manager = \Drupal::service('plugin.manager.yamlform.element');
+    $element_handler = $element_manager->createInstance($type);
+    if ($format = $element_handler->getFormat($element)) {
+      $suggestions[] = $hook . '__' . $type . '__' . $format;
+      $suggestions[] = $hook . '__' . $type . '__' . $name . '__' . $format;
+    }
   }
-  elseif (strpos($hook, 'yamlform_submission_') === 0) {
+  elseif (isset($variables['yamlform_submission'])) {
     /** @var \Drupal\yamlform\YamlFormSubmissionInterface $yamlform_submission */
     $yamlform_submission = $variables['yamlform_submission'];
     $yamlform = $yamlform_submission->getYamlForm();
     $suggestions[] = $hook . '__' . $yamlform->id();
   }
+  elseif (isset($variables['yamlform'])) {
+    /** @var \Drupal\yamlform\YamlFormInterface $yamlform */
+    $yamlform = $variables['yamlform'];
+    $suggestions[] = $hook . '__' . $yamlform->id();
+  }
 }
+
+/**
+ * Prepares variables for checkboxes templates.
+ *
+ * @see \Drupal\yamlform\Plugin\YamlFormElement\OptionsBase
+ */
+function yamlform_preprocess_checkboxes(&$variables) {
+  $element = $variables['element'];
+  $options_display = (!empty($element['#options_display'])) ? $element['#options_display'] : 'one_column';
+  $variables['attributes']['class'][] = 'yamlform-options-display-' . str_replace('_', '-', $options_display);
+  $variables['#attached']['library'][] = 'yamlform/yamlform.options';
+}
+
+/**
+ * Prepares variables for radios templates.
+ *
+ * @see \Drupal\yamlform\Plugin\YamlFormElement\OptionsBase
+ */
+function yamlform_preprocess_radios(&$variables) {
+  yamlform_preprocess_checkboxes($variables);
+}
+
+/******************************************************************************/
+// Private functions.
+/******************************************************************************/
 
 /**
  * Provides custom PHP error handling when form rendering is validated.
  *
  * Converts E_RECOVERABLE_ERROR to WARNING so that an exceptions can be thrown
  * and caught by
- * \Drupal\yamlform\YamlFormEntityInputsValidator::validateRendering().
+ * \Drupal\yamlform\YamlFormEntityElementsValidator::validateRendering().
  *
  * @param int $error_level
  *   The level of the error raised.
@@ -460,9 +536,9 @@ function yamlform_theme_suggestions_alter(array &$suggestions, array $variables,
  * @throws \ErrorException
  *   Throw ErrorException for E_RECOVERABLE_ERROR errors.
  *
- * @see \Drupal\yamlform\YamlFormEntityInputsValidator::validateRendering()
+ * @see \Drupal\yamlform\YamlFormEntityElementsValidator::validateRendering()
  */
-function _yamlform_entity_input_validate_rendering_error_handler($error_level, $message, $filename, $line, $context) {
+function _yamlform_entity_element_validate_rendering_error_handler($error_level, $message, $filename, $line, $context) {
   // From: http://stackoverflow.com/questions/15461611/php-try-catch-not-catching-all-exceptions
   if (E_RECOVERABLE_ERROR === $error_level) {
     // Allow Drupal to still log the error but convert it to a warning.
@@ -472,4 +548,32 @@ function _yamlform_entity_input_validate_rendering_error_handler($error_level, $
   else {
     _drupal_error_handler($message, $message, $filename, $line, $context);
   }
+}
+
+/**
+ * Implements hook_query_alter().
+ *
+ * Append EAV sort to yamlform_submission entity query.
+ *
+ * @see http://stackoverflow.com/questions/12893314/sorting-eav-database
+ * @see \Drupal\yamlform\YamlFormSubmissionListBuilder::getEntityIds
+ */
+function yamlform_query_alter(AlterableInterface $query) {
+  $name = $query->getMetaData('yamlform_submission_element_name');
+  if (!$name) {
+    return;
+  }
+
+  $direction = $query->getMetaData('yamlform_submission_element_direction');
+  $property_name = $query->getMetaData('yamlform_submission_element_property_name');
+
+  /** \Drupal\Core\Database\Query\SelectInterface $query */
+  $query->distinct();
+  $query->addJoin('INNER', 'yamlform_submission_data', NULL, 'base_table.sid = yamlform_submission_data.sid');
+  $query->addField('yamlform_submission_data', 'value', 'value');
+  $query->condition('name', $name);
+  if ($property_name) {
+    $query->condition('property', $property_name);
+  }
+  $query->orderBy('value', $direction);
 }

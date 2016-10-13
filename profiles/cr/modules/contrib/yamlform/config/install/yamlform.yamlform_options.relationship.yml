@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies: {  }
+id: relationship
+label: Relationship
+options: |
+  Parent: Parent
+  'Significant Other': 'Significant Other'
+  Sibling: Sibling
+  Child: Child
+  Friend: Friend

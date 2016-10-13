@@ -1,15 +1,15 @@
 /**
  * @file
- * YAML form element color styling
+ * Element color styles
  *
  * @see \Drupal\yamlform\Plugin\YamlFormElement\Color
- * @see http://stackoverflow.com/questions/11167281/webkit-css-to-control-the-box-around-the-color-in-an-inputtype-color
+ * @see http://stackoverflow.com/questions/11167281/webkit-css-to-control-the-box-around-the-color-in-an-elementtype-color
  */
 
 .yamlform-submission-form input.form-color {
   margin: inherit;
   padding: 0;
-  border: 1px solid #000;
+  border: 1px solid #ccc;
 }
 
 .yamlform-submission-form input.form-color::-webkit-color-swatch-wrapper {
@@ -17,5 +17,27 @@
 }
 
 .yamlform-submission-form input.form-color::-webkit-color-swatch {
-  border: 1px solid #000;
+  border: none;
+}
+
+input.form-color.form-color-small {
+  width: 16px;
+  height: 16px;
+  font-size: smaller;
+}
+
+input.form-color.form-color-medium {
+  width: 24px;
+  height: 24px;
+}
+
+input.form-color.form-color-large {
+  width: 36px;
+  height: 36px;
+}
+
+input.form-color.form-color-output {
+  width: 6em;
+  padding: 0 .5em;
+  border-left: 0;
 }

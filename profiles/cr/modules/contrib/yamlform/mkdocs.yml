@@ -1,12 +1,30 @@
-site_name: YAML form docs
-theme: readthedocs
+site_name: YAML Form
+site_description: The YAML Form module is a FAPI based form builder and submission manager for Drupal 8.
+site_author: Jacob Rockowitz
+site_favicon: favicon.ico
+copyright: ©2016 <a href="http://thebigbluehouse.com">The Big Blue House</a> (<a href="http://drupal.org/user/371407">Jacob Rockowitz</a>)
+theme: yeti
+extra_css:
+  - extra.css
+extra_js:
+  - extra.js
+markdown_extensions:
+  - smarty
 pages:
-- Introduction: index.md
-- Todo: todo.md
-- Roadmap: roadmap.md
-- Known Issues: issues.md
-- For Developers and Maintainers:
-  - Maintainers: maintainers.md
-  - Development: development.md
-  - Test Script: test.md
-  - Documentation: docs.md
+- Home: index.md
+- Features: features.md
+- Download: download.md
+- Support:
+  - Installation: support/installation.md
+  - Frequently Asked Questions (FAQ): support/faq.md
+  - Videos & Presentations: support/videos.md
+  - Screencasts / Tutorials: support/screencasts.md
+  - Glossary: support/glossary.md
+  - Known Issues: support/issues.md
+  - On Drupal.org: support/drupal.md
+- For Developers:
+  - Customizing & Extending: developers/extending.md
+  - 8.x-1.x Release Roadmap: developers/roadmap.md
+  - Development Cheatsheet: developers/development.md
+  - Maintainers Guide: developers/maintainers.md
+  - Additional Resources: developers/resources.md

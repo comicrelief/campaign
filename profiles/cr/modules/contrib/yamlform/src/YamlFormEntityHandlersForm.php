@@ -1,75 +1,132 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\yamlform\YamlFormEntityHandlersForm.
- */
-
 namespace Drupal\yamlform;
 
 use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\yamlform\Utility\YamlFormDialogHelper;
 
 /**
- * Controller for YAML form handlers.
+ * Controller for form handlers.
  */
 class YamlFormEntityHandlersForm extends EntityForm {
 
   /**
-   * The YAML form.
+   * The form.
    *
    * @var \Drupal\yamlform\YamlFormInterface
    */
   protected $entity;
 
   /**
-   * The YAML form handler manager service.
-   *
-   * @var \Drupal\yamlform\YamlFormHandlerManager
-   */
-  protected $yamlFormHandlerManager;
-
-  /**
-   * Constructs an YamlFormEntityHandlersForm object.
-   *
-   * @param \Drupal\yamlform\YamlFormHandlerManager $yamlform_handler_manager
-   *   The YAML form handler manager service.
-   */
-  public function __construct(YamlFormHandlerManager $yamlform_handler_manager) {
-    $this->yamlFormHandlerManager = $yamlform_handler_manager;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public static function create(ContainerInterface $container) {
-    return new static(
-      $container->get('plugin.manager.yamlform.handler')
-    );
-  }
-
-  /**
    * {@inheritdoc}
    */
   public function form(array $form, FormStateInterface $form_state) {
+    /** @var \Drupal\yamlform\YamlFormInterface $yamlform */
+    $yamlform = $this->getEntity();
+
     $user_input = $form_state->getUserInput();
 
-    $form['#tree'] = TRUE;
-    $form['#attached']['library'][] = 'yamlform/yamlform';
+    // Build table header.
+    $header = [
+      $this->t('Title / Description'),
+      $this->t('ID'),
+      $this->t('Summary'),
+      $this->t('Status'),
+      $this->t('Weight'),
+      $this->t('Operations'),
+    ];
 
-    // Build the list of existing YAML form handlers for this YAML form.
+    // Build table rows for handlers.
+    $handlers = $this->entity->getHandlers();
+    $rows = [];
+    foreach ($handlers as $handler) {
+      $key = $handler->getHandlerId();
+      $rows[$key]['#attributes']['class'][] = 'draggable';
+
+      $rows[$key]['#weight'] = isset($user_input['handlers']) ? $user_input['handlers'][$key]['weight'] : NULL;
+
+      $rows[$key]['handler'] = [
+        '#tree' => FALSE,
+        'data' => [
+          'label' => [
+            '#markup' => '<b>' . $handler->label() . '</b>: ' . $handler->description(),
+          ],
+        ],
+      ];
+
+      $rows[$key]['id'] = [
+        'data' => ['#markup' => $handler->getHandlerId()],
+      ];
+
+      $rows[$key]['summary'] = $handler->getSummary();
+
+      $rows[$key]['status'] = [
+        'data' => ['#markup' => ($handler->isEnabled()) ? $this->t('Enabled') : $this->t('Disabled')],
+      ];
+
+      $rows[$key]['weight'] = [
+        '#type' => 'weight',
+        '#title' => $this->t('Weight for @title', ['@title' => $handler->label()]),
+        '#title_display' => 'invisible',
+        '#delta' => 50,
+        '#default_value' => $handler->getWeight(),
+        '#attributes' => [
+          'class' => ['yamlform-handler-order-weight'],
+        ],
+      ];
+
+      $rows[$key]['operations'] = [
+        '#type' => 'operations',
+        '#links' => [
+          'edit' => [
+            'title' => $this->t('Edit'),
+            'url' => Url::fromRoute('entity.yamlform.handler.edit_form', [
+              'yamlform' => $this->entity->id(),
+              'yamlform_handler' => $key,
+            ]),
+            'attributes' => YamlFormDialogHelper::getModalDialogAttributes(800),
+          ],
+          'delete' => [
+            'title' => $this->t('Delete'),
+            'url' => Url::fromRoute('entity.yamlform.handler.delete_form', [
+              'yamlform' => $this->entity->id(),
+              'yamlform_handler' => $key,
+            ]),
+          ],
+        ],
+      ];
+    }
+
+    // Must manually add local actions to the form because we can't alter local
+    // actions and add the needed dialog attributes.
+    // @see https://www.drupal.org/node/2585169
+    if (!$yamlform->hasTranslations()) {
+      $dialog_attributes = YamlFormDialogHelper::getModalDialogAttributes(
+        800,
+        ['button', 'button-action', 'button--primary', 'button--small']
+      );
+      $form['local_actions'] = [
+        'add_element' => [
+          '#type' => 'link',
+          '#title' => $this->t('Add email'),
+          '#url' => new Url('entity.yamlform.handler.add_form', ['yamlform' => $yamlform->id(), 'yamlform_handler' => 'email']),
+          '#attributes' => $dialog_attributes,
+          'add_page' => [
+            '#type' => 'link',
+            '#title' => $this->t('Add handler'),
+            '#url' => new Url('entity.yamlform.handlers', ['yamlform' => $yamlform->id()]),
+            '#attributes' => $dialog_attributes,
+          ],
+        ],
+      ];
+    }
+
+    // Build the list of existing form handlers for this form.
     $form['handlers'] = [
       '#type' => 'table',
-      '#header' => [
-        $this->t('Title / Description'),
-        $this->t('ID'),
-        $this->t('Summary'),
-        $this->t('Status'),
-        $this->t('Weight'),
-        $this->t('Operations'),
-      ],
+      '#header' => $header,
       '#tabledrag' => [
         [
           'action' => 'order',
@@ -80,113 +137,10 @@ class YamlFormEntityHandlersForm extends EntityForm {
       '#attributes' => [
         'id' => 'yamlform-handlers',
       ],
-      '#empty' => $this->t('There are currently no handlers in this YAML form. Add one by selecting an option below.'),
-      // Render handlers below parent elements.
-      '#weight' => 5,
-    ];
-    foreach ($this->entity->getHandlers() as $handler) {
-      $key = $handler->getHandlerId();
-      $form['handlers'][$key]['#attributes']['class'][] = 'draggable';
-      $form['handlers'][$key]['#weight'] = isset($user_input['handlers']) ? $user_input['handlers'][$key]['weight'] : NULL;
-      $form['handlers'][$key]['handler'] = [
-        '#tree' => FALSE,
-        'data' => [
-          'label' => [
-            '#markup' => '<b>' . $handler->label() . '</b>: ' . $handler->description(),
-          ],
-        ],
-      ];
+      '#empty' => $this->t('There are currently no handlers in this form. Add one by selecting an option below.'),
+    ] + $rows;
 
-      $form['handlers'][$key]['id'] = [
-        'data' => ['#markup' => $handler->getHandlerId()],
-      ];
-      $form['handlers'][$key]['summary'] = $handler->getSummary();
-      $form['handlers'][$key]['status'] = [
-        'data' => ['#markup' => ($handler->isEnabled()) ? $this->t('Enabled') : $this->t('Disabled')],
-      ];
-      $form['handlers'][$key]['weight'] = [
-        '#type' => 'weight',
-        '#title' => $this->t('Weight for @title', ['@title' => $handler->label()]),
-        '#title_display' => 'invisible',
-        '#default_value' => $handler->getWeight(),
-        '#attributes' => [
-          'class' => ['yamlform-handler-order-weight'],
-        ],
-      ];
-
-      $links = [];
-      $links['edit'] = [
-        'title' => $this->t('Edit'),
-        'url' => Url::fromRoute('yamlform.handler_edit_form', [
-            'yamlform' => $this->entity->id(),
-            'yamlform_handler' => $key,
-          ]),
-      ];
-      $links['delete'] = [
-        'title' => $this->t('Delete'),
-        'url' => Url::fromRoute('yamlform.handler_delete_form', [
-          'yamlform' => $this->entity->id(),
-          'yamlform_handler' => $key,
-        ]),
-      ];
-      $form['handlers'][$key]['operations'] = [
-        '#type' => 'operations',
-        '#links' => $links,
-      ];
-    }
-
-    // Build the new image handler addition form and add it to the handler list.
-    $new_handler_options = [];
-    $handlers = $this->yamlFormHandlerManager->getDefinitions();
-    uasort($handlers, function ($a, $b) {
-      return strcasecmp($a['id'], $b['id']);
-    });
-    foreach ($handlers as $handler => $definition) {
-      $cardinality = $definition['cardinality'];
-      if ($cardinality === YamlFormHandlerInterface::CARDINALITY_UNLIMITED || $cardinality > $this->entity->getHandlers($handler)->count()) {
-        $new_handler_options[$handler] = $definition['label'];
-      }
-    }
-    $form['handlers']['new'] = [
-      '#tree' => FALSE,
-      '#weight' => isset($user_input['weight']) ? $user_input['weight'] : NULL,
-      '#attributes' => ['class' => ['draggable']],
-    ];
-    $form['handlers']['new']['handler'] = [
-      'data' => [
-        'new' => [
-          '#type' => 'select',
-          '#title' => $this->t('Handler'),
-          '#title_display' => 'invisible',
-          '#options' => $new_handler_options,
-          '#empty_option' => $this->t('Select a new handler'),
-        ],
-        [
-          'add' => [
-            '#type' => 'submit',
-            '#value' => $this->t('Add'),
-            '#validate' => ['::handlerValidate'],
-            '#submit' => ['::submitForm', '::handlerSave'],
-          ],
-        ],
-      ],
-      '#wrapper_attributes' => [
-        'colspan' => 4,
-      ],
-      '#prefix' => '<div class="yamlform-new">',
-      '#suffix' => '</div>',
-    ];
-
-    $form['handlers']['new']['weight'] = [
-      '#type' => 'weight',
-      '#title' => $this->t('Weight for new handler'),
-      '#title_display' => 'invisible',
-      '#default_value' => count($this->entity->getHandlers()) + 1,
-      '#attributes' => ['class' => ['yamlform-handler-order-weight']],
-    ];
-    $form['handlers']['new']['operations'] = [
-      'data' => [],
-    ];
+    $form['#attached']['library'][] = 'yamlform/yamlform.admin';
 
     return parent::form($form, $form_state);
   }
@@ -196,40 +150,16 @@ class YamlFormEntityHandlersForm extends EntityForm {
    */
   protected function actionsElement(array $form, FormStateInterface $form_state) {
     $form = parent::actionsElement($form, $form_state);
+    $form['submit']['#value'] = $this->t('Save handlers');
     unset($form['delete']);
     return $form;
-  }
-
-  /**
-   * Validate handler for YAML form handler.
-   */
-  public function handlerValidate($form, FormStateInterface $form_state) {
-    if (!$form_state->getValue('new')) {
-      $form_state->setErrorByName('new', $this->t('Select a handler to add.'));
-    }
-  }
-
-  /**
-   * Submit handler for YAML form handler.
-   */
-  public function handlerSave($form, FormStateInterface $form_state) {
-    $this->save($form, $form_state);
-    $form_state->setRedirect(
-      'yamlform.handler_add_form',
-      [
-        'yamlform' => $this->entity->id(),
-        'yamlform_handler' => $form_state->getValue('new'),
-      ],
-      ['query' => ['weight' => $form_state->getValue('weight')]]
-    );
   }
 
   /**
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-
-    // Update YAML form handler weights.
+    // Update form handler weights.
     if (!$form_state->isValueEmpty('handlers')) {
       $this->updateHandlerWeights($form_state->getValue('handlers'));
     }
@@ -245,12 +175,12 @@ class YamlFormEntityHandlersForm extends EntityForm {
     $yamlform = $this->getEntity();
     $yamlform->save();
 
-    $this->logger('yamlform')->notice('YAML form @label handlers saved.', ['@label' => $yamlform->label()]);
-    drupal_set_message($this->t('YAML form %label handlers saved.', ['%label' => $yamlform->label()]));
+    $this->logger('yamlform')->notice('Form @label handlers saved.', ['@label' => $yamlform->label()]);
+    drupal_set_message($this->t('Form %label handlers saved.', ['%label' => $yamlform->label()]));
   }
 
   /**
-   * Updates YAML form handler weights.
+   * Updates form handler weights.
    *
    * @param array $handlers
    *   Associative array with handlers having handler ids as keys and array

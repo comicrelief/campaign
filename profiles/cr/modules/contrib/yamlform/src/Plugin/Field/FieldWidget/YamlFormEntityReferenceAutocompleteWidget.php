@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\Plugin\Field\FieldWidget\EntityReferenceAutocompleteWidget.
- */
-
 namespace Drupal\yamlform\Plugin\Field\FieldWidget;
 
 use Drupal\Core\Field\FieldItemListInterface;
@@ -36,12 +31,21 @@ class YamlFormEntityReferenceAutocompleteWidget extends EntityReferenceAutocompl
     $element = parent::formElement($items, $delta, $element, $form, $form_state);
 
     $element['default_data'] = [
-      '#type' => 'yamlform_codemirror_yaml',
-      '#title' => $this->t('Default YAML form submission data (YAML)'),
-      '#description' => $this->t('Enter YAML form submission data as name and value pairs which will be used to prepopulate the selected YAML form.'),
+      '#type' => 'yamlform_codemirror',
+      '#mode' => 'yaml',
+      '#title' => $this->t('Default form submission data (YAML)'),
+      '#description' => $this->t('Enter form submission data as name and value pairs which will be used to prepopulate the selected form. You may use tokens.'),
       '#default_value' => $items[$delta]->default_data,
     ];
-
+    $element['token_tree_link'] = [
+      '#theme' => 'token_tree_link',
+      '#token_types' => [
+        'yamlform',
+        'yamlform-submission',
+      ],
+      '#click_insert' => FALSE,
+      '#dialog' => TRUE,
+    ];
     $element['status'] = [
       '#type' => 'radios',
       '#title' => $this->t('Form status'),

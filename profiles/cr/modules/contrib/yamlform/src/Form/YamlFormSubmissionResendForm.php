@@ -1,34 +1,64 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\Form\YamlFormSubmissionResendForm.
- */
-
 namespace Drupal\yamlform\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\yamlform\Plugin\YamlFormHandler\EmailYamlFormHandler;
+use Drupal\yamlform\YamlFormRequestInterface;
 use Drupal\yamlform\YamlFormSubmissionInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Defines a form that resends YAML form submission.
+ * Defines a form that resends form submission.
  */
 class YamlFormSubmissionResendForm extends FormBase {
 
   /**
-   * A YAML form submission.
+   * A form submission.
    *
    * @var \Drupal\yamlform\YamlFormSubmissionInterface
    */
   protected $yamlformSubmission;
 
   /**
+   * The source entity.
+   *
+   * @var \Drupal\Core\Entity\EntityInterface
+   */
+  protected $entity;
+
+  /**
    * {@inheritdoc}
    */
   public function getFormId() {
     return 'yamlform_submission_resend';
+  }
+
+  /**
+   * Form request handler.
+   *
+   * @var \Drupal\yamlform\YamlFormRequestInterface
+   */
+  protected $requestHandler;
+
+  /**
+   * Constructs a new YamlFormResultsDeleteBaseForm object.
+   *
+   * @param \Drupal\yamlform\YamlFormRequestInterface $request_handler
+   *   The form request handler.
+   */
+  public function __construct(YamlFormRequestInterface $request_handler) {
+    $this->requestHandler = $request_handler;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('yamlform.request')
+    );
   }
 
   /**
@@ -105,7 +135,7 @@ class YamlFormSubmissionResendForm extends FormBase {
       '#header' => $header,
       '#options' => $options,
       '#js_select' => TRUE,
-      '#empty' => t('No messages are available.'),
+      '#empty' => $this->t('No messages are available.'),
       '#multiple' => FALSE,
       '#default_value' => $message_handler_id,
       '#ajax' => [
@@ -133,13 +163,20 @@ class YamlFormSubmissionResendForm extends FormBase {
     ];
 
     // Add submission navigation.
+    $source_entity = $this->requestHandler->getCurrentSourceEntity('yamlform_submission');
     $form['navigation'] = [
       '#theme' => 'yamlform_submission_navigation',
       '#yamlform_submission' => $yamlform_submission,
-      '#rel' => 'email-form',
       '#weight' => -20,
     ];
-    $form['#attached']['library'][] = 'yamlform/yamlform';
+    $form['information'] = [
+      '#theme' => 'yamlform_submission_information',
+      '#yamlform_submission' => $yamlform_submission,
+      '#source_entity' => $source_entity,
+      '#open' => FALSE,
+      '#weight' => -19,
+    ];
+    $form['#attached']['library'][] = 'yamlform/yamlform.admin';
 
     return $form;
   }

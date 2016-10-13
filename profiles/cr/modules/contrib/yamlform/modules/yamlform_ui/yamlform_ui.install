@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the YAML Form UI module.
+ */
+
+use Drupal\user\Entity\Role;
+
+/**
+ * Issue #2759531: Provide 'edit yamlform element custom settings' permission.
+ */
+function yamlform_ui_update_8001(&$sandbox) {
+  $role_names = user_role_names(FALSE, 'administer yamlform');
+  if ($role_names) {
+    foreach ($role_names as $role_name => $role_label) {
+      $role = Role::load($role_name);
+      $role->grantPermission('edit yamlform source');
+      $role->save();
+    }
+  }
+}

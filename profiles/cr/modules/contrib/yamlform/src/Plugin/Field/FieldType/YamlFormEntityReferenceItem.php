@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\Plugin\Field\FieldType\YamlFormEntityReferenceItem.
- */
-
 namespace Drupal\yamlform\Plugin\Field\FieldType;
 
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
@@ -20,8 +15,8 @@ use Drupal\Core\TypedData\DataDefinition;
  *
  * @FieldType(
  *   id = "yamlform",
- *   label = @Translation("YAML form"),
- *   description = @Translation("A YAML form containing default submission values."),
+ *   label = @Translation("Form"),
+ *   description = @Translation("A form containing default submission values."),
  *   category = @Translation("Reference"),
  *   default_widget = "yamlform_entity_reference_autocomplete",
  *   default_formatter = "yamlform_entity_reference_entity_view",
@@ -38,7 +33,6 @@ class YamlFormEntityReferenceItem extends EntityReferenceItem {
       'target_type' => 'yamlform',
     ] + parent::defaultStorageSettings();
   }
-
 
   /**
    * {@inheritdoc}
@@ -57,7 +51,7 @@ class YamlFormEntityReferenceItem extends EntityReferenceItem {
     return [
       'columns' => [
         'target_id' => [
-          'description' => 'The ID of the YAML form entity.',
+          'description' => 'The ID of the form entity.',
           'type' => 'varchar_ascii',
           'length' => 255,
         ],
@@ -66,7 +60,7 @@ class YamlFormEntityReferenceItem extends EntityReferenceItem {
           'type' => 'text',
         ],
         'status' => [
-          'description' => 'Flag to control whether this YAML form should be open or closed to new submissions.',
+          'description' => 'Flag to control whether this form should be open or closed to new submissions.',
           'type' => 'int',
           'size' => 'tiny',
           'unsigned' => TRUE,
@@ -90,7 +84,7 @@ class YamlFormEntityReferenceItem extends EntityReferenceItem {
 
     $properties['status'] = DataDefinition::create('boolean')
       ->setLabel(t('Status'))
-      ->setDescription(t('Flag to control whether this YAML form should be open or closed to new submissions.'));
+      ->setDescription(t('Flag to control whether this form should be open or closed to new submissions.'));
 
     return $properties;
   }

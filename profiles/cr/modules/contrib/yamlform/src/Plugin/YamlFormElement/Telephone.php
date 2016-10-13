@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\Plugin\YamlFormElement\Telephone.
- */
-
 namespace Drupal\yamlform\Plugin\YamlFormElement;
 
 /**
@@ -12,23 +7,34 @@ namespace Drupal\yamlform\Plugin\YamlFormElement;
  *
  * @YamlFormElement(
  *   id = "tel",
- *   label = @Translation("Telephone")
+ *   api = "https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Render!Element!Tel.php/class/Tel",
+ *   label = @Translation("Telephone"),
+ *   category = @Translation("Advanced elements"),
  * )
  */
-class Telephone extends TextFieldBase {
+class Telephone extends TextBase {
 
   /**
    * {@inheritdoc}
    */
   public function formatHtml(array &$element, $value, array $options = []) {
+    if (empty($value)) {
+      return '';
+    }
+
     $format = $this->getFormat($element);
     switch ($format) {
       case 'link':
-        return [
-          '#type' => 'link',
-          '#title' => $value,
-          '#url' => \Drupal::pathValidator()->getUrlIfValid('tel:' . $value),
-        ];
+        // Issue #2484693: Telephone Link fied formatter breaks Drupal with 5
+        // digits or less in the number
+        // return [
+        //  '#type' => 'link',
+        //  '#title' => $value,
+        //  '#url' => \Drupal::pathValidator()->getUrlIfValid('tel:' . $value),
+        // ];
+        // Workaround: Manually build a static HTML link.
+        $t_args = [':tel' => 'tel:' . $value, '@tel' => $value];
+        return t('<a href=":tel">@tel</a>', $t_args);
 
       default:
         return parent::formatHtml($element, $value, $options);

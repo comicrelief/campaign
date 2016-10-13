@@ -1,0 +1,167 @@
+langcode: en
+status: true
+dependencies: {  }
+uid: null
+template: false
+id: test_element_dates
+title: 'Test: Element: Dates'
+description: 'Test date elements.'
+elements: |
+  date_elements:
+    '#type': details
+    '#title': 'Date Elements'
+    '#open': true
+    date_default:
+      '#type': date
+      '#title': 'date default'
+      '#default_value': '2009-08-18'
+    date_range:
+      '#type': date
+      '#title': 'date range (min/max)'
+      '#description': '(2009-01-01 to 2009-12-31)'
+      '#min': '2009-01-01'
+      '#max': '2009-12-31'
+      '#default_value': '2009-08-18'
+    date_range_dynamic:
+      '#type': date
+      '#title': 'date range (dynamic)'
+      '#description': '(-1 year to +1 year)'
+      '#min': '-1 year'
+      '#max': '+1 year'
+      '#default_value': 'now'
+  datetime_elements:
+    '#type': details
+    '#title': 'Date/Time Elements'
+    '#open': true
+    datetime_default:
+      '#type': datetime
+      '#title': 'datetime default'
+      '#default_value': '2009-08-18T01:00:00-05:00'
+    datetime_html5_datetime:
+      '#type': datetime
+      '#title': 'datetime HTML5 datetime'
+      '#default_value': '2009-08-18T01:00:00-05:00'
+      '#date_date_element': datetime
+      '#date_time_element': none
+    datetime_html5_datetime_local:
+      '#type': datetime
+      '#title': 'datetime HTML5 datetime local'
+      '#default_value': '2009-08-18T01:00:00-05:00'
+      '#date_date_element': 'datetime-local'
+      '#date_time_element': none
+    datetime_html5_time:
+      '#type': datetime
+      '#title': 'datetime HTML5 time'
+      '#default_value': '2009-08-18T01:00:00-05:00'
+      '#date_date_element': none
+      '#date_time_element': time
+      '#format': html_time
+    datetime_text_datetime:
+      '#type': datetime
+      '#title': 'datetime text datetime'
+      '#default_value': '2009-08-18T01:00:00-05:00'
+      '#date_date_element': text
+      '#date_time_element': text
+    datetime_year_range:
+      '#type': datetime
+      '#title': 'datetime year range (-10:+1)'
+      '#default_value': '2009-08-18T01:00:00-05:00'
+      '#date_year_range': '-10:+1'
+  datelist_elements:
+    '#type': details
+    '#title': 'Date List Elements'
+    '#open': true
+    datelist_default:
+      '#type': datelist
+      '#title': 'datelist default'
+      '#default_value': '2009-08-18T01:00:00-05:00'
+    datelist_datetime:
+      '#type': datelist
+      '#title': 'datelist datetime'
+      '#date_part_order':
+        - month
+        - day
+        - year
+        - hour
+        - minute
+        - second
+        - ampm
+      '#default_value': '2009-08-18T01:00:00-05:00'
+    datelist_date:
+      '#type': datelist
+      '#title': 'datelist date'
+      '#date_part_order':
+        - month
+        - day
+        - year
+      '#default_value': '2009-08-18T01:00:00-00:00'
+settings:
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_submit_label: ''
+  form_exception_message: ''
+  form_closed_message: ''
+  form_confidential: false
+  form_confidential_message: ''
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_novalidate: false
+  form_autofocus: false
+  form_details_toggle: false
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_next_button_label: ''
+  wizard_prev_button_label: ''
+  wizard_start_label: ''
+  wizard_complete: true
+  wizard_complete_label: ''
+  preview: 1
+  preview_next_button_label: ''
+  preview_prev_button_label: ''
+  preview_message: ''
+  draft: false
+  draft_auto_save: false
+  draft_button_label: ''
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: page
+  confirmation_message: ''
+  confirmation_url: ''
+  limit_total: null
+  limit_total_message: ''
+  limit_user: null
+  limit_user_message: ''
+  entity_limit_total: null
+  entity_limit_user: null
+  results_disabled: false
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+handlers: {  }

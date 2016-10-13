@@ -1,17 +1,12 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\yamlform\YamlFormEntityThirdPartySettingsForm.
- */
-
 namespace Drupal\yamlform;
 
 use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Base for controller for YAML form third party settings.
+ * Base for controller for form third party settings.
  */
 class YamlFormEntityThirdPartySettingsForm extends EntityForm {
 
@@ -19,7 +14,7 @@ class YamlFormEntityThirdPartySettingsForm extends EntityForm {
    * {@inheritdoc}
    */
   public function form(array $form, FormStateInterface $form_state) {
-    /** @var \Drupal\yamlform\YamlFormHandlerManager $third_party_settings_manager */
+    /** @var \Drupal\yamlform\YamlFormThirdPartySettingsManagerInterface $third_party_settings_manager */
     $third_party_settings_manager = \Drupal::service('yamlform.third_party_settings_manager');
     $form = $third_party_settings_manager->buildForm($form, $form_state);
     $form_state->set('yamlform', $this->getEntity());
@@ -51,8 +46,8 @@ class YamlFormEntityThirdPartySettingsForm extends EntityForm {
     }
     $yamlform->save();
 
-    $this->logger('yamlform')->notice('YAML form settings @label saved.', ['@label' => $yamlform->label()]);
-    drupal_set_message($this->t('YAML form settings %label saved.', ['%label' => $yamlform->label()]));
+    $this->logger('yamlform')->notice('Form settings @label saved.', ['@label' => $yamlform->label()]);
+    drupal_set_message($this->t('Form settings %label saved.', ['%label' => $yamlform->label()]));
   }
 
 }

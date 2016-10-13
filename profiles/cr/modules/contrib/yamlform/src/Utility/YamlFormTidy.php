@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\Utility\YamlFormTidy.
- */
-
 namespace Drupal\yamlform\Utility;
 
 use Symfony\Component\Yaml\Unescaper;

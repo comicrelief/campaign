@@ -1,17 +1,12 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\YamlFormEntityViewBuilder.
- */
-
 namespace Drupal\yamlform;
 
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityViewBuilder;
 
 /**
- * Render controller for YAML form.
+ * Render controller for form.
  */
 class YamlFormEntityViewBuilder extends EntityViewBuilder {
 

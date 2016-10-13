@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies: {  }
+id: employment_status
+label: 'Employment status'
+options: |
+  'Full Time': 'Full Time'
+  'Part Time': 'Part Time'
+  'Military': 'Military'
+  Unemployed: Unemployed
+  Retired: Retired

@@ -1,0 +1,35 @@
+/**
+ * @file
+ * Help styles.
+ */
+
+.block-help {
+  margin: 1em 0;
+}
+
+.button.button-yamlform-play:before {
+  content: '► ';
+  font-size: .8em;
+}
+
+.yamlform-help-video-youtube {
+  margin: 1.5em 0;
+  max-width: 1024px;
+  border: 1px solid #000;
+}
+
+.yamlform-help-video-youtube--container {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+}
+
+.yamlform-help-video-youtube iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

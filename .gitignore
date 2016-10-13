@@ -14,7 +14,7 @@ sites/*/environment.yml
 sites/*/settings.local.php
 
 # Ignore bundle files
-.bundle/config/
+.bundle
 node_modules/
 
 # Ignore SimpleTest multi-site environment.
@@ -68,8 +68,8 @@ build.properties
 
 PATCHES.txt
 
-*/tests/behat/vendor/
-*/tests/behat/behat.yml
+profiles/cr/tests/behat/vendor/
+profiles/cr/tests/behat/behat.yml
 
 
 # For composer based installs
@@ -82,3 +82,4 @@ web/sites/default/services.yml
 
 # Ignore Drupal's file directory
 web/sites/*/files/
+web

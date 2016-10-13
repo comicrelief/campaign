@@ -1,0 +1,13 @@
+/**
+ * @file
+ * Table select sort element styles.
+ */
+
+.tableselect-sort th:first-child {
+  text-align: center;
+}
+
+.tableselect-sort th:first-child,
+.tableselect-sort td:first-child {
+  white-space: nowrap;
+}

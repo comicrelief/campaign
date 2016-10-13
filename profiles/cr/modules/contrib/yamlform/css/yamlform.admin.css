@@ -1,0 +1,162 @@
+/**
+ * @file
+ * Admin styles
+ */
+
+/**
+ * General.
+ */
+.dropbutton-multiple .ajax-progress-throbber {
+  display: none;
+}
+
+/**
+ * Buttons
+ */
+.button.button-yamlform-setting {
+  margin: 0 0 1em 0;
+}
+
+.button.button-yamlform-setting:before {
+  content: '⚙';
+  font-size: 1.2em;
+}
+
+/**
+ * Handler.
+ */
+.yamlform-handler__new,
+.yamlform-handler__new div {
+  display: inline;
+}
+
+/**
+ * Filter form.
+ */
+.yamlform-filter-form .form-submit {
+  margin-left: 0;
+  margin-right: 5px;
+}
+
+.yamlform-filter-form .form-item {
+  margin-right: 5px;
+}
+
+@media screen and (max-width: 600px) {
+  .yamlform-filter-form .form-item {
+    display: block;
+    margin-right: 0;
+  }
+}
+
+/**
+ * Results table.
+ */
+.yamlform-results__table th,
+.yamlform-results__table td {
+  max-width: 400px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.yamlform-results__table td:last-child {
+  overflow: visible;
+  max-width: inherit;
+  white-space: normal;
+}
+
+th.yamlform-results__icon,
+td.yamlform-results__icon {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.yamlform-results__icon .ajax-progress-throbber {
+  display: none;
+}
+
+a.yamlform-results__custom + .ajax-progress-throbber {
+  display: none;
+}
+
+.yamlform-results__table tbody tr {
+  cursor: pointer;
+  cursor: hand;
+}
+
+/**
+ * Results custom(ize) dialog.
+ */
+.yamlform-results__custom .tabledrag-changed-warning,
+.yamlform-results__custom .tabledrag-changed /* Hide table drag warnings. */ {
+  display: none !important;
+}
+
+/**
+ * Results icons (sticky & notes)
+ */
+.yamlform-icon {
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  text-align: center;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% auto;
+  vertical-align: -2px;
+}
+
+.yamlform-icon-notes--on {
+  background-image: url(../images/icons/notes-on.svg);
+}
+
+.yamlform-icon-notes--off {
+  background-image: url(../images/icons/notes-off.svg);
+}
+
+.yamlform-icon-notes--link {
+  background-image: url(../images/icons/notes-link.svg);
+}
+
+a:hover .yamlform-icon-notes--on,
+a:focus .yamlform-icon-notes--on,
+a:hover .yamlform-icon-notes--off,
+a:focus .yamlform-icon-notes--off {
+  background-image: url(../images/icons/notes-link.svg);
+}
+
+.yamlform-icon-sticky {
+  background: transparent url(../images/icons/sticky.svg) no-repeat left top;
+  display: inline-block;
+  background-size: 64px 16px;
+}
+
+.yamlform-icon-sticky--off:hover,
+.yamlform-icon-sticky--off:focus {
+  background-position: -16px top;
+}
+.yamlform-icon-sticky--on {
+  background-position: -32px top;
+}
+.yamlform-icon-sticky--on:focus,
+.yamlform-icon-sticky--on:hover {
+  background-position: -48px top;
+}
+
+.yamlform-icon-sticky--link {
+  background: transparent url(../images/icons/sticky-link.svg) no-repeat left top;
+}
+
+/**
+ * Submission view table
+ */
+.yamlform-submission__table th {
+  width: 33%;
+  min-width: 100px;
+}
+
+.yamlform-submission__table td {
+  width: 66%;
+}

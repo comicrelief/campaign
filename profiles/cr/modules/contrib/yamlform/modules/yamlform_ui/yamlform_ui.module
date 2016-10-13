@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * @file
+ * Provides a simple user interface for building and maintaining forms.
+ */
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function yamlform_ui_entity_type_alter(array &$entity_types) {
+  if (isset($entity_types['yamlform'])) {
+    /** @var \Drupal\Core\Entity\ContentEntityTypeInterface $yamlform_entity_type */
+    $yamlform_entity_type = $entity_types['yamlform'];
+
+    // Swap the 'default' form handler with the form UI entity form
+    // and move the old form source entity form to a new 'source'
+    // form handler.
+    $handlers = $yamlform_entity_type->getHandlerClasses();
+    $handlers['form']['source'] = $handlers['form']['default'];
+    $handlers['form']['default'] = 'Drupal\yamlform_ui\YamlFormUiEntityForm';
+    $handlers['form']['duplicate'] = 'Drupal\yamlform_ui\YamlFormUiEntityForm';
+    $yamlform_entity_type->setHandlerClass('form', $handlers['form']);
+  }
+
+  if (isset($entity_types['yamlform_options'])) {
+    /** @var \Drupal\Core\Entity\ContentEntityTypeInterface $yamlform_entity_type */
+    $yamlform_options_entity_type = $entity_types['yamlform_options'];
+
+    // Swap the 'default' form handler with the form UI option form
+    // and move the old form option source entity form to a new 'source'
+    // form handler.
+    $handlers = $yamlform_options_entity_type->getHandlerClasses();
+    $handlers['form']['source'] = $handlers['form']['default'];
+    $handlers['form']['default'] = 'Drupal\yamlform_ui\YamlFormUiOptionsForm';
+    $yamlform_options_entity_type->setHandlerClass('form', $handlers['form']);
+  }
+
+}

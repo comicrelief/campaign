@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform_test\Plugin\YamlFormElement\YamlFormTest.
- */
-
 namespace Drupal\yamlform_test\Plugin\YamlFormElement;
 
 use Drupal\Core\Form\FormStateInterface;
@@ -16,8 +11,8 @@ use Drupal\yamlform\YamlFormSubmissionInterface;
  *
  * @YamlFormElement(
  *   id = "yamlform_test",
- *   label = @Translation("YAML form test"),
- *   description = @Translation("Test YAML form element.")
+ *   label = @Translation("Form test"),
+ *   description = @Translation("Test form element.")
  * )
  */
 class YamlFormTest extends YamlFormElementBase {
@@ -33,14 +28,51 @@ class YamlFormTest extends YamlFormElementBase {
   /**
    * {@inheritdoc}
    */
-  public function setDefaultValue(array &$element, $default_value) {
+  public function setDefaultValue(array &$element) {
     $this->displayMessage(__FUNCTION__);
   }
 
   /**
    * {@inheritdoc}
    */
-  public function save(array &$element, YamlFormSubmissionInterface $yamlform_submission) {
+  public function formatHtml(array &$element, $value, array $options = []) {
+    $this->displayMessage(__FUNCTION__);
+    return '<i>' . $this->formatText($element, $value, $options) . '</i>';
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function formatText(array &$element, $value, array $options = []) {
+    $this->displayMessage(__FUNCTION__);
+    return strtoupper($value);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function preCreate(array &$element, array $values) {
+    $this->displayMessage(__FUNCTION__);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function postCreate(array &$element, YamlFormSubmissionInterface $yamlform_submission) {
+    $this->displayMessage(__FUNCTION__);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function postLoad(array &$element, YamlFormSubmissionInterface $yamlform_submission) {
+    $this->displayMessage(__FUNCTION__);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function preDelete(array &$element, YamlFormSubmissionInterface $yamlform_submission) {
     $this->displayMessage(__FUNCTION__);
   }
 
@@ -54,17 +86,22 @@ class YamlFormTest extends YamlFormElementBase {
   /**
    * {@inheritdoc}
    */
-  public function formatHtml(array &$element, $value, array $options = []) {
+  public function preSave(array &$element, YamlFormSubmissionInterface $yamlform_submission) {
     $this->displayMessage(__FUNCTION__);
-    return '<i>' . $this->formatText($element, $value, $options) . '<i>';
   }
 
   /**
    * {@inheritdoc}
    */
-  public function formatText(array &$element, $value, array $options = []) {
+  public function save(array &$element, YamlFormSubmissionInterface $yamlform_submission) {
     $this->displayMessage(__FUNCTION__);
-    return strtoupper($value);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function postSave(array &$element, YamlFormSubmissionInterface $yamlform_submission, $update = TRUE) {
+    $this->displayMessage(__FUNCTION__, $update ? 'update' : 'insert');
   }
 
   /**
@@ -86,7 +123,7 @@ class YamlFormTest extends YamlFormElementBase {
    * Form API callback. Convert password confirm array to single value.
    */
   public static function validate(array &$element, FormStateInterface $form_state) {
-    drupal_set_message(t('Invoked: \Drupal\yamlform_test\Plugin\YamlFormElement\YamlFormTest::validate'));
+    drupal_set_message(t('Invoked: Drupal\yamlform_test\Plugin\YamlFormElement\YamlFormTest::validate'));
   }
 
 }

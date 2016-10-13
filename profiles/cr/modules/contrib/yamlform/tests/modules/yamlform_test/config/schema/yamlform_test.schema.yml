@@ -1,4 +1,4 @@
-# Schema for the configuration files of the YAML form test module.
+# Schema for the configuration files of the form test module.
 
 yamlform.handler.test:
   type: mapping

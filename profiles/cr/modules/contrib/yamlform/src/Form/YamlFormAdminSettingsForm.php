@@ -1,27 +1,23 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\Form\YamlFormAdminSettingsForm.
- */
-
 namespace Drupal\yamlform\Form;
 
 use Drupal\Component\Render\FormattableMarkup;
+use Drupal\Component\Utility\Xss;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormState;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Url;
 use Drupal\file\Plugin\Field\FieldType\FileItem;
 use Drupal\yamlform\Entity\YamlForm;
-use Drupal\yamlform\YamlFormElementManager;
-use Drupal\yamlform\YamlFormSubmissionExporter;
+use Drupal\yamlform\Utility\YamlFormArrayHelper;
+use Drupal\yamlform\YamlFormElementManagerInterface;
+use Drupal\yamlform\YamlFormSubmissionExporterInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Configure YAML form admin settings for this site.
+ * Configure form admin settings for this site.
  */
 class YamlFormAdminSettingsForm extends ConfigFormBase {
 
@@ -33,16 +29,16 @@ class YamlFormAdminSettingsForm extends ConfigFormBase {
   protected $moduleHandler;
 
   /**
-   * The YAML form element manager.
+   * The form element manager.
    *
-   * @var \Drupal\yamlform\YamlFormElementManager
+   * @var \Drupal\yamlform\YamlFormElementManagerInterface
    */
   protected $elementManager;
 
   /**
-   * The YAML form submission exporter.
+   * The form submission exporter.
    *
-   * @var \Drupal\yamlform\YamlFormSubmissionExporter
+   * @var \Drupal\yamlform\YamlFormSubmissionExporterInterface
    */
   protected $submissionExporter;
 
@@ -67,12 +63,12 @@ class YamlFormAdminSettingsForm extends ConfigFormBase {
    *   The factory for configuration objects.
    * @param \Drupal\Core\Extension\ModuleHandlerInterface $third_party_settings_manager
    *   The module handler.
-   * @param \Drupal\yamlform\YamlFormElementManager $element_manager
-   *   The YAML form element manager.
-   * @param \Drupal\yamlform\YamlFormSubmissionExporter $submission_exporter
-   *   The YAML form submission exporter.
+   * @param \Drupal\yamlform\YamlFormElementManagerInterface $element_manager
+   *   The form element manager.
+   * @param \Drupal\yamlform\YamlFormSubmissionExporterInterface $submission_exporter
+   *   The form submission exporter.
    */
-  public function __construct(ConfigFactoryInterface $config_factory, ModuleHandlerInterface $third_party_settings_manager, YamlFormElementManager $element_manager, YamlFormSubmissionExporter $submission_exporter) {
+  public function __construct(ConfigFactoryInterface $config_factory, ModuleHandlerInterface $third_party_settings_manager, YamlFormElementManagerInterface $element_manager, YamlFormSubmissionExporterInterface $submission_exporter) {
     parent::__construct($config_factory);
     $this->moduleHandler = $third_party_settings_manager;
     $this->elementManager = $element_manager;
@@ -88,7 +84,6 @@ class YamlFormAdminSettingsForm extends ConfigFormBase {
       $container->get('module_handler'),
       $container->get('plugin.manager.yamlform.element'),
       $container->get('yamlform_submission.exporter')
-
     );
   }
 
@@ -102,7 +97,7 @@ class YamlFormAdminSettingsForm extends ConfigFormBase {
     $form['page'] = [
       '#type' => 'details',
       '#title' => $this->t('Page default settings'),
-      '#open' => TRUE,
+      '#open' => FALSE,
       '#tree' => TRUE,
     ];
     $form['page']['default_page_base_path']  = [
@@ -115,18 +110,20 @@ class YamlFormAdminSettingsForm extends ConfigFormBase {
     $form['form'] = [
       '#type' => 'details',
       '#title' => $this->t('Form default settings'),
-      '#open' => TRUE,
+      '#open' => FALSE,
       '#tree' => TRUE,
     ];
     $form['form']['default_form_closed_message']  = [
-      '#type' => 'yamlform_codemirror_html',
+      '#type' => 'yamlform_codemirror',
+      '#mode' => 'html',
       '#title' => $this->t('Default closed message'),
       '#required' => TRUE,
       '#default_value' => $config->get('settings.default_form_closed_message'),
     ];
     $form['form']['default_form_exception_message']  = [
-      '#type' => 'yamlform_codemirror_html',
-      '#title' => $this->t('Default closed exception'),
+      '#type' => 'yamlform_codemirror',
+      '#mode' => 'html',
+      '#title' => $this->t('Default closed exception message'),
       '#required' => TRUE,
       '#default_value' => $config->get('settings.default_form_exception_message'),
     ];
@@ -137,11 +134,67 @@ class YamlFormAdminSettingsForm extends ConfigFormBase {
       '#size' => 20,
       '#default_value' => $settings['default_form_submit_label'],
     ];
+    $form['form']['default_form_confidential_message']  = [
+      '#type' => 'yamlform_codemirror',
+      '#mode' => 'html',
+      '#title' => $this->t('Default confidential message'),
+      '#required' => TRUE,
+      '#default_value' => $config->get('settings.default_form_confidential_message'),
+    ];
+    $form['form']['default_form_novalidate']  = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Disable client-side validation for all forms'),
+      '#description' => $this->t('If checked, the <a href="@href">novalidate</a> attribute, which disables client-side validation, will be added to all forms.', ['@href' => 'http://www.w3schools.com/tags/att_form_novalidate.asp']),
+      '#return_value' => TRUE,
+      '#default_value' => $config->get('settings.default_form_novalidate'),
+    ];
+    $form['form']['default_form_details_toggle']  = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Display collapse/expand all details link'),
+      '#description' => $this->t('If checked, an expand/collapse all (details) link will be added to all forms with two or more details elements.'),
+      '#return_value' => TRUE,
+      '#default_value' => $config->get('settings.default_form_details_toggle'),
+    ];
+
+    $form['wizard'] = [
+      '#type' => 'details',
+      '#title' => $this->t('Wizard default settings'),
+      '#open' => FALSE,
+      '#tree' => TRUE,
+    ];
+    $form['wizard']['default_wizard_prev_button_label'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Default wizard previous page button label'),
+      '#required' => TRUE,
+      '#size' => 20,
+      '#default_value' => $settings['default_wizard_prev_button_label'],
+    ];
+    $form['wizard']['default_wizard_next_button_label'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Default wizard next page button label'),
+      '#required' => TRUE,
+      '#size' => 20,
+      '#default_value' => $settings['default_wizard_next_button_label'],
+    ];
+    $form['wizard']['default_wizard_start_label'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Default wizard start label'),
+      '#required' => TRUE,
+      '#size' => 20,
+      '#default_value' => $settings['default_wizard_start_label'],
+    ];
+    $form['wizard']['default_wizard_complete_label'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Default wizard end label'),
+      '#required' => TRUE,
+      '#size' => 20,
+      '#default_value' => $settings['default_wizard_complete_label'],
+    ];
 
     $form['preview'] = [
       '#type' => 'details',
       '#title' => $this->t('Preview default settings'),
-      '#open' => TRUE,
+      '#open' => FALSE,
       '#tree' => TRUE,
     ];
     $form['preview']['default_preview_next_button_label'] = [
@@ -153,13 +206,14 @@ class YamlFormAdminSettingsForm extends ConfigFormBase {
     ];
     $form['preview']['default_preview_prev_button_label'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Default previous page button label'),
+      '#title' => $this->t('Default preview previous page button label'),
       '#required' => TRUE,
       '#size' => 20,
       '#default_value' => $settings['default_preview_prev_button_label'],
     ];
     $form['preview']['default_preview_message'] = [
-      '#type' => 'yamlform_codemirror_html',
+      '#type' => 'yamlform_codemirror',
+      '#mode' => 'html',
       '#title' => $this->t('Default preview message'),
       '#required' => TRUE,
       '#default_value' => $settings['default_preview_message'],
@@ -168,7 +222,7 @@ class YamlFormAdminSettingsForm extends ConfigFormBase {
     $form['draft'] = [
       '#type' => 'details',
       '#title' => $this->t('Draft default settings'),
-      '#open' => TRUE,
+      '#open' => FALSE,
       '#tree' => TRUE,
     ];
     $form['draft']['default_draft_button_label'] = [
@@ -179,13 +233,15 @@ class YamlFormAdminSettingsForm extends ConfigFormBase {
       '#default_value' => $settings['default_draft_button_label'],
     ];
     $form['draft']['default_draft_saved_message'] = [
-      '#type' => 'yamlform_codemirror_html',
+      '#type' => 'yamlform_codemirror',
+      '#mode' => 'html',
       '#title' => $this->t('Default draft save message'),
       '#required' => TRUE,
       '#default_value' => $settings['default_draft_saved_message'],
     ];
     $form['draft']['default_draft_loaded_message'] = [
-      '#type' => 'yamlform_codemirror_html',
+      '#type' => 'yamlform_codemirror',
+      '#mode' => 'html',
       '#title' => $this->t('Default draft load message'),
       '#required' => TRUE,
       '#default_value' => $settings['default_draft_loaded_message'],
@@ -194,11 +250,12 @@ class YamlFormAdminSettingsForm extends ConfigFormBase {
     $form['confirmation'] = [
       '#type' => 'details',
       '#title' => $this->t('Confirmation default settings'),
-      '#open' => TRUE,
+      '#open' => FALSE,
       '#tree' => TRUE,
     ];
     $form['confirmation']['default_confirmation_message']  = [
-      '#type' => 'yamlform_codemirror_html',
+      '#type' => 'yamlform_codemirror',
+      '#mode' => 'html',
       '#title' => $this->t('Default confirmation message'),
       '#required' => TRUE,
       '#default_value' => $config->get('settings.default_confirmation_message'),
@@ -207,51 +264,94 @@ class YamlFormAdminSettingsForm extends ConfigFormBase {
     $form['limit'] = [
       '#type' => 'details',
       '#title' => $this->t('Limit default settings'),
-      '#open' => TRUE,
+      '#open' => FALSE,
       '#tree' => TRUE,
     ];
     $form['limit']['default_limit_total_message']  = [
-      '#type' => 'yamlform_codemirror_html',
-      '#title' => $this->t('Default limit total message'),
+      '#type' => 'yamlform_codemirror',
+      '#mode' => 'html',
+      '#title' => $this->t('Default total submissions limit message'),
       '#required' => TRUE,
       '#default_value' => $config->get('settings.default_limit_total_message'),
     ];
     $form['limit']['default_limit_user_message']  = [
-      '#type' => 'yamlform_codemirror_html',
-      '#title' => $this->t('Default limit user message'),
+      '#type' => 'yamlform_codemirror',
+      '#mode' => 'html',
+      '#title' => $this->t('Default per user submission limit message'),
       '#required' => TRUE,
       '#default_value' => $config->get('settings.default_limit_user_message'),
     ];
-    $form['inputs'] = [
+
+    // Elements.
+    $form['elements'] = [
       '#type' => 'details',
-      '#title' => $this->t('Inputs default settings'),
-      '#open' => TRUE,
+      '#title' => $this->t('Elements default settings'),
+      '#open' => FALSE,
       '#tree' => TRUE,
     ];
-    $form['inputs']['default_inputs']  = [
-      '#type' => 'yamlform_codemirror_yaml',
-      '#title' => $this->t('Default inputs'),
-      '#description' => $this->t('These inputs will be displayed when a <a href=":href">new form</a> is created.', [':href' => Url::fromRoute('entity.yamlform.add_form')->toString()]),
+    $form['elements']['allowed_tags'] = [
+      '#type' => 'yamlform_radios_other',
+      '#title' => $this->t('Allowed tags'),
+      '#options' => [
+        'admin' => $this->t('Admin tags Excludes: script, iframe, etc...'),
+        'html' => $this->t('HTML tags: Includes only @html_tags.', ['@html_tags' => YamlFormArrayHelper::toString(Xss::getHtmlTagList())]),
+      ],
+      '#other__option_label' => $this->t('Custom tags'),
+      '#other__placeholder' => $this->t('Enter multiple tags delimited using spaces'),
       '#required' => TRUE,
-      '#default_value' => $config->get('inputs.default_inputs'),
+      '#description' => $this->t('Allowed tags are applied to an element propperty that may contain HTML. This includes element title, description, prefix, and suffix'),
+      '#default_value' => $config->get('elements.allowed_tags'),
+    ];
+    $form['elements']['wrapper_classes'] = [
+      '#type' => 'textarea',
+      '#title' => $this->t('Wrapper CSS classes'),
+      '#description' => $this->t('A list of classes that will be provided in the "Wrapper CSS classes" dropdown. Enter one or more classes on each line. These styles should be available in your theme\'s CSS file.'),
+      '#required' => TRUE,
+      '#default_value' => $config->get('elements.wrapper_classes'),
+    ];
+    $form['elements']['classes'] = [
+      '#type' => 'textarea',
+      '#title' => $this->t('Element CSS classes'),
+      '#description' => $this->t('A list of classes that will be provided in the "Element CSS classes" dropdown. Enter one or more classes on each line. These styles should be available in your theme\'s CSS file.'),
+      '#required' => TRUE,
+      '#default_value' => $config->get('elements.classes'),
+    ];
+    $form['elements']['default_description_display'] = [
+      '#type' => 'select',
+      '#title' => $this->t('Default description display'),
+      '#options' => [
+        '' => '',
+        'before' => $this->t('Before'),
+        'after' => $this->t('After'),
+        'invisible' => $this->t('Invisible'),
+        'tooltip' => $this->t('Tooltip'),
+      ],
+      '#description' => $this->t('Determines the default placement of the description for all form elements.'),
+      '#default_value' => $config->get('elements.default_description_display'),
+    ];
+    $form['elements']['default_google_maps_api_key'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Google Maps API key'),
+      '#description' => $this->t('Google requires users to use a valid API key. Using the <a href="https://console.developers.google.com/apis">Google API Manager</a>, you can enable the <em>Google Maps JavaScript API</em>. That will create (or reuse) a <em>Browser key</em> which you can paste here.'),
+      '#default_value' => $config->get('elements.default_google_maps_api_key'),
     ];
     if ($this->moduleHandler->moduleExists('file')) {
-      $form['inputs']['default_max_filesize'] = [
+      $form['elements']['default_max_filesize'] = [
         '#type' => 'textfield',
         '#title' => $this->t('Default maximum upload size'),
-        '#default_value' => $config->get('inputs.default_max_filesize'),
         '#description' => $this->t('Enter a value like "512" (bytes), "80 KB" (kilobytes) or "50 MB" (megabytes) in order to restrict the allowed file size. If left empty the file sizes will be limited only by PHP\'s maximum post and file upload sizes (current limit <strong>%limit</strong>).', ['%limit' => format_size(file_upload_max_size())]),
         '#element_validate' => [[get_class($this), 'validateMaxFilesize']],
         '#size' => 10,
+        '#default_value' => $config->get('elements.default_max_filesize'),
       ];
-      $form['inputs']['default_file_extensions'] = [
+      $form['elements']['default_file_extensions'] = [
         '#type' => 'textfield',
         '#title' => $this->t('Default allowed file extensions'),
-        '#default_value' => $config->get('inputs.default_file_extensions'),
         '#description' => $this->t('Separate extensions with a space and do not include the leading dot.'),
-        '#maxlength' => 256,
         '#element_validate' => [[get_class($this), 'validateExtensions']],
         '#required' => TRUE,
+        '#maxlength' => 256,
+        '#default_value' => $config->get('elements.default_file_extensions'),
       ];
     }
 
@@ -259,7 +359,7 @@ class YamlFormAdminSettingsForm extends ConfigFormBase {
     $form['format'] = [
       '#type' => 'details',
       '#title' => $this->t('Format default settings'),
-      '#open' => TRUE,
+      '#open' => FALSE,
       '#tree' => TRUE,
     ];
     $element_plugins = $this->elementManager->getInstances();
@@ -291,17 +391,18 @@ class YamlFormAdminSettingsForm extends ConfigFormBase {
 
       $form['format'][$element_id] = [
         '#type' => 'select',
-        '#title' => new FormattableMarkup('@label (@id)', ['@label' => $element_plugin_label, '@id' => $element_id]),
+        '#title' => new FormattableMarkup('@label (@id)', ['@label' => $element_plugin_label, '@id' => str_replace('yamlform_', '', $element_id)]),
         '#description' => $this->t('Defaults to: %value', ['%value' => $default_format_label]),
         '#options' => $formats,
         '#default_value' => $config->get("format.$element_id"),
       ];
     }
+
     // Mail.
     $form['mail'] = [
       '#type' => 'details',
       '#title' => $this->t('Email default settings'),
-      '#open' => TRUE,
+      '#open' => FALSE,
       '#tree' => TRUE,
     ];
     $form['mail']['default_from_mail']  = [
@@ -323,16 +424,16 @@ class YamlFormAdminSettingsForm extends ConfigFormBase {
       '#default_value' => $config->get('mail.default_subject'),
     ];
     $form['mail']['default_body_text']  = [
-      '#type' => 'textarea',
+      '#type' => 'yamlform_codemirror',
+      '#mode' => 'text',
       '#title' => $this->t('Default email body (Plain text)'),
-      "#rows" => 10,
       '#required' => TRUE,
       '#default_value' => $config->get('mail.default_body_text'),
     ];
     $form['mail']['default_body_html']  = [
-      '#type' => 'textarea',
+      '#type' => 'yamlform_codemirror',
+      '#mode' => 'html',
       '#title' => $this->t('Default email body (HTML)'),
-      "#rows" => 10,
       '#required' => TRUE,
       '#default_value' => $config->get('mail.default_body_html'),
     ];
@@ -342,6 +443,7 @@ class YamlFormAdminSettingsForm extends ConfigFormBase {
         'yamlform',
         'yamlform-submission',
       ],
+      '#click_insert' => FALSE,
       '#dialog' => TRUE,
     ];
 
@@ -351,7 +453,7 @@ class YamlFormAdminSettingsForm extends ConfigFormBase {
     $form['export'] = [
       '#type' => 'details',
       '#title' => $this->t('Export default settings'),
-      '#open' => TRUE,
+      '#open' => FALSE,
     ];
     $this->submissionExporter->buildForm($form, $export_form_state);
 
@@ -359,24 +461,27 @@ class YamlFormAdminSettingsForm extends ConfigFormBase {
     $form['batch'] = [
       '#type' => 'details',
       '#title' => $this->t('Batch settings'),
-      '#open' => TRUE,
+      '#open' => FALSE,
       '#tree' => TRUE,
     ];
     $form['batch']['default_batch_export_size'] = [
       '#type' => 'number',
       '#title' => $this->t('Batch export size'),
+      '#min' => 1,
       '#required' => TRUE,
       '#default_value' => $config->get('batch.default_batch_export_size'),
     ];
     $form['batch']['default_batch_update_size'] = [
       '#type' => 'number',
       '#title' => $this->t('Batch update size'),
+      '#min' => 1,
       '#required' => TRUE,
       '#default_value' => $config->get('batch.default_batch_update_size'),
     ];
     $form['batch']['default_batch_delete_size'] = [
       '#type' => 'number',
       '#title' => $this->t('Batch delete size'),
+      '#min' => 1,
       '#required' => TRUE,
       '#default_value' => $config->get('batch.default_batch_delete_size'),
     ];
@@ -385,22 +490,66 @@ class YamlFormAdminSettingsForm extends ConfigFormBase {
     $form['test'] = [
       '#type' => 'details',
       '#title' => $this->t('Test settings'),
-      '#open' => TRUE,
+      '#open' => FALSE,
       '#tree' => TRUE,
     ];
     $form['test']['types'] = [
-      '#type' => 'yamlform_codemirror_yaml',
-      '#title' => $this->t('Test data by input type'),
+      '#type' => 'yamlform_codemirror',
+      '#mode' => 'yaml',
+      '#title' => $this->t('Test data by element type'),
       '#description' => $this->t("Above test data is keyed by FAPI element #type."),
       '#default_value' => $config->get('test.types'),
     ];
     $form['test']['names'] = [
-      '#type' => 'yamlform_codemirror_yaml',
-      '#title' => $this->t('Test data by input name'),
-      '#description' => $this->t("Above test data is keyed by full or partial input names. For example, Using 'zip' will populate fields that are named 'zip' and 'zip_code' but not 'zipcode' or 'zipline'."),
+      '#type' => 'yamlform_codemirror',
+      '#mode' => 'yaml',
+      '#title' => $this->t('Test data by element name'),
+      '#description' => $this->t("Above test data is keyed by full or partial element names. For example, Using 'zip' will populate fields that are named 'zip' and 'zip_code' but not 'zipcode' or 'zipline'."),
       '#default_value' => $config->get('test.names'),
     ];
 
+    // UI.
+    $form['ui'] = [
+      '#type' => 'details',
+      '#title' => $this->t('User interface settings'),
+      '#open' => FALSE,
+      '#tree' => TRUE,
+    ];
+    $form['ui']['video_display'] = [
+      '#type' => 'select',
+      '#title' => $this->t('Video display'),
+      '#description' => $this->t('Controls how videos are displayed in inline help and within the global help section.'),
+      '#options' => [
+        'dialog' => $this->t('Dialog'),
+        'link' => $this->t('External link'),
+        'hidden' => $this->t('Hidden'),
+      ],
+      '#default_value' => $config->get('ui.video_display'),
+    ];
+    $form['ui']['details_save'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Save details open/close state'),
+      '#description' => $this->t('If checked, all <a href=":details_href">Details</a> element\'s open/close state will be saved using <a href=":local_storage_href">Local Storage</a>.', [
+        ':details_href' => 'http://www.w3schools.com/tags/tag_details.asp',
+        ':local_storage_href' => 'http://www.w3schools.com/html/html5_webstorage.asp',
+      ]),
+      '#return_value' => TRUE,
+      '#default_value' => $config->get('ui.details_save'),
+    ];
+    $form['ui']['dialog_disabled'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Disable dialogs'),
+      '#description' => $this->t('If checked, all modal dialogs (ie popups) will be disabled.'),
+      '#return_value' => TRUE,
+      '#default_value' => $config->get('ui.dialog_disabled'),
+    ];
+    $form['ui']['html_editor_disabled'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Disable HTML editor'),
+      '#description' => $this->t('If checked, all HTML editor will be disabled.'),
+      '#return_value' => TRUE,
+      '#default_value' => $config->get('ui.html_editor_disabled'),
+    ];
     return parent::buildForm($form, $form_state);
   }
 
@@ -410,22 +559,24 @@ class YamlFormAdminSettingsForm extends ConfigFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $settings = $form_state->getValue('page')
       + $form_state->getValue('form')
+      + $form_state->getValue('wizard')
       + $form_state->getValue('preview')
       + $form_state->getValue('draft')
       + $form_state->getValue('confirmation')
       + $form_state->getValue('limit');
 
-    // Trigger update all YAML form paths if the 'default_page_base_path' changed.
+    // Trigger update all form paths if the 'default_page_base_path' changed.
     $update_paths = ($settings['default_page_base_path'] != $this->config('yamlform.settings')->get('settings.default_page_base_path')) ? TRUE : FALSE;
 
     $config = $this->config('yamlform.settings');
     $config->set('settings', $settings);
-    $config->set('mail', $form_state->getValue('mail'));
-    $config->set('batch', $form_state->getValue('batch'));
-    $config->set('export', $this->submissionExporter->getFormValues($form_state));
-    $config->set('test', $form_state->getValue('test'));
-    $config->set('inputs', $form_state->getValue('inputs') + $config->get('inputs'));
+    $config->set('elements', ($form_state->getValue('elements') ?: []) + ($config->get('elements') ?: []));
     $config->set('format', $form_state->getValue('format'));
+    $config->set('mail', $form_state->getValue('mail'));
+    $config->set('export', $this->submissionExporter->getFormValues($form_state));
+    $config->set('batch', $form_state->getValue('batch'));
+    $config->set('test', $form_state->getValue('test'));
+    $config->set('ui', $form_state->getValue('ui'));
     $config->save();
 
     if ($update_paths) {

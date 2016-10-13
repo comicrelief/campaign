@@ -4,11 +4,5 @@ description: 'Module with a dependency in the experimental package.'
 package: Testing
 dependencies:
   - experimental_module_test
-# version: VERSION
-# core: 8.x
-
-# Information added by Drupal.org packaging script on 2016-09-21
-version: '8.1.10'
-core: '8.x'
-project: 'drupal'
-datestamp: 1474479093
+version: VERSION
+core: 8.x

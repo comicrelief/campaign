@@ -4,6 +4,7 @@ entity.yamlform.collection:
   title: 'Forms'
   route_name: entity.yamlform.collection
   base_route: entity.yamlform.collection
+  weight: -10
 
 entity.yamlform_submission.collection:
   title: 'Results'
@@ -67,30 +68,35 @@ entity.yamlform.edit_form:
   route_name: entity.yamlform.edit_form
   base_route: entity.yamlform.canonical
 
-entity.yamlform.edit_form_inputs:
-  title: 'Inputs'
+entity.yamlform.edit_form_elements:
+  title: 'Elements'
   route_name: entity.yamlform.edit_form
   parent_id: entity.yamlform.edit_form
+  weight: 0
 
 entity.yamlform.edit_form_settings:
   title: 'Settings'
   route_name: entity.yamlform.settings_form
   parent_id: entity.yamlform.edit_form
+  weight: 10
 
 entity.yamlform.edit_form_access:
   title: 'Access'
   route_name: entity.yamlform.access_form
   parent_id: entity.yamlform.edit_form
+  weight: 11
 
 entity.yamlform.edit_form_handlers:
   title: 'Emails / Handlers'
   route_name: entity.yamlform.handlers_form
   parent_id: entity.yamlform.edit_form
+  weight: 12
 
 entity.yamlform.edit_form_third_party_settings:
   title: 'Third party'
   route_name: entity.yamlform.third_party_settings_form
   parent_id: entity.yamlform.edit_form
+  weight: 13
 
 entity.yamlform.results:
   title: 'Results'
@@ -117,11 +123,6 @@ entity.yamlform.results_clear:
   route_name: entity.yamlform.results_clear
   parent_id: entity.yamlform.results
 
-entity.yamlform.export_form:
-  title: 'Export'
-  route_name: entity.yamlform.export_form
-  base_route: entity.yamlform.canonical
-
 # Submission
 
 entity.yamlform_submission.canonical:
@@ -132,6 +133,11 @@ entity.yamlform_submission.canonical:
 entity.yamlform_submission.html:
   title: 'HTML'
   route_name: entity.yamlform_submission.canonical
+  parent_id: entity.yamlform_submission.canonical
+
+entity.yamlform_submission.table:
+  title: 'Table'
+  route_name: entity.yamlform_submission.table
   parent_id: entity.yamlform_submission.canonical
 
 entity.yamlform_submission.text:
@@ -149,6 +155,11 @@ entity.yamlform_submission.edit_form:
   route_name: entity.yamlform_submission.edit_form
   base_route: entity.yamlform_submission.canonical
 
+entity.yamlform_submission.notes_form:
+  title: 'Notes'
+  route_name: entity.yamlform_submission.notes_form
+  base_route: entity.yamlform_submission.canonical
+
 entity.yamlform_submission.resend_form:
   title: 'Resend'
   route_name: entity.yamlform_submission.resend_form
@@ -158,3 +169,15 @@ entity.yamlform_submission.delete_form:
   title: 'Delete'
   route_name: entity.yamlform_submission.delete_form
   base_route: entity.yamlform_submission.canonical
+
+# User Submission
+
+entity.yamlform.user.submission:
+  title: 'View'
+  route_name: entity.yamlform.user.submission
+  base_route: entity.yamlform.user.submission
+
+entity.yamlform.user.submission.edit:
+  title: 'Edit'
+  route_name: entity.yamlform.user.submission.edit
+  base_route: entity.yamlform.user.submission

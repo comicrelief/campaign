@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies: {  }
+id: size
+label: Size
+options: |
+  Extra Small: Extra Small
+  Small: Small
+  Medium: Medium
+  Large: Large
+  Extra Large: Extra Large

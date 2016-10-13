@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\YamlFormSubmissionViewBuilder.
- */
-
 namespace Drupal\yamlform;
 
 use Drupal\Core\Access\AccessResultInterface;
@@ -15,13 +10,12 @@ use Drupal\Core\Entity\EntityViewBuilder;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Utility\Token;
-use Drupal\yamlform\Plugin\YamlFormElement\ContainerBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Render controller for YAML form submissions.
+ * Render controller for form submissions.
  */
-class YamlFormSubmissionViewBuilder extends EntityViewBuilder {
+class YamlFormSubmissionViewBuilder extends EntityViewBuilder implements YamlFormSubmissionViewBuilderInterface {
 
   /**
    * The config factory.
@@ -33,23 +27,30 @@ class YamlFormSubmissionViewBuilder extends EntityViewBuilder {
   /**
    * The token handler.
    *
-   * @var \Drupal\Core\Utility\Token $token
+   * @var \Drupal\Core\Utility\Token
    */
   protected $token;
 
   /**
-   * The YAML form handler manager service.
+   * Form request handler.
    *
-   * @var \Drupal\yamlform\YamlFormHandlerManager
+   * @var \Drupal\yamlform\YamlFormRequestInterface
    */
-  protected $yamlFormHandlerManager;
+  protected $requestManager;
 
   /**
-   * The YAML form element manager service.
+   * The form handler manager service.
    *
-   * @var \Drupal\yamlform\YamlFormElementManager
+   * @var \Drupal\yamlform\YamlFormHandlerManagerInterface
    */
-  protected $yamlFormElementManager;
+  protected $handlerManager;
+
+  /**
+   * The form element manager service.
+   *
+   * @var \Drupal\yamlform\YamlFormElementManagerInterface
+   */
+  protected $elementManager;
 
   /**
    * Constructs a new YamlFormSubmissionViewBuilder.
@@ -64,17 +65,20 @@ class YamlFormSubmissionViewBuilder extends EntityViewBuilder {
    *   The config factory.
    * @param \Drupal\Core\Utility\Token $token
    *   The token handler.
-   * @param \Drupal\yamlform\YamlFormHandlerManager $yamlform_handler_manager
-   *   The YAML form handler manager service.
-   * @param \Drupal\yamlform\YamlFormElementManager $yamlform_element_manager
-   *   The YAML form element manager service.
+   * @param \Drupal\yamlform\YamlFormRequestInterface $yamlform_request
+   *   The form request handler.
+   * @param \Drupal\yamlform\YamlFormHandlerManagerInterface $handler_manager
+   *   The form handler manager service.
+   * @param \Drupal\yamlform\YamlFormElementManagerInterface $element_manager
+   *   The form element manager service.
    */
-  public function __construct(EntityTypeInterface $entity_type, EntityManagerInterface $entity_manager, LanguageManagerInterface $language_manager, ConfigFactoryInterface $config_factory, Token $token, YamlFormHandlerManager $yamlform_handler_manager, YamlFormElementManager $yamlform_element_manager) {
+  public function __construct(EntityTypeInterface $entity_type, EntityManagerInterface $entity_manager, LanguageManagerInterface $language_manager, ConfigFactoryInterface $config_factory, Token $token, YamlFormRequestInterface $yamlform_request, YamlFormHandlerManagerInterface $handler_manager, YamlFormElementManagerInterface $element_manager) {
     parent::__construct($entity_type, $entity_manager, $language_manager);
     $this->configFactory = $config_factory;
     $this->token = $token;
-    $this->yamlFormHandlerManager = $yamlform_handler_manager;
-    $this->yamlFormElementManager = $yamlform_element_manager;
+    $this->requestManager = $yamlform_request;
+    $this->handlerManager = $handler_manager;
+    $this->elementManager = $element_manager;
   }
 
   /**
@@ -87,6 +91,7 @@ class YamlFormSubmissionViewBuilder extends EntityViewBuilder {
       $container->get('language_manager'),
       $container->get('config.factory'),
       $container->get('token'),
+      $container->get('yamlform.request'),
       $container->get('plugin.manager.yamlform.handler'),
       $container->get('plugin.manager.yamlform.element')
     );
@@ -96,79 +101,46 @@ class YamlFormSubmissionViewBuilder extends EntityViewBuilder {
    * {@inheritdoc}
    */
   public function buildComponents(array &$build, array $entities, array $displays, $view_mode) {
-    /** @var \Drupal\node\NodeInterface[] $entities */
+    /** @var \Drupal\yamlform\YamlFormSubmissionInterface[] $entities */
+    /** @var \Drupal\yamlform\YamlFormSubmissionInterface $yamlform_submission */
     if (empty($entities)) {
       return;
     }
-
+    $source_entity = $this->requestManager->getCurrentSourceEntity('yamlform_submission');
     parent::buildComponents($build, $entities, $displays, $view_mode);
 
-    switch ($view_mode) {
-      case 'yaml':
-      case 'text':
-        foreach ($entities as $id => $entity) {
-          // Submission.
-          $build[$id]['submission'] = [
-            '#theme' => 'yamlform_submission_' . $view_mode,
-            '#yamlform_submission' => $entity,
-          ];
-        }
-        break;
+    // If the view mode is default then display the HTML version.
+    if ($view_mode == 'default') {
+      $view_mode = 'html';
+    }
 
-      default:
-        foreach ($entities as $id => $entity) {
-          // Navigation.
-          $build[$id]['navigation'] = [
-            '#theme' => 'yamlform_submission_navigation',
-            '#yamlform_submission' => $entity,
-          ];
-
-          // Information.
-          $build[$id]['information'] = [
-            '#theme' => 'yamlform_submission_information',
-            '#yamlform_submission' => $entity,
-          ];
-
-          // Submission.
-          $build[$id]['submission'] = [
-            '#theme' => 'yamlform_submission_html',
-            '#yamlform_submission' => $entity,
-          ];
-        }
-        break;
-
+    // Build submission display.
+    foreach ($entities as $id => $yamlform_submission) {
+      $build[$id]['submission'] = [
+        '#theme' => 'yamlform_submission_' . $view_mode,
+        '#yamlform_submission' => $yamlform_submission,
+        '#source_entity' => $source_entity,
+      ];
     }
   }
 
   /**
-   * Build element display items from inputs and submitted data.
-   *
-   * @param array $elements
-   *   A render array of form elements.
-   * @param array $data
-   *   Submission data.
-   * @param array $options
-   *   - excluded_inputs: An array of inputs to be excluded.
-   *   - email: Format element to be send via email.
-   * @param string $format
-   *   Output format set to html or text.
-   *
-   * @return array
-   *   A render array displaying the submitted values.
+   * {@inheritdoc}
    */
-  public function buildInputs(array $elements, array $data, array $options = [], $format = 'html') {
+  public function buildElements(array $elements, array $data, array $options = [], $format = 'html') {
     $build_method = 'build' . ucfirst($format);
     $build = [];
 
     foreach ($elements as $key => $element) {
-      if (!is_array($element) || Element::property($key) || !$this->isVisibleElement($element) || isset($options['excluded_inputs'][$key])) {
+      if (!is_array($element) || Element::property($key) || !$this->isVisibleElement($element) || isset($options['excluded_elements'][$key])) {
         continue;
       }
 
-      $element += ['#type' => NULL];
-      $yamlform_element = $this->yamlFormElementManager->createInstance($element['#type']);
-      if ($yamlform_element instanceof ContainerBase) {
-        $children = $this->buildInputs($element, $data, $options, $format);
+      $plugin_id = $this->elementManager->getElementPluginId($element);
+      /** @var \Drupal\yamlform\YamlFormElementInterface $yamlform_element */
+      $yamlform_element = $this->elementManager->createInstance($plugin_id);
+      if ($yamlform_element->isContainer($element)) {
+        $children = $this->buildElements($element, $data, $options, $format);
         if ($children) {
           // Add #first and #last property to $children.
           // This is used to remove return from #last with multiple lines of
@@ -185,16 +157,58 @@ class YamlFormSubmissionViewBuilder extends EntityViewBuilder {
           if (isset($children[$last_key]['#options'])) {
             $children[$last_key]['#options']['last'] = TRUE;
           }
-
-          // Build the container.
-          $build[$key] = $yamlform_element->$build_method($element, $children, $options);
+        }
+        // Build the container but make sure it is not empty. Containers
+        // (ie details, fieldsets, etc...) without children will be empty
+        // but markup should always be rendered.
+        if ($build_container = $yamlform_element->$build_method($element, $children, $options)) {
+          $build[$key] = $build_container;
         }
       }
-      elseif (isset($data[$key]) && $data[$key] !== '') {
-        $build[$key] = $yamlform_element->$build_method($element, $data[$key], $options);
+      else {
+        $value = isset($data[$key]) ? $data[$key] : NULL;
+        if ($build_element = $yamlform_element->$build_method($element, $value, $options)) {
+          $build[$key] = $build_element;
+        }
       }
     }
     return $build;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function buildTable(array $elements, array $data, array $options = []) {
+    $rows = [];
+    foreach ($elements as $key => $element) {
+      if (isset($options['excluded_elements'][$key])) {
+        continue;
+      }
+
+      $plugin_id = $this->elementManager->getElementPluginId($element);
+      /** @var \Drupal\yamlform\YamlFormElementInterface $yamlform_element */
+      $yamlform_element = $this->elementManager->createInstance($plugin_id);
+
+      $title = $element['#admin_title'] ?: $element['#title'] ?: '(' . $key . ')';
+      $value = (isset($data[$key])) ? $yamlform_element->formatHtml($element, $data[$key], $options) : '';
+      $rows[] = [
+        [
+          'header' => TRUE,
+          'data' => $title,
+        ],
+        [
+          'data' => (is_string($value)) ? ['#markup' => $value] : $value,
+        ],
+      ];
+    }
+
+    return [
+      '#type' => 'table',
+      '#rows' => $rows,
+      '#attributes' => [
+        'class' => ['yamlform-submission__table'],
+      ],
+    ];
   }
 
   /**
@@ -209,9 +223,8 @@ class YamlFormSubmissionViewBuilder extends EntityViewBuilder {
    * @return bool
    *   TRUE if the element is visible, otherwise FALSE.
    */
-  public function isVisibleElement(array $element) {
-    return (isset($element['#type']))
-      && (!isset($element['#access']) || (($element['#access'] instanceof AccessResultInterface && $element['#access']->isAllowed()) || ($element['#access'] === TRUE)));
+  protected function isVisibleElement(array $element) {
+    return (!isset($element['#access']) || (($element['#access'] instanceof AccessResultInterface && $element['#access']->isAllowed()) || ($element['#access'] === TRUE)));
   }
 
 }

@@ -2,3 +2,4 @@
 site
 gh-pages
 *.patch
+interdiff-*.txt

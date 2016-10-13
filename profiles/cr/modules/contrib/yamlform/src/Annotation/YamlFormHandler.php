@@ -1,17 +1,12 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\yamlform\Annotation\YamlFormHandler.
- */
-
 namespace Drupal\yamlform\Annotation;
 
 use Drupal\Component\Annotation\Plugin;
 use Drupal\yamlform\YamlFormHandlerInterface;
 
 /**
- * Defines a YAML form handler annotation object.
+ * Defines a form handler annotation object.
  *
  * Plugin Namespace: Plugin\YamlFormHandler.
  *
@@ -36,27 +31,36 @@ class YamlFormHandler extends Plugin {
   public $id;
 
   /**
-   * The human-readable name of the YAML form handler.
-   *
-   * @ingroup plugin_translatable
+   * The human-readable name of the form handler.
    *
    * @var \Drupal\Core\Annotation\Translation
+   *
+   * @ingroup plugin_translatable
    */
   public $label;
 
   /**
-   * A brief description of the YAML form handler.
+   * The category in the admin UI where the block will be listed.
    *
-   * This will be shown when adding or configuring this YAML form handler.
+   * @var \Drupal\Core\Annotation\Translation
    *
    * @ingroup plugin_translatable
+   */
+  public $category = '';
+
+  /**
+   * A brief description of the form handler.
    *
-   * @var \Drupal\Core\Annotation\Translation (optional)
+   * This will be shown when adding or configuring this form handler.
+   *
+   * @var \Drupal\Core\Annotation\Translation
+   *
+   * @ingroup plugin_translatable
    */
   public $description = '';
 
   /**
-   * The maximum number of instances allowed for this YAML form handler.
+   * The maximum number of instances allowed for this form handler.
    *
    * Possible values are positive integers or
    * \Drupal\yamlform\YamlFormHandlerInterface::CARDINALITY_UNLIMITED or
@@ -67,7 +71,7 @@ class YamlFormHandler extends Plugin {
   public $cardinality = YamlFormHandlerInterface::CARDINALITY_UNLIMITED;
 
   /**
-   * Notifies the YAML form that this handler processes results.
+   * Notifies the form that this handler processes results.
    *
    * When set to TRUE, 'Disable saving of submissions.' can be set.
    *
