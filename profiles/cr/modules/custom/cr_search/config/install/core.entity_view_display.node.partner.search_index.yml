@@ -11,7 +11,6 @@ dependencies:
     - field.field.node.partner.field_partner_meta_tags
     - field.field.node.partner.field_partner_website
     - node.type.partner
-    - responsive_image.styles.cr_listing_teaser
   module:
     - ds
     - link
