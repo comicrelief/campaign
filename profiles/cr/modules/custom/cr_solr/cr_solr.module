@@ -9,10 +9,6 @@ use \Drupal\search_api\IndexInterface;
 
 /**
  * Update documents.
- *
- * @param array $documents
- * @param IndexInterface $index
- * @param array $items
  */
 function cr_partner_search_api_solr_documents_alter(array $documents, IndexInterface $index, array $items) {
   foreach ($documents as $document) {
