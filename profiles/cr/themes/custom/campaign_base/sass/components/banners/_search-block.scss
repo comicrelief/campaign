@@ -1,5 +1,5 @@
 .search-block {
-	display: none;
+	// display: none; Always visible for now
   @include clearfix;
   text-align: center;
   background: $colour-white;
@@ -22,6 +22,10 @@
     @include breakpoint($screen-md) {
 	  	height: 80px;
 	  }
+	  &:focus,
+	  &:hover {
+	  	background-color: $colour-black;
+	  }
   }
   input[type=text] {
 	  width: 100%;
@@ -40,14 +44,10 @@
   	@include span(2);
   }
 }
-.search-block__form {
-  width: span(12);
+.search-block__form form{
   margin: 59px auto 40px;
   border-bottom: $colour-red 4px solid;
   @include clearfix;
-  @include breakpoint($screen-lg) {
-    width: span(8);
-  }
 }
 nav.menu--main {
 	.main-menu__icons-magnify {

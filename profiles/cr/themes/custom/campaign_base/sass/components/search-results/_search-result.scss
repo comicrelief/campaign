@@ -6,39 +6,11 @@
 //
 // Style guide: search-result
 
-.search-result__node {
-  .search-result__title h2 {
-    @include box-shadow(inset 10px -140px 81px -97px $colour-black);
-    right: 0;
-    bottom: 1px;
-    left: 0;
-    margin-bottom: 0;
-    padding: 80px 10px 10px;
-    a {
-      text-decoration: none;
-      color: $colour-white;
-      font-size: 16px;
-      font-weight: bold;
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-  /* Placeholder styles to make Basic Pages look 'okay'
-  in the Search view, seeing as there's no images to provide height */
-  &.search-result__node--page {
-    padding-bottom: 57%;
-    background-color: $colour-red;
-  }
-}
-
 .path-search {
   background-color: $colour-smoke-grey;
 }
 .search-result {
-  @include breakpoint($screen-md) {
-    width: 100%;
-  }
+  width: 100%;
   position: relative;
   display: inline-block;
   overflow: hidden;
@@ -50,10 +22,8 @@
   }
 }
 .search-result__image {
-  @include breakpoint($screen-md) {
-    @include span(5);
-    margin-left: 0;
-  }
+  @include span(5);
+  margin-left: 0;
   img {
     display: block;
     width: 100%;
@@ -61,37 +31,39 @@
   }
 }
 .search-result__content-wrapper {
-  @include breakpoint($screen-md) {
-    @include span(7 wider);
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: calc(2 * #{gutter()});
-    height: 100%;
-    margin-right: 0;
-    &.search-result__content-wrapper--no-image {
-      @include span(12);
+  @include span(7 wider);
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: calc(2 * #{gutter()});
+  height: 100%;
+  margin-right: 0;
+  &.search-result__content-wrapper--no-image {
+    @include span(12);
+    position: relative;
+    .search-result__content {
+      @include translateY(0);
       position: relative;
-      .search-result__content {
-        @include translateY(0);
-        position: relative;
-        top: 0;
-      }
+      top: 0;
     }
   }
-  position: relative;
+  // position: relative;
   height: 100%;
   padding: 30px;
 }
 .search-result__content {
-  @include breakpoint($screen-md) {
-    @include translateY(-50%);
-    position: absolute;
-    top: 50%;
-    right: 0;
-    left: 0;
-    width: calc(100% - 40px);
-    margin: auto;
+  @include translateY(-50%);
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  width: calc(100% - 40px);
+  margin: auto;
+}
+.search-result__body {
+  display: none;
+  @include breakpoint($screen-md, $no-query: true) {
+    display: block;
   }
 }
 .search-result__tag {
@@ -114,18 +86,18 @@
     @extend p;
     @extend .font--xlarge;
     .path-search & {
-      margin: 10px 0 0;
       display: block;
-      text-align: center;
+      text-align: left;
       width: 100%;
       float: none;
+      margin-bottom: 0;
       @include breakpoint($screen-md, $no-query: true) {
-        margin: 54px 0 32px;
         width: auto;
       }
     }
   }
   .search__total {
+    margin-bottom: 5px;
     .path-search & {
       @include breakpoint($screen-md, $no-query: true) {
         display: inline-block;
@@ -139,4 +111,7 @@
       }
     }
   }
+}
+.view-header {
+  margin: 20px 0;
 }
