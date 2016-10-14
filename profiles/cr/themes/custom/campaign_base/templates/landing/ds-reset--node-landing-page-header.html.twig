@@ -6,7 +6,7 @@
 	'promo-header', layoutClass]
 %}
 {% set copy_position = field_landing_copy_position_alig['#items'].value %}
-{% if not desk_img %}{% set header_class = header_class|merge(["no-img"]) %}{% endif %}
+{% if not desk_img %}{% set header_class = header_class|merge(["promo-header--no-image"]) %}{% endif %}
 
 <header class="{{ header_class|join(" ") }} contextual-region">
 	{{ title_suffix.contextual_links }}
