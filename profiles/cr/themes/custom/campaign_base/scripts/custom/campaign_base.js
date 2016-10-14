@@ -5,6 +5,14 @@
     $('select').selectmenu({ style:'popup', width: '100%' });
     // Activate lighcase
     $('a[rel^=lightcase]').lightcase();
+
+    // load kids game
+    $(".play-game").click(function(event){
+        event.preventDefault();
+        $('.play-game').hide();
+        var iframe = $("#play-iframe");
+        iframe.attr("src", iframe.data("src"));
+    });
 	  
 	  newPosition();
 	  newHeight();
