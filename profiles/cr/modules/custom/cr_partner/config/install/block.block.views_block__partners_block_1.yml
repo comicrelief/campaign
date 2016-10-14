@@ -7,8 +7,6 @@ dependencies:
     - ctools
     - system
     - views
-  theme:
-    - campaign_base
 id: views_block__partners_block_1
 theme: campaign_base
 region: content
