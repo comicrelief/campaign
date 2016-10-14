@@ -14,7 +14,7 @@ Feature: Search
   @default-content
   Scenario: Search in the DB Boppers
     Given I am on "search_db?text=Boppers"
-    Then I should see the link "Sainsbury"
+    Then I should see the text "Sainsbury's"
 
   @default-content
   Scenario: Search in the DB Vitkauskas
