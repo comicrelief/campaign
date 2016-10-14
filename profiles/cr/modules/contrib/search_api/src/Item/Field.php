@@ -7,7 +7,7 @@ use Drupal\search_api\Entity\Index;
 use Drupal\search_api\IndexInterface;
 use Drupal\search_api\Processor\ConfigurablePropertyInterface;
 use Drupal\search_api\SearchApiException;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 
 /**
  * Represents a field on a search item that can be indexed.
@@ -37,6 +37,13 @@ class Field implements \IteratorAggregate, FieldInterface {
    * @var string
    */
   protected $fieldIdentifier;
+
+  /**
+   * The field's original identifier.
+   *
+   * @var string
+   */
+  protected $originalFieldIdentifier;
 
   /**
    * The field's datasource's ID.
@@ -169,7 +176,7 @@ class Field implements \IteratorAggregate, FieldInterface {
    */
   public function __construct(IndexInterface $index, $field_identifier) {
     $this->index = $index;
-    $this->fieldIdentifier = $field_identifier;
+    $this->fieldIdentifier = $this->originalFieldIdentifier = $field_identifier;
   }
 
   /**
@@ -218,6 +225,28 @@ class Field implements \IteratorAggregate, FieldInterface {
    */
   public function getFieldIdentifier() {
     return $this->fieldIdentifier;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getOriginalFieldIdentifier() {
+    return $this->originalFieldIdentifier;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setFieldIdentifier($field_id) {
+    $this->fieldIdentifier = $field_id;
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function wasRenamed() {
+    return $this->fieldIdentifier != $this->originalFieldIdentifier;
   }
 
   /**

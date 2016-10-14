@@ -65,9 +65,9 @@ class EntityStringIdTest extends KernelTestBase {
 
     $this->installSchema('search_api', array(
       'search_api_item',
-      'search_api_task',
     ));
     $this->installEntitySchema('entity_test_string_id');
+    $this->installEntitySchema('search_api_task');
 
     // Do not use a batch for tracking the initial items after creating an
     // index when running the tests via the GUI. Otherwise, it seems Drupal's

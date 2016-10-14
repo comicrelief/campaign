@@ -6,6 +6,7 @@ use Drupal\Component\Utility\Html;
 use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Plugin\PluginFormInterface;
 use Drupal\Core\Url;
 use Drupal\search_api\Backend\BackendPluginManager;
 use Drupal\search_api\SearchApiException;
@@ -127,7 +128,7 @@ class ServerForm extends EntityForm {
     );
     $form['id'] = array(
       '#type' => 'machine_name',
-      '#default_value' => $server->id(),
+      '#default_value' => $server->isNew() ? NULL : $server->id(),
       '#maxlength' => 50,
       '#required' => TRUE,
       '#machine_name' => array(
@@ -160,6 +161,7 @@ class ServerForm extends EntityForm {
         '#options' => $backend_options,
         '#default_value' => $server->getBackendId(),
         '#required' => TRUE,
+        '#disabled' => !$server->isNew(),
         '#ajax' => array(
           'callback' => array(get_class($this), 'buildAjaxBackendConfigForm'),
           'wrapper' => 'search-api-backend-config-form',
@@ -196,36 +198,36 @@ class ServerForm extends EntityForm {
    *   The server that is being created or edited.
    */
   public function buildBackendConfigForm(array &$form, FormStateInterface $form_state, ServerInterface $server) {
-    $form['backend_config'] = array(
-      '#type' => 'container',
-      '#attributes' => array(
-        'id' => 'search-api-backend-config-form',
-      ),
-      '#tree' => TRUE,
-    );
-
+    $form['backend_config'] = array();
     if ($server->hasValidBackend()) {
       $backend = $server->getBackend();
-      if (($backend_form = $backend->buildConfigurationForm(array(), $form_state))) {
-        // If the backend plugin changed, notify the user.
-        if (!empty($form_state->getValues()['backend'])) {
-          drupal_set_message($this->t('Please configure the used backend.'), 'warning');
+      $form_state->set('backend', $backend->getPluginId());
+      if ($backend instanceof PluginFormInterface) {
+        if ($form_state->isRebuilding()) {
+          drupal_set_message($this->t('Please configure the selected backend.'), 'warning');
         }
+        // Attach the backend plugin configuration form.
+        $backend_form = isset($form['backend_config']) ? $form['backend_config'] : array();
+        $form['backend_config'] = $backend->buildConfigurationForm($backend_form, $form_state);
 
         // Modify the backend plugin configuration container element.
         $form['backend_config']['#type'] = 'details';
         $form['backend_config']['#title'] = $this->t('Configure %plugin backend', array('%plugin' => $backend->label()));
         $form['backend_config']['#description'] = $backend->getDescription();
         $form['backend_config']['#open'] = TRUE;
-        // Attach the backend plugin configuration form.
-        $form['backend_config'] += $backend_form;
       }
     }
     // Only notify the user of a missing backend plugin if we're editing an
     // existing server.
     elseif (!$server->isNew()) {
       drupal_set_message($this->t('The backend plugin is missing or invalid.'), 'error');
+      return;
     }
+    $form['backend_config'] += array('#type' => 'container');
+    $form['backend_config']['#attributes'] = array(
+      'id' => 'search-api-backend-config-form',
+    );
+    $form['backend_config']['#tree'] = TRUE;
   }
 
   /**
@@ -250,20 +252,25 @@ class ServerForm extends EntityForm {
 
     // Check if the backend plugin changed.
     $backend_id = $server->getBackendId();
-    if ($backend_id !== $form_state->getValues()['backend']) {
+    if ($backend_id != $form_state->get('backend')) {
       // This can only happen during initial server creation, since we don't
       // allow switching the backend afterwards. The user has selected a
       // different backend, so any values entered for the other backend should
       // be discarded.
-      // @todo Make sure this works both with and without AJAX.
-      $input = $form_state->getUserInput();
+      $input = &$form_state->getUserInput();
       $input['backend_config'] = array();
-      $form_state->set('input', $input);
+      $new_backend = $this->backendPluginManager->createInstance($form_state->getValues()['backend']);
+      if ($new_backend instanceof PluginFormInterface) {
+        $form_state->setRebuild();
+      }
     }
     // Check before loading the backend plugin so we don't throw an exception.
-    elseif ($form['backend_config']['#type'] == 'details' && $server->hasValidBackend()) {
-      $backend_form_state = new SubFormState($form_state, array('backend_config'));
-      $server->getBackend()->validateConfigurationForm($form['backend_config'], $backend_form_state);
+    elseif ($server->hasValidBackend()) {
+      $backend = $server->getBackend();
+      if ($backend instanceof PluginFormInterface) {
+        $backend_form_state = new SubFormState($form_state, array('backend_config'));
+        $backend->validateConfigurationForm($form['backend_config'], $backend_form_state);
+      }
     }
   }
 
@@ -276,9 +283,12 @@ class ServerForm extends EntityForm {
     /** @var \Drupal\search_api\ServerInterface $server */
     $server = $this->getEntity();
     // Check before loading the backend plugin so we don't throw an exception.
-    if ($form['backend_config']['#type'] == 'details' && $server->hasValidBackend()) {
-      $backend_form_state = new SubFormState($form_state, array('backend_config'));
-      $server->getBackend()->submitConfigurationForm($form['backend_config'], $backend_form_state);
+    if ($server->hasValidBackend()) {
+      $backend = $server->getBackend();
+      if ($backend instanceof PluginFormInterface) {
+        $backend_form_state = new SubFormState($form_state, array('backend_config'));
+        $backend->submitConfigurationForm($form['backend_config'], $backend_form_state);
+      }
     }
 
     return $server;

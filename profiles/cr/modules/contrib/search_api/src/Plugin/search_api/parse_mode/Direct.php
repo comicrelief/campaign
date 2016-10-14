@@ -21,4 +21,5 @@ class Direct extends ParseModePluginBase {
   public function parseInput($keys) {
     return $keys;
   }
+
 }

@@ -169,8 +169,8 @@ interface ProcessorInterface extends IndexPluginInterface {
   /**
    * Preprocesses the search index entity before it is saved.
    *
-   * This can, e.g., be used to make sure fields needed by this processor are
-   * enabled on the index.
+   * This can, for example, be used to make sure fields needed by this processor
+   * are enabled on the index.
    */
   public function preIndexSave();
 
