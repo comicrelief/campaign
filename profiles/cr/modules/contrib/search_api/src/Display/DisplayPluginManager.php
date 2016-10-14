@@ -17,9 +17,9 @@ use Drupal\Core\Plugin\DefaultPluginManager;
 class DisplayPluginManager extends DefaultPluginManager {
 
   /**
-   * Static cache for the display definitions.
+   * Static cache for the display plugins.
    *
-   * @var string[][]
+   * @var \Drupal\search_api\Display\DisplayInterface[]|null
    *
    * @see \Drupal\search_api\Display\DisplayPluginManager::getInstances()
    */

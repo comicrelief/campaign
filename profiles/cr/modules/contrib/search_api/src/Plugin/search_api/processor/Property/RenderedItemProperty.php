@@ -46,7 +46,7 @@ class RenderedItemProperty extends ConfigurablePropertyBase {
 
     $form['view_mode'] = array(
       '#type' => 'item',
-      '#description' => $this->t('You can choose the view modes to use for rendering the items of different datasources and bundles. We recommend using a dedicated view mode (e.g., the "Search index" view mode available by default for content) to make sure that only relevant data (especially no field labels) will be included in the index.'),
+      '#description' => $this->t('You can choose the view modes to use for rendering the items of different datasources and bundles. We recommend using a dedicated view mode (for example, the "Search index" view mode available by default for content) to make sure that only relevant data (especially no field labels) will be included in the index.'),
     );
 
     $options_present = FALSE;

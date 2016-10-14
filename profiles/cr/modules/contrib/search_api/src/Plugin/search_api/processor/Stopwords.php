@@ -5,7 +5,7 @@ namespace Drupal\search_api\Plugin\search_api\processor;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\search_api\Processor\FieldsProcessorPluginBase;
 use Drupal\search_api\Query\QueryInterface;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 
 /**
  * Allows you to define stopwords which will be ignored in searches.
@@ -15,6 +15,7 @@ use Drupal\search_api\Utility;
  *   label = @Translation("Stopwords"),
  *   description = @Translation("Allows you to define stopwords which will be ignored in searches. <strong>Caution:</strong> Only use after both 'Ignore case' and 'Tokenizer' have run."),
  *   stages = {
+ *     "pre_index_save" = 0,
  *     "preprocess_index" = -5,
  *     "preprocess_query" = -2,
  *   }

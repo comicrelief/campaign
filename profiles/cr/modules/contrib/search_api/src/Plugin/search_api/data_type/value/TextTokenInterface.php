@@ -42,4 +42,5 @@ interface TextTokenInterface {
    * @return $this
    */
   public function setBoost($boost);
+
 }

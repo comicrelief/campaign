@@ -104,8 +104,8 @@ interface ResultSetInterface extends \Traversable {
    * Returns the ignored search keys, if any.
    *
    * @return string[]
-   *   A numeric array of search keys that were ignored for this search
-   *   (e.g., because of being too short or stop words).
+   *   A numeric array of search keys that were ignored for this search (for
+   *   example, because of being too short or stop words).
    */
   public function getIgnoredSearchKeys();
 

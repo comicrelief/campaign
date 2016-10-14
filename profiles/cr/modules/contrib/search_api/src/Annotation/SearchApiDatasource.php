@@ -39,7 +39,7 @@ class SearchApiDatasource extends Plugin {
    *
    * @var \Drupal\Core\Annotation\Translation
    */
-  // @todo Use or remove.
+  // @todo Use or remove. See #2681273.
   public $description;
 
 }

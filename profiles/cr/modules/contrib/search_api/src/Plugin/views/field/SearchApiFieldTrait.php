@@ -2,13 +2,14 @@
 
 namespace Drupal\search_api\Plugin\views\field;
 
+use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\TypedData\ComplexDataInterface;
 use Drupal\Core\TypedData\DataReferenceInterface;
 use Drupal\Core\TypedData\ListInterface;
 use Drupal\search_api\Plugin\views\SearchApiHandlerTrait;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 use Drupal\views\Plugin\views\field\MultiItemsFieldHandlerInterface;
 use Drupal\views\ResultRow;
 
@@ -370,6 +371,9 @@ trait SearchApiFieldTrait {
                   if (!$value->access('view', $account)) {
                     continue;
                   }
+                  if ($value instanceof ContentEntityInterface && $value->hasTranslation($row->search_api_language)) {
+                    $typed_data = $value->getTranslation($row->search_api_language)->getTypedData();
+                  }
                 }
 
                 if ($typed_data instanceof ListInterface) {
@@ -382,10 +386,10 @@ trait SearchApiFieldTrait {
                 }
               }
               catch (\InvalidArgumentException $e) {
-                // This can easily happen, e.g., when requesting a field that
-                // only exists on a different bundle. Unfortunately, there is no
-                // ComplexDataInterface::hasProperty() method, so we can only
-                // catch and ignore the exception.
+                // This can easily happen, for example, when requesting a field
+                // that only exists on a different bundle. Unfortunately, there
+                // is no ComplexDataInterface::hasProperty() method, so we can
+                // only catch and ignore the exception.
               }
             }
           }

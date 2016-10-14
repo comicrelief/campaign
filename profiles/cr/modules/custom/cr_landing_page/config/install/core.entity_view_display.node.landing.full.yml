@@ -56,17 +56,6 @@ third_party_settings:
             region: ds_content
             uuid: 0df3b443-cd24-4f55-be00-d27e656349c6
             weight: 3
-          744a19da-dc2f-4dc5-b448-26059eca9802:
-            id: 'views_block:partners-block_1'
-            label: ''
-            provider: views
-            label_display: '0'
-            views_label: ''
-            items_per_page: none
-            context_mapping: {  }
-            region: ds_content
-            uuid: 744a19da-dc2f-4dc5-b448-26059eca9802
-            weight: 2
         id: panels_variant
         uuid: 07727bfe-7661-4185-a418-24b2dd3f797d
         label: ''
