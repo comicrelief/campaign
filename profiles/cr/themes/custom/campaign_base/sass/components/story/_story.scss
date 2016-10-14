@@ -6,7 +6,7 @@
 //
 // Style guide: Story
 
-#kss-node .kss-main {
+/* #kss-node .kss-main {
   margin: 0 !important;
   width: 100% !important;
   padding: 0 !important;
@@ -27,7 +27,7 @@
 
 .kss-modifier__wrapper {
   padding: 0 !important;
-}
+} */
 
 
 .paragraph.story {
@@ -41,11 +41,15 @@
 
   .story__beneficiary-wrapper,
   .story__fundraiser-wrapper {
-
     @include span(12);
 
     @include breakpoint($screen-md) {
       @include span(6);
+    }
+
+    .story__fundraiser-title,
+    .story__beneficiary-title {
+      margin: 40px 0 10px;
     }
 
     .story__fundraiser-image,
@@ -58,6 +62,56 @@
       @include breakpoint($screen-lg) {
         width: 50%;
       }
+    }
+
+    .story__fundraiser-copy,
+    .story__beneficiary-copy {
+      padding: 0 25px;
+
+      h3 {
+        font-size: 60px; line-height: 50px; margin-bottom: 0;
+        font-family: $font-medium;
+      }
+
+      span {
+        font-size: 18px; line-height: 18px;
+        font-family: $font-black;
+      }
+
+      p {
+        font-size: 13px; line-height: 19px;
+      }
+    }
+  }
+
+  .story__fundraiser-wrapper {
+    //something
+  }
+
+  .story__beneficiary-wrapper {
+
+    background-color: #051d37;
+    text-align: center;
+
+    h3, p, span {
+      color: #21d2da;
+    }
+
+    @include breakpoint($screen-md-only) {
+      display: table;
+
+      .story__beneficiary-image,
+      .story__beneficiary-copy {
+        float: none;
+      }
+
+      .story__beneficiary-image {
+        display: table-header-group;
+      }
+    }
+
+    @include breakpoint($screen-lg) {
+
     }
   }
 }
