@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_partner_weight
+    - node.type.partner
+  module:
+    - options
+id: node.partner.field_partner_weight
+field_name: field_partner_weight
+entity_type: node
+bundle: partner
+label: 'Partner weight'
+description: 'Used to order partners within the ''Partners'' view;; the lower the number, the nearer to the start of the row the partner will be.'
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings: {  }
+field_type: list_integer
