@@ -1,8 +1,52 @@
 .related-articles__wrapper {
-	padding: 60px;
+	padding: $row-padding--sm 0;
 	h2 {
 		color: $colour-white;
 		text-align: center;
 	}
+	.related-articles__content {
+		padding: calc(4 * #{gutter()});
+		.related-articles__item {
+			display: inline-block;
+			margin-bottom: calc(4 * #{gutter()});
+			width: 100%;
+		}
+	}
+	@include breakpoint($screen-md){
+		padding: $row-padding--md;
 
+		.related-articles__content {
+			margin: 0px;
+			.related-articles__item {
+				position:relative;
+				background-color: $colour-white;
+				.article-teaser{
+					height: 100%;
+					.article-teaser__image, .article-teaser__video{
+						@include span(5);
+    				margin-left: 0;
+    				img {
+    					display:block;
+    				}
+					}
+					.article-teaser__content-wrapper {
+						@include span(7);
+						display: inline-block;
+						padding: 0px;
+						height:100%;
+						.article-teaser__content{
+							position: absolute;
+							padding: 0px;
+							top: 50%;
+							transform: translateY(-50%);
+						}
+					}
+				}
+			}
+		}
+	}
 }
+
+
+
+
