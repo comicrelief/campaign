@@ -22,3 +22,10 @@ function cr_social_social_links_alter($links) {
 
   return $links;
 }
+
+/**
+ * Implements hook_page_attachments().
+ */
+function cr_social_page_attachments(array &$attachments) {
+  $attachments['#attached']['library'][] = 'cr_social/cr_social';
+}
