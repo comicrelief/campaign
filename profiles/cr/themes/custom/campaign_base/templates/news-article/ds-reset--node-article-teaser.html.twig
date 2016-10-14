@@ -6,16 +6,19 @@
 #}
 
 <article class = 'article-teaser'>
-	<div class ='article-teaser__image'>
+	{% if field_article_image %}
+		<div class ='article-teaser__image'>
      	{{ field_article_image }}
     </div>
+  {% elseif field_video_embed %}
     <div class ='article-teaser__video'>
       {{ field_video_embed }}
     </div>
-    <div class = 'article-teaser__header'>
-    	<span class ='article-teaser__date'> 
-     		{{ field_article_publish_date }}
-	    </span>
-	    {{ node_title }}
-    <div>
+  {% endif %}
+  <div class = 'article-teaser__header'>
+    <span class ='article-teaser__date'> 
+     	{{ field_article_publish_date }}
+	  </span>
+	  {{ node_title }}
+  <div>
 </article>

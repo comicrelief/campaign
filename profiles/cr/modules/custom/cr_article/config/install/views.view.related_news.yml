@@ -268,7 +268,7 @@ display:
           empty: false
           tokenize: true
           content:
-            value: '<p class="type--centred"><a href="/whats-going-on/{{ arguments.tid }}" class="btn btn-red btn--fixed-width">See more</a></p>'
+            value: '<span class="type--centred"><a href="/whats-going-on/{{ arguments.tid }}" class="btn btn-red btn--fixed-width">See more</a></span>'
             format: full_html
           plugin_id: text
       empty: {  }

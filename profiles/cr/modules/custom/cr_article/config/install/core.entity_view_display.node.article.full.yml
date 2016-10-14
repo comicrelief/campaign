@@ -125,11 +125,12 @@ third_party_settings:
       library: ''
       disable_css: false
       settings:
-        wrappers: null
-        outer_wrapper: null
+        wrappers:
+          ds_content: div
+        outer_wrapper: ''
         attributes: ''
-        link_attribute: null
-        link_custom: null
+        link_attribute: ''
+        link_custom: ''
         classes:
           layout_class: {  }
     regions:
@@ -146,7 +147,7 @@ third_party_settings:
       'dynamic_block_field:node-related_news':
         plugin_id: 'dynamic_block_field:node-related_news'
         weight: 7
-        label: above
+        label: hidden
         formatter: default
       node_title:
         plugin_id: node_title

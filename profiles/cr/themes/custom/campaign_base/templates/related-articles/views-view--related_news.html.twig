@@ -31,35 +31,18 @@
  */
 #}
 
-<div{{ attributes.addClass('related-articles__content-wrapper') }}>
-  {{ title_prefix }}
-  {% if title %}
-    {{ title }}}
-  {% endif %}
-  {{ title_suffix }}
-  {% if header %}
-    <div class="related-articles__header">
-      <h2> {{ header }}</h2>
-    </div>
-  {% endif %}
-  {% if rows %}
+{% if rows %}
+  <div{{ attributes.addClass('related-articles__wrapper') }}>
+    <h2> {{ header }} </h2>
     <div class="related-articles__content">
-      {{ rows }}
+      {% for row in rows[0]['#rows'] %}
+        <div class="related-articles__item"> {{ row }} </div>
+      {% endfor %}
     </div>
-  {% elseif empty %}
-    <div class="related-articles__empty">
-      {{ empty }}
-    </div>
-  {% endif %}
-  {% if pager %}
-    {{ pager }}
-  {% endif %}
-  {% if more %}
-    {{ more }}
-  {% endif %}
-  {% if footer %}
     <div class="related-articles__footer">
       {{ footer }}
     </div>
-  {% endif %}
-</div>
+  </div>
+  {% elseif empty %}
+    {{ empty }}
+{% endif %} 
