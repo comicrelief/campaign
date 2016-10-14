@@ -4,7 +4,9 @@
 
 	.cr-article {
 		background-color: $colour-white;
-		padding: 60px 0px;
+		max-width: 640px;
+ 		margin: 60px auto;
+ 		padding: 60px 0px;
 	}
 	.cr-article__header {
 		overflow: visible;
@@ -41,6 +43,7 @@
 	.bottom-region {
 		max-width: 100%;
 		margin:0px;
+		background-color: $colour-red;
 	}
 
 	@include breakpoint($screen-lg) {
