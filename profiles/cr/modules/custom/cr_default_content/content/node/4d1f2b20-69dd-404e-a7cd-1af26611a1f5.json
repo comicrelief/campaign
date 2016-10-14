@@ -1,212 +1,196 @@
 {
-  "_links": {
-    "self": {
-      "href": "http:\/\/default\/partners?_format=hal_json"
-    },
-    "type": {
-      "href": "http:\/\/drupal.org\/rest\/type\/node\/landing"
-    },
-    "http:\/\/drupal.org\/rest\/relation\/node\/landing\/uid": [
-      {
-        "href": "http:\/\/default\/user\/1?_format=hal_json",
-        "lang": "en"
-      }
-    ],
-    "http:\/\/drupal.org\/rest\/relation\/node\/landing\/revision_uid": [
-      {
-        "href": "http:\/\/default\/user\/1?_format=hal_json"
-      }
-    ]
-  },
-  "nid": [
-    {
-      "value": "21"
-    }
-  ],
-  "uuid": [
-    {
-      "value": "4d1f2b20-69dd-404e-a7cd-1af26611a1f5"
-    }
-  ],
-  "vid": [
-    {
-      "value": "24"
-    }
-  ],
-  "langcode": [
-    {
-      "value": "en",
-      "lang": "en"
-    }
-  ],
-  "type": [
-    {
-      "target_id": "landing"
-    }
-  ],
-  "title": [
-    {
-      "value": "Partners",
-      "lang": "en"
-    }
-  ],
-  "_embedded": {
-    "http:\/\/drupal.org\/rest\/relation\/node\/landing\/uid": [
-      {
-        "_links": {
-          "self": {
-            "href": "http:\/\/default\/user\/1?_format=hal_json"
-          },
-          "type": {
-            "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-          }
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/partners?_format=hal_json"
         },
-        "uuid": [
-          {
-            "value": "f021ae4c-0141-468a-89f3-4cb9b506b58d"
-          }
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/landing"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json",
+                "lang": "en"
+            }
         ],
-        "lang": "en"
-      }
-    ],
-    "http:\/\/drupal.org\/rest\/relation\/node\/landing\/revision_uid": [
-      {
-        "_links": {
-          "self": {
-            "href": "http:\/\/default\/user\/1?_format=hal_json"
-          },
-          "type": {
-            "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-          }
-        },
-        "uuid": [
-          {
-            "value": "f021ae4c-0141-468a-89f3-4cb9b506b58d"
-          }
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_landing_image": [
+            {
+                "href": "http:\/\/default\/file\/3369?_format=hal_json",
+                "lang": "en"
+            }
         ]
-      }
+    },
+    "nid": [
+        {
+            "value": "21"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "4d1f2b20-69dd-404e-a7cd-1af26611a1f5"
+        }
+    ],
+    "vid": [
+        {
+            "value": "74"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "landing"
+        }
+    ],
+    "title": [
+        {
+            "value": "Partners",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "ae09859e-eafa-410c-84c7-68ca830e5ca6"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "ae09859e-eafa-410c-84c7-68ca830e5ca6"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_landing_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/3369?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "e7ee8e03-cc21-4fdd-9b95-9f3086a7f453"
+                    }
+                ],
+                "lang": "en",
+                "alt": "tertt",
+                "title": "",
+                "width": "1370",
+                "height": "300"
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1461688179",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1476100945",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1476100945"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<h1 class=\"text-align-center\">Our partners<\/h1>\r\n\r\n<p class=\"text-align-center\">Red Nose Day simply wouldn't be possible if it wasn't for the critical support we get from our wonderful corporate partners.<\/p>\r\n\r\n<p class=\"text-align-center\">Without their generosity, we couldn't do what we do. If you\u2019re interested in becoming one of our partners, please <a class=\"link link--red inline\" href=\"mailto:partners@comicrelief.com\">drop us an email<\/a>.<\/p>\r\n\r\n<p class=\"text-align-center\"><a class=\"btn btn--red\" href=\"http:\/\/www.google.com\" title=\"Googley\">Download something or other<\/a><\/p>\r\n",
+            "format": "full_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ],
+    "field_landing_copy_position_alig": [
+        {
+            "value": "promo-header__content-inner--centre"
+        }
+    ],
+    "field_landing_feature_layout": [
+        {
+            "value": "1"
+        }
+    ],
+    "field_landing_meta_tags": [
+        {
+            "value": "a:0:{}"
+        }
+    ],
+    "panelizer": [
+        {
+            "view_mode": "full",
+            "default": "default",
+            "panels_display": [],
+            "lang": "en"
+        }
     ]
-  },
-  "status": [
-    {
-      "value": "1",
-      "lang": "en"
-    }
-  ],
-  "created": [
-    {
-      "value": "1461688179",
-      "lang": "en"
-    }
-  ],
-  "changed": [
-    {
-      "value": "1461749690",
-      "lang": "en"
-    }
-  ],
-  "promote": [
-    {
-      "value": "1",
-      "lang": "en"
-    }
-  ],
-  "sticky": [
-    {
-      "value": "0",
-      "lang": "en"
-    }
-  ],
-  "revision_timestamp": [
-    {
-      "value": "1461688348"
-    }
-  ],
-  "revision_translation_affected": [
-    {
-      "value": "1",
-      "lang": "en"
-    }
-  ],
-  "default_langcode": [
-    {
-      "value": "1",
-      "lang": "en"
-    }
-  ],
-  "body": [
-    {
-      "value": "<p>Red Nose Day simply wouldn't be possible if it wasn't for the critical support we get from our wonderful corporate partners.<\/p>\r\n\r\n<p>Without their generosity, we couldn't do what we do. If you\u2019re interested in becoming one of our partners, please <a href=\"mailto:partners@comicrelief.com\">drop us an email<\/a>.<\/p>\r\n",
-      "format": "basic_html",
-      "summary": "",
-      "lang": "en"
-    }
-  ],
-  "panelizer": [
-    {
-      "view_mode": "full",
-      "default": null,
-      "panels_display": {
-        "blocks": {
-          "b212ceb5-87af-4155-ad09-9f468d9eb926": {
-            "id": "entity_view:node",
-            "label": "Entity view (Content)",
-            "provider": "ctools",
-            "label_display": "0",
-            "view_mode": "landing_page_header",
-            "context_mapping": {
-              "entity": "@panelizer.entity_context:entity"
-            },
-            "region": "first",
-            "uuid": "b212ceb5-87af-4155-ad09-9f468d9eb926",
-            "weight": 1
-          },
-          "0df3b443-cd24-4f55-be00-d27e656349c6": {
-            "id": "entity_field:node:field_paragraphs",
-            "label": "Paragraphs",
-            "provider": "ctools_block",
-            "label_display": "0",
-            "formatter": {
-              "label": "hidden",
-              "type": "entity_reference_revisions_entity_view",
-              "settings": {
-                "view_mode": "default"
-              },
-              "third_party_settings": [],
-              "weight": 0
-            },
-            "context_mapping": {
-              "entity": "@panelizer.entity_context:entity"
-            },
-            "region": "second",
-            "uuid": "0df3b443-cd24-4f55-be00-d27e656349c6",
-            "weight": 1
-          },
-          "744a19da-dc2f-4dc5-b448-26059eca9802": {
-            "id": "views_block:partners-block_1",
-            "label": "",
-            "provider": "views",
-            "label_display": 0,
-            "views_label": "",
-            "items_per_page": "none",
-            "context_mapping": [],
-            "region": "first",
-            "uuid": "744a19da-dc2f-4dc5-b448-26059eca9802",
-            "weight": 2
-          }
-        },
-        "id": "panels_variant",
-        "uuid": "07727bfe-7661-4185-a418-24b2dd3f797d",
-        "label": "",
-        "weight": 0,
-        "layout": "article",
-        "layout_settings": [],
-        "page_title": "[node:title]",
-        "storage_type": "panelizer_field",
-        "storage_id": "node:21:full:24",
-        "builder": "ipe"
-      },
-      "lang": "en"
-    }
-  ]
 }
