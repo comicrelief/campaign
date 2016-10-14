@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: cr_iframe_embedded
+label: 'Iframe embedded'
+revision: 0
+description: 'Embed games and videos in an iframe'
