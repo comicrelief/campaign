@@ -22,7 +22,6 @@ dependencies:
     - taxonomy
     - text
     - user
-    - video_embed_field
 third_party_settings:
   panelizer:
     enable: false
@@ -76,14 +75,6 @@ content:
     label: above
     settings: {  }
     third_party_settings: {  }
-  field_article_category:
-    type: entity_reference_entity_view
-    weight: 7
-    label: above
-    settings:
-      view_mode: default
-      link: false
-    third_party_settings: {  }
   field_article_image:
     weight: 0
     label: hidden
@@ -100,7 +91,6 @@ content:
     third_party_settings: {  }
   field_article_meta_tags:
     type: metatag_empty_formatter
-
     weight: 15
     label: above
     settings: {  }
@@ -130,5 +120,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_image_caption: true
   field_media: true
   field_meta_tags: true
+  field_video_embed: true
