@@ -5,9 +5,12 @@ package: Comic Relief
 core: 8.x
 dependencies:
   - entity_reference_revisions
+  - cr_iframe
+  - block_content
 
 config_devel:
   # Fields
+  - field.storage.paragraph.field_cr_custom_block_reference
   - field.field.paragraph.cr_block_reference.field_cr_custom_block_reference
   # View modes
   - core.entity_form_display.paragraph.cr_block_reference.default
