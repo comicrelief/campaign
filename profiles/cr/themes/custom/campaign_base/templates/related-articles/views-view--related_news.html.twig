@@ -39,9 +39,11 @@
         <div class="related-articles__item"> {{ row }} </div>
       {% endfor %}
     </div>
-    <div class="related-articles__footer">
-      {{ footer }}
-    </div>
+    {% if footer %}
+      <div class="related-articles__footer">
+        {{ footer.area }}
+      </div>
+    {% endif %}
   </div>
   {% elseif empty %}
     {{ empty }}
