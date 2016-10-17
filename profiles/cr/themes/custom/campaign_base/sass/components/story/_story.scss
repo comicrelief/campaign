@@ -6,28 +6,34 @@
 //
 // Style guide: Story
 
-/* #kss-node .kss-main {
-  margin: 0 !important;
-  width: 100% !important;
-  padding: 0 !important;
-}
+#kss-node {
+  padding: 0;
 
-#kss-node .kss-section {
-  max-width: none !important;
-  width: 100% !important;
-}
 
-.kss-sidebar {
-  display: none !important;
-}
+  .kss-main {
+    margin: 0 !important;
+    width: 100% !important;
+    padding: 0 !important;
+  }
 
-#kssref-story {
-  width: 100% !important;
-}
+  .kss-section {
+    max-width: none !important;
+    width: 100% !important;
+  }
 
-.kss-modifier__wrapper {
-  padding: 0 !important;
-} */
+  .kss-sidebar {
+    display: none !important;
+  }
+
+  #kssref-story {
+    width: 100% !important;
+  }
+
+  .kss-modifier__wrapper {
+    padding: 0 !important;
+  } 
+
+}
 
 
 .paragraph.story {
@@ -35,21 +41,32 @@
   width: 100%;
   padding: 60px 0;
 
+  picture img {
+    display: block;
+  }
+
   .story__outer-wrapper {
     @include container;
+    position: relative;
   }
 
   .story__beneficiary-wrapper,
   .story__fundraiser-wrapper {
     @include span(12);
 
+
     @include breakpoint($screen-md) {
       @include span(6);
     }
 
+    @include breakpoint($screen-lg) {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
     .story__fundraiser-title,
     .story__beneficiary-title {
-      margin: 40px 0 10px;
+      margin: 0 0 10px;
     }
 
     .story__fundraiser-image,
@@ -66,7 +83,7 @@
 
     .story__fundraiser-copy,
     .story__beneficiary-copy {
-      padding: 0 25px;
+      padding: 30px;
 
       h3 {
         font-size: 60px; line-height: 50px; margin-bottom: 0;
@@ -85,16 +102,23 @@
   }
 
   .story__fundraiser-wrapper {
-    //something
+
+    text-align: center;
+    
+    // DEFAULTS: ensure cms overrides work ok
+    //background-color: #21d2da;
+    h3, p, span {
+      //color: #051d37;
+    }
   }
 
   .story__beneficiary-wrapper {
 
-    background-color: #051d37;
+    background-color: $colour-dark-blue;
     text-align: center;
 
     h3, p, span {
-      color: #21d2da;
+      color: $colour-teal;
     }
 
     @include breakpoint($screen-md-only) {
