@@ -8,7 +8,7 @@ use Drupal\Core\Url;
 use Drupal\search_api\Item\FieldInterface;
 use Drupal\search_api\Plugin\search_api\data_type\value\TextValueInterface;
 use Drupal\search_api\Processor\FieldsProcessorPluginBase;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 
 /**
  * Splits text into individual words for searching.
@@ -18,6 +18,7 @@ use Drupal\search_api\Utility;
  *   label = @Translation("Tokenizer"),
  *   description = @Translation("Splits text into individual words for searching."),
  *   stages = {
+ *     "pre_index_save" = 0,
  *     "preprocess_index" = -6,
  *     "preprocess_query" = -6
  *   }
@@ -225,9 +226,9 @@ class Tokenizer extends FieldsProcessorPluginBase {
 
     // To improve searching for numerical data such as dates, IP addresses or
     // version numbers, we consider a group of numerical characters separated
-    // only by punctuation characters to be one piece. This also means that
-    // searching for e.g. '20/03/1984' also returns results with '20-03-1984'
-    // in them.
+    // only by punctuation characters to be one piece. This also means, for
+    // example, that searching for "20/03/1984" also returns results with
+    // "20-03-1984" in them.
     // Readable regular expression: "([number]+)[punctuation]+(?=[number])".
     $text = preg_replace('/([' . $this->getPregClassNumbers() . ']+)[' . $this->getPregClassPunctuation() . ']+(?=[' . $this->getPregClassNumbers() . '])/u', '\1', $text);
 

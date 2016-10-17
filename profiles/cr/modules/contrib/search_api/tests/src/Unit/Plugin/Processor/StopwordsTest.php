@@ -3,7 +3,7 @@
 namespace Drupal\Tests\search_api\Unit\Plugin\Processor;
 
 use Drupal\search_api\Plugin\search_api\processor\Stopwords;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 use Drupal\Tests\UnitTestCase;
 
 /**
@@ -22,7 +22,7 @@ class StopwordsTest extends UnitTestCase {
    */
   protected function setUp() {
     parent::setUp();
-    $this->setUpDataTypePlugin();
+    $this->setUpMockContainer();
     $this->processor = new Stopwords(array(), 'stopwords', array());;
   }
 

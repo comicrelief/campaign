@@ -143,9 +143,9 @@ projects:
   rabbitmq:
     version: 1.0-beta1
   search_api:
-    download:
-      version: 1.x-dev
-      revision: 895b507
+    version: 1.0-beta1
+  search_api_solr:
+    version: 1.0-alpha6
   crazyegg:
     version: 1.0-rc1
   google_tag:

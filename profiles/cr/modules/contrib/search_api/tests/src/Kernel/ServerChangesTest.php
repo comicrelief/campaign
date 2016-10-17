@@ -68,8 +68,9 @@ class ServerChangesTest extends KernelTestBase {
     parent::setUp();
 
     $this->installEntitySchema('user');
-    $this->installSchema('search_api', array('search_api_item', 'search_api_task'));
+    $this->installSchema('search_api', array('search_api_item'));
     $this->installSchema('system', array('key_value_expire'));
+    $this->installEntitySchema('search_api_task');
 
     // Set tracking page size so tracking will work properly.
     \Drupal::configFactory()

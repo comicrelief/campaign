@@ -109,3 +109,19 @@ function cr_update_8011() {
   $field->delete();
   field_purge_batch('field_partner_image');
 }
+
+/**
+ * Remove Search view + search configs
+ */
+function cr_update_8012() {
+    $entityTypeManager = \Drupal::service('entity_type.manager');
+    $view = $entityTypeManager->getStorage('view')->load('search');
+    $view->delete();
+    $config = \Drupal::service('config.factory');
+    $config->getEditable('views.view.search')->delete();
+    $config->getEditable('search_api.server.database')->delete();
+
+    $query = 'ALTER TABLE {search_api_task}
+CHANGE COLUMN server_id server_id VARCHAR(50) NULL';
+    Database::getConnection()->query($query);
+}

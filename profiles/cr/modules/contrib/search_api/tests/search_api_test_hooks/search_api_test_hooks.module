@@ -8,7 +8,8 @@
 use Drupal\search_api\IndexInterface;
 use Drupal\search_api\Query\QueryInterface;
 use Drupal\search_api\Query\ResultSetInterface;
-use Drupal\search_api\Utility;
+use Drupal\search_api\ServerInterface;
+use Drupal\search_api\Utility\Utility;
 
 /**
  * Implements hook_search_api_backend_info_alter.
@@ -31,6 +32,15 @@ function search_api_test_hooks_search_api_datasource_info_alter(array &$infos) {
  */
 function search_api_test_hooks_search_api_parse_mode_info_alter(array &$parse_modes) {
   $parse_modes['direct']['label'] = 'Song for My Father';
+}
+
+/**
+ * Implements hook_search_api_server_features_alter().
+ */
+function search_api_test_hooks_search_api_server_features_alter(array &$features, ServerInterface $server) {
+  if ($server->id() == 'webtest_server') {
+    $features[] = 'welcome_to_the_jungle';
+  }
 }
 
 /**

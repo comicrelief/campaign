@@ -24,4 +24,5 @@ class Phrase extends ParseModePluginBase {
       $keys,
     );
   }
+
 }

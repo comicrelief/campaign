@@ -5,6 +5,16 @@
     $('select').selectmenu({ style:'popup', width: '100%' });
     // Activate lighcase
     $('a[rel^=lightcase]').lightcase();
+
+    // Search hold on
+    // $("button.main-menu__icons-magnify").on("click", function() {
+    //   $(this).toggleClass("active");
+    //   $(".search-block").toggleClass("show");
+    // });
+    // $(".search-block:not").on("click", function() {
+    //   $("button.main-menu__icons-magnify").removeClass("active");
+    //   $(".search-block").removeClass("show");
+    // });
 	  
 	  newPosition();
 	  newHeight();

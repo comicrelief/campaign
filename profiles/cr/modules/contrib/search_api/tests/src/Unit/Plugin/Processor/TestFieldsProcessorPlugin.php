@@ -5,7 +5,7 @@ namespace Drupal\Tests\search_api\Unit\Plugin\Processor;
 use Drupal\search_api\Item\FieldInterface;
 use Drupal\search_api\Plugin\search_api\data_type\value\TextValue;
 use Drupal\search_api\Processor\FieldsProcessorPluginBase;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 
 /**
  * Mimics a processor working on individual fields of items.

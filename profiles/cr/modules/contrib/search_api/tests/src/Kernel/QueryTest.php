@@ -44,8 +44,9 @@ class QueryTest extends KernelTestBase {
   protected function setUp() {
     parent::setUp();
 
-    $this->installSchema('search_api', array('search_api_item', 'search_api_task'));
+    $this->installSchema('search_api', array('search_api_item'));
     $this->installEntitySchema('entity_test_mulrev_changed');
+    $this->installEntitySchema('search_api_task');
 
     // Set tracking page size so tracking will work properly.
     \Drupal::configFactory()
@@ -105,7 +106,7 @@ class QueryTest extends KernelTestBase {
   public function testProcessingLevel($level, $hooks_and_processors_invoked = TRUE) {
     /** @var \Drupal\search_api\Processor\ProcessorInterface $processor */
     $processor = $this->container->get('plugin.manager.search_api.processor')
-      ->createInstance('search_api_test', array('index' => $this->index));
+      ->createInstance('search_api_test', array('#index' => $this->index));
     $this->index->addProcessor($processor)->save();
 
     $query = $this->index->query();
@@ -171,8 +172,7 @@ class QueryTest extends KernelTestBase {
    * Tests that serialization of queries works correctly.
    */
   public function testQuerySerialization() {
-    $results_cache = $this->container->get('search_api.results_static_cache');
-    $query = Query::create($this->index, $results_cache);
+    $query = Query::create($this->index);
     $tags = array('tag1', 'tag2');
     $query->keys('foo bar')
       ->addCondition('field1', 'value', '<')
@@ -190,6 +190,48 @@ class QueryTest extends KernelTestBase {
     $cloned_query = clone $query;
     $unserialized_query = unserialize(serialize($query));
     $this->assertEquals($cloned_query, $unserialized_query);
+  }
+
+  /**
+   *
+   * Tests that the results cache works correctly.
+   */
+  public function testResultsCache() {
+    /** @var \Drupal\search_api\Query\QueryInterface[] $results */
+    $results = array();
+    $search_ids = array('foo', 'bar');
+    foreach ($search_ids as $search_id) {
+      $results[$search_id] = $this->index->query()
+        ->setSearchId($search_id)
+        ->execute();
+    }
+
+    $results_cache = \Drupal::getContainer()
+      ->get('search_api.query_helper');
+    foreach ($search_ids as $search_id) {
+      $this->assertSame($results[$search_id], $results_cache->getResults($search_id));
+    }
+    $this->assertNull($results_cache->getResults('foobar'));
+
+    $this->assertSame($results, $results_cache->getAllResults());
+
+    $results_cache->removeResults('foo');
+    unset($results['foo']);
+    $this->assertSame($results, $results_cache->getAllResults());
+  }
+
+  /**
+   * Tests whether the display plugin integration works correctly.
+   */
+  public function testDisplayPluginIntegration() {
+    $query = $this->index->query();
+    $this->assertSame(NULL, $query->getSearchId(FALSE));
+    $this->assertSame('search_1', $query->getSearchId());
+    $this->assertSame('search_1', $query->getSearchId(FALSE));
+    $this->assertSame(NULL, $query->getDisplayPlugin());
+
+    $query = $this->index->query()->setSearchId('search_api_test');
+    $this->assertInstanceOf('Drupal\search_api_test\Plugin\search_api\display\TestDisplay', $query->getDisplayPlugin());
   }
 
 }
