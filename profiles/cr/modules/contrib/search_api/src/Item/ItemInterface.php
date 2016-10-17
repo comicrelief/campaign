@@ -2,6 +2,7 @@
 
 namespace Drupal\search_api\Item;
 
+use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\TypedData\ComplexDataInterface;
 
 /**
@@ -278,5 +279,17 @@ interface ItemInterface extends \Traversable {
    * @return $this
    */
   public function setExtraData($key, $data = NULL);
+
+  /**
+   * Checks whether a user has permission to view this item.
+   *
+   * @param \Drupal\Core\Session\AccountInterface|null $account
+   *   (optional) The user session for which to check access, or NULL to check
+   *   access for the current user.
+   *
+   * @return bool
+   *   TRUE if access is granted, FALSE otherwise.
+   */
+  public function checkAccess(AccountInterface $account = NULL);
 
 }

@@ -9,7 +9,7 @@ use Drupal\search_api\SearchApiException;
 use Drupal\search_api\IndexInterface;
 use Drupal\search_api\Plugin\ConfigurablePluginBase;
 use Drupal\search_api\ServerInterface;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 
 /**
  * Defines a base class for backend plugins.
@@ -98,8 +98,8 @@ abstract class BackendPluginBase extends ConfigurablePluginBase implements Backe
   /**
    * {@inheritdoc}
    */
-  public function supportsFeature($feature) {
-    return FALSE;
+  public function getSupportedFeatures() {
+    return array();
   }
 
   /**

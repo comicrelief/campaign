@@ -9,7 +9,7 @@ settings:
 module: Core
 locked: false
 cardinality: -1
-translatable: false
+translatable: true
 indexes: {  }
 dependencies:
   module:

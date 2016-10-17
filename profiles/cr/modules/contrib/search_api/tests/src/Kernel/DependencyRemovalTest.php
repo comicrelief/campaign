@@ -7,7 +7,7 @@ use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\search_api\Entity\Index;
 use Drupal\search_api\Entity\Server;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 use Drupal\search_api_test\PluginTestTrait;
 
 /**
@@ -50,7 +50,7 @@ class DependencyRemovalTest extends KernelTestBase {
   public function setUp() {
     parent::setUp();
 
-    $this->installSchema('search_api', 'search_api_task');
+    $this->installEntitySchema('search_api_task');
 
     \Drupal::configFactory()->getEditable('search_api.settings')
       ->set('default_tracker', 'default')
@@ -471,7 +471,7 @@ class DependencyRemovalTest extends KernelTestBase {
       ->save();
 
     // Disabling modules in Kernel tests normally doesn't trigger any kind of
-    // reaction, just removes it from the list of modules (e.g., to avoid
+    // reaction, just removes it from the list of modules (for example, to avoid
     // calling of a hook). Therefore, we have to trigger that behavior
     // ourselves.
     \Drupal::getContainer()->get('config.manager')->uninstall('module', 'search_api_test');
@@ -547,9 +547,9 @@ class DependencyRemovalTest extends KernelTestBase {
     switch ($dependency_type) {
       case 'module':
         // Disabling modules in Kernel tests normally doesn't trigger any kind of
-        // reaction, just removes it from the list of modules (e.g., to avoid
-        // calling of a hook). Therefore, we have to trigger that behavior
-        // ourselves.
+        // reaction, just removes it from the list of modules (for example, to
+        // avoid calling any of its hooks). Therefore, we have to trigger that
+        // behavior ourselves.
         \Drupal::getContainer()
           ->get('config.manager')
           ->uninstall('module', 'search_api_test');

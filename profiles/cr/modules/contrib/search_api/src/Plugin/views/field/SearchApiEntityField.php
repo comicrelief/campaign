@@ -5,7 +5,7 @@ namespace Drupal\search_api\Plugin\views\field;
 use Drupal\Core\Form\FormHelper;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\search_api\Plugin\views\EntityFieldRenderer;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 use Drupal\views\Plugin\views\display\DisplayPluginBase;
 use Drupal\views\Plugin\views\field\Field;
 use Drupal\views\Plugin\views\field\MultiItemsFieldHandlerInterface;
@@ -120,7 +120,7 @@ class SearchApiEntityField extends Field {
   /**
    * Retrieves the keys of the options defined by our direct parent.
    *
-   * I.e., this will exclude all options defined by
+   * That is, this will exclude all options defined by
    * \Drupal\views\Plugin\views\field\FieldPluginBase, and only include those
    * defined by \Drupal\views\Plugin\views\field\Field.
    *
@@ -182,10 +182,10 @@ class SearchApiEntityField extends Field {
     $this->fallbackHandler->buildOptionsForm($fallback_form, $form_state);
     // Remove all fields from FieldPluginBase from the fallback form, but leave
     // those in that were only added by our immediate parent,
-    // \Drupal\views\Plugin\views\field\Field. (E.g., the "type" option is
-    // especially prone to conflicts here.) The others come from the plugin base
-    // classes and will be identical, so it would be confusing to include them
-    // twice.
+    // \Drupal\views\Plugin\views\field\Field. (For example, the "type" option
+    // is especially prone to conflicts here.) The others come from the plugin
+    // base classes and will be identical, so it would be confusing to include
+    // them twice.
     $parent_keys[] = '#pre_render';
     $remove_from_fallback = array_diff_key($form, array_flip($parent_keys));
     $fallback_form = array_diff_key($fallback_form, $remove_from_fallback);

@@ -74,6 +74,18 @@ class EntityFieldRenderer extends ViewsEntityFieldRenderer {
   /**
    * {@inheritdoc}
    */
+  protected function getEntityTranslationRenderer() {
+    if (!isset($this->entityTranslationRenderer)) {
+      $entity_type = $this->getEntityManager()
+        ->getDefinition($this->getEntityTypeId());
+      $this->entityTranslationRenderer = new EntityTranslationRenderer($this->view, $this->getLanguageManager(), $entity_type);
+    }
+    return $this->entityTranslationRenderer;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   protected function getRenderableFieldIds() {
     $field_ids = [];
     foreach ($this->view->field as $field_id => $field) {

@@ -27,6 +27,16 @@ if (isset($_ENV['PLATFORM_RELATIONSHIPS'])) {
       }
     }
   }
+  if (!empty($relationships['solr'])) {
+    foreach ($relationships['solr'] as $endpoint) {
+      $config['search_api.server.solr']['backend_config'] = [
+        'host' => $endpoint['ip'],
+        'path' => $endpoint['path'],
+        'port' => $endpoint['port'],
+        'core' => $endpoint['scheme'],
+      ];
+    }
+  }
 }
 // Configure private and temporary file paths.
 if (isset($_ENV['PLATFORM_APP_DIR'])) {
