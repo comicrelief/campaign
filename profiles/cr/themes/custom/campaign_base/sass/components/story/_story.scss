@@ -36,8 +36,8 @@
 }
 
 
-.paragraph.story {
 
+.paragraph.story {
   width: 100%;
   padding: 60px 0;
 
@@ -53,15 +53,15 @@
   .story__beneficiary-wrapper,
   .story__fundraiser-wrapper {
     @include span(12);
-
+    overflow: hidden;
 
     @include breakpoint($screen-md) {
       @include span(6);
     }
 
     @include breakpoint($screen-lg) {
-      margin-left: 0;
-      margin-right: 0;
+      @include span(6);
+      width: calc( #{span(6)} + #{gutter()} );
     }
 
     .story__fundraiser-title,
@@ -84,6 +84,7 @@
     .story__fundraiser-copy,
     .story__beneficiary-copy {
       padding: 30px;
+      position: relative;
 
       h3 {
         font-size: 60px; line-height: 50px; margin-bottom: 0;
@@ -98,20 +99,43 @@
       p {
         font-size: 13px; line-height: 19px;
       }
+
+      &:after {
+        content: "";
+        width: 100%;
+        height: 11px;
+        position: absolute;
+        top: -11px;
+        left: 0;
+        background-image: url('/profiles/cr/themes/custom/campaign_base/images/styleguide-images/squggle-horizontal-2.png');
+        background-repeat: repeat-x;
+      }
+
+      @include breakpoint($screen-lg) {
+        &:after {
+          // Ensure the image is always long enough to span the copy AND space below
+          height: 200%;
+          content: "";
+          width: 11px;
+          top: 0;
+          left: -11px;
+          background-image: url('/profiles/cr/themes/custom/campaign_base/images/styleguide-images/squiggle.png');
+          background-repeat: repeat-y;
+        }
+      }
     }
   }
 
+  /* Fundraiser side only  */
   .story__fundraiser-wrapper {
-
     text-align: center;
-    
-    // DEFAULTS: ensure cms overrides work ok
-    //background-color: #21d2da;
-    h3, p, span {
-      //color: #051d37;
+
+    @include breakpoint($screen-lg) {
+      margin-right: 0;
     }
   }
 
+  /* Beneficiary side only  */
   .story__beneficiary-wrapper {
 
     background-color: $colour-dark-blue;
@@ -119,6 +143,14 @@
 
     h3, p, span {
       color: $colour-teal;
+    }
+
+    .story__beneficiary-copy {
+      &:after {
+        top: auto;
+        bottom: -11px;
+        background-image: url('/profiles/cr/themes/custom/campaign_base/images/styleguide-images/squggle-horizontal-2.png');
+      }
     }
 
     @include breakpoint($screen-md-only) {
@@ -132,59 +164,27 @@
       .story__beneficiary-image {
         display: table-header-group;
       }
+
+      .story__beneficiary-copy {
+        &:after {
+          top: -11px;
+          bottom: auto;
+          background-image: url('/profiles/cr/themes/custom/campaign_base/images/styleguide-images/squggle-horizontal.png');
+        }
+      }
     }
 
     @include breakpoint($screen-lg) {
-
+      margin-left: 0;
+      .story__beneficiary-copy {
+        &:after {
+          right: -11px;
+          left: auto;
+          top: 0;
+          bottom: auto;
+          background-image: url('/profiles/cr/themes/custom/campaign_base/images/styleguide-images/squiggle.png');
+        }
+      }
     }
   }
 }
-
-
-
-
-/* 
-
-<section class="story paragraph" >
-  <div class="story__outer-wrapper">
-
-    <div class="story__fundraiser-image">
-      <picture>
-        <source srcset="/profiles/cr/themes/custom/campaign_base/images/styleguide-images/story-image-left.jpg" media="all and (min-width: 1024px)" type="image/jpeg"/>
-        <source srcset="/profiles/cr/themes/custom/campaign_base/images/styleguide-images/story-image-left.jpg" media="all and (min-width: 740px)" type="image/jpeg"/>
-        <source srcset="/profiles/cr/themes/custom/campaign_base/images/styleguide-images/story-image-left.jpg" media="(min-width: 0px)" type="image/jpeg"/>
-        <img src="/profiles/cr/themes/custom/campaign_base/images/styleguide-images/story-image-left.jpg" alt="story image left" typeof="foaf:Image" />
-      </picture>
-    </div>
-
-    <div class="story__fundraiser-copy">
-      <div class="story__fundraiser-title">
-          <h3>£###,###</h3>
-          <p>RAISED<p>
-        </div>
-        <div class="story__fundraiser-body">
-          <p>Daniel from Worcester ducked, dived and dodged his way to raising £160 by holding a retro fancy dress dodgeball tournament at his local sport centre.<p>
-        </div>
-    </div>
-
-    <div class="story__beneficiary-copy">
-      <div class="story__beneficiary-title">
-          <h3>Lives<h3>
-          <p>CHANGED<p>
-        </div>
-        <div class="story__beneficiary-body">
-          <p>This is enough to buy a bicycle ambulance that can help pregnant women in rural Malawi to reach life-saving medical services.<p>
-        </div>
-    </div>
-
-    <div class="story__beneficiary-image">
-      <picture>
-        <source srcset="/profiles/cr/themes/custom/campaign_base/images/styleguide-images/story-image-right.jpg" media="all and (min-width: 1024px)" type="image/jpeg"/>
-        <source srcset="/profiles/cr/themes/custom/campaign_base/images/styleguide-images/story-image-right.jpg" media="all and (min-width: 740px)" type="image/jpeg"/>
-        <source srcset="/profiles/cr/themes/custom/campaign_base/images/styleguide-images/story-image-right.jpg" media="(min-width: 0px)" type="image/jpeg"/>
-        <img src="/profiles/cr/themes/custom/campaign_base/images/styleguide-images/story-image-right.jpg" alt="story image left" typeof="foaf:Image" />
-      </picture>
-    </div>
-    
-  </div>
-</section> */
