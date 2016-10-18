@@ -105,14 +105,14 @@ before_install:
   - composer global config minimum-stability beta
   - composer global require phing/phing drush/drush:8.* lionsad/drupal_ti:1.4.4
   # Prepare environment
-  - ./profiles/cr/tests/drupal_ti/scripts/before_install.sh
+  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_install.sh
   - phing build:prepare
   # Check code quality before site is installed
-  - ./profiles/cr/tests/drupal_ti/scripts/codecheck.sh
+  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/codecheck.sh
 
 install:
   - drupal-ti install
-  - ./profiles/cr/tests/drupal_ti/scripts/install.sh
+  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/install.sh
 
 before_script:
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh
