@@ -1,24 +1,19 @@
 #!/bin/bash
 # @file
-# Behat integration - Script step.
-
-set -e $DRUPAL_TI_DEBUG
+# Run test suite
 
 # Check the config match with the info.yml
 phing config:check
-
-# Ensure we are in the right directory, we need to overwrite this here
-# since it is different from Drupal TI's default setup
-DRUPAL_TI_DRUPAL_DIR="$TRAVIS_BUILD_DIR"
-
-# Now go to the local behat tests, being within the project installation is
-# needed for example for the drush runner.
-cd "$DRUPAL_TI_BEHAT_DIR"
-
-# We need to create a behat.yml file from behat.yml.dist.
-drupal_ti_replace_behat_vars
-
-# And run the tests, excluding any selenium tests
-# To provide Selenium support, see http://jira.comicrelief.com/browse/PLAT-352
-ARGS=( $DRUPAL_TI_BEHAT_ARGS )
-./vendor/bin/behat "${ARGS[@]}" --tags '~@not-on-travis'
+# Move to behat directory
+cd $BEHAT_DIR
+# behat.yml on the fly
+{
+  echo "#!/bin/bash"
+  echo "cat <<EOF > behat.yml"
+  cat "behat.yml.dist"
+  echo "EOF"
+} >> .behat.yml.sh
+# Execute the script.
+. .behat.yml.sh
+# Run behat tests
+./vendor/bin/behat --tags '~@not-on-travis'
