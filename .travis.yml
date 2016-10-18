@@ -51,29 +51,6 @@ env:
     # Simpletest specific commandline arguments, the DRUPAL_TI_SIMPLETEST_GROUP is appended at the end.
     - DRUPAL_TI_SIMPLETEST_ARGS="--verbose --color --concurrency 4 --url $DRUPAL_TI_WEBSERVER_URL:$DRUPAL_TI_WEBSERVER_PORT"
 
-    # === Behat specific variables.
-    # This is relative to $TRAVIS_BUILD_DIR
-    - DRUPAL_TI_BEHAT_DIR="./profiles/cr/tests/behat"
-    # This is relative to $TRAVIS_BUILD_DIR
-    - DRUPAL_TI_THEME_DIR="./profiles/cr/themes/custom/campaign_base"
-    # These arguments are passed to the bin/behat command.
-    - DRUPAL_TI_BEHAT_ARGS=""
-    # Specify the filename of the behat.yml with the $DRUPAL_TI_DRUPAL_DIR variables.
-    - DRUPAL_TI_BEHAT_YML="behat.yml.dist"
-    # This is used to setup Xvfb.
-    - DRUPAL_TI_BEHAT_SCREENSIZE_COLOR="1280x1024x16"
-    # The version of selenium that should be used.
-    - DRUPAL_TI_BEHAT_SELENIUM_VERSION="2.44"
-    # Set DRUPAL_TI_BEHAT_DRIVER to "selenium" to use "firefox" or "chrome" here.
-
-
-    # PHPUnit specific commandline arguments.
-    - DRUPAL_TI_PHPUNIT_ARGS=""
-    # Specifying the phpunit-core src/ directory is useful when e.g. a vendor/
-    # directory is present in the module directory, which phpunit would then
-    # try to find tests in. This option is relative to $TRAVIS_BUILD_DIR.
-    #- DRUPAL_TI_PHPUNIT_CORE_SRC_DIRECTORY="./tests/src"
-
     # Code coverage via coveralls.io
     - DRUPAL_TI_COVERAGE="satooshi/php-coveralls:0.6.*"
     # This needs to match your .coveralls.yml file.
@@ -102,13 +79,6 @@ env:
     - export WEBSERVER_URL="http://127.0.0.1"
     - export WEBSERVER_PORT="8080"
 
-  matrix:
-  # [[[ SELECT ANY OR MORE OPTIONS ]]]
-  # - DRUPAL_TI_RUNNERS="phpunit"
-  # - DRUPAL_TI_RUNNERS="phpunit-core simpletest"
-    - DRUPAL_TI_RUNNERS="behat"
-  # - DRUPAL_TI_RUNNERS="phpunit simpletest behat"
-
 mysql:
   database: $DB
   username: root
@@ -136,9 +106,6 @@ script:
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/script.sh
   # Check DB errors
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/dberrors.sh
-
-after_script:
-  - drupal-ti after_script
 
 notifications:
   slack: comicrelief:W1jExvqbSU9Kb3lyavdGHdGD
