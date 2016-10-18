@@ -65,8 +65,7 @@ env:
     # The version of selenium that should be used.
     - DRUPAL_TI_BEHAT_SELENIUM_VERSION="2.44"
     # Set DRUPAL_TI_BEHAT_DRIVER to "selenium" to use "firefox" or "chrome" here.
-    - DRUPAL_TI_BEHAT_DRIVER="phantomjs"
-    - DRUPAL_TI_BEHAT_BROWSER="firefox"
+
 
     # PHPUnit specific commandline arguments.
     - DRUPAL_TI_PHPUNIT_ARGS=""
@@ -97,6 +96,11 @@ env:
     - export DB="drupal"
     - export DB_URL="mysql://root:@127.0.0.1/drupal"
     - export BEHAT_DIR="./profiles/$PROFILE/tests/behat"
+    - export BEHAT_DRIVER="phantomjs"
+    - export BEHAT_BROWSER="firefox"
+    # Note: Do not add a trailing slash here.
+    - export WEBSERVER_URL="http://127.0.0.1"
+    - export WEBSERVER_PORT="8080"
 
   matrix:
   # [[[ SELECT ANY OR MORE OPTIONS ]]]
