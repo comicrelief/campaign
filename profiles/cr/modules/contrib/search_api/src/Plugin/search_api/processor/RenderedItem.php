@@ -2,10 +2,13 @@
 
 namespace Drupal\search_api\Plugin\search_api\processor;
 
+use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\Entity\EntityViewMode;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\Session\UserSession;
+use Drupal\Core\Theme\ThemeInitializationInterface;
+use Drupal\Core\Theme\ThemeManagerInterface;
 use Drupal\search_api\Datasource\DatasourceInterface;
 use Drupal\search_api\Item\ItemInterface;
 use Drupal\search_api\Plugin\search_api\processor\Property\RenderedItemProperty;
@@ -52,23 +55,39 @@ class RenderedItem extends ProcessorPluginBase {
   protected $logger;
 
   /**
+   * Theme manager service.
+   *
+   * @var \Drupal\Core\Theme\ThemeManagerInterface
+   */
+  protected $themeManager;
+
+  /**
+   * Theme initialization service.
+   *
+   * @var \Drupal\Core\Theme\ThemeInitializationInterface
+   */
+  protected $themeInitialization;
+
+  /**
+   * Theme settings config.
+   *
+   * @var \Drupal\Core\Config\ConfigFactoryInterface
+   */
+  protected $configFactory;
+
+  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     /** @var static $plugin */
     $plugin = parent::create($container, $configuration, $plugin_id, $plugin_definition);
 
-    /** @var \Drupal\Core\Session\AccountProxyInterface $current_user */
-    $current_user = $container->get('current_user');
-    $plugin->setCurrentUser($current_user);
-
-    /** @var \Drupal\Core\Render\RendererInterface $renderer */
-    $renderer = $container->get('renderer');
-    $plugin->setRenderer($renderer);
-
-    /** @var \Psr\Log\LoggerInterface $logger */
-    $logger = $container->get('logger.channel.search_api');
-    $plugin->setLogger($logger);
+    $plugin->setCurrentUser($container->get('current_user'));
+    $plugin->setRenderer($container->get('renderer'));
+    $plugin->setLogger($container->get('logger.channel.search_api'));
+    $plugin->setThemeManager($container->get('theme.manager'));
+    $plugin->setThemeInitializer($container->get('theme.initialization'));
+    $plugin->setConfigFactory($container->get('config.factory'));
 
     return $plugin;
   }
@@ -142,6 +161,75 @@ class RenderedItem extends ProcessorPluginBase {
     return $this;
   }
 
+  /**
+   * Retrieves the theme manager.
+   *
+   * @return \Drupal\Core\Theme\ThemeManagerInterface $theme_manager
+   *   The theme manager.
+   */
+  protected function getThemeManager() {
+    return $this->themeManager ?: \Drupal::theme();
+  }
+
+  /**
+   * Sets the theme manager.
+   *
+   * @param \Drupal\Core\Theme\ThemeManagerInterface $theme_manager
+   *   The theme manager.
+   *
+   * @return $this
+   */
+  protected function setThemeManager(ThemeManagerInterface $theme_manager) {
+    $this->themeManager = $theme_manager;
+    return $this;
+  }
+
+  /**
+   * Retrieves the theme initialization service.
+   *
+   * @return \Drupal\Core\Theme\ThemeInitializationInterface $theme_initialization
+   *   The theme initialization service.
+   */
+  protected function getThemeInitializer() {
+    return $this->themeInitialization ?: \Drupal::service('theme.initialization');
+  }
+
+  /**
+   * Sets the theme initialization service.
+   *
+   * @param \Drupal\Core\Theme\ThemeInitializationInterface $theme_initialization
+   *   The theme initialization service.
+   *
+   * @return $this
+   */
+  protected function setThemeInitializer(ThemeInitializationInterface $theme_initialization) {
+    $this->themeInitialization = $theme_initialization;
+    return $this;
+  }
+
+  /**
+   * Retrieves the config factory service.
+   *
+   * @return \Drupal\Core\Config\ConfigFactoryInterface $config_factory
+   *   The config factory.
+   */
+  protected function getConfigFactory() {
+    return $this->configFactory ?: \Drupal::configFactory();
+  }
+
+  /**
+   * Sets the config factory service.
+   *
+   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
+   *   The config factory.
+   *
+   * @return $this
+   */
+  protected function setConfigFactory(ConfigFactoryInterface $config_factory) {
+    $this->configFactory = $config_factory;
+    return $this;
+  }
+
   // @todo Add a supportsIndex() implementation that checks whether there is
   //   actually any datasource present which supports viewing.
 
@@ -169,6 +257,15 @@ class RenderedItem extends ProcessorPluginBase {
    */
   public function addFieldValues(ItemInterface $item) {
     $original_user = $this->currentUser->getAccount();
+
+    // Switch to the default theme in case the admin theme is enabled.
+    $active_theme = $this->getThemeManager()->getActiveTheme();
+    $default_theme = $this->getConfigFactory()
+      ->get('system.theme')
+      ->get('default');
+    $default_theme = $this->getThemeInitializer()
+      ->getActiveThemeByName($default_theme);
+    $this->getThemeManager()->setActiveTheme($default_theme);
 
     // Count of items that don't have a view mode.
     $unset_view_modes = 0;
@@ -205,6 +302,8 @@ class RenderedItem extends ProcessorPluginBase {
 
     // Restore the original user.
     $this->currentUser->setAccount($original_user);
+    // Restore the original theme.
+    $this->getThemeManager()->setActiveTheme($active_theme);
 
     if ($unset_view_modes > 0) {
       $context = array(

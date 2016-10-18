@@ -34,7 +34,7 @@ class EntitySerializationTest extends UnitTestCase {
    */
   public function testIndexSerialization() {
     // As our test index, just use the one from the DB Defaults module.
-    $path = __DIR__ . '/../../../search_api_db/search_api_db_defaults/config/optional/search_api.index.default_index.yml';
+    $path = __DIR__ . '/../../../modules/search_api_db/search_api_db_defaults/config/optional/search_api.index.default_index.yml';
     $index_values = Yaml::decode(file_get_contents($path));
     $index = new Index($index_values, 'search_api_index');
 
@@ -49,7 +49,7 @@ class EntitySerializationTest extends UnitTestCase {
    */
   public function testServerSerialization() {
     // As our test server, just use the one from the DB Defaults module.
-    $path = __DIR__ . '/../../../search_api_db/search_api_db_defaults/config/optional/search_api.server.default_server.yml';
+    $path = __DIR__ . '/../../../modules/search_api_db/search_api_db_defaults/config/optional/search_api.server.default_server.yml';
     $values = Yaml::decode(file_get_contents($path));
     $server = new Server($values, 'search_api_server');
 

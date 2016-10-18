@@ -44,7 +44,7 @@ class BundlelessEntityTest extends KernelTestBase {
   public function setUp() {
     parent::setUp();
 
-    $this->installSchema('search_api', array('search_api_task'));
+    $this->installEntitySchema('search_api_task');
     $this->installConfig(array('user'));
 
     // Create a test index.

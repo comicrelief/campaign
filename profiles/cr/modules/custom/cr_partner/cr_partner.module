@@ -32,3 +32,35 @@ function cr_partner_field_background_colour(FieldStorageDefinitionInterface $def
   ];
   return $values;
 }
+
+/**
+ * Options callback for field_partner_weight.
+ *
+ * @see options_allowed_values()
+ */
+function cr_partner_field_partner_weight(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
+  $values = [
+    -10 => t('-10'),
+    -9 => t('-9'),
+    -8 => t('-8'),
+    -7 => t('-7'),
+    -6 => t('-6'),
+    -5 => t('-5'),
+    -4 => t('-4'),
+    -3 => t('-3'),
+    -2 => t('-2'),
+    -1 => t('-1'),
+    0 => t('0'),
+    1 => t('1'),
+    2 => t('2'),
+    3 => t('3'),
+    4 => t('4'),
+    5 => t('5'),
+    6 => t('6'),
+    7 => t('7'),
+    8 => t('8'),
+    9 => t('9'),
+    10 => t('10'),
+  ];
+  return $values;
+}

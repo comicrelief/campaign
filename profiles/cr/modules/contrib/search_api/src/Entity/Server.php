@@ -101,6 +101,13 @@ class Server extends ConfigEntityBase implements ServerInterface {
   protected $backendPlugin;
 
   /**
+   * The features this server supports.
+   *
+   * @var string[]|null
+   */
+  protected $features;
+
+  /**
    * {@inheritdoc}
    */
   public function getDescription() {
@@ -181,7 +188,23 @@ class Server extends ConfigEntityBase implements ServerInterface {
    * {@inheritdoc}
    */
   public function supportsFeature($feature) {
-    return $this->hasValidBackend() ? $this->getBackend()->supportsFeature($feature) : FALSE;
+    return in_array($feature, $this->getSupportedFeatures());
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getSupportedFeatures() {
+    if (!isset($this->features)) {
+      $this->features = array();
+      if ($this->hasValidBackend()) {
+        $this->features = $this->getBackend()->getSupportedFeatures();
+      }
+      \Drupal::moduleHandler()
+        ->alter('search_api_server_features', $this->features, $this);
+    }
+
+    return $this->features;
   }
 
   /**

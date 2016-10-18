@@ -62,12 +62,12 @@ interface ParseModeInterface extends PluginInspectionInterface, DerivativeInspec
    *   type, and search strings or nested expression arrays at numeric keys.
    *   Additionally, a '#negation' key might be present, which means – unless it
    *   maps to a FALSE value – that the search keys contained in that array
-   *   should be negated, i.e. not be present in returned results. The negation
-   *   works on the whole array, not on each contained term individually – i.e.,
-   *   with the "AND" conjunction and negation, only results that contain all
-   *   the terms in the array should be excluded; with the "OR" conjunction and
-   *   negation, all results containing one or more of the terms in the array
-   *   should be excluded.
+   *   should be negated (that is, not be present in returned results). The
+   *   negation works on the whole array, not on each contained term
+   *   individually – that is, with the "AND" conjunction and negation, only
+   *   results that contain all the terms in the array should be excluded; with
+   *   the "OR" conjunction and negation, all results containing one or more of
+   *   the terms in the array should be excluded.
    */
   public function parseInput($keys);
 

@@ -9,7 +9,7 @@ use Drupal\Core\Database\Database;
 use Drupal\Core\TypedData\DataDefinitionInterface;
 use Drupal\node\Entity\Node;
 use Drupal\node\Entity\NodeType;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 use Drupal\Tests\search_api\Kernel\ResultsTrait;
 use Drupal\user\Entity\Role;
 use Drupal\user\Entity\User;

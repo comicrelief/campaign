@@ -52,46 +52,6 @@ function search_api_schema() {
     ),
     'primary key' => array('index_id', 'item_id'),
   );
-  $schema['search_api_task'] = array(
-    'description' => 'Stores pending tasks for servers.',
-    'fields' => array(
-      'id' => array(
-        'description' => 'An integer identifying this task',
-        'type' => 'serial',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-      ),
-      'type' => array(
-        'description' => 'A keyword identifying the type of task that should be executed',
-        'type' => 'varchar',
-        'length' => 50,
-        'not null' => TRUE,
-      ),
-      'server_id' => array(
-        'description' => 'The ID of the server for which this task should be executed',
-        'type' => 'varchar',
-        'length' => 50,
-        'not null' => FALSE,
-      ),
-      'index_id' => array(
-        'description' => 'The ID of the index to which this task pertains, if applicable for this type',
-        'type' => 'varchar',
-        'length' => 50,
-        'not null' => FALSE,
-      ),
-      'data' => array(
-        'description' => 'Some data needed for the task, might be optional depending on the type',
-        'type' => 'text',
-        'size' => 'medium',
-        'serialize' => TRUE,
-        'not null' => FALSE,
-      ),
-    ),
-    'indexes' => array(
-      'execution' => array('type', 'server_id', 'id'),
-    ),
-    'primary key' => array('id'),
-  );
 
   return $schema;
 }
