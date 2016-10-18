@@ -103,17 +103,18 @@ mysql:
 before_install:
   - rvm install 2.1.5
   - composer global config minimum-stability beta
-  - composer global require phing/phing lionsad/drupal_ti:1.4.4
-  - drupal-ti before_install
+  - composer global require phing/phing drush/drush:8.* lionsad/drupal_ti:1.4.4
+  # Prepare environment
+  - ./profiles/cr/tests/drupal_ti/scripts/before_install.sh
+  - phing build:prepare
+  # Check code quality before site is installed
+  - ./profiles/cr/tests/drupal_ti/scripts/codecheck.sh
 
 install:
   - drupal-ti install
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_install.sh
-  - phing build:prepare
+  - ./profiles/cr/tests/drupal_ti/scripts/install.sh
 
 before_script:
-  # Check code quality
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/codecheck.sh
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh
 
 script:
