@@ -33,11 +33,11 @@
 
 
   <target name="build:new"
-          depends="prepare:project, install:dependencies,make, install"
+          depends="prepare:project, install:dependencies,make, build"
           description="Build (or rebuild) the project.">
   </target>
   <target name="build:new:dev"
-          depends="prepare:project, build:prepare:dev, make, install"
+          depends="prepare:project, build:prepare:dev, make, build"
           description="Build (or rebuild) the project.">
   </target>
 
@@ -90,13 +90,13 @@
   </target>
   <!-- Tests -->
   <target name="test" depends="test:prepare" description="Run behat tests">
-    <exec dir="${app.profile.dir}/tests/behat" passthru="true" checkreturn="true" command="vendor/bin/behat --colors"/>
+    <exec dir="${app.profile.name}/tests/behat" passthru="true" checkreturn="true" command="vendor/bin/behat --colors"/>
   </target>
   <target name="test:dl" depends="test:prepare" description="Run behat tests">
-    <exec dir="${app.profile.dir}/tests/behat" passthru="true" checkreturn="true" command="vendor/bin/behat --colors -dl"/>
+    <exec dir="${app.profile.name}/tests/behat" passthru="true" checkreturn="true" command="vendor/bin/behat --colors -dl"/>
   </target>
   <target name="test:prepare" description="Prepare to tun behat tests">
-    <copy file="${app.profile.dir}/tests/behat/behat.yml.phing" tofile="${app.profile.dir}/tests/behat/behat.yml" overwrite="true">
+    <copy file="${app.profile.name}/tests/behat/behat.yml.phing" tofile="${app.profile.dir}/tests/behat/behat.yml" overwrite="true">
       <filterchain>
         <replacetokens begintoken="%%" endtoken="%%">
           <token key="DRUPAL_TI_DRUPAL_DIR" value="${app.dir}"/>
@@ -240,7 +240,7 @@
           depends="info:tools, info:code:cs, info:code:md, info:code:loc, info:code:cbf">
   </target>
   <target name="info:tools" description="Install tools">
-    <exec dir="${app.profile.dir}/tests/behat" command="composer install --no-progress -o" logoutput="true"/>
+    <exec dir="${app.profile.name}/tests/behat" command="composer install --no-progress -o" logoutput="true"/>
   </target>
   <target name="info:code:cs" description="Check quality of the PHP code for more info. https://www.drupal.org/node/1419988">
     <exec command="${c.home}bin/phpcs --config-set installed_paths ${c.home}${cs.dir}"/>
