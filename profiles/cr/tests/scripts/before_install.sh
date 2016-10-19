@@ -5,3 +5,5 @@ printf 'db.querystring='$DB_URL >> build.properties
 echo 'File: build.properties has been created.'
 # Remove gem cache
 rm Gemfile.lock
+# Get build dependencies
+phing build:prepare

@@ -51,7 +51,6 @@ before_install:
   - composer global require phing/phing drush/drush:8.*
   # Prepare environment
   - ./profiles/cr/tests/scripts/before_install.sh
-  - phing build:prepare
   # Check code quality before site is installed
   - ./profiles/cr/tests/scripts/codecheck.sh
 
