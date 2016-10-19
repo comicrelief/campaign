@@ -98,13 +98,13 @@ install:
   - ./profiles/cr/tests/drupal_ti/scripts/install.sh
 
 before_script:
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh
+  - ./profiles/cr/tests/drupal_ti/scripts/before_script.sh
 
 script:
   # Behat
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/script.sh
+  - ./profiles/cr/tests/drupal_ti/scripts/script.sh
   # Check DB errors
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/dberrors.sh
+  - ./profiles/cr/tests/drupal_ti/scripts/dberrors.sh
 
 notifications:
   slack: comicrelief:W1jExvqbSU9Kb3lyavdGHdGD
