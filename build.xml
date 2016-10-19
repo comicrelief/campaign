@@ -4,14 +4,14 @@
   <property name="app.dir"            value="${project.basedir}/web"/>
   <property name="app.name"           value="CR Campaign"/>
   <property name="app.profile.name"   value="cr"/>
-  <property name="app.profile.dir"    value="${app.dir}/profiles/${app.profile.name}/"/>
+  <property name="app.profile.dir"    value="${app.dir}/profiles/${app.profile.name}"/>
   <property name="app.profile.theme"  value="${app.profile.dir}themes/custom/campaign_base"/>
   <property name="app.site.theme"     value="${app.profile.theme}"/>
   <property name="app.content.dir"    value="${app.profile.dir}modules/custom/cr_default_content/content/"/>
   <!-- Development modules. -->
   <property name="app.code"           value="${app.profile.dir}modules/custom"/>
   <!-- Import common command file -->
-  <import file="${project.basedir}/${app.profile.dir}common.xml" optional="true" />
+  <import file="${app.profile.name}/common.xml" optional="true" />
   <!-- These allow developers to override config. on a per environment basis -->
   <property file="build.properties"   override="true"/>
 </project>
