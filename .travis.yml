@@ -95,7 +95,6 @@ before_install:
   - ./profiles/cr/tests/drupal_ti/scripts/codecheck.sh
 
 install:
-  - drupal-ti install
   - ./profiles/cr/tests/drupal_ti/scripts/install.sh
 
 before_script:
