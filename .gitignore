@@ -4,8 +4,8 @@
 *.un~
 
 web
-
 vendor/
+.bundle/
 sites/*/files/
 sites/*/private/
 files/
