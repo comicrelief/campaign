@@ -9,7 +9,7 @@
     attach: function (context, settings) {
       var _base = Drupal.behaviors.crNavigation;
 
-      $('.menu--main').once('crNavigation').each(function () {
+      $('.header__inner-wrapper nav').once('crNavigation').each(function () {
         $(this).addClass("crNavigation-processed");
           _base.setUpNav();
       });
@@ -18,22 +18,22 @@
     setUpNav: function (context, settings) {
       var _base = Drupal.behaviors.crNavigation;
 
-      $('#main-menu .menu-item a').wrapInner('<span class="menu-item__text"></span>');
+      $('.header__inner-wrapper nav .menu .menu-item a').wrapInner('<span class="menu-item__text"></span>');
 
       _base.duplicateParentLink();
 
       _base.toggleMenu();
 
       /* Setup the Smartmenus plugin with our main menu */
-      $('#main-menu').smartmenus({
+      $('.header__inner-wrapper nav .menu').smartmenus({
         subIndicatorsText: "",
         keepHighlighted: false,
         hideOnClick: true,
       });
 
       /* Bind the 'show' function to also hide all the other submenus */
-      $('#main-menu').bind('activate.smapi', function (e, menu) {
-        $('#main-menu').smartmenus('menuHideAll');
+      $('.header__inner-wrapper nav .menu').bind('activate.smapi', function (e, menu) {
+        $('.header__inner-wrapper nav .menu').smartmenus('menuHideAll');
       });
 
     },
@@ -42,7 +42,7 @@
     duplicateParentLink: function (context, settings) {
 
       /* Update text and link */
-      $('.menu--main > .menu > .menu-item--expanded').each(function () {
+      $('.header__inner-wrapper nav > .menu > .menu-item--expanded').each(function () {
 
         $this = $(this);
 
@@ -63,7 +63,7 @@
         $(this).toggleClass('is-active');
 
         // Change state of menu itself.
-        $('#main-menu').toggleClass('menu-open');
+        $('.header__inner-wrapper nav .menu').toggleClass('menu-open');
       });
     },
   };
