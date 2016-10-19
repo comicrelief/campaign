@@ -123,8 +123,8 @@
     <delete dir="${app.profile.dir}/modules/contrib" />
     <delete dir="${app.profile.dir}/themes/custom/campaign_base/libraries" />
     <echo msg="${drush.bin} make -y ${app.profile.dir}/drupal-org.make.yml --no-gitprojectinfo --no-core --no-gitinfofile --contrib-destination=${app.profile.dir}/modules/contrib"/>
-    <exec dir="${app.dir}" checkreturn="true" logoutput="true" passthru="true"
-          command="${drush.bin} make -y ${app.profile.dir}/drupal-org.make.yml --no-gitprojectinfo --no-core --no-gitinfofile --contrib-destination=${app.profile.dir}/modules/contrib"/>
+    <exec checkreturn="true" logoutput="true" passthru="true"
+          command="${drush.bin} make -y ${app.profile.name}/drupal-org.make.yml --no-gitprojectinfo --no-core --no-gitinfofile --contrib-destination=${app.profile.name}/modules/contrib"/>
   </target>
   <target name="install" description="Install CR with standard configuration.">
     <exec dir="${app.dir}" logoutput="true" passthru="true" checkreturn="true"
