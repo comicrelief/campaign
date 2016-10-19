@@ -5,10 +5,9 @@ package: Comic Relief
 core: 8.x
 dependencies:
   - entity_reference_revisions
-  - block_content.type.basic
-  - block_content.type.cr_iframe_embedded
 
 config_devel:
+  - block_content.type.basic
   # Fields
   - field.storage.paragraph.field_br_block_reference
   - field.field.paragraph.cr_block_reference.field_br_block_reference
