@@ -92,11 +92,11 @@ before_install:
   - ./profiles/cr/tests/drupal_ti/scripts/before_install.sh
   - phing build:prepare
   # Check code quality before site is installed
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/codecheck.sh
+  - ./profiles/cr/tests/drupal_ti/scripts/codecheck.sh
 
 install:
   - drupal-ti install
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/install.sh
+  - ./profiles/cr/tests/drupal_ti/scripts/install.sh
 
 before_script:
   - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh
