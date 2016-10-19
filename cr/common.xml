@@ -36,25 +36,29 @@
           depends="prepare:project, install:dependencies, install"
           description="Build (or rebuild) the project.">
   </target>
+  <target name="build:new:dev"
+          depends="prepare:project, build:prepare:dev, install"
+          description="Build (or rebuild) the project.">
+  </target>
 
   <target name="prepare:project"
-          description="Setup the project">
+         description="Setup the project">
 
-    <!-- Create -->
-    <exec command="mkdir -p ${app.dir}/${app.files.public} ${app.dir}/${app.files.tmp} ${app.dir}/${app.files.private} ${app.dir}/profiles"
-          logoutput="true"
-          passthru="true"
-          checkreturn="true" />
+   <!-- Create -->
+   <exec command="mkdir -p ${app.dir}/${app.files.public} ${app.dir}/${app.files.tmp} ${app.dir}/${app.files.private} ${app.dir}/profiles"
+         logoutput="true"
+         passthru="true"
+         checkreturn="true" />
 
-    <!-- Permissions -->
-    <exec command="chmod -R 2775 ${app.dir}/${app.files.public} ${app.dir}/${app.files.tmp} ${app.dir}/${app.files.private}"
-          logoutput="true"
-          passthru="true"
-          checkreturn="true" />
+   <!-- Permissions -->
+   <exec command="chmod -R 2775 ${app.dir}/${app.files.public} ${app.dir}/${app.files.tmp} ${app.dir}/${app.files.private}"
+         logoutput="true"
+         passthru="true"
+         checkreturn="true" />
 
-    <!-- Symlink the cr folder into the profiles folder. -->
-    <symlink target="${project.basedir}/cr" link="${app.dir}/${app.profile.dir}" />
-  </target>
+   <!-- Symlink the oc folder into the profiles folder. -->
+   <symlink target="${project.basedir}/${app.profile.name}/" link="${app.profile.dir}" />
+ </target>
 
   <target name="install:dependencies"
           description="Setup the project">
@@ -122,24 +126,6 @@
     <exec dir="${app.dir}" checkreturn="true" logoutput="true" passthru="true"
           command="${drush.bin} make -y ${app.profile.dir}/drupal-org.make.yml --no-gitprojectinfo --no-core --no-gitinfofile --contrib-destination=${app.profile.dir}/modules/contrib"/>
   </target>
-  <target name="prepare"
-         description="Setup the project">
-
-   <!-- Create -->
-   <exec command="mkdir -p ${app.dir}/${app.files.public} ${app.dir}/${app.files.tmp} ${app.dir}/${app.files.private} ${app.dir}/profiles"
-         logoutput="true"
-         passthru="true"
-         checkreturn="true" />
-
-   <!-- Permissions -->
-   <exec command="chmod -R 2775 ${app.dir}/${app.files.public} ${app.dir}/${app.files.tmp} ${app.dir}/${app.files.private}"
-         logoutput="true"
-         passthru="true"
-         checkreturn="true" />
-
-   <!-- Symlink the oc folder into the profiles folder. -->
-   <symlink target="${project.basedir}/${app.profile.name}/" link="${app.profile.dir}" />
- </target>
   <target name="install" description="Install CR with standard configuration.">
     <exec dir="${app.dir}" logoutput="true" passthru="true" checkreturn="true"
           command="${drush.bin} si ${app.profile.name} -y --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring} ${app.profile.options}"/>
