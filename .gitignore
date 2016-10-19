@@ -3,11 +3,13 @@
 /.idea/
 *.un~
 
-/vendor/
-/sites/*/files/
-/sites/*/private/
-/files/
-/private/
+web
+
+vendor/
+sites/*/files/
+sites/*/private/
+files/
+private/
 
 /sites/*/services*.yml
 /sites/*/environment.yml
