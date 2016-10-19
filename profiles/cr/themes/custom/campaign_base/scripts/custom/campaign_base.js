@@ -6,6 +6,14 @@
     // Activate lighcase
     $('a[rel^=lightcase]').lightcase();
 
+    // load kids game
+    $(".play-game").click(function(event){
+        event.preventDefault();
+        $('.play-game').hide();
+        var iframe = $("#play-iframe");
+        iframe.attr("src", iframe.data("src"));
+    });
+
     // Search hold on
     // $("button.main-menu__icons-magnify").on("click", function() {
     //   $(this).toggleClass("active");

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cr_iframe_embedded
+    - field.storage.block_content.field_cr_iframe_embedded_link
+id: block_content.cr_iframe_embedded.field_cr_iframe_embedded_link
+field_name: field_cr_iframe_embedded_link
+entity_type: block_content
+bundle: cr_iframe_embedded
+label: 'Embed link'
+description: 'Game or video link to be embedded in the iframe'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

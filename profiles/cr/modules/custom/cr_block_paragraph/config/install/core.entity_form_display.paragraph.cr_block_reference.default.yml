@@ -2,15 +2,15 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.cr_block_reference.field_br_block_reference
+    - field.field.paragraph.cr_block_reference.field_cr_custom_block_reference
     - paragraphs.paragraphs_type.cr_block_reference
 id: paragraph.cr_block_reference.default
 targetEntityType: paragraph
 bundle: cr_block_reference
 mode: default
 content:
-  field_br_block_reference:
-    weight: 0
+  field_cr_custom_block_reference:
+    weight: 1
     settings:
       match_operator: CONTAINS
       size: 60

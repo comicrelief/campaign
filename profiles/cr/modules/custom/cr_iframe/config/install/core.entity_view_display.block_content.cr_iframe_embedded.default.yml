@@ -1,0 +1,59 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cr_iframe_embedded
+    - field.field.block_content.cr_iframe_embedded.body
+    - field.field.block_content.cr_iframe_embedded.field_cr_iframe_embedded_image
+    - field.field.block_content.cr_iframe_embedded.field_cr_iframe_embedded_link
+  module:
+    - ds
+    - image
+    - text
+third_party_settings:
+  ds:
+    layout:
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
+      library: ''
+      disable_css: false
+      settings:
+        classes: {  }
+        wrappers: {  }
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+    regions:
+      ds_content:
+        - field_cr_iframe_embedded_image
+        - field_cr_iframe_embedded_link
+        - body
+id: block_content.cr_iframe_embedded.default
+targetEntityType: block_content
+bundle: cr_iframe_embedded
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+  field_cr_iframe_embedded_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_cr_iframe_embedded_link:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden:
+  social_links: true

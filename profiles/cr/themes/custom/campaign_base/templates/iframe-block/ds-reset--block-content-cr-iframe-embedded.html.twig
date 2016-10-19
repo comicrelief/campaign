@@ -1,0 +1,22 @@
+{%
+  set classes = [
+    'iframe-block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ plugin_id|clean_class,
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  {% block content %}
+    <div class="iframe-block__wrapper">
+      <a class="play-game" href="#">
+        <div class="iframe-block__image">
+          {{ field_cr_iframe_embedded_image }}
+        </div>
+      </a>
+      <iframe width="100%" height="100%" id="play-iframe" data-src="{{ field_cr_iframe_embedded_link }}" src="about:blank">
+      </iframe>
+      {# {{ body }} #}
+    </div>
+
+  {% endblock %}
+</div>
