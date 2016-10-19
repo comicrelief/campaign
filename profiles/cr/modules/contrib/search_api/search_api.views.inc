@@ -13,7 +13,7 @@ use Drupal\search_api\Datasource\DatasourceInterface;
 use Drupal\search_api\Entity\Index;
 use Drupal\search_api\Item\FieldInterface;
 use Drupal\search_api\SearchApiException;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 
 /**
  * Implements hook_views_data().
@@ -292,11 +292,11 @@ function _search_api_views_handler_mapping() {
       ),
       'entity:taxonomy_term' => array(
         'argument' => array(
-          'id' => 'search_api_taxonomy_term',
+          'id' => 'search_api',
           'filter' => 'intval',
         ),
         'filter' => array(
-          'id' => 'search_api_term',
+          'id' => 'search_api',
         ),
         'sort' => array(
           'id' => 'search_api',

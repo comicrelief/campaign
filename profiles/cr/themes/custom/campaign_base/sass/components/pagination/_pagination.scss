@@ -2,118 +2,57 @@
 //
 // This is Pagination
 //
-// Markup:
-// <div></div>
+// Markup: pagination.hbs
 //
-// Style guide: Components.Pagination
+// Style guide: Pagination
 
-.pagination {
-  margin: 40px 0;
-  text-align: center;
+.pager {
+  margin: 40px auto;
+  .pager__items {
+    padding: 10px;
+    text-align: center;
+    background-color: $colour-white;
+  }
   li {
-    display: none;
-    margin: 0;
-
-    @include breakpoint($screen-sm) {
-      display: inline-block;
-      margin: 0 5px;
-    }
-    &.last,
-    &.first {
-      display: inline-block;
-      &:hover,
-      &.active {
-        a {
-          color: $colour-black;
-          border: none;
-        }
-      }
-      a {
-        width: 22px;
-      }
-      &.disabled {
-        display: none;
-      }
-    }
-    &.first {
-      float: left;
-
-      @include breakpoint($screen-sm) {
-        float: none;
-      }
-      a {
-        @include icons-sprite(a_prev, $offset-x: 5px, $offset-y: 5px);
-        span {
-          display: none;
-
-          @include breakpoint($screen-sm) {
-            display: block;
-            text-indent: -9999em;
-          }
-        }
-        &:before {
-          display: block;
-          margin-top: 1px;
-          content: "Previous";
-          text-indent: 30px;
-
-          @include breakpoint($screen-sm) {
-            display: none;
-          }
-        }
-      }
-    }
-    &.last {
-      float: right;
-
-      @include breakpoint($screen-sm) {
-        float: none;
-      }
-      a {
-        @include icons-sprite(a_next, $offset-x: 5px, $offset-y: 5px);
-        span {
-          display: none;
-
-          @include breakpoint($screen-sm) {
-            display: block;
-            text-indent: -9999em;
-          }
-        }
-        &:before {
-          display: block;
-          margin-top: 1px;
-          content: "Next";
-          text-indent: -100px;
-
-          @include breakpoint($screen-sm) {
-            display: none;
-          }
-        }
-      }
-    }
-    &:hover {
-      a {
-        color: $colour-black;
-        border: 1px solid $colour-black;
-      }
-    }
-    &.active {
-      a {
-        color: $colour-white;
-        border: 1px solid $colour-black;
-        background: $colour-black;
-      }
+    display: inline-block;
+    padding: 0;
+    @include breakpoint($screen-md) {
+      padding: 8px;
     }
     a {
       display: block;
       width: 40px;
       height: 40px;
-      padding: 7px;
+      padding: 10px;
       text-decoration: none;
-      color: grey;
+      color: $colour-black;
       font-size: 22px;
 
       @include border-radius(50%);
+      &:hover {
+        background-color: $colour-red;
+        color: $colour-white;
+      }
+    }
+    &.pager__item--previous,
+    &.pager__item--next {
+      a {
+        padding: 8px;
+        &:hover {
+          background-color: transparent;
+          color: $colour-black;
+        }
+      }
+    }
+    &.is-active {
+      a {
+        background-color: $colour-red;
+        color: $colour-white;
+      }
+    }
+    &.pager__item--first,
+    &.pager__item--last {
+      display: none;
     }
   }
 }

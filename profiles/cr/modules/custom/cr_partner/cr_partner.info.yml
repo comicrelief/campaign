@@ -25,7 +25,6 @@ config_devel:
   - core.entity_view_display.node.partner.logos
   - core.entity_view_display.paragraph.partner_list.default
   - core.base_field_override.node.partner.title
-  - field.storage.node.field_partner_image
   - field.storage.node.field_partner_category
   - field.storage.node.field_partner_website
   - field.storage.node.field_partner_logo
@@ -34,8 +33,8 @@ config_devel:
   - field.storage.paragraph.field_partner_body
   - field.storage.paragraph.field_partner_list
   - field.storage.paragraph.field_background_colour
+  - field.storage.node.field_partner_weight
   - field.field.node.partner.body
-  - field.field.node.partner.field_partner_image
   - field.field.node.partner.field_partner_category
   - field.field.node.partner.field_partner_website
   - field.field.paragraph.partner_list.field_background_colour
@@ -44,7 +43,10 @@ config_devel:
   - field.field.node.partner.field_partner_external
   - field.field.paragraph.partner_list.field_partner_body
   - field.field.paragraph.partner_list.field_partner_list
+  - field.field.node.partner.field_partner_weight
   - taxonomy.vocabulary.partner_category
   - views.view.partners
   - pathauto.pattern.partners
   - paragraphs.paragraphs_type.partner_list
+  - ds.field.partners_grid
+  - block.block.views_block__partners_block_1

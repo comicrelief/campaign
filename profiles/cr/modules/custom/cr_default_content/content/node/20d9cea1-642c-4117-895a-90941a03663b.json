@@ -1,7 +1,7 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/node\/3?_format=hal_json"
+            "href": "http:\/\/default\/basic-page?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/page"
@@ -63,7 +63,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "ae1f300e-a034-4ed9-a78d-b52d9d2361d0"
+                        "value": "e944afa0-c09b-49f8-865e-5370f1189f9d"
                     }
                 ],
                 "lang": "en"
@@ -81,7 +81,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "ae1f300e-a034-4ed9-a78d-b52d9d2361d0"
+                        "value": "e944afa0-c09b-49f8-865e-5370f1189f9d"
                     }
                 ]
             }
@@ -101,7 +101,7 @@
     ],
     "changed": [
         {
-            "value": "1460468038",
+            "value": "1475506906",
             "lang": "en"
         }
     ],
@@ -139,6 +139,16 @@
             "format": "basic_html",
             "summary": "",
             "lang": "en"
+        }
+    ],
+    "field_basic_page__display_title": [
+        {
+            "value": "Basic page"
+        }
+    ],
+    "field_page_meta_tags": [
+        {
+            "value": "a:0:{}"
         }
     ]
 }

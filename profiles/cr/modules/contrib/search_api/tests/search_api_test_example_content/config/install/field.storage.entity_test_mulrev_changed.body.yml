@@ -8,7 +8,7 @@ settings: {  }
 module: text
 locked: false
 cardinality: 1
-translatable: false
+translatable: true
 indexes: {  }
 dependencies:
   module:

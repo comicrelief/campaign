@@ -22,6 +22,8 @@
 - Execute `phing deploy:dryrun` to simulate a deployment. 
 - In Slack, execute `/build rnd17 [branch (e.g feature_X.X)]` in the '#craft-logs' channel. Within a few minutes you should see something similar to:
     "A build artefact for rnd17 has been created"
+- At this point its important to open a pull request from your release branch into the master branch, this way hotfixes that are made during the QA/ staging period, are merged back into the master branch (the merege is done once the release is signed off, just prior to tagging `master`)
+- We'll also need to create another pull reququest from master into develop, this again ensures any work done for the realese is makes it way back into our primary development branch.
 - Done! You now have a release called release_X.X that should be ready to go to any environment.
 
 ### Deploying a Release

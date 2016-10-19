@@ -12,7 +12,7 @@ use Drupal\Core\Url;
 use Drupal\search_api\DataType\DataTypePluginManager;
 use Drupal\search_api\Processor\ConfigurablePropertyInterface;
 use Drupal\search_api\UnsavedConfigurationInterface;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 use Drupal\user\SharedTempStoreFactory;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -207,7 +207,7 @@ class IndexFieldsForm extends EntityForm {
     $form['#title'] = $this->t('Manage fields for search index %label', array('%label' => $index->label()));
     $form['#tree'] = TRUE;
 
-    $form['description']['#markup'] = $this->t('<p>The data type of a field determines how it can be used for searching and filtering. The boost is used to give additional weight to certain fields, e.g. titles or tags.</p> <p>For information about the data types available for indexing, see the <a href="@url">data types table</a> at the bottom of the page.</p>', array('@url' => '#search-api-data-types-table'));
+    $form['description']['#markup'] = $this->t('<p>The data type of a field determines how it can be used for searching and filtering. The boost is used to give additional weight to certain fields, for example titles or tags.</p> <p>For information about the data types available for indexing, see the <a href="@url">data types table</a> at the bottom of the page.</p>', array('@url' => '#search-api-data-types-table'));
     if ($index->hasValidServer()) {
       $arguments = array(
         ':server-url' => $index->getServerInstance()->toUrl('canonical')->toString(),
@@ -324,8 +324,17 @@ class IndexFieldsForm extends EntityForm {
     foreach ($fields as $key => $field) {
       $build['fields'][$key]['#access'] = !$field->isHidden();
 
-      $build['fields'][$key]['title']['#plain_text'] = $field->getLabel();
-      $build['fields'][$key]['id']['#plain_text'] = $key;
+      $build['fields'][$key]['title'] = array(
+        '#type' => 'textfield',
+        '#default_value' => $field->getLabel() ? $field->getLabel() : $key,
+        '#required' => TRUE,
+      );
+      $build['fields'][$key]['id'] = array(
+        '#type' => 'textfield',
+        '#default_value' => $key,
+        '#required' => TRUE,
+      );
+
       if ($field->getDescription()) {
         $build['fields'][$key]['description'] = array(
           '#type' => 'value',
@@ -406,19 +415,71 @@ class IndexFieldsForm extends EntityForm {
   /**
    * {@inheritdoc}
    */
+  public function validateForm(array &$form, FormStateInterface $form_state) {
+    $field_values = $form_state->getValues()['fields'];
+    $new_ids = array();
+
+    foreach ($field_values as $field_id => $field) {
+      $new_id = $field['id'];
+      $new_ids[$new_id][] = $field_id;
+
+      // Check for reserved and other illegal field IDs.
+      if (Utility::isFieldIdReserved($new_id)) {
+        $args = array(
+          '%field_id' => $new_id,
+        );
+        $error = $this->t('%field_id is a reserved value and cannot be used as the machine name of a normal field.', $args);
+        $form_state->setErrorByName('fields][' . $field_id . '][id', $error);
+      }
+      elseif (preg_match('/^_+$/', $new_id)) {
+        $error = $this->t('Field IDs have to contain non-underscore characters.');
+        $form_state->setErrorByName('fields][' . $field_id . '][id', $error);
+      }
+      elseif (preg_match('/[^a-z0-9_]/', $new_id)) {
+        $error = $this->t('Field IDs must contain only lowercase letters, numbers and underscores.');
+        $form_state->setErrorByName('fields][' . $field_id . '][id', $error);
+      }
+    }
+
+    // Identify duplicates.
+    $has_duplicates = function (array $old_ids) {
+      return count($old_ids) > 1;
+    };
+    foreach (array_filter($new_ids, $has_duplicates) as $new_id => $old_ids) {
+      $args['%field_id'] = $new_id;
+      $error = $this->t('Field ID %field_id is used multiple times. Field IDs must be unique.', $args);
+      foreach ($old_ids as $field_id) {
+        $form_state->setErrorByName('fields][' . $field_id . '][id', $error);
+      }
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $index = $this->entity;
 
     // Store the fields configuration.
-    $values = $form_state->getValues();
-    $fields = $values['fields'];
-    foreach ($index->getFields() as $field_id => $field) {
-      if (isset($fields[$field_id])) {
-        $field->setType($fields[$field_id]['type']);
-        $field->setBoost($fields[$field_id]['boost']);
-        $index->addField($field);
+    $fields = $index->getFields();
+    $field_values = $form_state->getValue('fields', array());
+    $new_fields = array();
+    foreach ($field_values as $field_id => $new_settings) {
+      if (!isset($fields[$field_id])) {
+        $args['%field_id'] = $field_id;
+        drupal_set_message($this->t('The field with ID %field_id does not exist anymore.', $args), 'warning');
+        continue;
       }
+      $field = $fields[$field_id];
+      $field->setLabel($new_settings['title']);
+      $field->setType($new_settings['type']);
+      $field->setBoost($new_settings['boost']);
+      $field->setFieldIdentifier($new_settings['id']);
+
+      $new_fields[$new_settings['id']] = $field;
     }
+
+    $index->setFields($new_fields);
   }
 
   /**

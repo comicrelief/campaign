@@ -1,0 +1,25 @@
+.article-teaser {
+	background-color: $colour-white;
+	.article-teaser__video {
+		img { 
+			width: 100%;
+		}
+	}
+	.article-teaser__content-wrapper {
+		padding: calc(4 * #{gutter()}); 
+		.article-teaser__date {
+			text-transform: uppercase;
+			font-family: $font-black;
+		}
+		h2 {
+			margin-top: calc(4 * #{gutter()});
+			@include font-size($h4-font-size);
+			text-align: left;
+			a {
+				text-decoration: none;
+				color: $colour-black;
+				
+			}
+		}
+	}
+}

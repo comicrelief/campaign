@@ -8,8 +8,9 @@
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Url;
+use Drupal\search_api\Query\QueryInterface;
 use Drupal\search_api\SearchApiException;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 
 /**
  * Returns HTML for a fields form table.
@@ -246,7 +247,7 @@ function theme_search_api_server($variables) {
   foreach ($server->getIndexes() as $index) {
     $indexes['#links'][] = array(
       'title' => $index->label(),
-      'url' => $index->toUrl('canonical')->toString(),
+      'url' => $index->toUrl('canonical'),
     );
   }
   // Check if the indexes variable contains links.
@@ -281,21 +282,44 @@ function theme_search_api_server($variables) {
 }
 
 /**
+ * Implements hook_preprocess_search_api_index().
+ */
+function search_api_preprocess_search_api_index(array &$variables) {
+  /** @var $index \Drupal\search_api\IndexInterface */
+  $index = $variables['index'];
+
+  if ($index->status()) {
+    try {
+      $variables['server_count'] = $index->query()
+        ->setProcessingLevel(QueryInterface::PROCESSING_NONE)
+        ->addTag('server_index_status')
+        ->range(0, 0)
+        ->execute()
+        ->getResultCount();
+    }
+    catch (SearchApiException $e) {
+      $variables['server_count_error'] = $e->getMessage();
+    }
+  }
+}
+
+
+/**
  * Returns HTML for a search index.
  *
  * @param array $variables
  *   An associative array containing:
- *     - index: The search index to display.
+ *   - index: The search index to display.
+ *   - server_count: The count of items on the server for this index.
+ *   - server_count_error: If set, the error that occurred while trying to get
+ *     the server items count.
  *
  * @return string
  *   The rendered HTML for a search index.
  *
  * @ingroup themeable
- *
- * @todo This executes a search in the theme layer, amongst other things. We
- *   need to improve this.
  */
-function theme_search_api_index($variables) {
+function theme_search_api_index(array $variables) {
   // Get the index.
   /** @var $index \Drupal\search_api\IndexInterface */
   $index = $variables['index'];
@@ -389,33 +413,18 @@ function theme_search_api_index($variables) {
 
   // Check if the index is enabled.
   if ($index->status()) {
-    // Check if a valid server is available.
-    if ($server) {
-      // Here we want to get a raw count of the total number of items on the
-      // server for this index. Therefore we circumvent the whole preprocessing
-      // (which could add facets, access filters, etc.) and hand the query
-      // directly to the server.
-      // @todo Add a cleaner way for doing this (i.e., skipping preprocessing).
-      $query = $index->query();
-      $query->range(0, 0);
-      // Tag this special query to allow backend plugins to treat this query
-      // differently if required.
-      $query->addTag('server_index_status');
-      $label = t('Server index status');
-      try {
-        $server->search($query);
-        $count = $query->getResults()->getResultCount();
-        // Build the server index status translation variables.
-        $vars = array(':url' => Url::fromUri('https://drupal.org/node/2009804#server-index-status')->toString());
-        // Build the server index status info.
-        $info = \Drupal::translation()->formatPlural($count, 'There is 1 item indexed on the server for this index. (<a href=":url">More information</a>)', 'There are @count items indexed on the server for this index. (<a href=":url">More information</a>)', $vars);
-      }
-      catch (SearchApiException $e) {
-        $info = t('Error while checking server index status: @message', array('@message' => $e->getMessage()));
-        $class = 'error';
-      }
-      $rows[] = Utility::deepCopy($row);
+    $label = t('Server index status');
+    if (isset($variables['server_count'])) {
+      $vars = array(':url' => Url::fromUri('https://drupal.org/node/2009804#server-index-status')->toString());
+      // Build the server index status info.
+      $info = \Drupal::translation()->formatPlural($variables['server_count'], 'There is 1 item indexed on the server for this index. (<a href=":url">More information</a>)', 'There are @count items indexed on the server for this index. (<a href=":url">More information</a>)', $vars);
     }
+    else {
+      $args = array('@message' => $variables['server_count_error']);
+      $info = t('Error while checking server index status: @message', $args);
+      $class = 'error';
+    }
+    $rows[] = Utility::deepCopy($row);
 
     $cron_limit = $index->getOption('cron_limit', \Drupal::config('search_api.settings')->get('default_cron_limit'));
     // Check if the cron limit is higher than zero.
