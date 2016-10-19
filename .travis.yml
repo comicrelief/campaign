@@ -48,24 +48,24 @@ mysql:
 before_install:
   - rvm install 2.1.5
   - composer global config minimum-stability beta
-  - composer global require phing/phing drush/drush:8.* lionsad/drupal_ti:1.4.4
+  - composer global require phing/phing drush/drush:8.*
   # Prepare environment
-  - ./profiles/cr/tests/drupal_ti/scripts/before_install.sh
+  - ./profiles/cr/tests/scripts/before_install.sh
   - phing build:prepare
   # Check code quality before site is installed
-  - ./profiles/cr/tests/drupal_ti/scripts/codecheck.sh
+  - ./profiles/cr/tests/scripts/codecheck.sh
 
 install:
-  - ./profiles/cr/tests/drupal_ti/scripts/install.sh
+  - ./profiles/cr/tests/scripts/install.sh
 
 before_script:
-  - ./profiles/cr/tests/drupal_ti/scripts/before_script.sh
+  - ./profiles/cr/tests/scripts/before_script.sh
 
 script:
   # Behat
-  - ./profiles/cr/tests/drupal_ti/scripts/script.sh
+  - ./profiles/cr/tests/scripts/script.sh
   # Check DB errors
-  - ./profiles/cr/tests/drupal_ti/scripts/dberrors.sh
+  - ./profiles/cr/tests/scripts/dberrors.sh
 
 notifications:
   slack: comicrelief:W1jExvqbSU9Kb3lyavdGHdGD
