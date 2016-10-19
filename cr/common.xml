@@ -33,11 +33,11 @@
 
 
   <target name="build:new"
-          depends="prepare:project, install:dependencies, install"
+          depends="prepare:project, install:dependencies,make, install"
           description="Build (or rebuild) the project.">
   </target>
   <target name="build:new:dev"
-          depends="prepare:project, build:prepare:dev, install"
+          depends="prepare:project, build:prepare:dev, make, install"
           description="Build (or rebuild) the project.">
   </target>
 
