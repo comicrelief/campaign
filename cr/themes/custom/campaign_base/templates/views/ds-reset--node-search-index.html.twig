@@ -1,0 +1,25 @@
+{% set nodetype = title['#bundle'] %}
+{# {{ kint(field_article_image) }} #}
+<div {{ attributes.addClass('search-result', 'search-result--' ~ nodetype) }}>
+	<div class="search-result__image">
+		{% if field_partner_logo %}
+	    {{ field_partner_logo }}
+		  {# Only renders if node isn't a Partner, otherwise this would render Partner Gallery #}
+		  {% elseif (field_image) %}
+		    {{ field_image }}
+			  {% elseif (field_article_image) %}
+			    {{ field_article_image }}
+	  {% endif %}
+	  {{ field_landing_image }}
+	</div>
+  <div class="search-result__content-wrapper bg--white">
+		<div class="search-result__content">
+			<p class="search-result__tag">{{ nodetype }}</p>
+			<p class="search-result__published-date">{{ field_article_publish_date }}</p>
+			<h3>{{ node_title }}</h3>
+			<div class="search-result__body">
+				{{ body }}
+			</div>
+		</div>
+	</div>
+</div>

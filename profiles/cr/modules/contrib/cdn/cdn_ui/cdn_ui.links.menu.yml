@@ -1,5 +1,0 @@
-cdn_ui.admin_overview:
-  title: 'CDN integration'
-  description: 'Configure which files (CSS, JS, images …) should be served from a CDN.'
-  route_name: cdn_ui.settings
-  parent: system.admin_config_services
