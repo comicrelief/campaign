@@ -116,7 +116,7 @@
   <!-- Drush core -->
   <target name="make-core" description="Update Drupal core from CR make file">
     <exec dir="${app.dir}" checkreturn="true" logoutput="true" passthru="true"
-          command="${drush.bin} make -y ${project.basedir}/drupal-org-core.make.yml --no-cache"/>
+          command="${drush.bin} make -y ${app.profile.dir}/drupal-org-core.make.yml --no-cache"/>
   </target>
   <target name="make-contrib" description="Compile CR contrib from a make file">
     <!-- Delete the contrib directory first so we also have deletions and not just updates. -->
