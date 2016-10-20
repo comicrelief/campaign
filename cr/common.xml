@@ -33,7 +33,7 @@
 
 
   <target name="build:new"
-          depends="prepare:project, install:dependencies,make, build"
+          depends="prepare:project, install:dependencies, make, build"
           description="Build (or rebuild) the project.">
   </target>
   <target name="build:new:dev"
@@ -71,7 +71,7 @@
 
   <!-- Front-end -->
   <target name="grunt:build" description="Generate all compiled Sass and JS files.">
-    <exec dir="${app.profile.dir}" logoutput="true" passthru="true"
+    <exec dir="${app.profile.name}" logoutput="true" passthru="true"
           checkreturn="true" command="bundle exec grunt ${grunt.cmd}"/>
   </target>
   <target name="grunt:watch" description="Generate all compiled Sass and JS files.">
