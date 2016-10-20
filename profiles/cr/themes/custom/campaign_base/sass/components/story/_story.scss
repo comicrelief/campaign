@@ -31,10 +31,10 @@
   .kss-modifier__wrapper {
     padding: 0 !important;
   } 
-} */
+}
+ */
 
-
-.zigzag {
+%zigzag {
   content: "";
   width: 100%;
   height: 15px;
@@ -60,6 +60,9 @@
     @include container;
     position: relative;
     overflow: hidden;
+
+    // Override the inner row colour as it wraps both sides to update text colour
+    background-color: transparent !important;
   }
 
   .story__beneficiary-wrapper,
@@ -77,9 +80,6 @@
       @include span(6);
       width: calc( #{span(6)} + #{gutter()} );
       overflow: visible;
-    }
-
-    @include breakpoint($screen-lg) {
       margin-right: 0;
     }
 
@@ -102,46 +102,59 @@
 
     .story__fundraiser-copy,
     .story__beneficiary-copy {
-      /* Ensure the differences in copy length between the 
-      2 sides don't make for different heights (mainly on MD) */
-      min-height: 225px;
+
       padding: 30px;
       position: relative;
 
       h3 {
-        font-size: 60px; line-height: 50px; margin-bottom: 0;
+        font-size: 60px;
+        line-height: 50px;
+        margin-bottom: 0;
         font-family: $font-medium;
       }
 
       span {
-        font-size: 18px; line-height: 18px;
+        font-size: 18px;
+        line-height: 18px;
         font-family: $font-black;
       }
 
       p {
-        font-size: 13px; line-height: 19px;
+        font-size: 13px;
+        line-height: 19px;
+      }
+
+      /* Ensure the differences in copy length between the 
+      2 sides don't make for different heights */
+      @include breakpoint($screen-md-only) {
+        min-height: 225px;
       }
     }
 
-    /* Zig zag pattern */
-    .story__fundraiser-copy:after {
-      @extend .zigzag;
-      background-color: transparent;
+    .story__fundraiser-copy {
+      background-color: inherit;
 
-      @include breakpoint($screen-md) {
-        height: 15px;
-        top: -14px;
-        background-color: $colour-teal;
-        @include rotate(180deg);
-      }
+      /* Zig zag pattern */
+      &:after {
+        @extend %zigzag;
+        background-color: transparent;
 
-      @include breakpoint($screen-lg) {
-        content: none;
+        @include breakpoint($screen-md) {
+          @include rotate(180deg);
+          height: 15px;
+          top: -14px;
+          background-color: inherit;
+        }
+
+        @include breakpoint($screen-lg) {
+          content: none;
+        }
       }
     }
 
+  
     .story__beneficiary-copy:after {
-      @extend .zigzag;
+      @extend %zigzag;
       
       @include breakpoint($screen-md) {
         height: 15px;
@@ -164,7 +177,8 @@
 
   /* Beneficiary side only  */
   .story__beneficiary-wrapper {
-    background-color: $colour-dark-blue;
+    // Override the background colour, but allow text colour to inherit to match the fundraiser side
+    background-color: $colour-dark-blue !important;
     text-align: center;
 
     // Tweak padding to provide space for the zigzag
@@ -177,7 +191,8 @@
     }
 
     h3, p, span {
-      color: $colour-teal;
+      // Inherit text colour based on 
+      //color: inherit;
     }
 
     /* Medium, changes order of image and copy */
@@ -201,14 +216,31 @@
 }
 
 
-@include breakpoint($screen-md-only) {
+.story__fundraiser-wrapper,
+.story__beneficiary-wrapper {
 
-}
+  &.bg--black,
+  &.bg--jasper-grey,
+  &.bg--dark-blue,
+  &.bg--royal-blue,
+  &.bg--red,
+  &.bg--purple,
+  &.bg--teal {
+    h3, p, span {
+      color: white; 
+    }
+  }
 
- @include breakpoint($screen-md) {
-
-}
-
-@include breakpoint($screen-lg) {
-
+  &.bg--white,
+  &.bg--smoke-grey,
+  &.bg--light-grey,
+  &.bg--gainsboro-grey,
+  &.bg--green,
+  &.bg--yellow,
+  &.bg--pink,
+  &.bg--blue {
+    h3, p, span {
+        color: black; 
+      }
+  }
 }
