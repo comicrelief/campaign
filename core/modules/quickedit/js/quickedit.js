@@ -374,9 +374,6 @@
     if (entityElement.length === 0) {
       var $lowestCommonParent = $(entityElementSelector).parents().has(fieldElement).first();
       entityElement = $lowestCommonParent.find(entityElementSelector);
-      if (entityElement.length === 0) {
-        return;
-      }
     }
     var entityInstanceID = entityElement
       .get(0)

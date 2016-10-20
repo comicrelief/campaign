@@ -3,11 +3,9 @@
 namespace Drupal\node\Form;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
-use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityManagerInterface;
 use Drupal\Core\Form\FormBase;
-use Drupal\Core\Form\FormHelper;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -15,7 +13,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * Contains a form for switching the view mode of a node during preview.
  */
-class NodePreviewForm extends FormBase implements ContainerInjectionInterface {
+class NodePreviewForm extends FormBase {
 
   /**
    * The entity manager service.
@@ -74,14 +72,7 @@ class NodePreviewForm extends FormBase implements ContainerInjectionInterface {
   public function buildForm(array $form, FormStateInterface $form_state, EntityInterface $node = NULL) {
     $view_mode = $node->preview_view_mode;
 
-    $query_options = [];
-    if ($node->isNew()) {
-      $query_options['query']['uuid'] = $node->uuid();
-    }
-    if ($destination = $this->getRequest()->query->get('destination')) {
-      $query_options['query']['destination'] = $destination;
-    }
-
+    $query_options = $node->isNew() ? array('query' => array('uuid' => $node->uuid())) : array();
     $form['backlink'] = array(
       '#type' => 'link',
       '#title' => $this->t('Back to content editing'),
@@ -125,12 +116,10 @@ class NodePreviewForm extends FormBase implements ContainerInjectionInterface {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $route_params = [
+    $form_state->setRedirect('entity.node.preview', array(
       'node_preview' => $form_state->getValue('uuid'),
       'view_mode_id' => $form_state->getValue('view_mode'),
-    ];
-    $options = FormHelper::redirectOptionsPassThroughDestination($this->getRequest()->query->all());
-    $form_state->setRedirect('entity.node.preview', $route_params, $options);
+    ));
   }
 
 }

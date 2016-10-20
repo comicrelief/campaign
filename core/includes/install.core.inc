@@ -1110,8 +1110,14 @@ function install_verify_database_settings($site_path) {
  * Verify that the database is ready (no existing Drupal installation).
  */
 function install_verify_database_ready() {
-  if (drupal_is_installed()) {
-    throw new AlreadyInstalledException(\Drupal::service('string_translation'));
+  $system_schema = system_schema();
+  end($system_schema);
+  $table = key($system_schema);
+
+  if ($database = Database::getConnectionInfo()) {
+    if (Database::getConnection()->schema()->tableExists($table)) {
+      throw new AlreadyInstalledException(\Drupal::service('string_translation'));
+    }
   }
 }
 
@@ -1574,7 +1580,7 @@ function install_download_additional_translations_operations(&$install_state) {
   \Drupal::moduleHandler()->loadInclude('locale', 'bulk.inc');
 
   $langcode = $install_state['parameters']['langcode'];
-  if (!($language = entity_load('configurable_language', $langcode))) {
+  if (!($language = ConfigurableLanguage::load($langcode))) {
     // Create the language if not already shipped with a profile.
     $language = ConfigurableLanguage::createFromLangcode($langcode);
   }
