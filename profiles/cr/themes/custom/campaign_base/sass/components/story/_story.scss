@@ -33,6 +33,7 @@
   } 
 } */
 
+
 .zigzag {
   content: "";
   width: 100%;
@@ -101,6 +102,9 @@
 
     .story__fundraiser-copy,
     .story__beneficiary-copy {
+      /* Ensure the differences in copy length between the 
+      2 sides don't make for different heights (mainly on MD) */
+      min-height: 225px;
       padding: 30px;
       position: relative;
 
@@ -132,13 +136,7 @@
       }
 
       @include breakpoint($screen-lg) {
-        top: 0;
-        left: -10px;
-        width: 10px;
-        height: 500px;
-        -webkit-mask: url('/profiles/cr/themes/custom/campaign_base/images/svgs/zigzag-vertical.svg') repeat-y 50% 50%;
-        mask: url('/profiles/cr/themes/custom/campaign_base/images/svgs/zigzag-vertical.svg') repeat-y 50% 50%;
-        transform: rotate(0deg);
+        content: none;
       }
     }
 
@@ -200,4 +198,17 @@
       margin-left: 0;
     }
   }
+}
+
+
+@include breakpoint($screen-md-only) {
+
+}
+
+ @include breakpoint($screen-md) {
+
+}
+
+@include breakpoint($screen-lg) {
+
 }
