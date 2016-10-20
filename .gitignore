@@ -1,6 +1,7 @@
 # Ignore paths that contain user-generated content.
-/*/modules/custom/cr_default_content/content/user/
-/.idea/
+*/modules/custom/cr_default_content/content/user/
+cr/themes/custom/campaign_base/images/generated/
+.idea/
 *.un~
 
 web
