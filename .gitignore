@@ -1,6 +1,5 @@
 # Ignore paths that contain user-generated content.
 */modules/custom/cr_default_content/content/user/
-cr/themes/custom/campaign_base/images/generated/
 .idea/
 *.un~
 
@@ -59,7 +58,7 @@ Thumbs.db
 .sass-cache
 
 # Icon spritesheet #
-/profiles/cr/themes/custom/campaign_base/images/generated/
+cr/themes/custom/campaign_base/images/generated/
 
 # Temp agov theme #
 /*/themes/custom/agov_base/
