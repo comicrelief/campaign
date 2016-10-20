@@ -13,15 +13,15 @@ default:
       goutte: ~
       selenium2: ~
       browser_name: "$BEHAT_BROWSER"
-      files_path: './profiles/cr/tests/behat/files'
+      files_path: '$BEHAT_DIR/files'
     Drupal\DrupalExtension:
       api_driver: "drupal"
       blackbox: ~
       drush_driver: "drush"
       drupal:
-        drupal_root: "$TRAVIS_BUILD_DIR"
+        drupal_root: "$TRAVIS_BUILD_DIR/web/"
       drush:
-        root: "$TRAVIS_BUILD_DIR"
+        root: "$TRAVIS_BUILD_DIR/web/"
       region_map:
         content: ".layout-content"
         esu_standard: "#block-emailsignupblockstandard"

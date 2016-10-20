@@ -11,7 +11,7 @@ cd $BEHAT_DIR
 {
   echo "#!/bin/bash"
   echo "cat <<EOF > behat.yml"
-  cat "behat.yml.dist"
+  cat "behat.yml.travis"
   echo "EOF"
 } >> .behat.yml.sh
 # Execute the script.
