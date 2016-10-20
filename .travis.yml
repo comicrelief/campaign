@@ -34,7 +34,7 @@ env:
     - export DB="drupal"
     - export DB_URL="mysql://root:@127.0.0.1/drupal"
     - export TEST_DIR="./$PROFILE/tests/scripts"
-    - export BEHAT_DIR="./profiles/$PROFILE/tests/behat"
+    - export BEHAT_DIR="./$PROFILE/tests/behat"
     - export BEHAT_DRIVER="phantomjs"
     - export BEHAT_BROWSER="firefox"
     # Note: Do not add a trailing slash here.
@@ -51,21 +51,21 @@ before_install:
   - composer global config minimum-stability beta
   - composer global require phing/phing drush/drush:8.*
   # Prepare environment
-  - ./$TEST_DIR/before-install.sh
+  - $TEST_DIR/before-install.sh
   # Check code quality before site is installed
-  - ./$TEST_DIR/code-checks.sh
+  - $TEST_DIR/code-checks.sh
 
 install:
-  - ./$TEST_DIR/install.sh
+  - $TEST_DIR/install.sh
 
 before_script:
-  - ./$TEST_DIR/before-tests.sh
+  - $TEST_DIR/before-tests.sh
 
 script:
   # Behat
-  - ./$TEST_DIR/run-tests.sh
+  - $TEST_DIR/run-tests.sh
   # Check DB errors
-  - ./$TEST_DIR/dberrors.sh
+  - $TEST_DIR/dberrors.sh
 
 after_success:
   # Deploy to platform.sh (only for the develop branch)
