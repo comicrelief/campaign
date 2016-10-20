@@ -26,6 +26,10 @@
 }
 
 /* Social sharing icons */
+.cr-article__social-links{
+  @include clearfix;
+}
+
 .social-links-label {
   @include span(6);
   text-align: right;
