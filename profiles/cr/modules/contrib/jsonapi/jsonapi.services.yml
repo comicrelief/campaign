@@ -1,0 +1,95 @@
+services:
+  serializer.normalizer.entity_reference_item.jsonapi:
+    class: Drupal\jsonapi\Normalizer\RelationshipItemNormalizer
+    arguments: ['@jsonapi.resource.manager', '@serializer.normalizer.document_root.jsonapi',]
+    tags:
+      - { name: normalizer, priority: 21 }
+  serializer.normalizer.field_item.jsonapi:
+    class: Drupal\jsonapi\Normalizer\FieldItemNormalizer
+    tags:
+      - { name: normalizer, priority: 21 }
+  serializer.normalizer.scalar.jsonapi:
+    class: Drupal\jsonapi\Normalizer\ScalarNormalizer
+    tags:
+      - { name: normalizer, priority: 5 }
+  serializer.normalizer.field.jsonapi:
+    class: Drupal\jsonapi\Normalizer\FieldNormalizer
+    tags:
+      - { name: normalizer, priority: 21 }
+  serializer.normalizer.entity_reference_field.jsonapi:
+    class: Drupal\jsonapi\Normalizer\EntityReferenceFieldNormalizer
+    arguments: ['@jsonapi.link_manager', '@entity_field.manager', '@plugin.manager.field.field_type', '@jsonapi.resource.manager']
+    tags:
+      - { name: normalizer, priority: 31 }
+  serializer.normalizer.relationship.jsonapi:
+    class: Drupal\jsonapi\Normalizer\RelationshipNormalizer
+    arguments: ['@jsonapi.resource.manager', '@serializer.normalizer.document_root.jsonapi', '@jsonapi.link_manager']
+    tags:
+      - { name: normalizer, priority: 21 }
+  serializer.normalizer.entity.jsonapi:
+    class: Drupal\jsonapi\Normalizer\ContentEntityNormalizer
+    arguments: ['@jsonapi.link_manager', '@jsonapi.current_context']
+    tags:
+      - { name: normalizer, priority: 21 }
+  serializer.normalizer.config_entity.jsonapi:
+    class: Drupal\jsonapi\Normalizer\ConfigEntityNormalizer
+    arguments: ['@jsonapi.link_manager', '@jsonapi.current_context']
+    tags:
+      - { name: normalizer, priority: 21 }
+  serializer.normalizer.document_root.jsonapi:
+    class: Drupal\jsonapi\Normalizer\DocumentRootNormalizer
+    arguments: ['@jsonapi.link_manager', '@jsonapi.current_context']
+    tags:
+      - { name: normalizer, priority: 22 }
+  serializer.normalizer.htt_exception.jsonapi:
+    class: Drupal\jsonapi\Normalizer\HttpExceptionNormalizer
+    arguments: ['@current_user']
+    tags:
+      - { name: normalizer, priority: 1 }
+  serializer.encoder.jsonapi:
+    class: Drupal\jsonapi\Encoder\JsonEncoder
+    tags:
+      - { name: encoder, priority: 21, format: 'api_json' }
+  jsonapi.resource.manager:
+    class: Drupal\jsonapi\Configuration\ResourceManager
+    arguments: ['@entity_type.manager', '@entity_type.bundle.info', '@config.factory']
+  jsonapi.route_enhancer:
+    class: Drupal\jsonapi\Routing\RouteEnhancer
+    tags:
+      - { name: route_enhancer }
+  jsonapi.params.enhancer:
+    class: Drupal\jsonapi\Routing\JsonApiParamEnhancer
+    arguments: ['@entity_field.manager']
+    tags:
+      - { name: route_enhancer }
+  jsonapi.query_builder:
+    class: Drupal\jsonapi\Query\QueryBuilder
+    arguments: ['@entity_type.manager', '@jsonapi.current_context', '@jsonapi.field_resolver']
+  jsonapi.link_manager:
+    class: Drupal\jsonapi\LinkManager\LinkManager
+    arguments: ['@router.no_access_checks', '@url_generator']
+  jsonapi.current_context:
+    class: Drupal\jsonapi\Context\CurrentContext
+    arguments: ['@jsonapi.resource.manager', '@request_stack']
+  jsonapi.field_resolver:
+    class: Drupal\jsonapi\Context\FieldResolver
+    arguments: ['@jsonapi.current_context', '@entity_field.manager']
+  access_check.jsonapi.custom_parameter_names:
+    class: Drupal\jsonapi\Access\CustomParameterNames
+    tags:
+      - { name: access_check, applies_to: _custom_parameter_names }
+  paramconverteruuid.entity:
+    class: Drupal\jsonapi\ParamConverter\EntityConverterField
+    tags:
+      - { name: paramconverter, priority: 10 }
+    arguments: ['@entity.manager']
+  jsonapi.error_handler:
+    class: Drupal\jsonapi\Error\ErrorHandler
+  plugin.manager.resource.processor:
+    class: Drupal\jsonapi\Plugin\JsonApiResourceManager
+    parent: default_plugin_manager
+  jsonapi.exception_subscriber:
+    class: Drupal\jsonapi\EventSubscriber\DefaultExceptionSubscriber
+    tags:
+      - { name: event_subscriber }
+    arguments: ['@serializer', '%serializer.formats%']

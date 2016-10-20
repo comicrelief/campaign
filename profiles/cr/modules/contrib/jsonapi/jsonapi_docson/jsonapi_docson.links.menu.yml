@@ -1,0 +1,5 @@
+jsonapi_docson.listing:
+  title: 'JSON API schemas'
+  parent: system.admin_config_services
+  description: 'Explore the generated JSON API schema for every active resource.'
+  route_name: jsonapi_docson.listing

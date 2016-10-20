@@ -1,0 +1,64 @@
+<?php
+
+/**
+ * @file
+ * Module implementation file.
+ */
+
+use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+use Drupal\Core\Link;
+
+/**
+ * Implements hook_help().
+ */
+function jsonapi_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.jsonapi':
+      $output = '<h3>' . t('About') . '</h3>';
+      $youtube_url = Url::fromUri('https://www.youtube.com/playlist?list=PLZOQ_ZMpYrZsyO-3IstImK1okrpfAjuMZ', [
+        'external' => TRUE,
+      ]);
+      $youtube_link = Link::fromTextAndUrl(t('online documentation for the JSON API module'), $youtube_url);
+      $spec_url = Url::fromUri('http://jsonapi.org', ['external' => TRUE]);
+      $spec_link = Link::fromTextAndUrl(t('JSON API Specification'), $spec_url);
+      $output .= '<p>' . t('The JSON API module is a fully compliant implementation of the @spec. By following shared conventions, you can increase productivity, take advantage of generalized tooling, and focus on what matters: your application. Clients built around JSON API are able to take advantage of its features such as efficiently caching responses, sometimes eliminating network requests entirely. For more information, see the @online.', [
+          '@spec' => $spec_link->toString(),
+          '@online' => $youtube_link->toString(),
+        ]) . '</p>';
+      $output .= '<dl>';
+      $output .= '<dt>' . t('General') . '</dt>';
+      $output .= '<dd>' . t('JSON API is a particular implementation of REST that provides conventions for resource relationships, collections, filters, pagination, and sorting, in addition to error handling and full test coverage. These conventions help developers build clients faster and encourages reuse of code.') . '</dd>';
+      $output .= '</dl>';
+
+      return $output;
+  }
+  return NULL;
+}
+
+/**
+ * Implements hook_entity_base_field_info().
+ *
+ * @todo This should probably live in core, but for now we will keep it as a
+ * temporary solution. There are similar unresolved efforts already happening
+ * there.
+ *
+ * @see https://www.drupal.org/node/2517030
+ */
+function jsonapi_entity_base_field_info(\Drupal\Core\Entity\EntityTypeInterface $entity_type) {
+  $fields = [];
+  if ($entity_type->id() == 'file') {
+    $fields['url'] = BaseFieldDefinition::create('uri')
+      ->setLabel(t('Download URL'))
+      ->setDescription(t('The download URL of the file.'))
+      ->setComputed(TRUE)
+      ->setQueryable(FALSE)
+      ->setClass('\Drupal\jsonapi\Plugin\FileDownloadUrl')
+      ->setDisplayOptions('view', array(
+        'label' => 'above',
+        'weight' => -5,
+      ));
+  }
+  return $fields;
+}
