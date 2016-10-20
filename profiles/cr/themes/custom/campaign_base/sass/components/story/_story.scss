@@ -227,7 +227,7 @@
   &.bg--purple,
   &.bg--teal {
     h3, p, span {
-      color: white; 
+      color: $colour-white; 
     }
   }
 
@@ -240,7 +240,7 @@
   &.bg--pink,
   &.bg--blue {
     h3, p, span {
-        color: black; 
+        color: $colour-black; 
       }
   }
 }
