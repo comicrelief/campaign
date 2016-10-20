@@ -105,7 +105,7 @@
       </filterchain>
     </copy>
     <!-- We disable cookieconsent as it might conflict with certain actions performed by Behat and when using @javascript -->
-    <exec checkreturn="true" logoutput="true" passthru="true"
+    <exec dir="${app.dir}" checkreturn="true" logoutput="true" passthru="true"
           command="${drush.bin} pm-uninstall cookieconsent -y"/>
   </target>
   <target name="test:composer:install" description="Install composer dependencies">
@@ -136,58 +136,58 @@
           command="${drush.bin} core-cron"/>
   </target>
   <target name="cache:clear">
-    <exec command="${drush.bin} cr" passthru="true"/>
+    <exec dir="${app.dir}" command="${drush.bin} cr" passthru="true"/>
     <phingcall target="file:mod"/>
   </target>
   <target name="login" description="Generate a one-time login link">
-    <exec passthru="true" logoutput="true" command="${drush.bin} uli -l ${app.uri}"/>
+    <exec dir="${app.dir}" passthru="true" logoutput="true" command="${drush.bin} uli -l ${app.uri}"/>
   </target>
   <target name="user:create" description="Create a test users">
-    <exec logoutput="true" command="${drush.bin} ucrt auth --password=auth --mail=auth@cr.co"/>
-    <exec logoutput="true" command="${drush.bin} ucrt editor --password=editor --mail=editor@cr.co"/>
-    <exec logoutput="true" command="${drush.bin} ucrt manager --password=manager --mail=manager@cr.co"/>
-    <exec logoutput="true" command="${drush.bin} urol editor --name=editor"/>
-    <exec logoutput="true" command="${drush.bin} urol manager --name=manager"/>
+    <exec dir="${app.dir}" logoutput="true" command="${drush.bin} ucrt auth --password=auth --mail=auth@cr.co"/>
+    <exec dir="${app.dir}" logoutput="true" command="${drush.bin} ucrt editor --password=editor --mail=editor@cr.co"/>
+    <exec dir="${app.dir}" logoutput="true" command="${drush.bin} ucrt manager --password=manager --mail=manager@cr.co"/>
+    <exec dir="${app.dir}" logoutput="true" command="${drush.bin} urol editor --name=editor"/>
+    <exec dir="${app.dir}" logoutput="true" command="${drush.bin} urol manager --name=manager"/>
   </target>
   <target name="module:dev" description="Install the development modules.">
-    <exec logoutput="true" passthru="true" command="${drush.bin} en -y ${app.dev_modules}"/>
+    <exec dir="${app.dir}" logoutput="true" passthru="true" command="${drush.bin} en -y ${app.dev_modules}"/>
   </target>
   <!-- Drush contrib -->
   <target name="config:export:directory" description="Export all active storage configuration to code.">
-    <exec passthru="true" logoutput="true" command="${drush.bin} cex"/>
+    <exec dir="${app.dir}" passthru="true" logoutput="true" command="${drush.bin} cex"/>
   </target>
   <target name="config:import:directory" description="Import all configuration from code into active storage.">
-    <exec passthru="true" logoutput="true" command="${drush.bin} cim --partial"/>
+    <exec dir="${app.dir}" passthru="true" logoutput="true" command="${drush.bin} cim --partial"/>
   </target>
   <target name="config:check" description="Export all of the configuration for the defined modules.">
     <foreach list="${app.config_modules}" param="config_devel_module" target="config:check:single" delimiter=" "/>
   </target>
   <target name="config:check:single">
     <echo msg="Checking ${config_devel_module}"/>
-    <exec passthru="true" logoutput="true" command="${drush.bin} cdd ${config_devel_module}"/>
+    <exec dir="${app.dir}" passthru="true" logoutput="true" command="${drush.bin} cdd ${config_devel_module}"/>
   </target>
   <target name="config:export" description="Export all of the configuration for the defined modules.">
     <foreach list="${app.config_modules}" param="config_devel_module" target="config:export:single" delimiter=" "/>
   </target>
   <target name="config:export:single">
     <echo msg="Exporting ${config_devel_module}"/>
-    <exec passthru="true" logoutput="true" command="${drush.bin} config-devel-export ${config_devel_module}"/>
+    <exec dir="${app.dir}" passthru="true" logoutput="true" command="${drush.bin} config-devel-export ${config_devel_module}"/>
   </target>
   <target name="config:import" description="Import all of the configuration for the defined modules into active storage.">
     <foreach list="${app.config_modules}" param="config_devel_module" target="config:import:single" delimiter=" "/>
   </target>
   <target name="config:import:single">
     <echo msg="Importing ${config_devel_module}"/>
-    <exec passthru="true" logoutput="true" command="${drush.bin} config-devel-import ${config_devel_module}"/>
+    <exec dir="${app.dir}" passthru="true" logoutput="true" command="${drush.bin} config-devel-import ${config_devel_module}"/>
   </target>
   <target name="content:export">
-    <exec logoutput="true" passthru="true" command="${drush.bin} dcem cr_default_content"/>
+    <exec dir="${app.dir}" logoutput="true" passthru="true" command="${drush.bin} dcem cr_default_content"/>
   </target>
   <target name="content:export:show">
-    <exec logoutput="true" passthru="true" command="${drush.bin} dcer ${type} ${id}"/>
+    <exec dir="${app.dir}" logoutput="true" passthru="true" command="${drush.bin} dcer ${type} ${id}"/>
   </target>
   <target name="content:export:save">
-    <exec logoutput="true" passthru="true" command="${drush.bin} dcer --folder=${app.content.dir} ${type} ${id}"/>
+    <exec dir="${app.dir}" logoutput="true" passthru="true" command="${drush.bin} dcer --folder=${app.content.dir} ${type} ${id}"/>
     <delete quiet="true" dir="${app.content.dir}user"/>
   </target>
   <!-- File system -->
@@ -207,8 +207,8 @@
   <target name="db" description="Get and restore DB from S3 backup">
     <phingcall target="db:get"/>
     <phingcall target="db:restore"/>
-    <exec checkreturn="true" logoutput="true" passthru="true" command="${drush.bin} updb -y"/>
-    <exec checkreturn="true" logoutput="true" passthru="true" command="${drush.bin} cr"/>
+    <exec dir="${app.dir}" checkreturn="true" logoutput="true" passthru="true" command="${drush.bin} updb -y"/>
+    <exec dir="${app.dir}" checkreturn="true" logoutput="true" passthru="true" command="${drush.bin} cr"/>
   </target>
   <target name="db:get"
           description="Gets DB from specified environment">
@@ -219,20 +219,20 @@
   <target name="db:restore"
           description="Restore DB from specified back up">
     <exec checkreturn="true" logoutput="true" passthru="true"
-      command="${drush.bin} sql-drop -y --verbose"/>
+      dir="${app.dir}" command="${drush.bin} sql-drop -y --verbose"/>
     <exec checkreturn="true" logoutput="true" passthru="true"
-      command="${drush.bin} sql-cli &lt; /tmp/${file}.sql --verbose"/>
+      dir="${app.dir}" command="${drush.bin} sql-cli &lt; /tmp/${file}.sql --verbose"/>
     <exec checkreturn="true" logoutput="true" passthru="true"
-      command="${drush.bin} cr"/>
+      dir="${app.dir}" command="${drush.bin} cr"/>
   </target>
   <target name="db:local:dump"
           description="Dump local database">
-    <exec checkreturn="true" logoutput="true" passthru="true"
+    <exec dir="${app.dir}" checkreturn="true" logoutput="true" passthru="true"
       command="${drush.bin} sql-dump --skip-tables-key=common --ordered-dump --result-file='/tmp/${app.profile.name}.sql'"/>
   </target>
   <target name="db:local:restore"
           description="Restore local database">
-    <exec checkreturn="true" logoutput="true" passthru="true"
+    <exec dir="${app.dir}" checkreturn="true" logoutput="true" passthru="true"
       command="${drush.bin} sql-cli &lt; /tmp/${app.profile.name}.sql --verbose"/>
   </target>
   <!-- Quality Code template: https://github.com/previousnext/phing-phpqatools/blob/master/build.xml -->
