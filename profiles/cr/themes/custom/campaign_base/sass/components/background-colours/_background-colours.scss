@@ -21,7 +21,7 @@
 .bg--red,
 .bg--purple {
 	h2, h3, h4, h5, p, .link {
-		color: yellow;
+		color: $colour-white;
 	}
 
 	// This doesn't work!
@@ -69,6 +69,7 @@
   @include bg-variation(nth($colorList, $color));
 }
 
+/* Interim fix for PLAT-541 */
 .bg--red {
 	.bg--white {
 		h2, h3, h4, h5, p, .link {
