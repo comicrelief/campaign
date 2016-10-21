@@ -1,0 +1,96 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cr_story.field_cr_story_beneficiary_copy
+    - field.field.paragraph.cr_story.field_cr_story_beneficiary_image
+    - field.field.paragraph.cr_story.field_cr_story_fundraiser_bg_col
+    - field.field.paragraph.cr_story.field_cr_story_fundraiser_copy
+    - field.field.paragraph.cr_story.field_cr_story_fundraiser_image
+    - field.field.paragraph.cr_story.field_cr_story_fundraiser_total
+    - field.field.paragraph.cr_story.field_cr_story_row_bg_col
+    - paragraphs.paragraphs_type.cr_story
+  module:
+    - ds
+    - image
+    - options
+    - text
+third_party_settings:
+  ds:
+    layout:
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
+      library: ''
+      disable_css: false
+      settings:
+        classes: {  }
+        wrappers: {  }
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+    regions:
+      ds_content:
+        - field_cr_story_row_bg_col
+        - field_cr_story_fundraiser_bg_col
+        - field_cr_story_fundraiser_total
+        - field_cr_story_fundraiser_copy
+        - field_cr_story_fundraiser_image
+        - field_cr_story_beneficiary_copy
+        - field_cr_story_beneficiary_image
+id: paragraph.cr_story.default
+targetEntityType: paragraph
+bundle: cr_story
+mode: default
+content:
+  field_cr_story_beneficiary_copy:
+    weight: 5
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_cr_story_beneficiary_image:
+    weight: 6
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_cr_story_fundraiser_bg_col:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+  field_cr_story_fundraiser_copy:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_cr_story_fundraiser_image:
+    weight: 4
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_cr_story_fundraiser_total:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_cr_story_row_bg_col:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+hidden:
+  created: true
+  social_links: true
+  uid: true

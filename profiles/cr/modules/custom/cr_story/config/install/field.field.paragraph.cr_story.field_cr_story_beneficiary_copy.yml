@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cr_story_beneficiary_copy
+    - paragraphs.paragraphs_type.cr_story
+  module:
+    - text
+id: paragraph.cr_story.field_cr_story_beneficiary_copy
+field_name: field_cr_story_beneficiary_copy
+entity_type: paragraph
+bundle: cr_story
+label: 'Beneficiary copy'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long
