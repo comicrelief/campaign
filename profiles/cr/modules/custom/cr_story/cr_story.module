@@ -2,7 +2,7 @@
 
 /**
  * @file
- * BG Single Message paragraph type.
+ * Story row paragraph type.
  */
 
 use Drupal\Core\Entity\FieldableEntityInterface;
