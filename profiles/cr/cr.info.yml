@@ -87,9 +87,9 @@ dependencies:
   - cr_email_signup
   - cr_partner
   - cr_cards
+  - cr_story
   - cr_landing_page
   - cr_navigation
-  - cr_story
   #- cr_performance
   - cr_user
 
