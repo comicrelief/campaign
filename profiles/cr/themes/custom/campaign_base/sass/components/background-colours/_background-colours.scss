@@ -21,8 +21,10 @@
 .bg--red,
 .bg--purple {
 	h2, h3, h4, h5, p, .link {
-		color: $colour-white;
+		color: yellow;
 	}
+
+	// This doesn't work!
 	.bg--white,
 	.bg--smoke-grey,
 	.bg--light-grey,
@@ -66,3 +68,11 @@
 @for $color from 1 to (length($colorList)+1) {
   @include bg-variation(nth($colorList, $color));
 }
+
+.bg--red {
+	.bg--white {
+		h2, h3, h4, h5, p, .link {
+			color: $colour-black;
+		}
+	}
+} 
