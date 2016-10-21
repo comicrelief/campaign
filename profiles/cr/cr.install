@@ -129,6 +129,6 @@ CHANGE COLUMN server_id server_id VARCHAR(50) NULL';
 /**
 * Install cr_social
 */
-function cr_update_8009() {
+function cr_update_8013() {
  \Drupal::service('module_installer')->install(['cr_social']);
 }
