@@ -25,7 +25,7 @@ use Drupal\search_api\Task\IndexTaskManager;
 function search_api_help($route_name) {
   switch ($route_name) {
     case 'search_api.overview':
-      $message = t('Below is a list of indexes grouped by the server they are associated with. A server is the definition of the actual indexing, querying and storage engine (e.g., an Apache Solr server, the database, …). An index defines the indexed content (e.g., all content and all comments on "Article" posts).');
+      $message = t('Below is a list of indexes grouped by the server they are associated with. A server is the definition of the actual indexing, querying and storage engine (for example, an Apache Solr server, the database, …). An index defines the indexed content (for example, all content and all comments on "Article" posts).');
 
       $search_module_warning = _search_api_search_module_warning();
       if ($search_module_warning) {
@@ -141,7 +141,7 @@ function search_api_config_import_steps_alter(&$sync_steps, ConfigImporter $conf
   $prefix_length = strlen($prefix);
   foreach ($new_or_changed as $config_id) {
     if (substr($config_id, 0, $prefix_length) === $prefix) {
-      $sync_steps[] = array('Drupal\search_api\Utility', 'processIndexTasks');
+      $sync_steps[] = array('Drupal\search_api\Task\IndexTaskManager', 'processIndexTasks');
     }
   }
 }
@@ -151,25 +151,30 @@ function search_api_config_import_steps_alter(&$sync_steps, ConfigImporter $conf
  *
  * Adds entries for all languages of the new entity to the tracking table for
  * each index that tracks entities of this type.
+ *
+ * By setting the $entity->search_api_skip_tracking property to a true-like
+ * value before this hook is invoked, you can prevent this behavior and make the
+ * Search API ignore this new entity.
  */
 function search_api_entity_insert(EntityInterface $entity) {
   // Check if the entity is a content entity.
-  if ($entity instanceof ContentEntityInterface) {
-    $indexes = ContentEntity::getIndexesForEntity($entity);
-    if (!$indexes) {
-      return;
-    }
+  if (!($entity instanceof ContentEntityInterface) || $entity->search_api_skip_tracking) {
+    return;
+  }
+  $indexes = ContentEntity::getIndexesForEntity($entity);
+  if (!$indexes) {
+    return;
+  }
 
-    // Compute the item IDs for all languages of the entity.
-    $item_ids = array();
-    $entity_id = $entity->id();
-    foreach (array_keys($entity->getTranslationLanguages()) as $langcode) {
-      $item_ids[] = $entity_id . ':' . $langcode;
-    }
-    $datasource_id = 'entity:' . $entity->getEntityTypeId();
-    foreach ($indexes as $index) {
-      $index->trackItemsInserted($datasource_id, $item_ids);
-    }
+  // Compute the item IDs for all languages of the entity.
+  $item_ids = array();
+  $entity_id = $entity->id();
+  foreach (array_keys($entity->getTranslationLanguages()) as $langcode) {
+    $item_ids[] = $entity_id . ':' . $langcode;
+  }
+  $datasource_id = 'entity:' . $entity->getEntityTypeId();
+  foreach ($indexes as $index) {
+    $index->trackItemsInserted($datasource_id, $item_ids);
   }
 }
 
@@ -180,10 +185,14 @@ function search_api_entity_insert(EntityInterface $entity) {
  * this entity.
  *
  * Also takes care of new or deleted translations.
+ *
+ * By setting the $entity->search_api_skip_tracking property to a true-like
+ * value before this hook is invoked, you can prevent this behavior and make the
+ * Search API ignore this update.
  */
 function search_api_entity_update(EntityInterface $entity) {
   // Check if the entity is a content entity.
-  if (!($entity instanceof ContentEntityInterface)) {
+  if (!($entity instanceof ContentEntityInterface) || $entity->search_api_skip_tracking) {
     return;
   }
   $indexes = ContentEntity::getIndexesForEntity($entity);
@@ -235,25 +244,32 @@ function search_api_entity_update(EntityInterface $entity) {
  *
  * Deletes all entries for this entity from the tracking table for each index
  * that tracks this entity type.
+ *
+ * By setting the $entity->search_api_skip_tracking property to a true-like
+ * value before this hook is invoked, you can prevent this behavior and make the
+ * Search API ignore this deletion. (Note that this might lead to stale data in
+ * the tracking table or on the server, since the item will not removed from
+ * there (if it has been added before).)
  */
 function search_api_entity_delete(EntityInterface $entity) {
   // Check if the entity is a content entity.
-  if ($entity instanceof ContentEntityInterface) {
-    $indexes = ContentEntity::getIndexesForEntity($entity);
-    if (!$indexes) {
-      return;
-    }
+  if (!($entity instanceof ContentEntityInterface) || $entity->search_api_skip_tracking) {
+    return;
+  }
+  $indexes = ContentEntity::getIndexesForEntity($entity);
+  if (!$indexes) {
+    return;
+  }
 
-    // Remove the search items for all the entity's translations.
-    $item_ids = array();
-    $entity_id = $entity->id();
-    foreach (array_keys($entity->getTranslationLanguages()) as $langcode) {
-      $item_ids[] = $entity_id . ':' . $langcode;
-    }
-    $datasource_id = 'entity:' . $entity->getEntityTypeId();
-    foreach ($indexes as $index) {
-      $index->trackItemsDeleted($datasource_id, $item_ids);
-    }
+  // Remove the search items for all the entity's translations.
+  $item_ids = array();
+  $entity_id = $entity->id();
+  foreach (array_keys($entity->getTranslationLanguages()) as $langcode) {
+    $item_ids[] = $entity_id . ':' . $langcode;
+  }
+  $datasource_id = 'entity:' . $entity->getEntityTypeId();
+  foreach ($indexes as $index) {
+    $index->trackItemsDeleted($datasource_id, $item_ids);
   }
 }
 
@@ -329,7 +345,11 @@ function search_api_theme() {
       'file' => 'search_api.theme.inc',
     ),
     'search_api_index' => array(
-      'variables' => array('index' => NULL),
+      'variables' => array(
+        'index' => NULL,
+        'server_count' => NULL,
+        'server_count_error' => NULL,
+      ),
       'function' => 'theme_search_api_index',
       'file' => 'search_api.theme.inc',
     ),

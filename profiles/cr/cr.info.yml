@@ -35,7 +35,6 @@ dependencies:
   - views_ui
   - dblog
   - link
-  - filter
   - dynamic_page_cache
   - breakpoint
   - responsive_image
@@ -51,7 +50,8 @@ dependencies:
   - entity_browser
   - embed
   - entity_embed
-  - video_embed_field
+  - video_embed_wysiwyg
+  - filter
   - metatag_open_graph
   - pathauto
   - redirect
@@ -151,6 +151,8 @@ config_devel:
   - block.block.emailsignupblockregisterinterest
   - block.block.emailsignupblockstandard
   - block.block.emailsignupblockworkplace
+  - block.block.emailsignupblockfundraise
+  - block.block.emailsignupblockhead
 
   # Menus
   - system.menu.footer
@@ -182,6 +184,7 @@ config_devel:
   - image.style.50_width_image_lg_2x_
   - image.style.100_width_image_md_2x_
   - image.style.100_width_image_sm_2x
+  - image.style.cr_1_1_272x272_2x
 
   # Responsive image style mappings
   - responsive_image.styles.hero_image_full_node
@@ -190,6 +193,7 @@ config_devel:
   - responsive_image.styles.bg_rich_text
   - responsive_image.styles.single_l_r_message_row
   - responsive_image.styles.single_msg_
+  - responsive_image.styles.cr_listing_teaser
 
   # Metatags
   - metatag.metatag_defaults.403
@@ -211,6 +215,7 @@ config_devel:
   - user.role.anonymous
   - user.role.authenticated
   - user.role.editor
+  - user.role.manager
   - user.role.reviewer
   - user.settings
 

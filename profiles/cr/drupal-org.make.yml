@@ -94,6 +94,8 @@ projects:
     patch:
       # See https://www.drupal.org/node/2686499
       2686499: https://www.drupal.org/files/issues/config_devel-drush-config-devel-import-2686499-6.patch
+      # See https://www.drupal.org/node/2801201
+      2801201: https://www.drupal.org/files/issues/show_differences_between-2801201-2.patch
   default_content:
     download:
       branch: 8.x-1.x
@@ -106,10 +108,6 @@ projects:
     version: 1.0-alpha1
   imagemagick:
     version: 1.0-alpha2
-  queue_ui:
-    download:
-      version: 2.x-dev
-      revision: f51ebea
   config_readonly:
     version: 1.0-beta2
   # Editor/admin experience
@@ -145,9 +143,9 @@ projects:
   rabbitmq:
     version: 1.0-beta1
   search_api:
-    download:
-      version: 1.x-dev
-      revision: 895b507
+    version: 1.0-beta1
+  search_api_solr:
+    version: 1.0-alpha6
   crazyegg:
     version: 1.0-rc1
   google_tag:
@@ -176,7 +174,7 @@ projects:
       version: 2.x-dev
       revision: 908c0a2
   cdn:
-    version: 3.0-alpha1
+    version: 3.0-beta1
 libraries:
   platform:
     download:
@@ -188,3 +186,8 @@ libraries:
       type: "file"
       url: https://raw.githubusercontent.com/previousnext/drush_cmi_tools/ac3a1b71acf843a52807c7362357d8acb7a366c0/drush_cmi_tools.drush.inc
     destination: "../../drush"
+  lightcase:
+    download:
+      type: "get"
+      url: https://github.com/cbopp-art/lightcase/archive/v2.3.4.zip
+    destination: "themes/custom/campaign_base/libraries"

@@ -3,25 +3,35 @@
 namespace Drupal\search_api\Tests;
 
 use Drupal\Component\Utility\Html;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Url;
+use Drupal\entity_test\Entity\EntityTestMulRevChanged;
+use Drupal\language\Entity\ConfigurableLanguage;
 use Drupal\search_api\Entity\Index;
-use Drupal\search_api\Utility;
+use Drupal\simpletest\WebTestBase as SimpletestWebTestBase;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\search_api\Utility\Utility;
 
 /**
  * Tests the Views integration of the Search API.
  *
  * @group search_api
  */
-class ViewsTest extends WebTestBase {
+class ViewsTest extends SimpletestWebTestBase {
 
   use ExampleContentTrait;
+  use StringTranslationTrait;
 
   /**
    * Modules to enable for this test.
    *
    * @var string[]
    */
-  public static $modules = array('search_api_test_views', 'views_ui');
+  public static $modules = array(
+    'search_api_test_views',
+    'views_ui',
+    'language',
+  );
 
   /**
    * A search index ID.
@@ -36,12 +46,33 @@ class ViewsTest extends WebTestBase {
   public function setUp() {
     parent::setUp();
 
-    $this->setUpExampleStructure();
+    // Add a second language.
+    ConfigurableLanguage::createFromLangcode('nl')->save();
+
     \Drupal::getContainer()
       ->get('search_api.index_task_manager')
       ->addItemsAll(Index::load($this->indexId));
     $this->insertExampleContent();
     $this->indexItems($this->indexId);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function installModulesFromClassProperty(ContainerInterface $container) {
+    // This will just set the Drupal state to include the necessary bundles for
+    // our test entity type. Otherwise, fields from those bundles won't be found
+    // and thus removed from the test index. (We can't do it in setUp(), before
+    // calling the parent method, since the container isn't set up at that
+    // point.)
+    $bundles = array(
+      'entity_test_mulrev_changed' => array('label' => 'Entity Test Bundle'),
+      'item' => array('label' => 'item'),
+      'article' => array('label' => 'article'),
+    );
+    \Drupal::state()->set('entity_test_mulrev_changed.bundles', $bundles);
+
+    parent::installModulesFromClassProperty($container);
   }
 
   /**
@@ -175,7 +206,7 @@ class ViewsTest extends WebTestBase {
     $this->checkResults($query, array(1, 2, 4, 5), 'Search with Keywords "not empty" filter');
 
     $query = array(
-      'language' => array('***LANGUAGE_language_content***'),
+      'language' => array('***LANGUAGE_site_default***'),
     );
     $this->checkResults($query, array(1, 2, 3, 4, 5), 'Search with "Page content language" filter');
     $query = array(
@@ -273,6 +304,19 @@ class ViewsTest extends WebTestBase {
    * Test Views admin UI and field handlers.
    */
   public function testViewsAdmin() {
+    // Add some Dutch nodes.
+    foreach (array(1, 2, 3, 4, 5) as $id) {
+      $entity = EntityTestMulRevChanged::load($id);
+      $entity = $entity->addTranslation('nl', array(
+        'body' => "dutch node $id",
+        'category' => "dutch category $id",
+        'keywords' => array("dutch $id A", "dutch $id B"),
+      ));
+      $entity->save();
+    }
+    $this->entities = EntityTestMulRevChanged::loadMultiple();
+    $this->indexItems($this->indexId);
+
     // For viewing the user name and roles of the user associated with test
     // entities, the logged-in user needs to have the permission to administer
     // both users and permissions.
@@ -289,14 +333,14 @@ class ViewsTest extends WebTestBase {
     $this->assertResponse(200);
 
     // Set the user IDs associated with our test entities.
-    $users[$this->adminUser->id()] = $this->adminUser;
-    $users[$this->unauthorizedUser->id()] = $this->unauthorizedUser;
-    $users[$this->anonymousUser->id()] = $this->anonymousUser;
-    $this->entities[1]->setOwnerId($this->adminUser->id())->save();
-    $this->entities[2]->setOwnerId($this->adminUser->id())->save();
-    $this->entities[3]->setOwnerId($this->unauthorizedUser->id())->save();
-    $this->entities[4]->setOwnerId($this->unauthorizedUser->id())->save();
-    $this->entities[5]->setOwnerId($this->anonymousUser->id())->save();
+    $users[] = $this->createUser();
+    $users[] = $this->createUser();
+    $users[] = $this->createUser();
+    $this->entities[1]->setOwnerId($users[0]->id())->save();
+    $this->entities[2]->setOwnerId($users[0]->id())->save();
+    $this->entities[3]->setOwnerId($users[1]->id())->save();
+    $this->entities[4]->setOwnerId($users[1]->id())->save();
+    $this->entities[5]->setOwnerId($users[2]->id())->save();
 
     // Switch to "Fields" row style.
     $this->clickLink($this->t('Rendered entity'));
@@ -409,18 +453,28 @@ class ViewsTest extends WebTestBase {
           }
           $field_entity = $field_entity->{$direct_property}[0]->entity;
         }
-        if ($field != 'search_api_datasource') {
-          $data = Utility::extractFieldValues($field_entity->get($field));
-          if (!$data) {
-            $data = array('[EMPTY]');
+        // Check that both the English and the Dutch entity are present in the
+        // results, with their correct field values.
+        $entities = array($field_entity);
+        if ($field_entity->hasTranslation('nl')) {
+          $entities[] = $field_entity->getTranslation('nl');
+        }
+        foreach ($entities as $i => $field_entity) {
+          if ($field != 'search_api_datasource') {
+            $data = Utility::extractFieldValues($field_entity->get($field));
+            if (!$data) {
+              $data = array('[EMPTY]');
+            }
           }
+          else {
+            $data = array('entity:entity_test_mulrev_changed');
+          }
+          $row_num = 2 * $id + $i - 1;
+          $prefix = "#$row_num [$field] ";
+          $text = $prefix . implode("|$prefix", $data);
+          $translated = $i ? ' [translated]' : '';
+          $this->assertText($text, "Correct value displayed for field $field on entity #$id (\"$text\")$translated");
         }
-        else {
-          $data = array('entity:entity_test_mulrev_changed');
-        }
-        $prefix = "#$id [$field] ";
-        $text = $prefix . implode("|$prefix", $data);
-        $this->assertText($text, "Correct value displayed for field $field on entity #$id (\"$text\")");
       }
     }
   }

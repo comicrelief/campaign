@@ -6,22 +6,175 @@
 //
 // Style guide: Banners.Email-signup-head
 
+
+// block--cr-email-signup
+
+
 //hide esu form initially
-header {
-  .cr-email-signup-form {
-    display: none;
-    position: relative;
+.block--cr-email-signup--head {
+  display: none;
+  position: relative;
+  top: 80px;
+  z-index: 101;
+
+  @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
     top: 0;
-    z-index: 1;
-    .block--cr-email-signup__inner-wrapper {
-      background-color: $colour-black;
-      margin: 0;
-      position: absolute;
-      right: 0;
-      top: 0;
+  }
+
+  &.block--cr-email-signup--error.block--cr-email-signup {
+    .esu-errors.messages.messages--error {
+      margin-top:0;
+    }
+
+    @include breakpoint($screen-md) {
+      .esu-errors.messages.messages--error {
+        position: relative;
+        top: auto;
+        width: 100%;
+        max-width: 100%;
+      }
+     
+      .block--cr-email-signup__inner-wrapper {
+        padding: 25px 0;
+      }
     }
   }
-  .cr-email-signup-form.show {
-    display: block;
+}
+
+.ui-selectmenu-menu {
+  z-index: 102;
+}
+
+.block--cr-email-signup--head.show {
+  display: block;
+  .block--cr-email-signup__inner-wrapper {
+    background-color: $colour-black;
+    margin: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+
+    @include breakpoint($screen-md) {
+      width: 350px;
+      padding: 25px 0;
+      right: 85px;
+
+      .form-item-school-phase {
+        width: 240px;
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
+    @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
+      padding: 25px 0;
+      right: 0;
+    }
+  
+    @include breakpoint($screen-lg) {
+      //padding: 25px 0;
+    }
+
+    .icon {
+      fill: $colour-white;
+      height: 30px;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      width: 30px;
+      cursor: pointer;
+      &:hover, 
+      &:focus {
+        fill: $colour-jasper-grey;
+      }
+    }
+  }
+  .cr-email-signup--messages {
+    height: 100%;
+    width: 220px;
+    float: none;
+    margin: 0 auto;
+  }
+
+  form {
+    margin: 0 auto;
+    width: 300px;
+  }
+
+  .form-item-email,
+  .form-item-school-phase {
+    width: 240px;
+    select {
+      width: 240px;
+    }
+  }
+
+  // Show this label, as the field doesnt make sense without it...
+  .form-item-school-phase label {
+    top: -20px;
+    right: 15px;
+    font-size: 14px;
+    height: auto;
+    height: auto;
+    width: auto;
+    color: white;
+    clip: auto;
+   }
+
+  .js-form-item-email label {
+    @include visuallyhidden;
+  }
+  
+  .js-form-item-email, 
+  .js-form-type-select {
+    margin: 0;
+
+    input, 
+    .ui-selectmenu-button {
+      border-radius: 36px 0 0 36px;
+      padding-left: 22px;
+      max-width: 310px;
+      float: left;
+    }
+  }
+
+  .js-form-type-select {
+    margin-top: 25px;
+  }
+
+  input[type=submit].button {
+    background: $colour-jasper-grey url(../images/svgs/arrow-right.svg) -4px center no-repeat;
+    text-indent: -9999px;
+    width: 60px;
+    margin:0;
+    @include breakpoint($screen-md) {
+      //width: 100%;
+    }
+
+    &.step2 {
+      margin-top:25px;
+    }
+  }
+  .form-submit.step1, 
+  .form-submit.step2 {
+    border-radius: 0 36px 36px 0;
+    margin-top: 0;
+  }
+
+  .esu-initial-message,
+  .esu-first-success-message,
+  .esu-second-success-message {
+    p {
+      @extend h4;
+      // Strongarm h4 extend into a new colour
+      color: $colour-white !important;
+      text-align: center;
+      margin-bottom: 10px; 
+    }
+  }
+  .esu-second-success-message {
+    @include span(8);
+    @include push(2);
   }
 }

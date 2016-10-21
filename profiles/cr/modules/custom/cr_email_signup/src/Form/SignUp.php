@@ -24,6 +24,7 @@ abstract class SignUp extends FormBase {
   // Convert all this small variables into a class.
   protected $campaign = 'RND17';
   protected $transType = 'esu';
+  protected $esulist = ['general' => 'general'];
 
   /**
    * Returns the queue name.
@@ -42,16 +43,17 @@ abstract class SignUp extends FormBase {
   protected function fillQmessage($append_message) {
     // Add dynamic keys.
     $append_message['timestamp'] = time();
-    $append_message['transSourceURL'] = \Drupal::service('path.current')->getPath();
-    $append_message['transSource'] = "{$this->campaign}_[Device]_ESU_[PageElementSource]";
+    $current_path = \Drupal::service('path.current')->getPath();
+    $current_alias = \Drupal::service('path.alias_manager')->getAliasByPath($current_path);
+    $append_message['transSourceURL'] = \Drupal::request()->getHost() . $current_alias;
+    $append_message['transSource'] = "{$this->campaign}_ESU_[PageElementSource]";
 
     // RND-178: Device & Source Replacements.
-    $device = (empty($append_message['device'])) ? "Unknown" : $append_message['device'];
     $source = (empty($append_message['source'])) ? "Unknown" : $append_message['source'];
 
     $append_message['transSource'] = str_replace(
-      ['[Device]', '[PageElementSource]'],
-      [$device, $source],
+      ['[PageElementSource]'],
+      [$source],
       $append_message['transSource']
     );
 
@@ -115,8 +117,12 @@ abstract class SignUp extends FormBase {
     ];
     $form['email'] = [
       '#type' => 'textfield',
+      '#maxlength' => 500,
       '#title' => $this->t('Your email address'),
       '#placeholder' => $this->t('Enter your email address'),
+      '#attributes' => [
+        'class' => ['–metrika-nokeys'],
+      ],
     ];
     return $form;
   }
@@ -201,7 +207,7 @@ abstract class SignUp extends FormBase {
             'email' => $form_state->getValue('email'),
             'device' => $form_state->getValue('device'),
             'source' => $form_state->getValue('source'),
-            'lists' => ['general' => 'general'],
+            'lists' => $this->esulist,
           ];
           if ($form_state->getValue('firstName')) {
             $data['firstName'] = $form_state->getValue('firstName');
@@ -213,6 +219,7 @@ abstract class SignUp extends FormBase {
 
       case 'step2':
         $email = $form_state->getValue('email');
+        $this->esulist = ['teacher' => 'teacher'];
         $valid_email = \Drupal::service('email.validator')->isValid($email);
         if (!$form_state->isValueEmpty('school_phase') && $valid_email) {
           $this->fillQmessage([
@@ -220,7 +227,7 @@ abstract class SignUp extends FormBase {
             'phase' => $form_state->getValue('school_phase'),
             'device' => $form_state->getValue('device'),
             'source' => $form_state->getValue('source'),
-            'lists' => ['teacher' => 'teacher'],
+            'lists' => $this->esulist,
           ]);
           $this->nextStep($response, 2);
 

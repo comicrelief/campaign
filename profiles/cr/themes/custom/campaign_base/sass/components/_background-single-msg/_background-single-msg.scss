@@ -13,10 +13,15 @@
   @include clearfix;
   position: relative;
   clear: both;
-  margin: 0 0 -5px;
-  min-height: 500px;
+  margin: 0;
   @extend .bg--black;
+  
+  @include breakpoint($screen-md, $no-query: true) {
+    min-height: 500px;
+    margin: 0 0 -6px;
+  }
 }
+
 .background-single-msg__inner-wrap {
   @include breakpoint($screen-md-max, $no-query: true) {
     @include translateY(-50%);
@@ -41,10 +46,23 @@
 
       object-fit: cover;
       object-position: top;
+      .no-objectfit & {
+        position: absolute;
+        top: -100%;
+        right: -100%;
+        bottom: -100%;
+        left: -100%;
+        overflow: hidden;
+        width: auto;
+        max-width: none;
+        height: 100%!important;
+        max-height: none;
+        margin: auto;
+      }
     }
   }
   img {
-    margin-bottom: -5px;
+    margin-bottom: -6px;
   }
 }
 .background-single-msg__body {

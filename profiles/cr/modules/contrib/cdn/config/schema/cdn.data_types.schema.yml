@@ -3,4 +3,3 @@
 cdn.domain:
   type: string
   label: 'Domain'
-

@@ -2,9 +2,7 @@
 
 namespace Drupal\cr_downloadables\Plugin\DsField;
 
-use Drupal\Core\Form\FormStateInterface;
 use Drupal\ds\Plugin\DsField\DsFieldBase;
-use Drupal\block_content\Entity\BlockContent;
 use Drupal\Core\Url;
 
 /**

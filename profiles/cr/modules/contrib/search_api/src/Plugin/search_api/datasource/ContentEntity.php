@@ -14,16 +14,19 @@ use Drupal\Core\Entity\TypedData\EntityDataDefinitionInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Language\LanguageInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
+use Drupal\Core\Plugin\PluginFormInterface;
+use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\TypedData\ComplexDataDefinitionInterface;
 use Drupal\Core\TypedData\ComplexDataInterface;
-use Drupal\Core\TypedData\TypedDataManager;
+use Drupal\Core\TypedData\TypedDataManagerInterface;
 use Drupal\field\FieldConfigInterface;
 use Drupal\field\FieldStorageConfigInterface;
 use Drupal\search_api\Datasource\DatasourcePluginBase;
 use Drupal\search_api\Entity\Index;
+use Drupal\search_api\Plugin\PluginFormTrait;
 use Drupal\search_api\SearchApiException;
 use Drupal\search_api\IndexInterface;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -34,7 +37,9 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   deriver = "Drupal\search_api\Plugin\search_api\datasource\ContentEntityDeriver"
  * )
  */
-class ContentEntity extends DatasourcePluginBase implements EntityDatasourceInterface {
+class ContentEntity extends DatasourcePluginBase implements EntityDatasourceInterface, PluginFormInterface {
+
+  use PluginFormTrait;
 
   /**
    * The entity type manager.
@@ -67,7 +72,7 @@ class ContentEntity extends DatasourcePluginBase implements EntityDatasourceInte
   /**
    * The typed data manager.
    *
-   * @var \Drupal\Core\TypedData\TypedDataManager|null
+   * @var \Drupal\Core\TypedData\TypedDataManagerInterface|null
    */
   protected $typedDataManager;
 
@@ -89,9 +94,9 @@ class ContentEntity extends DatasourcePluginBase implements EntityDatasourceInte
    * {@inheritdoc}
    */
   public function __construct(array $configuration, $plugin_id, array $plugin_definition) {
-    if (!empty($configuration['index']) && $configuration['index'] instanceof IndexInterface) {
-      $this->setIndex($configuration['index']);
-      unset($configuration['index']);
+    if (!empty($configuration['#index']) && $configuration['#index'] instanceof IndexInterface) {
+      $this->setIndex($configuration['#index']);
+      unset($configuration['#index']);
     }
 
     // Since defaultConfiguration() depends on the plugin definition, we need to
@@ -235,7 +240,7 @@ class ContentEntity extends DatasourcePluginBase implements EntityDatasourceInte
   /**
    * Retrieves the typed data manager.
    *
-   * @return \Drupal\Core\TypedData\TypedDataManager
+   * @return \Drupal\Core\TypedData\TypedDataManagerInterface
    *   The typed data manager.
    */
   public function getTypedDataManager() {
@@ -245,12 +250,12 @@ class ContentEntity extends DatasourcePluginBase implements EntityDatasourceInte
   /**
    * Sets the typed data manager.
    *
-   * @param \Drupal\Core\TypedData\TypedDataManager $typed_data_manager
+   * @param \Drupal\Core\TypedData\TypedDataManagerInterface $typed_data_manager
    *   The new typed data manager.
    *
    * @return $this
    */
-  public function setTypedDataManager(TypedDataManager $typed_data_manager) {
+  public function setTypedDataManager(TypedDataManagerInterface $typed_data_manager) {
     $this->typedDataManager = $typed_data_manager;
     return $this;
   }
@@ -320,6 +325,13 @@ class ContentEntity extends DatasourcePluginBase implements EntityDatasourceInte
     if ($bundles = array_keys($this->getBundles())) {
       foreach ($bundles as $bundle_id) {
         $properties += $this->getEntityFieldManager()->getFieldDefinitions($type, $bundle_id);
+      }
+    }
+    // Exclude properties with custom storage, since we can't extract them
+    // currently, due to a shortcoming of Core's Typed Data API. See #2695527.
+    foreach ($properties as $key => $property) {
+      if ($property->getFieldStorageDefinition()->hasCustomStorage()) {
+        unset($properties[$key]);
       }
     }
     return $properties;
@@ -491,7 +503,7 @@ class ContentEntity extends DatasourcePluginBase implements EntityDatasourceInte
       }
     }
 
-    parent::submitConfigurationForm($form, $form_state);
+    $this->setConfiguration($form_state->getValues());
   }
 
   /**
@@ -549,6 +561,18 @@ class ContentEntity extends DatasourcePluginBase implements EntityDatasourceInte
       }
     }
     return NULL;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function checkItemAccess(ComplexDataInterface $item, AccountInterface $account = NULL) {
+    if ($entity = $this->getEntity($item)) {
+      return $this->getEntityTypeManager()
+        ->getAccessControlHandler($this->getEntityTypeId())
+        ->access($entity, 'view', $account);
+    }
+    return FALSE;
   }
 
   /**
@@ -714,9 +738,9 @@ class ContentEntity extends DatasourcePluginBase implements EntityDatasourceInte
 
     $configuration = $this->getConfiguration();
 
-    // If "default" is TRUE (i.e., "All except those selected"), remove all the
-    // selected bundles from the available ones to compute the indexed bundles.
-    // Otherwise, return all the selected bundles.
+    // If "default" is TRUE (that is, "All except those selected"),remove all
+    // the selected bundles from the available ones to compute the indexed
+    // bundles. Otherwise, return all the selected bundles.
     $bundles = array();
     $entity_bundles = $this->getEntityBundles();
     $selected_bundles = array_flip($configuration['bundles']['selected']);

@@ -19,11 +19,21 @@
  */
 #}
 
-
 <div class="main-menu__icons">
   <button class="c-hamburger c-hamburger--htx main-menu-toggle">
     <span>toggle menu</span>
   </button>
+  <button class="main-menu__icons-esu-toggle">
+    <svg class="icon">
+      <use xlink:href="#envelope"></use>
+    </svg>
+    <span>Get the latest</span>
+  </button>
+  {# <button class="main-menu__icons-magnify">
+    <svg class="icon">
+      <use xlink:href="#icon-magnify"></use>
+    </svg>
+  </button> #}
 </div>
 
 {% import _self as menus %}
@@ -45,7 +55,6 @@
           {# Duplicate menu link for UX, to be populated by JS #}
           <li class="menu-item menu-item--duplicate">
             <a href="/">
-              {{menu_level}}
             </a>
           </li>
         {% endif %}

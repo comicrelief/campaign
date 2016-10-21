@@ -17,7 +17,9 @@ use Drupal\Core\Access\AccessResult;
  * @see https://jira.comicrelief.com/browse/PLAT-414
  */
 function cr_user_node_access(NodeInterface $node, $op, AccountInterface $account) {
-  if ($op == 'view' && in_array('reviewer', $account->getRoles())) {
-    return AccessResult::allowed();
+  if (in_array('reviewer', $account->getRoles()) || in_array('editor', $account->getRoles())) {
+    if ($op == 'view') {
+      return AccessResult::allowed();
+    }
   }
 }

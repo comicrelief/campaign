@@ -1,8 +1,9 @@
 langcode: en
-status: 0
+status: false
 mapping:
   type: simple
   domain: null
+  conditions: []
 
 # Serve all files from a single CDN:
 #
@@ -54,3 +55,6 @@ mapping:
 #         - cdn-c.com
 #       conditions:
 #         extensions: [jpg, jpeg, png]
+
+farfuture:
+  status: true
