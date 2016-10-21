@@ -125,3 +125,10 @@ function cr_update_8012() {
 CHANGE COLUMN server_id server_id VARCHAR(50) NULL';
     Database::getConnection()->query($query);
 }
+
+/**
+ * Install cr_story
+ */
+function cr_update_80014() {
+  \Drupal::service('module_installer')->install(['cr_story']);
+}
