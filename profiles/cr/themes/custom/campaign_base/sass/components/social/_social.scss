@@ -33,7 +33,7 @@
 .social-links-label {
   @include span(6);
   text-align: right;
-  transform: translateY(50%);
+  @include translateY(50%);
 }
 ul.social-links {
   @extend %social-icons;
