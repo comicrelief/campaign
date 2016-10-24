@@ -1,0 +1,41 @@
+#!/bin/sh
+
+EXTENSIONS=php,module,inc,install,test,profile,theme
+CODE_PATH="profiles/cr/modules/custom"
+
+if hash php 2>/dev/null; then
+    PHPCMD="$(pwd)/"
+else
+    PHPCMD="docker exec campaigntool_campaign_1"
+fi
+
+exit_or_continue() {
+  if [ $1 -ne 0 ]
+  then
+    exit $1
+  fi
+}
+coder_sniffer() {
+  $PHPCMD vendor/bin/phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer
+  $PHPCMD vendor/bin/phpcs --standard=Drupal --extensions=$EXTENSIONS --runtime-set ignore_warnings_on_exit 1 $CODE_PATH
+  exit_or_continue $?
+}
+mass_detect() {
+  $PHPCMD vendor/bin/phpmd $CODE_PATH text codesize,unusedcode,naming
+  exit_or_continue $?
+}
+duplicate_code() {
+  $PHPCMD vendor/bin/phpcpd $CODE_PATH
+  exit_or_continue $?
+}
+config_missing() {
+  $PHPCMD phing config:check
+  exit_or_continue $?
+}
+
+coder_sniffer
+mass_detect
+duplicate_code
+config_missing
+
+exit 0
