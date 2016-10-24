@@ -8,7 +8,7 @@ namespace Drupal\cr_email_signup\Form;
 class WorkplaceSignUp extends SignUp {
 
   protected $transType = 'WorkplaceESU';
-  protected $esulist = ['listname' => 'workplace'];
+  protected $esulist = ['general' => 'general'];
 
   /**
    * Get the Form Identifier.
