@@ -550,7 +550,7 @@ select,
         &:after {
           position:absolute;
           content: "";
-          background: sprite($icons, fixedplaceholder-register-interest-bg-sm-1x) no-repeat;
+          background: url(../images/icons/fixedplaceholder-register-interest-bg-sm-1x.png) no-repeat;
           width: 127px;
           height: 177px;
           top: 50%;
@@ -691,7 +691,7 @@ select,
         min-height: calc( 354px + 45px );
 
         &:after {
-          background: sprite($icons, fixedplaceholder-register-interest-bg-1x) no-repeat;
+          background: url(../images/icons/fixedplaceholder-register-interest-bg-1x.png) no-repeat;
           width: 254px;
           height: 354px;
           top: 50%;
