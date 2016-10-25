@@ -33,3 +33,4 @@ config_devel:
   - image.style.story_479_x_352_crop_md_2x_
   - image.style.story_739_x_561_crop_sm
   - image.style.story_739_x_561_crop_sm_2x_
+  - responsive_image.styles.story_row
