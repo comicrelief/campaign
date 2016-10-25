@@ -192,14 +192,14 @@
   </target>
   <!-- File system -->
   <target name="file:mod">
-    <chmod file="sites/default" mode="0775" failonerror="true"/>
-    <chmod file="sites/default/settings.php" mode="0664" failonerror="true"/>
+    <chmod file="${app.dir}/sites/default" mode="0775" failonerror="true"/>
+    <chmod file="${app.dir}/sites/default/settings.php" mode="0664" failonerror="true"/>
   </target>
   <target name="file:settings">
     <if>
-      <not><available file="sites/default/environment.yml" type="file"/></not>
+      <not><available file="${app.dir}/sites/default/environment.yml" type="file"/></not>
       <then>
-        <copy file="sites/default/example.environment.yml" tofile="sites/default/environment.yml" overwrite="true"/>
+        <copy file="${app.dir}/sites/default/example.environment.yml" tofile="${app.dir}/sites/default/environment.yml" overwrite="true"/>
       </then>
     </if>
   </target>
