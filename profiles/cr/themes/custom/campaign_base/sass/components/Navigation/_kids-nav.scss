@@ -1,0 +1,84 @@
+.kids-logo {
+  @include icons-sprite(kids-logo);
+  @include breakpoint($desktop-nav-breakpoint) {
+    margin-top: 20px;
+  }
+  position: relative;
+  z-index: 5;
+  display: block;
+  float: left;
+  width: icons-sprite-width(kids-logo);
+  height: icons-sprite-height(kids-logo);
+  margin-top: 10px;
+  text-indent: -9999px;
+}
+nav.menu--kids-menu {
+  .kids-leave-kids {
+    @include icons-sprite(leave-kids);
+  }
+  .kids-grown-ups {
+    @include icons-sprite(grown-ups);
+  }
+  .kids-learn {
+    @include icons-sprite(learn);
+  }
+  .kids-bake {
+    @include icons-sprite(bake);
+  }
+  .kids-dress-up {
+    @include icons-sprite(dress-up);
+  }
+  .kids-play {
+    @include icons-sprite(play);
+  }
+  .kids-jokes {
+    @include icons-sprite(jokes);
+  }
+  ul.menu {
+    @include breakpoint($desktop-nav-breakpoint) {
+      width: auto;
+      padding-left: 0;
+      text-align: right;
+    }
+    .menu-item {
+      @include breakpoint($desktop-nav-breakpoint) {
+        margin: 0 10px;
+        padding: 14px 0;
+      }
+      &:first-child {
+        @include breakpoint($desktop-nav-breakpoint) {
+          // position: absolute;
+          // left: -162px;
+          // top: 0;
+          margin-right: 50px;
+        }
+      }
+      a {
+        @include breakpoint($desktop-max-nav-breakpoint) {
+          background-image: none;
+        }
+        @include breakpoint($desktop-nav-breakpoint) {
+          width: 70px;
+          padding: 55px 0 10px;
+          text-align: center;
+        }
+        &.kids-leave-kids,
+        &.kids-grown-ups {
+          @include breakpoint($desktop-nav-breakpoint) {
+            width: 80px;
+          }
+        }
+        .menu-item__text {
+          border: none;
+        }
+        &:hover {
+          .menu-item__text {
+            @include breakpoint($desktop-nav-breakpoint) {
+              border: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
