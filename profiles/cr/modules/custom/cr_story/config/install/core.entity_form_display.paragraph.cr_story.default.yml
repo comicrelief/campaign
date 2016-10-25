@@ -9,6 +9,7 @@ dependencies:
     - field.field.paragraph.cr_story.field_cr_story_fundraiser_image
     - field.field.paragraph.cr_story.field_cr_story_fundraiser_total
     - field.field.paragraph.cr_story.field_cr_story_row_bg_col
+    - field.field.paragraph.cr_story.field_cr_story_title
     - image.style.thumbnail
     - paragraphs.paragraphs_type.cr_story
   module:
@@ -20,21 +21,21 @@ bundle: cr_story
 mode: default
 content:
   field_cr_story_beneficiary_copy:
-    weight: 5
+    weight: 6
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
   field_cr_story_beneficiary_image:
-    weight: 6
+    weight: 7
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
   field_cr_story_fundraiser_bg_col:
-    weight: 1
+    weight: 5
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -60,10 +61,17 @@ content:
     third_party_settings: {  }
     type: string_textfield
   field_cr_story_row_bg_col:
-    weight: 0
+    weight: 1
     settings: {  }
     third_party_settings: {  }
     type: options_select
+  field_cr_story_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
 hidden:
   created: true
   status: true

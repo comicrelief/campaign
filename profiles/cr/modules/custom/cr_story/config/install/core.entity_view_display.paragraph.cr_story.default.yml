@@ -9,12 +9,15 @@ dependencies:
     - field.field.paragraph.cr_story.field_cr_story_fundraiser_image
     - field.field.paragraph.cr_story.field_cr_story_fundraiser_total
     - field.field.paragraph.cr_story.field_cr_story_row_bg_col
+    - field.field.paragraph.cr_story.field_cr_story_title
     - paragraphs.paragraphs_type.cr_story
+    - responsive_image.styles.story_row
   module:
     - ds
-    - image
     - options
+    - responsive_image
     - text
+    - user
 third_party_settings:
   ds:
     layout:
@@ -23,26 +26,38 @@ third_party_settings:
       library: ''
       disable_css: false
       settings:
-        classes: {  }
-        wrappers: {  }
+        wrappers:
+          ds_content: div
         outer_wrapper: div
         attributes: ''
         link_attribute: ''
         link_custom: ''
+        classes:
+          layout_class: {  }
     regions:
       ds_content:
+        - field_cr_story_beneficiary_image
+        - field_cr_story_fundraiser_image
         - field_cr_story_row_bg_col
+        - field_cr_story_title
         - field_cr_story_fundraiser_bg_col
         - field_cr_story_fundraiser_total
         - field_cr_story_fundraiser_copy
-        - field_cr_story_fundraiser_image
         - field_cr_story_beneficiary_copy
-        - field_cr_story_beneficiary_image
 id: paragraph.cr_story.default
 targetEntityType: paragraph
 bundle: cr_story
 mode: default
 content:
+  created:
+    type: timestamp_ago
+    weight: 0
+    label: above
+    settings:
+      future_format: '@interval hence'
+      past_format: '@interval ago'
+      granularity: 2
+    third_party_settings: {  }
   field_cr_story_beneficiary_copy:
     weight: 5
     label: hidden
@@ -50,13 +65,13 @@ content:
     third_party_settings: {  }
     type: text_default
   field_cr_story_beneficiary_image:
-    weight: 6
+    type: responsive_image
+    weight: 0
     label: hidden
     settings:
-      image_style: ''
+      responsive_image_style: story_row
       image_link: ''
     third_party_settings: {  }
-    type: image
   field_cr_story_fundraiser_bg_col:
     weight: 1
     label: hidden
@@ -70,13 +85,13 @@ content:
     third_party_settings: {  }
     type: text_default
   field_cr_story_fundraiser_image:
-    weight: 4
+    type: responsive_image
+    weight: 0
     label: hidden
     settings:
-      image_style: ''
+      responsive_image_style: story_row
       image_link: ''
     third_party_settings: {  }
-    type: image
   field_cr_story_fundraiser_total:
     weight: 2
     label: hidden
@@ -90,7 +105,21 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: list_default
-hidden:
-  created: true
-  social_links: true
-  uid: true
+  field_cr_story_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  social_links:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    type: author
+    weight: 0
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }
