@@ -6,33 +6,6 @@
 //
 // Style guide: Story
 
-/* #kss-node {
-  padding: 0;
-
-  .kss-main {
-    margin: 0 !important;
-    width: 100% !important;
-    padding: 0 !important;
-  }
-
-  .kss-section {
-    max-width: none !important;
-    width: 100% !important;
-  }
-
-  .kss-sidebar {
-   display: none !important;
-  }
-
-  #kssref-story {
-    width: 100% !important;
-  }
-
-  .kss-modifier__wrapper {
-    padding: 0 !important;
-  } 
-}
- */
 
 %zigzag {
   content: "";
@@ -41,7 +14,7 @@
   position: absolute;
   top: -1px;
   left: 0;
-  background-color: $colour-teal;
+  background-color: transparent;
   -webkit-mask: url('/profiles/cr/themes/custom/campaign_base/images/svgs/zigzag-horizontal.svg') repeat-x 50% 50%;
   mask: url('/profiles/cr/themes/custom/campaign_base/images/svgs/zigzag-horizontal.svg') repeat-x 50% 50%;
   -webkit-mask-size: cover;
@@ -50,7 +23,7 @@
 
 .paragraph.story {
   width: 100%;
-  padding: 60px 0;
+  padding: 90px 0 75px;
 
   picture img {
     display: block;
@@ -63,6 +36,14 @@
 
     // Override the inner row colour as it wraps both sides to update text colour
     background-color: transparent !important;
+  }
+
+  .story__fundraiser-title {
+    @include span(12);
+    text-align: center;
+    h2 {
+      margin-bottom: 40px;
+    }
   }
 
   .story__beneficiary-wrapper,
@@ -133,21 +114,29 @@
 
     .story__fundraiser-copy {
       background-color: inherit;
+      padding-bottom: 45px;
 
       /* Zig zag pattern */
       &:after {
         @extend %zigzag;
-        background-color: transparent;
+        background-color: $colour-dark-blue;
+        bottom: -1px;
+        top: auto;
+        @include rotate(180deg);
 
-        @include breakpoint($screen-md) {
+        @include breakpoint($screen-lg) {
+          content: none;
+        }
+      }
+      
+      @include breakpoint($screen-md) {
+        padding-bottom: 30px;
+        
+        &:after {
           @include rotate(180deg);
           height: 15px;
           top: -14px;
           background-color: inherit;
-        }
-
-        @include breakpoint($screen-lg) {
-          content: none;
         }
       }
     }
@@ -155,8 +144,11 @@
   
     .story__beneficiary-copy:after {
       @extend %zigzag;
-      
+      // Hide for now
+      content: none;
+
       @include breakpoint($screen-md) {
+        content: "";
         height: 15px;
         top: -14px;
         background-color: $colour-dark-blue;
@@ -183,29 +175,46 @@
 
     // Tweak padding to provide space for the zigzag
     .story__beneficiary-copy {
-      padding-top: 45px;
+      //padding-top: 45px;
       
       @include breakpoint($screen-md) {
-        padding-top: 30px;
+        //padding-top: 30px;
       }
-    }
-
-    h3, p, span {
-      // Inherit text colour based on 
-      //color: inherit;
     }
 
     /* Medium, changes order of image and copy */
     @include breakpoint($screen-md-only) {
-      display: table;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -moz-box-orient: vertical;
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      /* optional */
+      -webkit-box-align: start;
+      -moz-box-align: start;
+      -ms-flex-align: start;
+      -webkit-align-items: flex-start;
+      align-items: flex-start;
 
-      .story__beneficiary-image,
       .story__beneficiary-copy {
-        float: none;
+        -webkit-box-ordinal-group: 2;
+        -moz-box-ordinal-group: 2;
+        -ms-flex-order: 2;
+        -webkit-order: 2;
+        order: 2;
       }
 
       .story__beneficiary-image {
-        display: table-header-group;
+        -webkit-box-ordinal-group: 1;
+        -moz-box-ordinal-group: 1;
+        -ms-flex-order: 1;
+        -webkit-order: 1;
+        order: 1;
       }
     }
 
@@ -215,32 +224,64 @@
   }
 }
 
-
+/* Text colours changed based on background colours specific to Story row */
 .story__fundraiser-wrapper,
 .story__beneficiary-wrapper {
 
-  &.bg--black,
-  &.bg--jasper-grey,
-  &.bg--dark-blue,
-  &.bg--royal-blue,
   &.bg--red,
-  &.bg--purple,
-  &.bg--teal {
-    h3, p, span {
-      color: $colour-white; 
+  &.bg--pink,
+  &.bg--yellow {
+    .story__fundraiser-title,
+    .story__fundraiser-body {
+      h3, span, p, a {
+      color: $colour-dark-blue;
+      }
     }
   }
 
-  &.bg--white,
-  &.bg--smoke-grey,
-  &.bg--light-grey,
-  &.bg--gainsboro-grey,
-  &.bg--green,
-  &.bg--yellow,
-  &.bg--pink,
-  &.bg--blue {
-    h3, p, span {
-        color: $colour-black; 
+  &.bg--blue,
+  &.bg--red {
+    .story__fundraiser-title,
+    .story__fundraiser-body {
+      h3, span, p, a {
+      color: $colour-dark-blue;
       }
+    }
+  }
+
+  &.bg--blue {
+    .story__beneficiary-title, 
+    .story__beneficiary-body {
+      h3, span, p, a {
+        color: $colour-blue;
+      }
+    } 
+  }
+
+  &.bg--red {
+    .story__beneficiary-title, 
+    .story__beneficiary-body {
+      h3, span, p, a {
+        color: $colour-red;
+      }
+    } 
+  }
+
+  &.bg--pink {
+    .story__beneficiary-title, 
+    .story__beneficiary-body {
+      h3, span, p, a {
+        color: $colour-pink;
+      }
+    } 
+  }
+
+  &.bg--yellow {
+    .story__beneficiary-title, 
+    .story__beneficiary-body {
+      h3, span, p, a {
+        color: $colour-yellow;
+      }
+    } 
   }
 }
