@@ -1,6 +1,0 @@
-cr_social:
-  version: 1.x
-  js:
-    js/cr_social_popup.js: {}
-  dependencies:
-    - core/jquery
