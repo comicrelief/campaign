@@ -5,9 +5,15 @@
  * Contains cr_iframe.module..
  */
 
-
 use Drupal\Core\Entity\FieldableEntityInterface;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
+
+/**
+ * Implements hook_page_attachments().
+ */
+function cr_iframe_page_attachments(array &$attachments) {
+  $attachments['#attached']['library'][] = 'cr_iframe/cr_iframe';
+}
 
 /**
  * Options callback for field_cr_iframe_embedded_bg.
