@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * @file
+ * Contains cr_user.module..
+ */
+
+/**
+ * Hook social_links_alter, used to alter default socil links.
+ *
+ * @return array
+ *   Altered array of links.
+ */
+function cr_social_social_links_alter($links) {
+  // Remove un used links.
+  unset($links['googleplus']);
+  unset($links['email']);
+
+  // Set SVGs to use.
+  $links['facebook']['svg'] = 'social-link-facebook';
+  $links['twitter']['svg'] = 'social-link-twitter';
+
+  return $links;
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function cr_social_page_attachments(array &$attachments) {
+  $attachments['#attached']['library'][] = 'cr_social/cr_social';
+}

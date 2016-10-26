@@ -1,0 +1,5 @@
+name: CR Social
+type: module
+description: CR Social functionality
+core: 8.x
+package: Comic Relief

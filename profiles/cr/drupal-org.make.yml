@@ -80,7 +80,9 @@ projects:
   view_modes_display:
     version: 1.x-dev
   social_links:
-    version: 1.x-dev
+    download:
+      branch: 8.x-1.x
+      revision: f7b3273f60d3544c7a95a18bbcbaefe860afc0ac
   scheduled_updates:
     version: 1.0-alpha5
   diff:
