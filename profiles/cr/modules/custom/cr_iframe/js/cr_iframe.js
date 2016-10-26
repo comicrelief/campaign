@@ -4,12 +4,12 @@
 
 (function ($) {
   $(document).ready(function () {
-    $(".play-game").click(function(event){
+    $('.iframe-block__play').click(function(event){
       event.preventDefault();
-      $('.iframe-block__wrapper').addClass('iframe-block__wrapper--on');
-      var iframe = $("#play-iframe");
+      $(this).closest('.iframe-block__wrapper').addClass('iframe-block__wrapper--on');
+      var iframe = $(this).next(".iframe-block__game");
       iframe.attr("src", iframe.data("src"));
-      $('.iframe-block__image').hide();
+      $(this).find('.iframe-block__image').hide();
     });
   });
 })(jQuery);
