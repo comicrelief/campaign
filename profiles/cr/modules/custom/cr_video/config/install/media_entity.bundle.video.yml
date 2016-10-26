@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies: {  }
+id: video
+label: Video
+description: 'This bundle is used to video elements on the site. These elements can be referenced via blocks and directly within the rich text editor.'
+type: generic
+queue_thumbnail_downloads: false
+new_revision: false
+type_configuration: {  }
+field_map: {  }

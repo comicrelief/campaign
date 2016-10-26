@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: media_reference
+label: 'Media reference'
+revision: 0
+description: 'This block serves as an intermediary between media entities and the content wall. '

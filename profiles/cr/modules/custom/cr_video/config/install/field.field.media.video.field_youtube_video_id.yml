@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_youtube_video_id
+    - media_entity.bundle.video
+id: media.video.field_youtube_video_id
+field_name: field_youtube_video_id
+entity_type: media
+bundle: video
+label: 'Youtube Video ID'
+description: "Enter the video ID only, e.g. https://www.youtube.com/embed/NW12S4-KB1I?autoplay=1 \r\nVideo ID = NW12S4-KB1I"
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
