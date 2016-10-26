@@ -1,18 +1,57 @@
 .iframe-block {
   padding: 60px 0;
-  background: #dd4e43;
 }
 .iframe-block__wrapper {
   width: 100%;
-  max-width: 1024px;
-  height: 626px;
-  min-height: 400px;
+  max-width: 770px;
   margin: 0 auto;
   cursor: pointer;
+  &--on {
+    @include breakpoint(max-width 740px) {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+    }
+  }
+}
+.iframe-block__wrapper--on {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  @include breakpoint($screen-md) {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+}
+.iframe-block__body {
+  margin-top: 40px;
+  padding: 0 30px;
 }
 .iframe-block__image {
   img {
     width: 100%;
     height: auto;
+  }
+}
+#play-iframe {
+  display: none;
+  min-height: 480px;
+  .iframe-block__wrapper--on & {
+    display: block;
+  }
+  canvas#game_canvas {
+    top: 50%;
+    position: absolute;
+    transform: translateY(-50%);
   }
 }

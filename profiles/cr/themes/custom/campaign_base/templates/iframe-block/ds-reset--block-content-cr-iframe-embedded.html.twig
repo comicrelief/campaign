@@ -1,12 +1,13 @@
+{% set iframe_bg_colour = content.field_cr_iframe_embedded_bg['#items'][0].value %}
 {%
   set classes = [
     'iframe-block',
-    'block-' ~ configuration.provider|clean_class,
-    'block-' ~ plugin_id|clean_class,
+    iframe_bg_colour,
   ]
 %}
 <div{{ attributes.addClass(classes) }}>
   {% block content %}
+    {{ title_suffix.contextual_links }}
     <div class="iframe-block__wrapper">
       <a class="play-game" href="#">
         <div class="iframe-block__image">
@@ -15,7 +16,9 @@
       </a>
       <iframe width="100%" height="100%" id="play-iframe" data-src="{{ field_cr_iframe_embedded_link }}" src="about:blank">
       </iframe>
-      {# {{ body }} #}
+      <div class="iframe-block__body">
+        {{ body }}
+      </div>
     </div>
 
   {% endblock %}
