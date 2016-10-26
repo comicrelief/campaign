@@ -92,6 +92,7 @@ dependencies:
   - cr_navigation
   #- cr_performance
   - cr_user
+  - cr_social
 
   # Development modules
   - config_devel

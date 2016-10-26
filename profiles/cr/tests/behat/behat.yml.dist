@@ -9,19 +9,19 @@ default:
         - DrupalCRFeatureContext
   extensions:
     Behat\MinkExtension:
-      base_url: "$DRUPAL_TI_WEBSERVER_URL:$DRUPAL_TI_WEBSERVER_PORT/"
+      base_url: "$WEBSERVER_URL:$WEBSERVER_PORT/"
       goutte: ~
       selenium2: ~
-      browser_name: "$DRUPAL_TI_BEHAT_BROWSER"
+      browser_name: "$BEHAT_BROWSER"
       files_path: './profiles/cr/tests/behat/files'
     Drupal\DrupalExtension:
       api_driver: "drupal"
       blackbox: ~
       drush_driver: "drush"
       drupal:
-        drupal_root: "$DRUPAL_TI_DRUPAL_DIR"
+        drupal_root: "$TRAVIS_BUILD_DIR"
       drush:
-        root: "$DRUPAL_TI_DRUPAL_DIR"
+        root: "$TRAVIS_BUILD_DIR"
       region_map:
         content: ".layout-content"
         esu_standard: "#block-emailsignupblockstandard"

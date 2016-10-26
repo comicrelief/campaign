@@ -8,6 +8,7 @@
 namespace Drupal\social_links\Plugin\Social;
 
 use Drupal\Core\Url;
+use \Drupal\Core\Render\Markup;
 
 /**
  * Plugin implementation of the 'social_links' field type.
@@ -108,6 +109,16 @@ class SocialLinks {
     return [
       '#items' => $this->getMarkup($entity),
       '#theme' => $this->getTheme($theme_override),
+      '#attributes' => [
+        'class' => [
+          'social-links',
+        ],
+      ],
+      '#attached' => [
+       'library' =>  [
+         'social_links/social_links'
+       ],
+     ],
     ];
   }
 
@@ -129,14 +140,12 @@ class SocialLinks {
     $page_title = urlencode(\Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject()));
     $entity_url = urlencode($request->getUri());
 
-    // Look at nice way to attch js, maybe to theme array.
     foreach ($links as $provider => $config) {
-
-      // Check in about svg support/ contrib module support.
-      $link_title = ucfirst($provider);
+      $link_title = t(ucfirst($provider));
       $link_class = $provider . '-social-link';
       $link_options = [
         'path' => $config['path'] . $entity_url . '&amp;title=' . $page_title,
+        'html' => true,
         'attributes' => [
           'title' => $link_title,
           'class' => [
@@ -150,9 +159,15 @@ class SocialLinks {
         $config['callback']($link_options, $entity);
       }
 
+      // If SVG is set, render it and add it in place of the title.
+      if (isset($config['svg'])) {
+        $svg = ['#markup' => Markup::create('<svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#' . $config['svg'] . '"></use></svg>')];
+        $link_title = render($svg);
+      }
+
       $url = Url::fromUri($link_options['path']);
       $url->setOptions($link_options);
-      $link = \Drupal::l(t($link_title), $url);
+      $link = \Drupal::l($link_title, $url);
 
       $markup_array[] = $link;
     }
