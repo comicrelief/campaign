@@ -76,6 +76,8 @@ dependencies:
   # Custom modules
   - cr_layout
   - cr_page
+  - cr_video
+  - cr_media
   - cr_content_wall
   - cr_rich_text_paragraph
   - cr_block_paragraph
