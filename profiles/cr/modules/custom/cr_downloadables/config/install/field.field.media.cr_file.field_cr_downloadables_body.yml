@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_cr_downloadables_body
+    - media_entity.bundle.cr_file
+  module:
+    - text
+id: media.cr_file.field_cr_downloadables_body
+field_name: field_cr_downloadables_body
+entity_type: media
+bundle: cr_file
+label: Body
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_with_summary

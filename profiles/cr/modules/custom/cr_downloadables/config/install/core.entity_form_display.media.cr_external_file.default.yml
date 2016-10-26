@@ -2,11 +2,13 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.cr_external_file.field_cr_downloadables_body
     - field.field.media.cr_external_file.field_cr_ef_resource_category
     - field.field.media.cr_external_file.field_cr_external_file
     - media_entity.bundle.cr_external_file
   module:
     - link
+    - text
 id: media.cr_external_file.default
 targetEntityType: media
 bundle: cr_external_file
@@ -17,6 +19,14 @@ content:
     weight: 10
     settings: {  }
     third_party_settings: {  }
+  field_cr_downloadables_body:
+    weight: 13
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea_with_summary
   field_cr_ef_resource_category:
     weight: 12
     settings: {  }

@@ -2,12 +2,14 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.cr_external_file.field_cr_downloadables_body
     - field.field.media.cr_external_file.field_cr_ef_resource_category
     - field.field.media.cr_external_file.field_cr_external_file
     - media_entity.bundle.cr_external_file
   module:
     - ds
     - link
+    - text
     - user
 third_party_settings:
   ds:
@@ -42,6 +44,12 @@ content:
       custom_date_format: ''
       timezone: ''
     third_party_settings: {  }
+  field_cr_downloadables_body:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
   field_cr_ef_resource_category:
     type: entity_reference_entity_view
     weight: 0
