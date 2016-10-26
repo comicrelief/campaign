@@ -46,7 +46,9 @@
 }
 .iframe-block__game {
   display: none;
-  min-height: 480px;
+  @include breakpoint($screen-md) {
+    min-height: 480px;
+  }
   .iframe-block__wrapper--on & {
     display: block;
   }
