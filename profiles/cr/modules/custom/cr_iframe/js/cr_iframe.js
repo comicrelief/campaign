@@ -5,7 +5,6 @@
 (function ($) {
   $(document).ready(function () {
     $(".play-game").click(function(event){
-      console.log('oioi');
       event.preventDefault();
       $('.iframe-block__wrapper').addClass('iframe-block__wrapper--on');
       var iframe = $("#play-iframe");
