@@ -35,7 +35,6 @@ dependencies:
   - views_ui
   - dblog
   - link
-  - filter
   - dynamic_page_cache
   - breakpoint
   - responsive_image
@@ -51,7 +50,8 @@ dependencies:
   - entity_browser
   - embed
   - entity_embed
-  - video_embed_field
+  - video_embed_wysiwyg
+  - filter
   - metatag_open_graph
   - pathauto
   - redirect
@@ -92,6 +92,7 @@ dependencies:
   - cr_navigation
   #- cr_performance
   - cr_user
+  - cr_social
 
   # Development modules
   - config_devel

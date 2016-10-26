@@ -108,7 +108,28 @@
   </symbol>
   <symbol id="envelope" viewBox="10 10 20 20">
     <title>Get the latest</title>
-    <desc>Opens esmail sign up box</desc>
+    <desc>Opens email sign up box</desc>
     <path d="M28,12H12h-2v2v12v2h2h16h2v-2V14v-2H28z M26.6,14L20,20.6L13.4,14H26.6z M12,26V15.4l8,8l8-8V26H12z"/>
+  </symbol>
+  <symbol id="social-link-facebook" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+    <title>Facebook share icon</title>
+    <desc>Share current page on Facebook</desc>
+    <circle fill="#3B5998" cx="25" cy="25" r="25"/>
+    <path id="SVGID_2_" d="M26.494,38.068h-5.543v-13.07h-2.77v-4.503h2.77v-2.704c0-3.674,1.563-5.859,6.007-5.859h3.698v4.505
+                h-2.312c-1.73,0-1.844,0.629-1.844,1.804l-0.008,2.254h4.189l-0.49,4.503h-3.698L26.494,38.068L26.494,38.068L26.494,38.068z
+                 M26.494,38.068" overflow="visible" fill="#FFFFFF"/>
+  </symbol>
+  <symbol id="social-link-twitter" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+    <title>Twitter share icon</title>
+    <desc>Share current page on Twitter</desc>
+    <circle fill="#00B6EE" cx="25" cy="25" r="25"/>
+    <path id="SVGID_4_" d="M35.888,18.222c1.144-0.722,2.022-1.867,2.434-3.231c-1.071,0.67-2.255,1.155-3.518,1.417
+      c-1.008-1.137-2.448-1.845-4.043-1.845c-3.059,0-5.537,2.616-5.537,5.842c0,0.458,0.046,0.904,0.141,1.33
+      c-4.602-0.244-8.683-2.567-11.417-6.104c-0.477,0.866-0.75,1.869-0.75,2.938c0,2.026,0.978,3.814,2.464,4.864
+      c-0.908-0.03-1.762-0.296-2.51-0.73v0.072c0,2.831,1.908,5.193,4.445,5.728c-0.466,0.137-0.954,0.206-1.461,0.206
+      c-0.357,0-0.705-0.035-1.041-0.104c0.704,2.32,2.75,4.011,5.174,4.057c-1.897,1.568-4.285,2.5-6.88,2.5
+      c-0.447,0-0.889-0.025-1.322-0.08c2.452,1.656,5.363,2.624,8.491,2.624c10.19,0,15.759-8.902,15.759-16.623
+      c0-0.254-0.003-0.506-0.014-0.755c1.082-0.824,2.024-1.854,2.764-3.025C38.075,17.768,37.006,18.082,35.888,18.222L35.888,18.222z
+       M35.888,18.222" overflow="visible" fill="#FFFFFF"/>
   </symbol>
 </svg>

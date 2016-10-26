@@ -95,7 +95,7 @@ Feature: Article
     | field_article_image | http://dummyimage.com/400x4:3 |
     | field_article_category | Fundraising |
     Then I should see "Luther"
-    And I should see "Keep up with all the news"
+    And I should see "Related news"
     And I should see "Comic Relief raises £1bn over 30-year existence"
     # Let's clear the caches if not our related news won't show up since we visited that page before!
     And the cache has been cleared

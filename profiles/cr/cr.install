@@ -126,6 +126,13 @@ CHANGE COLUMN server_id server_id VARCHAR(50) NULL';
     Database::getConnection()->query($query);
 }
 
+/*
+* Install cr_social
+*/
+function cr_update_8013() {
+ \Drupal::service('module_installer')->install(['cr_social']);
+}
+
 /**
  * Install cr_story
  */

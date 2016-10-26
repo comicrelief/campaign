@@ -131,14 +131,3 @@ strong {
 @for $color from 1 to (length($colorList)+1) {
   @include font-variation(nth($colorList, $color));
 }
-
-.cr-article__header {
-  text-align: center;
-}
-.cr-article__title {
-  margin-top: 40px;
-  text-transform: none;
-  font-size: 24px;
-  line-height: 28px;
-}
-

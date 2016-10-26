@@ -54,4 +54,4 @@ Feature: ESU
     Then I should see "ESU Fundraise: success message" in the "esu_fundraise" region
     And I should have received the following data in the "esu" queue:
       | campaign | transType | timestamp | transSourceURL | transSource | email | device | source | lists |
-      | RND17 | FundraiseESU | * | * | * | test-fundraise@example.org | * | * | * |
+      | RND17 | esu | * | * | * | test-fundraise@example.org | * | * | * |
