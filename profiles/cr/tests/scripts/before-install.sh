@@ -6,4 +6,4 @@ echo 'File: build.properties has been created.'
 # Remove gem cache
 rm Gemfile.lock
 # Get build dependencies
-phing build:prepare
+phing build:prepare:dev
