@@ -10,6 +10,8 @@ config_devel:
   - core.entity_view_display.block_content.cr_iframe_embedded.default
   - field.storage.block_content.field_cr_iframe_embedded_image
   - field.storage.block_content.field_cr_iframe_embedded_link
+  - field.storage.block_content.field_cr_iframe_embedded_bg
   - field.field.block_content.cr_iframe_embedded.body
   - field.field.block_content.cr_iframe_embedded.field_cr_iframe_embedded_image
   - field.field.block_content.cr_iframe_embedded.field_cr_iframe_embedded_link
+  - field.field.block_content.cr_iframe_embedded.field_cr_iframe_embedded_bg
