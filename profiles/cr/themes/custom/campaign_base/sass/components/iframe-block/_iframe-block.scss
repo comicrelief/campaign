@@ -25,12 +25,13 @@
   right: 0;
   bottom: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   @include breakpoint($screen-md) {
     position: relative;
     width: 100%;
     height: auto;
+    z-index: 0;
   }
 }
 .iframe-block__body {
@@ -43,7 +44,7 @@
     height: auto;
   }
 }
-#play-iframe {
+.iframe-block__game {
   display: none;
   min-height: 480px;
   .iframe-block__wrapper--on & {
