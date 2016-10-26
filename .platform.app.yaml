@@ -5,7 +5,7 @@
 name: php
 
 # The runtime the application uses.
-type: "php:7.0"
+type: "php:5.6"
 
 # Configuration of the build of this application.
 build:
@@ -16,6 +16,7 @@ dependencies:
     php:
         drush/drush: "^8.0"
         phing/phing: "*"
+        drupal/console: "^0.10"
     nodejs:
         grunt-cli: "~0.1.13"
 
@@ -25,7 +26,7 @@ dependencies:
 # side is in the form `<service name>:<endpoint name>`.
 relationships:
     database: "mysql:mysql"
-    solr: "solr:solr"
+#    solr: "solr:solr"
 #    redis: "redis:redis"
 
 # The configuration of app when it is exposed to the web.
@@ -35,7 +36,7 @@ web:
         "/":
             # The folder to serve static assets for this location from.
             # (Relative to the application root.)
-            root: ""
+            root: "public"
 
             # How long to allow static assets from this location to be cached.
             # (Can be a time or -1 for no caching. Times can be suffixed with
@@ -53,29 +54,33 @@ disk: 2048
 
 # The mounts that will be performed when the package is deployed.
 mounts:
-    "/sites/default/files": "shared:files/files"
-    "/sites/default/sync": "shared:files/config_sync"
+    "/public/sites/default/files": "shared:files/files"
+    "/public/sites/default/sync": "shared:files/config_sync"
     "/tmp": "shared:files/tmp"
     "/private": "shared:files/private"
     "/drush-backups": "shared:files/drush-backups"
     "/vendor": "shared:files/vendor"
-    "/node_modules": "shared:files/node_modules"
+    "/public/profiles/cr/vendor": "shared:files/vendor"
+    "/public/profiles/cr/node_modules": "shared:files/node_modules"
     "/.npm": "shared:files/.npm"
     "/.bundle": "shared:files/.bundle"
+    "/public/profiles/cr/.bundle": "shared:files/.bundle"
     "/.gem": "shared:files/.gem"
     "/Gemfile.lock": "shared:files/Gemfile.lock"
-    "/profiles/cr/themes/custom/campaign_base/js": "shared:files/js"
-    "/profiles/cr/themes/custom/campaign_base/css": "shared:files/css"
-    "/profiles/cr/themes/custom/campaign_base/ie9-css": "shared:files/ie9-css"
-    "/profiles/cr/themes/custom/campaign_base/styleguide": "shared:files/styleguide"
-    "/profiles/cr/themes/custom/campaign_base/images/generated": "shared:files/images_generated"
-    "/profiles/cr/.sass-cache": "shared:files/.sass-cache"
+    "/web/cr/themes/custom/campaign_base/js": "shared:files/js"
+    "/web/cr/themes/custom/campaign_base/css": "shared:files/css"
+    "/web/cr/themes/custom/campaign_base/ie9-css": "shared:files/ie9-css"
+    "/web/cr/themes/custom/campaign_base/styleguide": "shared:files/styleguide"
+    "/web/cr/themes/custom/campaign_base/images/generated": "shared:files/images_generated"
+    "/web/cr/.sass-cache": "shared:files/.sass-cache"
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
     # We run deploy hooks after your application has been deployed and started.
     deploy: |
       set -e
+
+      cd web/
 
       phing grunt:dependencies
       phing install:dependencies
