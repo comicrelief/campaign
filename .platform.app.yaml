@@ -36,7 +36,7 @@ web:
         "/":
             # The folder to serve static assets for this location from.
             # (Relative to the application root.)
-            root: "public"
+            root: "web"
 
             # How long to allow static assets from this location to be cached.
             # (Can be a time or -1 for no caching. Times can be suffixed with
@@ -54,17 +54,17 @@ disk: 2048
 
 # The mounts that will be performed when the package is deployed.
 mounts:
-    "/public/sites/default/files": "shared:files/files"
-    "/public/sites/default/sync": "shared:files/config_sync"
+    "/web/sites/default/files": "shared:files/files"
+    "/web/sites/default/sync": "shared:files/config_sync"
     "/tmp": "shared:files/tmp"
     "/private": "shared:files/private"
     "/drush-backups": "shared:files/drush-backups"
     "/vendor": "shared:files/vendor"
-    "/public/profiles/cr/vendor": "shared:files/vendor"
-    "/public/profiles/cr/node_modules": "shared:files/node_modules"
+    "/web/profiles/cr/vendor": "shared:files/vendor"
+    "/web/profiles/cr/node_modules": "shared:files/node_modules"
     "/.npm": "shared:files/.npm"
     "/.bundle": "shared:files/.bundle"
-    "/public/profiles/cr/.bundle": "shared:files/.bundle"
+    "/web/profiles/cr/.bundle": "shared:files/.bundle"
     "/.gem": "shared:files/.gem"
     "/Gemfile.lock": "shared:files/Gemfile.lock"
     "/web/cr/themes/custom/campaign_base/js": "shared:files/js"
@@ -106,4 +106,4 @@ hooks:
 crons:
     drupal:
         spec: "*/20 * * * *"
-        cmd: "cd public ; drush core-cron"
+        cmd: "cd web ; drush core-cron"
