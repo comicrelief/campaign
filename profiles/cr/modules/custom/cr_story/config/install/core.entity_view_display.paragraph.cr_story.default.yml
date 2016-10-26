@@ -11,7 +11,6 @@ dependencies:
     - field.field.paragraph.cr_story.field_cr_story_row_bg_col
     - field.field.paragraph.cr_story.field_cr_story_title
     - paragraphs.paragraphs_type.cr_story
-    - responsive_image.styles.story_row
   module:
     - ds
     - options
