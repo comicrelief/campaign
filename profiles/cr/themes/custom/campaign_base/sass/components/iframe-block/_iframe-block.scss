@@ -27,16 +27,22 @@
   left: 0;
   width: 100%;
   height: 100%;
-  @include breakpoint($screen-md) {
-    position: relative;
-    width: 100%;
-    height: auto;
-    z-index: 0;
+  .no-touchevents {  
+    @include breakpoint($screen-lg) {
+      position: relative;
+      width: 100%;
+      height: auto;
+      z-index: 0;
+    }
   }
 }
 .iframe-block__body {
-  margin-top: 40px;
-  padding: 0 30px;
+  .no-touchevents & {
+    @include breakpoint($screen-lg) {  
+      margin-top: 40px;
+      padding: 0 30px;
+    }
+  }
 }
 .iframe-block__image {
   img {
@@ -46,15 +52,12 @@
 }
 .iframe-block__game {
   display: none;
-  @include breakpoint($screen-md) {
-    min-height: 480px;
+  .no-touchevents {  
+    @include breakpoint($screen-lg) {
+      min-height: 480px;
+    }
   }
   .iframe-block__wrapper--on & {
     display: block;
-  }
-  canvas#game_canvas {
-    top: 50%;
-    position: absolute;
-    transform: translateY(-50%);
   }
 }
