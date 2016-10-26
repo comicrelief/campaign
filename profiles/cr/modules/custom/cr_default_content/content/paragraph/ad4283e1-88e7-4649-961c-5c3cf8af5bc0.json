@@ -153,7 +153,7 @@
     ],
     "field_single_msg_body_bg_colour": [
         {
-            "value": "bg--white"
+            "value": "bg--black"
         }
     ],
     "field_single_msg_hide_title": [
