@@ -1,252 +1,267 @@
 {
-  "_links": {
-    "self": {
-      "href": "http:\/\/default\/what-s-going-on?_format=hal_json"
-    },
-    "type": {
-      "href": "http:\/\/drupal.org\/rest\/type\/node\/landing"
-    },
-    "http:\/\/drupal.org\/rest\/relation\/node\/landing\/uid": [
-      {
-        "href": "http:\/\/default\/user\/0?_format=hal_json",
-        "lang": "en"
-      }
-    ],
-    "http:\/\/drupal.org\/rest\/relation\/node\/landing\/revision_uid": [
-      {
-        "href": "http:\/\/default\/user\/0?_format=hal_json"
-      }
-    ],
-    "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_landing_image": [
-      {
-        "href": "http:\/\/default\/file\/27?_format=hal_json",
-        "lang": "en"
-      }
-    ]
-  },
-  "nid": [
-    {
-      "value": "17"
-    }
-  ],
-  "uuid": [
-    {
-      "value": "4b1d6619-1f9d-452a-b538-56eb186d0f1e"
-    }
-  ],
-  "vid": [
-    {
-      "value": "17"
-    }
-  ],
-  "langcode": [
-    {
-      "value": "en",
-      "lang": "en"
-    }
-  ],
-  "type": [
-    {
-      "target_id": "landing"
-    }
-  ],
-  "title": [
-    {
-      "value": "What's going on",
-      "lang": "en"
-    }
-  ],
-  "_embedded": {
-    "http:\/\/drupal.org\/rest\/relation\/node\/landing\/uid": [
-      {
-        "_links": {
-          "self": {
-            "href": "http:\/\/default\/user\/0?_format=hal_json"
-          },
-          "type": {
-            "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-          }
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/news?_format=hal_json"
         },
-        "uuid": [
-          {
-            "value": "ae1f300e-a034-4ed9-a78d-b52d9d2361d0"
-          }
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/landing"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json",
+                "lang": "en"
+            }
         ],
-        "lang": "en"
-      }
-    ],
-    "http:\/\/drupal.org\/rest\/relation\/node\/landing\/revision_uid": [
-      {
-        "_links": {
-          "self": {
-            "href": "http:\/\/default\/user\/0?_format=hal_json"
-          },
-          "type": {
-            "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-          }
-        },
-        "uuid": [
-          {
-            "value": "ae1f300e-a034-4ed9-a78d-b52d9d2361d0"
-          }
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_landing_image": [
+            {
+                "href": "http:\/\/default\/file\/27?_format=hal_json",
+                "lang": "en"
+            }
         ]
-      }
+    },
+    "nid": [
+        {
+            "value": "17"
+        }
     ],
-    "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_landing_image": [
-      {
-        "_links": {
-          "self": {
-            "href": "http:\/\/default\/file\/27?_format=hal_json"
-          },
-          "type": {
-            "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
-          }
-        },
-        "uuid": [
-          {
-            "value": "9c720587-de1a-4f81-bc00-f2e3424b5df5"
-          }
+    "uuid": [
+        {
+            "value": "4b1d6619-1f9d-452a-b538-56eb186d0f1e"
+        }
+    ],
+    "vid": [
+        {
+            "value": "97"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "landing"
+        }
+    ],
+    "title": [
+        {
+            "value": "News",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "619be31f-178c-4799-a4bb-8c857a855777"
+                    }
+                ],
+                "lang": "en"
+            }
         ],
-        "lang": "en",
-        "alt": "",
-        "title": "",
-        "width": "1400",
-        "height": "320"
-      }
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "553e987c-36f9-45b3-a8f3-98062f9493eb"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_landing_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/27?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "9c720587-de1a-4f81-bc00-f2e3424b5df5"
+                    }
+                ],
+                "lang": "en",
+                "alt": "",
+                "title": "",
+                "width": "1400",
+                "height": "320"
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1459849599",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1477399858",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1477399858"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<h1>News<\/h1>\r\n",
+            "format": "full_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ],
+    "field_landing_copy_position_alig": [
+        {
+            "value": "promo-header__content-inner--centre"
+        }
+    ],
+    "field_landing_feature_layout": [
+        {
+            "value": "1"
+        }
+    ],
+    "field_landing_meta_tags": [
+        {
+            "value": "a:0:{}"
+        }
+    ],
+    "panelizer": [
+        {
+            "view_mode": "full",
+            "default": null,
+            "panels_display": {
+                "blocks": {
+                    "b212ceb5-87af-4155-ad09-9f468d9eb926": {
+                        "id": "entity_view:node",
+                        "label": "Entity view (Content)",
+                        "provider": "ctools",
+                        "label_display": "0",
+                        "view_mode": "landing_page_header",
+                        "context_mapping": {
+                            "entity": "@panelizer.entity_context:entity"
+                        },
+                        "region": "first",
+                        "uuid": "b212ceb5-87af-4155-ad09-9f468d9eb926",
+                        "weight": 1
+                    },
+                    "0df3b443-cd24-4f55-be00-d27e656349c6": {
+                        "id": "entity_field:node:field_paragraphs",
+                        "label": "Paragraphs",
+                        "provider": "ctools_block",
+                        "label_display": "0",
+                        "formatter": {
+                            "label": "hidden",
+                            "type": "entity_reference_revisions_entity_view",
+                            "settings": {
+                                "view_mode": "default"
+                            },
+                            "third_party_settings": [],
+                            "weight": 0
+                        },
+                        "context_mapping": {
+                            "entity": "@panelizer.entity_context:entity"
+                        },
+                        "region": "second",
+                        "uuid": "0df3b443-cd24-4f55-be00-d27e656349c6",
+                        "weight": 1
+                    },
+                    "b8357052-8626-4967-8600-cb92a4ad94a9": {
+                        "id": "views_block:related_news-block_1",
+                        "label": "",
+                        "provider": "views",
+                        "label_display": "visible",
+                        "views_label": "",
+                        "items_per_page": "10",
+                        "context_mapping": [],
+                        "region": "first",
+                        "uuid": "b8357052-8626-4967-8600-cb92a4ad94a9",
+                        "weight": 2
+                    },
+                    "497ef3fb-b56b-43ce-9003-3ad95d8ee1d3": {
+                        "id": "views_block:what_s_going_on-block_1",
+                        "label": "",
+                        "provider": "views",
+                        "label_display": 0,
+                        "views_label": "",
+                        "items_per_page": "none",
+                        "context_mapping": [],
+                        "region": "third",
+                        "uuid": "497ef3fb-b56b-43ce-9003-3ad95d8ee1d3",
+                        "weight": 1
+                    }
+                },
+                "id": "panels_variant",
+                "uuid": "07727bfe-7661-4185-a418-24b2dd3f797d",
+                "label": "",
+                "weight": 0,
+                "layout": "fiveregions",
+                "layout_settings": [],
+                "page_title": "[node:title]",
+                "storage_type": "panelizer_field",
+                "storage_id": "node:17:full:97",
+                "builder": "ipe"
+            },
+            "lang": "en"
+        }
     ]
-  },
-  "status": [
-    {
-      "value": "1",
-      "lang": "en"
-    }
-  ],
-  "created": [
-    {
-      "value": "1459849599",
-      "lang": "en"
-    }
-  ],
-  "changed": [
-    {
-      "value": "1460372716",
-      "lang": "en"
-    }
-  ],
-  "promote": [
-    {
-      "value": "1",
-      "lang": "en"
-    }
-  ],
-  "sticky": [
-    {
-      "value": "0",
-      "lang": "en"
-    }
-  ],
-  "revision_timestamp": [
-    {
-      "value": "1459849621"
-    }
-  ],
-  "revision_translation_affected": [
-    {
-      "value": "1",
-      "lang": "en"
-    }
-  ],
-  "default_langcode": [
-    {
-      "value": "1",
-      "lang": "en"
-    }
-  ],
-  "body": [
-    {
-      "value": "<h1 style=\"color: white;\">What's going on<\/h1>\r\n",
-      "format": "full_html",
-      "summary": "",
-      "lang": "en"
-    }
-  ],
-  "panelizer": [
-    {
-      "view_mode": "full",
-      "default": null,
-      "panels_display": {
-        "blocks": {
-          "b212ceb5-87af-4155-ad09-9f468d9eb926": {
-            "id": "entity_view:node",
-            "label": "Entity view (Content)",
-            "provider": "ctools",
-            "label_display": "0",
-            "view_mode": "landing_page_header",
-            "context_mapping": {
-              "entity": "@panelizer.entity_context:entity"
-            },
-            "region": "first",
-            "uuid": "b212ceb5-87af-4155-ad09-9f468d9eb926",
-            "weight": 1
-          },
-          "0df3b443-cd24-4f55-be00-d27e656349c6": {
-            "id": "entity_field:node:field_paragraphs",
-            "label": "Paragraphs",
-            "provider": "ctools_block",
-            "label_display": "0",
-            "formatter": {
-              "label": "hidden",
-              "type": "entity_reference_revisions_entity_view",
-              "settings": {
-                "view_mode": "default"
-              },
-              "third_party_settings": [],
-              "weight": 0
-            },
-            "context_mapping": {
-              "entity": "@panelizer.entity_context:entity"
-            },
-            "region": "second",
-            "uuid": "0df3b443-cd24-4f55-be00-d27e656349c6",
-            "weight": 1
-          },
-          "b8357052-8626-4967-8600-cb92a4ad94a9": {
-            "id": "views_block:related_news-block_1",
-            "label": "",
-            "provider": "views",
-            "label_display": "visible",
-            "views_label": "",
-            "items_per_page": "10",
-            "context_mapping": [],
-            "region": "first",
-            "uuid": "b8357052-8626-4967-8600-cb92a4ad94a9",
-            "weight": 2
-          },
-          "497ef3fb-b56b-43ce-9003-3ad95d8ee1d3": {
-            "id": "views_block:what_s_going_on-block_1",
-            "label": "",
-            "provider": "views",
-            "label_display": 0,
-            "views_label": "",
-            "items_per_page": "none",
-            "context_mapping": [],
-            "region": "third",
-            "uuid": "497ef3fb-b56b-43ce-9003-3ad95d8ee1d3",
-            "weight": 1
-          }
-        },
-        "id": "panels_variant",
-        "uuid": "07727bfe-7661-4185-a418-24b2dd3f797d",
-        "label": "",
-        "weight": 0,
-        "layout": "fiveregions",
-        "layout_settings": [],
-        "page_title": "[node:title]",
-        "storage_type": "panelizer_field",
-        "storage_id": "node:17:full:17",
-        "builder": "ipe"
-      },
-      "lang": "en"
-    }
-  ]
 }
