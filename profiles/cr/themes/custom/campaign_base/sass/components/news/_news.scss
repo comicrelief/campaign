@@ -1,0 +1,66 @@
+.news-landing__wrapper {
+	padding: 60px 0;
+	background-color: $colour-smoke-grey;
+}
+.news-landing__content-wrapper {
+	width: calc(100% - (8 * 1.25%));
+	margin: auto;
+
+	@include breakpoint($screen-md) {
+		width: calc(100% - (4 * 1.25%));
+	}
+	@include breakpoint($screen-md-max) {
+		max-width: calc(1200px - (1 * 1.25%));
+	}
+}
+.news-landing__filter {
+	width: 100%;
+	margin: 0 0 50px 0;
+	padding: 20px;
+	background-color: $colour-white;
+	@include breakpoint($screen-md-max) {
+		width: 50%;
+		margin: 0 auto 50px;
+		float: none;
+	}
+	.form-item {
+		@include span(10);
+		display: inline-block;
+		float: none;
+		
+		label {
+			@include span(5);
+			display: inline-block;
+		}
+		.ui-widget {
+			@include span(7);
+			display: inline-block;
+		}
+	}
+	.form-actions {
+		@include span(2);
+		display: inline-block;
+		float: right;
+	}
+}
+.news-landing__content {
+	clear: both;
+	margin: auto;
+	@include breakpoint($screen-lg) {
+		@include clearfix;
+	}
+}
+.news-landing__item {
+	width: 100%;
+	height: 390px;
+  margin: 0 0 calc(2 * #{gutter()});
+  display: inline-block;
+  background-color: $colour-white;
+
+  @include breakpoint($screen-md) {
+  	position: relative;
+  }
+  @include breakpoint($screen-lg) {
+  	@include span(3);
+  }
+}
