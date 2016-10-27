@@ -1,0 +1,29 @@
+// Video Block 
+//
+// This is the video block
+//
+// Markup: video-block.hbs
+//
+// Style guide: Video block
+
+.video-block {
+	position: relative;
+	text-align: center;
+	height: 450px;
+}
+.video-block__image {
+	height: 100%;
+	img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+.video-block__content {
+	position: absolute;
+	bottom: 0;
+	padding: 60px 10px 10px;
+	width: 100%;
+	@include background-image(linear-gradient(rgba(0, 0, 0, 0), black));
+}
