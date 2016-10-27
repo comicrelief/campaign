@@ -47,7 +47,7 @@ web:
             # Whether to forward disallowed and missing resources from this
             # location to the application.
             # (Can be true, false or a URI path string.)
-            passthru: "/index.php"
+            passthru: "web/index.php"
 
 # The size of the persistent disk of the application (in MB).
 disk: 2048
@@ -60,11 +60,10 @@ mounts:
     "/private": "shared:files/private"
     "/drush-backups": "shared:files/drush-backups"
     "/vendor": "shared:files/vendor"
-    "/web/profiles/cr/vendor": "shared:files/vendor"
-    "/web/profiles/cr/node_modules": "shared:files/node_modules"
+    "/web/profiles/": "shared:files/profiles"
+    "/node_modules": "shared:files/node_modules"
     "/.npm": "shared:files/.npm"
     "/.bundle": "shared:files/.bundle"
-    "/web/profiles/cr/.bundle": "shared:files/.bundle"
     "/.gem": "shared:files/.gem"
     "/Gemfile.lock": "shared:files/Gemfile.lock"
     "/web/cr/themes/custom/campaign_base/js": "shared:files/js"
@@ -74,8 +73,11 @@ mounts:
     "/web/cr/themes/custom/campaign_base/images/generated": "shared:files/images_generated"
     "/web/cr/.sass-cache": "shared:files/.sass-cache"
 
+
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
+    build:
+      ls -n cr/ web/profiles/
     # We run deploy hooks after your application has been deployed and started.
     deploy: |
       set -e
