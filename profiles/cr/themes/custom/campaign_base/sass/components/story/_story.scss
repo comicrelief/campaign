@@ -6,19 +6,23 @@
 //
 // Style guide: Story
 
+@mixin zigzag-colour($colour){
+  background: 
+    -webkit-linear-gradient( 45deg, transparent 33.333%, $colour 33.333%, $colour 66.667%, transparent 66.667% ), 
+    -webkit-linear-gradient( -45deg, transparent 33.333%, $colour 33.333%, $colour 66.667%, transparent 66.667% );
+  background-size: 30px 60px;
+}
 
 %zigzag {
   content: "";
+  display: block;
+  position: absolute;
+  top: -15px;
+  left: 0;
   width: 100%;
   height: 15px;
-  position: absolute;
-  top: -1px;
-  left: 0;
+  @include zigzag-colour($colour-dark-blue);
   background-color: transparent;
-  -webkit-mask: url('/profiles/cr/themes/custom/campaign_base/images/svgs/zigzag-horizontal.svg') repeat-x 50% 50%;
-  mask: url('/profiles/cr/themes/custom/campaign_base/images/svgs/zigzag-horizontal.svg') repeat-x 50% 50%;
-  -webkit-mask-size: cover;
-  mask-size: cover;
 }
 
 .paragraph.story {
@@ -33,9 +37,6 @@
     @include container;
     position: relative;
     overflow: hidden;
-
-    // Override the inner row colour as it wraps both sides to update text colour
-    background-color: transparent !important;
   }
 
   .story__fundraiser-title {
@@ -114,57 +115,77 @@
 
     .story__fundraiser-copy {
       background-color: inherit;
-      padding-bottom: 45px;
 
       /* Zig zag pattern */
       &:after {
         @extend %zigzag;
-        background-color: $colour-dark-blue;
         bottom: -1px;
         top: auto;
-        @include rotate(180deg);
+        content: none;
+
+        @include breakpoint($screen-md) {
+          content: "";
+          height: 15px;
+          top: -15px;
+        }
 
         @include breakpoint($screen-lg) {
           content: none;
         }
       }
+    }
+
+    .story__beneficiary-copy {
+
+      /* Make space for zigzag */
+      padding-top: 45px;
       
       @include breakpoint($screen-md) {
-        padding-bottom: 30px;
-        
-        &:after {
-          @include rotate(180deg);
+        /* Reset as zigzig now sits on top of copy */
+        padding-top: 30px;
+      }
+
+      &:after {
+        @extend %zigzag;
+        @include zigzag-colour($colour-dark-blue);
+        top: 0;
+
+        @include breakpoint($screen-md) {
+          background-color: transparent !important;
           height: 15px;
-          top: -14px;
-          background-color: inherit;
+          top: -15px;
+        }
+
+        @include breakpoint($screen-lg) {
+          top: 0;
+          left: -15px;
+          width: 15px;
+          height: 400px;
+          background-size: 60px 30px;
         }
       }
     }
 
-  
-    .story__beneficiary-copy:after {
-      @extend %zigzag;
-      // Hide for now
-      content: none;
+    /* Explicitly set the zigzag colour with our mixin as it can't inherit */
+    &.bg--blue {
+      .story__fundraiser-copy:after { @include zigzag-colour($colour-blue); }
+      .story__beneficiary-copy:after { background-color: $colour-blue; }
+    } 
 
-      @include breakpoint($screen-md) {
-        content: "";
-        height: 15px;
-        top: -14px;
-        background-color: $colour-dark-blue;
-        @include rotate(180deg);
-        background-repeat: repeat-y;
-      }
+    &.bg--red {
+      .story__fundraiser-copy:after { @include zigzag-colour($colour-red); }
+      .story__beneficiary-copy:after { background-color: $colour-red; }
+    } 
 
-      @include breakpoint($screen-lg) {
-        top: 0;
-        left: -10px;
-        width: 10px;
-        height: 500px;
-        -webkit-mask: url('/profiles/cr/themes/custom/campaign_base/images/svgs/zigzag-vertical.svg') repeat-y 50% 50%;
-        mask: url('/profiles/cr/themes/custom/campaign_base/images/svgs/zigzag-vertical.svg') repeat-y 50% 50%;
-      }
-    }
+    &.bg--pink {
+      .story__fundraiser-copy:after { @include zigzag-colour($colour-pink); }
+      .story__beneficiary-copy:after { background-color: $colour-pink; }
+    } 
+
+    &.bg--yellow {
+      .story__fundraiser-copy:after { @include zigzag-colour($colour-yellow); }
+      .story__beneficiary-copy:after { background-color: $colour-yellow; }
+    } 
   }
 
   /* Beneficiary side only  */
@@ -173,16 +194,7 @@
     background-color: $colour-dark-blue !important;
     text-align: center;
 
-    // Tweak padding to provide space for the zigzag
-    .story__beneficiary-copy {
-      //padding-top: 45px;
-      
-      @include breakpoint($screen-md) {
-        //padding-top: 30px;
-      }
-    }
-
-    /* Medium, changes order of image and copy */
+    /* Medium breakpoint, changes order of image and copy */
     @include breakpoint($screen-md-only) {
       display: -webkit-box;
       display: -moz-box;
