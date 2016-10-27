@@ -9,7 +9,7 @@ type: "php:5.6"
 
 # Configuration of the build of this application.
 build:
-    flavor: drupal
+    flavor: composer
 
 # The build-time dependencies of the app.
 dependencies:
@@ -47,7 +47,7 @@ web:
             # Whether to forward disallowed and missing resources from this
             # location to the application.
             # (Can be true, false or a URI path string.)
-            passthru: "web/index.php"
+            passthru: "/index.php"
 
 # The size of the persistent disk of the application (in MB).
 disk: 2048
@@ -73,11 +73,8 @@ mounts:
     "/web/cr/themes/custom/campaign_base/images/generated": "shared:files/images_generated"
     "/web/cr/.sass-cache": "shared:files/.sass-cache"
 
-
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
-    build:
-      ls -n cr/ web/profiles/
     # We run deploy hooks after your application has been deployed and started.
     deploy: |
       set -e
@@ -88,21 +85,28 @@ hooks:
       phing install:dependencies
       phing grunt:build
 
+      cd web/
+
+      # Create symlink to profile directory from the webroot
+      if [ ! -d "/app/web/profiles/cr" ]; then
+        ln -s /app/cr /app/web/profiles/cr
+      fi
+
       # Re-install the site if this hasn't been installed yet for this branch, or we are on develop
       if [ $PLATFORM_ENVIRONMENT = "develop" ] || [ ! -f tmp/$PLATFORM_ENVIRONMENT.installed ]; then
-        echo ">>> Re-installing Campaign profile"
+        echo ">>> Re-installing OC profile"
         drush sql-drop -y
         drush si cr -y --account-pass='admin' install_configure_form.update_status_module='[FALSE, FALSE]' -y
-        touch "tmp/${PLATFORM_ENVIRONMENT}.installed"
         drush cr
-        phing user:create
-        echo ">>> End re-installing Campaign profile"
+        cd ../
+        phing grunt:build
+        # touch "tmp/${PLATFORM_ENVIRONMENT}.installed"
+        echo ">>> End re-installing CR profile"
       else
         echo ">>> No re-installation of the profile required, just a simple update!"
         phing config:import
         drush cr
       fi
-
 
 # The configuration of scheduled execution.
 crons:
