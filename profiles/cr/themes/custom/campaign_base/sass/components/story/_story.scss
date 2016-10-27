@@ -7,6 +7,9 @@
 // Style guide: Story
 
 @mixin zigzag-colour($colour){
+  background: linear-gradient( 45deg, transparent 33.333%, $colour 33.333%, $colour 66.667%, transparent 66.667% ),
+      linear-gradient( -45deg, transparent 33.333%, $colour 33.333%, $colour 66.667%, transparent 66.667% );
+
   background: 
     -webkit-linear-gradient( 45deg, transparent 33.333%, $colour 33.333%, $colour 66.667%, transparent 66.667% ), 
     -webkit-linear-gradient( -45deg, transparent 33.333%, $colour 33.333%, $colour 66.667%, transparent 66.667% );
