@@ -7,7 +7,6 @@
     $('.iframe-block__play').click(function(event){
       if ($('html').hasClass('no-touchevents')) {
         event.preventDefault();
-        console.log('no touch');
       }
       $(this).closest('.iframe-block__wrapper').addClass('iframe-block__wrapper--on');
       var iframe = $(this).next(".iframe-block__game");
