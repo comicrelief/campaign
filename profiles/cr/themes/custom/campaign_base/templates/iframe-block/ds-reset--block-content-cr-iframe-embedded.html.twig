@@ -9,11 +9,12 @@
   {% block content %}
     {{ title_suffix.contextual_links }}
     <div class="iframe-block__wrapper">
-      <a class="iframe-block__play" href="#">
+      <a class="iframe-block__play" href="{{ field_cr_iframe_embedded_link }}" target="_blank">
         <div class="iframe-block__image">
           {{ field_cr_iframe_embedded_image }}
         </div>
       </a>
+
       <iframe width="100%" height="100%" class="iframe-block__game" data-src="{{ field_cr_iframe_embedded_link }}" src="about:blank">
       </iframe>
       {% if content.body['#object'].body %}
