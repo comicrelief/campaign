@@ -48,8 +48,8 @@ function cr_update_8004() {
 }
 
 /**
-* Remove field_youtube_url and uninstall youtube module
-*/
+ * Remove field_youtube_url and uninstall youtube module
+ */
 function cr_update_8005() {
   $field = Drupal\field\Entity\FieldStorageConfig::loadByName('node', 'field_youtube_url');
   $field->delete();
@@ -102,8 +102,8 @@ function cr_update_8010() {
 }
 
 /**
-* Remove field_partner_image
-*/
+ * Remove field_partner_image
+ */
 function cr_update_8011() {
   $field = Drupal\field\Entity\FieldStorageConfig::loadByName('node', 'field_partner_image');
   $field->delete();
@@ -126,9 +126,9 @@ CHANGE COLUMN server_id server_id VARCHAR(50) NULL';
     Database::getConnection()->query($query);
 }
 
-/*
-* Install cr_social
-*/
+/**
+ * Install cr_social
+ */
 function cr_update_8013() {
  \Drupal::service('module_installer')->install(['cr_social']);
 }
