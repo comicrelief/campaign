@@ -64,7 +64,7 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
    * Wait for the jQuery AJAX loading to finish. ONLY USE FOR DEBUGGING!
    */
   public function iWaitForAJAX() {
-    $this->getSession()->wait(5000, 'jQuery.active === 0');
+    $this->getSession()->wait(10000, 'jQuery.active === 0');
   }
 
   /**
