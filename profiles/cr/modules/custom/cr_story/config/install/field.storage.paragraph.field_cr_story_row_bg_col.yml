@@ -9,7 +9,7 @@ field_name: field_cr_story_row_bg_col
 entity_type: paragraph
 type: list_string
 settings:
-  allowed_values: null
+  allowed_values: {  }
   allowed_values_function: cr_story_field_cr_story_row_bg_col
 module: options
 locked: false
