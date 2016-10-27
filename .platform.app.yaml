@@ -54,6 +54,7 @@ disk: 2048
 
 # The mounts that will be performed when the package is deployed.
 mounts:
+    "/web": "shared/files/web"
     "/web/sites/default/files": "shared:files/files"
     "/web/sites/default/sync": "shared:files/config_sync"
     "/tmp": "shared:files/tmp"
