@@ -171,7 +171,7 @@ $( document ).ready(function() {
   $('a[data-rel^=lightcase]').lightcase({
     onFinish : {
       custom: function() {
-        var caption = $(this).parent().find('.video-block__caption');
+        var caption = $(this).parent().find('.media-block__caption');
         console.log(caption.length);
         if (caption.length) {
           console.log("has caption");
