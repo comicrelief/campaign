@@ -24,23 +24,23 @@
       // We need to add/update a new BlockModel somewhere. Inform the App that
       // this has occurred.
       if (settings['panels_ipe']['updated_block']) {
-        var data = settings['panels_ipe']['updated_block'];
+        var blockData = settings['panels_ipe']['updated_block'];
         // Remove the setting.
         delete settings['panels_ipe']['updated_block'];
         // Create a BlockModel.
-        var block = new Drupal.panels_ipe.BlockModel(data);
+        var block = new Drupal.panels_ipe.BlockModel(blockData);
         // Trigger the event.
-        Drupal.panels_ipe.app.trigger('addBlockPlugin', block, data.region);
+        Drupal.panels_ipe.app.trigger('addBlockPlugin', block, blockData.region);
       }
 
       // We need to add/update our Layout Inform the App that this has occurred.
       if (settings['panels_ipe']['updated_layout']) {
-        var data = settings['panels_ipe']['updated_layout'];
+        var layoutData = settings['panels_ipe']['updated_layout'];
         // Remove the setting.
         delete settings['panels_ipe']['updated_layout'];
         // Create a LayoutModel.
-        data = Drupal.panels_ipe.LayoutModel.prototype.parse(data);
-        var layout = new Drupal.panels_ipe.LayoutModel(data);
+        layoutData = Drupal.panels_ipe.LayoutModel.prototype.parse(layoutData);
+        var layout = new Drupal.panels_ipe.LayoutModel(layoutData);
         // Trigger the event.
         Drupal.panels_ipe.app.trigger('changeLayout', layout);
       }
@@ -48,7 +48,7 @@
       // Toggle the preview - We need to do this with drupalSettings as the
       // animation won't work if triggered by a form submit. It must occur after
       // the form is rendered.
-      if (context.className == 'panels-ipe-block-plugin-form flip-container'
+      if (context.className === 'panels-ipe-block-plugin-form flip-container'
         && settings['panels_ipe']['toggle_preview']) {
         var $form = $('.ipe-block-form');
 
@@ -60,8 +60,8 @@
 
         // As images can load late on new content, recalculate the flipper
         // height on image load.
-        $form.find('img').each(function() {
-          $(this).load(function() {
+        $form.find('img').each(function () {
+          $(this).load(function () {
             Drupal.panels_ipe.setFlipperHeight($form);
           });
         });
@@ -72,16 +72,16 @@
       // A new Block Content entity has been created. Trigger an app-level event
       // to switch tabs and open the placement form.
       if (settings['panels_ipe']['new_block_content']) {
-        var data = settings['panels_ipe']['new_block_content'];
+        var newBlockData = settings['panels_ipe']['new_block_content'];
         delete settings['panels_ipe']['new_block_content'];
-        Drupal.panels_ipe.app.trigger('addContentBlock', data);
+        Drupal.panels_ipe.app.trigger('addContentBlock', newBlockData);
       }
 
       // A Block Content entity has been edited.
       if (settings['panels_ipe']['edit_block_content']) {
-        var data = settings['panels_ipe']['edit_block_content'];
+        var editBlockData = settings['panels_ipe']['edit_block_content'];
         delete settings['panels_ipe']['edit_block_content'];
-        Drupal.panels_ipe.app.trigger('editContentBlockDone', data);
+        Drupal.panels_ipe.app.trigger('editContentBlockDone', editBlockData);
       }
     }
   };
@@ -102,7 +102,7 @@
     // Set up our initial tabs.
     var tab_collection = new Drupal.panels_ipe.TabCollection();
 
-    if (settings.panels_ipe.layout.changeable) {
+    if (settings.panels_ipe.user_permission.change_layout) {
       tab_collection.add(createTabModel(Drupal.t('Change Layout'), 'change_layout'));
     }
     tab_collection.add(createTabModel(Drupal.t('Manage Content'), 'manage_content'));
@@ -126,7 +126,7 @@
 
     // Set up our initial tab views.
     var tab_views = {};
-    if (settings.panels_ipe.layout.changeable) {
+    if (settings.panels_ipe.user_permission.change_layout) {
       tab_views.change_layout = new Drupal.panels_ipe.LayoutPicker();
     }
     tab_views.manage_content = new Drupal.panels_ipe.BlockPicker();
@@ -192,7 +192,8 @@
   Drupal.panels_ipe.setFlipperHeight = function ($form) {
     // The preview could be larger than the form.
     // Manually set the height to be sure that things fit.
-    var $new_side, $current_side;
+    var $new_side;
+    var $current_side;
     if ($form.hasClass('flipped')) {
       $new_side = $form.find('.flipper > .back');
       $current_side = $form.find('.flipper > .front');
