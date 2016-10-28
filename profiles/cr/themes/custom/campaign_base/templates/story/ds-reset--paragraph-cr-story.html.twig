@@ -1,0 +1,53 @@
+{% set title = content.field_cr_story_title['#items'][0].value %}
+{% set row_bg_color = content.field_cr_story_row_bg_col['#items'][0].value %}
+{% set copy_bg_color = content.field_cr_story_fundraiser_bg_col['#items'][0].value %}
+
+<!--Background color class on section -->
+<section class="story paragraph {{ row_bg_color }}">
+  <div class="story__outer-wrapper ">
+
+    {% if title %}
+    <div class="story__fundraiser-title">
+      <h2>{{ field_cr_story_title }}</h2>
+    </div>
+  {% endif %}
+
+    <!--Background color class on fundraiser, needs to be rendered both here.. -->
+    <div class="story__fundraiser-wrapper {{ copy_bg_color }}">
+      <!-- Fundraiser image -->
+      <div class="story__fundraiser-image">
+      	{{ field_cr_story_fundraiser_image }}
+      </div>
+      
+      <!-- Fundraiser copy -->
+      <div class="story__fundraiser-copy">
+        <div class="story__fundraiser-title">
+            <h3>{{ field_cr_story_fundraiser_total }}</h3>
+            <span>RAISED</span>
+          </div>
+          <div class="story__fundraiser-body">
+      	{{ field_cr_story_fundraiser_copy }}
+          </div>
+      </div>
+    </div>
+
+    <!--Background color class on fundraiser, needs to be rendered here as well -->
+    <div class="story__beneficiary-wrapper {{ copy_bg_color }}">
+      <!-- Beneficiary copy -->
+      <div class="story__beneficiary-copy">
+        <div class="story__beneficiary-title">
+          <h3>Lives</h3>
+          <span>CHANGED</span>
+        </div>
+        <div class="story__beneficiary-body">
+      	{{ field_cr_story_beneficiary_copy }}
+        </div>
+      </div>
+
+      <!-- Beneficiary image -->
+      <div class="story__beneficiary-image">
+      	{{ field_cr_story_beneficiary_image }}
+      </div>
+    </div>
+  </div>
+</section>

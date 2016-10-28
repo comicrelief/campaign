@@ -1,0 +1,201 @@
+{
+    "_links": {
+        "self": {
+            "href": ""
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cr_story"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_story\/uid": [
+            {
+                "href": "http:\/\/localhost\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_story\/revision_uid": [
+            {
+                "href": "http:\/\/localhost\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_story\/field_cr_story_beneficiary_image": [
+            {
+                "href": "http:\/\/localhost\/file\/3378?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_story\/field_cr_story_fundraiser_image": [
+            {
+                "href": "http:\/\/localhost\/file\/3377?_format=hal_json"
+            }
+        ]
+    },
+    "id": [
+        {
+            "value": "8"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "57bae51b-0b3d-47c9-81e2-c4e233ab238c"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": "8"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "cr_story"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_story\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/localhost\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "817422ea-98c8-48d1-a456-a999831362af"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_story\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/localhost\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "817422ea-98c8-48d1-a456-a999831362af"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_story\/field_cr_story_beneficiary_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/localhost\/file\/3378?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "7401edcf-6027-4051-b222-4b04945befc0"
+                    }
+                ],
+                "alt": "Beneficiary",
+                "title": "Beneficiary",
+                "width": "940",
+                "height": "706"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_story\/field_cr_story_fundraiser_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/localhost\/file\/3377?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "e31faa62-9ee8-45b5-9c76-577de3df2b42"
+                    }
+                ],
+                "alt": "Fundraiser",
+                "title": "Fundraiser",
+                "width": "940",
+                "height": "706"
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1477493063",
+            "lang": "en"
+        }
+    ],
+    "parent_id": [
+        {
+            "value": "22"
+        }
+    ],
+    "parent_type": [
+        {
+            "value": "node"
+        }
+    ],
+    "parent_field_name": [
+        {
+            "value": "field_paragraphs"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "field_cr_story_beneficiary_copy": [
+        {
+            "value": "<p>This is enough to buy a bicycle ambulance that can help pregnant women in rural Malawi to reach life-saving medical services.<\/p>\r\n",
+            "format": "basic_html"
+        }
+    ],
+    "field_cr_story_fundraiser_bg_col": [
+        {
+            "value": "bg--blue"
+        }
+    ],
+    "field_cr_story_fundraiser_copy": [
+        {
+            "value": "<p>Daniel from Worcester ducked, dived and dodged his way to raising \u00a3160 by holding a retro fancy dress dodgeball tournament at his local sport centre.<\/p>\r\n",
+            "format": "basic_html"
+        }
+    ],
+    "field_cr_story_fundraiser_total": [
+        {
+            "value": "1000"
+        }
+    ],
+    "field_cr_story_row_bg_col": [
+        {
+            "value": "bg--red"
+        }
+    ],
+    "field_cr_story_title": [
+        {
+            "value": "See how your money changes lives"
+        }
+    ]
+}
