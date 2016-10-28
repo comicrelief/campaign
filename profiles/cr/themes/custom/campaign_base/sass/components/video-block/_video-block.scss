@@ -7,26 +7,46 @@
 // Style guide: Video block
 
 .video-block {
-	position: relative;
-	text-align: center;
-	height: 450px;
+  position: relative;
+  height: 450px;
+  text-align: center;
+  #play-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 50px;
+    margin: auto;
+    transition: 1s;
+    path {
+      fill: $colour-yellow;
+    }
+  }
+}
+.video-block__link {
+  &:hover {
+    #play-icon {
+      transform: scale(1.2);
+    }
+  }
 }
 .video-block__image {
-	height: 100%;
-	img {
-		display: block;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
+  height: 100%;
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+  }
 }
 .video-block__content {
-	position: absolute;
-	bottom: 0;
-	padding: 60px 10px 10px;
-	width: 100%;
-	@include background-image(linear-gradient(rgba(0, 0, 0, 0), black));
+  @include background-image(linear-gradient(rgba(0, 0, 0, 0), black));
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 80px 10px 10px;
 }
 .video-block__caption {
-	display: none;
+  display: none;
 }
