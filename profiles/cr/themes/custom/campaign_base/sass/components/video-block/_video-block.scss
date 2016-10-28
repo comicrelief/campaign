@@ -27,3 +27,6 @@
 	width: 100%;
 	@include background-image(linear-gradient(rgba(0, 0, 0, 0), black));
 }
+.video-block__caption {
+	display: none;
+}
