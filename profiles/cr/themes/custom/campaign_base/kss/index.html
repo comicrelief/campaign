@@ -14,8 +14,7 @@
 
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script type="text/javascript" src="../libraries/lightcase/src/js/lightcase.js"></script>
-  <link rel="stylesheet" type="text/css" href="../libraries/lightcase/src/css/lightcase.css">
-  <link rel="stylesheet" href="kss-assets/kss.css">
+  <link rel="stylesheet" href="../kss/kss.css">
   <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body id="kss-node">
@@ -167,8 +166,23 @@
   prettyPrint();
 </script>
 <script type="text/javascript">
-
-$('a[data-rel^=lightcase]').lightcase();
+$( document ).ready(function() {
+  // Video lightcase
+  $('a[data-rel^=lightcase]').lightcase({
+    onFinish : {
+      custom: function() {
+        var caption = $(this).parent().find('.video-block__caption');
+        console.log(caption.length);
+        if (caption.length) {
+          console.log("has caption");
+          lightcase.get('caption').html(caption.html());
+          $('#lightcase-caption').show();
+          }
+          lightcase.resize();
+        }
+      }
+  });
+});
 
 // burger menu animation
 
