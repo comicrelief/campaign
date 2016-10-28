@@ -46,6 +46,9 @@
             },
             {
                 "href": ""
+            },
+            {
+                "href": ""
             }
         ]
     },
@@ -256,6 +259,22 @@
                     }
                 ],
                 "target_revision_id": "6"
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": ""
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cr_story"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "57bae51b-0b3d-47c9-81e2-c4e233ab238c"
+                    }
+                ],
+                "target_revision_id": "8"
             }
         ]
     },
@@ -273,7 +292,7 @@
     ],
     "changed": [
         {
-            "value": "1472136149",
+            "value": "1477493458",
             "lang": "en"
         }
     ],
@@ -291,7 +310,7 @@
     ],
     "revision_timestamp": [
         {
-            "value": "1472136149"
+            "value": "1477493458"
         }
     ],
     "revision_translation_affected": [

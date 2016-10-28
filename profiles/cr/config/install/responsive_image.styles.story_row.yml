@@ -1,0 +1,48 @@
+uuid: 5e4ff440-2868-43cc-86cc-ffcf24fc51fb
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.story_293_x_322_crop_lg
+    - image.style.story_293_x_322_crop_lg_2x_
+    - image.style.story_479_x_352_crop_md
+    - image.style.story_479_x_352_crop_md_2x_
+    - image.style.story_739_x_561_crop_sm
+    - image.style.story_739_x_561_crop_sm_2x_
+  theme:
+    - campaign_base
+id: story_row
+label: 'Story row'
+image_style_mappings:
+  -
+    breakpoint_id: campaign_base.large
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: story_293_x_322_crop_lg
+  -
+    breakpoint_id: campaign_base.large
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: story_293_x_322_crop_lg_2x_
+  -
+    breakpoint_id: campaign_base.medium
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: story_479_x_352_crop_md
+  -
+    breakpoint_id: campaign_base.medium
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: story_479_x_352_crop_md_2x_
+  -
+    breakpoint_id: campaign_base.small
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: story_739_x_561_crop_sm
+  -
+    breakpoint_id: campaign_base.small
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: story_739_x_561_crop_sm_2x_
+breakpoint_group: campaign_base
+fallback_image_style: '_original image_'

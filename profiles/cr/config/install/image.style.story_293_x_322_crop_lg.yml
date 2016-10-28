@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: story_293_x_322_crop_lg
+label: 'Story - 293 x 322 crop - LG'
+effects:
+  83074662-b0b8-42bf-8ba6-3824a103f85e:
+    uuid: 83074662-b0b8-42bf-8ba6-3824a103f85e
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 293
+      height: 322
