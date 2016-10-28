@@ -91,6 +91,8 @@ projects:
     download:
       branch: 8.x-1.x
   # Developer modules
+  monolog:
+    version: 1.0-alpha2
   config_devel:
     version: 1.0-rc1
     patch:

@@ -1,0 +1,61 @@
+parameters:
+  # Handlers per channel.
+  monolog.channel_handlers:
+    # If not specified use the default handlers.
+    default: ['syslog']
+    # Log php channel to web server's error log.
+    php: ['error_log']
+  # Enabled processors.
+  monolog.processors: ['message_placeholder', 'current_user', 'request_uri', 'ip', 'referer']
+
+services:
+  # Monolog handlers.
+  monolog.handler.browser_console:
+    class: Monolog\Handler\BrowserConsoleHandler
+  monolog.handler.chrome_php:
+    class: Monolog\Handler\ChromePHPHandler
+  monolog.handler.fire_php:
+    class: Monolog\Handler\FirePHPHandler
+  monolog.handler.error_log:
+    class: Monolog\Handler\ErrorLogHandler
+  monolog.handler.syslog:
+    class: Monolog\Handler\SyslogHandler
+    arguments: ['drupal']
+  monolog.handler.null:
+    class: Monolog\Handler\NullHandler
+
+  # Monolog processors
+  monolog.processor.current_user:
+    class: Drupal\monolog\Logger\Processor\CurrentUserProcessor
+    arguments: ['@current_user']
+  monolog.processor.request_uri:
+    class: Drupal\monolog\Logger\Processor\RequestUriProcessor
+    arguments: ['@request_stack']
+  monolog.processor.referer:
+    class: Drupal\monolog\Logger\Processor\RefererProcessor
+    arguments: ['@request_stack']
+  monolog.processor.ip:
+    class: Drupal\monolog\Logger\Processor\IpProcessor
+    arguments: ['@request_stack']
+  monolog.processor.message_placeholder:
+    class: Drupal\monolog\Logger\Processor\MessagePlaceholderProcessor
+    arguments: ['@logger.log_message_parser']
+  monolog.processor.git:
+    class: Monolog\Processor\GitProcessor
+  monolog.processor.introspection:
+    class: Monolog\Processor\IntrospectionProcessor
+  monolog.processor.memory_usage:
+    class: Monolog\Processor\MemoryUsageProcessor
+  monolog.processor.memory_peak_usage:
+    class: Monolog\Processor\MemoryPeakUsageProcessor
+  monolog.processor.process_id:
+    class: Monolog\Processor\ProcessIdProcessor
+  # Should not be needed.
+  monolog.processor.psr_log_message:
+    class: Monolog\Processor\PsrLogMessageProcessor
+  monolog.processor.tag:
+    class: Monolog\Processor\TagProcessor
+  monolog.processor.uid:
+    class: Monolog\Processor\WebProcessor\UidProcessor
+  monolog.processor.web:
+    class: Monolog\Processor\WebProcessor
