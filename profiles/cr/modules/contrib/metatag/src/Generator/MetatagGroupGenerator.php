@@ -1,14 +1,35 @@
 <?php
-/**
- * @file
- * Contains \Drupal\metatag\Generator\MetatagGroupGenerator.
- */
 
 namespace Drupal\metatag\Generator;
 
 use Drupal\Console\Generator\Generator;
+use Drupal\Console\Extension\Manager;
+use Drupal\Console\Utils\TwigRenderer;
 
 class MetatagGroupGenerator extends Generator {
+
+  /** @var Manager  */
+  protected $extensionManager;
+
+  /**
+   * @var TwigRenderer
+   */
+  protected $render;
+
+  /**
+   * MetatagGroupGenerator constructor.
+   *
+   * @param Manager $extensionManager
+   */
+  public function __construct(
+      Manager $extensionManager,
+      TwigRenderer $render
+    ) {
+    $this->extensionManager = $extensionManager;
+
+    $render->addSkeletonDir(__DIR__ . '/../../templates/');
+    $this->setRenderer($render);
+  }
 
   /**
    * Generator plugin.
@@ -30,11 +51,12 @@ class MetatagGroupGenerator extends Generator {
       'plugin_id' => $plugin_id,
       'class_name' => $class_name,
       'weight' => $weight,
+      'prefix' => '<' . '?php',
     ];
 
     $this->renderFile(
       'group.php.twig',
-      $this->getSite()->getPluginPath($module, 'metatag/Group') . '/' . $class_name . '.php',
+      $this->extensionManager->getPluginPath($module, 'metatag/Group') . '/' . $class_name . '.php',
       $parameters
     );
   }

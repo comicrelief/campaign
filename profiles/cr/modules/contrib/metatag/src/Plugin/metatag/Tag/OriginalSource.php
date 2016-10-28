@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\metatag\Plugin\metatag\Tag\OriginalSource.
- */
 
 namespace Drupal\metatag\Plugin\metatag\Tag;
 

@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\metatag_verification\Plugin\metatag\Tag\Google.
- */
 
 namespace Drupal\metatag_verification\Plugin\metatag\Tag;
 

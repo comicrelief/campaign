@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\metatag_verification\Plugin\metatag\Tag\Pinterest.
- */
 
 namespace Drupal\metatag_verification\Plugin\metatag\Tag;
 
