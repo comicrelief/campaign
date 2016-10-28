@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\metatag\Plugin\metatag\Tag\Keywords.
- */
 
 namespace Drupal\metatag\Plugin\metatag\Tag;
 

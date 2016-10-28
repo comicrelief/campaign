@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\metatag_open_graph\Plugin\metatag\Tag\OgUrl.
- */
 
 namespace Drupal\metatag_open_graph\Plugin\metatag\Tag;
 

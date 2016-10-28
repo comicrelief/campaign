@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\metatag_open_graph\Plugin\metatag\Tag\ArticleExpirationTime.
- */
 
 namespace Drupal\metatag_open_graph\Plugin\metatag\Tag;
 

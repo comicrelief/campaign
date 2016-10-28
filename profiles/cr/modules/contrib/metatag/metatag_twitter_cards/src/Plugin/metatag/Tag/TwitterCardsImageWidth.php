@@ -1,12 +1,8 @@
 <?php
-/**
- * @file
- * Contains \Drupal\metatag_twitter_cards\Plugin\metatag\Tag\TwitterCardsImageWidth.
- */
 
 namespace Drupal\metatag_twitter_cards\Plugin\metatag\Tag;
 
-use Drupal\metatag\Plugin\metatag\Tag\MetaPropertyBase;
+use Drupal\metatag\Plugin\metatag\Tag\MetaNameBase;
 
 /**
  * The Twitter Cards image width metatag.
@@ -23,5 +19,5 @@ use Drupal\metatag\Plugin\metatag\Tag\MetaPropertyBase;
  *   multiple = FALSE
  * )
  */
-class TwitterCardsImageWidth extends MetaPropertyBase {
+class TwitterCardsImageWidth extends MetaNameBase {
 }
