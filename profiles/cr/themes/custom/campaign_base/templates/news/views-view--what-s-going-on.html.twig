@@ -28,24 +28,74 @@
  *   Javascript.
  *
  * @see template_preprocess_views_view()
- * 
+ */
 #}
 
-{% if rows %}
-	{% set rows = rows[0]['#rows'] %}
-	<div class = 'news-landing__filter'>
-		{{ exposed }}
-	</div>
-	<div class = 'news-landing__content'>
-		{% for row in rows %}
-		  <div class = 'news-landing__item'>
-		    {{row}}
-		  </div>
-		{% endfor %}
-	</div>
-	{% if pager %}
-		<div class = 'news-landing__pager'>
-			{{ pager }}
-		</div>
-	{% endif %}
-{% endif %}
+{%
+  set classes = [
+    'view',
+    'view-' ~ id|clean_class,
+    'view-id-' ~ id,
+    'view-display-id-' ~ display_id,
+    dom_id ? 'js-view-dom-id-' ~ dom_id,
+  ]
+%}
+{% set articles = rows[0]['#rows'] %}
+
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {% if title %}
+    {{ title }}
+  {% endif %}
+  {{ title_suffix }}
+  {% if header %}
+    <div class="view-header">
+      {{ header }}
+    </div>
+  {% endif %}
+  {% if exposed %}
+    <div class="news-landing__filter">
+      {{ exposed }}
+    </div>
+  {% endif %}
+  {% if attachment_before %}
+    <div class="attachment attachment-before">
+      {{ attachment_before }}
+    </div>
+  {% endif %}
+
+  {% if articles %}
+    <div class="news-landing__content">
+      {% for article in articles %}
+      <div class = 'news-landing__item'>
+        {{ article }}
+      </div>
+    {% endfor %}
+    </div>
+  {% elseif empty %}
+    <div class="view-empty">
+      {{ empty }}
+    </div>
+  {% endif %}
+  {% if pager %}
+    {{ pager }}
+  {% endif %}
+  {% if attachment_after %}
+    <div class="attachment attachment-after">
+      {{ attachment_after }}
+    </div>
+  {% endif %}
+  {% if more %}
+    {{ more }}
+  {% endif %}
+  {% if footer %}
+    <div class="view-footer">
+      {{ footer }}
+    </div>
+  {% endif %}
+  {% if feed_icons %}
+    <div class="feed-icons">
+      {{ feed_icons }}
+    </div>
+  {% endif %}
+</div>
