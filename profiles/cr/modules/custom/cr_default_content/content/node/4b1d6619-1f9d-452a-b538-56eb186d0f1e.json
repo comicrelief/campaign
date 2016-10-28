@@ -1,7 +1,7 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/news?_format=hal_json"
+            "href": "http:\/\/default\/whats-going-on?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/landing"
@@ -36,7 +36,7 @@
     ],
     "vid": [
         {
-            "value": "97"
+            "value": "99"
         }
     ],
     "langcode": [
@@ -52,7 +52,7 @@
     ],
     "title": [
         {
-            "value": "News",
+            "value": "What's going on",
             "lang": "en"
         }
     ],
@@ -129,7 +129,7 @@
     ],
     "changed": [
         {
-            "value": "1477399858",
+            "value": "1477659174",
             "lang": "en"
         }
     ],
@@ -147,7 +147,7 @@
     ],
     "revision_timestamp": [
         {
-            "value": "1477399858"
+            "value": "1477659174"
         }
     ],
     "revision_translation_affected": [
@@ -258,7 +258,7 @@
                 "layout_settings": [],
                 "page_title": "[node:title]",
                 "storage_type": "panelizer_field",
-                "storage_id": "node:17:full:97",
+                "storage_id": "node:17:full:99",
                 "builder": "ipe"
             },
             "lang": "en"

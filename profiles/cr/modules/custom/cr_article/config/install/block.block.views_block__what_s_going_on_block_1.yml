@@ -7,6 +7,8 @@ dependencies:
     - ctools
     - system
     - views
+  theme:
+    - campaign_base
 id: views_block__what_s_going_on_block_1
 theme: campaign_base
 region: content
@@ -23,7 +25,7 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: /news
+    pages: /whats-going-on
     negate: false
     context_mapping: {  }
   'entity_bundle:node':
