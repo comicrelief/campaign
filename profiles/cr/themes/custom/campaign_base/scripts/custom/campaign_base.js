@@ -4,16 +4,17 @@
     // Turn our boring select boxes into sexy jQuery UI selectboxes
     $('select').selectmenu({ style:'popup', width: '100%' });
     // Activate lighcase
-    $('a[rel^=lightcase]').lightcase({
+    // Video lightcase
+    $('a[data-rel^=lightcase]').lightcase({
       onFinish : {
         custom: function() {
-          console.log('done');
-          var caption = $(this).find('.video-block__caption');
+          var caption = $(this).parent().find('.media-block__caption');
+          console.log(caption.length);
           if (caption.length) {
-            lightcase.get('video-block__caption').html(caption.html());
+            console.log("has caption");
+            lightcase.get('caption').html(caption.html());
             $('#lightcase-caption').show();
             }
-            console.log("light");
             lightcase.resize();
           }
         }
