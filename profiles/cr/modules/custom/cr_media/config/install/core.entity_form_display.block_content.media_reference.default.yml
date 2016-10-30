@@ -4,15 +4,20 @@ dependencies:
   config:
     - block_content.type.media_reference
     - field.field.block_content.media_reference.field_media_reference
+    - field.field.block_content.media_reference.field_media_reference_bg
+    - field.field.block_content.media_reference.field_media_reference_body
+    - image.style.thumbnail
   module:
+    - image
     - inline_entity_form
+    - text
 id: block_content.media_reference.default
 targetEntityType: block_content
 bundle: media_reference
 mode: default
 content:
   field_media_reference:
-    weight: 3
+    weight: 1
     settings:
       form_mode: default
       label_singular: ''
@@ -23,9 +28,23 @@ content:
       override_labels: false
     third_party_settings: {  }
     type: inline_entity_form_complex
+  field_media_reference_bg:
+    weight: 2
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+  field_media_reference_body:
+    weight: 3
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
   info:
     type: string_textfield
-    weight: -5
+    weight: 0
     settings:
       size: 60
       placeholder: ''
