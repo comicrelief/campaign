@@ -55,6 +55,9 @@
   bottom: 0;
   width: 100%;
   padding: 80px 10px 10px;
+  h2, h3 {
+  	color: $colour-white;
+  }
 }
 .media-block__caption {
   display: none;
