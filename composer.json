@@ -7,10 +7,10 @@
         "composer/installers": "^1.0.21",
         "wikimedia/composer-merge-plugin": "~1.3",
         "php-amqplib/php-amqplib": "^2.6",
-        "solarium/solarium": "^3.6"
+        "solarium/solarium": "^3.7"
     },
     "replace": {
-        "drupal/core": "~8.1"
+        "drupal/core": "~8.2"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
