@@ -5,10 +5,8 @@ core: 8.x
 package: Comic Relief
 config_devel:
   - field.storage.media.field_video_caption
-  - field.storage.media.field_video_thumbnail
   - field.storage.media.field_youtube_video_id
   - field.field.media.video.field_video_caption
-  - field.field.media.video.field_video_thumbnail
   - field.field.media.video.field_youtube_video_id
   - core.entity_form_display.media.video.default
   - core.entity_view_display.media.video.default
