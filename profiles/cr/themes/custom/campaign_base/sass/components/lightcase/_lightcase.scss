@@ -261,6 +261,7 @@
   #lightcase-case:not([data-lc-type=image]):not([data-lc-type=video]):not([data-lc-type=flash]):not([data-lc-type=error]) #lightcase-content .lightcase-contentInner, #lightcase-case:not([data-lc-type=image]):not([data-lc-type=video]):not([data-lc-type=flash]):not([data-lc-type=error]) #lightcase-content .lightcase-contentInner > * {
     width: 100% !important;
     max-width: none !important;
+    height: 270px !important;
   }
   #lightcase-case:not([data-lc-type=image]):not([data-lc-type=video]):not([data-lc-type=flash]):not([data-lc-type=error]) #lightcase-content .lightcase-contentInner > *:not(iframe) {
     height: auto !important;
@@ -345,7 +346,9 @@
 
 #lightcase-info {
   position: absolute;
-  padding-top: 15px;
+  @media screen and (max-width: 640px) {
+    padding: 20px;
+  }
 }
 #lightcase-info #lightcase-title,
 #lightcase-info #lightcase-caption {
