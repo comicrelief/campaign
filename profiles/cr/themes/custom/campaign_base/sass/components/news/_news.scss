@@ -23,7 +23,7 @@
 		margin: 0 auto 50px;
 		float: none;
 	}
-	/* temporary styling of exposed filter*/
+	/* temporary styling of exposed filter with submit button */
 	.form-item {
 		width: 100%;
 		margin-bottom: 0px;
@@ -59,7 +59,7 @@
 		}
 	}
 	.form-actions {
-		@include span(2);
+		width: 100%;
 		margin: calc(4 * 1.25%) 0;
 		float:none;
 		display: inline-block;
@@ -69,8 +69,9 @@
 			float: right;
 		}
 		.button {
-			padding: 0.4em 1em 0.4em 1em;
-			border: 1px solid #cccccc;
+		width: 100%;
+		padding: 0.4em 1em 0.4em 1em;
+		border: 1px solid #cccccc;
 	  	font-size: 16px;
 	  	line-height: 1.4;
 	    text-align: center;
