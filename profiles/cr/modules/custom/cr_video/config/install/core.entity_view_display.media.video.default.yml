@@ -3,7 +3,6 @@ status: true
 dependencies:
   config:
     - field.field.media.video.field_video_caption
-    - field.field.media.video.field_video_thumbnail
     - field.field.media.video.field_youtube_video_id
     - media_entity.bundle.video
   module:
