@@ -1,12 +1,17 @@
-<div class="media-block view-mode-cw_s cw-article clearfix">
+<article{{ attributes.addClass('media-block', 'clearfix') }}>
+  {{ title_suffix.contextual_links }}
 	<div class="media-block__image">
 		{{ field_media_reference_bg }}
 	</div>
-	<div class="media-block__content">
-		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="play-icon"viewBox="0 0 612 612" xml:space="preserve">
-			<path d="M306,612C137.265,612,0,474.725,0,306C0,137.265,137.265,0,306,0c168.734,0,306,137.265,306,306    C612,474.725,474.725,612,306,612z M306,20.225C148.429,20.225,20.225,148.429,20.225,306    c0,157.57,128.205,285.775,285.775,285.775c157.57,0,285.775-128.205,285.775-285.775C591.775,148.429,463.57,20.225,306,20.225z     M250.514,464.046c-15.786,0-28.618-12.832-28.618-28.598V176.552c0-15.775,12.833-28.598,28.618-28.598    c6.714,0,13.267,2.376,18.424,6.704l173.195,127.618c7.705,4.834,12.66,13.854,12.66,23.724c0,9.809-4.935,18.819-13.217,24.128    L268.443,457.726C263.781,461.659,257.238,464.046,250.514,464.046z M250.514,168.179c-4.632,0-8.394,3.751-8.394,8.373v258.896    c0,4.621,3.762,8.373,8.394,8.373c2.538,0,4.358-1.072,5.43-1.982L430.14,313.473c2.982-1.931,4.439-4.591,4.439-7.463    c0-2.882-1.437-5.511-3.843-7.028L256.439,170.545C254.872,169.25,253.052,168.179,250.514,168.179z"/>
-		</svg>
-		{{ field_media_reference_body }}
+	<div class="media-block__content-wrapper">
+		<div class="media-block__content">
+			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="play-icon"viewBox="0 0 40 40" xml:space="preserve">
+				<path d="M20,2c9.9,0,18,8.1,18,18s-8.1,18-18,18S2,29.9,2,20S10.1,2,20,2 M20,0C9,0,0,9,0,20s9,20,20,20
+		s20-9,20-20S31,0,20,0L20,0z"/>
+				<path d="M15.8,14l10.3,6l-10.3,6V14 M13.8,10.6v18.8L30.1,20L13.8,10.6L13.8,10.6z"/>
+			</svg>
+			{{ field_media_reference_body }}
+		</div>
 	</div>
 	{{ field_media_reference }}
-</div>
+</article>

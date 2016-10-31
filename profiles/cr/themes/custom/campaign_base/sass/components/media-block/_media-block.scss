@@ -49,6 +49,9 @@
     object-fit: cover;
   }
 }
+.media-block__content-wrapper {
+  position: relative;
+}
 .media-block__content {
   @include background-image(linear-gradient(rgba(0, 0, 0, 0), black));
   position: absolute;
