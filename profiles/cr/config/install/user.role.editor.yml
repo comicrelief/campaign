@@ -111,3 +111,4 @@ permissions:
   - 'view media'
   - 'administer redirects'
   - 'access media_entity_browser entity browser pages'
+  - 'administer files'

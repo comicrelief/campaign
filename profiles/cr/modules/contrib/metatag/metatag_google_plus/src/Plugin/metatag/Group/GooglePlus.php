@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\metatag_google_plus\Plugin\metatag\Group\GooglePlus.
- */
 
 namespace Drupal\metatag_google_plus\Plugin\metatag\Group;
 

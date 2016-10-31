@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cr_story_fundraiser_bg_col
+    - paragraphs.paragraphs_type.cr_story
+  module:
+    - options
+id: paragraph.cr_story.field_cr_story_fundraiser_bg_col
+field_name: field_cr_story_fundraiser_bg_col
+entity_type: paragraph
+bundle: cr_story
+label: 'Fundraiser background colour'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: bg--yellow
+default_value_callback: ''
+settings: {  }
+field_type: list_string

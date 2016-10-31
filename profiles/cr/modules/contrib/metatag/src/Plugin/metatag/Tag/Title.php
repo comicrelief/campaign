@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\metatag\Plugin\metatag\Tag\Title.
- */
 
 namespace Drupal\metatag\Plugin\metatag\Tag;
 
@@ -34,11 +30,11 @@ class Title extends MetaNameBase {
   //     $element = '';
   //   }
   //   else {
-  //     $element = array(
+  //     $element = [
   //       '#theme' => 'hidden',
   //       // '#tag' => 'title',
   //       '#value' => $this->value(),
-  //     );
+  //     ];
   //   }
   //
   //   return $element;

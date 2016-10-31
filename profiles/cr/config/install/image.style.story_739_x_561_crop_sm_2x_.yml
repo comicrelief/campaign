@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: story_739_x_561_crop_sm_2x_
+label: 'Story - 739 x 561 crop - SM (2x)'
+effects:
+  54ee7f0d-1212-4a41-b911-cdf82eda38ea:
+    uuid: 54ee7f0d-1212-4a41-b911-cdf82eda38ea
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1478
+      height: 1122

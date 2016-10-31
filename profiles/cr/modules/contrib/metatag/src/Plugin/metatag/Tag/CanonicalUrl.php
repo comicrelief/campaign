@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\metatag\Plugin\metatag\Tag\CanonicalUrl.
- */
 
 namespace Drupal\metatag\Plugin\metatag\Tag;
 

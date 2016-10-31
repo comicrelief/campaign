@@ -1,7 +1,6 @@
 {% extends "generator.php.twig" %}
 
-{% block file_path %}
-\Drupal\{{ module }}\Plugin\metatag\Group\{{ class_name }}.
+{% block prefix %}{{ prefix }}
 {% endblock %}
 
 {% block namespace_class %}

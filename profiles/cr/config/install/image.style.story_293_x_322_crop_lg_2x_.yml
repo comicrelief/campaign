@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: story_293_x_322_crop_lg_2x_
+label: 'Story - 293 x 322 crop - LG (2X)'
+effects:
+  2d99078f-fcaf-4681-bac6-c0b8824ff20c:
+    uuid: 2d99078f-fcaf-4681-bac6-c0b8824ff20c
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 586
+      height: 644

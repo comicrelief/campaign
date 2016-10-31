@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cr_story_row_bg_col
+    - paragraphs.paragraphs_type.cr_story
+  module:
+    - options
+id: paragraph.cr_story.field_cr_story_row_bg_col
+field_name: field_cr_story_row_bg_col
+entity_type: paragraph
+bundle: cr_story
+label: 'Row background colour'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: bg--white
+default_value_callback: ''
+settings: {  }
+field_type: list_string
