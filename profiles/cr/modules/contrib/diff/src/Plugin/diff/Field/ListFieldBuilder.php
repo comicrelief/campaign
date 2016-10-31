@@ -1,11 +1,6 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\diff\Plugin\Diff\ListFieldBuilder
- */
-
-namespace Drupal\diff\Plugin\Diff;
+namespace Drupal\diff\Plugin\diff\Field;
 
 use Drupal\diff\FieldDiffBuilderBase;
 use Drupal\Core\Field\FieldItemListInterface;

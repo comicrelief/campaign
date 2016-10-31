@@ -88,7 +88,7 @@ projects:
   scheduled_updates:
     version: 1.0-alpha5
   diff:
-    version: 1.0-alpha2
+    version: 1.0-beta2
   view_mode:
     download:
       branch: 8.x-1.x

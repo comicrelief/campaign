@@ -1,11 +1,6 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\diff\Plugin\Diff\ImageFieldBuilder
- */
-
-namespace Drupal\diff\Plugin\Diff;
+namespace Drupal\diff\Plugin\diff\Field;
 
 use Drupal\diff\FieldDiffBuilderBase;
 use Drupal\Core\Field\FieldItemListInterface;
@@ -27,7 +22,7 @@ class ImageFieldBuilder extends FieldDiffBuilderBase {
    */
   public function build(FieldItemListInterface $field_items) {
     $result = array();
-    $fileManager = $this->entityManager->getStorage('file');
+    $fileManager = $this->entityTypeManager->getStorage('file');
     // Every item from $field_items is of type FieldItemInterface.
     foreach ($field_items as $field_key => $field_item) {
       if (!$field_item->isEmpty()) {
