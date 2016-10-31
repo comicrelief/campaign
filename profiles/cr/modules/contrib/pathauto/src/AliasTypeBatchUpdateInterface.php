@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\pathauto\AliasTypeBatchUpdateInterface.
- */
-
 namespace Drupal\pathauto;
 
 /**

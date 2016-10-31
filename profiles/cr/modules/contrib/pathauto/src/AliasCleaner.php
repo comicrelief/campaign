@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\pathauto\AliasCleaner
- */
-
 namespace Drupal\pathauto;
 
 use Drupal\Component\Render\PlainTextOutput;

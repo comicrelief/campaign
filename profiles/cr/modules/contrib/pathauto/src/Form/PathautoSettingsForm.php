@@ -1,22 +1,60 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\pathauto\Form\PathautoSettingsForm.
- */
-
 namespace Drupal\pathauto\Form;
 
 use Drupal\Component\Utility\SafeMarkup;
+use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\Entity\EntityFieldManagerInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Entity\FieldableEntityInterface;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Url;
+use Drupal\pathauto\AliasTypeManager;
 use Drupal\pathauto\PathautoGeneratorInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Configure file system settings for this site.
  */
 class PathautoSettingsForm extends ConfigFormBase {
+
+  /**
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  protected $entityTypeManager;
+
+  /**
+   * @var \Drupal\Core\Entity\EntityFieldManagerInterface
+   */
+  protected $entityFieldManager;
+
+  /**
+   * @var \Drupal\pathauto\AliasTypeManager
+   */
+  protected $aliasTypeManager;
+
+  /**
+   * {@inheritDoc}
+   */
+  public function __construct(ConfigFactoryInterface $config_factory, EntityTypeManagerInterface $entity_type_manager, EntityFieldManagerInterface $entity_field_manager, AliasTypeManager $alias_type_manager) {
+    parent::__construct($config_factory);
+    $this->entityTypeManager = $entity_type_manager;
+    $this->entityFieldManager = $entity_field_manager;
+    $this->aliasTypeManager = $alias_type_manager;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('config.factory'),
+      $container->get('entity_type.manager'),
+      $container->get('entity_field.manager'),
+      $container->get('plugin.manager.alias_type')
+    );
+  }
 
   /**
    * {@inheritdoc}
@@ -38,7 +76,33 @@ class PathautoSettingsForm extends ConfigFormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $config = $this->config('pathauto.settings');
 
-    $form = array();
+    $form['enabled_entity_types'] = [
+      '#type' => 'details',
+      '#open' => TRUE,
+      '#title' => $this->t('Enabled entity types'),
+      '#description' => $this->t('Enable to add a path field and allow to define alias patterns for the given type. Disabled types already define a path field themselves or currently have a pattern.'),
+      '#tree' => TRUE,
+    ];
+
+    // Get all applicable entity types.
+    foreach ($this->entityTypeManager->getDefinitions() as $entity_type_id => $entity_type) {
+      // Disable a checkbox if it already exists and if the entity type has
+      // patterns currently defined or if it isn't defined by us.
+      $patterns_count = \Drupal::entityQuery('pathauto_pattern')
+        ->condition('type', 'canonical_entities:' . $entity_type_id)
+        ->count()
+        ->execute();
+
+      if (is_subclass_of($entity_type->getClass(), FieldableEntityInterface::class) && $entity_type->hasLinkTemplate('canonical')) {
+        $field_definitions = $this->entityFieldManager->getBaseFieldDefinitions($entity_type_id);
+        $form['enabled_entity_types'][$entity_type_id] = [
+          '#type' => 'checkbox',
+          '#title' => $entity_type->getLabel(),
+          '#default_value' => isset($field_definitions['path']) || in_array($entity_type_id, $config->get('enabled_entity_types')),
+          '#disabled' => isset($field_definitions['path']) && ($field_definitions['path']->getProvider() != 'pathauto' || $patterns_count),
+        ];
+      }
+    }
 
     $form['verbose'] = array(
       '#type' => 'checkbox',
@@ -94,7 +158,7 @@ class PathautoSettingsForm extends ConfigFormBase {
 
     $description = t('What should Pathauto do when updating an existing content item which already has an alias?');
     if (\Drupal::moduleHandler()->moduleExists('redirect')) {
-      $description .= ' ' . t('The <a href=":url">Redirect module settings</a> affect whether a redirect is created when an alias is deleted.', array(':url' => \Drupal::url('redirect.settings')));
+      $description .= ' ' . t('The <a href=":url">Redirect module settings</a> affect whether a redirect is created when an alias is deleted.', array(':url' => Url::fromRoute('redirect.settings')->toString()));
     }
     else {
       $description .= ' ' . t('Considering installing the <a href=":url">Redirect module</a> to get redirects when your aliases change.', array(':url' => 'http://drupal.org/project/redirect'));
@@ -176,11 +240,31 @@ class PathautoSettingsForm extends ConfigFormBase {
     $config = $this->config('pathauto.settings');
 
     $form_state->cleanValues();
+
+    $original_entity_types = $config->get('enabled_entity_types');
     foreach ($form_state->getValues() as $key => $value) {
+      if ($key == 'enabled_entity_types') {
+        $enabled_entity_types = [];
+        foreach ($value as $entity_type_id => $enabled) {
+          $field_definitions = $this->entityFieldManager->getBaseFieldDefinitions($entity_type_id);
+          // Verify that the entity type is enabled and that it is not defined
+          // or defined by us before adding it to the configuration, so that
+          // we do not store an entity type that cannot be enabled or disabled.
+          if ($enabled && (!isset($field_definitions['path']) || ($field_definitions['path']->getProvider() === 'pathauto'))) {
+            $enabled_entity_types[] = $entity_type_id;
+          }
+        }
+        $value = $enabled_entity_types;
+      }
       $config->set($key, $value);
     }
-
     $config->save();
+
+    // Clear cached field definitions if the values are changed.
+    if ($original_entity_types != $config->get('enabled_entity_types')) {
+      $this->entityFieldManager->clearCachedFieldDefinitions();
+      $this->aliasTypeManager->clearCachedDefinitions();
+    }
 
     parent::submitForm($form, $form_state);
   }

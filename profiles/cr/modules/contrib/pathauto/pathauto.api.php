@@ -1,11 +1,13 @@
 <?php
 
-use Drupal\Core\Language\Language;
-
 /**
  * @file
  * Documentation for pathauto API.
- *
+ */
+
+use Drupal\Core\Language\Language;
+
+/**
  * @todo Update for 8.x-1.x
  *
  * It may be helpful to review some examples of integration from
@@ -56,7 +58,6 @@ use Drupal\Core\Language\Language;
  *
  * @param array &$definitions
  *   Alias type definitions.
- *
  */
 function hook_path_alias_types_alter(array &$definitions) {
 }

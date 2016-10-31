@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\pathauto\Tests\PathautoNodeWebTest.
- */
-
 namespace Drupal\pathauto\Tests;
 use Drupal\pathauto\Entity\PathautoPattern;
 use Drupal\node\Entity\Node;
@@ -87,8 +82,8 @@ class PathautoNodeWebTest extends WebTestBase {
       'path[0][pathauto]' => FALSE,
       'path[0][alias]' => $manual_alias,
     );
-    $this->drupalPostForm($node->urlInfo('edit-form'), $edit, t('Save and keep published'));
-    $this->assertRaw(t('@type %title has been updated.', array('@type' => 'page', '%title' => $title)));
+    $this->drupalPostForm($node->toUrl('edit-form'), $edit, t('Save and keep published'));
+    $this->assertText(t('@type @title has been updated.', array('@type' => 'page', '@title' => $title)));
 
     // Check that the automatic alias checkbox is now unchecked by default.
     $this->drupalGet("node/{$node->id()}/edit");
@@ -97,7 +92,7 @@ class PathautoNodeWebTest extends WebTestBase {
 
     // Submit the node form with the default values.
     $this->drupalPostForm(NULL, array('path[0][pathauto]' => FALSE), t('Save and keep published'));
-    $this->assertRaw(t('@type %title has been updated.', array('@type' => 'page', '%title' => $title)));
+    $this->assertText(t('@type @title has been updated.', array('@type' => 'page', '@title' => $title)));
 
     // Test that the old (automatic) alias has been deleted and only accessible
     // through the new (manual) alias.
@@ -139,7 +134,7 @@ class PathautoNodeWebTest extends WebTestBase {
     $node = $this->drupalGetNodeByTitle($edit['title']);
 
     // Pathauto checkbox should still not exist.
-    $this->drupalGet($node->urlInfo('edit-form'));
+    $this->drupalGet($node->toUrl('edit-form'));
     $this->assertNoFieldById('edit-path-0-pathauto');
     $this->assertFieldByName('path[0][alias]', '');
     $this->assertNoEntityAlias($node);
@@ -160,7 +155,7 @@ class PathautoNodeWebTest extends WebTestBase {
       // @todo - here we expect the $node1 to be at 0 position, any better way?
       'node_bulk_form[0]' => TRUE,
     );
-    $this->drupalPostForm('admin/content', $edit, t('Apply'));
+    $this->drupalPostForm('admin/content', $edit, t('Apply to selected items'));
     $this->assertText('Update URL alias was applied to 1 item.');
 
     $this->assertEntityAlias($node1, '/content/' . $node1->getTitle());
@@ -189,7 +184,7 @@ class PathautoNodeWebTest extends WebTestBase {
     $node->save();
 
     // Ensure that the pathauto field was saved to the database.
-    \Drupal::entityManager()->getStorage('node')->resetCache();
+    \Drupal::entityTypeManager()->getStorage('node')->resetCache();
     $node = Node::load($node->id());
     $this->assertIdentical($node->path->pathauto, PathautoState::SKIP);
 
@@ -230,13 +225,13 @@ class PathautoNodeWebTest extends WebTestBase {
     $this->assertNoEntityAliasExists($node, '/content/node-version-three');
 
     // Programatically save the node with an automatic alias.
-    \Drupal::entityManager()->getStorage('node')->resetCache();
+    \Drupal::entityTypeManager()->getStorage('node')->resetCache();
     $node = Node::load($node->id());
     $node->path->pathauto = PathautoState::CREATE;
     $node->save();
 
     // Ensure that the pathauto field was saved to the database.
-    \Drupal::entityManager()->getStorage('node')->resetCache();
+    \Drupal::entityTypeManager()->getStorage('node')->resetCache();
     $node = Node::load($node->id());
     $this->assertIdentical($node->path->pathauto, PathautoState::CREATE);
 
@@ -283,30 +278,6 @@ class PathautoNodeWebTest extends WebTestBase {
     $this->assertAliasExists(['alias' => '/sample-article-api']);
     $this->drupalGet('sample-article-api');
     $this->assertResponse(200);
-  }
-
-  /**
-   * Tests that patterns can coexist with routes with arguments.
-   *
-   * A common case is to have a view with a term name as a contextual filter,
-   * and a pattern that matches the view's path.
-   */
-  public function testPatternMatchingDynamicRoute() {
-    $this->drupalLogin($this->rootUser);
-
-    // Create a pattern for nodes that matches with a view path defined at
-    // pathauto_views_test module.
-    $this->createPattern('node', '/articles/[node:title]', -1);
-
-    // Create an article.
-    $edit = array(
-      'title[0][value]' => 'Sample article',
-    );
-    $this->drupalPostForm('node/add/article', $edit, t('Save and publish'));
-
-    // Check that the alias was not created and an alert was shown.
-    $this->assertText('collides with the route with identifier');
-    $this->assertNoAliasExists(array('alias' => '/articles/sample-article'));
   }
 
 }

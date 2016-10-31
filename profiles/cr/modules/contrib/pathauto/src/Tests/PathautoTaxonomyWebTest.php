@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\pathauto\Tests\PathautoTaxonomyWebTest.
- */
-
 namespace Drupal\pathauto\Tests;
 use Drupal\simpletest\WebTestBase;
 
@@ -103,6 +98,5 @@ class PathautoTaxonomyWebTest extends WebTestBase {
     $this->drupalGet($manual_alias);
     $this->assertText($name, 'Term accessible through manual alias.');
   }
-
 
 }
