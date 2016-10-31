@@ -1,11 +1,8 @@
 <?php
-/**
- * @file
- * Contains \Drupal\metatag\Plugin\metatag\Group\SiteVerification.
- */
 
-namespace Drupal\metatag\Plugin\metatag\Group;
+namespace Drupal\metatag_verification\Plugin\metatag\Group;
 
+use Drupal\metatag\Plugin\metatag\Group\GroupBase;
 
 /**
  * The Site Verification group.

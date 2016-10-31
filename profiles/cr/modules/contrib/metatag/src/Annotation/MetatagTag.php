@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains the \Drupal\metatag\Annotation\MetatagTag annotation plugin.
- */
 
 namespace Drupal\metatag\Annotation;
 

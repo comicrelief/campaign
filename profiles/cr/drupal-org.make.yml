@@ -47,7 +47,9 @@ projects:
   video_embed_field:
     version: 1.1
   metatag:
-    version: 1.0-beta9
+    download:
+      branch: 8.x-1.x
+      revision: 2065f39
   pathauto:
     version: 1.0-alpha3
   redirect:
@@ -153,13 +155,8 @@ projects:
   google_tag:
     download:
       branch: 8.x-1.x
-      revision: 4c35b50
+      revision: 6a3c3e7
       url: https://github.com/mikeyp/google_tag.git
-    patch:
-      # See: https://gist.github.com/pvhee/166ddfb556b9d1e2870b903e1b54847d
-      # Apply this patch if not Travis builds in RND17 etc. will fail on Behat tests. See e.g. https://travis-ci.com/comicrelief/rnd17/builds/30910019
-      # Error message: Found unknown escape character "\D" at line 5 (near "_form: "\Drupal\google_tag\Form\GoogleTagSettingsForm"").
-      - https://gist.githubusercontent.com/pvhee/166ddfb556b9d1e2870b903e1b54847d/raw/94e2936f57e725c3afa0f450ec32a24f9e5698d6/google_tag_broken_tests.patch
   optimizely:
     version: 2.15-rc1
   simple_sitemap:
