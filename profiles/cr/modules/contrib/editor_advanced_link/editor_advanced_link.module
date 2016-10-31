@@ -5,6 +5,7 @@
  * Advanced Link module.
  */
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\editor\Entity\Editor;
 
 /**
  * Implements hook_form_FORM_ID_alter().
@@ -15,10 +16,22 @@ use Drupal\Core\Form\FormStateInterface;
  *   going to be called as an implementation of hook_form_BASE_FORM_ID_alter().
  */
 function editor_advanced_link_form_editor_link_dialog_alter(&$form, FormStateInterface $form_state, $form_id) {
-  /** @var \Drupal\filter\FilterFormatInterface $filter_format */
-  $filter_format = $form_state->getBuildInfo()['args'][0];
-  $restrictions = $filter_format->getHtmlRestrictions();
-  $user_input = $form_state->getUserInput();
+  $argument = $form_state->getBuildInfo()['args'][0];
+  // In case the only argument we get is the Editor instead of the FilterFormat.
+  if ($argument instanceof Editor) {
+    $argument = $argument->getFilterFormat();
+  }
+  $restrictions = $argument->getHtmlRestrictions();
+
+  if (isset($form_state->getUserInput()['editor_object'])) {
+    $input = $form_state->getUserInput()['editor_object'];
+    $form_state->set('link_element', $input);
+    $form_state->setCached(TRUE);
+  }
+  else {
+    // Retrieve the link element's attributes from form state.
+    $input = $form_state->get('link_element') ?: [];
+  }
 
   /**
    * Helper to retrieve form fields' default values.
@@ -28,8 +41,8 @@ function editor_advanced_link_form_editor_link_dialog_alter(&$form, FormStateInt
    * @return mixed
    *   The existing value or the fallback.
    */
-  $get_default_value = function($attribute_name, $fallback = '') use ($user_input) {
-    return !empty($user_input['editor_object'][$attribute_name]) ? $user_input['editor_object'][$attribute_name] : $fallback;
+  $get_default_value = function($attribute_name, $fallback = '') use ($input) {
+    return !empty($input[$attribute_name]) ? $input[$attribute_name] : $fallback;
   };
 
   /**
@@ -89,7 +102,6 @@ function editor_advanced_link_form_editor_link_dialog_alter(&$form, FormStateInt
     '#type' => 'checkbox',
     '#default_value' => $get_default_value('target', FALSE),
     '#return_value' => '_blank',
-    '#element_validate' => ['_editor_advanced_link_attribute_validate'],
     '#access' => $is_accessible('target'),
     '#group' => 'advanced',
   ];
@@ -111,18 +123,24 @@ function editor_advanced_link_form_editor_link_dialog_alter(&$form, FormStateInt
       break;
     }
   }
+
+  // Add #validate callback that handles empty attributes.
+  array_unshift($form['#validate'], '_editor_advanced_link_attributes_validate');
 }
 
 /**
- * Attribute element validator.
- *
- * Converts any empty value to an empty string to make sure the attribute is
- * removed.
- * @see core/modules/ckeditor/js/plugins/drupallink/plugin.js:saveCallback()
+ * Filter empty attributes to avoid empty HTML output.
  */
-function _editor_advanced_link_attribute_validate($element, FormStateInterface $form_state, $form) {
-  $target = $form_state->getValue($element['#parents']);
-  if (empty($target)) {
-    $form_state->setValue($element['#parents'], '');
+function _editor_advanced_link_attributes_validate($element, FormStateInterface $form_state, $form) {
+  $values = $form_state->getValue('attributes');
+  $link_element = $form_state->get('link_element');
+  foreach ($values as $key => $value) {
+    if (empty($value)) {
+      $form_state->setValue(['attributes', $key], '');
+      // Special case on content creation.
+      if (empty($link_element)) {
+        $form_state->unsetValue(['attributes', $key]);
+      }
+    }
   }
 }
