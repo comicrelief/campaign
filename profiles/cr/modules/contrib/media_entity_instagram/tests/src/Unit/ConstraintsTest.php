@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\media_entity_instagram\Unit\ConstraintsTest.
- */
-
 namespace Drupal\Tests\media_entity_instagram\Unit;
 
 use Drupal\Core\Field\Plugin\Field\FieldType\StringLongItem;
@@ -25,6 +20,7 @@ class ConstraintsTest extends UnitTestCase {
    *
    * @covers \Drupal\media_entity_instagram\Plugin\Validation\Constraint\InstagramEmbedCodeConstraint
    * @covers \Drupal\media_entity_instagram\Plugin\Validation\Constraint\InstagramEmbedCodeConstraintValidator
+   *
    * @dataProvider embedCodeProvider
    */
   public function testInstagramEmbedCodeConstraint($embed_code, $expected_violation_count) {

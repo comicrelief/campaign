@@ -6,7 +6,6 @@ use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
-use Drupal\media_entity\MediaBundleInterface;
 use Drupal\media_entity\MediaInterface;
 use Drupal\Core\Entity\EntityChangedTrait;
 use Drupal\user\UserInterface;
@@ -30,7 +29,10 @@ use Drupal\user\UserInterface;
  *     },
  *     "inline_form" = "Drupal\media_entity\Form\MediaInlineForm",
  *     "translation" = "Drupal\content_translation\ContentTranslationHandler",
- *     "views_data" = "Drupal\media_entity\MediaViewsData"
+ *     "views_data" = "Drupal\media_entity\MediaViewsData",
+ *     "route_provider" = {
+ *       "html" = "Drupal\Core\Entity\Routing\AdminHtmlRouteProvider",
+ *     }
  *   },
  *   base_table = "media",
  *   data_table = "media_field_data",
@@ -51,6 +53,8 @@ use Drupal\user\UserInterface;
  *   admin_permission = "administer media",
  *   field_ui_base_route = "entity.media_bundle.edit_form",
  *   links = {
+ *     "add-page" = "/media/add",
+ *     "add-form" = "/media/add/{media_bundle}",
  *     "canonical" = "/media/{media}",
  *     "delete-form" = "/media/{media}/delete",
  *     "edit-form" = "/media/{media}/edit",
@@ -183,13 +187,20 @@ class Media extends ContentEntityBase implements MediaInterface {
     // Try to set fields provided by type plugin and mapped in bundle
     // configuration.
     foreach ($this->bundle->entity->field_map as $source_field => $destination_field) {
-      // Only save value in entity field if empty. Do not overwrite existing data.
+      // Only save value in entity field if empty. Do not overwrite existing
+      // data.
       // @TODO We might modify that in the future but let's leave it like this
       // for now.
       if ($this->hasField($destination_field) && $this->{$destination_field}->isEmpty() && ($value = $this->getType()->getField($this, $source_field))) {
         $this->set($destination_field, $value);
       }
     }
+
+    // Try to set a default name for this media, if there is no label provided.
+    if (empty($this->label())) {
+      $this->set('name', $this->getType()->getDefaultName($this));
+    }
+
   }
 
   /**
@@ -223,7 +234,7 @@ class Media extends ContentEntityBase implements MediaInterface {
     }
     else {
       /** @var \Drupal\file\FileInterface $file */
-      $file = $this->entityManager()->getStorage('file')->create(['uri' => $thumbnail_uri]);
+      $file = $this->entityTypeManager()->getStorage('file')->create(['uri' => $thumbnail_uri]);
       if ($publisher = $this->getPublisher()) {
         $file->setOwner($publisher);
       }
@@ -292,13 +303,13 @@ class Media extends ContentEntityBase implements MediaInterface {
       ->setDescription(t('The media language code.'))
       ->setTranslatable(TRUE)
       ->setRevisionable(TRUE)
-      ->setDisplayOptions('view', array(
+      ->setDisplayOptions('view', [
         'type' => 'hidden',
-      ))
-      ->setDisplayOptions('form', array(
+      ])
+      ->setDisplayOptions('form', [
         'type' => 'language_select',
         'weight' => 2,
-      ));
+      ]);
 
     $fields['name'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Media name'))
@@ -308,30 +319,30 @@ class Media extends ContentEntityBase implements MediaInterface {
       ->setRevisionable(TRUE)
       ->setDefaultValue('')
       ->setSetting('max_length', 255)
-      ->setDisplayOptions('form', array(
+      ->setDisplayOptions('form', [
         'type' => 'string_textfield',
         'weight' => -5,
-      ))
+      ])
       ->setDisplayConfigurable('form', TRUE)
-      ->setDisplayOptions('view', array(
+      ->setDisplayOptions('view', [
         'label' => 'hidden',
         'type' => 'string',
         'weight' => -5,
-      ))
+      ])
       ->setDisplayConfigurable('view', TRUE);
 
     $fields['thumbnail'] = BaseFieldDefinition::create('image')
       ->setLabel(t('Thumbnail'))
       ->setDescription(t('The thumbnail of the media.'))
       ->setRevisionable(TRUE)
-      ->setDisplayOptions('view', array(
+      ->setDisplayOptions('view', [
         'type' => 'image',
         'weight' => 1,
         'label' => 'hidden',
-        'settings' => array(
+        'settings' => [
           'image_style' => 'thumbnail',
-        ),
-      ))
+        ],
+      ])
       ->setDisplayConfigurable('view', TRUE)
       ->setReadOnly(TRUE);
 
@@ -342,22 +353,22 @@ class Media extends ContentEntityBase implements MediaInterface {
       ->setDefaultValueCallback('Drupal\media_entity\Entity\Media::getCurrentUserId')
       ->setSetting('target_type', 'user')
       ->setTranslatable(TRUE)
-      ->setDisplayOptions('view', array(
+      ->setDisplayOptions('view', [
         'label' => 'hidden',
         'type' => 'author',
         'weight' => 0,
-      ))
+      ])
       ->setDisplayConfigurable('view', TRUE)
-      ->setDisplayOptions('form', array(
+      ->setDisplayOptions('form', [
         'type' => 'entity_reference_autocomplete',
         'weight' => 5,
-        'settings' => array(
+        'settings' => [
           'match_operator' => 'CONTAINS',
           'size' => '60',
           'autocomplete_type' => 'tags',
           'placeholder' => '',
-        ),
-      ))
+        ],
+      ])
       ->setDisplayConfigurable('form', TRUE);
 
     $fields['status'] = BaseFieldDefinition::create('boolean')
@@ -371,16 +382,16 @@ class Media extends ContentEntityBase implements MediaInterface {
       ->setDescription(t('The time that the media was created.'))
       ->setTranslatable(TRUE)
       ->setRevisionable(TRUE)
-      ->setDisplayOptions('view', array(
+      ->setDisplayOptions('view', [
         'label' => 'hidden',
         'type' => 'timestamp',
         'weight' => 0,
-      ))
+      ])
       ->setDisplayConfigurable('view', TRUE)
-      ->setDisplayOptions('form', array(
+      ->setDisplayOptions('form', [
         'type' => 'datetime_timestamp',
         'weight' => 10,
-      ))
+      ])
       ->setDisplayConfigurable('form', TRUE);
 
     $fields['changed'] = BaseFieldDefinition::create('changed')
@@ -420,7 +431,7 @@ class Media extends ContentEntityBase implements MediaInterface {
    *   An array of default values.
    */
   public static function getCurrentUserId() {
-    return array(\Drupal::currentUser()->id());
+    return [\Drupal::currentUser()->id()];
   }
 
   /**
