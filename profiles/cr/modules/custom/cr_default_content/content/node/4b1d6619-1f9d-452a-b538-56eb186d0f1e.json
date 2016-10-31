@@ -236,18 +236,6 @@
                         "region": "first",
                         "uuid": "b8357052-8626-4967-8600-cb92a4ad94a9",
                         "weight": 2
-                    },
-                    "497ef3fb-b56b-43ce-9003-3ad95d8ee1d3": {
-                        "id": "views_block:what_s_going_on-block_1",
-                        "label": "",
-                        "provider": "views",
-                        "label_display": 0,
-                        "views_label": "",
-                        "items_per_page": "none",
-                        "context_mapping": [],
-                        "region": "third",
-                        "uuid": "497ef3fb-b56b-43ce-9003-3ad95d8ee1d3",
-                        "weight": 1
                     }
                 },
                 "id": "panels_variant",
