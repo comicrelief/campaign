@@ -8,7 +8,6 @@ dependencies:
     - node.type.article
     - taxonomy.vocabulary.article_category
   module:
-    - better_exposed_filters
     - image
     - node
     - taxonomy
@@ -44,29 +43,15 @@ display:
           query_comment: ''
           query_tags: {  }
       exposed_form:
-        type: bef
+        type: basic
         options:
           submit_button: Apply
-          reset_button: 0
+          reset_button: false
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
-          expose_sort_order: 0
+          expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
-          bef:
-            general:
-              allow_secondary: 0
-              secondary_label: 'Advanced options'
-              autosubmit: 1
-              autosubmit_hide: 1
-            field_article_category_target_id:
-              bef_format: default
-              more_options:
-                bef_select_all_none: false
-                bef_collapsible: 0
-                is_secondary: 0
-                rewrite:
-                  filter_rewrite_values: ''
       pager:
         type: full
         options:
@@ -216,7 +201,7 @@ display:
           field_api_classes: false
       filters:
         status:
-          value: '1'
+          value: true
           table: node_field_data
           field: status
           plugin_id: boolean
