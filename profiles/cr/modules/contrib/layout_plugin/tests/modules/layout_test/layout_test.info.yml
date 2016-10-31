@@ -1,11 +1,9 @@
-name: Example Layouts
+name: 'Layout test'
 type: module
-description: 'Registers a few example layouts to use for testing or demonstration.'
+description: 'Support module for testing layouts.'
+package: Testing
+# version: VERSION
 # core: 8.x
-package: Examples
-hidden: true
-dependencies:
-  - layout_plugin
 
 # Information added by Drupal.org packaging script on 2016-10-12
 version: '8.x-1.0-alpha23'

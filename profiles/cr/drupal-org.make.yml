@@ -64,7 +64,7 @@ projects:
   inline_entity_form:
     version: 1.0-alpha6
   layout_plugin:
-    version: 1.0-alpha22
+    version: 1.0-alpha23
   page_manager:
     version: 1.0-alpha23
   panels:

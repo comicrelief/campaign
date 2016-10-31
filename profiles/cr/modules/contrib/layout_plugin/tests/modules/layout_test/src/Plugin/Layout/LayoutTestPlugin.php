@@ -1,6 +1,7 @@
 <?php
 
-namespace Drupal\layout_plugin_example\Plugin\Layout;
+namespace Drupal\layout_test\Plugin\Layout;
+
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\layout_plugin\Plugin\Layout\LayoutBase;
 
@@ -10,26 +11,19 @@ use Drupal\layout_plugin\Plugin\Layout\LayoutBase;
  * @ingroup layout_template_plugins
  *
  * @Layout(
- *   id = "layout_example_test",
- *   label = @Translation("Test layout (with settings)"),
- *   category = @Translation("Examples"),
- *   description = @Translation("Test1 sample description"),
- *   type = "page",
- *   help = @Translation("Layout"),
- *   template = "templates/layout-example-test",
+ *   id = "layout_test_plugin",
+ *   label = @Translation("Layout plugin (with settings)"),
+ *   category = @Translation("Layout test"),
+ *   description = @Translation("Test layout"),
+ *   template = "templates/layout-test-plugin",
  *   regions = {
- *     "top" = {
- *       "label" = @Translation("Top Region"),
- *       "plugin_id" = "default"
- *     },
- *    "bottom" = {
- *       "label" = @Translation("Bottom Region"),
- *       "plugin_id" = "default"
+ *     "main" = {
+ *       "label" = @Translation("Main Region")
  *     }
  *   }
  * )
  */
-class LayoutExampleTest extends LayoutBase {
+class LayoutTestPlugin extends LayoutBase {
 
   /**
    * {@inheritdoc}
