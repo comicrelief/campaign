@@ -10,6 +10,7 @@ use Drupal\Core\Entity\Display\EntityDisplayInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
+use Drupal\Core\Url;
 
 /**
  * Implements hook_layout_alter().
@@ -77,10 +78,14 @@ function ds_extras_form_entity_view_display_edit_form_alter(&$form, FormStateInt
     $form['region_to_block'] = array(
       '#type' => 'details',
       '#group' => 'additional_settings',
-      '#title' => t('Block regions'),
+      '#title' => t('Block regions (deprecated)'),
       '#description' => t('Create additional regions in this layout which will be exposed as blocks.')
     );
-
+    $url = Url::fromUri('https://www.drupal.org/node/2754967');
+    $link = Drupal::l(t('handbook page'), $url);
+    $form['region_to_block']['deprecated'] = array(
+      '#markup' => '<b>' . t('This functionality is not compatible with some caching modules. Read the @handbook for a better alternative.', array('@handbook' => $link)) . '</b>'
+    );
     $form['region_to_block']['new_block_region'] = array(
       '#type' => 'textfield',
       '#title' => t('Region name'),
@@ -201,6 +206,7 @@ function ds_extras_form_ds_admin_form_alter(&$form, FormStateInterface $form_sta
     '#type' => 'details',
     '#title' => t('Extra fields'),
     '#group' => 'additional_settings',
+    '#weight' => 2,
     '#tree' => TRUE,
   );
 
@@ -222,13 +228,6 @@ function ds_extras_form_ds_admin_form_alter(&$form, FormStateInterface $form_sta
     ),
   );
 
-  $form['fs3'] = array(
-    '#type' => 'details',
-    '#title' => t('Other'),
-    '#group' => 'additional_settings',
-    '#tree' => TRUE,
-  );
-
   $form['fs3']['field_permissions'] = array(
     '#type' => 'checkbox',
     '#title' => t('Field permissions'),
@@ -237,10 +236,12 @@ function ds_extras_form_ds_admin_form_alter(&$form, FormStateInterface $form_sta
   );
 
   if (\Drupal::moduleHandler()->moduleExists('block')) {
+    $url = Url::fromUri('https://www.drupal.org/node/2754967');
+    $link = Drupal::l(t('handbook page'), $url);
     $form['fs3']['region_to_block'] = array(
       '#type' => 'checkbox',
-      '#title' => t('Region to block'),
-      '#description' => t('Create additional regions exposed as block. Note: this will not work on the default view mode.'),
+      '#title' => t('Region to block (deprecated)'),
+      '#description' => t('Create additional regions exposed as block. Note: this will not work on the default view mode.') . '<br/>' . '<b>' . t('This functionality is not compatible with some caching modules. Read the @handbook for a better alternative.', array('@handbook' => $link)) . '</b>',
       '#default_value' => $config->get('region_to_block'),
     );
   }

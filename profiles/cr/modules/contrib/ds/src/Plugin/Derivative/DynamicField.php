@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Plugin\Derivative\DynamicField.
- */
-
 namespace Drupal\ds\Plugin\Derivative;
 
 use Drupal\Component\Plugin\Derivative\DeriverBase;
@@ -60,4 +55,5 @@ abstract class DynamicField extends DeriverBase {
   protected function getKey($entity_type, $field) {
     return $entity_type . '-' . $field['id'];
   }
+
 }

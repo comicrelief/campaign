@@ -1,11 +1,7 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Plugin\DsField\Link.
- */
-
 namespace Drupal\ds\Plugin\DsField;
+
 use Drupal\Core\Form\FormStateInterface;
 
 /**
@@ -28,19 +24,19 @@ abstract class Link extends Field {
       '#type' => 'textfield',
       '#title' => 'Link class',
       '#default_value' => $config['link class'],
-      '#description' => t('Put a class on the link. Eg: btn btn-default'),
+      '#description' => $this->t('Put a class on the link. Eg: btn btn-default'),
     );
     $form['wrapper'] = array(
       '#type' => 'textfield',
       '#title' => 'Wrapper',
       '#default_value' => $config['wrapper'],
-      '#description' => t('Eg: h1, h2, p')
+      '#description' => $this->t('Eg: h1, h2, p'),
     );
     $form['class'] = array(
       '#type' => 'textfield',
       '#title' => 'Class',
       '#default_value' => $config['class'],
-      '#description' => t('Put a class on the wrapper. Eg: block-title')
+      '#description' => $this->t('Put a class on the wrapper. Eg: block-title'),
     );
 
     return $form;

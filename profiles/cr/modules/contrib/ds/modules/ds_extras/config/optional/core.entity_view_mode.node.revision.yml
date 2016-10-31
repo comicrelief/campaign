@@ -4,6 +4,8 @@ status: false
 cache: true
 targetEntityType: node
 dependencies:
+  enforced:
+    module:
+      - ds_extras
   module:
     - node
-    - ds_extras

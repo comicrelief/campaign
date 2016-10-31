@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Plugin\DsField\Node\NodeLinks.
- */
-
 namespace Drupal\ds\Plugin\DsField\Node;
 
 use Drupal\ds\Plugin\DsField\DsFieldBase;

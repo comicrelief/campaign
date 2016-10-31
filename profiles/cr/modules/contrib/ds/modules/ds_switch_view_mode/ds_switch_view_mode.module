@@ -34,7 +34,7 @@ function ds_switch_view_mode_entity_base_field_info(EntityTypeInterface $entity_
  * Implements hook_entity_view_mode_alter().
  */
 function ds_switch_view_mode_entity_view_mode_alter(&$view_mode, EntityInterface $entity, $context) {
-  if ($entity->getEntityTypeId() == 'node' && node_is_page($entity) && !empty($entity->ds_switch->value)) {
+  if ($entity->getEntityTypeId() == 'node' && node_is_page($entity) && !empty($entity->ds_switch->value) && $view_mode == 'full') {
     $view_mode = $entity->ds_switch->value;
   }
 }
@@ -46,7 +46,7 @@ function ds_switch_view_mode_entity_view_mode_alter(&$view_mode, EntityInterface
  */
 function ds_switch_view_mode_form_node_form_alter(&$form, FormStateInterface $form_state) {
   // Switch full view mode.
-  /** @var Drupal\node\NodeInterface $node */
+  /* @var Drupal\node\NodeInterface $node */
   $node = $form_state->getFormObject()->getEntity();
 
   if (\Drupal::currentUser()->hasPermission('ds switch ' . $node->bundle()) || \Drupal::currentUser()->hasPermission('ds switch view mode')) {
@@ -106,6 +106,14 @@ function ds_switch_view_mode_form_node_form_alter(&$form, FormStateInterface $fo
         $mode = $node->get('ds_switch')->value;
       }
       $chosen_layout = $layouts[$mode];
+      if (empty($chosen_layout)) {
+        if (isset($layouts['full'])) {
+          $chosen_layout = $layouts['full'];
+        }
+        else {
+          $chosen_layout = $layouts[''];
+        }
+      }
       $layout_settings = $chosen_layout->getThirdPartySettings('ds');
 
       $ds_layouts = Ds::getLayouts();

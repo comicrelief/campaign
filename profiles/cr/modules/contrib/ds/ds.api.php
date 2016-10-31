@@ -46,10 +46,10 @@ function hook_ds_field_templates_info_alter(&$plugins) {
  * As soon as you have hook_ds_fields and one of the fields
  * has a settings key, Display Suite will call this hook for the summary.
  *
- * @param $field
+ * @param array $field
  *   The configuration of the field.
  *
- * @return $summary
+ * @return string
  *   The summary to show on the Field UI.
  */
 function hook_ds_field_format_summary($field) {
@@ -59,21 +59,21 @@ function hook_ds_field_format_summary($field) {
 /**
  * Modify the layout settings just before they get saved.
  *
- * @param $record
+ * @param array $record
  *   The record just before it gets saved into the database.
- * @param $form_state
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
  *   The form_state values.
  */
-function hook_ds_layout_settings_alter($record, $form_state) {
+function hook_ds_layout_settings_alter($record, \Drupal\Core\Form\FormStateInterface $form_state) {
   $record['layout']['settings']['classes'] = array('layout-class');
 }
 
 /**
  * Alter the layout render array.
  *
- * @param $layout_render_array
- *   The render array
- * @param $context
+ * @param array $layout_render_array
+ *   The render array.
+ * @param array $context
  *   An array with the context that is being rendered. Available keys are
  *   - entity
  *   - entity_type
@@ -92,10 +92,10 @@ function hook_ds_pre_render_alter(&$layout_render_array, $context, &$vars) {
  *
  * This function is only called when a layout has been chosen.
  *
- * @param $context
+ * @param array $context
  *   A collection of keys for the context. The keys are 'entity_type',
  *   'bundle' and 'view_mode'.
- * @param $region_info
+ * @param array $region_info
  *   A collection of info for regions. The keys are 'region_options'
  *   and 'table_regions'.
  */
@@ -110,11 +110,10 @@ function hook_ds_layout_region_alter($context, &$region_info) {
 /**
  * Alter the field label options.
  *
- * Note that you will either
- * update the preprocess functions or the field.html.twig file when
- * adding new options.
+ * Note that you will either update the preprocess functions or the
+ * field.html.twig file when adding new options.
  *
- * @param $field_label_options
+ * @param array $field_label_options
  *   A collection of field label options.
  */
 function hook_ds_label_options_alter(&$field_label_options) {
@@ -124,9 +123,9 @@ function hook_ds_label_options_alter(&$field_label_options) {
 /**
  * Alter the view mode just before it's rendered by the DS views entity plugin.
  *
- * @param $view_mode
+ * @param string $view_mode
  *   The name of the view mode.
- * @param $context
+ * @param array $context
  *   A collection of items which can be used to identify in what
  *   context an entity is being rendered. The variable contains 3 keys:
  *     - entity: The entity being rendered.
@@ -140,25 +139,32 @@ function hook_ds_views_view_mode_alter(&$view_mode, $context) {
 }
 
 /**
- * Theme an entity through an advanced function coming from the views entity plugin.
+ * Theme an entity through an advanced function.
  *
- * @param $entity
- *   The entity
- * @param $view_mode
+ * The function is coming from the views entity plugin.
+ *
+ * @param \Drupal\Core\Entity\EntityInterface $entity
+ *   The entity.
+ * @param string $view_mode
  *   The name of the view mode.
+ *
+ * @return array
+ *   The rendered entity
  */
-function hook_ds_views_row_render_entity($entity, $view_mode) {
-  $entity = entity_load('node', 1);
-  return entity_view($entity, $view_mode);
+function hook_ds_views_row_render_entity(\Drupal\Core\Entity\EntityInterface $entity, $view_mode) {
+  $entity = Drupal\ds\Plugin\DsField\Node::load(1);
+  return \Drupal::entityManager()->getViewBuilder('node')->view($entity, $view_mode);
 }
 
 /**
- * Theme an entity through an advanced function coming from the views entity plugin.
+ * Theme an entity through an advanced function.
  *
- * @param $build
- *   The builded entity
- * @param $context
- *   Collection of parameters (row, view and view_mode)
+ * Function is coming from the views entity plugin.
+ *
+ * @param array $build
+ *   The builded entity.
+ * @param array $context
+ *   Collection of parameters (row, view and view_mode).
  */
 function hook_ds_views_row_render_entity_alter(&$build, $context) {
   // You can do whatever you want to here.

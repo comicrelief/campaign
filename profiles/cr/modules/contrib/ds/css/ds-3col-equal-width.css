@@ -9,7 +9,7 @@
 }
 
 [dir="rtl"] .ds-3col-equal > .group-left {
-    float: right;
+  float: right;
 }
 
 .ds-3col-equal > .group-middle {
@@ -18,7 +18,7 @@
 }
 
 [dir="rtl"] .ds-3col-equal > .group-middle {
-    float: right;
+  float: right;
 }
 
 .ds-3col-equal > .group-right {
@@ -27,5 +27,5 @@
 }
 
 [dir="rtl"] .ds-3col-equal > .group-right {
-    float: left;
+  float: left;
 }

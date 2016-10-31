@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds_test\Plugin\DsField\TestFieldNothing.
- */
-
 namespace Drupal\ds_test\Plugin\DsField;
 
 use Drupal\ds\Plugin\DsField\DsFieldBase;
@@ -24,7 +19,6 @@ class TestFieldNothing extends DsFieldBase {
    * {@inheritdoc}
    */
   public function build() {
-    return;
   }
 
 }

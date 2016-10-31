@@ -64,7 +64,7 @@ projects:
   panelizer:
     version: 3.0-alpha2
   ds:
-    version: 2.4
+    version: 2.6
   field_group:
     version: 1.0-rc4
   entity_reference_revisions:

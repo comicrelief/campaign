@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Tests\ViewsTest.
- */
-
 namespace Drupal\ds\Tests;
 
 use Drupal\views\Tests\ViewTestData;
@@ -22,7 +17,17 @@ class ViewsTest extends FastTestBase {
    *
    * @var array
    */
-  public static $modules = array('node', 'field_ui', 'taxonomy', 'block', 'ds', 'ds_test', 'layout_plugin', 'views', 'views_ui');
+  public static $modules = array(
+    'node',
+    'field_ui',
+    'taxonomy',
+    'block',
+    'ds',
+    'ds_test',
+    'layout_plugin',
+    'views',
+    'views_ui',
+  );
 
   /**
    * Views used by this test.
@@ -31,6 +36,9 @@ class ViewsTest extends FastTestBase {
    */
   public static $testViews = array('ds-testing');
 
+  /**
+   * {@inheritdoc}
+   */
   protected function setUp() {
     parent::setUp();
 
@@ -45,7 +53,7 @@ class ViewsTest extends FastTestBase {
   /**
    * Test views integration.
    */
-  function testDSViews() {
+  public function testDsViews() {
     $tag1 = $this->createTerm($this->vocabulary);
     $tag2 = $this->createTerm($this->vocabulary);
 
@@ -94,7 +102,7 @@ class ViewsTest extends FastTestBase {
       ),
     );
     $this->dsSelectLayout($layout, $assert, 'admin/structure/types/manage/article/display/teaser');
-    $this->dsConfigureUI($fields, 'admin/structure/types/manage/article/display/teaser');
+    $this->dsConfigureUi($fields, 'admin/structure/types/manage/article/display/teaser');
     $layout = array(
       'layout' => 'ds_4col',
     );
@@ -113,7 +121,7 @@ class ViewsTest extends FastTestBase {
       ),
     );
     $this->dsSelectLayout($layout, $assert);
-    $this->dsConfigureUI($fields);
+    $this->dsConfigureUi($fields);
 
     // Get default teaser view.
     $this->drupalGet('ds-testing');
@@ -126,7 +134,15 @@ class ViewsTest extends FastTestBase {
 
     // Get alternating view.
     $this->drupalGet('ds-testing-2');
-    foreach (array('group-left', 'group-right', 'first', 'second', 'third', 'fourth') as $region) {
+    $regions = array(
+      'group-left',
+      'group-right',
+      'first',
+      'second',
+      'third',
+      'fourth',
+    );
+    foreach ($regions as $region) {
       $this->assertRaw($region, t('Region @region found', array('@region' => $region)));
     }
     $this->assertNoRaw('Article 1');
@@ -161,4 +177,5 @@ class ViewsTest extends FastTestBase {
     $this->assertRaw('Advanced display for id 2');
     $this->assertRaw('Advanced display for id 3');
   }
+
 }

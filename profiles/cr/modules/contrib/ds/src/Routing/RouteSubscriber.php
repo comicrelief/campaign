@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Routing\RouteSubscriber.
- */
-
 namespace Drupal\ds\Routing;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
@@ -28,7 +23,7 @@ class RouteSubscriber extends RouteSubscriberBase {
   /**
    * Constructs a new RouteSubscriber object.
    *
-   * @param \Drupal\Core\Entity\EntityTypeManagerInterface
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager.
    */
   public function __construct(EntityTypeManagerInterface $entity_type_manager) {
@@ -52,7 +47,7 @@ class RouteSubscriber extends RouteSubscriberBase {
               'entity_type_id' => $entity_type_id,
             ),
             array(
-              '_field_ui_view_mode_access' => 'administer ' . $entity_type_id . ' display'
+              '_field_ui_view_mode_access' => 'administer ' . $entity_type_id . ' display',
             ),
             array(
               '_admin_route' => TRUE,
