@@ -60,7 +60,6 @@ dependencies:
   - focal_point
   - scheduled_updates
   - cookieconsent
-  - better_exposed_filters
 
   # Layout
   - inline_entity_form
