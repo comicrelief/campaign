@@ -1,0 +1,7 @@
+name: Better Exposed Filters
+description: Provides advanced options (such as links, checkboxes, or jQueryUI widgets) for exposed Views elements.
+core: 8.x
+type: module
+package: Views
+dependencies:
+  - views

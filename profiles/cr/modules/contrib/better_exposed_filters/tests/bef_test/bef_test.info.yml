@@ -1,0 +1,11 @@
+name: BEF Test
+type: module
+description: Test module for Better Exposed Filters
+core: 8.x
+package: Views
+dependencies:
+  - better_exposed_filters
+  - datetime
+  - node
+  - options
+  - user
