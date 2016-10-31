@@ -12,7 +12,7 @@ projects:
       # See https://www.drupal.org/node/2672110
       2672110: https://www.drupal.org/files/issues/entityfieldderiver-2672110-8.patch
   file_entity:
-    version: 2.0-beta1
+    version: 2.0-beta3
   media_entity:
     type: "module"
     version: "1.0"
