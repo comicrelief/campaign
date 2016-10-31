@@ -81,7 +81,7 @@ content:
     label: hidden
     settings:
       responsive_image_style: hero_image_full_node
-      image_link: ''
+      image_link: content
     third_party_settings: {  }
     type: responsive_image
   field_article_intro:
@@ -117,7 +117,7 @@ content:
     label: hidden
     settings:
       image_style: ''
-      link_image_to: ''
+      link_image_to: content
     third_party_settings: {  }
   links:
     weight: 4
