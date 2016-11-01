@@ -1,0 +1,11 @@
+name: CR Content reference
+type: module
+description: Contains config for the content reference block, this block is used to link nodes to the content wall.
+core: 8.x
+package: Comic Relief
+config_devel:
+  - block_content.type.content_reference
+  - core.entity_form_display.block_content.content_reference.default
+  - core.entity_view_display.block_content.content_reference.default
+  - field.storage.block_content.field_content_reference
+  - field.field.block_content.content_reference.field_content_reference
