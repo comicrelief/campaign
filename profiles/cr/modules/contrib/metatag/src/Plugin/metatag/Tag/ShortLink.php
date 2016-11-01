@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\metatag\Plugin\metatag\Tag\ShortLink.
- */
 
 namespace Drupal\metatag\Plugin\metatag\Tag;
 

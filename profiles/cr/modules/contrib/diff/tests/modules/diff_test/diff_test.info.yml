@@ -4,13 +4,16 @@ dependencies:
   - diff
   - filter
   - editor
+  - entity_test
+  - node
+  - views
 hidden: true
 name: Diff tests
 package: diff
 type: module
 
-# Information added by Drupal.org packaging script on 2016-03-07
-version: '8.x-1.0-alpha2'
+# Information added by Drupal.org packaging script on 2016-10-14
+version: '8.x-1.0-beta2'
 core: '8.x'
 project: 'diff'
-datestamp: 1457387757
+datestamp: 1476455641

@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_cr_story_row_bg_col
+field_name: field_cr_story_row_bg_col
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values: {  }
+  allowed_values_function: cr_story_field_cr_story_row_bg_col
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

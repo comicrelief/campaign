@@ -1,12 +1,8 @@
 <?php
-/**
- * @file
- * Contains \Drupal\metatag_twitter_cards\Plugin\metatag\Tag\TwitterCardsGalleryImage1.
- */
 
 namespace Drupal\metatag_twitter_cards\Plugin\metatag\Tag;
 
-use Drupal\metatag\Plugin\metatag\Tag\MetaPropertyBase;
+use Drupal\metatag\Plugin\metatag\Tag\MetaNameBase;
 
 /**
  * The Twitter Cards gallery image1 metatag.
@@ -23,5 +19,5 @@ use Drupal\metatag\Plugin\metatag\Tag\MetaPropertyBase;
  *   multiple = FALSE
  * )
  */
-class TwitterCardsGalleryImage1 extends MetaPropertyBase {
+class TwitterCardsGalleryImage1 extends MetaNameBase {
 }

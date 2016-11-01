@@ -14,7 +14,7 @@ sites/*/environment.yml
 sites/*/settings.local.php
 
 # Ignore bundle files
-.bundle/config/
+.bundle/
 node_modules/
 
 # Ignore SimpleTest multi-site environment.

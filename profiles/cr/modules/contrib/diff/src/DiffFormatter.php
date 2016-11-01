@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\diff\DiffFormatter.
- */
-
 namespace Drupal\diff;
 
 use Drupal\Core\Diff\DiffFormatter as CoreDiffFormatterBase;

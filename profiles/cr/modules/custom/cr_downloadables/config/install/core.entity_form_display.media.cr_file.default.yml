@@ -2,12 +2,14 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.cr_file.field_cr_downloadables_body
     - field.field.media.cr_file.field_cr_field_display_title
     - field.field.media.cr_file.field_cr_file
     - field.field.media.cr_file.field_cr_file_category
     - media_entity.bundle.cr_file
   module:
     - file
+    - text
 id: media.cr_file.default
 targetEntityType: media
 bundle: cr_file
@@ -18,6 +20,14 @@ content:
     weight: 5
     settings: {  }
     third_party_settings: {  }
+  field_cr_downloadables_body:
+    weight: 6
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea_with_summary
   field_cr_field_display_title:
     weight: 1
     settings:
