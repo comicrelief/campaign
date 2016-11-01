@@ -2,7 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.media.search_index
+    - core.entity_view_mode.media.full
     - field.field.media.cr_file.field_cr_downloadables_body
     - field.field.media.cr_file.field_cr_field_display_title
     - field.field.media.cr_file.field_cr_file
@@ -10,6 +10,7 @@ dependencies:
     - media_entity.bundle.cr_file
   module:
     - ds
+    - text
     - user
 third_party_settings:
   ds:
@@ -29,36 +30,44 @@ third_party_settings:
           layout_class: {  }
     regions:
       ds_content:
+        - field_cr_downloadables_body
+        - name
         - cr_downloadables_MediaButton
     fields:
       cr_downloadables_MediaButton:
         plugin_id: cr_downloadables_MediaButton
-        weight: 0
+        weight: 2
         label: hidden
         formatter: default
-id: media.cr_file.search_index
+id: media.cr_file.full
 targetEntityType: media
 bundle: cr_file
-mode: search_index
+mode: full
 content:
   created:
     type: timestamp
-    weight: 5
+    weight: 7
     label: above
     settings:
       date_format: medium
       custom_date_format: ''
       timezone: ''
     third_party_settings: {  }
+  field_cr_downloadables_body:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
   field_cr_field_display_title:
-    weight: 4
+    weight: 6
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
   field_cr_file:
-    weight: 1
+    weight: 3
     label: hidden
     settings:
       view_mode: default
@@ -66,7 +75,7 @@ content:
     third_party_settings: {  }
     type: entity_reference_entity_view
   field_cr_file_category:
-    weight: 2
+    weight: 4
     label: hidden
     settings:
       link: true
@@ -74,18 +83,18 @@ content:
     type: entity_reference_label
   name:
     type: string
-    weight: 8
-    label: above
+    weight: 1
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
   social_links:
-    weight: 3
+    weight: 5
     settings: {  }
     third_party_settings: {  }
   thumbnail:
     type: entity_reference_entity_view
-    weight: 7
+    weight: 9
     label: above
     settings:
       view_mode: default
@@ -93,9 +102,8 @@ content:
     third_party_settings: {  }
   uid:
     type: author
-    weight: 6
+    weight: 8
     label: above
     settings: {  }
     third_party_settings: {  }
-hidden:
-  field_cr_downloadables_body: true
+hidden: {  }
