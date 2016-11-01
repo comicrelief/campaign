@@ -2,6 +2,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - block_content.type.basic
+    - block_content.type.cr_iframe_embedded
     - field.storage.paragraph.field_br_block_reference
     - paragraphs.paragraphs_type.cr_block_reference
 id: paragraph.cr_block_reference.field_br_block_reference
@@ -15,6 +17,13 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:block'
-  handler_settings: {  }
+  handler: 'default:block_content'
+  handler_settings:
+    target_bundles:
+      basic: basic
+      cr_iframe_embedded: cr_iframe_embedded
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: basic
 field_type: entity_reference
