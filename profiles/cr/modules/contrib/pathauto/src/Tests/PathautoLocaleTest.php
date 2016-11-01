@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\pathauto\Tests\PathautoLocaleTest.
- */
-
 namespace Drupal\pathauto\Tests;
 
 use Drupal\Core\Language\Language;
@@ -83,9 +78,9 @@ class PathautoLocaleTest extends WebTestBase {
     // specifying a language.
     $node = $this->drupalCreateNode(array('title' => 'English node', 'langcode' => LanguageInterface::LANGCODE_NOT_SPECIFIED));
 
-    // Check that the new node had a unique alias generated with the '-1'
+    // Check that the new node had a unique alias generated with the '-0'
     // suffix.
-    $this->assertEntityAlias($node, '/content/english-node-1', LanguageInterface::LANGCODE_NOT_SPECIFIED);
+    $this->assertEntityAlias($node, '/content/english-node-0', LanguageInterface::LANGCODE_NOT_SPECIFIED);
   }
 
   /**

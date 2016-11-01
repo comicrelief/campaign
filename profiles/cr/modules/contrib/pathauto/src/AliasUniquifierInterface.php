@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\pathauto\AliasUniquifierInterface
- */
-
 namespace Drupal\pathauto;
 use Drupal\Core\Language\LanguageInterface;
 
@@ -43,4 +38,5 @@ interface AliasUniquifierInterface {
    *   Returns TRUE if the alias is reserved.
    */
   public function isReserved($alias, $source, $langcode = LanguageInterface::LANGCODE_NOT_SPECIFIED);
+
 }

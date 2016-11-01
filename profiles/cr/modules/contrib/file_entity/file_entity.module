@@ -369,6 +369,10 @@ function file_entity_admin_menu_map() {
  * Implements hook_entity_storage_load().
  */
 function file_entity_entity_storage_load($entities, $entity_type) {
+  $token_service = \Drupal::token();
+  $replace_options = ['clear' => TRUE, 'sanitize' => FALSE];
+  $config = \Drupal::config('file_entity.settings');
+
   // Loop over all the entities looking for entities with attached images.
   foreach ($entities as $entity) {
     /** @var \Drupal\Core\Entity\ContentEntityInterface $entity */
@@ -381,10 +385,15 @@ function file_entity_entity_storage_load($entities, $entity_type) {
             // If alt and title text is not specified, fall back to alt and
             // title text on the file.
             if (!empty($item->target_id) && (empty($item->alt) || empty($item->title))) {
-              $file = $item->entity;
-              foreach (array('alt', 'title') as $key) {
-                if (empty($item->$key) && !empty($file->{$key})) {
-                  $item->key = $file->$key;
+              foreach (['alt', 'title'] as $key) {
+                if (empty($item->$key)) {
+                  $token_bubbleable_metadata = new BubbleableMetadata();
+                  $item->key = $token_service->replace($config->get($key), ['file' => $item->entity], $replace_options, $token_bubbleable_metadata);
+                  // Add the cacheability metadata of the token to the entity.
+                  // This means attachments are discarded, but it does not ever
+                  // make sense to have attachments for an image's "alt" and
+                  // "title"attribute anyway, so this is acceptable.
+                  $entity->addCacheableDependency($token_bubbleable_metadata);
                 }
               }
             }
@@ -411,55 +420,6 @@ function file_entity_get_public_and_private_stream_wrapper_names($flag = StreamW
     }
   }
   return $wrappers;
-}
-
-
-/**
- * Implements hook_file_load().
- */
-function file_entity_file_load($files) {
-//  $alt = variable_get('file_entity_alt', '[file:field_file_image_alt_text]');
-//  $title = variable_get('file_entity_title', '[file:field_file_image_title_text]');
-
-  $alt = '[file:field_image_alt_text]';
-  $title = '[file:field_image_title_text]';
-
-
-  $replace_options = array(
-    'clear' => TRUE,
-    'sanitize' => FALSE,
-  );
-
-  /** @var \Drupal\Core\Utility\Token::replace $token_service */
-  $token_service = \Drupal::service('token');
-
-  /** @var \Drupal\file_entity\Entity\FileEntity $file */
-  foreach ($files as $file) {
-    $file->metadata = array();
-
-    // Load alt and title text from fields.
-    if (!empty($alt)) {
-      $token_bubbleable_metadata = new BubbleableMetadata();
-      $file->alt = $token_service->replace($alt, array('file' => $file), $replace_options, $token_bubbleable_metadata);
-      // Add the cacheability metadata of the token to the file entity. This
-      // means attachments are discarded, but it does not ever make sense to
-      // have attachments for an image's "alt" attribute anyway, so this is
-      // acceptable.
-      $file->addCacheableDependency($token_bubbleable_metadata);
-    }
-    if (!empty($title)) {
-      $token_bubbleable_metadata = new BubbleableMetadata();
-      $file->title = $token_service->replace($title, array('file' => $file), $replace_options, $token_bubbleable_metadata);
-      // Similar to the above, but for the "title" attribute.
-      $file->addCacheableDependency($token_bubbleable_metadata);
-    }
-  }
-
-  // Load and unserialize metadata.
-  $results = db_query("SELECT * FROM {file_metadata} WHERE fid IN (:fids[])", array(':fids[]' => array_keys($files)));
-  foreach ($results as $result) {
-    $files[$result->fid]->metadata[$result->name] = unserialize($result->value);
-  }
 }
 
 /**
@@ -498,4 +458,26 @@ function file_uri_to_object($uri, $use_existing = TRUE) {
   }
 
   return $file;
+}
+
+/**
+ * Implements hook_preprocess_responsive_image_formatter().
+ */
+function file_entity_preprocess_responsive_image_formatter(&$variables) {
+  if (empty($variables['responsive_image']['#width']) || empty($variables['responsive_image']['#height'])) {
+    foreach (['width', 'height'] as $key) {
+      $variables['responsive_image']["#$key"] = $variables['item']->entity->getMetadata($key);
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_image_formatter().
+ */
+function file_entity_preprocess_image_formatter(&$variables) {
+  if (empty($variables['image']['#width']) || empty($variables['image']['#height'])) {
+    foreach (['width', 'height'] as $key) {
+      $variables['image']["#$key"] = $variables['item']->entity->getMetadata($key);
+    }
+  }
 }

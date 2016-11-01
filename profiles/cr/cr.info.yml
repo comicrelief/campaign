@@ -78,6 +78,7 @@ dependencies:
   - cr_page
   - cr_content_wall
   - cr_rich_text_paragraph
+  - cr_iframe
   - cr_block_paragraph
   - cr_downloadables
   - cr_single_msg
@@ -134,7 +135,6 @@ config_devel:
   - field.storage.user.user_picture
 
   # Blocks
-  - block_content.type.basic
   - block.block.tabs
   - block.block.campaign_base_account_menu
   - block.block.campaign_base_page_title

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\pathauto\Kernel\PathautoKernelTest.
- */
-
 namespace Drupal\Tests\pathauto\Kernel;
 
 use Drupal\Component\Utility\Html;
@@ -21,6 +16,8 @@ use Drupal\pathauto\Tests\PathautoTestHelperTrait;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\taxonomy\Entity\Vocabulary;
+use Drupal\node\Entity\Node;
+use Drupal\user\Entity\User;
 
 /**
  * Unit tests for Pathauto functions.
@@ -68,7 +65,7 @@ class PathautoKernelTest extends KernelTestBase {
 
     \Drupal::service('router.builder')->rebuild();
 
-    $this->currentUser = entity_create('user', array('name' => $this->randomMachineName()));
+    $this->currentUser = User::create(array('name' => $this->randomMachineName()));
     $this->currentUser->save();
   }
 
@@ -154,7 +151,7 @@ class PathautoKernelTest extends KernelTestBase {
       ),
     );
     foreach ($tests as $test) {
-      $entity = \Drupal::entityManager()->getStorage($test['entity'])->create($test['values']);
+      $entity = \Drupal::entityTypeManager()->getStorage($test['entity'])->create($test['values']);
       $entity->save();
       $actual = \Drupal::service('pathauto.generator')->getPatternByEntity($entity);
       $this->assertIdentical($actual->getPattern(), $test['expected'], t("Correct pattern returned for @entity_type with @values", array(
@@ -162,6 +159,29 @@ class PathautoKernelTest extends KernelTestBase {
         '@values' => print_r($test['values'], TRUE),
       )));
     }
+  }
+
+  /**
+   * Test potential conflicts with the same alias in different languages.
+   */
+  public function testSameTitleDifferentLanguages() {
+    // Create two English articles with the same title.
+    $edit = [
+      'title' => 'Sample page',
+      'type' => 'page',
+      'langcode' => 'en',
+    ];
+    $node1 = $this->drupalCreateNode($edit);
+    $this->assertEntityAlias($node1, '/content/sample-page', 'en');
+
+    $node2 = $this->drupalCreateNode($edit);
+    $this->assertEntityAlias($node2, '/content/sample-page-0', 'en');
+
+    // Now, create a French article with the same title, and verify that it gets
+    // the basic alias with the correct langcode.
+    $edit['langcode'] = 'fr';
+    $node3 = $this->drupalCreateNode($edit);
+    $this->assertEntityAlias($node3, '/content/sample-page', 'fr');
   }
 
   /**
@@ -235,7 +255,7 @@ class PathautoKernelTest extends KernelTestBase {
     $this->saveAlias('/node/1', '/node-1-alias-fr', 'fr');
     $this->saveAlias('/node/2', '/node-2-alias');
 
-    \Drupal::service('pathauto.alias_storage_helper')->deleteAll('/node/1');
+    \Drupal::service('pathauto.alias_storage_helper')->deleteBySourcePrefix('/node/1');
     $this->assertNoAliasExists(array('source' => "/node/1"));
     $this->assertNoAliasExists(array('source' => "/node/1/view"));
     $this->assertAliasExists(array('source' => "/node/2"));
@@ -269,7 +289,7 @@ class PathautoKernelTest extends KernelTestBase {
     $node->setTitle('Third title');
     $node->save();
     $this->assertEntityAlias($node, '/content/third-title');
-    $this->assertAliasExists(array('source' => '/' . $node->urlInfo()->getInternalPath(), 'alias' => '/content/second-title'));
+    $this->assertAliasExists(array('source' => '/' . $node->toUrl()->getInternalPath(), 'alias' => '/content/second-title'));
 
     $config->set('update_action', PathautoGeneratorInterface::UPDATE_ACTION_DELETE);
     $config->save();
@@ -278,7 +298,7 @@ class PathautoKernelTest extends KernelTestBase {
     $this->assertEntityAlias($node, '/content/fourth-title');
     $this->assertNoAliasExists(array('alias' => '/content/third-title'));
     // The older second alias is not deleted yet.
-    $older_path = $this->assertAliasExists(array('source' => '/' . $node->urlInfo()->getInternalPath(), 'alias' => '/content/second-title'));
+    $older_path = $this->assertAliasExists(array('source' => '/' . $node->toUrl()->getInternalPath(), 'alias' => '/content/second-title'));
     \Drupal::service('path.alias_storage')->delete($older_path);
 
     $config->set('update_action', PathautoGeneratorInterface::UPDATE_ACTION_NO_NEW);
@@ -436,7 +456,7 @@ class PathautoKernelTest extends KernelTestBase {
     $edit['pass']   = user_password();
     $edit['path'] = array('pathauto' => TRUE);
     $edit['status'] = 1;
-    $account = entity_create('user', $edit);
+    $account = User::create($edit);
     $account->save();
     $this->assertEntityAlias($account, '/users/test-user');
   }
@@ -499,9 +519,10 @@ class PathautoKernelTest extends KernelTestBase {
       'type'      => 'page',
     );
 
-    $node = entity_create('node', $settings);
+    $node = Node::create($settings);
     $node->save();
 
     return $node;
   }
+
 }

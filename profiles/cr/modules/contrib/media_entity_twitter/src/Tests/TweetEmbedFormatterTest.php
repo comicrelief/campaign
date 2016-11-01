@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\media_entity_twitter\Tests\TweetEmbedFormatterTest.
- */
-
 namespace Drupal\media_entity_twitter\Tests;
 
 use Drupal\simpletest\WebTestBase;
@@ -46,7 +41,7 @@ class TweetEmbedFormatterTest extends WebTestBase {
    *
    * @var string
    */
-  protected $media_id = 'twitter';
+  protected $mediaId = 'twitter';
 
   /**
    * The test media bundle.
@@ -61,11 +56,12 @@ class TweetEmbedFormatterTest extends WebTestBase {
   protected function setUp() {
     parent::setUp();
 
-    $bundle['bundle'] = $this->media_id;
+    $bundle['bundle'] = $this->mediaId;
     $this->testBundle = $this->drupalCreateMediaBundle($bundle, 'twitter');
     $this->drupalPlaceBlock('local_actions_block');
     $this->adminUser = $this->drupalCreateUser([
       'administer media',
+      'administer media bundles',
       'administer media fields',
       'administer media form display',
       'administer media display',
@@ -142,7 +138,8 @@ class TweetEmbedFormatterTest extends WebTestBase {
     $this->drupalPostForm(NULL, $edit, t('Save settings'));
     $this->assertText('Saved ' . $edit_conf['label'] . ' configuration.');
 
-    // Assert that the new field types configurations have been successfully saved.
+    // Assert that the new field types configurations have been successfully
+    // saved.
     $xpath = $this->xpath('//*[@id="field-link-url"]');
     $this->assertEqual((string) $xpath[0]->td[0], 'Link URL');
     $this->assertEqual((string) $xpath[0]->td[1], 'field_link_url');
@@ -194,18 +191,18 @@ class TweetEmbedFormatterTest extends WebTestBase {
       'field_link_url[0][uri]' => $tweet_url,
       'field_embed_code[0][value]' => $tweet,
     ];
-    $this->drupalPostForm(NULL, $edit, t('Save'));
+    $this->drupalPostForm(NULL, $edit, t('Save and publish'));
 
     // Assert that the media has been successfully saved.
     $this->assertText('Title');
 
     // Assert that the link url formatter exists on this page.
     $this->assertText('Link URL');
-    $this->assertFieldByXPath('/html/body/div/main/div/div/article/div[5]/div[2]/blockquote/a');
+    $this->assertRaw('<a href="https://twitter.com/RamzyStinson/statuses/670650348319576064">', 'Link in embedded Tweet found.');
 
     // Assert that the string_long code formatter exists on this page.
     $this->assertText('Embed code');
-    $this->assertFieldByXPath('/html/body/div/main/div/div/article/div[6]/div[2]/blockquote/a');
+    $this->assertRaw('<blockquote class="twitter-tweet', 'Embedded Tweet found.');
   }
 
 }

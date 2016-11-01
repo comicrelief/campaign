@@ -1,0 +1,21 @@
+name: cr_iframe
+type: module
+description: Block Iframe functionality
+core: 8.x
+package: Comic Relief
+
+config_devel:
+  - block_content.type.cr_iframe_embedded
+  - core.entity_form_display.block_content.cr_iframe_embedded.default
+  - core.entity_view_display.block_content.cr_iframe_embedded.default
+  - field.storage.block_content.field_cr_iframe_embedded_image
+  - field.storage.block_content.field_cr_iframe_embedded_link
+  - field.storage.block_content.field_cr_iframe_embedded_bg
+  - field.field.block_content.cr_iframe_embedded.body
+  - field.field.block_content.cr_iframe_embedded.field_cr_iframe_embedded_image
+  - field.field.block_content.cr_iframe_embedded.field_cr_iframe_embedded_link
+  - field.field.block_content.cr_iframe_embedded.field_cr_iframe_embedded_bg
+
+libraries:
+  - cr_iframe/cr_iframe
+  - campaign_base/platform

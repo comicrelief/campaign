@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\pathauto\VerboseMessenger
- */
-
 namespace Drupal\pathauto;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
