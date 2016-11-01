@@ -9,7 +9,7 @@ projects:
   ctools:
     version: 3.0-alpha27
   file_entity:
-    version: 2.0-beta1
+    version: 2.0-beta3
   media_entity:
     type: "module"
     version: "1.0"

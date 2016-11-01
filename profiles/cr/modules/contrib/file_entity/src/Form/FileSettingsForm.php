@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\file_entity\Form\FileSettingsForm.
- */
 
 namespace Drupal\file_entity\Form;
 
@@ -76,8 +72,8 @@ class FileSettingsForm extends ConfigFormBase {
         '#theme' => 'token_tree_link',
         '#token_types' => array('file'),
       );
-      $form['file_entity_alt']['#description'] .= t('This field supports tokens.');
-      $form['file_entity_title']['#description'] .= t('This field supports tokens.');
+      $form['file_entity_alt']['#description'] .= t('This field supports tokens. Default tokens depend on the <a href=":token">Token module</a> to work correctly. The ":value" version of the token (just raw value, no markup) should be used for performance and to avoid theme issues.', [':token' => 'https://drupal.org/project/token']);
+      $form['file_entity_title']['#description'] .= t('This field supports tokens. Default tokens depend on the <a href=":token">Token module</a> to work correctly. The ":value" version of the token (just raw value, no markup) should be used for performance and to avoid theme issues', [':token' => 'https://drupal.org/project/token']);
     }
 
     $form['file_upload_wizard'] = array(
