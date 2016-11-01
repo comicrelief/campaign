@@ -6,14 +6,26 @@ diff.general:
   js:
     js/diff.js: {}
 
-diff.default:
+diff.double_column:
   version: 1.x
   css:
     theme:
-      css/diff.default.css: {}
+      css/diff.double-column.css: {}
 
-diff.github:
+diff.single_column:
   version: 1.x
   css:
     theme:
-      css/diff.github.css: {}
+      css/diff.single-column.css: {}
+
+diff.colors:
+  version: 1.x
+  css:
+    theme:
+      css/diff.colors.css: {}
+
+diff.visual_inline:
+  version: VERSION
+  css:
+    base:
+      css/diff.visual-inline.css: {}

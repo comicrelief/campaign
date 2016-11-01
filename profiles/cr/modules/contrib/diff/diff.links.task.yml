@@ -3,17 +3,7 @@ diff.general_settings:
   base_route: diff.general_settings
   title: Settings
 
-diff.field_types_list:
-  route_name: diff.field_types_list
+diff.fields_list:
+  route_name: diff.fields_list
   base_route: diff.general_settings
-  title: Configurable Fields
-
-diff.entities:
-  route_name: diff.node_settings
-  title: Base Fields
-  base_route: diff.general_settings
-
-diff.node_entities:
-  route_name: diff.node_settings
-  title: Node
-  parent_id: diff.entities
+  title: Fields
