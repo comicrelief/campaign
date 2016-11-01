@@ -19,13 +19,13 @@ content:
     third_party_settings: {  }
     type: entity_reference_entity_view
   field_content_block_reference:
-    weight: 1
-    label: above
-    settings:
-      link: true
-      view_mode: default
-    third_party_settings: {  }
     type: entity_reference_entity_view
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
 hidden:
   created: true
   social_links: true
