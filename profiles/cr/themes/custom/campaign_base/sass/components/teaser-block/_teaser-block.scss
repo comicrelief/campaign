@@ -1,0 +1,66 @@
+// Teaser Block
+//
+// This is a Teaser block
+//
+// Markup: teaser-block.hbs
+//
+// Style guide: Teaser Block
+
+.teaser-block {
+  position: relative;
+  overflow: hidden;
+}
+.teaser-block__image {
+  @include span(12);
+  @include breakpoint($screen-md, $no-query: true) {
+    @include span(8 no-gutter wide);
+    margin-left: gutter();
+  }
+  img {
+    width: 100%;
+    height: auto;
+    margin-bottom: -5px;
+  }
+  @include breakpoint($screen-md) {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 0;
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+      .no-objectfit & {
+        position: absolute;
+        top: -100%;
+        right: -100%;
+        bottom: -100%;
+        left: -100%;
+        overflow: hidden;
+        width: auto;
+        max-width: none;
+        height: 100%!important;
+        max-height: none;
+        margin: auto;
+      }
+    }
+  }
+}
+.teaser-block__body {
+  @include span(12);
+  padding: 16px 20px 20px;
+  @include breakpoint($screen-md, $no-query: true) {
+    @include span(4 no-gutter last);
+    margin-right: gutter();
+  }
+}
+@include breakpoint(max-width 739px) {
+  // remove height from desktop to mobile resize
+  .teaser-block {
+    padding: 0 calc(4 * #{gutter()}) calc(4 * #{gutter()});
+  }
+  .teaser-block__image {
+    height: auto!important;
+  }
+}
