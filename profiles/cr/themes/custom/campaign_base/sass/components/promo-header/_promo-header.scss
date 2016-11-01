@@ -14,6 +14,10 @@
   &.promo-header--no-image {
     min-height: auto;
   }
+  &.promo-header--feature{
+    min-height: 0;
+    height: 100%;
+  }
 }
 .promo-header {
   &.promo-header--feature {
