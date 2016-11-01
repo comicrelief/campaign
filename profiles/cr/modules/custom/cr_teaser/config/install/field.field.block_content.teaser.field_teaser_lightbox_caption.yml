@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.teaser
+    - field.storage.block_content.field_teaser_lightbox_caption
+  module:
+    - text
+id: block_content.teaser.field_teaser_lightbox_caption
+field_name: field_teaser_lightbox_caption
+entity_type: block_content
+bundle: teaser
+label: 'Lightbox caption'
+description: 'This caption will be used in the lightbox'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

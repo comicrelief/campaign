@@ -5,6 +5,7 @@
     $('select').selectmenu({ style:'popup', width: '100%' });
     // Activate lighcase
     $('a[rel^=lightcase]').lightcase();
+    $('a[data-rel^=lightcase]').lightcase();
 
     // Search hold on
     // $("button.main-menu__icons-magnify").on("click", function() {

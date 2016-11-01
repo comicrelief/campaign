@@ -7,6 +7,7 @@ dependencies:
     - field.field.block_content.teaser.body
     - field.field.block_content.teaser.field_cw_link_target
     - field.field.block_content.teaser.field_teaser_image
+    - field.field.block_content.teaser.field_teaser_lightbox_caption
     - field.field.block_content.teaser.field_teaser_link_address
     - field.field.block_content.teaser.field_teaser_link_colour
     - field.field.block_content.teaser.field_teaser_link_title
@@ -29,7 +30,7 @@ content:
     third_party_settings: {  }
   field_cw_link_target:
     type: boolean
-    weight: 7
+    weight: 8
     label: hidden
     settings:
       format: default
@@ -44,6 +45,12 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
+  field_teaser_lightbox_caption:
+    type: text_default
+    weight: 7
+    label: above
+    settings: {  }
+    third_party_settings: {  }
   field_teaser_link_address:
     type: string
     weight: 4

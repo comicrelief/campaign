@@ -5,7 +5,7 @@
 <article{{ attributes.addClass('cw-article', 'clearfix') }}>
   {{ title_suffix.contextual_links }} 
     <div class="cw-article__image">
-      <a rel="{{ youtube_link }}" class="{{ youtube_link }}" href="{{ field_teaser_link_address }}" target="{{ link_target }}">
+      <a rel="{{ youtube_link }}" class="{{ youtube_link }}" href="{{ field_teaser_link_address }}" target="{{ link_target }}" title='{{ field_teaser_lightbox_caption }}'>
         {{ field_teaser_image }}
       </a>
     </div>
@@ -13,7 +13,7 @@
       <h4 class="cw-article__title">{{ field_teaser_title }}</h4>
       {{ body }}
       <div class="cw-article__link">
-        <a rel="{{ youtube_link }}" class="link {{ link_colour }}" href="{{ field_teaser_link_address }}" target="{{ link_target }}">{{ field_teaser_link_title }}</a>
+        <a rel="{{ youtube_link }}" class="link {{ link_colour }}" href="{{ field_teaser_link_address }}" target="{{ link_target }}" title='{{ field_teaser_lightbox_caption }}'>{{ field_teaser_link_title }}</a>
       </div>
     </div> 
 </article>

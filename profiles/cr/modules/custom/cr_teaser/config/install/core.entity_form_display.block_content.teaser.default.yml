@@ -6,6 +6,7 @@ dependencies:
     - field.field.block_content.teaser.body
     - field.field.block_content.teaser.field_cw_link_target
     - field.field.block_content.teaser.field_teaser_image
+    - field.field.block_content.teaser.field_teaser_lightbox_caption
     - field.field.block_content.teaser.field_teaser_link_address
     - field.field.block_content.teaser.field_teaser_link_colour
     - field.field.block_content.teaser.field_teaser_link_title
@@ -13,8 +14,43 @@ dependencies:
     - field.field.block_content.teaser.field_teaser_you_tube_link
     - image.style.thumbnail
   module:
+    - field_group
     - image
     - text
+third_party_settings:
+  field_group:
+    group_link:
+      children:
+        - field_teaser_link_title
+        - field_teaser_link_address
+        - field_teaser_link_colour
+        - field_cw_link_target
+        - group_lightbox
+      parent_name: ''
+      weight: 4
+      label: Link
+      format_type: fieldset
+      format_settings:
+        formatter: closed
+        description: ''
+        classes: ''
+        id: ''
+        required_fields: true
+        open: false
+    group_lightbox:
+      children:
+        - field_teaser_you_tube_link
+        - field_teaser_lightbox_caption
+      parent_name: group_link
+      weight: 9
+      label: Lightbox
+      format_type: tab
+      format_settings:
+        formatter: closed
+        description: ''
+        classes: ''
+        id: ''
+        required_fields: true
 id: block_content.teaser.default
 targetEntityType: block_content
 bundle: teaser
@@ -30,7 +66,7 @@ content:
     third_party_settings: {  }
   field_cw_link_target:
     type: boolean_checkbox
-    weight: 7
+    weight: 8
     settings:
       display_label: true
     third_party_settings: {  }
@@ -41,8 +77,15 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
+  field_teaser_lightbox_caption:
+    weight: 11
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
   field_teaser_link_address:
-    weight: 5
+    weight: 6
     settings:
       size: 60
       placeholder: ''
@@ -50,11 +93,11 @@ content:
     type: string_textfield
   field_teaser_link_colour:
     type: options_select
-    weight: 6
+    weight: 7
     settings: {  }
     third_party_settings: {  }
   field_teaser_link_title:
-    weight: 4
+    weight: 5
     settings:
       size: 60
       placeholder: ''
@@ -69,7 +112,7 @@ content:
     type: string_textfield
   field_teaser_you_tube_link:
     type: boolean_checkbox
-    weight: 8
+    weight: 10
     settings:
       display_label: true
     third_party_settings: {  }

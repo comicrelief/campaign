@@ -7,6 +7,7 @@ dependencies:
     - field.field.block_content.teaser.body
     - field.field.block_content.teaser.field_cw_link_target
     - field.field.block_content.teaser.field_teaser_image
+    - field.field.block_content.teaser.field_teaser_lightbox_caption
     - field.field.block_content.teaser.field_teaser_link_address
     - field.field.block_content.teaser.field_teaser_link_colour
     - field.field.block_content.teaser.field_teaser_link_title
@@ -41,6 +42,7 @@ third_party_settings:
         - field_teaser_link_title
         - field_teaser_link_address
         - field_teaser_you_tube_link
+        - field_teaser_lightbox_caption
         - field_teaser_link_colour
         - field_cw_link_target
 id: block_content.teaser.cw_m
@@ -56,7 +58,7 @@ content:
     third_party_settings: {  }
   field_cw_link_target:
     type: boolean
-    weight: 7
+    weight: 8
     label: hidden
     settings:
       format: default
@@ -71,6 +73,12 @@ content:
       image_style: ''
     third_party_settings: {  }
     type: image
+  field_teaser_lightbox_caption:
+    type: text_default
+    weight: 6
+    label: above
+    settings: {  }
+    third_party_settings: {  }
   field_teaser_link_address:
     type: string
     weight: 4
@@ -80,7 +88,7 @@ content:
     third_party_settings: {  }
   field_teaser_link_colour:
     type: list_default
-    weight: 6
+    weight: 7
     label: hidden
     settings: {  }
     third_party_settings: {  }
@@ -108,7 +116,7 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
   social_links:
-    weight: 8
+    weight: 9
     settings: {  }
     third_party_settings: {  }
 hidden: {  }
