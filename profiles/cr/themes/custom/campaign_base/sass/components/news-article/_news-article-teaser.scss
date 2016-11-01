@@ -50,10 +50,11 @@
 			width:100%;
 		}
 		.article-teaser__content-wrapper {
+			position: relative;
 			width: 100%;
 			padding: calc(4 * #{gutter()});
 			.article-teaser__content {
-				position: initial;
+				position: relative;
 				top: 0;
 				@include translateY(0);
 			}
