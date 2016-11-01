@@ -74,7 +74,7 @@ Feature: Article
     And I am on "whats-going-on/test-scheduled-article"
     Then I should see "Test Scheduled article"
 
-  @api
+  @api @not-on-travis
   Scenario: Create news articles that are linked together via a common tag
     Given a "category" term with the name "Fundraising"
     When I am viewing a "article" content:
@@ -101,5 +101,3 @@ Feature: Article
     And the cache has been cleared
     And I click "Comic Relief raises £1bn over 30-year existence"
     Then I should see "Celebrities come together for a stellar Night of TV for Sport Relief"
-
-
