@@ -23,7 +23,8 @@
 		}
 	}
 	@include breakpoint($screen-md) {
-		.article-teaser__image, .article-teaser__video {
+		.article-teaser__image, 
+		.article-teaser__video {
 			@include span(5);
 			margin: 0px;
 			img {
@@ -39,12 +40,13 @@
 				position: absolute;
 				padding: calc(4 * #{gutter()});
 				top: 50%;
-				transform: translateY(-50%);
+				@include translateY(-50%);
 			}
 		}
 	}
 	@include breakpoint($screen-lg) {
-		.article-teaser__image, .article-teaser__video {
+		.article-teaser__image, 
+		.article-teaser__video {
 			width:100%;
 		}
 		.article-teaser__content-wrapper {
