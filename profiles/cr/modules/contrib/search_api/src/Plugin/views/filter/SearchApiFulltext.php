@@ -6,8 +6,10 @@ use Drupal\Component\Utility\Unicode;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
 use Drupal\search_api\Entity\Index;
+use Drupal\search_api\ParseMode\ParseModePluginManager;
 use Drupal\search_api\UncacheableDependencyTrait;
 use Drupal\views\Plugin\views\filter\FilterPluginBase;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Defines a filter for adding a fulltext search to the view.
@@ -22,11 +24,56 @@ class SearchApiFulltext extends FilterPluginBase {
   use SearchApiFilterTrait;
 
   /**
+   * The parse mode manager.
+   *
+   * @var \Drupal\search_api\ParseMode\ParseModePluginManager|null
+   */
+  protected $parseModeManager;
+
+  /**
    * {@inheritdoc}
    */
-  public function showOperatorForm(&$form, FormStateInterface $form_state) {
-    parent::showOperatorForm($form, $form_state);
-    $form['operator']['#description'] = $this->t('This operator only applies when using "Search keys" as the "Use as" setting.');
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    /** @var static $plugin */
+    $plugin = parent::create($container, $configuration, $plugin_id, $plugin_definition);
+
+    $plugin->setParseModeManager($container->get('plugin.manager.search_api.parse_mode'));
+
+    return $plugin;
+  }
+
+  /**
+   * Retrieves the parse mode manager.
+   *
+   * @return \Drupal\search_api\ParseMode\ParseModePluginManager
+   *   The parse mode manager.
+   */
+  public function getParseModeManager() {
+    return $this->parseModeManager ?: \Drupal::service('plugin.manager.search_api.parse_mode');
+  }
+
+  /**
+   * Sets the parse mode manager.
+   *
+   * @param \Drupal\search_api\ParseMode\ParseModePluginManager $parse_mode_manager
+   *   The new parse mode manager.
+   *
+   * @return $this
+   */
+  public function setParseModeManager(ParseModePluginManager $parse_mode_manager) {
+    $this->parseModeManager = $parse_mode_manager;
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function operatorForm(&$form, FormStateInterface $form_state) {
+    parent::operatorForm($form, $form_state);
+
+    if (!empty($form['operator'])) {
+      $form['operator']['#description'] = $this->t('Based on the parse mode set, some of these options might not work as expected. Please either use "Multiple terms" as the parse mode or make sure that the filter behaves as expected for multiple words.');
+    }
   }
 
   /**
@@ -78,6 +125,7 @@ class SearchApiFulltext extends FilterPluginBase {
   public function defineOptions() {
     $options = parent::defineOptions();
 
+    $options['parse_mode'] = array('default' => 'terms');
     $options['operator']['default'] = 'and';
 
     $options['min_length']['default'] = '';
@@ -91,6 +139,25 @@ class SearchApiFulltext extends FilterPluginBase {
    */
   public function buildOptionsForm(&$form, FormStateInterface $form_state) {
     parent::buildOptionsForm($form, $form_state);
+
+    $form['parse_mode'] = array(
+      '#type' => 'select',
+      '#title' => $this->t('Parse mode'),
+      '#description' => $this->t('Choose how the search keys will be parsed.'),
+      '#options' => $this->getParseModeManager()->getInstancesOptions(),
+      '#default_value' => $this->options['parse_mode'],
+    );
+    foreach ($this->getParseModeManager()->getInstances() as $key => $mode) {
+      if ($mode->getDescription()) {
+        $states['visible'][':input[name="options[parse_mode]"]']['value'] = $key;
+        $form["parse_mode_{$key}_description"] = array(
+          '#type' => 'item',
+          '#title' => $mode->label(),
+          '#description' => $mode->getDescription(),
+          '#states' => $states,
+        );
+      }
+    }
 
     $fields = $this->getFulltextFields();
     if (!empty($fields)) {
@@ -192,6 +259,12 @@ class SearchApiFulltext extends FilterPluginBase {
     $fields = $this->options['fields'];
     $fields = $fields ? $fields : array_keys($this->getFulltextFields());
     $query = $this->getQuery();
+
+    if ($this->options['parse_mode']) {
+      $parse_mode = $this->getParseModeManager()
+        ->createInstance($this->options['parse_mode']);
+      $query->setParseMode($parse_mode);
+    }
 
     // If something already specifically set different fields, we silently fall
     // back to mere filtering.

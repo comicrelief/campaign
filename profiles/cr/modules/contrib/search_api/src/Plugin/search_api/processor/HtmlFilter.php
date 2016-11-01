@@ -2,13 +2,14 @@
 
 namespace Drupal\search_api\Plugin\search_api\processor;
 
+use Drupal\Component\Render\FormattableMarkup;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\search_api\Item\FieldInterface;
 use Drupal\search_api\Plugin\search_api\data_type\value\TextValueInterface;
 use Drupal\search_api\Processor\FieldsProcessorPluginBase;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 use Symfony\Component\Yaml\Dumper;
 use Symfony\Component\Yaml\Exception\ParseException;
 use Symfony\Component\Yaml\Parser;
@@ -19,8 +20,9 @@ use Symfony\Component\Yaml\Parser;
  * @SearchApiProcessor(
  *   id = "html_filter",
  *   label = @Translation("HTML filter"),
- *   description = @Translation("Strips HTML tags from fulltext fields and decodes HTML entities. Use this processor when indexing HTML data, e.g., node bodies for certain text formats. The processor also allows to boost (or ignore) the contents of specific elements."),
+ *   description = @Translation("Strips HTML tags from fulltext fields and decodes HTML entities. Use this processor when indexing HTML data – for example, node bodies for certain text formats. The processor also allows to boost (or ignore) the contents of specific elements."),
  *   stages = {
+ *     "pre_index_save" = 0,
  *     "preprocess_index" = -10,
  *     "preprocess_query" = -10
  *   }
@@ -104,7 +106,7 @@ class HtmlFilter extends FieldsProcessorPluginBase {
       }
     }
     catch (ParseException $exception) {
-      $errors[] = $this->t('Tags is not valid YAML. See @link for information on how to write correctly formed YAML.', array('@link' => 'http://yaml.org'));
+      $errors[] = $this->t('Tags is not a valid YAML map. See @link for information on how to write correctly formed YAML.', array('@link' => 'http://yaml.org'));
       $tags = array();
     }
     foreach ($tags as $key => $value) {
@@ -113,7 +115,7 @@ class HtmlFilter extends FieldsProcessorPluginBase {
         $errors[] = $this->t("Boost value for tag @tag can't be an array.", array('@tag' => $tag));
       }
       elseif (!is_numeric($value)) {
-        $errors[] = $this->t("Boost value for tag @tag must be numeric.", array('@tag' => $tag));
+        $errors[] = $this->t('Boost value for tag @tag must be numeric.', array('@tag' => $tag));
       }
       elseif ($value < 0) {
         $errors[] = $this->t('Boost value for tag @tag must be non-negative.', array('@tag' => $tag));
@@ -127,7 +129,15 @@ class HtmlFilter extends FieldsProcessorPluginBase {
     }
     $form_state->setValue('tags', $tags);
     if ($errors) {
-      $form_state->setError($form['tags'], implode("<br />\n", $errors));
+      $message = array_shift($errors);
+      foreach ($errors as $error) {
+        $args = array(
+          '@message1' => $message,
+          '@message2' => $error,
+        );
+        $message = new FormattableMarkup('@message1<br />@message2', $args);
+      }
+      $form_state->setError($form['tags'], $message);
     }
   }
 

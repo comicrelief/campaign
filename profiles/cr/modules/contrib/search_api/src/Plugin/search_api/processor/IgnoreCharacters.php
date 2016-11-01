@@ -14,6 +14,7 @@ use Drupal\search_api\Processor\FieldsProcessorPluginBase;
  *   label = @Translation("Ignore characters"),
  *   description = @Translation("Configure types of characters which should be ignored for searches."),
  *   stages = {
+ *     "pre_index_save" = 0,
  *     "preprocess_index" = -20,
  *     "preprocess_query" = -20
  *   }
@@ -92,7 +93,7 @@ class IgnoreCharacters extends FieldsProcessorPluginBase {
     parent::validateConfigurationForm($form, $form_state);
 
     $ignorable = str_replace('/', '\/', $form_state->getValues()['ignorable']);
-    if (@preg_match('/(' . $ignorable . ')+/u', '') === FALSE) {
+    if ($ignorable !== '' && @preg_match('/(' . $ignorable . ')+/u', '') === FALSE) {
       $el = $form['ignorable'];
       $form_state->setError($el, $el['#title'] . ': ' . $this->t('The entered text is no valid regular expression.'));
     }

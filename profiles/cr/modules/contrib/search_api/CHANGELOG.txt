@@ -1,0 +1,5 @@
+Search API 1.0, Beta 1 (2016-09-05):
+------------------------------------
+First Beta release of the project's Drupal 8 version. The API can be considered
+mostly stable and an upgrade path will be provided for all data structure
+changes from this point forward.

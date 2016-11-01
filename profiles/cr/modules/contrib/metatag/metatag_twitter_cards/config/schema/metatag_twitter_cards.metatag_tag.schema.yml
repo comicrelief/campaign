@@ -1,4 +1,4 @@
-metatag.metatag_tag.twitter_cards_app_id_google_play:
+metatag.metatag_tag.twitter_cards_app_id_googleplay:
   type: label
   label: 'Twitter Cards: Google Play app ID'
 metatag.metatag_tag.twitter_cards_app_id_ipad:
@@ -7,7 +7,7 @@ metatag.metatag_tag.twitter_cards_app_id_ipad:
 metatag.metatag_tag.twitter_cards_app_id_iphone:
   type: label
   label: 'Twitter Cards: iPhone app ID'
-metatag.metatag_tag.twitter_cards_app_name_google_play:
+metatag.metatag_tag.twitter_cards_app_name_googleplay:
   type: label
   label: 'Twitter Cards: Google Play app name'
 metatag.metatag_tag.twitter_cards_app_name_ipad:

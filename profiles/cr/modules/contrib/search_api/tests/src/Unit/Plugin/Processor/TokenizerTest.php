@@ -4,7 +4,7 @@ namespace Drupal\Tests\search_api\Unit\Plugin\Processor;
 
 use Drupal\Component\Utility\Unicode;
 use Drupal\search_api\Plugin\search_api\processor\Tokenizer;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 use Drupal\Tests\UnitTestCase;
 
 /**

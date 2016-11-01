@@ -8,7 +8,7 @@ use Drupal\search_api\Item\ItemInterface;
 use Drupal\search_api\Plugin\search_api\processor\AggregatedFields;
 use Drupal\search_api\Processor\ProcessorInterface;
 use Drupal\search_api\Processor\ProcessorProperty;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 use Drupal\Tests\UnitTestCase;
 
 /**
@@ -44,14 +44,26 @@ class AggregatedFieldsTest extends UnitTestCase {
   protected $fieldId = 'aggregated_field';
 
   /**
+   * The callback with which text values should be preprocessed.
+   *
+   * @var callable
+   */
+  protected $valueCallback;
+
+  /**
    * Creates a new processor object for use in the tests.
    */
   protected function setUp() {
     parent::setUp();
 
+    $datasource = $this->getMock('\Drupal\search_api\Datasource\DatasourceInterface');
+    $datasource->expects($this->any())
+      ->method('getPropertyDefinitions')
+      ->willReturn(array());
     $this->index = new Index(array(
       'datasourceInstances' => array(
-        'entity:test1' => (object) array(),
+        'entity:test1' => $datasource,
+        'entity:test2' => $datasource,
       ),
       'processorInstances' => array(),
       'field_settings' => array(
@@ -71,19 +83,36 @@ class AggregatedFieldsTest extends UnitTestCase {
           'property_path' => 'foobaz:bla',
         ),
         'aggregated_field' => array(
-          'type' => 'string',
+          'type' => 'text',
           'property_path' => 'aggregated_field',
         ),
       ),
-      'properties' => array(
-        NULL => array(),
-        'entity:test1' => array(),
-        'entity:test2' => array(),
-      ),
     ), 'search_api_index');
-    $this->processor = new AggregatedFields(array('index' => $this->index), 'aggregated_field', array());
+    $this->processor = new AggregatedFields(array('#index' => $this->index), 'aggregated_field', array());
     $this->index->addProcessor($this->processor);
-    $this->setUpDataTypePlugin();
+    $this->setUpMockContainer();
+
+    // We want to check correct data type handling, so we need a somewhat more
+    // complex mock-up for the datatype plugin handler.
+    /** @var \PHPUnit_Framework_MockObject_MockObject|\Drupal\search_api\DataType\DataTypePluginManager $data_type_manager */
+    $data_type_manager = $this->container->get('plugin.manager.search_api.data_type');
+    $data_type_manager->method('hasDefinition')
+      ->willReturn(TRUE);
+    $this->valueCallback = function ($value) {
+      if (is_numeric($value)) {
+        return $value + 1;
+      }
+      else {
+        return '*' . $value;
+      }
+    };
+    $data_type = $this->getMock('Drupal\search_api\DataType\DataTypeInterface');
+    $data_type->method('getValue')
+      ->willReturnCallback($this->valueCallback);
+    $data_type_manager->method('createInstance')
+      ->willReturnMap(array(
+        array('text', array(), $data_type),
+      ));
   }
 
   /**
@@ -130,12 +159,14 @@ class AggregatedFieldsTest extends UnitTestCase {
     foreach (array('entity:test1', 'entity:test2') as $datasource_id) {
       $this->itemIds[$i++] = $item_id = Utility::createCombinedId($datasource_id, '1:en');
       $item = Utility::createItem($this->index, $item_id);
-      foreach ($this->index->getFields() as $field_id => $field) {
-        $field = clone $field;
-        if (!empty($field_values[$field_id])) {
-          $field->setValues($field_values[$field_id]);
+      foreach (array(NULL, $datasource_id) as $field_datasource_id) {
+        foreach ($this->index->getFieldsByDatasource($field_datasource_id) as $field_id => $field) {
+          $field = clone $field;
+          if (!empty($field_values[$field_id])) {
+            $field->setValues($field_values[$field_id]);
+          }
+          $item->setField($field_id, $field);
         }
-        $item->setField($field_id, $field);
       }
       $item->setFieldsExtracted(TRUE);
       $items[$item_id] = $item;
@@ -146,8 +177,8 @@ class AggregatedFieldsTest extends UnitTestCase {
       $this->processor->addFieldValues($item);
     }
 
-    $this->assertEquals($expected[0], $items[$this->itemIds[0]]->getField($this->fieldId)->getValues(), 'Correct aggregation for item 1.');
-    $this->assertEquals($expected[1], $items[$this->itemIds[1]]->getField($this->fieldId)->getValues(), 'Correct aggregation for item 2.');
+    $this->assertEquals(array_map($this->valueCallback, $expected[0]), $items[$this->itemIds[0]]->getField($this->fieldId)->getValues(), 'Correct aggregation for item 1.');
+    $this->assertEquals(array_map($this->valueCallback, $expected[1]), $items[$this->itemIds[1]]->getField($this->fieldId)->getValues(), 'Correct aggregation for item 2.');
   }
 
   /**
@@ -259,6 +290,10 @@ class AggregatedFieldsTest extends UnitTestCase {
       ->willReturnMap(array(
         array('foo', $bar_foo_property),
       ));
+    $bar_property->method('getProperties')
+      ->willReturn(array(
+        'foo' => TRUE,
+      ));
     $foobar_property = $this->getMock('Drupal\Core\TypedData\TypedDataInterface');
     $foobar_property->method('getValue')
       ->willReturn('wrong_value2');
@@ -268,6 +303,11 @@ class AggregatedFieldsTest extends UnitTestCase {
       ->willReturnMap(array(
         array('bar', $bar_property),
         array('foobar', $foobar_property),
+      ));
+    $object->method('getProperties')
+      ->willReturn(array(
+        'bar' => TRUE,
+        'foobar' => TRUE,
       ));
 
     /** @var \Drupal\search_api\IndexInterface|\PHPUnit_Framework_MockObject_MockObject $index */

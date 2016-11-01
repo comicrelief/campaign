@@ -4,13 +4,16 @@ namespace Drupal\search_api\Processor;
 
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Plugin\PluginFormInterface;
 use Drupal\Core\Render\Element;
 use Drupal\search_api\Item\FieldInterface;
+use Drupal\search_api\Utility\DataTypeHelperInterface;
+use Drupal\search_api\Plugin\PluginFormTrait;
 use Drupal\search_api\Plugin\search_api\data_type\value\TextValueInterface;
 use Drupal\search_api\Query\ConditionGroupInterface;
 use Drupal\search_api\Query\ConditionInterface;
 use Drupal\search_api\Query\QueryInterface;
-use Drupal\search_api\Utility;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Provides a base class for processors that work on individual fields.
@@ -31,8 +34,22 @@ use Drupal\search_api\Utility;
  * run on:
  * - testField()
  * - testType()
+ *
+ * Processors extending this class should usually support the following stages:
+ * - pre_index_save
+ * - preprocess_index
+ * - preprocess_query
  */
-abstract class FieldsProcessorPluginBase extends ProcessorPluginBase {
+abstract class FieldsProcessorPluginBase extends ProcessorPluginBase implements PluginFormInterface {
+
+  use PluginFormTrait;
+
+  /**
+   * The data type helper.
+   *
+   * @var \Drupal\search_api\Utility\DataTypeHelperInterface|null
+   */
+  protected $dataTypeHelper;
 
   // @todo Add defaultConfiguration() implementation and find a cleaner solution
   //   for all the isset($this->configuration['fields']) checks.
@@ -40,20 +57,74 @@ abstract class FieldsProcessorPluginBase extends ProcessorPluginBase {
   /**
    * {@inheritdoc}
    */
-  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
-    $form = parent::buildConfigurationForm($form, $form_state);
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    /** @var static $processor */
+    $processor = parent::create($container, $configuration, $plugin_id, $plugin_definition);
 
+    $processor->setDataTypeHelper($container->get('search_api.data_type_helper'));
+
+    return $processor;
+  }
+
+  /**
+   * Retrieves the data type helper.
+   *
+   * @return \Drupal\search_api\Utility\DataTypeHelperInterface
+   *   The data type helper.
+   */
+  public function getDataTypeHelper() {
+    return $this->dataTypeHelper ?: \Drupal::service('search_api.data_type_helper');
+  }
+
+  /**
+   * Sets the data type helper.
+   *
+   * @param \Drupal\search_api\Utility\DataTypeHelperInterface $data_type_helper
+   *   The new data type helper.
+   *
+   * @return $this
+   */
+  public function setDataTypeHelper(DataTypeHelperInterface $data_type_helper) {
+    $this->dataTypeHelper = $data_type_helper;
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function preIndexSave() {
+    parent::preIndexSave();
+
+    if (!isset($this->configuration['fields'])) {
+      return;
+    }
+
+    $renames = $this->index->getFieldRenames();
+
+    $selected_fields = array_flip($this->configuration['fields']);
+    $renames = array_intersect_key($renames, $selected_fields);
+    if ($renames) {
+      $new_fields = array_keys(array_diff_key($selected_fields, $renames));
+      $new_fields = array_merge($new_fields, array_values($renames));
+      $this->configuration['fields'] = $new_fields;
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $fields = $this->index->getFields();
     $field_options = array();
     $default_fields = array();
     if (isset($this->configuration['fields'])) {
-      $default_fields = array_filter($this->configuration['fields']);
+      $default_fields = $this->configuration['fields'];
     }
     foreach ($fields as $name => $field) {
       if ($this->testType($field->getType())) {
         $field_options[$name] = Html::escape($field->getPrefixedLabel());
         if (!isset($this->configuration['fields']) && $this->testField($name, $field)) {
-          $default_fields[$name] = $name;
+          $default_fields[] = $name;
         }
       }
     }
@@ -72,8 +143,6 @@ abstract class FieldsProcessorPluginBase extends ProcessorPluginBase {
    * {@inheritdoc}
    */
   public function validateConfigurationForm(array &$form, FormStateInterface $form_state) {
-    parent::validateConfigurationForm($form, $form_state);
-
     $fields = array_filter($form_state->getValues()['fields']);
     if ($fields) {
       $fields = array_keys($fields);
@@ -287,7 +356,7 @@ abstract class FieldsProcessorPluginBase extends ProcessorPluginBase {
    *   TRUE if fields of that type should be processed, FALSE otherwise.
    */
   protected function testType($type) {
-    return Utility::isTextType($type, array('text', 'string'));
+    return $this->getDataTypeHelper()->isTextType($type, array('text', 'string'));
   }
 
   /**

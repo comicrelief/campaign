@@ -1,11 +1,11 @@
 databases:
   default:
     default:
-      database: rnd17
+      database: campaign
       username: root
-      password: password
+      password: root
       prefix:
-      host: 127.0.0.1
+      host: mysql
       port:
       namespace: Drupal\Core\Database\Driver\mysql
       driver: mysql
@@ -23,7 +23,7 @@ settings:
   hash_salt: kzWT4Q5kJe2DkfS72PrATBUfkw54RKzMCbQg933K1Qwe0ZKtonOV_xdmuCac
   file_chmod_directory: 0775
   file_chmod_file: 0664
-  #trusted_host_patterns: ['^rnd17-test\.sys\.comicrelief\.com$', '^127\.0\.0\.1$', '^localhost$']
+  trusted_host_patterns: ['^campaign\.dev$', '^campaign\.lab$', '^campaign\.local$', '^127\.0\.0\.1$', '^localhost$']
 
 config:
   system.performance:
@@ -34,4 +34,4 @@ config:
   system.logging:
     error_level: verbose
 
-config_dir: sites/default/files/config
+config_dir: 'sites/default/config'

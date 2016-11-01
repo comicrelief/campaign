@@ -9,10 +9,11 @@
 // Style guide: promo-header
 
 .promo-header {
-  @include breakpoint($screen-md-max, $no-query: true) {
-    min-height: 600px;
-  }
   position: relative;
+  min-height: 600px;
+  &.promo-header--no-image {
+    min-height: auto;
+  }
 }
 .promo-header {
   &.promo-header--feature {
@@ -75,6 +76,11 @@
     padding: 1px 0;
     background: $colour-white;
     @include breakpoint-gutters;
+  }
+  .promo-header--no-image & {
+    @include translateY(0);
+    position: relative;
+    top: 0;
   }
   .promo-header__content-inner {
     margin: 25px auto 15px;

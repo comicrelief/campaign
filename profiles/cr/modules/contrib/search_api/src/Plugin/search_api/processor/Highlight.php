@@ -5,11 +5,13 @@ namespace Drupal\search_api\Plugin\search_api\processor;
 use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\Unicode;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Plugin\PluginFormInterface;
 use Drupal\Core\Render\Element;
+use Drupal\search_api\Plugin\PluginFormTrait;
 use Drupal\search_api\Processor\ProcessorPluginBase;
 use Drupal\search_api\Query\QueryInterface;
 use Drupal\search_api\Query\ResultSetInterface;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 
 /**
  * Adds a highlighted excerpt to results and highlights returned fields.
@@ -21,11 +23,14 @@ use Drupal\search_api\Utility;
  *   label = @Translation("Highlight"),
  *   description = @Translation("Adds a highlighted excerpt to results and highlights returned fields."),
  *   stages = {
- *     "postprocess_query" = 0
+ *     "pre_index_save" = 0,
+ *     "postprocess_query" = 0,
  *   }
  * )
  */
-class Highlight extends ProcessorPluginBase {
+class Highlight extends ProcessorPluginBase implements PluginFormInterface {
+
+  use PluginFormTrait;
 
   /**
    * PCRE regular expression for a word boundary.
@@ -65,6 +70,27 @@ class Highlight extends ProcessorPluginBase {
   /**
    * {@inheritdoc}
    */
+  public function preIndexSave() {
+    parent::preIndexSave();
+
+    if (empty($this->configuration['exclude_fields'])) {
+      return;
+    }
+
+    $renames = $this->index->getFieldRenames();
+
+    $selected_fields = array_flip($this->configuration['exclude_fields']);
+    $renames = array_intersect_key($renames, $selected_fields);
+    if ($renames) {
+      $new_fields = array_keys(array_diff_key($selected_fields, $renames));
+      $new_fields = array_merge($new_fields, array_values($renames));
+      $this->configuration['exclude_fields'] = $new_fields;
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function defaultConfiguration() {
     return array(
       'prefix' => '<strong>',
@@ -80,8 +106,6 @@ class Highlight extends ProcessorPluginBase {
    * {@inheritdoc}
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
-    $form = parent::buildConfigurationForm($form, $form_state);
-
     $form['highlight'] = array(
       '#type' => 'select',
       '#title' => $this->t('Highlight returned field data'),
@@ -118,8 +142,8 @@ class Highlight extends ProcessorPluginBase {
     // Exclude certain fulltext fields.
     $fields = $this->index->getFields();
     $fulltext_fields = array();
-    foreach ($this->index->getFulltextFields() as $field) {
-      $fulltext_fields[$field] = $fields[$field]->getLabel() . ' (' . $field . ')';
+    foreach ($this->index->getFulltextFields() as $field_id) {
+      $fulltext_fields[$field_id] = $fields[$field_id]->getLabel() . ' (' . $field_id . ')';
     }
     $form['exclude_fields'] = array(
       '#type' => 'checkboxes',
@@ -161,8 +185,7 @@ class Highlight extends ProcessorPluginBase {
     // Sanitize the storage for the "exclude_fields" setting.
     $excluded = &$form_state->getValue('exclude_fields');
     $excluded = array_keys(array_filter($excluded));
-
-    parent::submitConfigurationForm($form, $form_state);
+    $this->setConfiguration($form_state->getValues());
   }
 
   /**
@@ -509,7 +532,7 @@ class Highlight extends ProcessorPluginBase {
    *   The search keywords entered by the user.
    * @param bool $html
    *   (optional) Whether the text can contain HTML tags or not. In the former
-   *   case, text inside tags (i.e., tag names and attributes) won't be
+   *   case, text inside tags (that is, tag names and attributes) won't be
    *   highlighted.
    *
    * @return string

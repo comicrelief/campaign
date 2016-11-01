@@ -4,7 +4,7 @@ namespace Drupal\Tests\search_api\Unit\Plugin\Processor;
 
 use Drupal\Core\Entity\Plugin\DataType\EntityAdapter;
 use Drupal\search_api\Plugin\search_api\processor\RoleFilter;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 use Drupal\Tests\UnitTestCase;
 
 /**
@@ -15,6 +15,8 @@ use Drupal\Tests\UnitTestCase;
  * @see \Drupal\search_api\Plugin\search_api\processor\RoleFilter
  */
 class RoleFilterTest extends UnitTestCase {
+
+  use TestItemsTrait;
 
   /**
    * The processor to be tested.
@@ -35,6 +37,8 @@ class RoleFilterTest extends UnitTestCase {
    */
   protected function setUp() {
     parent::setUp();
+
+    $this->setUpMockContainer();
 
     $this->processor = new RoleFilter(array(), 'role_filter', array());
 

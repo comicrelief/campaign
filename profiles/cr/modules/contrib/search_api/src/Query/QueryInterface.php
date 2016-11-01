@@ -2,8 +2,10 @@
 
 namespace Drupal\search_api\Query;
 
+use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\search_api\IndexInterface;
 use Drupal\search_api\ParseMode\ParseModeInterface;
+use Drupal\search_api\ParseMode\ParseModePluginManager;
 
 /**
  * Represents a search query on a Search API index.
@@ -55,8 +57,6 @@ interface QueryInterface extends ConditionSetInterface {
    *
    * @param \Drupal\search_api\IndexInterface $index
    *   The index for which the query should be created.
-   * @param \Drupal\search_api\Query\ResultsCacheInterface $results_cache
-   *   The results cache that should be used for this query.
    * @param array $options
    *   (optional) The options to set for the query.
    *
@@ -67,7 +67,52 @@ interface QueryInterface extends ConditionSetInterface {
    *   Thrown if a search on that index (or with those options) won't be
    *   possible.
    */
-  public static function create(IndexInterface $index, ResultsCacheInterface $results_cache, array $options = array());
+  public static function create(IndexInterface $index, array $options = array());
+
+  /**
+   * Retrieves the search ID.
+   *
+   * @param bool $generate
+   *   (optional) If TRUE and no search ID was set yet for this query, generate
+   *   one automatically. If FALSE, NULL will be returned in this case.
+   *
+   * @return string|null
+   *   The search ID, or NULL if none was set yet and $generate is FALSE.
+   */
+  public function getSearchId($generate = TRUE);
+
+  /**
+   * Sets the search ID.
+   *
+   * The search ID is a freely-chosen machine name identifying this search query
+   * for purposes of identifying the query later in the page request. It will be
+   * used, amongst other things, to identify the query in the search results
+   * cache service.
+   *
+   * If the set ID is the same as a display plugin ID, this will also
+   * automatically set that display plugin for this query. Queries for the same
+   * display or search page should therefore usually use the same search ID.
+   *
+   * @param string $search_id
+   *   The new search ID.
+   *
+   * @return $this
+   *
+   * @see \Drupal\search_api\Query\QueryInterface::getDisplayPlugin()
+   * @see \Drupal\search_api\Query\ResultsCacheInterface
+   */
+  public function setSearchId($search_id);
+
+  /**
+   * Retrieves the search display associated with this query (if any).
+   *
+   * If the search ID set for this query corresponds to a display plugin ID,
+   * that display will be returned. Otherwise, NULL is returned.
+   *
+   * @return \Drupal\search_api\Display\DisplayInterface|null
+   *   The search display associated with this query, if any; NULL otherwise.
+   */
+  public function getDisplayPlugin();
 
   /**
    * Retrieves the parse mode.
@@ -254,11 +299,11 @@ interface QueryInterface extends ConditionSetInterface {
    * Prepares the query object for the search.
    *
    * This method should always be called by execute() and contain all necessary
-   * operations before the query is passed to the server's search() method.
+   * operations that have to be execute before the query is passed to the
+   * server's search() method.
    *
    * @throws \Drupal\search_api\SearchApiException
-   *   Thrown if any wrong options were set on the query (e.g., conditions or
-   *   sorts on unknown fields).
+   *   Thrown if any wrong options were discovered.
    */
   public function preExecute();
 
@@ -378,8 +423,6 @@ interface QueryInterface extends ConditionSetInterface {
    *     the whole result in the index.
    *   - limit: The maximum number of search results to return. -1 means no
    *     limit.
-   *   - 'search id': A string that will be used as the identifier when storing
-   *     this search in the Search API's static cache.
    *   - 'skip result count': If present and set to TRUE, the search's result
    *     count will not be needed. Service classes can check for this option to
    *     possibly avoid executing expensive operations to compute the result
@@ -470,8 +513,8 @@ interface QueryInterface extends ConditionSetInterface {
    *
    * @return string[]
    *   The tags associated with this search query, as both the array keys and
-   *   values. Returned by reference so it's possible to, e.g., remove existing
-   *   tags.
+   *   values. Returned by reference so it's possible, for example, to remove
+   *   existing tags.
    */
   public function &getTags();
 

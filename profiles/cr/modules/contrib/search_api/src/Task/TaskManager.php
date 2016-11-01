@@ -202,7 +202,7 @@ class TaskManager implements TaskManagerInterface {
    */
   public function executeAllTasks(array $conditions = array(), $limit = NULL) {
     // We have to use this roundabout way because tasks, during their execution,
-    // might create additional tasks. (E.g., see
+    // might create additional tasks. (For example, see
     // \Drupal\search_api\Task\IndexTaskManager::trackItems().)
     $executed = 0;
     while (TRUE) {

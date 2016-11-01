@@ -13,7 +13,7 @@ use Drupal\search_api\IndexInterface;
 use Drupal\search_api\Query\QueryInterface;
 use Drupal\search_api\Query\ResultSetInterface;
 use Drupal\search_api\Tests\ExampleContentTrait;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 
 /**
  * Provides a base class for backend tests.
@@ -56,10 +56,11 @@ abstract class BackendTestBase extends KernelTestBase {
   public function setUp() {
     parent::setUp();
 
-    $this->installSchema('search_api', array('search_api_item', 'search_api_task'));
+    $this->installSchema('search_api', array('search_api_item'));
     $this->installSchema('system', array('router'));
     $this->installSchema('user', array('users_data'));
     $this->installEntitySchema('entity_test_mulrev_changed');
+    $this->installEntitySchema('search_api_task');
     $this->installConfig('search_api_test_example_content');
 
     // Set the tracking page size so tracking will work properly.
@@ -456,6 +457,7 @@ abstract class BackendTestBase extends KernelTestBase {
     $this->regressionTest1658964();
     $this->regressionTest2469547();
     $this->regressionTest1403916();
+    $this->regressionTest2783987();
   }
 
   /**
@@ -755,6 +757,30 @@ abstract class BackendTestBase extends KernelTestBase {
     );
     $facets = $results->getExtraData('search_api_facets', array())['type'];
     usort($facets, array($this, 'facetCompare'));
+    $this->assertEquals($expected, $facets, 'Correct facets were returned');
+  }
+
+  /**
+   * Regression test for facet with "min_count" greater than 1.
+   *
+   * @see https://www.drupal.org/node/2783987
+   */
+  protected function regressionTest2783987() {
+    $query = $this->buildSearch('test foo');
+    $facets = array();
+    $facets['type'] = array(
+      'field' => 'type',
+      'limit' => 0,
+      'min_count' => 2,
+      'missing' => TRUE,
+    );
+    $query->setOption('search_api_facets', $facets);
+    $query->range(0, 0);
+    $results = $query->execute();
+    $expected = array(
+      array('count' => 2, 'filter' => '"item"'),
+    );
+    $facets = $results->getExtraData('search_api_facets', array())['type'];
     $this->assertEquals($expected, $facets, 'Correct facets were returned');
   }
 

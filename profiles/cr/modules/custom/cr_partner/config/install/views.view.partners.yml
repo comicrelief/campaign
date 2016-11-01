@@ -7,6 +7,7 @@ dependencies:
     - node.type.partner
   module:
     - node
+    - taxonomy
     - user
 id: partners
 label: Partners
@@ -51,7 +52,6 @@ display:
       pager:
         type: none
         options:
-          items_per_page: 0
           offset: 0
       style:
         type: html_list
@@ -213,12 +213,47 @@ display:
           expose:
             operator: ''
           group: 1
-      sorts: {  }
+      sorts:
+        weight:
+          id: weight
+          table: taxonomy_term_field_data
+          field: weight
+          relationship: field_partner_category
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          entity_type: taxonomy_term
+          entity_field: weight
+          plugin_id: standard
+        field_partner_weight_value:
+          id: field_partner_weight_value
+          table: node__field_partner_weight
+          field: field_partner_weight_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          plugin_id: standard
       title: ''
       header: {  }
       footer: {  }
       empty: {  }
-      relationships: {  }
+      relationships:
+        field_partner_category:
+          id: field_partner_category
+          table: node__field_partner_category
+          field: field_partner_category
+          relationship: none
+          group_type: group
+          admin_label: 'field_partner_category: Taxonomy term'
+          required: true
+          plugin_id: standard
       arguments: {  }
       display_extenders: {  }
     cache_metadata:

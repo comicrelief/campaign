@@ -6,6 +6,7 @@ use Drupal\Component\Utility\Html;
 use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Plugin\PluginFormInterface;
 use Drupal\search_api\Processor\ProcessorInterface;
 use Drupal\search_api\Processor\ProcessorPluginManager;
 use Psr\Log\LoggerInterface;
@@ -226,10 +227,11 @@ class IndexProcessorsForm extends EntityForm {
     );
 
     foreach ($all_processors as $processor_id => $processor) {
-      $sub_keys = array('processors', $processor_id, 'settings');
-      $processor_form_state = new SubFormState($form_state, $sub_keys);
-      $processor_form = $processor->buildConfigurationForm($form, $processor_form_state);
-      if ($processor_form) {
+      if ($processor instanceof PluginFormInterface) {
+        $processor_form = array();
+        if (isset($form['settings'][$processor_id])) {
+          $processor_form = $form['settings'][$processor_id];
+        }
         $form['settings'][$processor_id] = array(
           '#type' => 'details',
           '#title' => $processor->label(),
@@ -241,7 +243,9 @@ class IndexProcessorsForm extends EntityForm {
             ),
           ),
         );
-        $form['settings'][$processor_id] += $processor_form;
+        $sub_keys = array('processors', $processor_id, 'settings');
+        $processor_form_state = new SubFormState($form_state, $sub_keys);
+        $form['settings'][$processor_id] += $processor->buildConfigurationForm($processor_form, $processor_form_state);
       }
     }
 
@@ -258,11 +262,12 @@ class IndexProcessorsForm extends EntityForm {
     $processors = $this->getAllProcessors();
 
     // Iterate over all processors that have a form and are enabled.
-    foreach ($form['settings'] as $processor_id => $processor_form) {
-      if (!empty($values['status'][$processor_id])) {
+    foreach (array_keys(array_filter($values['status'])) as $processor_id) {
+      $processor = $processors[$processor_id];
+      if ($processor instanceof PluginFormInterface) {
         $sub_keys = array('processors', $processor_id, 'settings');
         $processor_form_state = new SubFormState($form_state, $sub_keys);
-        $processors[$processor_id]->validateConfigurationForm($form['settings'][$processor_id], $processor_form_state);
+        $processor->validateConfigurationForm($form['settings'][$processor_id], $processor_form_state);
       }
     }
   }
@@ -285,7 +290,7 @@ class IndexProcessorsForm extends EntityForm {
         continue;
       }
       $old_configuration = $processor->getConfiguration();
-      if (isset($form['settings'][$processor_id])) {
+      if ($processor instanceof PluginFormInterface) {
         $sub_keys = array('processors', $processor_id, 'settings');
         $processor_form_state = new SubFormState($form_state, $sub_keys);
         $processor->submitConfigurationForm($form['settings'][$processor_id], $processor_form_state);
@@ -341,7 +346,7 @@ class IndexProcessorsForm extends EntityForm {
    */
   protected function getAllProcessors() {
     $processors = $this->entity->getProcessors();
-    $settings['index'] = $this->entity;
+    $settings['#index'] = $this->entity;
 
     foreach ($this->processorPluginManager->getDefinitions() as $name => $processor_definition) {
       if (isset($processors[$name])) {

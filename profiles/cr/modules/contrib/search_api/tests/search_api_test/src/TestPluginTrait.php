@@ -76,8 +76,7 @@ trait TestPluginTrait {
   /**
    * Returns the plugin type of this object.
    *
-   * Equivalent to the last part of the namespace, i.e., without the module
-   * prefix.
+   * Equivalent to the last component of the namespace.
    *
    * @return string
    *   The "short" plugin type.

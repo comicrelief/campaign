@@ -1,0 +1,35 @@
+del {
+  background-color: #fcc;
+}
+
+ins {
+  background-color: #cfc;
+}
+.comparation-flex-container {
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+}
+.comparation-flex-item-date {
+  flex-basis: 20%;
+  padding: 0 1em 0 0;
+}
+.comparation-flex-item-author {
+  flex-basis: 25%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 1em 0 1em;
+}
+.comparation-flex-item-message {
+  flex-basis: 35%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media screen and (min-width: 300px) and (max-width: 920px) {
+  .comparation-flex-container {
+    width: 80%;
+  }
+}

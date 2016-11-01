@@ -7,8 +7,7 @@ namespace Drupal\cr_email_signup\Form;
  */
 class FundraiseSignUp extends SignUp {
 
-  protected $transType = 'FundraiseESU';
-  protected $esulist = ['listname' => 'fundraise'];
+  protected $esulist = ['general' => 'general'];
 
   /**
    * Get the Form Identifier.

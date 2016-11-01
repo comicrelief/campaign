@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\pathauto\AliasStorageHelperInterface
- */
-
 namespace Drupal\pathauto;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Language\LanguageInterface;
@@ -52,35 +47,28 @@ interface AliasStorageHelperInterface {
    * @return bool|array
    *   FALSE if no alias was found or an associative array containing the
    *   following keys:
-   *   - pid: Unique path alias identifier.
-   *   - alias: The URL alias.
+   *   - source (string): The internal system path with a starting slash.
+   *   - alias (string): The URL alias with a starting slash.
+   *   - pid (int): Unique path alias identifier.
+   *   - langcode (string): The language code of the alias.
    */
   public function loadBySource($source, $language = LanguageInterface::LANGCODE_NOT_SPECIFIED);
 
   /**
-   * Checks if a URL alias exists for the path and optional language.
-   *
-   * @param string $alias
-   *   The url alias path.
-   * @param string $source
-   *   An internal Drupal path.
-   * @param string $language
-   *   (optional) The language code.
-   *
-   * @return bool
-   *   TRUE if the alias exists.
-   */
-  public function exists($alias, $source, $language = LanguageInterface::LANGCODE_NOT_SPECIFIED);
-
-  /**
    * Delete all aliases by source url.
    *
-   * Can use wildcard patterns, e.g.
-   *
    * @param string $source
+   *   An internal Drupal path.
+   *
+   * @return bool
    *   The URL alias source.
    */
-  public function deleteAll($source);
+  public function deleteBySourcePrefix($source);
+
+  /**
+   * Delete all aliases (truncate the url_alias table).
+   */
+  public function deleteAll();
 
   /**
    * Delete an entity URL alias and any of its sub-paths.
@@ -96,17 +84,6 @@ interface AliasStorageHelperInterface {
   public function deleteEntityPathAll(EntityInterface $entity, $default_uri = NULL);
 
   /**
-   * Delete multiple URL aliases.
-   *
-   * Intent of this is to abstract a potential path_delete_multiple() function
-   * for Drupal 7 or 8.
-   *
-   * @param integer[] $pids
-   *   An array of path IDs to delete.
-   */
-  public function deleteMultiple($pids);
-
-  /**
    * Fetches an existing URL alias given a path prefix.
    *
    * @param string $source
@@ -116,4 +93,25 @@ interface AliasStorageHelperInterface {
    *   An array of PIDs.
    */
   public function loadBySourcePrefix($source);
+
+
+  /**
+   * Returns the count of url aliases for the source.
+   *
+   * @param $source
+   *   An internal Drupal path prefix.
+   *
+   * @return int
+   *   Number of url aliases for the source.
+   */
+  public function countBySourcePrefix($source);
+
+  /**
+   * Returns the total count of the url aliases.
+   *
+   * @return int
+   *   Total number of aliases.
+   */
+  public function countAll();
+
 }

@@ -7,6 +7,7 @@ dependencies:
   - entity_reference_revisions
 
 config_devel:
+  - block_content.type.basic
   # Fields
   - field.storage.paragraph.field_br_block_reference
   - field.field.paragraph.cr_block_reference.field_br_block_reference

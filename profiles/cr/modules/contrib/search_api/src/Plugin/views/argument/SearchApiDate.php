@@ -160,7 +160,7 @@ class SearchApiDate extends SearchApiStandard {
   /**
    * {@inheritdoc}
    */
-  protected function unpackArgumentValue() {
+  protected function unpackArgumentValue($force_int = FALSE) {
     // Set up the defaults.
     if (!isset($this->value)) {
       $this->value = array();

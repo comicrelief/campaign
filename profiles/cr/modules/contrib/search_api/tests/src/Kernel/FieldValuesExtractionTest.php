@@ -3,7 +3,7 @@
 namespace Drupal\Tests\search_api\Kernel;
 
 use Drupal\KernelTests\KernelTestBase;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 
 /**
  * Tests extraction of field values, as used during indexing.

@@ -16,8 +16,12 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
+  handler: 'default:scheduled_update'
   handler_settings:
     target_bundles:
-      - node__status
-  handler: 'default:scheduled_update'
+      node__status: node__status
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
 field_type: entity_reference

@@ -1,9 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\pathauto\AliasCleanerInterface
- */
 namespace Drupal\pathauto;
 
 /**
@@ -103,4 +99,5 @@ interface AliasCleanerInterface {
    * Resets internal caches.
    */
   public function resetCaches();
+
 }

@@ -7,10 +7,9 @@ use Drupal\Core\TypedData\DataDefinitionInterface;
 use Drupal\node\Entity\Node;
 use Drupal\node\Entity\NodeType;
 use Drupal\search_api\Entity\Index;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 use Drupal\user\Entity\Role;
 use Drupal\user\Entity\User;
-use Drupal\search_api\Plugin\search_api\data_type\value\TextValueInterface;
 
 /**
  * Tests the "Rendered item" processor.
@@ -124,9 +123,13 @@ class RenderedItemTest extends ProcessorTestBase {
 
     $this->index->getDatasources();
 
-    // Enable the classy theme as the tests rely on markup from that.
+    // Enable the classy and stable themes as the tests rely on markup from
+    // that. Set stable as the active theme, but make classy the default. The
+    // processor should switch to classy to perform the rendering.
     \Drupal::service('theme_handler')->install(array('classy'));
-    \Drupal::theme()->setActiveTheme(\Drupal::service('theme.initialization')->initTheme('classy'));
+    \Drupal::service('theme_handler')->install(array('stable'));
+    \Drupal::configFactory()->getEditable('system.theme')->set('default', 'classy')->save();
+    \Drupal::theme()->setActiveTheme(\Drupal::service('theme.initialization')->initTheme('stable'));
   }
 
   /**
@@ -157,13 +160,13 @@ class RenderedItemTest extends ProcessorTestBase {
       $values = $field->getValues();
       // Test that the value is properly wrapped in a
       // \Drupal\search_api\Plugin\search_api\data_type\value\TextValueInterface
-      // object, which contains a string (not, e.g., some markup object).
+      // object, which contains a string (not, for example, some markup object).
       $this->assertInstanceOf('Drupal\search_api\Plugin\search_api\data_type\value\TextValueInterface', $values[0], "Node item $nid rendered value is properly wrapped in a text value object.");
       $this->assertInternalType('string', $values[0]->getText(), "Node item $nid rendered value is a string.");
       $this->assertEquals(1, count($values), 'Node item ' . $nid . ' rendered value is a single value.');
       // These tests rely on the template not changing. However, if we'd only
       // check whether the field values themselves are included, there could
-      // easier be false positives. For example the title text was present even
+      // easier be false positives. For example, the title text was present even
       // when the processor was broken, because the schema metadata was also
       // adding it to the output.
       $this->assertTrue(substr_count($values[0], 'view-mode-full') > 0, 'Node item ' . $nid . ' rendered in view-mode "full".');

@@ -8,7 +8,7 @@ use Drupal\KernelTests\KernelTestBase;
 use Drupal\language\Entity\ConfigurableLanguage;
 use Drupal\search_api\Entity\Index;
 use Drupal\search_api\Entity\Server;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 
 /**
  * Tests translation handling of the content entity datasource.
@@ -68,8 +68,9 @@ class LanguageKernelTest extends KernelTestBase {
     // Enable translation for the entity_test module.
     \Drupal::state()->set('entity_test.translation', TRUE);
 
-    $this->installSchema('search_api', array('search_api_item', 'search_api_task'));
+    $this->installSchema('search_api', array('search_api_item'));
     $this->installEntitySchema('entity_test_mulrev_changed');
+    $this->installEntitySchema('search_api_task');
 
     // Create the default languages.
     $this->installConfig(array('language'));

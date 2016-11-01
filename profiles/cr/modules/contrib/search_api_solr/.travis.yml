@@ -1,0 +1,101 @@
+language: php
+cache:
+  bundler: true
+  directories:
+    - $HOME/tmp/drush
+    - $HOME/.bundle
+    - $HOME/.composer
+  apt: true
+
+git:
+ depth: 10000
+
+php:
+  - 5.5
+#  - 5.6
+  - 7.0
+
+# This creates a build with each php environment. 12 builds in total.
+env:
+  # 4.5.1 is the oldest version we support
+  - PATH=$PATH:/home/travis/.composer/vendor/bin SOLR_VERSION=4.5.1 SOLR_CORE=d8 SOLR_CONFS="$TRAVIS_BUILD_DIR/solr-conf/4.x"
+#  - PATH=$PATH:/home/travis/.composer/vendor/bin SOLR_VERSION=5.4.1 SOLR_CORE=d8 SOLR_CONFS="$TRAVIS_BUILD_DIR/solr-conf/5.x"
+  # 5.5.0 introduced major changes for boolean operators.
+  - PATH=$PATH:/home/travis/.composer/vendor/bin SOLR_VERSION=5.5.1 SOLR_CORE=d8 SOLR_CONFS="$TRAVIS_BUILD_DIR/solr-conf/5.x"
+  - PATH=$PATH:/home/travis/.composer/vendor/bin SOLR_VERSION=6.0.1 SOLR_CORE=d8 SOLR_CONFS="$TRAVIS_BUILD_DIR/solr-conf/6.x"
+
+notifications:
+  irc:
+    - "chat.freenode.net#drupal-search-api"
+
+# This will create the database
+mysql:
+  database: drupal
+  username: root
+  encoding: utf8
+
+# To be able to run a webbrowser
+# If we need anything more powerful
+# than e.g. phantomjs
+before_install:
+  - phpenv config-rm xdebug.ini
+  - composer self-update
+  - sudo apt-get update -qq > /dev/null
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+
+install:
+  - git tag 999.0.0
+  # Make sure we don't fail when checking out projects
+  - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  - echo -e "Host git.drupal.org\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  # Set sendmail so drush doesn't throw an error during site install.
+  - echo "sendmail_path='true'" >> `php --ini | grep "Loaded Configuration" | awk '{print $4}'`
+  # Forward the errors to the syslog so we can print them
+  - echo "error_log=syslog" >> `php --ini | grep "Loaded Configuration" | awk '{print $4}'`
+  # Get latest Drupal 8 core
+  - cd $TRAVIS_BUILD_DIR/..
+  - git clone --branch 8.2.x https://git.drupal.org/project/drupal.git
+  - cd $TRAVIS_BUILD_DIR/../drupal
+  - composer install
+  - composer config repositories.drupal composer https://packages.drupal.org/8
+  - composer config repositories.search_api_solr vcs $TRAVIS_BUILD_DIR
+  - composer require drupal/search_api:1.x-dev
+  - composer require drupal/search_api_solr:999.0.0
+  - composer require drupal/facets:1.x-dev
+  - composer require drush/drush
+  - composer update
+
+before_script:
+  # start the built-in php web server (mysql is already started)
+  - php -S localhost:8888 &
+  # Install the site
+  - ./vendor/bin/drush -v site-install minimal --db-url=mysql://root:@localhost/drupal --yes
+  - ./vendor/bin/drush en --yes simpletest
+  # Install Solr
+  - cat $TRAVIS_BUILD_DIR/travis-solr.sh | bash
+
+script:
+  # Run the tests
+  - cd $TRAVIS_BUILD_DIR/../drupal
+  - export SIMPLETEST_DB=mysql://root:@localhost/drupal
+  - php core/scripts/run-tests.sh --verbose --color --concurrency 4 --php `which php` --url http://localhost:8888 --module search_api_solr --types Simpletest | tee /tmp/test.txt ; export TEST_EXIT=${PIPESTATUS[0]} ; echo $TEST_EXIT
+  # Check if we had fails in the run-tests.sh script
+  # Exit with the inverted value, because if there are no fails found, it will exit with 1 and for us that\
+  # is a good thing so invert it to 0. Travis has some issues with the exclamation mark in front so we have to fiddle a
+  # bit.
+  # Also make the grep case insensitive and fail on run-tests.sh regular fails as well on fatal errors.
+  - TEST_OUTPUT=$(! egrep -i "([0-9]+ fails)|(Fatal erro)|([0-9]+ exceptions)" /tmp/test.txt > /dev/null)$?
+  - cd $TRAVIS_BUILD_DIR/../drupal
+  - ./vendor/bin/phpunit -c core --group search_api_solr --verbose --debug | tee ; export TEST_PHPUNIT=${PIPESTATUS[0]} ; echo $TEST_PHPUNIT
+  #- ./vendor/bin/phpunit --group search_api_solr -c "../modules/search_api_solr/phpunit.xml.travis" --verbose --debug --coverage-text | tee ; export TEST_PHPUNIT=${PIPESTATUS[0]} ; echo $TEST_PHPUNIT
+  # if the TEST_EXIT status is 0 AND the TEST_OUTPUT status is also 0 it means we succeeded, in all other cases we
+  # failed.
+  # Re-enable when trying to get CodeSniffer doesn't return a 403 anymore.
+  #- /home/travis/.composer/vendor/bin/phpcs --standard=/home/travis/.composer/vendor/drupal/coder/coder_sniffer/Drupal --extensions=php,inc,test,module,install --ignore=css/ $TRAVIS_BUILD_DIR/../drupal/modules/search_api
+  - php -i | grep 'php.ini'
+  # Exit the build
+  - echo $TEST_EXIT
+  - echo $TEST_OUTPUT
+  - echo $TEST_PHPUNIT
+  - if [ $TEST_EXIT -eq 0 ] && [ $TEST_OUTPUT -eq 0 ] && [ $TEST_PHPUNIT -eq 0 ]; then exit 0; else exit 1; fi

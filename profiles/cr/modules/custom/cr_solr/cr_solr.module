@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * CR solr module.
+ */
+
+use \Drupal\search_api\IndexInterface;
+
+/**
+ * Update documents.
+ */
+function cr_partner_search_api_solr_documents_alter(array $documents, IndexInterface $index, array $items) {
+  foreach ($documents as $document) {
+    $entitytype = str_replace('entity:', '', $document['ss_search_api_datasource']);
+    $sstype = ($entitytype != 'node') ?
+      ucfirst($entitytype) :
+      $document['ss_type'];
+    $document->setField('ss_type', $sstype);
+  }
+}

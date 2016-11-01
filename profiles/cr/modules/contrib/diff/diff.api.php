@@ -17,7 +17,7 @@
  * \Drupal\diff\FieldDiffBuilderInterface. Field diff builders plugins are
  * managed by the \Drupal\diff\DiffBuilderManager class. Field diff builders
  * classes usually extend base class \Drupal\diff\FieldDiffBuilderBase and need
- * to be in the namespace \Drupal\{your_module}\Plugin\Diff\. See the
+ * to be in the namespace \Drupal\{your_module}\Plugin\diff\Field\. See the
  * @link plugin_api Plugin API topic @endlink for more information on how to
  * define plugins.
  *
@@ -40,6 +40,19 @@ function hook_field_diff_builder_info_alter(&$diff_builders) {
   // Set a new label for the text_field_diff_builder plugin
   // instead of the one provided in the annotation.
   $diff_builders['text_field_diff_builder']['label'] = t('New label');
+}
+
+/**
+ * Alter the information provided in \Drupal\diff\Annotation\DiffLayoutBuilder.
+ *
+ * @param $diff_layouts
+ *   The array of diff layout builders plugins, keyed on the machine-readable
+ *   plugin name.
+ */
+function hook_diff_layout_builder_info_alter(&$diff_layouts) {
+  // Set a new label for the text_field_diff_builder plugin
+  // instead of the one provided in the annotation.
+  $diff_layouts['my_layout']['label'] = t('New label');
 }
 
 /**

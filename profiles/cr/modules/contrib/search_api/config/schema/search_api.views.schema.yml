@@ -7,10 +7,7 @@ views.query.search_api_query:
       label: If the underlying search index has access checks enabled, this option allows you to disable them for this view.
     skip_access:
       type: boolean
-      label: Do not execute additional access checks for all entities in the search results.
-    parse_mode:
-      type: string
-      label: Chooses how the search keys will be parsed.
+      label: Do not execute additional access checks for all items in the search results.
 
 views.row.search_api:
   type: views_row
@@ -38,6 +35,9 @@ views.argument.search_api_fulltext:
   type: views.argument.search_api
   label: 'Search API more like this'
   mapping:
+    parse_mode:
+      type: string
+      label: 'Parse mode'
     conjunction:
       type: string
       label: 'Conjunction'
@@ -58,10 +58,6 @@ views.argument.search_api_more_like_this:
       sequence:
         type: string
         label: 'Field'
-
-views.argument.search_api_taxonomy_term:
-  type: views.argument.search_api
-  label: 'Search API taxonomy term'
 
 views.field.search_api:
   type: views_field
@@ -173,6 +169,9 @@ views.filter.search_api_fulltext:
   type: views_filter
   label: 'Search API fulltext search'
   mapping:
+    parse_mode:
+      type: string
+      label: Parse mode
     min_length:
       type: integer
       label: Minimum search string length
@@ -198,10 +197,6 @@ views.filter.search_api_options:
 views.filter.search_api_string:
   type: views.filter.search_api_numeric
   label: 'Search API string'
-
-views.filter.search_api_term:
-  type: views.filter.taxonomy_index_tid
-  label: 'Search API taxonomy term'
 
 views.filter.search_api_text:
   type: views.filter.search_api_string
@@ -237,9 +232,6 @@ views.filter_value.search_api_options:
 
 views.filter_value.search_api_string:
   type: views.filter_value.numeric
-
-views.filter_value.search_api_term:
-  type: string
 
 views.filter_value.search_api_text:
   type: views.filter_value.numeric

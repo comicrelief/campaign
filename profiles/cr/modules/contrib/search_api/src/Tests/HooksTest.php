@@ -26,6 +26,13 @@ class HooksTest extends WebTestBase {
   );
 
   /**
+   * The test server.
+   *
+   * @var \Drupal\search_api\ServerInterface
+   */
+  protected $server;
+
+  /**
    * {@inheritdoc}
    */
   public function setUp() {
@@ -45,7 +52,7 @@ class HooksTest extends WebTestBase {
     }
 
     // Create an index and server to work with.
-    $this->getTestServer();
+    $this->server = $this->getTestServer();
     $index = $this->getTestIndex();
 
     // Add the test processor to the index so we can make sure that all expected
@@ -139,6 +146,9 @@ class HooksTest extends WebTestBase {
     $processor_methods = $this->getCalledMethods('processor');
     $expected = array('preprocessSearchQuery', 'postprocessSearchResults');
     $this->assertEqual($expected, $processor_methods);
+
+    // hook_search_api_server_features_alter() is triggered.
+    $this->assertTrue($this->server->supportsFeature('welcome_to_the_jungle'));
   }
 
 }

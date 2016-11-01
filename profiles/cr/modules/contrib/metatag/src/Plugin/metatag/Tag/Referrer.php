@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\metatag\Plugin\metatag\Tag\Referrer.
- */
 
 namespace Drupal\metatag\Plugin\metatag\Tag;
 
@@ -26,22 +22,24 @@ class Referrer extends MetaNameBase {
   /**
    * {@inheritdoc}
    */
-  public function form(array $element = array()) {
-    $form = array(
+  public function form(array $element = []) {
+    $form = [
       '#type' => 'select',
       '#title' => $this->label(),
       '#description' => $this->description(),
-      '#options' => array(
+      '#options' => [
         'no-referrer' => t('No Referrer'),
         'origin' => t('Origin'),
         'no-referrer-when-downgrade' => t('No Referrer When Downgrade'),
         'origin-when-cross-origin' => t('Origin When Cross-Origin'),
         'unsafe-url' => t('Unsafe URL'),
-      ),
+      ],
+      '#empty_option' => t('- None -'),
+      '#empty_value' => '',
       '#default_value' => $this->value(),
       '#required' => isset($element['#required']) ? $element['#required'] : FALSE,
-      '#element_validate' => array(array(get_class($this), 'validateTag')),
-    );
+      '#element_validate' => [[get_class($this), 'validateTag']],
+    ];
 
     return $form;
   }

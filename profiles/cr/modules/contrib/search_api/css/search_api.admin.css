@@ -97,7 +97,7 @@ details .messages {
 /*
  * Miscellaneous
  */
-.search-api-checkboxes-list div {
+.search-api-checkboxes-list .form-checkboxes {
   max-height: 30em;
   overflow: auto;
 }

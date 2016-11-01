@@ -31,7 +31,7 @@ class TransliterationTest extends UnitTestCase {
 
     $this->index = $this->getMock('Drupal\search_api\IndexInterface');
 
-    $this->setUpDataTypePlugin();
+    $this->setUpMockContainer();
     $this->processor = new Transliteration(array(), 'transliteration', array());
     $this->processor->setLangcode('en');
 

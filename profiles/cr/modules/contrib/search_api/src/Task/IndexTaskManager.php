@@ -3,8 +3,10 @@
 namespace Drupal\search_api\Task;
 
 use Drupal\Component\Render\FormattableMarkup;
+use Drupal\Core\Config\ConfigImporter;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\search_api\Entity\Index;
 use Drupal\search_api\IndexInterface;
 use Drupal\search_api\SearchApiException;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -55,6 +57,71 @@ class IndexTaskManager implements IndexTaskManagerInterface, EventSubscriberInte
     $events['search_api.task.' . static::TRACK_ITEMS_TASK_TYPE][] = array('trackItems');
 
     return $events;
+  }
+
+  /**
+   * Processes all pending index tasks inside a batch run.
+   *
+   * @param array $context
+   *   The current batch context.
+   * @param \Drupal\Core\Config\ConfigImporter $config_importer
+   *   The config importer.
+   *
+   * @throws \Drupal\search_api\SearchApiException
+   *   Thrown if any error occurred while tracking items.
+   */
+  public static function processIndexTasks(array &$context, ConfigImporter $config_importer) {
+    $index_task_manager = \Drupal::getContainer()
+      ->get('search_api.index_task_manager');
+
+    if (!isset($context['sandbox']['indexes'])) {
+      $context['sandbox']['indexes'] = array();
+
+      $indexes = \Drupal::entityTypeManager()
+        ->getStorage('search_api_index')
+        ->loadByProperties(array(
+          'status' => TRUE,
+        ));
+      $deleted = $config_importer->getUnprocessedConfiguration('delete');
+
+      /** @var \Drupal\search_api\IndexInterface $index */
+      foreach ($indexes as $index_id => $index) {
+        if (!$index_task_manager->isTrackingComplete($index) && !in_array($index->getConfigDependencyName(), $deleted)) {
+          $context['sandbox']['indexes'][] = $index_id;
+        }
+      }
+      $context['sandbox']['total'] = count($context['sandbox']['indexes']);
+      if (!$context['sandbox']['total']) {
+        $context['finished'] = 1;
+        return;
+      }
+    }
+
+    $index_id = array_shift($context['sandbox']['indexes']);
+    $index = Index::load($index_id);
+    try {
+      if (!($index_task_manager->addItemsOnce($index))) {
+        array_unshift($context['sandbox']['indexes'], $index_id);
+      }
+    }
+    catch (SearchApiException $e) {
+      watchdog_exception('search_api', $e);
+    }
+
+    if (empty($context['sandbox']['indexes'])) {
+      $context['finished'] = 1;
+    }
+    else {
+      $finished = $context['sandbox']['total'] - count($context['sandbox']['indexes']);
+      $context['finished'] = $finished / $context['sandbox']['total'];
+      $args = array(
+        '%index' => $index->label(),
+        '@num' => $finished + 1,
+        '@total' => $context['sandbox']['total'],
+      );
+      $context['message'] = \Drupal::translation()
+        ->translate('Tracking items for search index %index (@num of @total)', $args);
+    }
   }
 
   /**

@@ -19,9 +19,7 @@ display:
       query:
         type: search_api_query
         options:
-          bypass_access: false
           skip_access: true
-          parse_mode: terms
       exposed_form:
         type: basic
         options:

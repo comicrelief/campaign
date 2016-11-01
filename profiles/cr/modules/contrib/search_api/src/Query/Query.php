@@ -3,10 +3,13 @@
 namespace Drupal\search_api\Query;
 
 use Drupal\Core\DependencyInjection\DependencySerializationTrait;
+use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\search_api\IndexInterface;
 use Drupal\search_api\ParseMode\ParseModeInterface;
+use Drupal\search_api\ParseMode\ParseModePluginManager;
 use Drupal\search_api\SearchApiException;
+use Drupal\search_api\Utility\QueryHelperInterface;
 
 /**
  * Provides a standard implementation for a Search API query.
@@ -43,11 +46,11 @@ class Query implements QueryInterface {
   protected $results;
 
   /**
-   * The result cache service.
+   * The search ID set for this query.
    *
-   * @var \Drupal\search_api\Query\ResultsCacheInterface
+   * @var string
    */
-  protected $resultsCache;
+  protected $searchId;
 
   /**
    * The parse mode to use for fulltext search keys.
@@ -145,12 +148,31 @@ class Query implements QueryInterface {
   protected $executed = FALSE;
 
   /**
+   * The module handler.
+   *
+   * @var \Drupal\Core\Extension\ModuleHandlerInterface|null
+   */
+  protected $moduleHandler;
+
+  /**
+   * The parse mode manager.
+   *
+   * @var \Drupal\search_api\ParseMode\ParseModePluginManager|null
+   */
+  protected $parseModeManager;
+
+  /**
+   * The result cache service.
+   *
+   * @var \Drupal\search_api\Utility\QueryHelperInterface
+   */
+  protected $queryHelper;
+
+  /**
    * Constructs a Query object.
    *
    * @param \Drupal\search_api\IndexInterface $index
    *   The index the query should be executed on.
-   * @param \Drupal\search_api\Query\ResultsCacheInterface $results_cache
-   *   The results cache that should be used for this query.
    * @param array $options
    *   (optional) Associative array of options configuring this query. See
    *   \Drupal\search_api\Query\QueryInterface::setOption() for a list of
@@ -160,17 +182,15 @@ class Query implements QueryInterface {
    *   Thrown if a search on that index (or with those options) won't be
    *   possible.
    */
-  public function __construct(IndexInterface $index, ResultsCacheInterface $results_cache, array $options = array()) {
+  public function __construct(IndexInterface $index, array $options = array()) {
     if (!$index->status()) {
       $index_label = $index->label();
       throw new SearchApiException("Can't search on index '$index_label' which is disabled.");
     }
     $this->index = $index;
     $this->results = new ResultSet($this);
-    $this->resultsCache = $results_cache;
     $this->options = $options + array(
       'conjunction' => 'AND',
-      'search id' => __CLASS__,
     );
     $this->conditionGroup = $this->createConditionGroup('AND');
   }
@@ -178,8 +198,108 @@ class Query implements QueryInterface {
   /**
    * {@inheritdoc}
    */
-  public static function create(IndexInterface $index, ResultsCacheInterface $results_cache, array $options = array()) {
-    return new static($index, $results_cache, $options);
+  public static function create(IndexInterface $index, array $options = array()) {
+    return new static($index, $options);
+  }
+
+  /**
+   * Retrieves the module handler.
+   *
+   * @return \Drupal\Core\Extension\ModuleHandlerInterface
+   *   The module handler.
+   */
+  public function getModuleHandler() {
+    return $this->moduleHandler ?: \Drupal::moduleHandler();
+  }
+
+  /**
+   * Sets the module handler.
+   *
+   * @param \Drupal\Core\Extension\ModuleHandlerInterface $module_handler
+   *   The new module handler.
+   *
+   * @return $this
+   */
+  public function setModuleHandler(ModuleHandlerInterface $module_handler) {
+    $this->moduleHandler = $module_handler;
+    return $this;
+  }
+
+  /**
+   * Retrieves the parse mode manager.
+   *
+   * @return \Drupal\search_api\ParseMode\ParseModePluginManager
+   *   The parse mode manager.
+   */
+  public function getParseModeManager() {
+    return $this->parseModeManager ?: \Drupal::service('plugin.manager.search_api.parse_mode');
+  }
+
+  /**
+   * Sets the parse mode manager.
+   *
+   * @param \Drupal\search_api\ParseMode\ParseModePluginManager $parse_mode_manager
+   *   The new parse mode manager.
+   *
+   * @return $this
+   */
+  public function setParseModeManager(ParseModePluginManager $parse_mode_manager) {
+    $this->parseModeManager = $parse_mode_manager;
+    return $this;
+  }
+
+  /**
+   * Retrieves the query helper.
+   *
+   * @return \Drupal\search_api\Utility\QueryHelperInterface
+   *   The query helper.
+   */
+  public function getQueryHelper() {
+    return $this->queryHelper ?: \Drupal::service('search_api.query_helper');
+  }
+
+  /**
+   * Sets the query helper.
+   *
+   * @param \Drupal\search_api\Utility\QueryHelperInterface $query_helper
+   *   The new query helper.
+   *
+   * @return $this
+   */
+  public function setQueryHelper(QueryHelperInterface $query_helper) {
+    $this->queryHelper = $query_helper;
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getSearchId($generate = TRUE) {
+    if ($generate && !isset($this->searchId)) {
+      static $num = 0;
+      $this->searchId = 'search_' . ++$num;
+    }
+    return $this->searchId;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setSearchId($search_id) {
+    $this->searchId = $search_id;
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getDisplayPlugin() {
+    $display_manager = \Drupal::getContainer()
+      ->get('plugin.manager.search_api.display');
+    if (isset($this->searchId) && $display_manager->hasDefinition($this->searchId)) {
+      return $display_manager->createInstance($this->searchId);
+    }
+    return NULL;
   }
 
   /**
@@ -187,10 +307,8 @@ class Query implements QueryInterface {
    */
   public function getParseMode() {
     if (!$this->parseMode) {
-      $this->parseMode = \Drupal::getContainer()
-        ->get('plugin.manager.search_api.parse_mode')
-        ->createInstance('terms')
-        ->setConjunction($this->options['conjunction']);
+      $this->parseMode = $this->getParseModeManager()->createInstance('terms');
+      $this->parseMode->setConjunction($this->options['conjunction']);
     }
     return $this->parseMode;
   }
@@ -384,7 +502,7 @@ class Query implements QueryInterface {
       foreach ($this->tags as $tag) {
         $hooks[] = "search_api_query_$tag";
       }
-      \Drupal::moduleHandler()->alter($hooks, $this);
+      $this->getModuleHandler()->alter($hooks, $this);
     }
   }
 
@@ -404,10 +522,10 @@ class Query implements QueryInterface {
     foreach ($this->tags as $tag) {
       $hooks[] = "search_api_results_$tag";
     }
-    \Drupal::moduleHandler()->alter($hooks, $this->results);
+    $this->getModuleHandler()->alter($hooks, $this->results);
 
     // Store the results in the static cache.
-    $this->resultsCache->addResults($this->results);
+    $this->getQueryHelper()->addResults($this->results);
   }
 
   /**

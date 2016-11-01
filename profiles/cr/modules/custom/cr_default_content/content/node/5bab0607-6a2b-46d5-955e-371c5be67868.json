@@ -1,30 +1,30 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/sr16-spl-local.sportrelief.com\/partners\/bt?_format=hal_json"
+            "href": "http:\/\/default\/partners\/tk-maxx-external-page-test?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/partner"
         },
         "http:\/\/drupal.org\/rest\/relation\/node\/partner\/uid": [
             {
-                "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/0?_format=hal_json",
+                "href": "http:\/\/default\/user\/0?_format=hal_json",
                 "lang": "en"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/partner\/revision_uid": [
             {
-                "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/0?_format=hal_json"
+                "href": "http:\/\/default\/user\/1?_format=hal_json"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/partner\/field_partner_category": [
             {
-                "href": "http:\/\/sr16-spl-local.sportrelief.com\/taxonomy\/term\/3?_format=hal_json"
+                "href": "http:\/\/default\/taxonomy\/term\/3?_format=hal_json"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/partner\/field_partner_logo": [
             {
-                "href": "http:\/\/sr16-spl-local.sportrelief.com\/file\/3349?_format=hal_json"
+                "href": "http:\/\/default\/file\/3376?_format=hal_json"
             }
         ]
     },
@@ -40,7 +40,7 @@
     ],
     "vid": [
         {
-            "value": "45"
+            "value": "81"
         }
     ],
     "langcode": [
@@ -56,7 +56,7 @@
     ],
     "title": [
         {
-            "value": "BT",
+            "value": "TK Maxx (external page test)",
             "lang": "en"
         }
     ],
@@ -65,7 +65,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/0?_format=hal_json"
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -73,7 +73,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "10e30dff-5a0e-4b33-aeb7-89f49629de0a"
+                        "value": "e0b7c2f5-eea7-4a1f-aeb2-4c5cc734e4b3"
                     }
                 ],
                 "lang": "en"
@@ -83,7 +83,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/0?_format=hal_json"
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -91,7 +91,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "10e30dff-5a0e-4b33-aeb7-89f49629de0a"
+                        "value": "df8a6a52-56dc-474f-bc97-97338843f58d"
                     }
                 ]
             }
@@ -100,7 +100,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/taxonomy\/term\/3?_format=hal_json"
+                        "href": "http:\/\/default\/taxonomy\/term\/3?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/partner_category"
@@ -117,7 +117,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/file\/3349?_format=hal_json"
+                        "href": "http:\/\/default\/file\/3376?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
@@ -125,13 +125,13 @@
                 },
                 "uuid": [
                     {
-                        "value": "2ec55b34-15d1-4710-b757-724c579ddd9a"
+                        "value": "f24b2b2b-ff39-4377-b1de-ab2f85f6de97"
                     }
                 ],
-                "alt": "BT",
+                "alt": "TK Maxx",
                 "title": "",
-                "width": "1325",
-                "height": "648"
+                "width": "270",
+                "height": "152"
             }
         ]
     },
@@ -149,7 +149,7 @@
     ],
     "changed": [
         {
-            "value": "1472134804",
+            "value": "1476197101",
             "lang": "en"
         }
     ],
@@ -167,7 +167,7 @@
     ],
     "revision_timestamp": [
         {
-            "value": "1472134804"
+            "value": "1476197101"
         }
     ],
     "revision_translation_affected": [
@@ -184,15 +184,32 @@
     ],
     "body": [
         {
-            "value": "<p>BT are one of our longest-standing partners and consistently make an amazing contribution to Sport Relief.<\/p>\r\n\r\n<p>Since the beginning, the folks at BT have provided us with the systems, call centres, and network support that enables us to process millions of pounds worth of donations over the phone. And they also provide thousands of fantastic volunteers to take those calls too.<\/p>\r\n\r\n<p>Plus, they\u2019ve also sponsored our BT Sport Relief Challenges, which have seen a host of celebrities take on tough challenges to raise tons of cash.<\/p>\r\n\r\n<p>This year they sponsored Jo Brand in her BT Sport Relief Challenge: Jo Brand\u2019s Hell of a Walk, which saw her walking coast-to-coast, from Hull to Liverpool, in seven days. They also sponsored the fantastic Hell on High Seas challenge.<\/p>\r\n\r\n<p>Jo was also the special guest voice of the BT Speaking Clock. BT will donated 10p from every call made to the Speaking Clock from a BT landline.<\/p>\r\n\r\n<p>And if that wasn\u2019t enough, BT staff fundraised in their droves raising hundreds of thousands of pounds.<\/p>\r\n\r\n<p>BT are, in short, awesome, and a lot of what we do simply wouldn\u2019t be possible without them.<\/p>\r\n",
+            "value": "<p><img alt=\"Tk Maxx\" data-entity-type=\"file\" data-entity-uuid=\"55cf5e8e-65fd-431f-884b-2e30970dd135\" src=\"\/sites\/default\/files\/inline-images\/SMPTE_Color_Bars.svg__3.png\" \/><\/p>\r\n\r\n<p>Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.<\/p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Pellentesque in ipsum id orci porta dapibus.<\/p>\r\n",
             "format": "basic_html",
             "summary": "",
             "lang": "en"
         }
     ],
+    "field_partner_external": [
+        {
+            "value": "1"
+        }
+    ],
     "field_partner_meta_tags": [
         {
             "value": "a:0:{}"
+        }
+    ],
+    "field_partner_website": [
+        {
+            "uri": "http:\/\/www.tkmaxx.com",
+            "title": "Visit TK Maxx's site",
+            "options": []
+        }
+    ],
+    "field_partner_weight": [
+        {
+            "value": "4"
         }
     ]
 }

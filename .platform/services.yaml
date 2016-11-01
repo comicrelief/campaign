@@ -10,6 +10,8 @@ mysql:
 #redis:
 #    type: "redis:3.0"
 #
-#solr:
-#    type: "solr:4.10"
-#    disk: 1024
+solr:
+    type: "solr:4.10"
+    disk: 1024
+    configuration:
+        core_config: !archive "4.x"

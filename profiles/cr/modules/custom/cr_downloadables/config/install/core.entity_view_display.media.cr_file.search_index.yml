@@ -1,0 +1,101 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.search_index
+    - field.field.media.cr_file.field_cr_downloadables_body
+    - field.field.media.cr_file.field_cr_field_display_title
+    - field.field.media.cr_file.field_cr_file
+    - field.field.media.cr_file.field_cr_file_category
+    - media_entity.bundle.cr_file
+  module:
+    - ds
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
+      library: ''
+      disable_css: false
+      settings:
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - cr_downloadables_MediaButton
+    fields:
+      cr_downloadables_MediaButton:
+        plugin_id: cr_downloadables_MediaButton
+        weight: 0
+        label: hidden
+        formatter: default
+id: media.cr_file.search_index
+targetEntityType: media
+bundle: cr_file
+mode: search_index
+content:
+  created:
+    type: timestamp
+    weight: 5
+    label: above
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
+  field_cr_field_display_title:
+    weight: 4
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_cr_file:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+  field_cr_file_category:
+    weight: 2
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  name:
+    type: string
+    weight: 8
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  social_links:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+  thumbnail:
+    type: entity_reference_entity_view
+    weight: 7
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+  uid:
+    type: author
+    weight: 6
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_cr_downloadables_body: true

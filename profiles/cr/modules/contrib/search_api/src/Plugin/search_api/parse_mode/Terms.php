@@ -56,4 +56,5 @@ class Terms extends ParseModePluginBase {
     $ret['#conjunction'] = $this->getConjunction();
     return array_filter($ret);
   }
+
 }

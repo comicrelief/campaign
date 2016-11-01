@@ -38,7 +38,7 @@ class IndexLoadItemsTest extends KernelTestBase {
   protected function setUp() {
     parent::setUp();
 
-    $this->installSchema('search_api', array('search_api_task'));
+    $this->installEntitySchema('search_api_task');
 
     $server = Server::create(array(
       'id' => 'test',

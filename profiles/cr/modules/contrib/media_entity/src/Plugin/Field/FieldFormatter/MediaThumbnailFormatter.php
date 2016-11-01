@@ -26,6 +26,8 @@ use Drupal\Core\Entity\EntityStorageInterface;
 class MediaThumbnailFormatter extends ImageFormatter {
 
   /**
+   * The renderer service.
+   *
    * @var \Drupal\Core\Render\RendererInterface
    */
   protected $renderer;
@@ -79,8 +81,8 @@ class MediaThumbnailFormatter extends ImageFormatter {
    * {@inheritdoc}
    *
    * This has to be overriden because FileFormatterBase expects $item to be
-   * of type \Drupal\file\Plugin\Field\FieldType\FileItem and calls isDisplayed()
-   * which is not in FieldItemInterface.
+   * of type \Drupal\file\Plugin\Field\FieldType\FileItem and calls
+   * isDisplayed() which is not in FieldItemInterface.
    */
   protected function needsEntityLoad(EntityReferenceItem $item) {
     return !$item->hasNewEntity();
@@ -92,10 +94,10 @@ class MediaThumbnailFormatter extends ImageFormatter {
   public function settingsForm(array $form, FormStateInterface $form_state) {
     $element = parent::settingsForm($form, $form_state);
 
-    $link_types = array(
-      'content' => t('Content'),
-      'media' => t('Media entity'),
-    );
+    $link_types = [
+      'content' => $this->t('Content'),
+      'media' => $this->t('Media entity'),
+    ];
     $element['image_link']['#options'] = $link_types;
 
     return $element;
@@ -107,10 +109,10 @@ class MediaThumbnailFormatter extends ImageFormatter {
   public function settingsSummary() {
     $summary = parent::settingsSummary();
 
-    $link_types = array(
-      'content' => t('Linked to content'),
-      'media' => t('Linked to media entity'),
-    );
+    $link_types = [
+      'content' => $this->t('Linked to content'),
+      'media' => $this->t('Linked to media entity'),
+    ];
     // Display this setting only if image is linked.
     $image_link_setting = $this->getSetting('image_link');
     if (isset($link_types[$image_link_setting])) {

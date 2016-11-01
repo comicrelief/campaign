@@ -55,8 +55,44 @@ $susy: (
 .cw-region {
   @include container;
 }
-
-// move to a component later?! prob replace gutter mixin with this
+.pager,
+.search-block__wrapper,
+.view-search {
+  width: 100%;
+  max-width: $max-width;
+  margin: auto;
+}
+.pager {
+  padding: 0 calc((4 * #{gutter()}));
+  @include breakpoint($screen-md) {
+    padding: 0 calc((2 * #{gutter()}));
+  }
+  @include breakpoint($screen-lg) {
+    width: span(8);
+    padding: 0 calc((0.5 * #{gutter()}));
+  }
+}
+.path-search {
+  .search-block__form,
+  .view-content,
+  .view-header {
+    margin: 20px auto;
+    max-width: $max-width;
+    padding: 0 calc((4 * #{gutter()}));
+    @include breakpoint($screen-md) {
+      padding: 0 calc((2 * #{gutter()}));
+    }
+    @include breakpoint($screen-lg) {
+      width: span(8);
+      padding: 0 calc((0.5 * #{gutter()}));
+    }
+  }
+  .view-header {
+    @include breakpoint($screen-lg) {
+      margin: 54px auto 32px;
+    }
+  }
+}
 .node--type-page,
 .node--type-article {
   .node__content {  

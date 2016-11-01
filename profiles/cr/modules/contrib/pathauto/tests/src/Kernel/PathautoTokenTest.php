@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\pathauto\Kernel\PathautoTokenTest.
- */
-
 namespace Drupal\Tests\pathauto\Kernel;
 
 use Drupal\Core\Render\BubbleableMetadata;
@@ -79,4 +74,5 @@ class PathautoTokenTest extends KernelTestBase {
     }
     return $return;
   }
+
 }

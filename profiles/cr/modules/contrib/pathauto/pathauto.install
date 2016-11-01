@@ -291,3 +291,13 @@ function pathauto_update_8104() {
 function pathauto_update_8105() {
   _pathauto_ensure_url_alias_table_exists();
 }
+
+/**
+ * Update default configuration for enabled entity types.
+ */
+function pathauto_update_8106() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('pathauto.settings');
+  $config->set('enabled_entity_types', ['user']);
+  $config->save();
+}

@@ -5,7 +5,7 @@ namespace Drupal\Tests\search_api\Unit\Plugin\Processor;
 use Drupal\search_api\Plugin\search_api\data_type\value\TextToken;
 use Drupal\search_api\Plugin\search_api\data_type\value\TextValue;
 use Drupal\search_api\Query\Condition;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 use Drupal\Tests\UnitTestCase;
 
 /**
@@ -39,17 +39,37 @@ class FieldsProcessorPluginBaseTest extends UnitTestCase {
   public function setUp() {
     parent::setUp();
 
-    $this->setUpDataTypePlugin();
+    $this->setUpMockContainer();
     $this->index = $this->getMock('Drupal\search_api\IndexInterface');
     $this->index->expects($this->any())
       ->method('status')
       ->will($this->returnValue(TRUE));
-    $fields = $this->getTestItem()[$this->itemIds[0]]->getFields();
+    $items = $this->getTestItem();
+    $fields = $items[$this->itemIds[0]]->getFields();
     $this->index->expects($this->any())
       ->method('getFields')
       ->will($this->returnValue($fields));
 
-    $this->processor = new TestFieldsProcessorPlugin(array('index' => $this->index), '', array());
+    $this->processor = new TestFieldsProcessorPlugin(array('#index' => $this->index), '', array());
+  }
+
+  /**
+   * Tests whether the processor handles field ID changes correctly.
+   */
+  public function testFieldRenaming() {
+    $configuration['fields'] = array('text_field', 'float_field');
+    $this->processor->setConfiguration($configuration);
+
+    $this->index->method('getFieldRenames')
+      ->willReturn(array(
+        'text_field' => 'foobar',
+      ));
+
+    $this->processor->preIndexSave();
+
+    $fields = $this->processor->getConfiguration()['fields'];
+    sort($fields);
+    $this->assertEquals(array('float_field', 'foobar'), $fields);
   }
 
   /**
@@ -84,7 +104,7 @@ class FieldsProcessorPluginBaseTest extends UnitTestCase {
       return FALSE;
     };
     $this->processor->setMethodOverride('testType', $override);
-    $configuration['fields'] = array('text_field' => 'text_field', 'float_field' => 'float_field');
+    $configuration['fields'] = array('text_field', 'float_field');
     $this->processor->setConfiguration($configuration);
 
     $items = $this->getTestItem();

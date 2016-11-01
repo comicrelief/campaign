@@ -3,6 +3,7 @@
 namespace Drupal\search_api\Datasource;
 
 use Drupal\Core\Language\Language;
+use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\TypedData\ComplexDataInterface;
 use Drupal\Core\TypedData\TranslatableInterface;
 use Drupal\search_api\Plugin\IndexPluginBase;
@@ -90,6 +91,13 @@ abstract class DatasourcePluginBase extends IndexPluginBase implements Datasourc
    */
   public function getItemUrl(ComplexDataInterface $item) {
     return NULL;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function checkItemAccess(ComplexDataInterface $item, AccountInterface $account = NULL) {
+    return TRUE;
   }
 
   /**

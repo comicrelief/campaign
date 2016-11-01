@@ -4,7 +4,7 @@ namespace Drupal\search_api\Plugin\search_api\tracker;
 
 use Drupal\Core\Database\Connection;
 use Drupal\search_api\Tracker\TrackerPluginBase;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**

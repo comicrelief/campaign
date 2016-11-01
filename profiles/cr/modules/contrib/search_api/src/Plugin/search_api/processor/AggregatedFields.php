@@ -6,7 +6,7 @@ use Drupal\search_api\Datasource\DatasourceInterface;
 use Drupal\search_api\Item\ItemInterface;
 use Drupal\search_api\Plugin\search_api\processor\Property\AggregatedFieldProperty;
 use Drupal\search_api\Processor\ProcessorPluginBase;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 
 /**
  * Adds customized aggregations of existing fields to the index.
@@ -102,7 +102,11 @@ class AggregatedFields extends ProcessorPluginBase {
           break;
       }
 
-      $aggregated_field->setValues($values);
+      // Do not use setValues(), since that doesn't preprocess the values
+      // according to their data type.
+      foreach ($values as $value) {
+        $aggregated_field->addValue($value);
+      }
     }
   }
 

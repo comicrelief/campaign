@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cr_story_fundraiser_total
+    - paragraphs.paragraphs_type.cr_story
+id: paragraph.cr_story.field_cr_story_fundraiser_total
+field_name: field_cr_story_fundraiser_total
+entity_type: paragraph
+bundle: cr_story
+label: 'Fundraiser total'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

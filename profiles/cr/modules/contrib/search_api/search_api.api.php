@@ -31,6 +31,22 @@ function hook_search_api_backend_info_alter(array &$backend_info) {
 }
 
 /**
+ * Alter the features a given search server supports.
+ *
+ * @param string[] $features
+ *   The features supported by the server's backend.
+ * @param \Drupal\search_api\ServerInterface $server
+ *   The search server in question.
+ *
+ * @see \Drupal\search_api\Backend\BackendSpecificInterface::getSupportedFeatures()
+ */
+function hook_search_api_server_features_alter(array &$features, \Drupal\search_api\ServerInterface $server) {
+  if ($server->getBackend() instanceof \Drupal\search_api_solr\Plugin\search_api\backend\SearchApiSolrBackend) {
+    $features[] = 'my_custom_feature';
+  }
+}
+
+/**
  * Alter the available datasources.
  *
  * Modules may implement this hook to alter the information that defines
@@ -152,8 +168,8 @@ function hook_search_api_views_handler_mapping_alter(array &$mapping) {
  *
  * @param array $mapping
  *   An associative array with property data types as the keys and Views field
- *   handler definitions as the values (i.e., just the inner "field" portion of
- *   Views data definition items). In some cases the value might also be NULL
+ *   handler definitions as the values (that is, just the inner "field" portion
+ *   of Views data definition items). In some cases the value might also be NULL
  *   instead, to indicate that properties of this type shouldn't have field
  *   handlers. The data types in the keys might also contain asterisks (*) as
  *   wildcard characters. Data types with wildcards will be matched only if no
@@ -187,7 +203,7 @@ function hook_search_api_views_field_handler_mapping_alter(array &$mapping) {
  */
 function hook_search_api_index_items_alter(\Drupal\search_api\IndexInterface $index, array &$items) {
   foreach ($items as $item_id => $item) {
-    list(, $raw_id) = \Drupal\search_api\Utility::splitCombinedId($item->getId());
+    list(, $raw_id) = \Drupal\search_api\Utility\Utility::splitCombinedId($item->getId());
     if ($raw_id % 5 == 0) {
       unset($items[$item_id]);
     }

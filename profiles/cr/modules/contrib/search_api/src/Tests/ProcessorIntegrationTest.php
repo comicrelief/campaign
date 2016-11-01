@@ -244,6 +244,29 @@ class ProcessorIntegrationTest extends WebTestBase {
    * Tests the UI for the "HTML filter" processor.
    */
   public function checkHtmlFilterIntegration() {
+    $configuration = array(
+      'tags' => <<<TAGS
+h1: 4
+foo bar
+TAGS
+    );
+    $this->checkValidationError($configuration, 'html_filter', $this->t('Tags is not a valid YAML map.'));
+    $configuration = array(
+      'tags' => <<<TAGS
+h1:
+  - 1
+  - 2
+h2: foo
+h3: -1
+TAGS
+    );
+    $errors = array(
+      $this->t("Boost value for tag @tag can't be an array.", array('@tag' => '<h1>')),
+      $this->t('Boost value for tag @tag must be numeric.', array('@tag' => '<h2>')),
+      $this->t('Boost value for tag @tag must be non-negative.', array('@tag' => '<h3>')),
+    );
+    $this->checkValidationError($configuration, 'html_filter', $errors);
+
     $configuration = $form_values = array(
       'title' => FALSE,
       'alt' => FALSE,
@@ -266,6 +289,11 @@ class ProcessorIntegrationTest extends WebTestBase {
    * Tests the UI for the "Ignore characters" processor.
    */
   public function checkIgnoreCharactersIntegration() {
+    $configuration = array(
+      'ignorable' => ':)',
+    );
+    $this->checkValidationError($configuration, 'ignore_character', $this->t('The entered text is no valid regular expression.'));
+
     $configuration = $form_values = array(
       'ignorable' => '[¿¡!?,.]',
       'strip' => array(
@@ -352,6 +380,11 @@ class ProcessorIntegrationTest extends WebTestBase {
    */
   public function checkTokenizerIntegration() {
     $configuration = array(
+      'spaces' => ':)',
+    );
+    $this->checkValidationError($configuration, 'tokenizer', $this->t('The entered text is no valid regular expression.'));
+
+    $configuration = array(
       'spaces' => '',
       'overlap_cjk' => FALSE,
       'minimum_word_size' => 2,
@@ -433,6 +466,35 @@ class ProcessorIntegrationTest extends WebTestBase {
   }
 
   /**
+   * Makes sure that the given form values will fail when submitted.
+   *
+   * @param array $form_values
+   *   The form values, relative to the processor form.
+   * @param string $processor_id
+   *   The processor's ID.
+   * @param string[]|string $messages
+   *   Either the expected error message or an array of expected error messages.
+   */
+  protected function checkValidationError(array $form_values, $processor_id, $messages) {
+    $this->loadProcessorsTab();
+
+    $edit = $this->getFormValues($form_values, "processors[$processor_id][settings]");
+    $edit["status[$processor_id]"] = 1;
+    $this->drupalPostForm(NULL, $edit, $this->t('Save'));
+
+    if (!is_array($messages)) {
+      $messages = array($messages);
+    }
+    foreach ($messages as $message) {
+      $this->assertText($message);
+    }
+    $this->assertNoText($this->t('The indexing workflow was successfully edited.'));
+    $this->assertNoText($this->t('No values were changed.'));
+
+    $this->loadProcessorsTab(TRUE);
+  }
+
+  /**
    * Converts a configuration array into an array of form values.
    *
    * @param array $configuration
@@ -469,10 +531,13 @@ class ProcessorIntegrationTest extends WebTestBase {
 
   /**
    * Loads the test index's "Processors" tab in the test browser, if necessary.
+   *
+   * @param bool $force
+   *   (optional) If TRUE, even load the tab if we are already on it.
    */
-  protected function loadProcessorsTab() {
+  protected function loadProcessorsTab($force = FALSE) {
     $settings_path = 'admin/config/search/search-api/index/' . $this->indexId . '/processors';
-    if ($this->getAbsoluteUrl($settings_path) != $this->getUrl()) {
+    if ($force || $this->getAbsoluteUrl($settings_path) != $this->getUrl()) {
       $this->drupalGet($settings_path);
     }
   }

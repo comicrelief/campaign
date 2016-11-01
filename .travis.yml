@@ -1,5 +1,5 @@
 # @file
-# Template provided by https://github.com/LionsAd/drupal_ti.
+# Campaign profile travis-ci script
 
 language: php
 php:
@@ -30,100 +30,41 @@ env:
     - PATH="$PATH:$HOME/.composer/vendor/bin"
 
     # Configuration variables.
-    - DRUPAL_TI_MODULE_NAME="cr"
-    #- DRUPAL_TI_SIMPLETEST_GROUP="commerce"
-
-    # Define runners and environment vars to include before and after the
-    # main runners / environment vars.
-    #- DRUPAL_TI_SCRIPT_DIR_BEFORE="./drupal_ti/before"
-    #- DRUPAL_TI_SCRIPT_DIR_AFTER="./drupal_ti/after"
-
-    # The environment to use, supported are: drupal-7, drupal-8
-    - DRUPAL_TI_ENVIRONMENT="drupal-8"
-
-    # Drupal specific variables.
-    - DRUPAL_TI_DB="drupal"
-    - DRUPAL_TI_DB_URL="mysql://root:@127.0.0.1/drupal"
+    - export PROFILE="cr"
+    - export DB="drupal"
+    - export DB_URL="mysql://root:@127.0.0.1/drupal"
+    - export BEHAT_DIR="./profiles/$PROFILE/tests/behat"
+    - export BEHAT_DRIVER="phantomjs"
+    - export BEHAT_BROWSER="firefox"
     # Note: Do not add a trailing slash here.
-    - DRUPAL_TI_WEBSERVER_URL="http://127.0.0.1"
-    - DRUPAL_TI_WEBSERVER_PORT="8080"
-
-    # Simpletest specific commandline arguments, the DRUPAL_TI_SIMPLETEST_GROUP is appended at the end.
-    - DRUPAL_TI_SIMPLETEST_ARGS="--verbose --color --concurrency 4 --url $DRUPAL_TI_WEBSERVER_URL:$DRUPAL_TI_WEBSERVER_PORT"
-
-    # === Behat specific variables.
-    # This is relative to $TRAVIS_BUILD_DIR
-    - DRUPAL_TI_BEHAT_DIR="./profiles/cr/tests/behat"
-    # This is relative to $TRAVIS_BUILD_DIR
-    - DRUPAL_TI_THEME_DIR="./profiles/cr/themes/custom/campaign_base"
-    # These arguments are passed to the bin/behat command.
-    - DRUPAL_TI_BEHAT_ARGS=""
-    # Specify the filename of the behat.yml with the $DRUPAL_TI_DRUPAL_DIR variables.
-    - DRUPAL_TI_BEHAT_YML="behat.yml.dist"
-    # This is used to setup Xvfb.
-    - DRUPAL_TI_BEHAT_SCREENSIZE_COLOR="1280x1024x16"
-    # The version of selenium that should be used.
-    - DRUPAL_TI_BEHAT_SELENIUM_VERSION="2.44"
-    # Set DRUPAL_TI_BEHAT_DRIVER to "selenium" to use "firefox" or "chrome" here.
-    - DRUPAL_TI_BEHAT_DRIVER="phantomjs"
-    - DRUPAL_TI_BEHAT_BROWSER="firefox"
-
-    # PHPUnit specific commandline arguments.
-    - DRUPAL_TI_PHPUNIT_ARGS=""
-    # Specifying the phpunit-core src/ directory is useful when e.g. a vendor/
-    # directory is present in the module directory, which phpunit would then
-    # try to find tests in. This option is relative to $TRAVIS_BUILD_DIR.
-    #- DRUPAL_TI_PHPUNIT_CORE_SRC_DIRECTORY="./tests/src"
-
-    # Code coverage via coveralls.io
-    - DRUPAL_TI_COVERAGE="satooshi/php-coveralls:0.6.*"
-    # This needs to match your .coveralls.yml file.
-    - DRUPAL_TI_COVERAGE_FILE="build/logs/clover.xml"
-
-    # Debug options
-    #- DRUPAL_TI_DEBUG="-x -v"
-    # Set to "all" to output all files, set to e.g. "xvfb selenium" or "selenium",
-    # etc. to only output those channels.
-    #- DRUPAL_TI_DEBUG_FILE_OUTPUT="selenium xvfb webserver"
-
-    # - DRUPAL_TI_RUNNERS="behat"
-
-  matrix:
-  # [[[ SELECT ANY OR MORE OPTIONS ]]]
-  # - DRUPAL_TI_RUNNERS="phpunit"
-  # - DRUPAL_TI_RUNNERS="phpunit-core simpletest"
-    - DRUPAL_TI_RUNNERS="behat"
-  # - DRUPAL_TI_RUNNERS="phpunit simpletest behat"
+    - export WEBSERVER_URL="http://127.0.0.1"
+    - export WEBSERVER_PORT="8080"
 
 mysql:
-  database: $DRUPAL_TI_DB
+  database: $DB
   username: root
   encoding: utf8
 
 before_install:
   - rvm install 2.1.5
   - composer global config minimum-stability beta
-  - composer global require phing/phing lionsad/drupal_ti:1.4.4
-  - drupal-ti before_install
+  - composer global require phing/phing drush/drush:8.*
+  # Prepare environment
+  - ./profiles/cr/tests/scripts/before-install.sh
+  # Check code quality before site is installed
+  - ./profiles/cr/tests/scripts/code-checks.sh
 
 install:
-  - drupal-ti install
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_install.sh
-  - phing build:prepare
+  - ./profiles/cr/tests/scripts/install.sh
 
 before_script:
-  # Check code quality
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/codecheck.sh
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/before_script.sh
+  - ./profiles/cr/tests/scripts/before-tests.sh
 
 script:
   # Behat
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/script.sh
+  - ./profiles/cr/tests/scripts/run-tests.sh
   # Check DB errors
-  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/dberrors.sh
-
-after_script:
-  - drupal-ti after_script
+  - ./profiles/cr/tests/scripts/dberrors.sh
 
 notifications:
   slack: comicrelief:W1jExvqbSU9Kb3lyavdGHdGD

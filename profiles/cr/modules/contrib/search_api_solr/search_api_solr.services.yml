@@ -1,0 +1,6 @@
+services:
+  search_api_solr.route_subscriber:
+    class: Drupal\search_api_solr\Routing\DevelRouteSubscriber
+    arguments: ['@entity_type.manager']
+    tags:
+      - { name: event_subscriber }

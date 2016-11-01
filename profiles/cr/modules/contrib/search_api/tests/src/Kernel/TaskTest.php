@@ -61,7 +61,7 @@ class TaskTest extends KernelTestBase {
   public function setUp() {
     parent::setUp();
 
-    $this->installSchema('search_api', array('search_api_task'));
+    $this->installEntitySchema('search_api_task');
 
     $this->taskManager = $this->container->get('search_api.task_manager');
     $this->taskWorker = $this->container->get('search_api_test_tasks.test_task_worker');

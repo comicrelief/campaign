@@ -403,4 +403,33 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
     $this->getSession()->visit($this->locatePath('/node/' . $saved->nid));
   }
 
+  /**
+   * Check for unpublished partner titles.
+   *
+   * @Then I should see the hidden partner title :title
+   */
+  public function iShouldSeeTheHiddenPartnerTitle($title) {
+
+    // Attempt to grab all the hidden partner titles
+    $elements = $this->getSession()->getPage()->findAll('css', '.node--type-partner .field--name-title');
+
+    if (empty($elements)) {
+      throw new Exception('No hidden partner titles in the markup to check');
+    }
+
+    $found = FALSE;
+
+    // Loop through all elements to find our search title
+    foreach ($elements as $element) {
+      if ($element->getText() == $title) {
+        $found = TRUE;
+        break;
+      }
+    }
+
+    if (!$found) {
+      throw new Exception('The hidden partner title ' . $title . ' was not found in the markup');
+    }
+  }
+
 }

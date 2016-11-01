@@ -16,7 +16,7 @@ use Drupal\search_api\Datasource\DatasourceInterface;
 use Drupal\search_api\DataType\DataTypePluginManager;
 use Drupal\search_api\Processor\ConfigurablePropertyInterface;
 use Drupal\search_api\UnsavedConfigurationInterface;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 use Drupal\user\SharedTempStoreFactory;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -244,19 +244,30 @@ class IndexAddFieldsForm extends EntityForm {
       $form['properties'][] = $this->getDatasourceListItem($datasource);
     }
 
+    $form['actions'] = $this->actionsElement($form, $form_state);
+
     // Log any unmapped types that were encountered.
     if ($this->unmappedFields) {
-      $unmapped_types = array();
+      $unmapped_fields = array();
       foreach ($this->unmappedFields as $type => $fields) {
-        $unmapped_types[] = implode(', ', $fields) . ' (' . new FormattableMarkup('type @type', array('@type' => $type)) . ')';
+        foreach ($fields as $field) {
+          $unmapped_fields[] = new FormattableMarkup('@field (type "@type")', array(
+            '@field' => $field,
+            '@type' => $type,
+          ));
+        }
       }
-      $vars['@fields'] = implode('; ', $unmapped_types);
-      $vars['%index'] = $this->entity->label();
-      \Drupal::service('logger.channel.search_api')
-        ->warning('Warning while retrieving available fields for index %index: could not find a type mapping for the following fields: @fields.', $vars);
+      $form['unmapped_types'] = array(
+        '#type' => 'details',
+        '#title' => $this->t('Skipped fields'),
+        'fields' => array(
+          '#theme' => 'item_list',
+          '#items' => $unmapped_fields,
+          '#prefix' => $this->t('The following fields cannot be indexed since there is no type mapping for them:'),
+          '#suffix' => $this->t("If you think one of these fields should be available for indexing, please report this in the module's <a href=':url'>issue queue</a>. (Make sure to first search for an existing issue for this field.) Please note that entity-valued fields generally can be indexed by either indexing their parent reference field, or their child entity ID field.", array(':url' => Url::fromUri('https://www.drupal.org/project/issues/search_api')->toString())),
+        ),
+      );
     }
-
-    $form['actions'] = $this->actionsElement($form, $form_state);
 
     return $form;
   }
@@ -393,7 +404,7 @@ class IndexAddFieldsForm extends EntityForm {
 
       // Don't allow indexing of properties with unmapped types. Also, prefer
       // a "parent.child" type mapping (taking into account the parent property
-      // for, e.g., text fields).
+      // for, for example, text fields).
       $type = $property->getDataType();
       if ($parent_child_type && !empty($type_mapping[$parent_child_type])) {
         $type = $parent_child_type;

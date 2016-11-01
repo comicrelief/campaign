@@ -3,10 +3,12 @@
 namespace Drupal\search_api_test\Plugin\search_api\backend;
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Plugin\PluginFormInterface;
 use Drupal\search_api\Backend\BackendPluginBase;
 use Drupal\search_api\IndexInterface;
+use Drupal\search_api\Plugin\PluginFormTrait;
 use Drupal\search_api\Query\QueryInterface;
-use Drupal\search_api\Utility;
+use Drupal\search_api\Utility\Utility;
 use Drupal\search_api_test\TestPluginTrait;
 
 /**
@@ -18,8 +20,9 @@ use Drupal\search_api_test\TestPluginTrait;
  *   description = @Translation("Dummy backend implementation")
  * )
  */
-class TestBackend extends BackendPluginBase {
+class TestBackend extends BackendPluginBase implements PluginFormInterface {
 
+  use PluginFormTrait;
   use TestPluginTrait {
     checkError as traitCheckError;
   }
@@ -59,8 +62,8 @@ class TestBackend extends BackendPluginBase {
   /**
    * {@inheritdoc}
    */
-  public function supportsFeature($feature) {
-    return $feature == 'search_api_mlt';
+  public function getSupportedFeatures() {
+    return array('search_api_mlt');
   }
 
   /**

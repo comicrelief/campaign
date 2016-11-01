@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\metatag_google_plus\Plugin\metatag\Tag\Name.
- */
 
 namespace Drupal\metatag_google_plus\Plugin\metatag\Tag;
 
@@ -15,7 +11,7 @@ use Drupal\metatag\Plugin\metatag\Tag\MetaItempropBase;
  *   id = "google_plus_name",
  *   label = @Translation("Name"),
  *   description = @Translation("Content title."),
- *   name = "name",
+ *   name = "itemprop:name",
  *   group = "google_plus",
  *   weight = 1,
  *   type = "label",

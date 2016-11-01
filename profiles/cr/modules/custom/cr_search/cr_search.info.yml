@@ -13,7 +13,7 @@ config_devel:
   # General config.
   - search_api.server.cr_database
   - search_api.index.cr_content
-  - views.view.search
+  - views.view.search_db
   # Content types
   - core.entity_view_display.node.article.search_index
   - core.entity_view_display.node.landing.search_index

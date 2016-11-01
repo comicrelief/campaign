@@ -1,11 +1,5 @@
 name: Social Links
 type: module
 description: Social Links provides social share links on entities.
-# core: 8.x
+core: 8.x
 package: Social
-
-# Information added by Drupal.org packaging script on 2016-03-20
-version: '8.x-1.x-dev'
-core: '8.x'
-project: 'social_links'
-datestamp: 1458491941

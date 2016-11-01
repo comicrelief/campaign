@@ -6,14 +6,15 @@ dependencies:
     - field.field.node.partner.body
     - field.field.node.partner.field_partner_category
     - field.field.node.partner.field_partner_external
-    - field.field.node.partner.field_partner_image
     - field.field.node.partner.field_partner_logo
     - field.field.node.partner.field_partner_meta_tags
     - field.field.node.partner.field_partner_website
+    - field.field.node.partner.field_partner_weight
     - node.type.partner
   module:
     - ds
     - link
+    - metatag
     - panelizer
     - responsive_image
     - taxonomy
@@ -51,7 +52,7 @@ third_party_settings:
         formatter: default
         settings:
           link: true
-          wrapper: h2
+          wrapper: ''
           class: ''
 id: node.partner.search_index
 targetEntityType: node
@@ -59,16 +60,26 @@ bundle: partner
 mode: search_index
 content:
   body:
-    type: text_default
+    type: text_summary_or_trimmed
     weight: 2
     label: hidden
-    settings: {  }
+    settings:
+      trim_length: 200
     third_party_settings: {  }
   field_partner_category:
     type: entity_reference_rss_category
     weight: 10
     label: above
     settings: {  }
+    third_party_settings: {  }
+  field_partner_external:
+    type: boolean
+    weight: 0
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
     third_party_settings: {  }
   field_partner_image:
     type: responsive_image
@@ -83,8 +94,14 @@ content:
     weight: 1
     label: hidden
     settings:
-      responsive_image_style: hero_image_full_node
-      image_link: ''
+      responsive_image_style: cr_listing_teaser
+      image_link: content
+    third_party_settings: {  }
+  field_partner_meta_tags:
+    type: metatag_empty_formatter
+    weight: 0
+    label: above
+    settings: {  }
     third_party_settings: {  }
   field_partner_website:
     type: link_separate
@@ -108,3 +125,4 @@ content:
 hidden:
   field_partner_external: true
   field_partner_meta_tags: true
+  field_partner_weight: true

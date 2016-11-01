@@ -5,6 +5,7 @@ namespace Drupal\search_api\Plugin\views\field;
 use Drupal\Core\Entity\EntityDisplayRepositoryInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\TypedData\TranslatableInterface;
 use Drupal\views\FieldAPIHandlerTrait;
 use Drupal\views\ResultRow;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -204,7 +205,13 @@ class SearchApiEntity extends SearchApiStandard {
       $operation = ($this->getDisplayMethod($bundle) == 'label') ? 'view label' : 'view';
       if ($entity->access($operation, $account)) {
         foreach ($to_load[$id] as list($i, $j)) {
-          $values[$i]->{$property_path}[$j] = $entity;
+          if ($entity->access('view', $account)) {
+            $langcode = $values[$i]->search_api_language;
+            if ($entity instanceof TranslatableInterface && $entity->hasTranslation($langcode)) {
+              $entity = $entity->getTranslation($langcode);
+            }
+            $values[$i]->{$property_path}[$j] = $entity;
+          }
         }
       }
     }

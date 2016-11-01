@@ -46,6 +46,39 @@ interface FieldInterface extends \Traversable {
   public function getFieldIdentifier();
 
   /**
+   * Returns the original field identifier of this field.
+   *
+   * This will remember the original ID with which this field object was created
+   * even after its ID has been changed with
+   * \Drupal\search_api\Item\FieldInterface::setFieldIdentifier().
+   *
+   * @return string
+   *   The original identifier of this field.
+   */
+  public function getOriginalFieldIdentifier();
+
+  /**
+   * Sets a new field identifier for this field.
+   *
+   * @param string $field_id
+   *   The new identifier of the field.
+   *
+   * @return $this
+   *
+   * @internal Use \Drupal\search_api\IndexInterface::renameField() instead.
+   */
+  public function setFieldIdentifier($field_id);
+
+  /**
+   * Determines whether this field's identifier was changed in this request.
+   *
+   * @return bool
+   *   TRUE if the field identifier of this field object was changed after its
+   *   creation, FALSE otherwise.
+   */
+  public function wasRenamed();
+
+  /**
    * Retrieves all settings encapsulated in this field as an array.
    *
    * @return array

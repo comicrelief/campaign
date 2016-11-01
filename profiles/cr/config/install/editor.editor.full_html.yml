@@ -42,6 +42,7 @@ settings:
           items:
             - Blockquote
             - DrupalImage
+            - video_embed
             - Table
             - HorizontalRule
             - downloadable

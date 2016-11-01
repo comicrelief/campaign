@@ -242,9 +242,8 @@ display:
           expose:
             label: ''
           granularity: second
-      title: 'Keep up with all the news'
-      header: {  }
-      footer:
+      title: 'Related news'
+      header:
         area:
           id: area
           table: views
@@ -255,9 +254,10 @@ display:
           empty: false
           tokenize: false
           content:
-            value: '<p class="type--centred"><a href="/whats-going-on{filter_tags_tag_querystring}" class="btn btn-red btn--fixed-width">See more</a></p>'
-            format: full_html
+            value: '[view:title]'
+            format: basic_html
           plugin_id: text
+      footer: {  }
       empty: {  }
       relationships:
         field_article_category:

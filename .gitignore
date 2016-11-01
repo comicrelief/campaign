@@ -14,7 +14,7 @@ sites/*/environment.yml
 sites/*/settings.local.php
 
 # Ignore bundle files
-.bundle/config/
+.bundle/
 node_modules/
 
 # Ignore SimpleTest multi-site environment.
@@ -56,7 +56,7 @@ Thumbs.db
 .sass-cache
 
 # Icon spritesheet #
-*/themes/custom/campaign_base/images/generated/
+profiles/cr/themes/custom/campaign_base/images/generated/
 
 # Temp agov theme #
 */themes/custom/agov_base/

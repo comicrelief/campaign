@@ -1,0 +1,15 @@
+name: Comic Relief Search with Solr
+type: module
+description: 'Improve the search functionality with Solr.'
+package: Comic Relief
+core: '8.x'
+
+dependencies:
+  - search_api_solr
+  - cr_search
+
+config_devel:
+  - search_api.server.solr
+  - search_api.index.solr_content
+  - views.view.search
+  - block.block.exposedformsearchpage_1

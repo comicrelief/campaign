@@ -11,7 +11,7 @@ use Drupal\search_api\Plugin\IndexPluginInterface;
  * in the index, which have changed since they were last indexed, etc.
  *
  * The tracker is required to ignore calls to tracking methods for item IDs that
- * won't have any effect – i.e., inserting items which are already known, or
+ * won't have any effect – that is, inserting items which are already known, or
  * marking items as indexed, updated or deleted that are not.
  *
  * @see \Drupal\search_api\Annotation\SearchApiTracker

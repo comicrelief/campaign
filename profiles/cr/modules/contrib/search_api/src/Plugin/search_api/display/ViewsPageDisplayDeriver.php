@@ -3,7 +3,6 @@
 namespace Drupal\search_api\Plugin\search_api\display;
 
 use Drupal\Component\Plugin\Exception\PluginNotFoundException;
-use Drupal\Component\Plugin\PluginBase;
 use Drupal\search_api\Display\DisplayDeriverBase;
 use Drupal\search_api\Plugin\views\query\SearchApiQuery;
 
@@ -18,19 +17,18 @@ class ViewsPageDisplayDeriver extends DisplayDeriverBase {
    * {@inheritdoc}
    */
   public function getDerivativeDefinitions($base_plugin_definition) {
-    $base_plugin_id = $base_plugin_definition['id'];
-
-    try {
-      /** @var \Drupal\Core\Entity\EntityStorageInterface $views_storage */
-      $views_storage = $this->entityTypeManager->getStorage('view');
-      $all_views = $views_storage->loadMultiple();
-    }
-    catch (PluginNotFoundException $e) {
-      return array();
-    }
-
-    if (!isset($this->derivatives[$base_plugin_id])) {
+    if (!isset($this->derivatives)) {
       $plugin_derivatives = array();
+
+      try {
+        /** @var \Drupal\Core\Entity\EntityStorageInterface $views_storage */
+        $views_storage = $this->entityTypeManager->getStorage('view');
+        $all_views = $views_storage->loadMultiple();
+      }
+      catch (PluginNotFoundException $e) {
+        $this->derivatives = array();
+        return $this->derivatives;
+      }
 
       /** @var \Drupal\views\Entity\View $view */
       foreach ($all_views as $view) {
@@ -58,7 +56,6 @@ class ViewsPageDisplayDeriver extends DisplayDeriverBase {
               $executable->setDisplay($name);
               $display = $executable->getDisplay();
               $plugin_derivatives[$machine_name] = array(
-                'id' => $base_plugin_id . PluginBase::DERIVATIVE_SEPARATOR . $machine_name,
                 'label' => $label,
                 'description' => $view->get('description') ? $this->t('%view_description - Represents the page display %display_title of view %view_name.', array('%view_name' => $view->label(), '%view_description' => $view->get('description'), '%display_title' => $display_info['display_title'])) : $this->t('Represents the page display %display_title of view %view_name.', array('%view_name' => $view->label(), '%display_title' => $display_info['display_title'])),
                 'view_id' => $view->id(),
@@ -76,11 +73,11 @@ class ViewsPageDisplayDeriver extends DisplayDeriverBase {
           }
         }
       }
-      uasort($plugin_derivatives, array($this, 'compareDerivatives'));
 
-      $this->derivatives[$base_plugin_id] = $plugin_derivatives;
+      $this->derivatives = $plugin_derivatives;
     }
-    return $this->derivatives[$base_plugin_id];
+
+    return $this->derivatives;
   }
 
 }

@@ -219,6 +219,7 @@ abstract class SignUp extends FormBase {
 
       case 'step2':
         $email = $form_state->getValue('email');
+        $this->esulist = ['teacher' => 'teacher'];
         $valid_email = \Drupal::service('email.validator')->isValid($email);
         if (!$form_state->isValueEmpty('school_phase') && $valid_email) {
           $this->fillQmessage([

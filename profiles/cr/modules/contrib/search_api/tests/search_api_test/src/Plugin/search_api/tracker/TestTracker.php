@@ -3,6 +3,8 @@
 namespace Drupal\search_api_test\Plugin\search_api\tracker;
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Plugin\PluginFormInterface;
+use Drupal\search_api\Plugin\PluginFormTrait;
 use Drupal\search_api\Tracker\TrackerPluginBase;
 use Drupal\search_api_test\TestPluginTrait;
 
@@ -14,8 +16,9 @@ use Drupal\search_api_test\TestPluginTrait;
  *   label = @Translation("Test tracker"),
  * )
  */
-class TestTracker extends TrackerPluginBase {
+class TestTracker extends TrackerPluginBase implements PluginFormInterface {
 
+  use PluginFormTrait;
   use TestPluginTrait;
 
   /**

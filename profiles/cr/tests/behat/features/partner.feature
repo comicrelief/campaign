@@ -5,10 +5,9 @@ Feature: Partner
   Scenario: Partners page is working
     Given I am on "partners"
     Then I should see the text "wonderful corporate partners"
-    And I should see the link "Three"
-    And I should see the link "Vodafone"
-    And I should see the link "PayPal"
-    And I should see the link "Persil"
+    And I should see the link "Find out more"
+    And I should see the link "Visit their site"
+    Then I should see the hidden partner title "Sainsbury's"
 
   @api @javascript
   Scenario: Create a new partner

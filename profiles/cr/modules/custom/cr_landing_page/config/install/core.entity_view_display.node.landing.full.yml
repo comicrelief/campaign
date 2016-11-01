@@ -55,7 +55,7 @@ third_party_settings:
               entity: '@panelizer.entity_context:entity'
             region: ds_content
             uuid: 0df3b443-cd24-4f55-be00-d27e656349c6
-            weight: 2
+            weight: 3
         id: panels_variant
         uuid: 07727bfe-7661-4185-a418-24b2dd3f797d
         label: ''

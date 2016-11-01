@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\metatag\Plugin\metatag\Tag\MetaItempropBase.
- */
 
 /**
  * This base plugin allows "itemprop"-style meta tags, e.g. Google plus tags, to
@@ -24,13 +20,13 @@ abstract class MetaItempropBase extends MetaNameBase {
       // Parse out the image URL, if needed.
       $value = $this->parseImageURL();
 
-      $element = array(
+      $element = [
         '#tag' => 'meta',
-        '#attributes' => array(
+        '#attributes' => [
           'itemprop' => $this->name,
           'content' => $value,
-        )
-      );
+        ]
+      ];
     }
 
     return $element;

@@ -17,7 +17,6 @@ use Drupal\Core\StreamWrapper\StreamWrapperInterface;
 use Drupal\Core\Url;
 use Drupal\Component\Utility\Crypt;
 use Drupal\file\Entity\File;
-use Drupal\file\FileInterface;
 use Drupal\file_entity\FileEntityInterface;
 
 /**
@@ -26,9 +25,37 @@ use Drupal\file_entity\FileEntityInterface;
 class FileEntity extends File implements FileEntityInterface {
 
   /**
+   * The metadata of the file.
+   *
+   * @var null|array
+   */
+  protected $metadata = NULL;
+
+  /**
+   * Whether the metadata of the file was change and needs to be saved.
+   *
+   * @var bool
+   */
+  protected $metadataChanged = FALSE;
+
+  /**
+   * Loads metadta when requested.
+   */
+  protected function loadMetadata() {
+    if ($this->metadata === NULL) {
+      // Load and unserialize metadata.
+      $results = db_query("SELECT * FROM {file_metadata} WHERE fid = :fid", array(':fid' => $this->id()));
+      foreach ($results as $result) {
+        $this->metadata[$result->name] = unserialize($result->value);
+      }
+    }
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function getMetadata($property) {
+    $this->loadMetadata();
     return isset($this->metadata[$property]) ? $this->metadata[$property] : NULL;
   }
 
@@ -36,6 +63,7 @@ class FileEntity extends File implements FileEntityInterface {
    * {@inheritdoc}
    */
   public function hasMetadata($property) {
+    $this->loadMetadata();
     return isset($this->metadata[$property]);
   }
 
@@ -43,13 +71,16 @@ class FileEntity extends File implements FileEntityInterface {
    * {@inheritdoc}
    */
   public function setMetadata($property, $value) {
+    $this->loadMetadata();
     $this->metadata[$property] = $value;
+    $this->metadataChanged = TRUE;
   }
 
   /**
    * {@inheritdoc}
    */
   public function getAllMetadata() {
+    $this->loadMetadata();
     return $this->metadata;
   }
 
@@ -172,10 +203,12 @@ class FileEntity extends File implements FileEntityInterface {
   public function postSave(EntityStorageInterface $storage, $update = TRUE) {
     parent::postSave($storage, $update);
     // Save file metadata.
-    if (!empty($this->metadata)) {
-    if ($update) {
-      db_delete('file_metadata')->condition('fid', $this->id())->execute();
-    }
+    if ($this->metadataChanged) {
+      if ($update) {
+        db_delete('file_metadata')
+          ->condition('fid', $this->id())
+          ->execute();
+      }
       $query = db_insert('file_metadata')->fields(array('fid', 'name', 'value'));
       foreach ($this->getAllMetadata() as $name => $value) {
         $query->values(array(
@@ -185,6 +218,7 @@ class FileEntity extends File implements FileEntityInterface {
         ));
       }
       $query->execute();
+      $this->metadataChanged = FALSE;
     }
 
     if ($update) {

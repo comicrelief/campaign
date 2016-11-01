@@ -6,15 +6,16 @@ dependencies:
     - field.field.node.partner.body
     - field.field.node.partner.field_partner_category
     - field.field.node.partner.field_partner_external
-    - field.field.node.partner.field_partner_image
     - field.field.node.partner.field_partner_logo
     - field.field.node.partner.field_partner_meta_tags
     - field.field.node.partner.field_partner_website
+    - field.field.node.partner.field_partner_weight
     - node.type.partner
   module:
     - ds
-    - image
     - link
+    - metatag
+    - options
     - panelizer
     - responsive_image
     - text
@@ -25,20 +26,32 @@ third_party_settings:
     custom: false
   ds:
     layout:
-      id: article
-      path: profiles/cr/modules/custom/cr_layout/layouts/article
-      library: layout_plugin/article
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
+      library: ''
       disable_css: false
-      settings: {  }
+      settings:
+        wrappers:
+          ds_content: div
+        outer_wrapper: ''
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
     regions:
-      first:
-        - field_partner_logo
+      ds_content:
         - node_title
-      second:
-        - field_partner_image
         - body
         - field_partner_website
+        - 'dynamic_block_field:node-partners_grid'
+        - field_partner_weight
     fields:
+      'dynamic_block_field:node-partners_grid':
+        plugin_id: 'dynamic_block_field:node-partners_grid'
+        weight: 4
+        label: hidden
+        formatter: default
       node_title:
         plugin_id: node_title
         weight: 1
@@ -55,26 +68,27 @@ mode: full
 content:
   body:
     type: text_default
-    weight: 3
+    weight: 2
     label: hidden
     settings: {  }
     third_party_settings: {  }
   field_partner_category:
     type: entity_reference_entity_view
-    weight: 5
+    weight: 14
     label: above
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
-  field_partner_image:
-    weight: 2
+  field_partner_external:
+    type: boolean
+    weight: 12
     label: above
     settings:
-      image_style: ''
-      image_link: ''
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
     third_party_settings: {  }
-    type: image
   field_partner_logo:
     type: responsive_image
     weight: 0
@@ -83,9 +97,15 @@ content:
       responsive_image_style: ''
       image_link: ''
     third_party_settings: {  }
+  field_partner_meta_tags:
+    type: metatag_empty_formatter
+    weight: 13
+    label: above
+    settings: {  }
+    third_party_settings: {  }
   field_partner_website:
     type: link
-    weight: 4
+    weight: 3
     label: hidden
     settings:
       trim_length: 80
@@ -94,14 +114,18 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
+  field_partner_weight:
+    type: list_default
+    weight: 5
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
   links:
-    weight: 13
+    weight: 15
     settings: {  }
     third_party_settings: {  }
   social_links:
-    weight: 14
+    weight: 16
     settings: {  }
     third_party_settings: {  }
-hidden:
-  field_partner_external: true
-  field_partner_meta_tags: true
+hidden: {  }
