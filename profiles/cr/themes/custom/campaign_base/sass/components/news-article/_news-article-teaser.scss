@@ -55,7 +55,7 @@
 			.article-teaser__content {
 				position: initial;
 				top: 0;
-				transform: none;
+				@include translateY(0);
 			}
 		}
 	}
