@@ -54,25 +54,12 @@
     }
   }
 }
-
 .cw-region {
   article.view-mode-cw_l {
     width: 100%;
     @include breakpoint($screen-md) {
       width: 100%;
       margin: 0;
-    }
-    .cw-article__image {
-      @include breakpoint($screen-md, $no-query: true) {
-        @include span(8 no-gutter wide);
-        margin-left: gutter();
-      }
-    }
-    .cw-article__body {
-      @include breakpoint($screen-md, $no-query: true) {
-        @include span(4 no-gutter last);
-        margin-right: gutter();
-      }
     }
   }
 }
