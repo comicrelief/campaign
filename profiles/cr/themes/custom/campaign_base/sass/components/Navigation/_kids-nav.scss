@@ -1,8 +1,15 @@
+.menu--kids-menu {
+  text-align: center;
+  .kids-logo {
+    display: inline-block;
+  }
+}
 .kids-logo {
   @include icons-sprite(kids-logo);
   @include breakpoint($desktop-nav-breakpoint) {
-    margin-top: 20px;
-    margin-left: 180px;
+    top: -45px;
+    float: none;
+    margin-right: 15px;
   }
   position: relative;
   z-index: 5;
@@ -14,6 +21,11 @@
   text-indent: -9999px;
 }
 nav.menu--kids-menu.block-menu {
+  > ul.menu {
+    @include breakpoint($desktop-nav-breakpoint) {
+      display: inline-block;
+    }
+  }
   .kids-leave-kids {
     @include icons-sprite(leave-kids);
   }
@@ -39,18 +51,11 @@ nav.menu--kids-menu.block-menu {
     @include breakpoint($desktop-nav-breakpoint) {
       width: auto;
       padding-left: 0;
-      text-align: right;
     }
     .menu-item {
       @include breakpoint($desktop-nav-breakpoint) {
-        margin: 0 10px;
+        margin: 0 15px;
         padding: 14px 0;
-      }
-      &:first-child {
-        @include breakpoint($desktop-nav-breakpoint) {
-          position: absolute;
-          left: 0;
-        }
       }
       a {
         @include breakpoint($desktop-max-nav-breakpoint) {
