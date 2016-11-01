@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\media_entity_twitter\Plugin\Validation\Constraint\TweetEmbedCodeConstraint.
- */
-
 namespace Drupal\media_entity_twitter\Plugin\Validation\Constraint;
 
 use Symfony\Component\Validator\Constraint;
@@ -26,4 +21,5 @@ class TweetEmbedCodeConstraint extends Constraint {
    * @var string
    */
   public $message = 'Not valid Tweet URL/embed code.';
+
 }
