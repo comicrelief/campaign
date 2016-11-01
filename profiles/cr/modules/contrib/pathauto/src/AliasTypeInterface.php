@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\pathauto\AliasTypeInterface
- */
-
 namespace Drupal\pathauto;
 
 use Drupal\Component\Plugin\DerivativeInspectionInterface;

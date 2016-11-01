@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\pathauto\Tests\PathautoSettingsFormWebTest.
- */
-
 namespace Drupal\pathauto\Tests;
 
 use Drupal\pathauto\PathautoGeneratorInterface;
@@ -241,4 +236,5 @@ class PathautoSettingsFormWebTest extends WebTestBase {
     $this->assertResponse(200);
     $this->assertEntityAlias($node, $alias);
   }
+
 }

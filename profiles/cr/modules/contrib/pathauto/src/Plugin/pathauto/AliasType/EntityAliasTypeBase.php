@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\pathauto\Plugin\AliasType\EntityAliasTypeBase.
- */
-
 namespace Drupal\pathauto\Plugin\pathauto\AliasType;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;

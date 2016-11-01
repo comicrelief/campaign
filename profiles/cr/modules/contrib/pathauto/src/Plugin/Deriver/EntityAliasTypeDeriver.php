@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\pathauto\Plugin\Deriver\EntityAliasTypeDeriver.
- */
 
 namespace Drupal\pathauto\Plugin\Deriver;
 
@@ -81,7 +77,6 @@ class EntityAliasTypeDeriver extends DeriverBase implements ContainerDeriverInte
         if (!isset($base_fields['path'])) {
           // The entity type does not have a path field and is therefore not
           // supported.
-          // @todo: Add a UI to enable that base field on any content entity.
           continue;
         }
         $this->derivatives[$entity_type_id] = $base_plugin_definition;

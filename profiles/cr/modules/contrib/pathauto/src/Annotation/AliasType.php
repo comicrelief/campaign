@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\pathauto\Plugin\Annotation\AliasType
- */
-
 namespace Drupal\pathauto\Annotation;
 
 use Drupal\Component\Annotation\Plugin;
