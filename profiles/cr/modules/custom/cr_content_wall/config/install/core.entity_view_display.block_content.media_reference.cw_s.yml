@@ -7,9 +7,10 @@ dependencies:
     - field.field.block_content.media_reference.field_media_reference
     - field.field.block_content.media_reference.field_media_reference_bg
     - field.field.block_content.media_reference.field_media_reference_body
+    - responsive_image.styles.cw_bg_image_blocks
   module:
     - ds
-    - image
+    - responsive_image
     - text
 third_party_settings:
   ds:
@@ -49,10 +50,10 @@ content:
     weight: 2
     label: hidden
     settings:
-      image_style: ''
+      responsive_image_style: cw_bg_image_blocks
       image_link: ''
     third_party_settings: {  }
-    type: image
+    type: responsive_image
   field_media_reference_body:
     weight: 1
     label: hidden
