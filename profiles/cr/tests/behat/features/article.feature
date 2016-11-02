@@ -12,7 +12,7 @@ Feature: Article
   Scenario: Article pagination on /whats-going
     Given I am on "whats-going-on"
     And I click "Next"
-    Then I should see the link "Look what you’ve helped to achieve since 2007"
+    Then I should see the link "Greg James begins his Gregathlon for Sport Relief"
     And I click "Next"
     Then I should see the link "You’re helping us win the fight against malaria"
 
