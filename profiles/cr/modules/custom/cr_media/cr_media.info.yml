@@ -7,6 +7,10 @@ config_devel:
   - block_content.type.media_reference
   - core.entity_form_display.block_content.media_reference.default
   - core.entity_view_display.block_content.media_reference.default
+  - core.entity_view_display.block_content.media_reference.cw_l
+  - core.entity_view_display.block_content.media_reference.cw_m
+  - core.entity_view_display.block_content.media_reference.cw_mp
+  - core.entity_view_display.block_content.media_reference.cw_s
   - field.storage.block_content.field_media_reference
   - field.storage.block_content.field_media_reference_bg
   - field.storage.block_content.field_media_reference_body
