@@ -78,8 +78,8 @@ dependencies:
   - cr_page
   - cr_downloadables
   - cr_video
-  - cr_content_wall
   - cr_media
+  - cr_content_wall
   - cr_rich_text_paragraph
   - cr_block_paragraph
   - cr_single_msg

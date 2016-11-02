@@ -9,6 +9,7 @@ dependencies:
   - entity_reference_revisions
   - inline_entity_form
   - cr_teaser
+  - cr_media
   - view_mode
 
 config_devel:
@@ -40,6 +41,11 @@ config_devel:
   - core.entity_view_display.block_content.teaser.cw_m
   - core.entity_view_display.block_content.teaser.cw_mp
   - core.entity_view_display.block_content.teaser.cw_s
+  # Media block reference view modes
+  - core.entity_view_display.block_content.media_reference.cw_l
+  - core.entity_view_display.block_content.media_reference.cw_m
+  - core.entity_view_display.block_content.media_reference.cw_mp
+  - core.entity_view_display.block_content.media_reference.cw_s
   # View mode config
   - core.entity_view_mode.block_content.cw_1col_l
   - core.entity_view_mode.block_content.cw_2col_m_m
