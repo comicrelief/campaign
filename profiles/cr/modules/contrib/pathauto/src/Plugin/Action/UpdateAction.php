@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains: \Drupal\pathauto\Plugin\Action\UpdateAction
- */
 
 namespace Drupal\pathauto\Plugin\Action;
 
@@ -36,4 +32,5 @@ class UpdateAction extends ActionBase {
     $result = AccessResult::allowedIfHasPermission($account, 'create url aliases');
     return $return_as_object ? $result : $result->isAllowed();
   }
+
 }

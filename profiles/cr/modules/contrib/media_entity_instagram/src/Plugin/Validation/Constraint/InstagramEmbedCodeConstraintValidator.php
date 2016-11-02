@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\media_entity_instagram\Plugin\Validation\Constraint\InstagramEmbedCodeConstraintValidator.
- */
-
 namespace Drupal\media_entity_instagram\Plugin\Validation\Constraint;
 
 use Drupal\media_entity\EmbedCodeValueTrait;

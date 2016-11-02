@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\pathauto\Plugin\AliasType\ForumAliasType.
- */
-
 namespace Drupal\pathauto\Plugin\pathauto\AliasType;
 
 use Drupal\Core\Config\ConfigFactoryInterface;

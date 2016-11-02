@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\pathauto\Tests\PathautoMassDeleteTest.
- */
-
 namespace Drupal\pathauto\Tests;
 
 use Drupal\simpletest\WebTestBase;
