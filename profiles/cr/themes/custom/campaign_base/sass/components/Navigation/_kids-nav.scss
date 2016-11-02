@@ -7,7 +7,7 @@
 .kids-logo {
   @include icons-sprite(kids-logo);
   @include breakpoint($desktop-nav-breakpoint) {
-    top: -45px;
+    top: -46px;
     float: none;
     margin-right: 15px;
   }
@@ -70,6 +70,12 @@ nav.menu--kids-menu.block-menu {
         &.kids-grown-ups {
           @include breakpoint($desktop-nav-breakpoint) {
             width: 80px;
+          }
+        }
+        &.kids-leave-kids {
+          @include breakpoint($desktop-nav-breakpoint) {
+            width: 124px;
+            text-align: left;
           }
         }
         .menu-item__text {
