@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.media.search_index
+    - field.field.media.cr_file.field_cr_downloadables_body
     - field.field.media.cr_file.field_cr_field_display_title
     - field.field.media.cr_file.field_cr_file
     - field.field.media.cr_file.field_cr_file_category
@@ -96,4 +97,5 @@ content:
     label: above
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_cr_downloadables_body: true

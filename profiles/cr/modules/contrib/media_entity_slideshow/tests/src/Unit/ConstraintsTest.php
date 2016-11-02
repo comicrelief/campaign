@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\media_entity_slideshow\Unit\ConstraintsTest.
- */
-
 namespace Drupal\Tests\media_entity_slideshow\Unit;
 
 use Drupal\media_entity_slideshow\Plugin\Validation\Constraint\ItemsCountConstraint;
@@ -26,10 +21,10 @@ class ConstraintsTest extends UnitTestCase {
    */
   public function testValidation() {
     // Check message in constraint.
-    $constraint = new ItemsCountConstraint(['source_field_name' => 'test_field']);
+    $constraint = new ItemsCountConstraint(['sourceFieldName' => 'test_field']);
     $this->assertEquals('At least one slideshow item must exist.', $constraint->message, 'Correct constraint message found.');
 
-    // Test the validator with valid values
+    // Test the validator with valid values.
     $execution_context = $this->getMockBuilder('\Drupal\Core\TypedData\Validation\ExecutionContext')
       ->disableOriginalConstructor()
       ->getMock();
@@ -43,7 +38,7 @@ class ConstraintsTest extends UnitTestCase {
     $validator->initialize($execution_context);
     $validator->validate($value, $constraint);
 
-    // Test the validator with invalid values
+    // Test the validator with invalid values.
     $execution_context = $this->getMockBuilder('\Drupal\Core\TypedData\Validation\ExecutionContext')
       ->disableOriginalConstructor()
       ->getMock();
@@ -66,29 +61,29 @@ class ConstraintsTest extends UnitTestCase {
 class TestMediaEntityConstraints {
 
   /**
+   * The source field names.
+   *
    * @var array
-   *   The source field names.
    */
-  protected $source_fields = array();
+  protected $sourceFields = array();
 
   /**
    * TestMediaEntityConstraints constructor.
    *
    * @param string $name
    *   The source field name used for this test.
-   *
    * @param string|null $value
    *   (optional) The source field value used for this test.
    */
   public function __construct($name, $value = NULL) {
-    $this->source_fields[$name] = new TestField($value);
+    $this->sourceFields[$name] = new TestField($value);
   }
 
   /**
    * Mocks get() on \Drupal\Core\Entity\FieldableEntityInterface.
    */
   public function get($name) {
-    return $this->source_fields[$name];
+    return $this->sourceFields[$name];
   }
 
 }
@@ -99,8 +94,9 @@ class TestMediaEntityConstraints {
 class TestField {
 
   /**
+   * The field property.
+   *
    * @var string
-   *   The field property.
    */
   protected $property;
 

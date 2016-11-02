@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\media_entity_instagram\Plugin\Field\FieldFormatter\InstagramEmbedFormatter.
- */
-
 namespace Drupal\media_entity_instagram\Plugin\Field\FieldFormatter;
 
-use Drupal\Core\Field\FieldItemInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\FormatterBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -81,20 +75,35 @@ class InstagramEmbedFormatter extends FormatterBase {
 
     $elements['width'] = array(
       '#type' => 'number',
-      '#title' => t('Width'),
+      '#title' => $this->t('Width'),
       '#default_value' => $this->getSetting('width'),
       '#min' => 1,
-      '#description' => t('Width of instagram.'),
+      '#description' => $this->t('Width of instagram.'),
     );
 
     $elements['height'] = array(
       '#type' => 'number',
-      '#title' => t('Height'),
+      '#title' => $this->t('Height'),
       '#default_value' => $this->getSetting('height'),
       '#min' => 1,
-      '#description' => t('Height of instagram.'),
+      '#description' => $this->t('Height of instagram.'),
     );
 
     return $elements;
   }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function settingsSummary() {
+    return [
+      $this->t('Width: @width px', [
+        '@width' => $this->getSetting('width'),
+      ]),
+      $this->t('Height: @height px', [
+        '@height' => $this->getSetting('height'),
+      ]),
+    ];
+  }
+
 }

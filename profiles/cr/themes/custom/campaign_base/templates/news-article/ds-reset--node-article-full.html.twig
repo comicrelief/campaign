@@ -7,9 +7,12 @@
 
 <article class="cr-article" {% if css_id %}{{ css_id }}{% endif %}>
   <header class="cr-article__header">
-    {# <div class="cr-article__social-links">
+    <div class="cr-article__social-links">
+      <div class= "social-links-label">
+        <span>Share with:</span>
+      </div>
       {{ social_links }}  
-    </div> #}
+    </div>
     {{ node_title }}
     <div class="contextual-region">
       {{ title_suffix.contextual_links }}      

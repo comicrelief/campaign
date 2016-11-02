@@ -265,7 +265,7 @@ class FileEntityAdminTest extends FileEntityTestBase {
       'bulk_form[1]' => 1,
       'bulk_form[2]' => 1,
     );
-    $this->drupalPostForm(NULL, $edit, t('Apply'));
+    $this->drupalPostForm(NULL, $edit, t('Apply to selected items'));
 
     \Drupal::entityManager()->getStorage('file')->resetCache();
     $this->assertFalse(FileEntity::load(2)->isPermanent());
@@ -279,7 +279,7 @@ class FileEntityAdminTest extends FileEntityTestBase {
       'bulk_form[0]' => 1,
       'bulk_form[1]' => 1,
     );
-    $this->drupalPostForm(NULL, $edit, t('Apply'));
+    $this->drupalPostForm(NULL, $edit, t('Apply to selected items'));
 
     \Drupal::entityManager()->getStorage('file')->resetCache();
     $this->assertTrue(FileEntity::load(2)->isPermanent());
@@ -294,7 +294,7 @@ class FileEntityAdminTest extends FileEntityTestBase {
       'bulk_form[0]' => 1,
       'bulk_form[1]' => 1,
     );
-    $this->drupalPostForm(NULL, $edit, t('Apply'));
+    $this->drupalPostForm(NULL, $edit, t('Apply to selected items'));
     $this->assertTitle(t('Are you sure you want to delete these files? | Drupal'));
     $this->assertLink('Cancel');
     $this->drupalPostForm(NULL, array(), t('Delete'));

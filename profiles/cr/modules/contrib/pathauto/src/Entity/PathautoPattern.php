@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\pathauto\Entity\PathautoPattern.
- */
-
 namespace Drupal\pathauto\Entity;
 
 use Drupal\Component\Plugin\Exception\ContextException;

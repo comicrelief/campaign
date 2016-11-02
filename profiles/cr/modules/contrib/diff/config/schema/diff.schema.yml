@@ -6,9 +6,6 @@ diff.settings:
       type: mapping
       label: 'General Settings'
       mapping:
-        theme:
-          type: label
-          label: 'Theme'
         radio_behavior:
           type: label
           label: 'Radio button behaviour'
@@ -18,6 +15,25 @@ diff.settings:
         context_lines_trailing:
           type: integer
           label: 'Number of trailing context lines'
+        revision_pager_limit:
+          type: integer
+          label: 'Revisions per page to be displayed in diff pager'
+        layout_plugins:
+          type: sequence
+          label: 'Plugins'
+          sequence:
+            type: mapping
+            label: 'Layout plugins configuration'
+            mapping:
+              enabled:
+                type: boolean
+                label: 'Enabled'
+              weight:
+                type: integer
+                label: 'Weight'
+        visual_inline_theme:
+          type: string
+          label: 'Theme'
     entity:
       type: sequence
       label: 'Entities'
@@ -27,25 +43,18 @@ diff.settings:
           sequence:
             - type: integer
               label: 'Compare base field'
-    content_type_settings:
-      type: sequence
-      label: 'Content type settings'
-      sequence:
-        type: mapping
-        label: 'Content type'
-        mapping:
-          view_mode:
-            type: string
-            label: 'View mode'
 
 diff.plugins:
   type: config_object
-  label: 'Field Type'
+  label: 'Entity Type'
   mapping:
-    field_types:
+    fields:
       type: sequence
+      label: 'Field'
       sequence:
-        - type: mapping
+        type: sequence
+        sequence:
+          type: mapping
           label: 'Diff configuration for a field type'
           mapping:
             type:
@@ -171,3 +180,23 @@ diff.plugin.settings.entity_reference_field_diff_builder:
     compare_entity_reference:
       type: integer
       label: 'Entity reference component to compare'
+
+diff.layout_plugins:
+  type: config_object
+  label: 'Plugin'
+  mapping:
+    type: sequence
+    sequence:
+      type: mapping
+      label: 'Diff configuration for a field type'
+      mapping:
+        type:
+          type: text
+          label: 'Plugin key'
+        settings:
+          type: diff.layout_plugin.settings.[%parent.type]
+
+diff.layout_plugin.settings_base:
+  type: mapping
+  label: 'Settings for base diff layout plugin'
+  mapping:

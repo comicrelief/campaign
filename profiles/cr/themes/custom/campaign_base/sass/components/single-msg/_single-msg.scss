@@ -4,6 +4,12 @@
 //
 // Markup: _single-msg.hbs
 //
+// .single-msg--copy-right - Copy right
+// .single-msg--copy-left - Copy left
+// .single-msg--feature-copy-right - Feature copy right
+// .single-msg--feature-copy-left - Feature copy left
+// .single-msg--copy-only - Copy only
+//
 // Style guide: Single Message
 
 
@@ -185,10 +191,11 @@
 
   /* Copy Only - Copy Centred variation */
   &.single-msg--copy-only {
+    .single-msg__image {
+      display: none;
+    }
     .single-msg__copy_wrapper {
-
       background-color: transparent;
-
       .single-msg__copy {
         padding: 0 30px;
 

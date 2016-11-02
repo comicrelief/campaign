@@ -1,0 +1,100 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.full
+    - field.field.media.cr_external_file.field_cr_downloadables_body
+    - field.field.media.cr_external_file.field_cr_ef_resource_category
+    - field.field.media.cr_external_file.field_cr_external_file
+    - media_entity.bundle.cr_external_file
+  module:
+    - ds
+    - link
+    - text
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
+      library: ''
+      disable_css: false
+      settings:
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - field_cr_external_file
+        - name
+        - field_cr_downloadables_body
+id: media.cr_external_file.full
+targetEntityType: media
+bundle: cr_external_file
+mode: full
+content:
+  created:
+    type: timestamp
+    weight: 5
+    label: above
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
+  field_cr_downloadables_body:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_cr_ef_resource_category:
+    type: entity_reference_entity_view
+    weight: 6
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+  field_cr_external_file:
+    weight: 0
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+  name:
+    type: string
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  social_links:
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+  thumbnail:
+    type: entity_reference_entity_view
+    weight: 3
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+  uid:
+    type: author
+    weight: 4
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

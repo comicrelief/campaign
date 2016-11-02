@@ -79,6 +79,7 @@ dependencies:
   - cr_page
   - cr_content_wall
   - cr_rich_text_paragraph
+  - cr_iframe
   - cr_block_paragraph
   - cr_downloadables
   - cr_single_msg
@@ -88,10 +89,12 @@ dependencies:
   - cr_email_signup
   - cr_partner
   - cr_cards
+  - cr_story
   - cr_landing_page
   - cr_navigation
   #- cr_performance
   - cr_user
+  - cr_social
 
   # Development modules
   - config_devel
@@ -133,7 +136,6 @@ config_devel:
   - field.storage.user.user_picture
 
   # Blocks
-  - block_content.type.basic
   - block.block.tabs
   - block.block.campaign_base_account_menu
   - block.block.campaign_base_page_title
@@ -173,6 +175,9 @@ config_devel:
   - image.style.50_width_image_lg
   - image.style.100_width_image_md
   - image.style.100_width_image_sm
+  - image.style.story_293_x_322_crop_lg
+  - image.style.story_479_x_352_crop_md
+  - image.style.story_739_x_561_crop_sm
 
   # Retina image styles
   - image.style.bg_rich_text_narrow_2x
@@ -186,6 +191,9 @@ config_devel:
   - image.style.100_width_image_md_2x_
   - image.style.100_width_image_sm_2x
   - image.style.cr_1_1_272x272_2x
+  - image.style.story_293_x_322_crop_lg_2x_
+  - image.style.story_479_x_352_crop_md_2x_
+  - image.style.story_739_x_561_crop_sm_2x_
 
   # Responsive image style mappings
   - responsive_image.styles.hero_image_full_node
@@ -195,6 +203,7 @@ config_devel:
   - responsive_image.styles.single_l_r_message_row
   - responsive_image.styles.single_msg_
   - responsive_image.styles.cr_listing_teaser
+  - responsive_image.styles.story_row
 
   # Metatags
   - metatag.metatag_defaults.403

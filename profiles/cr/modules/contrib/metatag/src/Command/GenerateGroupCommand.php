@@ -9,13 +9,15 @@ namespace Drupal\metatag\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Drupal\Console\Command\GeneratorCommand;
-use Drupal\Console\Command\ServicesTrait;
-use Drupal\Console\Command\ModuleTrait;
-use Drupal\Console\Command\FormTrait;
-use Drupal\Console\Command\ConfirmationTrait;
+use Symfony\Component\Console\Command\Command;
+use Drupal\Console\Command\Shared\CommandTrait;
+use Drupal\Console\Command\Shared\ModuleTrait;
+use Drupal\Console\Command\Shared\FormTrait;
+use Drupal\Console\Command\Shared\ConfirmationTrait;
 use Drupal\Console\Style\DrupalStyle;
 use Drupal\metatag\Generator\MetatagGroupGenerator;
+use Drupal\Console\Extension\Manager;
+use Drupal\Console\Utils\ChainQueue;
 
 /**
  * Class GenerateGroupCommand.
@@ -24,11 +26,44 @@ use Drupal\metatag\Generator\MetatagGroupGenerator;
  *
  * @package Drupal\metatag
  */
-class GenerateGroupCommand extends GeneratorCommand {
-  use ServicesTrait;
+class GenerateGroupCommand extends Command {
+
+  use CommandTrait;
   use ModuleTrait;
   use FormTrait;
   use ConfirmationTrait;
+
+  /**
+   * @var MetatagGroupGenerator
+   */
+  protected $generator;
+
+  /** @var Manager  */
+  protected $extensionManager;
+
+  /**
+   * @var ChainQueue
+   */
+  protected $chainQueue;
+
+  /**
+   * GenerateTagCommand constructor.
+   *
+   * @param MetatagTagGenerator $generator
+   * @param Manager $extensionManager
+   * @param ChainQueue $chainQueue
+   */
+  public function __construct(
+      MetatagGroupGenerator $generator,
+      Manager $extensionManager,
+      ChainQueue $chainQueue
+    ) {
+    $this->generator = $generator;
+    $this->extensionManager = $extensionManager;
+    $this->chainQueue = $chainQueue;
+
+    parent::__construct();
+  }
 
   /**
    * {@inheritdoc}
@@ -73,22 +108,23 @@ class GenerateGroupCommand extends GeneratorCommand {
     $class_name = $input->getOption('class-name');
     $weight = $input->getOption('weight');
 
-    $this
-      ->getGenerator()
+    $this->generator
       ->generate($base_class, $module, $label, $description, $plugin_id, $class_name, $weight);
 
-    $this->getHelper('chain')->addCommand('cache:rebuild', ['cache' => 'discovery']);
+    $this->chainQueue->addCommand('cache:rebuild', ['cache' => 'discovery']);
   }
 
   /**
    * {@inheritdoc}
    */
   protected function interact(InputInterface $input, OutputInterface $output) {
+    $io = new DrupalStyle($input, $output);
+
     // --base_class option.
     // @todo Turn this into a choice() option.
     $base_class = $input->getOption('base_class');
     if (empty($base_class)) {
-      $base_class = $output->ask(
+      $base_class = $io->ask(
         $this->trans('commands.generate.metatag.group.questions.base_class'),
         'GroupBase'
       );
@@ -99,14 +135,14 @@ class GenerateGroupCommand extends GeneratorCommand {
     $module = $input->getOption('module');
     if (empty($module)) {
       // @see Drupal\AppConsole\Command\Helper\ModuleTrait::moduleQuestion
-      $module = $this->moduleQuestion($output);
+      $module = $this->moduleQuestion($io);
     }
     $input->setOption('module', $module);
 
     // --label option.
     $label = $input->getOption('label');
     if (empty($label)) {
-      $label = $output->ask(
+      $label = $io->ask(
         $this->trans('commands.generate.metatag.group.questions.label')
       );
     }
@@ -115,7 +151,7 @@ class GenerateGroupCommand extends GeneratorCommand {
     // --description option.
     $description = $input->getOption('description');
     if (empty($description)) {
-      $description = $output->ask(
+      $description = $io->ask(
         $this->trans('commands.generate.metatag.group.questions.description')
       );
     }
@@ -124,7 +160,7 @@ class GenerateGroupCommand extends GeneratorCommand {
     // --plugin-id option.
     $plugin_id = $input->getOption('plugin-id');
     if (empty($plugin_id)) {
-      $plugin_id = $output->ask(
+      $plugin_id = $io->ask(
         $this->trans('commands.generate.metatag.group.questions.plugin_id')
       );
     }
@@ -133,7 +169,7 @@ class GenerateGroupCommand extends GeneratorCommand {
     // --class-name option.
     $class_name = $input->getOption('class-name');
     if (empty($class_name)) {
-      $class_name = $output->ask(
+      $class_name = $io->ask(
         $this->trans('commands.generate.metatag.group.questions.class_name')
       );
     }
@@ -144,19 +180,12 @@ class GenerateGroupCommand extends GeneratorCommand {
     //   group.
     $weight = $input->getOption('weight');
     if (is_null($weight)) {
-      $weight = $output->ask(
+      $weight = $io->ask(
         $this->trans('commands.generate.metatag.group.questions.weight'),
         0
       );
     }
     $input->setOption('weight', $weight);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  protected function createGenerator() {
-    return new MetatagGroupGenerator();
   }
 
 }

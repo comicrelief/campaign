@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\metatag\Plugin\metatag\Tag\Standout.
- */
 
 namespace Drupal\metatag\Plugin\metatag\Tag;
 

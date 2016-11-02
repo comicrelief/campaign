@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: story_479_x_352_crop_md_2x_
+label: 'Story - 479 x 352 crop - MD (2X)'
+effects:
+  20283c6a-db15-4137-9ba6-aa8ce45ec8b8:
+    uuid: 20283c6a-db15-4137-9ba6-aa8ce45ec8b8
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 958
+      height: 704
