@@ -30,7 +30,7 @@
 .view-content {
   .views-row {
     @include span(12);
-    margin-bottom: gutter();
+    margin-bottom: calc(2 * #{gutter()});
     @include breakpoint($screen-md) {
       @include span(4);
     }
@@ -39,27 +39,36 @@
 .cw-region {
   article.view-mode-cw_s {
     width: 100%;
+    margin-bottom: calc(2 * #{gutter()});
     @include breakpoint($screen-md, $no-query: true) {
       @include span(4);
-      margin: gutter();
     }
   }
 }
 .cw-region {
   article.view-mode-cw_m {
     width: 100%;
+    margin-bottom: calc(2 * #{gutter()});
     @include breakpoint($screen-md, $no-query: true) {
       @include span(6);
-      margin: gutter();
+    }
+  }
+}
+.cw-region {
+  article.view-mode-cw_mp {
+    width: 100%;
+    margin-bottom: calc(2 * #{gutter()});
+    @include breakpoint($screen-md, $no-query: true) {
+      @include span(8);
     }
   }
 }
 .cw-region {
   article.view-mode-cw_l {
     width: 100%;
+    margin-bottom: calc(2 * #{gutter()});
     @include breakpoint($screen-md) {
-      width: 100%;
-      margin: 0;
+      @include span(12);
     }
   }
 }
