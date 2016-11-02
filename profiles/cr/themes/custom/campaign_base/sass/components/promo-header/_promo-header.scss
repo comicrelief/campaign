@@ -14,16 +14,13 @@
   &.promo-header--no-image {
     min-height: auto;
   }
-  &.promo-header--feature{
-    min-height: 0;
-    height: 100%;
-  }
 }
 .promo-header {
   &.promo-header--feature {
     display: table;
     background: transparent;
     width: 100%;
+    min-height: auto;
   }
 }
 .promo-header__bg-image {
@@ -70,7 +67,7 @@
   }
   position: relative;
   z-index: 0;
-  max-width:  1200px;
+  max-width: 1200px;
   margin: auto;
   .promo-header--feature & {
     @include translateY(0);
@@ -79,7 +76,7 @@
     margin: -50px auto 0;
     padding: 1px 0;
     background: $colour-white;
-    max-width: calc(#{$max-width} - (2 * #{gutter()}));
+    @include breakpoint-gutters;
   }
   .promo-header--no-image & {
     @include translateY(0);
