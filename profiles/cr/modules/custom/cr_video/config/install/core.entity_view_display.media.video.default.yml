@@ -7,7 +7,6 @@ dependencies:
     - media_entity.bundle.video
   module:
     - ds
-    - image
     - responsive_image
     - text
     - user

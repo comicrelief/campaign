@@ -4,10 +4,8 @@ dependencies:
   config:
     - field.field.media.video.field_video_caption
     - field.field.media.video.field_youtube_video_id
-    - image.style.thumbnail
     - media_entity.bundle.video
   module:
-    - image
     - text
 id: media.video.default
 targetEntityType: media
