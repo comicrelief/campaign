@@ -1,0 +1,45 @@
+// Content Wall Quote
+//
+// This is a Content Wall 'Quote' block
+//
+// Markup: content-wall-quote.hbs
+//
+// Style guide: Content-wall-quote
+
+.cw-quote__bg-image {
+	width: 100%;
+	height: 450px;
+  position: relative;
+
+    img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+  }
+}
+
+.cw-quote__wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.cw-quote__body {
+  @include span(7);
+  @include translateY(-50%);
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: span(1);
+}
+
+.cw-quote__image {
+  @include span(4);
+  left: span(8);
+  position: absolute;
+  top: 75px;
+ 
+  img {
+    display: block;
+  }
+}
