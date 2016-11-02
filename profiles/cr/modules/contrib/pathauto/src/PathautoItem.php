@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\pathauto\PathautoItem.
- */
-
 namespace Drupal\pathauto;
 
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
@@ -60,5 +55,4 @@ class PathautoItem extends PathItem {
     return $this;
   }
 
-
-} 
+}

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\pathauto\Form\PatternEnableForm.
- */
-
 namespace Drupal\pathauto\Form;
 
 use Drupal\Core\Entity\EntityConfirmFormBase;

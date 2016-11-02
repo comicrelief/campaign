@@ -17,11 +17,11 @@ class MediaBundleListBuilder extends ConfigEntityListBuilder implements EntityHa
    * {@inheritdoc}
    */
   public function buildHeader() {
-    $header['title'] = t('Name');
-    $header['description'] = array(
-      'data' => t('Description'),
-      'class' => array(RESPONSIVE_PRIORITY_MEDIUM),
-    );
+    $header['title'] = $this->t('Name');
+    $header['description'] = [
+      'data' => $this->t('Description'),
+      'class' => [RESPONSIVE_PRIORITY_MEDIUM],
+    ];
     return $header + parent::buildHeader();
   }
 
@@ -29,10 +29,10 @@ class MediaBundleListBuilder extends ConfigEntityListBuilder implements EntityHa
    * {@inheritdoc}
    */
   public function buildRow(EntityInterface $entity) {
-    $row['title'] = array(
+    $row['title'] = [
       'data' => $this->getLabel($entity),
-      'class' => array('menu-label'),
-    );
+      'class' => ['menu-label'],
+    ];
     $row['description'] = Xss::filterAdmin($entity->getDescription());
     return $row + parent::buildRow($entity);
   }
@@ -42,9 +42,9 @@ class MediaBundleListBuilder extends ConfigEntityListBuilder implements EntityHa
    */
   public function render() {
     $build = parent::render();
-    $build['#empty'] = t('No media bundle available. <a href="@link">Add media bundle</a>.', array(
-      '@link' => Url::fromRoute('media.bundle_add')->toString(),
-    ));
+    $build['#empty'] = $this->t('No media bundle available. <a href="@link">Add media bundle</a>.', [
+      '@link' => Url::fromRoute('entity.media_bundle.add_form')->toString(),
+    ]);
     return $build;
   }
 

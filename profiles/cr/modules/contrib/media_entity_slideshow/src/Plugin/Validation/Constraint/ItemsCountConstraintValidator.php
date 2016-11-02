@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\media_entity_slideshow\Plugin\Validation\Constraint\ItemsCountConstraintValidator.
- */
-
 namespace Drupal\media_entity_slideshow\Plugin\Validation\Constraint;
 
 use Symfony\Component\Validator\Constraint;
@@ -23,7 +18,7 @@ class ItemsCountConstraintValidator extends ConstraintValidator {
       return;
     }
 
-    if ($value->get($constraint->source_field_name)->isEmpty()) {
+    if ($value->get($constraint->sourceFieldName)->isEmpty()) {
       $this->context->addViolation($constraint->message);
     }
   }

@@ -4,7 +4,7 @@
  * @file
  * Install, update and uninstall functions for the file_entity module.
  */
-
+use Drupal\Core\Entity\Entity\EntityFormDisplay;
 use Drupal\views\Entity\View;
 
 /**
@@ -97,4 +97,29 @@ function file_entity_update_8002(&$sandbox) {
     $config->set('mimetypes', str_replace("\r", "", $config->get('mimetypes')));
     $config->save();
   }
+}
+
+/**
+ * Update entity form displays to use the new entity browser widget.
+ */
+function file_entity_update_8003() {
+
+  /** @var \Drupal\Core\Entity\Entity\EntityFormDisplay $form_display */
+  foreach (EntityFormDisplay::loadMultiple() as $form_display) {
+    $components = $form_display->getComponents();
+
+    $changed = FALSE;
+    foreach ($components as $name => $options) {
+      if (isset($options['type']) && $options['type'] == 'file_entity_browser') {
+        $options['type'] = 'entity_browser_file';
+        $form_display->setComponent($name, $options);
+        $changed = TRUE;
+      }
+    }
+
+    if ($changed) {
+      $form_display->save();
+    }
+  }
+
 }

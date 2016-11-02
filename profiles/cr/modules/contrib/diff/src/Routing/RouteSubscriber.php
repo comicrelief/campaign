@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\diff\Routing\RouteSubscriber.
- */
-
 namespace Drupal\diff\Routing;
 
 use Drupal\Core\Routing\RouteSubscriberBase;

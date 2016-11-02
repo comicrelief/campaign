@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\media_entity_slideshow\Plugin\Validation\Constraint\ItemsCountConstraint.
- */
-
 namespace Drupal\media_entity_slideshow\Plugin\Validation\Constraint;
 
 use Symfony\Component\Validator\Constraint;
@@ -19,7 +14,12 @@ use Symfony\Component\Validator\Constraint;
  */
 class ItemsCountConstraint extends Constraint {
 
-  public $source_field_name;
+  /**
+   * Source field name.
+   *
+   * @var string
+   */
+  public $sourceFieldName;
 
   /**
    * The default violation message.
@@ -27,4 +27,5 @@ class ItemsCountConstraint extends Constraint {
    * @var string
    */
   public $message = 'At least one slideshow item must exist.';
+
 }

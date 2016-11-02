@@ -80,19 +80,19 @@ class Image extends MediaTypeBase {
    */
   public function providedFields() {
     $fields = array(
-      'mime' => t('File MIME'),
-      'width' => t('Width'),
-      'height' => t('Height'),
+      'mime' => $this->t('File MIME'),
+      'width' => $this->t('Width'),
+      'height' => $this->t('Height'),
     );
 
     if (!empty($this->configuration['gather_exif'])) {
       $fields += array(
-        'model' => t('Camera model'),
-        'created' => t('Image creation datetime'),
-        'iso' => t('Iso'),
-        'exposure' => t('Exposure time'),
-        'apperture' => t('Apperture value'),
-        'focal_lenght' => t('Focal lenght'),
+        'model' => $this->t('Camera model'),
+        'created' => $this->t('Image creation datetime'),
+        'iso' => $this->t('Iso'),
+        'exposure' => $this->t('Exposure time'),
+        'aperture' => $this->t('Aperture value'),
+        'focal_length' => $this->t('Focal length'),
       );
     }
     return $fields;
@@ -103,11 +103,10 @@ class Image extends MediaTypeBase {
    */
   public function getField(MediaInterface $media, $name) {
     $source_field = $this->configuration['source_field'];
-    $property_name = $media->{$source_field}->first()->mainPropertyName();
 
     // Get the file, image and exif data.
     /** @var \Drupal\file\FileInterface $file */
-    $file = $this->entityTypeManager->getStorage('file')->load($media->{$source_field}->first()->{$property_name});
+    $file = $media->{$source_field}->entity;
     $image = $this->imageFactory->get($file->getFileUri());
     $uri = $file->getFileUri();
 
@@ -144,10 +143,10 @@ class Image extends MediaTypeBase {
         case 'exposure':
           return $this->getExifField($uri, 'ExposureTime');
 
-        case 'apperture':
+        case 'aperture':
           return $this->getExifField($uri, 'FNumber');
 
-        case 'focal_lenght':
+        case 'focal_length':
           return $this->getExifField($uri, 'FocalLength');
       }
     }
@@ -171,20 +170,20 @@ class Image extends MediaTypeBase {
 
     $form['source_field'] = [
       '#type' => 'select',
-      '#title' => t('Field with source information'),
-      '#description' => t('Field on media entity that stores Image file. You can create a bundle without selecting a value for this dropdown initially. This dropdown can be populated after adding fields to the bundle.'),
+      '#title' => $this->t('Field with source information'),
+      '#description' => $this->t('Field on media entity that stores Image file. You can create a bundle without selecting a value for this dropdown initially. This dropdown can be populated after adding fields to the bundle.'),
       '#default_value' => empty($this->configuration['source_field']) ? NULL : $this->configuration['source_field'],
       '#options' => $options,
     ];
 
     $form['gather_exif'] = [
       '#type' => 'select',
-      '#title' => t('Whether to gather exif data.'),
-      '#description' => t('Gather exif data using exif_read_data().'),
+      '#title' => $this->t('Whether to gather exif data.'),
+      '#description' => $this->t('Gather exif data using exif_read_data().'),
       '#default_value' => empty($this->configuration['gather_exif']) || !function_exists('exif_read_data') ? 0 : $this->configuration['gather_exif'],
       '#options' => [
-        0 => t('No'),
-        1 => t('Yes'),
+        0 => $this->t('No'),
+        1 => $this->t('Yes'),
       ],
       '#disabled' => (function_exists('exif_read_data')) ? FALSE : TRUE,
     ];
@@ -206,7 +205,7 @@ class Image extends MediaTypeBase {
     $source_field = $this->configuration['source_field'];
 
     /** @var \Drupal\file\FileInterface $file */
-    if ($file = $this->entityTypeManager->getStorage('file')->load($media->{$source_field}->target_id)) {
+    if ($file = $media->{$source_field}->entity) {
       return $file->getFileUri();
     }
 
@@ -244,6 +243,23 @@ class Image extends MediaTypeBase {
    */
   protected function getExif($uri) {
     return exif_read_data($uri, 'EXIF');
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getDefaultName(MediaInterface $media) {
+    // The default name will be the filename of the source_field, if present,
+    // or the parent's defaultName implementation if it was not possible to
+    // retrieve the filename.
+    $source_field = $this->configuration['source_field'];
+
+    /** @var \Drupal\file\FileInterface $file */
+    if (!empty($source_field) && ($file = $media->{$source_field}->entity)) {
+      return $file->getFilename();
+    }
+
+    return parent::getDefaultName($media);
   }
 
 }

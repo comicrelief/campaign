@@ -10,26 +10,36 @@ entity within any other Drupal entity.
 
 ## About Media entity Twitter
 
-This module provides Twitter integration for Media entity (i.e. media type provider
-plugin).
+This module provides Twitter integration for Media entity (i.e. media type
+provider plugin).
 
 ### Without Twitter API
-If you need just to embembed tweets you can use this module wihout using Twitter's API. That will give you access to the fields available from the url/embed code: id and user.
+If you need just to embedded tweets you can use this module without using
+Twitter's API. That will give you access to the fields available from the
+url/embed code: id and user.
 
 You will need to:
 
 - Create a Media bundle with the type provider "Twitter".
-- On that bundle create a field for the Tweet url/source (this should be a plain text or link field).
-- Return to the bundle configuration and set "Field with source information" to use that field.
+- On that bundle create a field for the Tweet url/source (this should be a plain
+  text or link field).
+- Return to the bundle configuration and set "Field with source information" to
+  use that field.
 
-**IMPORTANT:** beware that there is limit on the number of request that can be made for free. [Read more](https://dev.twitter.com/rest/public)
+**IMPORTANT:** beware that there is limit on the number of request that can be
+made for free. [Read more](https://dev.twitter.com/rest/public)
 
 
 ### With Twitter API
-If you need to get other fields, you will need to use Twitter's API. To get this working follow the steps below:
+If you need to get other fields, you will need to use Twitter's API. To get this
+working follow the steps below:
 
-- Download and enable [composer_manager](https://www.drupal.org/project/composer_manager). Also make sure you have [drush](https://github.com/drush-ops/drush) installed.
-- Run the following commands from within your Drupal root directory to download the [library](https://github.com/J7mbo/twitter-api-php) that will handle the communication:
+- Download and enable 
+  [composer_manager](https://www.drupal.org/project/composer_manager). Also make
+  sure you have [drush](https://github.com/drush-ops/drush) installed.
+- Run the following commands from within your Drupal root directory to download
+  the [library](https://github.com/J7mbo/twitter-api-php) that will handle the
+  communication:
 
 ```
   // Rebuild the composer.json file with updated dependencies.
@@ -38,15 +48,21 @@ If you need to get other fields, you will need to use Twitter's API. To get this
   // Install the required packages.
   $ drush composer-manager install
 ```
-- Create a twitter app on the twitter [developer site](https://dev.twitter.com/apps/)
+- Create a twitter app on the twitter
+  [developer site](https://dev.twitter.com/apps/)
 - Enable read access for your twitter app
 - Grab your access tokens from the twitter developer site
-- In your Twitter bundle configuration set "Whether to use Twitter api to fetch tweets or not" to "Yes"" and paste in the "Consumer key", "Consumer secret", "Oauth access token" and the "Oauth access token secret"
+- In your Twitter bundle configuration set "Whether to use Twitter api to fetch
+  tweets or not" to "Yes"" and paste in the "Consumer key", "Consumer secret",
+  "Oauth access token" and the "Oauth access token secret"
 
 ### Storing field values
-If you want to store the fields that are retrived from Twitter you should create appropriate fields on the created media bundle (image, content and retweet_count) and map this to the fields provided by Twitter.php.
+If you want to store the fields that are retrived from Twitter you should create
+appropriate fields on the created media bundle (image, content and
+retweet_count) and map this to the fields provided by Twitter.php.
 
-**NOTE:** At the momemnt there is no GUI for that, so the only method of doing that for now is via CMI.
+**NOTE:** At the momemnt there is no GUI for that, so the only method of doing
+that for now is via CMI.
 
 This whould be an example of that (the field_map section):
 

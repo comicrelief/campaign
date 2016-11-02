@@ -130,23 +130,3 @@ action.configuration.file_temporary_action:
 field.widget.settings.file_editable:
   type: field.widget.settings.file_generic
   label: 'File format settings'
-
-field.widget.settings.file_entity_browser:
-  type: mapping
-  label: 'File entity browser settings'
-  mapping:
-    entity_browser:
-      type: string
-      label: 'Entity browser'
-    field_widget_edit:
-      type: boolean
-      label: 'Display edit button'
-    field_widget_remove:
-      type: boolean
-      label: 'Display remove button'
-    open:
-      type: boolean
-      label: 'Show widget details as open by default'
-    view_mode:
-      type: string
-      label: 'View mode'

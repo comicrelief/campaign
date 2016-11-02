@@ -8,3 +8,15 @@
 #diffadminplugins .messages {
   margin-bottom: 0.5em;
 }
+.diff-filter {
+  display: inline-block;
+}
+.navigation-link {
+  text-align: center;
+  width: 50%;
+  display: inline-block;
+}
+.diff-layout {
+  display: inline-table;
+  padding: 0 1em 0 0;
+}

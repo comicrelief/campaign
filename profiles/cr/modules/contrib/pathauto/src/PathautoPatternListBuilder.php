@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\pathauto\PathautoPatternListBuilder.
- */
-
 namespace Drupal\pathauto;
 
 use Drupal\Core\Config\Entity\DraggableListBuilder;
