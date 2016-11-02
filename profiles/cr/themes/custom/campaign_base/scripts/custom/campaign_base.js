@@ -39,6 +39,11 @@
 	  newHeight();
 
   });
+    // reload our styling for select boxes after ajax
+  $( document ).ajaxComplete(function() {
+    $('select').selectmenu({ style:'popup', width: '100%' });
+  });
+
 
   sSize = $(window).width();
 

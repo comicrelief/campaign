@@ -1,0 +1,210 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/whats-going-on\/extra-article-2?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/article"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_category": [
+            {
+                "href": "http:\/\/default\/taxonomy\/term\/16?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_image": [
+            {
+                "href": "http:\/\/default\/file\/3387?_format=hal_json",
+                "lang": "en"
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": "33"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "4350643b-685a-4cab-ba15-7ae3a2bf06da"
+        }
+    ],
+    "vid": [
+        {
+            "value": "111"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "article"
+        }
+    ],
+    "title": [
+        {
+            "value": "Extra article 2",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "553e987c-36f9-45b3-a8f3-98062f9493eb"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "553e987c-36f9-45b3-a8f3-98062f9493eb"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_category": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/taxonomy\/term\/16?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/article_category"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "4f8aaad0-92c6-4851-bd60-52f1d4671dc2"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/3387?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "b1ea54f7-8387-4699-a902-124f5ee2cb9c"
+                    }
+                ],
+                "lang": "en",
+                "alt": "",
+                "title": "",
+                "width": "770",
+                "height": "433"
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1477664053",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1477664088",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1477664088"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas laoreet lorem eget consectetur ultrices. Vestibulum feugiat sodales ex quis semper. Maecenas ante dui, ultricies nec ultrices a, iaculis in ipsum. Maecenas a fringilla leo. Ut eleifend congue pellentesque. Suspendisse ullamcorper ultrices ante sed cursus. Phasellus scelerisque mollis blandit. Etiam sed mi ac elit ultricies condimentum. Fusce sit amet euismod tellus, eu aliquet risus. Nulla non erat quis nunc ullamcorper tempor. Aliquam scelerisque ac ante quis hendrerit. Nam dapibus quis augue vel sollicitudin. Nulla tincidunt iaculis rhoncus. Pellentesque pulvinar purus sed enim blandit cursus. Curabitur id risus eget lectus porttitor tincidunt.<\/p>\r\n\r\n<p>In hac habitasse platea dictumst. Nullam at eros in nisl placerat consectetur. Nunc quis erat molestie leo molestie tempor sit amet sed erat. Sed at bibendum mi. Nulla iaculis placerat elit. In hac habitasse platea dictumst. Etiam eget mollis magna. Proin efficitur pellentesque sem, non tincidunt lorem varius et. Vivamus vestibulum velit at dignissim mattis. Curabitur quam lorem, condimentum eget gravida in, egestas sed tellus. In quis neque odio. Sed vestibulum mollis quam, et consectetur arcu sagittis rhoncus.<\/p>\r\n",
+            "format": "basic_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ],
+    "field_article_meta_tags": [
+        {
+            "value": "a:0:{}"
+        }
+    ],
+    "field_article_publish_date": [
+        {
+            "value": "2016-10-28"
+        }
+    ],
+    "field_image_caption": [
+        {
+            "value": "bladibla "
+        }
+    ]
+}

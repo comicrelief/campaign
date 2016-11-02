@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\media_entity_twitter\Plugin\Field\FieldFormatter\TwitterEmbedFormatter.
- */
-
 namespace Drupal\media_entity_twitter\Plugin\Field\FieldFormatter;
 
 use Drupal\Core\Field\FieldItemInterface;
@@ -38,9 +33,11 @@ class TwitterEmbedFormatter extends FormatterBase {
     switch ($item->getFieldDefinition()->getType()) {
       case 'link':
         return $item->uri;
+
       case 'string':
       case 'string_long':
         return $item->value;
+
       default:
         break;
     }
@@ -87,4 +84,5 @@ class TwitterEmbedFormatter extends FormatterBase {
 
     return $element;
   }
+
 }

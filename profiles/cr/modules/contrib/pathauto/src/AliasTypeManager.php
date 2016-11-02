@@ -1,20 +1,16 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\pathauto\AliasTypeManager
- */
-
 namespace Drupal\pathauto;
 
 use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Plugin\DefaultPluginManager;
+use Drupal\Component\Plugin\FallbackPluginManagerInterface;
 
 /**
  * Manages pathauto alias type plugins.
  */
-class AliasTypeManager extends DefaultPluginManager {
+class AliasTypeManager extends DefaultPluginManager implements FallbackPluginManagerInterface {
 
   /**
    * Constructs a new AliasType manager instance.
@@ -49,6 +45,26 @@ class AliasTypeManager extends DefaultPluginManager {
       }
       return FALSE;
     });
+    return $definitions;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getFallbackPluginId($plugin_id, array $configuration = array()) {
+    return 'broken';
+  }
+
+  /**
+   * Gets the definition of all visible plugins for this type.
+   *
+   * @return array
+   *   An array of plugin definitions (empty array if no definitions were
+   *   found). Keys are plugin IDs.
+   */
+  public function getVisibleDefinitions() {
+    $definitions = $this->getDefinitions();
+    unset($definitions['broken']);
     return $definitions;
   }
 

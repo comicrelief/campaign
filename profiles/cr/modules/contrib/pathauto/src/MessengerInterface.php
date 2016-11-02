@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\pathauto\MessengerInterface
- */
-
 namespace Drupal\pathauto;
 
 /**

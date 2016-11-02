@@ -1,13 +1,9 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\diff\FieldDiffBuilderInterface.
- */
-
 namespace Drupal\diff;
 
 use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\Plugin\PluginFormInterface;
 use Drupal\Component\Plugin\ConfigurablePluginInterface;
 
@@ -29,7 +25,7 @@ interface FieldDiffBuilderInterface extends PluginFormInterface, ConfigurablePlu
    * )
    * @endcode
    *
-   * @see \Drupal\diff\Plugin\Diff\TextFieldBuilder
+   * @see \Drupal\diff\Plugin\diff\Field\TextFieldBuilder
    *
    * @param FieldItemListInterface $field_items
    *   Represents an entity field.
@@ -41,4 +37,14 @@ interface FieldDiffBuilderInterface extends PluginFormInterface, ConfigurablePlu
    */
   public function build(FieldItemListInterface $field_items);
 
+  /**
+   * Returns if the plugin can be used for the provided field.
+   *
+   * @param \Drupal\Core\Field\FieldStorageDefinitionInterface $field_definition
+   *   The field definition that should be checked.
+   *
+   * @return bool
+   *   TRUE if the plugin can be used, FALSE otherwise.
+   */
+  public static function isApplicable(FieldStorageDefinitionInterface $field_definition);
 }

@@ -1,0 +1,26 @@
+.iframe-block {
+  padding: 60px 0;
+}
+.iframe-block__wrapper {
+  width: 100%;
+  max-width: 770px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+.iframe-block__body {
+  margin-top: 40px;
+  padding: 0 30px;
+}
+.iframe-block__image {
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+.iframe-block__game {
+  display: none;
+  min-height: 480px;
+  .iframe-block__wrapper--on & {
+    display: block;
+  }
+}

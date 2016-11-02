@@ -94,7 +94,7 @@ function media_entity_tokens($type, $tokens, array $data, array $options, Bubble
     $langcode = $options['langcode'];
   }
   else {
-      $langcode = LanguageInterface::LANGCODE_DEFAULT;
+    $langcode = LanguageInterface::LANGCODE_DEFAULT;
   }
   $sanitize = !empty($options['sanitize']);
 
@@ -102,7 +102,7 @@ function media_entity_tokens($type, $tokens, array $data, array $options, Bubble
 
   if ($type == 'media' && !empty($data['media'])) {
     /** @var \Drupal\media_entity\MediaInterface $media */
-    $media = \Drupal::entityManager()->getTranslationFromContext($data['media'], $langcode, array('operation' => 'media_entity_tokens'));
+    $media = \Drupal::service('entity.repository')->getTranslationFromContext($data['media'], $langcode, ['operation' => 'media_entity_tokens']);
 
     foreach ($tokens as $name => $original) {
       switch ($name) {
@@ -176,15 +176,15 @@ function media_entity_tokens($type, $tokens, array $data, array $options, Bubble
 
     if ($author_tokens = $token_service->findWithPrefix($tokens, 'author')) {
       $account = $media->get('uid')->entity;
-      $replacements += $token_service->generate('user', $author_tokens, array('user' => $account), $options, $bubbleable_metadata);
+      $replacements += $token_service->generate('user', $author_tokens, ['user' => $account], $options, $bubbleable_metadata);
     }
 
     if ($created_tokens = $token_service->findWithPrefix($tokens, 'created')) {
-      $replacements += $token_service->generate('date', $created_tokens, array('date' => $media->getCreatedTime()), $options, $bubbleable_metadata);
+      $replacements += $token_service->generate('date', $created_tokens, ['date' => $media->getCreatedTime()], $options, $bubbleable_metadata);
     }
 
     if ($changed_tokens = $token_service->findWithPrefix($tokens, 'changed')) {
-      $replacements += $token_service->generate('date', $changed_tokens, array('date' => $media->getChangedTime()), $options, $bubbleable_metadata);
+      $replacements += $token_service->generate('date', $changed_tokens, ['date' => $media->getChangedTime()], $options, $bubbleable_metadata);
     }
   }
 
