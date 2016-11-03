@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-{  }
-=======
 langcode: en
 status: true
 dependencies:
@@ -44,4 +41,3 @@ image_style_mappings:
     image_mapping: cr_md_740_x_450_2x
 breakpoint_group: campaign_base
 fallback_image_style: cr_lg_1170_x_450
->>>>>>> 95c6c5c688f9ed9a9b554962a0a6312cad88f95e
