@@ -9,13 +9,14 @@ dependencies:
   - entity_reference_revisions
   - inline_entity_form
   - cr_teaser
+  - cr_media
   - view_mode
 
 config_devel:
   # Paragraph config
   - field.storage.node.field_paragraphs
   - paragraphs.paragraphs_type.cw_row
-  # View modes
+  # Content wall row view modes
   - core.entity_form_display.paragraph.cw_row.default
   - core.entity_view_display.paragraph.cw_row.default
   - core.entity_form_display.block_content.cw_row_block.default
@@ -40,6 +41,19 @@ config_devel:
   - core.entity_view_display.block_content.teaser.cw_m
   - core.entity_view_display.block_content.teaser.cw_mp
   - core.entity_view_display.block_content.teaser.cw_s
+  # Media block reference view modes
+  - core.entity_view_display.block_content.media_reference.cw_l
+  - core.entity_view_display.block_content.media_reference.cw_m
+  - core.entity_view_display.block_content.media_reference.cw_mp
+  - core.entity_view_display.block_content.media_reference.cw_s
+  # Content block reference view modes
+  - core.entity_view_display.block_content.content_reference_block.cw_l
+  - core.entity_view_display.block_content.content_reference_block.cw_m
+  - core.entity_view_display.block_content.content_reference_block.cw_mp
+  - core.entity_view_display.block_content.content_reference_block.cw_s
+  # Content view modes
+  - core.entity_view_mode.node.content_wall
+  - core.entity_view_display.node.article.content_wall
   # View mode config
   - core.entity_view_mode.block_content.cw_1col_l
   - core.entity_view_mode.block_content.cw_2col_m_m
@@ -54,3 +68,10 @@ config_devel:
   - image.style.cw_large_780x440
   - image.style.cw_medium_570x365
   - image.style.cw_small_370x290
+
+  - image.style.cr_lg_1170_x_450
+  - image.style.cr_lg_1170_x_450_2x
+  - image.style.cr_md_740_x_450
+  - image.style.cr_md_740_x_450_2x
+
+  - responsive_image.styles.cw_bg_image_blocks
