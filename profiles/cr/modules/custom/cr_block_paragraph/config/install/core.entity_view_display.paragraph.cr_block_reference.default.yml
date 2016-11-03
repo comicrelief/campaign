@@ -3,7 +3,6 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.cr_block_reference.field_br_block_reference
-    - field.field.paragraph.cr_block_reference.field_content_block_reference
     - paragraphs.paragraphs_type.cr_block_reference
 id: paragraph.cr_block_reference.default
 targetEntityType: paragraph
@@ -18,14 +17,6 @@ content:
       view_mode: default
     third_party_settings: {  }
     type: entity_reference_entity_view
-  field_content_block_reference:
-    type: entity_reference_entity_view
-    weight: 1
-    label: hidden
-    settings:
-      view_mode: default
-      link: false
-    third_party_settings: {  }
 hidden:
   created: true
   social_links: true
