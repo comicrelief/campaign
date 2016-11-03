@@ -1,0 +1,124 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cr_story.field_cr_story_beneficiary_copy
+    - field.field.paragraph.cr_story.field_cr_story_beneficiary_image
+    - field.field.paragraph.cr_story.field_cr_story_fundraiser_bg_col
+    - field.field.paragraph.cr_story.field_cr_story_fundraiser_copy
+    - field.field.paragraph.cr_story.field_cr_story_fundraiser_image
+    - field.field.paragraph.cr_story.field_cr_story_fundraiser_total
+    - field.field.paragraph.cr_story.field_cr_story_row_bg_col
+    - field.field.paragraph.cr_story.field_cr_story_title
+    - paragraphs.paragraphs_type.cr_story
+  module:
+    - ds
+    - options
+    - responsive_image
+    - text
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
+      library: ''
+      disable_css: false
+      settings:
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - field_cr_story_beneficiary_image
+        - field_cr_story_fundraiser_image
+        - field_cr_story_row_bg_col
+        - field_cr_story_title
+        - field_cr_story_fundraiser_bg_col
+        - field_cr_story_fundraiser_total
+        - field_cr_story_fundraiser_copy
+        - field_cr_story_beneficiary_copy
+id: paragraph.cr_story.default
+targetEntityType: paragraph
+bundle: cr_story
+mode: default
+content:
+  created:
+    type: timestamp_ago
+    weight: 0
+    label: above
+    settings:
+      future_format: '@interval hence'
+      past_format: '@interval ago'
+      granularity: 2
+    third_party_settings: {  }
+  field_cr_story_beneficiary_copy:
+    weight: 5
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_cr_story_beneficiary_image:
+    type: responsive_image
+    weight: 0
+    label: hidden
+    settings:
+      responsive_image_style: story_row
+      image_link: ''
+    third_party_settings: {  }
+  field_cr_story_fundraiser_bg_col:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+  field_cr_story_fundraiser_copy:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_cr_story_fundraiser_image:
+    type: responsive_image
+    weight: 0
+    label: hidden
+    settings:
+      responsive_image_style: story_row
+      image_link: ''
+    third_party_settings: {  }
+  field_cr_story_fundraiser_total:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_cr_story_row_bg_col:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+  field_cr_story_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  social_links:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    type: author
+    weight: 0
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

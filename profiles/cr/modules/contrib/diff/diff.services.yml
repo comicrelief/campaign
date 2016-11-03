@@ -11,13 +11,26 @@ services:
   plugin.manager.diff.builder:
     class: Drupal\diff\DiffBuilderManager
     parent: default_plugin_manager
+    arguments: ['@entity_type.manager', '@config.factory']
+
+  plugin.manager.diff.layout:
+    class: Drupal\diff\DiffLayoutManager
+    parent: default_plugin_manager
+    arguments: ['@entity_type.manager', '@config.factory']
 
   diff.entity_parser:
     class: Drupal\diff\DiffEntityParser
-    arguments: ['@plugin.manager.diff.builder', '@entity.manager', '@config.factory']
+    arguments: ['@plugin.manager.diff.builder', '@config.factory']
 
-  diff.breadcrumb:
-    class: Drupal\diff\DiffBreadcrumbBuilder
-    parent: system.breadcrumb.default
+  diff.entity_comparison:
+    class: Drupal\diff\DiffEntityComparison
+    arguments: ['@config.factory', '@diff.diff.formatter','@plugin.manager.field.field_type', '@diff.entity_parser', '@plugin.manager.diff.builder']
+
+  diff.html_diff:
+    class: HtmlDiffAdvanced
+
+  theme.negotiator.visual_diff:
+    class: Drupal\diff\VisualDiffThemeNegotiator
+    arguments: ['@current_user', '@config.factory', '@entity.manager', '@router.admin_context']
     tags:
-      - { name: breadcrumb_builder, priority: 1000 }
+      - { name: theme_negotiator, priority: 0 }

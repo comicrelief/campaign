@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\pathauto\PathautoState.
- */
 namespace Drupal\pathauto;
 
 use Drupal\Core\TypedData\TypedData;
@@ -97,4 +93,5 @@ class PathautoState extends TypedData {
   protected function getCollection() {
     return 'pathauto_state.' . $this->parent->getEntity()->getEntityTypeId();
   }
+
 }

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\media_entity_twitter\Plugin\MediaEntity\Type\Twitter.
- */
-
 namespace Drupal\media_entity_twitter\Plugin\MediaEntity\Type;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
@@ -16,7 +11,6 @@ use Drupal\media_entity\MediaTypeBase;
 use Drupal\media_entity\MediaTypeException;
 use Drupal\Component\Serialization\Json;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-
 
 /**
  * Provides media type plugin for Twitter.
@@ -78,6 +72,15 @@ class Twitter extends MediaTypeBase {
   public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entity_type_manager, EntityFieldManagerInterface $entity_field_manager, ConfigFactoryInterface $config_factory) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $entity_type_manager, $entity_field_manager, $config_factory->get('media_entity.settings'));
     $this->configFactory = $config_factory;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function defaultConfiguration() {
+    return [
+      'use_twitter_api' => FALSE,
+    ];
   }
 
   /**
@@ -185,27 +188,27 @@ class Twitter extends MediaTypeBase {
 
     $form['source_field'] = array(
       '#type' => 'select',
-      '#title' => t('Field with source information'),
-      '#description' => t('Field on media entity that stores Twitter embed code or URL. You can create a bundle without selecting a value for this dropdown initially. This dropdown can be populated after adding fields to the bundle.'),
+      '#title' => $this->t('Field with source information'),
+      '#description' => $this->t('Field on media entity that stores Twitter embed code or URL. You can create a bundle without selecting a value for this dropdown initially. This dropdown can be populated after adding fields to the bundle.'),
       '#default_value' => empty($this->configuration['source_field']) ? NULL : $this->configuration['source_field'],
       '#options' => $options,
     );
 
     $form['use_twitter_api'] = array(
       '#type' => 'select',
-      '#title' => t('Whether to use Twitter api to fetch tweets or not.'),
-      '#description' => t("In order to use Twitter's api you have to create a developer account and an application. For more information consult the readme file."),
+      '#title' => $this->t('Whether to use Twitter api to fetch tweets or not.'),
+      '#description' => $this->t("In order to use Twitter's api you have to create a developer account and an application. For more information consult the readme file."),
       '#default_value' => empty($this->configuration['use_twitter_api']) ? 0 : $this->configuration['use_twitter_api'],
       '#options' => array(
-        0 => t('No'),
-        1 => t('Yes'),
+        0 => $this->t('No'),
+        1 => $this->t('Yes'),
       ),
     );
 
     // @todo Evauate if this should be a site-wide configuration.
     $form['consumer_key'] = array(
       '#type' => 'textfield',
-      '#title' => t('Consumer key'),
+      '#title' => $this->t('Consumer key'),
       '#default_value' => empty($this->configuration['consumer_key']) ? NULL : $this->configuration['consumer_key'],
       '#states' => array(
         'visible' => array(
@@ -216,7 +219,7 @@ class Twitter extends MediaTypeBase {
 
     $form['consumer_secret'] = array(
       '#type' => 'textfield',
-      '#title' => t('Consumer secret'),
+      '#title' => $this->t('Consumer secret'),
       '#default_value' => empty($this->configuration['consumer_secret']) ? NULL : $this->configuration['consumer_secret'],
       '#states' => array(
         'visible' => array(
@@ -227,7 +230,7 @@ class Twitter extends MediaTypeBase {
 
     $form['oauth_access_token'] = array(
       '#type' => 'textfield',
-      '#title' => t('Oauth access token'),
+      '#title' => $this->t('Oauth access token'),
       '#default_value' => empty($this->configuration['oauth_access_token']) ? NULL : $this->configuration['oauth_access_token'],
       '#states' => array(
         'visible' => array(
@@ -238,7 +241,7 @@ class Twitter extends MediaTypeBase {
 
     $form['oauth_access_token_secret'] = array(
       '#type' => 'textfield',
-      '#title' => t('Oauth access token secret'),
+      '#title' => $this->t('Oauth access token secret'),
       '#default_value' => empty($this->configuration['oauth_access_token_secret']) ? NULL : $this->configuration['oauth_access_token_secret'],
       '#states' => array(
         'visible' => array(
@@ -344,7 +347,7 @@ class Twitter extends MediaTypeBase {
       // Check for dependencies.
       // @todo There is perhaps a better way to do that.
       if (!class_exists('\TwitterAPIExchange')) {
-        drupal_set_message(t('Twitter library is not available. Consult the README.md for installation instructions.'), 'error');
+        drupal_set_message($this->t('Twitter library is not available. Consult the README.md for installation instructions.'), 'error');
         return;
       }
 
@@ -372,6 +375,21 @@ class Twitter extends MediaTypeBase {
     else {
       return $tweet;
     }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getDefaultName(MediaInterface $media) {
+    // The default name will be the twitter username of the author + the
+    // tweet ID.
+    $user = $this->getField($media, 'user');
+    $id = $this->getField($media, 'id');
+    if (!empty($user) && !empty($id)) {
+      return $user . ' - ' . $id;
+    }
+
+    return parent::getDefaultName($media);
   }
 
 }

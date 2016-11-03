@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\pathauto\AliasSchemaHelper
- */
-
 namespace Drupal\pathauto;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
@@ -155,31 +150,25 @@ class AliasStorageHelper implements AliasStorageHelperInterface {
    * {@inheritdoc}
    */
   public function loadBySource($source, $language = LanguageInterface::LANGCODE_NOT_SPECIFIED) {
-    // @todo convert this to be a query on alias storage.
-    $pid = $this->database->queryRange("SELECT pid FROM {url_alias} WHERE source = :source AND langcode IN (:language, :language_none) ORDER BY langcode DESC, pid DESC", 0, 1, array(
-      ':source' => $source,
-      ':language' => $language,
-      ':language_none' => LanguageInterface::LANGCODE_NOT_SPECIFIED,
-    ))->fetchField();
-    return $this->aliasStorage->load(array('pid' => $pid));
+    $alias = $this->aliasStorage->load([
+      'source' => $source,
+      'langcode' => $language,
+    ]);
+    // If no alias was fetched and if a language was specified, fallbacks to
+    // undefined language.
+    if (!$alias && ($language !== LanguageInterface::LANGCODE_NOT_SPECIFIED)) {
+      $alias = $this->aliasStorage->load([
+        'source' => $source,
+        'langcode' => LanguageInterface::LANGCODE_NOT_SPECIFIED,
+      ]);
+    }
+    return $alias;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function exists($alias, $source, $language = LanguageInterface::LANGCODE_NOT_SPECIFIED) {
-    return (bool) $this->database->queryRange("SELECT pid FROM {url_alias} WHERE source <> :source AND alias = :alias AND langcode IN (:language, :language_none) ORDER BY langcode DESC, pid DESC", 0, 1, array(
-      ':source' => $source,
-      ':alias' => $alias,
-      ':language' => $language,
-      ':language_none' => LanguageInterface::LANGCODE_NOT_SPECIFIED,
-    ))->fetchField();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function deleteAll($source) {
+  public function deleteBySourcePrefix($source) {
     $pids = $this->loadBySourcePrefix($source);
     if ($pids) {
       $this->deleteMultiple($pids);
@@ -189,19 +178,17 @@ class AliasStorageHelper implements AliasStorageHelperInterface {
   /**
    * {@inheritdoc}
    */
-  public function deleteEntityPathAll(EntityInterface $entity, $default_uri = NULL) {
-    $this->deleteAll('/'. $entity->toUrl('canonical')->getInternalPath());
-    if (isset($default_uri) && $entity->toUrl('canonical')->toString() != $default_uri) {
-      $this->deleteAll($default_uri);
-    }
+  public function deleteAll() {
+    $this->database->truncate('url_alias')->execute();
   }
 
   /**
    * {@inheritdoc}
    */
-  public function deleteMultiple($pids) {
-    foreach ($pids as $pid) {
-      $this->aliasStorage->delete(array('pid' => $pid));
+  public function deleteEntityPathAll(EntityInterface $entity, $default_uri = NULL) {
+    $this->deleteBySourcePrefix('/' . $entity->toUrl('canonical')->getInternalPath());
+    if (isset($default_uri) && $entity->toUrl('canonical')->toString() != $default_uri) {
+      $this->deleteBySourcePrefix($default_uri);
     }
   }
 
@@ -209,9 +196,47 @@ class AliasStorageHelper implements AliasStorageHelperInterface {
    * {@inheritdoc}
    */
   public function loadBySourcePrefix($source) {
-    return $this->database->query("SELECT pid FROM {url_alias} WHERE source = :source OR source LIKE :source_wildcard",
-      [':source' => $source, ':source_wildcard' => $source . '/%'])
+    return $this->database->select('url_alias', 'u')
+      ->fields('u', array('pid'))
+      ->condition('source', $source . '%', 'LIKE')
+      ->execute()
       ->fetchCol();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function countBySourcePrefix($source) {
+    return $this->database->select('url_alias')
+      ->condition('source', $source . '%', 'LIKE')
+      ->countQuery()
+      ->execute()
+      ->fetchField();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function countAll() {
+    return $this->database->select('url_alias')
+      ->countQuery()
+      ->execute()
+      ->fetchField();
+  }
+
+  /**
+   * Delete multiple URL aliases.
+   *
+   * Intent of this is to abstract a potential path_delete_multiple() function
+   * for Drupal 7 or 8.
+   *
+   * @param int[] $pids
+   *   An array of path IDs to delete.
+   */
+  protected function deleteMultiple($pids) {
+    foreach ($pids as $pid) {
+      $this->aliasStorage->delete(array('pid' => $pid));
+    }
   }
 
 }

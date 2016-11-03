@@ -1,0 +1,28 @@
+{% set iframe_bg_colour = content.field_cr_iframe_embedded_bg['#items'][0].value %}
+{%
+  set classes = [
+    'iframe-block',
+    iframe_bg_colour,
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  {% block content %}
+    {{ title_suffix.contextual_links }}
+    <div class="iframe-block__wrapper">
+      <a class="iframe-block__play" href="{{ field_cr_iframe_embedded_link }}" target="_blank">
+        <div class="iframe-block__image">
+          {{ field_cr_iframe_embedded_image }}
+        </div>
+      </a>
+
+      <iframe width="100%" height="100%" class="iframe-block__game" data-src="{{ field_cr_iframe_embedded_link }}" src="about:blank">
+      </iframe>
+      {% if content.body['#object'].body %}
+      <div class="iframe-block__body">
+        {{ body }}
+      </div>
+      {% endif %}
+    </div>
+
+  {% endblock %}
+</div>

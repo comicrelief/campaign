@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\metatag\Plugin\metatag\Tag\AbstractTag.
- */
 
 namespace Drupal\metatag\Plugin\metatag\Tag;
 
@@ -22,5 +18,21 @@ namespace Drupal\metatag\Plugin\metatag\Tag;
  * )
  */
 class AbstractTag extends MetaNameBase {
-  // Nothing here yet. Just a placeholder class for a plugin.
+
+  /**
+   * Generate a form element for this meta tag.
+   */
+  public function form(array $element = []) {
+    $form = [
+      '#type' => 'textarea',
+      '#title' => $this->label(),
+      '#default_value' => $this->value(),
+      '#row' => 2,
+      '#required' => isset($element['#required']) ? $element['#required'] : FALSE,
+      '#description' => $this->description(),
+      '#element_validate' => [[get_class($this), 'validateTag']],
+    ];
+    return $form;
+  }
+
 }

@@ -1,15 +1,11 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\metatag\Form\MetatagDefaultsForm.
- */
-
 namespace Drupal\metatag\Form;
 
 use Drupal\Core\Entity\EntityForm;
+use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\metatag\Entity\MetatagTag;
 
 /**
  * Class MetatagDefaultsForm.
@@ -35,13 +31,14 @@ class MetatagDefaultsForm extends EntityForm {
     $form['#suffix'] = '</div>';
 
     $default_type = NULL;
-    if ($form_state->has('default_type')) {
-      $default_type = $form_state->get('default_type');
-    } else {
+    if (!empty($metatag_defaults)) {
+      $default_type = $metatag_defaults->getOriginalId();
+    }
+    else {
       $form_state->set('default_type', $default_type);
     }
 
-    $token_types = empty($default_type) ? NULL : [explode('__', $default_type)[0]];
+    $token_types = empty($default_type) ? [] : [explode('__', $default_type)[0]];
 
     // Add the token browser at the top.
     $form += \Drupal::service('metatag.token')->tokenBrowser($token_types);
@@ -49,7 +46,7 @@ class MetatagDefaultsForm extends EntityForm {
     // If this is a new Metatag defaults, then list available bundles.
     if ($metatag_defaults->isNew()) {
       $options = $this->getAvailableBundles();
-      $form['id'] = array(
+      $form['id'] = [
         '#type' => 'select',
         '#title' => t('Type'),
         '#description' => t('Select the type of default meta tags you would like to add.'),
@@ -57,7 +54,7 @@ class MetatagDefaultsForm extends EntityForm {
         '#required' => TRUE,
         '#default_value' => $default_type,
         '#ajax' => $ajax + ['trigger_as' => ['name' => 'select_id_submit']]
-      );
+      ];
       $form['select_id_submit'] = [
         '#type' => 'submit',
         '#value' => $this->t('Submit'),
@@ -67,7 +64,7 @@ class MetatagDefaultsForm extends EntityForm {
           'class' => ['js-hide']
         ]
       ];
-      $values = array();
+      $values = [];
     }
     else {
       $values = $metatag_defaults->get('tags');
@@ -117,11 +114,12 @@ class MetatagDefaultsForm extends EntityForm {
       $metatag_defaults_id = $form_state->getValue('id');
       list($entity_type, $entity_bundle) = explode('__', $metatag_defaults_id);
       // Get the entity label.
-      $entity_manager = \Drupal::service('entity.manager');
+      $entity_manager = \Drupal::service('entity_type.manager');
       $entity_info = $entity_manager->getDefinitions();
       $entity_label = (string) $entity_info[$entity_type]->get('label');
       // Get the bundle label.
-      $bundle_info = $entity_manager->getBundleInfo($entity_type);
+      $bundle_manager = \Drupal::service('entity_type.bundle.info');
+      $bundle_info = $bundle_manager->getBundleInfo($entity_type);
       $bundle_label = $bundle_info[$entity_bundle]['label'];
       // Set the label to the config entity.
       $this->entity->set('label', $entity_label . ': ' . $bundle_label);
@@ -130,7 +128,7 @@ class MetatagDefaultsForm extends EntityForm {
     // Set tags within the Metatag entity.
     $tag_manager = \Drupal::service('plugin.manager.metatag.tag');
     $tags = $tag_manager->getDefinitions();
-    $tag_values = array();
+    $tag_values = [];
     foreach ($tags as $tag_id => $tag_definition) {
       if ($form_state->hasValue($tag_id)) {
         // Some plugins need to process form input before storing it.
@@ -157,7 +155,7 @@ class MetatagDefaultsForm extends EntityForm {
         ]));
     }
 
-    $form_state->setRedirectUrl($metatag_defaults->urlInfo('collection'));
+    $form_state->setRedirectUrl($metatag_defaults->toUrl('collection'));
   }
 
   /**
@@ -167,18 +165,22 @@ class MetatagDefaultsForm extends EntityForm {
    *   A list of available bundles as $id => $label.
    */
   protected function getAvailableBundles() {
-    $options = array();
+    $options = [];
     // @TODO discover supported entities.
-    $entity_types = array(
+    $entity_types = [
       'node' => 'Node',
       'taxonomy_term' => 'Taxonomy term',
-    );
-    $entity_manager = \Drupal::service('entity.manager');
+    ];
+    /** @var EntityTypeManagerInterface $entity_manager */
+    $entity_manager = \Drupal::service('entity_type.manager');
+    /** @var EntityTypeBundleInfoInterface $bundle_info */
+    $bundle_info = \Drupal::service('entity_type.bundle.info');
     foreach ($entity_types as $entity_type => $entity_label) {
-      $bundles = $entity_manager->getBundleInfo($entity_type);
+      $bundles = $bundle_info->getBundleInfo($entity_type);
       foreach ($bundles as $bundle_id => $bundle_metadata) {
         $metatag_defaults_id = $entity_type . '__' . $bundle_id;
-        if (empty(entity_load('metatag_defaults', $metatag_defaults_id))) {
+        $metatags_defaults_manager = $entity_manager->getStorage('metatag_defaults');
+        if (empty($metatags_defaults_manager->load($metatag_defaults_id))) {
           $options[$entity_label][$metatag_defaults_id] = $bundle_metadata['label'];
         }
       }

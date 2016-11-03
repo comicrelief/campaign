@@ -1,0 +1,29 @@
+name: CR Story
+type: module
+description: Contains config for story paragraph type.
+core: 8.x
+package: Comic Relief
+dependencies:
+  - paragraphs
+  - entity_reference_revisions
+config_devel:
+# Paragraph config
+  - paragraphs.paragraphs_type.cr_story
+  - core.entity_form_display.paragraph.cr_story.default
+  - core.entity_view_display.paragraph.cr_story.default
+  - field.storage.paragraph.field_cr_story_beneficiary_copy
+  - field.storage.paragraph.field_cr_story_beneficiary_image
+  - field.storage.paragraph.field_cr_story_fundraiser_bg_col
+  - field.storage.paragraph.field_cr_story_fundraiser_copy
+  - field.storage.paragraph.field_cr_story_fundraiser_image
+  - field.storage.paragraph.field_cr_story_fundraiser_total
+  - field.storage.paragraph.field_cr_story_row_bg_col
+  - field.storage.paragraph.field_cr_story_title
+  - field.field.paragraph.cr_story.field_cr_story_beneficiary_copy
+  - field.field.paragraph.cr_story.field_cr_story_beneficiary_image
+  - field.field.paragraph.cr_story.field_cr_story_fundraiser_bg_col
+  - field.field.paragraph.cr_story.field_cr_story_fundraiser_copy
+  - field.field.paragraph.cr_story.field_cr_story_fundraiser_image
+  - field.field.paragraph.cr_story.field_cr_story_fundraiser_total
+  - field.field.paragraph.cr_story.field_cr_story_row_bg_col
+  - field.field.paragraph.cr_story.field_cr_story_title

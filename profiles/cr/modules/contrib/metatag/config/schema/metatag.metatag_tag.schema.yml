@@ -4,18 +4,12 @@ metatag.metatag_tag.abstract:
 metatag.metatag_tag.canonical_url:
   type: label
   label: 'Canonical URL'
-metatag.metatag_tag.content-language:
+metatag.metatag_tag.content_language:
   type: label
   label: 'Content Language'
 metatag.metatag_tag.description:
   type: label
   label: 'Description'
-metatag.metatag_tag.fb_admins:
-  type: label
-  label: 'Facebook Admins'
-metatag.metatag_tag.fb_app_id:
-  type: label
-  label: 'Facebook App ID'
 metatag.metatag_tag.generator:
   type: label
   label: 'Generator'
@@ -49,3 +43,15 @@ metatag.metatag_tag.standout:
 metatag.metatag_tag.title:
   type: label
   label: 'Page title'
+metatag.metatag_tag.icbm:
+  type: label
+  label: 'ICBM'
+metatag.metatag_tag.geo_region:
+  type: label
+  label: 'Geographical region'
+metatag.metatag_tag.geo_placename:
+  type: label
+  label: 'Geographical place name'
+metatag.metatag_tag.geo_position:
+  type: label
+  label: 'Geographical position'

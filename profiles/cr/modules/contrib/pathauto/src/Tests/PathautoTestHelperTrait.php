@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\pathauto\Tests\PathautoTestHelperTrait.
- */
-
 namespace Drupal\pathauto\Tests;
 
 use Drupal\Component\Utility\Unicode;
@@ -14,6 +9,8 @@ use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\pathauto\Entity\PathautoPattern;
 use Drupal\pathauto\PathautoPatternInterface;
 use Drupal\taxonomy\VocabularyInterface;
+use Drupal\taxonomy\Entity\Vocabulary;
+use Drupal\taxonomy\Entity\Term;
 
 /**
  * Helper test class with some added functions for testing.
@@ -88,7 +85,7 @@ trait PathautoTestHelperTrait {
     if (!$langcode) {
       $langcode = $entity->language()->getId();
     }
-    return $this->saveAlias('/' . $entity->urlInfo()->getInternalPath(), $alias, $langcode);
+    return $this->saveAlias('/' . $entity->toUrl()->getInternalPath(), $alias, $langcode);
   }
 
   public function assertEntityAlias(EntityInterface $entity, $expected_alias, $langcode = NULL) {
@@ -96,11 +93,11 @@ trait PathautoTestHelperTrait {
     if (!$langcode) {
       $langcode = $entity->language()->getId();
     }
-    $this->assertAlias('/' . $entity->urlInfo()->getInternalPath(), $expected_alias, $langcode);
+    $this->assertAlias('/' . $entity->toUrl()->getInternalPath(), $expected_alias, $langcode);
   }
 
   public function assertEntityAliasExists(EntityInterface $entity) {
-    return $this->assertAliasExists(array('source' => '/' . $entity->urlInfo()->getInternalPath()));
+    return $this->assertAliasExists(array('source' => '/' . $entity->toUrl()->getInternalPath()));
   }
 
   public function assertNoEntityAlias(EntityInterface $entity, $langcode = NULL) {
@@ -108,11 +105,11 @@ trait PathautoTestHelperTrait {
     if (!$langcode) {
       $langcode = $entity->language()->getId();
     }
-    $this->assertEntityAlias($entity, '/' . $entity->urlInfo()->getInternalPath(), $langcode);
+    $this->assertEntityAlias($entity, '/' . $entity->toUrl()->getInternalPath(), $langcode);
   }
 
   public function assertNoEntityAliasExists(EntityInterface $entity, $alias = NULL) {
-    $path = array('source' => '/' . $entity->urlInfo()->getInternalPath());
+    $path = array('source' => '/' . $entity->toUrl()->getInternalPath());
     if (!empty($alias)) {
       $path['alias'] = $alias;
     }
@@ -151,7 +148,7 @@ trait PathautoTestHelperTrait {
       'name' => $name,
       'vid' => $name,
     );
-    $vocabulary = entity_create('taxonomy_vocabulary', $values);
+    $vocabulary = Vocabulary::create($values);
     $vocabulary->save();
 
     return $vocabulary;
@@ -163,7 +160,7 @@ trait PathautoTestHelperTrait {
       'vid' => $vocabulary->id(),
     );
 
-    $term = entity_create('taxonomy_term', $values);
+    $term = Term::create($values);
     $term->save();
     return $term;
   }
@@ -184,7 +181,8 @@ trait PathautoTestHelperTrait {
     if ($reset) {
       // @todo - implement cache reset.
     }
-    $terms = \Drupal::entityManager()->getStorage('taxonomy_term')->loadByProperties(array('name' => $name));
+    $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadByProperties(array('name' => $name));
     return !empty($terms) ? reset($terms) : FALSE;
   }
+
 }

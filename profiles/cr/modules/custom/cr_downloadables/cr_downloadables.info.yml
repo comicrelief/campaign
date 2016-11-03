@@ -13,8 +13,10 @@ config_devel:
   - media_entity.bundle.cr_file
   - field.storage.media.field_cr_file
   - field.storage.media.field_cr_field_display_title
+  - field.storage.media.field_cr_downloadables_body
   - field.field.media.cr_file.field_cr_file
   - field.field.media.cr_file.field_cr_field_display_title
+  - field.field.media.cr_file.field_cr_downloadables_body
   - core.entity_form_display.media.cr_file.default
   - core.entity_view_display.media.cr_file.default
   - media_entity.bundle.cr_external_file
@@ -23,11 +25,16 @@ config_devel:
   - field.storage.media.field_cr_file_category
   - field.field.media.cr_external_file.field_cr_ef_resource_category
   - field.field.media.cr_external_file.field_cr_external_file
+  - field.field.media.cr_external_file.field_cr_downloadables_body
   - core.entity_form_display.media.cr_external_file.default
   - core.entity_view_display.media.cr_external_file.default
   - field.field.media.cr_file.field_cr_file_category
   - embed.button.downloadable
+  - core.entity_view_mode.file.full
   - core.entity_view_mode.file.search_index
+  - core.entity_view_mode.media.full
   - core.entity_view_mode.media.search_index
+  - core.entity_view_display.media.cr_file.full
   - core.entity_view_display.media.cr_file.search_index
+  - core.entity_view_display.media.cr_external_file.full
   - core.entity_view_display.media.cr_external_file.search_index

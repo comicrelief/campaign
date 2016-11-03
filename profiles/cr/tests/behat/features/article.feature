@@ -11,10 +11,10 @@ Feature: Article
   @api @default-content
   Scenario: Article pagination on /whats-going
     Given I am on "whats-going-on"
-    And I click "Next"
+    And I click "››"
+    Then I should see the link "Louise's story"
+    And I click "‹‹"
     Then I should see the link "Greg James begins his Gregathlon for Sport Relief"
-    And I click "Next"
-    Then I should see the link "You’re helping us win the fight against malaria"
 
   @api @default-content
   Scenario: News page /yplan-partners-sport-relief
@@ -74,7 +74,7 @@ Feature: Article
     And I am on "whats-going-on/test-scheduled-article"
     Then I should see "Test Scheduled article"
 
-  @api
+  @api @not-on-travis
   Scenario: Create news articles that are linked together via a common tag
     Given a "category" term with the name "Fundraising"
     When I am viewing a "article" content:
@@ -101,5 +101,3 @@ Feature: Article
     And the cache has been cleared
     And I click "Comic Relief raises £1bn over 30-year existence"
     Then I should see "Celebrities come together for a stellar Night of TV for Sport Relief"
-
-
