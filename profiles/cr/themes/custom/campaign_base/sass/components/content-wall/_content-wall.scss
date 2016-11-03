@@ -157,9 +157,6 @@
 }
 @include breakpoint(max-width 739px) {
   // remove height from desktop to mobile resize
-  .cw-article {
-    padding: 0 calc(4 * #{gutter()}) calc(4 * #{gutter()});
-  }
   .cw-article__image {
     height: auto!important;
   }

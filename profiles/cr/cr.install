@@ -134,10 +134,11 @@ function cr_update_8013() {
 }
 
 /**
- * Install cr_iframe
- */
+* Install cr_video cr_media
+*/
 function cr_update_8014() {
- \Drupal::service('module_installer')->install(['cr_iframe']);
+  \Drupal::service('module_installer')->install(['cr_video']);
+  \Drupal::service('module_installer')->install(['cr_media']);
 }
 
 /**
@@ -145,4 +146,11 @@ function cr_update_8014() {
  */
 function cr_update_8015() {
   \Drupal::service('module_installer')->install(['cr_story']);
+}
+
+/**
+ * Install cr_iframe
+ */
+function cr_update_8016() {
+ \Drupal::service('module_installer')->install(['cr_iframe']);
 }

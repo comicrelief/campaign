@@ -78,11 +78,13 @@ dependencies:
   - cr_page
   - cr_article
   - cr_content_reference
+  - cr_downloadables
+  - cr_video
+  - cr_media
   - cr_content_wall
   - cr_rich_text_paragraph
   - cr_iframe
   - cr_block_paragraph
-  - cr_downloadables
   - cr_single_msg
   - cr_single_message_row_paragraph
   - cr_teaser
@@ -195,6 +197,7 @@ config_devel:
   - image.style.story_479_x_352_crop_md_2x_
   - image.style.story_739_x_561_crop_sm_2x_
 
+
   # Responsive image style mappings
   - responsive_image.styles.hero_image_full_node
   - responsive_image.styles.cw_4_3_image
@@ -204,6 +207,7 @@ config_devel:
   - responsive_image.styles.single_msg_
   - responsive_image.styles.cr_listing_teaser
   - responsive_image.styles.story_row
+
 
   # Metatags
   - metatag.metatag_defaults.403

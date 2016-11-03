@@ -1,1 +1,15 @@
-{  }
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: cr_lg_1170_x_450_2x
+label: 'CR lg 1170 x 450 2x'
+effects:
+  546f5f4d-2cf9-4abe-84c6-3dde695800de:
+    uuid: 546f5f4d-2cf9-4abe-84c6-3dde695800de
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: '2340'
+      height: '900'

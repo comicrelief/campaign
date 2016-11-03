@@ -1,1 +1,71 @@
+<<<<<<< HEAD
 {  }
+=======
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.media_reference
+    - core.entity_view_mode.block_content.cw_mp
+    - field.field.block_content.media_reference.field_media_reference
+    - field.field.block_content.media_reference.field_media_reference_bg
+    - field.field.block_content.media_reference.field_media_reference_body
+    - responsive_image.styles.cw_bg_image_blocks
+  module:
+    - ds
+    - responsive_image
+    - text
+third_party_settings:
+  ds:
+    layout:
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
+      library: ''
+      disable_css: false
+      settings:
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - field_media_reference
+        - field_media_reference_body
+        - field_media_reference_bg
+id: block_content.media_reference.cw_mp
+targetEntityType: block_content
+bundle: media_reference
+mode: cw_mp
+content:
+  field_media_reference:
+    weight: 0
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+  field_media_reference_bg:
+    weight: 2
+    label: hidden
+    settings:
+      responsive_image_style: cw_bg_image_blocks
+      image_link: ''
+    third_party_settings: {  }
+    type: responsive_image
+  field_media_reference_body:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  social_links:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }
+>>>>>>> 95c6c5c688f9ed9a9b554962a0a6312cad88f95e
