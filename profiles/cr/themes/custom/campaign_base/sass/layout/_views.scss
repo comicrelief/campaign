@@ -37,41 +37,42 @@
   }
 }
 .cw-region {
-  article.view-mode-cw_s {
-    width: 100%;
+  article {
+    padding: 0 calc(4 * #{gutter()}) calc(4 * #{gutter()});
     @include breakpoint($screen-md, $no-query: true) {
-      @include span(4);
-      margin: gutter();
+      padding: 0;
     }
-  }
-}
-.cw-region {
-  article.view-mode-cw_m {
-    width: 100%;
-    @include breakpoint($screen-md, $no-query: true) {
-      @include span(6);
-      margin: gutter();
-    }
-  }
-}
-
-.cw-region {
-  article.view-mode-cw_l {
-    width: 100%;
-    @include breakpoint($screen-md) {
+    &.view-mode-cw_s {
       width: 100%;
-      margin: 0;
-    }
-    .cw-article__image {
       @include breakpoint($screen-md, $no-query: true) {
-        @include span(8 no-gutter wide);
-        margin-left: gutter();
+        @include span(4);
+        margin: gutter();
       }
     }
-    .cw-article__body {
+    &.view-mode-cw_m {
+      width: 100%;
       @include breakpoint($screen-md, $no-query: true) {
-        @include span(4 no-gutter last);
-        margin-right: gutter();
+        @include span(6);
+        margin: gutter();
+      }
+    }
+    &.view-mode-cw_l {
+      width: 100%;
+      @include breakpoint($screen-md) {
+        width: 100%;
+        margin: 0;
+      }
+      .cw-article__image {
+        @include breakpoint($screen-md, $no-query: true) {
+          @include span(8 no-gutter wide);
+          margin-left: gutter();
+        }
+      }
+      .cw-article__body {
+        @include breakpoint($screen-md, $no-query: true) {
+          @include span(4 no-gutter last);
+          margin-right: gutter();
+        }
       }
     }
   }

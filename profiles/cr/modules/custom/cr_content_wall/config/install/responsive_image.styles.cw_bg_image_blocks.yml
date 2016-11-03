@@ -2,46 +2,42 @@ langcode: en
 status: true
 dependencies:
   config:
-    - image.style.story_293_x_322_crop_lg
-    - image.style.story_293_x_322_crop_lg_2x_
-    - image.style.story_479_x_352_crop_md
-    - image.style.story_479_x_352_crop_md_2x_
-    - image.style.story_739_x_561_crop_sm
-    - image.style.story_739_x_561_crop_sm_2x_
-  theme:
-    - campaign_base
-id: story_row
-label: 'Story row'
+    - image.style.cr_lg_1170_x_450
+    - image.style.cr_lg_1170_x_450_2x
+    - image.style.cr_md_740_x_450
+    - image.style.cr_md_740_x_450_2x
+id: cw_bg_image_blocks
+label: 'CW Bg image blocks'
 image_style_mappings:
   -
     breakpoint_id: campaign_base.large
     multiplier: 1x
     image_mapping_type: image_style
-    image_mapping: story_293_x_322_crop_lg
+    image_mapping: cr_lg_1170_x_450
   -
     breakpoint_id: campaign_base.large
     multiplier: 2x
     image_mapping_type: image_style
-    image_mapping: story_293_x_322_crop_lg_2x_
+    image_mapping: cr_lg_1170_x_450_2x
   -
     breakpoint_id: campaign_base.medium
     multiplier: 1x
     image_mapping_type: image_style
-    image_mapping: story_479_x_352_crop_md
+    image_mapping: cr_md_740_x_450
   -
     breakpoint_id: campaign_base.medium
     multiplier: 2x
     image_mapping_type: image_style
-    image_mapping: story_479_x_352_crop_md_2x_
+    image_mapping: cr_md_740_x_450_2x
   -
     breakpoint_id: campaign_base.small
     multiplier: 1x
     image_mapping_type: image_style
-    image_mapping: story_739_x_561_crop_sm
+    image_mapping: cr_md_740_x_450
   -
     breakpoint_id: campaign_base.small
     multiplier: 2x
     image_mapping_type: image_style
-    image_mapping: story_739_x_561_crop_sm_2x_
+    image_mapping: cr_md_740_x_450_2x
 breakpoint_group: campaign_base
-fallback_image_style: '_original image_'
+fallback_image_style: cr_lg_1170_x_450
