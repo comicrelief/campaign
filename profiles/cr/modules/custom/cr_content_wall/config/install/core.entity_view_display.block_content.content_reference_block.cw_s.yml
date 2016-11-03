@@ -3,11 +3,12 @@ status: true
 dependencies:
   config:
     - block_content.type.content_reference_block
+    - core.entity_view_mode.block_content.cw_s
     - field.field.block_content.content_reference_block.field_content_reference
-id: block_content.content_reference_block.default
+id: block_content.content_reference_block.cw_s
 targetEntityType: block_content
 bundle: content_reference_block
-mode: default
+mode: cw_s
 content:
   field_content_reference:
     weight: 0
