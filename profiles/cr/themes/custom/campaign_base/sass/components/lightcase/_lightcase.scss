@@ -359,6 +359,7 @@
   text-overflow: ellipsis;
   text-shadow: none;
   color: $colour-white;
+  margin-top: 10px;
 }
 @media screen and (max-width: 640px) {
   .lightcase-fullScreenMode #lightcase-info {
