@@ -3,17 +3,16 @@
 {% set youtube_link = field_teaser_you_tube_link['#items'][0].value ? 'lightcase' : '' %}
 
 <article{{ attributes.addClass('teaser-block', 'clearfix') }}>
-  <a href="{{ field_teaser_link_address }}" target="{{ link_target }}"></a>
   {{ title_suffix.contextual_links }} 
+  <a class="teaser-block__link" href="{{ field_teaser_link_address }}" target="{{ link_target }}">
     <div class="teaser-block__image">
-      <a rel="{{ youtube_link }}" class="{{ youtube_link }}" href="{{ field_teaser_link_address }}" target="{{ link_target }}">
-        {{ field_teaser_image }}
-      </a>
+      {{ field_teaser_image }}
     </div>
     <div class="teaser-block__body bg--white">
       {{ body }}
-      <div class="teaser-block__link">
-        <span>{{ field_teaser_link_title }}</span>
+      <div class="teaser-block__cta">
+        <span class="btn btn--red">{{ field_teaser_link_title }}</span>
       </div>
     </div> 
+  </a>
 </article>
