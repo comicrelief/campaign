@@ -1,0 +1,48 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.quote_block
+    - field.field.block_content.quote_block.field_author_image
+    - field.field.block_content.quote_block.field_background_colour
+    - field.field.block_content.quote_block.field_background_image
+    - field.field.block_content.quote_block.field_body
+  module:
+    - image
+    - options
+    - text
+id: block_content.quote_block.default
+targetEntityType: block_content
+bundle: quote_block
+mode: default
+content:
+  field_author_image:
+    weight: 1
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_background_colour:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+  field_background_image:
+    weight: 2
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_body:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+hidden:
+  social_links: true
