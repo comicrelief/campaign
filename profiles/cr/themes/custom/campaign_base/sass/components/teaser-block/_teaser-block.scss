@@ -4,7 +4,7 @@
 //
 // Markup: teaser-block.hbs
 //
-// .teaser-block__background-image - Background image
+// .teaser-block--bg-image - Background image
 //
 // Style guide: Teaser Block
 
@@ -25,21 +25,21 @@
     position: relative;
     overflow: hidden;
     margin-bottom: 0;
-    .view-mode-cw_mp &,
-    .view-mode-cw_l & {
+    .block-content--view-mode-cw-mp &,
+    .block-content--view-mode-cw-l & {
       float: left;
     }
-    .view-mode-cw_l & {
+    .block-content--view-mode-cw-l & {
       width: 60%;
       height: 450px;
     }
   }
   @include breakpoint($screen-lg, $no-query: true) {
-    .view-mode-cw_mp & {
+    .block-content--view-mode-cw-mp & {
       width: 60%;
       height: 450px;
     }
-    .view-mode-cw_l & {
+    .block-content--view-mode-cw-l & {
       width: 70%;
       height: 450px;
     }
@@ -77,34 +77,34 @@
   @include align-items(center);
   @include display-flex;
   @include breakpoint($screen-md, $no-query: true) {
-    .view-mode-cw_mp &,
-    .view-mode-cw_l & {
+    .block-content--view-mode-cw-mp &,
+    .block-content--view-mode-cw-l & {
       float: left;
     }
-    .view-mode-cw_l & {
+    .block-content--view-mode-cw-l & {
       width: 40%;
       height: 450px;
     }
   }
   @include breakpoint($screen-lg, $no-query: true) {
-    .view-mode-cw_mp & {
+    .block-content--view-mode-cw-mp & {
       width: 40%;
       height: 450px;
     }
-    .view-mode-cw_l & {
+    .block-content--view-mode-cw-l & {
       width: 30%;
       height: 450px;
     }
   }
   width: 100%;
   height: 50%;
-  padding: 10px;
+  padding: 30px;
   text-align: center;
   .no-flexbox & {
     padding-top: 60px;
   }
 }
-.teaser-block__background-image {
+.teaser-block--bg-image {
   .teaser-block__body {
     position: absolute;
     top: 0;
