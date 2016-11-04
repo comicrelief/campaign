@@ -12,10 +12,11 @@ dependencies:
     - field.field.block_content.teaser.field_teaser_link_title
     - field.field.block_content.teaser.field_teaser_title
     - field.field.block_content.teaser.field_teaser_you_tube_link
+    - responsive_image.styles.cw_landscape_image
   module:
     - ds
-    - image
     - options
+    - responsive_image
     - text
 third_party_settings:
   ds:
@@ -67,10 +68,10 @@ content:
     weight: 1
     label: hidden
     settings:
+      responsive_image_style: cw_landscape_image
       image_link: ''
-      image_style: ''
     third_party_settings: {  }
-    type: image
+    type: responsive_image
   field_teaser_link_address:
     type: string
     weight: 4

@@ -12,10 +12,38 @@ dependencies:
     - field.field.block_content.teaser.field_teaser_link_title
     - field.field.block_content.teaser.field_teaser_title
     - field.field.block_content.teaser.field_teaser_you_tube_link
+    - responsive_image.styles.cw_landscape_image
   module:
-    - image
+    - ds
     - options
+    - responsive_image
     - text
+third_party_settings:
+  ds:
+    layout:
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
+      library: ''
+      disable_css: false
+      settings:
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - body
+        - field_teaser_title
+        - field_teaser_image
+        - field_teaser_link_title
+        - field_teaser_link_address
+        - field_teaser_link_colour
+        - field_teaser_you_tube_link
+        - field_cw_link_target
 id: block_content.teaser.cw_mp
 targetEntityType: block_content
 bundle: teaser
@@ -40,10 +68,10 @@ content:
     weight: 2
     label: hidden
     settings:
-      image_style: ''
+      responsive_image_style: cw_landscape_image
       image_link: ''
     third_party_settings: {  }
-    type: image
+    type: responsive_image
   field_teaser_link_address:
     type: string
     weight: 4
@@ -80,5 +108,8 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-hidden:
-  social_links: true
+  social_links:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }
