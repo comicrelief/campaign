@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.cr_block_reference.field_br_block_reference
+    - field.field.paragraph.cr_block_reference.field_content_block_reference
     - paragraphs.paragraphs_type.cr_block_reference
 id: paragraph.cr_block_reference.default
 targetEntityType: paragraph
@@ -17,6 +18,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+  field_content_block_reference:
+    type: entity_reference_autocomplete
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
 hidden:
   created: true
   status: true
