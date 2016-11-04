@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Tests\HiddenRegionTest.
- */
-
 namespace Drupal\ds\Tests;
 
 /**
@@ -14,10 +9,13 @@ namespace Drupal\ds\Tests;
  */
 class HiddenRegionTest extends FastTestBase {
 
-  function testHiddenRegion() {
-    // Enable the hidden region option
+  /**
+   * Tests hidden region functionality.
+   */
+  public function testHiddenRegion() {
+    // Enable the hidden region option.
     $edit = array(
-      'fs3[hidden_region]' => TRUE
+      'fs3[hidden_region]' => TRUE,
     );
     $this->drupalPostForm('admin/structure/ds/settings', $edit, t('Save configuration'));
 
@@ -27,26 +25,27 @@ class HiddenRegionTest extends FastTestBase {
     $settings = array('type' => 'article');
     $node = $this->drupalCreateNode($settings);
 
-    // Configure fields
+    // Configure fields.
     $fields = array(
       'fields[body][region]' => 'right',
       'fields[test_field][region]' => 'ds_hidden',
     );
-    $this->dsConfigureUI($fields);
+    $this->dsConfigureUi($fields);
 
-    // Test field not printed
+    // Test field not printed.
     $this->drupalGet('node/' . $node->id());
     $this->assertNoText('Test field plugin on node ' . $node->id(), 'Test code field not found');
 
-    // Configure fields
+    // Configure fields.
     $fields = array(
       'fields[body][region]' => 'right',
       'fields[test_field][region]' => 'right',
     );
-    $this->dsConfigureUI($fields);
+    $this->dsConfigureUi($fields);
 
-    // Test field printed
+    // Test field printed.
     $this->drupalGet('node/' . $node->id());
     $this->assertText('Test field plugin on node ' . $node->id(), 'Test code field not found');
   }
+
 }

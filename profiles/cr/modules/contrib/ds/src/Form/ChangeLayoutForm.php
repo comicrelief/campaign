@@ -1,13 +1,8 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Form\ChangeLayoutForm.
- */
-
 namespace Drupal\ds\Form;
 
-use Drupal\Core\Entity\Display\EntityDisplayInterface;
+
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\ds\Ds;
@@ -52,7 +47,14 @@ class ChangeLayoutForm extends FormBase {
       $form['#new_layout_key'] = $new_layout_key;
 
       $form['info'] = array(
-        '#markup' => t('You are changing from @old to @new layout for @bundle in @view_mode view mode.', array('@old' => $old_layout_info['label'], '@new' => $new_layout['label'], '@bundle' => $bundle, '@view_mode' => $display_mode)),
+        '#markup' => $this->t('You are changing from @old to @new layout for @bundle in @view_mode view mode.',
+          array(
+            '@old' => $old_layout_info['label'],
+            '@new' => $new_layout['label'],
+            '@bundle' => $bundle,
+            '@view_mode' => $display_mode,
+          )
+        ),
         '#prefix' => "<div class='change-ds-layout-info'>",
         '#suffix' => "</div>",
       );
@@ -89,8 +91,8 @@ class ChangeLayoutForm extends FormBase {
       $new_layout['regions'] = $region_info['region_options'];
       $form['#new_layout']['regions'] = $new_layout['regions'];
 
-      // Display the region options
-      $selectable_regions = array('' => t('- None -')) + $new_layout['regions'];
+      // Display the region options.
+      $selectable_regions = array('' => $this->t('- None -')) + $new_layout['regions'];
       $form['regions_pre']['#markup'] = '<div class="ds-layout-regions">';
       foreach ($regions as $region => $region_title) {
         $form['region_' . $region] = array(
@@ -107,7 +109,7 @@ class ChangeLayoutForm extends FormBase {
       }
       $form['regions_post']['#markup'] = '</div>';
 
-      // Show previews from old and new layouts
+      // Show previews from old and new layouts.
       $form['preview'] = array(
         '#type' => 'container',
         '#prefix' => '<div class="ds-layout-preview">',
@@ -130,17 +132,17 @@ class ChangeLayoutForm extends FormBase {
       );
       $form['#attached']['library'][] = 'ds/admin';
 
-      // Submit button
+      // Submit button.
       $form['actions'] = array('#type' => 'actions');
       $form['actions']['submit'] = array(
         '#type' => 'submit',
-        '#value' => t('Save'),
+        '#value' => $this->t('Save'),
         '#prefix' => '<div class="ds-layout-change-save">',
         '#suffix' => '</div>',
       );
     }
     else {
-      $form['nothing'] = array('#markup' => t('No valid configuration found.'));
+      $form['nothing'] = array('#markup' => $this->t('No valid configuration found.'));
     }
 
     return $form;
@@ -159,7 +161,7 @@ class ChangeLayoutForm extends FormBase {
     $bundle = $form['#entity_bundle'];
     $display_mode = $form['#mode'];
 
-    // Create new third party settings
+    // Create new third party settings.
     $third_party_settings = $old_layout;
     $third_party_settings['layout']['id'] = $new_layout_key;
     if (!empty($new_layout['library'])) {
@@ -168,7 +170,7 @@ class ChangeLayoutForm extends FormBase {
     $third_party_settings['layout']['path'] = $new_layout['path'];
     unset($third_party_settings['regions']);
 
-    // map old regions to new ones
+    // Map old regions to new ones.
     foreach ($old_layout_info['layout']['regions'] as $region => $region_title) {
       $new_region = $form_state->getValue('ds_' . $region);
       if ($new_region != '' && isset($old_layout['regions'][$region])) {
@@ -182,7 +184,7 @@ class ChangeLayoutForm extends FormBase {
     }
 
     // Save configuration.
-    /** @var $entity_display EntityDisplayInterface*/
+    /* @var $entity_display EntityDisplayInterface*/
     $entity_display = entity_load('entity_view_display', $entity_type . '.' . $bundle . '.' . $display_mode);
     foreach (array_keys($third_party_settings) as $key) {
       $entity_display->setThirdPartySetting('ds', $key, $third_party_settings[$key]);

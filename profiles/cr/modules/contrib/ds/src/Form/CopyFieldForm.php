@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Form\CopyFieldForm.
- */
-
 namespace Drupal\ds\Form;
 
 use Drupal\Core\Form\FormStateInterface;
@@ -12,10 +7,10 @@ use Drupal\Core\Form\FormStateInterface;
 /**
  * Configure block fields.
  */
-class CopyFieldForm extends FieldFormBase{
+class CopyFieldForm extends FieldFormBase {
 
   /**
-   * The type of the dynamic ds field
+   * The type of the dynamic ds field.
    */
   const TYPE = 'copy';
 
@@ -48,7 +43,7 @@ class CopyFieldForm extends FieldFormBase{
     $form['ds_field_identity']['ds_plugin'] = array(
       '#type' => 'select',
       '#options' => $fields,
-      '#title' => t('Fields'),
+      '#title' => $this->t('Fields'),
       '#required' => TRUE,
       '#default_value' => isset($field['properties']['ds_plugin']) ? $field['properties']['ds_plugin'] : '',
     );

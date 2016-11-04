@@ -1,14 +1,8 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Plugin\views\Entity\Render\RenderBase.
- */
-
 namespace Drupal\ds\Plugin\views\Entity\Render;
 
 use Drupal\Component\Utility\Unicode;
-use Drupal\Core\Entity\EntityInterface;
 use Drupal\views\Entity\Render\EntityTranslationRendererBase;
 
 /**
@@ -25,7 +19,7 @@ abstract class RendererBase extends EntityTranslationRendererBase {
   }
 
   /**
-   * Pre renders all the Display Suite rows
+   * Pre renders all the Display Suite rows.
    */
   protected function dsPreRender(array $result, $translation = FALSE) {
     if ($result) {
@@ -40,7 +34,7 @@ abstract class RendererBase extends EntityTranslationRendererBase {
         $group_value_content = '';
         $entity = $row->_entity;
         $entity->view = $this->view;
-        /** @var $entity EntityInterface */
+        /* @var $entity \Drupal\Core\Entity\EntityInterface */
         $entity_id = $entity->id();
         $langcode = $this->getLangcode($row);
 
@@ -72,7 +66,7 @@ abstract class RendererBase extends EntityTranslationRendererBase {
         if ($this->view->rowPlugin->options['advanced_fieldset']['advanced']) {
           $modules = \Drupal::moduleHandler()->getImplementations('ds_views_row_render_entity');
           foreach ($modules as $module) {
-            if ($content =  \Drupal::moduleHandler()->invoke($module, 'ds_views_row_render_entity', array($entity, $view_mode))) {
+            if ($content = \Drupal::moduleHandler()->invoke($module, 'ds_views_row_render_entity', array($entity, $view_mode))) {
               if (!$translation) {
                 $this->build[$entity_id] = $content;
               }

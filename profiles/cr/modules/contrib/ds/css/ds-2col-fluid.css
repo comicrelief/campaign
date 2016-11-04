@@ -9,7 +9,7 @@
 }
 
 [dir="rtl"] .ds-2col-fluid > .group-left {
-    float: right;
+  float: right;
 }
 
 .ds-2col-fluid > .group-right {
@@ -18,7 +18,7 @@
 }
 
 [dir="rtl"] .ds-2col-fluid > .group-right {
-    float: left;
+  float: left;
 }
 
 .ds-2col-fluid.group-one-column > .group-left,

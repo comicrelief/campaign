@@ -1,11 +1,7 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Plugin\DsField\Title.
- */
-
 namespace Drupal\ds\Plugin\DsField;
+
 use Drupal\Core\Form\FormStateInterface;
 
 /**
@@ -28,13 +24,13 @@ abstract class Title extends Field {
       '#type' => 'textfield',
       '#title' => 'Wrapper',
       '#default_value' => $config['wrapper'],
-      '#description' => t('Eg: h1, h2, p')
+      '#description' => $this->t('Eg: h1, h2, p'),
     );
     $settings['class'] = array(
       '#type' => 'textfield',
       '#title' => 'Class',
       '#default_value' => $config['class'],
-      '#description' => t('Put a class on the wrapper. Eg: block-title')
+      '#description' => $this->t('Put a class on the wrapper. Eg: block-title'),
     );
 
     return $settings;
@@ -71,7 +67,7 @@ abstract class Title extends Field {
     $configuration = array(
       'link' => 0,
       'wrapper' => 'h2',
-      'class' => ''
+      'class' => '',
     );
 
     return $configuration;

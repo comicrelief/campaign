@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\ds_extras\EventSubscriber\RouteSubscriber.
- */
-
 namespace Drupal\ds_extras\EventSubscriber;
 
 use Drupal\Core\Routing\RouteBuildEvent;
@@ -12,14 +7,14 @@ use Drupal\Core\Routing\RoutingEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
- * Alter the node view route
+ * Alter the node view route.
  */
 class RouteSubscriber implements EventSubscriberInterface {
 
   /**
    * {@inheritdoc}
    */
-  static function getSubscribedEvents() {
+  public static function getSubscribedEvents() {
     $events[RoutingEvents::ALTER][] = array('alterRoutes', 100);
     return $events;
   }
