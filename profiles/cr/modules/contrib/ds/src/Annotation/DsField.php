@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\ds\Annotation\DsField.
- */
-
 namespace Drupal\ds\Annotation;
 
 use Drupal\Component\Annotation\Plugin;
@@ -41,6 +36,7 @@ class DsField extends Plugin {
 
   /**
    * An array of limits for showing this field.
+   *
    * In the format: "bundle|view_mode".
    *
    * @var array

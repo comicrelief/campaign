@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Plugin\DsField\Taxonomy\TaxonomyTermTitle.
- */
-
 namespace Drupal\ds\Plugin\DsField\Taxonomy;
 
 use Drupal\ds\Plugin\DsField\Title;

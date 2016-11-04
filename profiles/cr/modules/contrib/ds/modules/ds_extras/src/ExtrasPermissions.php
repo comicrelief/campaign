@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\field_ui\FieldUiPermissions.
- */
-
 namespace Drupal\ds_extras;
 
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
@@ -16,7 +11,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * Provides dynamic permissions of the ds extras module.
  */
-class extrasPermissions implements ContainerInjectionInterface {
+class ExtrasPermissions implements ContainerInjectionInterface {
 
   use StringTranslationTrait;
 
@@ -30,8 +25,8 @@ class extrasPermissions implements ContainerInjectionInterface {
   /**
    * Constructs a new FieldUiPermissions instance.
    *
-   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_manager
-   *   The entity manager.
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   *   The entity type manager.
    */
   public function __construct(EntityTypeManagerInterface $entity_type_manager) {
     $this->entityTypeManager = $entity_type_manager;
@@ -46,8 +41,6 @@ class extrasPermissions implements ContainerInjectionInterface {
 
   /**
    * Returns an array of ds extras permissions.
-   *
-   * @return array
    */
   public function extrasPermissions() {
     $permissions = [];
@@ -60,7 +53,7 @@ class extrasPermissions implements ContainerInjectionInterface {
         $fields = Ds::getFields($entity_type);
         foreach ($fields as $key => $finfo) {
           $permissions['view ' . $key . ' on ' . $entity_type] = array(
-            'title' => t('View @field on @entity_type', array('@field' => $finfo['title'], '@entity_type' => $info->getLabel())),
+            'title' => $this->t('View @field on @entity_type', array('@field' => $finfo['title'], '@entity_type' => $info->getLabel())),
           );
         }
       }
