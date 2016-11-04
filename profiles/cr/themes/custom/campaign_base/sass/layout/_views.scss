@@ -37,6 +37,7 @@
   }
 }
 .cw-region {
+  article.block-content--view-mode-cw-s,
   article.view-mode-cw_s {
     width: 100%;
     margin-bottom: calc(2 * #{gutter()});
@@ -46,6 +47,7 @@
   }
 }
 .cw-region {
+  article.block-content--view-mode-cw-m,
   article.view-mode-cw_m {
     width: 100%;
     margin-bottom: calc(2 * #{gutter()});
@@ -55,6 +57,7 @@
   }
 }
 .cw-region {
+  article.block-content--view-mode-cw-mp,
   article.view-mode-cw_mp {
     width: 100%;
     margin-bottom: calc(2 * #{gutter()});
@@ -64,6 +67,7 @@
   }
 }
 .cw-region {
+  article.block-content--view-mode-cw-l,
   article.view-mode-cw_l {
     width: 100%;
     margin-bottom: calc(2 * #{gutter()});
