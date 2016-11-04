@@ -1,4 +1,4 @@
-{% set link_colour = field_teaser_link_colour['#items'][0].value %}
+{% set btn_colour = field_teaser_link_colour['#items'][0].value %}
 {% set link_target = field_cw_link_target['#items'][0].value ? '_black' : '_self' %}
 {% set youtube_link = field_teaser_you_tube_link['#items'][0].value ? 'lightcase' : '' %}
 
@@ -11,7 +11,7 @@
     <div class="teaser-block__body bg--white">
       {{ body }}
       <div class="teaser-block__cta">
-        <span class="btn btn--red">{{ field_teaser_link_title }}</span>
+        <span class="btn {{ btn_colour }}">{{ field_teaser_link_title }}</span>
       </div>
     </div> 
   </a>
