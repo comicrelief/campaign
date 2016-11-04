@@ -78,3 +78,4 @@ Assuming the release branch that was deployed to staging in the previous steps h
 Note: The build artifact id will be output to the #craftlogs Slack channel once its built. 
 - Once the deployment is completed and the success message appears in #deployments, login to the site and do general smoke tests
 - Announce to the #deployments Slack channel so the release can be sanity checked by @QA's
+- Make sure to release the version in Jira with the date
