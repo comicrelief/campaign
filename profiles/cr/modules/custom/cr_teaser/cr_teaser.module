@@ -4,3 +4,31 @@
  * @file
  * Contains cr_teaser.module..
  */
+
+use Drupal\Core\Entity\FieldableEntityInterface;
+use Drupal\Core\Field\FieldStorageDefinitionInterface;
+
+/**
+ * Options callback for field_teaser_link_colour.
+ *
+ * @see options_allowed_values()
+ */
+function field_teaser_link_colour(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
+  $values = [
+    'bg--black' => t('Black'),
+		'bg--jasper-grey' => t('Jasper grey'),
+		'bg--dark-blue' => t('Dark blue'),
+		'bg--royal-blue' => t('Royal blue'),
+		'bg--red' => t('Red'),
+		'bg--purple' => t('Purple'),
+		'bg--white' => t('White'),
+		'bg--smoke-grey' => t('Smoke grey'),
+		'bg--light-grey' => t('Light grey'),
+		'bg--gainsboro-grey' => t(''),
+		'bg--green' => t('Green'),
+		'bg--yellow' => t('Yellow'),
+		'bg--pink' => t('Pink'),
+		'bg--blue' => t('Blue'),
+  ];
+  return $values;
+}
