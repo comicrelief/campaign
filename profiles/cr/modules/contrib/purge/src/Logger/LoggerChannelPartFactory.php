@@ -1,14 +1,10 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\purge\Logger\LoggerChannelPartFactory.
- */
-
 namespace Drupal\purge\Logger;
 
+use Psr\Log\LoggerInterface;
 use Drupal\Core\DependencyInjection\ServiceProviderBase;
-use Drupal\Core\Logger\LoggerChannelInterface;
+use Drupal\purge\Logger\LoggerChannelPartFactoryInterface;
 use Drupal\purge\Logger\LoggerChannelPart;
 
 /**
@@ -19,17 +15,17 @@ class LoggerChannelPartFactory extends ServiceProviderBase implements LoggerChan
   /**
    * The single and central logger channel used by purge module(s).
    *
-   * @var \Drupal\Core\Logger\LoggerChannelInterface
+   * @var \Psr\Log\LoggerInterface
    */
   protected $loggerChannelPurge;
 
   /**
    * Construct \Drupal\purge\Logger\LoggerChannelPartFactory.
    *
-   * @param \Drupal\Core\Logger\LoggerChannelInterface $logger_channel_purge
+   * @param \Psr\Log\LoggerInterface $logger_channel_purge
    *   The single and central logger channel used by purge module(s).
    */
-  function __construct(LoggerChannelInterface $logger_channel_purge) {
+  public function __construct(LoggerInterface $logger_channel_purge) {
     $this->loggerChannelPurge = $logger_channel_purge;
   }
 

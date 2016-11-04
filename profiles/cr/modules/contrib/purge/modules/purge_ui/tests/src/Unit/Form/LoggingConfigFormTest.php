@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\purge_ui\Unit\Form\LoggingConfigFormTest.
- */
-
 namespace Drupal\Tests\purge_ui\Unit\Form;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -102,7 +97,6 @@ class LoggingConfigFormTest extends UnitTestCase {
    */
   public function testSetChannels() {
     $form = $this->form->buildForm([], new FormState());
-    $this->purgeLogger->expects($this->exactly(3))->method('getChannels');
     // Assert that empty submits only close the dialog, nothing else.
     $ajax = $this->form->setChannels($form, new FormState());
     $this->assertInstanceOf('Drupal\Core\Ajax\AjaxResponse', $ajax);
@@ -133,7 +127,6 @@ class LoggingConfigFormTest extends UnitTestCase {
    */
   public function testSubmitForm() {
     $form = $this->form->buildForm([], new FormState());
-    $this->purgeLogger->expects($this->exactly(3))->method('getChannels');
     // Verify that the returned $has_resulted_in_changes is FALSE without data.
     $this->assertFalse($this->form->submitForm($form, new FormState()));
     // Verify that non-existent channels don't lead to saving anything.
