@@ -15,20 +15,15 @@ use Drupal\Core\Field\FieldStorageDefinitionInterface;
  */
 function field_teaser_link_colour(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
   $values = [
-    'bg--black' => t('Black'),
-		'bg--jasper-grey' => t('Jasper grey'),
-		'bg--dark-blue' => t('Dark blue'),
-		'bg--royal-blue' => t('Royal blue'),
-		'bg--red' => t('Red'),
-		'bg--purple' => t('Purple'),
-		'bg--white' => t('White'),
-		'bg--smoke-grey' => t('Smoke grey'),
-		'bg--light-grey' => t('Light grey'),
-		'bg--gainsboro-grey' => t(''),
-		'bg--green' => t('Green'),
-		'bg--yellow' => t('Yellow'),
-		'bg--pink' => t('Pink'),
-		'bg--blue' => t('Blue'),
+		'btn--red' => t('Red'),
+		'btn--blue' => t('Blue'),
+		'btn--yellow' => t('Yellow'),
+		'btn--green' => t('Green'),
+		'btn--teal' => t('Teal'),
+		'btn--royal-blue' => t('Royal blue'),
+		'btn--purple' => t('Purple'),
+		'btn--pink' => t('Pink'),
+		'btn--white' => t('White'),
   ];
   return $values;
 }
