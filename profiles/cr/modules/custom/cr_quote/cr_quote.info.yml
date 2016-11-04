@@ -1,0 +1,7 @@
+name: CR Quote block
+type: module
+description: Contains config for the quote block.
+core: 8.x
+package: Comic Relief
+config_devel:
+  - block_content.type.quote_block

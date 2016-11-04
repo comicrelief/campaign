@@ -79,6 +79,7 @@ dependencies:
   - cr_downloadables
   - cr_video
   - cr_media
+  - cr_quote
   - cr_content_wall
   - cr_rich_text_paragraph
   - cr_iframe
