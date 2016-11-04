@@ -5,3 +5,11 @@ core: 8.x
 package: Comic Relief
 config_devel:
   - block_content.type.quote_block
+  - field.storage.block_content.field_author_image
+  - field.storage.block_content.field_background_colour
+  - field.storage.block_content.field_background_image
+  - field.storage.block_content.field_body
+  - field.field.block_content.quote_block.field_author_image
+  - field.field.block_content.quote_block.field_background_colour
+  - field.field.block_content.quote_block.field_background_image
+  - field.field.block_content.quote_block.field_body
