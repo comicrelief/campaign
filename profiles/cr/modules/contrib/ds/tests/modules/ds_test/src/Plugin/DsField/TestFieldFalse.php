@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds_test\Plugin\DsField\TestFieldFalse.
- */
-
 namespace Drupal\ds_test\Plugin\DsField;
 
 use Drupal\ds\Plugin\DsField\DsFieldBase;

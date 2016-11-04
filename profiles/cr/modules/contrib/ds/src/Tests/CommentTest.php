@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Tests\CommentTest.
- */
-
 namespace Drupal\ds\Tests;
 
 use Drupal\comment\Tests\CommentTestBase;
@@ -23,10 +18,18 @@ class CommentTest extends CommentTestBase {
    *
    * @var array
    */
-  public static $modules = array('node', 'user', 'comment', 'field_ui', 'block', 'ds', 'layout_plugin');
+  public static $modules = array(
+    'node',
+    'user',
+    'comment',
+    'field_ui',
+    'block',
+    'ds',
+    'layout_plugin',
+  );
 
   /**
-   * The created user
+   * The created user.
    *
    * @var User
    */
@@ -73,7 +76,7 @@ class CommentTest extends CommentTestBase {
   }
 
   /**
-   * Test adding comments to a node
+   * Test adding comments to a node.
    */
   public function testComments() {
     // Create a node.
@@ -86,39 +89,54 @@ class CommentTest extends CommentTestBase {
       'fields[comment_title][region]' => 'left',
       'fields[comment_body][region]' => 'left',
     );
-    $this->dsConfigureUI($fields, 'admin/structure/comment/manage/comment/display');
+    $this->dsConfigureUi($fields, 'admin/structure/comment/manage/comment/display');
 
-    // Post comment
+    // Post comment.
     $comment1 = $this->postComment($node, $this->randomMachineName(), $this->randomMachineName());
     $this->assertRaw($comment1->comment_body->value, 'Comment1 found.');
 
-    // Post comment
+    // Post comment.
     $comment2 = $this->postComment($node, $this->randomMachineName(), $this->randomMachineName());
     $this->assertRaw($comment2->comment_body->value, 'Comment2 found.');
 
-    // Verify there are no double ID's
+    // Verify there are no double ID's.
     $xpath = $this->xpath('//a[@id="comment-1"]');
     $this->assertEqual(count($xpath), 1, '1 ID found named comment-1');
+
+    // Test that hidden fields aren't exposed in the config.
+    $this->dsSelectLayout();
+
+    $fields = array(
+      'fields[comment][region]' => 'hidden',
+    );
+    $this->dsConfigureUi($fields);
+
+    $display = entity_get_display('node', 'article', 'default');
+    $content = $display->get('content');
+    $hidden = $display->get('hidden');
+
+    $this->assertFalse(isset($content['comment']), 'Comment is not part of the content region');
+    $this->assertTrue(isset($hidden['comment']), 'Comment is part of the hidden region');
   }
 
   /**
-   * Test User custom display on a comment on a node
+   * Test User custom display on a comment on a node.
    */
   public function testCommentUser() {
     // Create a node.
     $settings = array('type' => 'article', 'promote' => 1);
     $node = $this->drupalCreateNode($settings);
 
-    // User compact display settings
+    // User compact display settings.
     $this->dsSelectLayout(array(), array(), 'admin/config/people/accounts/display');
 
     $fields = array(
       'fields[username][region]' => 'left',
       'fields[member_for][region]' => 'left',
     );
-    $this->dsConfigureUI($fields, 'admin/config/people/accounts/display');
+    $this->dsConfigureUi($fields, 'admin/config/people/accounts/display');
 
-    // Comment display settings
+    // Comment display settings.
     $this->dsSelectLayout(array(), array(), 'admin/structure/comment/manage/comment/display');
 
     $fields = array(
@@ -126,13 +144,14 @@ class CommentTest extends CommentTestBase {
       'fields[comment_user][region]' => 'left',
       'fields[comment_body][region]' => 'left',
     );
-    $this->dsConfigureUI($fields, 'admin/structure/comment/manage/comment/display');
+    $this->dsConfigureUi($fields, 'admin/structure/comment/manage/comment/display');
 
-    // Post comment
+    // Post comment.
     $comment = $this->postComment($node, $this->randomMachineName(), $this->randomMachineName());
     $this->assertRaw($comment->comment_body->value, 'Comment found.');
     $this->assertRaw('Member for', 'Comment Member for found.');
     $xpath = $this->xpath('//div[@class="field field--name-comment-user field--type-ds field--label-hidden field__item"]/div/div/div[@class="field field--name-username field--type-ds field--label-hidden field__item"]');
     $this->assertEqual(count($xpath), 1, 'Username');
   }
+
 }

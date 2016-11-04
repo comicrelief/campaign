@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds_devel\Plugin\Derivative\DsDevelLocalTask.
- */
-
 namespace Drupal\ds_devel\Plugin\Derivative;
 
 use Drupal\Component\Plugin\Derivative\DeriverBase;
@@ -22,7 +17,7 @@ class DsDevelLocalTask extends DeriverBase implements ContainerDeriverInterface 
   use StringTranslationTrait;
 
   /**
-   * The entity manager
+   * The entity manager.
    *
    * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */

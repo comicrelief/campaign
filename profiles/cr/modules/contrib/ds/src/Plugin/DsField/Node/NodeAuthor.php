@@ -1,15 +1,8 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Plugin\DsField\Node\NodeAuthor.
- */
-
 namespace Drupal\ds\Plugin\DsField\Node;
 
 use Drupal\ds\Plugin\DsField\DsFieldBase;
-use Drupal\node\NodeInterface;
-use Drupal\user\UserInterface;
 
 /**
  * Plugin that renders the author of a node.
@@ -27,10 +20,10 @@ class NodeAuthor extends DsFieldBase {
    * {@inheritdoc}
    */
   public function build() {
-    /** @var $node NodeInterface */
+    /* @var $node NodeInterface */
     $node = $this->entity();
 
-    /** @var $user UserInterface */
+    /* @var $user UserInterface */
     $user = $node->getOwner();
 
     // Users without a user name are anonymous users. These are never linked.
@@ -45,8 +38,8 @@ class NodeAuthor extends DsFieldBase {
       return array(
         '#markup' => $user->getUsername(),
         '#cache' => array(
-          'tags' => $user->getCacheTags()
-        )
+          'tags' => $user->getCacheTags(),
+        ),
       );
     }
 
@@ -55,12 +48,12 @@ class NodeAuthor extends DsFieldBase {
         '#theme' => 'username',
         '#account' => $user,
         '#cache' => array(
-          'tags' => $user->getCacheTags()
-        )
+          'tags' => $user->getCacheTags(),
+        ),
       );
     }
 
-    // Otherwise return an empty array
+    // Otherwise return an empty array.
     return array();
   }
 
@@ -70,8 +63,8 @@ class NodeAuthor extends DsFieldBase {
   public function formatters() {
 
     $formatters = array(
-      'author' => t('Author'),
-      'author_linked' => t('Author linked to profile')
+      'author' => $this->t('Author'),
+      'author_linked' => $this->t('Author linked to profile'),
     );
 
     return $formatters;

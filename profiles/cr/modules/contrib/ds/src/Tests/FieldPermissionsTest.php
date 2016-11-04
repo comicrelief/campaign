@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Tests\FieldPermissionsTest.
- */
-
 namespace Drupal\ds\Tests;
 
 /**
@@ -19,9 +14,23 @@ class FieldPermissionsTest extends FastTestBase {
    *
    * @var array
    */
-  public static $modules = array('node', 'field_ui', 'taxonomy', 'block', 'ds', 'ds_extras', 'ds_test', 'layout_plugin', 'views', 'views_ui');
+  public static $modules = array(
+    'node',
+    'field_ui',
+    'taxonomy',
+    'block',
+    'ds',
+    'ds_extras',
+    'ds_test',
+    'layout_plugin',
+    'views',
+    'views_ui',
+  );
 
-  function testFieldPermissions() {
+  /**
+   * Tests field permissions.
+   */
+  public function testFieldPermissions() {
 
     $fields = array(
       'fields[body][region]' => 'right',
@@ -32,7 +41,7 @@ class FieldPermissionsTest extends FastTestBase {
     \Drupal::moduleHandler()->resetImplementations();
 
     $this->dsSelectLayout();
-    $this->dsConfigureUI($fields);
+    $this->dsConfigureUi($fields);
 
     // Create a node.
     $settings = array('type' => 'article');
@@ -51,4 +60,5 @@ class FieldPermissionsTest extends FastTestBase {
     $this->assertRaw('group-left', 'Template found (region left)');
     $this->assertText('Test field plugin on node ' . $node->id(), 'Test field plugin found');
   }
+
 }

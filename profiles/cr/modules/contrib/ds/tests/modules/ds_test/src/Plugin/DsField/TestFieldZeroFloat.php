@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds_test\Plugin\DsField\TestFieldZeroFloat.
- */
-
 namespace Drupal\ds_test\Plugin\DsField;
 
 use Drupal\ds\Plugin\DsField\DsFieldBase;

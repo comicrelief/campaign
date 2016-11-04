@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds_extras\Plugin\Block\DsRegionBlock.
- */
-
 namespace Drupal\ds_extras\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
