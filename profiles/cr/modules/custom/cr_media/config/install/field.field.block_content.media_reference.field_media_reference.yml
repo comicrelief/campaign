@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.media_reference
+    - field.storage.block_content.field_media_reference
+    - media_entity.bundle.cr_external_file
+    - media_entity.bundle.cr_file
+    - media_entity.bundle.video
+id: block_content.media_reference.field_media_reference
+field_name: field_media_reference
+entity_type: block_content
+bundle: media_reference
+label: 'Media reference'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      cr_external_file: cr_external_file
+      cr_file: cr_file
+      video: video
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: cr_file
+field_type: entity_reference

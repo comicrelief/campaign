@@ -1,6 +1,11 @@
 pathauto.settings:
   type: config_object
   mapping:
+    enabled_entity_types:
+      label: Enabled entity types
+      type: sequence
+      sequence:
+        type: string
     punctuation:
       type: sequence
       sequence:

@@ -4,7 +4,26 @@
     // Turn our boring select boxes into sexy jQuery UI selectboxes
     $('select').selectmenu({ style:'popup', width: '100%' });
     // Activate lighcase
-    $('a[rel^=lightcase]').lightcase();
+    // Video lightcase
+    $('a[data-rel^=lightcase]').lightcase({
+      iframe: {
+        width: "100%",
+        height: "100%",
+        frameborder: 0
+      },
+      onFinish : {
+        custom: function() {
+          var caption = $(this).parent().find('.media-block__caption');
+          console.log(caption.length);
+          if (caption.length) {
+            console.log("has caption");
+            lightcase.get('caption').html(caption.html());
+            $('#lightcase-caption').show();
+            }
+            lightcase.resize();
+          }
+        }
+    });
 
     // Search hold on
     // $("button.main-menu__icons-magnify").on("click", function() {
@@ -20,6 +39,11 @@
 	  newHeight();
 
   });
+    // reload our styling for select boxes after ajax
+  $( document ).ajaxComplete(function() {
+    $('select').selectmenu({ style:'popup', width: '100%' });
+  });
+
 
   sSize = $(window).width();
 

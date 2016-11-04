@@ -5,7 +5,6 @@
  * Token integration for the Pathauto module.
  */
 
-use Drupal\Core\Render\Element;
 use Drupal\Core\Render\BubbleableMetadata;
 
 /**

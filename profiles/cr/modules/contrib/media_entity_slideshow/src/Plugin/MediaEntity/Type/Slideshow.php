@@ -1,17 +1,10 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\media_entity_slideshow\Plugin\MediaEntity\Type\Slideshow.
- */
-
 namespace Drupal\media_entity_slideshow\Plugin\MediaEntity\Type;
 
-use Drupal\media_entity\MediaBundleInterface;
 use Drupal\media_entity\MediaInterface;
 use Drupal\media_entity\MediaTypeBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\media_entity\MediaTypeException;
 
 /**
  * Provides media type plugin for Slideshows.
@@ -29,7 +22,7 @@ class Slideshow extends MediaTypeBase {
    */
   public function providedFields() {
     $fields = array(
-      'length' => t('Slideshow length'),
+      'length' => $this->t('Slideshow length'),
     );
 
     return $fields;
@@ -69,8 +62,8 @@ class Slideshow extends MediaTypeBase {
 
     $form['source_field'] = [
       '#type' => 'select',
-      '#title' => t('Field with source information'),
-      '#description' => t('Field on media entity that stores slideshow items. You can create a bundle without selecting a value for this dropdown initially. This dropdown can be populated after adding fields to the bundle.'),
+      '#title' => $this->t('Field with source information'),
+      '#description' => $this->t('Field on media entity that stores slideshow items. You can create a bundle without selecting a value for this dropdown initially. This dropdown can be populated after adding fields to the bundle.'),
       '#default_value' => empty($this->configuration['source_field']) ? NULL : $this->configuration['source_field'],
       '#options' => $options,
     ];
@@ -86,7 +79,7 @@ class Slideshow extends MediaTypeBase {
 
     $source_field_name = $this->configuration['source_field'];
     // Validate slideshow items count.
-    $media->getTypedData()->getDataDefinition()->addConstraint('ItemsCount', array('source_field_name' => $source_field_name));
+    $media->getTypedData()->getDataDefinition()->addConstraint('ItemsCount', array('sourceFieldName' => $source_field_name));
   }
 
   /**
@@ -121,4 +114,21 @@ class Slideshow extends MediaTypeBase {
 
     return $thumbnail;
   }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getDefaultName(MediaInterface $media) {
+    // The default name will be the timestamp + number of slides.
+    $length = $this->getField($media, 'length');
+    if (!empty($length)) {
+      return $this->formatPlural($length,
+        '1 slide, created on @date',
+        '@count slides, created on @date',
+        ['@date' => \Drupal::service('date.formatter')->format($media->getCreatedTime(), 'custom', 'd/M/Y - H:i:s')]);
+    }
+
+    return parent::getDefaultName($media);
+  }
+
 }

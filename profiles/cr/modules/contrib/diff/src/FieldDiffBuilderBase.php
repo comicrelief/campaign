@@ -1,19 +1,15 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\diff\FieldDiffBuilderBase
- */
-
 namespace Drupal\diff;
 
 use Drupal\Component\Plugin\PluginBase;
+use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\Core\Entity\EntityManagerInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 
 abstract class FieldDiffBuilderBase extends PluginBase implements FieldDiffBuilderInterface, ContainerFactoryPluginInterface {
 
@@ -27,11 +23,11 @@ abstract class FieldDiffBuilderBase extends PluginBase implements FieldDiffBuild
   protected $configFactory;
 
   /**
-   * The entity manager.
+   * The entity type manager.
    *
-   * @var \Drupal\Core\Entity\EntityManagerInterface
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
-  protected $entityManager;
+  protected $entityTypeManager;
 
   /**
    * The entity parser.
@@ -51,15 +47,15 @@ abstract class FieldDiffBuilderBase extends PluginBase implements FieldDiffBuild
    *   The plugin implementation definition.
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config
    *   The configuration factory object.
-   * @param \Drupal\Core\Entity\EntityManagerInterface $entityManager
-   *   The entity manager.
-   * @param \Drupal\diff\DiffEntityParser $entityParser
-   *   The entity manager.
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   *   The entity type manager.
+   * @param \Drupal\diff\DiffEntityParser $entity_parser
+   *   The entity parser.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, ConfigFactoryInterface $config, EntityManagerInterface $entityManager, DiffEntityParser $entityParser) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, ConfigFactoryInterface $config, EntityTypeManagerInterface $entity_type_manager, DiffEntityParser $entity_parser) {
     $this->configFactory = $config;
-    $this->entityManager = $entityManager;
-    $this->entityParser = $entityParser;
+    $this->entityTypeManager = $entity_type_manager;
+    $this->entityParser = $entity_parser;
     parent::__construct($configuration, $plugin_id, $plugin_definition);
 
     $this->configuration += $this->defaultConfiguration();
@@ -74,7 +70,7 @@ abstract class FieldDiffBuilderBase extends PluginBase implements FieldDiffBuild
       $plugin_id,
       $plugin_definition,
       $container->get('config.factory'),
-      $container->get('entity.manager'),
+      $container->get('entity_type.manager'),
       $container->get('diff.entity_parser')
     );
   }
@@ -117,7 +113,7 @@ abstract class FieldDiffBuilderBase extends PluginBase implements FieldDiffBuild
   public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
     $this->configuration['show_header'] = $form_state->getValue('show_header');
     $this->configuration['markdown'] = $form_state->getValue('markdown');
-    $this->configuration['#field_type'] = $form_state->get('field_type');
+    $this->configuration['#fields'] = $form_state->get('fields');
     $this->setConfiguration($this->configuration);
     $this->getConfiguration()->save();
   }
@@ -144,18 +140,18 @@ abstract class FieldDiffBuilderBase extends PluginBase implements FieldDiffBuild
    */
   public function setConfiguration(array $configuration) {
     $config = $this->configFactory->getEditable('diff.plugins');
-    $field_type = $configuration['#field_type'];
-    unset($configuration['#field_type']);
+    $field = $configuration['#fields'];
+    unset($configuration['#fields']);
 
-    $field_type_settings = array();
+    $field_settings = [];
     foreach ($configuration as $key => $value) {
-      $field_type_settings[$key] = $value;
+      $field_settings[$key] = $value;
     }
     $settings = array(
       'type' => $this->pluginId,
-      'settings' => $field_type_settings,
+      'settings' => $field_settings,
     );
-    $config->set('field_types.' . $field_type, $settings);
+    $config->set('fields.' . $field, $settings);
     $config->save();
   }
 
@@ -166,4 +162,10 @@ abstract class FieldDiffBuilderBase extends PluginBase implements FieldDiffBuild
     return array();
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public static function isApplicable(FieldStorageDefinitionInterface $field_definition) {
+    return TRUE;
+  }
 }

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\pathauto\Form\PatternEditForm.
- */
-
 namespace Drupal\pathauto\Form;
 
 use Drupal\Core\Entity\EntityForm;
@@ -71,7 +66,7 @@ class PatternEditForm extends EntityForm {
     $this->manager = $manager;
     $this->entityTypeBundleInfo = $entity_type_bundle_info;
     $this->entityTypeManager = $entity_type_manager;
-    $this->languageManager= $language_manager;
+    $this->languageManager = $language_manager;
   }
 
   /**
@@ -80,7 +75,7 @@ class PatternEditForm extends EntityForm {
   public function buildForm(array $form, FormStateInterface $form_state) {
 
     $options = [];
-    foreach ($this->manager->getDefinitions() as $plugin_id => $plugin_definition) {
+    foreach ($this->manager->getVisibleDefinitions() as $plugin_id => $plugin_definition) {
       $options[$plugin_id] = $plugin_definition['label'];
     }
     $form['type'] = [
@@ -120,6 +115,7 @@ class PatternEditForm extends EntityForm {
         '#after_build' => array('token_element_validate'),
         '#token_types' => $alias_type->getTokenTypes(),
         '#min_tokens' => 1,
+        '#required' => TRUE,
       );
 
       // Show the token help relevant to this pattern type.

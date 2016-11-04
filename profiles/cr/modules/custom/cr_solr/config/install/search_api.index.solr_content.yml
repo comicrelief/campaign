@@ -28,8 +28,8 @@ field_settings:
           page: default
           partner: full
         'entity:media':
-          cr_external_file: default
-          cr_file: default
+          cr_external_file: full
+          cr_file: full
   node_grants:
     label: 'Node access information'
     datasource_id: null
