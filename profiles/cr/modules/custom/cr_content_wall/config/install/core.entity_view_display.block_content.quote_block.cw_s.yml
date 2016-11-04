@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.quote_block
+    - core.entity_view_mode.block_content.cw_s
+    - field.field.block_content.quote_block.field_author_image
+    - field.field.block_content.quote_block.field_background_colour
+    - field.field.block_content.quote_block.field_background_image
+    - field.field.block_content.quote_block.field_body
+id: block_content.quote_block.cw_s
+targetEntityType: block_content
+bundle: quote_block
+mode: cw_s
+content: {  }
+hidden:
+  field_author_image: true
+  field_background_colour: true
+  field_background_image: true
+  field_body: true
+  social_links: true
