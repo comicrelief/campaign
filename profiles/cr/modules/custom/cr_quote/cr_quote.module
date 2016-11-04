@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * Quote block type.
+ */
+
+use Drupal\Core\Entity\FieldableEntityInterface;
+use Drupal\Core\Field\FieldStorageDefinitionInterface;
+
+/**
+ * Options callback for field_background_colour.
+ *
+ * @see options_allowed_values()
+ */
+function cr_quote_field_background_colour(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
+  $values = [
+    'bg--white' => t('White'),
+  ];
+  return $values;
+}
