@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Plugin\views\row\EntityRow.
- */
-
 namespace Drupal\ds\Plugin\views\row;
 
 use Drupal\Component\Utility\Html;
@@ -75,40 +70,39 @@ class EntityRow extends ViewsEntityRow {
     if ($this->entityType == 'node' && \Drupal::moduleHandler()->moduleExists('ds_switch_view_mode')) {
       $form['switch_fieldset'] = array(
         '#type' => 'details',
-        '#title' => t('Use view mode of display settings'),
+        '#title' => $this->t('Use view mode of display settings'),
         '#open' => $this->options['switch_fieldset']['switch'],
-        );
+      );
       $form['switch_fieldset']['switch'] = array(
         '#type' => 'checkbox',
-        '#title' => t('Use view mode of display settings'),
+        '#title' => $this->t('Use view mode of display settings'),
         '#default_value' => $this->options['switch_fieldset']['switch'],
-        '#description' => t('Use the alternative view mode selected in the display settings tab.')
+        '#description' => $this->t('Use the alternative view mode selected in the display settings tab.'),
       );
     }
 
     // Alternating view modes.
     $form['alternating_fieldset'] = array(
       '#type' => 'details',
-      '#title' => t('Alternating view mode'),
+      '#title' => $this->t('Alternating view mode'),
       '#open' => $this->options['alternating_fieldset']['alternating'],
     );
     $form['alternating_fieldset']['alternating'] = array(
       '#type' => 'checkbox',
-      '#title' => t('Use the changing view mode selector'),
+      '#title' => $this->t('Use the changing view mode selector'),
       '#default_value' => $this->options['alternating_fieldset']['alternating'],
     );
     $form['alternating_fieldset']['allpages'] = array(
       '#type' => 'checkbox',
-      '#title' => t('Use this configuration on every page. Otherwhise the default view mode is used as soon you browse away from the first page of this view.'),
+      '#title' => $this->t('Use this configuration on every page. Otherwhise the default view mode is used as soon you browse away from the first page of this view.'),
       '#default_value' => (isset($this->options['alternating_fieldset']['allpages'])) ? $this->options['alternating_fieldset']['allpages'] : FALSE,
     );
-
 
     $pager = $this->view->display_handler->getPlugin('pager');
     $limit = $pager->getItemsPerPage();
     if ($limit == 0 || $limit > 20) {
       $form['alternating_fieldset']['disabled'] = array(
-        '#markup' => t('This option is disabled because you have unlimited items or listing more than 20 items.'),
+        '#markup' => $this->t('This option is disabled because you have unlimited items or listing more than 20 items.'),
       );
       $form['alternating_fieldset']['alternating']['#disabled'] = TRUE;
       $form['alternating_fieldset']['allpages']['#disabled'] = TRUE;
@@ -118,10 +112,15 @@ class EntityRow extends ViewsEntityRow {
       $a = 0;
       while ($limit != 0) {
         $form['alternating_fieldset']['item_' . $a] = [
-          '#title' => t('Item @nr', array('@nr' => $i)),
+          '#title' => $this->t('Item @nr', array('@nr' => $i)),
           '#type' => 'select',
           '#default_value' => (isset($this->options['alternating_fieldset']['item_' . $a])) ? $this->options['alternating_fieldset']['item_' . $a] : 'teaser',
           '#options' => \Drupal::service('entity_display.repository')->getViewModeOptions($this->entityTypeId),
+          '#states' => array(
+            'visible' => array(
+              ':input[name="row_options[alternating_fieldset][alternating]"]' => array('checked' => TRUE),
+            ),
+          ),
         ];
         $limit--;
         $a++;
@@ -129,18 +128,18 @@ class EntityRow extends ViewsEntityRow {
       }
     }
 
-    // Grouping rows
+    // Grouping rows.
     $sorts = $this->view->display_handler->getOption('sorts');
     $groupable = !empty($sorts) && $this->options['grouping_fieldset']['group'];
 
     $form['grouping_fieldset'] = array(
       '#type' => 'details',
-      '#title' => t('Group data'),
+      '#title' => $this->t('Group data'),
       '#open' => $groupable,
     );
     $form['grouping_fieldset']['group'] = array(
       '#type' => 'checkbox',
-      '#title' => t('Group data on a field. The value of this field will be displayed too.'),
+      '#title' => $this->t('Group data on a field. The value of this field will be displayed too.'),
       '#default_value' => $groupable,
     );
 
@@ -165,19 +164,19 @@ class EntityRow extends ViewsEntityRow {
     }
     else {
       $form['grouping_fieldset']['group']['#disabled'] = TRUE;
-      $form['grouping_fieldset']['group']['#description'] = t('Grouping is disabled because you do not have any sort fields.');
+      $form['grouping_fieldset']['group']['#description'] = $this->t('Grouping is disabled because you do not have any sort fields.');
     }
 
     // Advanced function.
     $form['advanced_fieldset'] = array(
       '#type' => 'details',
-      '#title' => t('Advanced view mode'),
+      '#title' => $this->t('Advanced view mode'),
       '#open' => $this->options['advanced_fieldset']['advanced'],
     );
     $form['advanced_fieldset']['advanced'] = array(
       '#type' => 'checkbox',
-      '#title' => t('Use the advanced view mode selector'),
-      '#description' => t('This gives you the opportunity to have full control of a list for really advanced features.<br /> There is no UI for this, you need to create a hook named like this: hook_ds_views_row_render_entity($entity, $view_mode).', array('@VIEWSNAME' => $this->view->storage->id())),
+      '#title' => $this->t('Use the advanced view mode selector'),
+      '#description' => $this->t('This gives you the opportunity to have full control of a list for really advanced features.<br /> There is no UI for this, you need to create a hook named like this: hook_ds_views_row_render_entity($entity, $view_mode).', array('@VIEWSNAME' => $this->view->storage->id())),
       '#default_value' => $this->options['advanced_fieldset']['advanced'],
     );
   }

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Tests\ExportablesTest.
- */
-
 namespace Drupal\ds\Tests;
 
 use Drupal\Core\Entity\Entity\EntityViewDisplay;
@@ -19,15 +14,17 @@ class ExportablesTest extends FastTestBase {
   /**
    * Enables the exportables module.
    */
-  function dsExportablesSetup() {
-    /** @var $display EntityViewDisplay */
+  public function dsExportablesSetup() {
+    /* @var $display EntityViewDisplay */
     $display = EntityViewDisplay::load('node.article.default');
     $display->delete();
     \Drupal::service('module_installer')->install(array('ds_exportables_test'));
   }
 
-  // Test layout and field settings configuration.
-  function testDSExportablesLayoutFieldsettings() {
+  /**
+   * Test layout and field settings configuration.
+   */
+  public function testDsExportablesLayoutFieldsettings() {
     $this->dsExportablesSetup();
 
     // Look for default custom field.
@@ -38,7 +35,7 @@ class ExportablesTest extends FastTestBase {
 
     $settings = array(
       'type' => 'article',
-      'title' => 'Exportable'
+      'title' => 'Exportable',
     );
     $node = $this->drupalCreateNode($settings);
     $this->drupalGet('node/' . $node->id());
@@ -77,7 +74,7 @@ class ExportablesTest extends FastTestBase {
     );
 
     $this->dsSelectLayout($layout, $assert);
-    $this->dsConfigureUI($fields);
+    $this->dsConfigureUi($fields);
 
     $this->drupalGet('node/' . $node->id());
     $this->assertRaw('group-left', 'Left region found');

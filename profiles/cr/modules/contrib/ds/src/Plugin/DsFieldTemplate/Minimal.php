@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Plugin\DsFieldTemplate\Minimal.
- */
-
 namespace Drupal\ds\Plugin\DsFieldTemplate;
 
 /**

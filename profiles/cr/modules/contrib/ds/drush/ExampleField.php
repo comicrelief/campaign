@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\example_field\Plugin\DsField\ExampleField.
- */
 
 namespace Drupal\example_field\Plugin\DsField;
 
@@ -10,6 +6,8 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\ds\Plugin\DsField\DsFieldBase;
 
 /**
+ * Generated field.
+ *
  * @DsField(
  *   id = "example_field_ExampleField",
  *   title = @Translation("ExampleField"),

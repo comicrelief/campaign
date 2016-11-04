@@ -1,0 +1,11 @@
+id: node.revision
+label: 'Revision'
+status: false
+cache: true
+targetEntityType: node
+dependencies:
+  enforced:
+    module:
+      - ds_extras
+  module:
+    - node

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Plugin\DsField\User\UserSignature.
- */
-
 namespace Drupal\ds\Plugin\DsField\User;
 
 use Drupal\ds\Plugin\DsField\Markup;
@@ -39,7 +34,7 @@ class UserSignature extends Markup {
    * {@inheritdoc}
    */
   public function isAllowed() {
-    // Checks if user signatures are enabled
+    // Checks if user signatures are enabled.
     $user_signatures = \Drupal::config('user.settings')->get('signatures');
 
     // We use this function to decide if we should show this field.

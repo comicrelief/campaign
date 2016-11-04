@@ -1,19 +1,15 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Plugin\DsField\DsFieldInterface.
- */
-
 namespace Drupal\ds\Plugin\DsField;
 
 use Drupal\Component\Plugin\ConfigurablePluginInterface;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Interface for DS plugins.
  */
-interface DsFieldInterface extends ConfigurablePluginInterface {
+interface DsFieldInterface extends ConfigurablePluginInterface, ContainerFactoryPluginInterface {
 
   /**
    * Renders a field.
@@ -23,7 +19,7 @@ interface DsFieldInterface extends ConfigurablePluginInterface {
   /**
    * Returns the summary of the chosen settings.
    *
-   * @param $settings
+   * @param array $settings
    *   Contains the settings of the field.
    *
    * @return array
@@ -40,7 +36,7 @@ interface DsFieldInterface extends ConfigurablePluginInterface {
    * Returns a list of possible formatters for this field.
    *
    * @return array
-   *   A list of possible formatters
+   *   A list of possible formatters.
    */
   public function formatters();
 
@@ -51,6 +47,8 @@ interface DsFieldInterface extends ConfigurablePluginInterface {
 
   /**
    * Gets the current entity.
+   *
+   * @return \Drupal\Core\Entity\EntityInterface
    */
   public function entity();
 
@@ -65,17 +63,17 @@ interface DsFieldInterface extends ConfigurablePluginInterface {
   public function bundle();
 
   /**
-   * Gets the view mode
+   * Gets the view mode.
    */
   public function viewMode();
 
   /**
-   * Gets the field configuration
+   * Gets the field configuration.
    */
   public function getFieldConfiguration();
 
   /**
-   * Gets the field name
+   * Gets the field name.
    */
   public function getName();
 
@@ -83,5 +81,10 @@ interface DsFieldInterface extends ConfigurablePluginInterface {
    * Returns the title of the field.
    */
   public function getTitle();
+
+  /**
+   * Defines if we are dealing with a multivalue field.
+   */
+  public function isMultiple();
 
 }

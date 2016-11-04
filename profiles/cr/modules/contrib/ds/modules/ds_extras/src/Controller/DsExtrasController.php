@@ -1,18 +1,11 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds_extras\Controller\DsExtrasController.
- */
-
 namespace Drupal\ds_extras\Controller;
 
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\Core\Entity\Entity;
-use Drupal\node\NodeInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -24,13 +17,13 @@ class DsExtrasController extends ControllerBase {
    * Returns an node through JSON.
    *
    * @param Request $request
-   *  The global request object.
+   *   The global request object.
    * @param string $entityType
-   *  The type of the requested entity.
+   *   The type of the requested entity.
    * @param string $entityId
-   *  The id of the requested entity.
+   *   The id of the requested entity.
    * @param string $viewMode
-   *  The view mode you wish to render for the requested entity.
+   *   The view mode you wish to render for the requested entity.
    *
    * @return array
    *   The Views fields report page.
@@ -59,25 +52,29 @@ class DsExtrasController extends ControllerBase {
    *   An array suitable for drupal_render().
    */
   public function revisionShow($node_revision) {
-    /** @var NodeInterface $node */
-    $node = $this->entityTypeManager()->getStorage('node')->loadRevision($node_revision);
+    /* @var \Drupal\node\NodeInterface $node */
+    $node = $this->entityTypeManager()
+      ->getStorage('node')
+      ->loadRevision($node_revision);
 
     // Determine view mode.
-    $view_mode = \Drupal::config('ds_extras.settings')->get('override_node_revision_view_mode');
+    $view_mode = \Drupal::config('ds_extras.settings')
+      ->get('override_node_revision_view_mode');
 
     drupal_static('ds_view_mode', $view_mode);
 
-    $page =  node_view($node, $view_mode);
+    $page = node_view($node, $view_mode);
     unset($page['nodes'][$node->id()]['#cache']);
 
     return $page;
   }
 
   /**
-   * Checks access for the switch view mode route
+   * Checks access for the switch view mode route.
    */
   public function accessSwitchViewMode() {
-    return $this->config('ds_extras.settings')->get('switch_field') ? AccessResult::allowed() : AccessResult::forbidden();
+    return $this->config('ds_extras.settings')
+      ->get('switch_field') ? AccessResult::allowed() : AccessResult::forbidden();
   }
 
 }

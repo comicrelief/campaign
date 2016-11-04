@@ -2,14 +2,14 @@ langcode: en
 status: true
 dependencies:
   module:
-    - block_content
+    - block
     - paragraphs
 id: paragraph.field_br_block_reference
 field_name: field_br_block_reference
 entity_type: paragraph
 type: entity_reference
 settings:
-  target_type: block_content
+  target_type: block
 module: core
 locked: false
 cardinality: 1

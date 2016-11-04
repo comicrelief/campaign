@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Tests\DsTestTrait.
- */
-
 namespace Drupal\ds\Tests;
 
 /**
@@ -37,12 +32,12 @@ trait DsTestTrait {
   }
 
   /**
-   * Configure classes
+   * Configure classes.
    */
   function dsConfigureClasses($edit = array()) {
 
     $edit += array(
-      'regions' => "class_name_1\nclass_name_2|Friendly name"
+      'regions' => "class_name_1\nclass_name_2|Friendly name",
     );
 
     $this->drupalPostForm('admin/structure/ds/classes', $edit, t('Save configuration'));
@@ -67,7 +62,7 @@ trait DsTestTrait {
   /**
    * Configure Field UI.
    */
-  function dsConfigureUI($edit, $url = 'admin/structure/types/manage/article/display') {
+  function dsConfigureUi($edit, $url = 'admin/structure/types/manage/article/display') {
     $this->drupalPostForm($url, $edit, t('Save'));
   }
 
@@ -122,14 +117,16 @@ trait DsTestTrait {
     );
 
     $this->drupalPostForm($url, $edit, t('Save'));
-    $this->assertText(t('The field ' . $edit['name'] . ' has been saved'), t('@name field has been saved', array('@name' => $edit['name'])));
+    $this->assertText(t('The field @name has been saved', array('@name' => $edit['name'])), t('@name field has been saved', array('@name' => $edit['name'])));
   }
 
   /**
    * Create a block field.
    *
-   * @param $edit
+   * @param array $edit
    *   An optional array of field properties.
+   * @param string $url
+   *   The URL of the manage block page.
    */
   function dsCreateBlockField($edit = array(), $url = 'admin/structure/ds/fields/manage_block') {
     $edit += array(
@@ -140,13 +137,13 @@ trait DsTestTrait {
     );
 
     $this->drupalPostForm($url, $edit, t('Save'));
-    $this->assertText(t('The field ' . $edit['name'] . ' has been saved'), t('@name field has been saved', array('@name' => $edit['name'])));
+    $this->assertText(t('The field @name has been saved', array('@name' => $edit['name'])), t('@name field has been saved', array('@name' => $edit['name'])));
   }
 
   /**
    * Utility function to setup for all kinds of tests.
    *
-   * @param $label
+   * @param string $label
    *   How the body label must be set.
    */
   function entitiesTestSetup($label = 'above') {
@@ -179,7 +176,7 @@ trait DsTestTrait {
       'fields[body][label]' => $label,
       'fields[node_submitted_by][region]' => 'header',
     );
-    $this->dsConfigureUI($fields);
+    $this->dsConfigureUi($fields);
 
     return $node;
   }
@@ -226,4 +223,5 @@ trait DsTestTrait {
     }
     $this->dsEditFormatterSettings($edit);
   }
+
 }
