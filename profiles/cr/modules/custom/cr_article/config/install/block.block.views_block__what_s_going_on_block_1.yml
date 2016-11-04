@@ -8,6 +8,7 @@ dependencies:
     - system
     - views
 id: views_block__what_s_going_on_block_1
+theme: campaign_base
 region: content
 weight: 1
 provider: null
