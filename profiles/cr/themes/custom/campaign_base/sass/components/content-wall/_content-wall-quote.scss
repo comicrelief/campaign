@@ -18,7 +18,6 @@
 }
 
 
-
 .cw-quote__bg-image {
 	width: 100%;
 	height: 450px;
@@ -44,29 +43,15 @@
   height: auto;
   width: 100%;
   @include translateY(-50%);
-
-/*   @include breakpoint($screen-md) {
-    @include translateY(0);
-    top: 0;
-    height: 100%;
-  } */
 }
 
 .cw-quote__body {
   @include span(10);
   @include push(1);
-
-/*   @include breakpoint($screen-md) {
-    @include span(7);
-    position: absolute;
-    top: 50%;
-    left: span(1);
-    @include translateY(-50%);
-  } */
 }
 
 .cw-quote__image {
-  margin: 0 auto 30px;
+  margin: 10px auto 30px;
   width: 100px;
   height: 100px;
   overflow: hidden;
@@ -79,27 +64,15 @@
     width: 100%;
     height: auto;
   }
+}
 
-/*   @include breakpoint($screen-md) {
-    position: absolute;
-    left: 50%;
-    margin-left: -50px;
-    margin-bottom: 0;
-    @include span(3);
-    left: span(8);
-    height: auto;
-    top: 75px;
-
-    // Override the background colour option on this breakpoint
-    background-color: transparent;
-
-    img {
-      background-color: inherit;
-      @include border-radius(0);
-      width: 100%;
-      height: auto;
-    }
-  } */
+/* Make the fullwidth version fit the grid */
+.cw-region article.cw-quote.view-mode-cw_l {
+  
+  @include breakpoint($screen-md) {
+    @include span(12);
+    margin: 1.25%;
+  }
 }
 
 .view-mode-cw_l,
@@ -113,7 +86,6 @@
   }
 
   .cw-quote__body {
-
     @include breakpoint($screen-md) {
       @include span(7);
       position: absolute;
