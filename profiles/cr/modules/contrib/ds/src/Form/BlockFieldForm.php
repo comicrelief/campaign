@@ -1,13 +1,8 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Form\BlockFieldForm.
- */
-
 namespace Drupal\ds\Form;
 
-use Drupal\Core\Block\BlockPluginInterface;
+
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Form\FormState;
 use Drupal\Core\Form\FormStateInterface;
@@ -19,7 +14,7 @@ use Drupal\Core\Url;
 class BlockFieldForm extends FieldFormBase implements ContainerInjectionInterface {
 
   /**
-   * The type of the dynamic ds field
+   * The type of the dynamic ds field.
    */
   const TYPE = 'block';
 
@@ -49,7 +44,7 @@ class BlockFieldForm extends FieldFormBase implements ContainerInjectionInterfac
     $form['block_identity']['block'] = array(
       '#type' => 'select',
       '#options' => $blocks,
-      '#title' => t('Block'),
+      '#title' => $this->t('Block'),
       '#required' => TRUE,
       '#default_value' => isset($field['properties']['block']) ? $field['properties']['block'] : '',
     );
@@ -77,7 +72,7 @@ class BlockFieldForm extends FieldFormBase implements ContainerInjectionInterfac
       $properties = $field['properties'];
     }
 
-    // Save title checkbox
+    // Save title checkbox.
     $properties['use_block_title'] = $form_state->getValue('use_block_title');
 
     return $properties;
@@ -105,7 +100,7 @@ class BlockFieldForm extends FieldFormBase implements ContainerInjectionInterfac
 
     // Create an instance of the block to find out if it has a config form.
     // Redirect to the block config form if there is one.
-    /** @var $block BlockPluginInterface */
+    /* @var $block BlockPluginInterface */
     $manager = \Drupal::service('plugin.manager.block');
     $block_id = $this->field['properties']['block'];
     $block = $manager->createInstance($block_id);

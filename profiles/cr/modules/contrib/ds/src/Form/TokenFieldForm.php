@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Form\TokenFieldForm.
- */
-
 namespace Drupal\ds\Form;
 
 use Drupal\Core\Form\FormStateInterface;
@@ -15,7 +10,7 @@ use Drupal\Core\Form\FormStateInterface;
 class TokenFieldForm extends FieldFormBase {
 
   /**
-   * The type of the dynamic ds field
+   * The type of the dynamic ds field.
    */
   const TYPE = 'token';
 
@@ -35,7 +30,7 @@ class TokenFieldForm extends FieldFormBase {
 
     $form['content'] = array(
       '#type' => 'text_format',
-      '#title' => t('Field content'),
+      '#title' => $this->t('Field content'),
       '#default_value' => isset($field['properties']['content']['value']) ? $field['properties']['content']['value'] : '',
       '#format' => isset($field['properties']['content']['format']) ? $field['properties']['content']['format'] : 'plain_text',
       '#base_type' => 'textarea',
@@ -45,7 +40,7 @@ class TokenFieldForm extends FieldFormBase {
     // Token support.
     if (\Drupal::moduleHandler()->moduleExists('token')) {
       $form['tokens'] = array(
-        '#title' => t('Tokens'),
+        '#title' => $this->t('Tokens'),
         '#type' => 'container',
         '#states' => array(
           'invisible' => array(

@@ -3,6 +3,11 @@ ds.display_task:
   title: Displays
   base_route: ds.display_task
   weight: 0
+ds.list_task:
+  route_name: ds.structure
+  title: List
+  parent_id: ds.display_task
+  weight: 5
 ds.settings_task:
   route_name: ds.admin_settings
   title: Settings

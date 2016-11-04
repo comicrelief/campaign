@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Plugin\DsPluginManager.
- */
-
 namespace Drupal\ds\Plugin;
 
 use Drupal\Core\Cache\CacheBackendInterface;

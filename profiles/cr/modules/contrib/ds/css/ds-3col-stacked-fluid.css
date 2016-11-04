@@ -13,7 +13,7 @@
 }
 
 [dir="rtl"] .ds-3col-stacked-fluid > .group-left {
-    float: right;
+  float: right;
 }
 
 .ds-3col-stacked-fluid > .group-middle {
@@ -22,7 +22,7 @@
 }
 
 [dir="rtl"] .ds-3col-stacked-fluid > .group-middle {
-    float: right;
+  float: right;
 }
 
 .ds-3col-stacked-fluid.group-one-sidebar > .group-middle {
@@ -39,7 +39,7 @@
 }
 
 [dir="rtl"] .ds-3col-stacked-fluid > .group-right {
-    float: left;
+  float: left;
 }
 
 .ds-3col-stacked-fluid > .group-footer {

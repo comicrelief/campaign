@@ -5,9 +5,29 @@
  * Display Suite install file.
  */
 
+use Drupal\Core\Entity\Entity\EntityViewDisplay;
+
 /**
  * Implements hook_install().
  */
 function ds_install() {
   module_set_weight('ds', 1);
+}
+
+/**
+ * Disable adding entity, bundle, view mode classes per display.
+ */
+function ds_update_8001() {
+
+  /** @var \Drupal\Core\Entity\Display\EntityDisplayInterface $display */
+  foreach (EntityViewDisplay::loadMultiple() as $display) {
+    $ds = $display->getThirdPartySetting('ds', 'layout');
+    if (!empty($ds)) {
+      $ds['entity_classes'] = 'old_view_mode';
+      $display
+        ->setThirdPartySetting('ds', 'layout', $ds)
+        ->save();
+    }
+  }
+
 }
