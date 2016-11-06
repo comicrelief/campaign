@@ -7,6 +7,7 @@ dependencies:
     - field.field.block_content.teaser.field_cw_link_target
     - field.field.block_content.teaser.field_teaser_bg_colour
     - field.field.block_content.teaser.field_teaser_image
+    - field.field.block_content.teaser.field_teaser_img_bg
     - field.field.block_content.teaser.field_teaser_link_address
     - field.field.block_content.teaser.field_teaser_link_colour
     - field.field.block_content.teaser.field_teaser_link_title
@@ -23,7 +24,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 4
+    weight: 5
     settings:
       rows: 9
       summary_rows: 3
@@ -31,24 +32,30 @@ content:
     third_party_settings: {  }
   field_cw_link_target:
     type: boolean_checkbox
-    weight: 8
+    weight: 9
     settings:
       display_label: true
     third_party_settings: {  }
   field_teaser_bg_colour:
-    weight: 3
+    weight: 4
     settings: {  }
     third_party_settings: {  }
     type: options_select
   field_teaser_image:
-    weight: 1
+    weight: 2
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
+  field_teaser_img_bg:
+    weight: 1
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
   field_teaser_link_address:
-    weight: 6
+    weight: 7
     settings:
       size: 60
       placeholder: ''
@@ -56,18 +63,18 @@ content:
     type: string_textfield
   field_teaser_link_colour:
     type: options_select
-    weight: 7
+    weight: 8
     settings: {  }
     third_party_settings: {  }
   field_teaser_link_title:
-    weight: 5
+    weight: 6
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
   field_teaser_title:
-    weight: 2
+    weight: 3
     settings:
       size: 60
       placeholder: ''
@@ -75,7 +82,7 @@ content:
     type: string_textfield
   field_teaser_you_tube_link:
     type: boolean_checkbox
-    weight: 9
+    weight: 10
     settings:
       display_label: true
     third_party_settings: {  }

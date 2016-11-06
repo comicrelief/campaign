@@ -16,6 +16,7 @@ config_devel:
   - field.storage.block_content.field_teaser_link_colour
   - field.storage.block_content.field_teaser_you_tube_link
   - field.storage.block_content.field_teaser_bg_colour
+  - field.storage.block_content.field_teaser_img_bg
   - field.field.block_content.teaser.body
   - field.field.block_content.teaser.field_teaser_image
   - field.field.block_content.teaser.field_teaser_link_address
@@ -25,3 +26,4 @@ config_devel:
   - field.field.block_content.teaser.field_teaser_link_colour
   - field.field.block_content.teaser.field_teaser_you_tube_link
   - field.field.block_content.teaser.field_teaser_bg_colour
+  - field.field.block_content.teaser.field_teaser_img_bg
