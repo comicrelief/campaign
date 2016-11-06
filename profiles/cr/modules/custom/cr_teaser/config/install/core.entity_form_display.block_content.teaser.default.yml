@@ -5,6 +5,7 @@ dependencies:
     - block_content.type.teaser
     - field.field.block_content.teaser.body
     - field.field.block_content.teaser.field_cw_link_target
+    - field.field.block_content.teaser.field_teaser_bg_colour
     - field.field.block_content.teaser.field_teaser_image
     - field.field.block_content.teaser.field_teaser_link_address
     - field.field.block_content.teaser.field_teaser_link_colour
@@ -22,7 +23,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 3
+    weight: 4
     settings:
       rows: 9
       summary_rows: 3
@@ -30,10 +31,15 @@ content:
     third_party_settings: {  }
   field_cw_link_target:
     type: boolean_checkbox
-    weight: 7
+    weight: 8
     settings:
       display_label: true
     third_party_settings: {  }
+  field_teaser_bg_colour:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
   field_teaser_image:
     weight: 1
     settings:
@@ -42,7 +48,7 @@ content:
     third_party_settings: {  }
     type: image_image
   field_teaser_link_address:
-    weight: 5
+    weight: 6
     settings:
       size: 60
       placeholder: ''
@@ -50,11 +56,11 @@ content:
     type: string_textfield
   field_teaser_link_colour:
     type: options_select
-    weight: 6
+    weight: 7
     settings: {  }
     third_party_settings: {  }
   field_teaser_link_title:
-    weight: 4
+    weight: 5
     settings:
       size: 60
       placeholder: ''
@@ -69,7 +75,7 @@ content:
     type: string_textfield
   field_teaser_you_tube_link:
     type: boolean_checkbox
-    weight: 8
+    weight: 9
     settings:
       display_label: true
     third_party_settings: {  }

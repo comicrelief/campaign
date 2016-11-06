@@ -5,6 +5,7 @@ dependencies:
     - block_content.type.teaser
     - field.field.block_content.teaser.body
     - field.field.block_content.teaser.field_cw_link_target
+    - field.field.block_content.teaser.field_teaser_bg_colour
     - field.field.block_content.teaser.field_teaser_image
     - field.field.block_content.teaser.field_teaser_link_address
     - field.field.block_content.teaser.field_teaser_link_colour
@@ -35,6 +36,12 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
+  field_teaser_bg_colour:
+    weight: 9
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
   field_teaser_image:
     weight: 2
     label: above
