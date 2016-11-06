@@ -5,6 +5,28 @@ dependencies:
     - block_content.type.content_reference_block
     - core.entity_view_mode.block_content.cw_l
     - field.field.block_content.content_reference_block.field_content_reference
+  module:
+    - ds
+third_party_settings:
+  ds:
+    layout:
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
+      library: ''
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - field_content_reference
 id: block_content.content_reference_block.cw_l
 targetEntityType: block_content
 bundle: content_reference_block
