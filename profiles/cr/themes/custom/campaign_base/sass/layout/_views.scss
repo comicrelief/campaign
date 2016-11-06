@@ -42,6 +42,7 @@
     @include breakpoint($screen-md, $no-query: true) {
       padding: 0;
     }
+    &.block-content--view-mode-cw-s,
     &.view-mode-cw_s {
       width: 100%;
       @include breakpoint($screen-md, $no-query: true) {
@@ -49,6 +50,7 @@
         margin: gutter();
       }
     }
+    &.block-content--view-mode-cw-m,
     &.view-mode-cw_m {
       width: 100%;
       @include breakpoint($screen-md, $no-query: true) {
@@ -56,6 +58,7 @@
         margin: gutter();
       }
     }
+    &.block-content--view-mode-cw-l,
     &.view-mode-cw_l {
       width: 100%;
       @include breakpoint($screen-md) {
