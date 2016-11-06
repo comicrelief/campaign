@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.block_content.cw_s
     - field.field.block_content.teaser.body
     - field.field.block_content.teaser.field_cw_link_target
+    - field.field.block_content.teaser.field_teaser_bg_colour
     - field.field.block_content.teaser.field_teaser_image
     - field.field.block_content.teaser.field_teaser_link_address
     - field.field.block_content.teaser.field_teaser_link_colour
@@ -25,6 +26,7 @@ third_party_settings:
       path: profiles/cr/modules/contrib/ds
       library: ''
       disable_css: false
+      entity_classes: all_classes
       settings:
         wrappers:
           ds_content: article
@@ -37,6 +39,7 @@ third_party_settings:
     regions:
       ds_content:
         - field_teaser_title
+        - field_teaser_bg_colour
         - field_teaser_image
         - body
         - field_teaser_link_title
@@ -63,6 +66,12 @@ content:
       format: default
       format_custom_false: ''
       format_custom_true: ''
+    third_party_settings: {  }
+  field_teaser_bg_colour:
+    type: list_default
+    weight: 0
+    label: hidden
+    settings: {  }
     third_party_settings: {  }
   field_teaser_image:
     weight: 1
@@ -108,8 +117,5 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-  social_links:
-    weight: 8
-    settings: {  }
-    third_party_settings: {  }
-hidden: {  }
+hidden:
+  social_links: true
