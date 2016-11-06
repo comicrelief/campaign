@@ -8,6 +8,7 @@ dependencies:
     - field.field.block_content.teaser.field_cw_link_target
     - field.field.block_content.teaser.field_teaser_bg_colour
     - field.field.block_content.teaser.field_teaser_image
+    - field.field.block_content.teaser.field_teaser_img_bg
     - field.field.block_content.teaser.field_teaser_link_address
     - field.field.block_content.teaser.field_teaser_link_colour
     - field.field.block_content.teaser.field_teaser_link_title
@@ -38,6 +39,7 @@ third_party_settings:
           layout_class: {  }
     regions:
       ds_content:
+        - field_teaser_img_bg
         - field_teaser_bg_colour
         - body
         - field_teaser_title
@@ -81,6 +83,15 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: responsive_image
+  field_teaser_img_bg:
+    type: boolean
+    weight: 0
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
   field_teaser_link_address:
     type: string
     weight: 4
