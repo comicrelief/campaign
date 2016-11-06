@@ -1,3 +1,4 @@
+{% set bg_colour = field_teaser_bg_colour['#items'][0].value %}
 {% set btn_colour = field_teaser_link_colour['#items'][0].value %}
 {% set link_target = field_cw_link_target['#items'][0].value ? '_black' : '_self' %}
 {% set teaser_type = field_teaser_img_bg['#items'][0].value ? 'teaser-block--bg-image' : 'teaser-block--standard' %}
@@ -17,7 +18,7 @@
     <div class="teaser-block__image">
       {{ field_teaser_image }}
     </div>
-    <div class="teaser-block__body bg--white">
+    <div class="teaser-block__body {{ bg_colour }}">
       {{ body }}
       <div class="teaser-block__cta">
         <span class="btn {{ btn_colour }}">{{ field_teaser_link_title }}</span>
