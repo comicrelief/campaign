@@ -33,21 +33,26 @@
             "lang": "en"
         }
     ],
+    "type": [
+        {
+            "target_id": "teaser"
+        }
+    ],
     "info": [
         {
             "value": "The countdown is on",
             "lang": "en"
         }
     ],
-    "type": [
-        {
-            "target_id": "teaser"
-        }
-    ],
     "changed": [
         {
-            "value": "1456421386",
+            "value": "1478521137",
             "lang": "en"
+        }
+    ],
+    "revision_created": [
+        {
+            "value": "1478518505"
         }
     ],
     "revision_translation_affected": [
@@ -64,10 +69,20 @@
     ],
     "body": [
         {
-            "value": "<p>Sport Relief is rapidly-approaching, like a big, sporty, awesome thing. Find out how you can get involved\u2026 whether you\u2019re sporty or not.<\/p>\r\n",
+            "value": "<h3>Relive all the best bits of last Red Nose Day<\/h3>\r\n",
             "format": "basic_html",
             "summary": "",
             "lang": "en"
+        }
+    ],
+    "field_cw_link_target": [
+        {
+            "value": "0"
+        }
+    ],
+    "field_teaser_bg_colour": [
+        {
+            "value": "bg--white"
         }
     ],
     "_embedded": {
@@ -86,23 +101,41 @@
                         "value": "c5c5db7d-8e27-4e7c-9600-ccd87e12e6b8"
                     }
                 ],
-                "alt": "",
+                "alt": "bg",
                 "title": "",
                 "width": "1170",
                 "height": "658"
             }
         ]
     },
+    "field_teaser_img_bg": [
+        {
+            "value": "0"
+        }
+    ],
     "field_teaser_link_address": [
         {
-            "uri": "http:\/\/www.sportrelief.com\/get-involved",
-            "title": "Get involved",
-            "options": []
+            "value": "\/fundraise"
+        }
+    ],
+    "field_teaser_link_colour": [
+        {
+            "value": "btn--red"
+        }
+    ],
+    "field_teaser_link_title": [
+        {
+            "value": "Find out"
         }
     ],
     "field_teaser_title": [
         {
             "value": "The countdown is on"
+        }
+    ],
+    "field_teaser_you_tube_link": [
+        {
+            "value": "0"
         }
     ]
 }

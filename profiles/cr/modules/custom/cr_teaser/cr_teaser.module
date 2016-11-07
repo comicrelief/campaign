@@ -4,3 +4,52 @@
  * @file
  * Contains cr_teaser.module..
  */
+
+use Drupal\Core\Entity\FieldableEntityInterface;
+use Drupal\Core\Field\FieldStorageDefinitionInterface;
+
+/**
+ * Options callback for field_teaser_link_colour.
+ *
+ * @see options_allowed_values()
+ */
+function field_teaser_link_colour(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
+  $values = [
+		'btn--red' => t('Red'),
+		'btn--blue' => t('Blue'),
+		'btn--yellow' => t('Yellow'),
+		'btn--green' => t('Green'),
+		'btn--teal' => t('Teal'),
+		'btn--royal-blue' => t('Royal blue'),
+		'btn--purple' => t('Purple'),
+		'btn--pink' => t('Pink'),
+		'btn--white' => t('White'),
+  ];
+  return $values;
+}
+
+/**
+ * Options callback for cr_teaser_field_cr_teaser_bg_colour.
+ *
+ * @see options_allowed_values()
+ */
+function cr_teaser_field_cr_teaser_bg_colour(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
+  $values = [
+    'bg--white' => t('White'),
+    'bg--black' => t('Black'),
+    'bg--red' => t('Red'),
+    'bg--blue' => t('Blue'),
+    'bg--yellow' => t('Yellow'),
+    'bg--green' => t('Green'),
+    'bg--teal' => t('Teal'),
+    'bg--royal-blue' => t('Royal blue'),
+    'bg--pink' => t('Pink'),
+    'bg--purple' => t('Purple'),
+    'bg--jasper-grey' => t('Jasper grey'),
+    'bg--gainsboro-grey' => t('Gainsboro grey'),
+    'bg--light-grey' => t('Light grey'),
+    'bg--smoke-grey' => t('Smoke grey'),
+    'bg--dark-blue' => t('Dark blue'),
+  ];
+  return $values;
+}

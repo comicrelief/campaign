@@ -106,10 +106,10 @@ dependencies:
 
   # Default content; will be moved out of the profile at some point
   - simple_sitemap
-  - cr_default_content
+  # - cr_default_content
 
   # Because cr_landing_pages has content dependencies this needs to be loaded after
-  - cr_search
+  # - cr_search
 
 themes:
   - seven
