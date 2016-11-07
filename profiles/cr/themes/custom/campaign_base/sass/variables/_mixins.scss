@@ -161,3 +161,20 @@
   height: 1px; width: 1px; 
   margin: -1px; padding: 0; border: 0; 
 }
+
+//no objectfit
+ @mixin no-objectfit {
+  .no-objectfit & {
+    position: absolute;
+    top: -100%;
+    right: -100%;
+    bottom: -100%;
+    left: -100%;
+    overflow: hidden;
+    width: auto;
+    max-width: none;
+    height: 100%!important;
+    max-height: none;
+    margin: auto;
+  }
+}
