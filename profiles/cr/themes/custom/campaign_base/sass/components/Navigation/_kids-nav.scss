@@ -30,7 +30,7 @@ nav.menu--kids-menu.block-menu {
     @include icons-sprite(leave-kids);
   }
   .kids-grown-ups {
-    @include icons-sprite(grown-ups);
+    @include icons-sprite(grown-ups, $offset-x: 5px);
   }
   .kids-learn {
     @include icons-sprite(learn);
