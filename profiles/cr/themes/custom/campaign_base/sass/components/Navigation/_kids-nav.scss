@@ -9,7 +9,8 @@
   @include breakpoint($desktop-nav-breakpoint) {
     top: -46px;
     float: none;
-    margin-right: 15px;
+    margin-right: 30px;
+    margin-left: 54px;
   }
   position: relative;
   z-index: 5;
@@ -66,10 +67,9 @@ nav.menu--kids-menu.block-menu {
           padding: 55px 0 10px;
           text-align: center;
         }
-        &.kids-leave-kids,
         &.kids-grown-ups {
           @include breakpoint($desktop-nav-breakpoint) {
-            width: 80px;
+            width: 82px;
           }
         }
         &.kids-leave-kids {
