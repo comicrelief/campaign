@@ -4,13 +4,13 @@ dependencies:
   module:
     - block_content
     - options
-id: block_content.field_teaser_link_colour
-field_name: field_teaser_link_colour
+id: block_content.field_teaser_bg_colour
+field_name: field_teaser_bg_colour
 entity_type: block_content
 type: list_string
 settings:
   allowed_values: null
-  allowed_values_function: field_teaser_link_colour
+  allowed_values_function: cr_teaser_field_cr_teaser_bg_colour
 module: options
 locked: false
 cardinality: 1

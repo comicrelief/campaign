@@ -33,21 +33,26 @@
             "lang": "en"
         }
     ],
+    "type": [
+        {
+            "target_id": "teaser"
+        }
+    ],
     "info": [
         {
             "value": "The great sport relief bake off",
             "lang": "en"
         }
     ],
-    "type": [
-        {
-            "target_id": "teaser"
-        }
-    ],
     "changed": [
         {
-            "value": "1460630315",
+            "value": "1478519086",
             "lang": "en"
+        }
+    ],
+    "revision_created": [
+        {
+            "value": "1478518505"
         }
     ],
     "revision_translation_affected": [
@@ -64,10 +69,20 @@
     ],
     "body": [
         {
-            "value": "<p>Tune in tonight to see Will Young, Ade Edmonson, Morgana Robinson and Alison Steadman battle it out with their bakes.<\/p>\r\n",
+            "value": "<h3>The great sport relief bake off<\/h3>\r\n",
             "format": "basic_html",
             "summary": "",
             "lang": "en"
+        }
+    ],
+    "field_cw_link_target": [
+        {
+            "value": "0"
+        }
+    ],
+    "field_teaser_bg_colour": [
+        {
+            "value": "bg--white"
         }
     ],
     "_embedded": {
@@ -93,16 +108,34 @@
             }
         ]
     },
+    "field_teaser_img_bg": [
+        {
+            "value": "0"
+        }
+    ],
     "field_teaser_link_address": [
         {
-            "uri": "http:\/\/www.sportrelief.com\/whats-going-on\/bake-off",
-            "title": "Find out more",
-            "options": []
+            "value": "\/whats-going-on"
+        }
+    ],
+    "field_teaser_link_colour": [
+        {
+            "value": "btn--blue"
+        }
+    ],
+    "field_teaser_link_title": [
+        {
+            "value": "Find out"
         }
     ],
     "field_teaser_title": [
         {
             "value": "The great sport relief bake off"
+        }
+    ],
+    "field_teaser_you_tube_link": [
+        {
+            "value": "0"
         }
     ]
 }
