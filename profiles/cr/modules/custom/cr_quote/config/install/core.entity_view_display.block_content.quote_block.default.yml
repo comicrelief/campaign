@@ -9,6 +9,7 @@ dependencies:
     - field.field.block_content.quote_block.field_body
     - responsive_image.styles.cw_quote
   module:
+    - image
     - options
     - responsive_image
     - text
@@ -35,15 +36,18 @@ content:
     weight: 2
     label: hidden
     settings:
-      responsive_image_style: cw_quote
       image_link: ''
+      image_style: ''
     third_party_settings: {  }
-    type: responsive_image
+    type: image
   field_body:
     weight: 3
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
-hidden:
-  social_links: true
+  social_links:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

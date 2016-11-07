@@ -8,14 +8,71 @@ dependencies:
     - field.field.block_content.quote_block.field_background_colour
     - field.field.block_content.quote_block.field_background_image
     - field.field.block_content.quote_block.field_body
+  module:
+    - ds
+    - image
+    - options
+    - responsive_image
+    - text
+third_party_settings:
+  ds:
+    layout:
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
+      library: ''
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - field_author_image
+        - field_background_colour
+        - field_background_image
+        - field_body
+        - social_links
 id: block_content.quote_block.cw_m
 targetEntityType: block_content
 bundle: quote_block
 mode: cw_m
-content: {  }
-hidden:
-  field_author_image: true
-  field_background_colour: true
-  field_background_image: true
-  field_body: true
-  social_links: true
+content:
+  field_author_image:
+    type: responsive_image
+    weight: 0
+    label: hidden
+    settings:
+      responsive_image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+  field_background_colour:
+    type: list_default
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_background_image:
+    type: image
+    weight: 0
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+    third_party_settings: {  }
+  field_body:
+    type: text_default
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  social_links:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }
