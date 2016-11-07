@@ -62,7 +62,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "c850b5b8-a5a5-49bb-a7a5-4d076e23e220"
+                        "value": "017bf36f-1066-4b37-8ab9-2e0cbc6e5963"
                     }
                 ],
                 "lang": "en"
@@ -80,7 +80,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "c850b5b8-a5a5-49bb-a7a5-4d076e23e220"
+                        "value": "017bf36f-1066-4b37-8ab9-2e0cbc6e5963"
                     }
                 ]
             }
@@ -134,6 +134,16 @@
         {
             "value": "1",
             "lang": "en"
+        }
+    ],
+    "field_cw_title": [
+        {
+            "value": "Content wall row 1 (visually hidden title)"
+        }
+    ],
+    "field_cw_title_hidden": [
+        {
+            "value": "1"
         }
     ]
 }

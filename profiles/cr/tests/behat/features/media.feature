@@ -1,5 +1,5 @@
-Feature: Downloadable
-  This feature covers downloadables
+Feature: Media
+  This feature covers media (including downloadables)
 
   @api @javascript @not-on-travis
   Scenario: Create a downloadable image
@@ -45,3 +45,15 @@ Feature: Downloadable
     When I go to "admin/content/media"
     Then I should see the link "ext file (administration)"
 
+  @api @test
+  Scenario: Create a video media item
+    Given I am logged in as a user with the "editor" role
+    When I visit "/media/add/video"
+    And I enter "Video (administration name)" for "Media name"
+    And I enter "cBkTjkKrLqs" for "Youtube Video ID"
+    And I enter "Here goes the video caption" for "Video caption"
+    And I press "Save and publish"
+    # Then I should see "Video (administration name) has been created."
+    # And I should see the link "Sample external PDF"
+    And I go to "admin/content/media"
+    Then I should see the link "Video (administration name)"
