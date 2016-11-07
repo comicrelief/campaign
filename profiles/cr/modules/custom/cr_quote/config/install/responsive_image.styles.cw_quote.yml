@@ -8,8 +8,6 @@ dependencies:
     - image.style.cw_quote_263px_width_lg_2x
     - image.style.cw_quote_70x70_crop_sm
     - image.style.cw_quote_70x70_crop_sm_2x
-  theme:
-    - campaign_base
 id: cw_quote
 label: 'CW Quote'
 image_style_mappings:
