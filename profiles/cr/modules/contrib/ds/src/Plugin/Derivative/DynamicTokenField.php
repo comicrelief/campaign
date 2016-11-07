@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Plugin\Derivative\DynamicTokenField.
- */
-
 namespace Drupal\ds\Plugin\Derivative;
 
 use Drupal\ds\Form\TokenFieldForm;

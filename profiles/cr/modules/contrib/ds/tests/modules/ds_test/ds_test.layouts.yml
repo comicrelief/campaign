@@ -7,6 +7,15 @@ dstest_1col:
   regions:
     ds_content:
       label: Content
+dstest_1col_title:
+  label: Test one column only title
+  category: Display Suite
+  class: '\Drupal\ds\Plugin\DsLayout'
+  type: partial
+  template: templates/dstest-1col-title
+  regions:
+    ds_content:
+      label: Content
 dstest_2col:
   label: Test Two column
   category: Display Suite

@@ -1,14 +1,9 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Tests\LayoutPluginTest.
- */
-
 namespace Drupal\ds\Tests;
 
 /**
- * Tests DS layout plugins
+ * Tests DS layout plugins.
  *
  * @group ds
  */
@@ -17,7 +12,7 @@ class LayoutPluginTest extends FastTestBase {
   /**
    * Test basic Display Suite layout plugins.
    */
-  function testFieldPlugin() {
+  public function testFieldPlugin() {
     // Assert our 2 tests layouts are found.
     $this->drupalGet('admin/structure/types/manage/article/display');
     $this->assertRaw('Test One column', 'Test One column layout found');
@@ -41,7 +36,7 @@ class LayoutPluginTest extends FastTestBase {
     );
 
     $this->dsSelectLayout($layout, $assert);
-    $this->dsConfigureUI($fields);
+    $this->dsConfigureUi($fields);
 
     // Create a node.
     $settings = array('type' => 'article');
@@ -52,7 +47,7 @@ class LayoutPluginTest extends FastTestBase {
     $this->assertRaw('group-right', 'Template found (region right)');
     $this->assertRaw('dstest-2col.css', 'Css file included');
 
-    // Alter a region
+    // Alter a region.
     $settings = array(
       'type' => 'article',
       'title' => 'Alter me!',
@@ -63,9 +58,9 @@ class LayoutPluginTest extends FastTestBase {
   }
 
   /**
-   * Test reset layout
+   * Test reset layout.
    */
-  function testResetLayout() {
+  public function testResetLayout() {
     $layout = array(
       'layout' => 'ds_reset',
     );
@@ -81,13 +76,31 @@ class LayoutPluginTest extends FastTestBase {
     );
 
     $this->dsSelectLayout($layout, $assert);
-    $this->dsConfigureUI($fields);
+    $this->dsConfigureUi($fields);
 
     // Create a node.
     $settings = array('type' => 'article');
     $node = $this->drupalCreateNode($settings);
 
     $this->drupalGet('node/' . $node->id());
+  }
+
+  /**
+   * Tests settings default wrappers.
+   */
+  public function testDefaultWrappers() {
+    // Create a node.
+    $settings = array('type' => 'article');
+    $node = $this->drupalCreateNode($settings);
+
+    // Select a layout.
+    $this->dsSelectLayout();
+
+    // Go to the node.
+    $this->drupalGet('node/' . $node->id());
+
+    // Check we don't have empty wrappers.
+    $this->assertNoRaw('<>', 'No empty wrappers found');
   }
 
 }

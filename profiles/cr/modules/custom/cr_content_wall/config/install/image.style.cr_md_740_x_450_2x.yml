@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: cr_md_740_x_450_2x
+label: 'CR md 740 x 450 2x'
+effects:
+  a660068d-7daf-4b27-99da-1873ccec03dc:
+    uuid: a660068d-7daf-4b27-99da-1873ccec03dc
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: '1480'
+      height: '900'

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Tests\FieldGroupTest.
- */
-
 namespace Drupal\ds\Tests;
 
 use Drupal\field_group\Tests\FieldGroupTestTrait;
@@ -19,12 +14,12 @@ class FieldGroupTest extends FastTestBase {
   use FieldGroupTestTrait;
 
   /**
-   * Test tabs
+   * Test tabs.
    */
-  function testFieldPlugin() {
+  public function testFieldPlugin() {
     // Create a node.
     $settings = array('type' => 'article', 'promote' => 1);
-    /** @var \Drupal\node\NodeInterface $node */
+    /* @var \Drupal\node\NodeInterface $node */
     $node = $this->drupalCreateNode($settings);
 
     // Configure layout.
@@ -56,19 +51,18 @@ class FieldGroupTest extends FastTestBase {
       'fields[' . $group->group_name . '][region]' => 'right',
       'fields[body][region]' => 'right',
     );
-    $this->dsConfigureUI($fields);
+    $this->dsConfigureUi($fields);
 
     $fields = array(
       'fields[body][parent]' => $group->group_name,
     );
-    $this->dsConfigureUI($fields);
+    $this->dsConfigureUi($fields);
 
-    //$groups = field_group_info_groups('node', 'article', 'view', 'default', TRUE);
     $this->drupalGet('node/' . $node->id());
 
     // Test group ids and classes.
-    $this->assertFieldByXPath("//div[contains(@class, 'group-right')]/div[contains(@id, 'wrapper-id')]", NULL, t('Wrapper id set on wrapper div'));
-    $this->assertFieldByXPath("//div[contains(@class, 'group-right')]/div[contains(@class, 'test-class')]", NULL, t('Test class set on wrapper div') . 'class="' . $group->group_name . ' test-class');
+    $this->assertFieldByXPath("//div[contains(@class, 'group-right')]/div[contains(@id, 'wrapper-id')]", NULL, 'Wrapper id set on wrapper div');
+    $this->assertFieldByXPath("//div[contains(@class, 'group-right')]/div[contains(@class, 'test-class')]", NULL, 'Test class set on wrapper div' . 'class="' . $group->group_name . ' test-class');
   }
 
 }

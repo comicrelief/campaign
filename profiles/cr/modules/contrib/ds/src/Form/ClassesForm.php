@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Form\ClassesForm.
- */
-
 namespace Drupal\ds\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
@@ -30,18 +25,18 @@ class ClassesForm extends ConfigFormBase {
 
     $form['regions'] = array(
       '#type' => 'textarea',
-      '#title' => t('CSS classes for regions'),
+      '#title' => $this->t('CSS classes for regions'),
       '#default_value' => implode("\n", $config->get('classes.region')),
-      '#description' => t('Configure CSS classes which you can add to regions on the "manage display" screens. Add multiple CSS classes line by line.<br />If you want to have a friendly name, separate class and friendly name by |, but this is not required. eg:<br /><em>class_name_1<br />class_name_2|Friendly name<br />class_name_3</em>')
+      '#description' => t('Configure CSS classes which you can add to regions on the "manage display" screens. Add multiple CSS classes line by line.<br />If you want to have a friendly name, separate class and friendly name by |, but this is not required. eg:<br /><em>class_name_1<br />class_name_2|Friendly name<br />class_name_3</em>'),
     );
 
-    // Only show field classes if DS extras module is enabled
+    // Only show field classes if DS extras module is enabled.
     if (\Drupal::moduleHandler()->moduleExists('ds_extras')) {
       $form['fields'] = array(
         '#type' => 'textarea',
-        '#title' => t('CSS classes for fields'),
-        '#default_value' =>  implode("\n", $config->get('classes.field')),
-        '#description' => t('Configure CSS classes which you can add to fields on the "manage display" screens. Add multiple CSS classes line by line.<br />If you want to have a friendly name, separate class and friendly name by |, but this is not required. eg:<br /><em>class_name_1<br />class_name_2|Friendly name<br />class_name_3</em>')
+        '#title' => $this->t('CSS classes for fields'),
+        '#default_value' => implode("\n", $config->get('classes.field')),
+        '#description' => $this->t('Configure CSS classes which you can add to fields on the "manage display" screens. Add multiple CSS classes line by line.<br />If you want to have a friendly name, separate class and friendly name by |, but this is not required. eg:<br /><em>class_name_1<br />class_name_2|Friendly name<br />class_name_3</em>'),
       );
     }
 
@@ -54,14 +49,14 @@ class ClassesForm extends ConfigFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     parent::submitForm($form, $form_state);
 
-    // Prepare region classes
+    // Prepare region classes.
     $region_classes = array();
     $regions = $form_state->getValue('regions');
     if (!empty($regions)) {
       $region_classes = explode("\n", str_replace("\r", '', $form_state->getValue('regions')));
     }
 
-    // Prepare field classes
+    // Prepare field classes.
     $field_classes = array();
     $fields = $form_state->getValue('fields');
     if (!empty($fields)) {
@@ -79,7 +74,8 @@ class ClassesForm extends ConfigFormBase {
    */
   protected function getEditableConfigNames() {
     return array(
-      'ds.settings'
+      'ds.settings',
     );
   }
+
 }

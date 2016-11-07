@@ -9,12 +9,14 @@ field_name: field_br_block_reference
 entity_type: paragraph
 bundle: cr_block_reference
 label: 'Block reference'
-description: ''
+description: 'This field is for referencing config blocks e.g. ESU block'
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
   handler: 'default:block'
-  handler_settings: {  }
+  handler_settings:
+    target_bundles: null
+    auto_create: false
 field_type: entity_reference

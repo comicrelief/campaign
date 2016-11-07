@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Plugin\DsField\User\Username.
- */
-
 namespace Drupal\ds\Plugin\DsField\User;
 
 use Drupal\ds\Plugin\DsField\Title;

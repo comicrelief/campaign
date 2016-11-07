@@ -9,7 +9,7 @@
 }
 
 [dir="rtl"] .ds-2col > .group-left {
-    float: right;
+  float: right;
 }
 
 .ds-2col > .group-right {
@@ -18,5 +18,5 @@
 }
 
 [dir="rtl"] .ds-2col > .group-right {
-    float: right;
+  float: right;
 }

@@ -32,3 +32,6 @@ ds.settings:
           sequence:
             - type: string
               label: 'Field class'
+    use_field_names:
+      type: boolean
+      label: 'Use field names as field keys'

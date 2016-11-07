@@ -3,16 +3,13 @@
  * Styling for the ds-2col-stacked-fluid template.
  */
 
-.ds-2col-stacked-fluid > .group-header {
-}
-
 .ds-2col-stacked-fluid > .group-left {
   float: left; /* LTR */
   width: 50%;
 }
 
 [dir="rtl"] .ds-2col-stacked-fluid > .group-left {
-    float: right;
+  float: right;
 }
 
 .ds-2col-stacked-fluid > .group-right {
@@ -21,7 +18,7 @@
 }
 
 [dir="rtl"] .ds-2col-stacked-fluid > .group-right {
-    float: left;
+  float: left;
 }
 
 .ds-2col-stacked-fluid.group-one-column > .group-left,

@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_video_caption
+    - media_entity.bundle.video
+  module:
+    - text
+id: media.video.field_video_caption
+field_name: field_video_caption
+entity_type: media
+bundle: video
+label: 'Video caption'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,14 +1,8 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Plugin\DsField\Field.
- */
-
 namespace Drupal\ds\Plugin\DsField;
 
 use Drupal\Component\Utility\Html;
-use Drupal\Core\Entity\EntityInterface;
 
 /**
  * The base plugin to create DS fields.
@@ -21,14 +15,14 @@ abstract class Field extends DsFieldBase {
   public function build() {
     $config = $this->getConfiguration();
 
-    // Initialize output
+    // Initialize output.
     $output = '';
 
     // Basic string.
     $entity_render_key = $this->entityRenderKey();
 
     if (isset($config['link text'])) {
-      $output = t($config['link text']);
+      $output = $this->t($config['link text']);
     }
     elseif (!empty($entity_render_key) && isset($this->entity()->{$entity_render_key})) {
       if ($this->getEntityTypeId() == 'user' && $entity_render_key == 'name') {
@@ -45,7 +39,7 @@ abstract class Field extends DsFieldBase {
 
     // Link.
     if (!empty($config['link'])) {
-      /** @var $entity EntityInterface */
+      /* @var $entity EntityInterface */
       $entity = $this->entity();
       $url_info = $entity->toUrl();
       if (!empty($config['link class'])) {

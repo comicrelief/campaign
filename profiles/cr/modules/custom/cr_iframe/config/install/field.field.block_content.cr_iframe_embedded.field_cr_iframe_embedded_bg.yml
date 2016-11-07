@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cr_iframe_embedded
+    - field.storage.block_content.field_cr_iframe_embedded_bg
+  module:
+    - options
+id: block_content.cr_iframe_embedded.field_cr_iframe_embedded_bg
+field_name: field_cr_iframe_embedded_bg
+entity_type: block_content
+bundle: cr_iframe_embedded
+label: 'Background Colour'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

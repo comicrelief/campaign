@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Plugin\DsField\DynamicBlockField.
- */
-
 namespace Drupal\ds\Plugin\DsField;
 
-use Drupal\Core\Block\BlockPluginInterface;
 use Drupal\views\Plugin\Block\ViewsBlock;
 
 /**
@@ -50,7 +44,7 @@ class DynamicBlockField extends BlockBase {
     $title = $field['title'];
 
     if (isset($field['properties']['use_block_title']) && $field['properties']['use_block_title'] == TRUE) {
-      /** @var $block BlockPluginInterface */
+      /* @var $block BlockPluginInterface */
       $block = $this->getBlock();
 
       if ($block instanceof ViewsBlock) {
@@ -58,7 +52,8 @@ class DynamicBlockField extends BlockBase {
         if (!empty($block_build['#title'])) {
           $title = $block_build['#title'];
         }
-      } else {
+      }
+      else {
         $title = $block->label();
       }
     }

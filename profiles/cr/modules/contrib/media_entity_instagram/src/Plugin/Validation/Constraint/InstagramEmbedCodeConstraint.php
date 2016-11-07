@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\media_entity_instagram\Plugin\Validation\Constraint\InstagramEmbedCodeConstraint.
- */
-
 namespace Drupal\media_entity_instagram\Plugin\Validation\Constraint;
 
 use Symfony\Component\Validator\Constraint;
@@ -26,4 +21,5 @@ class InstagramEmbedCodeConstraint extends Constraint {
    * @var string
    */
   public $message = 'Not valid Instagram URL/Embed code.';
+
 }

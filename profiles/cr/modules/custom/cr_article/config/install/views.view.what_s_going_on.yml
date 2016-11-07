@@ -55,13 +55,13 @@ display:
       pager:
         type: full
         options:
-          items_per_page: 3
+          items_per_page: 12
           offset: 0
           id: 0
           total_pages: null
           tags:
-            previous: '‹ Previous'
-            next: 'Next ›'
+            previous: ‹‹
+            next: ››
             first: '« First'
             last: 'Last »'
           expose:
@@ -264,7 +264,7 @@ display:
           exposed: true
           expose:
             operator_id: field_article_category_target_id_op
-            label: 'Filter category:'
+            label: 'Filter by category:'
             description: ''
             use_operator: false
             operator: field_article_category_target_id_op

@@ -1,0 +1,5 @@
+{% set video_link = 'https://www.youtube.com/embed/' ~ field_youtube_video_id['#items'][0].value ~ '?autoplay=1' %}
+<a class="media-block__link" data-rel="lightcase" href="{{ video_link }}">media block</a>
+<div class="media-block__caption">
+	{{ field_video_caption }}
+</div>

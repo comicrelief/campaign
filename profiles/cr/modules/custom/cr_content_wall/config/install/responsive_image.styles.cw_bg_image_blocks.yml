@@ -1,0 +1,43 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.cr_lg_1170_x_450
+    - image.style.cr_lg_1170_x_450_2x
+    - image.style.cr_md_740_x_450
+    - image.style.cr_md_740_x_450_2x
+id: cw_bg_image_blocks
+label: 'CW Bg image blocks'
+image_style_mappings:
+  -
+    breakpoint_id: campaign_base.large
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: cr_lg_1170_x_450
+  -
+    breakpoint_id: campaign_base.large
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: cr_lg_1170_x_450_2x
+  -
+    breakpoint_id: campaign_base.medium
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: cr_md_740_x_450
+  -
+    breakpoint_id: campaign_base.medium
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: cr_md_740_x_450_2x
+  -
+    breakpoint_id: campaign_base.small
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: cr_md_740_x_450
+  -
+    breakpoint_id: campaign_base.small
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: cr_md_740_x_450_2x
+breakpoint_group: campaign_base
+fallback_image_style: cr_lg_1170_x_450

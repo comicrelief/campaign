@@ -12,7 +12,7 @@ Feature: Landing-page
     And I should see "Cakier"
     And I should see the link "Get your Dancing Kit"
     And I should see the link "Get fundraising ideas"
-    And I should see "THE COUNTDOWN IS ON"
+    And I should see "Relive all the best bits of last Red Nose Day"
     And I should see "FERN BRITTON SPEAKS OUT"
     And I should see "Rich text bg title"
 

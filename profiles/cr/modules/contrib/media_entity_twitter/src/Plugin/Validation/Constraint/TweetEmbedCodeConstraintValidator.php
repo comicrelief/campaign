@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\media_entity_twitter\Plugin\Validation\Constraint\TweetEmbedCodeConstraintValidator.
- */
-
 namespace Drupal\media_entity_twitter\Plugin\Validation\Constraint;
 
 use Drupal\media_entity\EmbedCodeValueTrait;

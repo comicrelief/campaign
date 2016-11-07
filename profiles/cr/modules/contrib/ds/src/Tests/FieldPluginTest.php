@@ -1,14 +1,9 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Tests\FieldPluginTest.
- */
-
 namespace Drupal\ds\Tests;
 
 /**
- * Tests DS field plugins
+ * Tests DS field plugins.
  *
  * @group ds
  */
@@ -17,7 +12,7 @@ class FieldPluginTest extends FastTestBase {
   /**
    * Test basic Display Suite fields plugins.
    */
-  function testFieldPlugin() {
+  public function testFieldPlugin() {
 
     $this->dsSelectLayout();
 
@@ -44,6 +39,7 @@ class FieldPluginTest extends FastTestBase {
       'fields[node_links][region]' => 'left',
       'fields[body][region]' => 'right',
       'fields[test_field][region]' => 'right',
+      'fields[test_multiple_field][region]' => 'right',
       'fields[test_field_empty_string][region]' => 'right',
       'fields[test_field_empty_string][label]' => 'inline',
       'fields[test_field_false][region]' => 'right',
@@ -61,7 +57,7 @@ class FieldPluginTest extends FastTestBase {
     );
 
     $this->dsSelectLayout();
-    $this->dsConfigureUI($fields);
+    $this->dsConfigureUi($fields);
 
     // Create a node.
     $settings = array('type' => 'article');
@@ -71,6 +67,8 @@ class FieldPluginTest extends FastTestBase {
     $this->assertRaw('group-left', 'Template found (region left)');
     $this->assertRaw('group-right', 'Template found (region right)');
     $this->assertText('Test field plugin on node ' . $node->id(), 'Test field plugin found');
+    $this->assertText('Test row one of multiple field plugin on node ' . $node->id(), 'First item of multiple field plugin found');
+    $this->assertText('Test row two of multiple field plugin on node ' . $node->id(), 'Second item of multiple field plugin found');
     $this->assertText('Test field plugin that returns an empty string', 'Test field plugin that returns an empty string is visible.');
     $this->assertNoText('Test field plugin that returns FALSE', 'Test field plugin that returns FALSE is not visible.');
     $this->assertNoText('Test field plugin that returns NULL', 'Test field plugin that returns NULL is not visible.');

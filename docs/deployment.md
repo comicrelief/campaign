@@ -4,6 +4,12 @@
 3. __Tuesday AM__: First release build, and deployment to staging. 
 4. __Wednesday AM__: Deploy to production. Tagging of branches, updating of Release notes. 
 
+### Planning and communicating a release
+
+- First of all, start by [reviewing the milestone marking the new release](https://github.com/comicrelief/campaign/milestone/14?closed=1) and make sure you understand the PRs that will be part of your release + make a mental note of any manual steps to be aware of. Help reviewing any open PRs that are tagged as "ready to merge".
+- After you prepared a release and deployed to staging, you need to make sure that JIRA issues are correctly tagged. You can [use this JIRA view to do so](http://jira.comicrelief.com/secure/RapidBoard.jspa?rapidView=125&selectedIssue=PLAT-562&quickFilter=517)
+- Announce the release log in the relevant channels. #QA for staging releases, #RND17 for production releases. @zach to provide the exact wording for this.
+
 ### Building a Release
 
 - Git clone both the campaign and rnd17 repositories, and checkout the develop branch. Configure each local copy as per instructions in the docs folder.
@@ -72,3 +78,4 @@ Assuming the release branch that was deployed to staging in the previous steps h
 Note: The build artifact id will be output to the #craftlogs Slack channel once its built. 
 - Once the deployment is completed and the success message appears in #deployments, login to the site and do general smoke tests
 - Announce to the #deployments Slack channel so the release can be sanity checked by @QA's
+- Make sure the Jira release date has been filled in, both on the [RND](https://jira.comicrelief.com/browse/RND) project and [Platform](https://jira.comicrelief.com/browse/PLAT)

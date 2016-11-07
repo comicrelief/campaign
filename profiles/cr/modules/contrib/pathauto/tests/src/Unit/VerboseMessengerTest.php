@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\pathauto\VerboseMessengerTest
- */
-
 namespace Drupal\Tests\pathauto\Unit {
 
   use Drupal\pathauto\VerboseMessenger;
@@ -51,7 +46,8 @@ namespace Drupal\Tests\pathauto\Unit {
     public function testDoNotAddMessageWhileBulkupdate() {
       $this->assertFalse($this->messenger->addMessage("Test message", "bulkupdate"), "The message was NOT added");
     }
-  }
+
+}
 
 }
 namespace {
@@ -61,4 +57,3 @@ namespace {
     }
   }
 }
-

@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: cr_md_740_x_450
+label: 'CR md 740 x 450'
+effects:
+  dc0f3e58-fa6d-4c47-8c4f-7a25193c642f:
+    uuid: dc0f3e58-fa6d-4c47-8c4f-7a25193c642f
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: '740'
+      height: '450'

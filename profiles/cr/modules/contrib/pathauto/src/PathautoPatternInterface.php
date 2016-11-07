@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\pathauto\PathautoPatternInterface.
- */
-
 namespace Drupal\pathauto;
 
 use Drupal\Core\Config\Entity\ConfigEntityInterface;
