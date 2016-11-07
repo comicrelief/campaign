@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: cw_quote_70x70_crop_sm_2x
+label: 'CW Quote - 70x70 crop - SM (2x)'
+effects:
+  c12f8006-5dd2-4dc6-8f49-a010396238a5:
+    uuid: c12f8006-5dd2-4dc6-8f49-a010396238a5
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: '140'
+      height: '140'

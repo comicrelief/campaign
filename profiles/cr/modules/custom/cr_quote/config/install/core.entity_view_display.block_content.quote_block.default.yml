@@ -7,9 +7,10 @@ dependencies:
     - field.field.block_content.quote_block.field_background_colour
     - field.field.block_content.quote_block.field_background_image
     - field.field.block_content.quote_block.field_body
+    - responsive_image.styles.cw_quote
   module:
-    - image
     - options
+    - responsive_image
     - text
 id: block_content.quote_block.default
 targetEntityType: block_content
@@ -20,10 +21,10 @@ content:
     weight: 1
     label: hidden
     settings:
-      image_style: ''
+      responsive_image_style: cw_quote
       image_link: ''
     third_party_settings: {  }
-    type: image
+    type: responsive_image
   field_background_colour:
     weight: 0
     label: hidden
@@ -34,10 +35,10 @@ content:
     weight: 2
     label: hidden
     settings:
-      image_style: ''
+      responsive_image_style: cw_quote
       image_link: ''
     third_party_settings: {  }
-    type: image
+    type: responsive_image
   field_body:
     weight: 3
     label: hidden

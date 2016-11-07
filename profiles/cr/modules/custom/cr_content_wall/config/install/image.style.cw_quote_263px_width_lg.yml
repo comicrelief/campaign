@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: cw_quote_263px_width_lg
+label: 'CW Quote - 263px width - LG'
+effects:
+  b51ef00b-6257-4307-8ea9-391cb7a394fa:
+    uuid: b51ef00b-6257-4307-8ea9-391cb7a394fa
+    id: image_scale
+    weight: 1
+    data:
+      width: 263
+      height: null
+      upscale: false

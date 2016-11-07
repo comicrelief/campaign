@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: cw_quote_126px_width_md
+label: 'CW Quote - 126px width - MD'
+effects:
+  852a2e3d-59dd-4602-997f-6160a3760894:
+    uuid: 852a2e3d-59dd-4602-997f-6160a3760894
+    id: image_scale
+    weight: 1
+    data:
+      width: 126
+      height: null
+      upscale: false
