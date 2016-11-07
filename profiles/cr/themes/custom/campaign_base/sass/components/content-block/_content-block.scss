@@ -34,7 +34,7 @@
     display: block;
     width: 100%;
     height: 100%;
-    @include transition(0.2s);
+    @include transition(opacity 0.2s);
     @include opacity(0.9);
     object-fit: cover;
     .no-objectfit & {
@@ -71,4 +71,10 @@
 .content-block__tag {
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+// add to the layout/views.scss for all blocks
+@include breakpoint(max-width 739px) {
+  .content-block {
+    padding: 0 calc(4 * #{gutter()}) calc(4 * #{gutter()});
+  }
 }
