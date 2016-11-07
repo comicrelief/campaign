@@ -4,6 +4,13 @@ description: Contains config for the quote block.
 core: 8.x
 package: Comic Relief
 config_devel:
+  - image.style.cw_quote_126px_width_md_2x
+  - image.style.cw_quote_263px_width_lg_2x
+  - image.style.cw_quote_70x70_crop_sm_2x
+  - image.style.cw_quote_126px_width_md
+  - image.style.cw_quote_263px_width_lg
+  - image.style.cw_quote_70x70_crop_sm
+  - responsive_image.styles.cw_quote
   - block_content.type.quote_block
   - core.entity_form_display.block_content.quote_block.default
   - core.entity_view_display.block_content.quote_block.default
