@@ -1,32 +1,5 @@
 // views layout
 
-// .view {
-//   .item-list {
-//     li {
-//       @include span(6 of 6);
-//       @include breakpoint($screen-md) {
-//        @include span(6);
-//       }
-//       @include breakpoint($screen-lg) {
-//        @include span(4);
-//         &:first-child {
-//           // @include span(8);
-//         }
-//         &:nth-child(1),
-//         &:nth-child(2) {
-//           // @include span(6);
-//         }
-//       }
-//       margin-bottom: 15px;
-//       .field--name-field-image {
-//         img {
-//           width: 100%;
-//           height: auto;
-//         }
-//       }
-//     }
-//   }
-// }
 .view-content {
   .views-row {
     @include span(12);
