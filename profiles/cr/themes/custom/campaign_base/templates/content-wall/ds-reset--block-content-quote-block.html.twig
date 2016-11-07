@@ -2,25 +2,18 @@
 {% set bg_color = content['field_background_colour'] %}
 {% set body = content['field_body'] %}
 
-
-
-{{ kint( field_author_image ) }}
-
 <article class="view-mode-{{view_mode}} cw-quote clearfix"> 
 	<div class="cw-quote__outer-wrapper">
 		<div class="cw-quote__bg-image">
 			{{ field_background_image }}
-			{# <img src="/profiles/cr/themes/custom/campaign_base/images/styleguide-images/pattern.gif" alt="test" typeof="foaf:Image"> #}
 		</div>
 		<div class="cw-quote__inner-wrapper">
 				<div class="cw-quote__image bg--purple">
 					{{ content['field_author_image'] }}
-{# 				<img src="/profiles/cr/themes/custom/campaign_base/images/styleguide-images/silhouette.png" alt="test" typeof="foaf:Image">
- #}			</div>
+		</div>
 			<div class="cw-quote__body">
 				{{ field_body }}
 			</div>
 		</div>
 	</div>
 </article>
-
