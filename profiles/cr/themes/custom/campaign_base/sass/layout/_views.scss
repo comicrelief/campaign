@@ -1,36 +1,9 @@
 // views layout
 
-// .view {
-//   .item-list {
-//     li {
-//       @include span(6 of 6);
-//       @include breakpoint($screen-md) {
-//       	@include span(6);
-//       }
-//       @include breakpoint($screen-lg) {
-//       	@include span(4);
-//         &:first-child {
-//           // @include span(8);
-//         }
-//         &:nth-child(1),
-//         &:nth-child(2) {
-//           // @include span(6);
-//         }
-//       }
-//       margin-bottom: 15px;
-//       .field--name-field-image {
-//         img {
-//           width: 100%;
-//           height: auto;
-//         }
-//       }
-//     }
-//   }
-// }
 .view-content {
   .views-row {
     @include span(12);
-    margin-bottom: gutter();
+    margin-bottom: calc(2 * #{gutter()});
     @include breakpoint($screen-md) {
       @include span(4);
     }
@@ -38,41 +11,36 @@
 }
 .cw-region {
   article {
-    padding: 0 calc(4 * #{gutter()}) calc(4 * #{gutter()});
-    @include breakpoint($screen-md, $no-query: true) {
-      padding: 0;
-    }
+    &.block-content--view-mode-cw-s,
     &.view-mode-cw_s {
       width: 100%;
+      margin-bottom: calc(2 * #{gutter()});
       @include breakpoint($screen-md, $no-query: true) {
         @include span(4);
-        margin: gutter();
       }
     }
+    &.block-content--view-mode-cw-m,
     &.view-mode-cw_m {
       width: 100%;
+      margin-bottom: calc(2 * #{gutter()});
       @include breakpoint($screen-md, $no-query: true) {
         @include span(6);
-        margin: gutter();
       }
     }
+    &.block-content--view-mode-cw-mp,
+    &.view-mode-cw_mp {
+      width: 100%;
+      margin-bottom: calc(2 * #{gutter()});
+      @include breakpoint($screen-md, $no-query: true) {
+        @include span(8);
+      }
+    }
+    &.block-content--view-mode-cw-l,
     &.view-mode-cw_l {
       width: 100%;
+      margin-bottom: calc(2 * #{gutter()});
       @include breakpoint($screen-md) {
-        width: 100%;
-        margin: 0;
-      }
-      .cw-article__image {
-        @include breakpoint($screen-md, $no-query: true) {
-          @include span(8 no-gutter wide);
-          margin-left: gutter();
-        }
-      }
-      .cw-article__body {
-        @include breakpoint($screen-md, $no-query: true) {
-          @include span(4 no-gutter last);
-          margin-right: gutter();
-        }
+        @include span(12);
       }
     }
   }
