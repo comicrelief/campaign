@@ -55,7 +55,7 @@ nav.menu--kids-menu.block-menu {
     }
     .menu-item {
       @include breakpoint($desktop-nav-breakpoint) {
-        margin: 0 13px;
+        margin: 0 18px;
         padding: 14px 0;
       }
       a {
