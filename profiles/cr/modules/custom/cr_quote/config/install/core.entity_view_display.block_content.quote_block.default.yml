@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - block_content.type.quote_block
+    - field.field.block_content.quote_block.field_author_background_colour
     - field.field.block_content.quote_block.field_author_image
     - field.field.block_content.quote_block.field_background_colour
     - field.field.block_content.quote_block.field_background_image
@@ -18,6 +19,12 @@ targetEntityType: block_content
 bundle: quote_block
 mode: default
 content:
+  field_author_background_colour:
+    weight: 4
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
   field_author_image:
     weight: 1
     label: hidden

@@ -4,6 +4,7 @@ dependencies:
   config:
     - block_content.type.quote_block
     - core.entity_view_mode.block_content.cw_mp
+    - field.field.block_content.quote_block.field_author_background_colour
     - field.field.block_content.quote_block.field_author_image
     - field.field.block_content.quote_block.field_background_colour
     - field.field.block_content.quote_block.field_background_image
@@ -34,6 +35,7 @@ third_party_settings:
           layout_class: {  }
     regions:
       ds_content:
+        - field_author_background_colour
         - field_author_image
         - field_background_colour
         - field_background_image
@@ -44,6 +46,12 @@ targetEntityType: block_content
 bundle: quote_block
 mode: cw_mp
 content:
+  field_author_background_colour:
+    type: list_default
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
   field_author_image:
     type: responsive_image
     weight: 0

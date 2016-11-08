@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - block_content.type.quote_block
+    - field.field.block_content.quote_block.field_author_background_colour
     - field.field.block_content.quote_block.field_author_image
     - field.field.block_content.quote_block.field_background_colour
     - field.field.block_content.quote_block.field_background_image
@@ -16,27 +17,32 @@ targetEntityType: block_content
 bundle: quote_block
 mode: default
 content:
-  field_author_image:
+  field_author_background_colour:
     weight: 2
-    settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
-    third_party_settings: {  }
-    type: image_image
-  field_background_colour:
-    weight: 1
     settings: {  }
     third_party_settings: {  }
     type: options_select
-  field_background_image:
+  field_author_image:
     weight: 3
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
-  field_body:
+  field_background_colour:
     weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_background_image:
+    weight: 4
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+  field_body:
+    weight: 5
     settings:
       rows: 5
       placeholder: ''
