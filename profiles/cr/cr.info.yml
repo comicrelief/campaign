@@ -181,9 +181,8 @@ config_devel:
   - image.style.story_293_x_322_crop_lg
   - image.style.story_479_x_352_crop_md
   - image.style.story_739_x_561_crop_sm
-  - image.style.cw_quote_126px_width_md
-  - image.style.cw_quote_263px_width_lg
-  - image.style.cw_quote_70x70_crop_sm
+  - image.style.cw_quote_lg
+  - image.style.cw_quote_sm
 
   # Retina image styles
   - image.style.bg_rich_text_narrow_2x
@@ -200,9 +199,8 @@ config_devel:
   - image.style.story_293_x_322_crop_lg_2x_
   - image.style.story_479_x_352_crop_md_2x_
   - image.style.story_739_x_561_crop_sm_2x_
-  - image.style.cw_quote_126px_width_md_2x
-  - image.style.cw_quote_263px_width_lg_2x
-  - image.style.cw_quote_70x70_crop_sm_2x
+  - image.style.cw_quote_lg_2x
+  - image.style.cw_quote_sm_2x
 
   # Responsive image style mappings
   - responsive_image.styles.hero_image_full_node
@@ -214,6 +212,7 @@ config_devel:
   - responsive_image.styles.cr_listing_teaser
   - responsive_image.styles.story_row
   - responsive_image.styles.cw_quote
+  - responsive_image.styles.cw_quote_cw_s_and_m_viewmodes_
 
   # Metatags
   - metatag.metatag_defaults.403

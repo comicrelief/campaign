@@ -9,7 +9,7 @@ dependencies:
     - field.field.block_content.quote_block.field_background_colour
     - field.field.block_content.quote_block.field_background_image
     - field.field.block_content.quote_block.field_body
-    - responsive_image.styles.cw_quote
+    - responsive_image.styles.cw_quote_cw_s_and_m_viewmodes_
   module:
     - ds
     - image
@@ -57,7 +57,7 @@ content:
     weight: 0
     label: hidden
     settings:
-      responsive_image_style: cw_quote
+      responsive_image_style: cw_quote_cw_s_and_m_viewmodes_
       image_link: ''
     third_party_settings: {  }
   field_background_colour:

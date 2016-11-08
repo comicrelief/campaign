@@ -25,8 +25,8 @@ content:
   field_author_image:
     weight: 3
     settings:
+      preview_image_style: large
       progress_indicator: throbber
-      preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
   field_background_colour:
@@ -37,8 +37,8 @@ content:
   field_background_image:
     weight: 4
     settings:
-      progress_indicator: throbber
       preview_image_style: thumbnail
+      progress_indicator: throbber
     third_party_settings: {  }
     type: image_image
   field_body:

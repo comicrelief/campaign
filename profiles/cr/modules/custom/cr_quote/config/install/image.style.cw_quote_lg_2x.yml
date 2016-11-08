@@ -1,14 +1,14 @@
 langcode: en
 status: true
 dependencies: {  }
-name: cw_quote_263px_width_lg_2x
-label: 'CW Quote - 263px width - LG (2x)'
+name: cw_quote_lg_2x
+label: 'CW Quote - LG (2x)'
 effects:
   a2a31085-90fd-48b0-a823-1c576da53b33:
     uuid: a2a31085-90fd-48b0-a823-1c576da53b33
     id: image_scale
     weight: 1
     data:
-      width: 526
+      width: 720
       height: null
       upscale: false
