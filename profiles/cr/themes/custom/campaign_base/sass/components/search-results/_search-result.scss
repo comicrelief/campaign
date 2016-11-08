@@ -6,6 +6,11 @@
 //
 // Style guide: search-result
 
+.node--type-page.search-result {
+  @include breakpoint($screen-md, $no-query: true) {
+    padding-bottom: 0;
+  }
+}
 .path-search {
   background-color: $colour-smoke-grey;
 }
@@ -49,9 +54,6 @@
   padding: calc(2 * #{gutter()});
   margin-right: 0;
   padding: 30px;
-  .node--view-mode-search-index & {
-    height: calc(100% - 60px);
-  }
   &.search-result__content-wrapper--no-image {
     @include span(12);
     position: relative;
