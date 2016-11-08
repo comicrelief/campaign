@@ -4,6 +4,13 @@
     display: inline-block;
   }
 }
+@include breakpoint(max-width 739px) {
+  // fix issue kids menu
+  nav.menu--kids-menu ul.menu {
+    float: left;
+    top: -5px;
+  }
+}
 .kids-logo {
   @include icons-sprite(kids-logo);
   @include breakpoint($desktop-nav-breakpoint) {
