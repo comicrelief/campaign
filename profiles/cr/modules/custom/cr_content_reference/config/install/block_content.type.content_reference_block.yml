@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: content_reference_block
+label: 'Content reference block'
+revision: 0
+description: 'This block type is used for referencing content nodes within the content wall.'
