@@ -8,7 +8,7 @@
         },
         "http:\/\/drupal.org\/rest\/relation\/block_content\/teaser\/field_teaser_image": [
             {
-                "href": "http:\/\/default\/file\/3389?_format=hal_json"
+                "href": "http:\/\/default\/file\/3392?_format=hal_json"
             }
         ]
     },
@@ -90,7 +90,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/file\/3389?_format=hal_json"
+                        "href": "http:\/\/default\/file\/3392?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/file\/image"

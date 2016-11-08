@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.content_reference_block
+    - field.field.block_content.content_reference_block.field_content_reference
+id: block_content.content_reference_block.default
+targetEntityType: block_content
+bundle: content_reference_block
+mode: default
+content:
+  field_content_reference:
+    weight: 0
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+hidden:
+  social_links: true

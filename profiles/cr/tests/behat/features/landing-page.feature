@@ -13,7 +13,9 @@ Feature: Landing-page
     And I should see the link "Get your Dancing Kit"
     And I should see the link "Get fundraising ideas"
     And I should see "Relive all the best bits of last Red Nose Day"
-    And I should see "FERN BRITTON SPEAKS OUT"
+    And I should see "Get tips and tools to help you fundraise"
+    And I should see "Fern Britton speaks out"
+    And I should see "British Triathlon cheers Greg James on"
     And I should see "Rich text bg title"
 
   @api @default-content

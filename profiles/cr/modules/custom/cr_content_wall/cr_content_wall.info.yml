@@ -16,7 +16,7 @@ config_devel:
   # Paragraph config
   - field.storage.node.field_paragraphs
   - paragraphs.paragraphs_type.cw_row
-  # View modes
+  # Content wall row view modes
   - core.entity_form_display.paragraph.cw_row.default
   - core.entity_view_display.paragraph.cw_row.default
   - core.entity_form_display.block_content.cw_row_block.default
@@ -46,6 +46,14 @@ config_devel:
   - core.entity_view_display.block_content.media_reference.cw_m
   - core.entity_view_display.block_content.media_reference.cw_mp
   - core.entity_view_display.block_content.media_reference.cw_s
+  # Content block reference view modes
+  - core.entity_view_display.block_content.content_reference_block.cw_l
+  - core.entity_view_display.block_content.content_reference_block.cw_m
+  - core.entity_view_display.block_content.content_reference_block.cw_mp
+  - core.entity_view_display.block_content.content_reference_block.cw_s
+  # Content view modes
+  - core.entity_view_mode.node.content_wall
+  - core.entity_view_display.node.article.content_wall
   # View mode config
   - core.entity_view_mode.block_content.cw_1col_l
   - core.entity_view_mode.block_content.cw_2col_m_m
