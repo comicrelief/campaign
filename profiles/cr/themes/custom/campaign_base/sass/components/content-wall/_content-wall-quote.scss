@@ -7,6 +7,9 @@
 // Style guide: Content-wall-quote
 
 
+.cw-quote {
+  margin: gutters();
+}
 
 .cw-quote__bg-image {
 	width: 100%;
@@ -54,23 +57,10 @@
   }
 }
 
-/* Medium & Small viewmode */
-.cw-region article.cw-quote.view-mode-cw_mp {
 
-  @include breakpoint($screen-md) {
-    @include span(8);
-    margin: 1.25%;
-  }
-
-  @include breakpoint($screen-lg) {
-    @include span(8);
-    margin: 1.25%;
-  }
-} 
 
 
 .view-mode-cw_l,
-.view-mode-cw_m,
 .view-mode-cw_mp  {
   .cw-quote__inner-wrapper {
     @include breakpoint($screen-md) {
@@ -130,26 +120,73 @@
   }
 } 
 
-/* Make the fullwidth version fit the grid */
+/* CW L viewmode only */
 .cw-region article.cw-quote.view-mode-cw_l {
   
   @include breakpoint($screen-md) {
     @include span(12);
     margin: 1.25%;
+
+    .cw-quote__image {
+      @include span(4);
+      left: span(8);
+      @include translateY(0);
+      top: auto;
+      bottom: 0
+    }
   }
 
   @include breakpoint($screen-lg) {
     .cw-quote__image {
-      top: 30px;
-      //@include span();
+      @include span(4);
+      left: span(8);
+      top: 0;
+      bottom: auto;
+      margin-top: 0;
     }
   }
 }
 
-.cw-region article.cw-quote.view-mode-cw_m {
-  
+/* Medium & Small viewmode */
+.cw-region article.cw-quote.view-mode-cw_mp {
+
   @include breakpoint($screen-md) {
-    @include span(12);
+    @include span(8);
     margin: 1.25%;
+
+    .cw-quote__body {
+      @include span(6);
+    }
+
+    .cw-quote__image {
+      @include span(5);
+      bottom: 0;
+      top: auto;
+      @include translateY(0);
+    }
   }
+
+  @include breakpoint($screen-lg) {
+    @include span(8);
+
+    .cw-quote__body {
+      @include span(6);
+    }
+
+    .cw-quote__image {
+      @include span(5);
+      left: span(7);
+      bottom: auto;
+      top: 0;
+    }
+  }
+} 
+
+/* CW M viewmode only */
+.cw-region article.cw-quote.view-mode-cw_m {
+}
+
+/* CW S viewmode only */
+.cw-region article.cw-quote.view-mode-cw_s {
+  margin: 1.25%;
 }
