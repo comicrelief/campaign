@@ -27,8 +27,6 @@ function cr_google_tag_page_attachments(array &$attachments) {
           'logged': 'N'
         }
       }];",
-      '#attributes' => array('src' => ''),
-
     ],
     'cr_google_tag',
   ];

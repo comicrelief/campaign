@@ -50,7 +50,8 @@ class DefaultContentImportedSubscriber implements EventSubscriberInterface {
 
     $links_from_map($map);
 
-    // $this->createFooterQuickLinks();
+  	// Set front page to our new fundraise page.
+  	\Drupal::configFactory()->getEditable('system.site')->set('page.front', '/fundraise')->save(TRUE);
   }
 
   /**
