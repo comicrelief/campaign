@@ -77,4 +77,3 @@ config_devel:
   - image.style.cr_lg_1170_x_450_2x
   - image.style.cr_md_740_x_450
   - image.style.cr_md_740_x_450_2x
-  - responsive_image.styles.cw_quote
