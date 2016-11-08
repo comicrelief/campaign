@@ -1,0 +1,157 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/block\/15?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/block_content\/quote_block"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/quote_block\/revision_user": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/quote_block\/field_author_image": [
+            {
+                "href": "http:\/\/default\/file\/3393?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/quote_block\/field_background_image": [
+            {
+                "href": "http:\/\/default\/file\/3394?_format=hal_json"
+            }
+        ]
+    },
+    "id": [
+        {
+            "value": "15"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "2edd4a16-4a3f-4e94-ab2e-42fb7f468f80"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": "15"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "quote_block"
+        }
+    ],
+    "info": [
+        {
+            "value": "Jo's Quote",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1478623252",
+            "lang": "en"
+        }
+    ],
+    "revision_created": [
+        {
+            "value": "1478623252"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/quote_block\/revision_user": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "c3d710e5-26ab-4237-8d26-12e2597bc36f"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/quote_block\/field_author_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/3393?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "2d323dd1-fcad-4357-a1a1-d797c55b6176"
+                    }
+                ],
+                "alt": "Jo",
+                "title": "",
+                "width": "581",
+                "height": "1127"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/quote_block\/field_background_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/3394?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "fbed1726-3681-4873-912a-713c5119bf86"
+                    }
+                ],
+                "alt": "pattern",
+                "title": "",
+                "width": "1200",
+                "height": "500"
+            }
+        ]
+    },
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "field_author_background_colour": [
+        {
+            "value": "bg--white"
+        }
+    ],
+    "field_background_colour": [
+        {
+            "value": "bg--white"
+        }
+    ],
+    "field_body": [
+        {
+            "value": "<h3 class=\"font--yellow\">Jo's Top Tip<\/h3>\r\n<h4 class=\"font--yellow\">Top-up your fundraising total with a classic, pay-to-play, 'guess the weight of the cake' competition.<\/h4>\r\n",
+            "format": "full_html"
+        }
+    ]
+}
