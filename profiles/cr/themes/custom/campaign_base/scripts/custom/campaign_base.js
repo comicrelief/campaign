@@ -1,6 +1,12 @@
 (function($, Drupal) {
 
   $( document ).ready(function() {
+
+    name = decodeURIComponent($.urlParam('name'));
+
+    console.log(name);
+    $("h1").text(name + " make a difference!");
+
     // Turn our boring select boxes into sexy jQuery UI selectboxes
     $('select').selectmenu({ style:'popup', width: '100%' });
     // Activate lighcase
@@ -42,6 +48,12 @@
     $('select').selectmenu({ style:'popup', width: '100%' });
   });
 
+
+  // Show name url att in page title
+  $.urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    return results[1] || 0;
+  }
 
   sSize = $(window).width();
 
