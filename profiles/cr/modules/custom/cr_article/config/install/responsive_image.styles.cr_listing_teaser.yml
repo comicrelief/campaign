@@ -3,8 +3,6 @@ status: true
 dependencies:
   config:
     - image.style.cr_1_1_272x272_2x
-  theme:
-    - campaign_base
 id: cr_listing_teaser
 label: 'CR Listing teaser'
 image_style_mappings:
