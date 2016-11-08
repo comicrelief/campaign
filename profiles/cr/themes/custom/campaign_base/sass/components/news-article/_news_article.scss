@@ -8,15 +8,11 @@
 	margin: 0 auto;
 }
 .cr-article__header {
+	margin: auto;
 	padding-top: 30px;
-	text-align: center;
 	overflow: visible;
+	text-align: center;
 	background-color: $colour-white;
-	@include breakpoint($screen-md) {
-		@include span(10);
-		float: none;
-		margin: auto;
-	}
 }
 .cr-article__title {
 	margin: 30px;
@@ -30,67 +26,79 @@
 .cr-article__image,
 .video-embed-field-responsive-video {
 	margin: 30px 0px;
-	img {
-		display: block;
-	}
-	@include breakpoint($screen-md) {
-		@include bleed-x(1 of 12);
-		padding: 0;
-	}
-	@include breakpoint($screen-lg) {
-		@include bleed-x(2 of 12);
-		padding: 0;
-	}
 }
 .cr-article {
 	figcaption {
-		margin-top: -31px;
+		margin-top: -40px;
 		padding: 10px 15px;
 		background-color: $colour-black;
 		color: $colour-white;
 		text-align: right;
-		@include breakpoint($screen-md) {
-			@include bleed-x(28%);
-			padding: 10px 15px;
+	}
+}
+	
+.cr-article__body {
+	margin: auto; 
+	padding: 30px;
+	background-color: $colour-white;
+
+	 .video-embed-field-responsive-video,
+	 figure,
+	 img { 
+		width: calc(100% + 60px);
+		margin: 15px 0;
+		margin-left: -30px;
+	}
+	.video-embed-field-responsive-video { 
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+	figure {
+		margin-top: 30px;
+	}			
+	figure {
+		img {
+			width: 100%;
+			margin: 0;
 		}
-		@include breakpoint($screen-lg) {
-			@include bleed-x(2 of 12);
-			padding: 10px 15px;
+		figcaption {
+			width: 100%;
+			margin: 0px 0px 15px 0px;	
 		}
 	}
 }
-.cr-article__body {
-	padding: 8.33333%;
-	background-color: $colour-white;
-	@include breakpoint($screen-md) {
-		@include span(10);
-		float: none;
-		margin: auto;
-	}
-	.video-embed-field-responsive-video {
-		@include bleed-x(1 of 9);
-		padding: 0;
-		@include breakpoint($screen-md) {
-			@include bleed-x(28%);
-			padding: 0;
-		}
-		@include breakpoint($screen-lg) {
-			@include bleed-x(4 of 12);
-			padding: 0;
-		}
-	}
-	figcaption {
-		@include bleed-x(1 of 9);
-		padding: 10px 15px;
-		margin-bottom: 30px;
-		@include breakpoint($screen-md) {
-			@include bleed-x(28%);
-			padding: 10px 15px;
-		}
-		@include breakpoint($screen-lg) {
-			@include bleed-x(4 of 12);
-			padding: 10px 15px;
 
+@include breakpoint($screen-lg) {
+	.cr-article__header {
+		width: 80%;
+		margin-bottom: 30px;
+	}
+	.cr-article__image, 
+	.cr-article__caption, 
+	.video-embed-field-responsive-video, 
+	figcaption, 
+	figure { 
+		width: calc(100% + (4 * 60px));
+		margin-left: -120px;
+	}
+	.cr-article__body {
+		width: 80%;
+		padding: 30px 60px;
+
+		.video-embed-field-responsive-video,
+		figure,
+		img {
+			width: calc(100% + (6 * 60px));
+			margin-left: -180px;
+		}
+		figure {
+			img {
+				width: 100%;
+				margin: 0;
+			}
+			figcaption {
+				width: 100%;
+			}
 		}
 	}
 }
