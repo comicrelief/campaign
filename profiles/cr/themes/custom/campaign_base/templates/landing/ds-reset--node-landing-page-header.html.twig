@@ -1,4 +1,4 @@
-{% set layoutClass = field_landing_feature_layout['#items'].value ? 'promo-header--feature' : '' %}
+{% set layoutClass = field_landing_feature_layout['#items'].value ? 'promo-header--feature' : 'promo-header--default' %}
 {% set desk_img = node.field_landing_image.entity.fileuri %}
 {% set mobile_img = node.field_landing_image_mobile.entity.fileuri %}
 {% set header_class = [
