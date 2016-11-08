@@ -1,71 +1,102 @@
-.page-node-type-article {
+.cr-article {
+	width: 100%;
+	padding: 60px 0;
 	background-color: $colour-smoke-grey;
-	@include font-size($p-font-size);
-
-	.cr-article {
-		background-color: $colour-white;
-		max-width: 640px;
- 		margin: 60px auto;
- 		padding: 60px 0px;
+}
+.cr-article__content-wrapper {
+	max-width: 800px;
+	margin: 0 auto;
+}
+.cr-article__header {
+	padding-top: 30px;
+	text-align: center;
+	overflow: visible;
+	background-color: $colour-white;
+	@include breakpoint($screen-md) {
+		@include span(10);
+		float: none;
+		margin: auto;
 	}
-	.cr-article__header {
-		overflow: visible;
-		text-align: center;
-	}
-	.cr-article__title {
-		margin: 30px;
-		font-family: $font-medium;
-		@include font-size($h2-font-size);
-	}
-	.cr-article__date {
-		text-transform: uppercase;
-		font-family: $font-black;
-	}
-	.cr-article__image, 
-	.video-embed-field-responsive-video, 
-	.cr-article__body, 
-	figure {
-		margin-top: 30px;
-	}
-	p {
-		padding: 0px 15px;
-	}
-	.cr-article__image img{
+}
+.cr-article__title {
+	margin: 30px;
+	font-family: $font-medium;
+	@include font-size($h2-font-size);
+}
+.cr-article__date {
+	font-family: $font-black;
+	text-transform: uppercase;
+}
+.cr-article__image,
+.video-embed-field-responsive-video {
+	margin: 30px 0px;
+	img {
 		display: block;
 	}
+	@include breakpoint($screen-md) {
+		@include bleed-x(1 of 12);
+		padding: 0;
+	}
+	@include breakpoint($screen-lg) {
+		@include bleed-x(2 of 12);
+		padding: 0;
+	}
+}
+.cr-article {
 	figcaption {
-		margin-bottom: 30px;
-		padding: 15px;
+		margin-top: -31px;
+		padding: 10px 15px;
 		background-color: $colour-black;
 		color: $colour-white;
 		text-align: right;
+		@include breakpoint($screen-md) {
+			@include bleed-x(28%);
+			padding: 10px 15px;
+		}
+		@include breakpoint($screen-lg) {
+			@include bleed-x(2 of 12);
+			padding: 10px 15px;
+		}
 	}
-	.bottom-region {
-		max-width: 100%;
-		margin:0px;
-		background-color: $colour-red;
+}
+.cr-article__body {
+	padding: 8.33333%;
+	background-color: $colour-white;
+	@include breakpoint($screen-md) {
+		@include span(10);
+		float: none;
+		margin: auto;
 	}
+	.video-embed-field-responsive-video {
+		@include bleed-x(1 of 9);
+		padding: 0;
+		@include breakpoint($screen-md) {
+			@include bleed-x(28%);
+			padding: 0;
+		}
+		@include breakpoint($screen-lg) {
+			@include bleed-x(4 of 12);
+			padding: 0;
+		}
+	}
+	figcaption {
+		@include bleed-x(1 of 9);
+		padding: 10px 15px;
+		margin-bottom: 30px;
+		@include breakpoint($screen-md) {
+			@include bleed-x(28%);
+			padding: 10px 15px;
+		}
+		@include breakpoint($screen-lg) {
+			@include bleed-x(4 of 12);
+			padding: 10px 15px;
 
-	@include breakpoint($screen-lg) {
-		.cr-article__image, 
-		.cr-article__caption, 
-		.video-embed-field-responsive-video, 
-		figcaption, 
-		figure {
-				width: 140%;
-				margin-left: -20%;
-		}
-		figure {
-			img{
-				width: 100%;
-			} 
-			figcaption{
-				width:100%;
-				margin: 0px 0px 30px 0px;	
-			}
-		}
-		p {
-			padding: 0px 70px;
 		}
 	}
+}
+
+.cr-article__bottom-region {
+	max-width: 100%;
+	margin: 0px;
+	background-color: $colour-red;
 }
