@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\purge\Plugin\Purge\Purger\RuntimeMeasurement.
- */
-
 namespace Drupal\purge\Plugin\Purge\Purger;
 
 use Drupal\purge\Plugin\Purge\Invalidation\InvalidationInterface;
@@ -26,7 +21,7 @@ class RuntimeMeasurement extends PersistentCounter implements RuntimeMeasurement
   /**
    * {@inheritdoc}
    */
-  function getSafeTimeHintValue($value) {
+  public function getSafeTimeHintValue($value) {
     if ($value < 0.1) {
       return 0.1;
     }

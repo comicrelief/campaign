@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\purge\Plugin\Purge\Purger\PurgerInterface.
- */
-
 namespace Drupal\purge\Plugin\Purge\Purger;
 
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
@@ -143,6 +138,6 @@ interface PurgerInterface extends ContainerFactoryPluginInterface, PurgerCapacit
    * @return string
    *   The PHP method name called on the purger with a $invalidations parameter.
    */
-   public function routeTypeToMethod($type);
+  public function routeTypeToMethod($type);
 
 }

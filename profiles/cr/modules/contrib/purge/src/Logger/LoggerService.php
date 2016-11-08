@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\purge\Logger\LoggerService.
- */
-
 namespace Drupal\purge\Logger;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
@@ -68,7 +63,7 @@ class LoggerService extends ServiceProviderBase implements LoggerServiceInterfac
     RfcLogLevel::WARNING,
     RfcLogLevel::NOTICE,
     RfcLogLevel::INFO,
-    RfcLogLevel::DEBUG
+    RfcLogLevel::DEBUG,
   ];
 
   /**
@@ -93,7 +88,7 @@ class LoggerService extends ServiceProviderBase implements LoggerServiceInterfac
    * @param \Drupal\purge\Logger\LoggerChannelPartFactoryInterface $purge_logger_parts_factory
    *   The channel part factory.
    */
-  function __construct(ConfigFactoryInterface $config_factory, LoggerChannelPartFactoryInterface $purge_logger_parts_factory) {
+  public function __construct(ConfigFactoryInterface $config_factory, LoggerChannelPartFactoryInterface $purge_logger_parts_factory) {
     $this->configFactory = $config_factory;
     $this->purgeLoggerPartsFactory = $purge_logger_parts_factory;
 

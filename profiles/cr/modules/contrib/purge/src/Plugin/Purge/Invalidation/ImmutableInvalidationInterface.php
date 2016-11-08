@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\purge\Plugin\Purge\Invalidation\ImmutableInvalidationInterface.
- */
-
 namespace Drupal\purge\Plugin\Purge\Invalidation;
 
 use Drupal\Component\Plugin\PluginInspectionInterface;

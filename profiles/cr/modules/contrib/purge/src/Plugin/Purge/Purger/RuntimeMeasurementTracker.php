@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\purge\Plugin\Purge\Purger\RuntimeMeasurementTracker.
- */
-
 namespace Drupal\purge\Plugin\Purge\Purger;
 
 use Drupal\Core\State\StateInterface;
@@ -97,7 +92,7 @@ class RuntimeMeasurementTracker implements RuntimeMeasurementTrackerInterface {
         $measurement = new RuntimeMeasurement($values[$key]);
         $measurement->disableDecrement();
         $measurement->disableIncrement();
-        $measurement->setWriteCallback($key, function($id, $value) {
+        $measurement->setWriteCallback($key, function ($id, $value) {
           $this->buffer[$id] = $value;
         });
 

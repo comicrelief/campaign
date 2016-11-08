@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\purge\Unit\Logger\LoggerChannelPartFactoryTest.
- */
-
 namespace Drupal\Tests\purge\Unit\Logger;
 
 use Drupal\purge\Logger\LoggerChannelPartFactory;
@@ -26,7 +21,7 @@ class LoggerChannelPartFactoryTest extends UnitTestCase {
   /**
    * The mocked logger channel.
    *
-   * @var \PHPUnit_Framework_MockObject_MockObject|\Drupal\Core\Logger\LoggerChannelInterface
+   * @var \PHPUnit_Framework_MockObject_MockObject|\Psr\Log\LoggerInterface
    */
   protected $loggerChannelPurge;
 
@@ -34,7 +29,7 @@ class LoggerChannelPartFactoryTest extends UnitTestCase {
    * {@inheritdoc}
    */
   protected function setUp() {
-    $this->loggerChannelPurge = $this->getMock('\Drupal\Core\Logger\LoggerChannelInterface');
+    $this->loggerChannelPurge = $this->getMock('\Psr\Log\LoggerInterface');
     $this->loggerChannelPartFactory = new LoggerChannelPartFactory($this->loggerChannelPurge);
   }
 
@@ -55,9 +50,9 @@ class LoggerChannelPartFactoryTest extends UnitTestCase {
    */
   public function providerTestCreate() {
     return [
-      ['foo', [0,1,2]],
-      ['bar', [1,2,3]],
-      ['baz', [2,3,4]]
+      ['foo', [0, 1, 2]],
+      ['bar', [1, 2, 3]],
+      ['baz', [2, 3, 4]],
     ];
   }
 
