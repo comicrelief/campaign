@@ -239,3 +239,5 @@ config_devel:
 
   # Cookie consent
   - cookieconsent.settings
+
+  - simple_sitemap.settings
