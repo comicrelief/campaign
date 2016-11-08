@@ -37,8 +37,8 @@
 
 .cw-quote__image {
   margin: 10px auto 30px;
-  width: 70px;
-  height: 70px;
+  width: 85px;
+  height: 85px;
   overflow: hidden;
   @include border-radius(50px);
 
@@ -46,17 +46,11 @@
     @include border-radius(inherit);
     background-color: inherit;
     display: block;
-    width: 100%;
     height: auto;
-  }
-}
 
-/* Make the fullwidth version fit the grid */
-.cw-region article.cw-quote.view-mode-cw_l {
-  
-  @include breakpoint($screen-md) {
-    @include span(12);
-    margin: 1.25%;
+    // 'Zoom-in' a little
+    width: 150%;
+    margin-left: -25%;
   }
 }
 
@@ -76,12 +70,25 @@
 
 
 .view-mode-cw_l,
-.view-mode-cw_m {
+.view-mode-cw_m,
+.view-mode-cw_mp  {
   .cw-quote__inner-wrapper {
     @include breakpoint($screen-md) {
       @include translateY(0);
       top: 0;
       height: 100%;
+
+      .cw-quote__image {
+        @include border-radius(0);
+        top: 50%;
+        @include translateY(-50%);
+        
+        // 'Zoom' back out
+        img {
+          width: 100%;
+          margin-left: 0;
+        }
+      }
     }
   }
 
@@ -101,10 +108,10 @@
       left: 50%;
       margin-left: -50px;
       margin-bottom: 0;
-      @include span(3);
-      left: span(8);
+      @include span(5);
+      left: span(7);
       height: auto;
-      top: 75px;
+      top: 65px;
 
       // Override the background colour option on this breakpoint
       background-color: transparent;
@@ -116,5 +123,33 @@
         height: auto;
       }
     }
+    @include breakpoint($screen-lg) {
+      @include span(3);
+      left: span(8);
+    }
   }
 } 
+
+/* Make the fullwidth version fit the grid */
+.cw-region article.cw-quote.view-mode-cw_l {
+  
+  @include breakpoint($screen-md) {
+    @include span(12);
+    margin: 1.25%;
+  }
+
+  @include breakpoint($screen-lg) {
+    .cw-quote__image {
+      top: 30px;
+      //@include span();
+    }
+  }
+}
+
+.cw-region article.cw-quote.view-mode-cw_m {
+  
+  @include breakpoint($screen-md) {
+    @include span(12);
+    margin: 1.25%;
+  }
+}
