@@ -76,6 +76,8 @@ dependencies:
   # Custom modules
   - cr_layout
   - cr_page
+  - cr_article
+  - cr_content_reference
   - cr_downloadables
   - cr_video
   - cr_media
@@ -86,7 +88,6 @@ dependencies:
   - cr_single_msg
   - cr_single_message_row_paragraph
   - cr_teaser
-  - cr_article
   - cr_email_signup
   - cr_partner
   - cr_cards

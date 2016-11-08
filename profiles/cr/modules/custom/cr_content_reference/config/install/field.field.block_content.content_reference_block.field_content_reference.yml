@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.content_reference_block
+    - field.storage.block_content.field_content_reference
+    - node.type.article
+id: block_content.content_reference_block.field_content_reference
+field_name: field_content_reference
+entity_type: block_content
+bundle: content_reference_block
+label: 'Content reference'
+description: 'Begin typing the title of the required content and select from the populated list.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      article: article
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
