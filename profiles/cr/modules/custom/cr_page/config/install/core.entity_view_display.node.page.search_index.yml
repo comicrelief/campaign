@@ -1,10 +1,11 @@
-uuid: 566c8974-9d52-44f3-9a00-df82dbe8bf3d
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.node.search_index
     - field.field.node.page.body
+    - field.field.node.page.field_basic_page__display_title
+    - field.field.node.page.field_page_meta_tags
     - node.type.page
   module:
     - ds
@@ -18,6 +19,7 @@ third_party_settings:
       path: profiles/cr/modules/contrib/ds
       library: ''
       disable_css: false
+      entity_classes: all_classes
       settings:
         wrappers:
           ds_content: div
@@ -30,8 +32,15 @@ third_party_settings:
     regions:
       ds_content:
         - node_title
+        - field_basic_page__display_title
         - body
+        - node_link
     fields:
+      node_link:
+        plugin_id: node_link
+        weight: 3
+        label: hidden
+        formatter: default
       node_title:
         plugin_id: node_title
         weight: 0
@@ -44,8 +53,6 @@ third_party_settings:
   panelizer:
     enable: false
     custom: false
-_core:
-  default_config_hash: xW1AJxzxzoa8DMPBJx2H-ApRhObIeuXP3Qbzu8RgMr8
 id: node.page.search_index
 targetEntityType: node
 bundle: page
@@ -54,16 +61,18 @@ content:
   body:
     label: hidden
     type: text_trimmed
-    weight: 1
+    weight: 2
     settings:
       trim_length: 200
     third_party_settings: {  }
-  links:
-    weight: 2
-    settings: {  }
+  field_basic_page__display_title:
+    type: string
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
     third_party_settings: {  }
-  social_links:
-    weight: 10
-    settings: {  }
-    third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_page_meta_tags: true
+  links: true
+  social_links: true

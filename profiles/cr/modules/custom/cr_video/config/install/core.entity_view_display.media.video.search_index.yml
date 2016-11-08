@@ -3,14 +3,11 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.media.search_index
-    - field.field.media.cr_file.field_cr_downloadables_body
-    - field.field.media.cr_file.field_cr_field_display_title
-    - field.field.media.cr_file.field_cr_file
-    - field.field.media.cr_file.field_cr_file_category
-    - media_entity.bundle.cr_file
+    - field.field.media.video.field_video_caption
+    - field.field.media.video.field_youtube_video_id
+    - media_entity.bundle.video
   module:
     - ds
-    - file
     - text
 third_party_settings:
   ds:
@@ -31,45 +28,45 @@ third_party_settings:
           layout_class: {  }
     regions:
       ds_content:
-        - field_cr_field_display_title
-        - cr_downloadables_MediaButton
-        - field_cr_downloadables_body
-        - field_cr_file
-    fields:
-      cr_downloadables_MediaButton:
-        plugin_id: cr_downloadables_MediaButton
-        weight: 1
-        label: hidden
-        formatter: default
-id: media.cr_file.search_index
+        - name
+        - field_youtube_video_id
+        - field_video_caption
+id: media.video.search_index
 targetEntityType: media
-bundle: cr_file
+bundle: video
 mode: search_index
 content:
-  field_cr_downloadables_body:
-    type: text_trimmed
+  field_video_caption:
     weight: 2
     label: hidden
     settings:
       trim_length: 600
     third_party_settings: {  }
-  field_cr_field_display_title:
+    type: text_trimmed
+  field_video_thumbnail:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_youtube_video_id:
+    type: string
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  name:
+    type: string
     weight: 0
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
-  field_cr_file:
-    type: file_url_plain
-    weight: 3
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
 hidden:
   created: true
-  field_cr_file_category: true
-  name: true
   social_links: true
   thumbnail: true
   uid: true

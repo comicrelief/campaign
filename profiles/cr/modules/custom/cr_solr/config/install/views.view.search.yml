@@ -77,6 +77,7 @@ display:
             'entity:media':
               cr_external_file: search_index
               cr_file: search_index
+              video: search_index
       fields:
         rendered_item:
           table: search_api_index_solr_content
@@ -211,7 +212,7 @@ display:
       filter_groups:
         operator: AND
         groups: {  }
-      use_ajax: true
+      use_ajax: false
       show_admin_links: true
       hide_attachment_summary: false
     cache_metadata:

@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: cr_1_1_272x272_2x
+label: 'CR 1:1 272x272 2x'
+effects:
+  5dac6549-5f6a-4e48-8b11-cda981c6b55a:
+    uuid: 5dac6549-5f6a-4e48-8b11-cda981c6b55a
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: '544'
+      height: '544'
