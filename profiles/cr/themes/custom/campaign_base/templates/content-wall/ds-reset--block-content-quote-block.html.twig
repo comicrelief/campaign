@@ -1,14 +1,17 @@
+{% set bg_img_url = file_url(content.field_background_image.0['#item'].entity.uri.value) %}
+
 {% set view_mode = content['#view_mode']%}
-{% set bg_color = content['field_background_colour'] %}
-{% set body = content['field_body'] %}
+
+{% set bg_colour = field_background_colour['#items'][0].value %}
+
+{% set author_bg_colour = field_author_background_colour['#items'][0].value %}
 
 <article class="view-mode-{{view_mode}} cw-quote clearfix"> 
 	<div class="cw-quote__outer-wrapper">
-		<div class="cw-quote__bg-image">
-			{{ field_background_image }}
+		<div class="cw-quote__bg-image" style="background-image: url({{bg_img_url}})">
 		</div>
 		<div class="cw-quote__inner-wrapper">
-			<div class="cw-quote__image bg--purple">
+			<div class="cw-quote__image {{author_bg_colour}}">
 				{{ content['field_author_image'] }}
 			</div>
 			<div class="cw-quote__body">
