@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\purge\Plugin\Purge\Invalidation\InvalidationInterface.
- */
-
 namespace Drupal\purge\Plugin\Purge\Invalidation;
 
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;

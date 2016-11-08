@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\purge\Plugin\Purge\TagsHeader\PluginManager.
- */
-
 namespace Drupal\purge\Plugin\Purge\TagsHeader;
 
 use Drupal\Core\Plugin\DefaultPluginManager;

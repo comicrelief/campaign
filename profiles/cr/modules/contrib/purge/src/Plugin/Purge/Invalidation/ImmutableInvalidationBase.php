@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\purge\Plugin\Purge\Invalidation\ImmutableInvalidationBase.
- */
-
 namespace Drupal\purge\Plugin\Purge\Invalidation;
 
 use Drupal\Core\Plugin\PluginBase;
@@ -69,7 +64,7 @@ abstract class ImmutableInvalidationBase extends PluginBase implements Immutable
     SELF::NOT_SUPPORTED,
     SELF::PROCESSING,
     SELF::SUCCEEDED,
-    SELF::FAILED
+    SELF::FAILED,
   ];
 
   /**

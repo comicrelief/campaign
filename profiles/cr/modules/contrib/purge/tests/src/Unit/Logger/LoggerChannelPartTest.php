@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\purge\Unit\Logger\LoggerChannelPartTest.
- */
-
 namespace Drupal\Tests\purge\Unit\Logger;
 
 use Drupal\purge\Logger\LoggerChannelPart;
@@ -20,7 +15,7 @@ class LoggerChannelPartTest extends UnitTestCase {
   /**
    * The mocked logger channel.
    *
-   * @var \PHPUnit_Framework_MockObject_MockObject|\Drupal\Core\Logger\LoggerChannelInterface
+   * @var \PHPUnit_Framework_MockObject_MockObject|\Psr\Log\LoggerInterface
    */
   protected $loggerChannelPurge;
 
@@ -28,21 +23,21 @@ class LoggerChannelPartTest extends UnitTestCase {
    * {@inheritdoc}
    */
   protected function setUp() {
-    $this->loggerChannelPurge = $this->getMock('\Drupal\Core\Logger\LoggerChannelInterface');
+    $this->loggerChannelPurge = $this->getMock('\Psr\Log\LoggerInterface');
   }
 
   /**
    * Helper to all severity methods.
    */
-  private function testHelper($id, array $grants, $output, $severity) {
-    $occurence = is_null($output) ? $this->never() : $this->once();
+  private function helperForSeverityMethods($id, array $grants, $output, $severity) {
+    $occurrence = is_null($output) ? $this->never() : $this->once();
     $this->loggerChannelPurge
-      ->expects($occurence)
+      ->expects($occurrence)
       ->method('log')
       ->with(
         $this->stringContains($severity),
         $this->stringContains('@purge_channel_part: @replaceme'),
-        $this->callback(function($subject) use ($id, $output) {
+        $this->callback(function ($subject) use ($id, $output) {
           return ($subject['@purge_channel_part'] === $id) && ($subject['@replaceme'] === $output);
         })
       );
@@ -55,7 +50,6 @@ class LoggerChannelPartTest extends UnitTestCase {
    */
   public function testInstance() {
     $part = new LoggerChannelPart($this->loggerChannelPurge, 'id', []);
-    $this->assertInstanceOf('\Drupal\purge\Logger\LoggerChannelPartInterface', $part);
     $this->assertInstanceOf('\Psr\Log\LoggerInterface', $part);
   }
 
@@ -98,7 +92,7 @@ class LoggerChannelPartTest extends UnitTestCase {
    * @dataProvider providerTestEmergency()
    */
   public function testEmergency($id, array $grants, $output) {
-    $this->testHelper($id, $grants, $output, 'emergency');
+    $this->helperForSeverityMethods($id, $grants, $output, 'emergency');
   }
 
   /**
@@ -107,7 +101,7 @@ class LoggerChannelPartTest extends UnitTestCase {
   public function providerTestEmergency() {
     return [
       ['good', [RfcLogLevel::EMERGENCY], 'bazinga!'],
-      ['bad', [-1], NULL]
+      ['bad', [-1], NULL],
     ];
   }
 
@@ -117,7 +111,7 @@ class LoggerChannelPartTest extends UnitTestCase {
    * @dataProvider providerTestAlert()
    */
   public function testAlert($id, array $grants, $output) {
-    $this->testHelper($id, $grants, $output, 'alert');
+    $this->helperForSeverityMethods($id, $grants, $output, 'alert');
   }
 
   /**
@@ -126,7 +120,7 @@ class LoggerChannelPartTest extends UnitTestCase {
   public function providerTestAlert() {
     return [
       ['good', [RfcLogLevel::ALERT], 'bazinga!'],
-      ['bad', [-1], NULL]
+      ['bad', [-1], NULL],
     ];
   }
 
@@ -136,7 +130,7 @@ class LoggerChannelPartTest extends UnitTestCase {
    * @dataProvider providerTestCritical()
    */
   public function testCritical($id, array $grants, $output) {
-    $this->testHelper($id, $grants, $output, 'critical');
+    $this->helperForSeverityMethods($id, $grants, $output, 'critical');
   }
 
   /**
@@ -145,7 +139,7 @@ class LoggerChannelPartTest extends UnitTestCase {
   public function providerTestCritical() {
     return [
       ['good', [RfcLogLevel::CRITICAL], 'bazinga!'],
-      ['bad', [-1], NULL]
+      ['bad', [-1], NULL],
     ];
   }
 
@@ -155,7 +149,7 @@ class LoggerChannelPartTest extends UnitTestCase {
    * @dataProvider providerTestError()
    */
   public function testError($id, array $grants, $output) {
-    $this->testHelper($id, $grants, $output, 'error');
+    $this->helperForSeverityMethods($id, $grants, $output, 'error');
   }
 
   /**
@@ -164,7 +158,7 @@ class LoggerChannelPartTest extends UnitTestCase {
   public function providerTestError() {
     return [
       ['good', [RfcLogLevel::ERROR], 'bazinga!'],
-      ['bad', [-1], NULL]
+      ['bad', [-1], NULL],
     ];
   }
 
@@ -174,7 +168,7 @@ class LoggerChannelPartTest extends UnitTestCase {
    * @dataProvider providerTestWarning()
    */
   public function testWarning($id, array $grants, $output) {
-    $this->testHelper($id, $grants, $output, 'warning');
+    $this->helperForSeverityMethods($id, $grants, $output, 'warning');
   }
 
   /**
@@ -183,7 +177,7 @@ class LoggerChannelPartTest extends UnitTestCase {
   public function providerTestWarning() {
     return [
       ['good', [RfcLogLevel::WARNING], 'bazinga!'],
-      ['bad', [-1], NULL]
+      ['bad', [-1], NULL],
     ];
   }
 
@@ -193,7 +187,7 @@ class LoggerChannelPartTest extends UnitTestCase {
    * @dataProvider providerTestNotice()
    */
   public function testNotice($id, array $grants, $output) {
-    $this->testHelper($id, $grants, $output, 'notice');
+    $this->helperForSeverityMethods($id, $grants, $output, 'notice');
   }
 
   /**
@@ -202,7 +196,7 @@ class LoggerChannelPartTest extends UnitTestCase {
   public function providerTestNotice() {
     return [
       ['good', [RfcLogLevel::NOTICE], 'bazinga!'],
-      ['bad', [-1], NULL]
+      ['bad', [-1], NULL],
     ];
   }
 
@@ -212,7 +206,7 @@ class LoggerChannelPartTest extends UnitTestCase {
    * @dataProvider providerTestInfo()
    */
   public function testInfo($id, array $grants, $output) {
-    $this->testHelper($id, $grants, $output, 'info');
+    $this->helperForSeverityMethods($id, $grants, $output, 'info');
   }
 
   /**
@@ -221,7 +215,7 @@ class LoggerChannelPartTest extends UnitTestCase {
   public function providerTestInfo() {
     return [
       ['good', [RfcLogLevel::INFO], 'bazinga!'],
-      ['bad', [-1], NULL]
+      ['bad', [-1], NULL],
     ];
   }
 
@@ -231,7 +225,7 @@ class LoggerChannelPartTest extends UnitTestCase {
    * @dataProvider providerTestDebug()
    */
   public function testDebug($id, array $grants, $output) {
-    $this->testHelper($id, $grants, $output, 'debug');
+    $this->helperForSeverityMethods($id, $grants, $output, 'debug');
   }
 
   /**
@@ -240,7 +234,7 @@ class LoggerChannelPartTest extends UnitTestCase {
   public function providerTestDebug() {
     return [
       ['good', [RfcLogLevel::DEBUG], 'bazinga!'],
-      ['bad', [-1], NULL]
+      ['bad', [-1], NULL],
     ];
   }
 
@@ -256,7 +250,7 @@ class LoggerChannelPartTest extends UnitTestCase {
       ->with(
         $this->stringContains($level),
         $this->stringContains('@purge_channel_part: '. $message),
-        $this->callback(function($subject) use ($id, $output) {
+        $this->callback(function ($subject) use ($id, $output) {
           return ($subject['@purge_channel_part'] === $id) && ($subject['@replaceme'] === $output);
         })
       );

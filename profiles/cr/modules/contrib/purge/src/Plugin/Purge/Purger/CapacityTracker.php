@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\purge\Plugin\Purge\Purger\CapacityTracker.
- */
-
 namespace Drupal\purge\Plugin\Purge\Purger;
 
 use Drupal\purge\Plugin\Purge\Purger\Exception\BadPluginBehaviorException;
@@ -108,23 +103,23 @@ class CapacityTracker implements CapacityTrackerInterface {
       }
       $this->cooldownTimes = [];
       foreach ($this->purgers as $id => $purger) {
-       $cooldown_time = $purger->getCooldownTime();
-       if (!is_float($cooldown_time)) {
-         $method = sprintf("%s::getCooldownTime()", get_class($purger));
-         throw new BadPluginBehaviorException(
-           "$method did not return a floating point value.");
-       }
-       if ($cooldown_time < 0.0) {
-         $method = sprintf("%s::getCooldownTime()", get_class($purger));
-         throw new BadPluginBehaviorException(
-           "$method returned $cooldown_time, a value lower than 0.0.");
-       }
-       if ($cooldown_time > 3.0) {
-         $method = sprintf("%s::getCooldownTime()", get_class($purger));
-         throw new BadPluginBehaviorException(
-           "$method returned $cooldown_time, a value higher than 3.0.");
-       }
-       $this->cooldownTimes[$id] = $cooldown_time;
+        $cooldown_time = $purger->getCooldownTime();
+        if (!is_float($cooldown_time)) {
+          $method = sprintf("%s::getCooldownTime()", get_class($purger));
+          throw new BadPluginBehaviorException(
+            "$method did not return a floating point value.");
+        }
+        if ($cooldown_time < 0.0) {
+          $method = sprintf("%s::getCooldownTime()", get_class($purger));
+          throw new BadPluginBehaviorException(
+            "$method returned $cooldown_time, a value lower than 0.0.");
+        }
+        if ($cooldown_time > 3.0) {
+          $method = sprintf("%s::getCooldownTime()", get_class($purger));
+          throw new BadPluginBehaviorException(
+            "$method returned $cooldown_time, a value higher than 3.0.");
+        }
+        $this->cooldownTimes[$id] = $cooldown_time;
       }
     }
   }
@@ -228,7 +223,7 @@ class CapacityTracker implements CapacityTrackerInterface {
 
     // Create a closure that calculates how much time it would take. It takes
     // cooldown time as well as potential code overhead into account.
-    $calculate = function($items) {
+    $calculate = function ($items) {
       $s = ($items * $this->getTimeHintTotal()) + $this->getCooldownTimeTotal();
       $s++;
       return (int) ceil($s);
@@ -264,7 +259,7 @@ class CapacityTracker implements CapacityTrackerInterface {
     }
 
     // Create a closure that calculates the current limit.
-    $calculate = function($spent_inv) {
+    $calculate = function ($spent_inv) {
       if (empty($this->purgers)) {
         return 0;
       }
@@ -287,9 +282,9 @@ class CapacityTracker implements CapacityTrackerInterface {
       // In the rare case the limit exceeds ideal conditions, the limit is
       // lowered. Then return the limit or zero when it turned negative.
       if ($limit > $this->getIdealConditionsLimit()) {
-        return (int)$this->getIdealConditionsLimit();
+        return (int) $this->getIdealConditionsLimit();
       }
-      return (int)(($limit < 0) ? 0 : $limit);
+      return (int) (($limit < 0) ? 0 : $limit);
     };
 
     // Fetch calculations from cache or generate new. We use the number of spent
