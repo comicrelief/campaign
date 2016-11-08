@@ -50,40 +50,22 @@
     background-color: inherit;
     display: block;
     height: auto;
-
-    // 'Zoom-in' a little
-    width: 150%;
-    margin-left: -25%;
   }
 }
 
-
-
-
+/* CW L and MP viewmodes */
 .view-mode-cw_l,
 .view-mode-cw_mp  {
   .cw-quote__inner-wrapper {
-    @include breakpoint($screen-md) {
+    @include breakpoint($screen-lg) {
       @include translateY(0);
       top: 0;
       height: 100%;
-
-      .cw-quote__image {
-        @include border-radius(0);
-        top: 50%;
-        @include translateY(-50%);
-        
-        // 'Zoom' back out
-        img {
-          width: 100%;
-          margin-left: 0;
-        }
-      }
     }
   }
 
   .cw-quote__body {
-    @include breakpoint($screen-md) {
+    @include breakpoint($screen-lg) {
       @include span(7);
       position: absolute;
       top: 50%;
@@ -93,15 +75,16 @@
   }
 
   .cw-quote__image {
-    @include breakpoint($screen-md) {
+    @include breakpoint($screen-lg) {
+      @include border-radius(0);
+      @include translateY(0);
+      @include span(3);
       position: absolute;
-      left: 50%;
-      margin-left: -50px;
+      left: span(8);
+      bottom: 0;
+      top: auto;
       margin-bottom: 0;
-      @include span(5);
-      left: span(7);
       height: auto;
-      top: 65px;
 
       // Override the background colour option on this breakpoint
       background-color: transparent;
@@ -113,29 +96,12 @@
         height: auto;
       }
     }
-    @include breakpoint($screen-lg) {
-      @include span(3);
-      left: span(8);
-    }
+
   }
 } 
 
 /* CW L viewmode only */
 .cw-region article.cw-quote.view-mode-cw_l {
-  
-  @include breakpoint($screen-md) {
-    @include span(12);
-    margin: 1.25%;
-
-    .cw-quote__image {
-      @include span(4);
-      left: span(8);
-      @include translateY(0);
-      top: auto;
-      bottom: 0
-    }
-  }
-
   @include breakpoint($screen-lg) {
     .cw-quote__image {
       @include span(4);
@@ -149,23 +115,6 @@
 
 /* Medium & Small viewmode */
 .cw-region article.cw-quote.view-mode-cw_mp {
-
-  @include breakpoint($screen-md) {
-    @include span(8);
-    margin: 1.25%;
-
-    .cw-quote__body {
-      @include span(6);
-    }
-
-    .cw-quote__image {
-      @include span(5);
-      bottom: 0;
-      top: auto;
-      @include translateY(0);
-    }
-  }
-
   @include breakpoint($screen-lg) {
     @include span(8);
 
@@ -181,12 +130,3 @@
     }
   }
 } 
-
-/* CW M viewmode only */
-.cw-region article.cw-quote.view-mode-cw_m {
-}
-
-/* CW S viewmode only */
-.cw-region article.cw-quote.view-mode-cw_s {
-  margin: 1.25%;
-}
