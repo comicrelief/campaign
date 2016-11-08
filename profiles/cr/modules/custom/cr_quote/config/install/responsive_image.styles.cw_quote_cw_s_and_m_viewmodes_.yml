@@ -5,8 +5,6 @@ dependencies:
     - image.style.cw_quote_sm
     - image.style.cw_quote_sm_2x
     - image.style.thumbnail
-  theme:
-    - campaign_base
 id: cw_quote_cw_s_and_m_viewmodes_
 label: 'CW Quote (CW - S and M viewmodes)'
 image_style_mappings:
