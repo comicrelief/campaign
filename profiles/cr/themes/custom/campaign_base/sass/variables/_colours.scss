@@ -84,6 +84,8 @@ $colorList: (
  * $button[4] = text color
  */
 $buttonList: (
+  ("black-ghost" $colour-dark-blue $colour-white $colour-white),
+  ("white-ghost" $colour-white $colour-dark-blue $colour-dark-blue),
   ("red" $colour-red $colour-purple $colour-white),
   ("blue" $colour-blue $colour-yellow $colour-black), 
   ("yellow" $colour-yellow $colour-blue $colour-black),

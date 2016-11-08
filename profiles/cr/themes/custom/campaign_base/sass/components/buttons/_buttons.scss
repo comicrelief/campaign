@@ -4,6 +4,8 @@
 //
 // Markup: buttons.hbs
 // 
+// .btn--black-ghost - Black ghost button
+// .btn--white-ghost - White ghost button
 // .btn--red - Red button
 // .btn--blue - Blue button
 // .btn--yellow - Yellow button
@@ -135,5 +137,24 @@
   }
   .btn+.btn {
     margin-bottom: 20px;
+  }
+}
+
+// Ghost button
+.btn--white-ghost,
+.btn--black-ghost {
+  padding: 14px 30px;
+  font-size: 16px;
+}
+.btn--black-ghost {
+  border: 2px solid $colour-white;
+  &:hover {
+    color: $colour-dark-blue;
+  }
+}
+.btn--white-ghost {
+  border: 2px solid $colour-dark-blue;
+  &:hover {
+    color: $colour-white;
   }
 }
