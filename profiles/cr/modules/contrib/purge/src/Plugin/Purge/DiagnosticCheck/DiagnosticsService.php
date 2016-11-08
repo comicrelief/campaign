@@ -1,14 +1,10 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\purge\Plugin\Purge\DiagnosticCheck\DiagnosticsService.
- */
-
 namespace Drupal\purge\Plugin\Purge\DiagnosticCheck;
 
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Drupal\Component\Plugin\PluginManagerInterface;
+use Drupal\Core\Logger\RfcLogLevel;
 use Drupal\purge\ServiceBase;
 use Drupal\purge\IteratingServiceBaseTrait;
 use Drupal\purge\Plugin\Purge\DiagnosticCheck\DiagnosticsServiceInterface;
@@ -59,7 +55,7 @@ class DiagnosticsService extends ServiceBase implements DiagnosticsServiceInterf
    * @param \Drupal\Component\Plugin\PluginManagerInterface $pluginManager
    *   The plugin manager for this service.
    */
-  function __construct(PluginManagerInterface $pluginManager) {
+  public function __construct(PluginManagerInterface $pluginManager) {
     $this->pluginManager = $pluginManager;
   }
 
@@ -94,11 +90,10 @@ class DiagnosticsService extends ServiceBase implements DiagnosticsServiceInterf
       $purge_logger = $this->container->get('purge.logger');
       $channel_name = 'diagnostics';
 
-      // By default ::get() would autocreate the channel with grants for higher
-      // log severities such as warning/error/emergency. Since we don't want to
-      // spam the logs by default, the channel is precreated without any grants.
+      // By default ::get() would autocreate the channel with grants that are
+      // too broad. Therefore precreate it with only the ERROR grant.
       if (!$purge_logger->hasChannel($channel_name)) {
-        $purge_logger->setChannel($channel_name, []);
+        $purge_logger->setChannel($channel_name, [RfcLogLevel::ERROR]);
       }
 
       $this->logger = $purge_logger->get($channel_name);
@@ -118,7 +113,7 @@ class DiagnosticsService extends ServiceBase implements DiagnosticsServiceInterf
     // when plugins put dependencies on either a queue or purger plugin. When
     // plugins do depend, we load 'purge.purgers' and/or 'purge.queue' and
     // carefully check if we should load them or not.
-    $load = function($needles, $haystack) {
+    $load = function ($needles, $haystack) {
       if (empty($needles)) return TRUE;
       foreach ($needles as $needle) {
         if (in_array($needle, $haystack)) {

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\purge\Tests\TagsHeader\PluginManagerTest.
- */
-
 namespace Drupal\purge\Tests\TagsHeader;
 
 use Drupal\purge\Tests\KernelServiceTestBase;
@@ -31,7 +26,7 @@ class PluginManagerTest extends KernelServiceTestBase {
     'provider',
     'class',
     'id',
-    'header_name'
+    'header_name',
   ];
 
   /**
@@ -40,7 +35,6 @@ class PluginManagerTest extends KernelServiceTestBase {
    * @var string[]
    */
   protected $plugins = [
-    'purge',
     'a',
     'b',
     'c',
