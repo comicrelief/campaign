@@ -158,6 +158,6 @@ function cr_update_8017() {
 /**
 * Install cr_quote
 */
-function cr_update_8018() {
+function cr_update_8019() {
   \Drupal::service('module_installer')->install(['cr_quote']);
 }
