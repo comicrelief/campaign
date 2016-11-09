@@ -52,12 +52,10 @@
 	 figure,
 	 img { 
 		width: calc(100% + 60px); //body has padding
-		margin: 15px 0;
-		margin-left: -30px;
+		margin: 15px 0 15px -30px;
 	}
 	.video-embed-field-responsive-video { 
-		margin-top: 30px;
-		margin-bottom: 30px;
+		margin: 30px 0 30px -30px;
 	}
 	figure {
 		margin-top: 30px;
@@ -78,7 +76,6 @@
 	.cr-article__header {
 		width: 80%;
 		padding: 60px 0 30px;
-
 	}
 	.cr-article__header--no-caption{
 		padding-bottom: 0;
