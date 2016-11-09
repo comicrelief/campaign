@@ -8,7 +8,9 @@
 
 
 .cw-quote {
-  margin: gutters();
+  @include breakpoint(max-width 739px) {
+    padding: 0 calc(4 * #{gutter()}) calc(4 * #{gutter()});
+  }
 }
 
 .cw-quote__bg-image {
