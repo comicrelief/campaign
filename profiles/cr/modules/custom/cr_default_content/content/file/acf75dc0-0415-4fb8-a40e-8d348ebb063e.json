@@ -1,7 +1,7 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/file\/3393?_format=hal_json"
+            "href": "http:\/\/default\/file\/3395?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
@@ -14,7 +14,7 @@
     },
     "fid": [
         {
-            "value": "3393"
+            "value": "3395"
         }
     ],
     "uuid": [
