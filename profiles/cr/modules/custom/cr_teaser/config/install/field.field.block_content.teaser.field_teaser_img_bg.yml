@@ -3,13 +3,13 @@ status: true
 dependencies:
   config:
     - block_content.type.teaser
-    - field.storage.block_content.field_teaser_you_tube_link
-id: block_content.teaser.field_teaser_you_tube_link
-field_name: field_teaser_you_tube_link
+    - field.storage.block_content.field_teaser_img_bg
+id: block_content.teaser.field_teaser_img_bg
+field_name: field_teaser_img_bg
 entity_type: block_content
 bundle: teaser
-label: 'lightbox link (deprecated)'
-description: 'Check this option for youtube links and the video will play in a lightbox'
+label: 'Background image block?'
+description: ''
 required: false
 translatable: false
 default_value:

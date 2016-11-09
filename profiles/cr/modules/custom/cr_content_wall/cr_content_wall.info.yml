@@ -66,12 +66,11 @@ config_devel:
   - core.entity_view_mode.block_content.cw_s
   # Image styles
   - image.style.cw_large_780x440
-  - image.style.cw_medium_570x365
-  - image.style.cw_small_370x290
-  
   - image.style.cr_lg_1170_x_450
   - image.style.cr_lg_1170_x_450_2x
   - image.style.cr_md_740_x_450
   - image.style.cr_md_740_x_450_2x
-
+  - image.style.cw_16_9_lg_800x450_2x_
+  # Responsive image styles
   - responsive_image.styles.cw_bg_image_blocks
+  - responsive_image.styles.cw_landscape_image

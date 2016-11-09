@@ -3,20 +3,20 @@ status: true
 dependencies:
   config:
     - block_content.type.teaser
-    - field.storage.block_content.field_teaser_link_colour
+    - field.storage.block_content.field_teaser_bg_colour
   module:
     - options
-id: block_content.teaser.field_teaser_link_colour
-field_name: field_teaser_link_colour
+id: block_content.teaser.field_teaser_bg_colour
+field_name: field_teaser_bg_colour
 entity_type: block_content
 bundle: teaser
-label: 'Button colour'
+label: 'Background colour'
 description: ''
 required: false
 translatable: false
 default_value:
   -
-    value: btn--red
+    value: bg--white
 default_value_callback: ''
 settings: {  }
 field_type: list_string

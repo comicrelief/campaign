@@ -5,7 +5,9 @@ dependencies:
     - block_content.type.teaser
     - field.field.block_content.teaser.body
     - field.field.block_content.teaser.field_cw_link_target
+    - field.field.block_content.teaser.field_teaser_bg_colour
     - field.field.block_content.teaser.field_teaser_image
+    - field.field.block_content.teaser.field_teaser_img_bg
     - field.field.block_content.teaser.field_teaser_link_address
     - field.field.block_content.teaser.field_teaser_link_colour
     - field.field.block_content.teaser.field_teaser_link_title
@@ -35,6 +37,12 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
+  field_teaser_bg_colour:
+    weight: 9
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
   field_teaser_image:
     weight: 2
     label: above
@@ -43,6 +51,15 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
+  field_teaser_img_bg:
+    weight: 10
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
   field_teaser_link_address:
     weight: 8
     label: above
