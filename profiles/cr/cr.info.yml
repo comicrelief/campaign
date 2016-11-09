@@ -209,7 +209,6 @@ config_devel:
   - responsive_image.styles.bg_rich_text
   - responsive_image.styles.single_l_r_message_row
   - responsive_image.styles.single_msg_
-  - responsive_image.styles.cr_listing_teaser
   - responsive_image.styles.story_row
   - responsive_image.styles.cw_quote
   - responsive_image.styles.cw_quote_cw_s_and_m_viewmodes_

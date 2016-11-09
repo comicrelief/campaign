@@ -1,0 +1,13 @@
+<div {{ attributes.addClass('search-result', 'search-result--' ~ nodetype) }}>
+	<div class="search-result__image">
+		<a target="_blank" href="{{ field_cr_file }}"><img src="/profiles/cr/themes/custom/campaign_base/images/backgrounds/search_download.png" alt="search download"></a>
+	</div>
+  <div class="search-result__content-wrapper bg--white">
+		<div class="search-result__content">
+			<h3><a target="_blank" href="{{ field_cr_file }}">{{ field_cr_field_display_title }}</a></h3>
+			<div class="search-result__body">
+				{{ field_cr_downloadables_body }}
+			</div>
+		</div>
+	</div>
+</div>

@@ -54,3 +54,5 @@ config_devel:
   - scheduled_updates.scheduled_update_type.node__status
   - metatag.metatag_defaults.node__article
   - block.block.views_block__what_s_going_on_block_1
+  - image.style.cr_1_1_272x272_2x
+  - responsive_image.styles.cr_listing_teaser
