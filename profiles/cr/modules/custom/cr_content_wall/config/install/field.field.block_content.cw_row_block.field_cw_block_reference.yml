@@ -5,6 +5,7 @@ dependencies:
     - block_content.type.content_reference_block
     - block_content.type.cw_row_block
     - block_content.type.media_reference
+    - block_content.type.quote_block
     - block_content.type.teaser
     - field.storage.block_content.field_cw_block_reference
 id: block_content.cw_row_block.field_cw_block_reference
@@ -23,6 +24,7 @@ settings:
     target_bundles:
       content_reference_block: content_reference_block
       media_reference: media_reference
+      quote_block: quote_block
       teaser: teaser
     sort:
       field: _none

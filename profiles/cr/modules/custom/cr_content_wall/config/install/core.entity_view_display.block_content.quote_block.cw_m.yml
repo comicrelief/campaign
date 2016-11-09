@@ -1,0 +1,87 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.quote_block
+    - core.entity_view_mode.block_content.cw_m
+    - field.field.block_content.quote_block.field_author_background_colour
+    - field.field.block_content.quote_block.field_author_image
+    - field.field.block_content.quote_block.field_background_colour
+    - field.field.block_content.quote_block.field_background_image
+    - field.field.block_content.quote_block.field_body
+    - responsive_image.styles.cw_quote_cw_s_and_m_viewmodes_
+  module:
+    - ds
+    - image
+    - options
+    - responsive_image
+    - text
+third_party_settings:
+  ds:
+    layout:
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
+      library: ''
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - field_author_background_colour
+        - field_author_image
+        - field_background_colour
+        - field_background_image
+        - field_body
+        - social_links
+id: block_content.quote_block.cw_m
+targetEntityType: block_content
+bundle: quote_block
+mode: cw_m
+content:
+  field_author_background_colour:
+    type: list_default
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_author_image:
+    type: responsive_image
+    weight: 0
+    label: hidden
+    settings:
+      responsive_image_style: cw_quote_cw_s_and_m_viewmodes_
+      image_link: ''
+    third_party_settings: {  }
+  field_background_colour:
+    type: list_default
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_background_image:
+    type: image
+    weight: 0
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+    third_party_settings: {  }
+  field_body:
+    type: text_default
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  social_links:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }
