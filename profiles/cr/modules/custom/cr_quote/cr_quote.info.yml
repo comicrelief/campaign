@@ -1,0 +1,25 @@
+name: CR Quote block
+type: module
+description: Contains config for the quote block.
+core: 8.x
+package: Comic Relief
+config_devel:
+  - image.style.cw_quote_lg
+  - image.style.cw_quote_lg_2x
+  - image.style.cw_quote_sm
+  - image.style.cw_quote_sm_2x
+  - responsive_image.styles.cw_quote
+  - responsive_image.styles.cw_quote_cw_s_and_m_viewmodes_
+  - block_content.type.quote_block
+  - core.entity_form_display.block_content.quote_block.default
+  - core.entity_view_display.block_content.quote_block.default
+  - field.storage.block_content.field_author_image
+  - field.storage.block_content.field_background_colour
+  - field.storage.block_content.field_background_image
+  - field.storage.block_content.field_body
+  - field.storage.block_content.field_author_background_colour
+  - field.field.block_content.quote_block.field_author_image
+  - field.field.block_content.quote_block.field_background_colour
+  - field.field.block_content.quote_block.field_background_image
+  - field.field.block_content.quote_block.field_body
+  - field.field.block_content.quote_block.field_author_background_colour

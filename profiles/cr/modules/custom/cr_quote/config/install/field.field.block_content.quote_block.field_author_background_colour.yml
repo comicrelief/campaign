@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.quote_block
+    - field.storage.block_content.field_author_background_colour
+  module:
+    - options
+id: block_content.quote_block.field_author_background_colour
+field_name: field_author_background_colour
+entity_type: block_content
+bundle: quote_block
+label: 'Author background colour'
+description: 'Colour shown behind the author''s picture on SM breakpoint'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

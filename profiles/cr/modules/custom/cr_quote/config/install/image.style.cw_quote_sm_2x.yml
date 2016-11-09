@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: cw_quote_sm_2x
+label: 'CW Quote - SM (2x)'
+effects:
+  b30621fe-15a5-47c2-801a-6555ef86c9e0:
+    uuid: b30621fe-15a5-47c2-801a-6555ef86c9e0
+    id: image_scale
+    weight: 2
+    data:
+      width: 600
+      height: null
+      upscale: false
+  32b1ed59-b297-4bb8-be9b-0018ce33eb4a:
+    uuid: 32b1ed59-b297-4bb8-be9b-0018ce33eb4a
+    id: focal_point_crop
+    weight: 2
+    data:
+      width: '200'
+      height: '200'
