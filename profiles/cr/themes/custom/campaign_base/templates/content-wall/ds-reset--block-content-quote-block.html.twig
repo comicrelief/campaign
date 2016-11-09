@@ -1,9 +1,6 @@
 {% set bg_img_url = file_url(content.field_background_image.0['#item'].entity.uri.value) %}
-
 {% set view_mode = content['#view_mode']%}
-
 {% set bg_colour = field_background_colour['#items'][0].value %}
-
 {% set author_bg_colour = field_author_background_colour['#items'][0].value %}
 
 <article class="view-mode-{{view_mode}} cw-quote clearfix">
@@ -13,7 +10,7 @@
 		</div>
 		<div class="cw-quote__inner-wrapper">
 			<div class="cw-quote__image {{author_bg_colour}}">
-				{{ content['field_author_image'] }}
+				{{ field_author_image }}
 			</div>
 			<div class="cw-quote__body">
 				{{ field_body }}
