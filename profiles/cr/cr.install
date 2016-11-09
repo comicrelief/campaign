@@ -155,3 +155,9 @@ function cr_update_8017() {
   \Drupal::service('module_installer')->install(['cr_media']);
 }
 
+/**
+* Install cr_video cr_media
+*/
+function cr_update_8018() {
+  \Drupal::service('module_installer')->install(['cr_content_reference']);
+}
