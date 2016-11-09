@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\purge\EventSubscriber\CacheableResponseSubscriber.
- */
-
 namespace Drupal\purge\EventSubscriber;
 
 use Symfony\Component\HttpKernel\KernelEvents;

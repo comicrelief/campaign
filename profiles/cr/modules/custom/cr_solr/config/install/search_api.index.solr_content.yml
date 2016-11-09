@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - search_api.server.solr
+    - core.entity_view_mode.media.full
     - core.entity_view_mode.node.full
   module:
     - search_api
@@ -30,6 +31,7 @@ field_settings:
         'entity:media':
           cr_external_file: full
           cr_file: full
+          video: default
   node_grants:
     label: 'Node access information'
     datasource_id: null
@@ -58,14 +60,17 @@ field_settings:
     indexed_locked: true
     type_locked: true
 processor_settings:
+  add_url:
+    plugin_id: add_url
+    settings: {  }
+  aggregated_field:
+    plugin_id: aggregated_field
+    settings: {  }
   content_access:
     plugin_id: content_access
     settings:
       weights:
         preprocess_query: -10
-  node_status:
-    plugin_id: node_status
-    settings: {  }
   ignorecase:
     plugin_id: ignorecase
     settings:
@@ -77,14 +82,11 @@ processor_settings:
       weights:
         preprocess_index: -10
         preprocess_query: -10
+  node_status:
+    plugin_id: node_status
+    settings: {  }
   rendered_item:
     plugin_id: rendered_item
-    settings: {  }
-  aggregated_field:
-    plugin_id: aggregated_field
-    settings: {  }
-  add_url:
-    plugin_id: add_url
     settings: {  }
 options:
   index_directly: true

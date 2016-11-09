@@ -10,13 +10,13 @@ id: block_content.teaser.field_teaser_link_colour
 field_name: field_teaser_link_colour
 entity_type: block_content
 bundle: teaser
-label: 'Link colour'
+label: 'Button colour'
 description: ''
 required: false
 translatable: false
 default_value:
   -
-    value: link--red
+    value: btn--red
 default_value_callback: ''
 settings: {  }
 field_type: list_string

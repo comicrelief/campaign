@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\purge\Logger\PurgeLoggerAwareInterface.
- */
-
 namespace Drupal\purge\Logger;
 
 use \Psr\Log\LoggerAwareInterface;

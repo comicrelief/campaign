@@ -4,7 +4,7 @@ dependencies:
   module:
     - focal_point
 name: cr_lg_1170_x_450
-label: 'CR lg 1170 x 4503'
+label: 'CR lg 1170 x 450'
 effects:
   dcd2b849-6f72-4ad8-80cd-edbb594997a5:
     uuid: dcd2b849-6f72-4ad8-80cd-edbb594997a5

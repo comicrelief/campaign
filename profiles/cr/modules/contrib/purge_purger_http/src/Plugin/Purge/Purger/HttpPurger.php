@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\purge_purger_http\Plugin\Purge\Purger\HttpPurger.
- */
-
 namespace Drupal\purge_purger_http\Plugin\Purge\Purger;
 
 use Drupal\purge\Plugin\Purge\Purger\PurgerInterface;
@@ -12,7 +7,7 @@ use Drupal\purge\Plugin\Purge\Invalidation\InvalidationInterface;
 use Drupal\purge_purger_http\Plugin\Purge\Purger\HttpPurgerBase;
 
 /**
- * HTTP Purger
+ * HTTP Purger.
  *
  * @PurgePurger(
  *   id = "http",
@@ -47,12 +42,20 @@ class HttpPurger extends HttpPurgerBase implements PurgerInterface {
         // Log as much useful information as we can.
         $headers = $opt['headers'];
         unset($opt['headers']);
-        $debug = json_encode(str_replace("\n", ' ', [
-          'msg' => $e->getMessage(),
-          'uri' => $uri, 'method' => $this->settings->request_method,
-          'guzzle_opt' => $opt, 'headers' => $headers]));
+        $debug = json_encode(
+          str_replace("\n", ' ',
+            [
+              'msg' => $e->getMessage(),
+              'uri' => $uri,
+              'method' => $this->settings->request_method,
+              'guzzle_opt' => $opt,
+              'headers' => $headers,
+            ]
+          )
+        );
         $this->logger()->emergency("item failed due @e, details (JSON): @debug",
-          ['@e' => get_class($e), '@debug' => $debug]);
+          ['@e' => get_class($e), '@debug' => $debug]
+        );
       }
     }
   }

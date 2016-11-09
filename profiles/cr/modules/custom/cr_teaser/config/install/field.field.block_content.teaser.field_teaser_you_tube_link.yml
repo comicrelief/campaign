@@ -8,7 +8,7 @@ id: block_content.teaser.field_teaser_you_tube_link
 field_name: field_teaser_you_tube_link
 entity_type: block_content
 bundle: teaser
-label: 'lightbox link'
+label: 'lightbox link (deprecated)'
 description: 'Check this option for youtube links and the video will play in a lightbox'
 required: false
 translatable: false

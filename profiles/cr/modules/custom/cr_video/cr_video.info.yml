@@ -10,4 +10,5 @@ config_devel:
   - field.field.media.video.field_youtube_video_id
   - core.entity_form_display.media.video.default
   - core.entity_view_display.media.video.default
+  - core.entity_view_display.media.video.search_index
   - media_entity.bundle.video
