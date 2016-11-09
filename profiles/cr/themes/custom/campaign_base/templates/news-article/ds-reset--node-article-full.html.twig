@@ -4,10 +4,17 @@
  * Template for Articles layout.
  */
 #}
+{% set no_caption = field_image_caption['#items'].value == '' ? 'cr-article__header--no-caption' %}
+{%
+set header_class = [
+'cr-article__header',
+no_caption
+]
+%}
 
 <article class="cr-article" {% if css_id %}{{ css_id }}{% endif %}>
   <div class="cr-article__content-wrapper">
-  <header class="cr-article__header">
+  <header {{ attributes.addClass(header_class) }}>
     <div class="cr-article__social-links">
         <div class= "social-links-label">
           <span>Share with:</span>

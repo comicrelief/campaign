@@ -9,10 +9,13 @@
 }
 .cr-article__header {
 	margin: auto;
-	padding-top: 30px;
+	padding: 40px 0;
 	overflow: visible;
 	text-align: center;
 	background-color: $colour-white;
+}
+.cr-article__header--no-caption{
+	padding-bottom: 0;
 }
 .cr-article__title {
 	margin: 30px;
@@ -24,12 +27,12 @@
 	text-transform: uppercase;
 }
 .cr-article__image,
-.video-embed-field-responsive-video {
-	margin: 30px 0px;
+.cr-article__video {
+	padding: 40px 0px;
 }
 .cr-article {
 	figcaption {
-		margin-top: -40px;
+		margin-top: -40px; //move caption up against image/video
 		padding: 10px 15px;
 		background-color: $colour-black;
 		color: $colour-white;
@@ -39,16 +42,16 @@
 	
 .cr-article__body {
 	margin: auto; 
-	padding: 30px;
+	padding: 0 30px 40px;
 	background-color: $colour-white;
 
 	p a {
-		@extend .link;
+		@extend .link, .inline;
 	}
 	.video-embed-field-responsive-video,
 	 figure,
 	 img { 
-		width: calc(100% + 60px);
+		width: calc(100% + 60px); //body has padding
 		margin: 15px 0;
 		margin-left: -30px;
 	}
@@ -66,7 +69,7 @@
 		}
 		figcaption {
 			width: 100%;
-			margin: 0px 0px 15px 0px;	
+			margin: 0px 0px 15px;	
 		}
 	}
 }
@@ -74,7 +77,11 @@
 @include breakpoint($screen-lg) {
 	.cr-article__header {
 		width: 80%;
-		margin-bottom: 30px;
+		padding: 60px 0 30px;
+
+	}
+	.cr-article__header--no-caption{
+		padding-bottom: 0;
 	}
 	.cr-article__image, 
 	.cr-article__caption, 
@@ -86,7 +93,7 @@
 	}
 	.cr-article__body {
 		width: 80%;
-		padding: 30px 60px;
+		padding: 30px 60px 60px;
 
 		.video-embed-field-responsive-video,
 		figure,
