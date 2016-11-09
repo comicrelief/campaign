@@ -155,3 +155,19 @@ function cr_update_8017() {
   \Drupal::service('module_installer')->install(['cr_media']);
 }
 
+/**
+* Remove cr_single_message_row
+*/
+function cr_update_8021() {
+  // Remove any orphaned paragraphs
+  $result = \Drupal::entityQuery('paragraph')
+       ->condition('type', 'cr_single_message_row')
+       ->execute();
+   entity_delete_multiple('paragraph', $result);
+  // Disable the containing module
+  \Drupal::service('module_installer')->uninstall(['cr_single_message_row_paragraph']);
+  // Remove all config
+  Drupal::configFactory()->getEditable('paragraphs.paragraphs_type.cr_single_message_row')->delete();
+  Drupal::configFactory()->getEditable('field.storage.paragraph.field_single_msg_row_lr_body')->delete();
+
+}
