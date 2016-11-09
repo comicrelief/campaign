@@ -42,7 +42,10 @@
 	padding: 30px;
 	background-color: $colour-white;
 
-	 .video-embed-field-responsive-video,
+	p a {
+		@extend .link;
+	}
+	.video-embed-field-responsive-video,
 	 figure,
 	 img { 
 		width: calc(100% + 60px);
