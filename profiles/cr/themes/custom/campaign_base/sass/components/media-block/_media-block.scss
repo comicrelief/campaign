@@ -71,9 +71,12 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: 40px 10px 10px;
+  padding: 40px 10px 30px;
   h2, h3, h4, h5 {
   	color: $colour-white;
+  }
+  .font--yellow {
+    color: $colour-yellow;
   }
 }
 .media-block__caption {
@@ -82,5 +85,11 @@
 .view-mode-cw_l .media-block__content {
   @include breakpoint($screen-md, $no-query: true) {
     padding: 80px 10px 60px;
+  }
+}
+// add to the layout/views.scss for all blocks
+@include breakpoint(max-width 739px) {
+  .media-block {
+    padding: 0 calc(4 * #{gutter()}) calc(2 * #{gutter()});
   }
 }

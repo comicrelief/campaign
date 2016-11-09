@@ -22,6 +22,11 @@
             "value": "en"
         }
     ],
+    "type": [
+        {
+            "target_id": "image"
+        }
+    ],
     "filename": [
         {
             "value": "Bake off content wall image.jpg"
@@ -29,7 +34,7 @@
     ],
     "uri": [
         {
-            "value": "public:\/\/2016-04\/Bake off content wall image_8.jpg"
+            "value": "public:\/\/2016-04\/Bake off content wall image_8_240.jpg"
         }
     ],
     "filemime": [
@@ -55,11 +60,6 @@
     "changed": [
         {
             "value": "1460630315"
-        }
-    ],
-    "type": [
-        {
-            "target_id": "image"
         }
     ],
     "data": [
