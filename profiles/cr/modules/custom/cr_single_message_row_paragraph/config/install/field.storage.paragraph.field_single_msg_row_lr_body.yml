@@ -1,6 +1,9 @@
 langcode: en
 status: true
 dependencies:
+  enforced:
+    module:
+      - cr_single_message_row_paragraph
   module:
     - paragraphs
     - text

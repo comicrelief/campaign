@@ -1,6 +1,9 @@
 langcode: en
 status: true
 dependencies:
+  enforced:
+    module:
+      - cr_single_message_row_paragraph
   config:
     - field.storage.paragraph.field_single_msg_row_lr_variant
     - paragraphs.paragraphs_type.cr_single_message_row

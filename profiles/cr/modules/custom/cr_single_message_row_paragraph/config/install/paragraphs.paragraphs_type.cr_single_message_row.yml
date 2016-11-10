@@ -1,5 +1,8 @@
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  enforced:
+    module:
+      - cr_single_message_row_paragraph
 id: cr_single_message_row
 label: 'Single Message Row (Deprecated)'
