@@ -30,7 +30,7 @@
   */
 
 .btn {
-  display: block;
+  display: inline-block;
   padding: 21px 40px;
   cursor: pointer;
   text-align: center;
@@ -39,10 +39,27 @@
   font-family: $font-bold;
   font-size: 18px;
   line-height: 18px;
+  width: auto;
+  max-width: 290px;
+  margin: 0 auto;
   @include border-radius(30px);
   span {
     font-size: inherit;
     font-weight: inherit;
+  }
+
+  @include breakpoint($screen-md, $no-query: true) {
+    max-width: none;
+    display: block;
+  }
+
+  &.btn--full-width {
+    //width: 100%;
+    //display: block;
+    @include breakpoint($screen-md, $no-query: true) {
+     //width: auto;
+      //display: inline-block;
+    }
   }
 }
 
