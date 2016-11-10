@@ -70,7 +70,6 @@
 }
 .teaser-block__body {
   @include flex-wrap(wrap);
-  @include flex-flow(column nowrap);
   @include align-content(center);
   @include justify-content(center);
   @include align-items(center);
