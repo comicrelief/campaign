@@ -49,25 +49,23 @@
   img {
     display: block;
     width: 100%;
-    width: 100%;
-    height: auto;
     height: 100%;
     margin-bottom: -5px;
 
     object-fit: cover;
-    // .no-objectfit & {
-    //   position: absolute;
-    //   top: -100%;
-    //   right: -100%;
-    //   bottom: -100%;
-    //   left: -100%;
-    //   overflow: hidden;
-    //   width: auto;
-    //   max-width: none;
-    //   height: 100%!important;
-    //   max-height: none;
-    //   margin: auto;
-    // }
+    .no-objectfit & {
+      position: absolute;
+      top: -100%;
+      right: -100%;
+      bottom: -100%;
+      left: -100%;
+      overflow: hidden;
+      width: auto;
+      max-width: none;
+      height: 100%!important;
+      max-height: none;
+      margin: auto;
+    }
   }
 }
 .teaser-block__body {

@@ -1,10 +1,10 @@
 (function($, Drupal) {
   $( document ).ready(function() {
     // IE fallback objectfit
-    if ( $('html').hasClass('no-objectfit') ) {
+    if(!Modernizr.objectfit) {
       $('.objectfit').each(function () {
         var $container = $(this),
-            imgUrl = $container.find('img').prop('srcset');
+            imgUrl = $container.find('img').prop('src');
         if (imgUrl) {
           $container
             .css('backgroundImage', 'url(' + imgUrl + ')')
