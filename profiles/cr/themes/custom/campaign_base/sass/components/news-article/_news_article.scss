@@ -45,9 +45,6 @@
 	padding: 0 30px 40px;
 	background-color: $colour-white;
 
-	p a {
-		@extend .link, .inline;
-	}
 	.video-embed-field-responsive-video,
 	 figure,
 	 img { 
