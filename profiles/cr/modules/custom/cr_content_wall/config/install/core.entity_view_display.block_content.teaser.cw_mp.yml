@@ -6,16 +6,49 @@ dependencies:
     - core.entity_view_mode.block_content.cw_mp
     - field.field.block_content.teaser.body
     - field.field.block_content.teaser.field_cw_link_target
+    - field.field.block_content.teaser.field_teaser_bg_colour
     - field.field.block_content.teaser.field_teaser_image
+    - field.field.block_content.teaser.field_teaser_img_bg
     - field.field.block_content.teaser.field_teaser_link_address
     - field.field.block_content.teaser.field_teaser_link_colour
     - field.field.block_content.teaser.field_teaser_link_title
     - field.field.block_content.teaser.field_teaser_title
     - field.field.block_content.teaser.field_teaser_you_tube_link
+    - responsive_image.styles.cw_landscape_image
   module:
-    - image
+    - ds
     - options
+    - responsive_image
     - text
+third_party_settings:
+  ds:
+    layout:
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
+      library: ''
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - field_teaser_img_bg
+        - field_teaser_bg_colour
+        - body
+        - field_teaser_title
+        - field_teaser_image
+        - field_teaser_link_title
+        - field_teaser_link_address
+        - field_teaser_link_colour
+        - field_teaser_you_tube_link
+        - field_cw_link_target
 id: block_content.teaser.cw_mp
 targetEntityType: block_content
 bundle: teaser
@@ -36,14 +69,29 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
+  field_teaser_bg_colour:
+    type: list_default
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
   field_teaser_image:
     weight: 2
     label: hidden
     settings:
-      image_style: ''
+      responsive_image_style: cw_landscape_image
       image_link: ''
     third_party_settings: {  }
-    type: image
+    type: responsive_image
+  field_teaser_img_bg:
+    type: boolean
+    weight: 0
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
   field_teaser_link_address:
     type: string
     weight: 4

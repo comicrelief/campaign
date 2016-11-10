@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\purge\Tests\TagsHeader\CacheableResponseSubscriberTest.
- */
-
 namespace Drupal\purge\Tests\TagsHeader;
 
 use Symfony\Component\HttpFoundation\Request;
@@ -45,7 +40,7 @@ class CacheableResponseSubscriberTest extends KernelTestBase {
   /**
    * {@inheritdoc}
    */
-  function setUp() {
+  public function setUp() {
     parent::setUp();
     $this->installSchema('system', ['router']);
     \Drupal::service('router.builder')->rebuild();
@@ -55,7 +50,6 @@ class CacheableResponseSubscriberTest extends KernelTestBase {
    * Test header presence.
    */
   public function testHeaderPresence() {
-    $this->assertCacheTagsHeader('/system/401', 'Purge-Cache-Tags');
     $this->assertCacheTagsHeader('/system/401', 'Header-A');
     $this->assertCacheTagsHeader('/system/401', 'Header-B');
     $this->assertCacheTagsHeader('/system/401', 'Header-C');

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\purge\Unit\FixGetConfigFactoryStubTrait.
- */
-
 namespace Drupal\Tests\purge\Unit;
 
 /**

@@ -14,9 +14,7 @@
       onFinish : {
         custom: function() {
           var caption = $(this).parent().find('.media-block__caption');
-          console.log(caption.length);
           if (caption.length) {
-            console.log("has caption");
             lightcase.get('caption').html(caption.html());
             $('#lightcase-caption').show();
             }

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\purge_ui\Form\LoggingConfigForm.
- */
-
 namespace Drupal\purge_ui\Form;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -68,7 +63,7 @@ class LoggingConfigForm extends FormBase {
     // Define the table header.
     $form['table'] = [
       '#type' => 'table',
-      '#header' => ['id' => $this->t('Id')]
+      '#header' => ['id' => $this->t('Id')],
     ];
     foreach (RfcLogLevel::getLevels() as $level => $label) {
       $form['table']['#header']["$level"] = $label;
@@ -82,7 +77,7 @@ class LoggingConfigForm extends FormBase {
       foreach (RfcLogLevel::getLevels() as $level => $label) {
         $form['table'][$channel['id']][$level] = [
           '#type' => 'checkbox',
-          '#default_value' => in_array($level, $channel['grants'])
+          '#default_value' => in_array($level, $channel['grants']),
         ];
       }
     }
@@ -93,13 +88,13 @@ class LoggingConfigForm extends FormBase {
       '#value' => $this->t("Save"),
       '#weight' => -10,
       '#button_type' => 'primary',
-      '#ajax' => ['callback' => '::setChannels']
+      '#ajax' => ['callback' => '::setChannels'],
     ];
     $form['actions']['cancel'] = [
       '#type' => 'submit',
       '#value' => $this->t('Cancel'),
       '#button_type' => 'danger',
-      '#ajax' => ['callback' => '::closeDialog']
+      '#ajax' => ['callback' => '::closeDialog'],
     ];
     return $form;
   }
@@ -121,7 +116,6 @@ class LoggingConfigForm extends FormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $has_resulted_in_changes = FALSE;
-    $channels = $this->purgeLogger->getChannels();
     if (is_array($values = $form_state->getValue('table'))) {
       foreach ($values as $id => $checkboxes) {
         if ($this->purgeLogger->hasChannel($id)) {

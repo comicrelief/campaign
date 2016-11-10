@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\purge\Tests\TagsHeader\ServiceTest.
- */
-
 namespace Drupal\purge\Tests\TagsHeader;
 
 use Drupal\purge\Tests\KernelTestBase;
@@ -24,12 +19,11 @@ class ServiceTest extends KernelServiceTestBase {
   public static $modules = ['purge_tagsheader_test'];
 
   /**
-   * All bundled plugins in purge core, including in the test module.
+   * All tagsheader plugins that can be expected.
    *
    * @var string[]
    */
   protected $plugins = [
-    'purge',
     'a',
     'b',
     'c',
@@ -38,7 +32,7 @@ class ServiceTest extends KernelServiceTestBase {
   /**
    * Set up the test.
    */
-  function setUp() {
+  public function setUp() {
 
     // Skip parent::setUp() as we don't want the service initialized here.
     KernelTestBase::setUp();
@@ -50,7 +44,7 @@ class ServiceTest extends KernelServiceTestBase {
   public function testCount() {
     $this->initializeService();
     $this->assertTrue($this->service instanceof \Countable);
-    $this->assertEqual(4, count($this->service));
+    $this->assertEqual(count($this->plugins), count($this->service));
   }
 
   /**
@@ -75,21 +69,9 @@ class ServiceTest extends KernelServiceTestBase {
    */
   public function testIteration() {
     $this->initializeService();
-    $this->assertTrue($this->service instanceof \Iterator);
-    $items = 0;
-    foreach ($this->service as $instance) {
-      $this->assertTrue($instance instanceof TagsHeaderInterface);
-      $this->assertTrue(in_array($instance->getPluginId(), $this->plugins));
-      $items++;
-    }
-    $this->assertEqual(4, $items);
-    $this->assertFalse($this->service->current());
-    $this->assertFalse($this->service->valid());
-    $this->assertNull($this->service->rewind());
-    $this->assertEqual('purge', $this->service->current()->getPluginId());
-    $this->assertNull($this->service->next());
-    $this->assertEqual('b', $this->service->current()->getPluginId());
-    $this->assertTrue($this->service->valid());
+    $this->assertIterator('\Drupal\purge\Plugin\Purge\TagsHeader\TagsHeaderInterface',
+      $this->plugins
+    );
   }
 
 }

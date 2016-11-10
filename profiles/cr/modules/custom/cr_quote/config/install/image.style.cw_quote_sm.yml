@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: cw_quote_sm
+label: 'CW Quote - SM'
+effects:
+  365b0351-01f4-4563-98df-daf50410a58c:
+    uuid: 365b0351-01f4-4563-98df-daf50410a58c
+    id: focal_point_crop
+    weight: 0
+    data:
+      width: '100'
+      height: '100'
+  c7c3c22d-1e7c-4085-8808-30be17aaa6ea:
+    uuid: c7c3c22d-1e7c-4085-8808-30be17aaa6ea
+    id: image_scale
+    weight: -1
+    data:
+      width: 300
+      height: null
+      upscale: false

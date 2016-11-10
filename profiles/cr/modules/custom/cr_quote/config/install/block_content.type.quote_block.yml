@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: quote_block
+label: 'Quote Block'
+revision: 0
+description: 'This block allows text only tips/quotes to be added to the content wall.'
