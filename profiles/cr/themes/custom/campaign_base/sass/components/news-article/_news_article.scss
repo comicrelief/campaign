@@ -52,7 +52,7 @@
 		margin: 15px 0 15px -30px;
 	}
 	.video-embed-field-responsive-video { 
-		margin: 30px 0 30px -30px;
+		margin: 30px 0 40px -30px;
 	}
 	figure {
 		margin-top: 30px;
@@ -66,6 +66,10 @@
 			width: 100%;
 			margin: 0px 0px 15px;	
 		}
+	}
+	figcaption {
+		width: calc(100% + 60px);
+		margin: -40px 0 30px -30px;
 	}
 }
 
@@ -91,7 +95,8 @@
 
 		.video-embed-field-responsive-video,
 		figure,
-		img {
+		img, 
+		figcaption {
 			width: calc(100% + (6 * 60px));
 			margin-left: -180px;
 		}
