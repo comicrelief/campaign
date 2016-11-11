@@ -72,9 +72,3 @@
   text-transform: uppercase;
   letter-spacing: 1px;
 }
-// add to the layout/views.scss for all blocks
-@include breakpoint(max-width 739px) {
-  .content-block {
-    padding: 0 calc(4 * #{gutter()}) calc(2 * #{gutter()});
-  }
-}

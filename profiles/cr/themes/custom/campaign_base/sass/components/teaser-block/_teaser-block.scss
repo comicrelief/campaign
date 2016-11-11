@@ -140,8 +140,3 @@
     height: 100%;
   }
 }
-@include breakpoint(max-width 739px) {
-  .teaser-block {
-    padding: 0 calc(4 * #{gutter()}) calc(4 * #{gutter()});
-  }
-}

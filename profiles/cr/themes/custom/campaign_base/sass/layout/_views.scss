@@ -11,34 +11,33 @@
 }
 .cw-region {
   article {
+    width: 100%;
+    @include breakpoint(max-width $screen-sm-max) {
+      padding: 0 calc(4 * #{gutter()}) calc(4 * #{gutter()});
+    }
+    @include breakpoint($screen-md, $no-query: true) {
+      margin-bottom: calc(2 * #{gutter()});
+    }
     &.block-content--view-mode-cw-s,
     &.view-mode-cw_s {
-      width: 100%;
-      margin-bottom: calc(2 * #{gutter()});
       @include breakpoint($screen-md, $no-query: true) {
         @include span(4);
       }
     }
     &.block-content--view-mode-cw-m,
     &.view-mode-cw_m {
-      width: 100%;
-      margin-bottom: calc(2 * #{gutter()});
       @include breakpoint($screen-md, $no-query: true) {
         @include span(6);
       }
     }
     &.block-content--view-mode-cw-mp,
     &.view-mode-cw_mp {
-      width: 100%;
-      margin-bottom: calc(2 * #{gutter()});
       @include breakpoint($screen-md, $no-query: true) {
         @include span(8);
       }
     }
     &.block-content--view-mode-cw-l,
     &.view-mode-cw_l {
-      width: 100%;
-      margin-bottom: calc(2 * #{gutter()});
       @include breakpoint($screen-md) {
         @include span(12);
       }
