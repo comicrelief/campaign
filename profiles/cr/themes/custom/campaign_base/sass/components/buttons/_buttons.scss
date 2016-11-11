@@ -20,6 +20,7 @@
 // :focus - Button focus state
 // .btn--fixed-width - Min width button, expands to width of container but min width of 290px
 // .btn--lg - Large buttons
+// .btn--full-width - Full-width button on SM breakpoint only
 //
 // Style guide: Buttons
 
@@ -58,7 +59,6 @@
     }
   }
 }
-
 
 /* Process $buttonList colour variations through our btn-variation mixin. */
 @each $button in $buttonList {
