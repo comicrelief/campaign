@@ -27,6 +27,8 @@ class ParagraphsAdministrationTest extends WebTestBase {
     'image',
     'field_ui',
     'block',
+    'file',
+    'views'
   );
 
   /**
@@ -165,6 +167,7 @@ class ParagraphsAdministrationTest extends WebTestBase {
       'administer node form display',
       'edit any article content',
       'delete any article content',
+      'access files overview',
     ));
     $this->drupalLogin($admin_user);
 
@@ -397,6 +400,7 @@ class ParagraphsAdministrationTest extends WebTestBase {
     $this->drupalGet('admin/structure/paragraphs_type/text_image/form-display');
     $edit = [
       'fields[status][type]' => 'boolean_checkbox',
+      'fields[status][region]' => 'content',
     ];
 
     $this->drupalPostForm(NULL, $edit, t('Save'));
@@ -452,7 +456,7 @@ class ParagraphsAdministrationTest extends WebTestBase {
     // Test that unsupported widgets are not displayed.
     $this->drupalGet('admin/structure/types/manage/article/form-display');
     $select = $this->xpath('//*[@id="edit-fields-field-paragraphs-type"]')[0];
-    $this->assertEqual(count($select->option), 2);
+    $this->assertEqual(count($select->option), 1);
     $this->assertRaw('value="entity_reference_paragraphs" selected="selected"');
 
     // Check that Paragraphs is not displayed as an entity_reference field
@@ -570,6 +574,11 @@ class ParagraphsAdministrationTest extends WebTestBase {
     // added yet.
     $this->drupalGet('node/add/article');
     $this->assertText('No Paragraph added yet.');
+
+    $this->drupalGet('admin/content/files');
+    $this->clickLink('1 place');
+    $label = $this->xpath('//tbody/tr/td[1]');
+    $this->assertEqual(trim(htmlspecialchars_decode(strip_tags($label[0]->asXML()))), 'test required > Paragraphs > Paragraphs');
   }
 
   /**
