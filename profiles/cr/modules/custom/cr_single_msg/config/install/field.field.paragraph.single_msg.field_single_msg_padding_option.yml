@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_single_msg_padding_option
+    - paragraphs.paragraphs_type.single_msg
+  module:
+    - options
+id: paragraph.single_msg.field_single_msg_padding_option
+field_name: field_single_msg_padding_option
+entity_type: paragraph
+bundle: single_msg
+label: 'Padding'
+description: 'Set default padding or choose to remove padding'
+required: false
+translatable: false
+default_value:
+	-
+		value: top-bottom
+default_value_callback: ''
+settings: {  }
+field_type: list_string

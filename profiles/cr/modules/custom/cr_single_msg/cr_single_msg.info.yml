@@ -18,6 +18,7 @@ config_devel:
   - field.storage.paragraph.field_single_msg_body_bg_colour
   - field.storage.paragraph.field_single_msg_hide_title
   - field.storage.paragraph.field_single_msg_layout_variant
+  - field.storage.paragraph.field_single_msg_padding_option
   - field.field.paragraph.single_msg.field_single_msg_bg
   - field.field.paragraph.single_msg.field_single_msg_body
   - field.field.paragraph.single_msg.field_single_msg_img
@@ -25,6 +26,7 @@ config_devel:
   - field.field.paragraph.single_msg.field_single_msg_body_bg_colour
   - field.field.paragraph.single_msg.field_single_msg_hide_title
   - field.field.paragraph.single_msg.field_single_msg_layout_variant
+  - field.field.paragraph.single_msg.field_single_msg_padding_option
   - image.style.single_msg_lg_
   - image.style.single_msg_lg_2x_
   - image.style.single_msg_md_2x_

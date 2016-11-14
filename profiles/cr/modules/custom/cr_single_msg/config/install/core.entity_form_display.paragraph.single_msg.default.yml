@@ -8,6 +8,7 @@ dependencies:
     - field.field.paragraph.single_msg.field_single_msg_hide_title
     - field.field.paragraph.single_msg.field_single_msg_img
     - field.field.paragraph.single_msg.field_single_msg_layout_variant
+    - field.field.paragraph.single_msg.field_single_msg_padding_option
     - field.field.paragraph.single_msg.field_single_msg_title
     - image.style.large
     - paragraphs.paragraphs_type.single_msg
@@ -51,6 +52,11 @@ content:
     type: image_image
   field_single_msg_layout_variant:
     weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_single_msg_padding_option:
+    weight: 7
     settings: {  }
     third_party_settings: {  }
     type: options_select
