@@ -14,7 +14,8 @@
 		}
 		h2 {
 			margin-top: calc(4 * #{gutter()});
-			@include font-size($h4-font-size);
+			font-family: $font-regular;
+			@include font-size($p-xlarge-font-size);
 			text-align: left;
 			a {
 				text-decoration: none;
