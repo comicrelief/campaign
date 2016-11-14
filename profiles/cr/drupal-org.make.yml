@@ -68,7 +68,9 @@ projects:
   field_group:
     version: 1.0-rc4
   entity_reference_revisions:
-    version: 1.0
+    download:
+      version: 1.x-dev
+      revision: c1941b7
   view_modes_display:
     version: 1.x-dev
   social_links:
@@ -120,7 +122,9 @@ projects:
   #crop:
   #  version: 1.0-rc1
   paragraphs:
-    version: 1.0
+    download:
+      version: 1.x-dev
+      revision: 99a6673
   # Forms
   yamlform:
     version: 1.0-alpha5
