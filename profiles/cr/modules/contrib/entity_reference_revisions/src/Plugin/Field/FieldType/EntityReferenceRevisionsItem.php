@@ -248,7 +248,20 @@ class EntityReferenceRevisionsItem extends EntityReferenceItem implements Option
    */
   public function preSave() {
     parent::preSave();
-    if ($this->entity instanceof EntityNeedsSaveInterface && $this->entity->needsSave()) {
+    $host = $this->getEntity();
+    $needs_save = $this->entity instanceof EntityNeedsSaveInterface && $this->entity->needsSave();
+
+    // Create a new revision if this is a composite entity in a host with a new
+    // revision.
+    if ($host->isNewRevision() && $this->entity && $this->entity->getEntityType()->get('entity_revision_parent_id_field')) {
+      $this->entity->setNewRevision();
+      if ($host->isDefaultRevision()) {
+        $this->entity->isDefaultRevision(TRUE);
+      }
+      $needs_save = TRUE;
+    }
+
+    if ($needs_save) {
       $this->entity->save();
     }
     if ($this->entity) {
@@ -317,6 +330,71 @@ class EntityReferenceRevisionsItem extends EntityReferenceItem implements Option
  */
   public static function onDependencyRemoval(FieldDefinitionInterface $field_definition, array $dependencies) {
     return FALSE;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function generateSampleValue(FieldDefinitionInterface $field_definition) {
+    $selection_manager = \Drupal::service('plugin.manager.entity_reference_selection');
+    $entity_manager = \Drupal::entityTypeManager();
+
+    // Bail if there are no referenceable entities.
+    if (!$selection_manager->getSelectionHandler($field_definition)->getReferenceableEntities()) {
+      return;
+    }
+
+    // ERR field values are never cross referenced so we need to generate new
+    // target entities. First, find the target entity type.
+    $target_type_id = $field_definition->getFieldStorageDefinition()->getSetting('target_type');
+    $target_type = $entity_manager->getDefinition($target_type_id);
+    $handler_settings = $field_definition->getSetting('handler_settings');
+
+    // Determine referenceable bundles.
+    $bundle_manager = \Drupal::service('entity_type.bundle.info');
+    if (isset($handler_settings['target_bundles']) && is_array($handler_settings['target_bundles'])) {
+      $bundles = $handler_settings['target_bundles'];
+    }
+    else {
+      $bundles = $bundle_manager->getBundleInfo($target_type_id);
+    }
+    $bundle = array_rand($bundles);
+
+    $label = NULL;
+    if ($label_key = $target_type->getKey('label')) {
+      $random = new Random();
+      // @TODO set the length somehow less arbitrary.
+      $label = $random->word(mt_rand(1, 10));
+    }
+
+    // Create entity stub.
+    $entity = $selection_manager->getSelectionHandler($field_definition)->createNewEntity($target_type_id, $bundle, $label, 0);
+
+    // Populate entity values and save.
+    $instances = $entity_manager
+      ->getStorage('field_config')
+      ->loadByProperties([
+        'entity_type' => $target_type_id,
+        'bundle' => $bundle,
+      ]);
+
+    foreach ($instances as $instance) {
+      $field_storage = $instance->getFieldStorageDefinition();
+      $max = $cardinality = $field_storage->getCardinality();
+      if ($cardinality == FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED) {
+        // Just an arbitrary number for 'unlimited'
+        $max = rand(1, 5);
+      }
+      $field_name = $field_storage->getName();
+      $entity->{$field_name}->generateSampleItems($max);
+    }
+
+    $entity->save();
+
+    return [
+      'target_id' => $entity->id(),
+      'target_revision_id' => $entity->getRevisionId(),
+    ];
   }
 
 }

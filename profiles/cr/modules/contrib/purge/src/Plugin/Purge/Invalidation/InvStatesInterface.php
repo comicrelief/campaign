@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Plugin\Purge\Invalidation\InvStatesInterface.
+ */
+
 namespace Drupal\purge\Plugin\Purge\Invalidation;
 
 /**

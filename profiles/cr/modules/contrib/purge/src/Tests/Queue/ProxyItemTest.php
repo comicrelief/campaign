@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Tests\Queue\ProxyItemTest.
+ */
+
 namespace Drupal\purge\Tests\Queue;
 
 use Drupal\purge\Tests\KernelTestBase;
@@ -69,7 +74,7 @@ class ProxyItemTest extends KernelTestBase {
     $this->assertEqual(123456789, $p->created);
 
     // Test that bad properties throw a InvalidPropertyException as expected.
-    foreach (['properties', 'buffer', 'test'] as $property) {
+    foreach(['properties', 'buffer', 'test'] as $property) {
       $thrown = FALSE;
       try {
         $p->$property;
@@ -102,7 +107,7 @@ class ProxyItemTest extends KernelTestBase {
     $this->assertEqual(0.7, $this->buffer->getProperty($i, 'created'));
 
     // Test setting 'data' (RO) and other non-existing properties.
-    foreach (['data', 'foo', 'bar'] as $property) {
+    foreach(['data', 'foo', 'bar'] as $property) {
       $thrown = FALSE;
       try {
         $p->$property = time();

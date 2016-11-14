@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Tests\Queue\FileQueueTest.
+ */
+
 namespace Drupal\purge\Tests\Queue;
 
 use Drupal\Core\DestructableInterface;
@@ -25,7 +30,7 @@ class FileQueueTest extends PluginTestBase {
   /**
    * Set up the test.
    */
-  public function setUp() {
+  function setUp() {
     parent::setUp();
     $this->file = DRUPAL_ROOT . '/' . PublicStream::basePath() . '/' . $this->file;
   }
@@ -38,7 +43,7 @@ class FileQueueTest extends PluginTestBase {
    * @see \Drupal\purge\Plugin\Purge\Queue\File::deleteQueue
    * @see \Drupal\purge\Plugin\Purge\Queue\File::destruct
    */
-  public function testBufferReadingAndWriting() {
+  function testBufferReadingAndWriting() {
     $this->assertTrue($this->queue instanceof DestructableInterface);
     $this->assertFalse(file_exists($this->file));
 
@@ -46,13 +51,13 @@ class FileQueueTest extends PluginTestBase {
     // disk by the file queue. However, because of its dependence on time(),
     // this test is exposed to the hosts performance. This anonymous function
     // creates a range of payloads to make this test more resilient.
-    $payloads = function ($base, $time) {
+    $payloads = function($base, $time) {
       return [
         $base . $time-2 . "\n",
         $base . $time-1 . "\n",
         $base . $time   . "\n",
         $base . $time+1 . "\n",
-        $base . $time+2 . "\n",
+        $base . $time+2 . "\n"
       ];
     };
 

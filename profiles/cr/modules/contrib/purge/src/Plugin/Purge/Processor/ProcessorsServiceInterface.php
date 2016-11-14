@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Plugin\Purge\Processor\ProcessorsServiceInterface.
+ */
+
 namespace Drupal\purge\Plugin\Purge\Processor;
 
 use Drupal\purge\ServiceInterface;

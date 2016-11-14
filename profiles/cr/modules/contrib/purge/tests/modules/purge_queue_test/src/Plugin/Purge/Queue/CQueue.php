@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge_queue_test\Plugin\Purge\Queue\CQueue.
+ */
+
 namespace Drupal\purge_queue_test\Plugin\Purge\Queue;
 
 use Drupal\purge\Plugin\Purge\Queue\MemoryQueue;

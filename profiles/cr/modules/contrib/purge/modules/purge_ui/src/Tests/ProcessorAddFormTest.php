@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge_ui\Tests\ProcessorAddFormTest.
+ */
+
 namespace Drupal\purge_ui\Tests;
 
 use Drupal\Core\Url;
@@ -34,7 +39,7 @@ class ProcessorAddFormTest extends WebTestBase {
   /**
    * Setup the test.
    */
-  public function setUp() {
+  function setUp() {
     parent::setUp();
     $this->admin_user = $this->drupalCreateUser(['administer site configuration']);
   }
@@ -52,7 +57,7 @@ class ProcessorAddFormTest extends WebTestBase {
     $this->initializeProcessorsService(['a', 'b', 'c']);
     $this->drupalGet(Url::fromRoute($this->route));
     $this->assertResponse(200);
-    $this->initializeProcessorsService(['a', 'b', 'c', 'withform', 'purge_ui_block_processor']);
+    $this->initializeProcessorsService(['a', 'b', 'c', 'withform']);
     $this->drupalGet(Url::fromRoute($this->route));
     $this->assertResponse(404);
     $this->initializeProcessorsService(['a', 'b']);

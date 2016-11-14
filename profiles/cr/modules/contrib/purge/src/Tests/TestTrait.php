@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Tests\TestTrait.
+ */
+
 namespace Drupal\purge\Tests;
 
 /**

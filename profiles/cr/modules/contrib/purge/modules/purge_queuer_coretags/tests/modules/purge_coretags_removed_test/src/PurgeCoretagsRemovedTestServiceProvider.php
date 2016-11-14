@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge_coretags_removed_test\PurgeCoretagsRemovedTestServiceProvider.
+ */
+
 namespace Drupal\purge_coretags_removed_test;
 
 use Drupal\Core\DependencyInjection\ServiceModifierInterface;

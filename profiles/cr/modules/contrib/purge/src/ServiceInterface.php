@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\ServiceInterface.
+ */
+
 namespace Drupal\purge;
 
 use Drupal\Core\DependencyInjection\ServiceProviderInterface;

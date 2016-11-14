@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Plugin\Purge\Queuer\QueuersService.
+ */
+
 namespace Drupal\purge\Plugin\Purge\Queuer;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
@@ -36,7 +41,7 @@ class QueuersService extends ServiceBase implements QueuersServiceInterface {
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    *   The factory for configuration objects.
    */
-  public function __construct(PluginManagerInterface $pluginManager, ConfigFactoryInterface $config_factory) {
+  function __construct(PluginManagerInterface $pluginManager, ConfigFactoryInterface $config_factory) {
     $this->pluginManager = $pluginManager;
     $this->configFactory = $config_factory;
   }
@@ -78,12 +83,9 @@ class QueuersService extends ServiceBase implements QueuersServiceInterface {
 
       // Override the mapping with information stored in CMI, then filter out
       // everything that isn't enabled and finally flip the array with just ids.
-      $queuers = $this->configFactory->get('purge.plugins')->get('queuers');
-      if (!is_null($queuers)) {
-        foreach ($queuers as $inst) {
-          if (isset($this->plugins_enabled[$inst['plugin_id']])) {
-            $this->plugins_enabled[$inst['plugin_id']] = $inst['status'];
-          }
+      foreach ($this->configFactory->get('purge.plugins')->get('queuers') as $inst) {
+        if (isset($this->plugins_enabled[$inst['plugin_id']])) {
+          $this->plugins_enabled[$inst['plugin_id']] = $inst['status'];
         }
       }
       foreach ($this->plugins_enabled as $plugin_id => $status) {
@@ -116,11 +118,8 @@ class QueuersService extends ServiceBase implements QueuersServiceInterface {
     // Gather all plugins mentioned in CMI and those available right now, set
     // them disabled first. Then flip the switch for given plugin_ids.
     $setting_assoc = [];
-    $instances = $this->configFactory->get('purge.plugins')->get('queuers');
-    if (!is_null($instances)) {
-      foreach ($instances as $inst) {
-        $setting_assoc[$inst['plugin_id']] = FALSE;
-      }
+    foreach ($this->configFactory->get('purge.plugins')->get('queuers') as $inst) {
+      $setting_assoc[$inst['plugin_id']] = FALSE;
     }
     foreach ($definitions as $definition) {
       $setting_assoc[$definition['id']] = FALSE;
@@ -137,7 +136,7 @@ class QueuersService extends ServiceBase implements QueuersServiceInterface {
     foreach ($setting_assoc as $plugin_id => $status) {
       $setting[] = [
         'plugin_id' => $plugin_id,
-        'status' => $status,
+        'status' => $status
       ];
     }
     $this->configFactory

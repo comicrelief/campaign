@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Plugin\Purge\Queue\Exception\UnexpectedServiceConditionException.
+ */
+
 namespace Drupal\purge\Plugin\Purge\Queue\Exception;
 
 /**

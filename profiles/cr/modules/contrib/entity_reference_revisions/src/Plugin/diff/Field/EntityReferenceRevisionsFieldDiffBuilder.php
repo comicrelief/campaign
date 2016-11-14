@@ -1,9 +1,10 @@
 <?php
 
-namespace Drupal\entity_reference_revisions\Plugin\Diff;
+namespace Drupal\entity_reference_revisions\Plugin\diff\Field;
 
 use Drupal\diff\FieldDiffBuilderBase;
 use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\diff\FieldReferenceInterface;
 
 /**
  * This plugins offers the possibility to compare ERR fields.
@@ -16,7 +17,7 @@ use Drupal\Core\Field\FieldItemListInterface;
  *   },
  * )
  */
-class EntityReferenceRevisionsFieldDiffBuilder extends FieldDiffBuilderBase {
+class EntityReferenceRevisionsFieldDiffBuilder extends FieldDiffBuilderBase implements FieldReferenceInterface {
 
   /**
    * {@inheritdoc}
@@ -40,4 +41,19 @@ class EntityReferenceRevisionsFieldDiffBuilder extends FieldDiffBuilderBase {
     }
     return $result_text;
   }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getEntitiesToDiff(FieldItemListInterface $field_items) {
+    /** @var \Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem $field_item */
+    $entities = [];
+    foreach ($field_items as $field_key => $field_item) {
+      if (!$field_item->isEmpty() && $field_item->entity) {
+        $entities[$field_key] = $field_item->entity;
+      }
+    }
+    return $entities;
+  }
+
 }

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Annotation\PurgeTagsHeader.
+ */
+
 namespace Drupal\purge\Annotation;
 
 use Drupal\Component\Annotation\Plugin;
