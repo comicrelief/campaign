@@ -57,7 +57,7 @@ $button-transistion-duration: 0.2s;     // The transition duration
   background: $colour-jasper-grey;
 
   @include breakpoint($screen-md) {
-    top: ($button-height / 2) - ($bar-thickness / 2);
+    top: 40px;
     left: 25px;
     right: 25px;
 
@@ -121,7 +121,7 @@ $button-transistion-duration: 0.2s;     // The transition duration
 
 @include breakpoint($screen-md) {
   .c-hamburger span {
-    top: 39px;
+    top: 40px;
     left: 25px;
     right: 25px;
 
