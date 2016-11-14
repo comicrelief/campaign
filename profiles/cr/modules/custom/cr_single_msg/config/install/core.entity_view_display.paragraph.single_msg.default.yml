@@ -11,7 +11,6 @@ dependencies:
     - field.field.paragraph.single_msg.field_single_msg_padding_option
     - field.field.paragraph.single_msg.field_single_msg_title
     - paragraphs.paragraphs_type.single_msg
-    - responsive_image.styles.single_msg_
   module:
     - options
     - responsive_image
