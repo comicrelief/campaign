@@ -83,9 +83,14 @@ nav.menu--main {
         @include transition-property(fill);
         @include transition-duration(150ms);
         fill: $colour-jasper-grey;
-        width: 35px;
-        height: 35px;
+        width: 25px;
+        height: 25px;
 
+        @include breakpoint($screen-md) {
+          width: 35px;
+          height: 35px;
+        }
+        
         @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
           width: 20px;
           height: 20px;
