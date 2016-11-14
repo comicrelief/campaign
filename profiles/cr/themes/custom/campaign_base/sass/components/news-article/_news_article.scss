@@ -29,6 +29,9 @@
 .cr-article__image,
 .cr-article__video {
 	padding: 40px 0px;
+	img {
+		display: block;
+	}
 }
 .cr-article {
 	figcaption {
