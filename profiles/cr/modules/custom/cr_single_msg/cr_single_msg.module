@@ -83,10 +83,10 @@ function cr_single_msg_field_single_msg_layout_variant(FieldStorageDefinitionInt
  */
 function cr_single_msg_field_single_msg_padding_option(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
   $values = [
-    'top-bottom' => t('Default'),
-    'no-bottom' => t('No bottom padding'),
-    'no-top' => t('No top padding'),
-    'No-top-bottom' => t('No top or bottom padding'),
+    'default-padding' => t('Default'),
+    'no-bottom-padding' => t('No bottom padding'),
+    'no-top-padding' => t('No top padding'),
+    'no-padding' => t('No top or bottom padding'),
   ];
   return $values;
 }

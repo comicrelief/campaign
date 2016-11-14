@@ -12,11 +12,11 @@ entity_type: paragraph
 bundle: single_msg
 label: 'Padding'
 description: 'Set default padding or choose to remove padding'
-required: false
+required: true
 translatable: false
 default_value:
   -
-    value: top-bottom
+    value: default-padding
 default_value_callback: ''
 settings: {  }
 field_type: list_string
