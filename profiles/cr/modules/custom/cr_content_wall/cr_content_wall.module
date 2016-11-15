@@ -49,3 +49,23 @@ function field_cw_bg_colour(FieldStorageDefinitionInterface $definition, Fieldab
   ];
   return $values;
 }
+
+/**
+ * Options callback for field_cw_bg_colour.
+ *
+ * @see options_allowed_values()
+ */
+function field_cw_link_colour(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
+  $values = [
+    'link--red' => t('Red'),
+    'link--blue' => t('Blue'),
+    'link--green' => t('Green'),
+    'link--teal' => t('Teal'),
+    'link--royal-blue' => t('Royal blue'),
+    'link--purple' => t('Purple'),
+    'link--pink' => t('Pink'),
+    'link--yellow' => t('Yellow'),
+    'link--white' => t('White'),
+  ];
+  return $values;
+}
