@@ -87,9 +87,3 @@
     padding: 80px 10px 60px;
   }
 }
-// add to the layout/views.scss for all blocks
-@include breakpoint(max-width 739px) {
-  .media-block {
-    padding: 0 calc(4 * #{gutter()}) calc(2 * #{gutter()});
-  }
-}
