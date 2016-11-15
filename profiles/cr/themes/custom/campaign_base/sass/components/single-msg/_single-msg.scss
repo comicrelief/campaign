@@ -9,6 +9,10 @@
 // .single-msg--feature-copy-right - Feature copy right
 // .single-msg--feature-copy-left - Feature copy left
 // .single-msg--copy-only - Copy only
+// .single-msg--default-padding - Default
+// .single-msg--no-bottom-padding - No bottom padding
+// .single-msg--no-top-padding - No top padding
+// .single-msg--no-padding - No top or bottom padding
 //
 // Style guide: Single Message
 
@@ -37,6 +41,22 @@
       @include breakpoint($screen-lg) {
         padding: $row-padding--md 0;
       }
+    }
+  }
+  &.single-msg--no-bottom-padding {
+    .single-msg__outer-wrapper {
+      padding-bottom: 0;
+    }
+  }
+  &.single-msg--no-top-padding {
+    .single-msg__outer-wrapper {
+      padding-top: 0;
+    }
+  }
+  &.single-msg--no-padding{
+    .single-msg__outer-wrapper {
+      padding-top: 0;
+      padding-bottom: 0;
     }
   }
   
