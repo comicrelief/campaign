@@ -147,6 +147,9 @@ projects:
       branch: 8.x-1.x
       revision: 6a3c3e7
       url: https://github.com/mikeyp/google_tag.git
+    patch:
+      # See: https://github.com/mikeyp/google_tag/pull/8
+      new_format: https://patch-diff.githubusercontent.com/raw/mikeyp/google_tag/pull/8.patch
   optimizely:
     version: 2.15-rc1
   simple_sitemap:
