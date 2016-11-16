@@ -2,15 +2,15 @@ Feature: Article
   This feature covers news articles
 
   @api @default-content
-  Scenario: Article linking through from /news-tv-and-events/news
-    Given I am on "news-tv-and-events/news"
+  Scenario: Article linking through from /whats-going-on
+    Given I am on "whats-going-on"
     And I should see the link "Four down – one to go!"
     Then I follow "Four down – one to go!"
     And I should see the text "Greg James struggled on the penultimate day of Gregathlon"
 
   @api @default-content
-  Scenario: Article pagination on /news-tv-and-events/news
-    Given I am on "news-tv-and-events/news"
+  Scenario: Article pagination on /whats-going-on
+    Given I am on "whats-going-on"
     And I click "››"
     Then I should see the link "Louise's story"
     And I click "‹‹"
