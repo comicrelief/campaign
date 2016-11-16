@@ -1,8 +1,8 @@
 $button-width: 85px;                    // The width of the button area
 $button-height: 85px;                   // The height of the button area
-$bar-thickness: 4px;                    // The thickness of the button bars
-$button-pad: 25px;                      // The left/right padding between button area and bars.
-$button-bar-space: 6px;                // The spacing between button bars
+$bar-thickness: 3px;                    // The thickness of the button bars
+$button-pad: 30px;                      // The left/right padding between button area and bars.
+$button-bar-space: 5px;                // The spacing between button bars
 $button-transistion-duration: 0.2s;     // The transition duration
 
 .c-hamburger {
@@ -24,7 +24,23 @@ $button-transistion-duration: 0.2s;     // The transition duration
   cursor: pointer;
   transition: background $button-transistion-duration;
   background-color: transparent;
+
+  span,
+  span::before,
+  span::after {
+    @include single-transition(background-color, 0s);
+    background-color: $colour-jasper-grey;
+  }
+
+  &:hover {
+    span,
+    span::before,
+    span::after {
+      background-color: $colour-black;
+    }
+  }
 }
+
 
 .c-hamburger:focus {
   outline: none;
@@ -37,9 +53,8 @@ $button-transistion-duration: 0.2s;     // The transition duration
   left: $button-pad;
   right: $button-pad;
   height: $bar-thickness;
-  transition: background 0s $button-transistion-duration;
-
-  background: black;
+  //transition: background 0s $button-transistion-duration;
+  background: $colour-jasper-grey;
 }
 
 .c-hamburger span::before,
@@ -49,9 +64,9 @@ $button-transistion-duration: 0.2s;     // The transition duration
   left: 0;
   width: 100%;
   height: $bar-thickness;
-  background-color: black;
+  background-color: $colour-jasper-grey;
   content: "";
-    transition-duration: $button-transistion-duration, $button-transistion-duration;
+  transition-duration: $button-transistion-duration, $button-transistion-duration;
   transition-delay: $button-transistion-duration, 0s;
 }
 
@@ -66,7 +81,6 @@ $button-transistion-duration: 0.2s;     // The transition duration
 }
 
 
-
 /* active state, i.e. menu open */
 
 .c-hamburger.is-active {
@@ -79,12 +93,30 @@ $button-transistion-duration: 0.2s;     // The transition duration
       top: 0;
       transform: rotate(45deg);
       transition-delay: 0s, $button-transistion-duration;
+      background-color: $colour-black;
     }
 
     &:after {
       bottom: 0;
       transform: rotate(-45deg);
       transition-delay: 0s, $button-transistion-duration;
+      background-color: $colour-black;
+    }
+  }
+}
+
+@include breakpoint($screen-md) {
+  .c-hamburger span {
+    top: 39px;
+    left: 25px;
+    right: 25px;
+
+    &:before {
+      top: -11px;
+    }
+
+    &:after {
+      bottom: -11px;
     }
   }
 }
