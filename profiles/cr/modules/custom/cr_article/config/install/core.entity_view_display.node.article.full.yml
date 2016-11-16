@@ -16,6 +16,7 @@ dependencies:
   module:
     - datetime
     - ds
+    - metatag
     - panelizer
     - responsive_image
     - text
@@ -123,7 +124,6 @@ third_party_settings:
       path: profiles/cr/modules/contrib/ds
       library: ''
       disable_css: false
-      entity_classes: all_classes
       settings:
         wrappers:
           ds_content: div
@@ -169,14 +169,34 @@ content:
     label: visually_hidden
     settings: {  }
     third_party_settings: {  }
+  field_article_category:
+    type: entity_reference_entity_view
+    weight: 16
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
   field_article_image:
     weight: 3
     label: hidden
     settings:
-      responsive_image_style: cw_landscape_image
+      responsive_image_style: hero_image_full_node
       image_link: ''
     third_party_settings: {  }
     type: responsive_image
+  field_article_intro:
+    type: text_default
+    weight: 18
+    label: visually_hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_article_meta_tags:
+    type: metatag_empty_formatter
+    weight: 17
+    label: above
+    settings: {  }
+    third_party_settings: {  }
   field_article_publish_date:
     type: datetime_custom
     weight: 2
@@ -200,16 +220,23 @@ content:
       responsive: true
       width: 854
       height: 480
-      autoplay: false
+      autoplay: true
+    third_party_settings: {  }
+  links:
+    weight: 19
+    settings: {  }
+    third_party_settings: {  }
+  publishing_date:
+    type: entity_reference_entity_view
+    weight: 15
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
     third_party_settings: {  }
   social_links:
     weight: 0
     settings: {  }
     third_party_settings: {  }
 hidden:
-  field_article_category: true
-  field_article_intro: true
-  field_article_meta_tags: true
   field_meta_tags: true
-  links: true
-  publishing_date: true
