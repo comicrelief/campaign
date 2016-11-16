@@ -105,8 +105,8 @@
       }
 
       p {
-        font-size: 13px;
-        line-height: 19px;
+        font-size: 15px;
+        line-height: 20px;
       }
 
       /* Ensure the differences in copy length between the 
@@ -142,12 +142,7 @@
 
       /* Make space for zigzag */
       padding-top: 45px;
-      
-      @include breakpoint($screen-md) {
-        /* Reset as zigzig now sits on top of copy */
-        padding-top: 30px;
-      }
-
+    
       &:after {
         @extend %zigzag;
         @include zigzag-colour($colour-dark-blue);
@@ -188,7 +183,18 @@
     &.bg--yellow {
       .story__fundraiser-copy:after { @include zigzag-colour($colour-yellow); }
       .story__beneficiary-copy:after { background-color: $colour-yellow; }
+    }
+    &.bg--white {
+      .story__fundraiser-copy:after { @include zigzag-colour($colour-white); }
+      .story__beneficiary-copy:after { background-color: $colour-white; }
     } 
+  }
+
+  .story__fundraiser-wrapper .story__fundraiser-copy,
+  .story__beneficiary-wrapper .story__beneficiary-copy {
+    @include breakpoint($screen-md) {
+      padding: 40px 30px 10px;
+    }
   }
 
   /* Beneficiary side only  */
@@ -296,6 +302,14 @@
     .story__beneficiary-body {
       h3, span, p, a {
         color: $colour-yellow;
+      }
+    } 
+  }
+  &.bg--white {
+    .story__beneficiary-title, 
+    .story__beneficiary-body {
+      h3, span, p, a {
+        color: $colour-white;
       }
     } 
   }
