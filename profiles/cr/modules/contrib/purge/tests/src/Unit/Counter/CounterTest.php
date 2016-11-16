@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\purge\Unit\Counter\CounterTest.
+ */
+
 namespace Drupal\Tests\purge\Unit\Counter;
 
 use Drupal\purge\Counter\Counter;
@@ -64,7 +69,7 @@ class CounterTest extends UnitTestCase {
       [0],
       [5],
       [1.3],
-      [8.9],
+      [8.9]
     ];
   }
 
@@ -75,7 +80,7 @@ class CounterTest extends UnitTestCase {
    */
   public function testGetInteger($value) {
     $counter = new Counter($value);
-    $this->assertEquals((int) $value, $counter->getInteger());
+    $this->assertEquals((int)$value, $counter->getInteger());
     $this->assertFalse(is_float($counter->getInteger()));
     $this->assertTrue(is_int($counter->getInteger()));
   }
@@ -88,7 +93,7 @@ class CounterTest extends UnitTestCase {
       [0],
       [5],
       [1.3],
-      [8.9],
+      [8.9]
     ];
   }
 
@@ -110,7 +115,7 @@ class CounterTest extends UnitTestCase {
     return [
       [FALSE],
       ["0"],
-      [NULL],
+      [NULL]
     ];
   }
 
@@ -143,7 +148,7 @@ class CounterTest extends UnitTestCase {
       [0],
       [5],
       [1.3],
-      [8.9],
+      [8.9]
     ];
   }
 
@@ -187,7 +192,7 @@ class CounterTest extends UnitTestCase {
     return [
       [0],
       [0.0],
-      [-1],
+      [-1]
     ];
   }
 
@@ -209,7 +214,7 @@ class CounterTest extends UnitTestCase {
     return [
       [FALSE],
       ["0"],
-      [NULL],
+      [NULL]
     ];
   }
 
@@ -253,7 +258,7 @@ class CounterTest extends UnitTestCase {
     return [
       [0],
       [0.0],
-      [-1],
+      [-1]
     ];
   }
 
@@ -275,7 +280,7 @@ class CounterTest extends UnitTestCase {
     return [
       [FALSE],
       ["0"],
-      [NULL],
+      [NULL]
     ];
   }
 

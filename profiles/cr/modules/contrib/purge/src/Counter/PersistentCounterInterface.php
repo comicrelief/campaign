@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Counter\PersistentCounterInterface.
+ */
+
 namespace Drupal\purge\Counter;
 
 use Drupal\purge\Counter\CounterInterface;

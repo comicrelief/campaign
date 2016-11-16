@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge_ui\Controller\PurgerFormController.
+ */
+
 namespace Drupal\purge_ui\Controller;
 
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -23,7 +28,7 @@ class PurgerFormController extends ControllerBase {
    * @param \Drupal\purge\Plugin\Purge\Purger\PurgersServiceInterface $purge_purgers
    *   The purge executive service, which wipes content from external caches.
    */
-  public function __construct(PurgersServiceInterface $purge_purgers) {
+  function __construct(PurgersServiceInterface $purge_purgers) {
     $this->purgePurgers = $purge_purgers;
   }
 
@@ -97,7 +102,7 @@ class PurgerFormController extends ControllerBase {
           $definition['configform'],
           [
             'id' => $id,
-            'dialog' => $dialog,
+            'dialog' => $dialog
           ]
         );
       }

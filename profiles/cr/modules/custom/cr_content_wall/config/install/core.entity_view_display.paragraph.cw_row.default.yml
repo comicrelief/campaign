@@ -10,7 +10,6 @@ dependencies:
   module:
     - ds
     - options
-    - user
 third_party_settings:
   ds:
     layout:

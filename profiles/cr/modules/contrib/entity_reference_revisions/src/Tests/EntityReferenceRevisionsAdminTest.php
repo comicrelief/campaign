@@ -89,7 +89,6 @@ class EntityReferenceRevisionsAdminTest extends WebTestBase {
     $edit = array(
       'title[0][value]' => $title,
       'body[0][value]' => 'Revision 1',
-      'revision' => TRUE,
     );
     $this->drupalPostForm('node/add/article', $edit, t('Save and publish'));
     $this->assertText($title);

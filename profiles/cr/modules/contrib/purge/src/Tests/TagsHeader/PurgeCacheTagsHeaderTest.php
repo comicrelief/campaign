@@ -1,22 +1,32 @@
 <?php
 
-namespace Drupal\purge_purger_http_tagsheader\Tests;
+/**
+ * @file
+ * Contains \Drupal\purge\Tests\TagsHeader\PurgeCacheTagsHeaderTest.
+ */
+
+namespace Drupal\purge\Tests\TagsHeader;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Drupal\purge\Tests\KernelTestBase;
 
 /**
- * Tests \Drupal\purge_purger_http_tagsheader\Plugin\Purge\TagsHeader\PurgeCacheTagsHeader.
+ * Tests \Drupal\purge\Plugin\Purge\TagsHeader\PurgeCacheTagsHeader.
  *
- * @group purge_purger_http_tagsheader
+ * @group purge
  */
 class PurgeCacheTagsHeaderTest extends KernelTestBase {
-  public static $modules = ['system', 'purge_purger_http_tagsheader'];
 
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  public static $modules = ['system'];
+
+  /**
+   * {@inheritdoc}
+   */
+  function setUp() {
     parent::setUp();
     $this->installSchema('system', ['router']);
     \Drupal::service('router.builder')->rebuild();

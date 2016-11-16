@@ -10,7 +10,6 @@ dependencies:
     - ds
     - options
     - text
-    - user
 third_party_settings:
   ds:
     layout:

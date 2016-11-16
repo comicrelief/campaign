@@ -12,7 +12,6 @@ dependencies:
     - options
     - responsive_image
     - text
-    - user
 third_party_settings:
   ds:
     layout:

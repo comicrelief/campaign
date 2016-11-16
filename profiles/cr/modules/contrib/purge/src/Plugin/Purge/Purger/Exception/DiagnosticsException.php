@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Plugin\Purge\Purger\Exception\DiagnosticsException.
+ */
+
 namespace Drupal\purge\Plugin\Purge\Purger\Exception;
 
 /**

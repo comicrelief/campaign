@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Counter\Counter.
+ */
+
 namespace Drupal\purge\Counter;
 
 use Drupal\purge\Plugin\Purge\Purger\Exception\BadBehaviorException;

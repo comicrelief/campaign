@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Plugin\Purge\DiagnosticCheck\DiagnosticCheckInterface.
+ */
+
 namespace Drupal\purge\Plugin\Purge\DiagnosticCheck;
 
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;

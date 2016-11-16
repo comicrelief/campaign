@@ -107,7 +107,7 @@ class EntityReferenceRevisionsDiffTest extends WebTestBase {
 
     // Assert the field changes.
     $this->assertRaw('class="diffchange">' . $title_node_1);
-    $this->assertRaw('class="diffchange">' . $title_node_2);
+    $this->assertRaw('class="diff-context diff-addedline">' . $title_node_2);
   }
 
 }

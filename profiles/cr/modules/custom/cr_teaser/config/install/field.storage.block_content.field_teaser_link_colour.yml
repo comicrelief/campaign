@@ -10,7 +10,7 @@ entity_type: block_content
 type: list_string
 settings:
   allowed_values: null
-  allowed_values_function: field_teaser_link_colour
+  allowed_values_function: cr_teaser_field_teaser_link_colour
 module: options
 locked: false
 cardinality: 1
