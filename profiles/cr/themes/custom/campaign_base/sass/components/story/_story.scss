@@ -13,7 +13,7 @@
   background: 
     -webkit-linear-gradient( 45deg, transparent 33.333%, $colour 33.333%, $colour 66.667%, transparent 66.667% ), 
     -webkit-linear-gradient( -45deg, transparent 33.333%, $colour 33.333%, $colour 66.667%, transparent 66.667% );
-  background-size: 20px 40px;
+    background-size: 20px 40px;
 }
 
 %zigzag {
@@ -159,7 +159,7 @@
           left: -10px;
           width: 10px;
           height: 400px;
-          background-size: 60px 30px;
+          background-size: 20px 40px;
         }
       }
     }
