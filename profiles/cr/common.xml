@@ -11,7 +11,7 @@
   <property name="cs.ext"             override="true" value="--extensions=php,module,inc,install,test,profile,theme"/>
   <property name="db.querystring"     override="true" value="mysql://root:@localhost/campaign"/>
   <property name="app.dev_modules"    value="devel kint"/>
-  <property name="app.config_modules" value="cr_article cr_content_wall cr_rich_text_paragraph cr_page cr_single_msg cr_single_message_row_paragraph cr_cards cr_downloadables cr_block_paragraph cr_teaser cr_iframe cr_landing_page cr_search cr_partner cr_navigation cr_story"/>
+  <property name="app.config_modules" value="cr_article cr_rich_text_paragraph cr_page cr_single_msg cr_single_message_row_paragraph cr_cards cr_downloadables cr_block_paragraph cr_teaser cr_landing_page cr_search cr_partner cr_navigation cr_video cr_media cr_story cr_iframe cr_content_reference cr_quote cr_content_wall"/>
   <property name="app.files.public"       value="sites/default/files"                                 override="true" />
   <property name="app.files.tmp"          value="sites/default/files/tmp"                             override="true" />
   <property name="app.files.private" value="sites/default/private" override="true" />

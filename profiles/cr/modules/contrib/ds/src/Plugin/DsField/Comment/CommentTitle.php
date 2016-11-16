@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Plugin\DsField\Comment\CommentTitle.
- */
-
 namespace Drupal\ds\Plugin\DsField\Comment;
 
 use Drupal\ds\Plugin\DsField\Field;
@@ -22,7 +17,7 @@ use Drupal\ds\Plugin\DsField\Field;
 class CommentTitle extends Field {
 
   /**
-   * @inheritdoc
+   * {@inheritdoc}
    */
   protected function entityRenderKey() {
     return 'subject';

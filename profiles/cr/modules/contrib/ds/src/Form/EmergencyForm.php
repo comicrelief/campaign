@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Form\EmergencyForm.
- */
-
 namespace Drupal\ds\Form;
 
-use Drupal\block\BlockInterface;
 use Drupal\Core\Config\ConfigFactory;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Form\ConfigFormBase;
@@ -21,7 +15,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class EmergencyForm extends ConfigFormBase {
 
   /**
-   * State object
+   * State object.
    *
    * @var \Drupal\Core\State\State
    */
@@ -39,10 +33,10 @@ class EmergencyForm extends ConfigFormBase {
    *
    * @param \Drupal\Core\Config\ConfigFactory $config_factory
    *   The config factory.
-   * @param \Drupal\Core\Extension\ModuleHandlerInterface
+   * @param \Drupal\Core\Extension\ModuleHandlerInterface $module_handler
    *   The module handler.
-   * @param \Drupal\Core\State\State
-   *   The state key value store
+   * @param \Drupal\Core\State\StateInterface $state
+   *   The state key value store.
    */
   public function __construct(ConfigFactory $config_factory, ModuleHandlerInterface $module_handler, StateInterface $state) {
     parent::__construct($config_factory);
@@ -59,7 +53,7 @@ class EmergencyForm extends ConfigFormBase {
       $container->get('module_handler'),
       $container->get('state')
     );
- }
+  }
 
   /**
    * {@inheritdoc}
@@ -86,7 +80,7 @@ class EmergencyForm extends ConfigFormBase {
 
     $form['ds_fields_error']['submit'] = array(
       '#type' => 'submit',
-      '#value' => ($this->state->get('ds.disabled', FALSE) ? t('Enable attaching fields') : t('Disable attaching fields')),
+      '#value' => ($this->state->get('ds.disabled', FALSE) ? $this->t('Enable attaching fields') : $this->t('Disable attaching fields')),
       '#submit' => array('::submitFieldAttach'),
       '#weight' => 1,
     );
@@ -127,7 +121,7 @@ class EmergencyForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    // empty
+    // empty.
   }
 
   /**
@@ -139,7 +133,7 @@ class EmergencyForm extends ConfigFormBase {
   }
 
   /**
-   * Submit callback for the region to block form
+   * Submit callback for the region to block form.
    */
   public function submitRegionToBlock(array &$form, FormStateInterface $form_state) {
     if ($form_state->getValue('remove_block_region')) {
@@ -150,12 +144,13 @@ class EmergencyForm extends ConfigFormBase {
         if ($value !== 0 && $key == $value) {
           $save = TRUE;
 
-          // Make sure there is no active block instance for this ds block region.
+          // Make sure there is no active block instance for this ds block
+          // region.
           if (\Drupal::moduleHandler()->moduleExists('block')) {
             $ids = \Drupal::entityQuery('block')
               ->condition('plugin', 'ds_region_block:' . $key)
               ->execute();
-            /** @var BlockInterface $block_storage */
+            /* @var \Drupal\block\BlockInterface $block_storage */
             $block_storage = \Drupal::service('entity_type.manager')->getStorage('block');
             foreach ($block_storage->loadMultiple($ids) as $block) {
               $block->delete();
@@ -169,7 +164,7 @@ class EmergencyForm extends ConfigFormBase {
       if ($save) {
         drupal_set_message(t('Block regions were removed.'));
 
-        // Clear cached block and ds plugin definitions
+        // Clear cached block and ds plugin definitions.
         \Drupal::service('plugin.manager.block')->clearCachedDefinitions();
         \Drupal::service('plugin.manager.ds')->clearCachedDefinitions();
 
@@ -186,7 +181,7 @@ class EmergencyForm extends ConfigFormBase {
    */
   protected function getEditableConfigNames() {
     return array(
-      'ds_extras.settings'
+      'ds_extras.settings',
     );
   }
 

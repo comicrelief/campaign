@@ -76,15 +76,19 @@ dependencies:
   # Custom modules
   - cr_layout
   - cr_page
+  - cr_article
+  - cr_content_reference
+  - cr_downloadables
+  - cr_video
+  - cr_media
+  - cr_quote
   - cr_content_wall
   - cr_rich_text_paragraph
   - cr_iframe
   - cr_block_paragraph
-  - cr_downloadables
   - cr_single_msg
   - cr_single_message_row_paragraph
   - cr_teaser
-  - cr_article
   - cr_email_signup
   - cr_partner
   - cr_cards
@@ -177,6 +181,8 @@ config_devel:
   - image.style.story_293_x_322_crop_lg
   - image.style.story_479_x_352_crop_md
   - image.style.story_739_x_561_crop_sm
+  - image.style.cw_quote_lg
+  - image.style.cw_quote_sm
 
   # Retina image styles
   - image.style.bg_rich_text_narrow_2x
@@ -201,7 +207,6 @@ config_devel:
   - responsive_image.styles.bg_rich_text
   - responsive_image.styles.single_l_r_message_row
   - responsive_image.styles.single_msg_
-  - responsive_image.styles.cr_listing_teaser
   - responsive_image.styles.story_row
 
   # Metatags
@@ -234,3 +239,5 @@ config_devel:
 
   # Cookie consent
   - cookieconsent.settings
+
+  - simple_sitemap.settings

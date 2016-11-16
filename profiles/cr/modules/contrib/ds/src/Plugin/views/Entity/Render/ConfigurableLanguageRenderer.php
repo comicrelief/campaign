@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\views\Entity\Render\ConfigurableLanguageRenderer.
- */
-
 namespace Drupal\ds\Plugin\views\Entity\Render;
 
 use Drupal\Core\Entity\EntityTypeInterface;

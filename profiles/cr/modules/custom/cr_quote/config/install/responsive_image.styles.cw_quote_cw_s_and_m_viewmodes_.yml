@@ -1,0 +1,42 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.cw_quote_sm
+    - image.style.cw_quote_sm_2x
+    - image.style.thumbnail
+id: cw_quote_cw_s_and_m_viewmodes_
+label: 'CW Quote (CW - S and M viewmodes)'
+image_style_mappings:
+  -
+    breakpoint_id: campaign_base.large
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: cw_quote_sm
+  -
+    breakpoint_id: campaign_base.large
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: cw_quote_sm_2x
+  -
+    breakpoint_id: campaign_base.medium
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: cw_quote_sm
+  -
+    breakpoint_id: campaign_base.medium
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: cw_quote_sm_2x
+  -
+    breakpoint_id: campaign_base.small
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: cw_quote_sm
+  -
+    breakpoint_id: campaign_base.small
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: cw_quote_sm_2x
+breakpoint_group: campaign_base
+fallback_image_style: thumbnail

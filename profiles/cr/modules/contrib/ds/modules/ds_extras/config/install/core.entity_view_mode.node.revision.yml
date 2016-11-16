@@ -1,9 +1,0 @@
-id: node.revision
-label: 'Revision'
-status: false
-cache: true
-targetEntityType: node
-dependencies:
-  module:
-    - node
-    - ds_extras

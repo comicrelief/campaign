@@ -1,0 +1,89 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/sr16-spl-local.sportrelief.com\/block\/14?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/block_content\/content_reference_block"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/content_reference_block\/field_content_reference": [
+            {
+                "href": "http:\/\/sr16-spl-local.sportrelief.com\/whats-going-on\/british-triathlon-cheers-greg-james-on?_format=hal_json"
+            }
+        ]
+    },
+    "id": [
+        {
+            "value": "14"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "8169fe4c-90ff-49c8-b30c-b2bad9f122f5"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": "14"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "content_reference_block"
+        }
+    ],
+    "info": [
+        {
+            "value": "Article reference ",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1478274151",
+            "lang": "en"
+        }
+    ],
+    "revision_created": [
+        {
+            "value": "1478273904"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/content_reference_block\/field_content_reference": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/whats-going-on\/british-triathlon-cheers-greg-james-on?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/node\/article"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "05f69740-0c91-4f06-9734-527c6df6cea8"
+                    }
+                ]
+            }
+        ]
+    }
+}

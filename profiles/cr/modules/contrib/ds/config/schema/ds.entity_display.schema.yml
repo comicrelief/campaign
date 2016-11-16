@@ -18,6 +18,9 @@ core.entity_view_display.*.*.*.third_party.ds:
         disable_css:
           type: boolean
           label: 'Disable CSS or not'
+        entity_classes:
+          type: string
+          label: 'Entity, bundle and view mode classes'
         settings:
           type: mapping
           label: 'Display Suite layout settings'

@@ -1,0 +1,143 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/sr16-spl-local.sportrelief.com\/block\/13?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/block_content\/media_reference"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/media_reference\/revision_user": [
+            {
+                "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/media_reference\/field_media_reference": [
+            {
+                "href": "http:\/\/sr16-spl-local.sportrelief.com\/media\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/media_reference\/field_media_reference_bg": [
+            {
+                "href": "http:\/\/sr16-spl-local.sportrelief.com\/file\/3390?_format=hal_json"
+            }
+        ]
+    },
+    "id": [
+        {
+            "value": "13"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "017fe45b-5ea6-412a-8a15-c4b4d4bc400e"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": "13"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "media_reference"
+        }
+    ],
+    "info": [
+        {
+            "value": "Video reference block",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1478260927",
+            "lang": "en"
+        }
+    ],
+    "revision_created": [
+        {
+            "value": "1478260927"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/media_reference\/revision_user": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd887433-3a04-4279-a136-d044d1de0b56"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/media_reference\/field_media_reference": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/media\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/media\/video"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "262c478f-8d7d-46cf-8370-f031cdb0d4cb"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/media_reference\/field_media_reference_bg": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/file\/3390?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "29ed58c1-efe1-4fe9-bada-5982bc4d80c9"
+                    }
+                ],
+                "alt": "Video background RND11",
+                "title": "",
+                "width": "1170",
+                "height": "450"
+            }
+        ]
+    },
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "field_media_reference_body": [
+        {
+            "value": "<h4>Relive all the best bits of last Red Nose Day<\/h4>\r\n\r\n<p><strong>20:20<\/strong><\/p>\r\n",
+            "format": "full_html"
+        }
+    ]
+}

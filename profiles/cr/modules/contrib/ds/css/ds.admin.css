@@ -1,12 +1,11 @@
-
 /**
  * @file
  * Administration CSS for Display Suite.
  */
+
 .ds-extras-field-template {
   margin-bottom: 1em;
 }
-
 
 #field-display-overview .ft-settings .ft-group {
   border-top: 1px solid #aaa;
@@ -43,7 +42,7 @@
   width: 130px;
 }
 
-.ds-after-suggestion{
+.ds-after-suggestion {
   clear: both;
   padding-top: 10px;
 }
@@ -69,7 +68,7 @@ table th.ds-display-list-options {
 .vertical-tabs fieldset#edit-additional-settings-ds-page-title-options-page-option-contexts {
   margin: 1em 0;
   padding: 2.5em 0 0;
-  border: 1px solid #CCCCCC;
+  border: 1px solid #cccccc;
 }
 
 #edit-additional-settings-ds-page-title-options-page-option-contexts legend {
@@ -88,15 +87,15 @@ table th.ds-display-list-options {
 }
 
 .ds-layout-change-save {
-    clear: both;
+  clear: both;
 }
 
 .ds-layout-preview-arrow {
-    float: left;
-    margin: 80px 10px 0 5px;
+  float: left;
+  margin: 80px 10px 0 5px;
 }
 
 .ds-layout-regions {
-    float: left;
-    width: 210px;
+  float: left;
+  width: 210px;
 }

@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.media_reference
+    - field.storage.block_content.field_media_reference_body
+  module:
+    - text
+id: block_content.media_reference.field_media_reference_body
+field_name: field_media_reference_body
+entity_type: block_content
+bundle: media_reference
+label: Body
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -8,9 +8,9 @@ id: block_content.teaser.field_teaser_title
 field_name: field_teaser_title
 entity_type: block_content
 bundle: teaser
-label: Title
+label: 'Title (deprecated)'
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''

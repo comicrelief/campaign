@@ -1,0 +1,60 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.quote_block
+    - field.field.block_content.quote_block.field_author_background_colour
+    - field.field.block_content.quote_block.field_author_image
+    - field.field.block_content.quote_block.field_background_colour
+    - field.field.block_content.quote_block.field_background_image
+    - field.field.block_content.quote_block.field_body
+    - responsive_image.styles.cw_quote
+  module:
+    - image
+    - options
+    - responsive_image
+    - text
+id: block_content.quote_block.default
+targetEntityType: block_content
+bundle: quote_block
+mode: default
+content:
+  field_author_background_colour:
+    weight: 4
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+  field_author_image:
+    weight: 1
+    label: hidden
+    settings:
+      responsive_image_style: cw_quote
+      image_link: ''
+    third_party_settings: {  }
+    type: responsive_image
+  field_background_colour:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+  field_background_image:
+    weight: 2
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+    third_party_settings: {  }
+    type: image
+  field_body:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  social_links:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds_devel\Routing\RouteSubscriber.
- */
-
 namespace Drupal\ds_devel\Routing;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
@@ -28,7 +23,7 @@ class RouteSubscriber extends RouteSubscriberBase {
   /**
    * Constructs a new RouteSubscriber object.
    *
-   * @param \Drupal\Core\Entity\EntityTypeManagerInterface
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager.
    */
   public function __construct(EntityTypeManagerInterface $entity_type_manager) {

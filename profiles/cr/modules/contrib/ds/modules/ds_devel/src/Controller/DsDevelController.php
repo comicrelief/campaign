@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds_devel\Controller\DsDevelController.
- */
-
 namespace Drupal\ds_devel\Controller;
 
 use Drupal\Component\Utility\Html;

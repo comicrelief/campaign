@@ -6,14 +6,19 @@
 //
 // Style guide: search-result
 
+.node--type-page.search-result {
+  @include breakpoint($screen-md, $no-query: true) {
+    padding-bottom: 0;
+  }
+}
 .path-search {
   background-color: $colour-smoke-grey;
 }
 .search-result {
-  width: 100%;
   position: relative;
   display: inline-block;
   overflow: hidden;
+  width: 100%;
   margin-bottom: 20px;
   text-align: left;
   a {
@@ -21,7 +26,17 @@
     color: $colour-black;
   }
 }
+.search-result__node-link a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-indent: -9999px;
+}
 .search-result__image {
+  position: relative;
   @include span(5);
   margin-left: 0;
   img {
@@ -35,9 +50,10 @@
   position: absolute;
   top: 0;
   right: 0;
-  padding: calc(2 * #{gutter()});
   height: 100%;
+  padding: calc(2 * #{gutter()});
   margin-right: 0;
+  padding: 30px;
   &.search-result__content-wrapper--no-image {
     @include span(12);
     position: relative;
@@ -47,9 +63,6 @@
       top: 0;
     }
   }
-  // position: relative;
-  height: 100%;
-  padding: 30px;
 }
 .search-result__content {
   @include translateY(-50%);
@@ -61,10 +74,10 @@
   margin: auto;
 }
 .search-result__body {
-  display: none;
   @include breakpoint($screen-md, $no-query: true) {
     display: block;
   }
+  display: none;
 }
 .search-result__tag {
   display: inline-block;
@@ -86,14 +99,14 @@
     @extend p;
     @extend .font--xlarge;
     .path-search & {
-      display: block;
-      text-align: left;
-      width: 100%;
-      float: none;
-      margin-bottom: 0;
       @include breakpoint($screen-md, $no-query: true) {
         width: auto;
       }
+      display: block;
+      float: none;
+      width: 100%;
+      margin-bottom: 0;
+      text-align: left;
     }
   }
   .search__total {

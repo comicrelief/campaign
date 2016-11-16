@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Plugin\DsFieldTemplate\Minimal.
- */
-
 namespace Drupal\ds\Plugin\DsFieldTemplate;
 
 /**
@@ -26,7 +21,7 @@ class Reset extends DsFieldTemplateBase {
 
     $form['lb'] = array(
       '#type' => 'textfield',
-      '#title' => t('Label'),
+      '#title' => $this->t('Label'),
       '#size' => '10',
       '#default_value' => $config['lb'],
     );

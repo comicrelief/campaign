@@ -4,6 +4,7 @@
  * @file
  * Display Suite drush integration.
  */
+
 use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\Unicode;
 
@@ -50,7 +51,8 @@ function ds_drush_command() {
 }
 
 /**
- * Create a basic template and configuration file for a new Display Suite layout.
+ * Create a basic template and configuration file for a new Display Suite
+ * layout.
  */
 function drush_ds_build($name = NULL) {
   // Determine the layout name.
@@ -247,14 +249,14 @@ function drush_ds_field($name = NULL) {
   }
 
   // We assume you run this command in the root of your module
-  // Fetch the current path
+  // Fetch the current path.
   $current_path = drush_cwd();
 
-  // Fetch the module name from the path
+  // Fetch the module name from the path.
   $parts = explode('/', $current_path);
   $module_name = end($parts);
 
-  // Class path
+  // Class path.
   $class_path = $current_path . "/src/Plugin/DsField/";
   drush_mkdir($class_path);
 

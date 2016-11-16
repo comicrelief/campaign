@@ -9,7 +9,7 @@
 }
 
 [dir="rtl"] .ds-4col > .group-first {
-    float: right;
+  float: right;
 }
 
 .ds-4col > .group-second {
@@ -18,7 +18,7 @@
 }
 
 [dir="rtl"] .ds-4col > .group-second {
-    float: right;
+  float: right;
 }
 
 .ds-4col > .group-third {
@@ -27,7 +27,7 @@
 }
 
 [dir="rtl"] .ds-4col > .group-third {
-    float: right;
+  float: right;
 }
 
 .ds-4col > .group-fourth {
@@ -36,5 +36,5 @@
 }
 
 [dir="rtl"] .ds-4col > .group-fourth {
-    float: right;
+  float: right;
 }

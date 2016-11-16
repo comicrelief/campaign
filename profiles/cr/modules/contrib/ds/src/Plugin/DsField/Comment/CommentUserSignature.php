@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ds\Plugin\DsField\Comment\CommentUserSignature.
- */
-
 namespace Drupal\ds\Plugin\DsField\Comment;
 
 use Drupal\ds\Plugin\DsField\User\UserSignature;
