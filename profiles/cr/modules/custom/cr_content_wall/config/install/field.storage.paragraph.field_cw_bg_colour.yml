@@ -10,7 +10,7 @@ entity_type: paragraph
 type: list_string
 settings:
   allowed_values: null
-  allowed_values_function: field_cw_bg_colour
+  allowed_values_function: cr_content_wall_field_cw_bg_colour
 module: options
 locked: false
 cardinality: 1
