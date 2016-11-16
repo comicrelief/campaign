@@ -14,7 +14,7 @@
 .block--cr-email-signup--head {
   display: none;
   position: relative;
-  top: 80px;
+  top: 76px;
   z-index: 101;
 
   @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
@@ -58,7 +58,7 @@
     @include breakpoint($screen-md) {
       width: 350px;
       padding: 25px 0;
-      right: 85px;
+      right: 76px;
 
       .form-item-school-phase {
         width: 240px;
