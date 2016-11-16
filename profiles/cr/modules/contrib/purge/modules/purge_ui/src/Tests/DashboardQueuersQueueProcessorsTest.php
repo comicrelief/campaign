@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge_ui\Tests\DashboardQueuersQueueProcessorsTest.
+ */
+
 namespace Drupal\purge_ui\Tests;
 
 use Drupal\Core\Url;

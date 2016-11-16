@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Tests\Queue\MemoryQueueTest.
+ */
+
 namespace Drupal\purge\Tests\Queue;
 
 use Drupal\purge\Tests\Queue\PluginTestBase;

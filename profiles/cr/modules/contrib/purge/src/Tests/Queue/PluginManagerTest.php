@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Tests\Queue\PluginManagerTest.
+ */
+
 namespace Drupal\purge\Tests\Queue;
 
 use Drupal\purge\Tests\KernelServiceTestBase;
@@ -42,7 +47,7 @@ class PluginManagerTest extends KernelServiceTestBase {
     'null',
     'a',
     'b',
-    'c',
+    'c'
   ];
 
   /**

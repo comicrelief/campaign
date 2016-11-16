@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Plugin\Purge\Processor\ProcessorBase.
+ */
+
 namespace Drupal\purge\Plugin\Purge\Processor;
 
 use Drupal\Core\Plugin\PluginBase;

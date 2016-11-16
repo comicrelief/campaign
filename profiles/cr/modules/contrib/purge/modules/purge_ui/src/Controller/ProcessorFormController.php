@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge_ui\Controller\ProcessorFormController.
+ */
+
 namespace Drupal\purge_ui\Controller;
 
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -23,7 +28,7 @@ class ProcessorFormController extends ControllerBase {
    * @param \Drupal\purge\Plugin\Purge\Processor\ProcessorsServiceInterface $purge_processors
    *   The purge processors registry.
    */
-  public function __construct(ProcessorsServiceInterface $purge_processors) {
+  function __construct(ProcessorsServiceInterface $purge_processors) {
     $this->purgeProcessors = $purge_processors;
   }
 
@@ -64,7 +69,7 @@ class ProcessorFormController extends ControllerBase {
           $definition['configform'],
           [
             'id' => $id,
-            'dialog' => $dialog,
+            'dialog' => $dialog
           ]
         );
       }

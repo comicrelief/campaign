@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Plugin\Purge\DiagnosticCheck\Exception\CheckNotImplementedCorrectly.
+ */
+
 namespace Drupal\purge\Plugin\Purge\DiagnosticCheck\Exception;
 
 /**

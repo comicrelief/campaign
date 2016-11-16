@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Plugin\Purge\Purger\RuntimeMeasurementInterface.
+ */
+
 namespace Drupal\purge\Plugin\Purge\Purger;
 
 use Drupal\purge\Counter\PersistentCounterInterface;
@@ -20,7 +25,7 @@ interface RuntimeMeasurementInterface extends PersistentCounterInterface {
    * @return float
    *   The same value or 0.1 or 10.0 when it exceeded either boundary.
    */
-  public function getSafeTimeHintValue($value);
+  function getSafeTimeHintValue($value);
 
   /**
    * Start measuring execution time.
@@ -30,7 +35,7 @@ interface RuntimeMeasurementInterface extends PersistentCounterInterface {
    *
    * @return void
    */
-  public function start();
+  function start();
 
   /**
    * Stop measuring execution time and store if necessary.
@@ -60,6 +65,6 @@ interface RuntimeMeasurementInterface extends PersistentCounterInterface {
    *
    * @return void.
    */
-  public function stop(array $invalidations);
+  function stop(array $invalidations);
 
 }

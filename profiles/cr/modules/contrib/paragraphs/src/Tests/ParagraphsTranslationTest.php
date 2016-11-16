@@ -86,6 +86,7 @@ class ParagraphsTranslationTest extends WebTestBase {
     $this->drupalGet('admin/structure/paragraphs_type/text_image/form-display');
     $edit = array(
       'fields[status][type]' => 'boolean_checkbox',
+      'fields[status][region]' => 'content',
     );
 
     $this->drupalPostForm(NULL, $edit, t('Save'));

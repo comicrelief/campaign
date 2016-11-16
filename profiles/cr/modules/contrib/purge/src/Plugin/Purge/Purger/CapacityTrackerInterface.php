@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Plugin\Purge\Purger\CapacityTrackerInterface.
+ */
+
 namespace Drupal\purge\Plugin\Purge\Purger;
 
 /**

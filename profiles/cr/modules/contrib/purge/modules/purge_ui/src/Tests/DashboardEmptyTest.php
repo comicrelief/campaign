@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge_ui\Tests\DashboardEmptyTest.
+ */
+
 namespace Drupal\purge_ui\Tests;
 
 use Drupal\Core\Url;
@@ -11,13 +16,6 @@ use Drupal\purge_ui\Tests\DashboardTestBase;
  * @group purge_ui
  */
 class DashboardEmptyTest extends DashboardTestBase {
-
-  /**
-   * Modules to enable.
-   *
-   * @var array
-   */
-  public static $modules = ['purge_ui_remove_block_plugins_test'];
 
   /**
    * Test the logging section.

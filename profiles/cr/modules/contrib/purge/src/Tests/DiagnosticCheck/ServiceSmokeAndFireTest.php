@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Tests\DiagnosticCheck\ServiceSmokeAndFireTest.
+ */
+
 namespace Drupal\purge\Tests\DiagnosticCheck;
 
 use Drupal\purge\Tests\KernelServiceTestBase;
@@ -18,7 +23,7 @@ class ServiceSmokeAndFireTest extends KernelServiceTestBase {
   /**
    * Set up the test.
    */
-  public function setUp() {
+  function setUp() {
 
     // Skip parent::setUp() as we don't want the service initialized here.
     KernelServiceTestBase::setUp();
@@ -33,7 +38,10 @@ class ServiceSmokeAndFireTest extends KernelServiceTestBase {
   public function testIsSystemOnFireOrShowingSmoke() {
     $this->initializePurgersService(['ida' => 'a']);
     $this->initializeService();
-    $this->assertTrue(is_object($this->service->isSystemOnFire()));
+    $this->assertFalse(is_object($this->service->isSystemOnFire()));
+    if ($this->assertTrue(is_bool($this->service->isSystemOnFire()))) {
+      $this->assertFalse($this->service->isSystemOnFire());
+    }
     $this->assertTrue(is_object($this->service->isSystemShowingSmoke()));
   }
 

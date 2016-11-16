@@ -10,6 +10,15 @@ use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\paragraphs\ParagraphStorageSchema;
 
 /**
+ * Implements hook_install().
+ */
+function paragraphs_install() {
+  // Assign a weight 1 higher than content_translation to ensure paragraphs_module_implements_alter
+  // runs after content_translation_module_implements_alter.
+  module_set_weight('paragraphs', 11);
+}
+
+/**
  * Add status field.
  */
 function paragraphs_update_8001() {
@@ -164,4 +173,11 @@ function paragraphs_update_8008() {
 
   // Regenerate entity type indexes.
   $manager->updateEntityType($entity_type);
+}
+
+/**
+ * Set the weight to 11 to override content_translation's hook_module_implements_alter implementation
+ */
+function paragraphs_update_8009() {
+  module_set_weight('paragraphs', 11);
 }

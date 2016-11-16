@@ -80,6 +80,25 @@ class EntityReferenceRevisionsCompositeTest extends WebTestBase {
     $this->assertEqual($composite_after['parent_id'][0]['value'], $node->id());
     $this->assertEqual($composite_after['parent_field_name'][0]['value'], 'composite_reference');
 
+    // Create 2nd revision of the node.
+    $original_composite_revision = $node->composite_reference[0]->target_revision_id;
+    $original_node_revision = $node->getRevisionId();
+    $node->setTitle('2nd revision');
+    $node->setNewRevision();
+    $node->save();
+    $node = node_load($node->id(), TRUE);
+    $this->assertEqual('2nd revision', $node->getTitle(), 'New node revision has changed data.');
+    $this->assertNotEqual($original_composite_revision, $node->composite_reference[0]->target_revision_id, 'Composite entity got new revision when its host did.');
+
+    // Revert to first revision of the node.
+    $node = \Drupal::entityTypeManager()->getStorage('node')->loadRevision($original_node_revision);
+    $node->setNewRevision();
+    $node->isDefaultRevision(TRUE);
+    $node->save();
+    $node = node_load($node->id(), TRUE);
+    $this->assertNotEqual('2nd revision', $node->getTitle(), 'Node did not keep changed title after reversion.');
+    $this->assertNotEqual($original_composite_revision, $node->composite_reference[0]->target_revision_id, 'Composite entity got new revision when its host reverted to an old revision.');
+
     // Test that the composite entity is deleted when its parent is deleted.
     $node->delete();
     $this->assertNull(EntityTestCompositeRelationship::load($composite->id()));

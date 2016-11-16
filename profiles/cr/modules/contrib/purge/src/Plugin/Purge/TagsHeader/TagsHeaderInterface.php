@@ -1,14 +1,18 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Plugin\Purge\TagsHeader\TagsHeaderInterface.
+ */
+
 namespace Drupal\purge\Plugin\Purge\TagsHeader;
 
 use Drupal\Component\Plugin\PluginInspectionInterface;
-use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 
 /**
  * Describes a plugin that adds and formats a cache tags header on responses.
  */
-interface TagsHeaderInterface extends PluginInspectionInterface, ContainerFactoryPluginInterface {
+interface TagsHeaderInterface extends PluginInspectionInterface {
 
   /**
    * Fetch the HTTP response header name.

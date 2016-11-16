@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Tests\Processor\ServiceTest.
+ */
+
 namespace Drupal\purge\Tests\Processor;
 
 use Drupal\purge\Tests\KernelTestBase;
@@ -21,7 +26,7 @@ class ServiceTest extends KernelServiceTestBase {
   /**
    * Set up the test.
    */
-  public function setUp() {
+  function setUp() {
 
     // Skip parent::setUp() as we don't want the service initialized here.
     KernelTestBase::setUp();
@@ -60,9 +65,20 @@ class ServiceTest extends KernelServiceTestBase {
    */
   public function testIteration() {
     $this->initializeService();
-    $this->assertIterator('\Drupal\purge\Plugin\Purge\Processor\ProcessorInterface',
-      ['a', 'b']
-    );
+    $this->assertTrue($this->service instanceof \Iterator);
+    $items = 0;
+    foreach ($this->service as $instance) {
+      $this->assertTrue($instance instanceof ProcessorInterface);
+      $items++;
+    }
+    $this->assertEqual(2, $items);
+    $this->assertFalse($this->service->current());
+    $this->assertFalse($this->service->valid());
+    $this->assertNull($this->service->rewind());
+    $this->assertEqual('b', $this->service->current()->getPluginId());
+    $this->assertNull($this->service->next());
+    $this->assertEqual('a', $this->service->current()->getPluginId());
+    $this->assertTrue($this->service->valid());
   }
 
 }

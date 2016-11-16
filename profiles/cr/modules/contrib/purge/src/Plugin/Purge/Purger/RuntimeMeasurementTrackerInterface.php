@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Plugin\Purge\Purger\RuntimeMeasurementTrackerInterface.
+ */
+
 namespace Drupal\purge\Plugin\Purge\Purger;
 
 use Drupal\Core\DestructableInterface;

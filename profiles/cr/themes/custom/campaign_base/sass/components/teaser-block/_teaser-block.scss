@@ -58,8 +58,6 @@
   img {
     display: block;
     width: 100%;
-    width: 100%;
-    height: auto;
     height: 100%;
     margin-bottom: -5px;
 
@@ -81,7 +79,6 @@
 }
 .teaser-block__body {
   @include flex-wrap(wrap);
-  @include flex-flow(column nowrap);
   @include align-content(center);
   @include justify-content(center);
   @include align-items(center);

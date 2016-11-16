@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge_processor_test\Plugin\Purge\Processor\WithFormProcessor.
+ */
+
 namespace Drupal\purge_processor_test\Plugin\Purge\Processor;
 
 use Drupal\purge\Plugin\Purge\Processor\ProcessorInterface;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\purge\Unit\Logger\PurgeLoggerAwareTraitTest.
+ */
+
 namespace Drupal\Tests\purge\Unit\Logger;
 
 use Drupal\Tests\UnitTestCase;
