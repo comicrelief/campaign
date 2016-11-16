@@ -1,8 +1,12 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Plugin\Purge\TagsHeader\TagsHeaderBase.
+ */
+
 namespace Drupal\purge\Plugin\Purge\TagsHeader;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Plugin\PluginBase;
 use Drupal\purge\Plugin\Purge\TagsHeader\TagsHeaderInterface;
 
@@ -10,17 +14,6 @@ use Drupal\purge\Plugin\Purge\TagsHeader\TagsHeaderInterface;
  * Base implementation for plugins that add and format a cache tags header.
  */
 abstract class TagsHeaderBase extends PluginBase implements TagsHeaderInterface {
-
-  /**
-   * {@inheritdoc}
-   */
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    return new static(
-      $configuration,
-      $plugin_id,
-      $plugin_definition
-    );
-  }
 
   /**
    * {@inheritdoc}

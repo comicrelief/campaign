@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge_ui\Tests\QueueDetailsFormTest.
+ */
+
 namespace Drupal\purge_ui\Tests;
 
 use Drupal\Core\Url;
@@ -37,7 +42,7 @@ class QueueDetailsFormTest extends WebTestBase {
   /**
    * Setup the test.
    */
-  public function setUp() {
+  function setUp() {
     parent::setUp();
     $this->admin_user = $this->drupalCreateUser(['administer site configuration']);
   }

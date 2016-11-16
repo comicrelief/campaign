@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Tests\Processor\PluginManagerTest.
+ */
+
 namespace Drupal\purge\Tests\Processor;
 
 use Drupal\purge\Tests\KernelServiceTestBase;
@@ -29,7 +34,7 @@ class PluginManagerTest extends KernelServiceTestBase {
     'label',
     'description',
     'enable_by_default',
-    'configform',
+    'configform'
   ];
 
   /**
@@ -41,7 +46,7 @@ class PluginManagerTest extends KernelServiceTestBase {
     'a',
     'b',
     'c',
-    'withform',
+    'withform'
   ];
 
   /**

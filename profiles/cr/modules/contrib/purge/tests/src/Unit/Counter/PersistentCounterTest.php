@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\purge\Unit\Counter\PersistentCounterTest.
+ */
+
 namespace Drupal\Tests\purge\Unit\Counter;
 
 use Drupal\purge\Counter\PersistentCounter;
@@ -64,7 +69,7 @@ class PersistentCounterTest extends UnitTestCase {
       [0],
       [5],
       [1.3],
-      [8.9],
+      [8.9]
     ];
   }
 
@@ -75,7 +80,7 @@ class PersistentCounterTest extends UnitTestCase {
    */
   public function testGetInteger($value) {
     $counter = new PersistentCounter($value);
-    $this->assertEquals((int) $value, $counter->getInteger());
+    $this->assertEquals((int)$value, $counter->getInteger());
     $this->assertFalse(is_float($counter->getInteger()));
     $this->assertTrue(is_int($counter->getInteger()));
   }
@@ -88,7 +93,7 @@ class PersistentCounterTest extends UnitTestCase {
       [0],
       [5],
       [1.3],
-      [8.9],
+      [8.9]
     ];
   }
 
@@ -110,7 +115,7 @@ class PersistentCounterTest extends UnitTestCase {
     return [
       [FALSE],
       ["0"],
-      [NULL],
+      [NULL]
     ];
   }
 
@@ -143,7 +148,7 @@ class PersistentCounterTest extends UnitTestCase {
       [0],
       [5],
       [1.3],
-      [8.9],
+      [8.9]
     ];
   }
 
@@ -187,7 +192,7 @@ class PersistentCounterTest extends UnitTestCase {
     return [
       [0],
       [0.0],
-      [-1],
+      [-1]
     ];
   }
 
@@ -209,7 +214,7 @@ class PersistentCounterTest extends UnitTestCase {
     return [
       [FALSE],
       ["0"],
-      [NULL],
+      [NULL]
     ];
   }
 
@@ -253,7 +258,7 @@ class PersistentCounterTest extends UnitTestCase {
     return [
       [0],
       [0.0],
-      [-1],
+      [-1]
     ];
   }
 
@@ -275,7 +280,7 @@ class PersistentCounterTest extends UnitTestCase {
     return [
       [FALSE],
       ["0"],
-      [NULL],
+      [NULL]
     ];
   }
 
@@ -290,7 +295,7 @@ class PersistentCounterTest extends UnitTestCase {
     // Pass a callback that modifies locals $passed_id and $passed_value.
     $passed_id = NULL;
     $passed_value = NULL;
-    $callback = function ($_id, $_value) use (&$passed_id, &$passed_value) {
+    $callback = function($_id, $_value) use (&$passed_id, &$passed_value) {
       $passed_id = $_id;
       $passed_value = $_value;
     };

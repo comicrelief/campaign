@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge_drush\Plugin\Purge\Processor\DrushInvalidateProcessor.
+ */
+
 namespace Drupal\purge_drush\Plugin\Purge\Processor;
 
 use Drupal\purge\Plugin\Purge\Processor\ProcessorInterface;

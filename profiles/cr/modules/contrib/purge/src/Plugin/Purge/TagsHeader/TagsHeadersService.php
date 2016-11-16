@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Plugin\Purge\TagsHeader\TagsHeadersService.
+ */
+
 namespace Drupal\purge\Plugin\Purge\TagsHeader;
 
 use Drupal\Component\Plugin\PluginManagerInterface;
@@ -26,7 +31,7 @@ class TagsHeadersService extends ServiceBase implements TagsHeadersServiceInterf
    * @param \Drupal\Component\Plugin\PluginManagerInterface $pluginManager
    *   The plugin manager for this service.
    */
-  public function __construct(PluginManagerInterface $pluginManager) {
+  function __construct(PluginManagerInterface $pluginManager) {
     $this->pluginManager = $pluginManager;
   }
 

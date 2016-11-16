@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge_ui\Tests\PurgerConfigFormTest.
+ */
+
 namespace Drupal\purge_ui\Tests;
 
 use Drupal\Core\Url;
@@ -72,7 +77,7 @@ class PurgerConfigFormTest extends WebTestBase {
   /**
    * Setup the test.
    */
-  public function setUp() {
+  function setUp() {
     parent::setUp();
     $this->initializePurgersService(['c', $this->purger]);
     $this->urlValid = Url::fromRoute($this->route, ['id' => 'id1']);

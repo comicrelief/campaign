@@ -1,4 +1,5 @@
 purge_ui.dashboard:
+  version: VERSION
   css:
     layout:
       css/purge_ui.dashboard.css: {}

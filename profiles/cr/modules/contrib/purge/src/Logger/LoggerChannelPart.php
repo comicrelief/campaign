@@ -1,11 +1,16 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Logger\LoggerChannelPart.
+ */
+
 namespace Drupal\purge\Logger;
 
 use Psr\Log\LogLevel;
-use Psr\Log\LoggerInterface;
 use Drupal\Core\DependencyInjection\ServiceProviderBase;
 use Drupal\Core\Logger\RfcLogLevel;
+use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\purge\Logger\LoggerChannelPart;
 
 /**
@@ -30,14 +35,14 @@ class LoggerChannelPart implements LoggerChannelPartInterface {
   /**
    * The single and central logger channel used by purge module(s).
    *
-   * @var \Psr\Log\LoggerInterface
+   * @var \Drupal\Core\Logger\LoggerChannelInterface
    */
   protected $loggerChannelPurge;
 
   /**
    * {@inheritdoc}
    */
-  public function __construct(LoggerInterface $logger_channel_purge, $id, array $grants = []) {
+  function __construct(LoggerChannelInterface $logger_channel_purge, $id, array $grants = []) {
     $this->id = $id;
     $this->grants = $grants;
     $this->loggerChannelPurge = $logger_channel_purge;

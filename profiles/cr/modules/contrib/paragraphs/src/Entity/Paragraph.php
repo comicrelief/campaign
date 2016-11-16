@@ -51,6 +51,7 @@ use Drupal\user\UserInterface;
  *   field_ui_base_route = "entity.paragraphs_type.edit_form",
  *   common_reference_revisions_target = TRUE,
  *   content_translation_ui_skip = TRUE,
+ *   render_cache = FALSE,
  *   default_reference_revision_settings = {
  *     "field_storage_config" = {
  *       "cardinality" = -1,
@@ -84,6 +85,23 @@ class Paragraph extends ContentEntityBase implements ParagraphInterface, EntityN
       return NULL;
     }
     return \Drupal::entityTypeManager()->getStorage($this->get('parent_type')->value)->load($this->get('parent_id')->value);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function label() {
+    $label = '';
+    if ($parent = $this->getParentEntity()) {
+      $parent_field = $this->get('parent_field_name')->value;
+      $values = $parent->{$parent_field};
+      foreach ($values as $key => $value) {
+        if ($value->entity->id() == $this->id()) {
+          $label = $parent->label() . ' > ' . $value->getFieldDefinition()->getLabel();
+        }
+      }
+    }
+    return $label;
   }
 
   /**
@@ -230,16 +248,10 @@ class Paragraph extends ContentEntityBase implements ParagraphInterface, EntityN
       ->setSetting('handler', 'default')
       ->setDefaultValueCallback('Drupal\paragraphs\Entity\Paragraph::getCurrentUserId')
       ->setTranslatable(TRUE)
-      ->setDisplayOptions('view', array(
-        'label' => 'hidden',
-        'type' => 'hidden',
-        'weight' => 0,
-      ))
       ->setDisplayOptions('form', array(
         'type' => 'hidden',
         'weight' => 0,
       ))
-      ->setDisplayConfigurable('view', TRUE)
       ->setDisplayConfigurable('form', TRUE);
 
     $fields['status'] = BaseFieldDefinition::create('boolean')
@@ -254,15 +266,10 @@ class Paragraph extends ContentEntityBase implements ParagraphInterface, EntityN
       ->setDescription(t('The time that the Paragraph was created.'))
       ->setRevisionable(TRUE)
       ->setTranslatable(TRUE)
-      ->setDisplayOptions('view', array(
-        'type' => 'hidden',
-        'weight' => 0,
-      ))
       ->setDisplayOptions('form', array(
         'type' => 'hidden',
         'weight' => 0,
       ))
-      ->setDisplayConfigurable('view', TRUE)
       ->setDisplayConfigurable('form', TRUE);
 
     $fields['revision_uid'] = BaseFieldDefinition::create('entity_reference')

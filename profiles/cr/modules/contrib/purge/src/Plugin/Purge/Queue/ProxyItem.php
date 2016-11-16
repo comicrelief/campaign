@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Plugin\Purge\Queue\ProxyItem.
+ */
+
 namespace Drupal\purge\Plugin\Purge\Queue;
 
 use Drupal\purge\Plugin\Purge\Invalidation\InvalidationInterface;
@@ -94,7 +99,7 @@ class ProxyItem implements ProxyItemInterface {
         SELF::DATA_INDEX_TYPE => $this->invalidation->getType(),
         SELF::DATA_INDEX_STATES => $this->invalidation->getStates(),
         SELF::DATA_INDEX_EXPRESSION => $this->invalidation->getExpression(),
-        SELF::DATA_INDEX_PROPERTIES => $this->invalidation->getProperties(),
+        SELF::DATA_INDEX_PROPERTIES => $this->invalidation->getProperties()
       ];
     }
 

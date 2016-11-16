@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Tests\DiagnosticCheck\PluginManagerTest.
+ */
+
 namespace Drupal\purge\Tests\DiagnosticCheck;
 
 use Drupal\purge\Tests\KernelServiceTestBase;
@@ -18,7 +23,7 @@ class PluginManagerTest extends KernelServiceTestBase {
   public static $modules = [
     'purge_check_test',
     'purge_check_error_test',
-    'purge_check_warning_test',
+    'purge_check_warning_test'
   ];
 
   /**
@@ -43,9 +48,7 @@ class PluginManagerTest extends KernelServiceTestBase {
    */
   protected $plugins = [
     'capacity',
-    'maxage',
     'memoryqueuewarning',
-    'page_cache',
     'processorsavailable',
     'purgersavailable',
     'queuersavailable',
@@ -54,7 +57,7 @@ class PluginManagerTest extends KernelServiceTestBase {
     'alwaysinfo',
     'alwaysok',
     'purgerwarning',
-    'queuewarning',
+    'queuewarning'
   ];
 
   /**

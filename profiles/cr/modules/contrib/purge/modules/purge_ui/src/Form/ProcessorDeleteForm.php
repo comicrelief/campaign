@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge_ui\Form\ProcessorDeleteForm.
+ */
+
 namespace Drupal\purge_ui\Form;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -77,13 +82,13 @@ class ProcessorDeleteForm extends ConfirmFormBase {
       '#type' => 'submit',
       '#button_type' => 'primary',
       '#value' => $this->getConfirmText(),
-      '#ajax' => ['callback' => '::deleteProcessor'],
+      '#ajax' => ['callback' => '::deleteProcessor']
     ];
     $form['actions']['cancel'] = [
       '#type' => 'submit',
       '#value' => $this->t('No'),
       '#weight' => -10,
-      '#ajax' => ['callback' => '::closeDialog'],
+      '#ajax' => ['callback' => '::closeDialog']
     ];
     return $form;
   }

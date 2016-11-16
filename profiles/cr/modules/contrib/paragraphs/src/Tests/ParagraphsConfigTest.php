@@ -78,10 +78,10 @@ class ParagraphsConfigTest extends ParagraphsTestBase {
 
     $this->addParagraphedContentType('paragraphed_test', 'paragraphs_field');
 
-    // Check error message is displayed.
+    // Check error message is not displayed.
     $this->drupalGet('admin/config/regional/content-language');
     $this->assertText('(* unsupported) Paragraphs fields do not support translation.');
-    $this->assertRaw('<div class="messages messages--error');
+    $this->assertNoRaw('<div class="messages messages--error');
 
     // Add a second language.
     ConfigurableLanguage::create(['id' => 'de'])->save();
@@ -93,6 +93,11 @@ class ParagraphsConfigTest extends ParagraphsTestBase {
       'settings[node][paragraphed_test][fields][paragraphs_field]' => FALSE,
     ];
     $this->drupalPostForm('admin/config/regional/content-language', $edit, t('Save configuration'));
+
+    // Check error message is still not displayed.
+    $this->drupalGet('admin/config/regional/content-language');
+    $this->assertText('(* unsupported) Paragraphs fields do not support translation.');
+    $this->assertNoRaw('<div class="messages messages--error');
 
     // Check content type field management warning.
     $this->drupalGet('admin/structure/types/manage/paragraphed_test/fields/node.paragraphed_test.paragraphs_field');
@@ -111,5 +116,16 @@ class ParagraphsConfigTest extends ParagraphsTestBase {
     $this->assertText('Paragraphs fields do not support translation.');
     $this->assertRaw('<div class="messages messages--error');
 
+    // Check a not paragraphs translatable field does not display the message.
+    $this->drupalGet('admin/structure/types/manage/paragraphed_test/fields/add-field');
+    $edit = [
+      'new_storage_type' => 'field_ui:entity_reference:node',
+      'label' => 'new_no_paragraphs_field',
+      'field_name' => 'new_no_paragraphs_field',
+    ];
+    $this->drupalPostForm(NULL, $edit, t('Save and continue'));
+    $this->drupalPostForm(NULL, [], t('Save field settings'));
+    $this->assertNoText('Paragraphs fields do not support translation.');
+    $this->assertNoRaw('<div class="messages messages--warning');
   }
 }

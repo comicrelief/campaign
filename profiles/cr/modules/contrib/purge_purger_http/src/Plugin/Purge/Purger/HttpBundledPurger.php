@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge_purger_http\Plugin\Purge\Purger\HttpBundledPurger.
+ */
+
 namespace Drupal\purge_purger_http\Plugin\Purge\Purger;
 
 use Drupal\purge\Plugin\Purge\Purger\PurgerInterface;
@@ -7,7 +12,7 @@ use Drupal\purge\Plugin\Purge\Invalidation\InvalidationInterface;
 use Drupal\purge_purger_http\Plugin\Purge\Purger\HttpPurgerBase;
 
 /**
- * HTTP Bundled Purger.
+ * HTTP Bundled Purger
  *
  * @PurgePurger(
  *   id = "httpbundled",
@@ -27,7 +32,7 @@ class HttpBundledPurger extends HttpPurgerBase implements PurgerInterface {
   public function invalidate(array $invalidations) {
 
     // Create a simple closure to mass-update states on the objects.
-    $set_state = function ($state) use ($invalidations) {
+    $set_state = function($state) use($invalidations) {
       foreach ($invalidations as $invalidation) {
         $invalidation->setState($state);
       }
@@ -48,20 +53,12 @@ class HttpBundledPurger extends HttpPurgerBase implements PurgerInterface {
       // Log as much useful information as we can.
       $headers = $opt['headers'];
       unset($opt['headers']);
-      $debug = json_encode(
-        str_replace("\n", ' ',
-          [
-            'msg' => $e->getMessage(),
-            'uri' => $uri,
-            'method' => $this->settings->request_method,
-            'guzzle_opt' => $opt,
-            'headers' => $headers,
-          ]
-        )
-      );
+      $debug = json_encode(str_replace("\n", ' ', [
+        'msg' => $e->getMessage(),
+        'uri' => $uri, 'method' => $this->settings->request_method,
+        'guzzle_opt' => $opt, 'headers' => $headers]));
       $this->logger()->emergency("item failed due @e, details (JSON): @debug",
-        ['@e' => get_class($e), '@debug' => $debug]
-      );
+        ['@e' => get_class($e), '@debug' => $debug]);
     }
   }
 

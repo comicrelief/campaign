@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge_ui\Form\PurgerMoveForm.
+ */
+
 namespace Drupal\purge_ui\Form;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -93,13 +98,13 @@ class PurgerMoveForm extends ConfirmFormBase {
       '#type' => 'submit',
       '#button_type' => 'primary',
       '#value' => $this->getConfirmText(),
-      '#ajax' => ['callback' => '::movePurger'],
+      '#ajax' => ['callback' => '::movePurger']
     ];
     $form['actions']['cancel'] = [
       '#type' => 'submit',
       '#value' => $this->t('No'),
       '#weight' => -10,
-      '#ajax' => ['callback' => '::closeDialog'],
+      '#ajax' => ['callback' => '::closeDialog']
     ];
     return $form;
   }

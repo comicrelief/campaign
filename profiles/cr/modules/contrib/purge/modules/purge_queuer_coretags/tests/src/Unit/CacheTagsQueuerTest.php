@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\purge_queuer_coretags\Unit\CacheTagsQueuerTest.
+ */
+
 namespace Drupal\Tests\purge_queuer_coretags\Unit;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -27,10 +32,10 @@ class CacheTagsQueuerTest extends UnitTestCase {
   protected $blacklist = [
     'purge_queuer_coretags.settings' => [
       'blacklist' => [
-        'menu',
-        'node',
-      ],
-    ],
+          'menu',
+          'node'
+      ]
+    ]
   ];
 
   /**
@@ -39,7 +44,7 @@ class CacheTagsQueuerTest extends UnitTestCase {
    * @var array[]
    */
   protected $blacklistEmpty = [
-    'purge_queuer_coretags.settings' => ['blacklist' => []],
+    'purge_queuer_coretags.settings' => ['blacklist' => []]
   ];
 
   /**
@@ -92,7 +97,7 @@ class CacheTagsQueuerTest extends UnitTestCase {
     $this->purgeQueuers = $this->getMockBuilder(QueuersServiceInterface::class)->setMethods(['get'])->getMock();
     $this->purgeInvalidationFactory = $this->getMockForAbstractClass(InvalidationsServiceInterface::class);
 
-    // Create a container with all dependent services in it.
+    // Create a container with all dependant services in it.
     $this->container = new ContainerBuilder();
     $this->container->set('purge.queue', $this->purgeQueue);
     $this->container->set('purge.queuers', $this->purgeQueuers);
@@ -134,14 +139,14 @@ class CacheTagsQueuerTest extends UnitTestCase {
       ->willReturn($this->getMock(InvalidationInterface::class));
 
     // Configure the QueueServiceInterface::add() expectation very accurately.
-    $adds = array_filter($adds, function ($v) {return $v !== 0;});
+    $adds = array_filter($adds, function($v) {return $v !== 0;});
     $this->purgeQueue->expects($this->exactly($queue_calls))
       ->method('add')
       ->with(
-        $this->callback(function ($queuer) {
+        $this->callback(function($queuer) {
           return $queuer instanceof QueuerBase;
         }),
-        $this->callback(function (array $invs) use (&$adds, $sets) {
+        $this->callback(function(array $invs) use (&$adds, $sets) {
           if (is_null($expected = each($adds)['value'])) {
             return TRUE;
           }

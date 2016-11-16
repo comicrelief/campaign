@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Plugin\Purge\Processor\PluginManager.
+ */
+
 namespace Drupal\purge\Plugin\Purge\Processor;
 
 use Drupal\Core\Plugin\DefaultPluginManager;
@@ -7,7 +12,7 @@ use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 
 /**
- * The processors plugin manager.
+ * The diagnostic checks plugin manager.
  */
 class PluginManager extends DefaultPluginManager {
 

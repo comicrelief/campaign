@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Plugin\Purge\Invalidation\Exception\InvalidStateException.
+ */
+
 namespace Drupal\purge\Plugin\Purge\Invalidation\Exception;
 
 /**

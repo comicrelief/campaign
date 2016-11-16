@@ -156,6 +156,13 @@ function cr_update_8017() {
 }
 
 /**
+* Install cr_video cr_media
+*/
+function cr_update_8018() {
+  \Drupal::service('module_installer')->install(['cr_content_reference']);
+}
+
+/**
 * Install cr_quote
 */
 function cr_update_8019() {
