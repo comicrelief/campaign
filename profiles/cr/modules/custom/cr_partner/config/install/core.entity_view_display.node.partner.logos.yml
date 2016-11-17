@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.partner.field_partner_website
     - field.field.node.partner.field_partner_weight
     - node.type.partner
+    - responsive_image.styles.partner_row
   module:
     - ds
     - panelizer
@@ -26,13 +27,16 @@ third_party_settings:
       path: profiles/cr/modules/contrib/ds
       library: ''
       disable_css: false
+      entity_classes: all_classes
       settings:
-        classes: {  }
-        wrappers: {  }
+        wrappers:
+          ds_content: div
         outer_wrapper: div
         attributes: ''
         link_attribute: ''
         link_custom: ''
+        classes:
+          layout_class: {  }
     regions:
       ds_content:
         - field_partner_logo
@@ -46,8 +50,8 @@ content:
     weight: 0
     label: hidden
     settings:
-      responsive_image_style: ''
-      image_link: ''
+      responsive_image_style: partner_row
+      image_link: content
     third_party_settings: {  }
 hidden:
   body: true
