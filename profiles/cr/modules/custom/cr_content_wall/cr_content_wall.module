@@ -29,7 +29,7 @@ function cr_content_wall_field_cw_view_mode(FieldStorageDefinitionInterface $def
  *
  * @see options_allowed_values()
  */
-function field_cw_bg_colour(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
+function cr_content_wall_field_cw_bg_colour(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
   $values = [
     'bg--white' => t('White'),
     'bg--black' => t('Black'),

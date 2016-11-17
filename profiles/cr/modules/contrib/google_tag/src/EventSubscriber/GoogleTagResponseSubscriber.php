@@ -101,13 +101,21 @@ class GoogleTagResponseSubscriber implements EventSubscriberInterface {
       $compact = $this->config->get('compact_tag');
 
       // Insert snippet after the opening body tag.
-      $response_text = preg_replace('@<body[^>]*>@', '$0' . $this->getTag($container_id, $compact), $response->getContent(), 1);
+      $pattern = [
+        '@</head>@',
+        '@<body[^>]*>@'
+      ];
+      $replace = [
+        $this->getHeadTag($container_id, $compact) . '$0',
+        '$0' . $this->getTag($container_id, $compact)
+      ];
+      $response_text = preg_replace($pattern, $replace, $response->getContent(), 1);
       $response->setContent($response_text);
     }
   }
 
   /**
-   * Return the text for the tag.
+   * Return the text for the head tag.
    *
    * @param string $container_id
    *   The Google Tag Manager container ID.
@@ -117,12 +125,8 @@ class GoogleTagResponseSubscriber implements EventSubscriberInterface {
    * @return string
    *   The full text of the Google Tag manager script/embed.
    */
-  public function getTag($container_id, $compact = FALSE) {
+  public function getHeadTag($container_id, $compact = FALSE) {
     // Build script tags.
-    $noscript = <<<EOS
-<noscript><iframe src="//www.googletagmanager.com/ns.html?id=$container_id"
- height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-EOS;
     $script = <<<EOS
 <script type="text/javascript">
 (function(w,d,s,l,i){
@@ -141,21 +145,63 @@ EOS;
 </script>
 EOS;
 
+      return $this->prepareTag($script, $compact);
+  }
 
-    if ($compact) {
-      $noscript = str_replace("\n", '', $noscript);
-      $script = str_replace(array("\n", '  '), '', $script);
+    /**
+     * Return the text for the body tag.
+     *
+     * @param string $container_id
+     *   The Google Tag Manager container ID.
+     * @param bool $compact
+     *   Whether or not the tag should be compacted (whitespace removed).
+     *
+     * @return string
+     *   The full text of the Google Tag manager script/embed.
+     */
+    public function getTag($container_id, $compact = FALSE) {
+        // Build script tags.
+        $noscript = <<<EOS
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=$container_id"
+ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+EOS;
+
+        return $this->prepareTag($noscript, $compact);
     }
-    $script = <<<EOS
 
+    /**
+     * @param string $script
+     * @param bool $compact
+     * @return string
+     */
+    private function prepareTag($script, $compact) {
+      $script = ($compact) ? $this->compressHtml($script) : $script;
+
+      return $this->addComments($script);
+    }
+
+  /**
+   * Return the HTML compressed.
+   *
+   * @param string $data
+   * @return mixed
+   */
+  private function compressHtml($data) {
+    return str_replace(["\n", '  '], '', $data);
+  }
+
+  /**
+   * Return the comments around the script.
+   *
+   * @param string $script
+   * @return string
+   */
+  private function addComments($script) {
+    return <<<EOS
 <!-- Google Tag Manager -->
-$noscript
 $script
 <!-- End Google Tag Manager -->
 EOS;
-
-    return $script;
-
   }
 
   /**

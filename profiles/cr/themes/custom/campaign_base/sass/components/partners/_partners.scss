@@ -17,10 +17,14 @@
   .cr-article {
     margin: 0;
     max-width: none;
+    padding: 0;
+    background-color: inherit;
 
     .cr-article__header {
       padding: 57px 0;
       background-color: $colour-red;
+      overflow: hidden;
+      width: 100%;
 
       .cr-article__title {
         margin: 0;
@@ -29,6 +33,7 @@
         font-size: 56px;
         line-height: 56px;
         text-align: center;
+        font-family: "GT-Walsheim-Bold",helvetica,arial,sans-serif;
       }
     }
 
@@ -38,6 +43,7 @@
     }
 
     .cr-article__body {
+      padding: 0;
       margin: 60px auto;
       @include span(10);
       @include push(1);
@@ -56,6 +62,7 @@
       img {
         width: 100%;
         height: auto;
+        margin: 0;
       }
     }
   }
