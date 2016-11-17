@@ -1,6 +1,6 @@
 # CR Landing page module
 
-This module contains the landing page node that can be used to create complex pages using nodes and panelizer.
+This module contains the landing page node that can be used to create complex pages using nodes.
 
 ## Fields
 

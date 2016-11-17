@@ -12,13 +12,11 @@ dependencies:
     - field.field.node.landing.field_landing_meta_tags
     - field.field.node.landing.field_paragraphs
     - field.field.node.landing.field_svg_body_title
-    - field.field.node.landing.panelizer
     - node.type.landing
   module:
     - ds
     - entity_reference_revisions
     - image
-    - panelizer
     - text
     - user
 third_party_settings:
@@ -44,7 +42,6 @@ third_party_settings:
         - body
         - field_landing_cta
         - field_paragraphs
-        - panelizer
     fields:
       node_title:
         plugin_id: node_title
@@ -80,12 +77,6 @@ content:
     third_party_settings: {  }
   links:
     weight: 14
-    settings: {  }
-    third_party_settings: {  }
-  panelizer:
-    type: panelizer
-    weight: 5
-    label: hidden
     settings: {  }
     third_party_settings: {  }
   social_links:
