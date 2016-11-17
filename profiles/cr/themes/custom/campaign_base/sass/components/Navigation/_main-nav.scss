@@ -65,8 +65,8 @@ nav.menu--main {
       height: 50px;
       margin: 0;
       padding: 0;
-      width: 85px;
-      height: 85px;
+      width: 76px;
+      height: 76px;
 
       &.active {
         background-color: #f9f9f9;
@@ -119,7 +119,7 @@ nav.menu--main {
     list-style: none;
     text-align: left;
     display: none;
-    top: 80px;
+    top: 76px;
     width: 100%;
 
     @include breakpoint($screen-md) {

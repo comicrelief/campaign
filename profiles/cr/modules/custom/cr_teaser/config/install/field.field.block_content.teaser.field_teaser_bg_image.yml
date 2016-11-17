@@ -3,9 +3,9 @@ status: true
 dependencies:
   config:
     - block_content.type.teaser
-    - field.storage.block_content.field_teaser_img_bg
-id: block_content.teaser.field_teaser_img_bg
-field_name: field_teaser_img_bg
+    - field.storage.block_content.field_teaser_bg_image
+id: block_content.teaser.field_teaser_bg_image
+field_name: field_teaser_bg_image
 entity_type: block_content
 bundle: teaser
 label: 'Background image block?'
