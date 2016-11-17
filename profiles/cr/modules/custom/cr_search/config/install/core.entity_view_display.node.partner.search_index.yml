@@ -16,15 +16,11 @@ dependencies:
     - ds
     - link
     - metatag
-    - panelizer
     - responsive_image
     - taxonomy
     - text
     - user
 third_party_settings:
-  panelizer:
-    enable: false
-    custom: false
   ds:
     layout:
       id: ds_reset

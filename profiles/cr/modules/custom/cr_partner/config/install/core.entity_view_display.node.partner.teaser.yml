@@ -13,13 +13,8 @@ dependencies:
     - node.type.partner
   module:
     - link
-    - panelizer
     - responsive_image
     - user
-third_party_settings:
-  panelizer:
-    enable: false
-    custom: false
 id: node.partner.teaser
 targetEntityType: node
 bundle: partner

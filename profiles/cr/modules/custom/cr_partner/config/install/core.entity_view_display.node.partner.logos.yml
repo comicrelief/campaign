@@ -13,13 +13,9 @@ dependencies:
     - node.type.partner
   module:
     - ds
-    - panelizer
     - responsive_image
     - user
 third_party_settings:
-  panelizer:
-    enable: false
-    custom: false
   ds:
     layout:
       id: ds_reset
