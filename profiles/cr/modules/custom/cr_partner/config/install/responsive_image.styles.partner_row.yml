@@ -4,8 +4,6 @@ dependencies:
   config:
     - image.style.partners_row_crop_and_scale
     - image.style.partners_row_crop_and_scale_2x
-  theme:
-    - campaign_base
 id: partner_row
 label: 'Partner Row'
 image_style_mappings:
