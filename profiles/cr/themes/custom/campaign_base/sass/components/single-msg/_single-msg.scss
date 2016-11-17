@@ -110,16 +110,6 @@
         margin-top: 0;
       }
     }
-    &.single-msg--feature-copy-right,
-    &.single-msg--feature-copy-left { 
-      .single-msg__copy_wrapper {
-        margin-top: calc(-4 *#{gutter()});
-        @include breakpoint($screen-lg) {
-          height: calc(100% - 2 * #{$row-padding--md});
-          margin-top: calc(#{$row-padding--md} / 2);
-        }
-      }
-    }
   }
   //negative bottom
   &.single-msg--negative-bottom {
@@ -133,14 +123,6 @@
         height: calc(100% - #{$row-padding--md});
       }
     }
-    &.single-msg--feature-copy-right,
-    &.single-msg--feature-copy-left { 
-      .single-msg__copy_wrapper {
-        @include breakpoint($screen-lg) {
-          height: calc(100% - 2 * #{$row-padding--md});
-        }
-      }
-    }
   }
   //no top padding
   &.single-msg--no-top-padding {
@@ -151,16 +133,6 @@
         margin-top: 0;
       }
     }
-    &.single-msg--feature-copy-right,
-    &.single-msg--feature-copy-left { 
-      .single-msg__copy_wrapper {
-        margin-top: calc(-4 *#{gutter()});
-        @include breakpoint($screen-lg) {
-          height: calc(100% - 2 * #{$row-padding--md});
-          margin-top: calc(#{$row-padding--md} / 2);
-        }
-      }
-    }
   }
   //no bottom padding
   &.single-msg--no-bottom-padding {
@@ -168,14 +140,6 @@
       padding-bottom: 0;
       .single-msg__copy_wrapper {
         height: calc(100% - #{$row-padding--md}); 
-      }
-    }
-    &.single-msg--feature-copy-right,
-    &.single-msg--feature-copy-left { 
-      .single-msg__copy_wrapper {
-        @include breakpoint($screen-lg) {
-          height: calc(100% - 2 * #{$row-padding--md});
-        }
       }
     }
   }
@@ -189,6 +153,24 @@
         margin-top: 0;
       }
     }
+  }
+  // padding options feature variation fixes
+  //top
+  &.single-msg--negative-top,
+  &.single-msg--no-top-padding {
+    &.single-msg--feature-copy-right,
+    &.single-msg--feature-copy-left { 
+      .single-msg__copy_wrapper {
+        margin-top: calc(-4 *#{gutter()});
+        @include breakpoint($screen-lg) {
+          height: calc(100% - 2* #{$row-padding--md});
+          margin-top: calc(#{$row-padding--md} / 2);
+        }
+      }
+    }
+  }
+  //none
+  &.single-msg--no-padding {
     &.single-msg--feature-copy-right,
     &.single-msg--feature-copy-left { 
       .single-msg__copy_wrapper {
@@ -196,6 +178,18 @@
         @include breakpoint($screen-lg) {
           height: calc(100% - #{$row-padding--md});
           margin-top: calc(#{$row-padding--md} / 2);
+        }
+      }
+    }
+  }
+  //bottom
+  &.single-msg--negative-bottom,
+  &.single-msg--no-bottom-padding {
+    &.single-msg--feature-copy-right,
+    &.single-msg--feature-copy-left {
+      .single-msg__copy_wrapper {
+        @include breakpoint($screen-lg) {
+          height: calc(100% - 2 * #{$row-padding--md});
         }
       }
     }
