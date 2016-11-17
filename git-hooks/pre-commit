@@ -1,4 +1,4 @@
-#!/bin/sh
+#/usr/bin/env bash
 
 EXTENSIONS=php,module,inc,install,test,profile,theme
 CODE_PATH="profiles/cr/modules/custom"

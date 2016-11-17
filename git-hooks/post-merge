@@ -1,0 +1,13 @@
+#/usr/bin/env bash
+
+# Git hook to run a command after `git merge` / `git pull` if a specified file was changed.
+# Run `chmod +x post-merge` to make it executable then put it into `.git/hooks/`.
+
+changed_files="$(git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD)"
+
+check_run() {
+  echo "$changed_files" | egrep --quiet "$1" && echo "$2"
+}
+
+# In this example it's used to print a warning if composer.lock has been changed
+check_run composer.lock "Run `composer install --dev`"
