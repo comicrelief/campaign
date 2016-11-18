@@ -77,7 +77,10 @@
 }
 .cards__title {
   text-align: center;
-  margin-bottom: 30px;
+  margin: 0 calc(4 * 1.25%) $row-padding--sm;
+  @include breakpoint($screen-md){
+    margin: 0 calc(2 * 1.25%) $row-padding--sm;
+  }
   .bg--dark-orchid & {
     color: $colour-white;
   }
