@@ -40,6 +40,10 @@ projects:
     download:
       branch: 8.x-1.x
       revision: 2065f39
+  context:
+    download:
+      branch: 8.x-1.x
+      revision: d609f9f
   pathauto:
     version: 1.0-beta1
   redirect:
