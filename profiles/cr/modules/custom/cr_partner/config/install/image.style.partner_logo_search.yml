@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies: {  }
+name: partner_logo_search
+label: 'Partner logo -- search'
+effects:
+  40b5e6cd-9a20-4782-ad56-5dbdbcb8deac:
+    uuid: 40b5e6cd-9a20-4782-ad56-5dbdbcb8deac
+    id: image_scale
+    weight: 1
+    data:
+      width: 450
+      height: null
+      upscale: true
+  14fae525-5b9a-408e-8bd2-df753c57865b:
+    uuid: 14fae525-5b9a-408e-8bd2-df753c57865b
+    id: image_crop
+    weight: 2
+    data:
+      width: 350
+      height: 350
+      anchor: center-center

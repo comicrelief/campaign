@@ -1,0 +1,43 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.partner_logo_search
+    - image.style.partner_logo_search_2x
+  theme:
+    - campaign_base
+id: partner_logos_search
+label: 'Partner logos search'
+image_style_mappings:
+  -
+    breakpoint_id: campaign_base.large
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: partner_logo_search
+  -
+    breakpoint_id: campaign_base.large
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: partner_logo_search_2x
+  -
+    breakpoint_id: campaign_base.medium
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: partner_logo_search
+  -
+    breakpoint_id: campaign_base.medium
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: partner_logo_search_2x
+  -
+    breakpoint_id: campaign_base.small
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: partner_logo_search
+  -
+    breakpoint_id: campaign_base.small
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: partner_logo_search_2x
+breakpoint_group: campaign_base
+fallback_image_style: '_original image_'
