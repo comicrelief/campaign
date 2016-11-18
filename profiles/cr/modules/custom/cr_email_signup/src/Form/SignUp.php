@@ -24,7 +24,7 @@ abstract class SignUp extends FormBase {
   // Convert all this small variables into a class.
   protected $campaign = 'RND17';
   protected $transType = 'esu';
-  protected $esulist = ['general' => 'general'];
+  protected $esulist = ['listname' => ['general']];
 
   /**
    * Returns the queue name.
@@ -207,7 +207,7 @@ abstract class SignUp extends FormBase {
             'email' => $form_state->getValue('email'),
             'device' => $form_state->getValue('device'),
             'source' => $form_state->getValue('source'),
-            'lists' => $this->esulist,
+            'subscribeLists' => $this->esulist,
           ];
           if ($form_state->getValue('firstName')) {
             $data['firstName'] = $form_state->getValue('firstName');
@@ -219,7 +219,7 @@ abstract class SignUp extends FormBase {
 
       case 'step2':
         $email = $form_state->getValue('email');
-        $this->esulist = ['teacher' => 'teacher'];
+        $this->esulist = ['listname' => ['teacher']];
         $valid_email = \Drupal::service('email.validator')->isValid($email);
         if (!$form_state->isValueEmpty('school_phase') && $valid_email) {
           $this->fillQmessage([
@@ -227,7 +227,7 @@ abstract class SignUp extends FormBase {
             'phase' => $form_state->getValue('school_phase'),
             'device' => $form_state->getValue('device'),
             'source' => $form_state->getValue('source'),
-            'lists' => $this->esulist,
+            'subscribeLists' => $this->esulist,
           ]);
           $this->nextStep($response, 2);
 
