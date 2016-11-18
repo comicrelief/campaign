@@ -4,8 +4,6 @@ dependencies:
   config:
     - image.style.partner_logo_search
     - image.style.partner_logo_search_2x
-  theme:
-    - campaign_base
 id: partner_logos_search
 label: 'Partner logos search'
 image_style_mappings:
