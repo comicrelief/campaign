@@ -168,3 +168,10 @@ function cr_update_8018() {
 function cr_update_8019() {
   \Drupal::service('module_installer')->install(['cr_quote']);
 }
+
+/**
+* Install context module
+*/
+function cr_update_8020() {
+  \Drupal::service('module_installer')->install(['context']);
+}

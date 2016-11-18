@@ -44,6 +44,7 @@ dependencies:
 
   # Contrib modules
   - ds
+  - context
   - file_entity
   - media_entity
   - media_entity_browser
