@@ -107,18 +107,6 @@ $button-transistion-duration: 0.2s;     // The transition duration
 
 @include breakpoint($screen-md) {
   .c-hamburger span {
-<<<<<<< HEAD
-    top: 39px;
-    left: 25px;
-    right: 25px;
-
-    &:before {
-      top: -11px;
-    }
-
-    &:after {
-      bottom: -11px;
-=======
     top: 35px;
     left: 20px;
     right: 20px;
@@ -132,7 +120,6 @@ $button-transistion-duration: 0.2s;     // The transition duration
     &:after {
       bottom: -12px;
       height: 4px;
->>>>>>> 91d5831a7939008a01a753ab74b68ef828f826a3
     }
   }
 }
