@@ -1,0 +1,13 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Run the body class context reactions if there are any and let them add
+ * classes to the page body.
+ *
+ * Implements hook_preprocess_HOOK().
+ */
+function context_preprocess_html(&$variables) {
+ // @todo Implement code!
+}

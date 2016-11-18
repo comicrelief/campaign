@@ -1,0 +1,12 @@
+services:
+  context.manager:
+    class: Drupal\context\ContextManager
+    arguments: ['@entity.query', '@entity.manager', '@context.repository', '@context.handler', '@entity.form_builder']
+  plugin.manager.context_reaction:
+    class: Drupal\context\ContextReactionManager
+    parent: default_plugin_manager
+  context.block_page_display_variant_subscriber:
+    class: Drupal\context\EventSubscriber\BlockPageDisplayVariantSubscriber
+    arguments: ['@context.manager']
+    tags:
+      - { name: event_subscriber }

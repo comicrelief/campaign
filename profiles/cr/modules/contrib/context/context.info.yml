@@ -1,0 +1,5 @@
+name: Context
+description: 'Set conditions and configure reactions that should be implemented when conditions pass.'
+package: Context
+type: module
+core: 8.x
