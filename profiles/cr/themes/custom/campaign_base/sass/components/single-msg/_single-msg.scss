@@ -10,6 +10,7 @@
 // .single-msg--feature-copy-left - Feature copy left
 // .single-msg--copy-only - Copy only
 // .single-msg--default-padding - Default
+//
 // .single-msg--negative-top - Reduce top padding
 // .single-msg--negative-bottom - Reduce bottom padding
 // .single-msg--no-top-padding - Remove top padding
@@ -76,7 +77,7 @@
       top: 0;
       right: 0;
       // Recalculate height minus the row padding
-      height: calc(100% - ( #{$row-padding--md} * 2) );
+      height: calc(100% - (#{$row-padding--md} * 2));
       margin-top: 60px;
       width: span(6);
       margin-right: calc( 2 * ( #{gutter()}) );
@@ -98,22 +99,22 @@
   }
 
   /* padding options */
-  //negative top 
+  // negative top 
   &.single-msg--negative-top {
     overflow: visible;
     .single-msg__outer-wrapper {
       padding-top: 0;
       margin-top: -$row-padding--md;
-      //align copy with image
+      // recalculate height and align copy with image
       .single-msg__copy_wrapper {
         height: calc(100% - #{$row-padding--md});
         margin-top: 0;
       }
     }
   }
-  //negative bottom
+  // negative bottom
   &.single-msg--negative-bottom {
-    //move next section up 
+    // move next section up 
     + .paragraph { 
       padding-top: 0;
     }
@@ -124,7 +125,7 @@
       }
     }
   }
-  //no top padding
+  // no top padding
   &.single-msg--no-top-padding {
     .single-msg__outer-wrapper {
       padding-top: 0;
@@ -134,7 +135,7 @@
       }
     }
   }
-  //no bottom padding
+  // no bottom padding
   &.single-msg--no-bottom-padding {
     .single-msg__outer-wrapper {
       padding-bottom: 0;
@@ -144,7 +145,7 @@
     }
   }
   // no top or bottom padding
-  &.single-msg--no-padding{
+  &.single-msg--no-padding {
     .single-msg__outer-wrapper {
       padding-top: 0;
       padding-bottom: 0;
@@ -155,7 +156,7 @@
     }
   }
   // padding options feature variation fixes
-  //top
+  // top
   &.single-msg--negative-top,
   &.single-msg--no-top-padding {
     &.single-msg--feature-copy-right,
@@ -169,7 +170,7 @@
       }
     }
   }
-  //none
+  // none
   &.single-msg--no-padding {
     &.single-msg--feature-copy-right,
     &.single-msg--feature-copy-left { 
@@ -182,7 +183,7 @@
       }
     }
   }
-  //bottom
+  // bottom
   &.single-msg--negative-bottom,
   &.single-msg--no-bottom-padding {
     &.single-msg--feature-copy-right,
