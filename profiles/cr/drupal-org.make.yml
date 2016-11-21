@@ -192,5 +192,5 @@ libraries:
   modernizr:
     download:
       type: "get"
-      url: https://raw.githubusercontent.com/bimsonz/modernizr-custom/cec9a0ef2c8ef41260b371f2ec6519da766af4fa/modernizr-custom.js
+      url: https://raw.githubusercontent.com/comicrelief/campaign-modernizr/master/modernizr-custom.js
     destination: "themes/custom/campaign_base/libraries"
