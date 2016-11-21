@@ -19,6 +19,18 @@
   	mask-size: 60% 70%;
   	-webkit-mask: url(../images/svgs/magnify.svg) no-repeat right center;
     -webkit-mask-size: 60% 70%;
+    .no-cssmask & {
+    	background: transparent url(../images/icons/search_page_icon.png) center right no-repeat;
+    	background-size: 35px;
+    	@include breakpoint($screen-md) {
+		  	background-size: 55px;
+		  }
+    	&:focus,
+		  &:hover {
+		  	background-image: url(../images/icons/search_page_icon_hover.png);
+		  	background-color: transparent;
+		  }
+    }
     @include breakpoint($screen-md) {
 	  	height: 80px;
 	  }
