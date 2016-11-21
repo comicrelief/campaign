@@ -12,19 +12,19 @@
   }
 }
 .kids-logo {
-  @include icons-sprite(kids-logo);
   @include breakpoint($desktop-nav-breakpoint) {
     top: -46px;
     float: none;
     margin-right: 30px;
     margin-left: 54px;
   }
+  background: url(../images/icons/kids-logo.png) left top no-repeat;
   position: relative;
   z-index: 5;
   display: block;
   float: left;
-  width: icons-sprite-width(kids-logo);
-  height: icons-sprite-height(kids-logo);
+  width: 204px;
+  height: 60px;
   margin-top: 10px;
   text-indent: -9999px;
 }
