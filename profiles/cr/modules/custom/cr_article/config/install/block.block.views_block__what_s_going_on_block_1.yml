@@ -23,7 +23,7 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: /whats-going-on
+    pages: "/whats-going-on\r\n/news-tv-and-events/news"
     negate: false
     context_mapping: {  }
   'entity_bundle:node':
