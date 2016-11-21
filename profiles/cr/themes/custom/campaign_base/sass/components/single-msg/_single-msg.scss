@@ -105,7 +105,7 @@
     .single-msg__outer-wrapper {
       padding-top: 0;
       margin-top: -45px;
-      @include breakpoint($screen-md){
+      @include breakpoint($screen-md) {
         margin-top: -$row-padding--md;
       }
       // recalculate height and align copy with image
