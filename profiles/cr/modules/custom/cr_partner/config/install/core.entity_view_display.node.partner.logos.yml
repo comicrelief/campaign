@@ -14,6 +14,7 @@ dependencies:
     - responsive_image.styles.partner_row
   module:
     - ds
+    - link
     - panelizer
     - responsive_image
     - user
@@ -39,26 +40,46 @@ third_party_settings:
           layout_class: {  }
     regions:
       ds_content:
+        - field_partner_external
         - field_partner_logo
+        - field_partner_website
 id: node.partner.logos
 targetEntityType: node
 bundle: partner
 mode: logos
 content:
+  field_partner_external:
+    type: boolean
+    weight: 0
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
   field_partner_logo:
     type: responsive_image
     weight: 0
     label: hidden
     settings:
       responsive_image_style: partner_row
-      image_link: content
+      image_link: ''
+    third_party_settings: {  }
+  field_partner_website:
+    type: link
+    weight: 0
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
     third_party_settings: {  }
 hidden:
   body: true
   field_partner_category: true
-  field_partner_external: true
   field_partner_meta_tags: true
-  field_partner_website: true
   field_partner_weight: true
   links: true
   social_links: true
