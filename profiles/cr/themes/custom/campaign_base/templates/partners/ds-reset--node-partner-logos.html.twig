@@ -2,10 +2,14 @@
 {% set site_url = content.field_partner_website['0']['#url'].uri %}
 
 {% if is_external %}
-	<li><a href="{{site_url}}" target="_blank">
-		{{ content.field_partner_logo }}
-	</a></li>
+	<li>
+		<a href="{{site_url}}" target="_blank">
+			{{ content.field_partner_logo }}
+		</a>
+	</li>
 
 {% else %}
-	<li> {{ content.field_partner_logo }}</li>
+	<li>
+		{{ content.field_partner_logo }}
+	</li>
 {% endif %}
