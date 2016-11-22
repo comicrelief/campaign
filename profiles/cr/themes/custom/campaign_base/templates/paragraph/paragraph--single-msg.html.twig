@@ -3,6 +3,7 @@
 {% set variant_type = paragraph.bundle|clean_class ~ "--" ~ content.field_single_msg_layout_variant['#items'][0].value %}
 {% set hide_title = content.field_single_msg_hide_title['#items'][0].value == '1' ? 'visuallyhidden' : '' %}
 {% set body_bg_colour = content.field_single_msg_body_bg_colour['#items'][0].value %}
+{% set padding_option = paragraph.bundle|clean_class ~ "--" ~ content.field_single_msg_padding_option['#items'][0].value %}
 
 {%
 set classes = [
@@ -10,6 +11,7 @@ set classes = [
 paragraph.bundle|clean_class,
 variant_type,
 row_bg_colour,
+padding_option,
 ]
 %}
 
