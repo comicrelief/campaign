@@ -79,3 +79,4 @@ config_devel:
   # Responsive image styles
   - responsive_image.styles.cw_bg_image_blocks
   - responsive_image.styles.cw_landscape_image
+  - responsive_image.styles.cw_medium_image_blocks
