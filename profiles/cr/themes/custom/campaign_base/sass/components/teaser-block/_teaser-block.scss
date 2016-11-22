@@ -31,12 +31,12 @@
     }
     .block-content--view-mode-cw-mp & {
       height: 55%;
-      float: left;
+      float: right;
     }
     .block-content--view-mode-cw-l & {
       width: 65%;
       height: 450px;
-      float: left;
+      float: right;
     }
   }
   @include breakpoint($screen-lg, $no-query: true) {
@@ -93,7 +93,7 @@
     }
     .block-content--view-mode-cw-mp &,
     .block-content--view-mode-cw-l & {
-      float: left;
+      float: right;
     }
     .block-content--view-mode-cw-l & {
       width: 35%;
