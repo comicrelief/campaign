@@ -24,7 +24,7 @@
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/partner\/field_partner_logo": [
             {
-                "href": "http:\/\/default\/file\/3376?_format=hal_json"
+                "href": "http:\/\/default\/file\/3397?_format=hal_json"
             }
         ]
     },
@@ -40,7 +40,7 @@
     ],
     "vid": [
         {
-            "value": "81"
+            "value": "114"
         }
     ],
     "langcode": [
@@ -73,7 +73,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "e0b7c2f5-eea7-4a1f-aeb2-4c5cc734e4b3"
+                        "value": "013b3fc2-fabc-4d84-ae89-699179943247"
                     }
                 ],
                 "lang": "en"
@@ -91,7 +91,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "df8a6a52-56dc-474f-bc97-97338843f58d"
+                        "value": "5a5ba5d9-9082-4848-b221-537372efc97c"
                     }
                 ]
             }
@@ -117,7 +117,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/file\/3376?_format=hal_json"
+                        "href": "http:\/\/default\/file\/3397?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
@@ -125,13 +125,13 @@
                 },
                 "uuid": [
                     {
-                        "value": "f24b2b2b-ff39-4377-b1de-ab2f85f6de97"
+                        "value": "5cc989c4-e1cf-4835-8d3c-f7ca94c1d929"
                     }
                 ],
-                "alt": "TK Maxx",
+                "alt": "tk maxx",
                 "title": "",
-                "width": "270",
-                "height": "152"
+                "width": "670",
+                "height": "377"
             }
         ]
     },
@@ -149,7 +149,7 @@
     ],
     "changed": [
         {
-            "value": "1476197101",
+            "value": "1479383357",
             "lang": "en"
         }
     ],
@@ -167,7 +167,7 @@
     ],
     "revision_timestamp": [
         {
-            "value": "1476197101"
+            "value": "1479383357"
         }
     ],
     "revision_translation_affected": [
