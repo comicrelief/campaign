@@ -205,13 +205,14 @@ select,
       font-size: 18px;
       box-shadow: none;
       @include border-radius(0);
-      background-size: 40px;
+      // backround-size breaks the background svg on IE, but is needed for chrome
+      -webkit-background-size: 40px;
       padding: 20px 20px 20px 40px;
     }
 
     .form-item-email .form-text,
     .form-item-school-phase .ui-selectmenu-button {
-      border: 2px solid red;
+      border: 2px solid $colour-black;
     }
   }
 
