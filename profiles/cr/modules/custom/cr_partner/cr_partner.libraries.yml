@@ -5,4 +5,3 @@ cr_partner:
   dependencies:
     - core/jquery
     - core/modernizr
-    - campaign_base/platform

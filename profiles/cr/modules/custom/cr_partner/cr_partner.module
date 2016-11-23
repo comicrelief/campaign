@@ -71,4 +71,3 @@ function cr_partner_field_partner_weight(FieldStorageDefinitionInterface $defini
 function cr_partner_page_attachments(array &$attachments) {
   $attachments['#attached']['library'][] = 'cr_partner/cr_partner';
 }
-
