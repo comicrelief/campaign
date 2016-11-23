@@ -1,0 +1,9 @@
+services:
+  plugin.manager.block_visibility_groups_admin.condition_creator:
+    class: Drupal\block_visibility_groups_admin\ConditionCreatorManager
+    parent: default_plugin_manager
+
+  block_visibility_groups_admin.lister:
+    class: Drupal\block_visibility_groups_admin\GroupInfo
+    arguments: ["@block_visibility_groups.group_evaluator", '@entity_type.manager', '@plugin.manager.condition']
+

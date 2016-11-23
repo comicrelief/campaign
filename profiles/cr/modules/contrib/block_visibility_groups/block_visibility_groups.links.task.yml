@@ -1,0 +1,4 @@
+entity.block_visibility_group.collection:
+  title: 'Block Visibility Groups'
+  route_name: entity.block_visibility_group.collection
+  base_route: block.admin_display

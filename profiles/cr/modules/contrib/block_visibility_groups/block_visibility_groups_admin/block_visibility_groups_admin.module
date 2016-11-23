@@ -1,0 +1,62 @@
+<?php
+
+/**
+ * @file
+ * Contains hooks.
+ */
+
+use Drupal\Component\Serialization\Json;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_toolbar().
+ */
+function block_visibility_groups_admin_toolbar() {
+  $route = \Drupal::routeMatch();
+
+  $json_params = Json::encode($route->getRawParameters()->all());
+  $encoded_parameters = urlencode($json_params);
+
+  /** @var \Drupal\block_visibility_groups_admin\GroupInfo $group_info */
+  $group_info = \Drupal::getContainer()
+    ->get('block_visibility_groups_admin.lister');
+  if ($active_groups = $group_info->getActiveGroups()) {
+    $url = Url::fromRoute('block_visibility_groups_admin.active_groups',
+      [
+        'active_group_ids' => implode(',', array_keys($active_groups)),
+      ]
+    );
+    $link_title = t('Manage Active Groups');
+  }
+  else {
+    // No active Groups.
+    $url = Url::fromRoute('block_visibility_groups_admin.group_create',
+      [
+        'route_name' => $route->getRouteName(),
+        'parameters' => $encoded_parameters,
+      ]
+    );
+    $link_title = t('Create new visibility Group');
+  }
+  $items['block_visibility_groups_admin'] = [
+    '#type' => 'toolbar_item',
+    'tab' => array(
+      '#type' => 'link',
+      '#title' => t('Block Visibility Groups'),
+      '#url' => $url,
+      '#attributes' => array(
+        'title' => $link_title,
+        'data-dialog-type' => 'modal',
+        'data-dialog-options' => Json::encode([
+          'width' => 700,
+        ]),
+        'class' => array('toolbar-icon', 'use-ajax'),
+      ),
+    ),
+    // @todo Fix caching
+    '#cache' => [
+      'max-age' => 0,
+    ],
+  ];
+  return $items;
+}
