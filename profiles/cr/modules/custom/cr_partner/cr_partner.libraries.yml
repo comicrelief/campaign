@@ -1,0 +1,8 @@
+cr_partner:
+  version: 1.x
+  js:
+    js/cr_partner.js: {}
+  dependencies:
+    - core/jquery
+    - core/modernizr
+    - campaign_base/platform

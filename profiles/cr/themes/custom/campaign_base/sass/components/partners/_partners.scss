@@ -168,3 +168,22 @@
     }
   }
 }
+
+/* 
+ * Removing the 'hover' state for touch devices,
+ * to be handled by JS to deal with proper events to only change on tap, not scroll
+ */
+.touchevents .partners-grid ul li .node__content {
+
+  &:hover {
+    .partner__link a {
+      display: none;
+    }
+  }
+
+  &.active {
+    .partner__link a {
+      display: block;
+    }
+  }
+}
