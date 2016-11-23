@@ -115,6 +115,7 @@ header,
 main,
 .paragraph {
   @include clearfix;
+  clear: both;
 }
 .block-search {
   float: right;

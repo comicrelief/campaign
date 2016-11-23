@@ -183,6 +183,7 @@ config_devel:
   - image.style.story_739_x_561_crop_sm
   - image.style.cw_quote_lg
   - image.style.cw_quote_sm
+  - image.style.cr_1400_x_658
 
   # Retina image styles
   - image.style.bg_rich_text_narrow_2x

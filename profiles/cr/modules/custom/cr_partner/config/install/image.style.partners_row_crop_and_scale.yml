@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies: {  }
+name: partners_row_crop_and_scale
+label: 'Partners row - crop and scale'
+effects:
+  2f3de7be-19db-4aa6-91b3-4ec1dd17032a:
+    uuid: 2f3de7be-19db-4aa6-91b3-4ec1dd17032a
+    id: image_scale
+    weight: 0
+    data:
+      width: 400
+      height: null
+      upscale: true
+  4c48d715-8d27-46b0-a5ff-53b3242d9d46:
+    uuid: 4c48d715-8d27-46b0-a5ff-53b3242d9d46
+    id: image_crop
+    weight: 1
+    data:
+      width: 275
+      height: 155
+      anchor: center-center

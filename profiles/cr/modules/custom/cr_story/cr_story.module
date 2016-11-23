@@ -45,6 +45,7 @@ function cr_story_field_cr_story_fundraiser_bg_col(FieldStorageDefinitionInterfa
     'bg--blue' => t('Blue'),
     'bg--yellow' => t('Yellow'),
     'bg--pink' => t('Pink'),
+    'bg--white' => t('White'),
   ];
   return $values;
 }

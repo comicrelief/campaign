@@ -30,7 +30,7 @@
 
       @include breakpoint($screen-sm-max) {
 	  	  width: calc(100% - (2 * #{gutter()}));
-        margin: 0 gutter() calc(2 * 1.25%);
+        margin: 0 gutter() 30px;
       }
       @include breakpoint($screen-md-max) {
 		    @include span(12/$i);
@@ -77,7 +77,10 @@
 }
 .cards__title {
   text-align: center;
-  margin-bottom: 30px;
+  margin: 0 calc(4 * 1.25%) $row-padding--sm;
+  @include breakpoint($screen-md){
+    margin: 0 calc(2 * 1.25%) $row-padding--sm;
+  }
   .bg--dark-orchid & {
     color: $colour-white;
   }
