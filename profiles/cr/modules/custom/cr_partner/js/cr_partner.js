@@ -27,12 +27,19 @@
       
       var _base = Drupal.behaviors.crPartner;
       var _settings = _base.settings;
-      
-      $( _settings.partnerClass ).on('click touchend', function(e){
+      var scrolling = false;
 
+      // Keep track of scroll events
+      $("body").on("touchmove touchend", function(e){
+        if (e.type == 'touchmove') { scrolling = true; }
+        if (e.type == 'touchend') { scrolling = false; }
+      });
 
-        if ( !$(this).hasClass('active') ) {
+      // Update active states
+      $(_settings.partnerClass).on('touchend', function(e) {
 
+        // Only update things if we're not tapping on an 'active' partner showing the link
+        if (!$(this).hasClass('active') && !scrolling) {
           // Stop the link from firing
           e.preventDefault();
 
