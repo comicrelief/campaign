@@ -1,0 +1,6 @@
+name: Comic Relief OTN Banners
+# core: 8.x
+description: On The Night Banner functionaltiy for campaign sites.
+core: 8.x
+package: Comic Relief
+type: module
