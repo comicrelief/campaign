@@ -173,5 +173,5 @@ function cr_update_8019() {
 * Install context module
 */
 function cr_update_8020() {
-  \Drupal::service('module_installer')->install(['context']);
+  \Drupal::service('module_installer')->install(['block_visibility_groups']);
 }

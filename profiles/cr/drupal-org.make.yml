@@ -40,10 +40,8 @@ projects:
     download:
       branch: 8.x-1.x
       revision: 2065f39
-  context:
-    download:
-      branch: 8.x-1.x
-      revision: d609f9f
+  block_visibility_groups:
+    version: 1.1
   pathauto:
     version: 1.0-beta1
   redirect:

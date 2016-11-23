@@ -44,7 +44,7 @@ dependencies:
 
   # Contrib modules
   - ds
-  - context
+  - block_visibility_groups
   - file_entity
   - media_entity
   - media_entity_browser
