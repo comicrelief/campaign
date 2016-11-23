@@ -123,8 +123,6 @@
   <target name="install" description="Install CR with standard configuration.">
     <exec dir="${app.dir}" logoutput="true" passthru="true" checkreturn="true"
           command="${drush.bin} si ${app.profile.name} -y --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring} ${app.profile.options}"/>
-    <exec dir="${app.dir}"
-          command="${drush.bin} cex"/>
     <phingcall target="cache:clear"/>
   </target>
   <target name="cron" description="Run Drupal's cron script">
