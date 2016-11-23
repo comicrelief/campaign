@@ -360,6 +360,10 @@
   text-shadow: none;
   color: $colour-white;
   margin-top: 10px;
+  .link,
+  a {
+    color: $colour-white;
+  }
 }
 @media screen and (max-width: 640px) {
   .lightcase-fullScreenMode #lightcase-info {
