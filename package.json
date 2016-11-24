@@ -1,9 +1,11 @@
 {
   "name": "Campaign_base",
   "version": "1.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "compass": "^0.1.1"
+  },
   "devDependencies": {
-    "grunt": "~0.4.0",
+    "grunt": "^0.4.0",
     "grunt-browser-sync": "^2.2.0",
     "grunt-cli": "^0.1.13",
     "grunt-compass-multiple": "https://github.com/bimsonz/grunt-compass-multiple/tarball/master",
@@ -17,7 +19,11 @@
     "grunt-shell": "^1.2.1",
     "kss": "^2.4.0",
     "sass-loader": "^3.1.2",
-    "susy": "^2.2.11"
+    "susy": "^2.2.11",
+    "guard": "^0.1.1",
+    "breakpoint": "^0.1.6",
+    "webpack": "^1.12.6",
+    "node-sass": "^3.4.2"
   },
   "engines": {
     "node": ">=0.8.0"
