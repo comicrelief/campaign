@@ -2,7 +2,7 @@
   "name": "Campaign_base",
   "version": "1.0.0",
   "dependencies": {
-    "compass": "^0.1.1",
+    "compass-node": "^0.1.6",
     "node-bundler": "^2.0.1"
   },
   "devDependencies": {
