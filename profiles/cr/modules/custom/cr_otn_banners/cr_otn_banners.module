@@ -4,3 +4,16 @@
  * @file
  * On the night banner functionality.
  */
+
+/**
+* Return temp contexts for cr_otn_banners_contexts.
+*/
+function cr_otn_banners_contexts() {
+
+  $contexts = [
+    'otn' => t('On The Night'),
+    'atn' => t('Ater The Night'),
+  ];
+
+  return $contexts;
+}

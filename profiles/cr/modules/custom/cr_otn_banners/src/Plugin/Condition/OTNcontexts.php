@@ -23,12 +23,12 @@ class OTNcontexts extends ConditionPluginBase {
    * {@inheritdoc}
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
-    $form['roles'] = array(
+    $form['site_context'] = array(
       '#type' => 'checkboxes',
-      '#title' => $this->t('When the user has the following roles'),
-      '#default_value' => $this->configuration['roles'],
-      '#options' => array_map('\Drupal\Component\Utility\Html::escape', user_role_names()),
-      '#description' => $this->t('If you select no roles, the condition will evaluate to TRUE for all users.'),
+      '#title' => $this->t('When the following context is enabled'),
+      '#default_value' => $this->configuration['site_context'],
+      '#options' => array_map('\Drupal\Component\Utility\Html::escape', cr_otn_banners_contexts()),
+      '#description' => $this->t('If you select no context, the condition will evaluate to FALE for all contexts.'),
     );
     return parent::buildConfigurationForm($form, $form_state);
   }
@@ -38,7 +38,7 @@ class OTNcontexts extends ConditionPluginBase {
    */
   public function defaultConfiguration() {
     return array(
-      'roles' => array(),
+      'site_context' => array(),
     ) + parent::defaultConfiguration();
   }
 
@@ -46,7 +46,7 @@ class OTNcontexts extends ConditionPluginBase {
    * {@inheritdoc}
    */
   public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
-    $this->configuration['roles'] = array_filter($form_state->getValue('roles'));
+    $this->configuration['site_context'] = array_filter($form_state->getValue('site_context'));
     parent::submitConfigurationForm($form, $form_state);
   }
 
@@ -55,18 +55,18 @@ class OTNcontexts extends ConditionPluginBase {
    */
   public function summary() {
     // Use the role labels. They will be sanitized below.
-    $roles = array_intersect_key(user_role_names(), $this->configuration['roles']);
-    if (count($roles) > 1) {
-      $roles = implode(', ', $roles);
+    $context = array_intersect_key(cr_otn_banners_contexts(), $this->configuration['site_context']);
+    if (count($context) > 1) {
+      $roles = implode(', ', $context);
     }
     else {
-      $roles = reset($roles);
+      $context = reset($context);
     }
     if (!empty($this->configuration['negate'])) {
-      return $this->t('The user is not a member of @roles', array('@roles' => $roles));
+      return $this->t('The current context is not set to @context', array('@context' => $context));
     }
     else {
-      return $this->t('The user is a member of @roles', array('@roles' => $roles));
+      return $this->t('The current context is set to @context', array('@context' => $context));
     }
   }
 
@@ -74,11 +74,12 @@ class OTNcontexts extends ConditionPluginBase {
    * {@inheritdoc}
    */
   public function evaluate() {
-    if (empty($this->configuration['roles']) && !$this->isNegated()) {
-      return TRUE;
-    }
-    $user = $this->getContextValue('user');
-    return (bool) array_intersect($this->configuration['roles'], $user->getRoles());
+    //if (empty($this->configuration['site_context']) && !$this->isNegated()) {
+      //return TRUE;
+    //}
+    //$user = $this->getContextValue('user');
+    //return (bool) array_intersect($this->configuration['site_context'], cr_otn_banners_contexts());
+    return false;
   }
 
   /**
