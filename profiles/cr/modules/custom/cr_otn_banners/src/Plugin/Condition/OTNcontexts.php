@@ -10,7 +10,7 @@ use Drupal\Core\Condition\ConditionPluginBase;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Provides a 'User Role' condition.
+ * Provides a 'OTN context' condition.
  *
  * @Condition(
  *   id = "otn_contexts",
