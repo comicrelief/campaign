@@ -9,14 +9,14 @@ class Sender {
    * @param string $name
    * @param array $data
    */
-  public function sendTo($name, $data){
-    $this->sendQmessage($name, $this->fillmessage($data));
+  public function deliver($name, $data){
+    $this->send($name, $this->populate($data));
   }
 
   /**
    * Fill a message for the queue service.
    */
-  private function fillmessage($message) {
+  private function populate($message) {
     // Add dynamic keys.
     $message['timestamp'] = time();
     $current_path = \Drupal::service('path.current')->getPath();
@@ -41,7 +41,7 @@ class Sender {
   /**
    * Send a message to the queue service.
    */
-  private function sendQmessage($name, $queue_message) {
+  private function send($name, $queue_message) {
     try {
       $queue_factory = \Drupal::service('queue');
       /* @var \Drupal\rabbitmq\Queue\Queue $queue */

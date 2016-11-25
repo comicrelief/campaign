@@ -160,7 +160,7 @@ abstract class SignUp extends FormBase {
           }
           $data['transType'] = $this->transType;
           $sender = new Sender();
-          $sender->sendTo($this->queue_name, $data);
+          $sender->deliver($this->queue_name, $data);
           $this->nextStep($response, 1);
         }
         break;
@@ -171,7 +171,7 @@ abstract class SignUp extends FormBase {
         $valid_email = \Drupal::service('email.validator')->isValid($email);
         if (!$form_state->isValueEmpty('school_phase') && $valid_email) {
           $sender = new Sender();
-          $sender->sendTo($this->queue_name, [
+          $sender->deliver($this->queue_name, [
             'email' => $form_state->getValue('email'),
             'phase' => $form_state->getValue('school_phase'),
             'device' => $form_state->getValue('device'),
