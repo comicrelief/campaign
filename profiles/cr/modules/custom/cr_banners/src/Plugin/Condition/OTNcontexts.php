@@ -27,7 +27,7 @@ class OTNcontexts extends ConditionPluginBase {
       '#type' => 'checkboxes',
       '#title' => $this->t('When the following context is enabled'),
       '#default_value' => $this->configuration['site_context'],
-      '#options' => array_map('\Drupal\Component\Utility\Html::escape', cr_banners_contexts()),
+      '#options' => array_map('\Drupal\Component\Utility\Html::escape', cr_banners_get_contexts()),
       '#description' => $this->t('If you select no context, the condition will evaluate to FALE for all contexts.'),
     );
     return parent::buildConfigurationForm($form, $form_state);
@@ -54,8 +54,7 @@ class OTNcontexts extends ConditionPluginBase {
    * {@inheritdoc}
    */
   public function summary() {
-    // Use the role labels. They will be sanitized below.
-    $context = array_intersect_key(cr_banners_contexts(), $this->configuration['site_context']);
+    $context = array_intersect_key(cr_banners_get_contexts(), $this->configuration['site_context']);
     if (count($context) > 1) {
       $roles = implode(', ', $context);
     }
@@ -74,25 +73,12 @@ class OTNcontexts extends ConditionPluginBase {
    * {@inheritdoc}
    */
   public function evaluate() {
-    //if (empty($this->configuration['site_context']) && !$this->isNegated()) {
-      //return TRUE;
-    //}
-    //$user = $this->getContextValue('user');
-    //return (bool) array_intersect($this->configuration['site_context'], cr_banners_contexts());
-    return false;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getCacheContexts() {
-    // Optimize cache context, if a user cache context is provided, only use
-    // user.roles, since that's the only part this condition cares about.
-    $contexts = [];
-    foreach (parent::getCacheContexts() as $context) {
-      $contexts[] = $context == 'user' ? 'user.roles' : $context;
+    $config = \Drupal::service('config.factory')->getEditable('cr_banners.contexts');
+    $context = $config->get('current_context');
+    if (in_array($context, $this->configuration['site_context'])) {
+      return true;
     }
-    return $contexts;
+    else {
+      return false;
+    }
   }
-
-}

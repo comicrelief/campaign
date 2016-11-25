@@ -1,0 +1,7 @@
+cr_banners.contexts:
+  path: '/admin/config/campaign/site-context'
+  defaults:
+    _form: '\Drupal\cr_banners\Form\crContextForm'
+    _title: 'Select current site context'
+  requirements:
+    _permission: 'administer site configuration'
