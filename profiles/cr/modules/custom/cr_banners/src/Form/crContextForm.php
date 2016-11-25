@@ -40,7 +40,6 @@ class crContextForm extends ConfigFormBase {
       '#title' => $this->t('Select current site context'),
       '#default_value' => $config->get('current_context'),
       '#options' => array_map('\Drupal\Component\Utility\Html::escape', cr_banners_get_contexts()),
-      '#description' => $this->t('If you select no context, the condition will evaluate to FALE for all contexts.'),
     );
 
     return parent::buildForm($form, $form_state);
