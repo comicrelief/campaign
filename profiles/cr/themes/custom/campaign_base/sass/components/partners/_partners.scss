@@ -30,11 +30,12 @@
         margin: 0;
         @include span(10);
         @include push(1);
-        color: $colour-white;
-        font-size: 56px;
-        line-height: 56px;
         text-align: center;
-        font-family: "GT-Walsheim-Bold",helvetica,arial,sans-serif;
+
+        span {
+          @extend h1;
+          color: $colour-white !important;
+        }
 
         @include breakpoint($screen-md) {
           @include span(8);
@@ -174,16 +175,11 @@
  * to be handled by JS to deal with proper events to only change on tap, not scroll
  */
 .touchevents .partners-grid ul li .node__content {
-
-  &:hover {
-    .partner__link a {
+  &:hover .partner__link a {
       display: none;
-    }
   }
 
-  &.active {
-    .partner__link a {
-      display: block;
-    }
+  &.active .partner__link a {
+    display: block;
   }
 }
