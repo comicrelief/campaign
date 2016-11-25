@@ -4,3 +4,13 @@ description: On The Night Banner functionaltiy for campaign sites.
 core: 8.x
 package: Comic Relief
 type: module
+
+config_devel:
+  - block_content.type.banner
+  - core.entity_form_display.block_content.banner.default
+  - core.entity_view_display.block_content.banner.default
+  - field.storage.block_content.field_banner_background_colour
+  - field.storage.block_content.field_banner_background_image
+  - field.field.block_content.banner.body
+  - field.field.block_content.banner.field_banner_background_colour
+  - field.field.block_content.banner.field_banner_background_image
