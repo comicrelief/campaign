@@ -99,6 +99,7 @@ dependencies:
   #- cr_performance
   - cr_user
   - cr_social
+  - cr_banners
 
   # Development modules
   - config_devel
