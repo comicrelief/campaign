@@ -82,3 +82,4 @@ class OTNcontexts extends ConditionPluginBase {
       return false;
     }
   }
+}
