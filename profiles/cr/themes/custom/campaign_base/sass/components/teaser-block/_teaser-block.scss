@@ -132,6 +132,9 @@
     height: calc(100% - 5 * 1.25%);
     margin: 0 calc(5 * 1.25%);
     background-color: transparent;
+    .no-flexbox & {
+      padding-top: 0;
+    }
   }
   .teaser-block__image {
     width: 100%;
