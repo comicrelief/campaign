@@ -8,19 +8,14 @@ namespace Drupal\cr_email_signup\Form;
 class RegisterInterestSignUp extends SignUp {
 
   protected $transType = 'RegisterInterest';
+  protected $esulist = '';
+  protected $queue_name = 'register_interest';
 
   /**
    * Get the Form Identifier.
    */
   public function getFormId() {
     return 'cr_email_signup_register_interest_form';
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getQueueName() {
-    return 'register_interest';
   }
 
   /**
