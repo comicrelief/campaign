@@ -27,7 +27,7 @@ class OTNcontexts extends ConditionPluginBase {
       '#type' => 'checkboxes',
       '#title' => $this->t('When the following context is enabled'),
       '#default_value' => $this->configuration['site_context'],
-      '#options' => array_map('\Drupal\Component\Utility\Html::escape', cr_otn_banners_contexts()),
+      '#options' => array_map('\Drupal\Component\Utility\Html::escape', cr_banners_contexts()),
       '#description' => $this->t('If you select no context, the condition will evaluate to FALE for all contexts.'),
     );
     return parent::buildConfigurationForm($form, $form_state);
@@ -55,7 +55,7 @@ class OTNcontexts extends ConditionPluginBase {
    */
   public function summary() {
     // Use the role labels. They will be sanitized below.
-    $context = array_intersect_key(cr_otn_banners_contexts(), $this->configuration['site_context']);
+    $context = array_intersect_key(cr_banners_contexts(), $this->configuration['site_context']);
     if (count($context) > 1) {
       $roles = implode(', ', $context);
     }
