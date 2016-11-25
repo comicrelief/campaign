@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: banner
+label: Banner
+revision: 0
+description: 'Typically used for OTN banners.'
