@@ -83,6 +83,7 @@
   @include justify-content(center);
   @include align-items(center);
   @include display-flex;
+  @include flex-direction(column);
   @include breakpoint($screen-md, $no-query: true) {
     .block-content--view-mode-cw-s &,
     .block-content--view-mode-cw-m & {
