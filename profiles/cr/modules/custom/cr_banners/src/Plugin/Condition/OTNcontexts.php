@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains Drupal\cr_otn_banners\Plugin\Condition\OTNcontexts.
+ * Contains Drupal\cr_banners\Plugin\Condition\OTNcontexts.
  */
 
-namespace Drupal\cr_otn_banners\Plugin\Condition;
+namespace Drupal\cr_banners\Plugin\Condition;
 use Drupal\Core\Condition\ConditionPluginBase;
 use Drupal\Core\Form\FormStateInterface;
 
@@ -78,7 +78,7 @@ class OTNcontexts extends ConditionPluginBase {
       //return TRUE;
     //}
     //$user = $this->getContextValue('user');
-    //return (bool) array_intersect($this->configuration['site_context'], cr_otn_banners_contexts());
+    //return (bool) array_intersect($this->configuration['site_context'], cr_banners_contexts());
     return false;
   }
 

@@ -1,6 +1,6 @@
-name: Comic Relief OTN Banners
+name: Comic Relief Banners
 # core: 8.x
-description: On The Night Banner functionaltiy for campaign sites.
+description: Provides Banner functionaltiy for campaign sites, often used on or around the night of TV.
 core: 8.x
 package: Comic Relief
 type: module
