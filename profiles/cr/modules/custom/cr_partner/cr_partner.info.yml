@@ -4,6 +4,9 @@ core: 8.x
 description: 'Defines a Partner content type.'
 package: Comic Relief
 
+libraries:
+- cr_partner/cr_partner
+
 dependencies:
   - field
   - text
