@@ -2365,7 +2365,7 @@
 .block--cr-email-signup--head.show .form-item-school-phase label {
   position: inherit;
   top: -5px;
-  left: 0;
+  left: 10 px;
   right: 15px;
   font-size: 16px;
   height: auto;
@@ -2379,7 +2379,7 @@
 	position: relative;
 	padding: 0;
   top: -2px;
-  left: 0;
+  left: 10px;
   font-size: 16px;
   color: #fff;
 }
@@ -2511,9 +2511,18 @@ select:focus,
 	padding: 10px;
   border: 0;
   top: -40px;
-  left: 80px;
+  left: 0px;
   font-size: 18px;
+  color: #fff;
 }
+/*align labels with input field*/
+@media(min-width: 1200px){ 
+	.cr-email-signup-fundraise-form label,
+	.cr-email-signup-form label {
+		left: 70px;
+	}
+}
+
 
 .block--cr-email-signup .ui-selectmenu-button,
 .block--cr-email-signup .form-text,
@@ -2559,6 +2568,7 @@ select:focus,
   float: left;
   margin-left: 1.25%;
   margin-right: 1.25%;
+  margin-bottom: 2.5%;
   position: relative;
   height: 60px;
   text-align: center;
