@@ -2364,7 +2364,7 @@
 
 .block--cr-email-signup--head.show .form-item-school-phase label {
   position: inherit;
-  top: 0px;
+  top: -5px;
   left: 0;
   right: 15px;
   font-size: 16px;
@@ -2375,12 +2375,12 @@
   clip: auto;
 }
 
-#cr-header-email-signup-form .js-form-item-email label {
+.block--cr-email-signup--head.show .js-form-item-email label {
 	position: relative;
 	padding: 0;
-  top: 0;
+  top: -2px;
   left: 0;
-  font-size: 18px;
+  font-size: 16px;
   color: #fff;
 }
 
@@ -2408,7 +2408,7 @@
   text-indent: -9999px;
   width: 60px;
   margin: 0;
-  margin-top: 22px;
+  margin-top: 21px;
 }
 
 .block--cr-email-signup--head.show input[type=submit].button.step2 {
@@ -2421,7 +2421,6 @@
   border-radius: 0 36px 36px 0;
   
 }
-
 
 .block--cr-email-signup--head.show .esu-initial-message p,
 .block--cr-email-signup--head.show .esu-initial-message .view-search .search__total,
