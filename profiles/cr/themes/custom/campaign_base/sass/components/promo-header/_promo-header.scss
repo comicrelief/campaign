@@ -10,7 +10,9 @@
 
 .promo-header {
   position: relative;
-  min-height: 600px;
+  @include breakpoint($screen-md-max, $no-query: true) {
+    min-height: 600px;
+  }
   &.promo-header--no-image {
     min-height: auto;
   }
