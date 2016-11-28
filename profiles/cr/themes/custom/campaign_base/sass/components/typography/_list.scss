@@ -19,8 +19,8 @@ ul {
 		font-size: 1em;
 	}
 }
-.node__content {
-	ul {
+
+	ul.list {
 		list-style: none;
 		padding: 0 0 0 20px;
 		margin: 15px 0;
@@ -42,7 +42,7 @@ ul {
 		}
 	}
 
-	ol {
+	ol.list {
     padding: 0 0 0 35px;
     margin: 15px 0;
     list-style-type: decimal;
@@ -53,4 +53,4 @@ ul {
 			position: relative;
 		}
 	}
-}
+
