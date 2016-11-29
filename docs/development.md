@@ -86,4 +86,6 @@ IE 9 CSS limitation by preventing more than 4095 selectors in a CSS file.
 
 To fix this issue we have used [Bless](http://blesscss.com/) to split our styles.css into files with less than 4095 selectors and committed them. We have created a condition in our html twig template to add those files only if lte IE9.
 
+run `blessc chunk styles.css`
+
 Currently our IE9 traffic is less than 1% . This is temporary fix and eventually at some point we will stop supporting IE9 and remove those conditions and files.
