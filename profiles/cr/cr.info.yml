@@ -60,6 +60,7 @@ dependencies:
   - focal_point
   - scheduled_updates
   - cookieconsent
+  - twig_tweak
 
   # Layout
   - inline_entity_form
