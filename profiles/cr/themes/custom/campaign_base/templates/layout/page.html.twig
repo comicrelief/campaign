@@ -39,7 +39,6 @@
  */
 #}
 <header role="banner">
-  <div class="header__banner">{{ page.banner }}</div>
   <div class="header__top-wrapper">{{ page.header_top }}</div>
   <div class="header__inner-wrapper">
     {{ page.header }}
@@ -50,6 +49,7 @@
 {{ page.help }}
 <main role="main">
   <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+  <section class="main-banner">{{ page.banner }}</section>
   {{ page.content }}
 </main>
 {% if page.footer %}
