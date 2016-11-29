@@ -2,17 +2,18 @@
 
 /**
  * @file
- * Contains \Drupal\cr_banners\Form\crContextForm
+ * Contains \Drupal\cr_banners\Form\switchContextForm
  */
 namespace Drupal\cr_banners\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\cr_banners\Context\contextHandler;
 
 /**
- * Configure contexts used in banner/ block conditions.
+ * Switch between contexts used in banner/ block conditions.
  */
-class crContextForm extends ConfigFormBase {
+class switchContextForm extends ConfigFormBase {
   /**
    * {@inheritdoc}
    */
@@ -33,13 +34,12 @@ class crContextForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $config = $this->config('cr_banners.contexts');
-
+    $contexts = new contextHandler();
     $form['current_context'] = array(
       '#type' => 'select',
       '#title' => $this->t('Select current site context'),
-      '#default_value' => $config->get('current_context'),
-      '#options' => array_map('\Drupal\Component\Utility\Html::escape', cr_banners_get_contexts()),
+      '#default_value' => $contexts->getCurrentContext(),
+      '#options' => array_map('\Drupal\Component\Utility\Html::escape', $contexts->getContexts()),
     );
 
     return parent::buildForm($form, $form_state);
@@ -49,9 +49,8 @@ class crContextForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $config = \Drupal::service('config.factory')->getEditable('cr_banners.contexts');
-    $config->set('current_context', $form_state->getValue('current_context'))
-      ->save();
+    $contexts = new contextHandler();
+    $contexts->setSiteContext($form_state->getValue('current_context'));
 
     parent::submitForm($form, $form_state);
   }

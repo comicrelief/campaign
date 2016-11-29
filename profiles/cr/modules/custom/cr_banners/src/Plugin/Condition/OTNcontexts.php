@@ -8,6 +8,7 @@
 namespace Drupal\cr_banners\Plugin\Condition;
 use Drupal\Core\Condition\ConditionPluginBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\cr_banners\Context\contextHandler;
 
 /**
  * Provides a 'OTN context' condition.
@@ -23,11 +24,12 @@ class OTNcontexts extends ConditionPluginBase {
    * {@inheritdoc}
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
+    $contexts = new contextHandler();
     $form['site_context'] = array(
       '#type' => 'checkboxes',
       '#title' => $this->t('When the following context is enabled'),
       '#default_value' => $this->configuration['site_context'],
-      '#options' => array_map('\Drupal\Component\Utility\Html::escape', cr_banners_get_contexts()),
+      '#options' => array_map('\Drupal\Component\Utility\Html::escape', $contexts->getContexts()),
       '#description' => $this->t('If you select no context, the condition will evaluate to FALE for all contexts.'),
     );
     return parent::buildConfigurationForm($form, $form_state);
@@ -54,7 +56,8 @@ class OTNcontexts extends ConditionPluginBase {
    * {@inheritdoc}
    */
   public function summary() {
-    $context = array_intersect_key(cr_banners_get_contexts(), $this->configuration['site_context']);
+    $contexts = new contextHandler();
+    $context = array_intersect_key($contexts->getContexts(), $this->configuration['site_context']);
     if (count($context) > 1) {
       $roles = implode(', ', $context);
     }
@@ -73,8 +76,8 @@ class OTNcontexts extends ConditionPluginBase {
    * {@inheritdoc}
    */
   public function evaluate() {
-    $config = \Drupal::service('config.factory')->getEditable('cr_banners.contexts');
-    $context = $config->get('current_context');
+    $context_handler = new contextHandler();
+    $context = $context_handler->getCurrentContext();
     if (in_array($context, $this->configuration['site_context'])) {
       return true;
     }
