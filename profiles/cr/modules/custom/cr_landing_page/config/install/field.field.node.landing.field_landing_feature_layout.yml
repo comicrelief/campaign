@@ -8,8 +8,8 @@ id: node.landing.field_landing_feature_layout
 field_name: field_landing_feature_layout
 entity_type: node
 bundle: landing
-label: 'Feature layout'
-description: 'Header content with a white background overlapping the bottom of the hero image.'
+label: 'Secondary header'
+description: 'Secondary header uses a 400px heigh image and the content has a white background overlapping the bottom of the hero image.'
 required: false
 translatable: false
 default_value:
