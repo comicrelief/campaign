@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - block_content.type.cr_card
+    - core.entity_view_mode.block_content.banner
     - field.field.block_content.cr_card.field_cr_card_background
     - field.field.block_content.cr_card.field_cr_card_body
     - field.field.block_content.cr_card.field_cr_card_image
@@ -33,10 +34,10 @@ third_party_settings:
         - field_cr_card_image
         - field_cr_card_body
         - field_cr_card_background
-id: block_content.cr_card.default
+id: block_content.cr_card.banner
 targetEntityType: block_content
 bundle: cr_card
-mode: default
+mode: banner
 content:
   field_cr_card_background:
     weight: 2
