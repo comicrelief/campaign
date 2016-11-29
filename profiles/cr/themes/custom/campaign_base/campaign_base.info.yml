@@ -28,6 +28,7 @@ ckeditor_stylesheets:
   - css/styles.css
 
 regions:
+  banners: Banners
   header_top: Top Header
   header: Header
   highlighted: Highlighted
