@@ -9,7 +9,7 @@ field_name: field_landing_feature_layout
 entity_type: node
 bundle: landing
 label: 'Secondary header'
-description: 'Secondary header uses a 400px heigh image and the content has a white background overlapping the bottom of the hero image.'
+description: 'Adds a white background to the body and overlaps it onto the bottom of the background image.'
 required: false
 translatable: false
 default_value:
