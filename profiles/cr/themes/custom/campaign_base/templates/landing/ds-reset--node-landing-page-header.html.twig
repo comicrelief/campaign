@@ -24,7 +24,7 @@
 	{% if mobile_img and desk_img and not small_img %}
 	<div class="promo-header__bg-image">
 			<picture>
-				<source srcset="{{ desk_img | image_style('bg_rich_text_wide') }} 1x, {{ desk_img | image_style('bg_rich_text_wide_2x_') }} 2x" media="all and (min-width: 740px)" type="image/jpeg">
+				<source srcset="{{ desk_img | image_style('bg_rich_text_wide') }} 1x, {{ desk_img | image_style('bg_rich_text_wide_2x_') }} 2x" media="all and (min-width: 1023px)" type="image/jpeg">
 				<source srcset="{{ mobile_img | image_style('bg_rich_text_narrow') }} 1x, {{ mobile_img | image_style('bg_rich_text_narrow_2x') }} 2x" media="(min-width: 0px)" type="image/jpeg">
   			<img src="{{ desk_img | image_style('cr_1700_x_400') }}" alt="">
 			</picture>
@@ -32,14 +32,18 @@
   	{% elseif mobile_img and desk_img and small_img %}
   	<div class="promo-header__bg-image">
   		<picture>
-				<source srcset="{{ desk_img | image_style('cr_1700_x_400') }} 1x, {{ desk_img | image_style('cr_1700_x_400_2x') }} 2x" media="all and (min-width: 740px)" type="image/jpeg">
+				<source srcset="{{ desk_img | image_style('cr_1700_x_400') }} 1x, {{ desk_img | image_style('cr_1700_x_400_2x') }} 2x" media="all and (min-width: 1023px)" type="image/jpeg">
 				<source srcset="{{ mobile_img | image_style('bg_rich_text_narrow') }} 1x, {{ mobile_img | image_style('bg_rich_text_narrow_2x') }} 2x" media="(min-width: 0px)" type="image/jpeg">
   			<img src="{{ desk_img | image_style('cr_1700_x_400') }}" alt="">
 			</picture>
   	</div>
   		{% else %}
 	  	<div class="promo-header__bg-image">
-	  		{{ field_landing_image }}
+	  		<picture>
+					<source srcset="{{ desk_img | image_style('cr_1700_x_400') }} 1x, {{ desk_img | image_style('cr_1700_x_400_2x') }} 2x" media="all and (min-width: 1023px)" type="image/jpeg">
+					<source srcset="{{ mobile_img | image_style('cr_740_x_300') }} 1x, {{ mobile_img | image_style('cr_740_x_300_2x') }} 2x" media="(min-width: 0px)" type="image/jpeg">
+	  			<img src="{{ desk_img | image_style('cr_1700_x_400') }}" alt="">
+				</picture>
 	  	</div>
   {% endif %}
 </header>
