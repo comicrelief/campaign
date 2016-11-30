@@ -172,7 +172,7 @@ function cr_update_8019() {
 /**
 * Remove cr_single_message_row
 */
-function cr_update_8021() {
+function cr_update_8020() {
   // Remove any orphaned paragraphs
   $result = \Drupal::entityQuery('paragraph')
        ->condition('type', 'cr_single_message_row')
@@ -180,7 +180,4 @@ function cr_update_8021() {
    entity_delete_multiple('paragraph', $result);
   // Disable the containing module
   \Drupal::service('module_installer')->uninstall(['cr_single_message_row_paragraph']);
-  // Remove all config
-  Drupal::configFactory()->getEditable('paragraphs.paragraphs_type.cr_single_message_row')->delete();
-  Drupal::configFactory()->getEditable('field.storage.paragraph.field_single_msg_row_lr_body')->delete();
 }
