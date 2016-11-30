@@ -2363,11 +2363,9 @@
 }
 
 .block--cr-email-signup--head.show .form-item-school-phase label {
-  position: inherit;
-  top: -5px;
-  left: 10 px;
+  top: -20px;
   right: 15px;
-  font-size: 16px;
+  font-size: 14px;
   height: auto;
   height: auto;
   width: auto;
@@ -2376,12 +2374,14 @@
 }
 
 .block--cr-email-signup--head.show .js-form-item-email label {
-	position: relative;
-	padding: 0;
-  top: -2px;
-  left: 10px;
-  font-size: 16px;
-  color: #fff;
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
 }
 
 .block--cr-email-signup--head.show .js-form-item-email,
@@ -2408,18 +2408,16 @@
   text-indent: -9999px;
   width: 60px;
   margin: 0;
-  margin-top: 21px;
 }
 
 .block--cr-email-signup--head.show input[type=submit].button.step2 {
-  margin-top: 46px;
-  height: 60px;
+  margin-top: 25px;
 }
 
 .block--cr-email-signup--head.show .form-submit.step1,
 .block--cr-email-signup--head.show .form-submit.step2 {
   border-radius: 0 36px 36px 0;
-  
+  margin-top: 0;
 }
 
 .block--cr-email-signup--head.show .esu-initial-message p,
@@ -2507,22 +2505,15 @@ select:focus,
 }
 
 .block--cr-email-signup label {
-	position: absolute;
-	padding: 10px;
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
   border: 0;
-  top: -40px;
-  left: 0px;
-  font-size: 18px;
-  color: #fff;
 }
-/*align labels with input field*/
-@media(min-width: 1200px){ 
-	.cr-email-signup-fundraise-form label,
-	.cr-email-signup-form label {
-		left: 70px;
-	}
-}
-
 
 .block--cr-email-signup .ui-selectmenu-button,
 .block--cr-email-signup .form-text,
@@ -2568,7 +2559,6 @@ select:focus,
   float: left;
   margin-left: 1.25%;
   margin-right: 1.25%;
-  margin-bottom: 2.5%;
   position: relative;
   height: 60px;
   text-align: center;
