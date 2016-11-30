@@ -77,7 +77,7 @@ class OptimizelyIncludeSnippetTest extends WebTestBase {
     );
     
     // create snippet
-    $snippet = 'http://cdn.optimizely.com/js/' . $edit['optimizely_project_code'] . '.js';
+    $snippet = '//cdn.optimizely.com/js/' . $edit['optimizely_project_code'] . '.js';
 
     //create the project
     $this->drupalPostForm($this->addUpdatePage, $edit, t('Add'));
