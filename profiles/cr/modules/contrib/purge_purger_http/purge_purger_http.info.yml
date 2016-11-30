@@ -2,13 +2,14 @@ name: Generic HTTP Purger
 type: module
 description: 'Generic and highly configurable purger that makes HTTP requests, best suits custom configurations.'
 package: "Purge - reverse proxies & CDNs"
+# version: VERSION
 # core: 8.x
 dependencies:
   - purge
   - purge_tokens
 
-# Information added by Drupal.org packaging script on 2016-09-07
-version: '8.x-1.0-beta4'
+# Information added by Drupal.org packaging script on 2016-04-01
+version: '8.x-1.0-beta3'
 core: '8.x'
 project: 'purge_purger_http'
-datestamp: 1473237240
+datestamp: 1459526345

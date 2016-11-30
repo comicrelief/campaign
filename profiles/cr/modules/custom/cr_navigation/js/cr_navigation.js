@@ -9,7 +9,7 @@
     attach: function (context, settings) {
       var _base = Drupal.behaviors.crNavigation;
 
-      $('.menu--main').once('crNavigation').each(function () {
+      $('.menu--main, .menu--kids-menu').once('crNavigation').each(function () {
         $(this).addClass("crNavigation-processed");
           _base.setUpNav();
       });
@@ -18,14 +18,14 @@
     setUpNav: function (context, settings) {
       var _base = Drupal.behaviors.crNavigation;
 
-      $('#main-menu .menu-item a').wrapInner('<span class="menu-item__text"></span>');
+      $('#main-menu .menu-item a, #block-kidsmenu > .menu .menu-item a').wrapInner('<span class="menu-item__text"></span>');
 
       _base.duplicateParentLink();
 
       _base.toggleMenu();
 
       /* Setup the Smartmenus plugin with our main menu */
-      $('#main-menu').smartmenus({
+      $('#main-menu, #block-kidsmenu > .menu').smartmenus({
         subIndicatorsText: "",
         keepHighlighted: false,
         hideOnClick: true,
@@ -36,13 +36,17 @@
         $('#main-menu').smartmenus('menuHideAll');
       });
 
+      $('#block-kidsmenu > .menu').bind('activate.smapi', function (e, menu) {
+        $('#block-kidsmenu > .menu').smartmenus('menuHideAll');
+      });
+
     },
 
     /* Updates empty duplicate link (added by template) with the parent item's text and link, dynamically */
     duplicateParentLink: function (context, settings) {
 
       /* Update text and link */
-      $('.menu--main > .menu > .menu-item--expanded').each(function () {
+      $('.menu--main > .menu > .menu-item--expanded, .menu--kids-menu > .menu > .menu-item--expanded').each(function () {
 
         $this = $(this);
 
@@ -63,7 +67,7 @@
         $(this).toggleClass('is-active');
 
         // Change state of menu itself.
-        $('#main-menu').toggleClass('menu-open');
+        $('#main-menu, #block-kidsmenu > .menu').toggleClass('menu-open');
       });
     },
   };

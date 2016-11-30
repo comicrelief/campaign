@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge_ui\Form\ProcessorConfigFormBase.
+ */
+
 namespace Drupal\purge_ui\Form;
 
 use Drupal\purge_ui\Form\PluginConfigFormBase;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Logger\LoggerServiceInterface.
+ */
+
 namespace Drupal\purge\Logger;
 
 use Drupal\Core\DependencyInjection\ServiceProviderInterface;

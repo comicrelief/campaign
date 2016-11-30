@@ -11,13 +11,11 @@ dependencies:
     - field.field.node.partner.field_partner_website
     - field.field.node.partner.field_partner_weight
     - node.type.partner
+    - responsive_image.styles.partner_logos_search
   module:
     - ds
-    - link
-    - metatag
     - panelizer
     - responsive_image
-    - taxonomy
     - text
     - user
 third_party_settings:
@@ -30,6 +28,7 @@ third_party_settings:
       path: profiles/cr/modules/contrib/ds
       library: ''
       disable_css: false
+      entity_classes: all_classes
       settings:
         wrappers:
           ds_content: div
@@ -66,21 +65,6 @@ content:
     settings:
       trim_length: 200
     third_party_settings: {  }
-  field_partner_category:
-    type: entity_reference_rss_category
-    weight: 10
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-  field_partner_external:
-    type: boolean
-    weight: 0
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
   field_partner_image:
     type: responsive_image
     weight: 14
@@ -94,35 +78,14 @@ content:
     weight: 1
     label: hidden
     settings:
-      responsive_image_style: cr_listing_teaser
+      responsive_image_style: partner_logos_search
       image_link: content
     third_party_settings: {  }
-  field_partner_meta_tags:
-    type: metatag_empty_formatter
-    weight: 0
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-  field_partner_website:
-    type: link_separate
-    weight: 9
-    label: above
-    settings:
-      trim_length: 80
-      rel: ''
-      target: ''
-      url_only: false
-      url_plain: false
-    third_party_settings: {  }
-  links:
-    weight: 11
-    settings: {  }
-    third_party_settings: {  }
-  social_links:
-    weight: 12
-    settings: {  }
-    third_party_settings: {  }
 hidden:
+  field_partner_category: true
   field_partner_external: true
   field_partner_meta_tags: true
+  field_partner_website: true
   field_partner_weight: true
+  links: true
+  social_links: true

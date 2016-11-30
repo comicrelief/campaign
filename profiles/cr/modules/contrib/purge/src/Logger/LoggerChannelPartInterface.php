@@ -1,8 +1,14 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Logger\LoggerChannelPartInterface.
+ */
+
 namespace Drupal\purge\Logger;
 
 use Psr\Log\LoggerInterface;
+use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\Core\Logger\RfcLogLevel;
 
 /**
@@ -13,7 +19,7 @@ interface LoggerChannelPartInterface extends LoggerInterface {
   /**
    * Construct \Drupal\purge\Logger\LoggerChannelPartInterface.
    *
-   * @param \Psr\Log\LoggerInterface $logger_channel_purge
+   * @param \Drupal\Core\Logger\LoggerChannelInterface $logger_channel_purge
    *   The single and central logger channel used by purge module(s).
    * @param string $id
    *   The identifier of the channel part.
@@ -32,7 +38,7 @@ interface LoggerChannelPartInterface extends LoggerInterface {
    *    - \Drupal\Core\Logger\RfcLogLevel::INFO
    *    - \Drupal\Core\Logger\RfcLogLevel::DEBUG
    */
-  public function __construct(LoggerInterface $logger_channel_purge, $id, array $grants = []);
+  public function __construct(LoggerChannelInterface $logger_channel_purge, $id, array $grants = []);
 
   /**
    * Retrieve given grants.

@@ -8,6 +8,7 @@ use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\HtmlCommand;
 use Drupal\Core\Ajax\PrependCommand;
 use Drupal\Core\Ajax\InvokeCommand;
+use Drupal\cr_email_signup\MessageQueue\Sender;
 
 /**
  * Generate Email Sign up.
@@ -22,66 +23,9 @@ abstract class SignUp extends FormBase {
   ];
 
   // Convert all this small variables into a class.
-  protected $campaign = 'RND17';
   protected $transType = 'esu';
-  protected $esulist = ['general' => 'general'];
-
-  /**
-   * Returns the queue name.
-   *
-   * @return string
-   *   The string identifying the queue.
-   */
-  abstract protected function getQueueName();
-
-  /**
-   * Fill a message for the queue service.
-   *
-   * @param array $append_message
-   *     Message to append to queue.
-   */
-  protected function fillQmessage($append_message) {
-    // Add dynamic keys.
-    $append_message['timestamp'] = time();
-    $current_path = \Drupal::service('path.current')->getPath();
-    $current_alias = \Drupal::service('path.alias_manager')->getAliasByPath($current_path);
-    $append_message['transSourceURL'] = \Drupal::request()->getHost() . $current_alias;
-    $append_message['transSource'] = "{$this->campaign}_ESU_[PageElementSource]";
-
-    // RND-178: Device & Source Replacements.
-    $source = (empty($append_message['source'])) ? "Unknown" : $append_message['source'];
-
-    $append_message['transSource'] = str_replace(
-      ['[PageElementSource]'],
-      [$source],
-      $append_message['transSource']
-    );
-
-    // Add passed arguments.
-    $append_message['campaign'] = $this->campaign;
-    $append_message['transType'] = $this->transType;
-
-    $this->sendQmessage($append_message);
-  }
-
-  /**
-   * Send a message to the queue service.
-   */
-  protected function sendQmessage($queue_message) {
-    try {
-      $queue_factory = \Drupal::service('queue');
-      $queue = $queue_factory->get($this->getQueueName());
-
-      if (FALSE === $queue->createItem($queue_message)) {
-        throw new \Exception("createItem Failed. Check Queue.");
-      }
-    }
-    catch (\Exception $exception) {
-      \Drupal::logger('cr_email_signup')->error(
-        "Unable to queue message. Attempted to queue message. Error was: " . $exception->getMessage()
-      );
-    }
-  }
+  protected $esulist = ['listname' => ['general']];
+  protected $queue_name = 'esu';
 
   /**
    * Build the Form Elements.
@@ -207,27 +151,32 @@ abstract class SignUp extends FormBase {
             'email' => $form_state->getValue('email'),
             'device' => $form_state->getValue('device'),
             'source' => $form_state->getValue('source'),
-            'lists' => $this->esulist,
           ];
+          if (!empty($this->esulist)) {
+            $data['subscribeLists'] = $this->esulist;
+          }
           if ($form_state->getValue('firstName')) {
             $data['firstName'] = $form_state->getValue('firstName');
           }
-          $this->fillQmessage($data);
+          $data['transType'] = $this->transType;
+          $sender = new Sender();
+          $sender->deliver($this->queue_name, $data);
           $this->nextStep($response, 1);
         }
         break;
 
       case 'step2':
         $email = $form_state->getValue('email');
-        $this->esulist = ['teacher' => 'teacher'];
+        $this->esulist = ['listname' => ['teacher']];
         $valid_email = \Drupal::service('email.validator')->isValid($email);
         if (!$form_state->isValueEmpty('school_phase') && $valid_email) {
-          $this->fillQmessage([
+          $sender = new Sender();
+          $sender->deliver($this->queue_name, [
             'email' => $form_state->getValue('email'),
             'phase' => $form_state->getValue('school_phase'),
             'device' => $form_state->getValue('device'),
             'source' => $form_state->getValue('source'),
-            'lists' => $this->esulist,
+            'subscribeLists' => $this->esulist,
           ]);
           $this->nextStep($response, 2);
 

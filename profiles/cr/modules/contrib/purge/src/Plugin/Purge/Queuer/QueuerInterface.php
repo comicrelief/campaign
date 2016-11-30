@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Plugin\Purge\Queuer\QueuerInterface.
+ */
+
 namespace Drupal\purge\Plugin\Purge\Queuer;
 
 use Drupal\Component\Plugin\PluginInspectionInterface;

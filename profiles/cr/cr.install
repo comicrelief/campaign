@@ -156,6 +156,20 @@ function cr_update_8017() {
 }
 
 /**
+* Install cr_video cr_media
+*/
+function cr_update_8018() {
+  \Drupal::service('module_installer')->install(['cr_content_reference']);
+}
+
+/**
+* Install cr_quote
+*/
+function cr_update_8019() {
+  \Drupal::service('module_installer')->install(['cr_quote']);
+}
+
+/**
 * Remove cr_single_message_row
 */
 function cr_update_8021() {
@@ -169,5 +183,4 @@ function cr_update_8021() {
   // Remove all config
   Drupal::configFactory()->getEditable('paragraphs.paragraphs_type.cr_single_message_row')->delete();
   Drupal::configFactory()->getEditable('field.storage.paragraph.field_single_msg_row_lr_body')->delete();
-
 }

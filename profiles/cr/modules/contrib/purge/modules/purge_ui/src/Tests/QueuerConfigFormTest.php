@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge_ui\Tests\QueuerConfigFormTest.
+ */
+
 namespace Drupal\purge_ui\Tests;
 
 use Drupal\Core\Url;
@@ -72,7 +77,7 @@ class QueuerConfigFormTest extends WebTestBase {
   /**
    * Setup the test.
    */
-  public function setUp() {
+  function setUp() {
     parent::setUp();
     $this->initializeQueuersService(['c', $this->queuer]);
     $this->urlValid = Url::fromRoute($this->route, ['id' => $this->queuer]);

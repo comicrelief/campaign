@@ -268,44 +268,43 @@ class ParagraphsCompositeRelationshipTest extends KernelTestBase {
     } while ($sandbox['#finished'] < 1);
 
     $node_paragraph1 = Paragraph::load($paragraph1->id())->toArray();
-    // Check if the fields are properly set.
-    self::assertEquals($node_paragraph1['parent_id'][0]['value'], $node->id());
-    self::assertEquals($node_paragraph1['parent_type'][0]['value'], $node->getEntityTypeId());
-    self::assertEquals($node_paragraph1['parent_field_name'][0]['value'], 'node_paragraph_field');
+    $this->assertParagraphField($node_paragraph1, $node->id(), $node->getEntityTypeId(), 'node_paragraph_field');
 
     $paragraph1_revision1 = \Drupal::entityTypeManager()->getStorage('paragraph')->loadRevision($paragraph1_revision1->getRevisionId())->toArray();
-    self::assertEquals($paragraph1_revision1['parent_id'][0]['value'], $node->id());
-    self::assertEquals($paragraph1_revision1['parent_type'][0]['value'], $node->getEntityTypeId());
-    self::assertEquals($paragraph1_revision1['parent_field_name'][0]['value'], 'node_paragraph_field');
+    $this->assertParagraphField($paragraph1_revision1, $node->id(), $node->getEntityTypeId(), 'node_paragraph_field');
 
     $paragraph1_revision2 = \Drupal::entityTypeManager()->getStorage('paragraph')->loadRevision($paragraph1_revision2->getRevisionId())->toArray();
-    self::assertEquals($paragraph1_revision2['parent_id'][0]['value'], $node->id());
-    self::assertEquals($paragraph1_revision2['parent_type'][0]['value'], $node->getEntityTypeId());
-    self::assertEquals($paragraph1_revision2['parent_field_name'][0]['value'], 'node_paragraph_field');
+    $this->assertParagraphField($paragraph1_revision2, $node->id(), $node->getEntityTypeId(), 'node_paragraph_field');
 
     $node_paragraph2 = Paragraph::load($paragraph2->id())->toArray();
-    // Check if the fields are properly set.
-    self::assertEquals($node_paragraph2['parent_id'][0]['value'], $node->id());
-    self::assertEquals($node_paragraph2['parent_type'][0]['value'], $node->getEntityTypeId());
-    self::assertEquals($node_paragraph2['parent_field_name'][0]['value'], 'node_paragraph_field');
+    $this->assertParagraphField($node_paragraph2, $node->id(), $node->getEntityTypeId(), 'node_paragraph_field');
 
     $user_paragraph = Paragraph::load($paragraph_user_1->id())->toArray();
-    // Check if the fields are properly set.
-    self::assertEquals($user_paragraph['parent_id'][0]['value'], $user->id());
-    self::assertEquals($user_paragraph['parent_type'][0]['value'], $user->getEntityTypeId());
-    self::assertEquals($user_paragraph['parent_field_name'][0]['value'], 'user_paragraph_field');
+    $this->assertParagraphField($user_paragraph, $user->id(), $user->getEntityTypeId(), 'user_paragraph_field');
 
     $nested_paragraph_parent = Paragraph::load($paragraph4_nested_parent->id())->toArray();
-    // Check if the fields are properly set.
-    self::assertEquals($nested_paragraph_parent['parent_id'][0]['value'], $node->id());
-    self::assertEquals($nested_paragraph_parent['parent_type'][0]['value'], $node->getEntityTypeId());
-    self::assertEquals($nested_paragraph_parent['parent_field_name'][0]['value'], 'node_paragraph_field');
+    $this->assertParagraphField($nested_paragraph_parent, $node->id(), $node->getEntityTypeId(), 'node_paragraph_field');
 
     $nested_paragraph_children = Paragraph::load($paragraph_nested_children1->id())->toArray();
-    // Check if the fields are properly set.
-    self::assertEquals($nested_paragraph_children['parent_id'][0]['value'], $paragraph4_nested_parent->id());
-    self::assertEquals($nested_paragraph_children['parent_type'][0]['value'], $paragraph4_nested_parent->getEntityTypeId());
-    self::assertEquals($nested_paragraph_children['parent_field_name'][0]['value'], 'nested_paragraph_field');
+    $this->assertParagraphField($nested_paragraph_children, $paragraph4_nested_parent->id(), $paragraph4_nested_parent->getEntityTypeId(), 'nested_paragraph_field');
 
+  }
+
+  /**
+   * Checks if $paragraph fields match with host / parent.
+   *
+   * @param $paragraph
+   *   The paragraph entity to check.
+   * @param $id
+   *   The parent entity id.
+   * @param $entity_type
+   *   The parent entity type.
+   * @param $field_name
+   *   The parent entity field name.
+   */
+  public function assertParagraphField($paragraph, $id, $entity_type, $field_name) {
+    self::assertEquals($paragraph['parent_id'][0]['value'], $id, 'Match parent id.');
+    self::assertEquals($paragraph['parent_type'][0]['value'], $entity_type, 'Matching parent type.');
+    self::assertEquals($paragraph['parent_field_name'][0]['value'], $field_name, 'Matching parent field name.');
   }
 }

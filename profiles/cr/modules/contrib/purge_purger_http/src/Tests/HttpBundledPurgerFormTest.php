@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge_purger_http\Tests\HttpBundledPurgerFormTest.
+ */
+
 namespace Drupal\purge_purger_http\Tests;
 
 use Drupal\purge_purger_http\Tests\HttpPurgerFormTestBase;
@@ -28,9 +33,9 @@ class HttpBundledPurgerFormTest extends HttpPurgerFormTestBase {
   /**
    * The token group names the form is supposed to display.
    *
-   * @var string[]
-   *
    * @see purge_tokens_token_info()
+   *
+   * @var string[]
    */
   protected $tokenGroups = ['invalidations'];
 

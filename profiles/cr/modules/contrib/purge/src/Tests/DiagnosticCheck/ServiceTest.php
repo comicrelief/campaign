@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge\Tests\DiagnosticCheck\ServiceTest.
+ */
+
 namespace Drupal\purge\Tests\DiagnosticCheck;
 
 use Drupal\Core\StringTranslation\TranslatableMarkup;
@@ -21,7 +26,7 @@ class ServiceTest extends KernelServiceTestBase {
     'purge_processor_test',
     'purge_check_test',
     'purge_check_error_test',
-    'purge_check_warning_test',
+    'purge_check_warning_test'
   ];
 
   /**
@@ -52,7 +57,7 @@ class ServiceTest extends KernelServiceTestBase {
   /**
    * Set up the test.
    */
-  public function setUp() {
+  function setUp() {
 
     // Skip parent::setUp() as we don't want the service initialized here.
     KernelServiceTestBase::setUp();
@@ -100,7 +105,7 @@ class ServiceTest extends KernelServiceTestBase {
   public function testCount() {
     $this->initializeService();
     $this->assertTrue($this->service instanceof \Countable);
-    $this->assertEqual(11, count($this->service));
+    $this->assertEqual(9, count($this->service));
   }
 
   /**
@@ -114,21 +119,20 @@ class ServiceTest extends KernelServiceTestBase {
    */
   public function testIteration() {
     $this->initializeService();
-    $this->assertIterator('\Drupal\purge\Plugin\Purge\DiagnosticCheck\DiagnosticCheckInterface',
-      [
-        'queuersavailable',
-        'purgersavailable',
-        'maxage',
-        'capacity',
-        'processorsavailable',
-        'memoryqueuewarning',
-        'page_cache',
-        'alwaysok',
-        'alwaysinfo',
-        'alwayserror',
-        'alwayswarning',
-      ]
-    );
+    $this->assertTrue($this->service instanceof \Iterator);
+    $items = 0;
+    foreach ($this->service as $instance) {
+      $this->assertTrue($instance instanceof DiagnosticCheckInterface);
+      $items++;
+    }
+    $this->assertEqual(9, $items);
+    $this->assertFalse($this->service->current());
+    $this->assertFalse($this->service->valid());
+    $this->assertNull($this->service->rewind());
+    $this->assertEqual('capacity', $this->service->current()->getPluginId());
+    $this->assertNull($this->service->next());
+    $this->assertEqual('processorsavailable', $this->service->current()->getPluginId());
+    $this->assertTrue($this->service->valid());
   }
 
   /**
@@ -138,7 +142,7 @@ class ServiceTest extends KernelServiceTestBase {
     $this->initializeRequirementSeverities();
     $this->initializeService();
     $requirements = $this->service->getHookRequirementsArray();
-    $this->assertEqual(11, count($requirements));
+    $this->assertEqual(9, count($requirements));
     foreach ($requirements as $id => $requirement) {
       $this->assertTrue(is_string($id));
       $this->assertFalse(empty($id));
@@ -157,8 +161,7 @@ class ServiceTest extends KernelServiceTestBase {
     $this->initializePurgersService(['ida' => 'a']);
     $this->service->reload();
     $this->assertTrue($this->service->isSystemOnFire() instanceof DiagnosticCheckInterface);
-    $possibilities = ['alwayserror', 'maxage'];
-    $this->assertTrue(in_array($this->service->isSystemOnFire()->getPluginId(), $possibilities));
+    $this->assertEqual('alwayserror', $this->service->isSystemOnFire()->getPluginId());
   }
 
   /**
@@ -166,7 +169,7 @@ class ServiceTest extends KernelServiceTestBase {
    */
   public function testIsSystemShowingSmoke() {
     $this->assertTrue($this->service->isSystemShowingSmoke() instanceof DiagnosticCheckInterface);
-    $possibilities = ['alwayswarning', 'capacity', 'queuersavailable', 'page_cache'];
+    $possibilities = ['alwayswarning', 'capacity', 'queuersavailable'];
     $this->assertTrue(in_array($this->service->isSystemShowingSmoke()->getPluginId(), $possibilities));
   }
 

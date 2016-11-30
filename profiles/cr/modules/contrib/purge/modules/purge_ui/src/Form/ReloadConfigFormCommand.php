@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\purge_ui\Form\ReloadConfigFormCommand.
+ */
+
 namespace Drupal\purge_ui\Form;
 
 use Drupal\Core\Url;

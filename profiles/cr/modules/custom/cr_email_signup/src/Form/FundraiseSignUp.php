@@ -7,20 +7,13 @@ namespace Drupal\cr_email_signup\Form;
  */
 class FundraiseSignUp extends SignUp {
 
-  protected $esulist = ['general' => 'general'];
+  protected $esulist = ['listname' => ['general']];
 
   /**
    * Get the Form Identifier.
    */
   public function getFormId() {
     return 'cr_email_signup_fundraise_form';
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getQueueName() {
-    return 'esu';
   }
 
   /**

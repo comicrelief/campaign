@@ -221,14 +221,15 @@ class InlineParagraphsWidget extends WidgetBase {
 
       if (!$this->isTranslating) {
         // Set the langcode if we are not translating.
-        if ($paragraphs_entity->get('langcode') != $langcode) {
+        $langcode_key = $paragraphs_entity->getEntityType()->getKey('langcode');
+        if ($paragraphs_entity->get($langcode_key)->value != $langcode) {
           // If a translation in the given language already exists, switch to
           // that. If there is none yet, update the language.
           if ($paragraphs_entity->hasTranslation($langcode)) {
             $paragraphs_entity = $paragraphs_entity->getTranslation($langcode);
           }
           else {
-            $paragraphs_entity->set('langcode', $langcode);
+            $paragraphs_entity->set($langcode_key, $langcode);
           }
         }
       }
@@ -830,7 +831,7 @@ class InlineParagraphsWidget extends WidgetBase {
             );
             if ($drop_button) {
               $elements['add_more']['add_more_button_' . $machine_name]['#prefix'] = '<li>';
-              $elements['add_more']['add_more_button_' . $machine_name]['#suffix'] = '<li>';
+              $elements['add_more']['add_more_button_' . $machine_name]['#suffix'] = '</li>';
             }
           }
         }
@@ -1082,19 +1083,21 @@ class InlineParagraphsWidget extends WidgetBase {
 
         /** @var \Drupal\Core\Entity\Display\EntityFormDisplayInterface $display */
         $display =  $widget_state['paragraphs'][$item['_original_delta']]['display'];
-        $display->extractFormValues($paragraphs_entity, $element[$item['_original_delta']]['subform'], $form_state);
-
+        if ($widget_state['paragraphs'][$delta]['mode'] == 'edit') {
+          $display->extractFormValues($paragraphs_entity, $element[$item['_original_delta']]['subform'], $form_state);
+        }
         $paragraphs_entity->setNewRevision($new_revision);
         // A content entity form saves without any rebuild. It needs to set the
         // language to update it in case of language change.
-        if ($paragraphs_entity->get('langcode') != $form_state->get('langcode')) {
+        $langcode_key = $paragraphs_entity->getEntityType()->getKey('langcode');
+        if ($paragraphs_entity->get($langcode_key)->value != $form_state->get('langcode')) {
           // If a translation in the given language already exists, switch to
           // that. If there is none yet, update the language.
           if ($paragraphs_entity->hasTranslation($form_state->get('langcode'))) {
             $paragraphs_entity = $paragraphs_entity->getTranslation($form_state->get('langcode'));
           }
           else {
-            $paragraphs_entity->set('langcode', $form_state->get('langcode'));
+            $paragraphs_entity->set($langcode_key, $form_state->get('langcode'));
           }
         }
         $paragraphs_entity->setNeedsSave(TRUE);

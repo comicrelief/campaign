@@ -52,7 +52,9 @@ projects:
     version: 1.0-alpha3
   # Layout modules
   inline_entity_form:
-    version: 1.0-alpha6
+    download:
+      branch: 1.x-dev
+      revision: 44c5cfc
   layout_plugin:
     version: 1.0-alpha23
   page_manager:
@@ -68,7 +70,9 @@ projects:
   field_group:
     version: 1.0-rc4
   entity_reference_revisions:
-    version: 1.0
+    download:
+      version: 1.x-dev
+      revision: c1941b7
   view_modes_display:
     version: 1.x-dev
   social_links:
@@ -120,7 +124,9 @@ projects:
   #crop:
   #  version: 1.0-rc1
   paragraphs:
-    version: 1.0
+    download:
+      version: 1.x-dev
+      revision: 99a6673
   # Forms
   yamlform:
     version: 1.0-alpha5
@@ -147,6 +153,9 @@ projects:
       branch: 8.x-1.x
       revision: 6a3c3e7
       url: https://github.com/mikeyp/google_tag.git
+    patch:
+      # See: https://github.com/mikeyp/google_tag/pull/8
+      new_format: https://patch-diff.githubusercontent.com/raw/mikeyp/google_tag/pull/8.patch
   optimizely:
     version: 2.15-rc1
   simple_sitemap:
@@ -179,4 +188,9 @@ libraries:
     download:
       type: "get"
       url: https://github.com/cbopp-art/lightcase/archive/v2.3.4.zip
+    destination: "themes/custom/campaign_base/libraries"
+  modernizr:
+    download:
+      type: "get"
+      url: https://raw.githubusercontent.com/comicrelief/campaign-modernizr/master/modernizr-custom.js
     destination: "themes/custom/campaign_base/libraries"
