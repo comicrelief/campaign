@@ -20,13 +20,6 @@ class WorkplaceSignUp extends SignUp {
   /**
    * {@inheritdoc}
    */
-  public function getQueueName() {
-    return 'esu';
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   protected function esuSubmitFields() {
     $form['step1'] = [
       '#type' => 'button',
