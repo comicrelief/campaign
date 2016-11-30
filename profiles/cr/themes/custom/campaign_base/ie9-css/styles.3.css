@@ -298,6 +298,81 @@
   color: #fbef51;
 }
 
+.story__fundraiser-wrapper.bg--white .story__beneficiary-title h3,
+.story__fundraiser-wrapper.bg--white .story__beneficiary-title .block--cr-email-signup .cr-email-signup--messages .esu-title-message p,
+.block--cr-email-signup .cr-email-signup--messages .esu-title-message .story__fundraiser-wrapper.bg--white .story__beneficiary-title p,
+.story__fundraiser-wrapper.bg--white .story__beneficiary-title .block--cr-email-signup .cr-email-signup--messages .esu-title-message .view-search .search__total,
+.block--cr-email-signup .cr-email-signup--messages .esu-title-message .view-search .story__fundraiser-wrapper.bg--white .story__beneficiary-title .search__total,
+.story__fundraiser-wrapper.bg--white .story__beneficiary-title .view-search .block--cr-email-signup .cr-email-signup--messages .esu-title-message .search__total,
+.view-search .block--cr-email-signup .cr-email-signup--messages .esu-title-message .story__fundraiser-wrapper.bg--white .story__beneficiary-title .search__total,
+.story__fundraiser-wrapper.bg--white .story__beneficiary-title .block--cr-email-signup .cr-email-signup--messages .esu-title-message .view-search .search__start-end,
+.block--cr-email-signup .cr-email-signup--messages .esu-title-message .view-search .story__fundraiser-wrapper.bg--white .story__beneficiary-title .search__start-end,
+.story__fundraiser-wrapper.bg--white .story__beneficiary-title .view-search .block--cr-email-signup .cr-email-signup--messages .esu-title-message .search__start-end,
+.view-search .block--cr-email-signup .cr-email-signup--messages .esu-title-message .story__fundraiser-wrapper.bg--white .story__beneficiary-title .search__start-end,
+.story__fundraiser-wrapper.bg--white .story__beneficiary-title span,
+.story__fundraiser-wrapper.bg--white .story__beneficiary-title p,
+.story__fundraiser-wrapper.bg--white .story__beneficiary-title .view-search .search__total,
+.view-search .story__fundraiser-wrapper.bg--white .story__beneficiary-title .search__total,
+.story__fundraiser-wrapper.bg--white .story__beneficiary-title .view-search .search__start-end,
+.view-search .story__fundraiser-wrapper.bg--white .story__beneficiary-title .search__start-end,
+.story__fundraiser-wrapper.bg--white .story__beneficiary-title a,
+.story__fundraiser-wrapper.bg--white .story__beneficiary-body h3,
+.story__fundraiser-wrapper.bg--white .story__beneficiary-body .block--cr-email-signup .cr-email-signup--messages .esu-title-message p,
+.block--cr-email-signup .cr-email-signup--messages .esu-title-message .story__fundraiser-wrapper.bg--white .story__beneficiary-body p,
+.story__fundraiser-wrapper.bg--white .story__beneficiary-body .block--cr-email-signup .cr-email-signup--messages .esu-title-message .view-search .search__total,
+.block--cr-email-signup .cr-email-signup--messages .esu-title-message .view-search .story__fundraiser-wrapper.bg--white .story__beneficiary-body .search__total,
+.story__fundraiser-wrapper.bg--white .story__beneficiary-body .view-search .block--cr-email-signup .cr-email-signup--messages .esu-title-message .search__total,
+.view-search .block--cr-email-signup .cr-email-signup--messages .esu-title-message .story__fundraiser-wrapper.bg--white .story__beneficiary-body .search__total,
+.story__fundraiser-wrapper.bg--white .story__beneficiary-body .block--cr-email-signup .cr-email-signup--messages .esu-title-message .view-search .search__start-end,
+.block--cr-email-signup .cr-email-signup--messages .esu-title-message .view-search .story__fundraiser-wrapper.bg--white .story__beneficiary-body .search__start-end,
+.story__fundraiser-wrapper.bg--white .story__beneficiary-body .view-search .block--cr-email-signup .cr-email-signup--messages .esu-title-message .search__start-end,
+.view-search .block--cr-email-signup .cr-email-signup--messages .esu-title-message .story__fundraiser-wrapper.bg--white .story__beneficiary-body .search__start-end,
+.story__fundraiser-wrapper.bg--white .story__beneficiary-body span,
+.story__fundraiser-wrapper.bg--white .story__beneficiary-body p,
+.story__fundraiser-wrapper.bg--white .story__beneficiary-body .view-search .search__total,
+.view-search .story__fundraiser-wrapper.bg--white .story__beneficiary-body .search__total,
+.story__fundraiser-wrapper.bg--white .story__beneficiary-body .view-search .search__start-end,
+.view-search .story__fundraiser-wrapper.bg--white .story__beneficiary-body .search__start-end,
+.story__fundraiser-wrapper.bg--white .story__beneficiary-body a,
+.story__beneficiary-wrapper.bg--white .story__beneficiary-title h3,
+.story__beneficiary-wrapper.bg--white .story__beneficiary-title .block--cr-email-signup .cr-email-signup--messages .esu-title-message p,
+.block--cr-email-signup .cr-email-signup--messages .esu-title-message .story__beneficiary-wrapper.bg--white .story__beneficiary-title p,
+.story__beneficiary-wrapper.bg--white .story__beneficiary-title .block--cr-email-signup .cr-email-signup--messages .esu-title-message .view-search .search__total,
+.block--cr-email-signup .cr-email-signup--messages .esu-title-message .view-search .story__beneficiary-wrapper.bg--white .story__beneficiary-title .search__total,
+.story__beneficiary-wrapper.bg--white .story__beneficiary-title .view-search .block--cr-email-signup .cr-email-signup--messages .esu-title-message .search__total,
+.view-search .block--cr-email-signup .cr-email-signup--messages .esu-title-message .story__beneficiary-wrapper.bg--white .story__beneficiary-title .search__total,
+.story__beneficiary-wrapper.bg--white .story__beneficiary-title .block--cr-email-signup .cr-email-signup--messages .esu-title-message .view-search .search__start-end,
+.block--cr-email-signup .cr-email-signup--messages .esu-title-message .view-search .story__beneficiary-wrapper.bg--white .story__beneficiary-title .search__start-end,
+.story__beneficiary-wrapper.bg--white .story__beneficiary-title .view-search .block--cr-email-signup .cr-email-signup--messages .esu-title-message .search__start-end,
+.view-search .block--cr-email-signup .cr-email-signup--messages .esu-title-message .story__beneficiary-wrapper.bg--white .story__beneficiary-title .search__start-end,
+.story__beneficiary-wrapper.bg--white .story__beneficiary-title span,
+.story__beneficiary-wrapper.bg--white .story__beneficiary-title p,
+.story__beneficiary-wrapper.bg--white .story__beneficiary-title .view-search .search__total,
+.view-search .story__beneficiary-wrapper.bg--white .story__beneficiary-title .search__total,
+.story__beneficiary-wrapper.bg--white .story__beneficiary-title .view-search .search__start-end,
+.view-search .story__beneficiary-wrapper.bg--white .story__beneficiary-title .search__start-end,
+.story__beneficiary-wrapper.bg--white .story__beneficiary-title a,
+.story__beneficiary-wrapper.bg--white .story__beneficiary-body h3,
+.story__beneficiary-wrapper.bg--white .story__beneficiary-body .block--cr-email-signup .cr-email-signup--messages .esu-title-message p,
+.block--cr-email-signup .cr-email-signup--messages .esu-title-message .story__beneficiary-wrapper.bg--white .story__beneficiary-body p,
+.story__beneficiary-wrapper.bg--white .story__beneficiary-body .block--cr-email-signup .cr-email-signup--messages .esu-title-message .view-search .search__total,
+.block--cr-email-signup .cr-email-signup--messages .esu-title-message .view-search .story__beneficiary-wrapper.bg--white .story__beneficiary-body .search__total,
+.story__beneficiary-wrapper.bg--white .story__beneficiary-body .view-search .block--cr-email-signup .cr-email-signup--messages .esu-title-message .search__total,
+.view-search .block--cr-email-signup .cr-email-signup--messages .esu-title-message .story__beneficiary-wrapper.bg--white .story__beneficiary-body .search__total,
+.story__beneficiary-wrapper.bg--white .story__beneficiary-body .block--cr-email-signup .cr-email-signup--messages .esu-title-message .view-search .search__start-end,
+.block--cr-email-signup .cr-email-signup--messages .esu-title-message .view-search .story__beneficiary-wrapper.bg--white .story__beneficiary-body .search__start-end,
+.story__beneficiary-wrapper.bg--white .story__beneficiary-body .view-search .block--cr-email-signup .cr-email-signup--messages .esu-title-message .search__start-end,
+.view-search .block--cr-email-signup .cr-email-signup--messages .esu-title-message .story__beneficiary-wrapper.bg--white .story__beneficiary-body .search__start-end,
+.story__beneficiary-wrapper.bg--white .story__beneficiary-body span,
+.story__beneficiary-wrapper.bg--white .story__beneficiary-body p,
+.story__beneficiary-wrapper.bg--white .story__beneficiary-body .view-search .search__total,
+.view-search .story__beneficiary-wrapper.bg--white .story__beneficiary-body .search__total,
+.story__beneficiary-wrapper.bg--white .story__beneficiary-body .view-search .search__start-end,
+.view-search .story__beneficiary-wrapper.bg--white .story__beneficiary-body .search__start-end,
+.story__beneficiary-wrapper.bg--white .story__beneficiary-body a {
+  color: #fff;
+}
+
 .teaser-block {
   position: relative;
   overflow: hidden;
@@ -325,18 +400,29 @@
     margin-bottom: 0;
   }
 
-  .block-content--view-mode-cw-mp .teaser-block__image,
-  .block-content--view-mode-cw-l .teaser-block__image {
-    float: left;
+  .block-content--view-mode-cw-s .teaser-block__image,
+  .block-content--view-mode-cw-m .teaser-block__image {
+    height: 45%;
+  }
+
+  .block-content--view-mode-cw-mp .teaser-block__image {
+    height: 55%;
+    float: right;
   }
 
   .block-content--view-mode-cw-l .teaser-block__image {
-    width: 60%;
+    width: 65%;
     height: 450px;
+    float: right;
   }
 }
 
 @media (min-width: 1024px) {
+  .block-content--view-mode-cw-s .teaser-block__image,
+  .block-content--view-mode-cw-m .teaser-block__image {
+    height: 50%;
+  }
+
   .block-content--view-mode-cw-mp .teaser-block__image {
     width: 60%;
     height: 450px;
@@ -351,8 +437,6 @@
 .teaser-block__image img {
   display: block;
   width: 100%;
-  width: 100%;
-  height: auto;
   height: 100%;
   margin-bottom: -5px;
   object-fit: cover;
@@ -375,8 +459,6 @@
 .teaser-block__body {
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
-  -webkit-flex-flow: column nowrap;
-  flex-flow: column nowrap;
   -webkit-align-content: center;
   align-content: center;
   -webkit-justify-content: center;
@@ -392,18 +474,32 @@
 }
 
 @media (min-width: 740px) {
+  .block-content--view-mode-cw-s .teaser-block__body,
+  .block-content--view-mode-cw-m .teaser-block__body {
+    height: 55%;
+  }
+
+  .block-content--view-mode-cw-mp .teaser-block__body {
+    height: 45%;
+  }
+
   .block-content--view-mode-cw-mp .teaser-block__body,
   .block-content--view-mode-cw-l .teaser-block__body {
-    float: left;
+    float: right;
   }
 
   .block-content--view-mode-cw-l .teaser-block__body {
-    width: 40%;
+    width: 35%;
     height: 450px;
   }
 }
 
 @media (min-width: 1024px) {
+  .block-content--view-mode-cw-s .teaser-block__body,
+  .block-content--view-mode-cw-m .teaser-block__body {
+    height: 50%;
+  }
+
   .block-content--view-mode-cw-mp .teaser-block__body {
     width: 40%;
     height: 450px;
@@ -434,23 +530,17 @@
   height: 100%;
 }
 
-@media (max-width: 739px) {
-  .teaser-block {
-    padding: 0 calc(4 * 1.25%) calc(4 * 1.25%);
-  }
-}
-
 ul li {
   font-size: 1em;
 }
 
-.node__content ul {
+.cr-body ul {
   list-style: none;
   padding: 0 0 0 20px;
   margin: 15px 0;
 }
 
-.node__content ul li {
+.cr-body ul li {
   font-size: 16px;
   line-height: 22px;
   list-style: none;
@@ -459,21 +549,21 @@ ul li {
 }
 
 @media (min-width: 740px) {
-  .node__content ul li {
+  .cr-body ul li {
     font-size: 18px;
     line-height: 24px;
   }
 }
 
 @media (min-width: 1024px) {
-  .node__content ul li {
+  .cr-body ul li {
     font-size: 18px;
     line-height: 24px;
   }
 }
 
-.node__content ul li:before {
-  content: "o";
+.cr-body ul li:before {
+  content: '\25CF';
   color: #f04257;
   left: -3px;
   padding: 0 16px 0 0;
@@ -481,13 +571,13 @@ ul li {
   top: 0;
 }
 
-.node__content ol {
+.cr-body ol {
   padding: 0 0 0 35px;
   margin: 15px 0;
   list-style-type: decimal;
 }
 
-.node__content ol li {
+.cr-body ol li {
   font-size: 16px;
   line-height: 22px;
   padding: 0 0 0 15px;
@@ -495,14 +585,14 @@ ul li {
 }
 
 @media (min-width: 740px) {
-  .node__content ol li {
+  .cr-body ol li {
     font-size: 18px;
     line-height: 24px;
   }
 }
 
 @media (min-width: 1024px) {
-  .node__content ol li {
+  .cr-body ol li {
     font-size: 18px;
     line-height: 24px;
   }

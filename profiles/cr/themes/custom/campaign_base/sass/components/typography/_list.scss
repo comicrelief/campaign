@@ -20,29 +20,29 @@ ul {
 	}
 }
 
-	ul.list {
+.cr-body ul {
+	list-style: none;
+	padding: 0 0 0 20px;
+	margin: 15px 0;
+
+	li {
+		@include font-size($p-font-size);
 		list-style: none;
-		padding: 0 0 0 20px;
-		margin: 15px 0;
+		padding: 0 0 0 30px;
+		position: relative;
 
-		li {
-			@include font-size($p-font-size);
-			list-style: none;
-			padding: 0 0 0 30px;
-			position: relative;
-
-			&:before {
-    		content: '\25CF';
-				color: $colour-red;
-				left: -3px;
-		    padding: 0 16px 0 0;
-		    position: absolute;
-		    top: 0;
-			}
+		&:before {
+   		content: '\25CF';
+			color: $colour-red;
+			left: -3px;
+	    padding: 0 16px 0 0;
+	    position: absolute;
+	    top: 0;
 		}
 	}
+}
 
-	ol.list {
+.cr-body ol {
     padding: 0 0 0 35px;
     margin: 15px 0;
     list-style-type: decimal;
@@ -51,6 +51,5 @@ ul {
 			@include font-size($p-font-size);
 			padding: 0 0 0 15px;
 			position: relative;
-		}
 	}
-
+}
