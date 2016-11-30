@@ -3,7 +3,7 @@ status: true
 dependencies: {  }
 id: editor
 label: 'Editor user'
-weight: 1
+weight: -8
 is_admin: false
 permissions:
   - 'access content'
@@ -112,3 +112,5 @@ permissions:
   - 'administer redirects'
   - 'access media_entity_browser entity browser pages'
   - 'administer files'
+  - 'administer pathauto'
+  - 'notify of path changes'
