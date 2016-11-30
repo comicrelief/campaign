@@ -42,18 +42,13 @@ Feature: Landing-page
     Given I am logged in as a user with the "Editor user" role
     And I am viewing a "landing" content with "Test landing page" title and "http://dummyimage.com/600x16:9" image and "<h1>Behat or Liv?</h1><h2>Spot the five differences!</h2>" body and with the following paragraphs:
       | type | title | image | body | variant | bg_color | featured | image_right |
-      | cr_single_message_row | SMR Title | http://dummyimage.com/400x16:9 | Title above image right | title-above-image-right | | | |
-      | cr_single_message_row | SMR Title 2 | http://dummyimage.com/400x16:9 | Title inside image left | title-inside-image-left | | | |
-      | cr_single_message_row | SMR Title 3 | http://dummyimage.com/400x16:9 | Centre image below | centre-image-below | | | |
-      | cr_single_message_row | SMR Title 4 | http://dummyimage.com/400x16:9 | Centre image above | centre-image-above | | | |
-      | cr_single_message_row | SMR Title 5 | | Centred, text only, image optional | centre-text-only | | | |
       | cr_rich_text_paragraph | | http://dummyimage.com/400x16:9 | <h2>Rich text bg title</h2> <p>Rich text paragraph body </p> | | | | |
       | single_msg | Single Message 1 | http://dummyimage.com/400x16:9 | SMR 1 with cream grey background | | bg--gainsboro-grey | 0 | 0 |
       | single_msg | Single Message 2 | http://dummyimage.com/400x16:9 | SMR 2 with white background | | bg--white | 1 | 1 |
     # And I break
     Then I should see "Behat or Liv?"
     And I should see "Rich text paragraph"
-    And I should see "SMR Title"
+    And I should see "Single Message 1"
     And I should see "Title above image right"
     And I should see "Centred, text only, image optional"
     And I am on "/test-landing-page"
