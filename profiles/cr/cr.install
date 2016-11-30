@@ -168,18 +168,3 @@ function cr_update_8018() {
 function cr_update_8019() {
   \Drupal::service('module_installer')->install(['cr_quote']);
 }
-
-/**
-* Remove cr_single_message_row
-*/
-function cr_update_8020() {
-  // We need to import the updated config before running update hooks in this instance.
-  drush_invoke_process('@self', 'cim', array("-y","--partial"));
-  // Remove any orphaned paragraphs
-  $result = \Drupal::entityQuery('paragraph')
-       ->condition('type', 'cr_single_message_row')
-       ->execute();
-   entity_delete_multiple('paragraph', $result);
-  // Disable the containing module
-  \Drupal::service('module_installer')->uninstall(['cr_single_message_row_paragraph']);
-}
