@@ -3,8 +3,8 @@ name: Optimizely
 type: module
 # core: 8.x
 
-# This value for the description key is broken across multiple 
-# lines to demonstrate how it's done and for better display 
+# This value for the description key is broken across multiple
+# lines to demonstrate how it's done and for better display
 # in the blog.
 description: >
   Manages loading Optimizely generated project
@@ -13,16 +13,16 @@ description: >
 package: A/B Testing
 php: 5.4
 # project: optimizely
-# version: 8.x-2.15-rc1
+# version: 8.x-1.1
 
-# The configure property specifies a route name, 
+# The configure property specifies a route name,
 # which is defined in the .routing.yml file.
 configure: optimizely.settings
 
 # files[] are no longer needed because of autoloading.
 
-# Information added by Drupal.org packaging script on 2015-12-21
-version: '8.x-2.15-rc1'
+# Information added by Drupal.org packaging script on 2016-11-24
+version: '8.x-1.1'
 core: '8.x'
 project: 'optimizely'
-datestamp: 1450739340
+datestamp: 1479950284
