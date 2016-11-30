@@ -63,7 +63,7 @@ settings:
     language:
       language_list: un
     stylescombo:
-      styles: "a.btn.btn--red|Red Button\r\na.btn.btn--blue|Blue Button\r\na.btn.btn--green|Green Button\r\na.btn.btn--teal|Teal Button\r\na.btn.btn--royal-blue|Royal Blue Button\r\na.btn.btn--purple|Purple Button\r\na.btn.btn--pink|Pink Button\r\na.btn.btn--white|White Button\r\na.link.link--red|Red Link\r\na.link.link--blue|Blue Link\r\na.link.link--green|Green Link\r\na.link.link--teal|Teal Link\r\na.link.link--royal-blue|Royal Blue Link\r\na.link.link--purple|Purple Link\r\na.link.link--pink|Pink Link\r\na.link.link--white|White Link\r\na.link.link--jasper-grey|Jasper grey Link\r\na.link.link--gainsboro-grey|Gainsboro grey Link\r\na.link.link--light-grey|Light grey Link\r\na.link.link--smoke-grey|Smoke grey Link"
+      styles: "a.btn.btn--red|Red Button\r\na.btn.btn--blue|Blue Button\r\na.btn.btn--green|Green Button\r\na.btn.btn--teal|Teal Button\r\na.btn.btn--royal-blue|Royal Blue Button\r\na.btn.btn--purple|Purple Button\r\na.btn.btn--pink|Pink Button\r\na.btn.btn--white|White Button\r\na.link.link--red|Red Link\r\na.link.link--blue|Blue Link\r\na.link.link--green|Green Link\r\na.link.link--teal|Teal Link\r\na.link.link--royal-blue|Royal Blue Link\r\na.link.link--purple|Purple Link\r\na.link.link--pink|Pink Link\r\na.link.link--white|White Link\r\na.link.link--jasper-grey|Jasper grey Link\r\na.link.link--gainsboro-grey|Gainsboro grey Link\r\na.link.link--light-grey|Light grey Link\r\na.link.link--smoke-grey|Smoke grey Link\r\nul.list|Unordered listr\nol.list|Ordered list"
 image_upload:
   status: true
   scheme: public
