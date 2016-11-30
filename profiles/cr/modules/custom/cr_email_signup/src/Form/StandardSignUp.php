@@ -17,13 +17,6 @@ class StandardSignUp extends SignUp {
   /**
    * {@inheritdoc}
    */
-  public function getQueueName() {
-    return 'esu';
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   protected function esuContentFields() {
     $form['school_phase'] = [
       '#type' => 'select',
