@@ -173,5 +173,5 @@ function cr_update_8019() {
 * Install twig_tweak
 */
 function cr_update_8020() {
-  \Drupal::service('module_installer')->install(['twig_tweak']);
+  \Drupal::service('module_installer')->install(['twig_tweak', 'field_group']);
 }
