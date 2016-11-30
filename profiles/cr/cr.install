@@ -174,7 +174,7 @@ function cr_update_8019() {
 */
 function cr_update_8020() {
   // We need to import the updated config before running update hooks in this instance.
-  drush_invoke_process('@self', 'drush cim', array("-y","--partial"));
+  drush_invoke_process('@self', 'cim', array("-y","--partial"));
   // Remove any orphaned paragraphs
   $result = \Drupal::entityQuery('paragraph')
        ->condition('type', 'cr_single_message_row')
