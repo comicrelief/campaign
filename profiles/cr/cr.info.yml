@@ -53,6 +53,7 @@ dependencies:
   - video_embed_wysiwyg
   - filter
   - metatag_open_graph
+  - metatag_verification
   - pathauto
   - redirect
   - view_modes_display
