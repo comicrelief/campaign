@@ -1,13 +1,14 @@
 langcode: en
 status: true
 dependencies:
-  enforced:
-    module:
-      - cr_single_message_row_paragraph
   module:
     - file
     - image
     - paragraphs
+    - cr_single_message_row_paragraph
+  enforced:
+    module:
+      - cr_single_message_row_paragraph
 id: paragraph.field_single_msg_row_lr_image
 field_name: field_single_msg_row_lr_image
 entity_type: paragraph

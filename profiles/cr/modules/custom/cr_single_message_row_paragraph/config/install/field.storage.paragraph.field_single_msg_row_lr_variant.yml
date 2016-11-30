@@ -1,12 +1,13 @@
 langcode: en
 status: true
 dependencies:
-  enforced:
-    module:
-      - cr_single_message_row_paragraph
   module:
     - options
     - paragraphs
+    - cr_single_message_row_paragraph
+  enforced:
+    module:
+      - cr_single_message_row_paragraph
 id: paragraph.field_single_msg_row_lr_variant
 field_name: field_single_msg_row_lr_variant
 entity_type: paragraph

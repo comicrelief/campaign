@@ -1,12 +1,13 @@
 langcode: en
 status: true
 dependencies:
-  enforced:
-    module:
-      - cr_single_message_row_paragraph
   config:
     - field.storage.paragraph.field_single_msg_row_lr_title
     - paragraphs.paragraphs_type.cr_single_message_row
+    - cr_single_message_row_paragraph
+  enforced:
+    module:
+      - cr_single_message_row_paragraph
 id: paragraph.cr_single_message_row.field_single_msg_row_lr_title
 field_name: field_single_msg_row_lr_title
 entity_type: paragraph

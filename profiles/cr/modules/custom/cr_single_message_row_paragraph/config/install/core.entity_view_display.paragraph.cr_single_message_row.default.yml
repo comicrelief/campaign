@@ -1,9 +1,6 @@
 langcode: en
 status: true
 dependencies:
-  enforced:
-    module:
-      - cr_single_message_row_paragraph
   config:
     - field.field.paragraph.cr_single_message_row.field_single_msg_row_lr_body
     - field.field.paragraph.cr_single_message_row.field_single_msg_row_lr_image
@@ -14,6 +11,10 @@ dependencies:
     - options
     - responsive_image
     - text
+    - cr_single_message_row_paragraph
+  enforced:
+    module:
+      - cr_single_message_row_paragraph
 id: paragraph.cr_single_message_row.default
 targetEntityType: paragraph
 bundle: cr_single_message_row
