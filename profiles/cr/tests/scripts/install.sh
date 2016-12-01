@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 # HHVM env is broken: https://github.com/travis-ci/travis-ci/issues/2523.
 PHP_VERSION=`phpenv version-name`
 if [ "$PHP_VERSION" = "hhvm" ]
