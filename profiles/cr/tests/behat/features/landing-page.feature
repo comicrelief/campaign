@@ -49,12 +49,14 @@ Feature: Landing-page
     Then I should see "Behat or Liv?"
     And I should see "Rich text paragraph"
     And I should see "Single Message 1"
+    And I should see "Title above image right"
+    And I should see "Centred, text only, image optional"
     And I am on "/test-landing-page"
     And I click "Edit"
     And I select "Partner list" from "field_paragraphs[add_more][add_more_select]"
     And I press the "Add another Row component" button
     And I press the "Add existing Partner" button
-    And I fill in "field_paragraphs[8][subform][field_partner_list][form][entity_id]" with "Three (4)"
+    And I fill in "field_paragraphs[3][subform][field_partner_list][form][entity_id]" with "Three (4)"
     And I press the "Add Partner" button
     And I press the "Save and keep published" button
     Then I should see the image "sites/default/files/partner/logo/3_49_82.gif"
