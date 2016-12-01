@@ -17,12 +17,12 @@ class PathChecker {
 
   /**
    * validatePaths()
-   * 
+   *
    * Validate the target paths.
    *
-   * @parm $target_paths
+   * @param $target_paths
    *   An array of the paths to validate.
-   * @parm $include
+   * @param $include
    *   Boolean, TRUE if the paths are included or FALSE for exclude paths
    *
    * @return
@@ -36,12 +36,12 @@ class PathChecker {
       // Check for sitewide wildcard
       if (strpos($path, '*') === 0) {
 
-        if (count($project_paths) == 1) {
-          return TRUE;
-        }
-        else {
+        // Must be just the wildcard itself with nothing trailing.
+        if ($path != '*') {
           return $path;
         }
+
+        return (count($project_paths) == 1) ? TRUE : $path;
 
       } // Path wildcards
       elseif (strpos($path, '*') !== FALSE) {
@@ -96,10 +96,10 @@ class PathChecker {
   /*
    * Compare target path against the project paths to confirm they're unique
    *
-   * @parm
+   * @param
    *   $target_paths - the paths entered for a new project entry, OR
    *   the paths of an existing project entry that has been enabled.
-   * @parm
+   * @param
    *   $target_oid = NULL : the oid of the project entry that has been enabled
    *
    * @return
@@ -208,11 +208,11 @@ class PathChecker {
   /*
    * Lookup all alternatives to the group of paths - alias, <front>
    *
-   * @parm
+   * @param
    *   $paths - a set of paths to be reviewed for alternatives
    *
    * @return
-   *   $paths - an updated list of paths that include the additional source and alias values. 
+   *   $paths - an updated list of paths that include the additional source and alias values.
    */
   private static function collectAlias($paths) {
 
@@ -249,11 +249,11 @@ class PathChecker {
   /*
    * Compare paths within passed array to ensure each item resolves to a unique entry
    *
-   * @parm
+   * @param
    *   $paths - a set of paths to be reviewed for uniqueness
    *
    * @return
-   *   FALSE if no duplicates found otherwaise the dusplicate path is returned. 
+   *   FALSE if no duplicates found, otherwise the duplicate path is returned.
    */
   private static function duplicateCheck($paths) {
 
