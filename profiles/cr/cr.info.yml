@@ -88,7 +88,6 @@ dependencies:
   - cr_iframe
   - cr_block_paragraph
   - cr_single_msg
-  - cr_single_message_row_paragraph
   - cr_teaser
   - cr_email_signup
   - cr_partner
