@@ -7,6 +7,11 @@ $config_directories = [];
 $settings['install_profile'] = 'cr';
 
 /**
+ * Enable twig php filters
+ */
+$settings['twig_tweak_enable_php_filter'] = TRUE;
+
+/**
  * Load environment variables.
  * Required for CRAFT.
  */
