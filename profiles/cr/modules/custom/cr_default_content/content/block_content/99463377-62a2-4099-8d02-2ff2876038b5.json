@@ -11,7 +11,7 @@
                 "href": "http:\/\/default\/block\/5?_format=hal_json"
             },
             {
-                "href": "http:\/\/default\/block\/2?_format=hal_json"
+                "href": "http:\/\/default\/block\/14?_format=hal_json"
             }
         ]
     },
@@ -75,7 +75,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/block\/5?_format=hal_json"
+                        "href": "http:\/\/default\/block\/5?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/block_content\/teaser"
@@ -90,7 +90,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/block\/14?_format=hal_json"
+                        "href": "http:\/\/default\/block\/14?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/block_content\/content_reference_block"
