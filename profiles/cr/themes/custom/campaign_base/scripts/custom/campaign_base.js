@@ -1,5 +1,14 @@
 (function($, Drupal) {
   $( document ).ready(function() {
+    // Search block pop up
+    $("button.main-menu__icons-magnify").on("click", function() {
+      $(this).toggleClass("active");
+      $(".search-block").toggleClass("show");
+    });
+    $(".search-block .icon").on("click", function() {
+      $("button.main-menu__icons-magnify").removeClass("active");
+      $(".search-block").removeClass("show");
+    });
     // IE fallback objectfit
     if(!Modernizr.objectfit) {
       $('.objectfit').each(function () {
