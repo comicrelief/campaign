@@ -7,7 +7,6 @@ dependencies:
     - paragraphs.paragraphs_type.cr_block_reference
     - paragraphs.paragraphs_type.cr_cards
     - paragraphs.paragraphs_type.cr_rich_text_paragraph
-    - paragraphs.paragraphs_type.cr_single_message_row
     - paragraphs.paragraphs_type.cr_story
     - paragraphs.paragraphs_type.cw_row
     - paragraphs.paragraphs_type.partner_list
@@ -34,7 +33,6 @@ settings:
       cr_rich_text_paragraph: cr_rich_text_paragraph
       single_msg: single_msg
       partner_list: partner_list
-      cr_single_message_row: cr_single_message_row
       cr_story: cr_story
     target_bundles_drag_drop:
       cw_row:
@@ -55,9 +53,6 @@ settings:
       partner_list:
         enabled: true
         weight: -10
-      cr_single_message_row:
-        enabled: true
-        weight: -9
       cr_story:
         enabled: true
         weight: 13

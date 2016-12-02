@@ -6,6 +6,10 @@ dependencies:
     - paragraphs.paragraphs_type.cr_single_message_row
   module:
     - options
+    - cr_single_message_row_paragraph
+  enforced:
+    module:
+      - cr_single_message_row_paragraph
 id: paragraph.cr_single_message_row.field_single_msg_row_lr_variant
 field_name: field_single_msg_row_lr_variant
 entity_type: paragraph
