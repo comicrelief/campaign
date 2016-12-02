@@ -4,7 +4,7 @@ core: 8.x
 projects:
   drupal:
     type: core
-    version: 8.2.1
+    version: 8.2.3
     patch:
       # List unmet dependencies instead of just failing
       # @see https://www.drupal.org/node/2655104
