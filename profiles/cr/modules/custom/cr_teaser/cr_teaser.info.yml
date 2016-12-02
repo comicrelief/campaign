@@ -11,7 +11,6 @@ config_devel:
   - field.storage.block_content.field_teaser_image
   - field.storage.block_content.field_teaser_link_address
   - field.storage.block_content.field_teaser_link_title
-  - field.storage.block_content.field_teaser_title
   - field.storage.block_content.field_cw_link_target
   - field.storage.block_content.field_teaser_link_colour
   - field.storage.block_content.field_teaser_you_tube_link
@@ -21,7 +20,6 @@ config_devel:
   - field.field.block_content.teaser.field_teaser_image
   - field.field.block_content.teaser.field_teaser_link_address
   - field.field.block_content.teaser.field_teaser_link_title
-  - field.field.block_content.teaser.field_teaser_title
   - field.field.block_content.teaser.field_cw_link_target
   - field.field.block_content.teaser.field_teaser_link_colour
   - field.field.block_content.teaser.field_teaser_you_tube_link
