@@ -1,8 +1,13 @@
 .search-block {
-	// display: none; Always visible for now
+	display: none;
   @include clearfix;
   text-align: center;
   background: $colour-white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
   &.show {
   	display: block;
   }
@@ -55,11 +60,27 @@
   .form-actions {
   	@include span(2);
   }
+  .icon {
+    fill: $colour-black;
+    height: 30px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 30px;
+    cursor: pointer;
+    &:hover, 
+    &:focus {
+      fill: $colour-jasper-grey;
+    }
+  }
 }
 .search-block__form form{
   margin: 59px auto 40px;
   border-bottom: $colour-red 4px solid;
   @include clearfix;
+  @include breakpoint($screen-md, $no-query: true) {
+    width: span(8);
+  }
 }
 nav.menu--main {
 	.main-menu__icons-magnify {

@@ -117,6 +117,9 @@ main,
   @include clearfix;
   clear: both;
 }
+main {
+  position: relative;
+}
 .block-search {
   float: right;
   margin-top: 15px;
