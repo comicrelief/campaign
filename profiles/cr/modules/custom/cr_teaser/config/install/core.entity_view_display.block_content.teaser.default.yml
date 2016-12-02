@@ -11,7 +11,6 @@ dependencies:
     - field.field.block_content.teaser.field_teaser_link_address
     - field.field.block_content.teaser.field_teaser_link_colour
     - field.field.block_content.teaser.field_teaser_link_title
-    - field.field.block_content.teaser.field_teaser_title
     - field.field.block_content.teaser.field_teaser_you_tube_link
   module:
     - image
@@ -75,13 +74,6 @@ content:
     third_party_settings: {  }
   field_teaser_link_title:
     weight: 3
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-  field_teaser_title:
-    weight: 1
     label: above
     settings:
       link_to_entity: false
