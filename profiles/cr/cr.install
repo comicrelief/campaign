@@ -168,3 +168,15 @@ function cr_update_8018() {
 function cr_update_8019() {
   \Drupal::service('module_installer')->install(['cr_quote']);
 }
+
+/**
+* Remove title field from teaser block
+*/
+function cr_update_8020() {
+  $config_facotry = \Drupal::configFactory();
+  $config_facotry->getEditable('field.storage.block_content.field_teaser_title')
+    ->delete();
+  $config_facotry->getEditable('field.field.block_content.teaser.field_teaser_title')
+    ->delete();
+  field_purge_batch('field_teaser_title');
+}
