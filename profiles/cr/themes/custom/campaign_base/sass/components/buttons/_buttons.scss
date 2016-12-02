@@ -154,11 +154,11 @@
   }
 }
 
-// Ghost button
+/* Ghost button */
+// less padding because ghost buttons have borders
 .btn--white-ghost,
 .btn--black-ghost {
-  padding: 14px 30px;
-  font-size: 16px;
+  padding: 19px 38px;
 }
 .btn--black-ghost {
   border: 2px solid $colour-dark-blue;
@@ -170,5 +170,16 @@
   border: 2px solid $colour-white;
   &:hover {
     color: $colour-dark-blue;
+  }
+}
+//small buttons for content wall
+.content-wall {
+  .btn {
+    padding: 16px 32px;
+    font-size: 16px;
+  }
+  .btn--white-ghost,
+  .btn--black-ghost {
+    padding: 14px 30px;
   }
 }

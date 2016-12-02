@@ -53,6 +53,7 @@ dependencies:
   - video_embed_wysiwyg
   - filter
   - metatag_open_graph
+  - metatag_verification
   - pathauto
   - redirect
   - view_modes_display
@@ -89,7 +90,6 @@ dependencies:
   - cr_iframe
   - cr_block_paragraph
   - cr_single_msg
-  - cr_single_message_row_paragraph
   - cr_teaser
   - cr_email_signup
   - cr_partner
