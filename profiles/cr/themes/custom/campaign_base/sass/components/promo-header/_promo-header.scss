@@ -118,11 +118,15 @@
       @include breakpoint($screen-md-max) {
         margin-right: auto;
         margin-left: auto;
+        text-align: center;
         .promo-header--no-image & {
           max-width: span(8);
-          text-align: center;
           width: 100%;
           margin: 55px auto 45px;
+        }
+        .promo-header--small & {
+          max-width: span(8);
+          width: 100%;
         }
       }
     }
