@@ -22,7 +22,7 @@ module.exports = function (grunt) {
       },
       campaign_base: {
         files: ['themes/custom/campaign_base/sass/{,**/}*.{scss,sass}'],
-        tasks: ['compass:dev','shell:campaign_styleguide','shell:ie9_styles']
+        tasks: ['compass:dev','shell:campaign_styleguide']
       },
       rnd17: {
         files: ['../../themes/rnd17/sass/{,**/}*.{scss,sass}'],
@@ -63,9 +63,6 @@ module.exports = function (grunt) {
         },
         rnd17_styleguide: {
             command: '../../node_modules/kss/bin/kss-node --source ../../themes/rnd17/sass/ --destination ../../themes/rnd17/styleguide --css ../css/styles.css --verbose --title "Red Nose Day PatternLab"'
-        },
-        ie9_styles: {
-            command: 'blessc chunk themes/custom/campaign_base/css/styles.css --out-dir themes/custom/campaign_base/ie9-css/'
         }
     },
 
@@ -190,8 +187,7 @@ module.exports = function (grunt) {
     'shell:campaign_styleguide',
     'concat:campaign_base',
     'uglify:dist',
-    'compass:dist',
-    'shell:ie9_styles'
+    'compass:dist'
   ]);
 
   grunt.registerTask('build_all', [
@@ -199,8 +195,7 @@ module.exports = function (grunt) {
     'shell:rnd17_styleguide',
     'concat',
     'uglify:dist',
-    'compassMultiple',
-    'shell:ie9_styles'
+    'compassMultiple'
   ]);
 
 };
