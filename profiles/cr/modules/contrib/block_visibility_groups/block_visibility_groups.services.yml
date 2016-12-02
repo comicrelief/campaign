@@ -1,0 +1,5 @@
+services:
+  block_visibility_groups.group_evaluator:
+    class: Drupal\block_visibility_groups\GroupEvaluator
+    arguments: ['@context.handler', '@context.repository']
+

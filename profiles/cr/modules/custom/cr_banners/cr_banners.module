@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * Provides banner functionality.
+ */
+
+/**
+* Return temp contexts for cr_banners_contexts.
+*/
+function cr_banners_get_contexts() {
+
+  $contexts = [
+    'btn' => t('Before The Night'),
+    'otn' => t('On The Night'),
+    'atn' => t('After The Night'),
+  ];
+
+  return $contexts;
+}

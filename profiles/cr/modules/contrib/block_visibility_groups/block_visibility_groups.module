@@ -1,0 +1,114 @@
+<?php
+
+/**
+ * @file
+ * Contains block_visibility_groups.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+
+
+/**
+ * Implements hook_help().
+ */
+function block_visibility_groups_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the block_visibility_groups module.
+    case 'help.page.block_visibility_groups':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Allows the site administrator to easily manage complex visibility settings that apply to any block placed in a visibility group.');
+      $output .= t('The visibility settings for all blocks in the group can be edited on one administration form.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ *
+ */
+function block_visibility_groups_entity_type_alter(array &$entity_types) {
+  /**
+   * @var ConfigEntityType $block_type;
+   */
+  $block_type = $entity_types['block'];
+  $block_type->setHandlerClass('list_builder', 'Drupal\block_visibility_groups\BlockVisibilityGroupedListBuilder');
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function block_visibility_groups_form_block_form_alter(&$form, FormStateInterface &$form_state, $form_id) {
+  $form['actions']['submit']['#submit'][] = 'block_visibility_groups_block_form_submit';
+  if (isset($form['visibility']['condition_group']['block_visibility_group']['#default_value']) &&
+    $form['visibility']['condition_group']['block_visibility_group']['#default_value']) {
+    /** @var EntityStorageInterface $storage */
+    $storage = \Drupal::getContainer()->get('entity.manager')->getStorage('block_visibility_group');
+    /** @var BlockVisibilityGroup $group */
+    $group = $storage->load($form['visibility']['condition_group']['block_visibility_group']['#default_value']);
+    if (!$group->isAllowOtherConditions()) {
+      _block_visibility_groups_remove_conditions($form['visibility']);
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function block_visibility_groups_form_block_delete_form_alter(&$form, FormStateInterface &$form_state, $form_id) {
+  $form['actions']['submit']['#submit'][] = 'block_visibility_groups_block_form_submit';
+}
+
+/**
+ *
+ */
+function _block_visibility_groups_remove_conditions(&$form) {
+  $keys = array_diff(array_keys($form), ['visibility_tabs', 'condition_group']);
+  $form = array_diff_key($form, array_flip($keys));
+}
+
+/**
+ *
+ */
+function block_visibility_groups_block_form_submit($form, FormStateInterface $form_state) {
+
+  if ($block_visibility_group_query = $form_state->getTemporaryValue('block_visibility_group_query')) {
+    _block_visibility_groups_add_group_to_redirect($form_state, $block_visibility_group_query);
+  }
+  else {
+    // If group was sent in query string redirect to that group.
+    if ($group = Drupal::request()->get('block_visibility_group')) {
+      if ($form['#form_id'] == 'block_delete_form') {
+        _block_visibility_groups_add_group_to_redirect($form_state, $group);
+        return;
+      }
+
+      $visibility = $form_state->getValue('visibility');
+      // Loop through $visibility don't rely on keys. Check for 'id'.
+      foreach ($visibility as $condition_info) {
+        if ($condition_info['id'] == 'condition_group') {
+          if (!empty($condition_info['block_visibility_group'])) {
+            _block_visibility_groups_add_group_to_redirect($form_state, $condition_info['block_visibility_group']);
+          }
+          // Assume only one condition_group condition.
+          return;
+        }
+      }
+    }
+  }
+}
+
+/**
+ *
+ */
+function _block_visibility_groups_add_group_to_redirect(FormStateInterface $form_state, $group_id) {
+  $redirect = $form_state->getRedirect();
+  if ($redirect && $redirect instanceof Url) {
+    $query = $redirect->getOption('query');
+    $query['block_visibility_group'] = $group_id;
+    $redirect->setOption('query', $query);
+  }
+}

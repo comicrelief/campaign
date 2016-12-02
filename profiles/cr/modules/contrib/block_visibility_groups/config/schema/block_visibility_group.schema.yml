@@ -1,0 +1,30 @@
+block_visibility_groups.block_visibility_group.*:
+  type: config_entity
+  label: 'Block Visibility Group config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    uuid:
+      type: string
+    logic:
+      type: string
+      label: 'Logic'
+    conditions:
+      type: sequence
+      label: 'Conditions'
+      sequence:
+        - type: condition.plugin.[id]
+          label: 'Condition'
+    allow_other_conditions:
+      type: boolean
+      label: 'Allow Other Conditions'
+
+condition.plugin.condition_group:
+  type: condition.plugin
+  mapping:
+    block_visibility_group:
+      type: string

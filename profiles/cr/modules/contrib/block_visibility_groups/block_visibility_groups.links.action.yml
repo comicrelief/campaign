@@ -1,0 +1,6 @@
+entity.block_visibility_group.add_form:
+  route_name: 'entity.block_visibility_group.add_form'
+  title: 'Add Block Visibility Group'
+  appears_on:
+    - entity.block_visibility_group.collection
+

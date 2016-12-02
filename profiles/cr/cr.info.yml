@@ -44,6 +44,7 @@ dependencies:
 
   # Contrib modules
   - ds
+  - block_visibility_groups
   - file_entity
   - media_entity
   - media_entity_browser
@@ -98,6 +99,7 @@ dependencies:
   #- cr_performance
   - cr_user
   - cr_social
+  - cr_banners
 
   # Development modules
   - config_devel

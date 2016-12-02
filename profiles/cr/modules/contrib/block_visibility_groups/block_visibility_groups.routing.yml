@@ -1,0 +1,77 @@
+
+# BlockVisibilityGroup routing definition
+entity.block_visibility_group.collection:
+  path: '/admin/structure/block/block-visibility-group'
+  defaults:
+    _entity_list: 'block_visibility_group'
+    _title: 'Block Visibility Group'
+  requirements:
+    _permission: 'administer blocks'
+
+entity.block_visibility_group.add_form:
+  path: '/admin/structure/block/block-visibility-group/add'
+  defaults:
+    _entity_form: 'block_visibility_group.add'
+    _title: 'Add Block Visibility Group'
+  requirements:
+    _permission: 'administer blocks'
+
+entity.block_visibility_group.edit_form:
+  path: '/admin/structure/block/block-visibility-group/{block_visibility_group}'
+  defaults:
+    _entity_form: 'block_visibility_group.edit'
+    _title: 'Edit Block Visibility Group'
+  requirements:
+    _permission: 'administer blocks'
+
+entity.block_visibility_group.delete_form:
+  path: '/admin/structure/block/block-visibility-group/{block_visibility_group}/delete'
+  defaults:
+    _entity_form: 'block_visibility_group.delete'
+    _title: 'Delete Block Visibility Group'
+  requirements:
+    _permission: 'administer blocks'
+
+#### Conditions
+block_visibility_groups.condition_select:
+  path: 'admin/structure/block/block-visibility-group/{block_visibility_group}/condition/select/{redirect}'
+  defaults:
+    _controller: '\Drupal\block_visibility_groups\Controller\BlockVisibilityGroupController::selectCondition'
+    _title: 'Select condition'
+  requirements:
+    _permission: 'administer blocks'
+
+block_visibility_groups.condition_add:
+  path: '/admin/structure/block-visibility-group/manage/{block_visibility_group}/condition/add/{condition_id}/{redirect}'
+  defaults:
+    _form: '\Drupal\block_visibility_groups\Form\ConditionAddForm'
+    _title: 'Add new condition'
+  requirements:
+    _permission: 'administer blocks'
+
+block_visibility_groups.condition_edit:
+  path: '/admin/structure/block-visibility-groups/manage/{block_visibility_group}/condition/edit/{condition_id}/{redirect}'
+  defaults:
+    _form: '\Drupal\block_visibility_groups\Form\ConditionEditForm'
+    _title: 'Edit Condition'
+    # @todo Create title callback.
+    #_title_callback: '\Drupal\block_visibility_groups\Controller\BlockVisibilityGroupController::editConditionTitle'
+  requirements:
+    _permission: 'administer blocks'
+
+block_visibility_groups.condition_delete:
+  path: '/admin/structure/block-visibility-groups/manage/{block_visibility_group}/condition/delete/{condition_id}/{redirect}'
+  defaults:
+    _form: '\Drupal\block_visibility_groups\Form\ConditionDeleteForm'
+    _title: 'Delete condition'
+  requirements:
+    _permission: 'administer blocks'
+
+block_visibility_groups.admin_library:
+  path: 'admin/structure/block/library/{theme}/{block_visibility_group}'
+  defaults:
+    _controller: '\Drupal\block_visibility_groups\Controller\BlockLibraryGroupsController::listBlocks'
+    _title: 'Place block'
+  requirements:
+    _access_theme: 'TRUE'
+    _permission: 'administer blocks'

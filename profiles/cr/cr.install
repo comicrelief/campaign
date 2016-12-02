@@ -151,8 +151,7 @@ function cr_update_8016() {
 * Install cr_video cr_media
 */
 function cr_update_8017() {
-  \Drupal::service('module_installer')->install(['cr_video']);
-  \Drupal::service('module_installer')->install(['cr_media']);
+  \Drupal::service('module_installer')->install(['cr_video', 'cr_media']);
 }
 
 /**
@@ -167,4 +166,11 @@ function cr_update_8018() {
 */
 function cr_update_8019() {
   \Drupal::service('module_installer')->install(['cr_quote']);
+}
+
+/**
+* Install context module
+*/
+function cr_update_8020() {
+  \Drupal::service('module_installer')->install(['block_visibility_groups', 'cr_banners']);
 }
