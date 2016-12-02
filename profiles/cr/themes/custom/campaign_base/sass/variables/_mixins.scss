@@ -90,6 +90,12 @@
     color: nth($color, 2);
   }
 }
+// Make inline classes stronger
+@mixin font-variation-inline($color) {
+  &.font--#{nth($color, 1)} {
+    color: nth($color, 2);
+  }
+}
 
 /**
  * Font sizes
