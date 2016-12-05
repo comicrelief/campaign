@@ -127,7 +127,7 @@
   padding: calc(4 * #{gutter()});
   text-align: center;
   .no-flexbox & {
-    padding-top: 60px;
+    padding-top: 25px;
   }
 }
 .teaser-block--bg-image {
@@ -140,7 +140,7 @@
     margin: 0 calc(5 * 1.25%);
     background-color: transparent;
     .no-flexbox & {
-      padding-top: 0;
+      padding-top: 100px;
     }
   }
   .teaser-block__image {

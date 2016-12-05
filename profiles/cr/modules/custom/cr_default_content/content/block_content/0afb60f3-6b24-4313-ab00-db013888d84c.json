@@ -85,6 +85,11 @@
             "value": "bg--white"
         }
     ],
+    "field_teaser_bg_image": [
+        {
+            "value": "0"
+        }
+    ],
     "_embedded": {
         "http:\/\/drupal.org\/rest\/relation\/block_content\/teaser\/field_teaser_image": [
             {
@@ -108,11 +113,6 @@
             }
         ]
     },
-    "field_teaser_bg_image": [
-        {
-            "value": "0"
-        }
-    ],
     "field_teaser_link_address": [
         {
             "value": "\/whats-going-on"
@@ -126,11 +126,6 @@
     "field_teaser_link_title": [
         {
             "value": "Find out"
-        }
-    ],
-    "field_teaser_title": [
-        {
-            "value": "The great sport relief bake off"
         }
     ],
     "field_teaser_you_tube_link": [
