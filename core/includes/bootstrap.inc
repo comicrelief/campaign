@@ -9,7 +9,6 @@ use Drupal\Component\Utility\Crypt;
 use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\SafeMarkup;
 use Drupal\Component\Utility\Unicode;
-use Drupal\Core\Database\Database;
 use Drupal\Core\Logger\RfcLogLevel;
 use Drupal\Core\Render\Markup;
 use Drupal\Component\Render\MarkupInterface;
@@ -717,22 +716,6 @@ function drupal_installation_attempted() {
   // executed code does not involve the installer at all.
   // @see install_drupal()
   return isset($GLOBALS['install_state']) && empty($GLOBALS['install_state']['installation_finished']);
-}
-
-/**
- * Check whether Drupal is installed.
- *
- * @return bool
- *   TRUE if Drupal is installed, FALSE otherwise.
- */
-function drupal_is_installed() {
-  // Check that a default database connection has been defined.
-  if (!Database::getConnectionInfo()) {
-    return FALSE;
-  }
-
-  // Check whether the sessions table exists.
-  return Database::getConnection()->schema()->tableExists('sessions');
 }
 
 /**

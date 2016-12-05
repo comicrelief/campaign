@@ -61,13 +61,6 @@ class ConfigInstaller implements ConfigInstallerInterface {
   protected $isSyncing = FALSE;
 
   /**
-   * Any missing dependencies.
-   *
-   * @var array
-   */
-  protected $missingDependencies;
-
-  /**
    * Constructs the configuration installer.
    *
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
@@ -87,7 +80,6 @@ class ConfigInstaller implements ConfigInstallerInterface {
     $this->typedConfig = $typed_config;
     $this->configManager = $config_manager;
     $this->eventDispatcher = $event_dispatcher;
-    $this->missingDependencies = array();
   }
 
   /**
@@ -465,7 +457,7 @@ class ConfigInstaller implements ConfigInstallerInterface {
     // Check the dependencies of configuration provided by the module.
     $invalid_default_config = $this->findDefaultConfigWithUnmetDependencies($storage, $enabled_extensions, $profile_storages);
     if (!empty($invalid_default_config)) {
-      throw UnmetDependenciesException::create($name, $this->getMissingDependencies());
+      throw UnmetDependenciesException::create($name, $invalid_default_config);
     }
 
     // Install profiles can not have config clashes. Configuration that
@@ -551,7 +543,6 @@ class ConfigInstaller implements ConfigInstallerInterface {
         if (!empty($list_to_check)) {
           $missing = array_diff($dependencies, $list_to_check);
           if (!empty($missing)) {
-            $this->missingDependencies[$config_name] = $missing;
             return FALSE;
           }
         }
@@ -666,15 +657,6 @@ class ConfigInstaller implements ConfigInstallerInterface {
    */
   protected function drupalInstallationAttempted() {
     return drupal_installation_attempted();
-  }
-
-  /**
-   * Returns the list of missing dependencies
-   *
-   * @return array A list of missing dependencies, if any.
-   */
-  public function getMissingDependencies() {
-    return $this->missingDependencies;
   }
 
 }

@@ -20,3 +20,4 @@ permissions:
   - 'access user profiles'
   - 'view search api pages'
   - 'view media'
+  - 'create article content'

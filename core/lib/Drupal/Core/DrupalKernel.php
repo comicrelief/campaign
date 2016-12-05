@@ -9,6 +9,7 @@ use Drupal\Component\Utility\Unicode;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Config\BootstrapConfigStorageFactory;
 use Drupal\Core\Config\NullStorage;
+use Drupal\Core\Database\Database;
 use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\Core\DependencyInjection\ServiceModifierInterface;
 use Drupal\Core\DependencyInjection\ServiceProviderInterface;
@@ -641,9 +642,9 @@ class DrupalKernel implements DrupalKernelInterface, TerminableInterface {
       $this->initializeSettings($request);
 
       // Redirect the user to the installation script if Drupal has not been
-      // installed yet, and we are not already installing, and we are not on the
-      // command line.
-      if (!drupal_installation_attempted() && PHP_SAPI !== 'cli' && !drupal_is_installed()) {
+      // installed yet (i.e., if no $databases array has been defined in the
+      // settings.php file) and we are not already installing.
+      if (!Database::getConnectionInfo() && !drupal_installation_attempted() && PHP_SAPI !== 'cli') {
         $response = new RedirectResponse($request->getBasePath() . '/core/install.php');
       }
       else {

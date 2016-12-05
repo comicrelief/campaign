@@ -1,0 +1,14 @@
+name: JSON API
+type: module
+description: Provides a JSON API format for the REST resources.
+# core: 8.x
+package: Web services
+dependencies:
+  - drupal:system (>=8.2)
+  - hal
+
+# Information added by Drupal.org packaging script on 2016-10-19
+version: '8.x-1.0-alpha1'
+core: '8.x'
+project: 'jsonapi'
+datestamp: 1476907440

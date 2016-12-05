@@ -4,7 +4,6 @@ namespace Drupal\node;
 
 use Drupal\Core\Entity\ContentEntityForm;
 use Drupal\Core\Entity\EntityManagerInterface;
-use Drupal\Core\Form\FormHelper;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\user\PrivateTempStoreFactory;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -20,6 +19,11 @@ class NodeForm extends ContentEntityForm {
    * @var \Drupal\user\PrivateTempStoreFactory
    */
   protected $tempStoreFactory;
+
+  /**
+   * Whether this node has been previewed or not.
+   */
+  protected $hasBeenPreviewed = FALSE;
 
   /**
    * Constructs a ContentEntityForm object.
@@ -78,10 +82,8 @@ class NodeForm extends ContentEntityForm {
         $form_state->setValue($name, $value);
       }
 
-      // Cache the form state for submission request.
-      $form_state->setRequestMethod('POST');
-      $form_state->setCached();
-
+      // Rebuild the form.
+      $form_state->setRebuild();
       $this->entity = $preview->getFormObject()->getEntity();
       $this->entity->in_preview = NULL;
 
@@ -90,7 +92,7 @@ class NodeForm extends ContentEntityForm {
         $store->delete($uuid);
       }
 
-      $form_state->set('has_been_previewed', TRUE);
+      $this->hasBeenPreviewed = TRUE;
     }
 
     /** @var \Drupal\node\NodeInterface $node */
@@ -232,7 +234,7 @@ class NodeForm extends ContentEntityForm {
     $node = $this->entity;
     $preview_mode = $node->type->entity->getPreviewMode();
 
-    $element['submit']['#access'] = $preview_mode != DRUPAL_REQUIRED || $form_state->get('has_been_previewed');
+    $element['submit']['#access'] = $preview_mode != DRUPAL_REQUIRED || $this->hasBeenPreviewed;
 
     // If saving is an option, privileged users get dedicated form submit
     // buttons to adjust the publishing status while saving in one go.
@@ -339,13 +341,10 @@ class NodeForm extends ContentEntityForm {
     $store = $this->tempStoreFactory->get('node_preview');
     $this->entity->in_preview = TRUE;
     $store->set($this->entity->uuid(), $form_state);
-
-    $route_params = [
+    $form_state->setRedirect('entity.node.preview', array(
       'node_preview' => $this->entity->uuid(),
       'view_mode_id' => 'default',
-    ];
-    $options = FormHelper::redirectOptionsPassThroughDestination();
-    $form_state->setRedirect('entity.node.preview', $route_params, $options);
+    ));
   }
 
   /**

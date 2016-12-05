@@ -1110,8 +1110,14 @@ function install_verify_database_settings($site_path) {
  * Verify that the database is ready (no existing Drupal installation).
  */
 function install_verify_database_ready() {
-  if (drupal_is_installed()) {
-    throw new AlreadyInstalledException(\Drupal::service('string_translation'));
+  $system_schema = system_schema();
+  end($system_schema);
+  $table = key($system_schema);
+
+  if ($database = Database::getConnectionInfo()) {
+    if (Database::getConnection()->schema()->tableExists($table)) {
+      throw new AlreadyInstalledException(\Drupal::service('string_translation'));
+    }
   }
 }
 

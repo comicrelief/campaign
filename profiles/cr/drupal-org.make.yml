@@ -142,6 +142,8 @@ projects:
     version: 1.0
   rabbitmq:
     version: 1.0-beta1
+  jsonapi:
+    version: 1.0-alpha1
   search_api:
     version: 1.0-beta1
   search_api_solr:

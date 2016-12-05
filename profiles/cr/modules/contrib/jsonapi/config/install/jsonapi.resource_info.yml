@@ -1,0 +1,3 @@
+prefix: api
+schema_prefix: schema
+id_field: uuid

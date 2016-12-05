@@ -14,3 +14,4 @@ permissions:
   - 'restful get entity:node'
   - 'view search api pages'
   - 'view media'
+  - 'create article content'

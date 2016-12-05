@@ -9,7 +9,6 @@ sites/*/private/
 files/
 private/
 
-sites/*/services*.yml
 sites/*/environment.yml
 sites/*/settings.local.php
 
