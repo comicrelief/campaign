@@ -11,6 +11,10 @@
   &.show {
   	display: block;
   }
+  .path-search & {
+    display: block;
+    position: relative;
+  }
   label {
     @include visuallyhidden;
   }
@@ -48,11 +52,15 @@
 	  width: 100%;
 	  height: 40px;
 	  border: none;
-	  font-size: 20px;
+	  font-size: 24px;
+    font-family: $body-font;
 	  @include breakpoint($screen-md) {
 	  	height: 80px;
 	  	font-size: 70px;
 	  }
+    &::-ms-clear {
+      display: none;
+    }
 	}
   .form-item {
   	@include span(10);
@@ -72,15 +80,15 @@
     &:focus {
       fill: $colour-jasper-grey;
     }
+    .path-search & {
+      display: none;
+    }
   }
 }
 .search-block__form form{
   margin: 59px auto 40px;
   border-bottom: $colour-red 4px solid;
   @include clearfix;
-  @include breakpoint($screen-md, $no-query: true) {
-    width: span(8);
-  }
 }
 nav.menu--main {
 	.main-menu__icons-magnify {
@@ -95,6 +103,7 @@ nav.menu--main {
 	  @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
 	    height: 100%;
 	  }
+    .path-search &,
 	  &:focus,
 	  &:hover,
 	  &.active {
@@ -107,6 +116,9 @@ nav.menu--main {
 		  width: 46px;
 		  height: 46px;
 	  }
+    .path-search & {
+      background-color: #f9f9f9;
+    }
 	}
 }
 .search-overlay {
@@ -122,5 +134,8 @@ nav.menu--main {
 	display: none;
 	&.show {
   	display: block;
+  }
+  .path-search & {
+    display: none;
   }
 }
