@@ -88,4 +88,12 @@ interface ProviderPluginInterface {
    */
   public static function getIdFromInput($input);
 
+  /**
+   * Get the name of the video.
+   *
+   * @return string
+   *   A name to represent the video for the given plugin.
+   */
+  public function getName();
+
 }

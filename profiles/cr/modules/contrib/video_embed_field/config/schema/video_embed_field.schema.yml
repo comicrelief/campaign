@@ -61,3 +61,10 @@ field.field_settings.video_embed_field:
       label: 'Allowed Providers'
       sequence:
         type: string
+
+field.value.video_embed_field:
+  type: mapping
+  mapping:
+    value:
+      type: string
+      label: 'Video URL'
