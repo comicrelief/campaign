@@ -5,11 +5,11 @@
  * Contains \Drupal\embed\Tests\IconFileUsageTest.
  */
 
-namespace Drupal\embed\Tests;
+namespace Drupal\Tests\embed\Kernel;
 
 use Drupal\embed\Entity\EmbedButton;
 use Drupal\file\Entity\File;
-use Drupal\simpletest\KernelTestBase;
+use Drupal\KernelTests\KernelTestBase;
 
 /**
  * Tests embed button icon file usage.
