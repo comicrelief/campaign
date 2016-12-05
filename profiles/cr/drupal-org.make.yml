@@ -74,7 +74,7 @@ projects:
       version: 1.x-dev
       revision: c1941b7
   view_modes_display:
-    version: 1.x-dev
+    version: 1.0
   social_links:
     download:
       branch: 8.x-1.x
