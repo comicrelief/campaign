@@ -7,6 +7,11 @@ $config_directories = [];
 $settings['install_profile'] = 'cr';
 
 /**
+ * Enable twig php filters
+ */
+$settings['twig_tweak_enable_php_filter'] = true;
+
+/**
  * Load environment variables.
  * Required for CRAFT.
  */
@@ -37,6 +42,6 @@ if (file_exists(__DIR__ . '/settings.local.php')) {
   include __DIR__ . '/settings.local.php';
 
   // Some specific platform.sh settings
-  $settings['update_free_access'] = FALSE;
+  $settings['update_free_access'] = false;
   $config_directories[CONFIG_SYNC_DIRECTORY] = 'sites/default/config';
 }

@@ -10,15 +10,14 @@ dependencies:
     - field.field.node.landing.field_landing_image
     - field.field.node.landing.field_landing_image_mobile
     - field.field.node.landing.field_landing_meta_tags
+    - field.field.node.landing.field_landing_small_bg
     - field.field.node.landing.field_paragraphs
     - field.field.node.landing.field_svg_body_title
     - field.field.node.landing.panelizer
     - node.type.landing
   module:
     - ds
-    - entity_reference_revisions
     - image
-    - metatag
     - options
     - panelizer
     - responsive_image
@@ -137,6 +136,7 @@ third_party_settings:
       path: profiles/cr/modules/contrib/ds
       library: ''
       disable_css: false
+      entity_classes: all_classes
       settings:
         wrappers:
           ds_content: div
@@ -156,6 +156,7 @@ third_party_settings:
         - field_landing_image
         - node_title
         - body
+        - field_landing_small_bg
     fields:
       node_title:
         plugin_id: node_title
@@ -210,19 +211,14 @@ content:
       image_style: ''
       image_link: ''
     third_party_settings: {  }
-  field_landing_meta_tags:
-    type: metatag_empty_formatter
-    weight: 15
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-  field_paragraphs:
-    type: entity_reference_revisions_entity_view
-    weight: 19
+  field_landing_small_bg:
+    type: boolean
+    weight: 8
     label: above
     settings:
-      view_mode: default
-      link: ''
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
     third_party_settings: {  }
   field_svg_body_title:
     type: basic_string
@@ -230,18 +226,9 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-  links:
-    weight: 17
-    settings: {  }
-    third_party_settings: {  }
-  panelizer:
-    type: panelizer
-    weight: 16
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-  social_links:
-    weight: 18
-    settings: {  }
-    third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_landing_meta_tags: true
+  field_paragraphs: true
+  links: true
+  panelizer: true
+  social_links: true
