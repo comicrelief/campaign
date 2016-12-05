@@ -215,7 +215,7 @@ display:
           empty: true
           tokenize: false
           content:
-            value: '<p align="center">No results.</p>'
+            value: "<p align=\"center\">Sorry, there are no results for your search.</p>\n<p align=\"center\">Please try again.</p>"
             format: full_html
           plugin_id: text
       relationships: {  }
