@@ -1,5 +1,5 @@
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - system
@@ -7,8 +7,8 @@ dependencies:
     - campaign_base
 id: campaign_base_page_title
 theme: campaign_base
-region: content
-weight: -3
+region: '-1'
+weight: -5
 provider: null
 plugin: page_title_block
 settings:
