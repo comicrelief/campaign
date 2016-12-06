@@ -21,6 +21,9 @@ simple_sitemap.settings:
       type: sequence
       sequence:
         type: string
+    base_url:
+      label: 'Base URL'
+      type: string
 
 simple_sitemap.bundle_settings.*.*:
   label: 'Entity bundle settings'
@@ -36,12 +39,16 @@ simple_sitemap.bundle_settings.*.*:
 simple_sitemap.custom:
   label: 'Custom links'
   type: config_object
-  sequence:
-    type: mapping
-    mapping:
-      path:
-        label: 'Path'
-        type: string
-      priority:
-        label: 'Priority'
-        type: string
+  mapping:
+    links:
+      type: sequence
+      label: 'Custom links'
+      sequence:
+        type: mapping
+        mapping:
+          path:
+            label: 'Path'
+            type: string
+          priority:
+            label: 'Priority'
+            type: string

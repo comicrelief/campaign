@@ -168,6 +168,7 @@ class BatchUrlGenerator {
 
       // todo: Change to different function, as this also checks if current user has access. The user however varies depending if process was started from the web interface or via cron/drush. Use getUrlIfValidWithoutAccessCheck()?
       if (!$this->pathValidator->isValid($custom_path['path'])) {
+//        if (!(bool) $this->pathValidator->getUrlIfValidWithoutAccessCheck($custom_path['path'])) {
         $this->logger->m(self::PATH_DOES_NOT_EXIST_OR_NO_ACCESS_MESSAGE, ['@path' => $custom_path['path']])
           ->display('warning', 'administer sitemap settings')
           ->log('warning');
@@ -278,7 +279,7 @@ class BatchUrlGenerator {
     if (!is_null($entity) && isset($translation_languages['und'])) {
       if ($url_object->access($this->anonUser)) {
         $url_object->setOption('language', $this->languages[$this->defaultLanguageId]);
-        $alternate_urls[$this->defaultLanguageId] = $url_object->toString();
+        $alternate_urls[$this->defaultLanguageId] = $this->replaceBaseUrlWithCustom($url_object->toString());
       }
     }
     else {
@@ -288,7 +289,7 @@ class BatchUrlGenerator {
           $translation = $entity->getTranslation($language->getId());
           if ($translation->access('view', $this->anonUser)) {
             $url_object->setOption('language', $language);
-            $alternate_urls[$language->getId()] = $url_object->toString();
+            $alternate_urls[$language->getId()] = $this->replaceBaseUrlWithCustom($url_object->toString());
           }
         }
       }
@@ -297,7 +298,7 @@ class BatchUrlGenerator {
       elseif ($url_object->access($this->anonUser)) {
         foreach ($translation_languages as $language) {
           $url_object->setOption('language', $language);
-          $alternate_urls[$language->getId()] = $url_object->toString();
+          $alternate_urls[$language->getId()] = $this->replaceBaseUrlWithCustom($url_object->toString());
         }
       }
     }
@@ -392,6 +393,12 @@ class BatchUrlGenerator {
       : NULL;
   }
 
+  private function replaceBaseUrlWithCustom($url) {
+    return !empty($this->batchInfo['base_url'])
+      ? str_replace($GLOBALS['base_url'], $this->batchInfo['base_url'], $url)
+      : $url;
+  }
+
   /**
    * Callback function called by the batch API when all operations are finished.
    *
@@ -406,6 +413,7 @@ class BatchUrlGenerator {
       Cache::invalidateTags(['simple_sitemap']);
       $this->logger->m(self::REGENERATION_FINISHED_MESSAGE,
         ['@url' => $GLOBALS['base_url'] . '/sitemap.xml'])
+//        ['@url' => $this->sitemapGenerator->getCustomBaseUrl() . '/sitemap.xml']) //todo: Use actual base URL for message.
         ->display('status')
         ->log('info');
     }
