@@ -129,6 +129,10 @@
   .no-flexbox & {
     padding-top: 25px;
   }
+  p:last-child,
+  p:first-child:last-child {
+    margin-bottom: 15px;
+  }
 }
 .teaser-block--bg-image {
   .teaser-block__body {
