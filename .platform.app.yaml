@@ -66,6 +66,7 @@ mounts:
     "/Gemfile.lock": "shared:files/Gemfile.lock"
     "/profiles/cr/themes/custom/campaign_base/js": "shared:files/js"
     "/profiles/cr/themes/custom/campaign_base/css": "shared:files/css"
+    "/profiles/cr/themes/custom/campaign_base/ie9-css": "shared:files/ie9-css"
     "/profiles/cr/themes/custom/campaign_base/styleguide": "shared:files/styleguide"
     "/profiles/cr/themes/custom/campaign_base/images/generated": "shared:files/images_generated"
     "/profiles/cr/.sass-cache": "shared:files/.sass-cache"
