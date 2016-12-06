@@ -114,3 +114,4 @@ permissions:
   - 'administer files'
   - 'administer pathauto'
   - 'notify of path changes'
+  - 'administer url aliases'
