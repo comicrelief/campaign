@@ -50,6 +50,9 @@ abstract class KernelTestBase extends CoreKernelTestBase {
 
     $this->installEntitySchema($this->entityTypeId);
 
+    // Install image styles.
+    $this->installConfig(['image']);
+
     EntityViewDisplay::create([
       'targetEntityType' => 'entity_test',
       'bundle' => 'entity_test',

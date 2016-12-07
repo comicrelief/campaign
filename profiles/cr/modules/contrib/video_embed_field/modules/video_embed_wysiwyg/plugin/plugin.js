@@ -91,7 +91,7 @@
      */
     upcast: function (element, data) {
       // Upcast check must be sensitive to both HTML encoded and plain text.
-      if (element.getHtml().indexOf('preview_thumbnail') == -1) {
+      if (!element.getHtml().match(/^({(?=.*preview_thumbnail\b)(?=.*settings\b)(?=.*video_url\b)(?=.*settings_summary)(.*)})$/)) {
         return;
       }
       data.json = JSON.parse(element.getHtml());

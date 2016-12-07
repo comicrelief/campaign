@@ -47,9 +47,11 @@ class VideoEmbedField extends MediaTypeBase {
    * {@inheritdoc}
    */
   public function thumbnail(MediaInterface $media) {
-    $provider = $this->loadProvider($media);
-    $provider->downloadThumbnail();
-    return $provider->getLocalThumbnailUri();
+    if ($provider = $this->loadProvider($media)) {
+      $provider->downloadThumbnail();
+      return $provider->getLocalThumbnailUri();
+    }
+    return $this->getDefaultThumbnail();
   }
 
   /**
@@ -115,6 +117,16 @@ class VideoEmbedField extends MediaTypeBase {
       'image_local' => $this->t('Copies thumbnail image to the local filesystem and returns the URI.'),
       'image_local_uri' => $this->t('Gets URI of the locally saved image.'),
     ];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getDefaultName(MediaInterface $media) {
+    if ($provider = $this->loadProvider($media)) {
+      return $this->loadProvider($media)->getName();
+    }
+    return parent::getDefaultThumbnail();
   }
 
   /**
