@@ -3,8 +3,12 @@ status: true
 dependencies: {  }
 id: manager
 label: 'User manager'
-weight: 1
+weight: -7
 is_admin: false
 permissions:
   - 'administer users'
   - 'administer permissions'
+  - 'administer pathauto'
+  - 'notify of path changes'
+  - 'administer url aliases'
+  - 'create url aliases'

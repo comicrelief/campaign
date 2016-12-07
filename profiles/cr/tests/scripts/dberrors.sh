@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 # Simple script to check code quality.
 drush wd-show --severity=critical > tmp.txt
 drush wd-show --severity=error >> tmp.txt

@@ -28,12 +28,24 @@
 
       .cr-article__title {
         margin: 0;
-        @include span(12);
-        color: $colour-white;
-        font-size: 56px;
-        line-height: 56px;
+        @include span(10);
+        @include push(1);
         text-align: center;
-        font-family: "GT-Walsheim-Bold",helvetica,arial,sans-serif;
+
+        span {
+          @extend h1;
+          color: $colour-white !important;
+        }
+
+        @include breakpoint($screen-md) {
+          @include span(8);
+          @include push(2);
+        }
+
+        @include breakpoint($screen-lg) {
+          @include span(6);
+          @include push(3);
+        }
       }
     }
 
@@ -71,12 +83,16 @@
 .partners-grid {
   background-color: $colour-smoke-grey;
   text-align: center;
-  padding: 30px 0 60px;
+  padding: 30px 0 65px;
 
   .view-content {
     @include container;
 
-    h3 {
+    .item-list + .item-list {
+      margin-top: 40px;
+    }
+
+    h2 {
       width: 97.5%;
       margin-left: 1.25%;
       margin-right: 1.25%;
@@ -151,5 +167,19 @@
         }
       }
     }
+  }
+}
+
+/* 
+ * Removing the 'hover' state for touch devices,
+ * to be handled by JS to deal with proper events to only change on tap, not scroll
+ */
+.touchevents .partners-grid ul li .node__content {
+  &:hover .partner__link a {
+      display: none;
+  }
+
+  &.active .partner__link a {
+    display: block;
   }
 }

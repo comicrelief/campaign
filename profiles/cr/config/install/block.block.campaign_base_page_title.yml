@@ -1,15 +1,14 @@
 langcode: en
-status: true
+status: false
 dependencies:
   module:
-    - node
     - system
   theme:
     - campaign_base
 id: campaign_base_page_title
 theme: campaign_base
-region: content
-weight: -3
+region: '-1'
+weight: -5
 provider: null
 plugin: page_title_block
 settings:
@@ -20,13 +19,6 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: /node/5
+    pages: ''
     negate: true
     context_mapping: {  }
-  node_type:
-    id: node_type
-    bundles:
-      page: page
-    negate: false
-    context_mapping:
-      node: '@node.node_route_context:node'

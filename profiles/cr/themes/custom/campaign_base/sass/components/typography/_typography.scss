@@ -131,3 +131,9 @@ strong {
 @for $color from 1 to (length($colorList)+1) {
   @include font-variation(nth($colorList, $color));
 }
+
+h1, h2, h3, h4, h5, p, span {
+  @for $color from 1 to (length($colorList)+1) {
+    @include font-variation-inline(nth($colorList, $color));
+  }
+}

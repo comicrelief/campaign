@@ -1,0 +1,15 @@
+<div class="tt-test" style="background-color: lavender">
+  <div class="tt-view-default">{{ drupal_view('twig_tweak_test') }}</div>
+  <div class="tt-view-page_1">{{ drupal_view('twig_tweak_test', 'page_1') }}</div>
+  <div class="tt-view-page_1-with-argument">{{ drupal_view('twig_tweak_test', 'page_1', 1) }}</div>
+  <div class="tt-entity-default">{{ drupal_entity('node', 1) }}</div>
+  <div class="tt-entity-teaser">{{ drupal_entity('node', 1, 'teaser') }}</div>
+  <div class="tt-entity-from-url">{{ drupal_entity('node') }}</div>
+  <div class="tt-field">{{ drupal_field('body', 'node', 1) }}</div>
+  <div class="tt-block">{{ drupal_block('powered_by_drupal') }}</div>
+  <div class="tt-token">{{ drupal_token('site:name') }}</div>
+  <div class="tt-config">{{ drupal_config('user.settings', 'anonymous') }}</div>
+  <div class="tt-token-replace">{{ 'Site name: [site:name]' | token_replace }}</div>
+  <div class="tt-preg-replace">{{ 'foo' | preg_replace('(foo)', '$1-bar') }}</div>
+  <div class="tt-image-style">{{ 'public://images/ocean.jpg' | image_style('thumbnail') }}</div>
+</div>

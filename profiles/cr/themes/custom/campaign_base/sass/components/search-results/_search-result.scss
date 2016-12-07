@@ -25,6 +25,9 @@
     text-decoration: none;
     color: $colour-black;
   }
+  &.node--type-page {
+    padding-bottom: 0;
+  }
 }
 .search-result__node-link a {
   position: absolute;
