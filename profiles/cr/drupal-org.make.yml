@@ -58,7 +58,7 @@ projects:
   layout_plugin:
     version: 1.0-alpha23
   page_manager:
-    version: 1.0-alpha23
+    version: 1.0-alpha24
   panels:
     download:
       version: 3.x-dev
