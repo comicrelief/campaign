@@ -15,7 +15,7 @@
     min-height: 600px;
   }
   &.promo-header--no-image {
-    min-height: auto;
+    min-height: initial;
   }
   &.promo-header--small {
     @include breakpoint($screen-md-max, $no-query: true) {
@@ -28,7 +28,7 @@
     display: table;
     background: transparent;
     width: 100%;
-    min-height: auto;
+    min-height: initial;
   }
 }
 .promo-header--default {

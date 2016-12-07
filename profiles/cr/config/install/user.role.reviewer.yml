@@ -8,3 +8,5 @@ is_admin: null
 permissions:
   - 'administer pathauto'
   - 'notify of path changes'
+  - 'administer url aliases'
+  - 'create url aliases'
