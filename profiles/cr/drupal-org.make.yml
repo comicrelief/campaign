@@ -11,7 +11,7 @@ projects:
   file_entity:
     version: 2.0-beta3
   media_entity:
-    version: 1.5
+    version: 1.6
   media_entity_instagram:
     version: 1.2
   media_entity_image:
