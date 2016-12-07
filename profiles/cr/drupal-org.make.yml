@@ -140,10 +140,6 @@ projects:
   # Service Integration
   cookieconsent:
     version: 1.0
-  field_group:
-    version: 1.0-rc6
-  twig_tweak:
-    version: 1.4
   rabbitmq:
     version: 1.0-beta1
   search_api:
