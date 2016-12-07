@@ -20,6 +20,7 @@ function video_embed_wysiwyg_ckeditor_css_alter(array &$css, Editor $editor) {
  */
 function video_embed_wysiwyg_form_filter_format_form_alter(&$form, $form_state, $form_id) {
   $form['#validate'][] = 'video_embed_wysiwyg_toolbar_filter_validate';
+  $form['#validate'][] = 'video_embed_wysiwyg_filter_weight_validate';
 }
 
 /**
@@ -42,5 +43,32 @@ function video_embed_wysiwyg_toolbar_filter_validate($form, FormStateInterface $
   // The button and filter can either both be enabled or disabled.
   if ($filter_enabled !== $button_enabled) {
     $form_state->setError($form['filters']['status']['video_embed_wysiwyg'], t('To embed videos, make sure you have enabled the "Video Embed WYSIWYG" filter and dragged the video icon into the WYSIWYG toolbar.'));
+  }
+}
+
+/**
+ * Validate the filters are not in an order that will cause conflicts.
+ */
+function video_embed_wysiwyg_filter_weight_validate($form, FormStateInterface $form_state) {
+  // Don't validate if the WYSIWYG filter is not enabled.
+  if (empty($form_state->getValue(['filters', 'video_embed_wysiwyg', 'status']))) {
+    return;
+  }
+
+  $wysiwyg_weight = $form_state->getValue(['filters', 'video_embed_wysiwyg', 'weight']);
+
+  // Check the WYSIWYG filter runs before url filtering.
+  if (!empty($form_state->getValue(['filters', 'filter_url', 'status']))) {
+    $filter_weight = $form_state->getValue(['filters', 'filter_url', 'weight']);
+    if ($wysiwyg_weight > $filter_weight) {
+      $form_state->setError($form['filters']['status']['video_embed_wysiwyg'], t('The "Video Embed WYSIWYG" filter must run before the "Convert URLs into links" filter to function correctly.'));
+    }
+  }
+  // Check the WYSIWYG filter runs after the HTML tag filter.
+  if (!empty($form_state->getValue(['filters', 'filter_html', 'status']))) {
+    $html_filter_weight = $form_state->getValue(['filters', 'filter_html', 'weight']);
+    if ($wysiwyg_weight < $html_filter_weight) {
+      $form_state->setError($form['filters']['status']['video_embed_wysiwyg'], t('The "Video Embed WYSIWYG" filter must run after the "Limit allowed HTML tags" filter to function correctly.'));
+    }
   }
 }

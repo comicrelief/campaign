@@ -180,10 +180,3 @@ function cr_update_8020() {
     ->delete();
   field_purge_batch('field_teaser_title');
 }
-
-/**
-* Install twig_tweak
-*/
-function cr_update_8021() {
-  \Drupal::service('module_installer')->install(['twig_tweak', 'field_group']);
-}

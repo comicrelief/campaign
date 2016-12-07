@@ -32,6 +32,20 @@ class FieldOutputTest extends KernelTestBase {
           '#uri' => 'public://video_thumbnails/fdbFVWupSsw.jpg',
         ],
       ],
+      'YouTube: Thumbnail With Image Style' => [
+        'https://www.youtube.com/watch?v=fdbFVWupSsw',
+        [
+          'type' => 'video_embed_field_thumbnail',
+          'settings' => [
+            'image_style' => 'thumbnail',
+          ],
+        ],
+        [
+          '#theme' => 'image_style',
+          '#uri' => 'public://video_thumbnails/fdbFVWupSsw.jpg',
+          '#style_name' => 'thumbnail',
+        ],
+      ],
       'YouTube: Embed Code' => [
         'https://www.youtube.com/watch?v=fdbFVWupSsw',
         [

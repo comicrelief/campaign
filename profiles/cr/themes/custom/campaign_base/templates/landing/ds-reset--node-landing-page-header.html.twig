@@ -1,13 +1,13 @@
 {% set layoutClass = field_landing_feature_layout['#items'].value ? 'promo-header--feature' : 'promo-header--default' %}
-{% set small_img = field_landing_small_bg['#items'].value ? 'promo-header--small' : '' %}
 {% set desk_img = node.field_landing_image.entity.fileuri %}
 {% set mobile_img = node.field_landing_image_mobile.entity.fileuri %}
 {% set header_class = [
 	field_landing_background_colour['#items'].value, 
-	'promo-header', layoutClass, small_img]
+	'promo-header', layoutClass]
 %}
 {% set copy_position = field_landing_copy_position_alig['#items'].value %}
-{% if not desk_img and not small_img %}{% set header_class = header_class|merge(["promo-header--no-image"]) %}{% endif %}
+{% if not desk_img %}{% set header_class = header_class|merge(["promo-header--no-image"]) %}{% endif %}
+
 <header class="{{ header_class|join(" ") }} contextual-region">
 	{{ title_suffix.contextual_links }}
 	<div class="promo-header__content">
@@ -20,31 +20,17 @@
 			{{ body }}
 		</div>
 	</div>
-	{% if desk_img %}
-		{% if mobile_img and desk_img and not small_img %}
-		<div class="promo-header__bg-image">
-				<picture>
-					<source srcset="{{ desk_img | image_style('bg_rich_text_wide') }} 1x, {{ desk_img | image_style('bg_rich_text_wide_2x_') }} 2x" media="all and (min-width: 1023px)" type="image/jpeg">
-					<source srcset="{{ mobile_img | image_style('bg_rich_text_narrow') }} 1x, {{ mobile_img | image_style('bg_rich_text_narrow_2x') }} 2x" media="(min-width: 0px)" type="image/jpeg">
-	  			<img src="{{ desk_img | image_style('cr_1700_x_400') }}" alt="">
-				</picture>
-		</div>
-	  	{% elseif mobile_img and desk_img and small_img %}
-	  	<div class="promo-header__bg-image">
-	  		<picture>
-					<source srcset="{{ desk_img | image_style('cr_1700_x_400') }} 1x, {{ desk_img | image_style('cr_1700_x_400_2x') }} 2x" media="all and (min-width: 1023px)" type="image/jpeg">
-					<source srcset="{{ mobile_img | image_style('bg_rich_text_narrow') }} 1x, {{ mobile_img | image_style('bg_rich_text_narrow_2x') }} 2x" media="(min-width: 0px)" type="image/jpeg">
-	  			<img src="{{ desk_img | image_style('cr_1700_x_400') }}" alt="">
-				</picture>
-	  	</div>
-	  		{% else %}
-		  	<div class="promo-header__bg-image">
-		  		<picture>
-						<source srcset="{{ desk_img | image_style('cr_1700_x_400') }} 1x, {{ desk_img | image_style('cr_1700_x_400_2x') }} 2x" media="all and (min-width: 1023px)" type="image/jpeg">
-						<source srcset="{{ desk_img | image_style('cr_740_x_300') }} 1x, {{ desk_img | image_style('cr_740_x_300_2x') }} 2x" media="(min-width: 0px)" type="image/jpeg">
-		  			<img src="{{ desk_img | image_style('cr_1700_x_400') }}" alt="">
-					</picture>
-		  	</div>
-  	{% endif %}
+	{% if mobile_img and desk_img %}
+	<div class="promo-header__bg-image">
+			<picture>
+				<source media="(min-width: 1023px)" srcset="{{ file_url(desk_img) }}">
+  			<source srcset="{{ file_url(mobile_img) }}">
+  			<img src="{{ file_url(desk_img) }}" alt="">
+			</picture>
+	</div>
+  	{% elseif desk_img %}
+  	<div class="promo-header__bg-image">
+  		{{ field_landing_image }}
+  	</div>
   {% endif %}
 </header>
