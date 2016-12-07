@@ -163,7 +163,9 @@ projects:
   optimizely:
     version: 1.1
   simple_sitemap:
-    version: 2.5
+    download:
+      branch: 8.x-2.x
+      revision: 5833ff0
   # Performance modules
   fast_404:
     version: 1.0-alpha2

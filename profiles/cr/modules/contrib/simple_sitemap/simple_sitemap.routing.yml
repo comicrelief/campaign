@@ -5,8 +5,22 @@ simple_sitemap.sitemap:
   requirements:
     _access: 'TRUE'
 
+simple_sitemap.sitemaps:
+  path: '/sitemaps'
+  defaults:
+    _controller: '\Drupal\simple_sitemap\Controller\SimplesitemapController::getSitemap'
+  requirements:
+    _access: 'TRUE'
+
+simple_sitemap.chunk_fallback:
+  path: '/sitemaps/{chunk_id}'
+  defaults:
+    _controller: '\Drupal\simple_sitemap\Controller\SimplesitemapController::getSitemap'
+  requirements:
+    _access: 'TRUE'
+
 simple_sitemap.chunk:
-  path: '/sitemaps/{sitemap_id}/sitemap.xml'
+  path: '/sitemaps/{chunk_id}/sitemap.xml'
   defaults:
     _controller: '\Drupal\simple_sitemap\Controller\SimplesitemapController::getSitemap'
   requirements:

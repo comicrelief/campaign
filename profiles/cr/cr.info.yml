@@ -248,3 +248,7 @@ config_devel:
   - cookieconsent.settings
 
   - simple_sitemap.settings
+  - simple_sitemap.bundle_settings.node.article
+  - simple_sitemap.bundle_settings.node.landing
+  - simple_sitemap.bundle_settings.node.page
+  - simple_sitemap.custom
