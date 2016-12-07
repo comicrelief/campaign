@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: cr_1700_x_400
+label: 'CR 1700 x 400'
+effects:
+  05b66a7b-f219-486e-b2e1-8bf0a857212f:
+    uuid: 05b66a7b-f219-486e-b2e1-8bf0a857212f
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: '1700'
+      height: '400'

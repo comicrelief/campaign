@@ -43,9 +43,14 @@ class EmbedController extends ControllerBase {
       throw new NotFoundHttpException();
     }
 
-    $output = check_markup($text, $filter_format->id());
+    $build = array(
+      '#type' => 'processed_text',
+      '#text' => $text,
+      '#format' => $filter_format->id(),
+    );
+
     $response = new AjaxResponse();
-    $response->addCommand(new EmbedInsertCommand($output));
+    $response->addCommand(new EmbedInsertCommand($build));
     return $response;
   }
 

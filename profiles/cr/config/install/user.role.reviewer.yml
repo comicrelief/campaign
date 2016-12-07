@@ -3,6 +3,8 @@ status: true
 dependencies: {  }
 id: reviewer
 label: Reviewer
-weight: 3
+weight: -6
 is_admin: null
-permissions: {  }
+permissions:
+  - 'administer pathauto'
+  - 'notify of path changes'

@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.landing.field_landing_image
     - field.field.node.landing.field_landing_image_mobile
     - field.field.node.landing.field_landing_meta_tags
+    - field.field.node.landing.field_landing_small_bg
     - field.field.node.landing.field_paragraphs
     - field.field.node.landing.field_svg_body_title
     - field.field.node.landing.panelizer
@@ -211,6 +212,15 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: metatag_empty_formatter
+  field_landing_small_bg:
+    weight: 22
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
   field_paragraphs:
     type: entity_reference_revisions_entity_view
     weight: 4

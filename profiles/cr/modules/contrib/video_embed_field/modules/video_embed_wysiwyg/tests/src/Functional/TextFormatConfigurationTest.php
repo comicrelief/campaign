@@ -28,13 +28,20 @@ class TextFormatConfigurationTest extends BrowserTestBase {
   ];
 
   /**
+   * The URL for the filter format.
+   *
+   * @var string
+   */
+  protected $formatUrl = 'admin/config/content/formats/manage/plain_text';
+
+  /**
    * {@inheritdoc}
    */
   protected function setUp() {
     parent::setUp();
 
     $this->drupalLogin($this->createAdminUser());
-    $this->drupalGet('admin/config/content/formats/manage/plain_text');
+    $this->drupalGet($this->formatUrl);
 
     // Setup the filter to have an editor.
     $this->getSession()->getPage()->find('css', '[name="editor[editor]"]')->setValue('ckeditor');
@@ -47,21 +54,21 @@ class TextFormatConfigurationTest extends BrowserTestBase {
    */
   public function testFormatConfiguration() {
     // Save the settings with the filter enabled, but with no button.
-    $this->drupalGet('admin/config/content/formats/manage/plain_text');
+    $this->drupalGet($this->formatUrl);
     $this->submitForm([
       'filters[video_embed_wysiwyg][status]' => TRUE,
       'editor[settings][toolbar][button_groups]' => '[]',
     ], t('Save configuration'));
     $this->assertSession()->pageTextContains('To embed videos, make sure you have enabled the "Video Embed WYSIWYG" filter and dragged the video icon into the WYSIWYG toolbar.');
 
-    $this->drupalGet('admin/config/content/formats/manage/plain_text');
+    $this->drupalGet($this->formatUrl);
     $this->submitForm([
       'filters[video_embed_wysiwyg][status]' => FALSE,
       'editor[settings][toolbar][button_groups]' => '[[{"name":"Group","items":["video_embed"]}]]',
     ], t('Save configuration'));
     $this->assertSession()->pageTextContains('To embed videos, make sure you have enabled the "Video Embed WYSIWYG" filter and dragged the video icon into the WYSIWYG toolbar.');
 
-    $this->drupalGet('admin/config/content/formats/manage/plain_text');
+    $this->drupalGet($this->formatUrl);
     $this->submitForm([
       'filters[video_embed_wysiwyg][status]' => TRUE,
       'editor[settings][toolbar][button_groups]' => '[[{"name":"Group","items":["video_embed"]}]]',
@@ -70,10 +77,60 @@ class TextFormatConfigurationTest extends BrowserTestBase {
   }
 
   /**
+   * Test the URL filter weight is in the correct order.
+   */
+  public function testUrlWeightOrder() {
+    $this->drupalGet($this->formatUrl);
+    $this->submitForm([
+      // Enable the URL filter and the WYSIWYG embed.
+      'filters[filter_url][status]' => TRUE,
+      'filters[filter_html][status]' => FALSE,
+      'filters[video_embed_wysiwyg][status]' => TRUE,
+      'editor[settings][toolbar][button_groups]' => '[[{"name":"Group","items":["video_embed"]}]]',
+      // Setup the weights so the URL filter runs first.
+      'filters[video_embed_wysiwyg][weight]' => '10',
+      'filters[filter_url][weight]' => '-10',
+    ], 'Save configuration');
+    $this->assertSession()->pageTextContains('The "Video Embed WYSIWYG" filter must run before the "Convert URLs into links" filter to function correctly.');
+
+    // Submit the form with the weights reversed.
+    $this->submitForm([
+      'filters[video_embed_wysiwyg][weight]' => '-10',
+      'filters[filter_url][weight]' => '10',
+    ], 'Save configuration');
+    $this->assertSession()->pageTextContains('The text format Plain text has been updated.');
+  }
+
+  /**
+   * Test the URL filter weight is in the correct order.
+   */
+  public function testHtmlFilterWeightOrder() {
+    $this->drupalGet($this->formatUrl);
+    $this->submitForm([
+      // Enable the URL filter and the WYSIWYG embed.
+      'filters[filter_html][status]' => TRUE,
+      'filters[filter_url][status]' => FALSE,
+      'filters[video_embed_wysiwyg][status]' => TRUE,
+      'editor[settings][toolbar][button_groups]' => '[[{"name":"Group","items":["video_embed"]}]]',
+      // Run WYSWIYG first then the HTML filter.
+      'filters[video_embed_wysiwyg][weight]' => '-10',
+      'filters[filter_html][weight]' => '10',
+    ], 'Save configuration');
+    $this->assertSession()->pageTextContains('The "Video Embed WYSIWYG" filter must run after the "Limit allowed HTML tags" filter to function correctly.');
+
+    // Submit the form with the weights reversed.
+    $this->submitForm([
+      'filters[video_embed_wysiwyg][weight]' => '10',
+      'filters[filter_html][weight]' => '-10',
+    ], 'Save configuration');
+    $this->assertSession()->pageTextContains('The text format Plain text has been updated.');
+  }
+
+  /**
    * Test the dialog defaults can be set and work correctly.
    */
   public function testDialogDefaultValues() {
-    $this->drupalGet('admin/config/content/formats/manage/plain_text');
+    $this->drupalGet($this->formatUrl);
 
     // Assert all the form fields that appear on the modal, appear as
     // configurable defaults.

@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Twig Tweak test module.
+ */
+
+/**
+ * Implements hook_page_bottom().
+ */
+function twig_tweak_test_page_bottom(array &$page_bottom) {
+  $page_bottom['twig_tweak_test']['#theme'] = 'twig_tweak_test';
+}
+
+/**
+ * Implements hook_theme().
+ */
+function twig_tweak_test_theme() {
+  return ['twig_tweak_test' => ['variables' => []]];
+}

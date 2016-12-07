@@ -1,5 +1,23 @@
 (function($, Drupal) {
   $( document ).ready(function() {
+    // Search block pop up * todo make a function
+    $("button.main-menu__icons-magnify").on("click", function() {
+      $(this).toggleClass("active");
+      $(".search-block").toggleClass("show");
+      $(".search-overlay").toggleClass("show");
+      $("button.main-menu__icons-esu-toggle").removeClass("active");
+      $(".block--cr-email-signup--head").removeClass("show");
+    });
+    $("button.main-menu__icons-esu-toggle").on("click", function() {
+      $("button.main-menu__icons-magnify").removeClass("active");
+      $(".search-block").removeClass("show");
+      $(".search-overlay").removeClass("show");
+    });
+    $(".search-block .icon").on("click", function() {
+      $("button.main-menu__icons-magnify").removeClass("active");
+      $(".search-block").removeClass("show");
+      $(".search-overlay").removeClass("show");
+    });
     // IE fallback objectfit
     if(!Modernizr.objectfit) {
       $('.objectfit').each(function () {
@@ -19,6 +37,7 @@
     // Activate lighcase
     // Video lightcase
     $('a[data-rel^=lightcase]').lightcase({
+      overlayOpacity: .95,
       iframe: {
         width: "100%",
         height: "100%",

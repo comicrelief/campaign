@@ -53,6 +53,7 @@ dependencies:
   - video_embed_wysiwyg
   - filter
   - metatag_open_graph
+  - metatag_verification
   - pathauto
   - redirect
   - view_modes_display
@@ -60,6 +61,8 @@ dependencies:
   - focal_point
   - scheduled_updates
   - cookieconsent
+  - field_group
+  - twig_tweak
 
   # Layout
   - inline_entity_form
@@ -87,7 +90,6 @@ dependencies:
   - cr_iframe
   - cr_block_paragraph
   - cr_single_msg
-  - cr_single_message_row_paragraph
   - cr_teaser
   - cr_email_signup
   - cr_partner
@@ -184,6 +186,8 @@ config_devel:
   - image.style.cw_quote_lg
   - image.style.cw_quote_sm
   - image.style.cr_1400_x_658
+  - image.style.cr_1700_x_400
+  - image.style.cr_740_x_300
 
   # Retina image styles
   - image.style.bg_rich_text_narrow_2x
@@ -200,6 +204,8 @@ config_devel:
   - image.style.story_293_x_322_crop_lg_2x_
   - image.style.story_479_x_352_crop_md_2x_
   - image.style.story_739_x_561_crop_sm_2x_
+  - image.style.cr_1700_x_400_2x
+  - image.style.cr_740_x_300_2x
 
   # Responsive image style mappings
   - responsive_image.styles.hero_image_full_node
@@ -242,3 +248,7 @@ config_devel:
   - cookieconsent.settings
 
   - simple_sitemap.settings
+  - simple_sitemap.bundle_settings.node.article
+  - simple_sitemap.bundle_settings.node.landing
+  - simple_sitemap.bundle_settings.node.page
+  - simple_sitemap.custom

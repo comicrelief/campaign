@@ -38,16 +38,32 @@ class Vimeo extends ProviderPluginBase {
    * {@inheritdoc}
    */
   public function getRemoteThumbnailUrl() {
-    $video_data = json_decode(file_get_contents('http://vimeo.com/api/v2/video/' . $this->getVideoId() . '.json'));
-    return $video_data[0]->thumbnail_large;
+    return $this->oEmbedData()->thumbnail_large;
+  }
+
+  /**
+   * Get the vimeo oembed data.
+   *
+   * @return array
+   *   An array of data from the oembed endpoint.
+   */
+  protected function oEmbedData() {
+    return json_decode(file_get_contents('http://vimeo.com/api/v2/video/' . $this->getVideoId() . '.json'))[0];
   }
 
   /**
    * {@inheritdoc}
    */
   public static function getIdFromInput($input) {
-    preg_match('/^https?:\/\/(www\.)?vimeo.com\/(channels\/[a-zA-Z0-9]*\/)?(?<id>[0-9]*)$/', $input, $matches);
+    preg_match('/^https?:\/\/(www\.)?vimeo.com\/(channels\/[a-zA-Z0-9]*\/)?(?<id>[0-9]*)(\/[a-zA-Z0-9]+)?$/', $input, $matches);
     return isset($matches['id']) ? $matches['id'] : FALSE;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getName() {
+    return $this->oEmbedData()->title;
   }
 
 }
