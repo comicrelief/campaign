@@ -105,7 +105,7 @@ projects:
   stage_file_proxy:
     version: 1.0-alpha1
   imagemagick:
-    version: 1.0-alpha2
+    version: 1.0-alpha4
   config_readonly:
     version: 1.0-beta2
   # Editor/admin experience
