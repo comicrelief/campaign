@@ -29,7 +29,7 @@ projects:
       branch: 8.x-1.x
       revision: 77e18608cff42cfc4384bbcdd730a1ffdc37779b
   embed:
-    version: 1.0-rc2
+    version: 1.0-rc3
   entity_embed:
     download:
       branch: 8.x-1.x
