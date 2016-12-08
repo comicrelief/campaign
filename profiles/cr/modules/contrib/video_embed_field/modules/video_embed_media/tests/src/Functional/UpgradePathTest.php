@@ -15,6 +15,13 @@ class UpgradePathTest extends BrowserTestBase {
   use AdminUserTrait;
 
   /**
+   * Disable strict checking because we are installing MEEV.
+   *
+   * @var bool
+   */
+  protected $strictConfigSchema = FALSE;
+
+  /**
    * Modules to install.
    *
    * @var array

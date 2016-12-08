@@ -28,6 +28,13 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class ImagemagickToolkit extends ImageToolkitBase {
 
   /**
+   * Whether we are running on Windows OS.
+   *
+   * @var bool
+   */
+  protected $isWindows;
+
+  /**
    * The module handler service.
    *
    * @var \Drupal\Core\Extension\ModuleHandlerInterface
@@ -145,6 +152,7 @@ class ImagemagickToolkit extends ImageToolkitBase {
     $this->moduleHandler = $module_handler;
     $this->formatMapper = $format_mapper;
     $this->appRoot = $app_root;
+    $this->isWindows = substr(PHP_OS, 0, 3) === 'WIN';
   }
 
   /**
@@ -302,8 +310,23 @@ class ImagemagickToolkit extends ImageToolkitBase {
       '#title' => $this->t('Prepend arguments'),
       '#default_value' => $config->get('prepend'),
       '#required' => FALSE,
-      '#description' => $this->t('Additional arguments to add in front of the others when executing commands. Useful if you need to set e.g. <kbd>-limit</kbd> or <kbd>-debug</kbd> arguments.'),
+      '#description' => $this->t('Use this to add e.g. <kbd>-limit</kbd> or <kbd>-debug</kbd> arguments in front of the others when executing the <kbd>identify</kbd> and <kbd>convert</kbd> commands.'),
     );
+    // Locale.
+    $form['exec']['locale'] = array(
+      '#type' => 'textfield',
+      '#title' => $this->t('Locale'),
+      '#default_value' => $config->get('locale'),
+      '#required' => FALSE,
+      '#description' => $this->t("The locale to be used to prepare the command passed to executables. The default, <kbd>'en_US.UTF-8'</kbd>, should work in most cases. If that is not available on the server, enter another locale. On *nix servers, type <kbd>'locale -a'</kbd> in a shell window to see a list of all locales available."),
+    );
+    // Log warnings.
+    $form['exec']['log_warnings'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Log warnings'),
+      '#default_value' => $config->get('log_warnings'),
+      '#description' => $this->t('Log a warning entry in the watchdog when the execution of a command returns with a non-zero code, but no error message.'),
+    ];
     // Debugging.
     $form['exec']['debug'] = array(
       '#type' => 'checkbox',
@@ -387,18 +410,19 @@ class ImagemagickToolkit extends ImageToolkitBase {
     $package = $package ?: $this->configFactory->get('imagemagick.settings')->get('binaries');
     $suite = $package === 'imagemagick' ? $this->t('ImageMagick') : $this->t('GraphicsMagick');
     $command = $package === 'imagemagick' ? 'convert' : 'gm';
-    $path .= $command;
 
     // If a path is given, we check whether the binary exists and can be
     // invoked.
-    if ($path != 'convert' && $path != 'gm') {
+    if (!empty($path)) {
+      $executable = $this->getExecutable($command, $path);
+
       // Check whether the given file exists.
-      if (!is_file($path)) {
-        $status['errors'][] = $this->t('The @suite executable %file does not exist.', array('@suite' => $suite, '%file' => $path));
+      if (!is_file($executable)) {
+        $status['errors'][] = $this->t('The @suite executable %file does not exist.', array('@suite' => $suite, '%file' => $executable));
       }
       // If it exists, check whether we can execute it.
-      elseif (!is_executable($path)) {
-        $status['errors'][] = $this->t('The @suite file %file is not executable.', array('@suite' => $suite, '%file' => $path));
+      elseif (!is_executable($executable)) {
+        $status['errors'][] = $this->t('The @suite file %file is not executable.', array('@suite' => $suite, '%file' => $executable));
       }
     }
 
@@ -467,6 +491,8 @@ class ImagemagickToolkit extends ImageToolkitBase {
       ->set('use_identify', $form_state->getValue(array('imagemagick', 'formats', 'use_identify')))
       ->set('image_formats', Yaml::decode($form_state->getValue(['imagemagick', 'formats', 'mapping', 'image_formats'])))
       ->set('prepend', $form_state->getValue(array('imagemagick', 'exec', 'prepend')))
+      ->set('locale', $form_state->getValue(['imagemagick', 'exec', 'locale']))
+      ->set('log_warnings', (bool) $form_state->getValue(['imagemagick', 'exec', 'log_warnings']))
       ->set('debug', $form_state->getValue(array('imagemagick', 'exec', 'debug')))
       ->set('advanced.density', $form_state->getValue(array('imagemagick', 'advanced', 'density')))
       ->set('advanced.colorspace', $form_state->getValue(array('imagemagick', 'advanced', 'colorspace')))
@@ -826,17 +852,63 @@ class ImagemagickToolkit extends ImageToolkitBase {
    *
    * PHP escapeshellarg() drops non-ascii characters, this is a replacement.
    *
-   * Stop-gap replacement while core issue #1561214 is solved.
+   * Stop-gap replacement until core issue #1561214 has been solved. Solution
+   * proposed in #1502924-8.
+   *
+   * PHP escapeshellarg() on Windows also drops % (percentage sign) characters.
+   * We prevent this by replacing it with a pattern that should be highly
+   * unlikely to appear in the string itself and does not contain any
+   * "dangerous" character at all (very wide definition of dangerous). After
+   * escaping we replace that pattern back with a % character.
+   *
+   * @param string $arg
+   *   The string to escape.
    *
    * @return string
    *   An escaped string for use in the ::imagemagickExec method.
    */
   public function escapeShellArg($arg) {
-    // Solution proposed in #1502924-8.
-    $old_locale = setlocale(LC_CTYPE, 0);
-    setlocale(LC_CTYPE, 'en_US.UTF-8');
-    $arg_escaped = escapeshellarg($arg);
-    setlocale(LC_CTYPE, $old_locale);
+    static $percentage_sign_replace_pattern = '1357902468IMAGEMAGICKPERCENTSIGNPATTERN8642097531';
+
+    // Put the configured locale in a static to avoid multiple config get calls
+    // in the same request.
+    static $config_locale;
+
+    if (!isset($config_locale)) {
+      $config_locale = $this->configFactory->get('imagemagick.settings')->get('locale');
+      if (empty($config_locale)) {
+        $config_locale = FALSE;
+      }
+    }
+
+    if ($this->isWindows) {
+      // Temporarily replace % characters.
+      $arg = str_replace('%', $percentage_sign_replace_pattern, $arg);
+    }
+
+    // If no locale specified in config, return with standard.
+    if ($config_locale === FALSE) {
+      $arg_escaped = escapeshellarg($arg);
+    }
+    else {
+      // Get the current locale.
+      $current_locale = setlocale(LC_CTYPE, 0);
+      if ($current_locale != $config_locale) {
+        // Temporarily swap the current locale with the configured one.
+        setlocale(LC_CTYPE, $config_locale);
+        $arg_escaped = escapeshellarg($arg);
+        setlocale(LC_CTYPE, $current_locale);
+      }
+      else {
+        $arg_escaped = escapeshellarg($arg);
+      }
+    }
+
+    // Get our % characters back.
+    if ($this->isWindows) {
+      $arg_escaped = str_replace($percentage_sign_replace_pattern, '%', $arg_escaped);
+    }
+
     return $arg_escaped;
   }
 
@@ -875,7 +947,7 @@ class ImagemagickToolkit extends ImageToolkitBase {
    *   TRUE if the file could be found and is an image, FALSE otherwise.
    */
   protected function parseFileViaIdentify() {
-    $this->addArgument('-format ' . $this->escapeShellArg("format:%m|width:%w|height:%h|exif_orientation:%[EXIF:Orientation]\n"));
+    $this->addArgument('-format ' . $this->escapeShellArg("format:%[magick]|width:%[width]|height:%[height]|exif_orientation:%[EXIF:Orientation]\\n"));
     if ($identify_output = $this->identify()) {
       $frames = explode("\n", $identify_output);
 
@@ -894,7 +966,7 @@ class ImagemagickToolkit extends ImageToolkitBase {
       $data = [];
       foreach ($info as $item) {
         list($key, $value) = explode(':', $item);
-        $data[$key] = $value;
+        $data[trim($key)] = trim($value);
       }
       $format = isset($data['format']) ? $data['format'] : NULL;
       if ($this->formatMapper->isFormatEnabled($format)) {
@@ -1017,25 +1089,20 @@ class ImagemagickToolkit extends ImageToolkitBase {
   protected function imagemagickExec($command, &$output = NULL, &$error = NULL, $path = NULL) {
     $suite = $this->configFactory->get('imagemagick.settings')->get('binaries') === 'imagemagick' ? 'ImageMagick' : 'GraphicsMagick';
 
-    // $path is only passed from the validation of the image toolkit form, on
-    // which the path to convert is configured.
-    // @see ::checkPath()
-    if (!isset($path)) {
-      $path = $this->configFactory->get('imagemagick.settings')->get('path_to_binaries') . $command;
-    }
-
-    if (substr(PHP_OS, 0, 3) == 'WIN') {
+    $cmd = $this->getExecutable($command, $path);
+    if ($this->isWindows) {
       // Use Window's start command with the /B flag to make the process run in
       // the background and avoid a shell command line window from showing up.
       // @see http://us3.php.net/manual/en/function.exec.php#56599
       // Use /D to run the command from PHP's current working directory so the
       // file paths don't have to be absolute.
-      $path = 'start "' . $suite . '" /D ' . $this->escapeShellArg($this->appRoot) . ' /B ' . $this->escapeShellArg($path);
+      $cmd = 'start "' . $suite . '" /D ' . $this->escapeShellArg($this->appRoot) . ' /B ' . $this->escapeShellArg($cmd);
     }
 
     if ($source_path = $this->getSourceLocalPath()) {
       $source_path = $this->escapeShellArg($source_path);
     }
+
     if ($destination_path = $this->getDestinationLocalPath()) {
       $destination_path = $this->escapeShellArg($destination_path);
       // If the format of the derivative image has to be changed, concatenate
@@ -1048,21 +1115,21 @@ class ImagemagickToolkit extends ImageToolkitBase {
 
     switch($command) {
       case 'identify':
-        $cmdline = $path . ' ' . implode(' ', $this->getArguments()) . ' ' . $source_path;
+        $cmdline = $cmd . ' ' . implode(' ', $this->getArguments()) . ' ' . $source_path;
         break;
 
       case 'convert':
         // ImageMagick arguments:
         // convert input [arguments] output
         // @see http://www.imagemagick.org/Usage/basics/#cmdline
-        $cmdline = $path . ' ' . $source_path . ' ' . implode(' ', $this->getArguments()) . ' ' . $destination_path;
+        $cmdline = $cmd . ' ' . $source_path . ' ' . implode(' ', $this->getArguments()) . ' ' . $destination_path;
         break;
 
       case 'gm':
         // GraphicsMagick arguments:
         // gm convert [arguments] input output
         // @see http://www.graphicsmagick.org/GraphicsMagick.html
-        $cmdline = $path . ' convert ' . implode(' ', $this->getArguments()) . ' '  . $source_path . ' ' . $destination_path;
+        $cmdline = $cmd . ' convert ' . implode(' ', $this->getArguments()) . ' '  . $source_path . ' ' . $destination_path;
         break;
 
     }
@@ -1080,10 +1147,12 @@ class ImagemagickToolkit extends ImageToolkitBase {
       while (!feof($pipes[1])) {
         $output .= fgets($pipes[1]);
       }
+      $output = utf8_encode($output);
       $error = '';
       while (!feof($pipes[2])) {
         $error .= fgets($pipes[2]);
       }
+      $error = utf8_encode($error);
 
       fclose($pipes[0]);
       fclose($pipes[1]);
@@ -1106,17 +1175,26 @@ class ImagemagickToolkit extends ImageToolkitBase {
 
       // If the executable returned a non-zero code, log to the watchdog.
       if ($return_code != 0) {
-        // If there is no error message, clarify this.
         if ($error === '') {
-          $error = $this->t('No error message.');
+          // If there is no error message, and allowed in config, log a
+          // warning.
+          if ($this->configFactory->get('imagemagick.settings')->get('log_warnings') === TRUE) {
+            $this->logger->warning("@suite returned with code @code [command: @cmdline]", [
+              '@suite' => $suite,
+              '@code' => $return_code,
+              '@cmdline' => $cmdline,
+            ]);
+          }
         }
-        // Format $error with as full message, passed by reference.
-        $error = $this->t('@suite error @code: @error', array(
-          '@suite' => $suite,
-          '@code' => $return_code,
-          '@error' => $error,
-        ));
-        $this->logger->error($error);
+        else {
+          // Log $error with context information.
+          $this->logger->error("@suite error @code: @error [command: @cmdline]", [
+            '@suite' => $suite,
+            '@code' => $return_code,
+            '@error' => $error,
+            '@cmdline' => $cmdline,
+          ]);
+        }
         // Executable exited with an error code, return it.
         return $return_code;
       }
@@ -1126,6 +1204,33 @@ class ImagemagickToolkit extends ImageToolkitBase {
     }
     // The shell command could not be executed.
     return FALSE;
+  }
+
+  /**
+   * Returns the full path to the executable.
+   *
+   * @param string $command
+   *   The program to execute, typically 'convert', 'identify' or 'gm'.
+   * @param string $path
+   *   (optional) A custom path to the folder of the executable. When left
+   *   empty, the setting imagemagick.settings.path_to_binaries is taken.
+   *
+   * @return string
+   *   The full path to the executable.
+   */
+  public function getExecutable($command, $path = NULL) {
+    // $path is only passed from the validation of the image toolkit form, on
+    // which the path to convert is configured. @see ::checkPath()
+    if (!isset($path)) {
+      $path = $this->configFactory->get('imagemagick.settings')->get('path_to_binaries');
+    }
+
+    $executable = $command;
+    if ($this->isWindows) {
+      $executable .= '.exe';
+    }
+
+    return $path . $executable;
   }
 
   /**
