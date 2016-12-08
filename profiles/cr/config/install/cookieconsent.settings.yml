@@ -6,7 +6,7 @@ theme: dark-bottom
 path: /
 domain: ''
 expiry: '365'
-target: _self
+target: _blank
 theme_path: ''
 customise: 0
 cookie_policy: 'https://www.rednoseday.com/legal#terms'
