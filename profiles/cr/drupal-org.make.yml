@@ -144,6 +144,9 @@ projects:
     version: 1.0-rc6
   twig_tweak:
     version: 1.4
+    patch:
+      # See: https://www.drupal.org/node/2833960
+      2833960: https://www.drupal.org/files/issues/2833960-relative-image-path.patch
   rabbitmq:
     version: 1.0-beta1
   search_api:
