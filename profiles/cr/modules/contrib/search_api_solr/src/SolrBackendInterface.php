@@ -5,7 +5,6 @@ namespace Drupal\search_api_solr;
 use Drupal\search_api\Backend\BackendInterface;
 use Drupal\search_api\IndexInterface;
 use Drupal\search_api\Item\ItemInterface;
-use Drupal\search_api_solr\Solr\SolrHelper;
 
 /**
  * Defines an interface for Solr search backend plugins.
@@ -14,30 +13,6 @@ use Drupal\search_api_solr\Solr\SolrHelper;
  * additional Solr specific methods.
  */
 interface SolrBackendInterface extends BackendInterface {
-
-  /**
-   * Returns the solr helper class.
-   *
-   * @return \Drupal\search_api_solr\Solr\SolrHelper
-   *   The Solr helper class.
-   */
-  public function getSolrHelper();
-
-  /**
-   * Sets the Solr helper class.
-   *
-   * @param \Drupal\search_api_solr\Solr\SolrHelper $solrHelper
-   *   The Solr helper class.
-   */
-  public function setSolrHelper(SolrHelper $solrHelper);
-
-  /**
-   * Returns the Solarium client.
-   *
-   * @return \Solarium\Client
-   *   The solarium instance object.
-   */
-  public function getSolr();
 
   /**
    * Creates a list of all indexed field names mapped to their Solr field names.
@@ -56,30 +31,13 @@ interface SolrBackendInterface extends BackendInterface {
   public function getSolrFieldNames(IndexInterface $index, $reset = FALSE);
 
   /**
-   * Gets the currently used Solr connection object.
+   * Returns the Solr connector used for this backend.
    *
-   * @return \Solarium\Client
-   *   The solr connection object used by this server.
+   * @return \Drupal\search_api_solr\SolrConnectorInterface
+   *
+   * @throws \Drupal\search_api\SearchApiException
    */
-  public function getSolrConnection();
-
-  /**
-   * Retrieves a config file or file list from the Solr server.
-   *
-   * Uses the admin/file request handler.
-   *
-   * @param string|null $file
-   *   (optional) The name of the file to retrieve. If the file is a directory,
-   *   the directory contents are instead listed and returned. NULL represents
-   *   the root config directory.
-   *
-   * @return \Solarium\Core\Client\Response
-   *   A Solarium response object containing either the file contents or a file
-   *   list.
-   *
-   * @throws \Drupal\search_api_solr\SearchApiSolrException
-   */
-  public function getFile($file = NULL);
+  public function getSolrConnector();
 
   /**
    * Retrieves a Solr document from an search api index item.
@@ -101,10 +59,12 @@ interface SolrBackendInterface extends BackendInterface {
    *   The search api index.
    * @param \Drupal\search_api\Item\ItemInterface[] $items
    *   An array of items to get documents for.
+   * @param \Solarium\QueryType\Update\Query\Query $update_query
+   *   The existing update query the documents should be added to.
    *
    * @return \Solarium\QueryType\Update\Query\Document\Document[]
    *   An array of solr documents.
    */
-  public function getDocuments(IndexInterface $index, array $items);
+  public function getDocuments(IndexInterface $index, array $items, \Solarium\QueryType\Update\Query\Query $update_query = NULL);
 
 }

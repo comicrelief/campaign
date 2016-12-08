@@ -28,6 +28,17 @@ plugin.plugin_configuration.search_api_processor.*:
 
 # Definitions for individual processors
 
+plugin.plugin_configuration.search_api_processor.hierarchy:
+  type: search_api.default_processor_configuration
+  label: 'Hierarchy processor configuration'
+  mapping:
+    fields:
+      type: sequence
+      label: 'Fields for which to add the hierarchy'
+      sequence:
+        type: string
+        label: 'Field ID'
+
 plugin.plugin_configuration.search_api_processor.highlight:
   type: search_api.default_processor_configuration
   label: 'Highlight processor configuration'

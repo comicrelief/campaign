@@ -13,7 +13,10 @@ function search_api_solr_requirements($phase) {
     $unavailable = 0;
     $last = NULL;
     foreach ($servers as $server) {
-      if (!$server->getBackend()->getSolrHelper()->pingCore()) {
+      /** @var \Drupal\search_api_solr\SolrBackendInterface $backend */
+      $backend = $server->getBackend();
+      $connector = $backend->getSolrConnector();
+      if (!$connector->pingCore()) {
         ++$unavailable;
         $last = $server;
       }
@@ -28,8 +31,8 @@ function search_api_solr_requirements($phase) {
     );
     if ($unavailable) {
       if ($unavailable == 1) {
-        $ret['search_api_solr']['description'] = \Drupal::translation()->translate('The Solr server of <a href="!url">%name</a> could not be reached.',
-          array('!url' => \Drupal\Core\Url::fromRoute('entity.search_api_server.canonical', array('search_api_server' => $last->id()))->toString(), '%name' => $last->label()));
+        $ret['search_api_solr']['description'] = \Drupal::translation()->translate('The Solr server of <a href=":url">%name</a> could not be reached.',
+          array(':url' => \Drupal\Core\Url::fromRoute('entity.search_api_server.canonical', array('search_api_server' => $last->id()))->toString(), '%name' => $last->label()));
       }
       else {
         $ret['search_api_solr']['description'] = \Drupal::translation()->translate('@count Solr servers could not be reached.', array('@count' => $unavailable));
@@ -46,25 +49,47 @@ function search_api_solr_requirements($phase) {
 }
 
 /**
- * Split Solr paths stored in configurations into server and core parts.
+ * Gets all backend configs for active Solr servers.
+ *
+ * @return array
+ *   All backend configs for active Solr servers keyed by server name.
  */
-function search_api_solr_update_8001() {
+function search_api_solr_update_helper_get_backend_configs($prefix = 'search_api_solr') {
   $config_factory = \Drupal::configFactory();
-  $has_trusted_data = TRUE;
-
+  $backend_configs = [];
   foreach ($config_factory->listAll('search_api.server.') as $server_name) {
     $server = $config_factory->get($server_name);
     // Covers search_api_solr_multilingual, too.
-    if (strpos($server->get('backend'), 'search_api_solr') === 0) {
-      $backend_config = $server->get('backend_config');
-      $parts = explode('/', $backend_config['path']);
-      if (count($parts) > 2) {
-        $backend_config['core'] = array_pop($parts);
-        $backend_config['path'] = implode('/', $parts);
-        $config_factory->getEditable($server_name)
-          ->set('backend_config', $backend_config)
-          ->save($has_trusted_data);
-      }
+    if (strpos($server->get('backend'), $prefix) === 0) {
+      $backend_configs[$server_name] = $server->get('backend_config');
+    }
+  }
+  return $backend_configs;
+}
+
+/**
+ * Saves a modified backend config for a given Solr server.
+ *
+ * @param string $server_name
+ * @param array $backend_config
+ * @param bool $trusted_data
+ */
+function search_api_solr_update_helper_save_backend_config($server_name, array $backend_config, $trusted_data = TRUE) {
+  \Drupal::configFactory()->getEditable($server_name)
+    ->set('backend_config', $backend_config)
+    ->save($trusted_data);
+}
+
+/**
+ * Split Solr paths stored in configurations into server and core parts.
+ */
+function search_api_solr_update_8001() {
+  foreach (search_api_solr_update_helper_get_backend_configs() as $server_name => $backend_config) {
+    $parts = explode('/', $backend_config['path']);
+    if (count($parts) > 2) {
+      $backend_config['core'] = array_pop($parts);
+      $backend_config['path'] = implode('/', $parts);
+      search_api_solr_update_helper_save_backend_config($server_name, $backend_config);
     }
   }
 }
@@ -73,22 +98,37 @@ function search_api_solr_update_8001() {
  * Convert http_user and http_pass to username and password config for Solarium.
  */
 function search_api_solr_update_8002() {
-  $config_factory = \Drupal::configFactory();
-  $has_trusted_data = TRUE;
+  foreach (search_api_solr_update_helper_get_backend_configs() as $server_name => $backend_config) {
+    $backend_config['username'] = $backend_config['http_user'];
+    $backend_config['password'] = $backend_config['http_pass'];
+    unset($backend_config['http_user'], $backend_config['http_pass']);
+    search_api_solr_update_helper_save_backend_config($server_name, $backend_config);
+  }
+}
 
-  foreach ($config_factory->listAll('search_api.server.') as $server_name) {
-    $server = $config_factory->get($server_name);
-    // Covers search_api_solr_multilingual, too.
-    if (strpos($server->get('backend'), 'search_api_solr') === 0) {
-      $backend_config = $server->get('backend_config');
+/**
+ * Add default timeout settings to existing configs.
+ */
+function search_api_solr_update_8003() {
+  foreach (search_api_solr_update_helper_get_backend_configs() as $server_name => $backend_config) {
+    $backend_config['timeout'] = 5;
+    $backend_config['index_timeout'] = 5;
+    $backend_config['optimize_timeout'] = 10;
+    search_api_solr_update_helper_save_backend_config($server_name, $backend_config);
+  }
+}
 
-      $backend_config['username'] = $backend_config['http_user'];
-      $backend_config['password'] = $backend_config['http_pass'];
-      unset($backend_config['http_user'], $backend_config['http_pass']);
-
-      $config_factory->getEditable($server_name)
-        ->set('backend_config', $backend_config)
-        ->save($has_trusted_data);
+/**
+ * Migrate existing backend configurations to the basic auth connector plugin.
+ */
+function search_api_solr_update_8004() {
+  foreach (search_api_solr_update_helper_get_backend_configs() as $server_name => $backend_config) {
+    $backend_config['connector'] = 'basic_auth';
+    $backend_config['connector_config'] = [];
+    foreach (['scheme', 'host', 'port', 'path', 'core', 'timeout', 'index_timeout', 'optimize_timeout', 'solr_version', 'http_method', 'username', 'password'] as $key) {
+      $backend_config['connector_config'][$key] = $backend_config[$key];
+      unset($backend_config[$key]);
     }
+    search_api_solr_update_helper_save_backend_config($server_name, $backend_config);
   }
 }

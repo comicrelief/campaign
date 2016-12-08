@@ -4,6 +4,7 @@ namespace Drupal\search_api\Plugin\views\query;
 
 use Drupal\Component\Render\FormattableMarkup;
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Cache\UncacheableDependencyTrait;
 use Drupal\Core\Database\Query\ConditionInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
@@ -13,7 +14,6 @@ use Drupal\search_api\ParseMode\ParseModeInterface;
 use Drupal\search_api\Query\ConditionGroupInterface;
 use Drupal\search_api\Query\QueryInterface;
 use Drupal\search_api\Query\ResultSetInterface;
-use Drupal\search_api\UncacheableDependencyTrait;
 use Drupal\search_api\Utility\Utility;
 use Drupal\user\Entity\User;
 use Drupal\views\Plugin\views\display\DisplayPluginBase;
@@ -373,6 +373,9 @@ class SearchApiQuery extends QueryPluginBase {
     if (($path = $this->view->getPath()) && strpos(Url::fromRoute('<current>')->toString(), $this->view->override_path) !== 0) {
       $this->query->setOption('search_api_base_path', $path);
     }
+
+    // Save query information for Views UI.
+    $view->build_info['query'] = (string) $this->query;
   }
 
   /**
@@ -989,6 +992,9 @@ class SearchApiQuery extends QueryPluginBase {
   protected function sanitizeOperator($operator) {
     if ($operator === '!=') {
       $operator = '<>';
+    }
+    elseif (in_array($operator, array('in', 'not in', 'between', 'not between'))) {
+      $operator = strtoupper($operator);
     }
     return $operator;
   }

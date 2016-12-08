@@ -9,6 +9,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\search_api\SearchApiException;
 use Drupal\search_api\ServerInterface;
 use Drupal\search_api_solr\Plugin\search_api\backend\SearchApiSolrBackend;
+use Drupal\search_api_solr\SolrBackendInterface;
 use Drupal\search_api_solr\Utility\Utility as SearchApiSolrUtility;
 
 /**
@@ -57,7 +58,9 @@ class SolrConfigForm extends FormBase {
         $data .= '<p><em>' . $this->t('Last modified: @time.', array('@time' => $file_date)) . '</em></p>';
 
         if ($file_info['size'] > 0) {
-          $file_data = $search_api_server->getBackend()->getFile($file_name);
+          /** @var SolrBackendInterface $backend */
+          $backend = $search_api_server->getBackend();
+          $file_data = $backend->getSolrConnector()->getFile($file_name);
           $data .= '<pre><code>' . Html::escape($file_data->getBody()) . '</code></pre>';
         }
         else {
@@ -68,7 +71,7 @@ class SolrConfigForm extends FormBase {
       }
     }
     catch (SearchApiException $e) {
-      watchdog_exception('search_api_solr', $e, '%type while retrieving config files of Solr server @server: !message in %function (line %line of %file).', array('@server' => $search_api_server->label()));
+      watchdog_exception('search_api_solr', $e, '%type while retrieving config files of Solr server @server: @message in %function (line %line of %file).', array('@server' => $search_api_server->label()));
       $form['info']['#markup'] = $this->t('An error occured while trying to load the list of files.');
     }
 

@@ -7,6 +7,7 @@ use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\PluginFormInterface;
+use Drupal\Core\Form\SubformState;
 use Drupal\Core\Url;
 use Drupal\search_api\Backend\BackendPluginManager;
 use Drupal\search_api\SearchApiException;
@@ -207,8 +208,8 @@ class ServerForm extends EntityForm {
           drupal_set_message($this->t('Please configure the selected backend.'), 'warning');
         }
         // Attach the backend plugin configuration form.
-        $backend_form = isset($form['backend_config']) ? $form['backend_config'] : array();
-        $form['backend_config'] = $backend->buildConfigurationForm($backend_form, $form_state);
+        $backend_form_state = SubformState::createForSubform($form['backend_config'], $form, $form_state);
+        $form['backend_config'] = $backend->buildConfigurationForm($form['backend_config'], $backend_form_state);
 
         // Modify the backend plugin configuration container element.
         $form['backend_config']['#type'] = 'details';
@@ -268,7 +269,7 @@ class ServerForm extends EntityForm {
     elseif ($server->hasValidBackend()) {
       $backend = $server->getBackend();
       if ($backend instanceof PluginFormInterface) {
-        $backend_form_state = new SubFormState($form_state, array('backend_config'));
+        $backend_form_state = SubformState::createForSubform($form['backend_config'], $form, $form_state);
         $backend->validateConfigurationForm($form['backend_config'], $backend_form_state);
       }
     }
@@ -286,7 +287,7 @@ class ServerForm extends EntityForm {
     if ($server->hasValidBackend()) {
       $backend = $server->getBackend();
       if ($backend instanceof PluginFormInterface) {
-        $backend_form_state = new SubFormState($form_state, array('backend_config'));
+        $backend_form_state = SubformState::createForSubform($form['backend_config'], $form, $form_state);
         $backend->submitConfigurationForm($form['backend_config'], $backend_form_state);
       }
     }
