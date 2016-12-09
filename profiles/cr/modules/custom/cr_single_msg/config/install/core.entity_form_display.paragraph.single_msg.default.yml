@@ -8,6 +8,7 @@ dependencies:
     - field.field.paragraph.single_msg.field_single_msg_hide_title
     - field.field.paragraph.single_msg.field_single_msg_img
     - field.field.paragraph.single_msg.field_single_msg_layout_variant
+    - field.field.paragraph.single_msg.field_single_msg_padding_option
     - field.field.paragraph.single_msg.field_single_msg_title
     - image.style.large
     - paragraphs.paragraphs_type.single_msg
@@ -25,14 +26,14 @@ content:
     third_party_settings: {  }
     type: options_select
   field_single_msg_body:
-    weight: 6
+    weight: 7
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
   field_single_msg_body_bg_colour:
-    weight: 5
+    weight: 6
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -43,7 +44,7 @@ content:
     third_party_settings: {  }
     type: boolean_checkbox
   field_single_msg_img:
-    weight: 4
+    weight: 5
     settings:
       preview_image_style: large
       progress_indicator: throbber
@@ -51,6 +52,11 @@ content:
     type: image_image
   field_single_msg_layout_variant:
     weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_single_msg_padding_option:
+    weight: 4
     settings: {  }
     third_party_settings: {  }
     type: options_select

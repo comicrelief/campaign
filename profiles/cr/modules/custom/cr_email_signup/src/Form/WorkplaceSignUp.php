@@ -8,20 +8,13 @@ namespace Drupal\cr_email_signup\Form;
 class WorkplaceSignUp extends SignUp {
 
   protected $transType = 'WorkplaceESU';
-  protected $esulist = ['general' => 'general'];
+  protected $esulist = ['listname' => ['general']];
 
   /**
    * Get the Form Identifier.
    */
   public function getFormId() {
     return 'cr_email_signup_workplace_form';
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getQueueName() {
-    return 'esu';
   }
 
   /**

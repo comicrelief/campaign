@@ -72,7 +72,8 @@ $susy: (
     padding: 0 calc((0.5 * #{gutter()}));
   }
 }
-.path-search {
+.view-search,
+.search-block {
   .search-block__form,
   .view-content,
   .view-header {
@@ -115,6 +116,10 @@ header,
 main,
 .paragraph {
   @include clearfix;
+  clear: both;
+}
+main {
+  position: relative;
 }
 .block-search {
   float: right;

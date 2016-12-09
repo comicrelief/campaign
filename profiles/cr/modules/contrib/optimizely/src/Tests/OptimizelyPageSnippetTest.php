@@ -264,7 +264,7 @@ class OptimizelyPageSnippetTest extends WebTestBase {
           $this->drupalGet($path);
 
           $target_html = 
-            '"http://cdn.optimizely.com/js/' . $this->projectCode[$project_count] . '.js"';
+            '"//cdn.optimizely.com/js/' . $this->projectCode[$project_count] . '.js"';
           $this->assertRaw("src=$target_html",
             "<strong>Optimizely snippet call $target_html found</strong> at: " . $path,
             'Optimizely');

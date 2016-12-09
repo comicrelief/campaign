@@ -11,6 +11,10 @@ dependencies:
   module:
     - image
     - text
+    - cr_single_message_row_paragraph
+  enforced:
+    module:
+      - cr_single_message_row_paragraph
 id: paragraph.cr_single_message_row.default
 targetEntityType: paragraph
 bundle: cr_single_message_row

@@ -106,7 +106,7 @@ function optimizely_install() {
     ->fetchField();
 
   if ($default_entry_exists == TRUE) {
-    drupal_set_message(t('A default entry found in the optimizely database table.' . 
+    drupal_set_message(t('A default entry found in the optimizely database table.' .
       " Something funky is going on but it's not the end of the world."), 'warning');
   }
   else {
@@ -128,7 +128,7 @@ function optimizely_install() {
     // Inform the administrator that a default snippet entry has been made.
     // Acount ID and access permisisons need to be configured
     if ($default_entry_created == TRUE) {
-      drupal_set_message(t('A default project / experiment entry has been created.' . 
+      drupal_set_message(t('A default project / experiment entry has been created.' .
         " Next, enter your Optimizely account ID on the module's ACCOUNT INFO page." .
         ' There is also an Optimizely permission that can be set for specific roles' .
         ' to access the adminstration functionality.' .
@@ -136,7 +136,7 @@ function optimizely_install() {
         'status');
     }
     else {
-      drupal_set_message(t('An error was encountered while adding the default project entry' . 
+      drupal_set_message(t('An error was encountered while adding the default project entry' .
         ' for the Optimizely module.'), 'error');
     }
   }
@@ -162,15 +162,4 @@ function optimizely_uninstall() {
 
   // hook_uninstall removes schema automatically
   drupal_set_message(t('Optimizely database table dropped.'), 'status');
-}
-
-/**
- * Implements hook_update_N
- *
- * For the initial conversion to Drupal 8.x, there are no changes to the schema.
- */
-function optimizely_update_8000(&$sandbox) {
-
-  drupal_set_message(t('No database updates needed to move to Drupal 8.x'), 'status');
-
 }

@@ -22,7 +22,7 @@ module.exports = function (grunt) {
       },
       campaign_base: {
         files: ['themes/custom/campaign_base/sass/{,**/}*.{scss,sass}'],
-        tasks: ['compass:dev','shell:campaign_styleguide']
+        tasks: ['compass:dev','shell:campaign_styleguide','bless']
       },
       rnd17: {
         files: ['../../themes/rnd17/sass/{,**/}*.{scss,sass}'],
@@ -95,6 +95,17 @@ module.exports = function (grunt) {
               config: '../../themes/rnd17/config.rb'
             }
           ]
+        }
+      }
+    },
+
+    bless: {
+      css: {
+        options: {
+          'out-dir': 'themes/custom/campaign_base/ie9-css/'
+        },
+        files: {
+          'themes/custom/campaign_base/ie9-css/styles': 'themes/custom/campaign_base/css/styles.css'
         }
       }
     },
@@ -187,7 +198,8 @@ module.exports = function (grunt) {
     'shell:campaign_styleguide',
     'concat:campaign_base',
     'uglify:dist',
-    'compass:dist'
+    'compass:dist',
+    'bless',
   ]);
 
   grunt.registerTask('build_all', [
@@ -195,7 +207,8 @@ module.exports = function (grunt) {
     'shell:rnd17_styleguide',
     'concat',
     'uglify:dist',
-    'compassMultiple'
+    'compassMultiple',
+    'bless'
   ]);
 
 };

@@ -6,11 +6,6 @@
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/block_content\/quote_block"
         },
-        "http:\/\/drupal.org\/rest\/relation\/block_content\/quote_block\/revision_user": [
-            {
-                "href": "http:\/\/default\/user\/1?_format=hal_json"
-            }
-        ],
         "http:\/\/drupal.org\/rest\/relation\/block_content\/quote_block\/field_author_image": [
             {
                 "href": "http:\/\/default\/file\/3393?_format=hal_json"
@@ -65,24 +60,24 @@
             "value": "1478623252"
         }
     ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "field_author_background_colour": [
+        {
+            "value": "bg--white"
+        }
+    ],
     "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/block_content\/quote_block\/revision_user": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "c3d710e5-26ab-4237-8d26-12e2597bc36f"
-                    }
-                ]
-            }
-        ],
         "http:\/\/drupal.org\/rest\/relation\/block_content\/quote_block\/field_author_image": [
             {
                 "_links": {
@@ -126,23 +121,6 @@
             }
         ]
     },
-    "revision_translation_affected": [
-        {
-            "value": "1",
-            "lang": "en"
-        }
-    ],
-    "default_langcode": [
-        {
-            "value": "1",
-            "lang": "en"
-        }
-    ],
-    "field_author_background_colour": [
-        {
-            "value": "bg--white"
-        }
-    ],
     "field_background_colour": [
         {
             "value": "bg--white"

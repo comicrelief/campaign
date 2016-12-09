@@ -11,6 +11,9 @@
   {% endif %}
   {{ title_suffix }}
   {% block content %}
+    <svg class="icon">
+      <use xlink:href="#close-cross"></use>
+    </svg>
     <div class="search-block__wrapper">
       <div class="search-block__form">
         {{ content }}

@@ -99,3 +99,28 @@ Windows 7, Apache 2.2, PHP 5.4, MySQL 5.6.11
 - hook_install() - set default language for langcode key.
 - hook_uninstall() - delete all variables stored by this module.
 
+2016 Jul 02 - 8.x-2.17-rc1
+
+- Fixed: Issue #2584933: Optimizely suggests no protocol in HTML snippet.
+
+2016 Aug 26 - 8.x-2.17-0.0
+
+- Tested to work under Drupal 8.0.0.
+- No code changes.
+
+2016 Sep 01 - 8.x-0.1
+
+- Tested to work under Drupal 8.1.0.
+- No code changes.
+
+2016 Nov 02 - 8.x-1.0
+
+- Implemented cache invalidation of pages via cache tags.
+- Fixed: Issue #2823398: Invalid use of * should be rejected.
+- Added leading slash / to paths if slash is missing.
+- Refactoring, formatting, and other minor changes.
+
+2016 Nov 23 - 8.x-1.1
+
+- Fixed: Issue 2825379: Update hook optimizely_update_8000() not necessary
+- Fixed: Issue 2826169: Problem to create Cache Tags breaking Drupal

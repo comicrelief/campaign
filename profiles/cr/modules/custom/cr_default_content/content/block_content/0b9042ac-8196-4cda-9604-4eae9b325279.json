@@ -33,21 +33,26 @@
             "lang": "en"
         }
     ],
+    "type": [
+        {
+            "target_id": "cw_row_block"
+        }
+    ],
     "info": [
         {
             "value": "Row 2",
             "lang": "en"
         }
     ],
-    "type": [
-        {
-            "target_id": "cw_row_block"
-        }
-    ],
     "changed": [
         {
             "value": "1460369473",
             "lang": "en"
+        }
+    ],
+    "revision_created": [
+        {
+            "value": "1480687055"
         }
     ],
     "revision_translation_affected": [

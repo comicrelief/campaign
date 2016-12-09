@@ -4,6 +4,9 @@ core: 8.x
 description: 'Defines a Partner content type.'
 package: Comic Relief
 
+libraries:
+- cr_partner/cr_partner
+
 dependencies:
   - field
   - text
@@ -50,3 +53,9 @@ config_devel:
   - paragraphs.paragraphs_type.partner_list
   - ds.field.partners_grid
   - block.block.views_block__partners_block_1
+  - image.style.partners_row_crop_and_scale
+  - image.style.partners_row_crop_and_scale_2x
+  - image.style.partner_logo_search
+  - image.style.partner_logo_search_2x
+  - responsive_image.styles.partner_row
+  - responsive_image.styles.partner_logos_search

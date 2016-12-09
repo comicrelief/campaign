@@ -5,8 +5,8 @@ description: 'Provides test media type plugin to test configuration forms.'
 package: Testing
 # version: VERSION
 
-# Information added by Drupal.org packaging script on 2016-09-02
-version: '8.x-1.5'
+# Information added by Drupal.org packaging script on 2016-11-28
+version: '8.x-1.6'
 core: '8.x'
 project: 'media_entity'
-datestamp: 1472853248
+datestamp: 1480363985

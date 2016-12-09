@@ -4,6 +4,10 @@ dependencies:
   module:
     - paragraphs
     - text
+    - cr_single_message_row_paragraph
+  enforced:
+    module:
+      - cr_single_message_row_paragraph
 id: paragraph.field_single_msg_row_lr_body
 field_name: field_single_msg_row_lr_body
 entity_type: paragraph

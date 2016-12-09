@@ -7,12 +7,11 @@ dependencies:
     - field.field.block_content.teaser.body
     - field.field.block_content.teaser.field_cw_link_target
     - field.field.block_content.teaser.field_teaser_bg_colour
+    - field.field.block_content.teaser.field_teaser_bg_image
     - field.field.block_content.teaser.field_teaser_image
-    - field.field.block_content.teaser.field_teaser_img_bg
     - field.field.block_content.teaser.field_teaser_link_address
     - field.field.block_content.teaser.field_teaser_link_colour
     - field.field.block_content.teaser.field_teaser_link_title
-    - field.field.block_content.teaser.field_teaser_title
     - field.field.block_content.teaser.field_teaser_you_tube_link
     - responsive_image.styles.cw_landscape_image
   module:
@@ -39,7 +38,6 @@ third_party_settings:
           layout_class: {  }
     regions:
       ds_content:
-        - field_teaser_img_bg
         - field_teaser_bg_colour
         - field_teaser_title
         - field_teaser_image
@@ -49,6 +47,7 @@ third_party_settings:
         - field_teaser_you_tube_link
         - field_teaser_link_colour
         - field_cw_link_target
+        - field_teaser_bg_image
 id: block_content.teaser.cw_s
 targetEntityType: block_content
 bundle: teaser
@@ -57,12 +56,12 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 2
+    weight: 3
     settings: {  }
     third_party_settings: {  }
   field_cw_link_target:
     type: boolean
-    weight: 7
+    weight: 8
     label: hidden
     settings:
       format: default
@@ -75,53 +74,46 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
+  field_teaser_bg_image:
+    type: boolean
+    weight: 9
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
   field_teaser_image:
-    weight: 1
+    weight: 2
     label: hidden
     settings:
       responsive_image_style: cw_landscape_image
       image_link: ''
     third_party_settings: {  }
     type: responsive_image
-  field_teaser_img_bg:
-    type: boolean
-    weight: 0
-    label: hidden
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
   field_teaser_link_address:
     type: string
-    weight: 4
+    weight: 5
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
   field_teaser_link_colour:
     type: list_default
-    weight: 6
+    weight: 7
     label: hidden
     settings: {  }
     third_party_settings: {  }
   field_teaser_link_title:
     type: string
-    weight: 3
+    weight: 4
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-  field_teaser_title:
-    weight: 0
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
   field_teaser_you_tube_link:
     type: boolean
-    weight: 5
+    weight: 6
     label: hidden
     settings:
       format: default

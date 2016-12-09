@@ -1,0 +1,6 @@
+services:
+  twig_tweak.twig_extension:
+    class: Drupal\twig_tweak\TwigExtension
+    arguments: ['@entity_type.manager', '@token', '@config.factory', '@current_route_match']
+    tags:
+      - { name: twig.extension }

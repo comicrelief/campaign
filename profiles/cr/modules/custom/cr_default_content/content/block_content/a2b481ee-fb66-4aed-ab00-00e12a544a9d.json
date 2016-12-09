@@ -33,21 +33,26 @@
             "lang": "en"
         }
     ],
+    "type": [
+        {
+            "target_id": "teaser"
+        }
+    ],
     "info": [
         {
             "value": "Eddie iz running\u2026again",
             "lang": "en"
         }
     ],
-    "type": [
-        {
-            "target_id": "teaser"
-        }
-    ],
     "changed": [
         {
             "value": "1460372667",
             "lang": "en"
+        }
+    ],
+    "revision_created": [
+        {
+            "value": "1480687055"
         }
     ],
     "revision_translation_affected": [
@@ -68,6 +73,21 @@
             "format": "basic_html",
             "summary": "",
             "lang": "en"
+        }
+    ],
+    "field_cw_link_target": [
+        {
+            "value": "0"
+        }
+    ],
+    "field_teaser_bg_colour": [
+        {
+            "value": "bg--white"
+        }
+    ],
+    "field_teaser_bg_image": [
+        {
+            "value": "0"
         }
     ],
     "_embedded": {
@@ -93,16 +113,14 @@
             }
         ]
     },
-    "field_teaser_link_address": [
+    "field_teaser_link_colour": [
         {
-            "uri": "http:\/\/www.sportrelief.com\/whats-going-on\/eddie-izzard-marathon-man",
-            "title": "Find out more",
-            "options": []
+            "value": "btn--red"
         }
     ],
-    "field_teaser_title": [
+    "field_teaser_you_tube_link": [
         {
-            "value": "Eddie iz running\u2026again"
+            "value": "0"
         }
     ]
 }

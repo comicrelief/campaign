@@ -59,14 +59,14 @@ nav.menu--main {
         width: 35px;
       }
     }
+    .main-menu__icons-magnify,
     .main-menu__icons-esu-toggle {
       background-color: transparent;
       border: none;
-      height: 50px;
       margin: 0;
       padding: 0;
-      width: 85px;
-      height: 85px;
+      width: 46px;
+      height: 76px;
 
       &.active {
         background-color: #f9f9f9;
@@ -93,7 +93,7 @@ nav.menu--main {
         
         @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
           width: 20px;
-          height: 20px;
+          height: 21px;
         }
       }
 
@@ -119,7 +119,7 @@ nav.menu--main {
     list-style: none;
     text-align: left;
     display: none;
-    top: 80px;
+    top: 76px;
     width: 100%;
 
     @include breakpoint($screen-md) {

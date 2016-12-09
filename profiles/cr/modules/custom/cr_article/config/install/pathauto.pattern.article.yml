@@ -2,21 +2,20 @@ langcode: en
 status: true
 dependencies:
   module:
-    - ctools
     - node
 id: article
 label: Article
 type: 'canonical_entities:node'
-pattern: 'whats-going-on/[node:title]'
+pattern: '/news-tv-and-events/news/[node:title]'
 selection_criteria:
-  9fe72180-c75e-41b1-a200-adea6cb7bdfc:
-    id: 'entity_bundle:node'
+  f77697e3-10a4-48a8-936e-35bcc8c22d09:
+    id: node_type
     bundles:
       article: article
     negate: false
     context_mapping:
       node: node
-    uuid: 9fe72180-c75e-41b1-a200-adea6cb7bdfc
+    uuid: f77697e3-10a4-48a8-936e-35bcc8c22d09
 selection_logic: and
 weight: -5
 relationships: {  }

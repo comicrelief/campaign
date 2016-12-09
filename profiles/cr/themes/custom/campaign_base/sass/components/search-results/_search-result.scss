@@ -25,6 +25,9 @@
     text-decoration: none;
     color: $colour-black;
   }
+  &.node--type-page {
+    padding-bottom: 0;
+  }
 }
 .search-result__node-link a {
   position: absolute;
@@ -127,4 +130,24 @@
 }
 .view-header {
   margin: 20px 0;
+}
+
+/* Partner-specific search result to suit rectangular image style */
+.node--type-partner.search-result {
+
+  .search-result__image {
+    background-color: $colour-white;
+    height: 0;
+    padding-bottom: 39%;
+
+    img {
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      @include translateY(-50%);
+
+    }
+  }
+
 }
