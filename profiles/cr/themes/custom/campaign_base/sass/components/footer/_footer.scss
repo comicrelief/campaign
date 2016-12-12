@@ -8,11 +8,16 @@
 // Style guide: Components.Footer
 
 footer[role=contentinfo] {
-  padding: 50px 5px;
+  padding: 50px 5px 185px;
   background: $colour-black;
+
+  @include breakpoint($screen-md) {
+    padding: 50px 5px 140px;
+  }
 
   @include breakpoint($screen-lg) {
     padding-top: 100px;
+    padding-bottom: 120px;
   }
   .footer__copyright p {
     text-align: center;
