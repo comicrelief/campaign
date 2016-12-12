@@ -124,7 +124,11 @@
     .single-msg__outer-wrapper {
       padding-bottom: 0;
       .single-msg__copy_wrapper {
-        height: calc(100% - #{$row-padding--md});
+        height: calc(100% - #{$row-padding--md});    
+      }
+      //leave a bit of space underneath text
+      .single-msg__body {
+        padding-bottom: 5px;
       }
     }
   }
@@ -144,6 +148,10 @@
       padding-bottom: 0;
       .single-msg__copy_wrapper {
         height: calc(100% - #{$row-padding--md}); 
+      }
+      //leave a bit of space underneath text
+      .single-msg__body {
+        padding-bottom: 5px;
       }
     }
   }
