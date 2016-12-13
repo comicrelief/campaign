@@ -464,7 +464,7 @@ class Server extends ConfigEntityBase implements ServerInterface {
     $this->getBackend()->preUpdate();
 
     // If the server is being disabled, also disable all its indexes.
-    if (!$this->status() && $this->original->status()) {
+    if (!$this->isSyncing() && !$this->status() && $this->original->status()) {
       foreach ($this->getIndexes(array('status' => TRUE)) as $index) {
         /** @var \Drupal\search_api\IndexInterface $index */
         $index->setStatus(FALSE)->save();

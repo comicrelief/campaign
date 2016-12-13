@@ -2,9 +2,12 @@
 
 namespace Drupal\search_api\Utility;
 
+use Drupal\Component\Plugin\Exception\PluginNotFoundException;
+use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityFieldManagerInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Entity\TypedData\EntityDataDefinitionInterface;
 use Drupal\Core\TypedData\ComplexDataDefinitionInterface;
 use Drupal\Core\TypedData\ComplexDataInterface;
@@ -13,6 +16,7 @@ use Drupal\Core\TypedData\DataReferenceDefinitionInterface;
 use Drupal\Core\TypedData\DataReferenceInterface;
 use Drupal\Core\TypedData\ListDataDefinitionInterface;
 use Drupal\Core\TypedData\ListInterface;
+use Drupal\Core\TypedData\TranslatableInterface;
 use Drupal\Core\TypedData\TypedDataInterface;
 use Drupal\search_api\Datasource\DatasourceInterface;
 use Drupal\search_api\IndexInterface;
@@ -20,14 +24,22 @@ use Drupal\search_api\Item\Field;
 use Drupal\search_api\Item\FieldInterface;
 use Drupal\search_api\Item\Item;
 use Drupal\search_api\Processor\ConfigurablePropertyInterface;
+use Drupal\search_api\Processor\ProcessorInterface;
+use Drupal\search_api\Processor\ProcessorPropertyInterface;
 use Drupal\search_api\SearchApiException;
-use Drupal\search_api\Utility\Utility;
 use Symfony\Component\DependencyInjection\Container;
 
 /**
  * Provides helper methods for dealing with Search API fields and properties.
  */
 class FieldsHelper implements FieldsHelperInterface {
+
+  /**
+   * The entity type manager.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  protected $entityTypeManager;
 
   /**
    * The entity field manager.
@@ -71,6 +83,8 @@ class FieldsHelper implements FieldsHelperInterface {
   /**
    * Constructs a FieldsHelper object.
    *
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
+   *   The entity type manager.
    * @param \Drupal\Core\Entity\EntityFieldManagerInterface $entityFieldManager
    *   The entity field manager.
    * @param EntityTypeBundleInfoInterface $entityBundleInfo
@@ -78,7 +92,8 @@ class FieldsHelper implements FieldsHelperInterface {
    * @param \Drupal\search_api\Utility\DataTypeHelperInterface $dataTypeHelper
    *   The data type helper service.
    */
-  public function __construct(EntityFieldManagerInterface $entityFieldManager, EntityTypeBundleInfoInterface $entityBundleInfo, DataTypeHelperInterface $dataTypeHelper) {
+  public function __construct(EntityTypeManagerInterface $entityTypeManager, EntityFieldManagerInterface $entityFieldManager, EntityTypeBundleInfoInterface $entityBundleInfo, DataTypeHelperInterface $dataTypeHelper) {
+    $this->entityTypeManager = $entityTypeManager;
     $this->entityFieldManager = $entityFieldManager;
     $this->entityBundleInfo = $entityBundleInfo;
     $this->dataTypeHelper = $dataTypeHelper;
@@ -87,7 +102,24 @@ class FieldsHelper implements FieldsHelperInterface {
   /**
    * {@inheritdoc}
    */
-  public function extractFields(ComplexDataInterface $item, array $fields) {
+  public function extractFields(ComplexDataInterface $item, array $fields, $langcode = NULL) {
+    // If a language code was given, get the correct translation (if possible).
+    if ($langcode) {
+      if ($item instanceof TranslatableInterface) {
+        if ($item->hasTranslation($langcode)) {
+          $item = $item->getTranslation($langcode);
+        }
+      }
+      else {
+        $value = $item->getValue();
+        if ($value instanceof ContentEntityInterface) {
+          if ($value->hasTranslation($langcode)) {
+            $item = $value->getTranslation($langcode)->getTypedData();
+          }
+        }
+      }
+    }
+
     // Figure out which fields are directly on the item and which need to be
     // extracted from nested items.
     $directFields = array();
@@ -125,12 +157,12 @@ class FieldsHelper implements FieldsHelperInterface {
         $itemNested = $itemNested->getTypedData();
       }
       if ($itemNested instanceof ComplexDataInterface && !$itemNested->isEmpty()) {
-        $this->extractFields($itemNested, $fieldsNested);
+        $this->extractFields($itemNested, $fieldsNested, $langcode);
       }
       elseif ($itemNested instanceof ListInterface && !$itemNested->isEmpty()) {
         foreach ($itemNested as $listItem) {
           if ($listItem instanceof ComplexDataInterface && !$listItem->isEmpty()) {
-            $this->extractFields($listItem, $fieldsNested);
+            $this->extractFields($listItem, $fieldsNested, $langcode);
           }
         }
       }
@@ -178,15 +210,131 @@ class FieldsHelper implements FieldsHelperInterface {
   /**
    * {@inheritdoc}
    */
+  public function extractItemValues(array $items, array $required_properties, $load = TRUE) {
+    $extracted_values = array();
+
+    /** @var \Drupal\search_api\Item\ItemInterface $item */
+    foreach ($items as $i => $item) {
+      $index = $item->getIndex();
+      $item_values = array();
+      /** @var \Drupal\search_api\Item\FieldInterface[][] $missing_fields */
+      $missing_fields = array();
+      $processor_fields = array();
+      $needed_processors = array();
+      foreach (array(NULL, $item->getDatasourceId()) as $datasource_id) {
+        if (empty($required_properties[$datasource_id])) {
+          continue;
+        }
+
+        $properties = $index->getPropertyDefinitions($datasource_id);
+        foreach ($required_properties[$datasource_id] as $property_path => $combined_id) {
+          $item_values[$combined_id] = array();
+
+          // If a field with the right property path is already set on the item,
+          // use it. This might actually make problems in case the values have
+          // already been processed in some way, or use a data type that
+          // transformed their original value. But that will hopefully not be a
+          // problem in most situations.
+          foreach ($this->filterForPropertyPath($item->getFields(FALSE), $datasource_id, $property_path) as $field) {
+            $item_values[$combined_id] = $field->getValues();
+            continue 2;
+          }
+
+          // There are no values present on the item for this property. If we
+          // don't want to extract any fields, skip it.
+          if (!$load) {
+            continue;
+          }
+
+          // If the field is not already on the item, we need to extract it. We
+          // set our own combined ID as the field identifier as kind of a hack,
+          // to easily be able to add the field values to $property_values
+          // afterwards.
+          $property = NULL;
+          if (isset($properties[$property_path])) {
+            $property = $properties[$property_path];
+          }
+          if ($property instanceof ProcessorPropertyInterface) {
+            $field_info = array(
+              'datasource_id' => $datasource_id,
+              'property_path' => $property_path,
+            );
+            if ($property instanceof ConfigurablePropertyInterface) {
+              $field_info['configuration'] = $property->defaultConfiguration();
+              // If the index contains a field with that property, just use the
+              // configuration from there instead of the default configuration.
+              // This will probably be what users expect in most situations.
+              foreach ($this->filterForPropertyPath($index->getFields(), $datasource_id, $property_path) as $field) {
+                $field_info['configuration'] = $field->getConfiguration();
+                break;
+              }
+            }
+            $processor_fields[] = $this->createField($index, $combined_id, $field_info);
+            $needed_processors[$property->getProcessorId()] = TRUE;
+          }
+          elseif ($datasource_id) {
+            $missing_fields[$property_path][] = $this->createField($index, $combined_id);
+          }
+        }
+      }
+      if ($missing_fields) {
+        $this->extractFields($item->getOriginalObject(), $missing_fields);
+        foreach ($missing_fields as $property_fields) {
+          foreach ($property_fields as $field) {
+            $item_values[$field->getFieldIdentifier()] = $field->getValues();
+          }
+        }
+      }
+      if ($processor_fields) {
+        $dummy_item = clone $item;
+        $dummy_item->setFields($processor_fields);
+        $dummy_item->setFieldsExtracted(TRUE);
+        $processors = $index->getProcessorsByStage(ProcessorInterface::STAGE_ADD_PROPERTIES);
+        foreach ($processors as $processor_id => $processor) {
+          // Avoid an infinite recursion.
+          if (isset($needed_processors[$processor_id]) && $processor != $this) {
+            $processor->addFieldValues($dummy_item);
+          }
+        }
+        foreach ($processor_fields as $field) {
+          $item_values[$field->getFieldIdentifier()] = $field->getValues();
+        }
+      }
+
+      $extracted_values[$i] = $item_values;
+    }
+
+    return $extracted_values;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function filterForPropertyPath(array $fields, $datasource_id, $property_path) {
+    $found_fields = array();
+    foreach ($fields as $field_id => $field) {
+      if ($field->getDatasourceId() === $datasource_id && $field->getPropertyPath() === $property_path) {
+        $found_fields[$field_id] = $field;
+      }
+    }
+    return $found_fields;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getNestedProperties(ComplexDataDefinitionInterface $property) {
     $nestedProperties = $property->getPropertyDefinitions();
     if ($property instanceof EntityDataDefinitionInterface) {
-      $bundles = $this->entityBundleInfo
-        ->getBundleInfo($property->getEntityTypeId());
-      foreach ($bundles as $bundle => $bundleLabel) {
-        $bundleProperties = $this->entityFieldManager
-          ->getFieldDefinitions($property->getEntityTypeId(), $bundle);
-        $nestedProperties += $bundleProperties;
+      $entity_type_id = $property->getEntityTypeId();
+      $is_content_type = $this->isContentEntityType($entity_type_id);
+      if ($is_content_type) {
+        $bundles = $this->entityBundleInfo->getBundleInfo($entity_type_id);
+        foreach ($bundles as $bundle => $bundleLabel) {
+          $bundleProperties = $this->entityFieldManager
+            ->getFieldDefinitions($entity_type_id, $bundle);
+          $nestedProperties += $bundleProperties;
+        }
       }
     }
     return $nestedProperties;
@@ -224,6 +372,19 @@ class FieldsHelper implements FieldsHelperInterface {
       $property = $property->getTargetDefinition();
     }
     return $property;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function isContentEntityType($entity_type_id) {
+    try {
+      $definition = $this->entityTypeManager->getDefinition($entity_type_id);
+      return $definition->isSubclassOf(ContentEntityInterface::class);
+    }
+    catch (PluginNotFoundException $e) {
+      return FALSE;
+    }
   }
 
   /**

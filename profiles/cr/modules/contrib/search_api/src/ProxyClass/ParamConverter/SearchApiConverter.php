@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Route;
 /**
  * Provides a proxy class for \Drupal\search_api\ParamConverter\SearchApiConverter.
  *
- * @see \Drupal\Component\ProxyBuilder
+ * @see \Drupal\Component\ProxyBuilder\ProxyBuilder
  */
 class SearchApiConverter implements ParamConverterInterface {
 

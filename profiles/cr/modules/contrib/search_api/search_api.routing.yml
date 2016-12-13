@@ -114,8 +114,8 @@ entity.search_api_index.disable:
 entity.search_api_index.fields:
   path: '/admin/config/search/search-api/index/{search_api_index}/fields'
   options:
-    search_api_index:
-      view:
+    parameters:
+      search_api_index:
         tempstore: TRUE
         type: 'entity:search_api_index'
   defaults:
@@ -126,8 +126,8 @@ entity.search_api_index.fields:
 entity.search_api_index.add_fields:
   path: '/admin/config/search/search-api/index/{search_api_index}/fields/add'
   options:
-    search_api_index:
-      view:
+    parameters:
+      search_api_index:
         tempstore: TRUE
         type: 'entity:search_api_index'
   defaults:
@@ -138,8 +138,8 @@ entity.search_api_index.add_fields:
 entity.search_api_index.field_config:
   path: '/admin/config/search/search-api/index/{search_api_index}/fields/{field_id}/edit'
   options:
-    search_api_index:
-      view:
+    parameters:
+      search_api_index:
         tempstore: TRUE
         type: 'entity:search_api_index'
   defaults:
@@ -151,8 +151,8 @@ entity.search_api_index.field_config:
 entity.search_api_index.remove_field:
   path: '/admin/config/search/search-api/index/{search_api_index}/fields/{field_id}/remove'
   options:
-    search_api_index:
-      view:
+    parameters:
+      search_api_index:
         tempstore: TRUE
         type: 'entity:search_api_index'
   defaults:

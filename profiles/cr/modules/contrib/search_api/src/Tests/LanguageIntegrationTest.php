@@ -32,13 +32,6 @@ class LanguageIntegrationTest extends WebTestBase {
     ConfigurableLanguage::createFromLangcode('nl')->save();
     ConfigurableLanguage::createFromLangcode('xx-lolspeak')->save();
 
-    // Do not use a batch for tracking the initial items after creating an
-    // index when running the tests via the GUI. Otherwise, it seems Drupal's
-    // Batch API gets confused and the test fails.
-    if (php_sapi_name() != 'cli') {
-      \Drupal::state()->set('search_api_use_tracking_batch', FALSE);
-    }
-
     // Create an index and server to work with.
     $this->getTestServer();
     $this->getTestIndex();

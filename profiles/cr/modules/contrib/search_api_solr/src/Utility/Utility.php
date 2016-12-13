@@ -4,6 +4,7 @@ namespace Drupal\search_api_solr\Utility;
 
 use Drupal\Component\Utility\NestedArray;
 use Drupal\search_api\ServerInterface;
+use Drupal\search_api_solr\SolrBackendInterface;
 
 /**
  * Utility functions specific to solr.
@@ -55,16 +56,19 @@ class Utility {
           'prefix' => 's',
         ),
         'integer' => array(
-          'prefix' => 'i',
+          // Use trie field for better sorting.
+          'prefix' => 'it',
         ),
         'decimal' => array(
-          'prefix' => 'f',
+          // Use trie field for better sorting.
+          'prefix' => 'ft',
         ),
         'date' => array(
           'prefix' => 'd',
         ),
         'duration' => array(
-          'prefix' => 'i',
+          // Use trie field for better sorting.
+          'prefix' => 'it',
         ),
         'boolean' => array(
           'prefix' => 'b',
@@ -138,7 +142,9 @@ class Utility {
    *   If a problem occurred while retrieving the files.
    */
   public static function getServerFiles(ServerInterface $server, $dir_name = NULL) {
-    $response = $server->getBackend()->getFile($dir_name);
+    /** @var SolrBackendInterface $backend */
+    $backend = $server->getBackend();
+    $response = $backend->getSolrConnector()->getFile($dir_name);
 
     // Search for directories and recursively merge directory files.
     $files_data = json_decode($response->getBody(), TRUE);

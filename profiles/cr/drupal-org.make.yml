@@ -150,9 +150,9 @@ projects:
   rabbitmq:
     version: 1.0-beta1
   search_api:
-    version: 1.0-beta1
+    version: 1.0-beta3
   search_api_solr:
-    version: 1.0-alpha6
+    version: 1.0-beta1
   crazyegg:
     version: 1.0-rc1
   google_tag:

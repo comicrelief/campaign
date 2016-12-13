@@ -82,13 +82,15 @@ class Utility {
    * @param \Drupal\search_api\Item\FieldInterface[][] $fields
    *   An associative array, keyed by property paths, mapped to field objects
    *   with that property path.
+   * @param string|null $langcode
+   *   (optional) The code of the language the retrieved values should have.
    *
    * @deprecated Will be removed during Beta phase.
    */
-  public static function extractFields(ComplexDataInterface $item, array $fields) {
+  public static function extractFields(ComplexDataInterface $item, array $fields, $langcode = NULL) {
     \Drupal::getContainer()
       ->get('search_api.fields_helper')
-      ->extractFields($item, $fields);
+      ->extractFields($item, $fields, $langcode);
   }
 
   /**

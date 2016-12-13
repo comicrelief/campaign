@@ -4,8 +4,8 @@ namespace Drupal\search_api\Plugin\views\argument;
 
 use Drupal\Component\Render\FormattableMarkup;
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Cache\UncacheableDependencyTrait;
 use Drupal\Core\Datetime\DateFormatterInterface;
-use Drupal\search_api\UncacheableDependencyTrait;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**

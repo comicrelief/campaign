@@ -27,10 +27,6 @@ views.argument.search_api:
   type: views.argument.numeric
   label: 'Search API'
 
-views.argument.search_api:
-  type: views.argument.search_api
-  label: 'Search API date'
-
 views.argument.search_api_fulltext:
   type: views.argument.search_api
   label: 'Search API more like this'
