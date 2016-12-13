@@ -76,7 +76,6 @@ dependencies:
   - menu_link_attributes
 
   # Custom modules
-  - cr_layout
   - cr_page
   - cr_article
   - cr_content_reference

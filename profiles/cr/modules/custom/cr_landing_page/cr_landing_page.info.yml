@@ -3,8 +3,6 @@ type: module
 description: Landing page content type
 core: 8.x
 package: Comic Relief
-dependencies:
-  - cr_layout
 
 config_devel:
   - node.type.landing
