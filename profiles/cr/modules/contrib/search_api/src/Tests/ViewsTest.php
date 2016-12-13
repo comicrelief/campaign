@@ -8,6 +8,7 @@ use Drupal\Core\Url;
 use Drupal\entity_test\Entity\EntityTestMulRevChanged;
 use Drupal\language\Entity\ConfigurableLanguage;
 use Drupal\search_api\Entity\Index;
+use Drupal\search_api\SearchApiException;
 use Drupal\simpletest\WebTestBase as SimpletestWebTestBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\search_api\Utility\Utility;
@@ -31,6 +32,7 @@ class ViewsTest extends SimpletestWebTestBase {
     'search_api_test_views',
     'views_ui',
     'language',
+    'rest',
   );
 
   /**
@@ -54,6 +56,13 @@ class ViewsTest extends SimpletestWebTestBase {
       ->addItemsAll(Index::load($this->indexId));
     $this->insertExampleContent();
     $this->indexItems($this->indexId);
+
+    // Do not use a batch for tracking the initial items after creating an
+    // index when running the tests via the GUI. Otherwise, it seems Drupal's
+    // Batch API gets confused and the test fails.
+    if (php_sapi_name() != 'cli') {
+      \Drupal::state()->set('search_api_use_tracking_batch', FALSE);
+    }
   }
 
   /**
@@ -120,13 +129,21 @@ class ViewsTest extends SimpletestWebTestBase {
     $this->assertNoText('You must include at least one positive keyword with 3 characters or more', "$label didn't display a warning.");
 
     $this->checkResults(array('id[value]' => 2), array(2), 'Search with ID filter');
-    // @todo Enable "between" again. See #2624870.
-//    $query = array(
-//      'id[min]' => 2,
-//      'id[max]' => 4,
-//      'id_op' => 'between',
-//    );
-//    $this->checkResults($query, array(2, 3, 4), 'Search with ID "in between" filter');
+
+    $query = array(
+      'id[min]' => 2,
+      'id[max]' => 4,
+      'id_op' => 'between',
+    );
+    $this->checkResults($query, array(2, 3, 4), 'Search with ID "in between" filter');
+
+    $query = array(
+      'id[min]' => 2,
+      'id[max]' => 4,
+      'id_op' => 'not between',
+    );
+    $this->checkResults($query, array(1, 5), 'Search with ID "not in between" filter');
+
     $query = array(
       'id[value]' => 2,
       'id_op' => '>',
@@ -167,13 +184,13 @@ class ViewsTest extends SimpletestWebTestBase {
     $this->checkResults($query, array(1, 2, 3, 4, 5), 'Search with "not empty creation date" filter');
 
     $this->checkResults(array('keywords[value]' => 'apple'), array(2, 4), 'Search with Keywords filter');
-    // @todo Enable "between" again. See #2695627.
-//    $query = array(
-//      'keywords[min]' => 'aardvark',
-//      'keywords[max]' => 'calypso',
-//      'keywords_op' => 'between',
-//    );
-//    $this->checkResults($query, array(2, 4, 5), 'Search with Keywords "in between" filter');
+    $query = array(
+      'keywords[min]' => 'aardvark',
+      'keywords[max]' => 'calypso',
+      'keywords_op' => 'between',
+    );
+    $this->checkResults($query, array(2, 4, 5), 'Search with Keywords "in between" filter');
+
     // For the keywords filters with comparison operators, exclude entity 1
     // since that contains all the uppercase and special characters weirdness.
     $query = array(
@@ -253,13 +270,76 @@ class ViewsTest extends SimpletestWebTestBase {
     );
     $this->checkResults($query, array(2, 5), 'Search with arguments and filters', 'entity:entity_test_mulrev_changed/all/orange');
 
+    // Make sure the datasource filter works correctly with multiple selections.
+    $index = Index::load($this->indexId);
+    $index->addDatasource($index->createPlugin('datasource', 'entity:user'));
+    $index->save();
+
+    $query = array(
+      'datasource' => array('entity:user', 'entity:entity_test_mulrev_changed'),
+      'datasource_op' => 'or',
+    );
+    $this->checkResults($query, array(1, 2, 3, 4, 5), 'Search with multiple datasource filters (OR)');
+
+    $query = array(
+      'datasource' => array('entity:user', 'entity:entity_test_mulrev_changed'),
+      'datasource_op' => 'and',
+    );
+    $this->checkResults($query, array(), 'Search with multiple datasource filters (AND)');
+
+    $query = array(
+      'datasource' => array('entity:user'),
+      'datasource_op' => 'not',
+    );
+    $this->checkResults($query, array(1, 2, 3, 4, 5), 'Search for non-user results');
+
+    $query = array(
+      'datasource' => array('entity:entity_test_mulrev_changed'),
+      'datasource_op' => 'not',
+    );
+    $this->checkResults($query, array(), 'Search for non-test entity results');
+
+    $query = array(
+      'datasource' => array('entity:user', 'entity:entity_test_mulrev_changed'),
+      'datasource_op' => 'not',
+    );
+    $this->checkResults($query, array(), 'Search for results of no available datasource');
+
     // Make sure there was a display plugin created for this view.
-    $displays = \Drupal::getContainer()->get('plugin.manager.search_api.display')->getInstances();
+    $displays = \Drupal::getContainer()->get('plugin.manager.search_api.display')
+      ->getInstances();
+
+    if ($displays === array()) {
+      throw new SearchApiException("No displays are loaded, tests will fail.");
+    }
+
     $display_id = 'views_page:search_api_test_view__page_1';
-    $this->assertEqual(array($display_id), array_keys($displays), 'A display plugin was created for the test view.');
+    $this->assertTrue(array_key_exists($display_id, $displays), 'A display plugin was created for the test view page display.');
+    $this->assertTrue(array_key_exists('views_block:search_api_test_view__block_1', $displays), 'A display plugin was created for the test view block display.');
+    $this->assertTrue(array_key_exists('views_rest:search_api_test_view__rest_export_1', $displays), 'A display plugin was created for the test view block display.');
     $view_url = Url::fromUserInput('/search-api-test')->toString();
-    $this->assertEqual($view_url, $displays[$display_id]->getPath()->toString(), 'Display returns the correct path.');
+    $this->assertEqual($view_url, $displays[$display_id]->getUrl()->toString(), 'Display returns the correct path.');
     $this->assertEqual('database_search_index', $displays[$display_id]->getIndex()->id(), 'Display returns the correct search index.');
+
+    $admin_user = $this->drupalCreateUser([
+      'administer search_api',
+      'access administration pages',
+      'administer views',
+    ]);
+    $this->drupalLogin($admin_user);
+
+    // Delete the page display for the view.
+    $this->drupalGet('admin/structure/views/view/search_api_test_view');
+    $this->drupalPostForm(NULL, [], $this->t('Delete Page'));
+    $this->drupalPostForm(NULL, [], $this->t('Save'));
+
+    drupal_flush_all_caches();
+
+    $displays = \Drupal::getContainer()->get('plugin.manager.search_api.display')
+      ->getInstances();
+    $this->assertFalse(array_key_exists('views_page:search_api_test_view__page_1', $displays), 'A display plugin was created for the test view page display.');
+    $this->assertTrue(array_key_exists('views_block:search_api_test_view__block_1', $displays), 'A display plugin was created for the test view block display.');
+    $this->assertTrue(array_key_exists('views_rest:search_api_test_view__rest_export_1', $displays), 'A display plugin was created for the test view block display.');
   }
 
   /**

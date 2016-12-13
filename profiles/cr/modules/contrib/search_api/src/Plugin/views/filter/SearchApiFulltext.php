@@ -3,11 +3,11 @@
 namespace Drupal\search_api\Plugin\views\filter;
 
 use Drupal\Component\Utility\Unicode;
+use Drupal\Core\Cache\UncacheableDependencyTrait;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
 use Drupal\search_api\Entity\Index;
 use Drupal\search_api\ParseMode\ParseModePluginManager;
-use Drupal\search_api\UncacheableDependencyTrait;
 use Drupal\views\Plugin\views\filter\FilterPluginBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 

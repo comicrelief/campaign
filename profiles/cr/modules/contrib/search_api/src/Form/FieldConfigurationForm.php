@@ -2,14 +2,21 @@
 
 namespace Drupal\search_api\Form;
 
+use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\Entity\EntityForm;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\RendererInterface;
 use Drupal\search_api\Processor\ConfigurablePropertyInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Defines a form for changing a field's configuration.
  */
 class FieldConfigurationForm extends EntityForm {
+
+  use UnsavedConfigurationFormTrait;
 
   /**
    * The index for which the fields are configured.
@@ -30,6 +37,37 @@ class FieldConfigurationForm extends EntityForm {
    */
   public function getFormId() {
     return 'search_api_field_config';
+  }
+
+  /**
+   * Constructs a FieldConfigurationForm object.
+   *
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   *   The entity manager.
+   * @param \Drupal\Core\Render\RendererInterface $renderer
+   *   The renderer to use.
+   * @param \Drupal\Core\Datetime\DateFormatterInterface $date_formatter
+   *   The date formatter.
+   * @param \Symfony\Component\HttpFoundation\RequestStack $request_stack
+   *   The request stack.
+   */
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, RendererInterface $renderer, DateFormatterInterface $date_formatter, RequestStack $request_stack) {
+    $this->entityTypeManager = $entity_type_manager;
+    $this->renderer = $renderer;
+    $this->dateFormatter = $date_formatter;
+    $this->requestStack = $request_stack;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    $entity_type_manager = $container->get('entity_type.manager');
+    $renderer = $container->get('renderer');
+    $date_formatter = $container->get('date.formatter');
+    $request_stack = $container->get('request_stack');
+
+    return new static($entity_type_manager, $renderer, $date_formatter, $request_stack);
   }
 
   /**
@@ -72,6 +110,8 @@ class FieldConfigurationForm extends EntityForm {
     $property = $field->getDataDefinition();
 
     $form = $property->buildConfigurationForm($field, $form, $form_state);
+
+    $this->checkEntityEditable($form, $this->entity);
 
     return $form;
   }

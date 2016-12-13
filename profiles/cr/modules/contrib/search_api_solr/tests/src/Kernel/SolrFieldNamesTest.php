@@ -17,6 +17,8 @@ use Drupal\search_api_solr\Plugin\search_api\backend\SearchApiSolrBackend;
  */
 class SolrFieldNamesTest extends KernelTestBase {
 
+  use InvokeMethodTrait;
+
   /**
    * {@inheritdoc}
    */
@@ -89,6 +91,12 @@ class SolrFieldNamesTest extends KernelTestBase {
 
     $this->assertSame($fields['title'], 'sm_title');
     $this->assertSame($fields['bio'], 'ss_bio');
+
+    $fields = $index->getFields();
+    $cardinality = $this->invokeMethod($backend, 'getPropertyPathCardinality', [$fields['title']->getPropertyPath(), $fields['title']->getDatasource()->getPropertyDefinitions()]);
+    $this->assertEqual(FieldStorageConfigInterface::CARDINALITY_UNLIMITED, $cardinality);
+    $cardinality = $this->invokeMethod($backend, 'getPropertyPathCardinality', [$fields['bio']->getPropertyPath(), $fields['bio']->getDatasource()->getPropertyDefinitions()]);
+    $this->assertEqual(1, $cardinality);
   }
 
 }

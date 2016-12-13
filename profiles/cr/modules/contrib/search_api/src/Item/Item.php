@@ -236,7 +236,7 @@ class Item implements \IteratorAggregate, ItemInterface {
         }
         try {
           if ($fields_by_property_path) {
-            Utility::extractFields($this->getOriginalObject(), $fields_by_property_path);
+            Utility::extractFields($this->getOriginalObject(), $fields_by_property_path, $this->getLanguage());
           }
           if ($processors_with_fields) {
             $processors = $this->index->getProcessorsByStage(ProcessorInterface::STAGE_ADD_PROPERTIES);

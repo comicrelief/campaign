@@ -86,7 +86,19 @@ class IntegrationTest extends WebTestBase {
     $this->assertResponse(200, 'Authenticated user can access the search view.');
     $this->drupalLogin($this->adminUser);
 
+    $title = 'Test node title';
+    $edit = array(
+      'title[0][value]' => $title,
+      'body[0][value]' => 'This is test content for the Search API to index.'
+    );
+    $this->drupalPostForm('node/add/article', $edit, $this->t('Save and publish'));
+
+    $this->drupalLogout();
+    $this->drupalGet('search/content');
+    $this->assertText($title, 'New node shows up in search results.');
+
     // Uninstall the module.
+    $this->drupalLogin($this->adminUser);
     $edit_disable = array(
       'uninstall[search_api_db_defaults]' => TRUE,
     );
@@ -140,6 +152,7 @@ class IntegrationTest extends WebTestBase {
     }
 
     // Delete the article content type.
+    $this->drupalPostForm('node/1/delete', array(), $this->t('Delete'));
     $this->drupalGet('admin/structure/types/manage/article');
     $this->clickLink(t('Delete'));
     $this->assertResponse(200);

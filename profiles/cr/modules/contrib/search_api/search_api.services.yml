@@ -56,7 +56,7 @@ services:
 
   search_api.fields_helper:
     class: \Drupal\search_api\Utility\FieldsHelper
-    arguments: ['@entity_field.manager', '@entity_type.bundle.info', '@search_api.data_type_helper']
+    arguments: ['@entity_type.manager', '@entity_field.manager', '@entity_type.bundle.info', '@search_api.data_type_helper']
 
   search_api.index_task_manager:
     class: Drupal\search_api\Task\IndexTaskManager

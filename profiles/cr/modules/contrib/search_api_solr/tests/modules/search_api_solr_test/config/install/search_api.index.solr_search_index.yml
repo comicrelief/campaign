@@ -19,6 +19,11 @@ field_settings:
     type: date
     datasource_id: 'entity:entity_test_mulrev_changed'
     property_path: created
+  changed:
+    label: Updated on
+    type: date
+    datasource_id: 'entity:entity_test_mulrev_changed'
+    property_path: changed
   body:
     label: Body
     type: text

@@ -19,6 +19,7 @@ class HooksTest extends WebTestBase {
    */
   public static $modules = array(
     'node',
+    'rest',
     'search_api',
     'search_api_test',
     'search_api_test_views',
@@ -43,13 +44,6 @@ class HooksTest extends WebTestBase {
     $this->drupalCreateNode(array('type' => 'page', 'title' => 'node - 2'));
     $this->drupalCreateNode(array('type' => 'page', 'title' => 'node - 3'));
     $this->drupalCreateNode(array('type' => 'page', 'title' => 'node - 4'));
-
-    // Do not use a batch for tracking the initial items after creating an
-    // index when running the tests via the GUI. Otherwise, it seems Drupal's
-    // Batch API gets confused and the test fails.
-    if (php_sapi_name() != 'cli') {
-      \Drupal::state()->set('search_api_use_tracking_batch', FALSE);
-    }
 
     // Create an index and server to work with.
     $this->server = $this->getTestServer();

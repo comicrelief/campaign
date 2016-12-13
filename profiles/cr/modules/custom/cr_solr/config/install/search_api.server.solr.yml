@@ -8,19 +8,24 @@ name: Solr
 description: ''
 backend: search_api_solr
 backend_config:
-  scheme: http
-  host: campaign-solr
-  port: '8983'
-  path: /solr
-  core: campaign
-  username: ''
-  password: ''
   retrieve_data: false
   highlight_data: false
   excerpt: false
   skip_schema_check: false
-  solr_version: ''
-  http_method: AUTO
   site_hash: true
   autocorrect_spell: true
   autocorrect_suggest_words: true
+  connector: basic_auth
+  connector_config:
+    scheme: http
+    host: campaign-solr
+    port: '8983'
+    path: /solr
+    core: campaign
+    username: ''
+    password: ''
+    solr_version: ''
+    http_method: AUTO
+    timeout: 5
+    index_timeout: 5
+    optimize_timeout: 10

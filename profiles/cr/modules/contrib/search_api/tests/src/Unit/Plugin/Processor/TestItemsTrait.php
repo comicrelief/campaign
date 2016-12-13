@@ -125,13 +125,16 @@ trait TestItemsTrait {
       ->getMock();
     $dataTypeHelper = new DataTypeHelper($moduleHandler, $dataTypeManager);
 
+    $entityTypeManager = $this->getMockBuilder('Drupal\Core\Entity\EntityTypeManagerInterface')
+      ->disableOriginalConstructor()
+      ->getMock();
     $entityFieldManager = $this->getMockBuilder('Drupal\Core\Entity\EntityFieldManagerInterface')
       ->disableOriginalConstructor()
       ->getMock();
     $entityBundleInfo = $this->getMockBuilder('Drupal\Core\Entity\EntityTypeBundleInfoInterface')
       ->disableOriginalConstructor()
       ->getMock();
-    $fieldsHelper = new FieldsHelper($entityFieldManager, $entityBundleInfo, $dataTypeHelper);
+    $fieldsHelper = new FieldsHelper($entityTypeManager, $entityFieldManager, $entityBundleInfo, $dataTypeHelper);
 
     $queryHelper = $this->getMock('Drupal\search_api\Utility\QueryHelperInterface');
     $queryHelper->method('createQuery')
