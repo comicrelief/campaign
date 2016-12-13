@@ -4,3 +4,7 @@ services:
     arguments: ['@entity_type.manager']
     tags:
       - { name: event_subscriber }
+
+  plugin.manager.search_api_solr.connector:
+    class: Drupal\search_api_solr\SolrConnector\SolrConnectorPluginManager
+    parent: default_plugin_manager

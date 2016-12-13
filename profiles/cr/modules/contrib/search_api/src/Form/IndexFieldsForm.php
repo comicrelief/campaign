@@ -3,7 +3,7 @@
 namespace Drupal\search_api\Form;
 
 use Drupal\Component\Utility\Html;
-use Drupal\Core\Datetime\DateFormatter;
+use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
@@ -21,6 +21,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class IndexFieldsForm extends EntityForm {
 
+  use UnsavedConfigurationFormTrait;
+
   /**
    * The index for which the fields are configured.
    *
@@ -36,32 +38,11 @@ class IndexFieldsForm extends EntityForm {
   protected $tempStore;
 
   /**
-   * The entity type manager.
-   *
-   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
-   */
-  protected $entityTypeManager;
-
-  /**
    * The data type plugin manager.
    *
    * @var \Drupal\search_api\DataType\DataTypePluginManager
    */
   protected $dataTypePluginManager;
-
-  /**
-   * The renderer.
-   *
-   * @var \Drupal\Core\Render\RendererInterface
-   */
-  protected $renderer;
-
-  /**
-   * The date formatter.
-   *
-   * @var \Drupal\Core\Datetime\DateFormatter
-   */
-  protected $dateFormatter;
 
   /**
    * {@inheritdoc}
@@ -88,10 +69,10 @@ class IndexFieldsForm extends EntityForm {
    *   The data type plugin manager.
    * @param \Drupal\Core\Render\RendererInterface $renderer
    *   The renderer to use.
-   * @param \Drupal\Core\Datetime\DateFormatter $date_formatter
+   * @param \Drupal\Core\Datetime\DateFormatterInterface $date_formatter
    *   The date formatter.
    */
-  public function __construct(SharedTempStoreFactory $temp_store_factory, EntityTypeManagerInterface $entity_type_manager, DataTypePluginManager $data_type_plugin_manager, RendererInterface $renderer, DateFormatter $date_formatter) {
+  public function __construct(SharedTempStoreFactory $temp_store_factory, EntityTypeManagerInterface $entity_type_manager, DataTypePluginManager $data_type_plugin_manager, RendererInterface $renderer, DateFormatterInterface $date_formatter) {
     $this->tempStore = $temp_store_factory->get('search_api_index');
     $this->entityTypeManager = $entity_type_manager;
     $this->dataTypePluginManager = $data_type_plugin_manager;
@@ -113,16 +94,6 @@ class IndexFieldsForm extends EntityForm {
   }
 
   /**
-   * Retrieves the entity type manager.
-   *
-   * @return \Drupal\Core\Entity\EntityTypeManagerInterface
-   *   The entity type manager.
-   */
-  protected function getEntityTypeManager() {
-    return $this->entityTypeManager;
-  }
-
-  /**
    * Retrieves the data type plugin manager.
    *
    * @return \Drupal\search_api\DataType\DataTypePluginManager
@@ -130,26 +101,6 @@ class IndexFieldsForm extends EntityForm {
    */
   public function getDataTypePluginManager() {
     return $this->dataTypePluginManager;
-  }
-
-  /**
-   * Retrieves the renderer.
-   *
-   * @return \Drupal\Core\Render\RendererInterface
-   *   The renderer.
-   */
-  public function getRenderer() {
-    return $this->renderer;
-  }
-
-  /**
-   * Retrieves the date formatter.
-   *
-   * @return \Drupal\Core\Datetime\DateFormatter
-   *   The date formatter.
-   */
-  public function getDateFormatter() {
-    return $this->dateFormatter;
   }
 
   /**
@@ -162,46 +113,7 @@ class IndexFieldsForm extends EntityForm {
     // \Drupal\views_ui\ViewEditForm::form().
     $form_state->disableCache();
 
-    if ($index instanceof UnsavedConfigurationInterface && $index->hasChanges()) {
-      if ($index->isLocked()) {
-        $form['#disabled'] = TRUE;
-        $username = array(
-          '#theme' => 'username',
-          '#account' => $index->getLockOwner($this->entityTypeManager),
-        );
-        $lock_message_substitutions = array(
-          '@user' => $this->getRenderer()->render($username),
-          '@age' => $this->dateFormatter->formatTimeDiffSince($index->getLastUpdated()),
-          ':url' => $index->toUrl('break-lock-form')->toString(),
-        );
-        $form['locked'] = array(
-          '#type' => 'container',
-          '#attributes' => array(
-            'class' => array(
-              'index-locked',
-              'messages',
-              'messages--warning',
-            ),
-          ),
-          '#children' => $this->t('This index is being edited by user @user, and is therefore locked from editing by others. This lock is @age old. Click here to <a href=":url">break this lock</a>.', $lock_message_substitutions),
-          '#weight' => -10,
-        );
-      }
-      else {
-        $form['changed'] = array(
-          '#type' => 'container',
-          '#attributes' => array(
-            'class' => array(
-              'index-changed',
-              'messages',
-              'messages--warning',
-            ),
-          ),
-          '#children' => $this->t('You have unsaved changes.'),
-          '#weight' => -10,
-        );
-      }
-    }
+    $this->checkEntityEditable($form, $index, TRUE);
 
     // Set an appropriate page title.
     $form['#title'] = $this->t('Manage fields for search index %label', array('%label' => $index->label()));
@@ -328,11 +240,13 @@ class IndexFieldsForm extends EntityForm {
         '#type' => 'textfield',
         '#default_value' => $field->getLabel() ? $field->getLabel() : $key,
         '#required' => TRUE,
+        '#size' => 40,
       );
       $build['fields'][$key]['id'] = array(
         '#type' => 'textfield',
         '#default_value' => $key,
         '#required' => TRUE,
+        '#size' => 35,
       );
 
       if ($field->getDescription()) {
@@ -487,28 +401,16 @@ class IndexFieldsForm extends EntityForm {
    */
   public function save(array $form, FormStateInterface $form_state) {
     $index = $this->entity;
-    $changes = TRUE;
     if ($index instanceof UnsavedConfigurationInterface) {
-      if ($index->hasChanges()) {
-        $index->savePermanent();
-      }
-      else {
-        $index->discardChanges();
-        $changes = FALSE;
-      }
+      $index->savePermanent($this->getEntityTypeManager());
     }
     else {
       $index->save();
     }
 
-    if ($changes) {
-      drupal_set_message($this->t('The changes were successfully saved.'));
-      if ($this->entity->isReindexing()) {
-        drupal_set_message(t('All content was scheduled for reindexing so the new settings can take effect.'));
-      }
-    }
-    else {
-      drupal_set_message($this->t('No values were changed.'));
+    drupal_set_message($this->t('The changes were successfully saved.'));
+    if ($this->entity->isReindexing()) {
+      drupal_set_message(t('All content was scheduled for reindexing so the new settings can take effect.'));
     }
 
     return SAVED_UPDATED;

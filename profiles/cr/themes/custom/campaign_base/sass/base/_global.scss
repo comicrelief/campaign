@@ -100,7 +100,9 @@ picture img {
   float: left;
   width: 100%;
 }
-
+.view-empty {
+  margin: 60px 0;
+}
 // Table style move to table component
 table {
   border-collapse: collapse;

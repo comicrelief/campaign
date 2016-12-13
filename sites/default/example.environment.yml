@@ -23,6 +23,7 @@ settings:
   hash_salt: kzWT4Q5kJe2DkfS72PrATBUfkw54RKzMCbQg933K1Qwe0ZKtonOV_xdmuCac
   file_chmod_directory: 0775
   file_chmod_file: 0664
+  twig_tweak_enable_php_filter: true
   trusted_host_patterns: ['^campaign\.dev$', '^campaign\.lab$', '^campaign\.local$', '^127\.0\.0\.1$', '^localhost$']
 
 config:

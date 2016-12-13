@@ -67,7 +67,7 @@ class SearchApiConverter extends EntityConverter implements ParamConverterInterf
     $current_user_id = $this->currentUser->id() ?: session_id();
     /** @var \Drupal\search_api\IndexInterface|\Drupal\search_api\UnsavedConfigurationInterface $index */
     if ($index = $store->get($value)) {
-      $index->setCurrentUserId($current_user_id);
+      $index = new UnsavedIndexConfiguration($index, $store, $current_user_id);
       $index->setLockInformation($store->getMetadata($value));
     }
     // Otherwise, create a new temporary copy of the search index.

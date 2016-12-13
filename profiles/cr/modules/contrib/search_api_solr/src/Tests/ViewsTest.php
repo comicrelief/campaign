@@ -2,6 +2,7 @@
 
 namespace Drupal\search_api_solr\Tests;
 
+use Drupal\language\Entity\ConfigurableLanguage;
 use Drupal\search_api\Entity\Index;
 use Drupal\simpletest\WebTestBase as SimpletestWebTestBase;
 
@@ -26,6 +27,9 @@ class ViewsTest extends \Drupal\search_api\Tests\ViewsTest {
     // Skip parent::setUp().
     SimpletestWebTestBase::setUp();
 
+    // Add a second language.
+    ConfigurableLanguage::createFromLangcode('nl')->save();
+
     // Swap database backend for Solr backend.
     $config_factory = \Drupal::configFactory();
     $config_factory->getEditable('search_api.index.database_search_index')
@@ -47,11 +51,11 @@ class ViewsTest extends \Drupal\search_api\Tests\ViewsTest {
    * {@inheritdoc}
    */
   public function testView() {
-    parent::testView();
-
     // @see https://www.drupal.org/node/2773019
     $query = ['language' => ['***LANGUAGE_language_interface***']];
     $this->checkResults($query, [1, 2, 3, 4, 5], 'Search with interface language as filter');
+
+    parent::testView();
   }
 
   /**

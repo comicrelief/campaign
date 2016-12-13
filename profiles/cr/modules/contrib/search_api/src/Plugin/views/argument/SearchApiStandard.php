@@ -2,8 +2,8 @@
 
 namespace Drupal\search_api\Plugin\views\argument;
 
+use Drupal\Core\Cache\UncacheableDependencyTrait;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\search_api\UncacheableDependencyTrait;
 use Drupal\views\Plugin\views\argument\ArgumentPluginBase;
 
 /**

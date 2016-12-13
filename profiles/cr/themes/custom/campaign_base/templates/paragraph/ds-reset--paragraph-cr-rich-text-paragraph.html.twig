@@ -1,5 +1,7 @@
 {% set bg_body_colour = field_bg_single_msg_bg_colour['#items'][0].value %}
 {% set bg_body_layout = field_bg_single_msg_layout['#items'][0].value %}
+{% set body_copy = content.field_body['#items'] %}
+
 
 {%
 set classes = [
@@ -20,13 +22,15 @@ bg_body_colour,
 %}
 
 <section{{ attributes.addClass(classes) }}>
-		<div class="background-single-msg__image">
-			{{ content.field_background }}
-		</div>
+	<div class="background-single-msg__image">
+		{{ content.field_background }}
+	</div>
+	{% if body_copy is not empty %}
 		<div class="background-single-msg__inner-wrap">
 			{{ title_suffix.contextual_links }}
-	    <div{{ attributes.setAttribute('class', body_classes) }}>
-	    	{{ content.field_body }}
-	    </div>
+		  <div{{ attributes.setAttribute('class', body_classes) }}>
+		    {{ content.field_body }}
+		  </div>
 		</div>
+	{% endif %}
 </section>

@@ -445,11 +445,10 @@ function theme_search_api_index(array $variables) {
     if ($tracker) {
       $indexed_count = $tracker->getIndexedItemsCount();
       $total_count = $tracker->getTotalItemsCount();
-      $percent = ($total_count !== 0) ? (100 * $indexed_count / $total_count) : 0;
 
       $index_progress = array(
         '#theme' => 'progress_bar',
-        '#percent' => $percent,
+        '#percent' => $total_count ? (int) (100 * $indexed_count / $total_count) : 100,
         '#message' => t('@indexed/@total indexed', array('@indexed' => $indexed_count, '@total' => $total_count)),
       );
       $output .= '<h3>' . t('Index status') . '</h3>';

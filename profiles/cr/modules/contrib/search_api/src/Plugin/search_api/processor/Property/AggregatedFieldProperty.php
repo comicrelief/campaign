@@ -38,7 +38,7 @@ class AggregatedFieldProperty extends ConfigurablePropertyBase {
     $form['#tree'] = TRUE;
 
     $form['type'] = array(
-      '#type' => 'select',
+      '#type' => 'radios',
       '#title' => $this->t('Aggregation type'),
       '#options' => $this->getTypes(),
       '#default_value' => $configuration['type'],
@@ -46,11 +46,7 @@ class AggregatedFieldProperty extends ConfigurablePropertyBase {
     );
 
     foreach ($this->getTypes('description') as $type => $description) {
-      $form['type_descriptions'][$type] = array(
-        '#type' => 'item',
-        '#description' => $description,
-      );
-      $form['type_descriptions'][$type]['#states']['visible'][':input[name="type"]']['value'] = $type;
+      $form['type'][$type]['#description'] = $description;
     }
 
     $form['fields'] = array(

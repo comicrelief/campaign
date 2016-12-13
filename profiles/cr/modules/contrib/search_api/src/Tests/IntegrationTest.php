@@ -25,6 +25,13 @@ class IntegrationTest extends WebTestBase {
   use PluginTestTrait;
 
   /**
+   * An admin user used for this test.
+   *
+   * @var \Drupal\Core\Session\AccountInterface
+   */
+  protected $adminUser2;
+
+  /**
    * The ID of the search server used for this test.
    *
    * @var string
@@ -57,14 +64,16 @@ class IntegrationTest extends WebTestBase {
     parent::setUp();
     $this->indexStorage = \Drupal::entityTypeManager()->getStorage('search_api_index');
 
-    $this->adminUser = $this->drupalCreateUser(array(
+    $permissions = array(
       'administer search_api',
       'access administration pages',
       'administer nodes',
       'bypass node access',
       'administer content types',
       'administer node fields',
-    ));
+    );
+    $this->adminUser = $this->drupalCreateUser($permissions);
+    $this->adminUser2 = $this->drupalCreateUser($permissions);
     $this->drupalLogin($this->adminUser);
   }
 
@@ -150,6 +159,7 @@ class IntegrationTest extends WebTestBase {
     $this->addFieldsWithDependenciesToIndex();
     $this->removeFieldsDependencies();
     $this->removeFieldsFromIndex();
+    $this->checkUnsavedChanges();
 
     $this->configureFilter();
     $this->configureFilterPage();
@@ -292,14 +302,14 @@ class IntegrationTest extends WebTestBase {
       throw new SearchApiException();
     }
 
-    // Test the "Save and edit" button.
+    // Test the "Save and add fields" button.
     $index2_id = 'test_index2';
     $edit['id'] = $index2_id;
     unset($edit['server']);
-    $this->drupalPostForm($settings_path, $edit, $this->t('Save and edit'));
+    $this->drupalPostForm($settings_path, $edit, $this->t('Save and add fields'));
     $this->assertText($this->t('Please configure the used datasources.'));
 
-    $this->drupalPostForm(NULL, array(), $this->t('Save and edit'));
+    $this->drupalPostForm(NULL, array(), $this->t('Save and add fields'));
     $this->assertText($this->t('The index was successfully saved.'));
     $this->indexStorage->resetCache(array($index2_id));
     $index = $this->indexStorage->load($index2_id);
@@ -704,6 +714,11 @@ class IntegrationTest extends WebTestBase {
    * Tests whether adding fields to the index works correctly.
    */
   protected function addFieldsToIndex() {
+    // Make sure that hidden properties are not displayed.
+    $url_options['query']['datasource'] = '';
+    $this->drupalGet($this->getIndexPath('fields/add'), $url_options);
+    $this->assertNoText($this->t('Node access information'));
+
     $fields = array(
       'nid' => $this->t('ID'),
       'title' => $this->t('Title'),
@@ -713,6 +728,13 @@ class IntegrationTest extends WebTestBase {
     foreach ($fields as $property_path => $label) {
       $this->addField('entity:node', $property_path, $label);
     }
+
+    $index = $this->getIndex(TRUE);
+    $fields = $index->getFields();
+
+    $this->assertTrue(empty($fields['nid']), 'Field changes have not been persisted.');
+    $this->drupalPostForm($this->getIndexPath('fields'), array(), $this->t('Save changes'));
+    $this->assertText($this->t('The changes were successfully saved.'));
 
     $index = $this->getIndex(TRUE);
     $fields = $index->getFields();
@@ -880,6 +902,7 @@ class IntegrationTest extends WebTestBase {
     foreach ($fields as $property_path => $label) {
       $this->addField('entity:node', $property_path, $label);
     }
+    $this->drupalPostForm($this->getIndexPath('fields'), array(), $this->t('Save changes'));
 
     // Check that index configuration is updated with dependencies.
     $field_dependencies = (array) \Drupal::config('search_api.index.' . $this->indexId)->get('dependencies.config');
@@ -921,18 +944,75 @@ class IntegrationTest extends WebTestBase {
   protected function removeFieldsFromIndex() {
     // Find the "Remove" link for the "body" field.
     $links = $this->xpath('//a[@data-drupal-selector=:id]', array(':id' => 'edit-fields-body-remove'));
-    if (empty($links)) {
-      $this->fail('Found "Remove" link for body field');
-    }
-    else {
+    if ($this->assertTrue($links, 'Found "Remove" link for body field')) {
       $url_target = $this->getAbsoluteUrl($links[0]['href']);
-      $this->pass('Found "Remove" link for body field');
       $this->drupalGet($url_target);
+      $this->drupalPostForm($this->getIndexPath('fields'), array(), $this->t('Save changes'));
     }
 
     $index = $this->getIndex(TRUE);
     $fields = $index->getFields();
     $this->assertTrue(!isset($fields['body']), 'The body field has been removed from the index.');
+  }
+
+  /**
+   * Tests whether unsaved fields changes work correctly.
+   */
+  protected function checkUnsavedChanges() {
+    $this->addField('entity:node', 'changed', $this->t('Changed'));
+    $this->drupalGet($this->getIndexPath('fields'));
+    $this->assertText($this->t('You have unsaved changes.'));
+
+    // Log in a different admin user.
+    $this->drupalLogin($this->adminUser2);
+
+    // Construct the message that should be displayed.
+    $username = array(
+      '#theme' => 'username',
+      '#account' => $this->adminUser,
+    );
+    $args = array(
+      '@user' => \Drupal::getContainer()->get('renderer')->renderPlain($username),
+      ':url' => $this->getIndex()->toUrl('break-lock-form')->toString(),
+    );
+    $message = (string) $this->t('This index is being edited by user @user, and is therefore locked from editing by others. This lock is @age old. Click here to <a href=":url">break this lock</a>.', $args);
+    // Since we can't predict the age that will be shown, just check for
+    // everything else.
+    $message_parts = explode('@age', $message);
+
+    $this->drupalGet($this->getIndexPath('fields/add'));
+    $this->assertRaw($message_parts[0]);
+    $this->assertRaw($message_parts[1]);
+    $this->assertFalse($this->xpath('//input[not(@disabled)]'));
+    $this->drupalGet($this->getIndexPath('fields/rendered_item/edit'));
+    $this->assertRaw($message_parts[0]);
+    $this->assertRaw($message_parts[1]);
+    $this->assertFalse($this->xpath('//input[not(@disabled)]'));
+    $this->drupalGet($this->getIndexPath('fields'));
+    $this->assertRaw($message_parts[0]);
+    $this->assertRaw($message_parts[1]);
+    $this->assertFalse($this->xpath('//input[not(@disabled)]'));
+    if ($this->assertTrue(preg_match('#fields/break-lock">([^<>]*?)</a>#', $message, $m))) {
+      $this->clickLink($m[1]);
+    }
+    $this->assertRaw($this->t('By breaking this lock, any unsaved changes made by @user will be lost.', $args));
+    $this->drupalPostForm(NULL, array(), $this->t('Break lock'));
+    $this->assertText($this->t('The lock has been broken. You may now edit this search index.'));
+    // Make sure the field has not been added to the index.
+    $index = $this->getIndex(TRUE);
+    $fields = $index->getFields();
+    $this->assertTrue(!isset($fields['changed']), 'The changed field has not been added to the index.');
+
+    // Find the "Remove" link for the "title" field.
+    $links = $this->xpath('//a[@data-drupal-selector=:id]', array(':id' => 'edit-fields-title-remove'));
+    if ($this->assertTrue($links, 'Found "Remove" link for title field')) {
+      $url_target = $this->getAbsoluteUrl($links[0]['href']);
+      $this->drupalGet($url_target);
+    }
+    $this->assertText($this->t('You have unsaved changes.'));
+    $this->drupalPostForm(NULL, array(), $this->t('Cancel'));
+
+    $this->assertTrue(!empty($fields['title']), 'The title field has not been removed from the index.');
   }
 
   /**
@@ -969,6 +1049,7 @@ class IntegrationTest extends WebTestBase {
     $node_label = $this->getIndex()->getDatasource('entity:node')->label();
     $field_label = "$field_label » $node_label » $field_label";
     $this->addField('entity:node', 'field__reference_field_:entity:field__reference_field_', $field_label);
+    $this->drupalPostForm($this->getIndexPath('fields'), array(), $this->t('Save changes'));
 
     $this->drupalGet('node/2/edit');
     $edit = array('field__reference_field_[0][target_id]' => 'Something (2)');
@@ -1049,14 +1130,13 @@ class IntegrationTest extends WebTestBase {
     $this->addField(NULL, 'search_api_url', $this->t('URI'));
 
     // Change the boost of the field.
-    $this->drupalGet($this->getIndexPath('fields'));
-    $this->drupalPostForm(NULL, array('fields[url][boost]' => '8.0'), $this->t('Save changes'));
+    $fields_path = $this->getIndexPath('fields');
+    $this->drupalPostForm($fields_path, array('fields[url][boost]' => '8.0'), $this->t('Save changes'));
     $this->assertText('The changes were successfully saved.');
     $this->assertOptionSelected('edit-fields-url-boost', '8.0', 'Boost is correctly saved.');
 
     // Change the type of the field.
-    $this->drupalGet($this->getIndexPath('fields'));
-    $this->drupalPostForm(NULL, array('fields[url][type]' => 'text'), $this->t('Save changes'));
+    $this->drupalPostForm($fields_path, array('fields[url][type]' => 'text'), $this->t('Save changes'));
     $this->assertText('The changes were successfully saved.');
     $this->assertOptionSelected('edit-fields-url-type', 'text', 'Type is correctly saved.');
   }

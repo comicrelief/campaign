@@ -17,12 +17,18 @@ imagemagick.settings:
     prepend:
       type: string
       label: 'Prepend arguments'
+    log_warnings:
+      type: boolean
+      label: 'Log command executions returning with non-zero code'
     debug:
       type: boolean
       label: 'Display debugging information'
     use_identify:
       type: boolean
       label: 'Use identify command'
+    locale:
+      type: string
+      label: 'Locale for escaping shell commands'
     image_formats:
       type: sequence
       sequence:

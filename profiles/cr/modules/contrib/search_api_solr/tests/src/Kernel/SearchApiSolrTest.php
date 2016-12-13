@@ -2,6 +2,7 @@
 
 namespace Drupal\Tests\search_api_solr\Kernel;
 
+use Drupal\Component\Utility\Unicode;
 use Drupal\search_api\Entity\Index;
 use Drupal\search_api\Entity\Server;
 use Drupal\search_api\Query\QueryInterface;
@@ -18,6 +19,8 @@ use Drupal\user\Entity\User;
  * @group search_api_solr
  */
 class SearchApiSolrTest extends BackendTestBase {
+
+  use InvokeMethodTrait;
 
   /**
    * Modules to enable for this test.
@@ -76,7 +79,7 @@ class SearchApiSolrTest extends BackendTestBase {
 
     try {
       $backend = Server::load($this->serverId)->getBackend();
-      if ($backend instanceof SearchApiSolrBackend && $backend->getSolrHelper()->pingCore()) {
+      if ($backend instanceof SearchApiSolrBackend && $backend->getSolrConnector()->pingCore()) {
         $this->solrAvailable = TRUE;
       }
     }
@@ -187,7 +190,7 @@ class SearchApiSolrTest extends BackendTestBase {
     $query->addCondition('id', 5, '<>');
     $query->range(0, 0);
     $results = $query->execute();
-    $expected = $this->getExpectedFacetsOfregressionTest2469547();
+    $expected = $this->getExpectedFacetsOfRegressionTest2469547();
     // We can't guarantee the order of returned facets, since "bar" and "foobar"
     // both occur once, so we have to manually sort the returned facets first.
     $facets = $results->getExtraData('search_api_facets', array())['body'];
@@ -198,11 +201,11 @@ class SearchApiSolrTest extends BackendTestBase {
   /**
    * Return the expected facets for regression test 2469547.
    *
-   * The facets differ for different backends because.
+   * The facets differ for Solr backends because of case-insensitive filters.
    *
    * @return array
    */
-  protected function getExpectedFacetsOfregressionTest2469547() {
+  protected function getExpectedFacetsOfRegressionTest2469547() {
     return [
       ['count' => 4, 'filter' => '"test"'],
       ['count' => 3, 'filter' => '"case"'],
@@ -237,27 +240,6 @@ class SearchApiSolrTest extends BackendTestBase {
   protected function assertIgnored(ResultSetInterface $results, array $ignored = array(), $message = 'No keys were ignored.') {
     // Nothing to do here since the Solr backend doesn't keep a list of ignored
     // fields.
-  }
-
-  /**
-   * Calls protected/private method of a class.
-   *
-   * @param object &$object
-   *   Instantiated object that we will run method on.
-   * @param string
-   *  Method name to call.
-   * @param array $parameters
-   *   Array of parameters to pass into method.
-   *
-   * @return mixed
-   *   Method return.
-   */
-  protected function invokeMethod(&$object, $methodName, array $parameters = []) {
-    $reflection = new \ReflectionClass(get_class($object));
-    $method = $reflection->getMethod($methodName);
-    $method->setAccessible(TRUE);
-
-    return $method->invokeArgs($object, $parameters);
   }
 
   /**
@@ -517,10 +499,12 @@ class SearchApiSolrTest extends BackendTestBase {
   public function testBasicAuth() {
     $server = $this->getServer();
     $config = $server->getBackendConfig();
-    $config['username'] = 'foo';
-    $config['password'] = 'bar';
+    $config['connector_config']['username'] = 'foo';
+    $config['connector_config']['password'] = 'bar';
     $server->setBackendConfig($config);
-    $auth = $server->getBackend()->getSolrConnection()->getEndpoint()->getAuthentication();
+    /** @var SolrBackendInterface $backend */
+    $backend = $server->getBackend();
+    $auth = $backend->getSolrConnector()->getEndpoint()->getAuthentication();
     $this->assertEquals(['username' => 'foo', 'password' => 'bar'], $auth);
   }
 
@@ -589,8 +573,130 @@ class SearchApiSolrTest extends BackendTestBase {
       catch (\Exception $e) {
         $this->assertEquals('Filter term on unknown or unindexed field uid.', $e->getMessage());
       }
+    }
+    else {
+      $this->assertTrue(TRUE, 'Error: The Solr instance could not be found. Please enable a multi-core one on http://localhost:8983/solr/d8');
+    }
+  }
 
-      $this->clearIndex();
+  /**
+   * Produces a string of given comprising diverse chars.
+   *
+   * @param int $length
+   *   Length of the string.
+   *
+   * @return string
+   */
+  protected function getLongText($length) {
+    $sequence = 'abcdefghijklmnopqrstuwxyz1234567890,./;\'[]\\<>?:"{}|~!@#$%^&*()_+`1234567890-=ööążźćęółńABCDEFGHIJKLMNOPQRSTUWXYZ';
+    $result = '';
+    $i = 0;
+
+    $sequenceLength = strlen($sequence);
+    while ($i++ != $length) {
+      $result .= $sequence[ $i % $sequenceLength ];
+    }
+
+    return $result;
+  }
+
+  /**
+   * Tests search result sorts.
+   */
+  public function testSearchResultSorts() {
+    // Only run the tests if we have a Solr core available.
+    if ($this->solrAvailable) {
+      $this->insertExampleContent();
+
+      // Add node with body length just above the solr limit for search fields.
+      // It's exceeded by just a single char to simulate an edge case.
+      $this->addTestEntity(6, [
+        'name' => 'Long text',
+        'body' => $this->getLongText(32767),
+        'type' => 'article',
+      ]);
+
+      // Add another node with body length equal to the limit.
+      $this->addTestEntity(7, [
+        'name' => 'Z long',
+        'body' => $this->getLongText(32766),
+        'type' => 'article',
+      ]);
+
+      $this->indexItems($this->indexId);
+
+      // Type text.
+      $results = $this->buildSearch(NULL, [], [], FALSE)
+        ->sort('name')
+        // Force an expected order for identical names.
+        ->sort('search_api_id')
+        ->execute();
+      $this->assertResults([3, 5, 1, 4, 2, 6, 7], $results, 'Sort by name.');
+
+      $results = $this->buildSearch(NULL, [], [], FALSE)
+        ->sort('name', QueryInterface::SORT_DESC)
+        // Force an expected order for identical names.
+        ->sort('search_api_id')
+        ->execute();
+      $this->assertResults([7, 6, 2, 4, 1, 5, 3], $results, 'Sort by name descending.');
+
+      // Type string.
+      $results = $this->buildSearch(NULL, [], [], FALSE)
+        ->sort('type')
+        // Force an expected order for identical types.
+        ->sort('search_api_id')
+        ->execute();
+      $this->assertResults([4, 5, 6, 7, 1, 2, 3], $results, 'Sort by type.');
+
+      $results = $this->buildSearch(NULL, [], [], FALSE)
+        ->sort('type', QueryInterface::SORT_DESC)
+        // Force an expected order for identical types.
+        ->sort('search_api_id')
+        ->execute();
+      $this->assertResults([1, 2, 3, 4, 5, 6, 7], $results, 'Sort by type descending.');
+
+      // Type multi-value string. Uses first value.
+      $results = $this->buildSearch(NULL, [], [], FALSE)
+        ->sort('keywords')
+        // Force an expected order for identical keywords.
+        ->sort('search_api_id')
+        ->execute();
+      $this->assertResults([4, 1, 2, 5, 3, 6, 7], $results, 'Sort by keywords.');
+
+      $results = $this->buildSearch(NULL, [], [], FALSE)
+        ->sort('keywords', QueryInterface::SORT_DESC)
+        // Force an expected order for identical keywords.
+        ->sort('search_api_id')
+        ->execute();
+      $this->assertResults([1, 2, 5, 4, 3, 6, 7], $results, 'Sort by keywords descending.');
+
+      // Type decimal.
+      $results = $this->buildSearch(NULL, [], [], FALSE)
+        ->sort('width')
+        // Force an expected order for identical width.
+        ->sort('search_api_id')
+        ->execute();
+      // @todo if width is missing it seems to be treated like 0 because
+      //   sortMissingLast="true" doesn't fix it.
+      // $this->assertResults([4, 5, 1, 2, 3], $results, 'Sort by width.');
+      $this->assertResults([1, 2, 3, 6, 7, 4, 5], $results, 'Sort by width.');
+
+      $results = $this->buildSearch(NULL, [], [], FALSE)
+        ->sort('width', QueryInterface::SORT_DESC)
+        // Force an expected order for identical width.
+        ->sort('search_api_id')
+        ->execute();
+      $this->assertResults([5, 4, 1, 2, 3, 6, 7], $results, 'Sort by width descending.');
+
+      $results = $this->buildSearch(NULL, [], [], FALSE)
+        ->sort('changed')
+        ->execute();
+      $this->assertResults([1, 2, 3, 4, 5, 6 ,7], $results, 'Sort by last update date');
+
+      $results = $this->buildSearch(NULL, [], [], FALSE)
+        ->sort('changed', QueryInterface::SORT_DESC)
+        ->execute();
+      $this->assertResults([7, 6, 5, 4, 3, 2, 1], $results, 'Sort by last update date descending');
     }
     else {
       $this->assertTrue(TRUE, 'Error: The Solr instance could not be found. Please enable a multi-core one on http://localhost:8983/solr/d8');
