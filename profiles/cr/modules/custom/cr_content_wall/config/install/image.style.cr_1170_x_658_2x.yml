@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: cr_1170_x_658_2x
+label: 'CR 1170 x 658 2x'
+effects:
+  8631e251-4160-4e19-a52d-a513716fd69b:
+    uuid: 8631e251-4160-4e19-a52d-a513716fd69b
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: '2340'
+      height: '1316'

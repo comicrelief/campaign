@@ -2,8 +2,10 @@ langcode: en
 status: true
 dependencies:
   config:
-    - image.style.cr_1400_x_658
-    - image.style.cr_1400_x_658_2x
+    - image.style.cr_1170_x_658
+    - image.style.cr_1170_x_658_2x
+    - image.style.cr_585_x_329
+    - image.style.cr_585_x_329_2x
 id: cw_medium_image_blocks
 label: 'CW Medium image blocks'
 image_style_mappings:
@@ -11,31 +13,31 @@ image_style_mappings:
     breakpoint_id: campaign_base.large
     multiplier: 1x
     image_mapping_type: image_style
-    image_mapping: cr_1400_x_658
+    image_mapping: cr_1170_x_658
   -
     breakpoint_id: campaign_base.large
     multiplier: 2x
     image_mapping_type: image_style
-    image_mapping: cr_1400_x_658_2x
+    image_mapping: cr_1170_x_658_2x
   -
     breakpoint_id: campaign_base.medium
     multiplier: 1x
     image_mapping_type: image_style
-    image_mapping: cr_1400_x_658
+    image_mapping: cr_1170_x_658
   -
     breakpoint_id: campaign_base.medium
     multiplier: 2x
     image_mapping_type: image_style
-    image_mapping: cr_1400_x_658_2x
+    image_mapping: cr_1170_x_658_2x
   -
     breakpoint_id: campaign_base.small
     multiplier: 1x
     image_mapping_type: image_style
-    image_mapping: cr_1400_x_658
+    image_mapping: cr_585_x_329
   -
     breakpoint_id: campaign_base.small
     multiplier: 2x
     image_mapping_type: image_style
-    image_mapping: cr_1400_x_658_2x
+    image_mapping: cr_585_x_329_2x
 breakpoint_group: campaign_base
-fallback_image_style: cr_1400_x_658
+fallback_image_style: cr_1170_x_658
