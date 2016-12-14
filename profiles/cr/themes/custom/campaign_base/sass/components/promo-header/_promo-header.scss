@@ -15,6 +15,7 @@
     min-height: 600px;
   }
   &.promo-header--no-image {
+    min-height: auto;
     min-height: initial;
   }
   &.promo-header--small {
