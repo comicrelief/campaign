@@ -60,9 +60,7 @@ projects:
   page_manager:
     version: 1.0-alpha24
   panels:
-    download:
-      version: 3.x-dev
-      revision: a5400d7
+    version: 3.0-beta5
   panelizer:
     version: 3.0-alpha2
   ds:
