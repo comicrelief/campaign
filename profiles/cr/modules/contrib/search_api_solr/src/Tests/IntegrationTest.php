@@ -5,6 +5,7 @@ namespace Drupal\search_api_solr\Tests;
 use Drupal\Component\Utility\Html;
 use Drupal\facets\Tests\BlockTestTrait;
 use Drupal\facets\Tests\ExampleContentTrait;
+use Drupal\facets\Tests\TestHelperTrait;
 use Drupal\search_api\Entity\Index;
 use Drupal\search_api\Tests\WebTestBase;
 use Drupal\views\Entity\View;
@@ -20,6 +21,7 @@ class IntegrationTest extends WebTestBase {
   use ExampleContentTrait {
     indexItems as doIndexItems;
   }
+  use TestHelperTrait;
 
   /**
    * The ID of the search server used for this test.
@@ -122,8 +124,8 @@ class IntegrationTest extends WebTestBase {
     // Verify that the facet results are correct.
     $this->drupalGet('search-api-test-fulltext');
     $this->assertResponse(200);
-    $this->assertText('item (3)');
-    $this->assertText('article (2)');
+    $this->assertFacetLabel('item (3)');
+    $this->assertFacetLabel('article (2)');
     $this->assertText('Displaying 5 search results');
     $this->clickLinkPartialName('item');
     $this->assertResponse(200);
@@ -164,10 +166,16 @@ class IntegrationTest extends WebTestBase {
     $this->assertText($this->t('Please configure the selected backend.'));
 
     $edit += [
-      'backend_config[host]' => 'localhost',
-      'backend_config[port]' => '8983',
-      'backend_config[path]' => '/',
-      'backend_config[core]' => '',
+      'backend_config[connector]' => 'standard',
+    ];
+    $this->drupalPostForm(NULL, $edit, $this->t('Save'));
+    $this->assertText($this->t('Please configure the selected Solr connector.'));
+
+    $edit += [
+      'backend_config[connector_config][host]' => 'localhost',
+      'backend_config[connector_config][port]' => '8983',
+      'backend_config[connector_config][path]' => '/',
+      'backend_config[connector_config][core]' => '',
     ];
     $this->drupalPostForm(NULL, $edit, $this->t('Save'));
 
@@ -180,10 +188,10 @@ class IntegrationTest extends WebTestBase {
     $edit_path = 'admin/config/search/search-api/server/' . $this->serverId . '/edit';
     $this->drupalGet($edit_path);
     $edit = [
-      'backend_config[host]' => 'localhost',
-      'backend_config[port]' => '8983',
-      'backend_config[path]' => '/solr',
-      'backend_config[core]' => 'd8',
+      'backend_config[connector_config][host]' => 'localhost',
+      'backend_config[connector_config][port]' => '8983',
+      'backend_config[connector_config][path]' => '/solr',
+      'backend_config[connector_config][core]' => 'd8',
     ];
     $this->drupalPostForm(NULL, $edit, $this->t('Save'));
     $this->assertText($this->t('The Solr server could be reached.'));

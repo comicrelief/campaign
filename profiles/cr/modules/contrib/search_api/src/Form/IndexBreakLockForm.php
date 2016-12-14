@@ -4,6 +4,7 @@ namespace Drupal\search_api\Form;
 
 use Drupal\Core\Entity\EntityConfirmFormBase;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Form\EnforcedResponseException;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\user\SharedTempStoreFactory;
@@ -120,7 +121,7 @@ class IndexBreakLockForm extends EntityConfirmFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $this->tempStore->delete($this->entity->id());
     $form_state->setRedirectUrl($this->entity->toUrl('fields'));
-    drupal_set_message($this->t('The lock has been broken and you may now edit this search index.'));
+    drupal_set_message($this->t('The lock has been broken. You may now edit this search index.'));
   }
 
 }

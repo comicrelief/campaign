@@ -15,9 +15,11 @@ use Drupal\search_api\Entity\Index;
 use Drupal\search_api\IndexInterface;
 use Drupal\search_api\Plugin\search_api\datasource\ContentEntityTaskManager;
 use Drupal\search_api\Plugin\search_api\datasource\EntityDatasourceInterface;
+use Drupal\search_api\Plugin\views\query\SearchApiQuery;
 use Drupal\search_api\SearchApiException;
 use Drupal\search_api\Plugin\search_api\datasource\ContentEntity;
 use Drupal\search_api\Task\IndexTaskManager;
+use Drupal\views\ViewEntityInterface;
 
 /**
  * Implements hook_help().
@@ -293,7 +295,9 @@ function search_api_node_access_records_alter(&$grants, NodeInterface $node) {
       switch ($datasource->getEntityTypeId()) {
         case 'node':
           $item_id = $datasource->getItemId($node->getTypedData());
-          $index->trackItemsUpdated($datasource_id, array($item_id));
+          if ($item_id !== NULL) {
+            $index->trackItemsUpdated($datasource_id, array($item_id));
+          }
           break;
 
         case 'comment':
@@ -307,9 +311,14 @@ function search_api_node_access_records_alter(&$grants, NodeInterface $node) {
           }
           $item_ids = array();
           foreach ($comments as $comment) {
-            $item_ids[] = $datasource->getItemId($comment->getTypedData());
+            $item_id = $datasource->getItemId($comment->getTypedData());
+            if ($item_id !== NULL) {
+              $item_ids[] = $item_id;
+            }
           }
-          $index->trackItemsUpdated($datasource_id, $item_ids);
+          if ($item_ids) {
+            $index->trackItemsUpdated($datasource_id, $item_ids);
+          }
           break;
       }
     }
@@ -446,6 +455,44 @@ function search_api_search_api_index_update(IndexInterface $index) {
         ));
       }
     }
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_insert() for type "view".
+ */
+function search_api_view_insert(ViewEntityInterface $view) {
+  _search_api_view_crud_event($view);
+
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_update() for type "view".
+ */
+function search_api_view_update(ViewEntityInterface $view) {
+  _search_api_view_crud_event($view);
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_delete() for type "view".
+ */
+function search_api_view_delete(ViewEntityInterface $view) {
+  _search_api_view_crud_event($view);
+}
+
+/**
+ * Reacts to a view CRUD event.
+ *
+ * @param \Drupal\views\ViewEntityInterface $view
+ *   The view that was created, changed or deleted.
+ */
+function _search_api_view_crud_event(ViewEntityInterface $view) {
+  // Whenever a view is created, updated (displays might have been added or
+  // removed) or deleted, we need to clear our cached display definitions.
+  if (SearchApiQuery::getIndexFromTable($view->get('base_table'))) {
+    \Drupal::getContainer()
+      ->get('plugin.manager.search_api.display')
+      ->clearCachedDefinitions();
   }
 }
 

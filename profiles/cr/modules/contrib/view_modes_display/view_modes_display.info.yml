@@ -5,7 +5,7 @@ description: Preview view modes for every entity type
 package: Other
 
 # Information added by Drupal.org packaging script on 2016-03-08
-version: '8.x-1.x-dev'
+version: '8.x-1.0'
 core: '8.x'
 project: 'view_modes_display'
-datestamp: 1457451844
+datestamp: 1457454542

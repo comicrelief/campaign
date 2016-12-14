@@ -187,3 +187,16 @@ function cr_update_8020() {
 function cr_update_8021() {
   \Drupal::service('module_installer')->install(['twig_tweak', 'field_group']);
 }
+
+/**
+* Remove cr_single_message_row
+*/
+function cr_update_8022() {
+  // Remove any orphaned paragraphs
+  $result = \Drupal::entityQuery('paragraph')
+       ->condition('type', 'cr_single_message_row')
+       ->execute();
+   entity_delete_multiple('paragraph', $result);
+  // Disable the containing module
+  \Drupal::service('module_installer')->uninstall(['cr_single_message_row_paragraph']);
+}

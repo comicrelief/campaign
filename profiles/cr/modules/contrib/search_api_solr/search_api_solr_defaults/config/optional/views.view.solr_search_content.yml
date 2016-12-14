@@ -31,9 +31,7 @@ display:
         options: {  }
       query:
         type: search_api_query
-        options:
-          bypass_access: false
-          parse_mode: terms
+        options: {  }
       exposed_form:
         type: basic
         options:
@@ -79,17 +77,17 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          operator: AND
+          operator: and
           value: ''
           group: 1
           exposed: true
           expose:
-            operator_id: search_api_fulltext_op
+            operator_id: search_op
             label: Search
             description: ''
             use_operator: false
-            operator: search_api_fulltext_op
-            identifier: search_api_fulltext
+            operator: search_op
+            identifier: keys
             required: false
             remember: false
             multiple: false

@@ -42,14 +42,18 @@ trait SearchApiFilterTrait {
     if (empty($this->value)) {
       return;
     }
-    // @todo Use "IN"/"NOT IN" instead, once available.
-    $conjunction = $this->operator == 'or' ? 'OR' : 'AND';
-    $operator = $this->operator == 'not' ? '<>' : '=';
-    $filter = $this->getQuery()->createConditionGroup($conjunction);
-    foreach ($this->value as $value) {
-      $filter->addCondition($this->realField, $value, $operator);
+
+    if ($this->operator !== 'and') {
+      $operator = $this->operator === 'not' ? 'NOT IN' : 'IN';
+      $this->getQuery()->addCondition($this->realField, $this->value, $operator, $this->options['group']);
+      return;
     }
-    $this->getQuery()->addConditionGroup($filter, $this->options['group']);
+
+    $condition_group = $this->getQuery()->createConditionGroup();
+    foreach ($this->value as $value) {
+      $condition_group->addCondition($this->realField, $value, '=');
+    }
+    $this->getQuery()->addConditionGroup($condition_group, $this->options['group']);
   }
 
 }

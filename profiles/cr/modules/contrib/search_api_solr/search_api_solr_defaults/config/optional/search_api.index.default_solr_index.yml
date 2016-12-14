@@ -59,7 +59,7 @@ field_settings:
     property_path: uid
     index_locked: true
     type_locked: true
-  search_api_node_grants:
+  node_grants:
     label: 'Node access information'
     type: string
     property_path: search_api_node_grants
@@ -88,16 +88,6 @@ processor_settings:
       weights:
         preprocess_index: -6
         preprocess_query: -4
-  highlight:
-    plugin_id: highlight
-    settings:
-      weights:
-        postprocess_query: -9
-      highlight: always
-      excerpt: true
-      excerpt_length: 256
-      prefix: '<strong>'
-      suffix: '</strong>'
   html_filter:
     plugin_id: html_filter
     settings:

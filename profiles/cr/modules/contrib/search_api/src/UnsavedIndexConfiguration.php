@@ -5,12 +5,17 @@
 namespace Drupal\search_api;
 
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\EntityStorageException;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\search_api\Datasource\DatasourceInterface;
+use Drupal\search_api\Entity\Index;
 use Drupal\search_api\Item\FieldInterface;
+use Drupal\search_api\Processor\ProcessorInterface;
 use Drupal\search_api\Query\QueryInterface;
 use Drupal\search_api\Query\ResultSetInterface;
+use Drupal\search_api\Tracker\TrackerInterface;
 use Drupal\user\SharedTempStore;
 
 /**
@@ -48,13 +53,6 @@ class UnsavedIndexConfiguration implements IndexInterface, UnsavedConfigurationI
    * @var object|null
    */
   protected $lock;
-
-  /**
-   * The properties changed in this copy compared to the original.
-   *
-   * @var string[]
-   */
-  protected $changedProperties = array();
 
   /**
    * Constructs a new UnsavedIndexConfiguration.
@@ -121,21 +119,29 @@ class UnsavedIndexConfiguration implements IndexInterface, UnsavedConfigurationI
    */
   public function setLockInformation($lock = NULL) {
     $this->lock = $lock;
+    return $this;
   }
 
   /**
    * {@inheritdoc}
    */
   public function savePermanent(EntityTypeManagerInterface $entity_type_manager = NULL) {
-    // Make sure to overwrite only those properties that were changed in this
-    // copy. Unlike in the Views UI, we have several edit pages for indexes
-    // ("Edit", "Fields", "Processors") and only one of them is locked, so this
-    // is necessary.
-    /** @var \Drupal\search_api\IndexInterface $original */
-    $original = $entity_type_manager->getStorage($this->entity->getEntityTypeId())->loadUnchanged($this->entity->id());
-    foreach ($this->changedProperties as $property) {
-      $original->set($property, $this->entity->get($property));
+    if (!$entity_type_manager) {
+      $entity_type_manager = \Drupal::entityTypeManager();
     }
+    // Make sure to overwrite only the index's fields, not just all properties.
+    // Unlike the Views UI, we have several separate pages for editing index
+    // entities, and only one of them is locked. Therefore, this extra step is
+    // necessary, we can't just call $this->entity->save().
+    /** @var \Drupal\search_api\IndexInterface $original */
+    $storage = $entity_type_manager->getStorage($this->entity->getEntityTypeId());
+    $original = $storage->loadUnchanged($this->entity->id());
+    $fields = $this->entity->getFields();
+    // Set the correct index object on the field objects.
+    foreach ($fields as $field) {
+      $field->setIndex($original);
+    }
+    $original->setFields($fields);
     $original->save();
     // Setting the saved entity as the wrapped one is important if methods like
     // isReindexing() are called on the object afterwards.
@@ -182,16 +188,37 @@ class UnsavedIndexConfiguration implements IndexInterface, UnsavedConfigurationI
    * {@inheritdoc}
    */
   public function setOption($name, $option) {
-    $this->changedProperties['options'] = 'options';
-    return $this->entity->setOption($name, $option);
+    $this->entity->setOption($name, $option);
+    return $this;
   }
 
   /**
    * {@inheritdoc}
    */
   public function setOptions(array $options) {
-    $this->changedProperties['options'] = 'options';
-    return $this->entity->setOptions($options);
+    $this->entity->setOptions($options);
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function createPlugin($type, $plugin_id, $configuration = array()) {
+    return $this->entity->createPlugin($type, $plugin_id, $configuration);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function createPlugins($type, array $plugin_ids = NULL, $configurations = array()) {
+    return $this->entity->createPlugins($type, $plugin_ids, $configurations);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getDatasources() {
+    return $this->entity->getDatasources();
   }
 
   /**
@@ -218,8 +245,25 @@ class UnsavedIndexConfiguration implements IndexInterface, UnsavedConfigurationI
   /**
    * {@inheritdoc}
    */
-  public function getDatasources() {
-    return $this->entity->getDatasources();
+  public function addDatasource(DatasourceInterface $datasource) {
+    $this->entity->addDatasource($datasource);
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function removeDatasource($datasource_id) {
+    $this->entity->removeDatasource($datasource_id);
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setDatasources(array $datasources) {
+    $this->entity->setDatasources($datasources);
+    return $this;
   }
 
   /**
@@ -241,6 +285,14 @@ class UnsavedIndexConfiguration implements IndexInterface, UnsavedConfigurationI
    */
   public function getTrackerInstance() {
     return $this->entity->getTrackerInstance();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setTracker(TrackerInterface $tracker) {
+    $this->entity->setTracker($tracker);
+    return $this;
   }
 
   /**
@@ -275,7 +327,8 @@ class UnsavedIndexConfiguration implements IndexInterface, UnsavedConfigurationI
    * {@inheritdoc}
    */
   public function setServer(ServerInterface $server = NULL) {
-    return $this->entity->setServer($server);
+    $this->entity->setServer($server);
+    return $this;
   }
 
   /**
@@ -295,22 +348,99 @@ class UnsavedIndexConfiguration implements IndexInterface, UnsavedConfigurationI
   /**
    * {@inheritdoc}
    */
-  public function preprocessIndexItems(array &$items) {
-    return $this->entity->preprocessIndexItems($items);
+  public function isValidProcessor($processor_id) {
+    return $this->entity->isValidProcessor($processor_id);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getProcessor($processor_id) {
+    return $this->entity->getProcessor($processor_id);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function addProcessor(ProcessorInterface $processor) {
+    $this->entity->addProcessor($processor);
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function removeProcessor($processor_id) {
+    $this->entity->removeProcessor($processor_id);
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setProcessors(array $processors) {
+    $this->entity->setProcessors($processors);
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function alterIndexedItems(array &$items) {
+    $this->entity->alterIndexedItems($items);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function preprocessIndexItems(array $items) {
+    $this->entity->preprocessIndexItems($items);
   }
 
   /**
    * {@inheritdoc}
    */
   public function preprocessSearchQuery(QueryInterface $query) {
-    return $this->entity->preprocessSearchQuery($query);
+    $this->entity->preprocessSearchQuery($query);
   }
 
   /**
    * {@inheritdoc}
    */
   public function postprocessSearchResults(ResultSetInterface $results) {
-    return $this->entity->postprocessSearchResults($results);
+    $this->entity->postprocessSearchResults($results);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function addField(FieldInterface $field) {
+    $this->entity->addField($field);
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function renameField($old_field_id, $new_field_id) {
+    $this->entity->renameField($old_field_id, $new_field_id);
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function removeField($field_id) {
+    $this->entity->removeField($field_id);
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setFields(array $fields) {
+    $this->entity->setFields($fields);
+    return $this;
   }
 
   /**
@@ -339,6 +469,13 @@ class UnsavedIndexConfiguration implements IndexInterface, UnsavedConfigurationI
    */
   public function getFulltextFields() {
     return $this->entity->getFulltextFields();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getFieldRenames() {
+    return $this->entity->getFieldRenames();
   }
 
   /**
@@ -379,36 +516,59 @@ class UnsavedIndexConfiguration implements IndexInterface, UnsavedConfigurationI
   /**
    * {@inheritdoc}
    */
+  public function isBatchTracking() {
+    return $this->entity->isBatchTracking();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function startBatchTracking() {
+    $this->entity->startBatchTracking();
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function stopBatchTracking() {
+    $this->entity->stopBatchTracking();
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function trackItemsInserted($datasource_id, array $ids) {
-    return $this->entity->trackItemsInserted($datasource_id, $ids);
+    $this->entity->trackItemsInserted($datasource_id, $ids);
   }
 
   /**
    * {@inheritdoc}
    */
   public function trackItemsUpdated($datasource_id, array $ids) {
-    return $this->entity->trackItemsUpdated($datasource_id, $ids);
+    $this->entity->trackItemsUpdated($datasource_id, $ids);
   }
 
   /**
    * {@inheritdoc}
    */
   public function trackItemsDeleted($datasource_id, array $ids) {
-    return $this->entity->trackItemsDeleted($datasource_id, $ids);
+    $this->entity->trackItemsDeleted($datasource_id, $ids);
   }
 
   /**
    * {@inheritdoc}
    */
   public function reindex() {
-    return $this->entity->reindex();
+    $this->entity->reindex();
   }
 
   /**
    * {@inheritdoc}
    */
   public function clear() {
-    return $this->entity->clear();
+    $this->entity->clear();
   }
 
   /**
@@ -429,29 +589,32 @@ class UnsavedIndexConfiguration implements IndexInterface, UnsavedConfigurationI
    * {@inheritdoc}
    */
   public function enable() {
-    return $this->entity->enable();
+    $this->entity->enable();
+    return $this;
   }
 
   /**
    * {@inheritdoc}
    */
   public function disable() {
-    return $this->entity->disable();
+    $this->entity->disable();
+    return $this;
   }
 
   /**
    * {@inheritdoc}
    */
   public function setStatus($status) {
-    $this->changedProperties['status'] = 'status';
-    return $this->entity->setStatus($status);
+    $this->entity->setStatus($status);
+    return $this;
   }
 
   /**
    * {@inheritdoc}
    */
   public function setSyncing($status) {
-    return $this->entity->setSyncing($status);
+    $this->entity->setSyncing($status);
+    return $this;
   }
 
   /**
@@ -486,15 +649,16 @@ class UnsavedIndexConfiguration implements IndexInterface, UnsavedConfigurationI
    * {@inheritdoc}
    */
   public function set($property_name, $value) {
-    $this->changedProperties[$property_name] = $property_name;
-    return $this->entity->set($property_name, $value);
+    $this->entity->set($property_name, $value);
+    return $this;
   }
 
   /**
    * {@inheritdoc}
    */
   public function calculateDependencies() {
-    return $this->entity->calculateDependencies();
+    $this->entity->calculateDependencies();
+    return $this;
   }
 
   /**
@@ -522,7 +686,8 @@ class UnsavedIndexConfiguration implements IndexInterface, UnsavedConfigurationI
    * {@inheritdoc}
    */
   public function trustData() {
-    return $this->entity->trustData();
+    $this->entity->trustData();
+    return $this;
   }
 
   /**
@@ -564,7 +729,8 @@ class UnsavedIndexConfiguration implements IndexInterface, UnsavedConfigurationI
    * {@inheritdoc}
    */
   public function enforceIsNew($value = TRUE) {
-    return $this->entity->enforceIsNew($value);
+    $this->entity->enforceIsNew($value);
+    return $this;
   }
 
   /**
@@ -641,49 +807,52 @@ class UnsavedIndexConfiguration implements IndexInterface, UnsavedConfigurationI
    * {@inheritdoc}
    */
   public static function load($id) {
-    EntityInterface::load($id);
+    return Index::load($id);
   }
 
   /**
    * {@inheritdoc}
    */
   public static function loadMultiple(array $ids = NULL) {
-    EntityInterface::loadMultiple($ids);
+    return Index::loadMultiple($ids);
   }
 
   /**
    * {@inheritdoc}
    */
   public static function create(array $values = array()) {
-    EntityInterface::create($values);
+    return Index::create($values);
   }
 
   /**
    * {@inheritdoc}
    */
   public function save() {
-    return $this->tempStore->setIfOwner($this->entity->id(), $this->entity);
+    if ($this->tempStore->setIfOwner($this->entity->id(), $this->entity)) {
+      return SAVED_UPDATED;
+    }
+    throw new EntityStorageException('Cannot save temporary index configuration: currently being edited by someone else.');
   }
 
   /**
    * {@inheritdoc}
    */
   public function delete() {
-    return $this->entity->delete();
+    $this->entity->delete();
   }
 
   /**
    * {@inheritdoc}
    */
   public function preSave(EntityStorageInterface $storage) {
-    return $this->entity->preSave($storage);
+    $this->entity->preSave($storage);
   }
 
   /**
    * {@inheritdoc}
    */
   public function postSave(EntityStorageInterface $storage, $update = TRUE) {
-    return $this->entity->postSave($storage, $update);
+    $this->entity->postSave($storage, $update);
   }
 
   /**
@@ -697,7 +866,7 @@ class UnsavedIndexConfiguration implements IndexInterface, UnsavedConfigurationI
    * {@inheritdoc}
    */
   public function postCreate(EntityStorageInterface $storage) {
-    return $this->entity->postCreate($storage);
+    $this->entity->postCreate($storage);
   }
 
   /**
@@ -725,7 +894,7 @@ class UnsavedIndexConfiguration implements IndexInterface, UnsavedConfigurationI
    * {@inheritdoc}
    */
   public function createDuplicate() {
-    return $this->entity->createDuplicate();
+    return new UnsavedIndexConfiguration($this->entity->createDuplicate(), $this->tempStore, $this->currentUserId);
   }
 
   /**
@@ -760,7 +929,8 @@ class UnsavedIndexConfiguration implements IndexInterface, UnsavedConfigurationI
    * {@inheritdoc}
    */
   public function setOriginalId($id) {
-    return $this->entity->setOriginalId($id);
+    $this->entity->setOriginalId($id);
+    return $this;
   }
 
   /**
@@ -830,36 +1000,40 @@ class UnsavedIndexConfiguration implements IndexInterface, UnsavedConfigurationI
    * {@inheritdoc}
    */
   public function addCacheContexts(array $cache_contexts) {
-    return $this->entity->addCacheContexts($cache_contexts);
+    $this->entity->addCacheContexts($cache_contexts);
+    return $this;
   }
 
   /**
    * {@inheritdoc}
    */
   public function addCacheTags(array $cache_tags) {
-    return $this->entity->addCacheTags($cache_tags);
+    $this->entity->addCacheTags($cache_tags);
+    return $this;
   }
 
   /**
    * {@inheritdoc}
    */
   public function mergeCacheMaxAge($max_age) {
-    return $this->entity->mergeCacheMaxAge($max_age);
+    $this->entity->mergeCacheMaxAge($max_age);
+    return $this;
   }
 
   /**
    * {@inheritdoc}
    */
   public function addCacheableDependency($other_object) {
-    return $this->entity->addCacheableDependency($other_object);
+    $this->entity->addCacheableDependency($other_object);
+    return $this;
   }
 
   /**
    * {@inheritdoc}
    */
   public function setThirdPartySetting($module, $key, $value) {
-    $this->changedProperties['third_party_settings'] = 'third_party_settings';
-    return $this->entity->setThirdPartySetting($module, $key, $value);
+    $this->entity->setThirdPartySetting($module, $key, $value);
+    return $this;
   }
 
   /**
@@ -880,7 +1054,6 @@ class UnsavedIndexConfiguration implements IndexInterface, UnsavedConfigurationI
    * {@inheritdoc}
    */
   public function unsetThirdPartySetting($module, $key) {
-    $this->changedProperties['third_party_settings'] = 'third_party_settings';
     return $this->entity->unsetThirdPartySetting($module, $key);
   }
 
@@ -889,57 +1062,6 @@ class UnsavedIndexConfiguration implements IndexInterface, UnsavedConfigurationI
    */
   public function getThirdPartyProviders() {
     return $this->entity->getThirdPartyProviders();
-  }
-
-  /**
-   * Adds a field to this index.
-   *
-   * If the field is already present (with the same datasource and property
-   * path) its settings will be updated.
-   *
-   * @param \Drupal\search_api\Item\FieldInterface $field
-   *   The field to add, or update.
-   *
-   * @throws \Drupal\search_api\SearchApiException
-   *   Thrown if the field could not be added, either because a different field
-   *   with the same field ID would be overwritten, or because the field
-   *   identifier is one of the pseudo-fields that can be used in search
-   *   queries.
-   */
-  public function addField(FieldInterface $field) {
-    // @todo Implement addField() method.
-  }
-
-  /**
-   * Changes the field ID of a field.
-   *
-   * @param string $old_field_id
-   *   The old ID of the field.
-   * @param string $new_field_id
-   *   The new ID of the field.
-   *
-   * @throws \Drupal\search_api\SearchApiException
-   *   Thrown if no field with the old ID exists, or because the new ID is
-   *   already taken, or because the new field ID is one of the pseudo-fields
-   *   that can be used in search queries.
-   */
-  public function renameField($old_field_id, $new_field_id) {
-    // @todo Implement renameField() method.
-  }
-
-  /**
-   * Removes a field from the index.
-   *
-   * If the field doesn't exist, the call will fail silently.
-   *
-   * @param string $field_id
-   *   The ID of the field to remove.
-   *
-   * @throws \Drupal\search_api\SearchApiException
-   *   Thrown if the field is locked.
-   */
-  public function removeField($field_id) {
-    // @todo Implement removeField() method.
   }
 
 }

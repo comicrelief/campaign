@@ -10,8 +10,8 @@
   background: $colour-black;
   text-align: center;
   padding: 10px;
-   @include breakpoint($screen-md) {
-    padding:15px 30px 15px;
+  @include breakpoint($screen-md) {
+    padding:15px 30px;
   }
   .btn,
   p,

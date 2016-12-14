@@ -7,6 +7,7 @@ use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\PluginFormInterface;
+use Drupal\Core\Form\SubformState;
 use Drupal\search_api\Datasource\DatasourcePluginManager;
 use Drupal\search_api\IndexInterface;
 use Drupal\search_api\SearchApiException;
@@ -254,8 +255,8 @@ class IndexForm extends EntityForm {
       '#type' => 'radios',
       '#title' => $this->t('Tracker'),
       '#description' => $this->t('Select the type of tracker which should be used for keeping track of item changes.'),
-      '#options' => $this->getTrackerPluginManager()->getOptionsList(),
-      '#default_value' => $index->hasValidTracker() ? $index->getTrackerInstance()->getPluginId() : key($tracker_options),
+      '#options' => $tracker_options,
+      '#default_value' => $index->getTrackerId(),
       '#required' => TRUE,
       '#ajax' => array(
         'trigger_as' => array('name' => 'tracker_configure'),
@@ -264,7 +265,7 @@ class IndexForm extends EntityForm {
         'method' => 'replace',
         'effect' => 'fade',
       ),
-      '#access' => count($tracker_options) > 1,
+      '#access' => !$index->hasValidTracker() || count($tracker_options) > 1,
     );
 
     $form['tracker_config'] = array(
@@ -295,8 +296,8 @@ class IndexForm extends EntityForm {
       '#type' => 'radios',
       '#title' => $this->t('Server'),
       '#description' => $this->t('Select the server this index should use. Indexes cannot be enabled without a connection to a valid, enabled server.'),
-      '#options' => array(NULL => '<em>' . $this->t('- No server -') . '</em>') + $this->getServerOptions(),
-      '#default_value' => $index->hasValidServer() ? $index->getServerId() : NULL,
+      '#options' => array('' => '<em>' . $this->t('- No server -') . '</em>') + $this->getServerOptions(),
+      '#default_value' => $index->hasValidServer() ? $index->getServerId() : '',
     );
 
     $form['status'] = array(
@@ -384,7 +385,7 @@ class IndexForm extends EntityForm {
         if (!empty($form['datasource_configs'][$datasource_id])) {
           $datasource_form = $form['datasource_configs'][$datasource_id];
         }
-        $datasource_form_state = new SubFormState($form_state, array('datasource_configs', $datasource_id));
+        $datasource_form_state = SubformState::createForSubform($datasource_form, $form, $form_state);
         $form['datasource_configs'][$datasource_id] = $datasource->buildConfigurationForm($datasource_form, $datasource_form_state);
 
         $show_message = TRUE;
@@ -436,7 +437,7 @@ class IndexForm extends EntityForm {
       // Get the "sub-form state" and appropriate form part to send to
       // buildConfigurationForm().
       $tracker_form = !empty($form['tracker_config']) ? $form['tracker_config'] : array();
-      $tracker_form_state = new SubFormState($form_state, array('tracker_config'));
+      $tracker_form_state = SubformState::createForSubform($tracker_form, $form, $form_state);
       $form['tracker_config'] = $tracker->buildConfigurationForm($tracker_form, $tracker_form_state);
 
       $form['tracker_config']['#type'] = 'details';
@@ -474,7 +475,7 @@ class IndexForm extends EntityForm {
    *
    * Takes care of changes in the selected tracker plugin.
    */
-  public function submitAjaxTrackerConfigForm($form, FormStateInterface $form_state) {
+  public function submitAjaxTrackerConfigForm(array $form, FormStateInterface $form_state) {
     $form_state->setValue('id', NULL);
     $form_state->setRebuild();
   }
@@ -517,7 +518,7 @@ class IndexForm extends EntityForm {
           continue;
         }
         $datasource_form = &$form['datasource_configs'][$datasource_id];
-        $datasource_form_state = new SubFormState($form_state, array('datasource_configs', $datasource_id));
+        $datasource_form_state = SubformState::createForSubform($datasource_form, $form, $form_state);
         $datasource->validateConfigurationForm($datasource_form, $datasource_form_state);
       }
     }
@@ -528,7 +529,7 @@ class IndexForm extends EntityForm {
     if ($tracker_id == $form_state->get('tracker')) {
       $tracker = $this->originalEntity->createPlugin('tracker', $tracker_id);
       if ($tracker instanceof PluginFormInterface) {
-        $tracker_form_state = new SubFormState($form_state, array('tracker_config'));
+        $tracker_form_state = SubformState::createForSubform($form['tracker_config'], $form, $form_state);
         $tracker->validateConfigurationForm($form['tracker_config'], $tracker_form_state);
       }
     }
@@ -547,13 +548,14 @@ class IndexForm extends EntityForm {
     $actions = parent::actions($form, $form_state);
 
     if ($this->getEntity()->isNew()) {
-      $submit_callbacks = $actions['submit']['#submit'];
-      $submit_callbacks[] = '::redirectToFieldsForm';
       $actions['save_edit'] = array(
         '#type' => 'submit',
-        '#value' => $this->t('Save and edit'),
-        '#submit' => $submit_callbacks,
+        '#value' => $this->t('Save and add fields'),
+        '#submit' => $actions['submit']['#submit'],
         '#button_type' => 'primary',
+        // Work around for submit callbacks after save() not being called due to
+        // batch operations.
+        '#redirect_to_url' => 'add-fields',
       );
     }
 
@@ -574,7 +576,7 @@ class IndexForm extends EntityForm {
     $datasources = $this->originalEntity->createPlugins('datasource', $datasource_ids);
     foreach ($datasources as $datasource_id => $datasource) {
       if ($datasource instanceof PluginFormInterface) {
-        $datasource_form_state = new SubFormState($form_state, array('datasource_configs', $datasource_id));
+        $datasource_form_state = SubformState::createForSubform($form['datasource_configs'][$datasource_id], $form, $form_state);
         $datasource->submitConfigurationForm($form['datasource_configs'][$datasource_id], $datasource_form_state);
       }
     }
@@ -586,7 +588,7 @@ class IndexForm extends EntityForm {
     $tracker = $this->originalEntity->createPlugin('tracker', $tracker_id);
     if ($tracker_id == $form_state->get('tracker')) {
       if ($tracker instanceof PluginFormInterface) {
-        $tracker_form_state = new SubFormState($form_state, array('tracker_config'));
+        $tracker_form_state = SubformState::createForSubform($form['tracker_config'], $form, $form_state);
         $tracker->submitConfigurationForm($form['tracker_config'], $tracker_form_state);
       }
     }
@@ -608,7 +610,13 @@ class IndexForm extends EntityForm {
         $index = $this->getEntity();
         $index->save();
         drupal_set_message($this->t('The index was successfully saved.'));
-        $form_state->setRedirect('entity.search_api_index.canonical', array('search_api_index' => $index->id()));
+        $button = $form_state->getTriggeringElement();
+        if (!empty($button['#redirect_to_url'])) {
+          $form_state->setRedirectUrl($index->toUrl($button['#redirect_to_url']));
+        }
+        else {
+          $form_state->setRedirect('entity.search_api_index.canonical', array('search_api_index' => $index->id()));
+        }
       }
       catch (SearchApiException $ex) {
         $form_state->setRebuild();
@@ -617,14 +625,4 @@ class IndexForm extends EntityForm {
       }
     }
   }
-
-  /**
-   * Form submission handler for the 'save and edit' action.
-   *
-   * Redirects to the index's "Fields" config form.
-   */
-  public function redirectToFieldsForm(array $form, FormStateInterface $form_state) {
-    $form_state->setRedirectUrl($this->entity->toUrl('add-fields'));
-  }
-
 }

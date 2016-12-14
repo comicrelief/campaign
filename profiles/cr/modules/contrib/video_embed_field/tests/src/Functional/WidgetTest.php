@@ -40,14 +40,14 @@ class WidgetTest extends BrowserTestBase {
       'title[0][value]' => $node_title,
       $this->fieldName . '[0][value]' => 'Some useless value.',
     ], t('Save and publish'));
-    $this->assertContains('Could not find a video provider to handle the given URL.', $this->getSession()->getPage()->getHtml());
+    $this->assertSession()->pageTextContains('Could not find a video provider to handle the given URL.');
 
     // Test a valid input.
     $valid_input = 'https://vimeo.com/80896303';
     $this->submitForm([
       $this->fieldName . '[0][value]' => $valid_input,
     ], t('Save and publish'));
-    $this->assertContains(sprintf('%s <em class="placeholder">%s</em> has been created.', $this->contentTypeName, $node_title), $this->getSession()->getPage()->getHtml());
+    $this->assertSession()->pageTextContains(sprintf('%s %s has been created.', $this->contentTypeName, $node_title));
 
     // Load the saved node and assert the valid value was saved into the field.
     $nodes = \Drupal::entityTypeManager()

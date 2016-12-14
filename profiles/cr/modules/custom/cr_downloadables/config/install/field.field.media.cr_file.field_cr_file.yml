@@ -18,7 +18,7 @@ default_value: {  }
 default_value_callback: ''
 settings:
   file_directory: downloads
-  file_extensions: 'pdf doc docx mp4 zip wav ppt jpeg png jpg'
+  file_extensions: 'pdf doc docx mp4 zip wav ppt jpeg png jpg mp3'
   max_filesize: '50000000'
   description_field: false
   handler: 'default:file'

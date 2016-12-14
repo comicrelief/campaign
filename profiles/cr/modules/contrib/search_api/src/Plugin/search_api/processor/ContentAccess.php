@@ -161,7 +161,10 @@ class ContentAccess extends ProcessorPluginBase {
       return;
     }
 
-    foreach ($this->filterForPropertyPath($item->getFields(), 'search_api_node_grants') as $field) {
+    $fields = $item->getFields();
+    $fields = $this->getFieldsHelper()
+      ->filterForPropertyPath($fields, NULL, 'search_api_node_grants');
+    foreach ($fields as $field) {
       // Collect grant information for the node.
       if (!$node->access('view', $anonymous_user)) {
         // If anonymous user has no permission we collect all grants with

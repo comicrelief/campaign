@@ -1,13 +1,13 @@
 minified: 1
-headline_text: 'We use cookies. By continuing to use this site you are agreeing to our terms of use.'
+headline_text: 'We use cookies. By continuing to use this site you are agreeing to our '
 accept_button_text: Close
 read_more_button_text: 'terms of use.'
 theme: dark-bottom
 path: /
 domain: ''
 expiry: '365'
-target: _self
+target: _blank
 theme_path: ''
 customise: 0
-cookie_policy: ''
+cookie_policy: 'https://www.rednoseday.com/legal#terms'
 container: ''

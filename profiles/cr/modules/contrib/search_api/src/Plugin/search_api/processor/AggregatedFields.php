@@ -47,10 +47,9 @@ class AggregatedFields extends ProcessorPluginBase {
    * {@inheritdoc}
    */
   public function addFieldValues(ItemInterface $item) {
-    $aggregated_fields = $this->filterForPropertyPath(
-      $this->index->getFieldsByDatasource(NULL),
-      'aggregated_field'
-    );
+    $fields = $this->index->getFields();
+    $aggregated_fields = $this->getFieldsHelper()
+      ->filterForPropertyPath($fields, NULL, 'aggregated_field');
     $required_properties_by_datasource = array(
       NULL => array(),
       $item->getDatasourceId() => array(),
@@ -62,9 +61,11 @@ class AggregatedFields extends ProcessorPluginBase {
       }
     }
 
-    $property_values = $this->extractItemValues(array($item), $required_properties_by_datasource)[0];
+    $property_values = $this->getFieldsHelper()
+      ->extractItemValues(array($item), $required_properties_by_datasource)[0];
 
-    $aggregated_fields = $this->filterForPropertyPath($item->getFields(), 'aggregated_field');
+    $aggregated_fields = $this->getFieldsHelper()
+      ->filterForPropertyPath($item->getFields(), NULL, 'aggregated_field');
     foreach ($aggregated_fields as $aggregated_field) {
       $values = array();
       $configuration = $aggregated_field->getConfiguration();

@@ -21,6 +21,9 @@
   clear: both;
 }
 .teaser-block__image {
+  width: 100%;
+  height: 50%;
+  background-position: center center;
   @include breakpoint($screen-md, $no-query: true) {
     position: relative;
     overflow: hidden;
@@ -53,14 +56,11 @@
       height: 450px;
     }
   }
-  width: 100%;
-  height: 50%;
   img {
     display: block;
     width: 100%;
     height: 100%;
     margin-bottom: -5px;
-
     object-fit: cover;
     .no-objectfit & {
       position: absolute;

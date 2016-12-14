@@ -2,7 +2,7 @@
 
 namespace Drupal\search_api\Plugin\views\filter;
 
-use Drupal\search_api\UncacheableDependencyTrait;
+use Drupal\Core\Cache\UncacheableDependencyTrait;
 
 /**
  * Defines a filter for adding conditions on string fields to the query.
