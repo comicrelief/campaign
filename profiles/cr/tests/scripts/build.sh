@@ -1,7 +1,7 @@
 #!/bin/bash
 # Only continue if we are on the "develop" branch
 echo $TRAVIS_COMMIT
-if [[ $TRAVIS_BRANCH == *"feature/PLAT-675_platenv_develop"* ]]
+if [[ $TRAVIS_BRANCH == *"develop"* ]]
 then
 
   # Decrypt travis platform.sh ssh key
