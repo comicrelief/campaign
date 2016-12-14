@@ -10,8 +10,8 @@ then
   eval "$(ssh-agent -s)"
   chmod 600 travis_rsa # this key should have push access
   ssh-add travis_rsa
-  git remote add platform git.eu.platform.sh:tx3mbsqmxtu74.git
-  ssh -o "StrictHostKeyChecking no" *
+  git remote add platform tx3mbsqmxtu74@git.eu.platform.sh:tx3mbsqmxtu74.git
+  ssh-keyscan -H * >> ~/.ssh/known_hosts
   git push platform develop --force
   echo "Pushing to platform.sh develop env."
 fi
