@@ -3,8 +3,13 @@
 echo $TRAVIS_COMMIT
 if [[ $TRAVIS_BRANCH == *"feature/PLAT-675_platenv_develop"* ]]
 then
-  echo "Pushing to platform.sh develop env."
+  # Decrypt travis platform.sh ssh key
+  openssl aes-256-cbc -K $encrypted_0a6446eb3ae3_key -iv $encrypted_0a6446eb3ae3_key -in travis_rsa.enc -out travis_rsa -d
   # Add platform.sh remote
+  eval "$(ssh-agent -s)"
+  chmod 600 travis_rsa # this key should have push access
+  ssh-add travis_rsa
   git remote add platform git.eu.platform.sh:tx3mbsqmxtu74.git
   git push platform develop --force
+  echo "Pushing to platform.sh develop env."
 fi
