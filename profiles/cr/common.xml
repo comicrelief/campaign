@@ -76,7 +76,7 @@
   </target>
   <target name="grunt:dependencies" description="Install all grunt dependencies.">
     <delete file=".bundle/config" />
-    <exec logoutput="true" passthru="true" checkreturn="true" command="bundle install --path vendor/bundle --without craft"/>
+    <exec logoutput="true" passthru="true" checkreturn="true" command="bundle install --path vendor/bundle --frozen --without craft"/>
     <exec logoutput="true" passthru="true" checkreturn="true" command="npm install"/>
   </target>
   <target name="grunt:dependencies:dev" description="Install all grunt dependencies.">
