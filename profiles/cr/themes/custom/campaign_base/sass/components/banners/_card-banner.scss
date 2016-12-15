@@ -1,0 +1,35 @@
+// Banner card
+
+.card-banner {
+	float: left;
+  width: 100%;
+  position: relative;
+}
+.card-banner__inner-wrapper {
+	width: span(12);
+	max-width: $max-width;
+	margin: 0 auto;
+	overflow: hidden;
+	position: relative;
+}
+.card-banner__image {
+	@include span(2);
+	img {
+		width: 100%;
+		height: auto;
+		margin-bottom: -5px;
+	}
+}
+.card-banner__content {
+	@include span(12);
+	padding: 20px 0;
+	position: absolute;
+	top: 50%;
+	@include translateY(-50%);
+	.btn {
+	  position: absolute;
+	  right: 20px;
+	  top: 50%;
+	  @include translateY(-50%);
+	}
+}
