@@ -40,19 +40,31 @@ settings:
   hash_salt: kzWT4Q5kJe2DkfS72PrATBUfkw54RKzMCbQg933K1Qwe0ZKtonOV_xdmuCac
 EOF
   echo 'File: environment.yml has been created.'
-  phing build:prepare:dev
-  sed -i -e "/branch:/ s/: .*/: $(echo $TRAVIS_BRANCH | sed -e 's/\\/\\\\/g; s/\//\\\//g; s/&/\\\&/g')/" profiles/rnd17/rnd17.make.yml
-  echo 'File: profiles/rnd17/rnd17.make.yml has been updated with current branch.'
-
+  cp ../campaign/node_modules ./node_modules
+  # Git config
   git config user.name "Travis CI"
   git config user.email "travis-ci@comicrelief.com"
+  # Update CR profile version in makefile
+  sed -i -e "/branch:/ s/: .*/: $(echo $TRAVIS_BRANCH | sed -e 's/\\/\\\\/g; s/\//\\\//g; s/&/\\\&/g')/" profiles/rnd17/rnd17.make.yml
+  echo 'File: profiles/rnd17/rnd17.make.yml has been updated with current branch.'
+  # Create new branch in RND named the same as current feature/branch
   git checkout -b $TRAVIS_BRANCH
-
   git commit -va -m 'Update campaign profile version'
+  # Update campaign profile code from feature branch
   phing make-cr
   git add  --all
   git commit -va -m 'Run make-cr, commit changes'
-  phing update-cr
+  # phing update-cr - user prompt not set to -y
+  phing db:nightly
+  drush cim --partial -y
+  drush cex -y
+  drush updb -y
+  phing config:import
+  drush cex -y
+  phing db:nightly
+  drush cim --partial -y
+  drush cex -y
+  # Add all config changes and commit
   git add  --all
   git commit -va -m 'Update configuration'
   git push origin HEAD
