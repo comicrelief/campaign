@@ -55,13 +55,13 @@ EOF
   git add  --all
   git commit -va -m 'Run make-cr, commit changes'
   # phing update-cr - user prompt not set to -y
-  phing db:nightly
+  phing db:nightly -verbose
   drush cim --partial -y
   drush cex -y
   drush updb -y
-  phing config:import
+  phing config:import -verbose
   drush cex -y
-  phing db:nightly
+  phing db:nightly -verbose
   drush cim --partial -y
   drush cex -y
   # Add all config changes and commit
