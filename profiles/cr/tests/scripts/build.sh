@@ -45,7 +45,7 @@ then
   git config user.name "Travis CI"
   git config user.email "travis-ci@comicrelief.com"
   git checkout -b $TRAVIS_BRANCH
-  sed -i -e "/branch:/ s/: .*/: $TRAVIS_BRANCH/" profiles/rnd17/rnd17.make.yml
+  sed -i -e '/branch:/ s/: .*/: $TRAVIS_BRANCH/' profiles/rnd17/rnd17.make.yml
   git commit -va -m 'Update campaign profile version'
   phing make-cr
   git commit -va -m 'Run make-cr, commit changes'
