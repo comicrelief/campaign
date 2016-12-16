@@ -40,11 +40,13 @@ settings:
   hash_salt: kzWT4Q5kJe2DkfS72PrATBUfkw54RKzMCbQg933K1Qwe0ZKtonOV_xdmuCac
 EOF
   echo 'File: environment.yml has been created.'
+  sed -i -e "/branch:/ s/: .*/: $(echo $TRAVIS_BRANCH | sed -e 's/\\/\\\\/g; s/\//\\\//g; s/&/\\\&/g')/" profiles/rnd17/rnd17.make.yml
+  echo 'File: profiles/rnd17/rnd17.make.yml has been updated with current branch.'
 
   git config user.name "Travis CI"
   git config user.email "travis-ci@comicrelief.com"
   git checkout -b $TRAVIS_BRANCH
-  sed -i -e '/branch:/ s/: .*/: /$TRAVIS_BRANCH/g' profiles/rnd17/rnd17.make.yml
+
   git commit -va -m 'Update campaign profile version'
   phing make-cr
   git commit -va -m 'Run make-cr, commit changes'
