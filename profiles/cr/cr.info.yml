@@ -69,7 +69,6 @@ dependencies:
   - layout_plugin
   - page_manager_ui
   - panels_ipe
-  - panelizer
   - ctools_block
   - paragraphs
   - view_mode
@@ -77,7 +76,6 @@ dependencies:
   - menu_link_attributes
 
   # Custom modules
-  - cr_layout
   - cr_page
   - cr_article
   - cr_content_reference
