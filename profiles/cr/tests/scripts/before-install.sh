@@ -6,4 +6,4 @@ printf 'db.querystring='$DB_URL >> build.properties
 # Output confirmation
 echo 'File: build.properties has been created.'
 # Get build dependencies
-phing build:prepare
+phing build:prepare:dev
