@@ -8,13 +8,8 @@ dependencies:
     - node.type.page
   module:
     - metatag
-    - panelizer
     - text
     - user
-third_party_settings:
-  panelizer:
-    enable: false
-    custom: false
 id: node.page.default
 targetEntityType: node
 bundle: page

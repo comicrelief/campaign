@@ -3,8 +3,6 @@ type: module
 description: Landing page content type
 core: 8.x
 package: Comic Relief
-dependencies:
-  - cr_layout
 
 config_devel:
   - node.type.landing
@@ -30,6 +28,11 @@ config_devel:
   - field.field.node.landing.field_landing_meta_tags
   - field.field.node.landing.field_paragraphs
   - field.field.node.landing.field_svg_body_title
-  - field.field.node.landing.panelizer
+  - field.storage.node.field_landing_background_colour
+  - field.storage.node.field_landing_copy_position_alig
+  - field.storage.node.field_landing_feature_layout
+  - field.storage.node.field_landing_image
+  - field.storage.node.field_landing_image_mobile
+  - field.storage.node.field_landing_meta_tags
   - pathauto.pattern.landing_page
   - metatag.metatag_defaults.node__landing
