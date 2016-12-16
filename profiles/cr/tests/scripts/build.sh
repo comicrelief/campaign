@@ -40,7 +40,7 @@ settings:
   hash_salt: kzWT4Q5kJe2DkfS72PrATBUfkw54RKzMCbQg933K1Qwe0ZKtonOV_xdmuCac
 EOF
   echo 'File: environment.yml has been created.'
-  cp ../campaign/node_modules ./node_modules
+  phing build:prepare:dev
   # Git config
   git config user.name "Travis CI"
   git config user.email "travis-ci@comicrelief.com"
