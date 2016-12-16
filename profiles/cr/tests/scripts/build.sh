@@ -1,6 +1,5 @@
 #!/bin/bash
 # Only continue if we are on the "develop" branch
-echo $TRAVIS_COMMIT
 if [[ $TRAVIS_BRANCH == *"develop"* ]]
 then
 
@@ -18,34 +17,34 @@ fi
 
 if [[ $TRAVIS_BRANCH == *"#integrate"* ]]
 then
-
+  echo 'Clone RND17 Repo.'
   cd ../
   git clone git@github.com:comicrelief/rnd17.git --branch develop --single-branch
   cd rnd17
   cp ../campaign/build.properties .
-
-  cat <<EOF > /home/travis/build/comicrelief/rnd17/sites/default/environment.yml
-  databases:
+  echo 'File: build.properties copied over from campaign.'
+cat <<EOF > /home/travis/build/comicrelief/rnd17/sites/default/environment.yml
+databases:
+  default:
     default:
-      default:
-        database: $DB
-        username: root
-        password:
-        prefix:
-        host: 127.0.0.1
-        port:
-        namespace: Drupal\\Core\\Database\\Driver\\mysql
-        driver: mysql
+      database: $DB
+      username: root
+      password:
+      prefix:
+      host: 127.0.0.1
+      port:
+      namespace: Drupal\\Core\\Database\\Driver\\mysql
+      driver: mysql
 
-  settings:
-    hash_salt: kzWT4Q5kJe2DkfS72PrATBUfkw54RKzMCbQg933K1Qwe0ZKtonOV_xdmuCac
-  EOF
+settings:
+  hash_salt: kzWT4Q5kJe2DkfS72PrATBUfkw54RKzMCbQg933K1Qwe0ZKtonOV_xdmuCac
+EOF
   echo 'File: environment.yml has been created.'
 
   git config user.name "Travis CI"
   git config user.email "travis-ci@comicrelief.com"
   git checkout -b $TRAVIS_BRANCH
-  sed -i -e '/branch:/ s/: .*/: $TRAVIS_BRANCH/' profiles/rnd17/rnd17.make.yml
+  sed -i -e '/branch:/ s/: .*/: /$TRAVIS_BRANCH/g' profiles/rnd17/rnd17.make.yml
   git commit -va -m 'Update campaign profile version'
   phing make-cr
   git commit -va -m 'Run make-cr, commit changes'
