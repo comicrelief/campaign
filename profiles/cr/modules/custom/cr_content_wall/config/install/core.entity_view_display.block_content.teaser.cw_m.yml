@@ -13,7 +13,7 @@ dependencies:
     - field.field.block_content.teaser.field_teaser_link_colour
     - field.field.block_content.teaser.field_teaser_link_title
     - field.field.block_content.teaser.field_teaser_you_tube_link
-    - responsive_image.styles.cw_medium_image_blocks
+    - responsive_image.styles.cw_landscape_image
   module:
     - ds
     - options
@@ -39,7 +39,6 @@ third_party_settings:
     regions:
       ds_content:
         - field_teaser_bg_colour
-        - field_teaser_title
         - field_teaser_image
         - body
         - field_teaser_link_title
@@ -87,7 +86,7 @@ content:
     weight: 2
     label: hidden
     settings:
-      responsive_image_style: cw_medium_image_blocks
+      responsive_image_style: cw_landscape_image
       image_link: ''
     third_party_settings: {  }
     type: responsive_image
