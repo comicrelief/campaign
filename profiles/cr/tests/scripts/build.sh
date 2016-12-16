@@ -18,7 +18,7 @@ fi
 
 if [[ $TRAVIS_BRANCH == *"#integrate"* ]]
 then
-  
+
   git config user.name "Travis CI"
   git config user.email "travis-ci@comicrelief.com"
 
@@ -27,12 +27,10 @@ then
   cd rnd17
   git checkout -b $TRAVIS_BRANCH
   sed -i -e "/branch:/ s/: .*/: $TRAVIS_BRANCH/" profiles/rnd17/rnd17.make.yml
-  git add .
-  git commit -v -m 'Commit '
-
-
-
-
-
-
+  git commit -va -m 'Update campaign profile version'
+  phing make-cr
+  git commit -va -m 'Run make-cr, commit changes'
+  phing update-cr
+  git commit -va -m 'Update configuration'
+  git push origin HEAD
 fi
