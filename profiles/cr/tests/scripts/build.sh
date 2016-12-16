@@ -40,6 +40,7 @@ settings:
   hash_salt: kzWT4Q5kJe2DkfS72PrATBUfkw54RKzMCbQg933K1Qwe0ZKtonOV_xdmuCac
 EOF
   echo 'File: environment.yml has been created.'
+  phing build:prepare
   sed -i -e "/branch:/ s/: .*/: $(echo $TRAVIS_BRANCH | sed -e 's/\\/\\\\/g; s/\//\\\//g; s/&/\\\&/g')/" profiles/rnd17/rnd17.make.yml
   echo 'File: profiles/rnd17/rnd17.make.yml has been updated with current branch.'
 
@@ -49,8 +50,10 @@ EOF
 
   git commit -va -m 'Update campaign profile version'
   phing make-cr
+  git add .
   git commit -va -m 'Run make-cr, commit changes'
   phing update-cr
+  git add .
   git commit -va -m 'Update configuration'
   git push origin HEAD
 fi
