@@ -15,3 +15,24 @@ then
   git push platform develop --force
   echo "Pushing to platform.sh develop env."
 fi
+
+if [[ $TRAVIS_BRANCH == *"#integrate"* ]]
+then
+  
+  git config user.name "Travis CI"
+  git config user.email "travis-ci@comicrelief.com"
+
+  cd ../
+  git clone git@github.com:comicrelief/rnd17.git --branch develop --single-branch
+  cd rnd17
+  git checkout -b $TRAVIS_BRANCH
+  sed -i -e "/branch:/ s/: .*/: $TRAVIS_BRANCH/" profiles/rnd17/rnd17.make.yml
+  git add .
+  git commit -v -m 'Commit '
+
+
+
+
+
+
+fi
