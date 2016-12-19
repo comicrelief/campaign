@@ -13,23 +13,32 @@
 	position: relative;
 }
 .card-banner__image {
-	@include span(2);
-	img {
-		width: 100%;
-		height: auto;
-		margin-bottom: -5px;
+	display: none;
+	@include breakpoint($screen-md) {
+		display: block;
+		@include span(2);
+		img {
+			display: block;
+			width: 100%;
+			height: auto;
+		}
 	}
 }
 .card-banner__content {
-	@include span(12);
 	padding: 20px 0;
-	position: absolute;
-	top: 50%;
-	@include translateY(-50%);
-	.btn {
-	  position: absolute;
-	  right: 20px;
-	  top: 50%;
-	  @include translateY(-50%);
+	p {
+		text-align: center;
+	}
+	@include breakpoint($screen-md) {
+		@include span(10);
+		position: absolute;
+		top: 50%;
+		@include translateY(-50%);
+		.btn {
+		  position: absolute;
+		  right: -20px;
+		  top: 50%;
+		  @include translateY(-50%);
+		}
 	}
 }
