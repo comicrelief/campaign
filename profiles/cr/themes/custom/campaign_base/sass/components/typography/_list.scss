@@ -32,12 +32,12 @@ ul {
 		position: relative;
 
 		&:before {
-   		content: '\25CF';
-		  color: $colour-red;
-		  left: -3px;
-	    padding: 0 16px 0 0;
-	    position: absolute;
-	    top: 0;
+      content: '\25CF';
+      color: $colour-red;
+      left: -3px;
+      padding: 0 16px 0 0;
+      position: absolute;
+      top: 0;
 		}
 	}
 }
