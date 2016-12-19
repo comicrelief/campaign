@@ -54,28 +54,28 @@ function search_api_solr_cron() {
       ->execute();
 
     $count = 0;
+    /** @var \Drupal\search_api\ServerInterface $server */
     foreach (Server::loadMultiple($ids) as $server) {
       try {
-        /** @var \Solarium\Client $solarium_client */
-        $solarium_client = $server->getBackend()->getSolrConnection();
+        /** @var \Drupal\search_api_solr\SolrBackendInterface $backend */
+        $backend = $server->getBackend();
+        $connector = $backend->getSolrConnector();
         if ($action != 'spellcheck') {
-          $update = $solarium_client->createUpdate();
-          $update->addOptimize(TRUE, FALSE);
-          $solarium_client->update($update);
+          $connector->optimize();
         }
         else {
-          $solarium_query = $solarium_client->createSelect();
+          $solarium_query = $connector->getSelectQuery();
           $solarium_query->setRows(0);
 
           $spellcheck = $solarium_query->getSpellcheck();
           $spellcheck->setBuild(TRUE);
 
-          $solarium_client->select($solarium_query);
+          $connector->execute($solarium_query);
         }
         ++$count;
       }
       catch(SearchApiException $e) {
-        watchdog_exception('search_api_solr', $e, '%type while optimizing Solr server @server: !message in %function (line %line of %file).', array('@server' => $server->label()));
+        watchdog_exception('search_api_solr', $e, '%type while optimizing Solr server @server: @message in %function (line %line of %file).', array('@server' => $server->label()));
       }
     }
     if ($count) {

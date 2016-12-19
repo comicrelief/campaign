@@ -5,14 +5,23 @@
 // Markup: promo-header.hbs
 //
 // .promo-header--feature   - Body copy overlap bg image
+// .promo-header--no-image   - Body copy overlap bg image
 //
 // Style guide: promo-header
 
 .promo-header {
   position: relative;
-  min-height: 600px;
+  @include breakpoint($screen-md-max, $no-query: true) {
+    min-height: 600px;
+  }
   &.promo-header--no-image {
-    min-height: auto;
+    min-height: auto; // fallback IE
+    min-height: initial;
+  }
+  &.promo-header--small {
+    @include breakpoint($screen-md-max, $no-query: true) {
+      min-height: 400px;
+    }
   }
 }
 .promo-header {
@@ -20,7 +29,7 @@
     display: table;
     background: transparent;
     width: 100%;
-    min-height: auto;
+    min-height: initial;
   }
 }
 .promo-header--default {
@@ -43,7 +52,6 @@
   }
   margin-top: -30%;
   margin-bottom: -5px;
-  float: left;
   width: 100%;
   .promo-header--feature & {
     position: relative;
@@ -111,6 +119,16 @@
       @include breakpoint($screen-md-max) {
         margin-right: auto;
         margin-left: auto;
+        text-align: center;
+        .promo-header--no-image & {
+          max-width: span(8);
+          width: 100%;
+          margin: 55px auto 45px;
+        }
+        .promo-header--small & {
+          max-width: span(8);
+          width: 100%;
+        }
       }
     }
     &--left {

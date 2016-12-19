@@ -4,20 +4,20 @@ namespace Drupal\search_api\Form;
 
 use Drupal\Component\Render\FormattableMarkup;
 use Drupal\Component\Utility\Html;
-use Drupal\Core\Datetime\DateFormatter;
+use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Field\TypedData\FieldItemDataDefinition;
+use Drupal\Core\Entity\TypedData\EntityDataDefinitionInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\TypedData\ComplexDataDefinitionInterface;
+use Drupal\Core\TypedData\DataReferenceDefinitionInterface;
 use Drupal\Core\Url;
 use Drupal\search_api\Datasource\DatasourceInterface;
-use Drupal\search_api\DataType\DataTypePluginManager;
 use Drupal\search_api\Processor\ConfigurablePropertyInterface;
-use Drupal\search_api\UnsavedConfigurationInterface;
+use Drupal\search_api\Processor\ProcessorPropertyInterface;
+use Drupal\search_api\Utility\FieldsHelperInterface;
 use Drupal\search_api\Utility\Utility;
-use Drupal\user\SharedTempStoreFactory;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -25,47 +25,21 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class IndexAddFieldsForm extends EntityForm {
 
+  use UnsavedConfigurationFormTrait;
+
+  /**
+   * The fields helper.
+   *
+   * @var \Drupal\search_api\Utility\FieldsHelperInterface
+   */
+  protected $fieldsHelper;
+
   /**
    * The index for which the fields are configured.
    *
    * @var \Drupal\search_api\IndexInterface
    */
   protected $entity;
-
-  /**
-   * The shared temporary storage for unsaved search indexes.
-   *
-   * @var \Drupal\user\SharedTempStore
-   */
-  protected $tempStore;
-
-  /**
-   * The entity manager.
-   *
-   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
-   */
-  protected $entityTypeManager;
-
-  /**
-   * The data type plugin manager.
-   *
-   * @var \Drupal\search_api\DataType\DataTypePluginManager
-   */
-  protected $dataTypePluginManager;
-
-  /**
-   * The renderer.
-   *
-   * @var \Drupal\Core\Render\RendererInterface
-   */
-  protected $renderer;
-
-  /**
-   * The date formatter.
-   *
-   * @var \Drupal\Core\Datetime\DateFormatter
-   */
-  protected $dateFormatter;
 
   /**
    * The parameters of the current page request.
@@ -101,23 +75,20 @@ class IndexAddFieldsForm extends EntityForm {
   /**
    * Constructs an IndexAddFieldsForm object.
    *
-   * @param \Drupal\user\SharedTempStoreFactory $temp_store_factory
-   *   The factory for shared temporary storages.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity manager.
-   * @param \Drupal\search_api\DataType\DataTypePluginManager $data_type_plugin_manager
-   *   The data type plugin manager.
+   * @param \Drupal\search_api\Utility\FieldsHelperInterface $fields_helper
+   *   The fields helper.
    * @param \Drupal\Core\Render\RendererInterface $renderer
    *   The renderer to use.
-   * @param \Drupal\Core\Datetime\DateFormatter $date_formatter
+   * @param \Drupal\Core\Datetime\DateFormatterInterface $date_formatter
    *   The date formatter.
    * @param array $parameters
    *   The parameters for this page request.
    */
-  public function __construct(SharedTempStoreFactory $temp_store_factory, EntityTypeManagerInterface $entity_type_manager, DataTypePluginManager $data_type_plugin_manager, RendererInterface $renderer, DateFormatter $date_formatter, array $parameters) {
-    $this->tempStore = $temp_store_factory->get('search_api_index');
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, FieldsHelperInterface $fields_helper, RendererInterface $renderer, DateFormatterInterface $date_formatter, array $parameters) {
     $this->entityTypeManager = $entity_type_manager;
-    $this->dataTypePluginManager = $data_type_plugin_manager;
+    $this->fieldsHelper = $fields_helper;
     $this->renderer = $renderer;
     $this->dateFormatter = $date_formatter;
     $this->parameters = $parameters;
@@ -127,56 +98,16 @@ class IndexAddFieldsForm extends EntityForm {
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
-    $temp_store_factory = $container->get('user.shared_tempstore');
     $entity_type_manager = $container->get('entity_type.manager');
-    $data_type_plugin_manager = $container->get('plugin.manager.search_api.data_type');
+    $fields_helper = $container->get('search_api.fields_helper');
     $renderer = $container->get('renderer');
     $date_formatter = $container->get('date.formatter');
     $request_stack = $container->get('request_stack');
     $parameters = $request_stack->getCurrentRequest()->query->all();
 
-    return new static($temp_store_factory, $entity_type_manager, $data_type_plugin_manager, $renderer, $date_formatter, $parameters);
+    return new static($entity_type_manager, $fields_helper, $renderer, $date_formatter, $parameters);
   }
 
-  /**
-   * Retrieves the entity manager.
-   *
-   * @return \Drupal\Core\Entity\EntityTypeManagerInterface
-   *   The entity manager.
-   */
-  protected function getEntityTypeManager() {
-    return $this->entityTypeManager;
-  }
-
-  /**
-   * Retrieves the data type plugin manager.
-   *
-   * @return \Drupal\search_api\DataType\DataTypePluginManager
-   *   The data type plugin manager.
-   */
-  public function getDataTypePluginManager() {
-    return $this->dataTypePluginManager;
-  }
-
-  /**
-   * Retrieves the renderer.
-   *
-   * @return \Drupal\Core\Render\RendererInterface
-   *   The renderer.
-   */
-  public function getRenderer() {
-    return $this->renderer;
-  }
-
-  /**
-   * Retrieves the date formatter.
-   *
-   * @return \Drupal\Core\Datetime\DateFormatter
-   *   The date formatter.
-   */
-  public function getDateFormatter() {
-    return $this->dateFormatter;
-  }
 
   /**
    * Retrieves a single page request parameter.
@@ -203,32 +134,7 @@ class IndexAddFieldsForm extends EntityForm {
     // \Drupal\views_ui\ViewEditForm::form().
     $form_state->disableCache();
 
-    if ($index instanceof UnsavedConfigurationInterface && $index->hasChanges()) {
-      if ($index->isLocked()) {
-        $form['#disabled'] = TRUE;
-        $username = array(
-          '#theme' => 'username',
-          '#account' => $index->getLockOwner($this->entityTypeManager),
-        );
-        $lock_message_substitutions = array(
-          '@user' => $this->getRenderer()->render($username),
-          '@age' => $this->dateFormatter->formatTimeDiffSince($index->getLastUpdated()),
-          ':url' => $index->toUrl('break-lock-form')->toString(),
-        );
-        $form['locked'] = array(
-          '#type' => 'container',
-          '#attributes' => array(
-            'class' => array(
-              'index-locked',
-              'messages',
-              'messages--warning',
-            ),
-          ),
-          '#children' => $this->t('This index is being edited by user @user, and is therefore locked from editing by others. This lock is @age old. Click here to <a href=":url">break this lock</a>.', $lock_message_substitutions),
-          '#weight' => -10,
-        );
-      }
-    }
+    $this->checkEntityEditable($form, $index);
 
     $args['%index'] = $index->label();
     $form['#title'] = $this->t('Add fields to index %index', $args);
@@ -364,19 +270,21 @@ class IndexAddFieldsForm extends EntityForm {
 
     $query_base = $base_url->getOption('query');
     foreach ($properties as $key => $property) {
+      if ($property instanceof ProcessorPropertyInterface && $property->isHidden()) {
+        continue;
+      }
       $this_path = $parent_path ? $parent_path . ':' : '';
       $this_path .= $key;
 
       $label = $property->getLabel();
-      $property = Utility::getInnerProperty($property);
-      $inner_property = $property;
+      $property = $this->fieldsHelper->getInnerProperty($property);
 
       $can_be_indexed = TRUE;
       $nested_properties = array();
       $parent_child_type = NULL;
       if ($property instanceof ComplexDataDefinitionInterface) {
         $can_be_indexed = FALSE;
-        $nested_properties = Utility::getNestedProperties($property);
+        $nested_properties = $this->fieldsHelper->getNestedProperties($property);
         $main_property = $property->getMainPropertyName();
         if ($main_property && isset($nested_properties[$main_property])) {
           $parent_child_type = $property->getDataType() . '.';
@@ -386,18 +294,17 @@ class IndexAddFieldsForm extends EntityForm {
           $can_be_indexed = TRUE;
         }
 
-        // Don't add the additional 'entity' property for entity reference
+        // Don't add the additional "entity" property for entity reference
         // fields which don't target a content entity type.
-        $allowed_properties = array(
-          'field_item:entity_reference',
-          'field_item:image',
-          'field_item:file',
-        );
-        if ($inner_property instanceof FieldItemDataDefinition && in_array($inner_property->getDataType(), $allowed_properties)) {
-          $entity_type = $this->getEntityTypeManager()
-            ->getDefinition($inner_property->getSetting('target_type'));
-          if (!$entity_type->isSubclassOf('Drupal\Core\Entity\ContentEntityInterface')) {
-            unset($nested_properties['entity']);
+        if (isset($nested_properties['entity'])) {
+          $entity_property = $nested_properties['entity'];
+          if ($entity_property instanceof DataReferenceDefinitionInterface) {
+            $target = $entity_property->getTargetDefinition();
+            if ($target instanceof EntityDataDefinitionInterface) {
+              if (!$this->fieldsHelper->isContentEntityType($target->getEntityTypeId())) {
+                unset($nested_properties['entity']);
+              }
+            }
           }
         }
       }
@@ -518,7 +425,7 @@ class IndexAddFieldsForm extends EntityForm {
     $property = $button['#property'];
 
     list($datasource_id, $property_path) = Utility::splitCombinedId($button['#name']);
-    $field = Utility::createFieldFromProperty($this->entity, $property, $datasource_id, $property_path, NULL, $button['#data_type']);
+    $field = $this->fieldsHelper->createFieldFromProperty($this->entity, $property, $datasource_id, $property_path, NULL, $button['#data_type']);
     $field->setLabel($button['#prefixed_label']);
     $this->entity->addField($field);
 

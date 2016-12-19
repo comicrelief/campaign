@@ -41,10 +41,20 @@ interface DisplayInterface extends PluginInspectionInterface, DerivativeInspecti
   public function getIndex();
 
   /**
-   * Returns the path used for this display.
+   * Returns the URL of this display.
    *
-   * @return \Drupal\Core\Url
-   *   The path of the display.
+   * @return \Drupal\Core\Url|null
+   *   The URL of the display, or NULL if there is no specific URL for it.
+   */
+  public function getUrl();
+
+  /**
+   * Returns the URL of this display.
+   *
+   * @return \Drupal\Core\Url|null
+   *   The URL of the display, or NULL if there is no specific URL for it.
+   *
+   * @deprecated Renamed to getUrl().
    */
   public function getPath();
 

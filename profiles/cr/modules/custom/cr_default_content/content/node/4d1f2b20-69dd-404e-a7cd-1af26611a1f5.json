@@ -184,13 +184,5 @@
         {
             "value": "a:0:{}"
         }
-    ],
-    "panelizer": [
-        {
-            "view_mode": "full",
-            "default": "default",
-            "panels_display": [],
-            "lang": "en"
-        }
     ]
 }

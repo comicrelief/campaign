@@ -405,8 +405,7 @@ class ContentEntity extends DatasourcePluginBase implements EntityDatasourceInte
    * {@inheritdoc}
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
-    if ($this->hasBundles()) {
-      $bundles = $this->getEntityBundleOptions();
+    if ($this->hasBundles() && ($bundles = $this->getEntityBundleOptions())) {
       $form['bundles'] = array(
         '#type' => 'details',
         '#title' => $this->t('Bundles'),
@@ -526,7 +525,10 @@ class ContentEntity extends DatasourcePluginBase implements EntityDatasourceInte
    */
   public function getItemId(ComplexDataInterface $item) {
     if ($entity = $this->getEntity($item)) {
-      return $entity->id() . ':' . $entity->language()->getId();
+      $enabled_bundles = $this->getBundles();
+      if (isset($enabled_bundles[$entity->bundle()])) {
+        return $entity->id() . ':' . $entity->language()->getId();
+      }
     }
     return NULL;
   }

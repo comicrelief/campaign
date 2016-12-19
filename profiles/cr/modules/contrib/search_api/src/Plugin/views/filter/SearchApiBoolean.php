@@ -2,7 +2,7 @@
 
 namespace Drupal\search_api\Plugin\views\filter;
 
-use Drupal\search_api\UncacheableDependencyTrait;
+use Drupal\Core\Cache\UncacheableDependencyTrait;
 use Drupal\views\Plugin\views\filter\BooleanOperator;
 
 /**

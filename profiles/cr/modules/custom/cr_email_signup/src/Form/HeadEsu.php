@@ -5,7 +5,7 @@ namespace Drupal\cr_email_signup\Form;
 /**
  * Concrete the Header sign up.
  */
-class HeadEsu extends StandardSignUp {
+class HeadEsu extends FundraiseSignUp {
 
   /**
    * {@inheritdoc}

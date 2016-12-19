@@ -3,9 +3,13 @@
 namespace Drupal\search_api\Tests;
 
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Field\FieldStorageDefinitionInterface;
+use Drupal\field\Tests\EntityReference\EntityReferenceTestTrait;
 use Drupal\search_api\Entity\Index;
 use Drupal\search_api\Entity\Server;
+use Drupal\search_api\Item\Field;
 use Drupal\search_api_test\PluginTestTrait;
+use Drupal\taxonomy\Tests\TaxonomyTestTrait;
 
 /**
  * Tests the admin UI for processors.
@@ -17,7 +21,17 @@ use Drupal\search_api_test\PluginTestTrait;
  */
 class ProcessorIntegrationTest extends WebTestBase {
 
+  use EntityReferenceTestTrait;
   use PluginTestTrait;
+  use TaxonomyTestTrait;
+
+  /**
+   * {@inheritdoc}
+   */
+  public static $modules = array(
+    'filter',
+    'taxonomy',
+  );
 
   /**
    * {@inheritdoc}
@@ -27,7 +41,7 @@ class ProcessorIntegrationTest extends WebTestBase {
     $this->drupalLogin($this->adminUser);
 
     $this->indexId = 'test_index';
-    Index::create(array(
+    $index = Index::create(array(
       'name' => 'Test index',
       'id' => $this->indexId,
       'status' => 1,
@@ -37,7 +51,45 @@ class ProcessorIntegrationTest extends WebTestBase {
           'settings' => array(),
         ),
       ),
-    ))->save();
+    ));
+
+    // Add a node and a taxonomy term reference, both of which could be used to
+    // create a hierarchy.
+    $this->createEntityReferenceField(
+      'node',
+      'page',
+      'term_field',
+      NULL,
+      'taxonomy_term',
+      'default',
+      array(),
+      FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED
+    );
+    $this->createEntityReferenceField(
+      'node',
+      'page',
+      'parent_reference',
+      NULL,
+      'node',
+      'default',
+      array('target_bundles' => array('page' => 'page'))
+    );
+
+    // Index the taxonomy and entity reference fields.
+    $term_field = new Field($index, 'term_field');
+    $term_field->setType('integer');
+    $term_field->setPropertyPath('term_field');
+    $term_field->setDatasourceId('entity:node');
+    $term_field->setLabel('Terms');
+    $index->addField($term_field);
+
+    $parent_reference = new Field($index, 'parent_reference');
+    $parent_reference->setType('integer');
+    $parent_reference->setPropertyPath('parent_reference');
+    $parent_reference->setDatasourceId('entity:node');
+    $parent_reference->setLabel('Terms');
+    $index->addField($parent_reference);
+    $index->save();
   }
 
   /**
@@ -122,6 +174,13 @@ class ProcessorIntegrationTest extends WebTestBase {
 
     $this->checkTransliterationIntegration();
     $enabled[] = 'transliteration';
+    sort($enabled);
+    $actual_processors = array_keys($this->loadIndex()->getProcessors());
+    sort($actual_processors);
+    $this->assertEqual($enabled, $actual_processors);
+
+    $this->checkAddHierarchyIntegration();
+    $enabled[] = 'hierarchy';
     sort($enabled);
     $actual_processors = array_keys($this->loadIndex()->getProcessors());
     sort($actual_processors);
@@ -400,6 +459,25 @@ TAGS
   }
 
   /**
+   * Tests the hierarchy processor.
+   */
+  protected function checkAddHierarchyIntegration() {
+    $configuration = array(
+      'fields' => array(
+        'term_field' => 'taxonomy_term-parent',
+        'parent_reference' => 'node-parent_reference',
+      ),
+    );
+    $edit = array(
+      'fields' => array(
+        'term_field' => array('status' => 1),
+        'parent_reference' => array('status' => 1),
+      ),
+    );
+    $this->editSettingsForm($configuration, 'hierarchy', $edit, TRUE, FALSE);
+  }
+
+  /**
    * Tests the integration of the "URL field" processor.
    */
   public function checkUrlFieldIntegration() {
@@ -441,8 +519,11 @@ TAGS
    * @param bool $enable
    *   (optional) If TRUE, explicitly enable the processor. If FALSE, it should
    *   already be enabled.
+   * @param bool $unset_fields
+   *   (optional) If TRUE, the "fields" property will be removed from the
+   *   actual configuration prior to comparing with the given configuration.
    */
-  protected function editSettingsForm(array $configuration, $processor_id, array $form_values = NULL, $enable = TRUE) {
+  protected function editSettingsForm(array $configuration, $processor_id, array $form_values = NULL, $enable = TRUE, $unset_fields = TRUE) {
     if (!isset($form_values)) {
       $form_values = $configuration;
     }
@@ -459,7 +540,10 @@ TAGS
     $this->assertTrue($processor, "Successfully enabled the '$processor_id' processor.'");
     if ($processor) {
       $actual_configuration = $processor->getConfiguration();
-      unset($actual_configuration['fields'], $actual_configuration['weights']);
+      unset($actual_configuration['weights']);
+      if ($unset_fields) {
+        unset($actual_configuration['fields']);
+      }
       $configuration += $processor->defaultConfiguration();
       $this->assertEqual($configuration, $actual_configuration, "Processor configuration for processor '$processor_id' was set correctly.");
     }

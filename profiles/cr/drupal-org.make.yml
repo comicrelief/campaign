@@ -11,7 +11,7 @@ projects:
   file_entity:
     version: 2.0-beta3
   media_entity:
-    version: 1.5
+    version: 1.6
   media_entity_instagram:
     version: 1.2
   media_entity_image:
@@ -29,13 +29,13 @@ projects:
       branch: 8.x-1.x
       revision: 77e18608cff42cfc4384bbcdd730a1ffdc37779b
   embed:
-    version: 1.0-rc2
+    version: 1.0-rc3
   entity_embed:
     download:
       branch: 8.x-1.x
       revision: 08e5098909f5286238edfb716353efa651eb5a5d
   video_embed_field:
-    version: 1.1
+    version: 1.3
   metatag:
     download:
       branch: 8.x-1.x
@@ -58,7 +58,7 @@ projects:
   layout_plugin:
     version: 1.0-alpha23
   page_manager:
-    version: 1.0-alpha23
+    version: 1.0-alpha24
   panels:
     download:
       version: 3.x-dev
@@ -74,7 +74,7 @@ projects:
       version: 1.x-dev
       revision: c1941b7
   view_modes_display:
-    version: 1.x-dev
+    version: 1.0
   social_links:
     download:
       branch: 8.x-1.x
@@ -105,7 +105,7 @@ projects:
   stage_file_proxy:
     version: 1.0-alpha1
   imagemagick:
-    version: 1.0-alpha2
+    version: 1.0-alpha4
   config_readonly:
     version: 1.0-beta2
   # Editor/admin experience
@@ -140,12 +140,19 @@ projects:
   # Service Integration
   cookieconsent:
     version: 1.0
+  field_group:
+    version: 1.0-rc6
+  twig_tweak:
+    version: 1.4
+    patch:
+      # See: https://www.drupal.org/node/2833960
+      2833960: https://www.drupal.org/files/issues/2833960-relative-image-path.patch
   rabbitmq:
     version: 1.0-beta1
   search_api:
-    version: 1.0-beta1
+    version: 1.0-beta3
   search_api_solr:
-    version: 1.0-alpha6
+    version: 1.0-beta1
   crazyegg:
     version: 1.0-rc1
   google_tag:
@@ -157,9 +164,11 @@ projects:
       # See: https://github.com/mikeyp/google_tag/pull/8
       new_format: https://patch-diff.githubusercontent.com/raw/mikeyp/google_tag/pull/8.patch
   optimizely:
-    version: 2.15-rc1
+    version: 1.1
   simple_sitemap:
-    version: 2.5
+    download:
+      branch: 8.x-2.x
+      revision: 5833ff0
   # Performance modules
   fast_404:
     version: 1.0-alpha2

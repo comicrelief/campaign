@@ -60,12 +60,12 @@ Before a site instance deployment can happen, a Campaign profile release must be
 `/build rnd17 [branch (e.g feature/1.2)]`
 - Sync production database to staging using the following command: 
 /sqlsync rnd17 production staging
-- Sync production files to staging using the following command: 
+- Enable `stage_file_proxy` to have files available on staging. Alternatively, sync production files to staging using the following command.
 `/filesync rnd17 production staging`
 - Deploy the build artifact to the staging environment using the following command: 
 `/deploy rnd17 staging [build artefact id]`
 Note: The build artifact id will be output to the #craftlogs Slack channel once its built. 
-- Login to the site and do general smoke tests
+- Login to the site and do [general smoke tests](http://softwaretestingfundamentals.com/smoke-testing/). Grab another dev that worked on most tickets in this release to help you out with the smoke tests. This process should not take more than 10-15 minutes if no major problems are found.
 - Announce to the #deployments Slack channel so the release can be QA'd, using @QA will notify all QA's.
 
 ### Deploying to Production

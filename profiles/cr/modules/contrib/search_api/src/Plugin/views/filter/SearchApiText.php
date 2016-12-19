@@ -1,7 +1,8 @@
 <?php
 
 namespace Drupal\search_api\Plugin\views\filter;
-use Drupal\search_api\UncacheableDependencyTrait;
+
+use Drupal\Core\Cache\UncacheableDependencyTrait;
 
 /**
  * Defines a filter for filtering on fulltext fields.

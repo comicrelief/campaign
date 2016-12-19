@@ -26,8 +26,10 @@ interface FieldsHelperInterface {
    * @param \Drupal\search_api\Item\FieldInterface[][] $fields
    *   An associative array, keyed by property paths, mapped to field objects
    *   with that property path.
+   * @param string|null $langcode
+   *   (optional) The code of the language the retrieved values should have.
    */
-  public function extractFields(ComplexDataInterface $item, array $fields);
+  public function extractFields(ComplexDataInterface $item, array $fields, $langcode = NULL);
 
   /**
    * Extracts value and original type from a single piece of data.
@@ -49,6 +51,46 @@ interface FieldsHelperInterface {
    *   An array of values.
    */
   public function extractFieldValues(TypedDataInterface $data);
+
+  /**
+   * Extracts property values from items.
+   *
+   * Values are taken from existing fields on the item, where present, and are
+   * otherwise extracted from the item's underlying object.
+   *
+   * @param \Drupal\search_api\Item\ItemInterface[] $items
+   *   The items from which properties should be extracted.
+   * @param string[][] $required_properties
+   *   The properties that should be extracted, keyed by datasource ID and
+   *   property path, with the values being the IDs that the values should be
+   *   put under in the return value.
+   * @param bool $load
+   *   (optional) If FALSE, only field values already present will be returned.
+   *   Otherwise, fields will be extracted (and underlying objects loaded) if
+   *   necessary.
+   *
+   * @return mixed[][][]
+   *   Arrays of field values, keyed by items' indexes in $items and the given
+   *   field IDs from $required_properties.
+   */
+  public function extractItemValues(array $items, array $required_properties, $load = TRUE);
+
+  /**
+   * Filters the given fields for those with the specified property path.
+   *
+   * Array keys will be preserved.
+   *
+   * @param \Drupal\search_api\Item\FieldInterface[] $fields
+   *   The fields to filter.
+   * @param string|null $datasource_id
+   *   The datasource ID of the fields that should be returned.
+   * @param string $property_path
+   *   The searched property path on the item.
+   *
+   * @return \Drupal\search_api\Item\FieldInterface[]
+   *   All fields with the given property path.
+   */
+  public function filterForPropertyPath(array $fields, $datasource_id, $property_path);
 
   /**
    * Retrieves a list of nested properties from a complex property.
@@ -90,6 +132,18 @@ interface FieldsHelperInterface {
    *   The inner property definition.
    */
   public function getInnerProperty(DataDefinitionInterface $property);
+
+  /**
+   * Checks whether the given entity type is a content entity type.
+   *
+   * @param string $entity_type_id
+   *   The ID of the entity type.
+   *
+   * @return bool
+   *   TRUE if the $entity_type_id is a valid content entity type, FALSE
+   *   otherwise.
+   */
+  public function isContentEntityType($entity_type_id);
 
   /**
    * Determines whether a field ID is reserved for special use.

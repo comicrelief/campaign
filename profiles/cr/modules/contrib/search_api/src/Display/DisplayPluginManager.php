@@ -54,4 +54,13 @@ class DisplayPluginManager extends DefaultPluginManager {
     return $this->displays;
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function clearCachedDefinitions() {
+    parent::clearCachedDefinitions();
+
+    $this->discovery = NULL;
+  }
+
 }

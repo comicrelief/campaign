@@ -9,7 +9,6 @@ dependencies:
     - node.type.page
   module:
     - ds
-    - panelizer
     - text
     - user
 third_party_settings:
@@ -50,9 +49,6 @@ third_party_settings:
           link: true
           wrapper: h2
           class: ''
-  panelizer:
-    enable: false
-    custom: false
 id: node.page.search_index
 targetEntityType: node
 bundle: page
@@ -60,7 +56,7 @@ mode: search_index
 content:
   body:
     label: hidden
-    type: text_trimmed
+    type: text_summary_or_trimmed
     weight: 2
     settings:
       trim_length: 200

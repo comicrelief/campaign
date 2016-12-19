@@ -217,6 +217,7 @@ class Field implements \IteratorAggregate, FieldInterface {
       throw new \InvalidArgumentException('Attempted to change the index of a field object.');
     }
     $this->index = $index;
+    $this->datasource = NULL;
     return $this;
   }
 
@@ -259,6 +260,9 @@ class Field implements \IteratorAggregate, FieldInterface {
       'property_path' => $this->getPropertyPath(),
       'type' => $this->getType(),
     );
+    if ($this->getDatasourceId() === NULL) {
+      unset($settings['datasource_id']);
+    }
     if ($this->getBoost() != 1.0) {
       $settings['boost'] = $this->getBoost();
     }
@@ -301,6 +305,9 @@ class Field implements \IteratorAggregate, FieldInterface {
    * {@inheritdoc}
    */
   public function setDatasourceId($datasource_id) {
+    if ($this->datasourceId != $datasource_id) {
+      $this->datasource = NULL;
+    }
     $this->datasourceId = $datasource_id;
     return $this;
   }
@@ -640,7 +647,9 @@ class Field implements \IteratorAggregate, FieldInterface {
    * Implements the magic __wakeup() method to control object unserialization.
    */
   public function __wakeup() {
-    if ($this->indexId) {
+    // Make sure we have a container to do this. This is important to correctly
+    // display test failures.
+    if ($this->indexId && \Drupal::hasContainer()) {
       $this->index = Index::load($this->indexId);
       unset($this->indexId);
     }

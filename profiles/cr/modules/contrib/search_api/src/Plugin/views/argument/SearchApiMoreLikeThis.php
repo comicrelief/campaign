@@ -2,10 +2,10 @@
 
 namespace Drupal\search_api\Plugin\views\argument;
 
+use Drupal\Core\Cache\UncacheableDependencyTrait;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\search_api\Entity\Index;
 use Drupal\search_api\SearchApiException;
-use Drupal\search_api\UncacheableDependencyTrait;
 
 /**
  * Defines a contextual filter for displaying a "More Like This" list.

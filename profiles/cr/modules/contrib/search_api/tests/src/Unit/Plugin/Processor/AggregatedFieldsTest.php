@@ -326,10 +326,9 @@ class AggregatedFieldsTest extends UnitTestCase {
         ),
       ),
     ));
-    $index->method('getFieldsByDatasource')
-      ->willReturnMap(array(
-        array(NULL, array('aggregated_field' => $field)),
-      ));
+    $index->method('getFields')->willReturn(array(
+      'aggregated_field' => $field,
+    ));
     $index->method('getPropertyDefinitions')
       ->willReturnMap(array(
         array(

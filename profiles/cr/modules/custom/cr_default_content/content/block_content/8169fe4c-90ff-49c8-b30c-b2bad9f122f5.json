@@ -1,14 +1,14 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/sr16-spl-local.sportrelief.com\/block\/14?_format=hal_json"
+            "href": "http:\/\/default\/block\/14?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/block_content\/content_reference_block"
         },
         "http:\/\/drupal.org\/rest\/relation\/block_content\/content_reference_block\/field_content_reference": [
             {
-                "href": "http:\/\/sr16-spl-local.sportrelief.com\/whats-going-on\/british-triathlon-cheers-greg-james-on?_format=hal_json"
+                "href": "http:\/\/default\/news-tv-and-events\/news\/british-triathlon-cheers-greg-james-on?_format=hal_json"
             }
         ]
     },
@@ -72,7 +72,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/whats-going-on\/british-triathlon-cheers-greg-james-on?_format=hal_json"
+                        "href": "http:\/\/default\/news-tv-and-events\/news\/british-triathlon-cheers-greg-james-on?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/node\/article"

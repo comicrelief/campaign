@@ -66,6 +66,7 @@ mounts:
     "/Gemfile.lock": "shared:files/Gemfile.lock"
     "/profiles/cr/themes/custom/campaign_base/js": "shared:files/js"
     "/profiles/cr/themes/custom/campaign_base/css": "shared:files/css"
+    "/profiles/cr/themes/custom/campaign_base/ie9-css": "shared:files/ie9-css"
     "/profiles/cr/themes/custom/campaign_base/styleguide": "shared:files/styleguide"
     "/profiles/cr/themes/custom/campaign_base/images/generated": "shared:files/images_generated"
     "/profiles/cr/.sass-cache": "shared:files/.sass-cache"
@@ -76,12 +77,9 @@ hooks:
     deploy: |
       set -e
 
-      composer install --no-progress --prefer-dist -o
-      npm install
-      cd profiles/cr
-      bundle install --path vendor/bundle --frozen --without craft
-      bundle exec grunt build
-      cd ../../
+      phing grunt:dependencies
+      phing install:dependencies
+      phing grunt:build
 
       # Re-install the site if this hasn't been installed yet for this branch, or we are on develop
       if [ $PLATFORM_ENVIRONMENT = "develop" ] || [ ! -f tmp/$PLATFORM_ENVIRONMENT.installed ]; then
@@ -94,6 +92,7 @@ hooks:
         echo ">>> End re-installing Campaign profile"
       else
         echo ">>> No re-installation of the profile required, just a simple update!"
+        phing config:import
         drush cr
       fi
 

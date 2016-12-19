@@ -15,7 +15,6 @@ dependencies:
   - taxonomy
   - metatag
   - pathauto
-  - panelizer
   - responsive_image
   - ds
   - rdf

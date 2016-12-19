@@ -17,8 +17,10 @@
   @extend .bg--black;
   
   @include breakpoint($screen-md, $no-query: true) {
-    min-height: 500px;
     margin: 0 0 -6px;
+  }
+  @include breakpoint($screen-lg, $no-query: true) {
+    min-height: 500px;
   }
 }
 

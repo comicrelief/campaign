@@ -21,13 +21,14 @@ class ColorboxFormatterTest extends JavascriptTestBase {
     'node',
     'colorbox',
     'video_embed_field',
-    'video_embed_field_colorbox_test',
+    'colorbox_library_test',
+    'video_embed_field_mock_provider',
   ];
 
   /**
    * How long it takes for colorbox to open.
    */
-  const COLORBOX_LAUNCH_TIME = 500;
+  const COLORBOX_LAUNCH_TIME = 250;
 
   /**
    * {@inheritdoc}
@@ -45,10 +46,9 @@ class ColorboxFormatterTest extends JavascriptTestBase {
       'autoplay' => FALSE,
       'responsive' => TRUE,
     ]);
-    $node = $this->createVideoNode('https://www.youtube.com/watch?v=fdbFVWupSsw');
+    $node = $this->createVideoNode('https://example.com/mock_video');
     $this->drupalGet('node/' . $node->id());
-    $this->getSession()->wait(50);
-    $this->click('img');
+    $this->click('.video-embed-field-launch-modal');
     $this->getSession()->wait(static::COLORBOX_LAUNCH_TIME);
     $this->assertSession()->elementExists('css', '#colorbox .video-embed-field-responsive-video');
     // Make sure the right library files are loaded on the page.

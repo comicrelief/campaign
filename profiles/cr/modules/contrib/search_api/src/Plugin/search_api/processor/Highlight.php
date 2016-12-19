@@ -106,6 +106,15 @@ class Highlight extends ProcessorPluginBase implements PluginFormInterface {
    * {@inheritdoc}
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
+    $parent_name = 'processors[highlight][settings]';
+    if (!empty($form['#parents'])) {
+      $parents = $form['#parents'];
+      $parent_name = $root = array_shift($parents);
+      if ($parents) {
+        $parent_name = $root . '[' . implode('][', $parents) . ']';
+      }
+    }
+
     $form['highlight'] = array(
       '#type' => 'select',
       '#title' => $this->t('Highlight returned field data'),
@@ -131,9 +140,7 @@ class Highlight extends ProcessorPluginBase implements PluginFormInterface {
       '#min' => 50,
       '#states' => array(
         'visible' => array(
-          // @todo This shouldn't be dependent on the form array structure.
-          //   Use the '#process' trick instead.
-          ':input[name="processors[highlight][settings][excerpt]"]' => array(
+          ":input[name=\"{$parent_name}[excerpt]\"]" => array(
             'checked' => TRUE,
           ),
         ),
@@ -154,9 +161,7 @@ class Highlight extends ProcessorPluginBase implements PluginFormInterface {
       '#attributes' => array('class' => array('search-api-checkboxes-list')),
       '#states' => array(
         'visible' => array(
-          // @todo This shouldn't be dependent on the form array structure.
-          //   Use the '#process' trick instead.
-          ':input[name="processors[highlight][settings][excerpt]"]' => array(
+          ":input[name=\"{$parent_name}[excerpt]\"]" => array(
             'checked' => TRUE,
           ),
         ),
@@ -312,7 +317,8 @@ class Highlight extends ProcessorPluginBase implements PluginFormInterface {
       }
     }
 
-    return $this->extractItemValues($result_items, $fields_by_datasource, $load);
+    return $this->getFieldsHelper()
+      ->extractItemValues($result_items, $fields_by_datasource, $load);
   }
 
   /**

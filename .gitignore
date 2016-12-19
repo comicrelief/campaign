@@ -1,24 +1,24 @@
 # Ignore paths that contain user-generated content.
-*/modules/custom/cr_default_content/content/user/
-.idea/
+/*/modules/custom/cr_default_content/content/user/
+/.idea/
 *.un~
 
-vendor/
-sites/*/files/
-sites/*/private/
-files/
-private/
+/vendor/
+/sites/*/files/
+/sites/*/private/
+/files/
+/private/
 
-sites/*/services*.yml
-sites/*/environment.yml
-sites/*/settings.local.php
+/sites/*/services*.yml
+/sites/*/environment.yml
+/sites/*/settings.local.php
 
 # Ignore bundle files
-.bundle/
-node_modules/
+/.bundle/
+/node_modules/
 
 # Ignore SimpleTest multi-site environment.
-sites/simpletest
+/sites/simpletest
 
 # Packages #
 ############
@@ -56,10 +56,10 @@ Thumbs.db
 .sass-cache
 
 # Icon spritesheet #
-profiles/cr/themes/custom/campaign_base/images/generated/
+/profiles/cr/themes/custom/campaign_base/images/generated/
 
 # Temp agov theme #
-*/themes/custom/agov_base/
+/*/themes/custom/agov_base/
 
 # Things in the core directory that Drupal 8 commits in the repository.
 !core/**/*.gz
@@ -68,17 +68,9 @@ build.properties
 
 PATCHES.txt
 
-*/tests/behat/vendor/
-*/tests/behat/behat.yml
+/profiles/*/tests/behat/vendor/
+/profiles/*/tests/behat/behat.yml
 
 
-# For composer based installs
-web/core/
-web/profiles/cr/
-*/themes/contrib/
-*/modules/contrib/
-web/sites/default/settings.local.php
-web/sites/default/services.yml
-
-# Ignore Drupal's file directory
-web/sites/*/files/
+# Ignore the Bless-produced IE9 stylesheets as these get remade each build and will cause merge issues
+profiles/cr/themes/custom/campaign_base/ie9-css/*.css
