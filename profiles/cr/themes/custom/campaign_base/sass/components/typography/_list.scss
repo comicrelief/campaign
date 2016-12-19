@@ -3,14 +3,13 @@
 // These are the list items
 //
 // Markup:
-// <div class="node__content">
-// 	<ul>
-// 		<li>Item 1</li>
-// 		<li>Item 2</li>
-// 		<li>Item 3</li>
-// 		<li>Item 4</li>
-// 	</ul>
-// </div>
+
+// <ul class="cr-body">
+//  <li>Item 1</li>
+// 	<li>Item 2</li>
+// 	<li>Item 3</li>
+// 	<li>Item 4</li>
+// </ul> 
 //
 // Style guide: Typography.Lists
 
@@ -24,6 +23,7 @@ ul {
 	list-style: none;
 	padding: 0 0 0 20px;
 	margin: 15px 0;
+	font-family: $font-regular;
 
 	li {
 		@include font-size($p-font-size);
@@ -32,12 +32,12 @@ ul {
 		position: relative;
 
 		&:before {
-   		content: '\25CF';
-			color: $colour-red;
-			left: -3px;
-	    padding: 0 16px 0 0;
-	    position: absolute;
-	    top: 0;
+      content: '\25CF';
+      color: $colour-red;
+      left: -3px;
+      padding: 0 16px 0 0;
+      position: absolute;
+      top: 0;
 		}
 	}
 }
