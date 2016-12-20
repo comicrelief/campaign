@@ -78,7 +78,8 @@ hooks:
     deploy: |
       set -e
 
-      phing build:prepare
+      phing grunt:dependencies
+      phing install:dependencies
       phing grunt:build
 
       # Re-install the site if this hasn't been installed yet for this branch, or we are on develop

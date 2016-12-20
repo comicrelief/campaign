@@ -9,8 +9,6 @@ config_devel:
   - core.entity_form_display.node.landing.default
   - core.entity_view_display.node.landing.default
   - core.entity_view_display.node.landing.full
-  - core.entity_view_display.node.landing.landing_page_header
-  - core.entity_view_mode.node.landing_page_header
   - field.storage.node.field_landing_background_colour
   - field.storage.node.field_landing_copy_position_alig
   - field.storage.node.field_landing_feature_layout
