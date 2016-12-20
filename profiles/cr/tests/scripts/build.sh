@@ -52,20 +52,11 @@ EOF
   git commit -va -m 'Update campaign profile version'
   # Update campaign profile code from feature branch
   phing make-cr
-  git add  --all
+  git add --all
   git commit -va -m 'Run make-cr, commit changes'
-  # phing update-cr - user prompt not set to -y
-  phing db:nightly -verbose
-  drush cim --partial -y
-  drush cex -y
-  drush updb -y
-  phing config:import -verbose
-  drush cex -y
-  phing db:nightly -verbose
-  drush cim --partial -y
-  drush cex -y
+  phing update-cr - user prompt not set to -y
   # Add all config changes and commit
-  git add  --all
+  git add --all
   git commit -va -m 'Update configuration'
   git push origin HEAD
 fi
