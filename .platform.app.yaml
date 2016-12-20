@@ -63,7 +63,7 @@ mounts:
     "/.npm": "shared:files/.npm"
     "/.bundle": "shared:files/.bundle"
     "/.gem": "shared:files/.gem"
-    "/app/.ssh": "shared:files/.ssh"
+    "/.ssh": "shared:files/.ssh"
     "/Gemfile.lock": "shared:files/Gemfile.lock"
     "/profiles/cr/themes/custom/campaign_base/js": "shared:files/js"
     "/profiles/cr/themes/custom/campaign_base/css": "shared:files/css"
