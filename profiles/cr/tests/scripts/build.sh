@@ -54,9 +54,9 @@ EOF
   phing make-cr
   git add --all
   git commit -va -m 'Run make-cr, commit changes'
-  phing update-cr - user prompt not set to -y
+  phing update-cr
   # Add all config changes and commit
   git add --all
   git commit -va -m 'Update configuration'
-  git push origin HEAD
+  git push origin HEAD --force
 fi
