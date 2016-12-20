@@ -39,6 +39,7 @@ env:
     # Note: Do not add a trailing slash here.
     - export WEBSERVER_URL="http://127.0.0.1"
     - export WEBSERVER_PORT="8080"
+    - export TRAVIS_COMMIT_MSG=\"$(git log --format=%B --no-merges -n 1)\"
 
 mysql:
   database: $DB
