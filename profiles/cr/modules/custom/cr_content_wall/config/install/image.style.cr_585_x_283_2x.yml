@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: cr_585_x_283_2x
+label: 'CR 585 x 283 2x'
+effects:
+  4ddf484d-37ba-44d4-9633-3efd79543ee6:
+    uuid: 4ddf484d-37ba-44d4-9633-3efd79543ee6
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: '1170'
+      height: '566'

@@ -12,7 +12,6 @@ dependencies:
     - field.field.node.landing.field_landing_small_bg
     - field.field.node.landing.field_paragraphs
     - field.field.node.landing.field_svg_body_title
-    - field.field.node.landing.panelizer
     - image.style.medium
     - node.type.landing
   module:
@@ -148,5 +147,4 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-hidden:
-  panelizer: true
+hidden: {  }

@@ -10,76 +10,25 @@ dependencies:
     - field.field.node.landing.field_landing_image
     - field.field.node.landing.field_landing_image_mobile
     - field.field.node.landing.field_landing_meta_tags
+    - field.field.node.landing.field_landing_small_bg
     - field.field.node.landing.field_paragraphs
     - field.field.node.landing.field_svg_body_title
-    - field.field.node.landing.panelizer
     - node.type.landing
   module:
     - ds
     - entity_reference_revisions
     - image
-    - panelizer
+    - options
     - text
     - user
 third_party_settings:
-  panelizer:
-    enable: true
-    custom: true
-    displays:
-      default:
-        blocks:
-          b212ceb5-87af-4155-ad09-9f468d9eb926:
-            id: 'entity_view:node'
-            label: 'Entity view (Content)'
-            provider: ctools
-            label_display: '0'
-            view_mode: landing_page_header
-            context_mapping:
-              entity: '@panelizer.entity_context:entity'
-            region: ds_content
-            uuid: b212ceb5-87af-4155-ad09-9f468d9eb926
-            weight: 1
-          0df3b443-cd24-4f55-be00-d27e656349c6:
-            id: 'entity_field:node:field_paragraphs'
-            label: Paragraphs
-            provider: ctools_block
-            label_display: '0'
-            formatter:
-              label: hidden
-              type: entity_reference_revisions_entity_view
-              settings:
-                view_mode: default
-              third_party_settings: {  }
-              weight: 0
-            context_mapping:
-              entity: '@panelizer.entity_context:entity'
-            region: ds_content
-            uuid: 0df3b443-cd24-4f55-be00-d27e656349c6
-            weight: 3
-        id: panels_variant
-        uuid: 07727bfe-7661-4185-a418-24b2dd3f797d
-        label: ''
-        weight: 0
-        layout: ds_reset
-        layout_settings:
-          wrappers:
-            ds_content: div
-          outer_wrapper: div
-          attributes: ''
-          link_attribute: ''
-          link_custom: ''
-          classes:
-            layout_class: {  }
-        page_title: '[node:title]'
-        storage_type: panelizer_default
-        storage_id: 'node:landing:full:default'
-        builder: ipe
   ds:
     layout:
       id: ds_reset
       path: profiles/cr/modules/contrib/ds
       library: ''
       disable_css: false
+      entity_classes: all_classes
       settings:
         wrappers:
           ds_content: div
@@ -91,12 +40,16 @@ third_party_settings:
           layout_class: {  }
     regions:
       ds_content:
+        - field_landing_small_bg
         - field_landing_image
+        - field_landing_image_mobile
+        - field_svg_body_title
+        - field_landing_copy_position_alig
+        - field_landing_background_colour
+        - field_landing_feature_layout
         - node_title
         - body
-        - field_landing_cta
         - field_paragraphs
-        - panelizer
     fields:
       node_title:
         plugin_id: node_title
@@ -114,6 +67,27 @@ content:
     weight: 2
     settings: {  }
     third_party_settings: {  }
+  field_landing_background_colour:
+    type: list_default
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_landing_copy_position_alig:
+    type: list_default
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_landing_feature_layout:
+    type: boolean
+    weight: 0
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
   field_landing_image:
     weight: 0
     label: hidden
@@ -122,6 +96,23 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
+  field_landing_image_mobile:
+    type: entity_reference_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+  field_landing_small_bg:
+    type: boolean
+    weight: 0
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
   field_paragraphs:
     type: entity_reference_revisions_entity_view
     weight: 4
@@ -130,24 +121,13 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-  links:
-    weight: 14
-    settings: {  }
-    third_party_settings: {  }
-  panelizer:
-    type: panelizer
-    weight: 5
+  field_svg_body_title:
+    type: basic_string
+    weight: 0
     label: hidden
     settings: {  }
     third_party_settings: {  }
-  social_links:
-    weight: 13
-    settings: {  }
-    third_party_settings: {  }
 hidden:
-  field_landing_background_colour: true
-  field_landing_copy_position_alig: true
-  field_landing_feature_layout: true
-  field_landing_image_mobile: true
   field_landing_meta_tags: true
-  field_svg_body_title: true
+  links: true
+  social_links: true

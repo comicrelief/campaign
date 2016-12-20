@@ -17,15 +17,11 @@ dependencies:
     - datetime
     - ds
     - metatag
-    - panelizer
     - responsive_image
     - text
     - user
     - video_embed_field
 third_party_settings:
-  panelizer:
-    enable: false
-    custom: false
   ds:
     layout:
       id: ds_reset

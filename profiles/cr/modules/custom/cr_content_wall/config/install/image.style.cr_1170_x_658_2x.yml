@@ -3,13 +3,13 @@ status: true
 dependencies:
   module:
     - focal_point
-name: cr_1400_x_658_2x
-label: 'CR 1400 x 658 2x'
+name: cr_1170_x_658_2x
+label: 'CR 1170 x 658 2x'
 effects:
-  712c34b1-d50e-466d-9493-88d10d792a02:
-    uuid: 712c34b1-d50e-466d-9493-88d10d792a02
+  8631e251-4160-4e19-a52d-a513716fd69b:
+    uuid: 8631e251-4160-4e19-a52d-a513716fd69b
     id: focal_point_scale_and_crop
     weight: 1
     data:
-      width: '2800'
+      width: '2340'
       height: '1316'
