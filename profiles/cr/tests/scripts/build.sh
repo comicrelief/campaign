@@ -15,7 +15,7 @@ then
   echo "Pushing to platform.sh develop env."
 fi
 
-if [[ $TRAVIS_BRANCH == *"#integrate"* ]]
+if [[ $TRAVIS_COMMIT_MSG == *"#integrate"* ]]
 then
   echo 'Clone RND17 Repo.'
   cd ../
