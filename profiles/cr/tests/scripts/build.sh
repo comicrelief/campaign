@@ -15,7 +15,7 @@ then
   echo "Pushing to platform.sh develop env."
 fi
 
-if [[ $TRAVIS_COMMIT_MSG == *"#integrate"* ]]
+if [[ $TRAVIS_BRANCH == *"#integrate"* ]]
 then
   echo 'Install hub'
   cd ../
