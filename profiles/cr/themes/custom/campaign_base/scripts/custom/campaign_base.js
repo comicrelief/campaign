@@ -18,16 +18,31 @@
       $(".search-block").removeClass("show");
       $(".search-overlay").removeClass("show");
     });
+
+
+
     // IE fallback objectfit
     if(!Modernizr.objectfit) {
-      $('.objectfit').each(function () {
-        var $container = $(this),
-            imgUrl = $container.find('img').prop('src');
-        if (imgUrl) {
+      
+      $('.objectfit').each(function (index) {
+
+        // Cache objectfit object and child image
+        var $container = $(this);
+        var $thisImage = $container.find('img');
+
+        var imgSrc = $thisImage.attr('src');
+        var imgSrcSet = $thisImage.attr('srcset');
+
+        // Only if we've successfully found an image src OR srcset
+        if (imgSrc || imgSrcSet) {
+
+          var imgUrl = imgSrc ? imgSrc : imgSrcSet;
+
           $container
             .css('backgroundImage', 'url(' + imgUrl + ')')
-            .css('background-size', 'cover')
-            .addClass('compat-object-fit');
+              .css('background-size', 'cover')
+                .addClass('compat-object-fit');
+          
           $container.find('img').hide();
         }
       });
