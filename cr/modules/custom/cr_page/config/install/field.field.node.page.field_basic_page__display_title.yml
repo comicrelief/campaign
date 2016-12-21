@@ -9,7 +9,7 @@ field_name: field_basic_page__display_title
 entity_type: node
 bundle: page
 label: 'Display title'
-description: 'Shown above the page content, allowing the normal ''Title'' field to be used purely for labelling in the CMS'
+description: 'Display title is used as the primary user facing title field. ''''Title'''' field at the top of the page is used for administration purposes.'
 required: true
 translatable: false
 default_value: {  }
