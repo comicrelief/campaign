@@ -62,7 +62,7 @@
   <target name="grunt:dependencies" description="Install all grunt dependencies.">
     <delete file=".bundle/config" />
     <if>
-      <istrue value="${deploy.with-craft}"/>
+      <istrue value="${deploy.craft}"/>
       <then>
         <exec logoutput="true" passthru="true" checkreturn="true" command="bundle install --path vendor/bundle --frozen"/>
       </then>
