@@ -19,5 +19,5 @@ mysql -e "create database $DB"
 rm -fr sites/default/settings.php
 
 # Install the site
-phing build:new:dev
+phing build
 drush use $(pwd)#default
