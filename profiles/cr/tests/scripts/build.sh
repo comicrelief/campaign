@@ -59,4 +59,6 @@ EOF
   git add --all
   git commit -va -m 'Update configuration'
   git push origin HEAD --force
+  # Open pull request in RND17
+  git request-pull $TRAVIS_BRANCH https://github.com/comicrelief/rnd17 develop
 fi
