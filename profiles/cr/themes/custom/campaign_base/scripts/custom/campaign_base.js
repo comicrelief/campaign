@@ -34,7 +34,7 @@
         var imgSrcSet = $thisImage.attr('srcset');
 
         // Only if we've successfully found an image src OR srcset
-        if (imgSrc !== 'undefined' || imgSrcSet !== 'undefined') {
+        if (imgSrc || imgSrcSet) {
 
           var imgUrl = imgSrc ? imgSrc : imgSrcSet;
 
