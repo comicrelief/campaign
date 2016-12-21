@@ -17,6 +17,11 @@ fi
 
 if [[ $TRAVIS_COMMIT_MSG == *"#integrate"* ]]
 then
+  echo 'Install hub'
+  cd ../
+  git clone https://github.com/github/hub.git && cd hub
+  script/build -o ~/bin/hub
+  alias git=hub
   echo 'Clone RND17 Repo.'
   cd ../
   git clone git@github.com:comicrelief/rnd17.git --branch develop --single-branch
