@@ -19,8 +19,9 @@ if [[ $TRAVIS_COMMIT_MSG == *"#integrate"* ]]
 then
   echo 'Install hub'
   cd ../
-  git clone https://github.com/github/hub.git && cd hub
-  script/build -o ~/bin/hub
+  wget https://github.com/github/hub/releases/download/v2.2.9/hub-linux-amd64-2.2.9.tgz
+  tar -zxvf hub-linux-amd64-2.2.9.tgz
+  export PATH=$PATH:~/hub-linux-amd64-2.2.9/bin/./hub
   alias git=hub
   echo 'Clone RND17 Repo.'
   cd ../
@@ -66,5 +67,5 @@ EOF
   git push origin HEAD --force
   # Open pull request in RND17
   echo '$TRAVIS_BRANCH integration branch' > prepared-message.md
-  git pull-request -F prepared-message.md | pbcopy
+  git pull-request -F prepared-message.md
 fi
