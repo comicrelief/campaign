@@ -64,10 +64,10 @@
     <if>
       <istrue value="${deploy.with-craft}"/>
       <then>
-        <exec logoutput="true" passthru="true" checkreturn="true" command="bundle install --path vendor/bundle"/>
+        <exec logoutput="true" passthru="true" checkreturn="true" command="bundle install --path vendor/bundle --frozen"/>
       </then>
       <else>
-        <exec logoutput="true" passthru="true" checkreturn="true" command="bundle install --path vendor/bundle --without craft"/>
+        <exec logoutput="true" passthru="true" checkreturn="true" command="bundle install --path vendor/bundle --frozen --without craft"/>
       </else>
     </if>
     <exec logoutput="true" passthru="true" checkreturn="true" command="npm install"/>

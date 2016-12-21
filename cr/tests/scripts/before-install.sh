@@ -6,7 +6,5 @@ printf 'db.querystring='$DB_URL'\n' >> build.properties
 printf 'deploy.with-craft=true' >> build.properties
 # Output confirmation
 echo 'File: build.properties has been created.'
-# Remove gem cache
-rm Gemfile.lock
 # Get build dependencies
 phing build:prepare
