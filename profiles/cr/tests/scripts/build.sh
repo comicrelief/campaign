@@ -24,7 +24,6 @@ then
   export PATH=$PATH:~/hub-linux-amd64-2.2.9/bin/./hub
   alias git=hub
   echo 'Clone RND17 Repo.'
-  cd ../
   git clone git@github.com:comicrelief/rnd17.git --branch develop --single-branch
   cd rnd17
   cp ../campaign/build.properties .
