@@ -19,47 +19,29 @@
   <target name="build" depends="install, grunt:build"
           description="Build (or rebuild) the project.">
   </target>
-  <target name="build:dev" depends="file:settings, build, user:create, module:dev"
-          description="Build (or rebuild) the project in development mode.">
-  </target>
   <target name="build:prepare"
-          depends="grunt:dependencies, test:composer:install, install:dependencies"
-          description="Build all project dependencies. (gems, composer)">
+          depends="prepare:project, grunt:dependencies, install:dependencies, make"
+          description="Set up the project and build all project dependencies. (gems, composer, drush make)">
   </target>
-  <target name="build:prepare:dev"
-          depends="grunt:dependencies:dev, test:composer:install, install:dependencies"
-          description="Build all project dependencies. (gems, composer)">
-  </target>
-
-
   <target name="build:new"
           depends="prepare:project, install:dependencies, make, build"
           description="Build (or rebuild) the project.">
   </target>
-  <target name="build:new:dev"
-          depends="prepare:project, build:prepare:dev, make, build"
-          description="Build (or rebuild) the project.">
-  </target>
-
   <target name="prepare:project"
          description="Setup the project">
-
    <!-- Create -->
    <exec command="mkdir -p ${app.dir}/${app.files.public} ${app.dir}/${app.files.tmp} ${app.dir}/${app.files.private} ${app.dir}/profiles"
          logoutput="true"
          passthru="true"
          checkreturn="true" />
-
    <!-- Permissions -->
    <exec command="chmod -R 2775 ${app.dir}/${app.files.public} ${app.dir}/${app.files.tmp} ${app.dir}/${app.files.private}"
          logoutput="true"
          passthru="true"
          checkreturn="true" />
-
    <!-- Symlink the oc folder into the profiles folder. -->
    <symlink target="${project.basedir}/${app.profile.name}/" link="${app.profile.dir}" />
  </target>
-
   <target name="install:dependencies"
           description="Setup the project">
     <exec dir="${project.basedir}"
@@ -68,7 +50,6 @@
           logoutput="true"
           passthru="true" />
   </target>
-
   <!-- Front-end -->
   <target name="grunt:build" description="Generate all compiled Sass and JS files.">
     <exec dir="${app.profile.name}" logoutput="true" passthru="true"
@@ -80,12 +61,15 @@
   </target>
   <target name="grunt:dependencies" description="Install all grunt dependencies.">
     <delete file=".bundle/config" />
-    <exec logoutput="true" passthru="true" checkreturn="true" command="bundle install --path vendor/bundle --frozen --without craft"/>
-    <exec logoutput="true" passthru="true" checkreturn="true" command="npm install"/>
-  </target>
-  <target name="grunt:dependencies:dev" description="Install all grunt dependencies.">
-    <delete file=".bundle/config" />
-    <exec logoutput="true" passthru="true" checkreturn="true" command="bundle install --path vendor/bundle"/>
+    <if>
+      <istrue value="${deploy.with-craft}"/>
+      <then>
+        <exec logoutput="true" passthru="true" checkreturn="true" command="bundle install --path vendor/bundle"/>
+      </then>
+      <else>
+        <exec logoutput="true" passthru="true" checkreturn="true" command="bundle install --path vendor/bundle --without craft"/>
+      </else>
+    </if>
     <exec logoutput="true" passthru="true" checkreturn="true" command="npm install"/>
   </target>
   <!-- Tests -->

@@ -10,6 +10,8 @@
   <property name="app.content.dir"    value="${app.profile.dir}/modules/custom/cr_default_content/content/"/>
   <!-- Development modules. -->
   <property name="app.code"           value="${app.profile.dir}/modules/custom"/>
+  <!-- Enable or disable CRAFT support. Not needed if the Drupal site will be hosted elsewhere, e.g. platform.sh -->
+  <property name="deploy.with-craft"  value="false">
   <!-- Import common command file -->
   <import file="${app.profile.name}/common.xml" optional="true" />
   <!-- These allow developers to override config. on a per environment basis -->
