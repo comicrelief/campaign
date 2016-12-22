@@ -80,9 +80,9 @@ hooks:
         phing build:prepare
         #phing grunt:build
 
-        #cp /app/sites/default/settings.php /app/web/sites/default/settings.php
-        #cp /app/sites/default/settings.platformsh.php /app/web/sites/default/settings.platformsh.php
-        cp -R /app/sites/default/ /app/web/sites/default/
+        cp /app/sites/default/settings.php /app/web/sites/default/settings.php
+        cp /app/sites/default/settings.platformsh.php /app/web/sites/default/settings.platformsh.php
+        #cp -R /app/sites/default/ /app/web/sites/default/
 
         # Todo: clean this up a bit more
         cp /app/sites/default/settings.platformsh.php /app/web/sites/default/settings.local.php
