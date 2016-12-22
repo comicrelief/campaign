@@ -53,25 +53,25 @@ disk: 2048
 
 # The mounts that will be performed when the package is deployed.
 mounts:
-    # "/web": "shared/files/web"
-    "/web/sites/default/files": "shared:files/files"
-    "/web/sites/default/sync": "shared:files/config_sync"
+    "/web": "shared/files/web"
+    # "/web/sites/default/files": "shared:files/files"
+    # "/web/sites/default/sync": "shared:files/config_sync"
     "/tmp": "shared:files/tmp"
     "/private": "shared:files/private"
     "/drush-backups": "shared:files/drush-backups"
     "/vendor": "shared:files/vendor"
-    "/web/profiles/": "shared:files/profiles"
+    # "/web/profiles/": "shared:files/profiles"
     "/node_modules": "shared:files/node_modules"
     "/.npm": "shared:files/.npm"
     "/.bundle": "shared:files/.bundle"
     "/.gem": "shared:files/.gem"
     "/Gemfile.lock": "shared:files/Gemfile.lock"
-    "/web/cr/themes/custom/campaign_base/js": "shared:files/js"
-    "/web/cr/themes/custom/campaign_base/css": "shared:files/css"
-    "/web/cr/themes/custom/campaign_base/ie9-css": "shared:files/ie9-css"
-    "/web/cr/themes/custom/campaign_base/styleguide": "shared:files/styleguide"
-    "/web/cr/themes/custom/campaign_base/images/generated": "shared:files/images_generated"
-    "/web/cr/.sass-cache": "shared:files/.sass-cache"
+    # "/web/profiles/cr/themes/custom/campaign_base/js": "shared:files/js"
+    # "/web/profiles/cr/themes/custom/campaign_base/css": "shared:files/css"
+    # "/web/cr/themes/custom/campaign_base/ie9-css": "shared:files/ie9-css"
+    # "/web/profiles/cr/themes/custom/campaign_base/styleguide": "shared:files/styleguide"
+    # "/web/profiles/cr/themes/custom/campaign_base/images/generated": "shared:files/images_generated"
+    # "/web/profiles/cr/.sass-cache": "shared:files/.sass-cache"
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
@@ -84,8 +84,6 @@ hooks:
       phing grunt:dependencies
       phing install:dependencies
       phing grunt:build
-
-      cd web/
 
       # Create symlink to profile directory from the webroot
       if [ ! -d "/app/web/profiles/cr" ]; then
