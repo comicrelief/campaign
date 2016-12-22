@@ -5,7 +5,7 @@
 name: php
 
 # The runtime the application uses.
-type: "php:5.6"
+type: "php:7"
 
 # Configuration of the build of this application.
 build:
@@ -53,7 +53,7 @@ disk: 2048
 
 # The mounts that will be performed when the package is deployed.
 mounts:
-    "/web": "shared/files/web"
+    # "/web": "shared/files/web"
     "/web/sites/default/files": "shared:files/files"
     "/web/sites/default/sync": "shared:files/config_sync"
     "/tmp": "shared:files/tmp"
