@@ -51,7 +51,7 @@
     that avoids logging every request
 -->
 
-<schema name="drupal-5.2-solr-6.x" version="1.6">
+<schema name="drupal-5.1-solr-6.x" version="1.6">
   <!-- attribute "name" is the name of this schema and is only used for display purposes.
        version="x.y" is Solr's version number for the schema syntax and
        semantics.  It should not normally be changed by applications.
@@ -246,7 +246,7 @@
   <dynamicField name="eff_*" type="file"/>
 
   <!-- Sortable version of the dynamic string field -->
-  <dynamicField name="sort_*" type="sortString" indexed="true" stored="false"/>
+  <dynamicField name="sort_*" type="alphaOnlySort" indexed="true" stored="false"/>
 
   <!-- A random sort field -->
   <dynamicField name="random_*" type="random" indexed="true" stored="true"/>
@@ -590,41 +590,6 @@
         <filter class="solr.PatternReplaceFilterFactory"
                 pattern="([^a-z])" replacement="" replace="all"
         />
-      </analyzer>
-    </fieldType>
-
-    <!-- The Solr 6.x example file replaced the sortString type by alphaOnlySort
-         above. This one is not suitable for search_api_id which consists of
-         characters, numbers and punctuation, for example
-         'entity:entity_test_mulrev_changed/2:en'.
-     -->
-    <fieldType name="sortString" class="solr.TextField" sortMissingLast="true" omitNorms="true">
-      <analyzer>
-        <!-- KeywordTokenizer does no actual tokenizing, so the entire
-            input string is preserved as a single token
-          -->
-        <tokenizer class="solr.KeywordTokenizerFactory"/>
-        <!-- The LowerCase TokenFilter does what you expect, which can be
-            when you want your sorting to be case insensitive
-          -->
-        <filter class="solr.LowerCaseFilterFactory" />
-        <!-- The TrimFilter removes any leading or trailing whitespace -->
-        <filter class="solr.TrimFilterFactory" />
-        <!-- The PatternReplaceFilter gives you the flexibility to use
-            Java Regular expression to replace any sequence of characters
-            matching a pattern with an arbitrary replacement string,
-            which may include back refrences to portions of the orriginal
-            string matched by the pattern.
-
-            See the Java Regular Expression documentation for more
-            infomation on pattern and replacement string syntax.
-
-            http://java.sun.com/j2se/1.5.0/docs/api/java/util/regex/package-summary.html
-
-        <filter class="solr.PatternReplaceFilterFactory"
-               pattern="(^\p{Punct}+)" replacement="" replace="all"
-        />
-        -->
       </analyzer>
     </fieldType>
 

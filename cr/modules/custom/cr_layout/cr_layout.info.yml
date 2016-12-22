@@ -1,8 +1,0 @@
-# Initial Conversion to info.yml file for d8.
-name: cr_layout
-description: 'Custom CR layouts'
-type: module
-package: Comic Relief
-core: 8.x
-dependencies:
-  - layout_plugin

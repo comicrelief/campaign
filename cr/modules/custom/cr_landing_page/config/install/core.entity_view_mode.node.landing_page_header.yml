@@ -1,9 +1,0 @@
-langcode: en
-status: true
-dependencies:
-  module:
-    - node
-id: node.landing_page_header
-label: 'Landing Page Header'
-targetEntityType: node
-cache: true
