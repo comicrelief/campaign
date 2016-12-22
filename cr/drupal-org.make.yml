@@ -187,7 +187,7 @@ libraries:
     download:
       type: "file"
       url: https://raw.githubusercontent.com/bestiejs/platform.js/0870795f0c277a33cc2078a96e74434f89aa11d8/platform.js
-    destination: "cr/themes/custom/campaign_base/libraries"
+    destination: "themes/custom/campaign_base/libraries"
   drush_cmi_tools:
     download:
       type: "file"
@@ -197,9 +197,9 @@ libraries:
     download:
       type: "get"
       url: https://github.com/cbopp-art/lightcase/archive/v2.3.4.zip
-    destination: "cr/themes/custom/campaign_base/libraries"
+    destination: "themes/custom/campaign_base/libraries"
   modernizr:
     download:
       type: "get"
       url: https://raw.githubusercontent.com/comicrelief/campaign-modernizr/master/modernizr-custom.js
-    destination: "cr/themes/custom/campaign_base/libraries"
+    destination: "themes/custom/campaign_base/libraries"
