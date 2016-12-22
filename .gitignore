@@ -77,4 +77,4 @@ PATCHES.txt
 
 
 # Ignore the Bless-produced IE9 stylesheets as these get remade each build and will cause merge issues
-profiles/cr/themes/custom/campaign_base/ie9-css/*.css
+cr/themes/custom/campaign_base/ie9-css/*.css
