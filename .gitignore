@@ -4,6 +4,7 @@
 *.un~
 
 web
+cr/modules/contrib
 vendor/
 .bundle/
 sites/*/files/
