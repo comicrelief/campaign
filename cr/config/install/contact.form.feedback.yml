@@ -7,5 +7,5 @@ recipients:
   - admin@example.com
 reply: ''
 weight: 0
-message: 'Your message has been sent.'
-redirect: ''
+message: null
+redirect: null
