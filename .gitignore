@@ -5,6 +5,7 @@
 
 web
 cr/modules/contrib
+cr/themes/custom/campaign_base/libraries
 vendor/
 .bundle/
 sites/*/files/
