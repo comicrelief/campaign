@@ -76,6 +76,7 @@ hooks:
     build: |
         set -e
 
+        rm -fr /app/web/profiles/cr
         phing build:prepare
         #phing grunt:build
 
