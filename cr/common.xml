@@ -23,10 +23,6 @@
           depends="prepare:project, make, grunt:dependencies, install:dependencies"
           description="Set up the project and build all project dependencies. (gems, composer, drush make)">
   </target>
-  <target name="build:new"
-          depends="prepare:project, make, install:dependencies, build"
-          description="Build (or rebuild) the project.">
-  </target>
   <target name="prepare:project"
          description="Setup the project">
    <!-- Create -->
