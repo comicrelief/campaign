@@ -1,4 +1,4 @@
-<project name="cr" default="build:dev">
+<project name="cr" default="build">
   <!-- This should get overidden for secure builds. -->
   <property name="app.password"       override="true" value="admin"/>
   <property name="app.uri"            override="true" value="http://campaign.dev"/>
@@ -20,7 +20,7 @@
           description="Build (or rebuild) the project.">
   </target>
   <target name="build:prepare"
-          depends="prepare:project, make, grunt:dependencies, install:dependencies"
+          depends="prepare:project, make, grunt:dependencies, install:dependencies, install:test:dependencies"
           description="Set up the project and build all project dependencies. (gems, composer, drush make)">
   </target>
   <target name="prepare:project"
@@ -88,7 +88,7 @@
     <exec dir="${app.dir}" checkreturn="true" logoutput="true" passthru="true"
           command="${drush.bin} pm-uninstall cookieconsent -y"/>
   </target>
-  <target name="test:composer:install" description="Install composer dependencies">
+  <target name="install:test:dependencies" description="Install composer dependencies">
     <exec dir="${app.profile.name}/tests/behat" logoutput="true" passthru="true"
           command="composer install --no-progress -o" checkreturn="true"/>
   </target>
