@@ -58,18 +58,18 @@ mounts:
     "/tmp": "shared:files/tmp"
     "/private": "shared:files/private"
     "/drush-backups": "shared:files/drush-backups"
-    "/vendor": "shared:files/vendor"
+    #"/vendor": "shared:files/vendor"
     # "/web/profiles/": "shared:files/profiles"
-    "/node_modules": "shared:files/node_modules"
-    "/.npm": "shared:files/.npm"
-    "/.bundle": "shared:files/.bundle"
-    "/.gem": "shared:files/.gem"
-    "/Gemfile.lock": "shared:files/Gemfile.lock"
-    "/web/profiles/cr/themes/custom/campaign_base/js": "shared:files/js"
-    "/web/profiles/cr/themes/custom/campaign_base/css": "shared:files/css"
-    "/web/profiles/cr/themes/custom/campaign_base/styleguide": "shared:files/styleguide"
-    "/web/profiles/cr/themes/custom/campaign_base/images/generated": "shared:files/images_generated"
-    "/web/profiles/cr/.sass-cache": "shared:files/.sass-cache"
+    #"/node_modules": "shared:files/node_modules"
+    #"/.npm": "shared:files/.npm"
+    #"/.bundle": "shared:files/.bundle"
+    #"/.gem": "shared:files/.gem"
+    #"/Gemfile.lock": "shared:files/Gemfile.lock"
+    #"/web/profiles/cr/themes/custom/campaign_base/js": "shared:files/js"
+    ##"/web/profiles/cr/themes/custom/campaign_base/css": "shared:files/css"
+    #"/web/profiles/cr/themes/custom/campaign_base/styleguide": "shared:files/styleguide"
+    #"/web/profiles/cr/themes/custom/campaign_base/images/generated": "shared:files/images_generated"
+    #"/web/profiles/cr/.sass-cache": "shared:files/.sass-cache"
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
@@ -99,10 +99,8 @@ hooks:
           echo ">>> Re-installing OC profile"
           drush sql-drop -y
           drush si cr -y --account-pass='admin' install_configure_form.update_status_module='[FALSE, FALSE]' -y
-          #phing build
           drush cr
           cd ../
-          #phing grunt:build
           # touch "tmp/${PLATFORM_ENVIRONMENT}.installed"
           echo ">>> End re-installing CR profile"
         else
