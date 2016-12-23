@@ -69,7 +69,7 @@ script:
 
 after_success:
   # Deploy to platform.sh (only for the develop branch)
-  - ./profiles/cr/tests/scripts/build.sh
+  - $TEST_DIR/build.sh
 
 notifications:
   slack: comicrelief:W1jExvqbSU9Kb3lyavdGHdGD

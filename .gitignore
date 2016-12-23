@@ -71,8 +71,8 @@ build.properties
 
 PATCHES.txt
 
-/profiles/*/tests/behat/vendor/
-/profiles/*/tests/behat/behat.yml
+cr/tests/behat/vendor/
+cr/tests/behat/behat.yml
 
 
 # Ignore the Bless-produced IE9 stylesheets as these get remade each build and will cause merge issues
