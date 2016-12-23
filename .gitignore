@@ -1,13 +1,16 @@
 # Ignore paths that contain user-generated content.
-/*/modules/custom/cr_default_content/content/user/
-/.idea/
+*/modules/custom/cr_default_content/content/user/
+.idea/
 *.un~
 
-/vendor/
-/sites/*/files/
-/sites/*/private/
-/files/
-/private/
+web
+cr/modules/contrib
+cr/themes/custom/campaign_base/libraries
+vendor/
+.bundle/
+sites/*/files/
+sites/*/private/
+private/
 
 /sites/*/services*.yml
 /sites/*/environment.yml
@@ -56,7 +59,7 @@ Thumbs.db
 .sass-cache
 
 # Icon spritesheet #
-/profiles/cr/themes/custom/campaign_base/images/generated/
+cr/themes/custom/campaign_base/images/generated/
 
 # Temp agov theme #
 /*/themes/custom/agov_base/
@@ -68,9 +71,9 @@ build.properties
 
 PATCHES.txt
 
-/profiles/*/tests/behat/vendor/
-/profiles/*/tests/behat/behat.yml
+cr/tests/behat/vendor/
+cr/tests/behat/behat.yml
 
 
 # Ignore the Bless-produced IE9 stylesheets as these get remade each build and will cause merge issues
-profiles/cr/themes/custom/campaign_base/ie9-css/*.css
+cr/themes/custom/campaign_base/ie9-css/*.css

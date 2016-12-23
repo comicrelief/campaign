@@ -33,7 +33,8 @@ env:
     - export PROFILE="cr"
     - export DB="drupal"
     - export DB_URL="mysql://root:@127.0.0.1/drupal"
-    - export BEHAT_DIR="./profiles/$PROFILE/tests/behat"
+    - export TEST_DIR="./$PROFILE/tests/scripts"
+    - export BEHAT_DIR="./$PROFILE/tests/behat"
     - export BEHAT_DRIVER="phantomjs"
     - export BEHAT_BROWSER="firefox"
     # Note: Do not add a trailing slash here.
@@ -49,27 +50,27 @@ mysql:
 before_install:
   - rvm install 2.1.5
   - composer global config minimum-stability beta
-  - composer global require phing/phing drush/drush:8.*
+  - composer global require phing/phing:2.15 drush/drush:8.*
   # Prepare environment
-  - ./profiles/cr/tests/scripts/before-install.sh
+  - $TEST_DIR/before-install.sh
   # Check code quality before site is installed
-  - ./profiles/cr/tests/scripts/code-checks.sh
+  - $TEST_DIR/code-checks.sh
 
 install:
-  - ./profiles/cr/tests/scripts/install.sh
+  - $TEST_DIR/install.sh
 
 before_script:
-  - ./profiles/cr/tests/scripts/before-tests.sh
+  - $TEST_DIR/before-tests.sh
 
 script:
   # Behat
-  - ./profiles/cr/tests/scripts/run-tests.sh
+  - $TEST_DIR/run-tests.sh
   # Check DB errors
-  - ./profiles/cr/tests/scripts/dberrors.sh
+  - $TEST_DIR/dberrors.sh
 
 after_success:
   # Deploy to platform.sh (only for the develop branch)
-  - ./profiles/cr/tests/scripts/build.sh
+  - $TEST_DIR/build.sh
 
 notifications:
   slack: comicrelief:W1jExvqbSU9Kb3lyavdGHdGD

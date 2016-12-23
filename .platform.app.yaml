@@ -35,7 +35,7 @@ web:
         "/":
             # The folder to serve static assets for this location from.
             # (Relative to the application root.)
-            root: ""
+            root: "web"
 
             # How long to allow static assets from this location to be cached.
             # (Can be a time or -1 for no caching. Times can be suffixed with
@@ -53,53 +53,49 @@ disk: 2048
 
 # The mounts that will be performed when the package is deployed.
 mounts:
-    "/sites/default/files": "shared:files/files"
-    "/sites/default/sync": "shared:files/config_sync"
+    "/web/sites/default/files": "shared:files/files"
+    "/web/sites/default/config": "shared:files/config"
     "/tmp": "shared:files/tmp"
     "/private": "shared:files/private"
     "/drush-backups": "shared:files/drush-backups"
-    "/vendor": "shared:files/vendor"
-    "/node_modules": "shared:files/node_modules"
-    "/.npm": "shared:files/.npm"
-    "/.bundle": "shared:files/.bundle"
-    "/.gem": "shared:files/.gem"
-    "/.ssh": "shared:files/.ssh"
-    "/Gemfile.lock": "shared:files/Gemfile.lock"
-    "/profiles/cr/themes/custom/campaign_base/js": "shared:files/js"
-    "/profiles/cr/themes/custom/campaign_base/css": "shared:files/css"
-    "/profiles/cr/themes/custom/campaign_base/ie9-css": "shared:files/ie9-css"
-    "/profiles/cr/themes/custom/campaign_base/styleguide": "shared:files/styleguide"
-    "/profiles/cr/themes/custom/campaign_base/images/generated": "shared:files/images_generated"
-    "/profiles/cr/.sass-cache": "shared:files/.sass-cache"
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
+    build: |
+        set -e
+
+        rm -fr /app/web/profiles/cr
+        phing build:prepare
+        phing grunt:build
+
+        # @todo review how we re-use settings.php and generally the sites/default dir on platform.sh
+        cp /app/sites/default/settings.php /app/web/sites/default/settings.php
+        cp /app/sites/default/settings.platformsh.php /app/web/sites/default/settings.platformsh.php
+        cp /app/sites/default/settings.platformsh.php /app/web/sites/default/settings.local.php
+        #cp -R /app/sites/default/ /app/web/sites/default/
+
     # We run deploy hooks after your application has been deployed and started.
     deploy: |
-      set -e
+        set -e
 
-      phing grunt:dependencies
-      phing install:dependencies
-      phing grunt:build
+        cd web/
 
-      # Re-install the site if this hasn't been installed yet for this branch, or we are on develop
-      if [ $PLATFORM_ENVIRONMENT = "develop" ] || [ ! -f tmp/$PLATFORM_ENVIRONMENT.installed ]; then
-        echo ">>> Re-installing Campaign profile"
-        drush sql-drop -y
-        drush si cr -y --account-pass='admin' install_configure_form.update_status_module='[FALSE, FALSE]' -y
-        touch "tmp/${PLATFORM_ENVIRONMENT}.installed"
-        drush cr
-        phing user:create
-        echo ">>> End re-installing Campaign profile"
-      else
-        echo ">>> No re-installation of the profile required, just a simple update!"
-        phing config:import
-        drush cr
-      fi
-
+        # Re-install the site if this hasn't been installed yet for this branch, or we are on develop
+        if [ $PLATFORM_ENVIRONMENT = "develop" ] || [ ! -f /tmp/$PLATFORM_ENVIRONMENT.installed ]; then
+          echo ">>> Re-installing OC profile"
+          drush sql-drop -y
+          drush si cr -y --account-pass='admin' install_configure_form.update_status_module='[FALSE, FALSE]' -y
+          drush cr
+          cd ../
+          touch "/tmp/${PLATFORM_ENVIRONMENT}.installed"
+          echo ">>> End re-installing CR profile"
+        else
+          echo ">>> No re-installation of the profile required, just a simple update!"
+          drush cr
+        fi
 
 # The configuration of scheduled execution.
 crons:
     drupal:
         spec: "*/20 * * * *"
-        cmd: "cd public ; drush core-cron"
+        cmd: "cd web ; drush core-cron"

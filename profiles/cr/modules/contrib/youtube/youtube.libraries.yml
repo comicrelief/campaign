@@ -1,5 +1,0 @@
-drupal.youtube.responsive:
-  version: VERSION
-  css:
-    theme:
-      css/youtube.responsive.css: {}

@@ -1,0 +1,52 @@
+name: Campaign Base
+description: 'Drupal 8 ComicRelief Theme.'
+screenshot: screenshot.jpg
+
+type: theme
+package: comicrelief
+core: 8.x
+
+base theme: classy
+# base theme: false
+
+libraries:
+  - campaign_base/global-css
+  - campaign_base/global-js
+
+# libraries-override:
+#   # Remove modernizr library it's been replaced for a custom one in libraries.yml.
+#   core/modernizr: false
+
+stylesheets-remove:
+  - core/assets/vendor/normalize-css/normalize.css
+  - core/modules/system/css/system.module.css
+  - core/modules/system/css/system.theme.css
+  - core/modules/views/css/views.module.css
+  - core/themes/classy/css/components/item-list.css
+
+ckeditor_stylesheets:
+  - css/styles.css
+
+regions:
+  banners: Banners
+  header_top: Top Header
+  header: Header
+  highlighted: Highlighted
+  breadcrumb: Breadcrumb
+  content: Content
+  footer: Footer
+  # These next two regions are REQUIRED. They are special regions used in the
+  # html.html.twig template instead of the page.html.twig template. And they are
+  # hidden from the "block layout" admin page.
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+  storage: 'Storage'
+
+# The default theme features as defined in _system_default_theme_features, with
+# the addition of a logo.
+features:
+  favicon: true
+  node_user_picture: true
+  comment_user_picture: true
+  comment_user_verification: true
+  logo: true

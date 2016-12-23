@@ -1,9 +1,0 @@
-'admin display suite':
-  title: 'Administer Display Suite'
-  description: 'General permission for Display Suite settings pages.'
-'admin fields':
-  'title': 'Administer fields'
-  'description': 'Manage fields for every entity.'
-'admin classes':
-  title: 'Administer classes'
-  description: 'Manage classes.'
