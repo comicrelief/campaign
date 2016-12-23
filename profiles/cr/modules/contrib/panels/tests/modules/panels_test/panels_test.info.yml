@@ -1,8 +1,0 @@
-type: module
-name: Panels Test
-description: 'Required for Panels simpletests only.'
-core: 8.x
-dependencies:
-  - page_manager
-  - panels
-  - layout_plugin

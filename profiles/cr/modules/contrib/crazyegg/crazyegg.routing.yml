@@ -1,7 +1,0 @@
-crazyegg.config:
-  path: '/admin/config/system/crazyegg'
-  defaults:
-    _title: 'Crazy Egg'
-    _form: '\Drupal\crazyegg\Form\CrazyeggSettingsForm'
-  requirements:
-    _permission: 'administer crazy egg'
