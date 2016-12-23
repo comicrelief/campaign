@@ -58,18 +58,6 @@ mounts:
     "/tmp": "shared:files/tmp"
     "/private": "shared:files/private"
     "/drush-backups": "shared:files/drush-backups"
-    #"/vendor": "shared:files/vendor"
-    # "/web/profiles/": "shared:files/profiles"
-    #"/node_modules": "shared:files/node_modules"
-    #"/.npm": "shared:files/.npm"
-    #"/.bundle": "shared:files/.bundle"
-    #"/.gem": "shared:files/.gem"
-    #"/Gemfile.lock": "shared:files/Gemfile.lock"
-    #"/web/profiles/cr/themes/custom/campaign_base/js": "shared:files/js"
-    ##"/web/profiles/cr/themes/custom/campaign_base/css": "shared:files/css"
-    #"/web/profiles/cr/themes/custom/campaign_base/styleguide": "shared:files/styleguide"
-    #"/web/profiles/cr/themes/custom/campaign_base/images/generated": "shared:files/images_generated"
-    #"/web/profiles/cr/.sass-cache": "shared:files/.sass-cache"
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
@@ -80,9 +68,9 @@ hooks:
         phing build:prepare
         phing grunt:build
 
-        cp /app/sites/default/settings.php /app/web/sites/default/settings.php
-        cp /app/sites/default/settings.platformsh.php /app/web/sites/default/settings.platformsh.php
-        #cp -R /app/sites/default/ /app/web/sites/default/
+        #cp /app/sites/default/settings.php /app/web/sites/default/settings.php
+        #cp /app/sites/default/settings.platformsh.php /app/web/sites/default/settings.platformsh.php
+        cp -R /app/sites/default/ /app/web/sites/default/
 
         # Todo: clean this up a bit more
         cp /app/sites/default/settings.platformsh.php /app/web/sites/default/settings.local.php
@@ -101,7 +89,7 @@ hooks:
           drush si cr -y --account-pass='admin' install_configure_form.update_status_module='[FALSE, FALSE]' -y
           drush cr
           cd ../
-          # touch "tmp/${PLATFORM_ENVIRONMENT}.installed"
+          touch "tmp/${PLATFORM_ENVIRONMENT}.installed"
           echo ">>> End re-installing CR profile"
         else
           echo ">>> No re-installation of the profile required, just a simple update!"
