@@ -49,7 +49,7 @@ mysql:
 before_install:
   - rvm install 2.1.5
   - composer global config minimum-stability beta
-  - composer global require phing/phing drush/drush:8.*
+  - composer global require phing/phing:2.15 drush/drush:8.*
   # Prepare environment
   - $TEST_DIR/before-install.sh
   # Check code quality before site is installed
