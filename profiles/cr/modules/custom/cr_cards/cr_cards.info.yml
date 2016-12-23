@@ -22,7 +22,9 @@ config_devel:
   - field.field.paragraph.cr_cards.field_cr_cards_title
   - field.field.paragraph.cr_cards.field_cr_cards_title_hidden
 # Block config
+  - core.entity_view_mode.block_content.banner
   - block_content.type.cr_card
+  - core.entity_view_display.block_content.cr_card.banner
   - core.entity_form_display.block_content.cr_card.default
   - core.entity_view_display.block_content.cr_card.default
   - field.storage.block_content.field_cr_card_background
