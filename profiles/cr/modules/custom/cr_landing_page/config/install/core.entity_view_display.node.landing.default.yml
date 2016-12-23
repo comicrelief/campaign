@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - field.field.node.landing.body
+    - field.field.node.landing.field_background_video
     - field.field.node.landing.field_landing_background_colour
     - field.field.node.landing.field_landing_copy_position_alig
     - field.field.node.landing.field_landing_feature_layout
@@ -60,6 +61,13 @@ content:
     weight: 2
     settings: {  }
     third_party_settings: {  }
+  field_background_video:
+    weight: 23
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
   field_landing_background_colour:
     weight: 17
     label: above

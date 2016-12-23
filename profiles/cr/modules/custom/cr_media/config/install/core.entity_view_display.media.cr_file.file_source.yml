@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.media.file_source
     - field.field.media.cr_file.field_cr_downloadables_body
     - field.field.media.cr_file.field_cr_field_display_title
     - field.field.media.cr_file.field_cr_file
@@ -9,6 +10,7 @@ dependencies:
     - media_entity.bundle.cr_file
   module:
     - ds
+    - file
 third_party_settings:
   ds:
     layout:
@@ -28,23 +30,22 @@ third_party_settings:
           layout_class: {  }
     regions:
       ds_content:
-        - cr_downloadables_MediaButton
-    fields:
-      cr_downloadables_MediaButton:
-        plugin_id: cr_downloadables_MediaButton
-        weight: 0
-        label: hidden
-        formatter: default
-id: media.cr_file.default
+        - field_cr_file
+id: media.cr_file.file_source
 targetEntityType: media
 bundle: cr_file
-mode: default
-content: {  }
+mode: file_source
+content:
+  field_cr_file:
+    type: file_url_plain
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   created: true
   field_cr_downloadables_body: true
   field_cr_field_display_title: true
-  field_cr_file: true
   field_cr_file_category: true
   name: true
   social_links: true
