@@ -1,5 +1,0 @@
-layout.2col:
-  version: VERSION
-  css:
-    theme:
-      css/dstest-2col.css: {}

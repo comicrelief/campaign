@@ -1,6 +1,0 @@
-services:
-  ds_devel.route_subscriber:
-    class: Drupal\ds_devel\Routing\RouteSubscriber
-    arguments: ['@entity.manager']
-    tags:
-      - { name: event_subscriber }
