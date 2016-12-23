@@ -54,7 +54,7 @@ disk: 2048
 # The mounts that will be performed when the package is deployed.
 mounts:
     "/web/sites/default/files": "shared:files/files"
-    "/web/sites/default/sync": "shared:files/config_sync"
+    "/web/sites/default/config": "shared:files/config"
     "/tmp": "shared:files/tmp"
     "/private": "shared:files/private"
     "/drush-backups": "shared:files/drush-backups"
@@ -92,15 +92,17 @@ hooks:
     deploy: |
         set -e
 
+        cd web/
+
         # Re-install the site if this hasn't been installed yet for this branch, or we are on develop
         if [ $PLATFORM_ENVIRONMENT = "develop" ] || [ ! -f tmp/$PLATFORM_ENVIRONMENT.installed ]; then
           echo ">>> Re-installing OC profile"
-          #drush sql-drop -y
-          #drush si cr -y --account-pass='admin' install_configure_form.update_status_module='[FALSE, FALSE]' -y
-          phing build
-          #drush cr
-          #cd ../
-          #phing grunt:build
+          drush sql-drop -y
+          drush si cr -y --account-pass='admin' install_configure_form.update_status_module='[FALSE, FALSE]' -y
+          #phing build
+          drush cr
+          cd ../
+          phing grunt:build
           # touch "tmp/${PLATFORM_ENVIRONMENT}.installed"
           echo ">>> End re-installing CR profile"
         else
