@@ -1,9 +1,0 @@
-'access yamlform overview':
-  title: 'Access the YAML form overview page'
-  description: 'Get an overview of all YAML forms.'
-'administer yamlform':
-  title: 'Administer YAML forms'
-  description: '<em>Warning: Give to trusted roles only; this permission has security implications.</em> Administering YAML forms allows the user to render anything they specify to end-users.'
-
-'administer yamlform submission':
-  title: 'Administer YAML form submissions'

@@ -1,5 +1,0 @@
-# A host as defined in RFC2396.
-# @see https://en.wikipedia.org/wiki/Uniform_Resource_Identifier#Syntax
-cdn.domain:
-  type: string
-  label: 'Domain'

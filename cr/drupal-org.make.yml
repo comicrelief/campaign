@@ -1,0 +1,205 @@
+api: 2
+core: 8.x
+# Specify common subdir of "contrib"
+defaults:
+  projects:
+    subdir: "contrib"
+projects:
+  # Core contrib
+  ctools:
+    version: 3.0-alpha27
+  file_entity:
+    version: 2.0-beta3
+  media_entity:
+    version: 1.6
+  media_entity_instagram:
+    version: 1.2
+  media_entity_image:
+    version: 1.2
+  media_entity_slideshow:
+    version: 1.2
+  media_entity_twitter:
+    version: 1.2
+  media_entity_browser:
+    download:
+      branch: 8.x-1.x
+      revision: 1f9a47a
+  entity_browser:
+    download:
+      branch: 8.x-1.x
+      revision: 77e18608cff42cfc4384bbcdd730a1ffdc37779b
+  embed:
+    version: 1.0-rc3
+  entity_embed:
+    download:
+      branch: 8.x-1.x
+      revision: 08e5098909f5286238edfb716353efa651eb5a5d
+  video_embed_field:
+    version: 1.3
+  metatag:
+    download:
+      branch: 8.x-1.x
+      revision: 2065f39
+  pathauto:
+    version: 1.0-beta1
+  redirect:
+    version: 1.0-alpha1
+  token:
+    version: 1.0-beta2
+  youtube:
+    version: 1.0-beta3
+  entity:
+    version: 1.0-alpha3
+  # Layout modules
+  inline_entity_form:
+    download:
+      branch: 1.x-dev
+      revision: 44c5cfc
+  layout_plugin:
+    version: 1.0-alpha23
+  page_manager:
+    version: 1.0-alpha24
+  panels:
+    download:
+      version: 3.x-dev
+      revision: a5400d7
+  panelizer:
+    version: 3.0-alpha2
+  ds:
+    version: 2.6
+  field_group:
+    version: 1.0-rc4
+  entity_reference_revisions:
+    download:
+      version: 1.x-dev
+      revision: c1941b7
+  view_modes_display:
+    version: 1.0
+  social_links:
+    download:
+      branch: 8.x-1.x
+      revision: f7b3273f60d3544c7a95a18bbcbaefe860afc0ac
+  scheduled_updates:
+    version: 1.0-alpha5
+  diff:
+    version: 1.0-beta2
+  view_mode:
+    download:
+      branch: 8.x-1.x
+  # Developer modules
+  config_devel:
+    version: 1.0-rc1
+    patch:
+      # See https://www.drupal.org/node/2686499
+      2686499: https://www.drupal.org/files/issues/config_devel-drush-config-devel-import-2686499-6.patch
+      # See https://www.drupal.org/node/2801201
+      2801201: https://www.drupal.org/files/issues/show_differences_between-2801201-2.patch
+  default_content:
+    download:
+      branch: 8.x-1.x
+      revision: c6a79ee
+  devel:
+    download:
+      version: 1.x-dev
+      revision: b8bcdc6
+  stage_file_proxy:
+    version: 1.0-alpha1
+  imagemagick:
+    version: 1.0-alpha4
+  config_readonly:
+    version: 1.0-beta2
+  # Editor/admin experience
+  menu_link_attributes:
+    version: 1.0-beta3
+  editor_advanced_link:
+    version: 1.3
+  admin_toolbar:
+    download:
+      version: 1.x-dev
+      revision: 32b7111
+  focal_point:
+    download:
+      version: 1.x-dev
+      revision: d39b83f955281255811618403ab62ee572146f0f
+  #crop:
+  #  version: 1.0-rc1
+  paragraphs:
+    download:
+      version: 1.x-dev
+      revision: 99a6673
+  # Forms
+  yamlform:
+    version: 1.0-alpha5
+    patch:
+      # See: https://www.drupal.org/node/2743347
+      2743347: https://www.drupal.org/files/issues/2743347_2_return_string.patch
+  yamlform_queue:
+    download:
+      branch: 8.x-1.x
+      url: https://github.com/pvhee/yamlform_queue.git
+  # Service Integration
+  cookieconsent:
+    version: 1.0
+  field_group:
+    version: 1.0-rc6
+  twig_tweak:
+    version: 1.4
+    patch:
+      # See: https://www.drupal.org/node/2833960
+      2833960: https://www.drupal.org/files/issues/2833960-relative-image-path.patch
+  rabbitmq:
+    version: 1.0-beta1
+  search_api:
+    version: 1.0-beta3
+  search_api_solr:
+    version: 1.0-beta1
+  crazyegg:
+    version: 1.0-rc1
+  google_tag:
+    download:
+      branch: 8.x-1.x
+      revision: 6a3c3e7
+      url: https://github.com/mikeyp/google_tag.git
+    patch:
+      # See: https://github.com/mikeyp/google_tag/pull/8
+      new_format: https://patch-diff.githubusercontent.com/raw/mikeyp/google_tag/pull/8.patch
+  optimizely:
+    version: 1.1
+  simple_sitemap:
+    download:
+      branch: 8.x-2.x
+      revision: 5833ff0
+  # Performance modules
+  fast_404:
+    version: 1.0-alpha2
+  purge:
+    version: 3.0-beta4
+  purge_purger_http:
+    version: 1.0-beta3
+  memcache:
+    download:
+      version: 2.x-dev
+      revision: 908c0a2
+  cdn:
+    version: 3.0-beta1
+libraries:
+  platform:
+    download:
+      type: "file"
+      url: https://raw.githubusercontent.com/bestiejs/platform.js/0870795f0c277a33cc2078a96e74434f89aa11d8/platform.js
+    destination: "themes/custom/campaign_base/libraries"
+  drush_cmi_tools:
+    download:
+      type: "file"
+      url: https://raw.githubusercontent.com/previousnext/drush_cmi_tools/ac3a1b71acf843a52807c7362357d8acb7a366c0/drush_cmi_tools.drush.inc
+    destination: "../drush"
+  lightcase:
+    download:
+      type: "get"
+      url: https://github.com/cbopp-art/lightcase/archive/v2.3.4.zip
+    destination: "themes/custom/campaign_base/libraries"
+  modernizr:
+    download:
+      type: "get"
+      url: https://raw.githubusercontent.com/comicrelief/campaign-modernizr/master/modernizr-custom.js
+    destination: "themes/custom/campaign_base/libraries"

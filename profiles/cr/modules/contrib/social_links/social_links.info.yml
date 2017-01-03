@@ -1,5 +1,0 @@
-name: Social Links
-type: module
-description: Social Links provides social share links on entities.
-core: 8.x
-package: Social

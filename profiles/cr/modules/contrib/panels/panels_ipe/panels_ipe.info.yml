@@ -1,8 +1,0 @@
-name: Panels IPE
-type: module
-description: Panels In-place editor.
-core: 8.x
-package: Panels
-dependencies:
-  - block_content
-  - panels
