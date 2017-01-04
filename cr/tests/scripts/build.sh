@@ -20,25 +20,12 @@ then
   echo 'Clone RND17 Repo.'
   git clone git@github.com:comicrelief/rnd17.git --branch develop --single-branch
   cd rnd17
+  # Configure project
   cp ../campaign/build.properties .
   echo 'File: build.properties copied over from campaign.'
-cat <<EOF > /home/travis/build/comicrelief/rnd17/sites/default/environment.yml
-databases:
-  default:
-    default:
-      database: $DB
-      username: root
-      password:
-      prefix:
-      host: 127.0.0.1
-      port:
-      namespace: Drupal\\Core\\Database\\Driver\\mysql
-      driver: mysql
-
-settings:
-  hash_salt: kzWT4Q5kJe2DkfS72PrATBUfkw54RKzMCbQg933K1Qwe0ZKtonOV_xdmuCac
-EOF
-  echo 'File: environment.yml has been created.'
+  cp ../campaign/sites/default/environment.yml sites/default/
+  echo 'File: environment.yml copied over from campaign.'
+  # Prepare project directory and get dependencies
   phing build:prepare:dev
   # Git config
   git config user.name "Travis CI"
@@ -52,10 +39,10 @@ EOF
   # Update campaign profile code from feature branch
   phing make-cr
   git add --all
-  git commit -va -m 'Run phing make-cr and commit changes'
+  git commit -va -m 'File changes via `phing make-cr`'
   phing update-cr
   # Add all config changes and commit
   git add --all
-  git commit -va -m 'Update configuration'
+  git commit -va -m 'Update configuration via `phing update-cr`'
   git push origin HEAD --force
 fi
