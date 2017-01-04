@@ -4,4 +4,6 @@ cr_landing_page:
     js/cr_landing_page.js: {}
   dependencies:
     - core/jquery
+    - core/matchMedia
+    - core/matchMedia.addListener
     - campaign_base/vide
