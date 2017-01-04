@@ -1,6 +1,5 @@
 (function ($) {
 	$(document).ready(function () {
-		console.log("custom script");
 		//Background video using vide library
 		//get all video backgrounds
 		$( '.bg_video' ).each(function( index ) {

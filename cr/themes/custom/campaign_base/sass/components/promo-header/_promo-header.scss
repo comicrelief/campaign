@@ -41,6 +41,13 @@
     }
   }
 }
+.promo-header--video {
+  .bg_video, .video {
+    position: initial !important;
+    height: auto;
+    opacity: 0.7;
+  }
+}
 .promo-header__bg-image {
   @include breakpoint($screen-md-max, $no-query: true) {
     width: 100%;
