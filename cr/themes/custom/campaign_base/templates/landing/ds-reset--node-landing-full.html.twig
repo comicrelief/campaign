@@ -7,7 +7,7 @@
 	field_landing_background_colour['#items'].value, 
 	'promo-header', layoutClass, small_img, bg_video]
 %}
-{% set copy_position = field_landing_copy_position_alig['#items'].value %}
+{% set copy_position = field_landing_copy_position_alig['#items'].value %}	
 
 
 {% if not desk_img and not small_img and not bg_video %}{% set header_class = header_class|merge(["promo-header--no-image"]) %}{% endif %}
@@ -25,7 +25,7 @@
 			</div>
 			{% endif %}
 			{{ body }}
-			{{ field_play_youtube.uri }}
+			{# {{ field_play_youtube.uri }} #}
 		</div>
 	</div>
 	{% if desk_img %}
