@@ -72,5 +72,6 @@ after_success:
   - $TEST_DIR/build.sh
 
 notifications:
-  slack: comicrelief:W1jExvqbSU9Kb3lyavdGHdGD
-  # email: false
+  slack:
+    rooms:
+      - secure: "XKfVLQ6h7CxqpB6CX5OWz61MI4lyNS26+I4CeuatVAME5n8wJVEvuC/hTHAMQ9YCyohi8v+LVuHdCTNNzPAkxA+AD2HyPH4sOIjgxtLseo6UDW/eW2XGMDesIAYIVyYKlwnzePiJ10PG792RpU3a6Q/smoerVoIyWzIalNwpRbzG9WgFowoJkOYkPXBQ4X2i7yhWvw3cjrVR6fd+26du/+nqg0NmbrbiOd7RmWnx/kKvW7TuJWVAEuChk7yCGXCGZxwJYEFBOJO/fhgD4vD/+JcXmA+i7OYR42zyc0oDMt60t2zp9Qwk5P2Ymn5tCXdr4r+XE7QK/bckTSaLIn6T02KGQgmlZK+HJLmN3Mbq1EBjmZnlyUuR9klfdllPmPFI/NqABxUez2nT1RhCcKXHMLG7ilUqEuPt/FXtzxuiCwQS0RlanhAJMOabQxxGLR430Gd91lARkCffB0VMEQnsSvUzLINvp+XU0vjnClqO1am9vfKuLMFsNDrqEuA/EQUtiBCR7RJbEfNa21vX1blSFQk2x7pKHwhnItRvcbpBksKnZhvXtOQBnG6W2tc8Li91XN6++5eD3vW/K0nJsIJTXvqaZBET7ZEj8QKSeBG248ZYo/yHiouhr6GIbMLncmhPuUV6gIqff3xqGBqnZexTM2AuhOKX90oT3wxiDn79A58="
