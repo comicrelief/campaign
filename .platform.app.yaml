@@ -15,7 +15,7 @@ build:
 dependencies:
     php:
         drush/drush: "^8.0"
-        phing/phing: "*"
+        phing/phing: "2.15"
     nodejs:
         grunt-cli: "~0.1.13"
 
