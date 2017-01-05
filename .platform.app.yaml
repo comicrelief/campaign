@@ -68,31 +68,23 @@ hooks:
         phing build:prepare
         phing grunt:build
 
-        # @todo review how we re-use settings.php and generally the sites/default dir on platform.sh
-        cp /app/sites/default/settings.php /app/web/sites/default/settings.php
-        cp /app/sites/default/settings.platformsh.php /app/web/sites/default/settings.platformsh.php
-        cp /app/sites/default/settings.platformsh.php /app/web/sites/default/settings.local.php
-        #cp -R /app/sites/default/ /app/web/sites/default/
-
     # We run deploy hooks after your application has been deployed and started.
     deploy: |
         set -e
 
-        cd web/
-
         # Re-install the site if this hasn't been installed yet for this branch, or we are on develop
         if [ $PLATFORM_ENVIRONMENT = "develop" ] || [ ! -f /tmp/$PLATFORM_ENVIRONMENT.installed ]; then
-          echo ">>> Re-installing OC profile"
-          drush sql-drop -y
-          drush si cr -y --account-pass='admin' install_configure_form.update_status_module='[FALSE, FALSE]' -y
-          drush cr
-          cd ../
+          echo ">>> Re-installing CR profile"
+          phing build
           touch "/tmp/${PLATFORM_ENVIRONMENT}.installed"
           echo ">>> End re-installing CR profile"
         else
           echo ">>> No re-installation of the profile required, just a simple update!"
-          drush cr
+          phing config:import
         fi
+
+        cd web
+        drush cr
 
 # The configuration of scheduled execution.
 crons:
