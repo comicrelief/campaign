@@ -68,12 +68,6 @@ hooks:
         phing build:prepare
         phing grunt:build
 
-        # @todo review how we re-use settings.php and generally the sites/default dir on platform.sh
-        cp /app/sites/default/settings.php /app/web/sites/default/settings.php
-        cp /app/sites/default/settings.platformsh.php /app/web/sites/default/settings.platformsh.php
-        cp /app/sites/default/settings.platformsh.php /app/web/sites/default/settings.local.php
-        #cp -R /app/sites/default/ /app/web/sites/default/
-
     # We run deploy hooks after your application has been deployed and started.
     deploy: |
         set -e
