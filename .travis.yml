@@ -56,7 +56,7 @@ before_install:
   - $TEST_DIR/code-checks.sh
 
 install:
-  - $TEST_DIR/install.sh
+  - travis_wait $TEST_DIR/install.sh
 
 before_script:
   - $TEST_DIR/before-tests.sh
