@@ -75,7 +75,9 @@ hooks:
         # Re-install the site if this hasn't been installed yet for this branch, or we are on develop
         if [ $PLATFORM_ENVIRONMENT = "develop" ] || [ ! -f /tmp/$PLATFORM_ENVIRONMENT.installed ]; then
           echo ">>> Re-installing CR profile"
-          phing build
+          #phing build
+          cd web
+          drush si cr -y --account-pass='admin' install_configure_form.update_status_module='[FALSE, FALSE]' -y
           touch "/tmp/${PLATFORM_ENVIRONMENT}.installed"
           echo ">>> End re-installing CR profile"
         else
