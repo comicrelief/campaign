@@ -17,3 +17,4 @@ To get started, simply follow the instructions in the [Installation guide](docs/
 
 Campaign platform notes can be found [here](http://confluence.comicrelief.com/x/iQQq) and goes through the goals and aims of the solution.
 
+
