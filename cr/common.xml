@@ -37,7 +37,16 @@
          checkreturn="true" />
    <!-- Symlink the oc folder into the profiles folder. -->
    <symlink target="${project.basedir}/${app.profile.name}/" link="${app.profile.dir}" />
- </target>
+  </target>
+  <target name="symlink"
+        description="Symlink the project">
+    <delete dir="${app.dir}/sites" />
+    <delete dir="${app.dir}/themes" />
+    <delete dir="${app.dir}/modules" />
+    <symlink target="${project.basedir}/sites/" link="${app.dir}/sites" />
+    <symlink target="${project.basedir}/themes/" link="${app.dir}/themes" />
+    <symlink target="${project.basedir}/modules/" link="${app.dir}/modules" />
+  </target>
   <target name="install:dependencies"
           description="Setup the project">
     <exec dir="${project.basedir}/web"
@@ -97,6 +106,7 @@
   <target name="make-core" description="Update Drupal core from CR make file">
     <exec dir="${app.dir}" checkreturn="true" logoutput="true" passthru="true"
           command="${drush.bin} make -y ${app.profile.dir}/drupal-org-core.make.yml --no-cache"/>
+    <phingcall target="symlink" />
   </target>
   <target name="make-contrib" description="Compile CR contrib from a make file">
     <!-- Delete the contrib directory first so we also have deletions and not just updates. -->
