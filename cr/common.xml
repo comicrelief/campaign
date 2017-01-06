@@ -20,7 +20,7 @@
           description="Build (or rebuild) the project.">
   </target>
   <target name="build:prepare"
-          depends="prepare:project, make, grunt:dependencies, install:dependencies, install:test:dependencies"
+          depends="prepare:project, make, symlink, grunt:dependencies, install:dependencies, install:test:dependencies"
           description="Set up the project and build all project dependencies. (gems, composer, drush make)">
   </target>
   <target name="build:prepare:deploy"
@@ -110,7 +110,6 @@
   <target name="make-core" description="Update Drupal core from CR make file">
     <exec dir="${app.dir}" checkreturn="true" logoutput="true" passthru="true"
           command="${drush.bin} make -y ${app.profile.dir}/drupal-org-core.make.yml --no-cache"/>
-    <phingcall target="symlink" />
   </target>
   <target name="make-contrib" description="Compile CR contrib from a make file">
     <!-- Delete the contrib directory first so we also have deletions and not just updates. -->
