@@ -17,13 +17,15 @@ fi
 
 if [[ $TRAVIS_BRANCH == *"#integrate"* ]]
 then
+  ls -la
+  cd ../
   echo 'Clone RND17 Repo.'
   git clone git@github.com:comicrelief/rnd17.git --branch feature/RND-593_remove_core_contrib --single-branch
   cd rnd17
   # Configure project
-  cp ../build.properties .
+  cp ../campaign/build.properties .
   echo 'File: build.properties copied over from campaign.'
-  cp ../sites/default/environment.yml sites/default/
+  cp ../campaign/sites/default/environment.yml sites/default/
   echo 'File: environment.yml copied over from campaign.'
   # Prepare project directory and get dependencies
   phing build:prepare
