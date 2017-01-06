@@ -65,7 +65,7 @@ hooks:
         set -e
 
         rm -fr /app/web/profiles/cr
-        phing build:prepare
+        phing build:prepare:deploy
         phing grunt:build
 
         # @todo review how we re-use settings.php and generally the sites/default dir on platform.sh
