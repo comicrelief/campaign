@@ -20,7 +20,11 @@
           description="Build (or rebuild) the project.">
   </target>
   <target name="build:prepare"
-          depends="prepare:project, make, grunt:dependencies, install:dependencies, install:test:dependencies"
+          depends="prepare:project, make, symlink, grunt:dependencies, install:dependencies, install:test:dependencies"
+          description="Set up the project and build all project dependencies. (gems, composer, drush make)">
+  </target>
+  <target name="build:prepare:deploy"
+          depends="prepare:project, make, grunt:dependencies, install:dependencies"
           description="Set up the project and build all project dependencies. (gems, composer, drush make)">
   </target>
   <target name="prepare:project"
@@ -37,7 +41,16 @@
          checkreturn="true" />
    <!-- Symlink the oc folder into the profiles folder. -->
    <symlink target="${project.basedir}/${app.profile.name}/" link="${app.profile.dir}" />
- </target>
+  </target>
+  <target name="symlink"
+        description="Symlink the project">
+    <delete dir="${app.dir}/sites" />
+    <delete dir="${app.dir}/themes" />
+    <delete dir="${app.dir}/modules" />
+    <symlink target="${project.basedir}/sites/" link="${app.dir}/sites" />
+    <symlink target="${project.basedir}/themes/" link="${app.dir}/themes" />
+    <symlink target="${project.basedir}/modules/" link="${app.dir}/modules" />
+  </target>
   <target name="install:dependencies"
           description="Setup the project">
     <exec dir="${project.basedir}/web"
