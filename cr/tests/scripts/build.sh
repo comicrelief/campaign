@@ -18,7 +18,7 @@ fi
 if [[ $TRAVIS_BRANCH == *"#integrate"* ]]
 then
   echo 'Clone RND17 Repo.'
-  git clone git@github.com:comicrelief/rnd17.git --branch develop --single-branch
+  git clone git@github.com:comicrelief/rnd17.git --branch feature/RND-593_remove_core_contrib --single-branch
   cd rnd17
   # Configure project
   cp ../campaign/build.properties .
@@ -26,12 +26,12 @@ then
   cp ../campaign/sites/default/environment.yml sites/default/
   echo 'File: environment.yml copied over from campaign.'
   # Prepare project directory and get dependencies
-  phing build:prepare:dev
+  phing build:prepare
   # Git config
   git config user.name "Travis CI"
   git config user.email "travis-ci@comicrelief.com"
   # Update CR profile version in makefile
-  sed -i -e "/branch:/ s/: .*/: $(echo $TRAVIS_BRANCH | sed -e 's/\\/\\\\/g; s/\//\\\//g; s/&/\\\&/g')/" profiles/rnd17/rnd17.make.yml
+  sed -i -e "/branch:/ s/: .*/: $(echo $TRAVIS_BRANCH | sed -e 's/\\/\\\\/g; s/\//\\\//g; s/&/\\\&/g')/" rnd17/rnd17.make.yml
   echo 'File: profiles/rnd17/rnd17.make.yml has been updated with current branch.'
   # Create new branch in RND named the same as current feature/branch
   git checkout -b $TRAVIS_BRANCH
