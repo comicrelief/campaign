@@ -21,9 +21,9 @@ then
   git clone git@github.com:comicrelief/rnd17.git --branch feature/RND-593_remove_core_contrib --single-branch
   cd rnd17
   # Configure project
-  cp ../campaign/build.properties .
+  cp ../build.properties .
   echo 'File: build.properties copied over from campaign.'
-  cp ../campaign/sites/default/environment.yml sites/default/
+  cp ../sites/default/environment.yml sites/default/
   echo 'File: environment.yml copied over from campaign.'
   # Prepare project directory and get dependencies
   phing build:prepare
