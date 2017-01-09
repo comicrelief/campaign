@@ -188,6 +188,11 @@ libraries:
       type: "file"
       url: https://raw.githubusercontent.com/bestiejs/platform.js/0870795f0c277a33cc2078a96e74434f89aa11d8/platform.js
     destination: "themes/custom/campaign_base/libraries"
+  vide:
+    download:
+      type: "file"
+      url: https://raw.githubusercontent.com/VodkaBears/Vide/0.5.1/src/jquery.vide.js
+    destination: "themes/custom/campaign_base/libraries"
   drush_cmi_tools:
     download:
       type: "file"
