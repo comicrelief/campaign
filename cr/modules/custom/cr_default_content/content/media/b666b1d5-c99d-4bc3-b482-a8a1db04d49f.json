@@ -1,0 +1,204 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/media\/4?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/media\/cr_file"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/media\/cr_file\/thumbnail": [
+            {
+                "href": "http:\/\/default\/file\/3396?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/media\/cr_file\/uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/media\/cr_file\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/media\/cr_file\/field_cr_file": [
+            {
+                "href": "http:\/\/default\/file\/3402?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/media\/cr_file\/field_cr_file_category": [
+            {
+                "href": "http:\/\/default\/taxonomy\/term\/9?_format=hal_json"
+            }
+        ]
+    },
+    "mid": [
+        {
+            "value": "4"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "b666b1d5-c99d-4bc3-b482-a8a1db04d49f"
+        }
+    ],
+    "vid": [
+        {
+            "value": "4"
+        }
+    ],
+    "bundle": [
+        {
+            "target_id": "cr_file"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "name": [
+        {
+            "value": "Test background video",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/media\/cr_file\/thumbnail": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/3396?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "66fd7567-3257-4632-9162-aae79e6a68ba"
+                    }
+                ],
+                "alt": "Thumbnail",
+                "title": "Test background video",
+                "width": "180",
+                "height": "180"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/media\/cr_file\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "df8659eb-0039-4459-abf3-9524f377719e"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/media\/cr_file\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "df8659eb-0039-4459-abf3-9524f377719e"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/media\/cr_file\/field_cr_file": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/3402?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/video"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "e5eeb26e-1a8b-4242-b6fe-51c7fd6e91b1"
+                    }
+                ],
+                "display": "1",
+                "description": "",
+                "key": ""
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/media\/cr_file\/field_cr_file_category": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/taxonomy\/term\/9?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/cr_resource_category"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "da19a658-d466-4dcd-b316-11bb61729556"
+                    }
+                ]
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1483963352",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1483963410",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1483963387"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "field_cr_downloadables_body": [
+        {
+            "value": "<p>Test background video for header.<\/p>\r\n",
+            "format": "full_html",
+            "summary": ""
+        }
+    ],
+    "field_cr_field_display_title": [
+        {
+            "value": "Test header background video"
+        }
+    ]
+}
