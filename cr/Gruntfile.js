@@ -52,8 +52,8 @@ module.exports = function (grunt) {
         dest: 'themes/custom/campaign_base/js/campaign_base.js',
       },
       rnd17: {
-        src: ['../../themes/rnd17/scripts/{,**/}*.js'],
-        dest: '../../themes/rnd17/js/rnd17.js',
+        src: ['../themes/rnd17/scripts/{,**/}*.js'],
+        dest: '../themes/rnd17/js/rnd17.js',
       },
     },
 
@@ -62,7 +62,7 @@ module.exports = function (grunt) {
             command: '../node_modules/kss/bin/kss-node --source themes/custom/campaign_base/sass/ --destination themes/custom/campaign_base/styleguide --template themes/custom/campaign_base/kss/ --verbose'
         },
         rnd17_styleguide: {
-            command: '../node_modules/kss/bin/kss-node --source ../../themes/rnd17/sass/ --destination ../../themes/rnd17/styleguide --template themes/custom/campaign_base/kss/ --verbose'
+            command: '../node_modules/kss/bin/kss-node --source ../themes/rnd17/sass/ --destination ../themes/rnd17/styleguide --template themes/custom/campaign_base/kss/ --verbose'
         }
     },
 
@@ -92,7 +92,7 @@ module.exports = function (grunt) {
               config: 'themes/custom/campaign_base/config.rb'
             },
             {
-              config: '../../themes/rnd17/config.rb'
+              config: '../themes/rnd17/config.rb'
             }
           ]
         }
@@ -140,8 +140,8 @@ module.exports = function (grunt) {
         {
           expand: true,
           flatten: true,
-          cwd: '../../themes/rnd17/js',
-          dest: '../../themes/rnd17/js',
+          cwd: '../themes/rnd17/js',
+          dest: '../themes/rnd17/js',
           src: ['rnd17.js', '!rnd17.min.js'],
           rename: function(dest, src) {
             var folder = src.substring(0, src.lastIndexOf('/'));
@@ -173,8 +173,8 @@ module.exports = function (grunt) {
         {
           expand: true,
           flatten: true,
-          cwd: '../../themes/rnd17/js',
-          dest: '../../themes/rnd17/js',
+          cwd: '../themes/rnd17/js',
+          dest: '../themes/rnd17/js',
           src: ['rnd17.js', '!rnd17.min.js'],
           rename: function(dest, src) {
             var folder = src.substring(0, src.lastIndexOf('/'));
