@@ -8,6 +8,7 @@ use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\HtmlCommand;
 use Drupal\Core\Ajax\PrependCommand;
 use Drupal\Core\Ajax\InvokeCommand;
+use Drupal\cr_email_signup\MessageQueue\SenderData;
 use Drupal\cr_email_signup\MessageQueue\Sender;
 
 /**
@@ -159,8 +160,10 @@ abstract class SignUp extends FormBase {
             $data['firstName'] = $form_state->getValue('firstName');
           }
           $data['transType'] = $this->transType;
-          $sender = new Sender();
+          $sender = new SenderData();
           $sender->deliver($this->queue_name, $data);
+          $sender = new Sender();
+          $sender->deliver('smart', $data);
           $this->nextStep($response, 1);
         }
         break;
@@ -170,7 +173,7 @@ abstract class SignUp extends FormBase {
         $this->esulist = ['listname' => ['teacher']];
         $valid_email = \Drupal::service('email.validator')->isValid($email);
         if (!$form_state->isValueEmpty('school_phase') && $valid_email) {
-          $sender = new Sender();
+          $sender = new SenderData();
           $sender->deliver($this->queue_name, [
             'email' => $form_state->getValue('email'),
             'phase' => $form_state->getValue('school_phase'),
