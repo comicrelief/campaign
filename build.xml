@@ -4,6 +4,7 @@
   <property name="app.dir"            value="${project.basedir}/web"/>
   <property name="app.name"           value="CR Campaign"/>
   <property name="app.profile.name"   value="cr"/>
+  <property name="app.site.profiles"  value="cr"/>
   <property name="app.profile.dir"    value="${app.dir}/profiles/${app.profile.name}"/>
   <property name="app.profile.theme"  value="${app.profile.dir}/themes/custom/campaign_base"/>
   <property name="app.site.theme"     value="${app.profile.theme}"/>
