@@ -31,8 +31,9 @@
     width: 100%;
     min-height: initial;
 
-    .bg_video{
+    .bg_video, .video {
       overflow: hidden;
+      height: 400px;
     }
   }
 }
@@ -49,7 +50,7 @@
   //override styling set by vide library
   .bg_video {
     position: initial !important;
-    min-height: 400px;
+    height: 600px;
     opacity: 0.7;
   }
   video {
