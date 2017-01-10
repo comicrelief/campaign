@@ -15,12 +15,12 @@ then
   echo "Pushing to platform.sh develop env."
 fi
 
-if [[ $TRAVIS_BRANCH == *"#integrate"* ]]
+if [[ $TRAVIS_COMMIT_MSG == *"#integrate"* ]]
 then
   ls -la
   cd ../
   echo 'Clone RND17 Repo.'
-  git clone git@github.com:comicrelief/rnd17.git --branch feature/RND-593_remove_core_contrib --single-branch
+  git clone git@github.com:comicrelief/rnd17.git --branch develop --single-branch
   cd rnd17
   # Configure project
   cp ../campaign/build.properties .
