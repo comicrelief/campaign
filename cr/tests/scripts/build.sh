@@ -25,8 +25,23 @@ then
   # Configure project
   cp ../campaign/build.properties .
   echo 'File: build.properties copied over from campaign.'
-  cp ../campaign/sites/default/environment.yml sites/default/
-  echo 'File: environment.yml copied over from campaign.'
+cat <<EOF > /home/travis/build/comicrelief/rnd17/sites/default/environment.yml
+databases:
+ default:
+   default:
+     database: $DB
+     username: root
+     password:
+     prefix:
+     host: 127.0.0.1
+     port:
+     namespace: Drupal\\Core\\Database\\Driver\\mysql
+     driver: mysql
+
+settings:
+ hash_salt: kzWT4Q5kJe2DkfS72PrATBUfkw54RKzMCbQg933K1Qwe0ZKtonOV_xdmuCac
+EOF
+  echo 'File: environment.yml has been created.'
   # Prepare project directory and get dependencies
   phing build:prepare
   # Git config
