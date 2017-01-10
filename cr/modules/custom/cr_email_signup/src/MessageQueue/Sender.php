@@ -23,7 +23,7 @@ class Sender {
     protected function populate($message) {
         return [
             'emailAddress' => $message['email'],
-            'templateId' => 1539564
+            'templateId' => $message['templateId']
         ];
     }
 

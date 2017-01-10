@@ -109,7 +109,7 @@ abstract class SignUp extends FormBase {
     FormStateInterface $form_state,
     AjaxResponse $response
   ) {
-    $pass = TRUE;
+    $pass = true;
     $exist_field_name = $form_state->hasValue('firstName');
     $name_is_empty = $form_state->isValueEmpty('firstName');
     $email = $form_state->getValue('email');
@@ -122,7 +122,7 @@ abstract class SignUp extends FormBase {
         self::$ERRORS['MAIL'],
         'Please enter a valid email address.'
       );
-      $pass = FALSE;
+      $pass = false;
     }
     if ($exist_field_name && $name_is_empty) {
       $this->setErrorMessage(
@@ -130,7 +130,7 @@ abstract class SignUp extends FormBase {
         self::$ERRORS['NAME'],
         'Please enter your name.'
       );
-      $pass = FALSE;
+      $pass = false;
     }
 
     return $pass;
@@ -144,6 +144,7 @@ abstract class SignUp extends FormBase {
     $form = $form;
     $triggering_element = $form_state->getTriggeringElement();
     $response = new AjaxResponse();
+    $settings = \Drupal::config('cr_email_signup.settings');
     switch ($triggering_element['#name']) {
       case 'step1':
         if ($this->validateFields($form_state, $response)) {
@@ -152,6 +153,7 @@ abstract class SignUp extends FormBase {
             'email' => $form_state->getValue('email'),
             'device' => $form_state->getValue('device'),
             'source' => $form_state->getValue('source'),
+            'campaign' => $settings->get('campaign')
           ];
           if (!empty($this->esulist)) {
             $data['subscribeLists'] = $this->esulist;
@@ -160,10 +162,13 @@ abstract class SignUp extends FormBase {
             $data['firstName'] = $form_state->getValue('firstName');
           }
           $data['transType'] = $this->transType;
+
           $sender = new SenderData();
           $sender->deliver($this->queue_name, $data);
           $sender = new Sender();
-          $sender->deliver('smart', $data);
+          $queue_name = $settings->get('welcome_queue');
+          $data['templateId'] = $settings->get('template_id');
+          $sender->deliver($queue_name, $data);
           $this->nextStep($response, 1);
         }
         break;
@@ -179,6 +184,7 @@ abstract class SignUp extends FormBase {
             'phase' => $form_state->getValue('school_phase'),
             'device' => $form_state->getValue('device'),
             'source' => $form_state->getValue('source'),
+            'campaign' => $settings->get('campaign'),
             'subscribeLists' => $this->esulist,
           ]);
           $this->nextStep($response, 2);
