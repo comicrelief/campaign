@@ -1,0 +1,269 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/video?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/landing"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_background_video": [
+            {
+                "href": "http:\/\/default\/media\/4?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_landing_image": [
+            {
+                "href": "http:\/\/default\/file\/3406?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_landing_image_mobile": [
+            {
+                "href": "http:\/\/default\/file\/3405?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_paragraphs": [
+            {
+                "href": ""
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": "36"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "86e34a29-6a4a-4c20-b5ad-cb156abc3cd6"
+        }
+    ],
+    "vid": [
+        {
+            "value": "140"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "landing"
+        }
+    ],
+    "title": [
+        {
+            "value": "Video",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "df8659eb-0039-4459-abf3-9524f377719e"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "df8659eb-0039-4459-abf3-9524f377719e"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_background_video": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/media\/4?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/media\/cr_file"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "b666b1d5-c99d-4bc3-b482-a8a1db04d49f"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_landing_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/3406?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "80bcdc8b-b257-40ab-88a8-a8651c4d7196"
+                    }
+                ],
+                "lang": "en",
+                "alt": "girl",
+                "title": "",
+                "width": "3400",
+                "height": "1200"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_landing_image_mobile": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/3405?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "173ebbb8-f51f-4376-857c-7065686ce8bc"
+                    }
+                ],
+                "alt": "girl",
+                "title": "",
+                "width": "740",
+                "height": "663"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_paragraphs": [
+            {
+                "_links": {
+                    "self": {
+                        "href": ""
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/single_msg"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "bf74928f-f9d4-4c4d-8edc-c59b97806962"
+                    }
+                ],
+                "target_revision_id": "104"
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1484043881",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1484047185",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1484047185"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<h1 class=\"font--white\">Nice video background<\/h1>\r\n\r\n<p class=\"font--xlarge\">Videos are tremendous. As such, any kind of video background always goes down a storm. Just remember to make it&nbsp;easy on the eyes.<\/p>\r\n\r\n<p><a class=\"btn btn--red\" href=\"http:\/\/shop.rednoseday.com\/order-a-fundraising-kit\" id=\"\" rel=\"\" target=\"_blank\" title=\"\">Find out more<\/a><\/p>\r\n",
+            "format": "full_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ],
+    "field_landing_background_colour": [
+        {
+            "value": "bg--black"
+        }
+    ],
+    "field_landing_copy_position_alig": [
+        {
+            "value": "promo-header__content-inner--left"
+        }
+    ],
+    "field_landing_feature_layout": [
+        {
+            "value": "0"
+        }
+    ],
+    "field_landing_meta_tags": [
+        {
+            "value": "a:0:{}"
+        }
+    ],
+    "field_landing_small_bg": [
+        {
+            "value": "0"
+        }
+    ]
+}
