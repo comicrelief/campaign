@@ -24,7 +24,7 @@
         ],
         "http:\/\/drupal.org\/rest\/relation\/media\/cr_file\/field_cr_file": [
             {
-                "href": "http:\/\/default\/file\/3402?_format=hal_json"
+                "href": "http:\/\/default\/file\/3404?_format=hal_json"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/media\/cr_file\/field_cr_file_category": [
@@ -61,7 +61,7 @@
     ],
     "name": [
         {
-            "value": "Test background video",
+            "value": "Test header background video",
             "lang": "en"
         }
     ],
@@ -126,7 +126,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/file\/3402?_format=hal_json"
+                        "href": "http:\/\/default\/file\/3404?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/file\/video"
@@ -134,7 +134,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "e5eeb26e-1a8b-4242-b6fe-51c7fd6e91b1"
+                        "value": "a381cd96-b62e-4a70-a58f-64d4c86df8b1"
                     }
                 ],
                 "display": "1",
@@ -174,7 +174,7 @@
     ],
     "changed": [
         {
-            "value": "1483963410",
+            "value": "1484046080",
             "lang": "en"
         }
     ],
