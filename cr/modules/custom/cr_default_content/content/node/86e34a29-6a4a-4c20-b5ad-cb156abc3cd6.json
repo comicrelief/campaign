@@ -51,7 +51,7 @@
     ],
     "vid": [
         {
-            "value": "140"
+            "value": "142"
         }
     ],
     "langcode": [
@@ -174,15 +174,15 @@
                         "href": ""
                     },
                     "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/single_msg"
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cw_row"
                     }
                 },
                 "uuid": [
                     {
-                        "value": "bf74928f-f9d4-4c4d-8edc-c59b97806962"
+                        "value": "1c7d652a-1a20-4a6d-bff6-0d978f377d5b"
                     }
                 ],
-                "target_revision_id": "104"
+                "target_revision_id": "108"
             }
         ]
     },
@@ -200,7 +200,7 @@
     ],
     "changed": [
         {
-            "value": "1484047185",
+            "value": "1484052370",
             "lang": "en"
         }
     ],
@@ -218,7 +218,7 @@
     ],
     "revision_timestamp": [
         {
-            "value": "1484047185"
+            "value": "1484052370"
         }
     ],
     "revision_translation_affected": [
