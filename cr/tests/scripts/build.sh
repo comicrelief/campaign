@@ -55,6 +55,7 @@ EOF
   git commit -va -m 'Update campaign profile version'
   # Update campaign profile code from feature branch
   phing make-cr
+  phing make-contrib
   git add --all
   git commit -va -m 'File changes via `phing make-cr`'
   phing update-cr
