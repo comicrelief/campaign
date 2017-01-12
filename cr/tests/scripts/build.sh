@@ -63,4 +63,16 @@ EOF
   git add --all
   git commit -va -m 'Update configuration via `phing update-cr`'
   git push origin HEAD --force
+
+  echo 'Install hub'
+  cd ../
+  wget https://github.com/github/hub/releases/download/v2.2.9/hub-linux-amd64-2.2.9.tgz
+  tar -zxvf hub-linux-amd64-2.2.9.tgz
+  export PATH=$PATH:~/hub-linux-amd64-2.2.9/bin/./hub
+  alias git=hub
+
+  cd rnd17
+  # Open pull request in RND17
+  echo $TRAVIS_BRANCH 'integration branch' > prepared-message.md
+  git pull-request -F prepared-message.md
 fi
