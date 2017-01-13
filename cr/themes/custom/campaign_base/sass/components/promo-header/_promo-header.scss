@@ -50,7 +50,6 @@
   //override styling set by vide library
   .bg_video {
     position: initial !important;
-    height: 600px;
     opacity: 0.7;
   }
   video {
@@ -62,6 +61,9 @@
       -ms-transform: translateY(-50%) !important;
   -webkit-transform: translateY(-50%) !important;
           transform: translateY(-50%) !important;
+  }
+  @include breakpoint($screen-md-max) {
+    height: 600px;
   }
 }
 
