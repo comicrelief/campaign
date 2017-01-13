@@ -45,3 +45,10 @@ function cr_landing_page_field_landing_copy_position_alig(FieldStorageDefinition
   ];
   return $values;
 }
+
+/**
+ * Implements hook_page_attachments().
+ */
+function cr_landing_page_page_attachments(array &$attachments) {
+  $attachments['#attached']['library'][] = 'cr_landing_page/cr_landing_page';
+}
