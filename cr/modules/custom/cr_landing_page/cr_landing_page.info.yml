@@ -38,5 +38,4 @@ config_devel:
   - metatag.metatag_defaults.node__landing
 
 libraries:
-  - cr_landing_page/cr_landing_page
   - campaign_base/vide
