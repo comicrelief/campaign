@@ -1,6 +1,0 @@
-name: 'Simple XML Sitemap'
-type: module
-description: 'Creates a standard conform XML sitemap of your content.'
-configure: simple_sitemap.settings
-package: SEO
-core: 8.x

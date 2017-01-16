@@ -1,0 +1,64 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cr_card
+    - core.entity_view_mode.block_content.banner
+    - field.field.block_content.cr_card.field_cr_card_background
+    - field.field.block_content.cr_card.field_cr_card_body
+    - field.field.block_content.cr_card.field_cr_card_image
+    - image.style.medium
+  module:
+    - ds
+    - image
+    - options
+    - text
+third_party_settings:
+  ds:
+    layout:
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
+      library: ''
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - field_cr_card_image
+        - field_cr_card_body
+        - field_cr_card_background
+id: block_content.cr_card.banner
+targetEntityType: block_content
+bundle: cr_card
+mode: banner
+content:
+  field_cr_card_background:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+  field_cr_card_body:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_cr_card_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: medium
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+hidden:
+  social_links: true

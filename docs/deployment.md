@@ -1,3 +1,5 @@
+> Our deployment guidelines include both releases of the `campaign` profile as well as our deployment process for sites using the `campaign` profile. This is very specific to Comic Relief UK and our hosting setup.
+
 ### Release Timescales
 1. __Friday ~5pm__: Release/Pull Request cut off.
 2. __Monday all day__: Last chance for code to be included by developers/bug fixes only. Build release notes.
@@ -12,8 +14,8 @@
 
 ### Building a Release
 
-- Git clone both the campaign and rnd17 repositories, and checkout the develop branch. Configure each local copy as per instructions in the docs folder.
-- Create a new branch on each repository called release_X.X and push to github, e.g. for version 1.9 execute the following in each repository:
+- Git clone both the `campaign` and `rnd17` repositories, and checkout the develop branch. Configure each local copy as per instructions in the docs folder.
+- Create a new branch on each repository called `release_X.X` and push to github, e.g. for version 1.9 execute the following in each repository:
   ```
   git branch release_1.9
   git checkout release_1.9
@@ -69,6 +71,7 @@ Note: The build artifact id will be output to the #craftlogs Slack channel once 
 - Announce to the #deployments Slack channel so the release can be QA'd, using @QA will notify all QA's.
 
 ### Deploying to Production
+
 Assuming the release branch that was deployed to staging in the previous steps has passed QA and all feed back has been prioritised and actioned, we are ready to move to production.
 - Create the new release tag via [Github](https://github.com/comicrelief/rnd17/releases/new) making sure to note down the [Campaign profile](https://github.com/comicrelief/campaign/releases) version along with any important information related to this release, for example [1.2](https://github.com/comicrelief/rnd17/releases/tag/1.2)
 - Create a build artifact for your tag using the following command:

@@ -1,4 +1,0 @@
-# The mkdocs output directory and GitHub pages directory.
-site
-gh-pages
-*.patch

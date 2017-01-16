@@ -1,5 +1,0 @@
-crazyegg.config:
-  title: 'Crazy Egg'
-  description: 'Configure Crazy Egg heat maps on your website.'
-  parent: system.admin_config_system
-  route_name: crazyegg.config
