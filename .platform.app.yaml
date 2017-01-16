@@ -64,9 +64,9 @@ hooks:
     build: |
         set -e
 
-        printf "db.querystring=mysql://root@database.internal/main" > build.properties
+        printf 'db.querystring=mysql://root@database.internal/main\n' > build.properties
+        printf 'deploy.delete-sites = false\n' >> build.properties
 
-        rm -fr /app/web/profiles/cr
         phing build:prepare:deploy
         phing grunt:build
 
@@ -74,7 +74,6 @@ hooks:
         cp /app/sites/default/settings.php /app/web/sites/default/settings.php
         cp /app/sites/default/settings.platformsh.php /app/web/sites/default/settings.platformsh.php
         cp /app/sites/default/settings.platformsh.php /app/web/sites/default/settings.local.php
-        #cp -R /app/sites/default/ /app/web/sites/default/
 
     # We run deploy hooks after your application has been deployed and started.
     deploy: |
