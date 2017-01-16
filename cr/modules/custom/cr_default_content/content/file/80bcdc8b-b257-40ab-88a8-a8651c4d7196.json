@@ -5,12 +5,7 @@
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
-        },
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "href": "http:\/\/default\/user\/1?_format=hal_json"
-            }
-        ]
+        }
     },
     "fid": [
         {
@@ -32,25 +27,6 @@
             "target_id": "image"
         }
     ],
-    "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "df8659eb-0039-4459-abf3-9524f377719e"
-                    }
-                ]
-            }
-        ]
-    },
     "filename": [
         {
             "value": "RND17_difference_you_make_header_L_v1_compressed.jpg"
@@ -58,7 +34,7 @@
     ],
     "uri": [
         {
-            "value": "public:\/\/2017-01\/RND17_difference_you_make_header_L_v1_compressed.jpg"
+            "value": "public:\/\/2017-01\/RND17_difference_you_make_header_L_v1_compressed_1.jpg"
         }
     ],
     "filemime": [

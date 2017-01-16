@@ -11,17 +11,6 @@
                 "href": "http:\/\/default\/file\/3396?_format=hal_json"
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/media\/cr_file\/uid": [
-            {
-                "href": "http:\/\/default\/user\/1?_format=hal_json",
-                "lang": "en"
-            }
-        ],
-        "http:\/\/drupal.org\/rest\/relation\/media\/cr_file\/revision_uid": [
-            {
-                "href": "http:\/\/default\/user\/1?_format=hal_json"
-            }
-        ],
         "http:\/\/drupal.org\/rest\/relation\/media\/cr_file\/field_cr_file": [
             {
                 "href": "http:\/\/default\/file\/3404?_format=hal_json"
@@ -85,41 +74,6 @@
                 "title": "Test background video",
                 "width": "180",
                 "height": "180"
-            }
-        ],
-        "http:\/\/drupal.org\/rest\/relation\/media\/cr_file\/uid": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "df8659eb-0039-4459-abf3-9524f377719e"
-                    }
-                ],
-                "lang": "en"
-            }
-        ],
-        "http:\/\/drupal.org\/rest\/relation\/media\/cr_file\/revision_uid": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "df8659eb-0039-4459-abf3-9524f377719e"
-                    }
-                ]
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/media\/cr_file\/field_cr_file": [
