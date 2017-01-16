@@ -174,8 +174,10 @@ projects:
     version: 1.0-alpha2
   purge:
     version: 3.0-beta4
+  varnish_purge:
+    version: 1.4
   purge_purger_http:
-    version: 1.0-beta3
+    version: 1.0-beta4
   memcache:
     download:
       version: 2.x-dev
