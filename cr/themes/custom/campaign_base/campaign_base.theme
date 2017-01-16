@@ -1,0 +1,14 @@
+<?php
+/**
+ * @file
+ * Functions to support theming in the campaign base theme.
+ */
+
+/**
+ * @inheritdoc
+ */
+function campaign_base_preprocess(&$vars, $hook)
+{
+    $vars['campaign_base_path'] = '/' .
+        drupal_get_path('theme', 'campaign_base') . '/';
+}
