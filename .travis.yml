@@ -69,7 +69,7 @@ script:
 
 after_success:
   # Deploy to platform.sh (only for the develop branch)
-  - $TEST_DIR/build.sh
+  - travis_wait $TEST_DIR/build.sh
 
 notifications:
   slack:
