@@ -183,7 +183,7 @@ projects:
       version: 2.x-dev
       revision: 908c0a2
   cdn:
-    version: 3.0-beta1
+    version: 3.0
 libraries:
   platform:
     download:

@@ -15,16 +15,18 @@
   <property name="app.files.public"       value="sites/default/files"                                 override="true" />
   <property name="app.files.tmp"          value="sites/default/files/tmp"                             override="true" />
   <property name="app.files.private" value="sites/default/private" override="true" />
+  <property name="deploy.craft"  value="true"/>
+  <property name="deploy.delete-sites" value="true" override="true" />
   <property name="app.profile.options" value="install_configure_form.update_status_module='[FALSE, FALSE]'"/>
   <target name="build" depends="install, grunt:build"
           description="Build (or rebuild) the project.">
   </target>
   <target name="build:prepare"
-          depends="prepare:project, make, symlink, grunt:dependencies, install:dependencies, install:test:dependencies"
+          depends="prepare:project, symlink:profiles, make, symlink, grunt:dependencies, install:dependencies, install:test:dependencies"
           description="Set up the project and build all project dependencies. (gems, composer, drush make)">
   </target>
   <target name="build:prepare:deploy"
-          depends="prepare:project, make, grunt:dependencies, install:dependencies"
+          depends="prepare:project, symlink:profiles, make, symlink, grunt:dependencies, install:dependencies"
           description="Set up the project and build all project dependencies. (gems, composer, drush make)">
   </target>
   <target name="prepare:project"
@@ -39,17 +41,24 @@
          logoutput="true"
          passthru="true"
          checkreturn="true" />
-   <!-- Symlink the oc folder into the profiles folder. -->
-   <symlink target="${project.basedir}/${app.profile.name}/" link="${app.profile.dir}" />
   </target>
   <target name="symlink"
         description="Symlink the project">
-    <delete dir="${app.dir}/sites" />
-    <delete dir="${app.dir}/themes" />
-    <delete dir="${app.dir}/modules" />
+    <if>
+      <istrue value="${deploy.delete-sites}"/>
+      <then>
+        <delete dir="${app.dir}/sites" />
+      </then>
+    </if>
     <symlink target="${project.basedir}/sites/" link="${app.dir}/sites" />
-    <symlink target="${project.basedir}/themes/" link="${app.dir}/themes" />
-    <symlink target="${project.basedir}/modules/" link="${app.dir}/modules" />
+  </target>
+  <target name="symlink:profiles"
+    description="Symlink the profiles">
+    <foreach list="${app.site.profiles}" param="profile" target="symlink:profile" delimiter=" "/>
+  </target>
+  <target name="symlink:profile"
+        description="Symlink the profile">
+    <symlink target="${project.basedir}/${profile}/" link="${app.dir}/profiles/${profile}" />
   </target>
   <target name="install:dependencies"
           description="Setup the project">
