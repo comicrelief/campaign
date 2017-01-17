@@ -173,7 +173,7 @@ projects:
   fast_404:
     version: 1.0-alpha2
   purge:
-    version: 3.0-beta4
+    version: 3.0-beta6
   varnish_purge:
     version: 1.4
     patch:
