@@ -27,7 +27,13 @@ Feature: Landing-page
     And the metatag property "og:title" should contain the value "Fundraise"
     And the metatag property "og:type" should have the value "article"
     And the metatag property "og:url" should contain the value "fundraise"
-
+  
+  @api @default-content
+  Scenario: Landing-page /video
+    Given I am on "/video"
+    Then I should see "Nice video background"
+    And I should see a "mp4" with the following filename "VideoHeader"
+  
   @api
   Scenario: Create landing page node
     Given I am viewing a "landing" content:

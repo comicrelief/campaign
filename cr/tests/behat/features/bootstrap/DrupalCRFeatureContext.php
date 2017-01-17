@@ -432,4 +432,36 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
     }
   }
 
+  /**
+   * Check for video background.
+   *
+   * @Then I should see a :ext with the following filename :filename 
+   * @And I should see a :ext with the following filename :filename 
+   */
+  public function iShouldSeeTheVideoSource($filename, $ext) {
+    // Attempt to grab all the video elements
+    $videos = $this->getSession()->getPage()->findAll('css', 'video');
+    
+    if (empty($videos)) {
+      throw new Exception('No video container in markup to check');
+    }
+
+    $found = FALSE;
+    $pattern = '".+' . $filename . '.{0,}\.' . $ext . '"';
+
+    // Loop through all video elements to find video source
+    foreach ($videos as $video) {
+      $sourceTag = $video->find('css', 'source');
+      $source = $sourceTag->getAttribute('src');
+      
+      if(preg_match($pattern, $source) === 1){
+        $found = TRUE;
+        break;
+      }
+    }
+
+    if (!$found) {
+      throw new Exception('The video with source ' . $source . ' was not found in the markup');
+    }
+  }
 }
