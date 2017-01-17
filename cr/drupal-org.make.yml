@@ -41,7 +41,9 @@ projects:
       branch: 8.x-1.x
       revision: 2065f39
   pathauto:
-    version: 1.0-beta1
+    download:
+      branch: 8.x-1.x
+      revision: 39fa13d
   redirect:
     version: 1.0-alpha1
   token:
