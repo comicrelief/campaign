@@ -58,7 +58,7 @@ Feature: Media
     And I go to "admin/content/media"
     Then I should see the link "Video (administration name)"
 
-  @api @test
+  @api @test @javascript
   Scenario: Create a video media file 
     Given I am logged in as a user with the "editor" role
     When I visit "/media/add/cr_file"

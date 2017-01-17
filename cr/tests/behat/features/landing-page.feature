@@ -28,7 +28,7 @@ Feature: Landing-page
     And the metatag property "og:type" should have the value "article"
     And the metatag property "og:url" should contain the value "fundraise"
   
-  @api @default-content
+  @api @default-content @not-on-travis
   Scenario: Landing-page /video
     Given I am on "/video"
     Then I should see "Nice video background"
