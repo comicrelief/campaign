@@ -58,7 +58,7 @@ Feature: Media
     And I go to "admin/content/media"
     Then I should see the link "Video (administration name)"
 
-  @api @test @javascript
+  @api @test @javascript @not-on-travis
   Scenario: Create a video media file 
     Given I am logged in as a user with the "editor" role
     When I visit "/media/add/cr_file"
@@ -68,5 +68,5 @@ Feature: Media
     And I attach the file "testvideo.mp4" to "File"
     And I wait for AJAX to finish
     And I press "Save and publish"
-    Then I should see "File video file (administration) has been created."
+    Then I should see "File video file has been created."
     And I should see the link "Sample video file"
