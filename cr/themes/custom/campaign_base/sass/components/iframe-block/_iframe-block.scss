@@ -1,9 +1,33 @@
 .iframe-block {
-  padding: 60px 0;
+  padding: 0;
+  @include breakpoint($screen-md) {
+    padding: 60px 0;
+  }
+  &.full-width {
+    padding: 0;
+    .iframe-block__wrapper {
+      @include breakpoint($screen-md) {
+        max-width: 100%;
+      }
+    }
+  }
+  &.eight-column {
+    .iframe-block__wrapper {
+      @include breakpoint($screen-md) {
+        max-width: span(8);
+      }
+    }
+  }
+  &.ten-column {
+    .iframe-block__wrapper {
+      @include breakpoint($screen-md) {
+        max-width: span(10);
+      }
+    }
+  }
 }
 .iframe-block__wrapper {
   width: 100%;
-  max-width: 770px;
   margin: 0 auto;
   cursor: pointer;
 }
@@ -20,7 +44,11 @@
 .iframe-block__game {
   display: none;
   min-height: 480px;
-  .iframe-block__load-now &,
+  .iframe-block__load-now & {
+    @include breakpoint($screen-md) {
+      display: block;
+    }
+  }
   .iframe-block__wrapper--on & {
     display: block;
   }
