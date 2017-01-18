@@ -37,6 +37,7 @@ config_devel:
   - field.storage.paragraph.field_partner_list
   - field.storage.paragraph.field_background_colour
   - field.storage.node.field_partner_weight
+  - field.field.node.partner.field_admin_title
   - field.field.node.partner.body
   - field.field.node.partner.field_partner_category
   - field.field.node.partner.field_partner_website

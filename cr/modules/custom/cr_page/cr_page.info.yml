@@ -8,6 +8,7 @@ config_devel:
   - rdf.mapping.node.page
   - field.storage.node.field_page_meta_tags
   - field.storage.node.field_basic_page__display_title
+  - field.field.node.page.field_admin_title
   - field.field.node.page.body
   - field.field.node.page.field_page_meta_tags
   - field.field.node.page.field_basic_page__display_title
