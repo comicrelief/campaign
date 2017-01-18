@@ -200,3 +200,10 @@ function cr_update_8022() {
   // Disable the containing module
   \Drupal::service('module_installer')->uninstall(['cr_single_message_row_paragraph']);
 }
+
+/**
+* Install cr_fields
+*/
+function cr_update_8023() {
+  \Drupal::service('module_installer')->install(['cr_fields']);
+}
