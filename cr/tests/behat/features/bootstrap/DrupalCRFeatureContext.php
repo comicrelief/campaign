@@ -288,7 +288,7 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
     }
 
     $data = file_get_contents($value);
-    if (FALSE === $data) {
+    if (false === $data) {
       throw new \Exception("Error reading file");
     }
 
@@ -297,7 +297,7 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
       $data,
       'public://' . uniqid() . '.jpg');
 
-    if (FALSE === $file) {
+    if (false === $file) {
       throw new \Exception("Error saving file");
     }
 
@@ -417,12 +417,12 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
       throw new Exception('No hidden partner titles in the markup to check');
     }
 
-    $found = FALSE;
+    $found = false;
 
     // Loop through all elements to find our search title
     foreach ($elements as $element) {
       if ($element->getText() == $title) {
-        $found = TRUE;
+        $found = true;
         break;
       }
     }
@@ -446,7 +446,7 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
       throw new Exception('No video container in markup to check');
     }
 
-    $found = FALSE;
+    $found = false;
     $pattern = '".+' . $filename . '.{0,}\.' . $ext . '"';
 
     // Loop through all video elements to find video source
@@ -455,13 +455,13 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
       $source = $sourceTag->getAttribute('src');
       
       if(preg_match($pattern, $source) === 1){
-        $found = TRUE;
+        $found = true;
         break;
       }
     }
 
     if (!$found) {
-      throw new Exception('The video with source ' . $source . ' was not found in the markup');
+      throw new Exception('The video with filename ' . $filename . ' was not found in the markup');
     }
   }
 }
