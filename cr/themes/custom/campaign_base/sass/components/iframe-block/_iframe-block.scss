@@ -20,6 +20,7 @@
 .iframe-block__game {
   display: none;
   min-height: 480px;
+  .iframe-block__load-now &,
   .iframe-block__wrapper--on & {
     display: block;
   }
