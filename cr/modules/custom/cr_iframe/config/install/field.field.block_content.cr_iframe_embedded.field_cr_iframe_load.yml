@@ -8,8 +8,8 @@ id: block_content.cr_iframe_embedded.field_cr_iframe_load
 field_name: field_cr_iframe_load
 entity_type: block_content
 bundle: cr_iframe_embedded
-label: 'Iframe load'
-description: ''
+label: 'Iframe loaded'
+description: 'Check if you want iframe to be loaded on page load. By default iframe will load when image is clicked.'
 required: false
 translatable: false
 default_value:

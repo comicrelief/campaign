@@ -7,6 +7,7 @@ dependencies:
     - field.field.block_content.cr_iframe_embedded.field_cr_iframe_embedded_bg
     - field.field.block_content.cr_iframe_embedded.field_cr_iframe_embedded_image
     - field.field.block_content.cr_iframe_embedded.field_cr_iframe_embedded_link
+    - field.field.block_content.cr_iframe_embedded.field_cr_iframe_layout
     - field.field.block_content.cr_iframe_embedded.field_cr_iframe_load
   module:
     - ds
@@ -37,6 +38,7 @@ third_party_settings:
         - field_cr_iframe_embedded_link
         - body
         - field_cr_iframe_embedded_bg
+        - field_cr_iframe_layout
 id: block_content.cr_iframe_embedded.default
 targetEntityType: block_content
 bundle: cr_iframe_embedded
@@ -69,6 +71,12 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+  field_cr_iframe_layout:
+    weight: 5
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
   field_cr_iframe_load:
     weight: 0
     label: hidden
