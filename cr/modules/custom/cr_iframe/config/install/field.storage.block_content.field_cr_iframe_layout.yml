@@ -9,17 +9,8 @@ field_name: field_cr_iframe_layout
 entity_type: block_content
 type: list_string
 settings:
-  allowed_values:
-    -
-      value: full-width
-      label: 'Full width'
-    -
-      value: ten-column
-      label: '10 column'
-    -
-      value: eight-column
-      label: '8 column'
-  allowed_values_function: ''
+  allowed_values: null
+  allowed_values_function: cr_iframe_field_cr_iframe_layout
 module: options
 locked: false
 cardinality: 1
