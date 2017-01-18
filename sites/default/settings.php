@@ -5,6 +5,9 @@ use Symfony\Component\Yaml\Yaml;
 $databases = [];
 $config_directories = [];
 $settings['install_profile'] = 'cr';
+$settings['skip_permissions_hardening'] = TRUE;
+
+$config_directories[CONFIG_SYNC_DIRECTORY] = 'web/sites/default/config';
 
 /**
  * Enable twig php filters
@@ -43,5 +46,4 @@ if (file_exists(__DIR__ . '/settings.local.php')) {
 
   // Some specific platform.sh settings
   $settings['update_free_access'] = false;
-  $config_directories[CONFIG_SYNC_DIRECTORY] = 'sites/default/config';
 }
