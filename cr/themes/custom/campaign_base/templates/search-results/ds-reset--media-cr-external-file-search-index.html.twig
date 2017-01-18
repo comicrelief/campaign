@@ -1,10 +1,12 @@
+{% set title_name = name.0['#context'].value %}
+{% set uri_link = field_cr_external_file.0['#url'].uri %}
 <div {{ attributes.addClass('search-result', 'search-result--' ~ nodetype) }}>
 	<div class="search-result__image">
-		<a target="_blank" href="{{ field_cr_external_file.0['#url'].uri }}"><img src="{{ campaign_base_path }}images/backgrounds/search_download.png" alt="search download"></a>
+		<a target="_blank" href="{{ uri_link }}"><img src="{{ campaign_base_path }}images/backgrounds/search_download.png" alt="search download"></a>
 	</div>
 	<div class="search-result__content-wrapper bg--white">
 		<div class="search-result__content">
-			<h3><a target="_blank" href="{{ field_cr_external_file.0['#url'].uri }}">{{ name.0['#context'].value }}</a></h3>
+			<h3><a target="_blank" href="{{ uri_link }}">{{ title_name }}</a></h3>
 			<div class="search-result__body">
                 {{ field_cr_downloadables_body }}
 			</div>
