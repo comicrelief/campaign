@@ -24,13 +24,8 @@
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_landing_image": [
             {
-                "href": "http:\/\/default\/file\/3406?_format=hal_json",
+                "href": "http:\/\/default\/file\/3407001?_format=hal_json",
                 "lang": "en"
-            }
-        ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_landing_image_mobile": [
-            {
-                "href": "http:\/\/default\/file\/3407?_format=hal_json"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_paragraphs": [
@@ -51,7 +46,7 @@
     ],
     "vid": [
         {
-            "value": "149"
+            "value": "151"
         }
     ],
     "langcode": [
@@ -84,7 +79,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "30ed173c-ce73-46a5-8847-350c2305eafd"
+                        "value": "bd833b07-ee3b-447a-be1b-4e640b87d041"
                     }
                 ],
                 "lang": "en"
@@ -102,7 +97,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "d2f138e8-4ce8-440f-89ab-dd4b506bfa8b"
+                        "value": "4318b0eb-517b-4844-98ad-054b1e4bb177"
                     }
                 ]
             }
@@ -128,7 +123,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/file\/3406?_format=hal_json"
+                        "href": "http:\/\/default\/file\/3407001?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
@@ -136,35 +131,14 @@
                 },
                 "uuid": [
                     {
-                        "value": "80bcdc8b-b257-40ab-88a8-a8651c4d7196"
+                        "value": "4022ef31-d811-477f-a731-74c4bec11852"
                     }
                 ],
                 "lang": "en",
-                "alt": "girl",
+                "alt": "",
                 "title": "",
-                "width": "3400",
-                "height": "1200"
-            }
-        ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_landing_image_mobile": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/file\/3407?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "f6ed4e83-c10e-4fcc-a651-ca5774b33602"
-                    }
-                ],
-                "alt": "girl",
-                "title": "",
-                "width": "740",
-                "height": "663"
+                "width": "1920",
+                "height": "1080"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_paragraphs": [
@@ -182,7 +156,7 @@
                         "value": "fbd9861b-aac3-4383-bcc1-eda7022cf401"
                     }
                 ],
-                "target_revision_id": "115"
+                "target_revision_id": "117"
             }
         ]
     },
@@ -200,7 +174,7 @@
     ],
     "changed": [
         {
-            "value": "1484317701",
+            "value": "1484758346",
             "lang": "en"
         }
     ],
@@ -218,7 +192,7 @@
     ],
     "revision_timestamp": [
         {
-            "value": "1484317701"
+            "value": "1484758346"
         }
     ],
     "revision_translation_affected": [
