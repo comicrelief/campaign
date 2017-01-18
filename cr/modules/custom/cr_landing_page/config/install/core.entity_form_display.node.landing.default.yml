@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - field.field.node.landing.body
+    - field.field.node.landing.field_admin_title
     - field.field.node.landing.field_landing_background_colour
     - field.field.node.landing.field_landing_copy_position_alig
     - field.field.node.landing.field_landing_feature_layout
@@ -30,7 +31,7 @@ third_party_settings:
         - field_landing_image
         - field_landing_image_mobile
       parent_name: ''
-      weight: 10
+      weight: 11
       label: 'Header background image'
       format_type: details
       format_settings:
@@ -46,7 +47,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 9
+    weight: 10
     settings:
       rows: 9
       summary_rows: 3
@@ -54,16 +55,23 @@ content:
     third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 2
+    weight: 3
     settings: {  }
     third_party_settings: {  }
+  field_admin_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
   field_landing_background_colour:
-    weight: 6
+    weight: 7
     settings: {  }
     third_party_settings: {  }
     type: options_select
   field_landing_copy_position_alig:
-    weight: 7
+    weight: 8
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -109,7 +117,7 @@ content:
       form_display_mode: default
     third_party_settings: {  }
   field_svg_body_title:
-    weight: 8
+    weight: 9
     settings:
       rows: 5
       placeholder: ''
@@ -117,31 +125,31 @@ content:
     type: string_textarea
   path:
     type: path
-    weight: 5
+    weight: 6
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 3
+    weight: 4
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 4
+    weight: 5
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: 0
+    weight: 1
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 1
+    weight: 2
     settings:
       match_operator: CONTAINS
       size: 60
