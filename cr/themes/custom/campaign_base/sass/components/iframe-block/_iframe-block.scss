@@ -45,9 +45,7 @@
   display: none;
   min-height: 480px;
   .iframe-block__load-now & {
-    @include breakpoint($screen-md) {
-      display: block;
-    }
+    display: block;
   }
   .iframe-block__wrapper--on & {
     display: block;
