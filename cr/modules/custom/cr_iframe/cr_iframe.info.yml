@@ -11,10 +11,12 @@ config_devel:
   - field.storage.block_content.field_cr_iframe_embedded_image
   - field.storage.block_content.field_cr_iframe_embedded_link
   - field.storage.block_content.field_cr_iframe_embedded_bg
+  - field.storage.block_content.field_cr_iframe_load
   - field.field.block_content.cr_iframe_embedded.body
   - field.field.block_content.cr_iframe_embedded.field_cr_iframe_embedded_image
   - field.field.block_content.cr_iframe_embedded.field_cr_iframe_embedded_link
   - field.field.block_content.cr_iframe_embedded.field_cr_iframe_embedded_bg
+  - field.field.block_content.cr_iframe_embedded.field_cr_iframe_load
 
 libraries:
   - cr_iframe/cr_iframe

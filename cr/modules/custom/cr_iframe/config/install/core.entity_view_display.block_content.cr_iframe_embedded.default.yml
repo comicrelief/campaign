@@ -7,6 +7,7 @@ dependencies:
     - field.field.block_content.cr_iframe_embedded.field_cr_iframe_embedded_bg
     - field.field.block_content.cr_iframe_embedded.field_cr_iframe_embedded_image
     - field.field.block_content.cr_iframe_embedded.field_cr_iframe_embedded_link
+    - field.field.block_content.cr_iframe_embedded.field_cr_iframe_load
   module:
     - ds
     - image
@@ -19,6 +20,7 @@ third_party_settings:
       path: profiles/cr/modules/contrib/ds
       library: ''
       disable_css: false
+      entity_classes: all_classes
       settings:
         wrappers:
           ds_content: div
@@ -30,6 +32,7 @@ third_party_settings:
           layout_class: {  }
     regions:
       ds_content:
+        - field_cr_iframe_load
         - field_cr_iframe_embedded_image
         - field_cr_iframe_embedded_link
         - body
@@ -42,17 +45,17 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 2
+    weight: 3
     settings: {  }
     third_party_settings: {  }
   field_cr_iframe_embedded_bg:
-    weight: 3
+    weight: 4
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: list_default
   field_cr_iframe_embedded_image:
-    weight: 0
+    weight: 1
     label: hidden
     settings:
       image_style: ''
@@ -60,14 +63,20 @@ content:
     third_party_settings: {  }
     type: image
   field_cr_iframe_embedded_link:
-    weight: 1
+    weight: 2
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-  social_links:
-    weight: 4
-    settings: {  }
+  field_cr_iframe_load:
+    weight: 0
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
     third_party_settings: {  }
-hidden: {  }
+    type: boolean
+hidden:
+  social_links: true
