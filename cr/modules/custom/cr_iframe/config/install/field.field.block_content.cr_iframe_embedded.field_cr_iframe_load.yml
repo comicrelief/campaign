@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cr_iframe_embedded
+    - field.storage.block_content.field_cr_iframe_load
+id: block_content.cr_iframe_embedded.field_cr_iframe_load
+field_name: field_cr_iframe_load
+entity_type: block_content
+bundle: cr_iframe_embedded
+label: 'Iframe load'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
