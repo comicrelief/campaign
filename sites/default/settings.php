@@ -7,7 +7,7 @@ $config_directories = [];
 $settings['install_profile'] = 'cr';
 $settings['skip_permissions_hardening'] = TRUE;
 
-$config_directories[CONFIG_SYNC_DIRECTORY] = 'web/sites/default/config';
+$config_directories[CONFIG_SYNC_DIRECTORY] = 'sites/default/config';
 
 /**
  * Enable twig php filters
