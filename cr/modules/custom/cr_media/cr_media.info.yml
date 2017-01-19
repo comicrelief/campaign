@@ -13,3 +13,4 @@ config_devel:
   - field.field.block_content.media_reference.field_media_reference
   - field.field.block_content.media_reference.field_media_reference_bg
   - field.field.block_content.media_reference.field_media_reference_body
+  - file_entity.type.zip
