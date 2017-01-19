@@ -200,3 +200,12 @@ function cr_update_8022() {
   // Disable the containing module
   \Drupal::service('module_installer')->uninstall(['cr_single_message_row_paragraph']);
 }
+
+/**
+ * Delete old schedule config
+ */
+function cr_update_8023() {
+  \Drupal::configFactory()
+    ->getEditable('scheduled_updates.scheduled_update_type.node__status')
+    ->delete();
+}

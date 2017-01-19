@@ -50,7 +50,6 @@ config_devel:
   - rdf.mapping.node.article
   - field.field.node.article.publishing_date
   - field.storage.node.publishing_date
-  - scheduled_updates.scheduled_update_type.node__status
   - metatag.metatag_defaults.node__article
   - block.block.views_block__what_s_going_on_block_1
   - image.style.cr_1_1_272x272_2x
