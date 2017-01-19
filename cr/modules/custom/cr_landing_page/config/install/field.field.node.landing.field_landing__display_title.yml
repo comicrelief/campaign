@@ -2,12 +2,12 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_basic_page__display_title
-    - node.type.page
-id: node.page.field_basic_page__display_title
-field_name: field_basic_page__display_title
+    - field.storage.node.field_landing__display_title
+    - node.type.landing
+id: node.landing.field_landing__display_title
+field_name: field_landing__display_title
 entity_type: node
-bundle: page
+bundle: landing
 label: 'Display title'
 description: 'Display title is used as the primary user facing title field. ''''Title'''' field at the top of the page is used for administration purposes.'
 required: true

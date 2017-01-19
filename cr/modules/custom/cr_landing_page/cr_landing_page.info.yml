@@ -9,6 +9,7 @@ config_devel:
   - core.entity_form_display.node.landing.default
   - core.entity_view_display.node.landing.default
   - core.entity_view_display.node.landing.full
+  - field.storage.node.field_landing__display_title
   - field.storage.node.field_landing_background_colour
   - field.storage.node.field_landing_copy_position_alig
   - field.storage.node.field_landing_feature_layout
@@ -17,6 +18,7 @@ config_devel:
   - field.storage.node.field_landing_image_mobile
   - field.storage.node.field_landing_meta_tags
   - field.field.node.landing.body
+  - field.field.node.landing.field_landing__display_title
   - field.field.node.landing.field_landing_background_colour
   - field.field.node.landing.field_landing_copy_position_alig
   - field.field.node.landing.field_landing_feature_layout
