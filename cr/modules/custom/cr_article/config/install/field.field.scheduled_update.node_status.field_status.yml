@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.scheduled_update.field_status
+    - scheduled_updates.scheduled_update_type.node_status
+id: scheduled_update.node_status.field_status
+field_name: field_status
+entity_type: scheduled_update
+bundle: node_status
+label: 'Publishing status'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

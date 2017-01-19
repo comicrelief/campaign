@@ -1,8 +1,8 @@
 langcode: en
 status: true
 dependencies: {  }
-id: node__status
-label: 'Content - Publishing status'
+id: node_status
+label: 'Node status'
 update_entity_type: node
 update_types_supported:
   - embedded

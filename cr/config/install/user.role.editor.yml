@@ -115,3 +115,8 @@ permissions:
   - 'administer pathauto'
   - 'notify of path changes'
   - 'administer url aliases'
+  - 'create node_status scheduled updates'
+  - 'delete any node_status scheduled updates'
+  - 'delete own node_status scheduled updates'
+  - 'edit any node_status scheduled updates'
+  - 'edit own node_status scheduled updates'
