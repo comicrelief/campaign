@@ -14,7 +14,7 @@
     {{ title_suffix.contextual_links }}
     <div class="iframe-block__wrapper">
       {% if iframe_load %}
-        <iframe width="100%" height="100%" class="iframe-block__game" src="{{ field_cr_iframe_embedded_link }}" allowfullscreen>
+        <iframe width="100%" height="100%" class="iframe-block__embedded" src="{{ field_cr_iframe_embedded_link }}" allowfullscreen>
         </iframe>
       {% else %}
         <a class="iframe-block__play" href="{{ field_cr_iframe_embedded_link }}" target="_blank">
@@ -22,7 +22,7 @@
             {{ field_cr_iframe_embedded_image }}
           </div>
         </a>
-        <iframe width="100%" height="100%" class="iframe-block__game" data-src="{{ field_cr_iframe_embedded_link }}" src="about:blank" allowfullscreen>
+        <iframe width="100%" height="100%" class="iframe-block__embedded" data-src="{{ field_cr_iframe_embedded_link }}" src="about:blank" allowfullscreen>
         </iframe>
       {% endif %}
       {% if content.body['#object'].body %}
