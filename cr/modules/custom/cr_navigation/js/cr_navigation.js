@@ -65,7 +65,6 @@
       
       $('button.main-menu-toggle').on('click', function (e) {
         _base.toggleMenu();
-        console.log("clicked");
       });
 
       // Close any active navs when we're toggling on other buttons in the nav
