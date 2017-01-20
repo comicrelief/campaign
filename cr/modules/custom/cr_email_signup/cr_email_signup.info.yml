@@ -1,5 +1,4 @@
 name: Comic Relief Email Sign Up
-# core: 8.x
 description: Comic Relief Email Sign Up
 core: 8.x
 package: Comic Relief
