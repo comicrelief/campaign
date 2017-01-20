@@ -113,3 +113,6 @@ permissions:
   - 'administer media'
   - 'delete any node_status scheduled updates'
   - 'edit any node_status scheduled updates'
+  - 'delete any zip files'
+  - 'download any zip files'
+  - 'edit any zip files'
