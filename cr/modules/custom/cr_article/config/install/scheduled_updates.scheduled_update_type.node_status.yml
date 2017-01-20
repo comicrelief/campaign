@@ -1,16 +1,16 @@
 langcode: en
 status: true
 dependencies: {  }
-id: node__status
-label: 'Content - Publishing status'
+id: node_status
+label: 'Node status'
 update_entity_type: node
 update_types_supported:
-  - independent
+  - embedded
 field_map:
   field_status: status
 update_runner:
-  id: default_independent
+  id: default_embedded
   after_run: DELETE
   invalid_update_behavior: DELETE
   create_revisions: BUNDLE_DEFAULT
-  update_user: USER_UPDATE_OWNER
+  update_user: USER_UPDATE_RUNNER

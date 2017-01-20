@@ -51,8 +51,11 @@ config_devel:
   - rdf.mapping.node.article
   - field.field.node.article.publishing_date
   - field.storage.node.publishing_date
-  - scheduled_updates.scheduled_update_type.node__status
   - metatag.metatag_defaults.node__article
   - block.block.views_block__what_s_going_on_block_1
   - image.style.cr_1_1_272x272_2x
   - responsive_image.styles.cr_listing_teaser
+  - field.storage.scheduled_update.field_status
+  - scheduled_updates.scheduled_update_type.node_status
+  - field.field.scheduled_update.node_status.field_status
+  - core.entity_form_display.scheduled_update.node_status.default
