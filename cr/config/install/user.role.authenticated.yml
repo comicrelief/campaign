@@ -35,3 +35,6 @@ permissions:
   - 'create node_status scheduled updates'
   - 'delete own node_status scheduled updates'
   - 'edit own node_status scheduled updates'
+  - 'delete own zip files'
+  - 'download own zip files'
+  - 'edit own zip files'
