@@ -10,4 +10,4 @@ libraries:
   - campaign_base/platform
 
 config_devel:
-- cr_email_signup.settings
+  - cr_email_signup.settings
