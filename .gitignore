@@ -4,7 +4,7 @@
 
 /web/
 /cr/modules/contrib/
-/drush/
+/drush/*/
 /cr/themes/custom/campaign_base/libraries/
 /vendor/
 /sites/*/files/
