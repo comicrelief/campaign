@@ -31,6 +31,14 @@
   margin: 0 auto;
   cursor: pointer;
 }
+.iframe-block__wrapper-outer {
+  width: 100%;
+  max-width: $max-width;
+  margin: 0 auto -5px;
+  .full-width & {
+    width: 100%;
+  }
+}
 .iframe-block__body {
   margin-top: 40px;
   padding: 0 30px;
