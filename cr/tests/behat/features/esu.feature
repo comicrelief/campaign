@@ -12,7 +12,7 @@ Feature: ESU
     Then I should see "ESU Standard: success! (first message)" in the "esu_standard" region
     And I should have received the following data in the "esu" queue:
       | campaign | transType | timestamp | transSourceURL | transSource | email | device | source | subscribeLists |
-      | RND17 | esu | * | * | * | test@example.org | * | Banner | * |
+      | * | esu | * | * | * | test@example.org | * | Banner | * |
     # @TODO: fix rest of this test - somehow I don't manage to click the second time?
     #And I select "HE" from "edit-school-phase" in the "esu_standard" region
     #And I press "Go" in the "esu_standard" region
@@ -30,7 +30,7 @@ Feature: ESU
     Then I should see "ESU Workplace: success message" in the "esu_workplace" region
     And I should have received the following data in the "esu" queue:
       | campaign | transType | timestamp | transSourceURL | transSource | firstName | email | device | source | subscribeLists |
-      | RND17 | WorkplaceESU | * | * | * | Test Workplace First Name | test-workplace@example.org | * | * | * |
+      | * | WorkplaceESU | * | * | * | Test Workplace First Name | test-workplace@example.org | * | * | * |
 
   @javascript @default-content
   Scenario: ESU Register your Interest.(Should be only an email)
@@ -42,7 +42,7 @@ Feature: ESU
     Then I should see "ESU Register Interest: success message" in the "esu_register_interest" region
     And I should have received the following data in the "register_interest" queue:
       | campaign | transType | timestamp | transSourceURL | transSource | email | device | source  |
-      | RND17 | RegisterInterest | * | * | * | test-register-interest@example.org | * | * |
+      | * | RegisterInterest | * | * | * | test-register-interest@example.org | * | * |
 
 	@javascript @default-content
   Scenario: ESU Fundraise
@@ -54,4 +54,4 @@ Feature: ESU
     Then I should see "ESU Fundraise: success message" in the "esu_fundraise" region
     And I should have received the following data in the "esu" queue:
       | campaign | transType | timestamp | transSourceURL | transSource | email | device | source | subscribeLists |
-      | RND17 | esu | * | * | * | test-fundraise@example.org | * | * | * |
+      | * | esu | * | * | * | test-fundraise@example.org | * | * | * |
