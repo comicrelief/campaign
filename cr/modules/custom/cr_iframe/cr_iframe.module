@@ -40,3 +40,18 @@ function cr_iframe_field_cr_iframe_embedded_bg(FieldStorageDefinitionInterface $
   ];
   return $values;
 }
+
+/**
+ * Options callback for cr_iframe_field_cr_iframe_layout.
+ *
+ * @see options_allowed_values()
+ */
+function cr_iframe_field_cr_iframe_layout(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
+  $values = [
+    'full-width' => t('Full width'),
+    'ten-column' => t('10 columns'),
+    'eight-column' => t('8 columns'),
+  ];
+  return $values;
+}
+

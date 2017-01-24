@@ -7,6 +7,8 @@ dependencies:
     - field.field.block_content.cr_iframe_embedded.field_cr_iframe_embedded_bg
     - field.field.block_content.cr_iframe_embedded.field_cr_iframe_embedded_image
     - field.field.block_content.cr_iframe_embedded.field_cr_iframe_embedded_link
+    - field.field.block_content.cr_iframe_embedded.field_cr_iframe_layout
+    - field.field.block_content.cr_iframe_embedded.field_cr_iframe_load
     - image.style.thumbnail
   module:
     - image
@@ -18,31 +20,42 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 4
+    weight: 6
     settings:
       rows: 9
       summary_rows: 3
       placeholder: ''
     third_party_settings: {  }
   field_cr_iframe_embedded_bg:
-    weight: 1
+    weight: 3
     settings: {  }
     third_party_settings: {  }
     type: options_select
   field_cr_iframe_embedded_image:
-    weight: 2
+    weight: 4
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
   field_cr_iframe_embedded_link:
-    weight: 3
+    weight: 5
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+  field_cr_iframe_layout:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_cr_iframe_load:
+    weight: 2
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
   info:
     type: string_textfield
     weight: 0
