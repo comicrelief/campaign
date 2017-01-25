@@ -1,22 +1,32 @@
 (function($, Drupal) {
   $( document ).ready(function() {
-    // Search block pop up * todo make a function
-    $("button.main-menu__icons-magnify").on("click", function() {
+    // todo make a function
+    $("button.meta-nav__icons-magnify").on("click", function() {
       $(this).toggleClass("active");
-      $(".search-block").toggleClass("show");
-      $(".search-overlay").toggleClass("show");
-      $("button.main-menu__icons-esu-toggle").removeClass("active");
+      $(".search-block, .search-overlay:not('.show'), .search-overlay.search-on").toggleClass("show");
+
+      $(".search-overlay").toggleClass("search-on");
+
+      $(".search-overlay").removeClass("nav-on");
+      $(".menu--main, .block--cr-email-signup--head").removeClass("show");
+      $("button.meta-nav__icons-esu-toggle").removeClass("active");
+    });
+    $("button.meta-nav-toggle").on("click", function() {
+      $(this).toggleClass("is-active");
+      $(".menu--main, .search-overlay:not('.show'), .search-overlay.show.nav-on").toggleClass("show");
+      $(".search-overlay").toggleClass("nav-on");
+
+      $(".search-overlay").removeClass("search-on");
+      $("button.meta-nav__icons-esu-toggle, .meta-nav__icons-magnify").removeClass("active");
       $(".block--cr-email-signup--head").removeClass("show");
     });
-    $("button.main-menu__icons-esu-toggle").on("click", function() {
-      $("button.main-menu__icons-magnify").removeClass("active");
-      $(".search-block").removeClass("show");
-      $(".search-overlay").removeClass("show");
+    $("button.meta-nav__icons-esu-toggle").on("click", function() {
+      $("button.meta-nav__icons-magnify").removeClass("active");
+      $(".search-block, .menu--main, .search-overlay").removeClass("show");
     });
     $(".search-block .icon").on("click", function() {
-      $("button.main-menu__icons-magnify").removeClass("active");
-      $(".search-block").removeClass("show");
-      $(".search-overlay").removeClass("show");
+      $("button.meta-nav__icons-magnify").removeClass("active");
+      $(".search-block, .search-overlay").removeClass("show");
     });
 
 
@@ -71,12 +81,12 @@
     });
 
     // Search hold on
-    // $("button.main-menu__icons-magnify").on("click", function() {
+    // $("button.meta-nav__icons-magnify").on("click", function() {
     //   $(this).toggleClass("active");
     //   $(".search-block").toggleClass("show");
     // });
     // $(".search-block:not").on("click", function() {
-    //   $("button.main-menu__icons-magnify").removeClass("active");
+    //   $("button.meta-nav__icons-magnify").removeClass("active");
     //   $(".search-block").removeClass("show");
     // });
 
