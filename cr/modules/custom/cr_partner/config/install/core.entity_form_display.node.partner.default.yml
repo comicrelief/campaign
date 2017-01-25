@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - field.field.node.partner.body
+    - field.field.node.partner.field_admin_title
     - field.field.node.partner.field_partner_category
     - field.field.node.partner.field_partner_external
     - field.field.node.partner.field_partner_logo
@@ -24,7 +25,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 0
+    weight: 2
     settings:
       rows: 9
       summary_rows: 3
@@ -32,74 +33,81 @@ content:
     third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 10
+    weight: 7
     settings: {  }
     third_party_settings: {  }
+  field_admin_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
   field_partner_category:
     type: entity_reference_autocomplete
-    weight: 0
+    weight: 3
     settings:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
     third_party_settings: {  }
   field_partner_external:
-    weight: 33
+    weight: 12
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
   field_partner_logo:
     type: image_image
-    weight: 0
+    weight: 4
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
   field_partner_meta_tags:
-    weight: 32
+    weight: 11
     settings: {  }
     third_party_settings: {  }
     type: metatag_firehose
   field_partner_website:
     type: link_default
-    weight: 0
+    weight: 5
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
   field_partner_weight:
-    weight: 34
+    weight: 13
     settings: {  }
     third_party_settings: {  }
     type: options_select
   path:
     type: path
-    weight: 30
+    weight: 10
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 15
+    weight: 8
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 16
+    weight: 9
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: -5
+    weight: 1
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 6
     settings:
       match_operator: CONTAINS
       size: 60

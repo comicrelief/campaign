@@ -36,6 +36,7 @@ config_devel:
   - field.storage.node.field_article_category
   - field.storage.node.field_video_embed
   - field.storage.node.field_image_caption
+  - field.field.node.article.field_admin_title
   - field.field.node.article.body
   - field.field.node.article.field_article_intro
   - field.field.node.article.field_article_image

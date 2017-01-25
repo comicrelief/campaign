@@ -1,0 +1,7 @@
+name: cr_fields
+type: module
+description: Module containing generic shared field config
+core: 8.x
+package: Comic Relief
+config_devel:
+  - field.storage.node.field_admin_title

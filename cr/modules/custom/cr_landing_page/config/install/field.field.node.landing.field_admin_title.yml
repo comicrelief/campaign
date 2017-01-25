@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_admin_title
+    - node.type.landing
+id: node.landing.field_admin_title
+field_name: field_admin_title
+entity_type: node
+bundle: landing
+label: 'Admin title'
+description: 'Administration title used for internal use only.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

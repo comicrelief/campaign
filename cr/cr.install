@@ -220,3 +220,10 @@ function cr_update_8024() {
   $config_facotry->getEditable('purge_purger_http.settings.52aab9005f')
     ->delete();
 }
+
+/**
+* Install cr_fields
+*/
+function cr_update_8025() {
+  \Drupal::service('module_installer')->install(['cr_fields']);
+
