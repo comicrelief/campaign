@@ -41,6 +41,7 @@
 <header role="banner">
   <div class="header__top-wrapper">{{ page.header_top }}</div>
   <div class="header__inner-wrapper">
+    {{ page.header }}
     <div class="meta-nav">
       <div class="meta-nav__icons">
         <button class="meta-nav__icons-magnify">
@@ -64,12 +65,11 @@
       </ul>
       <div class="meta-nav__icons meta-nav__burger">
         <button class="c-hamburger c-hamburger--htx meta-nav-toggle">
-          More
+          <div class="c-hamburger__text">More</div>
           <span></span>
         </button>
       </div>
     </div>
-    {{ page.header }}
   </div>
 </header>
 {{ page.breadcrumb }}
