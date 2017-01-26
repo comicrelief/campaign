@@ -17,23 +17,7 @@
 
     cloneNav: function (context, settings) {
       var _base = Drupal.behaviors.crNavigation;
-      $( ".menu--main .menu-item:nth-child(1), .menu--main .menu-item:nth-child(2), .menu--main .menu-item:nth-child(3)" ).clone().appendTo( ".meta-nav .meta-nav__feature-items" );
-    },
-
-    lastclassNav: function (context, settings) {
-      var _base = Drupal.behaviors.crNavigation;
-      $( ".menu--main .menu-item:last-child" ).addClass( "menu-item__last" );
-    },
-
-    setUpNav: function (context, settings) {
-      var _base = Drupal.behaviors.crNavigation;
-
-      _base.cloneNav();
-
-      _base.lastclassNav();
-
-      _base.handleClick();
-
+      $( ".menu--main .menu--level-0 .menu-item:nth-child(1), .menu--main .menu--level-0 .menu-item:nth-child(2), .menu--main .menu--level-0 .menu-item:nth-child(3)" ).clone().appendTo( ".meta-nav .meta-nav__feature-items" );
     },
 
     /* Click event handler trigger our toggle event */
@@ -50,6 +34,15 @@
         // Remove active class from kids menu
         $('#main-menu, #block-kidsmenu > .menu.menu-open').removeClass('menu-open');
       });
+    },
+
+    setUpNav: function (context, settings) {
+      var _base = Drupal.behaviors.crNavigation;
+
+      _base.cloneNav();
+
+      _base.handleClick();
+
     },
 
   };

@@ -12,6 +12,11 @@
       $("button.meta-nav__icons-esu-toggle").removeClass("active");
     });
     $("button.meta-nav-toggle").on("click", function() {
+
+      $(".c-hamburger__text").text(function(i, text){
+          return text === "More" ? "Close" : "More";
+      });
+
       $(this).toggleClass("is-active");
       $(".menu--main, .search-overlay:not('.show'), .search-overlay.show.nav-on").toggleClass("show");
       $(".search-overlay").toggleClass("nav-on");
