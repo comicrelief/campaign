@@ -80,12 +80,12 @@
   }
 }
 .meta-nav__feature-items {
-  @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
-    display: block;
-  }
   display: none;
   float: left;
   margin-top: 16px;
+  @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
+    display: block;
+  }
   li {
     display: inline-block;
     margin: 0 20px;
