@@ -29,6 +29,11 @@
     padding: 10px 0;
     margin: 0;
   }
+  .menu--level-0 {
+    .menu {
+      display: none; // fallback in case there are more levels
+    }
+  }
   li {
     position: relative;
     /* Main menu text */
@@ -48,10 +53,9 @@
       background-color: #1e354b;
       color: #fff;
     }
-    &.menu-item__last {
-      a {
-        color: $colour-red;
-      }
+    .font--red:hover,
+    .font--red {
+      color: $colour-red;
     }
   }
 }
