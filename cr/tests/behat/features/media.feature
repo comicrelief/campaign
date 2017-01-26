@@ -57,3 +57,16 @@ Feature: Media
     # And I should see the link "Sample external PDF"
     And I go to "admin/content/media"
     Then I should see the link "Video (administration name)"
+
+  @api @test @javascript @not-on-travis
+  Scenario: Create a video media file 
+    Given I am logged in as a user with the "editor" role
+    When I visit "/media/add/cr_file"
+    And I enter "video file (administration)" for "Media name"
+    And I enter "Sample video file" for "Display title"
+    And I select "Event" from "Category"
+    And I attach the file "testvideo.mp4" to "File"
+    And I wait for AJAX to finish
+    And I press "Save and publish"
+    Then I should see "File video file has been created."
+    And I should see the link "Sample video file"

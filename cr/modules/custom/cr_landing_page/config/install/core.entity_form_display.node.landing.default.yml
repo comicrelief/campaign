@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - field.field.node.landing.body
+    - field.field.node.landing.field_landing_background_video
     - field.field.node.landing.field_landing_background_colour
     - field.field.node.landing.field_landing_copy_position_alig
     - field.field.node.landing.field_landing_feature_layout
@@ -57,6 +58,14 @@ content:
     weight: 2
     settings: {  }
     third_party_settings: {  }
+  field_landing_background_video:
+    weight: 11
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
   field_landing_background_colour:
     weight: 6
     settings: {  }

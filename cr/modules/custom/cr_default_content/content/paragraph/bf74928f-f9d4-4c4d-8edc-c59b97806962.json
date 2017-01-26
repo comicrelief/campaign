@@ -1,0 +1,179 @@
+{
+    "_links": {
+        "self": {
+            "href": ""
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/single_msg"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/single_msg\/uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/single_msg\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/single_msg\/field_single_msg_img": [
+            {
+                "href": "http:\/\/default\/file\/3403?_format=hal_json"
+            }
+        ]
+    },
+    "id": [
+        {
+            "value": "9"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "bf74928f-f9d4-4c4d-8edc-c59b97806962"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": "104"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "single_msg"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/single_msg\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "df8659eb-0039-4459-abf3-9524f377719e"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/single_msg\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "df8659eb-0039-4459-abf3-9524f377719e"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/single_msg\/field_single_msg_img": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/3403?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "92fa331e-7911-488c-ab52-d91fc253d533"
+                    }
+                ],
+                "alt": "cake",
+                "title": "",
+                "width": "720",
+                "height": "540"
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1484044198",
+            "lang": "en"
+        }
+    ],
+    "parent_id": [
+        {
+            "value": "36"
+        }
+    ],
+    "parent_type": [
+        {
+            "value": "node"
+        }
+    ],
+    "parent_field_name": [
+        {
+            "value": "field_paragraphs"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "field_single_msg_bg": [
+        {
+            "value": "bg--white"
+        }
+    ],
+    "field_single_msg_body": [
+        {
+            "value": "<p>Lancaster City Council's Salt Ayre Sports Centre did a static bike ride the distance of Lands End to John O' Groats and a giant Zumbathon! Altogether they&nbsp;raised an amazing \u00a31,162 in total.<\/p>\r\n\r\n<p><a class=\"link--purple link\" href=\"https:\/\/player.vimeo.com\/video\/130619178?autoplay=1\" rel=\"lightcase\">Watch a VIMEO video<\/a><\/p>",
+            "format": "full_html"
+        }
+    ],
+    "field_single_msg_body_bg_colour": [
+        {
+            "value": "bg--white"
+        }
+    ],
+    "field_single_msg_hide_title": [
+        {
+            "value": "0"
+        }
+    ],
+    "field_single_msg_layout_variant": [
+        {
+            "value": "copy-right"
+        }
+    ],
+    "field_single_msg_padding_option": [
+        {
+            "value": "default-padding"
+        }
+    ],
+    "field_single_msg_title": [
+        {
+            "value": "single message row"
+        }
+    ]
+}

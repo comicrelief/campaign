@@ -1,0 +1,6 @@
+cr_landing_page:
+  version: 1.x
+
+  dependencies:
+    - core/jquery
+    - campaign_base/vide

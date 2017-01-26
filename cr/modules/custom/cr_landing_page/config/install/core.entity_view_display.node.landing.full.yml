@@ -4,6 +4,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.full
     - field.field.node.landing.body
+    - field.field.node.landing.field_landing_background_video
     - field.field.node.landing.field_landing_background_colour
     - field.field.node.landing.field_landing_copy_position_alig
     - field.field.node.landing.field_landing_feature_layout
@@ -40,20 +41,21 @@ third_party_settings:
           layout_class: {  }
     regions:
       ds_content:
-        - field_landing_small_bg
+        - field_landing_background_video
+        - field_landing_background_colour
+        - field_landing_copy_position_alig
+        - field_landing_feature_layout
         - field_landing_image
         - field_landing_image_mobile
+        - field_landing_small_bg
         - field_svg_body_title
-        - field_landing_copy_position_alig
-        - field_landing_background_colour
-        - field_landing_feature_layout
         - node_title
         - body
         - field_paragraphs
     fields:
       node_title:
         plugin_id: node_title
-        weight: 1
+        weight: 8
         label: hidden
         formatter: default
 id: node.landing.full
@@ -64,24 +66,32 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 2
+    weight: 9
     settings: {  }
+    third_party_settings: {  }
+  field_landing_background_video:
+    type: entity_reference_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: file_source
+      link: false
     third_party_settings: {  }
   field_landing_background_colour:
     type: list_default
-    weight: 0
+    weight: 1
     label: hidden
     settings: {  }
     third_party_settings: {  }
   field_landing_copy_position_alig:
     type: list_default
-    weight: 0
+    weight: 2
     label: hidden
     settings: {  }
     third_party_settings: {  }
   field_landing_feature_layout:
     type: boolean
-    weight: 0
+    weight: 3
     label: hidden
     settings:
       format: default
@@ -89,7 +99,7 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
   field_landing_image:
-    weight: 0
+    weight: 4
     label: hidden
     settings:
       image_style: ''
@@ -98,7 +108,7 @@ content:
     type: image
   field_landing_image_mobile:
     type: entity_reference_entity_view
-    weight: 0
+    weight: 5
     label: hidden
     settings:
       view_mode: default
@@ -106,7 +116,7 @@ content:
     third_party_settings: {  }
   field_landing_small_bg:
     type: boolean
-    weight: 0
+    weight: 6
     label: hidden
     settings:
       format: default
@@ -115,7 +125,7 @@ content:
     third_party_settings: {  }
   field_paragraphs:
     type: entity_reference_revisions_entity_view
-    weight: 4
+    weight: 10
     label: hidden
     settings:
       view_mode: default
@@ -123,7 +133,7 @@ content:
     third_party_settings: {  }
   field_svg_body_title:
     type: basic_string
-    weight: 0
+    weight: 7
     label: hidden
     settings: {  }
     third_party_settings: {  }
