@@ -6,7 +6,6 @@ dependencies:
     - image.style.thumbnail
   module:
     - image
-    - path
     - user
 id: user.user.default
 targetEntityType: user

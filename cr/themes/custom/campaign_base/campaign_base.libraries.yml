@@ -9,6 +9,7 @@ global-js:
     libraries/lightcase/src/js/lightcase.js: {}
     libraries/modernizr/modernizr-custom.js: {}
     js/campaign_base.min.js: {}
+
   dependencies:
     - core/jquery
     - core/jquery.once
@@ -19,3 +20,7 @@ global-js:
 platform:
   js:
     libraries/platform/platform.js: {}
+
+vide:
+  js:
+    libraries/vide/jquery.vide.js: {}

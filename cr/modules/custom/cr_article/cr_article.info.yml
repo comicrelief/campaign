@@ -43,6 +43,7 @@ config_devel:
   - field.field.node.article.field_article_category
   - field.field.node.article.field_video_embed
   - field.field.node.article.field_image_caption
+  - field.field.node.article.field_article_publish_date
   - views.view.related_news
   - views.view.what_s_going_on
   - pathauto.pattern.article

@@ -1,0 +1,243 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/video?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/landing"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_landing_background_video": [
+            {
+                "href": "http:\/\/default\/media\/4?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_landing_image": [
+            {
+                "href": "http:\/\/default\/file\/3407001?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_paragraphs": [
+            {
+                "href": ""
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": "36"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "86e34a29-6a4a-4c20-b5ad-cb156abc3cd6"
+        }
+    ],
+    "vid": [
+        {
+            "value": "151"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "landing"
+        }
+    ],
+    "title": [
+        {
+            "value": "Video",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "bd833b07-ee3b-447a-be1b-4e640b87d041"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "4318b0eb-517b-4844-98ad-054b1e4bb177"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_landing_background_video": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/media\/4?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/media\/cr_file"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "b666b1d5-c99d-4bc3-b482-a8a1db04d49f"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_landing_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/file\/3407001?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "4022ef31-d811-477f-a731-74c4bec11852"
+                    }
+                ],
+                "lang": "en",
+                "alt": "",
+                "title": "",
+                "width": "1920",
+                "height": "1080"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_paragraphs": [
+            {
+                "_links": {
+                    "self": {
+                        "href": ""
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cw_row"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "fbd9861b-aac3-4383-bcc1-eda7022cf401"
+                    }
+                ],
+                "target_revision_id": "117"
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1484043881",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1484758346",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1484758346"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<h1 class=\"font--white\">Nice video background<\/h1>\r\n\r\n<p class=\"font--xlarge\">Videos are tremendous. As such, any kind of video background always goes down a storm. Just remember to make it&nbsp;easy on the eyes.<\/p>\r\n\r\n<p><a class=\"btn btn--red\" href=\"http:\/\/shop.rednoseday.com\/order-a-fundraising-kit\" id=\"\" rel=\"\" target=\"_blank\" title=\"\">Find out more<\/a><\/p>\r\n",
+            "format": "full_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ],
+    "field_landing_background_colour": [
+        {
+            "value": "bg--black"
+        }
+    ],
+    "field_landing_copy_position_alig": [
+        {
+            "value": "promo-header__content-inner--left"
+        }
+    ],
+    "field_landing_feature_layout": [
+        {
+            "value": "0"
+        }
+    ],
+    "field_landing_meta_tags": [
+        {
+            "value": "a:0:{}"
+        }
+    ],
+    "field_landing_small_bg": [
+        {
+            "value": "0"
+        }
+    ]
+}

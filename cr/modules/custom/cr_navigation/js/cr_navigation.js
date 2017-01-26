@@ -22,7 +22,7 @@
 
       _base.duplicateParentLink();
 
-      _base.toggleMenu();
+      _base.handleClick();
 
       /* Setup the Smartmenus plugin with our main menu */
       $('#main-menu, #block-kidsmenu > .menu').smartmenus({
@@ -58,17 +58,42 @@
       });
     },
 
-    /* Click event handler to show/hide the mobile nav */
+    /* Click event handler trigger our toggle event */
+    handleClick: function (context, settings) {
+
+      var _base = Drupal.behaviors.crNavigation;
+      
+      $('button.main-menu-toggle').on('click', function (e) {
+        _base.toggleMenu();
+      });
+
+      // Close any active navs when we're toggling on other buttons in the nav
+      $('.main-menu__icons button:not(.main-menu-toggle)').on('click', function (e) {
+        
+        // Remove active class from hamburger nav to collapse it
+        $('button.main-menu-toggle.is-active').removeClass('is-active');
+
+        // Remove active class from kids menu
+        $('#main-menu, #block-kidsmenu > .menu.menu-open').removeClass('menu-open');
+      });
+    },
+
+    /* Update the main menu based on state, and hide other nav item dropdowns where appropriate */
     toggleMenu: function (context, settings) {
 
-      $('button.main-menu-toggle').on('click', function (e) {
+      $thisMenuButton = $('button.main-menu-toggle');
+      
+      // Change state for visual effect.
+      $thisMenuButton.toggleClass('is-active');
 
-        // Change state for visual effect.
-        $(this).toggleClass('is-active');
+      // Change state of menu itself.
+      $('#main-menu, #block-kidsmenu > .menu').toggleClass('menu-open');
 
-        // Change state of menu itself.
-        $('#main-menu, #block-kidsmenu > .menu').toggleClass('menu-open');
-      });
+      // If we've just activated our main menu, remove all active/show states from other nav dropdowns
+      if ( $thisMenuButton.hasClass('is-active')) {
+        $('.main-menu__icons button:not(.main-menu-toggle)').removeClass('active');
+        $('#block-emailsignupblockhead, .search-overlay').removeClass('show');
+      }
     },
   };
 })(jQuery);

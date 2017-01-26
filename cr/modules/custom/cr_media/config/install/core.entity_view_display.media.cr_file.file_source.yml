@@ -1,0 +1,53 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.file_source
+    - field.field.media.cr_file.field_cr_downloadables_body
+    - field.field.media.cr_file.field_cr_field_display_title
+    - field.field.media.cr_file.field_cr_file
+    - field.field.media.cr_file.field_cr_file_category
+    - media_entity.bundle.cr_file
+  module:
+    - ds
+    - file
+third_party_settings:
+  ds:
+    layout:
+      id: ds_reset
+      path: profiles/cr/modules/contrib/ds
+      library: ''
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - field_cr_file
+id: media.cr_file.file_source
+targetEntityType: media
+bundle: cr_file
+mode: file_source
+content:
+  field_cr_file:
+    type: file_url_plain
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_cr_downloadables_body: true
+  field_cr_field_display_title: true
+  field_cr_file_category: true
+  name: true
+  social_links: true
+  thumbnail: true
+  uid: true

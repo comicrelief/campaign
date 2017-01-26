@@ -1,27 +1,25 @@
 # Ignore paths that contain user-generated content.
-*/modules/custom/cr_default_content/content/user/
-.idea/
-*.un~
+/cr/modules/custom/cr_default_content/content/user/
+/.idea/
 
-web
-cr/modules/contrib
-cr/themes/custom/campaign_base/libraries
-vendor/
-.bundle/
-sites/*/files/
-sites/*/private/
-private/
+/web/
+/cr/modules/contrib/
+/drush/*/
+/cr/themes/custom/campaign_base/libraries/
+/vendor/
+/sites/*/files/
 
 /sites/*/services*.yml
 /sites/*/environment.yml
 /sites/*/settings.local.php
+/sites/default/config/
 
 # Ignore bundle files
 /.bundle/
 /node_modules/
 
 # Ignore SimpleTest multi-site environment.
-/sites/simpletest
+/sites/simpletest/
 
 # Packages #
 ############
@@ -48,6 +46,7 @@ ehthumbs.db
 Icon
 Thumbs.db
 ._*
+*.un~
 
 *.otf binary
 *.eot binary
@@ -59,10 +58,10 @@ Thumbs.db
 .sass-cache
 
 # Icon spritesheet #
-cr/themes/custom/campaign_base/images/generated/
+/cr/themes/custom/campaign_base/images/generated/
 
 # Temp agov theme #
-/*/themes/custom/agov_base/
+/cr/themes/custom/agov_base/
 
 # Things in the core directory that Drupal 8 commits in the repository.
 !core/**/*.gz
@@ -71,9 +70,9 @@ build.properties
 
 PATCHES.txt
 
-cr/tests/behat/vendor/
-cr/tests/behat/behat.yml
+/cr/tests/behat/vendor/
+/cr/tests/behat/behat.yml
 
 
 # Ignore the Bless-produced IE9 stylesheets as these get remade each build and will cause merge issues
-cr/themes/custom/campaign_base/ie9-css/*.css
+/cr/themes/custom/campaign_base/ie9-css/*.css

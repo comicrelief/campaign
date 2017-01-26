@@ -5,11 +5,14 @@ core: 8.x
 package: Comic Relief
 config_devel:
   - block_content.type.media_reference
+  - core.entity_view_mode.media.file_source
   - core.entity_form_display.block_content.media_reference.default
   - core.entity_view_display.block_content.media_reference.default
+  - core.entity_view_display.media.cr_file.file_source
   - field.storage.block_content.field_media_reference
   - field.storage.block_content.field_media_reference_bg
   - field.storage.block_content.field_media_reference_body
   - field.field.block_content.media_reference.field_media_reference
   - field.field.block_content.media_reference.field_media_reference_bg
   - field.field.block_content.media_reference.field_media_reference_body
+  - file_entity.type.zip

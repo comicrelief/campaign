@@ -1,0 +1,149 @@
+{
+    "_links": {
+        "self": {
+            "href": ""
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cw_row"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/0?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/field_cw_row_reference": [
+            {
+                "href": "http:\/\/default\/block\/7?_format=hal_json"
+            }
+        ]
+    },
+    "id": [
+        {
+            "value": "11"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "fbd9861b-aac3-4383-bcc1-eda7022cf401"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": "117"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "cw_row"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "bd833b07-ee3b-447a-be1b-4e640b87d041"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "bd833b07-ee3b-447a-be1b-4e640b87d041"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cw_row\/field_cw_row_reference": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/block\/7?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/block_content\/cw_row_block"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "99463377-62a2-4099-8d02-2ff2876038b5"
+                    }
+                ]
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1484061936",
+            "lang": "en"
+        }
+    ],
+    "parent_id": [
+        {
+            "value": "36"
+        }
+    ],
+    "parent_type": [
+        {
+            "value": "node"
+        }
+    ],
+    "parent_field_name": [
+        {
+            "value": "field_paragraphs"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "field_cw_title": [
+        {
+            "value": "Content wall"
+        }
+    ],
+    "field_cw_title_hidden": [
+        {
+            "value": "0"
+        }
+    ]
+}

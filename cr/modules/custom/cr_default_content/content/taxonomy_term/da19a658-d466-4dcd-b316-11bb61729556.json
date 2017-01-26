@@ -17,15 +17,15 @@
             "value": "da19a658-d466-4dcd-b316-11bb61729556"
         }
     ],
-    "vid": [
-        {
-            "target_id": "cr_resource_category"
-        }
-    ],
     "langcode": [
         {
             "value": "en",
             "lang": "en"
+        }
+    ],
+    "vid": [
+        {
+            "target_id": "cr_resource_category"
         }
     ],
     "name": [

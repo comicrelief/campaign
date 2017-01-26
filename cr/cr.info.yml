@@ -181,9 +181,6 @@ config_devel:
   - image.style.story_293_x_322_crop_lg
   - image.style.story_479_x_352_crop_md
   - image.style.story_739_x_561_crop_sm
-  - image.style.cw_quote_lg
-  - image.style.cw_quote_sm
-  - image.style.cr_1400_x_658
   - image.style.cr_1700_x_400
   - image.style.cr_740_x_300
 
@@ -208,7 +205,6 @@ config_devel:
   # Responsive image style mappings
   - responsive_image.styles.hero_image_full_node
   - responsive_image.styles.cw_4_3_image
-  - responsive_image.styles.cw_landscape_image
   - responsive_image.styles.bg_rich_text
   - responsive_image.styles.single_l_r_message_row
   - responsive_image.styles.single_msg_
