@@ -12,6 +12,7 @@
 /sites/*/services*.yml
 /sites/*/environment.yml
 /sites/*/settings.local.php
+/sites/default/config/
 
 # Ignore bundle files
 /.bundle/
