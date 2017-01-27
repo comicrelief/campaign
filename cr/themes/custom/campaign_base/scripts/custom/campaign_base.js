@@ -8,7 +8,7 @@
       $(".search-overlay").toggleClass("search-on");
 
       $(".search-overlay").removeClass("nav-on");
-      $(".menu--main, .block--cr-email-signup--head").removeClass("show");
+      $("header[role='banner'] nav, .block--cr-email-signup--head").removeClass("show");
       $("button.meta-nav__icons-esu-toggle").removeClass("active");
     });
     $("button.meta-nav-toggle").on("click", function() {
@@ -18,7 +18,7 @@
       });
 
       $(this).toggleClass("is-active");
-      $(".menu--main, .search-overlay:not('.show'), .search-overlay.show.nav-on").toggleClass("show");
+      $("header[role='banner'] nav, .search-overlay:not('.show'), .search-overlay.show.nav-on").toggleClass("show");
       $(".search-overlay").toggleClass("nav-on");
 
       $(".search-overlay").removeClass("search-on");
@@ -27,7 +27,7 @@
     });
     $("button.meta-nav__icons-esu-toggle").on("click", function() {
       $("button.meta-nav__icons-magnify").removeClass("active");
-      $(".search-block, .menu--main, .search-overlay").removeClass("show");
+      $(".search-block, header[role='banner'] nav, .search-overlay").removeClass("show");
     });
     $(".search-block .icon").on("click", function() {
       $("button.meta-nav__icons-magnify").removeClass("active");
