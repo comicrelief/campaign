@@ -23,7 +23,7 @@
 
       $(".search-overlay").removeClass("search-on");
       $("button.meta-nav__icons-esu-toggle, .meta-nav__icons-magnify").removeClass("active");
-      $(".block--cr-email-signup--head").removeClass("show");
+      $(".block--cr-email-signup--head, .search-block").removeClass("show");
     });
     $("button.meta-nav__icons-esu-toggle").on("click", function() {
       $("button.meta-nav__icons-magnify").removeClass("active");
