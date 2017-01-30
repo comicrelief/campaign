@@ -1,41 +1,3 @@
-{#
-/**
- * @file
- * Theme override to display a menu.
- *
- * Available variables:
- * - menu_name: The machine name of the menu.
- * - items: A nested list of menu items. Each menu item contains:
- *   - attributes: HTML attributes for the menu item.
- *   - below: The menu item child items.
- *   - title: The menu link title.
- *   - url: The menu link url, instance of \Drupal\Core\Url
- *   - localized_options: Menu link localized options.
- *   - is_expanded: TRUE if the link has visible children within the current
- *     menu tree.
- *   - is_collapsed: TRUE if the link has children within the current menu tree
- *     that are not currently visible.
- *   - in_active_trail: TRUE if the link is in the active trail.
- */
-#}
-
-<div class="main-menu__icons">
-  <button class="c-hamburger c-hamburger--htx main-menu-toggle">
-    <span>toggle menu</span>
-  </button>
-  <button class="main-menu__icons-esu-toggle">
-    <svg class="icon">
-      <use xlink:href="#envelope"></use>
-    </svg>
-    <span>Get the latest</span>
-  </button>
-  <button class="main-menu__icons-magnify">
-    <svg class="icon">
-      <use xlink:href="#icon-magnify"></use>
-    </svg>
-  </button>
-</div>
-
 {% import _self as menus %}
 
 {#
@@ -47,20 +9,8 @@
 {% macro menu_links(items, attributes, menu_level) %}
   {% import _self as menus %}
   {% if items %}
-    {% if menu_level == 0 %}
-      <ul{{ attributes.addClass('menu sm') }} id="main-menu">
-    {% else %}
-      <ul class="menu menu--level-{{menu_level}}">
-        {% if menu_level == 1 %}
-          {# Duplicate menu link for UX, to be populated by JS #}
-          <li class="menu-item menu-item--duplicate">
-            <a href="/">
-            </a>
-          </li>
-        {% endif %}
-    {% endif %}
+    <ul class="menu menu--level-{{menu_level}}">
     {% for item in items %}
-
       {%
         set classes = [
           'menu-item',
