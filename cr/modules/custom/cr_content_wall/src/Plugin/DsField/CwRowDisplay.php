@@ -11,8 +11,6 @@ use Drupal\block_content\Entity\BlockContent;
  *
  * Custom display field to rendered all referenced items in view modes.
  *
- * @author Zach Bimson <zach.bimson@gmail.com>
- *
  * @DsField(
  *   id = "cr_content_wall_CwRowDisplay",
  *   title = @Translation("Row Display"),
@@ -39,10 +37,10 @@ class CwRowDisplay extends DsFieldBase {
     // Get referenced content blocks.
     $blocks = $this->getReferencedBlocks($row, $config['reference_field']);
 
-    return array(
+    return [
       '#theme' => 'item_list',
       '#items' => $this->buildRenderedBlocks($row, $blocks),
-    );
+    ];
   }
 
   /**
@@ -70,8 +68,11 @@ class CwRowDisplay extends DsFieldBase {
       $block = BlockContent::load($block_id);
 
       if (isset($view_modes[$key])) {
-        $view = \Drupal::entityManager()->getViewBuilder('block_content');
-        $display = $view->view($block, $view_modes[$key]);
+          $view = \Drupal::entityTypeManager()->getViewBuilder('block_content');
+          try {
+              $display = $view->view($block, $view_modes[$key]);
+          } catch (\InvalidArgumentException $e) {
+          }
 
         $rendered_blocks[] = $display;
       }

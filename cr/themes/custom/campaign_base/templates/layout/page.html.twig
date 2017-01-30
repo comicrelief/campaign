@@ -42,6 +42,34 @@
   <div class="header__top-wrapper">{{ page.header_top }}</div>
   <div class="header__inner-wrapper">
     {{ page.header }}
+    <div class="meta-nav">
+      <div class="meta-nav__icons">
+        <button class="meta-nav__icons-magnify">
+          <svg class="icon">
+            <use xlink:href="#icon-magnify"></use>
+          </svg>
+        </button>
+        <a href="https://my.rednoseday.com/user/login" target="_blank" class="meta-nav__icons-login">
+          <svg class="icon">
+            <use xlink:href="#icon-login"></use>
+          </svg>
+        </a>
+        <button class="meta-nav__icons-esu-toggle">
+          <svg class="icon">
+            <use xlink:href="#envelope"></use>
+          </svg>
+          <span>Get the latest</span>
+        </button>
+      </div>
+      <ul class="meta-nav__feature-items">
+      </ul>
+      <div class="meta-nav__icons meta-nav__burger">
+        <button class="c-hamburger c-hamburger--htx meta-nav-toggle">
+          <div class="c-hamburger__text">More</div>
+          <span></span>
+        </button>
+      </div>
+    </div>
   </div>
 </header>
 {{ page.breadcrumb }}
@@ -50,12 +78,12 @@
 <section class="main-banner">{{ page.banners }}</section>
 <main role="main">
   <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
-  <div class="search-overlay"></div>
   {{ page.content }}
+  <div class="search-overlay"></div>
 </main>
 {% if page.footer %}
-  <footer role="contentinfo">
-    {{ page.footer }}
-    <a class="styleguide-link external-link" href="/profiles/cr/themes/custom/campaign_base/styleguide/index.html" target="_blank">Styleguide</a>
-  </footer>
+<footer role="contentinfo">
+  {{ page.footer }}
+  <a class="styleguide-link external-link" href="/profiles/cr/themes/custom/campaign_base/styleguide/index.html" target="_blank">Styleguide</a>
+</footer>
 {% endif %}

@@ -2,425 +2,60 @@
 //
 // This is a prototype to the new Main Nav
 //
-// Markup: _new-main-nav.hbs
+// Markup: _main-nav.hbs
 //
 //
 // Style guide: Navigation.New-Main-nav
 
-/* Styles provided by the Smartmenu plugin; kept here for sanity */
-.sm {
-  position:relative;
-  z-index:9999;
-}
-
-.sm,.sm ul,.sm li{
-  display:block;
-  list-style:none;
-  margin:0;
-  padding:0;
-  line-height:normal;
-  direction:ltr;
-  text-align:left;
-  -webkit-tap-highlight-color:rgba(0,0,0,0);
-}
-nav.menu--kids-menu,
-nav.menu--main {
+.menu--main {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: block;
   z-index: 100;
-  height: 85px;
-
-  .menu-item {
-    padding-top: 0;
-  }
-
-  /* Wrapper for all buttons in the nav */
-  .main-menu__icons {
-    float: right;
-    .main-menu-toggle {
-      float: right;
-    }
-    @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
-      //padding: 40px;
-      position: relative;
-      z-index: 10;
-      height: 100%;
-
-      // Hide our mobile nav open/close for desktop
-      .main-menu-toggle {
-        display: none;
-      }
-
-      .icon {
-        height: 100%;
-        width: 35px;
-      }
-    }
-    .main-menu__icons-magnify,
-    .main-menu__icons-esu-toggle {
-      background-color: transparent;
-      border: none;
-      margin: 0;
-      padding: 0;
-      width: 46px;
-      height: 76px;
-
-      &.active {
-        background-color: #f9f9f9;
-      }
-
-      &:focus {
-        outline: none;
-      }
-
-      span {
-        display: none;
-      }
-      .icon {
-        @include transition-property(fill);
-        @include transition-duration(150ms);
-        fill: $colour-jasper-grey;
-        width: 25px;
-        height: 25px;
-
-        @include breakpoint($screen-md) {
-          width: 35px;
-          height: 35px;
-        }
-        
-        @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
-          width: 20px;
-          height: 21px;
-        }
-      }
-
-      &:hover,
-      &:focus,
-      &:active {
-        .icon {
-          fill: $colour-black;
-        }
-      }
-
-      @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
-        height: 100%;
-      }
-    }
-  }
-
-  /* Main menu itself */
-  ul.menu {
-    margin: 0;
-    float: none;
-    text-align: center;
-    list-style: none;
-    text-align: left;
-    display: none;
-    top: 76px;
-    width: 100%;
-
-    @include breakpoint($screen-md) {
-      width: 50%;
-      margin-right: 0;
-      margin-left: auto;
-    }
-
-    &.menu-open {
-      background-color: $colour-black;
-      display: block;
-    }
-
-    li {
-        margin: 0;
-        color: $colour-white;
-        position: relative;
-
-      a {
-        padding: 20px 20px;
-        display: block;
-        text-decoration: none;
-        @include transition-property(background-color);
-        @include transition-duration(180ms);
-        background-color: #fafafa;
-
-        span {
-          font-family: $font-medium;
-          font-size: 23px;
-          line-height: 23px;
-          color: #222;
-
-          &.menu-item__text {
-            font-family: $font-medium;
-            font-size: 23px;
-            line-height: 23px;
-            color: #222;
-            border-bottom: 3px solid transparent;
-            @include transition-property(border, color);
-            @include transition-duration(180ms);
-          }
-
-          /* Provided by SmartMenu, this acts as our 'show/hide submenu' button */
-          &.sub-arrow {
-            &:before {
-              position: absolute;
-              content: "";
-              top: 0;
-              left: 0;
-              background: none;
-              color: none;
-              width: 100%;
-              height: 100%;
-            }
-          }
-        }
-
-        /*  Hovering on any first level menu item */
-        &:hover, &.highlighted :hover {
-          text-decoration: none;
-          color: $colour-white;
-          background-color: #acaaa9;
-
-          span.menu-item__text {
-            color: $colour-white;
-            border-bottom: 3px solid $colour-white;
-          }
-        }
-      }
-
-      /* Submenus */
-      > ul.menu {
-         background-color: $colour-black;
-         width: 100% !important;
-         // important is to override styling coming in from nav JS plugin
-         margin-top: 5px;
-
-        // Override the 100% width above (necessary for odd iOS bug on mobile nav)
-        @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
-          width: 250px !important;
-          max-height: none;
-          margin-top: 0;
-        }
-
-        a {
-          background-color: #222;
-          > span {
-            color: $colour-white;
-            font-size: 18px;
-            line-height: 20px;
-          }
-
-          &:hover {
-            background-color: #666;
-
-            span.menu-item__text {
-              border-bottom: 3px solid transparent;
-            }
-          }
-        }
-      }
-
-      /* Duplicate menu item; our landing page link */
-      &.menu-item--duplicate a {
-
-        &:after {
-          content: "";
-          position: absolute;
-          line-height: 0;
-          bottom: -1px;
-          left: 0;
-          right: 0;
-          height: 0;
-          margin: 0 10px;
-          border-bottom: 3px solid #888;
-        }
-
-        span.menu-item__text {
-          font-size: 20px;
-          line-height: 22px;
-          color: #fff;
-        }
-      }
-
-      &.menu-item--active-trail {
-
-        > a {
-          background-color: #fff;
-
-          span.menu-item__text {
-            border-bottom: 3px solid #222;
-          }
-
-          &:hover {
-            background-color: #acaaa9;
-            span.menu-item__text {
-              border-bottom: 3px solid $colour-white;
-            }
-          }
-        }
-
-        ul li.menu-item--active-trail a,
-        ul li.menu--item--duplicate a {
-          background-color: #666;
-          span.menu-item__text {
-            border-bottom: 3px solid transparent;
-          }
-        }
-      }
-    }
-  }
-
-  /* Adjust our dropdown 'mobile' nav to behave as standard nav, only
-  on our slightly tweaked breakpoint (to accommodate tablets in landscape) */
-  @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
-
-    position: relative;
-    top: 0;
-    display: block;
+  top: 80px;
+  right: 0;
+  display: none;
+  width: 100%;
+  @include breakpoint($screen-md) {
     width: auto;
-    background: transparent;
-    height: 103px;
-
-    /* Main menu */
-    > ul.menu {
-
+  }
+  @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
+    top: 103px;
+  }
+  &.show {
+    display: block;
+  }
+  .menu {
+    text-align: right;
+    background: #051d37;
+    padding: 10px 0;
+    margin: 0;
+  }
+  .menu--level-0 {
+    .menu {
+      display: none; // fallback in case there are more levels
+    }
+  }
+  li {
+    position: relative;
+    /* Main menu text */
+    a {
       display: block;
-      top: 0;
-      text-align: center;
-      padding-left: 156px;
-      position: relative;
-      width: 100%;
-      z-index: 1;
-
-      li {
-        position: relative;
-        display: inline-block;
-        margin: 0 20px;
-        padding: 20px 0;
-
-        /* Main menu text */
-        a span.menu-item__text {
-          font-size: 16px;
-          line-height: 16px;
-        }
-
-        /* Reset all our mobile styles */
-        &.menu-item--active-trail a,
-        &.menu-item--active-trail a:hover,
-        a:hover,
-        a {
-          background-color: transparent;
-          span.menu-item__text {
-            color: #222;
-          }
-          span.sub-arrow {
-            display: none;
-          }
-        }
-
-        &.menu-item--active-trail a,
-        &.menu-item--active-trail a:hover,
-        a:hover {
-          span.menu-item__text {
-            border-bottom: 3px solid #ccc;
-          }
-        }
-
-        &.menu-item--active-trail ul {
-          li {
-            a {
-              background-color: $colour-black;
-              span.menu-item__text {
-                color: $colour-white;
-                border-bottom: 3px solid transparent;
-              }
-
-              &:hover {
-                background-color: #666;
-                span.menu-item__text {
-                  color: $colour-white;
-                }
-              }
-            }
-          }
-        }
-
-        /* Submenu, hidden until parent item is hovered */
-        > ul {
-          display: none;
-          position: absolute;
-          top: 0;
-          z-index: 999;
-          padding: 0px 10px;
-          top: 85px;
-          padding: 0;
-          width: 250px;
-          left: 0;
-          text-align: left;
-
-          /* Submenu items */
-          li {
-            position: relative;
-            padding: 0;
-            margin: 0;
-            float: left;
-            width: 100%;
-
-            a {
-              background: $colour-black;
-              margin-top: 0;
-              margin-bottom: 0;
-              padding: 16px 20px 11px;
-
-              span.menu-item__text {
-                font-size: 16px;
-                line-height: 16px;
-                font-family: $font-regular;
-              }
-
-              &:hover {
-                span.menu-item__text {
-                  color: $colour-white;
-                }
-              }
-            }
-
-            /* Our 'landing page' duplicate link, top of each submenu */
-            &.menu-item--duplicate a {
-              span.menu-item__text {
-                font-size: 18px;
-                line-height: 18px;
-                font-family: $font-medium;
-              }
-
-              /* Triangle pointer */
-              &:before {
-                content: '';
-                width: 12px;
-                height: 12px;
-                display: block;
-                position: absolute;
-                left: 30px;
-                margin-left: -6px;
-                top: -12px;
-                border: 6px solid transparent;
-                border-bottom-color: #1e1e1e;
-              }
-            }
-          }
-        }
-
-        /* Show sub menus on hover */
-        &:hover {
-          > ul.menu {
-            max-height: 200px;
-            height: auto;
-            display: block;
-          }
-        }
-      }
+      padding: 10px 30px;
+      text-decoration: none;
+      color: #fff;
+      font-size: 16px;
+      line-height: 16px;
+      @include transition(background-color 180ms);
+    }
+    /* Reset all our mobile styles */
+    &.menu-item--active-trail a,
+    &.menu-item--active-trail a:hover,
+    a:hover{
+      background-color: #1e354b;
+      color: #fff;
+    }
+    .font--red:hover,
+    .font--red {
+      color: $colour-red;
     }
   }
 }

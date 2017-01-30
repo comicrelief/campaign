@@ -13,7 +13,7 @@
 {% if not desk_img and not small_img and not bg_video %}{% set header_class = header_class|merge(["promo-header--no-image"]) %}{% endif %}
 <header class="{{ header_class|join(" ") }} contextual-region">
 	{{ title_suffix.contextual_links }}
-	{% if bg_video %}
+	{% if bg_video is not empty %}
 		<div class= "bg_video" data-vide-bg="mp4: {{ field_landing_background_video }}, poster: {{ image_bg }}" data-vide-options="loop: true, muted: true, resizing: true, position: center, posterType: jpg, className: video">
 		</div>
 	{% endif %}
@@ -27,7 +27,7 @@
 			{{ body }}
 		</div>
 	</div>
-	{% if desk_img and not bg_video %}
+	{% if desk_img and bg_video is empty %}
 		{% if mobile_img and desk_img and not small_img  %}
 		<div class="promo-header__bg-image">
 				<picture>
