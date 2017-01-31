@@ -12,7 +12,7 @@ Feature: Article
   Scenario: Article pagination on /whats-going-on
     Given I am on "whats-going-on"
     And I click "››"
-    Then I should see the link "Louise's story"
+    Then I should see the link "British Triathlon cheers Greg James on"
     And I click "‹‹"
     Then I should see the link "Greg James begins his Gregathlon for Sport Relief"
 
