@@ -3,6 +3,7 @@
     // todo make a function
     $("button.meta-nav__icons-magnify").on("click", function() {
       $(this).toggleClass("active");
+
       $(".search-block, .search-overlay:not('.show'), .search-overlay.search-on").toggleClass("show");
 
       $(".search-overlay").toggleClass("search-on");
@@ -10,6 +11,8 @@
       $(".search-overlay").removeClass("nav-on");
       $("header[role='banner'] nav, .block--cr-email-signup--head").removeClass("show");
       $("button.meta-nav__icons-esu-toggle").removeClass("active");
+      
+      $(".search-block__form input[type=text]").focus();
     });
     $("button.meta-nav-toggle").on("click", function() {
 
