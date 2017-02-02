@@ -234,3 +234,10 @@ function cr_update_8025() {
     $config_facotry->getEditable('block.block.views_block__what_s_going_on_block_1')
         ->delete();
 }
+
+/**
+* Install blazy
+*/
+function cr_update_8026() {
+  \Drupal::service('module_installer')->install(['blazy', 'blazy_ui']);
+}
