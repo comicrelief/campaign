@@ -6,7 +6,6 @@ dependencies:
     - core.entity_view_mode.block_content.cw_m
     - field.field.block_content.teaser.body
     - field.field.block_content.teaser.field_cw_link_target
-    - field.field.block_content.teaser.field_dfasdfa
     - field.field.block_content.teaser.field_teaser_bg_colour
     - field.field.block_content.teaser.field_teaser_bg_image
     - field.field.block_content.teaser.field_teaser_image
@@ -144,5 +143,4 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
 hidden:
-  field_dfasdfa: true
   social_links: true
