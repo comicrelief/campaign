@@ -18,7 +18,7 @@
   z-index: 101;
 
   @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
-    top: 0;
+    top: 107px;
   }
 
   &.block--cr-email-signup--error.block--cr-email-signup {
