@@ -7,8 +7,8 @@ dependencies:
     - field.field.block_content.cr_card.field_cr_card_body
     - field.field.block_content.cr_card.field_cr_card_image
   module:
+    - blazy
     - ds
-    - image
     - options
     - text
 third_party_settings:
@@ -55,8 +55,32 @@ content:
     label: hidden
     settings:
       image_style: ''
-      image_link: ''
+      iframe_lazy: true
+      icon: ''
+      layout: ''
+      thumbnail_style: ''
+      view_mode: ''
+      cache: 0
+      current_view_mode: ''
+      optionset: default
+      skin: ''
+      style: ''
+      background: false
+      box_caption: ''
+      box_caption_custom: ''
+      box_style: ''
+      box_media_style: ''
+      breakpoints: {  }
+      caption: {  }
+      media_switch: ''
+      ratio: ''
+      responsive_image_style: ''
+      sizes: ''
+      grid: 0
+      grid_header: ''
+      grid_medium: 0
+      grid_small: 0
     third_party_settings: {  }
-    type: image
+    type: blazy
 hidden:
   social_links: true
