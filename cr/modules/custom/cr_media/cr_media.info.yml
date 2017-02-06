@@ -5,14 +5,25 @@ core: 8.x
 package: Comic Relief
 config_devel:
   - block_content.type.media_reference
+  - core.entity_view_mode.media.large
+  - core.entity_view_mode.media.medium
+  - core.entity_view_mode.media.small
   - core.entity_view_mode.media.file_source
+  - core.entity_form_display.media.cr_image.default
   - core.entity_form_display.block_content.media_reference.default
   - core.entity_view_display.block_content.media_reference.default
   - core.entity_view_display.media.cr_file.file_source
+  - core.entity_view_display.media.cr_image.default
+  - core.entity_view_display.media.cr_image.large
+  - core.entity_view_display.media.cr_image.medium
+  - core.entity_view_display.media.cr_image.small
   - field.storage.block_content.field_media_reference
   - field.storage.block_content.field_media_reference_bg
   - field.storage.block_content.field_media_reference_body
+  - field.storage.media.field_cr_image_image
   - field.field.block_content.media_reference.field_media_reference
   - field.field.block_content.media_reference.field_media_reference_bg
   - field.field.block_content.media_reference.field_media_reference_body
+  - field.field.media.cr_image.field_cr_image_image
   - file_entity.type.zip
+  - media_entity.bundle.cr_image
