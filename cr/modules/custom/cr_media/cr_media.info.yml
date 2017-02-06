@@ -3,6 +3,8 @@ type: module
 description: Contains config for all generic media related elements.
 core: 8.x
 package: Comic Relief
+dependencies:
+  - cr_content_wall
 config_devel:
   - block_content.type.media_reference
   - core.entity_view_mode.media.large
