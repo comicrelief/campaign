@@ -4,6 +4,10 @@ description: Contains config for all generic media related elements.
 core: 8.x
 package: Comic Relief
 config_devel:
+  - image.style.cr_1170_x_566
+  - image.style.cr_1170_x_566_2x
+  - image.style.cr_585_x_283
+  - image.style.cr_585_x_283_2x
   - responsive_image.styles.cw_landscape_image
   - block_content.type.media_reference
   - core.entity_view_mode.media.large
