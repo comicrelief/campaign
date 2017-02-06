@@ -79,5 +79,4 @@ config_devel:
   - image.style.cr_585_x_329
   - image.style.cr_585_x_329_2x
   # Responsive image styles
-  - responsive_image.styles.cw_landscape_image
   - responsive_image.styles.cw_medium_image_blocks
