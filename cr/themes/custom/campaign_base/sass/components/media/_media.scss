@@ -20,7 +20,7 @@
 		figure,
 		img {
 			@include breakpoint($screen-lg) {
-				width: span(8);
+				width: span(10);
 				margin: 15px auto;
 			}
 		}
@@ -29,7 +29,7 @@
 		figure,
 		img {
 			@include breakpoint($screen-lg) {
-				width: span(6);
+				width: span(8);
 				margin: 15px auto;
 			}
 		}
