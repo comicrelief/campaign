@@ -8,10 +8,10 @@
 
 .content-wall {
   width: 100%;
-  padding: $row-padding--sm 0;
+  padding: 30px 0;
 
   @include breakpoint($screen-md) {
-    padding: $row-padding--md 0;
+    padding: 60px 0;
   }
 }
 .content-wall__title {

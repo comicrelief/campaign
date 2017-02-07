@@ -26,23 +26,23 @@
   .single-msg__outer-wrapper {
     @include container;
     position: relative;
-    padding: $row-padding--sm calc(3 * #{gutter()});
+    padding: 30px calc(3 * #{gutter()});
 
     @include breakpoint($screen-md) {
-      padding: $row-padding--md 0;
+      padding: 60px 0;
     }
   }
   &.single-msg--feature-copy-right,
   &.single-msg--feature-copy-left {
     .single-msg__outer-wrapper {
-      padding: $row-padding--sm calc(4 * #{gutter()});
+      padding: 30px calc(4 * #{gutter()});
 
       @include breakpoint($screen-md) {
-        padding: $row-padding--md gutter();
+        padding: 60px gutter();
       }
 
       @include breakpoint($screen-lg) {
-        padding: $row-padding--md 0;
+        padding: 60px 0;
       }
     }
   }
@@ -77,7 +77,7 @@
       top: 0;
       right: 0;
       // Recalculate height minus the row padding
-      height: calc(100% - (#{$row-padding--md} * 2));
+      height: calc(100% - (60px * 2));
       margin-top: 60px;
       width: span(6);
       margin-right: calc( 2 * ( #{gutter()}) );
@@ -106,11 +106,11 @@
       padding-top: 0;
       margin-top: -35px;
       @include breakpoint($screen-md) {
-        margin-top: -$row-padding--md;
+        margin-top: -60px;
       }
       // recalculate height and align copy with image
       .single-msg__copy_wrapper {
-        height: calc(100% - #{$row-padding--md});
+        height: calc(100% - 60px);
         margin-top: 0;
       }
     }
@@ -124,7 +124,7 @@
     .single-msg__outer-wrapper {
       padding-bottom: 0;
       .single-msg__copy_wrapper {
-        height: calc(100% - #{$row-padding--md});    
+        height: calc(100% - 60px);    
       }
       //leave a bit of space underneath text
       .single-msg__body {
@@ -137,7 +137,7 @@
     .single-msg__outer-wrapper {
       padding-top: 0;
       .single-msg__copy_wrapper {
-        height: calc(100% - #{$row-padding--md});
+        height: calc(100% - 60px);
         margin-top: 0;
       }
     }
@@ -147,7 +147,7 @@
     .single-msg__outer-wrapper {
       padding-bottom: 0;
       .single-msg__copy_wrapper {
-        height: calc(100% - #{$row-padding--md}); 
+        height: calc(100% - 60px); 
       }
       //leave a bit of space underneath text
       .single-msg__body {
@@ -175,8 +175,8 @@
       .single-msg__copy_wrapper {
         margin-top: calc(-4 *#{gutter()});
         @include breakpoint($screen-lg) {
-          height: calc(100% - 2* #{$row-padding--md});
-          margin-top: calc(#{$row-padding--md} / 2);
+          height: calc(100% - 2* 60px);
+          margin-top: calc(60px / 2);
         }
       }
     }
@@ -188,8 +188,8 @@
       .single-msg__copy_wrapper {
         margin-top: calc(-4 *#{gutter()});
         @include breakpoint($screen-lg) {
-          height: calc(100% - #{$row-padding--md});
-          margin-top: calc(#{$row-padding--md} / 2);
+          height: calc(100% - 60px);
+          margin-top: calc(60px / 2);
         }
       }
     }
@@ -201,7 +201,7 @@
     &.single-msg--feature-copy-left {
       .single-msg__copy_wrapper {
         @include breakpoint($screen-lg) {
-          height: calc(100% - 2 * #{$row-padding--md});
+          height: calc(100% - 2 * 60px);
         }
       }
     }
@@ -266,7 +266,7 @@
         top: 0;
         right: 0;
         margin: 90px gutter() 0 0;
-        height: calc(100% - (#{$row-padding--md} * 3));  
+        height: calc(100% - (60px * 3));
 
         // Only overlap by half a column
         width: calc( #{span(5)} +  ( #{gutter()} * 4) );

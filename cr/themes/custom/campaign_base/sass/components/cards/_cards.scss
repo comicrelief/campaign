@@ -9,17 +9,17 @@
 // Style guide: Cards
 
 .cards {
-  padding: $row-padding--sm 0;
+  padding: 30px 0;
   width: 100%;
 
   @include breakpoint($screen-md) {
-    padding: $row-padding--md 0;
+    padding: 60px 0;
   }
   &+.cards {
     padding-top: 0;
-    margin-top: -$row-padding--sm;
+    margin-top: -30px;
     @include breakpoint($screen-md) {
-      margin-top: -$row-padding--md;
+      margin-top: -60px;
     }
   }
 	@for $i from 1 through 6 {
@@ -77,9 +77,9 @@
 }
 .cards__title {
   text-align: center;
-  margin: 0 calc(4 * 1.25%) $row-padding--sm;
+  margin: 0 calc(4 * 1.25%) 30px;
   @include breakpoint($screen-md){
-    margin: 0 calc(2 * 1.25%) $row-padding--sm;
+    margin: 0 calc(2 * 1.25%) 30px;
   }
   .bg--dark-orchid & {
     color: $colour-white;
