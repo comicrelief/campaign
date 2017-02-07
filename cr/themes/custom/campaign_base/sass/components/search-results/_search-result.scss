@@ -79,7 +79,7 @@
     width: calc(100% - 40px);
   }
   h3 {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 18px;
     margin-bottom: 0;
     @include breakpoint($screen-md, $no-query: true) {
