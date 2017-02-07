@@ -81,9 +81,11 @@
   h3 {
     font-size: 16px;
     line-height: 18px;
+    margin-bottom: 0;
     @include breakpoint($screen-md, $no-query: true) {
       font-size: 30px;
       line-height: 34px;
+      margin-bottom: 15px;
     }
   }
 }
