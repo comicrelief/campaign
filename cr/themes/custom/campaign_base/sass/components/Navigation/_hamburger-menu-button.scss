@@ -16,20 +16,20 @@ $duration: 0.2s;     // The transition duration
   cursor: pointer;
   transition: background $duration;
   text-align: left;
+  text-indent: -9999px;
   border: none;
   border-radius: none;
   background-color: transparent;
   box-shadow: none;
-  text-indent: -9999px;
+  @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
+    width: 140px;
+    height: 103px;
+    text-indent: 0;
+  }
 
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
-    height: 103px;
-    width: 140px;
-    text-indent: 0;
-  }
   &:hover {
     span,
     span::before,
@@ -49,7 +49,6 @@ $duration: 0.2s;     // The transition duration
     height: 3px;
     background-color: $colour-jasper-grey;
     @include single-transition(background-color, 0s);
-    
     @include breakpoint($desktop-nav-breakpoint) {
       top: 50px;
       right: 20px;
@@ -64,7 +63,6 @@ $duration: 0.2s;     // The transition duration
     }
     &::before,
     &::after {
-      @include single-transition(background-color, 0s);
       position: absolute;
       display: block;
       width: 100%;
@@ -73,6 +71,7 @@ $duration: 0.2s;     // The transition duration
       transition-delay: $duration, 0s;
       transition-duration: $duration, $duration;
       background-color: $colour-jasper-grey;
+      @include single-transition(background-color, 0s);
     }
   }
   &.is-active {
@@ -94,12 +93,10 @@ $duration: 0.2s;     // The transition duration
     }
   }
 }
-
 .c-hamburger span::before {
   top: -$bar-thickness - $button-bar-space;
   transition-property: top, transform;
 }
-
 .c-hamburger span::after {
   bottom: -$bar-thickness - $button-bar-space;
   transition-property: bottom, transform;

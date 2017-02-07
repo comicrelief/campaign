@@ -1,17 +1,16 @@
-.paragraph--type--cr-block-reference{
-	.block-block-content {	
-		padding:60px 0;
-		margin: auto;
-		max-width: $max-width;
-		padding: 0 calc((4 * #{gutter()}));
-
-		@include breakpoint($screen-md) {
-		  padding: 0 calc((2 * #{gutter()}));
-		  width: span(10);
-		}
-		@include breakpoint($screen-lg) {
-		  width: span(8);
-		  padding: 0 calc((0.5 * #{gutter()}));
-	  }
-	}
+.paragraph--type--cr-block-reference {
+  .block-block-content {
+    max-width: $max-width;
+    margin: auto;
+    padding: 60px 0;
+    padding: 0 calc((4 * #{gutter()}));
+    @include breakpoint($screen-md) {
+      width: span(10);
+      padding: 0 calc((2 * #{gutter()}));
+    }
+    @include breakpoint($screen-lg) {
+      width: span(8);
+      padding: 0 calc((0.5 * #{gutter()}));
+    }
+  }
 }

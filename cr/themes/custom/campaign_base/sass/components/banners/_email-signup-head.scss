@@ -12,20 +12,14 @@
 
 //hide esu form initially
 .block--cr-email-signup--head {
-  display: none;
   position: relative;
-  top: 76px;
   z-index: 101;
-
+  top: 76px;
+  display: none;
   @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
     top: 107px;
   }
-
   &.block--cr-email-signup--error.block--cr-email-signup {
-    .esu-errors.messages.messages--error {
-      margin-top:0;
-    }
-
     @include breakpoint($screen-md) {
       .esu-errors.messages.messages--error {
         position: relative;
@@ -33,10 +27,12 @@
         width: 100%;
         max-width: 100%;
       }
-     
       .block--cr-email-signup__inner-wrapper {
         padding: 25px 0;
       }
+    }
+    .esu-errors.messages.messages--error {
+      margin-top: 0;
     }
   }
 }
@@ -48,60 +44,54 @@
 .block--cr-email-signup--head.show {
   display: block;
   .block--cr-email-signup__inner-wrapper {
-    background-color: $colour-black;
-    margin: 0;
     position: absolute;
-    right: 0;
     top: 0;
+    right: 0;
     width: 100%;
-
+    margin: 0;
+    background-color: $colour-black;
     @include breakpoint($screen-md) {
+      right: 76px;
       width: 350px;
       padding: 25px 0;
-      right: 76px;
-
       .form-item-school-phase {
         width: 240px;
-        margin-left: 0;
         margin-right: 0;
+        margin-left: 0;
       }
     }
-
     @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
-      padding: 25px 0;
       right: 0;
+      padding: 25px 0;
     }
-  
     @include breakpoint($screen-lg) {
       //padding: 25px 0;
     }
-
     .icon {
-      fill: $colour-white;
-      height: 30px;
       position: absolute;
-      right: 10px;
       top: 10px;
+      right: 10px;
       width: 30px;
+      height: 30px;
       cursor: pointer;
-      &:hover, 
+
+      fill: $colour-white;
+      &:hover,
       &:focus {
         fill: $colour-jasper-grey;
       }
     }
   }
   .cr-email-signup--messages {
-    height: 100%;
-    width: 220px;
     float: none;
+    width: 220px;
+    height: 100%;
     margin: 0 auto;
   }
-
   form {
-    margin: 0 auto;
     width: 300px;
+    margin: 0 auto;
   }
-
   .form-item-email,
   .form-item-school-phase {
     width: 240px;
@@ -109,68 +99,60 @@
       width: 240px;
     }
   }
-
   // Show this label, as the field doesnt make sense without it...
   .form-item-school-phase label {
     top: -20px;
     right: 15px;
-    font-size: 14px;
-    height: auto;
-    height: auto;
-    width: auto;
-    color: white;
     clip: auto;
-   }
-
+    width: auto;
+    height: auto;
+    height: auto;
+    color: white;
+    font-size: 14px;
+  }
   .js-form-item-email label {
     @include visuallyhidden;
   }
-  
-  .js-form-item-email, 
+  .js-form-item-email,
   .js-form-type-select {
     margin: 0;
-
-    input, 
+    input,
     .ui-selectmenu-button {
-      border-radius: 36px 0 0 36px;
-      padding-left: 22px;
-      max-width: 310px;
       float: left;
+      max-width: 310px;
+      padding-left: 22px;
+      border-radius: 36px 0 0 36px;
     }
   }
-
   .js-form-type-select {
     margin-top: 25px;
   }
-
   input[type=submit].button {
-    background: $colour-jasper-grey url(../images/svgs/arrow-right.svg) -4px center no-repeat;
-    text-indent: -9999px;
     width: 60px;
-    margin:0;
+    margin: 0;
+    text-indent: -9999px;
+    background: $colour-jasper-grey url(../images/svgs/arrow-right.svg) -4px center no-repeat;
     @include breakpoint($screen-md) {
       //width: 100%;
     }
-
     &.step2 {
-      margin-top:25px;
+      margin-top: 25px;
     }
   }
-  .form-submit.step1, 
+  .form-submit.step1,
   .form-submit.step2 {
-    border-radius: 0 36px 36px 0;
     margin-top: 0;
+    border-radius: 0 36px 36px 0;
   }
-
   .esu-initial-message,
   .esu-first-success-message,
   .esu-second-success-message {
     p {
-      @extend h4;
+      margin-bottom: 10px;
+      text-align: center;
       // Strongarm h4 extend into a new colour
       color: $colour-white !important;
-      text-align: center;
-      margin-bottom: 10px; 
+      @extend h4;
     }
   }
   .esu-second-success-message {

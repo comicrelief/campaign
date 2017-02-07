@@ -13,22 +13,22 @@
 
 /* Global styles */
 .paragraph--cr-single-message-row {
+  position: relative;
+  /* Placeholder styles */
+  margin-top: 50px;
+  margin-bottom: 50px;
   @include container;
   @include breakpoint($screen-lg, $no-query: true) {
     margin-top: 70px;
     margin-bottom: 70px;
   }
-  position: relative;
-  /* Placeholder styles */
-  margin-top: 50px;
-  margin-bottom: 50px;
   h2 {
     text-align: center;
   }
   a.btn {
     display: block;
-    margin: 0 auto;
     width: 100%;
+    margin: 0 auto;
     @include breakpoint($screen-md) {
       width: 280px;
     }
@@ -36,18 +36,18 @@
 }
 .paragraph--cr-single-message-row {
   &.paragraph--cr-single-message-row--title-inside-image-right {
-    background: #F5F2ED;
     max-width: 100%;
     margin: 0;
-    padding: 50px 0;
     margin-top: 55px;
+    padding: 50px 0;
+    background: #f5f2ed;
     @include breakpoint($screen-lg, $no-query: true) {
       margin-top: 75px;
       padding: 70px 0;
     }
     .paragraph--cr-single-message-row__inner-wrapper {
-      @include container;
       position: relative;
+      @include container;
     }
   }
 }
@@ -87,10 +87,10 @@
   }
 }
 .paragraph--cr-single-message-row__image {
+  margin-bottom: 20px;
   @include breakpoint($screen-lg) {
     margin-bottom: 0;
   }
-  margin-bottom: 20px;
 }
 
 @include breakpoint($screen-lg, $no-query: true) {
@@ -104,12 +104,12 @@
   .paragraph--cr-single-message-row--title-inside-image-right,
   .paragraph--cr-single-message-row--title-inside-image-left {
     .paragraph--cr-single-message-row__copy_wrapper {
-      @include span(6);
-      @include push(6);
-      @include translateY(-50%);
       position: absolute;
       top: 50%;
       text-align: center;
+      @include span(6);
+      @include push(6);
+      @include translateY(-50%);
     }
   }
   .paragraph--cr-single-message-row--title-inside-image-right {
@@ -130,9 +130,9 @@
   /* Image above variations */
   .paragraph--cr-single-message-row--centre-image-above {
     .paragraph--cr-single-message-row__image {
+      margin-bottom: 20px;
       @include span(6);
       @include push(3);
-      margin-bottom: 20px;
     }
     .paragraph--cr-single-message-row__copy_wrapper {
       @include span(8);
@@ -145,26 +145,26 @@
       float: none;
       .paragraph--cr-single-message-row__title,
       .paragraph--cr-single-message-row__body {
-        @include span(8);
-        @include push(2);
         float: none;
         margin: auto;
+        @include span(8);
+        @include push(2);
       }
     }
     .paragraph--cr-single-message-row__image {
-      @include span(6);
-      @include push(3);
       float: none;
       margin: auto;
       margin-bottom: 20px;
+      @include span(6);
+      @include push(3);
     }
   }
   /* Centred, Text only, image optional*/
   .paragraph--cr-single-message-row--centre-text-only {
     .paragraph--cr-single-message-row__copy_wrapper {
+      float: none;
       @include span(6);
       @include push(3);
-      float: none;
     }
   }
 }

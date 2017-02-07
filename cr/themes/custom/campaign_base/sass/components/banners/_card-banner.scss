@@ -1,44 +1,44 @@
 // Banner card
 
 .card-banner {
-	float: left;
-  width: 100%;
   position: relative;
+  float: left;
+  width: 100%;
 }
 .card-banner__inner-wrapper {
-	width: span(12);
-	max-width: $max-width;
-	margin: 0 auto;
-	overflow: hidden;
-	position: relative;
+  position: relative;
+  overflow: hidden;
+  width: span(12);
+  max-width: $max-width;
+  margin: 0 auto;
 }
 .card-banner__image {
-	display: none;
-	@include breakpoint($screen-md) {
-		display: block;
-		@include span(2);
-		img {
-			display: block;
-			width: 100%;
-			height: auto;
-		}
-	}
+  display: none;
+  @include breakpoint($screen-md) {
+    display: block;
+    @include span(2);
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
 }
 .card-banner__content {
-	padding: 20px 0;
-	p {
-		text-align: center;
-	}
-	@include breakpoint($screen-md) {
-		@include span(10);
-		position: absolute;
-		top: 50%;
-		@include translateY(-50%);
-		.btn {
-		  position: absolute;
-		  right: -20px;
-		  top: 50%;
-		  @include translateY(-50%);
-		}
-	}
+  padding: 20px 0;
+  @include breakpoint($screen-md) {
+    position: absolute;
+    top: 50%;
+    @include span(10);
+    @include translateY(-50%);
+    .btn {
+      position: absolute;
+      top: 50%;
+      right: -20px;
+      @include translateY(-50%);
+    }
+  }
+  p {
+    text-align: center;
+  }
 }

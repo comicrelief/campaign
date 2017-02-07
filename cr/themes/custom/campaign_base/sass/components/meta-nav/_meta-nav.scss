@@ -4,9 +4,9 @@
   float: right;
 }
 .meta-nav__burger {
+  margin-left: 10px;
   border-right: 2px solid $colour-light-grey;
   border-left: 2px solid $colour-light-grey;
-  margin-left: 10px;
 }
 .meta-nav__icons {
   float: left;
@@ -53,6 +53,9 @@
       display: none;
     }
     .icon {
+      width: 25px;
+      height: 25px;
+      margin: 21px 4px;
       @include transition-property(fill);
       @include transition-duration(150ms);
       @include breakpoint($screen-md) {
@@ -64,9 +67,6 @@
         height: 21px;
         margin: 40px 12px;
       }
-      margin: 21px 4px;
-      width: 25px;
-      height: 25px;
 
       fill: $colour-jasper-grey;
     }
@@ -91,13 +91,13 @@
     margin: 0 20px;
     padding: 24px 0;
     a {
-      @include transition(border 0.4s);
       padding: 2px 8px;
       text-decoration: none;
       color: #333;
       border-bottom: 3px solid transparent;
       font-size: 16px;
       line-height: 16px;
+      @include transition(border 0.4s);
     }
     &.menu-item--active-trail a,
     &.menu-item--active-trail a:hover,

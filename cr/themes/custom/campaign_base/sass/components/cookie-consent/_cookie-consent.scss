@@ -7,11 +7,11 @@
 // Style guide: Cookie consent
 
 .cookie-consent.cc_container {
-  background: $colour-black;
-  text-align: center;
   padding: 10px;
+  text-align: center;
+  background: $colour-black;
   @include breakpoint($screen-md) {
-    padding:15px 30px;
+    padding: 15px 30px;
   }
   .btn,
   p,
@@ -26,27 +26,26 @@
     margin-top: 15px;
   }
   .cc_message {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    font-size: 1em;
     @include breakpoint($screen-md) {
       width: auto;
       margin-bottom: 15px;
     }
-    display: inline-block;
-    width: 100%;
-    font-size: 16px;
-    font-size: 1em;
-    text-align: center;
   }
   .btn {
+    display: block;
+    float: none;
+    height: auto;
+    margin: 20px auto 0;
+    margin-top: 20px;
     @include breakpoint($screen-md) {
+      display: inline-block;
       margin-top: 0;
       margin-left: 20px;
-      display: inline-block;
     }
-    
-    float: none;
-    margin-top: 20px;
-    height: auto;
-    margin: 20px auto 0px;
-    display: block;
   }
 }
