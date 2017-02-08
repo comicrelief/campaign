@@ -1,108 +1,110 @@
 .news-landing__wrapper {
-  padding: 60px 0;
-  background-color: $colour-smoke-grey;
+	padding: 60px 0;
+	background-color: $colour-smoke-grey;
 }
 .news-landing__content-wrapper {
-  width: calc(100% - (8 * 1.25%));
-  margin: auto;
-  @include breakpoint($screen-md) {
-    width: calc(100% - (4 * 1.25%));
-  }
-  @include breakpoint($screen-md-max) {
-    max-width: calc(1200px - (2 * 1.25%));
-  }
+	width: calc(100% - (8 * 1.25%));
+	margin: auto;
+
+	@include breakpoint($screen-md) {
+		width: calc(100% - (4 * 1.25%));
+	}
+	@include breakpoint($screen-md-max) {
+		max-width: calc(1200px - (2 * 1.25%));
+	}
 }
 .news-landing__filter {
-  width: 100%;
-  margin: 0 0 50px 0;
-  padding: 20px;
-  background-color: $colour-white;
-  @include breakpoint($screen-lg) {
-    float: none;
-    margin: 0 auto 50px;
-    @include span(8);
-  }
-  @include breakpoint($desktop-nav-breakpoint) {
-    float: none;
-    margin: 0 auto 50px;
-    @include span(6);
-  }
-  temporary styling of exposed filter with submit button
-  .form-item {
-    display: inline-block;
-    float: none;
-    width: 100%;
-    margin-bottom: 0;
-    @include breakpoint($screen-md) {
-      float: none;
-      margin-top: 0;
-      @include span(10);
-    }
-    label {
-      @include breakpoint($screen-md) {
-        display: inline-block;
-        @include span(5);
-        @include font-size($p-font-size);
-        @include translateY(25%);
-      }
-    }
-    .ui-widget {
-      margin: calc(4 * 1.25%) 0;
-      border-radius: 0;
-      @include breakpoint($screen-md) {
-        display: inline-block;
-        width: 55.83333% !important; //can't seem to override the width of 100% set inline
-        margin: 0;
-        @include span(7);
-      }
-      .ui-selectmenu-text {
-        margin-right: 30px;
-        border-right: 1px solid #ccc;
-      }
-    }
-  }
-  .form-actions {
-    display: inline-block;
-    margin: calc(4 * 1.25%) 0;
-    float: none;
-    width: 100%;
-    @include breakpoint($screen-md) {
-      float: right;
-      margin-top: 0;
-      @include span(2);
-    }
-    .button {
-      width: 100%;
-      padding: 0.4em 1em 0.4em 1em;
-      text-align: center;
-      color: #454545;
-      border: 1px solid #ccc;
-      background-color: #ededed;
-      font-size: 16px;
-      line-height: 1.4;
-    }
-  }
+	width: 100%;
+	margin: 0 0 50px 0;
+	padding: 20px;
+	background-color: $colour-white;
+	@include breakpoint($screen-lg){ 
+		@include span(8);
+		margin: 0 auto 50px;
+		float: none;
+	}
+	@include breakpoint($desktop-nav-breakpoint) {
+		@include span(6);
+		margin: 0 auto 50px;
+		float: none;
+	}
+	/* temporary styling of exposed filter with submit button */
+	.form-item {
+		width: 100%;
+		margin-bottom: 0px;
+		display: inline-block;
+		float: none;
+		@include breakpoint($screen-md) {
+			@include span(10);
+			margin-top: 0px;
+			float: none;
+		}
+		label {
+			@include breakpoint($screen-md){
+				@include span(5);
+				display: inline-block;
+				@include font-size($p-font-size);
+				@include translateY(25%);
+			}
+		}
+		.ui-widget {
+			margin: calc(4 * 1.25%) 0;
+			border-radius: 0px;
+			@include breakpoint($screen-md){
+				@include span(7);
+				width: 55.83333% !important; //can't seem to override the width of 100% set inline
+				margin: 0;
+				display: inline-block;
+			}
+			.ui-selectmenu-text {
+				margin-right: 30px;
+				border-right: 1px solid #cccccc;
+			}
+		}
+	}
+	.form-actions {
+		width: 100%;
+		margin: calc(4 * 1.25%) 0;
+		float:none;
+		display: inline-block;
+		@include breakpoint($screen-md) {
+			@include span(2);
+			margin-top: 0;
+			float: right;
+		}
+		.button {
+			width: 100%;
+			padding: 0.4em 1em 0.4em 1em;
+			border: 1px solid #cccccc;
+			font-size: 16px;
+			line-height: 1.4;
+			text-align: center;
+			color: #454545;
+			background-color: #ededed;
+		}
+	}
 }
 .news-landing__content {
-  clear: both;
-  margin: auto;
-  @include breakpoint($screen-lg) {
-    @include clearfix;
-  }
+	clear: both;
+	margin: auto;
+	@include breakpoint($screen-lg) {
+		@include clearfix;
+	}
 }
 .news-landing__item {
+	width: 100%;
+	height: 100%;
   margin: 0 0 calc(4 * #{gutter()});
   display: inline-block;
-  width: 100%;
-  height: 100%;
   background-color: $colour-white;
+
   @include breakpoint($screen-md) {
-    position: relative;
-    height: auto;
+  	position: relative;
+  	height: auto;
   }
   @include breakpoint($screen-lg) {
-    height: 390px;
-    @include span(3);
-    margin-bottom: calc(2 * #{gutter()});
+  	@include span(3);
+  	height: 390px;
+  	margin-bottom: calc(2 * #{gutter()});
   }
 }
