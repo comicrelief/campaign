@@ -25,10 +25,15 @@
     text-indent: -9999px;
     background-color: $colour-gainsboro-grey;
     mask: url(../images/svgs/magnify.svg) no-repeat right center;
-    mask-size: 60% 70%;
+    mask-size: 30px;
     -webkit-mask: url(../images/svgs/magnify.svg) no-repeat right center;
-    -webkit-mask-size: 60% 70%;
+    -webkit-mask-size: 30px;
     -webkit-appearance: none;
+    @include breakpoint($screen-md) {
+      height: 100px;
+      mask-size: 70px;
+      -webkit-mask-size: 70px;
+    }
     .no-cssmask & {
       background: transparent url(../images/icons/search_page_icon.png) center right no-repeat;
       background-size: 35px;
@@ -40,9 +45,6 @@
         background-image: url(../images/icons/search_page_icon_hover.png);
         background-color: transparent;
       }
-    }
-    @include breakpoint($screen-md) {
-      height: 100px;
     }
     &:focus,
     &:hover {
