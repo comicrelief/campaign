@@ -100,11 +100,11 @@
 .cw-region article.cw-quote.view-mode-cw_l {
   @include breakpoint($screen-lg) {
     .cw-quote__image {
-      @include span(4);
-      left: span(8);
+      width: 35%;
+      left: auto;
       top: 0;
-      bottom: auto;
-      margin-top: 0;
+      right: 0;
+      margin-right: 0;
     }
   }
 }
@@ -119,10 +119,12 @@
     }
 
     .cw-quote__image {
-      @include span(5);
-      left: span(7);
-      bottom: auto;
+      width: 50%;
       top: 0;
+      bottom: auto;
+      left: auto;
+      right: 0;
+      margin: 0;
     }
   }
 } 
