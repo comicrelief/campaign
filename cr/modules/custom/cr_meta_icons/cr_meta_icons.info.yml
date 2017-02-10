@@ -3,8 +3,8 @@ description: Meta icons block.
 core: 8.x
 package: Custom
 dependencies:
-- node
-- block
+  - node
+  - block
 type: module
 
 config_devel:
