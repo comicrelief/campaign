@@ -40,3 +40,4 @@ config_devel:
   - image.style.cr_570_wide_2x
 # Responsive image styles
   - responsive_image.styles.cr_cards
+  
