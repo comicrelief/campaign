@@ -156,7 +156,7 @@ function cr_update_8017() {
 }
 
 /**
-* Install cr_video cr_media
+* Install cr_content_reference
 */
 function cr_update_8018() {
   \Drupal::service('module_installer')->install(['cr_content_reference']);
@@ -233,4 +233,11 @@ function cr_update_8025() {
         ->delete();
     $config_facotry->getEditable('block.block.views_block__what_s_going_on_block_1')
         ->delete();
+}
+
+/**
+* Install cr_meta_icons
+*/
+function cr_update_8019() {
+  \Drupal::service('module_installer')->install(['cr_meta_icons']);
 }

@@ -98,6 +98,7 @@ dependencies:
   #- cr_performance
   - cr_user
   - cr_social
+  - cr_meta_icons
 
   # Development modules
   - config_devel
