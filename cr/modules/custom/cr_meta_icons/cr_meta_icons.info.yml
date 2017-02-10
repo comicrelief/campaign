@@ -6,3 +6,6 @@ dependencies:
 - node
 - block
 type: module
+
+config_devel:
+  - block.block.metaiconsblock.yml
