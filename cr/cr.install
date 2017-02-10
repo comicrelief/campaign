@@ -238,6 +238,6 @@ function cr_update_8025() {
 /**
 * Install cr_meta_icons
 */
-function cr_update_8019() {
+function cr_update_8026() {
   \Drupal::service('module_installer')->install(['cr_meta_icons']);
 }
