@@ -33,3 +33,10 @@ config_devel:
   - field.field.block_content.cr_card.field_cr_card_body
   - field.field.block_content.cr_card.field_cr_card_image
   - field.field.block_content.cr_card.field_cr_card_background
+# Image styles
+  - image.style.cr_370_wide
+  - image.style.cr_370_wide_2x
+  - image.style.cr_570_wide
+  - image.style.cr_570_wide_2x
+# Responsive image styles
+  - responsive_image.styles.cr_cards

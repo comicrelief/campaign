@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: cr_570_wide
+label: 'CR 570 wide'
+effects:
+  6b71c1bf-1208-4009-93a5-65aad7006689:
+    uuid: 6b71c1bf-1208-4009-93a5-65aad7006689
+    id: image_scale
+    weight: 1
+    data:
+      width: 570
+      height: null
+      upscale: false
