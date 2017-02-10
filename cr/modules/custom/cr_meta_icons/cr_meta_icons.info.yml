@@ -8,4 +8,4 @@ dependencies:
 type: module
 
 config_devel:
-  - block.block.metaiconsblock.yml
+  - block.block.metaiconsblock
