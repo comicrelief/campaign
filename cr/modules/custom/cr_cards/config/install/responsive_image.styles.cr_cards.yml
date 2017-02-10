@@ -7,7 +7,6 @@ dependencies:
     - image.style.cr_570_wide
     - image.style.cr_570_wide_2x
   theme:
-    - campaign_base
 id: cr_cards
 label: 'CR Cards'
 image_style_mappings:
