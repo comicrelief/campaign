@@ -194,8 +194,8 @@ function cr_update_8021() {
 function cr_update_8022() {
   // Remove any orphaned paragraphs
   $result = \Drupal::entityQuery('paragraph')
-       ->condition('type', 'cr_single_message_row')
-       ->execute();
+    ->condition('type', 'cr_single_message_row')
+    ->execute();
    entity_delete_multiple('paragraph', $result);
   // Disable the containing module
   \Drupal::service('module_installer')->uninstall(['cr_single_message_row_paragraph']);
@@ -214,23 +214,34 @@ function cr_update_8023() {
  * Delete old varnish config
  */
 function cr_update_8024() {
-    $config_facotry = \Drupal::configFactory();
-    $config_facotry->getEditable('purge_purger_http.settings.0e73130559')
-        ->delete();
-    $config_facotry->getEditable('purge_purger_http.settings.52aab9005f')
-        ->delete();
+  $config_facotry = \Drupal::configFactory();
+  $config_facotry->getEditable('purge_purger_http.settings.0e73130559')
+    ->delete();
+  $config_facotry->getEditable('purge_purger_http.settings.52aab9005f')
+    ->delete();
 }
 
 /**
  * Deletes config in landing pages & news block
  */
 function cr_update_8025() {
-    $config_facotry = \Drupal::configFactory();
-    $config_facotry
-        ->getEditable('core.entity_view_display.node.landing.landing_page_header')
-        ->delete();
-    $config_facotry->getEditable('core.entity_view_mode.node.landing_page_header')
-        ->delete();
-    $config_facotry->getEditable('block.block.views_block__what_s_going_on_block_1')
-        ->delete();
+  $config_facotry = \Drupal::configFactory();
+  $config_facotry
+    ->getEditable('core.entity_view_display.node.landing.landing_page_header')
+    ->delete();
+  $config_facotry->getEditable('core.entity_view_mode.node.landing_page_header')
+    ->delete();
+  $config_facotry->getEditable('block.block.views_block__what_s_going_on_block_1')
+    ->delete();
+}
+
+/**
+ * Remove update module
+ */
+function cr_update_8026() {
+  \Drupal::service('module_installer')->uninstall(['update']);
+  $config_facotry = \Drupal::configFactory();
+  $config_facotry
+    ->getEditable('update.settings')
+    ->delete();
 }
