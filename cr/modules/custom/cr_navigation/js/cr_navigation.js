@@ -30,8 +30,6 @@
         // Remove active class from hamburger nav to collapse it
         $('button.feature-nav-toggle.is-active').removeClass('is-active');
 
-        // Remove active class from kids menu | move it to rnd17
-        $('#block-kidsmenu > .menu.menu-open').removeClass('menu-open');
       });
     },
 
