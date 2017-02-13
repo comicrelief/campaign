@@ -8,7 +8,7 @@ dependencies:
 id: emailsignupblockhead
 theme: campaign_base
 region: header
-weight: -2
+weight: -3
 provider: null
 plugin: cr_email_signup_block_head
 settings:
