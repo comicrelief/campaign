@@ -11,8 +11,8 @@ dependencies:
     - field.field.block_content.quote_block.field_body
     - responsive_image.styles.cw_quote
   module:
+    - blazy
     - ds
-    - image
     - options
     - responsive_image
     - text
@@ -36,11 +36,11 @@ third_party_settings:
     regions:
       ds_content:
         - field_author_background_colour
-        - field_author_image
-        - field_background_colour
-        - field_background_image
         - field_body
+        - field_author_image
         - social_links
+        - field_background_image
+        - field_background_colour
 id: block_content.quote_block.cw_mp
 targetEntityType: block_content
 bundle: quote_block
@@ -67,12 +67,36 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_background_image:
-    type: image
+    type: blazy
     weight: 0
     label: hidden
     settings:
-      image_link: ''
       image_style: ''
+      iframe_lazy: true
+      icon: ''
+      layout: ''
+      thumbnail_style: ''
+      view_mode: ''
+      cache: 0
+      current_view_mode: ''
+      optionset: default
+      skin: ''
+      style: ''
+      background: false
+      box_caption: ''
+      box_caption_custom: ''
+      box_style: ''
+      box_media_style: ''
+      breakpoints: {  }
+      caption: {  }
+      media_switch: ''
+      ratio: ''
+      responsive_image_style: ''
+      sizes: ''
+      grid: 0
+      grid_header: ''
+      grid_medium: 0
+      grid_small: 0
     third_party_settings: {  }
   field_body:
     type: text_default
