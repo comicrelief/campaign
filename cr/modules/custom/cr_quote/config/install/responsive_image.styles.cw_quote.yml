@@ -2,8 +2,8 @@ langcode: en
 status: true
 dependencies:
   config:
-    - image.style.cw_quote_lg
-    - image.style.cw_quote_lg_2x
+    - image.style.cr_410_wide
+    - image.style.cr_410_wide_2x_
     - image.style.cw_quote_sm
     - image.style.cw_quote_sm_2x
 id: cw_quote
@@ -13,12 +13,12 @@ image_style_mappings:
     breakpoint_id: campaign_base.large
     multiplier: 1x
     image_mapping_type: image_style
-    image_mapping: cw_quote_lg
+    image_mapping: cr_410_wide
   -
     breakpoint_id: campaign_base.large
     multiplier: 2x
     image_mapping_type: image_style
-    image_mapping: cw_quote_lg_2x
+    image_mapping: cr_410_wide_2x_
   -
     breakpoint_id: campaign_base.medium
     multiplier: 1x
