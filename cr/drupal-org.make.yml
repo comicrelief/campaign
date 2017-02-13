@@ -189,6 +189,10 @@ projects:
     download:
       version: 2.x-dev
       revision: 908c0a2
+  ui_patterns:
+    download:
+      version: 1.x-dev
+      revision: 8674355
   cdn:
     version: 3.0
 libraries:
