@@ -1,7 +1,7 @@
 (function($, Drupal) {
   $( document ).ready(function() {
     // todo make a function
-    $("button.meta-nav__icons-magnify").on("click", function() {
+    $("button.meta-icons__magnify").on("click", function() {
       $(this).toggleClass("active");
 
       $(".search-block, .search-overlay:not('.show'), .search-overlay.search-on").toggleClass("show");
@@ -10,11 +10,11 @@
 
       $(".search-overlay").removeClass("nav-on");
       $("header[role='banner'] nav, .block--cr-email-signup--head").removeClass("show");
-      $("button.meta-nav__icons-esu-toggle").removeClass("active");
+      $("button.meta-icons__esu-toggle").removeClass("active");
       
       $(".search-block__form input[type=text]").focus();
     });
-    $("button.meta-nav-toggle").on("click", function() {
+    $("button.feature-nav-toggle").on("click", function() {
 
       $(".c-hamburger__text").text(function(i, text){
           return text === "More" ? "Close" : "More";
@@ -25,19 +25,19 @@
       $(".search-overlay").toggleClass("nav-on");
 
       $(".search-overlay").removeClass("search-on");
-      $("button.meta-nav__icons-esu-toggle, .meta-nav__icons-magnify").removeClass("active");
+      $("button.meta-icons__esu-toggle, .meta-icons__magnify").removeClass("active");
       $(".block--cr-email-signup--head, .search-block").removeClass("show");
     });
-    $("button.meta-nav__icons-esu-toggle").on("click", function() {
-      $("button.meta-nav__icons-magnify").removeClass("active");
+    $("button.meta-icons__esu-toggle").on("click", function() {
+      $("button.meta-icons__magnify").removeClass("active");
       $(".search-block, header[role='banner'] nav, .search-overlay").removeClass("show");
     });
     $(".search-block .icon").on("click", function() {
-      $("button.meta-nav__icons-magnify").removeClass("active");
+      $("button.meta-icons__magnify").removeClass("active");
       $(".search-block, .search-overlay").removeClass("show");
     });
 
-
+    $(".site-logo").attr('tabindex', 2);
 
     // IE fallback objectfit
     if(!Modernizr.objectfit) {
@@ -89,12 +89,12 @@
     });
 
     // Search hold on
-    // $("button.meta-nav__icons-magnify").on("click", function() {
+    // $("button.meta-icons__magnify").on("click", function() {
     //   $(this).toggleClass("active");
     //   $(".search-block").toggleClass("show");
     // });
     // $(".search-block:not").on("click", function() {
-    //   $("button.meta-nav__icons-magnify").removeClass("active");
+    //   $("button.meta-icons__magnify").removeClass("active");
     //   $(".search-block").removeClass("show");
     // });
 

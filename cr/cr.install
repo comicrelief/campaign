@@ -162,7 +162,7 @@ function cr_update_8017() {
 }
 
 /**
-* Install cr_video cr_media
+* Install cr_content_reference
 */
 function cr_update_8018() {
   \Drupal::service('module_installer')->install(['cr_content_reference']);
@@ -250,4 +250,11 @@ function cr_update_8026() {
   $config_factory
     ->getEditable('update.settings')
     ->delete();
+}
+
+/**
+* Install cr_meta_icons
+*/
+function cr_update_8026() {
+  \Drupal::service('module_installer')->install(['cr_meta_icons']);
 }
