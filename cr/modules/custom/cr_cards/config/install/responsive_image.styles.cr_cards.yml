@@ -6,7 +6,6 @@ dependencies:
     - image.style.cr_370_wide_2x
     - image.style.cr_570_wide
     - image.style.cr_570_wide_2x
-  theme:
 id: cr_cards
 label: 'CR Cards'
 image_style_mappings:
