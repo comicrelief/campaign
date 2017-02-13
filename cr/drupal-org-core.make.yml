@@ -9,9 +9,6 @@ projects:
       # List unmet dependencies instead of just failing
       # @see https://www.drupal.org/node/2655104
       - https://www.drupal.org/files/issues/missing-dependencies-2655104-8.patch
-      # Retain destination url after preview
-      # @see https://www.drupal.org/node/2325463
-      - https://www.drupal.org/files/issues/2325463-42-node-preview-workflow-fixed.patch
       # Constraint violation for paragraph editing, for full reasoning see https://github.com/comicrelief/campaign/pull/252
       # @see http://jira.comicrelief.com/browse/PLAT-235
       # @see https://gist.github.com/pvhee/14801e0f82e06f51cb0d88b9d400cbd6
