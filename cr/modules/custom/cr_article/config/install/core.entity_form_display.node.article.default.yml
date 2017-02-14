@@ -28,7 +28,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 7
+    weight: 6
     settings:
       rows: 9
       summary_rows: 3
@@ -36,11 +36,11 @@ content:
     third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 9
+    weight: 8
     settings: {  }
     third_party_settings: {  }
   field_article_category:
-    weight: 14
+    weight: 13
     settings:
       match_operator: CONTAINS
       size: 60
@@ -49,20 +49,13 @@ content:
     type: entity_reference_autocomplete_tags
   field_article_image:
     type: image_image
-    weight: 4
+    weight: 3
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
-  field_article_intro:
-    type: text_textarea
-    weight: 3
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
   field_article_meta_tags:
-    weight: 13
+    weight: 12
     settings: {  }
     third_party_settings: {  }
     type: metatag_firehose
@@ -75,27 +68,27 @@ content:
       time_type: '24'
     third_party_settings: {  }
   field_image_caption:
-    weight: 6
+    weight: 5
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
   field_video_embed:
-    weight: 5
+    weight: 4
     settings: {  }
     third_party_settings: {  }
     type: video_embed_field_textfield
   path:
     type: path
-    weight: 12
+    weight: 11
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 10
+    weight: 9
     third_party_settings: {  }
   publishing_date:
     type: inline_entity_form_complex
@@ -113,7 +106,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 11
+    weight: 10
     third_party_settings: {  }
   title:
     type: string_textfield
@@ -124,10 +117,11 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 8
+    weight: 7
     settings:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_article_intro: true
