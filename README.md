@@ -1,4 +1,5 @@
-# Comic Relief Campaign website
+# Comic Relief Campaign profile
+> Drupal 8 profile for building enganging fundraising websites, maintained by [Comic Relief](https://www.comicrelief.com)
 
 ## Getting started
 
@@ -16,4 +17,9 @@ Think about contributing? That's great, but please do read our [contributing gui
 * [Naming Convention](docs/naming-convention.md)
 * [Deployment instructions](docs/deployment.md)
 * [Testing](docs/testing.md)
+* [Blog post: building rednoseday.com on Drupal 8](https://technology.comicrelief.com/2016/12/21/building-rednoseday-com-on-drupal-8/)
+
+## License
+
+See our [LICENSE](LICENSE.md) file for license rights and limitations.
 
