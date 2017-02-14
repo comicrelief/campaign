@@ -8,6 +8,7 @@ dependencies:
     - node.type.article
     - taxonomy.vocabulary.article_category
   module:
+    - better_exposed_filters
     - datetime
     - image
     - node
@@ -44,15 +45,32 @@ display:
           query_comment: ''
           query_tags: {  }
       exposed_form:
-        type: basic
+        type: bef
         options:
           submit_button: Apply
           reset_button: false
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
-          expose_sort_order: true
+          expose_sort_order: false
           sort_asc_label: Asc
           sort_desc_label: Desc
+          input_required: false
+          text_input_required: 'Select any filter and click on Apply to see results'
+          bef:
+            general:
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              autosubmit: true
+              autosubmit_hide: true
+            field_article_category_target_id:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+          text_input_required_format: full_html
       pager:
         type: full
         options:

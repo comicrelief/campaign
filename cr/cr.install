@@ -253,8 +253,15 @@ function cr_update_8026() {
 }
 
 /**
-* Install cr_meta_icons
-*/
+ * Install cr_meta_icons
+ */
 function cr_update_8027() {
   \Drupal::service('module_installer')->install(['cr_meta_icons']);
+}
+
+/**
+ * Install better_exposed_filters
+ */
+function cr_update_8028() {
+  installer()->install(['better_exposed_filters']);
 }
