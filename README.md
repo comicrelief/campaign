@@ -4,6 +4,10 @@
 
 To get started, simply follow the instructions in the [Installation guide](docs/install.md) to get the Campaign website running on an environment.
 
+## Contributing
+
+Think about contributing? That's great, but please do read our [contributing guidelines](CONTRIBUTING.md) first!
+
 ## Related resources
 
 * [Rules of the Road](docs/rules_of_the_road.md)
@@ -12,8 +16,4 @@ To get started, simply follow the instructions in the [Installation guide](docs/
 * [Naming Convention](docs/naming-convention.md)
 * [Deployment instructions](docs/deployment.md)
 * [Testing](docs/testing.md)
-
-## Campaign notes
-
-Campaign platform notes can be found [here](http://confluence.comicrelief.com/x/iQQq) and goes through the goals and aims of the solution.
 
