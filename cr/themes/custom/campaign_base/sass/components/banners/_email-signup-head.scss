@@ -14,12 +14,7 @@
 .block--cr-email-signup--head {
   display: none;
   position: relative;
-  top: 76px;
   z-index: 101;
-
-  @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
-    top: 107px;
-  }
 
   &.block--cr-email-signup--error.block--cr-email-signup {
     .esu-errors.messages.messages--error {
