@@ -80,15 +80,17 @@ hooks:
         set -e
 
         # Re-install the site if this hasn't been installed yet for this branch, or we are on develop
-        if [ $PLATFORM_ENVIRONMENT = "develop" ] || [ ! -f /tmp/$PLATFORM_ENVIRONMENT.installed ]; then
+        if [ $PLATFORM_ENVIRONMENT = "develop" ] || [ ! -f tmp/$PLATFORM_ENVIRONMENT.installed ]; then
           echo ">>> Re-installing CR profile"
           phing install
-          touch "/tmp/${PLATFORM_ENVIRONMENT}.installed"
+          touch "tmp/${PLATFORM_ENVIRONMENT}.installed"
           echo ">>> End re-installing CR profile"
         else
           echo ">>> No re-installation of the profile required, just a simple update!"
           phing config:import
         fi
+
+        ls -l
         cd web/
         drush cr
 
