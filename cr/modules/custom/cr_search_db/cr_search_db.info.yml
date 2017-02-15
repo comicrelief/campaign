@@ -1,0 +1,14 @@
+name: Comic Relief Search
+type: module
+description: 'Improve the search functionality (DB version).'
+package: Comic Relief
+core: '8.x'
+
+dependencies:
+  - search_api_db
+  - cr_search
+
+config_devel:
+  - search_api.server.cr_database
+  - search_api.index.cr_content
+  - views.view.search_db
