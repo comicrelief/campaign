@@ -2,8 +2,6 @@
 
 module.exports = function (grunt) {
 
-  var theme = grunt.option('target') || 'profiles/cr/themes/custom/campaign_base/';
-
   grunt.initConfig({
 
     watch: {
