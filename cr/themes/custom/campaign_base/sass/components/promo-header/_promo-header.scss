@@ -63,18 +63,9 @@
     position: relative !important;
     height: 100%;
   }
-  video {
-    object-fit: cover;
-    object-position: top;
-    @include no-objectfit;
-  }
   &.promo-header--small {
     height: 400px;
-    .bg_video {
-      height: 400px;
-    }
     video {
-      height: 400px !important;
       top: 0 !important;
       left: 0 !important;
       transform: translate(0) !important;
