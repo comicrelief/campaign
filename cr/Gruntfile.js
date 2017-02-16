@@ -9,7 +9,7 @@ module.exports = function (grunt) {
         livereload: true,
         nospawn : true
       },
-      src: {
+      campaign_base: {
         files: ['themes/custom/campaign_base/sass/{,**/}*.{scss,sass}'],
         tasks: ['compass:dev']
       },
