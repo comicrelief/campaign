@@ -63,16 +63,19 @@
     position: relative !important;
     height: 100%;
   }
-  video {
-    //center video
-    width: 100%;
-    top: 50% !important;
-    left: 0 !important;
-     -moz-transform: translateY(-50%) !important;
-      -ms-transform: translateY(-50%) !important;
-  -webkit-transform: translateY(-50%) !important;
-          transform: translateY(-50%) !important;
-  } 
+  &.promo-header--small {
+    height: 400px;
+    video {
+      top: 0 !important;
+      left: 0 !important;
+      transform: translate(0) !important;
+    }
+  }
+}
+.bg--none {
+  .bg_video {
+    opacity: 1;
+  }
 }
 .promo-header__bg-image {
   @include breakpoint($screen-md-max, $no-query: true) {

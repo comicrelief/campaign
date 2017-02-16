@@ -5,7 +5,7 @@
 name: php
 
 # The runtime the application uses.
-type: "php:7.0"
+type: "php:7.1"
 
 # Configuration of the build of this application.
 build:
@@ -64,7 +64,6 @@ hooks:
     build: |
         set -e
 
-        printf 'db.querystring=mysql://root@database.internal/main\n' > build.properties
         printf 'deploy.delete-sites = false\n' >> build.properties
 
         phing build:prepare:deploy
@@ -80,17 +79,20 @@ hooks:
         set -e
 
         # Re-install the site if this hasn't been installed yet for this branch, or we are on develop
-        if [ $PLATFORM_ENVIRONMENT = "develop" ] || [ ! -f /tmp/$PLATFORM_ENVIRONMENT.installed ]; then
+        if [ $PLATFORM_ENVIRONMENT = "develop" ] || [ ! -f tmp/$PLATFORM_ENVIRONMENT.installed ]; then
           echo ">>> Re-installing CR profile"
-          phing install
-          touch "/tmp/${PLATFORM_ENVIRONMENT}.installed"
+          cd web/
+          drush sql-drop -y
+          drush si cr -y --account-pass='admin' install_configure_form.update_status_module='[FALSE, FALSE]' -y
+          drush cr
+          touch "tmp/${PLATFORM_ENVIRONMENT}.installed"
           echo ">>> End re-installing CR profile"
         else
           echo ">>> No re-installation of the profile required, just a simple update!"
           phing config:import
+          cd web/
+          drush cr
         fi
-        cd web/
-        drush cr
 
 # The configuration of scheduled execution.
 crons:

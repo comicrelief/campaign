@@ -1,14 +1,9 @@
-// Meta Nav
+// Meta icons
 
-.meta-nav {
-  float: right;
+.block-cr-meta-icons {
+	float: right;
 }
-.meta-nav__burger {
-  border-right: 2px solid $colour-light-grey;
-  border-left: 2px solid $colour-light-grey;
-  margin-left: 10px;
-}
-.meta-nav__icons {
+.meta-icons {
   float: left;
   @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
     position: relative;
@@ -20,17 +15,13 @@
       height: 100%;
     }
   }
-  .meta-nav-toggle {
-    float: right;
-    font-size: 16px;
-  }
-  .meta-nav__icons-login {
+  .meta-icons__login {
     display: inline-block;
     text-decoration: none;
   }
-  .meta-nav__icons-login,
-  .meta-nav__icons-magnify,
-  .meta-nav__icons-esu-toggle {
+  .meta-icons__login,
+  .meta-icons__magnify,
+  .meta-icons__esu-toggle {
     width: 35px;
     height: 76px;
     margin: 0;
@@ -76,34 +67,6 @@
       .icon {
         fill: $colour-black;
       }
-    }
-  }
-}
-.meta-nav__feature-items {
-  display: none;
-  float: left;
-  margin-top: 16px;
-  @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
-    display: block;
-  }
-  li {
-    display: inline-block;
-    margin: 0 20px;
-    padding: 24px 0;
-    a {
-      @include transition(border 0.4s);
-      padding: 2px 8px;
-      text-decoration: none;
-      color: #333;
-      border-bottom: 3px solid transparent;
-      font-size: 16px;
-      line-height: 16px;
-    }
-    &.menu-item--active-trail a,
-    &.menu-item--active-trail a:hover,
-    a:hover {
-      border-bottom: 3px solid $colour-red;
-      background-color: transparent;
     }
   }
 }

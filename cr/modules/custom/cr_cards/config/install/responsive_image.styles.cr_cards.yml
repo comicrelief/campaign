@@ -2,42 +2,42 @@ langcode: en
 status: true
 dependencies:
   config:
-    - image.style.cr_410_wide
-    - image.style.cr_410_wide_2x_
-    - image.style.cw_quote_sm
-    - image.style.cw_quote_sm_2x
-id: cw_quote
-label: 'CW Quote (CW - L and MP viewmodes)'
+    - image.style.cr_370_wide
+    - image.style.cr_370_wide_2x
+    - image.style.cr_570_wide
+    - image.style.cr_570_wide_2x
+id: cr_cards
+label: 'CR Cards'
 image_style_mappings:
   -
     breakpoint_id: campaign_base.large
     multiplier: 1x
     image_mapping_type: image_style
-    image_mapping: cr_410_wide
+    image_mapping: cr_370_wide
   -
     breakpoint_id: campaign_base.large
     multiplier: 2x
     image_mapping_type: image_style
-    image_mapping: cr_410_wide_2x_
+    image_mapping: cr_370_wide_2x
   -
     breakpoint_id: campaign_base.medium
     multiplier: 1x
     image_mapping_type: image_style
-    image_mapping: cw_quote_sm
+    image_mapping: cr_370_wide
   -
     breakpoint_id: campaign_base.medium
     multiplier: 2x
     image_mapping_type: image_style
-    image_mapping: cw_quote_sm_2x
+    image_mapping: cr_370_wide_2x
   -
     breakpoint_id: campaign_base.small
     multiplier: 1x
     image_mapping_type: image_style
-    image_mapping: cw_quote_sm
+    image_mapping: cr_570_wide
   -
     breakpoint_id: campaign_base.small
     multiplier: 2x
     image_mapping_type: image_style
-    image_mapping: cw_quote_sm_2x
+    image_mapping: cr_570_wide_2x
 breakpoint_group: campaign_base
-fallback_image_style: '_original image_'
+fallback_image_style: cr_370_wide
