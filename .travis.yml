@@ -34,7 +34,7 @@ env:
     - export DB="drupal"
     - export DB_URL="mysql://root:@127.0.0.1/drupal"
     - export TRAVIS_DIR="./ci/travis"
-    - export BEHAT_DIR="./$PROFILE/tests/behat"
+    - export BEHAT_DIR="./tests/behat"
     - export BEHAT_DRIVER="phantomjs"
     - export BEHAT_BROWSER="firefox"
     # Note: Do not add a trailing slash here.

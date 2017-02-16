@@ -34,4 +34,4 @@ have this in mind when you edit fixture content.
 * @editor : only for CR members
 * @admin : only for developers
 
-[docs]: ../../../../docs/testing.md
+[docs]: docs/testing.md
