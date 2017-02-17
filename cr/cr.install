@@ -258,3 +258,14 @@ function cr_update_8026() {
 function cr_update_8027() {
   \Drupal::service('module_installer')->install(['cr_meta_icons']);
 }
+
+/**
+ * Delete cr_search_db config
+ */
+function cr_update_8028() {
+  deleteConfig('search_api.server.cr_database');
+  deleteConfig('search_api.index.cr_content');
+  deleteConfig('views.view.search_db');
+  deleteConfig('search_api_db.settings');
+  installer()->uninstall(['search_api_db']);
+}
