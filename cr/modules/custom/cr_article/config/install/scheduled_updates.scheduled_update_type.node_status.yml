@@ -13,4 +13,4 @@ update_runner:
   after_run: DELETE
   invalid_update_behavior: DELETE
   create_revisions: BUNDLE_DEFAULT
-  update_user: USER_UPDATE_RUNNER
+  update_user: USER_OWNER
