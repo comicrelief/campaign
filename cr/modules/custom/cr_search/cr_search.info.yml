@@ -1,20 +1,15 @@
 name: Comic Relief Search
 type: module
-description: 'Improve the search functionality.'
+description: 'Generic config of search.'
 package: Comic Relief
 core: '8.x'
 
 dependencies:
-  - search_api_db
   - cr_article
   - cr_landing_page
+  - cr_partner
 
 config_devel:
-  # General config.
-  - search_api.server.cr_database
-  - search_api.index.cr_content
-  - views.view.search_db
-  # Content types
   - core.entity_view_display.node.article.search_index
   - core.entity_view_display.node.landing.search_index
   - core.entity_view_display.node.partner.search_index

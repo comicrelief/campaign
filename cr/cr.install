@@ -260,8 +260,19 @@ function cr_update_8027() {
 }
 
 /**
+ * Delete cr_search_db config
+ */
+function cr_update_8028() {
+  deleteConfig('search_api.server.cr_database');
+  deleteConfig('search_api.index.cr_content');
+  deleteConfig('views.view.search_db');
+  deleteConfig('search_api_db.settings');
+  installer()->uninstall(['search_api_db']);
+}
+
+/**
 * Install blazy
 */
-function cr_update_8028() {
+function cr_update_8029() {
   \Drupal::service('module_installer')->install(['blazy', 'blazy_ui']);
 }

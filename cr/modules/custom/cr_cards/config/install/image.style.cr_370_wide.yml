@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: cr_370_wide
+label: 'CR 370 wide'
+effects:
+  fa8d6483-0868-4848-b996-6c11281984a2:
+    uuid: fa8d6483-0868-4848-b996-6c11281984a2
+    id: image_scale
+    weight: 1
+    data:
+      width: 370
+      height: null
+      upscale: false

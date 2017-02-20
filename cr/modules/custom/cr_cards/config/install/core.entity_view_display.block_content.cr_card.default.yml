@@ -6,10 +6,12 @@ dependencies:
     - field.field.block_content.cr_card.field_cr_card_background
     - field.field.block_content.cr_card.field_cr_card_body
     - field.field.block_content.cr_card.field_cr_card_image
+    - responsive_image.styles.cr_cards
   module:
     - blazy
     - ds
     - options
+    - responsive_image
     - text
 third_party_settings:
   ds:
