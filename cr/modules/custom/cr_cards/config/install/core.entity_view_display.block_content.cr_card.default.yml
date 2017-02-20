@@ -6,10 +6,11 @@ dependencies:
     - field.field.block_content.cr_card.field_cr_card_background
     - field.field.block_content.cr_card.field_cr_card_body
     - field.field.block_content.cr_card.field_cr_card_image
+    - responsive_image.styles.cr_cards
   module:
     - ds
-    - image
     - options
+    - responsive_image
     - text
 third_party_settings:
   ds:
@@ -54,9 +55,9 @@ content:
     weight: 0
     label: hidden
     settings:
-      image_style: ''
+      responsive_image_style: cr_cards
       image_link: ''
     third_party_settings: {  }
-    type: image
+    type: responsive_image
 hidden:
   social_links: true

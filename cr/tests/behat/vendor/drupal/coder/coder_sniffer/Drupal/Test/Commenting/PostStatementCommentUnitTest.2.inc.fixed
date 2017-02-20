@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * @file
+ */
+?>
+<?php
+// Print $results->foo->bar;.

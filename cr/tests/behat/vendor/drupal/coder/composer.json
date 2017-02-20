@@ -1,0 +1,20 @@
+{
+    "name": "drupal/coder",
+    "type": "library",
+    "description": "Coder is a library to review Drupal code.",
+    "homepage": "https://www.drupal.org/project/coder",
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/coder",
+        "source": "https://www.drupal.org/project/coder"
+    },
+    "keywords": ["phpcs", "standards", "code review"],
+    "license": "GPL-2.0+",
+    "require": {
+        "php": ">=5.4.0",
+        "squizlabs/php_codesniffer": ">=2.5.1",
+        "symfony/yaml": ">=2.0.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": ">=3.7"
+    }
+}
