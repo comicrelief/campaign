@@ -67,7 +67,10 @@ hooks:
         printf 'deploy.delete-sites = false\n' >> build.properties
 
         phing build:prepare:deploy
-        phing grunt:build
+        
+        cd web/themes/rnd17
+        grunt build
+        cd ../../../
 
         # @todo review how we re-use settings.php and generally the sites/default dir on platform.sh
         cp /app/sites/default/settings.php /app/web/sites/default/settings.php
