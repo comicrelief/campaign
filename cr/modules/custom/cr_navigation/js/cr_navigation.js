@@ -15,8 +15,11 @@
     },
 
     cloneNav: function (context, settings) {
-      var _base = Drupal.behaviors.crNavigation;
-      $( ".header__inner-wrapper nav.navigation > .menu .menu-item:nth-child(1), .header__inner-wrapper nav.navigation > .menu .menu-item:nth-child(2), .header__inner-wrapper nav.navigation > .menu .menu-item:nth-child(3)" ).clone().appendTo( ".feature-nav .feature-nav__items" );
+
+      $( ".header__inner-wrapper nav.navigation > .menu .menu-item:nth-child(1)," +
+       ".header__inner-wrapper nav.navigation > .menu .menu-item:nth-child(2), " +
+        ".header__inner-wrapper nav.navigation > .menu .menu-item:nth-child(3)")
+          .clone().appendTo( ".feature-nav .feature-nav__items" );
     },
 
     /* Click event handler trigger our toggle event */
