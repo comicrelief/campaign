@@ -1,4 +1,4 @@
-Fixes https://jira.comicrelief.com/browse/
+Fixes https://jira.comicrelief.com/browse/PLAT-... or #... 
 
 ## Changes proposed in this PR
 
