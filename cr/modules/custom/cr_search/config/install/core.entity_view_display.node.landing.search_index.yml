@@ -4,12 +4,15 @@ dependencies:
   config:
     - core.entity_view_mode.node.search_index
     - field.field.node.landing.body
+    - field.field.node.landing.field_background_video
     - field.field.node.landing.field_landing_background_colour
+    - field.field.node.landing.field_landing_background_video
     - field.field.node.landing.field_landing_copy_position_alig
     - field.field.node.landing.field_landing_feature_layout
     - field.field.node.landing.field_landing_image
     - field.field.node.landing.field_landing_image_mobile
     - field.field.node.landing.field_landing_meta_tags
+    - field.field.node.landing.field_landing_small_bg
     - field.field.node.landing.field_paragraphs
     - field.field.node.landing.field_svg_body_title
     - node.type.landing
@@ -130,4 +133,7 @@ content:
     weight: 19
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_background_video: true
+  field_landing_background_video: true
+  field_landing_small_bg: true

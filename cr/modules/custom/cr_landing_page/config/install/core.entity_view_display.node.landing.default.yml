@@ -3,8 +3,9 @@ status: true
 dependencies:
   config:
     - field.field.node.landing.body
-    - field.field.node.landing.field_landing_background_video
+    - field.field.node.landing.field_background_video
     - field.field.node.landing.field_landing_background_colour
+    - field.field.node.landing.field_landing_background_video
     - field.field.node.landing.field_landing_copy_position_alig
     - field.field.node.landing.field_landing_feature_layout
     - field.field.node.landing.field_landing_image
@@ -61,6 +62,12 @@ content:
     weight: 2
     settings: {  }
     third_party_settings: {  }
+  field_landing_background_colour:
+    weight: 17
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
   field_landing_background_video:
     weight: 23
     label: above
@@ -68,12 +75,6 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
-  field_landing_background_colour:
-    weight: 17
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: list_default
   field_landing_copy_position_alig:
     weight: 18
     label: above
@@ -142,4 +143,5 @@ content:
     weight: 11
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_background_video: true
