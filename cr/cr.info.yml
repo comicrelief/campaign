@@ -74,6 +74,7 @@ dependencies:
   - view_mode
   - imagemagick
   - menu_link_attributes
+  - better_exposed_filters
 
   # Custom modules
   - cr_page
