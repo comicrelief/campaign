@@ -28,61 +28,45 @@
 		margin: 0 auto 50px;
 		float: none;
 	}
-	/* temporary styling of exposed filter with submit button */
 	.form-item {
 		width: 100%;
-		margin-bottom: 0px;
+		margin: 0px;
 		display: inline-block;
 		float: none;
-		@include breakpoint($screen-md) {
-			@include span(10);
-			margin-top: 0px;
-			float: none;
-		}
 		
 		label {
+			width: 100%;
+			float: left;
+			font-size: 18px;
 			@include breakpoint($screen-md){
-				@include span(5);
+				width: 39%;
 				display: inline-block;
-				@include font-size($p-font-size);
+				text-align: right;
+				font-size: 22px;
 				@include translateY(25%);
 			}
 		}
 		.ui-widget {
-			margin: calc(4 * 1.25%) 0;
+			width: 100% !important; //override element styling
+			float:left;
+			margin: 20px 0 0;
 			border-radius: 0px;
 			@include breakpoint($screen-md){
-				@include span(7);  
-				width: 55.83333% !important; //can't seem to override the width of 100% set inline
+				width: 55.83333% !important; //override element styling
+				float:right;
 				margin: 0;
 				display: inline-block;
 			}
 			.ui-selectmenu-text {
 				margin-right: 30px;
 				border-right: 1px solid #cccccc;
+				font-family: $font-regular;
+				color: $colour-black;
 			}
 		}
 	}
 	.form-actions {
-		width: 100%;
-		margin: calc(4 * 1.25%) 0;
-		float:none;
-		display: inline-block;
-		@include breakpoint($screen-md){
-			@include span(2);
-			margin-top: 0;
-			float: right;
-		}
-		.button {
-			width: 100%;
-			padding: 0.4em 1em 0.4em 1em;
-			border: 1px solid #cccccc;
-		  	font-size: 16px;
-		  	line-height: 1.4;
-		    text-align: center;
-		    color: #454545;
-		    background-color: #ededed;   
-		}
+		display:none;
 	}
 }
 .news-landing__content {
