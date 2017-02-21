@@ -23,6 +23,7 @@ stylesheets-remove:
   - core/modules/system/css/system.theme.css
   - core/modules/views/css/views.module.css
   - core/themes/classy/css/components/item-list.css
+  - profiles/cr/modules/contrib/blazy/css/components/blazy.loading.css
 
 ckeditor_stylesheets:
   - css/styles.css
