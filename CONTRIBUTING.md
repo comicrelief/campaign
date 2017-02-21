@@ -31,6 +31,3 @@ We're looking at extending our codebase the include the following features (in n
 * Remove Drush make support in favor of Composer
 * More behat tests
 * A Yeoman scaffolder to generate the codebase for new sites using the Campaign profile
-
-
-
