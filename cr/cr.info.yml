@@ -242,6 +242,9 @@ config_devel:
   # Cookie consent
   - cookieconsent.settings
 
+  # Blazy
+  - blazy.settings
+
   - simple_sitemap.settings
   - simple_sitemap.bundle_settings.node.article
   - simple_sitemap.bundle_settings.node.landing
