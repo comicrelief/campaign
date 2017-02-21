@@ -222,5 +222,5 @@ libraries:
   blazy:
     download:
       type: "get"
-      url: https://raw.githubusercontent.com/dinbror/blazy/master/blazy.min.js
+      url: https://github.com/dinbror/blazy/archive/1.8.2.zip
     destination: "../web/libraries"
