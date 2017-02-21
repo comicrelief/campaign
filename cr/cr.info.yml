@@ -63,6 +63,7 @@ dependencies:
   - cookieconsent
   - field_group
   - twig_tweak
+  - blazy
 
   # Layout
   - inline_entity_form
