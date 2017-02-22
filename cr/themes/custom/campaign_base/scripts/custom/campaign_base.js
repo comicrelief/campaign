@@ -16,9 +16,9 @@
     });
     $("button.feature-nav-toggle").on("click", function() {
 
-      $(".c-hamburger__text").text(function(i, text){
+/*      $(".c-hamburger__text").text(function(i, text){
           return text === "More" ? "Close" : "More";
-      });
+      });*/
 
       $(this).toggleClass("is-active");
       $("header[role='banner'] nav, .search-overlay:not('.show'), .search-overlay.show.nav-on").toggleClass("show");
