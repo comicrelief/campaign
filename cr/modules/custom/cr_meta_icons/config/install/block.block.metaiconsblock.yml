@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - cr_meta_icons
+id: metaiconsblock
+theme: campaign_base
+region: header
+weight: -4
+provider: null
+plugin: cr_meta_icons
+settings:
+  id: cr_meta_icons
+  label: 'Meta Icons block'
+  provider: cr_meta_icons
+  label_display: '0'
+visibility: {  }

@@ -3,7 +3,7 @@
 
 language: php
 php:
-  - 5.6
+  - 7.1
 
 git:
   depth: 1
@@ -33,8 +33,8 @@ env:
     - export PROFILE="cr"
     - export DB="drupal"
     - export DB_URL="mysql://root:@127.0.0.1/drupal"
-    - export TEST_DIR="./$PROFILE/tests/scripts"
-    - export BEHAT_DIR="./$PROFILE/tests/behat"
+    - export TRAVIS_DIR="./ci/travis"
+    - export BEHAT_DIR="./tests/behat"
     - export BEHAT_DRIVER="phantomjs"
     - export BEHAT_BROWSER="firefox"
     # Note: Do not add a trailing slash here.
@@ -51,21 +51,21 @@ before_install:
   - composer global config minimum-stability beta
   - composer global require phing/phing:2.15 drush/drush:8.*
   # Prepare environment
-  - $TEST_DIR/before-install.sh
+  - $TRAVIS_DIR/before-install.sh
   # Check code quality before site is installed
-  - $TEST_DIR/code-checks.sh
+  - $TRAVIS_DIR/code-checks.sh
 
 install:
-  - travis_wait $TEST_DIR/install.sh
+  - travis_wait $TRAVIS_DIR/install.sh
 
 before_script:
-  - $TEST_DIR/before-tests.sh
+  - $TRAVIS_DIR/before-tests.sh
 
 script:
   # Behat
-  - $TEST_DIR/run-tests.sh
+  - $TRAVIS_DIR/run-tests.sh
   # Check DB errors
-  - $TEST_DIR/dberrors.sh
+  - $TRAVIS_DIR/dberrors.sh
 
 notifications:
   slack:

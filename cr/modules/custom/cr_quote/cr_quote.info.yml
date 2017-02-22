@@ -4,8 +4,8 @@ description: Contains config for the quote block.
 core: 8.x
 package: Comic Relief
 config_devel:
-  - image.style.cw_quote_lg
-  - image.style.cw_quote_lg_2x
+  - image.style.cr_410_wide
+  - image.style.cr_410_wide_2x_
   - image.style.cw_quote_sm
   - image.style.cw_quote_sm_2x
   - responsive_image.styles.cw_quote

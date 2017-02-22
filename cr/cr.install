@@ -6,17 +6,23 @@
 
 use Drupal\Core\Database\Database;
 
+
+function deleteConfig($file) {
+  \Drupal::configFactory()->getEditable($file)->delete();
+}
+
+function installer() {
+  return \Drupal::service('module_installer');
+}
 /**
  * Implements hook_install().
- *
- * Performs actions to set up the site for this profile.
- *
- * @see system_install()
  */
 function cr_install() {
   // Disable the user pictures on nodes.
-  \Drupal::configFactory()->getEditable('system.theme.global')->set('features.node_user_picture', FALSE)->save(TRUE);
-
+  \Drupal::configFactory()
+    ->getEditable('system.theme.global')
+    ->set('features.node_user_picture', false)
+    ->save(true);
 }
 
 /**
@@ -78,10 +84,10 @@ function cr_update_8008() {
   $query = "DELETE FROM key_value WHERE collection='system.schema' AND name='crop'";
   Database::getConnection()->query($query);
 
-  $config_facotry = \Drupal::configFactory();
-  $config_facotry->getEditable('field.storage.block_content.field_teaser_link')
+  $config_factory = \Drupal::configFactory();
+  $config_factory->getEditable('field.storage.block_content.field_teaser_link')
     ->delete();
-  $config_facotry->getEditable('field.field.block_content.teaser.field_teaser_link')
+  $config_factory->getEditable('field.field.block_content.teaser.field_teaser_link')
     ->delete();
 }
 
@@ -156,7 +162,7 @@ function cr_update_8017() {
 }
 
 /**
-* Install cr_video cr_media
+* Install cr_content_reference
 */
 function cr_update_8018() {
   \Drupal::service('module_installer')->install(['cr_content_reference']);
@@ -173,10 +179,10 @@ function cr_update_8019() {
 * Remove title field from teaser block
 */
 function cr_update_8020() {
-  $config_facotry = \Drupal::configFactory();
-  $config_facotry->getEditable('field.storage.block_content.field_teaser_title')
+  $config_factory = \Drupal::configFactory();
+  $config_factory->getEditable('field.storage.block_content.field_teaser_title')
     ->delete();
-  $config_facotry->getEditable('field.field.block_content.teaser.field_teaser_title')
+  $config_factory->getEditable('field.field.block_content.teaser.field_teaser_title')
     ->delete();
   field_purge_batch('field_teaser_title');
 }
@@ -194,8 +200,8 @@ function cr_update_8021() {
 function cr_update_8022() {
   // Remove any orphaned paragraphs
   $result = \Drupal::entityQuery('paragraph')
-       ->condition('type', 'cr_single_message_row')
-       ->execute();
+    ->condition('type', 'cr_single_message_row')
+    ->execute();
    entity_delete_multiple('paragraph', $result);
   // Disable the containing module
   \Drupal::service('module_installer')->uninstall(['cr_single_message_row_paragraph']);
@@ -214,23 +220,52 @@ function cr_update_8023() {
  * Delete old varnish config
  */
 function cr_update_8024() {
-    $config_facotry = \Drupal::configFactory();
-    $config_facotry->getEditable('purge_purger_http.settings.0e73130559')
-        ->delete();
-    $config_facotry->getEditable('purge_purger_http.settings.52aab9005f')
-        ->delete();
+  $config_factory = \Drupal::configFactory();
+  $config_factory->getEditable('purge_purger_http.settings.0e73130559')
+    ->delete();
+  $config_factory->getEditable('purge_purger_http.settings.52aab9005f')
+    ->delete();
 }
 
 /**
  * Deletes config in landing pages & news block
  */
 function cr_update_8025() {
-    $config_facotry = \Drupal::configFactory();
-    $config_facotry
-        ->getEditable('core.entity_view_display.node.landing.landing_page_header')
-        ->delete();
-    $config_facotry->getEditable('core.entity_view_mode.node.landing_page_header')
-        ->delete();
-    $config_facotry->getEditable('block.block.views_block__what_s_going_on_block_1')
-        ->delete();
+  $config_factory = \Drupal::configFactory();
+  $config_factory
+    ->getEditable('core.entity_view_display.node.landing.landing_page_header')
+    ->delete();
+  $config_factory->getEditable('core.entity_view_mode.node.landing_page_header')
+    ->delete();
+  $config_factory->getEditable('block.block.views_block__what_s_going_on_block_1')
+    ->delete();
+}
+
+/**
+ * Remove update module
+ */
+function cr_update_8026() {
+  \Drupal::service('module_installer')->uninstall(['update']);
+  $config_factory = \Drupal::configFactory();
+  $config_factory
+    ->getEditable('update.settings')
+    ->delete();
+}
+
+/**
+* Install cr_meta_icons
+*/
+function cr_update_8027() {
+  \Drupal::service('module_installer')->install(['cr_meta_icons']);
+}
+
+/**
+ * Delete cr_search_db config
+ */
+function cr_update_8028() {
+  deleteConfig('search_api.server.cr_database');
+  deleteConfig('search_api.index.cr_content');
+  deleteConfig('views.view.search_db');
+  deleteConfig('search_api_db.settings');
+  installer()->uninstall(['search_api_db']);
 }

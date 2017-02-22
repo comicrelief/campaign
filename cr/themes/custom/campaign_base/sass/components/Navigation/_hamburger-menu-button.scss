@@ -37,9 +37,6 @@ $duration: 0.2s;     // The transition duration
       background-color: $colour-black;
     }
   }
-  &:focus {
-    outline: transparent;
-  }
   span {
     position: absolute;
     top: 36px;

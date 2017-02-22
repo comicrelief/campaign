@@ -7,13 +7,19 @@
 //
 // Style guide: Navigation.New-Main-nav
 
-.menu--main {
+/* Show menu when js is off */
+html:not(.js) {
+  .header__inner-wrapper nav.navigation {
+    display: block;
+  }
+}
+.header__inner-wrapper nav.navigation {
   position: absolute;
   z-index: 100;
   top: 80px;
   right: 0;
-  display: none;
   width: 100%;
+  display: none;
   @include breakpoint($screen-md) {
     width: auto;
   }

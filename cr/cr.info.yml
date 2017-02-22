@@ -98,6 +98,7 @@ dependencies:
   #- cr_performance
   - cr_user
   - cr_social
+  - cr_meta_icons
 
   # Development modules
   - config_devel
@@ -111,7 +112,7 @@ dependencies:
   - cr_default_content
 
   # Because cr_landing_pages has content dependencies this needs to be loaded after
-  - cr_search
+  - cr_search_db
 
 themes:
   - seven
