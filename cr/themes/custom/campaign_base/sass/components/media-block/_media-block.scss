@@ -74,6 +74,7 @@
   padding: 40px 10px 30px;
   h2, h3, h4, h5 {
   	color: $colour-white;
+    @include font-size($p-xlarge-font-size);
   }
   .font--yellow {
     color: $colour-yellow;
