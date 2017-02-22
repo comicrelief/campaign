@@ -274,5 +274,5 @@ function cr_update_8028() {
  * Install blazy
  */
 function cr_update_8029() {
-  \Drupal::service('module_installer')->install(['blazy', 'blazy_ui']);
+  \Drupal::service('module_installer')->install(['blazy']);
 }
