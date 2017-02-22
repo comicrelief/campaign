@@ -5,7 +5,6 @@
 .news-landing__content-wrapper {
 	width: calc(100% - (8 * 1.25%));
 	margin: auto;
-
 	@include breakpoint($screen-md) {
 		width: calc(100% - (4 * 1.25%));
 	}
@@ -18,7 +17,7 @@
 	margin: 0 0 50px 0;
 	padding: 20px;
 	background-color: $colour-white;
-	@include breakpoint($screen-lg){ 
+	@include breakpoint($screen-lg) { 
 		@include span(8);
 		margin: 0 auto 50px;
 		float: none;
@@ -38,32 +37,51 @@
 			width: 100%;
 			float: left;
 			font-size: 18px;
-			@include breakpoint($screen-md){
-				width: 39%;
+			@include breakpoint($screen-md) {
+				width: 38%;
 				display: inline-block;
 				text-align: right;
 				font-size: 22px;
-				@include translateY(25%);
+				// @include translateY(25%);
+				@include translateY(70%);
 			}
 		}
 		.ui-widget {
 			width: 100% !important; //override element styling
-			float:left;
+			height: 50px;
+			float: left;
 			margin: 20px 0 0;
 			border-radius: 0px;
-			@include breakpoint($screen-md){
+			font-family: $font-regular;
+			color: $colour-black;
+			@include breakpoint($screen-md) {
 				width: 55.83333% !important; //override element styling
 				float:right;
 				margin: 0;
 				display: inline-block;
 			}
+			.ui-icon {
+				display:none;
+			}
 			.ui-selectmenu-text {
-				margin-right: 30px;
+				margin-right: 50px;
+				padding: 15px 15px 15px 25px;
 				border-right: 1px solid #cccccc;
-				font-family: $font-regular;
-				color: $colour-black;
 			}
 		}
+		.ui-widget::after {
+			position: absolute;
+			width: 12px;
+			height: 12px;
+			top: 16px;
+			right: 18px;
+			content: "";
+			border-left: 2px solid $colour-black;
+			border-bottom: 2px solid $colour-black;
+			-ms-transform: rotate(-45deg);
+			-webkit-transform: rotate(-45deg);
+			transform: rotate(-45deg);
+  	}
 	}
 	.form-actions {
 		display:none;
