@@ -191,6 +191,10 @@ projects:
       revision: 908c0a2
   cdn:
     version: 3.0
+  better_exposed_filters:
+    download:
+      version: 3.x-dev
+      revision: 19f3da2
 libraries:
   platform:
     download:

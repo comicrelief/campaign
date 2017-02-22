@@ -269,3 +269,9 @@ function cr_update_8028() {
   deleteConfig('search_api_db.settings');
   installer()->uninstall(['search_api_db']);
 }
+/**
+ * Install better_exposed_filters
+ */
+function cr_update_8029() {
+  installer()->install(['better_exposed_filters']);
+}
