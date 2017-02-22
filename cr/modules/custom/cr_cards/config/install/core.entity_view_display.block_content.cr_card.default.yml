@@ -6,10 +6,11 @@ dependencies:
     - field.field.block_content.cr_card.field_cr_card_background
     - field.field.block_content.cr_card.field_cr_card_body
     - field.field.block_content.cr_card.field_cr_card_image
+    - responsive_image.styles.cr_cards
   module:
-    - blazy
     - ds
     - options
+    - responsive_image
     - text
 third_party_settings:
   ds:
@@ -54,33 +55,9 @@ content:
     weight: 0
     label: hidden
     settings:
-      image_style: ''
-      iframe_lazy: true
-      icon: ''
-      layout: ''
-      thumbnail_style: ''
-      view_mode: ''
-      cache: 0
-      current_view_mode: ''
-      optionset: default
-      skin: ''
-      style: ''
-      background: false
-      box_caption: ''
-      box_caption_custom: ''
-      box_style: ''
-      box_media_style: ''
-      breakpoints: {  }
-      caption: {  }
-      media_switch: ''
-      ratio: ''
-      responsive_image_style: ''
-      sizes: ''
-      grid: 0
-      grid_header: ''
-      grid_medium: 0
-      grid_small: 0
+      responsive_image_style: cr_cards
+      image_link: ''
     third_party_settings: {  }
-    type: blazy
+    type: responsive_image
 hidden:
   social_links: true

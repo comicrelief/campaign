@@ -13,9 +13,9 @@ dependencies:
     - field.field.node.article.publishing_date
     - node.type.article
   module:
-    - blazy
     - datetime
     - metatag
+    - responsive_image
     - text
     - user
     - video_embed_field
@@ -42,33 +42,9 @@ content:
     label: hidden
     settings:
       responsive_image_style: hero_image_full_node
-      iframe_lazy: true
-      icon: ''
-      layout: ''
-      thumbnail_style: ''
-      view_mode: ''
-      cache: 0
-      current_view_mode: ''
-      optionset: default
-      skin: ''
-      style: ''
-      background: false
-      box_caption: ''
-      box_caption_custom: ''
-      box_style: ''
-      box_media_style: ''
-      breakpoints: {  }
-      caption: {  }
-      image_style: ''
-      media_switch: ''
-      ratio: ''
-      sizes: ''
-      grid: 0
-      grid_header: ''
-      grid_medium: 0
-      grid_small: 0
+      image_link: ''
     third_party_settings: {  }
-    type: blazy
+    type: responsive_image
   field_article_intro:
     type: text_default
     weight: 3

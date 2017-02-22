@@ -36,11 +36,11 @@ third_party_settings:
     regions:
       ds_content:
         - field_author_background_colour
-        - field_body
         - field_author_image
-        - social_links
-        - field_background_image
         - field_background_colour
+        - field_background_image
+        - field_body
+        - social_links
 id: block_content.quote_block.cw_mp
 targetEntityType: block_content
 bundle: quote_block
@@ -71,8 +71,8 @@ content:
     weight: 0
     label: hidden
     settings:
-      image_style: ''
       image_link: ''
+      image_style: ''
     third_party_settings: {  }
   field_body:
     type: text_default

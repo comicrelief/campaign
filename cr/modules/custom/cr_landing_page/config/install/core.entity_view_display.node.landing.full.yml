@@ -4,7 +4,6 @@ dependencies:
   config:
     - core.entity_view_mode.node.full
     - field.field.node.landing.body
-    - field.field.node.landing.field_background_video
     - field.field.node.landing.field_landing_background_colour
     - field.field.node.landing.field_landing_background_video
     - field.field.node.landing.field_landing_copy_position_alig
@@ -139,7 +138,6 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
-  field_background_video: true
   field_landing_meta_tags: true
   links: true
   social_links: true

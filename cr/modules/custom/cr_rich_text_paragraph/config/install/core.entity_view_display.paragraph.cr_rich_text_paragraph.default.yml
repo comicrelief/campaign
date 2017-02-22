@@ -8,9 +8,9 @@ dependencies:
     - field.field.paragraph.cr_rich_text_paragraph.field_body
     - paragraphs.paragraphs_type.cr_rich_text_paragraph
   module:
-    - blazy
     - ds
     - options
+    - responsive_image
     - text
 third_party_settings:
   ds:
@@ -19,7 +19,6 @@ third_party_settings:
       path: profiles/cr/modules/contrib/ds
       library: ''
       disable_css: false
-      entity_classes: all_classes
       settings:
         wrappers:
           ds_content: div
@@ -54,33 +53,9 @@ content:
     label: hidden
     settings:
       responsive_image_style: background_single_message
-      iframe_lazy: true
-      icon: ''
-      layout: ''
-      thumbnail_style: ''
-      view_mode: ''
-      cache: 0
-      current_view_mode: ''
-      optionset: default
-      skin: ''
-      style: ''
-      background: false
-      box_caption: ''
-      box_caption_custom: ''
-      box_style: ''
-      box_media_style: ''
-      breakpoints: {  }
-      caption: {  }
-      image_style: ''
-      media_switch: ''
-      ratio: ''
-      sizes: ''
-      grid: 0
-      grid_header: ''
-      grid_medium: 0
-      grid_small: 0
+      image_link: ''
     third_party_settings: {  }
-    type: blazy
+    type: responsive_image
   field_bg_single_msg_bg_colour:
     weight: 2
     label: above
@@ -99,11 +74,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
+  social_links:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
   uid:
     type: author
     weight: 6
     label: above
     settings: {  }
     third_party_settings: {  }
-hidden:
-  social_links: true
+hidden: {  }

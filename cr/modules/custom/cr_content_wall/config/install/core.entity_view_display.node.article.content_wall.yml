@@ -13,9 +13,10 @@ dependencies:
     - field.field.node.article.field_video_embed
     - field.field.node.article.publishing_date
     - node.type.article
+    - responsive_image.styles.cw_bg_image_blocks
   module:
-    - blazy
     - ds
+    - responsive_image
     - user
 third_party_settings:
   ds:
@@ -69,33 +70,9 @@ content:
     label: hidden
     settings:
       responsive_image_style: cw_bg_image_blocks
-      iframe_lazy: true
-      icon: ''
-      layout: ''
-      thumbnail_style: ''
-      view_mode: ''
-      cache: 0
-      current_view_mode: ''
-      optionset: default
-      skin: ''
-      style: ''
-      background: false
-      box_caption: ''
-      box_caption_custom: ''
-      box_style: ''
-      box_media_style: ''
-      breakpoints: {  }
-      caption: {  }
-      image_style: ''
-      media_switch: ''
-      ratio: ''
-      sizes: ''
-      grid: 0
-      grid_header: ''
-      grid_medium: 0
-      grid_small: 0
+      image_link: ''
     third_party_settings: {  }
-    type: blazy
+    type: responsive_image
 hidden:
   body: true
   field_article_category: true

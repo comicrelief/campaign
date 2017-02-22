@@ -13,10 +13,11 @@ dependencies:
     - field.field.block_content.teaser.field_teaser_link_colour
     - field.field.block_content.teaser.field_teaser_link_title
     - field.field.block_content.teaser.field_teaser_you_tube_link
+    - responsive_image.styles.cw_landscape_image
   module:
-    - blazy
     - ds
     - options
+    - responsive_image
     - text
 third_party_settings:
   ds:
@@ -38,6 +39,7 @@ third_party_settings:
     regions:
       ds_content:
         - field_teaser_bg_colour
+        - field_teaser_title
         - field_teaser_image
         - body
         - field_teaser_link_title
@@ -85,56 +87,10 @@ content:
     weight: 2
     label: hidden
     settings:
-      image_style: ''
-      thumbnail_style: ''
       responsive_image_style: cw_landscape_image
-      media_switch: ''
-      ratio: ''
-      sizes: ''
-      breakpoints:
-        xs:
-          image_style: ''
-          width: ''
-          breakpoint: ''
-        sm:
-          image_style: ''
-          width: ''
-          breakpoint: ''
-        md:
-          image_style: ''
-          width: ''
-          breakpoint: ''
-        lg:
-          image_style: ''
-          width: ''
-          breakpoint: ''
-        xl:
-          image_style: ''
-          width: ''
-          breakpoint: ''
-      current_view_mode: cw_s
-      background: false
-      caption:
-        title: '0'
-        alt: '0'
-      iframe_lazy: true
-      icon: ''
-      layout: ''
-      view_mode: ''
-      cache: 0
-      optionset: default
-      skin: ''
-      style: ''
-      box_caption: ''
-      box_caption_custom: ''
-      box_style: ''
-      box_media_style: ''
-      grid: 0
-      grid_header: ''
-      grid_medium: 0
-      grid_small: 0
+      image_link: ''
     third_party_settings: {  }
-    type: blazy
+    type: responsive_image
   field_teaser_link_address:
     type: string
     weight: 5
