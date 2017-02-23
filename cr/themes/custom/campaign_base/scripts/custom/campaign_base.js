@@ -37,6 +37,19 @@
       $('button.feature-nav-toggle.is-active').removeClass('is-active');
     });
 
+    // Close all overlays and dropdowns when we're clicking on other content
+    $(document).on('click', function (e) {
+
+      // Check that we're not interacting with the nav; dont want to close anything being used
+      if (!$(e.target).is('.meta-icons *, .feature-nav__icons *, .search-block *, ul.menu *, .block--cr-email-signup--head *')) {
+
+        // Remove all active state classes from all of our active nav dropdowns
+        $('button.feature-nav-toggle.is-active').removeClass('is-active');
+        $('#block-campaign-base-main-menu.show, .search-overlay.show, .block--cr-email-signup--head').removeClass('show');
+        $('.meta-icons__esu-toggle.active, meta-icons__magnify.active').removeClass('active');
+      }
+    });
+    
     $(".site-logo").attr('tabindex', 2);
 
     // IE fallback objectfit
