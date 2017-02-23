@@ -64,8 +64,7 @@
   @include breakpoint($screen-md, $no-query: true) {
     padding: 40px 40px 20px;
   }
-  p, h3 {
-    @include font-size($p-xlarge-font-size);
+  p, h4 {
     color: $colour-white;
   }
 }
