@@ -29,28 +29,28 @@ function cr_install() {
  * Install config_readonly
  */
 function cr_update_8001() {
-  \Drupal::service('module_installer')->install(['config_readonly']);
+  installer()->install(['config_readonly']);
 }
 
 /**
  * Install cr_cards and cr_single_msg
  */
 function cr_update_8002() {
-  \Drupal::service('module_installer')->install(['cr_cards', 'cr_single_msg']);
+  installer()->install(['cr_cards', 'cr_single_msg']);
 }
 
 /**
  * Install cr_downloadables
  */
 function cr_update_8003() {
-  \Drupal::service('module_installer')->install(['cr_downloadables']);
+  installer()->install(['cr_downloadables']);
 }
 
 /**
  * Install cr_navigation
  */
 function cr_update_8004() {
-  \Drupal::service('module_installer')->install(['cr_navigation']);
+  installer()->install(['cr_navigation']);
 }
 
 /**
@@ -60,21 +60,21 @@ function cr_update_8005() {
   $field = Drupal\field\Entity\FieldStorageConfig::loadByName('node', 'field_youtube_url');
   $field->delete();
   field_purge_batch('field_youtube_url');
-  \Drupal::service('module_installer')->uninstall(['youtube']);
+  installer()->uninstall(['youtube']);
 }
 
 /**
  * Install cr_user
  */
 function cr_update_8006() {
-  \Drupal::service('module_installer')->install(['cr_user']);
+  installer()->install(['cr_user']);
 }
 
 /**
  * Delete old config
  */
 function cr_update_8007() {
-  \Drupal::configFactory()->getEditable('system.menu.main-navigation')->delete();
+  deleteConfig('system.menu.main-navigation');
 }
 
 /**
@@ -84,18 +84,15 @@ function cr_update_8008() {
   $query = "DELETE FROM key_value WHERE collection='system.schema' AND name='crop'";
   Database::getConnection()->query($query);
 
-  $config_factory = \Drupal::configFactory();
-  $config_factory->getEditable('field.storage.block_content.field_teaser_link')
-    ->delete();
-  $config_factory->getEditable('field.field.block_content.teaser.field_teaser_link')
-    ->delete();
+  deleteConfig('field.storage.block_content.field_teaser_link');
+  deleteConfig('field.field.block_content.teaser.field_teaser_link');
 }
 
 /**
 * Install cdn
 */
 function cr_update_8009() {
- \Drupal::service('module_installer')->install(['cdn']);
+ installer()->install(['cdn']);
 }
 
 /**
@@ -120,70 +117,66 @@ function cr_update_8011() {
  * Remove Search view + search configs
  */
 function cr_update_8012() {
-    $entityTypeManager = \Drupal::service('entity_type.manager');
-    $view = $entityTypeManager->getStorage('view')->load('search');
-    $view->delete();
-    $config = \Drupal::service('config.factory');
-    $config->getEditable('views.view.search')->delete();
-    $config->getEditable('search_api.server.database')->delete();
+  $entityTypeManager = \Drupal::service('entity_type.manager');
+  $view = $entityTypeManager->getStorage('view')->load('search');
+  $view->delete();
+  deleteConfig('views.view.search');
+  deleteConfig('search_api.server.database');
 
-    $query = 'ALTER TABLE {search_api_task}
+  $query = 'ALTER TABLE {search_api_task}
 CHANGE COLUMN server_id server_id VARCHAR(50) NULL';
-    Database::getConnection()->query($query);
+  Database::getConnection()->query($query);
 }
 
 /**
  * Install cr_social
  */
 function cr_update_8013() {
- \Drupal::service('module_installer')->install(['cr_social']);
+  installer()->install(['cr_social']);
 }
 
 /**
  * Install cr_story
  */
 function cr_update_8015() {
-  \Drupal::service('module_installer')->install(['cr_story']);
+  installer()->install(['cr_story']);
 }
 
 /**
  * Install cr_iframe
  */
 function cr_update_8016() {
- \Drupal::service('module_installer')->install(['cr_iframe']);
+  installer()->install(['cr_iframe']);
 }
 
 /**
 * Install cr_video cr_media
 */
 function cr_update_8017() {
-  \Drupal::service('module_installer')->install(['cr_video']);
-  \Drupal::service('module_installer')->install(['cr_media']);
+  installer()->install(['cr_video']);
+  installer()->install(['cr_media']);
 }
 
 /**
 * Install cr_content_reference
 */
 function cr_update_8018() {
-  \Drupal::service('module_installer')->install(['cr_content_reference']);
+  installer()->install(['cr_content_reference']);
 }
 
 /**
 * Install cr_quote
 */
 function cr_update_8019() {
-  \Drupal::service('module_installer')->install(['cr_quote']);
+  installer()->install(['cr_quote']);
 }
 
 /**
 * Remove title field from teaser block
 */
 function cr_update_8020() {
-  $config_factory = \Drupal::configFactory();
-  $config_factory->getEditable('field.storage.block_content.field_teaser_title')
-    ->delete();
-  $config_factory->getEditable('field.field.block_content.teaser.field_teaser_title')
-    ->delete();
+  deleteConfig('field.storage.block_content.field_teaser_title');
+  deleteConfig('field.field.block_content.teaser.field_teaser_title');
   field_purge_batch('field_teaser_title');
 }
 
@@ -191,7 +184,7 @@ function cr_update_8020() {
 * Install twig_tweak
 */
 function cr_update_8021() {
-  \Drupal::service('module_installer')->install(['twig_tweak', 'field_group']);
+  installer()->install(['twig_tweak', 'field_group']);
 }
 
 /**
@@ -204,59 +197,46 @@ function cr_update_8022() {
     ->execute();
    entity_delete_multiple('paragraph', $result);
   // Disable the containing module
-  \Drupal::service('module_installer')->uninstall(['cr_single_message_row_paragraph']);
+  installer()->uninstall(['cr_single_message_row_paragraph']);
 }
 
 /**
  * Delete old schedule config
  */
 function cr_update_8023() {
-  \Drupal::configFactory()
-    ->getEditable('scheduled_updates.scheduled_update_type.node__status')
-    ->delete();
+  deleteConfig('scheduled_updates.scheduled_update_type.node__status');
 }
 
 /**
  * Delete old varnish config
  */
 function cr_update_8024() {
-  $config_factory = \Drupal::configFactory();
-  $config_factory->getEditable('purge_purger_http.settings.0e73130559')
-    ->delete();
-  $config_factory->getEditable('purge_purger_http.settings.52aab9005f')
-    ->delete();
+  deleteConfig('purge_purger_http.settings.0e73130559');
+  deleteConfig('purge_purger_http.settings.52aab9005f');
 }
 
 /**
  * Deletes config in landing pages & news block
  */
 function cr_update_8025() {
-  $config_factory = \Drupal::configFactory();
-  $config_factory
-    ->getEditable('core.entity_view_display.node.landing.landing_page_header')
-    ->delete();
-  $config_factory->getEditable('core.entity_view_mode.node.landing_page_header')
-    ->delete();
-  $config_factory->getEditable('block.block.views_block__what_s_going_on_block_1')
-    ->delete();
+  deleteConfig('core.entity_view_display.node.landing.landing_page_header');
+  deleteConfig('core.entity_view_mode.node.landing_page_header');
+  deleteConfig('block.block.views_block__what_s_going_on_block_1');
 }
 
 /**
  * Remove update module
  */
 function cr_update_8026() {
-  \Drupal::service('module_installer')->uninstall(['update']);
-  $config_factory = \Drupal::configFactory();
-  $config_factory
-    ->getEditable('update.settings')
-    ->delete();
+  installer()->uninstall(['update']);
+  deleteConfig('update.settings');
 }
 
 /**
 * Install cr_meta_icons
 */
 function cr_update_8027() {
-  \Drupal::service('module_installer')->install(['cr_meta_icons']);
+  installer()->install(['cr_meta_icons']);
 }
 
 /**
