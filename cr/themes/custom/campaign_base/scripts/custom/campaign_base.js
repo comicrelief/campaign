@@ -88,18 +88,6 @@
             }
         });
 
-        /*
-         // Search hold on
-         $("button.meta-icons__magnify").on("click", function() {
-         $(this).toggleClass("active");
-         $(".search-block").toggleClass("show");
-         });
-         $(".search-block:not").on("click", function() {
-         $("button.meta-icons__magnify").removeClass("active");
-         $(".search-block").removeClass("show");
-         });
-         */
-
         // ui selectmenu change listener for
         // news landing page exposed filter
         selectMenuChange();
