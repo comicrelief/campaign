@@ -11,10 +11,9 @@ dependencies:
     - field.field.node.partner.field_partner_website
     - field.field.node.partner.field_partner_weight
     - node.type.partner
-    - responsive_image.styles.partner_row
   module:
+    - blazy
     - ds
-    - responsive_image
     - user
 third_party_settings:
   ds:
@@ -42,12 +41,36 @@ bundle: partner
 mode: logos
 content:
   field_partner_logo:
-    type: responsive_image
+    type: blazy
     weight: 0
     label: hidden
     settings:
       responsive_image_style: partner_row
-      image_link: content
+      iframe_lazy: true
+      icon: ''
+      layout: ''
+      thumbnail_style: ''
+      view_mode: ''
+      cache: 0
+      current_view_mode: ''
+      optionset: default
+      skin: ''
+      style: ''
+      background: false
+      box_caption: ''
+      box_caption_custom: ''
+      box_style: ''
+      box_media_style: ''
+      breakpoints: {  }
+      caption: {  }
+      image_style: ''
+      media_switch: ''
+      ratio: ''
+      sizes: ''
+      grid: 0
+      grid_header: ''
+      grid_medium: 0
+      grid_small: 0
     third_party_settings: {  }
 hidden:
   body: true

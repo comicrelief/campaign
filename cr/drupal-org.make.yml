@@ -52,6 +52,8 @@ projects:
     version: 1.0-beta3
   entity:
     version: 1.0-alpha3
+  blazy:
+    version: 1.0-rc1
   # Layout modules
   inline_entity_form:
     download:
@@ -217,3 +219,8 @@ libraries:
       type: "get"
       url: https://raw.githubusercontent.com/comicrelief/campaign-modernizr/master/modernizr-custom.js
     destination: "themes/custom/campaign_base/libraries"
+  blazy:
+    download:
+      type: "get"
+      url: https://github.com/dinbror/blazy/archive/1.8.2.zip
+    destination: "../web/libraries"
