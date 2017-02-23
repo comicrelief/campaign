@@ -4,7 +4,6 @@
   <property name="app.uri"            override="true" value="http://campaign.dev"/>
   <property name="drush.bin"          override="true" value="drush"/>
   <property name="grunt.cmd"          override="true" value="build"/>
-  <property name="grunt.watch.cmd"    override="true" value="campaign_base"/>
   <property name="c.home"             override="true" value="tests/behat/vendor/"/>
   <property name="cs.dir"             override="true" value="drupal/coder/coder_sniffer"/>
   <property name="cs.standard"        override="true" value="--standard=Drupal"/>
@@ -72,10 +71,6 @@
   <target name="grunt:build" description="Generate all compiled Sass and JS files.">
     <exec dir="${app.profile.name}" logoutput="true" passthru="true"
           checkreturn="true" command="bundle exec grunt ${grunt.cmd}"/>
-  </target>
-  <target name="grunt:watch" description="Generate all compiled Sass and JS files.">
-    <exec dir="${app.site.theme}" logoutput="true" passthru="true"
-          checkreturn="true" command="bundle exec grunt ${grunt.watch.cmd}"/>
   </target>
   <target name="grunt:dependencies" description="Install all grunt dependencies.">
     <delete file=".bundle/config" />
