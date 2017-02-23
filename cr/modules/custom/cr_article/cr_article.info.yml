@@ -60,4 +60,3 @@ config_devel:
   - field.field.scheduled_update.node_status.field_status
   - core.entity_form_display.scheduled_update.node_status.default
   - rdf.mapping.taxonomy_term.tags
-  - taxonomy.vocabulary.tags
