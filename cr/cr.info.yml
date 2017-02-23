@@ -63,6 +63,7 @@ dependencies:
   - cookieconsent
   - field_group
   - twig_tweak
+  - blazy
 
   # Layout
   - inline_entity_form
@@ -98,6 +99,7 @@ dependencies:
   #- cr_performance
   - cr_user
   - cr_social
+  - cr_meta_icons
 
   # Development modules
   - config_devel
@@ -111,7 +113,7 @@ dependencies:
   - cr_default_content
 
   # Because cr_landing_pages has content dependencies this needs to be loaded after
-  - cr_search
+  - cr_search_db
 
 themes:
   - seven
@@ -240,6 +242,9 @@ config_devel:
 
   # Cookie consent
   - cookieconsent.settings
+
+  # Blazy
+  - blazy.settings
 
   - simple_sitemap.settings
   - simple_sitemap.bundle_settings.node.article

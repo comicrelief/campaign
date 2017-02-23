@@ -1,0 +1,11 @@
+name: Meta Icons Block
+description: Meta icons block.
+core: 8.x
+package: Custom
+dependencies:
+  - node
+  - block
+type: module
+
+config_devel:
+  - block.block.metaiconsblock

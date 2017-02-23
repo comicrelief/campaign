@@ -41,35 +41,17 @@
 <header role="banner">
   <div class="header__top-wrapper">{{ page.header_top }}</div>
   <div class="header__inner-wrapper">
-    {{ page.header }}
-    <div class="meta-nav">
-      <div class="meta-nav__icons">
-        <button class="meta-nav__icons-magnify">
-          <svg class="icon">
-            <use xlink:href="#icon-magnify"></use>
-          </svg>
-        </button>
-        <a href="https://my.rednoseday.com/user/login" target="_blank" class="meta-nav__icons-login">
-          <svg class="icon">
-            <use xlink:href="#icon-login"></use>
-          </svg>
-        </a>
-        <button class="meta-nav__icons-esu-toggle">
-          <svg class="icon">
-            <use xlink:href="#envelope"></use>
-          </svg>
-          <span>Get the latest</span>
-        </button>
-      </div>
-      <ul class="meta-nav__feature-items">
+    <div class="feature-nav">
+      <ul class="feature-nav__items">
       </ul>
-      <div class="meta-nav__icons meta-nav__burger">
-        <button class="c-hamburger c-hamburger--htx meta-nav-toggle">
+      <div class="feature-nav__icons feature-nav__burger">
+        <button class="c-hamburger c-hamburger--htx feature-nav-toggle">
           <div class="c-hamburger__text">More</div>
           <span></span>
         </button>
       </div>
     </div>
+    {{ page.header }}
   </div>
 </header>
 {{ page.breadcrumb }}

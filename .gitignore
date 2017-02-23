@@ -60,9 +60,6 @@ Thumbs.db
 # Icon spritesheet #
 /cr/themes/custom/campaign_base/images/generated/
 
-# Temp agov theme #
-/cr/themes/custom/agov_base/
-
 # Things in the core directory that Drupal 8 commits in the repository.
 !core/**/*.gz
 
@@ -70,8 +67,8 @@ build.properties
 
 PATCHES.txt
 
-/cr/tests/behat/vendor/
-/cr/tests/behat/behat.yml
+/tests/behat/vendor/
+/tests/behat/behat.yml
 
 
 # Ignore the Bless-produced IE9 stylesheets as these get remade each build and will cause merge issues

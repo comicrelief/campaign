@@ -10,7 +10,7 @@ id: paragraph.single_msg.field_single_msg_padding_option
 field_name: field_single_msg_padding_option
 entity_type: paragraph
 bundle: single_msg
-label: 'Padding'
+label: Padding
 description: 'Padding is the space between each row. Every row has some padding at the top and bottom (default). "Remove padding" means removing the padding. "Reduce padding" removes the top or bottom padding plus the padding of the row above or below'
 required: true
 translatable: false
