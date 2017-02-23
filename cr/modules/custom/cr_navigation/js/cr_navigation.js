@@ -22,15 +22,8 @@
           .clone().appendTo( ".feature-nav .feature-nav__items" );
     },
 
-    /* Click event handler trigger our toggle event */
+    /* Click event handler to close nav items when clicking elsewhere */
     handleClick: function (context, settings) {
-
-      // Close any active navs when we're toggling on other buttons in the nav
-      $('.meta-icons button').on('click', function (e) {
-        
-        // Remove active class from hamburger nav to collapse it
-        $('button.feature-nav-toggle.is-active').removeClass('is-active');
-      });
 
       // Close all overlays and dropdowns when we're clicking on other content
       $(document).on('click', function (e) {
