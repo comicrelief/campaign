@@ -65,7 +65,7 @@
                 }
             });
         }
-        // Turn our boring select boxes into sexy jQuery UI selectboxes
+        // use jQuery UI selectboxes
         $('select').selectmenu();
         // Activate lighcase
         // Video lightcase
