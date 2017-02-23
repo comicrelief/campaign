@@ -193,6 +193,8 @@ projects:
       revision: 908c0a2
   cdn:
     version: 3.0
+  refreshless:
+    version: 1.x-dev
 libraries:
   platform:
     download:
