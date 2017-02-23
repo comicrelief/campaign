@@ -63,6 +63,7 @@ dependencies:
   - cookieconsent
   - field_group
   - twig_tweak
+  - blazy
 
   # Layout
   - inline_entity_form
@@ -242,6 +243,9 @@ config_devel:
 
   # Cookie consent
   - cookieconsent.settings
+
+  # Blazy
+  - blazy.settings
 
   - simple_sitemap.settings
   - simple_sitemap.bundle_settings.node.article

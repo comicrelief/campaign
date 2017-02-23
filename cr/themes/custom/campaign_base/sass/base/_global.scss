@@ -36,6 +36,7 @@ header[role=banner] {
 picture img {
   width: 100%;
 }
+
 .node--view-mode-full {
   // think where best to put it
   // max-width: 640px;
@@ -124,4 +125,8 @@ hr {
   clear: both;
   margin: 0 0 20px;
   border: none;
+}
+// media blazy - lazy load
+.media--blazy {
+  height: 100%;
 }
