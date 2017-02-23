@@ -97,7 +97,7 @@ projects:
       # See https://www.drupal.org/node/2686499
       2686499: https://www.drupal.org/files/issues/config_devel-drush-config-devel-import-2686499-6.patch
       # See https://www.drupal.org/node/2801201
-      2801201: https://www.drupal.org/files/issues/show_differences_between-2801201-2.patch
+      2801201: https://www.drupal.org/files/issues/show_differences_between-2801201-3.patch
   default_content:
     download:
       branch: 8.x-1.x
