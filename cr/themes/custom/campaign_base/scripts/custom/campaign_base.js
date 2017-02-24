@@ -45,7 +45,7 @@
 
         // Remove all active state classes from all of our active nav dropdowns
         $('button.feature-nav-toggle.is-active').removeClass('is-active');
-        $('nav.menu--main.show, .search-overlay.show, .block--cr-email-signup--head').removeClass('show');
+        $('.header__inner-wrapper nav.navigation.show, .search-overlay.show, .block--cr-email-signup--head').removeClass('show');
         $('.meta-icons__esu-toggle.active, meta-icons__magnify.active').removeClass('active');
       }
     });
