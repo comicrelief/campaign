@@ -20,6 +20,7 @@ dependencies:
   - rdf
   - menu_ui
   - filter
+  - better_exposed_filters
 
 config_devel:
   - core.base_field_override.node.article.status
