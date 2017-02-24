@@ -256,3 +256,10 @@ function cr_update_8028() {
 function cr_update_8029() {
   \Drupal::service('module_installer')->install(['blazy']);
 }
+
+/**
+ * Install better_exposed_filters
+ */
+function cr_update_8030() {
+  installer()->install(['better_exposed_filters']);
+}
