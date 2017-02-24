@@ -75,7 +75,11 @@
                 .addClass('compat-object-fit');
           
           $container.find('img').hide();
+
         }
+      });
+    }
+
         // use jQuery UI selectboxes
         $('select').selectmenu();
         // Activate lighcase
@@ -110,6 +114,7 @@
                 }
             });
         }
+        
         $(document).ajaxComplete(function() {
             selectMenuChange();
         });
