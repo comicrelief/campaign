@@ -12,9 +12,9 @@ dependencies:
     - field.field.paragraph.cr_story.field_cr_story_title
     - paragraphs.paragraphs_type.cr_story
   module:
+    - blazy
     - ds
     - options
-    - responsive_image
     - text
 third_party_settings:
   ds:
@@ -23,6 +23,7 @@ third_party_settings:
       path: profiles/cr/modules/contrib/ds
       library: ''
       disable_css: false
+      entity_classes: all_classes
       settings:
         wrappers:
           ds_content: div
@@ -63,12 +64,36 @@ content:
     third_party_settings: {  }
     type: text_default
   field_cr_story_beneficiary_image:
-    type: responsive_image
+    type: blazy
     weight: 0
     label: hidden
     settings:
       responsive_image_style: story_row
-      image_link: ''
+      iframe_lazy: true
+      icon: ''
+      layout: ''
+      thumbnail_style: ''
+      view_mode: ''
+      cache: 0
+      current_view_mode: ''
+      optionset: default
+      skin: ''
+      style: ''
+      background: false
+      box_caption: ''
+      box_caption_custom: ''
+      box_style: ''
+      box_media_style: ''
+      breakpoints: {  }
+      caption: {  }
+      image_style: ''
+      media_switch: ''
+      ratio: ''
+      sizes: ''
+      grid: 0
+      grid_header: ''
+      grid_medium: 0
+      grid_small: 0
     third_party_settings: {  }
   field_cr_story_fundraiser_bg_col:
     weight: 1
@@ -83,12 +108,36 @@ content:
     third_party_settings: {  }
     type: text_default
   field_cr_story_fundraiser_image:
-    type: responsive_image
+    type: blazy
     weight: 0
     label: hidden
     settings:
       responsive_image_style: story_row
-      image_link: ''
+      iframe_lazy: true
+      icon: ''
+      layout: ''
+      thumbnail_style: ''
+      view_mode: ''
+      cache: 0
+      current_view_mode: ''
+      optionset: default
+      skin: ''
+      style: ''
+      background: false
+      box_caption: ''
+      box_caption_custom: ''
+      box_style: ''
+      box_media_style: ''
+      breakpoints: {  }
+      caption: {  }
+      image_style: ''
+      media_switch: ''
+      ratio: ''
+      sizes: ''
+      grid: 0
+      grid_header: ''
+      grid_medium: 0
+      grid_small: 0
     third_party_settings: {  }
   field_cr_story_fundraiser_total:
     weight: 2
@@ -110,14 +159,11 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-  social_links:
-    weight: 0
-    settings: {  }
-    third_party_settings: {  }
   uid:
     type: author
     weight: 0
     label: above
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  social_links: true
