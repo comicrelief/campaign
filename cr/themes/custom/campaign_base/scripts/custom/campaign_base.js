@@ -76,46 +76,43 @@
           
           $container.find('img').hide();
         }
-      });
-    }
-    // Turn our boring select boxes into sexy jQuery UI selectboxes
-    $('select').selectmenu({ style:'popup', width: '100%' });
-    // Activate lighcase
-    // Video lightcase
-    $('a[data-rel^=lightcase]').lightcase({
-      overlayOpacity: .95,
-      iframe: {
-        width: "100%",
-        height: "100%",
-        frameborder: 0
-      },
-      onFinish : {
-        custom: function() {
-          var caption = $(this).parent().find('.media-block__caption');
-          $('.lightcase-contentInner iframe').focus();
-          if (caption.length) {
-            lightcase.get('caption').html(caption.html());
-            $('#lightcase-caption').show();
+        // use jQuery UI selectboxes
+        $('select').selectmenu();
+        // Activate lighcase
+        // Video lightcase
+        $('a[data-rel^=lightcase]').lightcase({
+            overlayOpacity: .95,
+            iframe: {
+                width: "100%",
+                height: "100%",
+                frameborder: 0
+            },
+            onFinish : {
+                custom: function() {
+                    var caption = $(this).parent().find('.media-block__caption');
+                    if (caption.length) {
+                        lightcase.get('caption').html(caption.html());
+                        $('#lightcase-caption').show();
+                    }
+                    lightcase.resize();
+                }
             }
-            lightcase.resize();
-          }
+        });
+
+        // ui selectmenu change listener for
+        // news landing page exposed filter
+        selectMenuChange();
+        function selectMenuChange() {
+            $('select').selectmenu({
+                change: function(event, ui) {
+                    //click on form's hidden submit button to trigger Ajax call
+                    $(this).parents('form').find('.form-submit').click();
+                }
+            });
         }
-    });
+        $(document).ajaxComplete(function() {
+            selectMenuChange();
+        });
 
-    // Search hold on
-    // $("button.meta-icons__magnify").on("click", function() {
-    //   $(this).toggleClass("active");
-    //   $(".search-block").toggleClass("show");
-    // });
-    // $(".search-block:not").on("click", function() {
-    //   $("button.meta-icons__magnify").removeClass("active");
-    //   $(".search-block").removeClass("show");
-    // });
-
-  });
-    // reload our styling for select boxes after ajax
-  $( document ).ajaxComplete(function() {
-    $('select').selectmenu({ style:'popup', width: '100%' });
-  });
-
+    })
 })(jQuery, Drupal);

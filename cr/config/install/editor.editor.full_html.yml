@@ -67,7 +67,7 @@ settings:
     video_embed:
       defaults:
         children:
-          autoplay: true
+          autoplay: false
           responsive: true
           width: '854'
           height: '480'
