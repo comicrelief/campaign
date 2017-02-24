@@ -260,8 +260,8 @@ function cr_update_8029() {
 }
 
 /**
- * Install better_exposed_filters
+ * Install better_exposed_filters & cr_image
  */
 function cr_update_8030() {
-  installer()->install(['better_exposed_filters']);
+  installer()->install(['better_exposed_filters'], ['cr_image']);
 }
