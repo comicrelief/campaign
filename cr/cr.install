@@ -251,10 +251,12 @@ function cr_update_8028() {
 }
 
 /**
- * Install blazy
+ * Install blazy and remove dblog settings
  */
 function cr_update_8029() {
-  \Drupal::service('module_installer')->install(['blazy']);
+  installer()->install(['blazy']);
+  installer()->uninstall(['update']);
+  deleteConfig('dblog.settings');
 }
 
 /**
