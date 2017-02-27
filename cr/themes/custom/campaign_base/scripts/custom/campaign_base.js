@@ -47,6 +47,7 @@
         $('button.feature-nav-toggle.is-active').removeClass('is-active');
         $('.header__inner-wrapper nav.navigation.show, .search-overlay.show, .block--cr-email-signup--head').removeClass('show');
         $('.meta-icons__esu-toggle.active, meta-icons__magnify.active').removeClass('active');
+        $('.search-overlay.search-on').removeClass('search-on');
       }
     });
     
@@ -61,10 +62,10 @@
         var $container = $(this);
         var $thisImage = $container.find('img');
 
-        var imgSrc = $thisImage.attr('src');
+        var imgSrc = $thisImage.attr('data-src');
         var imgSrcSet = $thisImage.attr('srcset');
 
-        // Only if we've successfully found an image src OR srcset
+        // Only if we've successfully found an image data-src(blazy) OR srcset
         if (imgSrc || imgSrcSet) {
 
           var imgUrl = imgSrc ? imgSrc : imgSrcSet;
@@ -72,7 +73,8 @@
           $container
             .css('backgroundImage', 'url(' + imgUrl + ')')
               .css('background-size', 'cover')
-                .addClass('compat-object-fit');
+                .addClass('compat-object-fit')
+                .find('.media--blazy').removeClass('media--loading');
           
           $container.find('img').hide();
 
