@@ -47,6 +47,7 @@
         $('button.feature-nav-toggle.is-active').removeClass('is-active');
         $('.header__inner-wrapper nav.navigation.show, .search-overlay.show, .block--cr-email-signup--head').removeClass('show');
         $('.meta-icons__esu-toggle.active, meta-icons__magnify.active').removeClass('active');
+        $('.search-overlay.search-on').removeClass('search-on');
       }
     });
     
