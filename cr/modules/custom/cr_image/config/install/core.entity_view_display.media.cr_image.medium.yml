@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.medium
+    - field.field.media.cr_image.field_cr_image_image
+    - media_entity.bundle.cr_image
+    - responsive_image.styles.cw_landscape_image
+  module:
+    - responsive_image
+id: media.cr_image.medium
+targetEntityType: media
+bundle: cr_image
+mode: medium
+content:
+  field_cr_image_image:
+    weight: 0
+    label: hidden
+    settings:
+      responsive_image_style: cw_landscape_image
+      image_link: ''
+    third_party_settings: {  }
+    type: responsive_image
+hidden:
+  created: true
+  name: true
+  social_links: true
+  thumbnail: true
+  uid: true

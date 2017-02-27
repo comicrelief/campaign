@@ -83,6 +83,7 @@ dependencies:
   - cr_content_reference
   - cr_downloadables
   - cr_video
+  - cr_image
   - cr_media
   - cr_quote
   - cr_content_wall

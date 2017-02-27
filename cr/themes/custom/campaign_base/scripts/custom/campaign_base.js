@@ -1,70 +1,85 @@
 (function($, Drupal) {
-    $( document ).ready(function() {
-        // todo make a function
-        $("button.meta-icons__magnify").on("click", function() {
-            $(this).toggleClass("active");
+  $( document ).ready(function() {
 
-            $(".search-block, .search-overlay:not('.show'), .search-overlay.search-on").toggleClass("show");
+    // todo make a function
+    $("button.meta-icons__magnify").on("click", function() {
+      $(this).toggleClass("active");
+      $(".search-block, .search-overlay:not('.show'), .search-overlay.search-on").toggleClass("show");
+      $(".search-overlay").toggleClass("search-on");
+      $(".search-overlay").removeClass("nav-on");
+      $("header[role='banner'] nav, .block--cr-email-signup--head").removeClass("show");
+      $("button.meta-icons__esu-toggle").removeClass("active");
+      $(".search-block__form input[type=text]").focus();
+    });
 
-            $(".search-overlay").toggleClass("search-on");
+    $("button.feature-nav-toggle").on("click", function() {
+      $(this).toggleClass("is-active");
+      $("header[role='banner'] nav, .search-overlay:not('.show'), .search-overlay.show.nav-on").toggleClass("show");
+      $(".search-overlay").toggleClass("nav-on");
+      $(".search-overlay").removeClass("search-on");
+      $("button.meta-icons__esu-toggle, .meta-icons__magnify").removeClass("active");
+      $(".block--cr-email-signup--head, .search-block").removeClass("show");
+    });
 
-            $(".search-overlay").removeClass("nav-on");
-            $("header[role='banner'] nav, .block--cr-email-signup--head").removeClass("show");
-            $("button.meta-icons__esu-toggle").removeClass("active");
+    $("button.meta-icons__esu-toggle").on("click", function() {
+      $("button.meta-icons__magnify").removeClass("active");
+      $(".search-block, header[role='banner'] nav, .search-overlay").removeClass("show");
+    });
 
-            $(".search-block__form input[type=text]").focus();
-        });
-        $("button.feature-nav-toggle").on("click", function() {
+    $(".search-block .icon").on("click", function() {
+      $("button.meta-icons__magnify").removeClass("active");
+      $(".search-block, .search-overlay").removeClass("show");
+    });
 
-            $(".c-hamburger__text").text(function(i, text){
-                return text === "More" ? "Close" : "More";
-            });
+    // Close any active navs when we're toggling on other buttons in the nav
+    $('.meta-icons button').on('click', function (e) {
+      // Remove active class from hamburger nav to collapse it
+      $('button.feature-nav-toggle.is-active').removeClass('is-active');
+    });
 
-            $(this).toggleClass("is-active");
-            $("header[role='banner'] nav, .search-overlay:not('.show'), .search-overlay.show.nav-on").toggleClass("show");
-            $(".search-overlay").toggleClass("nav-on");
+    // Close all overlays and dropdowns when we're clicking on other content
+    $(document).on('click touchstart', function (e) {
 
-            $(".search-overlay").removeClass("search-on");
-            $("button.meta-icons__esu-toggle, .meta-icons__magnify").removeClass("active");
-            $(".block--cr-email-signup--head, .search-block").removeClass("show");
-        });
-        $("button.meta-icons__esu-toggle").on("click", function() {
-            $("button.meta-icons__magnify").removeClass("active");
-            $(".search-block, header[role='banner'] nav, .search-overlay").removeClass("show");
-        });
-        $(".search-block .icon").on("click", function() {
-            $("button.meta-icons__magnify").removeClass("active");
-            $(".search-block, .search-overlay").removeClass("show");
-        });
+      // Check that we're not interacting with the nav; dont want to close anything being used
+      if (!$(e.target).is('.meta-icons *, .feature-nav__icons *, .search-block *, ul.menu *, .block--cr-email-signup--head *')) {
 
-        $(".site-logo").attr('tabindex', 2);
+        // Remove all active state classes from all of our active nav dropdowns
+        $('button.feature-nav-toggle.is-active').removeClass('is-active');
+        $('.header__inner-wrapper nav.navigation.show, .search-overlay.show, .block--cr-email-signup--head').removeClass('show');
+        $('.meta-icons__esu-toggle.active, meta-icons__magnify.active').removeClass('active');
+      }
+    });
+    
+    $(".site-logo").attr('tabindex', 2);
 
-        // IE fallback objectfit
-        if(!Modernizr.objectfit) {
+    // IE fallback objectfit
+    if(!Modernizr.objectfit) {
+      
+      $('.objectfit').each(function (index) {
 
-            $('.objectfit').each(function (index) {
+        // Cache objectfit object and child image
+        var $container = $(this);
+        var $thisImage = $container.find('img');
 
-                // Cache objectfit object and child image
-                var $container = $(this);
-                var $thisImage = $container.find('img');
+        var imgSrc = $thisImage.attr('src');
+        var imgSrcSet = $thisImage.attr('srcset');
 
-                var imgSrc = $thisImage.attr('src');
-                var imgSrcSet = $thisImage.attr('srcset');
+        // Only if we've successfully found an image src OR srcset
+        if (imgSrc || imgSrcSet) {
 
-                // Only if we've successfully found an image src OR srcset
-                if (imgSrc || imgSrcSet) {
+          var imgUrl = imgSrc ? imgSrc : imgSrcSet;
 
-                    var imgUrl = imgSrc ? imgSrc : imgSrcSet;
+          $container
+            .css('backgroundImage', 'url(' + imgUrl + ')')
+              .css('background-size', 'cover')
+                .addClass('compat-object-fit');
+          
+          $container.find('img').hide();
 
-                    $container
-                        .css('backgroundImage', 'url(' + imgUrl + ')')
-                        .css('background-size', 'cover')
-                        .addClass('compat-object-fit');
-
-                    $container.find('img').hide();
-                }
-            });
         }
+      });
+    }
+
         // use jQuery UI selectboxes
         $('select').selectmenu();
         // Activate lighcase
@@ -99,6 +114,7 @@
                 }
             });
         }
+
         $(document).ajaxComplete(function() {
             selectMenuChange();
         });

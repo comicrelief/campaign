@@ -70,12 +70,8 @@ config_devel:
   - core.entity_view_mode.block_content.cw_mp
   - core.entity_view_mode.block_content.cw_s
   # Image styles
-  - image.style.cr_1170_x_566
-  - image.style.cr_1170_x_566_2x
   - image.style.cr_1170_x_658
   - image.style.cr_1170_x_658_2x
-  - image.style.cr_585_x_283
-  - image.style.cr_585_x_283_2x
   - image.style.cr_585_x_329
   - image.style.cr_585_x_329_2x
   - image.style.cr_lg_1170_x_450
@@ -83,6 +79,5 @@ config_devel:
   - image.style.cr_md_740_x_450
   - image.style.cr_md_740_x_450_2x
   # Responsive image styles
-  - responsive_image.styles.cw_landscape_image
   - responsive_image.styles.cw_medium_image_blocks
   - responsive_image.styles.cw_bg_image_blocks
