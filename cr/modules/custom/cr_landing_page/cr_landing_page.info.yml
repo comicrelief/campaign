@@ -34,6 +34,7 @@ config_devel:
   - field.storage.node.field_landing_image
   - field.storage.node.field_landing_image_mobile
   - field.storage.node.field_landing_meta_tags
+  - field.storage.node.field_svg_body_title
   - pathauto.pattern.landing_page
   - metatag.metatag_defaults.node__landing
 

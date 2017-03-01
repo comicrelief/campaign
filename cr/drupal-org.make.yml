@@ -52,6 +52,8 @@ projects:
     version: 1.0-beta3
   entity:
     version: 1.0-alpha3
+  blazy:
+    version: 1.0-rc1
   # Layout modules
   inline_entity_form:
     download:
@@ -97,7 +99,7 @@ projects:
       # See https://www.drupal.org/node/2686499
       2686499: https://www.drupal.org/files/issues/config_devel-drush-config-devel-import-2686499-6.patch
       # See https://www.drupal.org/node/2801201
-      2801201: https://www.drupal.org/files/issues/show_differences_between-2801201-2.patch
+      2801201: https://www.drupal.org/files/issues/show_differences_between-2801201-3.patch
   default_content:
     download:
       branch: 8.x-1.x
@@ -191,6 +193,10 @@ projects:
       revision: 908c0a2
   cdn:
     version: 3.0
+  better_exposed_filters:
+    download:
+      version: 3.x-dev
+      revision: 19f3da2
 libraries:
   platform:
     download:
@@ -217,3 +223,8 @@ libraries:
       type: "get"
       url: https://raw.githubusercontent.com/comicrelief/campaign-modernizr/master/modernizr-custom.js
     destination: "themes/custom/campaign_base/libraries"
+  blazy:
+    download:
+      type: "get"
+      url: https://github.com/dinbror/blazy/archive/1.8.2.zip
+    destination: "../web/libraries"

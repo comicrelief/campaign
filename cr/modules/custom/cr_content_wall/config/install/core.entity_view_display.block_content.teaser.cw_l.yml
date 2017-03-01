@@ -13,11 +13,10 @@ dependencies:
     - field.field.block_content.teaser.field_teaser_link_colour
     - field.field.block_content.teaser.field_teaser_link_title
     - field.field.block_content.teaser.field_teaser_you_tube_link
-    - responsive_image.styles.cw_landscape_image
   module:
+    - blazy
     - ds
     - options
-    - responsive_image
     - text
 third_party_settings:
   ds:
@@ -39,7 +38,6 @@ third_party_settings:
     regions:
       ds_content:
         - field_teaser_bg_colour
-        - field_teaser_title
         - field_teaser_image
         - body
         - field_teaser_link_title
@@ -88,9 +86,33 @@ content:
     label: hidden
     settings:
       responsive_image_style: cw_landscape_image
-      image_link: ''
+      iframe_lazy: true
+      icon: ''
+      layout: ''
+      thumbnail_style: ''
+      view_mode: ''
+      cache: 0
+      current_view_mode: ''
+      optionset: default
+      skin: ''
+      style: ''
+      background: false
+      box_caption: ''
+      box_caption_custom: ''
+      box_style: ''
+      box_media_style: ''
+      breakpoints: {  }
+      caption: {  }
+      image_style: ''
+      media_switch: ''
+      ratio: ''
+      sizes: ''
+      grid: 0
+      grid_header: ''
+      grid_medium: 0
+      grid_small: 0
     third_party_settings: {  }
-    type: responsive_image
+    type: blazy
   field_teaser_link_address:
     type: string
     weight: 5
