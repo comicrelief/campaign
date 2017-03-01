@@ -1,9 +1,19 @@
 .article-teaser {
 	background-color: $colour-white;
 	.article-teaser__video {
+		position:relative;
 		img { 
 			width: 100%;
 		}
+	}
+	//play-icon. Instead of using a mask, colour is given in svg itself to support all browsers.
+	.article-teaser__video a::after {
+		position: absolute;
+		width: 100%;
+		height: 50px;
+		top: calc(50% - 25px);
+		content: "";
+		background: url(../images/svgs/play-icon.svg) center no-repeat;
 	}
 	.article-teaser__content-wrapper {
 		padding: calc(4 * #{gutter()});

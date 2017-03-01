@@ -1,0 +1,22 @@
+name: CR Image
+type: module
+description: Contains config for image media entity.
+core: 8.x
+package: Comic Relief
+config_devel:
+  - image.style.cr_1170_x_566
+  - image.style.cr_1170_x_566_2x
+  - image.style.cr_585_x_283
+  - image.style.cr_585_x_283_2x
+  - responsive_image.styles.cw_landscape_image
+  - core.entity_view_mode.media.large
+  - core.entity_view_mode.media.medium
+  - core.entity_view_mode.media.small
+  - core.entity_form_display.media.cr_image.default
+  - core.entity_view_display.media.cr_image.default
+  - core.entity_view_display.media.cr_image.large
+  - core.entity_view_display.media.cr_image.medium
+  - core.entity_view_display.media.cr_image.small
+  - field.storage.media.field_cr_image_image
+  - field.field.media.cr_image.field_cr_image_image
+  - media_entity.bundle.cr_image

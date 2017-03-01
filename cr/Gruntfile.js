@@ -2,19 +2,8 @@
 
 module.exports = function (grunt) {
 
-  var target = grunt.option('target') || 'themes/custom/campaign_base/config.rb';
-  // var theme = grunt.option('target') || 'profiles/cr/themes/custom/campaign_base/';
-
   grunt.initConfig({
 
-    focus: {
-      campaign_base: {
-        exclude: ['rnd17']
-      },
-      rnd17: {
-        exclude: ['campaign_base']
-      }
-    },
     watch: {
       options: {
         livereload: true,
@@ -22,11 +11,7 @@ module.exports = function (grunt) {
       },
       campaign_base: {
         files: ['themes/custom/campaign_base/sass/{,**/}*.{scss,sass}'],
-        tasks: ['compass:dev','shell:campaign_styleguide','bless']
-      },
-      rnd17: {
-        files: ['../../themes/rnd17/sass/{,**/}*.{scss,sass}'],
-        tasks: ['compass:dev','shell:rnd17_styleguide']
+        tasks: ['compass:dev']
       },
       templates: {
         files: ['themes/custom/campaign_base/templates/{,**/}*.html.twig', 'themes/custom/campaign_base/sass/components/{,**/}*.hbs']
@@ -39,7 +24,7 @@ module.exports = function (grunt) {
         },
       js: {
         files: ['themes/custom/campaign_base/scripts/{,**/}*.js', '!js/{,**/}*.min.js'],
-        tasks: ['concat:campaign_base','uglify:dev'] //'jshint',
+        tasks: ['concat:dist','uglify:dev'] //'jshint',
       }
     },
 
@@ -47,28 +32,21 @@ module.exports = function (grunt) {
       options: {
         separator: ';',
       },
-      campaign_base: {
+      dist: {
         src: ['themes/custom/campaign_base/scripts/{,**/}*.js'],
         dest: 'themes/custom/campaign_base/js/campaign_base.js',
-      },
-      rnd17: {
-        src: ['../themes/rnd17/scripts/{,**/}*.js'],
-        dest: '../themes/rnd17/js/rnd17.js',
       },
     },
 
     shell: {
-        campaign_styleguide: {
-            command: '../node_modules/kss/bin/kss-node --source themes/custom/campaign_base/sass/ --destination themes/custom/campaign_base/styleguide --template themes/custom/campaign_base/kss/ --verbose'
-        },
-        rnd17_styleguide: {
-            command: '../node_modules/kss/bin/kss-node --source ../themes/rnd17/sass/ --destination ../themes/rnd17/styleguide --template themes/custom/campaign_base/kss/ --verbose'
-        }
+      styleguide: {
+        command: '../node_modules/kss/bin/kss-node --source themes/custom/campaign_base/sass/ --destination themes/custom/campaign_base/styleguide --template themes/custom/campaign_base/kss/ --verbose'
+      },
     },
 
     compass: {
       options: {
-        config: target,
+        config: 'themes/custom/campaign_base/config.rb',
         bundleExec: false,
         force: true
       },
@@ -80,21 +58,6 @@ module.exports = function (grunt) {
       dist: {
         options: {
           environment: 'production'
-        }
-      }
-    },
-
-    compassMultiple: {
-      all: {
-        options: {
-          multiple: [
-            {
-              config: 'themes/custom/campaign_base/config.rb'
-            },
-            {
-              config: '../themes/rnd17/config.rb'
-            }
-          ]
         }
       }
     },
@@ -137,19 +100,6 @@ module.exports = function (grunt) {
             return dest + '/' + folder + filename + '.min.js';
           }
         },
-        {
-          expand: true,
-          flatten: true,
-          cwd: '../themes/rnd17/js',
-          dest: '../themes/rnd17/js',
-          src: ['rnd17.js', '!rnd17.min.js'],
-          rename: function(dest, src) {
-            var folder = src.substring(0, src.lastIndexOf('/'));
-            var filename = src.substring(src.lastIndexOf('/'), src.length);
-            filename = filename.substring(0, filename.lastIndexOf('.'));
-            return dest + '/' + folder + filename + '.min.js';
-          }
-        }
         ]
       },
       dist: {
@@ -170,19 +120,6 @@ module.exports = function (grunt) {
             return dest + '/' + folder + filename + '.min.js';
           }
         },
-        {
-          expand: true,
-          flatten: true,
-          cwd: '../themes/rnd17/js',
-          dest: '../themes/rnd17/js',
-          src: ['rnd17.js', '!rnd17.min.js'],
-          rename: function(dest, src) {
-            var folder = src.substring(0, src.lastIndexOf('/'));
-            var filename = src.substring(src.lastIndexOf('/'), src.length);
-            filename = filename.substring(0, filename.lastIndexOf('.'));
-            return dest + '/' + folder + filename + '.min.js';
-          }
-        }
         ]
       }
     }
@@ -191,24 +128,13 @@ module.exports = function (grunt) {
   grunt.file.expand('../node_modules/grunt-*/tasks').forEach(grunt.loadTasks);
 
   grunt.registerTask('style', ['shell:styleguide']);
-  grunt.registerTask('campaign_base', ['shell:campaign_styleguide', 'uglify:dev', 'focus:campaign_base']);
-  grunt.registerTask('rnd17', ['shell:rnd17_styleguide', 'uglify:dev', 'focus:rnd17']);
 
   grunt.registerTask('build', [
-    'shell:campaign_styleguide',
-    'concat:campaign_base',
+    'shell:styleguide',
+    'concat:dist',
     'uglify:dist',
     'compass:dist',
     'bless',
-  ]);
-
-  grunt.registerTask('build_all', [
-    'shell:campaign_styleguide',
-    'shell:rnd17_styleguide',
-    'concat',
-    'uglify:dist',
-    'compassMultiple',
-    'bless'
   ]);
 
 };

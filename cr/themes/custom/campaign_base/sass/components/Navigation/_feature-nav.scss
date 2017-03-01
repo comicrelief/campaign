@@ -7,7 +7,25 @@
   border-right: 2px solid $colour-light-grey;
   border-left: 2px solid $colour-light-grey;
   margin-left: 10px;
+
+  .feature-nav-toggle {
+
+    .c-hamburger__text {
+      &:before {
+        content: "More";
+      }
+    }
+
+    &.is-active {
+      .c-hamburger__text {
+        &:before {
+          content: "Close";
+        }
+      }
+    }
+  }
 }
+
 .feature-nav__icons {
   float: left;
   @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
