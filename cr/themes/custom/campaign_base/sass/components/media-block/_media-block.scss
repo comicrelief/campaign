@@ -72,6 +72,7 @@
   bottom: 0;
   width: 100%;
   padding: 40px 10px 30px;
+  @include background-image(linear-gradient(rgba(0, 0, 0, 0), $colour-dark-blue));
   h2, h3, h4, h5 {
     color: $colour-white;
   }
