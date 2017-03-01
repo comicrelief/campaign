@@ -57,7 +57,7 @@
   width: 100%;
   padding: 30px;
   @include breakpoint($screen-md) {
-    // padding: 30px calc( 8 * #{gutter()});
+    padding: 30px calc( 8 * #{gutter()});
   }
   @include breakpoint($screen-md-max, $no-query: true) {
     padding: 30px;
