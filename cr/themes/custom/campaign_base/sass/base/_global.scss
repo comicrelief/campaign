@@ -91,20 +91,6 @@ picture img {
   color: $colour-white;
 }
 
-/* to do: add it to kss style */
-#kss-node {
-  background: #f2f2f2;
-  .kss-section {
-    max-width: 1200px;
-  }
-}
-#kss-node .kss-markup {
-  clear: both;
-}
-#kss-node .kss-modifier__wrapper {
-  float: left;
-  width: 100%;
-}
 .view-empty {
   margin: 60px 0;
 }

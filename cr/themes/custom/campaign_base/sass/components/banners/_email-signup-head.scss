@@ -12,8 +12,10 @@
 
 //hide esu form initially
 .block--cr-email-signup--head {
+  display: none;
   position: relative;
   z-index: 101;
+
   &.block--cr-email-signup--error.block--cr-email-signup {
     @include breakpoint($screen-md) {
       .esu-errors.messages.messages--error {
@@ -35,9 +37,11 @@
 .ui-selectmenu-menu {
   z-index: 102;
 }
-
-.block--cr-email-signup--head.show {
-  display: block;
+/* Using id as a stronger selector */
+#block-emailsignupblockhead {
+  &.show {
+    display: block;
+  }
   .block--cr-email-signup__inner-wrapper {
     position: absolute;
     top: 0;

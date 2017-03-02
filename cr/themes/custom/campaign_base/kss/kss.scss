@@ -504,7 +504,7 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
   }
   .kss-sidebar {
     display: none;
-    z-index: 5;
+    z-index: 15;
     &.active {
       display: block;
     }

@@ -377,7 +377,7 @@
   margin-top: 30px; }
 #kss-node .kss-sidebar {
   display: none;
-  z-index: 5; }
+  z-index: 15; }
   #kss-node .kss-sidebar.active {
     display: block; }
   #kss-node .kss-sidebar .kss-header {
