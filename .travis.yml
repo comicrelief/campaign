@@ -10,13 +10,9 @@ git:
 sudo: false
 cache:
   apt: true
-  bundler: true
   directories:
     - $HOME/tmp/drush
-    - $HOME/.bundle
-    - $HOME/.composer
     - node_modules
-    - vendor
 rvm:
   - 2.1.5
 
