@@ -12,11 +12,13 @@ dependencies:
     - field.field.node.article.field_image_caption
     - field.field.node.article.field_video_embed
     - field.field.node.article.publishing_date
+    - image.style.cr_lg_1170_x_450
     - node.type.article
   module:
     - blazy
     - ds
     - user
+    - video_embed_field
 third_party_settings:
   ds:
     layout:
@@ -36,6 +38,7 @@ third_party_settings:
           layout_class: {  }
     regions:
       ds_content:
+        - field_video_embed
         - node_title
         - field_article_image
         - node_link
@@ -96,6 +99,14 @@ content:
       grid_small: 0
     third_party_settings: {  }
     type: blazy
+  field_video_embed:
+    type: video_embed_field_thumbnail
+    weight: 0
+    label: hidden
+    settings:
+      image_style: cr_lg_1170_x_450
+      link_image_to: content
+    third_party_settings: {  }
 hidden:
   body: true
   field_article_category: true
@@ -103,7 +114,6 @@ hidden:
   field_article_meta_tags: true
   field_article_publish_date: true
   field_image_caption: true
-  field_video_embed: true
   links: true
   publishing_date: true
   social_links: true
