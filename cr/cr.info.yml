@@ -213,7 +213,6 @@ config_devel:
   - responsive_image.styles.single_l_r_message_row
   - responsive_image.styles.single_msg_
   - responsive_image.styles.story_row
-  - responsive_image.styles.article_image
 
   # Metatags
   - metatag.metatag_defaults.403
