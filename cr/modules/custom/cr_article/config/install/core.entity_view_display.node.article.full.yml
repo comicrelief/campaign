@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.article.field_video_embed
     - field.field.node.article.publishing_date
     - node.type.article
+    - responsive_image.styles.article_image
   module:
     - datetime
     - ds
