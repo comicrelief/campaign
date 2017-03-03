@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.100_width_image_md
+    - image.style.cw_small_370x290
+  theme:
+    - campaign_base
+id: article_image
+label: 'Article image'
+image_style_mappings:
+  -
+    breakpoint_id: campaign_base.large
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: 100_width_image_md
+  -
+    breakpoint_id: campaign_base.medium
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: cw_small_370x290
+  -
+    breakpoint_id: campaign_base.small
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: cw_small_370x290
+breakpoint_group: campaign_base
+fallback_image_style: cw_small_370x290
