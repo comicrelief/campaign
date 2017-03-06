@@ -21,6 +21,7 @@ dependencies:
   - menu_ui
   - filter
   - better_exposed_filters
+  - cr_content_wall
 
 config_devel:
   - core.base_field_override.node.article.status
@@ -55,6 +56,7 @@ config_devel:
   - metatag.metatag_defaults.node__article
   - block.block.views_block__what_s_going_on_block_1
   - image.style.cr_1_1_272x272_2x
+  - image.style.100_width_image_md
   - responsive_image.styles.cr_listing_teaser
   - responsive_image.styles.article_image
   - field.storage.scheduled_update.field_status
