@@ -20,7 +20,7 @@ global-js:
 
 platform:
   js:
-    libraries/platform/platform.js: {}
+    /node_modules/platform/platform.js: {}
 
 vide:
   js:

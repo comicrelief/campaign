@@ -120,13 +120,12 @@
         "drupal/purge_purger_http": "1.0-beta4",
         "drupal/memcache": "2.x-dev#908c0a2",
         "drupal/cdn": "3.0",
-        "drupal/better_exposed_filters": "3.x-dev#19f3da2"
-        "bestiejs/platform.js": "1.3.3",
+        "drupal/better_exposed_filters": "3.x-dev#19f3da2",
         "vodkaBears/vide": "0.5.1",
-        "previousnext/drush_cmi_tools": "1.x-dev:6efb905",
+        "previousnext/drush_cmi_tools": "1.x-dev#6efb905",
         "cbopp-art/lightcase": "2.3.4",
-        "comicrelief/campaign-modernizr": "dev-master:a2db765",
-        "dinbror/blazy": "1.8.2",
+        "comicrelief/campaign-modernizr": "dev-master#a2db765",
+        "dinbror/blazy": "1.8.2"
     },
     "require-dev": {
         "behat/mink-selenium2-driver": "dev-master"
