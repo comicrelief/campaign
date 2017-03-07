@@ -19,6 +19,8 @@ config_devel:
   - field.field.paragraph.cr_rich_text_paragraph.field_bg_single_msg_layout
   - field.field.paragraph.cr_rich_text_paragraph.field_background
   - field.field.paragraph.cr_rich_text_paragraph.field_body
+  - image.style.large_1700x450
   - image.style.large_1700x450_2x
+  - image.style.small_768x450
   - image.style.small_768x450_2x
   - responsive_image.styles.background_single_message
