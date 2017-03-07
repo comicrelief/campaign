@@ -78,7 +78,6 @@ config_devel:
   - image.style.cr_lg_1170_x_450_2x
   - image.style.cr_md_740_x_450
   - image.style.cr_md_740_x_450_2x
-  - image.style.cw_small_370x290
   # Responsive image styles
   - responsive_image.styles.cw_medium_image_blocks
   - responsive_image.styles.cw_bg_image_blocks

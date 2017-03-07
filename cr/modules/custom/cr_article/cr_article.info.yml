@@ -57,6 +57,7 @@ config_devel:
   - block.block.views_block__what_s_going_on_block_1
   - image.style.cr_1_1_272x272_2x
   - image.style.100_width_image_md
+  - image.style.cw_small_370x290
   - responsive_image.styles.cr_listing_teaser
   - responsive_image.styles.article_image
   - field.storage.scheduled_update.field_status
