@@ -25,16 +25,32 @@
             "web/themes/contrib/{$name}": [
                 "type:drupal-theme"
             ],
-            "web/contrib/{$name}": [
-                "type:drupal-drush"
+            "web/libraries/{$name}": [
+                "type:drupal-library"
             ],
             "drush/contrib/{$name}": [
                 "type:drupal-drush"
             ]
         },
         "patches": {
-            "drupal/media_entity": {
-                "Make the label form element non-required in the entity form": "https://www.drupal.org/files/issues/2813685-21.patch"
+            "drupal/core": {
+                "List unmet dependencies instead of just failing": "https://www.drupal.org/files/issues/missing-dependencies-2655104-8.patch",
+                "Constraint violation for paragraph editing, for full reasoning see https://github.com/comicrelief/campaign/pull/252": "https://gist.githubusercontent.com/pvhee/14801e0f82e06f51cb0d88b9d400cbd6/raw/253f1c1e516eb24650a91d343c56a5aeb6a0ca43/PLAT-235_paragraph_constraint_violation.patch",
+                "See https://www.drupal.org/node/2314185": "https://www.drupal.org/files/issues/drupalbehaviorerror-2314185-15.patch",
+                "See https://www.drupal.org/node/728702. Required for platform.sh": "https://www.drupal.org/files/issues/drupal-redirect_to_install-728702-92.patch",
+                "Add composer dependencies": "https://gist.githubusercontent.com/Saphyel/8587c0c7adca816929965afa487f2c6a/raw/c7a8aa1d7d13e8de5eec8f7cb687dbc9a45e3f2d/composer.patch"
+            },
+            "drupal/config_devel": {
+                "See https://www.drupal.org/node/2686499": "https://www.drupal.org/files/issues/config_devel-drush-config-devel-import-2686499-6.patch"
+            },
+            "drupal/config_devel": {
+                "Add composer dependencies": "https://www.drupal.org/files/issues/show_differences_between-2801201-3.patch"
+            },
+            "drupal/twig_tweak": {
+                "https://www.drupal.org/node/2833960": "https://www.drupal.org/files/issues/2833960-relative-image-path.patch"
+            },
+            "drupal/varnish_purge": {
+                "https://www.drupal.org/node/2843978": "https://www.drupal.org/files/issues/2843978-multi-ips-5.patch"
             }
         }
     },
@@ -105,6 +121,12 @@
         "drupal/memcache": "2.x-dev#908c0a2",
         "drupal/cdn": "3.0",
         "drupal/better_exposed_filters": "3.x-dev#19f3da2"
+        "bestiejs/platform.js": "1.3.3",
+        "vodkaBears/vide": "0.5.1",
+        "previousnext/drush_cmi_tools": "1.x-dev:6efb905",
+        "cbopp-art/lightcase": "2.3.4",
+        "comicrelief/campaign-modernizr": "dev-master:a2db765",
+        "dinbror/blazy": "1.8.2",
     },
     "require-dev": {
         "behat/mink-selenium2-driver": "dev-master"
