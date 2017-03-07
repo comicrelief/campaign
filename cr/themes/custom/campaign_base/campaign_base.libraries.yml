@@ -6,7 +6,7 @@ global-css:
 
 global-js:
   js:
-    libraries/lightcase/src/js/lightcase.js: {}
+    node_modules/lightcase/src/js/lightcase.js: {}
     libraries/modernizr/modernizr-custom.js: {}
     js/campaign_base.min.js: {}
 
@@ -24,4 +24,4 @@ platform:
 
 vide:
   js:
-    libraries/vide/jquery.vide.js: {}
+    /node_modules/vide/jquery.vide.js: {}
