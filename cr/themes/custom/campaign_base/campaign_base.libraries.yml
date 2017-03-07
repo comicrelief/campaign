@@ -16,6 +16,7 @@ global-js:
     - core/drupal
     - core/jquery.ui
     - core/jquery.ui.selectmenu
+    - core/jquery.ui.tooltip
 
 platform:
   js:

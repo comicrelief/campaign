@@ -110,6 +110,7 @@
         // ui selectmenu change listener for
         // news landing page exposed filter
         selectMenuChange();
+
         function selectMenuChange() {
             $('select').selectmenu({
                 change: function(event, ui) {
@@ -123,5 +124,10 @@
             selectMenuChange();
         });
 
+        // jQuery UI tooltip instantiation for nav
+        $( ".has-tooltip" ).tooltip({
+          classes: { "ui-tooltip": "highlight"},
+          position: { my: "top+30", at: "centre" }
+        });
     })
 })(jQuery, Drupal);
