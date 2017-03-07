@@ -33,7 +33,7 @@ image_style_mappings:
     breakpoint_id: campaign_base.small
     multiplier: 1x
     image_mapping_type: image_style
-    image_mapping: small_768x450_2x
+    image_mapping: small_768x450
   -
     breakpoint_id: campaign_base.small
     multiplier: 2x
