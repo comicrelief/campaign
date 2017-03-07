@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7262fe5e97cef011030f6d44c408a638",
-    "content-hash": "2ed1bc90bb37a43db76500dbce9179fe",
+    "hash": "17c780831e654a01f1207b4c9985c80a",
+    "content-hash": "cf1e9b47ab9fc5952c8ddb530b1737ca",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1302,6 +1302,9 @@
                 "drupal": {
                     "version": "8.x-1.0-rc1",
                     "datestamp": "1487232784"
+                },
+                "patches_applied": {
+                    "Add composer dependencies": "https://www.drupal.org/files/issues/show_differences_between-2801201-3.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -1865,6 +1868,14 @@
                 "symfony/css-selector": "~2.8"
             },
             "type": "drupal-core",
+            "extra": {
+                "patches_applied": {
+                    "List unmet dependencies instead of just failing": "https://www.drupal.org/files/issues/missing-dependencies-2655104-8.patch",
+                    "Constraint violation for paragraph editing, for full reasoning see https://github.com/comicrelief/campaign/pull/252": "https://gist.githubusercontent.com/pvhee/14801e0f82e06f51cb0d88b9d400cbd6/raw/253f1c1e516eb24650a91d343c56a5aeb6a0ca43/PLAT-235_paragraph_constraint_violation.patch",
+                    "See https://www.drupal.org/node/2314185": "https://www.drupal.org/files/issues/drupalbehaviorerror-2314185-15.patch",
+                    "See https://www.drupal.org/node/728702. Required for platform.sh": "https://www.drupal.org/files/issues/drupal-redirect_to_install-728702-92.patch"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Drupal\\Core\\": "lib/Drupal/Core",
@@ -3255,9 +3266,6 @@
                 "drupal": {
                     "version": "8.x-1.6",
                     "datestamp": "1480363983"
-                },
-                "patches_applied": {
-                    "Make the label form element non-required in the entity form": "https://www.drupal.org/files/issues/2813685-21.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -4096,8 +4104,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.1+5-dev",
-                    "datestamp": "1487848384"
+                    "version": "8.x-1.1+6-dev",
+                    "datestamp": "1488065284"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -4773,6 +4781,9 @@
                 "drupal": {
                     "version": "8.x-1.4",
                     "datestamp": "1484994183"
+                },
+                "patches_applied": {
+                    "https://www.drupal.org/node/2833960": "https://www.drupal.org/files/issues/2833960-relative-image-path.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -4821,6 +4832,9 @@
                 "drupal": {
                     "version": "8.x-1.4",
                     "datestamp": "1473445439"
+                },
+                "patches_applied": {
+                    "https://www.drupal.org/node/2843978": "https://www.drupal.org/files/issues/2843978-multi-ips-5.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -6116,6 +6130,16 @@
                 }
             ],
             "time": "2015-02-03 12:10:50"
+        },
+        {
+            "name": "previousnext/drush_cmi_tools",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/previousnext/drush_cmi_tools",
+                "reference": "6efb905"
+            },
+            "type": "library"
         },
         {
             "name": "psr/http-message",
