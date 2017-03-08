@@ -50,6 +50,7 @@ before_install:
   # Prepare environment
   - $TRAVIS_DIR/before-install.sh
   # Check code quality before site is installed
+  - ln -s vendor/bundle/ruby/2.1.0/bin/compass /usr/local/bin/compass
   - $TRAVIS_DIR/code-checks.sh
 
 install:
