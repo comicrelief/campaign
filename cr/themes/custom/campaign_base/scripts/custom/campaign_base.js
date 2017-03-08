@@ -138,7 +138,7 @@
     // jQuery UI tooltip instantiation for nav
     $( ".has-tooltip" ).tooltip({
       classes: { "ui-tooltip": "highlight"},
-      position: { my: "top+70", at: "center" },
+      position: { my: "top", at: "bottom" },
       show: {effect: 'fadeIn', duration: 200},
       hide: {effect: 'fadeOut', duration: 0},
     });

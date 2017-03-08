@@ -1,14 +1,13 @@
 
 // Tooltips provided by jQuery UI Tooltip js plugin
 .ui-tooltip {
-  background-color: black;
+  background-color: #333333;
   color: white;
   padding: 20px 10px;
   @include border-radius(15px);
   @include opacity(1);
   border: 0;
   margin: 0;
-  top: 50px;
   width: 110px;
 
   &:before {
@@ -20,7 +19,7 @@
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
     border-bottom: 15px solid transparent;
-    border-bottom-color: black;
+    border-bottom-color: #333333;
   }
 
   .ui-tooltip-content {
