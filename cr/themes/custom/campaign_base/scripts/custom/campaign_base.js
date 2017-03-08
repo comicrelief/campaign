@@ -48,7 +48,10 @@
         $('.header__inner-wrapper nav.navigation.show, .search-block.show, .search-overlay.show, .block--cr-email-signup--head').removeClass('show');
         $('.meta-icons__esu-toggle.active, .meta-icons__magnify.active').removeClass('active');
         $('.search-overlay.search-on').removeClass('search-on');
+      } else {
 
+        // Close all tooltips if we're clicking on any nav items
+        $( ".has-tooltip" ).tooltip( "close" );
       }
     });
     
@@ -83,51 +86,62 @@
       });
     }
 
-        // use jQuery UI selectboxes
-        $('select').selectmenu();
-        // Activate lighcase
-        // Video lightcase
-        $('a[data-rel^=lightcase]').lightcase({
-            overlayOpacity: .95,
-            iframe: {
-                width: "100%",
-                height: "100%",
-                frameborder: 0
-            },
-            onFinish : {
-                custom: function() {
-                    var caption = $(this).parent().find('.media-block__caption');
-                    $('.lightcase-contentInner iframe').focus();
-                    if (caption.length) {
-                        lightcase.get('caption').html(caption.html());
-                        $('#lightcase-caption').show();
-                    }
-                    lightcase.resize();
-                }
-            }
-        });
+    // use jQuery UI selectboxes
+    $('select').selectmenu();
+    
+    // Activate lightcase
+    // Video lightcase
+    $('a[data-rel^=lightcase]').lightcase({
+      overlayOpacity: .95,
+      iframe: {
+        width: "100%",
+        height: "100%",
+        frameborder: 0
+      },
+      
+      onFinish : {
 
-        // ui selectmenu change listener for
-        // news landing page exposed filter
-        selectMenuChange();
+        custom: function() {
 
-        function selectMenuChange() {
-            $('select').selectmenu({
-                change: function(event, ui) {
-                    //click on form's hidden submit button to trigger Ajax call
-                    $(this).parents('form').find('.form-submit').click();
-                }
-            });
+          var caption = $(this).parent().find('.media-block__caption');
+
+          $('.lightcase-contentInner iframe').focus();
+
+          if (caption.length) {
+            lightcase.get('caption').html(caption.html());
+            $('#lightcase-caption').show();
+          }
+
+          lightcase.resize();
         }
+      }
+    });
 
-        $(document).ajaxComplete(function() {
-            selectMenuChange();
-        });
+    // ui selectmenu change listener for
+    // news landing page exposed filter
+    selectMenuChange();
 
-        // jQuery UI tooltip instantiation for nav
-        $( ".has-tooltip" ).tooltip({
-          classes: { "ui-tooltip": "highlight"},
-          position: { my: "top+30", at: "centre" }
-        });
-    })
+    function selectMenuChange() {
+      $('select').selectmenu({
+        change: function(event, ui) {
+
+          //click on form's hidden submit button to trigger Ajax call
+          $(this).parents('form').find('.form-submit').click();
+        }
+      });
+    }
+
+    $(document).ajaxComplete(function() {
+        selectMenuChange();
+    });
+
+    // jQuery UI tooltip instantiation for nav
+    $( ".has-tooltip" ).tooltip({
+      classes: { "ui-tooltip": "highlight"},
+      position: { my: "top+70", at: "center" },
+      show: {effect: 'fadeIn', duration: 200},
+      hide: {effect: 'fadeOut', duration: 0},
+    });
+
+  })
 })(jQuery, Drupal);
