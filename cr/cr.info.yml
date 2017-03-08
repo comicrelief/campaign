@@ -78,7 +78,6 @@ dependencies:
   - better_exposed_filters
 
   # Custom modules
-  # cr_article relies on cr_cards for image styles
   - cr_page
   - cr_cards
   - cr_article
