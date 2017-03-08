@@ -25,6 +25,9 @@
     "sass-loader": "6.0.2",
     "susy": "^2.2.11"
   },
+  "scripts": {
+    "build": "grunt build"
+  },
   "license": "GPL-2.0",
   "repository": {
     "type": "git",
