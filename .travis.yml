@@ -42,8 +42,8 @@ mysql:
   encoding: utf8
 
 before_install:
-  - nvm install 6
-  - npm update -g npm # if necessary
+  - nvm install 6 && nvm use 6
+  - npm update -g npm
   - rvm install 2.1.5
   - composer global config minimum-stability beta
   - composer global require phing/phing:2.15 drush/drush:8.*

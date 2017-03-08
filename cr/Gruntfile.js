@@ -40,7 +40,7 @@ module.exports = function (grunt) {
 
     shell: {
       styleguide: {
-        command: '../node_modules/kss/bin/kss --builder themes/custom/campaign_base/kss --extend-drupal8 --source themes/custom/campaign_base/sass/ --destination themes/custom/campaign_base/styleguide --title "Campaign Styleguide" --verbose'
+        command: 'node_modules/kss/bin/kss --builder themes/custom/campaign_base/kss --extend-drupal8 --source themes/custom/campaign_base/sass/ --destination themes/custom/campaign_base/styleguide --title "Campaign Styleguide" --verbose'
       },
     },
 
