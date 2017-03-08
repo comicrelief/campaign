@@ -40,6 +40,9 @@
     // Close all overlays and dropdowns when we're clicking on other content
     $(document).on('click touchstart', function (e) {
 
+      // Close any open tooltips
+      $( ".has-tooltip" ).tooltip( "close" );
+
       // Check that we're not interacting with the nav; dont want to close anything being used
       if (!$(e.target).is('.meta-icons *, .feature-nav__icons *, .search-block *, ul.menu *, .block--cr-email-signup--head *')) {
 
@@ -48,11 +51,7 @@
         $('.header__inner-wrapper nav.navigation.show, .search-block.show, .search-overlay.show, .block--cr-email-signup--head').removeClass('show');
         $('.meta-icons__esu-toggle.active, .meta-icons__magnify.active').removeClass('active');
         $('.search-overlay.search-on').removeClass('search-on');
-      } else {
-
-        // Close all tooltips if we're clicking on any nav items
-        $( ".has-tooltip" ).tooltip( "close" );
-      }
+      } 
     });
     
     $(".site-logo").attr('tabindex', 2);
