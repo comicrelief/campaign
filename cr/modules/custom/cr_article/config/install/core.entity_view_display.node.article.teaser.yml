@@ -61,28 +61,50 @@ content:
     weight: 0
     label: hidden
     settings:
-      responsive_image_style: hero_image_full_node
+      image_style: ''
+      thumbnail_style: ''
+      responsive_image_style: cr_cards
+      media_switch: ''
+      ratio: ''
+      sizes: ''
+      breakpoints:
+        xs:
+          image_style: ''
+          width: ''
+          breakpoint: ''
+        sm:
+          image_style: ''
+          width: ''
+          breakpoint: ''
+        md:
+          image_style: ''
+          width: ''
+          breakpoint: ''
+        lg:
+          image_style: ''
+          width: ''
+          breakpoint: ''
+        xl:
+          image_style: ''
+          width: ''
+          breakpoint: ''
+      current_view_mode: teaser
+      background: false
+      caption:
+        title: '0'
+        alt: '0'
       iframe_lazy: true
       icon: ''
       layout: ''
-      thumbnail_style: ''
       view_mode: ''
       cache: 0
-      current_view_mode: ''
       optionset: default
       skin: ''
       style: ''
-      background: false
       box_caption: ''
       box_caption_custom: ''
       box_style: ''
       box_media_style: ''
-      breakpoints: {  }
-      caption: {  }
-      image_style: ''
-      media_switch: ''
-      ratio: ''
-      sizes: ''
       grid: 0
       grid_header: ''
       grid_medium: 0
