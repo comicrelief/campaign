@@ -134,8 +134,8 @@
         selectMenuChange();
     });
 
-    // jQuery UI tooltip instantiation for nav
-    $( ".has-tooltip" ).tooltip({
+    // jQuery UI tooltip instantiation for nav, only on non-touch devices
+    $( ".no-touchevents .has-tooltip" ).tooltip({
       classes: { "ui-tooltip": "highlight"},
       position: { my: "top", at: "bottom" },
       show: {effect: 'fadeIn', duration: 200},
