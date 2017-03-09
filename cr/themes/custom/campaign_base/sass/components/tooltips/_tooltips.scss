@@ -10,6 +10,14 @@
   margin: 0;
   width: 110px;
 
+  // Override the JS so we can keep the position within CSS
+  top: 157px !important;
+
+  //Reposition this to take our admin menu into account
+  .user-logged-in & {
+    top: 236px !important;
+  }
+
   &:before {
     content: "";
     position: absolute;
