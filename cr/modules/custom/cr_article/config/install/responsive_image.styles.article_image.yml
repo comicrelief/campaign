@@ -4,8 +4,6 @@ dependencies:
   config:
     - image.style.100_width_image_md
     - image.style.cw_small_370x290
-  theme:
-    - campaign_base
 id: article_image
 label: 'Article image'
 image_style_mappings:

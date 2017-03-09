@@ -21,7 +21,6 @@ dependencies:
   - menu_ui
   - filter
   - better_exposed_filters
-  - cr_content_wall
 
 config_devel:
   - core.base_field_override.node.article.status

@@ -179,6 +179,7 @@ config_devel:
   - image.style.bg_rich_text_narrow
   - image.style.bg_rich_text_wide
   - image.style.50_width_image_lg
+  - image.style.100_width_image_md
   - image.style.100_width_image_sm
   - image.style.story_293_x_322_crop_lg
   - image.style.story_479_x_352_crop_md
