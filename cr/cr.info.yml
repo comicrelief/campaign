@@ -64,6 +64,7 @@ dependencies:
   - field_group
   - twig_tweak
   - blazy
+  - video_embed_media
 
   # Layout
   - inline_entity_form
