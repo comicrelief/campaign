@@ -2,9 +2,10 @@
 // Tooltips provided by jQuery UI Tooltip js plugin
 .ui-tooltip {
   background-color: #333333;
-  color: white;
+  color: #fff;
   padding: 20px 10px;
-  @include border-radius(15px);
+  box-shadow: none;
+  @include border-radius(16px);
   @include opacity(1);
   border: 0;
   margin: 0;
@@ -33,7 +34,7 @@
   .ui-tooltip-content {
     text-align: center;
     font-family: $font-regular;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 21px;
     color: white;
   }
