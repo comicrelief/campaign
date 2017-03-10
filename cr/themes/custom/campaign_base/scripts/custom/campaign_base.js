@@ -135,8 +135,9 @@
     });
 
     // jQuery UI tooltip instantiation for nav, only on non-touch devices
-    $( ".no-touchevents .has-tooltip" ).tooltip({
+    $( ".no-touchevents .meta-icons .has-tooltip" ).tooltip({
       classes: { "ui-tooltip": "highlight"},
+      tooltipClass: "ui-tooltip--nav",
       position: { my: "top", at: "bottom" },
       show: {effect: 'fadeIn', duration: 200},
       hide: {effect: 'fadeOut', duration: 0},
