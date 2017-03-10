@@ -79,6 +79,7 @@ dependencies:
 
   # Custom modules
   - cr_page
+  - cr_cards
   - cr_article
   - cr_content_reference
   - cr_downloadables
@@ -94,7 +95,6 @@ dependencies:
   - cr_teaser
   - cr_email_signup
   - cr_partner
-  - cr_cards
   - cr_story
   - cr_landing_page
   - cr_navigation
