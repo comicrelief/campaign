@@ -140,7 +140,7 @@
       tooltipClass: "ui-tooltip--nav",
       position: { my: "top", at: "bottom" },
       show: {effect: 'fadeIn', duration: 200},
-      hide: {effect: 'fadeOut', duration: 0},
+      hide: {effect: 'fadeOut', duration: 300000},
     });
 
   })
