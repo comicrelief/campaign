@@ -65,7 +65,8 @@ module.exports = function (grunt) {
     bless: {
       css: {
         options: {
-          'out-dir': 'themes/custom/campaign_base/ie9-css/'
+          'out-dir': 'themes/custom/campaign_base/ie9-css/', 
+          imports : false
         },
         files: {
           'themes/custom/campaign_base/ie9-css/styles': 'themes/custom/campaign_base/css/styles.css'
