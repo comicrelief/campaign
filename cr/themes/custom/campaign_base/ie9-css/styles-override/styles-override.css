@@ -70,9 +70,3 @@
   height: 60px;
   text-align: center;
 }
-
-/*Hide on IE9 and below*/
-.ui-tooltip.ui-tooltip--nav {
-  display: none !important;
-}
-
