@@ -64,7 +64,8 @@ module.exports = function (grunt) {
         bless: {
             css: {
                 options: {
-                    'out-dir': 'ie9-css/'
+                    'out-dir': 'ie9-css/',
+                    imports : false
                 },
                 files: {
                     'ie9-css/styles': 'css/styles.css'
