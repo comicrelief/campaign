@@ -69,8 +69,8 @@
   </target>
   <!-- Front-end -->
   <target name="grunt:build" description="Generate all compiled Sass and JS files.">
-    <exec dir="${app.profile.name}" logoutput="true" passthru="true"
-          checkreturn="true" command="bundle exec grunt ${grunt.cmd}"/>
+    <exec dir="${app.profile.name}/themes/custom/campaign_base" logoutput="true" passthru="true"
+          checkreturn="true" command="npm run build"/>
   </target>
   <target name="grunt:dependencies" description="Install all grunt dependencies.">
     <delete file=".bundle/config" />
@@ -83,7 +83,7 @@
         <exec dir="${project.basedir}/web" logoutput="true" passthru="true" checkreturn="true" command="bundle install --path vendor/bundle --frozen --without craft"/>
       </else>
     </if>
-    <exec logoutput="true" passthru="true" checkreturn="true" command="npm install"/>
+    <exec dir="${app.profile.name}/themes/custom/campaign_base" logoutput="true" passthru="true" checkreturn="true" command="npm install"/>
   </target>
   <!-- Tests -->
   <target name="test" depends="test:prepare" description="Run behat tests">

@@ -16,7 +16,7 @@
 
 # Ignore bundle files
 /.bundle/
-/node_modules/
+/cr/themes/custom/campaign_base/node_modules/
 
 # Ignore SimpleTest multi-site environment.
 /sites/simpletest/
