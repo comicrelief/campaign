@@ -7,45 +7,64 @@
 // Style guide: Cookie consent
 
 .cookie-consent.cc_container {
+  position: relative;
   padding: 10px;
   text-align: center;
   background: $colour-black;
+  animation-name: none;
   @include breakpoint($screen-md) {
-    padding: 15px 30px;
+    display: block;
+    padding: 15px 20px 15px;
   }
   .btn,
   p,
   a {
     color: $colour-white;
     font-family: $body-font;
-    &:visited {
-      color: $colour-white;
-    }
   }
   p {
     margin-top: 15px;
   }
   .cc_message {
     display: inline-block;
-    width: 100%;
-    text-align: center;
-    font-size: 16px;
-    font-size: 1em;
+    margin-top: 0;
+    width: calc(100% - 50px);
+    font-size: 14px;
+    line-height: 16px;
+    text-align: left;
     @include breakpoint($screen-md) {
       width: auto;
-      margin-bottom: 15px;
+      margin-top: 15px;
+      font-size: 18px;
+      line-height: 20px;
     }
   }
   .btn {
-    display: block;
-    float: none;
-    height: auto;
-    margin: 20px auto 0;
-    margin-top: 20px;
+    display: inline;
+    float: right;
+    padding: 12px 20px;
+    width: 40px;
+    height: 44px;
+    text-indent: -9999px;
+    background-image: url('../images/svgs/cross-close.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    @extend .btn;
+    @extend .btn--white-ghost;
+    border: none;
+    &:hover {
+      background-color: $colour-black;
+    }
+    
     @include breakpoint($screen-md) {
       display: inline-block;
-      margin-top: 0;
-      margin-left: 20px;
+      width: auto;
+      text-indent: 0;
+      background-image: none;
+      border: 2px solid $colour-white;
+      &:hover {
+        background-color: $colour-white;
+      }
     }
   }
 }
