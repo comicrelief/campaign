@@ -2,7 +2,7 @@
 //
 // This is a prototype to the new Main Nav
 //
-// Markup: _main-nav.hbs
+// Markup: _main-nav.twig
 //
 //
 // Style guide: Navigation.New-Main-nav
@@ -27,7 +27,7 @@ html:not(.js) {
     top: 103px;
   }
   &.show {
-    display: block;
+    display: block!important; // override inline style fix flash menu
   }
   .menu {
     margin: 0;

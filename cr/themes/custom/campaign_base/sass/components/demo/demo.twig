@@ -1,0 +1,14 @@
+{% for i in 0..2 %}
+  <article 
+    {% if attributes %}
+      {{ attributes.addClass('demo') }}
+    {% else %}
+      class="{{ classes }} {{ modifier_class }}"
+    {% endif %}
+  >
+    <h2>{{ label }}</h2>
+    {% if body %}
+      <p>{{ body }}</p>
+    {% endif %}
+  </article>
+{% endfor %}

@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.article.field_video_embed
     - field.field.node.article.publishing_date
     - node.type.article
+    - responsive_image.styles.article_image
   module:
     - datetime
     - ds
@@ -77,7 +78,7 @@ content:
     weight: 3
     label: hidden
     settings:
-      responsive_image_style: cw_landscape_image
+      responsive_image_style: article_image
       image_link: ''
     third_party_settings: {  }
     type: responsive_image

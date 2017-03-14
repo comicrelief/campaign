@@ -40,6 +40,9 @@
     // Close all overlays and dropdowns when we're clicking on other content
     $(document).on('click touchstart', function (e) {
 
+      // Close any open tooltips
+      $( ".has-tooltip" ).tooltip( "close" );
+
       // Check that we're not interacting with the nav; dont want to close anything being used
       if (!$(e.target).is('.meta-icons *, .feature-nav__icons *, .search-block *, ul.menu *, .block--cr-email-signup--head *')) {
 
@@ -48,8 +51,7 @@
         $('.header__inner-wrapper nav.navigation.show, .search-block.show, .search-overlay.show, .block--cr-email-signup--head').removeClass('show');
         $('.meta-icons__esu-toggle.active, .meta-icons__magnify.active').removeClass('active');
         $('.search-overlay.search-on').removeClass('search-on');
-
-      }
+      } 
     });
     
     $(".site-logo").attr('tabindex', 2);
@@ -83,45 +85,63 @@
       });
     }
 
-        // use jQuery UI selectboxes
-        $('select').selectmenu();
-        // Activate lighcase
-        // Video lightcase
-        $('a[data-rel^=lightcase]').lightcase({
-            overlayOpacity: .95,
-            iframe: {
-                width: "100%",
-                height: "100%",
-                frameborder: 0
-            },
-            onFinish : {
-                custom: function() {
-                    var caption = $(this).parent().find('.media-block__caption');
-                    $('.lightcase-contentInner iframe').focus();
-                    if (caption.length) {
-                        lightcase.get('caption').html(caption.html());
-                        $('#lightcase-caption').show();
-                    }
-                    lightcase.resize();
-                }
-            }
-        });
+    // use jQuery UI selectboxes
+    $('select').selectmenu();
+    
+    // Activate lightcase
+    // Video lightcase
+    $('a[data-rel^=lightcase]').lightcase({
+      overlayOpacity: .95,
+      iframe: {
+        width: "100%",
+        height: "100%",
+        frameborder: 0
+      },
+      
+      onFinish : {
 
-        // ui selectmenu change listener for
-        // news landing page exposed filter
-        selectMenuChange();
-        function selectMenuChange() {
-            $('select').selectmenu({
-                change: function(event, ui) {
-                    //click on form's hidden submit button to trigger Ajax call
-                    $(this).parents('form').find('.form-submit').click();
-                }
-            });
+        custom: function() {
+
+          var caption = $(this).parent().find('.media-block__caption');
+
+          $('.lightcase-contentInner iframe').focus();
+
+          if (caption.length) {
+            lightcase.get('caption').html(caption.html());
+            $('#lightcase-caption').show();
+          }
+
+          lightcase.resize();
         }
+      }
+    });
 
-        $(document).ajaxComplete(function() {
-            selectMenuChange();
-        });
+    // ui selectmenu change listener for
+    // news landing page exposed filter
+    selectMenuChange();
 
-    })
+    function selectMenuChange() {
+      $('select').selectmenu({
+        change: function(event, ui) {
+
+          //click on form's hidden submit button to trigger Ajax call
+          $(this).parents('form').find('.form-submit').click();
+        }
+      });
+    }
+
+    $(document).ajaxComplete(function() {
+        selectMenuChange();
+    });
+
+    // jQuery UI tooltip instantiation for nav, only on non-touch devices
+    $( ".no-touchevents .meta-icons .has-tooltip" ).tooltip({
+      classes: { "ui-tooltip": "highlight"},
+      tooltipClass: "ui-tooltip--nav",
+      position: { my: "top", at: "bottom" },
+      show: {effect: 'fadeIn', duration: 200},
+      hide: {effect: 'fadeOut', duration: 0},
+    });
+
+  })
 })(jQuery, Drupal);
