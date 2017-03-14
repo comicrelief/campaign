@@ -25,7 +25,7 @@
           description="Set up the project and build all project dependencies. (gems, composer, drush make)">
   </target>
   <target name="build:prepare:deploy"
-          depends="prepare:project, symlink:profiles, make, symlink, grunt:dependencies, install:dependencies"
+          depends="prepare:project, symlink:profiles, make, symlink, grunt:dependencies"
           description="Set up the project and build all project dependencies. (gems, composer, drush make)">
   </target>
   <target name="prepare:project"
