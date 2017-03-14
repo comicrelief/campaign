@@ -75,6 +75,11 @@
 				top: auto;
 				left: auto;
 				right: auto;
+				margin-left: 60px;
+			}
+
+			.btn + .btn {
+				margin-left: 25px;
 			}
 		}
 	}
