@@ -32,7 +32,6 @@
 		margin: 0px;
 		display: inline-block;
 		float: none;
-
 		label {
 			width: 100%;
 			float: left;
@@ -55,7 +54,7 @@
 			color: $colour-black;
 			@include breakpoint($screen-md) {
 				width: 55.83333% !important; //override element styling
-				float:right;
+				float: right;
 				margin: 0;
 				display: inline-block;
 			}
@@ -83,7 +82,7 @@
 		}
 	}
 	.form-actions {
-		display:none;
+		display: none;
 	}
 }
 .news-landing__content {

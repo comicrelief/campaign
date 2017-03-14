@@ -10,8 +10,8 @@
 .menu--footer {
   margin: 15px 0 15px;
   ul {
-    text-align: center;
     margin-left: 0;
+    text-align: center;
     li {
       display: inline-block;
       margin: 10px 0;
@@ -23,12 +23,10 @@
         color: $colour-white;
         border-right: 1px solid $colour-white;
         font-weight: 300;
-
         @include transition(color 180ms);
         &:hover {
           color: $item-grey;
         }
-
         &.is-active {
           color: #c8c8c8;
         }

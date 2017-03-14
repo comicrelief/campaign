@@ -5,22 +5,18 @@
 // Markup:
 // <div></div>
 //
-// Style guide: Components.News-teaser
+// Style guide: News-teaser
 
 .node--type-article.node--view-mode-teaser {
   position: relative;
-  .node__content {
-  	img {
-  	}
-  }
   h2 {
-		@include box-shadow(inset 10px -140px 81px -97px $colour-black);
     position: absolute;
+    right: 0;
     bottom: 1px;
     left: 0;
-    right: 0;
-    padding: 80px 10px 10px;
     margin-bottom: 0;
+    padding: 80px 10px 10px;
+    @include box-shadow(inset 10px -140px 81px -97px $colour-black);
     a {
       text-decoration: none;
       color: $colour-white;

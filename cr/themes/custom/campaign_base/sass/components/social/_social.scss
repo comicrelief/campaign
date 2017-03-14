@@ -2,13 +2,12 @@
 //
 // This is Social
 //
-// Markup:
-// <div></div>
+// Markup: social.hbs
 //
 // Style guide: Components.Social
 
 /* placeholder for generic icon stuff (icons in footer and sharing icons will be the same in future)*/
-%social-icons{
+%social-icons {
   li {
     display: inline-block;
     margin: 0 gutter();
@@ -22,25 +21,25 @@
         height: inherit;
       }
     }
-  } 
+  }
 }
 
 /* Social sharing icons */
-.cr-article__social-links{
+.cr-article__social-links {
   @include clearfix;
 }
-
 .social-links-label {
-  @include span(6);
   text-align: right;
+  @include span(6);
   @include translateY(50%);
 }
 ul.social-links {
+  text-align: left;
   @extend %social-icons;
   @include span(6);
-  text-align: left;
   li {
-    a, .icon {
+    a,
+    .icon {
       width: 40px;
       height: 40px;
     }
@@ -51,14 +50,15 @@ ul.social-links {
 .footer__social-links {
   @extend %social-icons;
   ul {
-    text-align:center
+    text-align: center;
   }
   li {
     margin: 0;
   }
   .icon {
-    fill: white;
     @include transition(fill 0.3s ease);
+
+    fill: white;
     &:hover {
       fill: #c8c8c8;
     }

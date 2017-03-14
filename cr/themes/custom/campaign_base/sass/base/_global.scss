@@ -1,4 +1,4 @@
-// Global styling
+/* Global styling */
 body {
   background: $colour-white;
   font-family: $body-font;
@@ -7,11 +7,12 @@ body {
 
   -webkit-font-smoothing: antialiased;
 }
-// logo header
-.block-system-branding-block {  
+
+/* logo header */
+.block-system-branding-block {
   position: absolute;
-  top: 0;
   z-index: 100;
+  top: 0;
 }
 header[role=banner] {
   height: 129px;
@@ -38,8 +39,7 @@ picture img {
 }
 
 .node--view-mode-full {
-  // think where best to put it
-  // max-width: 640px;
+  /* think where best to put it */
   margin: 0 auto;
   .field--type-image {
     margin-bottom: 40px;
@@ -52,22 +52,24 @@ picture img {
 
 .field--name-body a,
 .btn-red {
-  @include transition(all 180ms);
   text-decoration: none;
   color: inherit;
   border-bottom: 2px solid $colour-red;
+  @include transition(all 180ms);
   &:hover {
     border-bottom: 2px solid $colour-black;
   }
 }
-// to do: landing page style
+
+/* to do: landing page style */
 .page-node-type-landing {
   .region-content {
     width: 100%;
     max-width: 100%;
   }
   .page__title {
-    position: absolute; // make it as a mixin
+    /* make it as a mixin */
+    position: absolute;
     top: auto;
     left: -10000px;
     overflow: hidden;
@@ -79,7 +81,8 @@ picture img {
     margin: 0 auto;
   }
 }
-// to do: find a better place
+
+/* to do: find a better place */
 .styleguide-link {
   float: right;
   clear: both;
@@ -87,24 +90,12 @@ picture img {
   text-decoration: none;
   color: $colour-white;
 }
-// to do: add it to kss style
-#kss-node {
-  background: #f2f2f2;
-  .kss-section {
-    max-width: 1200px;
-  }
-}
-#kss-node .kss-markup {
-  clear: both;
-}
-#kss-node .kss-modifier__wrapper {
-  float: left;
-  width: 100%;
-}
+
 .view-empty {
   margin: 60px 0;
 }
-// Table style move to table component
+
+/* Table style move to table component */
 table {
   border-collapse: collapse;
   td {
@@ -112,7 +103,8 @@ table {
     border: 1px solid $colour-black;
   }
 }
-// Figure style align move to figure component
+
+/* Figure style align move to figure component */
 figure.align-left {
   margin: 0 20px 20px;
   figcaption {
@@ -120,7 +112,8 @@ figure.align-left {
     text-align: center;
   }
 }
-// Misc move somewhere else
+
+/* Misc move somewhere else */
 hr {
   clear: both;
   margin: 0 0 20px;
