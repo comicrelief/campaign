@@ -4,6 +4,7 @@
 	float: left;
   width: 100%;
   position: relative;
+  min-height: 95px;
 }
 .card-banner__inner-wrapper {
 	width: span(12);
@@ -26,19 +27,54 @@
 }
 .card-banner__content {
 	padding: 20px 0;
+	
 	p {
 		text-align: center;
 	}
+
+	.btn {
+		padding: 21px 30px;
+		width: 100%;
+	}
+
 	@include breakpoint($screen-md) {
+
 		@include span(10);
+		@include push(2);
 		position: absolute;
 		top: 50%;
 		@include translateY(-50%);
+
+		.cr-body {
+			margin-left: calc( (#{span(2)} + 5.5%) * -1 );
+
+			> * {
+				margin-bottom: 0;
+			}
+		}
+
 		.btn {
+			width: auto;
 		  position: absolute;
-		  right: -20px;
+		  right: 0;
 		  top: 50%;
 		  @include translateY(-50%);
+		}
+
+		.two-buttons {
+			@include span(10);
+			margin-left: 0;
+			padding-left: span(2);
+			width: 100%;
+    	position: absolute;
+
+			.btn {
+				position: relative;
+				display: inline-block;
+				top: auto;
+				left: auto;
+				right: auto;
+			}
 		}
 	}
 }
