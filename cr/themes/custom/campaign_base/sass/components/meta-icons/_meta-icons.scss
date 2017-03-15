@@ -3,6 +3,7 @@
 .block-cr-meta-icons {
 	float: right;
 }
+
 .meta-icons {
   float: left;
   @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
@@ -44,6 +45,9 @@
       display: none;
     }
     .icon {
+      width: 25px;
+      height: 25px;
+      margin: 21px 4px;
       @include transition-property(fill);
       @include transition-duration(150ms);
       @include breakpoint($screen-md) {
@@ -55,9 +59,6 @@
         height: 21px;
         margin: 40px 12px;
       }
-      margin: 21px 4px;
-      width: 25px;
-      height: 25px;
 
       fill: $colour-jasper-grey;
     }

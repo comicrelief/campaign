@@ -1,8 +1,6 @@
 // Banner card
 
 .card-banner {
-	float: left;
-  width: 100%;
   position: relative;
   min-height: 95px;
 }
@@ -15,16 +13,16 @@
 	min-height: 95px;
 }
 .card-banner__image {
-	display: none;
-	@include breakpoint($screen-md) {
-		display: block;
-		@include span(2);
-		img {
-			display: block;
-			width: 100%;
-			height: auto;
-		}
-	}
+  display: none;
+  @include breakpoint($screen-md) {
+    display: block;
+    @include span(2);
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
 }
 .card-banner__content {
 	padding: 20px 0;

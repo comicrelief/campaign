@@ -18,48 +18,49 @@
  *   'breakpoint': 768px
  * );
  */
-[class*='lightcase-icon-']:before {
-  font-style: normal;
-  font-weight: normal;
-  speak: none;
+[class*="lightcase-icon-"]:before {
   display: inline-block;
-  text-decoration: inherit;
   width: 1em;
   text-align: center;
+  text-decoration: inherit;
+  text-transform: none;
+  font-weight: normal;
+  font-style: normal;
   /* For safety - reset parent styles, that can break glyph codes*/
   font-variant: normal;
-  text-transform: none;
   /* fix buttons height, for twitter bootstrap */
   line-height: 1em;
+
+  speak: none;
   /* Uncomment for 3D effect */
 }
 
 /* Codes */
 .lightcase-icon-play:before {
-  content: '\e800';
+  content: "\e800";
 }
 
 .lightcase-icon-pause:before {
-  content: '\e801';
+  content: "\e801";
 }
 
 .lightcase-icon-close {
   // temporary, being forced by script, will be refactored
   opacity: 0.6 !important;
-  &:hover, 
-  &:focus, 
+  &:hover,
+  &:focus,
   &:active {
     // temporary, being forced by script, will be refactored
     opacity: 1 !important;
   }
-  &:before, 
+  &:before,
   &:after {
-    content: '';
-    display: block;
     position: absolute;
     top: 20px;
-    @include transform-origin(center center);
+    display: block;
     width: 100%;
+    content: "";
+    @include transform-origin(center center);
   }
   &:before {
     border-bottom: 4px solid $colour-white;
@@ -70,21 +71,21 @@
     @include transform(rotate(-45deg));
   }
   span {
-    height: 40px;
     width: 40px;
+    height: 40px;
   }
 }
 
 .lightcase-icon-prev:before {
-  content: '\e803';
+  content: "\e803";
 }
 
 .lightcase-icon-next:before {
-  content: '\e804';
+  content: "\e804";
 }
 
 .lightcase-icon-spin:before {
-  content: '';
+  content: "";
 }
 
 /**
@@ -119,79 +120,79 @@
 @-webkit-keyframes lightcase-spin {
   0% {
     -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
+       -moz-transform: rotate(0deg);
+         -o-transform: rotate(0deg);
+            transform: rotate(0deg);
   }
   100% {
     -webkit-transform: rotate(359deg);
-    -moz-transform: rotate(359deg);
-    -o-transform: rotate(359deg);
-    transform: rotate(359deg);
+       -moz-transform: rotate(359deg);
+         -o-transform: rotate(359deg);
+            transform: rotate(359deg);
   }
 }
 @-moz-keyframes lightcase-spin {
   0% {
     -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
+       -moz-transform: rotate(0deg);
+         -o-transform: rotate(0deg);
+            transform: rotate(0deg);
   }
   100% {
     -webkit-transform: rotate(359deg);
-    -moz-transform: rotate(359deg);
-    -o-transform: rotate(359deg);
-    transform: rotate(359deg);
+       -moz-transform: rotate(359deg);
+         -o-transform: rotate(359deg);
+            transform: rotate(359deg);
   }
 }
 @-o-keyframes lightcase-spin {
   0% {
     -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
+       -moz-transform: rotate(0deg);
+         -o-transform: rotate(0deg);
+            transform: rotate(0deg);
   }
   100% {
     -webkit-transform: rotate(359deg);
-    -moz-transform: rotate(359deg);
-    -o-transform: rotate(359deg);
-    transform: rotate(359deg);
+       -moz-transform: rotate(359deg);
+         -o-transform: rotate(359deg);
+            transform: rotate(359deg);
   }
 }
 @-ms-keyframes lightcase-spin {
   0% {
     -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
+       -moz-transform: rotate(0deg);
+         -o-transform: rotate(0deg);
+            transform: rotate(0deg);
   }
   100% {
     -webkit-transform: rotate(359deg);
-    -moz-transform: rotate(359deg);
-    -o-transform: rotate(359deg);
-    transform: rotate(359deg);
+       -moz-transform: rotate(359deg);
+         -o-transform: rotate(359deg);
+            transform: rotate(359deg);
   }
 }
 @keyframes lightcase-spin {
   0% {
     -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
+       -moz-transform: rotate(0deg);
+         -o-transform: rotate(0deg);
+            transform: rotate(0deg);
   }
   100% {
     -webkit-transform: rotate(359deg);
-    -moz-transform: rotate(359deg);
-    -o-transform: rotate(359deg);
-    transform: rotate(359deg);
+       -moz-transform: rotate(359deg);
+         -o-transform: rotate(359deg);
+            transform: rotate(359deg);
   }
 }
 #lightcase-case {
-  display: none;
   position: fixed;
   z-index: 2002;
   top: 40%;
   left: 50%;
+  display: none;
   color: $colour-white;
   p {
     color: $colour-white;
@@ -218,22 +219,25 @@
     overflow: hidden;
     background-color: #fff;
     -webkit-box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-    -o-box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+       -moz-box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+
+         -o-box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
     -webkit-backface-visibility: hidden;
   }
 }
 @media screen and (min-width: 641px) {
-  #lightcase-case[data-lc-type=image] #lightcase-content, #lightcase-case[data-lc-type=video] #lightcase-content {
+  #lightcase-case[data-lc-type=image] #lightcase-content,
+  #lightcase-case[data-lc-type=video] #lightcase-content {
     background-color: #333;
   }
 }
 #lightcase-case:not([data-lc-type=image]):not([data-lc-type=video]):not([data-lc-type=flash]):not([data-lc-type=error]) #lightcase-content {
   -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  -o-box-shadow: none;
-  box-shadow: none;
+     -moz-box-shadow: none;
+          box-shadow: none;
+
+       -o-box-shadow: none;
 }
 @media screen and (max-width: 640px) {
   #lightcase-case:not([data-lc-type=image]):not([data-lc-type=video]):not([data-lc-type=flash]):not([data-lc-type=error]) #lightcase-content {
@@ -250,15 +254,17 @@
 }
 #lightcase-case:not([data-lc-type=image]):not([data-lc-type=video]):not([data-lc-type=flash]):not([data-lc-type=error]) #lightcase-content .lightcase-contentInner {
   -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+
+       -o-box-sizing: border-box;
 }
 @media screen and (max-width: 640px) {
   #lightcase-case:not([data-lc-type=image]):not([data-lc-type=video]):not([data-lc-type=flash]):not([data-lc-type=error]) #lightcase-content .lightcase-contentInner {
     padding: 15px;
   }
-  #lightcase-case:not([data-lc-type=image]):not([data-lc-type=video]):not([data-lc-type=flash]):not([data-lc-type=error]) #lightcase-content .lightcase-contentInner, #lightcase-case:not([data-lc-type=image]):not([data-lc-type=video]):not([data-lc-type=flash]):not([data-lc-type=error]) #lightcase-content .lightcase-contentInner > * {
+  #lightcase-case:not([data-lc-type=image]):not([data-lc-type=video]):not([data-lc-type=flash]):not([data-lc-type=error]) #lightcase-content .lightcase-contentInner,
+  #lightcase-case:not([data-lc-type=image]):not([data-lc-type=video]):not([data-lc-type=flash]):not([data-lc-type=error]) #lightcase-content .lightcase-contentInner > * {
     width: 100% !important;
     max-width: none !important;
     height: 270px !important;
@@ -275,7 +281,8 @@
   }
 }
 @media screen and (max-width: 640px) and (min-width: 641px) {
-  [data-lc-type=image] #lightcase-content .lightcase-contentInner, [data-lc-type=video] #lightcase-content .lightcase-contentInner {
+  [data-lc-type=image] #lightcase-content .lightcase-contentInner,
+  [data-lc-type=video] #lightcase-content .lightcase-contentInner {
     line-height: 0.75;
   }
 }
@@ -299,20 +306,21 @@
 }
 @media screen and (min-width: 641px) {
   #lightcase-case:not([data-lc-type=error]) #lightcase-content .lightcase-contentInner .lightcase-inlineWrap {
-    padding: 30px;
     overflow: auto;
     -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -o-box-sizing: border-box;
-    box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    padding: 30px;
+
+         -o-box-sizing: border-box;
   }
 }
 
 #lightcase-case p.lightcase-error {
+  overflow: hidden;
   margin: 0;
   text-align: center;
   white-space: nowrap;
-  overflow: hidden;
   text-overflow: ellipsis;
 }
 @media screen and (max-width: 640px) {
@@ -327,20 +335,20 @@
 }
 
 .lightcase-isMobileDevice .lightcase-open body {
+  overflow: hidden;
   max-width: 100%;
   max-height: 100%;
-  overflow: hidden;
 }
 @media screen and (max-width: 640px) {
   .lightcase-open body {
     padding: 55px 0 70px 0;
   }
-  .lightcase-open body > *:not([id*='lightcase-']) {
+  .lightcase-open body > *:not([id*="lightcase-"]) {
     position: fixed !important;
     top: -9999px !important;
+    overflow: hidden !important;
     width: 0 !important;
     height: 0 !important;
-    overflow: hidden !important;
   }
 }
 
@@ -353,13 +361,13 @@
 #lightcase-info #lightcase-title,
 #lightcase-info #lightcase-caption {
   margin: 0;
-  padding: 0;
-  line-height: 1.5;
-  font-weight: normal;
-  text-overflow: ellipsis;
-  text-shadow: none;
-  color: $colour-white;
   margin-top: 10px;
+  padding: 0;
+  text-overflow: ellipsis;
+  color: $colour-white;
+  text-shadow: none;
+  font-weight: normal;
+  line-height: 1.5;
   .link,
   a {
     color: $colour-white;
@@ -367,8 +375,8 @@
 }
 @media screen and (max-width: 640px) {
   .lightcase-fullScreenMode #lightcase-info {
-    padding-left: 15px;
     padding-right: 15px;
+    padding-left: 15px;
   }
   #lightcase-case:not([data-lc-type=image]):not([data-lc-type=video]):not([data-lc-type=flash]):not([data-lc-type=error]) #lightcase-info {
     position: static;
@@ -377,51 +385,52 @@
 
 #lightcase-loading {
   position: fixed;
-  z-index: 9999;
-  width: 1.123em;
-  height: auto;
-  font-size: 38px;
-  line-height: 1;
-  text-align: center;
   position: fixed;
+  z-index: 9999;
   z-index: 2001;
   top: 50%;
   left: 50%;
+  width: 1.123em;
+  height: auto;
   margin-top: -0.5em;
   margin-left: -0.5em;
-  opacity: 1;
-  font-size: 32px;
   -moz-transform-origin: 50% 53%;
   -webkit-animation: lightcase-spin 0.5s infinite linear;
-  -moz-animation: lightcase-spin 0.5s infinite linear;
-  -o-animation: lightcase-spin 0.5s infinite linear;
-  animation: lightcase-spin 0.5s infinite linear;
+     -moz-animation: lightcase-spin 0.5s infinite linear;
+       -o-animation: lightcase-spin 0.5s infinite linear;
+          animation: lightcase-spin 0.5s infinite linear;
+  text-align: center;
+  opacity: 1;
+  font-size: 38px;
+  font-size: 32px;
+  line-height: 1;
 }
-#lightcase-loading, #lightcase-loading:focus {
+#lightcase-loading,
+#lightcase-loading:focus {
+  -webkit-transition: color, opacity, ease-in-out 0.25s;
+     -moz-transition: color, opacity, ease-in-out 0.25s;
+       -o-transition: color, opacity, ease-in-out 0.25s;
+          transition: color, opacity, ease-in-out 0.25s;
   text-decoration: none;
   color: $colour-red;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-transition: color, opacity, ease-in-out 0.25s;
-  -moz-transition: color, opacity, ease-in-out 0.25s;
-  -o-transition: color, opacity, ease-in-out 0.25s;
-  transition: color, opacity, ease-in-out 0.25s;
-
-  @include background(linear-gradient(to right, $colour-white 10%, rgba(255, 255, 255, 0) 42%));
   border-radius: 50%;
+  @include background(linear-gradient(to right, $colour-white 10%, rgba(255, 255, 255, 0) 42%));
   @include transform(translateZ(0));
+
+  -webkit-tap-highlight-color: transparent;
   &:after {
-    background-color: #444;
-    content: '';
-    border-radius: 50%;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    margin: auto;
-    width: 75%;
     position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 75%;
     height: 75%;
+    margin: auto;
+    content: "";
     opacity: 0.4;
+    border-radius: 50%;
+    background-color: #444;
   }
 }
 #lightcase-loading > span {
@@ -429,52 +438,56 @@
   text-indent: -9999px;
 }
 
-#lightcase-nav a[class*='lightcase-icon-'] {
+#lightcase-nav a[class*="lightcase-icon-"] {
   position: fixed;
   z-index: 9999;
   width: 1.123em;
   height: auto;
-  font-size: 38px;
-  line-height: 1;
+  cursor: pointer;
   text-align: center;
   outline: none;
-  cursor: pointer;
+  font-size: 38px;
+  line-height: 1;
 }
-#lightcase-nav a[class*='lightcase-icon-'], #lightcase-nav a[class*='lightcase-icon-']:focus {
+#lightcase-nav a[class*="lightcase-icon-"],
+#lightcase-nav a[class*="lightcase-icon-"]:focus {
+  -webkit-transition: color, opacity, ease-in-out 0.25s;
+     -moz-transition: color, opacity, ease-in-out 0.25s;
+       -o-transition: color, opacity, ease-in-out 0.25s;
+          transition: color, opacity, ease-in-out 0.25s;
   text-decoration: none;
   color: rgba(255, 255, 255, 0.6);
+
   -webkit-tap-highlight-color: transparent;
-  -webkit-transition: color, opacity, ease-in-out 0.25s;
-  -moz-transition: color, opacity, ease-in-out 0.25s;
-  -o-transition: color, opacity, ease-in-out 0.25s;
-  transition: color, opacity, ease-in-out 0.25s;
 }
-#lightcase-nav a[class*='lightcase-icon-'] > span {
+#lightcase-nav a[class*="lightcase-icon-"] > span {
   display: inline-block;
   text-indent: -9999px;
 }
-#lightcase-nav a[class*='lightcase-icon-']:hover {
+#lightcase-nav a[class*="lightcase-icon-"]:hover {
   color: white;
 }
-.lightcase-isMobileDevice #lightcase-nav a[class*='lightcase-icon-']:hover {
+.lightcase-isMobileDevice #lightcase-nav a[class*="lightcase-icon-"]:hover {
   color: #aaa;
 }
-#lightcase-nav a[class*='lightcase-icon-'].lightcase-icon-prev {
+#lightcase-nav a[class*="lightcase-icon-"].lightcase-icon-prev {
   left: 15px;
 }
-#lightcase-nav a[class*='lightcase-icon-'].lightcase-icon-next {
+#lightcase-nav a[class*="lightcase-icon-"].lightcase-icon-next {
   right: 15px;
 }
-#lightcase-nav a[class*='lightcase-icon-'].lightcase-icon-pause, #lightcase-nav a[class*='lightcase-icon-'].lightcase-icon-play {
+#lightcase-nav a[class*="lightcase-icon-"].lightcase-icon-pause,
+#lightcase-nav a[class*="lightcase-icon-"].lightcase-icon-play {
   left: 50%;
   margin-left: -0.5em;
 }
 @media screen and (min-width: 641px) {
-  #lightcase-nav a[class*='lightcase-icon-'].lightcase-icon-pause, #lightcase-nav a[class*='lightcase-icon-'].lightcase-icon-play {
+  #lightcase-nav a[class*="lightcase-icon-"].lightcase-icon-pause,
+  #lightcase-nav a[class*="lightcase-icon-"].lightcase-icon-play {
     opacity: 0;
   }
 }
-#lightcase-nav a[class*='lightcase-icon-'].lightcase-icon-close {
+#lightcase-nav a[class*="lightcase-icon-"].lightcase-icon-close {
   top: 20px;
   right: 20px;
   bottom: auto;
@@ -483,41 +496,42 @@
   outline: none;
 }
 @media screen and (max-width: 640px) {
-  #lightcase-nav a[class*='lightcase-icon-'].lightcase-icon-close {
+  #lightcase-nav a[class*="lightcase-icon-"].lightcase-icon-close {
     position: absolute;
     top: 4px;
     right: 14px;
   }
 }
 @media screen and (min-width: 641px) {
-  #lightcase-nav a[class*='lightcase-icon-'].lightcase-icon-close {
+  #lightcase-nav a[class*="lightcase-icon-"].lightcase-icon-close {
     position: fixed;
   }
 }
 @media screen and (max-width: 640px) {
-  #lightcase-nav a[class*='lightcase-icon-'] {
+  #lightcase-nav a[class*="lightcase-icon-"] {
     bottom: 15px;
     font-size: 24px;
   }
 }
 @media screen and (min-width: 641px) {
-  #lightcase-nav a[class*='lightcase-icon-'] {
+  #lightcase-nav a[class*="lightcase-icon-"] {
     bottom: 50%;
     margin-bottom: -0.5em;
   }
-  #lightcase-nav a[class*='lightcase-icon-']:hover, #lightcase-case:hover ~ #lightcase-nav a[class*='lightcase-icon-'] {
+  #lightcase-nav a[class*="lightcase-icon-"]:hover,
+  #lightcase-case:hover ~ #lightcase-nav a[class*="lightcase-icon-"] {
     opacity: 1;
   }
 }
 
 #lightcase-overlay {
-  display: none;
-  width: 100%;
-  height: 100%;
   position: fixed;
   z-index: 2000;
   top: 0;
   left: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
   background: $colour-black;
 }
 @media screen and (max-width: 640px) {

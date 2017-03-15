@@ -1,7 +1,7 @@
 .related-articles__wrapper {
 	max-width: 1200px;
 	margin: auto;
-	padding: $row-padding--sm;
+	padding: 30px;
 	h2 {
 		color: $colour-white;
 		text-align: center;
@@ -21,7 +21,7 @@
 		}
 	}
 	@include breakpoint($screen-lg) {
-		padding: $row-padding--md;
+		padding: 60px;
 		.related-articles__content { 
 			@include clearfix;
 			@include display-flex;
