@@ -65,8 +65,8 @@
 		.two-buttons {
 			@include span(10);
 			margin-left: 0;
-			padding-left: 18%;
-			width: 100%;
+			padding-left: 30%;
+			width: auto;
     	position: absolute;
 
 			.btn {
@@ -75,7 +75,7 @@
 				top: auto;
 				left: auto;
 				right: auto;
-				margin-left: 60px;
+				margin-left: 0;
 			}
 
 			.btn + .btn {
@@ -83,4 +83,12 @@
 			}
 		}
 	}
+
+	@include breakpoint($screen-lg) {
+		.card-banner__content .two-buttons {
+			padding-left: 35%;
+		}
+	}
 }
+
+//some shit
