@@ -11,7 +11,7 @@
   text-align: center;
   background: $colour-black;
   animation-name: none;
-  @include breakpoint($screen-md) {
+  @include breakpoint($screen-lg) {
     display: block;
     padding: 15px 20px 15px;
   }
@@ -55,7 +55,7 @@
       background-color: $colour-black;
     }
     
-    @include breakpoint($screen-md) {
+    @include breakpoint($screen-lg) {
       display: inline-block;
       width: auto;
       text-indent: 0;
