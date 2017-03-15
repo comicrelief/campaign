@@ -83,7 +83,7 @@
 	}
 
 	@include breakpoint($screen-lg) {
-		.card-banner__content .two-buttons {
+		.two-buttons {
 			padding-left: 35%;
 		}
 	}
