@@ -37,7 +37,6 @@
 	}
 
 	@include breakpoint($screen-md) {
-
 		@include span(10);
 		@include push(2);
 		position: absolute;
@@ -88,5 +87,3 @@
 		}
 	}
 }
-
-//some shit
