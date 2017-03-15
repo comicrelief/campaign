@@ -7,10 +7,10 @@
 // Style guide: Cookie consent
 
 .cookie-consent.cc_container {
+  position: relative;
   padding: 10px;
   text-align: center;
   background: $colour-black;
-  animation-name: none;
   @include breakpoint($screen-lg) {
     display: block;
     padding: 15px 20px 15px;
