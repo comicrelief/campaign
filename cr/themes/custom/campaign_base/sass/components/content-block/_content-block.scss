@@ -2,15 +2,15 @@
 //
 // This is the Content block
 //
-// Markup: content-block.hbs
+// Markup: content-block.twig
 //
 // Style guide: Content block
 
 .content-block {
   position: relative;
+  overflow: hidden;
   height: 450px;
   text-align: center;
-  overflow: hidden;
   &:hover {
     .content-block__image img {
       @include opacity(1);
@@ -36,6 +36,7 @@
     height: 100%;
     @include transition(opacity 0.2s);
     @include opacity(0.9);
+
     object-fit: cover;
     .no-objectfit & {
       position: absolute;
@@ -56,11 +57,11 @@
   position: relative;
 }
 .content-block__content {
-  @include background-image(linear-gradient(rgba(0, 0, 0, 0), $colour-dark-blue));
   position: absolute;
   bottom: 0;
   width: 100%;
   padding: 40px 10px 20px;
+  @include background-image(linear-gradient(rgba(0, 0, 0, 0), $colour-dark-blue));
   @include breakpoint($screen-md, $no-query: true) {
     padding: 40px 40px 20px;
   }
@@ -69,6 +70,6 @@
   }
 }
 .content-block__tag {
-  text-transform: uppercase;
   letter-spacing: 1px;
+  text-transform: uppercase;
 }

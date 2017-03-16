@@ -2,7 +2,7 @@
 //
 // Standard links
 //
-// Markup: links.hbs
+// Markup: links.twig
 // 
 // .link--red - Red standalone link add <em style="font-weight: bold;">.inline</em> for inline links
 // .link--blue - Blue standalone link add <em style="font-weight: bold;">.inline</em> for inline links
@@ -29,13 +29,13 @@
  */
 
 .link {
-  border-bottom: 4px solid $colour-red;
+  text-decoration: none;
+  word-break: break-all;
   color: inherit;
+  border-bottom: 4px solid $colour-red;
   font-family: $font-bold;
   font-size: 18px;
   line-height: 30px;
-  text-decoration: none;
-  word-break: break-all;
   @include transition-property(border, color);
   @include transition-duration(180ms);
   &:hover,
@@ -44,13 +44,13 @@
     border-bottom: 4px solid $colour-black;
   }
   &.inline {
-    border-width: 2px;
-    color: inherit;
-    cursor: pointer;
     display: inline-block;
+    margin: 0;
+    cursor: pointer;
+    color: inherit;
+    border-width: 2px;
     font-size: inherit;
     line-height: 22px;
-    margin: 0;
     &:hover,
     &:active,
     &:focus {

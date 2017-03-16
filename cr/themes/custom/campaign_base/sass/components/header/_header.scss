@@ -1,38 +1,30 @@
-// Header
-//
-// This is Header
-//
-// Markup:
-// <header></header>
-//
-// Style guide: Components.Header
+// Header style
 
 header[role=banner] {
-  border-bottom: 4px solid #E6E6E6;
-  padding-bottom: 10px;
   overflow: visible!important;
+  padding-bottom: 10px;
   padding-bottom: 0!important;
+  border-bottom: 4px solid #e6e6e6;
   background-color: $colour-white;
 }
-
 .header__top-wrapper {
-  background: $colour-black;
   height: 49px;
+  background: $colour-black;
 }
 .header__inner-wrapper {
-	position: relative;
+  position: relative;
 }
 .site-logo {
+  position: relative;
+  z-index: 2;
   float: left;
   width: 106px;
   height: 116px;
   margin-top: -40px;
   margin-right: 20px;
   margin-left: 10px;
-  position: relative;
-  z-index: 2;
   @include breakpoint($desktop-nav-breakpoint, $no-query: true) {
     width: 136px;
-  	height: 136px;
-  } 
+    height: 136px;
+  }
 }

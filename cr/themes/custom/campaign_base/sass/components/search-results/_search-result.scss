@@ -2,7 +2,7 @@
 //
 // This is Search results
 //
-// Markup: search-results.hbs
+// Markup: search-results.twig
 //
 // Style guide: search-result
 
@@ -40,8 +40,8 @@
 }
 .search-result__image {
   position: relative;
-  @include span(5);
   margin-left: 0;
+  @include span(5);
   img {
     display: block;
     width: 100%;
@@ -49,7 +49,6 @@
   }
 }
 .search-result__content-wrapper {
-  @include span(7 wider);
   position: absolute;
   top: 0;
   right: 0;
@@ -57,18 +56,18 @@
   padding: calc(2 * #{gutter()});
   margin-right: 0;
   padding: 30px;
+  @include span(7 wider);
   &.search-result__content-wrapper--no-image {
-    @include span(12);
     position: relative;
+    @include span(12);
     .search-result__content {
-      @include translateY(0);
       position: relative;
       top: 0;
+      @include translateY(0);
     }
   }
 }
 .search-result__content {
-  @include translateY(-50%);
   position: absolute;
   top: 50%;
   right: 0;
@@ -90,10 +89,10 @@
   }
 }
 .search-result__body {
+  display: none;
   @include breakpoint($screen-md, $no-query: true) {
     display: block;
   }
-  display: none;
 }
 .search-result__tag {
   margin-right: 10px;
@@ -120,14 +119,14 @@
     @extend p;
     @extend .font--xlarge;
     .path-search & {
-      @include breakpoint($screen-md, $no-query: true) {
-        width: auto;
-      }
       display: block;
       float: none;
       width: 100%;
       margin-bottom: 0;
       text-align: left;
+      @include breakpoint($screen-md, $no-query: true) {
+        width: auto;
+      }
     }
   }
   .search__total {
@@ -152,20 +151,16 @@
 
 /* Partner-specific search result to suit rectangular image style */
 .node--type-partner.search-result {
-
   .search-result__image {
-    background-color: $colour-white;
     height: 0;
     padding-bottom: 39%;
-
+    background-color: $colour-white;
     img {
-      height: auto;
       position: absolute;
       top: 50%;
       left: 0;
+      height: auto;
       @include translateY(-50%);
-
     }
   }
-
 }

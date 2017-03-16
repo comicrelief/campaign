@@ -2,7 +2,7 @@
 //
 // This is a prototype to the new Main Nav
 //
-// Markup: _main-nav.hbs
+// Markup: _main-nav.twig
 //
 //
 // Style guide: Navigation.New-Main-nav
@@ -27,13 +27,13 @@ html:not(.js) {
     top: 103px;
   }
   &.show {
-    display: block;
+    display: block!important; // override inline style fix flash menu
   }
   .menu {
+    margin: 0;
+    padding: 10px 0;
     text-align: right;
     background: #051d37;
-    padding: 10px 0;
-    margin: 0;
   }
   .menu--level-0 {
     .menu {
@@ -55,9 +55,9 @@ html:not(.js) {
     /* Reset all our mobile styles */
     &.menu-item--active-trail a,
     &.menu-item--active-trail a:hover,
-    a:hover{
-      background-color: #1e354b;
+    a:hover {
       color: #fff;
+      background-color: #1e354b;
     }
     .font--red:hover,
     .font--red {

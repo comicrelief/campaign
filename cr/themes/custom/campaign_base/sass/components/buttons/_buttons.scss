@@ -2,7 +2,7 @@
 //
 // Standard link buttons
 //
-// Markup: buttons.hbs
+// Markup: buttons.twig
 // 
 // .btn--black-ghost - Black ghost button
 // .btn--white-ghost - White ghost button
@@ -24,13 +24,10 @@
 //
 // Style guide: Buttons
 
-
-/*  
-  * Button styles,
-  * Copied from SR16 theme
-  */
-
 .btn {
+  display: inline-block;
+  width: auto;
+  margin: 0 auto;
   padding: 21px 40px;
   cursor: pointer;
   text-align: center;
@@ -39,23 +36,18 @@
   font-family: $font-bold;
   font-size: 18px;
   line-height: 18px;
-  margin: 0 auto;
-  display: inline-block;
-  width: auto;
-
   @include border-radius(30px);
   span {
     font-size: inherit;
     font-weight: inherit;
   }
-
   // Full width on SM breakpoint only
   &.btn--full-width {
-    width: 100%;
     display: block;
+    width: 100%;
     @include breakpoint($screen-md, $no-query: true) {
-      width: auto;
       display: inline-block;
+      width: auto;
     }
   }
 }
@@ -65,12 +57,14 @@
   @include btn-variation( $button );
 }
 
-// Force white colour on black bg hover and focus state
+/* Force white colour on black bg hover and focus state */
 .btn.btn--white {
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     color: $colour-white;
   }
 }
+
 /**
  * Buttons display as stack block for xs
  */
@@ -89,11 +83,11 @@
 @include breakpoint($screen-md) {
   .btn {
     display: inline-block;
-    font-size: 18px;
     width: auto;
+    font-size: 18px;
     &.btn--fixed-width {
-      min-width: 290px;
       width: 100%;
+      min-width: 290px;
     }
   }
   .btn + .btn {
@@ -123,8 +117,7 @@
 }
 
 /**
- * Adds large buttons. Initially for the OTN homepage but can be used
- * elsewhere.
+ * Adds large buttons.
  */
 .btn--lg {
   padding-top: 19px;
@@ -144,18 +137,18 @@
   }
 }
 
-// for a large group of buttons
+/* for a large group of buttons */
 @include breakpoint($screen-md) {
   .btn:first-child:not(:only-child) {
     margin-bottom: 20px;
   }
-  .btn+.btn {
+  .btn + .btn {
     margin-bottom: 20px;
   }
 }
 
-/* Ghost button */
-// less padding because ghost buttons have borders
+/* Ghost button 
+less padding because ghost buttons have borders */
 .btn--white-ghost,
 .btn--black-ghost {
   padding: 19px 38px;
@@ -172,7 +165,8 @@
     color: $colour-dark-blue;
   }
 }
-//small buttons for content wall
+
+/* small buttons for content wall */
 .content-wall {
   .btn {
     padding: 16px 32px;

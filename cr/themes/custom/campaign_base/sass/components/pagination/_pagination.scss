@@ -2,7 +2,7 @@
 //
 // This is Pagination
 //
-// Markup: pagination.hbs
+// Markup: pagination.twig
 //
 // Style guide: Pagination
 
@@ -27,11 +27,10 @@
       text-decoration: none;
       color: $colour-black;
       font-size: 22px;
-
       @include border-radius(50%);
       &:hover {
-        background-color: $colour-red;
         color: $colour-white;
+        background-color: $colour-red;
       }
     }
     &.pager__item--previous,
@@ -39,15 +38,15 @@
       a {
         padding: 8px;
         &:hover {
-          background-color: transparent;
           color: $colour-black;
+          background-color: transparent;
         }
       }
     }
     &.is-active {
       a {
-        background-color: $colour-red;
         color: $colour-white;
+        background-color: $colour-red;
       }
     }
     &.pager__item--first,

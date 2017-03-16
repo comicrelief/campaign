@@ -3,7 +3,6 @@
 // These are the list items
 //
 // Markup:
-
 // <ul class="cr-body">
 //  <li>Item 1</li>
 // 	<li>Item 2</li>
@@ -14,42 +13,39 @@
 // Style guide: Typography.Lists
 
 ul {
-	li {
-		font-size: 1em;
-	}
+  li {
+    font-size: 1em;
+  }
 }
 
 .cr-body ul {
-	list-style: none;
-	padding: 0 0 0 20px;
-	margin: 15px 0;
-	font-family: $font-regular;
-
-	li {
-		@include font-size($p-font-size);
-		list-style: none;
-		padding: 0 0 0 30px;
-		position: relative;
-
-		&:before {
-      content: '\25CF';
-      color: $colour-red;
-      left: -3px;
-      padding: 0 16px 0 0;
+  margin: 15px 0;
+  padding: 0 0 0 20px;
+  list-style: none;
+  font-family: $font-regular;
+  li {
+    position: relative;
+    padding: 0 0 0 30px;
+    list-style: none;
+    @include font-size($p-font-size);
+    &:before {
       position: absolute;
       top: 0;
-		}
-	}
+      left: -3px;
+      padding: 0 16px 0 0;
+      content: "\25CF";
+      color: $colour-red;
+    }
+  }
 }
 
 .cr-body ol {
-    padding: 0 0 0 35px;
-    margin: 15px 0;
-    list-style-type: decimal;
-
-		li {
-			@include font-size($p-font-size);
-			padding: 0 0 0 15px;
-			position: relative;
-	}
+  margin: 15px 0;
+  padding: 0 0 0 35px;
+  list-style-type: decimal;
+  li {
+    position: relative;
+    padding: 0 0 0 15px;
+    @include font-size($p-font-size);
+  }
 }

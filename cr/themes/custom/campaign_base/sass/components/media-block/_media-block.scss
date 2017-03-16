@@ -2,15 +2,15 @@
 //
 // This is the media block
 //
-// Markup: media-block.hbs
+// Markup: media-block.twig
 //
 // Style guide: Media block
 
 .media-block {
   position: relative;
+  overflow: hidden;
   height: 450px;
   text-align: center;
-  overflow: hidden;
   #play-icon {
     width: 40px;
     margin: 0 auto 10px;
@@ -47,6 +47,7 @@
     height: 100%;
     @include transition(0.2s);
     @include opacity(0.9);
+
     object-fit: cover;
     .no-objectfit & {
       position: absolute;
@@ -67,11 +68,11 @@
   position: relative;
 }
 .media-block__content {
-  @include background-image(linear-gradient(rgba(0, 0, 0, 0), $colour-dark-blue));
   position: absolute;
   bottom: 0;
   width: 100%;
   padding: 40px 10px 30px;
+  @include background-image(linear-gradient(rgba(0, 0, 0, 0), $colour-dark-blue));
   h2, h3, h4, h5 {
     color: $colour-white;
   }

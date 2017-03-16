@@ -1,44 +1,89 @@
 // Banner card
 
 .card-banner {
-	float: left;
-  width: 100%;
   position: relative;
+  min-height: 95px;
 }
 .card-banner__inner-wrapper {
-	width: span(12);
-	max-width: $max-width;
-	margin: 0 auto;
-	overflow: hidden;
-	position: relative;
+  width: span(12);
+  max-width: $max-width;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  min-height: 95px;
 }
 .card-banner__image {
-	display: none;
-	@include breakpoint($screen-md) {
-		display: block;
-		@include span(2);
-		img {
-			display: block;
-			width: 100%;
-			height: auto;
-		}
-	}
+  display: none;
+  @include breakpoint($screen-md) {
+    display: block;
+    @include span(2);
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
 }
 .card-banner__content {
-	padding: 20px 0;
-	p {
-		text-align: center;
-	}
-	@include breakpoint($screen-md) {
-		@include span(10);
-		position: absolute;
-		top: 50%;
-		@include translateY(-50%);
-		.btn {
-		  position: absolute;
-		  right: -20px;
-		  top: 50%;
-		  @include translateY(-50%);
-		}
-	}
+  padding: 20px 0;
+  
+  p {
+    text-align: center;
+  }
+
+  .btn {
+    padding: 21px 30px;
+    width: 100%;
+  }
+
+  @include breakpoint($screen-md) {
+    @include span(10);
+    @include push(2);
+    position: absolute;
+    top: 50%;
+    @include translateY(-50%);
+
+    .cr-body {
+      margin-left: calc( (#{span(2)} + 5.5%) * -1 );
+
+      > * {
+        margin-bottom: 0;
+      }
+    }
+
+    .btn {
+      width: auto;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      @include translateY(-50%);
+    }
+
+    .two-buttons {
+      @include span(10);
+      margin-left: 0;
+      padding-left: 30%;
+      width: auto;
+      position: absolute;
+
+      .btn {
+        position: relative;
+        display: inline-block;
+        top: auto;
+        left: auto;
+        right: auto;
+        margin-left: 0;
+      }
+
+      .btn + .btn {
+        margin-left: 25px;
+      }
+    }
+  }
+
+  @include breakpoint($screen-lg) {
+    .two-buttons {
+      padding-left: 35%;
+    }
+  }
 }
