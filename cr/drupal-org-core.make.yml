@@ -17,5 +17,3 @@ projects:
       - https://www.drupal.org/files/issues/drupalbehaviorerror-2314185-15.patch
       # See https://www.drupal.org/node/728702. Required for platform.sh
       - https://www.drupal.org/files/issues/drupal-redirect_to_install-728702-92.patch
-      # Add composer dependencies
-      - https://gist.githubusercontent.com/Saphyel/8587c0c7adca816929965afa487f2c6a/raw/c7a8aa1d7d13e8de5eec8f7cb687dbc9a45e3f2d/composer.patch
