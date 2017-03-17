@@ -39,7 +39,7 @@ module.exports = function (grunt) {
 
         shell: {
             styleguide: {
-                command: 'node_modules/kss/bin/kss --builder kss --extend-drupal8 --source sass/ --destination styleguide --title "Campaign Styleguide"'
+                command: 'node_modules/kss/bin/kss --builder kss --extend-drupal8 --source templates/sass/ --destination styleguide --title "Campaign Styleguide"'
             },
         },
 
