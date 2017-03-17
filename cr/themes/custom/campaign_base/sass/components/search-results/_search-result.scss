@@ -91,6 +91,7 @@
 }
 .search-result__body {
   display: none;
+  color: $colour-black;
   @include breakpoint($screen-md, $no-query: true) {
     display: block;
   }
