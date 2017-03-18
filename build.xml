@@ -14,7 +14,7 @@
   <!-- Enable or disable CRAFT support. Not needed if the Drupal site will be hosted elsewhere, e.g. platform.sh -->
   <property name="deploy.raft"  value="false"/>
   <!-- Import common command file -->
-  <import file="${app.profile.name}/common.xml" optional="true" />
+  <import file="${app.profile.dir}/common.xml" optional="true" />
   <!-- These allow developers to override config. on a per environment basis -->
   <property file="build.properties"   override="true"/>
   <target name="build:prepare">
