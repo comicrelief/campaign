@@ -62,10 +62,14 @@
             "drupal/varnish_purge": {
                 "https://www.drupal.org/node/2843978": "https://www.drupal.org/files/issues/2843978-multi-ips-5.patch"
             }
+        },
+        "installer-paths": {
+            "./themes/custom/campaign_base/node_modules/modernizr": ["comicrelief/campaign-modernizr"]
         }
     },
     "require": {
         "cweagans/composer-patches": "^1.5.0",
+        "mnsami/composer-custom-directory-installer": "1.1.*",
         "composer/installers": "^1.0",
         "wikimedia/composer-merge-plugin": "~1.3",
         "php-amqplib/php-amqplib": "^2.6",
@@ -132,6 +136,7 @@
         "drupal/memcache": "2.x-dev#908c0a2",
         "drupal/cdn": "3.0",
         "drupal/better_exposed_filters": "3.x-dev#19f3da2",
+        "comicrelief/campaign-modernizr": "*",
         "php-http/curl-client": "^1.6",
         "guzzlehttp/psr7": "^1.3",
         "php-http/message": "^1.4"

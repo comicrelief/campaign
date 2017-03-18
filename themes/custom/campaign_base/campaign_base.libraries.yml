@@ -24,4 +24,4 @@ platform:
 
 vide:
   js:
-    node_modules/vide/jquery.vide.js: {}
+    node_modules/vide/src/jquery.vide.js: {}
