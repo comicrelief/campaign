@@ -32,7 +32,16 @@
               "url": "https://github.com/comicrelief/campaign-modernizr",
               "type": "git",
               "reference": "a2db765"
-            }
+            },
+            "type": "package",
+              "name": "mikeyp/google_tag",
+              "version": "1.0.0",
+              "type": "drupal-module",
+              "source": {
+                "url": "https://github.com/mikeyp/google_tag.git",
+                "type": "git",
+                "reference": "6a3c3e7"
+              }
           }
         }
     ],
@@ -126,7 +135,9 @@
         "drupal/twig_tweak": "1.4",
         "drupal/rabbitmq": "1.0-beta1",
         "drupal/search_api": "1.0-beta3",
+        "drupal/search_api_solr": "1.0-beta1",
         "drupal/crazyegg": "1.0-rc1",
+        "mikeyp/google_tag": "*",
         "drupal/optimizely": "1.1",
         "drupal/simple_sitemap": "2.x-dev#5833ff0",
         "drupal/fast_404": "1.0-alpha2",
