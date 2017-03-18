@@ -32,16 +32,20 @@
               "url": "https://github.com/comicrelief/campaign-modernizr",
               "type": "git",
               "reference": "cd799b2"
-            },
-            "type": "package",
-              "name": "mikeyp/google_tag",
-              "version": "1.0.0",
-              "type": "drupal-module",
-              "source": {
-                "url": "https://github.com/mikeyp/google_tag.git",
-                "type": "git",
-                "reference": "6a3c3e7"
-              }
+            }
+          }
+        },
+        {
+          "type": "package",
+          "package": {
+            "name": "mikeyp/google_tag",
+            "version": "1.0.0",
+            "type": "drupal-module",
+            "source": {
+              "url": "https://github.com/mikeyp/google_tag.git",
+              "type": "git",
+              "reference": "6a3c3e7"
+            }
           }
         }
     ],
