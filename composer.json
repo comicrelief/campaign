@@ -26,12 +26,12 @@
         {
           "type": "package",
           "package": {
-            "name": "comicrelief/campaign-modernizr",
+            "name": "bimsonz/modernizr-custom",
             "version": "1.0.0",
             "source": {
-              "url": "https://github.com/comicrelief/campaign-modernizr",
+              "url": "https://github.com/bimsonz/modernizr-custom",
               "type": "git",
-              "reference": "a2db765"
+              "reference": "2ad7995"
             },
             "type": "package",
               "name": "mikeyp/google_tag",
@@ -73,7 +73,7 @@
             }
         },
         "installer-paths": {
-            "./themes/custom/campaign_base/node_modules/modernizr": ["comicrelief/campaign-modernizr"]
+            "./themes/custom/campaign_base/node_modules/modernizr": ["bimsonz/modernizr-custom"]
         }
     },
     "require": {
@@ -146,7 +146,7 @@
         "drupal/memcache": "2.x-dev#908c0a2",
         "drupal/cdn": "3.0",
         "drupal/better_exposed_filters": "3.x-dev#19f3da2",
-        "comicrelief/campaign-modernizr": "*",
+        "bimsonz/modernizr-custom": "*",
         "php-http/curl-client": "^1.6",
         "guzzlehttp/psr7": "^1.3",
         "php-http/message": "^1.4"
