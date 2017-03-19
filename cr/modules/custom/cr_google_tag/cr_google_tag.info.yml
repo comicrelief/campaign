@@ -1,5 +1,4 @@
 name: Comic Relief Google Tag Manager
-# core: 8.x
 description: Comic Relief Google Tag Manager
 core: 8.x
 package: Comic Relief

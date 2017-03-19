@@ -8,7 +8,7 @@
       if ($('html').hasClass('no-touchevents')) {
         event.preventDefault();
         $(this).closest('.iframe-block__wrapper').addClass('iframe-block__wrapper--on');
-        var iframe = $(this).next(".iframe-block__game");
+        var iframe = $(this).next(".iframe-block__embedded");
         iframe.attr("src", iframe.data("src"));
         $(this).find('.iframe-block__image').hide();
       }

@@ -41,7 +41,9 @@ projects:
       branch: 8.x-1.x
       revision: 2065f39
   pathauto:
-    version: 1.0-beta1
+    download:
+      branch: 8.x-1.x
+      revision: 39fa13d
   redirect:
     version: 1.0-alpha1
   token:
@@ -50,6 +52,8 @@ projects:
     version: 1.0-beta3
   entity:
     version: 1.0-alpha3
+  blazy:
+    version: 1.0-rc1
   # Layout modules
   inline_entity_form:
     download:
@@ -80,7 +84,9 @@ projects:
       branch: 8.x-1.x
       revision: f7b3273f60d3544c7a95a18bbcbaefe860afc0ac
   scheduled_updates:
-    version: 1.0-alpha5
+    download:
+      branch: 8.x-1.x
+      revision: b442ff7
   diff:
     version: 1.0-beta2
   view_mode:
@@ -93,7 +99,7 @@ projects:
       # See https://www.drupal.org/node/2686499
       2686499: https://www.drupal.org/files/issues/config_devel-drush-config-devel-import-2686499-6.patch
       # See https://www.drupal.org/node/2801201
-      2801201: https://www.drupal.org/files/issues/show_differences_between-2801201-2.patch
+      2801201: https://www.drupal.org/files/issues/show_differences_between-2801201-3.patch
   default_content:
     download:
       branch: 8.x-1.x
@@ -173,20 +179,34 @@ projects:
   fast_404:
     version: 1.0-alpha2
   purge:
-    version: 3.0-beta4
+    version: 3.0-beta6
+  varnish_purge:
+    version: 1.4
+    patch:
+      # See: https://www.drupal.org/node/2843978
+      2843978: https://www.drupal.org/files/issues/2843978-multi-ips-5.patch
   purge_purger_http:
-    version: 1.0-beta3
+    version: 1.0-beta4
   memcache:
     download:
       version: 2.x-dev
       revision: 908c0a2
   cdn:
-    version: 3.0-beta1
+    version: 3.0
+  better_exposed_filters:
+    download:
+      version: 3.x-dev
+      revision: 19f3da2
 libraries:
   platform:
     download:
       type: "file"
       url: https://raw.githubusercontent.com/bestiejs/platform.js/0870795f0c277a33cc2078a96e74434f89aa11d8/platform.js
+    destination: "themes/custom/campaign_base/libraries"
+  vide:
+    download:
+      type: "file"
+      url: https://raw.githubusercontent.com/VodkaBears/Vide/0.5.1/src/jquery.vide.js
     destination: "themes/custom/campaign_base/libraries"
   drush_cmi_tools:
     download:
@@ -203,3 +223,8 @@ libraries:
       type: "get"
       url: https://raw.githubusercontent.com/comicrelief/campaign-modernizr/master/modernizr-custom.js
     destination: "themes/custom/campaign_base/libraries"
+  blazy:
+    download:
+      type: "get"
+      url: https://github.com/dinbror/blazy/archive/1.8.2.zip
+    destination: "../web/libraries"

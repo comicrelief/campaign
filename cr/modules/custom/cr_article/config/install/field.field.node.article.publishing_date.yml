@@ -4,7 +4,7 @@ dependencies:
   config:
     - field.storage.node.publishing_date
     - node.type.article
-    - scheduled_updates.scheduled_update_type.node__status
+    - scheduled_updates.scheduled_update_type.node_status
 id: node.article.publishing_date
 field_name: publishing_date
 entity_type: node
@@ -19,7 +19,7 @@ settings:
   handler: 'default:scheduled_update'
   handler_settings:
     target_bundles:
-      node__status: node__status
+      - node_status
     sort:
       field: _none
     auto_create: false

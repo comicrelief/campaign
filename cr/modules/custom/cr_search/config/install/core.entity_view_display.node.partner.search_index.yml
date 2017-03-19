@@ -14,8 +14,6 @@ dependencies:
     - responsive_image.styles.partner_logos_search
   module:
     - ds
-    - link
-    - metatag
     - responsive_image
     - text
     - user

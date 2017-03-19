@@ -1,13 +1,16 @@
 <div {{ attributes.addClass('search-result', 'search-result--' ~ nodetype) }}>
 	<div class="search-result__image">
-	  {{ field_landing_image }}
+        {% if field_landing_image['#field_type'] is empty %}
+			<img src="{{ campaign_base_path }}images/backgrounds/search_webpage.png" alt="search download">
+        {% else %}
+            {{ field_landing_image }}
+        {% endif %}
 	</div>
-  <div class="search-result__content-wrapper bg--white">
+	<div class="search-result__content-wrapper bg--white">
 		<div class="search-result__content">
-			<p class="search-result__published-date">{{ field_article_publish_date }}</p>
 			<h3>{{ node_title }}</h3>
 			<div class="search-result__body">
-				{{ body }}
+                {{ body }}
 			</div>
 		</div>
 	</div>

@@ -2,7 +2,7 @@
 //
 // This is Promo header
 //
-// Markup: promo-header.hbs
+// Markup: promo-header.twig
 //
 // .promo-header--feature   - Body copy overlap bg image
 // .promo-header--no-image   - Body copy overlap bg image
@@ -27,32 +27,68 @@
 .promo-header {
   &.promo-header--feature {
     display: table;
-    background: transparent;
     width: 100%;
     min-height: initial;
+    background: transparent;
+    .bg_video {
+      position: relative !important;
+      height: 400px;
+    }
   }
 }
 .promo-header--default {
   .promo-header__bg-image {
     img {
+      @include no-objectfit;
+
       object-fit: cover;
       object-position: top;
-      @include no-objectfit;
     }
   }
 }
+.promo-header--video {
+  //override styling set by vide library
+  .bg_video {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    opacity: 0.7;
+    @include breakpoint($screen-md-max) {
+      height: 600px;
+    }
+  }
+  .video {
+    position: relative !important;
+    height: 100%;
+  }
+  &.promo-header--small {
+    height: 400px;
+    video {
+      top: 0 !important;
+      left: 0 !important;
+      transform: translate(0) !important;
+    }
+  }
+}
+.bg--none {
+  .bg_video {
+    opacity: 1;
+  }
+}
 .promo-header__bg-image {
+  width: 100%;
+  margin-top: -30%;
+  margin-bottom: -5px;
   @include breakpoint($screen-md-max, $no-query: true) {
+    position: absolute;
     width: 100%;
     height: 100%;
     margin-top: 0;
-    margin-left: auto;
     margin-right: auto;
-    position: absolute;
+    margin-left: auto;
   }
-  margin-top: -30%;
-  margin-bottom: -5px;
-  width: 100%;
   .promo-header--feature & {
     position: relative;
     display: table-header-group;
@@ -67,52 +103,51 @@
   }
 }
 .promo-header__content {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  margin: auto;
   @include breakpoint($screen-md-max) {
-    @include translateY(-50%);
     position: absolute;
     top: 50%;
     right: 0;
     left: 0;
     width: 100%;
-    z-index: 10;
+    @include translateY(-50%);
   }
-  position: relative;
-  z-index: 0;
-  max-width: 1200px;
-  margin: auto;
   .promo-header--feature & {
-    @include translateY(0);
     position: relative;
     top: 0;
     margin: -50px auto 0;
     padding: 1px 0;
     background: $colour-white;
+    @include translateY(0);
     @include breakpoint-gutters;
   }
   .promo-header--no-image & {
-    @include translateY(0);
     position: relative;
     top: 0;
+    @include translateY(0);
   }
   .promo-header__content-inner {
-    margin: 25px auto 15px;
-    word-break: break-word;
-    text-align: center;
     width: 100%;
+    margin: 25px auto 15px;
     padding: 15px;
+    text-align: center;
+    word-break: break-word;
     @include breakpoint($screen-md) {
       width: span(10);
       margin: 50px auto 40px;
       padding: 0;
     }
     @include breakpoint($screen-md-max) {
-      text-align: left;
       width: 50%;
+      text-align: left;
       .promo-header--feature & {
-        max-width: span(8);
-        text-align: center;
         width: 100%;
+        max-width: span(8);
         margin: 55px auto 45px;
+        text-align: center;
       }
     }
     &--centre {
@@ -121,13 +156,13 @@
         margin-left: auto;
         text-align: center;
         .promo-header--no-image & {
-          max-width: span(8);
           width: 100%;
+          max-width: span(8);
           margin: 55px auto 45px;
         }
         .promo-header--small & {
-          max-width: span(8);
           width: 100%;
+          max-width: span(8);
         }
       }
     }
@@ -170,8 +205,6 @@
 }
 .promo-header__link {
   a {
-    @include border-radius(30px);
-    @include transition(background-color 300ms);
     display: inline-block;
     height: 50px;
     padding: 14px 35px;
@@ -181,6 +214,8 @@
     background-color: #fff;
     font-size: 16px;
     line-height: 22px;
+    @include border-radius(30px);
+    @include transition(background-color 300ms);
     &:hover {
       background-color: rgba(255,255,255,0.8);
     }

@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: cr_570_wide_2x
+label: 'CR 570 wide (2x)'
+effects:
+  3393eef2-39ba-4666-8863-454d47a4e4ff:
+    uuid: 3393eef2-39ba-4666-8863-454d47a4e4ff
+    id: image_scale
+    weight: 1
+    data:
+      width: 1140
+      height: null
+      upscale: false

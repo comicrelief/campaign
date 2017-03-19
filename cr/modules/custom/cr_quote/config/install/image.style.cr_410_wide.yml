@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: cr_410_wide
+label: 'CR 410 wide'
+effects:
+  6a778dbc-8f66-4560-ba96-59908996d2fb:
+    uuid: 6a778dbc-8f66-4560-ba96-59908996d2fb
+    id: image_scale
+    weight: 1
+    data:
+      width: 410
+      height: null
+      upscale: false

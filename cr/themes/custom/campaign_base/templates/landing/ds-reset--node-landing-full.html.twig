@@ -2,14 +2,20 @@
 {% set small_img = field_landing_small_bg['#items'].value ? 'promo-header--small' : '' %}
 {% set desk_img = node.field_landing_image.entity.fileuri %}
 {% set mobile_img = node.field_landing_image_mobile.entity.fileuri %}
-{% set header_class = [
-	field_landing_background_colour['#items'].value, 
-	'promo-header', layoutClass, small_img]
+{% set bg_video = field_landing_background_video['#items'].value ? 'promo-header--video' : ''  %}
+{% set bg_colour = field_landing_background_colour['#items'].value ? field_landing_background_colour['#items'].value : 'bg--none' %}
+{% set header_class = [ bg_colour, 'promo-header', layoutClass, small_img, bg_video ]
 %}
-{% set copy_position = field_landing_copy_position_alig['#items'].value %}
-{% if not desk_img and not small_img %}{% set header_class = header_class|merge(["promo-header--no-image"]) %}{% endif %}
+{% set copy_position = field_landing_copy_position_alig['#items'].value %}	
+{% set image_bg = file_url(desk_img)|trim('.jpg') %}
+
+{% if not desk_img and not small_img and not bg_video %}{% set header_class = header_class|merge(["promo-header--no-image"]) %}{% endif %}
 <header class="{{ header_class|join(" ") }} contextual-region">
 	{{ title_suffix.contextual_links }}
+	{% if bg_video is not empty %}
+		<div class= "bg_video" data-vide-bg="mp4: {{ field_landing_background_video }}, poster: {{ image_bg }}" data-vide-options="loop: true, muted: true, resizing: true, position: center, posterType: jpg, className: video">
+		</div>
+	{% endif %}
 	<div class="promo-header__content">
 		<div class="promo-header__content-inner {{ copy_position }}">
 			{% if field_svg_body_title['#items'].value %}
@@ -20,8 +26,8 @@
 			{{ body }}
 		</div>
 	</div>
-	{% if desk_img %}
-		{% if mobile_img and desk_img and not small_img %}
+	{% if desk_img and bg_video is empty %}
+		{% if mobile_img and desk_img and not small_img  %}
 		<div class="promo-header__bg-image">
 				<picture>
 					<source srcset="{{ desk_img | image_style('bg_rich_text_wide') }} 1x, {{ desk_img | image_style('bg_rich_text_wide_2x_') }} 2x" media="all and (min-width: 1023px)" type="image/jpeg">

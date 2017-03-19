@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: zip
+label: Zip
+description: 'Compress files'
+mimetypes:
+  - application/zip

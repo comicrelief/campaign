@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: cr_370_wide_2x
+label: 'CR 370 wide (2x)'
+effects:
+  4e66d2a6-a87e-4340-b9ed-39a63164f2f0:
+    uuid: 4e66d2a6-a87e-4340-b9ed-39a63164f2f0
+    id: image_scale
+    weight: 1
+    data:
+      width: 740
+      height: null
+      upscale: false

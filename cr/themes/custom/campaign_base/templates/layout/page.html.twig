@@ -41,6 +41,18 @@
 <header role="banner">
   <div class="header__top-wrapper">{{ page.header_top }}</div>
   <div class="header__inner-wrapper">
+    <div class="feature-nav">
+      <ul class="feature-nav__items">
+      </ul>
+      <div class="feature-nav__icons feature-nav__burger">
+        <button class="c-hamburger c-hamburger--htx feature-nav-toggle">
+          <div class="c-hamburger__text">
+            <span class="visually-hidden">Open and close nav menu</span>
+          </div>
+          <span></span>
+        </button>
+      </div>
+    </div>
     {{ page.header }}
   </div>
 </header>
@@ -50,12 +62,12 @@
 <section class="main-banner">{{ page.banners }}</section>
 <main role="main">
   <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
-  <div class="search-overlay"></div>
   {{ page.content }}
+  <div class="search-overlay"></div>
 </main>
 {% if page.footer %}
-  <footer role="contentinfo">
-    {{ page.footer }}
-    <a class="styleguide-link external-link" href="/profiles/cr/themes/custom/campaign_base/styleguide/index.html" target="_blank">Styleguide</a>
-  </footer>
+<footer role="contentinfo">
+  {{ page.footer }}
+  <a class="styleguide-link external-link" href="/profiles/cr/themes/custom/campaign_base/styleguide/index.html" target="_blank">Styleguide</a>
+</footer>
 {% endif %}

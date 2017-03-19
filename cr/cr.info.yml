@@ -63,6 +63,7 @@ dependencies:
   - cookieconsent
   - field_group
   - twig_tweak
+  - blazy
 
   # Layout
   - inline_entity_form
@@ -74,13 +75,16 @@ dependencies:
   - view_mode
   - imagemagick
   - menu_link_attributes
+  - better_exposed_filters
 
   # Custom modules
   - cr_page
+  - cr_cards
   - cr_article
   - cr_content_reference
   - cr_downloadables
   - cr_video
+  - cr_image
   - cr_media
   - cr_quote
   - cr_content_wall
@@ -91,13 +95,13 @@ dependencies:
   - cr_teaser
   - cr_email_signup
   - cr_partner
-  - cr_cards
   - cr_story
   - cr_landing_page
   - cr_navigation
   #- cr_performance
   - cr_user
   - cr_social
+  - cr_meta_icons
 
   # Development modules
   - config_devel
@@ -111,7 +115,7 @@ dependencies:
   - cr_default_content
 
   # Because cr_landing_pages has content dependencies this needs to be loaded after
-  - cr_search
+  - cr_search_db
 
 themes:
   - seven
@@ -172,7 +176,6 @@ config_devel:
   - image.style.cw_4_3_md_290x278
   - image.style.cw_large_780x440
   - image.style.cw_medium_570x365
-  - image.style.cw_small_370x290
   - image.style.bg_rich_text_narrow
   - image.style.bg_rich_text_wide
   - image.style.50_width_image_lg
@@ -181,9 +184,6 @@ config_devel:
   - image.style.story_293_x_322_crop_lg
   - image.style.story_479_x_352_crop_md
   - image.style.story_739_x_561_crop_sm
-  - image.style.cw_quote_lg
-  - image.style.cw_quote_sm
-  - image.style.cr_1400_x_658
   - image.style.cr_1700_x_400
   - image.style.cr_740_x_300
 
@@ -208,7 +208,6 @@ config_devel:
   # Responsive image style mappings
   - responsive_image.styles.hero_image_full_node
   - responsive_image.styles.cw_4_3_image
-  - responsive_image.styles.cw_landscape_image
   - responsive_image.styles.bg_rich_text
   - responsive_image.styles.single_l_r_message_row
   - responsive_image.styles.single_msg_
@@ -244,6 +243,9 @@ config_devel:
 
   # Cookie consent
   - cookieconsent.settings
+
+  # Blazy
+  - blazy.settings
 
   - simple_sitemap.settings
   - simple_sitemap.bundle_settings.node.article

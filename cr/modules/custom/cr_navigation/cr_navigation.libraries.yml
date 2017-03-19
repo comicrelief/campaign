@@ -1,7 +1,6 @@
 cr_navigation:
   version: 1.x
   js:
-    js/jquery.smartmenus.min.js: {}
     js/cr_navigation.js: {}
   dependencies:
     - core/jquery

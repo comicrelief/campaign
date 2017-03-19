@@ -1,0 +1,34 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ plugin_id|clean_class,
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {% if label %}
+    <h2{{ title_attributes }}>{{ label }}</h2>
+  {% endif %}
+  {{ title_suffix }}
+  {% block content %}
+    <div class="meta-icons">
+      <button class="meta-icons__magnify has-tooltip" title="Search">
+        <svg class="icon">
+          <use xlink:href="#icon-magnify"></use>
+        </svg>
+      </button>
+      <a href="https://my.rednoseday.com/user/login" target="_blank" class="meta-icons__login has-tooltip" title="Log in to your Giving Page">
+        <svg class="icon">
+          <use xlink:href="#icon-login"></use>
+        </svg>
+      </a>
+      <button class="meta-icons__esu-toggle has-tooltip" title="Sign up for emails">
+        <svg class="icon">
+          <use xlink:href="#envelope"></use>
+        </svg>
+        <span>Get the latest</span>
+      </button>
+    </div>
+  {% endblock %}
+</div>
