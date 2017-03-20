@@ -4,7 +4,7 @@
 //
 // Markup: search-results.twig
 //
-// Style guide: search-result
+// Style guide: 8
 
 .node--type-page.search-result {
   @include breakpoint($screen-md, $no-query: true) {
