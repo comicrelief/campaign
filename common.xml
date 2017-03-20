@@ -69,10 +69,10 @@
     <if>
       <istrue value="${deploy.craft}"/>
       <then>
-        <exec dir="${project.basedir}/web" logoutput="true" passthru="true" checkreturn="true" command="bundle install --path vendor/bundle --frozen"/>
+        <exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="bundle install --path .vendor/bundle --frozen"/>
       </then>
       <else>
-        <exec dir="${project.basedir}/web" logoutput="true" passthru="true" checkreturn="true" command="bundle install --path vendor/bundle --frozen --without craft"/>
+        <exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="bundle install --path .vendor/bundle --frozen --without craft"/>
       </else>
     </if>
     <exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="npm install"/>
