@@ -85,9 +85,9 @@
       padding: 0 gutter();
       @include clearfix;
       li {
+        @include span(6);
         margin-top: gutter();
         margin-bottom: gutter();
-        @include span(6);
         @include breakpoint($screen-md) {
           @include span(3);
         }
