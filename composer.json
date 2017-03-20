@@ -140,7 +140,6 @@
         "drupal/search_api": "1.0-beta3",
         "drupal/search_api_solr": "1.x-dev#d6c2743",
         "drupal/crazyegg": "1.0-rc1",
-        "mikeyp/google_tag": "*",
         "drupal/optimizely": "1.1",
         "drupal/simple_sitemap": "2.x-dev#5833ff0",
         "drupal/fast_404": "1.0-alpha2",
@@ -150,7 +149,6 @@
         "drupal/memcache": "2.x-dev#908c0a2",
         "drupal/cdn": "3.0",
         "drupal/better_exposed_filters": "3.x-dev#19f3da2",
-        "comicrelief/campaign-modernizr": "*",
         "php-http/curl-client": "^1.6",
         "guzzlehttp/psr7": "^1.3",
         "php-http/message": "^1.4"
