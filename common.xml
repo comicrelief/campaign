@@ -4,7 +4,7 @@
   <property name="app.uri"            override="true" value="http://campaign.dev"/>
   <property name="drush.bin"          override="true" value="drush"/>
   <property name="grunt.cmd"          override="true" value="build"/>
-  <property name="c.home"             override="true" value="tests/behat/vendor/"/>
+  <property name="c.home"             override="true" value="${app.profile.dir}/tests/behat/vendor/"/>
   <property name="cs.dir"             override="true" value="drupal/coder/coder_sniffer"/>
   <property name="cs.standard"        override="true" value="--standard=Drupal"/>
   <property name="cs.ext"             override="true" value="--extensions=php,module,inc,install,test,profile,theme"/>
@@ -44,19 +44,19 @@
   </target>
   <!-- Tests -->
   <target name="test" depends="test:prepare" description="Run behat tests">
-    <exec dir="${project.basedir}/tests/behat" passthru="true" checkreturn="true" command="vendor/bin/behat --colors"/>
+    <exec dir="${app.profile.dir}/tests/behat" passthru="true" checkreturn="true" command="vendor/bin/behat --colors"/>
   </target>
   <target name="test:dl" depends="test:prepare" description="Run behat tests">
-    <exec dir="${project.basedir}/tests/behat" passthru="true" checkreturn="true" command="vendor/bin/behat --colors -dl"/>
+    <exec dir="${app.profile.dir}/tests/behat" passthru="true" checkreturn="true" command="vendor/bin/behat --colors -dl"/>
   </target>
   <target name="test:prepare" description="Prepare to tun behat tests">
     <if>
-      <not><available file='${project.basedir}/tests/behat/vendor/bin/behat' type='dir' /></not>
+      <not><available file='${app.profile.dir}/tests/behat/vendor/bin/behat' type='dir' /></not>
       <then>
         <phingcall target="install:test:dependencies"/>
       </then>
     </if>
-    <copy file="${project.basedir}/tests/behat/behat.yml.phing" tofile="${project.basedir}/tests/behat/behat.yml" overwrite="true">
+    <copy file="${app.profile.dir}/tests/behat/behat.yml.phing" tofile="${app.profile.dir}/tests/behat/behat.yml" overwrite="true">
       <filterchain>
         <replacetokens begintoken="%%" endtoken="%%">
           <token key="DRUPAL_TI_DRUPAL_DIR" value="${app.dir}"/>
@@ -74,7 +74,7 @@
     <phingcall target="cache:clear"/>
   </target>
   <target name="install:test:dependencies" description="Install composer dependencies">
-    <exec dir="${project.basedir}/tests/behat" logoutput="true" passthru="true"
+    <exec dir="${app.profile.dir}/tests/behat" logoutput="true" passthru="true"
           command="composer install --no-progress -o" checkreturn="true"/>
   </target>
   <target name="cron" description="Run Drupal's cron script">
@@ -186,7 +186,7 @@
           depends="info:tools, info:code:cs, info:code:md, info:code:loc, info:code:cbf">
   </target>
   <target name="info:tools" description="Install tools">
-    <exec dir="${project.basedir}/tests/behat" command="composer install --no-progress -o" logoutput="true"/>
+    <exec dir="${app.profile.dir}/tests/behat" command="composer install --no-progress -o" logoutput="true"/>
   </target>
   <target name="info:code:cs" description="Check quality of the PHP code for more info. https://www.drupal.org/node/1419988">
     <exec command="${c.home}bin/phpcs --config-set installed_paths ${c.home}${cs.dir}"/>
