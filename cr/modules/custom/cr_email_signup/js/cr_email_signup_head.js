@@ -15,5 +15,14 @@
       $("button.meta-icons__esu-toggle").removeClass("active");
       $(".block--cr-email-signup--head").removeClass("show");
     });
+
+    // Handler for keypresses
+    $("form#cr-header-email-signup-form").keypress(function(event) {
+      // If the key pressed has the right keycode
+      if (event.which == 13) {
+        // Submit form with fake mouse event; jQuery form submit function doesn't work here!
+        $('#edit-step1').mousedown();
+      }
+    });
   });
 })(jQuery);
