@@ -26,18 +26,6 @@
         {
           "type": "package",
           "package": {
-            "name": "comicrelief/campaign-modernizr",
-            "version": "1.0.0",
-            "source": {
-              "url": "https://github.com/comicrelief/campaign-modernizr",
-              "type": "git",
-              "reference": "cd799b2"
-            }
-          }
-        },
-        {
-          "type": "package",
-          "package": {
             "name": "mikeyp/google_tag",
             "version": "1.0.0",
             "type": "drupal-module",
@@ -150,6 +138,7 @@
         "drupal/memcache": "2.x-dev#908c0a2",
         "drupal/cdn": "3.0",
         "drupal/better_exposed_filters": "3.x-dev#19f3da2",
+        "comicrelief/campaign-modernizr": "dev-master",
         "php-http/curl-client": "^1.6",
         "guzzlehttp/psr7": "^1.3",
         "php-http/message": "^1.4"
