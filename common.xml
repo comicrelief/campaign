@@ -21,43 +21,8 @@
           description="Build (or rebuild) the project.">
   </target>
   <target name="build:prepare"
-          depends="grunt:dependencies, install:test:dependencies"
+          depends="grunt:dependencies"
           description="Set up the project and build all project dependencies. (gems, composer, drush make)">
-  </target>
-  <target name="build:prepare:deploy"
-          depends="prepare:project, symlink:profiles, make, symlink, grunt:dependencies"
-          description="Set up the project and build all project dependencies. (gems, composer, drush make)">
-  </target>
-  <target name="prepare:project"
-         description="Setup the project">
-   <!-- Create -->
-   <exec command="mkdir -p ${app.dir}/${app.files.public} ${app.dir}/${app.files.tmp} ${app.dir}/${app.files.private} ${app.dir}/profiles"
-         logoutput="true"
-         passthru="true"
-         checkreturn="true" />
-   <!-- Permissions -->
-   <exec command="chmod -R 2775 ${app.dir}/${app.files.public} ${app.dir}/${app.files.tmp} ${app.dir}/${app.files.private}"
-         logoutput="true"
-         passthru="true"
-         checkreturn="true" />
-  </target>
-  <target name="symlink"
-        description="Symlink the project">
-    <if>
-      <istrue value="${deploy.delete-sites}"/>
-      <then>
-        <delete dir="${app.dir}/sites" />
-      </then>
-    </if>
-    <symlink target="${project.basedir}/sites/" link="${app.dir}/sites" />
-  </target>
-  <target name="symlink:profiles"
-    description="Symlink the profiles">
-    <foreach list="${app.site.profiles}" param="profile" target="symlink:profile" delimiter=" "/>
-  </target>
-  <target name="symlink:profile"
-        description="Symlink the profile">
-    <symlink target="${project.basedir}/${profile}/" link="${app.dir}/profiles/${profile}" />
   </target>
   <!-- Front-end -->
   <target name="grunt:build" description="Generate all compiled Sass and JS files.">
@@ -85,6 +50,12 @@
     <exec dir="${project.basedir}/tests/behat" passthru="true" checkreturn="true" command="vendor/bin/behat --colors -dl"/>
   </target>
   <target name="test:prepare" description="Prepare to tun behat tests">
+    <if>
+      <not><available file='${project.basedir}/tests/behat/vendor/bin/behat' type='dir' /></not>
+      <then>
+        <phingcall target="install:test:dependencies"/>
+      </then>
+    </if>
     <copy file="${project.basedir}/tests/behat/behat.yml.phing" tofile="${project.basedir}/tests/behat/behat.yml" overwrite="true">
       <filterchain>
         <replacetokens begintoken="%%" endtoken="%%">
@@ -97,28 +68,14 @@
     <exec dir="${app.dir}" checkreturn="true" logoutput="true" passthru="true"
           command="${drush.bin} pm-uninstall cookieconsent -y"/>
   </target>
-  <target name="install:test:dependencies" description="Install composer dependencies">
-    <exec dir="${project.basedir}/tests/behat" logoutput="true" passthru="true"
-          command="composer install --no-progress -o" checkreturn="true"/>
-  </target>
-  <target name="make" description="Update Drupal core+contrib from CR make file" depends="make-core, make-contrib"/>
-  <!-- Drush core -->
-  <target name="make-core" description="Update Drupal core from CR make file">
-    <exec dir="${app.dir}" checkreturn="true" logoutput="true" passthru="true"
-          command="${drush.bin} make -y ${app.profile.dir}/drupal-org-core.make.yml --no-cache"/>
-  </target>
-  <target name="make-contrib" description="Compile CR contrib from a make file">
-    <!-- Delete the contrib directory first so we also have deletions and not just updates. -->
-    <delete dir="${app.profile.dir}/modules/contrib" />
-    <delete dir="${app.profile.dir}/themes/custom/campaign_base/libraries" />
-    <echo msg="${drush.bin} make -y ${app.profile.dir}/drupal-org.make.yml --no-gitprojectinfo --no-core --no-gitinfofile --contrib-destination=${app.profile.dir}"/>
-    <exec checkreturn="true" logoutput="true" passthru="true"
-          command="${drush.bin} make -y ${app.profile.name}/drupal-org.make.yml --no-gitprojectinfo --no-core --no-gitinfofile --contrib-destination=${app.profile.name}"/>
-  </target>
   <target name="install" description="Install CR with standard configuration.">
     <exec dir="${app.dir}" logoutput="true" passthru="true" checkreturn="true"
           command="${drush.bin} si ${app.profile.name} -y --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring} ${app.profile.options}"/>
     <phingcall target="cache:clear"/>
+  </target>
+  <target name="install:test:dependencies" description="Install composer dependencies">
+    <exec dir="${project.basedir}/tests/behat" logoutput="true" passthru="true"
+          command="composer install --no-progress -o" checkreturn="true"/>
   </target>
   <target name="cron" description="Run Drupal's cron script">
     <exec dir="${app.dir}" logoutput="true" passthru="true" checkreturn="true"
