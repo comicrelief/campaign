@@ -132,7 +132,7 @@ projects:
   paragraphs:
     download:
       version: 1.x-dev
-      revision: 99a6673
+      revision: 754f74e
   # Forms
   yamlform:
     version: 1.0-alpha5
