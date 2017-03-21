@@ -45,6 +45,7 @@ before_install:
   - nvm install 6 && nvm use 6
   - npm update -g npm
   - rvm install 2.1.5
+  - composer config --global --auth http-basic.repo.packagist.com bimsonz b19c9f32a1966787021a55895f80792b70efb58e5ce3c339a48b85c3409b
   - composer global config minimum-stability beta
   - composer global require phing/phing:2.15 drush/drush:8.*
   # Prepare environment
