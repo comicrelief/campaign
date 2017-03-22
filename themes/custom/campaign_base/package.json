@@ -31,7 +31,7 @@
   },
   "scripts": {
     "build": "grunt build",
-    "postinstall": "mv node_modules/blazy ../../../../../../libraries"
+    "postinstall": "mv node_modules/blazy ../../../../../../libraries/blazy"
   },
   "license": "GPL-2.0",
   "repository": {
