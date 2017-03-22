@@ -48,10 +48,10 @@
   .cards__item:first-child:nth-last-child(2),
   .cards__item:first-child:nth-last-child(2) ~ .cards__item {
     @include breakpoint($screen-md-max) {
+      @include span(4);
       display: inline-block;
       float: none;
       vertical-align: top;
-      @include span(4);
     }
   }
 }
@@ -88,16 +88,16 @@
   height: 100%;
   padding: 30px;
   @include breakpoint($screen-md-only) {
+    @include span(7 wider);
     position: absolute;
     top: 0;
     right: 0;
     padding: calc(2*#{gutter()});
     height: 100%;
     margin-right: 0;
-    @include span(7 wider);
     &.cards__content-wrapper--no-image {
-      position: relative;
       @include span(12);
+      position: relative;
       .cards__content {
         position: relative;
         top: 0;
@@ -112,17 +112,17 @@
     text-align: center;
     background-color: $colour-white;
     @include breakpoint($screen-md-only) {
-      margin: 25px 0;
-      height: calc(100% - 50px);
       @include span(9);
       @include push(3);
+      margin: 25px 0;
+      height: calc(100% - 50px);
     }
   }
 }
 .cards__image {
   @include breakpoint($screen-md-only) {
-    margin-left: 0;
     @include span(5);
+    margin-left: 0;
   }
   img {
     display: block;
