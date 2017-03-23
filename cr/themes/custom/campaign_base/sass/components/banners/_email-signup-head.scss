@@ -8,6 +8,14 @@
   z-index: 101;
 
   &.block--cr-email-signup--error.block--cr-email-signup {
+
+    &.error--email {
+      #edit-email {
+        border: 2px solid $colour-red;
+        border-width: 2px 2px 3px 2px;
+      }
+    }
+
     @include breakpoint($screen-md) {
       .esu-errors.messages.messages--error {
         position: relative;
@@ -122,9 +130,7 @@
     margin: 0;
     text-indent: -9999px;
     background: $colour-jasper-grey url(../images/svgs/arrow-right.svg) -4px center no-repeat;
-    @include breakpoint($screen-md) {
-      //width: 100%;
-    }
+
     &.step2 {
       margin-top: 25px;
     }
