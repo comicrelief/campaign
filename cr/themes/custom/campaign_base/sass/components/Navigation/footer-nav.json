@@ -1,0 +1,10 @@
+{
+  "bg_colour": "bg--black",
+  "title": "Footer menu",
+  "item_1": "FAQ",
+  "item_2": "Legal",
+  "item_3": "Partners",
+  "link_1": "/web/node/1",
+  "link_2": "/web/node/2",
+  "link_3": "/web/partners"
+}
