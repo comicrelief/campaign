@@ -1,32 +1,16 @@
 <header role="banner">
   <div class="header__top-wrapper"></div>
   <div class="header__inner-wrapper">
-    <div class="feature-nav">
-      <ul class="feature-nav__items">
-        <li class="menu-item">
-          <a href="/web/" data-drupal-link-system-path="<front>">Home</a>
-        </li>
-        <li class="menu-item menu-item--active-trail">
-          <a href="/web/fundraise" data-drupal-link-system-path="node/22" class="is-active">Fundraise (Landing)</a>
-        </li>
-        <li class="menu-item">
-          <a href="/web/whats-going-on" data-drupal-link-system-path="node/17">What's going on</a>
-        </li>
-      </ul>
-      <div class="feature-nav__icons feature-nav__burger">
-        <button class="c-hamburger c-hamburger--htx feature-nav-toggle">
-          <div class="c-hamburger__text">
-            <span class="visually-hidden">Open and close nav menu</span>
-          </div>
-          <span></span>
-        </button>
-      </div>
-    </div>
+
+    {# feature nav #}
+    {% include directory ~ '../Navigation/feature-nav.twig' %}
+
     <div id="block-campaign-base-branding" class="contextual-region block block-system block-system-branding-block">
       <a href="/web/" title="Home" rel="home" class="site-logo" tabindex="2">
       <img src="/web/profiles/cr/themes/custom/campaign_base/logo.svg" alt="Home">
       </a>
     </div>
+
     <nav style="display: none;" role="navigation" aria-labelledby="block-campaign-base-main-menu-menu" id="block-campaign-base-main-menu" class="contextual-region block block-menu navigation menu--main crNavigation-processed">
       <h2 class="visually-hidden" id="block-campaign-base-main-menu-menu">Main navigation</h2>
       <div data-contextual-id="block:block=campaign_base_main_menu:langcode=en|menu:menu=main:langcode=en" class="contextual" role="form">
@@ -54,32 +38,11 @@
         </li>
       </ul>
     </nav>
-    <div id="block-metaiconsblock" class="contextual-region block block-cr-meta-icons">
-      <div data-contextual-id="block:block=metaiconsblock:langcode=en" class="contextual" role="form">
-        <button class="trigger focusable visually-hidden" type="button" aria-pressed="false">Open  configuration options</button>
-        <ul class="contextual-links" hidden="">
-          <li class="block-configure"><a href="/web/admin/structure/block/manage/metaiconsblock?destination=node/22">Configure block</a></li>
-        </ul>
-      </div>
-      <div class="meta-icons">
-        <button class="meta-icons__magnify has-tooltip" title="Search">
-          <svg class="icon">
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-magnify"></use>
-          </svg>
-        </button>
-        <a href="https://my.rednoseday.com/user/login" target="_blank" class="meta-icons__login has-tooltip" title="Log in to your Giving Page">
-          <svg class="icon">
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-login"></use>
-          </svg>
-        </a>
-        <button class="meta-icons__esu-toggle has-tooltip" title="Sign up for emails">
-          <svg class="icon">
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#envelope"></use>
-          </svg>
-          <span>Get the latest</span>
-        </button>
-      </div>
-    </div>
+
+
+    {# meta icons #}
+    {% include directory ~ '../meta-icons/meta-icons.twig' %}
+
     <div class="cr-header-email-signup-form contextual-region block-cr-email-signup block--cr-email-signup block--cr-email-signup--head block--cr-email-signup--step-1 crEMailSignup-processed" data-drupal-selector="cr-header-email-signup-form" id="block-emailsignupblockhead">
       <div class="block--cr-email-signup__inner-wrapper">
         <svg class="icon">
