@@ -13,7 +13,7 @@
   {{ styles|raw }}
 </head>
 <body id="kss-node" {% if template.isItem %}class="kss-fullscreen-mode"{% endif %}>
-
+{% include directory ~ '/spritesheet.svg' %}
 <div class="kss-sidebar kss-style">
   <header class="kss-header">
     <h1 class="kss-doc-title">{{ options.title }}</h1>
