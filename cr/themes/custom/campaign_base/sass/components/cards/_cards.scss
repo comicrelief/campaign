@@ -52,10 +52,10 @@
   .cards__item:first-child:nth-last-child(2),
   .cards__item:first-child:nth-last-child(2) ~ .cards__item {
     @include breakpoint($screen-md-max) {
+      @include span(4);
       display: inline-block;
       float: none;
       vertical-align: top;
-      @include span(4);
     }
   }
 }

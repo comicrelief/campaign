@@ -25,8 +25,8 @@
 .card-banner__image {
   display: none;
   @include breakpoint($screen-md) {
-    display: block;
     @include span(2);
+    display: block;
     img {
       display: block;
       width: 100%;

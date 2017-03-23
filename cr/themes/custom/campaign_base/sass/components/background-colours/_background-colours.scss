@@ -96,21 +96,18 @@
     }
   }
 }
-.bg--black,
-.bg--jasper-grey,
-.bg--dark-blue,
-.bg--royal-blue,
-.bg--red,
-.bg--purple {
-  @include light-backgrounds;
-};
-.bg--white,
-.bg--smoke-grey,
-.bg--light-grey,
-.bg--gainsboro-grey,
-.bg--green,
-.bg--yellow,
-.bg--pink,
-.bg--blue {
-  @include dark-backgrounds;
-};
+.bg--black { @include light-backgrounds };
+.bg--jasper-grey { @include light-backgrounds };
+.bg--dark-blue { @include light-backgrounds };
+.bg--royal-blue { @include light-backgrounds };
+.bg--red { @include light-backgrounds };
+.bg--purple { @include light-backgrounds };
+
+.bg--white { @include dark-backgrounds };
+.bg--smoke-grey { @include dark-backgrounds };
+.bg--light-grey { @include dark-backgrounds };
+.bg--gainsboro-grey { @include dark-backgrounds };
+.bg--green { @include dark-backgrounds };
+.bg--yellow { @include dark-backgrounds };
+.bg--pink { @include dark-backgrounds };
+.bg--blue { @include dark-backgrounds };
