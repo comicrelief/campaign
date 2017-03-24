@@ -39,9 +39,9 @@
 
     // Close all overlays and dropdowns when we're clicking on other content
     $(document).on('click touchstart', function (e) {
-
-      // Close any open tooltips
-      $( ".has-tooltip" ).tooltip( "close" );
+      
+      // Use our custom body class to only run this UI function where we can
+      $( ".crNavTooltips .has-tooltip" ).tooltip( "close" );
 
       // Check that we're not interacting with the nav; dont want to close anything being used
       if (!$(e.target).is('.meta-icons *, .feature-nav__icons *, .search-block *, ul.menu *, .block--cr-email-signup--head *')) {
@@ -141,7 +141,9 @@
       position: { my: "top", at: "bottom" },
       show: {effect: 'fadeIn', duration: 200},
       hide: {effect: 'fadeOut', duration: 0},
+      create: function( event, ui ) {
+        $('body').addClass('crNavTooltips');
+      },
     });
-
   })
 })(jQuery, Drupal);
