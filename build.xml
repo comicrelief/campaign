@@ -8,7 +8,7 @@
   <property name="app.profile.dir"    value="${app.dir}/profiles/contrib/${app.profile.name}"/>
   <property name="app.profile.theme"  value="${app.profile.dir}/themes/custom/campaign_base"/>
   <property name="app.site.theme"     value="${app.profile.theme}"/>
-  <property name="app.content.dir"    value="${app.profile.dir}/modules/custom/cr_default_content/content/"/>
+  <property name="app.content.dir"    value="${app.profile.dir}/modules/cr_default_content/content/"/>
   <!-- Development modules. -->
   <property name="app.code"           value="${app.profile.dir}/modules"/>
   <!-- Enable or disable CRAFT support. Not needed if the Drupal site will be hosted elsewhere, e.g. platform.sh -->

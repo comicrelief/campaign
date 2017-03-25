@@ -9,7 +9,9 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
-        }
+        },
+        {"type": "composer", "url": "https://repo.packagist.com/trial-cr/"},
+        {"packagist.org": false}
     ],
     "scripts": {
         "post-install-cmd": [
