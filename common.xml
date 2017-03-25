@@ -20,10 +20,6 @@
   <target name="build" depends="install, grunt:build"
           description="Build (or rebuild) the project.">
   </target>
-  <target name="build:prepare"
-          depends="grunt:dependencies"
-          description="Set up the project and build all project dependencies. (gems, composer, drush make)">
-  </target>
   <!-- Front-end -->
   <target name="grunt:build" description="Generate all compiled Sass and JS files.">
     <exec dir="${app.profile.theme}" logoutput="true" passthru="true"
@@ -83,7 +79,6 @@
   </target>
   <target name="cache:clear">
     <exec dir="${app.dir}" command="${drush.bin} cr" passthru="true"/>
-    <phingcall target="file:mod"/>
   </target>
   <target name="login" description="Generate a one-time login link">
     <exec dir="${app.dir}" passthru="true" logoutput="true" command="${drush.bin} uli -l ${app.uri}"/>
@@ -94,9 +89,6 @@
     <exec dir="${app.dir}" logoutput="true" command="${drush.bin} ucrt manager --password=manager --mail=manager@cr.co"/>
     <exec dir="${app.dir}" logoutput="true" command="${drush.bin} urol editor --name=editor"/>
     <exec dir="${app.dir}" logoutput="true" command="${drush.bin} urol manager --name=manager"/>
-  </target>
-  <target name="module:dev" description="Install the development modules.">
-    <exec dir="${app.dir}" logoutput="true" passthru="true" command="${drush.bin} en -y ${app.dev_modules}"/>
   </target>
   <!-- Drush contrib -->
   <target name="config:export:directory" description="Export all active storage configuration to code.">
@@ -205,7 +197,12 @@
     <exec logoutput="true" command="${c.home}bin/phpcbf ${cs.standard} ${app.code}" />
   </target>
   <!-- Dev target to enable site in dev mode -->
-  <target name="dev-mode:enable" description="Enable developer mode for this site"
-  depends="module:dev">
+  <target name="dev-mode:enable" description="Install the development modules.">
+    <exec dir="${app.dir}" logoutput="true" passthru="true" command="${drush.bin} en -y ${app.dev_modules}"/>
+  </target>
+  <target name="dev-mode:disable"
+          description="Disable developer mode for this site">
+    <!-- Enable and configure stage_file_proxy -->
+    <exec dir="${app.dir}" logoutput="true" passthru="true" command="${drush.bin} pmu -y ${app.dev_modules}"/>
   </target>
 </project>
