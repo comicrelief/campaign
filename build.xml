@@ -30,6 +30,6 @@
     <mkdir dir="${app.profile.dir}" />
     <exec command="which rsync" outputProperty="rsync" />
     <!-- rsync the profile, excluding developer flotsam. -->
-    <filesync destinationDir="${app.profile.dir}" rsyncPath="${rsync}" sourceDir="." verbose="false" exclude=".idea,bin,build.xml,.git,.gitignore,web,modules/contrib,*.make,node_modules,.travis.yml,vendor" />
+    <filesync destinationDir="${app.profile.dir}" rsyncPath="${rsync}" sourceDir="." verbose="false" exclude=".idea,bin,build.xml,.git,.gitignore,web,*.make,node_modules,.travis.yml,vendor" />
   </target>
 </project>
