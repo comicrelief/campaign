@@ -9,7 +9,7 @@ type: "php:7.1"
 
 # Configuration of the build of this application.
 build:
-    flavor: drupal
+    flavor: composer
 
 # The build-time dependencies of the app.
 dependencies:
@@ -64,9 +64,10 @@ hooks:
     build: |
         set -e
 
-        printf 'deploy.delete-sites = false\n' >> build.properties
-
-        phing build:prepare:deploy
+        printf 'deploy.delete-sites = false' > build.properties
+        composer config --global --auth http-basic.repo.packagist.com bimsonz b19c9f32a1966787021a55895f80792b70efb58e5ce3c339a48b85c3409b
+        phing build:prepare
+        composer update
         phing grunt:build
 
     # We run deploy hooks after your application has been deployed and started.
