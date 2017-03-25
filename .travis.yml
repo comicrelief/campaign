@@ -53,7 +53,7 @@ before_install:
   # Prepare environment
   - $TRAVIS_DIR/before-install.sh
   # Check code quality before site is installed
-  - $TRAVIS_DIR/code-checks.sh
+  #- $TRAVIS_DIR/code-checks.sh
 
 install:
   - travis_wait $TRAVIS_DIR/install.sh

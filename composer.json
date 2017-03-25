@@ -32,9 +32,7 @@
                 "See https://www.drupal.org/node/728702. Required for platform.sh": "https://www.drupal.org/files/issues/drupal-redirect_to_install-728702-92.patch"
             },
             "drupal/config_devel": {
-                "See https://www.drupal.org/node/2686499": "https://www.drupal.org/files/issues/config_devel-drush-config-devel-import-2686499-6.patch"
-            },
-            "drupal/config_devel": {
+                "See https://www.drupal.org/node/2686499": "https://www.drupal.org/files/issues/config_devel-drush-config-devel-import-2686499-6.patch",
                 "Add composer dependencies": "https://www.drupal.org/files/issues/show_differences_between-2801201-3.patch"
             },
             "drupal/twig_tweak": {
