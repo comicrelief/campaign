@@ -46,7 +46,7 @@
         },
         "installer-paths": {
           "./themes/custom/campaign_base/node_modules/modernizr": ["comicrelief/campaign-modernizr"],
-          "docroot/core": [
+          "web/core": [
               "type:drupal-core"
           ],
           "modules/contrib/{$name}": [
