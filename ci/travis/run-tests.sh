@@ -2,7 +2,7 @@
 set -e
 # @file
 # Run test suite
-
+phing install:test:dependencies
 # Check the config match with the info.yml
 phing config:check
 # Move to behat directory
