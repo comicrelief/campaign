@@ -14,10 +14,6 @@ fi
 # Create database and install Drupal.
 mysql -e "create database $DB"
 
-# Remove default settings so we can re-install fine, this
-# is custom logic since we version settings.php in the git repo
-rm -fr sites/default/settings.php
-
 # Install the site
 phing build
 drush use $(pwd)#default
