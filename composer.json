@@ -52,7 +52,7 @@
           "modules/contrib/{$name}": [
               "type:drupal-module"
           ]
-      },
+      }
     },
     "require": {
         "cweagans/composer-patches": "^1.5.0",
