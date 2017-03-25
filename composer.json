@@ -45,8 +45,14 @@
             }
         },
         "installer-paths": {
-            "./themes/custom/campaign_base/node_modules/modernizr": ["comicrelief/campaign-modernizr"]
-        }
+          "./themes/custom/campaign_base/node_modules/modernizr": ["comicrelief/campaign-modernizr"],
+          "docroot/core": [
+              "type:drupal-core"
+          ],
+          "modules/contrib/{$name}": [
+              "type:drupal-module"
+          ]
+      },
     },
     "require": {
         "cweagans/composer-patches": "^1.5.0",
