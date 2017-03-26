@@ -123,7 +123,6 @@
         "drupal/cdn": "3.0",
         "drupal/better_exposed_filters": "3.x-dev#19f3da2",
         "comicrelief/campaign-modernizr": "dev-master",
-        "drupal/drush-cmi-tools": "dev-8.x-1.x",
         "mikeyp/google_tag": "dev-8.x-1.x",
         "php-http/curl-client": "^1.6",
         "guzzlehttp/psr7": "^1.3",

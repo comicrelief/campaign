@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d1793b8dc2611ff879afaee9e46b95fc",
+    "content-hash": "615337750a7e51ca408deb593b2f4f9d",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2649,41 +2649,6 @@
                 "source": "http://cgit.drupalcode.org/diff",
                 "issues": "https://www.drupal.org/project/issues/diff"
             }
-        },
-        {
-            "name": "drupal/drush-cmi-tools",
-            "version": "dev-8.x-1.x",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/previousnext/drush_cmi_tools.git",
-                "reference": "6efb9056c89acce2cad00dddb3d72f16fe34169a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/previousnext/drush_cmi_tools/zipball/6efb9056c89acce2cad00dddb3d72f16fe34169a",
-                "reference": "6efb9056c89acce2cad00dddb3d72f16fe34169a",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://repo.packagist.com/trial-cr/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
-            },
-            "type": "drupal-drush",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "description": "Export configuration to a directory and apply an ignore list.",
-            "homepage": "https://github.com/previousnext/drush_cmi_tools",
-            "keywords": [
-                "Drupal"
-            ],
-            "support": {
-                "issues": "https://github.com/previousnext/drush_cmi_tools/issues",
-                "source": "https://github.com/previousnext/drush_cmi_tools"
-            },
-            "time": "2017-01-30 00:09:56"
         },
         {
             "name": "drupal/ds",
@@ -9961,7 +9926,6 @@
         "drupal/memcache": 20,
         "drupal/better_exposed_filters": 20,
         "comicrelief/campaign-modernizr": 20,
-        "drupal/drush-cmi-tools": 20,
         "mikeyp/google_tag": 20,
         "behat/mink-selenium2-driver": 20
     },
