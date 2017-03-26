@@ -9,7 +9,7 @@ type: "php:7.1"
 
 # Configuration of the build of this application.
 build:
-    flavor: profile
+    flavor: none
 
 # The build-time dependencies of the app.
 dependencies:
@@ -70,6 +70,7 @@ hooks:
         composer update
         phing grunt:build
 
+        cp web/sites/default/default.settings.php web/sites/default/settings.php
     # We run deploy hooks after your application has been deployed and started.
     deploy: |
         set -e
