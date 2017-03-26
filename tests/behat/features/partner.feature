@@ -17,8 +17,8 @@ Feature: Partner
     | body | The feel good place |
     | field_partner_category | Official |
     | field_partner_external | 1 |
-    | field_partner_logo | profiles/contrib/drupal/tests/behat/files/400x4:3.png |
+    | field_partner_logo | profiles/contrib/cr/tests/behat/files/400x4:3.png |
     | field_partner_website | Link - http://www.better.co.uk |
-    | field_partner_image | profiles/contrib/drupal/tests/behat/files/400x4:3.png, profiles/contrib/drupal/tests/behat/files/400x4:3.png, profiles/contrib/drupal/tests/behat/files/400x4:3.png |
+    | field_partner_image | profiles/contrib/cr/tests/behat/files/400x4:3.png, profiles/contrib/cr/tests/behat/files/400x4:3.png, profiles/contrib/cr/tests/behat/files/400x4:3.png |
     Then the url should match "partners/better"
     And I should see "Better"
