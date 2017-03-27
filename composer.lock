@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1c1362f58c4ad2a7bc256b5e9b175e17",
+    "content-hash": "3c1b873fce9b3e68d037d39b63c83ca4",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -3222,7 +3222,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/focal_point",
-                "reference": "d39b83f"
+                "reference": "ecfe56e"
             },
             "require": {
                 "drupal/core": "*",
@@ -3256,7 +3256,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/focal_point"
             },
-            "time": "2016-03-10 19:57:23"
+            "time": "2017-02-15 14:00:54"
         },
         {
             "name": "drupal/imagemagick",
