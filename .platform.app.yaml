@@ -70,10 +70,11 @@ hooks:
         composer update
         phing grunt:build
 
+        rm -R config
         cd web/sites/default/
         wget https://raw.githubusercontent.com/platformsh/platformsh-example-drupal8/master/web/sites/default/settings.php
         wget https://raw.githubusercontent.com/platformsh/platformsh-example-drupal8/master/web/sites/default/settings.platformsh.php
-        rm -R config
+
     # We run deploy hooks after your application has been deployed and started.
     deploy: |
         set -e
