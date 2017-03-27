@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a449c1bc13fc50a1c408fe3e842f3eda",
+    "content-hash": "45630aaaca395f3b250ec764ba981cc4",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1457,6 +1457,57 @@
             "homepage": "https://www.drupal.org/project/cdn",
             "support": {
                 "source": "http://cgit.drupalcode.org/cdn"
+            }
+        },
+        {
+            "name": "drupal/composer_deploy",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/composer_deploy",
+                "reference": "8.x-1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/composer_deploy-8.x-1.0.zip",
+                "reference": null,
+                "shasum": "c973940b7ae2b23957355ba781c57b4f351e15d7"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0",
+                    "datestamp": "1490184183"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "jhedstrom",
+                    "homepage": "https://www.drupal.org/user/208732"
+                },
+                {
+                    "name": "nerdstein",
+                    "homepage": "https://www.drupal.org/user/1557710"
+                },
+                {
+                    "name": "webflo",
+                    "homepage": "https://www.drupal.org/user/254778"
+                }
+            ],
+            "description": "Provide version number from composers lockfile",
+            "homepage": "https://www.drupal.org/project/composer_deploy",
+            "support": {
+                "source": "http://cgit.drupalcode.org/composer_deploy"
             }
         },
         {
