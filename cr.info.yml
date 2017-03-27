@@ -58,6 +58,7 @@ dependencies:
   - redirect
   - view_modes_display
   - social_links
+  - composer_deploy
   - crop
   - focal_point
   - scheduled_updates
