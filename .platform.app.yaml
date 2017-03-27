@@ -82,7 +82,7 @@ hooks:
           echo ">>> Re-installing CR profile"
           cd web/
           drush sql-drop -y
-          drush si cr -y --account-pass='admin' --db-url=mysql://root@database.internal/main  install_configure_form.update_status_module='[FALSE, FALSE]' -y
+          drush si cr -y --account-pass='admin' install_configure_form.update_status_module='[FALSE, FALSE]' -y
           drush cr
           touch "tmp/${PLATFORM_ENVIRONMENT}.installed"
           echo ">>> End re-installing CR profile"
