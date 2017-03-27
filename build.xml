@@ -24,4 +24,12 @@
           passthru="true" />
     <phingcall target="grunt:dependencies"/>
   </target>
+  <!-- Syncs the profile into the Drupal code base. -->
+  <target name="push">
+    <!-- Create the destination if it doesn't exist. -->
+    <mkdir dir="${app.profile.dir}" />
+    <exec command="which rsync" outputProperty="rsync" />
+    <!-- rsync the profile, excluding developer flotsam. -->
+    <filesync destinationDir="${app.profile.dir}" rsyncPath="${rsync}" sourceDir="." verbose="false" exclude=".idea,bin,build.xml,.git,.gitignore,web,*.make,node_modules,.travis.yml,vendor,.bundle,build.properties,PATCHES.txt" />
+  </target>
 </project>
