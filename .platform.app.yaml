@@ -54,7 +54,7 @@ disk: 2048
 # The mounts that will be performed when the package is deployed.
 mounts:
     "/web/sites/default/files": "shared:files/files"
-    "/web/sites/default/config": "shared:files/config"
+    "config": "shared:files/config"
     "/tmp": "shared:files/tmp"
     "/private": "shared:files/private"
     "/drush-backups": "shared:files/drush-backups"
@@ -73,7 +73,7 @@ hooks:
         cd web/sites/default/
         wget https://raw.githubusercontent.com/platformsh/platformsh-example-drupal8/master/web/sites/default/settings.php
         wget https://raw.githubusercontent.com/platformsh/platformsh-example-drupal8/master/web/sites/default/settings.platformsh.php
-        sed -i 's|../config/sync|sites/default/config|g' settings.php
+        rm -R config
     # We run deploy hooks after your application has been deployed and started.
     deploy: |
         set -e
