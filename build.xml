@@ -1,5 +1,4 @@
 <project name="cr" default="build">
-  <!-- example: https://github.com/previousnext/agov/blob/8.x-1.x/build.xml -->
   <!-- Properties -->
   <property name="app.dir"            value="${project.basedir}/web"/>
   <property name="app.name"           value="CR Campaign"/>
