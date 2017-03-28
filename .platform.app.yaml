@@ -71,6 +71,7 @@ hooks:
         phing grunt:build
 
         rm -R config
+        mkdir -p config/sync
         cd web/sites/default/
         wget https://raw.githubusercontent.com/platformsh/platformsh-example-drupal8/master/web/sites/default/settings.php
         wget https://raw.githubusercontent.com/platformsh/platformsh-example-drupal8/master/web/sites/default/settings.platformsh.php
