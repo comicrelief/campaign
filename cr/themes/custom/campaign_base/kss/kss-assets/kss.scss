@@ -93,6 +93,16 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
   pre {
     white-space: pre;
     overflow: scroll;
+    font-family: "Courier New", Courier, monospace, sans-serif;
+    text-align: left;
+    color: #555;
+    line-height: 1.6em;
+    font-size: 11px;
+    padding: 10px;
+    border-left: 10px solid #ccc;
+    margin: 10px 0;
+    overflow: auto;
+    background: rgba(185, 185, 185, 0.25);
   }
 
   ins {
