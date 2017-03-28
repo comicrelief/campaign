@@ -1,10 +1,8 @@
-// Search results
-//
-// This is Search results
+// Search results page
 //
 // Markup: search-results.twig
 //
-// Style guide: 8
+// Style guide: 17
 
 .node--type-page.search-result {
   @include breakpoint($screen-md, $no-query: true) {
