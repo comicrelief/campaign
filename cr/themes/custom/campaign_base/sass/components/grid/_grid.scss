@@ -1,0 +1,72 @@
+// Grid
+//
+// Style guide: 1
+//
+// Grid Block
+//
+//
+// Markup: grid.twig
+//
+// Style guide: Grid
+
+$susy: (  
+  columns: $columns,
+  container: $max-width,
+  gutters: $gutter/$column,
+  global-box-sizing: border-box,
+  gutter-position: split,
+  output: float,
+  last-flow: to,
+  debug: (
+    image: show,
+    color: rgba(#66f, .25),
+    output: overlay,
+    toggle: top right,
+  ),
+);
+
+
+.grid {
+	@include container;
+	background: rgba(128, 128, 128, 0.2);
+}
+.item {
+	height: 100px;
+}
+.twelve-cols {
+	margin-bottom: 40px;
+	overflow: hidden;
+	.item {
+		@include span(1);
+	}
+}
+.six-by-six-normal {
+	margin-bottom: 40px;
+	overflow: hidden;
+	.item:first-child {
+		@include span(6);
+	}
+	.item:last-child {
+		@include span(6);
+	}
+}
+.six-by-six {
+	margin-bottom: 40px;
+	overflow: hidden;
+	.item:first-child {
+		@include span(6 no-gutters wide);
+	}
+	.item:last-child {
+		@include span(6 no-gutters wide);
+	}
+}
+.eight-by-four {
+	margin-bottom: 40px;
+	overflow: hidden;
+	.item:first-child {
+		@include span(8 no-gutters wide);
+	}
+	.item:last-child {
+		@include span(4 no-gutters wide);
+	}
+}
