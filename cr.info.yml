@@ -112,9 +112,7 @@ dependencies:
   - admin_toolbar_tools
   - editor_advanced_link
 
-  # Default content; will be moved out of the profile at some point
   - simple_sitemap
-  - cr_default_content
 
   # Because cr_landing_pages has content dependencies this needs to be loaded after
   - cr_search_db
