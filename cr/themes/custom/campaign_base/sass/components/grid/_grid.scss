@@ -9,6 +9,7 @@
 //
 // Style guide: Grid
 
+/* enable it to see grid icon
 $susy: (  
   columns: $columns,
   container: $max-width,
@@ -23,50 +24,51 @@ $susy: (
     output: overlay,
     toggle: top right,
   ),
-);
+);*/
 
 
-.grid {
+/* Style for grid demo only */
+.pl-grid {
 	@include container;
 	background: rgba(128, 128, 128, 0.2);
 }
-.item {
+.pl-item {
 	height: 100px;
 }
-.twelve-cols {
+.pl-twelve-cols {
 	margin-bottom: 40px;
 	overflow: hidden;
-	.item {
+	.pl-item {
 		@include span(1);
 	}
 }
-.six-by-six-normal {
+.pl-six-by-six-normal {
 	margin-bottom: 40px;
 	overflow: hidden;
-	.item:first-child {
+	.pl-item:first-child {
 		@include span(6);
 	}
-	.item:last-child {
+	.pl-item:last-child {
 		@include span(6);
 	}
 }
-.six-by-six {
+.pl-six-by-six {
 	margin-bottom: 40px;
 	overflow: hidden;
-	.item:first-child {
+	.pl-item:first-child {
 		@include span(6 no-gutters wide);
 	}
-	.item:last-child {
+	.pl-item:last-child {
 		@include span(6 no-gutters wide);
 	}
 }
-.eight-by-four {
+.pl-eight-by-four {
 	margin-bottom: 40px;
 	overflow: hidden;
-	.item:first-child {
-		@include span(8 no-gutters wide);
+	.pl-item:first-child {
+		@include span(8 no-gutters);
 	}
-	.item:last-child {
-		@include span(4 no-gutters wide);
+	.pl-item:last-child {
+		@include span(4 no-gutters wider);
 	}
 }
