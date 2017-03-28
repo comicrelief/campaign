@@ -1,10 +1,33 @@
-// Content Wall Row
+// Content Wall
 //
-// This is a content wall row
-//
-// Markup: content-wall.twig
+// Can include Teaser, Quote, Content Reference and Media Reference blocks.
+// Title can be hidden.
 //
 // Style guide: 3.2
+
+// Content Wall row - 3 small blocks
+//
+// Markup: content-wall-s.twig
+//
+// Style guide: 3.2.1
+
+// Content Wall row - 2 medium blocks
+//
+// Markup: content-wall-m.twig
+//
+// Style guide: 3.2.2
+
+// Content Wall row - 1 medium plus and 1 small block
+//
+// Markup: content-wall-mp.twig
+//
+// Style guide: 3.2.3
+
+// Content Wall row - 1 large block
+//
+// Markup: content-wall-l.twig
+//
+// Style guide: 3.2.4
 
 .content-wall {
   width: 100%;
