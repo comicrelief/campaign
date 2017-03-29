@@ -18,4 +18,5 @@ mysql -e "create database $DB"
 phing build
 cd web/
 drush en cr_default_content -y
+drush cron
 drush use $(pwd)#default
