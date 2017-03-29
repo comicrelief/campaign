@@ -1,5 +1,21 @@
 api: 2
 core: 8.x
+projects:
+  drupal:
+    type: core
+    version: 8.2.7
+    patch:
+      # List unmet dependencies instead of just failing
+      # @see https://www.drupal.org/node/2655104
+      - https://www.drupal.org/files/issues/missing-dependencies-2655104-8.patch
+      # Constraint violation for paragraph editing, for full reasoning see https://github.com/comicrelief/campaign/pull/252
+      # @see http://jira.comicrelief.com/browse/PLAT-235
+      # @see https://gist.github.com/pvhee/14801e0f82e06f51cb0d88b9d400cbd6
+      - https://gist.githubusercontent.com/pvhee/14801e0f82e06f51cb0d88b9d400cbd6/raw/253f1c1e516eb24650a91d343c56a5aeb6a0ca43/PLAT-235_paragraph_constraint_violation.patch
+      # See https://www.drupal.org/node/2314185
+      - https://www.drupal.org/files/issues/drupalbehaviorerror-2314185-15.patch
+      # See https://www.drupal.org/node/728702. Required for platform.sh
+      - https://www.drupal.org/files/issues/drupal-redirect_to_install-728702-92.patch
 # Specify common subdir of "contrib"
 defaults:
   projects:
