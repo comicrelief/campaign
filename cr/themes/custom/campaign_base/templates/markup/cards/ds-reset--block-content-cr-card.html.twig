@@ -1,0 +1,9 @@
+{% set bg_colour = field_cr_card_background['#items'][0].value %}
+{% set no_image = content.field_cr_card_image['#items'].value == '' ? 'cards__content-wrapper--no-image' %}
+{%
+set content_wrapper_class = [
+'cards__content-wrapper',
+no_image,
+]
+%}
+{% extends directory ~ "/templates/sass/components/cards/card.twig" %}
