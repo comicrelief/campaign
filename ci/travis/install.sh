@@ -16,4 +16,6 @@ mysql -e "create database $DB"
 
 # Install the site
 phing build
+cd web/
+drush en cr_default_content -y
 drush use $(pwd)#default

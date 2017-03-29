@@ -31,7 +31,7 @@
   },
   "scripts": {
     "build": "grunt build",
-    "postinstall": "rm -R ../../../../../../libraries/blazy; mkdir ../../../../../../libraries; mv node_modules/blazy ../../../../../../libraries/blazy"
+    "postinstall": "LIBS='../../../../../../libraries'; if [ -d \"$LIBS\"/blazy ]; then rm -R \"$LIBS\"/blazy; fi; mkdir -p \"$LIBS\"/blazy; mv node_modules/blazy \"$LIBS\";"
   },
   "license": "GPL-2.0",
   "repository": {
