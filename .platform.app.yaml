@@ -71,9 +71,8 @@ hooks:
 
         rm -R config
         mkdir -p config/sync
-        cd web/sites/default/
-        wget https://raw.githubusercontent.com/platformsh/platformsh-example-drupal8/master/web/sites/default/settings.php
-        wget https://raw.githubusercontent.com/platformsh/platformsh-example-drupal8/master/web/sites/default/settings.platformsh.php
+        cp /app/ci/platform/settings.php /app/web/sites/default/settings.php
+        cp /app/ci/platform/settings.platformsh.php /app/web/sites/default/settings.platformsh.php
 
     # We run deploy hooks after your application has been deployed and started.
     deploy: |
