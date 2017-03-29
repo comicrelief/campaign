@@ -30,7 +30,9 @@
 
 .link {
   text-decoration: none;
-  word-break: break-all;
+  word-break: break-word;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
   color: inherit;
   border-bottom: 4px solid $colour-red;
   font-family: $font-bold;
