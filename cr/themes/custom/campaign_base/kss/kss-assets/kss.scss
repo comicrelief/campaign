@@ -695,6 +695,18 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
   }
 
   // ------------------------------------------------------------------------------
+  // styling for specifc sections
+  // ------------------------------------------------------------------------------
+  
+  /* set height to wrap content in feature nav open section   */ 
+  #kssref-15-2 .kss-modifier__example {
+    height: 200px;
+  }
+  #kssref-16 .kss-modifier__example {
+    height: 184px;
+  }
+
+  // ------------------------------------------------------------------------------
   // prettify.js styles
   // ------------------------------------------------------------------------------
 

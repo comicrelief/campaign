@@ -229,6 +229,7 @@
   font-weight: normal; }
 
 #kss-node {
+  /* set height to wrap content in feature nav open section   */
   /* SPAN elements with the classes below are added by prettyprint. */
   /* plain text */
   /* string content */
@@ -491,6 +492,10 @@
         right: 0; } }
     #kss-node .kss-github img {
       border: 0; }
+  #kss-node #kssref-15-2 .kss-modifier__example {
+    height: 200px; }
+  #kss-node #kssref-16 .kss-modifier__example {
+    height: 184px; }
   #kss-node .pln {
     color: #000; }
   #kss-node .str {
