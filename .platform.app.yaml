@@ -9,7 +9,7 @@ type: "php:7.1"
 
 # Configuration of the build of this application.
 build:
-    flavor: composer
+    flavor: drupal
 
 # The build-time dependencies of the app.
 dependencies:
