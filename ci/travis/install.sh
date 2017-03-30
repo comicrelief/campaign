@@ -17,6 +17,7 @@ mysql -e "create database $DB"
 # Install the site
 phing build
 cd web/
+# Enable default content for behat tests
 drush en cr_default_content -y
+# Run cron to populate site map, this isnt done when run by behat within the test
 drush cron
-drush use $(pwd)#default
