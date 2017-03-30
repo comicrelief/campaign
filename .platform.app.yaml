@@ -63,8 +63,8 @@ mounts:
 hooks:
     build: |
         set -e
-        phing build:prepare
         composer update
+        phing grunt:dependencies
         phing grunt:build
 
         cp /app/ci/platform/settings.php /app/web/sites/default/settings.php
