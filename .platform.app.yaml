@@ -9,7 +9,7 @@ type: "php:7.1"
 
 # Configuration of the build of this application.
 build:
-    flavor: composer
+    flavor: drupal
 
 # The build-time dependencies of the app.
 dependencies:
@@ -63,7 +63,7 @@ mounts:
 hooks:
     build: |
         set -e
-
+        cd ../
         printf 'deploy.delete-sites = false' > build.properties
         phing build:prepare
         composer update
@@ -73,6 +73,10 @@ hooks:
         mkdir -p config/sync
         cp /app/ci/platform/settings.php /app/web/sites/default/settings.php
         cp /app/ci/platform/settings.platformsh.php /app/web/sites/default/settings.platformsh.php
+
+    # We run deploy hooks after your application has been deployed and started.
+    deploy: |
+        set -e
 
         # Re-install the site if this hasn't been installed yet for this branch, or we are on develop
         if [ $PLATFORM_ENVIRONMENT = "develop" ] || [ ! -f tmp/$PLATFORM_ENVIRONMENT.installed ]; then
@@ -84,16 +88,12 @@ hooks:
           drush en cr_default_content -y
           touch "tmp/${PLATFORM_ENVIRONMENT}.installed"
           echo ">>> End re-installing CR profile"
+        else
+          echo ">>> No re-installation of the profile required, just a simple update!"
+          phing config:import
+          cd web/
+          drush cr
         fi
-
-    # We run deploy hooks after your application has been deployed and started.
-    deploy: |
-        set -e
-
-        echo ">>> No re-installation of the profile required, just a simple update!"
-        phing config:import
-        cd web/
-        drush cr
 
 # The configuration of scheduled execution.
 crons:
