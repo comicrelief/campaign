@@ -36,14 +36,10 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
 /**
  * Include settings for platform.sh
  */
-if (file_exists(__DIR__ . '/settings.local.php')) {
-  // Automatic Platform.sh settings.
-  if (file_exists(__DIR__ . '/settings.platformsh.php')) {
-    include __DIR__ . '/settings.platformsh.php';
-  }
-
-  include __DIR__ . '/settings.local.php';
-
-  // Some specific platform.sh settings
+if (file_exists(__DIR__ . '/settings.platformsh.php')) {
+  include __DIR__ . '/settings.platformsh.php';
   $settings['update_free_access'] = false;
+}
+if (file_exists(__DIR__ . '/settings.local.php')) {
+  include __DIR__ . '/settings.local.php';
 }
