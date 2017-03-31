@@ -54,7 +54,7 @@ To test this, you need to [follow RND17 instructions](https://github.com/comicre
 
 Don't forget to change the base branch of [composer.json](https://github.com/comicrelief/rnd17/blob/develop/composer.json) to use your feature branch, like
 
-	composer require drupal/drupal:dev-feature/XXX_MY_MODULE_UPDATE
+	composer require comicrelief/campaign:dev-feature/XXX_MY_MODULE_UPDATE
 
 ### How to update Drupal core?
 
