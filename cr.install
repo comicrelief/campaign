@@ -265,3 +265,10 @@ function cr_update_8029() {
 function cr_update_8030() {
   installer()->install(['better_exposed_filters'], ['cr_image']);
 }
+
+/**
+ * Install crop
+ */
+function cr_update_8031() {
+  installer()->install(['composer_deploy','crop']);
+}

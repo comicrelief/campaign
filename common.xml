@@ -4,7 +4,7 @@
   <property name="app.uri"            override="true" value="http://campaign.dev"/>
   <property name="drush.bin"          override="true" value="drush"/>
   <property name="grunt.cmd"          override="true" value="build"/>
-  <property name="c.home"             override="true" value="tests/behat/vendor/"/>
+  <property name="c.home"             override="true" value="${app.profile.dir}/tests/behat/vendor/"/>
   <property name="cs.dir"             override="true" value="drupal/coder/coder_sniffer"/>
   <property name="cs.standard"        override="true" value="--standard=Drupal"/>
   <property name="cs.ext"             override="true" value="--extensions=php,module,inc,install,test,profile,theme"/>
@@ -20,56 +20,9 @@
   <target name="build" depends="install, grunt:build"
           description="Build (or rebuild) the project.">
   </target>
-  <target name="build:prepare"
-          depends="prepare:project, symlink:profiles, make, symlink, grunt:dependencies, install:dependencies, install:test:dependencies"
-          description="Set up the project and build all project dependencies. (gems, composer, drush make)">
-  </target>
-  <target name="build:prepare:deploy"
-          depends="prepare:project, symlink:profiles, make, symlink, grunt:dependencies, install:dependencies"
-          description="Set up the project and build all project dependencies. (gems, composer, drush make)">
-  </target>
-  <target name="prepare:project"
-         description="Setup the project">
-   <!-- Create -->
-   <exec command="mkdir -p ${app.dir}/${app.files.public} ${app.dir}/${app.files.tmp} ${app.dir}/${app.files.private} ${app.dir}/profiles"
-         logoutput="true"
-         passthru="true"
-         checkreturn="true" />
-   <!-- Permissions -->
-   <exec command="chmod -R 2775 ${app.dir}/${app.files.public} ${app.dir}/${app.files.tmp} ${app.dir}/${app.files.private}"
-         logoutput="true"
-         passthru="true"
-         checkreturn="true" />
-  </target>
-  <target name="symlink"
-        description="Symlink the project">
-    <if>
-      <istrue value="${deploy.delete-sites}"/>
-      <then>
-        <delete dir="${app.dir}/sites" />
-      </then>
-    </if>
-    <symlink target="${project.basedir}/sites/" link="${app.dir}/sites" />
-  </target>
-  <target name="symlink:profiles"
-    description="Symlink the profiles">
-    <foreach list="${app.site.profiles}" param="profile" target="symlink:profile" delimiter=" "/>
-  </target>
-  <target name="symlink:profile"
-        description="Symlink the profile">
-    <symlink target="${project.basedir}/${profile}/" link="${app.dir}/profiles/${profile}" />
-  </target>
-  <target name="install:dependencies"
-          description="Setup the project">
-    <exec dir="${project.basedir}/web"
-          command="composer install -n -o --prefer-dist; composer require php-amqplib/php-amqplib:2.6.* solarium/solarium:3.7.*"
-          checkreturn="true"
-          logoutput="true"
-          passthru="true" />
-  </target>
   <!-- Front-end -->
   <target name="grunt:build" description="Generate all compiled Sass and JS files.">
-    <exec dir="${app.profile.name}/themes/custom/campaign_base" logoutput="true" passthru="true"
+    <exec dir="${app.profile.theme}" logoutput="true" passthru="true"
           checkreturn="true" command="npm run build"/>
   </target>
   <target name="grunt:dependencies" description="Install all grunt dependencies.">
@@ -77,23 +30,32 @@
     <if>
       <istrue value="${deploy.craft}"/>
       <then>
-        <exec dir="${project.basedir}/web" logoutput="true" passthru="true" checkreturn="true" command="bundle install --path vendor/bundle --frozen"/>
+        <exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="bundle install --path .vendor/bundle --frozen"/>
       </then>
       <else>
-        <exec dir="${project.basedir}/web" logoutput="true" passthru="true" checkreturn="true" command="bundle install --path vendor/bundle --frozen --without craft"/>
+        <exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="bundle install --path .vendor/bundle --frozen --without craft"/>
       </else>
     </if>
-    <exec dir="${app.profile.name}/themes/custom/campaign_base" logoutput="true" passthru="true" checkreturn="true" command="npm install"/>
+    <exec dir="${app.profile.theme}" logoutput="true" passthru="true" checkreturn="true" command="npm install"/>
+  </target>
+  <target name="pull">
+    <filesync destinationDir="." rsyncPath="${rsync}" sourceDir="${profile}/" verbose="false" exclude="" />
   </target>
   <!-- Tests -->
   <target name="test" depends="test:prepare" description="Run behat tests">
-    <exec dir="${project.basedir}/tests/behat" passthru="true" checkreturn="true" command="vendor/bin/behat --colors"/>
+    <exec dir="${app.profile.dir}/tests/behat" passthru="true" checkreturn="true" command="vendor/bin/behat --colors"/>
   </target>
   <target name="test:dl" depends="test:prepare" description="Run behat tests">
-    <exec dir="${project.basedir}/tests/behat" passthru="true" checkreturn="true" command="vendor/bin/behat --colors -dl"/>
+    <exec dir="${app.profile.dir}/tests/behat" passthru="true" checkreturn="true" command="vendor/bin/behat --colors -dl"/>
   </target>
   <target name="test:prepare" description="Prepare to tun behat tests">
-    <copy file="${project.basedir}/tests/behat/behat.yml.phing" tofile="${project.basedir}/tests/behat/behat.yml" overwrite="true">
+    <if>
+      <not><available file='${app.profile.dir}/tests/behat/vendor/bin/behat' type='dir' /></not>
+      <then>
+        <phingcall target="install:test:dependencies"/>
+      </then>
+    </if>
+    <copy file="${app.profile.dir}/tests/behat/behat.yml.phing" tofile="${app.profile.dir}/tests/behat/behat.yml" overwrite="true">
       <filterchain>
         <replacetokens begintoken="%%" endtoken="%%">
           <token key="DRUPAL_TI_DRUPAL_DIR" value="${app.dir}"/>
@@ -105,28 +67,14 @@
     <exec dir="${app.dir}" checkreturn="true" logoutput="true" passthru="true"
           command="${drush.bin} pm-uninstall cookieconsent -y"/>
   </target>
-  <target name="install:test:dependencies" description="Install composer dependencies">
-    <exec dir="${project.basedir}/tests/behat" logoutput="true" passthru="true"
-          command="composer install --no-progress -o" checkreturn="true"/>
-  </target>
-  <target name="make" description="Update Drupal core+contrib from CR make file" depends="make-core, make-contrib"/>
-  <!-- Drush core -->
-  <target name="make-core" description="Update Drupal core from CR make file">
-    <exec dir="${app.dir}" checkreturn="true" logoutput="true" passthru="true"
-          command="${drush.bin} make -y ${app.profile.dir}/drupal-org-core.make.yml --no-cache"/>
-  </target>
-  <target name="make-contrib" description="Compile CR contrib from a make file">
-    <!-- Delete the contrib directory first so we also have deletions and not just updates. -->
-    <delete dir="${app.profile.dir}/modules/contrib" />
-    <delete dir="${app.profile.dir}/themes/custom/campaign_base/libraries" />
-    <echo msg="${drush.bin} make -y ${app.profile.dir}/drupal-org.make.yml --no-gitprojectinfo --no-core --no-gitinfofile --contrib-destination=${app.profile.dir}"/>
-    <exec checkreturn="true" logoutput="true" passthru="true"
-          command="${drush.bin} make -y ${app.profile.name}/drupal-org.make.yml --no-gitprojectinfo --no-core --no-gitinfofile --contrib-destination=${app.profile.name}"/>
-  </target>
   <target name="install" description="Install CR with standard configuration.">
     <exec dir="${app.dir}" logoutput="true" passthru="true" checkreturn="true"
           command="${drush.bin} si ${app.profile.name} -y --site-name=${app.name} --account-pass='${app.password}' --db-url=${db.querystring} ${app.profile.options}"/>
     <phingcall target="cache:clear"/>
+  </target>
+  <target name="install:test:dependencies" description="Install composer dependencies">
+    <exec dir="${app.profile.dir}/tests/behat" logoutput="true" passthru="true"
+          command="composer install --no-progress -o" checkreturn="true"/>
   </target>
   <target name="cron" description="Run Drupal's cron script">
     <exec dir="${app.dir}" logoutput="true" passthru="true" checkreturn="true"
@@ -134,7 +82,6 @@
   </target>
   <target name="cache:clear">
     <exec dir="${app.dir}" command="${drush.bin} cr" passthru="true"/>
-    <phingcall target="file:mod"/>
   </target>
   <target name="login" description="Generate a one-time login link">
     <exec dir="${app.dir}" passthru="true" logoutput="true" command="${drush.bin} uli -l ${app.uri}"/>
@@ -145,9 +92,6 @@
     <exec dir="${app.dir}" logoutput="true" command="${drush.bin} ucrt manager --password=manager --mail=manager@cr.co"/>
     <exec dir="${app.dir}" logoutput="true" command="${drush.bin} urol editor --name=editor"/>
     <exec dir="${app.dir}" logoutput="true" command="${drush.bin} urol manager --name=manager"/>
-  </target>
-  <target name="module:dev" description="Install the development modules.">
-    <exec dir="${app.dir}" logoutput="true" passthru="true" command="${drush.bin} en -y ${app.dev_modules}"/>
   </target>
   <!-- Drush contrib -->
   <target name="config:export:directory" description="Export all active storage configuration to code.">
@@ -237,7 +181,7 @@
           depends="info:tools, info:code:cs, info:code:md, info:code:loc, info:code:cbf">
   </target>
   <target name="info:tools" description="Install tools">
-    <exec dir="${project.basedir}/tests/behat" command="composer install --no-progress -o" logoutput="true"/>
+    <exec dir="${app.profile.dir}/tests/behat" command="composer install --no-progress -o" logoutput="true"/>
   </target>
   <target name="info:code:cs" description="Check quality of the PHP code for more info. https://www.drupal.org/node/1419988">
     <exec command="${c.home}bin/phpcs --config-set installed_paths ${c.home}${cs.dir}"/>
@@ -256,7 +200,12 @@
     <exec logoutput="true" command="${c.home}bin/phpcbf ${cs.standard} ${app.code}" />
   </target>
   <!-- Dev target to enable site in dev mode -->
-  <target name="dev-mode:enable" description="Enable developer mode for this site"
-  depends="module:dev">
+  <target name="dev-mode:enable" description="Install the development modules.">
+    <exec dir="${app.dir}" logoutput="true" passthru="true" command="${drush.bin} en -y ${app.dev_modules}"/>
+  </target>
+  <target name="dev-mode:disable"
+          description="Disable developer mode for this site">
+    <!-- Enable and configure stage_file_proxy -->
+    <exec dir="${app.dir}" logoutput="true" passthru="true" command="${drush.bin} pmu -y ${app.dev_modules}"/>
   </target>
 </project>

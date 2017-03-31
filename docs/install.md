@@ -74,7 +74,7 @@ composer global require drush/drush 7.*
 
 You first will need to install to install [Phing](www.phing.info), which is a PHP build tool that automates tasks such as re-installing the site, running migrate procedures, tests etc.
 
-Download Phing from [http://www.phing.info/trac/wiki/Users/Download](http://www.phing.info/trac/wiki/Users/Download). 
+Download Phing from [http://www.phing.info/trac/wiki/Users/Download](http://www.phing.info/trac/wiki/Users/Download).
 
 You can install this using `composer`. [See also installation guide](https://coderwall.com/p/ma_cuq/using-composer-to-manage-global-packages):
 
@@ -103,7 +103,7 @@ gem install bundler
 
 ## Installation
 ### Environment.yml
-This file has been designed to replace the need for a ```settings.local.php```, this is also how the CRAFT environments gather various environment specific settings and credentials. 
+This file has been designed to replace the need for a ```settings.local.php```, this is also how the CRAFT environments gather various environment specific settings and credentials.
 
 ```bash
 cp sites/default/example.environment.yml sites/default/environment.yml
@@ -119,7 +119,7 @@ To prepare your local site directories and install dependencies, run:
 phing build:prepare
 ```
 
-This will create and set up the applications webroot at: `project_root/web` and download; Drupal core, Drupal contrib modules (based on the CR profile makefile) and all application dependencies.
+This will create and set up the applications webroot at: `project_root/web` and download; Drupal core, Drupal contrib modules (based on the CR profile composer.json) and all application dependencies.
 You will need to set your local webserver's document root to `/web`
 
 ### Using Phing to run the installation
@@ -135,7 +135,7 @@ A fresh version of the CR Drupal profile will be installed, this includes a new 
 
 Always run this command everytime you have checked out a branch to ensure you have the latest content and configuration.
 
-During development, 
+During development,
 
 *Note:* If you see the following exception on `phing build`:
 
@@ -155,7 +155,7 @@ phing login
 To remake all contrib modules (for example, when adding a new module), run
 
 ```bash
-phing make
+composer update
 ```
 
 To list all possible Phing targets, check
@@ -168,7 +168,7 @@ All node modules and gems required for this project will be installed.
 
 ### Grunt
 
-Grunt is a javascript task runner we've used to kick off various tasks within the build process, these include but are not limited to; 
+Grunt is a javascript task runner we've used to kick off various tasks within the build process, these include but are not limited to;
 
 Grunt will watch all SASS / TWIG / JS / Images assets for changes and will:
 - Compile CSS
