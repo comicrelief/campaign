@@ -263,5 +263,12 @@ function cr_update_8029() {
  * Install better_exposed_filters & cr_image
  */
 function cr_update_8030() {
-  installer()->install(['better_exposed_filters'], ['cr_image']);
+  installer()->install(['better_exposed_filters', 'cr_image']);
+}
+
+/**
+ * Install video_embed_media
+ */
+function cr_update_8031() {
+  installer()->install(['video_embed_media']);
 }
