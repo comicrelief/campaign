@@ -1,12 +1,20 @@
 // Teaser Block
 //
-// This is a Teaser block
-//
+// Comes in 4 sizes and in a background image version.
+// Content is editable.
+// 
 // Markup: teaser-block.twig
 //
-// .teaser-block--bg-image - Background image
+// .block-content--view-mode-cw-s.teaser-block  -  Small
+// .block-content--view-mode-cw-m.teaser-block  -  Medium
+// .block-content--view-mode-cw-mp.teaser-block -  Medium Plus
+// .block-content--view-mode-cw-l.teaser-block  -  Large 
+// .block-content--view-mode-cw-s.teaser-block.teaser-block--bg-image  -  Small Background image
+// .block-content--view-mode-cw-m.teaser-block.teaser-block--bg-image  -  Medium Background image
+// .block-content--view-mode-cw-mp.teaser-block.teaser-block--bg-image -  Medium Plus Background image
+// .block-content--view-mode-cw-l.teaser-block.teaser-block--bg-image  -  Large Background image
 //
-// Style guide: Teaser Block
+// Style guide: 2
 
 .teaser-block {
   position: relative;

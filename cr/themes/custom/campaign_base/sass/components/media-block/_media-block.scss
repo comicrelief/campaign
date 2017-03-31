@@ -1,10 +1,15 @@
-// Media Block 
+// Media Reference Block 
 //
-// This is the media block
+// Comes in 4 sizes.
 //
 // Markup: media-block.twig
 //
-// Style guide: Media block
+// .block-content--view-mode-cw-s -  Small
+// .block-content--view-mode-cw-m  -  Medium
+// .block-content--view-mode-cw-mp -  Medium Plus
+// .block-content--view-mode-cw-l  -  Large 
+//
+// Style guide: 5
 
 .media-block {
   position: relative;
