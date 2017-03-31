@@ -1,10 +1,15 @@
-// Content Wall Quote
+// Quote Block
 //
-// This is a Content Wall 'Quote' block
+// Comes in 4 sizes.
 //
 // Markup: content-wall-quote.twig
 //
-// Style guide: Content-wall-quote
+// .block-content--view-mode-cw-s.cw-quote  -  Small
+// .block-content--view-mode-cw-m.cw-quote  -  Medium
+// .block-content--view-mode-cw-mp.cw-quote -  Medium Plus
+// .block-content--view-mode-cw-l.cw-quote  -  Large 
+//
+// Style guide: 3
 
 .cw-quote__bg-image {
   position: relative;
