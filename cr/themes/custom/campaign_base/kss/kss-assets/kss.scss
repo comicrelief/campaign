@@ -699,9 +699,11 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
   // ------------------------------------------------------------------------------
   
   /* set height to wrap content in feature nav open section   */ 
+  /* Feature navigation menu open */
   #kssref-15-2 .kss-modifier__example {
     height: 200px;
   }
+  /* Search block */
   #kssref-16 .kss-modifier__example {
     height: 184px;
   }
