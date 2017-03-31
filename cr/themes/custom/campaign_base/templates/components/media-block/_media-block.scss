@@ -1,0 +1,95 @@
+// Media Reference Block 
+//
+// Comes in 4 sizes.
+//
+// Markup: media-block.twig
+//
+// .block-content--view-mode-cw-s -  Small
+// .block-content--view-mode-cw-m  -  Medium
+// .block-content--view-mode-cw-mp -  Medium Plus
+// .block-content--view-mode-cw-l  -  Large 
+//
+// Style guide: 5
+
+.media-block {
+  position: relative;
+  overflow: hidden;
+  height: 450px;
+  text-align: center;
+  #play-icon {
+    width: 40px;
+    margin: 0 auto 10px;
+    @include transition(0.2s);
+    path {
+      fill: $colour-yellow;
+    }
+  }
+  &:hover {
+    .media-block__image img {
+      @include opacity(1);
+    }
+    #play-icon {
+      @include scale(1.2);
+    }
+  }
+}
+.media-block__link {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-indent: -9999px;
+}
+.media-block__image {
+  height: 100%;
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    @include transition(0.2s);
+    @include opacity(0.9);
+
+    object-fit: cover;
+    .no-objectfit & {
+      position: absolute;
+      top: -100%;
+      right: -100%;
+      bottom: -100%;
+      left: -100%;
+      overflow: hidden;
+      width: auto;
+      max-width: none;
+      height: 100%!important;
+      max-height: none;
+      margin: auto;
+    }
+  }
+}
+.media-block__content-wrapper {
+  position: relative;
+}
+.media-block__content {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 40px 10px 30px;
+  @include background-image(linear-gradient(rgba(0, 0, 0, 0), $colour-dark-blue));
+  h2, h3, h4, h5 {
+    color: $colour-white;
+  }
+  .font--yellow {
+    color: $colour-yellow;
+  }
+}
+.media-block__caption {
+  display: none;
+}
+.view-mode-cw_l .media-block__content {
+  @include breakpoint($screen-md, $no-query: true) {
+    padding: 80px 10px 60px;
+  }
+}

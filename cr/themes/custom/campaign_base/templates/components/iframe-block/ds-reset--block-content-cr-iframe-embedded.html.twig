@@ -1,0 +1,37 @@
+{% set iframe_bg_colour = content.field_cr_iframe_embedded_bg['#items'][0].value %}
+{% set iframe_layout = content.field_cr_iframe_layout['#items'][0].value %}
+{% set iframe_load = field_cr_iframe_load['#items'][0].value ? 'iframe-block__load-now' : '' %}
+{%
+  set classes = [
+    'iframe-block',
+    iframe_load,
+    iframe_layout,
+    iframe_bg_colour,
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  {% block content %}
+    {{ title_suffix.contextual_links }}
+    <div class="iframe-block__wrapper-outer">
+      <div class="iframe-block__wrapper">
+        {% if iframe_load %}
+          <iframe width="100%" height="100%" class="iframe-block__embedded" src="{{ field_cr_iframe_embedded_link }}" allowfullscreen>
+          </iframe>
+        {% else %}
+          <a class="iframe-block__play" href="{{ field_cr_iframe_embedded_link }}" target="_blank">
+            <div class="iframe-block__image">
+              {{ field_cr_iframe_embedded_image }}
+            </div>
+          </a>
+          <iframe width="100%" height="100%" class="iframe-block__embedded" data-src="{{ field_cr_iframe_embedded_link }}" src="about:blank" allowfullscreen>
+          </iframe>
+        {% endif %}
+        {% if content.body['#object'].body %}
+        <div class="iframe-block__body">
+          {{ body }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  {% endblock %}
+</div>

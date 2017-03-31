@@ -1,0 +1,55 @@
+// Pagination
+//
+// Markup: pagination.twig
+//
+// Style guide: 23
+
+.pager {
+  margin: 40px auto;
+  .pager__items {
+    padding: 10px;
+    text-align: center;
+    background-color: $colour-white;
+  }
+  li {
+    display: inline-block;
+    padding: 0;
+    @include breakpoint($screen-md) {
+      padding: 8px;
+    }
+    a {
+      display: block;
+      width: 40px;
+      height: 40px;
+      padding: 10px;
+      text-decoration: none;
+      color: $colour-black;
+      font-size: 22px;
+      @include border-radius(50%);
+      &:hover {
+        color: $colour-white;
+        background-color: $colour-red;
+      }
+    }
+    &.pager__item--previous,
+    &.pager__item--next {
+      a {
+        padding: 8px;
+        &:hover {
+          color: $colour-black;
+          background-color: transparent;
+        }
+      }
+    }
+    &.is-active {
+      a {
+        color: $colour-white;
+        background-color: $colour-red;
+      }
+    }
+    &.pager__item--first,
+    &.pager__item--last {
+      display: none;
+    }
+  }
+}

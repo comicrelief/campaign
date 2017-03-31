@@ -1,0 +1,23 @@
+{%
+  set classes = [
+    'block',
+    'search-block',
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {% if label %}
+    <h2{{ title_attributes }}>{{ label }}</h2>
+  {% endif %}
+  {{ title_suffix }}
+  {% block content %}
+    <svg class="icon">
+      <use xlink:href="#close-cross"></use>
+    </svg>
+    <div class="search-block__wrapper">
+      <div class="search-block__form">
+        {{ content }}
+      </div>
+    </div>
+  {% endblock %}
+</div>

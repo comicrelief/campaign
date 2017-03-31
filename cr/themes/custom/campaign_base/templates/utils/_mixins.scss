@@ -1,0 +1,194 @@
+// Mixins
+
+// Breakpoint gutters mixin
+
+@mixin breakpoint-gutters {
+  width: calc(100% - (8 * #{gutter()}) );
+  @include breakpoint($screen-md) {
+    width: calc(100% - (4 * #{gutter()}) );
+  }
+  @include breakpoint($screen-md-max) {
+    max-width: calc(#{$max-width} - (1 * #{gutter()}) );
+  }
+}
+
+/** Button mixin, used by $buttonList in _buttons.scss
+ * 
+ * Parameters:
+ * $button[1] = name
+ * $button[2] = background-color
+ * $button[3] = background-color for hover & focus
+ * $button[4] = text color
+ */
+
+@mixin btn-variation($button){
+  // Makes .btn-green etc
+  .btn--#{nth($button, 1)} {
+    // Applies $colour-green etc.
+    background-color: nth($button, 2);
+    color: nth($button, 4);
+    @include transition-property(background-color);
+    @include transition-duration(300ms);
+    &:hover,
+    &:focus {
+      outline: none;
+      // Applies $green-v-dark etc.
+      background-color: nth($button, 3);
+      color: nth($button, 4);
+      @include transition-property(background-color);
+      @include transition-duration(600ms);
+    }
+    &:active {
+      @include transition-property(background-color);
+      @include transition-duration(600ms);
+    }
+  }
+}
+
+/***********************************
+ *  Link colour
+ */
+
+/**
+ * Parameters
+ * $link[1] = name
+ * $link[2] = border-color and text
+ * $link[3] = border-color text for hover & focus
+ */
+
+@mixin link-variation($link) {
+  .link--#{nth($link, 1)} {
+    border-bottom: 4px solid nth($link, 2);
+    &:hover, 
+    &:focus, 
+    &:active {
+      border-bottom: 4px solid nth($link, 3);
+    }
+  }
+}
+
+/**
+ * Parameters
+ * $color[1] = name
+ * $color[2] = background colour
+ */
+
+@mixin bg-variation($color) {
+  .bg--#{nth($color, 1)} {
+    background-color: nth($color, 2);
+  }
+}
+
+/**
+ * Parameters
+ * $color[1] = name
+ * $color[2] = font colour
+ */
+
+@mixin font-variation($color) {
+  .font--#{nth($color, 1)} {
+    color: nth($color, 2);
+  }
+}
+// Make inline classes stronger
+@mixin font-variation-inline($color) {
+  &.font--#{nth($color, 1)} {
+    color: nth($color, 2);
+  }
+}
+
+/**
+ * Font sizes
+ * $fs-map = font size maps in typography vars
+ */
+
+@mixin font-size($fs-map) {
+  @each $fs-breakpoint, $p-font-size in $fs-map {
+    @if $fs-breakpoint == null {
+      @include make-font-size($p-font-size);
+    }
+    @else {
+      @include breakpoint($fs-breakpoint) {
+        @include make-font-size($p-font-size);
+      }
+    }
+  }
+}
+
+// walks through the $fs-map, adding in line-heights
+@mixin make-font-size($p-font-size) {
+  @if type-of($p-font-size) == "list" {
+    font-size: nth($p-font-size, 1);
+    @if (length($p-font-size) > 1) {
+      line-height: nth($p-font-size, 2);
+    }
+  }
+  @else {
+    font-size: $p-font-size;
+  }
+}
+
+/* Helper function for multi-dimensional arrays */
+@function multimap-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+  @return $map;
+}
+
+/* Crops 4:3 or 16:9 images to 1:1, using container width as basis */
+@mixin square-img-ratio($width, $ratio) {
+
+  // Values associated with each 'ratio' key passed in along with the container width
+
+  $ratio-map: (
+    '16:9' : (height: 0, padding-bottom : $width, offset : -39%, width : 178%),
+    '4:3' : (height: 0, padding-bottom  : $width, offset: -16%, width : 134%),
+    'reset': (height: auto, padding-bottom  : 0, offset: 0, width : 100%)
+  );
+
+  padding-bottom: multimap-get($ratio-map, $ratio, "padding-bottom");
+  height: multimap-get($ratio-map, $ratio, "height");
+  overflow:hidden;
+
+   img {
+    margin-left: multimap-get( $ratio-map, $ratio, "offset");
+    width: multimap-get( $ratio-map, $ratio, "width");
+    height: auto;
+  } 
+}
+
+// Visually hidden
+
+@mixin visuallyhidden { 
+  position: absolute;
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  border: 0;
+  overflow: hidden; 
+  clip: rect(1px 1px 1px 1px); 
+  word-wrap: normal;
+}
+
+.visually-hidden {
+  @include visuallyhidden;
+}
+
+//no objectfit
+ @mixin no-objectfit {
+  .no-objectfit & {
+    position: absolute;
+    top: -100%;
+    right: -100%;
+    bottom: -100%;
+    left: -100%;
+    overflow: hidden;
+    width: auto;
+    max-width: none;
+    height: 100%!important;
+    max-height: none;
+    margin: auto;
+  }
+}

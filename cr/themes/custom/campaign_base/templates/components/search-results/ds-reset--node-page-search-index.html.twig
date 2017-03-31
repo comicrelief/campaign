@@ -1,0 +1,16 @@
+<div {{ attributes.addClass('search-result', 'search-result--' ~ nodetype) }}>
+	<div class="search-result__image">
+		<img src="{{ campaign_base_path }}images/backgrounds/search_webpage.png" alt="search download">
+		<div class="search-result__node-link">
+			{{ node_link }}
+		</div>
+	</div>
+  <div class="search-result__content-wrapper bg--white">
+		<div class="search-result__content">
+			{{ node_title }}
+			<div class="search-result__body">
+				{{ body }}
+			</div>
+		</div>
+	</div>
+</div>

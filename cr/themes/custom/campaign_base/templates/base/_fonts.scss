@@ -1,0 +1,71 @@
+// Import font
+@font-face {
+  font-family: 'GT-Walsheim-Light-Oblique';
+  src: url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Light-Oblique.woff2') format('woff2'), /* Pretty Modern Browsers */
+       url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Light-Oblique.woff') format('woff'), /* Modern Browsers */
+       url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Light-Oblique.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Light-Oblique.eot') /* IE9 Compat Modes */
+}
+@font-face {
+  font-family: 'GT-Walsheim-Light';
+  src: url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Light.woff2') format('woff2'), /* Pretty Modern Browsers */
+       url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Light.woff') format('woff'), /* Modern Browsers */
+       url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Light.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Light.eot') /* IE9 Compat Modes */
+}
+@font-face {
+  font-family: 'GT-Walsheim-Regular-Oblique';
+  src: url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Regular-Oblique.woff2') format('woff2'), /* Pretty Modern Browsers */
+       url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Regular-Oblique.woff') format('woff'), /* Modern Browsers */
+       url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Regular-Oblique.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Regular-Oblique.eot') /* IE9 Compat Modes */
+}
+@font-face {
+  font-family: 'GT-Walsheim-Regular';
+  src: url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Regular.woff2') format('woff2'), /* Pretty Modern Browsers */
+       url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Regular.woff') format('woff'), /* Modern Browsers */
+       url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Regular.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Regular.eot') /* IE9 Compat Modes */
+}
+@font-face {
+  font-family: 'GT-Walsheim-Black-Oblique';
+  src: url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Black-Oblique.woff2') format('woff2'), /* Pretty Modern Browsers */
+       url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Black-Oblique.woff') format('woff'), /* Modern Browsers */
+       url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Black-Oblique.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Black-Oblique.eot') /* IE9 Compat Modes */
+}
+@font-face {
+  font-family: 'GT-Walsheim-Black';
+  src: url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Black.woff2') format('woff2'), /* Pretty Modern Browsers */
+       url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Black.woff') format('woff'), /* Modern Browsers */
+       url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Black.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Black.eot') /* IE9 Compat Modes */
+}
+@font-face {
+  font-family: 'GT-Walsheim-Bold-Oblique';
+  src: url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Bold-Oblique.woff2') format('woff2'), /* Pretty Modern Browsers */
+       url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Bold-Oblique.woff') format('woff'), /* Modern Browsers */
+       url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Bold-Oblique.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Bold-Oblique.eot') /* IE9 Compat Modes */
+}
+@font-face {
+  font-family: 'GT-Walsheim-Bold';
+  src: url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Bold.woff2') format('woff2'), /* Pretty Modern Browsers */
+       url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Bold.woff') format('woff'), /* Modern Browsers */
+       url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Bold.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Bold.eot') /* IE9 Compat Modes */
+}
+@font-face {
+  font-family: 'GT-Walsheim-Medium-Oblique';
+  src: url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Medium-Oblique.woff2') format('woff2'), /* Pretty Modern Browsers */
+       url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Medium-Oblique.woff') format('woff'), /* Modern Browsers */
+       url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Medium-Oblique.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Medium-Oblique.eot') /* IE9 Compat Modes */
+}
+@font-face {
+  font-family: 'GT-Walsheim-Medium';
+  src: url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Medium.woff2') format('woff2'), /* Pretty Modern Browsers */
+       url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Medium.woff') format('woff'), /* Modern Browsers */
+       url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Medium.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('https://d2xeqttht14d9p.cloudfront.net/GT-Walsheim-Medium.eot') /* IE9 Compat Modes */
+}

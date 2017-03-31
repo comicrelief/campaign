@@ -1,0 +1,64 @@
+// Iframe block
+
+.iframe-block {
+  padding: 0;
+  @include breakpoint($screen-md) {
+    padding: 60px 0;
+  }
+  &.full-width {
+    padding: 0;
+    .iframe-block__wrapper {
+      @include breakpoint($screen-md) {
+        max-width: 100%;
+      }
+    }
+  }
+  &.eight-column {
+    .iframe-block__wrapper {
+      @include breakpoint($screen-md) {
+        max-width: span(8);
+      }
+    }
+  }
+  &.ten-column {
+    .iframe-block__wrapper {
+      @include breakpoint($screen-md) {
+        max-width: span(10);
+      }
+    }
+  }
+}
+.iframe-block__wrapper {
+  width: 100%;
+  margin: 0 auto;
+  cursor: pointer;
+}
+.iframe-block__wrapper-outer {
+  width: 100%;
+  max-width: $max-width;
+  margin: 0 auto -5px;
+  .full-width & {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+.iframe-block__body {
+  margin-top: 40px;
+  padding: 0 30px;
+}
+.iframe-block__image {
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+.iframe-block__embedded {
+  display: none;
+  min-height: 480px;
+  .iframe-block__load-now & {
+    display: block;
+  }
+  .iframe-block__wrapper--on & {
+    display: block;
+  }
+}

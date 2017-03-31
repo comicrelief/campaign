@@ -1,0 +1,21 @@
+{%
+set classes = [
+'block-cr-email-signup',
+'block--cr-email-signup',
+'block--cr-email-signup--standard',
+'block--cr-email-signup--step-1',
+'block--cr-email-signup--banner',
+]
+%}
+
+<div{{ attributes.addClass(classes) }}>
+  <div class="block--cr-email-signup__inner-wrapper">
+    <div class="cr-email-signup--messages">
+      {{ content.title_message }}
+      {{ content.initial_message }}
+      {{ content.first_success_message }}
+    </div>
+    <div class="esu-errors messages messages--error"></div>
+    {{ content|without('initial_message', 'first_success_message', 'title_message') }}
+  </div>
+</div>
