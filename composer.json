@@ -88,7 +88,6 @@
         "drupal/panels": "3.x-dev#a5400d7",
         "drupal/panelizer": "3.0-alpha2",
         "drupal/ds": "2.6",
-        "drupal/field_group": "1.0-rc4",
         "drupal/entity_reference_revisions": "1.x-dev#c1941b7",
         "drupal/view_modes_display": "1.0",
         "drupal/social_links": "1.x-dev#f7b3273",
