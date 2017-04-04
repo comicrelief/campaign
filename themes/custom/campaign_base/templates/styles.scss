@@ -32,11 +32,12 @@ $icons-layout: 'vertical';
 // directly. Variables-, function- or mixin providing partials should never
 // output any styles themselves: Importing them multiple times to resolve
 // dependencies shouldn't be a problem.
+@import "theme/**/*";
+@import "themes/**/*";
+@import "utils/**/*";
 @import "base/**/*";
-@import "components/**/*";
 @import "layout/**/*";
 @import "pages/**/*";
-@import "themes/**/*";
-@import "util/**/*";
 @import "vendors/**/*";
-@import "theme/**/*";
+@import "components/**/*";
+
