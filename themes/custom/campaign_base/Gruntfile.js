@@ -9,11 +9,11 @@ module.exports = function (grunt) {
                 nospawn: true
             },
             campaign_base: {
-                files: ['sass/{,**/}*.{scss,sass}'],
+                files: ['templates/{,**/}*.{scss,sass}'],
                 tasks: ['compass:dev']
             },
             templates: {
-                files: ['templates/{,**/}{,**/}*.html.twig']
+                files: ['templates/{,**/}*.html.twig']
             },
             images: {
                 files: ['images/**']
