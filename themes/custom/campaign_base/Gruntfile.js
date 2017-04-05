@@ -9,11 +9,11 @@ module.exports = function (grunt) {
                 nospawn: true
             },
             campaign_base: {
-                files: ['sass/{,**/}*.{scss,sass}'],
+                files: ['templates/{,**/}*.{scss,sass}'],
                 tasks: ['compass:dev']
             },
             templates: {
-                files: ['templates/{,**/}*.html.twig', 'sass/components/{,**/}*.hbs']
+                files: ['templates/{,**/}*.html.twig']
             },
             images: {
                 files: ['images/**']
@@ -39,7 +39,7 @@ module.exports = function (grunt) {
 
         shell: {
             styleguide: {
-                command: 'node_modules/kss/bin/kss --builder kss --extend-drupal8 --source sass/ --destination styleguide --title "Campaign Styleguide" --homepage "styleguide.md"'
+                command: 'node_modules/kss/bin/kss --builder kss --extend-drupal8 --source templates/ --destination styleguide --title "Campaign Styleguide" --homepage "styleguide.md"'
             },
         },
 

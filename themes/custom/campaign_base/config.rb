@@ -18,7 +18,7 @@ end
 
 # Location of the theme's resources.
 css_dir = "css"
-sass_dir = "sass"
+sass_dir = "templates"
 images_dir = "images"
 generated_images_dir = images_dir + "/generated"
 javascripts_dir = "js"
@@ -52,7 +52,7 @@ sourcemap = (environment == :production) ? false : true
 sass_options = (environment == :production) ? {} : {:debug_info => true}
 
 # Add the 'sass' directory itself as an import path to ease imports.
-add_import_path 'sass'
+add_import_path 'templates'
 
 # Disable the asset cache buster
 asset_cache_buster :none

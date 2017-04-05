@@ -1,0 +1,5 @@
+{
+	"bg_colour": "bg--black",
+	"field_cr_card_image": "<img src='/profiles/contrib/cr/themes/custom/campaign_base/images/styleguide-images/1-1-img.jpg'>",
+	"field_cr_card_body": "<h4>Donate now and transform<br> lives in the UK and across Africa</h4><a class='btn btn--red' href='#'>Donate now</a>"
+}
