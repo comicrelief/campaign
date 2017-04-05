@@ -9,7 +9,7 @@ type: "php:7.1"
 
 # Configuration of the build of this application.
 build:
-    flavor: drupal
+    flavor: composer
 
 # The build-time dependencies of the app.
 dependencies:
@@ -63,16 +63,12 @@ mounts:
 hooks:
     build: |
         set -e
-
-        printf 'deploy.delete-sites = false\n' >> build.properties
-
-        phing build:prepare:deploy
+        composer update
+        phing grunt:dependencies
         phing grunt:build
 
-        # @todo review how we re-use settings.php and generally the sites/default dir on platform.sh
-        cp /app/sites/default/settings.php /app/web/sites/default/settings.php
-        cp /app/sites/default/settings.platformsh.php /app/web/sites/default/settings.platformsh.php
-        cp /app/sites/default/settings.platformsh.php /app/web/sites/default/settings.local.php
+        cp /app/ci/platform/settings.php /app/web/sites/default/settings.php
+        cp /app/ci/platform/settings.platformsh.php /app/web/sites/default/settings.platformsh.php
 
     # We run deploy hooks after your application has been deployed and started.
     deploy: |
@@ -85,6 +81,7 @@ hooks:
           drush sql-drop -y
           drush si cr -y --account-pass='admin' install_configure_form.update_status_module='[FALSE, FALSE]' -y
           drush cr
+          drush en cr_default_content -y
           touch "tmp/${PLATFORM_ENVIRONMENT}.installed"
           echo ">>> End re-installing CR profile"
         else

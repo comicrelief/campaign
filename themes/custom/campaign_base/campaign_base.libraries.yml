@@ -1,0 +1,27 @@
+global-css:
+  css:
+    theme:
+      css/styles.css: { weight: -20}
+      css/ie8.styles.css: { weight: -10, browsers: { IE: 'lte IE 8', '!IE': false }, minified: true }
+
+global-js:
+  js:
+    node_modules/lightcase/src/js/lightcase.js: {}
+    libraries/modernizr/modernizr-custom.js: {}
+    js/campaign_base.min.js: {}
+
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal
+    - core/jquery.ui
+    - core/jquery.ui.selectmenu
+    - core/jquery.ui.tooltip
+
+platform:
+  js:
+    node_modules/platform/platform.js: {}
+
+vide:
+  js:
+    node_modules/vide/src/jquery.vide.js: {}

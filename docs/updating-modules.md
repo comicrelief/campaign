@@ -10,10 +10,9 @@ Whenever you want to update a module to a newer version, you need to follow a se
 
 First of all, make sure you are using a *clean database*, so run `phing build` before you start the process.
 
-Then, change the version of the module in the makefile, e.g.
+Then, require the new version of the module with;
 
-	  metatag:
-    	version: 1.1
+		composer require metatag:1.1
 
 Make sure to also read the release notes of the new module, so you can be sure to be prepared for any drastic updates.
 
@@ -21,7 +20,7 @@ Make sure to also read the release notes of the new module, so you can be sure t
 
 You can commit this now to the feature branch you are working on. Next, you need to rebuild the codebase to use the newer version
 
-	phing make
+	composer update
 
 You now need to test the *upgrade path* from the old to the new version, so run the update process via drush, like
 
@@ -49,18 +48,13 @@ and do the same series of testing (manual and automated)
 
 #### Test upgrade path in sites like RND17
 
-For the more complex upgrades (e.g. an important upgrade to paragraphs), it is advised to also test this in sites that implement the `campaign` profile, such as RND17. 
+For the more complex upgrades (e.g. an important upgrade to paragraphs), it is advised to also test this in sites that implement the `campaign` profile, such as RND17.
 
 To test this, you need to [follow RND17 instructions](https://github.com/comicrelief/rnd17#updating-the-base-profile) on how to implement an upgrade of the profile.
 
-Don't forget to change the base branch of [rnd17.make.yml](https://github.com/comicrelief/rnd17/blob/develop/profiles/rnd17/rnd17.make.yml) to use your feature branch, like
+Don't forget to change the base branch of [composer.json](https://github.com/comicrelief/rnd17/blob/develop/composer.json) to use your feature branch, like
 
-	projects:
- 	cr:
- 		type: profile
- 			download:
- 				branch: feature/XXX_MY_MODULE_UPDATE
- 				url: git@github.com:comicrelief/campaign.git
+	composer require comicrelief/campaign:dev-feature/XXX_MY_MODULE_UPDATE
 
 ### How to update Drupal core?
 

@@ -1,0 +1,254 @@
+name: Comic Relief
+type: profile
+description: "Build a site using Comic Relief's installation profile. It will install and enable common useful modules."
+core: 8.x
+distribution:
+  name: Comic Relief
+
+dependencies:
+  # Core modules
+  - node
+  - block
+  - block_content
+  - ckeditor
+  - config
+  - contextual
+  - contact
+  - menu_link_content
+  - datetime
+  - block_content
+  - quickedit
+  - editor
+  - entity_reference
+  - help
+  - image
+  - menu_ui
+  - options
+  - path
+  - page_cache
+  - taxonomy
+  - shortcut
+  - toolbar
+  - field_ui
+  - file
+  - rdf
+  - views_ui
+  - dblog
+  - link
+  - dynamic_page_cache
+  - breakpoint
+  - responsive_image
+  - entity
+  - diff
+  - fast404
+
+  # Contrib modules
+  - ds
+  - file_entity
+  - media_entity
+  - media_entity_browser
+  - entity_browser
+  - embed
+  - entity_embed
+  - video_embed_wysiwyg
+  - filter
+  - metatag_open_graph
+  - metatag_verification
+  - pathauto
+  - redirect
+  - view_modes_display
+  - social_links
+  #- composer_deploy
+  - crop
+  - focal_point
+  - scheduled_updates
+  - cookieconsent
+  - field_group
+  - twig_tweak
+  - blazy
+
+  # Layout
+  - inline_entity_form
+  - layout_plugin
+  - page_manager_ui
+  - panels_ipe
+  - ctools_block
+  - paragraphs
+  - view_mode
+  - imagemagick
+  - menu_link_attributes
+  - better_exposed_filters
+
+  # Custom modules
+  - cr_page
+  - cr_cards
+  - cr_article
+  - cr_content_reference
+  - cr_downloadables
+  - cr_video
+  - cr_image
+  - cr_media
+  - cr_quote
+  - cr_content_wall
+  - cr_rich_text_paragraph
+  - cr_iframe
+  - cr_block_paragraph
+  - cr_single_msg
+  - cr_teaser
+  - cr_email_signup
+  - cr_partner
+  - cr_story
+  - cr_landing_page
+  - cr_navigation
+  #- cr_performance
+  - cr_user
+  - cr_social
+  - cr_meta_icons
+
+  # Development modules
+  - config_devel
+
+  # Editor/admin experience
+  - admin_toolbar_tools
+  - editor_advanced_link
+
+  - simple_sitemap
+
+  # Because cr_landing_pages has content dependencies this needs to be loaded after
+  - cr_search_db
+
+themes:
+  - seven
+  - campaign_base
+
+config_devel:
+  # General config
+  - system.theme
+  - views.settings
+  - config_devel.settings
+  - contact.form.feedback
+  - node.settings
+  - system.cron
+
+  # Display modes
+  - core.entity_form_display.block_content.basic.default
+  - core.entity_form_display.user.user.default
+  - core.entity_view_display.block_content.basic.default
+  - core.entity_view_display.user.user.compact
+  - core.entity_view_display.user.user.default
+
+  # Fields
+  - field.field.block_content.basic.body
+  - field.field.user.user.user_picture
+  - field.storage.user.user_picture
+
+  # Blocks
+  - block.block.tabs
+  - block.block.campaign_base_account_menu
+  - block.block.campaign_base_page_title
+  - block.block.campaign_base_branding
+  - block.block.campaign_base_main_menu
+  - block.block.campaign_base_footer
+  - block.block.seven_breadcrumbs
+  - block.block.seven_content
+  - block.block.seven_help
+  - block.block.seven_local_actions
+  - block.block.seven_login
+  - block.block.seven_messages
+  - block.block.seven_page_title
+  - block.block.seven_primary_local_tasks
+  - block.block.seven_secondary_local_tasks
+  - block.block.emailsignupblockregisterinterest
+  - block.block.emailsignupblockstandard
+  - block.block.emailsignupblockworkplace
+  - block.block.emailsignupblockfundraise
+  - block.block.emailsignupblockhead
+
+  # Menus
+  - system.menu.footer
+
+  # Images
+  - system.image
+  - image.style.full_node_desktop_770x433
+  - image.style.full_node_mobile_442x271
+  - image.style.full_node_tablet_330x247
+  - image.style.cw_4_3_lg_370x278
+  - image.style.cw_4_3_md_290x278
+  - image.style.cw_large_780x440
+  - image.style.cw_medium_570x365
+  - image.style.bg_rich_text_narrow
+  - image.style.bg_rich_text_wide
+  - image.style.50_width_image_lg
+  - image.style.100_width_image_md
+  - image.style.100_width_image_sm
+  - image.style.story_293_x_322_crop_lg
+  - image.style.story_479_x_352_crop_md
+  - image.style.story_739_x_561_crop_sm
+  - image.style.cr_1700_x_400
+  - image.style.cr_740_x_300
+
+  # Retina image styles
+  - image.style.bg_rich_text_narrow_2x
+  - image.style.bg_rich_text_wide_2x_
+  - image.style.cw_4_3_lg_740x556_2x_
+  - image.style.cw_4_3_md_316_x_303_2x_
+  - image.style.cw_16_9_lg_800x450_2x_
+  - image.style.cw_16_9_md_680x382_2x_
+  - image.style.full_node_sm_442x271_2x_
+  - image.style.50_width_image_lg_2x_
+  - image.style.100_width_image_md_2x_
+  - image.style.100_width_image_sm_2x
+  - image.style.cr_1_1_272x272_2x
+  - image.style.story_293_x_322_crop_lg_2x_
+  - image.style.story_479_x_352_crop_md_2x_
+  - image.style.story_739_x_561_crop_sm_2x_
+  - image.style.cr_1700_x_400_2x
+  - image.style.cr_740_x_300_2x
+
+  # Responsive image style mappings
+  - responsive_image.styles.hero_image_full_node
+  - responsive_image.styles.cw_4_3_image
+  - responsive_image.styles.bg_rich_text
+  - responsive_image.styles.single_l_r_message_row
+  - responsive_image.styles.single_msg_
+  - responsive_image.styles.story_row
+
+  # Metatags
+  - metatag.metatag_defaults.403
+  - metatag.metatag_defaults.404
+  - metatag.metatag_defaults.front
+  - metatag.metatag_defaults.global
+  - metatag.metatag_defaults.node
+  - metatag.metatag_defaults.taxonomy_term
+  - metatag.metatag_defaults.user
+
+  # Filter format
+  - editor.editor.basic_html
+  - editor.editor.full_html
+  - filter.format.basic_html
+  - filter.format.full_html
+
+  # Roles
+  - user.role.administrator
+  - user.role.anonymous
+  - user.role.authenticated
+  - user.role.editor
+  - user.role.manager
+  - user.role.reviewer
+  - user.settings
+
+  # Contributed modules
+  - pathauto.pattern.basic_page
+  - pathauto.settings
+
+  # Cookie consent
+  - cookieconsent.settings
+
+  # Blazy
+  - blazy.settings
+
+  - simple_sitemap.settings
+  - simple_sitemap.bundle_settings.node.article
+  - simple_sitemap.bundle_settings.node.landing
+  - simple_sitemap.bundle_settings.node.page
+  - simple_sitemap.custom

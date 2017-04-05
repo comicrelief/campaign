@@ -53,7 +53,7 @@ Feature: Article
     And I press "Create Publishing Date"
     And I wait for AJAX loading to finish
     Then I should see "Publishing date"
-    And I enter "tag1" for "edit-field-article-tags-target-id"
+    And I enter "tag1" for "field_article_category[target_id]"
     And I scroll ".unpublish input" into view
     And press "Save as unpublished"
     # check the content cannot be seen if logged out
@@ -81,7 +81,7 @@ Feature: Article
     | title       | Comic Relief raises £1bn over 30-year existence |
     | field_article_intro | Since the charity was founded 30 years ago, with more than £78m raised. |
     | body | Comic Relief founder Richard Curtis said he was "enormously proud" of the charity's achievements. |
-    | field_article_image | profiles/cr/tests/behat/files/400x4:3.png |
+    | field_article_image | profiles/contrib/cr/tests/behat/files/400x4:3.png |
     | field_youtube_url | https://youtu.be/JCUFs2qJ1bs |
     | field_article_category | Fundraising |
     Then I should see "Richard Curtis"
@@ -92,7 +92,7 @@ Feature: Article
     | field_article_publish_date | 2015-02-08 17:45:00                       |
     | field_article_intro | Audiences across the UK are in for a night of first-class entertainment.  |
     | body | A one-off Luther special will be screened, with Idris Elba starring alongside Lenny Henry, Rio Ferdinand, Denise Lewis, Louis Smith, Ian Wright and David Haye. |
-    | field_article_image | profiles/cr/tests/behat/files/400x4:3.png |
+    | field_article_image | profiles/contrib/cr/tests/behat/files/400x4:3.png |
     | field_article_category | Fundraising |
     Then I should see "Luther"
     And I should see "Related news"
