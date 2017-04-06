@@ -22,7 +22,18 @@
       if (event.which == 13) {
         // Submit form with fake mouse event; jQuery form submit function doesn't work here!
         $(event.target).mousedown();
+
+        // set focus back to input when error - create function for this!
+        $(document).ajaxComplete(function() {
+          var blocks = $(".block-cr-email-signup");
+          for (i=0; i<blocks.length; i++) {
+            var block = blocks[i];
+            if ($(block).hasClass("block--cr-email-signup--error")) {
+              $(block).find(".form-text").focus();
+            }
+          }
+        });
       }
-    });
+    });  
   });
 })(jQuery);
