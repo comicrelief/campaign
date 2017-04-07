@@ -45,20 +45,18 @@
     function refocus() {
       // Set focus back to input or select menu
       $(document).ajaxComplete(function() {
-        var blocks = $(".block-cr-email-signup");
-        for ( i=0 ; i<blocks.length; i++ ) {
-          var block = blocks[i];
-          if ( $(block).hasClass("block--cr-email-signup--error") ) {
-            if ( $(block).hasClass("error--firstname") ) {
-              $("#edit-firstname").focus();
-            }
-            else {
-              $(block).find(".form-text").focus();
-            }
+        if ( $(".block--cr-email-signup--error") ) {
+          var block = $(".block--cr-email-signup--error");
+          if ( $(block).hasClass("error--firstname") ) {
+            $("#edit-firstname").focus();
           }
-          if ( $(block).hasClass("block--cr-email-signup--step-2") ) {
-            $(block).find(".ui-selectmenu-button").focus();
+          else {
+            $(block).find(".form-text").focus();
           }
+        }
+        if ( $(".block--cr-email-signup--step-2") ) {
+          var block = $(".block--cr-email-signup--step-2");
+          $(block).find(".ui-selectmenu-button").focus();
         }
       });
     }
