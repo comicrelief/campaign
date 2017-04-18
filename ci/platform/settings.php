@@ -1,45 +1,40 @@
 <?php
+/**
+ * @file
+ * Platform.sh example settings.php file for Drupal 8.
+ */
 
-use Symfony\Component\Yaml\Yaml;
-
+// Default Drupal 8 settings.
+//
+// These are already explained with detailed comments in Drupal's
+// default.settings.php file.
+//
+// See https://api.drupal.org/api/drupal/sites!default!default.settings.php/8
 $databases = [];
 $config_directories = [];
-$settings['install_profile'] = 'cr';
-$settings['skip_permissions_hardening'] = TRUE;
-
-$config_directories[CONFIG_SYNC_DIRECTORY] = 'sites/default/config';
-
-/**
- * Enable twig php filters
- */
-$settings['twig_tweak_enable_php_filter'] = true;
-
-/**
- * Load environment variables.
- * Required for CRAFT.
- */
-$environment = __DIR__ . "/environment.yml";
-if (file_exists($environment)) {
-  $environment_variables = Yaml::parse(file_get_contents($environment));
-
-  $databases = $environment_variables['databases'];
-  $settings = array_merge($settings, $environment_variables['settings']);
-  $config = array_merge($config, $environment_variables['config']);
-  $config_directories['sync'] = $environment_variables['config_dir'];
-}
-
-/**
- * Load services definition file.
- */
+$settings['update_free_access'] = false;
 $settings['container_yamls'][] = __DIR__ . '/services.yml';
+$settings['file_scan_ignore_directories'] = [
+    'node_modules',
+    'bower_components',
+];
 
-/**
- * Include settings for platform.sh
- */
-if (file_exists(__DIR__ . '/settings.platformsh.php')) {
-  include __DIR__ . '/settings.platformsh.php';
-  $settings['update_free_access'] = false;
-}
-if (file_exists(__DIR__ . '/settings.local.php')) {
-  include __DIR__ . '/settings.local.php';
+// The hash_salt should be a unique random value for each application.
+// If left unset, the settings.platformsh.php file will attempt to provide one.
+// You can also provide a specific value here if you prefer and it will be used
+// instead. In most cases it's best to leave this blank on Platform.sh. You
+// can configure a separate hash_salt in your settings.local.php file for
+// local development.
+// $settings['hash_salt'] = 'change_me';
+
+// Set up a config sync directory.
+//
+// This is defined inside the read-only "config" directory, deployed via Git.
+$config_directories[CONFIG_SYNC_DIRECTORY] = 'sites/default/config';
+$settings['install_profile'] = 'cr';
+$settings['hash_salt'] = '7BbC-OM6nFz5BDRB9ksza__3PmJSrcZ-eHY1InKGUlt2cnXFsI6eAJzBuzaABWdzgs_ZLZY3bg';
+
+// Automatic Platform.sh settings.
+if (file_exists(__DIR__  . '/settings.platformsh.php')) {
+    include __DIR__  . '/settings.platformsh.php';
 }
