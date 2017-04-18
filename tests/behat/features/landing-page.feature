@@ -43,7 +43,7 @@ Feature: Landing-page
       | field_landing_background_colour | White |
     Then I should see "My freshly created body copy"
 
-  @api @functionality
+  @api @functionality @default-content
   Scenario: Create landing page with associated paragraphs
     Given I am logged in as a user with the "Editor user" role
     And I am viewing a "landing" content with "Test landing page" title and "profiles/contrib/cr/tests/behat/files/600x16:9.png" image and "<h1>Behat or Liv?</h1><h2>Spot the five differences!</h2>" body and with the following paragraphs:
