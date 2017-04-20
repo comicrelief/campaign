@@ -11,7 +11,8 @@
     esuBannerClass: 'block--cr-email-signup--banner',
     hiddenDeviceFieldClass: '.esu-device',
     hiddenSourceFieldClass: '.esu-source',
-    sourceValue: 'Header',
+    deviceValue: '',
+    sourceValue: '',
     firstLoad: false,
    },
 
@@ -24,10 +25,13 @@
 
         if(_settings.firstLoad == false) {
           _base.setDevice(this);
-          _base.keyboardSubmit(this);
+          _base.keyboardSubmit(context);
           Drupal.behaviors.crEmailSignUp.settings.firstLoad = true;
           _settings.firstLoad = Drupal.behaviors.crEmailSignUp.settings.firstLoad;
         }
+
+        _base.setSource(this);
+
       });
     },
 
@@ -42,10 +46,8 @@
       // Replace spaces with underscores.
       _settings.deviceValue = _settings.deviceValue.replace(/\s+/g,"_");
 
-      // Use this value to set the hidden device field.
-      $(context).find(_settings.hiddenDeviceFieldClass).val(_settings.deviceValue);
-
-      _base.setSource(context);
+      Drupal.behaviors.crEmailSignUp.settings.deviceValue = _settings.deviceValue;
+ 
     },
 
     setSource: function (context) {
@@ -59,18 +61,20 @@
       } else {
         _settings.sourceValue = 'Header';
       }
-
       // Use this value to set the hidden source field.
       $(context).find(_settings.hiddenSourceFieldClass).val(_settings.sourceValue);
+
+      // Use deviceValue set by setDevice on each form to set the hidden device field.
+      $(context).find(_settings.hiddenDeviceFieldClass).val(_settings.deviceValue);
     },
 
     keyboardSubmit: function (context, settings) {
-
+      
       var _base = Drupal.behaviors.crEmailSignUp;
       var _settings = _base.settings;
 
       // Handler to submit form by pressing enter on button for all esu forms
-      $(".form-submit, .form-text").keypress(function(event) {
+      $(".form-submit, .form-text", _settings.genericEsuClass).keypress(function(event) {
         $eventTarget = $(event.target);
         // If the key pressed has the right keycode
         if (event.which == 13) {
