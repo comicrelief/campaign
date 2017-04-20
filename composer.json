@@ -32,13 +32,17 @@
     "scripts": {
         "post-install-cmd": [
             "@drupal-scaffold",
-            "@campaign-scaffold"
+            "@campaign-scaffold",
+            "@grunt:dependencies"
         ],
         "post-update-cmd": [
             "@drupal-scaffold"
         ],
+        "grunt:dependencies": [
+            "cd web/profiles/contrib/cr/themes/custom/campaign_base; npm install;bundle install --frozen --without craft"
+        ],
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
-        "campaign-links": "cd web/profiles/contrib/cr;ln -df ../../../../config .;ln -fs ../../../../modules .;ln -fs ../../../../tests .;ln -fs ../../../../themes .;ln -fs ../../../../cr.in* .;ln -fs ../../../../Ge* .",
+        "campaign-links": "cd web/profiles/contrib/cr;ln -sf ../../../../config .;ln -fs ../../../../modules .;ln -fs ../../../../tests .;ln -fs ../../../../themes .;ln -fs ../../../../cr.in* .;ln -fs ../../../../Ge* .",
         "campaign-scaffold": [
             "cp ci/platform/settings.php web/sites/default/settings.php",
             "mkdir -p web/profiles/contrib/cr",
@@ -86,7 +90,7 @@
         "wikimedia/composer-merge-plugin": "~1.3",
         "php-amqplib/php-amqplib": "^2.6",
         "drupal-composer/drupal-scaffold": "^2.0.0",
-        "drupal/core": "8.2.6",
+        "drupal/core": "8.2.7",
         "drupal/composer_deploy": "1.0",
         "drupal/ctools": "3.0-alpha27",
         "drupal/file_entity": "2.0-beta3",

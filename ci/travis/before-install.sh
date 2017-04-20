@@ -7,4 +7,4 @@ printf 'deploy.craft=true' >> build.properties
 # Output confirmation
 echo 'File: build.properties has been created.'
 # Get build dependencies
-phing build:prepare
+composer install
