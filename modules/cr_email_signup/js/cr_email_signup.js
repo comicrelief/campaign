@@ -76,12 +76,13 @@
       var _settings = _base.settings;
 
       // Handler to submit form by pressing enter for all esu forms
-      $(".form-submit, .form-text, select, .ui-selectmenu-button", _settings.genericEsuClass).on('keypress', function(event) {
+      $(".form-submit, .form-text, select", _settings.genericEsuClass).on('keypress', function(event) {
         
         $eventTarget = $(event.target);
         
         // If the key pressed has the right keycode
         if (event.which == 13) {
+          
           // Reset flag for Ajax to run code again
           Drupal.behaviors.crEmailSignUp.settings.isFirstAjaxCall = true;
           
@@ -113,6 +114,16 @@
         }
       });
 
+      $("select, .ui-selectmenu-button", _settings.genericEsuClass).on('selectmenuselect', function(event, ui) {
+        
+        // submit selectmenu step in standard ESU form
+        if (event.which == 13) {
+          if ( $form.attr('id') == 'cr-email-signup-form' ) {
+            $submit = $form.find(".step2");
+          }
+        }
+        $submit.mousedown();
+      });
         
       $(document).ajaxComplete(function(event) {
         // Set focus back to input or select menu in case of an error
@@ -135,8 +146,10 @@
               $block.find(".form-text").focus();
             }
           }
-          // remove keypress event handler and re-attach it
-          $(".form-submit, .form-text, select, .ui-selectmenu-button", _settings.genericEsuClass).off('keypress');
+          // remove keypress event handlers and re-attach it
+          $(".form-submit, .form-text, select", _settings.genericEsuClass).off('keypress');
+          $("select, .ui-selectmenu-button", _settings.genericEsuClass).off('selectmenuselect');
+
           Drupal.behaviors.crEmailSignUp.keyboardSubmit();
         }
 
