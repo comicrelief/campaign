@@ -76,7 +76,7 @@
       var _settings = _base.settings;
 
       // Handler to submit form by pressing enter for all esu forms
-      $(".form-submit, .form-text, select", _settings.genericEsuClass).on('keypress', function(event) {
+      $(".form-submit, .form-text", _settings.genericEsuClass).on('keypress', function(event) {
         
         $eventTarget = $(event.target);
         
@@ -114,7 +114,7 @@
         }
       });
 
-      $("select, .ui-selectmenu-button", _settings.genericEsuClass).on('selectmenuselect', function(event, ui) {
+      $("select, .ui-selectmenu-button", _settings.genericEsuClass).on('keypress selectmenuselect', function(event, ui) {
         
         // submit selectmenu step in standard ESU form
         if (event.which == 13) {
