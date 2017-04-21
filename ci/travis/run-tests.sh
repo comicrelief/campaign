@@ -2,9 +2,11 @@
 set -e
 # @file
 # Run test suite
-phing install:test:dependencies
+cd web
+drush pm-uninstall cookieconsent -y
+cd ..
 # Check the config match with the info.yml
-phing config:check
+#phing config:check
 # Move to behat directory
 cd $BEHAT_DIR
 # behat.yml on the fly
@@ -16,5 +18,6 @@ cd $BEHAT_DIR
 } >> .behat.yml.sh
 # Execute the script.
 . .behat.yml.sh
+composer install -no
 # Run behat tests
 ./vendor/bin/behat --tags '~@not-on-travis'
