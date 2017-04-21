@@ -6,10 +6,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
-        "process-timeout": 0,
-        "github-oauth": {
-            "github.com": "4327e2ceb98f14629653e28b01fb73b7cb288464"
-        }
+        "process-timeout": 0
     },
     "repositories": [
         {
@@ -39,7 +36,7 @@
             "@drupal-scaffold"
         ],
         "grunt:dependencies": [
-            "cd web/profiles/contrib/cr/themes/custom/campaign_base; npm install;bundle install --frozen --without craft"
+            "cd web/profiles/contrib/cr/themes/custom/campaign_base;npm install;bundle install --frozen --without craft"
         ],
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "campaign-links": "cd web/profiles/contrib/cr;ln -sf ../../../../config .;ln -fs ../../../../modules .;ln -fs ../../../../tests .;ln -fs ../../../../themes .;ln -fs ../../../../cr.in* .;ln -fs ../../../../Ge* .",
@@ -62,8 +59,7 @@
                 "See https://www.drupal.org/node/728702. Required for platform.sh": "https://www.drupal.org/files/issues/drupal-redirect_to_install-728702-92.patch"
             },
             "drupal/config_devel": {
-                "See https://www.drupal.org/node/2686499": "https://www.drupal.org/files/issues/config_devel-drush-config-devel-import-2686499-6.patch",
-                "Add composer dependencies": "https://www.drupal.org/files/issues/show_differences_between-2801201-3.patch"
+                "See https://www.drupal.org/node/2686499": "https://www.drupal.org/files/issues/config_devel-drush-config-devel-import-2686499-6.patch"
             },
             "drupal/twig_tweak": {
                 "https://www.drupal.org/node/2833960": "https://www.drupal.org/files/issues/2833960-relative-image-path.patch"

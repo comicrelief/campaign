@@ -52,14 +52,16 @@ before_install:
   - phpenv config-rm xdebug.ini
   - composer self-update
   - composer global require drush/drush:8.*
-  #- $TRAVIS_DIR/code-checks.sh
 
 install:
   - composer install
   - cp ci/travis/settings.php web/sites/default/settings.php
   - composer grunt:build
   - composer drupal:install
-  - cd web;drush en -y cr_default_content cr_search_db;drush cron;cd ..
+  - cd web
+  - drush en -y cr_default_content cr_search_db
+  - drush cron
+  - cd ..
 
 before_script:
   - $TRAVIS_DIR/before-tests.sh
