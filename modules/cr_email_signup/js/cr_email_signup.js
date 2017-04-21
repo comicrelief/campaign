@@ -153,7 +153,7 @@
           Drupal.behaviors.crEmailSignUp.keyboardSubmit();
         }
 
-        // Prevent Ajax from running code multiple times
+        // Prevent the clustered ajax success events from running our code multiple times per form submission
         Drupal.behaviors.crEmailSignUp.settings.isFirstAjaxCall = false;
         
       });
