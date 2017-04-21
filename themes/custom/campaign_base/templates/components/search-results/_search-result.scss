@@ -2,7 +2,7 @@
 //
 // Markup: search-results.twig
 //
-// Style guide: 17
+// Style guide: 200
 
 .node--type-page.search-result {
   @include breakpoint($screen-md, $no-query: true) {
