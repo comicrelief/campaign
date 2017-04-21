@@ -115,7 +115,7 @@ dependencies:
   - simple_sitemap
 
   # Because cr_landing_pages has content dependencies this needs to be loaded after
-  - cr_search_db
+  - cr_search
 
 themes:
   - seven
@@ -240,13 +240,10 @@ config_devel:
   # Contributed modules
   - pathauto.pattern.basic_page
   - pathauto.settings
-
-  # Cookie consent
   - cookieconsent.settings
-
-  # Blazy
   - blazy.settings
 
+  # Simple sitemap
   - simple_sitemap.settings
   - simple_sitemap.bundle_settings.node.article
   - simple_sitemap.bundle_settings.node.landing

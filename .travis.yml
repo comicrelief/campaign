@@ -48,15 +48,20 @@ before_install:
   - nvm install 6 && nvm use 6
   - npm update -g npm
   - rvm install 2.1.5
-  - composer config --global --auth http-basic.repo.packagist.com bimsonz b19c9f32a1966787021a55895f80792b70efb58e5ce3c339a48b85c3409b
-  - composer global require phing/phing:2.15 drush/drush:8.*
-  # Prepare environment
-  - $TRAVIS_DIR/before-install.sh
-  # Check code quality before site is installed
-  #- $TRAVIS_DIR/code-checks.sh
+  - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+  - phpenv config-rm xdebug.ini
+  - composer self-update
+  - composer global require drush/drush:8.*
 
 install:
-  - travis_wait $TRAVIS_DIR/install.sh
+  - composer install
+  - cp ci/travis/settings.php web/sites/default/settings.php
+  - composer grunt:build
+  - composer drupal:install
+  - cd web
+  - drush en -y cr_default_content cr_search_db
+  - drush cron
+  - cd ..
 
 before_script:
   - $TRAVIS_DIR/before-tests.sh

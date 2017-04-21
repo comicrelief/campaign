@@ -33,7 +33,14 @@ $settings['hash_salt'] = '7BbC-OM6nFz5BDRB9ksza__3PmJSrcZ-eHY1InKGUlt2cnXFsI6eAJ
 $settings['install_profile'] = 'cr';
 $settings['twig_tweak_enable_php_filter'] = true;
 
-// Automatic Platform.sh settings.
-if (file_exists(__DIR__  . '/settings.platformsh.php')) {
-    include __DIR__  . '/settings.platformsh.php';
-}
+$databases['default']['default'] = array (
+    'database' => 'drupal',
+    'username' => 'root',
+    'password' => '',
+    'prefix' => '',
+    'host' => '127.0.0.1',
+    'port' => '3306',
+    'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+    'driver' => 'mysql',
+);
+
