@@ -75,8 +75,8 @@
       var _base = Drupal.behaviors.crEmailSignUp;
       var _settings = _base.settings;
 
-      // Handler to submit form by pressing enter for all esu forms
-      $(".form-submit, .form-text", _settings.genericEsuClass).on('keypress', function(event) {
+      // Handler to submit form or close ESU header pop-up by pressing enter
+      $(".form-submit, .form-text, .icon", _settings.genericEsuClass).on('keypress', function(event) {
         
         $eventTarget = $(event.target);
         
@@ -86,9 +86,11 @@
           // Reset flag for Ajax to run code again
           Drupal.behaviors.crEmailSignUp.settings.isFirstAjaxCall = true;
           
-          // Submit when focused on submit button
-          if($(this).hasClass('form-submit')) {
-            // Submit form with fake mouse event; jQuery form submit function doesn't work here.
+          // Submit when focused on submit button or close when focused on close button
+          if($(this).hasClass('form-submit') || $(this).hasClass('icon') ) {
+            // Use fake mouse event; jQuery form submit function doesn't work here.
+            // N.B click doesn't work with jQuery ui menu and mousedown doesn't work with close button 
+            $eventTarget.click();
             $eventTarget.mousedown();
           }
 
@@ -132,8 +134,8 @@
 
           if ( $(".block--cr-email-signup--step-2").length > 0 ) {
             $block = $(".block--cr-email-signup--step-2");
-            // focus on select menu or jquery ui select menu
-            $block.find("select, .ui-selectmenu-button").focus();
+            // focus on select menu or jquery ui select menu or on close button
+            $block.find("select, .ui-selectmenu-button, .icon").focus();
           }
 
           if ( $(".block--cr-email-signup--error").length > 0 ) {
