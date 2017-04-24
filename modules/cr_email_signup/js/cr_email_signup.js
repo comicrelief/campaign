@@ -83,6 +83,8 @@
         // If the key pressed has the right keycode
         if (event.which == 13) {
           
+          event.preventDefault();
+
           // Reset flag for Ajax to run code again
           Drupal.behaviors.crEmailSignUp.settings.isFirstAjaxCall = true;
           
@@ -128,17 +130,18 @@
       });
         
       $(document).ajaxComplete(function(event) {
+
         // Set focus back to input or select menu in case of an error
         // Only run code once
-        if (Drupal.behaviors.crEmailSignUp.settings.isFirstAjaxCall ) {
-
-          if ( $(".block--cr-email-signup--step-2").length > 0 ) {
+        if ( event.target.activeElement.closest(".block-cr-email-signup") && Drupal.behaviors.crEmailSignUp.settings.isFirstAjaxCall ) {
+           
+          if ( $(".block--cr-email-signup--step-2").length ) {
             $block = $(".block--cr-email-signup--step-2");
             // focus on select menu or jquery ui select menu or on close button
             $block.find("select, .ui-selectmenu-button, .icon").focus();
           }
 
-          if ( $(".block--cr-email-signup--error").length > 0 ) {
+          if ( $(".block--cr-email-signup--error").length ) {
             $block = $(".block--cr-email-signup--error");
 
             if ( $block.hasClass("error--firstname") ) {
