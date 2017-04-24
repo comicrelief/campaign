@@ -1,9 +1,9 @@
 <?php
 
+namespace BehatTests;
+
 use Drupal\DrupalExtension\Context\RawDrupalContext;
 use Behat\Behat\Context\SnippetAcceptingContext;
-use Behat\Testwork\Hook\Scope\BeforeSuiteScope;
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Gherkin\Node\TableNode;
 
 /**
@@ -19,14 +19,14 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
     // Grab sitemap.xml page contents and parse it as XML using SimpleXML library
     $sitemap_contents = $this->getSession()->getDriver()->getContent();
     try {
-      $xml = new SimpleXMLElement($sitemap_contents);
-    } catch(Exception $e) {
-      throw new Exception('Unable to read sitemap xml content - '.$e->getMessage());
+      $xml = new \SimpleXMLElement($sitemap_contents);
+    } catch(\Exception $e) {
+      throw new \Exception('Unable to read sitemap xml content - '.$e->getMessage());
     }
 
     // check if <url> nodes exist
     if (!($xml->count() > 0 && isset($xml->url))) {
-      throw new InvalidArgumentException('No urlset found');
+      throw new \InvalidArgumentException('No urlset found');
     }
   }
 
@@ -39,9 +39,9 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
     // Grab sitemap.xml page contents and parse it as XML using SimpleXML library
     $sitemap_contents = $this->getSession()->getDriver()->getContent();
     try {
-      $xml = new SimpleXMLElement($sitemap_contents);
-    } catch(Exception $e) {
-      throw new Exception('Unable to read sitemap xml content - '.$e->getMessage());
+      $xml = new \SimpleXMLElement($sitemap_contents);
+    } catch(\Exception $e) {
+      throw new \Exception('Unable to read sitemap xml content - '.$e->getMessage());
     }
 
     // Parse through each <url> node and check if url paths provided exist or not
@@ -54,7 +54,7 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
 
     // If no match found then throw exception
     if (!$path_found) {
-      throw new InvalidArgumentException('Url not found');
+      throw new \InvalidArgumentException('Url not found');
     }
   }
 
@@ -174,7 +174,7 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
       }
     }
     if (empty($result)) {
-      throw new Exception(sprintf('Metatag "%s" expected to be "%s", but found "%s" on the page %s', $metatag, $value, $element->getText(), $this->getSession()->getCurrentUrl()));
+      throw new \Exception(sprintf('Metatag "%s" expected to be "%s", but found "%s" on the page %s', $metatag, $value, $element->getText(), $this->getSession()->getCurrentUrl()));
     }
   }
 
@@ -354,13 +354,13 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
     $queue = \Drupal::service('queue')->get($queue_name);
 
     if (!$queue) {
-      throw new Exception('Unable to access queue "' . $queue_name . '"');
+      throw new \Exception('Unable to access queue "' . $queue_name . '"');
     }
 
     $item = $queue->claimItem();
 
     if (!$item || !is_object($item) || !is_array($item->data)) {
-      throw new Exception('Unable to claim item from queue "' . $queue_name . '"');
+      throw new \Exception('Unable to claim item from queue "' . $queue_name . '"');
     }
 
     // Remove the item from the queue
@@ -374,13 +374,13 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
 
     foreach ($expected as $name => $expected_value) {
       if (!isset($item[$name])) {
-        throw new Exception('Expected queue property "' . $name . '" was not found in last item from queue "' . $queue_name . '"');
+        throw new \Exception('Expected queue property "' . $name . '" was not found in last item from queue "' . $queue_name . '"');
       }
 
       // Check if the value from the queue is the same one as the expected value.
       // If we pass "*" as expected value, all values are correct.
       if ($expected_value != '*' && $item[$name] != $expected_value) {
-        throw new Exception('Expected queue property "' . $name . '" contains value "' . $item[$name] . '" but "' . $expected_value . '" expected, for last item from queue "' . $queue_name . '"');
+        throw new \Exception('Expected queue property "' . $name . '" contains value "' . $item[$name] . '" but "' . $expected_value . '" expected, for last item from queue "' . $queue_name . '"');
       }
     }
   }
@@ -414,7 +414,7 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
     $elements = $this->getSession()->getPage()->findAll('css', '.node--type-partner .field--name-title');
 
     if (empty($elements)) {
-      throw new Exception('No hidden partner titles in the markup to check');
+      throw new \Exception('No hidden partner titles in the markup to check');
     }
 
     $found = false;
@@ -428,22 +428,22 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
     }
 
     if (!$found) {
-      throw new Exception('The hidden partner title ' . $title . ' was not found in the markup');
+      throw new \Exception('The hidden partner title ' . $title . ' was not found in the markup');
     }
   }
 
   /**
    * Check for video background.
    *
-   * @Then I should see a :ext with the following filename :filename 
-   * @And I should see a :ext with the following filename :filename 
+   * @Then I should see a :ext with the following filename :filename
+   * @And I should see a :ext with the following filename :filename
    */
   public function iShouldSeeTheVideoSource($filename, $ext) {
     // Attempt to grab all the video elements
     $videos = $this->getSession()->getPage()->findAll('css', 'video');
-    
+
     if (empty($videos)) {
-      throw new Exception('No video container in markup to check');
+      throw new \Exception('No video container in markup to check');
     }
 
     $found = false;
@@ -453,7 +453,7 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
     foreach ($videos as $video) {
       $sourceTag = $video->find('css', 'source');
       $source = $sourceTag->getAttribute('src');
-      
+
       if(preg_match($pattern, $source) === 1){
         $found = true;
         break;
@@ -461,7 +461,7 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
     }
 
     if (!$found) {
-      throw new Exception('The video with filename ' . $filename . ' was not found in the markup');
+      throw new \Exception('The video with filename ' . $filename . ' was not found in the markup');
     }
   }
 }

@@ -1,0 +1,51 @@
+version: '2.1'
+services:
+  web:
+    image: comicrelief/php7-drupal:latest
+    ports:
+      - 8080:80
+      - 8081:443
+    links:
+      - mysql
+      - rabbitmq
+      - solr
+      - selenium
+    volumes:
+      - .:/var/www/html
+      - $SSH_AUTH_SOCK:/ssh-agent
+    environment:
+      SSH_AUTH_SOCK: /ssh-agent
+
+  solr:
+    image: solr:6.2-alpine
+    ports:
+      - 8984:8983
+    volumes:
+      - ./web/modules/contrib/search_api_solr/solr-conf/6.x:/drupal/conf
+    entrypoint:
+      - docker-entrypoint.sh
+      - solr-precreate
+      - campaign
+      - /drupal
+
+  mysql:
+    image: mysql:5
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: campaign
+    ports:
+      - 3307:3306
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - 15672:15672
+      - 5672:5672
+    hostname: drupal-rabbit
+
+  selenium:
+    image: selenium/standalone-firefox:2.53.1-beryllium
+    ports:
+      - 4444:4444
+    environment:
+      JAVA_OPTS: -Djava.security.egd=file:/dev/./urandom
