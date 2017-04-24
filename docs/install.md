@@ -77,6 +77,7 @@ gem install bundler
 
 ## Installation
 ### Composer
+
 To install the site dependencies you have to execute
 ```bash
 composer install
@@ -92,6 +93,12 @@ and after that you are ready to install drupal with
 composer drupal:install
 ```
 If you have any issue with the database please check the config of the file `web/sites/default/settings.php`
+
+Or you if you want to execute all those commands in one go with `default_content` enabled
+```bash
+composer campaign:build
+```
+Unfortunately is not safe to run this command if you are using Docker, because copies a bad setting.php file
 
 ### Grunt
 
@@ -111,7 +118,7 @@ Grunt will compile CSS, remove comments, remove sass source file, minify and con
 Alternatively you compile all SASS manually at anytime via the command below:
 
 ```bash
-phing grunt:build
+composer grunt:build
 ```
 ## Ready?
 
