@@ -81,7 +81,7 @@ To install the site dependencies you have to execute
 ```bash
 composer install
 ```
-Once is done you'll have a drupal site ready to use.
+Once this is done you'll have a drupal site ready to use.
 
 In order to compile the css you'll need to execute
 ```bash
