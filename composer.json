@@ -56,11 +56,12 @@
             "cd web;drush en -y cr_default_content"
         ],
         "code:check": [
-            "vendor/bin/phpcs --standard=PSR2 --encoding=utf-8 --colors -n modules tests",
+            "vendor/bin/phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer",
+            "vendor/bin/phpcs --standard=Drupal --encoding=utf-8 --colors -n modules tests",
             "vendor/bin/phpcpd modules tests"
         ],
         "code:fix": [
-            "vendor/bin/phpcbf --standard=PSR2 --encoding=utf-8 -n modules tests"
+            "vendor/bin/phpcbf --standard=Drupal --encoding=utf-8 -n modules tests"
         ]
     },
     "extra": {
@@ -169,7 +170,8 @@
         "drupal/drupal-extension": "~3.0",
         "sebastian/phpcpd": "^3.0",
         "squizlabs/php_codesniffer": "^2.8",
-        "phpmd/phpmd": "^2.6"
+        "phpmd/phpmd": "^2.6",
+        "drupal/coder": "^8.2"
     },
     "autoload-dev": {
         "psr-4": {
