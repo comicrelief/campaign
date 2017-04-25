@@ -46,9 +46,6 @@ travis:
       goutte: ~
       selenium2:
         wd_host: http://127.0.0.1:4444/wd/hub
-        capabilities:
-          version: ''
-      browser_name: firefox
       files_path: tests/behat/files
     Drupal\DrupalExtension:
       api_driver: drupal
