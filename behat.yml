@@ -24,13 +24,13 @@ default:
       region_map:
         content: .layout-content
         esu_standard: "#block-emailsignupblockstandard"
-        esu_workplace: ".cr-email-signup-workplace-form"
-        esu_fundraise: ".cr-email-signup-fundraise-form"
-        esu_register_interest: ".cr-email-signup-register-interest-form"
+        esu_workplace: .cr-email-signup-workplace-form
+        esu_fundraise: .cr-email-signup-fundraise-form
+        esu_register_interest: .cr-email-signup-register-interest-form
 
 travis:
   suites:
-    local:
+    travis:
       paths: [ %paths.base%/tests/behat/features ]
       contexts:
         - Drupal\DrupalExtension\Context\DrupalContext
@@ -39,7 +39,7 @@ travis:
         - Drupal\DrupalExtension\Context\MinkContext
         - BehatTests\DrupalCRFeatureContext
       filters:
-        tags: '~@not-on-travis'
+        tags: ~@not-on-travis
   extensions:
     Behat\MinkExtension:
       base_url: http://127.0.0.1:8080
