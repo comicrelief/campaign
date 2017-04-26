@@ -5,12 +5,10 @@
 1. [Project Requirements](install.md#requirements)
   - [PHP Configurations](install.md#php-configurations)
   - [Drush v8](install.md#drush-v8)
-  - [Phing](install.md#phing)
   - [Bundler](install.md#install-bundler)
 2. [Installation](install.md#installation)
-  - [Environment.yml](install.md#environmentyml)
+  - [Environment.yml](install.md#composer)
   - [Application Requirements](install.md#application-requirements)
-  - [Using phing](install.md#using-phing-to-run-the-installation)
   - [Grunt](install.md#grunt)
 3. [Ready](install.md#ready)
 
@@ -23,8 +21,9 @@ The minimum software requirements to run Drupal 8 can be found at: [https://www.
 
 The other essentials needed to run this solution are:
 - drush latest 8.*
-- phing 2.15
 - bundler
+or
+- [Docker](https://docs.docker.com/engine/installation/)
 
 After we've configured PHP on your local environment we'll move on to installing these prerequisites.
 
@@ -70,31 +69,6 @@ composer global require drush/drush 6.*
 composer global require drush/drush 7.*
 ```
 
-### Phing
-
-You first will need to install to install [Phing](www.phing.info), which is a PHP build tool that automates tasks such as re-installing the site, running migrate procedures, tests etc.
-
-Download Phing from [http://www.phing.info/trac/wiki/Users/Download](http://www.phing.info/trac/wiki/Users/Download).
-
-You can install this using `composer`. [See also installation guide](https://coderwall.com/p/ma_cuq/using-composer-to-manage-global-packages):
-
-```bash
-composer global require phing/phing:2.15
-```
-
-Alternatively you can install using `PEAR`, follow instructions at [http://www.phing.info/trac/wiki/Users/Download](http://www.phing.info/trac/wiki/Users/Download).
-
-#### Configure Phing
-
-Create your local `build.properties` file by copying the example template in the solution:
-
-```bash
-cp build.example.properties build.properties
-```
-
-And now adapt `build.properties` adding in your Drush 8 binary location, database connection details, and your local website URL.
-
-
 ### Install Bundler
 
 ```bash
@@ -102,69 +76,22 @@ gem install bundler
 ```
 
 ## Installation
-### Environment.yml
-This file has been designed to replace the need for a ```settings.local.php```, this is also how the CRAFT environments gather various environment specific settings and credentials.
-
+### Composer
+To install the site dependencies you have to execute
 ```bash
-cp sites/default/example.environment.yml sites/default/environment.yml
+composer install
 ```
+Once this is done you'll have a drupal site ready to use.
 
-Change database details and local config/ settings accordingly.
-
-### Using Phing to prepare the application environment
-
-To prepare your local site directories and install dependencies, run:
-
+In order to compile the css you'll need to execute
 ```bash
-phing build:prepare
+composer grunt:build
 ```
-
-This will create and set up the applications webroot at: `project_root/web` and download; Drupal core, Drupal contrib modules (based on the CR profile composer.json) and all application dependencies.
-You will need to set your local webserver's document root to `/web`
-
-### Using Phing to run the installation
-
-To (re)install the project from scratch, run:
-(This will drop the currect database if there is one and all data will be lost)
-
+and after that you are ready to install drupal with
 ```bash
-phing build
+composer drupal:install
 ```
-
-A fresh version of the CR Drupal profile will be installed, this includes a new files directory with regenerated images and default content provided by CR Default content. Grunt will then use composer to compile the SASS into CSS automatically and the Drupal cache will be cleared.
-
-Always run this command everytime you have checked out a branch to ensure you have the latest content and configuration.
-
-During development,
-
-*Note:* If you see the following exception on `phing build`:
-
-```bash
-Exception 'Symfony\Component\DependencyInjection\Exception\InvalidArgumentException' with message 'The service definition "renderer" does not exist.`
-```
-
-...change the host value in environment.yml from `host: localhost` to `host: 127.0.0.1`.
-
-
-To login to the site, you can sign in with the creditentials, username: `admin` and password `admin`. Alternatively to sign-in resetting the password run:
-
-```bash
-phing login
-```
-
-To remake all contrib modules (for example, when adding a new module), run
-
-```bash
-composer update
-```
-
-To list all possible Phing targets, check
-
-```bash
-phing -l
-```
-
-All node modules and gems required for this project will be installed.
+If you have any issue with the database please check the config of the file `web/sites/default/settings.php`
 
 ### Grunt
 

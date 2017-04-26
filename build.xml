@@ -17,7 +17,7 @@
   <!-- These allow developers to override config. on a per environment basis -->
   <property file="build.properties"   override="true"/>
   <target name="build:prepare">
-    <exec command="composer install -n -o --prefer-dist "
+    <exec command="composer install -no --prefer-dist "
           checkreturn="true"
           logoutput="true"
           passthru="true" />
