@@ -28,26 +28,40 @@
     ],
     "scripts": {
         "post-install-cmd": [
-            "@drupal-scaffold",
-            "@campaign-scaffold",
+            "@drupal:scaffold",
+            "@campaign:scaffold",
             "@grunt:dependencies"
         ],
         "post-update-cmd": [
-            "@drupal-scaffold"
+            "@drupal:scaffold"
         ],
         "grunt:dependencies": [
             "cd web/profiles/contrib/cr/themes/custom/campaign_base;npm install;bundle install --frozen --without craft"
         ],
-        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
-        "campaign-links": "cd web/profiles/contrib/cr;ln -sf ../../../../config .;ln -fs ../../../../modules .;ln -fs ../../../../tests .;ln -fs ../../../../themes .;ln -fs ../../../../cr.in* .;ln -fs ../../../../Ge* .",
-        "campaign-scaffold": [
+        "drupal:scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+        "campaign:links": "cd web/profiles/contrib/cr;ln -sf ../../../../config .;ln -fs ../../../../modules .;ln -fs ../../../../tests .;ln -fs ../../../../themes .;ln -fs ../../../../cr.in* .;ln -fs ../../../../Ge* .",
+        "campaign:scaffold": [
             "cp ci/platform/settings.php web/sites/default/settings.php",
             "mkdir -p web/profiles/contrib/cr",
-            "@campaign-links"
+            "@campaign:links"
         ],
         "grunt:build": "cd web/profiles/contrib/cr/themes/custom/campaign_base;npm run build",
         "drupal:install": [
             "cd web;drush si cr --account-pass='admin' install_configure_form.update_status_module='[FALSE, FALSE]' -y"
+        ],
+        "campaign:build": [
+            "@composer install",
+            "@grunt:build",
+            "@drupal:install",
+            "cd web;drush en -y cr_default_content"
+        ],
+        "code:check": [
+            "vendor/bin/phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer",
+            "vendor/bin/phpcs --standard=Drupal --encoding=utf-8 --colors -n modules tests",
+            "vendor/bin/phpcpd modules tests"
+        ],
+        "code:fix": [
+            "vendor/bin/phpcbf --standard=Drupal --encoding=utf-8 -n modules tests"
         ]
     },
     "extra": {
@@ -77,6 +91,9 @@
               "type:drupal-module"
           ]
       },
+        "drupal-scaffold": {
+            "source": "https://raw.githubusercontent.com/drupal/drupal/{version}/{path}"
+        },
         "enable-patching": true
     },
     "require": {
@@ -152,6 +169,16 @@
         "drupal/stage_file_proxy": "1.0-alpha1",
         "drupal/devel": "1.x-dev#b8bcdc6",
         "drush/drush": "~8.0",
-        "behat/mink-selenium2-driver": "dev-master"
+        "behat/mink-selenium2-driver": "dev-master",
+        "drupal/drupal-extension": "~3.0",
+        "sebastian/phpcpd": "^3.0",
+        "squizlabs/php_codesniffer": "^2.8",
+        "phpmd/phpmd": "^2.6",
+        "drupal/coder": "^8.2"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "BehatTests\\": "tests/behat/features/bootstrap"
+        }
     }
 }
