@@ -91,6 +91,9 @@
               "type:drupal-module"
           ]
       },
+        "drupal-scaffold": {
+            "source": "https://raw.githubusercontent.com/drupal/drupal/{version}/{path}"
+        },
         "enable-patching": true
     },
     "require": {
