@@ -76,8 +76,8 @@
       var _settings = _base.settings;
 
       // Handler to submit form or close ESU header pop-up by pressing enter
-      $(".form-submit, .form-text, .icon", _settings.genericEsuClass).on('keypress', function(event) {
-        
+      $(".form-submit, .form-text, .esu-head-close", _settings.genericEsuClass).on('keypress', function(event) {
+
         $eventTarget = $(event.target);
         
         // If the key pressed has the right keycode
@@ -89,7 +89,7 @@
           Drupal.behaviors.crEmailSignUp.settings.isFirstAjaxCall = true;
           
           // Submit when focused on submit button or close when focused on close button
-          if($(this).hasClass('form-submit') || $(this).hasClass('icon') ) {
+          if($(this).hasClass('form-submit') || $(this).hasClass('esu-head-close') ) {
             // Use fake mouse event; jQuery form submit function doesn't work here.
             // N.B click doesn't work with jQuery ui menu and mousedown doesn't work with close button 
             $eventTarget.click();
@@ -133,12 +133,13 @@
 
         // Set focus back to input or select menu in case of an error
         // Only run code once
-        if ( event.target.activeElement.closest(".block-cr-email-signup") && Drupal.behaviors.crEmailSignUp.settings.isFirstAjaxCall ) {
+        
+        if ( $(event.target.activeElement).closest(".block-cr-email-signup") && Drupal.behaviors.crEmailSignUp.settings.isFirstAjaxCall ) {
            
           if ( $(".block--cr-email-signup--step-2").length ) {
             $block = $(".block--cr-email-signup--step-2");
             // focus on select menu or jquery ui select menu or on close button
-            $block.find("select, .ui-selectmenu-button, .icon").focus();
+            $block.find("select, .ui-selectmenu-button, .esu-head-close").focus();
           }
 
           if ( $(".block--cr-email-signup--error").length ) {

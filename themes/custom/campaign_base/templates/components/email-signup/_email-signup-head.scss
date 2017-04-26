@@ -75,19 +75,25 @@
     @include breakpoint($screen-lg) {
       //padding: 25px 0;
     }
-    .icon {
+    button.esu-head-close {
       position: absolute;
       top: 10px;
       right: 10px;
+      cursor: pointer;
+      background-color: black;
+      border: none;
+      &:hover,
+      &:focus {
+        .icon {
+          fill: $colour-jasper-grey;
+        }
+      }
+    }
+    .icon {
       width: 30px;
       height: 30px;
       cursor: pointer;
-
       fill: $colour-white;
-      &:hover,
-      &:focus {
-        fill: $colour-jasper-grey;
-      }
     }
   }
   .cr-email-signup--messages {
