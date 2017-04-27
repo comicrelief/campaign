@@ -12,7 +12,6 @@
     hiddenDeviceFieldClass: '.esu-device',
     hiddenSourceFieldClass: '.esu-source',
     deviceValue: '',
-    sourceValue: '',
     firstLoad: false,
     formStep: null,
     isFirstAjaxCall: true,
@@ -23,6 +22,8 @@
       var _base = Drupal.behaviors.crEmailSignUp;
       var _settings = _base.settings;
 
+      // Only run these functions once, as we don't want to add handlers and 
+      // scrape browser data every time for each ESU block.
       $(_settings.genericEsuClass).once('crEMailSignup').each(function() {
 
         if(_settings.firstLoad == false) {
@@ -48,6 +49,7 @@
       // Replace spaces with underscores.
       _settings.deviceValue = _settings.deviceValue.replace(/\s+/g,"_");
 
+      // Use this value to set the hidden device field
       Drupal.behaviors.crEmailSignUp.settings.deviceValue = _settings.deviceValue;
  
     },
@@ -58,13 +60,10 @@
       var _settings = _base.settings;
 
       // Check each type of ESU based on the wrapper class used.
-      if ($(context).hasClass(_settings.esuBannerClass)) {
-        _settings.sourceValue = 'Banner';
-      } else {
-        _settings.sourceValue = 'Header';
-      }
+      var sourceValue = $(context).hasClass(_settings.esuBannerClass) ? "Banner" : "Header";
+
       // Use this value to set the hidden source field.
-      $(context).find(_settings.hiddenSourceFieldClass).val(_settings.sourceValue);
+      $(context).find(_settings.hiddenSourceFieldClass).val(sourceValue);
 
       // Use deviceValue set by setDevice on each form to set the hidden device field.
       $(context).find(_settings.hiddenDeviceFieldClass).val(_settings.deviceValue);
@@ -89,7 +88,7 @@
           Drupal.behaviors.crEmailSignUp.settings.isFirstAjaxCall = true;
           
           // Submit when focused on submit button or close when focused on close button
-          if($(this).hasClass('form-submit') || $(this).hasClass('esu-head-close') ) {
+          if ( $(this).is('.form-submit, .esu-head-close') ) {
             // Use fake mouse event; jQuery form submit function doesn't work here.
             // N.B click doesn't work with jQuery ui menu and mousedown doesn't work with close button 
             $eventTarget.click();
@@ -132,8 +131,7 @@
       $(document).ajaxComplete(function(event) {
 
         // Set focus back to input or select menu in case of an error
-        // Only run code once
-        
+        // Only run code once        
         if ( $(event.target.activeElement).closest(".block-cr-email-signup") && Drupal.behaviors.crEmailSignUp.settings.isFirstAjaxCall ) {
            
           if ( $(".block--cr-email-signup--step-2").length ) {
