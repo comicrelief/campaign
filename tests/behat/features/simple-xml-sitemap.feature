@@ -5,4 +5,4 @@ Feature: Simple-XML-Sitemap
     Given I go to "/sitemap.xml"
     And I run cron
     And I wait for 2 seconds
-    Then I should see "/fundraise" as a sitemap url
+    Then I should see "/partners" as a sitemap url

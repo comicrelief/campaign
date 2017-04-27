@@ -1,9 +1,0 @@
-{
-  "require": {
-    "drupal/coder": "^8.2",
-    "phpmd/phpmd": "^2.3",
-    "sebastian/phpcpd": "^2.0",
-    "phploc/phploc": "^3.0",
-    "drupal/drupal-extension": "~3.0"
-  }
-}
