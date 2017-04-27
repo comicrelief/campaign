@@ -31,8 +31,8 @@ input.form-text,
 select,
 .ui-selectmenu-button {
   &:focus {
-    // outline: none; bad for accessibility
-    outline: $colour-red;
+    // Best practise is to use native focus states
+    //outline: $colour-red;
   }
 }
 // safari only hack
