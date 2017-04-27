@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f2b43086aeffe5330fd067583bb24e68",
+    "content-hash": "8df9e1f9a819eafbf243a31eeebcb0a3",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -138,16 +138,16 @@
         },
         {
             "name": "composer/installers",
-            "version": "v1.2.0",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "d78064c68299743e0161004f2de3a0204e33b804"
+                "reference": "79ad876c7498c0bbfe7eed065b8651c93bfd6045"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/d78064c68299743e0161004f2de3a0204e33b804",
-                "reference": "d78064c68299743e0161004f2de3a0204e33b804",
+                "url": "https://api.github.com/repos/composer/installers/zipball/79ad876c7498c0bbfe7eed065b8651c93bfd6045",
+                "reference": "79ad876c7498c0bbfe7eed065b8651c93bfd6045",
                 "shasum": ""
             },
             "require": {
@@ -189,12 +189,16 @@
             "keywords": [
                 "Craft",
                 "Dolibarr",
+                "Eliasis",
                 "Hurad",
                 "ImageCMS",
+                "Kanboard",
                 "MODX Evo",
                 "Mautic",
+                "Maya",
                 "OXID",
                 "Plentymarkets",
+                "Porto",
                 "RadPHP",
                 "SMF",
                 "Thelia",
@@ -217,9 +221,11 @@
                 "fuelphp",
                 "grav",
                 "installer",
+                "itop",
                 "joomla",
                 "kohana",
                 "laravel",
+                "lavalite",
                 "lithium",
                 "magento",
                 "mako",
@@ -234,6 +240,7 @@
                 "roundcube",
                 "shopware",
                 "silverstripe",
+                "sydes",
                 "symfony",
                 "typo3",
                 "wordpress",
@@ -241,7 +248,7 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2016-08-13T20:53:52+00:00"
+            "time": "2017-04-24T06:37:16+00:00"
         },
         {
             "name": "composer/semver",
@@ -2373,8 +2380,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-beta4+10-dev",
-                    "datestamp": "1485910084"
+                    "version": "8.x-1.0-beta4+12-dev",
+                    "datestamp": "1493219042"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -3905,8 +3912,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-beta1+56-dev",
-                    "datestamp": "1492123750"
+                    "version": "8.x-1.0-beta2+2-dev",
+                    "datestamp": "1493106844"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -7595,7 +7602,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/default_content",
-                "reference": "8ce6a8f9b37c3d2b98a327149572fd8a366cfe59"
+                "reference": "9d068fac281e5d1e1249eeee8d89a117bdefaf50"
             },
             "require": {
                 "drupal/core": "*"
@@ -7606,8 +7613,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-alpha5+2-dev",
-                    "datestamp": "1491863942"
+                    "version": "8.x-1.0-alpha5+6-dev",
+                    "datestamp": "1492996443"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -7652,8 +7659,7 @@
             "homepage": "https://www.drupal.org/project/default_content",
             "support": {
                 "source": "http://cgit.drupalcode.org/default_content"
-            },
-            "time": "2017-04-10 22:44:14"
+            }
         },
         {
             "name": "drupal/devel",
@@ -7661,7 +7667,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/devel",
-                "reference": "fbafbd4d1cd04f577294e793c350a8edb68e491a"
+                "reference": "8ec61f91268a8a4daa7548240f58b33798cb5e86"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -7675,8 +7681,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-rc1+4-dev",
-                    "datestamp": "1490381283"
+                    "version": "8.x-1.0-rc1+6-dev",
+                    "datestamp": "1492988343"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -7737,8 +7743,7 @@
                 "source": "http://cgit.drupalcode.org/devel",
                 "issues": "http://drupal.org/project/devel",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
-            },
-            "time": "2017-04-10 08:04:17"
+            }
         },
         {
             "name": "drupal/drupal-driver",
@@ -7931,16 +7936,16 @@
         },
         {
             "name": "drush/drush",
-            "version": "8.1.10",
+            "version": "8.1.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drush-ops/drush.git",
-                "reference": "2192496b80aa9cdb0581a2d308623f950f747e94"
+                "reference": "8e7c3308dee06083b6bd065e24e009a34fb71d2a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drush-ops/drush/zipball/2192496b80aa9cdb0581a2d308623f950f747e94",
-                "reference": "2192496b80aa9cdb0581a2d308623f950f747e94",
+                "url": "https://api.github.com/repos/drush-ops/drush/zipball/8e7c3308dee06083b6bd065e24e009a34fb71d2a",
+                "reference": "8e7c3308dee06083b6bd065e24e009a34fb71d2a",
                 "shasum": ""
             },
             "require": {
@@ -8032,7 +8037,7 @@
             ],
             "description": "Drush is a command line shell and scripting interface for Drupal, a veritable Swiss Army knife designed to make life easier for those of us who spend some of our working hours hacking away at the command prompt.",
             "homepage": "http://www.drush.org",
-            "time": "2017-02-23T20:46:12+00:00"
+            "time": "2017-04-21T21:59:44+00:00"
         },
         {
             "name": "fabpot/goutte",
