@@ -9,9 +9,11 @@ set classes = [
 
 <div{{ attributes.addClass(classes) }}>
   <div class="block--cr-email-signup__inner-wrapper">
-    <svg class="icon">
-      <use xlink:href="#close-cross"></use>
-    </svg>
+    <button class="esu-head-close">
+      <svg class="icon" focusable="false" tabindex="-1">
+        <use xlink:href="#close-cross"></use>
+      </svg>
+    </button>
     <div class="cr-email-signup--messages">
       {{ content.initial_message }}
       {{ content.first_success_message }}

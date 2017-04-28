@@ -2,9 +2,9 @@ Hi there, and thanks in advance for wanting to contribute to Comic Relief's camp
 
 ### Preparing your development environment
 
-See [Installation guide](docs/install.md) to get your local environment setup. In short, you'll need `Drush`, `Phing` and your typical `MySQL/PHP/Apache` stack.
+See [Installation guide](docs/install.md) to get your local environment setup. In short, you'll need `Drush`, `Composer` and your typical `MySQL/PHP/Apache` stack or Docker.
 
-Once set up, you should run `phing build` to get a fully set up environment, and you can run `phing login` to login, or `phing test` to run our test suite (read our [testing](docs/testing.md) docs).
+Once set up, you should run `composer campaign:build` to get a fully set up environment (read our [testing](docs/testing.md) docs).
 
 ### Rules of the Road
 
@@ -27,7 +27,6 @@ We use GitHub labels to indicate the status of the PR and we use GitHub mileston
 We're looking at extending our codebase the include the following features (in no particular order) and are welcoming Pull Requests:
 
 * Use of Webpack instead of Grunt
-* Use of a different task runner than Phing, one that is preferably easier to maintain and extend
 * Remove Drush make support in favor of Composer
 * More behat tests
 * A Yeoman scaffolder to generate the codebase for new sites using the Campaign profile
