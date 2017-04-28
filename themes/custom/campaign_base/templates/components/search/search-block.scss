@@ -33,9 +33,9 @@
     height: 40px;
     text-indent: -9999px;
     background-color: $colour-gainsboro-grey;
-    mask: url(../images/svgs/magnify.svg) no-repeat right center;
+    mask: url(/profiles/contrib/cr/themes/custom/campaign_base/images/svgs/magnify.svg) no-repeat right center;
     mask-size: 30px;
-    -webkit-mask: url(../images/svgs/magnify.svg) no-repeat right center;
+    -webkit-mask: url(/profiles/contrib/cr/themes/custom/campaign_base/images/svgs/magnify.svg) no-repeat right center;
     -webkit-mask-size: 30px;
     -webkit-appearance: none;
     @include breakpoint($screen-md) {
@@ -44,14 +44,14 @@
       -webkit-mask-size: 70px;
     }
     .no-cssmask & {
-      background: transparent url(../images/icons/search_page_icon.png) center right no-repeat;
+      background: transparent url(/profiles/contrib/cr/themes/custom/campaign_base/images/icons/search_page_icon.png) center right no-repeat;
       background-size: 35px;
       @include breakpoint($screen-md) {
         background-size: 55px;
       }
       &:focus,
       &:hover {
-        background-image: url(../images/icons/search_page_icon_hover.png);
+        background-image: url(/profiles/contrib/cr/themes/custom/campaign_base/images/icons/search_page_icon_hover.png);
         background-color: transparent;
       }
     }
