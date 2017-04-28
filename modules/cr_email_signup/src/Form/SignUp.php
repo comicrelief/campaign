@@ -7,7 +7,6 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\HtmlCommand;
 use Drupal\Core\Ajax\PrependCommand;
-use Drupal\Core\Ajax\RemoveCommand;
 use Drupal\Core\Ajax\InvokeCommand;
 use Drupal\cr_email_signup\MessageQueue\SenderData;
 use Drupal\cr_email_signup\MessageQueue\Sender;
@@ -211,7 +210,7 @@ abstract class SignUp extends FormBase {
   private function cleanStatusMessage(AjaxResponse $response) {
     $block = str_replace('.', '', $this->getClassId());
 
-    //Remove error message 
+    // Remove error message by emptying the error message container
      $response->addCommand(new InvokeCommand(
       '.error-msg-' . $block,
       'empty'
