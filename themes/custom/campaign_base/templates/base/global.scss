@@ -1,6 +1,10 @@
 // Dependencies.
 @import 'init';
 
+
+// maybe move to its own file
+@import "compass/reset";
+
 /* Global styling */
 body {
   background: $colour-white;
