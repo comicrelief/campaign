@@ -11,8 +11,8 @@
 // output any styles themselves: Importing them multiple times to resolve
 // dependencies shouldn't be a problem.
 
-// @import "base/**/*";
-// @import "layout/**/*";
-// @import "pages/**/*";
-// @import "vendors/**/*";
-// @import "components/**/*";
+@import "base/**/*";
+@import "layout/**/*";
+@import "pages/**/*";
+@import "vendors/**/*";
+@import "components/**/*";
