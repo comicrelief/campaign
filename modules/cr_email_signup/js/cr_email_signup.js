@@ -14,7 +14,6 @@
     deviceValue: '',
     firstLoad: false,
     formStep: null,
-    isFirstAjaxCall: true,
    },
 
     attach: function (context, settings) {
@@ -29,6 +28,8 @@
         if(_settings.firstLoad == false) {
           _base.setDevice(this);
           _base.keyboardSubmit();
+          _base.refocus();
+
           Drupal.behaviors.crEmailSignUp.settings.firstLoad = true;
           _settings.firstLoad = Drupal.behaviors.crEmailSignUp.settings.firstLoad;
         }
@@ -83,9 +84,6 @@
         if (event.which == 13) {
           
           event.preventDefault();
-
-          // Reset flag for Ajax to run code again
-          Drupal.behaviors.crEmailSignUp.settings.isFirstAjaxCall = true;
           
           // Submit when focused on submit button or close when focused on close button
           if ( $(this).is('.form-submit, .esu-head-close') ) {
@@ -127,12 +125,16 @@
         }
         $submit.mousedown();
       });
-        
-      $(document).ajaxComplete(function(event) {
+    },
 
-        // Set focus back to input or select menu in case of an error
-        // Only run code once        
-        if ( $(event.target.activeElement).closest(".block-cr-email-signup") && Drupal.behaviors.crEmailSignUp.settings.isFirstAjaxCall ) {
+    refocus: function () {
+       
+      var _settings = Drupal.behaviors.crEmailSignUp.settings;
+
+      // Set focus back to input or select menu in case of an error 
+      $(document).ajaxComplete(function(event) {
+           
+        if ( $(event.target.activeElement).closest(".block-cr-email-signup") ) {
            
           if ( $(".block--cr-email-signup--step-2").length ) {
             $block = $(".block--cr-email-signup--step-2");
@@ -155,12 +157,8 @@
           $("select, .ui-selectmenu-button", _settings.genericEsuClass).off('selectmenuselect');
 
           Drupal.behaviors.crEmailSignUp.keyboardSubmit();
-        }
-
-        // Prevent the clustered ajax success events from running our code multiple times per form submission
-        Drupal.behaviors.crEmailSignUp.settings.isFirstAjaxCall = false;
-        
+        }        
       });
-    },
+    }, 
   };
 })(jQuery);
