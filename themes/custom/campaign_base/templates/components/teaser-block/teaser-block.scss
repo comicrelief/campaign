@@ -1,0 +1,165 @@
+// Dependencies.
+@import 'init';
+
+// Teaser Block
+//
+// Comes in 4 sizes and in a background image version.
+// Content is editable.
+// 
+// Markup: teaser-block.twig
+//
+// .block-content--view-mode-cw-s.teaser-block  -  Small
+// .block-content--view-mode-cw-m.teaser-block  -  Medium
+// .block-content--view-mode-cw-mp.teaser-block -  Medium Plus
+// .block-content--view-mode-cw-l.teaser-block  -  Large 
+// .block-content--view-mode-cw-s.teaser-block.teaser-block--bg-image  -  Small Background image
+// .block-content--view-mode-cw-m.teaser-block.teaser-block--bg-image  -  Medium Background image
+// .block-content--view-mode-cw-mp.teaser-block.teaser-block--bg-image -  Medium Plus Background image
+// .block-content--view-mode-cw-l.teaser-block.teaser-block--bg-image  -  Large Background image
+//
+// Style guide: 20
+
+.teaser-block {
+  position: relative;
+  overflow: hidden;
+  height: 450px;
+}
+.teaser-block__link {
+  text-decoration: none;
+}
+.teaser-block__cta {
+  display: block;
+  clear: both;
+}
+.teaser-block__image {
+  width: 100%;
+  height: 50%;
+  background-position: center center;
+  @include breakpoint($screen-md, $no-query: true) {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 0;
+    .block-content--view-mode-cw-s &,
+    .block-content--view-mode-cw-m & {
+      height: 45%;
+    }
+    .block-content--view-mode-cw-mp & {
+      height: 55%;
+      float: right;
+    }
+    .block-content--view-mode-cw-l & {
+      width: 65%;
+      height: 450px;
+      float: right;
+    }
+  }
+  @include breakpoint($screen-lg, $no-query: true) {
+    .block-content--view-mode-cw-s &,
+    .block-content--view-mode-cw-m & {
+      height: 50%;
+    }
+    .block-content--view-mode-cw-mp & {
+      width: 60%;
+      height: 450px;
+    }
+    .block-content--view-mode-cw-l & {
+      width: 70%;
+      height: 450px;
+    }
+  }
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin-bottom: -5px;
+    object-fit: cover;
+    .no-objectfit & {
+      position: absolute;
+      top: -100%;
+      right: -100%;
+      bottom: -100%;
+      left: -100%;
+      overflow: hidden;
+      width: auto;
+      max-width: none;
+      height: 100%!important;
+      max-height: none;
+      margin: auto;
+    }
+  }
+}
+.teaser-block__body {
+  @include align-content(center);
+  @include justify-content(center);
+  @include align-items(center);
+  @include display-flex;
+  @include flex-direction(column);
+  * { // fix ie11 bug flex not wrapping
+    width: 100%;
+  }
+  .teaser-block__cta {
+    .btn {
+      width: auto;
+    }
+  }
+  @include breakpoint($screen-md, $no-query: true) {
+    .block-content--view-mode-cw-s &,
+    .block-content--view-mode-cw-m & {
+      height: 55%;
+    }
+    .block-content--view-mode-cw-mp & {
+      height: 45%;
+    }
+    .block-content--view-mode-cw-mp &,
+    .block-content--view-mode-cw-l & {
+      float: right;
+    }
+    .block-content--view-mode-cw-l & {
+      width: 35%;
+      height: 450px;
+    }
+  }
+  @include breakpoint($screen-lg, $no-query: true) {
+    .block-content--view-mode-cw-s &,
+    .block-content--view-mode-cw-m & {
+      height: 50%;
+    }
+    .block-content--view-mode-cw-mp & {
+      width: 40%;
+      height: 450px;
+    }
+    .block-content--view-mode-cw-l & {
+      width: 30%;
+      height: 450px;
+    }
+  }
+  width: 100%;
+  height: 50%;
+  padding: calc(4 * #{gutter()});
+  text-align: center;
+  .no-flexbox & {
+    padding-top: 25px;
+  }
+  p:last-child,
+  p:first-child:last-child {
+    margin-bottom: 15px;
+  }
+}
+.teaser-block--bg-image {
+  .teaser-block__body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% - 10 * 1.25%);
+    height: 100%;
+    margin: 0 calc(5 * 1.25%);
+    background-color: transparent;
+    .no-flexbox & {
+      padding-top: 100px;
+    }
+  }
+  .teaser-block__image {
+    width: 100%;
+    height: 100%;
+  }
+}

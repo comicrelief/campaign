@@ -1,0 +1,71 @@
+// Dependencies.
+@import 'init';
+
+@import "../buttons/buttons.scss";
+// Cookie consent
+//
+// Markup: cookie-consent.twig
+//
+// Style guide: 115
+
+.cookie-consent.cc_container {
+  position: relative;
+  padding: 10px;
+  text-align: center;
+  background: $colour-black;
+  @include breakpoint($screen-lg) {
+    display: block;
+    padding: 15px 20px 15px;
+  }
+  .btn,
+  p,
+  a {
+    color: $colour-white;
+    font-family: $body-font;
+  }
+  p {
+    margin-top: 15px;
+  }
+  .cc_message {
+    display: inline-block;
+    margin-top: 0;
+    width: calc(100% - 50px);
+    font-size: 14px;
+    line-height: 16px;
+    text-align: left;
+    @include breakpoint($screen-md) {
+      width: auto;
+      margin-top: 15px;
+      font-size: 18px;
+      line-height: 20px;
+    }
+  }
+  .btn {
+    display: inline;
+    float: right;
+    padding: 12px 20px;
+    width: 40px;
+    height: 44px;
+    text-indent: -9999px;
+    background-image: url('../images/svgs/cross-close.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    @extend .btn;
+    @extend .btn--white-ghost;
+    border: none;
+    &:hover {
+      background-color: $colour-black;
+    }
+    
+    @include breakpoint($screen-lg) {
+      display: inline-block;
+      width: auto;
+      text-indent: 0;
+      background-image: none;
+      border: 2px solid $colour-white;
+      &:hover {
+        background-color: $colour-white;
+      }
+    }
+  }
+}

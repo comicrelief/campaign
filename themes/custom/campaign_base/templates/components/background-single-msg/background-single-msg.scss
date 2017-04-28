@@ -1,0 +1,81 @@
+// Dependencies.
+@import 'init';
+
+@import "../background-colours/background-colours.scss";
+
+// Background Single Message
+//
+// This is Paragraph Background Single Message type with an image as background
+//
+// Markup: background-single-msg.twig
+//
+// .bg--centre - Centre layout
+// .bg--right - Right layout
+//
+// Style guide: 80
+
+.background-single-msg {
+  position: relative;
+  clear: both;
+  margin: 0;
+  @include clearfix;
+  @extend .bg--black;
+  @include breakpoint($screen-md, $no-query: true) {
+    margin: 0 0 -6px;
+  }
+  @include breakpoint($screen-lg, $no-query: true) {
+    min-height: 500px;
+  }
+}
+.background-single-msg__inner-wrap {
+  max-width: 1200px;
+  @include breakpoint($screen-md-max, $no-query: true) {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    width: 100%;
+    margin: auto;
+    @include translateY(-50%);
+  }
+}
+.background-single-msg__image {
+  @include breakpoint($screen-md-max, $no-query: true) {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+      object-position: top;
+      @include no-objectfit;
+    }
+  }
+  img {
+    margin-bottom: -6px;
+  }
+}
+.background-single-msg__body {
+  width: 100%;
+  padding: 30px;
+  @include breakpoint($screen-md) {
+    padding: 30px calc( 8 * #{gutter()});
+  }
+  @include breakpoint($screen-md-max, $no-query: true) {
+    @include span(5 of 12);
+    padding: 30px;
+  }
+  &.bg--centre {
+    float: none;
+    margin: auto;
+    @include breakpoint($screen-md-max, $no-query: true) {
+      width: span(8);
+    }
+  }
+  &.bg--right {
+    float: right;
+  }
+}

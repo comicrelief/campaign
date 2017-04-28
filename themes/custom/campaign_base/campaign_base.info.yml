@@ -10,8 +10,11 @@ base theme: classy
 # base theme: false
 
 libraries:
-  - campaign_base/global-css
-  - campaign_base/global-js
+  - campaign_base/admin
+  - campaign_base/layout
+  - campaign_base/pages
+  - campaign_base/utils
+  - campaign_base/components
 
 # libraries-override:
 #   # Remove modernizr library it's been replaced for a custom one in libraries.yml.

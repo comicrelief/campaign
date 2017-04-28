@@ -1,0 +1,83 @@
+// Dependencies.
+@import 'init';
+
+// Content Reference Block 
+//
+// Comes in 4 sizes.
+//
+// Markup: content-block.twig
+//
+// .block-content--view-mode-cw-s -  Small
+// .block-content--view-mode-cw-m  -  Medium
+// .block-content--view-mode-cw-mp -  Medium Plus
+// .block-content--view-mode-cw-l  -  Large 
+//
+// Style guide: 40
+
+.content-block {
+  position: relative;
+  overflow: hidden;
+  height: 450px;
+  text-align: center;
+  &:hover {
+    .content-block__image img {
+      @include opacity(1);
+    }
+  }
+}
+.content-block__link {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-indent: -9999px;
+}
+.content-block__image {
+  height: 100%;
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    @include transition(opacity 0.2s);
+    @include opacity(0.9);
+
+    object-fit: cover;
+    .no-objectfit & {
+      position: absolute;
+      top: -100%;
+      right: -100%;
+      bottom: -100%;
+      left: -100%;
+      overflow: hidden;
+      width: auto;
+      max-width: none;
+      height: 100%!important;
+      max-height: none;
+      margin: auto;
+    }
+  }
+}
+.content-block__content-wrapper {
+  position: relative;
+}
+.content-block__content {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 40px 10px 20px;
+  @include background-image(linear-gradient(rgba(0, 0, 0, 0), $colour-dark-blue));
+  @include breakpoint($screen-md, $no-query: true) {
+    padding: 40px 40px 20px;
+  }
+  p, h4 {
+    color: $colour-white;
+  }
+}
+.content-block__tag {
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}

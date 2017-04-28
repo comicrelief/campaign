@@ -1,0 +1,45 @@
+// Dependencies.
+@import 'init';
+
+// Footer
+//
+// Markup: footer.twig
+//
+// Style guide: 190
+
+footer[role=contentinfo] {
+  padding: 50px 5px 185px;
+  background: $colour-black;
+  @include breakpoint($screen-md) {
+    padding: 50px 5px 140px;
+  }
+  @include breakpoint($screen-lg) {
+    padding-top: 100px;
+    padding-bottom: 120px;
+  }
+  .footer__copyright p {
+    text-align: center;
+    color: #747373;
+    font-size: 12px;
+    line-height: 15px;
+  }
+  .footer__branding {
+    text-align: center;
+    a {
+      display: inline-block;
+      width: 70px;
+      height: 70px;
+      .icon {
+        width: inherit;
+        height: inherit;
+      }
+      html.no-svg & {
+        background-image: url("../images/icons/cr_footer_logo.png");
+      }
+    }
+  }
+  .footer__follow {
+    text-align: center;
+    color: $colour-white;
+  }
+}

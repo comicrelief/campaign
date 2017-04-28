@@ -1,0 +1,65 @@
+// Dependencies.
+@import 'init';
+
+// Cards
+//
+// Markup: cards.twig
+//
+// .cards--feature-layout - Feature Layout
+//
+// Style guide: 60.1
+
+.cards {
+  width: 100%;
+  padding: 30px 0;
+  @include breakpoint($screen-md) {
+    padding: 60px 0;
+  }
+  & + .cards {
+    margin-top: -30px;
+    padding-top: 0;
+    @include breakpoint($screen-md) {
+      margin-top: -60px;
+    }
+  }
+  @for $i from 1 through 6 {
+    .cards__item:first-child:nth-last-child(#{$i}),
+    .cards__item:first-child:nth-last-child(#{$i}) ~ .cards__item {
+      width: calc(100% - (8 * #{gutter()}));
+      margin: 0 0 calc(4 * #{gutter()});
+      @include breakpoint($screen-sm-max) {
+        width: calc(100% - (2 * #{gutter()}));
+        margin: 0 gutter() 30px;
+      }
+      @include breakpoint($screen-md-max) {
+        @include span(12/$i);
+        .cards__item:first-child {
+          margin-left: #{gutter()};
+        }
+        .cards__item:last-child {
+          margin-right: #{gutter()};
+        }
+      }
+    }
+  }
+  .cards__item:first-child:nth-last-child(1),
+  .cards__item:first-child:nth-last-child(1) ~ .cards__item {
+    margin-bottom: 0;
+  }
+  .cards__item:first-child:nth-last-child(2),
+  .cards__item:first-child:nth-last-child(2) ~ .cards__item {
+    @include breakpoint($screen-md-max) {
+      @include span(4);
+      display: inline-block;
+      float: none;
+      vertical-align: top;
+    }
+  }
+}
+.cards__wrapper {
+  text-align: center;
+  @include breakpoint($screen-md-max) {
+    @include display-flex;
+    @include justify-content(center);
+  }
+}

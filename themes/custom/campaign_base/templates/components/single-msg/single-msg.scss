@@ -1,0 +1,340 @@
+// Dependencies.
+@import 'init';
+
+// Single Message 
+//
+// Markup: _single-msg.twig
+//
+// .single-msg--copy-right - Copy right
+// .single-msg--copy-left - Copy left
+// .single-msg--feature-copy-right - Feature copy right
+// .single-msg--feature-copy-left - Feature copy left
+// .single-msg--copy-only - Copy only
+// .single-msg--default-padding - Default
+// .single-msg--negative-top - Reduce top padding
+// .single-msg--negative-bottom - Reduce bottom padding
+// .single-msg--no-top-padding - Remove top padding
+// .single-msg--no-bottom-padding - Remove bottom padding
+// .single-msg--no-padding - Remove top and bottom padding
+//
+// Style guide: 70
+
+
+/* Global styles for all variants, provides all styles for Copy Right variant */
+.paragraph.single-msg {
+  width: 100%;
+  .single-msg__outer-wrapper {
+    @include container;
+    position: relative;
+    padding: 30px calc(3 * #{gutter()});
+
+    @include breakpoint($screen-md) {
+      padding: 60px 0;
+    }
+  }
+  &.single-msg--feature-copy-right,
+  &.single-msg--feature-copy-left {
+    .single-msg__outer-wrapper {
+      padding: 30px calc(4 * #{gutter()});
+
+      @include breakpoint($screen-md) {
+        padding: 60px gutter();
+      }
+
+      @include breakpoint($screen-lg) {
+        padding: 60px 0;
+      }
+    }
+  }
+  
+  .single-msg__image {
+    width: 100%;
+    @include span(12);
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    @include breakpoint($screen-md, $no-query: true) { 
+      width: span(6);
+      margin-left: calc( 2 * ( #{gutter()}) );
+      margin-right: 0;
+    }
+
+    @include breakpoint($screen-lg) { 
+      @include span(5);
+    }
+  } 
+
+  .single-msg__copy_wrapper {
+    height: 100%;
+    @include span(12);
+
+    @include breakpoint($screen-md, $no-query: true) {
+      position: absolute;
+      top: 0;
+      right: 0;
+      // Recalculate height minus the row padding
+      height: calc(100% - (60px * 2));
+      margin-top: 60px;
+      width: span(6);
+      margin-right: calc( 2 * ( #{gutter()}) );
+      margin-left: 0;
+    }
+
+    @include breakpoint($screen-lg) { 
+      @include span(7 wide);
+    }
+
+    .single-msg__copy {
+      padding: 30px;
+      width: 100%;
+
+      @include breakpoint($screen-md, $no-query: true) {
+        height: 100%;
+      }
+    }
+  }
+
+  /* padding options */
+  // negative top 
+  &.single-msg--negative-top {
+    overflow: visible;
+    .single-msg__outer-wrapper {
+      padding-top: 0;
+      margin-top: -35px;
+      @include breakpoint($screen-md) {
+        margin-top: -60px;
+      }
+      // recalculate height and align copy with image
+      .single-msg__copy_wrapper {
+        height: calc(100% - 60px);
+        margin-top: 0;
+      }
+    }
+  }
+  // negative bottom
+  &.single-msg--negative-bottom {
+    // move next section up 
+    + .paragraph { 
+      padding-top: 0;
+    }
+    .single-msg__outer-wrapper {
+      padding-bottom: 0;
+      .single-msg__copy_wrapper {
+        height: calc(100% - 60px);    
+      }
+      //leave a bit of space underneath text
+      .single-msg__body {
+        padding-bottom: 5px;
+      }
+    }
+  }
+  // no top padding
+  &.single-msg--no-top-padding {
+    .single-msg__outer-wrapper {
+      padding-top: 0;
+      .single-msg__copy_wrapper {
+        height: calc(100% - 60px);
+        margin-top: 0;
+      }
+    }
+  }
+  // no bottom padding
+  &.single-msg--no-bottom-padding {
+    .single-msg__outer-wrapper {
+      padding-bottom: 0;
+      .single-msg__copy_wrapper {
+        height: calc(100% - 60px); 
+      }
+      //leave a bit of space underneath text
+      .single-msg__body {
+        padding-bottom: 5px;
+      }
+    }
+  }
+  // no top or bottom padding
+  &.single-msg--no-padding {
+    .single-msg__outer-wrapper {
+      padding-top: 0;
+      padding-bottom: 0;
+      .single-msg__copy_wrapper {
+        height: 100%;
+        margin-top: 0;
+      }
+    }
+  }
+  // padding options feature variation fixes
+  // top
+  &.single-msg--negative-top,
+  &.single-msg--no-top-padding {
+    &.single-msg--feature-copy-right,
+    &.single-msg--feature-copy-left { 
+      .single-msg__copy_wrapper {
+        margin-top: calc(-4 *#{gutter()});
+        @include breakpoint($screen-lg) {
+          height: calc(100% - 2* 60px);
+          margin-top: calc(60px / 2);
+        }
+      }
+    }
+  }
+  // none
+  &.single-msg--no-padding {
+    &.single-msg--feature-copy-right,
+    &.single-msg--feature-copy-left { 
+      .single-msg__copy_wrapper {
+        margin-top: calc(-4 *#{gutter()});
+        @include breakpoint($screen-lg) {
+          height: calc(100% - 60px);
+          margin-top: calc(60px / 2);
+        }
+      }
+    }
+  }
+  // bottom
+  &.single-msg--negative-bottom,
+  &.single-msg--no-bottom-padding {
+    &.single-msg--feature-copy-right,
+    &.single-msg--feature-copy-left {
+      .single-msg__copy_wrapper {
+        @include breakpoint($screen-lg) {
+          height: calc(100% - 2 * 60px);
+        }
+      }
+    }
+  }
+
+  /* Copy Left variation */
+  &.single-msg--copy-left {
+    @include breakpoint($screen-md, $no-query: true) {
+      .single-msg__image {
+        float:right;
+        margin-left: 0;
+        margin-right: calc(2 * #{gutter()});
+      }
+    
+      .single-msg__copy_wrapper {
+        left: 0;
+        margin-left: calc(2 * #{gutter()});
+      }
+    }
+    @include breakpoint($screen-lg) {
+      .single-msg__image {
+        margin-right: gutter();
+      }
+    
+      .single-msg__copy_wrapper {
+        margin-left: gutter();
+      }
+    }
+  }
+
+  /* - - - - Featured Variations - - - - */
+
+  /* Feature Copy Left and Right variation */
+  &.single-msg--feature-copy-right,
+  &.single-msg--feature-copy-left  {
+    .single-msg__image {
+      float: left;
+      width: 100%;
+      margin: 0;
+
+      @include breakpoint($screen-md, $no-query: true) {
+        @include span(12);     
+      }
+
+      @include breakpoint($screen-lg) {
+        @include span(7);     
+      }  
+    }
+
+    .single-msg__copy_wrapper {
+      float: left;
+      margin: 0 calc(4*#{gutter()}) 0;
+      margin-top: calc(-4 *#{gutter()});
+      width: calc(100% - (8 * #{gutter()}) );
+
+      @include breakpoint($screen-md, $no-query: true) {
+        position: relative;
+      }  
+      
+      @include breakpoint($screen-lg) {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 90px gutter() 0 0;
+        height: calc(100% - (60px * 3));
+
+        // Only overlap by half a column
+        width: calc( #{span(5)} +  ( #{gutter()} * 4) );
+      } 
+
+      .single-msg__copy {
+        height: auto;
+      }
+    } 
+  }
+
+  /* Feature Copy Left variation */
+  &.single-msg--feature-copy-left {
+    .single-msg__image {
+      @include breakpoint($screen-lg) {
+        float: right;
+        margin-left: 0;
+        margin-right: calc(2 * #{gutter()});;
+      }
+    }
+
+    .single-msg__copy_wrapper {
+      @include breakpoint($screen-lg) {
+        left: 0;
+        margin: 90px 0 0 calc(2 * #{gutter()});
+      }
+    }
+    @include breakpoint($screen-lg) {
+      .single-msg__image {
+        margin-right: gutter();
+      }
+    
+      .single-msg__copy_wrapper {
+        margin-left: gutter();
+      }
+    }
+  }
+
+  /* Copy Only - Copy Centred variation */
+  &.single-msg--copy-only {
+    .single-msg__image {
+      display: none;
+    }
+    .single-msg__copy_wrapper {
+      background-color: transparent;
+      .single-msg__copy {
+        padding: 0 30px;
+
+        /* Remove margins from the last/only element in the body copy,
+          as to not mess up our vertical centering */
+        .single-msg__body :last-child {
+          margin-bottom: 0;
+        } 
+      }
+
+      @include breakpoint($screen-md, $no-query: true) {
+        @include span(10);
+        @include push(1);
+        position: relative;
+        left: auto;
+        height: auto; //Does this need to match the height of the img version?
+        margin-top: 0;
+      }
+
+      @include breakpoint($screen-lg) {
+        @include span(8);
+        @include push(2);
+      }
+    }
+  }
+}
