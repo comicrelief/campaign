@@ -1,0 +1,252 @@
+amp.analytics:
+  remote: https://cdn.ampproject.org
+  header: true
+  version: 0.1
+  license:
+    name: apache
+    url: https://github.com/ampproject/amphtml/blob/master/LICENSE
+    gpl-compatible: false
+  js:
+    https://cdn.ampproject.org/v0/amp-analytics-0.1.js: { type: external, minified: true, attributes: { custom-element: "amp-analytics", async: true } }
+
+amp.anim:
+  remote: https://cdn.ampproject.org
+  header: true
+  version: 0.1
+  license:
+    name: apache
+    url: https://github.com/ampproject/amphtml/blob/master/LICENSE
+    gpl-compatible: false
+  js:
+    https://cdn.ampproject.org/v0/amp-anim-0.1.js: { type: external, minified: true, attributes: { custom-element: "amp-anim", async: true } }
+
+amp.audio:
+  remote: https://cdn.ampproject.org
+  header: true
+  version: 0.1
+  license:
+    name: apache
+    url: https://github.com/ampproject/amphtml/blob/master/LICENSE
+    gpl-compatible: false
+  js:
+    https://cdn.ampproject.org/v0/amp-audio-0.1.js: { type: external, minified: true, attributes: { custom-element: "amp-audio", async: true } }
+
+amp.brightcove:
+  remote: https://cdn.ampproject.org
+  header: true
+  version: 0.1
+  license:
+    name: apache
+    url: https://github.com/ampproject/amphtml/blob/master/LICENSE
+    gpl-compatible: false
+  js:
+    https://cdn.ampproject.org/v0/amp-brightcove-0.1.js: { type: external, minified: true, attributes: { custom-element: "amp-brightcove", async: true } }
+
+amp.carousel:
+  remote: https://cdn.ampproject.org
+  header: true
+  version: 0.1
+  license:
+    name: apache
+    url: https://github.com/ampproject/amphtml/blob/master/LICENSE
+    gpl-compatible: false
+  js:
+    https://cdn.ampproject.org/v0/amp-carousel-0.1.js: { type: external, minified: true, attributes: { custom-element: "amp-carousel", async: true } }
+
+amp.dailymotion:
+  remote: https://cdn.ampproject.org
+  header: true
+  version: 0.1
+  license:
+    name: apache
+    url: https://github.com/ampproject/amphtml/blob/master/LICENSE
+    gpl-compatible: false
+  js:
+    https://cdn.ampproject.org/v0/amp-dailymotion-0.1.js: { type: external, minified: true, attributes: { custom-element: "amp-dailymotion", async: true } }
+
+amp.facebook:
+  remote: https://cdn.ampproject.org
+  header: true
+  version: 0.1
+  license:
+    name: apache
+    url: https://github.com/ampproject/amphtml/blob/master/LICENSE
+    gpl-compatible: false
+  js:
+    https://cdn.ampproject.org/v0/amp-facebook-0.1.js: { type: external, minified: true, attributes: { custom-element: "amp-facebook", async: true } }
+
+amp.fit-text:
+  remote: https://cdn.ampproject.org
+  header: true
+  version: 0.1
+  license:
+    name: apache
+    url: https://github.com/ampproject/amphtml/blob/master/LICENSE
+    gpl-compatible: false
+  js:
+    https://cdn.ampproject.org/v0/amp-fit-text-0.1.js: { type: external, minified: true, attributes: { custom-element: "amp-fit-text", async: true } }
+
+amp.font:
+  remote: https://cdn.ampproject.org
+  header: true
+  version: 0.1
+  license:
+    name: apache
+    url: https://github.com/ampproject/amphtml/blob/master/LICENSE
+    gpl-compatible: false
+  js:
+    https://cdn.ampproject.org/v0/amp-font-0.1.js: { type: external, minified: true, attributes: { custom-element: "amp-font", async: true } }
+
+amp.iframe:
+  remote: https://cdn.ampproject.org
+  header: true
+  version: 0.1
+  license:
+    name: apache
+    url: https://github.com/ampproject/amphtml/blob/master/LICENSE
+    gpl-compatible: false
+  js:
+    https://cdn.ampproject.org/v0/amp-iframe-0.1.js: { type: external, minified: true, attributes: { custom-element: "amp-iframe", async: true } }
+
+amp.instagram:
+  remote: https://cdn.ampproject.org
+  header: true
+  version: 0.1
+  license:
+    name: apache
+    url: https://github.com/ampproject/amphtml/blob/master/LICENSE
+    gpl-compatible: false
+  js:
+    https://cdn.ampproject.org/v0/amp-instagram-0.1.js: { type: external, minified: true, attributes: { custom-element: "amp-instagram", async: true } }
+
+amp.install-serviceworker:
+  remote: https://cdn.ampproject.org
+  header: true
+  version: 0.1
+  license:
+    name: apache
+    url: https://github.com/ampproject/amphtml/blob/master/LICENSE
+    gpl-compatible: false
+  js:
+    https://cdn.ampproject.org/v0/amp-install-serviceworker-0.1.js: { type: external, minified: true, attributes: { custom-element: "amp-install-serviceworker", async: true } }
+
+amp.image-lightbox:
+  remote: https://cdn.ampproject.org
+  header: true
+  version: 0.1
+  license:
+    name: apache
+    url: https://github.com/ampproject/amphtml/blob/master/LICENSE
+    gpl-compatible: false
+  js:
+    https://cdn.ampproject.org/v0/amp-image-lightbox-0.1.js: { type: external, minified: true, attributes: { custom-element: "amp-image-lightbox", async: true } }
+
+amp.lightbox:
+  remote: https://cdn.ampproject.org
+  header: true
+  version: 0.1
+  license:
+    name: apache
+    url: https://github.com/ampproject/amphtml/blob/master/LICENSE
+    gpl-compatible: false
+  js:
+    https://cdn.ampproject.org/v0/amp-lightbox-0.1.js: { type: external, minified: true, attributes: { custom-element: "amp-lightbox", async: true } }
+
+amp.list:
+  remote: https://cdn.ampproject.org
+  header: true
+  version: 0.1
+  license:
+    name: apache
+    url: https://github.com/ampproject/amphtml/blob/master/LICENSE
+    gpl-compatible: false
+  js:
+    https://cdn.ampproject.org/v0/amp-list-0.1.js: { type: external, minified: true, attributes: { custom-element: "amp-list", async: true } }
+
+amp.pinterest:
+  remote: https://cdn.ampproject.org
+  header: true
+  version: 0.1
+  license:
+    name: apache
+    url: https://github.com/ampproject/amphtml/blob/master/LICENSE
+    gpl-compatible: false
+  js:
+    https://cdn.ampproject.org/v0/amp-pinterest-0.1.js: { type: external, minified: true, attributes: { custom-element: "amp-pinterest", async: true } }
+
+amp.soundcloud:
+  remote: https://cdn.ampproject.org
+  header: true
+  version: 0.1
+  license:
+    name: apache
+    url: https://github.com/ampproject/amphtml/blob/master/LICENSE
+    gpl-compatible: false
+  js:
+    https://cdn.ampproject.org/v0/amp-soundcloud-0.1.js: { type: external, minified: true, attributes: { custom-element: "amp-soundcloud", async: true } }
+
+amp.twitter:
+  remote: https://cdn.ampproject.org
+  header: true
+  version: 0.1
+  license:
+    name: apache
+    url: https://github.com/ampproject/amphtml/blob/master/LICENSE
+    gpl-compatible: false
+  js:
+    https://cdn.ampproject.org/v0/amp-twitter-0.1.js: { type: external, minified: true, attributes: { custom-element: "amp-twitter", async: true } }
+
+amp.user-notification:
+  remote: https://cdn.ampproject.org
+  header: true
+  version: 0.1
+  license:
+    name: apache
+    url: https://github.com/ampproject/amphtml/blob/master/LICENSE
+    gpl-compatible: false
+  js:
+    https://cdn.ampproject.org/v0/amp-user-notification-0.1.js: { type: external, minified: true, attributes: { custom-element: "amp-user-notification", async: true } }
+
+amp.vine:
+  remote: https://cdn.ampproject.org
+  header: true
+  version: 0.1
+  license:
+    name: apache
+    url: https://github.com/ampproject/amphtml/blob/master/LICENSE
+    gpl-compatible: false
+  js:
+    https://cdn.ampproject.org/v0/amp-vine-0.1.js: { type: external, minified: true, attributes: { custom-element: "amp-vine", async: true } }
+
+amp.vimeo:
+  remote: https://cdn.ampproject.org
+  header: true
+  version: 0.1
+  license:
+    name: apache
+    url: https://github.com/ampproject/amphtml/blob/master/LICENSE
+    gpl-compatible: false
+  js:
+    https://cdn.ampproject.org/v0/amp-vimeo-0.1.js: { type: external, minified: true, attributes: { custom-element: "amp-vimeo", async: true } }
+
+amp.youtube:
+  remote: https://cdn.ampproject.org
+  header: true
+  version: 0.1
+  license:
+    name: apache
+    url: https://github.com/ampproject/amphtml/blob/master/LICENSE
+    gpl-compatible: false
+  js:
+    https://cdn.ampproject.org/v0/amp-youtube-0.1.js: { type: external, minified: true, attributes: { custom-element: "amp-youtube", async: true } }
+
+amp.template:
+  remote: https://cdn.ampproject.org
+  header: true
+  version: 0.1
+  license:
+    name: apache
+    url: https://github.com/ampproject/amphtml/blob/master/LICENSE
+    gpl-compatible: false
+  js:
+    https://cdn.ampproject.org/v0/amp-mustache-0.1.js: { type: external, minified: true, attributes: { custom-template: "amp-mustache", async: true } }

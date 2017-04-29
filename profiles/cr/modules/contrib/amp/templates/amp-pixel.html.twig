@@ -1,0 +1,95 @@
+{#
+/**
+ * @file
+ * Template for an amp-pixel.
+ *
+ * Available variables:
+ * - domain: The domain name for the amp-pixel.
+ * - query_string: The path for the query string.
+ * - subs: An array of possible variable substitutions
+ *
+ * @see template_preprocess_amp_pixel()
+ */
+#}
+{% if domain and query_string %}
+  {% set src = 'https://' ~ domain ~ '/' ~ query_string ~ '?' %}
+  {% set activeSubs = [] %}
+
+  {% for sub, subDetails in subs if subDetails.active == true %}
+    {% set activeSubs =  activeSubs|merge([(sub)]) %}
+  {% endfor %}
+
+  {% if activeSubs|length > 0 %}
+    {% for activeSub in activeSubs %}
+
+      {% if activeSub == 'AMPDOC_HOST' %}
+        {% set src = src ~ 'host=' ~ activeSub %}
+      {% elseif activeSub == 'AMPDOC_URL' %}
+        {% set src = src ~ 'ref=' ~ activeSub %}
+      {% elseif activeSub == 'CANONICAL_HOST' %}
+        {% set src = src ~ 'host=' ~ activeSub %}
+      {% elseif activeSub == 'CANONICAL_PATH' %}
+        {% set src = src ~ 'path=' ~ activeSub %}
+      {% elseif activeSub == 'CANONICAL_URL' %}
+        {% set src = src ~ 'href=' ~ activeSub %}
+      {% elseif activeSub == 'SOURCE_URL' %}
+        {% set src = src ~ 'href=' ~ activeSub %}
+      {% elseif activeSub == 'SOURCE_HOST' %}
+        {% set src = src ~ 'host=' ~ activeSub %}
+      {% elseif activeSub == 'DOCUMENT_CHARSET' %}
+        {% set src = src ~ 'charSet=' ~ activeSub %}
+      {% elseif activeSub == 'DOCUMENT_REFERRER' %}
+        {% set src = src ~ 'referrer=' ~ activeSub %}
+      {% elseif activeSub == 'TITLE' %}
+        {% set src = src ~ 'title=' ~ activeSub %}
+      {% elseif activeSub == 'VIEWER' %}
+        {% set src = src ~ 'viewer=' ~ activeSub %}
+      {% elseif activeSub == 'CONTENT_LOAD_TIME' %}
+        {% set src = src ~ 'contentLoadTime=' ~ activeSub %}
+      {% elseif activeSub == 'DOMAIN_LOOKUP_TIME' %}
+        {% set src = src ~ 'domainLookupTime=' ~ activeSub %}
+      {% elseif activeSub == 'DOM_INTERACTIVE_TIME' %}
+        {% set src = src ~ 'domInteractiveTime=' ~ activeSub %}
+      {% elseif activeSub == 'PAGE_DOWNLOAD_TIME' %}
+        {% set src = src ~ 'pageDownloadTime=' ~ activeSub %}
+      {% elseif activeSub == 'PAGE_LOAD_TIME' %}
+        {% set src = src ~ 'pageLoadTime=' ~ activeSub %}
+      {% elseif activeSub == 'REDIRECT_TIME' %}
+        {% set src = src ~ 'redirectTime=' ~ activeSub %}
+      {% elseif activeSub == 'SERVER_RESPONSE_TIME' %}
+        {% set src = src ~ 'serverResponseTime=' ~ activeSub %}
+      {% elseif activeSub == 'TCP_CONNECT_TIME' %}
+        {% set src = src ~ 'tcpConnectTime=' ~ activeSub %}
+      {% elseif activeSub == 'AVAILABLE_SCREEN_HEIGHT' %}
+        {% set src = src ~ 'availScreenHeight=' ~ activeSub %}
+      {% elseif activeSub == 'AVAILABLE_SCREEN_WIDTH' %}
+        {% set src = src ~ 'availScreenWidth=' ~ activeSub %}
+      {% elseif activeSub == 'BROWSER_LANGUAGE' %}
+        {% set src = src ~ 'lang=' ~ activeSub %}
+      {% elseif activeSub == 'SCREEN_COLOR_DEPTH' %}
+        {% set src = src ~ 'colorDepth=' ~ activeSub %}
+      {% elseif activeSub == 'VIEWPORT_HEIGHT' %}
+        {% set src = src ~ 'viewportHeight=' ~ activeSub %}
+        {% elseif activeSub == 'VIEWPORT_WIDTH' %}
+          {% set src = src ~ 'viewportWidth=' ~ activeSub %}
+      {% elseif activeSub == 'PAGE_VIEW_ID' %}
+        {% set src = src ~ activeSub %}
+      {% elseif activeSub == 'RANDOM' %}
+        {% set src = src ~ activeSub %}
+      {% elseif activeSub == 'TIMESTAMP' %}
+        {% set src = src ~ 'timestamp=' ~ activeSub %}
+      {% elseif activeSub == 'TOTAL_ENGAGED_TIME' %}
+        {% set src = src ~ activeSub %}
+      {% endif %}
+
+      {% if not loop.last %}
+        {% set src = src ~ '&' %}
+      {% endif %}
+
+    {% endfor %}
+
+    <amp-pixel src="{{ src }}">
+    </amp-pixel>
+
+  {% endif %}
+{% endif %}

@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * @file
+ * Contains amp.install.
+ */
+
+/**
+ * Implements hook_requirements().
+ */
+function amp_requirements($phase) {
+  $requirements = [];
+  if ($phase == 'install' || $phase == 'runtime') {
+    if (!class_exists('\Lullabot\AMP\AMP')) {
+      $requirements['amp_library'] = [
+        'title' => t('AMP'),
+        'description' => t('The AMP module requires the PHP <a href="@library">AMP library</a>.', ['@library' => 'https://github.com/Lullabot/amp-library']),
+        'severity' => REQUIREMENT_ERROR,
+      ];
+    }
+
+    $theme_handler = \Drupal::service('theme_handler');
+    if (!$theme_handler->themeExists('amptheme')) {
+      $requirements['amptheme'] = [
+        'title' => t('AMP Base Theme'),
+        'description' => t('The AMP module requires the <a href="@theme">AMP Base Theme</a> to be installed.', ['@theme' => 'https://www.drupal.org/project/amptheme']),
+        'severity' => REQUIREMENT_ERROR,
+      ];
+    }
+  }
+  return $requirements;
+}
+
+/**
+ * Remove node_types from amp.settings.
+ */
+function amp_update_8001(&$sandbox) {
+  $config = \Drupal::service('config.factory')->getEditable('amp.settings');
+  $config->clear('node_types')->save();
+}

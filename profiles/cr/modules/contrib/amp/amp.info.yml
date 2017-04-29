@@ -1,0 +1,14 @@
+name: Accelerated Mobile Pages (AMP)
+type: module
+description: Google AMP integration
+# core: 8.x
+package: Other
+dependencies:
+  - image
+configure: amp.settings
+
+# Information added by Drupal.org packaging script on 2016-03-17
+version: '8.x-1.0-beta3'
+core: '8.x'
+project: 'amp'
+datestamp: 1458227046

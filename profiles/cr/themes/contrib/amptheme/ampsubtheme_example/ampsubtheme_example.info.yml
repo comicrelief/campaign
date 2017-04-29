@@ -1,0 +1,16 @@
+name: ExAMPle Subtheme
+type: theme
+base theme: amptheme
+description: The ExAMPle subtheme sets custom styles on AMP pages.
+pacakge: Custom
+# core: 8.x
+regions:
+  header: Header
+  content: Content
+  footer: Footer
+
+# Information added by Drupal.org packaging script on 2016-03-18
+version: '8.x-1.0-beta2'
+core: '8.x'
+project: 'amptheme'
+datestamp: 1458330243
