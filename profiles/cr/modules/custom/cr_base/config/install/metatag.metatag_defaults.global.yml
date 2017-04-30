@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+id: global
+label: Global
+tags:
+  canonical_url: '[current-page:url:absolute]'
+  shortlink: '[current-page:url:absolute]'
+  title: '[current-page:title] | [site:name]'
+  og_site_name: '[site:name]'
+  og_title: '[current-page:title] | [site:name]'
+  og_type: article
+  og_url: '[current-page:url:absolute]'

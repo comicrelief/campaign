@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: cw_4_3_md_290x278
+label: 'CW 4:3 MD 290x278'
+effects:
+  e4644e1a-e743-40bb-8c12-1866e980be9e:
+    uuid: e4644e1a-e743-40bb-8c12-1866e980be9e
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 290
+      height: 278

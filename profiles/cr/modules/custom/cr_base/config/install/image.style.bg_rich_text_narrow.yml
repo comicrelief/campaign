@@ -1,0 +1,16 @@
+uuid: 1ba93b86-e0b3-4088-bb48-725e7f31d505
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: bg_rich_text_narrow
+label: 'Bg rich text narrow'
+effects:
+  6178d511-37fd-4fce-b007-7af7ecc05e92:
+    uuid: 6178d511-37fd-4fce-b007-7af7ecc05e92
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: '768'
+      height: '440'

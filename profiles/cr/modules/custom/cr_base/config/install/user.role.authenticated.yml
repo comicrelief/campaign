@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies: {  }
+id: authenticated
+label: 'Authenticated user'
+weight: 1
+is_admin: false
+permissions:
+  - 'access content'
+  - 'view files'
+  - 'use text format basic_html'
+  - 'view own files'
+  - 'view own private files'
+  - 'delete own audio files'
+  - 'download any audio files'
+  - 'download own audio files'
+  - 'edit own audio files'
+  - 'view own unpublished content'
+  - 'restful get entity:node'
+  - 'access user profiles'
+  - 'view search api pages'

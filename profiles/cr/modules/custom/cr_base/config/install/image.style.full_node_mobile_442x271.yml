@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: full_node_mobile_442x271
+label: 'Full node mobile 442x271'
+effects:
+  e23c1d58-15a6-476a-8647-713af547449e:
+    uuid: e23c1d58-15a6-476a-8647-713af547449e
+    id: focal_point_scale_and_crop
+    weight: 2
+    data:
+      width: '442'
+      height: '271'
