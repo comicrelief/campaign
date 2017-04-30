@@ -1,0 +1,5 @@
+cr_transactional_emails.settings:
+  title: Transactional Emails
+  description: 'Configure integration connections to email delivery services for transactional emails.'
+  route_name: cr_transactional_emails.settings
+  parent: system.admin_config_services

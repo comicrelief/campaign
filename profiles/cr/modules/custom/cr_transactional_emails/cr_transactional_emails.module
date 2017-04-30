@@ -1,0 +1,115 @@
+<?php
+
+/**
+ * @file
+ * Contains \Drupal\cr_transactional_emails.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+/**
+ * Implements hook_permission().
+ */
+function cr_transactional_emails_permission() {
+  return array(
+    'administer crazy egg' => array(
+      'title' => t('Administer Transactional Emails'),
+      'description' => t('Administer Email Delivery Service API Connections.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_help().
+ */
+function cr_transactional_emails_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.cr_transactional_emails':
+      return t('<strong>Transactional Emails</strong> is a tool which integrates the website to an email delivery service (e.g. SmartFocus), to broadcast emails.');
+  }
+}
+
+/**
+ * Implements cr_transactional_emails_send().
+ *
+ * @param string $send_to
+ *   Email address to send email to.
+ * @param array $template
+ *   Template keys: 'template_unique_api_key' and 'template_security_api_key'.
+ * @param array $params
+ *   Array parameters to pass on to email delivery service and drop placeholder
+ *   data into email templates.
+ *
+ * @return bool
+ *   Returns boolean status true or false on delivery to email delivery service.
+ */
+function cr_transactional_emails_send($send_to, $template = array(), $params = array()) {
+
+  // Check email address; log error if email address is invalid.
+  if (!(\Drupal::service('email.validator')->isValid($send_to))) {
+    \Drupal::logger('cr_transactional_emails')->error('cr_transactional_emails_send(): Invalid send email address supplied.');
+    return FALSE;
+  }
+
+  $message['timestamp'] = time();
+  $message['transSourceURL'] = \Drupal::service('path.current')->getPath();
+  $message['transSource'] = "";
+  $message['emailAddress'] = $send_to;
+
+  $queue_name = 'queue1';
+
+  try {
+    $queue_factory = \Drupal::service('queue');
+    $queue = $queue_factory->get($queue_name);
+    $message_sent = $queue->createItem($message);
+
+    if (!$message_sent) {
+      \Drupal::logger('cr_transactional_emails')->error('cr_transactional_emails_send(): Unable to send message');
+      return FALSE;
+      // Need to fallback to Database Queue here.
+    }
+  }
+  catch (ServiceNotFoundException $exception) {
+    \Drupal::logger('cr_transactional_emails')->error('cr_transactional_emails_send(): Unable to get queue service');
+    return FALSE;
+  }
+
+  return TRUE;
+}
+
+/**
+ * Implements cr_transactional_emails_get_fieldset().
+ *
+ * Returns array of form elements.
+ */
+function cr_transactional_emails_get_template_fieldset() {
+  /*
+   * NOTES:
+   * The following code is specific to SmartFocus and so can be moved to a
+   * plugin class.
+   * cr_transactional_emails_get_template_fieldset() can then be refactored to
+   * use as a mapper function to call the selected plugin and class method.
+   */
+
+  // Build and return fieldset.
+  $fieldset = array();
+
+  $fieldset['transactional_emails_template'] = array(
+    '#type' => 'fieldset',
+    '#title' => 'Email Template',
+  );
+
+  $fieldset['transactional_emails_template']['template_unique_api_key'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Unique key'),
+    '#maxlength' => 60,
+  );
+
+  $fieldset['transactional_emails_template']['template_security_api_key'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Security key'),
+    '#maxlength' => 60,
+  );
+
+  return $fieldset;
+}

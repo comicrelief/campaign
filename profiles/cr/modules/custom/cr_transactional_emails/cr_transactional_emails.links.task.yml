@@ -1,0 +1,10 @@
+cr_transactional_emails.settings:
+  route_name: cr_transactional_emails.settings
+  title: 'Configure Settings'
+  base_route: cr_transactional_emails.settings
+  weight: -1
+
+cr_transactional_emails.test:
+  route_name: cr_transactional_emails.test
+  title: 'Test Settings'
+  base_route: cr_transactional_emails.settings
