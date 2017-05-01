@@ -1,5 +1,8 @@
+
 # Comic Relief Campaign profile [![Build Status][travis-image]][travis-url]
 > Drupal 8 profile for building enganging fundraising websites, maintained by [Comic Relief](https://www.comicrelief.com)
+
+**Version for RND USA and general demo's**
 
 ## Getting started
 
