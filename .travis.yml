@@ -72,6 +72,10 @@ script:
   # Check DB errors
   - $TRAVIS_DIR/dberrors.sh
 
+after_success:
+  # Automate releases in dependant projects
+  - drupal-ti --include profiles/cr/tests/drupal_ti/scripts/create_release.sh
+
 notifications:
   slack:
     rooms:
