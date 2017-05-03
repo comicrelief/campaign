@@ -39,13 +39,13 @@ services:
   rabbitmq:
     image: rabbitmq:3-management
     ports:
-      - 15672:15672
-      - 5672:5672
+      - 15673:15672
+      - 5673:5672
     hostname: drupal-rabbit
 
   selenium:
     image: selenium/standalone-firefox:2.53.1-beryllium
     ports:
-      - 4444:4444
+      - 4445:4444
     environment:
       JAVA_OPTS: -Djava.security.egd=file:/dev/./urandom
