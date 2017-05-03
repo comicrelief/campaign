@@ -63,7 +63,7 @@ hooks:
     build: |
         set -e
         composer grunt:build
-        cp /app/ci/platform/settings.php /app/web/sites/default/settings.php
+        cp -f /app/ci/platform/settings.php /app/web/sites/default/settings.php
         cp /app/ci/platform/settings.platformsh.php /app/web/sites/default/settings.platformsh.php
 
     # We run deploy hooks after your application has been deployed and started.
