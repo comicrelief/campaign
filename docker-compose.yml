@@ -36,7 +36,7 @@ services:
     ports:
       - 3307:3306
     volumes:
-      - comicrelief-db:/var/lib/mysql
+      - db-store:/var/lib/mysql
 
   rabbitmq:
     image: rabbitmq:3-management
@@ -53,4 +53,4 @@ services:
       JAVA_OPTS: -Djava.security.egd=file:/dev/./urandom
 
 volumes:
-  comicrelief-db:
+  db-store:
