@@ -35,6 +35,8 @@ services:
       MYSQL_DATABASE: campaign
     ports:
       - 3307:3306
+    volumes:
+      - comicrelief-db:/var/lib/mysql
 
   rabbitmq:
     image: rabbitmq:3-management
@@ -49,3 +51,6 @@ services:
       - 4445:4444
     environment:
       JAVA_OPTS: -Djava.security.egd=file:/dev/./urandom
+
+volumes:
+  comicrelief-db:
