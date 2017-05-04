@@ -1,0 +1,10 @@
+version: '2.1'
+services:
+  web:
+    volumes:
+      - docker-sync-unison:/var/www/html
+      - $SSH_AUTH_SOCK:/ssh-agent
+
+volumes:
+  docker-sync-unison:
+    external: true
