@@ -25,7 +25,6 @@
     "grunt-modernizr": "^1.0.2",
     "grunt-sass": "^2.0.0",
     "grunt-sass-globbing": "^1.5.1",
-    "grunt-shell": "2.1.0",
     "kss": "^3.0.0-beta.18",
     "node-sass": "^4.5.0",
     "sass-loader": "6.0.2",
@@ -35,7 +34,7 @@
   "scripts": {
     "build": "grunt build",
     "move:blazy": "cp -fr node_modules/blazy ../../../../../../libraries/",
-    "move:patternlab": "mkdir pattern-lab && cp -fr node_modules/@comicrelief/pattern-lab/sass/base/* templates/pattern-lab",
+    "move:patternlab": "mkdir templates/pattern-lab && cp -fr node_modules/@comicrelief/pattern-lab/sass/base/* templates/pattern-lab",
     "postinstall": "npm run move:blazy && npm run -s move:patternlab"
   },
   "license": "GPL-2.0",
