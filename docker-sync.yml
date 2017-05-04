@@ -1,5 +1,8 @@
 version: "2"
 
+options:
+  max_attempt: 5
+
 syncs:
   docker-sync-unison:
     volumes:
