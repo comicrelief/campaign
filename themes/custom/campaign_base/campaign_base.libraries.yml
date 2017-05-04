@@ -1,84 +1,8 @@
-admin:
+global-css:
   css:
     theme:
-      # css/styles.css: { weight: -20}
+      css/styles.css: { weight: -20}
       css/ie8.styles.css: { weight: -10, browsers: { IE: 'lte IE 8', '!IE': false }, minified: true }
-      # admin
-      css/base/admin.css: {}
-      css/base/fonts.css: {}
-      css/base/global.css: {}
-
-layout:
-  css:
-    theme:
-      # layout
-      css/layout/layout.css: {}
-      css/layout/views/views.css: {}
-      css/layout/header/header.css: {}
-      css/layout/Navigation/feature-nav.css: {}
-      css/layout/Navigation/footer-nav.css: {}
-      css/layout/Navigation/hamburger-menu-button.css: {}
-      css/layout/Navigation/main-nav.css: {}
-      css/layout/footer/footer.css: {}
-
-pages:
-  css:
-    theme:
-      # pages
-      css/pages/news-article/news_article.css: {}
-
-utils:
-  css:
-    theme:
-      # utils
-      css/utils/mixins.css: {}
-
-components:
-  css:
-    theme:
-      # components
-      css/components/animations/animations.css: {}
-      css/components/background-colours/background-colours.css: {}
-      css/components/background-single-msg/background-single-msg.css: {}
-      css/components/banners/card-banner.css: {}
-      css/components/buttons/buttons.css: {}
-      css/components/card-block/card.css: {}
-      css/components/cards/cards.css: {}
-      css/components/content-block/content-block.css: {}
-      css/components/content-wall/content-wall.css: {}
-      css/components/cookie-consent/cookie-consent.css: {}
-      css/components/custom-block/custom-block.css: {}
-      css/components/demo/demo.css: {}
-      css/components/email-signup/email-signup-head.css: {}
-      css/components/email-signup/email-signup.css: {}
-      css/components/external-link/external-link.css: {}
-      css/components/grid/grid.css: {}
-      css/components/iframe-block/iframe-block.css: {}
-      css/components/lightcase/lightcase.css: {}
-      css/components/links/links.css: {}
-      css/components/media-block/media-block.css: {}
-      css/components/media/media.css: {}
-      css/components/meta-icons/meta-icons.css: {}
-      css/components/news-overview/news.css: {}
-      css/components/news-teaser/news-article-teaser.css: {}
-      css/components/news-teaser/news-teaser.css: {}
-      css/components/pagination/pagination.css: {}
-      css/components/paragraph--cr-single-message-row/paragraph--cr-single-message-row.css: {}
-      css/components/partners/partners-row.css: {}
-      css/components/partners/partners.css: {}
-      css/components/promo-header/promo-header.css: {}
-      css/components/quote-block/content-wall-quote.css: {}
-      css/components/related-articles/related-articles.css: {}
-      css/components/search-results/search-result.css: {}
-      css/components/search/search-block.css: {}
-      css/components/selectbox/selectbox.css: {}
-      css/components/single-msg/single-msg.css: {}
-      css/components/social/social.css: {}
-      css/components/story/story.css: {}
-      css/components/teaser-block/teaser-block.css: {}
-      css/components/tooltips/tooltips.css: {}
-      css/components/typography/list.css: {}
-      css/components/typography/typography.css: {}
 
 global-js:
   js:
