@@ -1,0 +1,69 @@
+
+// Breakpoints
+//
+// These are the breakpoints
+//
+// $screen-md:              740px;
+//
+// $screen-lg:              1024px;
+//
+// * Single query breakpoint:
+//
+// @include breakpoint(md) { ... }
+//
+// Style guide: Breakpoints
+
+/**
+ * Breakpoints
+ *
+ * For usage, please refer to:
+ * http://wiki.comicrelief.com/wiki/CR_Layout_V2#Breakpoints_and_SASS_Usage
+ * More on the breakpoint mixin usage:
+ * https://github.com/Team-Sass/breakpoint/wiki
+ *
+ * Single query breakpoint:
+ * @include breakpoint(md) { ... }
+ *
+ * Single custom breakpoint:
+ * @include breakpoint(100px) { ... }
+ * 
+ * Min and max query breakpoint:
+ * @include breakpoint(100px, 200px) { ... }
+ *
+ */  
+
+@mixin breakpoint($min: 0, $max: 0) {
+    $type: type-of($min);
+ 
+    @if $type == string {
+   
+        @if $min == md {
+            @media (min-width: $screen-md-min) { @content; }
+            .lt-ie9 & { @content } 
+        }
+   
+        @else if $min == lg {
+            @media (min-width: $screen-lg) { @content; }
+        }
+   
+        @else {
+            @warn "Breakpoint mixin supports: md, lg";
+        }
+    }
+ 
+    @else if $type == number {
+        $query: "all" !default;
+        @if $min != 0 and $max != 0 { 
+            $query: "(min-width: #{$min}) and (max-width: #{$max})"; 
+        }
+        @else if $min != 0 and $max == 0 { 
+            $query: "(min-width: #{$min})"; 
+        }
+        @else if $min == 0 and $max != 0 { 
+            $query: "(max-width: #{$max})"; 
+        }
+        @media #{$query} { 
+            @content;
+        }
+    }
+}

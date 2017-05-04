@@ -1,0 +1,193 @@
+// Elements
+//
+// Style guide: 10
+
+//Typography
+//
+// The Comic Relief font is Proxima Nova. This used for headings and body copy in a number of weights (Bold, Semibold and Regular).
+//
+// Markup: typography.twig
+//
+// .font--red - Red colour
+// .font--blue - Blue colour
+// .font--yellow - Yellow colour
+// .font--green - Green colour
+// .font--teal - Teal colour
+// .font--royal-blue - Royal blue colour
+// .font--purple - Purple colour
+// .font--pink - Pink colour
+// .font--white - White colour
+// .font--jasper-grey - Jasper grey colour
+// .font--gainsboro-grey - Gainsbro grey colour
+// .font--light-grey - Light grey colour
+// .font--smoke-grey - Smoke grey colour
+// .font--xlarge - Font X Large
+// .font--large - Font Large
+// .font--small - Font Small
+// .font--xsmall - Font X Small
+//
+// Style guide: 10.1
+
+h1 {
+  margin: 0 0 20px;
+  color: $colour-black;
+  font-family: $font-bold;
+  @include font-size($h1-font-size);
+  &.font--font-black {
+    font-family: $font-black;
+    @include font-size($h1-black-font-size);
+  }
+  &.font--xlarge {
+    @include font-size($h1-xlarge-font-size);
+  }
+  &.font--black-shadow {
+    text-shadow: -3px 3px 0 rgba(0, 0, 0, 0.25);
+    font-family: $font-black;
+    @include font-size($h1-blackshadow-font-size);
+    @include breakpoint($screen-md) {
+      text-shadow: -5px 5px 0 rgba(0, 0, 0, 0.25);
+    }
+    @include breakpoint($screen-lg) {
+      text-shadow: -7px 7px 0 rgba(0, 0, 0, 0.25);
+    }
+  }
+}
+h2,
+h3,
+h4,
+h5,
+p,
+.link {
+  color: $colour-black;
+}
+p,
+h2,
+h3,
+h4 {
+  clear: both;
+  margin: 0 0 15px;
+}
+p:last-child,
+p:first-child:last-child {
+  margin-bottom: 5px;
+}
+h2 {
+  font-family: $font-medium;
+  @include font-size($h2-font-size);
+}
+h3 {
+  font-family: $font-regular;
+  @include font-size($h3-font-size);
+}
+h4 {
+  font-family: $font-regular;
+  @include font-size($h4-font-size);
+}
+
+p {
+  padding: 0;
+  font-family: $body-font;
+  @include font-size($p-font-size);
+  &.font--xlarge {
+    margin-bottom: 20px;
+    @include font-size($p-xlarge-font-size);
+  }
+  &.font--large {
+    @include font-size($p-large-font-size);
+  }
+  &.font--small {
+    @include font-size($p-small-font-size);
+  }
+  &.font--xsmall {
+    @include font-size($p-xsmall-font-size);
+  }
+}
+span.font--font-black {
+  font-family: $font-black;
+}
+
+strong {
+  font-family: $font-bold;
+}
+
+@for $color from 1 to (length($colorList)+1) {
+  @include font-variation(nth($colorList, $color));
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+span {
+  @for $color from 1 to (length($colorList)+1) {
+    @include font-variation-inline(nth($colorList, $color));
+  }
+}
+
+// Links
+//
+// Standard links
+// 
+// .link--red - Red standalone link add <em style="font-weight: bold;">.inline</em> for inline links
+// .link--blue - Blue standalone link add <em style="font-weight: bold;">.inline</em> for inline links
+// .link--yellow - Yellow standalone link add <em style="font-weight: bold;">.inline</em> for inline links
+// .link--green - Green standalone link add <em style="font-weight: bold;">.inline</em> for inline links
+// .link--teal - Teal standalone link add <em style="font-weight: bold;">.inline</em> for inline links
+// .link--royal-blue - Royal Blue standalone link add <em style="font-weight: bold;">.inline</em> for inline links
+// .link--purple - Purple standalone link add <em style="font-weight: bold;">.inline</em> for inline links
+// .link--pink - Pink standalone link add <em style="font-weight: bold;">.inline</em> for inline links
+// .link--white - White standalone link add <em style="font-weight: bold;">.inline</em> for inline links
+// .link--jasper-grey - Jasper grey standalone link add <em style="font-weight: bold;">.inline</em> for inline links
+// .link--gainsboro-grey - Gainsboro grey standalone link add <em style="font-weight: bold;">.inline</em> for inline links
+// .link--light-grey - Light grey standalone link add <em style="font-weight: bold;">.inline</em> for inline links
+// .link--smoke-grey - Smoke grey standalone link add <em style="font-weight: bold;">.inline</em> for inline links
+// :hover - Link hover state 
+// :active - Link active state
+// :focus - Link focus state
+//
+// Markup: links.twig
+//
+// Style guide: 10.2
+
+/*  
+ * Link styles,
+ * Copied from SR16 theme
+ */
+
+.link {
+  text-decoration: none;
+  word-break: break-word;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  color: inherit;
+  border-bottom: 4px solid $colour-red;
+  font-family: $font-bold;
+  font-size: 18px;
+  line-height: 30px;
+  transform: all 180ms;
+  &:hover,
+  &:active,
+  &:focus {
+    border-bottom: 4px solid $colour-black;
+  }
+  &.inline {
+    display: inline-block;
+    margin: 0;
+    cursor: pointer;
+    color: inherit;
+    border-width: 2px;
+    font-size: inherit;
+    line-height: 22px;
+    &:hover,
+    &:active,
+    &:focus {
+      border-width: 2px;
+    }
+  }
+}
+
+@for $link from 1 to (length($linkList)+1) {
+  @include link-variation(nth($linkList, $link));
+}

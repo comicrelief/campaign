@@ -1,0 +1,88 @@
+// Fonts
+
+$font-stack: helvetica, arial, sans-serif;
+
+$font-black-oblique: "GT-Walsheim-Black-Oblique", $font-stack;
+$font-black: "GT-Walsheim-Black", $font-stack;
+$font-bold-oblique: "GT-Walsheim-Black-Bold-Oblique", $font-stack;
+$font-bold: "GT-Walsheim-Bold", $font-stack;
+$font-medium-oblique: "GT-Walsheim-Medium-Oblique", $font-stack;
+$font-medium: "GT-Walsheim-Medium", $font-stack;
+$font-regular-oblique: "GT-Walsheim-Regular-Oblique", $font-stack;
+$font-regular: "GT-Walsheim-Regular", $font-stack;
+$font-light-oblique: "GT-Walsheim-Light-Oblique", $font-stack;
+$font-light: "GT-Walsheim-Light", $font-stack;
+$body-font: "GT-Walsheim-Regular", $font-stack;
+
+// breakpoint: (font-size, line-height)
+$h1-xlarge-font-size: (
+  null: (36px, 38px),
+  $screen-md: (64px, 64px),
+  $screen-lg: (90px, 90px)
+);
+
+$h1-blackshadow-font-size: (
+  null: (40px, 40px),
+  $screen-md: (64px, 64px),
+  $screen-lg: (70px, 70px)
+);
+
+$h1-black-font-size: (
+  null: (40px, 36px),
+  $screen-md: (64px, 54px),
+  $screen-lg: (70px, 60px)
+);
+
+$h1-font-size: (
+  null: (40px, 40px),
+  $screen-md: (64px, 64px),
+  $screen-lg: (70px, 70px)
+);
+
+$h2-font-size: (
+  null: (32px, 34px),
+  $screen-md: (34px, 38px),
+  $screen-lg: (40px, 44px)
+);
+
+$h3-font-size: (
+  null: (28px, 30px),
+  $screen-md: (30px, 34px),
+  $screen-lg: (34px, 38px)
+);
+
+$h4-font-size: (
+  null: (24px, 26px),
+  $screen-md: (26px, 28px),
+  $screen-lg: (30px, 32px)
+);
+
+$p-xlarge-font-size: (
+  null: (18px, 24px),
+  $screen-md: (22px, 28px),
+  $screen-lg: (24px, 30px)
+);
+
+$p-large-font-size: (
+  null: (18px, 24px),
+  $screen-md: (20px, 26px),
+  $screen-lg: (20px, 26px)
+);
+
+$p-font-size: (
+  null: (16px, 22px),
+  $screen-md: (18px, 24px),
+  $screen-lg: (18px, 24px)
+);
+
+$p-small-font-size: (
+  null: (14px, 18px),
+  $screen-md: (16px, 20px),
+  $screen-lg: (16px, 20px)
+);
+
+$p-xsmall-font-size: (
+  null: (12px, 16px),
+  $screen-md: (14px, 18px),
+  $screen-lg: (14px, 18px)
+);

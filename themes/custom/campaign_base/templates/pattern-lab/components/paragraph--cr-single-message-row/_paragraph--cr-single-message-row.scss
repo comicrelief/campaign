@@ -1,0 +1,170 @@
+// Single Message (deprecated)
+//
+// This is a Single Message row (deprecated)
+//
+// Markup: _paragraph--cr-single-message-row.twig
+//
+// .paragraph--cr-single-message-row--title-above-image-right  - Title above, image on right
+// .paragraph--cr-single-message-row--centre-text-only  - Centred, Text only, image optional
+// .paragraph--cr-single-message-row--centre-image-above - Centred, image above copy
+// .paragraph--cr-single-message-row--centre-image-below - Centred, image below copy
+//
+// No Style guide: Single Message variants
+
+/* Global styles */
+.paragraph--cr-single-message-row {
+  position: relative;
+  /* Placeholder styles */
+  margin-top: 50px;
+  margin-bottom: 50px;
+  @include container;
+  @include breakpoint($screen-lg) {
+    margin-top: 70px;
+    margin-bottom: 70px;
+  }
+  h2 {
+    text-align: center;
+  }
+  a.btn {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    @include breakpoint($screen-md) {
+      width: 280px;
+    }
+  }
+}
+.paragraph--cr-single-message-row {
+  &.paragraph--cr-single-message-row--title-inside-image-right {
+    max-width: 100%;
+    margin: 0;
+    margin-top: 55px;
+    padding: 50px 0;
+    background: #f5f2ed;
+    @include breakpoint($screen-lg) {
+      margin-top: 75px;
+      padding: 70px 0;
+    }
+    .paragraph--cr-single-message-row__inner-wrapper {
+      position: relative;
+      @include container;
+    }
+  }
+}
+.paragraph--cr-single-message-row__body {
+  p {
+    font-size: 18px;
+  }
+  h2 {
+    // fix for june (heading only in the body no margin)
+    margin-bottom: 0;
+  }
+}
+.paragraph--cr-single-message-row__title,
+.paragraph--cr-single-message-row__image,
+.paragraph--cr-single-message-row__copy_wrapper {
+  @include span(12);
+}
+/* Image Below variant */
+.paragraph--cr-single-message-row--centre-image-below {
+  display: table;
+  .paragraph--cr-single-message-row__copy_wrapper {
+    display: table-header-group;
+    float: none;
+    .paragraph--cr-single-message-row__title,
+    .paragraph--cr-single-message-row__body {
+      @include span(12);
+    }
+  }
+  .paragraph--cr-single-message-row__image {
+    @include span(12);
+  }
+}
+/* Centred, Text only, image optional */
+.paragraph--cr-single-message-row--centre-text-only {
+  .paragraph--cr-single-message-row__copy_wrapper {
+    text-align: center;
+  }
+}
+.paragraph--cr-single-message-row__image {
+  margin-bottom: 20px;
+  @include breakpoint($screen-lg) {
+    margin-bottom: 0;
+  }
+}
+
+@include breakpoint($screen-lg) {
+  /* General styles */
+  .paragraph--cr-single-message-row {
+    .paragraph--cr-single-message-row__image,
+    .paragraph--cr-single-message-row__copy_wrapper {
+      @include span(6);
+    }
+  }
+  .paragraph--cr-single-message-row--title-inside-image-right,
+  .paragraph--cr-single-message-row--title-inside-image-left {
+    .paragraph--cr-single-message-row__copy_wrapper {
+      @include span(6);
+      @include push(6);
+      position: absolute;
+      top: 50%;
+      text-align: center;
+      @include translateY(-50%);
+    }
+  }
+  .paragraph--cr-single-message-row--title-inside-image-right {
+    .paragraph--cr-single-message-row__copy_wrapper {
+      @include span(6);
+    }
+  }
+  /* Reposition image and text for 'image right' */
+  .paragraph--cr-single-message-row--title-above-image-right,
+  .paragraph--cr-single-message-row--title-inside-image-right {
+    .paragraph--cr-single-message-row__copy_wrapper {
+      @include span(6 first);
+    }
+    .paragraph--cr-single-message-row__image {
+      @include span(6 last);
+    }
+  }
+  /* Image above variations */
+  .paragraph--cr-single-message-row--centre-image-above {
+    .paragraph--cr-single-message-row__image {
+      @include span(6);
+      @include push(3);
+      margin-bottom: 20px;
+    }
+    .paragraph--cr-single-message-row__copy_wrapper {
+      @include span(8);
+      @include push(2);
+    }
+  }
+  /* Image Below variant specific */
+  .paragraph--cr-single-message-row--centre-image-below {
+    .paragraph--cr-single-message-row__copy_wrapper {
+      float: none;
+      .paragraph--cr-single-message-row__title,
+      .paragraph--cr-single-message-row__body {
+        @include span(8);
+        @include push(2);
+        float: none;
+        margin: auto;
+      }
+    }
+    .paragraph--cr-single-message-row__image {
+      @include span(6);
+      @include push(3);
+      float: none;
+      margin: auto;
+      margin-bottom: 20px;
+    }
+  }
+  /* Centred, Text only, image optional*/
+  .paragraph--cr-single-message-row--centre-text-only {
+    .paragraph--cr-single-message-row__copy_wrapper {
+      @include span(6);
+      @include push(3);
+      float: none;
+    }
+  }
+}

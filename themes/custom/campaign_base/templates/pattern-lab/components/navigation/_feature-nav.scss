@@ -1,0 +1,89 @@
+// Navigation
+//
+// Different types of navigation
+// 
+// Style guide: 185
+
+// Feature Nav
+//
+// Markup: feature-nav.twig
+//
+// Style guide: 185.1
+
+// Feature nav menu open
+//
+// Markup: feature-nav-open.twig
+//
+// Style guide: 185.2
+
+.feature-nav {
+  float: right;
+}
+.feature-nav__burger {
+  border-right: 2px solid $colour-light-grey;
+  border-left: 2px solid $colour-light-grey;
+  margin-left: 10px;
+
+  .feature-nav-toggle {
+
+    .c-hamburger__text {
+      &:before {
+        content: "More";
+      }
+    }
+
+    &.is-active {
+      .c-hamburger__text {
+        &:before {
+          content: "Close";
+        }
+      }
+    }
+  }
+}
+
+.feature-nav__icons {
+  float: left;
+  @include breakpoint($desktop-nav-breakpoint) {
+    position: relative;
+    z-index: 10;
+    float: left;
+    height: 103px;
+    .icon {
+      width: 35px;
+      height: 100%;
+    }
+  }
+  .feature-nav-toggle {
+    float: right;
+    font-size: 16px;
+  }
+}
+.feature-nav__items {
+  display: none;
+  float: left;
+  margin-top: 16px;
+  @include breakpoint($desktop-nav-breakpoint) {
+    display: block;
+  }
+  li {
+    display: inline-block;
+    margin: 0 20px;
+    padding: 24px 0;
+    a {
+      @include transition(border 0.4s);
+      padding: 2px 8px;
+      text-decoration: none;
+      color: #333;
+      border-bottom: 3px solid transparent;
+      font-size: 16px;
+      line-height: 16px;
+    }
+    &.menu-item--active-trail a,
+    &.menu-item--active-trail a:hover,
+    a:hover {
+      border-bottom: 3px solid $colour-red;
+      background-color: transparent;
+    }
+  }
+}

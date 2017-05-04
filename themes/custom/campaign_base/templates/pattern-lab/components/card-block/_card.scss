@@ -1,0 +1,87 @@
+// Card Block
+//
+// Standard Card Block
+//
+// Markup: card.twig
+//
+// Style guide: 60
+
+.cards__item {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  margin-bottom: 20px;
+  text-align: left;
+  @include breakpoint($screen-md-only) {
+    width: calc(100% - (4 * 1.25%)) !important;
+    margin: 1.25% calc(2 * 1.25%) !important;
+  }
+}
+.cards__title {
+  text-align: center;
+  margin: 0 calc(4 * 1.25%) 30px;
+  @include breakpoint($screen-md) {
+    margin: 0 calc(2 * 1.25%) 30px;
+  }
+  .bg--dark-orchid & {
+    color: $colour-white;
+  }
+}
+.cards__content-wrapper {
+  position: relative;
+  height: 100%;
+  padding: 30px;
+  @include breakpoint($screen-md-only) {
+    @include span(7 wider);
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: calc(2*#{gutter()});
+    height: 100%;
+    margin-right: 0;
+    &.cards__content-wrapper--no-image {
+      @include span(12);
+      position: relative;
+      .cards__content {
+        position: relative;
+        top: 0;
+        @include translateY(0);
+      }
+    }
+  }
+  .cards--feature-layout & {
+    z-index: 10;
+    margin: calc(4*#{gutter()});
+    margin-top: calc(-6*#{gutter()});
+    text-align: center;
+    background-color: $colour-white;
+    @include breakpoint($screen-md-only) {
+      @include span(9);
+      @include push(3);
+      margin: 25px 0;
+      height: calc(100% - 50px);
+    }
+  }
+}
+.cards__image {
+  @include breakpoint($screen-md-only) {
+    @include span(5);
+    margin-left: 0;
+  }
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+.cards__content {
+  @include breakpoint($screen-md-only) {
+    position: absolute;
+    width: calc(100% - 20px);
+    top: 50%;
+    right: 0;
+    left: 0;
+    margin: auto;
+    @include translateY(-50%);
+  }
+}

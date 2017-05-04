@@ -1,9 +1,5 @@
 // NOTE: This file and its corresponding styles.css are not used in Drupal.
-// We compile it for bless to split them in smaller files for ie9 bug
-// we are not support < ie11 anymore
 
-// @import "base/**/*";
-// @import "layout/**/*";
-// @import "pages/**/*";
-// @import "vendors/**/*";
-// @import "components/**/*";
+@import "pattern-lab/_variables";
+@import "pattern-lab/_core";
+@import "pattern-lab/_components";

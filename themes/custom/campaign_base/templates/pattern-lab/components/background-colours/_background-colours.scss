@@ -1,0 +1,113 @@
+// Background Colours
+//
+// To be used by row components
+//
+// Markup: background-colours.twig
+//
+// Style guide: 10.6
+
+.bg--cream-grey {
+  background-color: $cream-grey;
+}
+
+/* default font colours can be overridden as follows */
+.bg--red {
+  .font--yellow {
+    color: $colour-yellow;
+  }
+}
+.bg--purple {
+  .font--pink {
+    color: $colour-pink;
+  }
+}
+.bg--yellow {
+  .font--red {
+    color: $colour-red;
+  }
+}
+.bg--pink {
+  .font--royal-blue {
+    color: $colour-royal-blue;
+  }
+}
+.bg--blue {
+  .font--dark-purple {
+    color: $colour-dark-purple;
+  }
+}
+
+@for $color from 1 to (length($colorList)+1) {
+  @include bg-variation(nth($colorList, $color));
+}
+
+/**
+ * Needed to break-out these bg styles out a bit as the mutiple
+ * nested selectors were breaking the styles and/or getting them overridden? Weird. **/
+@mixin light-backgrounds {
+  h2,
+  h3,
+  h4,
+  h5,
+  p,
+  .link {
+    color: $colour-white,;
+  }
+  .bg--white,
+  .bg--smoke-grey,
+  .bg--light-grey,
+  .bg--gainsboro-grey,
+  .bg--green,
+  .bg--yellow,
+  .bg--pink,
+  .bg--blue {
+    h2,
+    h3,
+    h4,
+    h5,
+    p,
+    .link {
+      color: $colour-black;
+    }
+  }
+}
+@mixin dark-backgrounds {
+  h2,
+  h3,
+  h4,
+  h5,
+  p,
+  .link {
+    color: $colour-black;
+  }
+  .bg--black,
+  .bg--jasper-grey,
+  .bg--dark-blue,
+  .bg--royal-blue,
+  .bg--red,
+  .bg--purple {
+    h2,
+    h3,
+    h4,
+    h5,
+    p,
+    .link {
+      color: $colour-white;
+    }
+  }
+}
+.bg--black { @include light-backgrounds };
+.bg--jasper-grey { @include light-backgrounds };
+.bg--dark-blue { @include light-backgrounds };
+.bg--royal-blue { @include light-backgrounds };
+.bg--red { @include light-backgrounds };
+.bg--purple { @include light-backgrounds };
+
+.bg--white { @include dark-backgrounds };
+.bg--smoke-grey { @include dark-backgrounds };
+.bg--light-grey { @include dark-backgrounds };
+.bg--gainsboro-grey { @include dark-backgrounds };
+.bg--green { @include dark-backgrounds };
+.bg--yellow { @include dark-backgrounds };
+.bg--pink { @include dark-backgrounds };
+.bg--blue { @include dark-backgrounds };

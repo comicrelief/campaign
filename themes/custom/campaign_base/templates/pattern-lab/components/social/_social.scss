@@ -1,0 +1,94 @@
+// Icons
+//
+// Social sharing icons currently only contain twitter and facebook.
+//
+// Style guide: 140
+
+// Social sharing icons
+//
+// Markup: social-sharing.twig
+//
+// Style guide: 140.1 
+
+// Social media follow icons
+// 
+// Markup: social-following.twig
+//
+// Style guide: 140.2
+
+/* placeholder for generic icon stuff (icons in footer and sharing icons will be the same in future)*/
+%social-icons {
+  li {
+    display: inline-block;
+    margin: 0 gutter();
+    a {
+      display: inherit;
+      width: 50px;
+      height: 50px;
+      .icon {
+        display: inherit;
+        width: inherit;
+        height: inherit;
+      }
+    }
+  }
+}
+
+/* Social sharing icons */
+.cr-article__social-links {
+  @include clearfix;
+}
+.social-links-label {
+  text-align: right;
+  @include span(6);
+  @include translateY(50%);
+}
+ul.social-links {
+  text-align: left;
+  @extend %social-icons;
+  @include span(6);
+  li {
+    a,
+    .icon {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}
+
+/* Footer social icons */
+.footer__social-links {
+  @extend %social-icons;
+  ul {
+    text-align: center;
+  }
+  li {
+    margin: 0;
+  }
+  .icon {
+    @include transition(fill 0.3s ease);
+
+    fill: white;
+    &:hover {
+      fill: #c8c8c8;
+    }
+  }
+  html.no-svg & {
+    background: no-repeat center center;
+    &.icon__fb {
+      background-image: url("../images/icons/facebook.png");
+    }
+    &.icon__twitter {
+      background-image: url("../images/icons/twitter.png");
+    }
+    &.icon__googleplus {
+      background-image: url("../images/icons/gplus.png");
+    }
+    &.icon__youtube {
+      background-image: url("../images/icons/youtube.png");
+    }
+    &.icon__instagram {
+      background-image: url("../images/icons/instagram.png");
+    }
+  }
+}

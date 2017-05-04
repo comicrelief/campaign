@@ -1,0 +1,634 @@
+
+// ==========================================================================
+// Forms
+// ==========================================================================
+
+// label,
+// legend {
+//   display: block;
+//   padding-top: 10px;
+//   margin-bottom: .6em;
+// }
+
+// fieldset {
+//   padding: 0;
+//   border-width: 0; 
+// }
+
+// input[type="email"],
+// input[type="number"],
+// input[type="date"],
+// input[type="search"],
+// input[type="text"],
+// input[type="tel"],
+// input[type="url"],
+// input[type="password"],
+// textarea {
+//   height: 50px;
+//   padding: 13px; 
+//   background-color: $white;
+//   border: 1px solid $item-grey;
+//   width: 100%;
+
+//   @include box-shadow(none);
+//   @include box-sizing(border-box);
+//   @include appearance(none); 
+
+//   @include bp(md) {
+//     max-width: 290px;
+//   }
+// }
+
+// input[type="email"]:focus,
+// input[type="number"]:focus,
+// input[type="date"]:focus,
+// input[type="search"]:focus,
+// input[type="text"]:focus,
+// input[type="tel"]:focus,
+// input[type="url"]:focus,
+// input[type="password"]:focus,
+// textarea:focus,
+// select:focus {
+//   border: 1px solid $jasper-grey;
+// }
+
+// input:focus::-webkit-input-placeholder { color:transparent; }
+// input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
+// input:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
+// input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
+
+// textarea {
+//   min-height: 65px;
+//   padding-top: 6px;
+//   padding-bottom: 6px; 
+
+//   @include bp(md) {
+//     max-width: 100%;
+//     height: 150px;
+//   }
+// }
+
+// select
+// {
+//   -webkit-appearance: none;
+//   -moz-appearance: none;
+//   appearance: none;
+//   -moz-box-sizing: border-box;
+//   -webkit-box-sizing: border-box;
+//   box-sizing: border-box;
+//   -webkit-border-radius: 0px;
+//   -moz-border-radius: 0px;
+//   border-radius: 0px;
+//   -moz-background-clip: padding;
+//   -webkit-background-clip: padding-box;
+//   background-clip: padding-box;
+//   border: 1px solid #ddd;
+//   background: $white url(/images/form/form_sprite.png) 100% -51px no-repeat;
+//   height: 50px;
+//   position: relative;
+//   width: 100%;
+//   font-size: 16px;
+//   font-weight: 300;
+//   font-family: "sofia-pro", "Verdana", Arial, sans-serif;
+//   cursor: pointer;
+//   outline: 0 none;
+//   padding: 12px 50px 14px 10px;
+//   text-decoration: none;
+//   @include bp(md) {
+//     max-width: 290px;
+//   }
+// }
+// select:focus {
+//   outline: 0;
+// }
+
+// .form__select-open {
+//   background-position: 100% 0;
+// }
+
+// input[type=checkbox] {
+//   @include appearance(none);
+//   display: inline-block;
+//   border:1px solid $item-grey;
+//   background-color: $white;
+//   min-width: 30px;
+//   min-height: 30px;
+//   margin: 0;
+// }
+// input[type="checkbox"]:checked {
+//   background: url(/images/form/checkbox-tick-new.png) 50% 50% no-repeat rgb(255, 255, 255);
+//   @include background-size(14px);
+// }
+
+// .form__checkbox, 
+// .form__radio {
+//   position: relative;
+// }
+// .form__radio {
+//   label {
+//     width: 100%;
+//     cursor: pointer;
+//   }
+// }
+// .form__checkbox {
+//   @include clearfix;
+  
+//   label.form__checkbox {
+//     width: 100%;
+//     padding-right: calc(2*#{gutter()});
+//     word-break: break-word;
+//     position: relative;
+//     left: 40px;
+
+//     @include bp(lg) {
+//       top: 10px;
+//     }
+//   }
+
+//   input[type=checkbox] {
+//     position: absolute; 
+//     top: 15px;
+//   }
+
+//   &.form__checkbox-text-only {
+//     label.form__checkbox {
+//       left: 0px;
+//       text-decoration: underline;
+
+//       &:hover {
+//         text-decoration: none;
+//       }
+//     }
+
+//     input[type=checkbox] {
+//       @include opacity(0);
+//       width: 100%;
+//       cursor: pointer;
+//     }  
+//   }
+// }
+
+// button,
+// input[type="submit"],
+// input[type="reset"],
+// input[type="button"] {
+//   @extend .button;
+// }
+
+// .disabled {
+//   @include opacity(0.4);
+
+//   input,
+//   button {
+//     @include notransition;
+//     cursor: initial;
+//   }
+//   button:hover,
+//   input:hover {
+//     background-color: $red; 
+//     @include notransition;
+//   }
+// }
+// .required:after {
+//   content: " *";
+//   color: $red;
+// }
+
+// // Layout
+// .form__row {
+//   background-color: $white;
+//   padding: 30px 0px;
+//   &:after {
+//     @include clearfix;
+//   }
+//   @include bp(md) {
+//     padding: 60px 0px;
+//   }
+// }
+// .form__fieldset {
+//   padding: 0px calc(2*#{gutter()});
+
+//   @include bp(md) {
+//     @include span(10);
+//     padding-left: span(1);
+//     padding-right: span(1);
+//   }
+// }
+// .form__field--wrapper {
+//   @include span(12);
+//   margin-bottom: 3%;
+//   position: relative;
+
+//   @include bp(md) {
+//     @include span(6);
+  
+//     &.form__field--title,
+//     &.form__field--permissionEmail,
+//     &.form__field--permissionPost,
+//     &.form__field--paymentType,
+//     &.form__field--address-detail,
+//     &.form__field--permission,
+//     &.form__field--whatYouDid {
+//       @include span(12);
+//     }
+//   }
+// }
+
+// .form__row--address-detail,
+// .form__row--billing-detail,
+// #payin-step-two .form__nav {
+//   background-color: $smoke-grey;
+// }
+// .form__row--title {
+//   padding: 20px 10px 10px;
+//   text-align: center;
+//   h4 {
+//     @include GT-Walsheim-Bold;
+//   }
+// }
+// .form__row {
+//   @at-root {
+//     .audience__public {
+//       .form__row--title {
+//         background-color: $yellow;        
+//         h4 {
+//           color: $red;
+//         }
+//       }
+//     }
+//     .audience__school  {
+//       .form__row--title {
+//         background-color: $blue;        
+//         h4 {
+//           color: $purple;
+//         }
+//       }
+//     }
+//     .audience__work  {
+//       .form__row--title {
+//         background-color: $red;
+//         h4 {
+//           color: $yellow;
+//         }
+//       }
+//     }
+//     .audience__youth  {
+//       .form__row--title {
+//         background-color: $purple;
+//         h4 {
+//           color: $pink;
+//         }
+//       }
+//     }
+//     .form__step--payment {
+//       .form__row--title {
+//         background-color: $dark-blue;
+//         h4 {
+//           color: $white;
+//         }
+//       }
+//     }
+//   } 
+// }
+
+// .form__nav:nth-child(2) {
+//   button, .button {
+//     margin-top: 0;
+//     @include bp (md) {
+//       margin-top: 20px;
+//     }
+//   }
+// }
+// .audience,
+// .form__field--establishmentId {
+//   display: none;
+// }
+// .form__row--logos {
+//   text-align: center;
+// }
+
+// // Sorry
+// .form__row--sorry {
+//   .form__fieldset {
+//     float: none;
+//     margin: 0px auto;
+//   }
+//   h1 {
+//     text-align: center;
+//   }
+// }
+
+// // Billing address
+// .form__row--billing-detail {
+//   .form__field--address-detail {
+//     input[type=checkbox] + div {
+//       display: none;
+//     }
+//   }
+// }
+
+// // Success & Failure
+// #payin-step-four {
+//   @include container;
+//   padding: 0px 10px;
+
+//   @include bp(md) {
+//      padding: 0px span(2);
+//   }
+//   color: $white;
+//   text-align: center;
+  
+//   .form__row {
+//     background-color: $dark-blue;
+//   }
+//   .form__fieldset {
+//     @include span(12);
+//   }
+//   h3 {
+//     @include GT-Walsheim-Medium;
+//   }
+// }
+// .form__row--user-generate-content {
+//   @include bp(md) {
+//     @include span(7);
+//     float: none;
+//     margin: 0px auto;
+//   }
+//   a {
+//     color: $white;
+//   }
+//   .form-terms {
+//     position: relative;
+//     top: -15px;
+//     text-align: left;
+//     clear: both;
+//   }
+//   .form__field--permission {
+//     left: 0px;
+//     z-inde: 1;
+//   }
+//   .terms {
+//     position: relative;
+//     left: 50px;
+//     top: -15px;
+//   }
+//   .form__nav {
+//     padding: 0px;
+//   }
+// }
+// .form__row--upsell {
+//   clear: both;
+  
+//   .button {
+//     line-height: 45px;
+//   }
+// }
+// .form__row--failure {
+//   background: $dark-blue url(/images/banner/failure.jpg) center bottom no-repeat;
+//   padding-bottom: 459px;
+// }
+// .form__field--permission,
+// .form__field--whatYouDid {
+//   .required:after {
+//     content: "";
+//   }
+// }
+// .form__field--whatYouDid {
+//   .help-block {
+//     left: 0px;
+//     top: 170px;
+//   }
+// }
+// .form__field--permission {
+//   input[type=checkbox] {
+//     top: 20px;
+//   }
+// }
+
+// // Payment type
+// #comicrelief_payinbundle_payment_paymentType {
+//   @include clearfix;
+//   .form__radio {
+//     float: left;
+//     width: 88px;
+//     height: 80px;
+//     display: block;
+//     margin-bottom: 30px;
+//   }
+
+//   label {
+//     width: 50px;
+//     height: 50px;
+//     cursor: pointer;
+//     text-indent: -999px;
+//     background-image: url(/images/form/payment_icon.jpg);
+//     background-repeat: no-repeat;
+//     position: absolute;
+//     top: 0px;
+//     left: 15px;
+//     @include background-size(cover);
+//   }
+//   .payment--paypal_express {
+//     width: 120px;
+//   }
+//   .payment--paypal_express label {
+//     width: 80px;
+//     left: 5px;
+//     background-position: left center;
+//   }
+//   .payment--amex label {
+//     width: 31px;
+//     left: 27px;
+//     background-position: -124px center;
+//   }
+//   .payment--jcb label {
+//     width: 41px;
+//     left: 22px;
+//     background-position: -218px center;
+//   }
+//   .payment--mscd label {
+//     width: 55px;
+//     background-position: -309px center;
+//   }
+//   .payment--dmc label {
+//     width: 54px;
+//     background-position: -409px center;
+//   }
+//   .payment--maes label {
+//     width: 56px;
+//     background-position: -506px center;
+//   }
+//   .payment--visa label {
+//     width: 54px;
+//     background-position: -607px center;
+//   }
+//   .payment--visd label {
+//     width: 56px;
+//     background-position: -705px center;
+//   }
+//   .payment--vied label {
+//     width: 65px;
+//     background-position: -799px center;
+//   }
+
+//   input[type="radio"] {
+//     position: absolute;
+//     bottom: 10px;
+//     left: 35px;
+//   }
+
+//   input[type="radio"]:checked {
+//     background: $dark-grey;
+//     border: 1px solid $dark-grey;
+//   }
+// }
+
+// // Postcode lookup
+// input[type="text"].form__field--postcode-lookup {
+//   float: left;
+// }
+// .form__field--address-list {
+//   display: none;
+// }
+// .addressLookup {
+//   border: 1px solid $item-grey; 
+//   width: 300px;
+//   max-height: 260px;
+//   position: absolute; 
+//   background-color: #fff;
+//   margin-top: -35px;
+
+//   @include box-shadow(none);
+//   @include box-sizing(border-box);
+//   @include appearance(none); 
+
+//   @include bp(md) {
+//     max-width: 290px;
+//   }
+// }
+
+// .addressLookup .addresses {
+//   position: relative;
+//   max-height: 260px;
+//   overflow-y: auto;
+// }
+
+// .addressLookup label {
+//   margin-bottom: 0;
+//   button {
+//     padding: 8px;
+//     font-size: 14px;
+//     border-top: 1px solid $item-grey;
+//     text-decoration: none;
+//     display: block;    
+//     width: 100%;
+//     margin: 0;
+
+//     &:focus, &:hover{
+//       background-color: $light-grey;
+//       cursor: pointer;
+//       color: $red;
+//       @include transition( 0.3s ease-in-out background-color);
+//     };
+//   }
+// }
+
+// .search-box {
+//   position: relative;
+//   max-width: 290px;
+
+//   .search-box-button {
+//     height: 50px;
+//     width: 56px;
+//     border: 1px solid #c2c2c2;
+//     background: #fafafa;
+//     position: absolute;
+//     right: 0px;
+//   }
+
+//   .postcodeSearch {
+//     float: left;
+//   }
+
+//   .btnPostcodeSearch {
+//     background: url(/images/form/lookup-icon.png) center center no-repeat;
+//     outline: 0;
+//     padding: 0px;
+//     margin: 0px;
+//     width: 56px;
+//     height: 50px;
+
+//     &:hover {
+//       background-color: transparent;
+//     }
+//     &.loading {
+//       background-image: url(/images/form/loader.gif);
+//     }
+//   }
+// }
+
+// // Validation for forms
+// .help-block {
+//   background: $white url(/images/form/info-icon.png) left 2px no-repeat;
+//   font-size: $type-sm;
+//   padding-left: 23px;
+//   z-index: 2;
+//   position: absolute;
+//   left: 4px;
+//   top: 95px;
+
+//   &.form-error {
+//     background-color: transparent;
+//     background-image: url(/images/form/alert-icon.png);
+//     z-index: 1;
+//     position: absolute;
+//   }
+// }
+// #comicrelief_payinbundle_payment_paymentType {
+//   .help-block {
+//     width: 290px;
+//   }
+// }
+// .form__field--error,
+// .form-error {
+//   color: $red;
+//   font-size: $type-sm;
+// }
+// .validation__text {
+//   margin: 5px 0 0;
+//   padding: 0;
+//   .fa {
+//     margin-right: 5px;
+//   }
+// }
+// .validation__warning {
+//   @include GT-Walsheim-Medium;
+//   color: #f98026;
+// }
+// .validation__error {
+//   @include GT-Walsheim-Medium;
+//   color: #f04257;
+// }
+// .validation__success {
+//   @include GT-Walsheim-Medium;
+//   color: #458B00;
+// }
+// .validation__error > a {
+//   cursor: pointer;
+//   text-decoration: underline;
+//   color: #F0544A;
+// }
+// .validation__error > a:hover {
+//   color: #F06B65;
+// }
+
+// .validation__wrapper {
+//   position: relative;
+//   margin: 0;
+//   padding: 0;
+// }
+
+// // User generate content
+// .form-user-content--copy {
+//   display: none;
+// }
