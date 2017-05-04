@@ -2,7 +2,8 @@ version: "2"
 
 syncs:
   docker-sync-unison:
+    volumes:
+       - 'docker-sync-unison:/var/www:rw'
     src: './'
-    dest: '/var/www/html'
     sync_userid: '82'
     sync_excludes: ['.gitignore', '.git/', '.idea/']
