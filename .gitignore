@@ -10,6 +10,7 @@
 
 # Ignore temporary unison files (for macintosh)
 *.unison.tmp
+.docker-sync/*
 
 # Packages #
 ############
