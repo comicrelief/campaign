@@ -35,7 +35,7 @@
   "scripts": {
     "build": "grunt build",
     "move:blazy": "cp -fr node_modules/blazy ../../../../../../libraries/",
-    "move:patternlab": "cp -fr node_modules/@comicrelief/pattern-lab/sass/base/* templates/pattern-lab",
+    "move:patternlab": "mkdir pattern-lab && cp -fr node_modules/@comicrelief/pattern-lab/sass/base/* templates/pattern-lab",
     "postinstall": "npm run move:blazy && npm run -s move:patternlab"
   },
   "license": "GPL-2.0",
