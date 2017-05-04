@@ -1,11 +1,3 @@
-GIT
-  remote: git@github.com:comicrelief/craft-drush.git
-  revision: 036eb182118a81a99caa70c00f94f193787427fb
-  specs:
-    craft-drush (0.0.7)
-      aws-sdk (~> 2)
-      gli (= 2.13.2)
-
 GEM
   remote: https://rubygems.org/
   specs:

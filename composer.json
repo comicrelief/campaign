@@ -32,7 +32,7 @@
             "@drupal:scaffold"
         ],
         "grunt:dependencies": [
-            "cd web/profiles/contrib/cr/themes/custom/campaign_base;npm install;bundle install --frozen --without craft"
+            "cd web/profiles/contrib/cr/themes/custom/campaign_base;npm install;bundle install"
         ],
         "drupal:scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "campaign:links": "cd web/profiles/contrib/cr;ln -sf ../../../../config .;ln -fs ../../../../modules .;ln -fs ../../../../tests .;ln -fs ../../../../themes .;ln -fs ../../../../cr.in* .;ln -fs ../../../../Ge* .",
@@ -87,7 +87,11 @@
           ]
       },
         "drupal-scaffold": {
-            "source": "https://raw.githubusercontent.com/drupal/drupal/{version}/{path}"
+            "source": "https://raw.githubusercontent.com/drupal/drupal/{version}/{path}",
+            "initial": {
+                "sites/default/default.services.yml": "sites/default/services.yml",
+                "sites/default/default.settings.php": "sites/default/settings.php"
+            }
         },
         "enable-patching": true
     },
