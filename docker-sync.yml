@@ -1,8 +1,12 @@
 version: "2"
 
+options:
+  max_attempt: 5
+
 syncs:
   docker-sync-unison:
+    volumes:
+       - 'docker-sync-unison:/var/www:rw'
     src: './'
-    dest: '/var/www/html'
     sync_userid: '82'
-    sync_excludes: ['.gitignore', '.git/', '.idea/']
+    sync_excludes: ['.gitignore', '.git/', '.idea/' , 'web/sites/default/files/php/twig/*']
