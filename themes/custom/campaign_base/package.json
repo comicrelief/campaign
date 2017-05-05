@@ -30,8 +30,7 @@
     "susy": "^2.2.11"
   },
   "scripts": {
-    "build": "grunt build",
-    "postinstall": "LIBS='../../../../../../libraries'; if [ -d \"$LIBS\"/blazy ]; then rm -R \"$LIBS\"/blazy; fi; mkdir -p \"$LIBS\"/blazy; mv node_modules/blazy \"$LIBS\";"
+    "build": "grunt build"
   },
   "license": "GPL-2.0",
   "repository": {
