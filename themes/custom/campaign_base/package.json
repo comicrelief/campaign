@@ -16,7 +16,6 @@
     "grunt-bless": "^1.0.2",
     "grunt-browser-sync": "^2.2.0",
     "grunt-cli": "1.2.0",
-    "grunt-contrib-compass": "1.1.1",
     "grunt-contrib-concat": "1.0.1",
     "grunt-contrib-jshint": "1.1.0",
     "grunt-contrib-uglify": "2.2.0",
