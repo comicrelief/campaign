@@ -71,7 +71,6 @@ dependencies:
   - inline_entity_form
   - layout_plugin
   - page_manager_ui
-  - panels_ipe
   - ctools_block
   - paragraphs
   - view_mode

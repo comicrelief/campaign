@@ -131,8 +131,6 @@
         "drupal/inline_entity_form": "1.x-dev#44c5cfc",
         "drupal/layout_plugin": "1.0-alpha23",
         "drupal/page_manager": "1.0-alpha24",
-        "drupal/panels": "3.x-dev#a5400d7",
-        "drupal/panelizer": "3.0-alpha2",
         "drupal/ds": "2.6",
         "drupal/entity_reference_revisions": "1.x-dev#c1941b7",
         "drupal/view_modes_display": "1.0",
