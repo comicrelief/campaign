@@ -4,9 +4,7 @@ options:
   max_attempt: 5
 
 syncs:
-  docker-sync-unison:
-    volumes:
-       - 'docker-sync-unison:/var/www:rw'
+  docker-sync:
+    sync_strategy: 'native_osx'
     src: './'
-    sync_userid: '82'
-    sync_excludes: ['.gitignore', '.git/', '.idea/' , 'web/sites/default/files/php/twig/*']
+    sync_excludes: ['./web/sites/default/files/php/twig/', '.gitignore', '.git/', '.idea/']
