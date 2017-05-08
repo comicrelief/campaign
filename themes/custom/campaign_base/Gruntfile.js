@@ -13,7 +13,7 @@ module.exports = function (grunt) {
         },
         files: [{
             expand: true,
-            cwd: 'templates',
+            cwd: 'sass',
             src: ['{,**/}*.scss'],
             dest: 'css',
             ext: '.css'
@@ -24,9 +24,9 @@ module.exports = function (grunt) {
     sass_globbing: {
       your_target: {
         files: {
-          'templates/pattern-lab/_components.scss': 'templates/pattern-lab/components/**/*.scss',
-          'templates/pattern-lab/_variables.scss': 'templates/pattern-lab/variables/*.scss',
-          'templates/pattern-lab/_core.scss': 'templates/pattern-lab/core/*.scss'
+          'sass/pattern-lab/_components.scss': 'sass/pattern-lab/components/**/*.scss',
+          'sass/pattern-lab/_variables.scss': 'sass/pattern-lab/variables/*.scss',
+          'sass/pattern-lab/_core.scss': 'sass/pattern-lab/core/*.scss'
         },
         options: {
           useSingleQuotes: false,
@@ -95,7 +95,7 @@ module.exports = function (grunt) {
         livereload: true
       },
       sass: {
-        files: ['templates/sass/{,**/}*.{scss,sass}'],
+        files: ['sass/sass/{,**/}*.{scss,sass}'],
         tasks: ['sass'],
         options: {
           // Start a live reload server on the default port 35729
@@ -154,6 +154,7 @@ module.exports = function (grunt) {
   grunt.file.expand('node_modules/grunt-*/tasks').forEach(grunt.loadTasks);
 
   grunt.registerTask('build', [
+    // only needed if you have your own components
     // 'sass_globbing',
     'sass',
     // we need to remove modernizr downloading via composer first so we can enable it and let grunt build it

@@ -8,10 +8,6 @@ ie9-css
 # Style guide #
 /styleguide
 
-# Patternlab package files #
-
-#templates/pattern-lab
-
 # Sprite image generated #
 
 /images/generated
