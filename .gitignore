@@ -8,6 +8,9 @@
 /.bundle/
 /themes/custom/campaign_base/node_modules/
 
+# Ignore temporary unison files (for macintosh)
+*.unison.tmp
+.docker-sync/*
 
 # Packages #
 ############

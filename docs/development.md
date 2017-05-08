@@ -80,6 +80,34 @@ We use [KSS](https://github.com/kss-node/kss/blob/spec/SPEC.md) to build our sty
 
 When you create a new sass component please follow the same pattern from existem files for `grunt watch` to auto generate and update the styleguide with the new component.
 
+### Docker
+Docker can be used for local development. To run on your local machine you will need to execute the following from the root directory of the repository,
+
+```bash
+docker-compose up -d
+```
+
+#### On Mac
+The read and write access for mounted volumes is terrible for docker on mac. Because of that the easiest solution is to use docker-sync-unison. You will need homebrew installed in order to follow these instructions.
+
+The first step is to execute the following two commands to install docker sync and fswatch,
+
+```bash
+gem install docker-sync
+brew install fswatch
+```
+
+You will then need to execute the following command in order to run docker-sync, this will need to be running in the background every time you wish to use docker.
+
+```bash
+docker-sync start --daemon
+```
+Now rather than running docker up, you will need to run the following command to up docker,
+
+```bash
+docker-compose -f docker-compose.yml -f docker-compose.mac.yml up -d
+```
+
 ### IE9 CSS Issue
 
 IE 9 CSS limitation by preventing more than 4095 selectors in a CSS file.
