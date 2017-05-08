@@ -2,7 +2,7 @@
   "name": "Campaign_base",
   "version": "1.0.0",
   "dependencies": {
-    "@comicrelief/pattern-lab": "^2.0.2",
+    "@comicrelief/pattern-lab": "^3.0.0",
     "blazy": "1.8.2",
     "lightcase": "2.3.6",
     "platform": "1.3.3",
@@ -16,6 +16,7 @@
     "grunt-bless": "^1.0.2",
     "grunt-browser-sync": "^2.2.0",
     "grunt-cli": "1.2.0",
+    "grunt-contrib-imagemin": "^1.0.1",
     "grunt-contrib-concat": "1.0.1",
     "grunt-contrib-jshint": "1.1.0",
     "grunt-contrib-uglify": "2.2.0",
@@ -33,8 +34,7 @@
   "scripts": {
     "build": "grunt build",
     "move:blazy": "cp -fr node_modules/blazy ../../../../../../libraries/",
-    "move:patternlab": "mkdir templates/pattern-lab && cp -fr node_modules/@comicrelief/pattern-lab/sass/base/* templates/pattern-lab",
-    "postinstall": "npm run move:blazy && npm run -s move:patternlab"
+    "postinstall": "npm run move:blazy"
   },
   "license": "GPL-2.0",
   "repository": {

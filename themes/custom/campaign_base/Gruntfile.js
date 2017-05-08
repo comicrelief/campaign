@@ -55,14 +55,15 @@ module.exports = function (grunt) {
         "uglify": true
       }
     },
-
+    // this can be used for theme images as well .. now only moving pattern lab images | we need to move to images/patternlabb (this change has to be done in patternlab repo as well)
     imagemin: {
       dynamic: {
         files: [{
           expand: true,
-          cwd: 'images/',
+          cwd: 'node_modules/@comicrelief/pattern-lab/images/',
           src: ['**/*.{png,jpg,gif}'],
-          dest: 'dist/images'
+          // using this path to match with patterlab images path | we can review this dest
+          dest: '../../../../../../images'
         }]
       }
     },
@@ -112,18 +113,20 @@ module.exports = function (grunt) {
     kss: {
       options: {
         verbose: true,
-        css: 'css/base/core.css',
-        builder: 'node_modules/kss/builder/twig'
+        css: 'node_modules/@comicrelief/pattern-lab/kss/kss-assets/kss.css',
+        // builder from npm package can be used here
+        builder: 'kss'
       },
       all: {
         options: {
           verbose: true,
           builder: 'kss',
           title: 'PatternLab',
-          css: 'css/themes/all/all.css'
+          css: '../css/styles.css'
         },
-        src: ['sass/base', 'sass/components', 'sass/themes/all'],
-        dest: 'dist'
+        // you can choose the path to your own components here
+        src: 'node_modules/@comicrelief/pattern-lab/sass/base/components',
+        dest: 'styleguide'
       }
     },
 
@@ -151,11 +154,12 @@ module.exports = function (grunt) {
   grunt.file.expand('node_modules/grunt-*/tasks').forEach(grunt.loadTasks);
 
   grunt.registerTask('build', [
-    'sass_globbing',
+    // 'sass_globbing',
     'sass',
-    'modernizr',
-    // 'imagemin',
-    // 'kss'
+    // we need to remove modernizr downloading via composer first so we can enable it and let grunt build it
+    // 'modernizr',
+    'kss',
+    'imagemin'
   ]);
 
   grunt.registerTask('watch:dev', [
