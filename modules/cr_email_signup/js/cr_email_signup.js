@@ -131,25 +131,33 @@
        
       var _settings = Drupal.behaviors.crEmailSignUp.settings;
 
-      // Set focus back to input or select menu in case of an error 
+      // Set focus back to input or select menu in case of an error
+      // remove invalid email value from input field
+      // set focus on close button of head ESU in form's step 2      
       $(document).ajaxComplete(function(event) {
            
         if ( $(event.target.activeElement).closest(".block-cr-email-signup") ) {
-           
+          
           if ( $(".block--cr-email-signup--step-2").length ) {
             $block = $(".block--cr-email-signup--step-2");
             // focus on select menu or jquery ui select menu or on close button
             $block.find("select, .ui-selectmenu-button, .esu-head-close").focus();
           }
-
           if ( $(".block--cr-email-signup--error").length ) {
             $block = $(".block--cr-email-signup--error");
-
+            
             if ( $block.hasClass("error--firstname") ) {
+              if( $block.hasClass("error--email") ) {
+                // email input field's id isn't reliable and classname is too generic
+                $block.find("[name=email]").val('');
+              }
               $("#edit-firstname").focus();
             }
             else {
-              $block.find(".form-text").focus();
+              // email input field's id isn't reliable and classname is too generic
+              $input = $block.find("[name=email]");
+              $input.val('');
+              $input.focus();
             }
           }
           // remove keypress event handlers and re-attach it
