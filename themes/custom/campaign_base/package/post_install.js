@@ -8,4 +8,3 @@ EnvironmentDetection.getWebBasePath().then(function(basePath) {
    return LibraryManager.ensureLibs(basePath);
 
 });
-

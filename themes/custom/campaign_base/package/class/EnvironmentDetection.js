@@ -5,9 +5,9 @@ const fse = require('fs-extra');
  * @param directory {string} directory path to search
  * @returns {Promise}
  */
-function getWebDirectoryFromPath(directory)
+function getWebDirectoryFromPath (directory)
 {
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
 
         let path = directory + '/web/';
 
@@ -34,7 +34,7 @@ function getWebDirectoryFromPath(directory)
 module.exports = function () {
 
     return {
-        getWebBasePath       : function() {
+        getWebBasePath : function() {
             return getWebDirectoryFromPath(__dirname);
         }
     };
