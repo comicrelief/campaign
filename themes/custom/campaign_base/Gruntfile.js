@@ -55,15 +55,14 @@ module.exports = function (grunt) {
         "uglify": true
       }
     },
-    // this can be used for theme images as well .. now only moving pattern lab images | we need to move to images/patternlabb (this change has to be done in patternlab repo as well)
+    // Optmize theme images
     imagemin: {
       dynamic: {
         files: [{
           expand: true,
-          cwd: 'node_modules/@comicrelief/pattern-lab/images/',
+          cwd: 'original/images/',
           src: ['**/*.{png,jpg,gif}'],
-          // using this path to match with patterlab images path | we can review this dest
-          dest: '../../../../../../images'
+          dest: 'dist/images'
         }]
       }
     },
@@ -115,12 +114,12 @@ module.exports = function (grunt) {
         verbose: true,
         css: 'node_modules/@comicrelief/pattern-lab/kss/kss-assets/kss.css',
         // builder from npm package can be used here
-        builder: 'kss'
+        builder: 'node_modules/@comicrelief/pattern-lab/kss'
       },
       all: {
         options: {
           verbose: true,
-          builder: 'kss',
+          builder: 'node_modules/@comicrelief/pattern-lab/kss',
           title: 'PatternLab',
           css: '../css/styles.css'
         },
@@ -160,7 +159,7 @@ module.exports = function (grunt) {
     // we need to remove modernizr downloading via composer first so we can enable it and let grunt build it
     // 'modernizr',
     'kss',
-    'imagemin'
+    // 'imagemin'
   ]);
 
   grunt.registerTask('watch:dev', [
