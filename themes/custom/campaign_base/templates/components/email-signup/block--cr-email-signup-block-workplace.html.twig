@@ -15,7 +15,9 @@ set classes = [
       {{ content.initial_message }}
       {{ content.first_success_message }}
     </div>
-    <div class="esu-errors messages messages--error error-msg-cr-email-signup-workplace-form" role="alert" aria-atomic="true" aria-relevant="all"></div>
+    <div aria-live="assertive" aria-relevant="all" aria-atomic="true">
+      <div class="esu-errors messages messages--error error-msg-cr-email-signup-workplace-form"></div>
+    </div>
     {{ content|without('initial_message', 'first_success_message', 'title_message') }}
   </div>
 </div>
