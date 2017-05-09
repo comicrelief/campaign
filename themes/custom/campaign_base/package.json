@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "dependencies": {
     "@comicrelief/pattern-lab": "^3.0.3",
+    "async": "^2.4.0",
     "blazy": "1.8.2",
+    "fs-extra": "^3.0.1",
     "lightcase": "2.3.6",
     "platform": "1.3.3",
     "vide": "^0.5.1"
@@ -33,8 +35,7 @@
   },
   "scripts": {
     "build": "grunt build",
-    "move:blazy": "cp -fr node_modules/blazy ../../../../../../libraries/",
-    "postinstall": "npm run move:blazy"
+    "postinstall": "node --harmony package/post_install.js"
   },
   "license": "GPL-2.0",
   "repository": {
