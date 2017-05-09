@@ -108,7 +108,7 @@
         "drupal/core": "8.3.2",
         "drupal/composer_deploy": "1.0",
         "drupal/ctools": "3.0-alpha27",
-        "drupal/file_entity": "2.0-beta3",
+        "drupal/file_entity": "2.x-dev#724ec24",
         "drupal/media_entity": "1.6",
         "drupal/media_entity_instagram": "1.2",
         "drupal/media_entity_image": "1.2",
@@ -132,7 +132,7 @@
         "drupal/panels": "3.x-dev#a5400d7",
         "drupal/panelizer": "3.0-alpha2",
         "drupal/ds": "2.6",
-        "drupal/entity_reference_revisions": "1.x-dev#c1941b7",
+        "drupal/entity_reference_revisions": "1.x-dev#58ea6ad",
         "drupal/view_modes_display": "1.0",
         "drupal/social_links": "1.x-dev#f7b3273",
         "drupal/scheduled_updates": "1.x-dev#b442ff7",
@@ -167,7 +167,7 @@
         "mikeyp/google_tag": "dev-8.x-1.x"
     },
     "require-dev": {
-        "drupal/default_content": "1.x-dev#c6a79ee",
+        "drupal/default_content": "1.x-dev#68c3091",
         "drupal/stage_file_proxy": "1.0-alpha1",
         "drupal/devel": "1.x-dev#b8bcdc6",
         "drush/drush": "~8.0",

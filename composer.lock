@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "453f4cb61742c10fff0fe9d1420e1d87",
+    "content-hash": "901338575d68c0c49b03ea1a4933d7db",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2118,7 +2118,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/entity_reference_revisions",
-                "reference": "c1941b7"
+                "reference": "58ea6ad"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -2159,7 +2159,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/entity_reference_revisions"
             },
-            "time": "2016-10-16 06:30:58"
+            "time": "2017-05-08 08:28:12"
         },
         {
             "name": "drupal/fast_404",
@@ -2276,17 +2276,11 @@
         },
         {
             "name": "drupal/file_entity",
-            "version": "2.0.0-beta3",
+            "version": "dev-2.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/file_entity",
-                "reference": "8.x-2.0-beta3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/file_entity-8.x-2.0-beta3.zip",
-                "reference": "8.x-2.0-beta3",
-                "shasum": "999624a08aeb23e759b2b4a682c5086eb6d87707"
+                "reference": "724ec24"
             },
             "require": {
                 "drupal/core": "*",
@@ -2301,8 +2295,8 @@
                     "dev-2.x": "2.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-2.0-beta3",
-                    "datestamp": "1477564141"
+                    "version": "8.x-2.0-beta3+4-dev",
+                    "datestamp": "1487893384"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -2363,7 +2357,8 @@
             "homepage": "https://www.drupal.org/project/file_entity",
             "support": {
                 "source": "http://cgit.drupalcode.org/file_entity"
-            }
+            },
+            "time": "2017-02-25 10:41:07"
         },
         {
             "name": "drupal/focal_point",
@@ -3475,8 +3470,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.1+17-dev",
-                    "datestamp": "1492678443"
+                    "version": "8.x-1.1+18-dev",
+                    "datestamp": "1494315184"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -9360,6 +9355,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "drupal/file_entity": 20,
         "drupal/media_entity_browser": 20,
         "drupal/entity_browser": 20,
         "drupal/entity_embed": 20,
