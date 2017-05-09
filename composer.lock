@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ed98f5b40bf9456c079749400734d3c2",
+    "content-hash": "453f4cb61742c10fff0fe9d1420e1d87",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1384,42 +1384,10 @@
             },
             "type": "drupal-core",
             "extra": {
-                "patches": {
-                    "drupal/core": {
-                        "List unmet dependencies instead of just failing": "https://www.drupal.org/files/issues/2655104-53.patch",
-                        "Constraint violation for paragraph editing, See https://github.com/comicrelief/campaign/pull/252": "https://gist.githubusercontent.com/pvhee/14801e0f82e06f51cb0d88b9d400cbd6/raw/253f1c1e516eb24650a91d343c56a5aeb6a0ca43/PLAT-235_paragraph_constraint_violation.patch",
-                        "See https://www.drupal.org/node/2314185": "https://www.drupal.org/files/issues/drupalbehaviorerror-2314185-15.patch",
-                        "See https://www.drupal.org/node/728702. Required for platform.sh": "https://www.drupal.org/files/issues/728702-163.patch"
-                    },
-                    "drupal/config_devel": {
-                        "See https://www.drupal.org/node/2686499": "https://www.drupal.org/files/issues/config_devel-drush-config-devel-import-2686499-6.patch"
-                    },
-                    "drupal/twig_tweak": {
-                        "https://www.drupal.org/node/2833960": "https://www.drupal.org/files/issues/2833960-relative-image-path.patch"
-                    },
-                    "drupal/varnish_purge": {
-                        "https://www.drupal.org/node/2843978": "https://www.drupal.org/files/issues/2843978-multi-ips-5.patch"
-                    }
-                },
-                "installer-paths": {
-                    "themes/custom/campaign_base/libraries/modernizr": [
-                        "comicrelief/campaign-modernizr"
-                    ],
-                    "web/core": [
-                        "type:drupal-core"
-                    ],
-                    "web/modules/contrib/{$name}": [
-                        "type:drupal-module"
-                    ]
-                },
-                "drupal-scaffold": {
-                    "source": "https://raw.githubusercontent.com/drupal/drupal/{version}/{path}",
-                    "initial": {
-                        "sites/default/default.services.yml": "sites/default/services.yml",
-                        "sites/default/default.settings.php": "sites/default/settings.php"
-                    }
-                },
-                "enable-patching": true
+                "patches_applied": {
+                    "Constraint violation for paragraph editing, See https://github.com/comicrelief/campaign/pull/252": "https://gist.githubusercontent.com/pvhee/14801e0f82e06f51cb0d88b9d400cbd6/raw/253f1c1e516eb24650a91d343c56a5aeb6a0ca43/PLAT-235_paragraph_constraint_violation.patch",
+                    "See https://www.drupal.org/node/2314185": "https://www.drupal.org/files/issues/drupalbehaviorerror-2314185-15.patch"
+                }
             },
             "autoload": {
                 "psr-4": {
@@ -2164,8 +2132,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.2+1-dev",
-                    "datestamp": "1486475283"
+                    "version": "8.x-1.2+2-dev",
+                    "datestamp": "1486636986"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -3127,8 +3095,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0+9-dev",
-                    "datestamp": "1489371784"
+                    "version": "8.x-1.0+19-dev",
+                    "datestamp": "1494269584"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -3507,8 +3475,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.1+16-dev",
-                    "datestamp": "1492678144"
+                    "version": "8.x-1.1+17-dev",
+                    "datestamp": "1492678443"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -3954,8 +3922,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-beta3+5-dev",
-                    "datestamp": "1493900584"
+                    "version": "8.x-1.0-beta3+12-dev",
+                    "datestamp": "1494257585"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -4838,16 +4806,16 @@
         },
         {
             "name": "j7mbo/twitter-api-php",
-            "version": "1.0.5",
+            "version": "1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/J7mbo/twitter-api-php.git",
-                "reference": "a89ce3e294484aad7ae13dbabe45fb3928024ef8"
+                "reference": "443d22c53d621b3cc6b7e0c56daa60c5ada033f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/J7mbo/twitter-api-php/zipball/a89ce3e294484aad7ae13dbabe45fb3928024ef8",
-                "reference": "a89ce3e294484aad7ae13dbabe45fb3928024ef8",
+                "url": "https://api.github.com/repos/J7mbo/twitter-api-php/zipball/443d22c53d621b3cc6b7e0c56daa60c5ada033f7",
+                "reference": "443d22c53d621b3cc6b7e0c56daa60c5ada033f7",
                 "shasum": ""
             },
             "require": {
@@ -4863,7 +4831,7 @@
                 }
             },
             "autoload": {
-                "files": [
+                "classmap": [
                     "TwitterAPIExchange.php"
                 ]
             },
@@ -4884,7 +4852,7 @@
                 "php",
                 "twitter"
             ],
-            "time": "2015-08-03T21:35:18+00:00"
+            "time": "2017-05-08T12:10:56+00:00"
         },
         {
             "name": "masterminds/html5",
@@ -5479,16 +5447,16 @@
         },
         {
             "name": "symfony-cmf/routing",
-            "version": "1.4.0",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony-cmf/Routing.git",
-                "reference": "b93704ca098334f56e9b317932f21a4362e620db"
+                "url": "https://github.com/symfony-cmf/routing.git",
+                "reference": "fb1e7f85ff8c6866238b7e73a490a0a0243ae8ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony-cmf/Routing/zipball/b93704ca098334f56e9b317932f21a4362e620db",
-                "reference": "b93704ca098334f56e9b317932f21a4362e620db",
+                "url": "https://api.github.com/repos/symfony-cmf/routing/zipball/fb1e7f85ff8c6866238b7e73a490a0a0243ae8ac",
+                "reference": "fb1e7f85ff8c6866238b7e73a490a0a0243ae8ac",
                 "shasum": ""
             },
             "require": {
@@ -5534,7 +5502,7 @@
                 "database",
                 "routing"
             ],
-            "time": "2016-03-31T09:11:39+00:00"
+            "time": "2017-05-09T08:10:41+00:00"
         },
         {
             "name": "symfony/class-loader",
@@ -7527,16 +7495,16 @@
         },
         {
             "name": "consolidation/output-formatters",
-            "version": "3.1.8",
+            "version": "3.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/consolidation/output-formatters.git",
-                "reference": "0b50ba1134d581fd55376f3e21508dab009ced47"
+                "reference": "2e09069866bae89d3fb545365f997a40745e34d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/consolidation/output-formatters/zipball/0b50ba1134d581fd55376f3e21508dab009ced47",
-                "reference": "0b50ba1134d581fd55376f3e21508dab009ced47",
+                "url": "https://api.github.com/repos/consolidation/output-formatters/zipball/2e09069866bae89d3fb545365f997a40745e34d2",
+                "reference": "2e09069866bae89d3fb545365f997a40745e34d2",
                 "shasum": ""
             },
             "require": {
@@ -7553,7 +7521,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.x-dev"
+                    "dev-master": "3.x-dev"
                 }
             },
             "autoload": {
@@ -7572,7 +7540,7 @@
                 }
             ],
             "description": "Format text by applying transformations provided by plug-in formatters.",
-            "time": "2017-03-01T20:54:45+00:00"
+            "time": "2017-05-08T15:59:33+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -7707,7 +7675,8 @@
             "homepage": "https://www.drupal.org/project/default_content",
             "support": {
                 "source": "http://cgit.drupalcode.org/default_content"
-            }
+            },
+            "time": "2017-05-01 21:54:12"
         },
         {
             "name": "drupal/devel",
@@ -7779,7 +7748,8 @@
                 "source": "http://cgit.drupalcode.org/devel",
                 "issues": "http://drupal.org/project/devel",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
-            }
+            },
+            "time": "2017-04-29 10:26:17"
         },
         {
             "name": "drupal/drupal-driver",
