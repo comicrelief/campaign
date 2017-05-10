@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8df9e1f9a819eafbf243a31eeebcb0a3",
+    "content-hash": "a520e38575eb0ba92f1ff21a70282d9b",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -134,7 +134,7 @@
                 "source": "https://github.com/comicrelief/campaign-modernizr/tree/master",
                 "issues": "https://github.com/comicrelief/campaign-modernizr/issues"
             },
-            "time": "2017-03-18T01:31:25+00:00"
+            "time": "2017-03-18 01:31:25"
         },
         {
             "name": "composer/installers",
@@ -1226,12 +1226,12 @@
             "version": "8.2.7",
             "source": {
                 "type": "git",
-                "url": "https://github.com/drupal-composer/drupal-core.git",
+                "url": "https://github.com/drupal/core.git",
                 "reference": "5d3fb8a93514f23198ac6848b2679ef1026d2326"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal-composer/drupal-core/zipball/5d3fb8a93514f23198ac6848b2679ef1026d2326",
+                "url": "https://api.github.com/repos/drupal/core/zipball/5d3fb8a93514f23198ac6848b2679ef1026d2326",
                 "reference": "5d3fb8a93514f23198ac6848b2679ef1026d2326",
                 "shasum": ""
             },
@@ -4932,7 +4932,7 @@
                 "source": "https://github.com/mikeyp/google_tag/tree/8.x-1.x",
                 "issues": "https://github.com/mikeyp/google_tag/issues"
             },
-            "time": "2016-10-17T16:52:31+00:00"
+            "time": "2016-10-17 16:52:31"
         },
         {
             "name": "mkalkbrenner/php-htmldiff-advanced",
@@ -5181,7 +5181,7 @@
             "keywords": [
                 "instagram"
             ],
-            "time": "2013-11-13T23:10:03+00:00"
+            "time": "2013-11-13 23:10:03"
         },
         {
             "name": "psr/http-message",
@@ -7322,16 +7322,16 @@
         },
         {
             "name": "behat/mink-selenium2-driver",
-            "version": "dev-master",
+            "version": "v1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/minkphp/MinkSelenium2Driver.git",
-                "reference": "739b7570f0536bad9b07b511a62c885ee1ec029a"
+                "reference": "473a9f3ebe0c134ee1e623ce8a9c852832020288"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/minkphp/MinkSelenium2Driver/zipball/739b7570f0536bad9b07b511a62c885ee1ec029a",
-                "reference": "739b7570f0536bad9b07b511a62c885ee1ec029a",
+                "url": "https://api.github.com/repos/minkphp/MinkSelenium2Driver/zipball/473a9f3ebe0c134ee1e623ce8a9c852832020288",
+                "reference": "473a9f3ebe0c134ee1e623ce8a9c852832020288",
                 "shasum": ""
             },
             "require": {
@@ -7340,7 +7340,7 @@
                 "php": ">=5.3.1"
             },
             "require-dev": {
-                "mink/driver-testsuite": "dev-master"
+                "symfony/phpunit-bridge": "~2.7"
             },
             "type": "mink-driver",
             "extra": {
@@ -7379,7 +7379,7 @@
                 "testing",
                 "webdriver"
             ],
-            "time": "2017-02-06T08:22:23+00:00"
+            "time": "2016-03-05T09:10:18+00:00"
         },
         {
             "name": "behat/transliterator",
@@ -7659,7 +7659,8 @@
             "homepage": "https://www.drupal.org/project/default_content",
             "support": {
                 "source": "http://cgit.drupalcode.org/default_content"
-            }
+            },
+            "time": "2017-04-24 01:19:11"
         },
         {
             "name": "drupal/devel",
@@ -7743,7 +7744,8 @@
                 "source": "http://cgit.drupalcode.org/devel",
                 "issues": "http://drupal.org/project/devel",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
-            }
+            },
+            "time": "2017-04-23 23:18:56"
         },
         {
             "name": "drupal/drupal-driver",
@@ -9373,8 +9375,7 @@
         "comicrelief/campaign-modernizr": 20,
         "mikeyp/google_tag": 20,
         "drupal/default_content": 20,
-        "drupal/devel": 20,
-        "behat/mink-selenium2-driver": 20
+        "drupal/devel": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
