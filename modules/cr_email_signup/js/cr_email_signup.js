@@ -114,17 +114,6 @@
           }
         }
       });
-
-      $("select, .ui-selectmenu-button", _settings.genericEsuClass).on('keypress selectmenuselect', function(event, ui) {
-        
-        // submit selectmenu step in standard ESU form
-        if (event.which == 13) {
-          if ( $form.attr('id') == 'cr-email-signup-form' ) {
-            $submit = $form.find(".step2");
-          }
-        }
-        $submit.mousedown();
-      });
     },
 
     refocus: function () {
