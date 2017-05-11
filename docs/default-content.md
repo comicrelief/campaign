@@ -33,16 +33,6 @@ to
 	  "href": "http:\/\/default\/file\/7777?_format=hal_json"
 	},
 
-### Exporting via Drush (more automated)
-
-To update one node at a time, run
-
-	phing content:export:save -Dtype=node -Did=69
-
-If you want to update the content or you added the uuid manually in `cr_default_content.info.yml`, you only have to run
-
-	phing content:export
-
 ### Troubleshooting
 
 #### Error: PHP Fatal Error: Nesting level too deep
