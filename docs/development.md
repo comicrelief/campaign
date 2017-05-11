@@ -52,35 +52,8 @@ to import everything from `cr_article/config/install` into the database.
 
 See [Exporting default content](default-content.md) for a way to export content using Drush and using Phing.
 
-### Using Phing
-
-#### Managing configuration
-
-Run
-
-	phing config:export
-
-to export all config in one go.
-
-**Warning: you still need to add the config names to *.info.yml if not they won't be exported!**
-
-### Front End
-
-#### Grunt Tasks
-
-##### build
-
-`phing grunt:build`
-
-##### watch
-
-`phing grunt:watch`
-
-We use [KSS](https://github.com/kss-node/kss/blob/spec/SPEC.md) to build our styleguide.
-
-When you create a new sass component please follow the same pattern from existem files for `grunt watch` to auto generate and update the styleguide with the new component.
-
 ### Docker
+
 Docker can be used for local development. To run on your local machine you will need to execute the following from the root directory of the repository,
 
 ```bash
@@ -88,6 +61,7 @@ docker-compose up -d
 ```
 
 #### On Mac
+
 The read and write access for mounted volumes is terrible for docker on mac. Because of that the easiest solution is to use docker-sync-unison. You will need homebrew installed in order to follow these instructions.
 
 The first step is to execute the following two commands to install docker sync and fswatch,

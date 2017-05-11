@@ -5,17 +5,6 @@
 
 Include the following within any commit message `[ci skip]`
 
-**Ruby version manager**
-
-We recommend you to use Rbenv to manage your ruby versions.
-
-If you are having problems to set up your global ruby version, make sure you have these lines in your .bash_profile:
-
-```bash
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-```
-
 **Grunt command not found**
 
 If grunt errors with:
