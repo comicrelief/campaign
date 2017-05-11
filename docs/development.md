@@ -100,7 +100,7 @@ brew install fswatch
 You will then need to execute the following command in order to run docker-sync, this will need to be running in the background every time you wish to use docker.
 
 ```bash
-docker-sync start --daemon
+docker-sync start
 ```
 Now rather than running docker up, you will need to run the following command to up docker,
 
