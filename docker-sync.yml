@@ -4,9 +4,9 @@ options:
   max_attempt: 5
 
 syncs:
-  docker-sync-unison:
-    volumes:
-       - 'docker-sync-unison:/var/www:rw'
+  os-sync:
+    sync_strategy: 'unison'
     src: './'
-    sync_userid: '82'
-    sync_excludes: ['.gitignore', '.git/', '.idea/' , 'web/sites/default/files/php/twig/*']
+    sync_excludes: ['./web/sites/default/files/php/twig/', '.gitignore', '.git/', '.idea/', '.docker-sync']
+    sync_userid: 'from_host'
+    watch_strategy: 'fswatch'
