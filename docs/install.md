@@ -55,6 +55,8 @@ composer global require drush/drush 8.*
 
 ### Installation
 
+You can use our Docker images for an enhanced developer experience (see [docker instructions](development.md#docker).
+
 #### Composer
 
 To install the site dependencies you have to run
