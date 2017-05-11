@@ -1,7 +1,7 @@
 ## Installation
 
 1. [Requirements](install.md#requirements)
-2. [Installation](install.md#installation)
+2. [Installation](install.md#installation-1)
 3. [Ready?](install.md#ready)
 
 **Note:** Browse the [troubleshooting guide](troubleshooting.md) if you encounter any problems.
