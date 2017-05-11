@@ -1228,12 +1228,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "5d3fb8a93514f23198ac6848b2679ef1026d2326"
+                "reference": "7e3e9eb8ceb1428d36f8281fccede3c7f6469216"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/5d3fb8a93514f23198ac6848b2679ef1026d2326",
-                "reference": "5d3fb8a93514f23198ac6848b2679ef1026d2326",
+                "url": "https://api.github.com/repos/drupal/core/zipball/7e3e9eb8ceb1428d36f8281fccede3c7f6469216",
+                "reference": "7e3e9eb8ceb1428d36f8281fccede3c7f6469216",
                 "shasum": ""
             },
             "require": {
