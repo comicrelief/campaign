@@ -1,6 +1,4 @@
-## Installation and setup
-
-### Table of Contents
+## Installation
 
 1. [Requirements](install.md#requirements)
 2. [Installation](install.md#installation)
