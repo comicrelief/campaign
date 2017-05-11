@@ -1,5 +1,7 @@
 ## Testing instructions
 
+_Warning: the documentation is still relying on Phing, which has since been removed_
+
 ### Installation
 
 	brew install selenium-server-standalone
