@@ -1,4 +1,4 @@
-## Naming Convention
+## Naming Conventions
 
 The naming of folders and files is a small detail that can make all the difference when maintaining a website.
 
@@ -63,5 +63,3 @@ Use the name of the component, i.e.
 Use the name of the component, i.e. 
 
 `single-message.scss`
-
-@todo
