@@ -2,7 +2,7 @@
   "name": "Campaign_base",
   "version": "1.0.0",
   "dependencies": {
-    "@comicrelief/pattern-lab": "^3.0.5",
+    "@comicrelief/pattern-lab": "^3.1.0",
     "async": "^2.4.0",
     "blazy": "1.8.2",
     "fs-extra": "^3.0.1",
@@ -24,6 +24,7 @@
     "grunt-contrib-uglify": "2.2.0",
     "grunt-contrib-watch": "1.0.0",
     "grunt-kss": "^5.0.1",
+    "grunt-sass-tilde-importer": "^1.0.2",
     "grunt-modernizr": "^1.0.2",
     "grunt-sass": "^2.0.0",
     "grunt-sass-globbing": "^1.5.1",
