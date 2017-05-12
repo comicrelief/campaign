@@ -36,7 +36,7 @@
             "@drupal:scaffold"
         ],
         "grunt:dependencies": [
-            "cd web/profiles/contrib/cr/themes/custom/campaign_base;npm install;bundle install"
+            "cd web/profiles/contrib/cr/themes/custom/campaign_base;npm install"
         ],
         "drupal:scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "campaign:links": "cd web/profiles/contrib/cr;ln -sf ../../../../config .;ln -fs ../../../../modules .;ln -fs ../../../../tests .;ln -fs ../../../../themes .;ln -fs ../../../../cr.in* .;ln -fs ../../../../Ge* .",
