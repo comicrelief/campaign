@@ -1,5 +1,7 @@
 'use strict';
 
+var tilde_importer = require('grunt-sass-tilde-importer');
+
 module.exports = function (grunt) {
 
   grunt.initConfig({
@@ -9,7 +11,8 @@ module.exports = function (grunt) {
         options: {
             outputStyle: 'compressed',
             sourceMap: false,
-            includePaths: ['node_modules']
+            includePaths: ['node_modules'],
+            importer: tilde_importer
         },
         files: [{
             expand: true,
