@@ -72,13 +72,6 @@
   }
 }
 
-header,
-.region-highlighted,
-main,
-.paragraph {
-  @include clearfix;
-  clear: both;
-}
 main {
   position: relative;
 }
