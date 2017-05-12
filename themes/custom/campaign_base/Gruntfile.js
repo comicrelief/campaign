@@ -71,14 +71,22 @@ module.exports = function (grunt) {
     },
 
     concat: {
-        options: {
-            separator: ';',
-        },
-        dist: {
-            src: ['scripts/{,**/}*.js'],
-            dest: 'js/campaign_base.js',
-        },
+      options: {
+          separator: ';',
+      },
+      dist: {
+          src: ['scripts/{,**/}*.js'],
+          dest: 'js/campaign_base.js',
+      },
     },
+
+    uglify: {
+	    my_target: {
+	      files: {
+	        'js/campaign_base.min.js': 'js/campaign_base.js'
+	      }
+	    }
+	  },
 
     bless: {
         css: {
@@ -159,6 +167,8 @@ module.exports = function (grunt) {
     // only needed if you have your own components
     // 'sass_globbing',
     'sass',
+    'concat',
+    'uglify',
     // we need to remove modernizr downloading via composer first so we can enable it and let grunt build it
     // 'modernizr',
     'kss',
