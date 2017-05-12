@@ -1,18 +1,16 @@
 ## Updating modules
 
-All Drupal modules, themes, libraries are defined in [drupal-org.make.yml](profiles/cr/drupal-org.make.yml).
-
-The Drupal core version, including possible patches, is defined in [drupal-org-core.make.yml](profiles/cr/drupal-org.make.yml).
+All Drupal modules, themes, core and libraries are defined in [composer.json](composer.json).
 
 ### How to update a module?
 
 Whenever you want to update a module to a newer version, you need to follow a series of steps.
 
-First of all, make sure you are using a *clean database*, so run `phing build` before you start the process.
+First of all, make sure you are using a *clean database*, so run `composer drupal:install`
 
-Then, require the new version of the module with;
+Then, require the new version of the module with
 
-		composer require metatag:1.1
+	composer require metatag:1.1
 
 Make sure to also read the release notes of the new module, so you can be sure to be prepared for any drastic updates.
 
@@ -30,21 +28,9 @@ You now need to test the *upgrade path* from the old to the new version, so run 
 	metatag module :
 		8002 -   ...
 
-If all is fine, you need to test that the upgrade path worked, first by running our automated test suite, like
+If all is fine, you need to test that the upgrade path worked, first by running our automated test suite, and then also make a series of manual tests, that specifically involve the module thatyou just updated. In our case, we might want to test the metatags on the different pages.
 
-	phing test
-
-and then also make a series of manual tests, that specifically involve the module that you just updated. In our case, we might want to test the metatags on the different pages.
-
-#### Test clean install
-
-We also need to test a clean install with our new module. So, rebuild the site
-
-	phing build
-
-and do the same series of testing (manual and automated)
-
-	phing test
+Finally, review your preview environment on platform.sh and review automatic tests on Travis CI in your Pull Request.
 
 #### Test upgrade path in sites like RND17
 
@@ -55,7 +41,3 @@ To test this, you need to [follow RND17 instructions](https://github.com/comicre
 Don't forget to change the base branch of [composer.json](https://github.com/comicrelief/rnd17/blob/develop/composer.json) to use your feature branch, like
 
 	composer require comicrelief/campaign:dev-feature/XXX_MY_MODULE_UPDATE
-
-### How to update Drupal core?
-
-@todo
