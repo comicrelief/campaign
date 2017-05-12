@@ -12,7 +12,7 @@ default:
     Behat\MinkExtension:
       base_url: http://web
       selenium2:
-        wd_host: selenium:4444/wd/hub
+        wd_host: http://selenium:4444/wd/hub
     Drupal\DrupalExtension:
       api_driver: drupal
       blackbox: ~
