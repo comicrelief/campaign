@@ -9,13 +9,15 @@ set classes = [
 %}
 <div{{ attributes.addClass(classes) }}>
   <div class="block--cr-email-signup__inner-wrapper">
-    <div class="cr-email-signup--messages">
+    <div class="cr-email-signup--messages" aria-live="assertive" aria-relevant="additions text" aria-atomic="true">
       {{ content.title_message }}
       {{ content.initial_message }}
       {{ content.first_success_message }}
       {{ content.second_success_message }}
     </div>
-    <div class="esu-errors messages messages--error"></div>
+    <div aria-live="assertive" aria-relevant="all" aria-atomic="true">
+      <div class="esu-errors messages messages--error error-msg-cr-email-signup-form"></div>
+    </div>
     {{ content|without('initial_message', 'first_success_message','second_success_message', 'title_message') }}
   </div>
 </div>

@@ -14,7 +14,6 @@
     deviceValue: '',
     firstLoad: false,
     formStep: null,
-    isFirstAjaxCall: true,
    },
 
     attach: function (context, settings) {
@@ -29,6 +28,8 @@
         if(_settings.firstLoad == false) {
           _base.setDevice(this);
           _base.keyboardSubmit();
+          _base.refocus();
+
           Drupal.behaviors.crEmailSignUp.settings.firstLoad = true;
           _settings.firstLoad = Drupal.behaviors.crEmailSignUp.settings.firstLoad;
         }
@@ -83,9 +84,6 @@
         if (event.which == 13) {
           
           event.preventDefault();
-
-          // Reset flag for Ajax to run code again
-          Drupal.behaviors.crEmailSignUp.settings.isFirstAjaxCall = true;
           
           // Submit when focused on submit button or close when focused on close button
           if ( $(this).is('.form-submit, .esu-head-close') ) {
@@ -116,38 +114,39 @@
           }
         }
       });
+    },
 
-      $("select, .ui-selectmenu-button", _settings.genericEsuClass).on('keypress selectmenuselect', function(event, ui) {
-        
-        // submit selectmenu step in standard ESU form
-        if (event.which == 13) {
-          if ( $form.attr('id') == 'cr-email-signup-form' ) {
-            $submit = $form.find(".step2");
-          }
-        }
-        $submit.mousedown();
-      });
-        
+    refocus: function () {
+       
+      var _settings = Drupal.behaviors.crEmailSignUp.settings;
+
+      // Set focus back to input or select menu in case of an error
+      // remove invalid email value from input field
+      // set focus on close button of head ESU in form's step 2      
       $(document).ajaxComplete(function(event) {
-
-        // Set focus back to input or select menu in case of an error
-        // Only run code once        
-        if ( $(event.target.activeElement).closest(".block-cr-email-signup") && Drupal.behaviors.crEmailSignUp.settings.isFirstAjaxCall ) {
            
+        if ( $(event.target.activeElement).closest(".block-cr-email-signup") ) {
+          
           if ( $(".block--cr-email-signup--step-2").length ) {
             $block = $(".block--cr-email-signup--step-2");
             // focus on select menu or jquery ui select menu or on close button
             $block.find("select, .ui-selectmenu-button, .esu-head-close").focus();
           }
-
           if ( $(".block--cr-email-signup--error").length ) {
             $block = $(".block--cr-email-signup--error");
-
+            
             if ( $block.hasClass("error--firstname") ) {
+              if( $block.hasClass("error--email") ) {
+                // email input field's id isn't reliable and classname is too generic
+                $block.find("[name=email]").val('');
+              }
               $("#edit-firstname").focus();
             }
             else {
-              $block.find(".form-text").focus();
+              // email input field's id isn't reliable and classname is too generic
+              $input = $block.find("[name=email]");
+              $input.val('');
+              $input.focus();
             }
           }
           // remove keypress event handlers and re-attach it
@@ -155,12 +154,8 @@
           $("select, .ui-selectmenu-button", _settings.genericEsuClass).off('selectmenuselect');
 
           Drupal.behaviors.crEmailSignUp.keyboardSubmit();
-        }
-
-        // Prevent the clustered ajax success events from running our code multiple times per form submission
-        Drupal.behaviors.crEmailSignUp.settings.isFirstAjaxCall = false;
-        
+        }        
       });
-    },
+    }, 
   };
 })(jQuery);

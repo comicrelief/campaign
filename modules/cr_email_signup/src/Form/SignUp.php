@@ -191,6 +191,7 @@ abstract class SignUp extends FormBase {
 
         }
         else {
+          $this->cleanStatusMessage($response);
           $this->setErrorMessage(
             $response,
             self::$ERRORS['AGEGROUP'],
@@ -207,7 +208,22 @@ abstract class SignUp extends FormBase {
    * Clean the message.
    */
   private function cleanStatusMessage(AjaxResponse $response) {
-    $response->addCommand(new HtmlCommand('.esu-errors', ''));
+    $block = str_replace('.', '', $this->getClassId());
+
+    // Remove error message by emptying the error message container
+     $response->addCommand(new InvokeCommand(
+      '.error-msg-' . $block,
+      'empty'
+    ));
+
+    // Remove error classes 
+    foreach (self::$ERRORS as $classname) {
+      $response->addCommand(new InvokeCommand(
+        $this->getClassId(),
+        'removeClass',
+        [$classname]
+      ));
+    }
   }
 
   /**
@@ -238,10 +254,14 @@ abstract class SignUp extends FormBase {
    * Set the error message.
    */
   private function setErrorMessage(AjaxResponse $response, $class, $message) {
-    // Error if validation isnt met.
+    
+    // Place error message in current form
+    $block = str_replace('.', '', $this->getClassId());
+    
     $response->addCommand(new PrependCommand(
-      '.esu-errors', $message
+      '.error-msg-' . $block, $message
     ));
+
     $response->addCommand(new InvokeCommand(
       $this->getClassId(),
       'addClass',

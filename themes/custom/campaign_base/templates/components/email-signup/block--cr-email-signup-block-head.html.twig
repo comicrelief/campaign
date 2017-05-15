@@ -9,16 +9,18 @@ set classes = [
 
 <div{{ attributes.addClass(classes) }}>
   <div class="block--cr-email-signup__inner-wrapper">
-    <a role="button" class="esu-head-close">
+    <button class="esu-head-close" aria-label="close email sign up form">
       <svg class="icon" focusable="false" tabindex="-1">
         <use xlink:href="#close-cross"></use>
       </svg>
-    </a>
-    <div class="cr-email-signup--messages">
+    </button>
+    <div class="cr-email-signup--messages" aria-live="assertive" aria-relevant="additions text" aria-atomic="true">
       {{ content.initial_message }}
       {{ content.first_success_message }}
     </div>
-    <div class="esu-errors messages messages--error"></div>
+    <div aria-live="assertive" aria-relevant="all" aria-atomic="true">
+      <div class="esu-errors messages messages--error error-msg-cr-header-email-signup-form"></div>
+    </div>
     {{ content|without('initial_message', 'first_success_message') }}
   </div>
 </div>
