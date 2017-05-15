@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "52451eb70430b0317efdb6f574c69e00",
+    "content-hash": "0bf3a5da68192d723c00be0cc22646db",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -7326,16 +7326,16 @@
         },
         {
             "name": "behat/mink-selenium2-driver",
-            "version": "dev-master",
+            "version": "v1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/minkphp/MinkSelenium2Driver.git",
-                "reference": "739b7570f0536bad9b07b511a62c885ee1ec029a"
+                "reference": "473a9f3ebe0c134ee1e623ce8a9c852832020288"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/minkphp/MinkSelenium2Driver/zipball/739b7570f0536bad9b07b511a62c885ee1ec029a",
-                "reference": "739b7570f0536bad9b07b511a62c885ee1ec029a",
+                "url": "https://api.github.com/repos/minkphp/MinkSelenium2Driver/zipball/473a9f3ebe0c134ee1e623ce8a9c852832020288",
+                "reference": "473a9f3ebe0c134ee1e623ce8a9c852832020288",
                 "shasum": ""
             },
             "require": {
@@ -7344,7 +7344,7 @@
                 "php": ">=5.3.1"
             },
             "require-dev": {
-                "mink/driver-testsuite": "dev-master"
+                "symfony/phpunit-bridge": "~2.7"
             },
             "type": "mink-driver",
             "extra": {
@@ -7383,7 +7383,7 @@
                 "testing",
                 "webdriver"
             ],
-            "time": "2017-02-06 08:22:23"
+            "time": "2016-03-05T09:10:18+00:00"
         },
         {
             "name": "behat/transliterator",
@@ -9372,8 +9372,7 @@
         "drupal/better_exposed_filters": 20,
         "comicrelief/campaign-modernizr": 20,
         "mikeyp/google_tag": 20,
-        "drupal/devel": 20,
-        "behat/mink-selenium2-driver": 20
+        "drupal/devel": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

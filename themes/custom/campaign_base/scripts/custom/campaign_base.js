@@ -2,39 +2,39 @@
   $( document ).ready(function() {
 
     // todo make a function
-    $("button.meta-icons__magnify").on("click", function() {
+    $("a[role=button].meta-icons__magnify").on("click", function() {
       $(this).toggleClass("active");
       $(".search-block, .search-overlay:not('.show'), .search-overlay.search-on").toggleClass("show");
       $(".search-overlay").toggleClass("search-on");
       $(".search-overlay").removeClass("nav-on");
       $("header[role='banner'] nav, .block--cr-email-signup--head").removeClass("show");
-      $("button.meta-icons__esu-toggle").removeClass("active");
+      $("a[role=button].meta-icons__esu-toggle").removeClass("active");
       $(".search-block__form input[type=text]").focus();
     });
 
-    $("button.feature-nav-toggle").on("click", function() {
+    $("a[role=button].feature-nav-toggle").on("click", function() {
       $(this).toggleClass("is-active");
       $("header[role='banner'] nav, .search-overlay:not('.show'), .search-overlay.show.nav-on").toggleClass("show");
       $(".search-overlay").toggleClass("nav-on");
       $(".search-overlay").removeClass("search-on");
-      $("button.meta-icons__esu-toggle, .meta-icons__magnify").removeClass("active");
+      $("a[role=button].meta-icons__esu-toggle, .meta-icons__magnify").removeClass("active");
       $(".block--cr-email-signup--head, .search-block").removeClass("show");
     });
 
-    $("button.meta-icons__esu-toggle").on("click", function() {
-      $("button.meta-icons__magnify").removeClass("active");
+    $("a[role=button].meta-icons__esu-toggle").on("click", function() {
+      $("a[role=button].meta-icons__magnify").removeClass("active");
       $(".search-block, header[role='banner'] nav, .search-overlay").removeClass("show");
     });
 
     $(".search-block .icon").on("click", function() {
-      $("button.meta-icons__magnify").removeClass("active");
+      $("a[role=button].meta-icons__magnify").removeClass("active");
       $(".search-block, .search-overlay").removeClass("show");
     });
 
     // Close any active navs when we're toggling on other buttons in the nav
-    $('.meta-icons button').on('click', function (e) {
+    $('.meta-icons a[role=button]').on('click', function (e) {
       // Remove active class from hamburger nav to collapse it
-      $('button.feature-nav-toggle.is-active').removeClass('is-active');
+      $('a[role=button].feature-nav-toggle.is-active').removeClass('is-active');
     });
 
     // Close all overlays and dropdowns when we're clicking on other content
@@ -47,7 +47,7 @@
       if (!$(e.target).is('.meta-icons *, .feature-nav__icons *, .search-block *, ul.menu *, .block--cr-email-signup--head *')) {
 
         // Remove all active state classes from all of our active nav dropdowns
-        $('button.feature-nav-toggle.is-active').removeClass('is-active');
+        $('a[role=button].feature-nav-toggle.is-active').removeClass('is-active');
         $('.header__inner-wrapper nav.navigation.show, .search-block.show, .search-overlay.show, .block--cr-email-signup--head').removeClass('show');
         $('.meta-icons__esu-toggle.active, .meta-icons__magnify.active').removeClass('active');
         $('.search-overlay.search-on').removeClass('search-on');

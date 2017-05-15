@@ -38,6 +38,8 @@
     <title>{{ head_title|safe_join(' | ') }}</title>
     <css-placeholder token="{{ placeholder_token|raw }}">
     <!--[if lte IE 9]>
+    <link rel="stylesheet" href="/profiles/contrib/cr/themes/custom/campaign_base/ie9-css/styles.6.css" media="all" />
+    <link rel="stylesheet" href="/profiles/contrib/cr/themes/custom/campaign_base/ie9-css/styles.5.css" media="all" />
     <link rel="stylesheet" href="/profiles/contrib/cr/themes/custom/campaign_base/ie9-css/styles.4.css" media="all" />
     <link rel="stylesheet" href="/profiles/contrib/cr/themes/custom/campaign_base/ie9-css/styles.3.css" media="all" />
     <link rel="stylesheet" href="/profiles/contrib/cr/themes/custom/campaign_base/ie9-css/styles.2.css" media="all" />
@@ -48,7 +50,7 @@
     <js-placeholder token="{{ placeholder_token|raw }}">
   </head>
   <body{{ attributes.addClass(body_classes) }}>
-  {% include directory ~ '/templates/components/svg/spritesheet.svg' %}
+  {% include directory ~ '/node_modules/@comicrelief/pattern-lab/sass/base/components/svg/spritesheet.svg' %}
     <a href="#main-content" class="visually-hidden focusable skip-link" tabindex="1">
       {{ 'Skip to main content'|t }}
     </a>

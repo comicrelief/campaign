@@ -1,16 +1,8 @@
-## Installation and setup
+## Installation
 
-### Table of Contents
-
-1. [Project Requirements](install.md#requirements)
-  - [PHP Configurations](install.md#php-configurations)
-  - [Drush v8](install.md#drush-v8)
-  - [Bundler](install.md#install-bundler)
-2. [Installation](install.md#installation)
-  - [Environment.yml](install.md#composer)
-  - [Application Requirements](install.md#application-requirements)
-  - [Grunt](install.md#grunt)
-3. [Ready](install.md#ready)
+1. [Requirements](install.md#requirements)
+2. [Installation](install.md#installation-1)
+3. [Ready?](install.md#ready)
 
 **Note:** Browse the [troubleshooting guide](troubleshooting.md) if you encounter any problems.
 
@@ -21,13 +13,12 @@ The minimum software requirements to run Drupal 8 can be found at: [https://www.
 
 The other essentials needed to run this solution are:
 - drush latest 8.*
-- bundler
 or
 - [Docker](https://docs.docker.com/engine/installation/)
 
 After we've configured PHP on your local environment we'll move on to installing these prerequisites.
 
-### PHP Configurations
+#### PHP Configurations
 
 Ensure your environment can run PHP from the command line with a php.ini configuration file loaded in. This will be essential for Drush and Phing to work.
 
@@ -50,7 +41,7 @@ In the php.ini file, ensure the `date.timezone` property is enabled and set with
 date.timezone = Europe/London
 ```
 
-### Drush 8
+#### Drush 8
 
 Drush 8 is required for Drupal 8. Install instructions can be found [here](http://x-team.com/2015/02/install-drush-8-drupal-8-without-throwing-away-drush-6-7/).
 
@@ -62,49 +53,38 @@ Alternatively you can use `composer` to install drush:
 composer global require drush/drush 8.*
 ```
 
-If you want to use drush 6 or 7 again then simply:
+### Installation
 
-```  
-composer global require drush/drush 6.*
-composer global require drush/drush 7.*
-```
+You can use our Docker images for an enhanced developer experience (see [docker instructions](development.md#docker).
 
-### Install Bundler
+#### Composer
 
-```bash
-gem install bundler
-```
-
-## Installation
-### Composer
-
-To install the site dependencies you have to execute
+To install the site dependencies you have to run
 ```bash
 composer install
 ```
-Once this is done you'll have a drupal site ready to use.
+Once this is done you'll have all your dependencies in place to install your Drupal website.
 
-In order to compile the css you'll need to execute
+In order to compile CSS you'll need to execute
 ```bash
 composer grunt:build
 ```
-and after that you are ready to install drupal with
+and install drupal with
 ```bash
 composer drupal:install
 ```
-If you have any issue with the database please check the config of the file `web/sites/default/settings.php`
+If you have any issue with the database please check the config of the file `web/sites/default/settings.php`.
 
-Or you if you want to execute all those commands in one go with `default_content` enabled
+Or you if you want to execute all those commands in one go - including some sample content provided by `cr_default_content`, you can run
 ```bash
 composer campaign:build
 ```
-Unfortunately is not safe to run this command if you are using Docker, because copies a bad setting.php file
 
-### Grunt
+#### Grunt
 
-Grunt is a javascript task runner we've used to kick off various tasks within the build process, these include but are not limited to;
+Grunt is a javascript task runner we've used to kick off various tasks within the build process.
 
-Grunt will watch all SASS / TWIG / JS / Images assets for changes and will:
+Grunt will watch all SASS, TWIG, JS, images assets for changes and will:
 - Compile CSS
 - jshint JS
 - Generate compass image sprites
@@ -113,13 +93,12 @@ Grunt will watch all SASS / TWIG / JS / Images assets for changes and will:
 
 Grunt will compile CSS, remove comments, remove sass source file, minify and concatenate js.
 
-##### Running Compass compile via Grunt cli
-
-Alternatively you compile all SASS manually at anytime via the command below:
+You compile all SASS manually at anytime via the command below:
 
 ```bash
 composer grunt:build
 ```
+
 ## Ready?
 
 You now have everything to start developing. But before you do have a read of [Rules of the Road](rules_of_the_road.md) to understand and follow some guiding principles and best-practice approaches.

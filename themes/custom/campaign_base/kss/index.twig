@@ -9,14 +9,15 @@
   <meta name="viewport" content="width=device-width">
 
   <link rel="stylesheet" href="kss-assets/kss.css">
-  <link rel="stylesheet" href="../css/styles.css">
   {{ styles|raw }}
 </head>
 <body id="kss-node" {% if template.isItem %}class="kss-fullscreen-mode"{% endif %}>
 {% include directory ~ '/spritesheet.svg' %}
 <div class="kss-sidebar kss-style">
   <header class="kss-header">
-    <h1 class="kss-doc-title">{{ options.title }}</h1>
+    <a href="/" title="Home" rel="home" tabindex="2">
+      <img width="150" src="kss-assets/pattern_logo.png" alt="Home">
+    </a>
   </header>
   <nav class="kss-nav">
     <ul class="kss-nav__menu">
@@ -70,12 +71,6 @@
         {% set headerElement = (section.depth > 6) ? 'h6' : 'h' ~ section.depth %}
         <{{ headerElement }} class="kss-title kss-title--level-{{ section.depth }}">
           <a class="kss-title__permalink" href="#kssref-{{ section.referenceURI }}">
-            <span class="kss-title__ref">
-              {{ section.referenceNumber }}
-              <span class="kss-title__permalink-hash">
-                {{ hasNumericReferences ? '#permalink' : section.reference }}
-              </span>
-            </span>
             {{ section.header }}
           </a>
         </{{ headerElement }}>
@@ -225,7 +220,7 @@
 <script src="kss-assets/kss-guides.js"></script>
 <script src="kss-assets/kss-markup.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script type="text/javascript" src="../libraries/lightcase/src/js/lightcase.js"></script>
+<script type="text/javascript" src="../../../../profiles/contrib/cr/themes/custom/campaign_base/node_modules/lightcase/src/js/lightcase.js"></script>
 <script>
   prettyPrint();
   var spy = new ScrollSpy('#kss-node', {
@@ -263,6 +258,8 @@
     });
   });
 </script>
+<script src="https://use.typekit.net/uqq2rzq.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
 {{ scripts|raw }}
 
 {# This will only be included in the demo page. #}
