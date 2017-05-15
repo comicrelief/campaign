@@ -1,140 +1,189 @@
 'use strict';
 
+var tilde_importer = require('grunt-sass-tilde-importer');
+
 module.exports = function (grunt) {
 
-    grunt.initConfig({
-        watch: {
+  grunt.initConfig({
+
+    sass: {
+      dist: {
+        options: {
+            outputStyle: 'compressed',
+            sourceMap: false,
+            includePaths: ['node_modules'],
+            importer: tilde_importer
+        },
+        files: [{
+            expand: true,
+            cwd: 'sass',
+            src: ['{,**/}*.scss'],
+            dest: 'css',
+            ext: '.css'
+        }]
+      }
+    },
+
+    sass_globbing: {
+      your_target: {
+        files: {
+          'sass/pattern-lab/_components.scss': 'sass/pattern-lab/components/**/*.scss',
+          'sass/pattern-lab/_variables.scss': 'sass/pattern-lab/variables/*.scss',
+          'sass/pattern-lab/_core.scss': 'sass/pattern-lab/core/*.scss'
+        },
+        options: {
+          useSingleQuotes: false,
+          signature: '/* generated with grunt-sass-globbing */\n\n'
+        }
+      }
+    },
+
+    modernizr: {
+      dist: {
+        "crawl": false,
+        "customTests": [],
+        "dest": "libraries/modernizr/modernizr-custom.js",
+        "tests": [
+          "svg",
+          "touchevents",
+          "flexbox",
+          "cssmask",
+          "mediaqueries",
+          "objectfit",
+          "details"
+        ],
+        "options": [
+          "setClasses"
+        ],
+        "uglify": true
+      }
+    },
+    // Optmize theme images
+    imagemin: {
+      dynamic: {
+        files: [{
+          expand: true,
+          cwd: 'original/images/',
+          src: ['**/*.{png,jpg,gif}'],
+          dest: 'dist/images'
+        }]
+      }
+    },
+
+    concat: {
+      options: {
+          separator: ';',
+      },
+      dist: {
+          src: ['scripts/{,**/}*.js'],
+          dest: 'js/campaign_base.js',
+      },
+    },
+
+    uglify: {
+	    my_target: {
+	      files: {
+	        'js/campaign_base.min.js': 'js/campaign_base.js'
+	      }
+	    }
+	  },
+
+    bless: {
+        css: {
             options: {
-                livereload: true,
-                nospawn: true
+                'out-dir': 'ie9-css/',
+                imports : false
             },
-            campaign_base: {
-                files: ['templates/{,**/}*.{scss,sass}'],
-                tasks: ['compass:dev']
-            },
-            templates: {
-                files: ['templates/{,**/}*.html.twig']
-            },
-            images: {
-                files: ['images/**']
-            },
-            css: {
-                files: ['css/{,**/}*.css']
-            },
-            js: {
-                files: ['scripts/{,**/}*.js', '!js/{,**/}*.min.js'],
-                tasks: ['concat:dist', 'uglify:dev'] //'jshint',
-            }
-        },
-
-        concat: {
-            options: {
-                separator: ';',
-            },
-            dist: {
-                src: ['scripts/{,**/}*.js'],
-                dest: 'js/campaign_base.js',
-            },
-        },
-
-        shell: {
-            styleguide: {
-                command: 'node_modules/kss/bin/kss --builder kss --extend-drupal8 --source templates/ --destination styleguide --title "Campaign Styleguide" --homepage "styleguide.md"'
-            },
-        },
-
-        compass: {
-            options: {
-                config: 'config.rb',
-                bundleExec: true,
-                force: true
-            },
-            dev: {
-                options: {
-                    environment: 'development'
-                }
-            },
-            dist: {
-                options: {
-                    environment: 'production'
-                }
-            }
-        },
-
-        bless: {
-            css: {
-                options: {
-                    'out-dir': 'ie9-css/',
-                    imports : false
-                },
-                files: {
-                    'ie9-css/styles': 'css/styles.css'
-                }
-            }
-        },
-
-        jshint: {
-            options: {
-                jshintrc: '.jshintrc'
-            },
-            all: ['scripts/{,**/}*.js', '!scripts/{,**/}*.min.js']
-        },
-
-        uglify: {
-            dev: {
-                options: {
-                    mangle: false,
-                    compress: false,
-                    beautify: true
-                },
-                files: [{
-                    expand: true,
-                    flatten: true,
-                    cwd: 'js',
-                    dest: 'js',
-                    src: ['campaign_base.js', '!campaign_base.min.js'],
-                    rename: function (dest, src) {
-                        var folder = src.substring(0, src.lastIndexOf('/'));
-                        var filename = src.substring(src.lastIndexOf('/'), src.length);
-                        filename = filename.substring(0, filename.lastIndexOf('.'));
-                        return dest + '/' + folder + filename + '.min.js';
-                    }
-                },
-                ]
-            },
-            dist: {
-                options: {
-                    mangle: false,
-                    compress: {}
-                },
-                files: [{
-                    expand: true,
-                    flatten: true,
-                    cwd: 'js',
-                    dest: 'js',
-                    src: ['campaign_base.js', '!campaign_base.min.js'],
-                    rename: function (dest, src) {
-                        var folder = src.substring(0, src.lastIndexOf('/'));
-                        var filename = src.substring(src.lastIndexOf('/'), src.length);
-                        filename = filename.substring(0, filename.lastIndexOf('.'));
-                        return dest + '/' + folder + filename + '.min.js';
-                    }
-                },
-                ]
+            files: {
+                'ie9-css/styles': 'css/styles.css'
             }
         }
-    });
+    },
 
-    grunt.file.expand('node_modules/grunt-*/tasks').forEach(grunt.loadTasks);
+    watch: {
+      options: {
+        livereload: true
+      },
+      sass: {
+        files: ['sass/sass/{,**/}*.{scss,sass}'],
+        tasks: ['sass'],
+        options: {
+          // Start a live reload server on the default port 35729
+          livereload: true
+        }
+      },
+      // images: {
+      //   files: ['images/**']
+      // },
+      css: {
+        files: ['css/{,**/}*.css']
+      }
+    },
 
-    grunt.registerTask('style', ['shell:styleguide']);
+    kss: {
+      options: {
+        verbose: true,
+        css: 'node_modules/@comicrelief/pattern-lab/kss/kss-assets/kss.css',
+        // builder from npm package can be used here
+        builder: 'node_modules/@comicrelief/pattern-lab/kss'
+      },
+      all: {
+        options: {
+          verbose: true,
+          builder: 'node_modules/@comicrelief/pattern-lab/kss',
+          title: 'PatternLab',
+          css: '../css/styles.css'
+        },
+        // you can choose the path to your own components here
+        src: 'node_modules/@comicrelief/pattern-lab/sass/base/components',
+        dest: 'styleguide'
+      }
+    },
 
-    grunt.registerTask('build', [
-        'shell:styleguide',
-        'concat:dist',
-        'uglify:dist',
-        'compass:dist',
-        'bless',
-    ]);
+    concurrent: {
+      target: {
+        tasks: ['connect', 'watch'],
+        options: {
+          logConcurrentOutput: true
+        }
+      }
+    },
 
+    connect: {
+      dev: {
+        port: 1337,
+        base: 'dist'
+      }
+    },
+    // * add backstopjs
+    clean: {
+      build: ['tests/visual/reference']
+    }
+  });
+
+  grunt.file.expand('node_modules/grunt-*/tasks').forEach(grunt.loadTasks);
+
+  grunt.registerTask('build', [
+    // only needed if you have your own components
+    // 'sass_globbing',
+    'sass',
+    'concat',
+    'uglify',
+    // we need to remove modernizr downloading via composer first so we can enable it and let grunt build it
+    // 'modernizr',
+    'kss',
+    // 'imagemin'
+  ]);
+
+  grunt.registerTask('watch:dev', [
+    'concurrent:target'
+  ]);
+
+  grunt.registerTask('devserver', [
+    'connect:dev'
+  ]);
+  
+  grunt.registerTask('clean:test', [
+    'clean'
+  ]);
 };

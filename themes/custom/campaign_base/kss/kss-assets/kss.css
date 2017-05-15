@@ -4,16 +4,16 @@
   font-size: 16px;
   line-height: 24px; }
   .kss-style a {
-    color: #0645ad;
+    color: #fff;
     text-decoration: none;
     transition-property: color;
     transition-duration: 0.5s; }
     .kss-style a:visited {
-      color: #0645ad; }
+      color: #fff; }
     .kss-style a:hover, .kss-style a:focus {
-      color: #2272f7; }
+      color: white; }
     .kss-style a:active {
-      color: #faa700; }
+      color: #fff; }
     .kss-style a:hover, .kss-style a:active {
       outline: 0; }
   .kss-style p {
@@ -41,7 +41,7 @@
     color: #666;
     margin: 0;
     padding-left: 24px;
-    border-left: 0.5em #d9d9d9 solid; }
+    border-left: 0.5em #d8d8d8 solid; }
   .kss-style hr {
     display: block;
     height: 2px;
@@ -52,8 +52,10 @@
     padding: 0; }
   .kss-style pre, .kss-style code, .kss-style kbd, .kss-style samp {
     font-family: Menlo, "Ubuntu Mono", "Lucida Console", "Courier New", Courier, monospace;
-    color: #2b2b2b;
+    color: #2a2a2a;
     font-size: 1em; }
+  .kss-style code {
+    color: #fff; }
   .kss-style pre {
     white-space: pre;
     overflow: scroll;
@@ -63,10 +65,8 @@
     line-height: 1.6em;
     font-size: 11px;
     padding: 10px;
-    border-left: 10px solid #ccc;
     margin: 10px 0;
-    overflow: auto;
-    background: rgba(185, 185, 185, 0.25); }
+    overflow: auto; }
   .kss-style ins {
     color: #111;
     background: #ff9;
@@ -150,10 +150,24 @@
     @media screen and (min-width: 769px) {
       #kss-node .kss-main {
         width: 80%;
-        margin-left: 20%;
-        padding: 0 20px 0 30px; } }
+        margin-left: 20%; } }
+    #kss-node .kss-main section.kss-section {
+      padding: 0 20px 0 30px; }
+  #kss-node .kss-title--level-1 {
+    background-color: #df1a40;
+    margin-top: 0;
+    padding: 20px 20px 20px 30px;
+    text-transform: uppercase; }
+    #kss-node .kss-title--level-1 a {
+      color: #fff; }
+  #kss-node .kss-title--level-2 {
+    display: inline;
+    float: left;
+    margin-top: 0;
+    margin-right: 20px; }
   #kss-node .kss-sidebar {
-    border-bottom: 1px solid #ddd; }
+    border-bottom: 1px solid #ddd;
+    background: #29022c; }
     @media screen and (min-width: 769px) {
       #kss-node .kss-sidebar {
         position: fixed;
@@ -161,12 +175,7 @@
         height: 100%;
         overflow: auto;
         padding: 0 10px 0 20px;
-        border-bottom: 0;
-        background-image: url(noise-low.png), -ms-radial-gradient(#fff, #eee);
-        background-image: url(noise-low.png), -o-radial-gradient(#fff, #eee);
-        background-image: url(noise-low.png), -webkit-radial-gradient(#fff, #eee);
-        background-image: url(noise-low.png), radial-gradient(#fff, #eee);
-        box-shadow: inset -10px 0 10px -10px rgba(0, 0, 0, 0.7); } }
+        border-bottom: 0; } }
 
 #kss-node .kss-doc-title {
   margin: 0; }
@@ -191,7 +200,8 @@
       padding-right: 0; } }
 #kss-node .kss-nav__menu-link {
   position: relative;
-  display: inline-block; }
+  display: inline-block;
+  font-size: 18px; }
   @media screen and (min-width: 769px) {
     #kss-node .kss-nav__menu-link:before {
       content: ' ';
@@ -201,7 +211,7 @@
       height: 100%;
       background-color: transparent; } }
   #kss-node .kss-nav__menu-link.is-in-viewport:before {
-    background-color: #000;
+    background-color: #fff;
     width: 5px;
     transition: background-color .4s, width .6s; }
 #kss-node .kss-nav__menu-child {
@@ -211,18 +221,18 @@
       display: block;
       list-style-type: none;
       margin: 0;
-      padding: 0; }
+      padding: 0 0 0 10px; }
       #kss-node .kss-nav__menu-child li:first-child {
-        margin-top: 10px;
-        border-top: 1px solid #ccc;
         padding: 10px 0 0; }
       #kss-node .kss-nav__menu-child li:last-child {
-        margin-bottom: 10px;
-        border-bottom: 1px solid #ccc;
         padding: 0 0 10px; } }
+  #kss-node .kss-nav__menu-child .kss-nav__menu-link {
+    font-size: 15px;
+    color: #ac9dad; }
 #kss-node .kss-nav__ref {
   color: #333;
-  font-weight: bold; }
+  font-weight: bold;
+  display: none; }
   #kss-node .kss-nav__ref:after {
     content: ' '; }
 #kss-node .kss-nav__ref-child {
@@ -247,6 +257,8 @@
   /* a function name */
   /* Use higher contrast and text-weight for printable form. */
   /* Specify class=linenums on a pre to get line numbering */ }
+  #kss-node .kss-section--depth-1 .kss-source {
+    display: none; }
   #kss-node .kss-section {
     margin-bottom: 48px; }
     #kss-node .kss-section.is-fullscreen {
@@ -283,7 +295,7 @@
     color: #000;
     text-decoration: none; }
     #kss-node .kss-title__permalink:hover, #kss-node .kss-title__permalink:focus, #kss-node .kss-title__permalink:active {
-      color: #0645ad; }
+      color: #000; }
       @media screen and (min-width: 607px) {
         #kss-node .kss-title__permalink:hover .kss-title__permalink-hash, #kss-node .kss-title__permalink:focus .kss-title__permalink-hash, #kss-node .kss-title__permalink:active .kss-title__permalink-hash {
           display: inline; } }
@@ -387,8 +399,7 @@
   #kss-node .kss-parameters__default-value code {
     white-space: nowrap; }
   #kss-node .kss-modifier__wrapper {
-    border: 1px solid #ccc;
-    padding: 0 10px 10px; }
+    padding: 0; }
   #kss-node .is-fullscreen .kss-modifier__wrapper {
     margin-left: -20px;
     margin-right: -20px;
@@ -400,7 +411,8 @@
     padding: 10px;
     border-bottom: 1px solid #ccc;
     background-color: #eee;
-    font-weight: bold; }
+    font-weight: bold;
+    display: none; }
   #kss-node .is-fullscreen .kss-modifier__heading {
     margin: 0 20px 10px;
     border: 1px solid #ccc; }
@@ -474,9 +486,9 @@
     left: 0; }
   #kss-node .kss-markup {
     margin: 24px 0;
-    border: 1px solid #ccc; }
+    background-color: #29022c;
+    color: white; }
     #kss-node .kss-markup[open] summary {
-      border-bottom: 1px solid #ccc;
       margin-bottom: 3px; }
     #kss-node .kss-markup summary {
       padding-left: 10px; }
@@ -484,6 +496,8 @@
       margin: 0; }
   #kss-node .kss-source {
     font-size: 80%; }
+    #kss-node .kss-source code {
+      color: #000; }
   #kss-node .kss-github {
     display: none; }
     @media screen and (min-width: 501px) {
@@ -499,7 +513,7 @@
   #kss-node #kssref-16 .kss-modifier__example {
     height: 184px; }
   #kss-node .pln {
-    color: #000; }
+    color: #fff; }
   #kss-node .str {
     color: #080; }
   #kss-node .kwd {
@@ -511,13 +525,13 @@
   #kss-node .lit {
     color: #066; }
   #kss-node .pun, #kss-node .opn, #kss-node .clo {
-    color: #660; }
+    color: #d93cb4; }
   #kss-node .tag {
-    color: #008; }
+    color: #25b4ef; }
   #kss-node .atn {
-    color: #606; }
+    color: #d93cb4; }
   #kss-node .atv {
-    color: #080; }
+    color: #3ad531; }
   #kss-node .dec, #kss-node .var {
     color: #606; }
   #kss-node .fun {
@@ -552,16 +566,8 @@
     /* Alternate shading for lines */ }
     #kss-node ol.linenums li {
       min-height: 24px;
-      border-bottom: 1px solid #eee;
-      padding: 0 10px;
-      background: #fff; }
+      padding: 0 10px; }
       #kss-node ol.linenums li:first-child {
         padding-top: 3px; }
-    #kss-node ol.linenums li.L0,
-    #kss-node ol.linenums li.L2,
-    #kss-node ol.linenums li.L4,
-    #kss-node ol.linenums li.L6,
-    #kss-node ol.linenums li.L8 {
-      background: #fcfcfc; }
 
 /*# sourceMappingURL=kss.css.map */

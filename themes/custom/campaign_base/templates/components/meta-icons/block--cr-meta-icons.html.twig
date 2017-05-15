@@ -13,22 +13,22 @@
   {{ title_suffix }}
   {% block content %}
     <div class="meta-icons">
-      <button class="meta-icons__magnify has-tooltip" title="Search" >
+      <a role="button" class="meta-icons__magnify has-tooltip" title="Search" >
         <svg class="icon" focusable="false" tabindex= "-1">
           <use xlink:href="#icon-magnify"></use>
         </svg>
-      </button>
-      <a href="https://my.rednoseday.com/user/login" target="_blank" class="meta-icons__login has-tooltip" title="Log in to your Giving Page" >
+      </a>
+      <a role="button" href="https://my.rednoseday.com/user/login" target="_blank" class="meta-icons__login has-tooltip" title="Log in to your Giving Page" >
         <svg class="icon" focusable="false" tabindex= "-1">
           <use xlink:href="#icon-login"></use>
         </svg>
       </a>
-      <button class="meta-icons__esu-toggle has-tooltip" title="Sign up for emails">
+      <a role="button" class="meta-icons__esu-toggle has-tooltip" title="Sign up for emails">
         <svg class="icon" focusable="false" tabindex= "-1">
           <use xlink:href="#envelope"></use>
         </svg>
         <span>Sign up for emails</span>
-      </button>
+      </a>
     </div>
   {% endblock %}
 </div>

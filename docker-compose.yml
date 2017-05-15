@@ -46,11 +46,10 @@ services:
     hostname: drupal-rabbit
 
   selenium:
-    image: selenium/standalone-firefox:2.53.1-beryllium
+    image: selenium/standalone-firefox-debug:3.4.0-chromium
     ports:
       - 4445:4444
-    environment:
-      JAVA_OPTS: -Djava.security.egd=file:/dev/./urandom
+      - 5901:5900
 
 volumes:
   db-store:

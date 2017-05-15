@@ -2,9 +2,8 @@
 /js
 
 # Compiled CSS and CSS MAP #
-/css/*.css
-/css/*.css.map
-/ie9-css
+css
+ie9-css
 
 # Style guide #
 /styleguide
