@@ -1,0 +1,46 @@
+// // Styles for IE 8 and lower.
+
+// // Set the legacy IE support variables. These override the !default values set
+// // in _init.scss.
+// // $legacy-support-for-ie6 : false;
+// // $legacy-support-for-ie7 : false;
+// // $legacy-support-for-ie8 : true;
+
+// // Force the breakpoint mixin to discard all media queries except ones with
+// // $no-query set to true. Since we use the default values in styles.scss,
+// // we don't need to set these in _init.scss.
+// // $breakpoint-no-queries  : true;
+// // $breakpoint-no-query-fallbacks : true;
+// // $breakpoint-no-queries: '.lte-ie8';
+
+// @import "breakpoint";
+
+// @include bkpt-set('no queries', false);
+// @include bkpt-set('no query fallbacks', true);
+
+// .lte-ie8 {
+// 	.cards__item {
+// 		width: 33%;
+// 	}
+// 	h1 {
+// 	  font-size: 70px;
+// 	  line-height: 70px;
+// 	}
+// 	h2 {
+// 	  font-size: 40px;
+// 	  line-height: 44px;
+// 	}
+// 	h3 {
+// 		font-size: 34px;
+// 		line-height: 38px;
+// 	}
+// 	h4 {
+// 		font-size: 30px;
+// 		line-height: 32px;
+// 	}
+// 	p {
+// 		font-size: 18px;
+// 		line-height: 24px;
+// 	}
+// }
+// @import "styles";

@@ -15,7 +15,6 @@ Think about contributing? That's great, but please do read our [contributing gui
 * [Information, hints, tips and troubleshooting](docs/troubleshooting.md)
 * [Development instructions](docs/development.md)
 * [Naming Convention](docs/naming-convention.md)
-* [Deployment instructions](docs/deployment.md)
 * [Testing](docs/testing.md)
 * [Blog post: building rednoseday.com on Drupal 8](https://technology.comicrelief.com/2016/12/21/building-rednoseday-com-on-drupal-8/)
 

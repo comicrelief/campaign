@@ -7,10 +7,10 @@ $kss-colors-foreground    : #444;
 $kss-colors-heading       : #111;
 $kss-colors-quotes        : #666;
 
-$kss-colors-link          : #0645ad;
-$kss-colors-link-visited  : #0645ad;
+$kss-colors-link          : #fff;
+$kss-colors-link-visited  : #fff;
 $kss-colors-link-hover    : lighten($kss-colors-link, 20%);
-$kss-colors-link-active   : #faa700;
+$kss-colors-link-active   : #fff;
 
 $kss-font-body            : Helvetica, 'Helvetica Neue', Arial, sans-serif;
 $kss-font-code            : Menlo, 'Ubuntu Mono', 'Lucida Console', 'Courier New', Courier, monospace;
@@ -90,6 +90,10 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
     font-size: 1em;
   }
 
+  code {
+    color: #fff;
+  }
+
   pre {
     white-space: pre;
     overflow: scroll;
@@ -99,10 +103,8 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
     line-height: 1.6em;
     font-size: 11px;
     padding: 10px;
-    border-left: 10px solid #ccc;
     margin: 10px 0;
     overflow: auto;
-    background: rgba(185, 185, 185, 0.25);
   }
 
   ins {
@@ -201,12 +203,32 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
     @media screen and (min-width: 769px) {
       width: 80%;
       margin-left: 20%;
+    }
+    section.kss-section {
       padding: 0 20px 0 30px;
     }
   }
 
+  .kss-title--level-1 {
+    background-color: #df1a40;
+    margin-top: 0;
+    padding: 20px 20px 20px 30px;
+    text-transform: uppercase;
+    a {
+      color: #fff;
+    }
+  }
+
+  .kss-title--level-2 {
+    display: inline;
+    float: left;
+    margin-top: 0;
+    margin-right: 20px;
+  }
+
   .kss-sidebar {
     border-bottom:1px solid #ddd;
+    background: #29022c;
 
     @media screen and (min-width: 769px) {
       position: fixed;
@@ -215,11 +237,6 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
       overflow: auto;
       padding: 0 10px 0 20px;
       border-bottom: 0;
-      background-image: url(noise-low.png), -ms-radial-gradient(#fff, #eee);
-      background-image: url(noise-low.png), -o-radial-gradient(#fff, #eee);
-      background-image: url(noise-low.png), -webkit-radial-gradient(#fff, #eee);
-      background-image: url(noise-low.png), radial-gradient(#fff, #eee);
-      box-shadow: inset -10px 0 10px -10px rgba(0,0,0,0.7);
     }
   }
 }
@@ -265,6 +282,7 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
   .kss-nav__menu-link {
     position: relative;
     display: inline-block;
+    font-size: 18px;
 
     &:before {
       @media screen and (min-width: 769px) {
@@ -278,7 +296,7 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
     }
 
     &.is-in-viewport:before {
-      background-color: #000;
+      background-color: #fff;
       width: 5px;
       transition: background-color .4s, width .6s;
     }
@@ -291,27 +309,29 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
       display: block;
       list-style-type: none;
       margin: 0;
-      padding: 0;
+      padding: 0 0 0 10px;
 
       // @TODO: The ul is output even when there are no children. Fix this, so
       // we can put these :first-child and :last child styles back on the ul.
       li:first-child {
-        margin-top: 10px;
-        border-top: 1px solid #ccc;
         padding: 10px 0 0;
       }
 
       li:last-child {
-        margin-bottom: 10px;
-        border-bottom: 1px solid #ccc;
         padding: 0 0 10px;
       }
+    }
+
+    .kss-nav__menu-link {
+      font-size: 15px;
+      color: #ac9dad;
     }
   }
 
   .kss-nav__ref {
     color: #333;
     font-weight: bold;
+    display: none;
 
     &:after {
       content: ' ';
@@ -327,6 +347,12 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
 // ------------------------------------------------------------------------------
 
 #kss-node {
+
+  .kss-section--depth-1 {
+    .kss-source {
+      display: none;
+    }
+  }
 
   .kss-section {
     margin-bottom: ($kss-vertical-rhythm * 2);
@@ -378,7 +404,7 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
     &:hover,
     &:focus,
     &:active {
-      color: $kss-colors-link;
+      color: #000;
 
       @media screen and (min-width: 607px) {
         .kss-title__permalink-hash {
@@ -534,8 +560,7 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
   }
 
   .kss-modifier__wrapper {
-    border: 1px solid #ccc;
-    padding: 0 10px 10px;
+    padding: 0;
   }
   .is-fullscreen .kss-modifier__wrapper {
     // Un-do padding on .kss-section.
@@ -552,6 +577,7 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
     border-bottom: 1px solid #ccc;
     background-color: #eee;
     font-weight: bold;
+    display: none;
   }
   .is-fullscreen .kss-modifier__heading {
     margin: 0 20px 10px;
@@ -659,10 +685,10 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
 
   .kss-markup {
     margin: $kss-vertical-rhythm 0;
-    border: 1px solid #ccc;
+    background-color: #29022c;
+    color: white;
 
     &[open] summary {
-      border-bottom: 1px solid #ccc;
       margin-bottom: 3px;
     }
 
@@ -677,6 +703,9 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
 
   .kss-source {
     font-size: 80%;
+    code {
+      color: #000;
+    }
   }
 
   .kss-github {
@@ -713,7 +742,7 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
   // ------------------------------------------------------------------------------
 
   /* SPAN elements with the classes below are added by prettyprint. */
-  .pln { color: #000 }  /* plain text */
+  .pln { color: #fff }  /* plain text */
 
   .str { color: #080 }  /* string content */
   .kwd { color: #008 }  /* a keyword */
@@ -721,10 +750,10 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
   .typ { color: #606 }  /* a type name */
   .lit { color: #066 }  /* a literal value */
   /* punctuation, lisp open bracket, lisp close bracket */
-  .pun, .opn, .clo { color: #660 }
-  .tag { color: #008 }  /* a markup tag name */
-  .atn { color: #606 }  /* a markup attribute name */
-  .atv { color: #080 }  /* a markup attribute value */
+  .pun, .opn, .clo { color: #d93cb4 }
+  .tag { color: #25b4ef }  /* a markup tag name */
+  .atn { color: #d93cb4 }  /* a markup attribute name */
+  .atv { color: #3ad531 }  /* a markup attribute value */
   .dec, .var { color: #606 }  /* a declaration; a variable name */
   .fun { color: red }  /* a function name */
 
@@ -749,9 +778,7 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
 
     li {
       min-height: $kss-vertical-rhythm;
-      border-bottom: 1px solid #eee;
       padding: 0 10px;
-      background: #fff;
 
       &:first-child {
         padding-top: 3px;
@@ -763,7 +790,7 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
     li.L4,
     li.L6,
     li.L8 {
-      background: #fcfcfc;
+      // background: #fcfcfc;
     }
   }
 }

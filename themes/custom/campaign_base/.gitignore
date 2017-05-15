@@ -2,8 +2,16 @@
 /js
 
 # Compiled CSS and CSS MAP #
-/css/*.css
-/css/*.css.map
+css
+ie9-css
 
 # Style guide #
 /styleguide
+
+# Sprite image generated #
+
+/images/generated
+
+# Libraries #
+
+/libraries

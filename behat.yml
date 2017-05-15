@@ -1,0 +1,63 @@
+default:
+  suites:
+    local:
+      paths: [ %paths.base%/tests/behat/features ]
+      contexts:
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\DrushContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - BehatTests\DrupalCRFeatureContext
+  extensions:
+    Behat\MinkExtension:
+      base_url: http://web
+      selenium2:
+        wd_host: http://selenium:4444/wd/hub
+    Drupal\DrupalExtension:
+      api_driver: drupal
+      blackbox: ~
+      drush_driver: drush
+      drupal:
+        drupal_root: web/
+      drush:
+        root: web/
+      region_map:
+        content: .layout-content
+        esu_standard: "#block-emailsignupblockstandard"
+        esu_workplace: .cr-email-signup-workplace-form
+        esu_fundraise: .cr-email-signup-fundraise-form
+        esu_register_interest: .cr-email-signup-register-interest-form
+
+travis:
+  suites:
+    travis:
+      paths: [ %paths.base%/tests/behat/features ]
+      contexts:
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\DrushContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - BehatTests\DrupalCRFeatureContext
+      filters:
+        tags: ~@not-on-travis
+  extensions:
+    Behat\MinkExtension:
+      base_url: http://127.0.0.1:8080
+      goutte: ~
+      selenium2:
+        wd_host: http://127.0.0.1:4444/wd/hub
+      files_path: tests/behat/files
+    Drupal\DrupalExtension:
+      api_driver: drupal
+      blackbox: ~
+      drush_driver: drush
+      drupal:
+        drupal_root: web/
+      drush:
+        root: web/
+      region_map:
+        content: .layout-content
+        esu_standard: "#block-emailsignupblockstandard"
+        esu_workplace: .cr-email-signup-workplace-form
+        esu_fundraise: .cr-email-signup-fundraise-form
+        esu_register_interest: .cr-email-signup-register-interest-form

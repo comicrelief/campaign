@@ -52,44 +52,40 @@ to import everything from `cr_article/config/install` into the database.
 
 See [Exporting default content](default-content.md) for a way to export content using Drush and using Phing.
 
-### Using Phing
+### Docker
 
-#### Managing configuration
+Docker can be used for local development. To run on your local machine you will need to execute the following from the root directory of the repository,
 
-Run
+```bash
+docker-compose up -d
+```
 
-	phing config:export
+#### On Mac
 
-to export all config in one go.
+The read and write access for mounted volumes is terrible for docker on mac. Because of that the easiest solution is to use docker-sync-unison. You will need homebrew installed in order to follow these instructions.
 
-**Warning: you still need to add the config names to *.info.yml if not they won't be exported!**
+The first step is to execute the following two commands to install docker sync and fswatch,
 
-### Front End
+```bash
+gem install docker-sync
+brew install fswatch
+```
 
-#### Grunt Tasks
+You will then need to execute the following command in order to run docker-sync, this will need to be running in the background every time you wish to use docker.
 
-##### build
+```bash
+docker-sync start
+```
+Now rather than running docker up, you will need to run the following command to up docker,
 
-`phing grunt:build`
-
-##### watch
-
-`phing grunt:watch`
-
-We use [KSS](https://github.com/kss-node/kss/blob/spec/SPEC.md) to build our styleguide.
-
-When you create a new sass component please follow the same pattern from existem files for `grunt watch` to auto generate and update the styleguide with the new component.
+```bash
+docker-compose -f docker-compose.yml -f docker-compose.mac.yml up -d
+```
 
 ### IE9 CSS Issue
 
 IE 9 CSS limitation by preventing more than 4095 selectors in a CSS file.
 
 To fix this issue we have used [Bless](http://blesscss.com/) to split our styles.css into files with less than 4095 selectors and committed them. We have created a condition in our html twig template to add those files only if lte IE9.
-
-This is now run as part of the Grunt job
-
-	phing grunt:build
-
-and you can add any IE9-specific fixes to /ie9-css/styles-override.css, to avoid bloating the global styles futher.
 
 Currently our IE9 traffic is less than 1% . This is temporary fix and eventually at some point we will stop supporting IE9 and remove those conditions and files.

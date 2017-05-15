@@ -1,25 +1,16 @@
 # Ignore paths that contain user-generated content.
-/cr/modules/custom/cr_default_content/content/user/
 /.idea/
 
 /web/
-/cr/modules/contrib/
-/drush/*/
-/cr/themes/custom/campaign_base/libraries/
 /vendor/
-/sites/*/files/
-
-/sites/*/services*.yml
-/sites/*/environment.yml
-/sites/*/settings.local.php
-/sites/default/config/
 
 # Ignore bundle files
 /.bundle/
 /themes/custom/campaign_base/node_modules/
 
-# Ignore SimpleTest multi-site environment.
-/sites/simpletest/
+# Ignore temporary unison files (for macintosh)
+*.unison.tmp
+.docker-sync/*
 
 # Packages #
 ############
@@ -58,17 +49,11 @@ Thumbs.db
 .sass-cache
 
 # Icon spritesheet #
-/cr/themes/custom/campaign_base/images/generated/
 
 # Things in the core directory that Drupal 8 commits in the repository.
 !core/**/*.gz
 
-build.properties
-
 PATCHES.txt
-
-/tests/behat/vendor/
-/tests/behat/behat.yml
 
 
 # Ignore the Bless-produced IE9 stylesheets as these get remade each build and will cause merge issues

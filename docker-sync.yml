@@ -1,0 +1,12 @@
+version: "2"
+
+options:
+  max_attempt: 5
+
+syncs:
+  os-sync:
+    sync_strategy: 'unison'
+    src: './'
+    sync_excludes: ['./web/sites/default/files/php/twig/', '.gitignore', '.git/', '.idea/', '.docker-sync']
+    sync_userid: 'from_host'
+    watch_strategy: 'fswatch'

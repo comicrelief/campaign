@@ -1,0 +1,10 @@
+version: '2.1'
+services:
+  web:
+    volumes:
+      - os-sync:/var/www/html:nocopy
+      - $SSH_AUTH_SOCK:/ssh-agent
+
+volumes:
+  os-sync:
+    external: true
