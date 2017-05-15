@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d2d74b1c2ddaf4de61842581ccc90e8d",
+    "content-hash": "52451eb70430b0317efdb6f574c69e00",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3449,7 +3449,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/paragraphs",
-                "reference": "7308c6d"
+                "reference": "99a6673"
             },
             "require": {
                 "drupal/core": "*",
@@ -3469,8 +3469,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.1+20-dev",
-                    "datestamp": "1494338288"
+                    "version": "8.x-1.1+22-dev",
+                    "datestamp": "1494548285"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -3504,7 +3504,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/paragraphs"
             },
-            "time": "2017-02-17 08:51:53"
+            "time": "2016-11-04 01:09:18"
         },
         {
             "name": "drupal/pathauto",
@@ -3916,8 +3916,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-rc1+7-dev",
-                    "datestamp": "1494517685"
+                    "version": "8.x-1.0-rc2+1-dev",
+                    "datestamp": "1494524885"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -7677,7 +7677,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/devel",
-                "reference": "a83e6a769da3d0bca5fc593d58933605a9f0d7e6"
+                "reference": "d6ac6e41a6a70b37ee8a168794f5661bca3cd672"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -7691,8 +7691,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-rc2+4-dev",
-                    "datestamp": "1493461743"
+                    "version": "8.x-1.0-rc2+8-dev",
+                    "datestamp": "1494613085"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -8543,16 +8543,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.8.3",
+            "version": "v0.8.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "1dd4bbbc64d71e7ec075ffe82b42d9e096dc8d5e"
+                "reference": "17cf432bb80d9198df239b80d00a29155bd74d82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/1dd4bbbc64d71e7ec075ffe82b42d9e096dc8d5e",
-                "reference": "1dd4bbbc64d71e7ec075ffe82b42d9e096dc8d5e",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/17cf432bb80d9198df239b80d00a29155bd74d82",
+                "reference": "17cf432bb80d9198df239b80d00a29155bd74d82",
                 "shasum": ""
             },
             "require": {
@@ -8612,7 +8612,7 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2017-03-19T21:40:44+00:00"
+            "time": "2017-05-12T15:41:55+00:00"
         },
         {
             "name": "sebastian/finder-facade",
