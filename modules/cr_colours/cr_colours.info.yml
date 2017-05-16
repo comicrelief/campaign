@@ -1,5 +1,5 @@
-name: CR Config Management
+name: CR Colours
 type: module
-description: Provides configuration management services to modules.
+description: Provide colour configuration to comic relief modules.
 core: 8.x
 package: Comic Relief

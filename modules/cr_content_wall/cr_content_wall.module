@@ -30,5 +30,5 @@ function cr_content_wall_field_cw_view_mode(FieldStorageDefinitionInterface $def
  * @see options_allowed_values()
  */
 function cr_content_wall_field_cw_bg_colour(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
-  return \Drupal::service('cr.colours.color_service')->getStandardColoursArray();
+  return \Drupal::service('cr.colours.colour_service')->getStandardColoursArray();
 }

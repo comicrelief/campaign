@@ -14,7 +14,7 @@ use Drupal\Core\Field\FieldStorageDefinitionInterface;
  * @see options_allowed_values()
  */
 function cr_rich_text_paragraph_field_bg_single_msg_bg_colour(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
-  return \Drupal::service('cr.colours.color_service')->getStandardColoursArray();
+  return \Drupal::service('cr.colours.colour_service')->getStandardColoursArray();
 }
 
 /**

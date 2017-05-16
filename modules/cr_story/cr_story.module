@@ -14,7 +14,7 @@ use Drupal\Core\Field\FieldStorageDefinitionInterface;
  * @see options_allowed_values()
  */
 function cr_story_field_cr_story_row_bg_col(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
-  return \Drupal::service('cr.colours.color_service')->getStandardColoursArray();
+  return \Drupal::service('cr.colours.colour_service')->getStandardColoursArray();
 }
 
 /**
