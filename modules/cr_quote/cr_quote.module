@@ -14,7 +14,7 @@ use Drupal\Core\Field\FieldStorageDefinitionInterface;
  * @see options_allowed_values()
  */
 function cr_quote_field_background_colour(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
-  return \Drupal::service('cr.config_management.color_service')->getStandardColoursArray();
+  return \Drupal::service('cr.colours.color_service')->getStandardColoursArray();
 }
 
 /**
@@ -23,5 +23,5 @@ function cr_quote_field_background_colour(FieldStorageDefinitionInterface $defin
  * @see options_allowed_values()
  */
 function cr_quote_field_author_background_colour(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
-  return \Drupal::service('cr.config_management.color_service')->getStandardColoursArray();
+  return \Drupal::service('cr.colours.color_service')->getStandardColoursArray();
 }

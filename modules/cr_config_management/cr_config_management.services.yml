@@ -1,5 +1,0 @@
-services:
-  cr.config_management.color_service:
-    class: Drupal\cr_config_management\Service\ColourService
-    arguments:
-      - '@string_translation'

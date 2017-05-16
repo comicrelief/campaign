@@ -21,7 +21,7 @@ function cr_iframe_page_attachments(array &$attachments) {
  * @see options_allowed_values()
  */
 function cr_iframe_field_cr_iframe_embedded_bg(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
-  return \Drupal::service('cr.config_management.color_service')->getStandardColoursArray();
+  return \Drupal::service('cr.colours.color_service')->getStandardColoursArray();
 }
 
 /**

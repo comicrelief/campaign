@@ -36,5 +36,5 @@ function cr_teaser_field_teaser_link_colour(FieldStorageDefinitionInterface $def
  * @see options_allowed_values()
  */
 function cr_teaser_field_teaser_bg_colour(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
-  return \Drupal::service('cr.config_management.color_service')->getStandardColoursArray();
+  return \Drupal::service('cr.colours.color_service')->getStandardColoursArray();
 }

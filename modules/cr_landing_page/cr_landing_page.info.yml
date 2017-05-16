@@ -5,7 +5,7 @@ core: 8.x
 package: Comic Relief
 
 dependencies:
-  - cr_config_management
+  - cr_colours
 
 config_devel:
   - node.type.landing

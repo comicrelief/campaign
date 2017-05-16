@@ -14,7 +14,7 @@ use Drupal\Core\Field\FieldStorageDefinitionInterface;
  * @see options_allowed_values()
  */
 function cr_cards_field_cr_cards_background(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
-  return \Drupal::service('cr.config_management.color_service')->getStandardColoursArray();
+  return \Drupal::service('cr.colours.color_service')->getStandardColoursArray();
 }
 
 /**
@@ -23,5 +23,5 @@ function cr_cards_field_cr_cards_background(FieldStorageDefinitionInterface $def
  * @see options_allowed_values()
  */
 function cr_card_field_cr_card_background(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
-    return \Drupal::service('cr.config_management.color_service')->getStandardColoursArray();
+    return \Drupal::service('cr.colours.color_service')->getStandardColoursArray();
 }

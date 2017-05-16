@@ -274,8 +274,8 @@ function cr_update_8031() {
 }
 
 /**
- * Install cr_config_management
+ * Install cr_colours
  */
 function cr_update_8032() {
-  installer()->install(['cr_config_management']);
+  installer()->install(['cr_colours']);
 }
