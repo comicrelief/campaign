@@ -14,24 +14,7 @@ use Drupal\Core\Field\FieldStorageDefinitionInterface;
  * @see options_allowed_values()
  */
 function cr_quote_field_background_colour(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
-  $values = [
-    'bg--white' => t('White'),
-    'bg--black' => t('Black'),
-    'bg--red' => t('Red'),
-    'bg--blue' => t('Blue'),
-    'bg--yellow' => t('Yellow'),
-    'bg--green' => t('Green'),
-    'bg--teal' => t('Teal'),
-    'bg--royal-blue' => t('Royal blue'),
-    'bg--pink' => t('Pink'),
-    'bg--purple' => t('Purple'),
-    'bg--jasper-grey' => t('Jasper grey'),
-    'bg--gainsboro-grey' => t('Gainsboro grey'),
-    'bg--light-grey' => t('Light grey'),
-    'bg--smoke-grey' => t('Smoke grey'),
-    'bg--dark-blue' => t('Dark blue'),
-  ];
-  return $values;
+  return \Drupal::service('cr.config_management.color_service')->getStandardColoursArray();
 }
 
 /**
@@ -40,22 +23,5 @@ function cr_quote_field_background_colour(FieldStorageDefinitionInterface $defin
  * @see options_allowed_values()
  */
 function cr_quote_field_author_background_colour(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
-  $values = [
-    'bg--white' => t('White'),
-    'bg--black' => t('Black'),
-    'bg--red' => t('Red'),
-    'bg--blue' => t('Blue'),
-    'bg--yellow' => t('Yellow'),
-    'bg--green' => t('Green'),
-    'bg--teal' => t('Teal'),
-    'bg--royal-blue' => t('Royal blue'),
-    'bg--pink' => t('Pink'),
-    'bg--purple' => t('Purple'),
-    'bg--jasper-grey' => t('Jasper grey'),
-    'bg--gainsboro-grey' => t('Gainsboro grey'),
-    'bg--light-grey' => t('Light grey'),
-    'bg--smoke-grey' => t('Smoke grey'),
-    'bg--dark-blue' => t('Dark blue'),
-  ];
-  return $values;
+  return \Drupal::service('cr.config_management.color_service')->getStandardColoursArray();
 }

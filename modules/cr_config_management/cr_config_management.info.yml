@@ -1,0 +1,5 @@
+name: CR Config Management
+type: module
+description: Provides configuration management services to modules.
+core: 8.x
+package: Comic Relief
