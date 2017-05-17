@@ -1,5 +1,0 @@
-services:
-  cr_single_msg.color_service:
-    class: Drupal\cr_single_msg\Service\ColourService
-    arguments:
-      - '@string_translation'

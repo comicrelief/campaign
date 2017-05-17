@@ -1,0 +1,5 @@
+name: CR Colours
+type: module
+description: Provide colour configuration to comic relief modules.
+core: 8.x
+package: Comic Relief

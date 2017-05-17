@@ -4,6 +4,9 @@ description: Landing page content type
 core: 8.x
 package: Comic Relief
 
+dependencies:
+  - cr_colours
+
 config_devel:
   - node.type.landing
   - core.entity_form_display.node.landing.default

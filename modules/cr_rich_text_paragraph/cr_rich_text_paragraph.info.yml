@@ -6,6 +6,7 @@ package: Comic Relief
 dependencies:
   - paragraphs
   - entity_reference_revisions
+  - cr_colours
 config_devel:
 # Paragraph config
   - core.entity_form_display.paragraph.cr_rich_text_paragraph.default

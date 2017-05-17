@@ -11,6 +11,7 @@ dependencies:
   - cr_teaser
   - cr_media
   - view_mode
+  - cr_colours
 
 config_devel:
   # Paragraph config

@@ -1,12 +1,12 @@
 <?php
 
-namespace Drupal\cr_single_msg\Service;
+namespace Drupal\cr_colours\Service;
 
 use Drupal\Core\StringTranslation\TranslationManager;
 
 /**
  * Class ColourService
- * @package Drupal\cr_single_msg\Service
+ * @package Drupal\cr_colours\Service
  */
 class ColourService
 {
@@ -29,7 +29,7 @@ class ColourService
      * Get an array of available colours.
      * @return array
      */
-    public function get()
+    public function getStandardColoursArray()
     {
         return [
             'bg--white' => $this->translationManager->translate('White'),

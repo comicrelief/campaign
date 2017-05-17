@@ -3,6 +3,8 @@ type: module
 description: Contains config for the quote block.
 core: 8.x
 package: Comic Relief
+dependencies:
+  - cr_colours
 config_devel:
   - image.style.cr_410_wide
   - image.style.cr_410_wide_2x_

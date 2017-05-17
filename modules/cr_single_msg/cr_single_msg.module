@@ -14,7 +14,7 @@ use Drupal\Core\Field\FieldStorageDefinitionInterface;
  * @see options_allowed_values()
  */
 function cr_single_msg_field_single_msg_bg(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
-  return \Drupal::service('cr_single_msg.color_service')->get();
+  return \Drupal::service('cr.colours.colour_service')->getStandardColoursArray();
 }
 
 /**
@@ -23,7 +23,7 @@ function cr_single_msg_field_single_msg_bg(FieldStorageDefinitionInterface $defi
  * @see options_allowed_values()
  */
 function cr_single_msg_field_single_msg_body_bg_colour(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
-    return \Drupal::service('cr_single_msg.color_service')->get();
+  return \Drupal::service('cr.colours.colour_service')->getStandardColoursArray();
 }
 
 /**

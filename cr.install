@@ -272,3 +272,10 @@ function cr_update_8030() {
 function cr_update_8031() {
   installer()->install(['composer_deploy','crop']);
 }
+
+/**
+ * Install cr_colours
+ */
+function cr_update_8032() {
+  installer()->install(['cr_colours']);
+}
