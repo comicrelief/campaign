@@ -1,7 +1,7 @@
 version: '2.1'
 services:
   web:
-    image: comicrelief/php7-drupal:latest
+    image: comicrelief/php-drupal:latest
     ports:
       - 8080:80
       - 8081:443
@@ -46,7 +46,7 @@ services:
     hostname: drupal-rabbit
 
   selenium:
-    image: selenium/standalone-firefox-debug:3.4.0-chromium
+    image: selenium/standalone-firefox-debug:2.53.1-beryllium
     ports:
       - 4445:4444
       - 5901:5900
