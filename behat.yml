@@ -22,11 +22,13 @@ default:
       drush:
         root: web/
       region_map:
-        content: .layout-content
-        esu_standard: "#block-emailsignupblockstandard"
-        esu_workplace: .cr-email-signup-workplace-form
-        esu_fundraise: .cr-email-signup-fundraise-form
-        esu_register_interest: .cr-email-signup-register-interest-form
+              content: .layout-content
+              esu_standard: "#block-emailsignupblockstandard"
+              esu_workplace: .cr-email-signup-workplace-form
+              esu_fundraise: .cr-email-signup-fundraise-form
+              esu_register_interest: .cr-email-signup-register-interest-form
+              header_nav: .feature-nav
+              footer: .cr-footer
 
 travis:
   suites:
