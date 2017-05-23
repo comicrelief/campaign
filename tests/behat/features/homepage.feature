@@ -1,7 +1,7 @@
 Feature: Homepage
   To check the header links are present and go to where they are supposed to
 
-  @default-content @wip
+  @default-content
   Scenario: Header-links
     Given I am on the homepage
     Then I should see the link "Home" in the "header_nav" region
