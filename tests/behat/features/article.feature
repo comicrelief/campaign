@@ -48,7 +48,7 @@ Feature: Article
     And I press "Add new Publishing Date"
     And I wait for AJAX loading to finish
     Then I should see "Update Date/time"
-    And I enter todays date for "publishing_date[form][inline_entity_form][update_timestamp][0][value][date]"
+    And I enter today date for "publishing_date[form][inline_entity_form][update_timestamp][0][value][date]"
     And I enter the time for "publishing_date[form][inline_entity_form][update_timestamp][0][value][time]"
     And I press "Create Publishing Date"
     And I wait for AJAX loading to finish
