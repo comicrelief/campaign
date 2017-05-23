@@ -1,11 +1,12 @@
 name: Meta Icons Block
+type: module
 description: Meta icons block.
 core: 8.x
-package: Custom
+package: Comic Relief
+
 dependencies:
   - node
   - block
-type: module
 
 config_devel:
   - block.block.metaiconsblock
