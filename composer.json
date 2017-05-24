@@ -165,7 +165,6 @@
         "drupal/memcache": "2.x-dev#908c0a2",
         "drupal/cdn": "3.0",
         "drupal/better_exposed_filters": "3.x-dev#19f3da2",
-        "comicrelief/campaign-modernizr": "dev-master",
         "mikeyp/google_tag": "dev-8.x-1.x"
     },
     "require-dev": {
