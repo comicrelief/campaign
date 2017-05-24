@@ -15,10 +15,6 @@
         },
         {
             "type": "vcs",
-            "url": "git@github.com:comicrelief/campaign-modernizr.git"
-        },
-        {
-            "type": "vcs",
             "url": "git@github.com:previousnext/drush_cmi_tools.git"
         },
         {
@@ -83,7 +79,6 @@
             }
         },
         "installer-paths": {
-          "themes/custom/campaign_base/libraries/modernizr": ["comicrelief/campaign-modernizr"],
           "web/core": [
               "type:drupal-core"
           ],
