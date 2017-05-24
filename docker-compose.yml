@@ -1,7 +1,7 @@
 version: '2.1'
 services:
   web:
-    image: comicrelief/php7-drupal:latest
+    image: comicrelief/php-drupal:latest
     ports:
       - 8080:80
       - 8081:443

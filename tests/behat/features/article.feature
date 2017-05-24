@@ -1,5 +1,3 @@
-
-
 Feature: Article
   This feature covers news articles
 
@@ -20,7 +18,7 @@ Feature: Article
     And I wait for "3" seconds
     Then I should see the link "Greg James begins his Gregathlon for Sport Relief"
 
-  @api
+  @api @default-content
   Scenario: News page /yplan-partners-sport-relief
     Given I am logged in as a user with the "editor" role
     And I am on "/news-tv-and-events/news/yplan-partners-sport-relief"
@@ -45,24 +43,25 @@ Feature: Article
     And the metatag property "og:image" should contain the value "news/2016-02/greg_james_gregathlon_belfast_and_so_it_begins"
     And the metatag property "og:url" should contain the value "news-tv-and-events/news/greg-james-begins-his-gregathlon-sport-relief"
 
-  @api @javascript @not-on-travis @wip
+  @api @javascript @not-on-travis
   Scenario: Create news articles using scheduled updates
     Given I am logged in as a user with the "editor" role
     And I am on "node/add/article"
     And I enter "Test Scheduled article" for "edit-title-0-value"
     And I press "Add new Publishing Date"
     And I wait for AJAX loading to finish
-    And I enter todays date for "publishing_date[form][inline_entity_form][update_timestamp][0][value][date]"
+    Then I should see "Update Date/time"
+    And I enter today date for "publishing_date[form][inline_entity_form][update_timestamp][0][value][date]"
     And I enter the time for "publishing_date[form][inline_entity_form][update_timestamp][0][value][time]"
     And I press "Create Publishing Date"
     And I wait for AJAX loading to finish
-    Then I should see "Update Date/time"
-    And I enter "tag1" for "edit-field-article-category-target-id"
+    Then I should see "Publishing date"
+    And I enter "tag1" for "field_article_category[target_id]"
     And I scroll ".unpublish input" into view
     And press "Save as unpublished"
     # check the content cannot be seen if logged out
     Given I am not logged in
-    And I am on "news-tv-and-events/news/test-scheduled-article"
+    And I am on "news-tv-and-events/news"
     Then I should not see "Test Scheduled article"
     # wait till content should be published then log back in
     And I wait for "30" seconds
@@ -74,9 +73,8 @@ Feature: Article
     Then I should see "Cron ran successfully."
     And the cache has been cleared
     # logout and see the article loaded
-    # Given I am not logged in
+    Given I am not logged in
     And I am on "news-tv-and-events/news/test-scheduled-article"
-    And I wait for "3" seconds
     Then I should see "Test Scheduled article"
 
   @api @not-on-travis
@@ -86,7 +84,7 @@ Feature: Article
     | title       | Comic Relief raises £1bn over 30-year existence |
     | field_article_intro | Since the charity was founded 30 years ago, with more than £78m raised. |
     | body | Comic Relief founder Richard Curtis said he was "enormously proud" of the charity's achievements. |
-    | field_article_image | profiles/cr/tests/behat/files/400x4:3.png |
+    | field_article_image | profiles/contrib/cr/tests/behat/files/400x4:3.png |
     | field_youtube_url | https://youtu.be/JCUFs2qJ1bs |
     | field_article_category | Fundraising |
     Then I should see "Richard Curtis"
@@ -97,7 +95,7 @@ Feature: Article
     | field_article_publish_date | 2015-02-08 17:45:00                       |
     | field_article_intro | Audiences across the UK are in for a night of first-class entertainment.  |
     | body | A one-off Luther special will be screened, with Idris Elba starring alongside Lenny Henry, Rio Ferdinand, Denise Lewis, Louis Smith, Ian Wright and David Haye. |
-    | field_article_image | profiles/cr/tests/behat/files/400x4:3.png |
+    | field_article_image | profiles/contrib/cr/tests/behat/files/400x4:3.png |
     | field_article_category | Fundraising |
     Then I should see "Luther"
     And I should see "Related news"
