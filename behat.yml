@@ -27,6 +27,7 @@ default:
         esu_workplace: .cr-email-signup-workplace-form
         esu_fundraise: .cr-email-signup-fundraise-form
         esu_register_interest: .cr-email-signup-register-interest-form
+        footer: .cr-footer
 
 travis:
   suites:
@@ -61,3 +62,4 @@ travis:
         esu_workplace: .cr-email-signup-workplace-form
         esu_fundraise: .cr-email-signup-fundraise-form
         esu_register_interest: .cr-email-signup-register-interest-form
+        footer: .cr-footer
