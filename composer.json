@@ -15,10 +15,6 @@
         },
         {
             "type": "vcs",
-            "url": "git@github.com:comicrelief/campaign-modernizr.git"
-        },
-        {
-            "type": "vcs",
             "url": "git@github.com:previousnext/drush_cmi_tools.git"
         },
         {
@@ -39,7 +35,7 @@
             "cd web/profiles/contrib/cr/themes/custom/campaign_base;npm install"
         ],
         "drupal:scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
-        "campaign:links": "cd web/profiles/contrib/cr;ln -sf ../../../../config .;ln -fs ../../../../modules .;ln -fs ../../../../tests .;ln -fs ../../../../themes .;ln -fs ../../../../cr.in* .;ln -fs ../../../../Ge* .",
+        "campaign:links": "cd web/profiles/contrib/cr;ln -sf ../../../../config .;ln -fs ../../../../modules .;ln -fs ../../../../tests .;ln -fs ../../../../themes .;ln -fs ../../../../cr.in* .",
         "campaign:scaffold": [
             "cp ci/platform/settings.php web/sites/default/settings.php",
             "mkdir -p web/profiles/contrib/cr",
@@ -83,7 +79,6 @@
             }
         },
         "installer-paths": {
-          "themes/custom/campaign_base/libraries/modernizr": ["comicrelief/campaign-modernizr"],
           "web/core": [
               "type:drupal-core"
           ],
@@ -165,7 +160,6 @@
         "drupal/memcache": "2.x-dev#908c0a2",
         "drupal/cdn": "3.0",
         "drupal/better_exposed_filters": "3.x-dev#19f3da2",
-        "comicrelief/campaign-modernizr": "dev-master",
         "mikeyp/google_tag": "dev-8.x-1.x"
     },
     "require-dev": {

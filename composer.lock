@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9dc15a1057a61b942a57fc416c506aa0",
+    "content-hash": "45755c92c6c8e9ce81f913ac51d4b821",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -113,28 +113,6 @@
                 "html"
             ],
             "time": "2017-05-02T21:16:54+00:00"
-        },
-        {
-            "name": "comicrelief/campaign-modernizr",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/comicrelief/campaign-modernizr.git",
-                "reference": "cd799b2a93fa0b9c5d14888068856bd149466d99"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/comicrelief/campaign-modernizr/zipball/cd799b2a93fa0b9c5d14888068856bd149466d99",
-                "reference": "cd799b2a93fa0b9c5d14888068856bd149466d99",
-                "shasum": ""
-            },
-            "type": "library",
-            "description": "Custom version of modernizr for Comic Relief campaign profile.",
-            "support": {
-                "source": "https://github.com/comicrelief/campaign-modernizr/tree/master",
-                "issues": "https://github.com/comicrelief/campaign-modernizr/issues"
-            },
-            "time": "2017-03-18 01:31:25"
         },
         {
             "name": "composer/installers",
@@ -1749,7 +1727,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/ds-8.x-2.7.zip",
-                "reference": null,
+                "reference": "8.x-2.7",
                 "shasum": "23fd8ac65ec94a7673c8d5235170bedf4a0da587"
             },
             "require": {
@@ -9307,7 +9285,6 @@
         "drupal/simple_sitemap": 20,
         "drupal/memcache": 20,
         "drupal/better_exposed_filters": 20,
-        "comicrelief/campaign-modernizr": 20,
         "mikeyp/google_tag": 20,
         "drupal/devel": 20
     },
