@@ -35,7 +35,7 @@
             "cd web/profiles/contrib/cr/themes/custom/campaign_base;npm install"
         ],
         "drupal:scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
-        "campaign:links": "cd web/profiles/contrib/cr;ln -sf ../../../../config .;ln -fs ../../../../modules .;ln -fs ../../../../tests .;ln -fs ../../../../themes .;ln -fs ../../../../cr.in* .;ln -fs ../../../../Ge* .",
+        "campaign:links": "cd web/profiles/contrib/cr;ln -sf ../../../../config .;ln -fs ../../../../modules .;ln -fs ../../../../tests .;ln -fs ../../../../themes .;ln -fs ../../../../cr.in* .",
         "campaign:scaffold": [
             "cp ci/platform/settings.php web/sites/default/settings.php",
             "mkdir -p web/profiles/contrib/cr",
