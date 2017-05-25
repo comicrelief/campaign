@@ -191,8 +191,7 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
   /**
    * Creates a node that has paragraphs provided in a table.
    *
-   * @Given I am viewing a/an :type( content) with :title( title) and :img(
-   *   image) and :body( body) and with the following paragraphs:
+   * @Given I am viewing a/an :type( content) with :title( title) and :img( image) and :body( body) and with the following paragraphs:
    */
   public function assertParagraphs($type, $title, $image, $body, TableNode $paragraphs) {
     // First, create a landing page node.
