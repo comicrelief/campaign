@@ -56,7 +56,7 @@ Feature: Landing-page
     And I should see "Rich text paragraph"
     And I should see "Single Message 1"
     And I am on "/test-landing-page"
-    And I click "Edit"
+    And I follow "Edit"
     And I select "Partner list" from "field_paragraphs[add_more][add_more_select]"
     And I press the "Add another Row component" button
     And I press the "Add existing Partner" button

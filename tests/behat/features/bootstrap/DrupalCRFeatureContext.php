@@ -10,18 +10,18 @@ use Behat\Gherkin\Node\TableNode;
  * Defines application features from the specific context.
  */
 class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptingContext {
+
   /**
    * @Then I should see the correct sitemap elements
    * @And I should see the correct sitemap elements
    */
-  public function iShouldSeeTheCorrectSitemapElements()
-  {
+  public function iShouldSeeTheCorrectSitemapElements() {
     // Grab sitemap.xml page contents and parse it as XML using SimpleXML library
     $sitemap_contents = $this->getSession()->getDriver()->getContent();
     try {
       $xml = new \SimpleXMLElement($sitemap_contents);
-    } catch(\Exception $e) {
-      throw new \Exception('Unable to read sitemap xml content - '.$e->getMessage());
+    } catch (\Exception $e) {
+      throw new \Exception('Unable to read sitemap xml content - ' . $e->getMessage());
     }
 
     // check if <url> nodes exist
@@ -34,21 +34,20 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
    * @Then I should see :url_path as a sitemap url
    * @And I should see :url_path as a sitemap url
    */
-  public function iShouldSeeAsASitemapUrl($url_path)
-  {
+  public function iShouldSeeAsASitemapUrl($url_path) {
     // Grab sitemap.xml page contents and parse it as XML using SimpleXML library
     $sitemap_contents = $this->getSession()->getDriver()->getContent();
     try {
       $xml = new \SimpleXMLElement($sitemap_contents);
-    } catch(\Exception $e) {
-      throw new \Exception('Unable to read sitemap xml content - '.$e->getMessage());
+    } catch (\Exception $e) {
+      throw new \Exception('Unable to read sitemap xml content - ' . $e->getMessage());
     }
 
     // Parse through each <url> node and check if url paths provided exist or not
-    $path_found = false;
+    $path_found = FALSE;
     foreach ($xml->children() as $xml_node) {
-      if ( strpos($xml_node->loc, $url_path) ) {
-        $path_found = true;
+      if (strpos($xml_node->loc, $url_path)) {
+        $path_found = TRUE;
       }
     }
 
@@ -92,10 +91,11 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
   }
 
   /**
-  * @Given I wait for :arg1 seconds
-  *
-  * Wait for the given number of seconds. ONLY USE FOR DEBUGGING! Or any task using scheduled updates
-  */
+   * @Given I wait for :arg1 seconds
+   *
+   * Wait for the given number of seconds. ONLY USE FOR DEBUGGING! Or any task
+   *   using scheduled updates
+   */
   public function iWaitForSeconds($arg1) {
     sleep($arg1);
   }
@@ -111,12 +111,15 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
   }
 
   /**
-  * @Given I close cookie message
-  *
-  * Closes the cokie message. Due to it's CSS positioning it sometimes gets in the way of other elements being clicked in tests
-  */
+   * @Given I close cookie message
+   *
+   * Closes the cokie message. Due to it's CSS positioning it sometimes gets in
+   *   the way of other elements being clicked in tests
+   */
   public function closeCookieMessage() {
-    $elem = $this->getSession()->getPage()->find('css', '.cc_container--open .cc_btn_accept_all');
+    $elem = $this->getSession()
+      ->getPage()
+      ->find('css', '.cc_container--open .cc_btn_accept_all');
     $elem->press();
   }
 
@@ -164,17 +167,24 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
    * Helper function to generalize metatag behat tests
    */
   private function assertMetaRegionGeneric($type, $metatag, $value, $comparison) {
-    $element = $this->getSession()->getPage()->find('xpath', '/head/meta[@' . $type . '="' . $metatag . '"]/@content');
+    $element = $this->getSession()
+      ->getPage()
+      ->find('xpath', '/head/meta[@' . $type . '="' . $metatag . '"]');
     if ($element) {
-      if ($comparison == 'equals' && $value == $element->getText()) {
+      $contentValue = $element->getAttribute('content');
+
+      if ($comparison == 'equals' && $value == $contentValue) {
         $result = $value;
       }
-      else if ($comparison == 'contains' && strpos($element->getText(), $value) !== false) {
-        $result = $value;
+      else {
+        if ($comparison == 'contains' && strpos($contentValue, $value) !== FALSE) {
+          $result = $value;
+        }
       }
     }
     if (empty($result)) {
-      throw new \Exception(sprintf('Metatag "%s" expected to be "%s", but found "%s" on the page %s', $metatag, $value, $element->getText(), $this->getSession()->getCurrentUrl()));
+      throw new \Exception(sprintf('Metatag "%s" expected to be "%s", but found "%s" on the page %s', $metatag, $value, $element->getText(), $this->getSession()
+        ->getCurrentUrl()));
     }
   }
 
@@ -221,6 +231,7 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
    * Helper function to create our different paragraph types.
    *
    * @param  [type] $paragraph [description]
+   *
    * @return [type]            [description]
    */
   private function createParagraphItem($paragraph) {
@@ -276,19 +287,21 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
    *
    * Shamelessly ripped off from \Drupal\Driver\Fields\Drupal8\ImageHandler
    *
-   * We need to provide our own field handlers since we can't use the ones provided by AbstractCore::expandEntityFields as they are protected.
+   * We need to provide our own field handlers since we can't use the ones
+   * provided by AbstractCore::expandEntityFields as they are protected.
    *
    * @param  [type] $values [description]
+   *
    * @return [type]         [description]
    */
   private function expandImage($value) {
     // Skip empty values
     if (!$value) {
-      return array();
+      return [];
     }
 
     $data = file_get_contents($value);
-    if (false === $data) {
+    if (FALSE === $data) {
       throw new \Exception("Error reading file");
     }
 
@@ -297,17 +310,17 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
       $data,
       'public://' . uniqid() . '.jpg');
 
-    if (false === $file) {
+    if (FALSE === $file) {
       throw new \Exception("Error saving file");
     }
 
     $file->save();
 
-    $return = array(
+    $return = [
       'target_id' => $file->id(),
       'alt' => 'Behat test image',
       'title' => 'Behat test image',
-    );
+    ];
     return $return;
   }
 
@@ -320,6 +333,7 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
     return $this->getSession()->getPage()
       ->find('xpath', '/img[@src="' . $uri . '"]');
   }
+
   /**
    * @Then I should not see the image :Uri
    *
@@ -331,14 +345,13 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
   }
 
   /**
-   * Selects option in select field with specified id|name|label|value in a region
-   * Example: When I select "Bats" from "user_fears" in the "some" region
-   * Example: And I select "Bats" from "user_fears" in the "some" region
+   * Selects option in select field with specified id|name|label|value in a
+   * region Example: When I select "Bats" from "user_fears" in the "some"
+   * region Example: And I select "Bats" from "user_fears" in the "some" region
    *
    * @Then I select :option from :select in the :region region
    */
-  public function selectOptionRegion($select, $option, $region)
-  {
+  public function selectOptionRegion($select, $option, $region) {
     $regionObj = $this->getSession()->getPage()->find('region', $region);
     $regionObj->selectFieldOption($select, $option);
   }
@@ -392,12 +405,12 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
    */
   public function createUnpublishedNode($type, $title) {
     // @todo make this easily extensible.
-    $node = (object) array(
+    $node = (object) [
       'title' => $title,
       'type' => $type,
       'body' => $this->getRandom()->name(255),
       'status' => 0,
-    );
+    ];
     $saved = $this->nodeCreate($node);
     // Set internal page on the new node.
     $this->getSession()->visit($this->locatePath('/node/' . $saved->nid));
@@ -411,18 +424,20 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
   public function iShouldSeeTheHiddenPartnerTitle($title) {
 
     // Attempt to grab all the hidden partner titles
-    $elements = $this->getSession()->getPage()->findAll('css', '.node--type-partner .field--name-title');
+    $elements = $this->getSession()
+      ->getPage()
+      ->findAll('css', '.node--type-partner .field--name-title');
 
     if (empty($elements)) {
       throw new \Exception('No hidden partner titles in the markup to check');
     }
 
-    $found = false;
+    $found = FALSE;
 
     // Loop through all elements to find our search title
     foreach ($elements as $element) {
       if ($element->getText() == $title) {
-        $found = true;
+        $found = TRUE;
         break;
       }
     }
@@ -446,7 +461,7 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
       throw new \Exception('No video container in markup to check');
     }
 
-    $found = false;
+    $found = FALSE;
     $pattern = '".+' . $filename . '.{0,}\.' . $ext . '"';
 
     // Loop through all video elements to find video source
@@ -454,8 +469,8 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
       $sourceTag = $video->find('css', 'source');
       $source = $sourceTag->getAttribute('src');
 
-      if(preg_match($pattern, $source) === 1){
-        $found = true;
+      if (preg_match($pattern, $source) === 1) {
+        $found = TRUE;
         break;
       }
     }
