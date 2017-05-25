@@ -124,8 +124,7 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
   }
 
   /**
-   * @Then /^the metatag attribute "(?P<attribute>[^"]*)" should have the value
-   *   "(?P<value>[^"]*)"$/
+   * @Then /^the metatag attribute "(?P<attribute>[^"]*)" should have the value "(?P<value>[^"]*)"$/
    *
    * @throws \Exception
    *   If region or link within it cannot be found.
@@ -135,8 +134,7 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
   }
 
   /**
-   * @Then /^the metatag property "(?P<attribute>[^"]*)" should have the value
-   *   "(?P<value>[^"]*)"$/
+   * @Then /^the metatag property "(?P<attribute>[^"]*)" should have the value "(?P<value>[^"]*)"$/
    *
    * @throws \Exception
    *   If region or link within it cannot be found.
@@ -146,8 +144,7 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
   }
 
   /**
-   * @Then /^the metatag attribute "(?P<attribute>[^"]*)" should contain the
-   *   value "(?P<value>[^"]*)"$/
+   * @Then /^the metatag attribute "(?P<attribute>[^"]*)" should contain the value "(?P<value>[^"]*)"$/
    *
    * @throws \Exception
    *   If region or link within it cannot be found.
@@ -157,8 +154,7 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
   }
 
   /**
-   * @Then /^the metatag property "(?P<attribute>[^"]*)" should contain the
-   *   value "(?P<value>[^"]*)"$/
+   * @Then /^the metatag property "(?P<attribute>[^"]*)" should contain the value "(?P<value>[^"]*)"$/
    *
    * @throws \Exception
    *   If region or link within it cannot be found.

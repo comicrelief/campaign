@@ -1,4 +1,3 @@
-@wip
 Feature: Article
   This feature covers news articles
 
