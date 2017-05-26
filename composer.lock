@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8e9ee1c7a8b67405f967d600f39244cf",
+    "content-hash": "adf4414f202082807fca6afd6ed93170",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2092,11 +2092,17 @@
         },
         {
             "name": "drupal/entity_reference_revisions",
-            "version": "dev-1.x",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/entity_reference_revisions",
-                "reference": "c1941b7"
+                "reference": "8.x-1.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/entity_reference_revisions-8.x-1.3.zip",
+                "reference": null,
+                "shasum": "78aebb58efbbfcbb2faa40a1afc0830312b32631"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -2110,8 +2116,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.2+2-dev",
-                    "datestamp": "1486636986"
+                    "version": "8.x-1.3",
+                    "datestamp": "1495814284"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -2136,8 +2142,7 @@
             "homepage": "https://www.drupal.org/project/entity_reference_revisions",
             "support": {
                 "source": "http://cgit.drupalcode.org/entity_reference_revisions"
-            },
-            "time": "2016-10-16 06:30:58"
+            }
         },
         {
             "name": "drupal/fast_404",
@@ -9286,7 +9291,6 @@
         "drupal/pathauto": 20,
         "drupal/inline_entity_form": 20,
         "drupal/panels": 20,
-        "drupal/entity_reference_revisions": 20,
         "drupal/social_links": 20,
         "drupal/scheduled_updates": 20,
         "drupal/view_mode": 20,
