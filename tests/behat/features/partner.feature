@@ -5,8 +5,8 @@ Feature: Partner
   Scenario: Partners page is working
     Given I am on "partners"
     Then I should see the text "wonderful corporate partners"
-    And I should see the link "Find out more"
-    And I should see the link "Visit their site"
+    And I should see the link "Find out more" in the "partners" region
+    And I should see the link "Visit their site" in the "partners" region
     Then I should see the hidden partner title "Sainsbury's"
 
   @api @javascript

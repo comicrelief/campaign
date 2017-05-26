@@ -1,7 +1,7 @@
 Feature: User
   This feature covers users and roles
 
-  @api
+  @api @javascript
   Scenario: Create an unpublished node and check this with reviewer role
     Given I am logged in as a user with the "reviewer" role
     Given an unpublished "partner" content with the title "Unpublished partner page"

@@ -164,12 +164,14 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
    * Helper function to generalize metatag behat tests
    */
   private function assertMetaRegionGeneric($type, $metatag, $value, $comparison) {
-    $element = $this->getSession()->getPage()->find('xpath', '/head/meta[@' . $type . '="' . $metatag . '"]/@content');
+    $element = $this->getSession()->getPage()->find('xpath', '/head/meta[@' . $type . '="' . $metatag . '"]');
     if ($element) {
-      if ($comparison == 'equals' && $value == $element->getText()) {
+        $contentValue = $element->getAttribute('content');
+
+      if ($comparison == 'equals' && $value == $contentValue) {
         $result = $value;
       }
-      else if ($comparison == 'contains' && strpos($element->getText(), $value) !== false) {
+      else if ($comparison == 'contains' && strpos($contentValue, $value) !== false) {
         $result = $value;
       }
     }
