@@ -28,6 +28,7 @@ default:
         esu_fundraise: .cr-email-signup-fundraise-form
         esu_register_interest: .cr-email-signup-register-interest-form
         footer: .cr-footer
+        partners: .view-partners
 
 travis:
   suites:
@@ -63,3 +64,4 @@ travis:
         esu_fundraise: .cr-email-signup-fundraise-form
         esu_register_interest: .cr-email-signup-register-interest-form
         footer: .cr-footer
+        partners: .view-partners
