@@ -7,6 +7,13 @@ services:
 git:
   depth: 1
 
+cache:
+  directories:
+  - $HOME/docker-cache/
+  - vendor
+  - web
+  - themes/custom/campaign_base/node_modules
+
 env:
   DOCKER_COMPOSE_VERSION: 1.12.0
 
@@ -19,6 +26,7 @@ before_install:
 before_script:
 - docker-compose up -d
 - docker-compose exec web composer campaign:build || true
+- docker-compose exec web chmod ugo+rw web/sites/default -R
 
 script:
 # Behat
