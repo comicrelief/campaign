@@ -1,0 +1,27 @@
+<section class="paragraph feature-articles-block">
+    {% for article in content.articles %}
+        <div class="feature-articles-block__item">
+            <article class="article-teaser">
+                <div class="article-teaser__image">
+                    <picture>
+                        {% if article.field_article_image.0 is defined %}
+                            <img property="schema:image"
+                                 class="media__image media__element b-lazy b-responsive b-loaded"
+                                 src="{{ file_url(article.field_article_image.0.entity.uri.value) }}"
+                                 alt="" typeof="foaf:Image">
+                        {% endif %}
+                    </picture>
+                </div>
+                <div class="article-teaser__content-wrapper">
+                    <div class="article-teaser__content">
+                      <span class="article-teaser__date">
+                        {{ article.getCreatedTime| date("j F Y") }}
+                      </span>
+                        <h2><a href="#" hreflang="en">{{ article.getTitle }}</a></h2>
+                    </div>
+                    <div></div>
+                </div>
+            </article>
+        </div>
+    {% endfor %}
+</section>

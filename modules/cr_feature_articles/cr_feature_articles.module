@@ -1,0 +1,12 @@
+<?php
+
+function cr_feature_article_theme($existing, $type, $theme, $path)
+{
+    return [
+        'cr_feature_articles' => [
+            'variables' => [
+                'articles' => [],
+            ],
+        ]
+    ];
+}
