@@ -78,7 +78,7 @@ class FeatureArticlesBlock extends BlockBase implements ContainerFactoryPluginIn
 
         return array(
             '#theme' => 'cr_feature_articles',
-            '#markup' => 'This is the feature articles block, Use block--cr-feature-articles-block.html.twig in your theme templates folder to override it',
+            '#markup' => 'This is the feature articles block, Use block--cr-feature-articles.html.twig in your theme templates folder to override it',
             'articles' => $this->entityManager->getStorage('node')->loadMultiple($nodeIds)
         );
     }
@@ -89,11 +89,16 @@ class FeatureArticlesBlock extends BlockBase implements ContainerFactoryPluginIn
     public function blockForm($form, FormStateInterface $form_state) {
         $form = parent::blockForm($form, $form_state);
 
+        // Get the block configuration.
+        $config = $this->getConfiguration();
+
+        // Get the article category tid's.
         $tids = $this->entityQuery->get('taxonomy_term', 'AND')
-            ->condition('vid', "article_category");
+            ->condition('vid', "article_category")
+            ->execute();
 
+        // Add the article tid's into an array.
         $options = array();
-
         foreach($this->entityManager->getStorage('taxonomy_term')->loadMultiple($tids) as $tid => $term){
             /** @var $term Term  */
             $options[$tid] = $term->getName();
@@ -106,6 +111,7 @@ class FeatureArticlesBlock extends BlockBase implements ContainerFactoryPluginIn
             '#options' => $options,
             '#description' => t('Click on an article category to select'),
             '#required' => TRUE,
+            '#default_value' => isset($config['feature_articles_block_category']) ? $config['feature_articles_block_category'] : '',
         );
 
         return $form;
