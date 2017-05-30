@@ -1,6 +1,6 @@
+@wip
 Feature: Search
 
-@wip
   @default-content
   Scenario: Search in the DB Lindsey
     Given I am on "search?text=Lindsey"

@@ -68,5 +68,5 @@ Feature: Media
     And I attach the file "/tests/behat/files/testvideo.mp4" to "File"
     And I wait for AJAX to finish
     And I press "Save and publish"
-    Then I should see "File video file has been created."
+    Then I should see "File video file (administration) has been created."
     And I should see the link "Sample video file"
