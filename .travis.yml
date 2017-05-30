@@ -7,13 +7,6 @@ services:
 git:
   depth: 1
 
-cache:
-  directories:
-  - $HOME/docker-cache/
-  - vendor
-  - web
-  - themes/custom/campaign_base/node_modules
-
 env:
   DOCKER_COMPOSE_VERSION: 1.12.0
 
