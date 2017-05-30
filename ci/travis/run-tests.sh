@@ -8,4 +8,6 @@ cd ..
 # Check the config match with the info.yml
 #phing config:check
 # Run behat tests
-vendor/bin/behat -p travis -s travis
+vendor/bin/behat
+
+true

@@ -1,7 +1,8 @@
 #!/bin/bash
 set -e
 # Simple script to check code quality.
-cd web/
+cd web
+touch tmp.txt
 drush wd-show --severity=critical > tmp.txt
 drush wd-show --severity=error >> tmp.txt
 drush wd-show --severity=warning
@@ -15,3 +16,5 @@ if [ $FILESIZE -ne 0 ] ; then
 fi
 
 rm -rf tmp.txt
+
+true
