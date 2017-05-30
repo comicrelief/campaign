@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7c23ce6c025bd7deae7c64f96592b344",
+    "content-hash": "6a0b82de33dac16ff0067e13dca25355",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4187,7 +4187,7 @@
                 },
                 "drupal": {
                     "version": "8.x-1.4",
-                    "datestamp": "1473445439"
+                    "datestamp": "1495108687"
                 },
                 "patches_applied": {
                     "https://www.drupal.org/node/2843978": "https://www.drupal.org/files/issues/2843978-multi-ips-5.patch"
@@ -7632,20 +7632,20 @@
         },
         {
             "name": "drupal/default_content",
-            "version": "1.0.0-alpha5",
+            "version": "1.0.0-alpha6",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/default_content",
-                "reference": "8.x-1.0-alpha5"
+                "reference": "8.x-1.0-alpha6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/default_content-8.x-1.0-alpha5.zip",
-                "reference": "8.x-1.0-alpha5",
-                "shasum": "da475f9a767084aa0b377927febcf1cf3d9c505d"
+                "url": "https://ftp.drupal.org/files/projects/default_content-8.x-1.0-alpha6.zip",
+                "reference": null,
+                "shasum": "ec378158521afff8181f3536e140a31c161fc867"
             },
             "require": {
-                "drupal/core": "*"
+                "drupal/core": "~8.3"
             },
             "type": "drupal-module",
             "extra": {
@@ -7653,7 +7653,7 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-alpha5",
+                    "version": "8.x-1.0-alpha6",
                     "datestamp": "1493675943"
                 }
             },
@@ -7771,7 +7771,8 @@
                 "source": "http://cgit.drupalcode.org/devel",
                 "issues": "http://drupal.org/project/devel",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
-            }
+            },
+            "time": "2017-05-24 13:48:01"
         },
         {
             "name": "drupal/drupal-driver",
