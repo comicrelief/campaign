@@ -43,18 +43,18 @@ Feature: Article
     And the metatag property "og:image" should contain the value "news/2016-02/greg_james_gregathlon_belfast_and_so_it_begins"
     And the metatag property "og:url" should contain the value "news-tv-and-events/news/greg-james-begins-his-gregathlon-sport-relief"
 
-  @api @javascript @not-on-travis
+  @api @javascript
   Scenario: Create news articles using scheduled updates
     Given I am logged in as a user with the "editor" role
     And I am on "node/add/article"
     And I enter "Test Scheduled article" for "edit-title-0-value"
     And I press "Add new Publishing Date"
-    And I wait for AJAX loading to finish
+    And I wait for "3" seconds
     Then I should see "Update Date/time"
     And I enter today date for "publishing_date[form][inline_entity_form][update_timestamp][0][value][date]"
     And I enter the time for "publishing_date[form][inline_entity_form][update_timestamp][0][value][time]"
     And I press "Create Publishing Date"
-    And I wait for AJAX loading to finish
+    And I wait for "3" seconds
     Then I should see "Publishing date"
     And I enter "tag1" for "field_article_category[target_id]"
     And I scroll ".unpublish input" into view
@@ -69,7 +69,7 @@ Feature: Article
     # run cron and clear caches
     And am on "admin/config/system/cron"
     And press "Run cron"
-    And I wait for AJAX loading to finish
+    And I wait for "3" seconds
     Then I should see "Cron ran successfully."
     And the cache has been cleared
     # logout and see the article loaded
@@ -77,7 +77,7 @@ Feature: Article
     And I am on "news-tv-and-events/news/test-scheduled-article"
     Then I should see "Test Scheduled article"
 
-  @api @not-on-travis
+  @api
   Scenario: Create news articles that are linked together via a common tag
     Given a "category" term with the name "Fundraising"
     When I am viewing a "article" content:
