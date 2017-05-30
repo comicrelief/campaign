@@ -74,6 +74,9 @@
             },
             "drupal/varnish_purge": {
                 "https://www.drupal.org/node/2843978": "https://www.drupal.org/files/issues/2843978-multi-ips-5.patch"
+            },
+            "drupal/file_entity": {
+                "https://www.drupal.org/node/2867574": "https://www.drupal.org/files/issues/file_entity-83-3.patch"
             }
         },
         "installer-paths": {
