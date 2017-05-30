@@ -23,7 +23,7 @@ Feature: Media
     And I enter "pdf (administration)" for "Media name"
     And I enter "Sample PDF" for "Display title"
     And I select "Fundraise" from "Category"
-    And I attach the file "profiles/contrib/cr/tests/behat/files/sample.pdf" to "File"
+    And I attach the file "/tests/behat/files/sample.pdf" to "File"
     And I wait for AJAX to finish
     And I press "Save and publish"
     Then I should see "File pdf (administration) has been created."
@@ -65,7 +65,7 @@ Feature: Media
     And I enter "video file (administration)" for "Media name"
     And I enter "Sample video file" for "Display title"
     And I select "Event" from "Category"
-    And I attach the file "profiles/contrib/cr/tests/behat/files/testvideo.mp4" to "File"
+    And I attach the file "/tests/behat/files/testvideo.mp4" to "File"
     And I wait for AJAX to finish
     And I press "Save and publish"
     Then I should see "File video file has been created."
