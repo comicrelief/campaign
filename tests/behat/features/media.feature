@@ -8,7 +8,7 @@ Feature: Media
     And I enter "nose (administration)" for "Media name"
     And I enter "Red Nose!" for "Display title"
     And I select "Events" from "Category"
-    And I attach the file "profiles/contrib/cr/tests/behat/files/nose.jpg" to "File"
+    And I attach the file "/tests/behat/files/nose.jpg" to "File"
     And I wait for AJAX to finish
     And I press "Save and publish"
     Then I should see "File nose (administration) has been created."
