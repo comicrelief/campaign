@@ -10,3 +10,17 @@ dependencies:
   - entity_reference_revisions
   - cr_media
   - cr_colours
+
+config_devel:
+  # Form display
+  - core.entity_form_display.paragraph.feature_articles.default
+  # View Display
+  - core.entity_view_display.paragraph.feature_articles.default
+  # Paragraph field
+  - field.field.paragraph.feature_articles.field_feature_articles_bg
+  - field.field.paragraph.feature_articles.field_feature_articles_taxonomy
+  # Field Storage
+  - field.storage.paragraph.field_feature_articles_bg
+  - field.storage.paragraph.field_feature_articles_taxonomy
+  # Paragraph
+  - paragraphs.paragraphs_type.feature_articles

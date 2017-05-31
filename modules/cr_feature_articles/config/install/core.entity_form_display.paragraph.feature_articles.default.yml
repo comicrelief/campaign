@@ -1,0 +1,27 @@
+uuid: 48b25c50-0d02-487b-83fe-89101a2bbc39
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.feature_articles.field_feature_articles_bg
+    - field.field.paragraph.feature_articles.field_feature_articles_taxonomy
+    - paragraphs.paragraphs_type.feature_articles
+id: paragraph.feature_articles.default
+targetEntityType: paragraph
+bundle: feature_articles
+mode: default
+content:
+  field_feature_articles_bg:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_feature_articles_taxonomy:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+hidden:
+  created: true
+  status: true
+  uid: true

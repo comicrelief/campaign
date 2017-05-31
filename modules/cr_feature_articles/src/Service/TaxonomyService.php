@@ -48,7 +48,9 @@ class TaxonomyService {
       ->range(0, $limit)
       ->execute();
 
-    return $this->em->getStorage('node')->loadMultiple($nodeIds);
+    $nodes = $this->em->getStorage('node')->loadMultiple($nodeIds);
+
+    return $this->em->getViewBuilder('node')->viewMultiple($nodes, 'teaser');
   }
 
 }

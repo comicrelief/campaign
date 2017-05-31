@@ -1,0 +1,51 @@
+uuid: 8332ee4a-2d95-4dfd-a8b8-f0a40198ab33
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.feature_articles.field_feature_articles_bg
+    - field.field.paragraph.feature_articles.field_feature_articles_taxonomy
+    - paragraphs.paragraphs_type.feature_articles
+  module:
+    - ds
+    - options
+third_party_settings:
+  ds:
+    layout:
+      id: ds_reset
+      path: modules/contrib/ds
+      library: ''
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        classes: {  }
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+    regions:
+      ds_content:
+        - field_feature_articles_taxonomy
+        - field_feature_articles_bg
+id: paragraph.feature_articles.default
+targetEntityType: paragraph
+bundle: feature_articles
+mode: default
+content:
+  field_feature_articles_bg:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+  field_feature_articles_taxonomy:
+    weight: 2
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+hidden:
+  social_links: true

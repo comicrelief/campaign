@@ -1,1 +1,10 @@
-{% extends('@campaign_base/components/feature-articles/feature-articles.html.twig') %}
+{%
+set classes = [
+'paragraph',
+'feature-articles-block'
+]
+%}
+
+<section{{ attributes.addClass(classes) }}>
+    {{ content.articles }}
+</section>

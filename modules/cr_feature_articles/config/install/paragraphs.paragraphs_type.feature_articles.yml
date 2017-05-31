@@ -1,0 +1,6 @@
+uuid: 53d63543-28d0-48bc-aece-b52d7700aac2
+langcode: en
+status: true
+dependencies: {  }
+id: feature_articles
+label: 'Feature Articles'
