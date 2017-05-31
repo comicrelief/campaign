@@ -4,13 +4,13 @@ namespace Drupal\cr_feature_articles\Service;
 
 use Drupal\Core\Entity\EntityManager;
 use Drupal\Core\Entity\Query\QueryFactory;
+
 /**
  * Class TaxonomyService
  *
  * @package Drupal\cr_feature_articles\Service
  */
-class TaxonomyService
-{
+class TaxonomyService {
 
   /**
    * @var \Drupal\Core\Entity\Query\QueryFactory|\Drupal\Core\Entity\Query\QueryInterface
@@ -24,6 +24,7 @@ class TaxonomyService
 
   /**
    * TaxonomyService constructor.
+   *
    * @param \Drupal\Core\Entity\Query\QueryFactory $query
    * @param \Drupal\Core\Entity\EntityManager $em
    */
@@ -35,10 +36,10 @@ class TaxonomyService
   /**
    * @param int $tid
    * @param int $limit
+   *
    * @return \Drupal\Core\Entity\EntityInterface[]
    */
-  public function getArticleNodesByTermId($tid, $limit = 4)
-  {
+  public function getArticleNodesByTermId($tid, $limit = 4) {
     $nodeIds = $this->query->get('node', 'AND')
       ->condition('status', 1)
       ->condition('type', 'article')

@@ -9,12 +9,15 @@ use Drupal\Core\Field\FieldStorageDefinitionInterface;
  * @see options_allowed_values()
  */
 function cr_feature_articles_field_feature_articles_bg(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
-  return \Drupal::service('cr.colours.colour_service')->getStandardColoursArray();
+  return \Drupal::service('cr.colours.colour_service')
+    ->getStandardColoursArray();
 }
 
 /**
  * Test to see whether the current variables contain feature articles.
+ *
  * @param $variables
+ *
  * @return bool
  */
 function cr_feature_articles_is_feature_articles(&$variables) {
@@ -25,6 +28,7 @@ function cr_feature_articles_is_feature_articles(&$variables) {
 
 /**
  * Add articles to feature articles entity view.
+ *
  * @param array $variables
  */
 function cr_feature_articles_preprocess_ds_entity_view(array &$variables) {
