@@ -1,5 +1,5 @@
 name: CR Feature Articles
 type: module
-description: Display featured articles by taxonomy refference
+description: Display featured articles by taxonomy reference
 core: 8.x
 package: Comic Relief

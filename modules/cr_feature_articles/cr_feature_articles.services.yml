@@ -1,0 +1,6 @@
+services:
+  cr.feature_articles.taxonomy_service:
+    class: Drupal\cr_feature_articles\Service\TaxonomyService
+    arguments:
+      - '@entity.query'
+      - '@entity.manager'
