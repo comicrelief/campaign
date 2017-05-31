@@ -24,6 +24,7 @@ function cr_feature_articles_field_feature_articles_bg(FieldStorageDefinitionInt
  * @param array $variables
  */
 function cr_feature_articles_preprocess_ds_entity_view(array &$variables) {
+
   if (isset($variables['content'], $variables['content']['#bundle']) &&
     ($variables['content']['#bundle'] === 'cr_feature_articles' ||
       $variables['content']['#bundle'] === 'feature_articles')) {
@@ -31,5 +32,6 @@ function cr_feature_articles_preprocess_ds_entity_view(array &$variables) {
       ->getRouteParameters()['taxonomy_term'];
     $variables['content']['articles'] = \Drupal::service('cr.feature_articles.taxonomy_service')
       ->getArticleNodesByTermId($tid);
+    $variables['content']['background_colour_class'] = $variables['content']['field_feature_articles_bg']['#items'][0]->getValue()['value'];
   }
 }
