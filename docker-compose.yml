@@ -17,7 +17,7 @@ services:
       SSH_AUTH_SOCK: /ssh-agent
 
   solr:
-    image: solr:6.2-alpine
+    image: solr:6.3-alpine
     ports:
       - 8984:8983
     volumes:

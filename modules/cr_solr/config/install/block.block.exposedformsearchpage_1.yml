@@ -5,8 +5,6 @@ dependencies:
     - views.view.search
   module:
     - views
-  theme:
-    - campaign_base
 id: exposedformsearchpage_1
 theme: campaign_base
 region: content
