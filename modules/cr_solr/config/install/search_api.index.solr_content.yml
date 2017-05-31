@@ -16,7 +16,6 @@ read_only: false
 field_settings:
   rendered_item:
     label: 'Rendered HTML output'
-    datasource_id: null
     property_path: rendered_item
     type: text
     configuration:
@@ -34,7 +33,6 @@ field_settings:
           video: default
   node_grants:
     label: 'Node access information'
-    datasource_id: null
     property_path: search_api_node_grants
     type: string
     indexed_locked: true
@@ -42,7 +40,6 @@ field_settings:
     hidden: true
   url:
     label: URI
-    datasource_id: null
     property_path: search_api_url
     type: text
     boost: !!float 3
@@ -71,6 +68,37 @@ field_settings:
     property_path: title
     type: text
     boost: !!float 8
+datasource_settings:
+  'entity:node':
+    plugin_id: 'entity:node'
+    settings:
+      bundles:
+        default: true
+        selected: {  }
+      languages:
+        default: true
+        selected: {  }
+    bundles:
+      default: true
+      selected: {  }
+    languages:
+      default: true
+      selected: {  }
+  'entity:media':
+    plugin_id: 'entity:media'
+    settings:
+      bundles:
+        default: true
+        selected: {  }
+      languages:
+        default: true
+        selected: {  }
+    bundles:
+      default: true
+      selected: {  }
+    languages:
+      default: true
+      selected: {  }
 processor_settings:
   ignorecase:
     plugin_id: ignorecase
@@ -89,9 +117,6 @@ processor_settings:
   add_url:
     plugin_id: add_url
     settings: {  }
-  node_status:
-    plugin_id: node_status
-    settings: {  }
   content_access:
     plugin_id: content_access
     settings:
@@ -100,30 +125,11 @@ processor_settings:
   rendered_item:
     plugin_id: rendered_item
     settings: {  }
-options:
-  index_directly: true
-  cron_limit: 50
-datasource_settings:
-  'entity:node':
-    plugin_id: 'entity:node'
-    settings:
-      bundles:
-        default: true
-        selected: {  }
-      languages:
-        default: true
-        selected: {  }
-  'entity:media':
-    plugin_id: 'entity:media'
-    settings:
-      bundles:
-        default: true
-        selected: {  }
-      languages:
-        default: true
-        selected: {  }
 tracker_settings:
   default:
     plugin_id: default
     settings: {  }
+options:
+  index_directly: true
+  cron_limit: 50
 server: solr

@@ -116,7 +116,7 @@ dependencies:
   - simple_sitemap
 
   # Because cr_landing_pages has content dependencies this needs to be loaded after
-  - cr_search
+  - cr_solr
 
 themes:
   - seven

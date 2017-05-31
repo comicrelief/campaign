@@ -1,3 +1,4 @@
+@nightmare
 Feature: ESU
 	Checks the various Email Sign Up blocks
 
