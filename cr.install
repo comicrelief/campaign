@@ -279,3 +279,10 @@ function cr_update_8031() {
 function cr_update_8032() {
   installer()->install(['cr_colours']);
 }
+
+/**
+ * Install cr_feature_articles
+ */
+function cr_update_8033() {
+  installer()->install(['cr_feature_articles']);
+}

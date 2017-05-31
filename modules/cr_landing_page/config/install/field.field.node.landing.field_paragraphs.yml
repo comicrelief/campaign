@@ -1,3 +1,4 @@
+uuid: 582f4a8e-46c4-40a9-bd2f-c73eb3bac7b0
 langcode: en
 status: true
 dependencies:
@@ -9,10 +10,13 @@ dependencies:
     - paragraphs.paragraphs_type.cr_rich_text_paragraph
     - paragraphs.paragraphs_type.cr_story
     - paragraphs.paragraphs_type.cw_row
+    - paragraphs.paragraphs_type.feature_articles
     - paragraphs.paragraphs_type.partner_list
     - paragraphs.paragraphs_type.single_msg
   module:
     - entity_reference_revisions
+_core:
+  default_config_hash: A-MJi_Lc3xCZ3vhXXMQKNxh9jGVc4mdZ37EU8qxCD8U
 id: node.landing.field_paragraphs
 field_name: field_paragraphs
 entity_type: node
@@ -27,33 +31,37 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
-      cw_row: cw_row
+      cr_rich_text_paragraph: cr_rich_text_paragraph
       cr_block_reference: cr_block_reference
       cr_cards: cr_cards
-      cr_rich_text_paragraph: cr_rich_text_paragraph
-      single_msg: single_msg
+      cw_row: cw_row
+      feature_articles: feature_articles
       partner_list: partner_list
+      single_msg: single_msg
       cr_story: cr_story
     target_bundles_drag_drop:
-      cw_row:
+      cr_rich_text_paragraph:
         enabled: true
-        weight: -15
+        weight: -17
       cr_block_reference:
         enabled: true
-        weight: -14
+        weight: -16
       cr_cards:
         enabled: true
+        weight: -15
+      cw_row:
+        enabled: true
+        weight: -14
+      feature_articles:
+        enabled: true
         weight: -13
-      cr_rich_text_paragraph:
+      partner_list:
         enabled: true
         weight: -12
       single_msg:
         enabled: true
         weight: -11
-      partner_list:
-        enabled: true
-        weight: -10
       cr_story:
         enabled: true
-        weight: 13
+        weight: -10
 field_type: entity_reference_revisions
