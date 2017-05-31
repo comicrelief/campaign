@@ -20,7 +20,7 @@ function cr_feature_articles_field_feature_articles_bg(FieldStorageDefinitionInt
 
 /**
  * Add articles to feature articles entity view.
- *
+ * Implements preprocess_ds_entity_view().
  * @param array $variables
  */
 function cr_feature_articles_preprocess_ds_entity_view(array &$variables) {

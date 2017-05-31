@@ -8,8 +8,9 @@ dependencies:
   - ds
   - paragraphs
   - entity_reference_revisions
-  - cr_media
   - cr_colours
+  - taxonomy
+  - cr_article
 
 config_devel:
   # Form display
