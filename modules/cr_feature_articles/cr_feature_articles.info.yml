@@ -3,3 +3,10 @@ type: module
 description: Display featured articles by taxonomy reference
 core: 8.x
 package: Comic Relief
+
+dependencies:
+  - ds
+  - paragraphs
+  - entity_reference_revisions
+  - cr_media
+  - cr_colours
