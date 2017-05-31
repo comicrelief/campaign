@@ -1,11 +1,12 @@
 {%
 set classes = [
     'paragraph',
-    'feature-articles-block',
     content.background_colour_class
 ]
 %}
 
 <section{{ attributes.addClass(classes) }}>
+	<div class="feature-articles-block">
     {{ content.articles }}
+	</div>
 </section>

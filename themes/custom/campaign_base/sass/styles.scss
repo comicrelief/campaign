@@ -6,18 +6,6 @@
 
 // Drupal related styles regions and paragraph fixes | move it to a better place
 
-// admin
-
-.block-core.block-local-tasks-block,
-.messages--status {
-  width: 100%;
-  max-width: 1200px;
-  margin: auto;
-  padding-left: 160px;
-}
-#user-login-form {
-  margin: 40px;
-}
 
 // layout
 .header__inner-wrapper,
@@ -101,5 +89,14 @@ main {
   padding-bottom: 60px;
   @include breakpoint($screen-md) {
     padding-bottom: 60px;
+  }
+}
+// Paragraphs
+
+.paragraph--type-feature-articles {
+  padding: 30px 0;
+  overflow: hidden;
+  @include breakpoint($screen-md) {
+    padding: 60px 30px;
   }
 }
