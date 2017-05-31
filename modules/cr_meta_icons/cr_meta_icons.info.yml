@@ -10,3 +10,4 @@ dependencies:
 
 config_devel:
   - block.block.metaiconsblock
+  - block.block.seven_metaiconsblock

@@ -3,11 +3,9 @@ status: true
 dependencies:
   module:
     - cr_meta_icons
-  theme:
-    - campaign_base
-id: metaiconsblock
-theme: campaign_base
-region: header
+id: seven_metaiconsblock
+theme: seven
+region: none
 weight: -4
 provider: null
 plugin: cr_meta_icons
