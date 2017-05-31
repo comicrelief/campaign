@@ -6,6 +6,11 @@ use Drupal\Core\Field\FieldStorageDefinitionInterface;
 /**
  * Options callback for field_feature_article_bg.
  *
+ * @param FieldStorageDefinitionInterface $definition
+ * @param FieldableEntityInterface|NULL $entity
+ *
+ * @return mixed
+ *
  * @see options_allowed_values()
  */
 function cr_feature_articles_field_feature_articles_bg(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
@@ -16,7 +21,7 @@ function cr_feature_articles_field_feature_articles_bg(FieldStorageDefinitionInt
 /**
  * Test to see whether the current variables contain feature articles.
  *
- * @param $variables
+ * @param array $variables
  *
  * @return bool
  */
