@@ -14,8 +14,6 @@ dependencies:
     - node
     - taxonomy
     - user
-_core:
-  default_config_hash: LxAryH8HohXcodAmuAytLTdP4f3SfWSCwnRmv-NJRwI
 id: what_s_going_on
 label: 'What''s going on'
 module: views

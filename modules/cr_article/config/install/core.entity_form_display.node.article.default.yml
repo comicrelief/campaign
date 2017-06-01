@@ -22,8 +22,6 @@ dependencies:
     - path
     - text
     - video_embed_field
-_core:
-  default_config_hash: fXSOvFLdNaokng7tLotyH4raFtzXFH0L7juwWBPgm8Y
 id: node.article.default
 targetEntityType: node
 bundle: article

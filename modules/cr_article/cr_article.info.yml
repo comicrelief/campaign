@@ -65,3 +65,6 @@ config_devel:
   - core.entity_form_display.scheduled_update.node_status.default
   - rdf.mapping.taxonomy_term.tags
   - taxonomy.vocabulary.tags
+  - field.field.node.article.field_exclude_aggregator
+  - field.storage.node.field_exclude_aggregator
+  - field.field.node.article.field_exclude_aggregator
