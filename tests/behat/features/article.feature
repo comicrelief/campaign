@@ -117,12 +117,3 @@ Feature: Article
     # Check the content is excluded from the news and events page
     Given I am not logged in
     Then I should not see "Test excluded article"
-    # Create an article that is in included in the view
-    Given I am logged in as a user with the "editor" role
-    And I am on "node/add/article"
-    And I enter "Test included article" for "edit-title-0-value"
-    And I enter "Fundraising (17)" for "edit-field-article-category-target-id"
-    And press "Save and publish"
-    # Check the content is excluded from the news and events page
-    Given I am not logged in
-    Then I should see "Test included article"
