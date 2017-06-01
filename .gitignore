@@ -19,7 +19,7 @@ docker-compose.local.yml
 ############
 *.7z
 *.dmg
-*.gzs
+*.gz
 *.bz2
 *.iso
 *.jar
