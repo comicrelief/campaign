@@ -74,7 +74,7 @@ Feature: Article
     And the cache has been cleared
     # logout and see the article loaded
     Given I am not logged in
-    And I am on "whats-going-on"
+    And I am on "news-tv-and-events/news/test-scheduled-article"
     Then I should see "Test Scheduled article"
 
   @api @not-on-travis
@@ -116,4 +116,5 @@ Feature: Article
     And press "Save and publish"
     # Check the content is excluded from the news and events page
     Given I am not logged in
+    And I am on "whats-going-on"
     Then I should not see "Test excluded article"
