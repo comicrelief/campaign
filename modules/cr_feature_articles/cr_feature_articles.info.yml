@@ -25,3 +25,4 @@ config_devel:
   - field.storage.paragraph.field_feature_articles_taxonomy
   # Paragraph
   - paragraphs.paragraphs_type.feature_articles
+  
