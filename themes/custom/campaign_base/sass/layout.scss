@@ -1,4 +1,4 @@
-// layout for regions paragraphs and sections
+// layout for regions views paragraphs and sections
 
 @import "@comicrelief/pattern-lab/sass/base/_variables";
 @import "@comicrelief/pattern-lab/sass/base/_core";
@@ -10,6 +10,11 @@
 .cards__wrapper,
 .cw-region {
   @include container;
+}
+#block-campaign-base-branding {
+  .site-logo {
+    margin-top: -38px;
+  }
 }
 .pager,
 .search-block__wrapper,
