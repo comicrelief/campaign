@@ -13,7 +13,6 @@ dependencies:
     - field.field.node.article.field_video_embed
     - field.field.node.article.publishing_date
     - node.type.article
-    - responsive_image.styles.hero_image_full_node
   module:
     - datetime
     - metatag
@@ -21,8 +20,6 @@ dependencies:
     - text
     - user
     - video_embed_field
-_core:
-  default_config_hash: zNAD1cv9GCA4EAHKUx0TF43wEeCqdsMxBUblC0TpHww
 id: node.article.default
 targetEntityType: node
 bundle: article
