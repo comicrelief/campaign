@@ -12,7 +12,7 @@ FILESIZE=$(cat tmp.txt | wc -c)
 if [ $FILESIZE -ne 0 ] ; then
   cat tmp.txt
   rm -rf tmp.txt
-  exit 0
+  false
 fi
 
 rm -rf tmp.txt
