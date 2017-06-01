@@ -12,11 +12,14 @@
 *.unison.tmp
 .docker-sync/*
 
+# Ignore local docker files
+docker-compose.local.yml
+
 # Packages #
 ############
 *.7z
 *.dmg
-*.gz
+*.gzs
 *.bz2
 *.iso
 *.jar
