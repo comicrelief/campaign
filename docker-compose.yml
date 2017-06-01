@@ -21,7 +21,7 @@ services:
     ports:
       - 8984:8983
     volumes:
-      - ./web/modules/contrib/search_api_solr/solr-conf/6.x:/drupal/conf
+      - .platform/solr/6.x:/drupal/conf
     entrypoint:
       - docker-entrypoint.sh
       - solr-precreate

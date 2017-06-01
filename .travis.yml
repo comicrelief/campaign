@@ -16,15 +16,15 @@ before_install:
 - chmod +x docker-compose
 - sudo mv docker-compose /usr/local/bin
 
-before_script:
+install:
 - docker-compose up -d
+
+before_script:
 - docker-compose exec web composer campaign:build || true
 - docker-compose exec web chmod ugo+rw web/sites/default -R
 
 script:
-# Behat
 - docker-compose exec web ci/travis/run-tests.sh
-# Check DB errors
 - docker-compose exec web ci/travis/dberrors.sh
 
 notifications:

@@ -8,6 +8,6 @@ cd ..
 # Check the config match with the info.yml
 #phing config:check
 # Run behat tests
-vendor/bin/behat
+vendor/bin/behat --tags=~not-on-travis
 
 true
