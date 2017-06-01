@@ -74,7 +74,7 @@ Feature: Article
     And the cache has been cleared
     # logout and see the article loaded
     Given I am not logged in
-    And I am on "news-tv-and-events/news/test-scheduled-article"
+    And I am on "whats-going-on"
     Then I should see "Test Scheduled article"
 
   @api @not-on-travis
@@ -104,3 +104,25 @@ Feature: Article
     And the cache has been cleared
     And I click "Comic Relief raises £1bn over 30-year existence"
     Then I should see "Celebrities come together for a stellar Night of TV for Sport Relief"
+
+  @api @default-content @exclude-articles-from-aggregator
+  Scenario: Create news articles that is excluded from aggregated news article views
+    # Create an article that is excluded from view.
+    Given I am logged in as a user with the "editor" role
+    And I am on "node/add/article"
+    And I enter "Test excluded article" for "edit-title-0-value"
+    And I check the box "edit-field-exclude-aggregator-value"
+    And I enter "Fundraising (17)" for "edit-field-article-category-target-id"
+    And press "Save and publish"
+    # Check the content is excluded from the news and events page
+    Given I am not logged in
+    Then I should not see "Test excluded article"
+    # Create an article that is in included in the view
+    Given I am logged in as a user with the "editor" role
+    And I am on "node/add/article"
+    And I enter "Test included article" for "edit-title-0-value"
+    And I enter "Fundraising (17)" for "edit-field-article-category-target-id"
+    And press "Save and publish"
+    # Check the content is excluded from the news and events page
+    Given I am not logged in
+    Then I should see "Test included article"
