@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_feature_articles_titlehide
+    - paragraphs.paragraphs_type.feature_articles
+id: paragraph.feature_articles.field_feature_articles_titlehide
+field_name: field_feature_articles_titlehide
+entity_type: paragraph
+bundle: feature_articles
+label: 'Visually hide Title'
+description: 'Hiding titles might be desirable for a visual design, however titles can be useful for visually impaired users, providing contextual clarity and navigational cues via screenreaders.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

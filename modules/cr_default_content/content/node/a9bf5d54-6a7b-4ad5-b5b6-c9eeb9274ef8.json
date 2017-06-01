@@ -20,6 +20,12 @@
         "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_paragraphs": [
             {
                 "href": ""
+            },
+            {
+                "href": ""
+            },
+            {
+                "href": ""
             }
         ]
     },
@@ -35,7 +41,7 @@
     ],
     "vid": [
         {
-            "value": "156"
+            "value": "160"
         }
     ],
     "langcode": [
@@ -106,7 +112,39 @@
                         "value": "902e5aef-f76b-49a7-b5e0-673c490cc451"
                     }
                 ],
-                "target_revision_id": "139"
+                "target_revision_id": "146"
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": ""
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/feature_articles"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "a69fcd80-f620-45ae-a5ca-c01da041f986"
+                    }
+                ],
+                "target_revision_id": "147"
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": ""
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/feature_articles"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "4a1f5224-ec66-4adf-a55f-e312496eb36b"
+                    }
+                ],
+                "target_revision_id": "149"
             }
         ]
     },
@@ -124,7 +162,7 @@
     ],
     "changed": [
         {
-            "value": "1496237008",
+            "value": "1496256383",
             "lang": "en"
         }
     ],
@@ -142,7 +180,7 @@
     ],
     "revision_timestamp": [
         {
-            "value": "1496237008"
+            "value": "1496256383"
         }
     ],
     "revision_translation_affected": [

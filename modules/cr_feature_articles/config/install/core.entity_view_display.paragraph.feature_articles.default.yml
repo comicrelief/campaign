@@ -4,6 +4,8 @@ dependencies:
   config:
     - field.field.paragraph.feature_articles.field_feature_articles_bg
     - field.field.paragraph.feature_articles.field_feature_articles_taxonomy
+    - field.field.paragraph.feature_articles.field_feature_articles_title
+    - field.field.paragraph.feature_articles.field_feature_articles_titlehide
     - paragraphs.paragraphs_type.feature_articles
   module:
     - ds
@@ -17,34 +19,55 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
-        classes: {  }
         wrappers:
           ds_content: div
         outer_wrapper: div
         attributes: ''
         link_attribute: ''
         link_custom: ''
+        classes:
+          layout_class: {  }
     regions:
       ds_content:
-        - field_feature_articles_taxonomy
+        - field_feature_articles_title
+        - field_feature_articles_titlehide
         - field_feature_articles_bg
+        - field_feature_articles_taxonomy
+_core:
+  default_config_hash: 1z0RNIixcDPf2UlfCLIjm0v0f7r6GuYfuLpiygsUclM
 id: paragraph.feature_articles.default
 targetEntityType: paragraph
 bundle: feature_articles
 mode: default
 content:
   field_feature_articles_bg:
-    weight: 1
+    weight: 2
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
   field_feature_articles_taxonomy:
-    weight: 2
+    weight: 3
     label: above
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+  field_feature_articles_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_feature_articles_titlehide:
+    weight: 1
+    label: hidden
+    settings:
+      format: default
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings: {  }
+    type: boolean
 hidden:
   social_links: true
