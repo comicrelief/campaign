@@ -119,6 +119,7 @@ Feature: Article
     And I am on "whats-going-on"
     Then I should not see "Test excluded article"
 
+  @api @default-content @exclude-articles-from-aggregator
   Scenario: Make a taxonomy type hidden from aggregation and make sure that articles with that tag are not display in aggregation
     # Make a taxonomy item hidden from aggregation.
     Given I am logged in as a user with the "editor" role
