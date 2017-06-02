@@ -44,7 +44,7 @@ class TaxonomyService {
       ->condition('status', 1)
       ->condition('type', 'article')
       ->condition('field_article_category.entity.tid', $tid)
-      ->sort('created', 'ASC')
+      ->sort('field_article_publish_date', 'DESC')
       ->range(0, $limit)
       ->execute();
 
