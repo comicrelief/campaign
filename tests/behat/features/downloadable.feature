@@ -1,8 +1,7 @@
 Feature: Downloadable
   This feature covers downloadables
 
-  # Adding @not-on-travis tag, tracking: RND-490
-  @api @javascript @not-on-travis
+  @api @javascript
   Scenario: Create a downloadable image
     Given I am logged in as a user with the "editor" role
     When I visit "/media/add/cr_file"
@@ -17,7 +16,7 @@ Feature: Downloadable
     When I go to "admin/content/media"
     Then I should see the link "nose (administration)"
 
-  @api @javascript @not-on-travis
+  @api @javascript
   Scenario: Create a downloadable pdf
     Given I am logged in as a user with the "editor" role
     When I visit "/media/add/cr_file"
