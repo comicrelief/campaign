@@ -111,7 +111,7 @@ Feature: Article
     Given I am logged in as a user with the "editor" role
     And I am on "node/add/article"
     And I enter "Test excluded article" for "edit-title-0-value"
-    And I check the box "edit-field-exclude-aggregator-value"
+    And I check the box "edit-field-article-exclude-aggr-value"
     And I enter "Fundraising (17)" for "edit-field-article-category-target-id"
     And press "Save and publish"
     # Check the content is excluded from the news and events page
