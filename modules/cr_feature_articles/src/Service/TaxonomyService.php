@@ -39,7 +39,7 @@ class TaxonomyService {
    *
    * @return \Drupal\Core\Entity\EntityInterface[]
    */
-  public function getArticleNodesByTermId($tid, $limit = 4) {
+  public function getArticleNodesByTermId($tid, $limit = 3) {
     $nodeIds = $this->query->get('node', 'AND')
       ->condition('status', 1)
       ->condition('type', 'article')
