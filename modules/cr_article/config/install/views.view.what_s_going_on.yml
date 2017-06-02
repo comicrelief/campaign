@@ -318,11 +318,47 @@ display:
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
-        field_article_exclude_aggr_value:
-          id: field_article_exclude_aggr_value
-          table: node__field_article_exclude_aggr
-          field: field_article_exclude_aggr_value
+        field_exclude_aggregator_value:
+          id: field_exclude_aggregator_value
+          table: node__field_exclude_aggregator
+          field: field_exclude_aggregator_value
           relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '!='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: boolean
+        field_taxonomy_hide_from_aggr_value:
+          id: field_taxonomy_hide_from_aggr_value
+          table: taxonomy_term__field_taxonomy_hide_from_aggr
+          field: field_taxonomy_hide_from_aggr_value
+          relationship: field_article_category
           group_type: group
           admin_label: ''
           operator: '!='

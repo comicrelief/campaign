@@ -68,3 +68,7 @@ config_devel:
   - field.field.node.article.field_exclude_aggregator
   - field.storage.node.field_exclude_aggregator
   - field.field.node.article.field_exclude_aggregator
+  - field.field.taxonomy_term.article_category.field_taxonomy_hide_from_aggr
+  - field.storage.taxonomy_term.field_taxonomy_hide_from_aggr
+  - core.entity_form_display.taxonomy_term.article_category.default
+  - core.entity_view_display.taxonomy_term.article_category.default
