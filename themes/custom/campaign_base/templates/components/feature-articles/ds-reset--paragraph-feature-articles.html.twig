@@ -1,7 +1,7 @@
 {%
 set classes = [
     'paragraph',
-    content.background_colour_class
+    content.field_feature_articles_bg['#items'][0].value
 ]
 %}
 {% set title_hidden = field_feature_articles_titlehide['#items'][0].value ? 'visuallyhidden' : '' %}
