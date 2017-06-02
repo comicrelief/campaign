@@ -73,7 +73,7 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
    *   If element cannot be found
    */
   public function iEnterTodaysDateFor($field) {
-    $date = date("Y-m-j");
+    $date = date('Y-m-d');
     $this->getSession()->getPage()->fillField($field, $date);
   }
 
