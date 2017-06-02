@@ -3,8 +3,8 @@ status: true
 dependencies:
   module:
     - node
-id: node.field_exclude_aggregator
-field_name: field_exclude_aggregator
+id: node.field_article_exclude_aggr
+field_name: field_article_exclude_aggr
 entity_type: node
 type: boolean
 settings: {  }

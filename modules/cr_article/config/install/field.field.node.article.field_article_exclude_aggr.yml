@@ -2,10 +2,10 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_exclude_aggregator
+    - field.storage.node.field_article_exclude_aggr
     - node.type.article
-id: node.article.field_exclude_aggregator
-field_name: field_exclude_aggregator
+id: node.article.field_article_exclude_aggr
+field_name: field_article_exclude_aggr
 entity_type: node
 bundle: article
 label: 'Exclude from aggregator views'

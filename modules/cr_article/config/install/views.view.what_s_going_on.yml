@@ -318,10 +318,10 @@ display:
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
-        field_exclude_aggregator_value:
-          id: field_exclude_aggregator_value
-          table: node__field_exclude_aggregator
-          field: field_exclude_aggregator_value
+        field_article_exclude_aggr_value:
+          id: field_article_exclude_aggr_value
+          table: node__field_article_exclude_aggr
+          field: field_article_exclude_aggr_value
           relationship: none
           group_type: group
           admin_label: ''
