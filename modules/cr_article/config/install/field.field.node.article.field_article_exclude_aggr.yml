@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_article_exclude_aggr
+    - node.type.article
+id: node.article.field_article_exclude_aggr
+field_name: field_article_exclude_aggr
+entity_type: node
+bundle: article
+label: 'Exclude from aggregator views'
+description: 'Whether to exclude articles from news aggregator views.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
