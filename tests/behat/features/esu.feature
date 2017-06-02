@@ -4,10 +4,10 @@ Feature: ESU
   Background:
     Given I am on "/test/esu"
 
-  @javascript @default-content @wip
+  @javascript @default-content
   Scenario: ESU Fundraise
     Then I should see "ESU Fundraise: initial message" in the "esu_fundraise" region
-    And I fill in "edit-email" with "test-fundraise@example.org" in the "esu_fundraise" region
+    And I fill in "edit-email--2" with "test-fundraise@example.org" in the "esu_fundraise" region
     And I press "Sign Up" in the "esu_fundraise" region
     And I wait for AJAX loading to finish
     Then I should see "ESU Fundraise: success message" in the "esu_fundraise" region
@@ -19,7 +19,7 @@ Feature: ESU
   Scenario: ESU Standard
     Then I should see "ESU Standard: initial message" in the "esu_standard" region
     And I should not see "success" in the "esu_standard" region
-    And I fill in "edit-email--2" with "test@example.org" in the "esu_standard" region
+    And I fill in "edit-email--3" with "test@example.org" in the "esu_standard" region
     And I press "Go" in the "esu_standard" region
     And I wait for AJAX loading to finish
     Then I should see "ESU Standard: success! (first message)" in the "esu_standard" region
@@ -35,7 +35,7 @@ Feature: ESU
   @javascript @default-content
   Scenario: ESU Workplace
     Then I should see "ESU Workplace: initial message" in the "esu_workplace" region
-    And I fill in "edit-email--3" with "test-workplace@example.org" in the "esu_workplace" region
+    And I fill in "edit-email--4" with "test-workplace@example.org" in the "esu_workplace" region
     And I fill in "edit-firstname" with "Test Workplace First Name" in the "esu_workplace" region
     And I press "Sign Up" in the "esu_workplace" region
     And I wait for AJAX loading to finish
@@ -47,7 +47,7 @@ Feature: ESU
   @javascript @default-content
   Scenario: ESU Register your Interest.(Should be only an email)
     Then I should see "ESU Register Interest: initial message" in the "esu_register_interest" region
-    And I fill in "edit-email--4" with "test-register-interest@example.org" in the "esu_register_interest" region
+    And I fill in "edit-email--5" with "test-register-interest@example.org" in the "esu_register_interest" region
     And I press "Subscribe" in the "esu_register_interest" region
     And I wait for AJAX loading to finish
     Then I should see "ESU Register Interest: success message" in the "esu_register_interest" region
