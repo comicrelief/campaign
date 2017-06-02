@@ -5,7 +5,7 @@ namespace Drupal\cr_meta_icons\Plugin\Block;
 use Drupal\Core\Block\BlockBase;
 
 /**
- * Provides a 'Head Sign Up' block.
+ * Provides a block with meta icons.
  *
  * @Block(
  *   id = "cr_meta_icons",
