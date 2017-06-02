@@ -285,4 +285,20 @@ function cr_update_8032() {
  */
 function cr_update_8033() {
   installer()->install(['cr_feature_articles']);
+
+/**
+ * Re-save all Article content to add new exclude from aggregator field.
+ */
+function cr_update_8034() {
+  // Get an array of all 'article' node ids.
+  $article_nids = \Drupal::entityQuery('node')
+    ->condition('type', 'article')
+    ->execute();
+
+  // Load all the articles.
+  $articles = \Drupal\node\Entity\Node::loadMultiple($article_nids);
+  foreach ($articles as $article) {
+    $article->set('field_exclude_aggregator', 0);
+    $article->save();
+  }
 }
