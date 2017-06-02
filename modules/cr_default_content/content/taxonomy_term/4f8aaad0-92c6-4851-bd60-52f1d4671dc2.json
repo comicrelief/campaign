@@ -17,15 +17,15 @@
             "value": "4f8aaad0-92c6-4851-bd60-52f1d4671dc2"
         }
     ],
-    "vid": [
-        {
-            "target_id": "article_category"
-        }
-    ],
     "langcode": [
         {
             "value": "en",
             "lang": "en"
+        }
+    ],
+    "vid": [
+        {
+            "target_id": "article_category"
         }
     ],
     "name": [

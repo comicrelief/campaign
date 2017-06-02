@@ -1,6 +1,7 @@
 global-css:
   css:
     theme:
+      css/layout.css: { weight: -30}
       css/styles.css: { weight: -20}
       css/ie8.styles.css: { weight: -10, browsers: { IE: 'lte IE 8', '!IE': false }, minified: true }
 

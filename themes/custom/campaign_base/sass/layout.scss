@@ -1,0 +1,180 @@
+// layout for regions views paragraphs and sections
+
+@import "@comicrelief/pattern-lab/sass/base/_variables";
+@import "@comicrelief/pattern-lab/sass/base/_core";
+
+/* Campaign Global styling TODO clean up */
+body {
+  background: $colour-white;
+  font-family: $body-font;
+  font-size: 100%;
+  line-height: 1.3125rem;
+
+  -webkit-font-smoothing: antialiased;
+}
+
+/* logo header */
+.block-system-branding-block {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+}
+header[role=banner] {
+  height: 129px;
+  @include breakpoint($desktop-nav-breakpoint) {
+    height: 156px;
+  }
+}
+.page__title {
+  max-width: 640px;
+  margin: 100px auto 40px;
+  text-align: center;
+}
+.visuallyhidden {
+  @include visuallyhidden;
+}
+.datetime {
+  display: block;
+  width: 100%;
+  margin-bottom: 40px;
+  text-align: center;
+}
+picture img {
+  width: 100%;
+}
+
+.node--view-mode-full {
+  /* think where best to put it */
+  margin: 0 auto;
+  .field--type-image {
+    margin-bottom: 40px;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+/* to do: landing page style */
+.page-node-type-landing {
+  .region-content {
+    width: 100%;
+    max-width: 100%;
+  }
+  .page__title {
+    /* make it as a mixin */
+    position: absolute;
+    top: auto;
+    left: -10000px;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+  }
+}
+
+/* to do: find a better place */
+.styleguide-link {
+  float: right;
+  clear: both;
+  margin-right: 5%;
+  text-decoration: none;
+  color: $colour-white;
+}
+
+.view-empty {
+  margin: 60px 0;
+}
+
+/* Campaign layout style TODO clean up */
+.header__inner-wrapper,
+.region-header-top,
+.node--type-page,
+.kss-section,
+.cards__wrapper,
+.cw-region {
+  @include container;
+}
+.pager,
+.search-block__wrapper,
+.view-search {
+  width: 100%;
+  max-width: $max-width;
+  margin: auto;
+}
+.pager {
+  padding: 0 calc((4 * #{gutter()}));
+  @include breakpoint($screen-md) {
+    padding: 0 calc((2 * #{gutter()}));
+  }
+  @include breakpoint($screen-lg) {
+    width: span(8);
+    padding: 0 calc((0.5 * #{gutter()}));
+  }
+}
+.view-search,
+.search-block {
+  .search-block__form,
+  .view-content,
+  .view-header {
+    margin: 20px auto;
+    max-width: $max-width;
+    padding: 0 calc((4 * #{gutter()}));
+    @include breakpoint($screen-md) {
+      padding: 0 calc((2 * #{gutter()}));
+    }
+    @include breakpoint($screen-lg) {
+      width: span(8);
+      padding: 0 calc((0.5 * #{gutter()}));
+    }
+  }
+  .view-header {
+    @include breakpoint($screen-lg) {
+      margin: 54px auto 32px;
+    }
+  }
+}
+.node--type-page,
+.node--type-article {
+  .node__content {  
+    margin: auto;
+    max-width: $max-width;
+    padding: 0 calc((4 * #{gutter()}));
+    @include breakpoint($screen-md) {
+      padding: 0 calc((2 * #{gutter()}));
+      width: span(10);
+    }
+    @include breakpoint($screen-lg) {
+      width: span(8);
+      padding: 0 calc((0.5 * #{gutter()}));
+    }
+  }
+}
+
+main {
+  position: relative;
+}
+.block-search {
+  float: right;
+  margin-top: 15px;
+}
+.view-filters {
+  float: none;
+
+  @include span(12);
+}
+
+.node--type-page {
+  padding-bottom: 60px;
+  @include breakpoint($screen-md) {
+    padding-bottom: 60px;
+  }
+}
+// Paragraphs
+
+.paragraph--type-feature-articles {
+  padding: 30px 0;
+  overflow: hidden;
+  @include breakpoint($screen-md) {
+    padding: 60px 30px;
+  }
+}
