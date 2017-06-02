@@ -1,4 +1,3 @@
-uuid: 582f4a8e-46c4-40a9-bd2f-c73eb3bac7b0
 langcode: en
 status: true
 dependencies:
@@ -15,8 +14,6 @@ dependencies:
     - paragraphs.paragraphs_type.single_msg
   module:
     - entity_reference_revisions
-_core:
-  default_config_hash: A-MJi_Lc3xCZ3vhXXMQKNxh9jGVc4mdZ37EU8qxCD8U
 id: node.landing.field_paragraphs
 field_name: field_paragraphs
 entity_type: node
