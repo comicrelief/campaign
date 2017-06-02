@@ -285,6 +285,7 @@ function cr_update_8032() {
  */
 function cr_update_8033() {
   installer()->install(['cr_feature_articles']);
+}
 
 /**
  * Re-save all Article content to add new exclude from aggregator field.
