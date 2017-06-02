@@ -39,6 +39,7 @@ dependencies:
   - breakpoint
   - responsive_image
   - entity
+  - layout_discovery
   - diff
   - fast404
 
@@ -69,7 +70,6 @@ dependencies:
 
   # Layout
   - inline_entity_form
-  - layout_plugin
   - page_manager_ui
   - panels_ipe
   - ctools_block
