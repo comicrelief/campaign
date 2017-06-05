@@ -11,7 +11,7 @@ field_name: field_single_msg_padding_option
 entity_type: paragraph
 bundle: single_msg
 label: Padding
-description: 'As a default, each component has padding above and below it to separate it from other components. 'Remove padding' will remove the selected padding of the component. 'Negative padding' will remove the selected padding of the component as well as the corresponding padding of the component above or below.'
+description: 'As a default, each component has padding above and below it to separate it from other components. "Remove padding" will remove the selected padding of the component. "Negative padding" will remove the selected padding of the component as well as the corresponding padding of the component above or below.'
 required: true
 translatable: false
 default_value:
