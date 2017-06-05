@@ -303,3 +303,10 @@ function cr_update_8034() {
     $article->save();
   }
 }
+
+/**
+ * Install views_ajax_history.
+ */
+function cr_update_8035() {
+  installer()->install(['views_ajax_history']);
+}

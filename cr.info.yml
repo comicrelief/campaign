@@ -80,6 +80,7 @@ dependencies:
   - better_exposed_filters
 
   # Custom modules
+  - views_ajax_history
   - cr_feature_articles
   - cr_colours
   - cr_page
