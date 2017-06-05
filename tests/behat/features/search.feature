@@ -1,4 +1,3 @@
-@wip
 Feature: Search
 
   @default-content
@@ -20,4 +19,4 @@ Feature: Search
   @default-content
   Scenario: Search in the DB Vitkauskas
     Given I am on "search?text=Vitkauskas"
-    Then I should see the link "YPlan partners with Comic Relief"
+    Then I should see the link "YPlan partners with"

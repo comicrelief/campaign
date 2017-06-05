@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_feature_articles_bg
+    - paragraphs.paragraphs_type.feature_articles
+  module:
+    - options
+id: paragraph.feature_articles.field_feature_articles_bg
+field_name: field_feature_articles_bg
+entity_type: paragraph
+bundle: feature_articles
+label: 'Background colour'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

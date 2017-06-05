@@ -6,6 +6,7 @@ package: Comic Relief
 
 dependencies:
   - cr_colours
+  - cr_feature_articles
 
 config_devel:
   - node.type.landing

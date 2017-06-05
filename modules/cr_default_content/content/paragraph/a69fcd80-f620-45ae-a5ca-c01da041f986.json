@@ -1,0 +1,154 @@
+{
+    "_links": {
+        "self": {
+            "href": ""
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/feature_articles"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/feature_articles\/uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/feature_articles\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/feature_articles\/field_feature_articles_taxonomy": [
+            {
+                "href": "http:\/\/default\/taxonomy\/term\/17?_format=hal_json"
+            }
+        ]
+    },
+    "id": [
+        {
+            "value": "14"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "a69fcd80-f620-45ae-a5ca-c01da041f986"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": "147"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "feature_articles"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/feature_articles\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "e3587898-c86d-4f4c-b151-a011283d44ac"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/feature_articles\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "e3587898-c86d-4f4c-b151-a011283d44ac"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/feature_articles\/field_feature_articles_taxonomy": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/taxonomy\/term\/17?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/article_category"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "9da2fff3-4385-48b6-a2dd-3c598f0a174a"
+                    }
+                ]
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1496256242",
+            "lang": "en"
+        }
+    ],
+    "parent_id": [
+        {
+            "value": "37"
+        }
+    ],
+    "parent_type": [
+        {
+            "value": "node"
+        }
+    ],
+    "parent_field_name": [
+        {
+            "value": "field_paragraphs"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "field_feature_articles_bg": [
+        {
+            "value": "bg--red"
+        }
+    ],
+    "field_feature_articles_title": [
+        {
+            "value": "Latest Fundraising News"
+        }
+    ],
+    "field_feature_articles_titlehide": [
+        {
+            "value": "0"
+        }
+    ]
+}

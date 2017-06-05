@@ -228,9 +228,10 @@ display:
       show_admin_links: true
       hide_attachment_summary: false
     cache_metadata:
-      max-age: 0
+      max-age: -1
       contexts:
         - 'languages:language_interface'
+        - url
         - url.query_args
       tags: {  }
   page_1:
@@ -244,8 +245,9 @@ display:
       enabled: true
       exposed_block: true
     cache_metadata:
-      max-age: 0
+      max-age: -1
       contexts:
         - 'languages:language_interface'
+        - url
         - url.query_args
       tags: {  }

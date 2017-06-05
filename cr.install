@@ -281,6 +281,13 @@ function cr_update_8032() {
 }
 
 /**
+ * Install cr_feature_articles
+ */
+function cr_update_8033() {
+  installer()->install(['cr_feature_articles']);
+}
+
+/**
  * Re-save all Article content to add new exclude from aggregator field.
  */
 function cr_update_8034() {
@@ -312,4 +319,11 @@ function cr_update_8035() {
     $taxonomy->set('field_taxonomy_hide_from_aggr', 0);
     $taxonomy->save();
   }
+}
+
+/**
+ * Install views_ajax_history.
+ */
+function cr_update_8036() {
+  installer()->install(['views_ajax_history']);
 }
