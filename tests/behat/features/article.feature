@@ -106,15 +106,23 @@ Feature: Article
     Then I should see "Celebrities come together for a stellar Night of TV for Sport Relief"
 
   @api @default-content @exclude-articles-from-aggregator
-  Scenario: Create news articles that is excluded from aggregated news article views
+  Scenario: Create news articles that is excluded from feature articles views
     # Create an article that is excluded from view.
     Given I am logged in as a user with the "editor" role
     And I am on "node/add/article"
     And I enter "Test excluded article" for "edit-title-0-value"
     And I check the box "edit-field-article-exclude-aggr-value"
+    And I press "Add new Publishing Date"
+    And I wait for AJAX loading to finish
+    Then I should see "Update Date/time"
+    And I enter today date for "publishing_date[form][inline_entity_form][update_timestamp][0][value][date]"
+    And I enter the time for "publishing_date[form][inline_entity_form][update_timestamp][0][value][time]"
+    And I press "Create Publishing Date"
+    And I wait for AJAX loading to finish
+    Then I should see "Publishing date"
     And I enter "Fundraising (17)" for "edit-field-article-category-target-id"
     And press "Save and publish"
     # Check the content is excluded from the news and events page
     Given I am not logged in
-    And I am on "whats-going-on"
+    And I am on "featured-stories"
     Then I should not see "Test excluded article"
