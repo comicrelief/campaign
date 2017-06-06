@@ -121,6 +121,7 @@ Feature: Article
     Then I should see "Publishing date"
     And I check the box "edit-field-article-exclude-aggr-value"
     And I enter "Fundraising (17)" for "edit-field-article-category-target-id"
+    And I scroll ".unpublish input" into view
     And press "Save and publish"
     # Check the content is excluded from the news and events page
     Given I am not logged in
