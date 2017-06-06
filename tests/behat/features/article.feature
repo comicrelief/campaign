@@ -118,3 +118,15 @@ Feature: Article
     Given I am not logged in
     And I am on "whats-going-on"
     Then I should not see "Test excluded article"
+
+  @api @default-content @exclude-articles-from-aggregator
+  Scenario: Make a taxonomy type hidden from aggregation and make sure that articles with that tag are not display in aggregation
+    # Make a taxonomy item hidden from aggregation.
+    Given I am logged in as a user with the "editor" role
+    And I am on "taxonomy/term/16/edit?destination=/admin/structure/taxonomy/manage/article_category/overview"
+    And I check the box "edit-field-taxonomy-hide-from-aggr-value"
+    And press "Save"
+    # Check the content is excluded from the news and events page
+    Given I am not logged in
+    And I am on "whats-going-on"
+    Then I should not see "Extra article 2"

@@ -4,3 +4,34 @@
  * @file
  * News article module adds a content type for your news.
  */
+
+/**
+ * Get available fields that are not hidden from aggregation.
+ * Implements hook_form_alter().
+ * @param $form
+ * @param $form_state
+ * @param $form_id
+ */
+function cr_article_form_alter(&$form, &$form_state, $form_id) {
+  if ($form['#id'] === 'views-exposed-form-what-s-going-on-block-1') {
+    // Fetch all of the terms that are not hidden from aggregation.
+    $taxonomy_nids = \Drupal::entityQuery('taxonomy_term')
+      ->condition('vid', 'article_category')
+      ->condition('field_taxonomy_hide_from_aggr', 0)
+      ->execute();
+
+    // Add the default 'All' value.
+    $form['field_article_category_target_id']['#options'] = array(
+      'All' => 'All',
+    );
+
+    // Loop through the available terms and add to the options array.
+    foreach (\Drupal\taxonomy\Entity\Term::loadMultiple($taxonomy_nids) as $taxonomy) {
+      /** @var \Drupal\taxonomy\Entity\Term $taxonomy */
+      $form['field_article_category_target_id']['#options'][$taxonomy->id()] = $taxonomy->getName();
+    }
+
+    // Sort the array by value.
+    asort($form['field_article_category_target_id']['#options']);
+  }
+}

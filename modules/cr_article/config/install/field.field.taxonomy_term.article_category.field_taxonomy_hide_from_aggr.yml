@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_taxonomy_hide_from_aggr
+    - taxonomy.vocabulary.article_category
+id: taxonomy_term.article_category.field_taxonomy_hide_from_aggr
+field_name: field_taxonomy_hide_from_aggr
+entity_type: taxonomy_term
+bundle: article_category
+label: 'Exclude from aggregator views'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

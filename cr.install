@@ -305,8 +305,25 @@ function cr_update_8034() {
 }
 
 /**
- * Install views_ajax_history.
+ * Re-save all article category taxonomy terms to add hide from aggregator field.
  */
 function cr_update_8035() {
+  // Get an array of all 'article' node ids.
+  $taxonomy_nids = \Drupal::entityQuery('taxonomy_term')
+    ->condition('vid', 'article_category')
+    ->execute();
+
+  // Load all the taxonomy terms.
+  $taxonomies = \Drupal\taxonomy\Entity\Term::loadMultiple($taxonomy_nids);
+  foreach ($taxonomies as $taxonomy) {
+    $taxonomy->set('field_taxonomy_hide_from_aggr', 0);
+    $taxonomy->save();
+  }
+}
+
+/**
+ * Install views_ajax_history.
+ */
+function cr_update_8036() {
   installer()->install(['views_ajax_history']);
 }
