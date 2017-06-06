@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9d108d052f02229d944966b8ccd182d9",
+    "content-hash": "441375db851255d7eecdb6f5540cbcca",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -791,8 +791,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.19+1-dev",
-                    "datestamp": "1492441442"
+                    "version": "8.x-1.19+5-dev",
+                    "datestamp": "1495785485"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -846,8 +846,8 @@
                     "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-3.0-alpha2+15-dev",
-                    "datestamp": "1492103042"
+                    "version": "8.x-3.0-alpha2+25-dev",
+                    "datestamp": "1496693042"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -2104,8 +2104,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.2+2-dev",
-                    "datestamp": "1486636986"
+                    "version": "8.x-1.2+3-dev",
+                    "datestamp": "1494232385"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -2358,8 +2358,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-beta4+12-dev",
-                    "datestamp": "1493219042"
+                    "version": "8.x-1.0-beta4+13-dev",
+                    "datestamp": "1493220842"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -3058,6 +3058,7 @@
                 "drupal/token": "*"
             },
             "require-dev": {
+                "drupal/devel": "*",
                 "drupal/metatag_dc": "*",
                 "drupal/metatag_open_graph": "*"
             },
@@ -3067,8 +3068,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0+20-dev",
-                    "datestamp": "1494272286"
+                    "version": "8.x-1.1+2-dev",
+                    "datestamp": "1496417043"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -3447,8 +3448,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.1+22-dev",
-                    "datestamp": "1494548285"
+                    "version": "8.x-1.1+27-dev",
+                    "datestamp": "1496212144"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -3959,8 +3960,8 @@
                     "dev-2.x": "2.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-2.9+1-dev",
-                    "datestamp": "1491127384"
+                    "version": "8.x-2.9+3-dev",
+                    "datestamp": "1496226242"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -4368,6 +4369,9 @@
                 "drupal": {
                     "version": "8.x-1.x-dev",
                     "datestamp": "1470177539"
+                },
+                "patches_applied": {
+                    "https://www.drupal.org/node/2835957": "https://www.drupal.org/files/issues/second_ajax_call-2835957-3.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
