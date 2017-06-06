@@ -105,7 +105,7 @@ Feature: Article
     And I click "Comic Relief raises £1bn over 30-year existence"
     Then I should see "Celebrities come together for a stellar Night of TV for Sport Relief"
 
-  @api @default-content @exclude-articles-from-aggregator
+  @api @javascript @default-content @exclude-articles-from-aggregator
   Scenario: Create news articles that is excluded from feature articles views
     # Create an article that is excluded from view.
     Given I am logged in as a user with the "editor" role
