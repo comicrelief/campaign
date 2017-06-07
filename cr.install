@@ -291,6 +291,10 @@ function cr_update_8033() {
  * Re-save all Article content to add new exclude from aggregator field.
  */
 function cr_update_8034() {
+
+  // Reinstall the cr_article configuration.
+  \Drupal::service('config.installer')->installDefaultConfig('module', 'cr_article');
+
   // Get an array of all 'article' node ids.
   $article_nids = \Drupal::entityQuery('node')
     ->condition('type', 'article')
