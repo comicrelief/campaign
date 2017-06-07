@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "df14ada6f38efa0ac805c9f0e169ca69",
+    "content-hash": "e285218a5c02a06e134f4fe7d601e048",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1147,17 +1147,17 @@
         },
         {
             "name": "drupal/cookieconsent",
-            "version": "1.0.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/cookieconsent",
-                "reference": "8.x-1.0"
+                "reference": "8.x-1.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/cookieconsent-8.x-1.0.zip",
-                "reference": "8.x-1.0",
-                "shasum": "f3a1ca138bf30143d8ec4cc2af4f231a91a21dd5"
+                "url": "https://ftp.drupal.org/files/projects/cookieconsent-8.x-1.2.zip",
+                "reference": null,
+                "shasum": "185cedc201a843bd1557c6656078f599807aa08a"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -1168,8 +1168,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0",
-                    "datestamp": "1469608139"
+                    "version": "8.x-1.2",
+                    "datestamp": "1492280944"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
