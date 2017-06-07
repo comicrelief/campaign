@@ -1,0 +1,20 @@
+langcode: en
+status: false
+dependencies:
+  config:
+    - views.view.search
+  module:
+    - views
+id: seven_exposedformsearchpage_1
+theme: seven
+region: '-1'
+weight: -6
+provider: null
+plugin: 'views_exposed_filter_block:search-page_1'
+settings:
+  id: 'views_exposed_filter_block:search-page_1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+visibility: {  }

@@ -1,14 +1,14 @@
 Feature: Media
   This feature covers media (including downloadables)
 
-  @api @javascript @not-on-travis
+  @api @javascript
   Scenario: Create a downloadable image
     Given I am logged in as a user with the "editor" role
     When I visit "/media/add/cr_file"
     And I enter "nose (administration)" for "Media name"
     And I enter "Red Nose!" for "Display title"
     And I select "Events" from "Category"
-    And I attach the file "profiles/contrib/cr/tests/behat/files/nose.jpg" to "File"
+    And I attach the file "/tests/behat/files/nose.jpg" to "File"
     And I wait for AJAX to finish
     And I press "Save and publish"
     Then I should see "File nose (administration) has been created."
@@ -16,14 +16,14 @@ Feature: Media
     When I go to "admin/content/media"
     Then I should see the link "nose (administration)"
 
-  @api @javascript @not-on-travis
+  @api @javascript
   Scenario: Create a downloadable pdf
     Given I am logged in as a user with the "editor" role
     When I visit "/media/add/cr_file"
     And I enter "pdf (administration)" for "Media name"
     And I enter "Sample PDF" for "Display title"
     And I select "Fundraise" from "Category"
-    And I attach the file "profiles/contrib/cr/tests/behat/files/sample.pdf" to "File"
+    And I attach the file "/tests/behat/files/sample.pdf" to "File"
     And I wait for AJAX to finish
     And I press "Save and publish"
     Then I should see "File pdf (administration) has been created."
@@ -31,7 +31,7 @@ Feature: Media
     When I go to "admin/content/media"
     Then I should see the link "pdf (administration)"
 
-  @api @javascript @not-on-travis
+  @api @javascript
   Scenario: Create an external file
     Given I am logged in as a user with the "editor" role
     When I visit "/media/add/cr_external_file"
@@ -58,15 +58,15 @@ Feature: Media
     And I go to "admin/content/media"
     Then I should see the link "Video (administration name)"
 
-  @api @test @javascript @not-on-travis
+  @api @test @javascript
   Scenario: Create a video media file
     Given I am logged in as a user with the "editor" role
     When I visit "/media/add/cr_file"
     And I enter "video file (administration)" for "Media name"
     And I enter "Sample video file" for "Display title"
     And I select "Event" from "Category"
-    And I attach the file "profiles/contrib/cr/tests/behat/files/testvideo.mp4" to "File"
+    And I attach the file "/tests/behat/files/testvideo.mp4" to "File"
     And I wait for AJAX to finish
     And I press "Save and publish"
-    Then I should see "File video file has been created."
+    Then I should see "File video file (administration) has been created."
     And I should see the link "Sample video file"

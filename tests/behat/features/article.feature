@@ -12,8 +12,10 @@ Feature: Article
   Scenario: Article pagination on /whats-going-on
     Given I am on "whats-going-on"
     And I click "››"
+    And I wait for 3 seconds
     Then I should see the link "British Triathlon cheers Greg James on"
     And I click "‹‹"
+    And I wait for 3 seconds
     Then I should see the link "Greg James begins his Gregathlon for Sport Relief"
 
   @api @default-content
@@ -21,6 +23,7 @@ Feature: Article
     Given I am logged in as a user with the "editor" role
     And I am on "/news-tv-and-events/news/yplan-partners-sport-relief"
     And I follow "Edit"
+    And I wait for 3 seconds
     And I enter "YPlan partners with Comic Relief" for "edit-title-0-value"
     And press "Save"
     And I go to "/news-tv-and-events/news/yplan-partners-sport-relief"
@@ -40,7 +43,7 @@ Feature: Article
     And the metatag property "og:image" should contain the value "news/2016-02/greg_james_gregathlon_belfast_and_so_it_begins"
     And the metatag property "og:url" should contain the value "news-tv-and-events/news/greg-james-begins-his-gregathlon-sport-relief"
 
-  @api @javascript @not-on-travis
+  @api @javascript
   Scenario: Create news articles using scheduled updates
     Given I am logged in as a user with the "editor" role
     And I am on "node/add/article"
@@ -61,7 +64,7 @@ Feature: Article
     And I am on "news-tv-and-events/news"
     Then I should not see "Test Scheduled article"
     # wait till content should be published then log back in
-    And I wait for "30" seconds
+    And I wait for 30 seconds
     And I am logged in as a user with the "administrator" role
     # run cron and clear caches
     And am on "admin/config/system/cron"
@@ -74,26 +77,26 @@ Feature: Article
     And I am on "news-tv-and-events/news/test-scheduled-article"
     Then I should see "Test Scheduled article"
 
-  @api @not-on-travis
+  @api
   Scenario: Create news articles that are linked together via a common tag
     Given a "category" term with the name "Fundraising"
     When I am viewing a "article" content:
-    | title       | Comic Relief raises £1bn over 30-year existence |
-    | field_article_intro | Since the charity was founded 30 years ago, with more than £78m raised. |
-    | body | Comic Relief founder Richard Curtis said he was "enormously proud" of the charity's achievements. |
-    | field_article_image | profiles/contrib/cr/tests/behat/files/400x4:3.png |
-    | field_youtube_url | https://youtu.be/JCUFs2qJ1bs |
-    | field_article_category | Fundraising |
+      | title                  | Comic Relief raises £1bn over 30-year existence                                                   |
+      | field_article_intro    | Since the charity was founded 30 years ago, with more than £78m raised.                           |
+      | body                   | Comic Relief founder Richard Curtis said he was "enormously proud" of the charity's achievements. |
+      | field_article_image    | profiles/contrib/cr/tests/behat/files/400x4:3.png                                                 |
+      | field_youtube_url      | https://youtu.be/JCUFs2qJ1bs                                                                      |
+      | field_article_category | Fundraising                                                                                       |
     Then I should see "Richard Curtis"
     And I should see "£1bn"
     And I should not see "£78m raised"
     And I am viewing a "article" content:
-    | title       | Celebrities come together for a stellar Night of TV for Sport Relief |
-    | field_article_publish_date | 2015-02-08 17:45:00                       |
-    | field_article_intro | Audiences across the UK are in for a night of first-class entertainment.  |
-    | body | A one-off Luther special will be screened, with Idris Elba starring alongside Lenny Henry, Rio Ferdinand, Denise Lewis, Louis Smith, Ian Wright and David Haye. |
-    | field_article_image | profiles/contrib/cr/tests/behat/files/400x4:3.png |
-    | field_article_category | Fundraising |
+      | title                      | Celebrities come together for a stellar Night of TV for Sport Relief                                                                                            |
+      | field_article_publish_date | 2015-02-08 17:45:00                                                                                                                                             |
+      | field_article_intro        | Audiences across the UK are in for a night of first-class entertainment.                                                                                        |
+      | body                       | A one-off Luther special will be screened, with Idris Elba starring alongside Lenny Henry, Rio Ferdinand, Denise Lewis, Louis Smith, Ian Wright and David Haye. |
+      | field_article_image        | profiles/contrib/cr/tests/behat/files/400x4:3.png                                                                                                               |
+      | field_article_category     | Fundraising                                                                                                                                                     |
     Then I should see "Luther"
     And I should see "Related news"
     And I should see "Comic Relief raises £1bn over 30-year existence"
@@ -101,3 +104,17 @@ Feature: Article
     And the cache has been cleared
     And I click "Comic Relief raises £1bn over 30-year existence"
     Then I should see "Celebrities come together for a stellar Night of TV for Sport Relief"
+
+  @api @default-content @exclude-articles-from-aggregator
+  Scenario: Create news articles that is excluded from feature articles views
+    # Create an article that is excluded from view.
+    When I am viewing a "article" content:
+      | title                       | Test excluded article                  |
+      | field_article_intro         | This is a test of the article content. |
+      | body                        | Test, Test, Test.                      |
+      | field_article_exclude_aggr  | 1                                      |
+      | field_article_category      | Fundraising                            |
+    # Check the content is excluded from the news and events page
+    Given I am not logged in
+    And I am on "featured-stories"
+    Then I should not see "Test excluded article"

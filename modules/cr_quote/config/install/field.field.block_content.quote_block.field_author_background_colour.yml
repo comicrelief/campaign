@@ -12,7 +12,7 @@ entity_type: block_content
 bundle: quote_block
 label: 'Author background colour'
 description: 'Colour shown behind the author''s picture on SM breakpoint'
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''

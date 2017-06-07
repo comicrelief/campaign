@@ -5,12 +5,10 @@ dependencies:
     - views.view.search
   module:
     - views
-  theme:
-    - campaign_base
 id: exposedformsearchpage_1
 theme: campaign_base
 region: content
-weight: -5
+weight: -7
 provider: null
 plugin: 'views_exposed_filter_block:search-page_1'
 settings:

@@ -15,10 +15,6 @@
         },
         {
             "type": "vcs",
-            "url": "git@github.com:comicrelief/campaign-modernizr.git"
-        },
-        {
-            "type": "vcs",
             "url": "git@github.com:previousnext/drush_cmi_tools.git"
         },
         {
@@ -39,7 +35,7 @@
             "cd web/profiles/contrib/cr/themes/custom/campaign_base;npm install"
         ],
         "drupal:scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
-        "campaign:links": "cd web/profiles/contrib/cr;ln -sf ../../../../config .;ln -fs ../../../../modules .;ln -fs ../../../../tests .;ln -fs ../../../../themes .;ln -fs ../../../../cr.in* .;ln -fs ../../../../Ge* .",
+        "campaign:links": "cd web/profiles/contrib/cr;ln -sf ../../../../config .;ln -fs ../../../../modules .;ln -fs ../../../../tests .;ln -fs ../../../../themes .;ln -fs ../../../../cr.in* .",
         "campaign:scaffold": [
             "cp ci/platform/settings.php web/sites/default/settings.php",
             "mkdir -p web/profiles/contrib/cr",
@@ -83,7 +79,6 @@
             }
         },
         "installer-paths": {
-          "themes/custom/campaign_base/libraries/modernizr": ["comicrelief/campaign-modernizr"],
           "web/core": [
               "type:drupal-core"
           ],
@@ -153,8 +148,8 @@
         "drupal/field_group": "1.0-rc6",
         "drupal/twig_tweak": "1.4",
         "drupal/rabbitmq": "1.0-beta1",
-        "drupal/search_api": "1.0-beta3",
-        "drupal/search_api_solr": "1.x-dev#d6c2743",
+        "drupal/search_api": "1.1",
+        "drupal/search_api_solr": "1.0-rc3",
         "drupal/crazyegg": "1.0-rc1",
         "drupal/optimizely": "1.1",
         "drupal/simple_sitemap": "2.x-dev#5833ff0",
@@ -165,8 +160,8 @@
         "drupal/memcache": "2.x-dev#908c0a2",
         "drupal/cdn": "3.0",
         "drupal/better_exposed_filters": "3.x-dev#19f3da2",
-        "comicrelief/campaign-modernizr": "dev-master",
-        "mikeyp/google_tag": "dev-8.x-1.x"
+        "mikeyp/google_tag": "dev-8.x-1.x",
+        "drupal/views_ajax_history": "1.x-dev#99949fd"
     },
     "require-dev": {
         "behat/mink-selenium2-driver": "^1.3",

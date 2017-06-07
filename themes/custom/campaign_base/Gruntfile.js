@@ -17,7 +17,7 @@ module.exports = function (grunt) {
         files: [{
             expand: true,
             cwd: 'sass',
-            src: ['{,**/}*.scss'],
+            src: ['*.scss'],
             dest: 'css',
             ext: '.css'
         }]
@@ -169,8 +169,7 @@ module.exports = function (grunt) {
     'sass',
     'concat',
     'uglify',
-    // we need to remove modernizr downloading via composer first so we can enable it and let grunt build it
-    // 'modernizr',
+    'modernizr',
     'kss',
     // 'imagemin'
   ]);
@@ -182,7 +181,7 @@ module.exports = function (grunt) {
   grunt.registerTask('devserver', [
     'connect:dev'
   ]);
-  
+
   grunt.registerTask('clean:test', [
     'clean'
   ]);
