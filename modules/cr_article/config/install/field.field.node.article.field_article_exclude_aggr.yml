@@ -8,8 +8,8 @@ id: node.article.field_article_exclude_aggr
 field_name: field_article_exclude_aggr
 entity_type: node
 bundle: article
-label: 'Exclude from aggregator views'
-description: 'Whether to exclude articles from news aggregator views.'
+label: 'Exclude from feature articles paragraph types.'
+description: 'Whether to exclude this article from the aggregated feature articles paragraph types.'
 required: false
 translatable: false
 default_value:
