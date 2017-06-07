@@ -37,8 +37,8 @@ Feature: Search
     #Search in the DB media pdf
     Given I am on "search?text=money+box"
     Then I should see the link "Kids Snuffles Money Box"
-    
-  @api @javascript
+
+  @api
   Scenario: Search for downloadable external file
     #Create an external file
     Given I am logged in as a user with the "editor" role
@@ -53,5 +53,20 @@ Feature: Search
     #Search for external file
     Given I am on "search?text=Youth+fundraising+pack"
     Then I should see the link "Youth fundraising pack"
+
+  @api
+  Scenario: Search for video
+    #Create video media item
+    Given I am logged in as a user with the "editor" role
+    When I visit "/media/add/video"
+    And I enter "Media video" for "Media name"
+    And I enter "PqXOlfwlVag" for "Youtube Video ID"
+    And I enter "Stephen Hawking video" for "Video caption"
+    And I press "Save and publish"
+    And I wait for 5 seconds
+
+    #Search for video item
+    Given I am on "search?text=Stephen+Hawking"
+    Then I should see "Stephen Hawking video"
 
 
