@@ -37,3 +37,21 @@ Feature: Search
     #Search in the DB media pdf
     Given I am on "search?text=money+box"
     Then I should see the link "Kids Snuffles Money Box"
+    
+  @api @javascript
+  Scenario: Search for downloadable external file
+    #Create an external file
+    Given I am logged in as a user with the "editor" role
+    When I visit "/media/add/cr_external_file"
+    And I enter "Youth fundraising pack" for "Media name"
+    And I enter "http://assets.2017.rednoseday.com.s3.amazonaws.com/Downloadables/rnd17_youth_fundraising-pack_all.pdf" for "URL"
+    And I enter "Download" for "Link text"
+    And I select "Schools" from "Resource category"
+    And I press "Save and publish"
+    And I wait for 5 seconds
+
+    #Search for external file
+    Given I am on "search?text=Youth+fundraising+pack"
+    Then I should see the link "Youth fundraising pack"
+
+
