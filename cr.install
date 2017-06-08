@@ -303,7 +303,7 @@ function cr_update_8034() {
   // Load all the articles.
   $articles = \Drupal\node\Entity\Node::loadMultiple($article_nids);
   foreach ($articles as $article) {
-    $article->set('field_exclude_aggregator', 0);
+    $article->set('field_article_exclude_aggr', 0);
     $article->save();
   }
 }

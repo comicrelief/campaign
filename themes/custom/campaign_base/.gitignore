@@ -12,6 +12,9 @@ ie9-css
 
 /images/generated
 
+# Optimized images from Pattern-lab package #
+images/patternlab/
+
 # Libraries #
 
 /libraries
