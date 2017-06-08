@@ -12,7 +12,7 @@
       $(".search-block__form input[type=text]").focus();
     });
 
-    $("a[role=button].feature-nav-toggle").on("click", function() {
+    $("a[role=button].c-hamburger").on("click", function() {
       $(this).toggleClass("is-active");
       $("header[role='banner'] nav, .search-overlay:not('.show'), .search-overlay.show.nav-on").toggleClass("show");
       $(".search-overlay").toggleClass("nav-on");
@@ -34,7 +34,7 @@
     // Close any active navs when we're toggling on other buttons in the nav
     $('.meta-icons a[role=button]').on('click', function (e) {
       // Remove active class from hamburger nav to collapse it
-      $('a[role=button].feature-nav-toggle.is-active').removeClass('is-active');
+      $('a[role=button].c-hamburger.is-active').removeClass('is-active');
     });
 
     // Close all overlays and dropdowns when we're clicking on other content
@@ -44,10 +44,10 @@
       $( ".crNavTooltips .has-tooltip" ).tooltip( "close" );
 
       // Check that we're not interacting with the nav; dont want to close anything being used
-      if (!$(e.target).is('.meta-icons *, .feature-nav__icons *, .search-block *, ul.menu *, .block--cr-email-signup--head *')) {
+      if (!$(e.target).is('.meta-icons *, .feature-nav__icons *, .main-nav__icons *, .search-block *, ul.menu *, .block--cr-email-signup--head *')) {
 
         // Remove all active state classes from all of our active nav dropdowns
-        $('a[role=button].feature-nav-toggle.is-active').removeClass('is-active');
+        $('a[role=button].c-hamburge.is-active').removeClass('is-active');
         $('.header__inner-wrapper nav.navigation.show, .search-block.show, .search-overlay.show, .block--cr-email-signup--head').removeClass('show');
         $('.meta-icons__esu-toggle.active, .meta-icons__magnify.active').removeClass('active');
         $('.search-overlay.search-on').removeClass('search-on');
