@@ -4,5 +4,5 @@ description: JS and hooks for main navigation
 core: 8.x
 package: Comic Relief
 
-libraries:
-- cr_navigation/cr_navigation
+# libraries:
+# - cr_navigation/cr_navigation
