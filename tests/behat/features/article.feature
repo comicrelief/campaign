@@ -106,15 +106,15 @@ Feature: Article
     Then I should see "Celebrities come together for a stellar Night of TV for Sport Relief"
 
   @api @default-content @exclude-articles-from-aggregator
-  Scenario: Create news articles that is excluded from aggregated news article views
+  Scenario: Create news articles that is excluded from feature articles views
     # Create an article that is excluded from view.
-    Given I am logged in as a user with the "editor" role
-    And I am on "node/add/article"
-    And I enter "Test excluded article" for "edit-title-0-value"
-    And I check the box "edit-field-article-exclude-aggr-value"
-    And I enter "Fundraising (17)" for "edit-field-article-category-target-id"
-    And press "Save and publish"
+    When I am viewing a "article" content:
+      | title                       | Test excluded article                  |
+      | field_article_intro         | This is a test of the article content. |
+      | body                        | Test, Test, Test.                      |
+      | field_article_exclude_aggr  | 1                                      |
+      | field_article_category      | Fundraising                            |
     # Check the content is excluded from the news and events page
     Given I am not logged in
-    And I am on "whats-going-on"
+    And I am on "featured-stories"
     Then I should not see "Test excluded article"

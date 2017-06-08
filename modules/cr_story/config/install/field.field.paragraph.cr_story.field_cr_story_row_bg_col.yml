@@ -12,7 +12,7 @@ entity_type: paragraph
 bundle: cr_story
 label: 'Row background colour'
 description: ''
-required: true
+required: false
 translatable: false
 default_value:
   -

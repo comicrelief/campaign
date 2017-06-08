@@ -12,7 +12,7 @@ entity_type: paragraph
 bundle: single_msg
 label: 'Background colour'
 description: 'Select a full-width background colour for the entire message row'
-required: true
+required: false
 translatable: false
 default_value:
   -

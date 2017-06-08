@@ -38,3 +38,4 @@ permissions:
   - 'delete own zip files'
   - 'download own zip files'
   - 'edit own zip files'
+  - 'exclude from cookieconsent'
