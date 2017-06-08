@@ -58,15 +58,14 @@ module.exports = function (grunt) {
         "uglify": true
       }
     },
-    // Optmize theme images
+    // Get images from pattern-lab
     imagemin: {
-      dynamic: {
-        files: [{
-          expand: true,
-          cwd: 'original/images/',
-          src: ['**/*.{png,jpg,gif}'],
-          dest: 'dist/images'
-        }]
+      files: {
+        expand: true,
+        flatten: true,
+        cwd: 'node_modules/@comicrelief/pattern-lab/sass/base/components',
+        src: ['**/*.{png,jpg,gif,svg}'],
+        dest: 'images/patternlab'
       }
     },
 
@@ -171,7 +170,7 @@ module.exports = function (grunt) {
     'uglify',
     'modernizr',
     'kss',
-    // 'imagemin'
+    'imagemin'
   ]);
 
   grunt.registerTask('watch:dev', [

@@ -11,6 +11,13 @@ if (isset($_ENV['PLATFORM_RELATIONSHIPS'])) {
         foreach ($relationships as $key => $relationship) {
             $drupal_key = ($key === 'database') ? 'default' : $key;
             foreach ($relationship as $instance) {
+                if ($key === 'solr') {
+                    $config['search_api.server.solr']['backend_config']['connector_config']['host'] = $instance['host'];
+                    $config['search_api.server.solr']['backend_config']['connector_config']['port'] = $instance['port'];
+                    $config['search_api.server.solr']['backend_config']['connector_config']['path'] = '/' . $instance['path'];
+                    $config['search_api.server.solr']['backend_config']['connector_config']['scheme'] = 'http';
+                    $config['search_api.server.solr']['backend_config']['connector_config']['core'] = '';
+                }
                 if (empty($instance['scheme']) || ($instance['scheme'] !== 'mysql' && $instance['scheme'] !== 'pgsql')) {
                     continue;
                 }

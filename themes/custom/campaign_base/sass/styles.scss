@@ -1,105 +1,16 @@
+// General theme variables
+
+$image-path: "/profiles/contrib/cr/themes/custom/campaign_base/images/patternlab/";
+
 // Importing files from patternlab package
 
 @import "@comicrelief/pattern-lab/sass/base/_variables";
 @import "@comicrelief/pattern-lab/sass/base/_core";
 @import "@comicrelief/pattern-lab/sass/base/_components";
 
-// Drupal related styles regions and paragraph fixes | move it to a better place
-
-// admin
-
-.block-core.block-local-tasks-block,
-.messages--status {
-  width: 100%;
-  max-width: 1200px;
-  margin: auto;
-  padding-left: 160px;
-}
-#user-login-form {
-  margin: 40px;
-}
-
-// layout
-.header__inner-wrapper,
-.region-header-top,
-.node--type-page,
-.kss-section,
-.cards__wrapper,
-.cw-region {
-  @include container;
-}
-.pager,
-.search-block__wrapper,
-.view-search {
-  width: 100%;
-  max-width: $max-width;
-  margin: auto;
-}
-.pager {
-  padding: 0 calc((4 * #{gutter()}));
-  @include breakpoint($screen-md) {
-    padding: 0 calc((2 * #{gutter()}));
-  }
-  @include breakpoint($screen-lg) {
-    width: span(8);
-    padding: 0 calc((0.5 * #{gutter()}));
-  }
-}
-.view-search,
-.search-block {
-  .search-block__form,
-  .view-content,
-  .view-header {
-    margin: 20px auto;
-    max-width: $max-width;
-    padding: 0 calc((4 * #{gutter()}));
-    @include breakpoint($screen-md) {
-      padding: 0 calc((2 * #{gutter()}));
-    }
-    @include breakpoint($screen-lg) {
-      width: span(8);
-      padding: 0 calc((0.5 * #{gutter()}));
-    }
-  }
-  .view-header {
-    @include breakpoint($screen-lg) {
-      margin: 54px auto 32px;
-    }
-  }
-}
-.node--type-page,
-.node--type-article {
-  .node__content {  
-    margin: auto;
-    max-width: $max-width;
-    padding: 0 calc((4 * #{gutter()}));
-    @include breakpoint($screen-md) {
-      padding: 0 calc((2 * #{gutter()}));
-      width: span(10);
-    }
-    @include breakpoint($screen-lg) {
-      width: span(8);
-      padding: 0 calc((0.5 * #{gutter()}));
-    }
-  }
-}
-
-main {
-  position: relative;
-}
-.block-search {
-  float: right;
-  margin-top: 15px;
-}
-.view-filters {
-  float: none;
-
-  @include span(12);
-}
-
-.node--type-page {
-  padding-bottom: 60px;
-  @include breakpoint($screen-md) {
-    padding-bottom: 60px;
+#block-campaign-base-branding {
+  .site-logo {
+    margin-top: -38px;
+    min-width: 104px;
   }
 }

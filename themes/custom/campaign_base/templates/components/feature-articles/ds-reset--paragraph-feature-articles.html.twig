@@ -1,0 +1,16 @@
+{%
+set classes = [
+    'paragraph',
+    content.field_feature_articles_bg['#items'][0].value
+]
+%}
+{% set title_hidden = field_feature_articles_titlehide['#items'][0].value ? 'visuallyhidden' : '' %}
+
+<section{{ attributes.addClass(classes) }}>
+    {% if field_feature_articles_title %}
+        <h2 class="cards__title {{title_hidden}}">{{ field_feature_articles_title }}</h2>
+    {% endif %}
+	<div class="feature-articles-block">
+    {{ content.articles }}
+	</div>
+</section>

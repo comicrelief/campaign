@@ -5,6 +5,7 @@ dependencies:
     - core.entity_view_mode.node.content_wall
     - field.field.node.article.body
     - field.field.node.article.field_article_category
+    - field.field.node.article.field_article_exclude_aggr
     - field.field.node.article.field_article_image
     - field.field.node.article.field_article_intro
     - field.field.node.article.field_article_meta_tags
@@ -23,7 +24,7 @@ third_party_settings:
   ds:
     layout:
       id: ds_reset
-      path: profiles/cr/modules/contrib/ds
+      path: modules/contrib/ds
       library: ''
       disable_css: false
       entity_classes: all_classes
@@ -41,21 +42,10 @@ third_party_settings:
         - field_video_embed
         - node_title
         - field_article_image
-        - node_link
     fields:
-      node_link:
-        plugin_id: node_link
-        weight: 2
-        label: hidden
-        formatter: default
-        settings:
-          'link text': 'Read more'
-          'link class': content-block__link
-          wrapper: ''
-          class: ''
       node_title:
         plugin_id: node_title
-        weight: 0
+        weight: 1
         label: hidden
         formatter: default
         settings:
@@ -68,7 +58,7 @@ bundle: article
 mode: content_wall
 content:
   field_article_image:
-    weight: 1
+    weight: 2
     label: hidden
     settings:
       responsive_image_style: cw_bg_image_blocks
@@ -110,6 +100,7 @@ content:
 hidden:
   body: true
   field_article_category: true
+  field_article_exclude_aggr: true
   field_article_intro: true
   field_article_meta_tags: true
   field_article_publish_date: true

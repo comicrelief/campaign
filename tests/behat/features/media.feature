@@ -1,7 +1,7 @@
 Feature: Media
   This feature covers media (including downloadables)
 
-  @api @javascript @not-on-travis
+  @api @javascript
   Scenario: Create a downloadable image
     Given I am logged in as a user with the "editor" role
     When I visit "/media/add/cr_file"
@@ -16,7 +16,7 @@ Feature: Media
     When I go to "admin/content/media"
     Then I should see the link "nose (administration)"
 
-  @api @javascript @not-on-travis
+  @api @javascript
   Scenario: Create a downloadable pdf
     Given I am logged in as a user with the "editor" role
     When I visit "/media/add/cr_file"
@@ -31,7 +31,7 @@ Feature: Media
     When I go to "admin/content/media"
     Then I should see the link "pdf (administration)"
 
-  @api @javascript @not-on-travis
+  @api @javascript
   Scenario: Create an external file
     Given I am logged in as a user with the "editor" role
     When I visit "/media/add/cr_external_file"
@@ -58,7 +58,7 @@ Feature: Media
     And I go to "admin/content/media"
     Then I should see the link "Video (administration name)"
 
-  @api @test @javascript @not-on-travis
+  @api @test @javascript
   Scenario: Create a video media file
     Given I am logged in as a user with the "editor" role
     When I visit "/media/add/cr_file"

@@ -11,7 +11,12 @@ mysql:
 #    type: "redis:3.0"
 #
 solr:
-    type: "solr:4.10"
+    type: "solr:6.3"
     disk: 1024
     configuration:
-        core_config: !archive "4.x"
+        cores:
+            mainindex:
+                conf_dir: !archive "solr/6.x"
+        endpoints:
+            main:
+                core: mainindex

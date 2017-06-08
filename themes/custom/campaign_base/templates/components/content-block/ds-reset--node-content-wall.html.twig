@@ -11,4 +11,4 @@
 		<h4>{{ node_title }}</h4>
 	</div>
 </div>
-{{ node_link }}
+<a href="{{ path('entity.node.canonical', {'node': node.id}) }}" class="content-block__link">{{ 'Read more'|t }}</a>

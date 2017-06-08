@@ -279,3 +279,55 @@ function cr_update_8031() {
 function cr_update_8032() {
   installer()->install(['cr_colours']);
 }
+
+/**
+ * Install cr_feature_articles
+ */
+function cr_update_8033() {
+  installer()->install(['cr_feature_articles']);
+}
+
+/**
+ * Re-save all Article content to add new exclude from aggregator field.
+ */
+function cr_update_8034() {
+
+  // Reinstall the cr_article configuration.
+  \Drupal::service('config.installer')->installDefaultConfig('module', 'cr_article');
+
+  // Get an array of all 'article' node ids.
+  $article_nids = \Drupal::entityQuery('node')
+    ->condition('type', 'article')
+    ->execute();
+
+  // Load all the articles.
+  $articles = \Drupal\node\Entity\Node::loadMultiple($article_nids);
+  foreach ($articles as $article) {
+    $article->set('field_article_exclude_aggr', 0);
+    $article->save();
+  }
+}
+
+/**
+ * Install views_ajax_history.
+ */
+function cr_update_8035() {
+  installer()->install(['views_ajax_history']);
+}
+
+/**
+ * Rerun article save due to previously incorrectly named field in hook 8034.
+ */
+function cr_update_8036() {
+  // Get an array of all 'article' node ids.
+  $article_nids = \Drupal::entityQuery('node')
+    ->condition('type', 'article')
+    ->execute();
+
+  // Load all the articles.
+  $articles = \Drupal\node\Entity\Node::loadMultiple($article_nids);
+  foreach ($articles as $article) {
+    $article->set('field_article_exclude_aggr', 0);
+    $article->save();
+  }
+}
