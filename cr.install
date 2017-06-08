@@ -314,3 +314,20 @@ function cr_update_8034() {
 function cr_update_8035() {
   installer()->install(['views_ajax_history']);
 }
+
+/**
+ * Rerun article save due to previously incorrectly named field in hook 8034.
+ */
+function cr_update_8036() {
+  // Get an array of all 'article' node ids.
+  $article_nids = \Drupal::entityQuery('node')
+    ->condition('type', 'article')
+    ->execute();
+
+  // Load all the articles.
+  $articles = \Drupal\node\Entity\Node::loadMultiple($article_nids);
+  foreach ($articles as $article) {
+    $article->set('field_article_exclude_aggr', 0);
+    $article->save();
+  }
+}
