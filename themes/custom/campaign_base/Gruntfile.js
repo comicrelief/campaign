@@ -75,7 +75,7 @@ module.exports = function (grunt) {
           separator: ';',
       },
       dist: {
-          src: ['scripts/{,**/}*.js'],
+          src: ['scripts/{,**/}*.js', 'node_modules/@comicrelief/pattern-lab/sass/base/components/{,**/}*.js'],
           dest: 'js/campaign_base.js',
       },
     },
