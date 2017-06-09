@@ -53,7 +53,6 @@ config_devel:
   - field.field.node.article.publishing_date
   - field.storage.node.publishing_date
   - metatag.metatag_defaults.node__article
-  - block.block.views_block__what_s_going_on_block_1
   - image.style.cr_1_1_272x272_2x
   - image.style.100_width_image_md
   - image.style.cw_small_370x290
