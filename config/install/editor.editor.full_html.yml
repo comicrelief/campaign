@@ -55,6 +55,8 @@ settings:
           items:
             - ShowBlocks
             - Source
+            - Undo
+            - Redo
         -
           name: Custom
           items:
