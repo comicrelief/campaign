@@ -43,7 +43,7 @@
         ],
         "grunt:build": "cd web/profiles/contrib/cr/themes/custom/campaign_base;npm run build",
         "drupal:install": [
-            "cd web;drush si cr --account-pass='admin' install_configure_form.update_status_module='[FALSE, FALSE]' -y"
+            "cd web;drush si cr --account-pass='admin' install_configure_form.enable_update_status_module=NULL -y"
         ],
         "campaign:build": [
             "@composer install",
@@ -63,13 +63,8 @@
     "extra": {
         "patches": {
             "drupal/core": {
-                "List unmet dependencies instead of just failing": "https://www.drupal.org/files/issues/missing-dependencies-2655104-8.patch",
-                "Constraint violation for paragraph editing, See https://github.com/comicrelief/campaign/pull/252": "https://gist.githubusercontent.com/pvhee/14801e0f82e06f51cb0d88b9d400cbd6/raw/253f1c1e516eb24650a91d343c56a5aeb6a0ca43/PLAT-235_paragraph_constraint_violation.patch",
-                "See https://www.drupal.org/node/2314185": "https://www.drupal.org/files/issues/drupalbehaviorerror-2314185-15.patch",
-                "See https://www.drupal.org/node/728702. Required for platform.sh": "https://www.drupal.org/files/issues/drupal-redirect_to_install-728702-92.patch"
-            },
-            "drupal/config_devel": {
-                "See https://www.drupal.org/node/2686499": "https://www.drupal.org/files/issues/config_devel-drush-config-devel-import-2686499-6.patch"
+                "See https://github.com/comicrelief/campaign/pull/252": "https://gist.githubusercontent.com/pvhee/14801e0f82e06f51cb0d88b9d400cbd6/raw/253f1c1e516eb24650a91d343c56a5aeb6a0ca43/PLAT-235_paragraph_constraint_violation.patch",
+                "See https://www.drupal.org/node/2551373": "https://www.drupal.org/files/issues/2551373-35.patch"
             },
             "drupal/twig_tweak": {
                 "https://www.drupal.org/node/2833960": "https://www.drupal.org/files/issues/2833960-relative-image-path.patch"
@@ -79,6 +74,9 @@
             },
             "drupal/views_ajax_history": {
                 "https://www.drupal.org/node/2835957": "https://www.drupal.org/files/issues/second_ajax_call-2835957-3.patch"
+            },
+            "drupal/file_entity": {
+                "https://www.drupal.org/node/2867574": "https://www.drupal.org/files/issues/file_entity-83-3.patch"
             }
         },
         "installer-paths": {
@@ -105,9 +103,9 @@
         "webflo/drupal-finder": "^0.3.0",
         "webmozart/path-util": "^2.3",
         "php-amqplib/php-amqplib": "^2.6",
-        "drupal/core": "8.2.8",
+        "drupal/core": "^8.3",
         "drupal/composer_deploy": "1.0",
-        "drupal/ctools": "3.0-alpha27",
+        "drupal/ctools": "3.0",
         "drupal/file_entity": "2.0-beta3",
         "drupal/media_entity": "1.6",
         "drupal/media_entity_instagram": "1.2",
@@ -119,31 +117,28 @@
         "drupal/embed": "1.0-rc3",
         "drupal/entity_embed": "1.x-dev#08e5098",
         "drupal/video_embed_field": "1.3",
-        "drupal/metatag": "1.x-dev#2065f39",
-        "drupal/pathauto": "1.x-dev#39fa13d",
-        "drupal/redirect": "1.0-alpha1",
+        "drupal/metatag": "1.1",
+        "drupal/pathauto": "1.0",
+        "drupal/redirect": "1.0-alpha5",
         "drupal/token": "1.0-beta2",
         "drupal/youtube": "1.0-beta3",
-        "drupal/entity": "1.0-alpha3",
-        "drupal/blazy": "1.0-rc1",
-        "drupal/inline_entity_form": "1.x-dev#44c5cfc",
-        "drupal/layout_plugin": "1.0-alpha23",
-        "drupal/page_manager": "1.0-alpha24",
-        "drupal/panels": "3.x-dev#a5400d7",
-        "drupal/panelizer": "3.0-alpha2",
-        "drupal/ds": "2.7",
-        "drupal/entity_reference_revisions": "1.x-dev#c1941b7",
+        "drupal/entity": "1.0-alpha4",
+        "drupal/blazy": "1.0-rc2",
+        "drupal/inline_entity_form": "1.x-dev#dbfc93f",
+        "drupal/page_manager": "4.0-beta2",
+        "drupal/ds": "3.1",
+        "drupal/entity_reference_revisions": "1.3",
         "drupal/view_modes_display": "1.0",
         "drupal/social_links": "1.x-dev#f7b3273",
         "drupal/scheduled_updates": "1.x-dev#b442ff7",
-        "drupal/diff": "1.0-beta2",
+        "drupal/diff": "1.0-rc1",
         "drupal/view_mode": "1.x-dev",
-        "drupal/config_devel": "1.0-rc1",
+        "drupal/config_devel": "1.0",
         "drupal/imagemagick": "1.0-alpha4",
         "drupal/config_readonly": "1.0-beta2",
         "drupal/menu_link_attributes": "1.0-beta3",
         "drupal/editor_advanced_link": "1.4",
-        "drupal/admin_toolbar": "1.x-dev#32b7111",
+        "drupal/admin_toolbar": "1.19",
         "drupal/crop": "1.1",
         "drupal/focal_point": "1.x-dev#6c6a91a",
         "drupal/paragraphs": "1.x-dev#99a6673",
@@ -155,12 +150,12 @@
         "drupal/search_api_solr": "1.0-rc3",
         "drupal/crazyegg": "1.0-rc1",
         "drupal/optimizely": "1.1",
-        "drupal/simple_sitemap": "2.x-dev#5833ff0",
+        "drupal/simple_sitemap": "2.9",
         "drupal/fast_404": "1.0-alpha2",
         "drupal/purge": "3.0-beta6",
         "drupal/varnish_purge": "1.4",
         "drupal/purge_purger_http": "1.0-beta4",
-        "drupal/memcache": "2.x-dev#908c0a2",
+        "drupal/memcache": "2.0-alpha3",
         "drupal/cdn": "3.0",
         "drupal/better_exposed_filters": "3.x-dev#19f3da2",
         "mikeyp/google_tag": "dev-8.x-1.x",
@@ -168,9 +163,9 @@
     },
     "require-dev": {
         "behat/mink-selenium2-driver": "^1.3",
-        "drupal/default_content": "1.0-alpha5",
+        "drupal/default_content": "1.0-alpha6",
         "drupal/stage_file_proxy": "1.0-alpha1",
-        "drupal/devel": "1.x-dev#b8bcdc6",
+        "drupal/devel": "1.0-rc2",
         "drush/drush": "~8.0",
         "drupal/drupal-extension": "~3.0",
         "sebastian/phpcpd": "^3.0",
