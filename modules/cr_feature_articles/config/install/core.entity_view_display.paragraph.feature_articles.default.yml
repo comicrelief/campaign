@@ -33,8 +33,6 @@ third_party_settings:
         - field_feature_articles_titlehide
         - field_feature_articles_bg
         - field_feature_articles_taxonomy
-_core:
-  default_config_hash: 1z0RNIixcDPf2UlfCLIjm0v0f7r6GuYfuLpiygsUclM
 id: paragraph.feature_articles.default
 targetEntityType: paragraph
 bundle: feature_articles
