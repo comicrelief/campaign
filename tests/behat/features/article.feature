@@ -23,7 +23,6 @@ Feature: Article
     Given I am logged in as a user with the "editor" role
     And I am on "/news-tv-and-events/news/yplan-partners-sport-relief"
     And I follow "Edit"
-    And I wait for 3 seconds
     And I enter "YPlan partners with Comic Relief" for "edit-title-0-value"
     And press "Save"
     And I go to "/news-tv-and-events/news/yplan-partners-sport-relief"

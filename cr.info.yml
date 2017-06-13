@@ -28,7 +28,6 @@ dependencies:
   - page_cache
   - taxonomy
   - shortcut
-  - toolbar
   - field_ui
   - file
   - rdf
