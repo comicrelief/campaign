@@ -53,16 +53,19 @@ content:
       summary_rows: 3
       placeholder: ''
     third_party_settings: {  }
+    region: content
   created:
     type: datetime_timestamp
     weight: 2
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_landing_background_colour:
     weight: 6
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
   field_landing_background_video:
     weight: 11
     settings:
@@ -71,17 +74,20 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
   field_landing_copy_position_alig:
     weight: 7
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
   field_landing_feature_layout:
     weight: 13
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
+    region: content
   field_landing_image:
     weight: 14
     settings:
@@ -89,6 +95,7 @@ content:
       progress_indicator: throbber
     third_party_settings: {  }
     type: image_image
+    region: content
   field_landing_image_mobile:
     weight: 15
     settings:
@@ -96,17 +103,20 @@ content:
       progress_indicator: throbber
     third_party_settings: {  }
     type: image_image
+    region: content
   field_landing_meta_tags:
     weight: 13
     settings: {  }
     third_party_settings: {  }
     type: metatag_firehose
+    region: content
   field_landing_small_bg:
     weight: 12
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
+    region: content
   field_paragraphs:
     type: entity_reference_paragraphs
     weight: 12
@@ -117,6 +127,7 @@ content:
       add_mode: select
       form_display_mode: default
     third_party_settings: {  }
+    region: content
   field_svg_body_title:
     weight: 8
     settings:
@@ -124,23 +135,27 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
+    region: content
   path:
     type: path
     weight: 5
     settings: {  }
     third_party_settings: {  }
+    region: content
   promote:
     type: boolean_checkbox
     settings:
       display_label: true
     weight: 3
     third_party_settings: {  }
+    region: content
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
     weight: 4
     third_party_settings: {  }
+    region: content
   title:
     type: string_textfield
     weight: 0
@@ -148,6 +163,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
   uid:
     type: entity_reference_autocomplete
     weight: 1
@@ -156,4 +172,5 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
 hidden: {  }

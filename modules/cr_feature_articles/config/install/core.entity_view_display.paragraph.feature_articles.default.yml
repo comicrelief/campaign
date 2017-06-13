@@ -44,6 +44,7 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: ds_content
   field_feature_articles_taxonomy:
     weight: 3
     label: above
@@ -51,6 +52,7 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: ds_content
   field_feature_articles_title:
     weight: 0
     label: hidden
@@ -58,6 +60,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: ds_content
   field_feature_articles_titlehide:
     weight: 1
     label: hidden
@@ -67,5 +70,6 @@ content:
       format_custom_false: ''
     third_party_settings: {  }
     type: boolean
+    region: ds_content
 hidden:
   social_links: true

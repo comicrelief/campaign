@@ -27,6 +27,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
   field_cr_story_beneficiary_image:
     weight: 7
     settings:
@@ -34,11 +35,13 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
+    region: content
   field_cr_story_fundraiser_bg_col:
     weight: 5
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
   field_cr_story_fundraiser_copy:
     weight: 3
     settings:
@@ -46,6 +49,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
   field_cr_story_fundraiser_image:
     weight: 4
     settings:
@@ -53,6 +57,7 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
+    region: content
   field_cr_story_fundraiser_total:
     weight: 2
     settings:
@@ -60,11 +65,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_cr_story_row_bg_col:
     weight: 1
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
   field_cr_story_title:
     weight: 0
     settings:
@@ -72,6 +79,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
 hidden:
   created: true
   status: true

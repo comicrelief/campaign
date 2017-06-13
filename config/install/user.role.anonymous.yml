@@ -7,10 +7,10 @@ weight: -10
 is_admin: false
 permissions:
   - 'access content'
-  - 'view files'
-  - 'use text format restricted_html'
   - 'download any audio files'
   - 'download own audio files'
   - 'restful get entity:node'
-  - 'view search api pages'
+  - 'use text format restricted_html'
+  - 'view files'
   - 'view media'
+  - 'view search api pages'
