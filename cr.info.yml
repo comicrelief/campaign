@@ -28,7 +28,6 @@ dependencies:
   - page_cache
   - taxonomy
   - shortcut
-  - toolbar
   - field_ui
   - file
   - rdf
@@ -252,3 +251,9 @@ config_devel:
   - simple_sitemap.bundle_settings.node.landing
   - simple_sitemap.bundle_settings.node.page
   - simple_sitemap.custom
+
+  # Blocks
+  - block.block.views_block__what_s_going_on_block_1
+  - block.block.views_block__partners_block_1
+  - block.block.metaiconsblock
+  - block.block.seven_metaiconsblock

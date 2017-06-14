@@ -52,7 +52,6 @@ config_devel:
   - pathauto.pattern.partners
   - paragraphs.paragraphs_type.partner_list
   - ds.field.partners_grid
-  - block.block.views_block__partners_block_1
   - image.style.partners_row_crop_and_scale
   - image.style.partners_row_crop_and_scale_2x
   - image.style.partner_logo_search

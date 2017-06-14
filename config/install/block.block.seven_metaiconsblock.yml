@@ -1,11 +1,13 @@
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - cr_meta_icons
+  theme:
+    - seven
 id: seven_metaiconsblock
 theme: seven
-region: none
+region: header
 weight: -4
 provider: null
 plugin: cr_meta_icons
