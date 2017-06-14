@@ -5,6 +5,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.article.body
     - field.field.node.article.field_article_category
+    - field.field.node.article.field_article_exclude_aggr
     - field.field.node.article.field_article_image
     - field.field.node.article.field_article_intro
     - field.field.node.article.field_article_meta_tags
@@ -130,6 +131,7 @@ content:
 hidden:
   body: true
   field_article_category: true
+  field_article_exclude_aggr: true
   field_article_intro: true
   field_article_meta_tags: true
   field_image_caption: true

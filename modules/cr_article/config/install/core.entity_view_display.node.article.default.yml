@@ -4,18 +4,21 @@ dependencies:
   config:
     - field.field.node.article.body
     - field.field.node.article.field_article_category
+    - field.field.node.article.field_article_exclude_aggr
     - field.field.node.article.field_article_image
     - field.field.node.article.field_article_intro
     - field.field.node.article.field_article_meta_tags
     - field.field.node.article.field_article_publish_date
-    - field.field.node.article.field_article_exclude_aggr
+    - field.field.node.article.field_article_type
     - field.field.node.article.field_image_caption
     - field.field.node.article.field_video_embed
     - field.field.node.article.publishing_date
     - node.type.article
+    - responsive_image.styles.hero_image_full_node
   module:
     - datetime
     - metatag
+    - options
     - responsive_image
     - text
     - user
@@ -32,7 +35,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_article_category:
-    weight: 6
+    weight: 7
     label: above
     settings:
       link: true
@@ -66,15 +69,21 @@ content:
       format_type: medium
       timezone_override: ''
     third_party_settings: {  }
+  field_article_type:
+    weight: 6
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
   field_image_caption:
-    weight: 8
+    weight: 9
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
   field_video_embed:
-    weight: 7
+    weight: 8
     label: above
     settings:
       responsive: true
