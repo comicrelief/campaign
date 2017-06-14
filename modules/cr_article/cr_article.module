@@ -4,3 +4,15 @@
  * @file
  * News article module adds a content type for your news.
  */
+
+ use Drupal\Core\Entity\FieldableEntityInterface;
+ use Drupal\Core\Field\FieldStorageDefinitionInterface;
+
+ /**
+  * Options callback for field_article_type.
+  *
+  * @see options_allowed_values()
+  */
+ function cr_article_field_article_type(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
+   return ['news' => t('News'), 'press-release' => t('Press Release')];
+ }
