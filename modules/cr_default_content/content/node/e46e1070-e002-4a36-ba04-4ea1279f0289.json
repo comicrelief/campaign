@@ -1,7 +1,7 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/whats-going-on\/things-heat-great-sport-relief-bake-tent?_format=hal_json"
+            "href": "http:\/\/default\/press-release\/things-heat-great-sport-relief-bake-tent?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/article"
@@ -41,7 +41,7 @@
     ],
     "vid": [
         {
-            "value": "46"
+            "value": "172"
         }
     ],
     "langcode": [
@@ -74,7 +74,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "890ab223-d264-435c-a68a-9e45d904bec4"
+                        "value": "260a25a1-ea38-4d4a-90a5-9889b9d4fd8b"
                     }
                 ],
                 "lang": "en"
@@ -92,7 +92,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "824f9c6d-fd36-4eca-b6a0-e1cf4881d9d5"
+                        "value": "2a764c34-028e-4837-b6db-0eaab7e37ccb"
                     }
                 ]
             }
@@ -151,7 +151,7 @@
     ],
     "changed": [
         {
-            "value": "1475676146",
+            "value": "1497456021",
             "lang": "en"
         }
     ],
@@ -169,7 +169,7 @@
     ],
     "revision_timestamp": [
         {
-            "value": "1475676146"
+            "value": "1497456021"
         }
     ],
     "revision_translation_affected": [
@@ -192,6 +192,11 @@
             "lang": "en"
         }
     ],
+    "field_article_exclude_aggr": [
+        {
+            "value": "0"
+        }
+    ],
     "field_article_meta_tags": [
         {
             "value": "a:0:{}"
@@ -200,6 +205,11 @@
     "field_article_publish_date": [
         {
             "value": "2016-02-17"
+        }
+    ],
+    "field_article_type": [
+        {
+            "value": "press-release"
         }
     ]
 }
