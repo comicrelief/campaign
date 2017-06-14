@@ -9,8 +9,8 @@ field_name: field_article_type
 entity_type: node
 type: list_string
 settings:
-  allowed_values: {  }
-  allowed_values_function: ''
+  allowed_values: null
+  allowed_values_function: cr_article_field_article_type
 module: options
 locked: false
 cardinality: 1
