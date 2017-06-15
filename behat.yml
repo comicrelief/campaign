@@ -8,8 +8,6 @@ default:
         - Drupal\DrupalExtension\Context\MessageContext
         - Drupal\DrupalExtension\Context\MinkContext
         - BehatTests\DrupalCRFeatureContext
-      filters:
-        tags: ~@wip
   extensions:
     Behat\MinkExtension:
       base_url: http://web
