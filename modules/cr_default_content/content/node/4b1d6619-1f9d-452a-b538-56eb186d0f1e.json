@@ -1,7 +1,7 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/news-tv-and-events\/news?_format=hal_json"
+            "href": "http:\/\/default\/news?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/landing"
@@ -36,7 +36,7 @@
     ],
     "vid": [
         {
-            "value": "118"
+            "value": "174"
         }
     ],
     "langcode": [
@@ -69,7 +69,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "0680416b-9b6b-4898-9b19-33ae155115ab"
+                        "value": "b9ba3964-cbf9-4b1d-87b9-10b403a6a57f"
                     }
                 ],
                 "lang": "en"
@@ -87,7 +87,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "3d81a00b-3360-4fd1-b854-bd607334bb42"
+                        "value": "33bb415b-7d80-446f-885e-ca4096b75403"
                     }
                 ]
             }
@@ -129,7 +129,7 @@
     ],
     "changed": [
         {
-            "value": "1478860800",
+            "value": "1497542500",
             "lang": "en"
         }
     ],
@@ -147,7 +147,7 @@
     ],
     "revision_timestamp": [
         {
-            "value": "1478860800"
+            "value": "1497542500"
         }
     ],
     "revision_translation_affected": [
@@ -183,6 +183,11 @@
     "field_landing_meta_tags": [
         {
             "value": "a:0:{}"
+        }
+    ],
+    "field_landing_small_bg": [
+        {
+            "value": "0"
         }
     ]
 }

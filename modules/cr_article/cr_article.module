@@ -14,5 +14,5 @@
   * @see options_allowed_values()
   */
  function cr_article_field_article_type(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
-   return ['news' => t('News'), 'press-release' => t('Press Release')];
+   return ['news' => t('News'), 'press-releases' => t('Press Releases')];
  }
