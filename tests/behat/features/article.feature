@@ -47,7 +47,7 @@ Feature: Article
     Given I am logged in as a user with the "editor" role
     And I am on "node/add/article"
     And I enter "Test Scheduled article" for "edit-title-0-value"
-    And I enter "News" for "edit-field-article-type-0-value"
+    And I select "News" for "edit-field-article-type"
     And I press "Add new Publishing Date"
     And I wait for AJAX loading to finish
     Then I should see "Update Date/time"
