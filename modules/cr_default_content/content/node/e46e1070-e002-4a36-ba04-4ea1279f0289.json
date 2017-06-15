@@ -1,7 +1,7 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/press-release\/things-heat-great-sport-relief-bake-tent?_format=hal_json"
+            "href": "http:\/\/default\/news\/things-heat-great-sport-relief-bake-tent?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/article"
@@ -209,7 +209,7 @@
     ],
     "field_article_type": [
         {
-            "value": "press-release"
+            "value": "news"
         }
     ]
 }
