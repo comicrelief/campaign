@@ -12,6 +12,7 @@ dependencies:
     - datetime
     - image
     - node
+    - options
     - taxonomy
     - user
 id: what_s_going_on
@@ -270,6 +271,45 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
+        field_article_type_value:
+          id: field_article_type_value
+          table: node__field_article_type
+          field: field_article_type_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value:
+            news: news
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          plugin_id: list_field
         field_article_category_target_id:
           id: field_article_category_target_id
           table: node__field_article_category
