@@ -26,11 +26,13 @@ content:
       summary_rows: 3
       placeholder: ''
     third_party_settings: {  }
+    region: content
   field_cr_iframe_embedded_bg:
     weight: 3
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
   field_cr_iframe_embedded_image:
     weight: 4
     settings:
@@ -38,6 +40,7 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
+    region: content
   field_cr_iframe_embedded_link:
     weight: 5
     settings:
@@ -45,17 +48,20 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_cr_iframe_layout:
     weight: 1
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
   field_cr_iframe_load:
     weight: 2
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
+    region: content
   info:
     type: string_textfield
     weight: 0
@@ -63,4 +69,5 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
 hidden: {  }

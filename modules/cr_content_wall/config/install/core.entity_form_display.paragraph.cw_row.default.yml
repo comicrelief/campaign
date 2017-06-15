@@ -19,6 +19,7 @@ content:
     weight: 0
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_cw_row_reference:
     weight: 3
     settings:
@@ -31,6 +32,7 @@ content:
       match_operator: CONTAINS
     third_party_settings: {  }
     type: inline_entity_form_complex
+    region: content
   field_cw_title:
     type: string_textfield
     weight: 1
@@ -38,12 +40,14 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
   field_cw_title_hidden:
     type: boolean_checkbox
     weight: 2
     settings:
       display_label: true
     third_party_settings: {  }
+    region: content
 hidden:
   created: true
   status: true

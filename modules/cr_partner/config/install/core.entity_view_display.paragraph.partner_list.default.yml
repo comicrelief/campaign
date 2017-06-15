@@ -45,18 +45,21 @@ content:
       past_format: '@interval ago'
       granularity: 2
     third_party_settings: {  }
+    region: content
   field_background_colour:
     type: list_default
     weight: 0
     label: above
     settings: {  }
     third_party_settings: {  }
+    region: ds_content
   field_partner_body:
     weight: 1
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: ds_content
   field_partner_list:
     weight: 2
     label: hidden
@@ -67,14 +70,17 @@ content:
       ds:
         ds_limit: ''
     type: entity_reference_entity_view
+    region: ds_content
   social_links:
     weight: 5
     settings: {  }
     third_party_settings: {  }
+    region: content
   uid:
     type: author
     weight: 3
     label: above
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden: {  }

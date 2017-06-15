@@ -46,6 +46,7 @@ content:
       view_mode: default
     third_party_settings: {  }
     type: entity_reference_entity_view
+    region: ds_content
   field_media_reference_bg:
     weight: 2
     label: hidden
@@ -78,11 +79,13 @@ content:
       grid_small: 0
     third_party_settings: {  }
     type: blazy
+    region: ds_content
   field_media_reference_body:
     weight: 1
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: ds_content
 hidden:
   social_links: true

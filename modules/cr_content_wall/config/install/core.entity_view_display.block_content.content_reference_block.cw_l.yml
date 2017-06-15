@@ -40,5 +40,6 @@ content:
       link: false
     third_party_settings: {  }
     type: entity_reference_entity_view
+    region: ds_content
 hidden:
   social_links: true

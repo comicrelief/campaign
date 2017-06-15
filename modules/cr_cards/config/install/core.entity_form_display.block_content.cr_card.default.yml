@@ -20,6 +20,7 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
   field_cr_card_body:
     weight: 3
     settings:
@@ -27,6 +28,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
   field_cr_card_image:
     weight: 1
     settings:
@@ -34,6 +36,7 @@ content:
       progress_indicator: throbber
     third_party_settings: {  }
     type: image_image
+    region: content
   info:
     type: string_textfield
     weight: 0
@@ -41,4 +44,5 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
 hidden: {  }

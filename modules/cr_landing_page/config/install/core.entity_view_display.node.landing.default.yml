@@ -61,12 +61,14 @@ content:
     weight: 2
     settings: {  }
     third_party_settings: {  }
+    region: ds_content
   field_landing_background_colour:
     weight: 17
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: content
   field_landing_background_video:
     weight: 23
     label: above
@@ -74,12 +76,14 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_landing_copy_position_alig:
     weight: 18
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: content
   field_landing_feature_layout:
     weight: 21
     label: above
@@ -89,6 +93,7 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
   field_landing_image:
     weight: 0
     label: hidden
@@ -97,6 +102,7 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
+    region: ds_content
   field_landing_image_mobile:
     weight: 15
     label: above
@@ -105,12 +111,14 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
+    region: content
   field_landing_meta_tags:
     weight: 20
     label: above
     settings: {  }
     third_party_settings: {  }
     type: metatag_empty_formatter
+    region: content
   field_landing_small_bg:
     weight: 22
     label: above
@@ -120,6 +128,7 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
   field_paragraphs:
     type: entity_reference_revisions_entity_view
     weight: 4
@@ -128,18 +137,22 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    region: ds_content
   field_svg_body_title:
     weight: 19
     label: above
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   links:
     weight: 14
     settings: {  }
     third_party_settings: {  }
+    region: content
   social_links:
     weight: 11
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden: {  }
