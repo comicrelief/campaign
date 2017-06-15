@@ -83,7 +83,7 @@ abstract class SignUp extends FormBase {
    * Build the submit elements.
    */
   protected function esuSubmitFields() {
-    $form['step1'] = [
+    $form[$this->getFormId() . '_step1'] = [
       '#type' => 'button',
       '#name' => 'step1',
       '#value' => $this->t('Go'),
@@ -216,7 +216,7 @@ abstract class SignUp extends FormBase {
       'empty'
     ));
 
-    // Remove error classes 
+    // Remove error classes
     foreach (self::$ERRORS as $classname) {
       $response->addCommand(new InvokeCommand(
         $this->getClassId(),
@@ -254,10 +254,10 @@ abstract class SignUp extends FormBase {
    * Set the error message.
    */
   private function setErrorMessage(AjaxResponse $response, $class, $message) {
-    
+
     // Place error message in current form
     $block = str_replace('.', '', $this->getClassId());
-    
+
     $response->addCommand(new PrependCommand(
       '.error-msg-' . $block, $message
     ));
