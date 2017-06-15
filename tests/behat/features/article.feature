@@ -25,7 +25,7 @@ Feature: Article
     And I follow "Edit"
     And I enter "YPlan partners with Comic Relief" for "edit-title-0-value"
     And press "Save"
-    And I go to "/pnews/yplan-partners-sport-relief"
+    And I go to "/news/yplan-partners-sport-relief"
     Then I should see the text "YPlan partners with Comic Relief"
     And I go to "/news/yplan-partners-comic-relief"
     Then I should see the text "YPlan partners with Comic Relief"
