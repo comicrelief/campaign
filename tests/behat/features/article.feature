@@ -2,15 +2,15 @@ Feature: Article
   This feature covers news articles
 
   @api @default-content
-  Scenario: Article linking through from /whats-going-on
-    Given I am on "whats-going-on"
+  Scenario: Article linking through from /news
+    Given I am on "news"
     And I should see the link "Four down – one to go!"
     Then I follow "Four down – one to go!"
     And I should see the text "Greg James struggled on the penultimate day of Gregathlon"
 
   @api @default-content
-  Scenario: Article pagination on /whats-going-on
-    Given I am on "whats-going-on"
+  Scenario: Article pagination on /news
+    Given I am on "news"
     And I click "››"
     And I wait for 3 seconds
     Then I should see the link "British Triathlon cheers Greg James on"
