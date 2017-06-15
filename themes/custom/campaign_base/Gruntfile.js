@@ -74,7 +74,12 @@ module.exports = function (grunt) {
           separator: ';',
       },
       dist: {
-          src: ['node_modules/smartmenus/src/jquery.smartmenus.js', 'scripts/{,**/}*.js'],
+          src: [
+            'node_modules/smartmenus/src/jquery.smartmenus.js',
+            // Import specific component js
+            'node_modules/@comicrelief/pattern-lab/sass/base/components/navigation/js/main-nav.js',
+            // Drupal-specific custom js
+            'scripts/{,**/}*.js'],
           dest: 'js/campaign_base.js',
       },
     },
