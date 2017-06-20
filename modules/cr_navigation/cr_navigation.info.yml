@@ -1,6 +1,6 @@
 name: cr_navigation
 type: module
-description: JS and hooks for main navigation
+description: Theme suggestion hooks and JS for *feature nav* variation
 core: 8.x
 package: Comic Relief
 
