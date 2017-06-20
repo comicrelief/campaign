@@ -5,9 +5,16 @@
  * Attaches JS for dropdown menu nav action.
  */
 
-/**
- * Implements hook_page_attachments().
- */
-// function cr_navigation_page_attachments(array &$attachments) {
-//   $attachments['#attached']['library'][] = 'cr_navigation/cr_navigation';
-// }
+function cr_navigation_theme_suggestions_alter(array &$suggestions, array $variables, $hook) {
+
+  switch ($hook) {
+    case 'menu':
+
+      /*To refactor / improve*/
+      if (isset($suggestions[0]) && $suggestions[0] === "menu__main") {
+        $suggestions[] = "menu__main__feature";
+      }
+
+      break;
+  }
+}

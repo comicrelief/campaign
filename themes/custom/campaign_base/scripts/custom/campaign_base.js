@@ -47,7 +47,7 @@
       if (!$(e.target).is('.meta-icons *, .feature-nav__icons *, .main-nav__icons *, .search-block *, ul.menu *, .block--cr-email-signup--head *')) {
 
         // Remove all active state classes from all of our active nav dropdowns
-        $('a[role=button].c-hamburge.is-active').removeClass('is-active');
+        $('a[role=button].c-hamburger.is-active').removeClass('is-active');
         $('.header__inner-wrapper nav.navigation.show, .search-block.show, .search-overlay.show, .block--cr-email-signup--head').removeClass('show');
         $('.meta-icons__esu-toggle.active, .meta-icons__magnify.active').removeClass('active');
         $('.search-overlay.search-on').removeClass('search-on');
