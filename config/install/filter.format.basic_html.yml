@@ -14,7 +14,7 @@ filters:
     status: true
     weight: -10
     settings:
-      allowed_html: '<p class="align-*"> <table> <tbody> <tr> <td> <thead> <em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type> <li> <dl> <dt> <dd> <h2 id> <h3 id> <h4 id> <h5 id> <h6 id> <p> <br> <span> <img src alt height width data-entity-type data-entity-uuid data-align data-caption> <a href hreflang class="btn btn--red btn--blue btn--green btn--teal btn--royal-blue btn--purple btn--pink btn--white link link--red link--black link--white link--blue link--green link--teal link--royal-blue link--purple link--pink link--jasper-grey link--gainsboro-grey link--light-grey link--smoke-grey">'
+      allowed_html: '<p class> <table> <tbody> <tr> <td> <thead> <em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type> <li> <dl> <dt> <dd> <h2 id> <h3 id> <h4 id> <h5 id> <h6 id> <h2 class> <h3 class> <h4 class> <h5 class> <h6 class> <p> <p class> <br> <span> <span class> <img src alt height width data-entity-type data-entity-uuid data-align data-caption> <a href hreflang class="btn btn--red btn--blue btn--green btn--teal btn--royal-blue btn--purple btn--pink btn--white link link--red link--black link--white link--blue link--green link--teal link--royal-blue link--purple link--pink link--jasper-grey link--gainsboro-grey link--light-grey link--smoke-grey">'
       filter_html_help: false
       filter_html_nofollow: false
   filter_align:

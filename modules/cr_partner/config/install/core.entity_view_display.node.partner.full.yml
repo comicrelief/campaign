@@ -68,6 +68,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    region: ds_content
   field_partner_category:
     type: entity_reference_entity_view
     weight: 14
@@ -76,6 +77,7 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
+    region: content
   field_partner_external:
     type: boolean
     weight: 12
@@ -85,6 +87,7 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
+    region: content
   field_partner_logo:
     type: responsive_image
     weight: 0
@@ -93,12 +96,14 @@ content:
       responsive_image_style: ''
       image_link: ''
     third_party_settings: {  }
+    region: content
   field_partner_meta_tags:
     type: metatag_empty_formatter
     weight: 13
     label: above
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_partner_website:
     type: link
     weight: 3
@@ -110,18 +115,22 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
+    region: ds_content
   field_partner_weight:
     type: list_default
     weight: 5
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    region: ds_content
   links:
     weight: 15
     settings: {  }
     third_party_settings: {  }
+    region: content
   social_links:
     weight: 16
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden: {  }

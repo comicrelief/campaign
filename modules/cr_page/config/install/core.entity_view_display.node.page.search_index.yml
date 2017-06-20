@@ -61,6 +61,7 @@ content:
     settings:
       trim_length: 200
     third_party_settings: {  }
+    region: ds_content
   field_basic_page__display_title:
     type: string
     weight: 1
@@ -68,6 +69,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    region: ds_content
 hidden:
   field_page_meta_tags: true
   links: true

@@ -9,7 +9,7 @@ dependencies:
     - campaign_base
 id: campaign_base_account_menu
 theme: campaign_base
-region: '-1'
+region: banners
 weight: -6
 provider: null
 plugin: 'system_menu_block:account'

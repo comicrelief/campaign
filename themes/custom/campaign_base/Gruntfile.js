@@ -105,7 +105,7 @@ module.exports = function (grunt) {
       },
       sass: {
         files: ['sass/sass/{,**/}*.{scss,sass}'],
-        tasks: ['sass'],
+        tasks: ['sass','postcss:dist'],
         options: {
           // Start a live reload server on the default port 35729
           livereload: true
@@ -157,6 +157,19 @@ module.exports = function (grunt) {
     // * add backstopjs
     clean: {
       build: ['tests/visual/reference']
+    },
+
+    postcss: {
+      options: {
+        map: true,
+          processors: [
+            require('autoprefixer')
+          ]
+      },
+      
+      dist: {
+        src: ['css/styles.css', 'css/ie8.css', 'css/layout.css']
+      }
     }
   });
 
@@ -170,7 +183,8 @@ module.exports = function (grunt) {
     'uglify',
     'modernizr',
     'kss',
-    'imagemin'
+    'imagemin',
+    'postcss:dist'
   ]);
 
   grunt.registerTask('watch:dev', [

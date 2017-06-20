@@ -28,6 +28,7 @@ content:
       override_labels: false
     third_party_settings: {  }
     type: inline_entity_form_complex
+    region: content
   field_media_reference_bg:
     weight: 2
     settings:
@@ -35,6 +36,7 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
+    region: content
   field_media_reference_body:
     weight: 3
     settings:
@@ -42,6 +44,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
   info:
     type: string_textfield
     weight: 0
@@ -49,4 +52,5 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
 hidden: {  }

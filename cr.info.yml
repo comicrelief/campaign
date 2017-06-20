@@ -28,7 +28,6 @@ dependencies:
   - page_cache
   - taxonomy
   - shortcut
-  - toolbar
   - field_ui
   - file
   - rdf
@@ -41,6 +40,7 @@ dependencies:
   - entity
   - diff
   - fast404
+  - layout_discovery
 
   # Contrib modules
   - ds
@@ -58,7 +58,6 @@ dependencies:
   - redirect
   - view_modes_display
   - social_links
-  #- composer_deploy
   - crop
   - focal_point
   - scheduled_updates
@@ -69,9 +68,7 @@ dependencies:
 
   # Layout
   - inline_entity_form
-  - layout_plugin
   - page_manager_ui
-  - panels_ipe
   - ctools_block
   - paragraphs
   - view_mode
@@ -103,7 +100,6 @@ dependencies:
   - cr_story
   - cr_landing_page
   - cr_navigation
-  #- cr_performance
   - cr_user
   - cr_social
   - cr_meta_icons
@@ -139,6 +135,7 @@ config_devel:
   - core.entity_view_display.block_content.basic.default
   - core.entity_view_display.user.user.compact
   - core.entity_view_display.user.user.default
+  - core.entity_view_display.node.article.default
 
   # Fields
   - field.field.block_content.basic.body
@@ -166,6 +163,12 @@ config_devel:
   - block.block.emailsignupblockworkplace
   - block.block.emailsignupblockfundraise
   - block.block.emailsignupblockhead
+  - block.block.views_block__what_s_going_on_block_1
+  - block.block.views_block__partners_block_1
+  - block.block.exposedformsearchpage_1
+  - block.block.seven_exposedformsearchpage_1
+  - block.block.metaiconsblock
+  - block.block.seven_metaiconsblock
 
   # Menus
   - system.menu.footer

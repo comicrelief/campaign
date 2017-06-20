@@ -29,6 +29,7 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
+    region: content
   field_partner_logo:
     type: responsive_image
     weight: 0
@@ -37,6 +38,7 @@ content:
       responsive_image_style: ''
       image_link: ''
     third_party_settings: {  }
+    region: content
   field_partner_website:
     type: link
     weight: 3
@@ -48,10 +50,12 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
+    region: content
   links:
     weight: 1
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden:
   body: true
   field_partner_category: true

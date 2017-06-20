@@ -19,6 +19,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
   field_video_thumbnail:
     weight: 1
     settings:
@@ -26,6 +27,7 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
+    region: content
   field_youtube_video_id:
     weight: 2
     settings:
@@ -33,6 +35,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   name:
     type: string_textfield
     weight: 0
@@ -40,6 +43,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
 hidden:
   created: true
   uid: true

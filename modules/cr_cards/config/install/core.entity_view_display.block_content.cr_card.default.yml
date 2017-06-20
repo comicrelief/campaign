@@ -44,12 +44,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: ds_content
   field_cr_card_body:
     weight: 1
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: ds_content
   field_cr_card_image:
     weight: 0
     label: hidden
@@ -82,5 +84,6 @@ content:
       grid_small: 0
     third_party_settings: {  }
     type: blazy
+    region: ds_content
 hidden:
   social_links: true

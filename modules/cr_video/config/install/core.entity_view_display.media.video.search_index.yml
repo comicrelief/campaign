@@ -43,6 +43,7 @@ content:
       trim_length: 600
     third_party_settings: {  }
     type: text_trimmed
+    region: ds_content
   field_video_thumbnail:
     weight: 0
     label: hidden
@@ -51,6 +52,7 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
+    region: content
   field_youtube_video_id:
     type: string
     weight: 1
@@ -58,6 +60,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    region: ds_content
   name:
     type: string
     weight: 0
@@ -65,6 +68,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    region: ds_content
 hidden:
   created: true
   social_links: true
