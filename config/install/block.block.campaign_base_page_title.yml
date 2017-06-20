@@ -7,7 +7,7 @@ dependencies:
     - campaign_base
 id: campaign_base_page_title
 theme: campaign_base
-region: '-1'
+region: banners
 weight: -5
 provider: null
 plugin: page_title_block

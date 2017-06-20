@@ -4,7 +4,7 @@ Feature: ESU
   Background:
     Given I am on "/test/esu"
 
-  @javascript @default-content @wip
+  @javascript @default-content
   Scenario: ESU Fundraise
     Then I should see "ESU Fundraise: initial message" in the "esu_fundraise" region
     And I fill in "edit-email" with "test-fundraise@example.org" in the "esu_fundraise" region

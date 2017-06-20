@@ -23,16 +23,19 @@ content:
       progress_indicator: throbber
     third_party_settings: {  }
     type: image_image
+    region: content
   field_bg_single_msg_bg_colour:
     weight: 2
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
   field_bg_single_msg_layout:
     type: options_select
     weight: 1
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_body:
     weight: 3
     settings:
@@ -40,6 +43,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
 hidden:
   created: true
   status: true

@@ -36,11 +36,13 @@ content:
       summary_rows: 3
       placeholder: ''
     third_party_settings: {  }
+    region: content
   created:
     type: datetime_timestamp
     weight: 10
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_article_category:
     weight: 16
     settings:
@@ -55,6 +57,7 @@ content:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
+    region: content
   field_article_image:
     type: image_image
     weight: 5
@@ -62,6 +65,7 @@ content:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
+    region: content
   field_article_intro:
     type: text_textarea
     weight: 4
@@ -69,11 +73,13 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
+    region: content
   field_article_meta_tags:
     weight: 15
     settings: {  }
     third_party_settings: {  }
     type: metatag_firehose
+    region: content
   field_article_publish_date:
     type: datetime_datelist
     weight: 3
@@ -87,6 +93,7 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
   field_image_caption:
     weight: 7
     settings:
@@ -94,22 +101,26 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_video_embed:
     weight: 6
     settings: {  }
     third_party_settings: {  }
     type: video_embed_field_textfield
+    region: content
   path:
     type: path
     weight: 14
     settings: {  }
     third_party_settings: {  }
+    region: content
   promote:
     type: boolean_checkbox
     settings:
       display_label: true
     weight: 11
     third_party_settings: {  }
+    region: content
   publishing_date:
     type: inline_entity_form_complex
     weight: 2
@@ -122,12 +133,14 @@ content:
       allow_existing: false
       form_mode: default
     third_party_settings: {  }
+    region: content
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
     weight: 12
     third_party_settings: {  }
+    region: content
   title:
     type: string_textfield
     weight: 0
@@ -135,6 +148,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
   uid:
     type: entity_reference_autocomplete
     weight: 9
@@ -143,4 +157,5 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
 hidden: {  }

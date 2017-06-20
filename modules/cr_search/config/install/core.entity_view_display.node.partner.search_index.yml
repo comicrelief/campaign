@@ -61,6 +61,7 @@ content:
     settings:
       trim_length: 200
     third_party_settings: {  }
+    region: ds_content
   field_partner_image:
     type: responsive_image
     weight: 14
@@ -69,6 +70,7 @@ content:
       responsive_image_style: ''
       image_link: ''
     third_party_settings: {  }
+    region: content
   field_partner_logo:
     type: responsive_image
     weight: 1
@@ -77,6 +79,7 @@ content:
       responsive_image_style: partner_logos_search
       image_link: content
     third_party_settings: {  }
+    region: ds_content
 hidden:
   field_partner_category: true
   field_partner_external: true

@@ -44,6 +44,7 @@ content:
       custom_date_format: ''
       timezone: ''
     third_party_settings: {  }
+    region: content
   field_cr_ef_resource_category:
     type: entity_reference_entity_view
     weight: 0
@@ -52,6 +53,7 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
+    region: content
   field_cr_external_file:
     weight: 0
     label: hidden
@@ -63,6 +65,7 @@ content:
       target: ''
     third_party_settings: {  }
     type: link
+    region: ds_content
   name:
     type: string
     weight: 0
@@ -70,10 +73,12 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    region: content
   social_links:
     weight: 0
     settings: {  }
     third_party_settings: {  }
+    region: content
   thumbnail:
     type: entity_reference_entity_view
     weight: 0
@@ -82,11 +87,13 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
+    region: content
   uid:
     type: author
     weight: 0
     label: above
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden:
   field_cr_downloadables_body: true

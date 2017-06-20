@@ -72,6 +72,7 @@ content:
       grid_medium: 0
       grid_small: 0
     third_party_settings: {  }
+    region: ds_content
 hidden:
   body: true
   field_partner_category: true

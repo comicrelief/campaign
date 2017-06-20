@@ -53,6 +53,7 @@ content:
     settings:
       trim_length: 600
     third_party_settings: {  }
+    region: ds_content
   field_cr_field_display_title:
     weight: 0
     label: hidden
@@ -60,12 +61,14 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: ds_content
   field_cr_file:
     type: file_url_plain
     weight: 3
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    region: ds_content
 hidden:
   created: true
   field_cr_file_category: true

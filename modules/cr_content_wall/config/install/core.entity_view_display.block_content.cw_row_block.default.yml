@@ -37,14 +37,17 @@ content:
     settings:
       link: true
     third_party_settings: {  }
+    region: content
   field_cw_view_mode:
     type: list_default
     weight: 2
     label: above
     settings: {  }
     third_party_settings: {  }
+    region: content
   social_links:
     weight: 1
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden: {  }

@@ -44,6 +44,7 @@ content:
       view_mode: default
     third_party_settings: {  }
     type: entity_reference_entity_view
+    region: ds_content
   field_media_reference_bg:
     weight: 2
     label: hidden
@@ -52,14 +53,17 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
+    region: ds_content
   field_media_reference_body:
     weight: 1
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: ds_content
   social_links:
     weight: 0
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden: {  }

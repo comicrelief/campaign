@@ -2,7 +2,7 @@
   "name": "Campaign_base",
   "version": "1.0.0",
   "dependencies": {
-    "@comicrelief/pattern-lab": "^3.11.2",
+    "@comicrelief/pattern-lab": "^4.1.0",
     "async": "^2.4.0",
     "blazy": "1.8.2",
     "fs-extra": "^3.0.1",
@@ -32,7 +32,10 @@
     "node-sass": "^4.5.0",
     "sass-loader": "6.0.2",
     "susy": "^2.2.11",
-    "webpack": "^2.2.1"
+    "webpack": "^2.2.1",
+    "autoprefixer": "^7.1.1",
+    "browserslist": "^2.1.4",
+    "grunt-postcss": "^0.8.0"
   },
   "scripts": {
     "build": "grunt build",
@@ -42,5 +45,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/comicrelief/campaign.git"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 3 versions"
+  ]
 }

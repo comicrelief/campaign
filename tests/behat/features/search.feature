@@ -32,7 +32,7 @@ Feature: Search
     And I attach the file "/tests/behat/files/rnd17_kids_snuffles-money-box.pdf" to "File"
     And I wait for AJAX to finish
     And I press "Save and publish"
-    And I wait for 5 seconds
+    And I wait for 2 seconds
 
     #Search in the DB media pdf
     Given I am on "search?text=money+box"
@@ -48,7 +48,7 @@ Feature: Search
     And I enter "Download" for "Link text"
     And I select "Schools" from "Resource category"
     And I press "Save and publish"
-    And I wait for 5 seconds
+    And I wait for 2 seconds
 
     #Search for external file
     Given I am on "search?text=Youth+fundraising+pack"
@@ -63,7 +63,7 @@ Feature: Search
     And I enter "PqXOlfwlVag" for "Youtube Video ID"
     And I enter "Stephen Hawking video" for "Video caption"
     And I press "Save and publish"
-    And I wait for 5 seconds
+    And I wait for 2 seconds
 
     #Search for video item
     Given I am on "search?text=Stephen+Hawking"

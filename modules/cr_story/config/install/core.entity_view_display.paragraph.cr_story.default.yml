@@ -57,12 +57,14 @@ content:
       past_format: '@interval ago'
       granularity: 2
     third_party_settings: {  }
+    region: content
   field_cr_story_beneficiary_copy:
     weight: 5
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: ds_content
   field_cr_story_beneficiary_image:
     type: blazy
     weight: 0
@@ -95,18 +97,21 @@ content:
       grid_medium: 0
       grid_small: 0
     third_party_settings: {  }
+    region: ds_content
   field_cr_story_fundraiser_bg_col:
     weight: 1
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: ds_content
   field_cr_story_fundraiser_copy:
     weight: 3
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: ds_content
   field_cr_story_fundraiser_image:
     type: blazy
     weight: 0
@@ -139,6 +144,7 @@ content:
       grid_medium: 0
       grid_small: 0
     third_party_settings: {  }
+    region: ds_content
   field_cr_story_fundraiser_total:
     weight: 2
     label: hidden
@@ -146,12 +152,14 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: ds_content
   field_cr_story_row_bg_col:
     weight: 0
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: ds_content
   field_cr_story_title:
     weight: 0
     label: hidden
@@ -159,11 +167,13 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: ds_content
   uid:
     type: author
     weight: 0
     label: above
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden:
   social_links: true

@@ -113,6 +113,7 @@ content:
       grid_small: 0
     third_party_settings: {  }
     type: blazy
+    region: ds_content
   field_article_publish_date:
     type: datetime_custom
     weight: 2
@@ -121,6 +122,7 @@ content:
       timezone_override: Europe/London
       date_format: 'j F Y'
     third_party_settings: {  }
+    region: ds_content
   field_video_embed:
     type: video_embed_field_thumbnail
     weight: 1
@@ -129,6 +131,7 @@ content:
       image_style: ''
       link_image_to: content
     third_party_settings: {  }
+    region: ds_content
 hidden:
   body: true
   field_article_category: true

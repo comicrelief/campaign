@@ -18,6 +18,7 @@ content:
       view_mode: default
     third_party_settings: {  }
     type: entity_reference_entity_view
+    region: content
   field_content_block_reference:
     type: entity_reference_entity_view
     weight: 1
@@ -26,6 +27,7 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
+    region: content
 hidden:
   created: true
   social_links: true

@@ -20,7 +20,7 @@ class FundraiseSignUp extends SignUp {
    * {@inheritdoc}
    */
   protected function esuSubmitFields() {
-    $form['step1'] = [
+    $form[$this->getFormId() . '_step1'] = [
       '#type' => 'button',
       '#name' => 'step1',
       '#value' => $this->t('Sign Up'),
