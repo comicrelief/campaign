@@ -12,7 +12,7 @@
     {% if menu_level == 0 %}
       <ul{{ attributes.addClass('main-nav--feature__items menu sm main-nav__items') }} id="main-menu" >
     {% else %}
-      <ul class="menu main-nav__items menu--level-{{menu_level}}">
+      <ul class="menu main-nav--feature__items main-nav__items menu--level-{{menu_level}}">
         {% if menu_level == 1 %}
           {# Duplicate menu link for UX, to be populated by JS #}
           <li class="menu-item menu-item--duplicate">

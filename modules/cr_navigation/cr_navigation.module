@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Provides theme suggestion for feature nav template
+ * Provides theme suggestions for feature nav templates
  */
 
 function cr_navigation_theme_suggestions_alter(array &$suggestions, array $variables, $hook) {
