@@ -270,7 +270,7 @@ function cr_update_8030() {
  * Install crop
  */
 function cr_update_8031() {
-  installer()->install('crop']);
+  installer()->install(['crop']);
 }
 
 /**
