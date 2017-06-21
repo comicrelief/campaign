@@ -99,7 +99,6 @@ dependencies:
   - cr_partner
   - cr_story
   - cr_landing_page
-  - cr_navigation
   - cr_user
   - cr_social
   - cr_meta_icons
