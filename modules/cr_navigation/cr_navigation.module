@@ -6,15 +6,26 @@
  */
 
 function cr_navigation_theme_suggestions_alter(array &$suggestions, array $variables, $hook) {
-
+  
   switch ($hook) {
     case 'menu':
-    
-      /*To refactor / improve*/
-      if (isset($suggestions[0]) && $suggestions[0] === "menu__main") {
+      // Check we're looking at the correct menu first
+      if (isset($variables['menu_name']) && $variables['menu_name'] === 'main') {
+
+        // Add our 'feature nav'-based menu template suggestion
         $suggestions[] = "menu__main__feature";
       }
 
       break;
+  }
+}
+
+function cr_navigation_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  
+  // Check we're looking at the correct block first 
+  if (isset($variables['elements']['#plugin_id']) && $variables['elements']['#plugin_id'] === 'system_menu_block:main') {
+    
+    // Add our 'feature nav' block template suggestion
+    $suggestions[] = "block__system_menu_block__feature";
   }
 }
