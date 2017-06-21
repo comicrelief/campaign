@@ -8,13 +8,23 @@
 %}
 {% set heading_id = attributes.id ~ '-menu'|clean_id %}
 <div class="main-nav__wrapper main-nav--feature__wrapper">
-  <ul class="main-nav--feature__featured-items">
-    {% for item in content['#items']|slice(0, 3) %}
-      <li class="menu-item">
-        {{ link(item.title, item.url) }}
-      </li>
-    {% endfor %}
-  </ul>
+  <div class="main-nav--feature__inner-wrapper">
+    <ul class="main-nav--feature__featured-items">
+      {% for item in content['#items']|slice(0, 3) %}
+        <li class="menu-item">
+          {{ link(item.title, item.url) }}
+        </li>
+      {% endfor %}
+    </ul>
+    <div class="main-nav__icons main-nav__burger">
+      <a role="button" class="c-hamburger c-hamburger--htx main-nav-toggle">
+        <div class="c-hamburger__text">
+          <span class="visually-hidden">Open and close nav menu</span>
+        </div>
+        <span></span>
+      </a>
+    </div>
+  </div>
   <nav role="navigation" aria-labelledby="{{ heading_id }}"{{ attributes.addClass(classes)|without('role', 'aria-labelledby') }}>
     {# Label. If not displayed, we still provide it for screen readers. #}
     {% if not configuration.label_display %}
@@ -28,12 +38,4 @@
       {{ content }}
     {% endblock %}
   </nav>
-  <div class="main-nav__icons main-nav__burger">
-      <a role="button" class="c-hamburger c-hamburger--htx main-nav-toggle">
-        <div class="c-hamburger__text">
-          <span class="visually-hidden">Open and close nav menu</span>
-        </div>
-        <span></span>
-      </a>
-  </div>
 </div>

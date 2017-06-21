@@ -8,6 +8,14 @@
 %}
 {% set heading_id = attributes.id ~ '-menu'|clean_id %}
 <div class="main-nav__wrapper">
+  <div class="main-nav__icons main-nav__burger">
+      <a role="button" class="c-hamburger c-hamburger--htx main-nav-toggle">
+        <div class="c-hamburger__text">
+          <span class="visually-hidden">Open and close nav menu</span>
+        </div>
+        <span></span>
+      </a>
+  </div>
   <nav role="navigation" aria-labelledby="{{ heading_id }}"{{ attributes.addClass(classes)|without('role', 'aria-labelledby') }}>
     {# Label. If not displayed, we still provide it for screen readers. #}
     {% if not configuration.label_display %}
@@ -21,12 +29,4 @@
       {{ content }}
     {% endblock %}
   </nav>
-  <div class="main-nav__icons main-nav__burger">
-      <a role="button" class="c-hamburger c-hamburger--htx main-nav-toggle">
-        <div class="c-hamburger__text">
-          <span class="visually-hidden">Open and close nav menu</span>
-        </div>
-        <span></span>
-      </a>
-  </div>
 </div>
