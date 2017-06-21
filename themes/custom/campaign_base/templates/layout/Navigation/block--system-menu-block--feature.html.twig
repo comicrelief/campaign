@@ -7,7 +7,10 @@
   ]
 %}
 {% set heading_id = attributes.id ~ '-menu'|clean_id %}
-<div class="main-nav-menu main-nav-menu--feature">
+<div class="main-nav__wrapper main-nav--feature__wrapper">
+  <ul class="main-nav--feature__featured-items">
+
+  </ul>
   <nav role="navigation" aria-labelledby="{{ heading_id }}"{{ attributes.addClass(classes)|without('role', 'aria-labelledby') }}>
     {# Label. If not displayed, we still provide it for screen readers. #}
     {% if not configuration.label_display %}
