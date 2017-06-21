@@ -121,7 +121,6 @@
         "drupal/youtube": "1.0-beta3",
         "drupal/entity": "1.0-alpha4",
         "drupal/layout_plugin": "1.0-alpha23",
-        "drupal/panels": "3.x-dev#a5400d7",
         "drupal/blazy": "1.0-rc2",
         "drupal/inline_entity_form": "1.x-dev#dbfc93f",
         "drupal/page_manager": "4.0-beta2",
