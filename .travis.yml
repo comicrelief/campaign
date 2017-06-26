@@ -20,7 +20,12 @@ install:
 - docker-compose up -d
 
 before_script:
-- docker-compose exec web composer campaign:build || true
+- docker-compose exec web composer install
+- docker-compose exec web composer campaign:scaffold
+- docker-compose exec web composer grunt:dependencies
+- docker-compose exec web composer grunt:build
+- docker-compose exec web composer drupal:install
+- docker-compose exec web composer drupal:default_content
 - docker-compose exec web chmod ugo+rw web/sites/default -R
 
 script:

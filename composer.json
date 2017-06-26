@@ -24,7 +24,7 @@
     ],
     "scripts": {
         "post-install-cmd": [
-            "@drupal:scaffold",
+            "@composer drupal:scaffold || true",
             "@campaign:scaffold",
             "@grunt:dependencies"
         ],
@@ -45,11 +45,14 @@
         "drupal:install": [
             "cd web;drush si cr --account-pass='admin' install_configure_form.enable_update_status_module=NULL -y"
         ],
+        "drupal:default_content": [
+            "cd web;drush en -y cr_default_content"
+        ],
         "campaign:build": [
             "@composer install",
             "@grunt:build",
             "@drupal:install",
-            "cd web;drush en -y cr_default_content"
+            "@drupal:default_content"
         ],
         "code:check": [
             "vendor/bin/phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer",
@@ -96,7 +99,7 @@
     "require": {
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
-        "drupal-composer/drupal-scaffold": "^2.2",
+        "drupal-composer/drupal-scaffold": "^2.3",
         "webflo/drupal-finder": "^0.3.0",
         "webmozart/path-util": "^2.3",
         "php-amqplib/php-amqplib": "^2.6",
