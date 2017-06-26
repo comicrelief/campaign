@@ -34,20 +34,25 @@ class TaxonomyService {
   }
 
   /**
-   * @param int $tid
+   * @param null $tid
    * @param int $limit
    *
-   * @return \Drupal\Core\Entity\EntityInterface[]
+   * @return mixed
    */
-  public function getArticleNodesByTermId($tid, $limit = 3) {
-    $nodeIds = $this->query->get('node', 'AND')
+  public function getArticleNodesByTermId($tid = null, $limit = 3) {
+    $nodeQuery = $this->query->get('node', 'AND')
       ->condition('status', 1)
-      ->condition('type', 'article')
-      ->condition('field_article_category.entity.tid', $tid)
-      ->condition('field_article_exclude_aggr', false)
+      ->condition('type', 'article');
+
+    if ($tid) {
+      $nodeQuery->condition('field_article_category.entity.tid', $tid);
+    }
+
+    $nodeQuery->condition('field_article_exclude_aggr', false)
       ->sort('field_article_publish_date', 'DESC')
-      ->range(0, $limit)
-      ->execute();
+      ->range(0, $limit);
+
+    $nodeIds = $nodeQuery->execute();
 
     $nodes = $this->em->getStorage('node')->loadMultiple($nodeIds);
 

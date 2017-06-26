@@ -11,7 +11,7 @@ entity_type: paragraph
 bundle: feature_articles
 label: Category
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
