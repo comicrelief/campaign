@@ -331,3 +331,12 @@ function cr_update_8036() {
     $article->save();
   }
 }
+
+/**
+ * Re-install the feature articles module configuration to allow null taxonomies.
+ */
+function cr_update_8037() {
+  // Reinstall the cr_article configuration.
+  \Drupal::service('config.installer')
+    ->installDefaultConfig('module', 'cr_feature_articles');
+}
