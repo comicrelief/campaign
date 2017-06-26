@@ -14,20 +14,7 @@ use Drupal\Core\Field\FieldStorageDefinitionInterface;
  * @see options_allowed_values()
  */
 function cr_teaser_field_teaser_link_colour(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
-  $values = [
-		'btn--white-ghost' => t('White ghost'),
-		'btn--black-ghost' => t('Black ghost'),
-		'btn--red' => t('Red'),
-		'btn--blue' => t('Blue'),
-		'btn--yellow' => t('Yellow'),
-		'btn--green' => t('Green'),
-		'btn--teal' => t('Teal'),
-		'btn--royal-blue' => t('Royal blue'),
-		'btn--purple' => t('Purple'),
-		'btn--pink' => t('Pink'),
-		'btn--white' => t('White'),
-  ];
-  return $values;
+  return \Drupal::service('cr.colours.colour_service')->getStandardButtonColoursArray();
 }
 
 /**
