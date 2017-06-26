@@ -51,6 +51,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete_tags
+    region: content
   field_article_exclude_aggr:
     weight: 13
     settings:
@@ -88,6 +89,7 @@ content:
       date_order: YMD
       time_type: '24'
     third_party_settings: {  }
+    region: content
   field_article_type:
     weight: 1
     settings: {  }
