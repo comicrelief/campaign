@@ -13,7 +13,6 @@
     });
 
     $("a[role=button].c-hamburger").on("click", function() {
-      $(this).toggleClass("is-active");
       $("header[role='banner'] nav, .search-overlay:not('.show'), .search-overlay.show.nav-on").toggleClass("show");
       $(".search-overlay").toggleClass("nav-on");
       $(".search-overlay").removeClass("search-on");
