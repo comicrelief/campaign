@@ -1,4 +1,4 @@
-# Comic Relief Campaign profile [![Build Status][travis-image]][travis-url]
+# Comic Relief Campaign profile [![Build Status][travis-status]]() [![GitHub release][github-release]]() [![license][github-license]]() 
 > Drupal 8 profile for building enganging fundraising websites, maintained by [Comic Relief](https://www.comicrelief.com)
 
 ## Getting started
@@ -22,5 +22,6 @@ Think about contributing? That's great, but please do read our [contributing gui
 
 See our [LICENSE](LICENSE.md) file for license rights and limitations.
 
-[travis-image]: https://travis-ci.com/comicrelief/campaign.svg?token=v69zfPc82yZTz7JzdP5e&branch=develop
-[travis-url]: https://travis-ci.com/comicrelief/campaign
+[travis-status]: https://travis-ci.org/comicrelief/campaign.svg?branch=develop
+[github-release]: https://img.shields.io/github/release/comicrelief/campaign.svg?style=flat-square
+[github-license]: https://img.shields.io/github/license/comicrelief/campaign.svg?style=flat-square
