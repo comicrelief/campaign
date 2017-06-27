@@ -2,6 +2,13 @@ Feature: Article
   This feature covers news articles
 
   @api @default-content
+  Scenario: Article linking through from /press-releases
+    Given I am on "press-releases"
+    And I should see the link "Comic Relief and big lottery fund partner with cities alliance"
+    Then I follow "Comic Relief and big lottery fund partner with cities alliance"
+    And I should see the text "Global partnership organisation Cities Alliance has received"
+
+  @api @default-content
   Scenario: Article linking through from /news
     Given I am on "news"
     And I should see the link "Four down – one to go!"
