@@ -22,10 +22,11 @@ settings:
   label_display: '0'
   views_label: ''
   items_per_page: none
+  context_mapping: {  }
 visibility:
   request_path:
     id: request_path
-    pages: "/news\r\n/news-tv-and-events/news"
+    pages: "/news\r\n/press-releases\r\n/news-tv-and-events/news"
     negate: false
     context_mapping: {  }
   'entity_bundle:node':
