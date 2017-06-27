@@ -336,7 +336,7 @@ function cr_update_8036() {
  * Re-install the feature articles module configuration to allow null taxonomies.
  */
 function cr_update_8037() {
-  // Reinstall the cr_article configuration.
+  // Reinstall the cr_feature_articles configuration.
   \Drupal::service('config.installer')
     ->installDefaultConfig('module', 'cr_feature_articles');
 }
@@ -347,4 +347,13 @@ function cr_update_8037() {
 function cr_update_8038() {
   \Drupal::service('config.installer')
     ->installDefaultConfig('module', 'cr_email_signup');
+}
+
+/**
+ * Re-install the cr_article configuration to bring in changes to category requirement.
+ */
+function cr_update_8039() {
+  // Reinstall the cr_article configuration.
+  \Drupal::service('config.installer')
+    ->installDefaultConfig('module', 'cr_article');
 }
