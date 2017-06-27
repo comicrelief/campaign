@@ -167,7 +167,7 @@ abstract class SignUp extends FormBase {
           $sender->deliver($this->queue_name, $data);
           $sender = new Sender();
           $queue_name = $settings->get('welcome_queue');
-          $data['templateId'] = $settings->get('template_id');
+          $data['templateName'] = $settings->get('template_esu_name');
           $sender->deliver($queue_name, $data);
           $this->nextStep($response, 1);
         }
