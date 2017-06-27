@@ -333,9 +333,18 @@ function cr_update_8036() {
 }
 
 /**
- * Re-load all the config from email_signup module
+ * Re-install the feature articles module configuration to allow null taxonomies.
  */
 function cr_update_8037() {
+  // Reinstall the cr_article configuration.
+  \Drupal::service('config.installer')
+    ->installDefaultConfig('module', 'cr_feature_articles');
+}
+
+/**
+ * Re-install the config from email_signup module
+ */
+function cr_update_8038() {
   \Drupal::service('config.installer')
     ->installDefaultConfig('module', 'cr_email_signup');
 }
