@@ -19,7 +19,7 @@ This will export the node plus all references (such as images, files, taxonomy t
 
 You will need to remove the automatically exported user as this generates problems for the installation.
 
-	rm -fr modules/cr_default_content/content/user/
+	rm -fr ../modules/cr_default_content/content/user/
 
 This sometimes creates problems with serial identifiers (e.g. file id 7), as they might have been reused from previous installations. The site install will fail but the problem is easily solved by changing
 
