@@ -1,7 +1,7 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/press-releases\/red-nose-day-draws-close-another-impressive-year?_format=hal_json"
+            "href": "http:\/\/default\/press-releases\/comic-relief-and-big-lottery-fund-partner-cities-alliance?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/article"
@@ -19,28 +19,28 @@
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_category": [
             {
-                "href": "http:\/\/default\/taxonomy\/term\/17?_format=hal_json"
+                "href": "http:\/\/default\/taxonomy\/term\/14?_format=hal_json"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/article\/publishing_date": [
             {
-                "href": "http:\/\/default\/admin\/content\/scheduled_update\/1?_format=hal_json"
+                "href": "http:\/\/default\/admin\/content\/scheduled_update\/4?_format=hal_json"
             }
         ]
     },
     "nid": [
         {
-            "value": 39
+            "value": 42
         }
     ],
     "uuid": [
         {
-            "value": "6554db36-5fc3-450a-aef9-10703cf98ed9"
+            "value": "e18839b7-dd9e-4883-ad24-98bf05b0563e"
         }
     ],
     "vid": [
         {
-            "value": 184
+            "value": 188
         }
     ],
     "langcode": [
@@ -62,7 +62,7 @@
     ],
     "title": [
         {
-            "value": "Red nose day draws to a close with another impressive year",
+            "value": "Comic Relief and big lottery fund partner with cities alliance",
             "lang": "en"
         }
     ],
@@ -106,7 +106,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/taxonomy\/term\/17?_format=hal_json"
+                        "href": "http:\/\/default\/taxonomy\/term\/14?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/article_category"
@@ -114,7 +114,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "9da2fff3-4385-48b6-a2dd-3c598f0a174a"
+                        "value": "aedc077f-5a01-4cb0-8486-2a13079551ca"
                     }
                 ]
             }
@@ -123,7 +123,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/admin\/content\/scheduled_update\/1?_format=hal_json"
+                        "href": "http:\/\/default\/admin\/content\/scheduled_update\/4?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/scheduled_update\/node_status"
@@ -131,7 +131,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "405adb07-71c3-49e2-8acc-c93f29f7adc7"
+                        "value": "94e318ce-b238-44b8-9f17-56f43fa34231"
                     }
                 ]
             }
@@ -139,13 +139,13 @@
     },
     "created": [
         {
-            "value": 1498482347,
+            "value": 1498502801,
             "lang": "en"
         }
     ],
     "changed": [
         {
-            "value": 1498501206,
+            "value": 1498502913,
             "lang": "en"
         }
     ],
@@ -163,7 +163,7 @@
     ],
     "revision_timestamp": [
         {
-            "value": 1498501206
+            "value": 1498502913
         }
     ],
     "revision_translation_affected": [
@@ -180,7 +180,7 @@
     ],
     "body": [
         {
-            "value": "<p>Thanks to all the back-waxers, the fancy-dressers, the cake bakers and the sponsored silencers, the current Red Nose Day 2017 total stands at a jaw-dropping \u00a373,026,234 and Comic Relief couldn\u2019t have done it without the great British public coming together and showing, once again, their incredible generosity over the past few weeks.<\/p>\r\n",
+            "value": "<p>Global partnership organisation Cities Alliance has received a \u00a33.9 million grant through a partnership between Comic Relief and Big Lottery Fund. This will help improve the lives of over 400,000 slum dwellers in Monrovia, Liberia over the next five years.<\/p>\r\n\r\n<p>Almost a quarter of the people in Liberia live in the slums of Monrovia. Every single day they face the challenges of living in poor housing, with inadequate water supply, and very little sanitation. Comic Relief and Big Lottery Fund are supporting Cities Alliance to improve the lives of slum dwellers by empowering local people and enabling them to create lasting change in their communities.<\/p>\r\n\r\n<p>The 2014 Ebola outbreak had a devastating impact on Liberia. As well as those who lost family members, thousands of people lost their jobs and livelihoods. The project will mobilise slum dwellers and equip them to improve their own lives. Access to community grants will support slum upgrading including improved sanitation and the creation of affordable housing, as well as helping people to set up their own small businesses. Communities will also be supported to create vibrant local associations so they are better able to demand and achieve long term improvements in their living conditions from local authorities.<\/p>\r\n",
             "format": "full_html",
             "summary": "",
             "lang": "en"
@@ -193,7 +193,7 @@
     ],
     "field_article_intro": [
         {
-            "value": "<p>Thanks to all the back-waxers, the fancy-dressers, the cake bakers and the sponsored silencers, the current Red Nose Day 2017 total stands at a jaw-dropping \u00a373,026,234.<\/p>\r\n",
+            "value": "<p>Global partnership organisation Cities Alliance has received a \u00a33.9 million grant through a partnership between Comic Relief and Big Lottery Fund. This will help improve the lives of over 400,000 slum dwellers in Monrovia, Liberia over the next five years.<\/p>\r\n",
             "format": "full_html"
         }
     ],
