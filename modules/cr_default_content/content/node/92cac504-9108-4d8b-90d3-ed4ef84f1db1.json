@@ -16,6 +16,11 @@
             {
                 "href": "http:\/\/default\/user\/1?_format=hal_json"
             }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_paragraphs": [
+            {
+                "href": ""
+            }
         ]
     },
     "nid": [
@@ -30,7 +35,7 @@
     ],
     "vid": [
         {
-            "value": 177
+            "value": 192
         }
     ],
     "langcode": [
@@ -69,7 +74,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "b1f4f45a-f156-4eae-999b-2a69b60dc5c1"
+                        "value": "b970d4bf-2308-4c58-a754-c5c9bf2dec0d"
                     }
                 ],
                 "lang": "en"
@@ -87,9 +92,27 @@
                 },
                 "uuid": [
                     {
-                        "value": "b1f4f45a-f156-4eae-999b-2a69b60dc5c1"
+                        "value": "b970d4bf-2308-4c58-a754-c5c9bf2dec0d"
                     }
                 ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_paragraphs": [
+            {
+                "_links": {
+                    "self": {
+                        "href": ""
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cr_block_reference"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "4969ac68-f9cd-42f2-b3db-edd1a54e7129"
+                    }
+                ],
+                "target_revision_id": "152"
             }
         ]
     },
@@ -101,7 +124,7 @@
     ],
     "changed": [
         {
-            "value": 1497958960,
+            "value": 1498507962,
             "lang": "en"
         }
     ],
@@ -119,7 +142,7 @@
     ],
     "revision_timestamp": [
         {
-            "value": 1497958960
+            "value": 1498507962
         }
     ],
     "revision_translation_affected": [
@@ -131,6 +154,14 @@
     "default_langcode": [
         {
             "value": true,
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<h1>Press Releases<\/h1>\r\n",
+            "format": "full_html",
+            "summary": "",
             "lang": "en"
         }
     ],

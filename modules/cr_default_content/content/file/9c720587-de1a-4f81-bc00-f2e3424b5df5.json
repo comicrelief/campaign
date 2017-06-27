@@ -5,11 +5,16 @@
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
-        }
+        },
+        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json"
+            }
+        ]
     },
     "fid": [
         {
-            "value": "27"
+            "value": 27
         }
     ],
     "uuid": [
@@ -27,6 +32,25 @@
             "target_id": "image"
         }
     ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "b970d4bf-2308-4c58-a754-c5c9bf2dec0d"
+                    }
+                ]
+            }
+        ]
+    },
     "filename": [
         {
             "value": "SR16_small_centre_promo_whats-going-on_desktop_2.jpg"
@@ -34,7 +58,7 @@
     ],
     "uri": [
         {
-            "value": "public:\/\/2016-04\/SR16_small_centre_promo_whats-going-on_desktop_2_1_0_1_10_12_19_0_7_0_0_1.jpg"
+            "value": "public:\/\/2016-04\/SR16_small_centre_promo_whats-going-on_desktop_2_1_0_1_10_12_19_0_7_0_0_1_1.jpg"
         }
     ],
     "filemime": [
@@ -44,22 +68,22 @@
     ],
     "filesize": [
         {
-            "value": "69238"
+            "value": 69238
         }
     ],
     "status": [
         {
-            "value": "1"
+            "value": true
         }
     ],
     "created": [
         {
-            "value": "1459849621"
+            "value": 1459849621
         }
     ],
     "changed": [
         {
-            "value": "1459849673"
+            "value": 1459849673
         }
     ],
     "data": [
