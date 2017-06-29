@@ -14,9 +14,9 @@ third_party_settings:
   ds:
     layout:
       id: ds_reset
-      path: profiles/cr/modules/contrib/ds
-      library: ''
+      library: null
       disable_css: false
+      entity_classes: all_classes
       settings:
         wrappers:
           ds_content: div
@@ -31,6 +31,7 @@ third_party_settings:
         - field_background_colour
         - field_partner_body
         - field_partner_list
+        - social_links
 id: paragraph.partner_list.default
 targetEntityType: paragraph
 bundle: partner_list
@@ -73,9 +74,9 @@ content:
     region: ds_content
   social_links:
     weight: 5
+    region: ds_content
     settings: {  }
     third_party_settings: {  }
-    region: content
   uid:
     type: author
     weight: 3

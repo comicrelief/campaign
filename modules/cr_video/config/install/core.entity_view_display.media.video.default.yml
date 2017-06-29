@@ -14,9 +14,9 @@ third_party_settings:
   ds:
     layout:
       id: ds_reset
-      path: profiles/cr/modules/contrib/ds
-      library: ''
+      library: null
       disable_css: false
+      entity_classes: all_classes
       settings:
         wrappers:
           ds_content: div
@@ -30,6 +30,11 @@ third_party_settings:
       ds_content:
         - field_youtube_video_id
         - field_video_caption
+        - social_links
+        - created
+        - uid
+        - thumbnail
+        - name
 id: media.video.default
 targetEntityType: media
 bundle: video
@@ -44,7 +49,7 @@ content:
       past_format: '@interval ago'
       granularity: 2
     third_party_settings: {  }
-    region: content
+    region: ds_content
   field_video_caption:
     weight: 2
     label: hidden
@@ -76,12 +81,12 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    region: content
+    region: ds_content
   social_links:
     weight: 3
+    region: ds_content
     settings: {  }
     third_party_settings: {  }
-    region: content
   thumbnail:
     type: responsive_image
     weight: 6
@@ -90,12 +95,12 @@ content:
       responsive_image_style: ''
       image_link: ''
     third_party_settings: {  }
-    region: content
+    region: ds_content
   uid:
     type: author
     weight: 5
     label: above
     settings: {  }
     third_party_settings: {  }
-    region: content
+    region: ds_content
 hidden: {  }

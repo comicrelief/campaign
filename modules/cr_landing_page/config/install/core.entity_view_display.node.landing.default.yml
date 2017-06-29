@@ -26,9 +26,9 @@ third_party_settings:
   ds:
     layout:
       id: ds_reset
-      path: profiles/cr/modules/contrib/ds
-      library: ''
+      library: null
       disable_css: false
+      entity_classes: all_classes
       settings:
         wrappers:
           ds_content: div
@@ -44,6 +44,16 @@ third_party_settings:
         - node_title
         - body
         - field_paragraphs
+        - social_links
+        - links
+        - field_landing_image_mobile
+        - field_landing_background_colour
+        - field_landing_copy_position_alig
+        - field_svg_body_title
+        - field_landing_meta_tags
+        - field_landing_feature_layout
+        - field_landing_small_bg
+        - field_landing_background_video
     fields:
       node_title:
         plugin_id: node_title
@@ -68,7 +78,7 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: list_default
-    region: content
+    region: ds_content
   field_landing_background_video:
     weight: 23
     label: above
@@ -76,14 +86,14 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
-    region: content
+    region: ds_content
   field_landing_copy_position_alig:
     weight: 18
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
-    region: content
+    region: ds_content
   field_landing_feature_layout:
     weight: 21
     label: above
@@ -93,7 +103,7 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
-    region: content
+    region: ds_content
   field_landing_image:
     weight: 0
     label: hidden
@@ -111,14 +121,14 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
-    region: content
+    region: ds_content
   field_landing_meta_tags:
     weight: 20
     label: above
     settings: {  }
     third_party_settings: {  }
     type: metatag_empty_formatter
-    region: content
+    region: ds_content
   field_landing_small_bg:
     weight: 22
     label: above
@@ -128,7 +138,7 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
-    region: content
+    region: ds_content
   field_paragraphs:
     type: entity_reference_revisions_entity_view
     weight: 4
@@ -144,15 +154,15 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: basic_string
-    region: content
+    region: ds_content
   links:
     weight: 14
+    region: ds_content
     settings: {  }
     third_party_settings: {  }
-    region: content
   social_links:
     weight: 11
+    region: ds_content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden: {  }

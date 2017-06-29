@@ -15,9 +15,9 @@ third_party_settings:
   ds:
     layout:
       id: ds_reset
-      path: profiles/cr/modules/contrib/ds
-      library: ''
+      library: null
       disable_css: false
+      entity_classes: all_classes
       settings:
         wrappers:
           ds_content: div
@@ -29,7 +29,13 @@ third_party_settings:
           layout_class: {  }
     regions:
       ds_content:
+        - name
+        - thumbnail
+        - uid
+        - created
+        - field_cr_ef_resource_category
         - field_cr_external_file
+        - social_links
 id: media.cr_external_file.search_index
 targetEntityType: media
 bundle: cr_external_file
@@ -44,7 +50,7 @@ content:
       custom_date_format: ''
       timezone: ''
     third_party_settings: {  }
-    region: content
+    region: ds_content
   field_cr_ef_resource_category:
     type: entity_reference_entity_view
     weight: 0
@@ -53,7 +59,7 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
-    region: content
+    region: ds_content
   field_cr_external_file:
     weight: 0
     label: hidden
@@ -73,12 +79,12 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    region: content
+    region: ds_content
   social_links:
     weight: 0
+    region: ds_content
     settings: {  }
     third_party_settings: {  }
-    region: content
   thumbnail:
     type: entity_reference_entity_view
     weight: 0
@@ -87,13 +93,13 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
-    region: content
+    region: ds_content
   uid:
     type: author
     weight: 0
     label: above
     settings: {  }
     third_party_settings: {  }
-    region: content
+    region: ds_content
 hidden:
   field_cr_downloadables_body: true
