@@ -9,6 +9,16 @@ Feature: Article
     And I should see the text "Global partnership organisation Cities Alliance has received"
 
   @api @default-content
+  Scenario: Article pagination on /press-releases
+    Given I am on "press-releases"
+    And I click "››"
+    And I wait for 3 seconds
+    Then I should see the link "Comic Relief pledges £250,000 in response to Yemen crisis"
+    And I click "‹‹"
+    And I wait for 3 seconds
+    Then I should see the link "Comic Relief and big lottery fund partner with cities alliance"
+
+  @api @default-content
   Scenario: Article linking through from /news
     Given I am on "news"
     And I should see the link "Four down – one to go!"
