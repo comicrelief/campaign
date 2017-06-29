@@ -4,19 +4,19 @@ Feature: Article
   @api @default-content
   Scenario: Article linking through from /press-releases
     Given I am on "press-releases"
-    And I should see the link "Comic Relief and big lottery fund partner with cities alliance"
-    Then I follow "Comic Relief and big lottery fund partner with cities alliance"
-    And I should see the text "Global partnership organisation Cities Alliance has received"
+    And I should see the link "Domestic abuse calls at all time high"
+    Then I follow "Domestic abuse calls at all time high"
+    And I should see the text "As Red Nose Day approaches, Comic Relief is shining a light"
 
   @api @default-content
   Scenario: Article pagination on /press-releases
     Given I am on "press-releases"
     And I click "››"
     And I wait for 3 seconds
-    Then I should see the link "Comic Relief pledges £250,000 in response to Yemen crisis"
+    Then I should see the link "Comic Relief and big lottery fund partner with cities alliance"
     And I click "‹‹"
     And I wait for 3 seconds
-    Then I should see the link "Comic Relief and big lottery fund partner with cities alliance"
+    Then I should see the link "Domestic abuse calls at all time high"
 
   @api @default-content
   Scenario: Article linking through from /news
