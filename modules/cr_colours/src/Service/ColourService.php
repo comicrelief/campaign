@@ -14,7 +14,7 @@ class ColourService {
   /**
    * @var TranslationManager
    */
-  private $translationManager;
+  protected $translationManager;
 
   /**
    * ColourService constructor.
