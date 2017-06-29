@@ -1,0 +1,215 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/press-releases\/domestic-abuse-calls-all-time-high?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/article"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_category": [
+            {
+                "href": "http:\/\/default\/taxonomy\/term\/17?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/publishing_date": [
+            {
+                "href": "http:\/\/default\/admin\/content\/scheduled_update\/5?_format=hal_json"
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": 48
+        }
+    ],
+    "uuid": [
+        {
+            "value": "61847305-357b-43da-ac8c-2631f9159445"
+        }
+    ],
+    "vid": [
+        {
+            "value": 200
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "article"
+        }
+    ],
+    "status": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "title": [
+        {
+            "value": " Domestic abuse calls at all time high",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "c80512ef-ef7d-48ec-8741-ccb42cebd36f"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "c80512ef-ef7d-48ec-8741-ccb42cebd36f"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_category": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/taxonomy\/term\/17?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/article_category"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "9da2fff3-4385-48b6-a2dd-3c598f0a174a"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/publishing_date": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/admin\/content\/scheduled_update\/5?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/scheduled_update\/node_status"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "022e086d-9981-4f85-b98e-7b10062b2a34"
+                    }
+                ]
+            }
+        ]
+    },
+    "created": [
+        {
+            "value": 1498746219,
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": 1498746276,
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": false,
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": 1498746276
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<p>As Red Nose Day approaches, Comic Relief is shining a light on the extent of domestic abuse across the UK. Charities funded by Red Nose Day cash report overwhelming demand from those suffering every single day behind closed doors \u2013 an endemic which saw 1.2 million women experiencing domestic abuse in the last year&nbsp;and two women killed each week in England and Wales because of domestic violence.<\/p>\r\n\r\n<p>Figures released by the National Domestic Violence Helpline, a vital support service launched by Comic Relief in 2003 and run in partnership by Women\u2019s Aid and Refuge, show that demand for domestic abuse crisis assistance is at an all-time high with on average a staggering 230 calls received every day.<\/p>\r\n\r\n<p>Comic Relief reports that recent grant applications demonstrate a significant uplift in demand for all types of domestic abuse support services, with some organisations reporting an increase of up to 60%. Gilly Green, Head of UK Grants for Comic Relief, says: \u201cMore and more women are finding the courage to come forward, which will help to tackle the stigma that continues to surround domestic abuse and ensure more people get the support they need.<\/p>\r\n",
+            "format": "full_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ],
+    "field_article_exclude_aggr": [
+        {
+            "value": false
+        }
+    ],
+    "field_article_intro": [
+        {
+            "value": "<p>As Red Nose Day approaches, Comic Relief is shining a light on the extent of domestic abuse across the UK. Charities funded by Red Nose Day cash report overwhelming demand from those suffering every single day behind closed doors \u2013 an endemic which saw 1.2 million women experiencing domestic abuse in the last year&nbsp;and two women killed each week in England and Wales because of domestic violence.<\/p>\r\n",
+            "format": "full_html"
+        }
+    ],
+    "field_article_meta_tags": [
+        {
+            "value": "a:0:{}"
+        }
+    ],
+    "field_article_publish_date": [
+        {
+            "value": "2017-06-29"
+        }
+    ],
+    "field_article_type": [
+        {
+            "value": "press-releases"
+        }
+    ]
+}
