@@ -12,6 +12,7 @@ dependencies:
     - datetime
     - image
     - node
+    - options
     - taxonomy
     - user
 id: what_s_going_on
@@ -360,6 +361,47 @@ display:
           required: true
           plugin_id: standard
       arguments:
+        field_article_type_value:
+          id: field_article_type_value
+          table: node__field_article_type
+          field: field_article_type_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: raw
+          default_argument_options:
+            index: 0
+            use_alias: true
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            items_per_page: 25
+            override: false
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+            human: false
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          glossary: false
+          limit: 0
+          case: none
+          path_case: none
+          transform_dash: false
+          break_phrase: false
+          plugin_id: string_list_field
         name:
           id: name
           table: taxonomy_term_field_data

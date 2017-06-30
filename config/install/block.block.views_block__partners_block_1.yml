@@ -12,7 +12,7 @@ dependencies:
 id: views_block__partners_block_1
 theme: campaign_base
 region: content
-weight: 6
+weight: -2
 provider: null
 plugin: 'views_block:partners-block_1'
 settings:

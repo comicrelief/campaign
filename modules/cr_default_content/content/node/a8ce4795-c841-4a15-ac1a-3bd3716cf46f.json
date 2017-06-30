@@ -1,14 +1,14 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/news\/yplan-partners-sport-relief?_format=hal_json"
+            "href": "http:\/\/default\/press-releases\/shearer-vs-savage-rematch?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/article"
         },
         "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
             {
-                "href": "http:\/\/default\/user\/0?_format=hal_json",
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
                 "lang": "en"
             }
         ],
@@ -19,29 +19,28 @@
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_category": [
             {
-                "href": "http:\/\/default\/taxonomy\/term\/19?_format=hal_json"
+                "href": "http:\/\/default\/taxonomy\/term\/17?_format=hal_json"
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_image": [
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/publishing_date": [
             {
-                "href": "http:\/\/default\/file\/2?_format=hal_json",
-                "lang": "en"
+                "href": "http:\/\/default\/admin\/content\/scheduled_update\/8?_format=hal_json"
             }
         ]
     },
     "nid": [
         {
-            "value": "13"
+            "value": 51
         }
     ],
     "uuid": [
         {
-            "value": "95198a01-a11e-44d6-8a3a-58abff7a6446"
+            "value": "a8ce4795-c841-4a15-ac1a-3bd3716cf46f"
         }
     ],
     "vid": [
         {
-            "value": "165"
+            "value": 204
         }
     ],
     "langcode": [
@@ -55,9 +54,15 @@
             "target_id": "article"
         }
     ],
+    "status": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
     "title": [
         {
-            "value": "YPlan partners with Sport Relief",
+            "value": "Shearer vs Savage: The Rematch",
             "lang": "en"
         }
     ],
@@ -66,7 +71,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -74,7 +79,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "260a25a1-ea38-4d4a-90a5-9889b9d4fd8b"
+                        "value": "c80512ef-ef7d-48ec-8741-ccb42cebd36f"
                     }
                 ],
                 "lang": "en"
@@ -92,7 +97,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "2a764c34-028e-4837-b6db-0eaab7e37ccb"
+                        "value": "c80512ef-ef7d-48ec-8741-ccb42cebd36f"
                     }
                 ]
             }
@@ -101,7 +106,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/taxonomy\/term\/19?_format=hal_json"
+                        "href": "http:\/\/default\/taxonomy\/term\/17?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/article_category"
@@ -109,92 +114,87 @@
                 },
                 "uuid": [
                     {
-                        "value": "8511b68d-1acc-45bf-b761-52698a361769"
+                        "value": "9da2fff3-4385-48b6-a2dd-3c598f0a174a"
                     }
                 ]
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_image": [
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/publishing_date": [
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/file\/2?_format=hal_json"
+                        "href": "http:\/\/default\/admin\/content\/scheduled_update\/8?_format=hal_json"
                     },
                     "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
+                        "href": "http:\/\/drupal.org\/rest\/type\/scheduled_update\/node_status"
                     }
                 },
                 "uuid": [
                     {
-                        "value": "2fe3006e-f9ee-4772-a75c-92fc0bc20931"
+                        "value": "a7063760-7047-4c7b-93ea-592f984babf1"
                     }
-                ],
-                "lang": "en",
-                "alt": "",
-                "title": "",
-                "width": "610",
-                "height": "343"
+                ]
             }
         ]
     },
-    "status": [
-        {
-            "value": "1",
-            "lang": "en"
-        }
-    ],
     "created": [
         {
-            "value": "1455634556",
+            "value": 1498746482,
             "lang": "en"
         }
     ],
     "changed": [
         {
-            "value": "1497455866",
+            "value": 1498746526,
             "lang": "en"
         }
     ],
     "promote": [
         {
-            "value": "1",
+            "value": true,
             "lang": "en"
         }
     ],
     "sticky": [
         {
-            "value": "0",
+            "value": false,
             "lang": "en"
         }
     ],
     "revision_timestamp": [
         {
-            "value": "1497455866"
+            "value": 1498746526
         }
     ],
     "revision_translation_affected": [
         {
-            "value": "1",
+            "value": true,
             "lang": "en"
         }
     ],
     "default_langcode": [
         {
-            "value": "1",
+            "value": true,
             "lang": "en"
         }
     ],
     "body": [
         {
-            "value": "<p>YPlan, the event discovery and booking platform is today announcing it\u2019s partnered with Sport Relief to raise cash and help people living incredibly tough lives.<\/p>\r\n\r\n<p>The app\u2019s users will now be able to sign up to the Sainsbury\u2019s Sport Relief Games, as well as donate money through YPlan.<\/p>\r\n\r\n<p>The partnership will also give users the ability to buy tickets from a special collection of events with \u00a31 of every ticket going to Sport Relief.<\/p>\r\n\r\n<p>\"We are extremely proud to be partnering with such a powerful charitable event this year,\u201d Rytis Vitkauskas, CEO and Co-Founder of YPlan, said.<\/p>\r\n\r\n<p>\u201cSport Relief brings help to vulnerable people in both the UK and the world\u2019s poorest communities and we are encouraging YPlanners to sign up and support this cause.\u201d<\/p>\r\n\r\n<p>Michele Settle, Director of UK Campaigns and Brands at Comic Relief added: \u201cIt\u2019s great to have YPlan on board as a new digital partner for Sport Relief, providing the public with another way to not only sign up to the Sainsbury\u2019s Sport Relief Games but donate through the YPlan collection. It couldn\u2019t be easier to get involved, get active, raise cash and change lives.\u201d<\/p>\r\n\r\n<p>The Sainsbury\u2019s Sport Relief Games take place from March 18 to 20. Sign up now to<a href=\"http:\/\/www.sportrelief.com\/events\/flagship-events\">your local event<\/a>&nbsp;to get involved and raise money.<\/p>\r\n",
-            "format": "basic_html",
+            "value": "<p>Today, Wednesday 10 th February, BBC and Sport Relief can announce that footballing legends Alan Shearer and Robbie Savage are going head-to-head once again as part of the epic BBC Radio 5 Live \u2018Battle of the Five-A-Sides\u2019 for Sport Relief and if you sign up now there could be a spot for you on the pitch.<\/p>\r\n\r\n<p>Supported by the Premier League, the three day five-a-side football frenzy will see Alan and Robbie return to the pitch to play as well as manage a squad of players. Over 1,000 people will take part to play a combined total of 57 hours of continuous five-a-side football \u2013 the equivalent of playing an entire Premier League season for one club. Robbie will be representing BBC Radio 5 Live\u2019s 606, whilst Alan is taking part on behalf of BBC\u2019s Match of the Day.<\/p>\r\n\r\n<p>The two teams, led by the football heroes, will play on constant rotation on the Premier League fivea-side stadium at Media City Salford, Manchester from Thursday 3rd to Saturday 5th March. The Premier League has funded the cost of the pitch as part of their bigger commitment to funding football facilities throughout the UK<\/p>\r\n",
+            "format": "full_html",
             "summary": "",
             "lang": "en"
         }
     ],
     "field_article_exclude_aggr": [
         {
-            "value": "0"
+            "value": false
+        }
+    ],
+    "field_article_intro": [
+        {
+            "value": "<p>Today, Wednesday 10 th February, BBC and Sport Relief can announce that footballing legends Alan Shearer and Robbie Savage are going head-to-head once again as part of the epic BBC Radio 5 Live \u2018Battle of the Five-A-Sides\u2019 for Sport Relief and if you sign up now there could be a spot for you on the pitch.<\/p>\r\n",
+            "format": "full_html"
         }
     ],
     "field_article_meta_tags": [
@@ -204,12 +204,12 @@
     ],
     "field_article_publish_date": [
         {
-            "value": "2016-02-16"
+            "value": "2017-06-29"
         }
     ],
     "field_article_type": [
         {
-            "value": "news"
+            "value": "press-releases"
         }
     ]
 }

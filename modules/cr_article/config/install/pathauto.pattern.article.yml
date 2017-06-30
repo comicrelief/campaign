@@ -6,16 +6,16 @@ dependencies:
 id: article
 label: Article
 type: 'canonical_entities:node'
-pattern: '/news-tv-and-events/news/[node:title]'
+pattern: '/[node:field_article_type:value]/[node:title]'
 selection_criteria:
-  f77697e3-10a4-48a8-936e-35bcc8c22d09:
+  f351b9a2-a98e-4dde-ae9a-8ef7f98e9744:
     id: node_type
     bundles:
       article: article
     negate: false
     context_mapping:
       node: node
-    uuid: f77697e3-10a4-48a8-936e-35bcc8c22d09
+    uuid: f351b9a2-a98e-4dde-ae9a-8ef7f98e9744
 selection_logic: and
 weight: -5
 relationships: {  }

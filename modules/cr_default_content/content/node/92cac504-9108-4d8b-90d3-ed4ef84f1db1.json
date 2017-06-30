@@ -1,7 +1,7 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/featured-stories?_format=hal_json"
+            "href": "http:\/\/default\/press-releases?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/landing"
@@ -20,28 +20,22 @@
         "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_paragraphs": [
             {
                 "href": ""
-            },
-            {
-                "href": ""
-            },
-            {
-                "href": ""
             }
         ]
     },
     "nid": [
         {
-            "value": "37"
+            "value": 38
         }
     ],
     "uuid": [
         {
-            "value": "a9bf5d54-6a7b-4ad5-b5b6-c9eeb9274ef8"
+            "value": "92cac504-9108-4d8b-90d3-ed4ef84f1db1"
         }
     ],
     "vid": [
         {
-            "value": "160"
+            "value": 206
         }
     ],
     "langcode": [
@@ -55,9 +49,15 @@
             "target_id": "landing"
         }
     ],
+    "status": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
     "title": [
         {
-            "value": "Featured Stories",
+            "value": "Press Releases",
             "lang": "en"
         }
     ],
@@ -74,7 +74,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "e3587898-c86d-4f4c-b151-a011283d44ac"
+                        "value": "c80512ef-ef7d-48ec-8741-ccb42cebd36f"
                     }
                 ],
                 "lang": "en"
@@ -92,7 +92,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "e3587898-c86d-4f4c-b151-a011283d44ac"
+                        "value": "c80512ef-ef7d-48ec-8741-ccb42cebd36f"
                     }
                 ]
             }
@@ -104,108 +104,65 @@
                         "href": ""
                     },
                     "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/feature_articles"
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cr_block_reference"
                     }
                 },
                 "uuid": [
                     {
-                        "value": "902e5aef-f76b-49a7-b5e0-673c490cc451"
+                        "value": "4969ac68-f9cd-42f2-b3db-edd1a54e7129"
                     }
                 ],
-                "target_revision_id": "146"
-            },
-            {
-                "_links": {
-                    "self": {
-                        "href": ""
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/feature_articles"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "a69fcd80-f620-45ae-a5ca-c01da041f986"
-                    }
-                ],
-                "target_revision_id": "147"
-            },
-            {
-                "_links": {
-                    "self": {
-                        "href": ""
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/feature_articles"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "4a1f5224-ec66-4adf-a55f-e312496eb36b"
-                    }
-                ],
-                "target_revision_id": "149"
+                "target_revision_id": "153"
             }
         ]
     },
-    "status": [
-        {
-            "value": "1",
-            "lang": "en"
-        }
-    ],
     "created": [
         {
-            "value": "1496236583",
+            "value": 1497958748,
             "lang": "en"
         }
     ],
     "changed": [
         {
-            "value": "1496256383",
+            "value": 1498746949,
             "lang": "en"
         }
     ],
     "promote": [
         {
-            "value": "1",
+            "value": true,
             "lang": "en"
         }
     ],
     "sticky": [
         {
-            "value": "0",
+            "value": false,
             "lang": "en"
         }
     ],
     "revision_timestamp": [
         {
-            "value": "1496256383"
+            "value": 1498746949
         }
     ],
     "revision_translation_affected": [
         {
-            "value": "1",
+            "value": true,
             "lang": "en"
         }
     ],
     "default_langcode": [
         {
-            "value": "1",
+            "value": true,
             "lang": "en"
         }
     ],
     "body": [
         {
-            "value": "<h1>FEATURED STORIES<\/h1>\r\n\r\n<p>Take a leaf through some of the exciting thing that are happening.<\/p>\r\n",
+            "value": "<h1>Press Releases<\/h1>\r\n",
             "format": "full_html",
             "summary": "",
             "lang": "en"
-        }
-    ],
-    "field_landing_background_colour": [
-        {
-            "value": "bg--yellow"
         }
     ],
     "field_landing_copy_position_alig": [
@@ -215,7 +172,7 @@
     ],
     "field_landing_feature_layout": [
         {
-            "value": "0"
+            "value": true
         }
     ],
     "field_landing_meta_tags": [
@@ -225,7 +182,7 @@
     ],
     "field_landing_small_bg": [
         {
-            "value": "0"
+            "value": false
         }
     ]
 }

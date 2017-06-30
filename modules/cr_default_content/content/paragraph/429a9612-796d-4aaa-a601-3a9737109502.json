@@ -4,43 +4,38 @@
             "href": ""
         },
         "type": {
-            "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/feature_articles"
+            "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cr_block_reference"
         },
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/feature_articles\/uid": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_block_reference\/uid": [
             {
                 "href": "http:\/\/default\/user\/1?_format=hal_json",
                 "lang": "en"
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/feature_articles\/revision_uid": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_block_reference\/revision_uid": [
             {
                 "href": "http:\/\/default\/user\/1?_format=hal_json"
-            }
-        ],
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/feature_articles\/field_feature_articles_taxonomy": [
-            {
-                "href": "http:\/\/default\/taxonomy\/term\/16?_format=hal_json"
             }
         ]
     },
     "id": [
         {
-            "value": "13"
+            "value": 16
         }
     ],
     "uuid": [
         {
-            "value": "902e5aef-f76b-49a7-b5e0-673c490cc451"
+            "value": "429a9612-796d-4aaa-a601-3a9737109502"
         }
     ],
     "revision_id": [
         {
-            "value": "146"
+            "value": 150
         }
     ],
     "type": [
         {
-            "target_id": "feature_articles"
+            "target_id": "cr_block_reference"
         }
     ],
     "langcode": [
@@ -50,7 +45,7 @@
         }
     ],
     "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/feature_articles\/uid": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_block_reference\/uid": [
             {
                 "_links": {
                     "self": {
@@ -62,13 +57,13 @@
                 },
                 "uuid": [
                     {
-                        "value": "e3587898-c86d-4f4c-b151-a011283d44ac"
+                        "value": "b970d4bf-2308-4c58-a754-c5c9bf2dec0d"
                     }
                 ],
                 "lang": "en"
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/feature_articles\/revision_uid": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_block_reference\/revision_uid": [
             {
                 "_links": {
                     "self": {
@@ -80,24 +75,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "e3587898-c86d-4f4c-b151-a011283d44ac"
-                    }
-                ]
-            }
-        ],
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/feature_articles\/field_feature_articles_taxonomy": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/taxonomy\/term\/16?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/article_category"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "4f8aaad0-92c6-4851-bd60-52f1d4671dc2"
+                        "value": "b970d4bf-2308-4c58-a754-c5c9bf2dec0d"
                     }
                 ]
             }
@@ -105,19 +83,19 @@
     },
     "status": [
         {
-            "value": "1",
+            "value": true,
             "lang": "en"
         }
     ],
     "created": [
         {
-            "value": "1496236644",
+            "value": 1498507175,
             "lang": "en"
         }
     ],
     "parent_id": [
         {
-            "value": "37"
+            "value": "17"
         }
     ],
     "parent_type": [
@@ -132,23 +110,13 @@
     ],
     "default_langcode": [
         {
-            "value": "1",
+            "value": true,
             "lang": "en"
         }
     ],
-    "field_feature_articles_bg": [
+    "field_br_block_reference": [
         {
-            "value": "bg--white"
-        }
-    ],
-    "field_feature_articles_title": [
-        {
-            "value": "Our latest challenges"
-        }
-    ],
-    "field_feature_articles_titlehide": [
-        {
-            "value": "0"
+            "target_id": "views_block__what_s_going_on_block_1"
         }
     ]
 }

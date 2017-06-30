@@ -1,14 +1,14 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/news-tv-and-events\/news?_format=hal_json"
+            "href": "http:\/\/default\/news?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/landing"
         },
         "http:\/\/drupal.org\/rest\/relation\/node\/landing\/uid": [
             {
-                "href": "http:\/\/default\/user\/0?_format=hal_json",
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
                 "lang": "en"
             }
         ],
@@ -22,11 +22,16 @@
                 "href": "http:\/\/default\/file\/27?_format=hal_json",
                 "lang": "en"
             }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_paragraphs": [
+            {
+                "href": ""
+            }
         ]
     },
     "nid": [
         {
-            "value": "17"
+            "value": 17
         }
     ],
     "uuid": [
@@ -36,7 +41,7 @@
     ],
     "vid": [
         {
-            "value": "118"
+            "value": 190
         }
     ],
     "langcode": [
@@ -50,9 +55,15 @@
             "target_id": "landing"
         }
     ],
+    "status": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
     "title": [
         {
-            "value": "What's going on",
+            "value": "News",
             "lang": "en"
         }
     ],
@@ -61,7 +72,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/user\/0?_format=hal_json"
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -69,7 +80,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "0680416b-9b6b-4898-9b19-33ae155115ab"
+                        "value": "b970d4bf-2308-4c58-a754-c5c9bf2dec0d"
                     }
                 ],
                 "lang": "en"
@@ -87,7 +98,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "3d81a00b-3360-4fd1-b854-bd607334bb42"
+                        "value": "b970d4bf-2308-4c58-a754-c5c9bf2dec0d"
                     }
                 ]
             }
@@ -113,52 +124,64 @@
                 "width": "1400",
                 "height": "320"
             }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/landing\/field_paragraphs": [
+            {
+                "_links": {
+                    "self": {
+                        "href": ""
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/cr_block_reference"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "429a9612-796d-4aaa-a601-3a9737109502"
+                    }
+                ],
+                "target_revision_id": "150"
+            }
         ]
     },
-    "status": [
-        {
-            "value": "1",
-            "lang": "en"
-        }
-    ],
     "created": [
         {
-            "value": "1459849599",
+            "value": 1459849599,
             "lang": "en"
         }
     ],
     "changed": [
         {
-            "value": "1478860800",
+            "value": 1498507190,
             "lang": "en"
         }
     ],
     "promote": [
         {
-            "value": "1",
+            "value": true,
             "lang": "en"
         }
     ],
     "sticky": [
         {
-            "value": "0",
+            "value": false,
             "lang": "en"
         }
     ],
     "revision_timestamp": [
         {
-            "value": "1478860800"
+            "value": 1498507190
         }
     ],
     "revision_translation_affected": [
         {
-            "value": "1",
+            "value": true,
             "lang": "en"
         }
     ],
     "default_langcode": [
         {
-            "value": "1",
+            "value": true,
             "lang": "en"
         }
     ],
@@ -177,12 +200,17 @@
     ],
     "field_landing_feature_layout": [
         {
-            "value": "1"
+            "value": true
         }
     ],
     "field_landing_meta_tags": [
         {
             "value": "a:0:{}"
+        }
+    ],
+    "field_landing_small_bg": [
+        {
+            "value": false
         }
     ]
 }

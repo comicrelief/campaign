@@ -22,6 +22,11 @@
             "value": "en"
         }
     ],
+    "type": [
+        {
+            "target_id": "image"
+        }
+    ],
     "filename": [
         {
             "value": "greg_james_content_wall.jpg"
@@ -55,11 +60,6 @@
     "changed": [
         {
             "value": "1455021080"
-        }
-    ],
-    "type": [
-        {
-            "target_id": "image"
         }
     ],
     "data": [
