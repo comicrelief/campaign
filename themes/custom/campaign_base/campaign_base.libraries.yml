@@ -7,6 +7,7 @@ global-css:
 
 global-js:
   js:
+    node_modules/smartmenus/src/jquery.smartmenus.js: {}
     node_modules/lightcase/src/js/lightcase.js: {}
     libraries/modernizr/modernizr-custom.js: {}
     js/campaign_base.min.js: {}
