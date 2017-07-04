@@ -357,3 +357,21 @@ function cr_update_8039() {
   \Drupal::service('config.installer')
     ->installDefaultConfig('module', 'cr_article');
 }
+
+/**
+ * Update all articles without an article type to be news.
+ */
+function cr_update_8040() {
+  // Get an array of all 'article' node ids.
+  $article_nids = \Drupal::entityQuery('node')
+    ->condition('type', 'article')
+    ->notExists('field_article_type')
+    ->execute();
+
+  // Load all the articles.
+  $articles = \Drupal\node\Entity\Node::loadMultiple($article_nids);
+  foreach ($articles as $article) {
+    $article->set('field_article_type', 'news');
+    $article->save();
+  }
+}
