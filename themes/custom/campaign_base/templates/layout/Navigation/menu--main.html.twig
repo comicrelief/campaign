@@ -10,7 +10,7 @@
   {% import _self as menus %}
   {% if items %}
     {% if menu_level == 0 %}
-      <ul{{ attributes.addClass('menu sm main-nav__items') }} id="main-menu" >
+      <ul{{ attributes.addClass('menu sm main-nav__items menu--level-0') }} id="main-menu" >
     {% else %}
       <ul class="menu main-nav__items menu--level-{{menu_level}}">
         {% if menu_level == 1 %}
