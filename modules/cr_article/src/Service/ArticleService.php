@@ -3,6 +3,8 @@
 namespace Drupal\cr_article\Service;
 
 use Drupal\Core\StringTranslation\TranslationManager;
+use Drupal\node\Entity\Node;
+use Drupal\taxonomy\Entity\Term;
 
 /**
  * Class ArticleService
@@ -47,26 +49,23 @@ class ArticleService {
    */
   public function getArticleTypeAvailableTaxonomies($type)
   {
-    $taxonomy_nids = array();
+    // Define the results array.
     $results = array('All' => $this->translationManager->translate('All'));
 
-    // Get all of the article ids for the current page type.
-    $articleIds = \Drupal::entityQuery('node')
-      ->condition('status', 1)
-      ->condition('field_article_type', $type)
-      ->execute();
+    // Define query to get taxonomies on articles by type.
+    $query = \Drupal::database()->select('taxonomy_term_field_data', 'term');
+    $query->fields('term', ['tid', 'name']);
+    $query->join('node__field_article_category', 'category', 'term.tid = category.field_article_category_target_id');
+    $query->join('node', 'node', 'node.nid = category.entity_id');
+    $query->join('node__field_article_type', 'article_type', 'node.nid = article_type.entity_id');
+    $query->join('node_field_data', 'field_data', 'node.nid = field_data.nid');
+    $query->condition('node.type', 'article');
+    $query->condition('article_type.field_article_type_value', $type);
+    $query->condition('field_data.status', '1');
+    $query->groupBy('term.tid, term.name');
 
-    // Get all of the current taxonomy nids for the page type.
-    foreach (\Drupal\node\Entity\Node::loadMultiple($articleIds) as $entity) {
-      if (isset($entity->get('field_article_category')[0])) {
-        $taxonomy_nid = $res = $entity->get('field_article_category')[0]->getValue()['target_id'];
-        $taxonomy_nids[$taxonomy_nid] = $taxonomy_nid;
-      }
-    }
-
-    // Loop through the available terms and add to the options array.
-    foreach (\Drupal\taxonomy\Entity\Term::loadMultiple($taxonomy_nids) as $taxonomy) {
-      $results[$taxonomy->id()] = $taxonomy->getName();
+    foreach ($query->execute()->fetchAllAssoc('tid') as $item) {
+      $results[$item->tid] = $this->translationManager->translate($item->name);
     }
 
     // Sort the array by value.
@@ -74,5 +73,4 @@ class ArticleService {
 
     return $results;
   }
-
 }
