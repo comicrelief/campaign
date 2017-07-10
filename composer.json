@@ -100,7 +100,7 @@
         "webflo/drupal-finder": "^0.3.0",
         "webmozart/path-util": "^2.3",
         "php-amqplib/php-amqplib": "^2.6",
-        "drupal/core": "8.3.4",
+        "drupal/core": "8.3.5",
         "drupal/ctools": "3.0",
         "drupal/file_entity": "2.0-beta3",
         "drupal/media_entity": "1.6",
