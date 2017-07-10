@@ -19,6 +19,7 @@ dependencies:
   module:
     - datetime
     - ds
+    - options
     - responsive_image
     - text
     - user
@@ -27,8 +28,7 @@ third_party_settings:
   ds:
     layout:
       id: ds_reset
-      path: profiles/cr/modules/contrib/ds
-      library: ''
+      library: null
       disable_css: false
       entity_classes: all_classes
       settings:
@@ -50,6 +50,7 @@ third_party_settings:
         - field_image_caption
         - body
         - 'dynamic_block_field:node-related_news'
+        - field_article_type
     fields:
       'dynamic_block_field:node-related_news':
         plugin_id: 'dynamic_block_field:node-related_news'
@@ -95,6 +96,13 @@ content:
       date_format: 'j F Y'
     third_party_settings: {  }
     region: ds_content
+  field_article_type:
+    type: list_key
+    weight: 8
+    region: ds_content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
   field_image_caption:
     type: string
     weight: 5
@@ -116,15 +124,14 @@ content:
     region: ds_content
   social_links:
     weight: 0
+    region: ds_content
     settings: {  }
     third_party_settings: {  }
-    region: ds_content
 hidden:
   field_article_category: true
   field_article_exclude_aggr: true
   field_article_intro: true
   field_article_meta_tags: true
-  field_article_type: true
   field_meta_tags: true
   links: true
   publishing_date: true
