@@ -29,8 +29,7 @@ function cr_article_field_article_type(FieldStorageDefinitionInterface $definiti
 function cr_article_form_alter(&$form, &$form_state, $form_id) {
   if ($form['#id'] === 'views-exposed-form-what-s-going-on-block-1') {
     // Detect whether to limit by press releases or news articles.
-    $action = $form['#action'] === '/press-releases' || strpos(\Drupal::service('path.current')->getPath(), 'press-releases') !== -1 ? ArticleService::TYPE_PRESS_RELEASE : ArticleService::TYPE_NEWS;
-
+    $action = $form['#action'] === '/press-releases' || strpos(\Drupal::service('path.current')->getPath(), 'press-releases') !== false ? ArticleService::TYPE_PRESS_RELEASE : ArticleService::TYPE_NEWS;
     // Sort the array by value.
     $form['field_article_category_target_id']['#options'] = \Drupal::service('cr.article.article_service')->getArticleTypeAvailableTaxonomies($action);
   }

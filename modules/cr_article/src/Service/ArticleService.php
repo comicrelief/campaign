@@ -45,10 +45,16 @@ class ArticleService {
   /**
    * Get an array of available taxonomy options for an article type.
    * @param $type
+   *
    * @return array
+   * @throws \Exception
    */
   public function getArticleTypeAvailableTaxonomies($type)
   {
+    if ($type !== $this::TYPE_NEWS && $type !== $this::TYPE_PRESS_RELEASE) {
+      throw new \Exception('Article type can only be news or press release');
+    }
+
     // Define the results array.
     $results = array('All' => $this->translationManager->translate('All'));
 
