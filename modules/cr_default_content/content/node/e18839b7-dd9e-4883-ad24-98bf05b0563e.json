@@ -145,7 +145,7 @@
     ],
     "changed": [
         {
-            "value": 1498502913,
+            "value": 1498502801,
             "lang": "en"
         }
     ],
@@ -163,7 +163,7 @@
     ],
     "revision_timestamp": [
         {
-            "value": 1498502913
+            "value": 1498502801
         }
     ],
     "revision_translation_affected": [
@@ -204,7 +204,7 @@
     ],
     "field_article_publish_date": [
         {
-            "value": "2017-06-26"
+            "value": "2017-06-24"
         }
     ],
     "field_article_type": [
