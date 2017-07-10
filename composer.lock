@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "284f5f5356357261989d7e528a75ddad",
+    "content-hash": "6be15fa8f2af58fd67f0132294cd9a74",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3764,17 +3764,17 @@
         },
         {
             "name": "drupal/token",
-            "version": "1.0.0-beta2",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/token",
-                "reference": "8.x-1.0-beta2"
+                "reference": "8.x-1.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/token-8.x-1.0-beta2.zip",
+                "url": "https://ftp.drupal.org/files/projects/token-8.x-1.0.zip",
                 "reference": null,
-                "shasum": "b838318eddf46e4f382489de5516ab916257c393"
+                "shasum": "d24c7f1ffddbd0fc56bc92bacae1c4ff769a4442"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -3785,8 +3785,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-beta2",
-                    "datestamp": "1483290542"
+                    "version": "8.x-1.0",
+                    "datestamp": "1493466843"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -3822,8 +3822,7 @@
             "description": "Provides a user interface for the Token API and some missing core tokens.",
             "homepage": "https://www.drupal.org/project/token",
             "support": {
-                "source": "http://cgit.drupalcode.org/token",
-                "issues": "https://www.drupal.org/project/issues/token"
+                "source": "http://cgit.drupalcode.org/token"
             }
         },
         {
