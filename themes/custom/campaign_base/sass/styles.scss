@@ -9,6 +9,7 @@ $image-path: "/profiles/contrib/cr/themes/custom/campaign_base/images/patternlab
 @import "@comicrelief/pattern-lab/sass/base/_components";
 
 #block-campaign-base-branding {
+  margin-right: auto;
   .site-logo {
     margin-top: -38px;
     min-width: 104px;
