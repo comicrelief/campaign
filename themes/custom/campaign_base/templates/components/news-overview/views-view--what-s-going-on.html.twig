@@ -67,7 +67,8 @@
   {% if articles %}
     <div class="news-landing__content">
       {% for article in articles %}
-      <div class = 'news-landing__item'>
+      {% set article_type_class = 'news-landing__item--' ~ article['#node'].field_article_type[0].value |replace({'releases': 'release'}) %}
+      <div class = "news-landing__item {{ article_type_class }}">
         {{ article }}
       </div>
     {% endfor %}

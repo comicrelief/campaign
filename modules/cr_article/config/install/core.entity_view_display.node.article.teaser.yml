@@ -25,8 +25,7 @@ third_party_settings:
   ds:
     layout:
       id: ds_reset
-      path: profiles/cr/modules/contrib/ds
-      library: ''
+      library: null
       disable_css: false
       entity_classes: all_classes
       settings:
@@ -44,6 +43,7 @@ third_party_settings:
         - field_video_embed
         - field_article_publish_date
         - node_title
+        - field_article_category
     fields:
       node_title:
         plugin_id: node_title
@@ -59,6 +59,14 @@ targetEntityType: node
 bundle: article
 mode: teaser
 content:
+  field_article_category:
+    type: entity_reference_label
+    weight: 4
+    region: ds_content
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
   field_article_image:
     weight: 0
     label: hidden
@@ -134,7 +142,6 @@ content:
     region: ds_content
 hidden:
   body: true
-  field_article_category: true
   field_article_exclude_aggr: true
   field_article_intro: true
   field_article_meta_tags: true

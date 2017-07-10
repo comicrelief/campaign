@@ -375,3 +375,12 @@ function cr_update_8040() {
     $article->save();
   }
 }
+
+/**
+ * Re-install the cr_article configuration to bring in changes to teaser articles display.
+ */
+function cr_update_8041() {
+  // Reinstall the cr_article configuration.
+  \Drupal::service('config.installer')
+    ->installDefaultConfig('module', 'cr_article');
+}
