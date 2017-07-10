@@ -48,7 +48,7 @@ class ArticleService {
   public function getArticleTypeAvailableTaxonomies($type)
   {
     $taxonomy_nids = array();
-    $results = array('All' => 'All');
+    $results = array('All' => $this->translationManager->translate('All'));
 
     // Get all of the article ids for the current page type.
     $articleIds = \Drupal::entityQuery('node')
