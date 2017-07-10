@@ -11,7 +11,7 @@ services:
       - solr
       - selenium
     volumes:
-      - ./:/var/www/html:cached
+      - ./:/var/www/html
 
   solr:
     image: solr:6.3-alpine
@@ -31,7 +31,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: campaign
     ports:
-      - 3306:3306
+      - 3307:3306
     volumes:
       - db-store:/var/lib/mysql
 
