@@ -65,7 +65,7 @@ class ArticleService {
     $query->groupBy('term.tid, term.name');
 
     foreach ($query->execute()->fetchAllAssoc('tid') as $item) {
-      $results[$item->tid] = $this->translationManager->translate($item->name);
+      $results[$item->tid] = $item->name;
     }
 
     // Sort the array by value.
