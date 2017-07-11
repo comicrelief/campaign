@@ -55,9 +55,6 @@ class ArticleService {
       throw new \Exception('Article type can only be news or press release');
     }
 
-    // Define the results array.
-    $results = array('All' => $this->translationManager->translate('All'));
-
     // Define query to get taxonomies on articles by type.
     $query = \Drupal::database()->select('taxonomy_term_field_data', 'term');
     $query->fields('term', ['tid', 'name']);
@@ -70,6 +67,8 @@ class ArticleService {
     $query->condition('field_data.status', '1');
     $query->groupBy('term.tid, term.name');
 
+    // Define the results array.
+    $results = array();
     foreach ($query->execute()->fetchAllAssoc('tid') as $item) {
       $results[$item->tid] = $item->name;
     }
@@ -77,6 +76,6 @@ class ArticleService {
     // Sort the array by value.
     asort($results);
 
-    return $results;
+    return array('All' => $this->translationManager->translate('All')) + $results;
   }
 }
