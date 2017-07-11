@@ -1,0 +1,5 @@
+services:
+  cr.article.article_service:
+    class: Drupal\cr_article\Service\ArticleService
+    arguments:
+      - '@string_translation'

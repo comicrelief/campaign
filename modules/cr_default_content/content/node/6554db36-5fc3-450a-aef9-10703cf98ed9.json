@@ -19,12 +19,7 @@
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_category": [
             {
-                "href": "http:\/\/default\/taxonomy\/term\/17?_format=hal_json"
-            }
-        ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/article\/publishing_date": [
-            {
-                "href": "http:\/\/default\/admin\/content\/scheduled_update\/1?_format=hal_json"
+                "href": "http:\/\/default\/taxonomy\/term\/21?_format=hal_json"
             }
         ]
     },
@@ -40,7 +35,7 @@
     ],
     "vid": [
         {
-            "value": 184
+            "value": 226
         }
     ],
     "langcode": [
@@ -79,7 +74,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "df8032cf-b302-4f00-9397-ded021014c1a"
+                        "value": "fffe9470-e640-4004-a8ea-8da4d90eb6bb"
                     }
                 ],
                 "lang": "en"
@@ -97,7 +92,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "df8032cf-b302-4f00-9397-ded021014c1a"
+                        "value": "fffe9470-e640-4004-a8ea-8da4d90eb6bb"
                     }
                 ]
             }
@@ -106,7 +101,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/taxonomy\/term\/17?_format=hal_json"
+                        "href": "http:\/\/default\/taxonomy\/term\/21?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/article_category"
@@ -114,24 +109,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "9da2fff3-4385-48b6-a2dd-3c598f0a174a"
-                    }
-                ]
-            }
-        ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/article\/publishing_date": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/admin\/content\/scheduled_update\/1?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/scheduled_update\/node_status"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "405adb07-71c3-49e2-8acc-c93f29f7adc7"
+                        "value": "53299a1a-1354-40d1-9b82-d78f13119a7c"
                     }
                 ]
             }
@@ -145,7 +123,7 @@
     ],
     "changed": [
         {
-            "value": 1498501206,
+            "value": 1499697161,
             "lang": "en"
         }
     ],
@@ -163,7 +141,7 @@
     ],
     "revision_timestamp": [
         {
-            "value": 1498501206
+            "value": 1499697161
         }
     ],
     "revision_translation_affected": [
