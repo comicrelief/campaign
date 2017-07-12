@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b9a9f23fda3b3bcf98d56d8c32be92d3",
+    "content-hash": "293f360be277aaa4e319d9403bb9f9b0",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1844,11 +1844,17 @@
         },
         {
             "name": "drupal/entity_browser",
-            "version": "dev-1.x",
+            "version": "1.0.0-alpha6",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/entity_browser",
-                "reference": "77e1860"
+                "reference": "8.x-1.0-alpha6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/entity_browser-8.x-1.0-alpha6.zip",
+                "reference": null,
+                "shasum": "e8397d6ff3902c4018d52e442cd5c3d0859e7aa8"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -1856,8 +1862,6 @@
             "require-dev": {
                 "drupal/ctools": "*",
                 "drupal/inline_entity_form": "*",
-                "drupal/media_entity": "*",
-                "drupal/paragraphs": "*",
                 "drupal/token": "*"
             },
             "type": "drupal-module",
@@ -1867,8 +1871,8 @@
                     "dev-8.x-1.x": "8.1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0+0-dev",
-                    "datestamp": "1492677846"
+                    "version": "8.x-1.0-alpha6",
+                    "datestamp": "1470170039"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -1914,8 +1918,7 @@
                 "source": "http://cgit.drupalcode.org/entity_browser",
                 "issues": "http://drupal.org/project/issues/entity_browser",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
-            },
-            "time": "2016-06-23 14:05:47"
+            }
         },
         {
             "name": "drupal/entity_embed",
@@ -2574,11 +2577,17 @@
         },
         {
             "name": "drupal/media_entity_browser",
-            "version": "dev-1.x",
+            "version": "1.0.0-beta3",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/media_entity_browser",
-                "reference": "1f9a47a"
+                "reference": "8.x-1.0-beta3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/media_entity_browser-8.x-1.0-beta3.zip",
+                "reference": null,
+                "shasum": "f6f9f13bb0aa6bfd0a61667a47ca60c5282341d5"
             },
             "require": {
                 "drupal/core": "~8.0",
@@ -2597,8 +2606,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-beta2+2-dev",
-                    "datestamp": "1487741584"
+                    "version": "8.x-1.0-beta3",
+                    "datestamp": "1487741885"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -2627,8 +2636,7 @@
             "homepage": "https://www.drupal.org/project/media_entity_browser",
             "support": {
                 "source": "http://cgit.drupalcode.org/media_entity_browser"
-            },
-            "time": "2016-06-11 11:27:39"
+            }
         },
         {
             "name": "drupal/media_entity_image",
@@ -9163,8 +9171,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "drupal/media_entity_browser": 20,
-        "drupal/entity_browser": 20,
         "drupal/inline_entity_form": 20,
         "drupal/social_links": 20,
         "drupal/view_mode": 20,
