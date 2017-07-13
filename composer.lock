@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "19b563cd4f50668c8ed26b3750e422e3",
+    "content-hash": "64c3361acc63863ed395a8f2bb725886",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -851,8 +851,8 @@
                     "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-3.0-alpha2+25-dev",
-                    "datestamp": "1496693042"
+                    "version": "8.x-3.0-alpha2+30-dev",
+                    "datestamp": "1499196842"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -2094,6 +2094,109 @@
             }
         },
         {
+            "name": "drupal/fastly",
+            "version": "3.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/fastly",
+                "reference": "8.x-3.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/fastly-8.x-3.2.zip",
+                "reference": null,
+                "shasum": "f2747f7baf3db289a86424c64cc9bf2147edb25d"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-3.x": "3.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-3.2",
+                    "datestamp": "1490641084"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Fastly",
+                    "homepage": "https://www.drupal.org/user/3301349"
+                },
+                {
+                    "name": "Leon Kessler",
+                    "homepage": "https://www.drupal.org/user/595374"
+                },
+                {
+                    "name": "balatin",
+                    "homepage": "https://www.drupal.org/user/2302070"
+                },
+                {
+                    "name": "bradleymgreenwood",
+                    "homepage": "https://www.drupal.org/user/2733843"
+                },
+                {
+                    "name": "drwilco",
+                    "homepage": "https://www.drupal.org/user/3225467"
+                },
+                {
+                    "name": "dwkitchen",
+                    "homepage": "https://www.drupal.org/user/367701"
+                },
+                {
+                    "name": "ebender",
+                    "homepage": "https://www.drupal.org/user/2895513"
+                },
+                {
+                    "name": "ejgreenberg",
+                    "homepage": "https://www.drupal.org/user/3324657"
+                },
+                {
+                    "name": "ezkl",
+                    "homepage": "https://www.drupal.org/user/3009609"
+                },
+                {
+                    "name": "jcpitcho",
+                    "homepage": "https://www.drupal.org/user/2242312"
+                },
+                {
+                    "name": "kimmi8",
+                    "homepage": "https://www.drupal.org/user/3419929"
+                },
+                {
+                    "name": "landing",
+                    "homepage": "https://www.drupal.org/user/994222"
+                },
+                {
+                    "name": "philfastly",
+                    "homepage": "https://www.drupal.org/user/3497097"
+                },
+                {
+                    "name": "robertDouglass",
+                    "homepage": "https://www.drupal.org/user/5449"
+                },
+                {
+                    "name": "vasike",
+                    "homepage": "https://www.drupal.org/user/156237"
+                },
+                {
+                    "name": "vvuksan-fastly",
+                    "homepage": "https://www.drupal.org/user/3520351"
+                }
+            ],
+            "description": "Integration with the Fastly service.",
+            "homepage": "https://www.drupal.org/project/fastly",
+            "support": {
+                "source": "http://cgit.drupalcode.org/fastly"
+            }
+        },
+        {
             "name": "drupal/field_group",
             "version": "1.0.0-rc6",
             "source": {
@@ -2267,8 +2370,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-beta4+13-dev",
-                    "datestamp": "1493220842"
+                    "version": "8.x-1.0-beta4+14-dev",
+                    "datestamp": "1496333042"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
