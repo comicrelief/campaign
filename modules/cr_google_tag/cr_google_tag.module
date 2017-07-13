@@ -11,23 +11,28 @@ use Drupal\Core\Site\Settings;
  * Implements hook_page_attachments().
  */
 function cr_google_tag_page_attachments(array &$attachments) {
-  // @TODO I'm sure that there is a better way to implement this.
-  $env = (empty(Settings::get('environment'))) ? 'dev' : Settings::get('environment');
+  $loggedIn = \Drupal::currentUser()->id() === 0 ? 'N' : 'Y';
+  $env = empty(Settings::get('environment')) ? 'dev' : Settings::get('environment');
+
+  $script = <<<EOS
+var dataLayer = window.dataLayer = window.dataLayer || [];
+dataLayer.push({
+  'site': {
+    'pageCategory': 'content', // content, frost, shop, donate or game.
+    'pageSubCategory': ' ', //optional
+    'environment': '$env'
+  },
+  'user': {
+    'loggedIn': '$loggedIn'
+  }
+});
+EOS;
+
   $attachments['#attached']['html_head'][] = [
     [
       '#type' => 'html_tag',
       '#tag' => 'script',
-      '#value' => "var dataLayer = window.dataLayer = window.dataLayer || [];
-      dataLayer.push({
-        'site': {
-          'pageCategory': 'content', // content, frost, shop, donate or game.
-          'pageSubCategory': ' ', //optional
-          'environment': '" . $env . "'
-        },
-        'user': {
-          'loggedIn': 'N'
-        }
-      });",
+      '#value' => $script,
     ],
     'cr_google_tag',
   ];
