@@ -20,6 +20,7 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
   field_cr_cards_card_reference:
     weight: 4
     settings:
@@ -32,12 +33,14 @@ content:
       match_operator: CONTAINS
     third_party_settings: {  }
     type: inline_entity_form_complex
+    region: content
   field_cr_cards_feature_layout:
     weight: 0
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
+    region: content
   field_cr_cards_title:
     type: string_textfield
     weight: 2
@@ -45,12 +48,14 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
   field_cr_cards_title_hidden:
     weight: 3
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
+    region: content
 hidden:
   created: true
   status: true

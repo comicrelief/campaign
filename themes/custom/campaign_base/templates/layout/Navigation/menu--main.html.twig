@@ -9,8 +9,20 @@
 {% macro menu_links(items, attributes, menu_level) %}
   {% import _self as menus %}
   {% if items %}
-    <ul class="menu menu--level-{{menu_level}}">
+    {% if menu_level == 0 %}
+      <ul{{ attributes.addClass('menu sm main-nav__items menu--level-0') }} id="main-menu" >
+    {% else %}
+      <ul class="menu main-nav__items menu--level-{{menu_level}}">
+        {% if menu_level == 1 %}
+          {# Duplicate menu link for UX, to be populated by JS #}
+          <li class="menu-item menu-item--duplicate">
+            <a href="/">
+            </a>
+          </li>
+        {% endif %}
+    {% endif %}
     {% for item in items %}
+
       {%
         set classes = [
           'menu-item',

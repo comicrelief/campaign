@@ -27,6 +27,7 @@ content:
     weight: 0
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_cw_link_target:
     type: boolean
     weight: 6
@@ -36,12 +37,14 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
+    region: content
   field_teaser_bg_colour:
     weight: 9
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: content
   field_teaser_bg_image:
     weight: 10
     label: above
@@ -51,6 +54,7 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
   field_teaser_image:
     weight: 2
     label: above
@@ -59,6 +63,7 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
+    region: content
   field_teaser_link_address:
     weight: 8
     label: above
@@ -66,12 +71,14 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_teaser_link_colour:
     type: list_default
     weight: 5
     label: above
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_teaser_link_title:
     weight: 3
     label: above
@@ -79,6 +86,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_teaser_you_tube_link:
     type: boolean
     weight: 7
@@ -88,5 +96,6 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
+    region: content
 hidden:
   social_links: true

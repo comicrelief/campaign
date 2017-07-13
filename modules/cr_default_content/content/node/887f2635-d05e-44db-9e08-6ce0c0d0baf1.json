@@ -1,0 +1,193 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/press-releases\/rock-choir-tune-red-nose-day?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/article"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_category": [
+            {
+                "href": "http:\/\/default\/taxonomy\/term\/21?_format=hal_json"
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": 46
+        }
+    ],
+    "uuid": [
+        {
+            "value": "887f2635-d05e-44db-9e08-6ce0c0d0baf1"
+        }
+    ],
+    "vid": [
+        {
+            "value": 224
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "article"
+        }
+    ],
+    "status": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "title": [
+        {
+            "value": "Rock Choir tune up for Red Nose Day",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "fffe9470-e640-4004-a8ea-8da4d90eb6bb"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "fffe9470-e640-4004-a8ea-8da4d90eb6bb"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_category": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/taxonomy\/term\/21?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/article_category"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "53299a1a-1354-40d1-9b82-d78f13119a7c"
+                    }
+                ]
+            }
+        ]
+    },
+    "created": [
+        {
+            "value": 1498746064,
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": 1499697126,
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": false,
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": 1499697126
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<p>Yesterday, Rock Choir, the world\u2019s largest contemporary choir, surprised passengers at city airports across the UK by putting on a series of pop up choir performances to raise funds for this year\u2019s Red Nose Day campaign.<\/p>\r\n\r\n<p>British Airways\u2019 customers arriving at London Heathrow, Leeds Bradford, and Glasgow International airports, were treated to an hour of some of the nation\u2019s favourite songs performed by local members of Rock Choir.<\/p>\r\n\r\n<p>One of this year\u2019s iconic noses, DJ Boogie, also came out to surprise arriving guests as he joined in the singing fun at Heathrow T5.<\/p>\r\n",
+            "format": "full_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ],
+    "field_article_exclude_aggr": [
+        {
+            "value": false
+        }
+    ],
+    "field_article_intro": [
+        {
+            "value": "<p>Yesterday, Rock Choir, the world\u2019s largest contemporary choir, surprised passengers at city airports across the UK by putting on a series of pop up choir performances to raise funds for this year\u2019s Red Nose Day campaign<\/p>\r\n",
+            "format": "full_html"
+        }
+    ],
+    "field_article_meta_tags": [
+        {
+            "value": "a:0:{}"
+        }
+    ],
+    "field_article_publish_date": [
+        {
+            "value": "2017-06-29"
+        }
+    ],
+    "field_article_type": [
+        {
+            "value": "press-releases"
+        }
+    ]
+}

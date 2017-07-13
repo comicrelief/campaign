@@ -22,6 +22,11 @@
             "value": "en"
         }
     ],
+    "type": [
+        {
+            "target_id": "image"
+        }
+    ],
     "filename": [
         {
             "value": "Bake off content wall image.jpg"
@@ -55,11 +60,6 @@
     "changed": [
         {
             "value": "1455708352"
-        }
-    ],
-    "type": [
-        {
-            "target_id": "image"
         }
     ],
     "data": [

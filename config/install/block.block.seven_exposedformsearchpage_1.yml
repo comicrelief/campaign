@@ -1,14 +1,16 @@
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - views.view.search
   module:
     - views
-id: exposedformsearchpage_1
-theme: campaign_base
-region: content
-weight: -7
+  theme:
+    - seven
+id: seven_exposedformsearchpage_1
+theme: seven
+region: header
+weight: -6
 provider: null
 plugin: 'views_exposed_filter_block:search-page_1'
 settings:

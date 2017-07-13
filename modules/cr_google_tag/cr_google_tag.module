@@ -17,16 +17,17 @@ function cr_google_tag_page_attachments(array &$attachments) {
     [
       '#type' => 'html_tag',
       '#tag' => 'script',
-      '#value' => "var dataLayer = [{
+      '#value' => "var dataLayer = window.dataLayer = window.dataLayer || [];
+      dataLayer.push({
         'site': {
-          'category': 'content', // content, frost, shop, donate or game.
-          'subcategory': ' ', //optional
+          'pageCategory': 'content', // content, frost, shop, donate or game.
+          'pageSubCategory': ' ', //optional
           'environment': '" . $env . "'
         },
         'user': {
-          'logged': 'N'
+          'loggedIn': 'N'
         }
-      }];",
+      });",
     ],
     'cr_google_tag',
   ];

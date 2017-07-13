@@ -24,11 +24,13 @@ content:
       allow_existing: true
       match_operator: CONTAINS
     third_party_settings: {  }
+    region: content
   field_cw_view_mode:
     type: options_select
     weight: 1
     settings: {  }
     third_party_settings: {  }
+    region: content
   info:
     type: string_textfield
     weight: 0
@@ -36,4 +38,5 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
 hidden: {  }

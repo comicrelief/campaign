@@ -50,12 +50,14 @@ content:
     weight: 3
     settings: {  }
     third_party_settings: {  }
+    region: ds_content
   field_cr_iframe_embedded_bg:
     weight: 4
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: ds_content
   field_cr_iframe_embedded_image:
     weight: 1
     label: hidden
@@ -64,6 +66,7 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
+    region: ds_content
   field_cr_iframe_embedded_link:
     weight: 2
     label: hidden
@@ -71,12 +74,14 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: ds_content
   field_cr_iframe_layout:
     weight: 5
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: ds_content
   field_cr_iframe_load:
     weight: 0
     label: hidden
@@ -86,5 +91,6 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: ds_content
 hidden:
   social_links: true

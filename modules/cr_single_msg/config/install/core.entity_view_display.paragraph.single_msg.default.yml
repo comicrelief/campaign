@@ -26,18 +26,21 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: content
   field_single_msg_body:
     weight: 6
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
   field_single_msg_body_bg_colour:
     weight: 5
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: content
   field_single_msg_hide_title:
     weight: 1
     label: above
@@ -47,6 +50,7 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
   field_single_msg_img:
     weight: 4
     label: hidden
@@ -79,18 +83,21 @@ content:
       grid_small: 0
     third_party_settings: {  }
     type: blazy
+    region: content
   field_single_msg_layout_variant:
     weight: 3
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: content
   field_single_msg_padding_option:
     weight: 7
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: content
   field_single_msg_title:
     weight: 0
     label: hidden
@@ -98,6 +105,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
 hidden:
   created: true
   social_links: true

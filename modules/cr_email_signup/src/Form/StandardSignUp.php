@@ -39,7 +39,7 @@ class StandardSignUp extends SignUp {
    */
   protected function esuSubmitFields() {
     $form = parent::esuSubmitFields();
-    $form['step2'] = [
+    $form[$this->getFormId() . '_step2'] = [
       '#type' => 'button',
       '#name' => 'step2',
       '#value' => $this->t('Go'),

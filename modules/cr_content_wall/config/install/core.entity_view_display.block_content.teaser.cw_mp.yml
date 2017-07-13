@@ -57,6 +57,7 @@ content:
     weight: 0
     settings: {  }
     third_party_settings: {  }
+    region: ds_content
   field_cw_link_target:
     type: boolean
     weight: 8
@@ -66,12 +67,14 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
+    region: ds_content
   field_teaser_bg_colour:
     type: list_default
     weight: 1
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    region: ds_content
   field_teaser_bg_image:
     type: boolean
     weight: 9
@@ -81,6 +84,7 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
+    region: ds_content
   field_teaser_image:
     weight: 3
     label: hidden
@@ -113,6 +117,7 @@ content:
       grid_small: 0
     third_party_settings: {  }
     type: blazy
+    region: ds_content
   field_teaser_link_address:
     type: string
     weight: 5
@@ -120,12 +125,14 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    region: ds_content
   field_teaser_link_colour:
     type: list_default
     weight: 6
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    region: ds_content
   field_teaser_link_title:
     type: string
     weight: 4
@@ -133,6 +140,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    region: ds_content
   field_teaser_you_tube_link:
     type: boolean
     weight: 7
@@ -142,5 +150,6 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
+    region: ds_content
 hidden:
   social_links: true

@@ -2,15 +2,32 @@ Feature: Article
   This feature covers news articles
 
   @api @default-content
-  Scenario: Article linking through from /whats-going-on
-    Given I am on "whats-going-on"
+  Scenario: Article linking through from /press-releases
+    Given I am on "press-releases"
+    And I should see the link "Domestic abuse calls at all time high"
+    Then I follow "Domestic abuse calls at all time high"
+    And I should see the text "As Red Nose Day approaches, Comic Relief is shining a light"
+
+  @api @default-content
+  Scenario: Article pagination on /press-releases
+    Given I am on "press-releases"
+    And I click "››"
+    And I wait for 3 seconds
+    Then I should see the link "Comic Relief and big lottery fund partner with cities alliance"
+    And I click "‹‹"
+    And I wait for 3 seconds
+    Then I should see the link "Domestic abuse calls at all time high"
+
+  @api @default-content
+  Scenario: Article linking through from /news
+    Given I am on "news"
     And I should see the link "Four down – one to go!"
     Then I follow "Four down – one to go!"
     And I should see the text "Greg James struggled on the penultimate day of Gregathlon"
 
   @api @default-content
-  Scenario: Article pagination on /whats-going-on
-    Given I am on "whats-going-on"
+  Scenario: Article pagination on /news
+    Given I am on "news"
     And I click "››"
     And I wait for 3 seconds
     Then I should see the link "British Triathlon cheers Greg James on"
@@ -21,19 +38,18 @@ Feature: Article
   @api @default-content
   Scenario: News page /yplan-partners-sport-relief
     Given I am logged in as a user with the "editor" role
-    And I am on "/news-tv-and-events/news/yplan-partners-sport-relief"
+    And I am on "/news/yplan-partners-sport-relief"
     And I follow "Edit"
-    And I wait for 3 seconds
     And I enter "YPlan partners with Comic Relief" for "edit-title-0-value"
     And press "Save"
-    And I go to "/news-tv-and-events/news/yplan-partners-sport-relief"
+    And I go to "/news/yplan-partners-sport-relief"
     Then I should see the text "YPlan partners with Comic Relief"
-    And I go to "/news-tv-and-events/news/yplan-partners-comic-relief"
+    And I go to "/news/yplan-partners-comic-relief"
     Then I should see the text "YPlan partners with Comic Relief"
 
   @api @default-content
   Scenario: Check metatags for articles
-    Given I am on "news-tv-and-events/news/greg-james-begins-his-gregathlon-sport-relief"
+    Given I am on "/news/greg-james-begins-his-gregathlon-sport-relief"
     Then the metatag attribute "title" should contain the value "Greg James begins his Gregathlon for Sport Relief"
     And the metatag property "og:title" should contain the value "Greg James begins his Gregathlon for Sport Relief"
     And the metatag property "og:type" should have the value "article"
@@ -41,13 +57,14 @@ Feature: Article
     And the metatag attribute "description" should contain the value "Greg James has set off on the first of his five triathlons for BBC Radio"
     And the metatag property "og:description" should contain the value "Greg James has set off on the first of his five triathlons for BBC Radio"
     And the metatag property "og:image" should contain the value "news/2016-02/greg_james_gregathlon_belfast_and_so_it_begins"
-    And the metatag property "og:url" should contain the value "news-tv-and-events/news/greg-james-begins-his-gregathlon-sport-relief"
+    And the metatag property "og:url" should contain the value "/news/greg-james-begins-his-gregathlon-sport-relief"
 
   @api @javascript
   Scenario: Create news articles using scheduled updates
     Given I am logged in as a user with the "editor" role
     And I am on "node/add/article"
     And I enter "Test Scheduled article" for "edit-title-0-value"
+    And I select "News" from "edit-field-article-type"
     And I press "Add new Publishing Date"
     And I wait for AJAX loading to finish
     Then I should see "Update Date/time"
@@ -74,7 +91,7 @@ Feature: Article
     And the cache has been cleared
     # logout and see the article loaded
     Given I am not logged in
-    And I am on "news-tv-and-events/news/test-scheduled-article"
+    And I am on "news/test-scheduled-article"
     Then I should see "Test Scheduled article"
 
   @api
@@ -82,6 +99,7 @@ Feature: Article
     Given a "category" term with the name "Fundraising"
     When I am viewing a "article" content:
       | title                  | Comic Relief raises £1bn over 30-year existence                                                   |
+      | field_article_type     | News                                                                                              |
       | field_article_intro    | Since the charity was founded 30 years ago, with more than £78m raised.                           |
       | body                   | Comic Relief founder Richard Curtis said he was "enormously proud" of the charity's achievements. |
       | field_article_image    | profiles/contrib/cr/tests/behat/files/400x4:3.png                                                 |
@@ -92,6 +110,7 @@ Feature: Article
     And I should not see "£78m raised"
     And I am viewing a "article" content:
       | title                      | Celebrities come together for a stellar Night of TV for Sport Relief                                                                                            |
+      | field_article_type         | News                                                                                                                                                                |
       | field_article_publish_date | 2015-02-08 17:45:00                                                                                                                                             |
       | field_article_intro        | Audiences across the UK are in for a night of first-class entertainment.                                                                                        |
       | body                       | A one-off Luther special will be screened, with Idris Elba starring alongside Lenny Henry, Rio Ferdinand, Denise Lewis, Louis Smith, Ian Wright and David Haye. |

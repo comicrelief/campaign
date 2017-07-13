@@ -1,0 +1,193 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/press-releases\/catrina-and-pals-recreate-classic-meme-comic-relief?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/article"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_category": [
+            {
+                "href": "http:\/\/default\/taxonomy\/term\/20?_format=hal_json"
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": 47
+        }
+    ],
+    "uuid": [
+        {
+            "value": "a17aaf61-56b9-43ee-9aee-9557f4ed4b29"
+        }
+    ],
+    "vid": [
+        {
+            "value": 219
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "article"
+        }
+    ],
+    "status": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "title": [
+        {
+            "value": "Catrina and pals recreate classic meme for Comic Relief",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "fffe9470-e640-4004-a8ea-8da4d90eb6bb"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "fffe9470-e640-4004-a8ea-8da4d90eb6bb"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_category": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/taxonomy\/term\/20?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/article_category"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "840a0b20-1bab-4797-b148-22fe17980717"
+                    }
+                ]
+            }
+        ]
+    },
+    "created": [
+        {
+            "value": 1498746136,
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": 1499697024,
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": false,
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": 1499697024
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<p>As part of a brand new series of online sketches, viral hit Catrina and the rest of the brightly coloured Pink Windmill brigade have recreated the classic dance routine that took the internet by storm. Brimming with the enthusiasm of her former self, Catrina, now aged 48, flew all the way from Australia to take part in the film, with the studio set and its sickly pink decor lovingly recreated for the occasion.<\/p>\r\n\r\n<p>Catrina Hylton said: \u201cHi, my names Catrina...and I had an absolute blast recreating the dance for Red Nose Day. The set was amazing and actually made me quite emotional because it was so reminiscent of the original.\"<\/p>\r\n\r\n<p>Joe Greco (46) said: \"And I'm Joe to you. It felt like I time travelled back to 1984...only the clothes were a bit tighter this time! I'm so happy we could do this for Comic Relief.\"<\/p>\r\n",
+            "format": "full_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ],
+    "field_article_exclude_aggr": [
+        {
+            "value": false
+        }
+    ],
+    "field_article_intro": [
+        {
+            "value": "<p>As part of a brand new series of online sketches, viral hit Catrina and the rest of the brightly coloured Pink Windmill brigade have recreated the classic dance routine that took the internet by storm. Brimming with the enthusiasm of her former self, Catrina, now aged 48, flew all the way from Australia to take part in the film, with the studio set and its sickly pink decor lovingly recreated for the occasion.<\/p>\r\n",
+            "format": "full_html"
+        }
+    ],
+    "field_article_meta_tags": [
+        {
+            "value": "a:0:{}"
+        }
+    ],
+    "field_article_publish_date": [
+        {
+            "value": "2017-06-29"
+        }
+    ],
+    "field_article_type": [
+        {
+            "value": "press-releases"
+        }
+    ]
+}

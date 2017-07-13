@@ -14,9 +14,9 @@ third_party_settings:
   ds:
     layout:
       id: ds_reset
-      path: profiles/cr/modules/contrib/ds
-      library: ''
+      library: null
       disable_css: false
+      entity_classes: all_classes
       settings:
         wrappers:
           ds_content: div
@@ -29,6 +29,7 @@ third_party_settings:
     regions:
       ds_content:
         - field_media_reference
+        - social_links
         - field_media_reference_body
         - field_media_reference_bg
 id: block_content.media_reference.default
@@ -44,6 +45,7 @@ content:
       view_mode: default
     third_party_settings: {  }
     type: entity_reference_entity_view
+    region: ds_content
   field_media_reference_bg:
     weight: 2
     label: hidden
@@ -52,14 +54,17 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
+    region: ds_content
   field_media_reference_body:
     weight: 1
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: ds_content
   social_links:
     weight: 0
+    region: ds_content
     settings: {  }
     third_party_settings: {  }
 hidden: {  }

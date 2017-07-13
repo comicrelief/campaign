@@ -15,9 +15,9 @@ body {
 
 /* logo header */
 .block-system-branding-block {
-  position: absolute;
   z-index: 100;
   top: 0;
+  left: 0;
 }
 header[role=banner] {
   height: 129px;
@@ -169,11 +169,14 @@ main {
     padding-bottom: 60px;
   }
 }
+
 // Paragraphs
 
+.paragraph {
+  overflow: hidden;
+}
 .paragraph--type-feature-articles {
   padding: 30px 0;
-  overflow: hidden;
   @include breakpoint($screen-md) {
     padding: 60px 30px;
   }

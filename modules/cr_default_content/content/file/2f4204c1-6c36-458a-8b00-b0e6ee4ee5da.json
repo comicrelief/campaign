@@ -22,6 +22,11 @@
             "value": "en"
         }
     ],
+    "type": [
+        {
+            "target_id": "image"
+        }
+    ],
     "filename": [
         {
             "value": "this_stuff_works_louise_bedroom.jpg"
@@ -55,11 +60,6 @@
     "changed": [
         {
             "value": "1455020831"
-        }
-    ],
-    "type": [
-        {
-            "target_id": "image"
         }
     ],
     "data": [

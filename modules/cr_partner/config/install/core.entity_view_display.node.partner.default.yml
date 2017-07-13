@@ -28,6 +28,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_partner_external:
     weight: 7
     label: above
@@ -37,6 +38,7 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
   field_partner_logo:
     type: responsive_image
     weight: 0
@@ -45,12 +47,14 @@ content:
       responsive_image_style: ''
       image_link: ''
     third_party_settings: {  }
+    region: content
   field_partner_meta_tags:
     weight: 6
     label: above
     settings: {  }
     third_party_settings: {  }
     type: metatag_empty_formatter
+    region: content
   field_partner_website:
     type: link
     weight: 3
@@ -62,19 +66,23 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
+    region: content
   field_partner_weight:
     weight: 8
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: content
   links:
     weight: 1
     settings: {  }
     third_party_settings: {  }
+    region: content
   social_links:
     weight: 4
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden:
   field_partner_category: true

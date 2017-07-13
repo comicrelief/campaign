@@ -15,9 +15,9 @@ third_party_settings:
   ds:
     layout:
       id: ds_reset
-      path: profiles/cr/modules/contrib/ds
-      library: ''
+      library: null
       disable_css: false
+      entity_classes: all_classes
       settings:
         wrappers:
           ds_content: div
@@ -34,6 +34,7 @@ third_party_settings:
         - field_cr_cards_title
         - field_cr_cards_title_hidden
         - field_cr_cards_card_reference
+        - social_links
 id: paragraph.cr_cards.default
 targetEntityType: paragraph
 bundle: cr_cards
@@ -48,12 +49,14 @@ content:
       past_format: '@interval ago'
       granularity: 2
     third_party_settings: {  }
+    region: content
   field_cr_cards_background:
     weight: 1
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: ds_content
   field_cr_cards_card_reference:
     weight: 4
     label: hidden
@@ -62,6 +65,7 @@ content:
       view_mode: default
     third_party_settings: {  }
     type: entity_reference_entity_view
+    region: ds_content
   field_cr_cards_feature_layout:
     weight: 0
     label: hidden
@@ -71,6 +75,7 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: ds_content
   field_cr_cards_title:
     type: string
     weight: 2
@@ -78,6 +83,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    region: ds_content
   field_cr_cards_title_hidden:
     weight: 3
     label: hidden
@@ -87,8 +93,10 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: ds_content
   social_links:
     weight: 5
+    region: ds_content
     settings: {  }
     third_party_settings: {  }
   uid:
@@ -97,4 +105,5 @@ content:
     label: above
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden: {  }

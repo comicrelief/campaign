@@ -12,5 +12,3 @@ config_devel:
   - search_api.server.solr
   - search_api.index.solr_content
   - views.view.search
-  - block.block.exposedformsearchpage_1
-  - block.block.seven_exposedformsearchpage_1

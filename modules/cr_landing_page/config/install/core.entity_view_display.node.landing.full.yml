@@ -69,12 +69,14 @@ content:
     weight: 9
     settings: {  }
     third_party_settings: {  }
+    region: ds_content
   field_landing_background_colour:
     type: list_default
     weight: 1
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    region: ds_content
   field_landing_background_video:
     type: entity_reference_entity_view
     weight: 0
@@ -83,12 +85,14 @@ content:
       view_mode: file_source
       link: false
     third_party_settings: {  }
+    region: ds_content
   field_landing_copy_position_alig:
     type: list_default
     weight: 2
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    region: ds_content
   field_landing_feature_layout:
     type: boolean
     weight: 3
@@ -98,6 +102,7 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
+    region: ds_content
   field_landing_image:
     weight: 4
     label: hidden
@@ -106,6 +111,7 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
+    region: ds_content
   field_landing_image_mobile:
     type: entity_reference_entity_view
     weight: 5
@@ -114,6 +120,7 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
+    region: ds_content
   field_landing_small_bg:
     type: boolean
     weight: 6
@@ -123,6 +130,7 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
+    region: ds_content
   field_paragraphs:
     type: entity_reference_revisions_entity_view
     weight: 10
@@ -131,12 +139,14 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    region: ds_content
   field_svg_body_title:
     type: basic_string
     weight: 7
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    region: ds_content
 hidden:
   field_landing_meta_tags: true
   links: true

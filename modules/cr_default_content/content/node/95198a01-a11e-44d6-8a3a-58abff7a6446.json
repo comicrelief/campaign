@@ -1,7 +1,7 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/whats-going-on\/yplan-partners-sport-relief?_format=hal_json"
+            "href": "http:\/\/default\/news\/yplan-partners-sport-relief?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/article"
@@ -41,7 +41,7 @@
     ],
     "vid": [
         {
-            "value": "85"
+            "value": "165"
         }
     ],
     "langcode": [
@@ -74,7 +74,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "25e20f14-b099-4b63-baff-71a3990d724d"
+                        "value": "260a25a1-ea38-4d4a-90a5-9889b9d4fd8b"
                     }
                 ],
                 "lang": "en"
@@ -92,7 +92,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "6e57ea06-d780-43c2-8bfb-2736363bdab0"
+                        "value": "2a764c34-028e-4837-b6db-0eaab7e37ccb"
                     }
                 ]
             }
@@ -151,7 +151,7 @@
     ],
     "changed": [
         {
-            "value": "1476267685",
+            "value": "1497455866",
             "lang": "en"
         }
     ],
@@ -169,7 +169,7 @@
     ],
     "revision_timestamp": [
         {
-            "value": "1476267685"
+            "value": "1497455866"
         }
     ],
     "revision_translation_affected": [
@@ -192,6 +192,11 @@
             "lang": "en"
         }
     ],
+    "field_article_exclude_aggr": [
+        {
+            "value": "0"
+        }
+    ],
     "field_article_meta_tags": [
         {
             "value": "a:0:{}"
@@ -200,6 +205,11 @@
     "field_article_publish_date": [
         {
             "value": "2016-02-16"
+        }
+    ],
+    "field_article_type": [
+        {
+            "value": "news"
         }
     ]
 }

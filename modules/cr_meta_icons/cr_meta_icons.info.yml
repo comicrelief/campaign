@@ -7,7 +7,3 @@ package: Comic Relief
 dependencies:
   - node
   - block
-
-config_devel:
-  - block.block.metaiconsblock
-  - block.block.seven_metaiconsblock

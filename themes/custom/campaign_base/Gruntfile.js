@@ -74,7 +74,11 @@ module.exports = function (grunt) {
           separator: ';',
       },
       dist: {
-          src: ['scripts/{,**/}*.js'],
+          src: [
+            // Import specific component js
+            'node_modules/@comicrelief/pattern-lab/sass/base/components/navigation/js/main-nav.js',
+            // Drupal-specific custom js
+            'scripts/{,**/}*.js'],
           dest: 'js/campaign_base.js',
       },
     },
@@ -105,7 +109,7 @@ module.exports = function (grunt) {
       },
       sass: {
         files: ['sass/sass/{,**/}*.{scss,sass}'],
-        tasks: ['sass'],
+        tasks: ['sass','postcss:dist'],
         options: {
           // Start a live reload server on the default port 35729
           livereload: true
@@ -157,6 +161,19 @@ module.exports = function (grunt) {
     // * add backstopjs
     clean: {
       build: ['tests/visual/reference']
+    },
+
+    postcss: {
+      options: {
+        map: true,
+          processors: [
+            require('autoprefixer')
+          ]
+      },
+      
+      dist: {
+        src: ['css/styles.css', 'css/ie8.css', 'css/layout.css']
+      }
     }
   });
 
@@ -170,7 +187,8 @@ module.exports = function (grunt) {
     'uglify',
     'modernizr',
     'kss',
-    'imagemin'
+    'imagemin',
+    'postcss:dist'
   ]);
 
   grunt.registerTask('watch:dev', [

@@ -15,8 +15,7 @@ third_party_settings:
   ds:
     layout:
       id: ds_reset
-      path: profiles/cr/modules/contrib/ds
-      library: ''
+      library: null
       disable_css: false
       entity_classes: all_classes
       settings:
@@ -42,6 +41,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    region: ds_content
 hidden:
   created: true
   field_cr_downloadables_body: true

@@ -9,7 +9,7 @@
     },
     "tid": [
         {
-            "value": "14"
+            "value": 14
         }
     ],
     "uuid": [
@@ -36,18 +36,18 @@
     ],
     "weight": [
         {
-            "value": "4"
+            "value": 4
         }
     ],
     "changed": [
         {
-            "value": "1475675701",
+            "value": 1475675701,
             "lang": "en"
         }
     ],
     "default_langcode": [
         {
-            "value": "1",
+            "value": true,
             "lang": "en"
         }
     ]

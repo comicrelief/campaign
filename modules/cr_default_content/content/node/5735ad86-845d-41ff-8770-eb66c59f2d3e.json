@@ -1,0 +1,193 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/press-releases\/vamps-go-back-school-sport-relief?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/article"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_category": [
+            {
+                "href": "http:\/\/default\/taxonomy\/term\/22?_format=hal_json"
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": 52
+        }
+    ],
+    "uuid": [
+        {
+            "value": "5735ad86-845d-41ff-8770-eb66c59f2d3e"
+        }
+    ],
+    "vid": [
+        {
+            "value": 218
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "article"
+        }
+    ],
+    "status": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "title": [
+        {
+            "value": "The Vamps go back to school for Sport Relief",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "fffe9470-e640-4004-a8ea-8da4d90eb6bb"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "fffe9470-e640-4004-a8ea-8da4d90eb6bb"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_category": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/taxonomy\/term\/22?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/article_category"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "0d437384-eafe-444c-9c8c-89d727deaad7"
+                    }
+                ]
+            }
+        ]
+    },
+    "created": [
+        {
+            "value": 1498746545,
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": 1499697004,
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": false,
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": 1499697004
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<p>As the whole nation bends and stretches into shape for Sport Relief, British pop rock band, The Vamps, went back to lead singer Brad Simpson\u2019s old school in Sutton Coldfield to kick start their 2016 fundraising effort.<\/p>\r\n\r\n<p>The \u2018Can We Dance\u2019 and \u2018Oh Cecilia\u2019 stars took part in re-vamped sports day activities with pupils of Fairfax School in preparation for their Sport Relief Mile on Friday 18th March.<\/p>\r\n\r\n<p>Connor acted as referee with Brad, James and Tristan joining in with \u2018Hungry Human Hippos\u2019 and balloon races to encourage schools across the West Midlands and the rest of the UK to do their bit to make themselves proud, join in the fun and games and fundraise.<\/p>\r\n",
+            "format": "full_html",
+            "summary": "",
+            "lang": "en"
+        }
+    ],
+    "field_article_exclude_aggr": [
+        {
+            "value": false
+        }
+    ],
+    "field_article_intro": [
+        {
+            "value": "<p>As the whole nation bends and stretches into shape for Sport Relief, British pop rock band, The Vamps, went back to lead singer Brad Simpson\u2019s old school in Sutton Coldfield to kick start their 2016 fundraising effort.<\/p>\r\n",
+            "format": "full_html"
+        }
+    ],
+    "field_article_meta_tags": [
+        {
+            "value": "a:0:{}"
+        }
+    ],
+    "field_article_publish_date": [
+        {
+            "value": "2017-06-29"
+        }
+    ],
+    "field_article_type": [
+        {
+            "value": "press-releases"
+        }
+    ]
+}

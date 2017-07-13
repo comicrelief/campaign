@@ -7,8 +7,6 @@ dependencies:
     - field.field.paragraph.feature_articles.field_feature_articles_title
     - field.field.paragraph.feature_articles.field_feature_articles_titlehide
     - paragraphs.paragraphs_type.feature_articles
-_core:
-  default_config_hash: hR8Z1mN522V1vWJS8KgQIgwos1iH-i4wZYLT_QJJI2g
 id: paragraph.feature_articles.default
 targetEntityType: paragraph
 bundle: feature_articles
@@ -19,11 +17,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
   field_feature_articles_taxonomy:
     weight: 2
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
   field_feature_articles_title:
     weight: 0
     settings:
@@ -31,12 +31,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_feature_articles_titlehide:
     weight: 1
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
+    region: content
 hidden:
   created: true
   status: true
