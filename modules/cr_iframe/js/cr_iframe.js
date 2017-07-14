@@ -7,18 +7,13 @@
  * Sizes an iframe based on requests from child iframe
  */
 var iframeSizer = (function () {
-
-  var module = {}, eventMethod, eventer, messageEvent;
+  var module = {}, eventMethod;
 
   /**
    * On module initialisation.
    */
   module.init = function() {
     eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
-    eventer = window[eventMethod];
-
-    messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
-
     module.sizingListener();
   };
 
@@ -26,7 +21,7 @@ var iframeSizer = (function () {
    * Module sizing listener.
    */
   module.sizingListener = function() {
-    eventer(messageEvent, function (e) {
+    window[eventMethod](eventMethod == "attachEvent" ? "onmessage" : "message", function (e) {
       try {
         var json = JSON.parse(e.data);
         if (typeof json.iframe_height !== 'undefned') {
@@ -40,7 +35,6 @@ var iframeSizer = (function () {
   };
 
   return module;
-
 }());
 
 // Initialise the IFrame sizer
