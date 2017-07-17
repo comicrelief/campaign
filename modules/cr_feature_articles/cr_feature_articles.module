@@ -40,6 +40,6 @@ function cr_feature_articles_preprocess_ds_entity_view(array &$variables) {
     $variables['content']['articles'] = \Drupal::service('cr.feature_articles.taxonomy_service')
       ->getArticleNodesByTermId($tid);
     // Add node and teaser cache tags.
-    $variables['#csache']['tags'][] = 'node_list';
+    $variables['#cache']['tags'][] = 'node_list';
   }
 }
