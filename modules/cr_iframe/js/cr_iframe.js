@@ -27,6 +27,7 @@ var iframeSizer = (function () {
         if (typeof json.iframe_height !== 'undefned') {
           document.querySelectorAll('.iframe-block iframe').forEach(function(element) {
             element.style.height = json.iframe_height + 'px';
+            element.scrolling = 'no';
           });
         }
       }
