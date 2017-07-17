@@ -31,7 +31,8 @@ function cr_feature_articles_preprocess_ds_entity_view(array &$variables) {
     $tid = null;
 
     // If the category is set, then get tid.
-    if ($variables['content']['field_feature_articles_taxonomy'][0]['#url']) {
+    if (isset($variables['content']['field_feature_articles_taxonomy'][0]) &&
+      $variables['content']['field_feature_articles_taxonomy'][0]['#url']) {
       $tid = $variables['content']['field_feature_articles_taxonomy'][0]['#url']
         ->getRouteParameters()['taxonomy_term'];
     }
@@ -39,6 +40,6 @@ function cr_feature_articles_preprocess_ds_entity_view(array &$variables) {
     $variables['content']['articles'] = \Drupal::service('cr.feature_articles.taxonomy_service')
       ->getArticleNodesByTermId($tid);
     // Add node and teaser cache tags.
-    $variables['#cache']['tags'][] = 'node_list';
+    $variables['#csache']['tags'][] = 'node_list';
   }
 }
