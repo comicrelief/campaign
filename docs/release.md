@@ -10,4 +10,4 @@ Alternatively, you can do it manually from your IDE, terminal, etc.. as long as 
 
 Then you need to create a PR from `develop` to `master` and copy the output/changelog to the description.
 
-Once this is reviewed and merged, you need to [create a tag from `master`](https://github.com/comicrelief/campaign/releases) and paste  the changelog.
+Once this is reviewed and merged, you need to [create a tag from `master`](https://github.com/comicrelief/campaign/releases) and paste the changelog.
