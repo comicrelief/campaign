@@ -1,6 +1,47 @@
 /**
- * @file
+ * @file cr_iframe.js
  */
+
+/**
+ * IFrame sizer module
+ * Sizes an iframe based on requests from child iframe
+ */
+var iframeSizer = (function () {
+  var module = {}, eventMethod;
+
+  /**
+   * On module initialisation.
+   */
+  module.init = function() {
+    eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+    module.sizingListener();
+  };
+
+  /**
+   * Module sizing listener.
+   */
+  module.sizingListener = function() {
+    window[eventMethod](eventMethod == "attachEvent" ? "onmessage" : "message", function (e) {
+      try {
+        var json = JSON.parse(e.data);
+        if (typeof json.iframe_height !== 'undefned') {
+          var iframes = document.getElementsByClassName('iframe-resizable');
+          for(var i = 0; i < iframes.length; i++)
+          {
+            iframes[i].style.height = json.iframe_height + 'px';
+            iframes[i].scrolling = 'no';
+          }
+        }
+      }
+      catch(e) {}
+    }, false);
+  };
+
+  return module;
+}());
+
+// Initialise the IFrame sizer
+iframeSizer.init();
 
 (function ($) {
   $(document).ready(function () {
