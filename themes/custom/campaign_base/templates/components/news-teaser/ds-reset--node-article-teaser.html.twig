@@ -6,25 +6,27 @@
 #}
 {% set category_class = 'article-teaser--' ~ content.field_article_category[0]['#title'] | replace({' ' : ''}) | lower %}
 <article class="article-teaser {{ category_class }}">
-    {% if field_article_image['#items'] %}
+    <a href="{{ path('entity.node.canonical', {'node': node.id}) }}">
+        {% if field_article_image['#items'] %}
         <div class="article-teaser__image">
             {{ field_article_image }}
         </div>
-    {% elseif field_video_embed['#items'] %}
+        {% elseif field_video_embed['#items'] %}
         <div class="article-teaser__video">
             {{ field_video_embed }}
         </div>
-    {% else %}
+        {% else %}
         <div class="article-teaser__image">
             <img src="{{ campaign_base_path }}images/backgrounds/article_d_img.jpg">
         </div>
-    {% endif %}
-    <div class="article-teaser__content-wrapper">
-        <div class="article-teaser__content">
-	        <span class="article-teaser__date">
-	     	    {{ field_article_publish_date }}
-		    </span>
-            {{ node_title }}
+        {% endif %}
+        <div class="article-teaser__content-wrapper">
+            <div class="article-teaser__content">
+                <span class="article-teaser__date">
+                    {{ field_article_publish_date }}
+                </span>
+                {{ node_title }}
+            </div>
         </div>
-    <div>
+    </a>
 </article>
