@@ -7,6 +7,7 @@ dependencies:
     - field.field.block_content.cr_iframe_embedded.field_cr_iframe_embedded_bg
     - field.field.block_content.cr_iframe_embedded.field_cr_iframe_embedded_image
     - field.field.block_content.cr_iframe_embedded.field_cr_iframe_embedded_link
+    - field.field.block_content.cr_iframe_embedded.field_cr_iframe_initial_height
     - field.field.block_content.cr_iframe_embedded.field_cr_iframe_layout
     - field.field.block_content.cr_iframe_embedded.field_cr_iframe_load
     - image.style.thumbnail
@@ -48,6 +49,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
+  field_cr_iframe_initial_height:
+    weight: 26
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
     region: content
   field_cr_iframe_layout:
     weight: 1
