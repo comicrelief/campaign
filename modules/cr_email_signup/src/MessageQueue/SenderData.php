@@ -14,7 +14,6 @@ class SenderData extends Sender {
     $message['transSourceURL'] = \Drupal::request()->getHost() . $current_alias;
     $message['transSource'] = "{$message['campaign']}_ESU_[PageElementSource]";
 
-    // RND-178: Device & Source Replacements.
     $source = (empty($message['source'])) ? "Unknown" : $message['source'];
 
     $message['transSource'] = str_replace(
@@ -23,6 +22,7 @@ class SenderData extends Sender {
       $message['transSource']
     );
 
+    unset($message['source']);
     return $message;
   }
 
