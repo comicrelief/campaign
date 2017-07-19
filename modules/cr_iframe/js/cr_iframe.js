@@ -25,10 +25,12 @@ var iframeSizer = (function () {
       try {
         var json = JSON.parse(e.data);
         if (typeof json.iframe_height !== 'undefned') {
-          document.querySelectorAll('.iframe-block iframe').forEach(function(element) {
-            element.style.height = json.iframe_height + 'px';
-            element.scrolling = 'no';
-          });
+          var iframes = document.getElementsByClassName('iframe-resizable');
+          for(var i = 0; i < iframes.length; i++)
+          {
+            iframes[i].style.height = json.iframe_height + 'px';
+            iframes[i].scrolling = 'no';
+          }
         }
       }
       catch(e) {}
