@@ -2,7 +2,7 @@
   "name": "Campaign_base",
   "version": "1.0.0",
   "dependencies": {
-    "@comicrelief/pattern-lab": "git://github.com/comicrelief/pattern-lab.git#c60f99a",
+    "@comicrelief/pattern-lab": "git://github.com/comicrelief/pattern-lab.git#e183fd0",
     "async": "^2.4.0",
     "blazy": "1.8.2",
     "fs-extra": "^3.0.1",
