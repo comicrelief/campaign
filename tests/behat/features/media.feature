@@ -1,9 +1,11 @@
 Feature: Media
   This feature covers media (including downloadables)
 
+  Background:
+    Given I am logged in as a user with the "editor" role
+
   @api @javascript
   Scenario: Create a downloadable image
-    Given I am logged in as a user with the "editor" role
     When I visit "/media/add/cr_file"
     And I enter "nose (administration)" for "Media name"
     And I enter "Red Nose!" for "Display title"
@@ -18,7 +20,6 @@ Feature: Media
 
   @api @javascript
   Scenario: Create a downloadable pdf
-    Given I am logged in as a user with the "editor" role
     When I visit "/media/add/cr_file"
     And I enter "pdf (administration)" for "Media name"
     And I enter "Sample PDF" for "Display title"
@@ -33,7 +34,6 @@ Feature: Media
 
   @api @javascript
   Scenario: Create an external file
-    Given I am logged in as a user with the "editor" role
     When I visit "/media/add/cr_external_file"
     And I enter "ext file (administration)" for "Media name"
     And I enter "http://www.pdf995.com/samples/pdf.pdf" for "URL"
@@ -47,20 +47,16 @@ Feature: Media
 
   @api @test
   Scenario: Create a video media item
-    Given I am logged in as a user with the "editor" role
     When I visit "/media/add/video"
     And I enter "Video (administration name)" for "Media name"
     And I enter "cBkTjkKrLqs" for "Youtube Video ID"
     And I enter "Here goes the video caption" for "Video caption"
     And I press "Save and publish"
-    # Then I should see "Video (administration name) has been created."
-    # And I should see the link "Sample external PDF"
     And I go to "admin/content/media"
     Then I should see the link "Video (administration name)"
 
   @api @test @javascript
   Scenario: Create a video media file
-    Given I am logged in as a user with the "editor" role
     When I visit "/media/add/cr_file"
     And I enter "video file (administration)" for "Media name"
     And I enter "Sample video file" for "Display title"
