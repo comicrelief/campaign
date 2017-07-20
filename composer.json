@@ -156,7 +156,8 @@
         "drupal/better_exposed_filters": "3.x-dev#19f3da2",
         "drupal/views_ajax_history": "1.x-dev",
         "drupal/google_tag": "1.x-dev#09ce10c",
-        "drupal/fastly": "^3.2"
+        "drupal/fastly": "^3.2",
+        "drupal/redis": "1.0-beta1"
     },
     "require-dev": {
         "behat/mink-selenium2-driver": "^1.3",
