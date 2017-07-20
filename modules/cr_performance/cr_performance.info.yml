@@ -5,7 +5,6 @@ core: 8.x
 package: Comic Relief
 
 dependencies:
-  - memcache
   - purge
   - purge_purger_http
   - purge_processor_cron
