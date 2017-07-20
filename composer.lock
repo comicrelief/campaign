@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a5b04caf6f82cf4cf3899f32bf5f1d7b",
+    "content-hash": "7d3739b8c44d25f7faba8d70b1aa043f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3491,17 +3491,17 @@
         },
         {
             "name": "drupal/rabbitmq",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/rabbitmq",
-                "reference": "8.x-1.0"
+                "reference": "8.x-1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/rabbitmq-8.x-1.0.zip",
-                "reference": "8.x-1.0",
-                "shasum": "a60c91a8159085831e6d80d5300a61e352dbcac0"
+                "url": "https://ftp.drupal.org/files/projects/rabbitmq-8.x-1.1.zip",
+                "reference": null,
+                "shasum": "2efeef3492a82bb954159b03eead10e4eacbed8f"
             },
             "require": {
                 "drupal/core": "~8.0",
@@ -3513,8 +3513,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0",
-                    "datestamp": "1488817983"
+                    "version": "8.x-1.1",
+                    "datestamp": "1500559442"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
