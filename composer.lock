@@ -3600,7 +3600,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/redis-8.x-1.0-beta1.zip",
-                "reference": null,
+                "reference": "8.x-1.0-beta1",
                 "shasum": "c52dfdc675e95f04266e4ddd7c603c23f217e1f8"
             },
             "require": {
@@ -7585,7 +7585,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/default_content-8.x-1.0-alpha6.zip",
-                "reference": null,
+                "reference": "8.x-1.0-alpha6",
                 "shasum": "ec378158521afff8181f3536e140a31c161fc867"
             },
             "require": {
@@ -7656,7 +7656,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/devel-8.x-1.0-rc2.zip",
-                "reference": null,
+                "reference": "8.x-1.0-rc2",
                 "shasum": "011322bf9c263dab29f94640829f4b654e9c5632"
             },
             "require": {
@@ -7842,66 +7842,6 @@
             "time": "2017-06-15T13:59:40+00:00"
         },
         {
-            "name": "drupal/memcache",
-            "version": "2.0.0-alpha3",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupal.org/project/memcache",
-                "reference": "8.x-2.0-alpha3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/memcache-8.x-2.0-alpha3.zip",
-                "reference": null,
-                "shasum": "21db65a220e2a71227fa7a88f4033559fec5c9ff"
-            },
-            "require": {
-                "drupal/core": "~8.0"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-2.x": "2.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-2.0-alpha3",
-                    "datestamp": "1492523944"
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Jeremy",
-                    "homepage": "https://www.drupal.org/user/409"
-                },
-                {
-                    "name": "catch",
-                    "homepage": "https://www.drupal.org/user/35733"
-                },
-                {
-                    "name": "damiankloip",
-                    "homepage": "https://www.drupal.org/user/1037976"
-                },
-                {
-                    "name": "jvandyk",
-                    "homepage": "https://www.drupal.org/user/2375"
-                },
-                {
-                    "name": "robertDouglass",
-                    "homepage": "https://www.drupal.org/user/5449"
-                }
-            ],
-            "description": "High performance integration with memcache.",
-            "homepage": "http://drupal.org/project/memcache",
-            "support": {
-                "source": "http://cgit.drupalcode.org/memcache",
-                "issues": "https://www.drupal.org/project/issues/memcache"
-            }
-        },
-        {
             "name": "drupal/stage_file_proxy",
             "version": "1.0.0-alpha1",
             "source": {
@@ -7912,7 +7852,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/stage_file_proxy-8.x-1.0-alpha1.zip",
-                "reference": null,
+                "reference": "8.x-1.0-alpha1",
                 "shasum": "ffc763b0b74f5a29c0d4a5a6c6930bda473a9e97"
             },
             "require": {
