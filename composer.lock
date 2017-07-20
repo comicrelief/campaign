@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7677eeecb8956dca70a8e1e15127e579",
+    "content-hash": "1ba279d827d3b35d8c363f7df2e85a55",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3551,17 +3551,17 @@
         },
         {
             "name": "drupal/rabbitmq",
-            "version": "1.0.0-beta1",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/rabbitmq",
-                "reference": "8.x-1.0-beta1"
+                "reference": "8.x-1.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/rabbitmq-8.x-1.0-beta1.zip",
+                "url": "https://ftp.drupal.org/files/projects/rabbitmq-8.x-1.0.zip",
                 "reference": null,
-                "shasum": "9c8e9b75e79b355211dbbb78bc17ad7ad3663b95"
+                "shasum": "a60c91a8159085831e6d80d5300a61e352dbcac0"
             },
             "require": {
                 "drupal/core": "~8.0",
@@ -3573,7 +3573,7 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-beta1",
+                    "version": "8.x-1.0",
                     "datestamp": "1488817983"
                 }
             },
