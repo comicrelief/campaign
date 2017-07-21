@@ -51,9 +51,9 @@ third_party_settings:
         label: hidden
         formatter: default
         settings:
-          link: true
           wrapper: h2
           class: ''
+          link: false
 id: node.article.teaser
 targetEntityType: node
 bundle: article
@@ -137,7 +137,7 @@ content:
     label: hidden
     settings:
       image_style: ''
-      link_image_to: content
+      link_image_to: ''
     third_party_settings: {  }
     region: ds_content
 hidden:
