@@ -146,5 +146,15 @@
         $('body').addClass('crNavTooltips');
       },
     });
+
+    // Helper snippet as the cookie banner module doesn't provide a 'state' we can use for any affected styling
+    setTimeout(function(){
+     // Add our active class if the banner is present
+      $('body > .cc_banner-wrapper').length ? $('body').addClass('cc-banner--visible') : null ;
+      // Add a button click handler (if it's) to remove the active class
+      $('.cc_banner-wrapper a.btn').on('click', function(){
+        $('body').removeClass('cc-banner--visible');
+      });
+    }, 1500);
   })
 })(jQuery, Drupal);
