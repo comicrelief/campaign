@@ -6,7 +6,7 @@
 #}
 {% set category_class = 'article-teaser--' ~ content.field_article_category[0]['#title'] | replace({' ' : ''}) | lower %}
 <article class="article-teaser {{ category_class }}">
-    <a href="{{ path('entity.node.canonical', {'node': node.id}) }}">
+    <a href="{{ path('entity.node.canonical', {'node': node.id}) }}" class="article-teaser__link">
         {% if field_article_image['#items'] %}
         <div class="article-teaser__image">
             {{ field_article_image }}
