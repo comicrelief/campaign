@@ -7,6 +7,7 @@ dependencies:
     - field.field.block_content.cr_iframe_embedded.field_cr_iframe_embedded_bg
     - field.field.block_content.cr_iframe_embedded.field_cr_iframe_embedded_image
     - field.field.block_content.cr_iframe_embedded.field_cr_iframe_embedded_link
+    - field.field.block_content.cr_iframe_embedded.field_cr_iframe_initial_height
     - field.field.block_content.cr_iframe_embedded.field_cr_iframe_layout
     - field.field.block_content.cr_iframe_embedded.field_cr_iframe_load
   module:
@@ -75,6 +76,15 @@ content:
     third_party_settings: {  }
     type: string
     region: ds_content
+  field_cr_iframe_initial_height:
+    weight: 6
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
   field_cr_iframe_layout:
     weight: 5
     label: hidden

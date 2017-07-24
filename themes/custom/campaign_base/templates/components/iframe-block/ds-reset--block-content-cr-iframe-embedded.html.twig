@@ -2,6 +2,7 @@
 {% set iframe_layout = content.field_cr_iframe_layout['#items'][0].value %}
 {% set iframe_load = field_cr_iframe_load['#items'][0].value ? 'iframe-block__load-now' : '' %}
 {% set iframe_path = field_cr_iframe_embedded_link[0]['#context'].value %}
+{% set iframe_inital_height = field_cr_iframe_initial_height[0]['#markup'] %}
 {%
   set classes = [
     'iframe-block',
@@ -10,13 +11,14 @@
     iframe_bg_colour,
   ]
 %}
+
 <div{{ attributes.addClass(classes) }}>
   {% block content %}
     {{ title_suffix.contextual_links }}
     <div class="iframe-block__wrapper-outer">
       <div class="iframe-block__wrapper">
         {% if iframe_load %}
-          <iframe width="100%" height="100%" class="iframe-block__embedded iframe-resizable" src="{{ iframe_path }}" allowfullscreen>
+          <iframe width="100%" height="{{ iframe_inital_height }}px" class="iframe-block__embedded iframe-resizable" src="{{ iframe_path }}" allowfullscreen>
           </iframe>
         {% else %}
           <a class="iframe-block__play" href="{{ iframe_path }}" target="_blank">
@@ -24,7 +26,7 @@
               {{ field_cr_iframe_embedded_image }}
             </div>
           </a>
-          <iframe width="100%" height="100%" class="iframe-block__embedded iframe-resizable" data-src="{{ iframe_path }}" src="about:blank" allowfullscreen>
+          <iframe width="100%" height="{{ iframe_inital_height }}px" class="iframe-block__embedded iframe-resizable" data-src="{{ iframe_path }}" src="about:blank" allowfullscreen>
           </iframe>
         {% endif %}
         {% if content.body['#object'].body %}
