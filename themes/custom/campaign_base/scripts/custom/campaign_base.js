@@ -151,7 +151,7 @@
     setTimeout(function(){
      // Add our active class if the banner is present
       $('body > .cc_banner-wrapper').length ? $('body').addClass('cc-banner--visible') : null ;
-      // Add a button click handler (if it's) to remove the active class
+      // Add a button click handler (if it's present in the DOM) to remove the active class
       $('.cc_banner-wrapper a.btn').on('click', function(){
         $('body').removeClass('cc-banner--visible');
       });
