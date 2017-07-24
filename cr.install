@@ -384,3 +384,12 @@ function cr_update_8041() {
   \Drupal::service('config.installer')
     ->installDefaultConfig('module', 'cr_article');
 }
+
+/**
+ * Re-install the cr_iframe configuration to bring in the initial height field.
+ */
+function cr_update_8042() {
+  // Reinstall the cr_article configuration.
+  \Drupal::service('config.installer')
+    ->installDefaultConfig('module', 'cr_iframe');
+}
