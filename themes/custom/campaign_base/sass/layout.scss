@@ -181,3 +181,23 @@ main {
     padding: 60px 0;
   }
 }
+
+// Tooltip
+div[role=tooltip].ui-tooltip.ui-tooltip--nav {
+  body.cc-banner--visible & {
+    top: 190px !important;
+
+  }
+
+  @include breakpoint($screen-md) {
+    body.cc-banner--visible & {
+      top: 190px !important;
+    }
+  }
+
+  @include breakpoint($desktop-nav-breakpoint) {
+    body.cc-banner--visible & {
+      top: 217px !important;
+    }
+  }
+}
