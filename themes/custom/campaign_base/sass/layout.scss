@@ -186,7 +186,6 @@ main {
 div[role=tooltip].ui-tooltip.ui-tooltip--nav {
   body.cc-banner--visible & {
     top: 190px !important;
-
   }
 
   @include breakpoint($screen-md) {
