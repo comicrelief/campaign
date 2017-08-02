@@ -24,13 +24,18 @@ var iframeSizer = (function () {
     window[eventMethod](eventMethod == "attachEvent" ? "onmessage" : "message", function (e) {
       try {
         var json = JSON.parse(e.data);
-        if (typeof json.iframe_height !== 'undefned') {
+        if (typeof json.iframe_height !== 'undefined') {
           var iframes = document.getElementsByClassName('iframe-resizable');
           for(var i = 0; i < iframes.length; i++)
           {
             iframes[i].style.height = json.iframe_height + 'px';
             iframes[i].scrolling = 'no';
           }
+        }
+        if (typeof JSON.back_to_top !== 'undefined') {
+          console.log("scroll to top")
+          $('html, body').animate({
+            scrollTop: $('.iframe-resizable:first').offset().top + 'px'}, '3000');
         }
       }
       catch(e) {}
