@@ -45,11 +45,13 @@ var iframeSizer = (function () {
   return module;
 }());
 
-// Initialise the IFrame sizer
-iframeSizer.init();
 
 (function ($) {
   $(document).ready(function () {
+
+    // Initialise the IFrame sizer
+    iframeSizer.init();
+    
     $('.iframe-block__play').click(function(event){
       if ($('html').hasClass('no-touchevents')) {
         event.preventDefault();
