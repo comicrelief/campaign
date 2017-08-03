@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f30ae8eacc607a3c1b7415ed46409eb6",
+    "content-hash": "930689bca74d60411111920f9e343fff",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3750,17 +3750,17 @@
         },
         {
             "name": "drupal/search_api",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/search_api",
-                "reference": "8.x-1.2"
+                "reference": "8.x-1.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/search_api-8.x-1.2.zip",
+                "url": "https://ftp.drupal.org/files/projects/search_api-8.x-1.3.zip",
                 "reference": null,
-                "shasum": "c6359692a220321ee8b4d6c61970b1c846afebe2"
+                "shasum": "e064dc8769a95ce3ebb3f30cdfe0fba8ea661dfb"
             },
             "require": {
                 "drupal/core": "^8.3"
@@ -3774,8 +3774,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.2",
-                    "datestamp": "1498403342"
+                    "version": "8.x-1.3",
+                    "datestamp": "1500483242"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
