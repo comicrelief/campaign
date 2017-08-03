@@ -77,6 +77,7 @@ module.exports = function (grunt) {
           src: [
             // Import specific component js
             'node_modules/@comicrelief/pattern-lab/sass/base/components/navigation/js/main-nav.js',
+            'node_modules/@comicrelief/pattern-lab/sass/base/components/media-block/js/media-block.js',
             // Drupal-specific custom js
             'scripts/{,**/}*.js'],
           dest: 'js/campaign_base.js',
