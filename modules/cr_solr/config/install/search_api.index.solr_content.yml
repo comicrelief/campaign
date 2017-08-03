@@ -111,6 +111,7 @@ processor_settings:
       weights:
         preprocess_index: -10
         preprocess_query: -10
+    all_fields: false
   aggregated_field:
     plugin_id: aggregated_field
     settings: {  }
