@@ -3,3 +3,4 @@ status: true
 dependencies: {  }
 id: partner_list
 label: 'Partner list'
+behavior_plugins: {  }

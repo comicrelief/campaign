@@ -3,3 +3,4 @@ status: true
 dependencies: {  }
 id: single_msg
 label: 'Single Msg Row'
+behavior_plugins: {  }
