@@ -37,7 +37,7 @@ var iframeSizer = (function () {
 
         if (typeof json.back_to_top !== 'undefined') {
           jQuery('html, body').animate({
-            scrollTop: jQuery('.iframe-resizable').offset().top + 'px'},'3000');
+            scrollTop: jQuery('.iframe-resizable:first').offset().top + 'px'},'3000');
         }
       }
       catch(e) {}
