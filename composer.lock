@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f0d5c3a973e985d583593db486c8ceef",
+    "content-hash": "9030bda37801c6fe1aff70cd4fabf4b0",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -840,11 +840,17 @@
         },
         {
             "name": "drupal/better_exposed_filters",
-            "version": "dev-3.x",
+            "version": "3.0.0-alpha3",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/better_exposed_filters",
-                "reference": "19f3da2"
+                "reference": "8.x-3.0-alpha3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/better_exposed_filters-8.x-3.0-alpha3.zip",
+                "reference": null,
+                "shasum": "0268a42ea5a4ab170c8f4aefecd26b6f3c7448d2"
             },
             "require": {
                 "drupal/core": "*"
@@ -855,8 +861,8 @@
                     "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-3.0-alpha2+31-dev",
-                    "datestamp": "1499294342"
+                    "version": "8.x-3.0-alpha3",
+                    "datestamp": "1501274342"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -873,8 +879,7 @@
             "homepage": "https://www.drupal.org/project/better_exposed_filters",
             "support": {
                 "source": "http://cgit.drupalcode.org/better_exposed_filters"
-            },
-            "time": "2017-02-12 19:28:16"
+            }
         },
         {
             "name": "drupal/blazy",
@@ -9433,7 +9438,6 @@
         "drupal/inline_entity_form": 20,
         "drupal/social_links": 20,
         "drupal/view_mode": 20,
-        "drupal/better_exposed_filters": 20,
         "drupal/views_ajax_history": 20,
         "drupal/google_tag": 20,
         "drupal/fastly": 20
