@@ -8,7 +8,7 @@ namespace Drupal\cr_monolog\Processor;
 class CampaignProcessor {
 
   public function __invoke(array $record) {
-    $record['context']['campaign'] = $_ENV['CAMPAIGN'];
+    $record['context']['campaign'] = getenv('CAMPAIGN');
     return $record;
   }
 }
