@@ -1,18 +1,15 @@
 parameters:
   monolog.channel_handlers:
     default: ['loggly']
-  monolog.processors: ['message_placeholder', 'current_user', 'request_uri', 'ip', 'referer', 'env']
+  monolog.processors:
+    ['message_placeholder', 'current_user', 'request_uri', 'ip', 'referer', 'env', 'campaign']
 
 services:
   monolog.processor.env:
-    class: Drupal\cr_monolog\Service\LogglyService
-    calls:
-     - ['getEnv']
-  cr_monolog.loggly_token:
-    class: Drupal\cr_monolog\Service\LogglyService
-    calls:
-     - ['getToken']
+    class: Drupal\cr_monolog\Processor\EnvironmentProcessor
+  monolog.processor.campaign:
+    class: Drupal\cr_monolog\Processor\CampaignProcessor
   monolog.handler.loggly:
     class: Drupal\cr_monolog\Handler\LogglyAsyncHandler
-    arguments:
-      [@cr_monolog.loggly_token, '200', false]
+    arguments: ['token', '200', false]
+

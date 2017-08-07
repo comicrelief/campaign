@@ -9,6 +9,13 @@ use Monolog\Handler\LogglyHandler;
  */
 class LogglyAsyncHandler extends LogglyHandler {
 
+  public function __construct($token, $level = Logger::DEBUG, $bubble = TRUE) {
+    parent::__construct($token, $level, $bubble);
+    // Drupal doesn't know about set env as parameters
+    $token = new \Drupal\cr_monolog\Processor\LogglyTokenProcessor();
+    $this->token = $token->get();
+  }
+
   protected function send($data, $endpoint) {
     $url = sprintf('https://%s/%s/%s/', self::HOST, $endpoint, $this->token);
 
