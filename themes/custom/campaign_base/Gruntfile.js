@@ -64,8 +64,29 @@ module.exports = function (grunt) {
         expand: true,
         flatten: true,
         cwd: 'node_modules/@comicrelief/pattern-lab/sass/base/components',
-        src: ['**/*.{png,jpg,gif,svg}'],
+        src: ['**/*.{png,jpg,gif}'],
         dest: 'images/patternlab'
+      }
+    },
+
+    svgmin: {
+      options: {
+        plugins: [
+          {removeViewBox: false},
+          {removeUselessStrokeAndFill: false},
+          {removeEmptyAttrs: false},
+          {removeHiddenElems: false},
+          {cleanupIDs: false}
+        ]
+      },
+      dist: {
+        files: [{
+          expand: true,
+          flatten: true,
+          cwd: 'node_modules/@comicrelief/pattern-lab/sass/base/components',
+          src: ['{,**/}*.svg'],
+          dest: 'images'
+        }]
       }
     },
 
