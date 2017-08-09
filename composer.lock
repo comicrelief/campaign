@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9030bda37801c6fe1aff70cd4fabf4b0",
+    "content-hash": "f83b7f7832cfbe37d86d672174ecdf00",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -291,6 +291,107 @@
             "time": "2016-08-30T16:08:34+00:00"
         },
         {
+            "name": "consolidation/annotated-command",
+            "version": "2.4.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/consolidation/annotated-command.git",
+                "reference": "7fbf68dc6abf2f1f0746ceab0701dee1ee97516e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/consolidation/annotated-command/zipball/7fbf68dc6abf2f1f0746ceab0701dee1ee97516e",
+                "reference": "7fbf68dc6abf2f1f0746ceab0701dee1ee97516e",
+                "shasum": ""
+            },
+            "require": {
+                "consolidation/output-formatters": "^3.1.10",
+                "php": ">=5.4.0",
+                "phpdocumentor/reflection-docblock": "^2.0|^3.0.2",
+                "psr/log": "^1",
+                "symfony/console": "^2.8|~3",
+                "symfony/event-dispatcher": "^2.5|^3",
+                "symfony/finder": "^2.5|^3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8",
+                "satooshi/php-coveralls": "^1.0",
+                "squizlabs/php_codesniffer": "^2.7"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Consolidation\\AnnotatedCommand\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Anderson",
+                    "email": "greg.1.anderson@greenknowe.org"
+                }
+            ],
+            "description": "Initialize Symfony Console commands from annotated command class methods.",
+            "time": "2017-07-27T20:29:17+00:00"
+        },
+        {
+            "name": "consolidation/output-formatters",
+            "version": "3.1.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/consolidation/output-formatters.git",
+                "reference": "3872f19517bfc9da0e14c9e5b6fe0f8c7439ea3a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/consolidation/output-formatters/zipball/3872f19517bfc9da0e14c9e5b6fe0f8c7439ea3a",
+                "reference": "3872f19517bfc9da0e14c9e5b6fe0f8c7439ea3a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "symfony/console": "^2.8|~3",
+                "symfony/finder": "~2.5|~3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8",
+                "satooshi/php-coveralls": "^1.0",
+                "squizlabs/php_codesniffer": "^2.7",
+                "victorjonsson/markdowndocs": "^1.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Consolidation\\OutputFormatters\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Anderson",
+                    "email": "greg.1.anderson@greenknowe.org"
+                }
+            ],
+            "description": "Format text by applying transformations provided by plug-in formatters.",
+            "time": "2017-06-06T19:08:54+00:00"
+        },
+        {
             "name": "cweagans/composer-patches",
             "version": "1.6.1",
             "source": {
@@ -333,6 +434,39 @@
             ],
             "description": "Provides a way to patch Composer packages.",
             "time": "2017-03-19T18:18:52+00:00"
+        },
+        {
+            "name": "dnoegel/php-xdg-base-dir",
+            "version": "0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dnoegel/php-xdg-base-dir.git",
+                "reference": "265b8593498b997dc2d31e75b89f053b5cc9621a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dnoegel/php-xdg-base-dir/zipball/265b8593498b997dc2d31e75b89f053b5cc9621a",
+                "reference": "265b8593498b997dc2d31e75b89f053b5cc9621a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "@stable"
+            },
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "XdgBaseDir\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "implementation of xdg base directory specification for php",
+            "time": "2014-10-24T07:27:01+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -1535,6 +1669,84 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/ctools",
                 "issues": "https://www.drupal.org/project/issues/ctools"
+            }
+        },
+        {
+            "name": "drupal/devel",
+            "version": "1.0.0-rc2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/devel",
+                "reference": "8.x-1.0-rc2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/devel-8.x-1.0-rc2.zip",
+                "reference": null,
+                "shasum": "011322bf9c263dab29f94640829f4b654e9c5632"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "suggest": {
+                "symfony/var-dumper": "Pretty print complex values better with var-dumper available"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-rc2",
+                    "datestamp": "1492989244"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Moshe Weitzman",
+                    "homepage": "https://github.com/weitzman",
+                    "email": "weitzman@tejasa.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Hans Salvisberg",
+                    "homepage": "https://www.drupal.org/u/salvis",
+                    "email": "drupal@salvisberg.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Luca Lusso",
+                    "homepage": "https://www.drupal.org/u/lussoluca",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Marco (willzyx)",
+                    "homepage": "https://www.drupal.org/u/willzyx",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "See contributors",
+                    "homepage": "https://www.drupal.org/node/3236/committers"
+                },
+                {
+                    "name": "salvis",
+                    "homepage": "https://www.drupal.org/user/82964"
+                },
+                {
+                    "name": "willzyx",
+                    "homepage": "https://www.drupal.org/user/1043862"
+                }
+            ],
+            "description": "Various blocks, pages, and functions for developers.",
+            "homepage": "http://drupal.org/project/devel",
+            "support": {
+                "source": "http://cgit.drupalcode.org/devel",
+                "issues": "http://drupal.org/project/devel",
+                "irc": "irc://irc.freenode.org/drupal-contribute"
             }
         },
         {
@@ -4410,6 +4622,111 @@
             }
         },
         {
+            "name": "drush/drush",
+            "version": "8.1.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/drush-ops/drush.git",
+                "reference": "a1d3ab0f1d9ce01556d70015906caaed723f7ba7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/drush-ops/drush/zipball/a1d3ab0f1d9ce01556d70015906caaed723f7ba7",
+                "reference": "a1d3ab0f1d9ce01556d70015906caaed723f7ba7",
+                "shasum": ""
+            },
+            "require": {
+                "consolidation/annotated-command": "~2",
+                "consolidation/output-formatters": "~3",
+                "pear/console_table": "~1.3.0",
+                "php": ">=5.4.5",
+                "phpdocumentor/reflection-docblock": "^2.0",
+                "psr/log": "~1.0",
+                "psy/psysh": "~0.6",
+                "symfony/console": "~2.7",
+                "symfony/event-dispatcher": "~2.7",
+                "symfony/finder": "~2.7",
+                "symfony/var-dumper": "~2.7",
+                "symfony/yaml": "~2.3",
+                "webmozart/path-util": "~2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*",
+                "symfony/process": "2.7.*"
+            },
+            "suggest": {
+                "drush/config-extra": "Provides configuration workflow commands, such as config-merge.",
+                "ext-pcntl": "*"
+            },
+            "bin": [
+                "drush",
+                "drush.launcher",
+                "drush.php",
+                "drush.complete.sh"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "8.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Drush": "lib/",
+                    "Consolidation": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Moshe Weitzman",
+                    "email": "weitzman@tejasa.com"
+                },
+                {
+                    "name": "Owen Barton",
+                    "email": "drupal@owenbarton.com"
+                },
+                {
+                    "name": "Mark Sonnabaum",
+                    "email": "marksonnabaum@gmail.com"
+                },
+                {
+                    "name": "Antoine Beaupré",
+                    "email": "anarcat@koumbit.org"
+                },
+                {
+                    "name": "Greg Anderson",
+                    "email": "greg.1.anderson@greenknowe.org"
+                },
+                {
+                    "name": "Jonathan Araña Cruz",
+                    "email": "jonhattan@faita.net"
+                },
+                {
+                    "name": "Jonathan Hedstrom",
+                    "email": "jhedstrom@gmail.com"
+                },
+                {
+                    "name": "Christopher Gervais",
+                    "email": "chris@ergonlogic.com"
+                },
+                {
+                    "name": "Dave Reid",
+                    "email": "dave@davereid.net"
+                },
+                {
+                    "name": "Damian Lee",
+                    "email": "damiankloip@googlemail.com"
+                }
+            ],
+            "description": "Drush is a command line shell and scripting interface for Drupal, a veritable Swiss Army knife designed to make life easier for those of us who spend some of our working hours hacking away at the command prompt.",
+            "homepage": "http://www.drush.org",
+            "time": "2017-06-05T22:51:34+00:00"
+        },
+        {
             "name": "easyrdf/easyrdf",
             "version": "0.9.1",
             "source": {
@@ -4844,6 +5161,93 @@
             "time": "2017-05-08T12:10:56+00:00"
         },
         {
+            "name": "jakub-onderka/php-console-color",
+            "version": "0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JakubOnderka/PHP-Console-Color.git",
+                "reference": "e0b393dacf7703fc36a4efc3df1435485197e6c1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JakubOnderka/PHP-Console-Color/zipball/e0b393dacf7703fc36a4efc3df1435485197e6c1",
+                "reference": "e0b393dacf7703fc36a4efc3df1435485197e6c1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "jakub-onderka/php-code-style": "1.0",
+                "jakub-onderka/php-parallel-lint": "0.*",
+                "jakub-onderka/php-var-dump-check": "0.*",
+                "phpunit/phpunit": "3.7.*",
+                "squizlabs/php_codesniffer": "1.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "JakubOnderka\\PhpConsoleColor": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Jakub Onderka",
+                    "email": "jakub.onderka@gmail.com",
+                    "homepage": "http://www.acci.cz"
+                }
+            ],
+            "time": "2014-04-08T15:00:19+00:00"
+        },
+        {
+            "name": "jakub-onderka/php-console-highlighter",
+            "version": "v0.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JakubOnderka/PHP-Console-Highlighter.git",
+                "reference": "7daa75df45242c8d5b75a22c00a201e7954e4fb5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JakubOnderka/PHP-Console-Highlighter/zipball/7daa75df45242c8d5b75a22c00a201e7954e4fb5",
+                "reference": "7daa75df45242c8d5b75a22c00a201e7954e4fb5",
+                "shasum": ""
+            },
+            "require": {
+                "jakub-onderka/php-console-color": "~0.1",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "jakub-onderka/php-code-style": "~1.0",
+                "jakub-onderka/php-parallel-lint": "~0.5",
+                "jakub-onderka/php-var-dump-check": "~0.1",
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "~1.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "JakubOnderka\\PhpConsoleHighlighter": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jakub Onderka",
+                    "email": "acci@acci.cz",
+                    "homepage": "http://www.acci.cz/"
+                }
+            ],
+            "time": "2015-04-20T18:58:01+00:00"
+        },
+        {
             "name": "masterminds/html5",
             "version": "2.2.2",
             "source": {
@@ -5024,6 +5428,57 @@
             "time": "2017-06-19T01:22:40+00:00"
         },
         {
+            "name": "nikic/php-parser",
+            "version": "v3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nikic/PHP-Parser.git",
+                "reference": "4d4896e553f2094e657fe493506dc37c509d4e2b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/4d4896e553f2094e657fe493506dc37c509d4e2b",
+                "reference": "4d4896e553f2094e657fe493506dc37c509d4e2b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-tokenizer": "*",
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0|~5.0"
+            },
+            "bin": [
+                "bin/php-parse"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PhpParser\\": "lib/PhpParser"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Nikita Popov"
+                }
+            ],
+            "description": "A PHP parser written in PHP",
+            "keywords": [
+                "parser",
+                "php"
+            ],
+            "time": "2017-07-28T14:45:09+00:00"
+        },
+        {
             "name": "paragonie/random_compat",
             "version": "v2.0.10",
             "source": {
@@ -5070,6 +5525,61 @@
                 "random"
             ],
             "time": "2017-03-13T16:27:32+00:00"
+        },
+        {
+            "name": "pear/console_table",
+            "version": "v1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pear/Console_Table.git",
+                "reference": "64100b9ee81852f4fa17823e55d0b385a544f976"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pear/Console_Table/zipball/64100b9ee81852f4fa17823e55d0b385a544f976",
+                "reference": "64100b9ee81852f4fa17823e55d0b385a544f976",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "suggest": {
+                "pear/Console_Color2": ">=0.1.2"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "Table.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Jan Schneider",
+                    "homepage": "http://pear.php.net/user/yunosh"
+                },
+                {
+                    "name": "Tal Peer",
+                    "homepage": "http://pear.php.net/user/tal"
+                },
+                {
+                    "name": "Xavier Noguer",
+                    "homepage": "http://pear.php.net/user/xnoguer"
+                },
+                {
+                    "name": "Richard Heyes",
+                    "homepage": "http://pear.php.net/user/richard"
+                }
+            ],
+            "description": "Library that makes it easy to build console style tables.",
+            "homepage": "http://pear.php.net/package/Console_Table/",
+            "keywords": [
+                "console"
+            ],
+            "time": "2016-01-21T16:14:31+00:00"
         },
         {
             "name": "php-amqplib/php-amqplib",
@@ -5184,6 +5694,55 @@
             "time": "2013-11-13 23:10:03"
         },
         {
+            "name": "phpdocumentor/reflection-docblock",
+            "version": "2.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
+                "reference": "e6a969a640b00d8daa3c66518b0405fb41ae0c4b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/e6a969a640b00d8daa3c66518b0405fb41ae0c4b",
+                "reference": "e6a969a640b00d8daa3c66518b0405fb41ae0c4b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "suggest": {
+                "dflydev/markdown": "~1.0",
+                "erusev/parsedown": "~1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "phpDocumentor": [
+                        "src/"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mike van Riel",
+                    "email": "mike.vanriel@naenius.com"
+                }
+            ],
+            "time": "2016-01-25T08:17:30+00:00"
+        },
+        {
             "name": "psr/http-message",
             "version": "1.0.1",
             "source": {
@@ -5279,6 +5838,79 @@
                 "psr-3"
             ],
             "time": "2016-10-10T12:19:37+00:00"
+        },
+        {
+            "name": "psy/psysh",
+            "version": "v0.8.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bobthecow/psysh.git",
+                "reference": "b193cd020e8c6b66cea6457826ae005e94e6d2c0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/b193cd020e8c6b66cea6457826ae005e94e6d2c0",
+                "reference": "b193cd020e8c6b66cea6457826ae005e94e6d2c0",
+                "shasum": ""
+            },
+            "require": {
+                "dnoegel/php-xdg-base-dir": "0.1",
+                "jakub-onderka/php-console-highlighter": "0.3.*",
+                "nikic/php-parser": "~1.3|~2.0|~3.0",
+                "php": ">=5.3.9",
+                "symfony/console": "~2.3.10|^2.4.2|~3.0",
+                "symfony/var-dumper": "~2.7|~3.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "~1.11",
+                "hoa/console": "~3.16|~1.14",
+                "phpunit/phpunit": "~4.4|~5.0",
+                "symfony/finder": "~2.1|~3.0"
+            },
+            "suggest": {
+                "ext-pcntl": "Enabling the PCNTL extension makes PsySH a lot happier :)",
+                "ext-pdo-sqlite": "The doc command requires SQLite to work.",
+                "ext-posix": "If you have PCNTL, you'll want the POSIX extension as well.",
+                "ext-readline": "Enables support for arrow-key history navigation, and showing and manipulating command history.",
+                "hoa/console": "A pure PHP readline implementation. You'll want this if your PHP install doesn't already support readline or libedit."
+            },
+            "bin": [
+                "bin/psysh"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "0.8.x-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/Psy/functions.php"
+                ],
+                "psr-4": {
+                    "Psy\\": "src/Psy/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Justin Hileman",
+                    "email": "justin@justinhileman.info",
+                    "homepage": "http://justinhileman.com"
+                }
+            ],
+            "description": "An interactive shell for modern PHP.",
+            "homepage": "http://psysh.org",
+            "keywords": [
+                "REPL",
+                "console",
+                "interactive",
+                "shell"
+            ],
+            "time": "2017-07-29T19:30:02+00:00"
         },
         {
             "name": "solarium/solarium",
@@ -5787,6 +6419,55 @@
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
             "time": "2017-06-02T07:47:27+00:00"
+        },
+        {
+            "name": "symfony/finder",
+            "version": "v2.8.26",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/finder.git",
+                "reference": "4f4e84811004e065a3bb5ceeb1d9aa592630f9ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/4f4e84811004e065a3bb5ceeb1d9aa592630f9ad",
+                "reference": "4f4e84811004e065a3bb5ceeb1d9aa592630f9ad",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Finder\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Finder Component",
+            "homepage": "https://symfony.com",
+            "time": "2017-06-01T20:52:29+00:00"
         },
         {
             "name": "symfony/http-foundation",
@@ -6594,6 +7275,74 @@
             ],
             "description": "Symfony Validator Component",
             "homepage": "https://symfony.com",
+            "time": "2017-07-26T06:29:15+00:00"
+        },
+        {
+            "name": "symfony/var-dumper",
+            "version": "v2.8.26",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/var-dumper.git",
+                "reference": "e9337f23b1c080df301d25b8891ecf1607b0b72f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/e9337f23b1c080df301d25b8891ecf1607b0b72f",
+                "reference": "e9337f23b1c080df301d25b8891ecf1607b0b72f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9",
+                "symfony/polyfill-mbstring": "~1.0"
+            },
+            "conflict": {
+                "phpunit/phpunit": "<4.8.35|<5.4.3,>=5.0"
+            },
+            "require-dev": {
+                "ext-iconv": "*",
+                "twig/twig": "~1.34|~2.4"
+            },
+            "suggest": {
+                "ext-iconv": "To convert non-UTF-8 strings to UTF-8 (or symfony/polyfill-iconv in case ext-iconv cannot be used).",
+                "ext-symfony_debug": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.8-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "Resources/functions/dump.php"
+                ],
+                "psr-4": {
+                    "Symfony\\Component\\VarDumper\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony mechanism for exploring and dumping PHP variables",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "debug",
+                "dump"
+            ],
             "time": "2017-07-26T06:29:15+00:00"
         },
         {
@@ -7522,107 +8271,6 @@
             "time": "2017-04-04T11:38:05+00:00"
         },
         {
-            "name": "consolidation/annotated-command",
-            "version": "2.4.11",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/consolidation/annotated-command.git",
-                "reference": "7fbf68dc6abf2f1f0746ceab0701dee1ee97516e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/consolidation/annotated-command/zipball/7fbf68dc6abf2f1f0746ceab0701dee1ee97516e",
-                "reference": "7fbf68dc6abf2f1f0746ceab0701dee1ee97516e",
-                "shasum": ""
-            },
-            "require": {
-                "consolidation/output-formatters": "^3.1.10",
-                "php": ">=5.4.0",
-                "phpdocumentor/reflection-docblock": "^2.0|^3.0.2",
-                "psr/log": "^1",
-                "symfony/console": "^2.8|~3",
-                "symfony/event-dispatcher": "^2.5|^3",
-                "symfony/finder": "^2.5|^3"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8",
-                "satooshi/php-coveralls": "^1.0",
-                "squizlabs/php_codesniffer": "^2.7"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Consolidation\\AnnotatedCommand\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Greg Anderson",
-                    "email": "greg.1.anderson@greenknowe.org"
-                }
-            ],
-            "description": "Initialize Symfony Console commands from annotated command class methods.",
-            "time": "2017-07-27T20:29:17+00:00"
-        },
-        {
-            "name": "consolidation/output-formatters",
-            "version": "3.1.10",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/consolidation/output-formatters.git",
-                "reference": "3872f19517bfc9da0e14c9e5b6fe0f8c7439ea3a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/consolidation/output-formatters/zipball/3872f19517bfc9da0e14c9e5b6fe0f8c7439ea3a",
-                "reference": "3872f19517bfc9da0e14c9e5b6fe0f8c7439ea3a",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0",
-                "symfony/console": "^2.8|~3",
-                "symfony/finder": "~2.5|~3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8",
-                "satooshi/php-coveralls": "^1.0",
-                "squizlabs/php_codesniffer": "^2.7",
-                "victorjonsson/markdowndocs": "^1.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Consolidation\\OutputFormatters\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Greg Anderson",
-                    "email": "greg.1.anderson@greenknowe.org"
-                }
-            ],
-            "description": "Format text by applying transformations provided by plug-in formatters.",
-            "time": "2017-06-06T19:08:54+00:00"
-        },
-        {
             "name": "container-interop/container-interop",
             "version": "1.2.0",
             "source": {
@@ -7652,39 +8300,6 @@
             "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
             "homepage": "https://github.com/container-interop/container-interop",
             "time": "2017-02-14T19:40:03+00:00"
-        },
-        {
-            "name": "dnoegel/php-xdg-base-dir",
-            "version": "0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/dnoegel/php-xdg-base-dir.git",
-                "reference": "265b8593498b997dc2d31e75b89f053b5cc9621a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/dnoegel/php-xdg-base-dir/zipball/265b8593498b997dc2d31e75b89f053b5cc9621a",
-                "reference": "265b8593498b997dc2d31e75b89f053b5cc9621a",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "@stable"
-            },
-            "type": "project",
-            "autoload": {
-                "psr-4": {
-                    "XdgBaseDir\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "implementation of xdg base directory specification for php",
-            "time": "2014-10-24T07:27:01+00:00"
         },
         {
             "name": "drupal/coder",
@@ -7792,84 +8407,6 @@
             "homepage": "https://www.drupal.org/project/default_content",
             "support": {
                 "source": "http://cgit.drupalcode.org/default_content"
-            }
-        },
-        {
-            "name": "drupal/devel",
-            "version": "1.0.0-rc2",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupal.org/project/devel",
-                "reference": "8.x-1.0-rc2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/devel-8.x-1.0-rc2.zip",
-                "reference": null,
-                "shasum": "011322bf9c263dab29f94640829f4b654e9c5632"
-            },
-            "require": {
-                "drupal/core": "~8.0"
-            },
-            "suggest": {
-                "symfony/var-dumper": "Pretty print complex values better with var-dumper available"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-1.0-rc2",
-                    "datestamp": "1492989244"
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Moshe Weitzman",
-                    "homepage": "https://github.com/weitzman",
-                    "email": "weitzman@tejasa.com",
-                    "role": "Maintainer"
-                },
-                {
-                    "name": "Hans Salvisberg",
-                    "homepage": "https://www.drupal.org/u/salvis",
-                    "email": "drupal@salvisberg.com",
-                    "role": "Maintainer"
-                },
-                {
-                    "name": "Luca Lusso",
-                    "homepage": "https://www.drupal.org/u/lussoluca",
-                    "role": "Maintainer"
-                },
-                {
-                    "name": "Marco (willzyx)",
-                    "homepage": "https://www.drupal.org/u/willzyx",
-                    "role": "Maintainer"
-                },
-                {
-                    "name": "See contributors",
-                    "homepage": "https://www.drupal.org/node/3236/committers"
-                },
-                {
-                    "name": "salvis",
-                    "homepage": "https://www.drupal.org/user/82964"
-                },
-                {
-                    "name": "willzyx",
-                    "homepage": "https://www.drupal.org/user/1043862"
-                }
-            ],
-            "description": "Various blocks, pages, and functions for developers.",
-            "homepage": "http://drupal.org/project/devel",
-            "support": {
-                "source": "http://cgit.drupalcode.org/devel",
-                "issues": "http://drupal.org/project/devel",
-                "irc": "irc://irc.freenode.org/drupal-contribute"
             }
         },
         {
@@ -7992,17 +8529,17 @@
         },
         {
             "name": "drupal/stage_file_proxy",
-            "version": "1.0.0-alpha1",
+            "version": "1.0.0-alpha3",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/stage_file_proxy",
-                "reference": "8.x-1.0-alpha1"
+                "reference": "8.x-1.0-alpha3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/stage_file_proxy-8.x-1.0-alpha1.zip",
+                "url": "https://ftp.drupal.org/files/projects/stage_file_proxy-8.x-1.0-alpha3.zip",
                 "reference": null,
-                "shasum": "ffc763b0b74f5a29c0d4a5a6c6930bda473a9e97"
+                "shasum": "0eb1fc47fa1437c2db623a57c2b2cdbecab5b350"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -8013,8 +8550,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-alpha1",
-                    "datestamp": "1491359584"
+                    "version": "8.x-1.0-alpha3",
+                    "datestamp": "1499900942"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -8060,111 +8597,6 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/stage_file_proxy"
             }
-        },
-        {
-            "name": "drush/drush",
-            "version": "8.1.12",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/drush-ops/drush.git",
-                "reference": "a1d3ab0f1d9ce01556d70015906caaed723f7ba7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/drush-ops/drush/zipball/a1d3ab0f1d9ce01556d70015906caaed723f7ba7",
-                "reference": "a1d3ab0f1d9ce01556d70015906caaed723f7ba7",
-                "shasum": ""
-            },
-            "require": {
-                "consolidation/annotated-command": "~2",
-                "consolidation/output-formatters": "~3",
-                "pear/console_table": "~1.3.0",
-                "php": ">=5.4.5",
-                "phpdocumentor/reflection-docblock": "^2.0",
-                "psr/log": "~1.0",
-                "psy/psysh": "~0.6",
-                "symfony/console": "~2.7",
-                "symfony/event-dispatcher": "~2.7",
-                "symfony/finder": "~2.7",
-                "symfony/var-dumper": "~2.7",
-                "symfony/yaml": "~2.3",
-                "webmozart/path-util": "~2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.*",
-                "symfony/process": "2.7.*"
-            },
-            "suggest": {
-                "drush/config-extra": "Provides configuration workflow commands, such as config-merge.",
-                "ext-pcntl": "*"
-            },
-            "bin": [
-                "drush",
-                "drush.launcher",
-                "drush.php",
-                "drush.complete.sh"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "8.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Drush": "lib/",
-                    "Consolidation": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Moshe Weitzman",
-                    "email": "weitzman@tejasa.com"
-                },
-                {
-                    "name": "Owen Barton",
-                    "email": "drupal@owenbarton.com"
-                },
-                {
-                    "name": "Mark Sonnabaum",
-                    "email": "marksonnabaum@gmail.com"
-                },
-                {
-                    "name": "Antoine Beaupré",
-                    "email": "anarcat@koumbit.org"
-                },
-                {
-                    "name": "Greg Anderson",
-                    "email": "greg.1.anderson@greenknowe.org"
-                },
-                {
-                    "name": "Jonathan Araña Cruz",
-                    "email": "jonhattan@faita.net"
-                },
-                {
-                    "name": "Jonathan Hedstrom",
-                    "email": "jhedstrom@gmail.com"
-                },
-                {
-                    "name": "Christopher Gervais",
-                    "email": "chris@ergonlogic.com"
-                },
-                {
-                    "name": "Dave Reid",
-                    "email": "dave@davereid.net"
-                },
-                {
-                    "name": "Damian Lee",
-                    "email": "damiankloip@googlemail.com"
-                }
-            ],
-            "description": "Drush is a command line shell and scripting interface for Drupal, a veritable Swiss Army knife designed to make life easier for those of us who spend some of our working hours hacking away at the command prompt.",
-            "homepage": "http://www.drush.org",
-            "time": "2017-06-05T22:51:34+00:00"
         },
         {
             "name": "fabpot/goutte",
@@ -8275,144 +8707,6 @@
             "time": "2017-06-30T04:02:48+00:00"
         },
         {
-            "name": "jakub-onderka/php-console-color",
-            "version": "0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/JakubOnderka/PHP-Console-Color.git",
-                "reference": "e0b393dacf7703fc36a4efc3df1435485197e6c1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/JakubOnderka/PHP-Console-Color/zipball/e0b393dacf7703fc36a4efc3df1435485197e6c1",
-                "reference": "e0b393dacf7703fc36a4efc3df1435485197e6c1",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "jakub-onderka/php-code-style": "1.0",
-                "jakub-onderka/php-parallel-lint": "0.*",
-                "jakub-onderka/php-var-dump-check": "0.*",
-                "phpunit/phpunit": "3.7.*",
-                "squizlabs/php_codesniffer": "1.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "JakubOnderka\\PhpConsoleColor": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-2-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Jakub Onderka",
-                    "email": "jakub.onderka@gmail.com",
-                    "homepage": "http://www.acci.cz"
-                }
-            ],
-            "time": "2014-04-08T15:00:19+00:00"
-        },
-        {
-            "name": "jakub-onderka/php-console-highlighter",
-            "version": "v0.3.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/JakubOnderka/PHP-Console-Highlighter.git",
-                "reference": "7daa75df45242c8d5b75a22c00a201e7954e4fb5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/JakubOnderka/PHP-Console-Highlighter/zipball/7daa75df45242c8d5b75a22c00a201e7954e4fb5",
-                "reference": "7daa75df45242c8d5b75a22c00a201e7954e4fb5",
-                "shasum": ""
-            },
-            "require": {
-                "jakub-onderka/php-console-color": "~0.1",
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "jakub-onderka/php-code-style": "~1.0",
-                "jakub-onderka/php-parallel-lint": "~0.5",
-                "jakub-onderka/php-var-dump-check": "~0.1",
-                "phpunit/phpunit": "~4.0",
-                "squizlabs/php_codesniffer": "~1.5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "JakubOnderka\\PhpConsoleHighlighter": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jakub Onderka",
-                    "email": "acci@acci.cz",
-                    "homepage": "http://www.acci.cz/"
-                }
-            ],
-            "time": "2015-04-20T18:58:01+00:00"
-        },
-        {
-            "name": "nikic/php-parser",
-            "version": "v3.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "4d4896e553f2094e657fe493506dc37c509d4e2b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/4d4896e553f2094e657fe493506dc37c509d4e2b",
-                "reference": "4d4896e553f2094e657fe493506dc37c509d4e2b",
-                "shasum": ""
-            },
-            "require": {
-                "ext-tokenizer": "*",
-                "php": ">=5.5"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0|~5.0"
-            },
-            "bin": [
-                "bin/php-parse"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "PhpParser\\": "lib/PhpParser"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Nikita Popov"
-                }
-            ],
-            "description": "A PHP parser written in PHP",
-            "keywords": [
-                "parser",
-                "php"
-            ],
-            "time": "2017-07-28T14:45:09+00:00"
-        },
-        {
             "name": "pdepend/pdepend",
             "version": "2.5.0",
             "source": {
@@ -8451,110 +8745,6 @@
             ],
             "description": "Official version of pdepend to be handled with Composer",
             "time": "2017-01-19T14:23:36+00:00"
-        },
-        {
-            "name": "pear/console_table",
-            "version": "v1.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/pear/Console_Table.git",
-                "reference": "64100b9ee81852f4fa17823e55d0b385a544f976"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/pear/Console_Table/zipball/64100b9ee81852f4fa17823e55d0b385a544f976",
-                "reference": "64100b9ee81852f4fa17823e55d0b385a544f976",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.2.0"
-            },
-            "suggest": {
-                "pear/Console_Color2": ">=0.1.2"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "Table.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-2-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Jan Schneider",
-                    "homepage": "http://pear.php.net/user/yunosh"
-                },
-                {
-                    "name": "Tal Peer",
-                    "homepage": "http://pear.php.net/user/tal"
-                },
-                {
-                    "name": "Xavier Noguer",
-                    "homepage": "http://pear.php.net/user/xnoguer"
-                },
-                {
-                    "name": "Richard Heyes",
-                    "homepage": "http://pear.php.net/user/richard"
-                }
-            ],
-            "description": "Library that makes it easy to build console style tables.",
-            "homepage": "http://pear.php.net/package/Console_Table/",
-            "keywords": [
-                "console"
-            ],
-            "time": "2016-01-21T16:14:31+00:00"
-        },
-        {
-            "name": "phpdocumentor/reflection-docblock",
-            "version": "2.0.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "e6a969a640b00d8daa3c66518b0405fb41ae0c4b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/e6a969a640b00d8daa3c66518b0405fb41ae0c4b",
-                "reference": "e6a969a640b00d8daa3c66518b0405fb41ae0c4b",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
-            },
-            "suggest": {
-                "dflydev/markdown": "~1.0",
-                "erusev/parsedown": "~1.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "phpDocumentor": [
-                        "src/"
-                    ]
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mike van Riel",
-                    "email": "mike.vanriel@naenius.com"
-                }
-            ],
-            "time": "2016-01-25T08:17:30+00:00"
         },
         {
             "name": "phpmd/phpmd",
@@ -8719,79 +8909,6 @@
                 "psr"
             ],
             "time": "2017-02-14T16:28:37+00:00"
-        },
-        {
-            "name": "psy/psysh",
-            "version": "v0.8.11",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "b193cd020e8c6b66cea6457826ae005e94e6d2c0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/b193cd020e8c6b66cea6457826ae005e94e6d2c0",
-                "reference": "b193cd020e8c6b66cea6457826ae005e94e6d2c0",
-                "shasum": ""
-            },
-            "require": {
-                "dnoegel/php-xdg-base-dir": "0.1",
-                "jakub-onderka/php-console-highlighter": "0.3.*",
-                "nikic/php-parser": "~1.3|~2.0|~3.0",
-                "php": ">=5.3.9",
-                "symfony/console": "~2.3.10|^2.4.2|~3.0",
-                "symfony/var-dumper": "~2.7|~3.0"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "~1.11",
-                "hoa/console": "~3.16|~1.14",
-                "phpunit/phpunit": "~4.4|~5.0",
-                "symfony/finder": "~2.1|~3.0"
-            },
-            "suggest": {
-                "ext-pcntl": "Enabling the PCNTL extension makes PsySH a lot happier :)",
-                "ext-pdo-sqlite": "The doc command requires SQLite to work.",
-                "ext-posix": "If you have PCNTL, you'll want the POSIX extension as well.",
-                "ext-readline": "Enables support for arrow-key history navigation, and showing and manipulating command history.",
-                "hoa/console": "A pure PHP readline implementation. You'll want this if your PHP install doesn't already support readline or libedit."
-            },
-            "bin": [
-                "bin/psysh"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-develop": "0.8.x-dev"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "src/Psy/functions.php"
-                ],
-                "psr-4": {
-                    "Psy\\": "src/Psy/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Justin Hileman",
-                    "email": "justin@justinhileman.info",
-                    "homepage": "http://justinhileman.com"
-                }
-            ],
-            "description": "An interactive shell for modern PHP.",
-            "homepage": "http://psysh.org",
-            "keywords": [
-                "REPL",
-                "console",
-                "interactive",
-                "shell"
-            ],
-            "time": "2017-07-29T19:30:02+00:00"
         },
         {
             "name": "sebastian/finder-facade",
@@ -9273,123 +9390,6 @@
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
             "time": "2017-07-11T07:17:58+00:00"
-        },
-        {
-            "name": "symfony/finder",
-            "version": "v2.8.26",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/finder.git",
-                "reference": "4f4e84811004e065a3bb5ceeb1d9aa592630f9ad"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/4f4e84811004e065a3bb5ceeb1d9aa592630f9ad",
-                "reference": "4f4e84811004e065a3bb5ceeb1d9aa592630f9ad",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.9"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.8-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Finder\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony Finder Component",
-            "homepage": "https://symfony.com",
-            "time": "2017-06-01T20:52:29+00:00"
-        },
-        {
-            "name": "symfony/var-dumper",
-            "version": "v2.8.26",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "e9337f23b1c080df301d25b8891ecf1607b0b72f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/e9337f23b1c080df301d25b8891ecf1607b0b72f",
-                "reference": "e9337f23b1c080df301d25b8891ecf1607b0b72f",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.9",
-                "symfony/polyfill-mbstring": "~1.0"
-            },
-            "conflict": {
-                "phpunit/phpunit": "<4.8.35|<5.4.3,>=5.0"
-            },
-            "require-dev": {
-                "ext-iconv": "*",
-                "twig/twig": "~1.34|~2.4"
-            },
-            "suggest": {
-                "ext-iconv": "To convert non-UTF-8 strings to UTF-8 (or symfony/polyfill-iconv in case ext-iconv cannot be used).",
-                "ext-symfony_debug": ""
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.8-dev"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "Resources/functions/dump.php"
-                ],
-                "psr-4": {
-                    "Symfony\\Component\\VarDumper\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony mechanism for exploring and dumping PHP variables",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "debug",
-                "dump"
-            ],
-            "time": "2017-07-26T06:29:15+00:00"
         },
         {
             "name": "theseer/fdomdocument",
