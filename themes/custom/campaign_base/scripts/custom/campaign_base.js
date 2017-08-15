@@ -2,7 +2,8 @@
   $( document ).ready(function() {
 
     // todo make a function
-    $("a[role=button].meta-icons__magnify").on("click", function() {
+    $("a[role=button].meta-icons__magnify").on("click", function(e) {
+      e.preventDefault();
       $(this).toggleClass("active");
       $(".search-block, .search-overlay:not('.show'), .search-overlay.search-on").toggleClass("show");
       $(".search-overlay").toggleClass("search-on");
