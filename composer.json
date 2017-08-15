@@ -103,6 +103,7 @@
         "php-amqplib/php-amqplib": "^2.6",
         "drupal/core": "8.3.6",
         "drupal/ctools": "3.0",
+        "drupal/config_split": "1.0-beta6",
         "drupal/file_entity": "2.0-beta3",
         "drupal/media_entity": "1.6",
         "drupal/media_entity_instagram": "1.2",
