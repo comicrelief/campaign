@@ -472,4 +472,49 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
       throw new \Exception('The video with filename ' . $filename . ' was not found in the markup');
     }
   }
+
+  /**
+   * Click on the element with given CSS
+   * @When I click on :arg element
+   * @param string $field
+   */
+  public function iClickOnElement(string $field): void
+  {
+    $this->getSession()->getPage()->find('css', $field)->click();
+  }
+
+  /**
+   * Switch to a given iFrame with css locator
+   * @Then switch to iframe with css :locator
+   */
+  public function iSwitchToIFrameWithCSSLocator($locator) {
+    $iframe = $this->getSession()->getPage()->find("css", $locator);
+    $iframeName = $iframe->getAttribute("name");
+    if ($iframeName == "") {
+      $javascript = "(function(){
+            var iframes = document.getElementsByTagName('iframe');
+            for (var i = 0; i < iframes.length; i++) {
+                iframes[i].name = 'iframe_number_' + (i + 1) ;
+            }
+            })()";
+      $this->getSession()->executeScript($javascript);
+      $iframe = $this->getSession()->getPage()->find("css", $locator);
+      $iframeName = $iframe->getAttribute("name");
+    }
+    else {
+      throw new \Exception("iFrame already has a name: " . $iframeName);
+    }
+    $this->getSession()->getDriver()->switchToIFrame($iframeName);
+  }
+
+  /**
+   * Switches to the main window from an iframe
+   *
+   * @Given /^I switch to main window from iframe$/
+   */
+  public function iSwitchToMainWindowFromIframe(): void
+  {
+    $this->getSession()->switchToIFrame();
+  }
+
 }

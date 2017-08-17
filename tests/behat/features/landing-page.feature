@@ -43,7 +43,7 @@ Feature: Landing-page
       | field_landing_background_colour | White |
     Then I should see "My freshly created body copy"
 
-  @api @functionality @default-content
+  @api @functionality @default-content @javascript @wip
   Scenario: Create landing page with associated paragraphs
     Given I am logged in as a user with the "Editor user" role
     And I am viewing a "landing" content with "Test landing page" title and "profiles/contrib/cr/tests/behat/files/600x16:9.png" image and "<h1>Behat or Liv?</h1><h2>Spot the five differences!</h2>" body and with the following paragraphs:
@@ -55,11 +55,43 @@ Feature: Landing-page
     And I should see "Rich text paragraph"
     And I should see "Single Message 1"
     And I am on "/test-landing-page"
-    And I click "Edit"
+    And I click on "#block-tabs>nav>ul>li:contains('Edit')" element
+    And I wait for AJAX loading to finish
     And I select "Partner list" from "field_paragraphs[add_more][add_more_select]"
     And I press the "Add another Row component" button
+    And I wait for AJAX loading to finish
     And I press the "Add existing Partner" button
-    And I fill in "field_paragraphs[3][subform][field_partner_list][form][entity_id]" with "Three (4)"
+    And I wait for AJAX loading to finish
+    And I fill in "field_paragraphs[1][subform][field_partner_list][form][entity_id]" with "Three (4)"
     And I press the "Add Partner" button
+    And I wait for AJAX loading to finish
     And I press the "Save and keep published" button
+    And I wait for AJAX loading to finish
     Then I should see the image "sites/default/files/partner/logo/3_49_82.gif"
+
+    @api @javascript @wip
+    Scenario: Create Single Teaser block in landing page and verify content
+      Given I am logged in as a user with the "Editor user" role
+      And I am on "/test-landing-page"
+      And I click on "#block-tabs>nav>ul>li:contains('Edit')" element
+      And I wait for AJAX loading to finish
+      And I select "Content Wall" from "field_paragraphs[add_more][add_more_select]"
+      And I press the "Add another Row component" button
+      And I wait for AJAX loading to finish
+      And I fill in "field_paragraphs[3][subform][field_cw_title][0][value]" with "Teaser content wall"
+      And I press the "Add new Row" button
+      And I wait for AJAX loading to finish
+      And I fill in "field_paragraphs[3][subform][field_cw_row_reference][form][inline_entity_form][info][0][value]" with "Teaser block"
+      And I select "1 Col - L" from "field_paragraphs[3][subform][field_cw_row_reference][form][inline_entity_form][field_cw_view_mode]"
+      And I select "Teaser" from "field_paragraphs[3][subform][field_cw_row_reference][form][inline_entity_form][field_cw_block_reference][actions][bundle]"
+      And I press the "Add existing Content block" button
+      And I wait for AJAX loading to finish
+      And I fill in "field_paragraphs[3][subform][field_cw_row_reference][form][inline_entity_form][field_cw_block_reference][form][entity_id]" with "The countdown is on"
+      And I press the "Add Content block" button
+      And I wait for AJAX loading to finish
+      And I press the "Save and keep published" button
+      And I wait for 3 seconds
+      And I am on "/test-landing-page"
+      Then I should see "Teaser content wall"
+      And I should see "Relive all the best bits of last Red Nose Day"
+      And I wait for 10 seconds
