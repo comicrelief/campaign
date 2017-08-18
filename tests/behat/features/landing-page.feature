@@ -1,4 +1,4 @@
-@wip
+
 Feature: Landing-page
   Check a landing page and make sure that it contains the mentioned paragraphs
 
@@ -77,25 +77,35 @@ Feature: Landing-page
     And I select "Content Wall" from "field_paragraphs[add_more][add_more_select]"
     And I press the "Add another Row component" button
     And I wait for AJAX loading to finish
-    And I fill in "field_paragraphs[4][subform][field_cw_title][0][value]" with "Teaser content wall"
+    And I fill in "field_paragraphs[4][subform][field_cw_title][0][value]" with "Teaser & Quote content wall"
     And I press the "Add new Row" button
     And I wait for AJAX loading to finish
-    And I fill in "field_paragraphs[4][subform][field_cw_row_reference][form][inline_entity_form][info][0][value]" with "Teaser block"
-    And I select "1 Col - L" from "field_paragraphs[4][subform][field_cw_row_reference][form][inline_entity_form][field_cw_view_mode]"
+    And I fill in "field_paragraphs[4][subform][field_cw_row_reference][form][inline_entity_form][info][0][value]" with "Teaser & Quote block"
+    And I select "2 Col - M + M" from "field_paragraphs[4][subform][field_cw_row_reference][form][inline_entity_form][field_cw_view_mode]"
     And I select "Teaser" from "field_paragraphs[4][subform][field_cw_row_reference][form][inline_entity_form][field_cw_block_reference][actions][bundle]"
     And I press the "Add existing Content block" button
     And I wait for AJAX loading to finish
     And I fill in "field_paragraphs[4][subform][field_cw_row_reference][form][inline_entity_form][field_cw_block_reference][form][entity_id]" with "The countdown is on"
     And I press the "Add Content block" button
     And I wait for AJAX loading to finish
+
+    # Add Quote block in landing page and verify content
+    And I select "Quote Block" from "field_paragraphs[4][subform][field_cw_row_reference][form][inline_entity_form][field_cw_block_reference][actions][bundle]"
+    And I press the "Add existing Content block" button
+    And I wait for AJAX loading to finish
+    And I fill in "field_paragraphs[4][subform][field_cw_row_reference][form][inline_entity_form][field_cw_block_reference][form][entity_id]" with "Jo's Quote"
+    And I press the "Add Content block" button
+    And I wait for AJAX loading to finish
+
+    # Save and publish Teaser & Quote block
     And I press the "Save and keep published" button
     And I wait for 3 seconds
     And I am on "/test-landing-page"
-    Then I should see "Teaser content wall"
+    Then I should see "Teaser & Quote content wall"
     And I should see "Relive all the best bits of last Red Nose Day"
 
-    # Delete the teaser block
+    # Delete the teaser & quote block
     Given I am on "/admin/structure/block/block-content"
-    And I click "Teaser block"
+    And I click "Teaser & Quote block"
     And I click "edit-delete"
     And I press the "Delete" button
