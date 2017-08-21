@@ -27,11 +27,11 @@ function cr_card_field_cr_card_background(FieldStorageDefinitionInterface $defin
 }
 
 /**
- * Options callback for cr_card_field_cr_card_grid.
+ * Options callback for field_cr_cards_grid.
  *
  * @see options_allowed_values()
  */
-function cr_card_field_cr_card_grid(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
+function cr_cards_field_cr_cards_grid(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
   $values = [
     'cards--three-grid' => t('1/3 Items'),
     'cards--four-grid' => t('1/4 Items'),
