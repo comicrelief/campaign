@@ -1,4 +1,4 @@
-
+@wip
 Feature: Landing-page
   Check a landing page and make sure that it contains the mentioned paragraphs
 
@@ -89,7 +89,7 @@ Feature: Landing-page
     And I press the "Add Content block" button
     And I wait for AJAX loading to finish
 
-    # Add Quote block in landing page and verify content
+    # Add existing Quote block in landing page and verify content
     And I select "Quote Block" from "field_paragraphs[4][subform][field_cw_row_reference][form][inline_entity_form][field_cw_block_reference][actions][bundle]"
     And I press the "Add existing Content block" button
     And I wait for AJAX loading to finish
@@ -109,3 +109,20 @@ Feature: Landing-page
     And I click "Teaser & Quote block"
     And I click "edit-delete"
     And I press the "Delete" button
+
+  @api @functionality @default-content @javascript
+  Scenario: Add Iframe embedded custom block
+    Given I am logged in as a user with the "Editor user" role
+    And I am on "/block/add/cr_iframe_embedded"
+    And I fill in "Block description" with "Comic Adventure embed"
+    And I select "Blue" from "edit-field-cr-iframe-embedded-bg"
+    And I fill in "Embed link" with "https://comicadventure.rednoseday.com/index.html"
+    And I press the "Save" button
+    Then I should see "Iframe embedded Comic Adventure embed has been created."
+
+    # Delete Iframe embedded custom block
+    Given I am on "/admin/structure/block/block-content"
+    And I click "Comic Adventure embed"
+    And I click "edit-delete"
+    And I press the "Delete" button
+    Then I should see "The custom block Comic Adventure embed has been deleted."
