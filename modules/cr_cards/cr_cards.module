@@ -25,3 +25,16 @@ function cr_cards_field_cr_cards_background(FieldStorageDefinitionInterface $def
 function cr_card_field_cr_card_background(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
     return \Drupal::service('cr.colours.colour_service')->getStandardColoursArray();
 }
+
+/**
+ * Options callback for cr_card_field_cr_card_grid.
+ *
+ * @see options_allowed_values()
+ */
+function cr_card_field_cr_card_grid(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL) {
+  $values = [
+    'cards--three-grid' => t('1/3 Items'),
+    'cards--four-grid' => t('1/4 Items'),
+  ];
+  return $values;
+}
