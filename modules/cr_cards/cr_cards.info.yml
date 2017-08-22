@@ -1,6 +1,6 @@
 name: CR Cards
 type: module
-description: Contains config for Cards Row Paragraph type.
+description: Contains config for Cards Paragraph type.
 core: 8.x
 package: Comic Relief
 dependencies:

@@ -10,7 +10,7 @@ id: paragraph.cr_cards.field_cr_cards_background
 field_name: field_cr_cards_background
 entity_type: paragraph
 bundle: cr_cards
-label: 'Cards row Background colour'
+label: 'Cards Background colour'
 description: ''
 required: false
 translatable: false
