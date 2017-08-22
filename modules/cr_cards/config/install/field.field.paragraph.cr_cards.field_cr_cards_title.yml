@@ -12,9 +12,7 @@ label: 'Cards title'
 description: 'Please enter title to your cards'
 required: false
 translatable: false
-default_value:
-  -
-    value: cards--four-grid-left
+default_value: {  }
 default_value_callback: ''
 settings: {  }
 field_type: string
