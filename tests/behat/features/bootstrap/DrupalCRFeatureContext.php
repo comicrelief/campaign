@@ -472,4 +472,15 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
       throw new \Exception('The video with filename ' . $filename . ' was not found in the markup');
     }
   }
+
+  /**
+   * Click on the element with given CSS
+   * @When I click on :arg element
+   * @param string $field
+   */
+  public function iClickOnElement(string $field): void
+  {
+    $this->getSession()->getPage()->find('css', $field)->click();
+  }
+
 }
