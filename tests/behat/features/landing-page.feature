@@ -1,4 +1,4 @@
-@wip
+
 Feature: Landing-page
   Check a landing page and make sure that it contains the mentioned paragraphs
 
@@ -110,7 +110,7 @@ Feature: Landing-page
     And I click "edit-delete"
     And I press the "Delete" button
 
-  @api @functionality @default-content @javascript
+  @api @functionality
   Scenario: Add Iframe embedded custom block
     Given I am logged in as a user with the "Editor user" role
     And I am on "/block/add/cr_iframe_embedded"
@@ -121,8 +121,25 @@ Feature: Landing-page
     Then I should see "Iframe embedded Comic Adventure embed has been created."
 
     # Delete Iframe embedded custom block
+    Given I am logged in as a user with the "Editor user" role
     Given I am on "/admin/structure/block/block-content"
     And I click "Comic Adventure embed"
     And I click "edit-delete"
     And I press the "Delete" button
     Then I should see "The custom block Comic Adventure embed has been deleted."
+
+  @api @functionality
+  Scenario: Create test landing page with story row paragraph
+    Given I am logged in as a user with the "Editor user" role
+    And I create a "landing" page with "Test landing page" title and story row paragraph with following fields:
+      | field_cr_story_title             | Testing story row                                                      |
+      | field_cr_story_fundraiser_total  | £158                                                                   |
+      | field_cr_story_fundraiser_copy   | Baking competition for Red Nose Day                                    |
+      | field_cr_story_fundraiser_image  | profiles/contrib/cr/tests/behat/files/400x4:3.png                      |
+      | field_cr_story_fundraiser_bg_col | Yellow                                                                 |
+      | field_cr_story_beneficiary_copy  | In Africa, that's enough to buy 63 mosquito nets that protect children |
+      | field_cr_story_beneficiary_image | profiles/contrib/cr/tests/behat/files/400x4:3.png                      |
+    And I am on "/test-landing-page"
+    Then I should see "Testing story row"
+    And I should see "baking competition for Red Nose Day"
+    And I should see "In Africa, that's enough to buy 63 mosquito nets that protect children"

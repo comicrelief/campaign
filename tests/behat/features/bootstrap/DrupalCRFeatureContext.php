@@ -483,4 +483,63 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
     $this->getSession()->getPage()->find('css', $field)->click();
   }
 
+  /**
+   * Creates landing page with story row paragraphs with fields title, fundraiser_total,
+   *         fundraiser_copy, fundraiser_img, fundraiser_bg_color, beneficiary_copy, beneficiary_img
+   *
+   * @Given I create a :type( page ) with :title( title) and story row paragraph with following fields:
+   */
+  public function createLandingPageWithStoryRowParagraph( $type, $title,TableNode $fields ) {
+
+    // First, create a landing page node.
+    $node = (object) [
+      'title' => $title,
+      'type' => $type,
+      'uid' => 1,
+    ];
+    $node = $this->nodeCreate($node);
+
+    $paragraph_items = [];
+
+    $data = [
+      'type' => 'cr_story',
+    ];
+
+    // Create paragraphs
+    foreach ($fields->getRowsHash() as $field => $value) {
+
+      switch ($field) {
+        case 'field_cr_story_fundraiser_copy' || 'field_cr_story_beneficiary_copy':
+          $data[$field] = [
+            'value' => $value,
+            'format' => 'basic_html',
+          ];
+          break;
+        case 'field_cr_story_fundraiser_image' || 'field_cr_story_beneficiary_image':
+          $data[$field] = $this->expandImage($value);
+          break;
+        default:
+          $data[$field] = [
+            'value' => $value,
+          ];
+      }
+
+    }
+
+    $paragraph_item = \Drupal\paragraphs\Entity\Paragraph::create($data);
+    $paragraph_item->save();
+
+    $paragraph_items[] = [
+        'target_id' => $paragraph_item->id(),
+        'target_revision_id' => $paragraph_item->getRevisionId(),
+    ];
+
+
+    // Add all the data to the node
+    $node_loaded = \Drupal\node\Entity\Node::load($node->nid);
+    $node_loaded->field_paragraphs = $paragraph_items;
+    $node_loaded->save();
+
+  }
+
 }
