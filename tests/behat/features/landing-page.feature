@@ -141,5 +141,6 @@ Feature: Landing-page
       | field_cr_story_beneficiary_image | profiles/contrib/cr/tests/behat/files/400x4:3.png                      |
     And I am on "/test-landing-page"
     Then I should see "Testing story row"
+    And I should see "£158"
     And I should see "baking competition for Red Nose Day"
     And I should see "In Africa, that's enough to buy 63 mosquito nets that protect children"
