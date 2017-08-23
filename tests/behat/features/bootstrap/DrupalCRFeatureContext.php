@@ -475,11 +475,12 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
 
   /**
    * Click on the element with given CSS
+   *
    * @When I click on :arg element
+   *
    * @param string $field
    */
-  public function iClickOnElement(string $field): void
-  {
+  public function iClickOnElement(string $field): void {
     $this->getSession()->getPage()->find('css', $field)->click();
   }
 
@@ -489,7 +490,7 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
    *
    * @Given I create a :type( page ) with :title( title) and story row paragraph with following fields:
    */
-  public function createLandingPageWithStoryRowParagraph( $type, $title,TableNode $fields ) {
+  public function createLandingPageWithStoryRowParagraph($type, $title, TableNode $fields) {
 
     // First, create a landing page node.
     $node = (object) [
@@ -530,8 +531,8 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
     $paragraph_item->save();
 
     $paragraph_items[] = [
-        'target_id' => $paragraph_item->id(),
-        'target_revision_id' => $paragraph_item->getRevisionId(),
+      'target_id' => $paragraph_item->id(),
+      'target_revision_id' => $paragraph_item->getRevisionId(),
     ];
 
 
