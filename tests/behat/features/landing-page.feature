@@ -1,4 +1,3 @@
-
 Feature: Landing-page
   Check a landing page and make sure that it contains the mentioned paragraphs
 
@@ -122,7 +121,7 @@ Feature: Landing-page
 
     # Delete Iframe embedded custom block
     Given I am logged in as a user with the "Editor user" role
-    Given I am on "/admin/structure/block/block-content"
+    And I am on "/admin/structure/block/block-content"
     And I click "Comic Adventure embed"
     And I click "edit-delete"
     And I press the "Delete" button
