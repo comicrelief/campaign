@@ -2,9 +2,9 @@
 
 namespace BehatTests;
 
-use Drupal\DrupalExtension\Context\RawDrupalContext;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Gherkin\Node\TableNode;
+use Drupal\DrupalExtension\Context\RawDrupalContext;
 
 /**
  * Defines application features from the specific context.
@@ -485,44 +485,54 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
   }
 
   /**
-   * Creates landing page with story row paragraphs with fields title, fundraiser_total,
-   *         fundraiser_copy, fundraiser_img, fundraiser_bg_color, beneficiary_copy, beneficiary_img
+   * Helper function to create landing page
    *
-   * @Given I create a :type( page ) with :title( title) and story row paragraph with following fields:
+   * @param string $type
+   * @param string $title
+   *
    */
-  public function createLandingPageWithStoryRowParagraph($type, $title, TableNode $fields) {
+  public function createLandingPage($type, $title) {
 
-    // First, create a landing page node.
-    $node = (object) [
+    // Create a landing page node.
+    $lnode = (object) [
       'title' => $title,
       'type' => $type,
       'uid' => 1,
     ];
-    $node = $this->nodeCreate($node);
 
-    $paragraph_items = [];
+    return $this->nodeCreate($lnode);
 
-    $data = [
-      'type' => 'cr_story',
-    ];
+  }
+
+
+  /**
+   * Creates paragraphs with specified fields in landing page
+   *
+   * @Then I add :paragraph( paragraph ) with following fields in a test landing page:
+   */
+  public function createLandingPageWithParagraph($paragraph, TableNode $fields) {
 
     // Create paragraphs
+    $paragraph_items = [];
+    $data = [
+      'type' => $paragraph,
+    ];
+
     foreach ($fields->getRowsHash() as $field => $value) {
 
-      switch ($field) {
-        case 'field_cr_story_fundraiser_copy' || 'field_cr_story_beneficiary_copy':
-          $data[$field] = [
-            'value' => $value,
-            'format' => 'basic_html',
-          ];
-          break;
-        case 'field_cr_story_fundraiser_image' || 'field_cr_story_beneficiary_image':
-          $data[$field] = $this->expandImage($value);
-          break;
-        default:
-          $data[$field] = [
-            'value' => $value,
-          ];
+      if (strpos(strtolower($field), 'copy') !== FALSE) {
+        $data[$field] = [
+          'value' => $value,
+          'format' => 'basic_html',
+        ];
+      } elseif ((strpos(strtolower($field), 'image') !== FALSE) || (strpos(strtolower($field), 'background') !== FALSE)) {
+        $data[$field] = $this->expandImage($value);
+      } elseif ((strpos(strtolower($field), 'img') !== FALSE)){
+        $data[$field] = $this->expandImage($value);
+      } else {
+        $data[$field] = [
+          'value' => $value,
+        ];
       }
 
     }
@@ -535,9 +545,11 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
       'target_revision_id' => $paragraph_item->getRevisionId(),
     ];
 
+    // Create test landing page
+    $landingPage = $this->createLandingPage('landing', 'Test landing page');
 
-    // Add all the data to the node
-    $node_loaded = \Drupal\node\Entity\Node::load($node->nid);
+    // Add paragraph to the landing page and save
+    $node_loaded = \Drupal\node\Entity\Node::load($landingPage->nid);
     $node_loaded->field_paragraphs = $paragraph_items;
     $node_loaded->save();
 
