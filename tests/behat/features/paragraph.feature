@@ -1,8 +1,25 @@
 Feature: Paragraphs
-  Create Story row, Rich text, Single msg paragraph in landing page and verify
+  Create Partner list, Story row, Rich text, Single msg paragraph in a landing page and verify
 
   Background:
     Given I am logged in as a user with the "Editor user" role
+
+  @api @functionality @default-content @javascript
+  Scenario: Create Partner list in landing page and verify
+    And I am viewing a "landing" content with "Test landing page" title and "profiles/contrib/cr/tests/behat/files/600x16:9.png" image and "<h1>Behat or Liv?</h1><h2>Spot the five differences!</h2>" body
+    And I click on "#block-tabs>nav>ul>li:contains('Edit')" element
+    And I wait for AJAX loading to finish
+    And I select "Partner list" from "field_paragraphs[add_more][add_more_select]"
+    And I press the "Add Row component" button
+    And I wait for AJAX loading to finish
+    And I press the "Add existing Partner" button
+    And I wait for AJAX loading to finish
+    And I fill in "field_paragraphs[0][subform][field_partner_list][form][entity_id]" with "Three (4)"
+    And I press the "Add Partner" button
+    And I wait for AJAX loading to finish
+    And I press the "Save and keep published" button
+    And I wait for AJAX loading to finish
+    Then I should see the image "sites/default/files/partner/logo/3_49_82.gif"
 
   @api @functionality
   Scenario: Create story row paragraph in landing page and verify

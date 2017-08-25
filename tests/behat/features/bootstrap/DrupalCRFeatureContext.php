@@ -190,9 +190,9 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
   /**
    * Creates a node that has paragraphs provided in a table.
    *
-   * @Given I am viewing a/an :type( content) with :title( title) and :img( image) and :body( body) and with the following paragraphs:
+   * @Given I am viewing a/an :type( content) with :title( title) and :img( image) and :body( body)
    */
-  public function assertParagraphs($type, $title, $image, $body, TableNode $paragraphs) {
+  public function assertParagraphs($type, $title, $image, $body) {
     // First, create a landing page node.
     $node = (object) [
       'title' => $title,
@@ -201,17 +201,6 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
     ];
     $node = $this->nodeCreate($node);
 
-    $paragraph_items = [];
-
-    // Create paragraphs
-    foreach ($paragraphs->getHash() as $paragraph) {
-      $paragraph_item = $this->createParagraphItem($paragraph);
-      $paragraph_items[] = [
-        'target_id' => $paragraph_item->id(),
-        'target_revision_id' => $paragraph_item->getRevisionId(),
-      ];
-    }
-
     // Add all the data to the node
     $node_loaded = \Drupal\node\Entity\Node::load($node->nid);
     $node_loaded->field_landing_image = $this->expandImage($image);
@@ -219,7 +208,6 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
       'value' => $body,
       'format' => 'full_html',
     ];
-    $node_loaded->field_paragraphs = $paragraph_items;
     $node_loaded->save();
 
     // Set internal page on the new landing page.

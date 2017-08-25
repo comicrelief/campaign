@@ -1,4 +1,3 @@
-@wip
 Feature: Landing-page
   Check a landing page and make sure that it contains the mentioned paragraphs
 
