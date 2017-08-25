@@ -1,9 +1,8 @@
 Feature: Paragraphs
-  Create paragraph in landing page and verify
+  Create Story row, Rich text, Single msg paragraph in landing page and verify
 
   Background:
     Given I am logged in as a user with the "Editor user" role
-
 
   @api @functionality
   Scenario: Create story row paragraph in landing page and verify
