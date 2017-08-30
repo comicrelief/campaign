@@ -311,17 +311,11 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
 
   /**
    * @Then I should see the image :Uri
-   * @param String $uri
-   * @throws \Exception
+   *
    */
   public function FindImage($uri) {
-    $img = $this->getSession()->getPage()
-      ->find('xpath', '//img[@src="' . $uri . '"]');
-
-    if(!$img) {
-      throw new \Exception("Image not found : $img");
-    }
-    return $img;
+    return $this->getSession()->getPage()
+      ->find('css', 'img[src="' . $uri . '"]');
   }
 
   /**
@@ -330,7 +324,7 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
    */
   public function NotFindImage($uri) {
     return !$this->getSession()->getPage()
-      ->find('xpath', '//img[@src="' . $uri . '"]');
+      ->find('css', 'img[src="' . $uri . '"]');
   }
 
   /**

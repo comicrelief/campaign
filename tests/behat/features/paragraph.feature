@@ -19,7 +19,7 @@ Feature: Paragraphs
     And I wait for AJAX loading to finish
     And I press the "Save and keep published" button
     And I wait for AJAX loading to finish
-    Then I should see the image "sites/default/files/partner/logo/3_49_82.gif"
+    Then I should see the image "/sites/default/files/partner/logo/3_49_3.gif"
 
   @api @functionality
   Scenario: Create story row paragraph in landing page and verify
