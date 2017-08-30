@@ -318,10 +318,10 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
    */
   public function FindImage($uri) {
     $img = $this->getSession()->getPage()
-      ->find('css', 'img[src="' . $uri . '"]');
+      ->find('css', 'img[src*="' . $uri . '"]');
     if (!$img) {
       $img = $this->getSession()->getPage()
-        ->find('css', 'img[data-src="' . $uri . '"]');
+        ->find('css', 'img[data-src*="' . $uri . '"]');
     }
     if (!$img) {
       throw new \Exception("Image not found : $uri");
@@ -557,6 +557,7 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
 
   /**
    * Mouse hover with specified CSS locator
+   * 
    * @When /^I hover over the element "([^"]*)"$/
    *
    * @param string $locator
@@ -568,7 +569,7 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
     $element = $session->getPage()
       ->find('css', $locator); // runs the actual query and returns the element
 
-    if (NULL === $element) {
+    if ($element === NULL) {
       throw new \InvalidArgumentException(sprintf('Could not evaluate CSS selector: "%s"', $locator));
     }
     $element->mouseOver();

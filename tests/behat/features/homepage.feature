@@ -17,7 +17,7 @@ Feature: Homepage
 
   @default-content
   Scenario: Verify body region
-    Then I should see the image "/sites/default/files/styles/bg_rich_text_wide/public/2016-08/desktop_header_lenny_3.jpg?itok=XWDwA8b6"
+    Then I should see the image "/sites/default/files/styles/bg_rich_text_wide/public/2016-08/desktop_header_lenny"
     And I should see "Bake a massive difference"
 
   @default-content
