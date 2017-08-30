@@ -312,10 +312,21 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
   /**
    * @Then I should see the image :Uri
    *
+   * @param String $uri
+   *
+   * @throws \Exception
    */
   public function FindImage($uri) {
-    return $this->getSession()->getPage()
+    $img = $this->getSession()->getPage()
       ->find('css', 'img[src="' . $uri . '"]');
+    if (!$img) {
+      $img = $this->getSession()->getPage()
+        ->find('css', 'img[data-src="' . $uri . '"]');
+    }
+    if (!$img) {
+      throw new \Exception("Image not found : $uri");
+    }
+    return $img;
   }
 
   /**
@@ -511,11 +522,14 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
           'value' => $value,
           'format' => 'basic_html',
         ];
-      } elseif ((strpos(strtolower($field), 'image') !== FALSE) || (strpos(strtolower($field), 'background') !== FALSE)) {
+      }
+      elseif ((strpos(strtolower($field), 'image') !== FALSE) || (strpos(strtolower($field), 'background') !== FALSE)) {
         $data[$field] = $this->expandImage($value);
-      } elseif ((strpos(strtolower($field), 'img') !== FALSE)){
+      }
+      elseif ((strpos(strtolower($field), 'img') !== FALSE)) {
         $data[$field] = $this->expandImage($value);
-      } else {
+      }
+      else {
         $data[$field] = [
           'value' => $value,
         ];
@@ -544,15 +558,17 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
   /**
    * Mouse hover with specified CSS locator
    * @When /^I hover over the element "([^"]*)"$/
+   *
    * @param string $locator
+   *
    * @throws \Exception
    */
-  public function iHoverOverTheElement($locator)
-  {
+  public function iHoverOverTheElement($locator) {
     $session = $this->getSession(); // get the mink session
-    $element = $session->getPage()->find('css', $locator); // runs the actual query and returns the element
+    $element = $session->getPage()
+      ->find('css', $locator); // runs the actual query and returns the element
 
-    if (null === $element) {
+    if (NULL === $element) {
       throw new \InvalidArgumentException(sprintf('Could not evaluate CSS selector: "%s"', $locator));
     }
     $element->mouseOver();
