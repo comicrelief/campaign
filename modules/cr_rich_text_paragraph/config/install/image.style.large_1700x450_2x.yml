@@ -3,8 +3,8 @@ status: true
 dependencies:
   module:
     - focal_point
-name: large_1700x500_2x
-label: 'Large 1700x500 2x'
+name: large_1700x450_2x
+label: 'Large 1700x450 2x'
 effects:
   d2105d10-907a-4a4f-9631-57f5f0ea86af:
     uuid: d2105d10-907a-4a4f-9631-57f5f0ea86af
@@ -12,4 +12,4 @@ effects:
     weight: 1
     data:
       width: '3400'
-      height: '1000'
+      height: '900'
