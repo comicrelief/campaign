@@ -11,7 +11,8 @@
         .find('#edit-email').focus();
     });
 
-    $(".block--cr-email-signup--head .close-button").on("click", function() {
+    $(".block--cr-email-signup--head .close-button").on("click", function(e) {
+      e.preventDefault();
       $(".meta-icons__esu-toggle").removeClass("active");
       $(".block--cr-email-signup--head").removeClass("show");
     });    

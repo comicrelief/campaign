@@ -26,7 +26,8 @@
       $(".search-block, header[role='banner'] nav, .search-overlay").removeClass("show");
     });
 
-    $(".search-block .close-button").on("click", function() {
+    $(".search-block .close-button").on("click", function(e) {
+      e.preventDefault();
       $("a[role=button].meta-icons__magnify").removeClass("active");
       $(".search-block, .search-overlay").removeClass("show");
     });
