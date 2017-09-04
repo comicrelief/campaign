@@ -3,13 +3,13 @@ status: true
 dependencies:
   module:
     - focal_point
-name: large_1700x450
-label: 'Large 1700x450'
+name: large_1700x500
+label: 'Large 1700x500'
 effects:
-  4fccce23-c10b-4f8f-b892-f676ec9dd1b7:
-    uuid: 4fccce23-c10b-4f8f-b892-f676ec9dd1b7
+  983c9655-ab19-4afd-85e8-af9812dc9058:
+    uuid: 983c9655-ab19-4afd-85e8-af9812dc9058
     id: focal_point_scale_and_crop
     weight: 1
     data:
       width: 1700
-      height: 450
+      height: 500
