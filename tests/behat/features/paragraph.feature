@@ -4,21 +4,19 @@ Feature: Paragraphs
   Background:
     Given I am logged in as a user with the "Editor user" role
 
-  @api @functionality @default-content @javascript
+  @api @default-content
   Scenario: Create Partner list in landing page and verify
     And I am viewing a "landing" content with "Test landing page" title and "profiles/contrib/cr/tests/behat/files/600x16:9.png" image and "<h1>Behat or Liv?</h1><h2>Spot the five differences!</h2>" body
-    And I click on "#block-tabs>nav>ul>li:contains('Edit')" element
-    And I wait for AJAX loading to finish
+    And I click on ".tabs.primary>li:nth-of-type(2)>a" element
     And I select "Partner list" from "field_paragraphs[add_more][add_more_select]"
     And I press the "Add Row component" button
-    And I wait for AJAX loading to finish
+    And I wait for 2 seconds
     And I press the "Add existing Partner" button
-    And I wait for AJAX loading to finish
+    And I wait for 2 seconds
     And I fill in "field_paragraphs[0][subform][field_partner_list][form][entity_id]" with "Three (4)"
     And I press the "Add Partner" button
-    And I wait for AJAX loading to finish
+    And I wait for 2 seconds
     And I press the "Save and keep published" button
-    And I wait for AJAX loading to finish
     Then I should see the image "/sites/default/files/partner/logo/3_49"
 
   @api @functionality
@@ -54,4 +52,3 @@ Feature: Paragraphs
       | field_single_msg_body  | SMR 1 with cream grey background                   |
     When I am on "/test-landing-page"
     Then I should see "SMR 1 with cream grey background"
-
