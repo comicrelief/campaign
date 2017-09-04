@@ -32,7 +32,7 @@ Feature: Media
     When I go to "admin/content/media"
     Then I should see the link "pdf (administration)"
 
-  @api @javascript
+  @api
   Scenario: Create an external file
     When I visit "/media/add/cr_external_file"
     And I enter "ext file (administration)" for "Media name"

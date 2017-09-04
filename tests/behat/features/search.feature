@@ -30,10 +30,8 @@ Feature: Search
     And I enter "Kids Snuffles Money Box" for "Display title"
     And I select "Kids" from "Category"
     And I attach the file "/tests/behat/files/rnd17_kids_snuffles-money-box.pdf" to "File"
-    And I wait for AJAX to finish
     And I press "Save and publish"
     And I wait for 2 seconds
-
     #Search in the DB media pdf
     Given I am on "search?text=money+box"
     Then I should see the link "Kids Snuffles Money Box"
@@ -49,7 +47,6 @@ Feature: Search
     And I select "Schools" from "Resource category"
     And I press "Save and publish"
     And I wait for 2 seconds
-
     #Search for external file
     Given I am on "search?text=Youth+fundraising+pack"
     Then I should see the link "Youth fundraising pack"
@@ -64,9 +61,6 @@ Feature: Search
     And I enter "Stephen Hawking video" for "Video caption"
     And I press "Save and publish"
     And I wait for 2 seconds
-
     #Search for video item
     Given I am on "search?text=Stephen+Hawking"
     Then I should see "Stephen Hawking video"
-
-

@@ -1,9 +1,11 @@
 Feature: Downloadable
   This feature covers downloadables
 
+  Background:
+    Given I am logged in as a user with the "editor" role
+
   @api @javascript
   Scenario: Create a downloadable image
-    Given I am logged in as a user with the "editor" role
     When I visit "/media/add/cr_file"
     And I enter "nose (administration)" for "Media name"
     And I enter "Red Nose!" for "Display title"
@@ -18,7 +20,6 @@ Feature: Downloadable
 
   @api @javascript
   Scenario: Create a downloadable pdf
-    Given I am logged in as a user with the "editor" role
     When I visit "/media/add/cr_file"
     And I enter "pdf (administration)" for "Media name"
     And I enter "Sample PDF" for "Display title"
@@ -33,7 +34,6 @@ Feature: Downloadable
 
   @api @javascript
   Scenario: Create an external file
-    Given I am logged in as a user with the "editor" role
     When I visit "/media/add/cr_external_file"
     And I enter "ext file (administration)" for "Media name"
     And I enter "http://www.pdf995.com/samples/pdf.pdf" for "URL"
