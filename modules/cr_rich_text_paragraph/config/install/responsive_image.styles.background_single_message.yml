@@ -6,8 +6,6 @@ dependencies:
     - image.style.large_1700x500_2x
     - image.style.small_768x450
     - image.style.small_768x450_2x
-  theme:
-    - campaign_base
 id: background_single_message
 label: 'Background Single Message'
 image_style_mappings:
