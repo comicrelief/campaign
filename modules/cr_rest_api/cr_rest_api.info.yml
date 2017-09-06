@@ -9,6 +9,4 @@ dependencies:
   - rest_menu_tree
 
 config_devel:
-  - rest.settings
-  - serialization.settings
   - rest.resource.menu_tree
