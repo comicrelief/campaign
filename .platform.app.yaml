@@ -71,7 +71,7 @@ hooks:
         set -e
         composer drupal:install
         cd web
-        drush en -y cr_default_content
+        drush en -y cr_default_content cr_rest_api
 
 # The configuration of scheduled execution.
 crons:
