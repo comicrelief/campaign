@@ -30,7 +30,9 @@
             "@grunt:dependencies"
         ],
         "post-update-cmd": [
-            "@drupal:scaffold"
+            "@drupal:scaffold",
+            "@campaign:scaffold",
+            "@grunt:dependencies"
         ],
         "grunt:dependencies": [
             "cd web/profiles/contrib/cr/themes/custom/campaign_base;npm install"
