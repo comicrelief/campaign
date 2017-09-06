@@ -50,7 +50,7 @@
             "@composer install",
             "@grunt:build",
             "@drupal:install",
-            "cd web;drush en -y cr_default_content"
+            "cd web;drush en -y cr_default_content cr_rest_api"
         ],
         "code:check": [
             "vendor/bin/phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer",
