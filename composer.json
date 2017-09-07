@@ -74,9 +74,6 @@
             },
             "drupal/views_ajax_history": {
                 "https://www.drupal.org/node/2835957": "https://www.drupal.org/files/issues/second_ajax_call-2835957-3.patch"
-            },
-            "drupal/file_entity": {
-                "https://www.drupal.org/node/2867574": "https://www.drupal.org/files/issues/file_entity-83-3.patch"
             }
         },
         "installer-paths": {
@@ -106,7 +103,7 @@
         "drupal/core": "8.3.7",
         "drupal/ctools": "3.0",
         "drupal/config_split": "1.0-beta6",
-        "drupal/file_entity": "2.0-beta3",
+        "drupal/file_entity": "2.0-beta4",
         "drupal/media_entity": "1.6",
         "drupal/media_entity_instagram": "1.2",
         "drupal/media_entity_image": "1.2",
