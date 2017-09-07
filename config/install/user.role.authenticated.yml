@@ -32,6 +32,7 @@ permissions:
   - 'edit own zip files'
   - 'exclude from cookieconsent'
   - 'restful get entity:node'
+  - 'restful get menu_tree'
   - 'use text format basic_html'
   - 'view files'
   - 'view media'
