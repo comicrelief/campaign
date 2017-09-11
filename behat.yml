@@ -8,12 +8,9 @@ default:
         - Drupal\DrupalExtension\Context\MessageContext
         - Drupal\DrupalExtension\Context\MinkContext
         - BehatTests\DrupalCRFeatureContext
+      filters:
+        tags: '~@rest'
   extensions:
-    Behat\MinkExtension:
-      base_url: http://web
-      goutte: ~
-      selenium2:
-        wd_host: http://selenium:4444/wd/hub
     Drupal\DrupalExtension:
       api_driver: drupal
       blackbox: ~
@@ -32,3 +29,11 @@ default:
         footer_social: .footer__social-links
         header: .header__inner-wrapper
         partners: .view-partners
+api:
+  suites:
+    local:
+      paths: [ %paths.base%/tests/behat/features ]
+      contexts:
+        - BehatTests\ApiFeatureContext
+      filters:
+        tags: '@rest'
