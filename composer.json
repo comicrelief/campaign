@@ -123,7 +123,7 @@
         "drupal/file_entity": "2.0-beta4",
         "drupal/focal_point": "1.0-beta4",
         "drupal/google_tag": "1.x-dev#09ce10c",
-        "drupal/imagemagick": "1.0-alpha6",
+        "drupal/imagemagick": "2.1",
         "drupal/inline_entity_form": "1.x-dev#dbfc93f",
         "drupal/layout_plugin": "1.0-alpha23",
         "drupal/media_entity": "1.6",
