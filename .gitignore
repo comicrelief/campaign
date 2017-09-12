@@ -3,9 +3,9 @@
 
 /web/
 /vendor/
+composer.lock
 
 # Ignore bundle files
-/.bundle/
 /themes/custom/campaign_base/node_modules/
 
 # Ignore temporary unison files (for macintosh)

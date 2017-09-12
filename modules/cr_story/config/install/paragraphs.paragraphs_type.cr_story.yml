@@ -3,3 +3,4 @@ status: true
 dependencies: {  }
 id: cr_story
 label: 'Story Row'
+behavior_plugins: {  }

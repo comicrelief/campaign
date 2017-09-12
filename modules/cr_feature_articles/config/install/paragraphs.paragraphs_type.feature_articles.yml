@@ -3,3 +3,4 @@ status: true
 dependencies: {  }
 id: feature_articles
 label: 'Feature Articles'
+behavior_plugins: {  }

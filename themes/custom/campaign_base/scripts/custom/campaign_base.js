@@ -2,7 +2,8 @@
   $( document ).ready(function() {
 
     // todo make a function
-    $("a[role=button].meta-icons__magnify").on("click", function() {
+    $("a[role=button].meta-icons__magnify").on("click", function(e) {
+      e.preventDefault();
       $(this).toggleClass("active");
       $(".search-block, .search-overlay:not('.show'), .search-overlay.search-on").toggleClass("show");
       $(".search-overlay").toggleClass("search-on");
@@ -25,7 +26,8 @@
       $(".search-block, header[role='banner'] nav, .search-overlay").removeClass("show");
     });
 
-    $(".search-block .icon").on("click", function() {
+    $(".search-block .close-button").on("click", function(e) {
+      e.preventDefault();
       $("a[role=button].meta-icons__magnify").removeClass("active");
       $(".search-block, .search-overlay").removeClass("show");
     });
@@ -88,34 +90,6 @@
 
     // use jQuery UI selectboxes
     $('select').selectmenu();
-    
-    // Activate lightcase
-    // Video lightcase
-    $('a[data-rel^=lightcase]').lightcase({
-      overlayOpacity: .95,
-      iframe: {
-        width: "100%",
-        height: "100%",
-        frameborder: 0
-      },
-      
-      onFinish : {
-
-        custom: function() {
-
-          var caption = $(this).parent().find('.media-block__caption');
-
-          $('.lightcase-contentInner iframe').focus();
-
-          if (caption.length) {
-            lightcase.get('caption').html(caption.html());
-            $('#lightcase-caption').show();
-          }
-
-          lightcase.resize();
-        }
-      }
-    });
 
     // ui selectmenu change listener for
     // news landing page exposed filter
@@ -146,5 +120,15 @@
         $('body').addClass('crNavTooltips');
       },
     });
+
+    // Helper snippet as the cookie banner module doesn't provide a 'state' we can use for any affected styling
+    setTimeout(function(){
+     // Add our active class if the banner is present
+      $('body > .cc_banner-wrapper').length ? $('body').addClass('cc-banner--visible') : null ;
+      // Add a button click handler (if it's present in the DOM) to remove the active class
+      $('.cc_banner-wrapper a.btn').on('click', function(){
+        $('body').removeClass('cc-banner--visible');
+      });
+    }, 1500);
   })
 })(jQuery, Drupal);

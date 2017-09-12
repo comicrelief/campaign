@@ -29,4 +29,6 @@ default:
         esu_fundraise: .cr-email-signup-fundraise-form
         esu_register_interest: .cr-email-signup-register-interest-form
         footer: .cr-footer
+        footer_social: .footer__social-links
+        header: .header__inner-wrapper
         partners: .view-partners

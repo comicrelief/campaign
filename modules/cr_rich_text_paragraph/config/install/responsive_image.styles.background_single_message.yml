@@ -2,8 +2,8 @@ langcode: en
 status: true
 dependencies:
   config:
-    - image.style.large_1700x450
-    - image.style.large_1700x450_2x
+    - image.style.large_1700x500
+    - image.style.large_1700x500_2x
     - image.style.small_768x450
     - image.style.small_768x450_2x
 id: background_single_message
@@ -13,12 +13,12 @@ image_style_mappings:
     breakpoint_id: campaign_base.large
     multiplier: 1x
     image_mapping_type: image_style
-    image_mapping: large_1700x450
+    image_mapping: large_1700x500
   -
     breakpoint_id: campaign_base.large
     multiplier: 2x
     image_mapping_type: image_style
-    image_mapping: large_1700x450_2x
+    image_mapping: large_1700x500_2x
   -
     breakpoint_id: campaign_base.medium
     multiplier: 1x

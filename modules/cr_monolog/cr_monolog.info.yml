@@ -1,0 +1,8 @@
+name: CR Monolog
+type: module
+description: Add basic configuration to monolog
+core: 8.x
+package: Comic Relief
+
+dependencies:
+  - monolog

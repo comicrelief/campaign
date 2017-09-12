@@ -4,47 +4,44 @@ Feature: Article
   @api @default-content
   Scenario: Article linking through from /press-releases
     Given I am on "press-releases"
-    And I should see the link "Domestic abuse calls at all time high"
-    Then I follow "Domestic abuse calls at all time high"
-    And I should see the text "As Red Nose Day approaches, Comic Relief is shining a light"
+    Then I should see the link "Domestic abuse calls at all time high"
+    When I follow "Domestic abuse calls at all time high"
+    Then I should see the text "As Red Nose Day approaches, Comic Relief is shining a light"
 
   @api @default-content
   Scenario: Article pagination on /press-releases
     Given I am on "press-releases"
-    And I click "››"
-    And I wait for 3 seconds
+    When I click "››"
     Then I should see the link "Comic Relief and big lottery fund partner with cities alliance"
-    And I click "‹‹"
-    And I wait for 3 seconds
+    When I click "‹‹"
     Then I should see the link "Domestic abuse calls at all time high"
 
   @api @default-content
   Scenario: Article linking through from /news
     Given I am on "news"
-    And I should see the link "Four down – one to go!"
-    Then I follow "Four down – one to go!"
-    And I should see the text "Greg James struggled on the penultimate day of Gregathlon"
+    Then I should see the link "Four down – one to go!"
+    When I follow "Four down – one to go!"
+    Then I should see the text "Greg James struggled on the penultimate day of Gregathlon"
 
   @api @default-content
   Scenario: Article pagination on /news
     Given I am on "news"
-    And I click "››"
-    And I wait for 3 seconds
+    When I click "››"
     Then I should see the link "British Triathlon cheers Greg James on"
-    And I click "‹‹"
-    And I wait for 3 seconds
+    When I click "‹‹"
     Then I should see the link "Greg James begins his Gregathlon for Sport Relief"
 
   @api @default-content
   Scenario: News page /yplan-partners-sport-relief
     Given I am logged in as a user with the "editor" role
     And I am on "/news/yplan-partners-sport-relief"
-    And I follow "Edit"
+    And I click on ".tabs.primary>li:nth-of-type(2)>a" element
+    And I wait for 2 seconds
     And I enter "YPlan partners with Comic Relief" for "edit-title-0-value"
     And press "Save"
-    And I go to "/news/yplan-partners-sport-relief"
+    When I go to "/news/yplan-partners-sport-relief"
     Then I should see the text "YPlan partners with Comic Relief"
-    And I go to "/news/yplan-partners-comic-relief"
+    When I go to "/news/yplan-partners-comic-relief"
     Then I should see the text "YPlan partners with Comic Relief"
 
   @api @default-content
@@ -59,22 +56,21 @@ Feature: Article
     And the metatag property "og:image" should contain the value "news/2016-02/greg_james_gregathlon_belfast_and_so_it_begins"
     And the metatag property "og:url" should contain the value "/news/greg-james-begins-his-gregathlon-sport-relief"
 
-  @api @javascript
+  @api
   Scenario: Create news articles using scheduled updates
     Given I am logged in as a user with the "editor" role
     And I am on "node/add/article"
     And I enter "Test Scheduled article" for "edit-title-0-value"
     And I select "News" from "edit-field-article-type"
     And I press "Add new Publishing Date"
-    And I wait for AJAX loading to finish
+    And I wait for 2 seconds
     Then I should see "Update Date/time"
     And I enter today date for "publishing_date[form][inline_entity_form][update_timestamp][0][value][date]"
     And I enter the time for "publishing_date[form][inline_entity_form][update_timestamp][0][value][time]"
     And I press "Create Publishing Date"
-    And I wait for AJAX loading to finish
+    And I wait for 2 seconds
     Then I should see "Publishing date"
     And I enter "tag1" for "field_article_category[target_id]"
-    And I scroll ".unpublish input" into view
     And press "Save as unpublished"
     # check the content cannot be seen if logged out
     Given I am not logged in
@@ -86,7 +82,7 @@ Feature: Article
     # run cron and clear caches
     And am on "admin/config/system/cron"
     And press "Run cron"
-    And I wait for AJAX loading to finish
+    And I wait for 2 seconds
     Then I should see "Cron ran successfully."
     And the cache has been cleared
     # logout and see the article loaded
@@ -110,7 +106,7 @@ Feature: Article
     And I should not see "£78m raised"
     And I am viewing a "article" content:
       | title                      | Celebrities come together for a stellar Night of TV for Sport Relief                                                                                            |
-      | field_article_type         | News                                                                                                                                                                |
+      | field_article_type         | News                                                                                                                                                            |
       | field_article_publish_date | 2015-02-08 17:45:00                                                                                                                                             |
       | field_article_intro        | Audiences across the UK are in for a night of first-class entertainment.                                                                                        |
       | body                       | A one-off Luther special will be screened, with Idris Elba starring alongside Lenny Henry, Rio Ferdinand, Denise Lewis, Louis Smith, Ian Wright and David Haye. |
@@ -124,16 +120,16 @@ Feature: Article
     And I click "Comic Relief raises £1bn over 30-year existence"
     Then I should see "Celebrities come together for a stellar Night of TV for Sport Relief"
 
-  @api @default-content @exclude-articles-from-aggregator
+  @api @exclude-articles-from-aggregator
   Scenario: Create news articles that is excluded from feature articles views
     # Create an article that is excluded from view.
-    When I am viewing a "article" content:
-      | title                       | Test excluded article                  |
-      | field_article_intro         | This is a test of the article content. |
-      | body                        | Test, Test, Test.                      |
-      | field_article_exclude_aggr  | 1                                      |
-      | field_article_category      | Fundraising                            |
+    Given I am viewing a "article" content:
+      | title                      | Test excluded article                  |
+      | field_article_intro        | This is a test of the article content. |
+      | body                       | Test, Test, Test.                      |
+      | field_article_exclude_aggr | 1                                      |
+      | field_article_category     | Fundraising                            |
     # Check the content is excluded from the news and events page
-    Given I am not logged in
-    And I am on "featured-stories"
+    And I am not logged in
+    When I am on "featured-stories"
     Then I should not see "Test excluded article"

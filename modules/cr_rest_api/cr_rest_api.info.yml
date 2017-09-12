@@ -1,0 +1,12 @@
+name: Comic Relief REST API
+type: module
+description: 'REST API to provide endpoints for all entities'
+package: Comic Relief
+core: '8.x'
+
+dependencies:
+  - restui
+  - rest_menu_tree
+
+config_devel:
+  - rest.resource.menu_tree

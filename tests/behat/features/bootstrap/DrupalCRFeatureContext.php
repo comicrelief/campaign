@@ -2,9 +2,9 @@
 
 namespace BehatTests;
 
-use Drupal\DrupalExtension\Context\RawDrupalContext;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Gherkin\Node\TableNode;
+use Drupal\DrupalExtension\Context\RawDrupalContext;
 
 /**
  * Defines application features from the specific context.
@@ -190,9 +190,9 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
   /**
    * Creates a node that has paragraphs provided in a table.
    *
-   * @Given I am viewing a/an :type( content) with :title( title) and :img( image) and :body( body) and with the following paragraphs:
+   * @Given I am viewing a/an :type( content) with :title( title) and :img( image) and :body( body)
    */
-  public function assertParagraphs($type, $title, $image, $body, TableNode $paragraphs) {
+  public function assertParagraphs($type, $title, $image, $body) {
     // First, create a landing page node.
     $node = (object) [
       'title' => $title,
@@ -201,17 +201,6 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
     ];
     $node = $this->nodeCreate($node);
 
-    $paragraph_items = [];
-
-    // Create paragraphs
-    foreach ($paragraphs->getHash() as $paragraph) {
-      $paragraph_item = $this->createParagraphItem($paragraph);
-      $paragraph_items[] = [
-        'target_id' => $paragraph_item->id(),
-        'target_revision_id' => $paragraph_item->getRevisionId(),
-      ];
-    }
-
     // Add all the data to the node
     $node_loaded = \Drupal\node\Entity\Node::load($node->nid);
     $node_loaded->field_landing_image = $this->expandImage($image);
@@ -219,7 +208,6 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
       'value' => $body,
       'format' => 'full_html',
     ];
-    $node_loaded->field_paragraphs = $paragraph_items;
     $node_loaded->save();
 
     // Set internal page on the new landing page.
@@ -324,21 +312,30 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
   /**
    * @Then I should see the image :Uri
    *
-   * Scroll to the id of an element, selenium will not do this for you
+   * @param String $uri
+   *
+   * @throws \Exception
    */
   public function FindImage($uri) {
-    return $this->getSession()->getPage()
-      ->find('xpath', '/img[@src="' . $uri . '"]');
+    $img = $this->getSession()->getPage()
+      ->find('css', 'img[src*="' . $uri . '"]');
+    if (!$img) {
+      $img = $this->getSession()->getPage()
+        ->find('css', 'img[data-src*="' . $uri . '"]');
+    }
+    if (!$img) {
+      throw new \Exception("Image not found : $uri");
+    }
+    return $img;
   }
 
   /**
    * @Then I should not see the image :Uri
    *
-   * Scroll to the id of an element, selenium will not do this for you
    */
   public function NotFindImage($uri) {
     return !$this->getSession()->getPage()
-      ->find('xpath', '/img[@src="' . $uri . '"]');
+      ->find('css', 'img[src="' . $uri . '"]');
   }
 
   /**
@@ -472,4 +469,110 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
       throw new \Exception('The video with filename ' . $filename . ' was not found in the markup');
     }
   }
+
+  /**
+   * Click on the element with given CSS
+   *
+   * @When I click on :arg element
+   *
+   * @param string $field
+   */
+  public function iClickOnElement(string $field): void {
+    $this->getSession()->getPage()->find('css', $field)->click();
+  }
+
+  /**
+   * Helper function to create landing page
+   *
+   * @param string $type
+   * @param string $title
+   *
+   */
+  public function createLandingPage($type, $title) {
+
+    // Create a landing page node.
+    $lnode = (object) [
+      'title' => $title,
+      'type' => $type,
+      'uid' => 1,
+    ];
+
+    return $this->nodeCreate($lnode);
+
+  }
+
+
+  /**
+   * Creates paragraphs with specified fields in landing page
+   *
+   * @Then I add :paragraph( paragraph ) with following fields in a test landing page:
+   */
+  public function createLandingPageWithParagraph($paragraph, TableNode $fields) {
+
+    // Create paragraphs
+    $paragraph_items = [];
+    $data = [
+      'type' => $paragraph,
+    ];
+
+    foreach ($fields->getRowsHash() as $field => $value) {
+
+      if (strpos(strtolower($field), 'copy') !== FALSE) {
+        $data[$field] = [
+          'value' => $value,
+          'format' => 'basic_html',
+        ];
+      }
+      elseif ((strpos(strtolower($field), 'image') !== FALSE) || (strpos(strtolower($field), 'background') !== FALSE)) {
+        $data[$field] = $this->expandImage($value);
+      }
+      elseif ((strpos(strtolower($field), 'img') !== FALSE)) {
+        $data[$field] = $this->expandImage($value);
+      }
+      else {
+        $data[$field] = [
+          'value' => $value,
+        ];
+      }
+
+    }
+
+    $paragraph_item = \Drupal\paragraphs\Entity\Paragraph::create($data);
+    $paragraph_item->save();
+
+    $paragraph_items[] = [
+      'target_id' => $paragraph_item->id(),
+      'target_revision_id' => $paragraph_item->getRevisionId(),
+    ];
+
+    // Create test landing page
+    $landingPage = $this->createLandingPage('landing', 'Test landing page');
+
+    // Add paragraph to the landing page and save
+    $node_loaded = \Drupal\node\Entity\Node::load($landingPage->nid);
+    $node_loaded->field_paragraphs = $paragraph_items;
+    $node_loaded->save();
+
+  }
+
+  /**
+   * Mouse hover with specified CSS locator
+   * 
+   * @When /^I hover over the element "([^"]*)"$/
+   *
+   * @param string $locator
+   *
+   * @throws \Exception
+   */
+  public function iHoverOverTheElement($locator) {
+    $session = $this->getSession(); // get the mink session
+    $element = $session->getPage()
+      ->find('css', $locator); // runs the actual query and returns the element
+
+    if ($element === NULL) {
+      throw new \InvalidArgumentException(sprintf('Could not evaluate CSS selector: "%s"', $locator));
+    }
+    $element->mouseOver();
+  }
+
 }

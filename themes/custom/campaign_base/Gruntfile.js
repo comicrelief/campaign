@@ -64,8 +64,29 @@ module.exports = function (grunt) {
         expand: true,
         flatten: true,
         cwd: 'node_modules/@comicrelief/pattern-lab/sass/base/components',
-        src: ['**/*.{png,jpg,gif,svg}'],
+        src: ['**/*.{png,jpg,gif}'],
         dest: 'images/patternlab'
+      }
+    },
+
+    svgmin: {
+      options: {
+        plugins: [
+          {removeViewBox: false},
+          {removeUselessStrokeAndFill: false},
+          {removeEmptyAttrs: false},
+          {removeHiddenElems: false},
+          {cleanupIDs: false}
+        ]
+      },
+      dist: {
+        files: [{
+          expand: true,
+          flatten: true,
+          cwd: 'node_modules/@comicrelief/pattern-lab/sass/base/components',
+          src: ['{,**/}*.svg'],
+          dest: 'images'
+        }]
       }
     },
 
@@ -77,6 +98,7 @@ module.exports = function (grunt) {
           src: [
             // Import specific component js
             'node_modules/@comicrelief/pattern-lab/sass/base/components/navigation/js/main-nav.js',
+            'node_modules/@comicrelief/pattern-lab/sass/base/components/media-block/js/media-block.js',
             // Drupal-specific custom js
             'scripts/{,**/}*.js'],
           dest: 'js/campaign_base.js',
