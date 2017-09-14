@@ -1,6 +1,6 @@
 ## Release management
 
-You can execute the release script inside the folder `/.github` to get the logs since the last release, formatted correctly for the [release notes](https://github.com/comicrelief/campaign/releases). Have in mind that this script doesn't predict your next release version, so you'll need to update manually the version number of the release that you are doing.
+You can execute the release script inside the folder `/.github` to get a CHANGELOG template ready to paste since the last release, formatted correctly for the [release notes](https://github.com/comicrelief/campaign/releases). Have in mind that this script doesn't predict your next release version, so you'll need to update manually the version number of the release that you are doing.
 
 ```
 sh .github/releaser.sh
