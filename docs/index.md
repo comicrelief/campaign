@@ -10,3 +10,4 @@
   * [Naming conventions](naming-convention.md)
 * [Working with platform.sh](platformsh.md)
 * [Testing](testing.md)
+* [Releases](releases.md)
