@@ -25,7 +25,7 @@ class ApiFeatureContext extends MinkContext implements Context {
    * ApiFeatureContext constructor.
    */
   public function __construct() {
-    $this->client = new Client(['base_uri' => $this->getMinkParameter('base_url')]);
+    $this->client = new Client();
   }
 
   /**
@@ -50,11 +50,10 @@ class ApiFeatureContext extends MinkContext implements Context {
   }
 
   /**
-   * @Then /^I want to find the text "([^"]*)" in the JSON$/
-   * @throws \Exception
+   * @inheritdoc
    */
-  public function findText($text) {
-    if (strpos($this->actualPage, $text) === false) {
+  public function assertPageContainsText($text) {
+    if (strpos($this->actualPage, $text) === FALSE) {
       throw new \Exception('Not found the text: "' . $text);
     }
   }
