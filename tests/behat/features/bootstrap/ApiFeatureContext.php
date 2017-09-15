@@ -25,7 +25,7 @@ class ApiFeatureContext extends MinkContext implements Context {
    * ApiFeatureContext constructor.
    */
   public function __construct() {
-    $this->client = new Client(['base_uri' => $this->getMinkParameter('base_url')]);
+    $this->client = new Client();
   }
 
   /**
@@ -42,11 +42,19 @@ class ApiFeatureContext extends MinkContext implements Context {
    * @Then /^I should find in the position ([^"]*) of the menu the "([^"]*)" with the value "([^"]*)"$/
    * @throws \Exception
    */
-  public function findArrayInTheAPI($pos, $key, $val) {
+  public function findMenuElement($pos, $key, $val) {
     $json = json_decode($this->actualPage, TRUE);
     if ($json[$pos]['link'][$key] !== $val) {
       throw new \Exception('Expected "' . $val . '" but got: ' . $json[$pos]['link'][$key]);
     }
+  }
 
+  /**
+   * @inheritdoc
+   */
+  public function assertPageContainsText($text) {
+    if (strpos($this->actualPage, $text) === FALSE) {
+      throw new \Exception('Not found the text: "' . $text);
+    }
   }
 }
