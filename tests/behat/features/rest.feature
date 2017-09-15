@@ -1,6 +1,6 @@
+@rest
 Feature: REST API
 
-  @api
   Scenario: Check main menu REST endpoint
-    Given I am on "entity/menu/main/tree?_format=json"
-    Then the response status code should be 200
+    When I do a GET request to "/entity/menu/main/tree"
+    Then I should find in the position 1 of the menu the "title" with the value "Fundraise (Landing)"
