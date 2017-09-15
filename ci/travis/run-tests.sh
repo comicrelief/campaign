@@ -7,6 +7,6 @@ drush pm-uninstall cookieconsent toolbar -y
 cd ..
 # Run behat tests
 vendor/bin/behat
-vendor/bin/behat -p api
+vendor/bin/behat -s rest
 
 true

@@ -1,6 +1,6 @@
 default:
   suites:
-    local:
+    default:
       paths: [ %paths.base%/tests/behat/features ]
       contexts:
         - Drupal\DrupalExtension\Context\DrupalContext
@@ -10,6 +10,12 @@ default:
         - BehatTests\DrupalCRFeatureContext
       filters:
         tags: '~@rest'
+    rest:
+      paths: [ %paths.base%/tests/behat/features ]
+      contexts:
+        - BehatTests\ApiFeatureContext
+      filters:
+        tags: '@rest'
   extensions:
     Drupal\DrupalExtension:
       api_driver: drupal
@@ -29,11 +35,3 @@ default:
         footer_social: .footer__social-links
         header: .header__inner-wrapper
         partners: .view-partners
-api:
-  suites:
-    local:
-      paths: [ %paths.base%/tests/behat/features ]
-      contexts:
-        - BehatTests\ApiFeatureContext
-      filters:
-        tags: '@rest'
