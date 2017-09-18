@@ -146,7 +146,7 @@
         "drupal/restui": "1.15",
         "drupal/scheduled_updates": "1.0-alpha6",
         "drupal/search_api": "1.4",
-        "drupal/search_api_solr": "1.0",
+        "drupal/search_api_solr": "1.1",
         "drupal/simple_sitemap": "2.9",
         "drupal/social_links": "1.x-dev#f7b3273",
         "drupal/token": "1.0",
