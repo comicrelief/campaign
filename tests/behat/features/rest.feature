@@ -2,5 +2,6 @@
 Feature: REST API
 
   Scenario: Check main menu REST endpoint
-    When I do a GET request to "/entity/menu/main/tree"
-    Then I should find in the position 1 of the menu the "title" with the value "Fundraise (Landing)"
+    When I send a GET request to "/entity/menu/main/tree" with '{"query":{"_format":"json"}}'
+    Then the response should be in JSON format
+    And I should see "Fundraise (Landing)" somewhere in the response
