@@ -1,6 +1,6 @@
 name: CR Cards
 type: module
-description: Contains config for Cards Row Paragraph type.
+description: Contains config for Cards Paragraph type.
 core: 8.x
 package: Comic Relief
 dependencies:
@@ -10,6 +10,7 @@ dependencies:
 config_devel:
 # Paragraph config
   - field.storage.paragraph.field_cr_cards_background
+  - field.storage.paragraph.field_cr_cards_grid
   - field.storage.paragraph.field_cr_cards_card_reference
   - field.storage.paragraph.field_cr_cards_feature_layout
   - field.storage.paragraph.field_cr_cards_title
@@ -18,6 +19,7 @@ config_devel:
   - core.entity_view_display.paragraph.cr_cards.default
   - core.entity_form_display.paragraph.cr_cards.default
   - field.field.paragraph.cr_cards.field_cr_cards_background
+  - field.field.paragraph.cr_cards.field_cr_cards_grid
   - field.field.paragraph.cr_cards.field_cr_cards_card_reference
   - field.field.paragraph.cr_cards.field_cr_cards_feature_layout
   - field.field.paragraph.cr_cards.field_cr_cards_title

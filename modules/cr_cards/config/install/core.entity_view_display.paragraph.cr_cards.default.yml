@@ -5,6 +5,7 @@ dependencies:
     - field.field.paragraph.cr_cards.field_cr_cards_background
     - field.field.paragraph.cr_cards.field_cr_cards_card_reference
     - field.field.paragraph.cr_cards.field_cr_cards_feature_layout
+    - field.field.paragraph.cr_cards.field_cr_cards_grid
     - field.field.paragraph.cr_cards.field_cr_cards_title
     - field.field.paragraph.cr_cards.field_cr_cards_title_hidden
     - paragraphs.paragraphs_type.cr_cards
@@ -35,6 +36,7 @@ third_party_settings:
         - field_cr_cards_title_hidden
         - field_cr_cards_card_reference
         - social_links
+        - field_cr_cards_grid
 id: paragraph.cr_cards.default
 targetEntityType: paragraph
 bundle: cr_cards
@@ -75,6 +77,13 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: ds_content
+  field_cr_cards_grid:
+    weight: 8
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
     region: ds_content
   field_cr_cards_title:
     type: string

@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_cr_cards_grid
+field_name: field_cr_cards_grid
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values: null
+  allowed_values_function: cr_cards_field_cr_cards_grid
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
