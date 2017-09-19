@@ -1,20 +1,20 @@
 {% set bg_colour = field_cr_card_background['#items'][0].value %}
-{% set no_image = content.field_cr_card_image['#items'].value == '' ? 'cards__content-wrapper--no-image' %}
+{% set no_image = content.field_cr_card_image['#items'].value == '' ? 'card__content-wrapper--no-image' %}
 {%
 set content_wrapper_class = [
-'cards__content-wrapper',
+'card__content-wrapper',
 no_image,
 ]
 %}
-<div class="cards__item {{ bg_colour }}">
+<div class="card {{ bg_colour }}">
 	{{ title_suffix.contextual_links }}
 	{# {% if field_cr_card_image['#items'].value %} #}
-	<div class="cards__image">
+	<div class="card__image">
 		{{ field_cr_card_image }}
 	</div>
 	{# {% endif %} #}
 	<div{{ attributes.addClass(content_wrapper_class) }}>
-		<div class="cards__content">
+		<div class="card__content">
 			{{ field_cr_card_body }}
 		</div>
 	</div>

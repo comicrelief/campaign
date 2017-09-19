@@ -2,5 +2,5 @@ langcode: en
 status: true
 dependencies: {  }
 id: cr_cards
-label: 'Cards Row'
+label: 'Cards'
 behavior_plugins: {  }

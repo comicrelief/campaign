@@ -2,19 +2,21 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_cr_cards_background
+    - field.storage.paragraph.field_cr_cards_grid
     - paragraphs.paragraphs_type.cr_cards
   module:
     - options
-id: paragraph.cr_cards.field_cr_cards_background
-field_name: field_cr_cards_background
+id: paragraph.cr_cards.field_cr_cards_grid
+field_name: field_cr_cards_grid
 entity_type: paragraph
 bundle: cr_cards
-label: 'Cards Background colour'
+label: 'Grid of'
 description: ''
 required: false
 translatable: false
-default_value: {  }
+default_value:
+  -
+    value: cards--four-grid
 default_value_callback: ''
 settings: {  }
 field_type: list_string

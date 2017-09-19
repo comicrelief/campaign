@@ -12,7 +12,11 @@ body {
 
   -webkit-font-smoothing: antialiased;
 }
-
+#block-campaign-base-branding {
+  .site-logo img {
+    margin-top: -40px;
+  }
+}
 /* logo header */
 .block-system-branding-block {
   z-index: 100;
