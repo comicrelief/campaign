@@ -13,7 +13,8 @@ default:
     rest:
       paths: [ %paths.base%/tests/behat/features ]
       contexts:
-        - BehatTests\ApiFeatureContext
+        - Comicrelief\Behat\Context\RestContext:
+            baseUrl: 'http://web'
       filters:
         tags: '@rest'
   extensions:
