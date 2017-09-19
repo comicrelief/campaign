@@ -16,11 +16,7 @@
         },
         {
             "type": "vcs",
-            "url": "git@github.com:previousnext/drush_cmi_tools.git"
-        },
-        {
-            "type": "vcs",
-            "url": "git@github.com:mikeyp/google_tag.git"
+            "url": "git@github.com:comicrelief/rabbitmq.git"
         }
     ],
     "scripts": {
@@ -139,7 +135,7 @@
         "drupal/pathauto": "1.0",
         "drupal/purge": "3.0-beta6",
         "drupal/purge_purger_http": "1.0-beta4",
-        "drupal/rabbitmq": "1.1",
+        "drupal/rabbitmq": "2899376.x-dev",
         "drupal/redirect": "1.0-beta1",
         "drupal/redis": "1.0-beta1",
         "drupal/rest_menu_tree": "1.0",
