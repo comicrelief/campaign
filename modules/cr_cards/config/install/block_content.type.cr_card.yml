@@ -4,4 +4,4 @@ dependencies: {  }
 id: cr_card
 label: Card
 revision: 0
-description: 'Content cards are referenced within the Cards Row paragraph type.'
+description: 'Content cards are referenced within the Cards paragraph type.'

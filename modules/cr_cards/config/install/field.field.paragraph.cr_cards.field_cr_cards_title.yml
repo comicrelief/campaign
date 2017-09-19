@@ -8,8 +8,8 @@ id: paragraph.cr_cards.field_cr_cards_title
 field_name: field_cr_cards_title
 entity_type: paragraph
 bundle: cr_cards
-label: 'Cards row title'
-description: 'Please enter title to your cards row'
+label: 'Cards title'
+description: 'Please enter title to your cards'
 required: false
 translatable: false
 default_value: {  }

@@ -5,9 +5,8 @@ set -e
 cd web
 drush pm-uninstall cookieconsent toolbar -y
 cd ..
-# Check the config match with the info.yml
-#phing config:check
 # Run behat tests
-vendor/bin/behat
+vendor/bin/behat -n
+vendor/bin/behat -ns rest
 
 true

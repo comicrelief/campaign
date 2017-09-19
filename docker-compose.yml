@@ -12,6 +12,8 @@ services:
       - selenium
     volumes:
       - ./:/var/www/html
+    environment:
+      BEHAT_PARAMS: '{"extensions": {"Behat\\MinkExtension": {"base_url": "http://web","goutte": {}, "selenium2": {"wd_host": "http://selenium:4444/wd/hub"}}}}'
 
   solr:
     image: solr:6.3-alpine

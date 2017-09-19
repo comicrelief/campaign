@@ -1,6 +1,7 @@
+@rest
 Feature: REST API
 
-  @api
   Scenario: Check main menu REST endpoint
-    Given I am on "entity/menu/main/tree?_format=json"
-    Then the response status code should be 200
+    When I send a GET request to "/entity/menu/main/tree" with '{"query":{"_format":"json"}}'
+    Then the response should be in JSON format
+    And I should see "Fundraise (Landing)" somewhere in the response
