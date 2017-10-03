@@ -10,7 +10,7 @@ field_name: field_landing_background_video
 entity_type: node
 bundle: landing
 label: 'Background video'
-description: ''
+description: 'Make sure you add a mobile image as a fallback for browsers that don`t support video backgrounds.'
 required: false
 translatable: false
 default_value: {  }
