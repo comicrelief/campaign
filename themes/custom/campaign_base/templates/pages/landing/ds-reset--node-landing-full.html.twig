@@ -7,7 +7,7 @@
 {% set header_class = [ bg_colour, 'promo-header', layoutClass, small_img, bg_video ]
 %}
 {% set copy_position = field_landing_copy_position_alig['#items'].value %}	
-{% set image_bg = file_url(desk_img)|trim('.jpg') %}
+{% set image_bg = file_url(mobile_img)|trim('.jpg') %}
 
 {% if not desk_img and not small_img and not bg_video %}{% set header_class = header_class|merge(["promo-header--no-image"]) %}{% endif %}
 <header class="{{ header_class|join(" ") }} contextual-region">
