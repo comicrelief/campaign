@@ -118,7 +118,7 @@ content:
     type: boolean_checkbox
     region: content
   field_paragraphs:
-    type: entity_reference_paragraphs
+    type: paragraphs
     weight: 12
     settings:
       title: 'Row component'
@@ -126,6 +126,9 @@ content:
       edit_mode: closed
       add_mode: select
       form_display_mode: default
+      closed_mode: summary
+      autocollapse: none
+      default_paragraph_type: ''
     third_party_settings: {  }
     region: content
   field_svg_body_title:
