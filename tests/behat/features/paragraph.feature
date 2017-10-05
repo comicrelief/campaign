@@ -16,7 +16,7 @@ Feature: Paragraphs
     And I fill in "field_paragraphs[0][subform][field_partner_list][form][entity_id]" with "Three (4)"
     And I press the "Add Partner" button
     And I wait for 2 seconds
-    And I press the "Save and keep published" button
+    And I press the "Save" button
     Then I should see the image "/sites/default/files/partner/logo/3_49"
 
   @api @functionality

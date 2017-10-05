@@ -12,7 +12,7 @@ Feature: Downloadable
     And I select "Events" from "Category"
     And I attach the file "/tests/behat/files/nose.jpg" to "File"
     And I wait for AJAX to finish
-    And I press "Save and publish"
+    And I press "Save"
     Then I should see "File nose (administration) has been created."
     And I should see the link "Red Nose!"
     When I go to "admin/content/media"
@@ -26,7 +26,7 @@ Feature: Downloadable
     And I select "Fundraise" from "Category"
     And I attach the file "/tests/behat/files/sample.pdf" to "File"
     And I wait for AJAX to finish
-    And I press "Save and publish"
+    And I press "Save"
     Then I should see "File pdf (administration) has been created."
     And I should see the link "Sample PDF"
     When I go to "admin/content/media"
@@ -39,7 +39,7 @@ Feature: Downloadable
     And I enter "http://www.pdf995.com/samples/pdf.pdf" for "URL"
     And I enter "Sample external PDF" for "Link text"
     And I select "TV" from "Resource category"
-    And I press "Save and publish"
+    And I press "Save"
     Then I should see "File ext file (administration) has been created."
     And I should see the link "Sample external PDF"
     When I go to "admin/content/media"
