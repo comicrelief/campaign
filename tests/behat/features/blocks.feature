@@ -23,7 +23,7 @@ Feature: Blocks
     And I fill in "field_paragraphs[0][subform][field_cw_row_reference][form][inline_entity_form][field_cw_block_reference][form][entity_id]" with "The countdown is on"
     And I press the "Add Content block" button
     And I wait for 2 seconds
-    And I press the "Save and keep published" button
+    And I press the "Save" button
     And I am on "/test-landing-page"
     Then I should see "Teaser content wall testing"
     And I should see "Relive all the best bits of last Red Nose Day"
@@ -52,7 +52,7 @@ Feature: Blocks
     And I fill in "field_paragraphs[0][subform][field_cw_row_reference][form][inline_entity_form][field_cw_block_reference][form][entity_id]" with "Jo's Quote"
     And I press the "Add Content block" button
     And I wait for 2 seconds
-    And I press the "Save and keep published" button
+    And I press the "Save" button
     And I am on "/test-landing-page"
     Then I should see "Jo's Top Tip"
     # Delete teaser row
@@ -79,7 +79,7 @@ Feature: Blocks
     And I press the "Add Row component" button
     And I wait for 2 seconds
     And I fill in "field_paragraphs[0][subform][field_content_block_reference][0][target_id]" with "Comic Adventure embed"
-    And I press the "Save and keep published" button
+    And I press the "Save" button
     And I am on "/test-landing-page"
 
     # Delete Iframe embedded custom block
