@@ -71,7 +71,8 @@ Feature: Article
     And I wait for 2 seconds
     Then I should see "Publishing date"
     And I enter "tag1" for "field_article_category[target_id]"
-    And press "Save as unpublished"
+    And I uncheck the box "edit-status-value"
+    And press "Save"
     # check the content cannot be seen if logged out
     Given I am not logged in
     And I am on "news-tv-and-events/news"
