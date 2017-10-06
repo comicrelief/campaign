@@ -69,7 +69,7 @@
         var $thisImage = $container.find('img');
 
         var imgSrc = $thisImage.attr('data-src');
-        var imgSrcSet = $thisImage.attr('srcset');
+        var imgSrcSet = $thisImage.attr('src');
 
         // Only if we've successfully found an image data-src(blazy) OR srcset
         if (imgSrc || imgSrcSet) {
