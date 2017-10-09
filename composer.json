@@ -155,7 +155,9 @@
         "drush/drush": "9.0.*",
         "php-amqplib/php-amqplib": "2.7.*",
         "webflo/drupal-finder": "1.0.*",
-        "webmozart/path-util": "2.3.*"
+        "webmozart/path-util": "2.3.*",
+        "drupal/override_node_options": "2.1",
+        "drupal/view_unpublished": "1.0-alpha1"
     },
     "require-dev": {
         "behat/mink-selenium2-driver": "1.3.*",
