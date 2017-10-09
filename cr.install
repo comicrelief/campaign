@@ -401,4 +401,3 @@ function cr_update_8043() {
   installer()->install(['view_unpublished']);
   installer()->install(['override_node_options']);
 }
-
