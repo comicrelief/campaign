@@ -30,7 +30,7 @@ Feature: Search
     And I enter "Kids Snuffles Money Box" for "Display title"
     And I select "Kids" from "Category"
     And I attach the file "/tests/behat/files/rnd17_kids_snuffles-money-box.pdf" to "File"
-    And I press "Save and publish"
+    And I press "Save"
     And I wait for 2 seconds
     #Search in the DB media pdf
     Given I am on "search?text=money+box"
@@ -45,7 +45,7 @@ Feature: Search
     And I enter "http://assets.2017.rednoseday.com.s3.amazonaws.com/Downloadables/rnd17_youth_fundraising-pack_all.pdf" for "URL"
     And I enter "Download" for "Link text"
     And I select "Schools" from "Resource category"
-    And I press "Save and publish"
+    And I press "Save"
     And I wait for 2 seconds
     #Search for external file
     Given I am on "search?text=Youth+fundraising+pack"
@@ -59,7 +59,7 @@ Feature: Search
     And I enter "Media video" for "Media name"
     And I enter "PqXOlfwlVag" for "Youtube Video ID"
     And I enter "Stephen Hawking video" for "Video caption"
-    And I press "Save and publish"
+    And I press "Save"
     And I wait for 2 seconds
     #Search for video item
     Given I am on "search?text=Stephen+Hawking"
