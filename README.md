@@ -19,7 +19,7 @@ Think about contributing? That's great, but please do read our [contributing gui
 * [Blog post: building rednoseday.com on Drupal 8](https://technology.comicrelief.com/2016/12/21/building-rednoseday-com-on-drupal-8/)
 * [Video DrupalCon Baltimore 2017: building reusable websites on Drupal 8](https://technology.comicrelief.com/2017/05/12/drupalcon-baltimore-talk-slides/)
 * [Blog post: Why we made our platform product open-source](https://technology.comicrelief.com/2017/07/07/why-we-made-our-platform-product-open-source/)
-* [Release process](docs/release.md)
+* [Release process](docs/releases.md)
 
 ## License
 

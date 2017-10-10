@@ -38,6 +38,7 @@ function cr_single_msg_field_single_msg_layout_variant(FieldStorageDefinitionInt
     'feature-copy-left' => t('Feature Copy Left'),
     'feature-copy-right' => t('Feature Copy Right'),
     'copy-only' => t('Copy Only'),
+    'copy-only-large' => t('Copy Only Large'),
   ];
   return $values;
 }

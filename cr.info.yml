@@ -65,6 +65,8 @@ dependencies:
   - field_group
   - twig_tweak
   - blazy
+  - override_node_options
+  - view_unpublished
 
   # Layout
   - inline_entity_form

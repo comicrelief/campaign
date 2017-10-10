@@ -393,3 +393,11 @@ function cr_update_8042() {
   \Drupal::service('config.installer')
     ->installDefaultConfig('module', 'cr_iframe');
 }
+
+/**
+ * Install override_node_options & view_unpublished to allow content editors to see unpublished articles.
+ */
+function cr_update_8043() {
+  installer()->install(['view_unpublished']);
+  installer()->install(['override_node_options']);
+}
