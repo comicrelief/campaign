@@ -249,6 +249,7 @@ config_devel:
   - pathauto.settings
   - cookieconsent.settings
   - blazy.settings
+  - override_node_options.settings
 
   # Simple sitemap
   - simple_sitemap.settings
