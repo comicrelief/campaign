@@ -14,7 +14,7 @@ build:
 # The build-time dependencies of the app.
 dependencies:
     php:
-        drush/drush: "^8.0"
+        drush/drush: "8.1.*"
     nodejs:
         grunt-cli: "~0.1.13"
 
