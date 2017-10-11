@@ -18,6 +18,7 @@ $settings['file_scan_ignore_directories'] = [
     'node_modules',
     'bower_components',
 ];
+$settings['entity_update_batch_size'] = 50;
 
 // The hash_salt should be a unique random value for each application.
 // If left unset, the settings.platformsh.php file will attempt to provide one.
