@@ -62,6 +62,7 @@
     "extra": {
         "patches": {
             "drupal/core": {
+                "See https://www.drupal.org/node/2573807": "https://www.drupal.org/files/issues/2573807-40-8.3.x.patch",
                 "See https://github.com/comicrelief/campaign/issues/1252": "https://gist.githubusercontent.com/adamclark-dev/f92fadd817aa3d45bc4aea18c566cd82/raw/11a65c7197f91aa77a6a220d0ff71d995dc6e428/drupal_8.4_form_reset.patch",
                 "See https://github.com/comicrelief/campaign/pull/252": "https://gist.githubusercontent.com/pvhee/14801e0f82e06f51cb0d88b9d400cbd6/raw/253f1c1e516eb24650a91d343c56a5aeb6a0ca43/PLAT-235_paragraph_constraint_violation.patch"
             },
