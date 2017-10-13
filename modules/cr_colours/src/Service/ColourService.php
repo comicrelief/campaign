@@ -31,17 +31,27 @@ class ColourService {
    */
   public function getStandardButtonColoursArray() {
     return [
-      'btn--white-ghost' => $this->translationManager->translate('White ghost'),
-      'btn--black-ghost' => $this->translationManager->translate('Black ghost'),
-      'btn--red' => $this->translationManager->translate('Red'),
-      'btn--blue' => $this->translationManager->translate('Blue'),
-      'btn--yellow' => $this->translationManager->translate('Yellow'),
-      'btn--green' => $this->translationManager->translate('Green'),
-      'btn--teal' => $this->translationManager->translate('Teal'),
-      'btn--royal-blue' => $this->translationManager->translate('Royal blue'),
-      'btn--purple' => $this->translationManager->translate('Purple'),
-      'btn--pink' => $this->translationManager->translate('Pink'),
-      'btn--white' => $this->translationManager->translate('White'),
+      'btn btn--white-ghost' => $this->translationManager->translate('White ghost button'),
+      'btn btn--black-ghost' => $this->translationManager->translate('Black ghost button'),
+      'btn btn--red' => $this->translationManager->translate('Red button'),
+      'btn btn--blue' => $this->translationManager->translate('Blue button'),
+      'btn btn--yellow' => $this->translationManager->translate('Yellow button'),
+      'btn btn--green' => $this->translationManager->translate('Green button'),
+      'btn btn--teal' => $this->translationManager->translate('Teal button'),
+      'btn btn--royal-blue' => $this->translationManager->translate('Royal blue button'),
+      'btn btn--purple' => $this->translationManager->translate('Purple button'),
+      'btn btn--pink' => $this->translationManager->translate('Pink button'),
+      'btn btn--white' => $this->translationManager->translate('White button'),
+      'link link--red' => $this->translationManager->translate('Red link'),
+      'link link--blue' => $this->translationManager->translate('Blue link'),
+      'link link--yellow' => $this->translationManager->translate('Yellow link'),
+      'link link--green' => $this->translationManager->translate('Green link'),
+      'link link--teal' => $this->translationManager->translate('Teal link'),
+      'link link--royal-blue' => $this->translationManager->translate('Royal blue link'),
+      'link link--purple' => $this->translationManager->translate('Purple link'),
+      'link link--pink' => $this->translationManager->translate('Pink link'),
+      'link link--black' => $this->translationManager->translate('Black link'),
+      'link link--white' => $this->translationManager->translate('White link')
     ];
   }
 
