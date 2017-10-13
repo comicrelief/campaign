@@ -4,4 +4,4 @@ dependencies: {  }
 id: teaser
 label: Teaser
 revision: 0
-description: 'A teaser block contains a title, a description, a link (or CTA) and an image.'
+description: 'A teaser block contains a title, a description, a CTA (link or button) and an image.'
