@@ -1,7 +1,7 @@
 {% set bg_colour = field_teaser_bg_colour['#items'][0].value %}
-{% set btn_colour = field_teaser_link_colour['#items'][0].value %}
-{% set btn_text = field_teaser_link_title['#items'][0].value  %}
-{% set btn_link = field_teaser_link_address['#items'][0].value %}
+{% set cta_colour = field_teaser_link_colour['#items'][0].value %}
+{% set cta_text = field_teaser_link_title['#items'][0].value  %}
+{% set cta_link = field_teaser_link_address['#items'][0].value %}
 {% set link_target = field_cw_link_target['#items'][0].value ? '_blank' : '_self' %}
 {% set teaser_type = field_teaser_bg_image['#items'][0].value ? 'teaser-block--bg-image' : 'teaser-block--standard' %}
 {% set youtube_link = field_teaser_you_tube_link['#items'][0].value ? 'lightcase' : '' %}
@@ -19,7 +19,7 @@
 
 <article{{ attributes.addClass(classes) }}>
   {{ title_suffix.contextual_links }}
-  {% if btn_link %} 
+  {% if cta_link %} 
     <a class="teaser-block__link" href="{{ field_teaser_link_address }}" target="{{ link_target }}">
   {% endif %}
   
@@ -31,13 +31,13 @@
 
     <div class="teaser-block__body {{ bg_colour }}">
       {{ body }}
-        {% if btn_text and btn_link %}
+        {% if cta_text and cta_link %}
           <div class="teaser-block__cta">
-            <span class="{{ btn_colour }}">{{ field_teaser_link_title }}</span>
+            <span class="{{ cta_colour }}">{{ field_teaser_link_title }}</span>
           </div>
         {% endif %}
       </div>
-    {% if btn_link %}   
+    {% if cta_link %}   
       </a>
     {% endif %}
 </article>
