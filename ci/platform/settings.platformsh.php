@@ -110,5 +110,5 @@ if (isset($_ENV['PLATFORM_VARIABLES'])) {
 // Set the project-specific entropy value, used for generating one-time
 // keys and such.
 if (isset($_ENV['PLATFORM_PROJECT_ENTROPY']) && empty($settings['hash_salt'])) {
-    $settings['hash_salt'] = $_ENV['PLATFORM_PROJECT_ENTROPY'];
+//    $settings['hash_salt'] = $_ENV['PLATFORM_PROJECT_ENTROPY'];
 }
