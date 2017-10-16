@@ -51,7 +51,7 @@ class ColourService {
       'link link--purple' => $this->translationManager->translate('Purple link'),
       'link link--pink' => $this->translationManager->translate('Pink link'),
       'link link--black' => $this->translationManager->translate('Black link'),
-      'link link--white' => $this->translationManager->translate('White link')
+      'link link--white' => $this->translationManager->translate('White link'),
     ];
   }
 
