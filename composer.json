@@ -6,6 +6,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
+        "optimize-autoloader": true,
         "process-timeout": 0,
         "sort-packages": true
     },
@@ -36,19 +37,23 @@
         "drupal:scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "campaign:links": "cd web/profiles/contrib/cr;ln -sf ../../../../config .;ln -fs ../../../../modules .;ln -fs ../../../../tests .;ln -fs ../../../../themes .;ln -fs ../../../../cr.in* .",
         "campaign:scaffold": [
-            "cp ci/platform/settings.php web/sites/default/settings.php",
             "mkdir -p web/profiles/contrib/cr",
-            "@campaign:links"
+            "@campaign:links",
+            "cp ci/platform/settings.php web/sites/default/settings.php"
         ],
         "grunt:build": "cd web/profiles/contrib/cr/themes/custom/campaign_base;npm run build",
         "drupal:install": [
             "cd web;drush si cr --account-pass='admin' install_configure_form.enable_update_status_module=NULL -y"
         ],
+        "campaign:install": [
+            "@drupal:install",
+            "cd web;drush en -y cr_default_content cr_rest_api"
+        ],
         "campaign:build": [
             "@composer install",
             "@grunt:build",
-            "@drupal:install",
-            "cd web;drush en -y cr_default_content cr_rest_api"
+            "@campaign:scaffold",
+            "@campaign:install"
         ],
         "code:check": [
             "vendor/bin/phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer",

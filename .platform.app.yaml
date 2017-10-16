@@ -56,22 +56,20 @@ mounts:
     "web/sites/default/config": "shared:files/config"
     "/tmp": "shared:files/tmp"
     "/private": "shared:files/private"
-    "/drush-backups": "shared:files/drush-backups"
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
     build: |
         set -e
         composer grunt:build
+        composer campaign:scaffold
         cp -f /app/ci/platform/settings.php /app/web/sites/default/settings.php
         cp /app/ci/platform/settings.platformsh.php /app/web/sites/default/settings.platformsh.php
 
     # We run deploy hooks after your application has been deployed and started.
     deploy: |
         set -e
-        composer drupal:install
-        cd web
-        drush en -y cr_default_content cr_rest_api
+        composer campaign:install
 
 # The configuration of scheduled execution.
 crons:
