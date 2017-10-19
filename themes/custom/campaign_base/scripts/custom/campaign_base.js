@@ -66,11 +66,10 @@
 
         // Cache objectfit object and child image
         var $container = $(this);
+        var $thisImg = $('img', $container);
         
-        var imgUrl = $container.find('img').prop('src');
-        var blazySrc = $container.find('img').attr('data-src');
-
-        alert('oeloe');
+        var imgUrl = $thisImg.prop('src');
+        var blazySrc = $thisImg.attr('data-src');
 
         // Only if we've successfully found an image data-src(blazy) OR srcset
         if (imgUrl || blazySrc) {
@@ -83,8 +82,8 @@
                 .addClass('compat-object-fit')
                 .find('.media--blazy').removeClass('media--loading');
           
+          // Hide both the image and the picture element as we're not using them now
           $container.find('img, picture').hide();
-          $container.height('500px');
         }
       }
 
