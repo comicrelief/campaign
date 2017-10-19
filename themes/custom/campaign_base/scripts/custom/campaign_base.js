@@ -85,7 +85,7 @@
           // Hide both the image and the picture element as we're not using them now
           $container.find('img, picture').hide();
         }
-      }
+      };
 
     // use jQuery UI selectboxes
     $('select').selectmenu();
