@@ -66,28 +66,27 @@
 
         // Cache objectfit object and child image
         var $container = $(this);
-        var $thisImage = $container.find('img');
-
-        var imgSrc = $thisImage.attr('data-src');
-        var imgSrcSet = $thisImage.attr('src');
+        var $thisImg = $('img', $container);
+        
+        var imgUrl = $thisImg.prop('src');
+        var blazySrc = $thisImg.attr('data-src');
 
         // Only if we've successfully found an image data-src(blazy) OR srcset
-        if (imgSrc || imgSrcSet) {
+        if (imgUrl || blazySrc) {
 
-          var imgUrl = imgSrc ? imgSrc : imgSrcSet;
+          var bgImgUrl = blazySrc ? blazySrc : imgUrl;
 
           $container
-            .css('backgroundImage', 'url(' + imgUrl + ')')
+            .css('backgroundImage', 'url(' + bgImgUrl + ')')
               .css('background-size', 'cover')
                 .addClass('compat-object-fit')
                 .find('.media--blazy').removeClass('media--loading');
           
-          $container.find('img').hide();
-
+          // Hide both the image and the picture element as we're not using them now
+          $container.find('img, picture').hide();
         }
       });
     }
-
     // use jQuery UI selectboxes
     $('select').selectmenu();
 
