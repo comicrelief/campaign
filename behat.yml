@@ -18,6 +18,10 @@ default:
       filters:
         tags: '@rest'
   extensions:
+    Behat\MinkExtension:
+      browser_name: 'chrome'
+      selenium2:
+        capabilities: { "browser": "chrome"}
     Drupal\DrupalExtension:
       api_driver: drupal
       blackbox: ~
