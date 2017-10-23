@@ -18,6 +18,9 @@ default:
       filters:
         tags: '@rest'
   extensions:
+    Behat\MinkExtension:
+      selenium2:
+        browser: chrome
     Drupal\DrupalExtension:
       api_driver: drupal
       blackbox: ~
