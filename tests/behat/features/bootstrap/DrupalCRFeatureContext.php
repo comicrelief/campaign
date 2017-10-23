@@ -111,19 +111,6 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
   }
 
   /**
-   * @Given I close cookie message
-   *
-   * Closes the cokie message. Due to it's CSS positioning it sometimes gets in
-   *   the way of other elements being clicked in tests
-   */
-  public function closeCookieMessage() {
-    $elem = $this->getSession()
-      ->getPage()
-      ->find('css', '.cc_container--open .cc_btn_accept_all');
-    $elem->press();
-  }
-
-  /**
    * @Then /^the metatag attribute "(?P<attribute>[^"]*)" should have the value "(?P<value>[^"]*)"$/
    *
    * @throws \Exception
