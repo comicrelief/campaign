@@ -1,6 +1,6 @@
 default:
   suites:
-    sanity:
+    default:
       paths: [ %paths.base%/tests/behat/features ]
       contexts:
         - Drupal\DrupalExtension\Context\DrupalContext
@@ -9,7 +9,7 @@ default:
         - Drupal\DrupalExtension\Context\MinkContext
         - BehatTests\DrupalCRFeatureContext
       filters:
-        tags: '~@rest&&@local'
+        tags: '~@rest'
     rest:
       paths: [ %paths.base%/tests/behat/features ]
       contexts:
