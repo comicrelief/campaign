@@ -562,4 +562,36 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
     $element->mouseOver();
   }
 
+    /**
+     * Attaches *local* file to field with specified id|name|label|value
+     * Note: This method sends the local file to Selenium to allow real upload to occur
+     * Example: When I attach "bwayne_profile.png" to "profileImageUpload"
+     * Example: And I attach "bwayne_profile.png" to "profileImageUpload"
+     *
+     * @When /^(?:|I )attach the local file "(?P<path>[^"]*)" to "(?P<field>(?:[^"]|\\")*)"$/
+     */
+  public function attachLocalFileToField($field, $path)
+  {
+      if ($this->getMinkParameter('files_path')) {
+          $fullPath = rtrim(realpath($this->getMinkParameter('files_path')), DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR.$path;
+          if (is_file($fullPath)) {
+              $path = $fullPath;
+          }
+      }
+
+      $compressedFile = tempnam('', 'WebDriverZip');
+      $zip = new \ZipArchive();
+      $zip->open($compressedFile, \ZipArchive::CREATE);
+      $zip->addFile($path, basename($path));
+      $zip->close();
+
+      $remotePath = $this->getSession()->getDriver()->getWebDriverSession()->file([
+          'file' => base64_encode(file_get_contents($compressedFile))
+      ]);
+
+      $this->getSession()->getPage()->attachFileToField($field, $remotePath);
+
+      unlink($compressedFile);
+  }
+
 }
