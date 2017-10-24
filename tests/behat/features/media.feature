@@ -1,4 +1,3 @@
-@local
 Feature: Media
   This feature covers media (including downloadables)
 
@@ -12,6 +11,7 @@ Feature: Media
     And I enter "Red Nose!" for "Display title"
     And I select "Events" from "Category"
     And I attach the local file "nose.jpg" to "File"
+    And I wait for AJAX to finish
     And I press "Save"
     Then I should see "File nose (administration) has been created."
     And I should see the link "Red Nose!"
