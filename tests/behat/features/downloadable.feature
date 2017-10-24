@@ -10,7 +10,7 @@ Feature: Downloadable
     And I enter "nose (administration)" for "Media name"
     And I enter "Red Nose!" for "Display title"
     And I select "Events" from "Category"
-    And I attach the file "/tests/behat/files/nose.jpg" to "File"
+    And I attach the local file "nose.jpg" to "File"
     And I wait for AJAX to finish
     And I press "Save"
     Then I should see "File nose (administration) has been created."
@@ -24,7 +24,7 @@ Feature: Downloadable
     And I enter "pdf (administration)" for "Media name"
     And I enter "Sample PDF" for "Display title"
     And I select "Fundraise" from "Category"
-    And I attach the file "/tests/behat/files/sample.pdf" to "File"
+    And I attach the local file "sample.pdf" to "File"
     And I wait for AJAX to finish
     And I press "Save"
     Then I should see "File pdf (administration) has been created."
