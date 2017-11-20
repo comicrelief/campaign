@@ -18,6 +18,14 @@ default:
       filters:
         tags: '@rest'
   extensions:
+    Behat\MinkExtension:
+      files_path: %paths.base%/tests/behat/files/
+      selenium2:
+        browser: chrome
+        capabilities:
+          chrome:
+            switches:
+              - "--start-maximized"
     Drupal\DrupalExtension:
       api_driver: drupal
       blackbox: ~

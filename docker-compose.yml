@@ -45,7 +45,7 @@ services:
     hostname: drupal-rabbit
 
   selenium:
-    image: selenium/standalone-firefox-debug:2.53.1-beryllium
+    image: selenium/standalone-chrome-debug:latest
     ports:
       - 4445:4444
       - 5901:5900

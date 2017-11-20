@@ -29,7 +29,7 @@ Feature: Search
     And I enter "rnd17_kids_snuffles-money-box" for "Media name"
     And I enter "Kids Snuffles Money Box" for "Display title"
     And I select "Kids" from "Category"
-    And I attach the file "/tests/behat/files/rnd17_kids_snuffles-money-box.pdf" to "File"
+    And I attach the local file "rnd17_kids_snuffles-money-box.pdf" to "File"
     And I press "Save"
     And I wait for 2 seconds
     #Search in the DB media pdf

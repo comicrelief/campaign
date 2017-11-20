@@ -152,7 +152,7 @@ display:
             use_operator: false
             operator: search_api_fulltext_op
             identifier: text
-            required: false
+            required: true
             remember: false
             multiple: false
             remember_roles:
@@ -160,8 +160,8 @@ display:
               anonymous: '0'
               editor: '0'
               manager: '0'
-              administrator: '0'
               reviewer: '0'
+              administrator: '0'
           is_grouped: false
           group_info:
             label: ''

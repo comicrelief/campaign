@@ -111,19 +111,6 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
   }
 
   /**
-   * @Given I close cookie message
-   *
-   * Closes the cokie message. Due to it's CSS positioning it sometimes gets in
-   *   the way of other elements being clicked in tests
-   */
-  public function closeCookieMessage() {
-    $elem = $this->getSession()
-      ->getPage()
-      ->find('css', '.cc_container--open .cc_btn_accept_all');
-    $elem->press();
-  }
-
-  /**
    * @Then /^the metatag attribute "(?P<attribute>[^"]*)" should have the value "(?P<value>[^"]*)"$/
    *
    * @throws \Exception
@@ -573,6 +560,38 @@ class DrupalCRFeatureContext extends RawDrupalContext implements SnippetAcceptin
       throw new \InvalidArgumentException(sprintf('Could not evaluate CSS selector: "%s"', $locator));
     }
     $element->mouseOver();
+  }
+
+    /**
+     * Attaches *local* file to field with specified id|name|label|value
+     * Note: This method sends the local file to Selenium to allow real upload to occur
+     * Example: When I attach "bwayne_profile.png" to "profileImageUpload"
+     * Example: And I attach "bwayne_profile.png" to "profileImageUpload"
+     *
+     * @When /^(?:|I )attach the local file "(?P<path>[^"]*)" to "(?P<field>(?:[^"]|\\")*)"$/
+     */
+  public function attachLocalFileToField($field, $path)
+  {
+      if ($this->getMinkParameter('files_path')) {
+          $fullPath = rtrim(realpath($this->getMinkParameter('files_path')), DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR.$path;
+          if (is_file($fullPath)) {
+              $path = $fullPath;
+          }
+      }
+
+      $compressedFile = tempnam('', 'WebDriverZip');
+      $zip = new \ZipArchive();
+      $zip->open($compressedFile, \ZipArchive::CREATE);
+      $zip->addFile($path, basename($path));
+      $zip->close();
+
+      $remotePath = $this->getSession()->getDriver()->getWebDriverSession()->file([
+          'file' => base64_encode(file_get_contents($compressedFile))
+      ]);
+
+      $this->getSession()->getPage()->attachFileToField($field, $remotePath);
+
+      unlink($compressedFile);
   }
 
 }
