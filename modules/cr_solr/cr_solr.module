@@ -10,18 +10,18 @@ use \Drupal\search_api\IndexInterface;
 /**
  * Update documents.
  */
-function cr_partner_search_api_solr_documents_alter(array $documents, IndexInterface $index, array $items) {
+function cr_solr_search_api_solr_documents_alter(array $documents, IndexInterface $index, array $items) {
   foreach ($documents as $document) {
     $entitytype = str_replace('entity:', '', $document['ss_search_api_datasource']);
 
     // Add ss_type to everything
-    $sstype = ($entitytype != 'node') ?
+    $sstype = ($entitytype !== 'node') ?
       ucfirst($entitytype) :
       $document['ss_type'];
     $document->setField('ss_type', $sstype);
 
     // De-prioritise basic pages
-    if ($document['ss_type'] == 'page') {
+    if ($document['ss_type'] === 'page') {
       $document->setBoost(0.2);
     }
   }
