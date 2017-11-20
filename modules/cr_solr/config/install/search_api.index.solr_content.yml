@@ -126,6 +126,9 @@ processor_settings:
   rendered_item:
     plugin_id: rendered_item
     settings: {  }
+  ignore_media_mp4:
+    weights:
+      alter_items: 0
 tracker_settings:
   default:
     plugin_id: default
