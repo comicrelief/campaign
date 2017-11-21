@@ -93,7 +93,8 @@ Feature: Article
 
   @api
   Scenario: Create news articles that are linked together via a common tag
-    Given a "category" term with the name "Fundraising"
+    Given I am logged in as a user with the "editor" role
+    And a "category" term with the name "Fundraising"
     When I am viewing a "article" content:
       | title                  | Comic Relief raises £1bn over 30-year existence                                                   |
       | field_article_type     | News                                                                                              |
