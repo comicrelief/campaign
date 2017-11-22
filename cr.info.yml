@@ -242,6 +242,10 @@ config_devel:
   - user.role.editor
   - user.role.manager
   - user.role.reviewer
+  - user.role.news_editor
+  - system.action.user_remove_role_action.news_editor
+  - system.action.user_add_role_action.news_editor
+
   - user.settings
 
   # Contributed modules

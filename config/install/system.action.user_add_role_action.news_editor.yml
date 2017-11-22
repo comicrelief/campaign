@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.news_editor
+  module:
+    - user
+id: user_add_role_action.news_editor
+label: 'Add the News editor role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: news_editor
