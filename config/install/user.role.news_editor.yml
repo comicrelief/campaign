@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies: {  }
+id: news_editor
+label: 'News editor'
+weight: -4
+is_admin: null
+permissions:
+  - 'access in-place editing'
+  - 'access media overview'
+  - 'administer redirects'
+  - 'create article content'
+  - 'create media'
+  - 'create url aliases'
+  - 'delete any media'
+  - 'delete media'
+  - 'delete own article content'
+  - 'delete terms in article_category'
+  - 'edit own article content'
+  - 'edit terms in article_category'
+  - 'update any media'
+  - 'update media'
+  - 'view any unpublished article content'
+  - 'view article revisions'
+  - 'view scheduled update entities'
