@@ -3,7 +3,7 @@ status: true
 dependencies: {  }
 id: manager
 label: 'User manager'
-weight: -7
+weight: -6
 is_admin: false
 permissions:
   - 'administer pathauto'
