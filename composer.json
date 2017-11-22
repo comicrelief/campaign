@@ -131,7 +131,7 @@
         "drupal/google_tag": "1.x-dev#09ce10c",
         "drupal/imagemagick": "2.2",
         "drupal/inline_entity_form": "1.x-dev#dbfc93f",
-        "drupal/media_entity": "1.6",
+        "drupal/media_entity": "1.7",
         "drupal/media_entity_browser": "1.0-beta3",
         "drupal/media_entity_image": "1.2",
         "drupal/media_entity_slideshow": "1.2",
