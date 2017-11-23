@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - image.style.large_1700x450
     - image.style.large_1700x500
     - image.style.large_1700x500_2x
     - image.style.small_768x450

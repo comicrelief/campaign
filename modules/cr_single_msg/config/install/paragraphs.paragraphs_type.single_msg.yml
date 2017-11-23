@@ -3,4 +3,6 @@ status: true
 dependencies: {  }
 id: single_msg
 label: 'Single Msg Row'
+icon_uuid: null
+description: null
 behavior_plugins: {  }

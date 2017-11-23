@@ -7,6 +7,7 @@ dependencies:
     - core.entity_view_mode.node.full
   module:
     - search_api
+    - cr_solr
     - node
     - media_entity
 id: solr_content
@@ -100,6 +101,9 @@ datasource_settings:
       default: true
       selected: {  }
 processor_settings:
+  ignore_media_mp4:
+    weights:
+      alter_items: 0
   ignorecase:
     plugin_id: ignorecase
     settings:
@@ -126,9 +130,6 @@ processor_settings:
   rendered_item:
     plugin_id: rendered_item
     settings: {  }
-  ignore_media_mp4:
-    weights:
-      alter_items: 0
 tracker_settings:
   default:
     plugin_id: default

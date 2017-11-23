@@ -2,5 +2,7 @@ langcode: en
 status: true
 dependencies: {  }
 id: cr_cards
-label: 'Cards'
+label: Cards
+icon_uuid: null
+description: null
 behavior_plugins: {  }

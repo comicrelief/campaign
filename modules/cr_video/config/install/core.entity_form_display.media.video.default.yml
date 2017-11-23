@@ -6,6 +6,7 @@ dependencies:
     - field.field.media.video.field_youtube_video_id
     - media_entity.bundle.video
   module:
+    - path
     - text
 id: media.video.default
 targetEntityType: media
@@ -44,6 +45,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
     region: content
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   created: true
   uid: true

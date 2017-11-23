@@ -3,4 +3,6 @@ status: true
 dependencies: {  }
 id: feature_articles
 label: 'Feature Articles'
+icon_uuid: null
+description: null
 behavior_plugins: {  }
