@@ -2,7 +2,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - image.style.large_1700x450
     - image.style.large_1700x500
     - image.style.large_1700x500_2x
     - image.style.small_768x450
@@ -41,4 +40,4 @@ image_style_mappings:
     image_mapping_type: image_style
     image_mapping: small_768x450_2x
 breakpoint_group: campaign_base
-fallback_image_style: large_1700x450
+fallback_image_style: large_1700x500
