@@ -3,4 +3,6 @@ status: true
 dependencies: {  }
 id: cr_rich_text_paragraph
 label: 'Background Single Message'
+icon_uuid: null
+description: null
 behavior_plugins: {  }

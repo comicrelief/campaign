@@ -3,4 +3,6 @@ status: true
 dependencies: {  }
 id: cw_row
 label: 'Content Wall'
+icon_uuid: null
+description: null
 behavior_plugins: {  }

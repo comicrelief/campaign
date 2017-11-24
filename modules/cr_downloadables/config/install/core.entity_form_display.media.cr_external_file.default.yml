@@ -8,6 +8,7 @@ dependencies:
     - media_entity.bundle.cr_external_file
   module:
     - link
+    - path
     - text
 id: media.cr_external_file.default
 targetEntityType: media
@@ -51,6 +52,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
     region: content
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
     weight: 5

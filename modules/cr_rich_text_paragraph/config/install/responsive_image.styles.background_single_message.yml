@@ -40,4 +40,4 @@ image_style_mappings:
     image_mapping_type: image_style
     image_mapping: small_768x450_2x
 breakpoint_group: campaign_base
-fallback_image_style: large_1700x450
+fallback_image_style: large_1700x500
