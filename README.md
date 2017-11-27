@@ -9,17 +9,20 @@ To get started, simply follow the instructions in the [Installation guide](docs/
 
 Think about contributing? That's great, but please do read our [contributing guidelines](CONTRIBUTING.md) first!
 
-## Related resources
+## Documentation
 
 * [Rules of the Road](docs/rules_of_the_road.md)
-* [Information, hints, tips and troubleshooting](docs/troubleshooting.md)
+* [Installation](docs/install.md)
 * [Development instructions](docs/development.md)
+* [Information, hints, tips and troubleshooting](docs/troubleshooting.md)
 * [Naming Convention](docs/naming-convention.md)
 * [Testing](docs/testing.md)
+* [Release process](docs/releases.md)
+
+## Related resources
 * [Blog post: building rednoseday.com on Drupal 8](https://technology.comicrelief.com/2016/12/21/building-rednoseday-com-on-drupal-8/)
 * [Video DrupalCon Baltimore 2017: building reusable websites on Drupal 8](https://technology.comicrelief.com/2017/05/12/drupalcon-baltimore-talk-slides/)
 * [Blog post: Why we made our platform product open-source](https://technology.comicrelief.com/2017/07/07/why-we-made-our-platform-product-open-source/)
-* [Release process](docs/releases.md)
 
 ## License
 
