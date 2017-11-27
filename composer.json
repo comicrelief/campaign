@@ -162,11 +162,11 @@
         "drupal/views_ajax_history": "1.x-dev",
         "drush/drush": "9.0.*",
         "php-amqplib/php-amqplib": "2.7.*",
-        "webflo/drupal-finder": "1.0.*",
+        "webflo/drupal-finder": "1.1.*",
         "webmozart/path-util": "2.3.*"
     },
     "require-dev": {
-        "comicrelief/behat-tools": "0.0.9",
+        "comicrelief/behat-tools": "0.0.10",
         "drupal/coder": "8.2.*",
         "drupal/default_content": "1.0-alpha7",
         "drupal/drupal-extension": "3.4.*",
