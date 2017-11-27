@@ -1,0 +1,21 @@
+version: 2
+jobs:
+  build:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: Start containers
+          command: |
+            set -x
+            docker-compose up -d
+      - run:
+          name: Set up the project
+          command: |
+            docker-compose exec web composer campaign:build || true
+            docker-compose exec web chmod ugo+rw web/sites/default -R
+      - run:
+          name: Run the test
+          command: |
+            docker-compose exec web ci/travis/run-tests.sh
+            docker-compose exec web ci/travis/dberrors.sh
