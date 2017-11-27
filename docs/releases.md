@@ -1,13 +1,9 @@
 ## Release management
 
-You can execute the release script inside the folder `/.github` to get a CHANGELOG template ready to paste since the last release, formatted correctly for the [release notes](https://github.com/comicrelief/campaign/releases). Have in mind that this script doesn't predict your next release version, so you'll need to update manually the version number of the release that you are doing.
+Releases are automatically created for every merge into the master branch. If no release type is defined in the commit 
+message, then the commit will default to being a `patch` release.
 
-```
-sh .github/releaser.sh
-```
+Release types should be defined in the initial line of the commit message as either a `patch`, `minor` or `major` 
+release.
 
-Alternatively, you can do it manually from your IDE, terminal, etc.. as long as follow the standard.
-
-Then you need to create a PR from `develop` to `master` and copy the output/changelog to the description.
-
-Once this is reviewed and merged, you need to [create a tag from `master`](https://github.com/comicrelief/campaign/releases) and paste the changelog.
+For reference please refer to the pull request template.
