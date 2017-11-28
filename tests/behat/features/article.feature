@@ -89,7 +89,7 @@ Feature: Article
     # logout and see the article loaded
     Given I am not logged in
     And I am on "news/test-scheduled-article"
-    Then I should see "Test Scheduled articlex"
+    Then I should see "Test Scheduled article"
 
   @api
   Scenario: Create news articles that are linked together via a common tag

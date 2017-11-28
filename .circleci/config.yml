@@ -17,7 +17,5 @@ jobs:
       - run:
           name: Run the test
           command: |
-            docker-compose exec web sh -c 'cd web && drush pm-uninstall cookieconsent toolbar -y'
-            docker-compose exec web vendor/bin/behat -nf pretty -o std
-            docker-compose exec web vendor/bin/behat -nf pretty -o std -s rest
+            docker-compose exec web ci/travis/run-tests.sh
             docker-compose exec web ci/travis/dberrors.sh
