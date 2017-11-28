@@ -1,4 +1,7 @@
 default:
+  formatters:
+    junit:
+      output_path: %paths.base%/reports
   suites:
     default:
       paths: [ %paths.base%/tests/behat/features ]
