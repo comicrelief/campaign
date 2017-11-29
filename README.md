@@ -1,5 +1,5 @@
 # Comic Relief Campaign [![CircleCI][circlesvg]][circleurl] [![Build Status][travis-status]][travis-url] [![GitHub release][github-release]][github-release-url] [![license][license]][license-url]
-> Drupal 8 profile for building enganging fundraising websites, maintained by [Comic Relief](https://www.comicrelief.com)
+> Drupal 8 profile for building engaging fundraising websites, maintained by [Comic Relief](https://www.comicrelief.com)
 
 ## Getting started
 
