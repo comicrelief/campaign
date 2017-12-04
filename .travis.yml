@@ -26,7 +26,7 @@ before_install:
 - if [ -f ${CACHE_FILE_SOLR} ]; then gunzip -c ${CACHE_FILE_SOLR} | docker load; fi
 - if [ -f ${CACHE_FILE_MYSQL} ]; then gunzip -c ${CACHE_FILE_MYSQL} | docker load; fi
 - if [ -f ${CACHE_FILE_RABBITMQ} ]; then gunzip -c ${CACHE_FILE_RABBITMQ} | docker load; fi
-- if [ -f ${CACHE_FILE_POSTGRES} ]; then gunzip -c ${CACHE_FILE_POSTGRES} | docker load; fi
+- if [ -f ${CACHE_FILE_SELENIUM} ]; then gunzip -c ${CACHE_FILE_SELENIUM} | docker load; fi
 
 install:
 - mkdir -p $DOCKER_CACHE_DIR
