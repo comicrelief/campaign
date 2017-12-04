@@ -11,7 +11,7 @@ services:
       - solr
       - selenium
     volumes:
-      - ./:/var/www/html:cached
+      - ./:/var/www/html
     environment:
       BEHAT_PARAMS: '{"extensions": {"Behat\\MinkExtension": {"base_url": "http://web","goutte": {}, "selenium2": {"wd_host": "http://selenium:4444/wd/hub"}}}}'
 
@@ -33,7 +33,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: campaign
     ports:
-      - 3306:3306
+      - 3307:3306
     volumes:
       - db-store:/var/lib/mysql
 
