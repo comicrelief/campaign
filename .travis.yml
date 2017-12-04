@@ -10,15 +10,32 @@ git:
 
 env:
   DOCKER_COMPOSE_VERSION: 1.15.0
+  global:
+    - DOCKER_CACHE_DIR=$HOME/.cache/docker
+    - CACHE_FILE_PHP=$DOCKER_CACHE_DIR/php.tar.gz
+    - CACHE_FILE_SOLR=$DOCKER_CACHE_DIR/solr.tar.gz
+    - CACHE_FILE_MYSQL=$DOCKER_CACHE_DIR/mysql.tar.gz
+    - CACHE_FILE_RABBITMQ=$DOCKER_CACHE_DIR/rabbitmq.tar.gz
+    - CACHE_FILE_SELENIUM=$DOCKER_CACHE_DIR/selenium.tar.gz
 
 before_install:
 # Update docker-composer to usable version
 - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
 - chmod +x docker-compose
-- sudo mv docker-compose /usr/local/bin
+- if [ -f ${CACHE_FILE_PHP} ]; then gunzip -c ${CACHE_FILE_PHP} | docker load; fi
+- if [ -f ${CACHE_FILE_SOLR} ]; then gunzip -c ${CACHE_FILE_SOLR} | docker load; fi
+- if [ -f ${CACHE_FILE_MYSQL} ]; then gunzip -c ${CACHE_FILE_MYSQL} | docker load; fi
+- if [ -f ${CACHE_FILE_RABBITMQ} ]; then gunzip -c ${CACHE_FILE_RABBITMQ} | docker load; fi
+- if [ -f ${CACHE_FILE_SELENIUM} ]; then gunzip -c ${CACHE_FILE_SELENIUM} | docker load; fi
 
 install:
 - docker-compose up -d
+- mkdir -p $DOCKER_CACHE_DIR
+- if [ ! -f ${CACHE_FILE_PHP} ]; then docker save comicrelief/php-drupal:latest | gzip > ${CACHE_FILE_PHP}; fi
+- if [ ! -f ${CACHE_FILE_SOLR} ]; then docker save solr:6.3-alpine | gzip > ${CACHE_FILE_SOLR}; fi
+- if [ ! -f ${CACHE_FILE_MYSQL} ]; then docker save mysql:5 | gzip > ${CACHE_FILE_MYSQL}; fi
+- if [ ! -f ${CACHE_FILE_RABBITMQ} ]; then docker save rabbitmq:3-management | gzip > ${CACHE_FILE_RABBITMQ}; fi
+- if [ ! -f ${CACHE_FILE_SELENIUM} ]; then docker save selenium/standalone-chrome-debug:latest | gzip > ${CACHE_FILE_SELENIUM}; fi
 
 before_script:
 - docker-compose exec web composer campaign:build || true
@@ -32,6 +49,7 @@ cache:
   directories:
     - vendor
     - themes/custom/campaign_base/node_modules
+    - $DOCKER_CACHE_DIR
 
 notifications:
   slack:
