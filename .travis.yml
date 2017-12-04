@@ -29,13 +29,13 @@ before_install:
 - if [ -f ${CACHE_FILE_SELENIUM} ]; then gunzip -c ${CACHE_FILE_SELENIUM} | docker load; fi
 
 install:
+- docker-compose up -d
 - mkdir -p $DOCKER_CACHE_DIR
 - if [ ! -f ${CACHE_FILE_PHP} ]; then docker save comicrelief/php-drupal:latest | gzip > ${CACHE_FILE_PHP}; fi
 - if [ ! -f ${CACHE_FILE_SOLR} ]; then docker save solr:6.3-alpine | gzip > ${CACHE_FILE_SOLR}; fi
 - if [ ! -f ${CACHE_FILE_MYSQL} ]; then docker save mysql:5 | gzip > ${CACHE_FILE_MYSQL}; fi
 - if [ ! -f ${CACHE_FILE_RABBITMQ} ]; then docker save rabbitmq:3-management | gzip > ${CACHE_FILE_RABBITMQ}; fi
 - if [ ! -f ${CACHE_FILE_SELENIUM} ]; then docker save selenium/standalone-chrome-debug:latest | gzip > ${CACHE_FILE_SELENIUM}; fi
-- docker-compose up -d
 
 before_script:
 - docker-compose exec web composer campaign:build || true
