@@ -10,12 +10,14 @@ git:
 
 env:
   DOCKER_COMPOSE_VERSION: 1.15.0
+  DOCKER_CACHE_FILE: /home/travis/docker/cache.tar.gz
 
 before_install:
 # Update docker-composer to usable version
 - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
 - chmod +x docker-compose
 - sudo mv docker-compose /usr/local/bin
+- if [ -f ${DOCKER_CACHE_FILE} ]; then gunzip -c ${DOCKER_CACHE_FILE} | docker load; fi
 
 install:
 - docker-compose up -d
@@ -27,11 +29,13 @@ before_script:
 script:
 - docker-compose exec web ci/travis/run-tests.sh
 - docker-compose exec web ci/travis/dberrors.sh
+- mkdir -p $(dirname ${DOCKER_CACHE_FILE}) ; docker save $(docker history -q ${DOCKER_REPOSITORY}:${TRAVIS_COMMIT} | grep -v '<missing>') | gzip > ${DOCKER_CACHE_FILE};
 
 cache:
   directories:
     - vendor
     - themes/custom/campaign_base/node_modules
+    - /home/travis/docker/
 
 notifications:
   slack:
