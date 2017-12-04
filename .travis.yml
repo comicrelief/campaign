@@ -12,11 +12,11 @@ env:
   DOCKER_COMPOSE_VERSION: 1.15.0
   global:
     - DOCKER_CACHE_DIR=$HOME/.cache/docker
-    - CACHE_FILE_PHP=$CACHE_DIR/php.tar.gz
-    - CACHE_FILE_SOLR=$CACHE_DIR/solr.tar.gz
-    - CACHE_FILE_MYSQL=$CACHE_DIR/mysql.tar.gz
-    - CACHE_FILE_RABBITMQ=$CACHE_DIR/rabbitmq.tar.gz
-    - CACHE_FILE_SELENIUM=$CACHE_DIR/selenium.tar.gz
+    - CACHE_FILE_PHP=$DOCKER_CACHE_DIR/php.tar.gz
+    - CACHE_FILE_SOLR=$DOCKER_CACHE_DIR/solr.tar.gz
+    - CACHE_FILE_MYSQL=$DOCKER_CACHE_DIR/mysql.tar.gz
+    - CACHE_FILE_RABBITMQ=$DOCKER_CACHE_DIR/rabbitmq.tar.gz
+    - CACHE_FILE_SELENIUM=$DOCKER_CACHE_DIR/selenium.tar.gz
 
 before_install:
 # Update docker-composer to usable version
