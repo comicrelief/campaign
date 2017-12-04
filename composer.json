@@ -72,7 +72,7 @@
                 "See https://www.drupal.org/node/2911749": "https://www.drupal.org/files/issues/fix_ckeditor_styles_dropdown-2911749-17.patch"
             },
             "drupal/entity_browser": {
-                "https://www.drupal.org/node/2845037": "https://gist.githubusercontent.com/adamclark-dev/ee3198a737a87abe16772ba0df34e9da/raw/f08452bb212949600b7dbe6450aadbb72bf2b2c1/2845037_15.patch"
+                "https://www.drupal.org/node/2845037": "https://www.drupal.org/files/issues/2845037_16.patch"
             },
             "drupal/varnish_purge": {
                 "https://www.drupal.org/node/2843978": "https://www.drupal.org/files/issues/2843978-multi-ips-5.patch"
