@@ -67,6 +67,8 @@ dependencies:
   - blazy
   - override_node_options
   - view_unpublished
+  - advagg
+  - advagg_js_minify
 
   # Layout
   - inline_entity_form
