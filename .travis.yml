@@ -10,7 +10,8 @@ git:
 
 env:
   DOCKER_COMPOSE_VERSION: 1.15.0
-  DOCKER_CACHE_FILE: /home/travis/docker/cache.tar.gz
+  global:
+    - DOCKER_CACHE_FILE=/home/travis/docker/cache.tar.gz
 
 before_install:
 # Update docker-composer to usable version
