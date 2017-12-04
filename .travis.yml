@@ -11,16 +11,30 @@ git:
 env:
   DOCKER_COMPOSE_VERSION: 1.15.0
   global:
-    - DOCKER_CACHE_FILE=/home/travis/docker/cache.tar.gz
+    - DOCKER_CACHE_DIR=$HOME/.cache/docker
+    - CACHE_FILE_PHP=$CACHE_DIR/php.tar.gz
+    - CACHE_FILE_SOLR=$CACHE_DIR/solr.tar.gz
+    - CACHE_FILE_MYSQL=$CACHE_DIR/mysql.tar.gz
+    - CACHE_FILE_RABBITMQ=$CACHE_DIR/rabbitmq.tar.gz
+    - CACHE_FILE_SELENIUM=$CACHE_DIR/selenium.tar.gz
 
 before_install:
 # Update docker-composer to usable version
 - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
 - chmod +x docker-compose
-- sudo mv docker-compose /usr/local/bin
-- if [ -f ${DOCKER_CACHE_FILE} ]; then gunzip -c ${DOCKER_CACHE_FILE} | docker load; fi
+- if [ -f ${CACHE_FILE_PHP} ]; then gunzip -c ${CACHE_FILE_PHP} | docker load; fi
+- if [ -f ${CACHE_FILE_SOLR} ]; then gunzip -c ${CACHE_FILE_SOLR} | docker load; fi
+- if [ -f ${CACHE_FILE_MYSQL} ]; then gunzip -c ${CACHE_FILE_MYSQL} | docker load; fi
+- if [ -f ${CACHE_FILE_RABBITMQ} ]; then gunzip -c ${CACHE_FILE_RABBITMQ} | docker load; fi
+- if [ -f ${CACHE_FILE_POSTGRES} ]; then gunzip -c ${CACHE_FILE_POSTGRES} | docker load; fi
 
 install:
+- mkdir -p $DOCKER_CACHE_DIR
+- if [ ! -f ${CACHE_FILE_PHP} ]; then docker save comicrelief/php-drupal:latest | gzip > ${CACHE_FILE_PHP}; fi
+- if [ ! -f ${CACHE_FILE_SOLR} ]; then docker save solr:6.3-alpine | gzip > ${CACHE_FILE_SOLR}; fi
+- if [ ! -f ${CACHE_FILE_MYSQL} ]; then docker save mysql:5 | gzip > ${CACHE_FILE_MYSQL}; fi
+- if [ ! -f ${CACHE_FILE_RABBITMQ} ]; then docker save rabbitmq:3-management | gzip > ${CACHE_FILE_RABBITMQ}; fi
+- if [ ! -f ${CACHE_FILE_SELENIUM} ]; then docker save selenium/standalone-chrome-debug:latest | gzip > ${CACHE_FILE_SELENIUM}; fi
 - docker-compose up -d
 
 before_script:
@@ -30,13 +44,12 @@ before_script:
 script:
 - docker-compose exec web ci/travis/run-tests.sh
 - docker-compose exec web ci/travis/dberrors.sh
-- mkdir -p $(dirname ${DOCKER_CACHE_FILE}) ; docker save $(docker history -q ${DOCKER_REPOSITORY}:${TRAVIS_COMMIT} | grep -v '<missing>') | gzip > ${DOCKER_CACHE_FILE};
 
 cache:
   directories:
     - vendor
     - themes/custom/campaign_base/node_modules
-    - /home/travis/docker/
+    - $DOCKER_CACHE_DIR
 
 notifications:
   slack:
