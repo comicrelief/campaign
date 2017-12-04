@@ -401,3 +401,11 @@ function cr_update_8043() {
   installer()->install(['view_unpublished']);
   installer()->install(['override_node_options']);
 }
+
+/**
+ * Install advanced aggregator and advanced js minifier.
+ */
+function cr_update_8044() {
+    installer()->install(['advagg']);
+    installer()->install(['advagg_js_minify']);
+}
