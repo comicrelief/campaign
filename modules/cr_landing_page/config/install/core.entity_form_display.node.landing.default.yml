@@ -14,7 +14,6 @@ dependencies:
     - field.field.node.landing.field_paragraphs
     - field.field.node.landing.field_svg_body_title
     - image.style.medium
-    - image.style.thumbnail
     - node.type.landing
   module:
     - field_group
@@ -94,10 +93,10 @@ content:
   field_landing_image:
     weight: 14
     settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
+      preview_image_style: medium
       preview_link: true
       offsets: '50,50'
+      progress_indicator: throbber
     third_party_settings: {  }
     type: image_focal_point
     region: content
