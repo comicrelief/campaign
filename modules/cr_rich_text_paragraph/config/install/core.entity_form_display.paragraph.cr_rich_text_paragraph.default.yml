@@ -6,10 +6,9 @@ dependencies:
     - field.field.paragraph.cr_rich_text_paragraph.field_bg_single_msg_bg_colour
     - field.field.paragraph.cr_rich_text_paragraph.field_bg_single_msg_layout
     - field.field.paragraph.cr_rich_text_paragraph.field_body
-    - image.style.large
     - paragraphs.paragraphs_type.cr_rich_text_paragraph
   module:
-    - image
+    - file_entity
     - text
 id: paragraph.cr_rich_text_paragraph.default
 targetEntityType: paragraph
@@ -19,10 +18,9 @@ content:
   field_background:
     weight: 0
     settings:
-      preview_image_style: large
       progress_indicator: throbber
     third_party_settings: {  }
-    type: image_image
+    type: file_editable
     region: content
   field_bg_single_msg_bg_colour:
     weight: 2

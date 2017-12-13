@@ -14,9 +14,11 @@ dependencies:
     - field.field.node.landing.field_paragraphs
     - field.field.node.landing.field_svg_body_title
     - image.style.medium
+    - image.style.thumbnail
     - node.type.landing
   module:
     - field_group
+    - focal_point
     - image
     - metatag
     - paragraphs
@@ -40,6 +42,7 @@ third_party_settings:
         id: ''
         classes: ''
         open: false
+      region: hidden
 id: node.landing.default
 targetEntityType: node
 bundle: landing
@@ -91,10 +94,12 @@ content:
   field_landing_image:
     weight: 14
     settings:
-      preview_image_style: medium
       progress_indicator: throbber
+      preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
     third_party_settings: {  }
-    type: image_image
+    type: image_focal_point
     region: content
   field_landing_image_mobile:
     weight: 15
