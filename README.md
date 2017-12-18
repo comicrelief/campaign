@@ -2,15 +2,12 @@
 > Drupal 8 profile for building engaging fundraising websites, maintained by [Comic Relief](https://www.comicrelief.com)
 
 ## Getting started
-
 To get started, simply follow the instructions in the [Installation guide](docs/install.md) to get the Campaign website running on an environment.
 
 ## Contributing
-
 Think about contributing? That's great, but please do read our [contributing guidelines](CONTRIBUTING.md) first!
 
 ## Documentation
-
 * [Rules of the Road](docs/rules_of_the_road.md)
 * [Installation](docs/install.md)
 * [Development instructions](docs/development.md)
@@ -25,7 +22,6 @@ Think about contributing? That's great, but please do read our [contributing gui
 * [Blog post: Why we made our platform product open-source](https://technology.comicrelief.com/2017/07/07/why-we-made-our-platform-product-open-source/)
 
 ## License
-
 See our [LICENSE](LICENSE.md) file for license rights and limitations.
 
 [circlesvg]: https://circleci.com/gh/comicrelief/campaign/tree/master.svg?style=svg
