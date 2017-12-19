@@ -17,6 +17,7 @@ dependencies:
     - node.type.landing
   module:
     - field_group
+    - focal_point
     - image
     - metatag
     - paragraphs
@@ -40,6 +41,7 @@ third_party_settings:
         id: ''
         classes: ''
         open: false
+      region: hidden
 id: node.landing.default
 targetEntityType: node
 bundle: landing
@@ -92,9 +94,11 @@ content:
     weight: 14
     settings:
       preview_image_style: medium
+      preview_link: true
+      offsets: '50,50'
       progress_indicator: throbber
     third_party_settings: {  }
-    type: image_image
+    type: image_focal_point
     region: content
   field_landing_image_mobile:
     weight: 15
