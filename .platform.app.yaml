@@ -17,6 +17,7 @@ dependencies:
         drush/drush: "8.1.*"
     nodejs:
         grunt-cli: "~0.1.13"
+        yarn: "*"
 
 # The relationships of the application with services or other applications.
 # The left-hand side is the name of the relationship as it will be exposed
@@ -61,6 +62,7 @@ mounts:
 hooks:
     build: |
         set -e
+        yarn install
         composer grunt:build
         composer campaign:scaffold
         cp -f /app/ci/platform/settings.php /app/web/sites/default/settings.php
