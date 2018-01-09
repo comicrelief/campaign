@@ -1,0 +1,7 @@
+cr_testing.500:
+  path: '/testing/500'
+  defaults:
+    _controller: '\Drupal\cr_testing\Controller\DefaultController::index'
+    _title: '500'
+  requirements:
+    _permission: 'access content'
