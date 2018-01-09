@@ -1,0 +1,5 @@
+name: CR Testing
+type: module
+description: CR Testing Routes to test application behaviours
+core: 8.x
+package: Comic Relief
