@@ -17,7 +17,7 @@ jobs:
                 keys:
                   - node-deps-{{ checksum "themes/custom/campaign_base/package.json" }}
       - run:
-          name: Set up the project
+          name: Set up project
           command: |
             docker-compose exec web composer campaign:build || true
             docker-compose exec web chmod ugo+rw web/sites/default -R
@@ -31,7 +31,11 @@ jobs:
                 paths:
                   - themes/custom/campaign_base/node_modules
       - run:
-          name: Run the test
+          name: Check outdated vendors
+          command: |
+            docker-compose exec -T web composer outdate
+      - run:
+          name: Run test
           command: |
             docker-compose exec web sh -c 'cd web && drush pm-uninstall cookieconsent toolbar -y'
             docker-compose exec -T web vendor/bin/behat -n --colors
