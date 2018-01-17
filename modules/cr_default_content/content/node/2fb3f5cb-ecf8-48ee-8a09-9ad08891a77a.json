@@ -6,15 +6,15 @@
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/partner"
         },
-        "http:\/\/drupal.org\/rest\/relation\/node\/partner\/uid": [
-            {
-                "href": "http:\/\/default\/user\/0?_format=hal_json",
-                "lang": "en"
-            }
-        ],
         "http:\/\/drupal.org\/rest\/relation\/node\/partner\/revision_uid": [
             {
                 "href": "http:\/\/default\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/partner\/uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
+                "lang": "en"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/partner\/field_partner_category": [
@@ -30,7 +30,7 @@
     },
     "nid": [
         {
-            "value": "9"
+            "value": 9
         }
     ],
     "uuid": [
@@ -40,7 +40,7 @@
     ],
     "vid": [
         {
-            "value": "116"
+            "value": 116
         }
     ],
     "langcode": [
@@ -54,31 +54,13 @@
             "target_id": "partner"
         }
     ],
-    "title": [
+    "revision_timestamp": [
         {
-            "value": "Sainsbury's",
-            "lang": "en"
+            "value": "2016-11-17T11:50:20+00:00",
+            "format": "Y-m-d\\TH:i:sP"
         }
     ],
     "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/node\/partner\/uid": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/user\/0?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "013b3fc2-fabc-4d84-ae89-699179943247"
-                    }
-                ],
-                "lang": "en"
-            }
-        ],
         "http:\/\/drupal.org\/rest\/relation\/node\/partner\/revision_uid": [
             {
                 "_links": {
@@ -91,9 +73,27 @@
                 },
                 "uuid": [
                     {
-                        "value": "5a5ba5d9-9082-4848-b221-537372efc97c"
+                        "value": "fda3d033-1a7a-4bf9-9437-9bb3cf05f00e"
                     }
                 ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/partner\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "fda3d033-1a7a-4bf9-9437-9bb3cf05f00e"
+                    }
+                ],
+                "lang": "en"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/partner\/field_partner_category": [
@@ -137,48 +137,75 @@
     },
     "status": [
         {
-            "value": "1",
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "title": [
+        {
+            "value": "Sainsbury's",
             "lang": "en"
         }
     ],
     "created": [
         {
-            "value": "1459942304",
-            "lang": "en"
+            "value": "2016-04-06T11:31:44+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
         }
     ],
     "changed": [
         {
-            "value": "1479383420",
-            "lang": "en"
+            "value": "2016-11-17T11:50:20+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
         }
     ],
     "promote": [
         {
-            "value": "0",
+            "value": false,
             "lang": "en"
         }
     ],
     "sticky": [
         {
-            "value": "1",
-            "lang": "en"
-        }
-    ],
-    "revision_timestamp": [
-        {
-            "value": "1479383420"
-        }
-    ],
-    "revision_translation_affected": [
-        {
-            "value": "1",
+            "value": true,
             "lang": "en"
         }
     ],
     "default_langcode": [
         {
-            "value": "1",
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "metatag": [
+        {
+            "value": {
+                "title": "| Drush Site-Install",
+                "og_site_name": "Drush Site-Install",
+                "shortlink": "http:\/\/default\/%3Cnone%3E",
+                "canonical_url": "http:\/\/default\/%3Cnone%3E",
+                "og_type": "article",
+                "og_url": "http:\/\/default\/%3Cnone%3E",
+                "og_title": "| Drush Site-Install",
+                "referrer": "no-referrer",
+                "og_image": "http:\/\/default\/profiles\/cr\/themes\/custom\/campaign_base\/images\/og\/rnd-logo_open-graph_v2.jpg",
+                "og_locale": "en_GB"
+            }
+        }
+    ],
+    "path": [
+        {
+            "alias": "\/partners\/sainsburys",
+            "pid": 33,
+            "langcode": "en",
             "lang": "en"
         }
     ],
@@ -192,12 +219,7 @@
     ],
     "field_partner_external": [
         {
-            "value": "0"
-        }
-    ],
-    "field_partner_meta_tags": [
-        {
-            "value": "a:0:{}"
+            "value": false
         }
     ],
     "field_partner_website": [
@@ -209,7 +231,7 @@
     ],
     "field_partner_weight": [
         {
-            "value": "0"
+            "value": 0
         }
     ]
 }

@@ -25,7 +25,7 @@
     },
     "id": [
         {
-            "value": "15"
+            "value": 15
         }
     ],
     "uuid": [
@@ -35,7 +35,7 @@
     ],
     "revision_id": [
         {
-            "value": "149"
+            "value": 149
         }
     ],
     "type": [
@@ -62,7 +62,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "e3587898-c86d-4f4c-b151-a011283d44ac"
+                        "value": "fda3d033-1a7a-4bf9-9437-9bb3cf05f00e"
                     }
                 ],
                 "lang": "en"
@@ -80,7 +80,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "e3587898-c86d-4f4c-b151-a011283d44ac"
+                        "value": "fda3d033-1a7a-4bf9-9437-9bb3cf05f00e"
                     }
                 ]
             }
@@ -105,14 +105,15 @@
     },
     "status": [
         {
-            "value": "1",
+            "value": true,
             "lang": "en"
         }
     ],
     "created": [
         {
-            "value": "1496256359",
-            "lang": "en"
+            "value": "2017-05-31T18:45:59+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
         }
     ],
     "parent_id": [
@@ -130,9 +131,20 @@
             "value": "field_paragraphs"
         }
     ],
+    "behavior_settings": [
+        {
+            "value": "a:0:{}"
+        }
+    ],
     "default_langcode": [
         {
-            "value": "1",
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": true,
             "lang": "en"
         }
     ],
@@ -148,7 +160,7 @@
     ],
     "field_feature_articles_titlehide": [
         {
-            "value": "0"
+            "value": false
         }
     ]
 }

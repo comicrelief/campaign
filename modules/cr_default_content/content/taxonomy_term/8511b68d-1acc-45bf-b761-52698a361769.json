@@ -9,7 +9,7 @@
     },
     "tid": [
         {
-            "value": "19"
+            "value": 19
         }
     ],
     "uuid": [
@@ -36,19 +36,36 @@
     ],
     "weight": [
         {
-            "value": "2"
+            "value": 2
         }
     ],
     "changed": [
         {
-            "value": "1475675701",
-            "lang": "en"
+            "value": "2016-10-05T13:55:01+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
         }
     ],
     "default_langcode": [
         {
-            "value": "1",
+            "value": true,
             "lang": "en"
+        }
+    ],
+    "metatag": [
+        {
+            "value": {
+                "title": "Red Nose Day Partners | Drush Site-Install",
+                "og_site_name": "Drush Site-Install",
+                "shortlink": "http:\/\/default\/%3Cnone%3E",
+                "canonical_url": "http:\/\/default\/%3Cnone%3E",
+                "og_type": "article",
+                "og_url": "http:\/\/default\/%3Cnone%3E",
+                "og_title": "Red Nose Day Partners | Drush Site-Install",
+                "referrer": "no-referrer",
+                "og_image": "http:\/\/default\/profiles\/cr\/themes\/custom\/campaign_base\/images\/og\/rnd-logo_open-graph_v2.jpg",
+                "og_locale": "en_GB"
+            }
         }
     ]
 }

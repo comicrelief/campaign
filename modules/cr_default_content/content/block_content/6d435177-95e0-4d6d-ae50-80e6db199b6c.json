@@ -14,7 +14,7 @@
     },
     "id": [
         {
-            "value": "5"
+            "value": 5
         }
     ],
     "uuid": [
@@ -24,7 +24,7 @@
     ],
     "revision_id": [
         {
-            "value": "5"
+            "value": 5
         }
     ],
     "langcode": [
@@ -46,25 +46,43 @@
     ],
     "changed": [
         {
-            "value": "1478520077",
-            "lang": "en"
+            "value": "2016-11-07T12:01:17+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
         }
     ],
     "revision_created": [
         {
-            "value": "1478518505"
-        }
-    ],
-    "revision_translation_affected": [
-        {
-            "value": "1",
-            "lang": "en"
+            "value": "2016-11-07T11:35:05+00:00",
+            "format": "Y-m-d\\TH:i:sP"
         }
     ],
     "default_langcode": [
         {
-            "value": "1",
+            "value": true,
             "lang": "en"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "metatag": [
+        {
+            "value": {
+                "title": "| Drush Site-Install",
+                "og_site_name": "Drush Site-Install",
+                "shortlink": "http:\/\/default\/%3Cnone%3E",
+                "canonical_url": "http:\/\/default\/%3Cnone%3E",
+                "og_type": "article",
+                "og_url": "http:\/\/default\/%3Cnone%3E",
+                "og_title": "| Drush Site-Install",
+                "referrer": "no-referrer",
+                "og_image": "http:\/\/default\/profiles\/cr\/themes\/custom\/campaign_base\/images\/og\/rnd-logo_open-graph_v2.jpg",
+                "og_locale": "en_GB"
+            }
         }
     ],
     "body": [
@@ -77,7 +95,7 @@
     ],
     "field_cw_link_target": [
         {
-            "value": "0"
+            "value": false
         }
     ],
     "field_teaser_bg_colour": [
@@ -87,7 +105,7 @@
     ],
     "field_teaser_bg_image": [
         {
-            "value": "0"
+            "value": false
         }
     ],
     "_embedded": {
@@ -130,7 +148,7 @@
     ],
     "field_teaser_you_tube_link": [
         {
-            "value": "0"
+            "value": false
         }
     ]
 }

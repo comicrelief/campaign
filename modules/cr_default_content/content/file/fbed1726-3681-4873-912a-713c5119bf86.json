@@ -14,7 +14,7 @@
     },
     "fid": [
         {
-            "value": "3394"
+            "value": 3394
         }
     ],
     "uuid": [
@@ -45,7 +45,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "c3d710e5-26ab-4237-8d26-12e2597bc36f"
+                        "value": "fda3d033-1a7a-4bf9-9437-9bb3cf05f00e"
                     }
                 ]
             }
@@ -58,7 +58,7 @@
     ],
     "uri": [
         {
-            "value": "public:\/\/2016-11\/pattern_0.gif"
+            "value": "public:\/\/2016-11\/pattern_0_26.gif"
         }
     ],
     "filemime": [
@@ -68,22 +68,40 @@
     ],
     "filesize": [
         {
-            "value": "167857"
+            "value": 167857
         }
     ],
     "status": [
         {
-            "value": "1"
+            "value": true
         }
     ],
     "created": [
         {
-            "value": "1478623246"
+            "value": "2016-11-08T16:40:46+00:00",
+            "format": "Y-m-d\\TH:i:sP"
         }
     ],
     "changed": [
         {
-            "value": "1478623252"
+            "value": "2016-11-08T16:40:52+00:00",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "metatag": [
+        {
+            "value": {
+                "title": "| Drush Site-Install",
+                "og_site_name": "Drush Site-Install",
+                "shortlink": "http:\/\/default\/%3Cnone%3E",
+                "canonical_url": "http:\/\/default\/%3Cnone%3E",
+                "og_type": "article",
+                "og_url": "http:\/\/default\/%3Cnone%3E",
+                "og_title": "| Drush Site-Install",
+                "referrer": "no-referrer",
+                "og_image": "http:\/\/default\/profiles\/cr\/themes\/custom\/campaign_base\/images\/og\/rnd-logo_open-graph_v2.jpg",
+                "og_locale": "en_GB"
+            }
         }
     ],
     "data": [

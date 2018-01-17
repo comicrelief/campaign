@@ -14,7 +14,7 @@
     },
     "fid": [
         {
-            "value": "3399"
+            "value": 3399
         }
     ],
     "uuid": [
@@ -45,7 +45,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "5a5ba5d9-9082-4848-b221-537372efc97c"
+                        "value": "fda3d033-1a7a-4bf9-9437-9bb3cf05f00e"
                     }
                 ]
             }
@@ -58,7 +58,7 @@
     ],
     "uri": [
         {
-            "value": "public:\/\/partner\/logo\/sainsburys_logo_2.png"
+            "value": "public:\/\/partner\/logo\/sainsburys_logo_2_26.png"
         }
     ],
     "filemime": [
@@ -68,22 +68,40 @@
     ],
     "filesize": [
         {
-            "value": "20691"
+            "value": 20691
         }
     ],
     "status": [
         {
-            "value": "1"
+            "value": true
         }
     ],
     "created": [
         {
-            "value": "1479383410"
+            "value": "2016-11-17T11:50:10+00:00",
+            "format": "Y-m-d\\TH:i:sP"
         }
     ],
     "changed": [
         {
-            "value": "1479383420"
+            "value": "2016-11-17T11:50:20+00:00",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "metatag": [
+        {
+            "value": {
+                "title": "| Drush Site-Install",
+                "og_site_name": "Drush Site-Install",
+                "shortlink": "http:\/\/default\/%3Cnone%3E",
+                "canonical_url": "http:\/\/default\/%3Cnone%3E",
+                "og_type": "article",
+                "og_url": "http:\/\/default\/%3Cnone%3E",
+                "og_title": "| Drush Site-Install",
+                "referrer": "no-referrer",
+                "og_image": "http:\/\/default\/profiles\/cr\/themes\/custom\/campaign_base\/images\/og\/rnd-logo_open-graph_v2.jpg",
+                "og_locale": "en_GB"
+            }
         }
     ],
     "data": [

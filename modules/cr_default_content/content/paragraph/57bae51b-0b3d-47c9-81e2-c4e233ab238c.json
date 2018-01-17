@@ -8,29 +8,29 @@
         },
         "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_story\/uid": [
             {
-                "href": "http:\/\/localhost\/user\/1?_format=hal_json",
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
                 "lang": "en"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_story\/revision_uid": [
             {
-                "href": "http:\/\/localhost\/user\/1?_format=hal_json"
+                "href": "http:\/\/default\/user\/1?_format=hal_json"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_story\/field_cr_story_beneficiary_image": [
             {
-                "href": "http:\/\/localhost\/file\/3378?_format=hal_json"
+                "href": "http:\/\/default\/file\/3378?_format=hal_json"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/paragraph\/cr_story\/field_cr_story_fundraiser_image": [
             {
-                "href": "http:\/\/localhost\/file\/3377?_format=hal_json"
+                "href": "http:\/\/default\/file\/3377?_format=hal_json"
             }
         ]
     },
     "id": [
         {
-            "value": "8"
+            "value": 8
         }
     ],
     "uuid": [
@@ -40,7 +40,7 @@
     ],
     "revision_id": [
         {
-            "value": "8"
+            "value": 8
         }
     ],
     "type": [
@@ -59,7 +59,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/localhost\/user\/1?_format=hal_json"
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -67,7 +67,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "817422ea-98c8-48d1-a456-a999831362af"
+                        "value": "fda3d033-1a7a-4bf9-9437-9bb3cf05f00e"
                     }
                 ],
                 "lang": "en"
@@ -77,7 +77,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/localhost\/user\/1?_format=hal_json"
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -85,7 +85,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "817422ea-98c8-48d1-a456-a999831362af"
+                        "value": "fda3d033-1a7a-4bf9-9437-9bb3cf05f00e"
                     }
                 ]
             }
@@ -94,7 +94,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/localhost\/file\/3378?_format=hal_json"
+                        "href": "http:\/\/default\/file\/3378?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
@@ -115,7 +115,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/localhost\/file\/3377?_format=hal_json"
+                        "href": "http:\/\/default\/file\/3377?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
@@ -135,14 +135,15 @@
     },
     "status": [
         {
-            "value": "1",
+            "value": true,
             "lang": "en"
         }
     ],
     "created": [
         {
-            "value": "1477493063",
-            "lang": "en"
+            "value": "2016-10-26T14:44:23+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
         }
     ],
     "parent_id": [
@@ -160,9 +161,20 @@
             "value": "field_paragraphs"
         }
     ],
+    "behavior_settings": [
+        {
+            "value": "a:0:{}"
+        }
+    ],
     "default_langcode": [
         {
-            "value": "1",
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": true,
             "lang": "en"
         }
     ],

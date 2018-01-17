@@ -1,20 +1,20 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/sr16-spl-local.sportrelief.com\/file\/3390?_format=hal_json"
+            "href": "http:\/\/default\/file\/3390?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/file\/image"
         },
         "http:\/\/drupal.org\/rest\/relation\/file\/image\/uid": [
             {
-                "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/1?_format=hal_json"
+                "href": "http:\/\/default\/user\/1?_format=hal_json"
             }
         ]
     },
     "fid": [
         {
-            "value": "3390"
+            "value": 3390
         }
     ],
     "uuid": [
@@ -37,7 +37,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/1?_format=hal_json"
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -45,7 +45,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "cd887433-3a04-4279-a136-d044d1de0b56"
+                        "value": "fda3d033-1a7a-4bf9-9437-9bb3cf05f00e"
                     }
                 ]
             }
@@ -58,7 +58,7 @@
     ],
     "uri": [
         {
-            "value": "public:\/\/2016-11\/video_background.jpg"
+            "value": "public:\/\/2016-11\/video_background_26.jpg"
         }
     ],
     "filemime": [
@@ -68,22 +68,40 @@
     ],
     "filesize": [
         {
-            "value": "115478"
+            "value": 115478
         }
     ],
     "status": [
         {
-            "value": "1"
+            "value": true
         }
     ],
     "created": [
         {
-            "value": "1478260880"
+            "value": "2016-11-04T12:01:20+00:00",
+            "format": "Y-m-d\\TH:i:sP"
         }
     ],
     "changed": [
         {
-            "value": "1478260927"
+            "value": "2016-11-04T12:02:07+00:00",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "metatag": [
+        {
+            "value": {
+                "title": "| Drush Site-Install",
+                "og_site_name": "Drush Site-Install",
+                "shortlink": "http:\/\/default\/%3Cnone%3E",
+                "canonical_url": "http:\/\/default\/%3Cnone%3E",
+                "og_type": "article",
+                "og_url": "http:\/\/default\/%3Cnone%3E",
+                "og_title": "| Drush Site-Install",
+                "referrer": "no-referrer",
+                "og_image": "http:\/\/default\/profiles\/cr\/themes\/custom\/campaign_base\/images\/og\/rnd-logo_open-graph_v2.jpg",
+                "og_locale": "en_GB"
+            }
         }
     ],
     "data": [

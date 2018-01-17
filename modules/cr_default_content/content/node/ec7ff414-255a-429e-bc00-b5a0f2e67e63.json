@@ -6,15 +6,15 @@
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/article"
         },
-        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
-            {
-                "href": "http:\/\/default\/user\/0?_format=hal_json",
-                "lang": "en"
-            }
-        ],
         "http:\/\/drupal.org\/rest\/relation\/node\/article\/revision_uid": [
             {
                 "href": "http:\/\/default\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
+                "lang": "en"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_category": [
@@ -31,7 +31,7 @@
     },
     "nid": [
         {
-            "value": "10"
+            "value": 10
         }
     ],
     "uuid": [
@@ -41,7 +41,7 @@
     ],
     "vid": [
         {
-            "value": "171"
+            "value": 171
         }
     ],
     "langcode": [
@@ -55,31 +55,13 @@
             "target_id": "article"
         }
     ],
-    "title": [
+    "revision_timestamp": [
         {
-            "value": "Four down \u2013 one to go!",
-            "lang": "en"
+            "value": "2017-06-14T16:00:06+00:00",
+            "format": "Y-m-d\\TH:i:sP"
         }
     ],
     "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/user\/0?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "260a25a1-ea38-4d4a-90a5-9889b9d4fd8b"
-                    }
-                ],
-                "lang": "en"
-            }
-        ],
         "http:\/\/drupal.org\/rest\/relation\/node\/article\/revision_uid": [
             {
                 "_links": {
@@ -92,9 +74,27 @@
                 },
                 "uuid": [
                     {
-                        "value": "2a764c34-028e-4837-b6db-0eaab7e37ccb"
+                        "value": "fda3d033-1a7a-4bf9-9437-9bb3cf05f00e"
                     }
                 ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "fda3d033-1a7a-4bf9-9437-9bb3cf05f00e"
+                    }
+                ],
+                "lang": "en"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_category": [
@@ -133,54 +133,87 @@
                 "alt": "",
                 "title": "",
                 "width": "610",
-                "height": "343"
+                "height": "343",
+                "_loaded": true,
+                "_accessCacheability": {}
             }
         ]
     },
     "status": [
         {
-            "value": "1",
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "title": [
+        {
+            "value": "Four down \u2013 one to go!",
             "lang": "en"
         }
     ],
     "created": [
         {
-            "value": "1455708485",
-            "lang": "en"
+            "value": "2016-02-17T11:28:05+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
         }
     ],
     "changed": [
         {
-            "value": "1497456006",
-            "lang": "en"
+            "value": "2017-06-14T16:00:06+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
         }
     ],
     "promote": [
         {
-            "value": "1",
+            "value": true,
             "lang": "en"
         }
     ],
     "sticky": [
         {
-            "value": "0",
-            "lang": "en"
-        }
-    ],
-    "revision_timestamp": [
-        {
-            "value": "1497456006"
-        }
-    ],
-    "revision_translation_affected": [
-        {
-            "value": "1",
+            "value": false,
             "lang": "en"
         }
     ],
     "default_langcode": [
         {
-            "value": "1",
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "metatag": [
+        {
+            "value": {
+                "title": "| Drush Site-Install",
+                "og_site_name": "Drush Site-Install",
+                "shortlink": "http:\/\/default\/%3Cnone%3E",
+                "canonical_url": "http:\/\/default\/%3Cnone%3E",
+                "description": "Greg James struggled on the penultimate day of Gregathlon - but with his fourth triathlon completed in Sheffield, the end is in sight.\n\nThe presenter faced a tough day, after taking a tumble from his bike when his legs seized up during the cycle. \u201cMy mind\u2019s telling me yes, but my body, my body\u2019s telling me no,\u201d he joked.",
+                "og_type": "article",
+                "abstract": "Greg James struggled on the penultimate day of Gregathlon - but with his fourth triathlon completed in Sheffield, the end is in sight.\n\nThe presenter faced a tough day, after taking a tumble from his bike when his legs seized up during the cycle. \u201cMy mind\u2019s telling me yes, but my body, my body\u2019s telling me no,\u201d he joked.",
+                "og_url": "http:\/\/default\/%3Cnone%3E",
+                "keywords": "Challenges",
+                "og_title": "| Drush Site-Install",
+                "referrer": "no-referrer",
+                "og_description": "Greg James struggled on the penultimate day of Gregathlon - but with his fourth triathlon completed in Sheffield, the end is in sight.\n\nThe presenter faced a tough day, after taking a tumble from his bike when his legs seized up during the cycle. \u201cMy mind\u2019s telling me yes, but my body, my body\u2019s telling me no,\u201d he joked.",
+                "og_image": "http:\/\/default\/sites\/default\/files\/2016-02\/Greg_exmaple_Sheffield_swim_14_26.jpg",
+                "og_locale": "en_GB"
+            }
+        }
+    ],
+    "path": [
+        {
+            "alias": "\/news\/four-down-one-go",
+            "pid": 42,
+            "langcode": "en",
             "lang": "en"
         }
     ],
@@ -194,12 +227,7 @@
     ],
     "field_article_exclude_aggr": [
         {
-            "value": "0"
-        }
-    ],
-    "field_article_meta_tags": [
-        {
-            "value": "a:0:{}"
+            "value": false
         }
     ],
     "field_article_publish_date": [
