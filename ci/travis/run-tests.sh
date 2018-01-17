@@ -3,7 +3,9 @@ set -e
 # @file
 # Run test suite
 cd web
-drush pm-uninstall cookieconsent toolbar -y
+drush pmu cookieconsent admin_toolbar_tools -y
+drush pmu admin_toolbar -y
+drush pmu toolbar -y
 cd ..
 # Run behat tests
 vendor/bin/behat -n
