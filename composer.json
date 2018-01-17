@@ -128,7 +128,7 @@
         "drupal/field_group": "3.0-beta1",
         "drupal/file_entity": "2.0-beta4",
         "drupal/focal_point": "1.0-beta5",
-        "drupal/google_tag": "1.x-dev#09ce10c",
+        "drupal/google_tag": "1.0",
         "drupal/imagemagick": "2.2",
         "drupal/inline_entity_form": "1.x-dev#dbfc93f",
         "drupal/media_entity": "1.7",
