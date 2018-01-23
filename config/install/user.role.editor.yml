@@ -110,6 +110,7 @@ permissions:
   - 'revert partner revisions'
   - 'update any media'
   - 'update media'
+  - 'use menu link attributes'
   - 'use text format basic_html'
   - 'use text format full_html'
   - 'view all revisions'
