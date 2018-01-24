@@ -45,13 +45,28 @@ class SearchApiExcludeEntityProcessor extends ProcessorPluginBase {
       if ($object instanceof MediaInterface) {
         if ($object->toArray()['bundle'][0]['target_id'] === 'cr_file') {
           $fid = $object->toArray()['field_cr_file'][0]['target_id'];
-          //load file id
-          $filename = File::load($fid)->getMimeType();
-          if ($filename === 'video/mp4') {
+          $mime = File::load($fid)->getMimeType();
+          if ($mime === 'video/mp4') {
+            unset($items[$item_id]);
+          }
+        }
+        elseif ($object->toArray()['bundle'][0]['target_id'] === 'cr_external_file') {
+          $filename = $object->toArray()['field_cr_external_file'][0]['uri'];
+          $extension = $this->get_file_extension($filename);
+          if ($extension === 'mp4') {
             unset($items[$item_id]);
           }
         }
       }
     }
+  }
+
+  /**
+   * @param string $file_name
+   *
+   * @return bool|string
+   */
+  private function get_file_extension(string $file_name) {
+    return substr(strrchr($file_name,'.'),1);
   }
 }
