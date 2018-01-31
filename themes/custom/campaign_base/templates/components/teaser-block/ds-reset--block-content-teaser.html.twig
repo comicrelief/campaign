@@ -23,7 +23,7 @@
   {% if cta_link %} 
     <a class="teaser-block__link" href="{{ field_teaser_link_address }}" target="{{ link_target }}"
        {% if cta_description %}
-         title="{{ cta_description }}"
+         aria-label="{{ cta_description }}"
        {% endif %}
     >
   {% endif %}
