@@ -10,6 +10,7 @@ dependencies:
     - field.field.block_content.teaser.field_teaser_image
     - field.field.block_content.teaser.field_teaser_link_address
     - field.field.block_content.teaser.field_teaser_link_colour
+    - field.field.block_content.teaser.field_teaser_link_description
     - field.field.block_content.teaser.field_teaser_link_title
     - field.field.block_content.teaser.field_teaser_you_tube_link
   module:
@@ -78,6 +79,14 @@ content:
     label: above
     settings: {  }
     third_party_settings: {  }
+    region: content
+  field_teaser_link_description:
+    weight: 11
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
     region: content
   field_teaser_link_title:
     weight: 3
