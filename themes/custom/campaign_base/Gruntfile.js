@@ -145,26 +145,6 @@ module.exports = function (grunt) {
       }
     },
 
-    kss: {
-      options: {
-        verbose: true,
-        css: 'node_modules/@comicrelief/pattern-lab/kss/kss-assets/kss.css',
-        // builder from npm package can be used here
-        builder: 'node_modules/@comicrelief/pattern-lab/kss'
-      },
-      all: {
-        options: {
-          verbose: true,
-          builder: 'node_modules/@comicrelief/pattern-lab/kss',
-          title: 'PatternLab',
-          css: '../css/styles.css'
-        },
-        // you can choose the path to your own components here
-        src: 'node_modules/@comicrelief/pattern-lab/sass/base/components',
-        dest: 'styleguide'
-      }
-    },
-
     concurrent: {
       target: {
         tasks: ['connect', 'watch'],
