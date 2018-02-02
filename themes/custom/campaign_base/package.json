@@ -9,8 +9,7 @@
     "lightcase": "2.4.0",
     "platform": "1.3.3",
     "vide": "^0.5.1",
-    "smartmenus": "^1.0.1",
-    "yarn": "1.2.1"
+    "smartmenus": "^1.0.1"
   },
   "devDependencies": {
     "any-promise": "^1.3.0",
