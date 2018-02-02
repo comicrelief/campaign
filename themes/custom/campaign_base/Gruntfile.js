@@ -208,7 +208,6 @@ module.exports = function (grunt) {
     'concat',
     'uglify',
     'modernizr',
-    'kss',
     'imagemin',
     'postcss:dist'
   ]);
