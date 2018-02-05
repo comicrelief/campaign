@@ -2354,11 +2354,11 @@ grunt-sass-tilde-importer@^1.0.2:
   resolved "https://registry.yarnpkg.com/grunt-sass-tilde-importer/-/grunt-sass-tilde-importer-1.0.2.tgz#84c130e96a890ce2cdabd94be7d130a10ef0c733"
 
 grunt-sass@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/grunt-sass/-/grunt-sass-2.0.0.tgz#9074cf9d7b4592e20f7788caa727b8f9aa06b60a"
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/grunt-sass/-/grunt-sass-2.1.0.tgz#b7ba1d85ef4c2d9b7d8195fe65f664ac7554efa1"
   dependencies:
     each-async "^1.0.0"
-    node-sass "^4.0.0"
+    node-sass "^4.7.2"
     object-assign "^4.0.1"
 
 grunt-svgmin@^4.0.0:
@@ -2637,8 +2637,8 @@ http-errors@~1.6.1, http-errors@~1.6.2:
     statuses ">= 1.3.1 < 2"
 
 http-parser-js@>=0.4.0:
-  version "0.4.9"
-  resolved "https://registry.yarnpkg.com/http-parser-js/-/http-parser-js-0.4.9.tgz#ea1a04fb64adff0242e9974f297dd4c3cad271e1"
+  version "0.4.10"
+  resolved "https://registry.yarnpkg.com/http-parser-js/-/http-parser-js-0.4.10.tgz#92c9c1374c35085f75db359ec56cc257cbb93fa4"
 
 http-proxy@1.15.2:
   version "1.15.2"
@@ -3226,7 +3226,7 @@ klaw@^1.0.0:
   optionalDependencies:
     graceful-fs "^4.1.9"
 
-kss@^3.0.0-beta.18, kss@~3.0.0-beta.16:
+kss@~3.0.0-beta.16:
   version "3.0.0-beta.18"
   resolved "https://registry.yarnpkg.com/kss/-/kss-3.0.0-beta.18.tgz#832a23bda4cabecf5426b93892c1b618db7ea24e"
   dependencies:
@@ -3421,12 +3421,12 @@ lodash.keys@^3.0.0:
     lodash.isarray "^3.0.0"
 
 lodash.merge@^4.0.1:
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.0.tgz#69884ba144ac33fe699737a6086deffadd0f89c5"
+  version "4.6.1"
+  resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.1.tgz#adc25d9cb99b9391c59624f379fbba60d7111d54"
 
 lodash.mergewith@^4.3.1, lodash.mergewith@^4.6.0:
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/lodash.mergewith/-/lodash.mergewith-4.6.0.tgz#150cf0a16791f5903b8891eab154609274bdea55"
+  version "4.6.1"
+  resolved "https://registry.yarnpkg.com/lodash.mergewith/-/lodash.mergewith-4.6.1.tgz#639057e726c3afbdb3e7d42741caa8d6e4335927"
 
 lodash.restparam@^3.0.0:
   version "3.6.1"
@@ -3461,13 +3461,17 @@ lodash@3.7.x:
   version "3.7.0"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.7.0.tgz#3678bd8ab995057c07ade836ed2ef087da811d45"
 
-lodash@4.17.4, lodash@^4.0.0, lodash@^4.11.1, lodash@^4.14.0, lodash@^4.3.0, lodash@^4.6.1, lodash@~4.17.4:
+lodash@4.17.4:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
 lodash@^3.10.1, lodash@~3.10.1:
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
+
+lodash@^4.0.0, lodash@^4.11.1, lodash@^4.14.0, lodash@^4.3.0, lodash@^4.6.1, lodash@~4.17.4:
+  version "4.17.5"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
 
 lodash@~2.4.1:
   version "2.4.2"
@@ -3834,7 +3838,7 @@ node-pre-gyp@^0.6.39:
     tar "^2.2.1"
     tar-pack "^3.4.0"
 
-node-sass@^4.0.0, node-sass@^4.5.0:
+node-sass@^4.5.0, node-sass@^4.7.2:
   version "4.7.2"
   resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-4.7.2.tgz#9366778ba1469eb01438a9e8592f4262bcb6794e"
   dependencies:
