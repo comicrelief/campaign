@@ -1,3 +1,21 @@
+restore_cache_php: &restore_cache_php
+  keys:
+    - composer-deps-{{ checksum "composer.json" }}
+restore_cache_js: &restore_cache_js
+  keys:
+    - node-deps-{{ checksum "themes/custom/campaign_base/package.json" }}
+
+save_cache_php: &save_cache_php
+  key: composer-deps-{{ checksum "composer.json" }}
+  paths:
+    - vendor
+    - composer.lock
+save_cache_js: &save_cache_js
+  key: node-deps-{{ checksum "themes/custom/campaign_base/package.json" }}
+  paths:
+    - themes/custom/campaign_base/node_modules
+
+
 version: 2
 jobs:
   build:
@@ -10,26 +28,15 @@ jobs:
           command: |
             set -x
             docker-compose up -d
-      - restore_cache:
-                keys:
-                  - composer-deps-{{ checksum "composer.json" }}
-      - restore_cache:
-                keys:
-                  - node-deps-{{ checksum "themes/custom/campaign_base/package.json" }}
+      - restore_cache: *restore_cache_php
+      - restore_cache: *restore_cache_js
       - run:
           name: Set up project
           command: |
             docker-compose exec web composer campaign:build || true
             docker-compose exec web chmod ugo+rw web/sites/default -R
-      - save_cache:
-                key: composer-deps-{{ checksum "composer.json" }}
-                paths:
-                  - vendor
-                  - composer.lock
-      - save_cache:
-                key: node-deps-{{ checksum "themes/custom/campaign_base/package.json" }}
-                paths:
-                  - themes/custom/campaign_base/node_modules
+      - save_cache: *save_cache_php
+      - save_cache: *save_cache_js
       - run:
           name: Check outdated vendors
           command: |
