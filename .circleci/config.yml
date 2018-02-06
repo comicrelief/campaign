@@ -16,9 +16,7 @@ save_cache_js: &save_cache_js
     - themes/custom/campaign_base/node_modules
 
 
-version: 2
-jobs:
-  build:
+build_and_test: &build_and_test
     machine:
       docker_layer_caching: true
     steps:
@@ -52,3 +50,15 @@ jobs:
           path: reports
       - store_test_results:
           path: reports
+
+
+version: 2
+jobs:
+  build-and-test:
+    <<: *build_and_test
+
+workflows:
+  version: 2
+  report_tests:
+    jobs:
+      - build-and-test
