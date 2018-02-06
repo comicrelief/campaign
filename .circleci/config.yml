@@ -16,6 +16,19 @@ save_cache_js: &save_cache_js
     - themes/custom/campaign_base/node_modules
 
 
+outdated: &outdated
+    machine:
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - restore_cache: *restore_cache_php
+      - restore_cache: *restore_cache_js
+      - run:
+          name: Check outdated vendors
+          command: |
+            docker-compose run --rm web composer outdate
+
+
 build_and_test: &build_and_test
     machine:
       docker_layer_caching: true
@@ -36,10 +49,6 @@ build_and_test: &build_and_test
       - save_cache: *save_cache_php
       - save_cache: *save_cache_js
       - run:
-          name: Check outdated vendors
-          command: |
-            docker-compose exec -T web composer outdate
-      - run:
           name: Run test
           command: |
             docker-compose exec web sh -c 'cd web && drush pm-uninstall cookieconsent toolbar -y'
@@ -56,9 +65,21 @@ version: 2
 jobs:
   build-and-test:
     <<: *build_and_test
+  check-outdated:
+    <<: *outdated
 
 workflows:
   version: 2
   report_tests:
     jobs:
       - build-and-test
+  check_outdated:
+    triggers:
+      - schedule:
+          cron: "0 9 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - check-outdated
