@@ -1,0 +1,23 @@
+{
+  "name": "campaign",
+  "version": "1.0.0",
+  "description": "> Drupal 8 profile for building enganging fundraising websites, maintained by [Comic Relief](https://www.comicrelief.com)",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/comicrelief/campaign.git"
+  },
+  "author": "",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/comicrelief/campaign/issues"
+  },
+  "homepage": "https://github.com/comicrelief/campaign#readme"
+}
