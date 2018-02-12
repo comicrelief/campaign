@@ -93,6 +93,12 @@
             $eventTarget.mousedown();
           }
 
+          // Update functionality to focus on submit button rather than automatically submitting
+          // when pressing enter on a form field
+          else if ( $(this).is('.form-text')) {
+            $eventTarget.parents('form').find('.form-submit').focus();
+          }
+
           // Submit when focused on the input field
           else {
             $parent = $eventTarget.parent('.form-item');
