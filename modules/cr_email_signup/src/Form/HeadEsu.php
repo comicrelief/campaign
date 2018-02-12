@@ -22,7 +22,10 @@ class HeadEsu extends FundraiseSignUp {
       '#type' => 'button',
       '#name' => 'step1',
       '#value' => $this->t('Submit'),
-      '#attributes' => ['class' => ['step1']],
+      '#attributes' => [
+        'class' => ['step1'],
+        'aria-label' => ['Submit']
+      ],
       '#ajax' => [
         'callback' => [$this, 'processSteps'],
       ],
