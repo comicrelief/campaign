@@ -138,15 +138,21 @@
             // focus on select menu or jquery ui select menu or on close button
             $block.find("select, .ui-selectmenu-button, .close-button").focus();
           }
-          
+
           if ( $(".block--cr-email-signup--error").length ) {
+
             $block = $(".block--cr-email-signup--error");
+            $errorMsg = $('.error-msg-cr-header-email-signup-form', $block );
+
+            // Clone the error markup so we can delete and
+            // re-insert it to trigger a new aria announcemnet
+            var copy = $errorMsg.html(); 
+            $errorMsg.empty().append(copy);
 
             if ( $block.hasClass("error--firstname") ) {
               if( $block.hasClass("error--email") ) {
                 // email input field's id isn't reliable and classname is too generic
                 $block.find("[name=email]").val('');
-
               }
               $("#edit-firstname").focus();
             }
