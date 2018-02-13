@@ -12,8 +12,7 @@
         return attr == 'true' ? 'false' : 'true'
       });
 
-      $(".block--cr-email-signup--head").toggleClass("show")
-        .find('#edit-email').focus();
+      $(".block--cr-email-signup--head").toggleClass("show").find(".form-item-email input").focus();
     });
 
     $(".block--cr-email-signup--head .close-button").on("click", function(e) {
