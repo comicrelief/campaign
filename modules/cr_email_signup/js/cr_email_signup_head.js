@@ -7,8 +7,12 @@
     $(".meta-icons__esu-toggle").on("click", function(event) {
       event.preventDefault();
       $(this).toggleClass("active");
-      $(".block--cr-email-signup--head").toggleClass("show")
-        .find('#edit-email').focus();
+
+      $(this).attr('aria-pressed', function (i, attr) {
+        return attr == 'true' ? 'false' : 'true'
+      });
+
+      $(".block--cr-email-signup--head").toggleClass("show").find(".form-item-email input").focus();
     });
 
     $(".block--cr-email-signup--head .close-button").on("click", function(e) {

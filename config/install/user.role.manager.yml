@@ -24,3 +24,4 @@ permissions:
   - 'edit terms in partner_category'
   - 'edit terms in tags'
   - 'notify of path changes'
+  - 'use menu link attributes'

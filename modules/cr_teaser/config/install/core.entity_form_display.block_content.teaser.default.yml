@@ -10,11 +10,12 @@ dependencies:
     - field.field.block_content.teaser.field_teaser_image
     - field.field.block_content.teaser.field_teaser_link_address
     - field.field.block_content.teaser.field_teaser_link_colour
+    - field.field.block_content.teaser.field_teaser_link_description
     - field.field.block_content.teaser.field_teaser_link_title
     - field.field.block_content.teaser.field_teaser_you_tube_link
     - image.style.thumbnail
   module:
-    - image
+    - focal_point
     - text
 id: block_content.teaser.default
 targetEntityType: block_content
@@ -23,7 +24,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 5
+    weight: 4
     settings:
       rows: 9
       summary_rows: 3
@@ -38,7 +39,7 @@ content:
     third_party_settings: {  }
     region: content
   field_teaser_bg_colour:
-    weight: 4
+    weight: 3
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -55,11 +56,13 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
     third_party_settings: {  }
-    type: image_image
+    type: image_focal_point
     region: content
   field_teaser_link_address:
-    weight: 7
+    weight: 6
     settings:
       size: 60
       placeholder: ''
@@ -72,8 +75,16 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
+  field_teaser_link_description:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   field_teaser_link_title:
-    weight: 6
+    weight: 5
     settings:
       size: 60
       placeholder: ''

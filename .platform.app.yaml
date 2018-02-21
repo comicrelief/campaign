@@ -14,9 +14,10 @@ build:
 # The build-time dependencies of the app.
 dependencies:
     php:
-        drush/drush: "8.1.*"
+        drush/drush: "9.0.0-alpha1"
     nodejs:
         grunt-cli: "~0.1.13"
+        yarn: "*"
 
 # The relationships of the application with services or other applications.
 # The left-hand side is the name of the relationship as it will be exposed

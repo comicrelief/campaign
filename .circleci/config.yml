@@ -1,6 +1,35 @@
-version: 2
-jobs:
-  build:
+restore_cache_php: &restore_cache_php
+  keys:
+    - composer-deps-{{ checksum "composer.json" }}
+restore_cache_js: &restore_cache_js
+  keys:
+    - node-deps-{{ checksum "themes/custom/campaign_base/package.json" }}
+
+save_cache_php: &save_cache_php
+  key: composer-deps-{{ checksum "composer.json" }}
+  paths:
+    - vendor
+    - composer.lock
+save_cache_js: &save_cache_js
+  key: node-deps-{{ checksum "themes/custom/campaign_base/package.json" }}
+  paths:
+    - themes/custom/campaign_base/node_modules
+
+
+outdated: &outdated
+    machine:
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - restore_cache: *restore_cache_php
+      - restore_cache: *restore_cache_js
+      - run:
+          name: Check outdated vendors
+          command: |
+            docker-compose run --rm web composer outdate
+
+
+build_and_test: &build_and_test
     machine:
       docker_layer_caching: true
     steps:
@@ -10,28 +39,17 @@ jobs:
           command: |
             set -x
             docker-compose up -d
-      - restore_cache:
-                keys:
-                  - composer-deps-{{ checksum "composer.json" }}
-      - restore_cache:
-                keys:
-                  - node-deps-{{ checksum "themes/custom/campaign_base/package.json" }}
+      - restore_cache: *restore_cache_php
+      - restore_cache: *restore_cache_js
       - run:
-          name: Set up the project
+          name: Set up project
           command: |
             docker-compose exec web composer campaign:build || true
             docker-compose exec web chmod ugo+rw web/sites/default -R
-      - save_cache:
-                key: composer-deps-{{ checksum "composer.json" }}
-                paths:
-                  - vendor
-                  - composer.lock
-      - save_cache:
-                key: node-deps-{{ checksum "themes/custom/campaign_base/package.json" }}
-                paths:
-                  - themes/custom/campaign_base/node_modules
+      - save_cache: *save_cache_php
+      - save_cache: *save_cache_js
       - run:
-          name: Run the test
+          name: Run test
           command: |
             docker-compose exec web sh -c 'cd web && drush pm-uninstall cookieconsent toolbar -y'
             docker-compose exec -T web vendor/bin/behat -n --colors
@@ -41,3 +59,27 @@ jobs:
           path: reports
       - store_test_results:
           path: reports
+
+
+version: 2
+jobs:
+  build-and-test:
+    <<: *build_and_test
+  check-outdated:
+    <<: *outdated
+
+workflows:
+  version: 2
+  report_tests:
+    jobs:
+      - build-and-test
+  check_outdated:
+    triggers:
+      - schedule:
+          cron: "0 9 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - check-outdated
