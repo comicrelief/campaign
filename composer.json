@@ -74,9 +74,6 @@
             "drupal/entity_browser": {
                 "https://www.drupal.org/node/2845037": "https://www.drupal.org/files/issues/2845037_16.patch"
             },
-            "drupal/varnish_purge": {
-                "https://www.drupal.org/node/2843978": "https://www.drupal.org/files/issues/2843978-multi-ips-5.patch"
-            },
             "drupal/views_ajax_history": {
                 "https://www.drupal.org/node/2835957": "https://www.drupal.org/files/issues/second_ajax_call-2835957-3.patch"
             }
@@ -106,9 +103,7 @@
         "drupal/advagg": "^3.4",
         "drupal/better_exposed_filters": "3.0-alpha3",
         "drupal/blazy": "1.0-rc2",
-        "drupal/cdn": "3.2",
         "drupal/config_devel": "1.2",
-        "drupal/config_readonly": "1.0-beta2",
         "drupal/config_split": "1.3",
         "drupal/cookieconsent": "1.3",
         "drupal/core": "8.4.2",
@@ -141,8 +136,6 @@
         "drupal/page_manager": "4.0-beta2",
         "drupal/paragraphs": "1.2",
         "drupal/pathauto": "1.0",
-        "drupal/purge": "3.0-beta6",
-        "drupal/purge_purger_http": "1.0-beta4",
         "drupal/rabbitmq": "1.1",
         "drupal/redirect": "1.0",
         "drupal/redis": "1.0-rc2",
@@ -155,7 +148,6 @@
         "drupal/social_links": "1.x-dev#f7b3273",
         "drupal/token": "1.1",
         "drupal/twig_tweak": "1.8",
-        "drupal/varnish_purge": "1.4",
         "drupal/video_embed_field": "1.5",
         "drupal/view_mode": "1.x-dev",
         "drupal/view_modes_display": "1.0",
@@ -171,7 +163,6 @@
         "drupal/coder": "8.2.*",
         "drupal/default_content": "1.0-alpha7",
         "drupal/drupal-extension": "3.4.*",
-        "drupal/stage_file_proxy": "1.0-alpha3",
         "phpmd/phpmd": "2.6.*",
         "sebastian/phpcpd": "^3.0",
         "squizlabs/php_codesniffer": "3.2.*"
