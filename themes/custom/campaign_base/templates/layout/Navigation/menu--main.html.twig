@@ -31,11 +31,20 @@
           item.in_active_trail ? 'menu-item--active-trail',
         ]
       %}
+
       <li{{ item.attributes.addClass(classes) }}>
+          
+        {#  nb: confusingly, Drupal's expanded refers to having submenus, but aria-expanded is the current state of an associated submeu #}
+        {% if item.is_expanded %}
+        {{ link(item.title, item.url, {'aria-expanded':['false'],'aria-haspopup':['true']}) }}
+        {% else %}
         {{ link(item.title, item.url) }}
+        {% endif %}
+
         {% if item.below %}
           {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
         {% endif %}
+
       </li>
     {% endfor %}
     </ul>

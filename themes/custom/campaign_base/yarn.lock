@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@comicrelief/pattern-lab@7.24.3":
-  version "7.24.3"
-  resolved "https://registry.yarnpkg.com/@comicrelief/pattern-lab/-/pattern-lab-7.24.3.tgz#c7c5687d66b744fb5f6b5ac1abfce0c548cb5e5c"
+"@comicrelief/pattern-lab@7.24.6":
+  version "7.24.6"
+  resolved "https://registry.yarnpkg.com/@comicrelief/pattern-lab/-/pattern-lab-7.24.6.tgz#95ce44b5c6f858bd92b004339ea701d7d6904589"
   dependencies:
     susy "^2.2.12"
 
