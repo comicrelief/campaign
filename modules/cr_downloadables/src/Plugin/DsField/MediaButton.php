@@ -10,8 +10,6 @@ use Drupal\Core\Url;
  *
  * A custom field to output media entities as a download button.
  *
- * @author Zach Bimson <zach.bimson@gmail.com>
- *
  * @DsField(
  *   id = "cr_downloadables_MediaButton",
  *   title = @Translation("Download Button"),
@@ -33,11 +31,16 @@ class MediaButton extends DsFieldBase {
 
     $file_id = $entity->get('field_cr_file')->getValue();
     $file = file_load($file_id[0]['target_id']);
-    $file_url = Url::fromUri(file_create_url($file->getFileUri()))->toString();
 
-    return [
-      '#markup' => '<a class="link link--red" href="' . $file_url . '" target=_blank >' . $display_title[0]['value'] . ' <span class="file-size">(' . format_size($file->getSize()) . ')</span></a>',
-    ];
+    if($file) {
+      $file_url = Url::fromUri(file_create_url($file->getFileUri()))->toString();
+
+      return [
+        '#markup' => '<a class="link link--red" href="' . $file_url . '" target=_blank >' . $display_title[0]['value'] . ' <span class="file-size">(' . format_size($file->getSize()) . ')</span></a>',
+      ];
+    } else {
+      return [];
+    };
   }
 
 }
