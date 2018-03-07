@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.teaser
+    - field.storage.block_content.field_teaser_link_description
+id: block_content.teaser.field_teaser_link_description
+field_name: field_teaser_link_description
+entity_type: block_content
+bundle: teaser
+label: 'CTA description'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

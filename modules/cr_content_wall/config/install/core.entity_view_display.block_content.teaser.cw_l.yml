@@ -11,6 +11,7 @@ dependencies:
     - field.field.block_content.teaser.field_teaser_image
     - field.field.block_content.teaser.field_teaser_link_address
     - field.field.block_content.teaser.field_teaser_link_colour
+    - field.field.block_content.teaser.field_teaser_link_description
     - field.field.block_content.teaser.field_teaser_link_title
     - field.field.block_content.teaser.field_teaser_you_tube_link
   module:
@@ -22,8 +23,7 @@ third_party_settings:
   ds:
     layout:
       id: ds_reset
-      path: profiles/cr/modules/contrib/ds
-      library: ''
+      library: null
       disable_css: false
       entity_classes: all_classes
       settings:
@@ -41,6 +41,7 @@ third_party_settings:
         - field_teaser_image
         - body
         - field_teaser_link_title
+        - field_teaser_link_description
         - field_teaser_link_address
         - field_teaser_you_tube_link
         - field_teaser_link_colour
@@ -54,7 +55,7 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 3
+    weight: 2
     settings: {  }
     third_party_settings: {  }
     region: ds_content
@@ -86,7 +87,7 @@ content:
     third_party_settings: {  }
     region: ds_content
   field_teaser_image:
-    weight: 2
+    weight: 1
     label: hidden
     settings:
       responsive_image_style: cw_landscape_image
@@ -133,9 +134,17 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: ds_content
-  field_teaser_link_title:
+  field_teaser_link_description:
     type: string
     weight: 4
+    region: ds_content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_teaser_link_title:
+    type: string
+    weight: 3
     label: hidden
     settings:
       link_to_entity: false

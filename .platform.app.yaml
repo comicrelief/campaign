@@ -14,7 +14,7 @@ build:
 # The build-time dependencies of the app.
 dependencies:
     php:
-        drush/drush: "8.1.*"
+        drush/drush: "9.0.0-alpha1"
     nodejs:
         grunt-cli: "~0.1.13"
         yarn: "*"
@@ -62,7 +62,6 @@ mounts:
 hooks:
     build: |
         set -e
-        yarn install
         composer grunt:build
         composer campaign:scaffold
         cp -f /app/ci/platform/settings.php /app/web/sites/default/settings.php

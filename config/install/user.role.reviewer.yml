@@ -10,3 +10,4 @@ permissions:
   - 'administer url aliases'
   - 'create url aliases'
   - 'notify of path changes'
+  - 'use menu link attributes'
