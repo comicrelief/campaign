@@ -8,30 +8,30 @@
         },
         "http:\/\/drupal.org\/rest\/relation\/paragraph\/partner_list\/uid": [
             {
-                "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/1?_format=hal_json",
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
                 "lang": "en"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/paragraph\/partner_list\/revision_uid": [
             {
-                "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/1?_format=hal_json"
+                "href": "http:\/\/default\/user\/1?_format=hal_json"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/paragraph\/partner_list\/field_partner_list": [
             {
-                "href": "http:\/\/sr16-spl-local.sportrelief.com\/partners\/bt?_format=hal_json"
+                "href": "http:\/\/default\/partners\/tk-maxx-external-page-test?_format=hal_json"
             },
             {
-                "href": "http:\/\/sr16-spl-local.sportrelief.com\/partners\/british-airways?_format=hal_json"
+                "href": "http:\/\/default\/partners\/british-airways?_format=hal_json"
             },
             {
-                "href": "http:\/\/sr16-spl-local.sportrelief.com\/partners\/sainsburys?_format=hal_json"
+                "href": "http:\/\/default\/partners\/sainsburys?_format=hal_json"
             }
         ]
     },
     "id": [
         {
-            "value": "6"
+            "value": 6
         }
     ],
     "uuid": [
@@ -41,7 +41,7 @@
     ],
     "revision_id": [
         {
-            "value": "6"
+            "value": 6
         }
     ],
     "type": [
@@ -60,7 +60,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/1?_format=hal_json"
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -68,7 +68,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "167e2427-f14c-4ba9-a47c-d8bf5ab72041"
+                        "value": "8ac3accb-9a5d-4a57-8e98-b7f65ff21158"
                     }
                 ],
                 "lang": "en"
@@ -78,7 +78,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/user\/1?_format=hal_json"
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -86,7 +86,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "167e2427-f14c-4ba9-a47c-d8bf5ab72041"
+                        "value": "8ac3accb-9a5d-4a57-8e98-b7f65ff21158"
                     }
                 ]
             }
@@ -95,7 +95,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/partners\/bt?_format=hal_json"
+                        "href": "http:\/\/default\/partners\/tk-maxx-external-page-test?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/node\/partner"
@@ -110,7 +110,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/partners\/british-airways?_format=hal_json"
+                        "href": "http:\/\/default\/partners\/british-airways?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/node\/partner"
@@ -125,7 +125,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/sr16-spl-local.sportrelief.com\/partners\/sainsburys?_format=hal_json"
+                        "href": "http:\/\/default\/partners\/sainsburys?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/node\/partner"
@@ -141,14 +141,15 @@
     },
     "status": [
         {
-            "value": "1",
+            "value": true,
             "lang": "en"
         }
     ],
     "created": [
         {
-            "value": "1472204626",
-            "lang": "en"
+            "value": "2016-08-26T09:43:46+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
         }
     ],
     "parent_id": [
@@ -166,9 +167,20 @@
             "value": "field_paragraphs"
         }
     ],
+    "behavior_settings": [
+        {
+            "value": "a:0:{}"
+        }
+    ],
     "default_langcode": [
         {
-            "value": "1",
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": true,
             "lang": "en"
         }
     ],

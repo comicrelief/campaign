@@ -9,7 +9,7 @@
     },
     "tid": [
         {
-            "value": "3"
+            "value": 3
         }
     ],
     "uuid": [
@@ -36,19 +36,36 @@
     ],
     "weight": [
         {
-            "value": "0"
+            "value": 0
         }
     ],
     "changed": [
         {
-            "value": "1459942457",
-            "lang": "en"
+            "value": "2016-04-06T11:34:17+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
         }
     ],
     "default_langcode": [
         {
-            "value": "1",
+            "value": true,
             "lang": "en"
+        }
+    ],
+    "metatag": [
+        {
+            "value": {
+                "title": "Official | Drush Site-Install",
+                "og_site_name": "Drush Site-Install",
+                "shortlink": "http:\/\/default\/%3Cnone%3E",
+                "canonical_url": "http:\/\/default\/%3Cnone%3E",
+                "og_type": "article",
+                "og_url": "http:\/\/default\/%3Cnone%3E",
+                "og_title": "Official | Drush Site-Install",
+                "referrer": "no-referrer",
+                "og_image": "http:\/\/default\/profiles\/cr\/themes\/custom\/campaign_base\/images\/og\/rnd-logo_open-graph_v2.jpg",
+                "og_locale": "en_GB"
+            }
         }
     ]
 }

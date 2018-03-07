@@ -6,15 +6,15 @@
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/article"
         },
-        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
-            {
-                "href": "http:\/\/default\/user\/0?_format=hal_json",
-                "lang": "en"
-            }
-        ],
         "http:\/\/drupal.org\/rest\/relation\/node\/article\/revision_uid": [
             {
                 "href": "http:\/\/default\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
+                "lang": "en"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_category": [
@@ -31,7 +31,7 @@
     },
     "nid": [
         {
-            "value": "20"
+            "value": 20
         }
     ],
     "uuid": [
@@ -41,7 +41,7 @@
     ],
     "vid": [
         {
-            "value": "173"
+            "value": 173
         }
     ],
     "langcode": [
@@ -55,31 +55,13 @@
             "target_id": "article"
         }
     ],
-    "title": [
+    "revision_timestamp": [
         {
-            "value": "British Triathlon cheers Greg James on",
-            "lang": "en"
+            "value": "2017-06-14T16:00:36+00:00",
+            "format": "Y-m-d\\TH:i:sP"
         }
     ],
     "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/user\/0?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "260a25a1-ea38-4d4a-90a5-9889b9d4fd8b"
-                    }
-                ],
-                "lang": "en"
-            }
-        ],
         "http:\/\/drupal.org\/rest\/relation\/node\/article\/revision_uid": [
             {
                 "_links": {
@@ -92,9 +74,27 @@
                 },
                 "uuid": [
                     {
-                        "value": "2a764c34-028e-4837-b6db-0eaab7e37ccb"
+                        "value": "8ac3accb-9a5d-4a57-8e98-b7f65ff21158"
                     }
                 ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "8ac3accb-9a5d-4a57-8e98-b7f65ff21158"
+                    }
+                ],
+                "lang": "en"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_category": [
@@ -133,54 +133,87 @@
                 "alt": "British Triathlon cheers Greg James on",
                 "title": "",
                 "width": "2340",
-                "height": "1316"
+                "height": "1316",
+                "_loaded": true,
+                "_accessCacheability": {}
             }
         ]
     },
     "status": [
         {
-            "value": "1",
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "title": [
+        {
+            "value": "British Triathlon cheers Greg James on",
             "lang": "en"
         }
     ],
     "created": [
         {
-            "value": "1355021005",
-            "lang": "en"
+            "value": "2012-12-09T02:43:25+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
         }
     ],
     "changed": [
         {
-            "value": "1497456036",
-            "lang": "en"
+            "value": "2017-06-14T16:00:36+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
         }
     ],
     "promote": [
         {
-            "value": "1",
+            "value": true,
             "lang": "en"
         }
     ],
     "sticky": [
         {
-            "value": "0",
-            "lang": "en"
-        }
-    ],
-    "revision_timestamp": [
-        {
-            "value": "1497456036"
-        }
-    ],
-    "revision_translation_affected": [
-        {
-            "value": "1",
+            "value": false,
             "lang": "en"
         }
     ],
     "default_langcode": [
         {
-            "value": "1",
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "metatag": [
+        {
+            "value": {
+                "title": "| Drush Site-Install",
+                "og_site_name": "Drush Site-Install",
+                "shortlink": "http:\/\/default\/%3Cnone%3E",
+                "canonical_url": "http:\/\/default\/%3Cnone%3E",
+                "description": "Greg James has received support from some of the stars of British Triathlon ahead of his epic challenge for Sport Relief.\n\nOn Monday 8th February the presenter will begin his BBC Radio 1 Gregathlon for Sport Relief, which will see him attempt to complete a triathlon a day for five consecutive days, around five different UK cities.",
+                "og_type": "article",
+                "abstract": "Greg James has received support from some of the stars of British Triathlon ahead of his epic challenge for Sport Relief.\n\nOn Monday 8th February the presenter will begin his BBC Radio 1 Gregathlon for Sport Relief, which will see him attempt to complete a triathlon a day for five consecutive days, around five different UK cities.",
+                "og_url": "http:\/\/default\/%3Cnone%3E",
+                "keywords": "Fundraising",
+                "og_title": "| Drush Site-Install",
+                "referrer": "no-referrer",
+                "og_description": "Greg James has received support from some of the stars of British Triathlon ahead of his epic challenge for Sport Relief.\n\nOn Monday 8th February the presenter will begin his BBC Radio 1 Gregathlon for Sport Relief, which will see him attempt to complete a triathlon a day for five consecutive days, around five different UK cities.",
+                "og_image": "http:\/\/default\/sites\/default\/files\/news\/2016-02\/greg_james_content_wall_14_43.jpg",
+                "og_locale": "en_GB"
+            }
+        }
+    ],
+    "path": [
+        {
+            "alias": "\/news\/british-triathlon-cheers-greg-james-on",
+            "pid": 26,
+            "langcode": "en",
             "lang": "en"
         }
     ],
@@ -194,12 +227,7 @@
     ],
     "field_article_exclude_aggr": [
         {
-            "value": "0"
-        }
-    ],
-    "field_article_meta_tags": [
-        {
-            "value": "a:0:{}"
+            "value": false
         }
     ],
     "field_article_publish_date": [

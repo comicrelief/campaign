@@ -6,15 +6,15 @@
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/article"
         },
-        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
-            {
-                "href": "http:\/\/default\/user\/0?_format=hal_json",
-                "lang": "en"
-            }
-        ],
         "http:\/\/drupal.org\/rest\/relation\/node\/article\/revision_uid": [
             {
                 "href": "http:\/\/default\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
+                "lang": "en"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_category": [
@@ -31,7 +31,7 @@
     },
     "nid": [
         {
-            "value": "11"
+            "value": 11
         }
     ],
     "uuid": [
@@ -41,7 +41,7 @@
     ],
     "vid": [
         {
-            "value": "170"
+            "value": 170
         }
     ],
     "langcode": [
@@ -55,31 +55,13 @@
             "target_id": "article"
         }
     ],
-    "title": [
+    "revision_timestamp": [
         {
-            "value": "Redgrave vs Flintoff in Clash of the Titans",
-            "lang": "en"
+            "value": "2017-06-14T15:59:31+00:00",
+            "format": "Y-m-d\\TH:i:sP"
         }
     ],
     "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/user\/0?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "260a25a1-ea38-4d4a-90a5-9889b9d4fd8b"
-                    }
-                ],
-                "lang": "en"
-            }
-        ],
         "http:\/\/drupal.org\/rest\/relation\/node\/article\/revision_uid": [
             {
                 "_links": {
@@ -92,9 +74,27 @@
                 },
                 "uuid": [
                     {
-                        "value": "2a764c34-028e-4837-b6db-0eaab7e37ccb"
+                        "value": "8ac3accb-9a5d-4a57-8e98-b7f65ff21158"
                     }
                 ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/article\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "8ac3accb-9a5d-4a57-8e98-b7f65ff21158"
+                    }
+                ],
+                "lang": "en"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/article\/field_article_category": [
@@ -133,54 +133,87 @@
                 "alt": "",
                 "title": "",
                 "width": "770",
-                "height": "433"
+                "height": "433",
+                "_loaded": true,
+                "_accessCacheability": {}
             }
         ]
     },
     "status": [
         {
-            "value": "1",
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "title": [
+        {
+            "value": "Redgrave vs Flintoff in Clash of the Titans",
             "lang": "en"
         }
     ],
     "created": [
         {
-            "value": "1455634376",
-            "lang": "en"
+            "value": "2016-02-16T14:52:56+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
         }
     ],
     "changed": [
         {
-            "value": "1497455971",
-            "lang": "en"
+            "value": "2017-06-14T15:59:31+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
         }
     ],
     "promote": [
         {
-            "value": "1",
+            "value": true,
             "lang": "en"
         }
     ],
     "sticky": [
         {
-            "value": "0",
-            "lang": "en"
-        }
-    ],
-    "revision_timestamp": [
-        {
-            "value": "1497455971"
-        }
-    ],
-    "revision_translation_affected": [
-        {
-            "value": "1",
+            "value": false,
             "lang": "en"
         }
     ],
     "default_langcode": [
         {
-            "value": "1",
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "metatag": [
+        {
+            "value": {
+                "title": "| Drush Site-Install",
+                "og_site_name": "Drush Site-Install",
+                "shortlink": "http:\/\/default\/%3Cnone%3E",
+                "canonical_url": "http:\/\/default\/%3Cnone%3E",
+                "description": "Sir Steve Redgrave and Andrew \u2018Freddie\u2019 Flintoff MBE are set to go head to head in a Clash of the Titans for Sport Relief.\n\nFive-time Olympic champion rower Sir Steve and cricket legend and broadcaster Freddie will each captain a team of celebrities as they go head to head in a number of Olympic sporting challenges as part of the Sport Relief Night of TV on Friday 18th March.\n\nSir Steve says \u201cWinning gold medals at the Olympic Games was one thing, leading my team to victory in Clash of the Titans is another matter altogether,\u201d he said. \u201cFreddie Flintoff, bring it on.\u201d",
+                "og_type": "article",
+                "abstract": "Sir Steve Redgrave and Andrew \u2018Freddie\u2019 Flintoff MBE are set to go head to head in a Clash of the Titans for Sport Relief.\n\nFive-time Olympic champion rower Sir Steve and cricket legend and broadcaster Freddie will each captain a team of celebrities as they go head to head in a number of Olympic sporting challenges as part of the Sport Relief Night of TV on Friday 18th March.\n\nSir Steve says \u201cWinning gold medals at the Olympic Games was one thing, leading my team to victory in Clash of the Titans is another matter altogether,\u201d he said. \u201cFreddie Flintoff, bring it on.\u201d",
+                "og_url": "http:\/\/default\/%3Cnone%3E",
+                "keywords": "Challenges",
+                "og_title": "| Drush Site-Install",
+                "referrer": "no-referrer",
+                "og_description": "Sir Steve Redgrave and Andrew \u2018Freddie\u2019 Flintoff MBE are set to go head to head in a Clash of the Titans for Sport Relief.\n\nFive-time Olympic champion rower Sir Steve and cricket legend and broadcaster Freddie will each captain a team of celebrities as they go head to head in a number of Olympic sporting challenges as part of the Sport Relief Night of TV on Friday 18th March.\n\nSir Steve says \u201cWinning gold medals at the Olympic Games was one thing, leading my team to victory in Clash of the Titans is another matter altogether,\u201d he said. \u201cFreddie Flintoff, bring it on.\u201d",
+                "og_image": "http:\/\/default\/sites\/default\/files\/2016-02\/Clash%20of%20the%20titans%20content%20wall_14_43.jpg",
+                "og_locale": "en_GB"
+            }
+        }
+    ],
+    "path": [
+        {
+            "alias": "\/news\/redgrave-vs-flintoff-clash-titans",
+            "pid": 30,
+            "langcode": "en",
             "lang": "en"
         }
     ],
@@ -194,12 +227,7 @@
     ],
     "field_article_exclude_aggr": [
         {
-            "value": "0"
-        }
-    ],
-    "field_article_meta_tags": [
-        {
-            "value": "a:0:{}"
+            "value": false
         }
     ],
     "field_article_publish_date": [
