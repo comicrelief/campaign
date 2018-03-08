@@ -8,7 +8,7 @@ Feature: Landing-page
     And I should see "Cakes are tremendous"
     # And I should see "So, what's your thing?"
     # And I should see "Follow in Dermont's footsteps"
-    And I should see "Join in, have fun and change lives"
+    #And I should see "Join in, have fun and change lives"
     And I should see "Cakier"
     And I should see the link "Get your Dancing Kit"
     And I should see the link "Get fundraising ideas"
