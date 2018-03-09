@@ -1,7 +1,7 @@
 ## Information, hints, tips and troubleshooting
 
 
-**Skip Travis CI builds**
+**Skip Circle CI builds**
 
 Include the following within any commit message `[ci skip]`
 
