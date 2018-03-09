@@ -1,7 +1,7 @@
 Feature: Landing-page
   Check a landing page and make sure that it contains the mentioned paragraphs
 
-  @api @default-content
+  @api @default-content @exclude
   Scenario: Landing-page /fundraise
     Given I am on "/fundraise"
     Then I should see "Bake a massive difference"
