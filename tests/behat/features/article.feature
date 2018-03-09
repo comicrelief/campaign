@@ -1,14 +1,14 @@
 Feature: Article
   This feature covers news articles
 
-  @api @default-content
+  @api @default-content @exclude
   Scenario: Article linking through from /press-releases
     Given I am on "press-releases"
     Then I should see the link "Domestic abuse calls at all time high"
     When I follow "Domestic abuse calls at all time high"
     Then I should see the text "As Red Nose Day approaches, Comic Relief is shining a light"
 
-  @api @default-content
+  @api @default-content @exclude
   Scenario: Article pagination on /press-releases
     Given I am on "press-releases"
     When I click "››"
@@ -16,14 +16,14 @@ Feature: Article
     When I click "‹‹"
     Then I should see the link "Domestic abuse calls at all time high"
 
-  @api @default-content
+  @api @default-content @exclude
   Scenario: Article linking through from /news
     Given I am on "news"
     Then I should see the link "Four down – one to go!"
     When I follow "Four down – one to go!"
     Then I should see the text "Greg James struggled on the penultimate day of Gregathlon"
 
-  @api @default-content
+  @api @default-content @exclude
   Scenario: Article pagination on /news
     Given I am on "news"
     When I click "››"

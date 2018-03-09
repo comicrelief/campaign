@@ -1,7 +1,7 @@
 Feature: feature-articles
   Check the feature article block
 
-  @api @default-content @feature-articles
+  @api @default-content @feature-articles @exclude
   Scenario: Check that the feature articles block is rendered and displaying articles
     Given I am on "featured-stories"
     Then I should see the link "Extra article 2"

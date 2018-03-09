@@ -128,7 +128,7 @@ metatag module :
 
 If all is fine, you need to test that the upgrade path worked, first by running our automated test suite, and then also make a series of manual tests, that specifically involve the module thatyou just updated. In our case, we might want to test the metatags on the different pages.
 
-Finally, review your preview environment on platform.sh and review automatic tests on Travis CI in your Pull Request.
+Finally, review your preview environment on platform.sh and review automatic tests on Circle CI in your Pull Request.
 
 ##### Test upgrade path in your site
 

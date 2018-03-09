@@ -12,7 +12,7 @@ default:
         - Drupal\DrupalExtension\Context\MinkContext
         - BehatTests\DrupalCRFeatureContext
       filters:
-        tags: '~@rest'
+        tags: '~@rest&&~@exclude'
     rest:
       paths: [ %paths.base%/tests/behat/features ]
       contexts:
