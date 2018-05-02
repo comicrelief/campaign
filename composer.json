@@ -74,6 +74,9 @@
             "drupal/entity_browser": {
                 "https://www.drupal.org/node/2845037": "https://www.drupal.org/files/issues/2845037_16.patch"
             },
+            "drupal/video_embed_field": {
+                "https://www.drupal.org/project/video_embed_field/issues/2913598": "https://www.drupal.org/files/issues/video_embed_field-title_attribute-2913598-19.patch"
+            },
             "drupal/views_ajax_history": {
                 "https://www.drupal.org/node/2835957": "https://www.drupal.org/files/issues/second_ajax_call-2835957-3.patch"
             }
