@@ -96,12 +96,12 @@
     
     <div class="partner__link">
       {% if is_external_link %}
-        <a href="{{ website_link }}" target="_blank">
+        <a href="{{ website_link }}" target="_blank" title="Visit their site">
             {{ content.field_partner_logo }}
           <span class="partner__text">Visit their site</span>
         </a>
       {% else %}
-        <a href="{{ url }}">
+        <a href="{{ url }}" title="find out more">
             {{ content.field_partner_logo }}
           <span class="partner__text">Find out more</span>
         </a>
