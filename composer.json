@@ -67,15 +67,14 @@
     "extra": {
         "patches": {
             "drupal/core": {
-                "See https://github.com/comicrelief/campaign/issues/1252": "https://gist.githubusercontent.com/adamclark-dev/f92fadd817aa3d45bc4aea18c566cd82/raw/11a65c7197f91aa77a6a220d0ff71d995dc6e428/drupal_8.4_form_reset.patch",
-                "See https://github.com/comicrelief/campaign/pull/252": "https://gist.githubusercontent.com/pvhee/14801e0f82e06f51cb0d88b9d400cbd6/raw/253f1c1e516eb24650a91d343c56a5aeb6a0ca43/PLAT-235_paragraph_constraint_violation.patch",
-                "See https://www.drupal.org/node/2911749": "https://www.drupal.org/files/issues/fix_ckeditor_styles_dropdown-2911749-17.patch"
+                "See https://www.drupal.org/project/drupal/issues/2906737": "https://www.drupal.org/files/issues/2906737_0.patch",
+                "See https://github.com/comicrelief/campaign/pull/252": "https://gist.githubusercontent.com/pvhee/14801e0f82e06f51cb0d88b9d400cbd6/raw/253f1c1e516eb24650a91d343c56a5aeb6a0ca43/PLAT-235_paragraph_constraint_violation.patch"
             },
             "drupal/entity_browser": {
                 "https://www.drupal.org/node/2845037": "https://www.drupal.org/files/issues/2845037_16.patch"
             },
             "drupal/video_embed_field": {
-                "https://www.drupal.org/project/video_embed_field/issues/2913598": "https://www.drupal.org/files/issues/video_embed_field-title_attribute-2913598-19.patch"
+                "https://www.drupal.org/project/video_embed_field/issues/2913598": "https://www.drupal.org/files/issues/2018-05-14/video_embed_field-title_attribute-2913598-21-8.x-2.x.patch"
             },
             "drupal/views_ajax_history": {
                 "https://www.drupal.org/node/2835957": "https://www.drupal.org/files/issues/second_ajax_call-2835957-3.patch"
@@ -99,9 +98,9 @@
         "enable-patching": true
     },
     "require": {
-        "composer/installers": "1.5.*",
-        "cweagans/composer-patches": "1.6.*",
-        "drupal-composer/drupal-scaffold": "2.4.*",
+        "composer/installers": "1.5.0",
+        "cweagans/composer-patches": "1.6.4",
+        "drupal-composer/drupal-scaffold": "2.5.0",
         "drupal/admin_toolbar": "1.22",
         "drupal/advagg": "^3.4",
         "drupal/better_exposed_filters": "3.0-alpha3",
@@ -128,7 +127,7 @@
         "drupal/focal_point": "1.0-beta5",
         "drupal/google_tag": "1.0",
         "drupal/imagemagick": "2.2",
-        "drupal/inline_entity_form": "1.x-dev#dbfc93f",
+        "drupal/inline_entity_form": "1.0-rc1",
         "drupal/media_entity": "1.7",
         "drupal/media_entity_browser": "1.0-beta3",
         "drupal/media_entity_image": "1.2",
@@ -151,24 +150,24 @@
         "drupal/social_links": "1.x-dev#f7b3273",
         "drupal/token": "1.1",
         "drupal/twig_tweak": "1.8",
-        "drupal/video_embed_field": "1.5",
+        "drupal/video_embed_field": "2.0",
         "drupal/view_mode": "1.x-dev",
         "drupal/view_modes_display": "1.0",
         "drupal/view_unpublished": "1.0-alpha1",
         "drupal/views_ajax_history": "1.x-dev",
-        "drush/drush": "9.0.0-alpha1",
-        "php-amqplib/php-amqplib": "2.7.*",
-        "webflo/drupal-finder": "1.1.*",
-        "webmozart/path-util": "2.3.*"
+        "drush/drush": "9.3.0",
+        "php-amqplib/php-amqplib": "2.7.2",
+        "webflo/drupal-finder": "1.1.0",
+        "webmozart/path-util": "2.3.0"
     },
     "require-dev": {
         "comicrelief/behat-tools": "0.0.15",
-        "drupal/coder": "8.2.*",
+        "drupal/coder": "2.12",
         "drupal/default_content": "1.0-alpha7",
-        "drupal/drupal-extension": "3.4.*",
-        "phpmd/phpmd": "2.6.*",
+        "drupal/drupal-extension": "3.4.1",
+        "phpmd/phpmd": "2.6.0",
         "sebastian/phpcpd": "^3.0",
-        "squizlabs/php_codesniffer": "3.2.*"
+        "squizlabs/php_codesniffer": "3.2.3"
     },
     "autoload-dev": {
         "psr-4": {
