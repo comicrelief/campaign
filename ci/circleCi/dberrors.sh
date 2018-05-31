@@ -3,9 +3,11 @@ set -e
 # Simple script to check code quality.
 cd web
 touch tmp.txt
-drush wd-show --severity=critical > tmp.txt
-drush wd-show --severity=error >> tmp.txt
-drush wd-show --severity=warning
+drush wd-show --severity=0 > tmp.txt
+drush wd-show --severity=1 > tmp.txt
+drush wd-show --severity=2 > tmp.txt
+drush wd-show --severity=3 > tmp.txt
+drush wd-show --severity=4 > tmp.txt
 
 FILESIZE=$(cat tmp.txt | wc -c)
 

@@ -68,18 +68,20 @@
         "patches": {
             "drupal/core": {
                 "See https://www.drupal.org/project/drupal/issues/2906737": "https://www.drupal.org/files/issues/2906737_0.patch",
-                "See https://github.com/comicrelief/campaign/pull/252": "https://gist.githubusercontent.com/pvhee/14801e0f82e06f51cb0d88b9d400cbd6/raw/253f1c1e516eb24650a91d343c56a5aeb6a0ca43/PLAT-235_paragraph_constraint_violation.patch",
-                "": "https://www.drupal.org/files/issues/2918564-22.patch"
+                "See https://github.com/comicrelief/campaign/pull/252": "https://gist.githubusercontent.com/pvhee/14801e0f82e06f51cb0d88b9d400cbd6/raw/253f1c1e516eb24650a91d343c56a5aeb6a0ca43/PLAT-235_paragraph_constraint_violation.patch"
 
             },
             "drupal/entity_browser": {
-                "https://www.drupal.org/node/2845037": "https://www.drupal.org/files/issues/2845037_16.patch"
+                "see https://www.drupal.org/node/2845037": "https://www.drupal.org/files/issues/2845037_16.patch"
+            },
+            "drupal/page_manager": {
+                "see https://www.drupal.org/project/page_manager/issues/2918564": "https://www.drupal.org/files/issues/2918564-22.patch"
             },
             "drupal/video_embed_field": {
-                "https://www.drupal.org/project/video_embed_field/issues/2913598": "https://www.drupal.org/files/issues/2018-05-14/video_embed_field-title_attribute-2913598-21-8.x-2.x.patch"
+                "see https://www.drupal.org/project/video_embed_field/issues/2913598": "https://www.drupal.org/files/issues/2018-05-14/video_embed_field-title_attribute-2913598-21-8.x-2.x.patch"
             },
             "drupal/views_ajax_history": {
-                "https://www.drupal.org/node/2835957": "https://www.drupal.org/files/issues/second_ajax_call-2835957-3.patch"
+                "see https://www.drupal.org/node/2835957": "https://www.drupal.org/files/issues/second_ajax_call-2835957-3.patch"
             }
         },
         "installer-paths": {
