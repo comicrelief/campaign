@@ -7,7 +7,7 @@ drush wd-show --severity=Emergency > tmp.txt
 drush wd-show --severity=Alert > tmp.txt
 drush wd-show --severity=Critical > tmp.txt
 drush wd-show --severity=Error > tmp.txt
-drush wd-show --severity=Warning > tmp.txt
+drush wd-show --severity=Warning
 
 FILESIZE=$(cat tmp.txt | wc -c)
 
