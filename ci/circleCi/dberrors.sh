@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-# Simple script to check code quality.
+# Simple script to check for errors in drupal logs.
 cd web
 touch tmp.txt
 drush wd-show --severity=Emergency > tmp.txt
