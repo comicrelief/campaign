@@ -1,12 +1,12 @@
 restore_cache_php: &restore_cache_php
   keys:
-    - v3-composer-deps-{{ checksum "composer.json" }}
+    - v4-composer-deps-{{ checksum "composer.json" }}
 restore_cache_js: &restore_cache_js
   keys:
     - node-deps-{{ checksum "themes/custom/campaign_base/package.json" }}
 
 save_cache_php: &save_cache_php
-  key: v3-composer-deps-{{ checksum "composer.json" }}
+  key: v4-composer-deps-{{ checksum "composer.json" }}
   paths:
     - vendor
     - composer.lock
@@ -51,7 +51,7 @@ build_and_test: &build_and_test
       - run:
           name: Run test
           command: |
-            docker-compose exec web sh -c 'cd web && drush version
+            docker-compose exec web sh -c 'cd web && drush version'
             docker-compose exec web sh -c 'cd web && drush pm:uninstall admin_toolbar_tools --debug -y'
             docker-compose exec web sh -c 'cd web && drush pm:uninstall admin_toolbar -y'
             docker-compose exec web sh -c 'cd web && drush pm:uninstall cookieconsent -y'
