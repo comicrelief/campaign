@@ -51,10 +51,10 @@ build_and_test: &build_and_test
       - run:
           name: Run test
           command: |
-            docker-compose exec web sh -c 'cd web && drush pmu admin_toolbar_tools -y'
-            docker-compose exec web sh -c 'cd web && drush pmu admin_toolbar -y'
-            docker-compose exec web sh -c 'cd web && drush pmu cookieconsent -y'
-            docker-compose exec web sh -c 'cd web && drush pmu toolbar -y'
+            docker-compose exec web sh -c 'cd web && drush pm:uninstall admin_toolbar_tools -y'
+            docker-compose exec web sh -c 'cd web && drush pm:uninstall admin_toolbar -y'
+            docker-compose exec web sh -c 'cd web && drush pm:uninstall cookieconsent -y'
+            docker-compose exec web sh -c 'cd web && drush pm:uuninstall toolbar -y'
             docker-compose exec -T web vendor/bin/behat -n --colors
             docker-compose exec -T web vendor/bin/behat -ns rest --colors
             docker-compose exec web ci/circleCi/dberrors.sh
