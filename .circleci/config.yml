@@ -1,12 +1,12 @@
 restore_cache_php: &restore_cache_php
   keys:
-    - v2-composer-deps-{{ checksum "composer.json" }}
+    - composer-deps-{{ checksum "composer.json" }}
 restore_cache_js: &restore_cache_js
   keys:
     - node-deps-{{ checksum "themes/custom/campaign_base/package.json" }}
 
 save_cache_php: &save_cache_php
-  key: v2-composer-deps-{{ checksum "composer.json" }}
+  key: composer-deps-{{ checksum "composer.json" }}
   paths:
     - vendor
     - composer.lock
