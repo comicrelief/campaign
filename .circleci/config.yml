@@ -1,12 +1,12 @@
 restore_cache_php: &restore_cache_php
   keys:
-    - composer-deps-{{ checksum "composer.json" }}
+    - v2-composer-deps-{{ checksum "composer.json" }}
 restore_cache_js: &restore_cache_js
   keys:
     - node-deps-{{ checksum "themes/custom/campaign_base/package.json" }}
 
 save_cache_php: &save_cache_php
-  key: composer-deps-{{ checksum "composer.json" }}
+  key: v2-composer-deps-{{ checksum "composer.json" }}
   paths:
     - vendor
     - composer.lock
@@ -51,10 +51,10 @@ build_and_test: &build_and_test
       - run:
           name: Run test
           command: |
-            docker-compose exec web sh -c 'cd web && drush pm:uninstall admin_toolbar_tools -y'
+            docker-compose exec web sh -c 'cd web && drush pm:uninstall admin_toolbar_tools --debug -y'
             docker-compose exec web sh -c 'cd web && drush pm:uninstall admin_toolbar -y'
             docker-compose exec web sh -c 'cd web && drush pm:uninstall cookieconsent -y'
-            docker-compose exec web sh -c 'cd web && drush pm:uuninstall toolbar -y'
+            docker-compose exec web sh -c 'cd web && drush pm:uninstall toolbar -y'
             docker-compose exec -T web vendor/bin/behat -n --colors
             docker-compose exec -T web vendor/bin/behat -ns rest --colors
             docker-compose exec web ci/circleCi/dberrors.sh
