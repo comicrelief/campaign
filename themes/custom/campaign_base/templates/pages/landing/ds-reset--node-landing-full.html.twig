@@ -13,7 +13,7 @@
 <header class="{{ header_class|join(" ") }} contextual-region">
 	{{ title_suffix.contextual_links }}
 	{% if bg_video is not empty %}
-		<div class= "bg_video" data-vide-bg="mp4: {{ field_landing_background_video }}, poster: {{ image_bg }}" data-vide-options="loop: true, muted: true, resizing: true, position: center, posterType: jpg, className: video">
+		<div class= "bg_video" data-vide-bg="mp4: {{ field_landing_background_video }}, poster: {{ image_bg }}" data-vide-options="loop: false, muted: true, resizing: true, position: center, posterType: jpg, className: video">
 		</div>
 	{% endif %}
 	<div class="promo-header__content">
