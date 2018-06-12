@@ -143,6 +143,7 @@
         "drupal/paragraphs": "1.2",
         "drupal/pathauto": "1.0",
         "drupal/rabbitmq": "1.1",
+        "drupal/raven": "2.4",
         "drupal/redirect": "1.0",
         "drupal/redis": "1.0-rc2",
         "drupal/rest_menu_tree": "1.0",
