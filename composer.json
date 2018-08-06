@@ -32,7 +32,7 @@
             "@grunt:dependencies"
         ],
         "grunt:dependencies": [
-            "cd web/profiles/contrib/cr/themes/custom/campaign_base;yarn install"
+            "cd web/profiles/contrib/cr/themes/custom/campaign_base;yarn cache clean;yarn install"
         ],
         "drupal:scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "campaign:links": "cd web/profiles/contrib/cr;ln -sf ../../../../config .;ln -fs ../../../../modules .;ln -fs ../../../../tests .;ln -fs ../../../../themes .;ln -fs ../../../../cr.in* .",
@@ -41,7 +41,7 @@
             "@campaign:links",
             "cp ci/platform/settings.php web/sites/default/settings.php"
         ],
-        "grunt:build": "cd web/profiles/contrib/cr/themes/custom/campaign_base;yarn build",
+        "grunt:build": "cd web/profiles/contrib/cr/themes/custom/campaign_base;yarn cache clean;yarn build",
         "drupal:install": [
             "cd web;drush si cr --account-pass='admin' install_configure_form.enable_update_status_module=NULL -y"
         ],
