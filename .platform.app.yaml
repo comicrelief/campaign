@@ -68,6 +68,7 @@ hooks:
         nvm current
         nvm install 8.0.0
         set -e
+        composer grunt:dependencies
         composer grunt:build
         composer campaign:scaffold
         cp -f /app/ci/platform/settings.php /app/web/sites/default/settings.php
