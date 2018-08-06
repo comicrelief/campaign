@@ -1131,7 +1131,7 @@ currently-unhandled@^0.4.1:
 
 "customizr@https://github.com/Modernizr/customizr/tarball/develop":
   version "1.0.0"
-  resolved "https://github.com/Modernizr/customizr/tarball/develop#845ddb7443eae671efcf5352feaec57d7e6e5f0f"
+  resolved "https://github.com/Modernizr/customizr/tarball/develop#7f45419c18d8fefc1378cd1ca00bd2aa3aa501b5"
   dependencies:
     colors "~1.3.0"
     cross-spawn "~6.0.5"
