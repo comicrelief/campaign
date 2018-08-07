@@ -41,7 +41,7 @@
             "@campaign:links",
             "cp ci/platform/settings.php web/sites/default/settings.php"
         ],
-        "grunt:build": "cd web/profiles/contrib/cr/themes/custom/campaign_base;yarn cache clean;yarn build",
+        "grunt:build": "cd web/profiles/contrib/cr/themes/custom/campaign_base;yarn build",
         "drupal:install": [
             "cd web;drush si cr --account-pass='admin' install_configure_form.enable_update_status_module=NULL -y"
         ],
