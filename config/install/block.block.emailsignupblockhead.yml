@@ -16,8 +16,8 @@ settings:
   label: 'Email Sign Up block: Head'
   provider: cr_email_signup
   label_display: '0'
-  title_message: ''
-  initial_message: 'Get info and updates, direct to your inbox'
+  title_message: 'Stay in the know!'
+  initial_message: 'Get regular email updates and info on what we're up to!'
   first_success_message: 'Thanks! Your first email will be with you shortly'
   second_success_message: 'Great! Now we know what''s right for you.'
 visibility: {  }
