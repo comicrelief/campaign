@@ -23,4 +23,5 @@ settings:
   initial_message: 'Get regular email updates and info on what we''re up to!'
   first_success_message: 'Thanks! Your first email will be with you shortly'
   second_success_message: 'Great! Now we know what''s right for you.'
+  privacy_message: 'Our <a class="link link--white inline" href="/privacy-policy">Privacy Policy</a> describes how we handle and protect your information.<br><br>If you are under 18, please make sure you have your parents’ permission before providing us with any personal details.'
 visibility: {  }

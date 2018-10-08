@@ -79,6 +79,12 @@ class WorkplaceSignUpBlock extends BlockBase implements BlockPluginInterface {
       '#description' => $this->t('Enter the success message'),
       '#default_value' => isset($config['first_success_message']) ? $config['first_success_message'] : '',
     ];
+    $form['cr_email_signup_privacy_message'] = [
+      '#type' => 'textarea',
+      '#title' => $this->t('Privacy Message'),
+      '#description' => $this->t('Enter the privacy message'),
+      '#default_value' => isset($config['privacy_message']) ? $config['privacy_message'] : '',
+    ];
 
     return $form;
   }
@@ -90,6 +96,7 @@ class WorkplaceSignUpBlock extends BlockBase implements BlockPluginInterface {
     $this->setConfigurationValue('title_message', $form_state->getValue('cr_email_signup_title_message'));
     $this->setConfigurationValue('initial_message', $form_state->getValue('cr_email_signup_initial_message'));
     $this->setConfigurationValue('first_success_message', $form_state->getValue('cr_email_signup_first_success_message'));
+    $this->setConfigurationValue('privacy_message', $form_state->getValue('cr_email_signup_privacy_message'));
   }
 
 }
