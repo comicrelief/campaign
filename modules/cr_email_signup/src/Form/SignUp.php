@@ -64,7 +64,7 @@ abstract class SignUp extends FormBase {
       '#type' => 'textfield',
       '#maxlength' => 500,
       '#title' => $this->t('Your email address'),
-      '#placeholder' => $this->t('Enter your email address'),
+      '#placeholder' => $this->t('example@youremail.com'),
       '#attributes' => [
         'class' => ['–metrika-nokeys'],
       ],
