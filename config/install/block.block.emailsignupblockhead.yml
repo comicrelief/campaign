@@ -1,3 +1,4 @@
+uuid: cea321da-0c16-47eb-a2ba-746e86eb67d1
 langcode: en
 status: true
 dependencies:
@@ -5,6 +6,8 @@ dependencies:
     - cr_email_signup
   theme:
     - campaign_base
+_core:
+  default_config_hash: WrODu7CJVWsbVBpfJO1NAND0V0hkz_SU-TaZ9IBUD9U
 id: emailsignupblockhead
 theme: campaign_base
 region: header
@@ -17,7 +20,7 @@ settings:
   provider: cr_email_signup
   label_display: '0'
   title_message: 'Stay in the know!'
-  initial_message: 'Get regular email updates and info on what we're up to!'
+  initial_message: 'Get regular email updates and info on what we''re up to!'
   first_success_message: 'Thanks! Your first email will be with you shortly'
   second_success_message: 'Great! Now we know what''s right for you.'
 visibility: {  }
