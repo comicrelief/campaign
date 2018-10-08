@@ -24,7 +24,7 @@ set classes = [
     <div aria-live="assertive" aria-relevant="all" aria-atomic="true">
       <div class="esu-errors messages messages--error error-msg-cr-header-email-signup-form"></div>
     </div>
-    {{ content|without('initial_message', 'first_success_message') }}
+    {{ content|without('initial_message', 'first_success_message', 'title_message') }}
     <a role="button" class="close-button" href="#" aria-label="close email sign up form">
       <svg class="icon" focusable="false" tabindex="-1">
         <use xlink:href="#close-cross"></use>
