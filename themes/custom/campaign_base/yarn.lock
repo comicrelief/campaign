@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@comicrelief/pattern-lab@git://github.com/comicrelief/pattern-lab.git#733_cross_site_email_signup":
+"@comicrelief/pattern-lab@git://github.com/comicrelief/pattern-lab.git#2970c5d":
   version "0.0.0-see.readme.for.releases"
   resolved "git://github.com/comicrelief/pattern-lab.git#2970c5d126fcc032d74d38c315e26f8bc917930e"
   dependencies:
