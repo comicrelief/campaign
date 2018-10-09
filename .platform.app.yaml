@@ -67,6 +67,7 @@ hooks:
         [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
         nvm current
         nvm install 8.0.0
+        nvm use 8.0.0
         set -e
         composer grunt:dependencies
         composer grunt:build
