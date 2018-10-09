@@ -31,6 +31,9 @@
     "susy": "^2.2.11",
     "vide": "^0.5.1"
   },
+    "engines" : {
+    "node" : "^8.0.0"
+  },
   "devDependencies": {
     "grunt-browser-sync": "^2.2.0",
     "grunt-contrib-watch": "1.0.0",
