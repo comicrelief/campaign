@@ -4,7 +4,7 @@
 
 (function ($) {
   $(document).ready(function () {
-    $(".meta-icons__esu-toggle").on("click", function(event) {
+    $(".meta-icons__esu-toggle, .js-esu-popup").on("click", function(event) {
       event.preventDefault();
       $(this).toggleClass("active");
 
@@ -12,13 +12,16 @@
         return attr == 'true' ? 'false' : 'true'
       });
 
-      $(".block--cr-email-signup--head").toggleClass("show").find(".form-item-email input").focus();
+      $(".block--cr-email-signup--head").toggleClass("visible").find(".form-item-email input").focus();
+      $("a[role=button].meta-icons__magnify").removeClass("active");
+      $(".search-block, header[role='banner'] nav, .search-overlay").removeClass("show");
     });
 
     $(".block--cr-email-signup--head .close-button").on("click", function(e) {
       e.preventDefault();
-      $(".meta-icons__esu-toggle").removeClass("active");
-      $(".block--cr-email-signup--head").removeClass("show");
-    });    
+      $(".meta-icons__esu-toggle, .js-esu-popup").removeClass("active");
+      $(".block--cr-email-signup--head").removeClass("visible");
+    });
+
   });
 })(jQuery);
