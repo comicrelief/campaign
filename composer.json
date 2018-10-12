@@ -99,7 +99,14 @@
                 "sites/default/default.settings.php": "sites/default/settings.php"
             }
         },
-        "enable-patching": true
+        "enable-patching": true,
+        "mouf": {
+            "nodejs": {
+                "version": "8.0",
+                "targetDir": "vendor/nodejs/nodejs",
+                "forceLocal": false
+            }
+        }
     },
     "require": {
         "composer/installers": "1.5.0",
@@ -163,7 +170,8 @@
         "drush/drush": "9.3.0",
         "php-amqplib/php-amqplib": "2.7.2",
         "webflo/drupal-finder": "1.1.0",
-        "webmozart/path-util": "2.3.0"
+        "webmozart/path-util": "2.3.0",
+        "mouf/nodejs-installer": "~1.0"
     },
     "require-dev": {
         "comicrelief/behat-tools": "0.0.15",
