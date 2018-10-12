@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@comicrelief/pattern-lab@git://github.com/comicrelief/pattern-lab.git#081f06c":
+"@comicrelief/pattern-lab@git://github.com/comicrelief/pattern-lab.git#59e91c2":
   version "0.0.0-see.readme.for.releases"
-  resolved "git://github.com/comicrelief/pattern-lab.git#081f06cb7ec52a2d8145f5caabdb1aa569e2b97f"
+  resolved "git://github.com/comicrelief/pattern-lab.git#59e91c2cde22b98552a343c7624b1a1bebeb3428"
   dependencies:
     susy "^2.2.12"
 
