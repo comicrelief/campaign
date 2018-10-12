@@ -61,12 +61,6 @@ mounts:
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
     build: |
-        unset NPM_CONFIG_PREFIX
-        curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | dash
-        export NVM_DIR="$HOME/.nvm"
-        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-        nvm current
-        nvm install 8.0.0
         set -e
         composer grunt:dependencies
         composer grunt:build
@@ -76,8 +70,6 @@ hooks:
 
     # We run deploy hooks after your application has been deployed and started.
     deploy: |
-        unset NPM_CONFIG_PREFIX
-        nvm use 8.0.0
         set -e
         composer campaign:install
 
