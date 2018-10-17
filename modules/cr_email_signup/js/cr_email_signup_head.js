@@ -15,12 +15,14 @@
       $(".block--cr-email-signup--head").toggleClass("visible").find(".form-item-email input").focus();
       $("a[role=button].meta-icons__magnify").removeClass("active");
       $(".search-block, header[role='banner'] nav, .search-overlay").removeClass("show");
+      $("body").toggleClass('js-esu-head-noscroll');
     });
 
     $(".block--cr-email-signup--head .close-button").on("click", function(e) {
       e.preventDefault();
       $(".meta-icons__esu-toggle, .js-esu-popup").removeClass("active");
       $(".block--cr-email-signup--head").removeClass("visible");
+      $("body").removeClass('js-esu-head-noscroll');
     });
 
   });
