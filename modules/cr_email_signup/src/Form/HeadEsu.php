@@ -21,10 +21,10 @@ class HeadEsu extends FundraiseSignUp {
     $form[$this->getFormId() . '_step1'] = [
       '#type' => 'button',
       '#name' => 'step1',
-      '#value' => $this->t('Submit'),
+      '#value' => $this->t('Subscribe'),
       '#attributes' => [
         'class' => ['step1'],
-        'aria-label' => ['Submit']
+        'aria-label' => ['Subscribe']
       ],
       '#ajax' => [
         'callback' => [$this, 'processSteps'],

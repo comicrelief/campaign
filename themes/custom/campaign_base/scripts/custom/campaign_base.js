@@ -21,10 +21,6 @@
       $(".block--cr-email-signup--head, .search-block").removeClass("show");
     });
 
-    $("a[role=button].meta-icons__esu-toggle").on("click", function() {
-      $("a[role=button].meta-icons__magnify").removeClass("active");
-      $(".search-block, header[role='banner'] nav, .search-overlay").removeClass("show");
-    });
 
     $(".search-block .close-button").on("click", function(e) {
       e.preventDefault();
