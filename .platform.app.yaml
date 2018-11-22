@@ -49,7 +49,7 @@ web:
             passthru: "/index.php"
 
 # The size of the persistent disk of the application (in MB).
-disk: 3024
+disk: 7000
 
 # The mounts that will be performed when the package is deployed.
 mounts:
