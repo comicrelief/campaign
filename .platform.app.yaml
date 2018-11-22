@@ -49,7 +49,7 @@ web:
             passthru: "/index.php"
 
 # The size of the persistent disk of the application (in MB).
-disk: 2048
+disk: 7000
 
 # The mounts that will be performed when the package is deployed.
 mounts:
@@ -61,6 +61,12 @@ mounts:
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
     build: |
+        unset NPM_CONFIG_PREFIX
+        curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | dash
+        export NVM_DIR="$HOME/.nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+        nvm current
+        nvm install 8.0.0
         set -e
         composer grunt:dependencies
         composer grunt:build
