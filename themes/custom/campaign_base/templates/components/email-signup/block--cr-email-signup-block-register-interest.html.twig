@@ -19,5 +19,6 @@ set classes = [
       <div class="esu-errors messages messages--error error-msg-cr-email-signup-register-interest-form"></div>
     </div>
     {{ content|without('initial_message', 'first_success_message', 'title_message', 'privacy_message') }}
+    {{ content.privacy_message }}
   </div>
 </div>
