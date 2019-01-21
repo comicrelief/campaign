@@ -2,14 +2,14 @@
   $( document ).ready(function() {
 
     // todo make a function
-    $("a[role=button].meta-icons__magnify").on("click", function(e) {
+    $("a.meta-icons__magnify").on("click", function(e) {
       e.preventDefault();
       $(this).toggleClass("active");
       $(".search-block, .search-overlay:not('.show'), .search-overlay.search-on").toggleClass("show");
       $(".search-overlay").toggleClass("search-on");
       $(".search-overlay").removeClass("nav-on");
       $("header[role='banner'] nav, .block--cr-email-signup--head").removeClass("show");
-      $("a[role=button].meta-icons__esu-toggle").removeClass("active").attr('aria-pressed', 'false');
+      $("a.meta-icons__esu-toggle").removeClass("active").attr('aria-pressed', 'false');
       $(".search-block__form input[type=text]").focus();
     });
 
@@ -17,19 +17,19 @@
       $("header[role='banner'] nav, .search-overlay:not('.show'), .search-overlay.show.nav-on").toggleClass("show");
       $(".search-overlay").toggleClass("nav-on");
       $(".search-overlay").removeClass("search-on");
-      $("a[role=button].meta-icons__esu-toggle, .meta-icons__magnify").removeClass("active").attr('aria-pressed', 'false');
+      $("a.meta-icons__esu-toggle, .meta-icons__magnify").removeClass("active").attr('aria-pressed', 'false');
       $(".block--cr-email-signup--head, .search-block").removeClass("show");
     });
 
 
     $(".search-block .close-button").on("click", function(e) {
       e.preventDefault();
-      $("a[role=button].meta-icons__magnify").removeClass("active");
+      $("a.meta-icons__magnify").removeClass("active");
       $(".search-block, .search-overlay").removeClass("show");
     });
 
     // Close any active navs when we're toggling on other buttons in the nav
-    $('.meta-icons a[role=button]').on('click', function (e) {
+    $('.meta-icons a').on('click', function (e) {
       // Remove active class from hamburger nav to collapse it
       $('a[role=button].c-hamburger.is-active').removeClass('is-active');
       $('.main-nav__items').removeClass('menu-open');
