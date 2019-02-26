@@ -174,7 +174,7 @@
         "mouf/nodejs-installer": "~1.0"
     },
     "require-dev": {
-        "comicrelief/behat-tools": "0.0.15",
+        "comicrelief/behat-tools": "0.0.20",
         "drupal/coder": "2.12",
         "drupal/default_content": "1.0-alpha7",
         "drupal/drupal-extension": "3.4.1",
