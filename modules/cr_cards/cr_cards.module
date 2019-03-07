@@ -37,6 +37,7 @@ function cr_cards_field_cr_cards_grid(FieldStorageDefinitionInterface $definitio
     'cards--four-grid-centre' => t('1/4 width centre'),
     'cards--three-grid' => t('1/3 width left'),
     'cards--three-grid-centre' => t('1/3 width centre'),
+    'cards--two-grid' => t('1/2 width centre'),
   ];
   return $values;
 }
