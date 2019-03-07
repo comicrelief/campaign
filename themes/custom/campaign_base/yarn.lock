@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@comicrelief/pattern-lab@git://github.com/comicrelief/pattern-lab.git#860_membership_page_updates":
-  version "0.0.0-see.readme.for.releases"
-  resolved "git://github.com/comicrelief/pattern-lab.git#7512d73c54849bc44618ff0f5834bed7628d14b2"
+"@comicrelief/pattern-lab@7.58.3":
+  version "7.58.3"
+  resolved "https://registry.yarnpkg.com/@comicrelief/pattern-lab/-/pattern-lab-7.58.3.tgz#cb55d03d6fc6181ae60ccd5e8d67d1f2f9569ced"
   dependencies:
     event-stream "3.3.4"
     grunt-contrib-copy "^1.0.0"
