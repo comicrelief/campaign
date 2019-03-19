@@ -12,7 +12,9 @@ no_caption
 ]
 %}
 
-<div class="page-node-type-article--{{ content.field_article_type[0]['#markup'] | replace({'releases': 'release'}) }}">
+{% set type = content.field_article_type[0]['#markup'] %}
+
+<div class="page-node-type-article--{{ type | replace({'releases': 'release'}) }}">
   <article class="cr-article" {% if css_id %}{{ css_id }}{% endif %}>
     <div class="cr-article__content-wrapper">
     <header {{ attributes.addClass(header_class) }}>
@@ -52,5 +54,9 @@ no_caption
 </div>
 
 <section class="cr-article__bottom-region">
-  {{ content['dynamic_block_field:node-related_news'] }}
+  {% if type == 'press-releases' %}
+    {{ content['dynamic_block_field:node-related_press_releases'] }}
+  {% else %}
+    {{ content['dynamic_block_field:node-related_news'] }}
+  {% endif %}
 </section>

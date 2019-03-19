@@ -31,6 +31,8 @@
  */
 #}
 
+{% set type = content.field_article_type[0]['#markup'] %}
+
 {% if rows %}
   <div{{ attributes.addClass('related-articles__wrapper') }}>
     <h2> {{ header }} </h2>

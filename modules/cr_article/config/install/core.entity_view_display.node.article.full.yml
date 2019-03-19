@@ -50,11 +50,17 @@ third_party_settings:
         - field_image_caption
         - body
         - 'dynamic_block_field:node-related_news'
+        - 'dynamic_block_field:node-related_press_releases'
         - field_article_type
     fields:
       'dynamic_block_field:node-related_news':
         plugin_id: 'dynamic_block_field:node-related_news'
         weight: 7
+        label: hidden
+        formatter: default
+      'dynamic_block_field:node-related_press_releases':
+        plugin_id: 'dynamic_block_field:node-related_press_releases'
+        weight: 8
         label: hidden
         formatter: default
       node_title:
@@ -98,7 +104,7 @@ content:
     region: ds_content
   field_article_type:
     type: list_key
-    weight: 8
+    weight: 9
     region: ds_content
     label: hidden
     settings: {  }
