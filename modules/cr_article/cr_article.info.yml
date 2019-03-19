@@ -2,7 +2,6 @@ name: News article
 type: module
 description: 'Defines a News article content type.'
 package: Comic Relief
-# version: VERSION
 core: 8.x
 dependencies:
   - field
