@@ -2,7 +2,6 @@ name: News article
 type: module
 description: 'Defines a News article content type.'
 package: Comic Relief
-# version: VERSION
 core: 8.x
 dependencies:
   - field
@@ -55,9 +54,11 @@ config_devel:
   - field.field.node.article.field_article_exclude_aggr
   - field.field.scheduled_update.node_status.field_status
   - views.view.related_news
+  - views.view.related_press_releases
   - views.view.what_s_going_on
   - pathauto.pattern.article
   - ds.field.related_news
+  - ds.field.related_press_releases
   - rdf.mapping.node.article
   - metatag.metatag_defaults.node__article
   - image.style.cr_1_1_272x272_2x

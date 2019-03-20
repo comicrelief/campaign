@@ -8,8 +8,8 @@ dependencies:
     - node
     - options
     - user
-id: related_news
-label: 'Related articles'
+id: related_press_releases
+label: 'Related Press Releases'
 module: views
 description: ''
 tag: ''
@@ -189,9 +189,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          operator: or
+          operator: and
           value:
-            news: news
+            press-releases: press-releases
           group: 1
           exposed: false
           expose:
@@ -237,7 +237,7 @@ display:
           expose:
             label: ''
           granularity: second
-      title: 'Related news'
+      title: 'Related Press Releases'
       header:
         area:
           id: area
