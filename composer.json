@@ -171,7 +171,8 @@
         "php-amqplib/php-amqplib": "2.7.2",
         "webflo/drupal-finder": "1.1.0",
         "webmozart/path-util": "2.3.0",
-        "mouf/nodejs-installer": "~1.0"
+        "mouf/nodejs-installer": "~1.0",
+        "twig/twig": "1.38.2"
     },
     "require-dev": {
         "comicrelief/behat-tools": "0.0.20",
