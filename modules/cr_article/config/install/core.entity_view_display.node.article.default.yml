@@ -5,6 +5,7 @@ dependencies:
     - field.field.node.article.body
     - field.field.node.article.field_article_category
     - field.field.node.article.field_article_exclude_aggr
+    - field.field.node.article.field_article_hide_image
     - field.field.node.article.field_article_image
     - field.field.node.article.field_article_intro
     - field.field.node.article.field_article_meta_tags
@@ -41,6 +42,16 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
+  field_article_hide_image:
+    weight: 10
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
     region: content
   field_article_image:
     weight: 1
@@ -102,9 +113,9 @@ content:
     region: content
   links:
     weight: 4
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
   field_article_exclude_aggr: true
   publishing_date: true
