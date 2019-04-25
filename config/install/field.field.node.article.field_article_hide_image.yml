@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_article_hide_image
+    - node.type.article
+id: node.article.field_article_hide_image
+field_name: field_article_hide_image
+entity_type: node
+bundle: article
+label: 'Hide Image'
+description: 'Hides the image from the main content view (not rendered at all), but kept for Search/listings views'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Hidden
+  off_label: 'Not hidden'
+field_type: boolean

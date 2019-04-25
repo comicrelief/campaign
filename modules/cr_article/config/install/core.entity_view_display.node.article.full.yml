@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.article.body
     - field.field.node.article.field_article_category
     - field.field.node.article.field_article_exclude_aggr
+    - field.field.node.article.field_article_hide_image
     - field.field.node.article.field_article_image
     - field.field.node.article.field_article_intro
     - field.field.node.article.field_article_meta_tags
@@ -52,6 +53,7 @@ third_party_settings:
         - 'dynamic_block_field:node-related_news'
         - 'dynamic_block_field:node-related_press_releases'
         - field_article_type
+        - field_article_hide_image
     fields:
       'dynamic_block_field:node-related_news':
         plugin_id: 'dynamic_block_field:node-related_news'
@@ -84,6 +86,16 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: ds_content
+  field_article_hide_image:
+    type: boolean
+    weight: 10
+    region: ds_content
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
   field_article_image:
     weight: 3
     label: hidden
