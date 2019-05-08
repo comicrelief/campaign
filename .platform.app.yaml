@@ -5,7 +5,7 @@
 name: php
 
 # The runtime the application uses.
-type: "php:7.1"
+type: "php:7.2"
 
 # Configuration of the build of this application.
 build:
