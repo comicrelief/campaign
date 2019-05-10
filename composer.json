@@ -144,7 +144,7 @@
         "drupal/media_entity_image": "1.2",
         "drupal/media_entity_slideshow": "1.2",
         "drupal/menu_link_attributes": "1.0",
-        "drupal/metatag": "1.4",
+        "drupal/metatag": "1.8",
         "drupal/override_node_options": "2.3",
         "drupal/page_manager": "4.0-beta3",
         "drupal/paragraphs": "1.2",
@@ -168,11 +168,11 @@
         "drupal/view_unpublished": "1.0-alpha1",
         "drupal/views_ajax_history": "1.x-dev",
         "drush/drush": "9.3.0",
-        "php-amqplib/php-amqplib": "2.7.2",
-        "webflo/drupal-finder": "1.1.0",
-        "webmozart/path-util": "2.3.0",
         "mouf/nodejs-installer": "~1.0",
-        "twig/twig": "1.38.2"
+        "php-amqplib/php-amqplib": "2.7.2",
+        "twig/twig": "1.38.2",
+        "webflo/drupal-finder": "1.1.0",
+        "webmozart/path-util": "2.3.0"
     },
     "require-dev": {
         "comicrelief/behat-tools": "0.0.20",
