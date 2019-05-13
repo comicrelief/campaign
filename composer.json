@@ -147,7 +147,7 @@
         "drupal/metatag": "1.8",
         "drupal/override_node_options": "2.3",
         "drupal/page_manager": "4.0-beta3",
-        "drupal/paragraphs": "1.2",
+        "drupal/paragraphs": "1.8",
         "drupal/pathauto": "1.0",
         "drupal/rabbitmq": "1.1",
         "drupal/raven": "2.4",
