@@ -9,7 +9,6 @@ dependencies:
   - text
   - path
   - media_entity
-  - entity_view_mode
 config_devel:
   - field.storage.media.field_video_caption
   - field.storage.media.field_youtube_video_id

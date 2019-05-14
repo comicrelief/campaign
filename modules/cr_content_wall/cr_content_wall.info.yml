@@ -12,6 +12,7 @@ dependencies:
   - cr_media
   - view_mode
   - cr_colours
+  - cr_quote
 
 config_devel:
   # Paragraph config

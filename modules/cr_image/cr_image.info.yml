@@ -4,10 +4,10 @@ description: Contains config for image media entity.
 core: 8.x
 package: Comic Relief
 dependencies:
-- file
-- path
-- media_entity
-- focal_point
+- drupal:file
+- drupal:path
+- drupal:media_entity
+- drupal:focal_point
 config_devel:
   - image.style.cr_1170_x_566
   - image.style.cr_1170_x_566_2x

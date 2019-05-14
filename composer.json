@@ -43,7 +43,7 @@
         ],
         "grunt:build": "cd web/profiles/contrib/cr/themes/custom/campaign_base;yarn build",
         "drupal:install": [
-            "cd web;drush si cr --account-pass='admin' install_configure_form.enable_update_status_module=NULL -y"
+            "cd web;drush si -v cr --account-pass='admin' install_configure_form.enable_update_status_module=NULL -y"
         ],
         "campaign:install": [
             "@drupal:install",
