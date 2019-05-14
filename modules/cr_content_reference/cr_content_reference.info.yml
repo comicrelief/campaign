@@ -3,6 +3,10 @@ type: module
 description: Contains config for the content reference block, this block is used to link nodes to the content wall.
 core: 8.x
 package: Comic Relief
+dependencies:
+  - block_content
+  - node
+  - field
 config_devel:
   - block_content.type.content_reference_block
   - core.entity_form_display.block_content.content_reference_block.default

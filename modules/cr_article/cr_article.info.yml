@@ -20,6 +20,11 @@ dependencies:
   - menu_ui
   - filter
   - better_exposed_filters
+  - video_embed_field
+  - scheduled_updates
+  - focal_point
+  - inline_entity_form
+  - blazy
 
 config_devel:
   - core.base_field_override.node.article.status

@@ -3,6 +3,13 @@ type: module
 description: Contains config for video media entity.
 core: 8.x
 package: Comic Relief
+dependencies:
+  - ds
+  - responsive_image
+  - text
+  - path
+  - media_entity
+  - entity_view_mode
 config_devel:
   - field.storage.media.field_video_caption
   - field.storage.media.field_youtube_video_id
