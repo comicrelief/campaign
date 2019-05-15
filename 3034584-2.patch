@@ -1,0 +1,95 @@
+diff --git a/src/Normalizer/EntityNormalizer.php b/src/Normalizer/EntityNormalizer.php
+index 781737e..9f502f2 100644
+--- a/src/Normalizer/EntityNormalizer.php
++++ b/src/Normalizer/EntityNormalizer.php
+@@ -4,6 +4,7 @@ namespace Drupal\jsonapi\Normalizer;
+ 
+ use Drupal\Core\Entity\ContentEntityInterface;
+ use Drupal\Core\Entity\EntityTypeManagerInterface;
++use Drupal\Core\Entity\FieldableEntityInterface;
+ use Drupal\Core\Field\FieldItemInterface;
+ use Drupal\Core\Field\FieldItemListInterface;
+ use Drupal\Core\TypedData\TypedDataInternalPropertiesHelper;
+@@ -239,47 +240,50 @@ class EntityNormalizer extends NormalizerBase implements DenormalizerInterface {
+         continue;
+       }
+       $internal_name = $resource_type->getInternalName($public_field_name);
++      if ($resource_type->getDeserializationTargetClass() instanceof FieldableEntityInterface) {
++        // If $field_value contains items (recognizable by numerical array keys
++        // which Drupal's Field API calls "deltas"), then it already is itemized;
++        // it's not using the simplified JSON structure that JSON:API generates.
++        $is_already_itemized = is_array($field_value) && array_reduce(array_keys($field_value), function ($carry, $index) {
++            return $carry && is_numeric($index);
++          }, TRUE);
+ 
+-      // If $field_value contains items (recognizable by numerical array keys
+-      // which Drupal's Field API calls "deltas"), then it already is itemized;
+-      // it's not using the simplified JSON structure that JSON:API generates.
+-      $is_already_itemized = is_array($field_value) && array_reduce(array_keys($field_value), function ($carry, $index) {
+-        return $carry && is_numeric($index);
+-      }, TRUE);
++        $itemized_data = $is_already_itemized
++          ? $field_value
++          : [0 => $field_value];
+ 
+-      $itemized_data = $is_already_itemized
+-        ? $field_value
+-        : [0 => $field_value];
++        try {
++          $field_item = $this->getFieldItemInstance($resource_type, $internal_name);
++          foreach ($itemized_data as $delta => $field_item_value) {
++            $this->checkForSerializedStrings($field_item_value, get_class($field_item), $field_item);
++            $serialized_property_names = $this->getCustomSerializedPropertyNames($field_item);
+ 
+-      try {
+-        $field_item = $this->getFieldItemInstance($resource_type, $internal_name);
+-        foreach ($itemized_data as $delta => $field_item_value) {
+-          $this->checkForSerializedStrings($field_item_value, get_class($field_item), $field_item);
+-          $serialized_property_names = $this->getCustomSerializedPropertyNames($field_item);
+-
+-          // Explicitly serialize the input, unlike properties that rely on
+-          // being automatically serialized, manually managed serialized
+-          // properties expect to receive serialized input.
+-          if (is_array($field_item_value)) {
+-            foreach ($serialized_property_names as $serialized_property_name) {
+-              if (!empty($field_item_value[$serialized_property_name])) {
+-                $itemized_data[$delta][$serialized_property_name] = serialize($field_item_value[$serialized_property_name]);
++            // Explicitly serialize the input, unlike properties that rely on
++            // being automatically serialized, manually managed serialized
++            // properties expect to receive serialized input.
++            if (is_array($field_item_value)) {
++              foreach ($serialized_property_names as $serialized_property_name) {
++                if (!empty($field_item_value[$serialized_property_name])) {
++                  $itemized_data[$delta][$serialized_property_name] = serialize($field_item_value[$serialized_property_name]);
++                }
+               }
+             }
+-          }
+-          elseif (in_array($field_item->getDataDefinition()
+-            ->getMainPropertyName(), $serialized_property_names, TRUE)) {
+-            $itemized_data[$delta] = serialize($field_item_value);
++            elseif (in_array($field_item->getDataDefinition()
++              ->getMainPropertyName(), $serialized_property_names, TRUE)) {
++              $itemized_data[$delta] = serialize($field_item_value);
++            }
+           }
+         }
++        catch (\InvalidArgumentException $e) {
++          // The field does not exist, so there is no processing to be done. A
++          // helpful error will be shown by EntityResource::createIndividual() or
++          // EntityResource::patchIndividual().
++        }
++        $data_internal[$internal_name] = $is_already_itemized ? $itemized_data : $itemized_data[0];
+       }
+-      catch (\InvalidArgumentException $e) {
+-        // The field does not exist, so there is no processing to be done. A
+-        // helpful error will be shown by EntityResource::createIndividual() or
+-        // EntityResource::patchIndividual().
++      else {
++        $data_internal[$internal_name] = $field_value;
+       }
+-
+-      $data_internal[$internal_name] = $is_already_itemized ? $itemized_data : $itemized_data[0];
+     }
+ 
+     return $data_internal;
