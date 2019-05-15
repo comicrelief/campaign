@@ -16,7 +16,7 @@ required: false
 translatable: false
 default_value:
   -
-    value: 'a:7:{s:5:"title";s:34:"[current-page:title] | [site:name]";s:13:"canonical_url";s:27:"[current-page:url:absolute]";s:9:"shortlink";s:27:"[current-page:url:absolute]";s:12:"og_site_name";s:11:"[site:name]";s:7:"og_type";s:7:"article";s:6:"og_url";s:27:"[current-page:url:absolute]";s:8:"og_title";s:34:"[current-page:title] | [site:name]";}'
+    value: ''
 default_value_callback: ''
 settings: {  }
 field_type: metatag

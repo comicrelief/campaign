@@ -68,9 +68,7 @@
         "patches": {
             "drupal/core": {
                 "See https://www.drupal.org/project/drupal/issues/2906737": "https://www.drupal.org/files/issues/2906737_0.patch",
-                "See https://github.com/comicrelief/campaign/pull/252": "https://gist.githubusercontent.com/pvhee/14801e0f82e06f51cb0d88b9d400cbd6/raw/253f1c1e516eb24650a91d343c56a5aeb6a0ca43/PLAT-235_paragraph_constraint_violation.patch",
-                "See https://www.drupal.org/project/paragraphs/issues/3034598": "https://www.drupal.org/files/issues/2019-02-20/3034584-2.patch"
-            },
+                "See https://github.com/comicrelief/campaign/pull/252": "https://gist.githubusercontent.com/pvhee/14801e0f82e06f51cb0d88b9d400cbd6/raw/253f1c1e516eb24650a91d343c56a5aeb6a0ca43/PLAT-235_paragraph_constraint_violation.patch"            },
             "drupal/entity_browser": {
                 "see https://www.drupal.org/node/2845037": "https://www.drupal.org/files/issues/2845037_16.patch"
             },
