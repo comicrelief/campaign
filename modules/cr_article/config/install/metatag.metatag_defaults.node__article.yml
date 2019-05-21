@@ -9,4 +9,4 @@ tags:
   keywords: '[node:field_article_category]'
   referrer: no-referrer
   og_description: '[node:summary]'
-  og_image: '[node:field_article_image]'
+  og_image: '[node:field_article_image:entity:url]'
