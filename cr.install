@@ -409,10 +409,3 @@ function cr_update_8044() {
     installer()->install(['advagg']);
     installer()->install(['advagg_js_minify']);
 }
-
-/**
- * Install Webprofile required by Metatag security update
- */
-function cr_update_8045() {
-    installer()->install(['webprofiler']);
-}
