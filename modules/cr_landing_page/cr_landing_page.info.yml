@@ -7,7 +7,10 @@ package: Comic Relief
 dependencies:
   - cr_colours
   - cr_feature_articles
-
+  - field_group
+  - cr_rich_text_paragraph
+  - cr_story
+  - cr_single_msg
 config_devel:
   - node.type.landing
   - core.entity_form_display.node.landing.default
