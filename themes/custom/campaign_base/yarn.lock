@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@comicrelief/pattern-lab@git://github.com/comicrelief/pattern-lab.git#911_make_updated_cookie_banner_reusable":
-  version "0.0.0-see.readme.for.releases"
-  resolved "git://github.com/comicrelief/pattern-lab.git#23f6be636cad66211bd219f42768097b4a6f4426"
+"@comicrelief/pattern-lab@7.60.1":
+  version "7.60.1"
+  resolved "https://registry.yarnpkg.com/@comicrelief/pattern-lab/-/pattern-lab-7.60.1.tgz#606246628dcb32396fe4cdd1f00a1438fe3e3b72"
   dependencies:
     event-stream "3.3.4"
     grunt-contrib-copy "^1.0.0"
