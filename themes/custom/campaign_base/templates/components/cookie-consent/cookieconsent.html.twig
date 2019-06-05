@@ -1,4 +1,23 @@
-<div class="cookie-consent cc_banner cc_container cc_container--open">
-    <p class="cc_message">{{ message }}<a data-cc-if="options.link" target="{{ target }}" class="cc_more_info link link--smoke-grey inline" href="{{ link }}">{{ learn_more }}</a></p>
-    <a href="#null" data-cc-event="click:dismiss" target="_blank" class="btn btn--white-ghost">{{ dismiss }}</a>
+{#
+/**
+ * @file
+ * Updated template for cookieconsent.
+ *
+ * Available variables:
+ * - dismiss : The text used on the dismiss button.
+ * - message : The message shown by the plugin.
+ * - target : The target of the link to your cookie policy. Use to open a link in a new window, or specific frame,
+              if you wish.
+ * - link : The url of your cookie policy. If it’s set to null, the link is hidden.
+ * - learn_more : The text shown on the link to the cookie policy (requires the link option to also be set)
+ *
+ * @ingroup themeable
+ */
+#}
+<div class="cookie-consent cc_banner cc_container cc_container--open cc_banner--drupal">
+  <p class="cc_message">Hello! Comic Relief uses cookies to help make this website better and improve our services. You can learn more about our use of cookies <a target="_blank" class="cc_more_info link link--white inline" href="/cookies-policy">here</a>. We also use optional cookies for marketing purposes:
+  </p>
+  <p class="cc_message">
+    <a href="#null" class="btn btn--white accept-cookies">Accept</a> Or click <a href="#" class="link deny-cookies link--white inline">here</a> to deny these.
+  </p>
 </div>
