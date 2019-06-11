@@ -145,7 +145,7 @@ abstract class SignUp extends FormBase {
       $this->setErrorMessage(
         $response,
         self::$ERRORS['AGEGROUP'],
-        'SCHOOL PHASE ERR: '
+        'Please select an age group.'
       );
       $pass = false;
     }
@@ -212,10 +212,7 @@ abstract class SignUp extends FormBase {
           ]);
           $this->nextStep($response, 2);
 
-        }
-    
-          // $this->validateFields($form_state, $response, 'school_phase');
-        
+        }    
         break;
     }
     // Return ajax response.
