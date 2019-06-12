@@ -107,28 +107,45 @@ abstract class SignUp extends FormBase {
    */
   private function validateFields(
     FormStateInterface $form_state,
-    AjaxResponse $response
-  ) {
+    AjaxResponse $response,
+    $fieldtype
+    ) {
+
     $pass = true;
+
     $exist_field_name = $form_state->hasValue('firstName');
     $name_is_empty = $form_state->isValueEmpty('firstName');
+
     $email = $form_state->getValue('email');
     $valid_email = \Drupal::service('email.validator')->isValid($email);
 
+    $school_phase_empty = $form_state->isValueEmpty('school_phase');
+
     $this->cleanStatusMessage($response);
-    if (!$valid_email) {
+
+    if (!$valid_email && $fieldtype === 'email') {
       $this->setErrorMessage(
         $response,
         self::$ERRORS['MAIL'],
         'Please enter a valid email address.'
       );
       $pass = false;
-    }
+    } 
+
     if ($exist_field_name && $name_is_empty) {
       $this->setErrorMessage(
         $response,
         self::$ERRORS['NAME'],
         'Please enter your name.'
+      );
+      $pass = false;
+    }
+
+    if ($fieldtype === 'school_phase' && $school_phase_empty) {
+      $this->setErrorMessage(
+        $response,
+        self::$ERRORS['AGEGROUP'],
+        'Please select an age group.'
       );
       $pass = false;
     }
@@ -145,9 +162,12 @@ abstract class SignUp extends FormBase {
     $triggering_element = $form_state->getTriggeringElement();
     $response = new AjaxResponse();
     $settings = \Drupal::config('cr_email_signup.settings');
+
     switch ($triggering_element['#name']) {
       case 'step1':
-        if ($this->validateFields($form_state, $response)) {
+
+        // Step 1, valid email address, form data object to submit
+        if ($this->validateFields($form_state, $response, 'email')) {
           // @TODO: Refactor this!
           $data = [
             'email' => $form_state->getValue('email'),
@@ -173,11 +193,14 @@ abstract class SignUp extends FormBase {
         }
         break;
 
+      // Step 2, with a valid email, 
       case 'step2':
         $email = $form_state->getValue('email');
         $this->esulist = ['listname' => ['teacher']];
         $valid_email = \Drupal::service('email.validator')->isValid($email);
-        if (!$form_state->isValueEmpty('school_phase') && $valid_email) {
+
+        // If this is a valid email address and school_phase has been filled in
+        if ($this->validateFields($form_state, $response, 'school_phase')) {
           $sender = new SenderData();
           $sender->deliver($this->queue_name, [
             'email' => $form_state->getValue('email'),
@@ -189,15 +212,7 @@ abstract class SignUp extends FormBase {
           ]);
           $this->nextStep($response, 2);
 
-        }
-        else {
-          $this->cleanStatusMessage($response);
-          $this->setErrorMessage(
-            $response,
-            self::$ERRORS['AGEGROUP'],
-            'Please select an age group.'
-          );
-        }
+        }    
         break;
     }
     // Return ajax response.
