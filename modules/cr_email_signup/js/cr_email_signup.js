@@ -156,7 +156,7 @@
               }
               $("#edit-firstname").focus();
             }
-            else {
+            else if($block.hasClass("error--email") ) {
               // email input field's id isn't reliable and classname is too generic
               $input = $block.find("[name=email]");
               $input.val('');
