@@ -10,6 +10,7 @@ use Drupal\Core\Ajax\PrependCommand;
 use Drupal\Core\Ajax\InvokeCommand;
 use Drupal\cr_email_signup\MessageQueue\SenderData;
 use Drupal\cr_email_signup\MessageQueue\Sender;
+use Drupal\cr_email_signup\DataIngestion\ESUDataIngestion;
 
 /**
  * Generate Email Sign up.
@@ -27,6 +28,7 @@ abstract class SignUp extends FormBase {
   protected $transType = 'esu';
   protected $esulist = ['listname' => ['general']];
   protected $queue_name = 'esu';
+  protected $data_ingestion_queue_name = 'data_ingestion_queue';
 
   /**
    * Build the Form Elements.
@@ -130,7 +132,7 @@ abstract class SignUp extends FormBase {
         'Please enter a valid email address.'
       );
       $pass = false;
-    } 
+    }
 
     if ($exist_field_name && $name_is_empty) {
       $this->setErrorMessage(
@@ -183,17 +185,22 @@ abstract class SignUp extends FormBase {
           }
           $data['transType'] = $this->transType;
 
+
           $sender = new SenderData();
           $sender->deliver($this->queue_name, $data);
           $sender = new Sender();
           $queue_name = $settings->get('welcome_queue');
           $data['templateName'] = $settings->get('template_esu_name');
           $sender->deliver($queue_name, $data);
+
+          $dataIngestion = new ESUDataIngestion($data);
+          $dataIngestion->deliver($this->data_ingestion_queue_name);
+
           $this->nextStep($response, 1);
         }
         break;
 
-      // Step 2, with a valid email, 
+      // Step 2, with a valid email,
       case 'step2':
         $email = $form_state->getValue('email');
         $this->esulist = ['listname' => ['teacher']];
@@ -201,18 +208,23 @@ abstract class SignUp extends FormBase {
 
         // If this is a valid email address and school_phase has been filled in
         if ($this->validateFields($form_state, $response, 'school_phase')) {
+          $data = [
+              'email' => $form_state->getValue('email'),
+              'phase' => $form_state->getValue('school_phase'),
+              'device' => $form_state->getValue('device'),
+              'source' => $form_state->getValue('source'),
+              'campaign' => $settings->get('campaign'),
+              'subscribeLists' => $this->esulist,
+          ];
           $sender = new SenderData();
-          $sender->deliver($this->queue_name, [
-            'email' => $form_state->getValue('email'),
-            'phase' => $form_state->getValue('school_phase'),
-            'device' => $form_state->getValue('device'),
-            'source' => $form_state->getValue('source'),
-            'campaign' => $settings->get('campaign'),
-            'subscribeLists' => $this->esulist,
-          ]);
+          $sender->deliver($this->queue_name, $data);
+
+          $dataIngestion = new ESUDataIngestion($data);
+          $dataIngestion->deliver($this->data_ingestion_queue_name);
+
           $this->nextStep($response, 2);
 
-        }    
+        }
         break;
     }
     // Return ajax response.
