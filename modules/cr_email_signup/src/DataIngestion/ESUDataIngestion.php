@@ -9,7 +9,6 @@ namespace Drupal\cr_email_signup\DataIngestion;
 class ESUDataIngestion
 {
 
-    protected $data_ingestion_endpoint = 'https://ingest-staging.data.comicrelief.com/identify';
     protected $created_at = null;
     protected $email = null;
     protected $first_name = null;
@@ -124,9 +123,12 @@ class ESUDataIngestion
      * @param array $data
      */
     protected function post($data) {
+        $settings = \Drupal::config('cr_email_signup.settings');
+        $data_ingestion_endpoint = $settings->get('endpoint.dev');
+
         $client = \Drupal::httpClient();
         try {
-            $request = $client->post($this->data_ingestion_endpoint, json_encode($data));
+            $request = $client->post($data_ingestion_endpoint, json_encode($data));
 
             $response = json_decode($request->getBody());
             if ($response['statusCode'] !== 200) {
