@@ -409,3 +409,10 @@ function cr_update_8044() {
     installer()->install(['advagg']);
     installer()->install(['advagg_js_minify']);
 }
+
+/**
+ * Install ext-json to enable json_encode function.
+ */
+function cr_update_8045() {
+    installer()->install(['ext-json']);
+}
