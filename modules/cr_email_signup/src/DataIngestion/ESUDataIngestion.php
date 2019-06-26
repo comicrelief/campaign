@@ -1,6 +1,7 @@
 <?php
 
 namespace Drupal\cr_email_signup\DataIngestion;
+use Drupal\Component\Serialization\Json.php;
 
 
 /**
@@ -128,9 +129,9 @@ class ESUDataIngestion
 
         $client = \Drupal::httpClient();
         try {
-            $request = $client->post($data_ingestion_endpoint, json_encode($data));
+            $request = $client->post($data_ingestion_endpoint, Json::encode($data));
 
-            $response = json_decode($request->getBody());
+            $response = Json::decode($request->getBody());
             if ($response['statusCode'] !== 200) {
                 throw new \Exception("Post message Failed.");
             }

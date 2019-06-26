@@ -41,7 +41,6 @@ dependencies:
   - diff
   - fast404
   - layout_discovery
-  - ext-json
 
   # Contrib modules
   - ds

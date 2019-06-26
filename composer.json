@@ -107,7 +107,6 @@
         }
     },
     "require": {
-        "ext-json": "*",
         "composer/installers": "1.5.0",
         "cweagans/composer-patches": "1.6.4",
         "drupal-composer/drupal-scaffold": "2.5.0",

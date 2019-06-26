@@ -28,7 +28,6 @@ abstract class SignUp extends FormBase {
   protected $transType = 'esu';
   protected $esulist = ['listname' => ['general']];
   protected $queue_name = 'esu';
-  protected $data_ingestion_queue_name = 'data_ingestion_queue';
 
   /**
    * Build the Form Elements.
@@ -194,7 +193,7 @@ abstract class SignUp extends FormBase {
           $sender->deliver($queue_name, $data);
 
           $dataIngestion = new ESUDataIngestion($data);
-          $dataIngestion->deliver($this->data_ingestion_queue_name);
+          $dataIngestion->deliver();
 
           $this->nextStep($response, 1);
         }
@@ -220,7 +219,7 @@ abstract class SignUp extends FormBase {
           $sender->deliver($this->queue_name, $data);
 
           $dataIngestion = new ESUDataIngestion($data);
-          $dataIngestion->deliver($this->data_ingestion_queue_name);
+          $dataIngestion->deliver();
 
           $this->nextStep($response, 2);
 
