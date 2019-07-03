@@ -26,6 +26,18 @@ $settings['hash_salt'] = '7BbC-OM6nFz5BDRB9ksza__3PmJSrcZ-eHY1InKGUlt2cnXFsI6eAJ
 // This is defined inside the read-only "config" directory, deployed via Git.
 $settings['twig_tweak_enable_php_filter'] = true;
 
+// Set up data ingestion base url based on host env
+switch (@$_SERVER['HTTP_HOST']) {
+    default:
+    case 'dev.comicrelief.com' || 'dev.sportrelief.com':
+    case 'staging.comicrelief.com' || 'staging.sportrelief.com':
+        $settings['data_ingestion_base_url'] = 'https://ingest-staging.data.comicrelief.com/identify';
+        break;
+    case 'www.comicrelief.com' || 'www.sportrelief.com':
+        $settings['data_ingestion_base_url'] = 'https://ingest.data.comicrelief.com/identify';
+        break;
+}
+
 $databases['default']['default'] = array (
     'database' => 'drupal',
     'username' => 'root',

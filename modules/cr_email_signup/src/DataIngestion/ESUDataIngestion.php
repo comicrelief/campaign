@@ -1,7 +1,9 @@
 <?php
 
 namespace Drupal\cr_email_signup\DataIngestion;
-use Drupal\Component\Serialization\Json.php;
+
+use Drupal\Component\Serialization\Json;
+use Drupal\Core\Site\Settings;
 
 
 /**
@@ -20,6 +22,7 @@ class ESUDataIngestion
     protected $trans_type = null;
     protected $list = null;
     protected $user_id = null;
+    protected $data_ingestion_base_url;
 
     /**
      * Create a new instance.
@@ -54,6 +57,8 @@ class ESUDataIngestion
         $this->first_name = $data['firstName'];
         $this->last_name = $data['surname'];
         $this->list = $data['subscribeLists'];
+
+        $this->data_ingestion_base_url = Settings::get('data_ingestion_base_url', '');
     }
 
     protected function generateTransactionEvent() {
@@ -124,12 +129,12 @@ class ESUDataIngestion
      * @param array $data
      */
     protected function post($data) {
-        $settings = \Drupal::config('cr_email_signup.settings');
-        $data_ingestion_endpoint = $settings->get('endpoint_dev');
+        /*$settings = \Drupal::config('cr_email_signup.settings');
+        $data_ingestion_endpoint = $settings->get('endpoint_dev');*/
 
         $client = \Drupal::httpClient();
         try {
-            $request = $client->post($data_ingestion_endpoint, Json::encode($data));
+            $request = $client->post($this->data_ingestion_base_url, Json::encode($data));
 
             $response = Json::decode($request->getBody());
             if ($response['statusCode'] !== 200) {
