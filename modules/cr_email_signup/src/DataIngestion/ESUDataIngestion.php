@@ -125,7 +125,7 @@ class ESUDataIngestion
      */
     protected function post($data) {
         $settings = \Drupal::config('cr_email_signup.settings');
-        $data_ingestion_endpoint = $settings->get('endpoint.dev');
+        $data_ingestion_endpoint = $settings->get('endpoint_dev');
 
         $client = \Drupal::httpClient();
         try {
