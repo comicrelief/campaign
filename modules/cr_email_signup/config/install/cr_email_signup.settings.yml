@@ -1,6 +1,3 @@
 campaign: Campaign
 welcome_queue: smartfocus-api
 template_esu_name: welcome
-endpoint_dev: "https://ingest-staging.data.comicrelief.com/identify"
-endpoint_staging: "https://ingest-staging.data.comicrelief.com/identify"
-endpoint_production: "https://ingest.data.comicrelief.com/identify"

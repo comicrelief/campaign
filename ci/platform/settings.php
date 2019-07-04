@@ -31,10 +31,10 @@ switch (@$_SERVER['HTTP_HOST']) {
     default:
     case 'dev.comicrelief.com' || 'dev.sportrelief.com':
     case 'staging.comicrelief.com' || 'staging.sportrelief.com':
-        $settings['data_ingestion_base_url'] = 'https://ingest-staging.data.comicrelief.com/identify';
+        $settings['data_ingestion_endpoint'] = 'https://ingest-staging.data.comicrelief.com/';
         break;
     case 'www.comicrelief.com' || 'www.sportrelief.com':
-        $settings['data_ingestion_base_url'] = 'https://ingest.data.comicrelief.com/identify';
+        $settings['data_ingestion_endpoint'] = 'https://ingest.data.comicrelief.com/';
         break;
 }
 

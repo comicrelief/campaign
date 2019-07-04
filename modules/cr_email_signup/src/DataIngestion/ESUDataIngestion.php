@@ -22,7 +22,7 @@ class ESUDataIngestion
     protected $trans_type = null;
     protected $list = null;
     protected $user_id = null;
-    protected $data_ingestion_base_url;
+    protected $data_ingestion_endpoint;
 
     /**
      * Create a new instance.
@@ -58,7 +58,7 @@ class ESUDataIngestion
         $this->last_name = $data['surname'];
         $this->list = $data['subscribeLists'];
 
-        $this->data_ingestion_base_url = Settings::get('data_ingestion_base_url', '');
+        $this->data_ingestion_endpoint = Settings::get('data_ingestion_endpoint', '');
     }
 
     protected function generateTransactionEvent() {
@@ -134,7 +134,7 @@ class ESUDataIngestion
 
         $client = \Drupal::httpClient();
         try {
-            $request = $client->post($this->data_ingestion_base_url, Json::encode($data));
+            $request = $client->post($this->data_ingestion_endpoint .'identify', Json::encode($data));
 
             $response = Json::decode($request->getBody());
             if ($response['statusCode'] !== 200) {
