@@ -13,6 +13,8 @@ $settings['entity_update_batch_size'] = 50;
 $config_directories[CONFIG_SYNC_DIRECTORY] = 'sites/default/config';
 $settings['container_yamls'][] = __DIR__ . '/services.yml';
 
+$settings['test_endpoint'] = 'www.test.com/';
+
 // The hash_salt should be a unique random value for each application.
 // If left unset, the settings.platformsh.php file will attempt to provide one.
 // You can also provide a specific value here if you prefer and it will be used
