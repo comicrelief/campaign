@@ -21,6 +21,9 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
 // local development.
 $settings['hash_salt'] = '7BbC-OM6nFz5BDRB9ksza__3PmJSrcZ-eHY1InKGUlt2cnXFsI6eAJzBuzaABWdzgs_ZLZY3bg';
 
+//
+$settings['data_ingestion_endpoint'] = 'https://ingest.data.comicrelief.com/';
+
 // Set up a config sync directory.
 //
 // This is defined inside the read-only "config" directory, deployed via Git.
