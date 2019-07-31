@@ -26,6 +26,7 @@ services:
       - solr-precreate
       - campaign
       - /drupal
+      - memory_limit=-1
 
   mysql:
     image: mysql:5
