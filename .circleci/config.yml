@@ -19,33 +19,21 @@ save_cache_js: &save_cache_js
 outdated: &outdated
     machine:
       docker_layer_caching: true
-    dependencies:
-      pre: echo "memory_limit = -1" > /opt/circleci/php/$(phpenv global)/etc/conf.d/memory.ini
     steps:
       - checkout
-      - run:
-          name: Disable PHP memory limit
-          command: |
-            echo 'memory_limit=-1' | sudo tee -a /opt/circleci/php/$(phpenv global)/etc/conf.d/memory.ini
       - restore_cache: *restore_cache_php
       - restore_cache: *restore_cache_js
       - run:
           name: Check outdated vendors
           command: |
-            docker-compose run --rm web composer outdate
+            docker-compose run --rm web COMPOSER_MEMORY_LIMIT=1 composer outdate
 
 
 build_and_test: &build_and_test
     machine:
       docker_layer_caching: true
-    dependencies:
-      pre: echo "memory_limit = -1" > /opt/circleci/php/$(phpenv global)/etc/conf.d/memory.ini
     steps:
       - checkout
-      - run:
-          name: Disable PHP memory limit
-          command: |
-            echo 'memory_limit=-1' | sudo tee -a /opt/circleci/php/$(phpenv global)/etc/conf.d/memory.ini
       - run:
           name: Start containers
           command: |
@@ -56,7 +44,7 @@ build_and_test: &build_and_test
       - run:
           name: Set up project
           command: |
-            docker-compose exec web composer campaign:build || true
+            docker-compose exec web COMPOSER_MEMORY_LIMIT=1 composer campaign:build || true
             docker-compose exec web chmod ugo+rw web/sites/default -R
       - save_cache: *save_cache_php
       - save_cache: *save_cache_js
