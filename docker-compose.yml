@@ -1,6 +1,7 @@
 version: '2.1'
 services:
   web:
+    mem_limit:10000MB
     image: comicrelief/php-drupal:latest
     ports:
       - 8080:80
@@ -26,7 +27,6 @@ services:
       - solr-precreate
       - campaign
       - /drupal
-      - memory_limit=-1
 
   mysql:
     image: mysql:5
