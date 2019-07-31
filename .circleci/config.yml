@@ -44,8 +44,9 @@ build_and_test: &build_and_test
       - run:
           name: Set up project
           command: |
-            docker-compose exec web composer campaign:build || true
-            docker-compose exec web chmod ugo+rw web/sites/default -R
+            docker-compose exec web bash
+            COMPOSER_MEMORY_LIMIT=-1 composer campaign:build || true
+            chmod ugo+rw web/sites/default -R
       - save_cache: *save_cache_php
       - save_cache: *save_cache_js
       - run:
