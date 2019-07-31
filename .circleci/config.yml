@@ -48,7 +48,6 @@ build_and_test: &build_and_test
       - run:
           name: Set up project
           command: |
-            phpunit -d memory_limit=512M
             docker-compose exec web composer campaign:build || true
             docker-compose exec web chmod ugo+rw web/sites/default -R
       - save_cache: *save_cache_php
