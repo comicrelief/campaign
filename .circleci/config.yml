@@ -26,7 +26,7 @@ outdated: &outdated
       - run:
           name: Disable PHP memory limit
           command: |
-            echo 'memory_limit=-1' | sudo tee -a /usr/local/etc/php/php.ini
+            echo 'memory_limit=-1' | sudo tee -a /opt/circleci/php/$(phpenv global)/etc/conf.d/memory.ini
       - restore_cache: *restore_cache_php
       - restore_cache: *restore_cache_js
       - run:
@@ -45,7 +45,7 @@ build_and_test: &build_and_test
       - run:
           name: Disable PHP memory limit
           command: |
-            echo 'memory_limit=-1' | sudo tee -a /usr/local/etc/php/php.ini
+            echo 'memory_limit=-1' | sudo tee -a /opt/circleci/php/$(phpenv global)/etc/conf.d/memory.ini
       - run:
           name: Start containers
           command: |
