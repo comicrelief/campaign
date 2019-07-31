@@ -1,7 +1,7 @@
 version: '2.1'
 services:
   web:
-    mem_limit:10000MB
+    mem_limit: 10000MB
     image: comicrelief/php-drupal:latest
     ports:
       - 8080:80
