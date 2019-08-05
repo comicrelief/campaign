@@ -3,7 +3,7 @@
 
 /web/
 /vendor/
-composer.lock
+# composer.lock
 
 # Ignore bundle files
 /themes/custom/campaign_base/node_modules/

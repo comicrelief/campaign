@@ -37,7 +37,8 @@
     "webpack": "^2.2.1"
   },
   "resolutions": {
-    "customizr": "1.2.1"
+    "customizr": "1.2.1",
+    "underscore.string" : "^3.3.5"
   },
   "scripts": {
     "build": "grunt build",
