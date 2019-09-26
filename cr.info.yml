@@ -109,6 +109,7 @@ dependencies:
 
   # Development modules
   - config_devel
+  - update
 
   # Editor/admin experience
   - admin_toolbar_tools
