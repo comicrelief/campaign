@@ -38,7 +38,12 @@
   },
   "resolutions": {
     "customizr": "1.2.1",
-    "underscore.string" : "^3.3.5"
+    "underscore.string" : "^3.3.5",
+    "diff" : "3.5.0",
+    "lodash.template" : "4.5.0",
+    "lodash" : "4.17.13",
+    "debug" : "2.6.9",
+    "js-yaml" : "3.13.1"
   },
   "scripts": {
     "build": "grunt build",
