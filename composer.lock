@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "89bc417009f1a0daf6cb77d90c0d5321",
+    "content-hash": "d4ff2dbb005d977c6ee7fc11107d9b2f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1849,29 +1849,29 @@
         },
         {
             "name": "drupal/advagg",
-            "version": "3.5.0",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/advagg.git",
-                "reference": "8.x-3.5"
+                "reference": "8.x-4.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/advagg-8.x-3.5.zip",
-                "reference": "8.x-3.5",
-                "shasum": "b95bfc7ae31bb9c8cd626dc13146414682211dc1"
+                "url": "https://ftp.drupal.org/files/projects/advagg-8.x-4.0.zip",
+                "reference": "8.x-4.0",
+                "shasum": "2987efa3922fd9fc4931cf853de3104092ff236e"
             },
             "require": {
-                "drupal/core": "~8.0"
+                "drupal/core": "^8.6"
             },
             "type": "drupal-module",
             "extra": {
                 "branch-alias": {
-                    "dev-3.x": "3.x-dev"
+                    "dev-4.x": "4.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-3.5",
-                    "datestamp": "1518683580",
+                    "version": "8.x-4.0",
+                    "datestamp": "1560358534",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -5346,29 +5346,30 @@
         },
         {
             "name": "drupal/simple_sitemap",
-            "version": "2.11.0",
+            "version": "3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/simple_sitemap.git",
-                "reference": "8.x-2.11"
+                "reference": "8.x-3.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/simple_sitemap-8.x-2.11.zip",
-                "reference": "8.x-2.11",
-                "shasum": "d4b5f24c90d0636acd2c345eca566891194a7d0a"
+                "url": "https://ftp.drupal.org/files/projects/simple_sitemap-8.x-3.3.zip",
+                "reference": "8.x-3.3",
+                "shasum": "690605c75cc75bc088d0506505c71d78f7d46c8c"
             },
             "require": {
-                "drupal/core": "~8.0"
+                "drupal/core": "~8.0",
+                "ext-xmlwriter": "*"
             },
             "type": "drupal-module",
             "extra": {
                 "branch-alias": {
-                    "dev-2.x": "2.x-dev"
+                    "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-2.11",
-                    "datestamp": "1523202480",
+                    "version": "8.x-3.3",
+                    "datestamp": "1563488885",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -5392,12 +5393,11 @@
                     "role": "Maintainer"
                 },
                 {
-                    "name": "Sam Becker (Sam152)",
-                    "homepage": "https://www.drupal.org/u/sam152",
-                    "role": "Co-maintainer"
+                    "name": "gbyte.co",
+                    "homepage": "https://www.drupal.org/user/2381352"
                 }
             ],
-            "description": "Simple XML sitemap creates a standard conform XML sitemap of your content.",
+            "description": "Creates a standard conform hreflang XML sitemap of the site content and provides a framework for developing other sitemap types.",
             "homepage": "https://drupal.org/project/simple_sitemap",
             "support": {
                 "source": "https://cgit.drupalcode.org/simple_sitemap",
@@ -5853,8 +5853,7 @@
             "homepage": "https://www.drupal.org/project/views_ajax_history",
             "support": {
                 "source": "https://git.drupalcode.org/project/views_ajax_history"
-            },
-            "time": "2019-07-05T14:19:45+00:00"
+            }
         },
         {
             "name": "drush/drush",
