@@ -59,5 +59,5 @@
       'action': 'cookie_opt-in_marketing',
       'label': userChoice
     });
-  }
+  },
 })(jQuery);

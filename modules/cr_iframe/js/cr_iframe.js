@@ -39,6 +39,28 @@ var iframeSizer = (function () {
           jQuery('html, body').animate({
             scrollTop: jQuery('.iframe-resizable:first').offset().top + 'px'},'3000');
         }
+
+        if (typeof json.email_address !== 'undefined') {
+
+          console.log('email from iframe: ', json.email_address);
+
+          var domain = window.location.hostname;
+
+          var exdate = new Date();
+          exdate.setDate(exdate.getDate() + 365);
+
+          var cookie = [
+            'email_address' + '=' + json.email_address,
+            'expires=' + exdate.toUTCString(),
+            'path=/',
+          ];
+
+          if (domain) {
+            cookie.push('domain=' + domain);
+          }
+
+          document.cookie = cookie.join(';');
+        }
       }
       catch(e) {}
     }, false);
