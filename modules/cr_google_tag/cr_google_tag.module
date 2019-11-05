@@ -14,6 +14,13 @@ function cr_google_tag_page_attachments(array &$attachments) {
   $loggedIn = \Drupal::currentUser()->id() === 0 ? 'N' : 'Y';
   $env = empty(Settings::get('environment')) ? 'dev' : Settings::get('environment');
 
+  if (isset($_COOKIE['email_address'])) {
+   $email_value = $_COOKIE['email_address'];
+    print($email_value);
+  } else {
+    print('no email');
+  }
+
   $script = <<<EOS
 var dataLayer = window.dataLayer = window.dataLayer || [];
 dataLayer.push({
