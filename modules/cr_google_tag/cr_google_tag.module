@@ -29,7 +29,7 @@ dataLayer.push({
   },
   'user': {
     'loggedIn': '$loggedIn',
-    'email_address' : '$email_address'
+    'userEmail' : '$email_address'
   }
 });
 EOS;
