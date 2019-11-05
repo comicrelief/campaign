@@ -16,10 +16,8 @@ function cr_google_tag_page_attachments(array &$attachments) {
 
   if (isset($_COOKIE['email_address'])) {
    $email_value = $_COOKIE['email_address'];
-    print($email_value);
   } else {
     $email_value = 'no value yet'
-    print('no email');
   }
 
   $script = <<<EOS
@@ -31,7 +29,8 @@ dataLayer.push({
     'environment': '$env'
   },
   'user': {
-    'loggedIn': '$loggedIn'
+    'loggedIn': '$loggedIn',
+    'email_address' : '$email_value'
   }
 });
 EOS;
