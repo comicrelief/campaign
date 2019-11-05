@@ -13,11 +13,10 @@ use Drupal\Core\Site\Settings;
 function cr_google_tag_page_attachments(array &$attachments) {
   $loggedIn = \Drupal::currentUser()->id() === 0 ? 'N' : 'Y';
   $env = empty(Settings::get('environment')) ? 'dev' : Settings::get('environment');
+  $email_address = 'no value yet';
 
   if (isset($_COOKIE['email_address'])) {
-   $email_value = $_COOKIE['email_address'];
-  } else {
-    $email_value = 'no value yet'
+   $email_address = $_COOKIE['email_address'];
   }
 
   $script = <<<EOS
@@ -30,7 +29,7 @@ dataLayer.push({
   },
   'user': {
     'loggedIn': '$loggedIn',
-    'email_address' : '$email_value'
+    'email_address' : '$email_address'
   }
 });
 EOS;
