@@ -42,8 +42,6 @@ var iframeSizer = (function () {
 
         if (typeof json.email_address !== 'undefined') {
 
-          console.log('email from iframe: ', json.email_address);
-
           var domain = window.location.hostname;
 
           var exdate = new Date();
