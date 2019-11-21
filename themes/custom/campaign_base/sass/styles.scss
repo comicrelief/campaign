@@ -6,3 +6,43 @@ $image-path: "/profiles/contrib/cr/themes/custom/campaign_base/images/patternlab
 @import "@comicrelief/pattern-lab/sass/base/_core";
 @import "@comicrelief/pattern-lab/sass/base/_components";
 
+// Test styles
+.cr-body {
+
+    p {
+        position: relative;
+        z-index: 2;
+    }
+
+    .view-mode-bg-graphic-bottom-left {
+        position: absolute;
+        z-index: 1;
+        width: 50%;
+        bottom: 0;
+        left: 0;
+    }
+
+    .view-mode-bg-graphic-bottom-right {
+        position: absolute;
+        z-index: 1;
+        width: 50%;
+        bottom: 0;
+        right: 0;
+    }
+
+    .view-mode-bg-graphic-top-left {
+        position: absolute;
+        z-index: 1;
+        width: 50%;
+        top: 0;
+        left: 0;
+    }
+
+    .view-mode-bg-graphic-top-right {
+        position: absolute;
+        z-index: 1;
+        width: 50%;
+        top: 0;
+        right: 0;
+    }
+}
