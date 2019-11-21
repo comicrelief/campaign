@@ -17,32 +17,57 @@ $image-path: "/profiles/contrib/cr/themes/custom/campaign_base/images/patternlab
     .view-mode-bg-graphic-bottom-left {
         position: absolute;
         z-index: 1;
-        width: 50%;
+        height: 100%;
+        width: auto;
         bottom: 0;
         left: 0;
+        
+        img {
+            height: 100%;
+            width: auto; 
+            margin: 0;
+        }
     }
 
     .view-mode-bg-graphic-bottom-right {
         position: absolute;
         z-index: 1;
-        width: 50%;
+        height: 100%;
+        width: auto;
         bottom: 0;
         right: 0;
+        img {
+            height: 100%;
+            width: auto; 
+            margin: 0;
+        }
     }
 
     .view-mode-bg-graphic-top-left {
         position: absolute;
         z-index: 1;
-        width: 50%;
+        height: 100%;
+        width: auto;
         top: 0;
         left: 0;
+        img {
+            height: 100%;
+            width: auto; 
+            margin: 0;
+        }
     }
 
     .view-mode-bg-graphic-top-right {
         position: absolute;
         z-index: 1;
-        width: 50%;
+        height: 100%;
+        width: auto;
         top: 0;
         right: 0;
+        img {
+            height: 100%;
+            width: auto; 
+            margin: 0;
+        }
     }
 }
