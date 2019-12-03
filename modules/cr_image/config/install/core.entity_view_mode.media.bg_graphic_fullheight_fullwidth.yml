@@ -1,0 +1,10 @@
+uuid: d9708660-d9b7-40e7-9504-542561c66510
+langcode: en
+status: true
+dependencies:
+  module:
+    - media_entity
+id: media.bg_graphic_fullheight_fullwidth
+label: 'BG Graphic - fullheight fullwidth'
+targetEntityType: media
+cache: true

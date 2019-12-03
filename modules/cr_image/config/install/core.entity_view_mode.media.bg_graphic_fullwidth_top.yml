@@ -1,0 +1,10 @@
+uuid: bdf725b7-f70a-4ee1-ac42-57a1450c9aac
+langcode: en
+status: true
+dependencies:
+  module:
+    - media_entity
+id: media.bg_graphic_fullwidth_top
+label: 'BG Graphic - fullwidth top'
+targetEntityType: media
+cache: true

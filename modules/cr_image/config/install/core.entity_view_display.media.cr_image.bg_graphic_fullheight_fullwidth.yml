@@ -1,0 +1,33 @@
+uuid: a867d7ab-731d-4667-929c-2cda5995e807
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.bg_graphic_fullheight_fullwidth
+    - field.field.media.cr_image.field_cr_image_image
+    - media_entity.bundle.cr_image
+    - responsive_image.styles.cw_landscape_image
+  module:
+    - responsive_image
+_core:
+  default_config_hash: 1TfoHFA6yUihygpYeuF9XoOjLUVh4MCsIeqnGBF_NLQ
+id: media.cr_image.bg_graphic_fullheight_fullwidth
+targetEntityType: media
+bundle: cr_image
+mode: bg_graphic_fullheight_fullwidth
+content:
+  field_cr_image_image:
+    weight: 0
+    label: hidden
+    settings:
+      responsive_image_style: cw_landscape_image
+      image_link: ''
+    third_party_settings: {  }
+    type: responsive_image
+    region: content
+hidden:
+  created: true
+  name: true
+  social_links: true
+  thumbnail: true
+  uid: true

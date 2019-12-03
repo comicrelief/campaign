@@ -1,0 +1,10 @@
+uuid: 6f6055c4-a1ab-475c-855d-551c009a5e92
+langcode: en
+status: true
+dependencies:
+  module:
+    - media_entity
+id: media.bg_graphic_fullwidth_bottom
+label: 'BG Graphic - fullwidth bottom'
+targetEntityType: media
+cache: true
