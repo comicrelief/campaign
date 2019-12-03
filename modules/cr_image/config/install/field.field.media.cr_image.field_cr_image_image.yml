@@ -6,6 +6,8 @@ dependencies:
     - media_entity.bundle.cr_image
   module:
     - image
+_core:
+  default_config_hash: _D2q723vWrbnWDFnpo8mECHG7nn4z-kSlgT4Vaz7QmQ
 id: media.cr_image.field_cr_image_image
 field_name: field_cr_image_image
 entity_type: media
