@@ -1,0 +1,12 @@
+uuid: 31cab74a-c717-4656-9980-fd3fabd9731b
+langcode: en
+status: true
+dependencies:
+  module:
+    - media_entity
+_core:
+  default_config_hash: QTFKcRmapE_lXZvEA4V_tDp6AqlcZQLutmRK6ELp8CE
+id: media.bg_graphic_top_right
+label: 'BG Graphic - top right'
+targetEntityType: media
+cache: true
