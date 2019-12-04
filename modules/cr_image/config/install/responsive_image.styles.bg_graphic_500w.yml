@@ -1,0 +1,45 @@
+uuid: 0dbe6b8b-eb4f-45c9-b826-a8bd7599e70a
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.bg_graphic_500w
+    - image.style.bg_graphic_500w_2x_
+    - image.style.large
+  theme:
+    - campaign_base
+id: bg_graphic_500w
+label: 'BG Graphic - 500w'
+image_style_mappings:
+  -
+    breakpoint_id: campaign_base.large
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: bg_graphic_500w
+  -
+    breakpoint_id: campaign_base.large
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: bg_graphic_500w_2x_
+  -
+    breakpoint_id: campaign_base.medium
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: bg_graphic_500w
+  -
+    breakpoint_id: campaign_base.medium
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: bg_graphic_500w_2x_
+  -
+    breakpoint_id: campaign_base.small
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: bg_graphic_500w
+  -
+    breakpoint_id: campaign_base.small
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: bg_graphic_500w_2x_
+breakpoint_group: campaign_base
+fallback_image_style: large

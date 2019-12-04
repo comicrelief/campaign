@@ -1,0 +1,15 @@
+uuid: 72d167a8-4198-430c-97f9-593bee13d026
+langcode: en
+status: true
+dependencies: {  }
+name: bg_graphic_1000w
+label: 'BG Graphic - 1000w'
+effects:
+  f331110d-b944-4f33-8162-ebe7c73aaa37:
+    uuid: f331110d-b944-4f33-8162-ebe7c73aaa37
+    id: image_scale
+    weight: 1
+    data:
+      width: 1000
+      height: null
+      upscale: true

@@ -4,6 +4,8 @@ status: true
 dependencies:
   module:
     - media_entity
+_core:
+  default_config_hash: 5NssmvqWztamoo1-l7T0x06sNieJ4neOPShUVi7a54k
 id: media.bg_graphic_fullwidth_bottom
 label: 'BG Graphic - fullwidth bottom'
 targetEntityType: media

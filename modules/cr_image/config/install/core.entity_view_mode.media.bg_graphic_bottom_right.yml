@@ -4,6 +4,8 @@ status: true
 dependencies:
   module:
     - media_entity
+_core:
+  default_config_hash: ail2318oWA6EOzoGW0AegmD6am9rqZsKgPoO3AGzA6o
 id: media.bg_graphic_bottom_right
 label: 'BG Graphic - bottom right'
 targetEntityType: media

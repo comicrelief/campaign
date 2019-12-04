@@ -5,12 +5,12 @@ dependencies:
   config:
     - core.entity_view_mode.media.bg_graphic_bottom_right
     - field.field.media.cr_image.field_cr_image_image
-    - image.style.large
     - media_entity.bundle.cr_image
+    - responsive_image.styles.bg_graphic_500w
   module:
-    - image
+    - responsive_image
 _core:
-  default_config_hash: 1TfoHFA6yUihygpYeuF9XoOjLUVh4MCsIeqnGBF_NLQ
+  default_config_hash: UkQTe3ZZxn88_RZpAmJ16mgTSgm58ihPOizSm43usNo
 id: media.cr_image.bg_graphic_bottom_right
 targetEntityType: media
 bundle: cr_image
@@ -20,10 +20,10 @@ content:
     weight: 0
     label: hidden
     settings:
-      image_style: large
+      responsive_image_style: bg_graphic_500w
       image_link: ''
     third_party_settings: {  }
-    type: image
+    type: responsive_image
     region: content
 hidden:
   created: true

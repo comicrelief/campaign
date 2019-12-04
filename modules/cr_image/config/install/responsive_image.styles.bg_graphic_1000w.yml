@@ -1,0 +1,44 @@
+uuid: 152dd9d7-fb2c-4afb-b799-978479d7ada9
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.bg_graphic_1000w
+    - image.style.bg_graphic_1000w_2x_
+  theme:
+    - campaign_base
+id: bg_graphic_1000w
+label: 'BG Graphic - 1000w'
+image_style_mappings:
+  -
+    breakpoint_id: campaign_base.large
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: bg_graphic_1000w
+  -
+    breakpoint_id: campaign_base.large
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: bg_graphic_1000w_2x_
+  -
+    breakpoint_id: campaign_base.medium
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: bg_graphic_1000w
+  -
+    breakpoint_id: campaign_base.medium
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: bg_graphic_1000w_2x_
+  -
+    breakpoint_id: campaign_base.small
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: bg_graphic_1000w
+  -
+    breakpoint_id: campaign_base.small
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: bg_graphic_1000w_2x_
+breakpoint_group: campaign_base
+fallback_image_style: '_original image_'

@@ -1,0 +1,15 @@
+uuid: 8fb454d4-3a34-4e9d-a626-b1bc474aedca
+langcode: en
+status: true
+dependencies: {  }
+name: bg_graphic_500w_2x_
+label: "BG Graphic - 500w (2x)\t"
+effects:
+  ffc83b69-1d22-44df-ba69-d14e5d4800be:
+    uuid: ffc83b69-1d22-44df-ba69-d14e5d4800be
+    id: image_scale
+    weight: 1
+    data:
+      width: 1000
+      height: null
+      upscale: true
