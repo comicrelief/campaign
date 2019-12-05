@@ -10,7 +10,7 @@ dependencies:
   module:
     - responsive_image
 _core:
-  default_config_hash: TWd4eaeYUGWGaEmtc7czcknEVDk3vUmFT9oUC6Rregs
+  default_config_hash: pWeO1RPIYO0pWn3_GA4x4FYS_sI_MU1cdE31O9cIMz0
 id: media.cr_image.bg_graphic_fullheight_fullwidth
 targetEntityType: media
 bundle: cr_image

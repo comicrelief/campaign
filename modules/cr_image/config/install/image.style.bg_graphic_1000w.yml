@@ -2,6 +2,8 @@ uuid: 72d167a8-4198-430c-97f9-593bee13d026
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: fDe2QtBgjiZQWv3-0PkerbQJsQBy6YLT5W7ZhekTVow
 name: bg_graphic_1000w
 label: 'BG Graphic - 1000w'
 effects:

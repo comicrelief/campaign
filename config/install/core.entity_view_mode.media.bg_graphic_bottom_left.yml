@@ -5,7 +5,7 @@ dependencies:
   module:
     - media_entity
 _core:
-  default_config_hash: NVEEbnhnYwxnscIjVFNI2jwxNtIwxWcMLOyOHYy6maE
+  default_config_hash: Hvt1ujmtiEstCfEHZ0uz0zN0QKCsRUlI45mRk6YhfmY
 id: media.bg_graphic_bottom_left
 label: 'BG Graphic - bottom left'
 targetEntityType: media

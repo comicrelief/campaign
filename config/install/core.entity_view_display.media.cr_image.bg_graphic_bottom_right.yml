@@ -6,25 +6,25 @@ dependencies:
     - core.entity_view_mode.media.bg_graphic_bottom_right
     - field.field.media.cr_image.field_cr_image_image
     - media_entity.bundle.cr_image
-    - responsive_image.styles.bg_graphic_500w
+    - responsive_image.styles.bg_graphic_1000w
   module:
     - responsive_image
 _core:
-  default_config_hash: UkQTe3ZZxn88_RZpAmJ16mgTSgm58ihPOizSm43usNo
+  default_config_hash: P4VZIhsKcE7kgrUa3XQ4q9fIjB4HI2kuGJZ2TzQrEkw
 id: media.cr_image.bg_graphic_bottom_right
 targetEntityType: media
 bundle: cr_image
 mode: bg_graphic_bottom_right
 content:
   field_cr_image_image:
+    type: responsive_image
     weight: 0
+    region: content
     label: hidden
     settings:
-      responsive_image_style: bg_graphic_500w
+      responsive_image_style: bg_graphic_1000w
       image_link: ''
     third_party_settings: {  }
-    type: responsive_image
-    region: content
 hidden:
   created: true
   name: true
