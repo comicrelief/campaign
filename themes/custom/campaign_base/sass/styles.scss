@@ -6,67 +6,96 @@ $image-path: "/profiles/contrib/cr/themes/custom/campaign_base/images/patternlab
 @import "@comicrelief/pattern-lab/sass/base/_core";
 @import "@comicrelief/pattern-lab/sass/base/_components";
 
+
+// Base styles
+.graphic-view-modes {
+  position: absolute;
+  z-index: 1;
+
+  img, picture {
+    margin: 0;
+    display: block;
+    height: inherit;
+    width: inherit;
+  }
+}
+
+.single-msg .single-msg__copy_wrapper {
+  position: relative;
+  @include breakpoint($screen-md) {
+    position: absolute;
+  }
+
+}
+
 // Test styles
 .cr-body {
 
-   * {
+   p, span, h1, h2, h3, h4, h5, a {
        position: relative;
        z-index: 2;
    }
 
-   // Base styles
-   div[class^="view-mode-bg-graphic-"] {
-     position: absolute;
-     z-index: 1;
-     img {
-       margin: 0;
-     }
-   }
 
-   .view-mode-bg-graphic- {
+  .view-mode-bg-graphic-{
 
-      &bottom-left {
-       height: 100%;
-       width: auto;
-       bottom: 0;
-       left: 0;
-       img {
-           height: 100%; 
-           width: auto; 
-       }
-     }
+    &bottom-left {
+      @extend .graphic-view-modes;
+      width: 250px;
+      height: auto;
+      bottom: 0;
+      left: 0;
+    }
 
-     &bottom-right {
-       height: 100%;
-       width: auto;
-       bottom: 0;
-       right: 0;
-       img {
-           height: 100%;
-           width: auto; 
-       }
-     }
+    &bottom-right {
+      @extend .graphic-view-modes;
+      width: 250px;
+      height: auto;
+      bottom: 0;
+      right: 0;
+    }
 
      &top-left {
-       height: 100%;
-       width: auto;
-       top: 0;
-       left: 0;
-       img {
-           height: 100%;
-           width: auto; 
-       }
+      @extend .graphic-view-modes;
+      width: 250px;
+      height: auto;
+      top: 0;
+      left: 0;
      }
 
-      &top-right {
-       height: 100%;
-       width: auto;
-       top: 0;
-       right: 0;
-       img {
-           height: 100%;
-           width: auto; 
+    &top-right {
+      @extend .graphic-view-modes;
+      width: 250px;
+      height: auto;
+      top: 0;
+      right: 0;
+    }
+
+    &fullheight-fullwidth {
+      @extend .graphic-view-modes;
+      width: 100%;
+      min-width: 1000px;
+      height: auto;
+      top: 0;
+      left: 0;
+    }
+
+    &fullwidth-top {
+      @extend .graphic-view-modes;
+      width: 100%;
+      height: auto;
+      top: 0;
+      left: 0;
+
+      .single-msg--copy-only &,
+      .single-msg--copy-only-large & {
+        width: 100vw; //only for copy-only
+        transform: translateX(-50%);
+        left: 50%;
+        top: -60px;
       }
     }
   }
 }
+
+
