@@ -24,8 +24,8 @@ $image-path: "/profiles/contrib/cr/themes/custom/campaign_base/images/patternlab
   position: relative;
   @include breakpoint($screen-md) {
     position: absolute;
+    overflow: hidden;
   }
-
 }
 
 // Test styles
@@ -97,5 +97,3 @@ $image-path: "/profiles/contrib/cr/themes/custom/campaign_base/images/patternlab
     }
   }
 }
-
-
