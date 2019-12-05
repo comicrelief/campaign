@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: cr_1170_x_566_2x
+label: 'CR 1170 x 566 2x'
+effects:
+  f6dcdeb2-652a-4bd4-8d70-0bb29da3e580:
+    uuid: f6dcdeb2-652a-4bd4-8d70-0bb29da3e580
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: '2340'
+      height: '1132'
+      crop_type: focal_point
