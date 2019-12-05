@@ -5,8 +5,6 @@ dependencies:
   config:
     - image.style.bg_graphic_1000w
     - image.style.bg_graphic_1000w_2x_
-  theme:
-    - campaign_base
 _core:
   default_config_hash: g9J18mSy6zqAa_t-DHNJ559LLSVKi8ETx0TksfJ3vG0
 id: bg_graphic_1000w
