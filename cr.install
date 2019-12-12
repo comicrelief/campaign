@@ -429,3 +429,8 @@ function cr_update_8046() {
 function cr_update_8047() {
   installer()->install(['simple_sitemap']);
 }
+
+/* Uninstall cookie banner module, to be replaced by OneTrust */
+function cr_update_8048() {
+  installer()->uninstall(['cookieconsent']);
+}
