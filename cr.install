@@ -418,3 +418,14 @@ function cr_update_8045() {
   \Drupal::service('config.installer')
     ->installDefaultConfig('module', 'cr_image');
 }
+
+/**
+ * Remove Sitemap module and config to reinstall in next step to fix DB issue
+ */
+function cr_update_8046() {
+  installer()->uninstall(['simple_sitemap']);
+}
+
+function cr_update_8047() {
+  installer()->install(['simple_sitemap']);
+}
