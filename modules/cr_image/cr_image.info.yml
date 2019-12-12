@@ -13,16 +13,28 @@ config_devel:
   - image.style.cr_1170_x_566_2x
   - image.style.cr_585_x_283
   - image.style.cr_585_x_283_2x
+  - image.style.bg_graphic_1000w
+  - image.style.bg_graphic_1000w_2x_
   - responsive_image.styles.cw_landscape_image
+  - responsive_image.styles.bg_graphic_1000w
   - core.entity_view_mode.media.large
   - core.entity_view_mode.media.medium
   - core.entity_view_mode.media.small
+  - core.entity_view_mode.media.bg_graphic_bottom_left
+  - core.entity_view_mode.media.bg_graphic_bottom_right
+  - core.entity_view_mode.media.bg_graphic_top_left
+  - core.entity_view_mode.media.bg_graphic_top_right
+  - core.entity_view_mode.media.bg_graphic_fullheight_fullwidth
   - core.entity_form_display.media.cr_image.default
   - core.entity_view_display.media.cr_image.default
   - core.entity_view_display.media.cr_image.large
   - core.entity_view_display.media.cr_image.medium
   - core.entity_view_display.media.cr_image.small
+  - core.entity_view_display.media.cr_image.bg_graphic_bottom_left
+  - core.entity_view_display.media.cr_image.bg_graphic_bottom_right
+  - core.entity_view_display.media.cr_image.bg_graphic_top_left
+  - core.entity_view_display.media.cr_image.bg_graphic_top_right
+  - core.entity_view_display.media.cr_image.bg_graphic_fullheight_fullwidth
   - field.storage.media.field_cr_image_image
   - field.field.media.cr_image.field_cr_image_image
   - media_entity.bundle.cr_image
-
