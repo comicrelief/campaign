@@ -409,3 +409,23 @@ function cr_update_8044() {
     installer()->install(['advagg']);
     installer()->install(['advagg_js_minify']);
 }
+
+/**
+ * Re-install the CR Image module for new BG-Graphics config
+ */
+function cr_update_8045() {
+  // Reinstall the cr_image configuration.
+  \Drupal::service('config.installer')
+    ->installDefaultConfig('module', 'cr_image');
+}
+
+/**
+ * Remove Sitemap module and config to reinstall in next step to fix DB issue
+ */
+function cr_update_8046() {
+  installer()->uninstall(['simple_sitemap']);
+}
+
+function cr_update_8047() {
+  installer()->install(['simple_sitemap']);
+}
