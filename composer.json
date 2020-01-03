@@ -121,6 +121,7 @@
         "drupal/crop": "1.5",
         "drupal/ctools": "3.0",
         "drupal/devel": "1.2",
+        "drupal/devel_entity_updates": "^1.0",
         "drupal/diff": "1.0-rc1",
         "drupal/ds": "3.2",
         "drupal/editor_advanced_link": "1.4",
