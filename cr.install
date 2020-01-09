@@ -433,10 +433,10 @@ function cr_update_8047() {
 /**
  * Remove Path Autoto fix DB issue
  */
-function cr_update_8046() {
+function cr_update_8048() {
   installer()->uninstall(['pathauto']);
 }
 
-function cr_update_8047() {
+function cr_update_8049() {
   installer()->install(['pathauto']);
 }
