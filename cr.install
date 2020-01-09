@@ -429,3 +429,14 @@ function cr_update_8046() {
 function cr_update_8047() {
   installer()->install(['simple_sitemap']);
 }
+
+/**
+ * Remove Path Autoto fix DB issue
+ */
+function cr_update_8046() {
+  installer()->uninstall(['pathauto']);
+}
+
+function cr_update_8047() {
+  installer()->install(['pathauto']);
+}
